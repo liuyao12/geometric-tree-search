@@ -1,6 +1,6 @@
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES,
   HIERARCHY_TRANSPORT_STATES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-447";
+  from "./hierarchy-physics-transport.mjs?v=20260901-448";
 
 const PROGRAMS = Object.freeze({
   "colored-geometry": Object.freeze({

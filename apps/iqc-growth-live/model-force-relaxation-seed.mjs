@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-447";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-448";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -442,6 +442,163 @@ export function auditComponentForceEnergyPathClosures(components, fractions,
       : `component work-energy closure failed: ${activeRecords.filter((record) => !record.passed)
         .map((record) => record.id).join(", ")}`,
     claimBoundary: "Independent component, local-panel, and interior-tangent closure prevents compensating force/energy errors from hiding between terms, path regions, or samples. It validates only the declared decomposition along one sampled coordinate path; it does not prove the components are transferable physical interactions, a full gradient, Hessian, thermodynamic work, dynamics, or time.",
+  });
+}
+
+/** Independently verify every movable Cartesian force component at one state. */
+export function auditCartesianForceEnergyGradient(currentSites, addedSites,
+  reportedEvaluation, electrostaticsOptions = {}, {
+    stepAngstrom = 1e-4,
+    maximumMovableSites = 64,
+    absoluteToleranceElectronVoltPerAngstrom = 1e-6,
+    relativeTolerance = 1e-7,
+  } = {}) {
+  const step = Number(stepAngstrom);
+  if (!(Number.isFinite(step) && step >= 1e-6 && step <= 1e-2)) {
+    throw new RangeError("Cartesian gradient audit step must be between 1e-6 and 1e-2 angstrom");
+  }
+  if (!Array.isArray(addedSites) || !addedSites.length
+      || !addedSites.every((site) => finiteVector(site?.position))) {
+    throw new Error("Cartesian gradient audit needs movable finite Cartesian sites");
+  }
+  if (!(Number.isInteger(maximumMovableSites) && maximumMovableSites > 0)
+      || addedSites.length > maximumMovableSites) {
+    throw new RangeError(`Cartesian gradient audit supports at most ${maximumMovableSites} movable sites`);
+  }
+  const componentSpecs = [
+    { id: "total", active: true, energy: "deltaEnergyElectronVolt",
+      forces: "addedForceVectorsElectronVoltPerAngstrom",
+      additionalTolerance: Number(reportedEvaluation
+        ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0 },
+    { id: "coulomb", active: true, energy: "coulombDeltaEnergyElectronVolt",
+      forces: "addedCoulombForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "born-mayer", active: Boolean(reportedEvaluation?.bornMayerRepulsionApplied),
+      energy: "bornMayerRepulsiveEnergyElectronVolt",
+      forces: "addedBornMayerForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "dispersion", active: Boolean(reportedEvaluation?.dispersionApplied),
+      energy: "dampedDispersionEnergyElectronVolt",
+      forces: "addedDispersionForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "induction", active: Boolean(reportedEvaluation?.chargeInductionApplied),
+      energy: "chargeInductionDeltaEnergyElectronVolt",
+      forces: "addedInductionForceVectorsElectronVoltPerAngstrom",
+      additionalTolerance: Number(reportedEvaluation
+        ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0 },
+  ];
+  componentSpecs.filter((spec) => spec.active).forEach((spec) => {
+    if (!Number.isFinite(reportedEvaluation?.[spec.energy])
+        || !Array.isArray(reportedEvaluation?.[spec.forces])
+        || reportedEvaluation[spec.forces].length !== addedSites.length
+        || !reportedEvaluation[spec.forces].every(finiteVector)) {
+      throw new Error(`Cartesian gradient audit lacks complete ${spec.id} energy/force data`);
+    }
+  });
+  const componentCoordinateRecords = new Map(componentSpecs.map((spec) =>
+    [spec.id, []]));
+  let branchStable = true;
+  let probeEvaluationCount = 0;
+  let distanceEvaluationCount = 0;
+  const probeOptions = { ...electrostaticsOptions, inductionForceMode: "omitted" };
+  const evaluateOffset = (siteIndex, axis, offset) => {
+    const sites = addedSites.map((site, index) => ({ ...site,
+      position: site.position.map((value, coordinateAxis) => value
+        + (index === siteIndex && coordinateAxis === axis ? offset : 0)) }));
+    const evaluation = incrementalFinitePointChargeElectrostatics(currentSites,
+      sites, probeOptions);
+    probeEvaluationCount += 1;
+    distanceEvaluationCount += evaluation.distanceEvaluations || 0;
+    const sameBranch = Boolean(evaluation.available)
+      && evaluation.pairCount === reportedEvaluation.pairCount
+      && evaluation.pairInteractionModel === reportedEvaluation.pairInteractionModel
+      && evaluation.inductionAppliedResponseModel
+        === reportedEvaluation.inductionAppliedResponseModel
+      && evaluation.inductionDirectFallbackApplied
+        === reportedEvaluation.inductionDirectFallbackApplied;
+    branchStable = branchStable && sameBranch;
+    return { evaluation, sameBranch };
+  };
+  addedSites.forEach((_, siteIndex) => [0, 1, 2].forEach((axis) => {
+    const plusCoarse = evaluateOffset(siteIndex, axis, step);
+    const minusCoarse = evaluateOffset(siteIndex, axis, -step);
+    const plusFine = evaluateOffset(siteIndex, axis, step / 2);
+    const minusFine = evaluateOffset(siteIndex, axis, -step / 2);
+    const coordinateBranchStable = [plusCoarse, minusCoarse, plusFine, minusFine]
+      .every((probe) => probe.sameBranch);
+    componentSpecs.forEach((spec) => {
+      if (!spec.active) return;
+      const coarseDerivative = (plusCoarse.evaluation[spec.energy]
+        - minusCoarse.evaluation[spec.energy]) / (2 * step);
+      const fineDerivative = (plusFine.evaluation[spec.energy]
+        - minusFine.evaluation[spec.energy]) / step;
+      const numericalForce = -fineDerivative;
+      const reportedForce = reportedEvaluation[spec.forces][siteIndex][axis];
+      const residual = reportedForce - numericalForce;
+      const richardsonError = Math.abs(fineDerivative - coarseDerivative) / 3;
+      const baseTolerance = Math.max(Number(absoluteToleranceElectronVoltPerAngstrom),
+        Number(relativeTolerance) * Math.max(1, Math.abs(reportedForce),
+          Math.abs(numericalForce)));
+      const allowedResidual = baseTolerance + richardsonError
+        + spec.additionalTolerance;
+      const passed = coordinateBranchStable
+        && Math.abs(residual) <= allowedResidual;
+      componentCoordinateRecords.get(spec.id).push(Object.freeze({
+        siteIndex, axis, axisLabel: "xyz"[axis],
+        reportedForceElectronVoltPerAngstrom: reportedForce,
+        numericalForceElectronVoltPerAngstrom: numericalForce,
+        coarseNumericalForceElectronVoltPerAngstrom: -coarseDerivative,
+        residualElectronVoltPerAngstrom: residual,
+        absoluteResidualElectronVoltPerAngstrom: Math.abs(residual),
+        richardsonErrorEstimateElectronVoltPerAngstrom: richardsonError,
+        baseToleranceElectronVoltPerAngstrom: baseTolerance,
+        additionalToleranceElectronVoltPerAngstrom: spec.additionalTolerance,
+        allowedResidualElectronVoltPerAngstrom: allowedResidual,
+        branchStable: coordinateBranchStable,
+        passed,
+      }));
+    });
+  }));
+  const components = componentSpecs.map((spec) => {
+    if (!spec.active) return Object.freeze({ id: spec.id, active: false,
+      available: true, passed: true, coordinateCount: 0,
+      records: Object.freeze([]), targetUsed: false });
+    const records = componentCoordinateRecords.get(spec.id);
+    const failedCoordinates = records.filter((record) => !record.passed)
+      .map((record) => `${record.siteIndex}:${record.axisLabel}`);
+    return Object.freeze({
+      id: spec.id, active: true, available: records.length === 3 * addedSites.length,
+      passed: failedCoordinates.length === 0,
+      coordinateCount: records.length,
+      failedCoordinates: Object.freeze(failedCoordinates),
+      maximumAbsoluteResidualElectronVoltPerAngstrom: Math.max(0,
+        ...records.map((record) => record.absoluteResidualElectronVoltPerAngstrom)),
+      records: Object.freeze(records), targetUsed: false,
+    });
+  });
+  const activeComponents = components.filter((component) => component.active);
+  const failedComponentIds = activeComponents.filter((component) => !component.passed)
+    .map((component) => component.id);
+  const passed = branchStable && failedComponentIds.length === 0;
+  return Object.freeze({
+    available: activeComponents.every((component) => component.available),
+    passed,
+    movableSiteCount: addedSites.length,
+    coordinateCount: 3 * addedSites.length,
+    activeComponentCount: activeComponents.length,
+    failedComponentIds: Object.freeze(failedComponentIds),
+    components: Object.freeze(components),
+    stepAngstrom: step,
+    fineStepAngstrom: step / 2,
+    centralDifferenceOrder: 2,
+    richardsonDivisor: 3,
+    energyProbeForceMode: "omitted",
+    branchStable,
+    probeEvaluationCount,
+    distanceEvaluationCount,
+    targetUsed: false,
+    reason: passed
+      ? "every movable Cartesian force component agrees with independent energy probes"
+      : !branchStable ? "one or more Cartesian energy probes changed interaction branch"
+        : `Cartesian force-energy gradient mismatch: ${failedComponentIds.join(", ")}`,
+    claimBoundary: "This independently finite-differences the declared energy along every movable Cartesian coordinate at one endpoint. Fine and coarse central differences bound numerical error, and polarization-force evaluation is disabled inside the energy probes. It verifies the reported finite force vector at this state—not fixed-site forces, a Hessian, phonons, stability, a minimum-energy path, dynamics, rate, or time.",
   });
 }
 
@@ -1027,15 +1184,59 @@ export function auditModelForceRelaxationPath(
       reason: error?.message || "component force-energy closures unavailable",
       targetUsed: false });
   }
+  let endpointCartesianGradientAudit;
+  try {
+    const endpointImageIndices = [0, images.length - 1];
+    const records = endpointImageIndices.map((imageIndex) => Object.freeze({
+      imageIndex,
+      fraction: images[imageIndex].fraction,
+      ...auditCartesianForceEnergyGradient(currentSites, images[imageIndex].sites,
+        imageEvaluations[imageIndex], electrostaticsOptions, {
+          stepAngstrom: auditOptions.cartesianGradientStepAngstrom,
+          maximumMovableSites:
+            auditOptions.cartesianGradientMaximumMovableSites,
+          absoluteToleranceElectronVoltPerAngstrom:
+            auditOptions.cartesianGradientAbsoluteToleranceElectronVoltPerAngstrom,
+          relativeTolerance: auditOptions.relativeTolerance,
+        }),
+    }));
+    endpointCartesianGradientAudit = Object.freeze({
+      available: records.every((record) => record.available),
+      passed: records.every((record) => record.passed),
+      endpointCount: records.length,
+      coordinateCount: records.reduce((sum, record) =>
+        sum + record.coordinateCount, 0),
+      probeEvaluationCount: records.reduce((sum, record) =>
+        sum + record.probeEvaluationCount, 0),
+      distanceEvaluationCount: records.reduce((sum, record) =>
+        sum + record.distanceEvaluationCount, 0),
+      failedEndpointImageIndices: Object.freeze(records
+        .filter((record) => !record.passed).map((record) => record.imageIndex)),
+      records: Object.freeze(records),
+      targetUsed: false,
+      reason: records.every((record) => record.passed)
+        ? "both endpoint force vectors match independent Cartesian energy gradients"
+        : "one or both endpoint Cartesian force-energy gradients failed",
+    });
+  } catch (error) {
+    endpointCartesianGradientAudit = Object.freeze({ available: false, passed: false,
+      endpointCount: 0, coordinateCount: 0, probeEvaluationCount: 0,
+      distanceEvaluationCount: 0, failedEndpointImageIndices: Object.freeze([]),
+      records: Object.freeze([]),
+      reason: error?.message || "endpoint Cartesian gradient audit unavailable",
+      targetUsed: false });
+  }
   const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
     && workEnergyClosure.passed && panelWorkEnergyClosure.passed
     && interiorGradientConsistency.passed
+    && endpointCartesianGradientAudit.passed
     && componentWorkEnergyClosures.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
       && segment.responseConsistent) && smoothModelBranch.available
       && workEnergyClosure.available && panelWorkEnergyClosure.available
       && interiorGradientConsistency.available
+      && endpointCartesianGradientAudit.available
       && componentWorkEnergyClosures.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
@@ -1045,8 +1246,10 @@ export function auditModelForceRelaxationPath(
           : !panelWorkEnergyClosure.passed ? panelWorkEnergyClosure.reason
             : !interiorGradientConsistency.passed
               ? interiorGradientConsistency.reason
+              : !endpointCartesianGradientAudit.passed
+                ? endpointCartesianGradientAudit.reason
               : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
-                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, and component-work closure gates",
+                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -1091,6 +1294,18 @@ export function auditModelForceRelaxationPath(
       interiorGradientConsistency.failedImageIndices || Object.freeze([]),
     maximumInteriorGradientResidualElectronVolt:
       interiorGradientConsistency.maximumAbsoluteResidualElectronVolt ?? null,
+    endpointCartesianGradientPassed: endpointCartesianGradientAudit.passed,
+    endpointCartesianGradientAudit,
+    cartesianGradientEndpointCount:
+      endpointCartesianGradientAudit.endpointCount || 0,
+    cartesianGradientCoordinateCount:
+      endpointCartesianGradientAudit.coordinateCount || 0,
+    cartesianGradientProbeEvaluationCount:
+      endpointCartesianGradientAudit.probeEvaluationCount || 0,
+    cartesianGradientDistanceEvaluationCount:
+      endpointCartesianGradientAudit.distanceEvaluationCount || 0,
+    failedCartesianGradientEndpointImageIndices:
+      endpointCartesianGradientAudit.failedEndpointImageIndices || Object.freeze([]),
     componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
     componentWorkEnergyClosures,
     activeWorkEnergyComponentCount:
@@ -1103,6 +1318,6 @@ export function auditModelForceRelaxationPath(
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. These checks validate the declared decomposition along one sampled path, not transferable physical components, a full Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, directions, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected or per-coordinate allowance. These checks validate the declared decomposition along one sampled path plus its endpoint movable-site gradients, not transferable physical components, fixed-site forces, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

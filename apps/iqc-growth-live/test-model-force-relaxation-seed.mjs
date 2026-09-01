@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
+import { auditCartesianForceEnergyGradient,
+  auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditForceEnergyPathClosure,
   auditInteriorForceEnergyGradientConsistency,
   auditPanelResolvedForceEnergyPathClosure,
@@ -8,6 +9,8 @@ import { auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
   from "./model-force-relaxation-seed.mjs";
+import { incrementalFinitePointChargeElectrostatics }
+  from "./finite-point-charge-electrostatics.mjs";
 
 const current = [{ position: [0, 0, 0], charge: 1, species: "Na" }];
 const added = [{ position: [2.8, 0, 0], charge: -1, species: "Cl" }];
@@ -240,6 +243,26 @@ const finitePairSeed = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05, electrostaticsOptions: finitePairOptions,
 });
 assert.equal(finitePairSeed.available, true);
+const finitePairCartesianGradient = auditCartesianForceEnergyGradient(current,
+  added, finitePairSeed.evaluation, finitePairOptions);
+assert.equal(finitePairCartesianGradient.passed, true);
+assert.equal(finitePairCartesianGradient.coordinateCount, 3);
+assert.equal(finitePairCartesianGradient.probeEvaluationCount, 12);
+assert.equal(finitePairCartesianGradient.energyProbeForceMode, "omitted");
+assert.equal(finitePairCartesianGradient.branchStable, true);
+const transverseForceCorruption = {
+  ...finitePairSeed.evaluation,
+  addedForceVectorsElectronVoltPerAngstrom:
+    finitePairSeed.evaluation.addedForceVectorsElectronVoltPerAngstrom
+      .map((vector, index) => vector.map((value, axis) =>
+        value + (index === 0 && axis === 1 ? 1 : 0))),
+};
+const transverseCartesianGradient = auditCartesianForceEnergyGradient(current,
+  added, transverseForceCorruption, finitePairOptions);
+assert.equal(transverseCartesianGradient.passed, false);
+assert.deepEqual(transverseCartesianGradient.failedComponentIds, ["total"]);
+assert.deepEqual(transverseCartesianGradient.components.find((component) =>
+  component.id === "total").failedCoordinates, ["0:y"]);
 const forceSettling = auditModelForceRelaxationOutcome(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: finitePairSeed.evaluation,
@@ -273,6 +296,11 @@ assert.deepEqual(forceSettlingPath.failedWorkEnergyPanelIndices, []);
 assert.equal(forceSettlingPath.interiorGradientConsistencyPassed, true);
 assert.equal(forceSettlingPath.interiorGradientEligibleImageCount, 9);
 assert.deepEqual(forceSettlingPath.failedInteriorGradientImageIndices, []);
+assert.equal(forceSettlingPath.endpointCartesianGradientPassed, true);
+assert.equal(forceSettlingPath.cartesianGradientEndpointCount, 2);
+assert.equal(forceSettlingPath.cartesianGradientCoordinateCount, 6);
+assert.equal(forceSettlingPath.cartesianGradientProbeEvaluationCount, 24);
+assert.deepEqual(forceSettlingPath.failedCartesianGradientEndpointImageIndices, []);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);

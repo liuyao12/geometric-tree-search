@@ -1,5 +1,5 @@
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-447";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-448";
 
 export const HIERARCHY_TRANSPORT_STAGES = Object.freeze([
   Object.freeze({ id: "atomic", label: "atomic state", short: "atoms" }),

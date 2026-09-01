@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-447";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-447";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-448";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-448";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-447";
+  from "./hierarchy-physics-transport.mjs?v=20260901-448";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-447";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-448";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-447";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-448";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-447";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-448";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-447", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-448", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -455,6 +455,7 @@ const TIMELINE = [
   ["50", "Panel-resolved work closure", "A globally correct force integral can still hide equal-and-opposite errors in separate regions of one leap. The thirteen-image path is therefore partitioned into three independent five-image panels; every panel carries its own embedded three-image Simpson rule and must close its local ΔU. The same local gate applies inside every active interaction component. A sinusoidal-error control passes globally and fails locally. This validates one sampled coordinate path, not a Hessian, phonon calculation, minimum-energy path, thermodynamic work, dynamics, rate, or time.", "proved"],
   ["51", "Interior force–energy tangent", "Even panel-wise work can hide errors that cancel inside one panel. At each of nine eligible interior images, the complete projected force must equal minus an independent five-point energy derivative; the embedded three-point derivative supplies a conservative stencil allowance. A constructed error passes aggregate and all three panel integrals but fails at five interior images. The gate is repeated for every active interaction component. This is local tangent consistency along one path—not a full Cartesian gradient, Hessian, phonon calculation, stability proof, minimum-energy path, dynamics, rate, or time.", "proved"],
   ["52", "Interactive local-response microscope", "The growth-stage projection control now renders all thirteen response images as a panel-shaded energy trace and overlays F·dR/ds against −dU/ds at the nine eligible interior images. Researchers can switch between the total, Coulomb, Born–Mayer, dispersion, and induction records, then click or keyboard-select any tangent to read its residual and allowance. Red points expose local failures without hiding the unchanged exact geometry. This is an audit view of one sampled leap, not a phonon dispersion, Hessian, minimum-energy path, dynamics, or physical clock.", "interface"],
+  ["53", "Endpoint Cartesian-gradient audit", "The response-path gate now perturbs every movable x, y, and z coordinate by ±h and ±h/2 at both endpoints. Independent energy differences must reproduce the reported total and active component forces within a Richardson error allowance; a transverse-force corruption that is invisible to the path tangent fails. Probe cost and failures remain explicit. This verifies endpoint movable-site gradients only—not fixed-site forces, an all-image gradient, Hessian, phonons, stability, dynamics, or time.", "proved"],
 ];
 
 const CLAIMS = [

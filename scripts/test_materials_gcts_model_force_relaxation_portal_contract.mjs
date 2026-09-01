@@ -83,6 +83,12 @@ for (const token of [
   "modelForceInteriorGradientConsistency",
   "modelForceInteriorGradientEligibleImageCount",
   "modelForceFailedInteriorGradientImageIndices",
+  "modelForceEndpointCartesianGradientPassed",
+  "modelForceEndpointCartesianGradientAudit",
+  "modelForceCartesianGradientEndpointCount",
+  "modelForceCartesianGradientCoordinateCount",
+  "modelForceCartesianGradientProbeEvaluationCount",
+  "modelForceFailedCartesianGradientEndpointImageIndices",
   "sweptHardExclusionPassed",
   "sweptHardExclusionMinimumMargin",
   "modelForceRmsBeforeEvPerAngstrom",
@@ -117,6 +123,8 @@ for (const token of [
   "auditModelForceRelaxationOutcome",
   "auditPanelResolvedForceEnergyPathClosure",
   "auditInteriorForceEnergyGradientConsistency",
+  "auditCartesianForceEnergyGradient",
+  "energyProbeForceMode: \"omitted\"",
   "pairInteractionForceIsNegativeEnergyGradient",
   "forceMagnitudeP90",
   "boundedForceSeedOffset",
@@ -193,6 +201,7 @@ assert.match(atlas, /"49", "Component-resolved work closure"/);
 assert.match(atlas, /"50", "Panel-resolved work closure"/);
 assert.match(atlas, /"51", "Interior force–energy tangent"/);
 assert.match(atlas, /"52", "Interactive local-response microscope"/);
+assert.match(atlas, /"53", "Endpoint Cartesian-gradient audit"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
@@ -204,5 +213,7 @@ assert.match(readme, /Build 444 · component-resolved work–energy closure/);
 assert.match(readme, /Build 445 · panel-resolved work–energy closure/);
 assert.match(readme, /Build 446 · interior force–energy tangent consistency/);
 assert.match(readme, /Build 447 · interactive local-response microscope/);
+assert.match(readme, /Build 448 · endpoint Cartesian-gradient closure/);
+assert.match(benchmark, /Build 448: Endpoint Cartesian-gradient closure/);
 
 console.log("model-force relaxation portal contract passed");

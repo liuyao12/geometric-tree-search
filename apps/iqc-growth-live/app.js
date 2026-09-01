@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-447";
+  from "./external-action-barrier.mjs?v=20260901-448";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-447";
+  from "./action-path-viewer.mjs?v=20260901-448";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-447";
+  from "./action-path-mechanism.mjs?v=20260901-448";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-447";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-448";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-447";
+  from "./kinetic-event-spectrum.mjs?v=20260901-448";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-447";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-448";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-447";
+  from "./kinetic-geometry-response.mjs?v=20260901-448";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-447";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-448";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-447";
+  from "./surface-hop-events.mjs?v=20260901-448";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-447";
+  from "./species-exchange-events.mjs?v=20260901-448";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-447";
+  from "./external-state-relaxation.mjs?v=20260901-448";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-447";
+  from "./reversible-transition-lineage.mjs?v=20260901-448";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-447";
+  from "./finite-network-population-dynamics.mjs?v=20260901-448";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-447";
+  from "./finite-network-geometric-flux.mjs?v=20260901-448";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-447";
+  from "./finite-network-structural-flux.mjs?v=20260901-448";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-447";
+  from "./geometric-state-descriptor.mjs?v=20260901-448";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-447";
+  from "./finite-network-global-order.mjs?v=20260901-448";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-447";
+  from "./finite-network-first-passage.mjs?v=20260901-448";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-447";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-448";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-447";
+  from "./finite-network-passage-control.mjs?v=20260901-448";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-447";
+  from "./finite-network-rate-intervention.mjs?v=20260901-448";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-447";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-447";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-447";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-447";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-447";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-447";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-448";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-447";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-448";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-447";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-448";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-447";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-448";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-447";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-448";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-447";
+  from "./classical-nucleation-evidence.mjs?v=20260901-448";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-447";
+  from "./classical-capillarity-action.mjs?v=20260901-448";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-447";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-448";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-447";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-448";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-447";
+  from "./critical-nucleus-geometry.mjs?v=20260901-448";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-447";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-448";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-447";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-448";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-447";
+  from "./experimental-scattering-validation.mjs?v=20260901-448";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-447";
+  from "./public-powder-profile-library.mjs?v=20260901-448";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-447";
+  from "./external-attachment-kinetics.mjs?v=20260901-448";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-447";
+  from "./external-interface-flux.mjs?v=20260901-448";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-447";
+  from "./growth-regime-bridge.mjs?v=20260901-448";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-447";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-448";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-447";
+  from "./catalog-conditional-chronology.mjs?v=20260901-448";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-447";
+  from "./coupled-physics-state.mjs?v=20260901-448";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-447";
+} from "./ice-molecular-anchor-growth.js?v=20260901-448";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-447";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-448";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-447";
+} from "./ice-orientation-evidence.mjs?v=20260901-448";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-447";
+  from "./xray-form-factors.mjs?v=20260901-448";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -240,14 +240,14 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
-  from "./born-mayer-pair-matrix.mjs?v=20260901-447";
+  from "./born-mayer-pair-matrix.mjs?v=20260901-448";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-447";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-448";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -260,11 +260,11 @@ import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
-  from "./model-force-relaxation-seed.mjs?v=20260901-447";
+  from "./model-force-relaxation-seed.mjs?v=20260901-448";
 import { auditAnchoredInterfaceShells }
-  from "./anchored-interface-shells.mjs?v=20260901-447";
+  from "./anchored-interface-shells.mjs?v=20260901-448";
 import { auditLinearSweptExclusion }
-  from "./linear-swept-exclusion.mjs?v=20260901-447";
+  from "./linear-swept-exclusion.mjs?v=20260901-448";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
 import { archivedResponseDeformationGradient, archivedStressStrainResponseArtifact,
@@ -344,7 +344,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-447", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-448", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -602,6 +602,7 @@ const modelForceResponseDiagnostic = $("modelForceResponseDiagnostic");
 const modelForceResponseComponent = $("modelForceResponseComponent");
 const modelForceResponsePlot = $("modelForceResponsePlot");
 const modelForceResponsePointState = $("modelForceResponsePointState");
+const modelForceCartesianGradientState = $("modelForceCartesianGradientState");
 let modelForceResponseSelectedImageIndex = 2;
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
 const feedstockSupplySelect = $("feedstockSupplySelect");
@@ -4866,7 +4867,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447",
+    generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4952,7 +4953,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447",
+    generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5153,7 +5154,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-447", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-448", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5200,7 +5201,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-447",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5452,7 +5453,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-447",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5971,7 +5972,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-447",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15673,7 +15674,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-447" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-448" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15681,7 +15682,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-447",
+      buildId: "20260901-448",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -18567,7 +18568,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-447" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-448" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -18806,6 +18807,24 @@ function notebookInterventionFactors(receipt) {
       modelForceFailedInteriorGradientImageIndices:
         search.postAttachmentConstraintProjection.latest
           ?.modelForceFailedInteriorGradientImageIndices ?? null,
+      modelForceEndpointCartesianGradientPassed:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceEndpointCartesianGradientPassed ?? null,
+      modelForceEndpointCartesianGradientAudit:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceEndpointCartesianGradientAudit ?? null,
+      modelForceCartesianGradientEndpointCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceCartesianGradientEndpointCount ?? null,
+      modelForceCartesianGradientCoordinateCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceCartesianGradientCoordinateCount ?? null,
+      modelForceCartesianGradientProbeEvaluationCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceCartesianGradientProbeEvaluationCount ?? null,
+      modelForceFailedCartesianGradientEndpointImageIndices:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFailedCartesianGradientEndpointImageIndices ?? null,
       modelForceResponsePathParameterIsPhysicalTime:
         search.postAttachmentConstraintProjection.latest
           ?.modelForceResponsePathParameterIsPhysicalTime ?? null,
@@ -26411,6 +26430,18 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
       modelForceResponsePath?.failedInteriorGradientImageIndices || [],
     modelForceMaximumInteriorGradientResidualElectronVolt:
       modelForceResponsePath?.maximumInteriorGradientResidualElectronVolt ?? null,
+    modelForceEndpointCartesianGradientPassed: Boolean(
+      modelForceResponsePath?.endpointCartesianGradientPassed),
+    modelForceEndpointCartesianGradientAudit:
+      modelForceResponsePath?.endpointCartesianGradientAudit || null,
+    modelForceCartesianGradientEndpointCount:
+      modelForceResponsePath?.cartesianGradientEndpointCount || 0,
+    modelForceCartesianGradientCoordinateCount:
+      modelForceResponsePath?.cartesianGradientCoordinateCount || 0,
+    modelForceCartesianGradientProbeEvaluationCount:
+      modelForceResponsePath?.cartesianGradientProbeEvaluationCount || 0,
+    modelForceFailedCartesianGradientEndpointImageIndices:
+      modelForceResponsePath?.failedCartesianGradientEndpointImageIndices || [],
     modelForceSmoothBranchPassed: Boolean(
       modelForceResponsePath?.smoothModelBranchPassed),
     modelForceSmoothBranch: modelForceResponsePath?.smoothModelBranch || null,
@@ -27751,7 +27782,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447",
+    generatedAt: new Date().toISOString(), buildId: "20260901-448",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -31022,7 +31053,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447",
+    generatedAt: new Date().toISOString(), buildId: "20260901-448",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -32477,7 +32508,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-448", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -35436,6 +35467,17 @@ function renderModelForceResponseDiagnostic() {
   if (selectedRecord) {
     modelForceResponsePointState.textContent = `${selectedId === "total" ? "total" : selectedId} · image ${selectedRecord.imageIndex}/${energy.length - 1} · s=${selectedRecord.fraction.toFixed(3)} · F·dR/ds ${selectedRecord.projectedForceElectronVolt.toExponential(3)} eV · −dU/ds ${selectedRecord.negativeFineEnergyDerivativeElectronVolt.toExponential(3)} eV · residual ${selectedRecord.residualElectronVolt.toExponential(2)} / allowance ${selectedRecord.allowedResidualElectronVolt.toExponential(2)} eV · ${selectedRecord.passed ? "closed" : "failed"}`;
   }
+  if (modelForceCartesianGradientState) {
+    const endpointCount = lastStructuralRelaxation
+      ?.modelForceCartesianGradientEndpointCount || 0;
+    const coordinateCount = lastStructuralRelaxation
+      ?.modelForceCartesianGradientCoordinateCount || 0;
+    const probeCount = lastStructuralRelaxation
+      ?.modelForceCartesianGradientProbeEvaluationCount || 0;
+    modelForceCartesianGradientState.textContent = endpointCount
+      ? `${endpointCount} endpoint ∇ · ${coordinateCount} coordinates · ${probeCount} probes · ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed ? "closed" : "failed"}`
+      : "endpoint ∇ pending";
+  }
 }
 
 function syncStageOptions() {
@@ -35695,7 +35737,7 @@ function syncStageOptions() {
       .map((group) => `${group.label} |Mˢ| ${group.beforeResultant.centeredSymmetricForceMoment.frobeniusElectronVolt.toExponential(1)}→${group.afterResultant.centeredSymmetricForceMoment.frobeniusElectronVolt.toExponential(1)} eV`)
       .join(" · ");
     const forceResponsePathReadout = lastStructuralRelaxation?.modelForceSeedEnabled
-      ? ` · ${lastStructuralRelaxation.modelForceResponsePathImageCount || 0}-image response path ${lastStructuralRelaxation.modelForceResponsePathAccepted ? "monotone" : "failed / unavailable"} · smooth branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed ? "certified" : "failed"}${Number.isFinite(lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt) ? ` · W+ΔU ${lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt.toExponential(2)} eV ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed ? "closed" : "failed"}` : ""} · ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount || 0} local panels ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount || 0} interior tangents ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount || 0} component closure${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed ? "s passed" : " gate failed"}${Number.isFinite(lastStructuralRelaxation.sweptHardExclusionMinimumMargin) ? ` · swept clearance ${lastStructuralRelaxation.sweptHardExclusionMinimumMargin.toExponential(2)} scene` : ""}` : "";
+      ? ` · ${lastStructuralRelaxation.modelForceResponsePathImageCount || 0}-image response path ${lastStructuralRelaxation.modelForceResponsePathAccepted ? "monotone" : "failed / unavailable"} · smooth branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed ? "certified" : "failed"}${Number.isFinite(lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt) ? ` · W+ΔU ${lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt.toExponential(2)} eV ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed ? "closed" : "failed"}` : ""} · ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount || 0} local panels ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount || 0} interior tangents ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount || 0} endpoint Cartesian derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount || 0} component closure${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed ? "s passed" : " gate failed"}${Number.isFinite(lastStructuralRelaxation.sweptHardExclusionMinimumMargin) ? ` · swept clearance ${lastStructuralRelaxation.sweptHardExclusionMinimumMargin.toExponential(2)} scene` : ""}` : "";
     structuralRelaxationHint.textContent = relaxationSpec.interfaceShell && relaxationSpec.modelForceSeed
       ? `finite −∇U · emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + ${substrateCapLabel} dₙₙ caps`
       : relaxationSpec.interfaceShell
@@ -39569,7 +39611,7 @@ function physicsTranslationRecords(leap = null) {
         ? "exact frozen-template coordinates; no post-attachment displacement"
         : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with emitted-site displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; ${structuralRelaxationSpec().interfaceShell ? `${structuralRelaxationSpec().substrateFractions.length} learned-contact substrate shell${structuralRelaxationSpec().substrateFractions.length === 1 ? " is" : "s are"} also movable under outward-decreasing caps ${structuralRelaxationSpec().substrateFractions.map((fraction) => `${(100 * fraction).toFixed(1)}%`).join(" → ")} dₙₙ, every response atom needs a contact path to a fixed outer anchor, and discrete site identity stays inside 20% of the merge tolerance` : "only atoms emitted in the current post-replay leap are movable"}${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : structuralRelaxationSpec().forceSeed ? "; initial offsets follow proper-pose-transported residual-force directions with magnitude capped by the frozen sample p90 and are retained only when the full bounded objective improves" : structuralRelaxationSpec().modelForceSeed ? `; initial offsets follow the complete selected finite-interaction −∇U, p90-normalized into the cap; incomplete gradients fail closed; ${MODEL_FORCE_RESPONSE_PATH_IMAGES} straight-line images must retain one finite interaction/response state and analytic hard-reach pair topology while each segment preserves every descent gate; fine ${MODEL_FORCE_RESPONSE_PATH_IMAGES}-image Simpson force work must close endpoint ΔU within the Richardson estimate from its embedded ${(MODEL_FORCE_RESPONSE_PATH_IMAGES + 1) / 2}-image Simpson rule, both in total and independently for every active Coulomb, Born–Mayer, dispersion, and induction term; analytic closest approach must also preserve conservative colored exclusion` : ""}`,
       evidence: lastStructuralRelaxation
-        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; global force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; population residual gate ${lastStructuralRelaxation.modelForceResidualRedistributionPassed}; population resultant/torque gate ${lastStructuralRelaxation.modelForceResultantRedistributionPassed}; population symmetric-moment gate ${lastStructuralRelaxation.modelForceSymmetricMomentRedistributionPassed}; smooth model branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed}; total work-energy closure ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount} local panel closures ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount} interior tangent closures ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed}; ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount} active component closures ${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed}; response path ${lastStructuralRelaxation.modelForceResponsePathAccepted} across ${lastStructuralRelaxation.modelForceResponsePathImageCount} images; swept exclusion ${lastStructuralRelaxation.sweptHardExclusionPassed}; ${lastStructuralRelaxation.modelForceGroupCount} frozen force groups; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
+        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; global force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; population residual gate ${lastStructuralRelaxation.modelForceResidualRedistributionPassed}; population resultant/torque gate ${lastStructuralRelaxation.modelForceResultantRedistributionPassed}; population symmetric-moment gate ${lastStructuralRelaxation.modelForceSymmetricMomentRedistributionPassed}; smooth model branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed}; total work-energy closure ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount} local panel closures ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount} interior tangent closures ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed}; ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount} endpoint Cartesian derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed}; ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount} active component closures ${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed}; response path ${lastStructuralRelaxation.modelForceResponsePathAccepted} across ${lastStructuralRelaxation.modelForceResponsePathImageCount} images; swept exclusion ${lastStructuralRelaxation.sweptHardExclusionPassed}; ${lastStructuralRelaxation.modelForceGroupCount} frozen force groups; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations + ${lastStructuralRelaxation.modelForceCartesianGradientProbeEvaluationCount} endpoint energy probes.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
       boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface modes move one or two strictly capped connected substrate shells with an explicit outward contact path to fixed anchors, while symbolic placements and cluster membership stay unchanged; this is tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may initialize the emitted-only or coupled-shell projection. Every segment of a thirteen-image straight Cartesian response path must preserve response-consistent energy plus global/population force descent, while analytic closest-approach certificates protect both conservative colored exclusion and continuous membership in a declared finite interaction reach. All images must retain one interaction model, pair-parameter usage, response branch, force mode, and pair count. Fine thirteen-image Simpson force work must close the independently evaluated endpoint energy change within the Richardson estimate from its embedded seven-image Simpson rule. Each five-image quarter-path panel, every eligible five-point force-versus-energy tangent, and every active Coulomb, Born–Mayer, dispersion, and induction channel must also close independently. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. Local tangent, panel, and component closure prevent compensating implementation errors between samples, path regions, or interaction terms but do not prove that the declared decomposition is transferable physics. Fresh and shell populations are frozen before evaluation and may not increase RMS, p90, net force per site, normalized centroidal torque, or the total/hydrostatic/deviatoric centered symmetric force moment. That moment has force×length units and no inferred control volume, so it is not stress or pressure. Smooth-branch continuity does not infer a switching function or prove higher differentiability. The image parameter is not physical time, the stencil/Richardson allowances are numerical rather than physical uncertainty, and the straight interpolation is not a minimum-energy path, full gradient, or Hessian audit. No arm is thermodynamic or free-energy work, a total-force audit, atomwise force balance, virial-stress balance, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: "learned",
@@ -41580,7 +41622,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-447",
+    generatedAt: new Date().toISOString(), buildId: "20260901-448",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -46803,7 +46845,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-447" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-448" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 448 · endpoint Cartesian-gradient closure
+
+The finite-interaction response gate now verifies the entire movable-site
+force vector at both ends of every proposed structural leap. For each movable
+site and each Cartesian axis, independent energy evaluations at `±h` and
+`±h/2` form coarse and fine central differences. The reported total force and
+every active Coulomb, Born–Mayer, damped-dispersion, and induction component
+must agree within an explicit Richardson allowance.
+
+This closes a directional blind spot in path-only work and tangent checks: a
+corrupted force perpendicular to the chosen leap can leave every `F·dR/ds`
+sample unchanged, but it now fails the endpoint gradient audit. The interface
+reports the endpoint, coordinate, and probe counts; receipts retain all
+per-coordinate residuals and failures. Energy probes omit the expensive
+polarization-force derivative while preserving the same induction energy and
+interaction branch.
+
+The bounded audit covers movable-site forces at two endpoints. It does not
+verify fixed-site forces, every image's full gradient, a Hessian, force-constant
+matrix, phonons, mechanical stability, a minimum-energy path, dynamics, or
+physical time.
+
 ## Build 447 · interactive local-response microscope
 
 The force/energy path audits are now visible in the growth-stage experiment

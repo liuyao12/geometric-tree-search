@@ -10765,6 +10765,22 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 448: Endpoint Cartesian-gradient closure
+
+The path certificate now adds an independent full-gradient check at both
+endpoints. Every movable `x`, `y`, and `z` coordinate is perturbed by `±h` and
+`±h/2`; fine and coarse central energy differences reconstruct the total and
+active component forces with a Richardson error bound. This catches transverse
+force errors that are invisible to all projected path-work and tangent gates.
+
+The check is branch-stable and bounded to 64 movable sites. Receipts preserve
+the two endpoint records, coordinate count, energy-probe count, component
+failures, residuals, and allowances. The probes retain induction energy but
+omit polarization-force evaluation so the numerical comparison remains
+independent of the reported force. This is movable-site endpoint closure—not
+fixed-site force validation, an all-image full gradient, Hessian, phonon or
+stability calculation, MEP, dynamics, rate, or time.
+
 # Build 441: Finite-path work–energy closure
 
 The seven-image accommodation audit now integrates the complete movable-site

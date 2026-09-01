@@ -15,7 +15,7 @@ for (const document of [html, alias]) {
     "coupledStateBoundary"]) assert.match(document, new RegExp(`id="${id}"`));
   assert.match(document, /Shared-state coherence/);
 }
-assert.match(app, /coupled-physics-state\.mjs\?v=20260901-447/);
+assert.match(app, /coupled-physics-state\.mjs\?v=20260901-448/);
 assert.match(app, /function currentCouplingStateExpectation\(\)/);
 assert.match(app, /function currentCoupledPhysicsState\(\)/);
 assert.match(app, /function renderCoupledPhysicsState\(\)/);
