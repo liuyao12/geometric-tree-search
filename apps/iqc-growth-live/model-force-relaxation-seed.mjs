@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-453";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-454";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -1143,6 +1143,7 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
     translationAngstrom = [.371, -.229, .193],
     absoluteEnergyToleranceElectronVolt = 1e-8,
     absoluteForceToleranceElectronVoltPerAngstrom = 1e-6,
+    absoluteVirialToleranceElectronVolt = 1e-7,
     relativeTolerance = 1e-8,
   } = {}) {
   const angle = Number(rotationAngleRadians);
@@ -1167,6 +1168,12 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
     + sine * [[0, -axis[2], axis[1]], [axis[2], 0, -axis[0]],
       [-axis[1], axis[0], 0]][row][column]));
   const rotate = (vector) => rotationMatrix.map((row) => dotVector(row, vector));
+  const rotateTensor = (tensor) => rotationMatrix.map((row) =>
+    rotationMatrix.map((column) => row.reduce((sum, leftValue, leftIndex) =>
+      sum + leftValue * tensor[leftIndex].reduce((inner, tensorValue, rightIndex) =>
+        inner + tensorValue * column[rightIndex], 0), 0)));
+  const validTensor = (tensor) => Array.isArray(tensor) && tensor.length === 3
+    && tensor.every(finiteVector);
   const transformSite = (site) => ({ ...site,
     position: rotate(site.position).map((value, coordinate) =>
       value + Number(translationAngstrom[coordinate])) });
@@ -1189,21 +1196,26 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
   const componentSpecs = [
     { id: "total", active: true, energy: "deltaEnergyElectronVolt",
       forces: "addedForceVectorsElectronVoltPerAngstrom",
+      virial: "pairVirialTensorElectronVolt",
       additionalForceTolerance: inductionForceTolerance },
     { id: "coulomb", active: true, energy: "coulombDeltaEnergyElectronVolt",
       forces: "addedCoulombForceVectorsElectronVoltPerAngstrom",
+      virial: "coulombVirialTensorElectronVolt",
       additionalForceTolerance: 0 },
     { id: "born-mayer", active: Boolean(reportedEvaluation?.bornMayerRepulsionApplied),
       energy: "bornMayerRepulsiveEnergyElectronVolt",
       forces: "addedBornMayerForceVectorsElectronVoltPerAngstrom",
+      virial: "bornMayerVirialTensorElectronVolt",
       additionalForceTolerance: 0 },
     { id: "dispersion", active: Boolean(reportedEvaluation?.dispersionApplied),
       energy: "dampedDispersionEnergyElectronVolt",
       forces: "addedDispersionForceVectorsElectronVoltPerAngstrom",
+      virial: "dispersionVirialTensorElectronVolt",
       additionalForceTolerance: 0 },
     { id: "induction", active: Boolean(reportedEvaluation?.chargeInductionApplied),
       energy: "chargeInductionDeltaEnergyElectronVolt",
       forces: "addedInductionForceVectorsElectronVoltPerAngstrom",
+      virial: null,
       additionalForceTolerance: inductionForceTolerance },
   ];
   const components = componentSpecs.map((spec) => {
@@ -1214,11 +1226,16 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
     const transformedEnergy = transformedEvaluation?.[spec.energy];
     const sourceForces = reportedEvaluation?.[spec.forces];
     const transformedForces = transformedEvaluation?.[spec.forces];
+    const sourceVirial = spec.virial ? reportedEvaluation?.[spec.virial] : null;
+    const transformedVirial = spec.virial
+      ? transformedEvaluation?.[spec.virial] : null;
     if (!Number.isFinite(sourceEnergy) || !Number.isFinite(transformedEnergy)
         || !Array.isArray(sourceForces) || !Array.isArray(transformedForces)
         || sourceForces.length !== addedSites.length
         || transformedForces.length !== addedSites.length
-        || !sourceForces.every(finiteVector) || !transformedForces.every(finiteVector)) {
+        || !sourceForces.every(finiteVector) || !transformedForces.every(finiteVector)
+        || spec.virial && (!validTensor(sourceVirial)
+          || !validTensor(transformedVirial))) {
       return Object.freeze({ id: spec.id, active: true, available: false,
         passed: false, siteCount: 0, forceRecords: Object.freeze([]),
         reason: "complete transformed energy/force data unavailable", targetUsed: false });
@@ -1246,9 +1263,24 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
     });
     const energyPassed = Math.abs(energyResidual) <= energyAllowance;
     const forcePassed = forceRecords.every((record) => record.passed);
+    const expectedVirial = spec.virial ? rotateTensor(sourceVirial) : null;
+    const virialResidualTensor = spec.virial ? transformedVirial.map((row, rowIndex) =>
+      row.map((value, columnIndex) => value
+        - expectedVirial[rowIndex][columnIndex])) : null;
+    const virialResidualFrobenius = spec.virial
+      ? matrixFrobenius(virialResidualTensor) : null;
+    const virialAllowance = spec.virial
+      ? Math.max(Number(absoluteVirialToleranceElectronVolt),
+        Number(relativeTolerance) * Math.max(1, matrixFrobenius(expectedVirial),
+          matrixFrobenius(transformedVirial))) : null;
+    const virialPassed = !spec.virial
+      || virialResidualFrobenius <= virialAllowance;
     return Object.freeze({ id: spec.id, active: true, available: true,
-      passed: branchStable && energyPassed && forcePassed,
-      energyPassed, forcePassed, siteCount: forceRecords.length,
+      passed: branchStable && energyPassed && forcePassed && virialPassed,
+      energyPassed, forcePassed, virialPassed,
+      pairVirialCovarianceChecked: Boolean(spec.virial),
+      pairVirialScope: spec.virial ? "incremental central-pair contribution" : null,
+      siteCount: forceRecords.length,
       sourceEnergyElectronVolt: sourceEnergy,
       transformedEnergyElectronVolt: transformedEnergy,
       energyResidualElectronVolt: energyResidual,
@@ -1257,6 +1289,16 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
         ...forceRecords.map((record) => record.residualMagnitudeElectronVoltPerAngstrom)),
       maximumAllowedForceResidualElectronVoltPerAngstrom: Math.max(0,
         ...forceRecords.map((record) => record.allowedResidualElectronVoltPerAngstrom)),
+      sourcePairVirialTensorElectronVolt: spec.virial
+        ? Object.freeze(sourceVirial.map((row) => Object.freeze([...row]))) : null,
+      expectedRotatedPairVirialTensorElectronVolt: spec.virial
+        ? Object.freeze(expectedVirial.map((row) => Object.freeze([...row]))) : null,
+      transformedPairVirialTensorElectronVolt: spec.virial
+        ? Object.freeze(transformedVirial.map((row) => Object.freeze([...row]))) : null,
+      pairVirialResidualTensorElectronVolt: spec.virial
+        ? Object.freeze(virialResidualTensor.map((row) => Object.freeze([...row]))) : null,
+      pairVirialResidualFrobeniusElectronVolt: virialResidualFrobenius,
+      allowedPairVirialResidualElectronVolt: virialAllowance,
       failedSiteIndices: Object.freeze(forceRecords.filter((record) => !record.passed)
         .map((record) => record.siteIndex)),
       forceRecords: Object.freeze(forceRecords), targetUsed: false });
@@ -1288,10 +1330,10 @@ export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedS
     distanceEvaluationCount: transformedEvaluation.distanceEvaluations || 0,
     targetUsed: false,
     reason: passed
-      ? "energies are invariant and movable forces are equivariant under the declared proper SE(3) transform"
+      ? "energies are invariant, movable forces are equivariant, and resolved pair virials are tensor-covariant under the declared proper SE(3) transform"
       : !branchStable ? "the rigid transform changed the finite interaction branch"
         : `rigid-motion covariance failed: ${failedComponentIds.join(", ")}`,
-    claimBoundary: "This applies one predeclared proper rotation and translation to the complete finite system, then checks scalar-energy invariance and movable-force vector equivariance for the total and every active component. It is a frame-covariance metamorphic certificate—not transfer across materials, periodic images, a fitted potential, fixed-site forces, Hessian, equilibrium, dynamics, or time." });
+    claimBoundary: "This applies one predeclared proper rotation and translation to the complete finite system, then checks scalar-energy invariance, movable-force vector equivariance, and second-rank covariance of every resolved central-pair virial. The pair virial is not divided by volume and is not stress or pressure; induction has no resolved per-site pair virial. This is a frame-covariance metamorphic certificate—not transfer across materials, periodic images, a fitted potential, complete fixed-site forces, Hessian, equilibrium, dynamics, or time." });
 }
 
 function groupResultant(positions, forces) {
@@ -2233,6 +2275,16 @@ export function auditModelForceRelaxationPath(
       endpointRigidMotionCovarianceAudit.distanceEvaluationCount || 0,
     failedRigidMotionCovarianceEndpointImageIndices:
       endpointRigidMotionCovarianceAudit.failedEndpointImageIndices || Object.freeze([]),
+    endpointPairVirialCovariancePassed: endpointRigidMotionCovarianceAudit.passed
+      && endpointRigidMotionCovarianceAudit.records.every((record) =>
+        record.components.filter((component) => component.active
+          && component.pairVirialCovarianceChecked)
+          .every((component) => component.virialPassed)),
+    pairVirialEndpointCount: endpointRigidMotionCovarianceAudit.records.length,
+    pairVirialActiveComponentCount: Math.max(0,
+      ...endpointRigidMotionCovarianceAudit.records.map((record) =>
+        record.components.filter((component) => component.active
+          && component.pairVirialCovarianceChecked).length)),
     componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
     componentWorkEnergyClosures,
     activeWorkEnergyComponentCount:

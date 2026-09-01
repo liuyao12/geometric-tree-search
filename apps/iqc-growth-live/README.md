@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 454 · configurational pair-virial tensor
+
+Every active central interaction pair now contributes the translation-invariant
+tensor `W = Σ r_ij ⊗ F_i←j`. The evaluator retains Coulomb, Born–Mayer,
+damped-dispersion, and pair-total tensors together with their trace,
+hydrostatic scalar, deviatoric Frobenius norm, and antisymmetric residual.
+
+The proper-SE(3) endpoint audit now treats `W` as a second-rank tensor: after
+the same deterministic rigid transform, the new result must equal `R W Rᵀ`.
+Scalar energy, movable force vectors, and pair virials therefore fail or pass
+one component-resolved covariance gate. A synthetic off-diagonal tensor
+corruption fails while real pair and induction-enabled paths retain the exact
+pair contribution.
+
+The response microscope provides two endpoint cards and a signed 3×3 matrix
+under the shared interaction selector. Values remain in electronvolts. No
+volume is inferred or borrowed from the viewport, so this is configurational
+pair-virial geometry—not Cauchy stress, pressure, traction, equilibrium,
+dynamics, or time. Induction remains energy/force-resolved only on movable
+sites and has no inferred per-site virial.
+
 ## Build 453 · sampled fixed-site pair-force gradient
 
 The finite interaction now exposes the sparse incremental central-pair force

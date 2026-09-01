@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-453";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-453";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-454";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-454";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-453";
+  from "./hierarchy-physics-transport.mjs?v=20260901-454";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-453";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-454";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-453";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-454";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-453";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-454";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-453", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-454", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -461,6 +461,7 @@ const TIMELINE = [
   ["56", "Fixed-environment reaction torque", "The same endpoint protocol now rotates the fixed environment rigidly by ±θ and ±θ/2 about one common system origin. Energy derivatives recover its net reaction torque, which must cancel the reported movable-site torque in x, y, and z for every active interaction component. A transverse force-couple corruption fails the angular gate. This verifies rotational invariance and group-level angular-momentum balance—not per-fixed-atom forces, couple stress, traction, equilibrium, dynamics, or time.", "proved"],
   ["57", "Proper-SE(3) finite-interaction covariance", "At both response endpoints, one deterministic proper rotation and translation is applied to the complete finite system. Scalar total and active component energies must remain invariant, while every movable-site force vector must equal the correspondingly rotated original vector. Synthetic energy and transverse-force corruptions fail. This is a bounded runtime covariance certificate for one transform—not a proof over every frame, periodic images, fitted-potential transfer, fixed-site forces, equilibrium, dynamics, or time.", "proved"],
   ["58", "Sampled fixed-site pair-force gradient", "The incremental evaluator now exposes the complete sparse central-pair reaction field on fixed sites. At each endpoint, a bounded round-robin sample of the strongest fixed-site forces across active pair components is independently reconstructed from h and h/2 Cartesian energy differences; the complete sparse field must also conserve net force and common-origin torque. Fixed-fixed terms are constant in the incremental energy, and per-fixed-site induction remains unresolved. This is not a complete solid force field, stress, traction, equilibrium, dynamics, or time.", "proved"],
+  ["59", "Configurational pair-virial tensor", "Every active central pair now contributes W=Σ r_ij⊗F_i←j, resolved into Coulomb, Born–Mayer, dispersion, and pair-total tensors. The endpoint audit requires W′=RWRᵀ under the same proper-SE(3) transform; the microscope exposes all nine entries plus trace, hydrostatic scalar, and deviatoric norm. W remains in electronvolts and is never divided by an invented volume, so it is a configurational energy tensor—not Cauchy stress, pressure, traction, equilibrium, dynamics, or time.", "proved"],
 ];
 
 const CLAIMS = [

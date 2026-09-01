@@ -10765,6 +10765,29 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 454: Configurational pair-virial tensor
+
+The finite central-pair evaluator now accumulates
+`W = Σ_pairs r_ij ⊗ F_i←j` for the pair total and separately for Coulomb,
+Born–Mayer, and damped dispersion. The declared sign convention makes a
+repulsive central pair contribute positive trace. Receipts preserve the full
+3×3 tensors, traces, hydrostatic scalars, deviatoric Frobenius norms,
+antisymmetric residual, and the fact that no volume division occurred.
+
+The endpoint metamorphic audit requires second-rank covariance under its
+predeclared proper transform: `W′ = R W Rᵀ`. This is checked alongside scalar
+energy invariance and movable-force equivariance for every resolved pair
+component. A corrupted off-diagonal source tensor fails the total component;
+translation plus a proper quarter-turn preserves trace and rotates the active
+diagonal exactly.
+
+The live microscope renders signed endpoint cards and all nine tensor entries,
+then reports trace, hydrostatic scalar, deviatoric norm, and covariance
+residual. `W` has energy units and no physical control volume is inferred.
+It is therefore not Cauchy stress, pressure, traction, an elastic response,
+equilibrium, dynamics, or time. No induction virial is fabricated from an
+aggregate reaction.
+
 # Build 453: Sampled fixed-site pair-force gradient
 
 The incremental finite interaction now retains a sparse reaction record for

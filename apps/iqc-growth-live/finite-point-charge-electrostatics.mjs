@@ -4,7 +4,7 @@ export const TANG_TOENNIES_DISPERSION_ORDER = 6;
 
 import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
 import { finiteDifferenceIncrementalChargeInductionForces,
-  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-453";
+  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-454";
 
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
   model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy",
@@ -111,6 +111,33 @@ function cross(first, second) {
   ];
 }
 
+function zeroTensor() {
+  return [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+}
+
+function tensorFrobenius(tensor) {
+  return Math.sqrt(tensor.reduce((sum, row) => sum
+    + row.reduce((inner, value) => inner + value * value, 0), 0));
+}
+
+function frozenTensor(tensor) {
+  return Object.freeze(tensor.map((row) => Object.freeze([...row])));
+}
+
+function virialSummary(tensor) {
+  const trace = tensor[0][0] + tensor[1][1] + tensor[2][2];
+  const hydrostatic = trace / 3;
+  const deviatoric = tensor.map((row, rowIndex) => row.map((value, columnIndex) =>
+    value - (rowIndex === columnIndex ? hydrostatic : 0)));
+  const antisymmetric = tensor.map((row, rowIndex) => row.map((value, columnIndex) =>
+    .5 * (value - tensor[columnIndex][rowIndex])));
+  return Object.freeze({ tensorElectronVolt: frozenTensor(tensor),
+    traceElectronVolt: trace, hydrostaticScalarElectronVolt: hydrostatic,
+    frobeniusElectronVolt: tensorFrobenius(tensor),
+    deviatoricFrobeniusElectronVolt: tensorFrobenius(deviatoric),
+    antisymmetricFrobeniusElectronVolt: tensorFrobenius(antisymmetric) });
+}
+
 function rankingObservable(value) {
   if (["energy", "force-cancellation", "combined"].includes(value)) return value;
   throw new RangeError("rankingObservable must be energy, force-cancellation, or combined");
@@ -211,6 +238,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const addedBornMayerForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const addedDispersionForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const currentPairForceRecordsByIndex = new Map();
+  const pairVirialTensorElectronVolt = zeroTensor();
+  const coulombVirialTensorElectronVolt = zeroTensor();
+  const bornMayerVirialTensorElectronVolt = zeroTensor();
+  const dispersionVirialTensorElectronVolt = zeroTensor();
   const prefactor = COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / Number(relativePermittivity);
   const bornAmplitude = Number(bornMayerAmplitudeElectronVolt);
   const bornDecay = Number(bornMayerDecayAngstrom);
@@ -287,6 +318,23 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
         currentRecord.dispersionForceVectorElectronVoltPerAngstrom[axis] -= dispersionForce;
       }
     });
+    for (let row = 0; row < 3; row += 1) {
+      for (let column = 0; column < 3; column += 1) {
+        const displacementComponent = displacement[row];
+        const coulombForceComponent = coulombForceScale * displacement[column];
+        const bornMayerForceComponent = bornMayerForceScale * displacement[column];
+        const dispersionForceComponent = dispersionForceScale * displacement[column];
+        coulombVirialTensorElectronVolt[row][column]
+          += displacementComponent * coulombForceComponent;
+        bornMayerVirialTensorElectronVolt[row][column]
+          += displacementComponent * bornMayerForceComponent;
+        dispersionVirialTensorElectronVolt[row][column]
+          += displacementComponent * dispersionForceComponent;
+        pairVirialTensorElectronVolt[row][column] += displacementComponent
+          * (coulombForceComponent + bornMayerForceComponent
+            + dispersionForceComponent);
+      }
+    }
     if (secondCurrentIndex !== null) currentPairForceRecord(secondCurrentIndex)
       .interactingPairCount += 1;
     pairCount += 1;
@@ -397,6 +445,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const pairActionReactionResidualVectorElectronVoltPerAngstrom = [0, 1, 2]
     .map((axis) => netCurrentIncrementalPairForceVectorElectronVoltPerAngstrom[axis]
       + netAddedPairForceVectorElectronVoltPerAngstrom[axis]);
+  const pairVirial = virialSummary(pairVirialTensorElectronVolt);
+  const coulombVirial = virialSummary(coulombVirialTensorElectronVolt);
+  const bornMayerVirial = virialSummary(bornMayerVirialTensorElectronVolt);
+  const dispersionVirial = virialSummary(dispersionVirialTensorElectronVolt);
   const addedCentroidAngstrom = [0, 1, 2].map((axis) =>
     added.reduce((sum, site) => sum + site.position[axis], 0) / added.length);
   const torqueFor = (vectors) => added.reduce((sum, site, index) => {
@@ -470,6 +522,32 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     pairActionReactionResidualVectorElectronVoltPerAngstrom,
     pairActionReactionResidualMagnitudeElectronVoltPerAngstrom:
       vectorNorm(pairActionReactionResidualVectorElectronVoltPerAngstrom),
+    pairVirialTensorElectronVolt: pairVirial.tensorElectronVolt,
+    pairVirialTraceElectronVolt: pairVirial.traceElectronVolt,
+    pairVirialHydrostaticScalarElectronVolt: pairVirial.hydrostaticScalarElectronVolt,
+    pairVirialFrobeniusElectronVolt: pairVirial.frobeniusElectronVolt,
+    pairVirialDeviatoricFrobeniusElectronVolt:
+      pairVirial.deviatoricFrobeniusElectronVolt,
+    pairVirialAntisymmetricFrobeniusElectronVolt:
+      pairVirial.antisymmetricFrobeniusElectronVolt,
+    coulombVirialTensorElectronVolt: coulombVirial.tensorElectronVolt,
+    coulombVirialTraceElectronVolt: coulombVirial.traceElectronVolt,
+    coulombVirialHydrostaticScalarElectronVolt:
+      coulombVirial.hydrostaticScalarElectronVolt,
+    coulombVirialDeviatoricFrobeniusElectronVolt:
+      coulombVirial.deviatoricFrobeniusElectronVolt,
+    bornMayerVirialTensorElectronVolt: bornMayerVirial.tensorElectronVolt,
+    bornMayerVirialTraceElectronVolt: bornMayerVirial.traceElectronVolt,
+    bornMayerVirialHydrostaticScalarElectronVolt:
+      bornMayerVirial.hydrostaticScalarElectronVolt,
+    bornMayerVirialDeviatoricFrobeniusElectronVolt:
+      bornMayerVirial.deviatoricFrobeniusElectronVolt,
+    dispersionVirialTensorElectronVolt: dispersionVirial.tensorElectronVolt,
+    dispersionVirialTraceElectronVolt: dispersionVirial.traceElectronVolt,
+    dispersionVirialHydrostaticScalarElectronVolt:
+      dispersionVirial.hydrostaticScalarElectronVolt,
+    dispersionVirialDeviatoricFrobeniusElectronVolt:
+      dispersionVirial.deviatoricFrobeniusElectronVolt,
     addedCentroidAngstrom,
     electrostaticTorqueVectorElectronVolt,
     electrostaticTorqueMagnitudeElectronVolt,
@@ -574,6 +652,11 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     currentIncrementalPairForceFieldResolved: true,
     currentCurrentForceFieldOmittedAsConstant: true,
     currentInductionForceFieldResolved: false,
+    configurationalPairVirialResolved: true,
+    pairVirialSignConvention:
+      "W = sum_pairs r_ij outer F_i<-j; positive trace is repulsive",
+    pairVirialDividedByVolume: false,
+    pairVirialReportedAsStress: false,
     pairInteractionForceIsNegativeEnergyGradient: Number(inductionPolarizabilityAngstrom3) === 0
       || chargeInductionForce.available,
     bornMayerParametersFitted: false,

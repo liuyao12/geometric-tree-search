@@ -33,6 +33,14 @@ assert.ok(pair.pairActionReactionResidualMagnitudeElectronVoltPerAngstrom < 1e-1
 assert.equal(pair.currentIncrementalPairForceFieldResolved, true);
 assert.equal(pair.currentCurrentForceFieldOmittedAsConstant, true);
 assert.equal(pair.currentInductionForceFieldResolved, false);
+assert.equal(pair.configurationalPairVirialResolved, true);
+assert.equal(pair.pairVirialDividedByVolume, false);
+assert.equal(pair.pairVirialReportedAsStress, false);
+assert.ok(pair.pairVirialTraceElectronVolt < 0);
+assert.ok(Math.abs(pair.pairVirialTensorElectronVolt[0][0]
+  - 2.82 * pair.addedPairForceVectorsElectronVoltPerAngstrom[0][0]) < 1e-12);
+assert.equal(pair.pairVirialTensorElectronVolt[1][1], 0);
+assert.ok(pair.pairVirialAntisymmetricFrobeniusElectronVolt < 1e-12);
 assert.equal(pair.rmsAddedForceElectronVoltPerAngstrom,
   pair.maximumAddedForceElectronVoltPerAngstrom);
 assert.equal(pair.netAddedForceMagnitudeElectronVoltPerAngstrom,
@@ -259,6 +267,10 @@ const transformed = incrementalFinitePointChargeElectrostatics(
 assert.ok(Math.abs(transformed.deltaEnergyElectronVolt - pair.deltaEnergyElectronVolt) < 1e-12);
 assert.ok(Math.abs(transformed.addedForceVectorsElectronVoltPerAngstrom[0][1]
   - pair.addedForceVectorsElectronVoltPerAngstrom[0][0]) < 1e-12);
+assert.ok(Math.abs(transformed.pairVirialTensorElectronVolt[1][1]
+  - pair.pairVirialTensorElectronVolt[0][0]) < 1e-12);
+assert.ok(Math.abs(transformed.pairVirialTraceElectronVolt
+  - pair.pairVirialTraceElectronVolt) < 1e-12);
 
 const screened = incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }],

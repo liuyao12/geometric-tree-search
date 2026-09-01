@@ -1638,6 +1638,19 @@ body.study-guide-open { overflow: hidden; }
 .model-force-fixed-site-card small { color: #60776f; font: 4.8px var(--mono); text-transform: uppercase; }
 .model-force-fixed-site-card strong { margin-top: 2px; color: #d2e5df; font: 7px var(--mono); }
 .model-force-fixed-site-card span { margin-top: 2px; color: #789188; font: 4.8px var(--mono); }
+.model-force-virial-endpoint-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
+.model-force-virial-card { padding: 6px; border: 1px solid rgba(255,203,92,.24); border-radius: 2px; background: linear-gradient(145deg,rgba(255,203,92,.055),rgba(6,13,16,.5)); color: #8ba89f; text-align: left; cursor: pointer; }
+.model-force-virial-card.failed { border-color: rgba(255,111,117,.48); background: rgba(255,111,117,.07); }
+.model-force-virial-card.selected { outline: 1px solid rgba(255,255,255,.65); outline-offset: -1px; }
+.model-force-virial-card small,.model-force-virial-card strong,.model-force-virial-card span { display: block; }
+.model-force-virial-card small { color: #60776f; font: 4.8px var(--mono); text-transform: uppercase; }
+.model-force-virial-card strong { margin-top: 2px; color: #f1daa6; font: 7px var(--mono); }
+.model-force-virial-card span { margin-top: 2px; color: #8e836a; font: 4.8px var(--mono); }
+.model-force-virial-matrix { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2px; margin-top: 4px; }
+.model-force-virial-cell { min-height: 25px; padding: 4px; border: 1px solid rgba(255,255,255,.08); background: color-mix(in srgb,var(--virial-color) 22%,#071012); }
+.model-force-virial-cell small,.model-force-virial-cell strong { display: block; }
+.model-force-virial-cell small { color: #667970; font: 4.5px var(--mono); text-transform: uppercase; }
+.model-force-virial-cell strong { margin-top: 2px; color: #d9e4df; font: 6px var(--mono); }
 .model-force-covariance-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
 .model-force-covariance-card { padding: 6px; border: 1px solid rgba(105,224,189,.2); border-radius: 2px; background: linear-gradient(145deg,rgba(105,224,189,.05),rgba(6,13,16,.5)); color: #8ba89f; text-align: left; cursor: pointer; }
 .model-force-covariance-card.failed { border-color: rgba(255,111,117,.48); background: rgba(255,111,117,.07); }

@@ -19,9 +19,9 @@ for (const document of [html, alias]) {
   assert.match(document, /contact reach/);
   assert.match(document, /Play returned images/);
   assert.match(document, /coordinate-bearing external path/);
-  assert.match(document, /app\.js\?v=20260901-453/);
+  assert.match(document, /app\.js\?v=20260901-454/);
 }
-assert.match(app, /external-action-barrier\.mjs\?v=20260901-453/);
+assert.match(app, /external-action-barrier\.mjs\?v=20260901-454/);
 assert.match(app, /pathGeometrySha256/);
 assert.match(app, /fixedMaterialSiteCount/);
 assert.match(app, /buildActionPathViewerFrame/);
@@ -30,7 +30,7 @@ assert.match(app, /sampleTrailsOnly: true, interpolationUsed: false/);
 assert.match(app, /sensitivityCharacterStable/);
 assert.match(app, /chemicalBondClaimed: false/);
 assert.match(barrier, /action-barrier-request-v4/);
-assert.match(barrier, /action-path-geometry\.mjs\?v=20260901-453/);
+assert.match(barrier, /action-path-geometry\.mjs\?v=20260901-454/);
 assert.match(barrier, /everyPathGeometryValidated/);
 assert.match(barrier, /initialConfiguration/);
 assert.match(pathContract, /closed-system-fixed-composition/);

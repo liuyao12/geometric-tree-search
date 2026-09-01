@@ -8,6 +8,7 @@ const html = read("apps/iqc-growth-live/index.html");
 const compatibility = read("iqc-growth-live/index.html");
 const style = read("apps/iqc-growth-live/style.css");
 const moduleSource = read("apps/iqc-growth-live/model-force-relaxation-seed.mjs");
+const finiteInteractionSource = read("apps/iqc-growth-live/finite-point-charge-electrostatics.mjs");
 const shellSource = read("apps/iqc-growth-live/anchored-interface-shells.mjs");
 const sweptSource = read("apps/iqc-growth-live/linear-swept-exclusion.mjs");
 const readme = read("apps/iqc-growth-live/README.md");
@@ -28,6 +29,8 @@ for (const id of ["modelForceCartesianGradientState",
   "modelForceCartesianGradientGrid", "modelForceCartesianGradientPointState",
   "modelForceFixedSiteState", "modelForceFixedSiteGrid",
   "modelForceFixedSitePointState",
+  "modelForceVirialState", "modelForceVirialEndpointGrid",
+  "modelForceVirialMatrix", "modelForceVirialPointState",
   "modelForceReactionState", "modelForceReactionGrid",
   "modelForceReactionPointState", "modelForceTorqueState",
   "modelForceTorqueGrid", "modelForceTorquePointState",
@@ -126,6 +129,9 @@ for (const token of [
   "modelForceRigidMotionCovarianceEndpointCount",
   "modelForceRigidMotionCovarianceEvaluationCount",
   "modelForceFailedRigidMotionCovarianceEndpointImageIndices",
+  "modelForceEndpointPairVirialCovariancePassed",
+  "modelForcePairVirialEndpointCount",
+  "modelForcePairVirialActiveComponentCount",
   "sweptHardExclusionPassed",
   "sweptHardExclusionMinimumMargin",
   "modelForceRmsBeforeEvPerAngstrom",
@@ -147,6 +153,7 @@ for (const token of [
   "renderModelForceResponseDiagnostic",
   "modelForceCartesianSelectedKey",
   "modelForceFixedSiteSelectedEndpoint",
+  "modelForceVirialSelectedEndpoint",
   "model-force-cartesian-cell",
   "modelForceReactionSelectedKey",
   "modelForceTorqueSelectedKey",
@@ -159,6 +166,8 @@ for (const token of [".model-force-response-diagnostic",
   ".model-force-response-legend", ".response-tangent-point",
   ".model-force-cartesian-grid", ".model-force-cartesian-cell",
   ".model-force-fixed-site-grid", ".model-force-fixed-site-card",
+  ".model-force-virial-endpoint-grid", ".model-force-virial-card",
+  ".model-force-virial-matrix", ".model-force-virial-cell",
   ".model-force-reaction-grid", ".model-force-torque-grid",
   ".model-force-covariance-grid", ".model-force-covariance-card"]) {
   assert.ok(style.includes(token), token);
@@ -177,6 +186,9 @@ for (const token of [
   "auditFiniteInteractionRigidMotionCovariance",
   "properRotation",
   "rotationDeterminant",
+  "pairVirialCovarianceChecked",
+  "expectedRotatedPairVirialTensorElectronVolt",
+  "pairVirialResidualFrobeniusElectronVolt",
   "fixedEnvironmentMovedCollectivelyForProbe: true",
   "fixedEnvironmentRotatedCollectivelyForProbe: true",
   "perFixedSitePairForcesResolved: true",
@@ -230,6 +242,14 @@ for (const token of [
 ]) assert.ok(moduleSource.includes(token), token);
 
 for (const token of [
+  "configurationalPairVirialResolved: true",
+  "pairVirialTensorElectronVolt",
+  "pairVirialDividedByVolume: false",
+  "pairVirialReportedAsStress: false",
+  "pairVirialSignConvention",
+]) assert.ok(finiteInteractionSource.includes(token), token);
+
+for (const token of [
   "auditAnchoredInterfaceShells",
   "every interface-response site has a contact path to the fixed outer anchors",
   "danglingByLayer",
@@ -266,6 +286,7 @@ assert.match(atlas, /"55", "Fixed-environment reaction balance"/);
 assert.match(atlas, /"56", "Fixed-environment reaction torque"/);
 assert.match(atlas, /"57", "Proper-SE\(3\) finite-interaction covariance"/);
 assert.match(atlas, /"58", "Sampled fixed-site pair-force gradient"/);
+assert.match(atlas, /"59", "Configurational pair-virial tensor"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
@@ -289,5 +310,7 @@ assert.match(readme, /Build 452 · proper-SE\(3\) finite-interaction covariance/
 assert.match(benchmark, /Build 452: Proper-SE\(3\) finite-interaction covariance/);
 assert.match(readme, /Build 453 · sampled fixed-site pair-force gradient/);
 assert.match(benchmark, /Build 453: Sampled fixed-site pair-force gradient/);
+assert.match(readme, /Build 454 · configurational pair-virial tensor/);
+assert.match(benchmark, /Build 454: Configurational pair-virial tensor/);
 
 console.log("model-force relaxation portal contract passed");

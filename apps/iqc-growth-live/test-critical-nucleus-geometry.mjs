@@ -32,7 +32,7 @@ const request = buildCriticalNucleusGeometryRequest({
   scheduleSha256,
   criticalScaleMetre: 2.5e-9,
   generatedAt: "2026-09-01T00:00:00.000Z",
-  buildId: "20260901-453",
+  buildId: "20260901-454",
   scenarioId: "al-fcc",
   materialName: "Al",
   sourceProvenance: { kind: "unit fixture" },

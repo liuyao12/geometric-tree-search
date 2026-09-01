@@ -323,6 +323,12 @@ assert.equal(finitePairRigidCovariance.properRotation, true);
 assert.ok(Math.abs(finitePairRigidCovariance.rotationDeterminant - 1) < 1e-12);
 assert.equal(finitePairRigidCovariance.evaluationCount, 1);
 assert.deepEqual(finitePairRigidCovariance.failedComponentIds, []);
+assert.equal(finitePairRigidCovariance.components.find((component) =>
+  component.id === "total").pairVirialCovarianceChecked, true);
+assert.equal(finitePairRigidCovariance.components.find((component) =>
+  component.id === "total").virialPassed, true);
+assert.ok(finitePairRigidCovariance.components.find((component) =>
+  component.id === "total").pairVirialResidualFrobeniusElectronVolt < 1e-10);
 const transverseCovarianceFailure = auditFiniteInteractionRigidMotionCovariance(current,
   added, transverseForceCorruption, finitePairOptions);
 assert.equal(transverseCovarianceFailure.passed, false);
@@ -334,6 +340,16 @@ const energyCovarianceFailure = auditFiniteInteractionRigidMotionCovariance(curr
 assert.equal(energyCovarianceFailure.passed, false);
 assert.equal(energyCovarianceFailure.components.find((component) =>
   component.id === "total").energyPassed, false);
+const virialCovarianceFailure = auditFiniteInteractionRigidMotionCovariance(current,
+  added, { ...finitePairSeed.evaluation,
+    pairVirialTensorElectronVolt: finitePairSeed.evaluation.pairVirialTensorElectronVolt
+      .map((row, rowIndex) => row.map((value, columnIndex) =>
+        value + (rowIndex === 0 && columnIndex === 1 ? 1 : 0))) },
+  finitePairOptions);
+assert.equal(virialCovarianceFailure.passed, false);
+assert.deepEqual(virialCovarianceFailure.failedComponentIds, ["total"]);
+assert.equal(virialCovarianceFailure.components.find((component) =>
+  component.id === "total").virialPassed, false);
 const forceSettling = auditModelForceRelaxationOutcome(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: finitePairSeed.evaluation,
@@ -393,6 +409,9 @@ assert.equal(forceSettlingPath.endpointRigidMotionCovariancePassed, true);
 assert.equal(forceSettlingPath.rigidMotionCovarianceEndpointCount, 2);
 assert.equal(forceSettlingPath.rigidMotionCovarianceEvaluationCount, 2);
 assert.deepEqual(forceSettlingPath.failedRigidMotionCovarianceEndpointImageIndices, []);
+assert.equal(forceSettlingPath.endpointPairVirialCovariancePassed, true);
+assert.equal(forceSettlingPath.pairVirialEndpointCount, 2);
+assert.equal(forceSettlingPath.pairVirialActiveComponentCount, 3);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
