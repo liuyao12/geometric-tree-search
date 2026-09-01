@@ -88,107 +88,110 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-408";
+  from "./external-action-barrier.mjs?v=20260901-410";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-408";
+  from "./action-path-viewer.mjs?v=20260901-410";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-408";
+  from "./action-path-mechanism.mjs?v=20260901-410";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-408";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-410";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-408";
+  from "./kinetic-event-spectrum.mjs?v=20260901-410";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-408";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-410";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-408";
+  from "./kinetic-geometry-response.mjs?v=20260901-410";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-408";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-410";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-408";
+  from "./surface-hop-events.mjs?v=20260901-410";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-408";
+  from "./species-exchange-events.mjs?v=20260901-410";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-408";
+  from "./external-state-relaxation.mjs?v=20260901-410";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-408";
+  from "./reversible-transition-lineage.mjs?v=20260901-410";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-408";
+  from "./finite-network-population-dynamics.mjs?v=20260901-410";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-408";
+  from "./finite-network-geometric-flux.mjs?v=20260901-410";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-408";
+  from "./finite-network-structural-flux.mjs?v=20260901-410";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-408";
+  from "./geometric-state-descriptor.mjs?v=20260901-410";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-408";
+  from "./finite-network-global-order.mjs?v=20260901-410";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-408";
+  from "./finite-network-first-passage.mjs?v=20260901-410";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-408";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-410";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-408";
+  from "./finite-network-passage-control.mjs?v=20260901-410";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-408";
+  from "./finite-network-rate-intervention.mjs?v=20260901-410";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-408";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-408";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-408";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-408";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-408";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-408";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-410";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-408";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-410";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260831-408";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-410";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-408";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-410";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-408";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-410";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   validateInterfacialEnergyResponse }
   from "./external-interfacial-energy.mjs?v=20260831-354";
+import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
+  validateBulkDrivingForceResponse }
+  from "./classical-nucleation-evidence.mjs?v=20260901-410";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-408";
+  from "./external-attachment-kinetics.mjs?v=20260901-410";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-408";
+  from "./external-interface-flux.mjs?v=20260901-410";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-408";
+  from "./growth-regime-bridge.mjs?v=20260901-410";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-408";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-410";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-408";
+  from "./catalog-conditional-chronology.mjs?v=20260901-410";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-408";
+  from "./coupled-physics-state.mjs?v=20260901-410";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260831-408";
+} from "./ice-molecular-anchor-growth.js?v=20260901-410";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260831-408";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-410";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260831-408";
+} from "./ice-orientation-evidence.mjs?v=20260901-410";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -304,7 +307,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260831-408", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-410", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1206,6 +1209,16 @@ const wulffRegularizerWeightSelect = $("wulffRegularizerWeightSelect");
 const wulffRankingGate = $("wulffRankingGate");
 const wulffRankingState = $("wulffRankingState");
 const wulffRankingAudit = $("wulffRankingAudit");
+const classicalNucleationEvidence = $("classicalNucleationEvidence");
+const classicalNucleationBadge = $("classicalNucleationBadge");
+const classicalNucleationPlot = $("classicalNucleationPlot");
+const classicalNucleationMetrics = $("classicalNucleationMetrics");
+const downloadBulkDrivingRequest = $("downloadBulkDrivingRequest");
+const importBulkDrivingResponse = $("importBulkDrivingResponse");
+const resetBulkDrivingEvidence = $("resetBulkDrivingEvidence");
+const bulkDrivingResponseInput = $("bulkDrivingResponseInput");
+const classicalNucleationState = $("classicalNucleationState");
+const classicalNucleationBoundary = $("classicalNucleationBoundary");
 const kineticHabitCard = document.querySelector(".kinetic-habit-card");
 const kineticHabitBadge = $("kineticHabitBadge");
 const kineticHabitPresetControls = $("kineticHabitPresetControls");
@@ -2236,6 +2249,9 @@ let externalPhysicsForceGeometryEnabled = false;
 let externalPhysicsTrajectoryGeometryEnabled = false;
 let interfacialEnergyRequestRuntime = null;
 let interfacialEnergyValidationAudit = null;
+let bulkDrivingForceRequestRuntime = null;
+let bulkDrivingForceValidationAudit = null;
+let classicalNucleationWorkAudit = null;
 let selectedWulffPreset = "cubic";
 let wulffRankingMode = "display";
 let wulffAngularReachDegrees = 30;
@@ -4051,12 +4067,90 @@ function renderWulffEvidence() {
       : "Validated γ(n̂) is scoped to this exact specimen, method, and adjacent phase. The finite envelope is conditional on the supplied orientations; physical size, unsampled facets, Miller indices, equilibrium completeness, attachment kinetics, nucleation rate, and growth ranking remain unresolved."
     : "The envelope is conditional on the supplied oriented normals and interface environment. Scale, missing orientations, Miller indices, attachment kinetics, nucleation rate, and equilibrium completeness are not inferred; this preview does not rank growth.";
   renderWulffRankingControls();
+  renderClassicalNucleationEvidence();
+}
+
+function renderClassicalNucleationEvidence() {
+  if (!classicalNucleationEvidence || !classicalNucleationPlot || !classicalNucleationMetrics) return;
+  const dimension = classicalNucleationWorkAudit?.intrinsicDimension
+    || interfacialEnergyValidationAudit?.intrinsicDimension
+    || (currentMaterial().intrinsicDimension === 2 ? 2 : 3);
+  const physical = Boolean(classicalNucleationWorkAudit);
+  classicalNucleationEvidence.classList.toggle("validated", physical);
+  classicalNucleationBadge.textContent = physical ? "validated conditional work" : "illustrative only";
+  downloadBulkDrivingRequest.disabled = !interfacialEnergyValidationAudit
+    || !(Number(interfacialEnergyValidationAudit.interface?.temperatureKelvin) > 0);
+  importBulkDrivingResponse.disabled = !bulkDrivingForceRequestRuntime;
+  resetBulkDrivingEvidence.hidden = !bulkDrivingForceRequestRuntime && !bulkDrivingForceValidationAudit;
+  const svg = (name, attributes = {}) => {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value))); return node;
+  };
+  const points = Array.from({ length: 61 }, (_, index) => {
+    const x = 2 * index / 60;
+    return { x, interface: dimension * x ** (dimension - 1),
+      bulk: -(dimension - 1) * x ** dimension,
+      net: dimension * x ** (dimension - 1) - (dimension - 1) * x ** dimension };
+  });
+  const left = 34; const right = 310; const top = 14; const bottom = 146;
+  const low = Math.min(-.3, ...points.map((point) => point.bulk), ...points.map((point) => point.net));
+  const high = Math.max(...points.map((point) => point.interface));
+  const xMap = (value) => left + (right - left) * value / 2;
+  const yMap = (value) => bottom - (bottom - top) * (value - low) / (high - low);
+  classicalNucleationPlot.replaceChildren();
+  classicalNucleationPlot.append(svg("line", { x1: left, y1: yMap(0), x2: right, y2: yMap(0),
+    class: "classical-nucleation-axis" }), svg("line", { x1: left, y1: top, x2: left, y2: bottom,
+    class: "classical-nucleation-axis" }));
+  [["interface", "classical-interface"], ["bulk", "classical-bulk"], ["net", "classical-net"]]
+    .forEach(([field, className]) => classicalNucleationPlot.append(svg("polyline", {
+      points: points.map((point) => `${xMap(point.x)},${yMap(point[field])}`).join(" "), class: className })));
+  classicalNucleationPlot.append(svg("line", { x1: xMap(1), y1: top, x2: xMap(1), y2: bottom,
+    class: "classical-critical" }));
+  const critical = svg("circle", { cx: xMap(1), cy: yMap(1), r: 3.2, class: "classical-critical-point" });
+  const label = svg("text", { x: xMap(1) + 5, y: yMap(1) - 5, class: "classical-nucleation-label" });
+  label.textContent = physical ? `${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(3)} nm · ${classicalNucleationWorkAudit.barrierElectronVolt.toPrecision(4)} eV`
+    : "critical scale · conditional";
+  const xLabel = svg("text", { x: 190, y: 163, class: "classical-nucleation-label" });
+  xLabel.textContent = "homothetic Wulff scale / critical scale";
+  classicalNucleationPlot.append(critical, label, xLabel);
+  const metrics = physical ? [
+    ["critical scale", `${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(3)} ± ${classicalNucleationWorkAudit.criticalScaleUncertaintyNanometre.toFixed(3)} nm`],
+    ["conditional barrier", `${classicalNucleationWorkAudit.barrierElectronVolt.toPrecision(4)} ± ${classicalNucleationWorkAudit.barrierUncertaintyElectronVolt.toPrecision(2)} eV`],
+    [dimension === 3 ? "critical volume" : "critical area", dimension === 3
+      ? `${(classicalNucleationWorkAudit.criticalContentSi * 1e27).toPrecision(4)} nm³`
+      : `${(classicalNucleationWorkAudit.criticalContentSi * 1e18).toPrecision(4)} nm²`],
+    ["Wulff identity", `${classicalNucleationWorkAudit.wulffIdentityRelativeResidual.toExponential(1)} residual`],
+  ] : [
+    ["interfacial evidence", interfacialEnergyValidationAudit ? "validated γ(n̂)" : "required"],
+    ["bulk driving force", bulkDrivingForceValidationAudit ? "validated Δg" : "required"],
+    ["dimension", `${dimension}D capillarity`], ["growth ranking", "unchanged"],
+  ];
+  classicalNucleationMetrics.replaceChildren(...metrics.map(([name, value]) => {
+    const span = document.createElement("span"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); small.textContent = name; strong.textContent = value;
+    span.append(small, strong); return span;
+  }));
+  if (physical) {
+    classicalNucleationState.textContent = `${classicalNucleationWorkAudit.parentPhase} → ${classicalNucleationWorkAudit.nucleusPhase} at ${classicalNucleationWorkAudit.temperatureKelvin} K: validated γ(n̂) and Δg produce a conditional ${dimension}D capillarity maximum at ${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(4)} nm. The exact frontier, candidates, and geometry remain unchanged.`;
+    classicalNucleationBoundary.textContent = classicalNucleationWorkAudit.claimBoundary;
+  } else {
+    const missingTemperature = interfacialEnergyValidationAudit
+      && !(Number(interfacialEnergyValidationAudit.interface?.temperatureKelvin) > 0);
+    classicalNucleationState.textContent = missingTemperature
+      ? "Validated γ(n̂) lacks a positive temperature, so a coupled bulk-driving request is withheld."
+      : interfacialEnergyValidationAudit
+        ? "γ(n̂) is validated. Download the specimen- and response-bound bulk Δg request; no physical barrier exists until its response passes."
+        : "The normalized curve is pedagogical. Validate γ(n̂) first, then request an independently calculated parent-to-nucleus bulk free-energy density.";
+    classicalNucleationBoundary.textContent = "The normalized curves show the capillarity terms d·x^(d−1), −(d−1)·x^d, and their sum. They contain no material parameter. No atom count, heterogeneous wetting factor, elastic energy, curvature correction, attachment kinetics, prefactor, nucleation rate, pathway, or phase-stability claim is inferred.";
+  }
 }
 
 function resetInterfacialEnergyRoundTrip() {
   if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
     "Action-barrier checkpoint released because the interfacial-energy evidence changed.");
   interfacialEnergyRequestRuntime = null; interfacialEnergyValidationAudit = null;
+  bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
+  classicalNucleationWorkAudit = null;
   wulffRankingMode = "display"; lastWulffRankingAudit = null;
   if (importWulffResponse) importWulffResponse.disabled = true;
   renderWulffEvidence();
@@ -4071,7 +4165,8 @@ function interfacialEnergyReceipt() {
     targetUsed: false,
   } : null;
   if (!interfacialEnergyValidationAudit) return { request, validation: null,
-    shapeRegularizer: { mode: wulffRankingMode, active: false, targetUsed: false } };
+    shapeRegularizer: { mode: wulffRankingMode, active: false, targetUsed: false },
+    classicalNucleation: classicalNucleationReceipt() };
   const audit = interfacialEnergyValidationAudit;
   return { request, validation: {
     schema: audit.schema, requestSha256: audit.requestSha256, responseSha256: audit.responseSha256,
@@ -4089,7 +4184,69 @@ function interfacialEnergyReceipt() {
     finiteNucleusRequired: true, equilibriumShapePriorOnly: true,
     candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
     usedAsGrowthLaw: false, usedAsAttachmentRate: false, targetUsed: false,
-  } };
+  }, classicalNucleation: classicalNucleationReceipt() };
+}
+
+function classicalNucleationReceipt() {
+  return {
+    request: bulkDrivingForceRequestRuntime ? { requestSha256: bulkDrivingForceRequestRuntime.requestSha256,
+      structureSha256: bulkDrivingForceRequestRuntime.structureSha256,
+      interfacialEnergyResponseSha256: bulkDrivingForceRequestRuntime.interfacialEnergyResponseSha256,
+      intrinsicDimension: bulkDrivingForceRequestRuntime.intrinsicDimension,
+      temperatureKelvin: bulkDrivingForceRequestRuntime.temperatureKelvin,
+      adjacentParentPhase: bulkDrivingForceRequestRuntime.adjacentParentPhase,
+      targetUsed: false } : null,
+    validation: bulkDrivingForceValidationAudit ? { ...bulkDrivingForceValidationAudit } : null,
+    work: classicalNucleationWorkAudit ? { ...classicalNucleationWorkAudit,
+      workProfile: classicalNucleationWorkAudit.workProfile.map((point) => ({ ...point })) } : null,
+    candidateSetChanged: false, candidateGeometryChanged: false, growthRankingChanged: false,
+    nucleationRateInferred: false, targetUsed: false,
+  };
+}
+
+async function downloadBulkDrivingForceEvidenceRequest() {
+  if (!interfacialEnergyValidationAudit?.responseSha256 || !interfacialEnergyRequestRuntime) {
+    throw new Error("validate an exact interfacial-energy response first");
+  }
+  const temperatureKelvin = Number(interfacialEnergyValidationAudit.interface?.temperatureKelvin);
+  if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
+  const material = currentMaterial();
+  const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
+    buildId: "20260901-410", scenarioId: scenarioSelect.value, materialName: material.name,
+    structureSha256: interfacialEnergyValidationAudit.structureSha256,
+    interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
+    intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
+    adjacentParentPhase: interfacialEnergyValidationAudit.interface.adjacentPhase,
+    temperatureKelvin, sourceProvenance: interfacialEnergyRequestRuntime.request.specimen.sourceProvenance,
+    targetUsed: false, targetCoordinatesEmbedded: false });
+  const serialized = JSON.stringify(request, null, 2); const requestSha256 = await receiptSha256(serialized);
+  bulkDrivingForceValidationAudit = null; classicalNucleationWorkAudit = null;
+  bulkDrivingForceRequestRuntime = { request, requestSha256,
+    structureSha256: request.specimen.structureSha256,
+    interfacialEnergyResponseSha256: request.coupledInterfacialEvidence.interfacialEnergyResponseSha256,
+    intrinsicDimension: request.specimen.intrinsicDimension,
+    temperatureKelvin: request.coupledInterfacialEvidence.temperatureKelvin,
+    adjacentParentPhase: request.coupledInterfacialEvidence.adjacentParentPhase };
+  const blob = new Blob([serialized], { type: "application/json" }); const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url;
+  link.download = `gcts-${scenarioSelect.value}-bulk-driving-force-request.json`;
+  document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `Bulk-driving-force request downloaded · structure ${request.specimen.structureSha256.slice(0, 12)} · γ response ${request.coupledInterfacialEvidence.interfacialEnergyResponseSha256.slice(0, 12)} · request ${requestSha256.slice(0, 12)} · nothing submitted.`;
+  renderClassicalNucleationEvidence();
+}
+
+async function validateBulkDrivingForceFile(file) {
+  if (!file || file.size > 2 * 1024 * 1024) throw new Error("bulk-driving-force response exceeds the 2 MB local limit");
+  if (!bulkDrivingForceRequestRuntime || !interfacialEnergyValidationAudit) {
+    throw new Error("download the coupled bulk-driving-force request before validating a response");
+  }
+  const responseText = await file.text(); const response = JSON.parse(responseText);
+  bulkDrivingForceValidationAudit = validateBulkDrivingForceResponse(response, bulkDrivingForceRequestRuntime);
+  bulkDrivingForceValidationAudit.responseSha256 = await receiptSha256(responseText);
+  classicalNucleationWorkAudit = buildClassicalNucleationWork(interfacialEnergyValidationAudit,
+    bulkDrivingForceValidationAudit);
+  receiptStatus.textContent = `Conditional nucleation work validated · critical Wulff scale ${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(4)} nm · barrier ${classicalNucleationWorkAudit.barrierElectronVolt.toPrecision(4)} eV · no rate or growth ranking inferred.`;
+  renderClassicalNucleationEvidence();
 }
 
 async function downloadInterfacialEnergyRequest() {
@@ -4098,7 +4255,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-408",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4108,6 +4265,8 @@ async function downloadInterfacialEnergyRequest() {
     recordedConditions: activeMeasurementConditions(), targetUsed: false, targetCoordinatesEmbedded: false });
   const serialized = JSON.stringify(request, null, 2); const requestSha256 = await receiptSha256(serialized);
   interfacialEnergyValidationAudit = null;
+  bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
+  classicalNucleationWorkAudit = null;
   interfacialEnergyRequestRuntime = { request, requestSha256,
     structureSha256: configuration.structureSha256, intrinsicDimension: request.specimen.intrinsicDimension };
   importWulffResponse.disabled = false;
@@ -4125,6 +4284,8 @@ async function validateInterfacialEnergyFile(file) {
   const responseText = await file.text(); const response = JSON.parse(responseText);
   interfacialEnergyValidationAudit = validateInterfacialEnergyResponse(response, interfacialEnergyRequestRuntime);
   interfacialEnergyValidationAudit.responseSha256 = await receiptSha256(responseText);
+  bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
+  classicalNucleationWorkAudit = null;
   lastWulffRankingAudit = null;
   if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
     "Action-barrier checkpoint released because validated interfacial-energy evidence changed ranking provenance.");
@@ -4342,7 +4503,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-408",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4861,7 +5022,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-408",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14166,7 +14327,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-408" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-410" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14174,7 +14335,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-408",
+      buildId: "20260901-410",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16781,7 +16942,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-408" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-410" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25142,7 +25303,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-408",
+    generatedAt: new Date().toISOString(), buildId: "20260901-410",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28413,7 +28574,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-408",
+    generatedAt: new Date().toISOString(), buildId: "20260901-410",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -29863,7 +30024,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-408", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-410", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -38524,7 +38685,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-408",
+    generatedAt: new Date().toISOString(), buildId: "20260901-410",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -39246,7 +39407,28 @@ resetWulffPreview?.addEventListener("click", () => {
   if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
     "Action-barrier checkpoint released because interfacial-energy ranking evidence was removed.");
   interfacialEnergyValidationAudit = null; wulffRankingMode = "display";
+  bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
+  classicalNucleationWorkAudit = null;
   lastWulffRankingAudit = null; renderWulffEvidence();
+});
+downloadBulkDrivingRequest?.addEventListener("click", async () => {
+  downloadBulkDrivingRequest.disabled = true;
+  try { await downloadBulkDrivingForceEvidenceRequest(); }
+  catch (error) {
+    receiptStatus.textContent = `Bulk-driving-force request failed closed · ${error instanceof Error ? error.message : "invalid request"}`;
+  } finally { renderClassicalNucleationEvidence(); }
+});
+importBulkDrivingResponse?.addEventListener("click", () => bulkDrivingResponseInput?.click());
+bulkDrivingResponseInput?.addEventListener("change", async () => {
+  const [file] = bulkDrivingResponseInput.files || [];
+  try { await validateBulkDrivingForceFile(file); }
+  catch (error) {
+    receiptStatus.textContent = `Bulk-driving-force response rejected · ${error instanceof Error ? error.message : "invalid response"}`;
+  } finally { bulkDrivingResponseInput.value = ""; }
+});
+resetBulkDrivingEvidence?.addEventListener("click", () => {
+  bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
+  classicalNucleationWorkAudit = null; renderClassicalNucleationEvidence();
 });
 wulffRankingModeSelect?.addEventListener("change", () => {
   wulffRankingMode = wulffRankingModeSelect.value === "shape" ? "shape" : "display";
@@ -43569,7 +43751,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-408" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-410" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

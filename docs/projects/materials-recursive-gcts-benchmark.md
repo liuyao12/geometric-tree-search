@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+## Conditional Wulff nucleation-work bridge (Build 410)
+
+The portal now distinguishes the observed finite `ΔΩ(N)` catalog from a
+classical capillarity model. The latter is admitted only by two independently
+validated evidence objects: orientation-resolved `γ(n̂)` and a positive bulk
+`Δg = g_parent − g_nucleus`. The Δg request is cryptographically bound to the
+exact structure and γ response, dimensionality, parent phase, and temperature.
+
+For every active Wulff facet the audit measures its normalized area (edge
+length in 2D), multiplies by its physical interfacial energy, and propagates
+the supplied independent uncertainties. The polyhedral content is recovered
+from the facet support decomposition. Before evaluating a work curve, the
+implementation verifies `ΣγᵢAᵢ = d γmin V₀` to numerical tolerance.
+
+The reported model is
+
+`ΔG(s)=Cγs^(d−1)−ΔgV₀s^d`,
+
+with `s*=(d−1)Cγ/(dΔgV₀)`. The browser renders the two terms and their sum,
+freezes an 81-point physical profile, and reports `s*`, critical area/volume,
+`ΔG*`, and an explicit independent one-sigma linear uncertainty model. In 3D
+the symmetric-cube test (`γ=0.2 J m⁻²`, `Δg=10⁸ J m⁻³`) certifies `s*=4 nm`,
+`V*=512 nm³`, and `ΔG*=2.56×10⁻¹⁷ J`; a separate 2D fixture certifies the
+edge-energy formulation.
+
+All response hashes and the work profile enter the experiment receipt.
+`targetUsed=false`, `candidateSetChanged=false`, and
+`growthRankingChanged=false`. No physical response is bundled, and the model
+does not claim atom count, heterogeneous nucleation, elastic corrections,
+diffuse interfaces, curvature corrections, kinetics, prefactor, Zeldovich
+factor, rate, pathway, or phase stability.
+
 ## Stable periodic-evidence controls (Build 409)
 
 The periodic Ice audit object is immutable during a growth checkpoint. The UI

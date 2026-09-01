@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 410 · geometry-bound classical nucleation work
+
+The interfacial-energy laboratory now has an explicit second handoff for the
+bulk parent-to-nucleus free-energy driving-force density `Δg`. It is enabled
+only after an orientation-resolved `γ(n̂)` response has passed. The generated
+request freezes the exact structure hash, dimensionality, validated γ-response
+hash, adjacent parent phase, and temperature; the response must preserve all
+of them, declare a distinct nucleus phase, report method provenance and
+one-sigma uncertainty, and keep positive `Δg` at its three-sigma lower bound.
+
+For the normalized Wulff body `W₀`, the browser independently measures its
+content `V₀` (area in 2D), every active facet/edge measure, and
+`Cγ = Σᵢ γᵢ Aᵢ`. It certifies the Wulff identity
+`Cγ = d γmin V₀`, then evaluates the conditional homothetic capillarity work
+
+`ΔG(s) = Cγ s^(d−1) − Δg V₀ s^d`.
+
+The new interactive panel separates the interfacial, bulk, and net terms,
+marks the critical scale, and—only with both accepted responses—reports its
+physical scale, barrier, critical volume/area, uncertainty, and provenance in
+the receipt. Before that, the chart is a dimensionless pedagogical identity
+and both physical metrics remain withheld.
+
+This model is intentionally separate from the exact finite-state `ΔΩ(N)`
+profile. It does not infer atomic volume or a critical atom count and omits
+heterogeneous wetting factors, elastic/strain energy, diffuse-interface and
+curvature corrections, attachment kinetics, Zeldovich factors, prefactors,
+nucleation rates, pathways, and macroscopic phase stability. It never changes
+candidate geometry, admission, ranking, or growth.
+
 ## Build 409 · stable evidence-laboratory interactions
 
 The Ice orientation laboratory now renders each immutable audit once rather

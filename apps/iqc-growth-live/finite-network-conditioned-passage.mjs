@@ -1,5 +1,5 @@
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-408";
+  from "./finite-network-first-passage.mjs?v=20260901-410";
 
 function unavailable(reason, extra = {}) {
   return {
