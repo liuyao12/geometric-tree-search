@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 422 · finite point-charge electrostatics becomes an explicit hypothesis
+
+The formal-charge branch can now move beyond a scale-free `qᵢqⱼ/rᵢⱼ`
+descriptor without silently pretending that a dielectric or electronic model was
+learned. A new opt-in **Finite Coulomb** mode evaluates the exact incremental
+current–new and new–new pair interaction
+`ΔU=(14.3996454784255 eV Å/εr) Σ qᵢqⱼ/rᵢⱼ` on each unchanged hard-admitted
+candidate. The scientist chooses a finite reach, a uniform relative
+permittivity, and a Kelvin temperature from compact selectors. The rank
+coordinate is the bounded monotone transform `−x/(1+|x|)` with
+`x=ΔU/(Nadded kBT)`; ΔU itself remains visible in eV and is never relabeled as
+a probability.
+
+The cutoff portrait now shows ΔU, thermalized energy per emitted site, pair
+count, rank changes, εr, and temperature at 2, 4, 8 nearest-neighbor reaches and
+the finite global crop. Receipts preserve the constants, declared medium,
+temperature, boundary, work counts, and exact nonmutation gates. The original
+dimensionless Madelung-like mode remains as a control.
+
+This is deliberately a conditional point-charge model. Formal oxidation states
+are treated as supplied point charges in one uniform isotropic continuum and
+the crop is open. There are no periodic images, Ewald sum, neutralizing
+background, polarization, charge transfer, self energy, short-range repulsion,
+dispersion, electronic structure, or solved dielectric response. Consequently
+the eV value is not a validated material energy; it is an auditable physical
+hypothesis used only to order the same geometrically certified actions.
+
 ## Build 421 · crystallographic occupancy reaches calculated XRD
 
 Imported mixed and partial crystallographic sites no longer become fully

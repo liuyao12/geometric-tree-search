@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+## Finite formal-charge electrostatic boundary (Build 422)
+
+The growth frontier now supports an explicit physical interpretation of the
+existing supplied-charge pair geometry. For each unchanged exact candidate it
+evaluates only pairs involving at least one emitted site,
+`ΔU=(14.3996454784255 eV Å/εr) Σ qᵢqⱼ/rᵢⱼ`, in physical ångströms. The current–
+current energy is candidate-independent and omitted. A declared Kelvin
+temperature converts the energy to `x=ΔU/(Nadded kBT)` and the bounded monotone
+rank `−x/(1+|x|)`; the receipt retains both the eV energy and the ranking
+coordinate. Candidate geometry, hard admission, and the target-free frontier
+remain unchanged.
+
+The model is intentionally finite and conditional. Charges are supplied formal
+oxidation-state labels, εr is a scientist-selected uniform isotropic continuum,
+and the boundary is open. Periodic images, Ewald convergence, compensating
+backgrounds, polarization, charge transfer, short-range repulsion, dispersion,
+and electronic structure are absent. A non-neutral finite crop is therefore
+reported rather than silently neutralized. This layer can compare explicit
+frontier hypotheses; it cannot establish a bulk Madelung energy, a dielectric
+constant, an electrostatic potential field, or a validated material energy.
+
 ## Crystallographic-occupancy scattering boundary (Build 421)
 
 The X-ray path now consumes the occupational alternatives already preserved by

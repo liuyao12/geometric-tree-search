@@ -8,7 +8,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-421">
+  <link rel="stylesheet" href="./style.css?v=20260901-422">
   <script type="importmap">
     {
       "imports": {
@@ -792,6 +792,7 @@
               <select id="ionicPairSelect">
                 <option value="none" selected>Off · signed pair sum reported</option>
                 <option value="madelung">Madelung-like · favor lower signed 1/r sum</option>
+                <option value="coulomb">Finite Coulomb · formal point charges in eV</option>
               </select>
             </label>
             <label class="field" for="ionicPairReachSelect">
@@ -800,6 +801,26 @@
                 <option value="4">4dₙₙ · local–mesoscopic</option>
                 <option value="8" selected>8dₙₙ · extended</option>
                 <option value="global">Global finite configuration</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairDielectricSelect">
+              <span>Relative permittivity ε<sub>r</sub> <b>declared uniform medium</b></span>
+              <select id="ionicPairDielectricSelect">
+                <option value="1">1 · vacuum / unscreened</option>
+                <option value="4">4 · weak screening</option>
+                <option value="10" selected>10 · ionic-solid hypothesis</option>
+                <option value="20">20 · strong screening</option>
+                <option value="80">80 · water-like continuum</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairTemperatureSelect">
+              <span>Electrostatic comparison temperature <b>Kelvin · score scale only</b></span>
+              <select id="ionicPairTemperatureSelect">
+                <option value="100">100 K</option>
+                <option value="300">300 K</option>
+                <option value="600" selected>600 K</option>
+                <option value="900">900 K</option>
+                <option value="1200">1,200 K</option>
               </select>
             </label>
             <label class="field" for="ionicPairWeightSelect">
@@ -1660,7 +1681,7 @@
                 <svg id="ionicConvergencePlot" class="ionic-convergence-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to inspect its ionic-pair score across finite reaches"></svg>
                 <div class="ionic-convergence-legend"><span><i class="candidate"></i>exact candidate</span><span><i class="selected"></i>selected pose</span><span><i class="winner"></i>best at reach</span></div>
                 <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
-                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Rank reversals diagnose cutoff sensitivity; they are not Ewald convergence, dielectric screening, electrostatic energy, or a thermodynamic limit.</p>
+                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Geometry mode reports only a scale-free signed pair sum. Finite Coulomb mode reports a conditional ΔU in eV for supplied formal point charges, a declared uniform ε<sub>r</sub>, and an open boundary. Neither mode is Ewald convergence, a solved dielectric response, polarization, charge transfer, or a thermodynamic limit.</p>
               </section>
               <section class="bond-valence-card" aria-label="Local scalar and vector bond-valence audit">
                 <header><span><small>oxidation-state coordination geometry</small><strong>Valence-sum &amp; vector balance</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
@@ -2799,7 +2820,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-421"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-421"></script>
+  <script type="module" src="./app.js?v=20260901-422"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-422"></script>
 </body>
 </html>
