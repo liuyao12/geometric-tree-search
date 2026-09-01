@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { auditModelForceRelaxationEnergyDescent, buildModelForceRelaxationSeed }
+import { auditModelForceRelaxationEnergyDescent, auditModelForceRelaxationOutcome,
+  buildModelForceRelaxationSeed }
   from "./model-force-relaxation-seed.mjs";
 
 const current = [{ position: [0, 0, 0], charge: 1, species: "Na" }];
@@ -21,8 +22,10 @@ const downhill = auditModelForceRelaxationEnergyDescent(current, added,
     electrostaticsOptions: { relativePermittivity: 4 },
   });
 assert.equal(downhill.available, true);
-assert.equal(downhill.accepted, true);
+assert.equal(downhill.accepted, false);
 assert.ok(downhill.energyChangeElectronVolt < 0);
+assert.equal(downhill.energyDecreased, true);
+assert.equal(downhill.forceResidualDecreased, false);
 assert.equal(downhill.atomIdentityPreserved, true);
 assert.equal(downhill.currentConfigurationHeldFixed, true);
 assert.equal(downhill.energyMinimized, false);
@@ -34,6 +37,25 @@ const uphill = auditModelForceRelaxationEnergyDescent(current, added,
   });
 assert.equal(uphill.accepted, false);
 assert.ok(uphill.energyChangeElectronVolt > 0);
+
+const finitePairOptions = { relativePermittivity: 4,
+  bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3 };
+const finitePairSeed = buildModelForceRelaxationSeed(current, added, {
+  displacementCap: .05, electrostaticsOptions: finitePairOptions,
+});
+assert.equal(finitePairSeed.available, true);
+const forceSettling = auditModelForceRelaxationOutcome(current, added,
+  [{ ...added[0], position: [2.79, 0, 0] }], {
+    baselineEvaluation: finitePairSeed.evaluation,
+    electrostaticsOptions: finitePairOptions,
+  });
+assert.equal(forceSettling.accepted, true);
+assert.equal(forceSettling.energyDecreased, true);
+assert.equal(forceSettling.forceResidualDecreased, true);
+assert.equal(forceSettling.rmsForceDecreased, true);
+assert.equal(forceSettling.p90ForceDecreased, true);
+assert.ok(forceSettling.afterForceRmsElectronVoltPerAngstrom
+  < forceSettling.beforeForceRmsElectronVoltPerAngstrom);
 
 const incompleteInduction = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
@@ -47,6 +69,7 @@ assert.deepEqual(incompleteInduction.offsets, [[0, 0, 0]]);
 const completeInduction = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
   electrostaticsOptions: { relativePermittivity: 4,
+    bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
     inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: .3,
     inductionForceMode: "finite-difference" },
 });
@@ -59,11 +82,13 @@ const inductionDownhill = auditModelForceRelaxationEnergyDescent(current, added,
     value + completeInduction.offsets[0][axis] * .1) }], {
     baselineEvaluation: completeInduction.evaluation,
     electrostaticsOptions: { relativePermittivity: 4,
+      bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
       inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: .3,
       inductionForceMode: "finite-difference" },
   });
 assert.equal(inductionDownhill.responseConsistent, true);
 assert.equal(inductionDownhill.accepted, true);
+assert.equal(inductionDownhill.forceResidualDecreased, true);
 
 assert.throws(() => buildModelForceRelaxationSeed(current, added,
   { displacementCap: 0 }), /positive displacement cap/);

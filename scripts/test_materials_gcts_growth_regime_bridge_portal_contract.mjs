@@ -13,10 +13,10 @@ for (const document of [html, alias]) {
   assert.match(document, /J\(x,n̂\) \/ ρ<sub>site<\/sub> ↔ v\(n̂\)/);
   assert.match(document, /data-rate-control-preset="mixed"/);
   assert.match(document, /id="rateControlPlot"/);
-  assert.match(document, /app\.js\?v=20260901-432/);
-  assert.match(document, /style\.css\?v=20260901-432/);
+  assert.match(document, /app\.js\?v=20260901-433/);
+  assert.match(document, /style\.css\?v=20260901-433/);
 }
-assert.match(app, /growth-regime-bridge\.mjs\?v=20260901-432/);
+assert.match(app, /growth-regime-bridge\.mjs\?v=20260901-433/);
 assert.match(app, /function periodicRateControlDensity\(\)/);
 assert.match(app, /function activeRateControlEvidence\(\)/);
 assert.match(app, /both physical responses must declare the same couplingStateSha256/);

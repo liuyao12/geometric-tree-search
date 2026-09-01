@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-432";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-433";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -65,12 +65,14 @@ export function buildModelForceRelaxationSeed(currentSites, addedSites, {
 }
 
 /** Audit the bounded projection against the same finite interaction model. */
-export function auditModelForceRelaxationEnergyDescent(
+export function auditModelForceRelaxationOutcome(
   currentSites, originalAddedSites, proposedAddedSites, {
     baselineEvaluation = null,
     electrostaticsOptions = {},
     absoluteToleranceElectronVolt = 1e-10,
     relativeTolerance = 1e-10,
+    absoluteForceToleranceElectronVoltPerAngstrom = 1e-10,
+    relativeForceTolerance = 1e-10,
   } = {}) {
   if (originalAddedSites.length !== proposedAddedSites.length) {
     throw new Error("energy-descent audit requires one proposed site per original added site");
@@ -82,32 +84,68 @@ export function auditModelForceRelaxationEnergyDescent(
       throw new Error("energy-descent audit cannot change added-site identity or charge");
     }
   });
-  const energyOptions = { ...electrostaticsOptions, inductionForceMode: "omitted" };
   const before = baselineEvaluation || incrementalFinitePointChargeElectrostatics(
-    currentSites, originalAddedSites, energyOptions);
+    currentSites, originalAddedSites, electrostaticsOptions);
   const after = incrementalFinitePointChargeElectrostatics(
-    currentSites, proposedAddedSites, energyOptions);
+    currentSites, proposedAddedSites, electrostaticsOptions);
   const inductionActive = Number(before.inductionPolarizabilityAngstrom3) > 0;
   const responseConsistent = !inductionActive
     || before.inductionAppliedResponseModel === after.inductionAppliedResponseModel;
-  const evaluationsAvailable = Boolean(before.available && after.available);
+  const beforeVectors = before.addedForceVectorsElectronVoltPerAngstrom || [];
+  const afterVectors = after.addedForceVectorsElectronVoltPerAngstrom || [];
+  const completeForceGradient = Boolean(before.pairInteractionForceIsNegativeEnergyGradient
+    && after.pairInteractionForceIsNegativeEnergyGradient
+    && beforeVectors.length === originalAddedSites.length && beforeVectors.every(finiteVector)
+    && afterVectors.length === proposedAddedSites.length && afterVectors.every(finiteVector));
+  const evaluationsAvailable = Boolean(before.available && after.available && completeForceGradient);
   const energyChangeElectronVolt = evaluationsAvailable
     ? after.deltaEnergyElectronVolt - before.deltaEnergyElectronVolt : null;
   const requiredDecreaseElectronVolt = Math.max(Number(absoluteToleranceElectronVolt),
     Number(relativeTolerance) * Math.max(1, Math.abs(before.deltaEnergyElectronVolt || 0)));
   const energyDecreased = evaluationsAvailable && responseConsistent
     && energyChangeElectronVolt < -requiredDecreaseElectronVolt;
+  const beforeForceRms = evaluationsAvailable
+    ? before.rmsAddedForceElectronVoltPerAngstrom : null;
+  const afterForceRms = evaluationsAvailable
+    ? after.rmsAddedForceElectronVoltPerAngstrom : null;
+  const beforeForceP90 = evaluationsAvailable ? forceMagnitudeP90(beforeVectors) : null;
+  const afterForceP90 = evaluationsAvailable ? forceMagnitudeP90(afterVectors) : null;
+  const requiredRmsForceDecrease = Math.max(
+    Number(absoluteForceToleranceElectronVoltPerAngstrom),
+    Number(relativeForceTolerance) * Math.max(1, Math.abs(beforeForceRms || 0)));
+  const requiredP90ForceDecrease = Math.max(
+    Number(absoluteForceToleranceElectronVoltPerAngstrom),
+    Number(relativeForceTolerance) * Math.max(1, Math.abs(beforeForceP90 || 0)));
+  const rmsForceDecreased = evaluationsAvailable && responseConsistent
+    && afterForceRms < beforeForceRms - requiredRmsForceDecrease;
+  const p90ForceDecreased = evaluationsAvailable && responseConsistent
+    && afterForceP90 < beforeForceP90 - requiredP90ForceDecrease;
+  const forceResidualDecreased = rmsForceDecreased && p90ForceDecreased;
+  const accepted = energyDecreased && forceResidualDecreased;
   return Object.freeze({
     available: evaluationsAvailable && responseConsistent,
-    accepted: energyDecreased,
-    reason: !evaluationsAvailable ? "before/after finite interaction energy unavailable"
+    accepted,
+    reason: !before.available || !after.available ? "before/after finite interaction unavailable"
+      : !completeForceGradient ? "before/after complete finite interaction gradient unavailable"
       : !responseConsistent ? `induction response changed from ${before.inductionAppliedResponseModel} to ${after.inductionAppliedResponseModel}`
-        : energyDecreased ? "finite interaction energy decreased"
-          : "finite interaction energy did not decrease beyond numerical tolerance",
+        : !energyDecreased ? "finite interaction energy did not decrease beyond numerical tolerance"
+          : !forceResidualDecreased ? "finite interaction force residual did not decrease in both RMS and p90"
+            : "finite interaction energy and force residual decreased",
     beforeEnergyElectronVolt: before.deltaEnergyElectronVolt ?? null,
     afterEnergyElectronVolt: after.deltaEnergyElectronVolt ?? null,
     energyChangeElectronVolt,
     requiredDecreaseElectronVolt,
+    energyDecreased,
+    forceResidualDecreased,
+    rmsForceDecreased,
+    p90ForceDecreased,
+    beforeForceRmsElectronVoltPerAngstrom: beforeForceRms,
+    afterForceRmsElectronVoltPerAngstrom: afterForceRms,
+    beforeForceP90ElectronVoltPerAngstrom: beforeForceP90,
+    afterForceP90ElectronVoltPerAngstrom: afterForceP90,
+    requiredRmsForceDecreaseElectronVoltPerAngstrom: requiredRmsForceDecrease,
+    requiredP90ForceDecreaseElectronVoltPerAngstrom: requiredP90ForceDecrease,
+    completeForceGradient,
     responseConsistent,
     beforeAppliedResponseModel: before.inductionAppliedResponseModel || null,
     afterAppliedResponseModel: after.inductionAppliedResponseModel || null,
@@ -116,11 +154,15 @@ export function auditModelForceRelaxationEnergyDescent(
     pairCountChanged: (before.pairCount || 0) !== (after.pairCount || 0),
     proposedEnergyDistanceEvaluations: after.distanceEvaluations || 0,
     proposedEnergyMutualTensorEvaluations: after.inductionMutualTensorEvaluations || 0,
+    proposedForceEnergyEvaluations: after.inductionForceEnergyEvaluations || 0,
     atomIdentityPreserved: true,
     currentConfigurationHeldFixed: true,
     energyMinimized: false,
     forceIntegratedAsTime: false,
     targetUsed: false,
-    claimBoundary: "This is a before/after descent certificate for one bounded proposal under the same declared finite interaction hypothesis. It is not proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
+    claimBoundary: "This is a before/after energy-and-force-residual descent certificate for the movable emitted sites under one declared finite interaction hypothesis while the existing configuration is fixed. It is not a total-system force audit, proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
   });
 }
+
+// Backward-compatible name retained for receipts and saved research notebooks.
+export const auditModelForceRelaxationEnergyDescent = auditModelForceRelaxationOutcome;

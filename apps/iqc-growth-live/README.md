@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 433 · a settling leap must reduce residual force
+
+The force-informed projection now has a third monotonicity gate. In addition
+to lowering the learned contact/angle residual and the selected finite
+interaction energy, it must lower both the RMS and p90 magnitudes of the
+complete interaction force on the emitted atoms. The before and after force
+fields use identical species, formal charges, cutoff, pair parameters,
+polarization mode, and actually applied direct or mutual response. Incomplete
+gradients and response changes fail closed.
+
+This distinguishes a merely downhill coordinate change from a credible step
+toward local settling. For example, bare attractive Coulomb motion can lower
+energy while increasing force magnitude; it is now rejected. A balanced
+Coulomb + Born–Mayer step toward its finite-model minimum can lower energy and
+force residual together and pass. The live card and receipt expose RMS/p90
+before and after plus the extra force-evaluation work. Only emitted atoms are
+audited while the existing solid is fixed, so this remains neither a
+total-system force balance nor a mechanical-equilibrium or MD claim.
+
 ## Build 432 · force-seeded settling now needs dual descent
 
 The finite-interaction settling arm now certifies the outcome as well as the

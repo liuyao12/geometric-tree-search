@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+## Emitted-site force-residual descent (Build 433)
+
+The bounded force-seeded accommodation now commits only under a three-part
+certificate: the learned contact/angle residual decreases, the same finite
+interaction energy decreases, and both RMS and p90 complete-force magnitudes
+on the newly emitted sites decrease. The outcome audit recomputes the full
+selected gradient, including the numerical polarization derivative when
+induction is active; an incomplete gradient or changed applied response model
+rejects the projection.
+
+The pure attractive-Coulomb control demonstrates why the additional gate is
+needed: moving unlike charges together is downhill but increases their force
+residual, so it no longer qualifies as settling. A finite Coulomb + Born–Mayer
+control moving toward its pair minimum lowers energy and force residual and is
+accepted, including with response-consistent induction enabled. The audit is
+restricted to movable emitted atoms against a fixed current configuration.
+It therefore measures local residual-force descent, not total force balance,
+stationarity, mechanical equilibrium, energy minimization, or dynamics.
+
 ## Dual-descent force-seeded settling (Build 432)
 
 The force-informed post-attachment arm now has two independent monotonicity

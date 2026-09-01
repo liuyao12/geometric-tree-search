@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-432">
+  <link rel="stylesheet" href="./style.css?v=20260901-433">
   <script type="importmap">
     {
       "imports": {
@@ -684,10 +684,10 @@
                 <option value="strong">Strong · 8% dₙₙ · 20 iterations</option>
                 <option value="observed">Observed non-affine vector seed · 5% dₙₙ · fail closed</option>
                 <option value="force">Residual-force direction seed · 5% dₙₙ · fail closed</option>
-                <option value="model-force">Finite interaction −∇U seed · 5% dₙₙ · fail closed</option>
+                <option value="model-force">Finite interaction −∇U · energy + force audit · fail closed</option>
               </select>
             </label>
-            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; residual-force mode requires site-resolved archive forces; finite-interaction mode also requires a complete selected-model energy gradient and a lower before/after energy under the same response model.</div>
+            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; residual-force mode requires site-resolved archive forces; finite-interaction mode also requires lower response-consistent interaction energy and lower RMS and p90 force residuals on the emitted sites.</div>
               </div>
             </details>
             <details class="growth-control-group">
@@ -2894,7 +2894,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-432"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-432"></script>
+  <script type="module" src="./app.js?v=20260901-433"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-433"></script>
 </body>
 </html>
