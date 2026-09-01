@@ -9,7 +9,7 @@ import {
 const digest = "a".repeat(64);
 const request = buildExperimentalScatteringRequest({
   structureSha256: digest, materialLabel: "NaCl", species: ["Na", "Cl"],
-  probe: "x-ray", modelChannel: { kind: "constant-Z" }, qMinimumInverseAngstrom: .2,
+  probe: "x-ray", modelChannel: { kind: "xray-neutral-f0" }, qMinimumInverseAngstrom: .2,
   qMaximumInverseAngstrom: 16,
 });
 assert.equal(request.analysisRole, "post-growth validation only");
@@ -38,7 +38,7 @@ assert.equal(comparison.candidateSetChanged, false);
 const twoTheta = qDimensionless.map(q => 2 * Math.asin(q / 2.82 * 1.5406 / (4 * Math.PI)) * 180 / Math.PI);
 const experimental = validateExperimentalScatteringResponse(request, {
   requestId: request.requestId, structureSha256: digest, probe: "x-ray",
-  modelChannel: { kind: "constant-Z" }, axis: "two-theta-degree", wavelengthAngstrom: 1.5406,
+  modelChannel: { kind: "xray-neutral-f0" }, axis: "two-theta-degree", wavelengthAngstrom: 1.5406,
   abscissa: twoTheta, intensity: demo.intensity, standardUncertainty: demo.standardUncertainty,
   intensityUnits: "counts", resolutionFwhmQ: .08, independentOfGrowth: true,
   usedForGrowth: false, usedForMarking: false, usedForCandidateSelection: false,

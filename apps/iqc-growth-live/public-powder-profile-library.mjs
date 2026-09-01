@@ -84,11 +84,11 @@ export function findRruffPowderProfiles(library, request = {}) {
 
 export function rruffRequestCompatibility(request = {}) {
   if (request.probe !== "x-ray") return Object.freeze({ compatible: false, reason: "RRUFF library contains X-ray powder profiles" });
-  if (request.modelChannel?.kind !== "constant-Z") {
+  if (request.modelChannel?.kind !== "xray-neutral-f0") {
     return Object.freeze({ compatible: false,
-      reason: "select the constant-Z electron-count X-ray approximation; unit, centered-contrast, and sublattice curves are not comparable to measured X-ray intensity" });
+      reason: "select the neutral-atom q-dependent X-ray f0 channel; unit, constant-Z, centered-contrast, and sublattice curves are not comparable to measured X-ray intensity" });
   }
-  return Object.freeze({ compatible: true, reason: "X-ray probe and constant-Z electron-count model channel agree" });
+  return Object.freeze({ compatible: true, reason: "X-ray probe and q-dependent neutral-atom f0 model channel agree" });
 }
 
 export function buildRruffExperimentalResponse(request, match, library) {
@@ -105,7 +105,7 @@ export function buildRruffExperimentalResponse(request, match, library) {
     requestId: request.requestId,
     structureSha256: request.structureSha256,
     probe: "x-ray",
-    modelChannel: { kind: "constant-Z", species: null },
+    modelChannel: { kind: "xray-neutral-f0", species: null },
     axis: record.axis,
     wavelengthAngstrom: record.wavelengthAngstrom,
     abscissa: record.x,

@@ -1,5 +1,5 @@
 import { validateCandidateActionPathGeometry }
-  from "./action-path-geometry.mjs?v=20260901-418";
+  from "./action-path-geometry.mjs?v=20260901-419";
 
 export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v4";
 export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v4";

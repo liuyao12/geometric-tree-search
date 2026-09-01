@@ -14,7 +14,7 @@ function positive(value, label) {
 
 function canonicalChannel(channel = {}) {
   const kind = String(channel.kind || "unit");
-  if (!["unit", "constant-Z", "chemical-Z", "species-sublattice"].includes(kind)) {
+  if (!["unit", "constant-Z", "xray-neutral-f0", "chemical-Z", "species-sublattice"].includes(kind)) {
     throw new RangeError("unsupported scattering model channel");
   }
   const species = kind === "species-sublattice" ? String(channel.species || "").trim() : null;

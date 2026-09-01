@@ -18,7 +18,7 @@ assert.equal(library.license, "CC BY 4.0");
 
 const request = {
   requestId: "powder-test", structureSha256: "a".repeat(64), materialLabel: "NaCl rocksalt",
-  species: ["Na", "Cl"], probe: "x-ray", modelChannel: { kind: "constant-Z", species: null },
+  species: ["Na", "Cl"], probe: "x-ray", modelChannel: { kind: "xray-neutral-f0", species: null },
 };
 const halite = findRruffPowderProfiles(library, request);
 assert.equal(halite.length, 3);
@@ -30,6 +30,7 @@ assert.equal(halite[0].record.x.length, 8501);
 const response = buildRruffExperimentalResponse(request, halite[0], library);
 assert.equal(response.axis, "two-theta-degree");
 assert.equal(response.independentOfGrowth, true);
+assert.equal(response.modelChannel.kind, "xray-neutral-f0");
 assert.equal(response.usedForGrowth, false);
 assert.equal(response.materialCorrespondence.sameMaterialClaimAllowed, true);
 assert.match(response.provenance.title, /Halite R070292/);
@@ -39,6 +40,8 @@ assert.equal(carbon.length, 1);
 assert.equal(carbon[0].record.phase, "Graphite");
 assert.equal(carbon[0].correspondence.level, "composition-only");
 assert.equal(carbon[0].correspondence.sameMaterialClaimAllowed, false);
+
+assert.equal(rruffRequestCompatibility({ ...request, modelChannel: { kind: "constant-Z" } }).compatible, false);
 
 assert.equal(rruffRequestCompatibility(request).compatible, true);
 assert.equal(rruffRequestCompatibility({ ...request, probe: "neutron" }).compatible, false);

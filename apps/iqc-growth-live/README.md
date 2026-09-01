@@ -1,5 +1,36 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 419 · physical q-dependent X-ray amplitudes
+
+The public powder-profile bridge no longer compares measured XRD against a
+q-independent atomic-number proxy. For supported chemistry, the reciprocal-
+space inspector now evaluates the finite Debye orientational average with a
+separate neutral-atom Cromer–Mann `f0(q)` for every site. Dimensionless `q·d_nn`
+is converted to physical Å⁻¹ before evaluating the four-Gaussian
+International-Tables parameterization, and the displayed intensity retains
+the form-factor envelope by using one fixed forward-amplitude normalization.
+Clicking **browse public RRUFF profiles** automatically selects this physically
+compatible channel; the geometric unit-weight `S(q)`, constant-Z diagnostic,
+centered chemical contrast, and sublattice views remain available for their
+original structural roles.
+
+The coefficient provenance is receipt-visible and source-pinned to the IUCr
+Cromer–Mann definition and Gemmi's IT92 table at an immutable commit and file
+SHA-256. The browser currently covers the elements exercised by the portal's
+ice, layered-material, crystal, quasicrystal, glass, and RRUFF examples;
+unsupported imported chemistry fails closed instead of silently reverting to
+constant Z. Reported displacement data can attenuate coherent terms through
+`Ueq`; a requested full anisotropic tensor is explicitly reduced to `Ueq` in
+this X-ray channel.
+
+This is a materially better calculated powder intensity, but still not a
+Rietveld model. Neutral atoms are used: ionic and anomalous-dispersion terms,
+occupancies without explicit site resolution, preferred orientation,
+absorption, multiplicity corrections, diffuse redistribution, and instrument
+response are omitted unless separately declared by the measurement contract.
+The experimental profile remains post-growth evidence and cannot alter any
+cluster, marking, candidate, ranking, or growth decision.
+
 ## Build 418 · public experimental powder profiles, without file upload
 
 The experiment workspace can now browse a provenance-pinned subset of the
@@ -21,9 +52,10 @@ offered beside graphene, or calcite beside an unidentified Ca–C–O structure,
 is visibly labeled **chemistry only** and remains a cross-phase experimental
 reference rather than validation of the selected phase.
 
-RRUFF profiles require the X-ray probe and the portal's q-independent atomic-Z
-electron-count approximation. Unit-weight, composition-centered, and
-sublattice curves fail closed instead of being compared to measured X-ray intensity. The original 8,501-point XY arrays are
+RRUFF profiles require the X-ray probe and, as of Build 419, the portal's
+q-dependent neutral-atom Cromer–Mann channel. Unit-weight, constant-Z,
+composition-centered, and sublattice curves fail closed instead of being
+compared to measured X-ray intensity. The original 8,501-point XY arrays are
 retained without portal smoothing or peak picking. Missing experimental
 uncertainties and instrument resolution remain explicit: the comparison uses
 uniform weights and no added resolution convolution. Profile, library, DIF,

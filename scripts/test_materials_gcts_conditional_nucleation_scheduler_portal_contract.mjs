@@ -26,7 +26,7 @@ for (const token of ["Seeded nucleation-event hypotheses",
   "Points are not atomistic nuclei"])
   assert.ok(html.includes(token), token);
 
-for (const token of ["conditional-nucleation-scheduler.mjs?v=20260901-418",
+for (const token of ["conditional-nucleation-scheduler.mjs?v=20260901-419",
   "function renderConditionalNucleationSchedule()", "function freezeConditionalNucleationSchedule()",
   "conditionalNucleationScheduleAudit = buildConditionalNucleationSchedule(",
   "events: conditionalNucleationScheduleAudit.events.map", "no atoms or GCTS seeds changed"])

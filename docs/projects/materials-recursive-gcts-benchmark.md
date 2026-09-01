@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+## q-dependent X-ray calculation boundary (Build 419)
+
+The experiment-facing powder path now has its own physical scattering model,
+separate from every unit-weight geometric `S(q)` used to describe or compare
+growth states. For each physical momentum transfer `q`, the model evaluates
+neutral-atom Cromer–Mann amplitudes
+`f0(q)=sum_i a_i exp[-b_i(q/4pi)^2]+c`, then computes the finite Debye self and
+pair sum with species-specific `f_i(q)f_j(q)`. A fixed `sum_i f_i(0)^2`
+normalization preserves the form-factor decay while leaving one nuisance
+intensity scale for the independent experiment. The tabulation is restricted
+to its stated `sin(theta)/lambda < 2 Å^-1` range.
+
+The coefficient source, immutable Gemmi revision, and source-file SHA-256 are
+frozen in the browser module. Supported mixed occupancy tokens use the explicit
+equal-component amplitude already implied by the portal token; chemistry with
+no complete neutral-atom table fails closed. Reported `Ueq` may attenuate
+coherent pair terms. Full anisotropic tensors are currently reduced to `Ueq`
+for this channel, and diffuse redistribution is not added.
+
+The upgrade removes the former constant-Z comparison but does not turn the
+portal into a refinement engine. It omits ionic and anomalous amplitudes,
+preferred orientation, absorption, sample-shape effects, reflection
+multiplicity corrections, and undeclared instrument response. Thus Rwp,
+reduced χ², and correlation remain post-growth diagnostics with the same
+identity and no-feedback boundaries; they do not select a structure or prove a
+growth mechanism.
+
 ## Public RRUFF profile bridge (Build 418)
 
 The post-growth measurement contract now has a no-upload public-data path. A
@@ -18,8 +45,8 @@ cannot validate phase identity. This distinction is propagated through the
 validated profile, numerical comparison, plot badge, explanatory text, and
 receipt as `sameMaterialEvidence` and `materialCorrespondence`.
 
-The library is X-ray-only and requires the q-independent atomic-Z
-electron-count model channel; other channels fail closed. The source's 8,501-point processed arrays are neither
+The library is X-ray-only and requires the q-dependent neutral-atom
+Cromer–Mann channel; other channels fail closed. The source's 8,501-point processed arrays are neither
 smoothed nor peak-picked. Because the normalized source supplies neither point
 uncertainties nor an instrument-resolution function, the UI visibly uses unit
 weights and zero additional broadening. Consequently Rwp and reduced χ² are

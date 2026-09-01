@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-418";
+  from "./external-action-barrier.mjs?v=20260901-419";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-418";
+  from "./action-path-viewer.mjs?v=20260901-419";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-418";
+  from "./action-path-mechanism.mjs?v=20260901-419";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-418";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-419";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-418";
+  from "./kinetic-event-spectrum.mjs?v=20260901-419";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-418";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-419";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-418";
+  from "./kinetic-geometry-response.mjs?v=20260901-419";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-418";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-419";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-418";
+  from "./surface-hop-events.mjs?v=20260901-419";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-418";
+  from "./species-exchange-events.mjs?v=20260901-419";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-418";
+  from "./external-state-relaxation.mjs?v=20260901-419";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-418";
+  from "./reversible-transition-lineage.mjs?v=20260901-419";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-418";
+  from "./finite-network-population-dynamics.mjs?v=20260901-419";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-418";
+  from "./finite-network-geometric-flux.mjs?v=20260901-419";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-418";
+  from "./finite-network-structural-flux.mjs?v=20260901-419";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-418";
+  from "./geometric-state-descriptor.mjs?v=20260901-419";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-418";
+  from "./finite-network-global-order.mjs?v=20260901-419";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-418";
+  from "./finite-network-first-passage.mjs?v=20260901-419";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-418";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-419";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-418";
+  from "./finite-network-passage-control.mjs?v=20260901-419";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-418";
+  from "./finite-network-rate-intervention.mjs?v=20260901-419";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-418";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-418";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-418";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-418";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-418";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-418";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-419";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-418";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-419";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-418";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-419";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-418";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-419";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-418";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-419";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-418";
+  from "./classical-nucleation-evidence.mjs?v=20260901-419";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-418";
+  from "./classical-capillarity-action.mjs?v=20260901-419";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-418";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-419";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-418";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-419";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-418";
+  from "./critical-nucleus-geometry.mjs?v=20260901-419";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-418";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-419";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-418";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-419";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-418";
+  from "./experimental-scattering-validation.mjs?v=20260901-419";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-418";
+  from "./public-powder-profile-library.mjs?v=20260901-419";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-418";
+  from "./external-attachment-kinetics.mjs?v=20260901-419";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-418";
+  from "./external-interface-flux.mjs?v=20260901-419";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-418";
+  from "./growth-regime-bridge.mjs?v=20260901-419";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-418";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-419";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-418";
+  from "./catalog-conditional-chronology.mjs?v=20260901-419";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-418";
+  from "./coupled-physics-state.mjs?v=20260901-419";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-418";
+} from "./ice-molecular-anchor-growth.js?v=20260901-419";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-418";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-419";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-418";
+} from "./ice-orientation-evidence.mjs?v=20260901-419";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -226,6 +226,9 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
   localOrientationalOrder, orientationalOrderDistribution, powderStructureFactor, summarizeStructureFactor,
   weightedPowderStructureFactor }
   from "./structure-observables.js?v=20260827-7";
+import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
+  XRAY_FORM_FACTOR_PROVENANCE }
+  from "./xray-form-factors.mjs?v=20260901-419";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -328,7 +331,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-418", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-419", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -4796,7 +4799,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418",
+    generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4882,7 +4885,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418",
+    generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5083,7 +5086,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-418", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-419", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5130,7 +5133,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-418",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5382,7 +5385,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-418",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5901,7 +5904,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-418",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -8335,9 +8338,10 @@ function scatteringAtomicNumber(chemistryToken) {
 }
 
 function scatteringChannelLabel(mode = scatteringContrastMode) {
+  if (mode === "xray") return "neutral-atom X-ray f₀(q)";
   if (mode === "electron") return "electron-count proxy · constant Z";
   if (mode === "chemical") return "composition-centered Z contrast";
-  if (mode.startsWith("species:")) return `${occupancyDisplayLabel(mode.slice(8))} sublattice`;
+  if (mode.startsWith("species:")) return `${occupancyDisplayLabel({ species: mode.slice(8) })} sublattice`;
   return "unit-weight number density";
 }
 
@@ -8369,6 +8373,26 @@ function ensureWeightedStructureFactor(stats, mode = scatteringContrastMode) {
   stats.weightedStructureFactors ||= {};
   const cacheKey = `${mode}|${scatteringDisplacementMode}`;
   if (stats.weightedStructureFactors[cacheKey]) return stats.weightedStructureFactors[cacheKey];
+  if (mode === "xray") {
+    const result = finiteDebyeXrayPowderIntensity({
+      species: stats.species || [], pairs: stats.scatteringPairs || [],
+      nearestNeighborAngstrom: referenceSpacingA, dimension: stats.dimension,
+      meanSquareDisplacements: stats.meanSquareDisplacements || [],
+      includeIsotropicDisplacement: scatteringUsesReportedDisplacement(),
+    });
+    result.summary = summarizeStructureFactor(result);
+    result.mode = mode;
+    result.channelLabel = scatteringChannelLabel(mode);
+    result.nonzeroWeightedSites = stats.species.length;
+    result.signedWeights = false;
+    result.displacementMode = scatteringDisplacementMode;
+    result.reportedDisplacementSites = (stats.meanSquareDisplacements || []).filter(Number.isFinite).length;
+    result.reportedAnisotropicDisplacementSites = stats.anisotropicDisplacementSites || 0;
+    result.unknownDisplacementSitesUseZeroAttenuation = true;
+    result.anisotropicDisplacementReducedToUeq = scatteringUsesAnisotropicDisplacement();
+    stats.weightedStructureFactors[cacheKey] = result;
+    return result;
+  }
   const weights = scatteringWeights(stats, mode);
   const selfWeightSquares = weights.reduce((sum, value) => sum + value * value, 0);
   if (selfWeightSquares <= 1e-12) return null;
@@ -8402,13 +8426,17 @@ function ensureWeightedStructureFactor(stats, mode = scatteringContrastMode) {
 
 function syncScatteringContrastOptions() {
   const tokens = [...new Set(referenceStructuralStats?.species || [])].sort();
-  const modes = [
+  const modes = [];
+  if (tokens.length && tokens.every(token => neutralXrayFormFactorSupport(token).supported)) {
+    modes.push(["xray", "X-ray · neutral-atom f₀(q)"]);
+  }
+  modes.push(
     ["unit", "all atoms · unit number density"],
     ["electron", "all atoms · constant Z proxy"],
-  ];
+  );
   const distinctZ = new Set(tokens.map(scatteringAtomicNumber));
   if (distinctZ.size > 1) modes.push(["chemical", "chemical contrast · Z − composition mean"]);
-  tokens.forEach((token) => modes.push([`species:${token}`, `${occupancyDisplayLabel(token)} sublattice only`]));
+  tokens.forEach((token) => modes.push([`species:${token}`, `${occupancyDisplayLabel({ species: token })} sublattice only`]));
   const signature = modes.map(([value]) => value).join("|");
   if (scatteringContrastSelect.dataset.signature !== signature) {
     scatteringContrastSelect.replaceChildren(...modes.map(([value, label]) => {
@@ -9198,6 +9226,7 @@ function renderTrainingStats() {
 }
 
 function currentExperimentalScatteringChannel() {
+  if (scatteringContrastMode === "xray") return { kind: "xray-neutral-f0" };
   if (scatteringContrastMode === "electron") return { kind: "constant-Z" };
   if (scatteringContrastMode === "chemical") return { kind: "chemical-Z" };
   if (scatteringContrastMode.startsWith("species:")) {
@@ -9263,6 +9292,12 @@ async function browsePublicPowderProfiles() {
   publicPowderProfilePanel.hidden = false;
   renderPublicPowderProfileBrowser();
   if (!publicPowderProfileLibrary) publicPowderProfileLibrary = await loadRruffPowderLibrary();
+  if (scatteringContrastMode !== "xray"
+      && (referenceStructuralStats?.species || []).every(token => neutralXrayFormFactorSupport(token).supported)) {
+    scatteringContrastMode = "xray";
+    syncScatteringContrastOptions();
+    renderStructureStats();
+  }
   const request = await currentExperimentalScatteringRequest();
   renderPublicPowderProfileBrowser(request);
   receiptStatus.textContent = `Public RRUFF/JARVIS library verified · ${publicPowderProfileLibrary.profileCount} pinned profiles · ${publicPowderProfileMatches.length} exact-chemistry matches · no growth feedback.`;
@@ -9370,9 +9405,9 @@ function renderExperimentalScatteringValidation() {
     span.textContent = label; strong.textContent = value; span.append(strong); return span;
   }));
   experimentalScatteringState.textContent = comparison.sameMaterialEvidence
-    ? `${profile.provenance.title} · ${profile.probe} · ${comparison.comparedPoints} points · ${profile.uncertaintySource} · ${comparison.nuisance}. Exact chemistry and curated phase correspondence permit a same-phase post-growth comparison. It is still not a Rietveld refinement, phase assignment, mechanism, energy, rate, or branch score.`
+    ? `${profile.provenance.title} · ${profile.probe} · ${scatteringChannelLabel()} · ${comparison.comparedPoints} points · ${profile.uncertaintySource} · ${comparison.nuisance}. Exact chemistry and curated phase correspondence permit a same-phase post-growth comparison. It is still not a Rietveld refinement, phase assignment, mechanism, energy, rate, or branch score.`
     : comparison.experimentalEvidence
-      ? `${profile.provenance.title} · ${profile.probe} · ${comparison.comparedPoints} points · ${profile.uncertaintySource} · ${comparison.nuisance}. This is a real experimental reference with ${profile.materialCorrespondence.basis}; it cannot validate the selected phase. It never affects growth or ranking.`
+      ? `${profile.provenance.title} · ${profile.probe} · ${scatteringChannelLabel()} · ${comparison.comparedPoints} points · ${profile.uncertaintySource} · ${comparison.nuisance}. This is a real experimental reference with ${profile.materialCorrespondence.basis}; it cannot validate the selected phase. It never affects growth or ranking.`
     : `This deterministic synthetic-count profile is generated from the current frozen ${scatteringChannelLabel()} curve, then broadened, offset, and perturbed to exercise the measurement pipeline. It validates axis conversion, uncertainty weighting, resolution convolution, nuisance fitting, and residual rendering—but supplies no independent experimental evidence and cannot validate the material.`;
 }
 
@@ -9567,15 +9602,19 @@ function renderStructureStats() {
     rdfEyebrow.textContent = `${dimension}D finite-observation powder average${scatteringUsesAnisotropicDisplacement()
       ? " · reported full Uij" : scatteringDisplacementMode === "reported" ? " · reported Ueq" : ""}`;
     rdfTitle.textContent = scatteringContrastMode === "unit" ? "geometric S(q) · unit number density"
+      : scatteringContrastMode === "xray" ? "powder Iˣ(q) / Σf₀(0)² · q-dependent form factors"
       : scatteringContrastMode === "electron" ? "weighted Iᶻ(q) / ΣZ² · low-q proxy"
         : scatteringContrastMode === "chemical" ? "chemical IΔZ(q) / ΣΔZ² · centered contrast"
           : `${scatteringChannelLabel()} · unit sublattice S(q)`;
     rdfChart.setAttribute("aria-label", `${scatteringChannelLabel()} finite-observation powder scattering for known positions and live reconstruction`);
     const summary = knownSq.summary;
     const liveSummary = liveSq?.summary || null;
-    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}${scatteringUsesReportedDisplacement()
+    const scatteringOrdinate = scatteringContrastMode === "xray" ? "I" : "S";
+    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · ${scatteringOrdinate} ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}${scatteringUsesReportedDisplacement()
       ? ` · ${scatteringUsesAnisotropicDisplacement() ? "Uij" : "Ueq"} ${knownSq.reportedDisplacementSites}/${referenceStructuralStats.count}` : ""}`;
-    rdfStatus.title = scatteringContrastMode === "electron"
+    rdfStatus.title = scatteringContrastMode === "xray"
+      ? `${XRAY_FORM_FACTOR_PROVENANCE.model}; f₀ depends on q in physical Å⁻¹. Neutral atoms only; no ionic or anomalous terms, preferred orientation, absorption, multiplicity correction, diffuse redistribution, or instrument response.`
+      : scatteringContrastMode === "electron"
       ? "Constant atomic-number weights equal the neutral-atom forward electron count only as a low-q proxy. They are not q-dependent X-ray form factors or calibrated intensity."
       : scatteringContrastMode === "chemical"
         ? "Signed Z−mean(Z) weights suppress the number-density channel and expose composition contrast. This is not a standard binary Bhatia–Thornton factor for arbitrary multicomponent chemistry."
@@ -9586,13 +9625,19 @@ function renderStructureStats() {
           : scatteringDisplacementMode === "reported"
             ? "Reported Cartesian Uiso/Uij tensors are reduced to the intrinsic-dimensional Ueq and attenuate coherent pair terms. Self scattering stays at one; missing tensors use zero attenuation, and diffuse redistribution is omitted."
             : "Debye-style finite-window powder average of mean positions with unit atom weights.";
-    if (scatteringUsesReportedDisplacement()) rdfStatus.title += scatteringUsesAnisotropicDisplacement()
-      ? ` Coherent cross terms use full projected reported Uiso/Uij covariance with ${knownSq.orientationQuadrature}; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.`
-      : " Coherent cross terms additionally use intrinsic-dimensional Ueq from reported Uiso/Uij tensors; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.";
-    drawChartFrame(rdfChart, "q a", "S");
+    if (scatteringUsesReportedDisplacement()) rdfStatus.title += scatteringContrastMode === "xray"
+      ? scatteringUsesAnisotropicDisplacement()
+        ? " The requested full Uij tensors are explicitly reduced to intrinsic-dimensional Ueq for this X-ray calculation; coherent pair terms are attenuated, missing tensors use zero attenuation, and diffuse redistribution is omitted."
+        : " Coherent pair terms use intrinsic-dimensional Ueq attenuation; missing tensors use zero attenuation and diffuse redistribution is omitted."
+      : scatteringUsesAnisotropicDisplacement()
+        ? ` Coherent cross terms use full projected reported Uiso/Uij covariance with ${knownSq.orientationQuadrature}; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.`
+        : " Coherent cross terms additionally use intrinsic-dimensional Ueq from reported Uiso/Uij tensors; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.";
+    drawChartFrame(rdfChart, "q a", scatteringOrdinate);
     const maximum = Math.max(1, ...knownSq.values, ...(liveSq?.values || [])) * 1.08;
-    const unityY = 96 - Math.min(1, 1 / maximum) * 84;
-    rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
+    if (scatteringContrastMode !== "xray") {
+      const unityY = 96 - Math.min(1, 1 / maximum) * 84;
+      rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
+    }
     [5, 10, 15, 20].filter((tick) => tick >= knownSq.qMin && tick <= knownSq.qMax).forEach((tick) => {
       const x = 29 + (tick - knownSq.qMin) / (knownSq.qMax - knownSq.qMin) * 323;
       rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
@@ -15434,7 +15479,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-418" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-419" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15442,7 +15487,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-418",
+      buildId: "20260901-419",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16056,7 +16101,8 @@ async function buildExperimentReceipt() {
           mode: displayedScatteringContrastMode,
           requestedMode: requestedScatteringContrastMode,
           label: scatteringChannelLabel(displayedScatteringContrastMode),
-          normalization: "finite Debye orientational average divided by sum of squared per-site weights",
+          normalization: displayedSq.normalization
+            || "finite Debye orientational average divided by sum of squared per-site weights",
           nonzeroWeightedSites: displayedSq.nonzeroWeightedSites ?? referenceStructuralStats.count,
           signedWeights: Boolean(displayedSq.signedWeights),
           peakQTimesNearestNeighbor: receiptRound(displayedSq.summary.peakQ),
@@ -16067,7 +16113,13 @@ async function buildExperimentReceipt() {
           elementSublatticeOnly: displayedScatteringContrastMode.startsWith("species:"),
           constantAtomicNumberProxy: displayedScatteringContrastMode === "electron",
           compositionCenteredAtomicNumberContrast: displayedScatteringContrastMode === "chemical",
-          qDependentAtomicFormFactorsUsed: false,
+          qDependentAtomicFormFactorsUsed: displayedScatteringContrastMode === "xray",
+          neutralAtomicFormFactorsUsed: displayedScatteringContrastMode === "xray",
+          formFactorModel: displayedSq.formFactorModel || null,
+          formFactorSource: displayedSq.formFactorSource || null,
+          formFactorSourceSha256: displayedScatteringContrastMode === "xray"
+            ? XRAY_FORM_FACTOR_PROVENANCE.implementationSourceSha256 : null,
+          ionicFormFactorsIncluded: false,
           neutronScatteringLengthsUsed: false,
           occupancyWeightedScatteringUsed: false,
           anomalousDispersionUsed: false,
@@ -16076,7 +16128,9 @@ async function buildExperimentReceipt() {
           reportedDisplacementSites: displayedSq.reportedDisplacementSites || 0,
           missingDisplacementTensorsUseZeroAttenuation: true,
           displacementReduction: scatteringUsesAnisotropicDisplacement()
-            ? "full reported Cartesian Uiso/Uij projected into the intrinsic space"
+            ? displayedScatteringContrastMode === "xray"
+              ? "full reported Cartesian Uiso/Uij reduced to intrinsic-dimensional Ueq"
+              : "full reported Cartesian Uiso/Uij projected into the intrinsic space"
             : scatteringDisplacementMode === "reported"
               ? "intrinsic-dimensional isotropic-equivalent Ueq from reported Cartesian Uiso/Uij" : null,
           orientationQuadrature: displayedSq.orientationQuadrature || null,
@@ -16096,6 +16150,13 @@ async function buildExperimentReceipt() {
         comparedPoints: experimentalScatteringComparison?.comparedPoints || 0,
         probe: experimentalScatteringProfile.probe,
         modelChannel: experimentalScatteringProfile.modelChannel,
+        calculatedIntensityModel: displayedSq.formFactorModel || scatteringChannelLabel(displayedScatteringContrastMode),
+        qDependentAtomicFormFactorsUsed: Boolean(displayedSq.qDependentFormFactorsUsed),
+        formFactorSource: displayedSq.formFactorSource || null,
+        formFactorSourceSha256: displayedSq.qDependentFormFactorsUsed
+          ? XRAY_FORM_FACTOR_PROVENANCE.implementationSourceSha256 : null,
+        ionicFormFactorsIncluded: false,
+        anomalousDispersionIncluded: false,
         source: experimentalScatteringProfile.provenance,
         axis: experimentalScatteringProfile.axis,
         wavelengthAngstrom: experimentalScatteringProfile.wavelengthAngstrom,
@@ -18118,7 +18179,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-418" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-419" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -26491,7 +26552,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418",
+    generatedAt: new Date().toISOString(), buildId: "20260901-419",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -29762,7 +29823,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418",
+    generatedAt: new Date().toISOString(), buildId: "20260901-419",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -31217,7 +31278,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-419", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -39974,7 +40035,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-418",
+    generatedAt: new Date().toISOString(), buildId: "20260901-419",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -45182,7 +45243,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-418" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-419" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

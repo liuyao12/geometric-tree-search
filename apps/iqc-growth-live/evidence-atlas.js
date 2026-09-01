@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-418";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-418";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-419";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-419";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-418";
+  from "./hierarchy-physics-transport.mjs?v=20260901-419";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-418";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-419";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-418";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-419";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-418";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-419";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-418", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-419", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -426,6 +426,7 @@ const TIMELINE = [
   ["21", "Layer-essential A₂ frontier", "A 4,940-shape size-eight census leaves four candidates exact through every periodic quotient up to seven copies. Replayed root coronas and 16 / 72 / 72 / 62 sound GCTS clauses sharpen the frontier without confusing bounded evidence with non-tiling or aperiodicity.", "progress"],
   ["22", "Experiment-facing powder validation", "A frozen structure/contrast request accepts independent pdCIF-style q, 2θ, or d profiles only after growth, preserves uncertainty and resolution metadata, and reports Rwp plus residuals without feeding clustering, marking, admission, or search. The built-in instrument response remains an explicit synthetic demonstrator, not evidence.", "proved"],
   ["23", "Public RRUFF profile bridge", "A digest-pinned CC-BY-4.0 RRUFF/JARVIS subset supplies fifteen measured powder profiles without upload. Exact chemistry filters candidates, the scientist chooses a replicate or polymorph, and only an additional curated phase correspondence permits a same-material claim; chemistry-only comparisons remain explicit experimental references.", "proved"],
+  ["24", "q-dependent X-ray amplitudes", "Measured powder XRD now compares against a finite Debye intensity with physical inverse-ångström q and source-pinned neutral-atom Cromer–Mann f₀(q), not constant Z. Unsupported chemistry fails closed; ionic, anomalous, texture, absorption, diffuse, and undeclared instrument effects remain explicit omissions.", "proved"],
 ];
 
 const CLAIMS = [
