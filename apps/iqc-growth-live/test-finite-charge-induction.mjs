@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { finiteDampedChargeInductionEnergy, incrementalFiniteChargeInduction,
+import { finiteDampedChargeInductionEnergy, finiteDifferenceIncrementalChargeInductionForces,
+  incrementalFiniteChargeInduction,
   tangToenniesChargeDamping, tangToenniesDipoleField } from "./finite-charge-induction.mjs";
 
 const close = (actual, expected, tolerance = 1e-10) => assert.ok(
@@ -119,6 +120,40 @@ close(failedMutual.deltaEnergyElectronVolt,
   }).deltaEnergyElectronVolt);
 assert.throws(() => finiteDampedChargeInductionEnergy(sites, {
   polarizabilityAngstrom3: 1, responseModel: "oracle" }), /responseModel/);
+
+const directForce = finiteDifferenceIncrementalChargeInductionForces(
+  sites.slice(0, 2), sites.slice(2), {
+    polarizabilityAngstrom3: 2,
+    dampingLengthAngstrom: .35,
+  });
+assert.equal(directForce.available, true);
+assert.equal(directForce.centralDifferenceEnergyEvaluations, 12);
+assert.equal(directForce.responseConsistent, true);
+assert.equal(directForce.forceIsNegativeNumericalEnergyGradient, true);
+assert.ok(directForce.maximumRichardsonErrorElectronVoltPerAngstrom < 1e-6);
+
+const transformedForce = finiteDifferenceIncrementalChargeInductionForces(
+  transformed.slice(1), transformed.slice(0, 1), {
+    polarizabilityAngstrom3: 2,
+    dampingLengthAngstrom: .35,
+  });
+const rotatedForce = directForce.forceVectorsElectronVoltPerAngstrom[0];
+close(transformedForce.forceVectorsElectronVoltPerAngstrom[0][0], -rotatedForce[1], 1e-7);
+close(transformedForce.forceVectorsElectronVoltPerAngstrom[0][1], rotatedForce[0], 1e-7);
+close(transformedForce.forceVectorsElectronVoltPerAngstrom[0][2], rotatedForce[2], 1e-7);
+
+const mutualForce = finiteDifferenceIncrementalChargeInductionForces(
+  sites.slice(0, 2), sites.slice(2), {
+    polarizabilityAngstrom3: 2,
+    dampingLengthAngstrom: .35,
+    responseModel: "self-consistent",
+    maximumIterations: 128,
+  });
+assert.equal(mutualForce.available, true);
+assert.equal(mutualForce.appliedResponseModel, "self-consistent");
+assert.ok(mutualForce.mutualTensorEvaluations > 0);
+assert.notDeepEqual(mutualForce.forceVectorsElectronVoltPerAngstrom,
+  directForce.forceVectorsElectronVoltPerAngstrom);
 
 const oppositeField = finiteDampedChargeInductionEnergy([
   { charge: 0, position: [0, 0, 0] },

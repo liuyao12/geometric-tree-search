@@ -334,3 +334,111 @@ export function incrementalFiniteChargeInduction(currentSites, addedSites, optio
       : `Finite open-crop, isotropic charge-induced dipole energy with Tang-Toennies-damped charge fields${requestedResponseModel === "self-consistent" && !directFallbackApplied ? " and a converged damped mutual dipole tensor" : ""}. Field superposition makes the energy many-body in geometry.${directFallbackApplied ? ` The requested mutual response failed closed to a consistent direct-only current/projected comparison (${fallbackReason}).` : requestedResponseModel === "direct" ? " Induced dipoles do not polarize one another." : " The induced dipoles were iterated self-consistently to the reported tolerance."} No polarization force, species-specific polarizability fit, periodic response, electronic structure, relaxation, or physical time is inferred.`,
   };
 }
+
+/**
+ * Response-consistent numerical force on the added sites only. Two central
+ * differences (h and h/2) are Richardson-extrapolated; every perturbed mutual
+ * state must converge in the same response model as the baseline.
+ */
+export function finiteDifferenceIncrementalChargeInductionForces(
+  currentSites, addedSites, {
+    forceStepAngstrom = 1e-4,
+    ...inductionOptions
+  } = {}) {
+  const step = Number(forceStepAngstrom);
+  if (!finite(step) || step <= 0 || step > .1) {
+    throw new RangeError("forceStepAngstrom must be between 0 and 0.1");
+  }
+  const baseline = incrementalFiniteChargeInduction(currentSites, addedSites,
+    inductionOptions);
+  const emptyVectors = addedSites.map(() => [0, 0, 0]);
+  const unavailable = (reason, audit = {}) => ({
+    available: false,
+    forceVectorsElectronVoltPerAngstrom: emptyVectors,
+    maximumRichardsonErrorElectronVoltPerAngstrom: null,
+    rmsRichardsonErrorElectronVoltPerAngstrom: null,
+    forceStepAngstrom: step,
+    centralDifferenceEnergyEvaluations: audit.energyEvaluations || 0,
+    distanceEvaluations: audit.distanceEvaluations || 0,
+    mutualTensorEvaluations: audit.mutualTensorEvaluations || 0,
+    requestedResponseModel: baseline.requestedResponseModel,
+    appliedResponseModel: baseline.appliedResponseModel,
+    responseConsistent: false,
+    forceIsNegativeNumericalEnergyGradient: false,
+    polarizationForceEvaluated: false,
+    reason,
+    targetUsed: false,
+  });
+  if (!baseline.available) return unavailable("charge induction unavailable");
+  if (!addedSites.length) return unavailable("candidate adds no polarizable sites");
+  const appliedResponseModel = baseline.appliedResponseModel;
+  if (!["direct", "self-consistent"].includes(appliedResponseModel)) {
+    return unavailable("baseline response model is not force-evaluable");
+  }
+  const evaluationOptions = { ...inductionOptions,
+    responseModel: appliedResponseModel };
+  let energyEvaluations = 0;
+  let distanceEvaluations = 0;
+  let mutualTensorEvaluations = 0;
+  let failureReason = null;
+  const shiftedEnergy = (siteIndex, axis, displacement) => {
+    const shiftedAdded = addedSites.map((site, index) => ({ ...site,
+      position: site.position.map((value, coordinate) => Number(value)
+        + (index === siteIndex && coordinate === axis ? displacement : 0)) }));
+    const audit = finiteDampedChargeInductionEnergy([...currentSites, ...shiftedAdded],
+      evaluationOptions);
+    energyEvaluations += 1;
+    distanceEvaluations += audit.distanceEvaluations;
+    mutualTensorEvaluations += audit.mutualTensorEvaluations;
+    if (audit.appliedResponseModel !== appliedResponseModel
+        || appliedResponseModel === "self-consistent" && !audit.selfConsistentConverged) {
+      failureReason = audit.fallbackReason
+        || `perturbed response changed from ${appliedResponseModel} to ${audit.appliedResponseModel}`;
+      return null;
+    }
+    return audit.energyElectronVolt;
+  };
+  const forces = emptyVectors.map((vector) => [...vector]);
+  const errors = [];
+  for (let siteIndex = 0; siteIndex < addedSites.length; siteIndex += 1) {
+    for (let axis = 0; axis < 3; axis += 1) {
+      const plusCoarse = shiftedEnergy(siteIndex, axis, step);
+      const minusCoarse = shiftedEnergy(siteIndex, axis, -step);
+      const plusFine = shiftedEnergy(siteIndex, axis, step / 2);
+      const minusFine = shiftedEnergy(siteIndex, axis, -step / 2);
+      if ([plusCoarse, minusCoarse, plusFine, minusFine].some((value) => value === null)) {
+        return unavailable(`polarization force failed closed: ${failureReason}`, {
+          energyEvaluations, distanceEvaluations, mutualTensorEvaluations });
+      }
+      const coarseForce = -(plusCoarse - minusCoarse) / (2 * step);
+      const fineForce = -(plusFine - minusFine) / step;
+      const extrapolatedForce = fineForce + (fineForce - coarseForce) / 3;
+      forces[siteIndex][axis] = extrapolatedForce;
+      errors.push(Math.abs(extrapolatedForce - fineForce));
+    }
+  }
+  return {
+    available: true,
+    forceVectorsElectronVoltPerAngstrom: forces,
+    maximumForceElectronVoltPerAngstrom: Math.max(0, ...forces.map(norm)),
+    rmsForceElectronVoltPerAngstrom: Math.sqrt(forces.reduce((sum, vector) =>
+      sum + norm(vector) ** 2, 0) / Math.max(1, forces.length)),
+    maximumRichardsonErrorElectronVoltPerAngstrom: Math.max(0, ...errors),
+    rmsRichardsonErrorElectronVoltPerAngstrom: Math.sqrt(errors.reduce((sum, error) =>
+      sum + error ** 2, 0) / Math.max(1, errors.length)),
+    forceStepAngstrom: step,
+    centralDifferenceEnergyEvaluations: energyEvaluations,
+    distanceEvaluations,
+    mutualTensorEvaluations,
+    requestedResponseModel: baseline.requestedResponseModel,
+    appliedResponseModel,
+    responseConsistent: true,
+    richardsonExtrapolationApplied: true,
+    nominalTruncationOrder: 4,
+    forceIsNegativeNumericalEnergyGradient: true,
+    polarizationForceEvaluated: true,
+    reason: null,
+    targetUsed: false,
+    claimBoundary: "Added-site polarization force from response-consistent h and h/2 central energy differences with fourth-order Richardson extrapolation. It is a numerical gradient of the finite induction hypothesis, not a total material force, relaxation, stress, trajectory, or physical time.",
+  };
+}

@@ -1,5 +1,25 @@
 # Recursive GCTS benchmark for material growth
 
+## Response-consistent numerical polarization force (Build 430)
+
+An opt-in force arm now evaluates the negative spatial gradient of the same
+finite induction energy used to rank each unchanged candidate. Each added-site
+Cartesian component is evaluated with centered differences at `h` and `h/2`,
+then fourth-order Richardson extrapolated. Direct and mutual-response modes are
+both supported; any perturbed mutual solve that changes response model or fails
+convergence rejects the polarization-force audit rather than silently mixing
+approximations. Work, response consistency, and Richardson error enter the
+receipt, and the resulting vector augments force-cancellation ranking, torque,
+and candidate-bound 3D arrows.
+
+This is a numerical derivative of the portal's declared finite open-crop
+induction hypothesis, not an analytic polarizable force field or a total
+material force. Periodic images, Ewald electrostatics, fitted atomic
+polarizabilities, charge transfer, electronic structure, relaxation, stress,
+and physical time remain outside the claim. Variational induced-dipole models
+motivate differentiating a converged response consistently; see
+[Dziedzic et al., JCTC 2017](https://pubs.acs.org/doi/10.1021/acs.jctc.7b00572).
+
 ## Finite self-consistent mutual polarization (Build 429)
 
 Build 429 turns the one-way induction diagnostic into an optional closed local

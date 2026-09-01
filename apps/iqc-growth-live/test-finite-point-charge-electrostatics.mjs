@@ -123,6 +123,29 @@ assert.equal(induced.pairInteractionForceIsNegativeEnergyGradient, false);
 assert.match(induced.pairInteractionModel, /charge induction/);
 assert.ok(induced.maximumInducedDipoleElectronAngstrom > 0);
 
+const inducedWithForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
+  [{ position: [0, 1.5, 0], charge: 1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: bornDecay,
+    inductionForceMode: "finite-difference" });
+assert.equal(inducedWithForce.polarizationForceEvaluated, true);
+assert.equal(inducedWithForce.inductionForceAvailable, true);
+assert.equal(inducedWithForce.inductionForceEnergyEvaluations, 12);
+assert.equal(inducedWithForce.pairInteractionForceIsNegativeEnergyGradient, true);
+assert.ok(inducedWithForce.addedInductionForceVectorsElectronVoltPerAngstrom[0]
+  .some((value) => Math.abs(value) > 1e-9));
+assert.ok(inducedWithForce.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom < 1e-7);
+const inducedEnergyAt = (y) => incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
+  [{ position: [0, y, 0], charge: 1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: bornDecay })
+  .deltaEnergyElectronVolt;
+const inducedTotalGradient = -(inducedEnergyAt(1.50001) - inducedEnergyAt(1.49999)) / 2e-5;
+assert.ok(Math.abs(inducedWithForce.addedForceVectorsElectronVoltPerAngstrom[0][1]
+  - inducedTotalGradient) < 1e-7);
+
 const mutuallyInduced = incrementalFinitePointChargeElectrostatics(
   [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
   [{ position: [0, 1.5, 0], charge: 1 }],
@@ -144,6 +167,16 @@ assert.ok(mutuallyInduced.inductionMutualTensorEvaluations > 0);
 assert.ok(mutuallyInduced.inductionConvergenceIterations > 0);
 assert.notEqual(mutuallyInduced.chargeInductionDeltaEnergyElectronVolt,
   induced.chargeInductionDeltaEnergyElectronVolt);
+const mutuallyInducedWithForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
+  [{ position: [0, 1.5, 0], charge: 1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: bornDecay,
+    inductionResponseModel: "self-consistent", inductionForceMode: "finite-difference",
+    inductionMaximumIterations: 128, inductionConvergenceToleranceElectronAngstrom: 1e-6 });
+assert.equal(mutuallyInducedWithForce.mutualDipoleInductionSolved, true);
+assert.equal(mutuallyInducedWithForce.inductionForceAvailable, true);
+assert.equal(mutuallyInducedWithForce.inductionForceResponseConsistent, true);
 
 const speciesPairMatrix = buildBornMayerPairMatrix(["Na", "Cl"], {
   available: true, radiiAngstrom: { Na: 1.1, Cl: 1.7 },
@@ -274,6 +307,14 @@ const mutualProfile = finitePointChargeReachProfile(
 assert.equal(mutualProfile.mutualDipoleInductionSolved, true);
 assert.equal(mutualProfile.inductionDirectFallbackSamples, 0);
 assert.ok(mutualProfile.inductionMutualTensorEvaluations > 0);
+const forceProfile = finitePointChargeReachProfile(
+  [{ position: [0, 0, 0], charge: 1 }, { position: [2, 0, 0], charge: -1 }],
+  [{ position: [1, 1.5, 0], charge: 1 }],
+  { nearestNeighborAngstrom: 1, relativePermittivity: 4, temperatureKelvin: 500,
+    inductionPolarizabilityAngstrom3: 1, inductionForceMode: "finite-difference" });
+assert.equal(forceProfile.polarizationForceEvaluated, true);
+assert.ok(forceProfile.inductionForceEnergyEvaluations > 0);
+assert.equal(forceProfile.inductionForceUnavailableSamples, 0);
 
 assert.throws(() => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [0, 0, 0], charge: -1 }]),

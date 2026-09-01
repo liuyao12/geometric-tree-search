@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-429";
+  from "./external-action-barrier.mjs?v=20260901-430";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-429";
+  from "./action-path-viewer.mjs?v=20260901-430";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-429";
+  from "./action-path-mechanism.mjs?v=20260901-430";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-429";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-430";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-429";
+  from "./kinetic-event-spectrum.mjs?v=20260901-430";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-429";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-430";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-429";
+  from "./kinetic-geometry-response.mjs?v=20260901-430";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-429";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-430";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-429";
+  from "./surface-hop-events.mjs?v=20260901-430";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-429";
+  from "./species-exchange-events.mjs?v=20260901-430";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-429";
+  from "./external-state-relaxation.mjs?v=20260901-430";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-429";
+  from "./reversible-transition-lineage.mjs?v=20260901-430";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-429";
+  from "./finite-network-population-dynamics.mjs?v=20260901-430";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-429";
+  from "./finite-network-geometric-flux.mjs?v=20260901-430";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-429";
+  from "./finite-network-structural-flux.mjs?v=20260901-430";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-429";
+  from "./geometric-state-descriptor.mjs?v=20260901-430";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-429";
+  from "./finite-network-global-order.mjs?v=20260901-430";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-429";
+  from "./finite-network-first-passage.mjs?v=20260901-430";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-429";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-430";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-429";
+  from "./finite-network-passage-control.mjs?v=20260901-430";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-429";
+  from "./finite-network-rate-intervention.mjs?v=20260901-430";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-429";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-429";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-429";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-429";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-429";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-429";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-430";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-429";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-430";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-429";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-430";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-429";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-430";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-429";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-430";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-429";
+  from "./classical-nucleation-evidence.mjs?v=20260901-430";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-429";
+  from "./classical-capillarity-action.mjs?v=20260901-430";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-429";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-430";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-429";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-430";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-429";
+  from "./critical-nucleus-geometry.mjs?v=20260901-430";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-429";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-430";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-429";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-430";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-429";
+  from "./experimental-scattering-validation.mjs?v=20260901-430";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-429";
+  from "./public-powder-profile-library.mjs?v=20260901-430";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-429";
+  from "./external-attachment-kinetics.mjs?v=20260901-430";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-429";
+  from "./external-interface-flux.mjs?v=20260901-430";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-429";
+  from "./growth-regime-bridge.mjs?v=20260901-430";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-429";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-430";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-429";
+  from "./catalog-conditional-chronology.mjs?v=20260901-430";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-429";
+  from "./coupled-physics-state.mjs?v=20260901-430";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-429";
+} from "./ice-molecular-anchor-growth.js?v=20260901-430";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-429";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-430";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-429";
+} from "./ice-orientation-evidence.mjs?v=20260901-430";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-429";
+  from "./xray-form-factors.mjs?v=20260901-430";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -240,14 +240,14 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
-  from "./born-mayer-pair-matrix.mjs?v=20260901-429";
+  from "./born-mayer-pair-matrix.mjs?v=20260901-430";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-429";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-430";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -337,7 +337,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-429", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-430", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -621,6 +621,7 @@ const ionicPairBornPolicyHint = $("ionicPairBornPolicyHint");
 const ionicPairDispersionC6Select = $("ionicPairDispersionC6Select");
 const ionicPairInductionAlphaSelect = $("ionicPairInductionAlphaSelect");
 const ionicPairInductionResponseSelect = $("ionicPairInductionResponseSelect");
+const ionicPairInductionForceSelect = $("ionicPairInductionForceSelect");
 const ionicPairMatrixInspector = $("ionicPairMatrixInspector");
 const ionicPairMatrixState = $("ionicPairMatrixState");
 const ionicPairMatrixRows = $("ionicPairMatrixRows");
@@ -2508,6 +2509,7 @@ let ionicPairBornPolicy = "uniform";
 let ionicPairDispersionC6ElectronVoltAngstrom6 = 100;
 let ionicPairInductionPolarizabilityAngstrom3 = 0;
 let ionicPairInductionResponseModel = "direct";
+let ionicPairInductionForceMode = "omitted";
 let ionicPairTemperatureKelvin = 600;
 let ionicPairObservable = "energy";
 let ionicPairWeight = .24;
@@ -2618,6 +2620,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   ionicPairDispersionC6ElectronVoltAngstrom6: 100,
   ionicPairInductionPolarizabilityAngstrom3: 0,
   ionicPairInductionResponseModel: "direct",
+  ionicPairInductionForceMode: "omitted",
   ionicPairTemperatureKelvin: 600, ionicPairObservable: "energy", ionicPairWeight: .24,
   bondValenceMode: "none", bondValenceWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
@@ -2898,7 +2901,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 });
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairDielectricSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect", "ionicPairBornPolicySelect", "ionicPairDispersionC6Select", "ionicPairInductionAlphaSelect", "ionicPairInductionResponseSelect", "ionicPairTemperatureSelect", "ionicPairObservableSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairDielectricSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect", "ionicPairBornPolicySelect", "ionicPairDispersionC6Select", "ionicPairInductionAlphaSelect", "ionicPairInductionResponseSelect", "ionicPairInductionForceSelect", "ionicPairTemperatureSelect", "ionicPairObservableSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "collectiveResponseSelect", "collectiveScreeningSelect", "collectiveResponseWeightSelect", "configurationalMultiplicitySelect", "configurationalMultiplicityWeightSelect", "constraintTensorSelect", "constraintTensorWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -4837,7 +4840,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429",
+    generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4923,7 +4926,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429",
+    generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5124,7 +5127,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-429", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-430", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5171,7 +5174,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-429",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5423,7 +5426,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-429",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5942,7 +5945,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-429",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15644,7 +15647,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-429" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-430" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15652,7 +15655,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-429",
+      buildId: "20260901-430",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16902,7 +16905,9 @@ async function buildExperimentReceipt() {
         effectiveWeight: activeIonicPairWeight(),
         scoreDefinition: finiteIonicPairMode()
           ? ionicPairObservable === "force-cancellation"
-            ? `(1-y)/(1+y), y = F_rms d_nn / (k_B T); F is the analytic pair-force contribution${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ", excluding polarization force" : " and exact selected energy gradient"} on emitted sites`
+            ? `(1-y)/(1+y), y = F_rms d_nn / (k_B T); F is ${ionicPairInductionPolarizabilityAngstrom3 > 0
+              ? ionicPairInductionForceMode === "finite-difference" ? "the response-consistent Richardson numerical total-energy gradient" : "the analytic pair contribution, excluding polarization force"
+              : "the exact selected energy gradient"} on emitted sites`
             : ionicPairObservable === "combined"
               ? "equal mean of bounded delta-U and selected pair-force-cancellation scores"
               : `-x/(1+|x|), x = delta U / (N_added k_B T); delta U uses 14.3996454784255 eV angstrom / epsilon_r${bornMayerIonicPairMode() ? " + A exp(-r/rho)" : ""}${dispersionIonicPairMode() ? " - C6 f6(r/rho)/r^6" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? " - (k_e/(2 epsilon_r)) sum_i mu_i dot E_i^q after a damped mutual SCF solve" : " - (k_e alpha/(2 epsilon_r^2)) sum_i |sum_j q_j f3(r_ij/rho) r_ij/r_ij^3|^2" : ""}`
@@ -16975,7 +16980,10 @@ async function buildExperimentReceipt() {
         pairInteractionEnergyEvaluated: finiteIonicPairMode(),
         pairInteractionForceEvaluated: finiteIonicPairMode(),
         pairInteractionForceIsNegativeEnergyGradient: finiteIonicPairMode()
-          && ionicPairInductionPolarizabilityAngstrom3 === 0,
+          && (ionicPairInductionPolarizabilityAngstrom3 === 0
+            || currentCandidates.length > 0 && currentCandidates.every((candidate) =>
+              !candidate.evaluation?.ionicPair?.available
+              || candidate.evaluation.ionicPair.pairInteractionForceIsNegativeEnergyGradient)),
         electrostaticForceGlyphs: {
           enabled: electrostaticForceToggle.checked,
           displayedSites: currentCandidates.reduce((sum, candidate) =>
@@ -16988,7 +16996,10 @@ async function buildExperimentReceipt() {
           vectorDirectionsPhysical: true,
           arrowLengthsPhysical: false,
           displayScaling: "bounded square-root normalization to selected candidate maximum",
-          polarizationForceIncluded: false,
+          polarizationForceIncluded: ionicPairInductionPolarizabilityAngstrom3 > 0
+            && ionicPairInductionForceMode === "finite-difference"
+            && currentCandidates.some((candidate) =>
+              candidate.evaluation?.ionicPair?.polarizationForceEvaluated),
           candidateGeometryChanged: false,
           hardAdmissionChanged: false,
           targetUsed: false,
@@ -17026,7 +17037,17 @@ async function buildExperimentReceipt() {
         inductionMaximumConvergenceResidualElectronAngstrom: receiptRound(Math.max(0,
           ...currentCandidates.map((candidate) =>
             candidate.evaluation?.ionicPair?.inductionConvergenceResidualElectronAngstrom || 0))),
-        polarizationForceEvaluated: false,
+        polarizationForceModeRequested: ionicPairInductionForceMode,
+        polarizationForceEvaluated: ionicPairInductionPolarizabilityAngstrom3 > 0
+          && ionicPairInductionForceMode === "finite-difference"
+          && currentCandidates.length > 0 && currentCandidates.every((candidate) =>
+            !candidate.evaluation?.ionicPair?.available
+            || candidate.evaluation.ionicPair.polarizationForceEvaluated),
+        polarizationForceEnergyEvaluations: currentCandidates.reduce((sum, candidate) =>
+          sum + (candidate.evaluation?.ionicPair?.inductionForceEnergyEvaluations || 0), 0),
+        polarizationForceMaximumRichardsonErrorElectronVoltPerAngstrom: receiptRound(Math.max(0,
+          ...currentCandidates.map((candidate) => candidate.evaluation?.ionicPair
+            ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom || 0))),
         totalMechanicalForceInferred: false, relaxationIntegrated: false,
         validatedMaterialEnergy: false,
         electrostaticEnergyInferred: false, electrostaticPotentialSolved: false,
@@ -18509,7 +18530,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-429" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-430" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -23463,7 +23484,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
         ? "conditional finite point-charge energy-gradient ordering"
         : "soft supplied-charge 1/r pair geometry",
       finiteIonicPairMode()
-        ? `Declared uniform dielectric and finite open boundary; the displayed pair force is analytic${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ", while the induction-force contribution is omitted" : " and is the exact model-energy gradient"}. This is not total mechanical force, relaxation, a validated material energy, an Ewald result, ${ionicPairInductionResponseModel === "self-consistent" && ionicPairInductionPolarizabilityAngstrom3 > 0 ? "a periodic or fitted polarization response" : "mutual polarization"}, or electronic structure.`
+        ? `Declared uniform dielectric and finite open boundary; the displayed force is ${ionicPairInductionPolarizabilityAngstrom3 > 0
+          ? ionicPairInductionForceMode === "finite-difference" ? "the analytic pair force plus a response-consistent Richardson numerical polarization force" : "analytic for pair terms, while polarization force is omitted"
+          : "the exact model-energy gradient"}. This is not total mechanical force, relaxation, a validated material energy, an Ewald result, ${ionicPairInductionResponseModel === "self-consistent" && ionicPairInductionPolarizabilityAngstrom3 > 0 ? "a periodic or fitted polarization response" : "mutual polarization"}, or electronic structure.`
         : "No dielectric, periodic images, Ewald sum, polarization, or electronic energy."),
     scoreTerm("bond-valence", bondValenceLabel(), evaluation.bondValence.score,
       activeBondValenceWeight(), "soft checked coordination-geometry ordering", "Scalar sum and spherical-ion vector-balance hypothesis; not bond energy, force, electron density, redox, or dynamics."),
@@ -24928,6 +24951,12 @@ function buildIonicPairConvergence(snapshot) {
       inductionDirectFallbackApplied: sample.inductionDirectFallbackApplied,
       inductionFallbackReason: sample.inductionFallbackReason,
       inductionMutualTensorEvaluations: sample.inductionMutualTensorEvaluations,
+      inductionForceModeRequested: sample.inductionForceModeRequested,
+      inductionForceModeApplied: sample.inductionForceModeApplied,
+      inductionForceAvailable: sample.inductionForceAvailable,
+      inductionForceEnergyEvaluations: sample.inductionForceEnergyEvaluations,
+      inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom:
+        sample.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom,
       mutualDipoleInductionSolved: sample.mutualDipoleInductionSolved,
       chargeInductionApplied: sample.chargeInductionApplied,
       maximumInducedDipoleElectronAngstrom: sample.maximumInducedDipoleElectronAngstrom,
@@ -24996,14 +25025,16 @@ function buildIonicPairConvergence(snapshot) {
         .every((sample) => sample.mutualDipoleInductionSolved)),
     inductionDirectFallbackSamples: points.reduce((sum, point) => sum
       + point.samples.filter((sample) => sample.inductionDirectFallbackApplied).length, 0),
-    polarizationForceEvaluated: false,
+    polarizationForceEvaluated: ionicPairInductionForceMode === "finite-difference"
+      && points.length > 0 && points.every((point) => point.samples.filter((sample) => sample.available)
+        .every((sample) => sample.polarizationForceEvaluated)),
     finiteOpenBoundaryUsed: finiteIonicPairMode(),
     electrostaticEnergyEvaluated: finiteIonicPairMode(),
     electrostaticForceEvaluated: finiteIonicPairMode(),
     dielectricOrEwaldConvergenceInferred: false,
     thermodynamicLimitInferred: false,
     claimBoundary: finiteIonicPairMode()
-      ? `finite-cutoff sensitivity of a conditional formal-point-charge Coulomb${bornMayerIonicPairMode() ? ` + isotropic Born–Mayer repulsion (${ionicPairBornPolicy === "contact-scaled" ? "rho_ij scaled by the frozen geometric contact envelope" : "uniform declared reference"})` : ""}${dispersionIonicPairMode() ? " + Tang–Toennies-damped -C6/r6 attraction with declared generic C6 and damping length" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` + finite damped charge-induced-dipole energy that is many-body in the charge geometry${ionicPairInductionResponseModel === "self-consistent" ? "; mutual dipoles are iterated with an f3/f5 tensor and failed solves fall back consistently to direct response" : ""}` : ""} in a declared uniform dielectric and open crop; pair forces are analytic, but polarization force is not evaluated; not Ewald convergence, a fitted species-pair potential, many-body dispersion, total mechanical force, relaxation, charge transfer, a validated material energy, or a thermodynamic limit`
+      ? `finite-cutoff sensitivity of a conditional formal-point-charge Coulomb${bornMayerIonicPairMode() ? ` + isotropic Born–Mayer repulsion (${ionicPairBornPolicy === "contact-scaled" ? "rho_ij scaled by the frozen geometric contact envelope" : "uniform declared reference"})` : ""}${dispersionIonicPairMode() ? " + Tang–Toennies-damped -C6/r6 attraction with declared generic C6 and damping length" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` + finite damped charge-induced-dipole energy that is many-body in the charge geometry${ionicPairInductionResponseModel === "self-consistent" ? "; mutual dipoles are iterated with an f3/f5 tensor and failed solves fall back consistently to direct response" : ""}${ionicPairInductionForceMode === "finite-difference" ? "; polarization force uses response-consistent fourth-order Richardson differentiation" : "; polarization force is omitted"}` : ""} in a declared uniform dielectric and open crop; not Ewald convergence, a fitted species-pair potential, many-body dispersion, validated total mechanical force, relaxation, charge transfer, a validated material energy, or a thermodynamic limit`
       : "finite-cutoff sensitivity of a dimensionless supplied-charge 1/r ordering; not Ewald convergence, dielectric response, electrostatic energy, or a thermodynamic limit" };
 }
 
@@ -25040,8 +25071,8 @@ function buildIonicPairConvergencePreview(snapshot) {
       bornMayerRepulsionApplied: Boolean(globalSample?.bornMayerRepulsionApplied),
       dampedDispersionApplied: Boolean(globalSample?.dispersionApplied),
       chargeInductionEnergyApplied: Boolean(globalSample?.chargeInductionApplied),
-      polarizationForceIncluded: false,
-      displayedForceIsTotalEnergyGradient: !globalSample?.chargeInductionApplied,
+      polarizationForceIncluded: Boolean(globalSample?.polarizationForceEvaluated),
+      displayedForceIsTotalEnergyGradient: Boolean(globalSample?.pairInteractionForceIsNegativeEnergyGradient),
       vectorDirectionsPhysical: true,
       arrowLengthsPhysical: false,
       displayScaling: "bounded square-root normalization to the selected candidate maximum",
@@ -25067,7 +25098,7 @@ function buildIonicPairConvergencePreview(snapshot) {
         globalSample?.inductionConvergenceResidualElectronAngstrom || 0,
       directFallbackApplied: Boolean(globalSample?.inductionDirectFallbackApplied),
       fallbackReason: globalSample?.inductionFallbackReason || null,
-      polarizationForceEvaluated: false,
+      polarizationForceEvaluated: Boolean(globalSample?.polarizationForceEvaluated),
       candidateGeometryChanged: false,
       hardAdmissionChanged: false,
       targetUsed: false,
@@ -26589,6 +26620,8 @@ function ionicPairForFreshSites(rawFreshSites, { recordWork = true } = {}) {
         inductionPolarizabilityAngstrom3: ionicPairInductionPolarizabilityAngstrom3,
         inductionDampingLengthAngstrom: ionicPairBornDecayAngstrom,
         inductionResponseModel: ionicPairInductionResponseModel,
+        inductionForceMode: ionicPairInductionForceMode,
+        inductionForceStepAngstrom: 1e-4,
         inductionMaximumIterations: 128,
         inductionConvergenceToleranceElectronAngstrom: 1e-6,
         inductionIterationMixing: .5,
@@ -26637,6 +26670,8 @@ function ionicPairReachProfileForFreshSites(rawFreshSites) {
       inductionPolarizabilityAngstrom3: ionicPairInductionPolarizabilityAngstrom3,
       inductionDampingLengthAngstrom: ionicPairBornDecayAngstrom,
       inductionResponseModel: ionicPairInductionResponseModel,
+      inductionForceMode: ionicPairInductionForceMode,
+      inductionForceStepAngstrom: 1e-4,
       inductionMaximumIterations: 128,
       inductionConvergenceToleranceElectronAngstrom: 1e-6,
       inductionIterationMixing: .5,
@@ -27155,7 +27190,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429",
+    generatedAt: new Date().toISOString(), buildId: "20260901-430",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -30426,7 +30461,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429",
+    generatedAt: new Date().toISOString(), buildId: "20260901-430",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -31881,7 +31916,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-430", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -32722,7 +32757,9 @@ function syncElectrostaticForceControl() {
     ? `Coulomb + Born–Mayer${dispersionIonicPairMode() ? " + damped dispersion" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? " + induction energy" : ""}`
     : `Coulomb${ionicPairInductionPolarizabilityAngstrom3 > 0 ? " + induction energy" : ""}`;
   electrostaticForceToggleLabel.textContent = sites
-    ? `Candidate ${model} ${ionicPairInductionPolarizabilityAngstrom3 > 0 ? "pair F + μ · induction force omitted" : "F=−∇U"} · ${sites} emitted site${sites === 1 ? "" : "s"}`
+    ? `Candidate ${model} ${ionicPairInductionPolarizabilityAngstrom3 > 0
+      ? ionicPairInductionForceMode === "finite-difference" ? "F=−∇U · numerical polarization audited" : "pair F + μ · polarization force omitted"
+      : "F=−∇U"} · ${sites} emitted site${sites === 1 ? "" : "s"}`
     : "Candidate pair force F=−∇U · select ionic reach point";
 }
 
@@ -33465,6 +33502,7 @@ function currentGrowthProtocolSettings() {
     ionicPairRelativePermittivity, ionicPairBornAmplitudeElectronVolt, ionicPairBornDecayAngstrom,
     ionicPairBornPolicy, ionicPairDispersionC6ElectronVoltAngstrom6,
     ionicPairInductionPolarizabilityAngstrom3, ionicPairInductionResponseModel,
+    ionicPairInductionForceMode,
     ionicPairTemperatureKelvin, ionicPairObservable, ionicPairWeight,
     bondValenceMode, bondValenceWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
@@ -33494,8 +33532,9 @@ function currentGrowthProtocolSettings() {
   };
 }
 
-const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 7;
-const PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 6;
+const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 8;
+const PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 7;
+const SIXTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 6;
 const FIFTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 5;
 const INTERMEDIATE_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 4;
 const OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 3;
@@ -33542,6 +33581,7 @@ function growthSettingSelects() {
     ionicPairDispersionC6ElectronVoltAngstrom6: ionicPairDispersionC6Select,
     ionicPairInductionPolarizabilityAngstrom3: ionicPairInductionAlphaSelect,
     ionicPairInductionResponseModel: ionicPairInductionResponseSelect,
+    ionicPairInductionForceMode: ionicPairInductionForceSelect,
     ionicPairTemperatureKelvin: ionicPairTemperatureSelect,
     ionicPairObservable: ionicPairObservableSelect,
     ionicPairWeight: ionicPairWeightSelect,
@@ -33682,6 +33722,7 @@ function migrateCustomExperimentManifest(manifest) {
     OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     INTERMEDIATE_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     FIFTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
+    SIXTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION].includes(manifest?.schemaVersion)) return manifest;
   return { ...manifest, schemaVersion: CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     growth: { ...manifest.growth, settings: {
@@ -33698,7 +33739,9 @@ function migrateCustomExperimentManifest(manifest) {
         ? { ionicPairDispersionC6ElectronVoltAngstrom6: 100 } : {}),
       ...(manifest.schemaVersion <= FIFTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION
         ? { ionicPairInductionPolarizabilityAngstrom3: 0 } : {}),
-      ionicPairInductionResponseModel: "direct",
+      ...(manifest.schemaVersion <= SIXTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION
+        ? { ionicPairInductionResponseModel: "direct" } : {}),
+      ionicPairInductionForceMode: "omitted",
     } } };
 }
 
@@ -33775,6 +33818,7 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   ionicPairDispersionC6ElectronVoltAngstrom6 = settings.ionicPairDispersionC6ElectronVoltAngstrom6;
   ionicPairInductionPolarizabilityAngstrom3 = settings.ionicPairInductionPolarizabilityAngstrom3;
   ionicPairInductionResponseModel = settings.ionicPairInductionResponseModel;
+  ionicPairInductionForceMode = settings.ionicPairInductionForceMode;
   ionicPairTemperatureKelvin = settings.ionicPairTemperatureKelvin;
   ionicPairObservable = settings.ionicPairObservable;
   ionicPairWeight = settings.ionicPairWeight;
@@ -34971,6 +35015,7 @@ function syncStageOptions() {
     ionicPairDispersionC6Select.value = String(ionicPairDispersionC6ElectronVoltAngstrom6);
     ionicPairInductionAlphaSelect.value = String(ionicPairInductionPolarizabilityAngstrom3);
     ionicPairInductionResponseSelect.value = ionicPairInductionResponseModel;
+    ionicPairInductionForceSelect.value = ionicPairInductionForceMode;
     ionicPairTemperatureSelect.value = String(ionicPairTemperatureKelvin);
     ionicPairObservableSelect.value = ionicPairObservable;
     ionicPairWeightSelect.value = String(ionicPairWeight);
@@ -35062,6 +35107,8 @@ function syncStageOptions() {
       || !finiteIonicPairMode();
     ionicPairInductionResponseSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
       || !finiteIonicPairMode() || ionicPairInductionPolarizabilityAngstrom3 <= 0;
+    ionicPairInductionForceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
+      || !finiteIonicPairMode() || ionicPairInductionPolarizabilityAngstrom3 <= 0;
     ionicPairTemperatureSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
       || !finiteIonicPairMode();
     ionicPairObservableSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
@@ -35149,7 +35196,7 @@ function syncStageOptions() {
     renderBornMayerPairMatrix();
     ionicPairHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : ionicPairMode === "none" ? "off · 1/r geometry reported"
-        : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`}${finiteIonicPairMode() ? ` · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy === "contact-scaled" ? "pair-scaled" : "uniform"}${dispersionIonicPairMode() ? ` · C₆ ${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` · α ${ionicPairInductionPolarizabilityAngstrom3} Å³ · ${ionicPairInductionResponseModel === "self-consistent" ? "mutual SCF" : "direct induction"}` : ""} · ${ionicPairTemperatureKelvin} K · ${ionicPairObservable.replaceAll("-", " ")}` : ""} · weight ${ionicPairWeight.toFixed(2)}`;
+        : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`}${finiteIonicPairMode() ? ` · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy === "contact-scaled" ? "pair-scaled" : "uniform"}${dispersionIonicPairMode() ? ` · C₆ ${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` · α ${ionicPairInductionPolarizabilityAngstrom3} Å³ · ${ionicPairInductionResponseModel === "self-consistent" ? "mutual SCF" : "direct induction"} · ${ionicPairInductionForceMode === "finite-difference" ? "numerical ∂U force" : "pair F only"}` : ""} · ${ionicPairTemperatureKelvin} K · ${ionicPairObservable.replaceAll("-", " ")}` : ""} · weight ${ionicPairWeight.toFixed(2)}`;
     const availableIonStates = new Set([...suppliedFormalChargeBySpecies].map(([token, charge]) => {
       const element = bondValenceElementToken(token);
       return element ? `${element}|${charge}` : null;
@@ -35287,7 +35334,7 @@ function syncStageOptions() {
       ? " No complete supplied formal-charge channel exists, so ionic-pair geometry fails closed."
       : ionicPairMode === "none" ? " Incremental signed 1/r ionic-pair geometry is reported but contributes zero ranking weight."
         : finiteIonicPairMode()
-          ? ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} evaluates ΔU and the analytic pair-force contribution on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`} at declared εᵣ=${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? `, A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, and ${ionicPairBornPolicy === "contact-scaled" ? "a frozen observed-contact-scaled rho_ij matrix" : "one uniform pair reference"}${dispersionIonicPairMode() ? `, plus Tang–Toennies-damped −C₆/r⁶ with C₆=${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶ and damping length ρ` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? `, plus f₃-damped charge-induced-dipole energy with α=${ionicPairInductionPolarizabilityAngstrom3} Å³${ionicPairInductionResponseModel === "self-consistent" ? " and an iterative f₃/f₅ mutual dipole tensor" : ""}` : ""}; ${ionicPairObservable === "force-cancellation" ? "pair-force Fᵣₘₛ dₙₙ/kBT" : ionicPairObservable === "combined" ? "equal bounded total ΔU and pair-force-cancellation coordinates" : "ΔU/(Nadded kBT)"} at ${ionicPairTemperatureKelvin} K supplies the rank. It uses no periodic images, Ewald sum, charge transfer, or electronic structure; ${bornMayerIonicPairMode() ? `the Born–Mayer matrix${dispersionIonicPairMode() ? " and dispersion coefficient" : ""} are declared geometry-conditioned hypotheses rather than fitted energy/force coefficients, and ` : "short-range repulsion and dispersion are omitted, and "}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? "mutual dipoles are solved only when the reported residual converges and polarization force remains omitted, so " : "field superposition makes induction many-body but mutual induced-dipole response and polarization force are omitted, so " : "polarization is omitted, so "}the displayed force is not a validated total mechanical force or relaxation.`
+          ? ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} evaluates ΔU and force geometry on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`} at declared εᵣ=${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? `, A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, and ${ionicPairBornPolicy === "contact-scaled" ? "a frozen observed-contact-scaled rho_ij matrix" : "one uniform pair reference"}${dispersionIonicPairMode() ? `, plus Tang–Toennies-damped −C₆/r⁶ with C₆=${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶ and damping length ρ` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? `, plus f₃-damped charge-induced-dipole energy with α=${ionicPairInductionPolarizabilityAngstrom3} Å³${ionicPairInductionResponseModel === "self-consistent" ? " and an iterative f₃/f₅ mutual dipole tensor" : ""}${ionicPairInductionForceMode === "finite-difference" ? " and a response-consistent Richardson numerical force" : " while polarization force is omitted"}` : ""}; ${ionicPairObservable === "force-cancellation" ? "Fᵣₘₛ dₙₙ/kBT" : ionicPairObservable === "combined" ? "equal bounded total ΔU and force-cancellation coordinates" : "ΔU/(Nadded kBT)"} at ${ionicPairTemperatureKelvin} K supplies the rank. It uses no periodic images, Ewald sum, charge transfer, or electronic structure; the displayed force is not a validated total mechanical force or relaxation.`
           : ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} term ranks the incremental signed formal-charge pair sum within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}; no dielectric, periodic images, Ewald sum, polarization, or electronic energy is inferred.`;
     const bondValenceUse = !formalChargeTarget?.available
       ? " No complete supplied oxidation-state channel exists, so bond-valence geometry fails closed."
@@ -38120,8 +38167,8 @@ function rebuildWorld() {
             depthTest: false, depthWrite: false }));
         shaft.userData.finiteCoulombEnergyGradient = true;
         shaft.userData.finitePairForceModel = bornMayerIonicPairMode()
-          ? `Coulomb + Born–Mayer${dispersionIonicPairMode() ? " + damped dispersion" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? " (induction force omitted)" : ""}`
-          : `Coulomb${ionicPairInductionPolarizabilityAngstrom3 > 0 ? " (induction force omitted)" : ""}`;
+          ? `Coulomb + Born–Mayer${dispersionIonicPairMode() ? " + damped dispersion" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionForceMode === "finite-difference" ? " + numerical polarization force" : " (polarization force omitted)" : ""}`
+          : `Coulomb${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionForceMode === "finite-difference" ? " + numerical polarization force" : " (polarization force omitted)" : ""}`;
         shaft.userData.forceElectronVoltPerAngstrom = site.force.length();
         shaft.userData.displayLengthIsPhysical = false;
         decisionGroup.add(shaft);
@@ -38853,12 +38900,12 @@ function physicsTranslationRecords(leap = null) {
         : "supplied-label incremental 1/r ordering" : "diagnostic",
       encoding: formalChargeTarget?.available
         ? finiteIonicPairMode()
-          ? `${ionicPairLabel()}; ΔU = (14.3996454784255 eV Å / εᵣ) Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? ` + Σ Aᵢⱼ exp(-rᵢⱼ/ρᵢⱼ), reference A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, policy=${ionicPairBornPolicy}` : ""}${dispersionIonicPairMode() ? ` − Σ C₆ f₆(rᵢⱼ/ρᵢⱼ)/rᵢⱼ⁶, C₆=${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? ` − (kₑ/2εᵣ) Σᵢ μᵢ·Eᵢq after damped mutual SCF, α=${ionicPairInductionPolarizabilityAngstrom3} Å³` : ` − (kₑα/2εᵣ²) Σᵢ|Σⱼqⱼf₃(rᵢⱼ/ρ)rᵢⱼ/rᵢⱼ³|², α=${ionicPairInductionPolarizabilityAngstrom3} Å³` : ""}; analytic pair force${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ", polarization force omitted" : " =−∇ΔU"} within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`}; εᵣ=${ionicPairRelativePermittivity}, T=${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, w=${activeIonicPairWeight().toFixed(2)}`
+          ? `${ionicPairLabel()}; ΔU = (14.3996454784255 eV Å / εᵣ) Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? ` + Σ Aᵢⱼ exp(-rᵢⱼ/ρᵢⱼ), reference A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, policy=${ionicPairBornPolicy}` : ""}${dispersionIonicPairMode() ? ` − Σ C₆ f₆(rᵢⱼ/ρᵢⱼ)/rᵢⱼ⁶, C₆=${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? ` − (kₑ/2εᵣ) Σᵢ μᵢ·Eᵢq after damped mutual SCF, α=${ionicPairInductionPolarizabilityAngstrom3} Å³` : ` − (kₑα/2εᵣ²) Σᵢ|Σⱼqⱼf₃(rᵢⱼ/ρ)rᵢⱼ/rᵢⱼ³|², α=${ionicPairInductionPolarizabilityAngstrom3} Å³` : ""}; ${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionForceMode === "finite-difference" ? "analytic pair + Richardson numerical polarization force =−∇ΔU" : "analytic pair force, polarization force omitted" : "analytic force =−∇ΔU"} within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`}; εᵣ=${ionicPairRelativePermittivity}, T=${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, w=${activeIonicPairWeight().toFixed(2)}`
           : `${ionicPairLabel()}; signed qᵢqⱼ/(rᵢⱼ/dₙₙ) over pairs involving emitted sites within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}, w=${activeIonicPairWeight().toFixed(2)}`
         : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions), 4)}; ${ionicPairEvaluations.toLocaleString()} candidate evaluations and ${ionicPairDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No incremental ionic-pair candidate evaluated yet.",
       boundary: finiteIonicPairMode()
-        ? `This is a conditional finite-open interaction hypothesis over supplied formal point charges.${bornMayerIonicPairMode() ? " Its isotropic Born–Mayer A and ρ are declared generic values or frozen-geometry-conditioned references, not fitted species-pair coefficients." : " Short-range repulsion is omitted."}${dispersionIonicPairMode() ? " Its Tang–Toennies-damped C₆ attraction is also a declared generic hypothesis, not a fitted species-pair or many-body dispersion model." : " Dispersion is omitted."}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` Charge-field superposition supplies an explicitly many-body induction energy, but α is generic.${ionicPairInductionResponseModel === "self-consistent" ? " Mutual dipoles are iterated with a declared f₃/f₅ tensor and only claimed when converged; otherwise ranking falls back to a consistent direct-only comparison." : " Induced dipoles do not polarize one another."} Polarization force is not evaluated.` : " Polarization is omitted."} Periodic images, Ewald summation, neutralizing backgrounds, charge transfer, and electronic structure are absent. It is not a validated material energy, total mechanical force, relaxation, potential field, rate, or physical time.`
+        ? `This is a conditional finite-open interaction hypothesis over supplied formal point charges.${bornMayerIonicPairMode() ? " Its isotropic Born–Mayer A and ρ are declared generic values or frozen-geometry-conditioned references, not fitted species-pair coefficients." : " Short-range repulsion is omitted."}${dispersionIonicPairMode() ? " Its Tang–Toennies-damped C₆ attraction is also a declared generic hypothesis, not a fitted species-pair or many-body dispersion model." : " Dispersion is omitted."}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` Charge-field superposition supplies an explicitly many-body induction energy, but α is generic.${ionicPairInductionResponseModel === "self-consistent" ? " Mutual dipoles are iterated with a declared f₃/f₅ tensor and only claimed when converged; otherwise ranking falls back to a consistent direct-only comparison." : " Induced dipoles do not polarize one another."} ${ionicPairInductionForceMode === "finite-difference" ? "Polarization force is a response-consistent Richardson numerical derivative of this hypothesis." : "Polarization force is omitted."}` : " Polarization is omitted."} Periodic images, Ewald summation, neutralizing backgrounds, charge transfer, and electronic structure are absent. It is not a validated material energy, total mechanical force, relaxation, potential field, rate, or physical time.`
         : "The dimensionless kernel is translation-, proper-rotation-, and uniform-scale-invariant and omits the candidate-independent current–current constant. No Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or physical time is inferred." },
     { id: "bond-valence", process: "local scalar + vector bond-valence satisfaction / coordination geometry",
       status: activeBondValenceWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable",
@@ -40813,7 +40860,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-429",
+    generatedAt: new Date().toISOString(), buildId: "20260901-430",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -43060,13 +43107,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         : state?.ionicPair?.reason || "complete supplied formal-charge channel unavailable",
       encoding: state?.ionicPair?.available
         ? finiteIonicPairMode()
-          ? `(14.3996454784255 eV Å / εᵣ)Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? " + Aᵢⱼexp(-r/ρᵢⱼ)" : ""}${dispersionIonicPairMode() ? " − C₆f₆(r/ρᵢⱼ)/r⁶" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? " − (kₑ/2εᵣ)Σᵢμᵢ·Eᵢq [mutual SCF]" : " − (kₑα/2εᵣ²)Σᵢ|Eᵢ[f₃]|²" : ""}; analytic pair force${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ", induction force omitted" : " =−∇ΔU"}, εᵣ=${ionicPairRelativePermittivity}, ${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, ${ionicPairReach === "global" ? "global finite open reach" : `R${ionicPairReach}dₙₙ`}; pairwise current–current terms cancel, while induction explicitly differences current and projected whole-configuration energies`
+          ? `(14.3996454784255 eV Å / εᵣ)Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? " + Aᵢⱼexp(-r/ρᵢⱼ)" : ""}${dispersionIonicPairMode() ? " − C₆f₆(r/ρᵢⱼ)/r⁶" : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionResponseModel === "self-consistent" ? " − (kₑ/2εᵣ)Σᵢμᵢ·Eᵢq [mutual SCF]" : " − (kₑα/2εᵣ²)Σᵢ|Eᵢ[f₃]|²" : ""}; ${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ionicPairInductionForceMode === "finite-difference" ? "analytic pair + Richardson numerical polarization force =−∇ΔU" : "analytic pair force; polarization force omitted" : "analytic force =−∇ΔU"}, εᵣ=${ionicPairRelativePermittivity}, ${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, ${ionicPairReach === "global" ? "global finite open reach" : `R${ionicPairReach}dₙₙ`}; pairwise current–current terms cancel, while induction explicitly differences current and projected whole-configuration energies`
           : `dimensionless qᵢqⱼ/(rᵢⱼ/dₙₙ), ${state.ionicPair.reachNearestNeighborUnits === "global" ? "global finite reach" : `R${Number(state.ionicPair.reachNearestNeighborUnits).toFixed(1)}dₙₙ`}; current–current pairs omitted`
         : "No incremental ionic-pair descriptor is fitted from incomplete labels.",
       searchRole: activeIonicPairWeight() > 0
         ? `Soft ${ionicPairLabel()} rank term with weight ${activeIonicPairWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
       boundary: finiteIonicPairMode()
-        ? `This finite interaction energy uses a declared uniform εᵣ and open crop.${bornMayerIonicPairMode() ? " Short-range Born–Mayer repulsion is a declared generic or geometry-conditioned hypothesis." : " Short-range repulsion is omitted."}${dispersionIonicPairMode() ? " Damped pair dispersion is included with declared generic C₆; species fitting and many-body dispersion are absent." : " Dispersion is omitted."}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` Damped charge induction is many-body in the formal-charge geometry.${ionicPairInductionResponseModel === "self-consistent" ? " Mutual induction uses the declared converged-or-fallback SCF policy." : " Mutual induction is absent."} Polarization force is absent.` : " Polarization is omitted."} This is not Ewald convergence, a solved dielectric response, charge transfer, electronic structure, a validated material energy, total mechanical force, relaxation, rate, or time.`
+        ? `This finite interaction energy uses a declared uniform εᵣ and open crop.${bornMayerIonicPairMode() ? " Short-range Born–Mayer repulsion is a declared generic or geometry-conditioned hypothesis." : " Short-range repulsion is omitted."}${dispersionIonicPairMode() ? " Damped pair dispersion is included with declared generic C₆; species fitting and many-body dispersion are absent." : " Dispersion is omitted."}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` Damped charge induction is many-body in the formal-charge geometry.${ionicPairInductionResponseModel === "self-consistent" ? " Mutual induction uses the declared converged-or-fallback SCF policy." : " Mutual induction is absent."} ${ionicPairInductionForceMode === "finite-difference" ? "Polarization force is a response-consistent Richardson numerical derivative." : "Polarization force is absent."}` : " Polarization is omitted."} This is not Ewald convergence, a solved dielectric response, charge transfer, electronic structure, a validated material energy, total mechanical force, relaxation, rate, or time.`
         : "This uses a dimensionless 1/r formal-charge kernel, but no Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or time.",
     },
     "bond-valence geometry": {
@@ -44697,7 +44744,7 @@ function renderIonicPairConvergence(snapshot) {
     stability.textContent = `${new Set(selected.samples.map((sample) => sample.rank).filter(Number.isFinite)).size <= 1 ? "rank stable where defined" : "rank reverses"} across the fixed reach ensemble · preview only`;
     ionicConvergenceDetail.append(heading, spread, scores, stability);
   }
-  ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive${finiteIonicPairMode() ? ` · ${audit.pairInteractionModel} · ${ionicPairObservable.replaceAll("-", " ")} · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy}${dispersionIonicPairMode() ? ` · C₆ ${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` · α ${ionicPairInductionPolarizabilityAngstrom3} Å³ · ${ionicPairInductionResponseModel === "self-consistent" ? `mutual SCF${audit.inductionDirectFallbackSamples ? ` · ${audit.inductionDirectFallbackSamples} fallback` : ""}` : "direct induction"}` : ""} · ${ionicPairTemperatureKelvin} K · finite open` : ""} · ${audit.candidateSetDigest}`;
+  ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive${finiteIonicPairMode() ? ` · ${audit.pairInteractionModel} · ${ionicPairObservable.replaceAll("-", " ")} · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy}${dispersionIonicPairMode() ? ` · C₆ ${ionicPairDispersionC6ElectronVoltAngstrom6} eV Å⁶` : ""}` : ""}${ionicPairInductionPolarizabilityAngstrom3 > 0 ? ` · α ${ionicPairInductionPolarizabilityAngstrom3} Å³ · ${ionicPairInductionResponseModel === "self-consistent" ? `mutual SCF${audit.inductionDirectFallbackSamples ? ` · ${audit.inductionDirectFallbackSamples} fallback` : ""}` : "direct induction"} · ${ionicPairInductionForceMode === "finite-difference" ? "numerical ∂U force" : "pair F only"}` : ""} · ${ionicPairTemperatureKelvin} K · finite open` : ""} · ${audit.candidateSetDigest}`;
 }
 
 function buildBondValencePreview(snapshot) {
@@ -46036,7 +46083,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-429" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-430" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
@@ -47449,6 +47496,13 @@ ionicPairInductionResponseSelect.addEventListener("change", () => {
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
+ionicPairInductionForceSelect.addEventListener("change", () => {
+  ionicPairInductionForceMode = ["omitted", "finite-difference"]
+    .includes(ionicPairInductionForceSelect.value)
+    ? ionicPairInductionForceSelect.value : "omitted";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
 ionicPairTemperatureSelect.addEventListener("change", () => {
   const value = Number(ionicPairTemperatureSelect.value);
   ionicPairTemperatureKelvin = [100, 300, 600, 900, 1200].includes(value) ? value : 600;
@@ -48166,6 +48220,7 @@ function applyLaunchParameters() {
   if (requestedExperiment) {
     try {
       if (![CUSTOM_EXPERIMENT_SCHEMA_VERSION, PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
+        SIXTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
         FIFTH_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
         INTERMEDIATE_CUSTOM_EXPERIMENT_SCHEMA_VERSION, OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
         LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION, INITIAL_CUSTOM_EXPERIMENT_SCHEMA_VERSION]

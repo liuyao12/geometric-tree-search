@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 430 · polarization force closes the displayed energy-gradient loop
+
+The finite induction laboratory now offers an explicit **Polarization force**
+selector. The fast default preserves the analytic Coulomb, Born–Mayer, and
+dispersion force while clearly withholding the induction contribution. The
+audited arm instead differentiates the same current/projected induction-energy
+hypothesis at `h` and `h/2`, applies fourth-order Richardson extrapolation, and
+adds that numerical polarization force to ranking, torque, and 3D arrows. One
+added site costs 12 induction-energy evaluations; receipts expose that work,
+the maximum/RMS Richardson discrepancy, and whether every perturbed mutual
+solve retained the baseline response model.
+
+This closes an internal energy/force inconsistency without claiming a
+transferable force field. The result is the gradient of the finite declared
+induction model only—not periodic electrostatics, fitted polarizability,
+charge transfer, electronic structure, a total mechanical force, relaxation,
+or dynamics. The response-consistency requirement is aligned with the
+variational induced-dipole treatment discussed in
+[Dziedzic et al.](https://pubs.acs.org/doi/10.1021/acs.jctc.7b00572), while the
+portal deliberately uses an inspectable numerical derivative rather than that
+paper's analytic AMOEBA gradient machinery.
+
 ## Build 429 · induced dipoles can now close the mutual-response loop
 
 The finite polarization laboratory now offers a second no-text-field response

@@ -21,10 +21,10 @@ for (const document of [html, alias]) {
   assert.match(document, /receiptScaleBridgeConformanceRoute/);
   assert.match(document, /data-conformance-filter="evidenced"/);
   assert.match(document, /hierarchyPhysicsProtocolConformanceRoute/);
-  assert.match(document, /app\.js\?v=20260901-429/);
-  assert.match(document, /evidence-atlas\.js\?v=20260901-429/);
+  assert.match(document, /app\.js\?v=20260901-430/);
+  assert.match(document, /evidence-atlas\.js\?v=20260901-430/);
 }
-assert.match(app, /hierarchy-physics-protocol-conformance\.mjs\?v=20260901-429/);
+assert.match(app, /hierarchy-physics-protocol-conformance\.mjs\?v=20260901-430/);
 assert.match(app, /scaleBridgeConformance,/);
 assert.match(app, /currentScaleBridgeConformanceEvidence/);
 assert.match(app, /renderScaleBridgeConformanceLedger/);
