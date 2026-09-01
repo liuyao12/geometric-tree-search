@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-440";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-441";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -17,6 +17,8 @@ const crossVector = (first, second) => [
   first[0] * second[1] - first[1] * second[0],
 ];
 const vectorMagnitude = (vector) => Math.hypot(...vector);
+const dotVector = (first, second) => first.reduce((sum, value, axis) =>
+  sum + value * second[axis], 0);
 const zeroMatrix = () => [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const matrixFrobenius = (matrix) => Math.sqrt(matrix.reduce((sum, row) =>
   sum + row.reduce((inner, value) => inner + value * value, 0), 0));
@@ -43,6 +45,83 @@ function centeredSymmetricForceMoment(positions, forces, centroid) {
     frobeniusElectronVolt: matrixFrobenius(matrix),
     hydrostaticFrobeniusElectronVolt: Math.abs(trace) / Math.sqrt(3),
     deviatoricFrobeniusElectronVolt: matrixFrobenius(deviatoric),
+  });
+}
+
+/**
+ * Integrate the complete movable-site force along one fixed Cartesian path and
+ * compare that work with the independently evaluated endpoint energy change.
+ * Simpson-versus-trapezoid disagreement is retained as a finite quadrature
+ * uncertainty rather than silently treated as physical noise.
+ */
+export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
+  forceFieldsElectronVoltPerAngstrom, displacementVectorsAngstrom, {
+    absoluteToleranceElectronVolt = 1e-10,
+    relativeTolerance = 1e-10,
+  } = {}) {
+  if (!Array.isArray(fractions) || fractions.length < 3 || fractions.length % 2 !== 1
+      || !fractions.every(Number.isFinite)) {
+    throw new Error("force-energy path closure needs an odd sequence of at least three images");
+  }
+  if (!Array.isArray(energiesElectronVolt) || energiesElectronVolt.length !== fractions.length
+      || !energiesElectronVolt.every(Number.isFinite)) {
+    throw new Error("force-energy path closure needs one finite energy per image");
+  }
+  if (!Array.isArray(displacementVectorsAngstrom)
+      || !displacementVectorsAngstrom.every(finiteVector)
+      || !Array.isArray(forceFieldsElectronVoltPerAngstrom)
+      || forceFieldsElectronVoltPerAngstrom.length !== fractions.length
+      || !forceFieldsElectronVoltPerAngstrom.every((field) =>
+        Array.isArray(field) && field.length === displacementVectorsAngstrom.length
+        && field.every(finiteVector))) {
+    throw new Error("force-energy path closure needs complete paired displacement and force vectors");
+  }
+  const interval = 1 / (fractions.length - 1);
+  if (fractions.some((fraction, index) =>
+    Math.abs(fraction - index * interval) > 1e-12)) {
+    throw new Error("force-energy path closure needs equally spaced fractions from zero to one");
+  }
+  const forcePathIntegrandElectronVolt = forceFieldsElectronVoltPerAngstrom.map((field) =>
+    field.reduce((sum, force, index) =>
+      sum + dotVector(force, displacementVectorsAngstrom[index]), 0));
+  const lastIndex = forcePathIntegrandElectronVolt.length - 1;
+  const trapezoidWorkElectronVolt = interval * forcePathIntegrandElectronVolt.reduce((sum, value, index) =>
+    sum + ((index === 0 || index === lastIndex) ? .5 : 1) * value, 0);
+  const simpsonWorkElectronVolt = interval / 3 * forcePathIntegrandElectronVolt.reduce(
+    (sum, value, index) => sum + (index === 0 || index === lastIndex
+      ? 1 : index % 2 === 1 ? 4 : 2) * value, 0);
+  const energyChangeElectronVolt = energiesElectronVolt[lastIndex] - energiesElectronVolt[0];
+  const closureResidualElectronVolt = simpsonWorkElectronVolt + energyChangeElectronVolt;
+  const quadratureDiscrepancyElectronVolt = Math.abs(
+    simpsonWorkElectronVolt - trapezoidWorkElectronVolt);
+  const numericalToleranceElectronVolt = Math.max(Number(absoluteToleranceElectronVolt),
+    Number(relativeTolerance) * Math.max(1, Math.abs(energyChangeElectronVolt),
+      Math.abs(simpsonWorkElectronVolt)));
+  const allowedClosureResidualElectronVolt = numericalToleranceElectronVolt
+    + quadratureDiscrepancyElectronVolt;
+  const passed = Math.abs(closureResidualElectronVolt)
+    <= allowedClosureResidualElectronVolt;
+  return Object.freeze({
+    available: true,
+    passed,
+    reason: passed
+      ? "force work closes the endpoint energy change within finite quadrature uncertainty"
+      : "integrated force work does not close the endpoint energy change",
+    imageCount: fractions.length,
+    forcePathIntegrandElectronVolt: Object.freeze(forcePathIntegrandElectronVolt),
+    simpsonWorkElectronVolt,
+    trapezoidWorkElectronVolt,
+    energyChangeElectronVolt,
+    closureResidualElectronVolt,
+    absoluteClosureResidualElectronVolt: Math.abs(closureResidualElectronVolt),
+    quadratureDiscrepancyElectronVolt,
+    numericalToleranceElectronVolt,
+    allowedClosureResidualElectronVolt,
+    forceWorkSignConvention: "positive work by the finite force; expected W = -delta U",
+    equallySpacedCartesianPath: true,
+    pathParameterIsPhysicalTime: false,
+    targetUsed: false,
+    claimBoundary: "This is a finite quadrature consistency check between one declared energy and its complete movable-site force along a fixed Cartesian coordinate path. It is not thermodynamic work, free energy, a minimum-energy path, dynamics, rate, or physical time.",
   });
 }
 
@@ -274,6 +353,7 @@ export function buildModelForceRelaxationSeed(currentSites, addedSites, {
 export function auditModelForceRelaxationOutcome(
   currentSites, originalAddedSites, proposedAddedSites, {
     baselineEvaluation = null,
+    proposedEvaluation = null,
     electrostaticsOptions = {},
     absoluteToleranceElectronVolt = 1e-10,
     relativeTolerance = 1e-10,
@@ -293,7 +373,7 @@ export function auditModelForceRelaxationOutcome(
   });
   const before = baselineEvaluation || incrementalFinitePointChargeElectrostatics(
     currentSites, originalAddedSites, electrostaticsOptions);
-  const after = incrementalFinitePointChargeElectrostatics(
+  const after = proposedEvaluation || incrementalFinitePointChargeElectrostatics(
     currentSites, proposedAddedSites, electrostaticsOptions);
   const inductionActive = Number(before.inductionPolarizabilityAngstrom3) > 0;
   const responseConsistent = !inductionActive
@@ -418,8 +498,9 @@ export function auditModelForceRelaxationPath(
     electrostaticsOptions = {},
     ...auditOptions
   } = {}) {
-  if (!(Number.isInteger(imageCount) && imageCount >= 3 && imageCount <= 17)) {
-    throw new RangeError("model-force response path needs 3 to 17 images");
+  if (!(Number.isInteger(imageCount) && imageCount >= 3 && imageCount <= 17
+      && imageCount % 2 === 1)) {
+    throw new RangeError("model-force response path needs an odd count of 3 to 17 images");
   }
   if (originalAddedSites.length !== proposedAddedSites.length) {
     throw new Error("model-force response path needs paired movable sites");
@@ -437,6 +518,9 @@ export function auditModelForceRelaxationPath(
     });
     return Object.freeze({ imageIndex, fraction, sites: Object.freeze(sites) });
   });
+  const imageEvaluations = images.map((image) =>
+    incrementalFinitePointChargeElectrostatics(currentSites, image.sites,
+      electrostaticsOptions));
   const segments = [];
   for (let index = 0; index < images.length - 1; index++) {
     const audit = auditModelForceRelaxationOutcome(currentSites,
@@ -444,6 +528,8 @@ export function auditModelForceRelaxationPath(
         ...auditOptions,
         electrostaticsOptions,
         forceGroupLabels,
+        baselineEvaluation: imageEvaluations[index],
+        proposedEvaluation: imageEvaluations[index + 1],
       });
     segments.push(Object.freeze({
       segmentIndex: index,
@@ -459,29 +545,62 @@ export function auditModelForceRelaxationPath(
       afterForceP90ElectronVoltPerAngstrom: audit.afterForceP90ElectronVoltPerAngstrom,
       forceResidualRedistributionPassed: audit.forceResidualRedistributionPassed,
       forceResultantRedistributionPassed: audit.forceResultantRedistributionPassed,
+      symmetricForceMomentRedistributionPassed:
+        audit.symmetricForceMomentRedistributionPassed,
       responseConsistent: audit.responseConsistent,
       completeForceGradient: audit.completeForceGradient,
       forceGroupResiduals: audit.forceGroupResiduals,
     }));
   }
-  const accepted = segments.every((segment) => segment.accepted);
+  const everySegmentEnergyForceDescent = segments.every((segment) => segment.accepted);
   const firstFailure = segments.find((segment) => !segment.accepted) || null;
+  const displacementVectorsAngstrom = originalAddedSites.map((site, index) =>
+    proposedAddedSites[index].position.map((value, axis) => value - site.position[axis]));
+  let workEnergyClosure;
+  try {
+    workEnergyClosure = auditForceEnergyPathClosure(
+      images.map((image) => image.fraction),
+      imageEvaluations.map((evaluation) => evaluation.deltaEnergyElectronVolt),
+      imageEvaluations.map((evaluation) =>
+        evaluation.addedForceVectorsElectronVoltPerAngstrom),
+      displacementVectorsAngstrom, {
+        absoluteToleranceElectronVolt: auditOptions.absoluteToleranceElectronVolt,
+        relativeTolerance: auditOptions.relativeTolerance,
+      });
+  } catch (error) {
+    workEnergyClosure = Object.freeze({ available: false, passed: false,
+      reason: error?.message || "force-energy path closure unavailable",
+      targetUsed: false });
+  }
+  const accepted = everySegmentEnergyForceDescent && workEnergyClosure.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
-      && segment.responseConsistent),
+      && segment.responseConsistent) && workEnergyClosure.available,
     accepted,
-    reason: accepted
-      ? "every bounded response-path segment passed energy, force, population, resultant, and torque descent"
-      : `response-path segment ${firstFailure?.segmentIndex ?? "?"} failed: ${firstFailure?.reason || "unavailable"}`,
+    reason: !everySegmentEnergyForceDescent
+      ? `response-path segment ${firstFailure?.segmentIndex ?? "?"} failed: ${firstFailure?.reason || "unavailable"}`
+      : !workEnergyClosure.passed ? workEnergyClosure.reason
+        : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, and work-energy closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
     segments: Object.freeze(segments),
-    everySegmentEnergyForceDescent: accepted,
+    everySegmentEnergyForceDescent,
+    workEnergyClosurePassed: workEnergyClosure.passed,
+    workEnergyClosure,
+    forceWorkSimpsonElectronVolt: workEnergyClosure.simpsonWorkElectronVolt ?? null,
+    forceWorkTrapezoidElectronVolt: workEnergyClosure.trapezoidWorkElectronVolt ?? null,
+    endpointEnergyChangeElectronVolt: workEnergyClosure.energyChangeElectronVolt ?? null,
+    workEnergyClosureResidualElectronVolt:
+      workEnergyClosure.closureResidualElectronVolt ?? null,
+    workEnergyClosureToleranceElectronVolt:
+      workEnergyClosure.allowedClosureResidualElectronVolt ?? null,
+    workEnergyQuadratureDiscrepancyElectronVolt:
+      workEnergyClosure.quadratureDiscrepancyElectronVolt ?? null,
     groupLabelsFrozenBeforePath: true,
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity and monotonicity check between two coordinate sets. It is not a minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. The Simpson-versus-trapezoid discrepancy is a finite quadrature bound, not physical uncertainty. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

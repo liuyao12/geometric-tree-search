@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 441 · finite-path work–energy closure
+
+The seven response images now verify that the displayed finite force is the
+gradient of the displayed finite interaction energy over the actual accepted
+coordinate leap. Each image evaluates the complete movable-site force. Its dot
+product with the full endpoint displacement is integrated over the path by
+composite Simpson quadrature and compared with the independently evaluated
+endpoint `ΔU`; acceptance requires `W_force + ΔU` to close.
+
+The same images also produce a trapezoid estimate. The absolute
+Simpson-versus-trapezoid difference is exposed as a finite quadrature allowance,
+and the signed work, energy change, closure residual, numerical tolerance, and
+per-image force-path integrand samples are retained in receipts. Image evaluations are
+computed once and reused by all six adjacent-segment audits, so the new check
+strengthens rather than duplicates the finite-path calculation.
+
+Controls include an exactly consistent nonlinear force/energy pair and an
+inconsistent pair that fails despite complete finite values. The integral is a
+coordinate-path consistency test for one declared finite model. It is not
+thermodynamic work, free energy, a minimum-energy path, dynamics, a rate, or
+physical time; the quadrature discrepancy is numerical, not physical
+uncertainty.
+
 ## Build 440 · affine force-moment redistribution gate
 
 The finite-interaction accommodation certificate now detects coherent affine

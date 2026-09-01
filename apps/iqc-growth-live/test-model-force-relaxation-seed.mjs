@@ -1,11 +1,26 @@
 import assert from "node:assert/strict";
-import { auditGroupedForceResiduals, auditModelForceRelaxationEnergyDescent,
+import { auditForceEnergyPathClosure, auditGroupedForceResiduals,
+  auditModelForceRelaxationEnergyDescent,
   auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
   from "./model-force-relaxation-seed.mjs";
 
 const current = [{ position: [0, 0, 0], charge: 1, species: "Na" }];
 const added = [{ position: [2.8, 0, 0], charge: -1, species: "Cl" }];
+const fractions = Array.from({ length: 7 }, (_, index) => index / 6);
+const consistentClosure = auditForceEnergyPathClosure(fractions,
+  fractions.map((fraction) => -fraction - fraction * fraction),
+  fractions.map((fraction) => [[1 + 2 * fraction, 0, 0]]), [[1, 0, 0]]);
+assert.equal(consistentClosure.passed, true);
+assert.ok(Math.abs(consistentClosure.simpsonWorkElectronVolt - 2) < 1e-12);
+assert.ok(Math.abs(consistentClosure.energyChangeElectronVolt + 2) < 1e-12);
+assert.ok(Math.abs(consistentClosure.closureResidualElectronVolt) < 1e-12);
+assert.equal(consistentClosure.pathParameterIsPhysicalTime, false);
+const inconsistentClosure = auditForceEnergyPathClosure(fractions,
+  fractions.map((fraction) => -fraction),
+  fractions.map(() => [[.5, 0, 0]]), [[1, 0, 0]]);
+assert.equal(inconsistentClosure.passed, false);
+assert.ok(Math.abs(inconsistentClosure.closureResidualElectronVolt) > .49);
 const pairSeed = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
   electrostaticsOptions: { relativePermittivity: 4 },
@@ -157,6 +172,10 @@ const forceSettlingPath = auditModelForceRelaxationPath(current, added,
 assert.equal(forceSettlingPath.accepted, true);
 assert.equal(forceSettlingPath.segmentCount, 6);
 assert.equal(forceSettlingPath.everySegmentEnergyForceDescent, true);
+assert.equal(forceSettlingPath.workEnergyClosurePassed, true);
+assert.ok(Math.abs(forceSettlingPath.workEnergyClosureResidualElectronVolt)
+  <= forceSettlingPath.workEnergyClosureToleranceElectronVolt);
+assert.equal(forceSettlingPath.workEnergyClosure.pathParameterIsPhysicalTime, false);
 assert.equal(forceSettlingPath.pathParameterIsPhysicalTime, false);
 assert.equal(forceSettlingPath.targetUsed, false);
 const uphillPath = auditModelForceRelaxationPath(current, added,
@@ -211,5 +230,7 @@ assert.throws(() => auditGroupedForceResiduals([[1, 0, 0]], [[.5, 0, 0]], []),
   /one frozen group label/);
 assert.throws(() => auditModelForceRelaxationPath(current, added, added,
   { imageCount: 2 }), /3 to 17 images/);
+assert.throws(() => auditModelForceRelaxationPath(current, added, added,
+  { imageCount: 4 }), /odd count/);
 
 console.log("model-force relaxation seed tests passed");

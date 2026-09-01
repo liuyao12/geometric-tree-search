@@ -58,6 +58,10 @@ for (const token of [
   "modelForceResponsePathAccepted",
   "modelForceResponsePathImageCount",
   "modelForceResponsePathSegments",
+  "modelForceWorkEnergyClosurePassed",
+  "modelForceWorkSimpsonElectronVolt",
+  "modelForceWorkEnergyClosureResidualElectronVolt",
+  "modelForceWorkEnergyClosureToleranceElectronVolt",
   "sweptHardExclusionPassed",
   "sweptHardExclusionMinimumMargin",
   "modelForceRmsBeforeEvPerAngstrom",
@@ -109,6 +113,11 @@ for (const token of [
   "forceGroupResiduals",
   "forceGroupLabels",
   "auditModelForceRelaxationPath",
+  "auditForceEnergyPathClosure",
+  "simpsonWorkElectronVolt",
+  "trapezoidWorkElectronVolt",
+  "closureResidualElectronVolt",
+  "quadratureDiscrepancyElectronVolt",
   "pathParameterIsPhysicalTime: false",
 ]) assert.ok(moduleSource.includes(token), token);
 
@@ -136,9 +145,11 @@ assert.match(atlas, /"42", "Force-residual redistribution gate"/);
 assert.match(atlas, /"43", "Population force-resultant and torque gate"/);
 assert.match(atlas, /"44", "Intermediate response-path certificate"/);
 assert.match(atlas, /"45", "Centered symmetric force-moment gate"/);
+assert.match(atlas, /"46", "Finite-path work–energy closure"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
 assert.match(readme, /Build 440 · affine force-moment redistribution gate/);
+assert.match(readme, /Build 441 · finite-path work–energy closure/);
 
 console.log("model-force relaxation portal contract passed");

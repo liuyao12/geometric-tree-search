@@ -10658,6 +10658,21 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 441: Finite-path work–energy closure
+
+The seven-image accommodation audit now integrates the complete movable-site
+force along the same straight Cartesian path and requires it to close the
+independently evaluated endpoint energy change. Composite Simpson work is the
+primary estimate; its difference from trapezoid work is an explicit finite
+quadrature allowance. Receipts retain both work estimates, `ΔU`, `W+ΔU`, the
+allowed residual, and all per-image force-path integrand samples.
+
+An exact nonlinear force/energy control passes while a complete but
+inconsistent force/energy pair fails. Image evaluations are cached once and
+reused for all adjacent segment gates. This verifies internal gradient
+consistency for the declared finite hypothesis; it is not thermodynamic work,
+free energy, an MEP/NEB result, dynamics, rate, or time.
+
 # Build 440: Affine force-moment redistribution gate
 
 The bounded finite-interaction response now closes a residual mode left open by
