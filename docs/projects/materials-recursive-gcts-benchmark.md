@@ -10765,6 +10765,22 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 449: Interactive Cartesian force compass
+
+The growth-stage response microscope now presents the endpoint-gradient
+certificate as a selectable six-cell matrix for every active interaction
+component. Initial/final endpoint and `x/y/z` direction define each cell. Its
+headline is the maximum `|F_reported − F_energy| / allowance` over movable
+sites; the detail view preserves the controlling site, both force values,
+absolute residual, allowance, and pass/fail decision.
+
+The component selector is shared with the thirteen-image energy/tangent plot,
+so a researcher can compare along-path consistency with transverse endpoint
+coverage without leaving the experiment. The view is generated entirely from
+the frozen audit record and cannot alter geometry, ranking, acceptance, or
+receipt contents. It is an evidence navigator, not an interpolated force field,
+fixed-site audit, Hessian, phonon calculation, dynamics, or time.
+
 # Build 448: Endpoint Cartesian-gradient closure
 
 The path certificate now adds an independent full-gradient check at both

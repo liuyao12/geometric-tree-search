@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 449 · interactive Cartesian force compass
+
+The local-response microscope now exposes the full endpoint-gradient evidence
+instead of collapsing it to one pass/fail label. For the selected total or
+interaction component, six compact cells cover initial/final endpoint ×
+`x/y/z`. Each cell shows the worst movable-site residual normalized by its
+coordinate-specific allowance and turns red if any coordinate in that
+direction fails.
+
+Selecting a cell reveals the endpoint, component, movable-site index, reported
+force, independently energy-derived force, absolute residual, numerical
+allowance, and decision. The same total/Coulomb/Born–Mayer/dispersion/induction
+selector drives both the path plot and the Cartesian compass, making directional
+and along-path evidence directly comparable without changing candidate geometry
+or scientific records.
+
+The compass is a visual index over the exact Build448 audit. It does not
+interpolate a force field, validate fixed-site forces, extend the gradient to
+all thirteen images, infer a Hessian or phonon mode, or introduce physical time.
+
 ## Build 448 · endpoint Cartesian-gradient closure
 
 The finite-interaction response gate now verifies the entire movable-site

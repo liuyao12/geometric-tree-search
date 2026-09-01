@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-448";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-449";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 

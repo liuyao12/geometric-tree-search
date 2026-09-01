@@ -1611,6 +1611,20 @@ body.study-guide-open { overflow: hidden; }
 .model-force-response-diagnostic .model-force-response-boundary { color: #60776f; }
 .model-force-response-diagnostic .response-tangent-point { cursor: pointer; outline: none; }
 .model-force-response-diagnostic .response-tangent-point:focus { stroke: #fff; stroke-width: 1.5; }
+.model-force-cartesian-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 7px; padding-top: 6px; border-top: 1px solid rgba(103,220,188,.12); color: #9cb8af; font: 6px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.model-force-cartesian-heading small { color: #60776f; font-size: 5px; letter-spacing: .02em; text-transform: none; }
+.model-force-cartesian-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
+.model-force-cartesian-cell { position: relative; min-width: 0; padding: 5px 6px; border: 1px solid rgba(126,185,255,.16); border-radius: 2px; background: linear-gradient(145deg,rgba(126,185,255,.05),rgba(6,13,16,.5)); color: #8ba89f; text-align: left; cursor: pointer; }
+.model-force-cartesian-cell::after { content: ""; position: absolute; left: 0; bottom: 0; width: calc(var(--gradient-ratio,0) * 100%); max-width: 100%; height: 2px; background: #69e0bd; }
+.model-force-cartesian-cell.failed { border-color: rgba(255,111,117,.48); background: rgba(255,111,117,.07); }
+.model-force-cartesian-cell.failed::after { background: #ff6f75; }
+.model-force-cartesian-cell.selected { outline: 1px solid rgba(255,255,255,.65); outline-offset: -1px; }
+.model-force-cartesian-cell small,.model-force-cartesian-cell strong,.model-force-cartesian-cell span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.model-force-cartesian-cell small { color: #60776f; font: 4.8px var(--mono); text-transform: uppercase; }
+.model-force-cartesian-cell strong { margin-top: 2px; color: #d2e5df; font: 7px var(--mono); }
+.model-force-cartesian-cell span { margin-top: 1px; color: #789188; font: 4.8px var(--mono); }
+.model-force-cartesian-cell:focus-visible { outline: 1px solid #fff; }
+@media (max-width: 760px) { .model-force-cartesian-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .stress-strain-response { margin-top: 7px; padding: 7px; border: 1px solid rgba(90,226,168,.18); background: linear-gradient(135deg,rgba(90,226,168,.035),rgba(98,172,255,.03)); }
 .stress-strain-response[hidden] { display: none; }
 .stress-strain-response header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

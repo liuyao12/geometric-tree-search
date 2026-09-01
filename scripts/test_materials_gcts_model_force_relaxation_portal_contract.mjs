@@ -24,6 +24,11 @@ for (const document of [html, compatibility]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
 }
+for (const id of ["modelForceCartesianGradientState",
+  "modelForceCartesianGradientGrid", "modelForceCartesianGradientPointState"]) {
+  assert.match(html, new RegExp(`id="${id}"`));
+}
+assert.match(html, /worst normalized residual by direction/);
 
 for (const token of [
   "buildModelForceRelaxationSeed",
@@ -108,12 +113,15 @@ for (const token of [
   "forceIntegrated: false",
   "elapsedPhysicalTimeModeled: false",
   "renderModelForceResponseDiagnostic",
+  "modelForceCartesianSelectedKey",
+  "model-force-cartesian-cell",
   "energyProfileElectronVolt",
   "response-tangent-point",
 ]) assert.ok(app.includes(token), token);
 
 for (const token of [".model-force-response-diagnostic",
-  ".model-force-response-legend", ".response-tangent-point"]) {
+  ".model-force-response-legend", ".response-tangent-point",
+  ".model-force-cartesian-grid", ".model-force-cartesian-cell"]) {
   assert.ok(style.includes(token), token);
 }
 
@@ -202,6 +210,7 @@ assert.match(atlas, /"50", "Panel-resolved work closure"/);
 assert.match(atlas, /"51", "Interior force–energy tangent"/);
 assert.match(atlas, /"52", "Interactive local-response microscope"/);
 assert.match(atlas, /"53", "Endpoint Cartesian-gradient audit"/);
+assert.match(atlas, /"54", "Interactive Cartesian force compass"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
@@ -215,5 +224,7 @@ assert.match(readme, /Build 446 · interior force–energy tangent consistency/)
 assert.match(readme, /Build 447 · interactive local-response microscope/);
 assert.match(readme, /Build 448 · endpoint Cartesian-gradient closure/);
 assert.match(benchmark, /Build 448: Endpoint Cartesian-gradient closure/);
+assert.match(readme, /Build 449 · interactive Cartesian force compass/);
+assert.match(benchmark, /Build 449: Interactive Cartesian force compass/);
 
 console.log("model-force relaxation portal contract passed");
