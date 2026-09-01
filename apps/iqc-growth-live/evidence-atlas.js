@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-427";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-427";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-428";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-428";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-427";
+  from "./hierarchy-physics-transport.mjs?v=20260901-428";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-427";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-428";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-427";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-428";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-427";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-428";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-427", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-428", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -306,9 +306,9 @@ const PHYSICS_MAP = {
     physical: "Element identity, optionally supplied formal oxidation state, bond-length neighborhoods, coordination, bond angles, molecular membership, bulk composition, and recurring local polyhedra already present in the supplied configuration.",
     geometric: "Complete colored supports are augmented by species-pair exclusions, ordered coordination caps, separated three-body angle bands, an arbitrary-component composition reservoir, and—only when completely supplied—a formal-charge reservoir. Supports may be irregular, centre-free, and overlapping.",
     growth: "Hard geometry rejects collisions, oversaturation, and forbidden observed-angle gaps. Optional soft strain, composition, and formal-charge bookkeeping rank the same frozen actions without changing their coordinates.",
-    boundary: "Most soft scores remain geometric and are not energies or chemical potentials. Formal oxidation states may be preserved as input labels; an opt-in finite point-charge mode evaluates a conditional open-crop Coulomb ΔU and exact gradient under a declared uniform εr and Kelvin score scale. An optional Born–Mayer core may use either one declared pair or rho_ij scaled by the frozen observed contact envelope; neither is an energy/force fit. No charge density, inferred oxidation state, polarization, charge transfer, bond order, electronic free energy, total mechanical force, relaxation, or reaction barrier is solved.",
+    boundary: "Most soft scores remain geometric and are not energies or chemical potentials. Formal oxidation states may be preserved as input labels; an opt-in finite interaction mode evaluates conditional open-crop Coulomb, Born–Mayer, damped dispersion, and direct charge-induction energy under declared controls. The induction field is many-body in geometry, but alpha is not fitted, induced dipoles do not polarize one another, and polarization force is withheld. No charge density, inferred oxidation state, charge transfer, bond order, electronic free energy, total mechanical force, relaxation, or reaction barrier is solved.",
     systems: [
-      ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir · optional finite Coulomb ΔU and electrostatic-force cancellation", "Bulk Ewald energy, total mechanical force, relaxation, polarization, and phonons omitted"],
+      ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir · optional finite Coulomb/Born/dispersion/direct-induction ΔU", "Bulk Ewald energy, total force, mutual polarization, relaxation, and phonons omitted"],
       ["H₂O ice", "Bent H₂O + tetrahedral O network", "O→H≤2 · H→O≤1 · bent/tetrahedral bands · H₂O reservoir", "Proton energetics unresolved"],
       ["Ideal IQC", "Recurring decorated local environments", "Irregular supports + colored many-body envelopes + finite ports", "Model interaction omitted"],
       ["Cd–Yb", "Published decorated atomic packing", "Positions/species-only envelopes and Cd:Yb reservoir", "No cut/project labels or metallic potential"],
@@ -435,6 +435,7 @@ const TIMELINE = [
   ["30", "Finite Coulomb + Born–Mayer hypothesis", "An opt-in isotropic A exp(-r/ρ) core now augments the finite formal-charge Coulomb term with an exact analytic total force. A and ρ are explicit generic controls, not fitted species-pair parameters; hard geometry stays independent and dispersion, polarization, many-body physics, relaxation, and time remain open.", "proved"],
   ["31", "Geometry-conditioned species-pair core", "A complete unordered species-pair matrix can now scale rho_ij by the frozen additive contact envelope of the supplied configuration. The compact inspector and receipt expose every pair, fallback, and consumed coefficient; no energy, force, target, material label, or oxidation state is fitted, and the uniform pair remains a matched control.", "proved"],
   ["32", "Damped dispersion pair hypothesis", "The finite pair model can add a declared Tang–Toennies-damped -C6 f6(r/rho_ij)/r^6 attraction with an exact analytic gradient and visible energy decomposition. C6 is a generic no-text-field control and rho_ij remains the frozen uniform or contact-scaled geometry hypothesis; species fitting, many-body dispersion, relaxation, and physical time are not claimed.", "proved"],
+  ["33", "Finite charge-induction geometry", "A declared isotropic alpha converts the f3-damped formal-charge field into -k_e alpha |E|^2/(2 epsilon_r^2). Squaring the summed field creates genuine many-site geometric cross terms; the portal exposes incremental energy and induced-dipole scales while withholding mutual induction, polarization force, species fitting, periodic response, relaxation, and time.", "proved"],
 ];
 
 const CLAIMS = [

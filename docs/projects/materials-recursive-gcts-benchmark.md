@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+## Damped charge-induced-dipole energy (Build 428)
+
+A selectable isotropic polarizability now converts the finite damped formal-
+charge field into
+`Uind=−(kₑα/2εᵣ²)Σᵢ|Σⱼqⱼf₃(rᵢⱼ/ρ)rᵢⱼ/rᵢⱼ³|²`.
+The vector field is assembled before squaring, so the cross terms encode
+genuine three-site and higher geometric coupling. Incremental energy is the
+exact projected-minus-current finite-crop difference, and reach profiles report
+its work and induced-dipole scale without altering candidates or hard GCTS
+certificates.
+
+This is the first physical many-body energy in the browser, but not a complete
+polarizable model. `α` is one declared global control; induced dipoles do not
+generate fields for one another, and polarization force is withheld. Pair-force
+glyphs therefore remain exact only for Coulomb + Born–Mayer + dispersion and
+are marked partial whenever induction contributes to ΔU. Species-fitted
+polarizability, self-consistent mutual induction, periodic response, charge
+transfer, and electronic relaxation remain future gates.
+
 ## Tang–Toennies-damped pair dispersion (Build 427)
 
 The optional finite pair evaluator can now include

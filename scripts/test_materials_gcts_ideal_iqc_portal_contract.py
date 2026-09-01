@@ -28,7 +28,7 @@ def main() -> None:
         'Exact mathematical control, not experimental material data.',
         'geometryFixture: material.fixtureProvenance ?',
         'publishedModel: material.fixtureProvenance && material.fixtureProvenance.fixtureClass !== "algorithmic"',
-        'buildId: "20260901-427"',
+        'buildId: "20260901-428"',
     ):
         assert needle in source, needle
 
@@ -36,7 +36,7 @@ def main() -> None:
         assert 'id="publishedFixtureHeading"' in document
         assert 'id="publishedFixtureNote"' in document
         assert 'Ideal 6D IQC model set · Al/Cu/Fe colors' in document
-        assert 'app.js?v=20260901-427' in document
+        assert 'app.js?v=20260901-428' in document
 
     for document in (readme, benchmark):
         assert "507" in document

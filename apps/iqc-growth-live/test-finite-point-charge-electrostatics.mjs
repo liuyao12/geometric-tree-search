@@ -105,6 +105,24 @@ const dispersionAnalyticForce = incrementalFinitePointChargeElectrostatics(
   .addedForceVectorsElectronVoltPerAngstrom[0][0];
 assert.ok(Math.abs(dispersionFiniteDifferenceForce - dispersionAnalyticForce) < 1e-9);
 
+const induced = incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
+  [{ position: [0, 1.5, 0], charge: 1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay,
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: bornDecay,
+    inductionPolarizabilityAngstrom3: 2,
+    inductionDampingLengthAngstrom: bornDecay });
+assert.notEqual(induced.chargeInductionDeltaEnergyElectronVolt, 0);
+assert.equal(induced.chargeInductionApplied, true);
+assert.equal(induced.chargeInductionEnergyIsManyBodyInChargeGeometry, true);
+assert.equal(induced.mutualDipoleInductionSolved, false);
+assert.equal(induced.polarizationForceEvaluated, false);
+assert.equal(induced.pairInteractionForceIsNegativeEnergyGradient, false);
+assert.match(induced.pairInteractionModel, /charge induction/);
+assert.ok(induced.maximumInducedDipoleElectronAngstrom > 0);
+
 const speciesPairMatrix = buildBornMayerPairMatrix(["Na", "Cl"], {
   available: true, radiiAngstrom: { Na: 1.1, Cl: 1.7 },
   selectedPairCount: 2, rmsResidualAngstrom: .02,

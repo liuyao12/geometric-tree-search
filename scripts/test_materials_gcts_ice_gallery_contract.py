@@ -94,7 +94,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "16/16 and then 8/8 correct unseen oxygen anchors" in source
     assert "Bernal–Fowler ice rules" in source
     assert "stationary, and exponential ice growth therefore stay red" in source
-    assert 'from "./ice-molecular-anchor-growth.js?v=20260901-427"' in source
+    assert 'from "./ice-molecular-anchor-growth.js?v=20260901-428"' in source
     assert "function initializeIceAnchorSearch()" in source
     assert "executeIceMolecularAnchorGrowth(" in source
     assert "if (iceAnchorTrace) {\n    performIceAnchorEvent()" in source

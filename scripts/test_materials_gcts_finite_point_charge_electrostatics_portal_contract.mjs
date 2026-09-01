@@ -7,6 +7,7 @@ const app = read("apps/iqc-growth-live/app.js");
 const html = read("apps/iqc-growth-live/index.html");
 const compatibility = read("iqc-growth-live/index.html");
 const moduleSource = read("apps/iqc-growth-live/finite-point-charge-electrostatics.mjs");
+const inductionSource = read("apps/iqc-growth-live/finite-charge-induction.mjs");
 const pairMatrixSource = read("apps/iqc-growth-live/born-mayer-pair-matrix.mjs");
 const readme = read("apps/iqc-growth-live/README.md");
 const benchmark = read("docs/projects/materials-recursive-gcts-benchmark.md");
@@ -15,7 +16,8 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 for (const document of [html, compatibility]) {
   for (const id of ["ionicPairDielectricSelect", "ionicPairTemperatureSelect",
     "ionicPairObservableSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect",
-    "ionicPairBornPolicySelect", "ionicPairDispersionC6Select", "ionicPairMatrixInspector", "ionicPairMatrixRows",
+    "ionicPairBornPolicySelect", "ionicPairDispersionC6Select", "ionicPairInductionAlphaSelect",
+    "ionicPairMatrixInspector", "ionicPairMatrixRows",
     "electrostaticForceToggle", "electrostaticForceToggleLabel"]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
@@ -31,7 +33,7 @@ for (const token of [
   "ionicPairRelativePermittivity",
   "ionicPairTemperatureKelvin",
   "ionicPairObservable",
-  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 5",
+  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 6",
   "migrateCustomExperimentManifest",
   "migratedFromSchemaVersion",
   "electrostaticEnergyEvaluated",
@@ -42,6 +44,7 @@ for (const token of [
   "ionicPairBornPolicy",
   "ionicPairDispersionC6ElectronVoltAngstrom6",
   "dispersionIonicPairMode",
+  "ionicPairInductionPolarizabilityAngstrom3",
   "activeBornMayerPairMatrix",
   "renderBornMayerPairMatrix",
   "electrostaticForceSites",
@@ -79,6 +82,16 @@ for (const token of [
 ]) assert.ok(moduleSource.includes(token), token);
 
 for (const token of [
+  "finiteDampedChargeInductionEnergy",
+  "incrementalFiniteChargeInduction",
+  "Tang-Toennies f3(r/lambda)",
+  "energyIsManyBodyInChargeGeometry: true",
+  "mutualDipoleInductionSolved: false",
+  "polarizationForceEvaluated: false",
+  "targetUsed: false",
+]) assert.ok(inductionSource.includes(token), token);
+
+for (const token of [
   "buildBornMayerPairMatrix",
   "canonicalSpeciesPairKey",
   "contact-scaled",
@@ -94,17 +107,20 @@ assert.match(readme, /Build 424 · electrostatic force vectors become inspectabl
 assert.match(readme, /Build 425 · Coulomb acquires an explicit short-range core/);
 assert.match(readme, /Build 426 · short-range repulsion becomes a visible species-pair matrix/);
 assert.match(readme, /Build 427 · an explicit damped dispersion hypothesis/);
+assert.match(readme, /Build 428 · finite charge induction adds many-body geometry/);
 assert.match(benchmark, /Finite formal-charge electrostatic boundary \(Build 422\)/);
 assert.match(benchmark, /Finite electrostatic force geometry \(Build 423\)/);
 assert.match(benchmark, /Candidate-bound electrostatic force glyphs \(Build 424\)/);
 assert.match(benchmark, /Conditional Coulomb \+ Born–Mayer pair hypothesis \(Build 425\)/);
 assert.match(benchmark, /Geometry-conditioned Born–Mayer pair matrix \(Build 426\)/);
 assert.match(benchmark, /Tang–Toennies-damped pair dispersion \(Build 427\)/);
+assert.match(benchmark, /Damped charge-induced-dipole energy \(Build 428\)/);
 assert.match(atlas, /"27", "Conditional finite electrostatics"/);
 assert.match(atlas, /"28", "Electrostatic force geometry"/);
 assert.match(atlas, /"29", "Candidate-bound Coulomb force glyphs"/);
 assert.match(atlas, /"30", "Finite Coulomb \+ Born–Mayer hypothesis"/);
 assert.match(atlas, /"31", "Geometry-conditioned species-pair core"/);
 assert.match(atlas, /"32", "Damped dispersion pair hypothesis"/);
+assert.match(atlas, /"33", "Finite charge-induction geometry"/);
 
 console.log("finite point-charge electrostatics portal contract passed");

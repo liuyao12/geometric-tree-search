@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 428 · finite charge induction adds many-body geometry
+
+The finite interaction laboratory now has an opt-in isotropic polarizability
+control `α`. Each site receives the Tang–Toennies-damped field produced by all
+other supplied formal charges, and the candidate energy includes
+`Uind=−(kₑα/2εᵣ²)Σᵢ|Eᵢ|²`. Because each field is a vector sum before it is
+squared, cross terms couple triples and larger neighborhoods: this is a real
+many-body function of geometry rather than another pair sum. The 2/4/8/global
+portrait exposes induction ΔU and induced-dipole magnitudes beside the existing
+Coulomb, Born–Mayer, and dispersion decomposition.
+
+The new no-text-field selector is deliberately a hypothesis control. `α` is
+global and declared, not species fitted. Charge-induced dipoles do not polarize
+one another, so this is direct induction rather than a self-consistent
+polarizable force field. Polarization forces are not evaluated; when induction
+is active, 3D arrows are explicitly labeled as the analytic pair-force portion
+only. Periodic response, electronic structure, relaxation, and physical time
+remain open.
+
 ## Build 427 · an explicit damped dispersion hypothesis
 
 The finite pair laboratory now adds an opt-in attractive term to Coulomb and
