@@ -1711,6 +1711,19 @@
         const stage = demoStages[stageName];
         if (!stage || stageName === activeDemoStage) return;
         activeDemoStage = stageName;
+        const activatesCurrentSearch = hasStartedTiling && liveSearchIterator && (
+          (stageName === 'tiling' && !liveSearchUsesMarking)
+          || (stageName === 'markedTiling' && liveSearchUsesMarking && liveSearchMarkingRank === 3)
+        );
+        if (activatesCurrentSearch) {
+          if (stageLabel) stageLabel.textContent = stage.label;
+          if (stageNote) stageNote.textContent = stage.note;
+          stageChips.forEach(chip => {
+            chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
+          });
+          updateTextWrap();
+          return;
+        }
         stopTiling();
         liveSearchIterator?.cancel?.();
         if (stageName === 'intro') {
