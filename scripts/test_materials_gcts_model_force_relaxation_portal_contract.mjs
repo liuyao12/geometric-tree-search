@@ -26,6 +26,8 @@ for (const document of [html, compatibility]) {
 }
 for (const id of ["modelForceCartesianGradientState",
   "modelForceCartesianGradientGrid", "modelForceCartesianGradientPointState",
+  "modelForceFixedSiteState", "modelForceFixedSiteGrid",
+  "modelForceFixedSitePointState",
   "modelForceReactionState", "modelForceReactionGrid",
   "modelForceReactionPointState", "modelForceTorqueState",
   "modelForceTorqueGrid", "modelForceTorquePointState",
@@ -99,6 +101,14 @@ for (const token of [
   "modelForceCartesianGradientCoordinateCount",
   "modelForceCartesianGradientProbeEvaluationCount",
   "modelForceFailedCartesianGradientEndpointImageIndices",
+  "modelForceEndpointFixedSitePairGradientPassed",
+  "modelForceEndpointFixedSitePairGradientAudit",
+  "modelForceFixedSitePairGradientEndpointCount",
+  "modelForceFixedSitePairGradientAffectedSiteCount",
+  "modelForceFixedSitePairGradientSampledSiteCount",
+  "modelForceFixedSitePairGradientCoordinateCount",
+  "modelForceFixedSitePairGradientProbeEvaluationCount",
+  "modelForceFailedFixedSitePairGradientEndpointImageIndices",
   "modelForceEndpointEnvironmentReactionPassed",
   "modelForceEndpointEnvironmentReactionAudit",
   "modelForceEnvironmentReactionEndpointCount",
@@ -136,6 +146,7 @@ for (const token of [
   "elapsedPhysicalTimeModeled: false",
   "renderModelForceResponseDiagnostic",
   "modelForceCartesianSelectedKey",
+  "modelForceFixedSiteSelectedEndpoint",
   "model-force-cartesian-cell",
   "modelForceReactionSelectedKey",
   "modelForceTorqueSelectedKey",
@@ -147,6 +158,7 @@ for (const token of [
 for (const token of [".model-force-response-diagnostic",
   ".model-force-response-legend", ".response-tangent-point",
   ".model-force-cartesian-grid", ".model-force-cartesian-cell",
+  ".model-force-fixed-site-grid", ".model-force-fixed-site-card",
   ".model-force-reaction-grid", ".model-force-torque-grid",
   ".model-force-covariance-grid", ".model-force-covariance-card"]) {
   assert.ok(style.includes(token), token);
@@ -159,6 +171,7 @@ for (const token of [
   "auditPanelResolvedForceEnergyPathClosure",
   "auditInteriorForceEnergyGradientConsistency",
   "auditCartesianForceEnergyGradient",
+  "auditFixedEnvironmentPairForceGradient",
   "auditEnvironmentReactionForceBalance",
   "auditEnvironmentReactionTorqueBalance",
   "auditFiniteInteractionRigidMotionCovariance",
@@ -166,6 +179,9 @@ for (const token of [
   "rotationDeterminant",
   "fixedEnvironmentMovedCollectivelyForProbe: true",
   "fixedEnvironmentRotatedCollectivelyForProbe: true",
+  "perFixedSitePairForcesResolved: true",
+  "perFixedSiteInductionForcesResolved: false",
+  "currentCurrentForceFieldOmittedAsConstant: true",
   "perFixedSiteForcesResolved: false",
   "energyProbeForceMode: \"omitted\"",
   "pairInteractionForceIsNegativeEnergyGradient",
@@ -249,6 +265,7 @@ assert.match(atlas, /"54", "Interactive Cartesian force compass"/);
 assert.match(atlas, /"55", "Fixed-environment reaction balance"/);
 assert.match(atlas, /"56", "Fixed-environment reaction torque"/);
 assert.match(atlas, /"57", "Proper-SE\(3\) finite-interaction covariance"/);
+assert.match(atlas, /"58", "Sampled fixed-site pair-force gradient"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
@@ -270,5 +287,7 @@ assert.match(readme, /Build 451 · fixed-environment reaction torque/);
 assert.match(benchmark, /Build 451: Fixed-environment reaction torque/);
 assert.match(readme, /Build 452 · proper-SE\(3\) finite-interaction covariance/);
 assert.match(benchmark, /Build 452: Proper-SE\(3\) finite-interaction covariance/);
+assert.match(readme, /Build 453 · sampled fixed-site pair-force gradient/);
+assert.match(benchmark, /Build 453: Sampled fixed-site pair-force gradient/);
 
 console.log("model-force relaxation portal contract passed");

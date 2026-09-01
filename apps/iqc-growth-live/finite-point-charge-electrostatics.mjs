@@ -4,7 +4,7 @@ export const TANG_TOENNIES_DISPERSION_ORDER = 6;
 
 import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
 import { finiteDifferenceIncrementalChargeInductionForces,
-  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-452";
+  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-453";
 
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
   model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy",
@@ -210,6 +210,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const addedCoulombForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const addedBornMayerForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const addedDispersionForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
+  const currentPairForceRecordsByIndex = new Map();
   const prefactor = COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / Number(relativePermittivity);
   const bornAmplitude = Number(bornMayerAmplitudeElectronVolt);
   const bornDecay = Number(bornMayerDecayAngstrom);
@@ -217,7 +218,21 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const dispersionDampingLength = Number(dispersionDampingLengthAngstrom);
   const pairParameterUsage = new Map();
   let pairMatrixFallbackCount = 0;
-  const accumulate = (first, second, firstAddedIndex, secondAddedIndex = null) => {
+  const currentPairForceRecord = (currentIndex) => {
+    if (!currentPairForceRecordsByIndex.has(currentIndex)) {
+      currentPairForceRecordsByIndex.set(currentIndex, {
+        currentIndex,
+        pairForceVectorElectronVoltPerAngstrom: [0, 0, 0],
+        coulombForceVectorElectronVoltPerAngstrom: [0, 0, 0],
+        bornMayerForceVectorElectronVoltPerAngstrom: [0, 0, 0],
+        dispersionForceVectorElectronVoltPerAngstrom: [0, 0, 0],
+        interactingPairCount: 0,
+      });
+    }
+    return currentPairForceRecordsByIndex.get(currentIndex);
+  };
+  const accumulate = (first, second, firstAddedIndex, secondAddedIndex = null,
+    secondCurrentIndex = null) => {
     const displacement = first.position.map((value, axis) => value - second.position[axis]);
     const separation = vectorNorm(displacement);
     distanceEvaluations += 1;
@@ -264,8 +279,16 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
         addedCoulombForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= coulombForce;
         addedBornMayerForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= bornMayerForce;
         addedDispersionForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= dispersionForce;
+      } else if (secondCurrentIndex !== null) {
+        const currentRecord = currentPairForceRecord(secondCurrentIndex);
+        currentRecord.pairForceVectorElectronVoltPerAngstrom[axis] -= force;
+        currentRecord.coulombForceVectorElectronVoltPerAngstrom[axis] -= coulombForce;
+        currentRecord.bornMayerForceVectorElectronVoltPerAngstrom[axis] -= bornMayerForce;
+        currentRecord.dispersionForceVectorElectronVoltPerAngstrom[axis] -= dispersionForce;
       }
     });
+    if (secondCurrentIndex !== null) currentPairForceRecord(secondCurrentIndex)
+      .interactingPairCount += 1;
     pairCount += 1;
     if (pairKey) {
       const usage = pairParameterUsage.get(pairKey) || { key: pairKey,
@@ -277,8 +300,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
       pairParameterUsage.set(pairKey, usage);
     }
   };
-  added.forEach((site, addedIndex) => current.forEach((neighbor) =>
-    accumulate(site, neighbor, addedIndex)));
+  added.forEach((site, addedIndex) => current.forEach((neighbor, currentIndex) =>
+    accumulate(site, neighbor, addedIndex, null, currentIndex)));
   added.forEach((site, index) => added.slice(index + 1)
     .forEach((neighbor, relativeIndex) => accumulate(site, neighbor, index, index + relativeIndex + 1)));
   const coulombDeltaEnergyElectronVolt = prefactor * signedChargeDistanceSumPerAngstrom;
@@ -323,6 +346,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
       }));
   }
   const chargeInductionDeltaEnergyElectronVolt = chargeInduction.deltaEnergyElectronVolt;
+  const pairDeltaEnergyElectronVolt = coulombDeltaEnergyElectronVolt
+    + bornMayerRepulsiveEnergyElectronVolt + dampedDispersionEnergyElectronVolt;
   const deltaEnergyElectronVolt = coulombDeltaEnergyElectronVolt
     + bornMayerRepulsiveEnergyElectronVolt + dampedDispersionEnergyElectronVolt
     + chargeInductionDeltaEnergyElectronVolt;
@@ -346,6 +371,32 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     addedForceVectorsElectronVoltPerAngstrom.reduce((sum, vector) => sum + vector[axis], 0));
   const netAddedForceMagnitudeElectronVoltPerAngstrom = vectorNorm(
     netAddedForceVectorElectronVoltPerAngstrom);
+  const addedPairForceVectorsElectronVoltPerAngstrom = added.map((_, index) => [0, 1, 2]
+    .map((axis) => addedCoulombForceVectorsElectronVoltPerAngstrom[index][axis]
+      + addedBornMayerForceVectorsElectronVoltPerAngstrom[index][axis]
+      + addedDispersionForceVectorsElectronVoltPerAngstrom[index][axis]));
+  const currentIncrementalPairForceRecords = [...currentPairForceRecordsByIndex.values()]
+    .sort((first, second) => first.currentIndex - second.currentIndex)
+    .map((record) => Object.freeze({ ...record,
+      pairForceVectorElectronVoltPerAngstrom:
+        Object.freeze([...record.pairForceVectorElectronVoltPerAngstrom]),
+      coulombForceVectorElectronVoltPerAngstrom:
+        Object.freeze([...record.coulombForceVectorElectronVoltPerAngstrom]),
+      bornMayerForceVectorElectronVoltPerAngstrom:
+        Object.freeze([...record.bornMayerForceVectorElectronVoltPerAngstrom]),
+      dispersionForceVectorElectronVoltPerAngstrom:
+        Object.freeze([...record.dispersionForceVectorElectronVoltPerAngstrom]),
+    }));
+  const netVector = (vectors) => [0, 1, 2].map((axis) => vectors
+    .reduce((sum, vector) => sum + vector[axis], 0));
+  const netCurrentIncrementalPairForceVectorElectronVoltPerAngstrom = netVector(
+    currentIncrementalPairForceRecords.map((record) =>
+      record.pairForceVectorElectronVoltPerAngstrom));
+  const netAddedPairForceVectorElectronVoltPerAngstrom = netVector(
+    addedPairForceVectorsElectronVoltPerAngstrom);
+  const pairActionReactionResidualVectorElectronVoltPerAngstrom = [0, 1, 2]
+    .map((axis) => netCurrentIncrementalPairForceVectorElectronVoltPerAngstrom[axis]
+      + netAddedPairForceVectorElectronVoltPerAngstrom[axis]);
   const addedCentroidAngstrom = [0, 1, 2].map((axis) =>
     added.reduce((sum, site) => sum + site.position[axis], 0) / added.length);
   const torqueFor = (vectors) => added.reduce((sum, site, index) => {
@@ -387,6 +438,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     forceCancellationScore,
     combinedScore,
     deltaEnergyElectronVolt,
+    pairDeltaEnergyElectronVolt,
     coulombDeltaEnergyElectronVolt,
     bornMayerRepulsiveEnergyElectronVolt,
     dampedDispersionEnergyElectronVolt,
@@ -400,6 +452,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     thermalEnergyElectronVolt,
     reducedThermalEnergyPerAddedSite,
     addedForceVectorsElectronVoltPerAngstrom,
+    addedPairForceVectorsElectronVoltPerAngstrom,
     addedCoulombForceVectorsElectronVoltPerAngstrom,
     addedBornMayerForceVectorsElectronVoltPerAngstrom,
     addedDispersionForceVectorsElectronVoltPerAngstrom,
@@ -410,6 +463,13 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     maximumAddedForceElectronVoltPerAngstrom,
     netAddedForceVectorElectronVoltPerAngstrom,
     netAddedForceMagnitudeElectronVoltPerAngstrom,
+    currentIncrementalPairForceRecords,
+    affectedCurrentPairForceSiteCount: currentIncrementalPairForceRecords.length,
+    netCurrentIncrementalPairForceVectorElectronVoltPerAngstrom,
+    netAddedPairForceVectorElectronVoltPerAngstrom,
+    pairActionReactionResidualVectorElectronVoltPerAngstrom,
+    pairActionReactionResidualMagnitudeElectronVoltPerAngstrom:
+      vectorNorm(pairActionReactionResidualVectorElectronVoltPerAngstrom),
     addedCentroidAngstrom,
     electrostaticTorqueVectorElectronVolt,
     electrostaticTorqueMagnitudeElectronVolt,
@@ -511,6 +571,9 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     electrostaticForceIsEnergyGradient: true,
     pairInteractionEnergyEvaluated: true,
     pairInteractionForceEvaluated: true,
+    currentIncrementalPairForceFieldResolved: true,
+    currentCurrentForceFieldOmittedAsConstant: true,
+    currentInductionForceFieldResolved: false,
     pairInteractionForceIsNegativeEnergyGradient: Number(inductionPolarizabilityAngstrom3) === 0
       || chargeInductionForce.available,
     bornMayerParametersFitted: false,

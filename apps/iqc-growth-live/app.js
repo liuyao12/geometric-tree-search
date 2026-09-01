@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-452";
+  from "./external-action-barrier.mjs?v=20260901-453";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-452";
+  from "./action-path-viewer.mjs?v=20260901-453";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-452";
+  from "./action-path-mechanism.mjs?v=20260901-453";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-452";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-453";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-452";
+  from "./kinetic-event-spectrum.mjs?v=20260901-453";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-452";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-453";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-452";
+  from "./kinetic-geometry-response.mjs?v=20260901-453";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-452";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-453";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-452";
+  from "./surface-hop-events.mjs?v=20260901-453";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-452";
+  from "./species-exchange-events.mjs?v=20260901-453";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-452";
+  from "./external-state-relaxation.mjs?v=20260901-453";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-452";
+  from "./reversible-transition-lineage.mjs?v=20260901-453";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-452";
+  from "./finite-network-population-dynamics.mjs?v=20260901-453";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-452";
+  from "./finite-network-geometric-flux.mjs?v=20260901-453";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-452";
+  from "./finite-network-structural-flux.mjs?v=20260901-453";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-452";
+  from "./geometric-state-descriptor.mjs?v=20260901-453";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-452";
+  from "./finite-network-global-order.mjs?v=20260901-453";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-452";
+  from "./finite-network-first-passage.mjs?v=20260901-453";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-452";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-453";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-452";
+  from "./finite-network-passage-control.mjs?v=20260901-453";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-452";
+  from "./finite-network-rate-intervention.mjs?v=20260901-453";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-452";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-452";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-452";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-452";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-452";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-452";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-453";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-452";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-453";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-452";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-453";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-452";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-453";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-452";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-453";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-452";
+  from "./classical-nucleation-evidence.mjs?v=20260901-453";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-452";
+  from "./classical-capillarity-action.mjs?v=20260901-453";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-452";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-453";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-452";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-453";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-452";
+  from "./critical-nucleus-geometry.mjs?v=20260901-453";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-452";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-453";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-452";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-453";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-452";
+  from "./experimental-scattering-validation.mjs?v=20260901-453";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-452";
+  from "./public-powder-profile-library.mjs?v=20260901-453";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-452";
+  from "./external-attachment-kinetics.mjs?v=20260901-453";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-452";
+  from "./external-interface-flux.mjs?v=20260901-453";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-452";
+  from "./growth-regime-bridge.mjs?v=20260901-453";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-452";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-453";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-452";
+  from "./catalog-conditional-chronology.mjs?v=20260901-453";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-452";
+  from "./coupled-physics-state.mjs?v=20260901-453";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-452";
+} from "./ice-molecular-anchor-growth.js?v=20260901-453";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-452";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-453";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-452";
+} from "./ice-orientation-evidence.mjs?v=20260901-453";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-452";
+  from "./xray-form-factors.mjs?v=20260901-453";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -240,14 +240,14 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
-  from "./born-mayer-pair-matrix.mjs?v=20260901-452";
+  from "./born-mayer-pair-matrix.mjs?v=20260901-453";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-452";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-453";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -260,11 +260,11 @@ import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
-  from "./model-force-relaxation-seed.mjs?v=20260901-452";
+  from "./model-force-relaxation-seed.mjs?v=20260901-453";
 import { auditAnchoredInterfaceShells }
-  from "./anchored-interface-shells.mjs?v=20260901-452";
+  from "./anchored-interface-shells.mjs?v=20260901-453";
 import { auditLinearSweptExclusion }
-  from "./linear-swept-exclusion.mjs?v=20260901-452";
+  from "./linear-swept-exclusion.mjs?v=20260901-453";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
 import { archivedResponseDeformationGradient, archivedStressStrainResponseArtifact,
@@ -344,7 +344,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-452", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-453", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -605,6 +605,9 @@ const modelForceResponsePointState = $("modelForceResponsePointState");
 const modelForceCartesianGradientState = $("modelForceCartesianGradientState");
 const modelForceCartesianGradientGrid = $("modelForceCartesianGradientGrid");
 const modelForceCartesianGradientPointState = $("modelForceCartesianGradientPointState");
+const modelForceFixedSiteState = $("modelForceFixedSiteState");
+const modelForceFixedSiteGrid = $("modelForceFixedSiteGrid");
+const modelForceFixedSitePointState = $("modelForceFixedSitePointState");
 const modelForceReactionState = $("modelForceReactionState");
 const modelForceReactionGrid = $("modelForceReactionGrid");
 const modelForceReactionPointState = $("modelForceReactionPointState");
@@ -616,6 +619,7 @@ const modelForceCovarianceGrid = $("modelForceCovarianceGrid");
 const modelForceCovariancePointState = $("modelForceCovariancePointState");
 let modelForceResponseSelectedImageIndex = 2;
 let modelForceCartesianSelectedKey = "0:x";
+let modelForceFixedSiteSelectedEndpoint = 0;
 let modelForceReactionSelectedKey = "0:x";
 let modelForceTorqueSelectedKey = "0:x";
 let modelForceCovarianceSelectedEndpoint = 0;
@@ -4882,7 +4886,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452",
+    generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4968,7 +4972,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452",
+    generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5169,7 +5173,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-452", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-453", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5216,7 +5220,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-452",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5468,7 +5472,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-452",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5987,7 +5991,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-452",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15689,7 +15693,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-452" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-453" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15697,7 +15701,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-452",
+      buildId: "20260901-453",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -18583,7 +18587,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-452" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-453" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -18840,6 +18844,30 @@ function notebookInterventionFactors(receipt) {
       modelForceFailedCartesianGradientEndpointImageIndices:
         search.postAttachmentConstraintProjection.latest
           ?.modelForceFailedCartesianGradientEndpointImageIndices ?? null,
+      modelForceEndpointFixedSitePairGradientPassed:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceEndpointFixedSitePairGradientPassed ?? null,
+      modelForceEndpointFixedSitePairGradientAudit:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceEndpointFixedSitePairGradientAudit ?? null,
+      modelForceFixedSitePairGradientEndpointCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFixedSitePairGradientEndpointCount ?? null,
+      modelForceFixedSitePairGradientAffectedSiteCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFixedSitePairGradientAffectedSiteCount ?? null,
+      modelForceFixedSitePairGradientSampledSiteCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFixedSitePairGradientSampledSiteCount ?? null,
+      modelForceFixedSitePairGradientCoordinateCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFixedSitePairGradientCoordinateCount ?? null,
+      modelForceFixedSitePairGradientProbeEvaluationCount:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFixedSitePairGradientProbeEvaluationCount ?? null,
+      modelForceFailedFixedSitePairGradientEndpointImageIndices:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceFailedFixedSitePairGradientEndpointImageIndices ?? null,
       modelForceEndpointEnvironmentReactionPassed:
         search.postAttachmentConstraintProjection.latest
           ?.modelForceEndpointEnvironmentReactionPassed ?? null,
@@ -26508,6 +26536,22 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
       modelForceResponsePath?.cartesianGradientProbeEvaluationCount || 0,
     modelForceFailedCartesianGradientEndpointImageIndices:
       modelForceResponsePath?.failedCartesianGradientEndpointImageIndices || [],
+    modelForceEndpointFixedSitePairGradientPassed: Boolean(
+      modelForceResponsePath?.endpointFixedSitePairGradientPassed),
+    modelForceEndpointFixedSitePairGradientAudit:
+      modelForceResponsePath?.endpointFixedSitePairGradientAudit || null,
+    modelForceFixedSitePairGradientEndpointCount:
+      modelForceResponsePath?.fixedSitePairGradientEndpointCount || 0,
+    modelForceFixedSitePairGradientAffectedSiteCount:
+      modelForceResponsePath?.fixedSitePairGradientAffectedSiteCount || 0,
+    modelForceFixedSitePairGradientSampledSiteCount:
+      modelForceResponsePath?.fixedSitePairGradientSampledSiteCount || 0,
+    modelForceFixedSitePairGradientCoordinateCount:
+      modelForceResponsePath?.fixedSitePairGradientCoordinateCount || 0,
+    modelForceFixedSitePairGradientProbeEvaluationCount:
+      modelForceResponsePath?.fixedSitePairGradientProbeEvaluationCount || 0,
+    modelForceFailedFixedSitePairGradientEndpointImageIndices:
+      modelForceResponsePath?.failedFixedSitePairGradientEndpointImageIndices || [],
     modelForceEndpointEnvironmentReactionPassed: Boolean(
       modelForceResponsePath?.endpointEnvironmentReactionPassed),
     modelForceEndpointEnvironmentReactionAudit:
@@ -27882,7 +27926,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452",
+    generatedAt: new Date().toISOString(), buildId: "20260901-453",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -31153,7 +31197,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452",
+    generatedAt: new Date().toISOString(), buildId: "20260901-453",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -32608,7 +32652,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-453", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -35457,6 +35501,7 @@ function renderModelForceResponseDiagnostic() {
   if (!available) {
     modelForceResponsePlot.replaceChildren();
     modelForceCartesianGradientGrid?.replaceChildren();
+    modelForceFixedSiteGrid?.replaceChildren();
     modelForceReactionGrid?.replaceChildren();
     modelForceTorqueGrid?.replaceChildren();
     modelForceCovarianceGrid?.replaceChildren();
@@ -35636,6 +35681,76 @@ function renderModelForceResponseDiagnostic() {
     modelForceCartesianGradientPointState.textContent = selectedCartesian
       ? `${selectedCartesian.endpointIndex ? "final" : "initial"} endpoint · ${selectedId} · movable site ${selectedCartesian.record.siteIndex} · ${selectedCartesian.axisLabel} · reported F ${selectedCartesian.record.reportedForceElectronVoltPerAngstrom.toExponential(3)} eV/Å · energy-derived F ${selectedCartesian.record.numericalForceElectronVoltPerAngstrom.toExponential(3)} eV/Å · |residual| ${selectedCartesian.record.absoluteResidualElectronVoltPerAngstrom.toExponential(2)} / allowance ${selectedCartesian.record.allowedResidualElectronVoltPerAngstrom.toExponential(2)} eV/Å · ${selectedCartesian.record.passed ? "closed" : "failed"}`
       : "Endpoint Cartesian-gradient evidence is unavailable for this component.";
+  }
+  const fixedSiteAudit = lastStructuralRelaxation
+    ?.modelForceEndpointFixedSitePairGradientAudit;
+  if (modelForceFixedSiteState) {
+    const sampled = lastStructuralRelaxation
+      ?.modelForceFixedSitePairGradientSampledSiteCount || 0;
+    const affected = lastStructuralRelaxation
+      ?.modelForceFixedSitePairGradientAffectedSiteCount || 0;
+    const probes = lastStructuralRelaxation
+      ?.modelForceFixedSitePairGradientProbeEvaluationCount || 0;
+    const endpoints = lastStructuralRelaxation
+      ?.modelForceFixedSitePairGradientEndpointCount || 0;
+    modelForceFixedSiteState.textContent = endpoints
+      ? `${sampled} endpoint samples / ${affected} affected · ${probes} probes · ${lastStructuralRelaxation.modelForceEndpointFixedSitePairGradientPassed ? "closed" : "failed"}`
+      : "fixed-site sample pending";
+  }
+  const fixedComponentId = selectedId === "total" ? "pair-total" : selectedId;
+  const fixedSiteCards = (fixedSiteAudit?.records || []).map(
+    (endpointRecord, endpointIndex) => {
+      const component = endpointRecord.components?.find((record) =>
+        record.active && record.id === fixedComponentId);
+      if (!component) return null;
+      const ratioFor = (record) => record.allowedResidualElectronVoltPerAngstrom > 0
+        ? record.absoluteResidualElectronVoltPerAngstrom
+          / record.allowedResidualElectronVoltPerAngstrom
+        : record.absoluteResidualElectronVoltPerAngstrom > 0 ? Infinity : 0;
+      const worst = (component.records || []).reduce((selected, record) =>
+        !selected || ratioFor(record) > ratioFor(selected) ? record : selected, null);
+      const gradientRatio = worst ? ratioFor(worst) : 0;
+      const forceRatio = component.forceConservationToleranceElectronVoltPerAngstrom > 0
+        ? component.netForceResidualMagnitudeElectronVoltPerAngstrom
+          / component.forceConservationToleranceElectronVoltPerAngstrom : 0;
+      const torqueRatio = component.torqueConservationToleranceElectronVolt > 0
+        ? component.torqueResidualMagnitudeElectronVolt
+          / component.torqueConservationToleranceElectronVolt : 0;
+      const ratio = Math.max(gradientRatio, forceRatio, torqueRatio);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `model-force-fixed-site-card${component.passed ? "" : " failed"}${modelForceFixedSiteSelectedEndpoint === endpointIndex ? " selected" : ""}`;
+      button.dataset.fixedSiteEndpoint = String(endpointIndex);
+      button.setAttribute("aria-label", `${endpointIndex ? "final" : "initial"} endpoint fixed-site pair-force sample, ${component.passed ? "passed" : "failed"}`);
+      const label = document.createElement("small");
+      label.textContent = `${endpointIndex ? "final" : "initial"} · ${fixedComponentId}`;
+      const value = document.createElement("strong");
+      value.textContent = `${Number.isFinite(ratio)
+        ? ratio.toFixed(ratio < .01 ? 3 : 2) : "∞"}× allowance`;
+      const detail = document.createElement("span");
+      detail.textContent = `${component.sampledSiteCount} sampled / ${endpointRecord.affectedFixedSiteCount} affected · ${component.passed ? "closed" : "failed"}`;
+      button.append(label, value, detail);
+      button.addEventListener("click", () => {
+        modelForceFixedSiteSelectedEndpoint = endpointIndex;
+        renderModelForceResponseDiagnostic();
+      });
+      return { button, endpointIndex, endpointRecord, component, worst,
+        gradientRatio, forceRatio, torqueRatio, ratio };
+    }).filter(Boolean);
+  if (fixedSiteCards.length && !fixedSiteCards.some((card) =>
+    card.endpointIndex === modelForceFixedSiteSelectedEndpoint)) {
+    modelForceFixedSiteSelectedEndpoint = fixedSiteCards[0].endpointIndex;
+    fixedSiteCards[0].button.classList.add("selected");
+  }
+  modelForceFixedSiteGrid?.replaceChildren(...fixedSiteCards.map((card) => card.button));
+  const selectedFixedSite = fixedSiteCards.find((card) =>
+    card.endpointIndex === modelForceFixedSiteSelectedEndpoint) || fixedSiteCards[0];
+  if (modelForceFixedSitePointState) {
+    modelForceFixedSitePointState.textContent = selectedFixedSite?.worst
+      ? `${selectedFixedSite.endpointIndex ? "final" : "initial"} endpoint · ${fixedComponentId} · fixed site ${selectedFixedSite.worst.currentIndex} · ${selectedFixedSite.worst.axisLabel} · analytic F ${selectedFixedSite.worst.analyticForceElectronVoltPerAngstrom.toExponential(3)} eV/Å · energy-derived F ${selectedFixedSite.worst.numericalForceElectronVoltPerAngstrom.toExponential(3)} eV/Å · |residual| ${selectedFixedSite.worst.absoluteResidualElectronVoltPerAngstrom.toExponential(2)} / allowance ${selectedFixedSite.worst.allowedResidualElectronVoltPerAngstrom.toExponential(2)} eV/Å · complete-field force ratio ${selectedFixedSite.forceRatio.toExponential(2)}× · torque ratio ${selectedFixedSite.torqueRatio.toExponential(2)}× · ${selectedFixedSite.component.passed ? "closed" : "failed"}`
+      : selectedId === "induction"
+        ? "Per-fixed-site induction forces remain unresolved; the collective reaction audit below retains the induction component."
+        : "Fixed-site pair-force evidence is unavailable for this component.";
   }
   const reactionAudit = lastStructuralRelaxation
     ?.modelForceEndpointEnvironmentReactionAudit;
@@ -36064,7 +36179,7 @@ function syncStageOptions() {
       .map((group) => `${group.label} |Mˢ| ${group.beforeResultant.centeredSymmetricForceMoment.frobeniusElectronVolt.toExponential(1)}→${group.afterResultant.centeredSymmetricForceMoment.frobeniusElectronVolt.toExponential(1)} eV`)
       .join(" · ");
     const forceResponsePathReadout = lastStructuralRelaxation?.modelForceSeedEnabled
-      ? ` · ${lastStructuralRelaxation.modelForceResponsePathImageCount || 0}-image response path ${lastStructuralRelaxation.modelForceResponsePathAccepted ? "monotone" : "failed / unavailable"} · smooth branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed ? "certified" : "failed"}${Number.isFinite(lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt) ? ` · W+ΔU ${lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt.toExponential(2)} eV ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed ? "closed" : "failed"}` : ""} · ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount || 0} local panels ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount || 0} interior tangents ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount || 0} endpoint Cartesian derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed ? "closed" : "failed"} · fixed-environment force ${lastStructuralRelaxation.modelForceEndpointEnvironmentReactionPassed ? "balanced" : "failed"} · torque ${lastStructuralRelaxation.modelForceEndpointEnvironmentTorquePassed ? "balanced" : "failed"} · SE(3) ${lastStructuralRelaxation.modelForceEndpointRigidMotionCovariancePassed ? "covariant" : "failed"} · ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount || 0} component closure${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed ? "s passed" : " gate failed"}${Number.isFinite(lastStructuralRelaxation.sweptHardExclusionMinimumMargin) ? ` · swept clearance ${lastStructuralRelaxation.sweptHardExclusionMinimumMargin.toExponential(2)} scene` : ""}` : "";
+      ? ` · ${lastStructuralRelaxation.modelForceResponsePathImageCount || 0}-image response path ${lastStructuralRelaxation.modelForceResponsePathAccepted ? "monotone" : "failed / unavailable"} · smooth branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed ? "certified" : "failed"}${Number.isFinite(lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt) ? ` · W+ΔU ${lastStructuralRelaxation.modelForceWorkEnergyClosureResidualElectronVolt.toExponential(2)} eV ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed ? "closed" : "failed"}` : ""} · ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount || 0} local panels ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount || 0} interior tangents ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount || 0} movable endpoint derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed ? "closed" : "failed"} · ${lastStructuralRelaxation.modelForceFixedSitePairGradientSampledSiteCount || 0} fixed-site pair samples ${lastStructuralRelaxation.modelForceEndpointFixedSitePairGradientPassed ? "closed" : "failed"} · fixed-environment force ${lastStructuralRelaxation.modelForceEndpointEnvironmentReactionPassed ? "balanced" : "failed"} · torque ${lastStructuralRelaxation.modelForceEndpointEnvironmentTorquePassed ? "balanced" : "failed"} · SE(3) ${lastStructuralRelaxation.modelForceEndpointRigidMotionCovariancePassed ? "covariant" : "failed"} · ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount || 0} component closure${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed ? "s passed" : " gate failed"}${Number.isFinite(lastStructuralRelaxation.sweptHardExclusionMinimumMargin) ? ` · swept clearance ${lastStructuralRelaxation.sweptHardExclusionMinimumMargin.toExponential(2)} scene` : ""}` : "";
     structuralRelaxationHint.textContent = relaxationSpec.interfaceShell && relaxationSpec.modelForceSeed
       ? `finite −∇U · emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + ${substrateCapLabel} dₙₙ caps`
       : relaxationSpec.interfaceShell
@@ -39938,7 +40053,7 @@ function physicsTranslationRecords(leap = null) {
         ? "exact frozen-template coordinates; no post-attachment displacement"
         : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with emitted-site displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; ${structuralRelaxationSpec().interfaceShell ? `${structuralRelaxationSpec().substrateFractions.length} learned-contact substrate shell${structuralRelaxationSpec().substrateFractions.length === 1 ? " is" : "s are"} also movable under outward-decreasing caps ${structuralRelaxationSpec().substrateFractions.map((fraction) => `${(100 * fraction).toFixed(1)}%`).join(" → ")} dₙₙ, every response atom needs a contact path to a fixed outer anchor, and discrete site identity stays inside 20% of the merge tolerance` : "only atoms emitted in the current post-replay leap are movable"}${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : structuralRelaxationSpec().forceSeed ? "; initial offsets follow proper-pose-transported residual-force directions with magnitude capped by the frozen sample p90 and are retained only when the full bounded objective improves" : structuralRelaxationSpec().modelForceSeed ? `; initial offsets follow the complete selected finite-interaction −∇U, p90-normalized into the cap; incomplete gradients fail closed; ${MODEL_FORCE_RESPONSE_PATH_IMAGES} straight-line images must retain one finite interaction/response state and analytic hard-reach pair topology while each segment preserves every descent gate; fine ${MODEL_FORCE_RESPONSE_PATH_IMAGES}-image Simpson force work must close endpoint ΔU within the Richardson estimate from its embedded ${(MODEL_FORCE_RESPONSE_PATH_IMAGES + 1) / 2}-image Simpson rule, both in total and independently for every active Coulomb, Born–Mayer, dispersion, and induction term; analytic closest approach must also preserve conservative colored exclusion` : ""}`,
       evidence: lastStructuralRelaxation
-        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; global force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; population residual gate ${lastStructuralRelaxation.modelForceResidualRedistributionPassed}; population resultant/torque gate ${lastStructuralRelaxation.modelForceResultantRedistributionPassed}; population symmetric-moment gate ${lastStructuralRelaxation.modelForceSymmetricMomentRedistributionPassed}; smooth model branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed}; total work-energy closure ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount} local panel closures ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount} interior tangent closures ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed}; ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount} endpoint Cartesian derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed}; fixed-environment force ${lastStructuralRelaxation.modelForceEndpointEnvironmentReactionPassed}; fixed-environment torque ${lastStructuralRelaxation.modelForceEndpointEnvironmentTorquePassed}; proper-SE(3) covariance ${lastStructuralRelaxation.modelForceEndpointRigidMotionCovariancePassed}; ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount} active component closures ${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed}; response path ${lastStructuralRelaxation.modelForceResponsePathAccepted} across ${lastStructuralRelaxation.modelForceResponsePathImageCount} images; swept exclusion ${lastStructuralRelaxation.sweptHardExclusionPassed}; ${lastStructuralRelaxation.modelForceGroupCount} frozen force groups; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations + ${lastStructuralRelaxation.modelForceCartesianGradientProbeEvaluationCount} endpoint Cartesian probes + ${lastStructuralRelaxation.modelForceEnvironmentReactionProbeEvaluationCount} environment-force probes + ${lastStructuralRelaxation.modelForceEnvironmentTorqueProbeEvaluationCount} environment-torque probes + ${lastStructuralRelaxation.modelForceRigidMotionCovarianceEvaluationCount} SE(3) evaluations.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
+        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; global force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; population residual gate ${lastStructuralRelaxation.modelForceResidualRedistributionPassed}; population resultant/torque gate ${lastStructuralRelaxation.modelForceResultantRedistributionPassed}; population symmetric-moment gate ${lastStructuralRelaxation.modelForceSymmetricMomentRedistributionPassed}; smooth model branch ${lastStructuralRelaxation.modelForceSmoothBranchPassed}; total work-energy closure ${lastStructuralRelaxation.modelForceWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceWorkEnergyPanelCount} local panel closures ${lastStructuralRelaxation.modelForcePanelWorkEnergyClosurePassed}; ${lastStructuralRelaxation.modelForceInteriorGradientEligibleImageCount} interior tangent closures ${lastStructuralRelaxation.modelForceInteriorGradientConsistencyPassed}; ${lastStructuralRelaxation.modelForceCartesianGradientCoordinateCount} endpoint Cartesian derivatives ${lastStructuralRelaxation.modelForceEndpointCartesianGradientPassed}; sampled fixed-site pair gradients ${lastStructuralRelaxation.modelForceEndpointFixedSitePairGradientPassed}; fixed-environment force ${lastStructuralRelaxation.modelForceEndpointEnvironmentReactionPassed}; fixed-environment torque ${lastStructuralRelaxation.modelForceEndpointEnvironmentTorquePassed}; proper-SE(3) covariance ${lastStructuralRelaxation.modelForceEndpointRigidMotionCovariancePassed}; ${lastStructuralRelaxation.modelForceActiveWorkEnergyComponentCount} active component closures ${lastStructuralRelaxation.modelForceComponentWorkEnergyClosuresPassed}; response path ${lastStructuralRelaxation.modelForceResponsePathAccepted} across ${lastStructuralRelaxation.modelForceResponsePathImageCount} images; swept exclusion ${lastStructuralRelaxation.sweptHardExclusionPassed}; ${lastStructuralRelaxation.modelForceGroupCount} frozen force groups; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations + ${lastStructuralRelaxation.modelForceCartesianGradientProbeEvaluationCount} movable endpoint probes + ${lastStructuralRelaxation.modelForceFixedSitePairGradientProbeEvaluationCount} fixed-site pair probes + ${lastStructuralRelaxation.modelForceEnvironmentReactionProbeEvaluationCount} environment-force probes + ${lastStructuralRelaxation.modelForceEnvironmentTorqueProbeEvaluationCount} environment-torque probes + ${lastStructuralRelaxation.modelForceRigidMotionCovarianceEvaluationCount} SE(3) evaluations.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
       boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface modes move one or two strictly capped connected substrate shells with an explicit outward contact path to fixed anchors, while symbolic placements and cluster membership stay unchanged; this is tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may initialize the emitted-only or coupled-shell projection. Every segment of a thirteen-image straight Cartesian response path must preserve response-consistent energy plus global/population force descent, while analytic closest-approach certificates protect both conservative colored exclusion and continuous membership in a declared finite interaction reach. All images must retain one interaction model, pair-parameter usage, response branch, force mode, and pair count. Fine thirteen-image Simpson force work must close the independently evaluated endpoint energy change within the Richardson estimate from its embedded seven-image Simpson rule. Each five-image quarter-path panel, every eligible five-point force-versus-energy tangent, and every active Coulomb, Born–Mayer, dispersion, and induction channel must also close independently. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. Local tangent, panel, and component closure prevent compensating implementation errors between samples, path regions, or interaction terms but do not prove that the declared decomposition is transferable physics. Fresh and shell populations are frozen before evaluation and may not increase RMS, p90, net force per site, normalized centroidal torque, or the total/hydrostatic/deviatoric centered symmetric force moment. That moment has force×length units and no inferred control volume, so it is not stress or pressure. Smooth-branch continuity does not infer a switching function or prove higher differentiability. The image parameter is not physical time, the stencil/Richardson allowances are numerical rather than physical uncertainty, and the straight interpolation is not a minimum-energy path, full gradient, or Hessian audit. No arm is thermodynamic or free-energy work, a total-force audit, atomwise force balance, virial-stress balance, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: "learned",
@@ -41949,7 +42064,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-452",
+    generatedAt: new Date().toISOString(), buildId: "20260901-453",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -47172,7 +47287,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-452" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-453" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
@@ -48465,6 +48580,7 @@ structuralRelaxationSelect.addEventListener("change", () => {
 modelForceResponseComponent.addEventListener("change", () => {
   modelForceResponseSelectedImageIndex = 2;
   modelForceCartesianSelectedKey = "0:x";
+  modelForceFixedSiteSelectedEndpoint = 0;
   modelForceReactionSelectedKey = "0:x";
   modelForceTorqueSelectedKey = "0:x";
   modelForceCovarianceSelectedEndpoint = 0;

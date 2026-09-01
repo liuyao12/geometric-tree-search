@@ -1,7 +1,7 @@
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-452";
+  from "./finite-network-first-passage.mjs?v=20260901-453";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-452";
+  from "./finite-network-passage-control.mjs?v=20260901-453";
 
 const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 

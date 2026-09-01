@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-452";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-453";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -600,6 +600,246 @@ export function auditCartesianForceEnergyGradient(currentSites, addedSites,
         : `Cartesian force-energy gradient mismatch: ${failedComponentIds.join(", ")}`,
     claimBoundary: "This independently finite-differences the declared energy along every movable Cartesian coordinate at one endpoint. Fine and coarse central differences bound numerical error, and polarization-force evaluation is disabled inside the energy probes. It verifies the reported finite force vector at this state—not fixed-site forces, a Hessian, phonons, stability, a minimum-energy path, dynamics, rate, or time.",
   });
+}
+
+/**
+ * Resolve the incremental central-pair force on a bounded, force-ranked sample
+ * of fixed sites and verify it by independent Cartesian energy differences.
+ * The complete sparse analytic pair field still supplies the global linear and
+ * angular action-reaction checks. Fixed-fixed forces are constant in this
+ * incremental energy and induction remains aggregate-only.
+ */
+export function auditFixedEnvironmentPairForceGradient(currentSites, addedSites,
+  reportedEvaluation, electrostaticsOptions = {}, {
+    stepAngstrom = 1e-4,
+    maximumSampledFixedSites = 8,
+    absoluteToleranceElectronVoltPerAngstrom = 1e-6,
+    relativeTolerance = 1e-7,
+  } = {}) {
+  const step = Number(stepAngstrom);
+  if (!(Number.isFinite(step) && step >= 1e-6 && step <= 1e-2)) {
+    throw new RangeError("fixed-site gradient audit step must be between 1e-6 and 1e-2 angstrom");
+  }
+  if (!(Number.isInteger(maximumSampledFixedSites) && maximumSampledFixedSites > 0
+      && maximumSampledFixedSites <= 64)) {
+    throw new RangeError("fixed-site gradient audit supports 1..64 sampled fixed sites");
+  }
+  if (!Array.isArray(currentSites) || !currentSites.length
+      || !currentSites.every((site) => finiteVector(site?.position))
+      || !Array.isArray(addedSites) || !addedSites.length
+      || !addedSites.every((site) => finiteVector(site?.position))) {
+    throw new Error("fixed-site gradient audit needs finite current and movable sites");
+  }
+  const fixedRecords = reportedEvaluation?.currentIncrementalPairForceRecords;
+  if (!Array.isArray(fixedRecords)
+      || fixedRecords.some((record) => !Number.isInteger(record.currentIndex)
+        || record.currentIndex < 0 || record.currentIndex >= currentSites.length)) {
+    throw new Error("fixed-site gradient audit lacks a sparse incremental pair-force field");
+  }
+  const componentSpecs = [
+    { id: "pair-total", active: true, energy: "pairDeltaEnergyElectronVolt",
+      fixedForce: "pairForceVectorElectronVoltPerAngstrom",
+      movableForces: "addedPairForceVectorsElectronVoltPerAngstrom" },
+    { id: "coulomb", active: true, energy: "coulombDeltaEnergyElectronVolt",
+      fixedForce: "coulombForceVectorElectronVoltPerAngstrom",
+      movableForces: "addedCoulombForceVectorsElectronVoltPerAngstrom" },
+    { id: "born-mayer", active: Boolean(reportedEvaluation?.bornMayerRepulsionApplied),
+      energy: "bornMayerRepulsiveEnergyElectronVolt",
+      fixedForce: "bornMayerForceVectorElectronVoltPerAngstrom",
+      movableForces: "addedBornMayerForceVectorsElectronVoltPerAngstrom" },
+    { id: "dispersion", active: Boolean(reportedEvaluation?.dispersionApplied),
+      energy: "dampedDispersionEnergyElectronVolt",
+      fixedForce: "dispersionForceVectorElectronVoltPerAngstrom",
+      movableForces: "addedDispersionForceVectorsElectronVoltPerAngstrom" },
+  ];
+  const activeSpecs = componentSpecs.filter((spec) => spec.active);
+  activeSpecs.forEach((spec) => {
+    if (!Number.isFinite(reportedEvaluation?.[spec.energy])
+        || !Array.isArray(reportedEvaluation?.[spec.movableForces])
+        || reportedEvaluation[spec.movableForces].length !== addedSites.length
+        || !reportedEvaluation[spec.movableForces].every(finiteVector)
+        || fixedRecords.some((record) => !finiteVector(record[spec.fixedForce]))) {
+      throw new Error(`fixed-site gradient audit lacks complete ${spec.id} pair data`);
+    }
+  });
+  if (!fixedRecords.length) {
+    const components = componentSpecs.map((spec) => Object.freeze({ id: spec.id,
+      active: spec.active, available: true, passed: true, sampledSiteCount: 0,
+      coordinateCount: 0, failedCoordinates: Object.freeze([]),
+      maximumAbsoluteResidualElectronVoltPerAngstrom: 0,
+      netForceResidualVectorElectronVoltPerAngstrom: Object.freeze([0, 0, 0]),
+      netForceResidualMagnitudeElectronVoltPerAngstrom: 0,
+      forceConservationToleranceElectronVoltPerAngstrom: 1e-10,
+      torqueResidualVectorElectronVolt: Object.freeze([0, 0, 0]),
+      torqueResidualMagnitudeElectronVolt: 0,
+      torqueConservationToleranceElectronVolt: 1e-10,
+      conservationPassed: true, records: Object.freeze([]), targetUsed: false }));
+    return Object.freeze({ available: true, passed: true,
+      affectedFixedSiteCount: 0, sampledFixedSiteCount: 0,
+      sampledCurrentIndices: Object.freeze([]), coordinateCount: 0,
+      componentCount: components.length,
+      activeComponentCount: components.filter((component) => component.active).length,
+      failedComponentIds: Object.freeze([]), components: Object.freeze(components),
+      stepAngstrom: step, fineStepAngstrom: step / 2,
+      centralDifferenceOrder: 2, richardsonDivisor: 3, branchStable: true,
+      probeEvaluationCount: 0, distanceEvaluationCount: 0,
+      energyProbeForceMode: "omitted", inductionExcludedFromPairEnergyProbes: true,
+      sampleSelectionPolicy: "no fixed site was touched by an active incremental pair",
+      fullSparsePairFieldConservationChecked: true,
+      currentCurrentForceFieldOmittedAsConstant: true,
+      perFixedSitePairForcesResolved: true,
+      perFixedSiteInductionForcesResolved: false,
+      fixedEnvironmentRelaxed: false, targetUsed: false,
+      reason: "no fixed site carries an incremental central-pair reaction at this endpoint",
+      claimBoundary: "No active movable-fixed central pair exists at this endpoint; the empty fixed-side incremental reaction field is exact. Fixed-fixed forces remain constant and per-fixed-site induction remains unresolved." });
+  }
+  const rankedByComponent = activeSpecs.map((spec) => [...fixedRecords]
+    .sort((first, second) => vectorMagnitude(second[spec.fixedForce])
+      - vectorMagnitude(first[spec.fixedForce]) || first.currentIndex - second.currentIndex));
+  const sampledIndices = [];
+  const sampledSet = new Set();
+  for (let rank = 0; sampledIndices.length < maximumSampledFixedSites
+      && rank < fixedRecords.length; rank += 1) {
+    rankedByComponent.forEach((records) => {
+      const index = records[rank]?.currentIndex;
+      if (index !== undefined && !sampledSet.has(index)
+          && sampledIndices.length < maximumSampledFixedSites) {
+        sampledSet.add(index);
+        sampledIndices.push(index);
+      }
+    });
+  }
+  const fixedRecordByIndex = new Map(fixedRecords.map((record) =>
+    [record.currentIndex, record]));
+  const probeOptions = { ...electrostaticsOptions,
+    inductionPolarizabilityAngstrom3: 0, inductionForceMode: "omitted" };
+  let probeEvaluationCount = 0;
+  let distanceEvaluationCount = 0;
+  let branchStable = true;
+  const evaluateOffset = (currentIndex, axis, offset) => {
+    const sites = currentSites.map((site, index) => ({ ...site,
+      position: site.position.map((value, coordinateAxis) => value
+        + (index === currentIndex && coordinateAxis === axis ? offset : 0)) }));
+    const evaluation = incrementalFinitePointChargeElectrostatics(sites,
+      addedSites, probeOptions);
+    probeEvaluationCount += 1;
+    distanceEvaluationCount += evaluation.distanceEvaluations || 0;
+    const sameBranch = Boolean(evaluation.available)
+      && evaluation.pairCount === reportedEvaluation.pairCount
+      && evaluation.reachAngstrom === reportedEvaluation.reachAngstrom
+      && evaluation.bornMayerPairPolicy === reportedEvaluation.bornMayerPairPolicy
+      && evaluation.bornMayerPairMatrixFallbackCount
+        === reportedEvaluation.bornMayerPairMatrixFallbackCount;
+    branchStable = branchStable && sameBranch;
+    return { evaluation, sameBranch };
+  };
+  const coordinateProbes = sampledIndices.flatMap((currentIndex) => [0, 1, 2]
+    .map((axis) => Object.freeze({ currentIndex, axis,
+      plusCoarse: evaluateOffset(currentIndex, axis, step),
+      minusCoarse: evaluateOffset(currentIndex, axis, -step),
+      plusFine: evaluateOffset(currentIndex, axis, step / 2),
+      minusFine: evaluateOffset(currentIndex, axis, -step / 2) })));
+  const systemCentroid = [0, 1, 2].map((axis) => [...currentSites, ...addedSites]
+    .reduce((sum, site) => sum + site.position[axis], 0)
+      / (currentSites.length + addedSites.length));
+  const sumVectors = (vectors) => vectors.reduce(addVector, [0, 0, 0]);
+  const torque = (sites, vectors) => sites.reduce((sum, site, index) =>
+    addVector(sum, crossVector(subtractVector(site.position, systemCentroid),
+      vectors[index])), [0, 0, 0]);
+  const components = componentSpecs.map((spec) => {
+    if (!spec.active) return Object.freeze({ id: spec.id, active: false,
+      available: true, passed: true, sampledSiteCount: 0, coordinateCount: 0,
+      records: Object.freeze([]), targetUsed: false });
+    const records = coordinateProbes.map((probe) => {
+      const coarseDerivative = (probe.plusCoarse.evaluation[spec.energy]
+        - probe.minusCoarse.evaluation[spec.energy]) / (2 * step);
+      const fineDerivative = (probe.plusFine.evaluation[spec.energy]
+        - probe.minusFine.evaluation[spec.energy]) / step;
+      const numericalForce = -fineDerivative;
+      const analyticForce = fixedRecordByIndex.get(probe.currentIndex)
+        [spec.fixedForce][probe.axis];
+      const residual = analyticForce - numericalForce;
+      const richardsonError = Math.abs(fineDerivative - coarseDerivative) / 3;
+      const baseTolerance = Math.max(Number(absoluteToleranceElectronVoltPerAngstrom),
+        Number(relativeTolerance) * Math.max(1, Math.abs(analyticForce),
+          Math.abs(numericalForce)));
+      const allowedResidual = baseTolerance + richardsonError;
+      const coordinateBranchStable = [probe.plusCoarse, probe.minusCoarse,
+        probe.plusFine, probe.minusFine].every((item) => item.sameBranch);
+      return Object.freeze({ currentIndex: probe.currentIndex, axis: probe.axis,
+        axisLabel: "xyz"[probe.axis],
+        analyticForceElectronVoltPerAngstrom: analyticForce,
+        numericalForceElectronVoltPerAngstrom: numericalForce,
+        coarseNumericalForceElectronVoltPerAngstrom: -coarseDerivative,
+        residualElectronVoltPerAngstrom: residual,
+        absoluteResidualElectronVoltPerAngstrom: Math.abs(residual),
+        richardsonErrorEstimateElectronVoltPerAngstrom: richardsonError,
+        baseToleranceElectronVoltPerAngstrom: baseTolerance,
+        allowedResidualElectronVoltPerAngstrom: allowedResidual,
+        branchStable: coordinateBranchStable,
+        passed: coordinateBranchStable && Math.abs(residual) <= allowedResidual });
+    });
+    const fixedVectors = fixedRecords.map((record) => record[spec.fixedForce]);
+    const fixedSites = fixedRecords.map((record) => currentSites[record.currentIndex]);
+    const movableVectors = reportedEvaluation[spec.movableForces];
+    const netForceResidual = addVector(sumVectors(fixedVectors),
+      sumVectors(movableVectors));
+    const torqueResidual = addVector(torque(fixedSites, fixedVectors),
+      torque(addedSites, movableVectors));
+    const conservationScale = Math.max(1,
+      ...fixedVectors.map(vectorMagnitude), ...movableVectors.map(vectorMagnitude));
+    const forceConservationTolerance = Math.max(1e-10,
+      Number(relativeTolerance) * conservationScale);
+    const leverScale = Math.max(1, ...[...fixedSites, ...addedSites].map((site) =>
+      vectorMagnitude(subtractVector(site.position, systemCentroid))));
+    const torqueConservationTolerance = forceConservationTolerance * leverScale
+      * Math.max(1, fixedVectors.length + movableVectors.length);
+    const conservationPassed = vectorMagnitude(netForceResidual)
+      <= forceConservationTolerance
+      && vectorMagnitude(torqueResidual) <= torqueConservationTolerance;
+    const failedCoordinates = records.filter((record) => !record.passed)
+      .map((record) => `${record.currentIndex}:${record.axisLabel}`);
+    return Object.freeze({ id: spec.id, active: true, available: true,
+      passed: failedCoordinates.length === 0 && conservationPassed,
+      sampledSiteCount: sampledIndices.length, coordinateCount: records.length,
+      failedCoordinates: Object.freeze(failedCoordinates),
+      maximumAbsoluteResidualElectronVoltPerAngstrom: Math.max(0,
+        ...records.map((record) => record.absoluteResidualElectronVoltPerAngstrom)),
+      netForceResidualVectorElectronVoltPerAngstrom: Object.freeze(netForceResidual),
+      netForceResidualMagnitudeElectronVoltPerAngstrom: vectorMagnitude(netForceResidual),
+      forceConservationToleranceElectronVoltPerAngstrom: forceConservationTolerance,
+      torqueResidualVectorElectronVolt: Object.freeze(torqueResidual),
+      torqueResidualMagnitudeElectronVolt: vectorMagnitude(torqueResidual),
+      torqueConservationToleranceElectronVolt: torqueConservationTolerance,
+      conservationPassed, records: Object.freeze(records), targetUsed: false });
+  });
+  const activeComponents = components.filter((component) => component.active);
+  const failedComponentIds = activeComponents.filter((component) => !component.passed)
+    .map((component) => component.id);
+  const passed = branchStable && failedComponentIds.length === 0;
+  return Object.freeze({ available: activeComponents.every((component) => component.available),
+    passed, affectedFixedSiteCount: fixedRecords.length,
+    sampledFixedSiteCount: sampledIndices.length,
+    sampledCurrentIndices: Object.freeze(sampledIndices),
+    coordinateCount: 3 * sampledIndices.length,
+    componentCount: components.length, activeComponentCount: activeComponents.length,
+    failedComponentIds: Object.freeze(failedComponentIds),
+    components: Object.freeze(components), stepAngstrom: step,
+    fineStepAngstrom: step / 2, centralDifferenceOrder: 2,
+    richardsonDivisor: 3, branchStable, probeEvaluationCount,
+    distanceEvaluationCount, energyProbeForceMode: "omitted",
+    inductionExcludedFromPairEnergyProbes: true,
+    sampleSelectionPolicy: "round-robin largest force magnitude across active central-pair components",
+    fullSparsePairFieldConservationChecked: true,
+    currentCurrentForceFieldOmittedAsConstant: true,
+    perFixedSitePairForcesResolved: true,
+    perFixedSiteInductionForcesResolved: false,
+    fixedEnvironmentRelaxed: false, targetUsed: false,
+    reason: passed
+      ? "sampled fixed-site central-pair forces match independent energy gradients and the complete sparse pair field conserves force and torque"
+      : !branchStable ? "one or more fixed-site energy probes changed interaction branch"
+        : `fixed-site pair-force audit failed: ${failedComponentIds.join(", ")}`,
+    claimBoundary: "This resolves the incremental central-pair reaction field caused by the movable group, verifies a bounded force-ranked sample of fixed-site Cartesian gradients, and checks force/torque conservation over the complete sparse pair field. Fixed-fixed forces are constant and omitted; per-fixed-site induction forces remain unresolved and only their aggregate reaction is certified. This is not a complete material force field, stress, traction, equilibrium, dynamics, or time." });
 }
 
 /** Verify that the fixed environment carries the opposite net reaction force. */
@@ -1678,6 +1918,52 @@ export function auditModelForceRelaxationPath(
       reason: error?.message || "endpoint Cartesian gradient audit unavailable",
       targetUsed: false });
   }
+  let endpointFixedSitePairGradientAudit;
+  try {
+    const endpointImageIndices = [0, images.length - 1];
+    const records = endpointImageIndices.map((imageIndex) => Object.freeze({
+      imageIndex,
+      fraction: images[imageIndex].fraction,
+      ...auditFixedEnvironmentPairForceGradient(currentSites,
+        images[imageIndex].sites, imageEvaluations[imageIndex],
+        electrostaticsOptions, {
+          stepAngstrom: auditOptions.fixedSiteGradientStepAngstrom,
+          maximumSampledFixedSites:
+            auditOptions.fixedSiteGradientMaximumSampledSites ?? 8,
+          absoluteToleranceElectronVoltPerAngstrom:
+            auditOptions.fixedSiteGradientAbsoluteToleranceElectronVoltPerAngstrom,
+          relativeTolerance: auditOptions.relativeTolerance,
+        }),
+    }));
+    endpointFixedSitePairGradientAudit = Object.freeze({
+      available: records.every((record) => record.available),
+      passed: records.every((record) => record.passed),
+      endpointCount: records.length,
+      affectedFixedSiteCount: Math.max(0,
+        ...records.map((record) => record.affectedFixedSiteCount || 0)),
+      sampledFixedSiteCount: records.reduce((sum, record) =>
+        sum + record.sampledFixedSiteCount, 0),
+      coordinateCount: records.reduce((sum, record) =>
+        sum + record.coordinateCount, 0),
+      probeEvaluationCount: records.reduce((sum, record) =>
+        sum + record.probeEvaluationCount, 0),
+      distanceEvaluationCount: records.reduce((sum, record) =>
+        sum + record.distanceEvaluationCount, 0),
+      failedEndpointImageIndices: Object.freeze(records
+        .filter((record) => !record.passed).map((record) => record.imageIndex)),
+      records: Object.freeze(records), targetUsed: false,
+      reason: records.every((record) => record.passed)
+        ? "both endpoint fixed-site pair-force samples close their energy gradients and complete sparse conservation laws"
+        : "one or both endpoint fixed-site pair-force audits failed",
+    });
+  } catch (error) {
+    endpointFixedSitePairGradientAudit = Object.freeze({ available: false, passed: false,
+      endpointCount: 0, affectedFixedSiteCount: 0, sampledFixedSiteCount: 0,
+      coordinateCount: 0, probeEvaluationCount: 0, distanceEvaluationCount: 0,
+      failedEndpointImageIndices: Object.freeze([]), records: Object.freeze([]),
+      reason: error?.message || "endpoint fixed-site pair gradient unavailable",
+      targetUsed: false });
+  }
   let endpointEnvironmentReactionAudit;
   try {
     const endpointImageIndices = [0, images.length - 1];
@@ -1804,6 +2090,7 @@ export function auditModelForceRelaxationPath(
     && workEnergyClosure.passed && panelWorkEnergyClosure.passed
     && interiorGradientConsistency.passed
     && endpointCartesianGradientAudit.passed
+    && endpointFixedSitePairGradientAudit.passed
     && endpointEnvironmentReactionAudit.passed
     && endpointEnvironmentTorqueAudit.passed
     && endpointRigidMotionCovarianceAudit.passed
@@ -1814,6 +2101,7 @@ export function auditModelForceRelaxationPath(
       && workEnergyClosure.available && panelWorkEnergyClosure.available
       && interiorGradientConsistency.available
       && endpointCartesianGradientAudit.available
+      && endpointFixedSitePairGradientAudit.available
       && endpointEnvironmentReactionAudit.available
       && endpointEnvironmentTorqueAudit.available
       && endpointRigidMotionCovarianceAudit.available
@@ -1828,14 +2116,16 @@ export function auditModelForceRelaxationPath(
               ? interiorGradientConsistency.reason
               : !endpointCartesianGradientAudit.passed
                 ? endpointCartesianGradientAudit.reason
-                : !endpointEnvironmentReactionAudit.passed
-                  ? endpointEnvironmentReactionAudit.reason
-                  : !endpointEnvironmentTorqueAudit.passed
-                    ? endpointEnvironmentTorqueAudit.reason
-                    : !endpointRigidMotionCovarianceAudit.passed
-                      ? endpointRigidMotionCovarianceAudit.reason
+                : !endpointFixedSitePairGradientAudit.passed
+                  ? endpointFixedSitePairGradientAudit.reason
+                  : !endpointEnvironmentReactionAudit.passed
+                    ? endpointEnvironmentReactionAudit.reason
+                    : !endpointEnvironmentTorqueAudit.passed
+                      ? endpointEnvironmentTorqueAudit.reason
+                      : !endpointRigidMotionCovarianceAudit.passed
+                        ? endpointRigidMotionCovarianceAudit.reason
               : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
-                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, fixed-environment-force/torque-reaction, proper-SE(3)-covariance, and component-work closure gates",
+                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, movable- and sampled-fixed-site endpoint gradients, fixed-environment-force/torque-reaction, proper-SE(3)-covariance, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -1892,6 +2182,22 @@ export function auditModelForceRelaxationPath(
       endpointCartesianGradientAudit.distanceEvaluationCount || 0,
     failedCartesianGradientEndpointImageIndices:
       endpointCartesianGradientAudit.failedEndpointImageIndices || Object.freeze([]),
+    endpointFixedSitePairGradientPassed: endpointFixedSitePairGradientAudit.passed,
+    endpointFixedSitePairGradientAudit,
+    fixedSitePairGradientEndpointCount:
+      endpointFixedSitePairGradientAudit.endpointCount || 0,
+    fixedSitePairGradientAffectedSiteCount:
+      endpointFixedSitePairGradientAudit.affectedFixedSiteCount || 0,
+    fixedSitePairGradientSampledSiteCount:
+      endpointFixedSitePairGradientAudit.sampledFixedSiteCount || 0,
+    fixedSitePairGradientCoordinateCount:
+      endpointFixedSitePairGradientAudit.coordinateCount || 0,
+    fixedSitePairGradientProbeEvaluationCount:
+      endpointFixedSitePairGradientAudit.probeEvaluationCount || 0,
+    fixedSitePairGradientDistanceEvaluationCount:
+      endpointFixedSitePairGradientAudit.distanceEvaluationCount || 0,
+    failedFixedSitePairGradientEndpointImageIndices:
+      endpointFixedSitePairGradientAudit.failedEndpointImageIndices || Object.freeze([]),
     endpointEnvironmentReactionPassed: endpointEnvironmentReactionAudit.passed,
     endpointEnvironmentReactionAudit,
     environmentReactionEndpointCount:
@@ -1939,6 +2245,6 @@ export function auditModelForceRelaxationPath(
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, force-work/energy, subsystem-reaction, and reference-frame consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, both collectively differentiated fixed-environment force and torque reactions, endpoint proper-SE(3) energy/force covariance, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently. Numerical induction-force Richardson error contributes only its displacement-projected, per-coordinate, or lever-arm-projected allowance. These checks validate the declared decomposition along one sampled path plus endpoint gradients, reactions, and frame covariance—not transfer between materials, per-fixed-site forces, fixed-solid relaxation, traction, stress, couple stress, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, force-work/energy, subsystem-reaction, and reference-frame consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, bounded force-ranked samples of fixed-site central-pair gradients, complete sparse pair force/torque conservation, collectively differentiated fixed-environment reactions, endpoint proper-SE(3) energy/force covariance, and every active interaction component must close independently. Per-fixed-site induction and fixed-fixed forces remain unresolved; the latter are constant in this incremental energy. These checks do not establish transfer between materials, a complete fixed-solid force field, relaxation, traction, stress, couple stress, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

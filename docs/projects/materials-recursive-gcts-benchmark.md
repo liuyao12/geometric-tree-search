@@ -10765,6 +10765,28 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 453: Sampled fixed-site pair-force gradient
+
+The incremental finite interaction now retains a sparse reaction record for
+every fixed site touched by a movable–fixed central pair. Coulomb, Born–Mayer,
+damped-dispersion, and their pair total are resolved separately. The complete
+fixed and movable sparse pair fields must close both net force and torque about
+the centroid of the finite system.
+
+For an independent derivative check, each endpoint deterministically selects
+at most eight fixed sites by round-robin largest force magnitude across active
+pair components. Every sampled Cartesian coordinate is perturbed by `±h` and
+`±h/2`; its analytic force must match the fine energy derivative within the
+Richardson allowance. Receipts retain affected and sampled populations,
+selection policy, all coordinate records, conservation residuals, probe cost,
+and failures. A corrupted transverse fixed-side force fails the pair-total
+gate.
+
+The field is incremental: fixed–fixed terms are constant and omitted.
+Per-fixed-site induction remains unresolved, while the collective reaction
+audits still certify its net force and torque. Therefore this is not a complete
+solid force field, virial stress, traction, equilibrium, dynamics, or time.
+
 # Build 452: Proper-SE(3) finite-interaction covariance
 
 Both response endpoints now undergo one deterministic proper rotation and

@@ -3,6 +3,7 @@ import { auditCartesianForceEnergyGradient,
   auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditEnvironmentReactionForceBalance,
   auditEnvironmentReactionTorqueBalance,
+  auditFixedEnvironmentPairForceGradient,
   auditFiniteInteractionRigidMotionCovariance,
   auditForceEnergyPathClosure,
   auditInteriorForceEnergyGradientConsistency,
@@ -266,6 +267,27 @@ assert.equal(transverseCartesianGradient.passed, false);
 assert.deepEqual(transverseCartesianGradient.failedComponentIds, ["total"]);
 assert.deepEqual(transverseCartesianGradient.components.find((component) =>
   component.id === "total").failedCoordinates, ["0:y"]);
+const finitePairFixedSiteGradient = auditFixedEnvironmentPairForceGradient(current,
+  added, finitePairSeed.evaluation, finitePairOptions);
+assert.equal(finitePairFixedSiteGradient.passed, true);
+assert.equal(finitePairFixedSiteGradient.affectedFixedSiteCount, 1);
+assert.equal(finitePairFixedSiteGradient.sampledFixedSiteCount, 1);
+assert.equal(finitePairFixedSiteGradient.coordinateCount, 3);
+assert.equal(finitePairFixedSiteGradient.probeEvaluationCount, 12);
+assert.equal(finitePairFixedSiteGradient.perFixedSitePairForcesResolved, true);
+assert.equal(finitePairFixedSiteGradient.perFixedSiteInductionForcesResolved, false);
+assert.ok(finitePairFixedSiteGradient.components.find((component) =>
+  component.id === "pair-total").netForceResidualMagnitudeElectronVoltPerAngstrom < 1e-12);
+const corruptedFixedForceEvaluation = { ...finitePairSeed.evaluation,
+  currentIncrementalPairForceRecords: finitePairSeed.evaluation
+    .currentIncrementalPairForceRecords.map((record) => ({ ...record,
+      pairForceVectorElectronVoltPerAngstrom:
+        record.pairForceVectorElectronVoltPerAngstrom.map((value, axis) =>
+          value + (axis === 1 ? 1 : 0)) })) };
+const corruptedFixedSiteGradient = auditFixedEnvironmentPairForceGradient(current,
+  added, corruptedFixedForceEvaluation, finitePairOptions);
+assert.equal(corruptedFixedSiteGradient.passed, false);
+assert.deepEqual(corruptedFixedSiteGradient.failedComponentIds, ["pair-total"]);
 const finitePairEnvironmentReaction = auditEnvironmentReactionForceBalance(current,
   added, finitePairSeed.evaluation, finitePairOptions);
 assert.equal(finitePairEnvironmentReaction.passed, true);
@@ -350,6 +372,13 @@ assert.equal(forceSettlingPath.cartesianGradientEndpointCount, 2);
 assert.equal(forceSettlingPath.cartesianGradientCoordinateCount, 6);
 assert.equal(forceSettlingPath.cartesianGradientProbeEvaluationCount, 24);
 assert.deepEqual(forceSettlingPath.failedCartesianGradientEndpointImageIndices, []);
+assert.equal(forceSettlingPath.endpointFixedSitePairGradientPassed, true);
+assert.equal(forceSettlingPath.fixedSitePairGradientEndpointCount, 2);
+assert.equal(forceSettlingPath.fixedSitePairGradientAffectedSiteCount, 1);
+assert.equal(forceSettlingPath.fixedSitePairGradientSampledSiteCount, 2);
+assert.equal(forceSettlingPath.fixedSitePairGradientCoordinateCount, 6);
+assert.equal(forceSettlingPath.fixedSitePairGradientProbeEvaluationCount, 24);
+assert.deepEqual(forceSettlingPath.failedFixedSitePairGradientEndpointImageIndices, []);
 assert.equal(forceSettlingPath.endpointEnvironmentReactionPassed, true);
 assert.equal(forceSettlingPath.environmentReactionEndpointCount, 2);
 assert.equal(forceSettlingPath.environmentReactionCoordinateCount, 6);

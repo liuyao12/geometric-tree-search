@@ -24,6 +24,15 @@ assert.ok(pair.score > 0 && pair.score < 1);
 assert.ok(Math.abs(pair.addedForceVectorsElectronVoltPerAngstrom[0][0]
   + COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / 2.82 ** 2) < 1e-12);
 assert.deepEqual(pair.addedForceVectorsElectronVoltPerAngstrom[0].slice(1), [0, 0]);
+assert.equal(pair.currentIncrementalPairForceRecords.length, 1);
+assert.equal(pair.currentIncrementalPairForceRecords[0].currentIndex, 0);
+assert.ok(Math.abs(pair.currentIncrementalPairForceRecords[0]
+  .pairForceVectorElectronVoltPerAngstrom[0]
+  + pair.addedPairForceVectorsElectronVoltPerAngstrom[0][0]) < 1e-12);
+assert.ok(pair.pairActionReactionResidualMagnitudeElectronVoltPerAngstrom < 1e-12);
+assert.equal(pair.currentIncrementalPairForceFieldResolved, true);
+assert.equal(pair.currentCurrentForceFieldOmittedAsConstant, true);
+assert.equal(pair.currentInductionForceFieldResolved, false);
 assert.equal(pair.rmsAddedForceElectronVoltPerAngstrom,
   pair.maximumAddedForceElectronVoltPerAngstrom);
 assert.equal(pair.netAddedForceMagnitudeElectronVoltPerAngstrom,

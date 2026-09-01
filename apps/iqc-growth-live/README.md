@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 453 · sampled fixed-site pair-force gradient
+
+The finite interaction now exposes the sparse incremental central-pair force
+field acting back on the fixed environment. It records only fixed atoms that
+interact with the movable group; fixed–fixed terms are constant in the
+incremental energy and remain intentionally omitted. The matching movable and
+fixed pair fields must conserve total force and common-origin torque exactly.
+
+At both response endpoints, a bounded round-robin sample of up to eight of the
+largest fixed-site forces across the active pair components is checked against
+independent `±h` and `±h/2` Cartesian energy differences. The response
+microscope presents two selectable endpoint cards under the shared component
+selector, with the controlling fixed atom and axis, analytic and energy-derived
+forces, numerical allowance, and complete-field force/torque ratios.
+
+This resolves and samples the fixed-side Coulomb, Born–Mayer, and dispersion
+reaction field without another all-atom force pass. Per-fixed-site induction
+forces are still unresolved; the existing collective translation/rotation
+audits retain their aggregate induction reaction. This is not a complete
+fixed-solid force field, stress, traction, equilibrium, dynamics, or time.
+
 ## Build 452 · proper-SE(3) finite-interaction covariance
 
 The response gate now checks that its finite interaction is independent of the

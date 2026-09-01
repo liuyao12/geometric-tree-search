@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-452";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-452";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-453";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-453";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-452";
+  from "./hierarchy-physics-transport.mjs?v=20260901-453";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-452";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-453";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-452";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-453";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-452";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-453";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-452", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-453", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -460,6 +460,7 @@ const TIMELINE = [
   ["55", "Fixed-environment reaction balance", "At each response endpoint, the fixed environment is translated collectively by ±h and ±h/2 while the movable group stays fixed. Independent energy derivatives recover the environment's net reaction, which must cancel the reported movable net force for the total and every active interaction component. Six selectable cells expose initial/final × x/y/z residuals and probe cost. This verifies translation invariance and net momentum balance—not per-fixed-atom forces, relaxation, traction, stress, pressure, equilibrium, dynamics, or time.", "proved"],
   ["56", "Fixed-environment reaction torque", "The same endpoint protocol now rotates the fixed environment rigidly by ±θ and ±θ/2 about one common system origin. Energy derivatives recover its net reaction torque, which must cancel the reported movable-site torque in x, y, and z for every active interaction component. A transverse force-couple corruption fails the angular gate. This verifies rotational invariance and group-level angular-momentum balance—not per-fixed-atom forces, couple stress, traction, equilibrium, dynamics, or time.", "proved"],
   ["57", "Proper-SE(3) finite-interaction covariance", "At both response endpoints, one deterministic proper rotation and translation is applied to the complete finite system. Scalar total and active component energies must remain invariant, while every movable-site force vector must equal the correspondingly rotated original vector. Synthetic energy and transverse-force corruptions fail. This is a bounded runtime covariance certificate for one transform—not a proof over every frame, periodic images, fitted-potential transfer, fixed-site forces, equilibrium, dynamics, or time.", "proved"],
+  ["58", "Sampled fixed-site pair-force gradient", "The incremental evaluator now exposes the complete sparse central-pair reaction field on fixed sites. At each endpoint, a bounded round-robin sample of the strongest fixed-site forces across active pair components is independently reconstructed from h and h/2 Cartesian energy differences; the complete sparse field must also conserve net force and common-origin torque. Fixed-fixed terms are constant in the incremental energy, and per-fixed-site induction remains unresolved. This is not a complete solid force field, stress, traction, equilibrium, dynamics, or time.", "proved"],
 ];
 
 const CLAIMS = [
