@@ -1,5 +1,33 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 408 · exact state-space information accounting
+
+The periodic Ice-Ih laboratory now decomposes the complete geometric state
+space by its flux label. With every allowed assignment counted once, `F` is a
+deterministic function of the microstate, so the Shannon chain rule is exact:
+
+`ln Ω = H(F) + H(state | F)`.
+
+For the 2×2×1 cell, `ln Ω = 7.99631723` nats separates into `H(F) =
+3.46900074` nats and `H(state|F) = 4.52731649` nats. Thus the global winding
+label carries **43.38%** of the uniform state-space information while
+**56.62%** remains among configurations with the same winding. The raw 95
+occupied sectors correspond to a Shannon-effective **32.105** sectors and an
+inverse-participation count of **20.500** sectors.
+
+An interactive accounting panel follows the selected periodic cell. Five
+selectable metrics explain the chain rule, the flux-label share, the
+within-sector share, the Shannon-effective sector count, and the
+inverse-participation count. A two-color exact decomposition bar updates for
+all four finite cells, and the same fields are frozen in the downloadable
+receipt and Evidence Atlas.
+
+The measure is deliberately uniform over exact geometric assignments. No
+energy, temperature, proton charge, physical occupation probability, or
+Boltzmann factor is supplied. Consequently the panel is not a measured
+residual entropy, thermodynamic entropy, free energy, bulk extrapolation, or
+growth kinetics claim.
+
 ## Build 407 · exact periodic proton-flux sectors
 
 The periodic counter now enumerates every allowed state after independently

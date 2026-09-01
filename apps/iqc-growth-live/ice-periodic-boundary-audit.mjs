@@ -1,4 +1,4 @@
-import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260831-407";
+import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260831-408";
 
 const ICE_IH_A_ANGSTROM = 4.518;
 const ICE_IH_C_ANGSTROM = 7.357;
@@ -212,6 +212,10 @@ function enumerateTwoDonorFluxSectors(graph) {
     || lexical(left.flux, right.flux));
   const sectorEntropyNats = fluxSectors.reduce((sum, sector) =>
     sum - (sector.fraction ? sector.fraction * Math.log(sector.fraction) : 0), 0);
+  const logMicrostateCountNats = Math.log(Number(total));
+  const conditionalMicrostateEntropyGivenFluxNats = logMicrostateCountNats - sectorEntropyNats;
+  const inverseParticipationSectorCount = 1 / fluxSectors.reduce((sum, sector) =>
+    sum + sector.fraction ** 2, 0);
   const counts = new Map(fluxSectors.map((sector) => [sector.flux.join(","), sector.stateCount]));
   return {
     enumeratedAssignmentCount: assignments.length,
@@ -222,6 +226,13 @@ function enumerateTwoDonorFluxSectors(graph) {
     zeroFluxFraction: Number(BigInt(counts.get("0,0,0") || "0")) / Number(total),
     maximumFluxNorm: Math.max(0, ...fluxSectors.map((sector) => sector.norm)),
     fluxSectorEntropyNats: sectorEntropyNats,
+    effectiveFluxSectorCount: Math.exp(sectorEntropyNats),
+    inverseParticipationFluxSectorCount: inverseParticipationSectorCount,
+    conditionalMicrostateEntropyGivenFluxNats,
+    fluxLabelInformationFraction: sectorEntropyNats / logMicrostateCountNats,
+    withinFluxSectorInformationFraction: conditionalMicrostateEntropyGivenFluxNats / logMicrostateCountNats,
+    entropyChainRuleResidualNats: Math.abs(logMicrostateCountNats
+      - sectorEntropyNats - conditionalMicrostateEntropyGivenFluxNats),
     inversionPaired: fluxSectors.every((sector) => counts.get(sector.flux.map((value) => -value).join(","))
       === sector.stateCount),
     fluxPartitionExact: fluxSectors.reduce((sum, sector) => sum + BigInt(sector.stateCount), 0n) === total,
@@ -244,7 +255,7 @@ export function buildPeriodicIceIhBoundaryAudit(repeats) {
   const logAssignmentCount = countText.length < 16 ? Math.log(Number(counted.exactAssignmentCount))
     : Math.log(Number(countText.slice(0, 15))) + (countText.length - 15) * Math.log(10);
   return {
-    schema: "gcts-periodic-ice-ih-boundary-audit-v1",
+    schema: "gcts-periodic-ice-ih-boundary-audit-v2",
     repeats: [...repeats],
     moleculeCount,
     oxygenConnections: graph.edges.length,
@@ -267,8 +278,16 @@ export function buildPeriodicIceIhBoundaryAudit(repeats) {
     zeroFluxFraction: enumerated.zeroFluxFraction,
     maximumFluxNorm: enumerated.maximumFluxNorm,
     fluxSectorEntropyNats: enumerated.fluxSectorEntropyNats,
+    effectiveFluxSectorCount: enumerated.effectiveFluxSectorCount,
+    inverseParticipationFluxSectorCount: enumerated.inverseParticipationFluxSectorCount,
+    conditionalMicrostateEntropyGivenFluxNats: enumerated.conditionalMicrostateEntropyGivenFluxNats,
+    fluxLabelInformationFraction: enumerated.fluxLabelInformationFraction,
+    withinFluxSectorInformationFraction: enumerated.withinFluxSectorInformationFraction,
+    entropyChainRuleResidualNats: enumerated.entropyChainRuleResidualNats,
     inversionPairedFluxCounts: enumerated.inversionPaired,
     fluxPartitionExact: enumerated.fluxPartitionExact,
+    uniformCombinatorialMeasure: true,
+    boltzmannWeightsUsed: false,
     oxygenGraphDerivedFromDeclaredLatticeGeometry: true,
     everyOxygenFourConnected: true,
     everyMoleculeDonatesTwice: true,

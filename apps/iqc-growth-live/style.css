@@ -1360,12 +1360,27 @@ body.study-guide-open { overflow: hidden; }
 .ice-periodic-flux-bars strong { margin-top:2px; color:#b5a2cd; font:5px var(--mono); font-weight:400; }
 .ice-periodic-flux-bars i { position:relative; height:3px; margin-top:3px; background:rgba(181,148,255,.07); }
 .ice-periodic-flux-bars i::after { content:""; position:absolute; inset:0 auto 0 0; width:var(--ice-flux-bar); background:linear-gradient(90deg,#b594ff,#68d9b8); }
+.ice-periodic-entropy-accounting { margin-top:5px; padding:6px; border:1px solid rgba(104,217,184,.16); background:radial-gradient(circle at 100% 0,rgba(104,217,184,.08),transparent 45%),rgba(3,14,17,.75); }
+.ice-periodic-entropy-accounting > header { display:flex; align-items:end; justify-content:space-between; gap:8px; }
+.ice-periodic-entropy-accounting > header span,.ice-periodic-entropy-accounting > header small,.ice-periodic-entropy-accounting > header strong { display:block; }
+.ice-periodic-entropy-accounting > header small { color:#5f8f82; font:4px var(--mono); text-transform:uppercase; }
+.ice-periodic-entropy-accounting > header strong { margin-top:2px; color:#addbd0; font:6px var(--mono); font-weight:400; }
+.ice-periodic-entropy-accounting > header b { color:#71b9a7; font:4px var(--mono); font-weight:400; }
+.ice-periodic-entropy-metrics { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:3px; margin-top:5px; }
+.ice-periodic-entropy-metrics button { min-width:0; padding:5px; border:1px solid rgba(104,217,184,.12); background:rgba(4,22,23,.72); color:#759e94; text-align:left; cursor:pointer; }
+.ice-periodic-entropy-metrics button:hover,.ice-periodic-entropy-metrics button:focus-visible,.ice-periodic-entropy-metrics button[aria-pressed="true"] { border-color:rgba(104,217,184,.62); color:#cff8ee; outline:none; }
+.ice-periodic-entropy-metrics small,.ice-periodic-entropy-metrics strong { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ice-periodic-entropy-metrics small { font:4px var(--mono); text-transform:uppercase; }.ice-periodic-entropy-metrics strong { margin-top:3px; color:#9fd0c4; font:5px var(--mono); font-weight:400; }
+.ice-periodic-entropy-decomposition { display:flex; height:7px; margin-top:5px; overflow:hidden; border:1px solid rgba(104,217,184,.14); background:#061317; }
+.ice-periodic-entropy-decomposition i { display:block; width:var(--ice-information-share); min-width:0; }
+#icePeriodicEntropyFluxShare { background:linear-gradient(90deg,#b594ff,#8e83dc); }#icePeriodicEntropyWithinShare { background:linear-gradient(90deg,#4eaa9a,#68d9b8); }
+.ice-periodic-entropy-accounting > p { margin:5px 0 0; color:#78938d; font:4.5px/1.5 var(--mono); }
 .ice-orientation-evidence-controls { display:grid; grid-template-columns:.7fr 1.25fr 1fr .7fr; gap:4px; align-items:stretch; }
 .ice-orientation-evidence-controls label,.ice-orientation-evidence-controls button { min-width:0; padding:5px; border:1px solid rgba(197,156,255,.2); background:rgba(18,13,29,.75); color:#bba8d6; font:4.5px var(--mono); }
 .ice-orientation-evidence-controls label { display:grid; gap:3px; }.ice-orientation-evidence-controls select { width:100%; color:#d8cce8; background:#09131c; border:1px solid rgba(197,156,255,.18); font:4.5px var(--mono); }
 .ice-orientation-evidence-controls button { cursor:pointer; }.ice-orientation-evidence-controls button:disabled,.ice-orientation-evidence-import:has(input:disabled) { opacity:.35; cursor:not-allowed; }
 .ice-orientation-evidence-import input { display:none; }
-@media (max-width:760px) { .ice-orientation-state-space-layout,.ice-periodic-closure-comparison,.ice-periodic-flux-explorer > div { grid-template-columns:1fr; }.ice-boundary-sensitivity-bars { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-periodic-flux-bars { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-orientation-evidence-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:760px) { .ice-orientation-state-space-layout,.ice-periodic-closure-comparison,.ice-periodic-flux-explorer > div { grid-template-columns:1fr; }.ice-boundary-sensitivity-bars,.ice-periodic-entropy-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-periodic-flux-bars { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-orientation-evidence-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 .continuation-evidence-ladder { position:relative; margin:9px 0; padding:9px; overflow:hidden; border:1px solid rgba(181,148,255,.28); background:radial-gradient(circle at 100% 0,rgba(181,148,255,.13),transparent 44%),linear-gradient(155deg,rgba(15,25,38,.98),rgba(3,11,16,.96)); }
 .continuation-evidence-ladder::before { content:""; position:absolute; inset:0 auto 0 0; width:2px; background:linear-gradient(#67bfff,#65e1bc 45%,#b594ff 75%,#f0c96a); opacity:.85; }
 .continuation-evidence-ladder[hidden] { display:none; }

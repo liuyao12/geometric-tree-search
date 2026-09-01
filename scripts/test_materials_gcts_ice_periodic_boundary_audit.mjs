@@ -25,7 +25,12 @@ series.forEach((audit, index) => {
     || !audit.periodicBoundary || audit.openBoundary || audit.targetUsed || audit.protonCoordinatesUsed
     || audit.physicalPotentialUsed || audit.thermodynamicEntropyInferred || audit.physicalPolarizationInferred
     || audit.bulkLimitClaimed || !audit.fluxPartitionExact || !audit.inversionPairedFluxCounts
-    || audit.enumeratedAssignmentCount !== Number(audit.exactAssignmentCount)) {
+    || audit.enumeratedAssignmentCount !== Number(audit.exactAssignmentCount)
+    || audit.schema !== "gcts-periodic-ice-ih-boundary-audit-v2" || !audit.uniformCombinatorialMeasure
+    || audit.boltzmannWeightsUsed || audit.entropyChainRuleResidualNats > 1e-12
+    || Math.abs(audit.fluxLabelInformationFraction + audit.withinFluxSectorInformationFraction - 1) > 1e-12
+    || Math.abs(audit.logAssignmentCount - audit.fluxSectorEntropyNats
+      - audit.conditionalMicrostateEntropyGivenFluxNats) > 1e-12) {
     throw new Error("periodic boundary audit violated its scientific claim contract");
   }
   if (!/^[a-f0-9]{64}$/.test(audit.graphSha256)
@@ -39,7 +44,11 @@ series.forEach((audit, index) => {
 if (Math.abs(series.at(-1).logAssignmentsPerMolecule - 0.4997698269872966) > 1e-12
   || series.at(-1).parallelPeriodicEdges !== 0 || series.at(-1).maximumEliminationScope !== 7
   || Math.abs(series.at(-1).zeroFluxFraction - 2 / 15) > 1e-12
-  || Math.abs(series.at(-1).fluxSectorEntropyNats - 3.469000736895095) > 1e-12) {
+  || Math.abs(series.at(-1).fluxSectorEntropyNats - 3.469000736895095) > 1e-12
+  || Math.abs(series.at(-1).effectiveFluxSectorCount - 32.10464542307186) > 1e-12
+  || Math.abs(series.at(-1).inverseParticipationFluxSectorCount - 20.50046713984915) > 1e-12
+  || Math.abs(series.at(-1).conditionalMicrostateEntropyGivenFluxNats - 4.527316494901651) > 1e-12
+  || Math.abs(series.at(-1).fluxLabelInformationFraction - 0.43382480163504245) > 1e-12) {
   throw new Error("largest exact periodic audit changed");
 }
 if (series.some((audit, index) => index > 0

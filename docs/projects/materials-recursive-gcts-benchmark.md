@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+## Uniform periodic state-space information (Build 408)
+
+The exact periodic enumerator now reports a certified information
+decomposition in addition to sector multiplicities. Under the declared
+uniform measure over all `Ω` valid two-donor assignments, flux is a
+deterministic coarse-graining and therefore
+
+`H(state) = ln Ω = H(F) + H(state|F)`.
+
+| repeats | ln Ω | H(F) | H(state\|F) | flux share | exp H(F) | participation sectors |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1×1×1 | 2.890372 | 2.524168 | 0.366204 | 87.33% | 12.481 | 10.800 |
+| 2×1×1 | 4.736198 | 3.035066 | 1.701133 | 64.08% | 20.802 | 13.914 |
+| 3×1×1 | 6.754604 | 3.214115 | 3.540489 | 47.58% | 24.881 | 15.793 |
+| 2×2×1 | 7.996317 | 3.469001 | 4.527316 | 43.38% | 32.105 | 20.500 |
+
+The browser checks the chain-rule residual and complementary fractions for
+every cell. `exp H(F)` is the Shannon-effective sector count; `1/Σp(F)²` is
+the more concentration-sensitive inverse-participation count. Neither
+quantity assumes that the finite geometric configurations are physically
+equiprobable. `uniformCombinatorialMeasure=true`, `boltzmannWeightsUsed=false`,
+`thermodynamicEntropyInferred=false`, and `bulkLimitClaimed=false` remain
+receipt-visible.
+
 ## Exact periodic proton-flux sectors (Build 407)
 
 The periodic Ice-Ih audit now has two independent exact layers. Min-fill
