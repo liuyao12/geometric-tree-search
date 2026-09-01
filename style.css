@@ -354,6 +354,11 @@ h1 {
   margin-top: 6px;
 }
 
+.image-credit {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
 .margin-note {
   float: right;
   clear: right;
