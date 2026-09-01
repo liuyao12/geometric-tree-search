@@ -55,6 +55,10 @@ export function buildExperimentalScatteringRequest(input = {}) {
   if (!["x-ray", "neutron", "electron"].includes(probe)) throw new RangeError("unsupported probe");
   const modelChannel = canonicalChannel(input.modelChannel);
   const modelCoherence = canonicalCoherence(input.modelCoherence);
+  const siteOccupancyModel = String(input.siteOccupancyModel || "coherent-average-site-amplitude");
+  if (siteOccupancyModel !== "coherent-average-site-amplitude") {
+    throw new RangeError("unsupported crystallographic site-occupancy scattering model");
+  }
   const qMinimum = positive(input.qMinimumInverseAngstrom ?? .25, "minimum q");
   const qMaximum = positive(input.qMaximumInverseAngstrom ?? 18, "maximum q");
   if (!(qMaximum > qMinimum)) throw new RangeError("maximum q must exceed minimum q");
@@ -67,6 +71,7 @@ export function buildExperimentalScatteringRequest(input = {}) {
     probe,
     modelChannel,
     modelCoherence,
+    siteOccupancyModel,
     requestedAxes: Object.freeze(["q-inverse-angstrom", "two-theta-degree", "d-angstrom"]),
     qRangeInverseAngstrom: Object.freeze([qMinimum, qMaximum]),
     requiredPointFields: Object.freeze(["abscissa", "intensity"]),

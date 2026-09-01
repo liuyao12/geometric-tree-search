@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-420";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-420";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-421";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-421";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-420";
+  from "./hierarchy-physics-transport.mjs?v=20260901-421";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-420";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-421";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-420";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-421";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-420";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-421";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-420", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-421", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -428,6 +428,7 @@ const TIMELINE = [
   ["23", "Public RRUFF profile bridge", "A digest-pinned CC-BY-4.0 RRUFF/JARVIS subset supplies fifteen measured powder profiles without upload. Exact chemistry filters candidates, the scientist chooses a replicate or polymorph, and only an additional curated phase correspondence permits a same-material claim; chemistry-only comparisons remain explicit experimental references.", "proved"],
   ["24", "q-dependent X-ray amplitudes", "Measured powder XRD now compares against a finite Debye intensity with physical inverse-ångström q and source-pinned neutral-atom Cromer–Mann f₀(q), not constant Z. Unsupported chemistry fails closed; ionic, anomalous, texture, absorption, diffuse, and undeclared instrument effects remain explicit omissions.", "proved"],
   ["25", "Periodic crystal coherence", "For fully periodic 3D crystals, experiment-facing XRD can now sum the supplied cell on reciprocal-lattice vectors and broaden its Bragg reflections with an explicit 8, 20, or 50 nm coherence domain. The finite grown-section curve remains a separate selectable view; neither calculation feeds clustering, marking, or growth.", "proved"],
+  ["26", "Occupancy-aware X-ray amplitudes", "Mixed and partial CIF sites now contribute coherent average amplitudes Σα oαfα(q), including vacancy, in both finite and periodic calculated XRD. The receipt exposes occupancy coverage and withholds occupational diffuse scattering or a fictitious instantaneous microstate; occupancy-valued geometry is never relabeled as a unique atomistic trajectory.", "proved"],
 ];
 
 const CLAIMS = [

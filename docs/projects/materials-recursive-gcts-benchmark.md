@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+## Crystallographic-occupancy scattering boundary (Build 421)
+
+The X-ray path now consumes the occupational alternatives already preserved by
+CIF/JSON ingestion instead of reducing every crystallographic site to one fully
+occupied display token. At each site it forms the coherent average neutral-atom
+amplitude `f̄_j(q)=Σα o_jα f_α(q)`, including a zero-amplitude vacancy remainder,
+and uses that amplitude in both the finite Debye pair sum and the periodic
+reciprocal-lattice structure factor. The self/forward normalization is
+`Σ_j f̄_j(0)²`, consistently describing the average coherent structure.
+
+This does not fabricate an occupational microstate. The incoherent/diffuse
+variance `Σ_j(⟨f_j²⟩−⟨f_j⟩²)`, short-range occupancy correlations, and correlated
+disorder are not reconstructed. The UI and receipt expose mixed/partial counts,
+total occupancy, model identity, and this omission. The frozen measurement
+request binds the same occupancy model. An unresolved average site may remain a
+single occupancy-valued geometry color, but it is not a unique atomistic
+configuration or growth trajectory; that stronger claim still requires a valid
+realization or an explicit ensemble grammar.
+
 ## Periodic powder-coherence boundary (Build 420)
 
 The experiment-facing X-ray comparison now offers two explicitly different

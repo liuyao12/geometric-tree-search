@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 421 · crystallographic occupancy reaches calculated XRD
+
+Imported mixed and partial crystallographic sites no longer become fully
+occupied pseudo-atoms in the calculated X-ray curve. The browser now carries
+each site's preserved element fractions and vacancy remainder into both finite
+Debye and periodic-cell calculations through the coherent average amplitude
+`f̄_j(q) = Σα o_jα f_α(q)`. The forward normalization uses those same averaged
+site amplitudes. Fully occupied structures are unchanged, deuterium uses the
+neutral-H amplitude already declared by the coefficient table, and unsupported
+constituents fail closed.
+
+The reciprocal-space inspector, experimental-comparison metrics, downloadable
+request, and receipt distinguish fully occupied sites from coherent average
+occupancy. Receipts report mixed/partial-site counts, total site occupancy, the
+exact occupancy model, and that occupational diffuse scattering is omitted.
+This is the average-structure Bragg/coherent model: it does not select one
+instantaneous disorder realization, add the variance term
+`⟨f²⟩−⟨f⟩²`, infer short-range occupational correlations, or authorize growth
+of a unique atomistic trajectory from an unresolved occupancy ensemble. An
+occupancy-valued average-site geometry may still be inspected as such. As
+before, calculated and measured XRD remain post-growth evidence only.
+
 ## Build 420 · finite growth versus periodic crystal coherence
 
 The experimental powder workspace now separates two physically different

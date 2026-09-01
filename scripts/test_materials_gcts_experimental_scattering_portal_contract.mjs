@@ -11,9 +11,9 @@ const library = readFileSync(new URL("../apps/iqc-growth-live/public-powder-prof
 const formFactors = readFileSync(new URL("../apps/iqc-growth-live/xray-form-factors.mjs", import.meta.url), "utf8");
 const libraryData = JSON.parse(readFileSync(new URL("../apps/iqc-growth-live/data/rruff-powder-profiles-v1.json", import.meta.url), "utf8"));
 
-assert.match(app, /experimental-scattering-validation\.mjs\?v=20260901-420/);
-assert.match(app, /public-powder-profile-library\.mjs\?v=20260901-420/);
-assert.match(app, /xray-form-factors\.mjs\?v=20260901-420/);
+assert.match(app, /experimental-scattering-validation\.mjs\?v=20260901-421/);
+assert.match(app, /public-powder-profile-library\.mjs\?v=20260901-421/);
+assert.match(app, /xray-form-factors\.mjs\?v=20260901-421/);
 assert.match(app, /experimentalPowderProfileValidation/);
 assert.match(app, /candidateSetChanged: false/);
 assert.match(app, /runExperimentalScatteringDemonstrator/);
@@ -21,6 +21,8 @@ assert.match(app, /qDependentAtomicFormFactorsUsed: displayedScatteringContrastM
 assert.match(app, /formFactorSourceSha256/);
 assert.match(app, /periodicBraggXrayPowderIntensity/);
 assert.match(app, /periodicTranslationalCoherenceUsed/);
+assert.match(app, /occupancyWeightedScatteringUsed/);
+assert.match(app, /coherent-average-site-amplitude/);
 assert.match(app, /experimentalScatteringCoherence\.addEventListener/);
 assert.match(app, /full reported Cartesian Uiso\/Uij reduced to intrinsic-dimensional Ueq/);
 assert.match(document, /Independent powder-profile validation/);
@@ -37,6 +39,7 @@ assert.match(styles, /profile-uncertainty/);
 assert.match(readme, /Build 417/);
 assert.match(readme, /Build 419/);
 assert.match(readme, /Build 420/);
+assert.match(readme, /Build 421/);
 assert.match(readme, /demonstratorOnly/);
 assert.match(benchmark, /Independent powder-profile validation boundary/);
 assert.match(atlas, /Experiment-facing powder validation/);
@@ -47,6 +50,7 @@ assert.match(formFactors, /Cromer-Mann/);
 assert.match(formFactors, /d6ccb33d4be318adfd8a73ae30ce3a01ed0c5a8d/);
 assert.match(formFactors, /qDependentFormFactorsUsed: true/);
 assert.match(formFactors, /Gaussian reciprocal-domain envelope/);
+assert.match(formFactors, /coherent average-site amplitude/);
 assert.equal(libraryData.schema, "gcts-rruff-powder-profile-library-v1");
 assert.equal(libraryData.profileCount, 15);
 assert.equal(libraryData.profiles.filter(profile => profile.phase === "Halite").length, 3);

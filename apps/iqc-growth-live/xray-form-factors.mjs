@@ -52,8 +52,26 @@ const IT92 = Object.freeze({
 export const XRAY_FORM_FACTOR_ELEMENTS = Object.freeze(Object.keys(IT92));
 
 function symbolsForToken(token) {
-  const symbols = String(token || "").match(/[A-Z][a-z]?/g) || [];
+  const text = String(token || "");
+  const occupational = text.match(/^occ\[(.*)]$/);
+  const symbols = occupational
+    ? occupational[1].split(";").filter(record => !/^Vac=/.test(record))
+      .flatMap(record => (record.split("=")[0].match(/[A-Z][a-z]?/) || []))
+    : text.match(/[A-Z][a-z]?/g) || [];
   return symbols.map(symbol => symbol === "D" ? "H" : symbol);
+}
+
+function componentsForToken(token) {
+  const text = String(token || "");
+  const occupational = text.match(/^occ\[(.*)]$/);
+  if (occupational) return occupational[1].split(";").filter(record => !/^Vac=/.test(record))
+    .map((record) => {
+      const [label, rawFraction] = record.split("=");
+      const species = (label.match(/[A-Z][a-z]?/) || [])[0];
+      return { species: species === "D" ? "H" : species, fraction: Number(rawFraction) };
+    }).filter(component => component.species && Number.isFinite(component.fraction) && component.fraction > 0);
+  const symbols = symbolsForToken(text);
+  return symbols.map(species => ({ species, fraction: 1 / Math.max(1, symbols.length) }));
 }
 
 export function neutralXrayFormFactorSupport(token) {
@@ -70,12 +88,59 @@ export function neutralXrayFormFactor(token, qInverseAngstrom) {
   if (!support.supported) throw new Error(`neutral-atom X-ray form factor unavailable for ${support.unsupported.join(", ") || token}`);
   const s = q / FOUR_PI;
   if (!(s < 2)) throw new RangeError("Cromer-Mann f0 is restricted to sin(theta)/lambda < 2 inverse angstrom");
-  return support.symbols.reduce((sum, symbol) => {
-    const coefficients = IT92[symbol];
+  return componentsForToken(token).reduce((sum, component) => {
+    const coefficients = IT92[component.species];
     const value = coefficients[8] + [0, 1, 2, 3].reduce((inner, index) => inner
       + coefficients[index] * Math.exp(-coefficients[index + 4] * s * s), 0);
-    return sum + value;
-  }, 0) / support.symbols.length;
+    return sum + component.fraction * value;
+  }, 0);
+}
+
+function canonicalSiteScatteringComponents(species, siteScatteringComponents) {
+  if (siteScatteringComponents == null) {
+    return species.map(token => Object.freeze([{ species: token, fraction: 1 }]));
+  }
+  if (!Array.isArray(siteScatteringComponents) || siteScatteringComponents.length !== species.length) {
+    throw new Error("X-ray site components must align with species sites");
+  }
+  return siteScatteringComponents.map((components, siteIndex) => {
+    if (!Array.isArray(components) || components.length === 0) {
+      throw new Error(`X-ray site ${siteIndex} requires at least one occupied component`);
+    }
+    const canonical = components.map((component, componentIndex) => {
+      const token = String(component?.species || "");
+      const fraction = Number(component?.fraction);
+      if (!(Number.isFinite(fraction) && fraction > 0 && fraction <= 1)) {
+        throw new RangeError(`X-ray site ${siteIndex} component ${componentIndex} has invalid occupancy`);
+      }
+      const support = neutralXrayFormFactorSupport(token);
+      if (!support.supported) {
+        throw new Error(`neutral-atom X-ray form factor unavailable for ${support.unsupported.join(", ") || token}`);
+      }
+      return Object.freeze({ species: token, fraction });
+    });
+    const total = canonical.reduce((sum, component) => sum + component.fraction, 0);
+    if (total > 1 + 1e-8) throw new RangeError(`X-ray site ${siteIndex} occupancy exceeds one`);
+    return Object.freeze(canonical);
+  });
+}
+
+function coherentSiteAmplitude(components, qInverseAngstrom) {
+  return components.reduce((sum, component) => sum
+    + component.fraction * neutralXrayFormFactor(component.species, qInverseAngstrom), 0);
+}
+
+function occupancyAudit(siteComponents) {
+  const totals = siteComponents.map(components => components.reduce((sum, component) => sum + component.fraction, 0));
+  return {
+    occupancyWeightedAmplitudesUsed: siteComponents.some((components, index) =>
+      components.length > 1 || Math.abs(totals[index] - 1) > 1e-8),
+    mixedOccupancySites: siteComponents.filter(components => components.length > 1).length,
+    partialOccupancySites: totals.filter(total => total < 1 - 1e-8).length,
+    totalSiteOccupancy: totals.reduce((sum, total) => sum + total, 0),
+    occupationalDiffuseIncluded: false,
+    occupancyModel: "coherent average-site amplitude sum_alpha occupancy_alpha f0_alpha(q)",
+  };
 }
 
 function powderKernel(value, dimension) {
@@ -106,7 +171,8 @@ function norm(value) {
 
 export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighborAngstrom,
   dimension = 3, qMinTimesNearestNeighbor = 2, qMaxTimesNearestNeighbor = 20,
-  bins = 96, meanSquareDisplacements = null, includeIsotropicDisplacement = false } = {}) {
+  bins = 96, meanSquareDisplacements = null, includeIsotropicDisplacement = false,
+  siteScatteringComponents = null } = {}) {
   if (!Array.isArray(species) || species.length === 0) throw new Error("X-ray powder intensity requires species");
   if (!Array.isArray(pairs) || pairs.some(pair => !Number.isInteger(pair?.first)
       || !Number.isInteger(pair?.second) || pair.first < 0 || pair.second <= pair.first
@@ -121,9 +187,7 @@ export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighbor
   const qMaximum = Math.min(Number(qMaxTimesNearestNeighbor), maximumByValidity);
   const qMinimum = Number(qMinTimesNearestNeighbor);
   if (!(qMaximum > qMinimum) || !Number.isInteger(bins) || bins < 4) throw new RangeError("invalid X-ray q grid");
-  const supports = species.map(neutralXrayFormFactorSupport);
-  const unsupported = [...new Set(supports.flatMap(support => support.unsupported))].sort();
-  if (unsupported.length) throw new Error(`neutral-atom X-ray form factors unavailable for ${unsupported.join(", ")}`);
+  const siteComponents = canonicalSiteScatteringComponents(species, siteScatteringComponents);
   if (includeIsotropicDisplacement && (!Array.isArray(meanSquareDisplacements)
       || meanSquareDisplacements.length !== species.length
       || meanSquareDisplacements.some(value => value != null && !(Number.isFinite(value) && value >= 0)))) {
@@ -134,10 +198,11 @@ export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighbor
   const q = Array.from({ length: bins }, (_, index) => qMinimum
     + index / (bins - 1) * (qMaximum - qMinimum));
   const qPhysicalInverseAngstrom = q.map(value => value / nearestNeighborAngstrom);
-  const forward = species.map(token => neutralXrayFormFactor(token, 0));
+  const forward = siteComponents.map(components => coherentSiteAmplitude(components, 0));
   const forwardSelfNormalization = forward.reduce((sum, value) => sum + value * value, 0);
   const values = q.map((qa, qIndex) => {
-    const factors = species.map(token => neutralXrayFormFactor(token, qPhysicalInverseAngstrom[qIndex]));
+    const factors = siteComponents.map(components => coherentSiteAmplitude(components,
+      qPhysicalInverseAngstrom[qIndex]));
     const self = factors.reduce((sum, value) => sum + value * value, 0);
     const pairSum = pairs.reduce((sum, pair) => {
       const attenuation = includeIsotropicDisplacement
@@ -159,14 +224,16 @@ export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighbor
     ionicFormFactorsIncluded: false,
     coherentDisplacementAttenuation: includeIsotropicDisplacement,
     diffuseRedistributionIncluded: false,
-    normalization: "finite Debye intensity divided by sum of squared neutral-atom forward amplitudes",
+    ...occupancyAudit(siteComponents),
+    normalization: "finite coherent-average Debye intensity divided by sum of squared average-site forward amplitudes",
   };
 }
 
 export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
   cellVectorsAngstrom, nearestNeighborAngstrom, qMinTimesNearestNeighbor = 2,
   qMaxTimesNearestNeighbor = 20, bins = 512, coherenceLengthAngstrom = 200,
-  meanSquareDisplacementsNormalized = null, includeIsotropicDisplacement = false } = {}) {
+  meanSquareDisplacementsNormalized = null, includeIsotropicDisplacement = false,
+  siteScatteringComponents = null } = {}) {
   if (!Array.isArray(species) || species.length === 0) throw new Error("periodic X-ray intensity requires species");
   if (!Array.isArray(positionsAngstrom) || positionsAngstrom.length !== species.length) {
     throw new Error("periodic X-ray intensity requires one Cartesian position per site");
@@ -185,9 +252,7 @@ export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
     throw new RangeError("periodic X-ray coherence length must be positive");
   }
   if (!Number.isInteger(bins) || bins < 32) throw new RangeError("periodic X-ray intensity requires at least 32 q bins");
-  const supports = species.map(neutralXrayFormFactorSupport);
-  const unsupported = [...new Set(supports.flatMap(support => support.unsupported))].sort();
-  if (unsupported.length) throw new Error(`neutral-atom X-ray form factors unavailable for ${unsupported.join(", ")}`);
+  const siteComponents = canonicalSiteScatteringComponents(species, siteScatteringComponents);
   if (includeIsotropicDisplacement && (!Array.isArray(meanSquareDisplacementsNormalized)
       || meanSquareDisplacementsNormalized.length !== species.length
       || meanSquareDisplacementsNormalized.some(value => value != null
@@ -211,7 +276,7 @@ export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
   const qPhysicalInverseAngstrom = Array.from({ length: bins }, (_, index) => qMinimumPhysical
     + index / (bins - 1) * (qMaximumPhysical - qMinimumPhysical));
   const values = new Array(bins).fill(0);
-  const forwardSum = species.reduce((sum, token) => sum + neutralXrayFormFactor(token, 0), 0);
+  const forwardSum = siteComponents.reduce((sum, components) => sum + coherentSiteAmplitude(components, 0), 0);
   let reflectionCount = 0;
   let systematicAbsenceCount = 0;
   let maximumRawIntensity = 0;
@@ -224,14 +289,13 @@ export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
         const qReflection = norm(reciprocalVector);
         if (qReflection < qMinimumPhysical - margin || qReflection > qMaximumPhysical + margin
             || qReflection >= qMaximumByValidity) continue;
-        const factors = new Map([...new Set(species)].map(token =>
-          [token, neutralXrayFormFactor(token, qReflection)]));
+        const factors = siteComponents.map(components => coherentSiteAmplitude(components, qReflection));
         let real = 0;
         let imaginary = 0;
         positions.forEach((position, index) => {
           const attenuation = includeIsotropicDisplacement
             ? Math.exp(-.5 * qReflection * qReflection * displacementAngstrom2[index]) : 1;
-          const amplitude = factors.get(species[index]) * attenuation;
+          const amplitude = factors[index] * attenuation;
           const phase = dot(reciprocalVector, position);
           real += amplitude * Math.cos(phase);
           imaginary += amplitude * Math.sin(phase);
@@ -285,6 +349,7 @@ export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
     ionicFormFactorsIncluded: false,
     coherentDisplacementAttenuation: includeIsotropicDisplacement,
     diffuseRedistributionIncluded: false,
+    ...occupancyAudit(siteComponents),
     normalization: "sampled periodic powder intensity divided by its maximum",
   };
 }

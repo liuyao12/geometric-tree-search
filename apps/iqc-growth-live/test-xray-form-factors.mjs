@@ -10,12 +10,15 @@ import {
 assert.ok(XRAY_FORM_FACTOR_ELEMENTS.includes("Na"));
 assert.ok(XRAY_FORM_FACTOR_ELEMENTS.includes("Cl"));
 assert.equal(neutralXrayFormFactorSupport("Ta/V").supported, true);
+assert.equal(neutralXrayFormFactorSupport("occ[Ta=0.5;V=0.25;Vac=0.25]").supported, true);
 assert.equal(neutralXrayFormFactorSupport("Au").supported, false);
 assert.ok(Math.abs(neutralXrayFormFactor("C", 0) - 5.9992) < 1e-8);
 assert.ok(Math.abs(neutralXrayFormFactor("Na", 0) - 10.9924) < 1e-8);
 assert.ok(neutralXrayFormFactor("Cl", 5) < neutralXrayFormFactor("Cl", 0));
 assert.throws(() => neutralXrayFormFactor("Au", 1), /unavailable/);
 assert.throws(() => neutralXrayFormFactor("C", 8 * Math.PI), /restricted/);
+assert.ok(Math.abs(neutralXrayFormFactor("occ[C=0.5;Vac=0.5]", 0)
+  - .5 * neutralXrayFormFactor("C", 0)) < 1e-12);
 
 const single = finiteDebyeXrayPowderIntensity({ species: ["C"], pairs: [],
   nearestNeighborAngstrom: 1.42, bins: 8 });
@@ -36,6 +39,27 @@ const reversed = finiteDebyeXrayPowderIntensity({ species: ["Cl", "Na"],
 assert.deepEqual(pair.values, reversed.values);
 assert.ok(pair.values.every(value => Number.isFinite(value) && value >= 0));
 
+const occupiedPair = finiteDebyeXrayPowderIntensity({ species: ["C", "O"],
+  siteScatteringComponents: [[{ species: "C", fraction: .5 }], [{ species: "O", fraction: 1 }]],
+  pairs: [{ first: 0, second: 1, distance: 1 }], nearestNeighborAngstrom: 1.5, bins: 12 });
+const occupiedQ = occupiedPair.qPhysicalInverseAngstrom[0];
+const occupiedC = .5 * neutralXrayFormFactor("C", occupiedQ);
+const occupiedO = neutralXrayFormFactor("O", occupiedQ);
+const occupiedForward = (.5 * neutralXrayFormFactor("C", 0)) ** 2
+  + neutralXrayFormFactor("O", 0) ** 2;
+const occupiedExpected = (occupiedC ** 2 + occupiedO ** 2
+  + 2 * occupiedC * occupiedO * Math.sin(occupiedPair.q[0]) / occupiedPair.q[0]) / occupiedForward;
+assert.ok(Math.abs(occupiedPair.values[0] - occupiedExpected) < 1e-12);
+assert.equal(occupiedPair.occupancyWeightedAmplitudesUsed, true);
+assert.equal(occupiedPair.partialOccupancySites, 1);
+assert.equal(occupiedPair.mixedOccupancySites, 0);
+assert.equal(occupiedPair.totalSiteOccupancy, 1.5);
+assert.equal(occupiedPair.occupationalDiffuseIncluded, false);
+assert.throws(() => finiteDebyeXrayPowderIntensity({ species: ["C"], pairs: [],
+  nearestNeighborAngstrom: 1.5,
+  siteScatteringComponents: [[{ species: "C", fraction: .7 }, { species: "O", fraction: .4 }]] }),
+/exceeds one/);
+
 const damped = finiteDebyeXrayPowderIntensity({ species: ["Na", "Cl"],
   pairs: [{ first: 0, second: 1, distance: 1 }], nearestNeighborAngstrom: 2.82, bins: 12,
   meanSquareDisplacements: [.02, .03], includeIsotropicDisplacement: true });
@@ -51,6 +75,7 @@ const simpleCubic = periodicBraggXrayPowderIntensity({ species: ["Si"],
   nearestNeighborAngstrom: 3, qMinTimesNearestNeighbor: 4, qMaxTimesNearestNeighbor: 12,
   coherenceLengthAngstrom: 120, bins: 256 });
 assert.equal(simpleCubic.periodicTranslationalCoherenceUsed, true);
+assert.equal(simpleCubic.occupancyWeightedAmplitudesUsed, false);
 assert.ok(simpleCubic.reflectionCount > 0);
 const firstReciprocalQa = 2 * Math.PI;
 const firstPeakIndex = simpleCubic.q.reduce((best, value, index) =>
@@ -58,6 +83,20 @@ const firstPeakIndex = simpleCubic.q.reduce((best, value, index) =>
 assert.ok(Math.abs(simpleCubic.q[firstPeakIndex] - firstReciprocalQa) < .03);
 assert.ok(simpleCubic.values[firstPeakIndex] > simpleCubic.values[firstPeakIndex - 4]);
 assert.ok(simpleCubic.values[firstPeakIndex] > simpleCubic.values[firstPeakIndex + 4]);
+
+const periodicOccupancyInput = {
+  species: ["Si", "C"], positionsAngstrom: [[0, 0, 0], [1.5, 1.5, 1.5]],
+  cellVectorsAngstrom: [[3, 0, 0], [0, 3, 0], [0, 0, 3]], nearestNeighborAngstrom: 2.598,
+  qMinTimesNearestNeighbor: 4, qMaxTimesNearestNeighbor: 12, coherenceLengthAngstrom: 120, bins: 192,
+};
+const fullyOccupiedPeriodic = periodicBraggXrayPowderIntensity(periodicOccupancyInput);
+const partialPeriodic = periodicBraggXrayPowderIntensity({ ...periodicOccupancyInput,
+  siteScatteringComponents: [[{ species: "Si", fraction: 1 }], [{ species: "C", fraction: .5 }]] });
+assert.equal(partialPeriodic.occupancyWeightedAmplitudesUsed, true);
+assert.equal(partialPeriodic.partialOccupancySites, 1);
+assert.equal(partialPeriodic.totalSiteOccupancy, 1.5);
+assert.ok(partialPeriodic.values.some((value, index) =>
+  Math.abs(value - fullyOccupiedPeriodic.values[index]) > 1e-4));
 
 const translated = periodicBraggXrayPowderIntensity({ species: ["Si"],
   positionsAngstrom: [[.37, -.21, .59]],
