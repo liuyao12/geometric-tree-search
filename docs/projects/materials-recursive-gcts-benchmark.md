@@ -1,5 +1,19 @@
 # Recursive GCTS benchmark for material growth
 
+## Candidate-bound electrostatic force glyphs (Build 424)
+
+The exact per-emitted-site gradient added in Build 423 is now visible on the
+selected ionic-reach candidate in the shared 3D scene. Each glyph is anchored
+to the corresponding immutable fresh-site coordinate and uses the finite-global
+sample from the already frozen 2/4/8/global profile. The visualizer does not
+recompute the candidate, consult a target, alter a pose, or change admission.
+
+Vector directions and reported magnitudes are the finite point-charge result in
+eV/Å. Rendered lengths are explicitly nonphysical, bounded by a square-root
+normalization within the selected candidate. This is a diagnostic local section
+of the declared Coulomb hypothesis—not a relaxation vector, total force field,
+molecular-dynamics step, or physical trajectory.
+
 ## Finite electrostatic force geometry (Build 423)
 
 The conditional point-charge layer now evaluates the analytic gradient of its

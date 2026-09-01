@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 424 · electrostatic force vectors become inspectable 3D sections
+
+Selecting a point in the ionic 2/4/8/global reach portrait now attaches the
+finite-global point-charge force vector to every emitted atom in that exact
+candidate. Cyan shafts show the analytic force direction; amber tips keep the
+vectors legible while orbiting. A dedicated layer switch keeps this conditional
+electrostatic gradient separate from imported calculation residual forces.
+
+The arrow lengths use a bounded square-root normalization to the largest force
+in the selected candidate. They therefore communicate direction and relative
+magnitude, not ångström displacement. The candidate pose, hard admission, and
+tree-search score are unchanged by the display. Receipts record the selected
+candidate binding, global finite reach, vector count, eV/Å unit, and the facts
+that no total mechanical force, relaxation, or physical time is inferred.
+
 ## Build 423 · electrostatic energy becomes force geometry
 
 The finite point-charge hypothesis now exposes its exact analytic gradient on
