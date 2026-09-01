@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-434";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-435";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -13,10 +13,17 @@ const finiteVector = (value) => Array.isArray(value) && value.length === 3
  */
 export function buildModelForceRelaxationSeed(currentSites, addedSites, {
   displacementCap,
+  displacementCaps = null,
   electrostaticsOptions = {},
 } = {}) {
   if (!(Number.isFinite(displacementCap) && displacementCap > 0)) {
     throw new RangeError("model-force relaxation needs a positive displacement cap");
+  }
+  const caps = displacementCaps == null ? addedSites.map(() => displacementCap)
+    : displacementCaps.map(Number);
+  if (caps.length !== addedSites.length || caps.some((cap) =>
+    !(Number.isFinite(cap) && cap > 0 && cap <= displacementCap))) {
+    throw new RangeError("model-force per-site caps must be positive, complete, and no larger than the global cap");
   }
   const evaluation = incrementalFinitePointChargeElectrostatics(currentSites, addedSites,
     electrostaticsOptions);
@@ -28,6 +35,8 @@ export function buildModelForceRelaxationSeed(currentSites, addedSites, {
     forceScaleElectronVoltPerAngstrom: null,
     forceVectorsElectronVoltPerAngstrom: vectors.map((vector) => Object.freeze([...vector])),
     evaluation,
+    displacementCaps: Object.freeze([...caps]),
+    heterogeneousDisplacementCaps: new Set(caps).size > 1,
     responseConsistent: false,
     targetUsed: false,
   });
@@ -41,8 +50,8 @@ export function buildModelForceRelaxationSeed(currentSites, addedSites, {
   }
   const scale = forceMagnitudeP90(vectors);
   if (!(scale > 0)) return unavailable("finite interaction force field is zero");
-  const offsets = vectors.map((vector) => Object.freeze(
-    boundedForceSeedOffset(vector, scale, displacementCap)));
+  const offsets = vectors.map((vector, index) => Object.freeze(
+    boundedForceSeedOffset(vector, scale, caps[index])));
   return Object.freeze({
     available: true,
     reason: "complete model-energy gradient converted to a bounded geometric seed",
@@ -55,6 +64,8 @@ export function buildModelForceRelaxationSeed(currentSites, addedSites, {
       || evaluation.inductionForceResponseConsistent,
     pairInteractionForceIsNegativeEnergyGradient: true,
     displacementCap,
+    displacementCaps: Object.freeze([...caps]),
+    heterogeneousDisplacementCaps: new Set(caps).size > 1,
     exactCandidateGeometryUsed: true,
     candidateGeometryChanged: false,
     forceIntegratedAsTime: false,
@@ -160,7 +171,7 @@ export function auditModelForceRelaxationOutcome(
     energyMinimized: false,
     forceIntegratedAsTime: false,
     targetUsed: false,
-    claimBoundary: "This is a before/after energy-and-force-residual descent certificate for the movable emitted sites under one declared finite interaction hypothesis while the existing configuration is fixed. It is not a total-system force audit, proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
+    claimBoundary: "This is a before/after energy-and-force-residual descent certificate for the declared movable group—emitted sites and, when explicitly enabled, a bounded substrate shell—under one finite interaction hypothesis while every other site is fixed. It is not a total-system force audit, proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
   });
 }
 

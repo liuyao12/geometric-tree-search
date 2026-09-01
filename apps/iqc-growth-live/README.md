@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 435 · force-informed interface accommodation
+
+The two preceding settling paths can now run as one coupled experiment. The
+new **Finite −∇U interface shell** arm treats the emitted batch and its first
+anchored substrate shell as one movable interaction group. The complete
+selected finite model evaluates fixed↔movable and movable↔movable terms,
+including response-consistent numerical polarization force when enabled. The
+fresh sites retain a 5% `dₙₙ` budget while every substrate site is limited to
+1.5%; heterogeneous caps are applied to the initial force seed and every
+subsequent contact-projection step.
+
+A commit requires learned contact/angle strain, interaction energy, force RMS,
+and force p90 to decrease across the entire movable group. It also re-runs the
+anchored-shell, hard-exclusion, coordination, angular, public-boundary,
+discrete-site-identity, and port-topology gates. The receipt separates fresh
+and substrate sites and records that heterogeneous caps were used. All atoms
+outside the first shell remain fixed, symbolic cluster poses are not refitted,
+and no Hessian or stress response is solved; this is a bounded force-informed
+interface step rather than total mechanical equilibration or dynamics.
+
 ## Build 434 · the first substrate shell can accommodate an attachment
 
 Post-attachment projection is no longer restricted to a perfectly rigid

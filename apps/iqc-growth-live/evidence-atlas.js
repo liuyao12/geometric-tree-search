@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-434";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-434";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-435";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-435";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-434";
+  from "./hierarchy-physics-transport.mjs?v=20260901-435";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-434";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-435";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-434";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-435";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-434";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-435";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-434", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-435", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -442,6 +442,7 @@ const TIMELINE = [
   ["37", "Dual-descent settling certificate", "The force-seeded arm now audits its projected outcome against the same finite interaction hypothesis: learned contact/angle strain and response-consistent interaction energy must both decrease. The receipt records U_before, U_after, ΔU, pair counts, response identity, and work. This certifies one bounded downhill proposal—not a minimum, force balance, dynamics, or physical time.", "proved"],
   ["38", "Residual-force descent gate", "A force-informed geometry leap must now reduce the complete emitted-site force field in both RMS and p90 as well as lowering learned strain and interaction energy. Bare attractive-Coulomb collapse is rejected when it gets steeper; a balanced finite pair step toward its minimum passes. Current atoms remain fixed, so this is local residual descent—not total force balance or mechanical equilibrium.", "proved"],
   ["39", "Anchored interface-shell accommodation", "A new arm moves the emitted batch and its first learned-contact substrate shell under separate 5% and 1.5% d_nn caps. Every substrate atom needs a fixed connected second-shell anchor and must retain its discrete site identity; all hard geometry re-runs atomically. Frozen cluster membership is not refitted, so this is bounded interface accommodation—not exact reconstructed cluster geometry, elasticity, or dynamics.", "proved"],
+  ["40", "Force-informed coupled interface step", "Fresh atoms and the anchored substrate shell can now form one movable finite-interaction group with separate 5% and 1.5% d_nn budgets. Learned strain, response-consistent energy, force RMS, and force p90 must all fall before the coupled move commits. The outer solid and symbolic cluster grammar remain fixed, so this leapfrogs a local interface response without claiming total equilibrium, elasticity, or dynamics.", "proved"],
 ];
 
 const CLAIMS = [

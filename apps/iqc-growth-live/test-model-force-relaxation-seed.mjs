@@ -16,6 +16,16 @@ assert.equal(pairSeed.pairInteractionForceIsNegativeEnergyGradient, true);
 assert.equal(pairSeed.forceIntegratedAsTime, false);
 assert.equal(pairSeed.energyMinimized, false);
 assert.equal(pairSeed.targetUsed, false);
+const heterogeneousSeed = buildModelForceRelaxationSeed(current, [added[0],
+  { ...added[0], position: [0, 2.8, 0] }], {
+  displacementCap: .05, displacementCaps: [.05, .01],
+  electrostaticsOptions: { relativePermittivity: 4 },
+});
+assert.equal(heterogeneousSeed.available, true);
+assert.equal(heterogeneousSeed.heterogeneousDisplacementCaps, true);
+assert.deepEqual(heterogeneousSeed.displacementCaps, [.05, .01]);
+assert.ok(Math.hypot(...heterogeneousSeed.offsets[0]) <= .05 + 1e-12);
+assert.ok(Math.hypot(...heterogeneousSeed.offsets[1]) <= .01 + 1e-12);
 const downhill = auditModelForceRelaxationEnergyDescent(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: pairSeed.evaluation,
@@ -92,6 +102,8 @@ assert.equal(inductionDownhill.forceResidualDecreased, true);
 
 assert.throws(() => buildModelForceRelaxationSeed(current, added,
   { displacementCap: 0 }), /positive displacement cap/);
+assert.throws(() => buildModelForceRelaxationSeed(current, added,
+  { displacementCap: .05, displacementCaps: [.06] }), /per-site caps/);
 assert.throws(() => auditModelForceRelaxationEnergyDescent(current, added,
   [{ position: [2.79, 0, 0], charge: 1, species: "Cl" }]), /identity or charge/);
 

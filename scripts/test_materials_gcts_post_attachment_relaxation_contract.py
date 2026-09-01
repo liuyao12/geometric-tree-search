@@ -11,7 +11,8 @@ README = (APP_DIR / "README.md").read_text()
 
 def test_post_attachment_projection_is_user_controlled_and_bounded():
     assert 'id="structuralRelaxationSelect"' in HTML
-    for mode in ("off", "gentle", "balanced", "strong", "interface-shell"):
+    for mode in ("off", "gentle", "balanced", "strong", "interface-shell",
+                 "model-force-interface"):
         assert f'value="{mode}"' in HTML
     assert "const STRUCTURAL_RELAXATION_MODES" in APP
     assert "displacementFraction: .025" in APP
@@ -22,6 +23,7 @@ def test_post_attachment_projection_is_user_controlled_and_bounded():
     assert "site.displacementCap" in MODULE
     assert "movable-site displacement cap" in MODULE
     assert "Interface shell · emitted 5% + substrate 1.5%" in HTML
+    assert "Finite −∇U interface shell · 5% + 1.5%" in HTML
 
 
 def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_closed():
@@ -38,6 +40,7 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "rebuildSpatialIndex();" in APP
     assert "connectedInterfaceSubstrateShell" in APP
     assert "substrateFraction: .015" in APP
+    assert 'modelForceSeed: true, interfaceShell: true' in APP
     assert "interface shell lacks a fixed connected anchor" in APP
     assert "substrate displacement exceeds the frozen site-identity tolerance" in APP
     assert "discreteClusterSiteIdentityRetained" in APP

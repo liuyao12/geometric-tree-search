@@ -13,7 +13,8 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 
 for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force">Finite interaction −∇U · energy \+ force audit/);
-  assert.match(document, /RMS\/p90 emitted-site force residuals/);
+  assert.match(document, /value="model-force-interface">Finite −∇U interface shell/);
+  assert.match(document, /RMS\/p90 force residuals/);
 }
 
 for (const token of [
@@ -25,6 +26,9 @@ for (const token of [
   "modelForceSeedInductionRichardsonErrorElectronVoltPerAngstrom",
   "modelForceSeedAvailable",
   "modelForceSeedAccepted",
+  "modelForceSeedHeterogeneousDisplacementCaps",
+  "modelForceAuditedFreshSites",
+  "modelForceAuditedSubstrateSites",
   "modelForceEnergyDescentAvailable",
   "modelForceEnergyDecreased",
   "modelForceEnergyBeforeElectronVolt",
@@ -56,6 +60,8 @@ for (const token of [
   "pairInteractionForceIsNegativeEnergyGradient",
   "forceMagnitudeP90",
   "boundedForceSeedOffset",
+  "displacementCaps",
+  "heterogeneousDisplacementCaps",
   "candidateGeometryChanged: false",
   "forceIntegratedAsTime: false",
   "energyMinimized: false",

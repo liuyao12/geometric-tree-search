@@ -7,7 +7,7 @@ const styles = readFileSync(new URL("../apps/iqc-growth-live/style.css", import.
 const readme = readFileSync(new URL("../apps/iqc-growth-live/README.md", import.meta.url), "utf8");
 const benchmark = readFileSync(new URL("../docs/projects/materials-recursive-gcts-benchmark.md", import.meta.url), "utf8");
 
-assert.match(app, /critical-nucleus-grammar-admission\.mjs\?v=20260901-434/);
+assert.match(app, /critical-nucleus-grammar-admission\.mjs\?v=20260901-435/);
 assert.match(app, /auditCriticalNucleusGrammarAdmission/);
 assert.match(app, /initializeExternalCriticalNucleusSeed/);
 assert.match(app, /candidateSetInspectedDuringAdmission: false/);

@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+## Coupled finite-interaction interface step (Build 435)
+
+The force-informed and substrate-shell projections now have a combined arm.
+The emitted atoms and first learned-contact substrate shell form one movable
+set in the finite interaction evaluator, so fixed–movable and
+movable–movable energy/force terms are treated consistently. Per-site force
+seed caps are explicit: 5% `dₙₙ` for fresh sites and 1.5% for substrate sites.
+The local contact optimizer consumes the same heterogeneous caps rather than
+re-expanding substrate moves to the global fresh-site budget.
+
+The coupled move commits only when contact/angle strain, finite energy, force
+RMS, and force p90 all decrease, with unchanged applied polarization response
+and complete gradients. Every substrate site still needs a fixed connected
+anchor and must retain its discrete identity; all hard geometry re-runs. The
+audit reports both movable populations, the cap heterogeneity, force work, and
+the non-refitted cluster-geometry boundary. Because atoms outside the local
+shell remain fixed and no Hessian, stress propagation, or phonon field is
+computed, this is not total equilibrium, elastic relaxation, or dynamics.
+
 ## Anchored interface-shell accommodation (Build 434)
 
 A new post-attachment arm relaxes the fresh batch and its first pre-existing

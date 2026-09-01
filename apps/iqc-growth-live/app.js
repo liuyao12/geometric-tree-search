@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-434";
+  from "./external-action-barrier.mjs?v=20260901-435";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-434";
+  from "./action-path-viewer.mjs?v=20260901-435";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-434";
+  from "./action-path-mechanism.mjs?v=20260901-435";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-434";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-435";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-434";
+  from "./kinetic-event-spectrum.mjs?v=20260901-435";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-434";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-435";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-434";
+  from "./kinetic-geometry-response.mjs?v=20260901-435";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-434";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-435";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-434";
+  from "./surface-hop-events.mjs?v=20260901-435";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-434";
+  from "./species-exchange-events.mjs?v=20260901-435";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-434";
+  from "./external-state-relaxation.mjs?v=20260901-435";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-434";
+  from "./reversible-transition-lineage.mjs?v=20260901-435";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-434";
+  from "./finite-network-population-dynamics.mjs?v=20260901-435";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-434";
+  from "./finite-network-geometric-flux.mjs?v=20260901-435";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-434";
+  from "./finite-network-structural-flux.mjs?v=20260901-435";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-434";
+  from "./geometric-state-descriptor.mjs?v=20260901-435";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-434";
+  from "./finite-network-global-order.mjs?v=20260901-435";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-434";
+  from "./finite-network-first-passage.mjs?v=20260901-435";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-434";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-435";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-434";
+  from "./finite-network-passage-control.mjs?v=20260901-435";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-434";
+  from "./finite-network-rate-intervention.mjs?v=20260901-435";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-434";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-434";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-434";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-434";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-434";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-434";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-435";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-434";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-435";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-434";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-435";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-434";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-435";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-434";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-435";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-434";
+  from "./classical-nucleation-evidence.mjs?v=20260901-435";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-434";
+  from "./classical-capillarity-action.mjs?v=20260901-435";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-434";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-435";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-434";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-435";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-434";
+  from "./critical-nucleus-geometry.mjs?v=20260901-435";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-434";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-435";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-434";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-435";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-434";
+  from "./experimental-scattering-validation.mjs?v=20260901-435";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-434";
+  from "./public-powder-profile-library.mjs?v=20260901-435";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-434";
+  from "./external-attachment-kinetics.mjs?v=20260901-435";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-434";
+  from "./external-interface-flux.mjs?v=20260901-435";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-434";
+  from "./growth-regime-bridge.mjs?v=20260901-435";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-434";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-435";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-434";
+  from "./catalog-conditional-chronology.mjs?v=20260901-435";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-434";
+  from "./coupled-physics-state.mjs?v=20260901-435";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-434";
+} from "./ice-molecular-anchor-growth.js?v=20260901-435";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-434";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-435";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-434";
+} from "./ice-orientation-evidence.mjs?v=20260901-435";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-434";
+  from "./xray-form-factors.mjs?v=20260901-435";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -240,14 +240,14 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
-  from "./born-mayer-pair-matrix.mjs?v=20260901-434";
+  from "./born-mayer-pair-matrix.mjs?v=20260901-435";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-434";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-435";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -259,7 +259,7 @@ import { scalarSpinCompatible, scalarSpinPolarity }
 import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { auditModelForceRelaxationOutcome, buildModelForceRelaxationSeed }
-  from "./model-force-relaxation-seed.mjs?v=20260901-434";
+  from "./model-force-relaxation-seed.mjs?v=20260901-435";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
 import { archivedResponseDeformationGradient, archivedStressStrainResponseArtifact,
@@ -339,7 +339,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-434", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-435", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1586,6 +1586,9 @@ const STRUCTURAL_RELAXATION_MODES = Object.freeze({
     iterations: 12, forceSeed: true }),
   "model-force": Object.freeze({ label: "finite interaction-gradient seed",
     displacementFraction: .05, iterations: 12, modelForceSeed: true }),
+  "model-force-interface": Object.freeze({ label: "finite-interaction interface shell",
+    displacementFraction: .05, substrateFraction: .015, iterations: 16,
+    modelForceSeed: true, interfaceShell: true }),
 });
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -4847,7 +4850,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434",
+    generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4933,7 +4936,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434",
+    generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5134,7 +5137,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-434", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-435", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5181,7 +5184,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-434",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5433,7 +5436,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-434",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5952,7 +5955,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-434",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15654,7 +15657,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-434" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-435" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15662,7 +15665,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-434",
+      buildId: "20260901-435",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -18544,7 +18547,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-434" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-435" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -18678,6 +18681,13 @@ function notebookInterventionFactors(receipt) {
         search.postAttachmentConstraintProjection.latest?.modelForceEnergyResponseConsistent ?? null,
       modelForceResidualDecreased:
         search.postAttachmentConstraintProjection.latest?.modelForceResidualDecreased ?? null,
+      modelForceSeedHeterogeneousDisplacementCaps:
+        search.postAttachmentConstraintProjection.latest
+          ?.modelForceSeedHeterogeneousDisplacementCaps ?? null,
+      modelForceAuditedFreshSites:
+        search.postAttachmentConstraintProjection.latest?.modelForceAuditedFreshSites ?? null,
+      modelForceAuditedSubstrateSites:
+        search.postAttachmentConstraintProjection.latest?.modelForceAuditedSubstrateSites ?? null,
       modelForceRmsBeforeEvPerAngstrom:
         search.postAttachmentConstraintProjection.latest?.modelForceRmsBeforeEvPerAngstrom ?? null,
       modelForceRmsAfterEvPerAngstrom:
@@ -25866,7 +25876,7 @@ function finiteInteractionRelaxationOptions() {
   };
 }
 
-function finiteInteractionModelForceSeed(localAtoms, movableIdSet, cap) {
+function finiteInteractionModelForceSeed(localAtoms, movableIdSet, cap, siteCapById = null) {
   if (!finiteIonicPairMode() || !formalChargeTarget?.available) return {
     available: false, reason: "finite supplied-charge interaction is unavailable",
   };
@@ -25881,13 +25891,17 @@ function finiteInteractionModelForceSeed(localAtoms, movableIdSet, cap) {
     available: false, reason: "complete supplied formal-charge channel is unavailable",
   };
   const electrostaticsOptions = finiteInteractionRelaxationOptions();
+  const displacementCaps = movableAtoms.map((atom) =>
+    (siteCapById?.get(atom.id) ?? cap) * sceneToAngstrom);
   const seed = buildModelForceRelaxationSeed(currentSites, addedSites, {
     displacementCap: cap * sceneToAngstrom,
+    displacementCaps,
     electrostaticsOptions,
   });
   const byId = new Map(movableAtoms.map((atom, index) => [atom.id,
     seed.offsets[index].map((value) => value / sceneToAngstrom)]));
   return { ...seed, currentSites, addedSites, movableAtoms, electrostaticsOptions,
+    displacementCaps,
     sceneToAngstrom,
     offsets: localAtoms.map((atom) => byId.get(atom.id) || [0, 0, 0]) };
 }
@@ -25950,6 +25964,8 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
   const cap = Math.min(referenceSpacing * spec.displacementFraction, MERGE_TOLERANCE * .45);
   const substrateCap = spec.interfaceShell
     ? Math.min(referenceSpacing * spec.substrateFraction, MERGE_TOLERANCE * .2) : 0;
+  const siteCapById = new Map(movableAtoms.map((atom) => [atom.id,
+    freshIdSet.has(atom.id) ? cap : substrateCap]));
   // Every sensitivity arm uses one neighborhood large enough for the strongest
   // declared cap. This keeps changes attributable to the cap/iteration rule,
   // not to a silently changing set of fixed context sites.
@@ -25979,7 +25995,7 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
   const forceOffsets = spec.forceSeed
     ? calculationForceSeedOffsets(localAtoms, movableIdSet, cap) : null;
   const modelForceSeed = spec.modelForceSeed
-    ? finiteInteractionModelForceSeed(localAtoms, movableIdSet, cap) : null;
+    ? finiteInteractionModelForceSeed(localAtoms, movableIdSet, cap, siteCapById) : null;
   const initialOffsets = observedOffsets || forceOffsets || modelForceSeed?.offsets;
   const proposal = relaxLocalContactGeometry(input, coloredDistanceEnvelopes, {
     displacementCap: cap, maximumIterations: spec.iterations,
@@ -26074,6 +26090,10 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
     modelForceSeedAccepted: Boolean(spec.modelForceSeed && modelForceSeed?.available
       && proposal.initialSeedAccepted && hardCompatible),
     modelForceSeedScaleEvPerAngstrom: modelForceSeed?.forceScaleElectronVoltPerAngstrom || null,
+    modelForceSeedHeterogeneousDisplacementCaps: Boolean(
+      modelForceSeed?.heterogeneousDisplacementCaps),
+    modelForceAuditedFreshSites: spec.modelForceSeed ? freshAtoms.length : 0,
+    modelForceAuditedSubstrateSites: spec.modelForceSeed ? substrateAtoms.length : 0,
     modelForceSeedPairInteractionModel: modelForceSeed?.evaluation?.pairInteractionModel || null,
     modelForceSeedEnergyGradientComplete: Boolean(
       modelForceSeed?.evaluation?.pairInteractionForceIsNegativeEnergyGradient),
@@ -27401,7 +27421,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434",
+    generatedAt: new Date().toISOString(), buildId: "20260901-435",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -30672,7 +30692,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434",
+    generatedAt: new Date().toISOString(), buildId: "20260901-435",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -32127,7 +32147,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-435", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -35031,9 +35051,12 @@ function syncStageOptions() {
   const modelForceAvailable = Boolean(formalChargeTarget?.available && finiteIonicPairMode()
     && (ionicPairInductionPolarizabilityAngstrom3 === 0
       || ionicPairInductionForceMode === "finite-difference"));
-  const modelForceOption = structuralRelaxationSelect.querySelector('option[value="model-force"]');
-  modelForceOption.disabled = !modelForceAvailable;
-  if (structuralRelaxationMode === "model-force" && !modelForceAvailable) {
+  for (const mode of ["model-force", "model-force-interface"]) {
+    const option = structuralRelaxationSelect.querySelector(`option[value="${mode}"]`);
+    if (option) option.disabled = !modelForceAvailable;
+  }
+  if (["model-force", "model-force-interface"].includes(structuralRelaxationMode)
+      && !modelForceAvailable) {
     structuralRelaxationMode = "balanced";
   }
   const localEnvironment = relaxationLocalEnvironmentField();
@@ -35202,7 +35225,9 @@ function syncStageOptions() {
     strainWeightSelect.value = String(geometricStrainWeight);
     structuralRelaxationSelect.value = structuralRelaxationMode;
     const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
-    structuralRelaxationHint.textContent = relaxationSpec.interfaceShell
+    structuralRelaxationHint.textContent = relaxationSpec.interfaceShell && relaxationSpec.modelForceSeed
+      ? `finite −∇U · emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + substrate ${(100 * relaxationSpec.substrateFraction).toFixed(1)}% dₙₙ caps`
+      : relaxationSpec.interfaceShell
       ? `emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + substrate ${(100 * relaxationSpec.substrateFraction).toFixed(1)}% dₙₙ caps`
       : relaxationSpec.observedSeed
       ? `${activeTrajectoryGeometryProvenance() ? "validated trajectory endpoint" : "archived vector"} seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
@@ -39074,7 +39099,7 @@ function physicsTranslationRecords(leap = null) {
       evidence: lastStructuralRelaxation
         ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
-      boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface-shell mode moves a strictly capped first connected substrate shell but leaves symbolic placements and cluster membership unchanged; it is a tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may instead initialize the emitted-site-only projection and requires energy plus RMS/p90 force-residual descent. Neither arm is a total-force audit, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
+      boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface-shell mode moves a strictly capped first connected substrate shell but leaves symbolic placements and cluster membership unchanged; it is a tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may initialize either the emitted-only or coupled-shell projection and requires response-consistent energy plus RMS/p90 force-residual descent across the entire declared movable group. Neither arm is a total-force audit, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: "learned",
       role: policySelect.value === "action"
         ? "exact overlap/support gate + action-priority rank; learned marking ablated"
@@ -41083,7 +41108,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-434",
+    generatedAt: new Date().toISOString(), buildId: "20260901-435",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -46306,7 +46331,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-434" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-435" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
