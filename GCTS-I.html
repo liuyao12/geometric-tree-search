@@ -2132,7 +2132,7 @@
               const generation = minimumFrontierGeneration(accepted.placements || []);
               return generation >= 3 && generation % 2 === 1 && generation > highestPausedCorona;
             };
-            while (!reachesPauseBoundary(event)) {
+            while (!reachesPauseBoundary(event) && liveSearchIterator?.buffered?.() > 0) {
               const next = await liveSearchIterator?.next();
               if (!next || next.done) break;
               traceIndex += 1;
