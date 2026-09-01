@@ -17,7 +17,7 @@ for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force">Finite interaction −∇U · energy \+ force audit/);
   assert.match(document, /value="model-force-interface">Finite −∇U interface shell/);
   assert.match(document, /value="model-force-layered-interface">Finite −∇U two-shell response/);
-  assert.match(document, /global force, population residual, resultant, and torque descent/);
+  assert.match(document, /global force, population residual, resultant, torque, and centered symmetric force-moment descent/);
 }
 
 for (const token of [
@@ -49,6 +49,8 @@ for (const token of [
   "modelForceResidualDecreased",
   "modelForceResidualRedistributionPassed",
   "modelForceResultantRedistributionPassed",
+  "modelForceSymmetricMomentRedistributionPassed",
+  "modelForceGroupSymmetricMomentsAvailable",
   "modelForceGroupResultantsAvailable",
   "modelForceGroupResiduals",
   "modelForceGroupCount",
@@ -98,6 +100,11 @@ for (const token of [
   "auditGroupedForceResiduals",
   "forceResidualRedistributionPassed",
   "forceResultantRedistributionPassed",
+  "symmetricForceMomentRedistributionPassed",
+  "forceGroupSymmetricMomentsAvailable",
+  "centeredSymmetricForceMoment",
+  "hydrostaticFrobeniusElectronVolt",
+  "deviatoricFrobeniusElectronVolt",
   "forceGroupResultantsAvailable",
   "forceGroupResiduals",
   "forceGroupLabels",
@@ -128,8 +135,10 @@ assert.match(atlas, /"41", "Anchored two-shell interface response"/);
 assert.match(atlas, /"42", "Force-residual redistribution gate"/);
 assert.match(atlas, /"43", "Population force-resultant and torque gate"/);
 assert.match(atlas, /"44", "Intermediate response-path certificate"/);
+assert.match(atlas, /"45", "Centered symmetric force-moment gate"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
+assert.match(readme, /Build 440 · affine force-moment redistribution gate/);
 
 console.log("model-force relaxation portal contract passed");

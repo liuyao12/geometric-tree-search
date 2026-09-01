@@ -40,6 +40,8 @@ assert.equal(groupedPass.groupCount, 3);
 assert.equal(groupedPass.groupLabelsFrozenBeforeProposal, true);
 assert.equal(groupedPass.resultantAvailable, true);
 assert.equal(groupedPass.resultantPassed, true);
+assert.equal(groupedPass.symmetricForceMomentAvailable, true);
+assert.equal(groupedPass.symmetricForceMomentPassed, true);
 const hiddenRedistribution = auditGroupedForceResiduals(
   [[4, 0, 0], [2, 0, 0]],
   [[2, 0, 0], [2.5, 0, 0]],
@@ -71,6 +73,41 @@ assert.equal(hiddenTorque.residualPassed, true);
 assert.equal(hiddenTorque.groups[0].netForceNonIncreasing, true);
 assert.equal(hiddenTorque.groups[0].normalizedTorqueNonIncreasing, false);
 assert.equal(hiddenTorque.passed, false);
+const hiddenSymmetricMoment = auditGroupedForceResiduals(
+  [[.5, 0, 0], [-.5, 0, 0]],
+  [[.4, 0, 0], [-.4, 0, 0]],
+  ["shell-2", "shell-2"], {
+    beforePositions: [[-1, 0, 0], [1, 0, 0]],
+    afterPositions: [[-2, 0, 0], [2, 0, 0]],
+  },
+);
+assert.equal(hiddenSymmetricMoment.residualPassed, true);
+assert.equal(hiddenSymmetricMoment.resultantPassed, true);
+assert.equal(hiddenSymmetricMoment.symmetricForceMomentPassed, false);
+assert.equal(hiddenSymmetricMoment.groups[0].centeredSymmetricForceMomentNonIncreasing, false);
+assert.ok(hiddenSymmetricMoment.groups[0].afterResultant.centeredSymmetricForceMoment
+  .frobeniusElectronVolt > hiddenSymmetricMoment.groups[0].beforeResultant
+  .centeredSymmetricForceMoment.frobeniusElectronVolt);
+assert.equal(hiddenSymmetricMoment.passed, false);
+const rotateProper = ([x, y, z]) => [y, z, x];
+const translate = ([x, y, z]) => [x + 4, y - 3, z + 2];
+const rotatedSymmetricMoment = auditGroupedForceResiduals(
+  [[.5, 0, 0], [-.5, 0, 0]].map(rotateProper),
+  [[.4, 0, 0], [-.4, 0, 0]].map(rotateProper),
+  ["shell-2", "shell-2"], {
+    beforePositions: [[-1, 0, 0], [1, 0, 0]].map(rotateProper).map(translate),
+    afterPositions: [[-2, 0, 0], [2, 0, 0]].map(rotateProper).map(translate),
+  },
+);
+assert.equal(rotatedSymmetricMoment.symmetricForceMomentPassed, false);
+assert.ok(Math.abs(rotatedSymmetricMoment.groups[0].beforeResultant
+  .centeredSymmetricForceMoment.frobeniusElectronVolt
+  - hiddenSymmetricMoment.groups[0].beforeResultant.centeredSymmetricForceMoment
+    .frobeniusElectronVolt) < 1e-12);
+assert.ok(Math.abs(rotatedSymmetricMoment.groups[0].afterResultant
+  .centeredSymmetricForceMoment.deviatoricFrobeniusElectronVolt
+  - hiddenSymmetricMoment.groups[0].afterResultant.centeredSymmetricForceMoment
+    .deviatoricFrobeniusElectronVolt) < 1e-12);
 const downhill = auditModelForceRelaxationEnergyDescent(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: pairSeed.evaluation,

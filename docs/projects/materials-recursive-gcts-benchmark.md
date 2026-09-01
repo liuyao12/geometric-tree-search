@@ -10658,3 +10658,17 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 440: Affine force-moment redistribution gate
+
+The bounded finite-interaction response now closes a residual mode left open by
+the population RMS/p90, resultant, and torque audits. For each frozen movable
+population, every endpoint and seven-image path segment computes
+`Mˢ = Σ sym[(r-r̄)⊗F]`. Acceptance requires non-increasing total Frobenius,
+hydrostatic, and deviatoric magnitudes. This rejects a synthetic expansion with
+smaller per-atom forces and unchanged zero net force/torque but a larger
+symmetric force moment.
+
+The complete tensor and decomposition are serialized by population. Because no
+control volume or pair-virial decomposition is inferred, the measurement is
+reported in eV as a centered force×length moment. It is not labeled stress,
+pressure, elasticity, force balance, equilibrium, or dynamics.

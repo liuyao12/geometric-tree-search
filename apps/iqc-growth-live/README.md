@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 440 · affine force-moment redistribution gate
+
+The finite-interaction accommodation certificate now detects coherent affine
+load that force magnitudes, net force, and torque can all miss. For every
+frozen movable population it forms the translation-invariant centered tensor
+`Mˢ = Σᵢ sym[(rᵢ-r̄)⊗Fᵢ]` and records its full symmetric matrix, trace,
+Frobenius magnitude, hydrostatic magnitude, and deviatoric magnitude. The
+total, hydrostatic, and deviatoric force moments must each remain
+non-increasing at the endpoint and across every segment of the seven-image
+response path.
+
+A regression control lowers every per-site force magnitude, preserves zero net
+force and zero torque, yet expands the force couple far enough to increase the
+symmetric moment; the proposal now fails. The same gate is evaluated
+independently for fresh, shell-1, and shell-2 populations, and its full matrices
+and scalar decomposition are retained in receipts and notebook exports.
+
+`Mˢ` has units of force×length (eV here). The portal does not infer a control
+volume or decompose pair virials, so this is deliberately called a centered
+force moment—not Cauchy stress, pressure, virial stress, elastic response,
+mechanical equilibrium, or dynamics.
+
 ## Build 439 · intermediate response-path certificate
 
 Force-informed accommodation now certifies the finite path between its original

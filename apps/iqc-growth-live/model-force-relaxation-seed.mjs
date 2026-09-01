@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-439";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-440";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -17,6 +17,34 @@ const crossVector = (first, second) => [
   first[0] * second[1] - first[1] * second[0],
 ];
 const vectorMagnitude = (vector) => Math.hypot(...vector);
+const zeroMatrix = () => [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+const matrixFrobenius = (matrix) => Math.sqrt(matrix.reduce((sum, row) =>
+  sum + row.reduce((inner, value) => inner + value * value, 0), 0));
+
+function centeredSymmetricForceMoment(positions, forces, centroid) {
+  const matrix = zeroMatrix();
+  positions.forEach((position, index) => {
+    const radius = subtractVector(position, centroid);
+    const force = forces[index];
+    for (let row = 0; row < 3; row += 1) {
+      for (let column = 0; column < 3; column += 1) {
+        matrix[row][column] += .5 * (radius[row] * force[column]
+          + force[row] * radius[column]);
+      }
+    }
+  });
+  const trace = matrix[0][0] + matrix[1][1] + matrix[2][2];
+  const hydrostatic = trace / 3;
+  const deviatoric = matrix.map((row, rowIndex) => row.map((value, columnIndex) =>
+    value - (rowIndex === columnIndex ? hydrostatic : 0)));
+  return Object.freeze({
+    matrixElectronVolt: Object.freeze(matrix.map((row) => Object.freeze(row))),
+    traceElectronVolt: trace,
+    frobeniusElectronVolt: matrixFrobenius(matrix),
+    hydrostaticFrobeniusElectronVolt: Math.abs(trace) / Math.sqrt(3),
+    deviatoricFrobeniusElectronVolt: matrixFrobenius(deviatoric),
+  });
+}
 
 function groupResultant(positions, forces) {
   const count = forces.length;
@@ -26,6 +54,8 @@ function groupResultant(positions, forces) {
     crossVector(subtractVector(position, centroid), forces[index])), [0, 0, 0]);
   const rmsRadiusAngstrom = Math.sqrt(positions.reduce((sum, position) =>
     sum + vectorMagnitude(subtractVector(position, centroid)) ** 2, 0) / count);
+  const symmetricForceMoment = centeredSymmetricForceMoment(positions, forces, centroid);
+  const momentNormalizationAngstrom = count * rmsRadiusAngstrom;
   return Object.freeze({
     netForceElectronVoltPerAngstrom: Object.freeze(netForce),
     netForceMagnitudeElectronVoltPerAngstrom: vectorMagnitude(netForce),
@@ -35,6 +65,16 @@ function groupResultant(positions, forces) {
     rmsRadiusAngstrom,
     normalizedTorqueResidualElectronVoltPerAngstrom: rmsRadiusAngstrom > 1e-12
       ? vectorMagnitude(torque) / (count * rmsRadiusAngstrom) : 0,
+    centeredSymmetricForceMoment: symmetricForceMoment,
+    normalizedSymmetricForceMomentElectronVoltPerAngstrom:
+      momentNormalizationAngstrom > 1e-12
+        ? symmetricForceMoment.frobeniusElectronVolt / momentNormalizationAngstrom : 0,
+    normalizedHydrostaticForceMomentElectronVoltPerAngstrom:
+      momentNormalizationAngstrom > 1e-12
+        ? symmetricForceMoment.hydrostaticFrobeniusElectronVolt / momentNormalizationAngstrom : 0,
+    normalizedDeviatoricForceMomentElectronVoltPerAngstrom:
+      momentNormalizationAngstrom > 1e-12
+        ? symmetricForceMoment.deviatoricFrobeniusElectronVolt / momentNormalizationAngstrom : 0,
   });
 }
 
@@ -96,6 +136,21 @@ export function auditGroupedForceResiduals(beforeVectors, afterVectors, groupLab
       ? afterResultant.normalizedTorqueResidualElectronVoltPerAngstrom
         <= beforeResultant.normalizedTorqueResidualElectronVoltPerAngstrom + torqueTolerance
       : null;
+    const momentAbsoluteToleranceElectronVolt = beforeResultant
+      ? Number(absoluteToleranceElectronVoltPerAngstrom) * indices.length
+        * Math.max(1, beforeResultant.rmsRadiusAngstrom) : null;
+    const momentMetric = (resultant, name) =>
+      resultant.centeredSymmetricForceMoment[name];
+    const momentNonIncreasing = beforeResultant ? [
+      "frobeniusElectronVolt", "hydrostaticFrobeniusElectronVolt",
+      "deviatoricFrobeniusElectronVolt",
+    ].every((name) => {
+      const beforeValue = momentMetric(beforeResultant, name);
+      const afterValue = momentMetric(afterResultant, name);
+      const tolerance = Math.max(momentAbsoluteToleranceElectronVolt,
+        Number(relativeTolerance) * Math.max(1, Math.abs(beforeValue)));
+      return afterValue <= beforeValue + tolerance;
+    }) : null;
     return Object.freeze({
       label,
       sites: indices.length,
@@ -121,22 +176,28 @@ export function auditGroupedForceResiduals(beforeVectors, afterVectors, groupLab
       normalizedTorqueNonIncreasing,
       resultantNonIncreasing: beforeResultant
         ? netForceNonIncreasing && normalizedTorqueNonIncreasing : null,
+      centeredSymmetricForceMomentNonIncreasing: momentNonIncreasing,
     });
   });
   const residualPassed = groups.every((group) => group.residualNonIncreasing);
   const resultantPassed = positionsSupplied
     ? groups.every((group) => group.resultantNonIncreasing) : null;
+  const symmetricForceMomentPassed = positionsSupplied
+    ? groups.every((group) => group.centeredSymmetricForceMomentNonIncreasing) : null;
   return Object.freeze({
     available: true,
-    passed: residualPassed && (!positionsSupplied || resultantPassed),
+    passed: residualPassed && (!positionsSupplied
+      || (resultantPassed && symmetricForceMomentPassed)),
     residualPassed,
     resultantAvailable: positionsSupplied,
     resultantPassed,
+    symmetricForceMomentAvailable: positionsSupplied,
+    symmetricForceMomentPassed,
     groups: Object.freeze(groups),
     groupCount: groups.length,
     groupLabelsFrozenBeforeProposal: true,
     targetUsed: false,
-    claimBoundary: "This audit prevents a lower aggregate force residual from hiding increased RMS, p90, net-force-per-site, or normalized centroidal torque in a declared movable population. It is not atomwise force balance, virial stress equilibrium, an elastic response, or dynamics.",
+    claimBoundary: "This audit prevents a lower aggregate force residual from hiding increased RMS, p90, net-force-per-site, normalized centroidal torque, or centered symmetric force moment in a declared movable population. The force×length moment is not divided by a volume and is therefore not stress, pressure, a virial-stress equilibrium, an elastic response, or dynamics.",
   });
 }
 
@@ -278,8 +339,11 @@ export function auditModelForceRelaxationOutcome(
       }) : null;
   const forceResidualRedistributionPassed = Boolean(groupedForceResidual?.residualPassed);
   const forceResultantRedistributionPassed = Boolean(groupedForceResidual?.resultantPassed);
+  const symmetricForceMomentRedistributionPassed = Boolean(
+    groupedForceResidual?.symmetricForceMomentPassed);
   const accepted = energyDecreased && forceResidualDecreased
-    && forceResidualRedistributionPassed && forceResultantRedistributionPassed;
+    && forceResidualRedistributionPassed && forceResultantRedistributionPassed
+    && symmetricForceMomentRedistributionPassed;
   return Object.freeze({
     available: evaluationsAvailable && responseConsistent,
     accepted,
@@ -292,6 +356,8 @@ export function auditModelForceRelaxationOutcome(
               ? "force residual increased in at least one declared movable population"
               : !forceResultantRedistributionPassed
                 ? "net force or normalized centroidal torque increased in at least one declared movable population"
+                : !symmetricForceMomentRedistributionPassed
+                  ? "centered symmetric force moment increased in at least one declared movable population"
             : "finite interaction energy and force residual decreased",
     beforeEnergyElectronVolt: before.deltaEnergyElectronVolt ?? null,
     afterEnergyElectronVolt: after.deltaEnergyElectronVolt ?? null,
@@ -301,6 +367,9 @@ export function auditModelForceRelaxationOutcome(
     forceResidualDecreased,
     forceResidualRedistributionPassed,
     forceResultantRedistributionPassed,
+    symmetricForceMomentRedistributionPassed,
+    forceGroupSymmetricMomentsAvailable: Boolean(
+      groupedForceResidual?.symmetricForceMomentAvailable),
     forceGroupResultantsAvailable: Boolean(groupedForceResidual?.resultantAvailable),
     forceGroupResiduals: groupedForceResidual?.groups || Object.freeze([]),
     forceGroupCount: groupedForceResidual?.groupCount || 0,
@@ -329,7 +398,7 @@ export function auditModelForceRelaxationOutcome(
     energyMinimized: false,
     forceIntegratedAsTime: false,
     targetUsed: false,
-    claimBoundary: "This is a before/after energy-and-force-residual descent certificate for the declared movable group—emitted sites and, when explicitly enabled, a bounded substrate shell—under one finite interaction hypothesis while every other site is fixed. It is not a total-system force audit, proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
+    claimBoundary: "This is a before/after energy-and-force-residual descent certificate for the declared movable group—emitted sites and, when explicitly enabled, a bounded substrate shell—under one finite interaction hypothesis while every other site is fixed. Its centered symmetric force moment has force×length units and no inferred control volume, so it is not stress or pressure. It is not a total-system force audit, proof of a local or global minimum, force balance, mechanical equilibrium, a relaxation path, or physical time.",
   });
 }
 
@@ -339,7 +408,8 @@ export const auditModelForceRelaxationEnergyDescent = auditModelForceRelaxationO
 /**
  * Resolve the endpoint leap into a small, fixed set of geometric images. Every
  * consecutive image must pass the same energy, complete-force, population,
- * resultant, and torque audit. The image parameter is not interpreted as time.
+ * resultant, torque, and centered symmetric force-moment audit. The image
+ * parameter is not interpreted as time.
  */
 export function auditModelForceRelaxationPath(
   currentSites, originalAddedSites, proposedAddedSites, {

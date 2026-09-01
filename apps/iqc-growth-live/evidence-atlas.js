@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-439";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-439";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-440";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-440";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-439";
+  from "./hierarchy-physics-transport.mjs?v=20260901-440";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-439";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-440";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-439";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-440";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-439";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-440";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-439", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-440", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -447,6 +447,7 @@ const TIMELINE = [
   ["42", "Force-residual redistribution gate", "Whole-group force descent can hide a worse substrate shell. The acceptance audit now freezes fresh, shell-1, and shell-2 populations before evaluation and requires RMS plus p90 force residual to remain non-increasing in every group, alongside strict global energy/force descent. This blocks hidden outward residual export without claiming atomwise force balance, stress equilibrium, elasticity, or dynamics.", "proved"],
   ["43", "Population force-resultant and torque gate", "Smaller per-atom residuals can still align into a stronger translational or rotational drive. Every frozen movable population now requires non-increasing net force per site and centroidal torque normalized by N·R_rms, in addition to energy and RMS/p90 descent. Synthetic coherent-force and force-couple controls fail as intended. These finite resultants are not traction, virial stress, force balance, elasticity, equilibrium, or dynamics.", "proved"],
   ["44", "Intermediate response-path certificate", "Endpoint-safe accommodation can hide an energy/force rise or collision between states. The finite move is now resolved into seven straight-Cartesian images; every segment repeats all energy, force, population, resultant, and torque gates. Analytic closest approach over the full segment must also clear a conservative colored directional-exclusion bound. The image coordinate is not physical time, and this is not NEB, a transition state, dynamics, or a rate.", "proved"],
+  ["45", "Centered symmetric force-moment gate", "Smaller site forces, net force, and torque can still hide a stronger coherent compression, extension, or shear moment. Every frozen movable population now forms the centered symmetric force×length tensor Σ sym[(r-r̄)⊗F] and requires its total, hydrostatic, and deviatoric magnitudes to remain non-increasing at every response segment. No control volume or pair virial is inferred, so this is not stress, pressure, elasticity, equilibrium, or dynamics.", "proved"],
 ];
 
 const CLAIMS = [

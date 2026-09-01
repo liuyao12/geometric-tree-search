@@ -57,6 +57,8 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "modelForceGroupResiduals" in APP
     assert "modelForceResultantRedistributionPassed" in APP
     assert "modelForceGroupResultantsAvailable" in APP
+    assert "modelForceSymmetricMomentRedistributionPassed" in APP
+    assert "modelForceGroupSymmetricMomentsAvailable" in APP
     assert "auditModelForceRelaxationPath" in APP
     assert "auditLinearSweptExclusion" in APP
     assert "sweptHardExclusionPassed" in APP
