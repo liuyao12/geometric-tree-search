@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+## Dual-descent force-seeded settling (Build 432)
+
+The force-informed post-attachment arm now has two independent monotonicity
+gates. Its bounded `−∇U` seed is still followed by the learned contact/angle
+projection, but the projected coordinates commit only when (1) that learned
+geometric residual decreases and (2) a fresh evaluation of the same finite
+interaction hypothesis gives `U_after < U_before` beyond a declared numerical
+tolerance. The already placed configuration is fixed, atom identity and formal
+charge cannot change, and an induction calculation must retain the same
+actually applied direct or mutual response model.
+
+This closes a real consistency gap: a local geometric projection can no longer
+retain a force-informed seed while ending uphill in its declared interaction
+energy. The certificate records both energies, `ΔU`, response consistency,
+before/after finite pair counts, and evaluation work. It remains a one-step
+descent audit rather than energy minimization, equilibrium, force balance,
+molecular dynamics, or evidence for a transferable material potential.
+
 ## Force-seeded certified geometric settling (Build 431)
 
 The existing bounded post-attachment contact/angle projection now accepts a

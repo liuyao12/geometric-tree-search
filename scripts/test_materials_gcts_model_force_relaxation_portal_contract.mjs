@@ -25,6 +25,14 @@ for (const token of [
   "modelForceSeedInductionRichardsonErrorElectronVoltPerAngstrom",
   "modelForceSeedAvailable",
   "modelForceSeedAccepted",
+  "modelForceEnergyDescentAvailable",
+  "modelForceEnergyDecreased",
+  "modelForceEnergyBeforeElectronVolt",
+  "modelForceEnergyAfterElectronVolt",
+  "modelForceEnergyChangeElectronVolt",
+  "modelForceEnergyResponseConsistent",
+  "modelForceEnergyPairCountBefore",
+  "modelForceEnergyPairCountAfter",
   "contactAngleStrainDecreased: strainDecreased",
   "hardExclusionPassed, coordinationCapacityPassed",
   "angularEnvelopePassed, publicBoundaryPassed",
@@ -36,6 +44,7 @@ for (const token of [
 
 for (const token of [
   "incrementalFinitePointChargeElectrostatics",
+  "auditModelForceRelaxationEnergyDescent",
   "pairInteractionForceIsNegativeEnergyGradient",
   "forceMagnitudeP90",
   "boundedForceSeedOffset",
@@ -43,10 +52,13 @@ for (const token of [
   "forceIntegratedAsTime: false",
   "energyMinimized: false",
   "targetUsed: false",
+  "beforePairCount",
+  "afterPairCount",
+  "responseConsistent",
 ]) assert.ok(moduleSource.includes(token), token);
 
-assert.match(readme, /Build 431 · interaction forces can seed certified geometric settling/);
-assert.match(benchmark, /Force-seeded certified geometric settling \(Build 431\)/);
-assert.match(atlas, /"36", "Force-seeded certified geometry leap"/);
+assert.match(readme, /Build 432 · force-seeded settling now needs dual descent/);
+assert.match(benchmark, /Dual-descent force-seeded settling \(Build 432\)/);
+assert.match(atlas, /"37", "Dual-descent settling certificate"/);
 
 console.log("model-force relaxation portal contract passed");

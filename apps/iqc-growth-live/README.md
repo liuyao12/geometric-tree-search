@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 432 · force-seeded settling now needs dual descent
+
+The finite-interaction settling arm now certifies the outcome as well as the
+initial direction. The emitted atoms first receive a bounded step along the
+complete selected-model `−∇U`, then the learned contact/angle projection may
+reshape that proposal. A commit now requires both the learned geometric
+residual and the same finite interaction energy to decrease. Current atoms,
+species, formal charges, cutoffs, induction setting, and the actually applied
+direct or mutual response model stay fixed between the before/after energy
+evaluations; a response change or unavailable energy rejects the whole move.
+
+The live state, physics ledger, and receipt expose `U_before`, `U_after`,
+`ΔU`, response consistency, pair counts, and the additional distance/tensor
+work. This is deliberately narrower than energy minimization: it certifies one
+bounded, response-consistent descending proposal while retaining every hard
+geometric and port certificate. It does not establish a stationary point,
+force balance, a transferable potential, a dynamical path, or physical time.
+
 ## Build 431 · interaction forces can seed certified geometric settling
 
 The post-attachment projection can now start from the finite interaction
