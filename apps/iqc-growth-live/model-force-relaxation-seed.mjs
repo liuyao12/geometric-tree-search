@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-449";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-450";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -600,6 +600,143 @@ export function auditCartesianForceEnergyGradient(currentSites, addedSites,
         : `Cartesian force-energy gradient mismatch: ${failedComponentIds.join(", ")}`,
     claimBoundary: "This independently finite-differences the declared energy along every movable Cartesian coordinate at one endpoint. Fine and coarse central differences bound numerical error, and polarization-force evaluation is disabled inside the energy probes. It verifies the reported finite force vector at this state—not fixed-site forces, a Hessian, phonons, stability, a minimum-energy path, dynamics, rate, or time.",
   });
+}
+
+/** Verify that the fixed environment carries the opposite net reaction force. */
+export function auditEnvironmentReactionForceBalance(currentSites, addedSites,
+  reportedEvaluation, electrostaticsOptions = {}, {
+    stepAngstrom = 1e-4,
+    absoluteToleranceElectronVoltPerAngstrom = 1e-6,
+    relativeTolerance = 1e-7,
+  } = {}) {
+  const step = Number(stepAngstrom);
+  if (!(Number.isFinite(step) && step >= 1e-6 && step <= 1e-2)) {
+    throw new RangeError("environment reaction audit step must be between 1e-6 and 1e-2 angstrom");
+  }
+  if (!Array.isArray(currentSites) || !currentSites.length
+      || !currentSites.every((site) => finiteVector(site?.position))
+      || !Array.isArray(addedSites) || !addedSites.length
+      || !addedSites.every((site) => finiteVector(site?.position))) {
+    throw new Error("environment reaction audit needs finite current and movable sites");
+  }
+  const inductionTolerance = Number(reportedEvaluation
+    ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0;
+  const componentSpecs = [
+    { id: "total", active: true, energy: "deltaEnergyElectronVolt",
+      forces: "addedForceVectorsElectronVoltPerAngstrom",
+      additionalTolerance: inductionTolerance },
+    { id: "coulomb", active: true, energy: "coulombDeltaEnergyElectronVolt",
+      forces: "addedCoulombForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "born-mayer", active: Boolean(reportedEvaluation?.bornMayerRepulsionApplied),
+      energy: "bornMayerRepulsiveEnergyElectronVolt",
+      forces: "addedBornMayerForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "dispersion", active: Boolean(reportedEvaluation?.dispersionApplied),
+      energy: "dampedDispersionEnergyElectronVolt",
+      forces: "addedDispersionForceVectorsElectronVoltPerAngstrom", additionalTolerance: 0 },
+    { id: "induction", active: Boolean(reportedEvaluation?.chargeInductionApplied),
+      energy: "chargeInductionDeltaEnergyElectronVolt",
+      forces: "addedInductionForceVectorsElectronVoltPerAngstrom",
+      additionalTolerance: inductionTolerance },
+  ];
+  componentSpecs.filter((spec) => spec.active).forEach((spec) => {
+    if (!Number.isFinite(reportedEvaluation?.[spec.energy])
+        || !Array.isArray(reportedEvaluation?.[spec.forces])
+        || reportedEvaluation[spec.forces].length !== addedSites.length
+        || !reportedEvaluation[spec.forces].every(finiteVector)) {
+      throw new Error(`environment reaction audit lacks complete ${spec.id} energy/force data`);
+    }
+  });
+  const probeOptions = { ...electrostaticsOptions, inductionForceMode: "omitted" };
+  let probeEvaluationCount = 0;
+  let distanceEvaluationCount = 0;
+  let branchStable = true;
+  const evaluateShift = (axis, offset) => {
+    const shiftedCurrent = currentSites.map((site) => ({ ...site,
+      position: site.position.map((value, coordinateAxis) =>
+        value + (coordinateAxis === axis ? offset : 0)) }));
+    const evaluation = incrementalFinitePointChargeElectrostatics(shiftedCurrent,
+      addedSites, probeOptions);
+    probeEvaluationCount += 1;
+    distanceEvaluationCount += evaluation.distanceEvaluations || 0;
+    const sameBranch = Boolean(evaluation.available)
+      && evaluation.pairCount === reportedEvaluation.pairCount
+      && evaluation.pairInteractionModel === reportedEvaluation.pairInteractionModel
+      && evaluation.inductionAppliedResponseModel
+        === reportedEvaluation.inductionAppliedResponseModel
+      && evaluation.inductionDirectFallbackApplied
+        === reportedEvaluation.inductionDirectFallbackApplied;
+    branchStable = branchStable && sameBranch;
+    return { evaluation, sameBranch };
+  };
+  const probes = [0, 1, 2].map((axis) => Object.freeze({
+    axis,
+    plusCoarse: evaluateShift(axis, step),
+    minusCoarse: evaluateShift(axis, -step),
+    plusFine: evaluateShift(axis, step / 2),
+    minusFine: evaluateShift(axis, -step / 2),
+  }));
+  const components = componentSpecs.map((spec) => {
+    if (!spec.active) return Object.freeze({ id: spec.id, active: false,
+      available: true, passed: true, coordinateCount: 0,
+      records: Object.freeze([]), targetUsed: false });
+    const records = probes.map((probe) => {
+      const coarseDerivative = (probe.plusCoarse.evaluation[spec.energy]
+        - probe.minusCoarse.evaluation[spec.energy]) / (2 * step);
+      const fineDerivative = (probe.plusFine.evaluation[spec.energy]
+        - probe.minusFine.evaluation[spec.energy]) / step;
+      const environmentReaction = -fineDerivative;
+      const movableNetForce = reportedEvaluation[spec.forces]
+        .reduce((sum, vector) => sum + vector[probe.axis], 0);
+      const residual = movableNetForce + environmentReaction;
+      const richardsonError = Math.abs(fineDerivative - coarseDerivative) / 3;
+      const baseTolerance = Math.max(Number(absoluteToleranceElectronVoltPerAngstrom),
+        Number(relativeTolerance) * Math.max(1, Math.abs(movableNetForce),
+          Math.abs(environmentReaction)));
+      const allowedResidual = baseTolerance + richardsonError
+        + spec.additionalTolerance;
+      const coordinateBranchStable = [probe.plusCoarse, probe.minusCoarse,
+        probe.plusFine, probe.minusFine].every((record) => record.sameBranch);
+      return Object.freeze({ axis: probe.axis, axisLabel: "xyz"[probe.axis],
+        movableNetForceElectronVoltPerAngstrom: movableNetForce,
+        environmentReactionForceElectronVoltPerAngstrom: environmentReaction,
+        coarseEnvironmentReactionForceElectronVoltPerAngstrom: -coarseDerivative,
+        totalSystemForceResidualElectronVoltPerAngstrom: residual,
+        absoluteResidualElectronVoltPerAngstrom: Math.abs(residual),
+        richardsonErrorEstimateElectronVoltPerAngstrom: richardsonError,
+        baseToleranceElectronVoltPerAngstrom: baseTolerance,
+        additionalToleranceElectronVoltPerAngstrom: spec.additionalTolerance,
+        allowedResidualElectronVoltPerAngstrom: allowedResidual,
+        branchStable: coordinateBranchStable,
+        passed: coordinateBranchStable && Math.abs(residual) <= allowedResidual });
+    });
+    return Object.freeze({ id: spec.id, active: true, available: true,
+      passed: records.every((record) => record.passed), coordinateCount: 3,
+      failedAxes: Object.freeze(records.filter((record) => !record.passed)
+        .map((record) => record.axisLabel)),
+      maximumAbsoluteResidualElectronVoltPerAngstrom: Math.max(0,
+        ...records.map((record) => record.absoluteResidualElectronVoltPerAngstrom)),
+      records: Object.freeze(records), targetUsed: false });
+  });
+  const activeComponents = components.filter((component) => component.active);
+  const failedComponentIds = activeComponents.filter((component) => !component.passed)
+    .map((component) => component.id);
+  const passed = branchStable && failedComponentIds.length === 0;
+  return Object.freeze({ available: activeComponents.every((component) => component.available),
+    passed, componentCount: components.length,
+    activeComponentCount: activeComponents.length,
+    failedComponentIds: Object.freeze(failedComponentIds),
+    components: Object.freeze(components), stepAngstrom: step,
+    fineStepAngstrom: step / 2, centralDifferenceOrder: 2,
+    richardsonDivisor: 3, energyProbeForceMode: "omitted",
+    branchStable, probeEvaluationCount, distanceEvaluationCount,
+    fixedEnvironmentMovedCollectivelyForProbe: true,
+    fixedEnvironmentRelaxed: false, perFixedSiteForcesResolved: false,
+    targetUsed: false,
+    reason: passed
+      ? "the independently differentiated fixed-environment reaction balances the movable net force"
+      : !branchStable ? "one or more environment-translation probes changed interaction branch"
+        : `environment reaction-force balance failed: ${failedComponentIds.join(", ")}`,
+    claimBoundary: "This collectively translates the fixed environment to derive its net reaction from independent energy probes, then checks it against the reported movable-site net force for the total and every active component. It is a translational-invariance and momentum-balance certificate—not per-fixed-atom forces, fixed-solid relaxation, traction, stress, pressure, mechanical equilibrium, dynamics, or physical time." });
 }
 
 function groupResultant(positions, forces) {
@@ -1226,10 +1363,52 @@ export function auditModelForceRelaxationPath(
       reason: error?.message || "endpoint Cartesian gradient audit unavailable",
       targetUsed: false });
   }
+  let endpointEnvironmentReactionAudit;
+  try {
+    const endpointImageIndices = [0, images.length - 1];
+    const records = endpointImageIndices.map((imageIndex) => Object.freeze({
+      imageIndex,
+      fraction: images[imageIndex].fraction,
+      ...auditEnvironmentReactionForceBalance(currentSites,
+        images[imageIndex].sites, imageEvaluations[imageIndex],
+        electrostaticsOptions, {
+          stepAngstrom: auditOptions.environmentReactionStepAngstrom,
+          absoluteToleranceElectronVoltPerAngstrom:
+            auditOptions.environmentReactionAbsoluteToleranceElectronVoltPerAngstrom,
+          relativeTolerance: auditOptions.relativeTolerance,
+        }),
+    }));
+    endpointEnvironmentReactionAudit = Object.freeze({
+      available: records.every((record) => record.available),
+      passed: records.every((record) => record.passed),
+      endpointCount: records.length,
+      coordinateCount: records.reduce((sum, record) =>
+        sum + (record.components.find((component) => component.id === "total")
+          ?.coordinateCount || 0), 0),
+      probeEvaluationCount: records.reduce((sum, record) =>
+        sum + record.probeEvaluationCount, 0),
+      distanceEvaluationCount: records.reduce((sum, record) =>
+        sum + record.distanceEvaluationCount, 0),
+      failedEndpointImageIndices: Object.freeze(records
+        .filter((record) => !record.passed).map((record) => record.imageIndex)),
+      records: Object.freeze(records), targetUsed: false,
+      reason: records.every((record) => record.passed)
+        ? "both fixed-environment endpoint reactions balance the movable net force"
+        : "one or both endpoint environment reaction-force balances failed",
+    });
+  } catch (error) {
+    endpointEnvironmentReactionAudit = Object.freeze({ available: false, passed: false,
+      endpointCount: 0, coordinateCount: 0, probeEvaluationCount: 0,
+      distanceEvaluationCount: 0, failedEndpointImageIndices: Object.freeze([]),
+      records: Object.freeze([]),
+      reason: error?.message || "endpoint environment reaction audit unavailable",
+      targetUsed: false });
+  }
   const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
     && workEnergyClosure.passed && panelWorkEnergyClosure.passed
     && interiorGradientConsistency.passed
     && endpointCartesianGradientAudit.passed
+    && endpointEnvironmentReactionAudit.passed
     && componentWorkEnergyClosures.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
@@ -1237,6 +1416,7 @@ export function auditModelForceRelaxationPath(
       && workEnergyClosure.available && panelWorkEnergyClosure.available
       && interiorGradientConsistency.available
       && endpointCartesianGradientAudit.available
+      && endpointEnvironmentReactionAudit.available
       && componentWorkEnergyClosures.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
@@ -1248,8 +1428,10 @@ export function auditModelForceRelaxationPath(
               ? interiorGradientConsistency.reason
               : !endpointCartesianGradientAudit.passed
                 ? endpointCartesianGradientAudit.reason
+                : !endpointEnvironmentReactionAudit.passed
+                  ? endpointEnvironmentReactionAudit.reason
               : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
-                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, and component-work closure gates",
+                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, fixed-environment-reaction, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -1306,6 +1488,18 @@ export function auditModelForceRelaxationPath(
       endpointCartesianGradientAudit.distanceEvaluationCount || 0,
     failedCartesianGradientEndpointImageIndices:
       endpointCartesianGradientAudit.failedEndpointImageIndices || Object.freeze([]),
+    endpointEnvironmentReactionPassed: endpointEnvironmentReactionAudit.passed,
+    endpointEnvironmentReactionAudit,
+    environmentReactionEndpointCount:
+      endpointEnvironmentReactionAudit.endpointCount || 0,
+    environmentReactionCoordinateCount:
+      endpointEnvironmentReactionAudit.coordinateCount || 0,
+    environmentReactionProbeEvaluationCount:
+      endpointEnvironmentReactionAudit.probeEvaluationCount || 0,
+    environmentReactionDistanceEvaluationCount:
+      endpointEnvironmentReactionAudit.distanceEvaluationCount || 0,
+    failedEnvironmentReactionEndpointImageIndices:
+      endpointEnvironmentReactionAudit.failedEndpointImageIndices || Object.freeze([]),
     componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
     componentWorkEnergyClosures,
     activeWorkEnergyComponentCount:
@@ -1318,6 +1512,6 @@ export function auditModelForceRelaxationPath(
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, directions, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected or per-coordinate allowance. These checks validate the declared decomposition along one sampled path plus its endpoint movable-site gradients, not transferable physical components, fixed-site forces, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, both collectively differentiated fixed-environment reactions, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, directions, subsystems, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected or per-coordinate allowance. These checks validate the declared decomposition along one sampled path plus endpoint movable-site gradients and net environment reactions, not transferable physical components, per-fixed-site forces, fixed-solid relaxation, traction, stress, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

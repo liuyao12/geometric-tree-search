@@ -10765,6 +10765,26 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 450: Fixed-environment reaction balance
+
+The bounded response audit now independently differentiates the interaction
+energy with respect to a collective translation of the fixed environment at
+both path endpoints. Fine/coarse central differences recover the environment's
+net reaction. For total, Coulomb, Born–Mayer, dispersion, and induction terms,
+that reaction must cancel the sum of reported movable-site forces in all three
+Cartesian directions within Richardson and declared induction-force allowances.
+
+The procedure costs twelve energy-only probes per endpoint rather than twelve
+per fixed atom. The live microscope and receipt expose endpoint/component/axis
+records, force pairs, residuals, tolerances, branch stability, failures, and
+distance-evaluation cost. Synthetic orthogonal corruption is rejected; real
+finite-pair and response-consistent induction paths pass.
+
+Collective translation is a numerical probe, not a committed motion. This
+certifies translational invariance and group-level momentum balance only; it
+does not resolve per-fixed-atom forces, relax the fixed solid, infer traction,
+stress, pressure, equilibrium, dynamics, or time.
+
 # Build 449: Interactive Cartesian force compass
 
 The growth-stage response microscope now presents the endpoint-gradient

@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 450 · fixed-environment reaction balance
+
+The finite-interaction response now checks both sides of the structural leap.
+At each endpoint, the fixed environment is translated collectively by `±h` and
+`±h/2` while the movable atoms remain fixed. Central energy differences recover
+the environment's net reaction force independently of the reported movable-site
+forces. Their sum must close in `x`, `y`, and `z` for the total and every active
+Coulomb, Born–Mayer, damped-dispersion, and induction component.
+
+This adds only twelve energy probes per endpoint regardless of environment
+size, preserving the leap-frog character of the portal. The response microscope
+shows six selectable initial/final × direction cells; each reports the movable
+net force, derived environment reaction, total-system residual, numerical
+allowance, and decision. A synthetic transverse movable-force corruption fails
+the matching reaction axis, while real pair and numerical-induction controls
+pass.
+
+The environment is displaced only as a differentiation probe and is never
+committed or relaxed. The certificate establishes translation invariance and
+net momentum balance—not per-fixed-site forces, traction, stress, pressure,
+mechanical equilibrium, dynamics, or physical time.
+
 ## Build 449 · interactive Cartesian force compass
 
 The local-response microscope now exposes the full endpoint-gradient evidence
