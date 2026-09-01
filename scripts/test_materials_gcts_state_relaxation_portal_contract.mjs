@@ -17,9 +17,9 @@ for (const document of [html, alias]) {
   }
   assert.match(document, /Post-leap relaxation handoff/);
   assert.match(document, /Adopt as next observation/);
-  assert.match(document, /app\.js\?v=20260901-446/);
+  assert.match(document, /app\.js\?v=20260901-447/);
 }
-assert.match(app, /external-state-relaxation\.mjs\?v=20260901-446/);
+assert.match(app, /external-state-relaxation\.mjs\?v=20260901-447/);
 assert.match(app, /async function freezeExternalStateRelaxation/);
 assert.match(app, /async function adoptExternalRelaxedState/);
 assert.match(app, /maximumAtoms: 12000/);

@@ -10658,6 +10658,27 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 447: Interactive local-response microscope
+
+The acceptance-critical response evidence is now inspectable directly in the
+growth-stage controls. A compact panel-shaded SVG plots relative energy across
+all thirteen images and overlays projected force with the independently
+differenced energy tangent over the nine eligible interior images. Panel
+outlines and tangent colors expose local failures rather than reducing the
+result to one aggregate badge.
+
+The selector reuses the already frozen total and active per-component receipt
+records; it performs no refit and cannot alter candidate geometry or admission.
+Mouse and keyboard selection expose the exact image fraction, projected force,
+fine energy derivative, signed residual, numerical allowance, and decision.
+The same view is available for Coulomb, Born–Mayer, damped dispersion, and
+induction whenever those terms are active.
+
+This adds interpretation, not a new physical claim. The display represents one
+sampled straight coordinate response and is not a full gradient, Hessian,
+phonon dispersion, stability proof, minimum-energy path, dynamics, rate, or
+physical time.
+
 # Build 446: Interior force–energy tangent consistency
 
 Integral closure can still miss signed force errors that cancel within a local

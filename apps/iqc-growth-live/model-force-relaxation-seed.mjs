@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-446";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-447";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -211,6 +211,7 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
       ? "force work closes the endpoint energy change within nested-Simpson Richardson error"
       : "integrated force work does not close the endpoint energy change",
     imageCount: fractions.length,
+    energyProfileElectronVolt: Object.freeze([...energiesElectronVolt]),
     forcePathIntegrandElectronVolt: Object.freeze(forcePathIntegrandElectronVolt),
     simpsonWorkElectronVolt,
     coarseSimpsonWorkElectronVolt,

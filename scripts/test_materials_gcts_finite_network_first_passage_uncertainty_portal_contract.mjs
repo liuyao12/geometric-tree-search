@@ -11,9 +11,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkFirstPassageUncertaintyPlot/);
   assert.match(document, /First-passage uncertainty ensemble/);
-  assert.match(document, /app\.js\?v=20260901-446/);
+  assert.match(document, /app\.js\?v=20260901-447/);
 }
-assert.match(app, /finite-network-first-passage-uncertainty\.mjs\?v=20260901-446/);
+assert.match(app, /finite-network-first-passage-uncertainty\.mjs\?v=20260901-447/);
 assert.match(app, /buildFiniteNetworkFirstPassageUncertainty/);
 assert.match(app, /finiteNetworkFirstPassageUncertainty,/);
 assert.match(model, /deterministic antithetic Halton sequence/);

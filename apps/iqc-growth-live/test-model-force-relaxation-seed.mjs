@@ -36,6 +36,8 @@ const consistentClosure = auditForceEnergyPathClosure(fractions,
 assert.equal(consistentClosure.passed, true);
 assert.ok(Math.abs(consistentClosure.simpsonWorkElectronVolt - 2) < 1e-12);
 assert.ok(Math.abs(consistentClosure.energyChangeElectronVolt + 2) < 1e-12);
+assert.deepEqual(consistentClosure.energyProfileElectronVolt,
+  fractions.map((fraction) => -fraction - fraction * fraction));
 assert.ok(Math.abs(consistentClosure.closureResidualElectronVolt) < 1e-12);
 assert.equal(consistentClosure.fineSimpsonImageCount, 13);
 assert.equal(consistentClosure.coarseSimpsonImageCount, 7);

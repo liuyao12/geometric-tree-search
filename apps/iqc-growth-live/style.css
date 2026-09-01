@@ -1593,6 +1593,24 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-neighbor-legend span:nth-child(2)::before { background: var(--mint); }
 .relaxation-neighbor-legend span:nth-child(3)::before { background: #b995ff; }
 .relaxation-sequence p { margin: 5px 0 0; color: #687e78; font: 5px/1.45 var(--mono); }
+.model-force-response-diagnostic { margin: 8px 0 2px; padding: 8px; border: 1px solid rgba(103,220,188,.2); border-radius: 3px; background: radial-gradient(circle at 18% 0,rgba(103,220,188,.07),transparent 42%),linear-gradient(145deg,rgba(5,15,13,.86),rgba(8,12,18,.78)); }
+.model-force-response-diagnostic[hidden] { display: none; }
+.model-force-response-diagnostic > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.model-force-response-diagnostic > header span,.model-force-response-diagnostic > header small,.model-force-response-diagnostic > header strong { display: block; }
+.model-force-response-diagnostic > header small { color: #69837b; font: 5px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.model-force-response-diagnostic > header strong { margin-top: 2px; color: #d5e7e1; font: 8px var(--sans); font-weight: 560; }
+.model-force-response-diagnostic select { width: auto; max-width: 126px; padding: 4px 20px 4px 6px; color: #a9c8be; font: 6px var(--mono); }
+.model-force-response-diagnostic svg { display: block; width: 100%; height: 184px; margin-top: 5px; overflow: visible; }
+.model-force-response-legend { display: flex; flex-wrap: wrap; gap: 5px 10px; color: #6d857d; font: 5px var(--mono); }
+.model-force-response-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.model-force-response-legend span::before { content: ""; width: 9px; height: 2px; border-radius: 2px; background: #69e0bd; }
+.model-force-response-legend span:nth-child(2)::before { background: #ffb36f; }
+.model-force-response-legend span:nth-child(3)::before { background: #7eb9ff; }
+.model-force-response-legend span:nth-child(4)::before { width: 6px; height: 6px; border-radius: 50%; background: #ff6f75; }
+.model-force-response-diagnostic p { margin: 5px 0 0; color: #829b93; font: 5.5px/1.45 var(--mono); }
+.model-force-response-diagnostic .model-force-response-boundary { color: #60776f; }
+.model-force-response-diagnostic .response-tangent-point { cursor: pointer; outline: none; }
+.model-force-response-diagnostic .response-tangent-point:focus { stroke: #fff; stroke-width: 1.5; }
 .stress-strain-response { margin-top: 7px; padding: 7px; border: 1px solid rgba(90,226,168,.18); background: linear-gradient(135deg,rgba(90,226,168,.035),rgba(98,172,255,.03)); }
 .stress-strain-response[hidden] { display: none; }
 .stress-strain-response header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

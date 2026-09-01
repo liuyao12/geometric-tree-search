@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 447 · interactive local-response microscope
+
+The force/energy path audits are now visible in the growth-stage experiment
+rather than confined to JSON receipts. A compact SVG diagnostic shades the
+three independent integration panels and plots the thirteen-image relative
+energy profile. Its lower track overlays the complete projected force with the
+independent five-point energy derivative at all nine eligible interior images.
+
+An interaction selector switches the unchanged plot between total response and
+each active Coulomb, Born–Mayer, damped-dispersion, or induction record. Every
+interior force point is mouse- and keyboard-selectable; the readout reports
+image index, path fraction, both tangent estimates, signed residual, numerical
+allowance, and pass/fail state. Failed tangents become red without changing the
+underlying candidate geometry or admission evidence.
+
+This is a researcher-facing microscope for one sampled straight structural
+leap. It does not turn the path parameter into time and is not a full Cartesian
+gradient, Hessian, force-constant matrix, phonon spectrum, stability proof, or
+minimum-energy path.
+
 ## Build 446 · interior force–energy tangent consistency
 
 Panel-wise work closure can still hide force errors that cancel within one

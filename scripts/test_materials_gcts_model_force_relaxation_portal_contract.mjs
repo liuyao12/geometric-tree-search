@@ -6,6 +6,7 @@ const read = (path) => readFileSync(new URL(path, root), "utf8");
 const app = read("apps/iqc-growth-live/app.js");
 const html = read("apps/iqc-growth-live/index.html");
 const compatibility = read("iqc-growth-live/index.html");
+const style = read("apps/iqc-growth-live/style.css");
 const moduleSource = read("apps/iqc-growth-live/model-force-relaxation-seed.mjs");
 const shellSource = read("apps/iqc-growth-live/anchored-interface-shells.mjs");
 const sweptSource = read("apps/iqc-growth-live/linear-swept-exclusion.mjs");
@@ -18,6 +19,10 @@ for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force-interface">Finite −∇U interface shell/);
   assert.match(document, /value="model-force-layered-interface">Finite −∇U two-shell response/);
   assert.match(document, /Embedded Simpson work must close endpoint ΔU globally, within each five-image quarter-path panel, at every eligible five-point force-versus-energy tangent, and independently for active Coulomb, Born–Mayer, dispersion, and induction channels/);
+  for (const id of ["modelForceResponseDiagnostic", "modelForceResponseComponent",
+    "modelForceResponsePlot", "modelForceResponsePointState"]) {
+    assert.match(document, new RegExp(`id="${id}"`));
+  }
 }
 
 for (const token of [
@@ -96,7 +101,15 @@ for (const token of [
   "properPortTopologyRetained: true",
   "forceIntegrated: false",
   "elapsedPhysicalTimeModeled: false",
+  "renderModelForceResponseDiagnostic",
+  "energyProfileElectronVolt",
+  "response-tangent-point",
 ]) assert.ok(app.includes(token), token);
+
+for (const token of [".model-force-response-diagnostic",
+  ".model-force-response-legend", ".response-tangent-point"]) {
+  assert.ok(style.includes(token), token);
+}
 
 for (const token of [
   "incrementalFinitePointChargeElectrostatics",
@@ -179,6 +192,7 @@ assert.match(atlas, /"48", "Continuous finite-model branch"/);
 assert.match(atlas, /"49", "Component-resolved work closure"/);
 assert.match(atlas, /"50", "Panel-resolved work closure"/);
 assert.match(atlas, /"51", "Interior force–energy tangent"/);
+assert.match(atlas, /"52", "Interactive local-response microscope"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
@@ -189,5 +203,6 @@ assert.match(readme, /Build 443 · continuous finite-model branch certificate/);
 assert.match(readme, /Build 444 · component-resolved work–energy closure/);
 assert.match(readme, /Build 445 · panel-resolved work–energy closure/);
 assert.match(readme, /Build 446 · interior force–energy tangent consistency/);
+assert.match(readme, /Build 447 · interactive local-response microscope/);
 
 console.log("model-force relaxation portal contract passed");

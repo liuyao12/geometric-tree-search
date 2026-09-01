@@ -8,7 +8,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-446">
+  <link rel="stylesheet" href="./style.css?v=20260901-447">
   <script type="importmap">
     {
       "imports": {
@@ -692,6 +692,13 @@
               </select>
             </label>
             <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. Interface-shell mode moves the first connected substrate shell under a stricter 1.5% dₙₙ cap. The two-shell mode also moves the next shell under a 0.5% cap and requires fixed outer anchors. Thirteen response images must retain one interaction/response/topology branch while every segment passes force and moment gates. Embedded Simpson work must close endpoint ΔU globally, within each five-image quarter-path panel, at every eligible five-point force-versus-energy tangent, and independently for active Coulomb, Born–Mayer, dispersion, and induction channels. This catches compensating errors between samples, path regions, or interaction terms; it does not prove transferable physics, a full gradient, Hessian, thermodynamic work, dynamics, or time.</div>
+            <section id="modelForceResponseDiagnostic" class="model-force-response-diagnostic" aria-label="Finite interaction response diagnostic" hidden>
+              <header><span><small>13 images · 3 panels · 9 tangents</small><strong>Local force–energy response</strong></span><select id="modelForceResponseComponent" aria-label="Interaction component"><option value="total">total response</option></select></header>
+              <svg id="modelForceResponsePlot" viewBox="0 0 320 184" role="group" aria-label="Energy profile and projected force versus negative energy derivative"></svg>
+              <div class="model-force-response-legend"><span>U(s) − U(0)</span><span>F·dR/ds</span><span>−dU/ds</span><span>failed tangent</span></div>
+              <p id="modelForceResponsePointState">Run a finite-interaction projection to inspect its local response.</p>
+              <p class="model-force-response-boundary">Click an interior image to inspect its residual and numerical allowance. This is one straight coordinate response—not a Hessian, phonon spectrum, minimum-energy path, or physical clock.</p>
+            </section>
               </div>
             </details>
             <details class="growth-control-group">
@@ -2898,7 +2905,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-446"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-446"></script>
+  <script type="module" src="./app.js?v=20260901-447"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-447"></script>
 </body>
 </html>
