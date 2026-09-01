@@ -128,7 +128,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-sublattice-continuation-1';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-adjacency-generation-1';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -573,6 +573,7 @@
         return makePlacement(orientation, translation, {
           step: 0,
           forced: true,
+          generation: 0,
           branchCount: 0,
           placementKey: `${seedOrientationIndex}|${key3(translation)}`
         });
@@ -690,11 +691,18 @@
 
       function minimumFrontierGeneration(placements) {
         const points = new Map();
-        placements.forEach((placement, generation) => {
+        placements.forEach((placement, index) => {
+          const adjacent = placement.occupancy
+            .map(item => points.get(key3(item.point))?.generation)
+            .filter(Number.isFinite);
+          const generation = Number.isFinite(placement.generation)
+            ? placement.generation
+            : index === 0 ? 0 : adjacent.length ? Math.min(...adjacent) + 1 : 0;
           placement.occupancy.forEach(item => {
             const key = key3(item.point);
             const entry = points.get(key) || { value: 0, generation };
             entry.value += item.value;
+            entry.generation = Math.min(entry.generation, generation);
             points.set(key, entry);
           });
         });
@@ -1810,12 +1818,12 @@
       function demoPlacementFromShared(placement, extras = {}) {
         const localOrientation = orientations.find(orientation => sameSymmetry(orientation, placement.orientation.symmetry)) || orientations[0];
         const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
-        return makePlacement(localOrientation, subtract3(placement.translation, shiftedOrigin), extras);
+        return makePlacement(localOrientation, subtract3(placement.translation, shiftedOrigin), { generation: placement.generation, ...extras });
       }
       function sharedPlacementFromDemo(placement) {
         const orientation = sharedOrientationFor(placement.orientation);
         const shiftedOrigin = a2Transform(turtleVertices3d[0], orientation.symmetry);
-        return { tile: 'turtle', orientation, translation: add3(placement.translation, shiftedOrigin) };
+        return { tile: 'turtle', orientation, translation: add3(placement.translation, shiftedOrigin), generation: placement.generation };
       }
       function createSharedLiveTilingSearch(useMarking, retainedPlacements = null) {
         const existing = retainedPlacements?.length ? retainedPlacements : [makeSeedPlacement()];
