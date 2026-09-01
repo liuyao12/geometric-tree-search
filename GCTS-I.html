@@ -213,6 +213,7 @@
       let traceIndex = 0;
       let liveSearchIterator = null;
       let playbackTickBusy = false;
+      let pendingPlaybackEvent = null;
       let liveSearchUsesMarking = tilingRunUsesMarking;
       let liveSearchMarkingRank = markingRank;
       let liveSearchUsesSublattice = sublatticeToggle?.checked || false;
@@ -2039,6 +2040,7 @@
           || usingSublattice() !== liveSearchUsesSublattice;
         if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
           forcedMoveStreak = 0;
+          pendingPlaybackEvent = null;
           liveSearchIterator?.cancel?.();
           const retained = !reset && preservePatchOnNextStart ? visiblePlacements().slice() : null;
           if (retained?.length) {
@@ -2079,7 +2081,10 @@
           let pendingDeadEnd = null;
           try {
             while (true) {
-            const next = await liveSearchIterator?.next();
+            const next = pendingPlaybackEvent
+              ? { value: pendingPlaybackEvent, done: false }
+              : await liveSearchIterator?.next();
+            pendingPlaybackEvent = null;
             if (!next || next.done) {
               if (pendingDeadEnd) {
                 event = pendingDeadEnd;
@@ -2121,6 +2126,28 @@
             event = candidateEvent;
             break;
           }
+          if (event.type === 'accept' && event.forced) {
+            let forcedBatchCount = 1;
+            const reachesPauseBoundary = accepted => {
+              const generation = minimumFrontierGeneration(accepted.placements || []);
+              return generation >= 3 && generation % 2 === 1 && generation > highestPausedCorona;
+            };
+            while (!reachesPauseBoundary(event)) {
+              const next = await liveSearchIterator?.next();
+              if (!next || next.done) break;
+              traceIndex += 1;
+              const candidateEvent = next.value;
+              if (candidateEvent.type === 'trial' && candidateEvent.branchCount === 1) continue;
+              if (candidateEvent.type === 'accept' && candidateEvent.forced) {
+                event = candidateEvent;
+                forcedBatchCount += 1;
+                continue;
+              }
+              pendingPlaybackEvent = candidateEvent;
+              break;
+            }
+            event = { ...event, forcedBatchCount };
+          }
           if (event.type === 'trial') {
             trialGhost = event;
             if (event.branchCount > 1) {
@@ -2148,7 +2175,7 @@
             trialGhost = null;
             const frontier = event.frontier || event.placement?.frontier;
             if (event.forced) {
-              forcedMoveStreak += 1;
+              forcedMoveStreak = event.forcedBatchCount || 1;
               statusText = `${forcedMoveStreak} forced move${forcedMoveStreak === 1 ? '' : 's'}`;
             } else {
               forcedMoveStreak = 0;
