@@ -86,10 +86,10 @@ def test_transport_and_receipt_boundaries_are_visible():
 
 def test_build_342_is_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260901-438' in document
-        assert 'style.css?v=20260901-438' in document
-        assert 'evidence-atlas.js?v=20260901-438' in document
-    assert 'buildId: "20260901-438"' in APP
+        assert 'app.js?v=20260901-439' in document
+        assert 'style.css?v=20260901-439' in document
+        assert 'evidence-atlas.js?v=20260901-439' in document
+    assert 'buildId: "20260901-439"' in APP
 
 
 def main() -> None:

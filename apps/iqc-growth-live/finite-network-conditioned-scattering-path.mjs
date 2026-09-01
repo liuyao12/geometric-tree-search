@@ -1,5 +1,5 @@
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-438";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-439";
 
 function unavailable(reason, extra = {}) {
   return {

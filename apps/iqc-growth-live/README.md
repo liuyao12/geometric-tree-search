@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 439 · intermediate response-path certificate
+
+Force-informed accommodation now certifies the finite path between its original
+and proposed coordinates, not only the endpoints. The displacement is resolved
+into seven fixed straight-Cartesian images. Every consecutive segment must pass
+the same response-consistent energy, complete-force RMS/p90, population
+redistribution, net-resultant, and normalized-torque gates. Any intermediate
+rise rolls the entire coordinate update back.
+
+The geometry path has an independent continuous collision certificate. For
+every pair touched by the movable group, the portal minimizes the relative
+linear separation analytically over the full segment and compares that closest
+distance with the conservative upper bound of the colored directional exclusion.
+This prevents endpoint-safe atoms from crossing through one another between
+images. Receipts expose all segment audits, image fractions, closest pair,
+closest parameter, minimum clearance, and pair-check count.
+
+The seven-image coordinate is a bounded continuity audit, not physical time.
+The straight interpolation is not a minimum-energy path, NEB result, transition
+state, trajectory, rate, or mechanism proof.
+
 ## Build 438 · population force-resultant and torque gate
 
 The shell-resolved force audit now distinguishes incoherent residual from a

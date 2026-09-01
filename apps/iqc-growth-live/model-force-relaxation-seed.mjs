@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-438";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-439";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -335,3 +335,83 @@ export function auditModelForceRelaxationOutcome(
 
 // Backward-compatible name retained for receipts and saved research notebooks.
 export const auditModelForceRelaxationEnergyDescent = auditModelForceRelaxationOutcome;
+
+/**
+ * Resolve the endpoint leap into a small, fixed set of geometric images. Every
+ * consecutive image must pass the same energy, complete-force, population,
+ * resultant, and torque audit. The image parameter is not interpreted as time.
+ */
+export function auditModelForceRelaxationPath(
+  currentSites, originalAddedSites, proposedAddedSites, {
+    imageCount = 7,
+    forceGroupLabels = null,
+    electrostaticsOptions = {},
+    ...auditOptions
+  } = {}) {
+  if (!(Number.isInteger(imageCount) && imageCount >= 3 && imageCount <= 17)) {
+    throw new RangeError("model-force response path needs 3 to 17 images");
+  }
+  if (originalAddedSites.length !== proposedAddedSites.length) {
+    throw new Error("model-force response path needs paired movable sites");
+  }
+  const images = Array.from({ length: imageCount }, (_, imageIndex) => {
+    const fraction = imageIndex / (imageCount - 1);
+    const sites = originalAddedSites.map((site, siteIndex) => {
+      const proposed = proposedAddedSites[siteIndex];
+      if (String(site.species) !== String(proposed.species)
+          || Number(site.charge) !== Number(proposed.charge)) {
+        throw new Error("model-force response path cannot change movable-site identity or charge");
+      }
+      return Object.freeze({ ...site, position: Object.freeze(site.position.map((value, axis) =>
+        value + fraction * (proposed.position[axis] - value))) });
+    });
+    return Object.freeze({ imageIndex, fraction, sites: Object.freeze(sites) });
+  });
+  const segments = [];
+  for (let index = 0; index < images.length - 1; index++) {
+    const audit = auditModelForceRelaxationOutcome(currentSites,
+      images[index].sites, images[index + 1].sites, {
+        ...auditOptions,
+        electrostaticsOptions,
+        forceGroupLabels,
+      });
+    segments.push(Object.freeze({
+      segmentIndex: index,
+      fromFraction: images[index].fraction,
+      toFraction: images[index + 1].fraction,
+      accepted: audit.accepted,
+      reason: audit.reason,
+      beforeEnergyElectronVolt: audit.beforeEnergyElectronVolt,
+      afterEnergyElectronVolt: audit.afterEnergyElectronVolt,
+      beforeForceRmsElectronVoltPerAngstrom: audit.beforeForceRmsElectronVoltPerAngstrom,
+      afterForceRmsElectronVoltPerAngstrom: audit.afterForceRmsElectronVoltPerAngstrom,
+      beforeForceP90ElectronVoltPerAngstrom: audit.beforeForceP90ElectronVoltPerAngstrom,
+      afterForceP90ElectronVoltPerAngstrom: audit.afterForceP90ElectronVoltPerAngstrom,
+      forceResidualRedistributionPassed: audit.forceResidualRedistributionPassed,
+      forceResultantRedistributionPassed: audit.forceResultantRedistributionPassed,
+      responseConsistent: audit.responseConsistent,
+      completeForceGradient: audit.completeForceGradient,
+      forceGroupResiduals: audit.forceGroupResiduals,
+    }));
+  }
+  const accepted = segments.every((segment) => segment.accepted);
+  const firstFailure = segments.find((segment) => !segment.accepted) || null;
+  return Object.freeze({
+    available: segments.every((segment) => segment.completeForceGradient
+      && segment.responseConsistent),
+    accepted,
+    reason: accepted
+      ? "every bounded response-path segment passed energy, force, population, resultant, and torque descent"
+      : `response-path segment ${firstFailure?.segmentIndex ?? "?"} failed: ${firstFailure?.reason || "unavailable"}`,
+    imageCount,
+    segmentCount: segments.length,
+    fractions: Object.freeze(images.map((image) => image.fraction)),
+    segments: Object.freeze(segments),
+    everySegmentEnergyForceDescent: accepted,
+    groupLabelsFrozenBeforePath: true,
+    straightLineCartesianImages: true,
+    pathParameterIsPhysicalTime: false,
+    targetUsed: false,
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity and monotonicity check between two coordinate sets. It is not a minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+  });
+}

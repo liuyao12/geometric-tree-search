@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+## Intermediate response-path and swept-exclusion gate (Build 439)
+
+Endpoint descent alone can hide an intermediate interaction rise or transient
+collision. The force-informed coordinate leap is now expanded into seven fixed
+straight-Cartesian images. Each of the six consecutive segments is independently
+submitted to the same response-consistent finite-interaction outcome audit:
+energy, global force RMS/p90, population RMS/p90, net force per site, and
+normalized centroidal torque must all satisfy their existing monotonicity rules.
+The image fractions are frozen and the path aborts at the first failing segment.
+
+Hard geometry is certified continuously rather than only at those seven images.
+For every pair involving a movable atom, relative position is affine in the path
+parameter. The implementation analytically minimizes its squared separation on
+`[0,1]`, then compares that minimum with `meanPositionExclusion`, the conservative
+upper bound used by the directional displacement-tensor contact rule. The audit
+records the limiting pair, fraction, separation, exclusion, margin, and total
+pair checks. Thus the full linear segment is safe even when the closest approach
+falls between displayed images.
+
+The path parameter is explicitly dimensionless and not physical time. This is
+not NEB, a geodesic, a minimum-energy path, a transition state, dynamics, or a
+rate calculation. It certifies only one bounded straight interpolation under
+the declared finite interaction and frozen geometric envelopes.
+
 ## Population force-resultant and torque gate (Build 438)
 
 Population RMS and p90 can both fall while the remaining vectors become more

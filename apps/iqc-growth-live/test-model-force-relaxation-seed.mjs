@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { auditGroupedForceResiduals, auditModelForceRelaxationEnergyDescent,
-  auditModelForceRelaxationOutcome,
+  auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
   from "./model-force-relaxation-seed.mjs";
 
@@ -111,6 +111,25 @@ assert.equal(forceSettling.rmsForceDecreased, true);
 assert.equal(forceSettling.p90ForceDecreased, true);
 assert.ok(forceSettling.afterForceRmsElectronVoltPerAngstrom
   < forceSettling.beforeForceRmsElectronVoltPerAngstrom);
+const forceSettlingPath = auditModelForceRelaxationPath(current, added,
+  [{ ...added[0], position: [2.79, 0, 0] }], {
+    imageCount: 7,
+    forceGroupLabels: ["fresh"],
+    electrostaticsOptions: finitePairOptions,
+  });
+assert.equal(forceSettlingPath.accepted, true);
+assert.equal(forceSettlingPath.segmentCount, 6);
+assert.equal(forceSettlingPath.everySegmentEnergyForceDescent, true);
+assert.equal(forceSettlingPath.pathParameterIsPhysicalTime, false);
+assert.equal(forceSettlingPath.targetUsed, false);
+const uphillPath = auditModelForceRelaxationPath(current, added,
+  [{ ...added[0], position: [2.81, 0, 0] }], {
+    imageCount: 5,
+    forceGroupLabels: ["fresh"],
+    electrostaticsOptions: finitePairOptions,
+  });
+assert.equal(uphillPath.accepted, false);
+assert.match(uphillPath.reason, /segment 0 failed/);
 
 const incompleteInduction = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
@@ -153,5 +172,7 @@ assert.throws(() => auditModelForceRelaxationEnergyDescent(current, added,
   [{ position: [2.79, 0, 0], charge: 1, species: "Cl" }]), /identity or charge/);
 assert.throws(() => auditGroupedForceResiduals([[1, 0, 0]], [[.5, 0, 0]], []),
   /one frozen group label/);
+assert.throws(() => auditModelForceRelaxationPath(current, added, added,
+  { imageCount: 2 }), /3 to 17 images/);
 
 console.log("model-force relaxation seed tests passed");
