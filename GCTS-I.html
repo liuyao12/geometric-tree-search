@@ -1946,15 +1946,16 @@
       }
 
 
-      if (windowDragHandle && floatingDemo) {
-        windowDragHandle.addEventListener('pointerdown', event => {
+      if (demoCard && floatingDemo) {
+        demoCard.addEventListener('pointerdown', event => {
+          if (event.button !== 0 || event.target.closest('canvas, button, input, label, select, textarea, a, .demo-resize-handle')) return;
           windowDragging = true;
           windowDragLast = { x: event.clientX, y: event.clientY };
           floatingDemo.classList.add('is-dragging');
-          windowDragHandle.setPointerCapture(event.pointerId);
+          demoCard.setPointerCapture(event.pointerId);
           event.preventDefault();
         });
-        windowDragHandle.addEventListener('pointermove', event => {
+        demoCard.addEventListener('pointermove', event => {
           if (!windowDragging) return;
           const next = { x: event.clientX, y: event.clientY };
           demoDragY += next.y - windowDragLast.y;
@@ -1964,14 +1965,14 @@
         const stopWindowDrag = event => {
           windowDragging = false;
           floatingDemo.classList.remove('is-dragging');
-          if (event?.pointerId !== undefined && windowDragHandle.hasPointerCapture(event.pointerId)) {
-            windowDragHandle.releasePointerCapture(event.pointerId);
+          if (event?.pointerId !== undefined && demoCard.hasPointerCapture(event.pointerId)) {
+            demoCard.releasePointerCapture(event.pointerId);
           }
           updateTextWrap();
         };
-        windowDragHandle.addEventListener('pointerup', stopWindowDrag);
-        windowDragHandle.addEventListener('pointercancel', stopWindowDrag);
-        windowDragHandle.addEventListener('keydown', event => {
+        demoCard.addEventListener('pointerup', stopWindowDrag);
+        demoCard.addEventListener('pointercancel', stopWindowDrag);
+        windowDragHandle?.addEventListener('keydown', event => {
           const step = event.shiftKey ? 24 : 8;
           if (event.key === 'ArrowUp') demoDragY -= step;
           else if (event.key === 'ArrowDown') demoDragY += step;

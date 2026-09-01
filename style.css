@@ -338,6 +338,11 @@ h1 {
 
 .floating-demo .interactive-card {
   margin: 0;
+  cursor: grab;
+}
+
+.floating-demo.is-dragging .interactive-card {
+  cursor: grabbing;
 }
 
 .floating-demo .interactive-card canvas {
