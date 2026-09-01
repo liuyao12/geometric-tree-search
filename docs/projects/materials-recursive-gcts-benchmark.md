@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+## Seeded conditional nucleation point process (Build 413)
+
+The validated homogeneous CNT rate density now has a target-free stochastic
+consumer. For a declared observation length `L`, intrinsic dimension `d`, and
+finite exposure, the total point-process intensity is `Λ=J L^d`. A seeded
+uniform variate `u` produces each interarrival time
+`Δt=−ln(u)/Λ`; the same declared generator supplies `d` independent normalized
+coordinates for the event. Events are retained only while cumulative time is
+inside the exposure and their count is below the explicit display cap.
+
+The receipt stores the rate/work/request hashes, physical state, seed,
+generator name, every consumed waiting-time uniform, interarrival and event
+time, normalized/physical coordinates, expected count, finite-event
+probability, zero-wait underflow count, and whether the first omitted event
+would still lie inside the exposure. The truncation-probe uniform, wait, and
+proposed time are stored too. This makes cap truncation explicit
+rather than silently presenting a bounded list as a complete realization.
+
+This schedule is independent of the finite hard-admitted action-catalog KMC
+clock. It samples *where and when* homogeneous nucleation events would occur
+under the supplied constant rate density; it does not choose an atomistic GCTS
+action. `atomisticNucleusConstructed=false`,
+`criticalNucleusAtomCountInferred=false`,
+`crystallographicPoseAssigned=false`, `gctsSeedChanged=false`, and
+`gctsClockChanged=false` are enforced. Heterogeneous sites, incubation,
+depletion, impingement, spatial correlations, nonclassical mechanisms, and
+the atomistic nucleus-construction problem remain open.
+
 ## Work-bound conditional nucleation kinetics (Build 412)
 
 The classical work object no longer ends in an ambiguous “prefactor missing”

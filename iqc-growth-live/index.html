@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-412">
+  <link rel="stylesheet" href="./style.css?v=20260901-413">
   <script type="importmap">
     {
       "imports": {
@@ -2356,6 +2356,19 @@
                 <label for="nucleationExposureSelect"><span>Exposure</span><select id="nucleationExposureSelect" disabled><option value="1e-6">1 μs</option><option value="1e-3">1 ms</option><option value="1" selected>1 s</option><option value="60">1 min</option></select></label>
               </div>
               <div id="classicalNucleationKineticsMetrics" class="classical-nucleation-kinetics-metrics"><span><small>log₁₀ rate density</small><strong>withheld</strong></span><span><small>expected events</small><strong>withheld</strong></span><span><small>P(≥1)</small><strong>withheld</strong></span><span><small>median first event</small><strong>withheld</strong></span></div>
+              <section class="conditional-nucleation-scheduler" aria-label="Seeded conditional nucleation event schedule">
+                <header><span><small>rate density → point process</small><strong>Seeded nucleation-event hypotheses</strong></span><b id="nucleationScheduleBadge">not sampled</b></header>
+                <div class="conditional-nucleation-scheduler-controls">
+                  <label for="nucleationScheduleSeedSelect"><span>Random seed</span><select id="nucleationScheduleSeedSelect" disabled><option value="7">seed 7</option><option value="42">seed 42</option><option value="2026" selected>seed 2026</option><option value="65537">seed 65537</option></select></label>
+                  <label for="nucleationScheduleCapSelect"><span>Visible event cap</span><select id="nucleationScheduleCapSelect" disabled><option value="8">8 events</option><option value="32" selected>32 events</option><option value="128">128 events</option></select></label>
+                  <button id="freezeNucleationSchedule" type="button" disabled>Freeze schedule</button>
+                  <button id="releaseNucleationSchedule" type="button" disabled>Release draw</button>
+                </div>
+                <svg id="nucleationSchedulePlot" viewBox="0 0 320 122" role="img" aria-label="Projected seeded nucleation event positions and times"></svg>
+                <div id="nucleationScheduleMetrics" class="nucleation-schedule-metrics"><span><small>events</small><strong>—</strong></span><span><small>first event</small><strong>—</strong></span><span><small>sampling</small><strong>withheld</strong></span></div>
+                <p id="nucleationScheduleState">Validate a conditional rate before drawing event hypotheses.</p>
+                <p id="nucleationScheduleBoundary">Points are not atomistic nuclei, crystallographic poses, heterogeneous sites, or GCTS seeds.</p>
+              </section>
               <p id="classicalNucleationKineticsState">A barrier alone is not a rate. Validate the conditional work, then request independently calculated kinetic factors.</p>
               <p id="classicalNucleationKineticsBoundary">No Zeldovich factor, attachment frequency, site density, nucleation rate, induction time, or GCTS clock is inferred from geometry.</p>
             </section>
@@ -2717,7 +2730,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-412"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-412"></script>
+  <script type="module" src="./app.js?v=20260901-413"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-413"></script>
 </body>
 </html>

@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-412";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-412";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-413";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-413";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-412";
+  from "./hierarchy-physics-transport.mjs?v=20260901-413";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-412";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-413";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-412";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-413";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-412";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-413";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-412", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-413", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -360,8 +360,8 @@ const PHYSICS_MAP = {
   kinetics: {
     status: "progress", label: "thermodynamics + kinetics", title: "Equilibrium habit, kinetic habit, spatial supply, rate control, and exact events stay distinct",
     physical: "The portal distinguishes interfacial free energy γ(n̂), bulk parent-to-nucleus driving-force density Δg, steady normal interface velocity v(n̂) at one declared driving condition, spatially resolved net incorporation flux J(x,n̂) over one frozen interface, and candidate-resolved transition-state barriers/prefactors. Exact local handoffs bind each response to one structure, interface/frame, method, settings digest, boundary condition, and uncertainty contract. When J and v additionally share one coupling-state digest, a periodic site density converts J to a supply-equivalent velocity and resolves only nonoverlapping three-sigma rate-control regimes. A separate work-bound nucleation handoff may accept independently calculated site density, Zeldovich factor, and critical-nucleus attachment frequency; only then does it expose a conditional steady-state homogeneous rate density. Reversible finite event histories may audit local grand-canonical balance, observed rate cycles, competing finite pathways, and a finite ΔΩ(N) profile.",
-    geometric: "Validated γ(n̂) builds an equilibrium Wulff envelope and may regularize finite-nucleus support mismatch. A separately validated positive Δg, bound to that exact γ response and thermodynamic state, supplies a conditional homothetic capillarity-work profile with a critical Wulff scale and barrier—but the barrier alone never becomes a rate. When explicitly enabled, the action bridge freezes the pre-candidate Wulff center and ranks the identical frontier by ΔΔG = Δ[Cγs^(d−1) − ΔgV₀s^d]; unsupported orientations abstain and no coordinates or hard gates change. Independently supplied ρsite, Z, and f⁺ may evaluate J=ρsite Z f⁺ exp(−ΔG*/kBT) plus a selectable finite Poisson observation window, without ranking or timing GCTS actions. Independently validated v(n̂) builds a kinetic-Wulff envelope. A validated J(x,n̂) quadrature resolves nonuniform substrate supply, depletion, or shadowing and may rank the same exact frontier by compact spatial/normal flux contrast. The diagnostic bridge plots log10[J/(ρsite v)] patch by patch but adds no third score. All layers expose matched candidate-set/rank audits. Candidate-specific barriers remain attached to exact action IDs rather than being inferred from any envelope or field.",
-    growth: "Tree search still leap-frogs between hard-certified structural states. Equilibrium-shape, orientation-speed, local-supply, or exact event-rate evidence can order one immutable candidate catalog only after explicit validation; proposal checks and backtracks remain computational work, while a physical waiting time exists only for a complete finite HTST catalog with declared temperature and prefactors.",
+    geometric: "Validated γ(n̂) builds an equilibrium Wulff envelope and may regularize finite-nucleus support mismatch. A separately validated positive Δg, bound to that exact γ response and thermodynamic state, supplies a conditional homothetic capillarity-work profile with a critical Wulff scale and barrier—but the barrier alone never becomes a rate. When explicitly enabled, the action bridge freezes the pre-candidate Wulff center and ranks the identical frontier by ΔΔG = Δ[Cγs^(d−1) − ΔgV₀s^d]; unsupported orientations abstain and no coordinates or hard gates change. Independently supplied ρsite, Z, and f⁺ may evaluate J=ρsite Z f⁺ exp(−ΔG*/kBT) plus a selectable finite Poisson observation window. A declared seed can then freeze homogeneous event times and normalized 2D/3D positions; those points contain no atomistic nucleus or crystallographic pose. Independently validated v(n̂) builds a kinetic-Wulff envelope. A validated J(x,n̂) quadrature resolves nonuniform substrate supply, depletion, or shadowing and may rank the same exact frontier by compact spatial/normal flux contrast. The diagnostic bridge plots log10[J/(ρsite v)] patch by patch but adds no third score. Candidate-specific barriers remain attached to exact action IDs rather than being inferred from any envelope or field.",
+    growth: "Tree search still leap-frogs between hard-certified structural states. Equilibrium-shape, orientation-speed, local-supply, or exact event-rate evidence can order one immutable candidate catalog only after explicit validation; proposal checks and backtracks remain computational work. Seeded CNT event points remain outside the atomic growth state until a separate atomistic nucleus-construction handoff exists, while a GCTS leap receives physical time only from a complete finite HTST action catalog with declared temperature and prefactors.",
     boundary: "One finite orientation set is not a complete equilibrium or kinetic habit; one steady velocity field does not transfer across driving state; and one flux map must be recalculated as its frozen interface or transport boundary changes. Morphology supplies none of γ, Δg, v, or J; γ does not supply v or Δg; geometric visibility is not diffusion. Conditional capillarity omits heterogeneous wetting, elastic/strain energy, diffuse interfaces, curvature corrections, atom counts, and nonclassical pathways. The optional CNT rate still assumes one steady homogeneous reaction coordinate and supplied kinetic factors; its Poisson window is not an observed induction time, depletion model, spatial correlation, or GCTS clock. Comparing J/ρsite with v does not justify adding inverse resistances or inferring an effective rate. These priors are not attachment probabilities, complete moving-boundary solutions, or universal phase diagrams.",
     systems: [
       ["NaCl", "Exact structural recurrence", "Symbolic scale leap + optional external habit evidence", "No universal growth time"],
@@ -440,6 +440,7 @@ const CLAIMS = [
   ["open", "Conditional classical nucleation work", "Validated γ(n̂) unlocks an exact specimen-, response-, phase-, and temperature-bound Δg request. A returned positive driving-force density produces a conditional Wulff-scale barrier profile, but no physical response is bundled and no atom count or heterogeneous correction is inferred."],
   ["open", "Conditional capillarity action ranking", "After both γ(n̂) and Δg validate, an opt-in target-free regularizer can rank unchanged actions by their frozen-center Wulff-scale work increment. It never changes candidate geometry or admission, and it is not an atomistic pathway, attachment probability, nucleation rate, or clock."],
   ["open", "Conditional classical nucleation rate", "A validated capillarity work object can issue a separate exact-state request for ρsite, Z, and f⁺. Only a conforming response exposes J=ρsite Z f⁺ exp(−ΔG*/kBT) and a selectable finite Poisson window; no kinetics are bundled, no GCTS action receives time, and heterogeneous/nonclassical mechanisms remain open."],
+  ["open", "Seeded conditional nucleation schedule", "A validated rate can freeze exponential event times and uniform normalized positions in one declared finite observation box. Seed, uniforms, hashes, cap truncation, and coordinates are auditable, but the points contain no atoms or poses and never become GCTS nuclei without a separate construction handoff."],
   ["progress", "Deep QC compression", "Ideal IQC reaches six positive quotient levels; Cd–Yb reaches nine on five disjoint training windows."],
   ["progress", "Frozen hierarchy transfer", "IQC primitive cover transfers completely and Cd–Yb promoted vocabularies re-encode four held-out levels, with dormant symbols explicit."],
   ["progress", "Site-resolved marking", "A 1,245-site train corpus gives site AUC 0.8864 and action AUC 1.0, both significant against 31 shuffles."],

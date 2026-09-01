@@ -13,7 +13,7 @@ const packet = await buildHierarchyPhysicsProtocolPacket("iqc-reencoding", "kine
 const launch = hierarchyPhysicsProtocolLaunchAuditFromPacket({ ...packet.selection,
   expectedSha256: packet.sha256 }, packet);
 const binding = bindHierarchyPhysicsProtocolToExecution(launch,
-  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260901-412" });
+  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260901-413" });
 const requirements = hierarchyPhysicsProtocolConformanceRequirements("kinetics", "stationary");
 assert.ok(requirements.some((requirement) => requirement.id === "externalTransitionEvidence"));
 assert.ok(requirements.some((requirement) => requirement.id === "threeLevelStationaryWitness"));

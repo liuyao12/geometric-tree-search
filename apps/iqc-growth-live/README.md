@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 413 · conditional nucleation becomes a geometric event schedule
+
+After a classical rate response validates, the portal can now freeze one
+reproducible homogeneous Poisson point process inside the selected finite
+observation box. The user chooses an explicit 32-bit random seed and an event
+display cap. The scheduler draws exponential interarrival times from
+`J L^d`, then assigns each retained event a uniform normalized 2D or 3D
+position. A compact interactive projection encodes event time by color and the
+third coordinate by point size; every point retains its waiting-time uniform,
+physical time, normalized and SI positions, model hashes, seed, and truncation
+audit. If the visible cap is reached, the extra uniform consumed to test the
+first omitted event is retained as an explicit truncation probe.
+
+The schedule is deterministic under the declared `mulberry32` seed and never
+reads a growth target. Changing the observation span, exposure, seed, cap,
+rate response, or upstream γ/Δg work releases the old draw. Numerical controls
+cover exact replay, seed sensitivity, 2D/3D coordinates, finite exposure,
+display-cap truncation, and target taint.
+
+These points are **nucleation-event hypotheses**, not constructed critical
+nuclei. They have no atoms, species arrangement, crystallographic pose,
+heterogeneous site preference, or GCTS lineage. Consequently the scheduler
+does not initialize material growth or advance the GCTS clock. Turning an
+event point into a solid nucleus still requires a separate, physically
+supported atomistic nucleus-construction handoff.
+
 ## Build 412 · a barrier becomes a rate only through independent kinetics
 
 The conditional Wulff barrier now opens a third, separately validated handoff.
