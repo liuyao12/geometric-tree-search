@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-426";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-426";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-427";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-427";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-426";
+  from "./hierarchy-physics-transport.mjs?v=20260901-427";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-426";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-427";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-426";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-427";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-426";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-427";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-426", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-427", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -434,6 +434,7 @@ const TIMELINE = [
   ["29", "Candidate-bound Coulomb force glyphs", "Selecting an ionic reach candidate now anchors its finite-global electrostatic gradient to every emitted site in 3D. Directions are physical and values remain in eV/Å; rendered arrow lengths use a bounded within-candidate normalization and cannot change geometry, admission, ranking, relaxation, or time.", "proved"],
   ["30", "Finite Coulomb + Born–Mayer hypothesis", "An opt-in isotropic A exp(-r/ρ) core now augments the finite formal-charge Coulomb term with an exact analytic total force. A and ρ are explicit generic controls, not fitted species-pair parameters; hard geometry stays independent and dispersion, polarization, many-body physics, relaxation, and time remain open.", "proved"],
   ["31", "Geometry-conditioned species-pair core", "A complete unordered species-pair matrix can now scale rho_ij by the frozen additive contact envelope of the supplied configuration. The compact inspector and receipt expose every pair, fallback, and consumed coefficient; no energy, force, target, material label, or oxidation state is fitted, and the uniform pair remains a matched control.", "proved"],
+  ["32", "Damped dispersion pair hypothesis", "The finite pair model can add a declared Tang–Toennies-damped -C6 f6(r/rho_ij)/r^6 attraction with an exact analytic gradient and visible energy decomposition. C6 is a generic no-text-field control and rho_ij remains the frozen uniform or contact-scaled geometry hypothesis; species fitting, many-body dispersion, relaxation, and physical time are not claimed.", "proved"],
 ];
 
 const CLAIMS = [

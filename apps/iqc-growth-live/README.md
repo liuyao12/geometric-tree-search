@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 427 · an explicit damped dispersion hypothesis
+
+The finite pair laboratory now adds an opt-in attractive term to Coulomb and
+Born–Mayer repulsion:
+`Udisp(r)=−C₆ f₆(r/ρ)/r⁶`, where
+`f₆(x)=1−exp(−x)Σₖ₌₀⁶xᵏ/k!` is the Tang–Toennies damping function. A compact
+no-text-field selector exposes the declared global `C₆`; the already visible
+uniform or geometry-conditioned `ρᵢⱼ` supplies the damping length. The cutoff
+portrait decomposes Coulomb, Born–Mayer, and dispersion energy, and the 3D
+glyphs use the exact analytic gradient of their sum.
+
+This is an inspectable pair hypothesis, not a fitted van der Waals model. `C₆`
+is generic rather than species fitted, and damping reuses the frozen contact
+geometry. Many-body dispersion, polarization, charge transfer, electronic
+structure, periodic electrostatics, relaxation, and physical time remain
+outside the model. Previous Coulomb and Born–Mayer modes remain unchanged as
+matched controls.
+
 ## Build 426 · short-range repulsion becomes a visible species-pair matrix
 
 The Born–Mayer hypothesis no longer has to hide every chemistry behind one

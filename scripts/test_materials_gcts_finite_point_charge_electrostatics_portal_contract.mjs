@@ -15,12 +15,13 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 for (const document of [html, compatibility]) {
   for (const id of ["ionicPairDielectricSelect", "ionicPairTemperatureSelect",
     "ionicPairObservableSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect",
-    "ionicPairBornPolicySelect", "ionicPairMatrixInspector", "ionicPairMatrixRows",
+    "ionicPairBornPolicySelect", "ionicPairDispersionC6Select", "ionicPairMatrixInspector", "ionicPairMatrixRows",
     "electrostaticForceToggle", "electrostaticForceToggleLabel"]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
   assert.match(document, /value="coulomb">Finite Coulomb/);
   assert.match(document, /value="coulomb-born-mayer">Coulomb \+ Born–Mayer/);
+  assert.match(document, /value="coulomb-born-mayer-dispersion">Coulomb \+ Born–Mayer \+ damped dispersion/);
   assert.match(document, /conditional ΔU in eV/);
 }
 
@@ -30,7 +31,7 @@ for (const token of [
   "ionicPairRelativePermittivity",
   "ionicPairTemperatureKelvin",
   "ionicPairObservable",
-  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 4",
+  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 5",
   "migrateCustomExperimentManifest",
   "migratedFromSchemaVersion",
   "electrostaticEnergyEvaluated",
@@ -39,6 +40,8 @@ for (const token of [
   "ionicPairBornAmplitudeElectronVolt",
   "ionicPairBornDecayAngstrom",
   "ionicPairBornPolicy",
+  "ionicPairDispersionC6ElectronVoltAngstrom6",
+  "dispersionIonicPairMode",
   "activeBornMayerPairMatrix",
   "renderBornMayerPairMatrix",
   "electrostaticForceSites",
@@ -56,8 +59,13 @@ for (const token of [
   "reducedThermalEnergyPerAddedSite",
   "addedForceVectorsElectronVoltPerAngstrom",
   "addedBornMayerForceVectorsElectronVoltPerAngstrom",
+  "addedDispersionForceVectorsElectronVoltPerAngstrom",
   "bornMayerRepulsiveEnergyElectronVolt",
   "bornMayerRepulsionApplied",
+  "dampedDispersionEnergyElectronVolt",
+  "dispersionC6ElectronVoltAngstrom6",
+  "dispersionDampingModel",
+  "dispersionParametersFitted: false",
   "rmsAddedForceElectronVoltPerAngstrom",
   "netAddedForceMagnitudeElectronVoltPerAngstrom",
   "electrostaticTorqueMagnitudeElectronVolt",
@@ -85,15 +93,18 @@ assert.match(readme, /Build 423 · electrostatic energy becomes force geometry/)
 assert.match(readme, /Build 424 · electrostatic force vectors become inspectable 3D sections/);
 assert.match(readme, /Build 425 · Coulomb acquires an explicit short-range core/);
 assert.match(readme, /Build 426 · short-range repulsion becomes a visible species-pair matrix/);
+assert.match(readme, /Build 427 · an explicit damped dispersion hypothesis/);
 assert.match(benchmark, /Finite formal-charge electrostatic boundary \(Build 422\)/);
 assert.match(benchmark, /Finite electrostatic force geometry \(Build 423\)/);
 assert.match(benchmark, /Candidate-bound electrostatic force glyphs \(Build 424\)/);
 assert.match(benchmark, /Conditional Coulomb \+ Born–Mayer pair hypothesis \(Build 425\)/);
 assert.match(benchmark, /Geometry-conditioned Born–Mayer pair matrix \(Build 426\)/);
+assert.match(benchmark, /Tang–Toennies-damped pair dispersion \(Build 427\)/);
 assert.match(atlas, /"27", "Conditional finite electrostatics"/);
 assert.match(atlas, /"28", "Electrostatic force geometry"/);
 assert.match(atlas, /"29", "Candidate-bound Coulomb force glyphs"/);
 assert.match(atlas, /"30", "Finite Coulomb \+ Born–Mayer hypothesis"/);
 assert.match(atlas, /"31", "Geometry-conditioned species-pair core"/);
+assert.match(atlas, /"32", "Damped dispersion pair hypothesis"/);
 
 console.log("finite point-charge electrostatics portal contract passed");

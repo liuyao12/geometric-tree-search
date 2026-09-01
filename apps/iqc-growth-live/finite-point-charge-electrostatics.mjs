@@ -1,5 +1,6 @@
 export const COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM = 14.3996454784255;
 export const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
+export const TANG_TOENNIES_DISPERSION_ORDER = 6;
 
 import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
 
@@ -57,6 +58,46 @@ function vectorNorm(vector) {
   return Math.hypot(...vector);
 }
 
+function factorial(value) {
+  let result = 1;
+  for (let index = 2; index <= value; index++) result *= index;
+  return result;
+}
+
+/** Tang–Toennies f_n(x), evaluated without small-x cancellation. */
+export function tangToenniesDamping(order, rawX) {
+  const x = Number(rawX);
+  if (!Number.isInteger(order) || order < 0 || order > 20 || !Number.isFinite(x) || x < 0) {
+    throw new RangeError("Tang-Toennies damping requires integer order 0..20 and finite x >= 0");
+  }
+  if (x === 0) return 0;
+  if (x < 1) {
+    let term = x ** (order + 1) / factorial(order + 1);
+    let tail = term;
+    for (let index = order + 2; index < order + 80; index++) {
+      term *= x / index;
+      tail += term;
+      if (Math.abs(term) <= 1e-16 * Math.abs(tail)) break;
+    }
+    return Math.exp(-x) * tail;
+  }
+  let term = 1;
+  let partial = 1;
+  for (let index = 1; index <= order; index++) {
+    term *= x / index;
+    partial += term;
+  }
+  return Math.max(0, Math.min(1, 1 - Math.exp(-x) * partial));
+}
+
+export function tangToenniesDampingDerivative(order, rawX) {
+  const x = Number(rawX);
+  if (!Number.isInteger(order) || order < 0 || order > 20 || !Number.isFinite(x) || x < 0) {
+    throw new RangeError("Tang-Toennies derivative requires integer order 0..20 and finite x >= 0");
+  }
+  return Math.exp(-x) * x ** order / factorial(order);
+}
+
 function cross(first, second) {
   return [
     first[1] * second[2] - first[2] * second[1],
@@ -85,6 +126,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   bornMayerAmplitudeElectronVolt = 0,
   bornMayerDecayAngstrom = .3,
   bornMayerPairMatrix = null,
+  dispersionC6ElectronVoltAngstrom6 = 0,
+  dispersionDampingLengthAngstrom = .3,
 } = {}) {
   if (!finite(relativePermittivity) || Number(relativePermittivity) < 1
       || Number(relativePermittivity) > 1000) {
@@ -104,6 +147,14 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   if (!finite(bornMayerDecayAngstrom) || Number(bornMayerDecayAngstrom) <= 0
       || Number(bornMayerDecayAngstrom) > 10) {
     throw new RangeError("bornMayerDecayAngstrom must be between 0 and 10 angstrom");
+  }
+  if (!finite(dispersionC6ElectronVoltAngstrom6) || Number(dispersionC6ElectronVoltAngstrom6) < 0
+      || Number(dispersionC6ElectronVoltAngstrom6) > 1e7) {
+    throw new RangeError("dispersionC6ElectronVoltAngstrom6 must be between 0 and 1e7 eV angstrom^6");
+  }
+  if (!finite(dispersionDampingLengthAngstrom) || Number(dispersionDampingLengthAngstrom) <= 0
+      || Number(dispersionDampingLengthAngstrom) > 10) {
+    throw new RangeError("dispersionDampingLengthAngstrom must be between 0 and 10 angstrom");
   }
   const observable = rankingObservable(rawRankingObservable);
   const reach = declaredReach(reachAngstrom);
@@ -125,14 +176,18 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   let attractiveEnergyElectronVolt = 0;
   let repulsiveEnergyElectronVolt = 0;
   let bornMayerRepulsiveEnergyElectronVolt = 0;
+  let dampedDispersionEnergyElectronVolt = 0;
   let pairCount = 0;
   let distanceEvaluations = 0;
   const addedForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const addedCoulombForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const addedBornMayerForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
+  const addedDispersionForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const prefactor = COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / Number(relativePermittivity);
   const bornAmplitude = Number(bornMayerAmplitudeElectronVolt);
   const bornDecay = Number(bornMayerDecayAngstrom);
+  const dispersionC6 = Number(dispersionC6ElectronVoltAngstrom6);
+  const dispersionDampingLength = Number(dispersionDampingLengthAngstrom);
   const pairParameterUsage = new Map();
   let pairMatrixFallbackCount = 0;
   const accumulate = (first, second, firstAddedIndex, secondAddedIndex = null) => {
@@ -150,25 +205,38 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     const pairAmplitude = pairParameter?.amplitudeElectronVolt ?? bornAmplitude;
     const pairDecay = pairParameter?.decayAngstrom ?? bornDecay;
     const bornMayerEnergy = pairAmplitude * Math.exp(-separation / pairDecay);
-    const energy = coulombEnergy + bornMayerEnergy;
+    const dampingArgument = separation / dispersionDampingLength;
+    const dispersionDamping = tangToenniesDamping(TANG_TOENNIES_DISPERSION_ORDER,
+      dampingArgument);
+    const dispersionDampingDerivative = tangToenniesDampingDerivative(
+      TANG_TOENNIES_DISPERSION_ORDER, dampingArgument);
+    const dispersionEnergy = -dispersionC6 * dispersionDamping / separation ** 6;
+    const energy = coulombEnergy + bornMayerEnergy + dispersionEnergy;
     signedChargeDistanceSumPerAngstrom += chargeDistanceTerm;
     if (coulombEnergy < 0) attractiveEnergyElectronVolt += -coulombEnergy;
     else repulsiveEnergyElectronVolt += coulombEnergy;
     bornMayerRepulsiveEnergyElectronVolt += bornMayerEnergy;
+    dampedDispersionEnergyElectronVolt += dispersionEnergy;
     repulsiveEnergyElectronVolt += bornMayerEnergy;
+    attractiveEnergyElectronVolt += -dispersionEnergy;
     const coulombForceScale = prefactor * first.charge * second.charge / separation ** 3;
     const bornMayerForceScale = bornMayerEnergy / (pairDecay * separation);
+    const dispersionForceScale = dispersionC6 * (dispersionDampingDerivative
+      / (dispersionDampingLength * separation ** 7) - 6 * dispersionDamping / separation ** 8);
     displacement.forEach((component, axis) => {
       const coulombForce = coulombForceScale * component;
       const bornMayerForce = bornMayerForceScale * component;
-      const force = coulombForce + bornMayerForce;
+      const dispersionForce = dispersionForceScale * component;
+      const force = coulombForce + bornMayerForce + dispersionForce;
       addedForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += force;
       addedCoulombForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += coulombForce;
       addedBornMayerForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += bornMayerForce;
+      addedDispersionForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += dispersionForce;
       if (secondAddedIndex !== null) {
         addedForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= force;
         addedCoulombForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= coulombForce;
         addedBornMayerForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= bornMayerForce;
+        addedDispersionForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= dispersionForce;
       }
     });
     pairCount += 1;
@@ -188,7 +256,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     .forEach((neighbor, relativeIndex) => accumulate(site, neighbor, index, index + relativeIndex + 1)));
   const coulombDeltaEnergyElectronVolt = prefactor * signedChargeDistanceSumPerAngstrom;
   const deltaEnergyElectronVolt = coulombDeltaEnergyElectronVolt
-    + bornMayerRepulsiveEnergyElectronVolt;
+    + bornMayerRepulsiveEnergyElectronVolt + dampedDispersionEnergyElectronVolt;
   const thermalEnergyElectronVolt = BOLTZMANN_ELECTRON_VOLT_PER_KELVIN
     * Number(temperatureKelvin);
   const reducedThermalEnergyPerAddedSite = deltaEnergyElectronVolt
@@ -223,6 +291,9 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const bornMayerTorqueVectorElectronVolt = torqueFor(
     addedBornMayerForceVectorsElectronVoltPerAngstrom);
   const bornMayerTorqueMagnitudeElectronVolt = vectorNorm(bornMayerTorqueVectorElectronVolt);
+  const dispersionTorqueVectorElectronVolt = torqueFor(
+    addedDispersionForceVectorsElectronVoltPerAngstrom);
+  const dispersionTorqueMagnitudeElectronVolt = vectorNorm(dispersionTorqueVectorElectronVolt);
   const reducedRmsForce = rmsAddedForceElectronVoltPerAngstrom
     * Number(forceReferenceLengthAngstrom) / thermalEnergyElectronVolt;
   const forceCancellationScore = (1 - reducedRmsForce) / (1 + reducedRmsForce);
@@ -241,6 +312,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     deltaEnergyElectronVolt,
     coulombDeltaEnergyElectronVolt,
     bornMayerRepulsiveEnergyElectronVolt,
+    dampedDispersionEnergyElectronVolt,
     energyPerAddedSiteElectronVolt: deltaEnergyElectronVolt / added.length,
     attractiveEnergyElectronVolt,
     repulsiveEnergyElectronVolt,
@@ -250,6 +322,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     addedForceVectorsElectronVoltPerAngstrom,
     addedCoulombForceVectorsElectronVoltPerAngstrom,
     addedBornMayerForceVectorsElectronVoltPerAngstrom,
+    addedDispersionForceVectorsElectronVoltPerAngstrom,
     forceMagnitudesElectronVoltPerAngstrom,
     rmsAddedForceElectronVoltPerAngstrom,
     maximumAddedForceElectronVoltPerAngstrom,
@@ -260,6 +333,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     electrostaticTorqueMagnitudeElectronVolt,
     bornMayerTorqueVectorElectronVolt,
     bornMayerTorqueMagnitudeElectronVolt,
+    dispersionTorqueVectorElectronVolt,
+    dispersionTorqueMagnitudeElectronVolt,
     pairInteractionTorqueVectorElectronVolt,
     pairInteractionTorqueMagnitudeElectronVolt,
     forceReferenceLengthAngstrom: Number(forceReferenceLengthAngstrom),
@@ -282,8 +357,12 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     bornMayerPairMatrixFallbackCount: pairMatrixFallbackCount,
     bornMayerPairParameterUsage: [...pairParameterUsage.values()].sort((first, second) =>
       first.key.localeCompare(second.key)),
-    pairInteractionModel: bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0)
-      ? `Coulomb + Born–Mayer${pairMatrix.available ? " species-pair matrix" : ""}` : "Coulomb",
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: dispersionDampingLength,
+    dispersionDampingModel: "Tang-Toennies f6(r/lambda)",
+    dispersionApplied: dispersionC6 > 0,
+    pairInteractionModel: `${bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0)
+      ? `Coulomb + Born–Mayer${pairMatrix.available ? " species-pair matrix" : ""}` : "Coulomb"}${dispersionC6 > 0 ? " + damped dispersion" : ""}`,
     temperatureKelvin: Number(temperatureKelvin),
     reachAngstrom: Number.isFinite(reach) ? reach : "global",
     scoreDefinition: observable === "force-cancellation"
@@ -305,6 +384,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     pairInteractionForceEvaluated: true,
     pairInteractionForceIsNegativeEnergyGradient: true,
     bornMayerParametersFitted: false,
+    dispersionParametersFitted: false,
     totalMechanicalForceInferred: false,
     relaxationIntegrated: false,
     candidateGeometryChanged: false,
@@ -319,7 +399,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     electronicStructureModeled: false,
     physicalTimeIntegrated: false,
     claimBoundary: bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0)
-      ? `This is a conditional finite open-boundary Coulomb + isotropic Born–Mayer pair hypothesis. ${pairMatrix.available ? "The supplied species-pair matrix may be conditioned on frozen observed contact geometry, but no energy or force coefficient is fitted." : "A and rho are declared generic parameters, not fitted species-pair coefficients."} It omits periodic images, Ewald summation, polarization, charge transfer, dispersion, many-body terms, electronic structure, and reservoir response. The force is not a validated total mechanical force and is not integrated into relaxation or time.`
+      ? `This is a conditional finite open-boundary Coulomb + isotropic Born–Mayer${dispersionC6 > 0 ? " + Tang-Toennies-damped dispersion" : ""} pair hypothesis. ${pairMatrix.available ? "The supplied species-pair matrix may be conditioned on frozen observed contact geometry, but no energy or force coefficient is fitted." : "A and rho are declared generic parameters, not fitted species-pair coefficients."}${dispersionC6 > 0 ? " C6 and the damping length are declared generic controls, not fitted species-pair dispersion coefficients." : " Dispersion is omitted."} It omits periodic images, Ewald summation, polarization, charge transfer, many-body terms, electronic structure, and reservoir response. The force is not a validated total mechanical force and is not integrated into relaxation or time.`
       : "This is the pair interaction energy and exact analytic electrostatic force on emitted supplied formal point charges in a declared uniform isotropic relative permittivity over one finite open-boundary crop. It omits periodic images, Ewald summation, polarization, charge transfer, self energy, short-range repulsion, dispersion, electronic structure, and solvent or reservoir response. The force is not a total mechanical force and is not integrated into relaxation or time; the model is conditional, not a validated material energy or force field.",
   };
 }
@@ -333,6 +413,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
   bornMayerAmplitudeElectronVolt = 0,
   bornMayerDecayAngstrom = .3,
   bornMayerPairMatrix = null,
+  dispersionC6ElectronVoltAngstrom6 = 0,
+  dispersionDampingLengthAngstrom = .3,
 } = {}) {
   if (!finite(nearestNeighborAngstrom) || Number(nearestNeighborAngstrom) <= 0) {
     throw new RangeError("nearestNeighborAngstrom must be positive");
@@ -349,6 +431,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
       bornMayerAmplitudeElectronVolt,
       bornMayerDecayAngstrom,
       bornMayerPairMatrix,
+      dispersionC6ElectronVoltAngstrom6,
+      dispersionDampingLengthAngstrom,
       reachAngstrom: reach === "global" ? "global" : reach * Number(nearestNeighborAngstrom),
     }));
   const availableSamples = samples.filter((sample) => sample.available);
@@ -371,6 +455,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
     bornMayerDecayAngstrom: Number(bornMayerDecayAngstrom),
     bornMayerPairPolicy: bornMayerPairMatrix?.policy || "uniform",
     bornMayerPairMatrixApplied: Boolean(bornMayerPairMatrix?.records?.length),
+    dispersionC6ElectronVoltAngstrom6: Number(dispersionC6ElectronVoltAngstrom6),
+    dispersionDampingLengthAngstrom: Number(dispersionDampingLengthAngstrom),
     nearestNeighborAngstrom: Number(nearestNeighborAngstrom),
     candidateSetChanged: false,
     candidateGeometryChanged: false,

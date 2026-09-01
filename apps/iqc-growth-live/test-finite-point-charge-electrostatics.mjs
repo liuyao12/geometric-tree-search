@@ -2,8 +2,11 @@ import assert from "node:assert/strict";
 import {
   BOLTZMANN_ELECTRON_VOLT_PER_KELVIN,
   COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM,
+  TANG_TOENNIES_DISPERSION_ORDER,
   finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics,
+  tangToenniesDamping,
+  tangToenniesDampingDerivative,
 } from "./finite-point-charge-electrostatics.mjs";
 import { buildBornMayerPairMatrix } from "./born-mayer-pair-matrix.mjs";
 
@@ -63,6 +66,44 @@ assert.ok(Math.abs(bornPair.addedForceVectorsElectronVoltPerAngstrom[0][0]
   - (pair.addedForceVectorsElectronVoltPerAngstrom[0][0] + expectedBornEnergy / bornDecay)) < 1e-12);
 assert.equal(bornPair.pairInteractionModel, "Coulomb + Born–Mayer");
 assert.equal(bornPair.bornMayerRepulsionApplied, true);
+
+assert.equal(TANG_TOENNIES_DISPERSION_ORDER, 6);
+assert.equal(tangToenniesDamping(6, 0), 0);
+assert.ok(tangToenniesDamping(6, .01) > 0);
+assert.ok(tangToenniesDamping(6, 20) > .99);
+assert.ok(tangToenniesDampingDerivative(6, 2) > 0);
+const dispersionC6 = 100;
+const dispersionPair = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }],
+  [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude,
+    bornMayerDecayAngstrom: bornDecay,
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: bornDecay });
+const expectedDispersionEnergy = -dispersionC6
+  * tangToenniesDamping(6, 2.82 / bornDecay) / 2.82 ** 6;
+assert.ok(Math.abs(dispersionPair.dampedDispersionEnergyElectronVolt
+  - expectedDispersionEnergy) < 1e-12);
+assert.equal(dispersionPair.dispersionApplied, true);
+assert.equal(dispersionPair.dispersionParametersFitted, false);
+assert.match(dispersionPair.pairInteractionModel, /damped dispersion/);
+const dispersionEnergyAt = (x) => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [x, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay,
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: bornDecay }).deltaEnergyElectronVolt;
+const dispersionFiniteDifferenceForce = -(dispersionEnergyAt(2.82 + 1e-5)
+  - dispersionEnergyAt(2.82 - 1e-5)) / 2e-5;
+const dispersionAnalyticForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay,
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: bornDecay })
+  .addedForceVectorsElectronVoltPerAngstrom[0][0];
+assert.ok(Math.abs(dispersionFiniteDifferenceForce - dispersionAnalyticForce) < 1e-9);
 
 const speciesPairMatrix = buildBornMayerPairMatrix(["Na", "Cl"], {
   available: true, radiiAngstrom: { Na: 1.1, Cl: 1.7 },

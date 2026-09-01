@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+## Tang–Toennies-damped pair dispersion (Build 427)
+
+The optional finite pair evaluator can now include
+`−C₆ f₆(r/ρᵢⱼ)/r⁶` alongside the formal-charge Coulomb and Born–Mayer terms.
+The order-six Tang–Toennies damping removes the unphysical short-range
+divergence without changing any candidate geometry or hard admission rule.
+Energy decomposition, per-emitted-site force vectors, torque, cutoff
+sensitivity, and receipts all use the same exact analytic expression; numerical
+finite differences verify the implemented total gradient.
+
+The scientist declares one global `C₆`, and the damping length is the selected
+uniform or frozen-contact-scaled `ρᵢⱼ`. Neither is fitted to energy or force.
+Accordingly this closes the visibly missing attractive pair channel while
+remaining a hypothesis layer: species-specific dispersion, many-body
+dispersion, polarization, electronic structure, Ewald sums, relaxation, and
+physical dynamics are not claimed.
+
 ## Geometry-conditioned Born–Mayer pair matrix (Build 426)
 
 The finite pair layer now supports a complete unordered species-pair matrix.

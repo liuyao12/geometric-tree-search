@@ -17,9 +17,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkConditionedScatteringPathPlot/);
   assert.match(document, /Successful-path powder signature/);
-  assert.match(document, /app\.js\?v=20260901-426/);
+  assert.match(document, /app\.js\?v=20260901-427/);
 }
-assert.match(app, /finite-network-conditioned-scattering-path\.mjs\?v=20260901-426/);
+assert.match(app, /finite-network-conditioned-scattering-path\.mjs\?v=20260901-427/);
 assert.match(app, /buildFiniteNetworkConditionedScatteringPath/);
 assert.match(app, /finiteNetworkConditionedScatteringPath,/);
 assert.match(app, /finite-network-conditioned-scattering-path/);

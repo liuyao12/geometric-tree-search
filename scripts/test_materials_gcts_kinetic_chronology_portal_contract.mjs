@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   }
   assert.match(document, /Kinetic leap chronicle/);
 }
-assert.match(app, /catalog-conditional-chronology\.mjs\?v=20260901-426/);
+assert.match(app, /catalog-conditional-chronology\.mjs\?v=20260901-427/);
 assert.match(app, /function currentKineticChronology\(/);
 assert.match(app, /function renderKineticChronology\(/);
 assert.match(app, /catalogConditionalChronology: currentKineticChronology\(\)/);
