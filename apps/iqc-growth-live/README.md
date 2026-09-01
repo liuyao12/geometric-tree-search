@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 438 · population force-resultant and torque gate
+
+The shell-resolved force audit now distinguishes incoherent residual from a
+coherent mechanical drive. For every frozen movable population it records the
+vector sum of force, divides its magnitude by population size, and computes the
+centroidal torque `Σ(r_i-r_c)×F_i`. Torque is normalized by population size and
+RMS radius so it remains a force-like residual in eV/Å. Both net force per site
+and normalized torque must remain non-increasing, in addition to the existing
+energy, global RMS/p90, and population RMS/p90 gates.
+
+Controls cover two hidden-export cases: smaller individual force magnitudes that
+align into a larger net force, and smaller magnitudes whose cancellation changes
+into a larger couple. Both are rejected. The receipt exposes before/after force
+and torque vectors, magnitudes, radius normalization, signed changes, and gate
+results per group. This closes coherent translation/rotation leakage without
+claiming atomwise force balance, virial stress equilibrium, elasticity, a
+minimum, or dynamics.
+
 ## Build 437 · force-residual redistribution gate
 
 Finite-interaction accommodation now audits force residuals by the population

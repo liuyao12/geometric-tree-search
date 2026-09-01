@@ -11,9 +11,9 @@ const library = readFileSync(new URL("../apps/iqc-growth-live/public-powder-prof
 const formFactors = readFileSync(new URL("../apps/iqc-growth-live/xray-form-factors.mjs", import.meta.url), "utf8");
 const libraryData = JSON.parse(readFileSync(new URL("../apps/iqc-growth-live/data/rruff-powder-profiles-v1.json", import.meta.url), "utf8"));
 
-assert.match(app, /experimental-scattering-validation\.mjs\?v=20260901-437/);
-assert.match(app, /public-powder-profile-library\.mjs\?v=20260901-437/);
-assert.match(app, /xray-form-factors\.mjs\?v=20260901-437/);
+assert.match(app, /experimental-scattering-validation\.mjs\?v=20260901-438/);
+assert.match(app, /public-powder-profile-library\.mjs\?v=20260901-438/);
+assert.match(app, /xray-form-factors\.mjs\?v=20260901-438/);
 assert.match(app, /experimentalPowderProfileValidation/);
 assert.match(app, /candidateSetChanged: false/);
 assert.match(app, /runExperimentalScatteringDemonstrator/);

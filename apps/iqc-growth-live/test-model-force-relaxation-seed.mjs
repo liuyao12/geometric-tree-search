@@ -30,11 +30,16 @@ assert.ok(Math.hypot(...heterogeneousSeed.offsets[1]) <= .01 + 1e-12);
 const groupedPass = auditGroupedForceResiduals(
   [[3, 0, 0], [2, 0, 0], [1, 0, 0]],
   [[2, 0, 0], [1.5, 0, 0], [.8, 0, 0]],
-  ["fresh", "shell-1", "shell-2"],
+  ["fresh", "shell-1", "shell-2"], {
+    beforePositions: [[0, 0, 0], [1, 0, 0], [2, 0, 0]],
+    afterPositions: [[0, 0, 0], [1.01, 0, 0], [2.01, 0, 0]],
+  },
 );
 assert.equal(groupedPass.passed, true);
 assert.equal(groupedPass.groupCount, 3);
 assert.equal(groupedPass.groupLabelsFrozenBeforeProposal, true);
+assert.equal(groupedPass.resultantAvailable, true);
+assert.equal(groupedPass.resultantPassed, true);
 const hiddenRedistribution = auditGroupedForceResiduals(
   [[4, 0, 0], [2, 0, 0]],
   [[2, 0, 0], [2.5, 0, 0]],
@@ -43,6 +48,29 @@ const hiddenRedistribution = auditGroupedForceResiduals(
 assert.equal(hiddenRedistribution.passed, false);
 assert.equal(hiddenRedistribution.groups.find((group) => group.label === "shell-1")
   .residualNonIncreasing, false);
+const hiddenNetForce = auditGroupedForceResiduals(
+  [[1, 0, 0], [-1, 0, 0]],
+  [[.8, 0, 0], [.8, 0, 0]],
+  ["shell-1", "shell-1"], {
+    beforePositions: [[-1, 0, 0], [1, 0, 0]],
+    afterPositions: [[-1, 0, 0], [1, 0, 0]],
+  },
+);
+assert.equal(hiddenNetForce.residualPassed, true);
+assert.equal(hiddenNetForce.resultantPassed, false);
+assert.equal(hiddenNetForce.groups[0].netForceNonIncreasing, false);
+const hiddenTorque = auditGroupedForceResiduals(
+  [[0, 1, 0], [0, 1, 0]],
+  [[0, .8, 0], [0, -.8, 0]],
+  ["shell-2", "shell-2"], {
+    beforePositions: [[-1, 0, 0], [1, 0, 0]],
+    afterPositions: [[-1, 0, 0], [1, 0, 0]],
+  },
+);
+assert.equal(hiddenTorque.residualPassed, true);
+assert.equal(hiddenTorque.groups[0].netForceNonIncreasing, true);
+assert.equal(hiddenTorque.groups[0].normalizedTorqueNonIncreasing, false);
+assert.equal(hiddenTorque.passed, false);
 const downhill = auditModelForceRelaxationEnergyDescent(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: pairSeed.evaluation,

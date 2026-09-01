@@ -1,5 +1,27 @@
 # Recursive GCTS benchmark for material growth
 
+## Population force-resultant and torque gate (Build 438)
+
+Population RMS and p90 can both fall while the remaining vectors become more
+coherent. The outcome audit therefore now computes, before and after projection,
+the net force per site and centroidal torque for every frozen movable group.
+Torque uses the exact physical positions in ångströms and is normalized by
+`N R_rms`, producing a force-like residual. Single-site groups have zero
+centroidal torque by construction.
+
+The force-resultant gate requires both measures to remain non-increasing in
+`fresh`, `substrate-shell-1`, and `substrate-shell-2`, wherever those groups are
+present. A control with forces `(+1,-1) → (+0.8,+0.8)` proves that lower RMS/p90
+cannot hide increased net force. A second control changes a parallel pair into
+an opposing couple with smaller individual magnitudes and proves that normalized
+torque growth is independently rejected. Group identity is frozen before the
+proposal; before/after positions and complete gradients alone enter the audit.
+
+These are finite-population resultants, not boundary traction, a stress tensor,
+atomwise force balance, Hessian stability, elastic equilibrium, or dynamics.
+They prevent coherent load export under the declared finite interaction but do
+not turn it into a validated force field.
+
 ## Population-resolved force redistribution gate (Build 437)
 
 Whole-group force descent is necessary but insufficient for an interface
