@@ -688,15 +688,20 @@
         return pointCoronas;
       }
 
-      function uniformFrontierCorona(placements) {
-        const sums = new Map();
-        placements.forEach(placement => addPlacementValues(placement, sums));
-        const frontierCoronas = frontierCoronasForPlacements(placements);
-        const frontier = frontierPoints(sums, frontierCoronas);
-        if (!frontier.length) return null;
-        const coronas = frontier.map(point => frontierCoronas.get(key3(point.point)) ?? Infinity);
-        const first = coronas[0];
-        return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
+      function minimumFrontierGeneration(placements) {
+        const points = new Map();
+        placements.forEach((placement, generation) => {
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const entry = points.get(key) || { value: 0, generation };
+            entry.value += item.value;
+            points.set(key, entry);
+          });
+        });
+        const generations = Array.from(points.values())
+          .filter(entry => entry.value > 0 && entry.value < 12)
+          .map(entry => entry.generation);
+        return generations.length ? Math.min(...generations) : null;
       }
 
       function maxPlacementCorona(placements) {
@@ -2122,16 +2127,13 @@
             }
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
-            const frontierCorona = uniformFrontierCorona(playbackPlacements || event.placements || []);
-            if (frontierCorona && frontierCorona % 2 === 0 && !pausedCoronas.has(frontierCorona)) {
-              pausedCoronas.add(frontierCorona);
-              statusText = `paused at complete corona ${frontierCorona}; continue to extend the live branch`;
+            const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
+            if (frontierGeneration && frontierGeneration % 2 === 0 && !pausedCoronas.has(frontierGeneration)) {
+              pausedCoronas.add(frontierGeneration);
+              statusText = `paused at complete corona ${frontierGeneration}; every frontier point has generation ≥ ${frontierGeneration}`;
               stopTiling();
             } else if (shownTiles >= autoplayTarget) {
-              const visibleCorona = maxPlacementCorona(playbackPlacements || event.placements || []);
-              statusText = visibleCorona
-                ? `paused after corona ${visibleCorona}; continue to extend the live branch`
-                : 'paused after a search burst; continue to extend the live branch';
+              statusText = 'paused after a search burst; continue to extend the live branch';
               stopTiling();
             }
           }
