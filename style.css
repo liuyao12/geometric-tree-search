@@ -354,6 +354,10 @@ h1 {
   margin-top: 6px;
 }
 
+.floating-demo figcaption .timer-readout {
+  margin-top: 0;
+}
+
 .image-credit {
   font-size: 0.72rem;
   color: var(--muted);
@@ -592,6 +596,9 @@ h1 {
 }
 
 .interactive-card figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
   border-top: 1px solid var(--line);
   min-height: 42px;
   padding: 10px 12px 12px 56px;
@@ -599,6 +606,17 @@ h1 {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
+}
+
+.interactive-card figcaption #turtle-status-readout {
+  flex: 1;
+  min-width: 0;
+}
+
+.interactive-card figcaption .timer-readout {
+  margin-left: auto;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 900px) {

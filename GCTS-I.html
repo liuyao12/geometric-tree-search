@@ -63,6 +63,7 @@
         </canvas>
                     <figcaption>
                       <span id="turtle-status-readout" aria-live="polite"></span>
+                      <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
@@ -147,6 +148,7 @@
       const stageNote = document.getElementById('turtle-stage-note');
       const hoverReadout = document.getElementById('turtle-hover-readout');
       const statusReadout = document.getElementById('turtle-status-readout');
+      const timerReadout = document.getElementById('turtle-timer-readout');
       const stageChips = Array.from(document.querySelectorAll('[data-stage-chip]'));
       const floatingDemo = document.querySelector('.floating-demo');
       const tileHeading = document.querySelector('[data-demo-stage="tile"]');
@@ -225,6 +227,7 @@
       let forcedMoveStreak = 0;
       let elapsedSearchMs = 0;
       let searchTimerStartedAt = null;
+      let searchTimerFrame = null;
       let showMarkings = false;
       let windowDragging = false;
       let windowResizing = false;
@@ -1828,22 +1831,38 @@
       }
 
       function resumeSearchTimer() {
-        if (searchTimerStartedAt === null) searchTimerStartedAt = performance.now();
+        if (searchTimerStartedAt !== null) return;
+        searchTimerStartedAt = performance.now();
+        if (searchTimerFrame === null) searchTimerFrame = window.requestAnimationFrame(updateSearchTimerReadout);
       }
 
       function pauseSearchTimer() {
         if (searchTimerStartedAt === null) return;
         elapsedSearchMs += performance.now() - searchTimerStartedAt;
         searchTimerStartedAt = null;
+        renderSearchTimerReadout();
       }
 
       function resetSearchTimer() {
         elapsedSearchMs = 0;
         searchTimerStartedAt = null;
+        renderSearchTimerReadout();
       }
 
       function formattedSearchSeconds() {
         return (currentSearchElapsedMs() / 1000).toFixed(1);
+      }
+
+      function renderSearchTimerReadout() {
+        if (!timerReadout) return;
+        const nextText = `${formattedSearchSeconds()} s`;
+        if (timerReadout.textContent !== nextText) timerReadout.textContent = nextText;
+      }
+
+      function updateSearchTimerReadout() {
+        searchTimerFrame = null;
+        renderSearchTimerReadout();
+        if (searchTimerStartedAt !== null) searchTimerFrame = window.requestAnimationFrame(updateSearchTimerReadout);
       }
 
       const sharedTurtleOrientations = tileOrientations('turtle', A2_TILE_LOOPS.turtle);
@@ -2212,7 +2231,7 @@
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
-              statusText = `coronas ${frontierGeneration}, after ${formattedSearchSeconds()} seconds`;
+              statusText = `coronas ${frontierGeneration}`;
               stopTiling();
             }
           }
