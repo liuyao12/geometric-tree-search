@@ -5,6 +5,7 @@ import {
   finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics,
 } from "./finite-point-charge-electrostatics.mjs";
+import { buildBornMayerPairMatrix } from "./born-mayer-pair-matrix.mjs";
 
 const pair = incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }],
@@ -62,6 +63,45 @@ assert.ok(Math.abs(bornPair.addedForceVectorsElectronVoltPerAngstrom[0][0]
   - (pair.addedForceVectorsElectronVoltPerAngstrom[0][0] + expectedBornEnergy / bornDecay)) < 1e-12);
 assert.equal(bornPair.pairInteractionModel, "Coulomb + Born–Mayer");
 assert.equal(bornPair.bornMayerRepulsionApplied, true);
+
+const speciesPairMatrix = buildBornMayerPairMatrix(["Na", "Cl"], {
+  available: true, radiiAngstrom: { Na: 1.1, Cl: 1.7 },
+  selectedPairCount: 2, rmsResidualAngstrom: .02,
+}, { policy: "contact-scaled", amplitudeElectronVolt: 1000, decayAngstrom: .3 });
+const matrixPair = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1, species: "Na" }],
+  [{ position: [2.82, 0, 0], charge: -1, species: "Cl" }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
+    bornMayerPairMatrix: speciesPairMatrix });
+const naClParameter = speciesPairMatrix.records.find((record) => record.species.join("-") === "Cl-Na");
+const expectedMatrixBornEnergy = naClParameter.amplitudeElectronVolt
+  * Math.exp(-2.82 / naClParameter.decayAngstrom);
+assert.ok(Math.abs(matrixPair.bornMayerRepulsiveEnergyElectronVolt
+  - expectedMatrixBornEnergy) < 1e-12);
+assert.equal(matrixPair.bornMayerPairMatrixApplied, true);
+assert.equal(matrixPair.bornMayerPairPolicy, "contact-scaled");
+assert.equal(matrixPair.bornMayerPairMatrixFallbackCount, 0);
+assert.equal(matrixPair.bornMayerPairParameterUsage[0].key, naClParameter.key);
+assert.equal(matrixPair.pairInteractionModel, "Coulomb + Born–Mayer species-pair matrix");
+const matrixEnergyAt = (x) => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1, species: "Na" }],
+  [{ position: [x, 0, 0], charge: -1, species: "Cl" }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
+    bornMayerPairMatrix: speciesPairMatrix }).deltaEnergyElectronVolt;
+const matrixFiniteDifferenceForce = -(matrixEnergyAt(2.82 + 1e-5) - matrixEnergyAt(2.82 - 1e-5)) / 2e-5;
+const matrixAnalyticForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1, species: "Na" }],
+  [{ position: [2.82, 0, 0], charge: -1, species: "Cl" }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
+    bornMayerPairMatrix: speciesPairMatrix }).addedForceVectorsElectronVoltPerAngstrom[0][0];
+assert.ok(Math.abs(matrixFiniteDifferenceForce - matrixAnalyticForce) < 1e-9);
+assert.throws(() => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }],
+  [{ position: [2.82, 0, 0], charge: -1 }],
+  { bornMayerPairMatrix: speciesPairMatrix }), /species tokens/);
 
 const bornDisplacedEnergy = (x) => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [x, 0, 0], charge: -1 }],

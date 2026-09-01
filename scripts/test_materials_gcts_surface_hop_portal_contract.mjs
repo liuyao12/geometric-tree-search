@@ -12,9 +12,9 @@ for (const document of [html, alias]) {
   assert.match(document, /value="surface-hops"/);
   assert.match(document, /id="actionBarrierHopReach"/);
   assert.match(document, /ΔN = 0/);
-  assert.match(document, /app\.js\?v=20260901-425/);
+  assert.match(document, /app\.js\?v=20260901-426/);
 }
-assert.match(app, /surface-hop-events\.mjs\?v=20260901-425/);
+assert.match(app, /surface-hop-events\.mjs\?v=20260901-426/);
 assert.match(app, /function surfaceHopEventCatalog/);
 assert.match(app, /async function performOwnershipCertifiedSurfaceHop/);
 assert.match(app, /committed surface hop failed exact endpoint or atom-count reproduction/);

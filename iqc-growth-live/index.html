@@ -8,7 +8,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-425">
+  <link rel="stylesheet" href="./style.css?v=20260901-426">
   <script type="importmap">
     {
       "imports": {
@@ -832,6 +832,18 @@
                 <option value="0.5">0.50 Å · broad</option>
               </select>
             </label>
+            <label class="field" for="ionicPairBornPolicySelect">
+              <span>Species-pair short-range matrix <b id="ionicPairBornPolicyHint">uniform reference</b></span>
+              <select id="ionicPairBornPolicySelect">
+                <option value="uniform" selected>Uniform A and ρ · control</option>
+                <option value="contact-scaled">Observed-contact scaled ρᵢⱼ · geometry-conditioned</option>
+              </select>
+            </label>
+            <section id="ionicPairMatrixInspector" class="ionic-pair-matrix-inspector" aria-label="Born-Mayer species-pair parameter matrix">
+              <header><span><small>finite pair hypothesis</small><strong>Born–Mayer species-pair matrix</strong></span><b id="ionicPairMatrixState">uniform reference</b></header>
+              <div id="ionicPairMatrixRows"></div>
+              <p>Pair-specific values are frozen from the supplied contact geometry only. They are not fitted energies, forces, or transferable force-field parameters.</p>
+            </section>
             <label class="field" for="ionicPairTemperatureSelect">
               <span>Electrostatic comparison temperature <b>Kelvin · score scale only</b></span>
               <select id="ionicPairTemperatureSelect">
@@ -2848,7 +2860,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-425"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-425"></script>
+  <script type="module" src="./app.js?v=20260901-426"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-426"></script>
 </body>
 </html>

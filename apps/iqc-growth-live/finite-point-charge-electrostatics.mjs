@@ -1,8 +1,10 @@
 export const COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM = 14.3996454784255;
 export const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 
+import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
+
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
-  model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsive core and exact analytic gradient",
+  model: "finite open-boundary formal-point-charge Coulomb interaction with optional uniform or geometry-conditioned species-pair Born–Mayer repulsive core and exact analytic gradient",
   coulombConstantSource: "2018 CODATA elementary charge and vacuum permittivity",
   coulombConstantElectronVoltAngstrom: COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM,
   boltzmannConstantElectronVoltPerKelvin: BOLTZMANN_ELECTRON_VOLT_PER_KELVIN,
@@ -16,7 +18,39 @@ function normalizedSite(site, label) {
       || !site.position.every(finite) || !finite(site?.charge)) {
     throw new TypeError(`${label} needs a finite Cartesian position and formal charge`);
   }
-  return { position: site.position.map(Number), charge: Number(site.charge) };
+  return { position: site.position.map(Number), charge: Number(site.charge),
+    species: site.species === null || site.species === undefined ? null : String(site.species) };
+}
+
+function normalizedPairMatrix(rawMatrix) {
+  if (rawMatrix === null || rawMatrix === undefined) return {
+    available: false, policy: "uniform", records: [], parameters: new Map(),
+  };
+  if (!Array.isArray(rawMatrix?.records)) {
+    throw new TypeError("bornMayerPairMatrix must expose a records array");
+  }
+  const parameters = new Map();
+  const records = rawMatrix.records.map((record, index) => {
+    const species = Array.isArray(record?.species) ? record.species.map(String) : [];
+    if (species.length !== 2 || species.some((token) => !token)) {
+      throw new TypeError(`Born-Mayer pair record ${index + 1} needs two species tokens`);
+    }
+    const key = canonicalSpeciesPairKey(species[0], species[1]);
+    if (parameters.has(key)) throw new Error(`duplicate Born-Mayer pair record: ${key}`);
+    const amplitudeElectronVolt = Number(record.amplitudeElectronVolt);
+    const decayAngstrom = Number(record.decayAngstrom);
+    if (!finite(amplitudeElectronVolt) || amplitudeElectronVolt < 0 || amplitudeElectronVolt > 1e6
+        || !finite(decayAngstrom) || decayAngstrom <= 0 || decayAngstrom > 10) {
+      throw new RangeError(`Born-Mayer pair record ${key} has invalid A or rho`);
+    }
+    const normalized = { key, species, amplitudeElectronVolt, decayAngstrom,
+      geometryConditioned: Boolean(record.geometryConditioned),
+      parameterSource: String(record.parameterSource || "declared pair record") };
+    parameters.set(key, normalized);
+    return normalized;
+  });
+  return { available: records.length > 0, policy: String(rawMatrix.policy || "pair-matrix"),
+    records, parameters };
 }
 
 function vectorNorm(vector) {
@@ -50,6 +84,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   rankingObservable: rawRankingObservable = "energy",
   bornMayerAmplitudeElectronVolt = 0,
   bornMayerDecayAngstrom = .3,
+  bornMayerPairMatrix = null,
 } = {}) {
   if (!finite(relativePermittivity) || Number(relativePermittivity) < 1
       || Number(relativePermittivity) > 1000) {
@@ -74,6 +109,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const reach = declaredReach(reachAngstrom);
   const current = currentSites.map((site, index) => normalizedSite(site, `current site ${index + 1}`));
   const added = addedSites.map((site, index) => normalizedSite(site, `added site ${index + 1}`));
+  const pairMatrix = normalizedPairMatrix(bornMayerPairMatrix);
+  if (pairMatrix.available && [...current, ...added].some((site) => !site.species)) {
+    throw new TypeError("species tokens are required when a Born-Mayer pair matrix is supplied");
+  }
   if (!current.length || !added.length) return {
     available: false,
     score: 0,
@@ -94,6 +133,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   const prefactor = COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / Number(relativePermittivity);
   const bornAmplitude = Number(bornMayerAmplitudeElectronVolt);
   const bornDecay = Number(bornMayerDecayAngstrom);
+  const pairParameterUsage = new Map();
+  let pairMatrixFallbackCount = 0;
   const accumulate = (first, second, firstAddedIndex, secondAddedIndex = null) => {
     const displacement = first.position.map((value, axis) => value - second.position[axis]);
     const separation = vectorNorm(displacement);
@@ -102,7 +143,13 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     if (separation > reach) return;
     const chargeDistanceTerm = first.charge * second.charge / separation;
     const coulombEnergy = prefactor * chargeDistanceTerm;
-    const bornMayerEnergy = bornAmplitude * Math.exp(-separation / bornDecay);
+    const pairKey = first.species && second.species
+      ? canonicalSpeciesPairKey(first.species, second.species) : null;
+    const pairParameter = pairKey ? pairMatrix.parameters.get(pairKey) : null;
+    if (pairMatrix.available && !pairParameter) pairMatrixFallbackCount += 1;
+    const pairAmplitude = pairParameter?.amplitudeElectronVolt ?? bornAmplitude;
+    const pairDecay = pairParameter?.decayAngstrom ?? bornDecay;
+    const bornMayerEnergy = pairAmplitude * Math.exp(-separation / pairDecay);
     const energy = coulombEnergy + bornMayerEnergy;
     signedChargeDistanceSumPerAngstrom += chargeDistanceTerm;
     if (coulombEnergy < 0) attractiveEnergyElectronVolt += -coulombEnergy;
@@ -110,7 +157,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     bornMayerRepulsiveEnergyElectronVolt += bornMayerEnergy;
     repulsiveEnergyElectronVolt += bornMayerEnergy;
     const coulombForceScale = prefactor * first.charge * second.charge / separation ** 3;
-    const bornMayerForceScale = bornMayerEnergy / (bornDecay * separation);
+    const bornMayerForceScale = bornMayerEnergy / (pairDecay * separation);
     displacement.forEach((component, axis) => {
       const coulombForce = coulombForceScale * component;
       const bornMayerForce = bornMayerForceScale * component;
@@ -125,6 +172,15 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
       }
     });
     pairCount += 1;
+    if (pairKey) {
+      const usage = pairParameterUsage.get(pairKey) || { key: pairKey,
+        species: [first.species, second.species].sort(), pairCount: 0,
+        amplitudeElectronVolt: pairAmplitude, decayAngstrom: pairDecay,
+        geometryConditioned: Boolean(pairParameter?.geometryConditioned),
+        parameterSource: pairParameter?.parameterSource || "declared uniform reference fallback" };
+      usage.pairCount += 1;
+      pairParameterUsage.set(pairKey, usage);
+    }
   };
   added.forEach((site, addedIndex) => current.forEach((neighbor) =>
     accumulate(site, neighbor, addedIndex)));
@@ -219,8 +275,15 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     relativePermittivity: Number(relativePermittivity),
     bornMayerAmplitudeElectronVolt: bornAmplitude,
     bornMayerDecayAngstrom: bornDecay,
-    bornMayerRepulsionApplied: bornAmplitude > 0,
-    pairInteractionModel: bornAmplitude > 0 ? "Coulomb + Born–Mayer" : "Coulomb",
+    bornMayerRepulsionApplied: bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0),
+    bornMayerPairPolicy: pairMatrix.policy,
+    bornMayerPairMatrixApplied: pairMatrix.available,
+    bornMayerPairMatrixRecordCount: pairMatrix.records.length,
+    bornMayerPairMatrixFallbackCount: pairMatrixFallbackCount,
+    bornMayerPairParameterUsage: [...pairParameterUsage.values()].sort((first, second) =>
+      first.key.localeCompare(second.key)),
+    pairInteractionModel: bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0)
+      ? `Coulomb + Born–Mayer${pairMatrix.available ? " species-pair matrix" : ""}` : "Coulomb",
     temperatureKelvin: Number(temperatureKelvin),
     reachAngstrom: Number.isFinite(reach) ? reach : "global",
     scoreDefinition: observable === "force-cancellation"
@@ -255,8 +318,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     chargeTransferModeled: false,
     electronicStructureModeled: false,
     physicalTimeIntegrated: false,
-    claimBoundary: bornAmplitude > 0
-      ? "This is a conditional finite open-boundary Coulomb + isotropic Born–Mayer pair hypothesis. A and rho are declared generic parameters, not fitted species-pair coefficients. It omits periodic images, Ewald summation, polarization, charge transfer, dispersion, many-body terms, electronic structure, and reservoir response. The force is not a validated total mechanical force and is not integrated into relaxation or time."
+    claimBoundary: bornAmplitude > 0 || pairMatrix.records.some((record) => record.amplitudeElectronVolt > 0)
+      ? `This is a conditional finite open-boundary Coulomb + isotropic Born–Mayer pair hypothesis. ${pairMatrix.available ? "The supplied species-pair matrix may be conditioned on frozen observed contact geometry, but no energy or force coefficient is fitted." : "A and rho are declared generic parameters, not fitted species-pair coefficients."} It omits periodic images, Ewald summation, polarization, charge transfer, dispersion, many-body terms, electronic structure, and reservoir response. The force is not a validated total mechanical force and is not integrated into relaxation or time.`
       : "This is the pair interaction energy and exact analytic electrostatic force on emitted supplied formal point charges in a declared uniform isotropic relative permittivity over one finite open-boundary crop. It omits periodic images, Ewald summation, polarization, charge transfer, self energy, short-range repulsion, dispersion, electronic structure, and solvent or reservoir response. The force is not a total mechanical force and is not integrated into relaxation or time; the model is conditional, not a validated material energy or force field.",
   };
 }
@@ -269,6 +332,7 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
   rankingObservable: rawRankingObservable = "energy",
   bornMayerAmplitudeElectronVolt = 0,
   bornMayerDecayAngstrom = .3,
+  bornMayerPairMatrix = null,
 } = {}) {
   if (!finite(nearestNeighborAngstrom) || Number(nearestNeighborAngstrom) <= 0) {
     throw new RangeError("nearestNeighborAngstrom must be positive");
@@ -284,6 +348,7 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
       rankingObservable: rawRankingObservable,
       bornMayerAmplitudeElectronVolt,
       bornMayerDecayAngstrom,
+      bornMayerPairMatrix,
       reachAngstrom: reach === "global" ? "global" : reach * Number(nearestNeighborAngstrom),
     }));
   const availableSamples = samples.filter((sample) => sample.available);
@@ -304,6 +369,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
     rankingObservable: rankingObservable(rawRankingObservable),
     bornMayerAmplitudeElectronVolt: Number(bornMayerAmplitudeElectronVolt),
     bornMayerDecayAngstrom: Number(bornMayerDecayAngstrom),
+    bornMayerPairPolicy: bornMayerPairMatrix?.policy || "uniform",
+    bornMayerPairMatrixApplied: Boolean(bornMayerPairMatrix?.records?.length),
     nearestNeighborAngstrom: Number(nearestNeighborAngstrom),
     candidateSetChanged: false,
     candidateGeometryChanged: false,

@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+## Geometry-conditioned Born–Mayer pair matrix (Build 426)
+
+The finite pair layer now supports a complete unordered species-pair matrix.
+The uniform arm preserves the Build 425 control. The contact-scaled arm freezes
+the sample-fitted additive leading-contact envelope before growth and sets
+`ρᵢⱼ=ρ₀ dᵢⱼ/d_ref` for each observed pair while retaining the declared
+reference amplitude. Every current–new and new–new evaluation resolves its pair
+record by exact species identity, reports usage counts, and falls back to the
+uniform reference only when a record is absent. Matrix and uniform arms retain
+identical candidate poses and hard certificates.
+
+This is deliberately not presented as a Buckingham/Born–Mayer parameter fit.
+The envelope is a geometry-only summary regularized by a documented
+covalent-radius ratio prior; it never sees energy, force, a held-out target,
+material class, or inferred oxidation state. The matrix therefore supports
+multicomponent hypothesis exploration and causal ablation, but does not prove a
+transferable potential or thermodynamic growth law.
+
 ## Conditional Coulomb + Born–Mayer pair hypothesis (Build 425)
 
 The unchanged finite candidate set can now be ranked by the declared pair

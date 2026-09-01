@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-425";
+  from "./external-action-barrier.mjs?v=20260901-426";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-425";
+  from "./action-path-viewer.mjs?v=20260901-426";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-425";
+  from "./action-path-mechanism.mjs?v=20260901-426";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-425";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-426";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-425";
+  from "./kinetic-event-spectrum.mjs?v=20260901-426";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-425";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-426";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-425";
+  from "./kinetic-geometry-response.mjs?v=20260901-426";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-425";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-426";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-425";
+  from "./surface-hop-events.mjs?v=20260901-426";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-425";
+  from "./species-exchange-events.mjs?v=20260901-426";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-425";
+  from "./external-state-relaxation.mjs?v=20260901-426";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-425";
+  from "./reversible-transition-lineage.mjs?v=20260901-426";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-425";
+  from "./finite-network-population-dynamics.mjs?v=20260901-426";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-425";
+  from "./finite-network-geometric-flux.mjs?v=20260901-426";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-425";
+  from "./finite-network-structural-flux.mjs?v=20260901-426";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-425";
+  from "./geometric-state-descriptor.mjs?v=20260901-426";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-425";
+  from "./finite-network-global-order.mjs?v=20260901-426";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-425";
+  from "./finite-network-first-passage.mjs?v=20260901-426";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-425";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-426";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-425";
+  from "./finite-network-passage-control.mjs?v=20260901-426";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-425";
+  from "./finite-network-rate-intervention.mjs?v=20260901-426";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-425";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-425";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-425";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-425";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-425";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-425";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-426";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-425";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-426";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-425";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-426";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-425";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-426";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-425";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-426";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-425";
+  from "./classical-nucleation-evidence.mjs?v=20260901-426";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-425";
+  from "./classical-capillarity-action.mjs?v=20260901-426";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-425";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-426";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-425";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-426";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-425";
+  from "./critical-nucleus-geometry.mjs?v=20260901-426";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-425";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-426";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-425";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-426";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-425";
+  from "./experimental-scattering-validation.mjs?v=20260901-426";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-425";
+  from "./public-powder-profile-library.mjs?v=20260901-426";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-425";
+  from "./external-attachment-kinetics.mjs?v=20260901-426";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-425";
+  from "./external-interface-flux.mjs?v=20260901-426";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-425";
+  from "./growth-regime-bridge.mjs?v=20260901-426";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-425";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-426";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-425";
+  from "./catalog-conditional-chronology.mjs?v=20260901-426";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-425";
+  from "./coupled-physics-state.mjs?v=20260901-426";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-425";
+} from "./ice-molecular-anchor-growth.js?v=20260901-426";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-425";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-426";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-425";
+} from "./ice-orientation-evidence.mjs?v=20260901-426";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-425";
+  from "./xray-form-factors.mjs?v=20260901-426";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -239,13 +239,15 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   rotateDisplacementTensor }
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
+import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
+  from "./born-mayer-pair-matrix.mjs?v=20260901-426";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-425";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-426";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -335,7 +337,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-425", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-426", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -614,6 +616,11 @@ const ionicPairReachSelect = $("ionicPairReachSelect");
 const ionicPairDielectricSelect = $("ionicPairDielectricSelect");
 const ionicPairBornAmplitudeSelect = $("ionicPairBornAmplitudeSelect");
 const ionicPairBornDecaySelect = $("ionicPairBornDecaySelect");
+const ionicPairBornPolicySelect = $("ionicPairBornPolicySelect");
+const ionicPairBornPolicyHint = $("ionicPairBornPolicyHint");
+const ionicPairMatrixInspector = $("ionicPairMatrixInspector");
+const ionicPairMatrixState = $("ionicPairMatrixState");
+const ionicPairMatrixRows = $("ionicPairMatrixRows");
 const ionicPairTemperatureSelect = $("ionicPairTemperatureSelect");
 const ionicPairObservableSelect = $("ionicPairObservableSelect");
 const ionicPairWeightSelect = $("ionicPairWeightSelect");
@@ -2494,6 +2501,7 @@ let ionicPairReach = 8;
 let ionicPairRelativePermittivity = 10;
 let ionicPairBornAmplitudeElectronVolt = 1000;
 let ionicPairBornDecayAngstrom = .3;
+let ionicPairBornPolicy = "uniform";
 let ionicPairTemperatureKelvin = 600;
 let ionicPairObservable = "energy";
 let ionicPairWeight = .24;
@@ -2600,6 +2608,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   chargeMomentMode: "none", chargeMomentWeight: .24,
   ionicPairMode: "none", ionicPairReach: 8, ionicPairRelativePermittivity: 10,
   ionicPairBornAmplitudeElectronVolt: 1000, ionicPairBornDecayAngstrom: .3,
+  ionicPairBornPolicy: "uniform",
   ionicPairTemperatureKelvin: 600, ionicPairObservable: "energy", ionicPairWeight: .24,
   bondValenceMode: "none", bondValenceWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
@@ -2880,7 +2889,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 });
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairDielectricSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect", "ionicPairTemperatureSelect", "ionicPairObservableSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairDielectricSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect", "ionicPairBornPolicySelect", "ionicPairTemperatureSelect", "ionicPairObservableSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "collectiveResponseSelect", "collectiveScreeningSelect", "collectiveResponseWeightSelect", "configurationalMultiplicitySelect", "configurationalMultiplicityWeightSelect", "constraintTensorSelect", "constraintTensorWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -4819,7 +4828,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425",
+    generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4905,7 +4914,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425",
+    generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5106,7 +5115,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-425", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-426", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5153,7 +5162,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-425",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5405,7 +5414,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-425",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5924,7 +5933,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-425",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15626,7 +15635,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-425" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-426" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15634,7 +15643,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-425",
+      buildId: "20260901-426",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16884,9 +16893,9 @@ async function buildExperimentReceipt() {
         effectiveWeight: activeIonicPairWeight(),
         scoreDefinition: finiteIonicPairMode()
           ? ionicPairObservable === "force-cancellation"
-            ? "(1-y)/(1+y), y = F_rms d_nn / (k_B T); F is the exact analytic point-charge energy gradient on emitted sites"
+            ? "(1-y)/(1+y), y = F_rms d_nn / (k_B T); F is the exact analytic selected finite-pair energy gradient on emitted sites"
             : ionicPairObservable === "combined"
-              ? "equal mean of bounded delta-U and electrostatic-force-cancellation scores"
+              ? "equal mean of bounded delta-U and selected pair-force-cancellation scores"
               : `-x/(1+|x|), x = delta U / (N_added k_B T); delta U uses 14.3996454784255 eV angstrom / epsilon_r${bornMayerIonicPairMode() ? " + A exp(-r/rho)" : ""} over pairs involving at least one emitted site`
           : "negative normalized sum q_i q_j/(r_ij/d_nn) over pairs involving at least one emitted site",
         relativePermittivity: finiteIonicPairMode() ? ionicPairRelativePermittivity : null,
@@ -16894,6 +16903,38 @@ async function buildExperimentReceipt() {
           ? ionicPairBornAmplitudeElectronVolt : null,
         bornMayerDecayAngstrom: bornMayerIonicPairMode() ? ionicPairBornDecayAngstrom : null,
         bornMayerRepulsionApplied: bornMayerIonicPairMode(),
+        bornMayerPairMatrix: bornMayerIonicPairMode() ? (() => {
+          const matrix = activeBornMayerPairMatrix();
+          return {
+            policy: matrix.policy,
+            policyLabel: matrix.policyLabel,
+            pairCount: matrix.pairCount,
+            referenceAmplitudeElectronVolt: matrix.referenceAmplitudeElectronVolt,
+            referenceDecayAngstrom: matrix.referenceDecayAngstrom,
+            referenceContactAngstrom: matrix.referenceContactAngstrom === null
+              ? null : receiptRound(matrix.referenceContactAngstrom),
+            geometryConditionedPairs: matrix.geometryConditionedPairs,
+            uniformFallbackPairs: matrix.uniformFallbackPairs,
+            contactEnvelopeAvailable: matrix.contactEnvelopeAvailable,
+            contactEnvelopeSelectedPairCount: matrix.contactEnvelopeSelectedPairCount,
+            contactEnvelopeRmsResidualAngstrom: matrix.contactEnvelopeRmsResidualAngstrom === null
+              ? null : receiptRound(matrix.contactEnvelopeRmsResidualAngstrom),
+            records: matrix.records.map((record) => ({
+              key: record.key, species: [...record.species],
+              amplitudeElectronVolt: record.amplitudeElectronVolt,
+              decayAngstrom: receiptRound(record.decayAngstrom),
+              observedContactAngstrom: record.observedContactAngstrom === null
+                ? null : receiptRound(record.observedContactAngstrom),
+              contactScale: receiptRound(record.contactScale),
+              geometryConditioned: record.geometryConditioned,
+              parameterSource: record.parameterSource,
+            })),
+            energyOrForceFitted: false,
+            materialIdentityUsed: false,
+            targetUsed: false,
+            claimBoundary: matrix.claimBoundary,
+          };
+        })() : null,
         temperatureKelvin: finiteIonicPairMode() ? ionicPairTemperatureKelvin : null,
         forceReferenceLengthAngstrom: finiteIonicPairMode() ? receiptRound(referenceSpacingA) : null,
         provenance: finiteIonicPairMode() ? FINITE_POINT_CHARGE_PROVENANCE : null,
@@ -18408,7 +18449,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-425" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-426" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24802,6 +24843,11 @@ function buildIonicPairConvergence(snapshot) {
       pairInteractionModel: sample.pairInteractionModel,
       bornMayerAmplitudeElectronVolt: sample.bornMayerAmplitudeElectronVolt,
       bornMayerDecayAngstrom: sample.bornMayerDecayAngstrom,
+      bornMayerPairPolicy: sample.bornMayerPairPolicy,
+      bornMayerPairMatrixApplied: sample.bornMayerPairMatrixApplied,
+      bornMayerPairMatrixRecordCount: sample.bornMayerPairMatrixRecordCount,
+      bornMayerPairMatrixFallbackCount: sample.bornMayerPairMatrixFallbackCount,
+      bornMayerPairParameterUsage: sample.bornMayerPairParameterUsage,
       distanceEvaluations: sample.distanceEvaluations, rank: rankRecords.get(candidate.candidateKey)?.[index] ?? null,
     })),
     scoreSpread: candidate.ionicPairProfile.scoreSpread,
@@ -24829,17 +24875,20 @@ function buildIonicPairConvergence(snapshot) {
       ? ionicPairRelativePermittivity : null,
     temperatureKelvin: finiteIonicPairMode() ? ionicPairTemperatureKelvin : null,
     rankingObservable: finiteIonicPairMode() ? ionicPairObservable : null,
-    pairInteractionModel: bornMayerIonicPairMode() ? "Coulomb + Born–Mayer" : "Coulomb",
+    pairInteractionModel: bornMayerIonicPairMode()
+      ? `Coulomb + Born–Mayer${ionicPairBornPolicy === "contact-scaled" ? " species-pair matrix" : ""}` : "Coulomb",
     bornMayerAmplitudeElectronVolt: bornMayerIonicPairMode()
       ? ionicPairBornAmplitudeElectronVolt : null,
     bornMayerDecayAngstrom: bornMayerIonicPairMode() ? ionicPairBornDecayAngstrom : null,
+    bornMayerPairPolicy: bornMayerIonicPairMode() ? ionicPairBornPolicy : null,
+    bornMayerPairMatrix: bornMayerIonicPairMode() ? activeBornMayerPairMatrix() : null,
     finiteOpenBoundaryUsed: finiteIonicPairMode(),
     electrostaticEnergyEvaluated: finiteIonicPairMode(),
     electrostaticForceEvaluated: finiteIonicPairMode(),
     dielectricOrEwaldConvergenceInferred: false,
     thermodynamicLimitInferred: false,
     claimBoundary: finiteIonicPairMode()
-      ? `finite-cutoff sensitivity of a conditional formal-point-charge Coulomb${bornMayerIonicPairMode() ? " + generic isotropic Born–Mayer repulsion" : ""} interaction energy and exact analytic gradient in a declared uniform dielectric and open crop; not Ewald convergence, a fitted species-pair potential, total mechanical force, relaxation, solved dielectric response, polarization, charge transfer, a validated material energy, or a thermodynamic limit`
+      ? `finite-cutoff sensitivity of a conditional formal-point-charge Coulomb${bornMayerIonicPairMode() ? ` + isotropic Born–Mayer repulsion (${ionicPairBornPolicy === "contact-scaled" ? "rho_ij scaled by the frozen geometric contact envelope" : "uniform declared reference"})` : ""} interaction energy and exact analytic gradient in a declared uniform dielectric and open crop; not Ewald convergence, a fitted species-pair potential, total mechanical force, relaxation, solved dielectric response, polarization, charge transfer, a validated material energy, or a thermodynamic limit`
       : "finite-cutoff sensitivity of a dimensionless supplied-charge 1/r ordering; not Ewald convergence, dielectric response, electrostatic energy, or a thermodynamic limit" };
 }
 
@@ -26293,6 +26342,48 @@ function bornMayerIonicPairMode() {
   return ionicPairMode === "coulomb-born-mayer";
 }
 
+function activeBornMayerPairMatrix() {
+  return buildBornMayerPairMatrix(referenceAtoms.map((atom) => atom.species), fittedContactEnvelope, {
+    policy: ionicPairBornPolicy,
+    amplitudeElectronVolt: ionicPairBornAmplitudeElectronVolt,
+    decayAngstrom: ionicPairBornDecayAngstrom,
+  });
+}
+
+function renderBornMayerPairMatrix() {
+  if (!ionicPairMatrixInspector || !ionicPairMatrixRows || !ionicPairMatrixState
+      || !ionicPairBornPolicyHint) return;
+  const visible = bornMayerIonicPairMode();
+  ionicPairMatrixInspector.hidden = !visible;
+  const matrix = activeBornMayerPairMatrix();
+  ionicPairMatrixRows.replaceChildren();
+  const displayRecords = matrix.records.slice(0, 12);
+  displayRecords.forEach((record) => {
+    const card = document.createElement("article");
+    card.dataset.conditioned = String(record.geometryConditioned);
+    const title = document.createElement("strong");
+    const detail = document.createElement("span");
+    title.textContent = record.species.join("–");
+    detail.textContent = `A ${record.amplitudeElectronVolt.toLocaleString()} eV · ρ ${record.decayAngstrom.toFixed(3)} Å${record.observedContactAngstrom === null ? " · uniform fallback" : ` · dₒ ${record.observedContactAngstrom.toFixed(3)} Å`}`;
+    card.append(title, detail); ionicPairMatrixRows.append(card);
+  });
+  if (matrix.records.length > displayRecords.length) {
+    const card = document.createElement("article");
+    const title = document.createElement("strong");
+    const detail = document.createElement("span");
+    title.textContent = `+${matrix.records.length - displayRecords.length} pair${matrix.records.length - displayRecords.length === 1 ? "" : "s"}`;
+    detail.textContent = "complete matrix retained in the experiment receipt";
+    card.append(title, detail); ionicPairMatrixRows.append(card);
+  }
+  const policy = BORN_MAYER_PAIR_POLICIES[ionicPairBornPolicy];
+  ionicPairBornPolicyHint.textContent = ionicPairBornPolicy === "contact-scaled"
+    ? `${matrix.geometryConditionedPairs}/${matrix.pairCount} geometry-conditioned`
+    : "uniform reference control";
+  ionicPairMatrixState.textContent = visible
+    ? `${matrix.pairCount} pair${matrix.pairCount === 1 ? "" : "s"} · ${policy?.label || ionicPairBornPolicy}`
+    : "inactive";
+}
+
 function ionicPairLabel() {
   return ionicPairMode === "madelung" ? "incremental Madelung-like geometry"
     : ionicPairMode === "coulomb-born-mayer"
@@ -26322,10 +26413,10 @@ function ionicPairForFreshSites(rawFreshSites, { recordWork = true } = {}) {
     coulombKernelUsed: false, electrostaticEnergyInferred: false,
     dielectricResponseInferred: false, electronicStructureModeled: false,
     physicalTimeIntegrated: false };
-  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(),
+  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(), species: atom.species,
     charge: suppliedFormalChargeForToken(atom.species) }));
   const addedSites = freshSites.map((site) => ({ position: site.p.toArray(),
-    charge: suppliedFormalChargeForToken(site.species) }));
+    species: site.species, charge: suppliedFormalChargeForToken(site.species) }));
   const result = finiteIonicPairMode() ? (() => {
     const scaleAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
     const toPhysical = (site) => ({ ...site,
@@ -26339,6 +26430,7 @@ function ionicPairForFreshSites(rawFreshSites, { recordWork = true } = {}) {
         bornMayerAmplitudeElectronVolt: bornMayerIonicPairMode()
           ? ionicPairBornAmplitudeElectronVolt : 0,
         bornMayerDecayAngstrom: ionicPairBornDecayAngstrom,
+        bornMayerPairMatrix: bornMayerIonicPairMode() ? activeBornMayerPairMatrix() : null,
         reachAngstrom: ionicPairReach === "global" ? "global"
           : ionicPairReach * referenceSpacingA,
       });
@@ -26357,10 +26449,10 @@ function ionicPairReachProfileForFreshSites(rawFreshSites) {
   const freshSites = uniqueFreshSites(rawFreshSites);
   if (!formalChargeTarget?.available || !freshSites.length) return { available: false,
     reason: "complete supplied-charge candidate unavailable", samples: [] };
-  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(),
+  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(), species: atom.species,
     charge: suppliedFormalChargeForToken(atom.species) }));
   const addedSites = freshSites.map((site) => ({ position: site.p.toArray(),
-    charge: suppliedFormalChargeForToken(site.species) }));
+    species: site.species, charge: suppliedFormalChargeForToken(site.species) }));
   if (![...currentSites, ...addedSites].every((site) => Number.isFinite(site.charge))) {
     return { available: false, reason: "candidate charge unresolved", samples: [] };
   }
@@ -26377,6 +26469,7 @@ function ionicPairReachProfileForFreshSites(rawFreshSites) {
       bornMayerAmplitudeElectronVolt: bornMayerIonicPairMode()
         ? ionicPairBornAmplitudeElectronVolt : 0,
       bornMayerDecayAngstrom: ionicPairBornDecayAngstrom,
+      bornMayerPairMatrix: bornMayerIonicPairMode() ? activeBornMayerPairMatrix() : null,
     });
   }
   return incrementalIonicPairReachProfile(currentSites, addedSites, {
@@ -26892,7 +26985,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425",
+    generatedAt: new Date().toISOString(), buildId: "20260901-426",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -30163,7 +30256,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425",
+    generatedAt: new Date().toISOString(), buildId: "20260901-426",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -31618,7 +31711,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-426", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -33198,6 +33291,7 @@ function currentGrowthProtocolSettings() {
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
     chargeMomentMode, chargeMomentWeight, ionicPairMode, ionicPairReach,
     ionicPairRelativePermittivity, ionicPairBornAmplitudeElectronVolt, ionicPairBornDecayAngstrom,
+    ionicPairBornPolicy,
     ionicPairTemperatureKelvin, ionicPairObservable, ionicPairWeight,
     bondValenceMode, bondValenceWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
@@ -33227,8 +33321,9 @@ function currentGrowthProtocolSettings() {
   };
 }
 
-const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 3;
-const PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 2;
+const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 4;
+const PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 3;
+const OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 2;
 const LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION = 1;
 const CUSTOM_EXPERIMENT_MAX_PAYLOAD_LENGTH = 12_000;
 const CUSTOM_EXPERIMENT_AUDIT = Object.freeze({
@@ -33267,6 +33362,7 @@ function growthSettingSelects() {
     ionicPairRelativePermittivity: ionicPairDielectricSelect,
     ionicPairBornAmplitudeElectronVolt: ionicPairBornAmplitudeSelect,
     ionicPairBornDecayAngstrom: ionicPairBornDecaySelect,
+    ionicPairBornPolicy: ionicPairBornPolicySelect,
     ionicPairTemperatureKelvin: ionicPairTemperatureSelect,
     ionicPairObservable: ionicPairObservableSelect,
     ionicPairWeight: ionicPairWeightSelect,
@@ -33403,14 +33499,18 @@ function validateCustomExperimentManifest(manifest, materialParameter) {
 
 function migrateCustomExperimentManifest(manifest) {
   if (![LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
+    OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION].includes(manifest?.schemaVersion)) return manifest;
   return { ...manifest, schemaVersion: CUSTOM_EXPERIMENT_SCHEMA_VERSION,
     growth: { ...manifest.growth, settings: {
       ...manifest.growth?.settings,
       ...(manifest.schemaVersion === LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION
         ? { ionicPairObservable: "energy" } : {}),
-      ionicPairBornAmplitudeElectronVolt: 1000,
-      ionicPairBornDecayAngstrom: .3,
+      ...(manifest.schemaVersion <= OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION ? {
+        ionicPairBornAmplitudeElectronVolt: 1000,
+        ionicPairBornDecayAngstrom: .3,
+      } : {}),
+      ionicPairBornPolicy: "uniform",
     } } };
 }
 
@@ -33483,6 +33583,7 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   ionicPairRelativePermittivity = settings.ionicPairRelativePermittivity;
   ionicPairBornAmplitudeElectronVolt = settings.ionicPairBornAmplitudeElectronVolt;
   ionicPairBornDecayAngstrom = settings.ionicPairBornDecayAngstrom;
+  ionicPairBornPolicy = settings.ionicPairBornPolicy;
   ionicPairTemperatureKelvin = settings.ionicPairTemperatureKelvin;
   ionicPairObservable = settings.ionicPairObservable;
   ionicPairWeight = settings.ionicPairWeight;
@@ -34675,6 +34776,7 @@ function syncStageOptions() {
     ionicPairDielectricSelect.value = String(ionicPairRelativePermittivity);
     ionicPairBornAmplitudeSelect.value = String(ionicPairBornAmplitudeElectronVolt);
     ionicPairBornDecaySelect.value = String(ionicPairBornDecayAngstrom);
+    ionicPairBornPolicySelect.value = ionicPairBornPolicy;
     ionicPairTemperatureSelect.value = String(ionicPairTemperatureKelvin);
     ionicPairObservableSelect.value = ionicPairObservable;
     ionicPairWeightSelect.value = String(ionicPairWeight);
@@ -34757,6 +34859,8 @@ function syncStageOptions() {
     ionicPairBornAmplitudeSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
       || !bornMayerIonicPairMode();
     ionicPairBornDecaySelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
+      || !bornMayerIonicPairMode();
+    ionicPairBornPolicySelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
       || !bornMayerIonicPairMode();
     ionicPairTemperatureSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available
       || !finiteIonicPairMode();
@@ -34842,9 +34946,10 @@ function syncStageOptions() {
     chargeMomentHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : chargeMomentMode === "none" ? "off · multipoles reported"
         : `${chargeMomentLabel()} · global · weight ${chargeMomentWeight.toFixed(2)}`;
+    renderBornMayerPairMatrix();
     ionicPairHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : ionicPairMode === "none" ? "off · 1/r geometry reported"
-        : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`}${finiteIonicPairMode() ? ` · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å` : ""} · ${ionicPairTemperatureKelvin} K · ${ionicPairObservable.replaceAll("-", " ")}` : ""} · weight ${ionicPairWeight.toFixed(2)}`;
+        : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`}${finiteIonicPairMode() ? ` · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy === "contact-scaled" ? "pair-scaled" : "uniform"}` : ""} · ${ionicPairTemperatureKelvin} K · ${ionicPairObservable.replaceAll("-", " ")}` : ""} · weight ${ionicPairWeight.toFixed(2)}`;
     const availableIonStates = new Set([...suppliedFormalChargeBySpecies].map(([token, charge]) => {
       const element = bondValenceElementToken(token);
       return element ? `${element}|${charge}` : null;
@@ -34982,7 +35087,7 @@ function syncStageOptions() {
       ? " No complete supplied formal-charge channel exists, so ionic-pair geometry fails closed."
       : ionicPairMode === "none" ? " Incremental signed 1/r ionic-pair geometry is reported but contributes zero ranking weight."
         : finiteIonicPairMode()
-          ? ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} evaluates ΔU and F=−∇U on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`} at declared εᵣ=${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? `, A=${ionicPairBornAmplitudeElectronVolt} eV, and ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å` : ""}; ${ionicPairObservable === "force-cancellation" ? "pair-force Fᵣₘₛ dₙₙ/kBT" : ionicPairObservable === "combined" ? "equal bounded ΔU and force-cancellation coordinates" : "ΔU/(Nadded kBT)"} at ${ionicPairTemperatureKelvin} K supplies the rank. It uses no periodic images, Ewald sum, polarization, charge transfer, dispersion, many-body interaction, or electronic structure; ${bornMayerIonicPairMode() ? "the generic Born–Mayer parameters are not fitted species-pair coefficients, and " : "short-range repulsion is omitted, and "}the gradient is not a validated total mechanical force or relaxation.`
+          ? ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} evaluates ΔU and F=−∇U on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`} at declared εᵣ=${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? `, A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, and ${ionicPairBornPolicy === "contact-scaled" ? "a frozen observed-contact-scaled rho_ij matrix" : "one uniform pair reference"}` : ""}; ${ionicPairObservable === "force-cancellation" ? "pair-force Fᵣₘₛ dₙₙ/kBT" : ionicPairObservable === "combined" ? "equal bounded ΔU and force-cancellation coordinates" : "ΔU/(Nadded kBT)"} at ${ionicPairTemperatureKelvin} K supplies the rank. It uses no periodic images, Ewald sum, polarization, charge transfer, dispersion, many-body interaction, or electronic structure; ${bornMayerIonicPairMode() ? "the Born–Mayer matrix is a geometry-conditioned hypothesis rather than fitted energy/force coefficients, and " : "short-range repulsion is omitted, and "}the gradient is not a validated total mechanical force or relaxation.`
           : ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} term ranks the incremental signed formal-charge pair sum within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}; no dielectric, periodic images, Ewald sum, polarization, or electronic energy is inferred.`;
     const bondValenceUse = !formalChargeTarget?.available
       ? " No complete supplied oxidation-state channel exists, so bond-valence geometry fails closed."
@@ -38520,7 +38625,7 @@ function physicsTranslationRecords(leap = null) {
         : "supplied-label incremental 1/r ordering" : "diagnostic",
       encoding: formalChargeTarget?.available
         ? finiteIonicPairMode()
-          ? `${ionicPairLabel()}; ΔU = (14.3996454784255 eV Å / εᵣ) Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? ` + Σ ${ionicPairBornAmplitudeElectronVolt} eV exp(-rᵢⱼ/${ionicPairBornDecayAngstrom.toFixed(2)} Å)` : ""} and F=−∇ΔU on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`}; εᵣ=${ionicPairRelativePermittivity}, T=${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, w=${activeIonicPairWeight().toFixed(2)}`
+          ? `${ionicPairLabel()}; ΔU = (14.3996454784255 eV Å / εᵣ) Σqᵢqⱼ/rᵢⱼ${bornMayerIonicPairMode() ? ` + Σ Aᵢⱼ exp(-rᵢⱼ/ρᵢⱼ), reference A=${ionicPairBornAmplitudeElectronVolt} eV, ρ=${ionicPairBornDecayAngstrom.toFixed(2)} Å, policy=${ionicPairBornPolicy}` : ""} and F=−∇ΔU on emitted sites within ${ionicPairReach === "global" ? "the finite open crop" : `${ionicPairReach}dₙₙ`}; εᵣ=${ionicPairRelativePermittivity}, T=${ionicPairTemperatureKelvin} K, observable=${ionicPairObservable}, w=${activeIonicPairWeight().toFixed(2)}`
           : `${ionicPairLabel()}; signed qᵢqⱼ/(rᵢⱼ/dₙₙ) over pairs involving emitted sites within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}, w=${activeIonicPairWeight().toFixed(2)}`
         : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions), 4)}; ${ionicPairEvaluations.toLocaleString()} candidate evaluations and ${ionicPairDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No incremental ionic-pair candidate evaluated yet.",
@@ -40480,7 +40585,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-425",
+    generatedAt: new Date().toISOString(), buildId: "20260901-426",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -44363,7 +44468,7 @@ function renderIonicPairConvergence(snapshot) {
     stability.textContent = `${new Set(selected.samples.map((sample) => sample.rank).filter(Number.isFinite)).size <= 1 ? "rank stable where defined" : "rank reverses"} across the fixed reach ensemble · preview only`;
     ionicConvergenceDetail.append(heading, spread, scores, stability);
   }
-  ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive${finiteIonicPairMode() ? ` · ${audit.pairInteractionModel} · ${ionicPairObservable.replaceAll("-", " ")} · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å` : ""} · ${ionicPairTemperatureKelvin} K · finite open` : ""} · ${audit.candidateSetDigest}`;
+  ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive${finiteIonicPairMode() ? ` · ${audit.pairInteractionModel} · ${ionicPairObservable.replaceAll("-", " ")} · εᵣ ${ionicPairRelativePermittivity}${bornMayerIonicPairMode() ? ` · A ${ionicPairBornAmplitudeElectronVolt} eV · ρ ${ionicPairBornDecayAngstrom.toFixed(2)} Å · ${ionicPairBornPolicy}` : ""} · ${ionicPairTemperatureKelvin} K · finite open` : ""} · ${audit.candidateSetDigest}`;
 }
 
 function buildBondValencePreview(snapshot) {
@@ -45702,7 +45807,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-425" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-426" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
@@ -47089,6 +47194,12 @@ ionicPairBornDecaySelect.addEventListener("change", () => {
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
+ionicPairBornPolicySelect.addEventListener("change", () => {
+  ionicPairBornPolicy = Object.hasOwn(BORN_MAYER_PAIR_POLICIES, ionicPairBornPolicySelect.value)
+    ? ionicPairBornPolicySelect.value : "uniform";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
 ionicPairTemperatureSelect.addEventListener("change", () => {
   const value = Number(ionicPairTemperatureSelect.value);
   ionicPairTemperatureKelvin = [100, 300, 600, 900, 1200].includes(value) ? value : 600;
@@ -47805,7 +47916,8 @@ function applyLaunchParameters() {
   const requestedExperimentVersion = parameters.get("experimentVersion");
   if (requestedExperiment) {
     try {
-      if (![CUSTOM_EXPERIMENT_SCHEMA_VERSION, LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION]
+      if (![CUSTOM_EXPERIMENT_SCHEMA_VERSION, PREVIOUS_CUSTOM_EXPERIMENT_SCHEMA_VERSION,
+        OLDER_CUSTOM_EXPERIMENT_SCHEMA_VERSION, LEGACY_CUSTOM_EXPERIMENT_SCHEMA_VERSION]
         .map(String).includes(requestedExperimentVersion)) {
         throw new Error("unsupported experiment schema");
       }

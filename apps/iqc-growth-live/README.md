@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 426 · short-range repulsion becomes a visible species-pair matrix
+
+The Born–Mayer hypothesis no longer has to hide every chemistry behind one
+global decay length. A compact no-text-field selector now switches between the
+uniform control and an **observed-contact-scaled** matrix. For every unordered
+species pair in the supplied configuration, the latter uses the already-frozen
+additive contact envelope to scale `ρᵢⱼ`; `A` remains the declared reference.
+The complete matrix is preserved in the experiment receipt, while a compact
+interactive inspector shows pair identity, `Aᵢⱼ`, `ρᵢⱼ`, and the witnessed
+contact length. Arbitrary multicomponent systems produce `n(n+1)/2` records.
+
+This is geometry encoded into a pair hypothesis, not a fitted force field. The
+contact envelope is learned only from the supplied positions/species and a
+documented covalent-radius ridge prior; no candidate target, energy, force,
+oxidation-state inference, or material label enters the matrix. Unsupported
+pairs fall back visibly to the uniform reference. Exact analytic energy/force
+evaluation still uses immutable candidates and reports every pair parameter it
+actually consumed.
+
 ## Build 425 · Coulomb acquires an explicit short-range core
 
 The finite pair hypothesis can now add an opt-in Born–Mayer repulsion to the
