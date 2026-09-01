@@ -12,7 +12,8 @@ const benchmark = read("docs/projects/materials-recursive-gcts-benchmark.md");
 const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 
 for (const document of [html, compatibility]) {
-  for (const id of ["ionicPairDielectricSelect", "ionicPairTemperatureSelect"]) {
+  for (const id of ["ionicPairDielectricSelect", "ionicPairTemperatureSelect",
+    "ionicPairObservableSelect"]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
   assert.match(document, /value="coulomb">Finite Coulomb/);
@@ -24,7 +25,12 @@ for (const token of [
   "finitePointChargeReachProfile",
   "ionicPairRelativePermittivity",
   "ionicPairTemperatureKelvin",
+  "ionicPairObservable",
+  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 2",
+  "migrateCustomExperimentManifest",
+  "migratedFromSchemaVersion",
   "electrostaticEnergyEvaluated",
+  "electrostaticForceEvaluated",
   "finiteOpenBoundaryUsed",
   "validatedMaterialEnergy: false",
 ]) assert.ok(app.includes(token), token);
@@ -34,6 +40,12 @@ for (const token of [
   "14.3996454784255",
   "deltaEnergyElectronVolt",
   "reducedThermalEnergyPerAddedSite",
+  "addedForceVectorsElectronVoltPerAngstrom",
+  "rmsAddedForceElectronVoltPerAngstrom",
+  "netAddedForceMagnitudeElectronVoltPerAngstrom",
+  "electrostaticTorqueMagnitudeElectronVolt",
+  "forceCancellationScore",
+  "totalMechanicalForceInferred: false",
   "currentCurrentConstantOmitted: true",
   "periodicImagesUsed: false",
   "ewaldSummationUsed: false",
@@ -42,7 +54,10 @@ for (const token of [
 ]) assert.ok(moduleSource.includes(token), token);
 
 assert.match(readme, /Build 422 · finite point-charge electrostatics/);
+assert.match(readme, /Build 423 · electrostatic energy becomes force geometry/);
 assert.match(benchmark, /Finite formal-charge electrostatic boundary \(Build 422\)/);
+assert.match(benchmark, /Finite electrostatic force geometry \(Build 423\)/);
 assert.match(atlas, /"27", "Conditional finite electrostatics"/);
+assert.match(atlas, /"28", "Electrostatic force geometry"/);
 
 console.log("finite point-charge electrostatics portal contract passed");

@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+## Finite electrostatic force geometry (Build 423)
+
+The conditional point-charge layer now evaluates the analytic gradient of its
+own finite open-boundary ΔU on every emitted site. Each candidate carries
+per-site force vectors, RMS/max force, net emitted-cluster force, and centroidal
+torque in eV/Å or eV. A scientist can keep the energy rank, choose the bounded
+force-cancellation coordinate `(1-y)/(1+y)` with
+`y=F_rms d_nn/(k_B T)`, or take the equal mean of both coordinates. The
+candidate set, proper-SE(3) poses, hard geometry, and public boundary are
+identical in every arm.
+
+The audit deliberately calls this *electrostatic force*, never total force.
+The current solid is held fixed; no response force, short-range repulsion,
+dispersion, polarization, charge transfer, electronic structure, or periodic
+electrostatic sum is added. The vectors are not integrated and therefore do not
+constitute relaxation, molecular dynamics, a transition path, or physical time.
+
 ## Finite formal-charge electrostatic boundary (Build 422)
 
 The growth frontier now supports an explicit physical interpretation of the

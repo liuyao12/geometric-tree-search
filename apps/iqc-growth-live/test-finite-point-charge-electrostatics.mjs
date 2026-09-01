@@ -17,8 +17,51 @@ assert.ok(Math.abs(pair.deltaEnergyElectronVolt
 assert.equal(pair.attractiveEnergyElectronVolt, -pair.deltaEnergyElectronVolt);
 assert.equal(pair.repulsiveEnergyElectronVolt, 0);
 assert.ok(pair.score > 0 && pair.score < 1);
+assert.ok(Math.abs(pair.addedForceVectorsElectronVoltPerAngstrom[0][0]
+  + COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / 2.82 ** 2) < 1e-12);
+assert.deepEqual(pair.addedForceVectorsElectronVoltPerAngstrom[0].slice(1), [0, 0]);
+assert.equal(pair.rmsAddedForceElectronVoltPerAngstrom,
+  pair.maximumAddedForceElectronVoltPerAngstrom);
+assert.equal(pair.netAddedForceMagnitudeElectronVoltPerAngstrom,
+  pair.maximumAddedForceElectronVoltPerAngstrom);
+assert.equal(pair.electrostaticTorqueMagnitudeElectronVolt, 0);
+assert.equal(pair.electrostaticForceEvaluated, true);
+assert.equal(pair.totalMechanicalForceInferred, false);
 assert.equal(pair.thermalEnergyElectronVolt,
   BOLTZMANN_ELECTRON_VOLT_PER_KELVIN * 300);
+
+const forceRanked = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }],
+  [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    forceReferenceLengthAngstrom: 2.82, rankingObservable: "force-cancellation" });
+assert.equal(forceRanked.score, forceRanked.forceCancellationScore);
+assert.notEqual(forceRanked.score, forceRanked.energyScore);
+const combined = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }],
+  [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    forceReferenceLengthAngstrom: 2.82, rankingObservable: "combined" });
+assert.equal(combined.score, (combined.energyScore + combined.forceCancellationScore) / 2);
+
+const finiteDifferenceStep = 1e-5;
+const displacedEnergy = (x) => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [x, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300 }).deltaEnergyElectronVolt;
+const finiteDifferenceForce = -(displacedEnergy(2.82 + finiteDifferenceStep)
+  - displacedEnergy(2.82 - finiteDifferenceStep)) / (2 * finiteDifferenceStep);
+const analyticForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300 })
+  .addedForceVectorsElectronVoltPerAngstrom[0][0];
+assert.ok(Math.abs(finiteDifferenceForce - analyticForce) < 1e-9);
+
+const transformed = incrementalFinitePointChargeElectrostatics(
+  [{ position: [4, -2, 7], charge: 1 }], [{ position: [4, .82, 7], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300 });
+assert.ok(Math.abs(transformed.deltaEnergyElectronVolt - pair.deltaEnergyElectronVolt) < 1e-12);
+assert.ok(Math.abs(transformed.addedForceVectorsElectronVoltPerAngstrom[0][1]
+  - pair.addedForceVectorsElectronVoltPerAngstrom[0][0]) < 1e-12);
 
 const screened = incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }],
@@ -38,6 +81,23 @@ assert.equal(addedPair.periodicImagesUsed, false);
 assert.equal(addedPair.electrostaticEnergyEvaluated, true);
 assert.equal(addedPair.targetUsed, false);
 
+const symmetric = incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: 1 }],
+  [{ position: [0, 0, 0], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    forceReferenceLengthAngstrom: 1, rankingObservable: "force-cancellation" });
+assert.ok(symmetric.rmsAddedForceElectronVoltPerAngstrom < 1e-12);
+assert.ok(Math.abs(symmetric.forceCancellationScore - 1) < 1e-12);
+
+const internalPair = incrementalFinitePointChargeElectrostatics(
+  [{ position: [100, 0, 0], charge: 0 }],
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: 1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300, reachAngstrom: 5 });
+assert.equal(internalPair.pairCount, 1);
+assert.ok(internalPair.addedForceVectorsElectronVoltPerAngstrom[0][0] < 0);
+assert.ok(internalPair.addedForceVectorsElectronVoltPerAngstrom[1][0] > 0);
+assert.ok(internalPair.netAddedForceMagnitudeElectronVoltPerAngstrom < 1e-12);
+
 const profile = finitePointChargeReachProfile(
   [{ position: [0, 0, 0], charge: 1 }],
   [{ position: [3, 0, 0], charge: -1 }],
@@ -54,5 +114,8 @@ assert.throws(() => incrementalFinitePointChargeElectrostatics(
 assert.throws(() => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [1, 0, 0], charge: -1 }],
   { relativePermittivity: .5 }), /relativePermittivity/);
+assert.throws(() => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [1, 0, 0], charge: -1 }],
+  { rankingObservable: "force-field" }), /rankingObservable/);
 
 console.log("finite point-charge electrostatics tests passed");

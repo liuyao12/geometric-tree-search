@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-422";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-422";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-423";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-423";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-422";
+  from "./hierarchy-physics-transport.mjs?v=20260901-423";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-422";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-423";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-422";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-423";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-422";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-423";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-422", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-423", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -306,9 +306,9 @@ const PHYSICS_MAP = {
     physical: "Element identity, optionally supplied formal oxidation state, bond-length neighborhoods, coordination, bond angles, molecular membership, bulk composition, and recurring local polyhedra already present in the supplied configuration.",
     geometric: "Complete colored supports are augmented by species-pair exclusions, ordered coordination caps, separated three-body angle bands, an arbitrary-component composition reservoir, and—only when completely supplied—a formal-charge reservoir. Supports may be irregular, centre-free, and overlapping.",
     growth: "Hard geometry rejects collisions, oversaturation, and forbidden observed-angle gaps. Optional soft strain, composition, and formal-charge bookkeeping rank the same frozen actions without changing their coordinates.",
-    boundary: "Most soft scores remain geometric and are not energies or chemical potentials. Formal oxidation states may be preserved as input labels; an opt-in finite point-charge mode evaluates a conditional open-crop Coulomb ΔU only under a declared uniform εr and Kelvin score scale. No charge density, inferred oxidation state, polarization, charge transfer, bond order, electronic free energy, force, or reaction barrier is solved.",
+    boundary: "Most soft scores remain geometric and are not energies or chemical potentials. Formal oxidation states may be preserved as input labels; an opt-in finite point-charge mode evaluates a conditional open-crop Coulomb ΔU and its exact electrostatic gradient under a declared uniform εr and Kelvin score scale. No charge density, inferred oxidation state, polarization, charge transfer, bond order, electronic free energy, total mechanical force, relaxation, or reaction barrier is solved.",
     systems: [
-      ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir · optional finite Coulomb ΔU", "Bulk Ewald energy, polarization, and phonons omitted"],
+      ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir · optional finite Coulomb ΔU and electrostatic-force cancellation", "Bulk Ewald energy, total mechanical force, relaxation, polarization, and phonons omitted"],
       ["H₂O ice", "Bent H₂O + tetrahedral O network", "O→H≤2 · H→O≤1 · bent/tetrahedral bands · H₂O reservoir", "Proton energetics unresolved"],
       ["Ideal IQC", "Recurring decorated local environments", "Irregular supports + colored many-body envelopes + finite ports", "Model interaction omitted"],
       ["Cd–Yb", "Published decorated atomic packing", "Positions/species-only envelopes and Cd:Yb reservoir", "No cut/project labels or metallic potential"],
@@ -430,6 +430,7 @@ const TIMELINE = [
   ["25", "Periodic crystal coherence", "For fully periodic 3D crystals, experiment-facing XRD can now sum the supplied cell on reciprocal-lattice vectors and broaden its Bragg reflections with an explicit 8, 20, or 50 nm coherence domain. The finite grown-section curve remains a separate selectable view; neither calculation feeds clustering, marking, or growth.", "proved"],
   ["26", "Occupancy-aware X-ray amplitudes", "Mixed and partial CIF sites now contribute coherent average amplitudes Σα oαfα(q), including vacancy, in both finite and periodic calculated XRD. The receipt exposes occupancy coverage and withholds occupational diffuse scattering or a fictitious instantaneous microstate; occupancy-valued geometry is never relabeled as a unique atomistic trajectory.", "proved"],
   ["27", "Conditional finite electrostatics", "Supplied formal oxidation states can now enter an opt-in finite open-boundary Coulomb ΔU in eV under a declared uniform εr and Kelvin temperature. The same frozen candidates are ranked without geometry mutation; periodic images, Ewald sums, polarization, charge transfer, short-range repulsion, and electronic structure remain explicit omissions.", "proved"],
+  ["28", "Electrostatic force geometry", "The finite point-charge hypothesis now exposes its exact analytic gradient on emitted sites: per-site vectors, RMS/max force, net cluster traction, and centroidal torque. Energy, force-cancellation, or combined observables reorder the same frozen candidates; no total force, relaxation, dynamics, or physical time is inferred.", "proved"],
 ];
 
 const CLAIMS = [

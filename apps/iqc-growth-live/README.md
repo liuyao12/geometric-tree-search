@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 423 · electrostatic energy becomes force geometry
+
+The finite point-charge hypothesis now exposes its exact analytic gradient on
+every emitted site instead of stopping at a scalar ΔU. For the same immutable
+candidate and cutoff, the lab reports the full electrostatic force vector per
+new site, RMS and maximum force in eV/Å, net force on the emitted cluster, and
+torque about its centroid. Added–added forces are accumulated as exact
+equal-and-opposite pairs; current–current interactions remain the same omitted
+candidate constant as in Build 422.
+
+A new compact observable selector lets a scientist rank the unchanged frontier
+by bounded ΔU, electrostatic force cancellation, or their equal combination.
+The force coordinate is `(1-y)/(1+y)`, with
+`y=F_rms d_nn/(k_B T)`. The 2/4/8/global cutoff portrait now shows ΔU, F_rms,
+net force, torque, rank reversals, εr, and temperature together, so a low-energy
+placement that remains electrostatically unbalanced is visibly distinct from a
+locally cancelling one.
+
+This is the gradient of the declared point-charge model—not total mechanical
+force. Short-range repulsion, dispersion, polarization, charge transfer,
+electronic structure, periodic electrostatics, and the response of already
+present atoms are not solved. No force is integrated, no atom is moved, and no
+relaxation or physical time is inferred. The observable only reorders the same
+hard-certified geometric actions.
+
 ## Build 422 · finite point-charge electrostatics becomes an explicit hypothesis
 
 The formal-charge branch can now move beyond a scale-free `qᵢqⱼ/rᵢⱼ`
