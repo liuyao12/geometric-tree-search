@@ -221,6 +221,7 @@
       let hasStartedTiling = false;
       let trialGhost = null;
       let statusText = '';
+      let forcedMoveStreak = 0;
       let showMarkings = false;
       let windowDragging = false;
       let windowResizing = false;
@@ -1796,6 +1797,7 @@
         highestPausedCorona = 0;
         trialGhost = null;
         statusText = '';
+        forcedMoveStreak = 0;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
@@ -1813,6 +1815,7 @@
       function stopTiling() {
         if (timer) window.clearInterval(timer);
         timer = null;
+        forcedMoveStreak = 0;
         startButton.textContent = hasStartedTiling ? 'Continue tiling' : 'Start tiling';
       }
 
@@ -2035,6 +2038,7 @@
           || (useMarking && markingRank !== liveSearchMarkingRank)
           || usingSublattice() !== liveSearchUsesSublattice;
         if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
+          forcedMoveStreak = 0;
           liveSearchIterator?.cancel?.();
           const retained = !reset && preservePatchOnNextStart ? visiblePlacements().slice() : null;
           if (retained?.length) {
@@ -2119,13 +2123,18 @@
           }
           if (event.type === 'trial') {
             trialGhost = event;
-            statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(event.frontier)}`;
+            if (event.branchCount > 1) {
+              forcedMoveStreak = 0;
+              statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(event.frontier)}`;
+            }
           } else if (event.type === 'fail') {
+            forcedMoveStreak = 0;
             trialGhost = null;
             if (event.placements) playbackPlacements = event.placements;
             shownTiles = playbackPlacements?.length || shownTiles;
             statusText = `dead end: no tile can complete t=${event.frontierValue}/12`;
           } else if (event.type === 'backtrack') {
+            forcedMoveStreak = 0;
             trialGhost = event.removed ? { placement: event.removed, valid: false } : null;
             if (event.placements) playbackPlacements = event.placements;
             shownTiles = playbackPlacements?.length || shownTiles;
@@ -2138,7 +2147,13 @@
             }
             trialGhost = null;
             const frontier = event.frontier || event.placement?.frontier;
-            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branching`} at ${formatFrontierPoint(frontier)}`;
+            if (event.forced) {
+              forcedMoveStreak += 1;
+              statusText = `${forcedMoveStreak} forced move${forcedMoveStreak === 1 ? '' : 's'}`;
+            } else {
+              forcedMoveStreak = 0;
+              statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(frontier)}`;
+            }
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
@@ -2228,6 +2243,7 @@
         highestPausedCorona = 0;
         trialGhost = null;
         statusText = '';
+        forcedMoveStreak = 0;
         hasStartedTiling = false;
         preservePatchOnNextStart = false;
         startButton.textContent = 'Start tiling';
