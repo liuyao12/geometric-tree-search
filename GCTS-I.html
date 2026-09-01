@@ -1428,14 +1428,19 @@
         ctx.save();
         ctx.lineCap = 'round';
         placement.markSegments.forEach(segment => {
-          const a = projectA2(segment.displayFromPoint || segment.fromPoint);
-          const b = projectA2(segment.displayToPoint || segment.toPoint);
-          const start = worldToScreen(a.x, a.y);
-          const end = worldToScreen(b.x, b.y);
+          const displayFrom = projectA2(segment.displayFromPoint || segment.fromPoint);
+          const from = projectA2(segment.fromPoint);
+          const to = projectA2(segment.toPoint);
+          const displayTo = projectA2(segment.displayToPoint || segment.toPoint);
           const color = markingRank === 1
             ? '#707875'
             : segment.value > 0 ? markValueColors.positive : markValueColors.negative;
-          drawLine(start, end, color, Math.max(2.2, 4.1 * scale));
+          const width = Math.max(0.35, 4.1 * scale);
+          ctx.globalAlpha = 0.5;
+          drawLine(worldToScreen(displayFrom.x, displayFrom.y), worldToScreen(from.x, from.y), color, width);
+          drawLine(worldToScreen(to.x, to.y), worldToScreen(displayTo.x, displayTo.y), color, width);
+          ctx.globalAlpha = 1;
+          drawLine(worldToScreen(from.x, from.y), worldToScreen(to.x, to.y), color, width);
         });
         ctx.restore();
       }
@@ -1449,16 +1454,17 @@
         });
         if (!exterior.size) return;
         ctx.save();
+        ctx.globalAlpha = 0.5;
         exterior.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
           ctx.beginPath();
-          ctx.arc(screen.x, screen.y, Math.max(2.2, 3.2 * scale), 0, Math.PI * 2);
+          ctx.arc(screen.x, screen.y, 3.2 * scale, 0, Math.PI * 2);
           ctx.fillStyle = markingRank === 1
             ? '#707875'
             : entry.value > 0 ? markValueColors.positive : markValueColors.negative;
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.92)';
-          ctx.lineWidth = Math.max(0.65, 1.05 * scale);
+          ctx.lineWidth = 1.05 * scale;
           ctx.fill();
           ctx.stroke();
         });
@@ -1518,7 +1524,7 @@
           const screen = worldToScreen(point.x, point.y);
           const isHovered = hoveredPoint && key3(hoveredPoint.point) === key3(entry.point);
           const isPartial = entry.value > 0 && entry.value < 12;
-          const radius = isHovered ? 6 : isPartial ? clamp(4.5 * scale, 1.2, 4.5) : clamp(2.1 * scale, 0.7, 2.1);
+          const radius = (isHovered ? 6 : isPartial ? 4.5 : 2.1) * scale;
           ctx.beginPath();
           ctx.arc(screen.x, screen.y, radius, 0, Math.PI * 2);
           ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : isPartial ? 'rgba(24, 33, 31, 0.68)' : 'rgba(24, 33, 31, 0.34)';
