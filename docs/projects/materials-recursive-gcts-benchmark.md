@@ -1,5 +1,27 @@
 # Recursive GCTS benchmark for material growth
 
+## Periodic powder-coherence boundary (Build 420)
+
+The experiment-facing X-ray comparison now offers two explicitly different
+calculated curves. The finite mode remains the direct finite-section Debye sum
+used to inspect an incomplete grown configuration. When a fully periodic 3D
+crystal cell is actually available, the periodic mode enumerates its
+reciprocal-lattice vectors, computes `|Σ_j f_j(q) exp(i q·r_j)|²`, retains
+systematic absences, and convolves each retained reflection with a Gaussian
+whose reciprocal-space FWHM is `2π/L` for a declared 8, 20, or 50 nm coherent
+domain. Form-factor validity is enforced at every enumerated reflection.
+
+Auto uses the 20 nm periodic model only for eligible crystalline X-ray cases.
+Amorphous periodic boxes are not treated as unit cells; 2D, nonperiodic,
+missing-cell, and non-X-ray cases fall back to the finite observation. The
+selected coherence model is part of the frozen profile request and receipt,
+which also records the curve digest, cell digest without embedded vectors,
+reflection/absence counts, and domain broadening. This is a post-growth
+measurement comparison only: the cell and experimental profile never alter
+clustering, marking, candidate admission, branch ranking, or execution. It is
+not a Rietveld refinement, texture correction, ionic/anomalous scattering
+model, or instrument-response inference.
+
 ## q-dependent X-ray calculation boundary (Build 419)
 
 The experiment-facing powder path now has its own physical scattering model,

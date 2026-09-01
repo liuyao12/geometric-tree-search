@@ -83,6 +83,27 @@ function powderKernel(value, dimension) {
   return dimension === 2 ? besselJ0(value) : Math.sin(value) / value;
 }
 
+function vector3(value, label) {
+  if (!Array.isArray(value) || value.length !== 3 || value.some(component => !Number.isFinite(component))) {
+    throw new Error(`${label} must be a finite Cartesian vector`);
+  }
+  return value.map(Number);
+}
+
+function dot(first, second) {
+  return first[0] * second[0] + first[1] * second[1] + first[2] * second[2];
+}
+
+function cross(first, second) {
+  return [first[1] * second[2] - first[2] * second[1],
+    first[2] * second[0] - first[0] * second[2],
+    first[0] * second[1] - first[1] * second[0]];
+}
+
+function norm(value) {
+  return Math.sqrt(dot(value, value));
+}
+
 export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighborAngstrom,
   dimension = 3, qMinTimesNearestNeighbor = 2, qMaxTimesNearestNeighbor = 20,
   bins = 96, meanSquareDisplacements = null, includeIsotropicDisplacement = false } = {}) {
@@ -139,5 +160,131 @@ export function finiteDebyeXrayPowderIntensity({ species, pairs, nearestNeighbor
     coherentDisplacementAttenuation: includeIsotropicDisplacement,
     diffuseRedistributionIncluded: false,
     normalization: "finite Debye intensity divided by sum of squared neutral-atom forward amplitudes",
+  };
+}
+
+export function periodicBraggXrayPowderIntensity({ species, positionsAngstrom,
+  cellVectorsAngstrom, nearestNeighborAngstrom, qMinTimesNearestNeighbor = 2,
+  qMaxTimesNearestNeighbor = 20, bins = 512, coherenceLengthAngstrom = 200,
+  meanSquareDisplacementsNormalized = null, includeIsotropicDisplacement = false } = {}) {
+  if (!Array.isArray(species) || species.length === 0) throw new Error("periodic X-ray intensity requires species");
+  if (!Array.isArray(positionsAngstrom) || positionsAngstrom.length !== species.length) {
+    throw new Error("periodic X-ray intensity requires one Cartesian position per site");
+  }
+  const positions = positionsAngstrom.map((value, index) => vector3(value, `position ${index}`));
+  if (!Array.isArray(cellVectorsAngstrom) || cellVectorsAngstrom.length !== 3) {
+    throw new Error("periodic X-ray intensity requires three cell vectors");
+  }
+  const cell = cellVectorsAngstrom.map((value, index) => vector3(value, `cell vector ${index}`));
+  const volume = dot(cell[0], cross(cell[1], cell[2]));
+  if (!(Math.abs(volume) > 1e-8)) throw new Error("periodic X-ray cell must have nonzero volume");
+  if (!(Number.isFinite(nearestNeighborAngstrom) && nearestNeighborAngstrom > 0)) {
+    throw new RangeError("periodic X-ray intensity requires a positive nearest-neighbor scale");
+  }
+  if (!(Number.isFinite(coherenceLengthAngstrom) && coherenceLengthAngstrom > 0)) {
+    throw new RangeError("periodic X-ray coherence length must be positive");
+  }
+  if (!Number.isInteger(bins) || bins < 32) throw new RangeError("periodic X-ray intensity requires at least 32 q bins");
+  const supports = species.map(neutralXrayFormFactorSupport);
+  const unsupported = [...new Set(supports.flatMap(support => support.unsupported))].sort();
+  if (unsupported.length) throw new Error(`neutral-atom X-ray form factors unavailable for ${unsupported.join(", ")}`);
+  if (includeIsotropicDisplacement && (!Array.isArray(meanSquareDisplacementsNormalized)
+      || meanSquareDisplacementsNormalized.length !== species.length
+      || meanSquareDisplacementsNormalized.some(value => value != null
+        && !(Number.isFinite(value) && value >= 0)))) {
+    throw new Error("periodic reported-displacement intensity requires nonnegative supplied Ueq values");
+  }
+  const displacementAngstrom2 = includeIsotropicDisplacement
+    ? meanSquareDisplacementsNormalized.map(value => Number.isFinite(value)
+      ? value * nearestNeighborAngstrom * nearestNeighborAngstrom : 0) : null;
+  const reciprocal = [cross(cell[1], cell[2]), cross(cell[2], cell[0]), cross(cell[0], cell[1])]
+    .map(vector => vector.map(component => component * (2 * Math.PI / volume)));
+  const qMinimumPhysical = Number(qMinTimesNearestNeighbor) / nearestNeighborAngstrom;
+  const qMaximumByValidity = FOUR_PI * 2 * (1 - 1e-9);
+  const qMaximumPhysical = Math.min(Number(qMaxTimesNearestNeighbor) / nearestNeighborAngstrom,
+    qMaximumByValidity);
+  if (!(qMaximumPhysical > qMinimumPhysical)) throw new RangeError("invalid periodic X-ray q grid");
+  const domainFwhmQ = 2 * Math.PI / coherenceLengthAngstrom;
+  const domainSigmaQ = domainFwhmQ / (2 * Math.sqrt(2 * Math.log(2)));
+  const margin = 4 * domainSigmaQ;
+  const maxima = cell.map(vector => Math.ceil((qMaximumPhysical + margin) * norm(vector) / (2 * Math.PI)) + 1);
+  const qPhysicalInverseAngstrom = Array.from({ length: bins }, (_, index) => qMinimumPhysical
+    + index / (bins - 1) * (qMaximumPhysical - qMinimumPhysical));
+  const values = new Array(bins).fill(0);
+  const forwardSum = species.reduce((sum, token) => sum + neutralXrayFormFactor(token, 0), 0);
+  let reflectionCount = 0;
+  let systematicAbsenceCount = 0;
+  let maximumRawIntensity = 0;
+  for (let h = -maxima[0]; h <= maxima[0]; h++) {
+    for (let k = -maxima[1]; k <= maxima[1]; k++) {
+      for (let l = -maxima[2]; l <= maxima[2]; l++) {
+        if (h === 0 && k === 0 && l === 0) continue;
+        const reciprocalVector = [0, 1, 2].map(index => h * reciprocal[0][index]
+          + k * reciprocal[1][index] + l * reciprocal[2][index]);
+        const qReflection = norm(reciprocalVector);
+        if (qReflection < qMinimumPhysical - margin || qReflection > qMaximumPhysical + margin
+            || qReflection >= qMaximumByValidity) continue;
+        const factors = new Map([...new Set(species)].map(token =>
+          [token, neutralXrayFormFactor(token, qReflection)]));
+        let real = 0;
+        let imaginary = 0;
+        positions.forEach((position, index) => {
+          const attenuation = includeIsotropicDisplacement
+            ? Math.exp(-.5 * qReflection * qReflection * displacementAngstrom2[index]) : 1;
+          const amplitude = factors.get(species[index]) * attenuation;
+          const phase = dot(reciprocalVector, position);
+          real += amplitude * Math.cos(phase);
+          imaginary += amplitude * Math.sin(phase);
+        });
+        const intensity = real * real + imaginary * imaginary;
+        const relativeIntensity = intensity / (forwardSum * forwardSum);
+        if (relativeIntensity < 1e-12) {
+          systematicAbsenceCount++;
+          continue;
+        }
+        reflectionCount++;
+        maximumRawIntensity = Math.max(maximumRawIntensity, relativeIntensity);
+        const firstBin = Math.max(0, Math.floor((qReflection - 4 * domainSigmaQ - qMinimumPhysical)
+          / (qMaximumPhysical - qMinimumPhysical) * (bins - 1)));
+        const lastBin = Math.min(bins - 1, Math.ceil((qReflection + 4 * domainSigmaQ - qMinimumPhysical)
+          / (qMaximumPhysical - qMinimumPhysical) * (bins - 1)));
+        for (let index = firstBin; index <= lastBin; index++) {
+          const delta = (qPhysicalInverseAngstrom[index] - qReflection) / domainSigmaQ;
+          values[index] += relativeIntensity * Math.exp(-.5 * delta * delta);
+        }
+      }
+    }
+  }
+  const maximumSampledIntensity = Math.max(...values);
+  if (!(maximumSampledIntensity > 0) || reflectionCount === 0) {
+    throw new Error("periodic X-ray cell produced no reflections in the requested q range");
+  }
+  const normalizedValues = values.map(value => value / maximumSampledIntensity);
+  return {
+    q: Object.freeze(qPhysicalInverseAngstrom.map(value => value * nearestNeighborAngstrom)),
+    values: Object.freeze(normalizedValues),
+    qPhysicalInverseAngstrom: Object.freeze(qPhysicalInverseAngstrom),
+    dimension: 3,
+    qMin: qMinimumPhysical * nearestNeighborAngstrom,
+    qMax: qMaximumPhysical * nearestNeighborAngstrom,
+    bins,
+    reciprocalCellVectorsInverseAngstrom: Object.freeze(reciprocal.map(Object.freeze)),
+    hklBounds: Object.freeze(maxima),
+    reflectionCount,
+    systematicAbsenceCount,
+    maximumRawIntensity,
+    maximumSampledIntensity,
+    coherenceLengthAngstrom,
+    domainBroadeningFwhmQInverseAngstrom: domainFwhmQ,
+    domainBroadeningModel: "Gaussian reciprocal-domain envelope with FWHM 2pi/L",
+    formFactorModel: XRAY_FORM_FACTOR_PROVENANCE.model,
+    formFactorSource: XRAY_FORM_FACTOR_PROVENANCE.implementationSource,
+    qDependentFormFactorsUsed: true,
+    periodicTranslationalCoherenceUsed: true,
+    anomalousDispersionIncluded: false,
+    ionicFormFactorsIncluded: false,
+    coherentDisplacementAttenuation: includeIsotropicDisplacement,
+    diffuseRedistributionIncluded: false,
+    normalization: "sampled periodic powder intensity divided by its maximum",
   };
 }

@@ -13,9 +13,9 @@ for (const document of [html, alias]) {
   assert.match(document, /temperatureProgramPlot/);
   assert.match(document, /temperatureProgramInspect/);
   assert.match(document, /Arrhenius mechanism map/);
-  assert.match(document, /app\.js\?v=20260901-419/);
+  assert.match(document, /app\.js\?v=20260901-420/);
 }
-assert.match(app, /temperature-programmed-kinetics\.mjs\?v=20260901-419/);
+assert.match(app, /temperature-programmed-kinetics\.mjs\?v=20260901-420/);
 assert.match(app, /temperatureProgrammedKinetics/);
 assert.match(app, /unauthorizedTemperatureExtrapolationPerformed: false/);
 assert.match(contract, /bounded-constant-htst/);

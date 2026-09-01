@@ -14,7 +14,15 @@ const request = buildExperimentalScatteringRequest({
 });
 assert.equal(request.analysisRole, "post-growth validation only");
 assert.equal(request.mayAffectGrowth, false);
+assert.deepEqual(request.modelCoherence, { kind: "finite-section", coherenceLengthAngstrom: null });
 assert.ok(request.acceptedCifDataNames.includes("_pd_meas.intensity_total"));
+const periodicRequest = buildExperimentalScatteringRequest({
+  structureSha256: digest, modelChannel: { kind: "xray-neutral-f0" },
+  modelCoherence: { kind: "periodic-cell", coherenceLengthAngstrom: 200 },
+});
+assert.deepEqual(periodicRequest.modelCoherence, { kind: "periodic-cell", coherenceLengthAngstrom: 200 });
+assert.throws(() => buildExperimentalScatteringRequest({ structureSha256: digest,
+  modelCoherence: { kind: "periodic-cell", coherenceLengthAngstrom: 0 } }), /positive/);
 
 const qDimensionless = Array.from({ length: 64 }, (_, index) => .5 + index * .24);
 const values = qDimensionless.map(q => 1 + 2.4 * Math.exp(-(((q - 5.1) / .42) ** 2))

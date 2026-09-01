@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 420 · finite growth versus periodic crystal coherence
+
+The experimental powder workspace now separates two physically different
+calculated-intensity questions. **Finite grown section** keeps the direct-pair
+Debye curve of the atoms actually present, so surfaces, incomplete growth, and
+finite-window diffuse structure remain visible. **Periodic cell** instead uses
+the supplied fully periodic three-dimensional cell, enumerates reciprocal-
+lattice vectors, evaluates the colored structure factor with the same
+q-dependent neutral-atom `f0(q)`, and broadens the resulting Bragg reflections
+with an explicit 8, 20, or 50 nm coherent-domain model. Auto selects a 20 nm
+domain only for an eligible periodic 3D crystal; amorphous boxes, 2D materials,
+missing cells, and non-X-ray channels fail back to the finite section.
+
+The coherence choice is frozen into the downloadable experimental request and
+shown beside Rwp, reduced χ², and correlation. Receipts hash the calculated
+curve and, for periodic comparisons, the cell; they record reflection and
+systematic-absence counts, domain width, cell provenance, and the fact that no
+cell coordinates are embedded. The periodic cell is used only after growth for
+the comparison—it is not supplied to cluster discovery, GCTS marking, candidate
+ranking, or the tree search. Gaussian `2π/L` broadening is a declared domain
+approximation, not an instrument model or a Rietveld refinement.
+
 ## Build 419 · physical q-dependent X-ray amplitudes
 
 The public powder-profile bridge no longer compares measured XRD against a

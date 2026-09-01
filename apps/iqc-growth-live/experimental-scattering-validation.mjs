@@ -26,6 +26,16 @@ function channelKey(channel) {
   return `${channel.kind}:${channel.species || "all"}`;
 }
 
+function canonicalCoherence(coherence = {}) {
+  const kind = String(coherence.kind || "finite-section");
+  if (!["finite-section", "periodic-cell"].includes(kind)) {
+    throw new RangeError("unsupported calculated-intensity coherence model");
+  }
+  const coherenceLengthAngstrom = kind === "periodic-cell"
+    ? positive(coherence.coherenceLengthAngstrom, "coherence length") : null;
+  return Object.freeze({ kind, coherenceLengthAngstrom });
+}
+
 function xToQ(value, axis, wavelengthAngstrom) {
   if (axis === "q-inverse-angstrom") return positive(value, "q");
   if (axis === "d-angstrom") return TWO_PI / positive(value, "d spacing");
@@ -44,6 +54,7 @@ export function buildExperimentalScatteringRequest(input = {}) {
   const probe = String(input.probe || "x-ray");
   if (!["x-ray", "neutron", "electron"].includes(probe)) throw new RangeError("unsupported probe");
   const modelChannel = canonicalChannel(input.modelChannel);
+  const modelCoherence = canonicalCoherence(input.modelCoherence);
   const qMinimum = positive(input.qMinimumInverseAngstrom ?? .25, "minimum q");
   const qMaximum = positive(input.qMaximumInverseAngstrom ?? 18, "maximum q");
   if (!(qMaximum > qMinimum)) throw new RangeError("maximum q must exceed minimum q");
@@ -55,6 +66,7 @@ export function buildExperimentalScatteringRequest(input = {}) {
     species: Object.freeze([...(input.species || [])].map(String).sort()),
     probe,
     modelChannel,
+    modelCoherence,
     requestedAxes: Object.freeze(["q-inverse-angstrom", "two-theta-degree", "d-angstrom"]),
     qRangeInverseAngstrom: Object.freeze([qMinimum, qMaximum]),
     requiredPointFields: Object.freeze(["abscissa", "intensity"]),
