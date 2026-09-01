@@ -223,6 +223,8 @@
       let trialGhost = null;
       let statusText = '';
       let forcedMoveStreak = 0;
+      let elapsedSearchMs = 0;
+      let searchTimerStartedAt = null;
       let showMarkings = false;
       let windowDragging = false;
       let windowResizing = false;
@@ -1816,8 +1818,32 @@
       function stopTiling() {
         if (timer) window.clearInterval(timer);
         timer = null;
+        pauseSearchTimer();
         forcedMoveStreak = 0;
         startButton.textContent = hasStartedTiling ? 'Continue tiling' : 'Start tiling';
+      }
+
+      function currentSearchElapsedMs() {
+        return elapsedSearchMs + (searchTimerStartedAt === null ? 0 : performance.now() - searchTimerStartedAt);
+      }
+
+      function resumeSearchTimer() {
+        if (searchTimerStartedAt === null) searchTimerStartedAt = performance.now();
+      }
+
+      function pauseSearchTimer() {
+        if (searchTimerStartedAt === null) return;
+        elapsedSearchMs += performance.now() - searchTimerStartedAt;
+        searchTimerStartedAt = null;
+      }
+
+      function resetSearchTimer() {
+        elapsedSearchMs = 0;
+        searchTimerStartedAt = null;
+      }
+
+      function formattedSearchSeconds() {
+        return (currentSearchElapsedMs() / 1000).toFixed(1);
       }
 
       const sharedTurtleOrientations = tileOrientations('turtle', A2_TILE_LOOPS.turtle);
@@ -2049,6 +2075,7 @@
             playbackPlacements = retained;
             liveSearchIterator = createSharedLiveTilingSearch(useMarking, retained);
           } else {
+            resetSearchTimer();
             highestPausedCorona = 0;
             shownTiles = 1;
             const seed = makeSeedPlacement();
@@ -2074,6 +2101,7 @@
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
+        resumeSearchTimer();
         timer = window.setInterval(async () => {
           if (playbackTickBusy) return;
           playbackTickBusy = true;
@@ -2184,7 +2212,7 @@
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
-              statusText = `paused at complete corona ${frontierGeneration}`;
+              statusText = `coronas ${frontierGeneration}, after ${formattedSearchSeconds()} seconds`;
               stopTiling();
             }
           }
@@ -2271,6 +2299,7 @@
         trialGhost = null;
         statusText = '';
         forcedMoveStreak = 0;
+        resetSearchTimer();
         hasStartedTiling = false;
         preservePatchOnNextStart = false;
         startButton.textContent = 'Start tiling';
