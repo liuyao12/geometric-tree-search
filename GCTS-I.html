@@ -1711,13 +1711,6 @@
         const stage = demoStages[stageName];
         if (!stage || stageName === activeDemoStage) return;
         activeDemoStage = stageName;
-        if (hasStartedTiling && liveSearchIterator) {
-          stageChips.forEach(chip => {
-            chip.setAttribute('aria-current', String(stageName !== 'intro' && chip.dataset.stageChip === stageName));
-          });
-          updateTextWrap();
-          return;
-        }
         stopTiling();
         liveSearchIterator?.cancel?.();
         if (stageName === 'intro') {
