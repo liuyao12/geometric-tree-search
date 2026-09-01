@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-444";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-444";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-445";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-445";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-444";
+  from "./hierarchy-physics-transport.mjs?v=20260901-445";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-444";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-445";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-444";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-445";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-444";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-445";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-444", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-445", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -452,6 +452,7 @@ const TIMELINE = [
   ["47", "Nested work-quadrature convergence", "Thirteen response images now support twelve complete segment gates and an embedded seven-image Simpson rule. Fine and coarse Simpson force-work estimates must agree tightly enough that W+ΔU fits their Richardson-scaled difference plus numerical tolerance; trapezoid work is diagnostic only. The estimate assumes a smooth integrand and is numerical—not physical uncertainty, thermodynamic work, free energy, NEB, dynamics, rate, or time.", "proved"],
   ["48", "Continuous finite-model branch", "Richardson work closure now requires one interaction, pair-parameter, response, fallback, force-mode, and pair-count state across all thirteen images. For finite hard reach, analytic closest approach proves every movable pair remains strictly inside or outside the cutoff over the full segment; hidden outside→inside→outside crossings fail. This is bounded branch continuity, not a switching function, higher-differentiability proof, dynamics, rate, or time.", "proved"],
   ["49", "Component-resolved work closure", "A correct total W+ΔU can hide compensating errors between physical terms. Coulomb, Born–Mayer, damped dispersion, and induction now each require independent nested-Simpson force-work/energy closure when active; an equal-and-opposite synthetic error passes in total and fails by component. Numerical induction-force error contributes only a displacement-projected allowance. This validates the declared decomposition, not a transferable potential, thermodynamic work, dynamics, rate, or time.", "proved"],
+  ["50", "Panel-resolved work closure", "A globally correct force integral can still hide equal-and-opposite errors in separate regions of one leap. The thirteen-image path is therefore partitioned into three independent five-image panels; every panel carries its own embedded three-image Simpson rule and must close its local ΔU. The same local gate applies inside every active interaction component. A sinusoidal-error control passes globally and fails locally. This validates one sampled coordinate path, not a Hessian, phonon calculation, minimum-energy path, thermodynamic work, dynamics, rate, or time.", "proved"],
 ];
 
 const CLAIMS = [

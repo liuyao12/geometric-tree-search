@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditForceEnergyPathClosure,
+  auditPanelResolvedForceEnergyPathClosure,
   auditGroupedForceResiduals,
   auditModelForceRelaxationEnergyDescent,
   auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
@@ -57,6 +58,26 @@ const compensatingComponentErrors = auditComponentForceEnergyPathClosures([
 ], fractions, [[1, 0, 0]]);
 assert.equal(compensatingComponentErrors.passed, false);
 assert.deepEqual(compensatingComponentErrors.failedComponentIds, ["first", "second"]);
+const pathLocalCancellationForces = fractions.map((fraction) =>
+  [[1 + Math.sin(2 * Math.PI * fraction), 0, 0]]);
+const pathLocalCancellationAggregate = auditForceEnergyPathClosure(fractions,
+  fractions.map((fraction) => -fraction), pathLocalCancellationForces,
+  [[1, 0, 0]]);
+assert.equal(pathLocalCancellationAggregate.passed, true);
+const pathLocalCancellationPanels = auditPanelResolvedForceEnergyPathClosure(
+  fractions, fractions.map((fraction) => -fraction),
+  pathLocalCancellationForces, [[1, 0, 0]]);
+assert.equal(pathLocalCancellationPanels.passed, false);
+assert.equal(pathLocalCancellationPanels.panelCount, 3);
+assert.ok(pathLocalCancellationPanels.failedPanelIndices.length >= 2);
+const pathLocalCancellationComponent = auditComponentForceEnergyPathClosures([{
+  id: "locally-inconsistent", active: true,
+  energiesElectronVolt: fractions.map((fraction) => -fraction),
+  forceFieldsElectronVoltPerAngstrom: pathLocalCancellationForces,
+}], fractions, [[1, 0, 0]]);
+assert.equal(pathLocalCancellationComponent.passed, false);
+assert.equal(pathLocalCancellationComponent.records[0].aggregateClosurePassed, true);
+assert.equal(pathLocalCancellationComponent.records[0].panelClosurePassed, false);
 const pairSeed = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
   electrostaticsOptions: { relativePermittivity: 4 },
@@ -214,10 +235,15 @@ assert.ok(Math.abs(forceSettlingPath.workEnergyClosureResidualElectronVolt)
 assert.equal(forceSettlingPath.workEnergyClosure.pathParameterIsPhysicalTime, false);
 assert.equal(forceSettlingPath.workEnergyNestedSimpsonConvergenceAvailable, true);
 assert.equal(forceSettlingPath.workEnergyClosure.coarseSimpsonImageCount, 7);
+assert.equal(forceSettlingPath.panelWorkEnergyClosurePassed, true);
+assert.equal(forceSettlingPath.workEnergyPanelCount, 3);
+assert.deepEqual(forceSettlingPath.failedWorkEnergyPanelIndices, []);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
 assert.equal(forceSettlingPath.componentWorkEnergyClosuresPassed, true);
+assert.equal(forceSettlingPath.componentWorkEnergyClosures.records
+  .filter((record) => record.active).every((record) => record.panelClosurePassed), true);
 assert.equal(forceSettlingPath.activeWorkEnergyComponentCount, 2);
 assert.deepEqual(forceSettlingPath.componentWorkEnergyClosures.records
   .filter((record) => record.active).map((record) => record.id), ["coulomb", "born-mayer"]);

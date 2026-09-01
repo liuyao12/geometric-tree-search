@@ -10658,6 +10658,26 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 445: Panel-resolved work–energy closure
+
+Aggregate work closure is necessary but not sufficient: signed force/energy
+errors in separated path regions can cancel. The thirteen-image response path
+is now divided into three nonoverlapping five-image panels. Every panel applies
+fine five-image Simpson integration, an embedded three-image Simpson rule, and
+a local Richardson estimate against its own endpoint energy change.
+
+Acceptance requires every total panel and every panel belonging to an active
+Coulomb, Born–Mayer, damped-dispersion, or induction channel to close. A
+sinusoidal-error control has exact full-path cancellation and therefore passes
+the aggregate audit, while multiple local panels fail. The real pair and
+numerical induction controls remain green. Panel indices, fractional ranges,
+fine/coarse work, local `ΔU`, residuals, tolerances, and failed panels are all
+receipt-visible.
+
+This is a local consistency certificate for one sampled straight Cartesian
+path. It is not a Hessian, force-constant matrix, phonon spectrum,
+minimum-energy path, thermodynamic work, dynamics, rate, or time.
+
 # Build 444: Component-resolved work–energy closure
 
 The finite path now requires independent nested-Simpson work closure for every

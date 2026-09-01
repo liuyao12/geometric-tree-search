@@ -28,7 +28,7 @@ for (const token of ["Atomistic critical-nucleus geometry",
   "A CNT critical scale does not determine atom count"])
   assert.ok(html.includes(token), token);
 
-for (const token of ["critical-nucleus-geometry.mjs?v=20260901-444",
+for (const token of ["critical-nucleus-geometry.mjs?v=20260901-445",
   "function renderCriticalNucleusGeometry()", "downloadCriticalNucleusGeometryEvidenceRequest",
   "validateCriticalNucleusGeometryFile", "freezeScheduledCriticalNucleusPreview",
   "scheduledCriticalNucleusPreviewAudit = embedCriticalNucleusAtScheduledEvents(",

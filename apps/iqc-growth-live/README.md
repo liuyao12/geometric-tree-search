@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 445 · panel-resolved work–energy closure
+
+A globally correct force integral can conceal equal-and-opposite errors in
+different regions of the same structural leap. The thirteen-image response is
+now partitioned into three nonoverlapping five-image panels. Each panel has its
+own embedded three-image Simpson rule, Richardson estimate, endpoint `ΔU`, and
+acceptance decision. Every panel must close independently.
+
+The same local gate is nested inside each active Coulomb, Born–Mayer, damped
+dispersion, and induction record. A synthetic sinusoidal force error integrates
+to zero over the complete path, so the aggregate audit passes exactly; its
+local panels fail and now reject the leap. Real Coulomb/Born–Mayer and numerical
+induction controls retain all three local closures.
+
+Receipts expose panel ranges, fine/coarse work, residuals, tolerances, failed
+panel indices, and the maximum local residual. This validates local consistency
+along one declared straight coordinate path. It is not a Hessian, phonon
+calculation, minimum-energy path, thermodynamic work, dynamics, rate, or time.
+
 ## Build 444 · component-resolved work–energy closure
 
 Total work closure can hide compensating implementation errors between
