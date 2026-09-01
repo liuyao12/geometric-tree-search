@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+## Force-seeded certified geometric settling (Build 431)
+
+The existing bounded post-attachment contact/angle projection now accepts a
+new finite-interaction-gradient seed. Current and newly emitted sites are split
+after a certified attachment; the selected open-crop interaction model
+evaluates a complete added-site `−∇U`, p90-normalizes its directions, and caps
+the proposed displacement at 5% of `dₙₙ`. If charge induction contributes to
+energy, the seed is unavailable unless the response-consistent polarization
+force is also available. This prevents a partial pair force from masquerading
+as the gradient of the selected model.
+
+The proposal remains subordinate to geometry. It commits only after decreasing
+the frozen learned contact/angle objective and re-passing colored exclusion,
+coordination capacity, angular envelope, public boundary, cluster topology,
+and proper-port topology. No mass, timestep, velocity, optimizer clock, or
+target is an input. The result is therefore a bounded force-informed geometry
+leap—not molecular dynamics, energy minimization, a relaxation trajectory, or
+evidence that the declared finite interaction is a transferable force field.
+
 ## Response-consistent numerical polarization force (Build 430)
 
 An opt-in force arm now evaluates the negative spatial gradient of the same

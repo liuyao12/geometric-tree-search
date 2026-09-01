@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-430";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-430";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-431";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-431";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-430";
+  from "./hierarchy-physics-transport.mjs?v=20260901-431";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-430";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-431";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-430";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-431";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-430";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-431";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-430", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-431", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -438,6 +438,7 @@ const TIMELINE = [
   ["33", "Finite charge-induction geometry", "A declared isotropic alpha converts the f3-damped formal-charge field into -k_e alpha |E|^2/(2 epsilon_r^2). Squaring the summed field creates genuine many-site geometric cross terms; the portal exposes incremental energy and induced-dipole scales while withholding mutual induction, polarization force, species fitting, periodic response, relaxation, and time.", "proved"],
   ["34", "Self-consistent mutual dipole response", "An optional finite f3/f5-damped dipole tensor now iterates the induced moments to a reported residual before evaluating -k_e sum(mu dot E_q)/(2 epsilon_r). Current and projected states must both converge or both fall back to direct induction; candidates and hard certificates remain unchanged. Global alpha, heuristic damping, omitted polarization force, and finite open boundaries keep this a transparent hypothesis rather than a transferable polarizable force field.", "proved"],
   ["35", "Response-consistent polarization-force audit", "An opt-in fourth-order Richardson derivative now evaluates the polarization force of the same finite induction energy used for ranking. Each added site costs 12 induction-energy solves; response-model consistency, solve work, and numerical discrepancy are preserved before the force augments ranking, torque, and 3D arrows. This closes an internal gradient loop, not periodic electrostatics, a fitted polarizable force field, relaxation, or dynamics.", "proved"],
+  ["36", "Force-seeded certified geometry leap", "After a known-window-certified attachment, a complete finite interaction gradient may seed the existing 5%-d_nn bounded contact/angle projection. The proposal commits only when the learned residual falls and every exclusion, coordination, angular, boundary, cluster-topology, and proper-port certificate re-passes. It leapfrogs a local settling direction without masses, timesteps, force integration, energy minimization, or a transferable-potential claim.", "proved"],
 ];
 
 const CLAIMS = [

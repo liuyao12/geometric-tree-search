@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 431 · interaction forces can seed certified geometric settling
+
+The post-attachment projection can now start from the finite interaction
+gradient computed inside the portal. After known-window replay, the newly
+attached sites are separated from the already placed configuration, the same
+Coulomb/Born–Mayer/dispersion/induction controls evaluate `−∇U`, and the force
+directions are p90-normalized into the existing 5% `dₙₙ` displacement cap.
+Induction is admitted only when its numerical polarization-force audit is
+complete. The force seed is then merely an initialization: coordinates commit
+only if the learned contact/angle residual decreases and exclusion,
+coordination, angular, boundary, cluster-topology, and proper-port certificates
+all re-pass. Otherwise the entire projection rolls back.
+
+This is the intended leapfrog boundary. It uses a force-informed geometric
+proposal without integrating masses, timesteps, or a trajectory, and without
+claiming that the declared finite interaction hypothesis is a transferable
+material potential. The receipt records the model, force completeness,
+normalization scale, induction solve work, Richardson error, displacement, and
+every acceptance certificate.
+
 ## Build 430 · polarization force closes the displayed energy-gradient loop
 
 The finite induction laboratory now offers an explicit **Polarization force**

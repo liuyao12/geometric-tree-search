@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-430">
+  <link rel="stylesheet" href="./style.css?v=20260901-431">
   <script type="importmap">
     {
       "imports": {
@@ -684,9 +684,10 @@
                 <option value="strong">Strong · 8% dₙₙ · 20 iterations</option>
                 <option value="observed">Observed non-affine vector seed · 5% dₙₙ · fail closed</option>
                 <option value="force">Residual-force direction seed · 5% dₙₙ · fail closed</option>
+                <option value="model-force">Finite interaction −∇U seed · 5% dₙₙ · fail closed</option>
               </select>
             </label>
-            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; force mode requires site-resolved residual forces.</div>
+            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; residual-force mode requires site-resolved archive forces; finite-interaction mode requires a complete selected-model energy gradient.</div>
               </div>
             </details>
             <details class="growth-control-group">
@@ -1753,7 +1754,7 @@
                 <svg id="ionicConvergencePlot" class="ionic-convergence-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to inspect its ionic-pair score across finite reaches"></svg>
                 <div class="ionic-convergence-legend"><span><i class="candidate"></i>exact candidate</span><span><i class="selected"></i>selected pose</span><span><i class="winner"></i>best at reach</span></div>
                 <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
-                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Geometry mode reports only a scale-free signed pair sum. Finite modes report a conditional ΔU in eV for supplied formal point charges, declared ε<sub>r</sub>, and an open boundary. Optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy remain explicit hypotheses. Force glyphs are the exact pair gradient; when induction is active its force is visibly omitted. Neither result is total equilibrium, Ewald convergence, mutual polarization, relaxation, or a thermodynamic limit.</p>
+                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Geometry mode reports only a scale-free signed pair sum. Finite modes report a conditional ΔU in eV for supplied formal point charges, declared ε<sub>r</sub>, and an open boundary. Optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy remain explicit hypotheses. Force glyphs include exact analytic pair gradients and, when selected, a response-consistent Richardson numerical polarization force. The complete gradient may seed the separate bounded post-attachment geometry projection, but neither result is total equilibrium, Ewald convergence, a fitted force field, relaxation dynamics, or a thermodynamic limit.</p>
               </section>
               <section class="bond-valence-card" aria-label="Local scalar and vector bond-valence audit">
                 <header><span><small>oxidation-state coordination geometry</small><strong>Valence-sum &amp; vector balance</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
@@ -2893,7 +2894,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-430"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-430"></script>
+  <script type="module" src="./app.js?v=20260901-431"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-431"></script>
 </body>
 </html>

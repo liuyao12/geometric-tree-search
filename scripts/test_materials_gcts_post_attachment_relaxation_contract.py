@@ -22,7 +22,7 @@ def test_post_attachment_projection_is_user_controlled_and_bounded():
 
 
 def test_projection_moves_only_new_post_replay_sites_and_fails_closed():
-    assert "const relaxationAuthorized = reconstructionCertified" in APP
+    assert "const relaxationAuthorized = targetFreeGrowthAuthorized()" in APP
     assert "freshAtomIds: []" in APP
     assert "freshAtomIdsInBatch.push(...placement.freshAtomIds)" in APP
     assert "projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized)" in APP
