@@ -1622,9 +1622,16 @@
         drawFrontier(trialGhost || visible[visible.length - 1]);
         drawHoverTooltip();
         const latest = visible[visible.length - 1];
-        const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
+        const branchText = statusText || (latest && latest.branchCount
+          ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branching`} at ${formatFrontierPoint(latest.frontier)}`
+          : 'seed tile');
         if (statusReadout) statusReadout.textContent = `${visible.length} Tile${visible.length === 1 ? '' : 's'} placed · ${branchText}`;
         window.requestAnimationFrame(updateTextWrap);
+      }
+
+      function formatFrontierPoint(point) {
+        const coordinates = Array.isArray(point) ? point : String(point || '').split(',').filter(Boolean);
+        return `(${coordinates.join(',')})`;
       }
 
       function pointerPosition(event) {
@@ -1854,7 +1861,7 @@
           if (event.type === 'trial') return { type: 'trial', valid: true, frontier, frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0, placement: demoPlacementFromShared(event.candidate, { frontier }) };
           if (event.type === 'placement') {
             const converted = placementsFor(event);
-            return { type: 'accept', count: converted.length, placement: converted[converted.length - 1], forced: event.forced, branchCount: event.branchCount || 0, frontierValue: event.frontierValue || 0, placements: converted };
+            return { type: 'accept', count: converted.length, placement: converted[converted.length - 1], forced: event.forced, branchCount: event.branchCount || 0, frontier, frontierValue: event.frontierValue || 0, placements: converted };
           }
           if (event.type === 'fail') return { type: 'fail', frontier, frontierValue: event.frontierValue || 0, placements: placementsFor(event) };
           if (event.type === 'backtrack') return { type: 'backtrack', reason: 'failed branch', removed: demoPlacementFromShared(event.removed, { frontier }), placements: placementsFor(event), frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0 };
@@ -2112,7 +2119,7 @@
           }
           if (event.type === 'trial') {
             trialGhost = event;
-            statusText = `trying compatible placement at t=${event.frontierValue}/12`;
+            statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(event.frontier)}`;
           } else if (event.type === 'fail') {
             trialGhost = null;
             if (event.placements) playbackPlacements = event.placements;
@@ -2122,9 +2129,7 @@
             trialGhost = event.removed ? { placement: event.removed, valid: false } : null;
             if (event.placements) playbackPlacements = event.placements;
             shownTiles = playbackPlacements?.length || shownTiles;
-            statusText = event.deadEnd
-              ? `dead end at t=${event.deadEnd.frontierValue}/12; backtracking`
-              : `backtracking: ${event.reason}`;
+            statusText = 'backtracking';
           } else {
             shownTiles = event.count;
             if (event.placements) {
@@ -2132,11 +2137,12 @@
               tilingOrder = event.placements;
             }
             trialGhost = null;
-            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+            const frontier = event.frontier || event.placement?.frontier;
+            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branching`} at ${formatFrontierPoint(frontier)}`;
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
-              statusText = `paused at complete corona ${frontierGeneration}; every frontier point has generation ≥ ${frontierGeneration}`;
+              statusText = `paused at complete corona ${frontierGeneration}`;
               stopTiling();
             }
           }
