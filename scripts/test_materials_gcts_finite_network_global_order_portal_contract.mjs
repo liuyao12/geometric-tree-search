@@ -13,10 +13,10 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkGlobalOrderPlot/);
   assert.match(document, /Global geometric order trajectory/);
-  assert.match(document, /app\.js\?v=20260901-413/);
+  assert.match(document, /app\.js\?v=20260901-414/);
 }
-assert.match(app, /geometric-state-descriptor\.mjs\?v=20260901-413/);
-assert.match(app, /finite-network-global-order\.mjs\?v=20260901-413/);
+assert.match(app, /geometric-state-descriptor\.mjs\?v=20260901-414/);
+assert.match(app, /finite-network-global-order\.mjs\?v=20260901-414/);
 assert.match(app, /materialEndpointSites\(barrier\.pathGeometry, "initial"\)/);
 assert.match(lineage, /initialStateGeometricDescriptor/);
 assert.match(lineage, /finalStateGeometricDescriptor/);

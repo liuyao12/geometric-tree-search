@@ -1,5 +1,42 @@
 # Recursive GCTS benchmark for material growth
 
+## Evidence-bound atomistic critical-nucleus preview (Build 414)
+
+The seeded event point process now ends at a separate atomistic geometry
+boundary instead of leaving “no atoms” as an undifferentiated gap. A frozen
+schedule can issue a request cryptographically bound to its full hash, the
+structure and conditional-work hashes, kinetic-request identity, phase pair,
+temperature, intrinsic dimension, and critical scale. The response must come
+from an independent rare-event ensemble or experimentally constrained
+atomistic model; the capillarity scale is never converted into an atom count.
+
+Validation requires 2–4096 unique species-labelled nonperiodic Cartesian Å
+sites, finite nondegenerate pair geometry, majority nucleus membership for
+every included site, explicit core/interface labels, method and classifier
+provenance, settings SHA-256, convergence, unit/species validation, and at
+least 20 independent shooting trajectories. The reported committor standard
+error must be positive and at most 0.2, and its interval around the reported
+mean must contain 0.5. The geometric centroid is removed deterministically for
+placement; no shape fitting, scale fitting, species repair, or target matching
+is performed.
+
+An independent 32-bit seed gives one uniform `SO(2)` angle for a 2D nucleus or
+one Shoemake/Haar-uniform proper `SO(3)` quaternion for a 3D nucleus at each
+scheduled event. Every matrix, quaternion/angle, transformed local coordinate,
+physical and normalized position, observation-boundary result, event cap, and
+omitted-event count is frozen. The interactive SVG is deliberately magnified:
+it shows local atomistic structure and depth rather than falsely drawing an
+ångström nucleus to scale inside a micrometre observation box.
+
+The resulting object is a preview, not a growth state.
+`nucleiCommittedToGrowth=false`, `gctsSeedChanged=false`,
+`candidateSetChanged=false`, `gctsClockChanged=false`, and `targetUsed=false`
+are enforced. One representative snapshot is not a critical ensemble;
+isotropic poses are not a heterogeneous orientation distribution; parent
+matrix atoms, impingement, depletion, incubation, elastic accommodation,
+wetting, and the admission rule that could turn a validated nucleus into a
+GCTS seed remain open.
+
 ## Seeded conditional nucleation point process (Build 413)
 
 The validated homogeneous CNT rate density now has a target-free stochastic

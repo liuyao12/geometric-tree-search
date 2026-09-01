@@ -53,7 +53,7 @@ def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> Non
         'Local pose energies are insufficient',
     ):
         assert token in html
-    assert 'from "./ice-orientation-evidence.mjs?v=20260901-413"' in app
+    assert 'from "./ice-orientation-evidence.mjs?v=20260901-414"' in app
     assert 'function renderIceOrientationEvidenceBridge()' in app
     assert 'function renderIceOrientationStateSpace(audit)' in app
     assert 'function renderIceBoundarySensitivity(audit)' in app

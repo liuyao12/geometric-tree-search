@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-413";
+  from "./external-action-barrier.mjs?v=20260901-414";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-413";
+  from "./action-path-viewer.mjs?v=20260901-414";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-413";
+  from "./action-path-mechanism.mjs?v=20260901-414";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-413";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-414";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-413";
+  from "./kinetic-event-spectrum.mjs?v=20260901-414";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-413";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-414";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-413";
+  from "./kinetic-geometry-response.mjs?v=20260901-414";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-413";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-414";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-413";
+  from "./surface-hop-events.mjs?v=20260901-414";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-413";
+  from "./species-exchange-events.mjs?v=20260901-414";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-413";
+  from "./external-state-relaxation.mjs?v=20260901-414";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-413";
+  from "./reversible-transition-lineage.mjs?v=20260901-414";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-413";
+  from "./finite-network-population-dynamics.mjs?v=20260901-414";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-413";
+  from "./finite-network-geometric-flux.mjs?v=20260901-414";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-413";
+  from "./finite-network-structural-flux.mjs?v=20260901-414";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-413";
+  from "./geometric-state-descriptor.mjs?v=20260901-414";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-413";
+  from "./finite-network-global-order.mjs?v=20260901-414";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-413";
+  from "./finite-network-first-passage.mjs?v=20260901-414";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-413";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-414";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-413";
+  from "./finite-network-passage-control.mjs?v=20260901-414";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-413";
+  from "./finite-network-rate-intervention.mjs?v=20260901-414";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-413";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-413";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-413";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-413";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-413";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-413";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-414";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-413";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-414";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-413";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-414";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-413";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-414";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-413";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-414";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,43 +163,46 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-413";
+  from "./classical-nucleation-evidence.mjs?v=20260901-414";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-413";
+  from "./classical-capillarity-action.mjs?v=20260901-414";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-413";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-414";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-413";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-414";
+import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
+  embedCriticalNucleusAtScheduledEvents }
+  from "./critical-nucleus-geometry.mjs?v=20260901-414";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-413";
+  from "./external-attachment-kinetics.mjs?v=20260901-414";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-413";
+  from "./external-interface-flux.mjs?v=20260901-414";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-413";
+  from "./growth-regime-bridge.mjs?v=20260901-414";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-413";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-414";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-413";
+  from "./catalog-conditional-chronology.mjs?v=20260901-414";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-413";
+  from "./coupled-physics-state.mjs?v=20260901-414";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-413";
+} from "./ice-molecular-anchor-growth.js?v=20260901-414";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-413";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-414";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-413";
+} from "./ice-orientation-evidence.mjs?v=20260901-414";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -315,7 +318,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-413", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-414", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1252,6 +1255,19 @@ const nucleationSchedulePlot = $("nucleationSchedulePlot");
 const nucleationScheduleMetrics = $("nucleationScheduleMetrics");
 const nucleationScheduleState = $("nucleationScheduleState");
 const nucleationScheduleBoundary = $("nucleationScheduleBoundary");
+const criticalNucleusGeometryBadge = $("criticalNucleusGeometryBadge");
+const downloadCriticalNucleusGeometryRequest = $("downloadCriticalNucleusGeometryRequest");
+const importCriticalNucleusGeometryResponse = $("importCriticalNucleusGeometryResponse");
+const resetCriticalNucleusGeometry = $("resetCriticalNucleusGeometry");
+const criticalNucleusGeometryResponseInput = $("criticalNucleusGeometryResponseInput");
+const criticalNucleusOrientationSeedSelect = $("criticalNucleusOrientationSeedSelect");
+const criticalNucleusPreviewCapSelect = $("criticalNucleusPreviewCapSelect");
+const freezeCriticalNucleusPreview = $("freezeCriticalNucleusPreview");
+const releaseCriticalNucleusPreview = $("releaseCriticalNucleusPreview");
+const criticalNucleusGeometryPlot = $("criticalNucleusGeometryPlot");
+const criticalNucleusGeometryMetrics = $("criticalNucleusGeometryMetrics");
+const criticalNucleusGeometryState = $("criticalNucleusGeometryState");
+const criticalNucleusGeometryBoundary = $("criticalNucleusGeometryBoundary");
 const kineticHabitCard = document.querySelector(".kinetic-habit-card");
 const kineticHabitBadge = $("kineticHabitBadge");
 const kineticHabitPresetControls = $("kineticHabitPresetControls");
@@ -2293,6 +2309,11 @@ let nucleationExposureSeconds = 1;
 let nucleationScheduleRandomSeed = 2026;
 let nucleationScheduleMaximumEvents = 32;
 let conditionalNucleationScheduleAudit = null;
+let criticalNucleusGeometryRequestRuntime = null;
+let criticalNucleusGeometryValidationAudit = null;
+let scheduledCriticalNucleusPreviewAudit = null;
+let criticalNucleusOrientationSeed = 414;
+let criticalNucleusPreviewCap = 8;
 let classicalCapillarityMode = "display";
 let classicalCapillarityWeight = .16;
 let classicalCapillarityEvaluations = 0;
@@ -4301,6 +4322,13 @@ function resetClassicalNucleationKineticsEvidenceState() {
   classicalNucleationKineticsValidationAudit = null;
   conditionalClassicalNucleationRateAudit = null;
   conditionalNucleationScheduleAudit = null;
+  resetCriticalNucleusGeometryState();
+}
+
+function resetCriticalNucleusGeometryState() {
+  criticalNucleusGeometryRequestRuntime = null;
+  criticalNucleusGeometryValidationAudit = null;
+  scheduledCriticalNucleusPreviewAudit = null;
 }
 
 function nucleationLogValue(value, suffix = "") {
@@ -4425,6 +4453,181 @@ function renderConditionalNucleationSchedule() {
       : "Validate a conditional rate before drawing event hypotheses.";
     nucleationScheduleBoundary.textContent = "Points are not atomistic nuclei, crystallographic poses, heterogeneous sites, or GCTS seeds.";
   }
+  renderCriticalNucleusGeometry();
+}
+
+function criticalNucleusSpeciesColor(species) {
+  if (ELEMENTS[species]?.css) return ELEMENTS[species].css;
+  let hash = 0;
+  for (const character of String(species)) hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+  return `hsl(${Math.abs(hash) % 360} 62% 68%)`;
+}
+
+function renderCriticalNucleusGeometry() {
+  if (!criticalNucleusGeometryPlot || !criticalNucleusGeometryMetrics) return;
+  const scheduled = Boolean(conditionalNucleationScheduleAudit);
+  const requested = Boolean(criticalNucleusGeometryRequestRuntime);
+  const validated = Boolean(criticalNucleusGeometryValidationAudit);
+  const posed = Boolean(scheduledCriticalNucleusPreviewAudit);
+  const section = criticalNucleusGeometryPlot.closest(".critical-nucleus-geometry");
+  section?.classList.toggle("validated", validated);
+  section?.classList.toggle("posed", posed);
+  downloadCriticalNucleusGeometryRequest.disabled = !scheduled;
+  importCriticalNucleusGeometryResponse.disabled = !requested;
+  resetCriticalNucleusGeometry.hidden = !requested && !validated;
+  const canPose = validated && (conditionalNucleationScheduleAudit?.events.length || 0) > 0;
+  criticalNucleusOrientationSeedSelect.disabled = !canPose;
+  criticalNucleusPreviewCapSelect.disabled = !canPose;
+  freezeCriticalNucleusPreview.disabled = !canPose;
+  releaseCriticalNucleusPreview.disabled = !posed;
+  criticalNucleusOrientationSeedSelect.value = String(criticalNucleusOrientationSeed);
+  criticalNucleusPreviewCapSelect.value = String(criticalNucleusPreviewCap);
+  criticalNucleusGeometryBadge.textContent = posed
+    ? `${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} posed`
+    : validated ? "prototype validated" : requested ? "request frozen" : "geometry missing";
+  const svg = (name, attributes = {}) => {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  criticalNucleusGeometryPlot.replaceChildren();
+  const centerX = 160; const centerY = 63; const radius = 47;
+  criticalNucleusGeometryPlot.append(svg("circle", { cx: centerX, cy: centerY, r: radius,
+    class: "critical-nucleus-frame" }),
+  svg("line", { x1: centerX - radius - 12, y1: centerY, x2: centerX + radius + 12,
+    y2: centerY, class: "critical-nucleus-axis" }),
+  svg("line", { x1: centerX, y1: centerY - radius - 7, x2: centerX,
+    y2: centerY + radius + 7, class: "critical-nucleus-axis" }));
+  let plottedSites = [];
+  let captionText = "validated atomistic prototype required · no geometry inferred from CNT";
+  if (posed) {
+    plottedSites = scheduledCriticalNucleusPreviewAudit.events[0]?.sites.map(site => ({
+      ...site, plotPosition: site.localRotatedPositionAngstrom,
+    })) || [];
+    const event = scheduledCriticalNucleusPreviewAudit.events[0];
+    captionText = event
+      ? `${event.eventId} · magnified local projection · ${event.fullyInsideObservation ? "inside declared box" : `${event.outsideSiteCount} sites cross box boundary`}`
+      : "no scheduled events fall inside the declared exposure";
+  } else if (validated) {
+    plottedSites = criticalNucleusGeometryValidationAudit.sites.map(site => ({
+      ...site, plotPosition: site.positionAngstrom,
+    }));
+    captionText = `validated local frame · ${criticalNucleusGeometryValidationAudit.atomCount} atoms · pose not sampled`;
+  }
+  if (plottedSites.length) {
+    const extent = Math.max(1e-9, ...plottedSites.map(site => Math.hypot(...site.plotPosition)));
+    plottedSites.sort((a, b) => a.plotPosition[2] - b.plotPosition[2]).forEach(site => {
+      const depth = .5 + .5 * site.plotPosition[2] / extent;
+      const circle = svg("circle", {
+        cx: centerX + site.plotPosition[0] / extent * radius * .88,
+        cy: centerY - site.plotPosition[1] / extent * radius * .88,
+        r: 2.4 + 2.5 * depth,
+        fill: criticalNucleusSpeciesColor(site.species),
+        opacity: .58 + .4 * depth,
+        class: `critical-nucleus-site ${site.region}`,
+      });
+      const title = svg("title");
+      title.textContent = `${site.siteId} · ${site.species} · ${site.region} · membership ${(100 * site.membershipProbability).toFixed(1)}%`;
+      circle.append(title); criticalNucleusGeometryPlot.append(circle);
+    });
+  }
+  const caption = svg("text", { x: 12, y: 129, class: "critical-nucleus-caption" });
+  caption.textContent = captionText; criticalNucleusGeometryPlot.append(caption);
+  const criticality = validated ? criticalNucleusGeometryValidationAudit.criticality : null;
+  const metrics = [
+    ["prototype atoms", validated ? `${criticalNucleusGeometryValidationAudit.atomCount} · ${Object.entries(criticalNucleusGeometryValidationAudit.speciesCounts).map(([species, count]) => `${species}${count}`).join(" ")}` : "—"],
+    ["criticality", criticality ? `pB ${criticality.meanCommittor.toFixed(3)} ± ${criticality.committorStandardError.toFixed(3)}` : "withheld"],
+    ["posed events", posed ? `${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} / ${scheduledCriticalNucleusPreviewAudit.scheduledEventCount}` : "—"],
+    ["growth seed", "unchanged"],
+  ];
+  criticalNucleusGeometryMetrics.replaceChildren(...metrics.map(([name, value]) => {
+    const span = document.createElement("span"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); small.textContent = name; strong.textContent = value;
+    span.append(small, strong); return span;
+  }));
+  if (posed) {
+    criticalNucleusGeometryState.textContent = `${scheduledCriticalNucleusPreviewAudit.totalEmbeddedSites} displayed atom instances use one externally supplied ${criticalNucleusGeometryValidationAudit.atomCount}-atom representative and deterministic ${scheduledCriticalNucleusPreviewAudit.orientationDistribution} poses (seed ${scheduledCriticalNucleusPreviewAudit.orientationSeed}). ${scheduledCriticalNucleusPreviewAudit.fullyInsideEventCount}/${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} posed nuclei fit wholly inside the declared observation box.`;
+    criticalNucleusGeometryBoundary.textContent = scheduledCriticalNucleusPreviewAudit.claimBoundary;
+  } else if (validated) {
+    criticalNucleusGeometryState.textContent = `${criticalNucleusGeometryValidationAudit.method.family} supplied a ${criticalNucleusGeometryValidationAudit.atomCount}-atom ${criticalNucleusGeometryValidationAudit.parentPhase} → ${criticalNucleusGeometryValidationAudit.nucleusPhase} representative at ${criticalNucleusGeometryValidationAudit.temperatureKelvin} K. Choose a pose seed and preview cap; no atom is yet placed in growth.`;
+    criticalNucleusGeometryBoundary.textContent = "The validated object is one representative committor-compatible configuration, not a critical ensemble, orientation preference, heterogeneous site model, or admission to GCTS.";
+  } else if (requested) {
+    criticalNucleusGeometryState.textContent = "The structure-, work-, schedule-, phase-, and temperature-bound request is frozen. Import an independently calculated response; species-labelled coordinates and committor evidence are never filled from CNT scale.";
+    criticalNucleusGeometryBoundary.textContent = "The request contains no target coordinates and cannot change candidates, geometry, ranking, admission, growth seed, or either clock.";
+  } else {
+    criticalNucleusGeometryState.textContent = scheduled
+      ? "Download the schedule-bound request for an independently committor-validated atomistic critical configuration."
+      : "Freeze an event schedule, then request an independently committor-validated atomistic critical configuration.";
+    criticalNucleusGeometryBoundary.textContent = "A CNT critical scale does not determine atom count, species-labelled coordinates, interface membership, or crystal pose.";
+  }
+}
+
+async function downloadCriticalNucleusGeometryEvidenceRequest() {
+  if (!conditionalNucleationScheduleAudit || !classicalNucleationWorkAudit) {
+    throw new Error("freeze a conditional nucleation schedule before requesting nucleus geometry");
+  }
+  const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
+  const material = currentMaterial();
+  const request = buildCriticalNucleusGeometryRequest({
+    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    scenarioId: scenarioSelect.value, materialName: material.name,
+    schedule: conditionalNucleationScheduleAudit, scheduleSha256,
+    criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
+    sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
+      : material.fixtureProvenance || { fixture: material.name },
+    targetUsed: false, targetCoordinatesEmbedded: false,
+  });
+  const serialized = JSON.stringify(request, null, 2);
+  const requestSha256 = await receiptSha256(serialized);
+  criticalNucleusGeometryValidationAudit = null;
+  scheduledCriticalNucleusPreviewAudit = null;
+  criticalNucleusGeometryRequestRuntime = {
+    request, requestSha256, scheduleSha256,
+    workSha256: request.coupledEvidence.workSha256,
+    structureSha256: request.specimen.structureSha256,
+    intrinsicDimension: request.specimen.intrinsicDimension,
+    temperatureKelvin: request.coupledEvidence.temperatureKelvin,
+    parentPhase: request.coupledEvidence.parentPhase,
+    nucleusPhase: request.coupledEvidence.nucleusPhase,
+  };
+  const blob = new Blob([serialized], { type: "application/json" });
+  const url = URL.createObjectURL(blob); const link = document.createElement("a");
+  link.href = url; link.download = `gcts-${scenarioSelect.value}-critical-nucleus-geometry-request.json`;
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `Critical-nucleus geometry request downloaded · schedule ${scheduleSha256.slice(0, 12)} · request ${requestSha256.slice(0, 12)} · atom count and pose remain withheld.`;
+  renderCriticalNucleusGeometry();
+}
+
+async function validateCriticalNucleusGeometryFile(file) {
+  if (!file || file.size > 8 * 1024 * 1024) {
+    throw new Error("critical-nucleus geometry response exceeds the 8 MB local limit");
+  }
+  if (!criticalNucleusGeometryRequestRuntime || !conditionalNucleationScheduleAudit) {
+    throw new Error("download the schedule-bound critical-nucleus request before validation");
+  }
+  const responseText = await file.text(); const response = JSON.parse(responseText);
+  criticalNucleusGeometryValidationAudit = validateCriticalNucleusGeometryResponse(response,
+    criticalNucleusGeometryRequestRuntime);
+  criticalNucleusGeometryValidationAudit.responseSha256 = await receiptSha256(responseText);
+  scheduledCriticalNucleusPreviewAudit = null;
+  receiptStatus.textContent = `Critical-nucleus geometry validated · ${criticalNucleusGeometryValidationAudit.atomCount} atoms · pB ${criticalNucleusGeometryValidationAudit.criticality.meanCommittor.toFixed(3)} ± ${criticalNucleusGeometryValidationAudit.criticality.committorStandardError.toFixed(3)} · growth seed unchanged.`;
+  renderCriticalNucleusGeometry();
+}
+
+function freezeScheduledCriticalNucleusPreview() {
+  if (!criticalNucleusGeometryValidationAudit || !conditionalNucleationScheduleAudit
+      || !criticalNucleusGeometryRequestRuntime) {
+    throw new Error("validate schedule-bound atomistic critical-nucleus geometry first");
+  }
+  scheduledCriticalNucleusPreviewAudit = embedCriticalNucleusAtScheduledEvents(
+    conditionalNucleationScheduleAudit, criticalNucleusGeometryValidationAudit, {
+      scheduleSha256: criticalNucleusGeometryRequestRuntime.scheduleSha256,
+      orientationSeed: criticalNucleusOrientationSeed,
+      maximumEmbeddedEvents: criticalNucleusPreviewCap,
+    });
+  receiptStatus.textContent = `Critical-nucleus preview posed · ${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} events · ${scheduledCriticalNucleusPreviewAudit.totalEmbeddedSites} displayed atom instances · no GCTS seed or clock changed.`;
+  renderCriticalNucleusGeometry();
 }
 
 function freezeConditionalNucleationSchedule() {
@@ -4438,6 +4641,7 @@ function freezeConditionalNucleationSchedule() {
       randomSeed: nucleationScheduleRandomSeed,
       maximumEvents: nucleationScheduleMaximumEvents,
     });
+  resetCriticalNucleusGeometryState();
   receiptStatus.textContent = `Conditional nucleation schedule frozen · ${conditionalNucleationScheduleAudit.scheduledEventCount} event hypotheses · seed ${conditionalNucleationScheduleAudit.randomSeed} · ${conditionalNucleationScheduleAudit.scheduleTruncated ? "display cap reached" : "finite exposure complete"} · no atoms or GCTS seeds changed.`;
   renderConditionalNucleationSchedule();
 }
@@ -4447,7 +4651,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-413",
+    generatedAt: new Date().toISOString(), buildId: "20260901-414",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -4459,6 +4663,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   classicalNucleationKineticsValidationAudit = null;
   conditionalClassicalNucleationRateAudit = null;
   conditionalNucleationScheduleAudit = null;
+  resetCriticalNucleusGeometryState();
   classicalNucleationKineticsRequestRuntime = {
     request, requestSha256, workSha256,
     structureSha256: request.specimen.structureSha256,
@@ -4490,6 +4695,7 @@ async function validateClassicalNucleationKineticsFile(file) {
   conditionalClassicalNucleationRateAudit = buildConditionalClassicalNucleationRate(
     classicalNucleationWorkAudit, classicalNucleationKineticsValidationAudit);
   conditionalNucleationScheduleAudit = null;
+  resetCriticalNucleusGeometryState();
   receiptStatus.textContent = `Conditional classical nucleation rate validated · log₁₀ J ${conditionalClassicalNucleationRateAudit.log10RateDensityPerSi.toFixed(4)} ± ${conditionalClassicalNucleationRateAudit.log10RateDensitySigma.toFixed(4)} · no growth branch or clock changed.`;
   renderClassicalNucleationKineticsEvidence();
 }
@@ -4579,6 +4785,43 @@ function classicalNucleationReceipt() {
           normalizedPosition: [...event.normalizedPosition],
           positionMetre: [...event.positionMetre] })),
       } : null,
+      criticalNucleusGeometry: {
+        request: criticalNucleusGeometryRequestRuntime ? {
+          requestSha256: criticalNucleusGeometryRequestRuntime.requestSha256,
+          scheduleSha256: criticalNucleusGeometryRequestRuntime.scheduleSha256,
+          workSha256: criticalNucleusGeometryRequestRuntime.workSha256,
+          structureSha256: criticalNucleusGeometryRequestRuntime.structureSha256,
+          intrinsicDimension: criticalNucleusGeometryRequestRuntime.intrinsicDimension,
+          temperatureKelvin: criticalNucleusGeometryRequestRuntime.temperatureKelvin,
+          targetUsed: false,
+        } : null,
+        validation: criticalNucleusGeometryValidationAudit ? {
+          ...criticalNucleusGeometryValidationAudit,
+          suppliedCentroidAngstrom: [...criticalNucleusGeometryValidationAudit.suppliedCentroidAngstrom],
+          sites: criticalNucleusGeometryValidationAudit.sites.map((site) => ({ ...site,
+            positionAngstrom: [...site.positionAngstrom] })),
+        } : null,
+        preview: scheduledCriticalNucleusPreviewAudit ? {
+          ...scheduledCriticalNucleusPreviewAudit,
+          events: scheduledCriticalNucleusPreviewAudit.events.map((event) => ({ ...event,
+            eventPositionMetre: [...event.eventPositionMetre],
+            eventNormalizedPosition: [...event.eventNormalizedPosition],
+            pose: { ...event.pose, matrix: event.pose.matrix.map((row) => [...row]),
+              ...(event.pose.quaternionXyzw
+                ? { quaternionXyzw: [...event.pose.quaternionXyzw] } : {}) },
+            sites: event.sites.map((site) => ({ ...site,
+              positionAngstrom: [...site.positionAngstrom],
+              localRotatedPositionAngstrom: [...site.localRotatedPositionAngstrom],
+              positionMetre: [...site.positionMetre],
+              normalizedPosition: [...site.normalizedPosition] })),
+          })),
+        } : null,
+        geometryInferredFromCntScale: false,
+        representativeNotCriticalEnsemble: true,
+        committedToGrowth: false,
+        candidateSetChanged: false, growthRankingChanged: false,
+        gctsSeedChanged: false, gctsClockChanged: false, targetUsed: false,
+      },
       barrierAloneCannotProduceARate: true,
       candidateSetChanged: false, candidateGeometryChanged: false,
       growthRankingChanged: false, physicalClockIntegrated: false, targetUsed: false,
@@ -4598,7 +4841,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-413", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-414", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -4645,7 +4888,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-413",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4897,7 +5140,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-413",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5416,7 +5659,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-413",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14721,7 +14964,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-413" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-414" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14729,7 +14972,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-413",
+      buildId: "20260901-414",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17357,7 +17600,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-413" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-414" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25730,7 +25973,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-413",
+    generatedAt: new Date().toISOString(), buildId: "20260901-414",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -29001,7 +29244,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-413",
+    generatedAt: new Date().toISOString(), buildId: "20260901-414",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -30454,7 +30697,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-413", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-414", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -39128,7 +39371,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-413",
+    generatedAt: new Date().toISOString(), buildId: "20260901-414",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -39901,23 +40144,27 @@ nucleationObservationLengthSelect?.addEventListener("change", () => {
   const value = Number(nucleationObservationLengthSelect.value);
   nucleationObservationLengthMetre = [1e-7, 1e-6, 1e-4, 1e-3].includes(value) ? value : 1e-6;
   conditionalNucleationScheduleAudit = null;
+  resetCriticalNucleusGeometryState();
   renderClassicalNucleationKineticsEvidence();
 });
 nucleationExposureSelect?.addEventListener("change", () => {
   const value = Number(nucleationExposureSelect.value);
   nucleationExposureSeconds = [1e-6, 1e-3, 1, 60].includes(value) ? value : 1;
   conditionalNucleationScheduleAudit = null;
+  resetCriticalNucleusGeometryState();
   renderClassicalNucleationKineticsEvidence();
 });
 nucleationScheduleSeedSelect?.addEventListener("change", () => {
   const value = Number(nucleationScheduleSeedSelect.value);
   nucleationScheduleRandomSeed = [7, 42, 2026, 65537].includes(value) ? value : 2026;
-  conditionalNucleationScheduleAudit = null; renderConditionalNucleationSchedule();
+  conditionalNucleationScheduleAudit = null; resetCriticalNucleusGeometryState();
+  renderConditionalNucleationSchedule();
 });
 nucleationScheduleCapSelect?.addEventListener("change", () => {
   const value = Number(nucleationScheduleCapSelect.value);
   nucleationScheduleMaximumEvents = [8, 32, 128].includes(value) ? value : 32;
-  conditionalNucleationScheduleAudit = null; renderConditionalNucleationSchedule();
+  conditionalNucleationScheduleAudit = null; resetCriticalNucleusGeometryState();
+  renderConditionalNucleationSchedule();
 });
 freezeNucleationSchedule?.addEventListener("click", () => {
   try { freezeConditionalNucleationSchedule(); }
@@ -39926,7 +40173,46 @@ freezeNucleationSchedule?.addEventListener("click", () => {
   }
 });
 releaseNucleationSchedule?.addEventListener("click", () => {
-  conditionalNucleationScheduleAudit = null; renderConditionalNucleationSchedule();
+  conditionalNucleationScheduleAudit = null; resetCriticalNucleusGeometryState();
+  renderConditionalNucleationSchedule();
+});
+downloadCriticalNucleusGeometryRequest?.addEventListener("click", async () => {
+  downloadCriticalNucleusGeometryRequest.disabled = true;
+  try { await downloadCriticalNucleusGeometryEvidenceRequest(); }
+  catch (error) {
+    receiptStatus.textContent = `Critical-nucleus geometry request failed closed · ${error instanceof Error ? error.message : "invalid request"}`;
+  } finally { renderCriticalNucleusGeometry(); }
+});
+importCriticalNucleusGeometryResponse?.addEventListener("click", () =>
+  criticalNucleusGeometryResponseInput?.click());
+criticalNucleusGeometryResponseInput?.addEventListener("change", async () => {
+  const [file] = criticalNucleusGeometryResponseInput.files || [];
+  try { await validateCriticalNucleusGeometryFile(file); }
+  catch (error) {
+    receiptStatus.textContent = `Critical-nucleus geometry response rejected · ${error instanceof Error ? error.message : "invalid response"}`;
+  } finally { criticalNucleusGeometryResponseInput.value = ""; }
+});
+resetCriticalNucleusGeometry?.addEventListener("click", () => {
+  resetCriticalNucleusGeometryState(); renderCriticalNucleusGeometry();
+});
+criticalNucleusOrientationSeedSelect?.addEventListener("change", () => {
+  const value = Number(criticalNucleusOrientationSeedSelect.value);
+  criticalNucleusOrientationSeed = [17, 414, 2026, 65537].includes(value) ? value : 414;
+  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
+});
+criticalNucleusPreviewCapSelect?.addEventListener("change", () => {
+  const value = Number(criticalNucleusPreviewCapSelect.value);
+  criticalNucleusPreviewCap = [1, 4, 8, 32].includes(value) ? value : 8;
+  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
+});
+freezeCriticalNucleusPreview?.addEventListener("click", () => {
+  try { freezeScheduledCriticalNucleusPreview(); }
+  catch (error) {
+    receiptStatus.textContent = `Critical-nucleus preview rejected · ${error instanceof Error ? error.message : "invalid preview"}`;
+  }
+});
+releaseCriticalNucleusPreview?.addEventListener("click", () => {
+  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
 });
 classicalCapillarityModeSelect?.addEventListener("change", () => {
   classicalCapillarityMode = classicalCapillarityModeSelect.value === "rank" ? "rank" : "display";
@@ -44264,7 +44550,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-413" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-414" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

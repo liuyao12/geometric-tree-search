@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 414 · critical-nucleus atoms become an evidence-bound preview
+
+The conditional event schedule now has an explicit atomistic-geometry handoff.
+After freezing the schedule, the portal can download a request bound to the
+exact structure, Wulff/`Δg` work object, kinetic request, phase pair,
+temperature, intrinsic dimension, critical scale, and complete schedule hash.
+The request asks an independent rare-event or experimentally constrained
+calculation for one representative species-labelled critical configuration,
+per-site nucleus-membership probability, core/interface labels, and committor
+evidence.
+
+A response is accepted only when every identity and state field matches,
+coordinates are finite nonperiodic Cartesian Å, site IDs are unique, sites are
+majority-assigned to the nucleus, pair distances are nondegenerate, and a
+reported committor interval contains `0.5` and its standard error is at most
+`0.2`. At least 20
+independent shooting trajectories, explicit method/classifier provenance, a
+settings digest, convergence, units/species validation, and a declared
+representative-selection rule are required. The browser centers—but otherwise
+does not fit or repair—the supplied coordinates.
+
+For inspection, a separate seed samples one uniform in-plane rotation in 2D
+or one Haar-uniform proper rotation in 3D per scheduled event. The card renders
+a magnified, element-colored local projection, distinguishes core and
+interface sites, records every pose and transformed coordinate, and flags
+nuclei that cross the declared observation boundary. This is a rigid preview
+of one externally supplied representative, not an ensemble sample. It does
+not commit atoms, initialize growth, infer heterogeneous-site preference,
+change the GCTS seed, candidates, ranking, admission, or either clock.
+
 ## Build 413 · conditional nucleation becomes a geometric event schedule
 
 After a classical rate response validates, the portal can now freeze one
