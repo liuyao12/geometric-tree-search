@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 402 · disjoint proton-pose marking audit
+
+The ice workflow now exposes a measured GCTS-marking transfer result rather
+than stopping at “proton poses unresolved.” A frozen eight-port grammar and a
+bounded, proper-motion-invariant local descriptor are fitted on five disjoint
+ice-Ih patches. All candidate pose domains, the marking table, and 31
+within-domain label-shuffled controls are frozen before three other target
+crops are opened for scoring.
+
+The result is deliberately shown as red. Among 65 held-out oxygen-anchor
+domains, the learned marking selects 9 exact H₂O poses versus 8 for the
+unmarked stable order. But the shuffled median and best are both 9
+(`p = .75`), so this is not causal evidence that the local marking identifies
+the ordered proton branch. Moreover, only 40 of 51 target-matched anchor
+domains contain the true pose at all. The live launch card displays this gate,
+its null, and the supply failure; **Inspect pose-marking evidence** opens the
+ice Evidence Atlas directly. Both receipt forms preserve the immutable
+candidate/model digests and the complete audit.
+
+This is the useful scientific boundary: local proper-SE(3) geometry strongly
+constrains the finite ice-rule problem, but it does not determine the proton
+microstate. A richer observed boundary or external energetic/orientational
+state is required before whole-H₂O growth can be claimed.
+
 ## Build 401 · finite proton-orientation constraint audit
 
 Molecular ice growth now carries the retained H₂O pose domains into a finite,

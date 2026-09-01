@@ -1,15 +1,15 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-401";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-402";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-401";
+  from "./hierarchy-physics-transport.mjs?v=20260831-402";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-401";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-402";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-401";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-402";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-401";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-402";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -66,6 +66,11 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   if (!response.ok) throw new Error(`Cannot load frozen ice evidence: ${response.status}`);
   return response.json();
 });
+const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
+  "./ice-orientation-marking-artifact.json?v=20260831-402", import.meta.url)).then((response) => {
+  if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
+  return response.json();
+});
 const ICE_TRACES = Object.fromEntries(["iceIh", "iceIc"].map((caseId) =>
   [caseId, executeIceMolecularAnchorGrowth(ICE_PORT_ARTIFACT, caseId)]));
 const acceptedPerWave = (caseId) => ICE_TRACES[caseId].waves.map((wave) => wave.acceptedAnchors);
@@ -97,6 +102,7 @@ const SYSTEMS = {
       ["Frozen port fit", `${ICE_PORT_ARTIFACT.provenance.trainingMolecules} H₂O · ${ICE_PORT_ARTIFACT.ports.length} ports`, `${ICE_PORT_ARTIFACT.provenance.trainingAtoms} positions/species only; proper SE(3); target used = ${ICE_PORT_ARTIFACT.provenance.targetUsed}.`],
       ["Sealed finite execution", `Ih ${acceptedPerWave("iceIh").join(" → ")} · Ic ${acceptedPerWave("iceIc").join(" → ")}`, "Every accepted unseen oxygen anchor is exact; unsupported depth is rejected at a finite fixed point."],
       ["Finite proton constraint audit", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal} Ih edges · ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesTotal} Ic edges`, `Exactly one geometrically donated proton is possible on every observed O–O edge. The audit fixes ${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} / ${ICE_TRACES.iceIh.orientationAudit.anchors} Ih molecular poses; ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} remain symbolic because the finite boundary does not select a unique proton microstate.`],
+      ["Disjoint pose-marking transfer", `${ICE_ORIENTATION_MARKING_AUDIT.arms.learned.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains} exact · p=${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.empiricalP}`, `The frozen local marking beats unmarked ${ICE_ORIENTATION_MARKING_AUDIT.arms.unmarked.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains}, but ties the best of ${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.count} label-shuffled refits. The true pose is present in only ${ICE_ORIENTATION_MARKING_AUDIT.heldout.exactSupplyDomains} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.targetMatchedDomains} exact-anchor domains; the marking gate remains red.`],
       ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],
       ["Disordered Ice VI transfer", "8 / 8 O anchors · 0 false", "A two-parent connection consensus selected on three training microstates transfers across a disjoint realization. All eight D₂O orientations stay symbolic; forced molecules make three site errors."],
     ],
@@ -817,6 +823,13 @@ function renderSystems() {
   });
   renderSystem("nacl");
 }
+
+window.addEventListener("gcts:open-evidence-system", (event) => {
+  const key = event.detail?.system;
+  if (!SYSTEMS[key]) return;
+  atlasButton?.click();
+  renderSystem(key);
+});
 
 function renderAnatomy(key) {
   const [title, copy, tags] = ANATOMY[key];

@@ -21,7 +21,7 @@ assert.throws(() => hierarchyPhysicsProtocolLaunchAuditFromPacket({ ...verified.
   selection: { ...packet.selection, stageId: "macro" } }), /does not match/);
 
 const awaiting = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "iqc", pipelineStage: 0, receiptBuildId: "20260831-401" });
+  { scenarioId: "iqc", pipelineStage: 0, receiptBuildId: "20260831-402" });
 assert.equal(awaiting.status, "verified-design-awaiting-stage");
 assert.equal(awaiting.designReferenceBoundToReceipt, true);
 assert.equal(awaiting.currentRunCompatible, true);
@@ -33,13 +33,13 @@ assert.equal(awaiting.greenGateSatisfied, null);
 assert.equal(awaiting.outcomeClaimUpgraded, false);
 
 const reached = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-401" });
+  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-402" });
 assert.equal(reached.status, "verified-design-stage-reached");
 assert.equal(reached.plannedStageReached, true);
 assert.equal(reached.greenGateEvaluated, false);
 
 const mismatch = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "competition", pipelineStage: 4, receiptBuildId: "20260831-401" });
+  { scenarioId: "competition", pipelineStage: 4, receiptBuildId: "20260831-402" });
 assert.equal(mismatch.status, "material-mismatch");
 assert.equal(mismatch.currentRunCompatible, false);
 

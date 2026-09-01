@@ -1,0 +1,47 @@
+{
+  "schema": "gcts-ice-orientation-marking-audit-v1",
+  "candidateDigest": "c9f23613b2b8a595495a470e024076d25b6e9ddea485c014099728fdcaa2c2f1",
+  "modelDigest": "fafb81a25297a3ebd1cb0f0a49bab790ecf40d7cc88cec008728b2d2b8533416",
+  "protocol": {
+    "sourceAtoms": 3840,
+    "frozenPorts": 8,
+    "trainingPatches": 5,
+    "heldoutPatches": 3,
+    "minimumCenterSeparation": 18.071999999999996,
+    "requiredSeparation": 15.0,
+    "rawTrainHeldoutMoleculeOverlap": 0,
+    "minimumBackoffSupport": 2,
+    "shuffles": 31,
+    "properMotionInvariantFeatures": true,
+    "candidatesFrozenBeforeTarget": true,
+    "targetOpenCount": 3,
+    "targetUsedForFitOrRanking": false,
+    "canonicalBranchMaterializedDuringGrowth": false
+  },
+  "training": { "domains": 70, "alternatives": 291, "positiveAlternatives": 66 },
+  "heldout": {
+    "candidateDomains": 65,
+    "targetMatchedDomains": 51,
+    "alternatives": 191,
+    "exactSupplyDomains": 40
+  },
+  "arms": {
+    "learned": {
+      "exact": 9,
+      "wrong": 56,
+      "precision": 0.13846153846153847,
+      "posePrecisionGivenExactAnchor": 0.17647058823529413,
+      "recall": 0.225
+    },
+    "unmarked": {
+      "exact": 8,
+      "wrong": 57,
+      "precision": 0.12307692307692308,
+      "posePrecisionGivenExactAnchor": 0.1568627450980392,
+      "recall": 0.2
+    },
+    "shuffled": { "count": 31, "medianExact": 9, "bestExact": 9, "empiricalP": 0.75 }
+  },
+  "gate": { "passed": false, "learnedBeatsUnmarked": true, "learnedBeatsShuffles": false },
+  "claimBoundary": "The finite local marking ranks already-generated mutually exclusive H2O poses. It does not identify a unique proton microstate, energy, entropy, tunnelling, kinetics, stationary recurrence, or physical time."
+}

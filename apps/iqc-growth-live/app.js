@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-401";
+  from "./external-action-barrier.mjs?v=20260831-402";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-401";
+  from "./action-path-viewer.mjs?v=20260831-402";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-401";
+  from "./action-path-mechanism.mjs?v=20260831-402";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-401";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-402";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-401";
+  from "./kinetic-event-spectrum.mjs?v=20260831-402";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-401";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-402";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-401";
+  from "./kinetic-geometry-response.mjs?v=20260831-402";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-401";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-402";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-401";
+  from "./surface-hop-events.mjs?v=20260831-402";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-401";
+  from "./species-exchange-events.mjs?v=20260831-402";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-401";
+  from "./external-state-relaxation.mjs?v=20260831-402";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-401";
+  from "./reversible-transition-lineage.mjs?v=20260831-402";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-401";
+  from "./finite-network-population-dynamics.mjs?v=20260831-402";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-401";
+  from "./finite-network-geometric-flux.mjs?v=20260831-402";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-401";
+  from "./finite-network-structural-flux.mjs?v=20260831-402";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-401";
+  from "./geometric-state-descriptor.mjs?v=20260831-402";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-401";
+  from "./finite-network-global-order.mjs?v=20260831-402";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-401";
+  from "./finite-network-first-passage.mjs?v=20260831-402";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-401";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-402";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-401";
+  from "./finite-network-passage-control.mjs?v=20260831-402";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-401";
+  from "./finite-network-rate-intervention.mjs?v=20260831-402";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-401";
+  from "./finite-network-temperature-intervention.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-401";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-401";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-401";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-401";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-401";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-402";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-401";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-402";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260831-401";
+  from "./hierarchy-evidence-microscope.mjs?v=20260831-402";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-401";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-402";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-401";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-402";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -165,24 +165,24 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-401";
+  from "./external-attachment-kinetics.mjs?v=20260831-402";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-401";
+  from "./external-interface-flux.mjs?v=20260831-402";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-401";
+  from "./growth-regime-bridge.mjs?v=20260831-402";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-401";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-402";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-401";
+  from "./catalog-conditional-chronology.mjs?v=20260831-402";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-401";
+  from "./coupled-physics-state.mjs?v=20260831-402";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260831-401";
+} from "./ice-molecular-anchor-growth.js?v=20260831-402";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -294,6 +294,17 @@ const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 validateIceMolecularPortArtifact(ICE_MOLECULAR_PORT_ARTIFACT);
+
+const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
+  "./ice-orientation-marking-artifact.json?v=20260831-402", import.meta.url)).then((response) => {
+  if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
+  return response.json();
+});
+if (ICE_ORIENTATION_MARKING_AUDIT.schema !== "gcts-ice-orientation-marking-audit-v1"
+    || ICE_ORIENTATION_MARKING_AUDIT.protocol.targetUsedForFitOrRanking
+    || ICE_ORIENTATION_MARKING_AUDIT.gate.passed) {
+  throw new Error("Invalid frozen ice orientation-marking audit");
+}
 
 const ICE_VI_ANCHOR_TRACE_ARTIFACT = await fetch(new URL(
   "./ice-vi-anchor-trace-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -4047,7 +4058,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-401",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-402",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4291,7 +4302,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-401",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-402",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4810,7 +4821,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-401",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-402",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13610,6 +13621,7 @@ function receiptGrowthClaims(scenarioId, benchmark, trace) {
     iceProtonOrientationsResolved: trace ? Boolean(trace.orientationAudit?.allHydrogensResolved) : null,
     finiteIceRuleConstraintAuditPassed: trace ? Boolean(trace.orientationAudit?.consistent
       && trace.orientationAudit.constrainedEdgesSatisfied === trace.orientationAudit.constrainedEdgesTotal) : null,
+    iceOrientationMarkingTransferPassed: trace ? ICE_ORIENTATION_MARKING_AUDIT.gate.passed : null,
   };
 }
 
@@ -14113,7 +14125,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-401" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-402" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14121,7 +14133,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-401",
+      buildId: "20260831-402",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16444,6 +16456,7 @@ async function buildExperimentReceipt() {
         fixedPoint: iceAnchorTrace.fixedPoint,
         exactBackendCountParity: iceAnchorTrace.exactBackendCountParity,
         provenance: iceAnchorTrace.provenance,
+        orientationMarkingTransfer: ICE_ORIENTATION_MARKING_AUDIT,
       } : null,
       sealedIqcDisjointConfirmation: iqcDisjointTrace ? {
         artifactDigest: iqcDisjointTrace.artifactDigest,
@@ -16694,6 +16707,7 @@ async function buildExperimentNotebookSnapshot() {
       finalOrientationConstraintAudit: iceOrientationAuditReceipt(iceAnchorTrace.orientationAudit),
       targetUsed: iceAnchorTrace.targetUsed, fixedPoint: iceAnchorTrace.fixedPoint,
       exactBackendCountParity: iceAnchorTrace.exactBackendCountParity, provenance: iceAnchorTrace.provenance,
+      orientationMarkingTransfer: ICE_ORIENTATION_MARKING_AUDIT,
     } : null,
     sealedIqcDisjointConfirmation: iqcDisjointTrace ? {
       artifactDigest: iqcDisjointTrace.artifactDigest,
@@ -16724,7 +16738,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-401" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-402" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25085,7 +25099,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-401",
+    generatedAt: new Date().toISOString(), buildId: "20260831-402",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28356,7 +28370,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-401",
+    generatedAt: new Date().toISOString(), buildId: "20260831-402",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -29501,6 +29515,7 @@ function growthLaunchReadinessAudit() {
       fixedPointReached,
       exactBackendCountParity: iceAnchorTrace.exactBackendCountParity,
       orientationAudit,
+      orientationMarkingAudit: ICE_ORIENTATION_MARKING_AUDIT,
       targetUsed: false,
       physicalPotentialUsed: false,
     };
@@ -29563,6 +29578,8 @@ function renderGrowthLaunchReadiness() {
     audit.orientationAudit
       ? `${audit.orientationAudit.globallySupportedHypotheses} globally supported hypotheses · finite boundary bonds remain open`
       : "orientation-domain audit unavailable"],
+    ["held-out pose marking", `RED · ${audit.orientationMarkingAudit.arms.learned.exact}/${audit.orientationMarkingAudit.heldout.candidateDomains}`,
+      `unmarked ${audit.orientationMarkingAudit.arms.unmarked.exact} · shuffle best ${audit.orientationMarkingAudit.arms.shuffled.bestExact} · p=${audit.orientationMarkingAudit.arms.shuffled.empiricalP}`],
     ["minimum boundary margin", audit.minimumBoundaryMargin === null ? "—"
       : `${(audit.minimumBoundaryMargin * sceneToAngstrom).toFixed(2)} Å`, "public domain only"],
   ] : [
@@ -29579,13 +29596,15 @@ function renderGrowthLaunchReadiness() {
     const em = document.createElement("em"); em.textContent = note;
     tile.append(small, strong, em); return tile;
   }));
-  growthLaunchReadinessDetail.textContent = `${audit.detail} Target calls: 0; no potential or physical time is inferred.`;
+  const markingBoundary = audit.specializedMolecularAnchor
+    ? ` Frozen local pose marking is not active: on three disjoint crops it selected ${audit.orientationMarkingAudit.arms.learned.exact}/${audit.orientationMarkingAudit.heldout.candidateDomains} exact poses, tied the best shuffled refit (p=${audit.orientationMarkingAudit.arms.shuffled.empiricalP}), and the true pose was absent from ${audit.orientationMarkingAudit.heldout.targetMatchedDomains - audit.orientationMarkingAudit.heldout.exactSupplyDomains}/${audit.orientationMarkingAudit.heldout.targetMatchedDomains} exact-anchor domains.` : "";
+  growthLaunchReadinessDetail.textContent = `${audit.detail}${markingBoundary} Target calls: 0; no potential or physical time is inferred.`;
   growthLaunchFindSeed.textContent = audit.specializedMolecularAnchor ? "Frozen disjoint seed" : "Find executable nucleus";
   growthLaunchInspectClusters.textContent = audit.specializedMolecularAnchor ? "Inspect molecular cover" : "Inspect clusters";
-  growthLaunchRetrainMarking.textContent = audit.specializedMolecularAnchor ? "Generic marking not active" : "Retrain connections";
+  growthLaunchRetrainMarking.textContent = audit.specializedMolecularAnchor ? "Inspect pose-marking evidence" : "Retrain connections";
   growthLaunchFindSeed.disabled = audit.specializedMolecularAnchor
     || currentMaterial().growthWithheld || audit.fittedOccurrences === 0;
-  growthLaunchRetrainMarking.disabled = audit.specializedMolecularAnchor;
+  growthLaunchRetrainMarking.disabled = false;
   growthLaunchInspectClusters.classList.toggle("recommended", audit.recoveryStage === 1);
   growthLaunchRetrainMarking.classList.toggle("recommended", audit.recoveryStage === 3);
 }
@@ -38096,7 +38115,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-401",
+    generatedAt: new Date().toISOString(), buildId: "20260831-402",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -43141,7 +43160,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-401" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-402" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
@@ -44857,6 +44876,10 @@ growthLaunchInspectClusters.addEventListener("click", () => {
   document.querySelector('[data-pipeline-stage="1"]')?.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 growthLaunchRetrainMarking.addEventListener("click", () => {
+  if (iceAnchorTrace) {
+    window.dispatchEvent(new CustomEvent("gcts:open-evidence-system", { detail: { system: "ice" } }));
+    return;
+  }
   enterPipelineStage(3);
   document.querySelector('[data-pipeline-stage="3"]')?.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });

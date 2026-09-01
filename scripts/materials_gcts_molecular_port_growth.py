@@ -115,6 +115,21 @@ class MolecularAnchorWave:
 
 
 @dataclass(frozen=True)
+class MolecularOrientationAlternative:
+    pose_key: str
+    rotation: Matrix
+    translation: Vector
+
+
+@dataclass(frozen=True)
+class MolecularOrientationDomain:
+    anchor_key: str
+    anchor_site: Site
+    alternatives: tuple[MolecularOrientationAlternative, ...]
+    seed: bool
+
+
+@dataclass(frozen=True)
 class MolecularAnchorGrowthTrace:
     seed_anchors: int
     waves: tuple[MolecularAnchorWave, ...]
@@ -125,6 +140,7 @@ class MolecularAnchorGrowthTrace:
     target_used: bool
     alternatives_are_mutually_exclusive: bool
     exact_port_geometry_certificates: bool
+    orientation_domains: tuple[MolecularOrientationDomain, ...]
 
 
 def _sites_digest(sites: Sequence[Site], tolerance: float) -> str:
@@ -612,6 +628,14 @@ def execute_molecular_anchor_growth(
         unresolved_new_molecules=sum(count > 1 for count in counts),
         target_used=False, alternatives_are_mutually_exclusive=True,
         exact_port_geometry_certificates=True,
+        orientation_domains=tuple(MolecularOrientationDomain(
+            anchor_key=anchor_key, anchor_site=anchor_sites[anchor_key],
+            alternatives=tuple(MolecularOrientationAlternative(
+                pose_key=pose_key, rotation=occurrence.rotation,
+                translation=occurrence.translation)
+                for pose_key, occurrence in sorted(hypotheses[anchor_key].items())),
+            seed=anchor_key in seed_keys)
+            for anchor_key in sorted(hypotheses)),
     )
 
 

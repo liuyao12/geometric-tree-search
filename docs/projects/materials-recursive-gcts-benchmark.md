@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+## Disjoint proton-pose marking audit (Build 402)
+
+A new sealed experiment measures whether bounded local GCTS geometry can
+choose among the mutually exclusive H₂O pose domains retained by the finite
+ice-rule solver. The source contains 3,840 atoms. Five pairwise disjoint
+ice-Ih patches supply 70 domains, 291 pose alternatives, and 66 positive
+alternatives; a frozen proper-motion-invariant backoff marking is compared
+with stable unmarked order and 31 within-domain label-shuffled refits. Three
+other patches are not opened until all candidate and model digests exist.
+Training and held-out molecule IDs have zero overlap, and the minimum patch
+separation is 18.072 against a required 15.0.
+
+Held-out geometry contains 65 candidate anchor domains and 191 pose
+alternatives. Fifty-one anchors match target oxygens, but only 40 domains
+contain the true proton pose. The learned marking selects 9 exact and 56 wrong
+poses (`13.85%` overall, `17.65%` conditional on an exact anchor) versus 8 and
+57 unmarked. The shuffled median and best are both 9, giving an empirical
+upper-tail `p = .75`. The marking therefore remains inactive and the gate is
+red despite the one-pose improvement over stable order.
+
+The browser publishes these counts, both immutable SHA-256 digests, the
+three target opens, and `targetUsedForFitOrRanking = false`. This test ranks
+already-generated finite alternatives; it does not infer proton energy,
+entropy, tunnelling, kinetics, stationary recursion, or physical time.
+
 ## Finite proton-orientation constraint audit (Build 401)
 
 The browser now propagates the complete finite H₂O pose domains alongside the

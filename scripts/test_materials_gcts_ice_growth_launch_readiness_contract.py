@@ -34,7 +34,9 @@ def test_launch_certificate_is_visible_receipt_evidence_with_honest_boundaries()
     for token in (
         'audit.specializedMolecularAnchor ? "Frozen disjoint seed"',
         'audit.specializedMolecularAnchor ? "Inspect molecular cover"',
-        'audit.specializedMolecularAnchor ? "Generic marking not active"',
+        'audit.specializedMolecularAnchor ? "Inspect pose-marking evidence"',
+        'held-out pose marking',
+        'gcts:open-evidence-system',
         "launchReadiness: growthLaunchReadinessAudit()",
         "full molecular placement, stationarity, and physical stopping time remain open",
         "Target calls: 0; no potential or physical time is inferred",

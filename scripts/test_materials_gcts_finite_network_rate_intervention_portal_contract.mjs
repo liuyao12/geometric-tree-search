@@ -14,9 +14,9 @@ for (const document of [html, alias]) {
   assert.match(document, /Geometric rate what-if/);
   assert.match(document, /data-rate-factor="0\.25"/);
   assert.match(document, /data-rate-factor="4"/);
-  assert.match(document, /app\.js\?v=20260831-401/);
+  assert.match(document, /app\.js\?v=20260831-402/);
 }
-assert.match(app, /finite-network-rate-intervention\.mjs\?v=20260831-401/);
+assert.match(app, /finite-network-rate-intervention\.mjs\?v=20260831-402/);
 assert.match(app, /buildFiniteNetworkRateIntervention/);
 assert.match(app, /finiteNetworkRateIntervention,/);
 assert.match(app, /finite-network-rate-intervention/);
