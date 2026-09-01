@@ -1,5 +1,5 @@
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolSelectionFromSearch }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-451";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-452";
 
 export async function captureHierarchyPhysicsProtocolLaunch(search) {
   let selection;

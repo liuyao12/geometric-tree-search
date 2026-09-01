@@ -10765,6 +10765,28 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 452: Proper-SE(3) finite-interaction covariance
+
+Both response endpoints now undergo one deterministic proper rotation and
+translation of the complete finite system. The rotation matrix is constructed
+from a normalized generic axis and has determinant +1. For total and every
+active interaction component, scalar energy must be invariant and each
+movable-site force must agree with the properly rotated original force within
+declared numerical allowances. Branch identity and force mode must remain
+unchanged.
+
+The audit requires one additional finite-interaction evaluation per endpoint.
+Receipts preserve the transform, determinant, component-level energy and force
+residuals, failed endpoint indices, distance-evaluation cost, and explicit
+target-free status. The live response microscope exposes two endpoint cards
+under the shared component selector. Synthetic transverse-force and energy
+corruptions fail while real finite-pair and numerical-induction paths pass.
+
+This is a one-transform metamorphic runtime certificate for the finite open-
+boundary interaction. It is not a proof over all frames, a reflection test,
+periodic-image validation, fitted-potential transfer, fixed-site force audit,
+equilibrium, dynamics, or time.
+
 # Build 451: Fixed-environment reaction torque
 
 The response-path acceptance gate now independently differentiates energy under

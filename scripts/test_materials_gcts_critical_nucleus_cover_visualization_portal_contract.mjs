@@ -7,7 +7,7 @@ const styles = readFileSync(new URL("../apps/iqc-growth-live/style.css", import.
 const readme = readFileSync(new URL("../apps/iqc-growth-live/README.md", import.meta.url), "utf8");
 const benchmark = readFileSync(new URL("../docs/projects/materials-recursive-gcts-benchmark.md", import.meta.url), "utf8");
 
-assert.match(app, /critical-nucleus-cover-visualization\.mjs\?v=20260901-451/);
+assert.match(app, /critical-nucleus-cover-visualization\.mjs\?v=20260901-452/);
 assert.match(app, /buildCriticalNucleusCoverVisualization/);
 assert.match(app, /criticalNucleusViewMode !== "atoms"/);
 assert.match(document, /Learned cluster cover/);

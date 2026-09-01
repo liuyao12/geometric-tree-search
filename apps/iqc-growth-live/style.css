@@ -1630,6 +1630,14 @@ body.study-guide-open { overflow: hidden; }
 .model-force-torque-grid .model-force-cartesian-cell { border-color: rgba(255,179,111,.2); background: linear-gradient(145deg,rgba(255,179,111,.06),rgba(6,13,16,.5)); }
 .model-force-torque-grid .model-force-cartesian-cell::after { background: #ffb36f; }
 .model-force-torque-grid .model-force-cartesian-cell.failed::after { background: #ff6f75; }
+.model-force-covariance-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
+.model-force-covariance-card { padding: 6px; border: 1px solid rgba(105,224,189,.2); border-radius: 2px; background: linear-gradient(145deg,rgba(105,224,189,.05),rgba(6,13,16,.5)); color: #8ba89f; text-align: left; cursor: pointer; }
+.model-force-covariance-card.failed { border-color: rgba(255,111,117,.48); background: rgba(255,111,117,.07); }
+.model-force-covariance-card.selected { outline: 1px solid rgba(255,255,255,.65); outline-offset: -1px; }
+.model-force-covariance-card small,.model-force-covariance-card strong,.model-force-covariance-card span { display: block; }
+.model-force-covariance-card small { color: #60776f; font: 4.8px var(--mono); text-transform: uppercase; }
+.model-force-covariance-card strong { margin-top: 2px; color: #d2e5df; font: 7px var(--mono); }
+.model-force-covariance-card span { margin-top: 2px; color: #789188; font: 4.8px var(--mono); }
 @media (max-width: 760px) { .model-force-cartesian-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .stress-strain-response { margin-top: 7px; padding: 7px; border: 1px solid rgba(90,226,168,.18); background: linear-gradient(135deg,rgba(90,226,168,.035),rgba(98,172,255,.03)); }
 .stress-strain-response[hidden] { display: none; }

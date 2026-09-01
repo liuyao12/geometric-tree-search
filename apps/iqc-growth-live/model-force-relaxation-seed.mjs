@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-451";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-452";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -896,6 +896,164 @@ export function auditEnvironmentReactionTorqueBalance(currentSites, addedSites,
     claimBoundary: "This rigidly rotates the fixed environment about one declared common origin to derive its net reaction torque from independent energy probes, then checks it against the reported movable-site torque for the total and every active component. It is a rotational-invariance and angular-momentum-balance certificate—not per-fixed-atom forces, fixed-solid relaxation, couple stress, traction, stress, mechanical equilibrium, dynamics, or physical time." });
 }
 
+/** Verify scalar-energy invariance and vector-force equivariance under one proper SE(3) transform. */
+export function auditFiniteInteractionRigidMotionCovariance(currentSites, addedSites,
+  reportedEvaluation, electrostaticsOptions = {}, {
+    rotationAngleRadians = .731,
+    translationAngstrom = [.371, -.229, .193],
+    absoluteEnergyToleranceElectronVolt = 1e-8,
+    absoluteForceToleranceElectronVoltPerAngstrom = 1e-6,
+    relativeTolerance = 1e-8,
+  } = {}) {
+  const angle = Number(rotationAngleRadians);
+  if (!(Number.isFinite(angle) && Math.abs(angle) >= .1
+      && Math.abs(angle) <= Math.PI - .1)) {
+    throw new RangeError("rigid-motion covariance angle must be nontrivial and proper");
+  }
+  if (!finiteVector(translationAngstrom)
+      || !Array.isArray(currentSites) || !currentSites.length
+      || !currentSites.every((site) => finiteVector(site?.position))
+      || !Array.isArray(addedSites) || !addedSites.length
+      || !addedSites.every((site) => finiteVector(site?.position))) {
+    throw new Error("rigid-motion covariance needs finite sites and translation");
+  }
+  const axisNorm = Math.sqrt(14);
+  const axis = [1 / axisNorm, 2 / axisNorm, 3 / axisNorm];
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
+  const rotationMatrix = [0, 1, 2].map((row) => [0, 1, 2].map((column) =>
+    (row === column ? cosine : 0)
+    + axis[row] * axis[column] * (1 - cosine)
+    + sine * [[0, -axis[2], axis[1]], [axis[2], 0, -axis[0]],
+      [-axis[1], axis[0], 0]][row][column]));
+  const rotate = (vector) => rotationMatrix.map((row) => dotVector(row, vector));
+  const transformSite = (site) => ({ ...site,
+    position: rotate(site.position).map((value, coordinate) =>
+      value + Number(translationAngstrom[coordinate])) });
+  const transformedEvaluation = incrementalFinitePointChargeElectrostatics(
+    currentSites.map(transformSite), addedSites.map(transformSite),
+    electrostaticsOptions);
+  const branchStable = Boolean(transformedEvaluation.available)
+    && transformedEvaluation.pairCount === reportedEvaluation.pairCount
+    && transformedEvaluation.pairInteractionModel === reportedEvaluation.pairInteractionModel
+    && transformedEvaluation.inductionAppliedResponseModel
+      === reportedEvaluation.inductionAppliedResponseModel
+    && transformedEvaluation.inductionDirectFallbackApplied
+      === reportedEvaluation.inductionDirectFallbackApplied
+    && transformedEvaluation.inductionForceModeApplied
+      === reportedEvaluation.inductionForceModeApplied;
+  const inductionForceTolerance = Math.max(Number(reportedEvaluation
+    ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0,
+  Number(transformedEvaluation
+    ?.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0);
+  const componentSpecs = [
+    { id: "total", active: true, energy: "deltaEnergyElectronVolt",
+      forces: "addedForceVectorsElectronVoltPerAngstrom",
+      additionalForceTolerance: inductionForceTolerance },
+    { id: "coulomb", active: true, energy: "coulombDeltaEnergyElectronVolt",
+      forces: "addedCoulombForceVectorsElectronVoltPerAngstrom",
+      additionalForceTolerance: 0 },
+    { id: "born-mayer", active: Boolean(reportedEvaluation?.bornMayerRepulsionApplied),
+      energy: "bornMayerRepulsiveEnergyElectronVolt",
+      forces: "addedBornMayerForceVectorsElectronVoltPerAngstrom",
+      additionalForceTolerance: 0 },
+    { id: "dispersion", active: Boolean(reportedEvaluation?.dispersionApplied),
+      energy: "dampedDispersionEnergyElectronVolt",
+      forces: "addedDispersionForceVectorsElectronVoltPerAngstrom",
+      additionalForceTolerance: 0 },
+    { id: "induction", active: Boolean(reportedEvaluation?.chargeInductionApplied),
+      energy: "chargeInductionDeltaEnergyElectronVolt",
+      forces: "addedInductionForceVectorsElectronVoltPerAngstrom",
+      additionalForceTolerance: inductionForceTolerance },
+  ];
+  const components = componentSpecs.map((spec) => {
+    if (!spec.active) return Object.freeze({ id: spec.id, active: false,
+      available: true, passed: true, siteCount: 0,
+      forceRecords: Object.freeze([]), targetUsed: false });
+    const sourceEnergy = reportedEvaluation?.[spec.energy];
+    const transformedEnergy = transformedEvaluation?.[spec.energy];
+    const sourceForces = reportedEvaluation?.[spec.forces];
+    const transformedForces = transformedEvaluation?.[spec.forces];
+    if (!Number.isFinite(sourceEnergy) || !Number.isFinite(transformedEnergy)
+        || !Array.isArray(sourceForces) || !Array.isArray(transformedForces)
+        || sourceForces.length !== addedSites.length
+        || transformedForces.length !== addedSites.length
+        || !sourceForces.every(finiteVector) || !transformedForces.every(finiteVector)) {
+      return Object.freeze({ id: spec.id, active: true, available: false,
+        passed: false, siteCount: 0, forceRecords: Object.freeze([]),
+        reason: "complete transformed energy/force data unavailable", targetUsed: false });
+    }
+    const energyResidual = transformedEnergy - sourceEnergy;
+    const energyAllowance = Math.max(Number(absoluteEnergyToleranceElectronVolt),
+      Number(relativeTolerance) * Math.max(1, Math.abs(sourceEnergy),
+        Math.abs(transformedEnergy)));
+    const forceRecords = sourceForces.map((sourceForce, siteIndex) => {
+      const expectedForce = rotate(sourceForce);
+      const actualForce = transformedForces[siteIndex];
+      const residualVector = actualForce.map((value, coordinate) =>
+        value - expectedForce[coordinate]);
+      const residualMagnitude = vectorMagnitude(residualVector);
+      const allowance = Math.max(Number(absoluteForceToleranceElectronVoltPerAngstrom),
+        Number(relativeTolerance) * Math.max(1, vectorMagnitude(expectedForce),
+          vectorMagnitude(actualForce))) + spec.additionalForceTolerance;
+      return Object.freeze({ siteIndex,
+        expectedRotatedForceElectronVoltPerAngstrom: Object.freeze(expectedForce),
+        transformedForceElectronVoltPerAngstrom: Object.freeze([...actualForce]),
+        residualVectorElectronVoltPerAngstrom: Object.freeze(residualVector),
+        residualMagnitudeElectronVoltPerAngstrom: residualMagnitude,
+        allowedResidualElectronVoltPerAngstrom: allowance,
+        passed: residualMagnitude <= allowance });
+    });
+    const energyPassed = Math.abs(energyResidual) <= energyAllowance;
+    const forcePassed = forceRecords.every((record) => record.passed);
+    return Object.freeze({ id: spec.id, active: true, available: true,
+      passed: branchStable && energyPassed && forcePassed,
+      energyPassed, forcePassed, siteCount: forceRecords.length,
+      sourceEnergyElectronVolt: sourceEnergy,
+      transformedEnergyElectronVolt: transformedEnergy,
+      energyResidualElectronVolt: energyResidual,
+      allowedEnergyResidualElectronVolt: energyAllowance,
+      maximumForceResidualElectronVoltPerAngstrom: Math.max(0,
+        ...forceRecords.map((record) => record.residualMagnitudeElectronVoltPerAngstrom)),
+      maximumAllowedForceResidualElectronVoltPerAngstrom: Math.max(0,
+        ...forceRecords.map((record) => record.allowedResidualElectronVoltPerAngstrom)),
+      failedSiteIndices: Object.freeze(forceRecords.filter((record) => !record.passed)
+        .map((record) => record.siteIndex)),
+      forceRecords: Object.freeze(forceRecords), targetUsed: false });
+  });
+  const activeComponents = components.filter((component) => component.active);
+  const failedComponentIds = activeComponents.filter((component) => !component.passed)
+    .map((component) => component.id);
+  const determinant = rotationMatrix[0][0]
+    * (rotationMatrix[1][1] * rotationMatrix[2][2]
+      - rotationMatrix[1][2] * rotationMatrix[2][1])
+    - rotationMatrix[0][1] * (rotationMatrix[1][0] * rotationMatrix[2][2]
+      - rotationMatrix[1][2] * rotationMatrix[2][0])
+    + rotationMatrix[0][2] * (rotationMatrix[1][0] * rotationMatrix[2][1]
+      - rotationMatrix[1][1] * rotationMatrix[2][0]);
+  const passed = branchStable && Math.abs(determinant - 1) <= 1e-12
+    && failedComponentIds.length === 0;
+  return Object.freeze({ available: activeComponents.every((component) => component.available),
+    passed, properRotation: Math.abs(determinant - 1) <= 1e-12,
+    rotationDeterminant: determinant,
+    rotationAngleRadians: angle,
+    rotationAxis: Object.freeze(axis),
+    rotationMatrix: Object.freeze(rotationMatrix.map((row) => Object.freeze(row))),
+    translationAngstrom: Object.freeze(translationAngstrom.map(Number)),
+    branchStable, componentCount: components.length,
+    activeComponentCount: activeComponents.length,
+    failedComponentIds: Object.freeze(failedComponentIds),
+    components: Object.freeze(components),
+    evaluationCount: 1,
+    distanceEvaluationCount: transformedEvaluation.distanceEvaluations || 0,
+    targetUsed: false,
+    reason: passed
+      ? "energies are invariant and movable forces are equivariant under the declared proper SE(3) transform"
+      : !branchStable ? "the rigid transform changed the finite interaction branch"
+        : `rigid-motion covariance failed: ${failedComponentIds.join(", ")}`,
+    claimBoundary: "This applies one predeclared proper rotation and translation to the complete finite system, then checks scalar-energy invariance and movable-force vector equivariance for the total and every active component. It is a frame-covariance metamorphic certificate—not transfer across materials, periodic images, a fitted potential, fixed-site forces, Hessian, equilibrium, dynamics, or time." });
+}
+
 function groupResultant(positions, forces) {
   const count = forces.length;
   const centroid = positions.reduce(addVector, [0, 0, 0]).map((value) => value / count);
@@ -1602,12 +1760,53 @@ export function auditModelForceRelaxationPath(
       reason: error?.message || "endpoint environment reaction torque audit unavailable",
       targetUsed: false });
   }
+  let endpointRigidMotionCovarianceAudit;
+  try {
+    const endpointImageIndices = [0, images.length - 1];
+    const records = endpointImageIndices.map((imageIndex) => Object.freeze({
+      imageIndex,
+      fraction: images[imageIndex].fraction,
+      ...auditFiniteInteractionRigidMotionCovariance(currentSites,
+        images[imageIndex].sites, imageEvaluations[imageIndex],
+        electrostaticsOptions, {
+          rotationAngleRadians: auditOptions.rigidCovarianceRotationAngleRadians,
+          translationAngstrom: auditOptions.rigidCovarianceTranslationAngstrom,
+          absoluteEnergyToleranceElectronVolt:
+            auditOptions.rigidCovarianceAbsoluteEnergyToleranceElectronVolt,
+          absoluteForceToleranceElectronVoltPerAngstrom:
+            auditOptions.rigidCovarianceAbsoluteForceToleranceElectronVoltPerAngstrom,
+          relativeTolerance: auditOptions.relativeTolerance,
+        }),
+    }));
+    endpointRigidMotionCovarianceAudit = Object.freeze({
+      available: records.every((record) => record.available),
+      passed: records.every((record) => record.passed),
+      endpointCount: records.length,
+      evaluationCount: records.reduce((sum, record) =>
+        sum + record.evaluationCount, 0),
+      distanceEvaluationCount: records.reduce((sum, record) =>
+        sum + record.distanceEvaluationCount, 0),
+      failedEndpointImageIndices: Object.freeze(records
+        .filter((record) => !record.passed).map((record) => record.imageIndex)),
+      records: Object.freeze(records), targetUsed: false,
+      reason: records.every((record) => record.passed)
+        ? "both endpoint interaction states are proper-SE(3) covariant"
+        : "one or both endpoint rigid-motion covariance gates failed",
+    });
+  } catch (error) {
+    endpointRigidMotionCovarianceAudit = Object.freeze({ available: false, passed: false,
+      endpointCount: 0, evaluationCount: 0, distanceEvaluationCount: 0,
+      failedEndpointImageIndices: Object.freeze([]), records: Object.freeze([]),
+      reason: error?.message || "endpoint rigid-motion covariance unavailable",
+      targetUsed: false });
+  }
   const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
     && workEnergyClosure.passed && panelWorkEnergyClosure.passed
     && interiorGradientConsistency.passed
     && endpointCartesianGradientAudit.passed
     && endpointEnvironmentReactionAudit.passed
     && endpointEnvironmentTorqueAudit.passed
+    && endpointRigidMotionCovarianceAudit.passed
     && componentWorkEnergyClosures.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
@@ -1617,6 +1816,7 @@ export function auditModelForceRelaxationPath(
       && endpointCartesianGradientAudit.available
       && endpointEnvironmentReactionAudit.available
       && endpointEnvironmentTorqueAudit.available
+      && endpointRigidMotionCovarianceAudit.available
       && componentWorkEnergyClosures.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
@@ -1632,8 +1832,10 @@ export function auditModelForceRelaxationPath(
                   ? endpointEnvironmentReactionAudit.reason
                   : !endpointEnvironmentTorqueAudit.passed
                     ? endpointEnvironmentTorqueAudit.reason
+                    : !endpointRigidMotionCovarianceAudit.passed
+                      ? endpointRigidMotionCovarianceAudit.reason
               : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
-                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, fixed-environment-force/torque-reaction, and component-work closure gates",
+                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, endpoint-Cartesian-gradient, fixed-environment-force/torque-reaction, proper-SE(3)-covariance, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -1714,6 +1916,17 @@ export function auditModelForceRelaxationPath(
       endpointEnvironmentTorqueAudit.distanceEvaluationCount || 0,
     failedEnvironmentTorqueEndpointImageIndices:
       endpointEnvironmentTorqueAudit.failedEndpointImageIndices || Object.freeze([]),
+    endpointRigidMotionCovariancePassed:
+      endpointRigidMotionCovarianceAudit.passed,
+    endpointRigidMotionCovarianceAudit,
+    rigidMotionCovarianceEndpointCount:
+      endpointRigidMotionCovarianceAudit.endpointCount || 0,
+    rigidMotionCovarianceEvaluationCount:
+      endpointRigidMotionCovarianceAudit.evaluationCount || 0,
+    rigidMotionCovarianceDistanceEvaluationCount:
+      endpointRigidMotionCovarianceAudit.distanceEvaluationCount || 0,
+    failedRigidMotionCovarianceEndpointImageIndices:
+      endpointRigidMotionCovarianceAudit.failedEndpointImageIndices || Object.freeze([]),
     componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
     componentWorkEnergyClosures,
     activeWorkEnergyComponentCount:
@@ -1726,6 +1939,6 @@ export function auditModelForceRelaxationPath(
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, both collectively differentiated fixed-environment force and torque reactions, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, directions, subsystems, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected, per-coordinate, or lever-arm-projected allowance. These checks validate the declared decomposition along one sampled path plus endpoint movable-site gradients and net environment reactions, not transferable physical components, per-fixed-site forces, fixed-solid relaxation, traction, stress, couple stress, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, force-work/energy, subsystem-reaction, and reference-frame consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, both movable-site endpoint Cartesian gradients, both collectively differentiated fixed-environment force and torque reactions, endpoint proper-SE(3) energy/force covariance, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently. Numerical induction-force Richardson error contributes only its displacement-projected, per-coordinate, or lever-arm-projected allowance. These checks validate the declared decomposition along one sampled path plus endpoint gradients, reactions, and frame covariance—not transfer between materials, per-fixed-site forces, fixed-solid relaxation, traction, stress, couple stress, an all-image Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

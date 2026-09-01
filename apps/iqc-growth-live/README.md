@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 452 · proper-SE(3) finite-interaction covariance
+
+The response gate now checks that its finite interaction is independent of the
+observer's proper Cartesian frame. At both endpoints, one deterministic
+rotation with determinant +1 and one translation are applied to the complete
+current-plus-movable system. Total and active Coulomb, Born–Mayer, damped-
+dispersion, and induction energies must remain invariant, while every reported
+movable-site force vector must rotate equivariantly.
+
+Two selectable endpoint cards share the response component selector. Each
+reports the transform determinant and angle, maximum normalized energy and
+force residuals, evaluation cost, and decision. Synthetic energy corruption
+and a transverse-force corruption fail independently. The audit adds one
+finite-interaction evaluation per endpoint and does not change the proposed
+geometry.
+
+This is one bounded runtime covariance certificate. It excludes reflections
+and does not prove every proper transform, periodic-image covariance,
+transferability of a fitted potential, fixed-site forces, equilibrium,
+dynamics, or physical time.
+
 ## Build 451 · fixed-environment reaction torque
 
 The endpoint balance certificate now closes angular as well as linear momentum.

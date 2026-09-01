@@ -12,9 +12,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /hierarchyEvidenceMicroscope/);
   assert.match(document, /Hierarchy evidence microscope/);
-  assert.match(document, /app\.js\?v=20260901-451/);
+  assert.match(document, /app\.js\?v=20260901-452/);
 }
-assert.match(app, /hierarchy-evidence-microscope\.mjs\?v=20260901-451/);
+assert.match(app, /hierarchy-evidence-microscope\.mjs\?v=20260901-452/);
 assert.match(app, /buildHierarchyEvidenceMicroscope/);
 assert.match(app, /renderHierarchyEvidenceMicroscope/);
 assert.match(model, /gcts-hierarchy-evidence-microscope-v1/);
