@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+## Anchored two-shell interface response (Build 436)
+
+The coupled finite-interaction projection can now carry a bounded response two
+contact shells into the pre-existing solid. Fresh atoms receive a `5% d_nn`
+budget, first-shell substrate atoms `1.5%`, and second-shell atoms `0.5%`.
+Every interface response atom must lie on an explicit consecutive learned-contact
+path ending at a fixed third-shell anchor. The standalone layer certificate
+rejects empty layers, set overlap, dangling first-shell branches, and outer-shell
+atoms without fixed anchors. The growth implementation freezes these layers
+before projection and records their exact populations and contact-path result.
+
+All movable sites are evaluated as one finite interaction group. Thus pair
+energy and force terms between fresh atoms and either shell, and between movable
+substrate atoms, are present consistently. Commit still requires lower learned
+contact/angle strain, lower response-consistent finite energy, lower complete
+force RMS and p90, hard colored exclusion, learned coordination and angular
+envelopes, the public boundary, discrete site identity, and proper port topology.
+The receipt carries per-shell caps plus RMS/max realized displacement and marks
+`continuumElasticityClaimed=false` and `mechanicalEquilibriumClaimed=false`.
+
+This adds finite-depth substrate accommodation without integrating the underlying
+dynamics. Shell depth and cap decay are declared, not inferred from an elastic
+tensor, phonons, a Green function, stress equilibrium, or a transferable force
+field. Everything outside the second substrate shell remains fixed.
+
 ## Coupled finite-interaction interface step (Build 435)
 
 The force-informed and substrate-shell projections now have a combined arm.

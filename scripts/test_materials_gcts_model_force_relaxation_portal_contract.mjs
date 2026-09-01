@@ -7,6 +7,7 @@ const app = read("apps/iqc-growth-live/app.js");
 const html = read("apps/iqc-growth-live/index.html");
 const compatibility = read("iqc-growth-live/index.html");
 const moduleSource = read("apps/iqc-growth-live/model-force-relaxation-seed.mjs");
+const shellSource = read("apps/iqc-growth-live/anchored-interface-shells.mjs");
 const readme = read("apps/iqc-growth-live/README.md");
 const benchmark = read("docs/projects/materials-recursive-gcts-benchmark.md");
 const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
@@ -14,12 +15,14 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force">Finite interaction −∇U · energy \+ force audit/);
   assert.match(document, /value="model-force-interface">Finite −∇U interface shell/);
+  assert.match(document, /value="model-force-layered-interface">Finite −∇U two-shell response/);
   assert.match(document, /RMS\/p90 force residuals/);
 }
 
 for (const token of [
   "buildModelForceRelaxationSeed",
   '"model-force": Object.freeze',
+  '"model-force-layered-interface": Object.freeze',
   "finiteInteractionModelForceSeed",
   "modelForceSeedEnergyGradientComplete",
   "modelForceSeedInductionEnergyEvaluations",
@@ -29,6 +32,13 @@ for (const token of [
   "modelForceSeedHeterogeneousDisplacementCaps",
   "modelForceAuditedFreshSites",
   "modelForceAuditedSubstrateSites",
+  "substrateShellCount",
+  "substrateShellPopulations",
+  "substrateShellDisplacementCapsAngstrom",
+  "substrateShellMaximumDisplacementsAngstrom",
+  "anchoredInterfaceResponsePassed",
+  "continuumElasticityClaimed: false",
+  "mechanicalEquilibriumClaimed: false",
   "modelForceEnergyDescentAvailable",
   "modelForceEnergyDecreased",
   "modelForceEnergyBeforeElectronVolt",
@@ -74,8 +84,17 @@ for (const token of [
   "p90ForceDecreased",
 ]) assert.ok(moduleSource.includes(token), token);
 
+for (const token of [
+  "auditAnchoredInterfaceShells",
+  "every interface-response site has a contact path to the fixed outer anchors",
+  "danglingByLayer",
+  "targetUsed: false",
+  "not an elastic Green function",
+]) assert.ok(shellSource.includes(token), token);
+
 assert.match(readme, /Build 433 · a settling leap must reduce residual force/);
 assert.match(benchmark, /Emitted-site force-residual descent \(Build 433\)/);
 assert.match(atlas, /"38", "Residual-force descent gate"/);
+assert.match(atlas, /"41", "Anchored two-shell interface response"/);
 
 console.log("model-force relaxation portal contract passed");

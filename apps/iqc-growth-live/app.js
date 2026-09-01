@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-435";
+  from "./external-action-barrier.mjs?v=20260901-436";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-435";
+  from "./action-path-viewer.mjs?v=20260901-436";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-435";
+  from "./action-path-mechanism.mjs?v=20260901-436";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-435";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-436";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-435";
+  from "./kinetic-event-spectrum.mjs?v=20260901-436";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-435";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-436";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-435";
+  from "./kinetic-geometry-response.mjs?v=20260901-436";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-435";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-436";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-435";
+  from "./surface-hop-events.mjs?v=20260901-436";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-435";
+  from "./species-exchange-events.mjs?v=20260901-436";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-435";
+  from "./external-state-relaxation.mjs?v=20260901-436";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-435";
+  from "./reversible-transition-lineage.mjs?v=20260901-436";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-435";
+  from "./finite-network-population-dynamics.mjs?v=20260901-436";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-435";
+  from "./finite-network-geometric-flux.mjs?v=20260901-436";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-435";
+  from "./finite-network-structural-flux.mjs?v=20260901-436";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-435";
+  from "./geometric-state-descriptor.mjs?v=20260901-436";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-435";
+  from "./finite-network-global-order.mjs?v=20260901-436";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-435";
+  from "./finite-network-first-passage.mjs?v=20260901-436";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-435";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-436";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-435";
+  from "./finite-network-passage-control.mjs?v=20260901-436";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-435";
+  from "./finite-network-rate-intervention.mjs?v=20260901-436";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-435";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-435";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-435";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-435";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-435";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-435";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-436";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-435";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-436";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-435";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-436";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-435";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-436";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-435";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-436";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,56 +163,56 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-435";
+  from "./classical-nucleation-evidence.mjs?v=20260901-436";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-435";
+  from "./classical-capillarity-action.mjs?v=20260901-436";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-435";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-436";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-435";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-436";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-435";
+  from "./critical-nucleus-geometry.mjs?v=20260901-436";
 import { auditCriticalNucleusGrammarAdmission }
-  from "./critical-nucleus-grammar-admission.mjs?v=20260901-435";
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-436";
 import { buildCriticalNucleusCoverVisualization }
-  from "./critical-nucleus-cover-visualization.mjs?v=20260901-435";
+  from "./critical-nucleus-cover-visualization.mjs?v=20260901-436";
 import { buildExperimentalScatteringRequest, buildInstrumentProfileDemonstrator,
   compareExperimentalScattering, validateExperimentalScatteringResponse }
-  from "./experimental-scattering-validation.mjs?v=20260901-435";
+  from "./experimental-scattering-validation.mjs?v=20260901-436";
 import { buildRruffExperimentalResponse, findRruffPowderProfiles,
   loadRruffPowderLibrary, rruffRequestCompatibility }
-  from "./public-powder-profile-library.mjs?v=20260901-435";
+  from "./public-powder-profile-library.mjs?v=20260901-436";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-435";
+  from "./external-attachment-kinetics.mjs?v=20260901-436";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-435";
+  from "./external-interface-flux.mjs?v=20260901-436";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-435";
+  from "./growth-regime-bridge.mjs?v=20260901-436";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-435";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-436";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-435";
+  from "./catalog-conditional-chronology.mjs?v=20260901-436";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-435";
+  from "./coupled-physics-state.mjs?v=20260901-436";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-435";
+} from "./ice-molecular-anchor-growth.js?v=20260901-436";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-435";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-436";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-435";
+} from "./ice-orientation-evidence.mjs?v=20260901-436";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -229,7 +229,7 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
 import { finiteDebyeXrayPowderIntensity, neutralXrayFormFactorSupport,
   periodicBraggXrayPowderIntensity,
   XRAY_FORM_FACTOR_PROVENANCE }
-  from "./xray-form-factors.mjs?v=20260901-435";
+  from "./xray-form-factors.mjs?v=20260901-436";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
@@ -240,14 +240,14 @@ import { directionalContactExclusion, directionalPairDisplacementSigma, displace
   from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { BORN_MAYER_PAIR_POLICIES, buildBornMayerPairMatrix }
-  from "./born-mayer-pair-matrix.mjs?v=20260901-435";
+  from "./born-mayer-pair-matrix.mjs?v=20260901-436";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { FINITE_POINT_CHARGE_PROVENANCE, finitePointChargeReachProfile,
   incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-435";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-436";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
@@ -259,7 +259,9 @@ import { scalarSpinCompatible, scalarSpinPolarity }
 import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { auditModelForceRelaxationOutcome, buildModelForceRelaxationSeed }
-  from "./model-force-relaxation-seed.mjs?v=20260901-435";
+  from "./model-force-relaxation-seed.mjs?v=20260901-436";
+import { auditAnchoredInterfaceShells }
+  from "./anchored-interface-shells.mjs?v=20260901-436";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
 import { archivedResponseDeformationGradient, archivedStressStrainResponseArtifact,
@@ -339,7 +341,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-435", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-436", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1578,7 +1580,7 @@ const STRUCTURAL_RELAXATION_MODES = Object.freeze({
   balanced: Object.freeze({ label: "balanced", displacementFraction: .05, iterations: 12 }),
   strong: Object.freeze({ label: "strong", displacementFraction: .08, iterations: 20 }),
   "interface-shell": Object.freeze({ label: "interface-shell co-relaxation",
-    displacementFraction: .05, substrateFraction: .015, iterations: 16,
+    displacementFraction: .05, substrateFractions: Object.freeze([.015]), iterations: 16,
     interfaceShell: true }),
   observed: Object.freeze({ label: "observed-vector seed", displacementFraction: .05,
     iterations: 12, observedSeed: true }),
@@ -1587,8 +1589,13 @@ const STRUCTURAL_RELAXATION_MODES = Object.freeze({
   "model-force": Object.freeze({ label: "finite interaction-gradient seed",
     displacementFraction: .05, iterations: 12, modelForceSeed: true }),
   "model-force-interface": Object.freeze({ label: "finite-interaction interface shell",
-    displacementFraction: .05, substrateFraction: .015, iterations: 16,
+    displacementFraction: .05, substrateFractions: Object.freeze([.015]), iterations: 16,
     modelForceSeed: true, interfaceShell: true }),
+  "model-force-layered-interface": Object.freeze({
+    label: "finite-interaction two-shell interface response",
+    displacementFraction: .05, substrateFractions: Object.freeze([.015, .005]), iterations: 20,
+    modelForceSeed: true, interfaceShell: true,
+  }),
 });
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -4850,7 +4857,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435",
+    generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4936,7 +4943,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435",
+    generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -5137,7 +5144,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-435", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-436", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -5184,7 +5191,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5436,7 +5443,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5955,7 +5962,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-435",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -15657,7 +15664,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-435" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-436" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -15665,7 +15672,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-435",
+      buildId: "20260901-436",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16786,10 +16793,12 @@ async function buildExperimentReceipt() {
       },
       postAttachmentConstraintProjection: {
         role: structuralRelaxationSpec().interfaceShell
-          ? "target-blind bounded accommodation of newly emitted sites plus their first connected substrate shell"
+          ? `target-blind bounded accommodation of newly emitted sites plus ${structuralRelaxationSpec().substrateFractions.length} connected substrate shell${structuralRelaxationSpec().substrateFractions.length === 1 ? "" : "s"}`
           : "target-blind bounded accommodation of newly emitted post-replay sites in the learned contact-angle geometry",
         mode: structuralRelaxationMode,
         displacementFractionOfNearestNeighbor: structuralRelaxationSpec().displacementFraction,
+        substrateDisplacementFractionsOfNearestNeighbor:
+          structuralRelaxationSpec().substrateFractions || [],
         maximumIterations: structuralRelaxationSpec().iterations,
         attempts: structuralRelaxationAttempts,
         accepted: structuralRelaxationAccepted,
@@ -16805,6 +16814,8 @@ async function buildExperimentReceipt() {
         properPortTopologyRetained: true,
         targetUsed: false,
         physicalPotentialUsed: Boolean(structuralRelaxationSpec().modelForceSeed),
+        continuumElasticityClaimed: false,
+        mechanicalEquilibriumClaimed: false,
         forceIntegrated: false,
         physicalTimeModeled: false,
       },
@@ -18547,7 +18558,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-435" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-436" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -18659,6 +18670,25 @@ function notebookInterventionFactors(receipt) {
       freshSites: search.postAttachmentConstraintProjection.latest?.freshSites ?? null,
       substrateSites: search.postAttachmentConstraintProjection.latest?.substrateSites ?? null,
       fixedAnchorSites: search.postAttachmentConstraintProjection.latest?.fixedAnchorSites ?? null,
+      interfaceFreshSites:
+        search.postAttachmentConstraintProjection.latest?.interfaceFreshSites ?? null,
+      substrateShellCount:
+        search.postAttachmentConstraintProjection.latest?.substrateShellCount ?? null,
+      substrateShellPopulations:
+        search.postAttachmentConstraintProjection.latest?.substrateShellPopulations ?? null,
+      substrateShellDisplacementCapsAngstrom:
+        search.postAttachmentConstraintProjection.latest
+          ?.substrateShellDisplacementCapsAngstrom ?? null,
+      substrateShellMaximumDisplacementsAngstrom:
+        search.postAttachmentConstraintProjection.latest
+          ?.substrateShellMaximumDisplacementsAngstrom ?? null,
+      substrateShellRmsDisplacementsAngstrom:
+        search.postAttachmentConstraintProjection.latest
+          ?.substrateShellRmsDisplacementsAngstrom ?? null,
+      anchoredInterfaceResponsePassed:
+        search.postAttachmentConstraintProjection.latest?.anchoredInterfaceResponsePassed ?? null,
+      anchoredInterfaceResponseReason:
+        search.postAttachmentConstraintProjection.latest?.anchoredInterfaceResponseReason ?? null,
       substrateMaximumDisplacementAngstrom:
         search.postAttachmentConstraintProjection.latest?.substrateMaximumDisplacementAngstrom ?? null,
       discreteClusterSiteIdentityRetained:
@@ -18667,6 +18697,10 @@ function notebookInterventionFactors(receipt) {
         search.postAttachmentConstraintProjection.latest?.exactClusterGeometryRetained ?? null,
       clusterMembershipRecomputed:
         search.postAttachmentConstraintProjection.latest?.clusterMembershipRecomputed ?? null,
+      continuumElasticityClaimed:
+        search.postAttachmentConstraintProjection.latest?.continuumElasticityClaimed ?? null,
+      mechanicalEquilibriumClaimed:
+        search.postAttachmentConstraintProjection.latest?.mechanicalEquilibriumClaimed ?? null,
       contactAngleStrainDecreased:
         search.postAttachmentConstraintProjection.latest?.contactAngleStrainDecreased ?? null,
       modelForceEnergyDecreased:
@@ -25940,17 +25974,52 @@ function localConstraintState(localAtoms, movableAtoms, proposedById) {
   return { strain, overflows, angularViolations, affectedIndices };
 }
 
-function connectedInterfaceSubstrateShell(freshAtoms) {
+function connectedInterfaceResponseDomain(freshAtoms, movableShellCount = 1) {
   const freshSet = new Set(freshAtoms);
-  const shell = new Set();
-  freshAtoms.forEach((fresh) => nearbyAtoms(fresh.p,
-    coloredCoordinationEnvelopes?.maximumCutoff || 2 * referenceSpacing).forEach((neighbor) => {
-    if (freshSet.has(neighbor)) return;
+  const reach = coloredCoordinationEnvelopes?.maximumCutoff || 2 * referenceSpacing;
+  const neighbors = (atom) => nearbyAtoms(atom.p, reach).filter((neighbor) => {
+    if (neighbor === atom) return false;
     const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes,
-      fresh.species, neighbor.species);
-    if (envelope && fresh.p.distanceTo(neighbor.p) <= envelope.contactCutoff) shell.add(neighbor);
-  }));
-  return [...shell].sort((first, second) => first.id - second.id);
+      atom.species, neighbor.species)
+      || coordinationEnvelopeFor(coloredCoordinationEnvelopes,
+        neighbor.species, atom.species);
+    return envelope && atom.p.distanceTo(neighbor.p) <= envelope.contactCutoff;
+  });
+  const interfaceFreshAtoms = freshAtoms.filter((fresh) =>
+    neighbors(fresh).some((neighbor) => !freshSet.has(neighbor)));
+  const layers = [interfaceFreshAtoms];
+  const visited = new Set(freshAtoms);
+  let frontier = interfaceFreshAtoms;
+  for (let depth = 0; depth < movableShellCount + 1; depth++) {
+    const next = new Set();
+    frontier.forEach((atom) => neighbors(atom).forEach((neighbor) => {
+      if (!visited.has(neighbor)) next.add(neighbor);
+    }));
+    frontier = [...next].sort((first, second) => first.id - second.id);
+    frontier.forEach((atom) => visited.add(atom));
+    layers.push(frontier);
+  }
+  const substrateShells = layers.slice(1, movableShellCount + 1);
+  const fixedAnchors = layers[movableShellCount + 1] || [];
+  const contactPairs = [];
+  for (let depth = 0; depth < layers.length - 1; depth++) {
+    const outerSet = new Set(layers[depth + 1]);
+    layers[depth].forEach((atom) => neighbors(atom).forEach((neighbor) => {
+      if (outerSet.has(neighbor)) contactPairs.push([atom.id, neighbor.id]);
+    }));
+  }
+  const audit = auditAnchoredInterfaceShells({
+    freshIds: interfaceFreshAtoms.map((atom) => atom.id),
+    shellIds: substrateShells.map((shell) => shell.map((atom) => atom.id)),
+    anchorIds: fixedAnchors.map((atom) => atom.id),
+    contactPairs,
+  });
+  return Object.freeze({
+    interfaceFreshAtoms: Object.freeze(interfaceFreshAtoms),
+    substrateShells: Object.freeze(substrateShells.map(Object.freeze)),
+    fixedAnchors: Object.freeze(fixedAnchors),
+    audit,
+  });
 }
 
 function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
@@ -25958,14 +26027,20 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
   if (!spec?.displacementFraction || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
   const freshIdSet = new Set(freshAtomIds);
   const freshAtoms = atoms.filter((atom) => freshIdSet.has(atom.id));
-  const substrateAtoms = spec.interfaceShell ? connectedInterfaceSubstrateShell(freshAtoms) : [];
+  const substrateFractions = spec.substrateFractions || [];
+  const interfaceDomain = spec.interfaceShell
+    ? connectedInterfaceResponseDomain(freshAtoms, substrateFractions.length) : null;
+  const substrateShells = interfaceDomain?.substrateShells || [];
+  const substrateAtoms = substrateShells.flat();
   const movableAtoms = [...freshAtoms, ...substrateAtoms];
   const movableIdSet = new Set(movableAtoms.map((atom) => atom.id));
   const cap = Math.min(referenceSpacing * spec.displacementFraction, MERGE_TOLERANCE * .45);
-  const substrateCap = spec.interfaceShell
-    ? Math.min(referenceSpacing * spec.substrateFraction, MERGE_TOLERANCE * .2) : 0;
+  const substrateCaps = substrateFractions.map((fraction) =>
+    Math.min(referenceSpacing * fraction, MERGE_TOLERANCE * .2));
+  const substrateShellById = new Map(substrateShells.flatMap((shell, shellIndex) =>
+    shell.map((atom) => [atom.id, shellIndex])));
   const siteCapById = new Map(movableAtoms.map((atom) => [atom.id,
-    freshIdSet.has(atom.id) ? cap : substrateCap]));
+    freshIdSet.has(atom.id) ? cap : substrateCaps[substrateShellById.get(atom.id)]]));
   // Every sensitivity arm uses one neighborhood large enough for the strongest
   // declared cap. This keeps changes attributable to the cap/iteration rule,
   // not to a silently changing set of fixed context sites.
@@ -25976,18 +26051,13 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
   movableAtoms.forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
   [...localSet].forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
   const localAtoms = [...localSet].sort((first, second) => first.id - second.id);
-  const fixedAnchorAtoms = localAtoms.filter((atom) => !movableIdSet.has(atom.id));
-  const substrateAnchorsPassed = !spec.interfaceShell || (substrateAtoms.length > 0
-    && fixedAnchorAtoms.length > 0 && substrateAtoms.every((substrate) =>
-      fixedAnchorAtoms.some((anchor) => {
-        const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes,
-          substrate.species, anchor.species);
-        return envelope && substrate.p.distanceTo(anchor.p) <= envelope.contactCutoff;
-      })));
+  const fixedAnchorAtoms = spec.interfaceShell ? [...(interfaceDomain?.fixedAnchors || [])]
+    : localAtoms.filter((atom) => !movableIdSet.has(atom.id));
+  const substrateAnchorsPassed = !spec.interfaceShell || Boolean(interfaceDomain?.audit?.passed);
   const input = localAtoms.map((atom) => ({
     species: atom.species, position: atom.p.toArray(), movable: movableIdSet.has(atom.id),
     displacementCap: freshIdSet.has(atom.id) ? cap
-      : movableIdSet.has(atom.id) ? substrateCap : undefined,
+      : movableIdSet.has(atom.id) ? siteCapById.get(atom.id) : undefined,
   }));
   const observedOffsets = spec.observedSeed ? localAtoms.map((atom) => movableIdSet.has(atom.id)
     && atom.observedRelaxationWorldScene?.isVector3
@@ -26032,6 +26102,8 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
     || Boolean(modelForceEnergyDescent?.accepted);
   const substrateDisplacements = substrateAtoms.map((atom) =>
     proposedById.get(atom.id).distanceTo(atom.p));
+  const substrateShellDisplacements = substrateShells.map((shell) => shell.map((atom) =>
+    proposedById.get(atom.id).distanceTo(atom.p)));
   const discreteClusterSiteIdentityRetained = !spec.interfaceShell
     || substrateDisplacements.every((displacement) =>
       displacement <= MERGE_TOLERANCE * .2 + 1e-12);
@@ -26058,9 +26130,15 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
     reason,
     movableSites: movableAtoms.length, freshSites: freshAtoms.length,
     substrateSites: substrateAtoms.length, fixedAnchorSites: fixedAnchorAtoms.length,
+    interfaceFreshSites: interfaceDomain?.interfaceFreshAtoms?.length || 0,
+    substrateShellCount: substrateShells.length,
+    substrateShellPopulations: substrateShells.map((shell) => shell.length),
     neighborhoodSites: localAtoms.length,
     interfaceShellEnabled: Boolean(spec.interfaceShell),
     substrateAnchorsPassed,
+    anchoredInterfaceResponsePassed: Boolean(interfaceDomain?.audit?.passed),
+    anchoredInterfaceResponseReason: interfaceDomain?.audit?.reason || null,
+    anchoredInterfaceDanglingByLayer: interfaceDomain?.audit?.danglingByLayer || [],
     contactTerms: proposal.contactTerms || 0, iterations: proposal.iterations || 0,
     maximumIterations: spec.iterations,
     strainBefore: before.strain.total, strainAfter: hardCompatible ? after.strain.total : before.strain.total,
@@ -26069,7 +26147,15 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
     maximumDisplacementAngstrom: hardCompatible ? proposal.maximumDisplacement * sceneToAngstrom : 0,
     rmsDisplacementAngstrom: hardCompatible ? proposal.rmsDisplacement * sceneToAngstrom : 0,
     displacementCapAngstrom: cap * sceneToAngstrom,
-    substrateDisplacementCapAngstrom: substrateCap * sceneToAngstrom,
+    substrateDisplacementCapAngstrom: (substrateCaps[0] || 0) * sceneToAngstrom,
+    substrateShellDisplacementCapsAngstrom: substrateCaps.map((value) => value * sceneToAngstrom),
+    substrateShellMaximumDisplacementsAngstrom: hardCompatible
+      ? substrateShellDisplacements.map((values) => Math.max(0, ...values) * sceneToAngstrom)
+      : substrateShells.map(() => 0),
+    substrateShellRmsDisplacementsAngstrom: hardCompatible
+      ? substrateShellDisplacements.map((values) => Math.sqrt(
+        values.reduce((sum, value) => sum + value * value, 0) / Math.max(1, values.length),
+      ) * sceneToAngstrom) : substrateShells.map(() => 0),
     substrateMaximumDisplacementAngstrom: hardCompatible
       ? Math.max(0, ...substrateDisplacements) * sceneToAngstrom : 0,
     substrateRmsDisplacementAngstrom: hardCompatible ? Math.sqrt(
@@ -26138,6 +26224,8 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
     exactClusterGeometryRetained: !spec.interfaceShell,
     discreteClusterSiteIdentityRetained,
     clusterMembershipRecomputed: false,
+    continuumElasticityClaimed: false,
+    mechanicalEquilibriumClaimed: false,
     properPortTopologyRetained: true,
     targetUsed: false, physicalPotentialUsed: Boolean(spec.modelForceSeed), forceIntegrated: false,
     archivedDisplacementCopiedAsForce: false,
@@ -27421,7 +27509,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435",
+    generatedAt: new Date().toISOString(), buildId: "20260901-436",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -30692,7 +30780,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435",
+    generatedAt: new Date().toISOString(), buildId: "20260901-436",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -32147,7 +32235,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-436", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -35051,11 +35139,11 @@ function syncStageOptions() {
   const modelForceAvailable = Boolean(formalChargeTarget?.available && finiteIonicPairMode()
     && (ionicPairInductionPolarizabilityAngstrom3 === 0
       || ionicPairInductionForceMode === "finite-difference"));
-  for (const mode of ["model-force", "model-force-interface"]) {
+  for (const mode of ["model-force", "model-force-interface", "model-force-layered-interface"]) {
     const option = structuralRelaxationSelect.querySelector(`option[value="${mode}"]`);
     if (option) option.disabled = !modelForceAvailable;
   }
-  if (["model-force", "model-force-interface"].includes(structuralRelaxationMode)
+  if (["model-force", "model-force-interface", "model-force-layered-interface"].includes(structuralRelaxationMode)
       && !modelForceAvailable) {
     structuralRelaxationMode = "balanced";
   }
@@ -35225,10 +35313,13 @@ function syncStageOptions() {
     strainWeightSelect.value = String(geometricStrainWeight);
     structuralRelaxationSelect.value = structuralRelaxationMode;
     const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
+    const substrateCapLabel = (relaxationSpec.substrateFractions || [])
+      .map((fraction, index) => `shell ${index + 1} ${(100 * fraction).toFixed(1)}%`)
+      .join(" + ");
     structuralRelaxationHint.textContent = relaxationSpec.interfaceShell && relaxationSpec.modelForceSeed
-      ? `finite −∇U · emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + substrate ${(100 * relaxationSpec.substrateFraction).toFixed(1)}% dₙₙ caps`
+      ? `finite −∇U · emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + ${substrateCapLabel} dₙₙ caps`
       : relaxationSpec.interfaceShell
-      ? `emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + substrate ${(100 * relaxationSpec.substrateFraction).toFixed(1)}% dₙₙ caps`
+      ? `emitted ${Math.round(100 * relaxationSpec.displacementFraction)}% + ${substrateCapLabel} dₙₙ caps`
       : relaxationSpec.observedSeed
       ? `${activeTrajectoryGeometryProvenance() ? "validated trajectory endpoint" : "archived vector"} seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
       : relaxationSpec.forceSeed
@@ -39095,11 +39186,11 @@ function physicsTranslationRecords(leap = null) {
       role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
       encoding: structuralRelaxationMode === "off"
         ? "exact frozen-template coordinates; no post-attachment displacement"
-        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with emitted-site displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; ${structuralRelaxationSpec().interfaceShell ? `the first learned-contact substrate shell is also movable under a ${(100 * structuralRelaxationSpec().substrateFraction).toFixed(1)}% dₙₙ cap, every shell atom needs a fixed connected anchor, and discrete site identity stays inside 20% of the merge tolerance` : "only atoms emitted in the current post-replay leap are movable"}${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : structuralRelaxationSpec().forceSeed ? "; initial offsets follow proper-pose-transported residual-force directions with magnitude capped by the frozen sample p90 and are retained only when the full bounded objective improves" : structuralRelaxationSpec().modelForceSeed ? "; initial offsets follow the complete selected finite-interaction −∇U, p90-normalized into the cap; incomplete gradients fail closed, and the final proposal must lower the learned residual, the same response-consistent interaction energy, and both RMS and p90 emitted-site force residuals" : ""}`,
+        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with emitted-site displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; ${structuralRelaxationSpec().interfaceShell ? `${structuralRelaxationSpec().substrateFractions.length} learned-contact substrate shell${structuralRelaxationSpec().substrateFractions.length === 1 ? " is" : "s are"} also movable under outward-decreasing caps ${structuralRelaxationSpec().substrateFractions.map((fraction) => `${(100 * fraction).toFixed(1)}%`).join(" → ")} dₙₙ, every response atom needs a contact path to a fixed outer anchor, and discrete site identity stays inside 20% of the merge tolerance` : "only atoms emitted in the current post-replay leap are movable"}${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : structuralRelaxationSpec().forceSeed ? "; initial offsets follow proper-pose-transported residual-force directions with magnitude capped by the frozen sample p90 and are retained only when the full bounded objective improves" : structuralRelaxationSpec().modelForceSeed ? "; initial offsets follow the complete selected finite-interaction −∇U, p90-normalized into the cap; incomplete gradients fail closed, and the final proposal must lower the learned residual, the same response-consistent interaction energy, and both RMS and p90 movable-group force residuals" : ""}`,
       evidence: lastStructuralRelaxation
         ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.freshSites ?? lastStructuralRelaxation.movableSites} fresh + ${lastStructuralRelaxation.substrateSites ?? 0} substrate movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.interfaceShellEnabled ? ` Substrate max Δ ${lastStructuralRelaxation.substrateMaximumDisplacementAngstrom.toFixed(4)} Å; ${lastStructuralRelaxation.fixedAnchorSites} fixed anchors; anchored ${lastStructuralRelaxation.substrateAnchorsPassed}; discrete site identity ${lastStructuralRelaxation.discreteClusterSiteIdentityRetained}.` : ""}${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Archive-force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""}${lastStructuralRelaxation.modelForceSeedEnabled ? ` Model-force seed ${lastStructuralRelaxation.modelForceSeedAccepted ? "retained" : "ignored or rolled back"}; complete gradient ${lastStructuralRelaxation.modelForceSeedEnergyGradientComplete}; energy descent ${lastStructuralRelaxation.modelForceEnergyDecreased}; force-residual descent ${lastStructuralRelaxation.modelForceResidualDecreased}; ${Number.isFinite(lastStructuralRelaxation.modelForceEnergyChangeElectronVolt) ? `ΔU ${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt >= 0 ? "+" : ""}${lastStructuralRelaxation.modelForceEnergyChangeElectronVolt.toExponential(3)} eV; ` : ""}${Number.isFinite(lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom) && Number.isFinite(lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom) ? `F_rms ${lastStructuralRelaxation.modelForceRmsBeforeEvPerAngstrom.toExponential(3)} → ${lastStructuralRelaxation.modelForceRmsAfterEvPerAngstrom.toExponential(3)} eV/Å; ` : ""}${lastStructuralRelaxation.modelForceSeedInductionEnergyEvaluations + lastStructuralRelaxation.modelForceProjectedForceEnergyEvaluations} force solves + ${lastStructuralRelaxation.modelForceProjectedEnergyDistanceEvaluations} projected distance evaluations.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
-      boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface-shell mode moves a strictly capped first connected substrate shell but leaves symbolic placements and cluster membership unchanged; it is a tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may initialize either the emitted-only or coupled-shell projection and requires response-consistent energy plus RMS/p90 force-residual descent across the entire declared movable group. Neither arm is a total-force audit, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
+      boundary: "This lowers a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, discrete cluster-site identity, and port topology. Interface modes move one or two strictly capped connected substrate shells with an explicit outward contact path to fixed anchors, while symbolic placements and cluster membership stay unchanged; this is tolerance-bounded coordinate accommodation, not a re-fit grammar. A selected finite interaction gradient may initialize the emitted-only or coupled-shell projection and requires response-consistent energy plus RMS/p90 force-residual descent across the entire declared movable group. The shell-depth/cap schedule is declared rather than a learned elastic Green function. No arm is a total-force audit, elastic continuum solution, local minimum, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: "learned",
       role: policySelect.value === "action"
         ? "exact overlap/support gate + action-priority rank; learned marking ablated"
@@ -41108,7 +41199,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-435",
+    generatedAt: new Date().toISOString(), buildId: "20260901-436",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -46331,7 +46422,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-435" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-436" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

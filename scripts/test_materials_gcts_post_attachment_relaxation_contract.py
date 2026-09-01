@@ -12,7 +12,7 @@ README = (APP_DIR / "README.md").read_text()
 def test_post_attachment_projection_is_user_controlled_and_bounded():
     assert 'id="structuralRelaxationSelect"' in HTML
     for mode in ("off", "gentle", "balanced", "strong", "interface-shell",
-                 "model-force-interface"):
+                 "model-force-interface", "model-force-layered-interface"):
         assert f'value="{mode}"' in HTML
     assert "const STRUCTURAL_RELAXATION_MODES" in APP
     assert "displacementFraction: .025" in APP
@@ -24,6 +24,7 @@ def test_post_attachment_projection_is_user_controlled_and_bounded():
     assert "movable-site displacement cap" in MODULE
     assert "Interface shell · emitted 5% + substrate 1.5%" in HTML
     assert "Finite −∇U interface shell · 5% + 1.5%" in HTML
+    assert "Finite −∇U two-shell response · 5% + 1.5% + 0.5%" in HTML
 
 
 def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_closed():
@@ -38,8 +39,10 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "public boundary would be crossed" in APP
     assert "colored hard exclusion would be violated" in APP
     assert "rebuildSpatialIndex();" in APP
-    assert "connectedInterfaceSubstrateShell" in APP
-    assert "substrateFraction: .015" in APP
+    assert "connectedInterfaceResponseDomain" in APP
+    assert "substrateFractions: Object.freeze([.015])" in APP
+    assert "substrateFractions: Object.freeze([.015, .005])" in APP
+    assert "auditAnchoredInterfaceShells" in APP
     assert 'modelForceSeed: true, interfaceShell: true' in APP
     assert "interface shell lacks a fixed connected anchor" in APP
     assert "substrate displacement exceeds the frozen site-identity tolerance" in APP
@@ -48,6 +51,8 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "exactClusterTopologyRetained: true" in APP
     assert "clusterMembershipRecomputed: false" in APP
     assert "properPortTopologyRetained: true" in APP
+    assert "continuumElasticityClaimed: false" in APP
+    assert "mechanicalEquilibriumClaimed: false" in APP
 
 
 def test_projection_is_auditable_without_physical_overclaim():
@@ -63,6 +68,7 @@ def test_projection_is_auditable_without_physical_overclaim():
     ):
         assert nonclaim in APP
     assert "Build 434 · the first substrate shell can accommodate an attachment" in README
+    assert "Build 436 · anchored two-shell interface response" in README
     assert "Any failure atomically restores the exact template coordinates" in README
 
 

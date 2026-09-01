@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 436 · anchored two-shell interface response
+
+The post-attachment laboratory now offers an explicitly layered finite-interaction
+projection. The fresh batch may move by at most `5% d_nn`, the first connected
+substrate shell by `1.5% d_nn`, and the second by `0.5% d_nn`. The contact graph
+must certify a complete outward path from every interface response site to a
+nonmoving third-shell anchor; empty, dangling, overlapping, or unanchored layers
+fail closed. The same complete finite-interaction gradient is evaluated over the
+entire movable group, so movable–movable and fixed–movable terms remain in one
+response-consistent energy/force audit.
+
+The receipt exposes shell populations, per-shell displacement caps, RMS/max
+displacements, anchor count, contact-path status, and the complete energy plus
+RMS/p90 force-residual descent result. Exact colored exclusion, coordination,
+angular envelopes, public boundary, discrete site identity, and port topology
+are still rechecked before commit. The decreasing cap schedule is a declared
+screened geometric response—not a learned elastic Green function, total force
+balance, mechanical equilibrium, a relaxation trajectory, or physical time.
+
 ## Build 435 · force-informed interface accommodation
 
 The two preceding settling paths can now run as one coupled experiment. The
