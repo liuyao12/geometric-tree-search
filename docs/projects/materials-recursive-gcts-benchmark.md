@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+## Finite proton-state-space explorer (Build 404)
+
+The finite orientation CSP now has an exact counting layer. Min-fill variable
+elimination contracts unary pose-domain factors and binary exactly-one-proton
+edge factors with integer arithmetic. It produces an exact decimal solution
+count, exact per-anchor pose marginals, `log Ω`, and a SHA-256 of the complete
+pose-domain/allowed-pair system. A separate explicit DFS remains capped at
+4,096 leaves; hitting that cap no longer turns the count into an unsupported
+guess.
+
+For the 33-anchor final Ice-Ih scaffold, 125 pose hypotheses participate in at
+least one solution, while the exact number of complete assignments is
+`352,321,536,000` (`log Ω = 26.58781005`). The final 17-anchor Ice-Ic scaffold
+has `16,777,216` assignments. Both figures include finite-boundary freedom:
+exterior hydrogen bonds are omitted. Accordingly this is a combinatorial
+geometric degeneracy, not physical residual entropy, a Boltzmann ensemble, or
+an equilibrium proton-ordering claim.
+
+The browser projects the oxygen constraint graph onto its widest intrinsic
+coordinate plane. Molecules are keyboard/click selectable; the detail view
+reports exact assignment counts and fractions for every retained pose, node
+degree, and whether the molecule touches the finite boundary. This is a view
+of the same frozen CSP and never modifies it.
+
+The external orientation request now carries the exact CSP digest and count.
+An exhaustive response must return exactly that many assignments. For large
+spaces, a `certified-global-lower-bound` response may return selected complete
+states plus a method-verifiable energy lower bound covering every excluded
+assignment, while echoing the exact count and CSP digest. A unique orientation
+is eligible only if its uncertainty upper bound lies below every explicit
+competitor and the excluded-state bound. No certificate is bundled.
+
 ## Proton-orientation physics handoff (Build 403)
 
 The browser now converts the unresolved finite ice-rule CSP into an exact
@@ -15,9 +47,10 @@ global constrained problem. Each returned state must assign a retained pose
 to every frozen anchor and pass every exactly-one-proton constraint. The
 method name, version, provenance, shared thermodynamic state, relative free
 energy, and nonnegative uncertainty are mandatory. Selection is licensed only
-for a SHA-bound exhaustive enumeration whose feasible count equals the
-returned states, and when the best state's upper energy interval is strictly
-below every competitor's lower interval. The
+when state-space coverage binds the exact CSP digest/count, using either an
+exhaustive table or a SHA-bound global lower bound for excluded states, and
+when the best state's upper energy interval is strictly below every explicit
+competitor and that lower bound. The
 dimensionless separation is reported as ΔG/kBT, but no Boltzmann probability
 is invented for an incomplete state space.
 

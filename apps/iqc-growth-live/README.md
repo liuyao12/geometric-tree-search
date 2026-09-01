@@ -1,5 +1,36 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 404 · finite proton-state-space explorer
+
+The ice-rule audit now measures the complete finite configurational space
+rather than conflating “globally supported poses” with global assignments. A
+min-fill exact factor-elimination pass counts every assignment of the retained
+pose domains without enumerating them atom by atom, computes exact pose
+marginals, and hashes the complete domain/constraint CSP. The explicit DFS
+preview remains capped at 4,096 states and is labeled truncated independently
+of the exact count.
+
+The distinction is substantial. At the final Ice-Ih oxygen fixed point there
+are 125 locally supported pose hypotheses but exactly **352,321,536,000**
+global finite-boundary assignments (`log Ω = 26.588`). Ice Ic has exactly
+**16,777,216**. These are geometric degeneracies of the finite scaffold with
+exterior hydrogen bonds omitted—not thermodynamic entropy, equilibrium
+probabilities, or evidence that all configurations have equal energy.
+
+The proton-orientation card now renders an interactive projected O-network.
+Edges are observed exactly-one-proton constraints; node size and color expose
+retained pose multiplicity, an outlined node is finite-boundary exposed, and
+clicking a molecule reports the exact global-assignment marginal of each pose.
+The receipt preserves the exact count, `log Ω`, CSP digest, enumeration cap,
+and truncation state.
+
+External free-energy responses must now bind that exact CSP digest and decimal
+assignment count. Small spaces may return an exhaustive energy table. Large
+spaces may instead return a method-provenanced, SHA-bound global lower-bound
+certificate for all excluded assignments; the best state's uncertainty upper
+bound must lie below both every explicit competitor and that certified lower
+bound. The portal still ships no such response, so no proton branch is active.
+
 ## Build 403 · proton-orientation physics handoff
 
 The red held-out ice marking is now actionable without disguising geometry as
@@ -15,10 +46,11 @@ ice rules. A valid response must bind the exact request digest, preserve the
 temperature, pressure, and boundary state, identify its method and provenance,
 assign one retained pose to every anchor, satisfy every frozen constraint, and
 return uncertainties for at least two complete configurations. State-space
-coverage needs a SHA-bound exhaustive-enumeration certificate whose feasible
-count equals the returned configurations. One assignment may become an
-equilibrium orientation marking only when its upper uncertainty bound lies
-below every competitor. Otherwise all domains remain symbolic.
+coverage binds the exact geometric CSP digest and count; it is either an
+exhaustive table or a SHA-bound certified global lower bound for excluded
+assignments. One assignment may become an equilibrium orientation marking only
+when its upper uncertainty bound lies below every explicit competitor and the
+excluded-state bound. Otherwise all domains remain symbolic.
 
 The handoff, validation status, response digest, state count, free-energy gap
 in eV and kBT, and exact claim boundary are receipt-visible. It cannot create a

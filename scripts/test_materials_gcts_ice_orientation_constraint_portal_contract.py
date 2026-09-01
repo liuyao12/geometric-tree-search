@@ -23,6 +23,10 @@ def test_orientation_audit_is_geometric_target_blind_and_fail_honest():
         "globallySupportedHypotheses",
         "resolvedAnchors",
         "ambiguousAnchors",
+        "const factorCount = (fixed = null) =>",
+        "stateCountExact",
+        "stateSpaceSha256",
+        "poseMarginals",
         "canonicalBranchMaterialized: false",
         "targetUsed: false",
         "physicalPotentialUsed: false",
@@ -43,6 +47,8 @@ def test_live_stage_and_receipts_expose_the_constraint_result_without_materializ
         "seedOrientationConstraintAudit: iceOrientationAuditReceipt(iceAnchorTrace.seedOrientationAudit)",
         "finalOrientationConstraintAudit: iceOrientationAuditReceipt(iceAnchorTrace.orientationAudit)",
         "finiteIceRuleConstraintAuditPassed",
+        "exactFeasibleAssignmentCount",
+        "stateSpaceConstraintSha256",
     ):
         assert token in APP
     assert APP.count("finalOrientationConstraintAudit: iceOrientationAuditReceipt") == 2

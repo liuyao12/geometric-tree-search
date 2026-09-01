@@ -32,11 +32,16 @@ def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> Non
         'id="iceOrientationTemperature"',
         'id="iceOrientationEvidenceDownload"',
         'id="iceOrientationEvidenceResponse"',
+        'id="iceOrientationStateSpacePlot"',
+        'id="iceOrientationStateSpaceDetail"',
         'Local pose energies are insufficient',
     ):
         assert token in html
-    assert 'from "./ice-orientation-evidence.mjs?v=20260831-403"' in app
+    assert 'from "./ice-orientation-evidence.mjs?v=20260831-404"' in app
     assert 'function renderIceOrientationEvidenceBridge()' in app
+    assert 'function renderIceOrientationStateSpace(audit)' in app
+    assert '"geometric assignments"' in app
+    assert 'log Ω' in app
     assert 'function iceOrientationPhysicsReceipt()' in app
     assert 'orientationPhysicsEvidence: iceOrientationPhysicsReceipt()' in app
     assert app.count('orientationPhysicsEvidence: iceOrientationPhysicsReceipt()') == 2

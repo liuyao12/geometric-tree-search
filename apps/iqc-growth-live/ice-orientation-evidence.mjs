@@ -103,6 +103,16 @@ export async function buildIceOrientationEvidenceRequest(input) {
   const temperatureKelvin = finite(input.temperatureKelvin, "temperature");
   const pressureGPa = finite(input.pressureGPa ?? 0, "pressure");
   if (!(temperatureKelvin > 0)) throw new Error("temperature must be positive Kelvin");
+  const exactFeasibleAssignmentCount = requiredText(audit.stateCountExact,
+    "exact geometric assignment count");
+  if (!/^\d+$/.test(exactFeasibleAssignmentCount) || BigInt(exactFeasibleAssignmentCount) < 1n) {
+    throw new Error("the finite geometry needs a positive exact assignment count");
+  }
+  const stateSpaceConstraintSha256 = requiredText(audit.stateSpaceSha256,
+    "state-space constraint SHA-256").toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(stateSpaceConstraintSha256)) {
+    throw new Error("the state-space constraint digest must contain 64 hexadecimal characters");
+  }
   const body = {
     schema: ICE_ORIENTATION_REQUEST_SCHEMA,
     generatedAt: requiredText(input.generatedAt, "generation time"),
@@ -117,6 +127,11 @@ export async function buildIceOrientationEvidenceRequest(input) {
       domainCount: domains.length,
       unresolvedDomainCount: unresolved.length,
       retainedPoseCount: domains.reduce((sum, domain) => sum + domain.alternatives.length, 0),
+      exactFeasibleAssignmentCount,
+      stateSpaceConstraintSha256,
+      logFeasibleAssignmentCount: finite(audit.logStateCount, "log assignment count"),
+      explicitEnumerationLimit: Number(audit.maximumExplicitStates) || null,
+      explicitEnumerationTruncated: audit.stateEnumerationTruncated === true,
       exteriorHydrogenBondsOmitted: true,
       candidateGeometryFrozenBeforeRequest: true,
       targetUsed: false,
@@ -124,7 +139,7 @@ export async function buildIceOrientationEvidenceRequest(input) {
     calculation: {
       quantity: "global proton-orientation free energy over complete ice-rule-compatible assignments",
       suitableMethods: ["periodic or embedded electronic-structure free energy", "validated machine-learned potential with proton-ordering calibration", "path-integral or configurational free-energy method"],
-      requiredOutput: "two or more complete assignments with relative free energy and uncertainty at the exact declared thermodynamic and boundary state",
+      requiredOutput: "two or more complete assignments with relative free energy and uncertainty, plus either exhaustive energies or a method-verifiable lower bound for every excluded assignment at the exact declared state",
       independentLocalPoseEnergiesInsufficient: true,
     },
     claimBoundary: "Returned energies may rank only the frozen complete assignments. They cannot create a pose, repair missing candidate supply, infer exterior boundary bonds, or establish kinetics, tunnelling, stationarity, or elapsed time.",
@@ -178,13 +193,30 @@ export async function validateIceOrientationEvidenceResponse(response, request) 
   }
   const coverage = response.stateSpaceCoverage || {};
   const coverageDigest = requiredText(coverage.certificateSha256, "state-space certificate SHA-256").toLowerCase();
-  if (coverage.kind !== "exhaustive-enumeration" || !/^[a-f0-9]{64}$/.test(coverageDigest)
-      || Number(coverage.feasibleAssignmentCount) !== records.length) {
-    throw new Error("state-space completeness requires a SHA-bound exhaustive enumeration whose feasible count equals the returned states");
+  const geometricDigest = requiredText(coverage.stateSpaceConstraintSha256,
+    "covered geometric state-space SHA-256").toLowerCase();
+  const feasibleAssignmentCount = requiredText(String(coverage.feasibleAssignmentCount),
+    "covered feasible assignment count");
+  if (!/^[a-f0-9]{64}$/.test(coverageDigest) || geometricDigest !== request.finiteGeometry.stateSpaceConstraintSha256
+      || feasibleAssignmentCount !== request.finiteGeometry.exactFeasibleAssignmentCount) {
+    throw new Error("state-space coverage does not bind the exact geometric CSP digest and assignment count");
+  }
+  const exactCount = BigInt(feasibleAssignmentCount);
+  const exhaustive = coverage.kind === "exhaustive-enumeration";
+  const certifiedBound = coverage.kind === "certified-global-lower-bound";
+  if (!exhaustive && !certifiedBound) throw new Error("state-space coverage must be exhaustive or provide a certified global lower bound");
+  if (exhaustive && exactCount !== BigInt(records.length)) {
+    throw new Error("exhaustive coverage must return every geometrically feasible assignment");
+  }
+  if (certifiedBound && exactCount <= BigInt(records.length)) {
+    throw new Error("a global lower-bound certificate needs at least one excluded feasible assignment");
   }
   const best = records[0];
   const competitors = records.slice(1);
-  const uniqueIntervalWinner = competitors.every((record) => best.upperEv < record.lowerEv);
+  const excludedStateLowerBoundEv = certifiedBound
+    ? finite(coverage.excludedStateLowerBoundEv, "excluded-state global lower bound") : Infinity;
+  const uniqueIntervalWinner = competitors.every((record) => best.upperEv < record.lowerEv)
+    && best.upperEv < excludedStateLowerBoundEv;
   const stateSpaceComplete = true;
   const kbtEv = BOLTZMANN_EV_PER_KELVIN * request.thermodynamicState.temperatureKelvin;
   const minimumGapEv = Math.min(...competitors.map((record) => record.freeEnergyEv - best.freeEnergyEv));
@@ -196,6 +228,9 @@ export async function validateIceOrientationEvidenceResponse(response, request) 
     stateCount: records.length,
     stateSpaceComplete,
     stateSpaceCertificateSha256: coverageDigest,
+    stateSpaceCoverageKind: coverage.kind,
+    exactFeasibleAssignmentCount: feasibleAssignmentCount,
+    excludedStateLowerBoundEv: Number.isFinite(excludedStateLowerBoundEv) ? excludedStateLowerBoundEv : null,
     uniqueIntervalWinner,
     selectedStateId: selectionEligible ? best.stateId : null,
     selectionEligible,

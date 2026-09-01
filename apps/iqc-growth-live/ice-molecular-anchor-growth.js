@@ -6,6 +6,7 @@ const matvec = (matrix, vector) => matrix.map((row) => row.reduce((sum, value, i
 const matmul = (left, right) => left.map((row) => right[0].map((_, column) =>
   row.reduce((sum, value, index) => sum + value * right[index][column], 0)));
 const DONOR_CONE_DEGREES = 35;
+const MAXIMUM_EXPLICIT_ORIENTATION_STATES = 4096;
 
 function determinant(matrix) {
   return matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
@@ -186,6 +187,104 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
   const consistent = supportedDomains.every((domain) => domain.length > 0);
   const resolvedAnchors = consistent ? supportedDomains.filter((domain) => domain.length === 1).length : 0;
   const canonicalAssignment = consistent ? solveFirst(supportedDomains) : null;
+  const enumeratedAssignments = [];
+  let stateEnumerationTruncated = false;
+  const enumerate = (sourceDomains) => {
+    if (enumeratedAssignments.length > MAXIMUM_EXPLICIT_ORIENTATION_STATES) {
+      stateEnumerationTruncated = true;
+      return;
+    }
+    const domains = sourceDomains.map((domain) => domain.slice());
+    if (!propagate(domains)) return;
+    const unresolved = domains.map((domain, index) => ({ index, size: domain.length }))
+      .filter(({ size }) => size > 1).sort((left, right) => left.size - right.size || left.index - right.index)[0];
+    if (!unresolved) {
+      enumeratedAssignments.push(domains.map((domain) => domain[0]));
+      if (enumeratedAssignments.length > MAXIMUM_EXPLICIT_ORIENTATION_STATES) stateEnumerationTruncated = true;
+      return;
+    }
+    for (const value of domains[unresolved.index]) {
+      const branch = domains.map((domain) => domain.slice());
+      branch[unresolved.index] = [value];
+      enumerate(branch);
+      if (stateEnumerationTruncated) return;
+    }
+  };
+  if (consistent) enumerate(supportedDomains);
+  const retainedAssignments = enumeratedAssignments.slice(0, MAXIMUM_EXPLICIT_ORIENTATION_STATES);
+  const factorCount = (fixed = null) => {
+    if (!consistent) return 0n;
+    const allowed = supportedDomains.map((domain, index) => fixed?.index === index ? [fixed.value] : domain.slice());
+    let factors = allowed.map((domain, index) => ({ vars: [index],
+      table: new Map(domain.map((value) => [String(value), 1n])) }));
+    edges.forEach((edge) => {
+      const table = new Map();
+      allowed[edge.first].forEach((first) => allowed[edge.second].forEach((second) => {
+        if (edge.allowed[first]?.[second]) table.set(`${first},${second}`, 1n);
+      }));
+      factors.push({ vars: [edge.first, edge.second], table });
+    });
+    const remaining = new Set(records.map((_, index) => index));
+    const product = (factor, assignment) => factor.table.get(factor.vars.map((variable) => assignment.get(variable)).join(",")) || 0n;
+    while (remaining.size) {
+      const choice = [...remaining].map((variable) => {
+        const neighbors = new Set(factors.filter((factor) => factor.vars.includes(variable))
+          .flatMap((factor) => factor.vars.filter((other) => other !== variable && remaining.has(other))));
+        const list = [...neighbors];
+        let fill = 0;
+        for (let first = 0; first < list.length; first++) for (let second = first + 1; second < list.length; second++) {
+          if (!factors.some((factor) => factor.vars.includes(list[first]) && factor.vars.includes(list[second]))) fill++;
+        }
+        return { variable, fill, degree: neighbors.size };
+      }).sort((left, right) => left.fill - right.fill || left.degree - right.degree || left.variable - right.variable)[0].variable;
+      const bucket = factors.filter((factor) => factor.vars.includes(choice));
+      factors = factors.filter((factor) => !factor.vars.includes(choice));
+      const scope = [...new Set(bucket.flatMap((factor) => factor.vars))].sort((a, b) => a - b);
+      const outputVars = scope.filter((variable) => variable !== choice);
+      const table = new Map();
+      const assignment = new Map();
+      const visit = (depth) => {
+        if (depth < scope.length) {
+          const variable = scope[depth];
+          allowed[variable].forEach((value) => { assignment.set(variable, value); visit(depth + 1); });
+          assignment.delete(variable); return;
+        }
+        const value = bucket.reduce((result, factor) => result * product(factor, assignment), 1n);
+        if (!value) return;
+        const key = outputVars.map((variable) => assignment.get(variable)).join(",");
+        table.set(key, (table.get(key) || 0n) + value);
+      };
+      visit(0);
+      factors.push({ vars: outputVars, table });
+      remaining.delete(choice);
+    }
+    return factors.reduce((result, factor) => result * (factor.table.get("") || 0n), 1n);
+  };
+  const exactStateCount = factorCount();
+  const stateCountExact = exactStateCount.toString();
+  const stateCountLowerBound = stateEnumerationTruncated ? MAXIMUM_EXPLICIT_ORIENTATION_STATES
+    : retainedAssignments.length;
+  const stateSpaceSha256 = sha256Ascii(JSON.stringify({
+    domains: supportedDomains.map((domain, index) => domain.map((value) => records[index].domain[value].poseKey)),
+    constraints: edges.map((edge) => [records[edge.first].key, records[edge.second].key,
+      records[edge.first].domain.flatMap((firstPose, firstIndex) => records[edge.second].domain.flatMap((secondPose, secondIndex) =>
+        edge.allowed[firstIndex]?.[secondIndex] && supportedDomains[edge.first].includes(firstIndex)
+          && supportedDomains[edge.second].includes(secondIndex) ? [[firstPose.poseKey, secondPose.poseKey]] : []))]),
+  }));
+  const logBigInt = (value) => {
+    const text = value.toString();
+    if (text.length < 16) return Math.log(Number(value));
+    const leading = Number(text.slice(0, 15));
+    return Math.log(leading) + (text.length - 15) * Math.log(10);
+  };
+  const poseMarginals = records.map((record, index) => ({
+    anchorKey: record.key,
+    alternatives: record.domain.filter((_, value) => supportedDomains[index].includes(value)).map((pose) => {
+      const originalIndex = record.domain.findIndex(({ poseKey }) => poseKey === pose.poseKey);
+      return { poseKey: pose.poseKey,
+        assignmentCount: factorCount({ index, value: originalIndex }).toString() };
+    }),
+  }));
   let constrainedEdgesSatisfied = 0;
   if (canonicalAssignment) edges.forEach((edge) => {
     if (edge.allowed[canonicalAssignment[edge.first]]?.[canonicalAssignment[edge.second]]) constrainedEdgesSatisfied++;
@@ -233,6 +332,13 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
     uniqueHydrogenSites,
     orientationDomains,
     orientationConstraints,
+    maximumExplicitStates: MAXIMUM_EXPLICIT_ORIENTATION_STATES,
+    stateCountExact,
+    stateCountLowerBound,
+    stateEnumerationTruncated,
+    stateSpaceSha256,
+    logStateCount: logBigInt(exactStateCount > 0n ? exactStateCount : 1n),
+    poseMarginals,
     allHydrogensResolved: consistent && resolvedAnchors === records.length,
     targetUsed: false,
     physicalPotentialUsed: false,

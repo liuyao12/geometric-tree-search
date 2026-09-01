@@ -31,8 +31,13 @@ if (!ih.orientationAudit.consistent || !ic.orientationAudit.consistent
   || ih.orientationAudit.resolvedAnchors !== 9
   || ih.orientationAudit.ambiguousAnchors !== 24
   || ih.orientationAudit.globallySupportedHypotheses !== 125
+  || ih.orientationAudit.stateCountExact !== "352321536000"
+  || Math.abs(ih.orientationAudit.logStateCount - 26.58781005014425) > 1e-9
+  || ih.orientationAudit.stateSpaceSha256 !== "4fe309af70f9f877133dcc92fb64ff8ff07b01883e4abb6574db28e22dad3407"
   || ic.orientationAudit.constrainedEdgesSatisfied !== 16
   || ic.orientationAudit.constrainedEdgesTotal !== 16
+  || ic.orientationAudit.stateCountExact !== "16777216"
+  || ic.orientationAudit.stateSpaceSha256 !== "c910a20ee452df714901730838dbb09f8141caa32c2c250f1cb2960ab358784b"
   || ic.orientationAudit.resolvedAnchors !== 5
   || ic.orientationAudit.ambiguousAnchors !== 12) {
   throw new Error("finite proton-orientation constraint audit changed");
@@ -40,8 +45,14 @@ if (!ih.orientationAudit.consistent || !ic.orientationAudit.consistent
 for (const trace of [ih, ic]) {
   const audits = [trace.seedOrientationAudit, ...trace.waves.map((wave) => wave.orientationAudit)];
   if (audits.some((audit) => !audit || audit.targetUsed || audit.physicalPotentialUsed
-    || audit.canonicalBranchMaterialized || audit.constrainedEdgesSatisfied !== audit.constrainedEdgesTotal)) {
+    || audit.canonicalBranchMaterialized || audit.constrainedEdgesSatisfied !== audit.constrainedEdgesTotal
+    || !/^\d+$/.test(audit.stateCountExact) || !/^[a-f0-9]{64}$/.test(audit.stateSpaceSha256)
+    || audit.poseMarginals.length !== audit.anchors)) {
     throw new Error("orientation audit leakage/claim-boundary contract failed");
+  }
+  for (const audit of audits) for (const marginal of audit.poseMarginals) {
+    const total = marginal.alternatives.reduce((sum, alternative) => sum + BigInt(alternative.assignmentCount), 0n);
+    if (total !== BigInt(audit.stateCountExact)) throw new Error("exact pose marginals do not partition the global state space");
   }
   if (trace.orientationAudit.allHydrogensResolved) throw new Error("finite boundary falsely resolved every proton pose");
 }

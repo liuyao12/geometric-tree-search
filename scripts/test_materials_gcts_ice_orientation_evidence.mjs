@@ -17,6 +17,8 @@ const audit = {
   ],
   orientationConstraints: [{ firstAnchorKey: "a", secondAnchorKey: "b", separation: 2.7,
     allowedPosePairs: [["a0", "b1"], ["a1", "b0"]] }],
+  stateCountExact: "2", stateSpaceSha256: "d".repeat(64), logStateCount: Math.log(2),
+  maximumExplicitStates: 4096, stateEnumerationTruncated: false,
 };
 
 const request = await buildIceOrientationEvidenceRequest({
@@ -37,7 +39,7 @@ const response = {
   method: { name: "test free-energy solver", version: "1", provenance: "synthetic contract" },
   modelScope: "global-configurational",
   stateSpaceCoverage: { kind: "exhaustive-enumeration", feasibleAssignmentCount: 2,
-    certificateSha256: "c".repeat(64) },
+    stateSpaceConstraintSha256: "d".repeat(64), certificateSha256: "c".repeat(64) },
   states: [
     { stateId: "low", assignment: [{ anchorKey: "a", poseKey: "a0" }, { anchorKey: "b", poseKey: "b1" }], freeEnergyEv: 0, uncertaintyEv: .01 },
     { stateId: "high", assignment: [{ anchorKey: "a", poseKey: "a1" }, { anchorKey: "b", poseKey: "b0" }], freeEnergyEv: .08, uncertaintyEv: .01 },
@@ -59,6 +61,13 @@ assert.equal(overlapping.selectionEligible, false);
 assert.equal(overlapping.selectedStateId, null);
 await assert.rejects(() => validateIceOrientationEvidenceResponse({ ...response,
   stateSpaceCoverage: { ...response.stateSpaceCoverage, feasibleAssignmentCount: 3 } }, request),
-/state-space completeness/);
+/assignment count/);
+const bounded = await validateIceOrientationEvidenceResponse({ ...response,
+  stateSpaceCoverage: { kind: "certified-global-lower-bound", feasibleAssignmentCount: "3",
+    stateSpaceConstraintSha256: "d".repeat(64), certificateSha256: "e".repeat(64),
+    excludedStateLowerBoundEv: .07 } }, { ...request,
+  finiteGeometry: { ...request.finiteGeometry, exactFeasibleAssignmentCount: "3" } });
+assert.equal(bounded.selectionEligible, true);
+assert.equal(bounded.stateSpaceCoverageKind, "certified-global-lower-bound");
 
 console.log("ice orientation external-evidence contract: passed");
