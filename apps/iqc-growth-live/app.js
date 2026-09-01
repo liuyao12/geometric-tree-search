@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-406";
+  from "./external-action-barrier.mjs?v=20260831-407";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-406";
+  from "./action-path-viewer.mjs?v=20260831-407";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-406";
+  from "./action-path-mechanism.mjs?v=20260831-407";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-406";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-407";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-406";
+  from "./kinetic-event-spectrum.mjs?v=20260831-407";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-406";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-407";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-406";
+  from "./kinetic-geometry-response.mjs?v=20260831-407";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-406";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-407";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-406";
+  from "./surface-hop-events.mjs?v=20260831-407";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-406";
+  from "./species-exchange-events.mjs?v=20260831-407";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-406";
+  from "./external-state-relaxation.mjs?v=20260831-407";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-406";
+  from "./reversible-transition-lineage.mjs?v=20260831-407";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-406";
+  from "./finite-network-population-dynamics.mjs?v=20260831-407";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-406";
+  from "./finite-network-geometric-flux.mjs?v=20260831-407";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-406";
+  from "./finite-network-structural-flux.mjs?v=20260831-407";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-406";
+  from "./geometric-state-descriptor.mjs?v=20260831-407";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-406";
+  from "./finite-network-global-order.mjs?v=20260831-407";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-406";
+  from "./finite-network-first-passage.mjs?v=20260831-407";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-406";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-407";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-406";
+  from "./finite-network-passage-control.mjs?v=20260831-407";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-406";
+  from "./finite-network-rate-intervention.mjs?v=20260831-407";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-406";
+  from "./finite-network-temperature-intervention.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-406";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-406";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-406";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-406";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-406";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-407";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-406";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-407";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260831-406";
+  from "./hierarchy-evidence-microscope.mjs?v=20260831-407";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-406";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-407";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-406";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-407";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -165,30 +165,30 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-406";
+  from "./external-attachment-kinetics.mjs?v=20260831-407";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-406";
+  from "./external-interface-flux.mjs?v=20260831-407";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-406";
+  from "./growth-regime-bridge.mjs?v=20260831-407";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-406";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-407";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-406";
+  from "./catalog-conditional-chronology.mjs?v=20260831-407";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-406";
+  from "./coupled-physics-state.mjs?v=20260831-407";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260831-406";
+} from "./ice-molecular-anchor-growth.js?v=20260831-407";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260831-406";
+  from "./ice-periodic-boundary-audit.mjs?v=20260831-407";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260831-406";
+} from "./ice-orientation-evidence.mjs?v=20260831-407";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -304,7 +304,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260831-406", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260831-407", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -694,6 +694,9 @@ const icePeriodicBoundaryPlot = $("icePeriodicBoundaryPlot");
 const icePeriodicBoundaryState = $("icePeriodicBoundaryState");
 const icePeriodicBoundaryControls = $("icePeriodicBoundaryControls");
 const icePeriodicBoundaryDetail = $("icePeriodicBoundaryDetail");
+const icePeriodicFluxState = $("icePeriodicFluxState");
+const icePeriodicFluxBars = $("icePeriodicFluxBars");
+const icePeriodicFluxDetail = $("icePeriodicFluxDetail");
 const iceOrientationTemperature = $("iceOrientationTemperature");
 const iceOrientationEvidenceDownload = $("iceOrientationEvidenceDownload");
 const iceOrientationEvidenceResponse = $("iceOrientationEvidenceResponse");
@@ -2286,6 +2289,7 @@ let iceOrientationEvidenceRequestRecord = null;
 let iceOrientationEvidenceValidation = null;
 let selectedIceBoundarySensitivity = "finite";
 let selectedIcePeriodicBoundaryCell = "2×2×1";
+let selectedIcePeriodicFlux = "0,0,0";
 let iqcDisjointTrace = null;
 let iqcDisjointWaveIndex = 0;
 let importedStructure = null;
@@ -4087,7 +4091,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-406",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-407",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4331,7 +4335,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-406",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-407",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4850,7 +4854,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-406",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-407",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14155,7 +14159,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-406" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-407" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14163,7 +14167,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-406",
+      buildId: "20260831-407",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16770,7 +16774,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-406" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-407" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25131,7 +25135,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-406",
+    generatedAt: new Date().toISOString(), buildId: "20260831-407",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28402,7 +28406,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-406",
+    generatedAt: new Date().toISOString(), buildId: "20260831-407",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -29518,7 +29522,8 @@ function iceOrientationAuditReceipt(audit) {
       boundaryLocalMarginalAmbiguity: { ...audit.boundarySensitivity.boundaryLocalMarginalAmbiguity },
       interiorLocalMarginalAmbiguity: { ...audit.boundarySensitivity.interiorLocalMarginalAmbiguity },
       periodicClosureReferences: ICE_PERIODIC_BOUNDARY_SERIES.map((reference) =>
-        ({ ...reference, repeats: [...reference.repeats] })),
+        ({ ...reference, repeats: [...reference.repeats],
+          fluxSectors: reference.fluxSectors.map((sector) => ({ ...sector, flux: [...sector.flux] })) })),
     } : null,
     allHydrogensResolved: audit.allHydrogensResolved,
     targetUsed: audit.targetUsed,
@@ -29699,6 +29704,7 @@ function renderIcePeriodicBoundaryComparison(openBoundaryAudit) {
       ? `${audit.parallelPeriodicEdges} parallel image bonds are retained in this thin finite cell.`
       : "No oxygen pair is connected by multiple periodic images in this cell.";
     icePeriodicBoundaryDetail.textContent = `${keyFor(audit)} supercell: ${BigInt(audit.exactAssignmentCount).toLocaleString()} exact two-donor assignments; log Ω/N = ${audit.logAssignmentsPerMolecule.toFixed(5)}. ${parallel} Graph ${audit.graphSha256.slice(0, 12)}… · open-sphere comparison ${openBoundaryAudit.finiteLogStatesPerMolecule.toFixed(5)}. This finite-size sequence is not extrapolated to a bulk entropy.`;
+    renderIcePeriodicFluxSectors(audit);
   };
   ICE_PERIODIC_BOUNDARY_SERIES.forEach((audit, index) => {
     const point = svg("circle"); point.classList.add("periodic-point"); point.dataset.cell = keyFor(audit);
@@ -29718,6 +29724,36 @@ function renderIcePeriodicBoundaryComparison(openBoundaryAudit) {
     button.addEventListener("click", () => activate(audit)); return button;
   }));
   activate(ICE_PERIODIC_BOUNDARY_SERIES.find((audit) => keyFor(audit) === selectedIcePeriodicBoundaryCell));
+}
+
+function renderIcePeriodicFluxSectors(audit) {
+  if (!icePeriodicFluxState || !icePeriodicFluxBars || !icePeriodicFluxDetail) return;
+  const keyFor = (sector) => sector.flux.join(",");
+  const visible = audit.fluxSectors.slice(0, 12);
+  if (!audit.fluxSectors.some((sector) => keyFor(sector) === selectedIcePeriodicFlux)) {
+    selectedIcePeriodicFlux = keyFor(audit.fluxSectors[0]);
+  }
+  const selected = audit.fluxSectors.find((sector) => keyFor(sector) === selectedIcePeriodicFlux);
+  const maximum = Number(BigInt(audit.fluxSectors[0].stateCount));
+  const activate = (sector) => {
+    selectedIcePeriodicFlux = keyFor(sector);
+    icePeriodicFluxBars.querySelectorAll("button").forEach((button) =>
+      button.setAttribute("aria-pressed", String(button.dataset.flux === selectedIcePeriodicFlux)));
+    const zero = sector.flux.every((value) => value === 0);
+    icePeriodicFluxDetail.textContent = `${zero ? "Zero-winding" : `Flux (${sector.flux.join(", ")})`} sector: ${BigInt(sector.stateCount).toLocaleString()} assignments (${(100 * sector.fraction).toFixed(2)}%), |F|=${sector.norm.toFixed(3)}. F counts net oriented crossings of the three periodic supercell boundaries. It is a topological label, not physical polarization, dipole moment, energy, or a growth path.`;
+  };
+  icePeriodicFluxState.textContent = `${audit.fluxSectorCount} exact sectors · ${BigInt(audit.zeroFluxStateCount).toLocaleString()} zero winding · F↔−F paired`;
+  icePeriodicFluxBars.replaceChildren(...visible.map((sector) => {
+    const button = document.createElement("button"); button.type = "button"; button.dataset.flux = keyFor(sector);
+    button.setAttribute("aria-pressed", String(button.dataset.flux === selectedIcePeriodicFlux));
+    const label = document.createElement("small"); label.textContent = sector.flux.every((value) => value === 0)
+      ? "F = 0" : `F = (${sector.flux.join(",")})`;
+    const count = document.createElement("strong"); count.textContent = `${BigInt(sector.stateCount).toLocaleString()} · ${(100 * sector.fraction).toFixed(1)}%`;
+    const bar = document.createElement("i"); bar.style.setProperty("--ice-flux-bar", `${100 * Number(BigInt(sector.stateCount)) / Math.max(1, maximum)}%`);
+    button.append(label, count, bar); button.addEventListener("click", () => activate(sector)); return button;
+  }));
+  if (!visible.some((sector) => keyFor(sector) === selectedIcePeriodicFlux)) selectedIcePeriodicFlux = keyFor(visible[0]);
+  activate(visible.find((sector) => keyFor(sector) === selectedIcePeriodicFlux) || selected);
 }
 
 function renderIceOrientationEvidenceBridge() {
@@ -29772,7 +29808,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-406", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260831-407", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -38433,7 +38469,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-406",
+    generatedAt: new Date().toISOString(), buildId: "20260831-407",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -43478,7 +43514,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-406" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-407" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

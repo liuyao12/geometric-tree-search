@@ -1,5 +1,5 @@
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-406";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-407";
 
 const NUMERIC_FIELDS = Object.freeze([
   "medianNearestNeighborAngstrom", "contactCount", "meanCoordination",

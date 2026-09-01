@@ -1,5 +1,36 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 407 · exact periodic proton-flux sectors
+
+The periodic counter now enumerates every allowed state after independently
+obtaining the same total by factor elimination. For each O–O bond, its donor
+direction is combined with the bond's periodic image translation. Summing
+those oriented translations produces an integer three-component winding flux
+`F` in supercell lattice coordinates. Internal bond displacements cancel;
+`F` therefore labels global periodic topology without using target proton
+coordinates or an energy model.
+
+For the 2×2×1 cell, all **2,970** states partition exactly into **95** flux
+sectors. The zero-winding sector contains **396** states (`13.33%`); the
+remaining sectors occur in exactly matched `F ↔ −F` pairs. The most populated
+nonzero sectors have `F=(0,0,±2)` and 204 states each. The complete assignment
+enumeration has SHA-256
+`80ec437128a032eded68fd9ad2e1f6943b3cfb894f164250b9a30433cfbb132a`,
+and its sector counts sum independently to the factor-elimination total.
+
+A new interactive sector explorer follows the selected periodic cell. It
+shows the twelve most populated sectors, exact multiplicities, fractions, and
+relative bars; selecting a sector explains its winding vector and norm. The
+other cells expose 14, 33, and 60 exact sectors respectively, including the
+finite-cell parity fact that the 1×1×1 and 3×1×1 cells have no zero-winding
+state.
+
+Winding flux is not labeled as physical polarization: converting it into a
+dipole moment would require proton coordinates, charge conventions, and a
+declared polarization branch. Uniform sector fractions are not Boltzmann
+weights, free energies, thermodynamic entropy, or a proton-transition path.
+All of those nonclaims are receipt-visible.
+
 ## Build 406 · exact periodic ice closure comparison
 
 The boundary audit now offers a second calculation rather than pretending the

@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+## Exact periodic proton-flux sectors (Build 407)
+
+The periodic Ice-Ih audit now has two independent exact layers. Min-fill
+factor elimination returns Ω; a constraint-propagating enumerator then emits
+every molecular two-donor state and must reproduce Ω exactly. For every
+assignment, each periodic edge contributes its canonical image translation
+with the sign of its donor direction. The sum `F=(F₁,F₂,F₃)` is the net
+oriented crossing number in supercell lattice coordinates.
+
+| repeats | Ω | exact flux sectors | zero-flux states | max ‖F‖ |
+| --- | ---: | ---: | ---: | ---: |
+| 1×1×1 | 18 | 14 | 0 | 3.000 |
+| 2×1×1 | 114 | 33 | 20 | 4.899 |
+| 3×1×1 | 858 | 60 | 0 | 7.000 |
+| 2×2×1 | 2,970 | 95 | 396 | 6.928 |
+
+Every sector partition sums to the independent factor count and every sector
+has an equal-count `−F` partner. In the 2×2×1 cell, the zero sector accounts
+for `396/2970 = 0.1333333`; the sector-level Shannon ambiguity under uniform
+combinatorial weighting is `3.46900074` nats. The assignment encoding is
+deterministic and hashes to
+`80ec437128a032eded68fd9ad2e1f6943b3cfb894f164250b9a30433cfbb132a`.
+
+The UI renders the twelve most populated sectors for whichever exact cell is
+selected, with counts, fractions, and a detail view. This is deliberately a
+topological disorder diagnostic. `physicalPolarizationInferred = false`
+because no proton charge/position convention or Berry-phase branch is used;
+`thermodynamicEntropyInferred = false` because no energy weighting exists;
+and the sector graph supplies no kinetics or growth path.
+
 ## Exact periodic ice closure comparison (Build 406)
 
 The open finite growth sphere is not a unit cell, so periodic closure cannot

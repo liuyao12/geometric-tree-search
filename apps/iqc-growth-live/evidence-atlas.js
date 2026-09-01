@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-406";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260831-406";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-407";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260831-407";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-406";
+  from "./hierarchy-physics-transport.mjs?v=20260831-407";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-406";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-407";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-406";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-407";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-406";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-407";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260831-406", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260831-407", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -109,6 +109,7 @@ const SYSTEMS = {
       ["Exact finite state space", `${BigInt(ICE_TRACES.iceIh.orientationAudit.stateCountExact).toLocaleString()} Ih · ${BigInt(ICE_TRACES.iceIc.orientationAudit.stateCountExact).toLocaleString()} Ic`, `Exact factor elimination counts complete ice-rule assignments and pose marginals without treating the 4,096-state explicit preview cap as a count. log Ω is geometric finite-boundary degeneracy, not thermodynamic entropy.`],
       ["Open-boundary sensitivity", `log Ω/N ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.finiteLogStatesPerMolecule.toFixed(3)} · Pauling ln(3/2) ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.paulingReferenceLogStatesPerMolecule.toFixed(3)}`, `${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.ambiguousAnchors} / ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.anchors} boundary domains remain ambiguous with mean local Hgeom ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.meanEntropyNats.toFixed(3)} nats, versus ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.interiorLocalMarginalAmbiguity.meanEntropyNats.toFixed(3)} for four-connected interior domains. These correlated uniform-assignment marginals are a boundary diagnostic, not an additive entropy decomposition or Boltzmann ensemble.`],
       ["Exact periodic closure series", ICE_PERIODIC_BOUNDARY_SERIES.map((audit) => `${audit.moleculeCount} H₂O: Ω ${BigInt(audit.exactAssignmentCount).toLocaleString()}`).join(" · "), `The browser rebuilds four declared Ice-Ih oxygen supercells from lattice geometry, verifies every oxygen has four periodic bonds, and exactly counts two-donor assignments with one proton per bond. The largest tractable interactive cell has ${ICE_PERIODIC_BOUNDARY_SERIES.at(-1).moleculeCount} molecules, no parallel-image bond pairs, and log Ω/N ${ICE_PERIODIC_BOUNDARY_SERIES.at(-1).logAssignmentsPerMolecule.toFixed(5)}. This is a finite-size closure comparison, not a bulk extrapolation or energy-weighted ensemble.`],
+      ["Periodic proton-flux sectors", `${ICE_PERIODIC_BOUNDARY_SERIES.at(-1).fluxSectorCount} sectors · ${BigInt(ICE_PERIODIC_BOUNDARY_SERIES.at(-1).zeroFluxStateCount).toLocaleString()} / ${BigInt(ICE_PERIODIC_BOUNDARY_SERIES.at(-1).exactAssignmentCount).toLocaleString()} zero winding`, `All ${BigInt(ICE_PERIODIC_BOUNDARY_SERIES.at(-1).exactAssignmentCount).toLocaleString()} states are explicitly enumerated after the independent exact factor count, partitioned by net oriented periodic-image crossings, and checked under F↔−F inversion. Flux-sector multiplicity is a topology diagnostic under uniform combinatorial weighting—not polarization, dipole moment, energy, entropy, or a proton-growth trajectory.`],
       ["Disjoint pose-marking transfer", `${ICE_ORIENTATION_MARKING_AUDIT.arms.learned.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains} exact · p=${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.empiricalP}`, `The frozen local marking beats unmarked ${ICE_ORIENTATION_MARKING_AUDIT.arms.unmarked.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains}, but ties the best of ${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.count} label-shuffled refits. The true pose is present in only ${ICE_ORIENTATION_MARKING_AUDIT.heldout.exactSupplyDomains} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.targetMatchedDomains} exact-anchor domains; the marking gate remains red.`],
       ["Orientation-physics handoff", "global assignment request · fail closed", "The live growth card can export every retained H₂O geometry and binary ice-rule constraint at one declared thermodynamic/boundary state. A response must score complete global assignments, bind the immutable request, cover the declared state space, and separate one winner after uncertainty. Local pose energies cannot activate the marking."],
       ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],

@@ -1,4 +1,4 @@
-import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260831-406";
+import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260831-407";
 
 const ICE_IH_A_ANGSTROM = 4.518;
 const ICE_IH_C_ANGSTROM = 7.357;
@@ -158,12 +158,87 @@ function exactTwoDonorCount(graph) {
   };
 }
 
+function enumerateTwoDonorFluxSectors(graph) {
+  const domains = graph.incident.map((ports) => chooseTwo(ports));
+  const incident = domains.map(() => []);
+  graph.edges.forEach((edge) => {
+    incident[edge.first].push({ edge, other: edge.second });
+    incident[edge.second].push({ edge, other: edge.first });
+  });
+  const pairAllowed = (edge, firstVariable, firstState, secondVariable, secondState) =>
+    domains[firstVariable][firstState].includes(edge.edgeIndex)
+      !== domains[secondVariable][secondState].includes(edge.edgeIndex);
+  const propagate = (stateDomains) => {
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (let variable = 0; variable < stateDomains.length; variable++) {
+        const next = stateDomains[variable].filter((state) => incident[variable].every(({ edge, other }) =>
+          stateDomains[other].some((otherState) => pairAllowed(edge, variable, state, other, otherState))));
+        if (!next.length) return false;
+        if (next.length !== stateDomains[variable].length) { stateDomains[variable] = next; changed = true; }
+      }
+    }
+    return true;
+  };
+  const assignments = [];
+  const enumerate = (sourceDomains) => {
+    const stateDomains = sourceDomains.map((domain) => domain.slice());
+    if (!propagate(stateDomains)) return;
+    const unresolved = stateDomains.map((domain, variable) => ({ variable, size: domain.length }))
+      .filter(({ size }) => size > 1).sort((left, right) => left.size - right.size
+        || left.variable - right.variable)[0];
+    if (!unresolved) { assignments.push(stateDomains.map((domain) => domain[0])); return; }
+    stateDomains[unresolved.variable].forEach((state) => {
+      const branch = stateDomains.map((domain) => domain.slice()); branch[unresolved.variable] = [state]; enumerate(branch);
+    });
+  };
+  enumerate(domains.map((domain) => domain.map((_, state) => state)));
+  const sectorCounts = new Map();
+  assignments.forEach((assignment) => {
+    const flux = [0, 0, 0];
+    graph.edges.forEach((edge) => {
+      const firstDonates = domains[edge.first][assignment[edge.first]].includes(edge.edgeIndex);
+      edge.imageShift.forEach((value, axis) => { flux[axis] += firstDonates ? value : -value; });
+    });
+    const key = flux.join(","); sectorCounts.set(key, (sectorCounts.get(key) || 0n) + 1n);
+  });
+  const total = BigInt(assignments.length);
+  const fluxSectors = [...sectorCounts.entries()].map(([key, stateCount]) => {
+    const flux = key.split(",").map(Number);
+    return { flux, stateCount: stateCount.toString(), fraction: Number(stateCount) / Number(total),
+      norm: Math.hypot(...flux) };
+  }).sort((left, right) => Number(BigInt(right.stateCount) - BigInt(left.stateCount))
+    || lexical(left.flux, right.flux));
+  const sectorEntropyNats = fluxSectors.reduce((sum, sector) =>
+    sum - (sector.fraction ? sector.fraction * Math.log(sector.fraction) : 0), 0);
+  const counts = new Map(fluxSectors.map((sector) => [sector.flux.join(","), sector.stateCount]));
+  return {
+    enumeratedAssignmentCount: assignments.length,
+    enumeratedAssignmentsSha256: iceGeometrySha256Ascii(assignments.map((assignment) => assignment.join(",")).join(";")),
+    fluxSectors,
+    fluxSectorCount: fluxSectors.length,
+    zeroFluxStateCount: counts.get("0,0,0") || "0",
+    zeroFluxFraction: Number(BigInt(counts.get("0,0,0") || "0")) / Number(total),
+    maximumFluxNorm: Math.max(0, ...fluxSectors.map((sector) => sector.norm)),
+    fluxSectorEntropyNats: sectorEntropyNats,
+    inversionPaired: fluxSectors.every((sector) => counts.get(sector.flux.map((value) => -value).join(","))
+      === sector.stateCount),
+    fluxPartitionExact: fluxSectors.reduce((sum, sector) => sum + BigInt(sector.stateCount), 0n) === total,
+  };
+}
+
 export function buildPeriodicIceIhBoundaryAudit(repeats) {
   const graph = derivePeriodicIceIhOxygenGraph(repeats);
   if (graph.addresses.length > MAXIMUM_INTERACTIVE_PERIODIC_MOLECULES) {
     throw new Error(`periodic exact counter is capped at ${MAXIMUM_INTERACTIVE_PERIODIC_MOLECULES} molecules for interactive use`);
   }
   const counted = exactTwoDonorCount(graph);
+  const enumerated = enumerateTwoDonorFluxSectors(graph);
+  if (BigInt(enumerated.enumeratedAssignmentCount) !== counted.exactAssignmentCount
+    || !enumerated.fluxPartitionExact || !enumerated.inversionPaired) {
+    throw new Error("periodic assignment enumeration did not certify the exact factor count and flux partition");
+  }
   const moleculeCount = graph.addresses.length;
   const countText = counted.exactAssignmentCount.toString();
   const logAssignmentCount = countText.length < 16 ? Math.log(Number(counted.exactAssignmentCount))
@@ -183,6 +258,17 @@ export function buildPeriodicIceIhBoundaryAudit(repeats) {
     maximumNeighborDistanceResidualAngstrom: graph.maximumNeighborDistanceResidualAngstrom,
     maximumEliminationScope: counted.maximumEliminationScope,
     maximumInteractiveMolecules: MAXIMUM_INTERACTIVE_PERIODIC_MOLECULES,
+    enumeratedAssignmentCount: enumerated.enumeratedAssignmentCount,
+    enumeratedAssignmentsSha256: enumerated.enumeratedAssignmentsSha256,
+    fluxDefinition: "net oriented periodic image crossings in supercell lattice coordinates",
+    fluxSectors: enumerated.fluxSectors,
+    fluxSectorCount: enumerated.fluxSectorCount,
+    zeroFluxStateCount: enumerated.zeroFluxStateCount,
+    zeroFluxFraction: enumerated.zeroFluxFraction,
+    maximumFluxNorm: enumerated.maximumFluxNorm,
+    fluxSectorEntropyNats: enumerated.fluxSectorEntropyNats,
+    inversionPairedFluxCounts: enumerated.inversionPaired,
+    fluxPartitionExact: enumerated.fluxPartitionExact,
     oxygenGraphDerivedFromDeclaredLatticeGeometry: true,
     everyOxygenFourConnected: true,
     everyMoleculeDonatesTwice: true,
@@ -193,6 +279,7 @@ export function buildPeriodicIceIhBoundaryAudit(repeats) {
     targetUsed: false,
     physicalPotentialUsed: false,
     thermodynamicEntropyInferred: false,
+    physicalPolarizationInferred: false,
     bulkLimitClaimed: false,
     claimBoundary: "Exact two-donor/one-proton counting on one finite periodic Ice-Ih oxygen supercell. It is a geometry-derived finite-size reference, not a bulk-limit extrapolation, energy-weighted ensemble, measured residual entropy, or proton-growth mechanism.",
   };

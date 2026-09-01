@@ -53,6 +53,10 @@ def test_orientation_audit_is_geometric_target_blind_and_fail_honest():
         "protonCoordinatesUsed: false",
         "thermodynamicEntropyInferred: false",
         "bulkLimitClaimed: false",
+        "enumerateTwoDonorFluxSectors",
+        "fluxSectorCount",
+        "inversionPairedFluxCounts",
+        "physicalPolarizationInferred: false",
     ):
         assert token in PERIODIC
 
@@ -71,6 +75,7 @@ def test_live_stage_and_receipts_expose_the_constraint_result_without_materializ
         "stateSpaceConstraintSha256",
         "function renderIceBoundarySensitivity(audit)",
         "function renderIcePeriodicBoundaryComparison(openBoundaryAudit)",
+        "function renderIcePeriodicFluxSectors(audit)",
         "boundarySensitivity: audit.boundarySensitivity",
         "periodicClosureReferences: ICE_PERIODIC_BOUNDARY_SERIES.map",
         "local marginal ambiguities are correlated and are not additive entropy contributions",
@@ -80,6 +85,8 @@ def test_live_stage_and_receipts_expose_the_constraint_result_without_materializ
     assert "Finite proton constraint audit" in ATLAS
     assert "Open-boundary sensitivity" in ATLAS
     assert "Exact periodic closure series" in ATLAS
+    assert "Periodic proton-flux sectors" in ATLAS
+    assert "Build 407 · exact periodic proton-flux sectors" in README
     assert "Build 406 · exact periodic ice closure comparison" in README
     assert "Build 405 · open-boundary ice-state audit" in README
     assert "Build 401 · finite proton-orientation constraint audit" in README

@@ -1,5 +1,5 @@
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-406";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-407";
 
 const UNIVERSAL = Object.freeze([
   ["protocolFrozenBeforeEvidenceUse", "Protocol frozen before evidence use"],
