@@ -1,5 +1,36 @@
 # Recursive GCTS benchmark for material growth
 
+## Matched conditional capillarity action prior (Build 411)
+
+The Wulff/`Δg` evidence pair now reaches the frozen GCTS frontier through a
+separate target-blind action evaluator. Coordinates are converted back to Å,
+the pre-action support is fit to a translated homothetic Wulff body, and the
+translation is frozen before the candidate is inspected. With candidate
+support included, only the scalar Wulff scale is updated; its construction is
+monotone because every oriented support can only increase.
+
+For every orientation-covered action the evaluator records the before/after
+physical scale, support residual, conditional work, propagated uncertainty,
+and whether the move is subcritical, crosses the critical scale, or is
+already supercritical. The bounded score is
+`tanh(−ΔΔG/ΔG*)`. This is a soft branch-order term over the exact same actions,
+not an admission rule. Candidates outside the declared angular reach return
+zero and a reason.
+
+The cubic numerical control has `s*=4 nm`. A `2 nm` cube advanced outward has
+positive `ΔΔG` and a negative score; a `5 nm` cube has negative `ΔΔG` and a
+positive score. A matched-ranking audit verifies unique action IDs, identical
+candidate sets and geometry, favorable/uphill/abstained counts, stable ties,
+and exact inversion accounting. The portal defaults to display-only and
+releases any frozen action-barrier checkpoint if the user changes this
+ranking provenance.
+
+This bridge remains conditional classical capillarity. It does not use atomic
+volume, infer a critical atom count, generate a minimum-energy path, apply
+heterogeneous wetting, elasticity, diffuse-interface or curvature terms, or
+claim attachment probability, Zeldovich factor, prefactor, nucleation rate,
+trajectory, or time.
+
 ## Conditional Wulff nucleation-work bridge (Build 410)
 
 The portal now distinguishes the observed finite `ΔΩ(N)` catalog from a
@@ -26,8 +57,9 @@ the symmetric-cube test (`γ=0.2 J m⁻²`, `Δg=10⁸ J m⁻³`) certifies `s*=
 edge-energy formulation.
 
 All response hashes and the work profile enter the experiment receipt.
-`targetUsed=false`, `candidateSetChanged=false`, and
-`growthRankingChanged=false`. No physical response is bundled, and the model
+`targetUsed=false` and `candidateSetChanged=false`; ranking remains false by
+default and becomes possible only through Build 411's separately enabled
+matched action prior. No physical response is bundled, and the model
 does not claim atom count, heterogeneous nucleation, elastic corrections,
 diffuse interfaces, curvature corrections, kinetics, prefactor, Zeldovich
 factor, rate, pathway, or phase stability.

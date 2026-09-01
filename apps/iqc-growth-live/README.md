@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 411 · capillarity work becomes an optional geometric action prior
+
+Validated `γ(n̂)` and independently validated positive `Δg` can now do more
+than draw a critical-scale curve. An explicit opt-in regularizer evaluates
+each already-enumerated frontier action without changing its coordinates or
+admission. The pre-action atomic support is fit to
+`h(n)=n·t+sγ(n)/γmin`; translation `t` is then frozen, and the candidate may
+only advance the nondecreasing homothetic Wulff scale. The action value is
+
+`ΔΔG = Δ[Cγ s^(d−1) − Δg V₀ s^d]`.
+
+It is normalized by the validated conditional barrier only to produce a
+bounded soft score. Thus a subcritical outward increment is uphill, whereas a
+supercritical increment can be downhill. The physical `ΔΔG`, uncertainty,
+before/after scale, support residuals, and regime remain in each action
+receipt. A compact angular kernel admits only candidates covered by supplied
+orientations; all others abstain.
+
+The UI keeps this layer in **Display only** mode by default. After the two
+evidence handoffs pass, a user may enable ranking and choose a soft weight.
+The matched audit freezes one identical candidate set and reports coverage,
+favorable/uphill counts, rank inversions, and candidate-set identity. The
+model does not create a path, alter a hard gate, infer atom count, apply a
+heterogeneous or elastic correction, or supply attachment kinetics,
+nucleation rate, probability, or physical time.
+
 ## Build 410 · geometry-bound classical nucleation work
 
 The interfacial-energy laboratory now has an explicit second handoff for the
@@ -28,7 +54,8 @@ profile. It does not infer atomic volume or a critical atom count and omits
 heterogeneous wetting factors, elastic/strain energy, diffuse-interface and
 curvature corrections, attachment kinetics, Zeldovich factors, prefactors,
 nucleation rates, pathways, and macroscopic phase stability. It never changes
-candidate geometry, admission, ranking, or growth.
+candidate geometry or admission; Build 411 adds a separate, explicit and
+default-off action-ranking bridge.
 
 ## Build 409 · stable evidence-laboratory interactions
 

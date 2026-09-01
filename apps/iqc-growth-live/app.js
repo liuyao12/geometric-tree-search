@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-410";
+  from "./external-action-barrier.mjs?v=20260901-411";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-410";
+  from "./action-path-viewer.mjs?v=20260901-411";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-410";
+  from "./action-path-mechanism.mjs?v=20260901-411";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-410";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-411";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-410";
+  from "./kinetic-event-spectrum.mjs?v=20260901-411";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-410";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-411";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-410";
+  from "./kinetic-geometry-response.mjs?v=20260901-411";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-410";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-411";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-410";
+  from "./surface-hop-events.mjs?v=20260901-411";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-410";
+  from "./species-exchange-events.mjs?v=20260901-411";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-410";
+  from "./external-state-relaxation.mjs?v=20260901-411";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-410";
+  from "./reversible-transition-lineage.mjs?v=20260901-411";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-410";
+  from "./finite-network-population-dynamics.mjs?v=20260901-411";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-410";
+  from "./finite-network-geometric-flux.mjs?v=20260901-411";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-410";
+  from "./finite-network-structural-flux.mjs?v=20260901-411";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-410";
+  from "./geometric-state-descriptor.mjs?v=20260901-411";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-410";
+  from "./finite-network-global-order.mjs?v=20260901-411";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-410";
+  from "./finite-network-first-passage.mjs?v=20260901-411";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-410";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-411";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-410";
+  from "./finite-network-passage-control.mjs?v=20260901-411";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-410";
+  from "./finite-network-rate-intervention.mjs?v=20260901-411";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-410";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-410";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-410";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-410";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-410";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-410";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-411";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-410";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-411";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-410";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-411";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-410";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-411";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-410";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-411";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,35 +163,37 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-410";
+  from "./classical-nucleation-evidence.mjs?v=20260901-411";
+import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
+  from "./classical-capillarity-action.mjs?v=20260901-411";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-410";
+  from "./external-attachment-kinetics.mjs?v=20260901-411";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-410";
+  from "./external-interface-flux.mjs?v=20260901-411";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-410";
+  from "./growth-regime-bridge.mjs?v=20260901-411";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-410";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-411";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-410";
+  from "./catalog-conditional-chronology.mjs?v=20260901-411";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-410";
+  from "./coupled-physics-state.mjs?v=20260901-411";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-410";
+} from "./ice-molecular-anchor-growth.js?v=20260901-411";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-410";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-411";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-410";
+} from "./ice-orientation-evidence.mjs?v=20260901-411";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -307,7 +309,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-410", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-411", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1219,6 +1221,11 @@ const resetBulkDrivingEvidence = $("resetBulkDrivingEvidence");
 const bulkDrivingResponseInput = $("bulkDrivingResponseInput");
 const classicalNucleationState = $("classicalNucleationState");
 const classicalNucleationBoundary = $("classicalNucleationBoundary");
+const classicalCapillarityModeSelect = $("classicalCapillarityModeSelect");
+const classicalCapillarityWeightSelect = $("classicalCapillarityWeightSelect");
+const classicalCapillarityRankingGate = $("classicalCapillarityRankingGate");
+const classicalCapillarityRankingState = $("classicalCapillarityRankingState");
+const classicalCapillarityRankingAudit = $("classicalCapillarityRankingAudit");
 const kineticHabitCard = document.querySelector(".kinetic-habit-card");
 const kineticHabitBadge = $("kineticHabitBadge");
 const kineticHabitPresetControls = $("kineticHabitPresetControls");
@@ -2252,6 +2259,10 @@ let interfacialEnergyValidationAudit = null;
 let bulkDrivingForceRequestRuntime = null;
 let bulkDrivingForceValidationAudit = null;
 let classicalNucleationWorkAudit = null;
+let classicalCapillarityMode = "display";
+let classicalCapillarityWeight = .16;
+let classicalCapillarityEvaluations = 0;
+let lastClassicalCapillarityRankingAudit = null;
 let selectedWulffPreset = "cubic";
 let wulffRankingMode = "display";
 let wulffAngularReachDegrees = 30;
@@ -2482,6 +2493,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   wulffRankingMode: "display", wulffAngularReachDegrees: 30, wulffRegularizerWeight: .24,
+  classicalCapillarityMode: "display", classicalCapillarityWeight: .16,
   kineticHabitMode: "display", kineticHabitReachDegrees: 30, kineticHabitWeight: .24,
   interfaceFluxMode: "display", interfaceFluxReachRelativeRadius: .55, interfaceFluxWeight: .24,
   multiphysicsCouplingMode: "structural",
@@ -3987,6 +3999,109 @@ function renderWulffRankingControls() {
   }
 }
 
+function classicalCapillarityGate() {
+  if (!classicalNucleationWorkAudit) return { active: false,
+    reason: "validate physical γ(n̂) and an independently calculated positive Δg first" };
+  if (!interfacialEnergyRequestRuntime?.request?.specimen?.orientationBasisCartesian) {
+    return { active: false, reason: "the validated response has no bound specimen orientation basis" };
+  }
+  if (classicalCapillarityMode !== "rank") return { active: false,
+    reason: "display only · frontier ranking unchanged" };
+  if (confinementSelect?.value !== "sphere") return { active: false,
+    reason: "select Finite nucleus · sphere" };
+  if (pipelineStage !== 4) return { active: false,
+    reason: "enter material growth to audit the frozen frontier" };
+  if (knownWindowReplayActive()) return { active: false,
+    reason: "waiting for target-free continuation beyond known-window replay" };
+  return { active: true, reason: "validated conditional capillarity-work prior" };
+}
+
+function activeClassicalCapillarityWeight() {
+  return classicalCapillarityGate().active ? classicalCapillarityWeight : 0;
+}
+
+function classicalCapillarityForFreshSites(fresh, { recordWork = true } = {}) {
+  const gate = classicalCapillarityGate();
+  const disabled = { available: Boolean(classicalNucleationWorkAudit), supported: false,
+    enabled: false, reason: gate.reason, score: 0, targetUsed: false,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    atomCountInferred: false, attachmentRateInferred: false, nucleationRateInferred: false,
+    physicalTimeIntegrated: false };
+  if (!gate.active) return disabled;
+  try {
+    const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+    const result = evaluateClassicalCapillarityAction({
+      occupiedPositionsAngstrom: atoms.map((atom) => atom.p.toArray()
+        .map((value) => value * sceneToAngstrom)),
+      emittedPositionsAngstrom: fresh.map((site) => site.p.toArray()
+        .map((value) => value * sceneToAngstrom)),
+      orientationBasisCartesian: interfacialEnergyRequestRuntime.request.specimen.orientationBasisCartesian,
+      orientations: interfacialEnergyValidationAudit.orientations,
+      maximumAngleRadians: wulffAngularReachDegrees * Math.PI / 180,
+      nucleationWork: classicalNucleationWorkAudit,
+    });
+    if (recordWork) classicalCapillarityEvaluations++;
+    return { ...result, enabled: true, angularReachDegrees: wulffAngularReachDegrees,
+      interfacialEnergyResponseSha256: classicalNucleationWorkAudit.interfacialEnergyResponseSha256,
+      bulkDrivingForceRequestSha256: classicalNucleationWorkAudit.bulkDrivingForceRequestSha256 };
+  } catch (error) {
+    if (recordWork) classicalCapillarityEvaluations++;
+    return { ...disabled, enabled: true,
+      reason: error instanceof Error ? error.message : "classical capillarity action evaluation failed" };
+  }
+}
+
+function captureClassicalCapillarityMatchedRankingAudit(entries) {
+  if (!entries?.length || activeClassicalCapillarityWeight() <= 0) {
+    lastClassicalCapillarityRankingAudit = null; renderClassicalCapillarityRankingControls(); return;
+  }
+  lastClassicalCapillarityRankingAudit = {
+    ...matchedClassicalCapillarityRankingAudit(entries.map((entry) => ({
+      candidateId: entry.candidate.key,
+      baselineScore: entry.selectionScore - activeClassicalCapillarityWeight()
+        * entry.evaluation.classicalCapillarity.score,
+      regularizedScore: entry.selectionScore,
+      supported: entry.evaluation.classicalCapillarity.supported,
+      deltaWorkJoule: entry.evaluation.classicalCapillarity.deltaWorkJoule,
+    }))),
+    candidateSetDigest: frozenFrontierDigest(entries),
+    angularReachDegrees: wulffAngularReachDegrees,
+    effectiveWeight: activeClassicalCapillarityWeight(),
+    interfacialEnergyResponseSha256: classicalNucleationWorkAudit?.interfacialEnergyResponseSha256 || null,
+    bulkDrivingForceRequestSha256: classicalNucleationWorkAudit?.bulkDrivingForceRequestSha256 || null,
+    rankingTargetUsed: false,
+  };
+  renderClassicalCapillarityRankingControls();
+}
+
+function renderClassicalCapillarityRankingControls() {
+  if (!classicalCapillarityModeSelect || !classicalCapillarityRankingState
+      || !classicalCapillarityRankingAudit) return;
+  const gate = classicalCapillarityGate();
+  classicalCapillarityModeSelect.value = classicalCapillarityMode;
+  classicalCapillarityWeightSelect.value = String(classicalCapillarityWeight);
+  classicalCapillarityModeSelect.disabled = !classicalNucleationWorkAudit;
+  classicalCapillarityWeightSelect.disabled = !classicalNucleationWorkAudit
+    || classicalCapillarityMode !== "rank";
+  classicalCapillarityModeSelect.closest(".classical-capillarity-ranking")
+    ?.classList.toggle("active", gate.active);
+  classicalCapillarityRankingGate.textContent = gate.active ? "active soft rank" : "display only";
+  classicalCapillarityRankingState.textContent = gate.active
+    ? `The pre-action Wulff center is frozen. Each unchanged candidate receives ΔΔG = Δ[Cγs^(d−1) − ΔgV₀s^d] inside ${wulffAngularReachDegrees}° oriented coverage; unsupported actions abstain.`
+    : `${gate.reason}. No candidate geometry, hard gate, atom count, kinetic law, or physical clock changes.`;
+  const values = classicalCapillarityRankingAudit.querySelectorAll("b");
+  if (lastClassicalCapillarityRankingAudit) {
+    values[0].textContent = `${lastClassicalCapillarityRankingAudit.supportedCandidates}/${lastClassicalCapillarityRankingAudit.candidateCount}`;
+    values[1].textContent = `${lastClassicalCapillarityRankingAudit.favorableCandidates}/${lastClassicalCapillarityRankingAudit.unfavorableCandidates}`;
+    values[2].textContent = `${lastClassicalCapillarityRankingAudit.rankInversions}/${lastClassicalCapillarityRankingAudit.maximumRankInversions}`;
+    values[3].textContent = lastClassicalCapillarityRankingAudit.candidateSetIdentical
+      ? "unchanged" : "mismatch";
+  } else {
+    values[0].textContent = "—"; values[1].textContent = "—";
+    values[2].textContent = "—"; values[3].textContent = "unchanged";
+  }
+}
+
 function renderWulffEvidence() {
   if (!wulffGeometryPlot || !wulffOrientationBars) return;
   let evidence;
@@ -4143,6 +4258,7 @@ function renderClassicalNucleationEvidence() {
         : "The normalized curve is pedagogical. Validate γ(n̂) first, then request an independently calculated parent-to-nucleus bulk free-energy density.";
     classicalNucleationBoundary.textContent = "The normalized curves show the capillarity terms d·x^(d−1), −(d−1)·x^d, and their sum. They contain no material parameter. No atom count, heterogeneous wetting factor, elastic energy, curvature correction, attachment kinetics, prefactor, nucleation rate, pathway, or phase-stability claim is inferred.";
   }
+  renderClassicalCapillarityRankingControls();
 }
 
 function resetInterfacialEnergyRoundTrip() {
@@ -4151,6 +4267,7 @@ function resetInterfacialEnergyRoundTrip() {
   interfacialEnergyRequestRuntime = null; interfacialEnergyValidationAudit = null;
   bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
   classicalNucleationWorkAudit = null;
+  classicalCapillarityMode = "display"; lastClassicalCapillarityRankingAudit = null;
   wulffRankingMode = "display"; lastWulffRankingAudit = null;
   if (importWulffResponse) importWulffResponse.disabled = true;
   renderWulffEvidence();
@@ -4199,7 +4316,15 @@ function classicalNucleationReceipt() {
     validation: bulkDrivingForceValidationAudit ? { ...bulkDrivingForceValidationAudit } : null,
     work: classicalNucleationWorkAudit ? { ...classicalNucleationWorkAudit,
       workProfile: classicalNucleationWorkAudit.workProfile.map((point) => ({ ...point })) } : null,
-    candidateSetChanged: false, candidateGeometryChanged: false, growthRankingChanged: false,
+    actionRegularizer: { mode: classicalCapillarityMode,
+      active: activeClassicalCapillarityWeight() > 0,
+      effectiveWeight: activeClassicalCapillarityWeight(), evaluations: classicalCapillarityEvaluations,
+      matchedRankingAudit: lastClassicalCapillarityRankingAudit,
+      centerFrozenBeforeCandidate: true, angularReachDegrees: wulffAngularReachDegrees,
+      candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+      targetUsed: false },
+    candidateSetChanged: false, candidateGeometryChanged: false,
+    growthRankingChanged: activeClassicalCapillarityWeight() > 0,
     nucleationRateInferred: false, targetUsed: false,
   };
 }
@@ -4212,7 +4337,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-410", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-411", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -4221,6 +4346,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
     targetUsed: false, targetCoordinatesEmbedded: false });
   const serialized = JSON.stringify(request, null, 2); const requestSha256 = await receiptSha256(serialized);
   bulkDrivingForceValidationAudit = null; classicalNucleationWorkAudit = null;
+  classicalCapillarityMode = "display"; lastClassicalCapillarityRankingAudit = null;
   bulkDrivingForceRequestRuntime = { request, requestSha256,
     structureSha256: request.specimen.structureSha256,
     interfacialEnergyResponseSha256: request.coupledInterfacialEvidence.interfacialEnergyResponseSha256,
@@ -4245,7 +4371,8 @@ async function validateBulkDrivingForceFile(file) {
   bulkDrivingForceValidationAudit.responseSha256 = await receiptSha256(responseText);
   classicalNucleationWorkAudit = buildClassicalNucleationWork(interfacialEnergyValidationAudit,
     bulkDrivingForceValidationAudit);
-  receiptStatus.textContent = `Conditional nucleation work validated · critical Wulff scale ${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(4)} nm · barrier ${classicalNucleationWorkAudit.barrierElectronVolt.toPrecision(4)} eV · no rate or growth ranking inferred.`;
+  lastClassicalCapillarityRankingAudit = null;
+  receiptStatus.textContent = `Conditional nucleation work validated · critical Wulff scale ${classicalNucleationWorkAudit.criticalScaleNanometre.toFixed(4)} nm · barrier ${classicalNucleationWorkAudit.barrierElectronVolt.toPrecision(4)} eV · display only until the action regularizer is explicitly enabled.`;
   renderClassicalNucleationEvidence();
 }
 
@@ -4255,7 +4382,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-411",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4267,6 +4394,7 @@ async function downloadInterfacialEnergyRequest() {
   interfacialEnergyValidationAudit = null;
   bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
   classicalNucleationWorkAudit = null;
+  classicalCapillarityMode = "display"; lastClassicalCapillarityRankingAudit = null;
   interfacialEnergyRequestRuntime = { request, requestSha256,
     structureSha256: configuration.structureSha256, intrinsicDimension: request.specimen.intrinsicDimension };
   importWulffResponse.disabled = false;
@@ -4286,6 +4414,7 @@ async function validateInterfacialEnergyFile(file) {
   interfacialEnergyValidationAudit.responseSha256 = await receiptSha256(responseText);
   bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
   classicalNucleationWorkAudit = null;
+  classicalCapillarityMode = "display"; lastClassicalCapillarityRankingAudit = null;
   lastWulffRankingAudit = null;
   if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
     "Action-barrier checkpoint released because validated interfacial-energy evidence changed ranking provenance.");
@@ -4503,7 +4632,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-411",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5022,7 +5151,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-410",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-411",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -11603,7 +11732,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeWulffRegularizerWeight() > 0 ? `Validated oriented γ regularizes finite-nucleus support mismatch at weight ${activeWulffRegularizerWeight().toFixed(2)} and abstains beyond ${wulffAngularReachDegrees}°.` : "The Wulff evidence does not rank this frontier."} ${activeKineticHabitWeight() > 0 ? `Validated steady v(n̂) ranks unchanged actions at weight ${activeKineticHabitWeight().toFixed(2)} and abstains beyond ${kineticHabitReachDegrees}°.` : "The kinetic-habit evidence does not rank this frontier."} ${activeInterfaceFluxWeight() > 0 ? `Validated spatial J(x,n̂) ranks unchanged actions at weight ${activeInterfaceFluxWeight().toFixed(2)} and abstains beyond local coverage.` : "The interface-flux evidence does not rank this frontier."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, unsupplied interface energy, Kelvin temperature, heat flow, inferred transport coefficient, physical mechanism, formation energy, action barrier, attachment probability, or physical clock is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeWulffRegularizerWeight() > 0 ? `Validated oriented γ regularizes finite-nucleus support mismatch at weight ${activeWulffRegularizerWeight().toFixed(2)} and abstains beyond ${wulffAngularReachDegrees}°.` : "The Wulff evidence does not rank this frontier."} ${activeClassicalCapillarityWeight() > 0 ? `Validated γ+Δg ranks the same frontier by conditional frozen-center ΔΔG at weight ${activeClassicalCapillarityWeight().toFixed(2)}.` : "Conditional capillarity work does not rank this frontier."} ${activeKineticHabitWeight() > 0 ? `Validated steady v(n̂) ranks unchanged actions at weight ${activeKineticHabitWeight().toFixed(2)} and abstains beyond ${kineticHabitReachDegrees}°.` : "The kinetic-habit evidence does not rank this frontier."} ${activeInterfaceFluxWeight() > 0 ? `Validated spatial J(x,n̂) ranks unchanged actions at weight ${activeInterfaceFluxWeight().toFixed(2)} and abstains beyond local coverage.` : "The interface-flux evidence does not rank this frontier."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, unsupplied interface energy, Kelvin temperature, heat flow, inferred transport coefficient, physical mechanism, formation energy, action barrier, attachment probability, atom count, nucleation rate, or physical clock is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -14327,7 +14456,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-410" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-411" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14335,7 +14464,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-410",
+      buildId: "20260901-411",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15775,6 +15904,20 @@ async function buildExperimentReceipt() {
         growthRateInferred: false,
         physicalTimeIntegrated: false,
       },
+      validatedClassicalCapillarityRanking: {
+        role: "optional target-blind conditional capillarity-work ordering over an unchanged finite-nucleus frontier",
+        mode: classicalCapillarityMode, enabled: activeClassicalCapillarityWeight() > 0,
+        gate: classicalCapillarityGate(), angularReachDegrees: wulffAngularReachDegrees,
+        effectiveWeight: activeClassicalCapillarityWeight(), evaluations: classicalCapillarityEvaluations,
+        matchedRankingAudit: lastClassicalCapillarityRankingAudit,
+        scaleModel: "pre-action Wulff translation + scale fit; translation frozen while candidate advances nondecreasing scale",
+        workModel: "delta[C_gamma s^(d-1) - delta_g V_0 s^d] / validated barrier",
+        finiteNucleusRequired: true, sphereEnvironmentRequired: true,
+        candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+        heldoutTargetUsed: false, atomCountInferred: false, heterogeneousFactorApplied: false,
+        elasticEnergyInferred: false, attachmentKineticsInferred: false,
+        nucleationRateInferred: false, physicalTimeIntegrated: false,
+      },
       validatedOrientationKineticsRanking: {
         role: "optional target-blind steady-normal-velocity ordering over an unchanged finite-nucleus frontier",
         mode: kineticHabitMode, enabled: activeKineticHabitWeight() > 0, gate: kineticHabitGate(),
@@ -16787,6 +16930,13 @@ function notebookSoftPhysicsSearchReceipt() {
       effectiveWeight: activeWulffRegularizerWeight(),
       matchedRankingAudit: lastWulffRankingAudit,
       candidateSetChanged: false, hardAdmissionChanged: false, targetUsed: false },
+    validatedClassicalCapillarityRanking: { mode: classicalCapillarityMode,
+      angularReachDegrees: wulffAngularReachDegrees,
+      effectiveWeight: activeClassicalCapillarityWeight(),
+      matchedRankingAudit: lastClassicalCapillarityRankingAudit,
+      candidateSetChanged: false, hardAdmissionChanged: false,
+      atomCountInferred: false, nucleationRateInferred: false,
+      physicalTimeIntegrated: false, targetUsed: false },
     validatedOrientationKineticsRanking: { mode: kineticHabitMode,
       angularReachDegrees: kineticHabitReachDegrees, effectiveWeight: activeKineticHabitWeight(),
       matchedRankingAudit: lastKineticHabitRankingAudit,
@@ -16942,7 +17092,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-410" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-411" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -17091,6 +17241,10 @@ function notebookInterventionFactors(receipt) {
         search.validatedWulffShapeRegularizer?.angularReachDegrees,
         search.validatedWulffShapeRegularizer?.effectiveWeight,
         search.validatedWulffShapeRegularizer?.matchedRankingAudit?.candidateSetDigest || null],
+      classicalCapillarity: [search.validatedClassicalCapillarityRanking?.mode,
+        search.validatedClassicalCapillarityRanking?.angularReachDegrees,
+        search.validatedClassicalCapillarityRanking?.effectiveWeight,
+        search.validatedClassicalCapillarityRanking?.matchedRankingAudit?.candidateSetDigest || null],
       kineticHabit: [search.validatedOrientationKineticsRanking?.mode,
         search.validatedOrientationKineticsRanking?.angularReachDegrees,
         search.validatedOrientationKineticsRanking?.effectiveWeight,
@@ -21917,6 +22071,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
     scoreTerm("wulff-shape", "Wulff shape regularizer", evaluation.wulffShapeRegularizer.score,
       activeWulffRegularizerWeight(), "validated finite-nucleus equilibrium-shape ordering",
       "Externally supplied oriented interfacial energy regularizes support mismatch only; not attachment kinetics, mobility, rate, or time."),
+    scoreTerm("classical-capillarity", "conditional capillarity work", evaluation.classicalCapillarity.score,
+      activeClassicalCapillarityWeight(), "validated finite-nucleus thermodynamic ordering",
+      "Externally supplied gamma and delta_g rank frozen-center Wulff-scale work increments only; not atom count, attachment kinetics, nucleation rate, or time."),
     scoreTerm("kinetic-habit", "kinetic-Wulff orientation speed", evaluation.kineticHabit.score,
       activeKineticHabitWeight(), "validated orientation-resolved steady-velocity ordering",
       "One externally supplied driving condition; not interfacial energy, an action barrier, attachment probability, diffusion law, or integrated time."),
@@ -22148,6 +22305,8 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "constraint-tensor": [evaluation.constraintTensor.score, activeConstraintTensorWeight()],
     "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
     "wulff-shape": [evaluation.wulffShapeRegularizer.score, activeWulffRegularizerWeight()],
+    "classical-capillarity": [evaluation.classicalCapillarity.score,
+      activeClassicalCapillarityWeight()],
     "kinetic-habit": [evaluation.kineticHabit.score, activeKineticHabitWeight()],
     "interface-flux": [evaluation.interfaceFlux.score, activeInterfaceFluxWeight()],
     "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
@@ -23707,6 +23866,9 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
     { id: "wulff-shape", label: `Wulff shape ${activeWulffRegularizerWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeWulffRegularizerWeight()
         * entry.evaluation.wulffShapeRegularizer.score },
+    { id: "classical-capillarity", label: `capillarity ΔΔG ${activeClassicalCapillarityWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeClassicalCapillarityWeight()
+        * entry.evaluation.classicalCapillarity.score },
     { id: "kinetic-habit", label: `kinetic habit ${activeKineticHabitWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeKineticHabitWeight() * entry.evaluation.kineticHabit.score },
     { id: "interface-flux", label: `interface supply ${activeInterfaceFluxWeight().toFixed(2)}`,
@@ -25303,7 +25465,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-410",
+    generatedAt: new Date().toISOString(), buildId: "20260901-411",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28574,7 +28736,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-410",
+    generatedAt: new Date().toISOString(), buildId: "20260901-411",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -28701,6 +28863,7 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeConstraintTensorWeight() * evaluation.constraintTensor.score
       + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
       + activeWulffRegularizerWeight() * evaluation.wulffShapeRegularizer.score
+      + activeClassicalCapillarityWeight() * evaluation.classicalCapillarity.score
       + activeKineticHabitWeight() * evaluation.kineticHabit.score
       + activeInterfaceFluxWeight() * evaluation.interfaceFlux.score
       + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
@@ -28727,6 +28890,7 @@ function scoreFrontierCandidate(candidate, audit) {
 async function selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState = null) {
   capturePolicyComparison(evaluated, frontierStructuralState);
   captureWulffMatchedRankingAudit(evaluated);
+  captureClassicalCapillarityMatchedRankingAudit(evaluated);
   captureKineticHabitMatchedRankingAudit(evaluated);
   captureInterfaceFluxMatchedRankingAudit(evaluated);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
@@ -29023,6 +29187,7 @@ function evaluateCandidate(candidate, {
   const habitAnisotropy = habitAnisotropyForCandidate(candidate, { recordWork });
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
   const wulffShapeRegularizer = wulffShapeRegularizerForFreshSites(fresh, { recordWork });
+  const classicalCapillarity = classicalCapillarityForFreshSites(fresh, { recordWork });
   const kineticHabit = kineticHabitForFreshSites(fresh, { recordWork });
   const interfaceFlux = interfaceFluxForFreshSites(fresh, { recordWork });
   const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
@@ -29057,7 +29222,7 @@ function evaluateCandidate(candidate, {
     boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology,
-    wulffShapeRegularizer, kineticHabit, interfaceFlux, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
+    wulffShapeRegularizer, classicalCapillarity, kineticHabit, interfaceFlux, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, collectiveResponse,
     configurationalMultiplicity,
@@ -30024,7 +30189,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-410", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-411", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -31526,6 +31691,7 @@ function currentGrowthProtocolSettings() {
     constraintTensorMode, constraintTensorWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     wulffRankingMode, wulffAngularReachDegrees, wulffRegularizerWeight,
+    classicalCapillarityMode, classicalCapillarityWeight,
     kineticHabitMode, kineticHabitReachDegrees, kineticHabitWeight,
     interfaceFluxMode, interfaceFluxReachRelativeRadius, interfaceFluxWeight,
     multiphysicsCouplingMode,
@@ -31592,6 +31758,8 @@ function growthSettingSelects() {
     frontMorphologyMode: frontMorphologySelect, frontMorphologyWeight: frontMorphologyWeightSelect,
     wulffRankingMode: wulffRankingModeSelect, wulffAngularReachDegrees: wulffAngularReachSelect,
     wulffRegularizerWeight: wulffRegularizerWeightSelect,
+    classicalCapillarityMode: classicalCapillarityModeSelect,
+    classicalCapillarityWeight: classicalCapillarityWeightSelect,
     kineticHabitMode: kineticHabitModeSelect, kineticHabitReachDegrees: kineticHabitReachSelect,
     kineticHabitWeight: kineticHabitWeightSelect,
     interfaceFluxMode: interfaceFluxModeSelect, interfaceFluxReachRelativeRadius: interfaceFluxReachSelect,
@@ -31744,10 +31912,11 @@ function renderGrowthControlGroupSummaries() {
     activeConstraintTensorWeight() > 0,
     activeFrontMorphologyWeight() > 0,
     activeWulffRegularizerWeight() > 0,
+    activeClassicalCapillarityWeight() > 0,
     activeKineticHabitWeight() > 0,
     activeInterfaceFluxWeight() > 0,
     activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
-  growthInterfaceGroupState.textContent = `${interfaceActive}/15 active`;
+  growthInterfaceGroupState.textContent = `${interfaceActive}/16 active`;
   const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
@@ -31792,6 +31961,8 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   wulffRankingMode = settings.wulffRankingMode || "display";
   wulffAngularReachDegrees = Number(settings.wulffAngularReachDegrees) || 30;
   wulffRegularizerWeight = Number(settings.wulffRegularizerWeight) || .24;
+  classicalCapillarityMode = settings.classicalCapillarityMode || "display";
+  classicalCapillarityWeight = Number(settings.classicalCapillarityWeight) || .16;
   kineticHabitMode = settings.kineticHabitMode || "display";
   kineticHabitReachDegrees = Number(settings.kineticHabitReachDegrees) || 30;
   kineticHabitWeight = Number(settings.kineticHabitWeight) || .24;
@@ -33309,6 +33480,9 @@ function syncStageOptions() {
     const wulffShapeUse = activeWulffRegularizerWeight() <= 0
       ? ` The Wulff layer is display-only${wulffRankingMode === "shape" ? ` because ${wulffShapeRegularizerGate().reason}` : ""}.`
       : ` A ${activeWulffRegularizerWeight().toFixed(2)} soft validated Wulff-shape term fits translation and one scale to the occupied nucleus, ranks only support-mismatch improvement inside ${wulffAngularReachDegrees}° oriented γ coverage, and abstains elsewhere; it is an equilibrium-shape prior, not attachment kinetics, mobility, or rate.`;
+    const classicalCapillarityUse = activeClassicalCapillarityWeight() <= 0
+      ? ` The conditional capillarity-work layer is display-only${classicalCapillarityMode === "rank" ? ` because ${classicalCapillarityGate().reason}` : ""}.`
+      : ` A ${activeClassicalCapillarityWeight().toFixed(2)} soft validated capillarity term freezes the pre-action Wulff center and ranks unchanged candidates by conditional ΔΔG from γ(n̂)+Δg; it infers no atom count, kinetic law, nucleation rate, or clock.`;
     const kineticHabitUse = activeKineticHabitWeight() <= 0
       ? ` The kinetic-habit layer is display-only${kineticHabitMode === "rank" ? ` because ${kineticHabitGate().reason}` : ""}.`
       : ` A ${activeKineticHabitWeight().toFixed(2)} soft validated kinetic-habit term ranks unchanged actions by log steady-normal-velocity contrast inside ${kineticHabitReachDegrees}° oriented v coverage and abstains elsewhere; it is conditional on one driving state, not γ(n̂), an action barrier, attachment probability, or physical clock.`;
@@ -33324,8 +33498,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${kineticHabitUse}${interfaceFluxUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${kineticHabitUse}${interfaceFluxUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${classicalCapillarityUse}${kineticHabitUse}${interfaceFluxUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${classicalCapillarityUse}${kineticHabitUse}${interfaceFluxUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -33333,6 +33507,8 @@ function resetCounters() {
   eventIndex = 0;
   wulffShapeEvaluations = 0;
   lastWulffRankingAudit = null;
+  classicalCapillarityEvaluations = 0;
+  lastClassicalCapillarityRankingAudit = null;
   kineticHabitEvaluations = 0;
   lastKineticHabitRankingAudit = null;
   interfaceFluxEvaluations = 0;
@@ -33982,6 +34158,7 @@ function stateForCandidate(candidate, evaluation) {
     constraintTensor: evaluation.constraintTensor,
     frontMorphology: evaluation.frontMorphology,
     wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
+    classicalCapillarity: evaluation.classicalCapillarity,
     kineticHabit: evaluation.kineticHabit,
     interfaceFlux: evaluation.interfaceFlux,
     capillaryGeometry: evaluation.capillaryGeometry,
@@ -34674,6 +34851,7 @@ async function performOffLatticeEvent() {
     arrivalRouteKind: evaluation.arrivalPath.selectedRouteKind,
     frontMorphology: evaluation.frontMorphology,
     wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
+    classicalCapillarity: evaluation.classicalCapillarity,
     kineticHabit: evaluation.kineticHabit,
     interfaceFlux: evaluation.interfaceFlux,
     capillaryGeometry: evaluation.capillaryGeometry,
@@ -38685,7 +38863,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-410",
+    generatedAt: new Date().toISOString(), buildId: "20260901-411",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -39409,6 +39587,7 @@ resetWulffPreview?.addEventListener("click", () => {
   interfacialEnergyValidationAudit = null; wulffRankingMode = "display";
   bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
   classicalNucleationWorkAudit = null;
+  classicalCapillarityMode = "display"; lastClassicalCapillarityRankingAudit = null;
   lastWulffRankingAudit = null; renderWulffEvidence();
 });
 downloadBulkDrivingRequest?.addEventListener("click", async () => {
@@ -39428,23 +39607,39 @@ bulkDrivingResponseInput?.addEventListener("change", async () => {
 });
 resetBulkDrivingEvidence?.addEventListener("click", () => {
   bulkDrivingForceRequestRuntime = null; bulkDrivingForceValidationAudit = null;
-  classicalNucleationWorkAudit = null; renderClassicalNucleationEvidence();
+  classicalNucleationWorkAudit = null; classicalCapillarityMode = "display";
+  lastClassicalCapillarityRankingAudit = null; renderClassicalNucleationEvidence();
+});
+classicalCapillarityModeSelect?.addEventListener("change", () => {
+  classicalCapillarityMode = classicalCapillarityModeSelect.value === "rank" ? "rank" : "display";
+  lastClassicalCapillarityRankingAudit = null; growthProtocolMode = "custom";
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because the capillarity-work ranking mode changed.");
+  if (pipelineStage === 4) enterPipelineStage(4); else renderClassicalNucleationEvidence();
+});
+classicalCapillarityWeightSelect?.addEventListener("change", () => {
+  const value = Number(classicalCapillarityWeightSelect.value);
+  classicalCapillarityWeight = [.08, .16, .32].includes(value) ? value : .16;
+  lastClassicalCapillarityRankingAudit = null; growthProtocolMode = "custom";
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because the capillarity-work ranking weight changed.");
+  if (pipelineStage === 4) enterPipelineStage(4); else renderClassicalNucleationEvidence();
 });
 wulffRankingModeSelect?.addEventListener("change", () => {
   wulffRankingMode = wulffRankingModeSelect.value === "shape" ? "shape" : "display";
-  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  lastWulffRankingAudit = null; lastClassicalCapillarityRankingAudit = null; growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
 });
 wulffAngularReachSelect?.addEventListener("change", () => {
   const value = Number(wulffAngularReachSelect.value);
   wulffAngularReachDegrees = [15, 30, 45].includes(value) ? value : 30;
-  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  lastWulffRankingAudit = null; lastClassicalCapillarityRankingAudit = null; growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
 });
 wulffRegularizerWeightSelect?.addEventListener("change", () => {
   const value = Number(wulffRegularizerWeightSelect.value);
   wulffRegularizerWeight = [.12, .24, .48].includes(value) ? value : .24;
-  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  lastWulffRankingAudit = null; lastClassicalCapillarityRankingAudit = null; growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
 });
 kineticHabitPresetControls?.addEventListener("click", (event) => {
@@ -43751,7 +43946,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-410" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-411" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
