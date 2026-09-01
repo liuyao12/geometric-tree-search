@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 442 · nested work-quadrature convergence
+
+The finite response path is refined from seven to thirteen equally spaced
+Cartesian images. All twelve adjacent segments now repeat the complete energy,
+force, population, resultant, torque, symmetric-moment, and hard-geometry
+gates. The finer grid is not merely more sampling: its even-index images form
+an embedded seven-image Simpson rule over exactly the same path.
+
+Force work is computed independently with the thirteen-image and seven-image
+Simpson rules. Their absolute difference divided by fifteen is the standard
+Richardson estimate for the fine Simpson error under a smooth-integrand
+assumption. `W_force + ΔU` must fit inside that estimate plus the declared
+numerical tolerance. Trapezoid work remains visible for diagnosis but no longer
+sets the acceptance allowance.
+
+Receipts expose both Simpson estimates, their image counts, raw difference,
+Richardson divisor and error, endpoint energy change, closure residual, and
+allowed residual. This is convergence evidence for one finite coordinate-path
+integral—not physical uncertainty, thermodynamic work, free energy, NEB,
+dynamics, rate, or time.
+
 ## Build 441 · finite-path work–energy closure
 
 The seven response images now verify that the displayed finite force is the

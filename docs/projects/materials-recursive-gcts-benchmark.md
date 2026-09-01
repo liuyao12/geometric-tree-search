@@ -10658,6 +10658,20 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 442: Nested Simpson convergence for finite work
+
+The response audit now evaluates thirteen equally spaced images and applies all
+monotonic population/force/moment gates to twelve adjacent segments. Embedded
+even-index images define an exact seven-image coarse grid. Fine and coarse
+composite Simpson work estimates are compared, and their difference divided by
+15 supplies the smooth-integrand Richardson estimate used by the work–energy
+closure gate. The prior trapezoid estimate remains diagnostic only.
+
+The receipt records fine/coarse image counts and work, raw difference,
+Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. This
+is a nested quadrature convergence certificate, not physical uncertainty,
+thermodynamic work, free energy, NEB, dynamics, rate, or time.
+
 # Build 441: Finite-path work–energy closure
 
 The seven-image accommodation audit now integrates the complete movable-site

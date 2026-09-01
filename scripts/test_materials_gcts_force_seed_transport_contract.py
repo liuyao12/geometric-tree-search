@@ -38,8 +38,8 @@ def test_residual_force_vectors_are_transportable_but_never_become_a_force_field
     assert "massOrTimeStepUsed: false" in source
     assert "initialSeedAccepted" in projection
     assert '<option value="force">Residual-force direction seed' in html
-    assert 'buildId: "20260901-441"' in source
-    assert 'app.js?v=20260901-441' in html
+    assert 'buildId: "20260901-442"' in source
+    assert 'app.js?v=20260901-442' in html
     assert "Build 252" in readme
     assert "Proper-pose residual-force seeds (Build 252)" in benchmark
 

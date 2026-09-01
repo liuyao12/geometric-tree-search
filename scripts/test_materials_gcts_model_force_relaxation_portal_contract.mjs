@@ -17,7 +17,7 @@ for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force">Finite interaction −∇U · energy \+ force audit/);
   assert.match(document, /value="model-force-interface">Finite −∇U interface shell/);
   assert.match(document, /value="model-force-layered-interface">Finite −∇U two-shell response/);
-  assert.match(document, /global force, population residual, resultant, torque, and centered symmetric force-moment descent/);
+  assert.match(document, /energy, force, population, resultant, torque, and centered symmetric force-moment descent across thirteen/);
 }
 
 for (const token of [
@@ -62,6 +62,8 @@ for (const token of [
   "modelForceWorkSimpsonElectronVolt",
   "modelForceWorkEnergyClosureResidualElectronVolt",
   "modelForceWorkEnergyClosureToleranceElectronVolt",
+  "modelForceWorkCoarseSimpsonElectronVolt",
+  "modelForceWorkEnergyRichardsonErrorElectronVolt",
   "sweptHardExclusionPassed",
   "sweptHardExclusionMinimumMargin",
   "modelForceRmsBeforeEvPerAngstrom",
@@ -118,6 +120,9 @@ for (const token of [
   "trapezoidWorkElectronVolt",
   "closureResidualElectronVolt",
   "quadratureDiscrepancyElectronVolt",
+  "coarseSimpsonWorkElectronVolt",
+  "richardsonErrorEstimateElectronVolt",
+  "nestedSimpsonConvergenceAvailable: true",
   "pathParameterIsPhysicalTime: false",
 ]) assert.ok(moduleSource.includes(token), token);
 
@@ -146,10 +151,12 @@ assert.match(atlas, /"43", "Population force-resultant and torque gate"/);
 assert.match(atlas, /"44", "Intermediate response-path certificate"/);
 assert.match(atlas, /"45", "Centered symmetric force-moment gate"/);
 assert.match(atlas, /"46", "Finite-path work–energy closure"/);
+assert.match(atlas, /"47", "Nested work-quadrature convergence"/);
 assert.match(readme, /Build 437 · force-residual redistribution gate/);
 assert.match(readme, /Build 438 · population force-resultant and torque gate/);
 assert.match(readme, /Build 439 · intermediate response-path certificate/);
 assert.match(readme, /Build 440 · affine force-moment redistribution gate/);
 assert.match(readme, /Build 441 · finite-path work–energy closure/);
+assert.match(readme, /Build 442 · nested work-quadrature convergence/);
 
 console.log("model-force relaxation portal contract passed");

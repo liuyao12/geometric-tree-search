@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-441";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-442";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -51,17 +51,19 @@ function centeredSymmetricForceMoment(positions, forces, centroid) {
 /**
  * Integrate the complete movable-site force along one fixed Cartesian path and
  * compare that work with the independently evaluated endpoint energy change.
- * Simpson-versus-trapezoid disagreement is retained as a finite quadrature
- * uncertainty rather than silently treated as physical noise.
+ * A fine Simpson rule and its embedded half-density Simpson rule provide a
+ * Richardson-scaled finite quadrature error estimate. Trapezoid work remains
+ * visible as a lower-order diagnostic, never as the acceptance allowance.
  */
 export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
   forceFieldsElectronVoltPerAngstrom, displacementVectorsAngstrom, {
     absoluteToleranceElectronVolt = 1e-10,
     relativeTolerance = 1e-10,
   } = {}) {
-  if (!Array.isArray(fractions) || fractions.length < 3 || fractions.length % 2 !== 1
+  if (!Array.isArray(fractions) || fractions.length < 5
+      || (fractions.length - 1) % 4 !== 0
       || !fractions.every(Number.isFinite)) {
-    throw new Error("force-energy path closure needs an odd sequence of at least three images");
+    throw new Error("force-energy path closure needs 4k+1 equally spaced images (at least five)");
   }
   if (!Array.isArray(energiesElectronVolt) || energiesElectronVolt.length !== fractions.length
       || !energiesElectronVolt.every(Number.isFinite)) {
@@ -90,38 +92,53 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
   const simpsonWorkElectronVolt = interval / 3 * forcePathIntegrandElectronVolt.reduce(
     (sum, value, index) => sum + (index === 0 || index === lastIndex
       ? 1 : index % 2 === 1 ? 4 : 2) * value, 0);
+  const coarseForcePathIntegrandElectronVolt = forcePathIntegrandElectronVolt
+    .filter((_, index) => index % 2 === 0);
+  const coarseLastIndex = coarseForcePathIntegrandElectronVolt.length - 1;
+  const coarseSimpsonWorkElectronVolt = 2 * interval / 3
+    * coarseForcePathIntegrandElectronVolt.reduce((sum, value, index) =>
+      sum + (index === 0 || index === coarseLastIndex
+        ? 1 : index % 2 === 1 ? 4 : 2) * value, 0);
   const energyChangeElectronVolt = energiesElectronVolt[lastIndex] - energiesElectronVolt[0];
   const closureResidualElectronVolt = simpsonWorkElectronVolt + energyChangeElectronVolt;
-  const quadratureDiscrepancyElectronVolt = Math.abs(
-    simpsonWorkElectronVolt - trapezoidWorkElectronVolt);
+  const nestedSimpsonDifferenceElectronVolt = Math.abs(
+    simpsonWorkElectronVolt - coarseSimpsonWorkElectronVolt);
+  const richardsonErrorEstimateElectronVolt = nestedSimpsonDifferenceElectronVolt / 15;
   const numericalToleranceElectronVolt = Math.max(Number(absoluteToleranceElectronVolt),
     Number(relativeTolerance) * Math.max(1, Math.abs(energyChangeElectronVolt),
       Math.abs(simpsonWorkElectronVolt)));
   const allowedClosureResidualElectronVolt = numericalToleranceElectronVolt
-    + quadratureDiscrepancyElectronVolt;
+    + richardsonErrorEstimateElectronVolt;
   const passed = Math.abs(closureResidualElectronVolt)
     <= allowedClosureResidualElectronVolt;
   return Object.freeze({
     available: true,
     passed,
     reason: passed
-      ? "force work closes the endpoint energy change within finite quadrature uncertainty"
+      ? "force work closes the endpoint energy change within nested-Simpson Richardson error"
       : "integrated force work does not close the endpoint energy change",
     imageCount: fractions.length,
     forcePathIntegrandElectronVolt: Object.freeze(forcePathIntegrandElectronVolt),
     simpsonWorkElectronVolt,
+    coarseSimpsonWorkElectronVolt,
+    fineSimpsonImageCount: fractions.length,
+    coarseSimpsonImageCount: coarseForcePathIntegrandElectronVolt.length,
     trapezoidWorkElectronVolt,
     energyChangeElectronVolt,
     closureResidualElectronVolt,
     absoluteClosureResidualElectronVolt: Math.abs(closureResidualElectronVolt),
-    quadratureDiscrepancyElectronVolt,
+    nestedSimpsonDifferenceElectronVolt,
+    richardsonErrorEstimateElectronVolt,
+    quadratureDiscrepancyElectronVolt: nestedSimpsonDifferenceElectronVolt,
     numericalToleranceElectronVolt,
     allowedClosureResidualElectronVolt,
     forceWorkSignConvention: "positive work by the finite force; expected W = -delta U",
     equallySpacedCartesianPath: true,
+    nestedSimpsonConvergenceAvailable: true,
+    richardsonDivisor: 15,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "This is a finite quadrature consistency check between one declared energy and its complete movable-site force along a fixed Cartesian coordinate path. It is not thermodynamic work, free energy, a minimum-energy path, dynamics, rate, or physical time.",
+    claimBoundary: "This is a nested finite-quadrature consistency check between one declared energy and its complete movable-site force along a fixed Cartesian coordinate path. The fine/coarse Simpson difference divided by 15 is a smooth-integrand numerical error estimate, not physical uncertainty. It is not thermodynamic work, free energy, a minimum-energy path, dynamics, rate, or physical time.",
   });
 }
 
@@ -498,9 +515,9 @@ export function auditModelForceRelaxationPath(
     electrostaticsOptions = {},
     ...auditOptions
   } = {}) {
-  if (!(Number.isInteger(imageCount) && imageCount >= 3 && imageCount <= 17
-      && imageCount % 2 === 1)) {
-    throw new RangeError("model-force response path needs an odd count of 3 to 17 images");
+  if (!(Number.isInteger(imageCount) && imageCount >= 5 && imageCount <= 17
+      && (imageCount - 1) % 4 === 0)) {
+    throw new RangeError("model-force response path needs 5, 9, 13, or 17 images");
   }
   if (originalAddedSites.length !== proposedAddedSites.length) {
     throw new Error("model-force response path needs paired movable sites");
@@ -589,6 +606,8 @@ export function auditModelForceRelaxationPath(
     workEnergyClosurePassed: workEnergyClosure.passed,
     workEnergyClosure,
     forceWorkSimpsonElectronVolt: workEnergyClosure.simpsonWorkElectronVolt ?? null,
+    forceWorkCoarseSimpsonElectronVolt:
+      workEnergyClosure.coarseSimpsonWorkElectronVolt ?? null,
     forceWorkTrapezoidElectronVolt: workEnergyClosure.trapezoidWorkElectronVolt ?? null,
     endpointEnergyChangeElectronVolt: workEnergyClosure.energyChangeElectronVolt ?? null,
     workEnergyClosureResidualElectronVolt:
@@ -597,10 +616,14 @@ export function auditModelForceRelaxationPath(
       workEnergyClosure.allowedClosureResidualElectronVolt ?? null,
     workEnergyQuadratureDiscrepancyElectronVolt:
       workEnergyClosure.quadratureDiscrepancyElectronVolt ?? null,
+    workEnergyRichardsonErrorEstimateElectronVolt:
+      workEnergyClosure.richardsonErrorEstimateElectronVolt ?? null,
+    workEnergyNestedSimpsonConvergenceAvailable:
+      workEnergyClosure.nestedSimpsonConvergenceAvailable || false,
     groupLabelsFrozenBeforePath: true,
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. The Simpson-versus-trapezoid discrepancy is a finite quadrature bound, not physical uncertainty. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. The embedded fine/coarse Simpson difference divided by 15 is a smooth-integrand Richardson error estimate, not physical uncertainty. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }
