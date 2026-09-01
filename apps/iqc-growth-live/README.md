@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 406 · exact periodic ice closure comparison
+
+The boundary audit now offers a second calculation rather than pretending the
+33-molecule growth sphere can be wrapped periodically. The browser derives
+separate Ice-Ih oxygen supercells from the declared hexagonal lattice
+geometry, retains distinct periodic-image bonds, verifies that every oxygen
+has four incident O–O bonds, and exactly counts assignments in which each H₂O
+donates on two bonds and every bond receives exactly one proton.
+
+The interactive finite-size series is recomputed in the browser:
+
+| periodic repeats | H₂O | O–O bonds | exact Ω | log Ω/N |
+| --- | ---: | ---: | ---: | ---: |
+| 1×1×1 | 4 | 8 | 18 | 0.72259 |
+| 2×1×1 | 8 | 16 | 114 | 0.59202 |
+| 3×1×1 | 12 | 24 | 858 | 0.56288 |
+| 2×2×1 | 16 | 32 | 2,970 | 0.49977 |
+
+The first three thin cells retain their explicit parallel periodic-image
+bonds; the 2×2×1 graph has none. A selectable SVG plots the exact sequence
+against Pauling's `ln(3/2)` reference and exposes the molecule count, bond
+count, CSP digest, and finite-size warning for each point. The original open
+sphere remains visible beside it at `log Ω/N = 0.80569`.
+
+This comparison does not use the fixture's proton coordinates, impose a
+proton-ordered target, fit an energy, or wrap the nonperiodic spherical crop.
+The sequence stops at the largest exact cell kept interactive and makes no
+bulk-limit or entropy extrapolation. Receipts preserve all graph hashes,
+counts, claim flags, and boundary identities.
+
 ## Build 405 · open-boundary ice-state audit
 
 The exact proton-state count is now accompanied by a boundary-sensitivity

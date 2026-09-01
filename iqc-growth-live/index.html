@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-405">
+  <link rel="stylesheet" href="./style.css?v=20260831-406">
   <script type="importmap">
     {
       "imports": {
@@ -1278,6 +1278,10 @@
                 <header><span><small>finite geometry ≠ bulk thermodynamics</small><strong>Boundary-sensitivity audit</strong></span><b>open O scaffold</b></header>
                 <div id="iceBoundarySensitivityBars" class="ice-boundary-sensitivity-bars" role="group" aria-label="Selectable boundary and bulk-reference diagnostics"></div>
                 <p id="iceBoundarySensitivityDetail" aria-live="polite">Run an anchor wave to compare open-boundary pose freedom with the Pauling ice-rule counting reference.</p>
+                <div class="ice-periodic-closure-comparison">
+                  <svg id="icePeriodicBoundaryPlot" viewBox="0 0 360 130" role="img" aria-label="Exact finite periodic Ice Ih proton-state counts per molecule compared with the Pauling reference"></svg>
+                  <aside><small>geometry-derived periodic closure</small><strong id="icePeriodicBoundaryState">exact finite supercells</strong><div id="icePeriodicBoundaryControls" role="group" aria-label="Select a finite periodic Ice Ih supercell"></div><p id="icePeriodicBoundaryDetail" aria-live="polite">Select a cell to inspect its exact four-connected two-donor count.</p></aside>
+                </div>
               </section>
               <div class="ice-orientation-evidence-controls">
                 <label>thermodynamic state<select id="iceOrientationTemperature"><option value="50">50 K</option><option value="100" selected>100 K</option><option value="200">200 K</option><option value="273.15">273.15 K</option></select></label>
@@ -2663,7 +2667,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-405"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-405"></script>
+  <script type="module" src="./app.js?v=20260831-406"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-406"></script>
 </body>
 </html>

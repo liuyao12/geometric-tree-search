@@ -36,14 +36,19 @@ def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> Non
         'id="iceOrientationStateSpaceDetail"',
         'id="iceBoundarySensitivityBars"',
         'id="iceBoundarySensitivityDetail"',
+        'id="icePeriodicBoundaryPlot"',
+        'id="icePeriodicBoundaryControls"',
+        'id="icePeriodicBoundaryDetail"',
         'Boundary-sensitivity audit',
         'Local pose energies are insufficient',
     ):
         assert token in html
-    assert 'from "./ice-orientation-evidence.mjs?v=20260831-405"' in app
+    assert 'from "./ice-orientation-evidence.mjs?v=20260831-406"' in app
     assert 'function renderIceOrientationEvidenceBridge()' in app
     assert 'function renderIceOrientationStateSpace(audit)' in app
     assert 'function renderIceBoundarySensitivity(audit)' in app
+    assert 'function renderIcePeriodicBoundaryComparison(openBoundaryAudit)' in app
+    assert 'buildPeriodicIceIhBoundarySeries' in app
     assert 'https://doi.org/10.1021/ja01315a102' in app
     assert '"geometric assignments"' in app
     assert 'log Ω' in app

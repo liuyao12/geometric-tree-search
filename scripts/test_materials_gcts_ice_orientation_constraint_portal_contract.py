@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXECUTOR = (ROOT / "apps/iqc-growth-live/ice-molecular-anchor-growth.js").read_text()
+PERIODIC = (ROOT / "apps/iqc-growth-live/ice-periodic-boundary-audit.mjs").read_text()
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
 ATLAS = (ROOT / "apps/iqc-growth-live/evidence-atlas.js").read_text()
 README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
@@ -41,6 +42,20 @@ def test_orientation_audit_is_geometric_target_blind_and_fail_honest():
     assert "seedOrientationAudit" in EXECUTOR
     assert "orientationAudit" in EXECUTOR
 
+    for token in (
+        "derivePeriodicIceIhOxygenGraph",
+        "buildPeriodicIceIhBoundaryAudit",
+        "buildPeriodicIceIhBoundarySeries",
+        "exactTwoDonorCount",
+        "everyOxygenFourConnected: true",
+        "everyMoleculeDonatesTwice: true",
+        "everyConnectionHasExactlyOneProton: true",
+        "protonCoordinatesUsed: false",
+        "thermodynamicEntropyInferred: false",
+        "bulkLimitClaimed: false",
+    ):
+        assert token in PERIODIC
+
 
 def test_live_stage_and_receipts_expose_the_constraint_result_without_materializing_a_branch():
     for token in (
@@ -55,13 +70,17 @@ def test_live_stage_and_receipts_expose_the_constraint_result_without_materializ
         "exactFeasibleAssignmentCount",
         "stateSpaceConstraintSha256",
         "function renderIceBoundarySensitivity(audit)",
+        "function renderIcePeriodicBoundaryComparison(openBoundaryAudit)",
         "boundarySensitivity: audit.boundarySensitivity",
+        "periodicClosureReferences: ICE_PERIODIC_BOUNDARY_SERIES.map",
         "local marginal ambiguities are correlated and are not additive entropy contributions",
     ):
         assert token in APP
     assert APP.count("finalOrientationConstraintAudit: iceOrientationAuditReceipt") == 2
     assert "Finite proton constraint audit" in ATLAS
     assert "Open-boundary sensitivity" in ATLAS
+    assert "Exact periodic closure series" in ATLAS
+    assert "Build 406 · exact periodic ice closure comparison" in README
     assert "Build 405 · open-boundary ice-state audit" in README
     assert "Build 401 · finite proton-orientation constraint audit" in README
 

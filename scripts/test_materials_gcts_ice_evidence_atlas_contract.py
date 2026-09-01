@@ -39,6 +39,8 @@ def test_ice_evidence_is_executed_linked_and_claim_bounded() -> None:
     assert '["Ic isometry classes", "1 + 2 + 39"]' in atlas
     assert '["Complete molecular cover", "Ih 216 / 216 · Ic 192 / 192"' in atlas
     assert '"O anchors green · proton poses red"' in atlas
+    assert '"Exact periodic closure series"' in atlas
+    assert "ICE_PERIODIC_BOUNDARY_SERIES" in atlas
     assert '"no promoted ice rule"' in atlas
     assert '"finite fixed point"' in atlas
     assert '"Proton-resolved ice growth"' in atlas
@@ -55,7 +57,7 @@ def test_ice_evidence_is_executed_linked_and_claim_bounded() -> None:
 
     assert 'id="atlasSystemActions"' in html
     assert "One question, five structures + one exact geometry stress test" in html
-    assert 'evidence-atlas.js?v=20260831-405' in html
+    assert 'evidence-atlas.js?v=20260831-406' in html
     assert ".atlas-system-actions" in css
     assert ".system-tabs { display: grid; grid-template-columns: repeat(6,1fr)" in css
 

@@ -21,7 +21,7 @@ function matrixResidual(matrix) {
     Math.abs(value - (first === second ? 1 : 0)))));
 }
 
-function sha256Ascii(message) {
+export function iceGeometrySha256Ascii(message) {
   // Small synchronous SHA-256 for deterministic geometry keys. WebCrypto is
   // asynchronous and would make a single frontier update nondeterministic
   // relative to the Python audit. The payload contains ASCII JSON only.
@@ -79,7 +79,7 @@ function quantizedSitesKey(sites, tolerance) {
       }
       return 0;
     });
-  return sha256Ascii(JSON.stringify(payload));
+  return iceGeometrySha256Ascii(JSON.stringify(payload));
 }
 
 function renderSites(artifact, occurrence) {
@@ -265,7 +265,7 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
   const stateCountExact = exactStateCount.toString();
   const stateCountLowerBound = stateEnumerationTruncated ? MAXIMUM_EXPLICIT_ORIENTATION_STATES
     : retainedAssignments.length;
-  const stateSpaceSha256 = sha256Ascii(JSON.stringify({
+  const stateSpaceSha256 = iceGeometrySha256Ascii(JSON.stringify({
     domains: supportedDomains.map((domain, index) => domain.map((value) => records[index].domain[value].poseKey)),
     constraints: edges.map((edge) => [records[edge.first].key, records[edge.second].key,
       records[edge.first].domain.flatMap((firstPose, firstIndex) => records[edge.second].domain.flatMap((secondPose, secondIndex) =>

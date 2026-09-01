@@ -1326,12 +1326,30 @@ body.study-guide-open { overflow: hidden; }
 .ice-boundary-sensitivity-bars i::after { content:""; position:absolute; inset:0 auto 0 0; width:var(--ice-boundary-bar); background:linear-gradient(90deg,#68d9b8,#ffc169); }
 .ice-boundary-sensitivity > p { margin:6px 0 0; padding:5px 6px; border-left:2px solid rgba(255,193,105,.48); background:rgba(255,193,105,.025); color:#8b8f89; font:4.5px/1.5 var(--mono); }
 .ice-boundary-sensitivity > p a { color:#d6ad73; text-decoration:none; }.ice-boundary-sensitivity > p a:hover,.ice-boundary-sensitivity > p a:focus-visible { color:#ffe1b2; outline:none; text-decoration:underline; }
+.ice-periodic-closure-comparison { display:grid; grid-template-columns:1.2fr .8fr; gap:5px; margin-top:6px; }
+.ice-periodic-closure-comparison > svg,.ice-periodic-closure-comparison > aside { min-width:0; border:1px solid rgba(104,217,184,.14); background:rgba(3,13,17,.72); }
+.ice-periodic-closure-comparison > svg { display:block; width:100%; min-height:120px; }
+.ice-periodic-closure-comparison > aside { padding:6px; }
+.ice-periodic-closure-comparison > aside small,.ice-periodic-closure-comparison > aside strong { display:block; }
+.ice-periodic-closure-comparison > aside small { color:#668a7e; font:4px var(--mono); text-transform:uppercase; }
+.ice-periodic-closure-comparison > aside strong { margin-top:3px; color:#a9d5c7; font:6px var(--mono); font-weight:400; }
+.ice-periodic-closure-comparison > aside p { margin:5px 0 0; color:#7f918b; font:4.5px/1.45 var(--mono); }
+#icePeriodicBoundaryControls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; margin-top:5px; }
+#icePeriodicBoundaryControls button { min-width:0; padding:4px; border:1px solid rgba(104,217,184,.15); background:rgba(6,20,22,.82); color:#72978b; font:4px var(--mono); cursor:pointer; }
+#icePeriodicBoundaryControls button:hover,#icePeriodicBoundaryControls button:focus-visible,#icePeriodicBoundaryControls button[aria-pressed="true"] { border-color:rgba(104,217,184,.6); color:#bcebdc; outline:none; }
+#icePeriodicBoundaryPlot .periodic-axis { stroke:rgba(123,157,148,.25); stroke-width:.8; }
+#icePeriodicBoundaryPlot .periodic-pauling { stroke:#ffc169; stroke-width:1.1; stroke-dasharray:4 3; }
+#icePeriodicBoundaryPlot .periodic-series { fill:none; stroke:#68d9b8; stroke-width:1.5; }
+#icePeriodicBoundaryPlot .periodic-point { fill:#68d9b8; stroke:#071112; stroke-width:1.4; cursor:pointer; }
+#icePeriodicBoundaryPlot .periodic-point.active,#icePeriodicBoundaryPlot .periodic-point:hover { fill:#fff1c9; stroke:#ffc169; stroke-width:2; }
+#icePeriodicBoundaryPlot text { fill:#77918a; font:5px var(--mono); }
+#icePeriodicBoundaryPlot .periodic-reference-label { fill:#c79e68; }
 .ice-orientation-evidence-controls { display:grid; grid-template-columns:.7fr 1.25fr 1fr .7fr; gap:4px; align-items:stretch; }
 .ice-orientation-evidence-controls label,.ice-orientation-evidence-controls button { min-width:0; padding:5px; border:1px solid rgba(197,156,255,.2); background:rgba(18,13,29,.75); color:#bba8d6; font:4.5px var(--mono); }
 .ice-orientation-evidence-controls label { display:grid; gap:3px; }.ice-orientation-evidence-controls select { width:100%; color:#d8cce8; background:#09131c; border:1px solid rgba(197,156,255,.18); font:4.5px var(--mono); }
 .ice-orientation-evidence-controls button { cursor:pointer; }.ice-orientation-evidence-controls button:disabled,.ice-orientation-evidence-import:has(input:disabled) { opacity:.35; cursor:not-allowed; }
 .ice-orientation-evidence-import input { display:none; }
-@media (max-width:760px) { .ice-orientation-state-space-layout { grid-template-columns:1fr; }.ice-boundary-sensitivity-bars { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-orientation-evidence-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:760px) { .ice-orientation-state-space-layout,.ice-periodic-closure-comparison { grid-template-columns:1fr; }.ice-boundary-sensitivity-bars { grid-template-columns:repeat(2,minmax(0,1fr)); }.ice-orientation-evidence-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 .continuation-evidence-ladder { position:relative; margin:9px 0; padding:9px; overflow:hidden; border:1px solid rgba(181,148,255,.28); background:radial-gradient(circle at 100% 0,rgba(181,148,255,.13),transparent 44%),linear-gradient(155deg,rgba(15,25,38,.98),rgba(3,11,16,.96)); }
 .continuation-evidence-ladder::before { content:""; position:absolute; inset:0 auto 0 0; width:2px; background:linear-gradient(#67bfff,#65e1bc 45%,#b594ff 75%,#f0c96a); opacity:.85; }
 .continuation-evidence-ladder[hidden] { display:none; }

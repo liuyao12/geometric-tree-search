@@ -1,5 +1,39 @@
 # Recursive GCTS benchmark for material growth
 
+## Exact periodic ice closure comparison (Build 406)
+
+The open finite growth sphere is not a unit cell, so periodic closure cannot
+be obtained by joining its exposed anchors. Build 406 instead constructs a
+separate family of finite periodic Ice-Ih oxygen graphs from the declared
+hexagonal lattice (`a = 4.518 Å`, `c = 7.357 Å`, `u = 3/8`). Image bonds are
+canonicalized with their translation, not collapsed by oxygen-pair identity.
+Each graph must have `2N` bonds and degree four at every oxygen before it can
+enter the counter.
+
+Every molecular variable has the six possible choices of two donor bonds.
+Each periodic O–O factor admits only assignments where exactly one endpoint
+donates. Deterministic min-fill variable elimination contracts the resulting
+integer factor graph. The browser recomputes the following exact values:
+
+| repeats | molecules | edges | Ω | log Ω/N | parallel image bonds |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 1×1×1 | 4 | 8 | 18 | 0.72259294 | 4 |
+| 2×1×1 | 8 | 16 | 114 | 0.59202481 | 4 |
+| 3×1×1 | 12 | 24 | 858 | 0.56288367 | 6 |
+| 2×2×1 | 16 | 32 | 2,970 | 0.49976983 | 0 |
+
+These points diagnose finite-size and boundary-topology effects; they are not
+a thermodynamic-limit fit. In particular, the calculation uses oxygen lattice
+geometry and ice-rule incidence only—no target proton coordinates, physical
+potential, or Boltzmann weights. The largest cell is chosen for interactive
+tractability, not because convergence is certified. Its graph SHA-256 is
+`2a45111418ee256aea3551cf9053a4d5a7fc1584c50584f06cd9419a3ca31ade`.
+
+The portal's selectable plot places this exact periodic series next to the
+open 33-molecule CSP and Pauling's counting reference. The receipt keeps each
+cell's graph hash, exact count, elimination scope, boundary flags, and explicit
+`bulkLimitClaimed = false` / `thermodynamicEntropyInferred = false` gates.
+
 ## Open-boundary ice-state audit (Build 405)
 
 The finite proton CSP now quantifies why its exact assignment count must not
