@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-445";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-446";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -297,6 +297,93 @@ export function auditPanelResolvedForceEnergyPathClosure(fractions,
   });
 }
 
+/**
+ * Compare the complete projected force at each eligible interior image with an
+ * independently differenced local energy derivative. The five-point stencil
+ * is the reported estimate; its difference from the centered three-point
+ * stencil is retained as a conservative discretization allowance.
+ */
+export function auditInteriorForceEnergyGradientConsistency(fractions,
+  energiesElectronVolt, forceFieldsElectronVoltPerAngstrom,
+  displacementVectorsAngstrom, {
+    absoluteToleranceElectronVolt = 1e-10,
+    relativeTolerance = 1e-10,
+    additionalProjectedForceToleranceElectronVolt = 0,
+  } = {}) {
+  auditForceEnergyPathClosure(fractions, energiesElectronVolt,
+    forceFieldsElectronVoltPerAngstrom, displacementVectorsAngstrom, {
+      absoluteToleranceElectronVolt,
+      relativeTolerance,
+    });
+  const additionalTolerance = Number(
+    additionalProjectedForceToleranceElectronVolt);
+  if (!(Number.isFinite(additionalTolerance) && additionalTolerance >= 0)) {
+    throw new RangeError("interior force-gradient tolerance must be finite and nonnegative");
+  }
+  const interval = 1 / (fractions.length - 1);
+  const projectedForceElectronVolt = forceFieldsElectronVoltPerAngstrom.map((field) =>
+    field.reduce((sum, force, siteIndex) =>
+      sum + dotVector(force, displacementVectorsAngstrom[siteIndex]), 0));
+  const records = [];
+  for (let imageIndex = 2; imageIndex <= fractions.length - 3; imageIndex += 1) {
+    const fineEnergyDerivativeElectronVolt = (
+      energiesElectronVolt[imageIndex - 2]
+      - 8 * energiesElectronVolt[imageIndex - 1]
+      + 8 * energiesElectronVolt[imageIndex + 1]
+      - energiesElectronVolt[imageIndex + 2]) / (12 * interval);
+    const coarseEnergyDerivativeElectronVolt = (
+      energiesElectronVolt[imageIndex + 1]
+      - energiesElectronVolt[imageIndex - 1]) / (2 * interval);
+    const negativeEnergyDerivativeElectronVolt =
+      -fineEnergyDerivativeElectronVolt;
+    const force = projectedForceElectronVolt[imageIndex];
+    const residualElectronVolt = force - negativeEnergyDerivativeElectronVolt;
+    const stencilDifferenceElectronVolt = Math.abs(
+      fineEnergyDerivativeElectronVolt - coarseEnergyDerivativeElectronVolt);
+    const baseToleranceElectronVolt = Math.max(
+      Number(absoluteToleranceElectronVolt), Number(relativeTolerance)
+      * Math.max(1, Math.abs(force), Math.abs(negativeEnergyDerivativeElectronVolt)));
+    const allowedResidualElectronVolt = baseToleranceElectronVolt
+      + stencilDifferenceElectronVolt + additionalTolerance;
+    const passed = Math.abs(residualElectronVolt) <= allowedResidualElectronVolt;
+    records.push(Object.freeze({
+      imageIndex,
+      fraction: fractions[imageIndex],
+      projectedForceElectronVolt: force,
+      negativeFineEnergyDerivativeElectronVolt:
+        negativeEnergyDerivativeElectronVolt,
+      negativeCoarseEnergyDerivativeElectronVolt:
+        -coarseEnergyDerivativeElectronVolt,
+      residualElectronVolt,
+      absoluteResidualElectronVolt: Math.abs(residualElectronVolt),
+      stencilDifferenceElectronVolt,
+      baseToleranceElectronVolt,
+      additionalProjectedForceToleranceElectronVolt: additionalTolerance,
+      allowedResidualElectronVolt,
+      passed,
+    }));
+  }
+  const failedImageIndices = records.filter((record) => !record.passed)
+    .map((record) => record.imageIndex);
+  const passed = failedImageIndices.length === 0;
+  return Object.freeze({
+    available: records.length > 0,
+    passed,
+    eligibleImageCount: records.length,
+    fivePointEnergyDerivative: true,
+    threePointEmbeddedComparison: true,
+    failedImageIndices: Object.freeze(failedImageIndices),
+    maximumAbsoluteResidualElectronVolt: Math.max(0,
+      ...records.map((record) => record.absoluteResidualElectronVolt)),
+    records: Object.freeze(records),
+    targetUsed: false,
+    reason: passed
+      ? "projected force agrees with the local energy derivative at every eligible image"
+      : `local force-energy gradient mismatch at image${failedImageIndices.length === 1 ? "" : "s"} ${failedImageIndices.join(", ")}`,
+    claimBoundary: "This compares a projected force with independent five-point and three-point energy derivatives along one sampled straight coordinate path. The stencil difference is numerical allowance, not physical uncertainty. It is a local tangent consistency check—not a full Cartesian gradient, Hessian, force-constant matrix, phonon spectrum, stability proof, minimum-energy path, dynamics, rate, or time.",
+  });
+}
+
 /** Require every active physical term to close independently of the total. */
 export function auditComponentForceEnergyPathClosures(components, fractions,
   displacementVectorsAngstrom, options = {}) {
@@ -324,11 +411,20 @@ export function auditComponentForceEnergyPathClosures(components, fractions,
         additionalNumericalToleranceElectronVolt:
           component.additionalNumericalToleranceElectronVolt
           ?? options.additionalNumericalToleranceElectronVolt ?? 0 });
+    const gradientConsistency = auditInteriorForceEnergyGradientConsistency(
+      fractions, component.energiesElectronVolt,
+      component.forceFieldsElectronVoltPerAngstrom,
+      displacementVectorsAngstrom, { ...options,
+        additionalProjectedForceToleranceElectronVolt:
+          component.additionalNumericalToleranceElectronVolt
+          ?? options.additionalNumericalToleranceElectronVolt ?? 0 });
     return Object.freeze({ id: ids[index], active: true, ...closure,
-      passed: closure.passed && panelClosure.passed,
+      passed: closure.passed && panelClosure.passed && gradientConsistency.passed,
       aggregateClosurePassed: closure.passed,
       panelClosurePassed: panelClosure.passed,
-      panelClosure });
+      panelClosure,
+      interiorGradientConsistencyPassed: gradientConsistency.passed,
+      interiorGradientConsistency: gradientConsistency });
   });
   const activeRecords = records.filter((record) => record.active);
   const passed = activeRecords.every((record) => record.passed);
@@ -341,10 +437,10 @@ export function auditComponentForceEnergyPathClosures(components, fractions,
       .map((record) => record.id)),
     records: Object.freeze(records),
     targetUsed: false,
-    reason: passed ? "every active interaction component closes globally and panel by panel"
+    reason: passed ? "every active interaction component closes globally, panel by panel, and at every interior tangent"
       : `component work-energy closure failed: ${activeRecords.filter((record) => !record.passed)
         .map((record) => record.id).join(", ")}`,
-    claimBoundary: "Independent component and local-panel closure prevents compensating force/energy errors from hiding between terms or path regions. It validates only the declared decomposition along one sampled coordinate path; it does not prove the components are transferable physical interactions, a Hessian, thermodynamic work, dynamics, or time.",
+    claimBoundary: "Independent component, local-panel, and interior-tangent closure prevents compensating force/energy errors from hiding between terms, path regions, or samples. It validates only the declared decomposition along one sampled coordinate path; it does not prove the components are transferable physical interactions, a full gradient, Hessian, thermodynamic work, dynamics, or time.",
   });
 }
 
@@ -855,6 +951,7 @@ export function auditModelForceRelaxationPath(
   };
   let workEnergyClosure;
   let panelWorkEnergyClosure;
+  let interiorGradientConsistency;
   try {
     workEnergyClosure = auditForceEnergyPathClosure(
       images.map((image) => image.fraction),
@@ -872,6 +969,14 @@ export function auditModelForceRelaxationPath(
       displacementVectorsAngstrom, { ...commonClosureOptions,
         additionalNumericalToleranceElectronVolt:
           inductionForceWorkNumericalUncertaintyElectronVolt });
+    interiorGradientConsistency = auditInteriorForceEnergyGradientConsistency(
+      images.map((image) => image.fraction),
+      imageEvaluations.map((evaluation) => evaluation.deltaEnergyElectronVolt),
+      imageEvaluations.map((evaluation) =>
+        evaluation.addedForceVectorsElectronVoltPerAngstrom),
+      displacementVectorsAngstrom, { ...commonClosureOptions,
+        additionalProjectedForceToleranceElectronVolt:
+          inductionForceWorkNumericalUncertaintyElectronVolt });
   } catch (error) {
     workEnergyClosure = Object.freeze({ available: false, passed: false,
       reason: error?.message || "force-energy path closure unavailable",
@@ -879,6 +984,11 @@ export function auditModelForceRelaxationPath(
     panelWorkEnergyClosure = Object.freeze({ available: false, passed: false,
       panelCount: 0, panels: Object.freeze([]), failedPanelIndices: Object.freeze([]),
       reason: error?.message || "panel-resolved force-energy path closure unavailable",
+      targetUsed: false });
+    interiorGradientConsistency = Object.freeze({ available: false, passed: false,
+      eligibleImageCount: 0, records: Object.freeze([]),
+      failedImageIndices: Object.freeze([]),
+      reason: error?.message || "interior force-energy gradient consistency unavailable",
       targetUsed: false });
   }
   let componentWorkEnergyClosures;
@@ -918,11 +1028,13 @@ export function auditModelForceRelaxationPath(
   }
   const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
     && workEnergyClosure.passed && panelWorkEnergyClosure.passed
+    && interiorGradientConsistency.passed
     && componentWorkEnergyClosures.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
       && segment.responseConsistent) && smoothModelBranch.available
       && workEnergyClosure.available && panelWorkEnergyClosure.available
+      && interiorGradientConsistency.available
       && componentWorkEnergyClosures.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
@@ -930,8 +1042,10 @@ export function auditModelForceRelaxationPath(
       : !smoothModelBranch.passed ? smoothModelBranch.reason
         : !workEnergyClosure.passed ? workEnergyClosure.reason
           : !panelWorkEnergyClosure.passed ? panelWorkEnergyClosure.reason
-            : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
-              : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, and component-work closure gates",
+            : !interiorGradientConsistency.passed
+              ? interiorGradientConsistency.reason
+              : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
+                : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, aggregate-work, local-panel-work, interior-tangent, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -968,6 +1082,14 @@ export function auditModelForceRelaxationPath(
       panelWorkEnergyClosure.failedPanelIndices || Object.freeze([]),
     maximumPanelWorkEnergyClosureResidualElectronVolt:
       panelWorkEnergyClosure.maximumAbsoluteClosureResidualElectronVolt ?? null,
+    interiorGradientConsistencyPassed: interiorGradientConsistency.passed,
+    interiorGradientConsistency,
+    interiorGradientEligibleImageCount:
+      interiorGradientConsistency.eligibleImageCount || 0,
+    failedInteriorGradientImageIndices:
+      interiorGradientConsistency.failedImageIndices || Object.freeze([]),
+    maximumInteriorGradientResidualElectronVolt:
+      interiorGradientConsistency.maximumAbsoluteResidualElectronVolt ?? null,
     componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
     componentWorkEnergyClosures,
     activeWorkEnergyComponentCount:
@@ -980,6 +1102,6 @@ export function auditModelForceRelaxationPath(
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. These checks validate the declared decomposition along one sampled path, not transferable physical components or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Aggregate work, every local five-image panel, every eligible interior force-versus-energy tangent, and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors between path regions, samples, or physical terms. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. These checks validate the declared decomposition along one sampled path, not transferable physical components, a full Cartesian gradient, or a Hessian. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

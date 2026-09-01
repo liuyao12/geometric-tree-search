@@ -10658,6 +10658,27 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 446: Interior force–energy tangent consistency
+
+Integral closure can still miss signed force errors that cancel within a local
+five-image panel. At each of the nine eligible interior images on the
+thirteen-image path, the complete projected force is now compared against
+minus an independent five-point finite-difference derivative of energy. A
+centered three-point derivative over the same image supplies a conservative
+stencil-discrepancy allowance.
+
+The tangent audit is acceptance-critical for the total and for every active
+Coulomb, Born–Mayer, damped-dispersion, and induction component. A constructed
+force error has zero Simpson weight globally and in all three local panels, so
+both integral gates pass; it fails at five interior images. Real pair and
+numerical polarization-force controls pass all eligible tangent records.
+
+Receipts retain image indices/fractions, projected force, fine/coarse energy
+derivatives, residuals, allowances, and failed indices. This verifies local
+differential consistency only along one sampled straight coordinate path. It
+is not a full Cartesian gradient, Hessian, force-constant matrix, phonon
+spectrum, stability proof, minimum-energy path, dynamics, rate, or time.
+
 # Build 445: Panel-resolved work–energy closure
 
 Aggregate work closure is necessary but not sufficient: signed force/energy

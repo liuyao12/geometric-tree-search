@@ -25,12 +25,12 @@ for (const token of ["id=\"classicalCapillarityModeSelect\"",
   "id=\"classicalCapillarityRankingAudit\"", "favorable / uphill"])
   assert.ok(html.includes(token), token);
 
-for (const token of ["classical-capillarity-action.mjs?v=20260901-445",
+for (const token of ["classical-capillarity-action.mjs?v=20260901-446",
   "function classicalCapillarityGate()", "function classicalCapillarityForFreshSites",
   "function captureClassicalCapillarityMatchedRankingAudit(entries)",
   "function renderClassicalCapillarityRankingControls()", "activeClassicalCapillarityWeight()",
   "evaluation.classicalCapillarity.score", "captureClassicalCapillarityMatchedRankingAudit(evaluated)",
-  "validatedClassicalCapillarityRanking", "buildId: \"20260901-445\""])
+  "validatedClassicalCapillarityRanking", "buildId: \"20260901-446\""])
   assert.ok(app.includes(token), token);
 
 for (const token of ['"classical-capillarity": spec(',
@@ -43,8 +43,8 @@ assert.ok(atlas.includes("Conditional capillarity action ranking"));
 assert.ok(atlas.includes("ΔΔG = Δ[Cγs^(d−1) − ΔgV₀s^d]"));
 assert.ok(readme.includes("Build 411 · capillarity work becomes an optional geometric action prior"));
 assert.ok(methods.includes("Matched conditional capillarity action prior (Build 411)"));
-assert.ok(html.includes("app.js?v=20260901-445"));
-assert.ok(html.includes("style.css?v=20260901-445"));
-assert.ok(html.includes("evidence-atlas.js?v=20260901-445"));
+assert.ok(html.includes("app.js?v=20260901-446"));
+assert.ok(html.includes("style.css?v=20260901-446"));
+assert.ok(html.includes("evidence-atlas.js?v=20260901-446"));
 
 console.log("classical capillarity action portal contract: passed");

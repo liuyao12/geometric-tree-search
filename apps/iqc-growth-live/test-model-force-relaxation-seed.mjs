@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditForceEnergyPathClosure,
+  auditInteriorForceEnergyGradientConsistency,
   auditPanelResolvedForceEnergyPathClosure,
   auditGroupedForceResiduals,
   auditModelForceRelaxationEnergyDescent,
@@ -78,6 +79,35 @@ const pathLocalCancellationComponent = auditComponentForceEnergyPathClosures([{
 assert.equal(pathLocalCancellationComponent.passed, false);
 assert.equal(pathLocalCancellationComponent.records[0].aggregateClosurePassed, true);
 assert.equal(pathLocalCancellationComponent.records[0].panelClosurePassed, false);
+const withinPanelErrors = fractions.map(() => 0);
+[0, 4, 8].forEach((start) => {
+  withinPanelErrors[start + 1] = .2;
+  withinPanelErrors[start + 2] = -.4;
+});
+const withinPanelCancellationForces = withinPanelErrors.map((error) =>
+  [[1 + error, 0, 0]]);
+const withinPanelCancellationAggregate = auditForceEnergyPathClosure(fractions,
+  fractions.map((fraction) => -fraction), withinPanelCancellationForces,
+  [[1, 0, 0]]);
+const withinPanelCancellationPanels = auditPanelResolvedForceEnergyPathClosure(
+  fractions, fractions.map((fraction) => -fraction),
+  withinPanelCancellationForces, [[1, 0, 0]]);
+assert.equal(withinPanelCancellationAggregate.passed, true);
+assert.equal(withinPanelCancellationPanels.passed, true);
+const withinPanelGradient = auditInteriorForceEnergyGradientConsistency(
+  fractions, fractions.map((fraction) => -fraction),
+  withinPanelCancellationForces, [[1, 0, 0]]);
+assert.equal(withinPanelGradient.passed, false);
+assert.deepEqual(withinPanelGradient.failedImageIndices, [2, 5, 6, 9, 10]);
+const withinPanelCancellationComponent = auditComponentForceEnergyPathClosures([{
+  id: "interior-inconsistent", active: true,
+  energiesElectronVolt: fractions.map((fraction) => -fraction),
+  forceFieldsElectronVoltPerAngstrom: withinPanelCancellationForces,
+}], fractions, [[1, 0, 0]]);
+assert.equal(withinPanelCancellationComponent.records[0].aggregateClosurePassed, true);
+assert.equal(withinPanelCancellationComponent.records[0].panelClosurePassed, true);
+assert.equal(withinPanelCancellationComponent.records[0]
+  .interiorGradientConsistencyPassed, false);
 const pairSeed = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
   electrostaticsOptions: { relativePermittivity: 4 },
@@ -238,12 +268,18 @@ assert.equal(forceSettlingPath.workEnergyClosure.coarseSimpsonImageCount, 7);
 assert.equal(forceSettlingPath.panelWorkEnergyClosurePassed, true);
 assert.equal(forceSettlingPath.workEnergyPanelCount, 3);
 assert.deepEqual(forceSettlingPath.failedWorkEnergyPanelIndices, []);
+assert.equal(forceSettlingPath.interiorGradientConsistencyPassed, true);
+assert.equal(forceSettlingPath.interiorGradientEligibleImageCount, 9);
+assert.deepEqual(forceSettlingPath.failedInteriorGradientImageIndices, []);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
 assert.equal(forceSettlingPath.componentWorkEnergyClosuresPassed, true);
 assert.equal(forceSettlingPath.componentWorkEnergyClosures.records
   .filter((record) => record.active).every((record) => record.panelClosurePassed), true);
+assert.equal(forceSettlingPath.componentWorkEnergyClosures.records
+  .filter((record) => record.active)
+  .every((record) => record.interiorGradientConsistencyPassed), true);
 assert.equal(forceSettlingPath.activeWorkEnergyComponentCount, 2);
 assert.deepEqual(forceSettlingPath.componentWorkEnergyClosures.records
   .filter((record) => record.active).map((record) => record.id), ["coulomb", "born-mayer"]);

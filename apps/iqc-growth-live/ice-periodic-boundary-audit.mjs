@@ -1,4 +1,4 @@
-import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260901-445";
+import { iceGeometrySha256Ascii } from "./ice-molecular-anchor-growth.js?v=20260901-446";
 
 const ICE_IH_A_ANGSTROM = 4.518;
 const ICE_IH_C_ANGSTROM = 7.357;

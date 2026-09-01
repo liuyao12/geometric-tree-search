@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 446 · interior force–energy tangent consistency
+
+Panel-wise work closure can still hide force errors that cancel within one
+five-image panel. Every eligible interior response image now compares the
+complete projected force `F·dR/ds` with minus an independently differenced
+five-point energy derivative. The centered three-point derivative is retained
+as an embedded, conservative discretization allowance. A thirteen-image path
+therefore supplies nine local tangent decisions.
+
+The same tangent gate is applied independently to each active Coulomb,
+Born–Mayer, damped-dispersion, and induction channel. A new adversarial force
+pattern integrates to zero both globally and inside all three panels; those
+integral gates pass, while five local tangents fail. Real pair and numerical
+induction controls pass all nine total and per-component tangent checks.
+
+Receipts expose every image fraction, projected force, fine/coarse energy
+derivative, signed residual, numerical allowance, and failed image index. This
+is local differential consistency along one declared straight path—not a full
+Cartesian gradient, Hessian, force-constant matrix, phonon spectrum, stability
+proof, minimum-energy path, dynamics, rate, or time.
+
 ## Build 445 · panel-resolved work–energy closure
 
 A globally correct force integral can conceal equal-and-opposite errors in
