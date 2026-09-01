@@ -10658,6 +10658,21 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 444: Component-resolved work–energy closure
+
+The finite path now requires independent nested-Simpson work closure for every
+active Coulomb, Born–Mayer, damped-dispersion, and induction channel as well as
+for the sum. A compensating-error control makes total closure exact while two
+component residuals are equal and opposite; the new component gate rejects it.
+
+The real pair control closes Coulomb and Born–Mayer separately, and a numerical
+polarization-force control closes induction too. Only the induction and total
+records receive a conservative numerical-work allowance equal to the maximum
+polarization-force Richardson error times the summed path displacement. This
+certifies the declared decomposition's internal implementation—not a
+transferable potential, thermodynamic work, free energy, dynamics, rate, or
+time.
+
 # Build 443: Continuous finite-model branch certificate
 
 The 13/7-image Richardson work gate is now conditioned on one frozen finite

@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-443";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-444";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -145,6 +145,7 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
   forceFieldsElectronVoltPerAngstrom, displacementVectorsAngstrom, {
     absoluteToleranceElectronVolt = 1e-10,
     relativeTolerance = 1e-10,
+    additionalNumericalToleranceElectronVolt = 0,
   } = {}) {
   if (!Array.isArray(fractions) || fractions.length < 5
       || (fractions.length - 1) % 4 !== 0
@@ -190,9 +191,15 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
   const nestedSimpsonDifferenceElectronVolt = Math.abs(
     simpsonWorkElectronVolt - coarseSimpsonWorkElectronVolt);
   const richardsonErrorEstimateElectronVolt = nestedSimpsonDifferenceElectronVolt / 15;
-  const numericalToleranceElectronVolt = Math.max(Number(absoluteToleranceElectronVolt),
+  const baseNumericalToleranceElectronVolt = Math.max(Number(absoluteToleranceElectronVolt),
     Number(relativeTolerance) * Math.max(1, Math.abs(energyChangeElectronVolt),
       Math.abs(simpsonWorkElectronVolt)));
+  const additionalTolerance = Number(additionalNumericalToleranceElectronVolt);
+  if (!(Number.isFinite(additionalTolerance) && additionalTolerance >= 0)) {
+    throw new RangeError("force-energy path closure additional tolerance must be finite and nonnegative");
+  }
+  const numericalToleranceElectronVolt = baseNumericalToleranceElectronVolt
+    + additionalTolerance;
   const allowedClosureResidualElectronVolt = numericalToleranceElectronVolt
     + richardsonErrorEstimateElectronVolt;
   const passed = Math.abs(closureResidualElectronVolt)
@@ -216,6 +223,8 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
     nestedSimpsonDifferenceElectronVolt,
     richardsonErrorEstimateElectronVolt,
     quadratureDiscrepancyElectronVolt: nestedSimpsonDifferenceElectronVolt,
+    baseNumericalToleranceElectronVolt,
+    additionalNumericalToleranceElectronVolt: additionalTolerance,
     numericalToleranceElectronVolt,
     allowedClosureResidualElectronVolt,
     forceWorkSignConvention: "positive work by the finite force; expected W = -delta U",
@@ -225,6 +234,47 @@ export function auditForceEnergyPathClosure(fractions, energiesElectronVolt,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
     claimBoundary: "This is a nested finite-quadrature consistency check between one declared energy and its complete movable-site force along a fixed Cartesian coordinate path. The fine/coarse Simpson difference divided by 15 is a smooth-integrand numerical error estimate, not physical uncertainty. It is not thermodynamic work, free energy, a minimum-energy path, dynamics, rate, or physical time.",
+  });
+}
+
+/** Require every active physical term to close independently of the total. */
+export function auditComponentForceEnergyPathClosures(components, fractions,
+  displacementVectorsAngstrom, options = {}) {
+  if (!Array.isArray(components) || !components.length) {
+    throw new Error("component work-energy audit needs at least one declared component");
+  }
+  const ids = components.map((component) => String(component?.id || ""));
+  if (ids.some((id) => !id) || new Set(ids).size !== ids.length) {
+    throw new Error("component work-energy audit needs unique nonempty component ids");
+  }
+  const records = components.map((component, index) => {
+    const active = Boolean(component.active);
+    if (!active) return Object.freeze({ id: ids[index], active: false,
+      available: true, passed: true, reason: "component inactive in the declared model",
+      targetUsed: false });
+    const closure = auditForceEnergyPathClosure(fractions,
+      component.energiesElectronVolt, component.forceFieldsElectronVoltPerAngstrom,
+      displacementVectorsAngstrom, { ...options,
+        additionalNumericalToleranceElectronVolt:
+          component.additionalNumericalToleranceElectronVolt
+          ?? options.additionalNumericalToleranceElectronVolt ?? 0 });
+    return Object.freeze({ id: ids[index], active: true, ...closure });
+  });
+  const activeRecords = records.filter((record) => record.active);
+  const passed = activeRecords.every((record) => record.passed);
+  return Object.freeze({
+    available: activeRecords.every((record) => record.available),
+    passed,
+    componentCount: records.length,
+    activeComponentCount: activeRecords.length,
+    failedComponentIds: Object.freeze(activeRecords.filter((record) => !record.passed)
+      .map((record) => record.id)),
+    records: Object.freeze(records),
+    targetUsed: false,
+    reason: passed ? "every active interaction component closes independently"
+      : `component work-energy closure failed: ${activeRecords.filter((record) => !record.passed)
+        .map((record) => record.id).join(", ")}`,
+    claimBoundary: "Independent component closure prevents compensating force/energy errors from hiding in the total. It validates only the declared decomposition; it does not prove the components are transferable physical interactions, thermodynamic work, dynamics, or time.",
   });
 }
 
@@ -596,7 +646,7 @@ export const auditModelForceRelaxationEnergyDescent = auditModelForceRelaxationO
  */
 export function auditModelForceRelaxationPath(
   currentSites, originalAddedSites, proposedAddedSites, {
-    imageCount = 7,
+    imageCount = 13,
     forceGroupLabels = null,
     electrostaticsOptions = {},
     ...auditOptions
@@ -721,6 +771,18 @@ export function auditModelForceRelaxationPath(
   const firstFailure = segments.find((segment) => !segment.accepted) || null;
   const displacementVectorsAngstrom = originalAddedSites.map((site, index) =>
     proposedAddedSites[index].position.map((value, axis) => value - site.position[axis]));
+  const totalDisplacementNormAngstrom = displacementVectorsAngstrom.reduce((sum, vector) =>
+    sum + vectorMagnitude(vector), 0);
+  const maximumInductionForceRichardsonErrorElectronVoltPerAngstrom = Math.max(0,
+    ...imageEvaluations.map((evaluation) => Number(
+      evaluation.inductionForceMaximumRichardsonErrorElectronVoltPerAngstrom) || 0));
+  const inductionForceWorkNumericalUncertaintyElectronVolt =
+    maximumInductionForceRichardsonErrorElectronVoltPerAngstrom
+    * totalDisplacementNormAngstrom;
+  const commonClosureOptions = {
+    absoluteToleranceElectronVolt: auditOptions.absoluteToleranceElectronVolt,
+    relativeTolerance: auditOptions.relativeTolerance,
+  };
   let workEnergyClosure;
   try {
     workEnergyClosure = auditForceEnergyPathClosure(
@@ -728,27 +790,62 @@ export function auditModelForceRelaxationPath(
       imageEvaluations.map((evaluation) => evaluation.deltaEnergyElectronVolt),
       imageEvaluations.map((evaluation) =>
         evaluation.addedForceVectorsElectronVoltPerAngstrom),
-      displacementVectorsAngstrom, {
-        absoluteToleranceElectronVolt: auditOptions.absoluteToleranceElectronVolt,
-        relativeTolerance: auditOptions.relativeTolerance,
-      });
+      displacementVectorsAngstrom, { ...commonClosureOptions,
+        additionalNumericalToleranceElectronVolt:
+          inductionForceWorkNumericalUncertaintyElectronVolt });
   } catch (error) {
     workEnergyClosure = Object.freeze({ available: false, passed: false,
       reason: error?.message || "force-energy path closure unavailable",
       targetUsed: false });
   }
+  let componentWorkEnergyClosures;
+  try {
+    const firstEvaluation = imageEvaluations[0] || {};
+    componentWorkEnergyClosures = auditComponentForceEnergyPathClosures([
+      { id: "coulomb", active: true,
+        energiesElectronVolt: imageEvaluations.map((evaluation) =>
+          evaluation.coulombDeltaEnergyElectronVolt),
+        forceFieldsElectronVoltPerAngstrom: imageEvaluations.map((evaluation) =>
+          evaluation.addedCoulombForceVectorsElectronVoltPerAngstrom) },
+      { id: "born-mayer", active: Boolean(firstEvaluation.bornMayerRepulsionApplied),
+        energiesElectronVolt: imageEvaluations.map((evaluation) =>
+          evaluation.bornMayerRepulsiveEnergyElectronVolt),
+        forceFieldsElectronVoltPerAngstrom: imageEvaluations.map((evaluation) =>
+          evaluation.addedBornMayerForceVectorsElectronVoltPerAngstrom) },
+      { id: "dispersion", active: Boolean(firstEvaluation.dispersionApplied),
+        energiesElectronVolt: imageEvaluations.map((evaluation) =>
+          evaluation.dampedDispersionEnergyElectronVolt),
+        forceFieldsElectronVoltPerAngstrom: imageEvaluations.map((evaluation) =>
+          evaluation.addedDispersionForceVectorsElectronVoltPerAngstrom) },
+      { id: "induction", active: Boolean(firstEvaluation.chargeInductionApplied),
+        energiesElectronVolt: imageEvaluations.map((evaluation) =>
+          evaluation.chargeInductionDeltaEnergyElectronVolt),
+        forceFieldsElectronVoltPerAngstrom: imageEvaluations.map((evaluation) =>
+          evaluation.addedInductionForceVectorsElectronVoltPerAngstrom),
+        additionalNumericalToleranceElectronVolt:
+          inductionForceWorkNumericalUncertaintyElectronVolt },
+    ], images.map((image) => image.fraction), displacementVectorsAngstrom,
+    commonClosureOptions);
+  } catch (error) {
+    componentWorkEnergyClosures = Object.freeze({ available: false, passed: false,
+      componentCount: 4, activeComponentCount: 0, records: Object.freeze([]),
+      failedComponentIds: Object.freeze([]),
+      reason: error?.message || "component force-energy closures unavailable",
+      targetUsed: false });
+  }
   const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
-    && workEnergyClosure.passed;
+    && workEnergyClosure.passed && componentWorkEnergyClosures.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
       && segment.responseConsistent) && smoothModelBranch.available
-      && workEnergyClosure.available,
+      && workEnergyClosure.available && componentWorkEnergyClosures.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
       ? `response-path segment ${firstFailure?.segmentIndex ?? "?"} failed: ${firstFailure?.reason || "unavailable"}`
       : !smoothModelBranch.passed ? smoothModelBranch.reason
         : !workEnergyClosure.passed ? workEnergyClosure.reason
-        : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, and work-energy closure gates",
+          : !componentWorkEnergyClosures.passed ? componentWorkEnergyClosures.reason
+            : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, total-work, and component-work closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
@@ -778,10 +875,18 @@ export function auditModelForceRelaxationPath(
       workEnergyClosure.richardsonErrorEstimateElectronVolt ?? null,
     workEnergyNestedSimpsonConvergenceAvailable:
       workEnergyClosure.nestedSimpsonConvergenceAvailable || false,
+    componentWorkEnergyClosuresPassed: componentWorkEnergyClosures.passed,
+    componentWorkEnergyClosures,
+    activeWorkEnergyComponentCount:
+      componentWorkEnergyClosures.activeComponentCount || 0,
+    failedWorkEnergyComponentIds:
+      componentWorkEnergyClosures.failedComponentIds || Object.freeze([]),
+    inductionForceWorkNumericalUncertaintyElectronVolt,
+    maximumInductionForceRichardsonErrorElectronVoltPerAngstrom,
     groupLabelsFrozenBeforePath: true,
     straightLineCartesianImages: true,
     pathParameterIsPhysicalTime: false,
     targetUsed: false,
-    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. The embedded fine/coarse Simpson difference divided by 15 is a smooth-integrand Richardson error estimate, not physical uncertainty. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
+    claimBoundary: "The fixed Cartesian image sequence is a bounded continuity, monotonicity, and force-work/energy consistency check between two coordinate sets. Total and every active Coulomb, Born-Mayer, dispersion, and induction component must close independently, preventing compensating errors. Numerical induction-force Richardson error contributes only its displacement-projected worst-case allowance. These checks validate the declared decomposition, not transferable physical components. This is not thermodynamic work, a free-energy calculation, minimum-energy path, transition state, dynamics, rate, or elapsed physical time.",
   });
 }

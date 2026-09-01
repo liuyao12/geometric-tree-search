@@ -66,6 +66,8 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "modelForceWorkEnergyNestedSimpsonConvergenceAvailable" in APP
     assert "modelForceSmoothBranchPassed" in APP
     assert "modelForceAnalyticReachTopologyPassed" in APP
+    assert "modelForceComponentWorkEnergyClosuresPassed" in APP
+    assert "modelForceActiveWorkEnergyComponentCount" in APP
     assert "auditLinearSweptExclusion" in APP
     assert "sweptHardExclusionPassed" in APP
 

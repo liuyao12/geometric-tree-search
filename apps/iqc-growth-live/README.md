@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 444 · component-resolved work–energy closure
+
+Total work closure can hide compensating implementation errors between
+interaction channels. The finite response path now integrates and closes four
+separate energy/force records—Coulomb, Born–Mayer, damped dispersion, and charge
+induction—in addition to the total. Every active component must independently
+satisfy the same nested thirteen/seven-image Simpson–Richardson certificate;
+inactive channels remain explicit rather than being silently omitted.
+
+A synthetic control is constructed so two wrong component residuals cancel
+exactly in the total: total `W + ΔU` passes, while both component gates fail.
+The real finite pair control closes Coulomb and Born–Mayer independently. A
+finite-difference induction control closes Coulomb, Born–Mayer, and induction;
+the maximum reported polarization-force Richardson error is projected through
+the total path displacement as a worst-case numerical-work allowance for the
+induction term and total only.
+
+Receipts expose active/failed component IDs, all fine/coarse work and energy
+records, and the numerical induction allowance. Independent closure validates
+the implementation consistency of the declared decomposition. It does not
+prove that those components form a transferable material potential, nor does it
+establish thermodynamic work, free energy, dynamics, rate, or time.
+
 ## Build 443 · continuous finite-model branch certificate
 
 Nested quadrature now fails closed unless all thirteen response images belong

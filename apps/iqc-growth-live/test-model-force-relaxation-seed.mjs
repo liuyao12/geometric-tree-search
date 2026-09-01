@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { auditFiniteReachPathTopology, auditForceEnergyPathClosure,
+import { auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
+  auditForceEnergyPathClosure,
   auditGroupedForceResiduals,
   auditModelForceRelaxationEnergyDescent,
   auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
@@ -44,6 +45,18 @@ const inconsistentClosure = auditForceEnergyPathClosure(fractions,
   fractions.map(() => [[.5, 0, 0]]), [[1, 0, 0]]);
 assert.equal(inconsistentClosure.passed, false);
 assert.ok(Math.abs(inconsistentClosure.closureResidualElectronVolt) > .49);
+const compensatingTotalClosure = auditForceEnergyPathClosure(fractions,
+  fractions.map((fraction) => -fraction), fractions.map(() => [[1, 0, 0]]),
+  [[1, 0, 0]]);
+assert.equal(compensatingTotalClosure.passed, true);
+const compensatingComponentErrors = auditComponentForceEnergyPathClosures([
+  { id: "first", active: true, energiesElectronVolt: fractions.map((fraction) => -fraction),
+    forceFieldsElectronVoltPerAngstrom: fractions.map(() => [[.5, 0, 0]]) },
+  { id: "second", active: true, energiesElectronVolt: fractions.map(() => 0),
+    forceFieldsElectronVoltPerAngstrom: fractions.map(() => [[.5, 0, 0]]) },
+], fractions, [[1, 0, 0]]);
+assert.equal(compensatingComponentErrors.passed, false);
+assert.deepEqual(compensatingComponentErrors.failedComponentIds, ["first", "second"]);
 const pairSeed = buildModelForceRelaxationSeed(current, added, {
   displacementCap: .05,
   electrostaticsOptions: { relativePermittivity: 4 },
@@ -204,6 +217,10 @@ assert.equal(forceSettlingPath.workEnergyClosure.coarseSimpsonImageCount, 7);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
+assert.equal(forceSettlingPath.componentWorkEnergyClosuresPassed, true);
+assert.equal(forceSettlingPath.activeWorkEnergyComponentCount, 2);
+assert.deepEqual(forceSettlingPath.componentWorkEnergyClosures.records
+  .filter((record) => record.active).map((record) => record.id), ["coulomb", "born-mayer"]);
 const finiteReachSettlingPath = auditModelForceRelaxationPath(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     imageCount: 13,
@@ -259,6 +276,21 @@ const inductionDownhill = auditModelForceRelaxationEnergyDescent(current, added,
 assert.equal(inductionDownhill.responseConsistent, true);
 assert.equal(inductionDownhill.accepted, true);
 assert.equal(inductionDownhill.forceResidualDecreased, true);
+const inductionPath = auditModelForceRelaxationPath(current, added,
+  [{ ...added[0], position: added[0].position.map((value, axis) =>
+    value + completeInduction.offsets[0][axis] * .1) }], {
+    imageCount: 13,
+    electrostaticsOptions: { relativePermittivity: 4,
+      bornMayerAmplitudeElectronVolt: 1000, bornMayerDecayAngstrom: .3,
+      inductionPolarizabilityAngstrom3: 2, inductionDampingLengthAngstrom: .3,
+      inductionForceMode: "finite-difference" },
+  });
+assert.equal(inductionPath.accepted, true);
+assert.equal(inductionPath.componentWorkEnergyClosuresPassed, true);
+assert.equal(inductionPath.activeWorkEnergyComponentCount, 3);
+assert.ok(inductionPath.inductionForceWorkNumericalUncertaintyElectronVolt > 0);
+assert.equal(inductionPath.componentWorkEnergyClosures.records
+  .find((record) => record.id === "induction").passed, true);
 
 assert.throws(() => buildModelForceRelaxationSeed(current, added,
   { displacementCap: 0 }), /positive displacement cap/);
