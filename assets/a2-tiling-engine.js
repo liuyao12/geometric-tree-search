@@ -533,7 +533,7 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
   const desired=polygonOccupancy(boundary),seedOrigin=seed?.loop?.[0]??[0,0,0],seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(a2Sub(entry.point,seedOrigin))));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
@@ -568,8 +568,17 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
     }
     return cacheCandidates(pointKey,[...dedup.values()]);
   };
+  const sameSymmetry=(left,right)=>left?.sign===right?.sign&&left?.permutation?.every((value,index)=>value===right?.permutation?.[index]);
+  const initialChosen=initialPlacements.map(spec=>{
+    const orientation=orientedTiles.find(candidate=>candidate.tile===(spec.tile??"turtle")&&sameSymmetry(candidate.symmetry,spec.orientation?.symmetry??spec.orientation));
+    if(!orientation)throw new Error(`Unknown initial placement orientation for ${spec.tile??"turtle"}`);
+    const translation=[...spec.translation],id=`${orientation.tile}:${orientation.index}:${a2Key(translation)}`;
+    return materializePlacement({id,tile:orientation.tile,orientation,translation,occupancy:null,loop:null});
+  });
   const startPointMap=new Map(startPoints.map(point=>[a2Key(point),point]));
-  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=[],usedPlacements=new Set(),exhaustedBranches=new Set();for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}let nodes=0,backtracks=0,exactMemoPrunes=0,best=[],bestFilled=0,lastImprovementNode=0;
+  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=initialChosen.slice(),usedPlacements=new Set(initialChosen.map(placement=>placement.id)),exhaustedBranches=new Set();
+  initialChosen.forEach((placement,index)=>{for(const [key,entry] of placement.occupancy){const next=(sums.get(key)||0)+entry.weight;if(next>targetAt(entry.point)+1e-7)throw new Error(`Initial placements exceed the t-value maximum at ${key}`);if(!sums.has(key))pointDepth.set(key,index+1);sums.set(key,next);}});
+  for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}let nodes=0,backtracks=0,exactMemoPrunes=0,best=initialChosen.slice(),bestFilled=0,lastImprovementNode=0;
   const frontierPattern=(pointKey,additions=null)=>{
     const center=pointKey.split(",").map(Number),tokens=[];
     for(let dq=-memoRadius;dq<=memoRadius;dq++)for(let dr=Math.max(-memoRadius,-dq-memoRadius);dr<=Math.min(memoRadius,-dq+memoRadius);dr++){
@@ -585,7 +594,8 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
     const point=pointKey.split(",").map(Number),distance=Math.min(...initialSites.map(origin=>Math.max(...point.map((value,index)=>Math.abs(value-origin[index])))));
     distanceCache.set(pointKey,distance);return distance;
   };
-  learner.reset?.(markingSeed?[markingSeed]:[]);
+  const initialMarkingContext=markingSeed?[markingSeed]:[];learner.reset?.(initialMarkingContext);
+  for(const placement of initialChosen){if(!learner.compatible(placement,initialMarkingContext,false))throw new Error(`Initial placements disagree on m-values at ${placement.id}`);learner.push?.(placement);initialMarkingContext.push(placement);}
   let rngState=(randomSeed|0)||1;const random=()=>((rngState=Math.imul(rngState,1664525)+1013904223|0)>>>0)/4294967296;
   const filledWeight=()=>[...desired].reduce((sum,[key,entry])=>sum+Math.min(entry.weight,sums.get(key)||0),0),totalWeight=[...desired.values()].reduce((sum,e)=>sum+e.weight,0);
   const branchKey=(candidate,context=chosen)=>`${context.map(placement=>placement.id).sort().join(";")}=>${candidate.id}`;
@@ -825,17 +835,28 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
     }
     return false;
   }
-  let result=await search();
+  const initialDepth=initialChosen.length;
+  let result=await search(initialDepth);
+  // A retained live patch is a provisional search prefix, not a frozen
+  // boundary condition. If it cannot continue under a newly selected mode,
+  // unwind its newest placement and resume from the preceding graph state.
+  while(result===false&&chosen.length&&initialChosen.length&&!stopToken.stop){
+    const removed=chosen[chosen.length-1],context=chosen.slice(0,-1);exhaustedBranches.add(branchKey(removed,context));
+    chosen.pop();usedPlacements.delete(removed.id);learner.pop?.(removed);backtracks++;
+    sums.clear();pointDepth.clear();for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}chosen.forEach((placement,index)=>{for(const [key,e] of placement.occupancy){if(!sums.has(key))pointDepth.set(key,index+1);sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
+    frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();emit("backtrack",{removed,reason:"retained-prefix"});
+    result=await search(chosen.length);
+  }
   while((result===false||result==="stagnant")&&!stopToken.stop){
     const reencoding=await learner.reencodeLatest?.({shouldStop:()=>stopToken.stop,onProgress:attempts=>emit("learning-progress",{attempts,reencoding:true})});if(!reencoding||reencoding.aborted)break;
-    chosen.splice(0,chosen.length);usedPlacements.clear();sums.clear();pointDepth.clear();
-    for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
-    learner.reset?.(markingSeed?[markingSeed]:[]);
+    chosen.splice(0,chosen.length,...initialChosen);usedPlacements.clear();for(const placement of initialChosen)usedPlacements.add(placement.id);sums.clear();pointDepth.clear();
+    for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}initialChosen.forEach((placement,index)=>{for(const [key,e] of placement.occupancy){if(!sums.has(key))pointDepth.set(key,index+1);sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
+    learner.reset?.(markingSeed?[markingSeed,...initialChosen]:initialChosen);
     frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();
     emit("marking-reencoded",{reencoding,reason:result==="stagnant"?"stagnation":"root-exhausted"});
     lastImprovementNode=nodes;
     const nodesBeforeRestart=nodes;
-    result=await search();
+    result=await search(initialDepth);
     if(result===false&&nodes===nodesBeforeRestart){emit("memo-fixed-point",{reason:"all-root-options-memoized"});break;}
   }
   if(result!==true){chosen.splice(0,chosen.length,...best);sums.clear();for(const [key,e] of seedOccupancy)sums.set(key,e.weight);for(const p of chosen)for(const [key,e] of p.occupancy)sums.set(key,(sums.get(key)||0)+e.weight);}

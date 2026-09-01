@@ -128,7 +128,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-frontier-generation-3';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-sublattice-continuation-1';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -216,6 +216,7 @@
       let liveSearchUsesMarking = tilingRunUsesMarking;
       let liveSearchMarkingRank = markingRank;
       let liveSearchUsesSublattice = sublatticeToggle?.checked || false;
+      let preservePatchOnNextStart = false;
       let autoplayTarget = 30;
       const pausedCoronas = new Set();
       let hasStartedTiling = false;
@@ -1787,8 +1788,15 @@
         const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
         return makePlacement(localOrientation, subtract3(placement.translation, shiftedOrigin), extras);
       }
-      function createSharedLiveTilingSearch(useMarking) {
-        const seed = makeSeedPlacement();
+      function sharedPlacementFromDemo(placement) {
+        const orientation = sharedOrientationFor(placement.orientation);
+        const shiftedOrigin = a2Transform(turtleVertices3d[0], orientation.symmetry);
+        return { tile: 'turtle', orientation, translation: add3(placement.translation, shiftedOrigin) };
+      }
+      function createSharedLiveTilingSearch(useMarking, retainedPlacements = null) {
+        const existing = retainedPlacements?.length ? retainedPlacements : [makeSeedPlacement()];
+        const seed = existing[0];
+        const initialPlacements = existing.slice(1).map(sharedPlacementFromDemo);
         const latticePointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
         const sharedSeedOrientation = sharedOrientationFor(seed.orientation);
         const sharedSeedTranslation = add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
@@ -1824,6 +1832,7 @@
         solveA2Tiling({
           boundary: makeHexBoundary(220),
           seed: { loop: seed.vertices3d, markingPlacement: { tile: 'turtle', orientation: sharedSeedOrientation, translation: sharedSeedTranslation } },
+          initialPlacements,
           tiles: ['turtle'],
           maximize: true,
           targetPlacements: 1000,
@@ -1989,18 +1998,27 @@
           || usingSublattice() !== liveSearchUsesSublattice;
         if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
           liveSearchIterator?.cancel?.();
-          shownTiles = 1;
-          const seed = makeSeedPlacement();
-          tilingOrder = [seed];
-          tilingTrace = [];
-          playbackPlacements = [seed];
-          liveSearchIterator = createSharedLiveTilingSearch(useMarking);
+          const retained = !reset && preservePatchOnNextStart ? visiblePlacements().slice() : null;
+          if (retained?.length) {
+            shownTiles = retained.length;
+            tilingOrder = retained;
+            playbackPlacements = retained;
+            liveSearchIterator = createSharedLiveTilingSearch(useMarking, retained);
+          } else {
+            shownTiles = 1;
+            const seed = makeSeedPlacement();
+            tilingOrder = [seed];
+            tilingTrace = [];
+            playbackPlacements = [seed];
+            liveSearchIterator = createSharedLiveTilingSearch(useMarking);
+            centerSeedView();
+          }
+          preservePatchOnNextStart = false;
           pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           liveSearchMarkingRank = markingRank;
           liveSearchUsesSublattice = usingSublattice();
           tilingRunUsesMarking = useMarking;
-          centerSeedView();
           traceIndex = 0;
         }
         hasStartedTiling = true;
@@ -2147,7 +2165,14 @@
         if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       sublatticeToggle?.addEventListener('change', () => {
-        resetTilingForMarkingExtension();
+        stopTiling();
+        liveSearchIterator?.cancel?.();
+        orientations = buildOrientations(markingExtension, markingRank);
+        refreshPlacementsForMarkingRank();
+        liveSearchIterator = null;
+        preservePatchOnNextStart = true;
+        pausedCoronas.clear();
+        trialGhost = null;
         liveSearchUsesSublattice = usingSublattice();
         statusText = usingSublattice()
           ? 'turtle sublattice · original A2 coordinates'
@@ -2176,6 +2201,7 @@
         statusText = '';
         hasStartedTiling = false;
         autoplayTarget = 30;
+        preservePatchOnNextStart = false;
         startButton.textContent = 'Start tiling';
         updateMarkExtensionControl();
         updateMarkingButton();
