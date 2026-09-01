@@ -1,5 +1,37 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 418 · public experimental powder profiles, without file upload
+
+The experiment workspace can now browse a provenance-pinned subset of the
+public RRUFF powder-XRD library directly. Fifteen measured, processed profiles
+cover halite replicates plus graphite, silicon, calcite/aragonite, and
+rutile/brookite polymorphs. The browser loads the 1,362-pattern
+JARVIS-normalized RRUFF snapshot only through a prebuilt 15-profile asset whose
+SHA-256 is fixed in code; the source archive is the CC-BY-4.0
+[Figshare record](https://doi.org/10.6084/m9.figshare.31817977.v1). Exact
+1.541838 Å wavelengths, space groups, and their own text hashes come from the
+official [RRUFF DIF archive](https://www.rruff.net/zipped_data_files/powder/).
+
+Discovery has no text field and never searches by fit. It filters the library
+by the selected structure's exact element set, then shows every retained
+replicate or polymorph for an explicit user choice. A same-material claim is
+enabled only for an exact element set plus a curated phase-name
+correspondence—currently the NaCl rocksalt/halite control. A graphite profile
+offered beside graphene, or calcite beside an unidentified Ca–C–O structure,
+is visibly labeled **chemistry only** and remains a cross-phase experimental
+reference rather than validation of the selected phase.
+
+RRUFF profiles require the X-ray probe and the portal's q-independent atomic-Z
+electron-count approximation. Unit-weight, composition-centered, and
+sublattice curves fail closed instead of being compared to measured X-ray intensity. The original 8,501-point XY arrays are
+retained without portal smoothing or peak picking. Missing experimental
+uncertainties and instrument resolution remain explicit: the comparison uses
+uniform weights and no added resolution convolution. Profile, library, DIF,
+structure, and comparison hashes; license; locality; cell; space group; and
+the material-correspondence boundary enter the receipt. Profiles remain
+strictly post-growth and cannot influence clustering, marking, candidate
+generation, ranking, or execution.
+
 ## Build 417 · geometric growth meets an independent powder profile
 
 The reciprocal-space microscope now opens a dedicated experiment-validation

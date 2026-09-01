@@ -1,5 +1,5 @@
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-417";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-418";
 
 export const TEMPERATURE_PROGRAM_SAMPLE_COUNT = 41;
 export const TEMPERATURE_PROGRAM_DIRECTIONS = Object.freeze([

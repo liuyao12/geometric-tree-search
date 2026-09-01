@@ -131,6 +131,13 @@ export function validateExperimentalScatteringResponse(request, response = {}) {
   }
   const resolutionFwhmQ = response.resolutionFwhmQ == null ? 0
     : Math.max(0, finite(response.resolutionFwhmQ, "resolution FWHM"));
+  const correspondence = response.materialCorrespondence || {};
+  const correspondenceLevel = String(correspondence.level || "unspecified");
+  if (!["exact-phase", "composition-only", "unspecified"].includes(correspondenceLevel)) {
+    throw new Error("unsupported material-correspondence level");
+  }
+  const sameMaterialClaimAllowed = !synthetic && correspondenceLevel === "exact-phase"
+    && correspondence.sameMaterialClaimAllowed === true;
   return Object.freeze({
     schema: "gcts-validated-experimental-scattering-profile-v1",
     requestId: request.requestId,
@@ -154,8 +161,26 @@ export function validateExperimentalScatteringResponse(request, response = {}) {
       datasetId: provenance.datasetId ? String(provenance.datasetId) : null,
       temperatureKelvin: provenance.temperatureKelvin == null ? null
         : positive(provenance.temperatureKelvin, "measurement temperature"),
+      datasetDoi: provenance.datasetDoi ? String(provenance.datasetDoi) : null,
+      license: provenance.license ? String(provenance.license) : null,
+      locality: provenance.locality ? String(provenance.locality) : null,
+      cellParameters: provenance.cellParameters ? String(provenance.cellParameters) : null,
+      spaceGroup: provenance.spaceGroup ? String(provenance.spaceGroup) : null,
+      profileSha256: provenance.profileSha256 ? String(provenance.profileSha256) : null,
+      libraryAssetSha256: provenance.libraryAssetSha256 ? String(provenance.libraryAssetSha256) : null,
+      difTextSha256: provenance.difTextSha256 ? String(provenance.difTextSha256) : null,
+      selectionRule: provenance.selectionRule ? String(provenance.selectionRule) : null,
+    }),
+    materialCorrespondence: Object.freeze({
+      level: correspondenceLevel,
+      elements: Object.freeze([...(correspondence.elements || [])].map(String).sort()),
+      formula: correspondence.formula ? String(correspondence.formula) : null,
+      phase: correspondence.phase ? String(correspondence.phase) : null,
+      basis: String(correspondence.basis || "material identity not supplied"),
+      sameMaterialClaimAllowed,
     }),
     experimentalEvidence: !synthetic,
+    sameMaterialEvidence: sameMaterialClaimAllowed,
     demonstratorOnly: synthetic,
     independentOfGrowth: !synthetic,
     targetUsedBeforeGrowth: false,
@@ -277,11 +302,15 @@ export function compareExperimentalScattering(model = {}, profile, options = {})
     resolutionFwhmQ: profile.resolutionFwhmQ,
     uncertaintySource: profile.uncertaintySource,
     experimentalEvidence: profile.experimentalEvidence,
+    sameMaterialEvidence: profile.sameMaterialEvidence,
+    materialCorrespondence: profile.materialCorrespondence,
     demonstratorOnly: profile.demonstratorOnly,
     targetUsedBeforeGrowth: false,
     candidateSetChanged: false,
-    interpretation: profile.experimentalEvidence
-      ? "post-growth profile agreement; not a structure refinement or causal growth score"
+    interpretation: profile.sameMaterialEvidence
+      ? "post-growth same-phase profile agreement; not a structure refinement or causal growth score"
+      : profile.experimentalEvidence
+        ? "post-growth experimental reference with unresolved material identity; not validation of the selected phase"
       : "instrument-pipeline demonstrator only; not independent experimental evidence",
   });
 }

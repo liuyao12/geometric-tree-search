@@ -1792,6 +1792,21 @@ body.study-guide-open { overflow: hidden; }
 .experimental-scattering-controls select { min-height: 23px; padding: 0 20px 0 6px; border: 1px solid var(--line); background: #091719; color: #9db4ae; font: 5px var(--mono); }
 .experimental-scattering-controls button { min-height: 23px; padding: 0 7px; border: 1px solid rgba(105,211,185,.22); background: rgba(105,211,185,.05); color: #9ecbc0; font: 4.7px var(--mono); cursor: pointer; }
 .experimental-scattering-controls button:hover { border-color: rgba(240,201,106,.44); color: var(--gold); }
+.public-powder-profile-panel { margin: 5px 0; padding: 6px; border: 1px solid rgba(240,201,106,.13); background: rgba(240,201,106,.018); }
+.public-powder-profile-panel > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }
+.public-powder-profile-panel > header span { display: grid; gap: 2px; }
+.public-powder-profile-panel > header small { color: #826f48; font: 4px var(--mono); letter-spacing: .055em; text-transform: uppercase; }
+.public-powder-profile-panel > header strong { color: #d9c99d; font: 6px var(--mono); font-weight: 500; }
+.public-powder-profile-panel > header b { color: #9b8960; font: 4.2px var(--mono); font-weight: 400; text-align: right; }
+.public-powder-profile-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 4px; margin-top: 5px; }
+.public-powder-profile-list button { display: grid; grid-template-columns: 1fr auto; gap: 2px 6px; min-width: 0; padding: 6px; border: 1px solid rgba(240,201,106,.13); background: rgba(4,12,13,.68); color: #b5aa8d; text-align: left; cursor: pointer; }
+.public-powder-profile-list button:hover,.public-powder-profile-list button:focus-visible { border-color: rgba(240,201,106,.48); outline: none; }
+.public-powder-profile-list button:disabled { opacity: .42; cursor: not-allowed; }
+.public-powder-profile-list button strong { overflow: hidden; color: #e0d3ad; font: 5.5px var(--mono); font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.public-powder-profile-list button b { color: #6fcfb6; font: 4px var(--mono); font-weight: 400; text-transform: uppercase; }
+.public-powder-profile-list button b.reference { color: #d99c76; }
+.public-powder-profile-list button span,.public-powder-profile-list button small { grid-column: 1 / -1; overflow: hidden; color: #776f5c; font: 4px/1.35 var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+.public-powder-profile-panel > p { margin: 5px 0 0; color: #7d755f; font: 4.2px/1.45 var(--mono); }
 .experimental-scattering-card svg { display: block; width: 100%; height: 184px; border: 1px solid rgba(105,211,185,.09); background: rgba(2,10,11,.56); }
 .experimental-scattering-card .profile-axis { stroke: rgba(170,203,195,.25); stroke-width: .7; }
 .experimental-scattering-card .profile-grid { stroke: rgba(170,203,195,.09); stroke-width: .55; stroke-dasharray: 2 2; }
@@ -1802,7 +1817,7 @@ body.study-guide-open { overflow: hidden; }
 .experimental-scattering-card .profile-zero { stroke: rgba(255,142,114,.24); stroke-width: .6; }
 .experimental-scattering-card .profile-label { fill: #708c85; font: 5px var(--mono); }
 .experimental-scattering-card .profile-empty { fill: #60756f; font: 6px var(--mono); }
-.experimental-scattering-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
+.experimental-scattering-metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(86px,1fr)); gap: 4px; margin-top: 5px; }
 .experimental-scattering-metrics span { padding: 5px; border: 1px solid rgba(105,211,185,.09); color: #69837d; font: 4px var(--mono); text-transform: uppercase; }
 .experimental-scattering-metrics strong { display: block; margin-top: 2px; color: #c3dad4; font: 6px var(--mono); font-weight: 500; text-transform: none; }
 .experimental-scattering-card > p { margin: 5px 0 0; color: #718983; font: 4.5px/1.5 var(--mono); }

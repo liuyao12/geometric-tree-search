@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+## Public RRUFF profile bridge (Build 418)
+
+The post-growth measurement contract now has a no-upload public-data path. A
+predeclared 15-profile subset is generated from the 1,362-profile RRUFF powder
+XRD snapshot distributed by NIST JARVIS on the immutable CC-BY-4.0
+[Figshare record](https://doi.org/10.6084/m9.figshare.31817977.v1). The browser
+verifies the subset asset SHA-256 before parsing it. Each row also retains a
+profile digest and the official RRUFF DIF-record digest; the DIF record supplies
+the 1.541838 Å wavelength and space group used to map measured 2θ onto q.
+
+Selection is deliberately not a database-fit loop. The exact element set
+filters candidates and the scientist clicks one retained replicate or
+polymorph. Only exact chemistry plus a frozen phase alias permits a same-phase
+comparison. Exact chemistry alone is labeled a cross-phase reference and
+cannot validate phase identity. This distinction is propagated through the
+validated profile, numerical comparison, plot badge, explanatory text, and
+receipt as `sameMaterialEvidence` and `materialCorrespondence`.
+
+The library is X-ray-only and requires the q-independent atomic-Z
+electron-count model channel; other channels fail closed. The source's 8,501-point processed arrays are neither
+smoothed nor peak-picked. Because the normalized source supplies neither point
+uncertainties nor an instrument-resolution function, the UI visibly uses unit
+weights and zero additional broadening. Consequently Rwp and reduced χ² are
+descriptive agreement diagnostics, not a calibrated refinement statistic.
+The profile is opened only after the structure and growth result exist and has
+no API path into clustering, marking, action admission, ranking, or execution.
+
 ## Independent powder-profile validation boundary (Build 417)
 
 The structural microscope now separates a calculated scattering fingerprint

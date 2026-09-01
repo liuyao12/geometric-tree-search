@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-417">
+  <link rel="stylesheet" href="./style.css?v=20260901-418">
   <script type="importmap">
     {
       "imports": {
@@ -2275,10 +2275,16 @@
               <option value="scale+constant" selected>scale + constant background</option>
               <option value="scale+constant+linear-q">scale + linear background</option>
             </select></label>
+            <button id="publicPowderProfileBrowse" type="button">browse public RRUFF profiles</button>
             <button id="experimentalScatteringRequest" type="button">download pdCIF request</button>
             <button id="experimentalScatteringDemo" type="button">run instrument demonstrator</button>
             <button id="experimentalScatteringClear" type="button" hidden>clear profile</button>
           </div>
+          <section id="publicPowderProfilePanel" class="public-powder-profile-panel" aria-label="Composition-matched public experimental powder profiles" hidden>
+            <header><span><small>RRUFF · JARVIS snapshot · CC BY 4.0</small><strong id="publicPowderProfileSummary">public profile library</strong></span><b id="publicPowderProfileCompatibility">not queried</b></header>
+            <div id="publicPowderProfileList" class="public-powder-profile-list" role="group" aria-label="Available exact-chemistry powder profiles"></div>
+            <p id="publicPowderProfileState">Profiles are filtered by the exact element set. Same-phase evidence additionally requires a curated phase correspondence; chemistry alone never establishes phase identity.</p>
+          </section>
           <svg id="experimentalScatteringPlot" viewBox="0 0 480 184" role="img" aria-label="Observed and calculated powder-scattering profiles with residuals"></svg>
           <div id="experimentalScatteringMetrics" class="experimental-scattering-metrics" aria-live="polite"></div>
           <p id="experimentalScatteringState">Choose a probe contract and download a request for an independent pdCIF-compatible measurement. The built-in demonstrator tests resolution, uncertainty, nuisance fitting, and residual rendering, but is not experimental evidence.</p>
@@ -2785,7 +2791,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-417"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-417"></script>
+  <script type="module" src="./app.js?v=20260901-418"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-418"></script>
 </body>
 </html>

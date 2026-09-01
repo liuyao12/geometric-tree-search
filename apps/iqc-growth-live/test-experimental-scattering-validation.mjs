@@ -42,10 +42,21 @@ const experimental = validateExperimentalScatteringResponse(request, {
   abscissa: twoTheta, intensity: demo.intensity, standardUncertainty: demo.standardUncertainty,
   intensityUnits: "counts", resolutionFwhmQ: .08, independentOfGrowth: true,
   usedForGrowth: false, usedForMarking: false, usedForCandidateSelection: false,
+  materialCorrespondence: { level: "exact-phase", elements: ["Cl", "Na"], formula: "NaCl",
+    phase: "Halite", basis: "exact chemistry plus phase", sameMaterialClaimAllowed: true },
   provenance: { title: "Independent test profile", doi: "10.0000/example", temperatureKelvin: 298 },
 });
 assert.equal(experimental.experimentalEvidence, true);
+assert.equal(experimental.sameMaterialEvidence, true);
 experimental.q.forEach((q, index) => assert.ok(Math.abs(q - profile.q[index]) < 1e-12));
+
+const compositionOnly = validateExperimentalScatteringResponse(request, {
+  ...demo, probe: "x-ray", independentOfGrowth: true,
+  materialCorrespondence: { level: "composition-only", elements: ["Cl", "Na"], formula: "NaCl",
+    phase: "unknown polymorph", basis: "exact chemistry only", sameMaterialClaimAllowed: false },
+});
+assert.equal(compositionOnly.experimentalEvidence, true);
+assert.equal(compositionOnly.sameMaterialEvidence, false);
 
 assert.throws(() => validateExperimentalScatteringResponse(request, {
   ...demo, probe: "x-ray", independentOfGrowth: false,
