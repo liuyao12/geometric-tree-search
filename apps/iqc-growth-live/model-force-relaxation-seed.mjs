@@ -1,5 +1,5 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-442";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-443";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
@@ -22,6 +22,92 @@ const dotVector = (first, second) => first.reduce((sum, value, axis) =>
 const zeroMatrix = () => [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const matrixFrobenius = (matrix) => Math.sqrt(matrix.reduce((sum, row) =>
   sum + row.reduce((inner, value) => inner + value * value, 0), 0));
+
+const linearClosestApproach = (start, end) => {
+  const delta = end.map((value, axis) => value - start[axis]);
+  const denominator = dotVector(delta, delta);
+  const parameter = denominator > 1e-24
+    ? Math.max(0, Math.min(1, -dotVector(start, delta) / denominator)) : 0;
+  const vector = start.map((value, axis) => value + parameter * delta[axis]);
+  return Object.freeze({ parameter, distanceAngstrom: vectorMagnitude(vector) });
+};
+
+/** Prove that no evaluated pair enters or leaves a declared hard reach. */
+export function auditFiniteReachPathTopology(currentSites, originalAddedSites,
+  proposedAddedSites, reachAngstrom, { toleranceAngstrom = 1e-10 } = {}) {
+  if (reachAngstrom === "global" || reachAngstrom === Infinity) return Object.freeze({
+    available: true, passed: true, finiteReach: false, pairChecks: 0,
+    activePairs: null, inactivePairs: null, minimumCutoffClearanceAngstrom: null,
+    crossingPairs: Object.freeze([]), analyticClosestApproach: true,
+    targetUsed: false,
+    reason: "global reach has no finite pair-membership boundary",
+  });
+  const reach = Number(reachAngstrom);
+  if (!(Number.isFinite(reach) && reach > 0)) {
+    throw new RangeError("finite reach topology audit needs positive reach or global");
+  }
+  if (!Array.isArray(currentSites) || !Array.isArray(originalAddedSites)
+      || !Array.isArray(proposedAddedSites)
+      || originalAddedSites.length !== proposedAddedSites.length) {
+    throw new Error("finite reach topology audit needs paired movable sites");
+  }
+  const pairs = [];
+  const addPair = (pairId, firstStart, firstEnd, secondStart, secondEnd) => {
+    if (![firstStart, firstEnd, secondStart, secondEnd].every(finiteVector)) {
+      throw new Error("finite reach topology audit needs finite Cartesian positions");
+    }
+    const relativeStart = subtractVector(firstStart, secondStart);
+    const relativeEnd = subtractVector(firstEnd, secondEnd);
+    const startDistance = vectorMagnitude(relativeStart);
+    const endDistance = vectorMagnitude(relativeEnd);
+    const closest = linearClosestApproach(relativeStart, relativeEnd);
+    const startActive = startDistance <= reach;
+    const endActive = endDistance <= reach;
+    const stableActive = startActive && endActive
+      && reach - Math.max(startDistance, endDistance) > Number(toleranceAngstrom);
+    const stableInactive = !startActive && !endActive
+      && closest.distanceAngstrom > reach + Number(toleranceAngstrom);
+    const stable = stableActive || stableInactive;
+    const clearance = stableActive
+      ? reach - Math.max(startDistance, endDistance)
+      : closest.distanceAngstrom - reach;
+    pairs.push(Object.freeze({ pairId, startActive, endActive, stable,
+      startDistanceAngstrom: startDistance, endDistanceAngstrom: endDistance,
+      closestDistanceAngstrom: closest.distanceAngstrom,
+      closestParameter: closest.parameter, cutoffClearanceAngstrom: clearance }));
+  };
+  originalAddedSites.forEach((site, addedIndex) => currentSites.forEach((neighbor,
+    currentIndex) => addPair(`added-${addedIndex}:current-${currentIndex}`,
+    site.position, proposedAddedSites[addedIndex].position,
+    neighbor.position, neighbor.position)));
+  originalAddedSites.forEach((site, firstIndex) => originalAddedSites
+    .slice(firstIndex + 1).forEach((neighbor, relativeIndex) => {
+      const secondIndex = firstIndex + relativeIndex + 1;
+      addPair(`added-${firstIndex}:added-${secondIndex}`,
+        site.position, proposedAddedSites[firstIndex].position,
+        neighbor.position, proposedAddedSites[secondIndex].position);
+    }));
+  const crossingPairs = pairs.filter((pair) => !pair.stable);
+  const activePairs = pairs.filter((pair) => pair.startActive && pair.endActive).length;
+  return Object.freeze({
+    available: true,
+    passed: crossingPairs.length === 0,
+    finiteReach: true,
+    reachAngstrom: reach,
+    pairChecks: pairs.length,
+    activePairs,
+    inactivePairs: pairs.length - activePairs,
+    minimumCutoffClearanceAngstrom: pairs.length
+      ? Math.min(...pairs.map((pair) => pair.cutoffClearanceAngstrom)) : null,
+    crossingPairs: Object.freeze(crossingPairs),
+    analyticClosestApproach: true,
+    targetUsed: false,
+    reason: crossingPairs.length
+      ? `${crossingPairs.length} pair path${crossingPairs.length === 1 ? "" : "s"} enter or leave the hard interaction reach`
+      : "every pair remains continuously inside or outside the hard interaction reach",
+    claimBoundary: "This is an analytic membership-continuity certificate for a declared finite hard reach. It does not make a truncated potential smooth at the cutoff, infer a switching function, or establish dynamics or time.",
+  });
+}
 
 function centeredSymmetricForceMoment(positions, forces, centroid) {
   const matrix = zeroMatrix();
@@ -538,6 +624,68 @@ export function auditModelForceRelaxationPath(
   const imageEvaluations = images.map((image) =>
     incrementalFinitePointChargeElectrostatics(currentSites, image.sites,
       electrostaticsOptions));
+  const branchRecords = imageEvaluations.map((evaluation, imageIndex) => Object.freeze({
+    imageIndex,
+    fraction: images[imageIndex].fraction,
+    available: Boolean(evaluation.available),
+    pairCount: evaluation.pairCount ?? null,
+    pairInteractionModel: evaluation.pairInteractionModel || null,
+    reachAngstrom: evaluation.reachAngstrom ?? null,
+    bornMayerPairPolicy: evaluation.bornMayerPairPolicy || null,
+    bornMayerPairMatrixFallbackCount:
+      evaluation.bornMayerPairMatrixFallbackCount ?? null,
+    bornMayerPairParameterUsage: Object.freeze(
+      (evaluation.bornMayerPairParameterUsage || []).map((record) =>
+        Object.freeze({ key: record.key, pairCount: record.pairCount }))),
+    inductionAppliedResponseModel: evaluation.inductionAppliedResponseModel || null,
+    inductionDirectFallbackApplied: Boolean(evaluation.inductionDirectFallbackApplied),
+    inductionForceModeApplied: evaluation.inductionForceModeApplied || null,
+    completeForceGradient: Boolean(evaluation.pairInteractionForceIsNegativeEnergyGradient),
+  }));
+  const branchSignatures = branchRecords.map((record) => JSON.stringify({
+    available: record.available,
+    pairCount: record.pairCount,
+    pairInteractionModel: record.pairInteractionModel,
+    reachAngstrom: record.reachAngstrom,
+    bornMayerPairPolicy: record.bornMayerPairPolicy,
+    bornMayerPairMatrixFallbackCount: record.bornMayerPairMatrixFallbackCount,
+    bornMayerPairParameterUsage: record.bornMayerPairParameterUsage,
+    inductionAppliedResponseModel: record.inductionAppliedResponseModel,
+    inductionDirectFallbackApplied: record.inductionDirectFallbackApplied,
+    inductionForceModeApplied: record.inductionForceModeApplied,
+    completeForceGradient: record.completeForceGradient,
+  }));
+  const uniqueBranchSignatures = [...new Set(branchSignatures)];
+  const reachTopology = auditFiniteReachPathTopology(currentSites,
+    originalAddedSites, proposedAddedSites,
+    imageEvaluations[0]?.reachAngstrom ?? electrostaticsOptions.reachAngstrom ?? "global");
+  const evaluatedPairCountMatchesTopology = !reachTopology.finiteReach
+    || imageEvaluations.every((evaluation) =>
+      evaluation.pairCount === reachTopology.activePairs);
+  const smoothModelBranchAvailable = branchRecords.every((record) => record.available
+    && record.completeForceGradient) && reachTopology.available;
+  const smoothModelBranch = Object.freeze({
+    available: smoothModelBranchAvailable,
+    passed: smoothModelBranchAvailable && uniqueBranchSignatures.length === 1
+      && reachTopology.passed
+      && evaluatedPairCountMatchesTopology,
+    imageCount: branchRecords.length,
+    uniqueStateCount: uniqueBranchSignatures.length,
+    stateStableAcrossImages: uniqueBranchSignatures.length === 1,
+    evaluatedPairCountMatchesTopology,
+    records: Object.freeze(branchRecords),
+    reachTopology,
+    targetUsed: false,
+    reason: !smoothModelBranchAvailable
+      ? "complete finite interaction branch unavailable at one or more path images"
+      : uniqueBranchSignatures.length !== 1
+        ? "finite interaction or response state changed between path images"
+        : !reachTopology.passed ? reachTopology.reason
+          : !evaluatedPairCountMatchesTopology
+            ? "evaluated pair count disagrees with analytic reach topology"
+            : "one finite interaction/response state and pair topology spans the full path",
+    claimBoundary: "This certifies one sampled interaction/response state plus analytic hard-reach membership continuity over the straight coordinate path. It does not prove higher differentiability, a switching function, transferable smoothness, dynamics, or time.",
+  });
   const segments = [];
   for (let index = 0; index < images.length - 1; index++) {
     const audit = auditModelForceRelaxationOutcome(currentSites,
@@ -589,20 +737,30 @@ export function auditModelForceRelaxationPath(
       reason: error?.message || "force-energy path closure unavailable",
       targetUsed: false });
   }
-  const accepted = everySegmentEnergyForceDescent && workEnergyClosure.passed;
+  const accepted = everySegmentEnergyForceDescent && smoothModelBranch.passed
+    && workEnergyClosure.passed;
   return Object.freeze({
     available: segments.every((segment) => segment.completeForceGradient
-      && segment.responseConsistent) && workEnergyClosure.available,
+      && segment.responseConsistent) && smoothModelBranch.available
+      && workEnergyClosure.available,
     accepted,
     reason: !everySegmentEnergyForceDescent
       ? `response-path segment ${firstFailure?.segmentIndex ?? "?"} failed: ${firstFailure?.reason || "unavailable"}`
-      : !workEnergyClosure.passed ? workEnergyClosure.reason
+      : !smoothModelBranch.passed ? smoothModelBranch.reason
+        : !workEnergyClosure.passed ? workEnergyClosure.reason
         : "every bounded response-path segment passed energy, force, population, resultant, torque, symmetric-moment, and work-energy closure gates",
     imageCount,
     segmentCount: segments.length,
     fractions: Object.freeze(images.map((image) => image.fraction)),
     segments: Object.freeze(segments),
     everySegmentEnergyForceDescent,
+    smoothModelBranchPassed: smoothModelBranch.passed,
+    smoothModelBranch,
+    modelStateStableAcrossImages: smoothModelBranch.stateStableAcrossImages,
+    analyticReachTopologyPassed: reachTopology.passed,
+    analyticReachPairChecks: reachTopology.pairChecks,
+    analyticReachMinimumClearanceAngstrom:
+      reachTopology.minimumCutoffClearanceAngstrom,
     workEnergyClosurePassed: workEnergyClosure.passed,
     workEnergyClosure,
     forceWorkSimpsonElectronVolt: workEnergyClosure.simpsonWorkElectronVolt ?? null,

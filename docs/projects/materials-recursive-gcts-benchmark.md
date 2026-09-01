@@ -10658,6 +10658,22 @@ This improves experimental design without creating label leakage. Indexed formul
 space-group metadata, and tray order are never learner inputs. The receipt records explicit
 candidate selection and page provenance, while GCTS still begins from the chosen archive's
 species-labelled Cartesian coordinates and permitted supplied measurement channels.
+# Build 443: Continuous finite-model branch certificate
+
+The 13/7-image Richardson work gate is now conditioned on one frozen finite
+interaction branch. Each image must retain identical interaction model, reach,
+pair count, species-pair parameter usage/fallback, induction response/fallback,
+force mode, and complete-gradient state. Any branch change rejects before work
+closure.
+
+For finite reach, exact relative linear motion supplies analytic closest
+approach for every movable–fixed and movable–movable pair. A pair must remain
+strictly inside or strictly outside the cutoff for the whole path, and every
+image's evaluated pair count must match that topology. Controls include an
+outside→inside→outside crossing hidden between endpoints, plus safe all-inside,
+all-outside, and global-reach cases. This is branch continuity, not a switching
+function, higher-differentiability proof, dynamics, rate, or time.
+
 # Build 442: Nested Simpson convergence for finite work
 
 The response audit now evaluates thirteen equally spaced images and applies all

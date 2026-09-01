@@ -64,6 +64,8 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "modelForceWorkEnergyClosureResidualElectronVolt" in APP
     assert "modelForceWorkEnergyRichardsonErrorElectronVolt" in APP
     assert "modelForceWorkEnergyNestedSimpsonConvergenceAvailable" in APP
+    assert "modelForceSmoothBranchPassed" in APP
+    assert "modelForceAnalyticReachTopologyPassed" in APP
     assert "auditLinearSweptExclusion" in APP
     assert "sweptHardExclusionPassed" in APP
 

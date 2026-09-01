@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-442";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-442";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-443";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-443";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-442";
+  from "./hierarchy-physics-transport.mjs?v=20260901-443";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-442";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-443";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-442";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-443";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-442";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-443";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-442", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-443", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -450,6 +450,7 @@ const TIMELINE = [
   ["45", "Centered symmetric force-moment gate", "Smaller site forces, net force, and torque can still hide a stronger coherent compression, extension, or shear moment. Every frozen movable population now forms the centered symmetric force×length tensor Σ sym[(r-r̄)⊗F] and requires its total, hydrostatic, and deviatoric magnitudes to remain non-increasing at every response segment. No control volume or pair virial is inferred, so this is not stress, pressure, elasticity, equilibrium, or dynamics.", "proved"],
   ["46", "Finite-path work–energy closure", "The seven response images now integrate the complete movable-site force along the accepted Cartesian leap. Composite Simpson work must close the independently evaluated endpoint ΔU within the explicit Simpson-versus-trapezoid discrepancy and numerical tolerance; inconsistent finite force/energy controls fail. This checks one model's gradient consistency, not thermodynamic work, free energy, NEB, dynamics, rate, or time.", "proved"],
   ["47", "Nested work-quadrature convergence", "Thirteen response images now support twelve complete segment gates and an embedded seven-image Simpson rule. Fine and coarse Simpson force-work estimates must agree tightly enough that W+ΔU fits their Richardson-scaled difference plus numerical tolerance; trapezoid work is diagnostic only. The estimate assumes a smooth integrand and is numerical—not physical uncertainty, thermodynamic work, free energy, NEB, dynamics, rate, or time.", "proved"],
+  ["48", "Continuous finite-model branch", "Richardson work closure now requires one interaction, pair-parameter, response, fallback, force-mode, and pair-count state across all thirteen images. For finite hard reach, analytic closest approach proves every movable pair remains strictly inside or outside the cutoff over the full segment; hidden outside→inside→outside crossings fail. This is bounded branch continuity, not a switching function, higher-differentiability proof, dynamics, rate, or time.", "proved"],
 ];
 
 const CLAIMS = [

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { auditForceEnergyPathClosure, auditGroupedForceResiduals,
+import { auditFiniteReachPathTopology, auditForceEnergyPathClosure,
+  auditGroupedForceResiduals,
   auditModelForceRelaxationEnergyDescent,
   auditModelForceRelaxationOutcome, auditModelForceRelaxationPath,
   buildModelForceRelaxationSeed }
@@ -7,6 +8,24 @@ import { auditForceEnergyPathClosure, auditGroupedForceResiduals,
 
 const current = [{ position: [0, 0, 0], charge: 1, species: "Na" }];
 const added = [{ position: [2.8, 0, 0], charge: -1, species: "Cl" }];
+const cutoffCrossing = auditFiniteReachPathTopology(current,
+  [{ position: [2, 1, 0] }], [{ position: [2, -1, 0] }], 2.1);
+assert.equal(cutoffCrossing.passed, false);
+assert.equal(cutoffCrossing.crossingPairs.length, 1);
+assert.ok(Math.abs(cutoffCrossing.crossingPairs[0].closestParameter - .5) < 1e-12);
+assert.ok(cutoffCrossing.crossingPairs[0].closestDistanceAngstrom < 2.1);
+const cutoffSafeOutside = auditFiniteReachPathTopology(current,
+  [{ position: [3, 1, 0] }], [{ position: [3, -1, 0] }], 2.1);
+assert.equal(cutoffSafeOutside.passed, true);
+assert.equal(cutoffSafeOutside.activePairs, 0);
+const cutoffSafeInside = auditFiniteReachPathTopology(current,
+  [{ position: [1, 1, 0] }], [{ position: [1, -1, 0] }], 2.1);
+assert.equal(cutoffSafeInside.passed, true);
+assert.equal(cutoffSafeInside.activePairs, 1);
+const globalReach = auditFiniteReachPathTopology(current,
+  [{ position: [2, 1, 0] }], [{ position: [2, -1, 0] }], "global");
+assert.equal(globalReach.passed, true);
+assert.equal(globalReach.finiteReach, false);
 const fractions = Array.from({ length: 13 }, (_, index) => index / 12);
 const consistentClosure = auditForceEnergyPathClosure(fractions,
   fractions.map((fraction) => -fraction - fraction * fraction),
@@ -182,6 +201,21 @@ assert.ok(Math.abs(forceSettlingPath.workEnergyClosureResidualElectronVolt)
 assert.equal(forceSettlingPath.workEnergyClosure.pathParameterIsPhysicalTime, false);
 assert.equal(forceSettlingPath.workEnergyNestedSimpsonConvergenceAvailable, true);
 assert.equal(forceSettlingPath.workEnergyClosure.coarseSimpsonImageCount, 7);
+assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
+assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
+assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
+const finiteReachSettlingPath = auditModelForceRelaxationPath(current, added,
+  [{ ...added[0], position: [2.79, 0, 0] }], {
+    imageCount: 13,
+    forceGroupLabels: ["fresh"],
+    electrostaticsOptions: { ...finitePairOptions, reachAngstrom: 3 },
+  });
+assert.equal(finiteReachSettlingPath.accepted, true);
+assert.equal(finiteReachSettlingPath.smoothModelBranchPassed, true);
+assert.equal(finiteReachSettlingPath.smoothModelBranch.reachTopology.finiteReach, true);
+assert.equal(finiteReachSettlingPath.analyticReachPairChecks, 1);
+assert.ok(Math.abs(finiteReachSettlingPath.analyticReachMinimumClearanceAngstrom - .2)
+  < 1e-12);
 assert.equal(forceSettlingPath.pathParameterIsPhysicalTime, false);
 assert.equal(forceSettlingPath.targetUsed, false);
 const uphillPath = auditModelForceRelaxationPath(current, added,

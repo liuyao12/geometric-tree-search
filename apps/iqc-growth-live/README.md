@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 443 · continuous finite-model branch certificate
+
+Nested quadrature now fails closed unless all thirteen response images belong
+to one finite interaction branch. Every image freezes and compares model name,
+hard reach, evaluated pair count, species-pair parameter usage and fallback
+count, applied induction response, response fallback state, force mode, and
+complete-gradient status. A change in any field rejects the path before its
+work integral can be interpreted.
+
+Finite hard reach receives a continuous—not sampled—topology audit. For every
+movable–fixed and movable–movable pair, relative motion is linear and its exact
+closest-approach parameter is solved analytically. Pairs already inside must
+remain strictly inside; pairs outside must remain outside even between images;
+touching, entering, or leaving the cutoff rejects. The evaluated pair count at
+every image must equal this analytic topology.
+
+Receipts expose all thirteen branch records, unique-state count, analytic pair
+checks, active/inactive counts, crossing-pair details, and minimum cutoff
+clearance. This certifies one response/topology branch over this bounded path.
+It does not add a switching function, prove higher differentiability or model
+transferability, or establish thermodynamic work, dynamics, rate, or time.
+
 ## Build 442 · nested work-quadrature convergence
 
 The finite response path is refined from seven to thirteen equally spaced
