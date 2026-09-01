@@ -1,5 +1,41 @@
 # Recursive GCTS benchmark for material growth
 
+## Work-bound conditional nucleation kinetics (Build 412)
+
+The classical work object no longer ends in an ambiguous “prefactor missing”
+label. It can export a target-free kinetics request whose identity includes the
+exact structure hash, full work-object hash, interfacial and bulk provenance,
+phase pair, intrinsic dimension, temperature, barrier, uncertainty, and
+critical scale. The response contract supplies three quantities that geometry
+does not contain: a nucleation-site density `ρsite`, a Zeldovich factor `Z`, and
+an attachment frequency `f⁺` evaluated at the declared critical reaction
+coordinate.
+
+Validation requires exact request/work/structure binding, dimension-correct
+site-density units, identical temperature and phases, finite method provenance,
+a settings SHA-256, a declared and validated reaction coordinate, convergence,
+uncertainties, and explicit steady-state homogeneous-CNT scope. Each positive
+factor must remain positive at its three-sigma lower bound; `Z` must also remain
+at most one at the upper bound. A passing response gives
+
+`ln J = ln ρsite + ln Z + ln f⁺ − ΔG*/kBT`.
+
+The implementation evaluates this expression in log space. Its independent
+one-sigma log-rate uncertainty combines the relative uncertainties of the
+three supplied kinetic factors with the conditional barrier uncertainty in
+thermal units. Numerical controls cover the 3D equation, 2D units, request
+taint, digest/phase/state mismatches, uncertainty bounds, and finite Poisson
+observation windows.
+
+For an explicitly selected length `L` and exposure `t`, the display may report
+`λ=J L^d t`, `P(N≥1)=1−exp(−λ)`, and `t₅₀=ln2/(J L^d)`. Those values condition
+on a constant homogeneous rate density and stationary Poisson process. They do
+not represent measured induction times, a finite-site/depletion model,
+incubation transients, spatial correlations, heterogeneous or nonclassical
+pathways, mechanism completeness, or physical time accumulated by GCTS.
+Candidate enumeration, coordinates, admission, ranking, and the leap clock all
+remain unchanged.
+
 ## Matched conditional capillarity action prior (Build 411)
 
 The Wulff/`Δg` evidence pair now reaches the frozen GCTS frontier through a

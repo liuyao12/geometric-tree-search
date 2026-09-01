@@ -1,5 +1,37 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 412 · a barrier becomes a rate only through independent kinetics
+
+The conditional Wulff barrier now opens a third, separately validated handoff.
+The exported request is bound to the exact structure, serialized nucleation-work
+digest, γ and Δg provenance, phases, temperature, intrinsic dimension, and
+critical scale. It asks an external rare-event calculation or experiment for
+the nucleation-site density `ρsite`, Zeldovich factor `Z`, and critical-nucleus
+attachment frequency `f⁺`, each with one-sigma uncertainty, reaction-coordinate
+definition, method settings, convergence, and steady homogeneous-CNT
+declarations.
+
+Only a response that remains physically admissible at three sigma unlocks
+
+`J = ρsite Z f⁺ exp(−ΔG*/kBT)`.
+
+The browser performs the calculation in log space and propagates the supplied
+factor and barrier uncertainties into `log₁₀ J`. A compact interactive panel
+then lets the user choose a finite observation span and exposure and reports
+the expected event count, `P(N≥1)`, and median first-event time under an
+explicit stationary homogeneous Poisson assumption. The formula follows the
+standard CNT separation of barrier and kinetic prefactor used in rare-event
+studies; see the accepted manuscript discussion in
+[Cho and Jacobs, Phys. Rev. Lett. 130, 128203 (2023)](https://doi.org/10.1103/PhysRevLett.130.128203)
+and the limitations of capillarity-only barriers in
+[Prestipino, Laio, and Tosatti, Phys. Rev. Lett. 108, 225701 (2012)](https://doi.org/10.1103/PhysRevLett.108.225701).
+
+No kinetics are bundled. A barrier alone still yields no rate, and the Poisson
+projection is not an observed induction-time distribution, depletion or
+impingement model, spatially correlated process, heterogeneous/nonclassical
+pathway, branch probability, or clock attached to GCTS leaps. Candidate
+geometry, admission, and ranking remain unchanged.
+
 ## Build 411 · capillarity work becomes an optional geometric action prior
 
 Validated `γ(n̂)` and independently validated positive `Δg` can now do more

@@ -97,10 +97,10 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert "outer recall is only 0.39%" in README
     assert "exploratory training-corpus result" in README
     assert "older fully nested margin *selection* remains red at 94.48%" in README
-    assert 'buildId: "20260901-411"' in APP
-    assert 'app.js?v=20260901-411' in HTML
-    assert 'style.css?v=20260901-411' in HTML
-    assert 'evidence-atlas.js?v=20260901-411' in HTML
+    assert 'buildId: "20260901-412"' in APP
+    assert 'app.js?v=20260901-412' in HTML
+    assert 'style.css?v=20260901-412' in HTML
+    assert 'evidence-atlas.js?v=20260901-412' in HTML
 
 
 if __name__ == "__main__":
