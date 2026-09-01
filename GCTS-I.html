@@ -218,7 +218,7 @@
       let liveSearchUsesSublattice = sublatticeToggle?.checked || false;
       let preservePatchOnNextStart = false;
       let autoplayTarget = 30;
-      const pausedCoronas = new Set();
+      let highestPausedCorona = 0;
       let hasStartedTiling = false;
       let trialGhost = null;
       let statusText = '';
@@ -1716,7 +1716,7 @@
         playbackPlacements = null;
         traceIndex = 0;
         liveSearchIterator = null;
-        pausedCoronas.clear();
+        highestPausedCorona = 0;
         trialGhost = null;
         statusText = `rank-${markingRank} marking · extent ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
@@ -1757,7 +1757,7 @@
           orientations = buildOrientations(markingExtension, markingRank);
           refreshPlacementsForMarkingRank();
           liveSearchIterator = null;
-          pausedCoronas.clear();
+          highestPausedCorona = 0;
           hasStartedTiling = false;
           startButton.textContent = 'Start tiling';
           showMarkings = true;
@@ -1787,7 +1787,7 @@
         playbackPlacements = null;
         traceIndex = 0;
         liveSearchIterator = null;
-        pausedCoronas.clear();
+        highestPausedCorona = 0;
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
@@ -2037,6 +2037,7 @@
             playbackPlacements = retained;
             liveSearchIterator = createSharedLiveTilingSearch(useMarking, retained);
           } else {
+            highestPausedCorona = 0;
             shownTiles = 1;
             const seed = makeSeedPlacement();
             tilingOrder = [seed];
@@ -2046,7 +2047,6 @@
             centerSeedView();
           }
           preservePatchOnNextStart = false;
-          pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           liveSearchMarkingRank = markingRank;
           liveSearchUsesSublattice = usingSublattice();
@@ -2136,8 +2136,8 @@
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
-            if (frontierGeneration && frontierGeneration % 2 === 0 && !pausedCoronas.has(frontierGeneration)) {
-              pausedCoronas.add(frontierGeneration);
+            if (frontierGeneration && frontierGeneration % 2 === 0 && frontierGeneration > highestPausedCorona) {
+              highestPausedCorona = frontierGeneration;
               statusText = `paused at complete corona ${frontierGeneration}; every frontier point has generation ≥ ${frontierGeneration}`;
               stopTiling();
             } else if (shownTiles >= autoplayTarget) {
@@ -2177,7 +2177,7 @@
         orientations = buildOrientations(markingExtension, markingRank);
         refreshPlacementsForMarkingRank();
         liveSearchIterator = null;
-        pausedCoronas.clear();
+        highestPausedCorona = 0;
         trialGhost = null;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
@@ -2200,7 +2200,6 @@
         refreshPlacementsForMarkingRank();
         liveSearchIterator = null;
         preservePatchOnNextStart = true;
-        pausedCoronas.clear();
         trialGhost = null;
         liveSearchUsesSublattice = usingSublattice();
         statusText = usingSublattice()
@@ -2225,7 +2224,7 @@
         shownTiles = 1;
         traceIndex = 0;
         liveSearchIterator = null;
-        pausedCoronas.clear();
+        highestPausedCorona = 0;
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
