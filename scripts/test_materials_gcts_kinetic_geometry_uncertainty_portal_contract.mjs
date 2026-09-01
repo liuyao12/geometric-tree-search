@@ -9,7 +9,7 @@ const style = fs.readFileSync("apps/iqc-growth-live/style.css", "utf8");
 const readme = fs.readFileSync("apps/iqc-growth-live/README.md", "utf8");
 const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchmark.md", "utf8");
 
-for (const document of [html, alias]) assert.match(document, /app\.js\?v=20260901-414/);
+for (const document of [html, alias]) assert.match(document, /app\.js\?v=20260901-415/);
 assert.match(app, /rateIntervalAssumption/);
 assert.match(app, /not confidence intervals/);
 assert.match(response, /rateBoxObservableEnvelope/);

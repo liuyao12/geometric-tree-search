@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 415 · validated critical nuclei can enter GCTS through an explicit grammar gate
+
+The atomistic critical-nucleus handoff now continues into a target-blind seed
+admission audit. The portal matches the externally supplied species-labelled
+coordinates against the already learned local cluster vocabulary using proper
+`SE(3)` fits, forms a deterministic connected cover through admitted port
+relations, and retains every uncovered atom as an explicit residual terminal.
+The user controls the minimum recognized fraction; coverage, connectedness,
+outward-port supply, bounded enumeration, and live collision/boundary checks
+must all pass before the seed button unlocks.
+
+The final promotion remains an explicit user action. It recenters one posed
+event into the local growth sandbox, materializes all supplied atoms, attaches
+the recognized frozen-grammar placements, and opens only the pre-existing GCTS
+frontier. The physical event location stays in the receipt. No target atoms,
+future candidates, fitted scale, reflected pose, critical-ensemble sampling,
+or physical clock is introduced by admission.
+
 ## Build 414 · critical-nucleus atoms become an evidence-bound preview
 
 The conditional event schedule now has an explicit atomistic-geometry handoff.

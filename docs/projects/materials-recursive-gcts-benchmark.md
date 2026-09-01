@@ -1,5 +1,27 @@
 # Recursive GCTS benchmark for material growth
 
+## Frozen-grammar admission of atomistic critical nuclei (Build 415)
+
+An externally validated critical configuration is no longer limited to a
+visual preview. A bounded recognizer now compares it with the frozen local
+cluster/port grammar using colored proper-`SE(3)` congruence. A deterministic
+set cover reports recognized atoms, cluster/type counts, proper poses,
+connected admitted overlap edges, outward rule supply, and coordinate-bearing
+residual terminals. Reflection, target taint, grammar/structure mismatch,
+unorientable prototypes, enumeration truncation, insufficient coverage,
+disconnected covers, closed ports, live collisions, and the public boundary
+all fail closed.
+
+Admission and execution remain separate. Only an explicit user action stages
+the admitted pose. The local sandbox then contains the exact supplied atoms,
+recognized placements composed with the scheduled proper rotation, residual
+atoms without invented cluster identity, and candidates generated from the
+existing frozen port rules. The original physical event coordinate, geometry,
+schedule, and admission evidence remain in the receipt. This proves a
+target-blind handoff into the existing search frontier; it does not turn one
+representative into a critical ensemble or infer heterogeneous-site physics,
+an atomistic parent matrix, a nucleation rate, or a physical growth clock.
+
 ## Evidence-bound atomistic critical-nucleus preview (Build 414)
 
 The seeded event point process now ends at a separate atomistic geometry

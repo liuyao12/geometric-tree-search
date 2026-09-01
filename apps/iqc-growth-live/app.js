@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260901-414";
+  from "./external-action-barrier.mjs?v=20260901-415";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260901-414";
+  from "./action-path-viewer.mjs?v=20260901-415";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260901-414";
+  from "./action-path-mechanism.mjs?v=20260901-415";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260901-414";
+  from "./frozen-frontier-kinetics.mjs?v=20260901-415";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260901-414";
+  from "./kinetic-event-spectrum.mjs?v=20260901-415";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260901-414";
+  from "./temperature-programmed-kinetics.mjs?v=20260901-415";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260901-414";
+  from "./kinetic-geometry-response.mjs?v=20260901-415";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260901-414";
+  from "./frontier-mechanism-landscape.mjs?v=20260901-415";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260901-414";
+  from "./surface-hop-events.mjs?v=20260901-415";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260901-414";
+  from "./species-exchange-events.mjs?v=20260901-415";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260901-414";
+  from "./external-state-relaxation.mjs?v=20260901-415";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260901-414";
+  from "./reversible-transition-lineage.mjs?v=20260901-415";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260901-414";
+  from "./finite-network-population-dynamics.mjs?v=20260901-415";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260901-414";
+  from "./finite-network-geometric-flux.mjs?v=20260901-415";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260901-414";
+  from "./finite-network-structural-flux.mjs?v=20260901-415";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260901-414";
+  from "./geometric-state-descriptor.mjs?v=20260901-415";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260901-414";
+  from "./finite-network-global-order.mjs?v=20260901-415";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260901-414";
+  from "./finite-network-first-passage.mjs?v=20260901-415";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-414";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260901-415";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260901-414";
+  from "./finite-network-passage-control.mjs?v=20260901-415";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260901-414";
+  from "./finite-network-rate-intervention.mjs?v=20260901-415";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260901-414";
+  from "./finite-network-temperature-intervention.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260901-414";
+  from "./finite-network-conditioned-passage.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-414";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260901-414";
+  from "./finite-network-conditioned-arrival.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-414";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-414";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260901-415";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-414";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260901-415";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260901-414";
+  from "./hierarchy-evidence-microscope.mjs?v=20260901-415";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-414";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-415";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-414";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260901-415";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -163,46 +163,48 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { buildBulkDrivingForceRequest, buildClassicalNucleationWork,
   validateBulkDrivingForceResponse }
-  from "./classical-nucleation-evidence.mjs?v=20260901-414";
+  from "./classical-nucleation-evidence.mjs?v=20260901-415";
 import { evaluateClassicalCapillarityAction, matchedClassicalCapillarityRankingAudit }
-  from "./classical-capillarity-action.mjs?v=20260901-414";
+  from "./classical-capillarity-action.mjs?v=20260901-415";
 import { buildClassicalNucleationKineticsRequest,
   validateClassicalNucleationKineticsResponse, buildConditionalClassicalNucleationRate,
   evaluatePoissonNucleationWindow }
-  from "./classical-nucleation-kinetics.mjs?v=20260901-414";
+  from "./classical-nucleation-kinetics.mjs?v=20260901-415";
 import { buildConditionalNucleationSchedule }
-  from "./conditional-nucleation-scheduler.mjs?v=20260901-414";
+  from "./conditional-nucleation-scheduler.mjs?v=20260901-415";
 import { buildCriticalNucleusGeometryRequest, validateCriticalNucleusGeometryResponse,
   embedCriticalNucleusAtScheduledEvents }
-  from "./critical-nucleus-geometry.mjs?v=20260901-414";
+  from "./critical-nucleus-geometry.mjs?v=20260901-415";
+import { auditCriticalNucleusGrammarAdmission }
+  from "./critical-nucleus-grammar-admission.mjs?v=20260901-415";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260901-414";
+  from "./external-attachment-kinetics.mjs?v=20260901-415";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260901-414";
+  from "./external-interface-flux.mjs?v=20260901-415";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260901-414";
+  from "./growth-regime-bridge.mjs?v=20260901-415";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260901-414";
+  from "./leapfrog-physics-cycle.mjs?v=20260901-415";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260901-414";
+  from "./catalog-conditional-chronology.mjs?v=20260901-415";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260901-414";
+  from "./coupled-physics-state.mjs?v=20260901-415";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
-} from "./ice-molecular-anchor-growth.js?v=20260901-414";
+} from "./ice-molecular-anchor-growth.js?v=20260901-415";
 import { buildPeriodicIceIhBoundarySeries }
-  from "./ice-periodic-boundary-audit.mjs?v=20260901-414";
+  from "./ice-periodic-boundary-audit.mjs?v=20260901-415";
 import {
   buildIceOrientationEvidenceRequest,
   validateIceOrientationEvidenceResponse,
-} from "./ice-orientation-evidence.mjs?v=20260901-414";
+} from "./ice-orientation-evidence.mjs?v=20260901-415";
 import {
   executeFrozenIceViAnchorTrace,
   validateIceViAnchorTraceArtifact,
@@ -318,7 +320,7 @@ const ICE_PERIODIC_BOUNDARY_SERIES = Object.freeze(buildPeriodicIceIhBoundarySer
   .map((audit) => Object.freeze(audit)));
 
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-414", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-415", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -1268,6 +1270,11 @@ const criticalNucleusGeometryPlot = $("criticalNucleusGeometryPlot");
 const criticalNucleusGeometryMetrics = $("criticalNucleusGeometryMetrics");
 const criticalNucleusGeometryState = $("criticalNucleusGeometryState");
 const criticalNucleusGeometryBoundary = $("criticalNucleusGeometryBoundary");
+const criticalNucleusGrammarThresholdSelect = $("criticalNucleusGrammarThresholdSelect");
+const auditCriticalNucleusGrammar = $("auditCriticalNucleusGrammar");
+const useCriticalNucleusSeed = $("useCriticalNucleusSeed");
+const criticalNucleusGrammarMetrics = $("criticalNucleusGrammarMetrics");
+const criticalNucleusGrammarState = $("criticalNucleusGrammarState");
 const kineticHabitCard = document.querySelector(".kinetic-habit-card");
 const kineticHabitBadge = $("kineticHabitBadge");
 const kineticHabitPresetControls = $("kineticHabitPresetControls");
@@ -2314,6 +2321,9 @@ let criticalNucleusGeometryValidationAudit = null;
 let scheduledCriticalNucleusPreviewAudit = null;
 let criticalNucleusOrientationSeed = 414;
 let criticalNucleusPreviewCap = 8;
+let criticalNucleusMinimumRecognizedFraction = .8;
+let criticalNucleusGrammarAdmissionAudit = null;
+let stagedCriticalNucleusSeed = null;
 let classicalCapillarityMode = "display";
 let classicalCapillarityWeight = .16;
 let classicalCapillarityEvaluations = 0;
@@ -4329,6 +4339,9 @@ function resetCriticalNucleusGeometryState() {
   criticalNucleusGeometryRequestRuntime = null;
   criticalNucleusGeometryValidationAudit = null;
   scheduledCriticalNucleusPreviewAudit = null;
+  criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null;
+  if (growthSeedProtocol === "external-critical-nucleus") growthSeedProtocol = "observed-window";
 }
 
 function nucleationLogValue(value, suffix = "") {
@@ -4463,6 +4476,117 @@ function criticalNucleusSpeciesColor(species) {
   return `hsl(${Math.abs(hash) % 360} 62% 68%)`;
 }
 
+function criticalNucleusFrozenGrammar() {
+  if (!overlapGrammar?.templates?.length || !criticalNucleusGeometryRequestRuntime) {
+    throw new Error("learn a local cluster/port grammar before auditing the nucleus");
+  }
+  const angstromPerScene = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const rules = overlapGrammar.rules || [];
+  return {
+    schema: "gcts-frozen-local-port-grammar-v1",
+    structureSha256: criticalNucleusGeometryRequestRuntime.structureSha256,
+    metricToleranceAngstrom: clusterMetricToleranceAngstrom(),
+    minimumSharedAtoms: 2,
+    prototypes: overlapGrammar.templates.map((template) => ({
+      typeId: template.type,
+      occurrenceIndex: overlapGrammar.occurrences.findIndex(
+        occurrence => occurrence.type === template.type && occurrence.position && occurrence.rotation),
+      sites: (template.sites || []).map(site => ({
+        species: site.species,
+        positionAngstrom: site.local.clone().multiplyScalar(angstromPerScene).toArray(),
+      })),
+      outgoingRuleCount: (overlapGrammar.byFrom.get(template.type) || []).length,
+      incomingRuleCount: rules.filter(rule => rule.to === template.type).length,
+    })).filter(prototype => prototype.sites.length >= 2),
+    admittedConnections: rules.map(rule => ({ fromType: rule.from, toType: rule.to })),
+    targetUsed: false,
+  };
+}
+
+function quaternionFromProperMatrix(matrix) {
+  const transform = new THREE.Matrix4().set(
+    matrix[0][0], matrix[0][1], matrix[0][2], 0,
+    matrix[1][0], matrix[1][1], matrix[1][2], 0,
+    matrix[2][0], matrix[2][1], matrix[2][2], 0,
+    0, 0, 0, 1,
+  );
+  return new THREE.Quaternion().setFromRotationMatrix(transform).normalize();
+}
+
+function selectedCriticalNucleusPreviewEvent() {
+  return scheduledCriticalNucleusPreviewAudit?.events.find(event => event.fullyInsideObservation)
+    || scheduledCriticalNucleusPreviewAudit?.events[0] || null;
+}
+
+function liveCriticalNucleusSandboxAudit(event) {
+  if (!event) return { boundaryPassed: false, collisionPassed: false, positions: [] };
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const positions = event.sites.map(site => ({
+    siteId: site.siteId, species: site.species,
+    p: new THREE.Vector3(...site.localRotatedPositionAngstrom).multiplyScalar(scenePerAngstrom),
+  }));
+  const boundaryPassed = positions.every(site => insideGrowthDomain(site.p));
+  let collisionPassed = true;
+  for (let first = 0; first < positions.length && collisionPassed; first += 1) {
+    for (let second = first + 1; second < positions.length; second += 1) {
+      const exclusion = coloredPairDirectionalExclusion(positions[first], positions[second]);
+      if (positions[first].p.distanceTo(positions[second].p) + 1e-9 < exclusion) {
+        collisionPassed = false; break;
+      }
+    }
+  }
+  return { boundaryPassed, collisionPassed, positions };
+}
+
+function auditCriticalNucleusAgainstFrozenGrammar() {
+  if (!criticalNucleusGeometryValidationAudit || !scheduledCriticalNucleusPreviewAudit) {
+    throw new Error("validate and pose atomistic critical-nucleus geometry first");
+  }
+  const event = selectedCriticalNucleusPreviewEvent();
+  const grammarAudit = auditCriticalNucleusGrammarAdmission(
+    criticalNucleusGeometryValidationAudit, criticalNucleusFrozenGrammar(), {
+      minimumRecognizedFraction: criticalNucleusMinimumRecognizedFraction,
+    });
+  const sandbox = liveCriticalNucleusSandboxAudit(event);
+  criticalNucleusGrammarAdmissionAudit = {
+    ...grammarAudit,
+    previewEventId: event?.eventId || null,
+    previewEventIndex: event?.eventIndex ?? null,
+    sandboxBoundaryPassed: sandbox.boundaryPassed,
+    sandboxCollisionPassed: sandbox.collisionPassed,
+    localSandboxRecentering: true,
+    physicalEventPositionRetained: Boolean(event?.eventPositionMetre),
+    liveSeedAdmissible: grammarAudit.seedAdmissible && sandbox.boundaryPassed
+      && sandbox.collisionPassed && Boolean(event),
+  };
+  stagedCriticalNucleusSeed = null;
+  receiptStatus.textContent = criticalNucleusGrammarAdmissionAudit.liveSeedAdmissible
+    ? `Critical nucleus admitted by the frozen grammar · ${(100 * grammarAudit.recognizedAtomFraction).toFixed(1)}% cluster cover · ${grammarAudit.frontierPlacementCount} port-bearing placements · explicit action still required.`
+    : `Critical nucleus admission failed closed · ${(100 * grammarAudit.recognizedAtomFraction).toFixed(1)}% recognized · ${grammarAudit.recognizedComponents.length} components · boundary ${sandbox.boundaryPassed ? "pass" : "fail"} · collision ${sandbox.collisionPassed ? "pass" : "fail"}.`;
+  renderCriticalNucleusGeometry();
+}
+
+function stageCriticalNucleusAsGrowthSeed() {
+  if (!criticalNucleusGrammarAdmissionAudit?.liveSeedAdmissible) {
+    throw new Error("run and pass the frozen-grammar admission audit first");
+  }
+  const event = selectedCriticalNucleusPreviewEvent();
+  if (!event || event.eventId !== criticalNucleusGrammarAdmissionAudit.previewEventId) {
+    throw new Error("the admitted pose is no longer the active preview event");
+  }
+  stagedCriticalNucleusSeed = {
+    event,
+    audit: criticalNucleusGrammarAdmissionAudit,
+    geometryResponseSha256: criticalNucleusGeometryValidationAudit.responseSha256,
+    scheduleSha256: criticalNucleusGeometryRequestRuntime.scheduleSha256,
+  };
+  growthSeedProtocol = "external-critical-nucleus";
+  growthProtocolMode = "custom";
+  receiptStatus.textContent = `External ${criticalNucleusGeometryValidationAudit.atomCount}-atom critical nucleus staged as a local GCTS seed · entering material growth.`;
+  enterPipelineStage(4);
+  synchronizeWorkflowAddress({ mode: "replace" });
+}
+
 function renderCriticalNucleusGeometry() {
   if (!criticalNucleusGeometryPlot || !criticalNucleusGeometryMetrics) return;
   const scheduled = Boolean(conditionalNucleationScheduleAudit);
@@ -4480,10 +4604,16 @@ function renderCriticalNucleusGeometry() {
   criticalNucleusPreviewCapSelect.disabled = !canPose;
   freezeCriticalNucleusPreview.disabled = !canPose;
   releaseCriticalNucleusPreview.disabled = !posed;
+  criticalNucleusGrammarThresholdSelect.disabled = !posed;
+  auditCriticalNucleusGrammar.disabled = !posed;
+  useCriticalNucleusSeed.disabled = !criticalNucleusGrammarAdmissionAudit?.liveSeedAdmissible;
   criticalNucleusOrientationSeedSelect.value = String(criticalNucleusOrientationSeed);
   criticalNucleusPreviewCapSelect.value = String(criticalNucleusPreviewCap);
+  criticalNucleusGrammarThresholdSelect.value = String(criticalNucleusMinimumRecognizedFraction);
   criticalNucleusGeometryBadge.textContent = posed
-    ? `${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} posed`
+    ? stagedCriticalNucleusSeed ? "seed staged"
+      : criticalNucleusGrammarAdmissionAudit?.liveSeedAdmissible ? "grammar admitted"
+        : `${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} posed`
     : validated ? "prototype validated" : requested ? "request frozen" : "geometry missing";
   const svg = (name, attributes = {}) => {
     const node = document.createElementNS("http://www.w3.org/2000/svg", name);
@@ -4538,13 +4668,34 @@ function renderCriticalNucleusGeometry() {
     ["prototype atoms", validated ? `${criticalNucleusGeometryValidationAudit.atomCount} · ${Object.entries(criticalNucleusGeometryValidationAudit.speciesCounts).map(([species, count]) => `${species}${count}`).join(" ")}` : "—"],
     ["criticality", criticality ? `pB ${criticality.meanCommittor.toFixed(3)} ± ${criticality.committorStandardError.toFixed(3)}` : "withheld"],
     ["posed events", posed ? `${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} / ${scheduledCriticalNucleusPreviewAudit.scheduledEventCount}` : "—"],
-    ["growth seed", "unchanged"],
+    ["growth seed", stagedCriticalNucleusSeed ? "staged" : "unchanged"],
   ];
   criticalNucleusGeometryMetrics.replaceChildren(...metrics.map(([name, value]) => {
     const span = document.createElement("span"); const small = document.createElement("small");
     const strong = document.createElement("strong"); small.textContent = name; strong.textContent = value;
     span.append(small, strong); return span;
   }));
+  const admission = criticalNucleusGrammarAdmissionAudit;
+  const admissionMetrics = [
+    ["recognized cover", admission ? `${(100 * admission.recognizedAtomFraction).toFixed(1)}%` : "—"],
+    ["placements / types", admission ? `${admission.selectedOccurrenceCount} / ${admission.selectedTypeCount}` : "—"],
+    ["outward ports", admission ? `${admission.frontierPlacementCount} · ${admission.totalOutgoingRules} rules` : "—"],
+    ["residual terminals", admission ? String(admission.residualAtomCount) : "—"],
+  ];
+  criticalNucleusGrammarMetrics?.replaceChildren(...admissionMetrics.map(([name, value]) => {
+    const span = document.createElement("span"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); small.textContent = name; strong.textContent = value;
+    span.append(small, strong); return span;
+  }));
+  if (criticalNucleusGrammarState) {
+    criticalNucleusGrammarState.textContent = stagedCriticalNucleusSeed
+      ? "Staged: the posed external nucleus will initialize only the local growth sandbox; recognized placements open the existing frozen GCTS frontier and residual atoms remain explicit."
+      : admission?.liveSeedAdmissible
+        ? `Admitted: proper-SE(3) cluster cover connected, live boundary/collision checks passed, and ${admission.frontierPlacementCount} placements expose frozen continuation ports.`
+        : admission
+          ? `Not admitted: coverage ${admission.recognizedAtomFraction >= admission.minimumRecognizedFraction ? "passes" : "fails"}; connected cover ${admission.connectedRecognizedCover ? "passes" : "fails"}; port supply ${admission.frontierPlacementCount > 0 ? "passes" : "fails"}; sandbox ${admission.sandboxBoundaryPassed && admission.sandboxCollisionPassed ? "passes" : "fails"}.`
+          : "Audit the posed atoms against the frozen learned cluster/port grammar; unmatched atoms remain explicit residual terminals.";
+  }
   if (posed) {
     criticalNucleusGeometryState.textContent = `${scheduledCriticalNucleusPreviewAudit.totalEmbeddedSites} displayed atom instances use one externally supplied ${criticalNucleusGeometryValidationAudit.atomCount}-atom representative and deterministic ${scheduledCriticalNucleusPreviewAudit.orientationDistribution} poses (seed ${scheduledCriticalNucleusPreviewAudit.orientationSeed}). ${scheduledCriticalNucleusPreviewAudit.fullyInsideEventCount}/${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} posed nuclei fit wholly inside the declared observation box.`;
     criticalNucleusGeometryBoundary.textContent = scheduledCriticalNucleusPreviewAudit.claimBoundary;
@@ -4569,7 +4720,7 @@ async function downloadCriticalNucleusGeometryEvidenceRequest() {
   const scheduleSha256 = await receiptSha256(JSON.stringify(conditionalNucleationScheduleAudit));
   const material = currentMaterial();
   const request = buildCriticalNucleusGeometryRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name,
     schedule: conditionalNucleationScheduleAudit, scheduleSha256,
     criticalScaleMetre: classicalNucleationWorkAudit.criticalScaleMetre,
@@ -4611,6 +4762,8 @@ async function validateCriticalNucleusGeometryFile(file) {
     criticalNucleusGeometryRequestRuntime);
   criticalNucleusGeometryValidationAudit.responseSha256 = await receiptSha256(responseText);
   scheduledCriticalNucleusPreviewAudit = null;
+  criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null;
   receiptStatus.textContent = `Critical-nucleus geometry validated · ${criticalNucleusGeometryValidationAudit.atomCount} atoms · pB ${criticalNucleusGeometryValidationAudit.criticality.meanCommittor.toFixed(3)} ± ${criticalNucleusGeometryValidationAudit.criticality.committorStandardError.toFixed(3)} · growth seed unchanged.`;
   renderCriticalNucleusGeometry();
 }
@@ -4626,6 +4779,8 @@ function freezeScheduledCriticalNucleusPreview() {
       orientationSeed: criticalNucleusOrientationSeed,
       maximumEmbeddedEvents: criticalNucleusPreviewCap,
     });
+  criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null;
   receiptStatus.textContent = `Critical-nucleus preview posed · ${scheduledCriticalNucleusPreviewAudit.embeddedEventCount} events · ${scheduledCriticalNucleusPreviewAudit.totalEmbeddedSites} displayed atom instances · no GCTS seed or clock changed.`;
   renderCriticalNucleusGeometry();
 }
@@ -4651,7 +4806,7 @@ async function downloadClassicalNucleationKineticsEvidenceRequest() {
   const workSha256 = await receiptSha256(JSON.stringify(classicalNucleationWorkAudit));
   const material = currentMaterial();
   const request = buildClassicalNucleationKineticsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name,
     nucleationWork: classicalNucleationWorkAudit, workSha256,
     sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
@@ -4816,6 +4971,17 @@ function classicalNucleationReceipt() {
               normalizedPosition: [...site.normalizedPosition] })),
           })),
         } : null,
+        grammarAdmission: criticalNucleusGrammarAdmissionAudit ? {
+          ...criticalNucleusGrammarAdmissionAudit,
+          selectedOccurrences: criticalNucleusGrammarAdmissionAudit.selectedOccurrences
+            .map(occurrence => ({ ...occurrence,
+              supportSiteIndices: [...occurrence.supportSiteIndices],
+              rotationMatrix: occurrence.rotationMatrix.map(row => [...row]),
+              translationAngstrom: [...occurrence.translationAngstrom] })),
+          residualSites: criticalNucleusGrammarAdmissionAudit.residualSites
+            .map(site => ({ ...site, positionAngstrom: [...site.positionAngstrom] })),
+        } : null,
+        stagedAsLocalGrowthSeed: Boolean(stagedCriticalNucleusSeed),
         geometryInferredFromCntScale: false,
         representativeNotCriticalEnsemble: true,
         committedToGrowth: false,
@@ -4841,7 +5007,7 @@ async function downloadBulkDrivingForceEvidenceRequest() {
   if (!(temperatureKelvin > 0)) throw new Error("validated interfacial evidence must declare a positive temperature");
   const material = currentMaterial();
   const request = buildBulkDrivingForceRequest({ generatedAt: new Date().toISOString(),
-    buildId: "20260901-414", scenarioId: scenarioSelect.value, materialName: material.name,
+    buildId: "20260901-415", scenarioId: scenarioSelect.value, materialName: material.name,
     structureSha256: interfacialEnergyValidationAudit.structureSha256,
     interfacialEnergyResponseSha256: interfacialEnergyValidationAudit.responseSha256,
     intrinsicDimension: interfacialEnergyValidationAudit.intrinsicDimension,
@@ -4888,7 +5054,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -5140,7 +5306,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -5659,7 +5825,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-414",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14964,7 +15130,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-414" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-415" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14972,7 +15138,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260901-414",
+      buildId: "20260901-415",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17600,7 +17766,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260901-414" },
+    application: { name: "Materials Growth Lab", buildId: "20260901-415" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25973,7 +26139,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    generatedAt: new Date().toISOString(), buildId: "20260901-415",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -29244,7 +29410,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    generatedAt: new Date().toISOString(), buildId: "20260901-415",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -30156,6 +30322,8 @@ function renderNucleusInterfaceEvolution(pairKey) {
 function growthSeedProtocolLabel(mode = growthSeedProtocol) {
   return mode === "sealed-iqc-confirmation"
     ? "sealed disjoint IQC nucleus · confirmed exterior terminal"
+    : mode === "external-critical-nucleus"
+      ? "externally validated critical nucleus · frozen-grammar local seed"
     : mode === "reconstruct"
     ? "local occurrence · known-window reconstruction"
     : mode === "local-frontier"
@@ -30697,7 +30865,7 @@ function renderIceOrientationEvidenceBridge() {
 async function freezeAndDownloadIceOrientationEvidenceRequest() {
   const audit = currentIceOrientationAudit();
   iceOrientationEvidenceRequestRecord = await buildIceOrientationEvidenceRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414", caseId: iceAnchorTrace.caseId,
+    generatedAt: new Date().toISOString(), buildId: "20260901-415", caseId: iceAnchorTrace.caseId,
     artifactDigest: iceAnchorTrace.artifactDigest,
     temperatureKelvin: Number(iceOrientationTemperature.value), pressureGPa: 0,
     boundaryCondition: "finite public oxygen scaffold; exterior hydrogen bonds omitted",
@@ -31131,6 +31299,80 @@ function initializeObservedWindowSeed() {
   };
 }
 
+function initializeExternalCriticalNucleusSeed() {
+  const staged = stagedCriticalNucleusSeed;
+  if (!staged?.audit?.liveSeedAdmissible || !staged.event) {
+    throw new Error("the external critical-nucleus seed is not currently admitted");
+  }
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const eventRotation = staged.event.pose?.quaternionXyzw
+    ? new THREE.Quaternion(...staged.event.pose.quaternionXyzw).normalize()
+    : quaternionFromProperMatrix(staged.event.pose.matrix);
+  const atomsByGeometryIndex = staged.event.sites.map((site, siteIndex) => {
+    const position = new THREE.Vector3(...site.localRotatedPositionAngstrom)
+      .multiplyScalar(scenePerAngstrom);
+    const atom = addAtom(position, site.species, "external critical nucleus", null, true);
+    atom.externalCriticalNucleus = true;
+    atom.externalNucleusSiteId = site.siteId;
+    atom.clusterIds = [];
+    atom.nucleusIds = [1];
+    atom.criticalNucleusRegion = site.region;
+    atom.criticalNucleusMembershipProbability = site.membershipProbability;
+    indexAtom(atom);
+    return atom;
+  });
+  staged.audit.selectedOccurrences.forEach((occurrence) => {
+    const fittedRotation = quaternionFromProperMatrix(occurrence.rotationMatrix);
+    const placementRotation = eventRotation.clone().multiply(fittedRotation).normalize();
+    const placementPosition = new THREE.Vector3(...occurrence.translationAngstrom)
+      .applyQuaternion(eventRotation).multiplyScalar(scenePerAngstrom);
+    const placement = {
+      id: placedClusters.length + 1, nucleusId: 1, seedNucleus: placedClusters.length === 0,
+      externalCriticalNucleus: true, type: occurrence.typeId,
+      position: placementPosition, rotation: placementRotation,
+      occurrenceIndex: occurrence.occurrenceIndex >= 0 ? occurrence.occurrenceIndex : null,
+      parentId: null, ruleId: null, depth: 0,
+      atomIds: occurrence.supportSiteIndices.map(index => atomsByGeometryIndex[index]?.id)
+        .filter(Number.isInteger), freshAtomIds: [],
+    };
+    placement.atomIds.forEach((atomId) => {
+      const atom = atomsByGeometryIndex.find(candidate => candidate.id === atomId);
+      if (atom && !atom.clusterIds.includes(placement.id)) atom.clusterIds.push(placement.id);
+    });
+    placedClusters.push(placement);
+  });
+  if (!placedClusters.length) throw new Error("admitted nucleus contains no executable placements");
+  placedClusters.forEach(enqueueRulesFromPlacement);
+  initializedGrowthNuclei = 1;
+  selectedNucleusPairKey = null;
+  replayIndex = 0;
+  reconstructionCertified = false;
+  growthStartAtomCount = atoms.length;
+  stackHistory = [{ type: "accept", depth: 0,
+    action: `${atoms.length} externally supplied critical-nucleus atoms`,
+    family: "frozen-grammar admitted seed" }];
+  growthSeedAudit = {
+    schema: 1, mode: "external-critical-nucleus", label: growthSeedProtocolLabel(),
+    explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
+    explicitResidualSites: atoms.filter(atom => !atom.clusterIds.length).length,
+    recognizedAtomFraction: staged.audit.recognizedAtomFraction,
+    connectedRecognizedCover: staged.audit.connectedRecognizedCover,
+    frontierPlacementCount: staged.audit.frontierPlacementCount,
+    frontierCandidates: frontierCandidates.length,
+    localSandboxRecentering: true,
+    physicalEventId: staged.event.eventId,
+    physicalEventPositionMetre: [...staged.event.eventPositionMetre],
+    geometryResponseSha256: staged.geometryResponseSha256,
+    scheduleSha256: staged.scheduleSha256,
+    reconstructionCertifiedAtInitialization: false,
+    knownWindowReplayRequested: false,
+    targetFreeContinuationAuthorized: true,
+    targetUsed: false, futureSitesUsed: false, candidateSetInspectedDuringAdmission: false,
+    seedConfigurationDigest: growthSeedConfigurationDigest("external-critical-nucleus"),
+    claimBoundary: "One externally supplied committor-compatible nucleus was recentered into the local sandbox, covered by frozen proper-SE(3) cluster occurrences with explicit residual atoms, and used only to open pre-existing learned ports. This is not the full physical observation volume, a sampled critical ensemble, or a physical clock.",
+  };
+}
+
 function initializeOffLatticeSearch() {
   atoms = [];
   placedClusters = [];
@@ -31299,6 +31541,10 @@ function initializeOffLatticeSearch() {
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
   atomSpatialIndex = new Map();
+  if (growthSeedProtocol === "external-critical-nucleus") {
+    initializeExternalCriticalNucleusSeed();
+    return;
+  }
   if (growthSeedProtocol === "observed-window") {
     initializeObservedWindowSeed();
     growthSeedAudit = {
@@ -33685,6 +33931,9 @@ function syncStageOptions() {
     growthSeedProtocolSelect.value = growthSeedProtocol;
     const sealedIqcOption = growthSeedProtocolSelect.querySelector('option[value="sealed-iqc-confirmation"]');
     if (sealedIqcOption) sealedIqcOption.disabled = scenarioSelect.value !== "iqc";
+    const externalNucleusOption = growthSeedProtocolSelect
+      .querySelector('option[value="external-critical-nucleus"]');
+    if (externalNucleusOption) externalNucleusOption.disabled = !stagedCriticalNucleusSeed;
     growthNucleiSelect.value = String(requestedGrowthNuclei);
     nucleationSiteSelect.value = nucleationSiteMode;
     nucleationRankSelect.value = String(nucleationCandidateRank);
@@ -33770,8 +34019,10 @@ function syncStageOptions() {
       : finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window"
         ? `${referenceCount()}-site observed nucleus · target-free frontier${growthSeedProtocol === seedProtocolRecommendation ? " · recommended" : ""}`
-        : growthSeedProtocol === "local-frontier"
+      : growthSeedProtocol === "local-frontier"
           ? `${atoms.length}-site fitted nucleus · target-free frontier${growthSeedProtocol === seedProtocolRecommendation ? " · recommended" : ""}`
+          : growthSeedProtocol === "external-critical-nucleus"
+            ? `${atoms.length}-site external critical nucleus · frozen-grammar frontier`
           : `${atoms.length}-site local occurrence · replay guided until certified`;
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
@@ -39371,7 +39622,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260901-414",
+    generatedAt: new Date().toISOString(), buildId: "20260901-415",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -40198,12 +40449,14 @@ resetCriticalNucleusGeometry?.addEventListener("click", () => {
 criticalNucleusOrientationSeedSelect?.addEventListener("change", () => {
   const value = Number(criticalNucleusOrientationSeedSelect.value);
   criticalNucleusOrientationSeed = [17, 414, 2026, 65537].includes(value) ? value : 414;
-  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
+  scheduledCriticalNucleusPreviewAudit = null; criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null; renderCriticalNucleusGeometry();
 });
 criticalNucleusPreviewCapSelect?.addEventListener("change", () => {
   const value = Number(criticalNucleusPreviewCapSelect.value);
   criticalNucleusPreviewCap = [1, 4, 8, 32].includes(value) ? value : 8;
-  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
+  scheduledCriticalNucleusPreviewAudit = null; criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null; renderCriticalNucleusGeometry();
 });
 freezeCriticalNucleusPreview?.addEventListener("click", () => {
   try { freezeScheduledCriticalNucleusPreview(); }
@@ -40212,7 +40465,29 @@ freezeCriticalNucleusPreview?.addEventListener("click", () => {
   }
 });
 releaseCriticalNucleusPreview?.addEventListener("click", () => {
-  scheduledCriticalNucleusPreviewAudit = null; renderCriticalNucleusGeometry();
+  scheduledCriticalNucleusPreviewAudit = null; criticalNucleusGrammarAdmissionAudit = null;
+  stagedCriticalNucleusSeed = null; renderCriticalNucleusGeometry();
+});
+criticalNucleusGrammarThresholdSelect?.addEventListener("change", () => {
+  const value = Number(criticalNucleusGrammarThresholdSelect.value);
+  criticalNucleusMinimumRecognizedFraction = [.5, .8, .95, 1].includes(value) ? value : .8;
+  criticalNucleusGrammarAdmissionAudit = null; stagedCriticalNucleusSeed = null;
+  renderCriticalNucleusGeometry();
+});
+auditCriticalNucleusGrammar?.addEventListener("click", () => {
+  try { auditCriticalNucleusAgainstFrozenGrammar(); }
+  catch (error) {
+    criticalNucleusGrammarAdmissionAudit = null; stagedCriticalNucleusSeed = null;
+    receiptStatus.textContent = `Critical-nucleus grammar audit failed closed · ${error instanceof Error ? error.message : "invalid grammar admission"}`;
+    renderCriticalNucleusGeometry();
+  }
+});
+useCriticalNucleusSeed?.addEventListener("click", () => {
+  try { stageCriticalNucleusAsGrowthSeed(); }
+  catch (error) {
+    receiptStatus.textContent = `Critical-nucleus seed staging rejected · ${error instanceof Error ? error.message : "invalid seed"}`;
+    renderCriticalNucleusGeometry();
+  }
 });
 classicalCapillarityModeSelect?.addEventListener("change", () => {
   classicalCapillarityMode = classicalCapillarityModeSelect.value === "rank" ? "rank" : "display";
@@ -44550,7 +44825,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-414" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260901-415" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {
@@ -46229,6 +46504,8 @@ growthSeedProtocolSelect.addEventListener("change", () => {
   const requested = growthSeedProtocolSelect.value;
   growthSeedProtocol = ["local-frontier", "reconstruct"].includes(requested)
     ? requested
+    : requested === "external-critical-nucleus" && stagedCriticalNucleusSeed
+      ? requested
     : requested === "sealed-iqc-confirmation" && scenarioSelect.value === "iqc"
       ? requested : "observed-window";
   growthProtocolMode = "custom";

@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-414">
+  <link rel="stylesheet" href="./style.css?v=20260901-415">
   <script type="importmap">
     {
       "imports": {
@@ -1209,6 +1209,7 @@
               <select id="growthSeedProtocolSelect">
                 <option value="observed-window" selected>Observed sample as nucleus · outward continuation</option>
                 <option value="local-frontier">Local occurrence nucleus · target-free continuation</option>
+                <option value="external-critical-nucleus" disabled>Validated critical nucleus · local GCTS sandbox</option>
                 <option value="sealed-iqc-confirmation">IQC evidence library · sealed disjoint confirmation</option>
                 <option value="reconstruct">Local occurrence seed · known-window reconstruction audit</option>
               </select>
@@ -2385,6 +2386,16 @@
                 </div>
                 <svg id="criticalNucleusGeometryPlot" viewBox="0 0 320 136" role="img" aria-label="Magnified local projection of an externally validated critical-nucleus prototype"></svg>
                 <div id="criticalNucleusGeometryMetrics" class="critical-nucleus-geometry-metrics"><span><small>prototype atoms</small><strong>—</strong></span><span><small>criticality</small><strong>withheld</strong></span><span><small>posed events</small><strong>—</strong></span><span><small>growth seed</small><strong>unchanged</strong></span></div>
+                <section class="critical-nucleus-grammar-admission" aria-label="Frozen GCTS grammar admission for the critical nucleus">
+                  <header><span>Frozen GCTS seed admission</span><b>proper SE(3) · target blind</b></header>
+                  <div class="critical-nucleus-geometry-controls">
+                    <label for="criticalNucleusGrammarThresholdSelect"><span>Minimum recognized atoms</span><select id="criticalNucleusGrammarThresholdSelect" disabled><option value="0.5">50%</option><option value="0.8" selected>80%</option><option value="0.95">95%</option><option value="1">100%</option></select></label>
+                    <button id="auditCriticalNucleusGrammar" type="button" disabled>Audit cluster / port cover</button>
+                    <button id="useCriticalNucleusSeed" type="button" disabled>Use as local GCTS seed</button>
+                  </div>
+                  <div id="criticalNucleusGrammarMetrics" class="critical-nucleus-geometry-metrics"><span><small>recognized cover</small><strong>—</strong></span><span><small>placements / types</small><strong>—</strong></span><span><small>outward ports</small><strong>—</strong></span><span><small>residual terminals</small><strong>—</strong></span></div>
+                  <p id="criticalNucleusGrammarState">Audit the posed atoms against the frozen learned cluster/port grammar; unmatched atoms remain explicit residual terminals.</p>
+                </section>
                 <p id="criticalNucleusGeometryState">Freeze an event schedule, then request an independently committor-validated atomistic critical configuration.</p>
                 <p id="criticalNucleusGeometryBoundary">A CNT critical scale does not determine atom count, species-labelled coordinates, interface membership, or crystal pose.</p>
               </section>
@@ -2749,7 +2760,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-414"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-414"></script>
+  <script type="module" src="./app.js?v=20260901-415"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-415"></script>
 </body>
 </html>
