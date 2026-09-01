@@ -29,15 +29,15 @@ function contactObjective(positions, graph) {
   }, 0) / Math.max(1, graph.length);
 }
 
-function totalObjective(positions, originals, movable, graph, cap, tetherWeight) {
+function totalObjective(positions, originals, movable, graph, caps, tetherWeight) {
   const contact = contactObjective(positions, graph);
   const tether = positions.reduce((sum, point, index) => movable[index]
-    ? sum + (length(subtract(point, originals[index])) / Math.max(cap, 1e-9)) ** 2 : sum, 0)
+    ? sum + (length(subtract(point, originals[index])) / Math.max(caps[index], 1e-9)) ** 2 : sum, 0)
     / Math.max(1, movable.filter(Boolean).length);
   return contact + tetherWeight * tether;
 }
 
-function gradientFor(positions, originals, movable, graph, cap, tetherWeight) {
+function gradientFor(positions, originals, movable, graph, caps, tetherWeight) {
   const gradient = positions.map(() => [0, 0, 0]);
   graph.forEach((edge) => {
     const delta = subtract(positions[edge.second], positions[edge.first]);
@@ -54,19 +54,22 @@ function gradientFor(positions, originals, movable, graph, cap, tetherWeight) {
     if (!movable[index]) return;
     const offset = subtract(point, originals[index]);
     offset.forEach((value, axis) => {
-      gradient[index][axis] += 2 * tetherWeight * value / (Math.max(cap, 1e-9) ** 2 * movableCount);
+      gradient[index][axis] += 2 * tetherWeight * value
+        / (Math.max(caps[index], 1e-9) ** 2 * movableCount);
     });
   });
   return gradient;
 }
 
-function cappedPositions(positions, originals, movable, gradient, step, cap) {
+function cappedPositions(positions, originals, movable, gradient, step, caps) {
   return positions.map((point, index) => {
     if (!movable[index]) return [...point];
     let trial = addScaled(point, gradient[index], -step);
     const offset = subtract(trial, originals[index]);
     const displacement = length(offset);
-    if (displacement > cap) trial = addScaled(originals[index], offset, cap / displacement);
+    if (displacement > caps[index]) {
+      trial = addScaled(originals[index], offset, caps[index] / displacement);
+    }
     return trial;
   });
 }
@@ -91,6 +94,15 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
   }
   const movable = sites.map((site) => site.movable);
   if (!movable.some(Boolean)) return Object.freeze({ accepted: false, reason: "no movable sites", positions: sites.map((site) => site.position) });
+  const caps = rawSites.map((site, index) => {
+    if (!movable[index]) return 0;
+    const siteCap = site.displacementCap == null ? Number(displacementCap)
+      : Number(site.displacementCap);
+    if (!(Number.isFinite(siteCap) && siteCap > 0 && siteCap <= displacementCap)) {
+      throw new Error("movable-site displacement cap must be positive and no larger than the global cap");
+    }
+    return siteCap;
+  });
   const graph = contactGraph(sites, distanceModel);
   const originals = sites.map((site) => [...site.position]);
   const suppliedOffsets = Array.isArray(initialOffsets) && initialOffsets.length === sites.length
@@ -99,13 +111,13 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
       const vector = offset.map(Number);
       if (vector.length !== 3 || vector.some((value) => !Number.isFinite(value))) return [0, 0, 0];
       const magnitude = length(vector);
-      return magnitude > displacementCap ? vector.map((value) => value * displacementCap / magnitude) : vector;
+      return magnitude > caps[index] ? vector.map((value) => value * caps[index] / magnitude) : vector;
     }) : sites.map(() => [0, 0, 0]);
   let positions = originals.map((point, index) => addScaled(point, suppliedOffsets[index], 1));
   const initialContactObjective = contactObjective(positions, graph);
   const unseededContactObjective = contactObjective(originals, graph);
-  const unseededObjective = totalObjective(originals, originals, movable, graph, displacementCap, tetherWeight);
-  const seededObjective = totalObjective(positions, originals, movable, graph, displacementCap, tetherWeight);
+  const unseededObjective = totalObjective(originals, originals, movable, graph, caps, tetherWeight);
+  const seededObjective = totalObjective(positions, originals, movable, graph, caps, tetherWeight);
   const seedImprovedObjective = seededObjective < unseededObjective - 1e-12;
   if (!seedImprovedObjective) positions = originals.map((point) => [...point]);
   const seedSites = suppliedOffsets.filter((offset) => length(offset) > 1e-12).length;
@@ -120,14 +132,14 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
   let objective = seedImprovedObjective ? seededObjective : unseededObjective;
   let acceptedSteps = 0;
   for (let iteration = 0; iteration < maximumIterations; iteration++) {
-    const gradient = gradientFor(positions, originals, movable, graph, displacementCap, tetherWeight);
+    const gradient = gradientFor(positions, originals, movable, graph, caps, tetherWeight);
     const maximumGradient = Math.max(...gradient.filter((_, index) => movable[index]).map(length), 0);
     if (!(maximumGradient > 1e-12)) break;
     let step = displacementCap * .32 / maximumGradient;
     let improved = false;
     for (let attempt = 0; attempt < 10; attempt++) {
-      const trial = cappedPositions(positions, originals, movable, gradient, step, displacementCap);
-      const trialObjective = totalObjective(trial, originals, movable, graph, displacementCap, tetherWeight);
+      const trial = cappedPositions(positions, originals, movable, gradient, step, caps);
+      const trialObjective = totalObjective(trial, originals, movable, graph, caps, tetherWeight);
       if (trialObjective < objective - 1e-12) {
         positions = trial; objective = trialObjective; acceptedSteps++; improved = true; break;
       }
@@ -154,6 +166,7 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
     observedSeedSites: seedSites,
     observedSeedContactObjective: initialContactObjective,
     maximumDisplacement: Math.max(...movableDisplacements, 0),
+    maximumSiteCap: Math.max(...caps, 0),
     rmsDisplacement: Math.sqrt(movableDisplacements.reduce((sum, value) => sum + value * value, 0)
       / Math.max(1, movableDisplacements.length)),
   });

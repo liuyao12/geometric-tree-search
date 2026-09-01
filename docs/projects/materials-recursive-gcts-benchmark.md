@@ -1,5 +1,25 @@
 # Recursive GCTS benchmark for material growth
 
+## Anchored interface-shell accommodation (Build 434)
+
+A new post-attachment arm relaxes the fresh batch and its first pre-existing
+colored-contact shell together. Fresh atoms retain the 5% `dₙₙ` cap; substrate
+atoms receive a separate 1.5% cap and must each have a connected fixed
+second-shell anchor. The local projector now supports site-specific caps in
+its tether, seeded-offset clipping, line search, and final displacement check.
+This prevents substrate atoms from silently borrowing the larger emitted-site
+budget.
+
+Acceptance remains atomic and fail-closed: learned contact/angle strain must
+fall, all hard geometric certificates must re-pass, and every moved substrate
+site must remain inside 20% of the merge tolerance around its pre-existing
+discrete identity. Because the frozen macro poses and cluster memberships are
+not re-fitted, the audit does not call the perturbed coordinates exact cluster
+geometry even though discrete topology is unchanged. It separately records discrete site identity, fixed-anchor count,
+substrate RMS/maximum displacement, and that membership recomputation was not
+performed. This is a bounded interface response, not elasticity, surface
+reconstruction, total force balance, energy minimization, or dynamics.
+
 ## Emitted-site force-residual descent (Build 433)
 
 The bounded force-seeded accommodation now commits only under a three-part

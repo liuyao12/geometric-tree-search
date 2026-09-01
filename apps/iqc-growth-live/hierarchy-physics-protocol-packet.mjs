@@ -1,5 +1,5 @@
 import { buildHierarchyPhysicsInvestigation, hierarchyPhysicsInvestigationPrograms }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-433";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-434";
 
 const RECEIPTS = Object.freeze(["iqc-reencoding", "iqc-compression", "cdyb-transfer", "nacl-stationary"]);
 const STAGES = Object.freeze(["atomic", "cluster", "macro", "stationary"]);

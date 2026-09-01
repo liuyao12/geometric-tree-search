@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 434 · the first substrate shell can accommodate an attachment
+
+Post-attachment projection is no longer restricted to a perfectly rigid
+substrate. A new **Interface shell** arm identifies pre-existing atoms joined
+to the fresh batch by the learned colored contact graph, moves the emitted
+sites by at most 5% of `dₙₙ`, and lets that first connected substrate shell move
+by at most 1.5%. Every movable substrate atom must remain connected to at least
+one fixed second-shell anchor. Per-site caps are enforced inside every line
+search step, not clipped only after optimization.
+
+The entire coupled proposal still rolls back unless learned contact/angle
+strain decreases and exclusion, coordination, angular, public-boundary, and
+proper-port checks pass. A substrate atom must also remain inside 20% of the
+exact merge tolerance around its existing site identity. Symbolic placements
+and cluster membership are not refitted, so the receipt explicitly reports
+`exactClusterGeometryRetained = false`, discrete topology/site identity retained, and
+`clusterMembershipRecomputed = false`. This is a small, anchored geometric
+interface accommodation—not an elastic continuum calculation, phonon model,
+total-force relaxation, reconstruction, or molecular dynamics.
+
 ## Build 433 · a settling leap must reduce residual force
 
 The force-informed projection now has a third monotonicity gate. In addition

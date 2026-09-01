@@ -13,7 +13,7 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 
 for (const document of [html, compatibility]) {
   assert.match(document, /value="model-force">Finite interaction −∇U · energy \+ force audit/);
-  assert.match(document, /lower RMS and p90 force residuals/);
+  assert.match(document, /RMS\/p90 emitted-site force residuals/);
 }
 
 for (const token of [
@@ -42,6 +42,8 @@ for (const token of [
   "hardExclusionPassed, coordinationCapacityPassed",
   "angularEnvelopePassed, publicBoundaryPassed",
   "exactClusterTopologyRetained: true",
+  "exactClusterGeometryRetained: !spec.interfaceShell",
+  "discreteClusterSiteIdentityRetained",
   "properPortTopologyRetained: true",
   "forceIntegrated: false",
   "elapsedPhysicalTimeModeled: false",

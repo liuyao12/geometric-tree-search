@@ -52,6 +52,21 @@ assert.equal(misleadingSeed.observedSeedAccepted, false,
 assert.equal(misleadingSeed.initialSeedAccepted, false);
 assert(misleadingSeed.positions[2][1] < .35);
 
+const shellCoupled = relaxLocalContactGeometry([
+  { ...sites[0], movable: true, displacementCap: .05 },
+  sites[1],
+  { ...sites[2], displacementCap: .5 },
+], model, { displacementCap: .5, maximumIterations: 16 });
+assert.equal(shellCoupled.accepted, true);
+const shellShift = Math.hypot(...shellCoupled.positions[0].map((value, axis) =>
+  value - sites[0].position[axis]));
+assert(shellShift > 0);
+assert(shellShift <= .05 + 1e-12);
+assert.equal(shellCoupled.maximumSiteCap, .5);
+assert.throws(() => relaxLocalContactGeometry([
+  { ...sites[0], movable: true, displacementCap: .6 }, sites[1], sites[2],
+], model, { displacementCap: .5 }), /movable-site displacement cap/);
+
 const noMovable = relaxLocalContactGeometry(sites.map((site) => ({ ...site, movable: false })), model, {
   displacementCap: .5,
 });
