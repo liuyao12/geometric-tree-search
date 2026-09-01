@@ -13,9 +13,9 @@ for (const document of [html, alias]) {
   assert.match(document, /hierarchyPhysicsProtocolPacket/);
   assert.match(document, /Scale-bridge protocol packet/);
   assert.match(document, /Copy plan link/);
-  assert.match(document, /evidence-atlas\.js\?v=20260901-415/);
+  assert.match(document, /evidence-atlas\.js\?v=20260901-416/);
 }
-assert.match(atlas, /hierarchy-physics-protocol-packet\.mjs\?v=20260901-415/);
+assert.match(atlas, /hierarchy-physics-protocol-packet\.mjs\?v=20260901-416/);
 assert.match(atlas, /sharedHierarchyPhysicsSelection/);
 assert.match(atlas, /protocolPacketDownload/);
 assert.match(model, /gcts-hierarchy-physics-protocol-packet-v1/);

@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 416 · the critical-nucleus grammar decision becomes visible
+
+The critical-nucleus viewer now switches among three evidence layers without
+changing the admitted geometry: the element-colored atomistic representative,
+the learned cluster cover, and the admitted local port graph. Cluster mode
+draws translucent projected support envelopes with distinct type colors while
+retaining standard element colors on atoms; unmatched atoms receive explicit
+red residual rings. Port mode draws only train-admitted connections between
+recognized occurrence centroids and marks port-bearing frontier occurrences
+with gold halos.
+
+All overlay geometry is derived from the frozen admission object. The helper
+checks that recognized and residual atoms form an exact partition, that every
+edge names a selected occurrence, and that a posed event preserves all supplied
+sites. It records `targetUsed=false` and `candidateSetChanged=false`; switching
+views cannot alter cover selection, seed admission, or the growth frontier.
+
 ## Build 415 · validated critical nuclei can enter GCTS through an explicit grammar gate
 
 The atomistic critical-nucleus handoff now continues into a target-blind seed

@@ -42,7 +42,7 @@ def test_portal_exposes_honest_disjoint_pose_marking_result() -> None:
     assert forbidden.isdisjoint(artifact)
     assert forbidden.isdisjoint(protocol)
 
-    assert 'ice-orientation-marking-artifact.json?v=20260901-415' in app
+    assert 'ice-orientation-marking-artifact.json?v=20260901-416' in app
     assert 'iceOrientationMarkingTransferPassed' in app
     assert 'orientationMarkingTransfer: ICE_ORIENTATION_MARKING_AUDIT' in app
     assert 'held-out pose marking' in app

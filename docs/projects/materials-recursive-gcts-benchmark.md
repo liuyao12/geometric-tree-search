@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+## Interactive critical-nucleus cover and port evidence (Build 416)
+
+The admission result is now inspectable rather than confined to metrics and a
+receipt. A pure visualization transform maps the supplied or scheduled-pose
+coordinates, selected occurrence supports, residual terminals, and admitted
+connection edges into a compact projection. Three user-selectable layers show
+the original element-colored atoms, translucent type-colored cluster support
+envelopes, or the admitted port graph with outward frontier halos. Atom colors
+remain chemical colors even under the cluster overlay.
+
+The transform validates complete site alignment, support indices, edge
+endpoints, and the recognized/residual partition. Convex envelopes are used
+only as projected support guides; two-site supports receive bounded circular
+envelopes rather than being presented as physical bonds or polyhedra. The
+overlay is target-blind and read-only, so it cannot change the learned grammar,
+candidate set, admission decision, or growth state.
+
 ## Frozen-grammar admission of atomistic critical nuclei (Build 415)
 
 An externally validated critical configuration is no longer limited to a

@@ -1,5 +1,5 @@
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260901-415";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260901-416";
 
 const FIELDS = Object.freeze([
   "atomCount", "meanCoordination", "steinhardtQ4", "steinhardtQ6",
