@@ -55,7 +55,7 @@ def test_response_contract_is_request_linked_and_quantity_specific():
 
 def test_build_339_is_documented_and_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260831-408' in document
+        assert 'app.js?v=20260831-409' in document
         assert 'style.css?v=20260831-408' in document
         assert 'evidence-atlas.js?v=20260831-408' in document
         assert 'returned JSON can be validated against the exact request' in document

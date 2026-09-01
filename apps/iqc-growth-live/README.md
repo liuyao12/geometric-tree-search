@@ -1,5 +1,14 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 409 · stable evidence-laboratory interactions
+
+The Ice orientation laboratory now renders each immutable audit once rather
+than replacing its controls on every animation frame. Flux sectors,
+information metrics, the Pauling comparison, and boundary-sensitivity cards
+retain stable DOM identities until the scientific audit itself changes. This
+makes pointer, keyboard, and assistive-technology selection deterministic;
+the selected card updates in place without changing any exact count or claim.
+
 ## Build 408 · exact state-space information accounting
 
 The periodic Ice-Ih laboratory now decomposes the complete geometric state

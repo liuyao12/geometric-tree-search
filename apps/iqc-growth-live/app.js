@@ -2296,6 +2296,7 @@ let selectedIceBoundarySensitivity = "finite";
 let selectedIcePeriodicBoundaryCell = "2×2×1";
 let selectedIcePeriodicFlux = "0,0,0";
 let selectedIcePeriodicEntropyMetric = "decomposition";
+let lastIceBoundarySensitivityRenderKey = "";
 let iqcDisjointTrace = null;
 let iqcDisjointWaveIndex = 0;
 let importedStructure = null;
@@ -29633,6 +29634,9 @@ function renderIceOrientationStateSpace(audit) {
 function renderIceBoundarySensitivity(audit) {
   const boundary = audit?.boundarySensitivity;
   if (!iceBoundarySensitivityBars || !iceBoundarySensitivityDetail || !boundary) return;
+  const renderKey = JSON.stringify(boundary);
+  if (renderKey === lastIceBoundarySensitivityRenderKey) return;
+  lastIceBoundarySensitivityRenderKey = renderKey;
   const finite = boundary.finiteLogStatesPerMolecule;
   const pauling = boundary.paulingReferenceLogStatesPerMolecule;
   const boundaryEntropy = boundary.boundaryLocalMarginalAmbiguity.meanEntropyNats;

@@ -1,5 +1,13 @@
 # Recursive GCTS benchmark for material growth
 
+## Stable periodic-evidence controls (Build 409)
+
+The periodic Ice audit object is immutable during a growth checkpoint. The UI
+now keys its render to the serialized boundary audit and preserves all metric
+buttons until that audit changes. This is a presentation-state correction,
+not a scientific-data change: Build 408 hashes, counts, information identities,
+receipt fields, and nonclaims remain unchanged.
+
 ## Uniform periodic state-space information (Build 408)
 
 The exact periodic enumerator now reports a certified information

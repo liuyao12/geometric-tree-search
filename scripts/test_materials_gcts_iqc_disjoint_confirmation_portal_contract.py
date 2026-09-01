@@ -28,7 +28,7 @@ def main() -> None:
         assert needle in APP, needle
     for document in (HTML, ALIAS):
         assert 'value="sealed-iqc-confirmation"' in document
-        assert 'app.js?v=20260831-408' in document
+        assert 'app.js?v=20260831-409' in document
     for needle in (
         "seedAtomCount: 473",
         "terminalCount: 128",

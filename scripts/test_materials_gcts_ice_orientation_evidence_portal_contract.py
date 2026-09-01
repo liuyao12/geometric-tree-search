@@ -60,6 +60,9 @@ def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> Non
     assert 'function renderIcePeriodicBoundaryComparison(openBoundaryAudit)' in app
     assert 'function renderIcePeriodicFluxSectors(audit)' in app
     assert 'function renderIcePeriodicEntropyAccounting(audit)' in app
+    assert 'let lastIceBoundarySensitivityRenderKey = ""' in app
+    assert 'if (renderKey === lastIceBoundarySensitivityRenderKey) return' in app
+    assert 'lastIceBoundarySensitivityRenderKey = renderKey' in app
     assert 'buildPeriodicIceIhBoundarySeries' in app
     assert 'https://doi.org/10.1021/ja01315a102' in app
     assert '"geometric assignments"' in app
@@ -71,6 +74,7 @@ def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> Non
     assert 'candidateGeometryFrozenBeforeRequest: true' in module
     assert 'Orientation-physics handoff' in atlas
     assert 'Build 403 · proton-orientation physics handoff' in readme
+    assert 'Build 409 · stable evidence-laboratory interactions' in readme
     assert 'Proton-orientation physics handoff (Build 403)' in methods
 
 
