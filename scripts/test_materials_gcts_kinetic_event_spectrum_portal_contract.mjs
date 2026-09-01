@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Frozen-event kinetic spectrum/);
   assert.match(document, /same hard-admitted catalog · no new events/);
 }
-assert.match(app, /kinetic-event-spectrum\.mjs\?v=20260831-402/);
+assert.match(app, /kinetic-event-spectrum\.mjs\?v=20260831-403/);
 assert.match(app, /function renderKineticEventSpectrum\(\)/);
 assert.match(app, /kineticEventSpectrum: kineticSpectrum \?/);
 assert.match(app, /candidateSetChanged: false, selectedEventChanged: false, targetUsed: false/);

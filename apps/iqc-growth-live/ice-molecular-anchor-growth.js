@@ -195,6 +195,25 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
     const occurrence = record.domain[supportedDomains[index][0]].occurrence;
     return renderSites(artifact, occurrence).filter(([species]) => species === "H");
   }) : [];
+  const orientationDomains = records.map((record, index) => ({
+    anchorKey: record.key,
+    anchorSite: ["O", [...record.point]],
+    alternatives: supportedDomains[index].map((value) => {
+      const pose = record.domain[value];
+      return { poseKey: pose.poseKey,
+        sites: renderSites(artifact, pose.occurrence).map(([species, point]) => [species, [...point]]) };
+    }),
+  }));
+  const orientationConstraints = edges.map((edge) => ({
+    firstAnchorKey: records[edge.first].key,
+    secondAnchorKey: records[edge.second].key,
+    separation: edge.separation,
+    allowedPosePairs: records[edge.first].domain.flatMap((firstPose, firstIndex) =>
+      records[edge.second].domain.flatMap((secondPose, secondIndex) =>
+        edge.allowed[firstIndex]?.[secondIndex] && supportedDomains[edge.first].includes(firstIndex)
+          && supportedDomains[edge.second].includes(secondIndex)
+          ? [[firstPose.poseKey, secondPose.poseKey]] : [])),
+  }));
   return {
     schema: "gcts-ice-orientation-constraint-audit-v1",
     anchors: records.length,
@@ -212,6 +231,8 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
     constrainedEdgesSatisfied,
     constrainedEdgesTotal: edges.length,
     uniqueHydrogenSites,
+    orientationDomains,
+    orientationConstraints,
     allHydrogensResolved: consistent && resolvedAnchors === records.length,
     targetUsed: false,
     physicalPotentialUsed: false,

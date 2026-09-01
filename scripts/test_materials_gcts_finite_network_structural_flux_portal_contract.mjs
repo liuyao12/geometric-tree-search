@@ -12,9 +12,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkStructuralFluxPlot/);
   assert.match(document, /Structural-order current/);
-  assert.match(document, /app\.js\?v=20260831-402/);
+  assert.match(document, /app\.js\?v=20260831-403/);
 }
-assert.match(app, /finite-network-structural-flux\.mjs\?v=20260831-402/);
+assert.match(app, /finite-network-structural-flux\.mjs\?v=20260831-403/);
 assert.match(app, /buildEventGeometryObservables\(barrier/);
 assert.match(lineage, /gcts-committed-path-geometric-observable-v1/);
 assert.match(lineage, /geometricPathObservableClosurePassed/);

@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+## Proton-orientation physics handoff (Build 403)
+
+The browser now converts the unresolved finite ice-rule CSP into an exact
+external free-energy request. Its immutable payload contains each retained
+H₂O alternative as one O and two H Cartesian sites, every finite O anchor,
+and the allowed pose pairs for every observed O–O edge. The declared
+temperature, pressure, finite boundary, molecular-grammar digest, and request
+SHA-256 are part of the calculation identity. Exterior hydrogen bonds remain
+explicitly omitted.
+
+The validator rejects local independent pose energies: proton ordering is a
+global constrained problem. Each returned state must assign a retained pose
+to every frozen anchor and pass every exactly-one-proton constraint. The
+method name, version, provenance, shared thermodynamic state, relative free
+energy, and nonnegative uncertainty are mandatory. Selection is licensed only
+for a SHA-bound exhaustive enumeration whose feasible count equals the
+returned states, and when the best state's upper energy interval is strictly
+below every competitor's lower interval. The
+dimensionless separation is reported as ΔG/kBT, but no Boltzmann probability
+is invented for an incomplete state space.
+
+The bridge changes no candidate geometry. A validated unique state would be
+an equilibrium orientation marking on this finite scaffold, not a proton
+reorientation mechanism, tunnelling calculation, kinetic law, stationary
+growth rule, or elapsed time. The portal ships without a response, so the
+gate remains missing-evidence/red until a user supplies a conforming external
+calculation.
+
 ## Disjoint proton-pose marking audit (Build 402)
 
 A new sealed experiment measures whether bounded local GCTS geometry can

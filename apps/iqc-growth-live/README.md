@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 403 · proton-orientation physics handoff
+
+The red held-out ice marking is now actionable without disguising geometry as
+an energy model. After a molecular-anchor wave exposes ambiguous H₂O domains,
+the growth card can freeze and download every retained colored pose geometry,
+the complete finite O-anchor set, and every binary exactly-one-proton
+compatibility constraint at a selected temperature and fixed finite-boundary
+condition.
+
+The response contract is intentionally global. Independent per-molecule pose
+energies are rejected because neighboring proton choices are coupled by the
+ice rules. A valid response must bind the exact request digest, preserve the
+temperature, pressure, and boundary state, identify its method and provenance,
+assign one retained pose to every anchor, satisfy every frozen constraint, and
+return uncertainties for at least two complete configurations. State-space
+coverage needs a SHA-bound exhaustive-enumeration certificate whose feasible
+count equals the returned configurations. One assignment may become an
+equilibrium orientation marking only when its upper uncertainty bound lies
+below every competitor. Otherwise all domains remain symbolic.
+
+The handoff, validation status, response digest, state count, free-energy gap
+in eV and kBT, and exact claim boundary are receipt-visible. It cannot create a
+missing pose, alter oxygen-anchor geometry, infer exterior hydrogen bonds, or
+stand in for a proton-transfer path, tunnelling rate, growth law, stationary
+production, or physical clock. No external result is bundled, so the public
+ice claim remains red by default.
+
 ## Build 402 · disjoint proton-pose marking audit
 
 The ice workflow now exposes a measured GCTS-marking transfer result rather

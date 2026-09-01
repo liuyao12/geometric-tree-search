@@ -1,15 +1,15 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-402";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-403";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-402";
+  from "./hierarchy-physics-transport.mjs?v=20260831-403";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-402";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-403";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-402";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-403";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-402";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-403";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -67,7 +67,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260831-402", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260831-403", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -103,6 +103,7 @@ const SYSTEMS = {
       ["Sealed finite execution", `Ih ${acceptedPerWave("iceIh").join(" → ")} · Ic ${acceptedPerWave("iceIc").join(" → ")}`, "Every accepted unseen oxygen anchor is exact; unsupported depth is rejected at a finite fixed point."],
       ["Finite proton constraint audit", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal} Ih edges · ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesTotal} Ic edges`, `Exactly one geometrically donated proton is possible on every observed O–O edge. The audit fixes ${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} / ${ICE_TRACES.iceIh.orientationAudit.anchors} Ih molecular poses; ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} remain symbolic because the finite boundary does not select a unique proton microstate.`],
       ["Disjoint pose-marking transfer", `${ICE_ORIENTATION_MARKING_AUDIT.arms.learned.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains} exact · p=${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.empiricalP}`, `The frozen local marking beats unmarked ${ICE_ORIENTATION_MARKING_AUDIT.arms.unmarked.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains}, but ties the best of ${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.count} label-shuffled refits. The true pose is present in only ${ICE_ORIENTATION_MARKING_AUDIT.heldout.exactSupplyDomains} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.targetMatchedDomains} exact-anchor domains; the marking gate remains red.`],
+      ["Orientation-physics handoff", "global assignment request · fail closed", "The live growth card can export every retained H₂O geometry and binary ice-rule constraint at one declared thermodynamic/boundary state. A response must score complete global assignments, bind the immutable request, cover the declared state space, and separate one winner after uncertainty. Local pose energies cannot activate the marking."],
       ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],
       ["Disordered Ice VI transfer", "8 / 8 O anchors · 0 false", "A two-parent connection consensus selected on three training microstates transfers across a disjoint realization. All eight D₂O orientations stay symbolic; forced molecules make three site errors."],
     ],
@@ -426,7 +427,7 @@ const CLAIMS = [
   ["proved", "Negative amorphous control", "The generic hierarchy rejects stationary recursion rather than memorizing and repeating a glass crop."],
   ["proved", "Molecular ice cover", "Ice Ih and Ic are covered by repeated bent H₂O motifs plus explicit bridge and O₆ gap-boundary clusters; the 216- and 192-atom periodic windows are represented completely without radial coordination spokes."],
   ["progress", "Finite ice anchor transfer", "Eight Ih-fitted proper-SE(3) ports emit 16 then 8 exact unseen Ih oxygen anchors and 12 exact Ic anchors before a conservative fixed point."],
-  ["open", "Proton-resolved ice growth", "The current section carries competing H₂O pose domains symbolically. It does not yet choose all proton orientations or certify a promoted stationary ice production."],
+  ["open", "Proton-resolved ice growth", "The current section carries competing H₂O pose domains symbolically. A global free-energy request is now executable, but no external response is bundled; no proton assignment or promoted stationary ice production is claimed."],
   ["progress", "Deep QC compression", "Ideal IQC reaches six positive quotient levels; Cd–Yb reaches nine on five disjoint training windows."],
   ["progress", "Frozen hierarchy transfer", "IQC primitive cover transfers completely and Cd–Yb promoted vocabularies re-encode four held-out levels, with dormant symbols explicit."],
   ["progress", "Site-resolved marking", "A 1,245-site train corpus gives site AUC 0.8864 and action AUC 1.0, both significant against 31 shuffles."],
