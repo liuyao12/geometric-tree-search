@@ -27,6 +27,11 @@ def test_orientation_audit_is_geometric_target_blind_and_fail_honest():
         "stateCountExact",
         "stateSpaceSha256",
         "poseMarginals",
+        'schema: "gcts-ice-open-boundary-sensitivity-audit-v1"',
+        "openCoordinationDeficit",
+        "paulingReferenceLogStatesPerMolecule",
+        "localMarginalsAreAdditiveEntropyDecomposition: false",
+        "thermodynamicEntropyInferred: false",
         "canonicalBranchMaterialized: false",
         "targetUsed: false",
         "physicalPotentialUsed: false",
@@ -49,10 +54,15 @@ def test_live_stage_and_receipts_expose_the_constraint_result_without_materializ
         "finiteIceRuleConstraintAuditPassed",
         "exactFeasibleAssignmentCount",
         "stateSpaceConstraintSha256",
+        "function renderIceBoundarySensitivity(audit)",
+        "boundarySensitivity: audit.boundarySensitivity",
+        "local marginal ambiguities are correlated and are not additive entropy contributions",
     ):
         assert token in APP
     assert APP.count("finalOrientationConstraintAudit: iceOrientationAuditReceipt") == 2
     assert "Finite proton constraint audit" in ATLAS
+    assert "Open-boundary sensitivity" in ATLAS
+    assert "Build 405 · open-boundary ice-state audit" in README
     assert "Build 401 · finite proton-orientation constraint audit" in README
 
 

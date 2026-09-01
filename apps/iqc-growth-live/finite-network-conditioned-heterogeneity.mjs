@@ -1,7 +1,7 @@
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-404";
+  from "./finite-network-first-passage.mjs?v=20260831-405";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-404";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-405";
 
 function unavailable(reason, extra = {}) {
   return {

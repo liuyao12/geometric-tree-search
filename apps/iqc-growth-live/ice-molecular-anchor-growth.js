@@ -7,6 +7,7 @@ const matmul = (left, right) => left.map((row) => right[0].map((_, column) =>
   row.reduce((sum, value, index) => sum + value * right[index][column], 0)));
 const DONOR_CONE_DEGREES = 35;
 const MAXIMUM_EXPLICIT_ORIENTATION_STATES = 4096;
+const PAULING_ICE_RULE_STATES_PER_MOLECULE = 1.5;
 
 function determinant(matrix) {
   return matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
@@ -285,6 +286,55 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
         assignmentCount: factorCount({ index, value: originalIndex }).toString() };
     }),
   }));
+  const localMarginalAmbiguity = poseMarginals.map((marginal, index) => {
+    const entropyNats = marginal.alternatives.reduce((sum, alternative) => {
+      const count = BigInt(alternative.assignmentCount);
+      if (count === 0n || exactStateCount === 0n) return sum;
+      const probability = Math.exp(logBigInt(count) - logBigInt(exactStateCount));
+      return sum - probability * Math.log(probability);
+    }, 0);
+    return {
+      anchorKey: marginal.anchorKey,
+      observedCoordination: incident[index].length,
+      finiteBoundaryExposed: incident[index].length < 4,
+      retainedPoses: marginal.alternatives.length,
+      entropyNats,
+    };
+  });
+  const summarizeMarginalAmbiguity = (items) => ({
+    anchors: items.length,
+    ambiguousAnchors: items.filter((item) => item.retainedPoses > 1).length,
+    meanEntropyNats: items.length
+      ? items.reduce((sum, item) => sum + item.entropyNats, 0) / items.length : 0,
+    maximumEntropyNats: items.length ? Math.max(...items.map((item) => item.entropyNats)) : 0,
+  });
+  const boundaryMarginals = localMarginalAmbiguity.filter((item) => item.finiteBoundaryExposed);
+  const interiorMarginals = localMarginalAmbiguity.filter((item) => !item.finiteBoundaryExposed);
+  const paulingLogStatesPerMolecule = Math.log(PAULING_ICE_RULE_STATES_PER_MOLECULE);
+  const finiteLogStatesPerMolecule = records.length ? logBigInt(exactStateCount > 0n ? exactStateCount : 1n)
+    / records.length : 0;
+  const boundarySensitivity = {
+    schema: "gcts-ice-open-boundary-sensitivity-audit-v1",
+    finiteMolecules: records.length,
+    observedConnections: edges.length,
+    openCoordinationDeficit: incident.reduce((sum, neighbors) => sum + Math.max(0, 4 - neighbors.length), 0),
+    boundaryAnchorFraction: records.length ? boundaryMarginals.length / records.length : 0,
+    finiteLogStatesPerMolecule,
+    paulingReferenceStatesPerMolecule: PAULING_ICE_RULE_STATES_PER_MOLECULE,
+    paulingReferenceLogStatesPerMolecule: paulingLogStatesPerMolecule,
+    finiteToPaulingLogDensityRatio: paulingLogStatesPerMolecule
+      ? finiteLogStatesPerMolecule / paulingLogStatesPerMolecule : null,
+    boundaryLocalMarginalAmbiguity: summarizeMarginalAmbiguity(boundaryMarginals),
+    interiorLocalMarginalAmbiguity: summarizeMarginalAmbiguity(interiorMarginals),
+    localMarginalDefinition: "Shannon ambiguity of one H2O pose marginal under uniform weighting of exact finite geometric assignments",
+    localMarginalsAreAdditiveEntropyDecomposition: false,
+    referenceLabel: "Pauling independent ice-rule bulk counting reference",
+    referenceCitation: "L. Pauling, J. Am. Chem. Soc. 57, 2680-2684 (1935), doi:10.1021/ja01315a102",
+    boundaryCondition: "open finite oxygen scaffold; exterior hydrogen bonds omitted",
+    thermodynamicEntropyInferred: false,
+    boltzmannWeightsInferred: false,
+    periodicClosureImposed: false,
+  };
   let constrainedEdgesSatisfied = 0;
   if (canonicalAssignment) edges.forEach((edge) => {
     if (edge.allowed[canonicalAssignment[edge.first]]?.[canonicalAssignment[edge.second]]) constrainedEdgesSatisfied++;
@@ -339,6 +389,7 @@ function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
     stateSpaceSha256,
     logStateCount: logBigInt(exactStateCount > 0n ? exactStateCount : 1n),
     poseMarginals,
+    boundarySensitivity,
     allHydrogensResolved: consistent && resolvedAnchors === records.length,
     targetUsed: false,
     physicalPotentialUsed: false,

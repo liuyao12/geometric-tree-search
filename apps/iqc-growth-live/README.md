@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 405 · open-boundary ice-state audit
+
+The exact proton-state count is now accompanied by a boundary-sensitivity
+audit. For every finite molecular scaffold, the solver reports the open
+tetrahedral coordination deficit, boundary fraction, exact `log Ω/N`, and the
+mean local pose-marginal ambiguity separately for boundary-exposed and
+four-connected interior H₂O domains. Those marginals are computed from the
+same exact integer factor elimination used for the state count.
+
+The final 33-molecule Ice-Ih scaffold has `log Ω/N = 0.80569`, while 22 of 33
+domains lie on the open boundary and 52 tetrahedral neighbor slots are absent.
+All 22 boundary domains remain ambiguous, with mean local geometric ambiguity
+`1.47094` nats; only 2 of 11 interior domains remain ambiguous, with mean
+`0.09722` nats. Ice Ic shows the same diagnosis even more starkly: boundary
+and interior means are `1.38629` and `0` nats. The large finite count is
+therefore visibly dominated by the deliberately open finite surface.
+
+The interactive orientation card compares this finite diagnostic with
+Pauling's independent ice-rule bulk counting reference, `ln(3/2) = 0.40547`
+per molecule ([JACS 57, 2680–2684 (1935)](https://doi.org/10.1021/ja01315a102)).
+Clicking a bar explains its denominator and claim boundary. The comparison is
+not a fit, periodic closure, Boltzmann ensemble, measured residual entropy, or
+assertion that local marginal ambiguities add to the global state count. The
+receipt and Evidence Atlas preserve the full audit and these explicit
+nonclaims.
+
 ## Build 404 · finite proton-state-space explorer
 
 The ice-rule audit now measures the complete finite configurational space

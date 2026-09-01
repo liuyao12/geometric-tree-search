@@ -34,12 +34,21 @@ if (!ih.orientationAudit.consistent || !ic.orientationAudit.consistent
   || ih.orientationAudit.stateCountExact !== "352321536000"
   || Math.abs(ih.orientationAudit.logStateCount - 26.58781005014425) > 1e-9
   || ih.orientationAudit.stateSpaceSha256 !== "4fe309af70f9f877133dcc92fb64ff8ff07b01883e4abb6574db28e22dad3407"
+  || ih.orientationAudit.boundarySensitivity.openCoordinationDeficit !== 52
+  || ih.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.ambiguousAnchors !== 22
+  || ih.orientationAudit.boundarySensitivity.interiorLocalMarginalAmbiguity.ambiguousAnchors !== 2
+  || Math.abs(ih.orientationAudit.boundarySensitivity.finiteLogStatesPerMolecule - 0.8056912136407348) > 1e-12
+  || Math.abs(ih.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.meanEntropyNats - 1.4709437997803845) > 1e-12
+  || Math.abs(ih.orientationAudit.boundarySensitivity.interiorLocalMarginalAmbiguity.meanEntropyNats - 0.09721996893996639) > 1e-12
   || ic.orientationAudit.constrainedEdgesSatisfied !== 16
   || ic.orientationAudit.constrainedEdgesTotal !== 16
   || ic.orientationAudit.stateCountExact !== "16777216"
   || ic.orientationAudit.stateSpaceSha256 !== "c910a20ee452df714901730838dbb09f8141caa32c2c250f1cb2960ab358784b"
   || ic.orientationAudit.resolvedAnchors !== 5
-  || ic.orientationAudit.ambiguousAnchors !== 12) {
+  || ic.orientationAudit.ambiguousAnchors !== 12
+  || ic.orientationAudit.boundarySensitivity.openCoordinationDeficit !== 36
+  || Math.abs(ic.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.meanEntropyNats - Math.log(4)) > 1e-12
+  || ic.orientationAudit.boundarySensitivity.interiorLocalMarginalAmbiguity.meanEntropyNats !== 0) {
   throw new Error("finite proton-orientation constraint audit changed");
 }
 for (const trace of [ih, ic]) {
@@ -47,7 +56,9 @@ for (const trace of [ih, ic]) {
   if (audits.some((audit) => !audit || audit.targetUsed || audit.physicalPotentialUsed
     || audit.canonicalBranchMaterialized || audit.constrainedEdgesSatisfied !== audit.constrainedEdgesTotal
     || !/^\d+$/.test(audit.stateCountExact) || !/^[a-f0-9]{64}$/.test(audit.stateSpaceSha256)
-    || audit.poseMarginals.length !== audit.anchors)) {
+    || audit.poseMarginals.length !== audit.anchors || audit.boundarySensitivity.thermodynamicEntropyInferred
+    || audit.boundarySensitivity.boltzmannWeightsInferred || audit.boundarySensitivity.periodicClosureImposed
+    || audit.boundarySensitivity.localMarginalsAreAdditiveEntropyDecomposition)) {
     throw new Error("orientation audit leakage/claim-boundary contract failed");
   }
   for (const audit of audits) for (const marginal of audit.poseMarginals) {

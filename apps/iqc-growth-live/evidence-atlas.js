@@ -1,15 +1,15 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-404";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-405";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-404";
+  from "./hierarchy-physics-transport.mjs?v=20260831-405";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-404";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-405";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-404";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-405";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-404";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-405";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -67,7 +67,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260831-404", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260831-405", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -96,7 +96,8 @@ const SYSTEMS = {
       ["blind O frontiers", `Ih ${acceptedPerWave("iceIh").join(" → ")} · VI 4 → 3 → 1`],
       ["Ih ice-rule edges", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal}`],
       ["Ih H₂O poses", `${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} fixed · ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} symbolic`],
-      ["Ih finite assignments", BigInt(ICE_TRACES.iceIh.orientationAudit.stateCountExact).toLocaleString()]],
+      ["Ih finite assignments", BigInt(ICE_TRACES.iceIh.orientationAudit.stateCountExact).toLocaleString()],
+      ["open-boundary log Ω/N", ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.finiteLogStatesPerMolecule.toFixed(3)]],
     verdict: ["progress", "Complete molecular cover and finite anchor transfer pass · proton and stationary growth remain open"],
     evidence: [
       ["Complete molecular cover", "Ih 216 / 216 · Ic 192 / 192", "H₂O molecules cover the atoms; bridge and O₆ ring-boundary clusters encode the interstitial connection geometry."],
@@ -104,6 +105,7 @@ const SYSTEMS = {
       ["Sealed finite execution", `Ih ${acceptedPerWave("iceIh").join(" → ")} · Ic ${acceptedPerWave("iceIc").join(" → ")}`, "Every accepted unseen oxygen anchor is exact; unsupported depth is rejected at a finite fixed point."],
       ["Finite proton constraint audit", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal} Ih edges · ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesTotal} Ic edges`, `Exactly one geometrically donated proton is possible on every observed O–O edge. The audit fixes ${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} / ${ICE_TRACES.iceIh.orientationAudit.anchors} Ih molecular poses; ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} remain symbolic because the finite boundary does not select a unique proton microstate.`],
       ["Exact finite state space", `${BigInt(ICE_TRACES.iceIh.orientationAudit.stateCountExact).toLocaleString()} Ih · ${BigInt(ICE_TRACES.iceIc.orientationAudit.stateCountExact).toLocaleString()} Ic`, `Exact factor elimination counts complete ice-rule assignments and pose marginals without treating the 4,096-state explicit preview cap as a count. log Ω is geometric finite-boundary degeneracy, not thermodynamic entropy.`],
+      ["Open-boundary sensitivity", `log Ω/N ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.finiteLogStatesPerMolecule.toFixed(3)} · Pauling ln(3/2) ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.paulingReferenceLogStatesPerMolecule.toFixed(3)}`, `${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.ambiguousAnchors} / ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.anchors} boundary domains remain ambiguous with mean local Hgeom ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.boundaryLocalMarginalAmbiguity.meanEntropyNats.toFixed(3)} nats, versus ${ICE_TRACES.iceIh.orientationAudit.boundarySensitivity.interiorLocalMarginalAmbiguity.meanEntropyNats.toFixed(3)} for four-connected interior domains. These correlated uniform-assignment marginals are a boundary diagnostic, not an additive entropy decomposition or Boltzmann ensemble.`],
       ["Disjoint pose-marking transfer", `${ICE_ORIENTATION_MARKING_AUDIT.arms.learned.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains} exact · p=${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.empiricalP}`, `The frozen local marking beats unmarked ${ICE_ORIENTATION_MARKING_AUDIT.arms.unmarked.exact} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.candidateDomains}, but ties the best of ${ICE_ORIENTATION_MARKING_AUDIT.arms.shuffled.count} label-shuffled refits. The true pose is present in only ${ICE_ORIENTATION_MARKING_AUDIT.heldout.exactSupplyDomains} / ${ICE_ORIENTATION_MARKING_AUDIT.heldout.targetMatchedDomains} exact-anchor domains; the marking gate remains red.`],
       ["Orientation-physics handoff", "global assignment request · fail closed", "The live growth card can export every retained H₂O geometry and binary ice-rule constraint at one declared thermodynamic/boundary state. A response must score complete global assignments, bind the immutable request, cover the declared state space, and separate one winner after uncertainty. Local pose energies cannot activate the marking."],
       ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],

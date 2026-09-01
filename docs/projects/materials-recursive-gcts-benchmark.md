@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+## Open-boundary ice-state audit (Build 405)
+
+The finite proton CSP now quantifies why its exact assignment count must not
+be read as bulk residual entropy. The audit partitions oxygen anchors by
+observed coordination, records the number of missing tetrahedral neighbor
+slots, and evaluates the Shannon ambiguity of each exact pose marginal under
+uniform weighting of the finite geometric assignments. Boundary and interior
+means are reported separately; because the marginals are correlated, their
+sum is explicitly not used as an entropy decomposition.
+
+At the final Ice-Ih fixed point, 22/33 anchors are boundary exposed and the
+open coordination deficit is 52. All 22 boundary anchors remain ambiguous,
+with mean local `Hgeom = 1.4709438` nats. Only 2/11 four-connected interior
+anchors remain ambiguous and their mean is `0.09721997` nats. The exact
+finite density is `log Ω/N = 0.8056912`. Ice Ic has 12/17 boundary anchors,
+an open deficit of 36, boundary mean `1.3862944`, interior mean `0`, and
+`log Ω/N = 0.9785607`.
+
+For scale only, the browser plots Pauling's independent ice-rule counting
+reference `ln(3/2) = 0.4054651` per molecule ([Pauling, JACS 57, 2680–2684
+(1935)](https://doi.org/10.1021/ja01315a102)). It does not impose periodic
+closure, infer Boltzmann weights, or call either value a measured entropy.
+The interactive bars and receipt bind the same exact CSP result, boundary
+condition, reference provenance, and nonclaim flags.
+
 ## Finite proton-state-space explorer (Build 404)
 
 The finite orientation CSP now has an exact counting layer. Min-fill variable
