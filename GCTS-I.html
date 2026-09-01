@@ -1448,7 +1448,7 @@
             ? '#707875'
             : segment.value > 0 ? markValueColors.positive : markValueColors.negative;
           const width = Math.max(0.35, 4.1 * scale);
-          ctx.globalAlpha = 0.5;
+          ctx.globalAlpha = 0.3;
           drawLine(worldToScreen(displayFrom.x, displayFrom.y), worldToScreen(from.x, from.y), color, width);
           drawLine(worldToScreen(to.x, to.y), worldToScreen(displayTo.x, displayTo.y), color, width);
           ctx.globalAlpha = 1;
@@ -1466,7 +1466,7 @@
         });
         if (!exterior.size) return;
         ctx.save();
-        ctx.globalAlpha = 0.5;
+        ctx.globalAlpha = 0.3;
         exterior.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
