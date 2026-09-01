@@ -2223,7 +2223,7 @@
             trialGhost = null;
             const frontier = event.frontier || event.placement?.frontier;
             if (event.forced) {
-              forcedMoveStreak = event.forcedBatchCount || 1;
+              forcedMoveStreak += event.forcedBatchCount || 1;
               statusText = `${forcedMoveStreak} forced move${forcedMoveStreak === 1 ? '' : 's'}`;
             } else {
               forcedMoveStreak = 0;
