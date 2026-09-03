@@ -129,7 +129,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-adjacency-generation-1';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260902-local-corona-counts-1';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -694,29 +694,6 @@
           });
         });
         return pointCoronas;
-      }
-
-      function minimumFrontierGeneration(placements) {
-        const points = new Map();
-        placements.forEach((placement, index) => {
-          const adjacent = placement.occupancy
-            .map(item => points.get(key3(item.point))?.generation)
-            .filter(Number.isFinite);
-          const generation = Number.isFinite(placement.generation)
-            ? placement.generation
-            : index === 0 ? 0 : adjacent.length ? Math.min(...adjacent) + 1 : 0;
-          placement.occupancy.forEach(item => {
-            const key = key3(item.point);
-            const entry = points.get(key) || { value: 0, generation };
-            entry.value += item.value;
-            entry.generation = Math.min(entry.generation, generation);
-            points.set(key, entry);
-          });
-        });
-        const generations = Array.from(points.values())
-          .filter(entry => entry.value > 0 && entry.value < 12)
-          .map(entry => entry.generation);
-        return generations.length ? Math.min(...generations) : null;
       }
 
       function maxPlacementCorona(placements) {
@@ -2043,7 +2020,7 @@
           if (event.type === 'trial') return { type: 'trial', valid: true, frontier, frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0, placement: demoPlacementFromShared(event.candidate, { frontier }) };
           if (event.type === 'placement') {
             const converted = placementsFor(event);
-            return { type: 'accept', count: converted.length, placement: converted[converted.length - 1], forced: event.forced, branchCount: event.branchCount || 0, frontier, frontierValue: event.frontierValue || 0, placements: converted };
+            return { type: 'accept', count: converted.length, placement: converted[converted.length - 1], forced: event.forced, branchCount: event.branchCount || 0, frontier, frontierValue: event.frontierValue || 0, minimumFrontierGeneration: event.minimumFrontierGeneration, placements: converted };
           }
           if (event.type === 'fail') return { type: 'fail', frontier, frontierValue: event.frontierValue || 0, placements: placementsFor(event) };
           if (event.type === 'backtrack') return { type: 'backtrack', reason: 'failed branch', removed: demoPlacementFromShared(event.removed, { frontier }), placements: placementsFor(event), frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0 };
@@ -2310,7 +2287,7 @@
           if (event.type === 'accept' && event.forced) {
             let forcedBatchCount = 1;
             const reachesPauseBoundary = accepted => {
-              const generation = minimumFrontierGeneration(accepted.placements || []);
+              const generation = accepted.minimumFrontierGeneration;
               return generation >= 3 && generation % 2 === 1 && generation > highestPausedCorona;
             };
             while (!reachesPauseBoundary(event) && liveSearchIterator?.buffered?.() > 0) {
@@ -2362,7 +2339,7 @@
               forcedMoveStreak = 0;
               statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(frontier)}`;
             }
-            const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
+            const frontierGeneration = event.minimumFrontierGeneration;
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
               statusText = `pausing at corona ${frontierGeneration}`;

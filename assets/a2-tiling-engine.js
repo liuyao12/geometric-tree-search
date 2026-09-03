@@ -649,6 +649,32 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
     if(!((value>1e-7||startPointMap.has(pointKey))&&value<target-1e-7))return null;
     return{point:pointKey,value,distance:distanceFromInitial(pointKey),introduced:pointDepth.get(pointKey)??Infinity,norm:point.reduce((sum,coordinate)=>sum+Math.abs(coordinate),0)};
   };
+  // Corona completion depends only on frontier t-values and generations, not
+  // candidate degrees. Keep it local even when the marking learner rebuilds
+  // candidate lists, and snapshot the minimum when an event is queued.
+  const frontierGenerations=new Map(),frontierGenerationCounts=new Map();
+  let minimumFrontierGeneration=null,frontierGenerationFullBuilds=0,frontierGenerationPointUpdates=0;
+  const updateFrontierGeneration=key=>{
+    frontierGenerationPointUpdates++;
+    const value=sums.get(key)||0;
+    const active=(value>1e-7||startPointMap.has(key))&&value<targetAt(key.split(",").map(Number))-1e-7;
+    const previous=frontierGenerations.get(key),next=active?(pointDepth.get(key)??Infinity):undefined;
+    if(previous===next)return;
+    if(previous!==undefined){
+      const count=frontierGenerationCounts.get(previous)-1;
+      if(count)frontierGenerationCounts.set(previous,count);else frontierGenerationCounts.delete(previous);
+      frontierGenerations.delete(key);
+    }
+    if(next!==undefined){frontierGenerations.set(key,next);frontierGenerationCounts.set(next,(frontierGenerationCounts.get(next)||0)+1);}
+    if(minimumFrontierGeneration===null||!frontierGenerationCounts.has(minimumFrontierGeneration)){
+      minimumFrontierGeneration=frontierGenerationCounts.size?Math.min(...frontierGenerationCounts.keys()):null;
+    }else if(next!==undefined)minimumFrontierGeneration=Math.min(minimumFrontierGeneration,next);
+  };
+  const rebuildFrontierGenerations=()=>{
+    frontierGenerations.clear();frontierGenerationCounts.clear();minimumFrontierGeneration=null;
+    for(const key of sums.keys())updateFrontierGeneration(key);
+    frontierGenerationFullBuilds++;
+  };
   const cloneFrontierOption=option=>option?{...option,legal:new Map(option.legal)}:null;
   const rememberPointBeforeChange=(delta,pointKey)=>{if(delta&&!delta.points.has(pointKey))delta.points.set(pointKey,cloneFrontierOption(frontierGraph.get(pointKey)));};
   const initializeFrontierPoint=(pointKey,meta=frontierMeta(pointKey),delta=null)=>{
@@ -717,6 +743,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
   };
   const graphNeedsGlobalPlacementUpdate=()=>learner instanceof OnlineA2Marking&&!learner.fixedLive;
   const updateGraphAfterPlacement=placement=>{
+    for(const key of placement.occupancy.keys())updateFrontierGeneration(key);
     if(!maximize)return null;
     if(graphNeedsGlobalPlacementUpdate())return null;
     return updateFrontierGraphLocally(placement);
@@ -727,7 +754,8 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
     for(const pointKey of incidence.frontierPoints){const option=frontierGraph.get(pointKey);if(!option?.legal.has(candidateId))continue;rememberPointBeforeChange(activeDelta,pointKey);option.legal.delete(candidateId);removed=true;}
     if(removed)exactMemoPrunes++;
   };
-  const emit=(type,extra={})=>onEvent({type,nodes,backtracks,placed:chosen.length,targetPlacements:maximize?targetPlacements:null,totalCells:totalWeight,coveredCells:filledWeight(),marking:learner.stats(),searchMemo:{failures:exhaustedBranches.size,prunes:exactMemoPrunes},placements:chosen.slice(),...extra});
+  const emit=(type,extra={})=>onEvent({type,nodes,backtracks,placed:chosen.length,minimumFrontierGeneration,targetPlacements:maximize?targetPlacements:null,totalCells:totalWeight,coveredCells:filledWeight(),marking:learner.stats(),searchMemo:{failures:exhaustedBranches.size,prunes:exactMemoPrunes},placements:chosen.slice(),...extra});
+  rebuildFrontierGenerations();
   if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();
   emit("start",{orientationCount:orientedTiles.length});
   const noteFailedPath=(trackers,failurePoint=null)=>{
@@ -813,6 +841,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
       const result=stranded?false:await search(depth+1,childTrackers);
       if(result===true)return true;
       chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){if(startPointMap.has(key)){sums.set(key,0);pointDepth.set(key,0);}else{sums.delete(key);pointDepth.delete(key);}}else{const incident=[seedOccupancy.has(key)?0:Infinity,...chosen.filter(prior=>prior.occupancy.has(key)).map(prior=>prior.generation)];sums.set(key,next);pointDepth.set(key,Math.min(...incident));}}if(frontierGraphDelta){restoreFrontierGraph(frontierGraphDelta);frontierGraphDeltaStack.pop();}
+      for(const key of placement.occupancy.keys())updateFrontierGeneration(key);
       if(result==="unknown"||result==="stagnant")return result;
       // This exact candidate and placement context has been exhausted. Keep it
       // across marking re-encodings: a new geometric witness may generalize a
@@ -846,7 +875,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
     const removed=chosen[chosen.length-1],context=chosen.slice(0,-1);exhaustedBranches.add(branchKey(removed,context));
     chosen.pop();usedPlacements.delete(removed.id);learner.pop?.(removed);backtracks++;
     sums.clear();pointDepth.clear();for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}chosen.forEach(placement=>{for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
-    frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();emit("backtrack",{removed,reason:"retained-prefix"});
+    rebuildFrontierGenerations();frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();emit("backtrack",{removed,reason:"retained-prefix"});
     result=await search(chosen.length);
   }
   while((result===false||result==="stagnant")&&!stopToken.stop){
@@ -854,6 +883,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
     chosen.splice(0,chosen.length,...initialChosen);usedPlacements.clear();for(const placement of initialChosen)usedPlacements.add(placement.id);sums.clear();pointDepth.clear();
     for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}initialChosen.forEach(placement=>{for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
     learner.reset?.(markingSeed?[markingSeed,...initialChosen]:initialChosen);
+    rebuildFrontierGenerations();
     frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();
     emit("marking-reencoded",{reencoding,reason:result==="stagnant"?"stagnation":"root-exhausted"});
     lastImprovementNode=nodes;
@@ -861,9 +891,15 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
     result=await search(initialDepth);
     if(result===false&&nodes===nodesBeforeRestart){emit("memo-fixed-point",{reason:"all-root-options-memoized"});break;}
   }
-  if(result!==true){chosen.splice(0,chosen.length,...best);sums.clear();for(const [key,e] of seedOccupancy)sums.set(key,e.weight);for(const p of chosen)for(const [key,e] of p.occupancy)sums.set(key,(sums.get(key)||0)+e.weight);}
+  if(result!==true){
+    chosen.splice(0,chosen.length,...best);sums.clear();pointDepth.clear();
+    for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}
+    for(const p of chosen)for(const [key,e] of p.occupancy){sums.set(key,(sums.get(key)||0)+e.weight);pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,p.generation));}
+    for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
+    rebuildFrontierGenerations();
+  }
   emit("finished",{result:result===true?"yes":result===false?"no":"unknown"});
-  return {result:result===true?"yes":result===false?"no":"unknown",placements:chosen,stats:{nodes,backtracks,exactMemoPrunes,memoizedBranches:exhaustedBranches.size,frontierGraphFullBuilds,frontierGraphLocalUpdates,frontierGraphPointRevalidations,frontierGraphCandidateRevalidations,frontierGraphEdgeRevalidations,...learner.stats()}};
+  return {result:result===true?"yes":result===false?"no":"unknown",placements:chosen,stats:{nodes,backtracks,exactMemoPrunes,memoizedBranches:exhaustedBranches.size,frontierGenerationFullBuilds,frontierGenerationPointUpdates,frontierGraphFullBuilds,frontierGraphLocalUpdates,frontierGraphPointRevalidations,frontierGraphCandidateRevalidations,frontierGraphEdgeRevalidations,...learner.stats()}};
 }
 
 // A failed branch is only a negative example for one local configuration.  A
