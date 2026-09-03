@@ -133,7 +133,7 @@
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      let ctx = canvas.getContext('2d');
       const startButton = document.getElementById('turtle-start');
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
@@ -228,6 +228,7 @@
       let elapsedSearchMs = 0;
       let searchTimerStartedAt = null;
       let searchTimerFrame = null;
+      let renderCache = null;
       let showMarkings = false;
       let windowDragging = false;
       let windowResizing = false;
@@ -1368,6 +1369,7 @@
         canvas.width = Math.max(320, Math.floor(rect.width * ratio));
         canvas.height = Math.max(220, Math.floor(rect.height * ratio));
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        renderCache = null;
         if (!viewInitialized) {
           centerSeedView({ resetScale: true });
           viewInitialized = true;
@@ -1586,8 +1588,8 @@
         return lines;
       }
 
-      function drawHoverTooltip() {
-        if (!hoveredPoint) return;
+      function hoverTooltipLayout() {
+        if (!hoveredPoint) return null;
         const point = projectA2(hoveredPoint.point);
         const screen = worldToScreen(point.x, point.y);
         const lines = hoverLinesForPoint(hoveredPoint);
@@ -1596,6 +1598,13 @@
         const height = 16 + lines.length * 16;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
         const y = Math.max(screen.y - height - 4, 8);
+        return { lines, x, y, width, height };
+      }
+
+      function drawHoverTooltip() {
+        const layout = hoverTooltipLayout();
+        if (!layout) return;
+        const { lines, x, y, width, height } = layout;
         ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
         ctx.strokeStyle = '#dce5e1';
         ctx.lineWidth = 1;
@@ -1610,24 +1619,148 @@
         });
       }
 
+      function unionPaintBounds(left, right) {
+        if (!left) return right;
+        if (!right) return left;
+        return { left: Math.min(left.left, right.left), top: Math.min(left.top, right.top),
+          right: Math.max(left.right, right.right), bottom: Math.max(left.bottom, right.bottom) };
+      }
+
+      function paintBoundsIntersect(left, right) {
+        return left && right && left.left <= right.right && left.right >= right.left
+          && left.top <= right.bottom && left.bottom >= right.top;
+      }
+
+      function pointPaintBounds(point, radius) {
+        const world = projectA2(point);
+        const screen = worldToScreen(world.x, world.y);
+        return { left: screen.x - radius, top: screen.y - radius,
+          right: screen.x + radius, bottom: screen.y + radius };
+      }
+
+      function placementPaintBounds(placement) {
+        let bounds = null;
+        const include = point => { bounds = unionPaintBounds(bounds, pointPaintBounds(point, 14 * Math.max(1, scale))); };
+        placement.vertices3d.forEach(include);
+        placement.occupancy.forEach(entry => include(entry.point));
+        if (showMarkings) {
+          placement.markings.forEach(entry => include(entry.point));
+          placement.markSegments.forEach(segment => {
+            include(segment.displayFromPoint || segment.fromPoint);
+            include(segment.displayToPoint || segment.toPoint);
+          });
+        }
+        return bounds;
+      }
+
+      function transientPaintBounds(visible) {
+        let bounds = trialGhost ? placementPaintBounds(trialGhost.placement) : null;
+        const frontier = (trialGhost || visible[visible.length - 1])?.frontier;
+        if (frontier) bounds = unionPaintBounds(bounds, pointPaintBounds(frontier, 16 * Math.max(1, scale)));
+        if (hoveredPoint) {
+          bounds = unionPaintBounds(bounds, pointPaintBounds(hoveredPoint.point, 8 * Math.max(1, scale)));
+          const tooltip = hoverTooltipLayout();
+          bounds = unionPaintBounds(bounds, { left: tooltip.x - 2, top: tooltip.y - 2,
+            right: tooltip.x + tooltip.width + 2, bottom: tooltip.y + tooltip.height + 2 });
+        }
+        return bounds;
+      }
+
       function draw() {
         const rect = canvas.getBoundingClientRect();
-        ctx.clearRect(0, 0, rect.width, rect.height);
-        ctx.fillStyle = '#fbfcfb';
-        ctx.fillRect(0, 0, rect.width, rect.height);
-        if (latticeToggle.checked) drawGridLines(rect);
+        const ratio = window.devicePixelRatio || 1;
         const visible = visiblePlacements();
-        visible.forEach(drawTurtle);
-        if (showMarkings) {
-          visible.forEach(drawMarkings);
-          visible.forEach(drawExteriorMarkingPoints);
+        const keys = visible.map(placement => `${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
+        const viewKey = [canvas.width, canvas.height, ratio, scale, offset.x, offset.y,
+          showMarkings, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
+        // Shared-engine events reconstruct placement objects, so compare stable
+        // geometric keys rather than object identities to recognize an append.
+        const fullRedraw = !renderCache || renderCache.viewKey !== viewKey
+          || keys.length < renderCache.keys.length
+          || renderCache.keys.some((key, index) => key !== keys[index]);
+        let dirty = fullRedraw ? { left: 0, top: 0, right: rect.width, bottom: rect.height } : renderCache.transient;
+        if (fullRedraw) {
+          const background = document.createElement('canvas');
+          background.width = canvas.width;
+          background.height = canvas.height;
+          ctx.clearRect(0, 0, rect.width, rect.height);
+          ctx.fillStyle = '#fbfcfb';
+          ctx.fillRect(0, 0, rect.width, rect.height);
+          if (latticeToggle.checked) drawGridLines(rect);
+          background.getContext('2d').drawImage(canvas, 0, 0);
+          const scratch = document.createElement('canvas');
+          scratch.width = canvas.width;
+          scratch.height = canvas.height;
+          renderCache = { viewKey, keys: [], bounds: [], sums: new Map(), background, scratch, transient: null };
         }
-        if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
-        const sums = visibleSums();
+        // Maintain display t-values incrementally as well: shared vertices can
+        // change from frontier dots to completed dots when a new tile arrives.
+        for (let index = renderCache.keys.length; index < visible.length; index += 1) {
+          const placement = visible[index];
+          const bounds = placementPaintBounds(placement);
+          renderCache.bounds.push(bounds);
+          dirty = unionPaintBounds(dirty, bounds);
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const entry = renderCache.sums.get(key) || { point: item.point, value: 0, hasInterior: false };
+            entry.value += item.value;
+            entry.hasInterior = entry.hasInterior || item.kind === 'interior';
+            renderCache.sums.set(key, entry);
+          });
+        }
+        renderCache.keys = keys;
+        const sums = renderCache.sums;
         refreshHoveredPoint(sums);
-        drawValues(sums, visible);
-        drawFrontier(trialGhost || visible[visible.length - 1]);
-        drawHoverTooltip();
+        const transient = transientPaintBounds(visible);
+        dirty = unionPaintBounds(dirty, transient);
+        renderCache.transient = transient;
+        let paintedTiles = 0;
+        if (dirty) {
+          // Device-pixel boundaries avoid antialiased seams at the repair edge.
+          dirty = { left: Math.max(0, Math.floor(dirty.left * ratio) / ratio),
+            top: Math.max(0, Math.floor(dirty.top * ratio) / ratio),
+            right: Math.min(rect.width, Math.ceil(dirty.right * ratio) / ratio),
+            bottom: Math.min(rect.height, Math.ceil(dirty.bottom * ratio) / ratio) };
+          if (dirty.right > dirty.left && dirty.bottom > dirty.top) {
+            const displayContext = ctx;
+            // Render repairs offscreen, then copy only the dirty pixels. Drawing
+            // curves through a clip boundary can otherwise leave antialias seams.
+            if (!fullRedraw) {
+              ctx = renderCache.scratch.getContext('2d');
+              ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+              ctx.clearRect(0, 0, canvas.width / ratio, canvas.height / ratio);
+              ctx.drawImage(renderCache.background, 0, 0, canvas.width / ratio, canvas.height / ratio);
+            }
+            ctx.save();
+            try {
+              const nearby = visible.filter((placement, index) => paintBoundsIntersect(renderCache.bounds[index], dirty));
+              paintedTiles = nearby.length;
+              nearby.forEach(drawTurtle);
+              if (showMarkings) {
+                nearby.forEach(drawMarkings);
+                nearby.forEach(drawExteriorMarkingPoints);
+              }
+              if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
+              const nearbySums = new Map([...sums].filter(([, entry]) => paintBoundsIntersect(pointPaintBounds(entry.point, 8 * Math.max(1, scale)), dirty)));
+              drawValues(nearbySums, nearby);
+              drawFrontier(trialGhost || visible[visible.length - 1]);
+              drawHoverTooltip();
+            } finally {
+              ctx.restore();
+              ctx = displayContext;
+            }
+            if (!fullRedraw) {
+              const x = Math.round(dirty.left * ratio), y = Math.round(dirty.top * ratio);
+              const width = Math.round(dirty.right * ratio) - x, height = Math.round(dirty.bottom * ratio) - y;
+              ctx.save();
+              ctx.setTransform(1, 0, 0, 1, 0, 0);
+              ctx.drawImage(renderCache.scratch, x, y, width, height, x, y, width, height);
+              ctx.restore();
+            }
+          }
+        }
+        canvas.dataset.renderMode = fullRedraw ? 'full' : 'incremental';
+        canvas.dataset.paintedTiles = String(paintedTiles);
         const latest = visible[visible.length - 1];
         const branchText = statusText || (latest && latest.branchCount
           ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branching`} at ${formatFrontierPoint(latest.frontier)}`
