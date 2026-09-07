@@ -283,8 +283,9 @@
             ></canvas>
             <div id="gallery" hidden></div>
             <div class="scene-key">
-              <span><i></i>observed</span
-              ><span><i class="new"></i>newly placed</span
+              <span>element colors retained</span
+              ><span>new atoms softly illuminated</span
+              ><span id="visibleComposition"></span
               ><span>drag to orbit · scroll to zoom</span>
             </div>
           </div>
@@ -359,6 +360,13 @@
           Repeated supports and residual atoms cover the finite observation.
           This covers atoms, not empty volume. The learner does not assume
           periodic images.
+        </dd>
+        <dt>Molecular supports</dt>
+        <dd>
+          When repeated isolated components dominate the patch, supports
+          preserve whole components. Unrecognized crop fragments remain seed
+          residuals. Molecular closure is inferred from geometry, not a chemical
+          bond model.
         </dd>
         <dt>Markings</dt>
         <dd>

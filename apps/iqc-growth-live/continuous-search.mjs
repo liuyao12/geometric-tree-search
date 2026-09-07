@@ -4,6 +4,7 @@ import {
   posePoint,
   keySites,
   SpatialSites,
+  distance,
 } from "./continuous-geometry.mjs";
 
 // Iterative DFS, as in GCTS-I's analyze -> trial -> accept -> recurse -> undo.
@@ -69,6 +70,7 @@ export class ContinuousSearch {
       redundant: 0,
       expanded: 0,
       boundary: 0,
+      molecularConflicts: 0,
       bestAtoms: grammar.atoms.length,
       depth: 0,
       maxDepth: 0,
@@ -92,7 +94,7 @@ export class ContinuousSearch {
     }
     return Math.log1p(action.port.count);
   }
-  inspect(sites) {
+  inspect(sites, molecularGroups = []) {
     let novel = 0;
     for (const site of sites) {
       if (this.boundary && !this.boundary(site.position)) {
@@ -105,6 +107,29 @@ export class ContinuousSearch {
         return null;
       }
       if (!result.match) novel++;
+    }
+    if (novel && this.grammar.molecularCutoff) {
+      for (const ids of molecularGroups) {
+        const molecule = ids.map((i) => sites[i]);
+        for (const site of molecule)
+          for (const existing of this.spatial.nearby(
+            site.position,
+            this.grammar.molecularCutoff,
+          ))
+            if (
+              distance(site.position, existing.position) <=
+                this.grammar.molecularCutoff &&
+              !molecule.some(
+                (s) =>
+                  s.species === existing.species &&
+                  distance(s.position, existing.position) <=
+                    this.grammar.tolerance,
+              )
+            ) {
+              this.stats.molecularConflicts++;
+              return null;
+            }
+      }
     }
     return novel;
   }
@@ -129,7 +154,10 @@ export class ContinuousSearch {
           if (seen.has(key)) continue;
           seen.add(key);
           this.stats.checks++;
-          const novel = this.inspect(sites);
+          const novel = this.inspect(
+            sites,
+            this.grammar.types[port.child].molecularGroups,
+          );
           if (novel === 0) this.stats.redundant++;
           else if (novel !== null)
             choices.push({ key, parent, port, pose, sites, novel });
@@ -278,6 +306,8 @@ export class ContinuousSearch {
       latticeUsed: false,
       targetUsed: false,
       rollback: true,
+      molecularSupportClosure: !!this.grammar.molecularCutoff,
+      molecularComponentCutoffAngstrom: this.grammar.molecularCutoff ?? null,
       searchComplete: this.status === "exhausted",
       physicalValidityEstablished: false,
       matchingToleranceAngstrom: this.grammar.tolerance,

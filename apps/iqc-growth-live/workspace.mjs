@@ -77,13 +77,15 @@ function clear(group) {
 function buildAtoms(group, atoms, radius = 0.38, seedCount = Infinity) {
   const groups = new Map();
   atoms.forEach((s, i) => {
-    const key = i >= seedCount ? "new" : s.species;
+    const key = s.species + (i >= seedCount ? ":new" : ":seed");
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(s);
   });
   for (const [key, rows] of groups) {
     const material = new THREE.MeshStandardMaterial({
-      color: key === "new" ? "#f1b482" : color(key),
+      color: color(rows[0].species),
+      emissive: key.endsWith(":new") ? color(rows[0].species) : "#000000",
+      emissiveIntensity: 0.2,
       roughness: 0.4,
       metalness: 0.16,
     });
@@ -91,7 +93,7 @@ function buildAtoms(group, atoms, radius = 0.38, seedCount = Infinity) {
     rows.forEach((a, i) => {
       dummy.position.set(...a.position);
       dummy.scale.setScalar(
-        radius * (a.species === "H" || a.species === "D" ? 0.65 : 1),
+        radius * (a.species === "H" || a.species === "D" ? 0.8 : 1),
       );
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
@@ -125,6 +127,12 @@ function showAtoms(atoms, fit = false) {
   );
   if (fit) fitView(atoms);
   $("atomCount").textContent = atoms.length.toLocaleString();
+  const counts = new Map();
+  for (const atom of atoms)
+    counts.set(atom.species, (counts.get(atom.species) || 0) + 1);
+  $("visibleComposition").textContent = [...counts]
+    .map(([species, count]) => `${species}: ${count.toLocaleString()}`)
+    .join(" · ");
 }
 function edges(pairs) {
   clear(overlay);
@@ -466,6 +474,11 @@ function workerSetup() {
         " residual atoms · " +
         grammar.audit.hierarchyLevels +
         " fitted levels.";
+      if (grammar.audit.molecularSupportClosure)
+        $("coverStats").textContent +=
+          " Molecular closure: " +
+          grammar.audit.recurringMolecules +
+          " complete observed molecules; crop fragments are not propagated.";
       $("toLearning").disabled = false;
       $("toSearch").disabled = false;
       $("restart").disabled = false;

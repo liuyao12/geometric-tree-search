@@ -135,12 +135,13 @@ export class SpatialSites {
   cell(p) {
     return p.map((v) => Math.floor(v / this.width));
   }
-  nearby(p) {
+  nearby(p, radius = this.width) {
     const c = this.cell(p),
-      out = [];
-    for (let x = -1; x <= 1; x++)
-      for (let y = -1; y <= 1; y++)
-        for (let z = -1; z <= 1; z++)
+      out = [],
+      reach = Math.ceil(radius / this.width);
+    for (let x = -reach; x <= reach; x++)
+      for (let y = -reach; y <= reach; y++)
+        for (let z = -reach; z <= reach; z++)
           out.push(
             ...(this.cells.get([c[0] + x, c[1] + y, c[2] + z].join(",")) || []),
           );

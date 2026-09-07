@@ -51,7 +51,14 @@ export function* identifyClusters(
   const supports = new Map(),
     types = new Map(),
     trace = [];
+  let molecularClosure = false;
+  const components = [],
+    owner = new Map();
   const propose = (ids, kind) => {
+    if (molecularClosure) {
+      if (ids.some((i) => !owner.has(i))) return;
+      ids = ids.flatMap((i) => owner.get(i));
+    }
     ids = [...new Set(ids)].sort((a, b) => a - b);
     if (
       ids.length >= 3 &&
@@ -74,8 +81,48 @@ export function* identifyClusters(
             queue.push(nb.j);
           }
         }
-      if (queue.length <= maximumSupport) propose(queue, "connected component");
+      components.push(queue);
     }
+  const componentTypes = new Map();
+  for (const ids of components) {
+    if (ids.length < 3 || ids.length > maximumSupport) continue;
+    const c = canonicalSupport(
+      ids.map((i) => atoms[i]),
+      tolerance,
+    );
+    if (!c) continue;
+    if (!componentTypes.has(c.key)) componentTypes.set(c.key, []);
+    componentTypes.get(c.key).push(ids);
+  }
+  const recurringComponents = [...componentTypes.values()]
+    .filter((rows) => rows.length >= 2)
+    .flat();
+  // Use molecular closure only when repeated isolated components dominate
+  // the observation. Unrecognized/cropped components remain seed residuals.
+  molecularClosure =
+    recurringComponents.reduce((s, ids) => s + ids.length, 0) > n / 2;
+  if (molecularClosure) {
+    recurringComponents.forEach((ids) => ids.forEach((i) => owner.set(i, ids)));
+    for (const ids of recurringComponents) {
+      propose(ids, "connected component");
+      const contacts = recurringComponents
+        .filter((other) => other !== ids)
+        .map((other) => ({
+          other,
+          d: Math.min(
+            ...ids.flatMap((i) =>
+              other.map((j) => distance(atoms[i].position, atoms[j].position)),
+            ),
+          ),
+        }));
+      const nearest = Math.min(...contacts.map((x) => x.d));
+      for (const { other, d } of contacts)
+        if (d <= nearest * 1.18 + tolerance)
+          propose([...ids, ...other], "molecular contact neighborhood");
+    }
+  } else {
+    for (const ids of components) propose(ids, "connected component");
+  }
   for (let i = 0; i < n; i++) {
     const shell = neighbors[i]
       .filter((x) => x.d <= neighbors[i][0].d * 1.18)
@@ -317,6 +364,34 @@ export function* identifyClusters(
       };
   }
   grammar.ports = [...portMap.values()];
+  grammar.molecularCutoff = molecularClosure ? scale * 1.32 : null;
+  grammar.audit.molecularSupportClosure = molecularClosure;
+  grammar.audit.recurringMolecules = molecularClosure
+    ? recurringComponents.length
+    : 0;
+  if (molecularClosure)
+    for (const type of retained) {
+      const seen = new Set();
+      type.molecularGroups = [];
+      for (let i = 0; i < type.sites.length; i++)
+        if (!seen.has(i)) {
+          const group = [i];
+          seen.add(i);
+          for (let k = 0; k < group.length; k++)
+            for (let j = 0; j < type.sites.length; j++)
+              if (
+                !seen.has(j) &&
+                distance(
+                  type.sites[group[k]].position,
+                  type.sites[j].position,
+                ) <= grammar.molecularCutoff
+              ) {
+                seen.add(j);
+                group.push(j);
+              }
+          type.molecularGroups.push(group);
+        }
+    }
   grammar.audit.observedConnections = pairs.size;
   grammar.audit.portClasses = grammar.ports.length;
   for (const type of retained)

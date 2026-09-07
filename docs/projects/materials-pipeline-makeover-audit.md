@@ -103,6 +103,23 @@ call. Those assertions were not weakened to make the audit green.
 The current app tests and `*_portal_contract` release gate are checked
 separately; a clean release gate does not imply a clean historical archive.
 
+## Ice molecular-growth correction
+
+An additional regression found that boundary-fragment overlap supports could
+initially grow oxygen alone, despite identifying water as a cluster. For
+molecular-dominated observations, the learner now closes all proposed supports
+over repeated isolated components, learns contacts between complete components,
+and leaves unrecognized crop fragments as seed residuals. Growth rejects a
+placement that would fuse or partially overlap an existing molecule inconsistently.
+This is a geometric, inferred-component constraint, not a chemical bond-order
+model; mixed, reactive, or extended covalent systems need further validation.
+
+The ice fixture has 56 complete D₂O molecules and 24 residual crop atoms. The
+new regression tests both D and H and all four search policies, checking every
+accepted prefix: each new O has exactly two hydrogen-isotope neighbors, and
+each new hydrogen isotope belongs to one O. Rendering retains species colors
+for new atoms and exposes live species counts.
+
 ## Remaining research
 
 1. Transported section compatibility with disjoint-patch validation and
