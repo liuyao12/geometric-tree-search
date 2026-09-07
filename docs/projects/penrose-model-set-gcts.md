@@ -39,6 +39,19 @@ the actual worker module without a local preview. Worker compute time excludes
 playback waiting and drawing. The catalog remains at `reference.html`; its
 separately named `makeCyclotomicSearch` is the reference path documented below.
 
+### Point inspector
+
+`point-inspection.js` indexes the exact vertices and Ammann stripe endpoints
+of the current placed patch. Hover reports canonical coordinates in the basis
+(1, ζ₅, ζ₅², ζ₅³), summed stored vertex weights divided by ten as t(x), and
+individual tile contributions. The marking m at each port is the five-vector
+counting stripe ends in each direction family. Values agree on shared support
+and are not summed. Outside its support m is undefined; t is zero at ports
+outside its vertex support. This displays the implemented finite fields,
+without assigning a continuous extension to bar interiors. Exact port
+coordinates may be in ℚ(ζ₅) with nontrivial denominators. Tests check both the
+field values and pointer hover/leave behavior without a local preview.
+
 ## Reference model-set design
 
 The ambient search object is the ring of integers of the fifth cyclotomic

@@ -31,11 +31,20 @@ the selected matching predicate. Worker compute time excludes playback and
 rendering; equivalent search paths need not have equal compute cost. A finite
 patch or budget stop does not prove infinite extendibility.
 
+Hover over the vertex dots to inspect exact coordinates and summed corner
+weights t(x). In the bar view, endpoint dots also expose m(x), a five-vector
+of stripe-end counts by direction. Per-tile m values glue rather than add.
+The inspector reports the current placed patch, excluding trial overlays.
+Stored t support consists of vertices (weights / 10); bar ports outside it
+have t = 0. At vertices outside marking support m is undefined. Decoration
+ports may have rational denominators in ℚ(ζ₅), while vertices are in ℤ[ζ₅].
+
 `reference.html` preserves the window-certified P1/P2/P3 catalog.
 
 Validation (Node, no local browser preview):
 
 ```sh
+node scripts/test-penrose-point-inspection.mjs
 node scripts/test-penrose-arrows.mjs
 node scripts/test-penrose-marking-settings.mjs
 node scripts/test-penrose-demo-controls.mjs

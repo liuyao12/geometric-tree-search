@@ -11,7 +11,8 @@ assert.equal((html.match(/<canvas /g) || []).length, 1);
 class Element {
   constructor() { this.checked = false; this.value = ""; this.listeners = new Map(); this.attributes = new Map(); this.clientWidth = 800; this.clientHeight = 500; }
   addEventListener(type, listener) { this.listeners.set(type, listener); }
-  fire(type) { this.listeners.get(type)?.({}); }
+  fire(type, event = {}) { this.listeners.get(type)?.(event); }
+  getBoundingClientRect() { return { left: 0, top: 0 }; }
   setAttribute(key, value) { this.attributes.set(key, value); }
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
@@ -36,7 +37,21 @@ await import("../apps/penrose-model-set/demo.js");
 const flush = () => new Promise(resolve => setImmediate(resolve));
 await flush();
 assert.equal(workers.length, 1); assert.equal(workers[0].messages[0].options.useMarkings, false);
+elements.get("tilingCanvas").fire("pointermove", { clientX: 400, clientY: 250 });
+assert.equal(elements.get("pointTooltip").hidden, false);
+assert.equal(elements.get("point_coordinate").textContent, "x = 0");
+assert.equal(elements.get("point_t").textContent, "t(x) = 1/5");
+assert.match(elements.get("point_m").textContent, /outside marking support/);
+elements.get("tilingCanvas").fire("pointerleave");
+assert.equal(elements.get("pointTooltip").hidden, true);
 elements.get("showMarking").fire("click"); elements.get("directionColors").fire("input"); elements.get("stripeWidth").fire("input");
+const { inspectionPoints } = await import("../apps/penrose-model-set/point-inspection.js");
+const endpoint = inspectionPoints(workers[0].growth.snapshot()).find(p => !p.vertex);
+elements.get("tilingCanvas").fire("pointermove", { clientX: 400 + endpoint.position.x * 50, clientY: 250 + endpoint.position.y * 50 });
+assert.equal(elements.get("pointTooltip").hidden, false);
+assert.equal(elements.get("point_title").textContent, "Ammann endpoint");
+assert.match(elements.get("point_t").textContent, /t\(x\) = 0/);
+assert.match(elements.get("point_m").textContent, /m\(x\) = \(/);
 assert.equal(workers.length, 1); assert.equal(workers[0].messages.length, 1, "display controls must not touch the search");
 elements.get("useMarkings").checked = true; elements.get("useMarkings").fire("change"); await flush();
 assert.equal(workers.length, 2); assert(workers[0].terminated);

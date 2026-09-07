@@ -3,12 +3,39 @@ import { ammannStates } from "../../assets/penrose-ammann.js?v=20260907-arrows";
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-arrows";
 
+import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-hover";
+
 const $ = id => document.getElementById(id);
 const canvas = $("tilingCanvas");
 const colors = ["#b45338", "#ba8219", "#197a69", "#426fa3", "#88569b"];
 let worker = null, snapshot = null, busy = false, running = false, failed = false;
 let generation = 0, lastTick = 0, radius = 5, zoom = 1, pan = { x: 0, y: 0 }, showMarking = false;
 const drawn = new Map();
+let pointer = null, inspectKey = null, inspectPoints = [], drag;
+function hideInspection() { $("pointTooltip").hidden = true; }
+function inspect(ctx, screen) {
+  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations);
+  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints(snapshot); }
+  let nearest = null, distance = 12;
+  for (const point of inspectPoints) {
+    if (!point.vertex && !showMarking) continue;
+    const p = screen(point.position);
+    // Small vertex dots make the exact support discoverable in either view.
+    ctx.fillStyle = point.vertex ? "#34483f" : "#643920";
+    ctx.beginPath(); ctx.arc(p.x, p.y, point.vertex ? 2.1 : 1.8, 0, 2 * Math.PI); ctx.fill();
+    if (pointer && !drag) {
+      const d = Math.hypot(pointer.x - p.x, pointer.y - p.y);
+      if (d < distance) { distance = d; nearest = point; }
+    }
+  }
+  if (!nearest) { hideInspection(); return; }
+  const p = screen(nearest.position);
+  ctx.strokeStyle = "#19695b"; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI); ctx.stroke();
+  const text = inspectionText(nearest, snapshot.useMarkings);
+  for (const [key, value] of Object.entries(text)) $("point_" + key).textContent = value;
+  $("pointTooltip").hidden = false;
+}
 function visual(tile) {
   if (!drawn.has(tile.id)) drawn.set(tile.id, {
     points: tile.exactPoints.map(p => embedding(p)),
@@ -20,7 +47,7 @@ function visual(tile) {
 function paint() {
   const ctx = canvas.getContext("2d"), width = canvas.clientWidth, height = canvas.clientHeight, dpr = devicePixelRatio || 1;
   canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); ctx.scale(dpr, dpr);
-  if (!snapshot) return;
+  if (!snapshot) { hideInspection(); return; }
   for (const tile of snapshot.tiles) for (const p of visual(tile).points) radius = Math.max(radius, Math.abs(p.x) + 1, Math.abs(p.y) + 1);
   const scale = Math.min(width, height) / (2 * radius) * zoom;
   const screen = p => ({ x: width / 2 + p.x * scale + pan.x, y: height / 2 + p.y * scale + pan.y });
@@ -57,6 +84,7 @@ function paint() {
   }
   const event = snapshot.event;
   if (event?.tile && ["try", "reject", "remove"].includes(event.type)) polygon(event.tile, event.type === "try" ? "#9c82b55c" : "#e8806244", event.type === "try" ? "#725488" : "#b73e2b", 2);
+  inspect(ctx, screen);
 }
 function syncSettings() {
   const enabled = $("useMarkings").checked;
@@ -98,6 +126,7 @@ function reset(autostart = false) {
   running = false; generation++; const current = generation;
   worker?.terminate(); worker = null; busy = false; failed = false; snapshot = null;
   radius = 5; zoom = 1; pan = { x: 0, y: 0 }; drawn.clear();
+  pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "One thick-rhomb seed"; $("pruneDetail").textContent = "No proposals yet";
   const options = { useMarkings: $("useMarkings").checked, targetCount: Number($("targetCount").value), nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
@@ -124,9 +153,13 @@ $("markingDirections").addEventListener("change", render);
 for (const id of ["directionColors", "stripeWidth"]) $(id).addEventListener("input", render);
 $("fitView").addEventListener("click", () => { radius = 5; zoom = 1; pan = { x: 0, y: 0 }; render(); });
 canvas.addEventListener("wheel", event => { event.preventDefault(); zoom = Math.max(.4, Math.min(5, zoom * Math.exp(-event.deltaY * .001))); paint(); }, { passive: false });
-let drag;
-canvas.addEventListener("pointerdown", e => { drag = { x: e.clientX - pan.x, y: e.clientY - pan.y }; canvas.setPointerCapture(e.pointerId); });
-canvas.addEventListener("pointermove", e => { if (drag) { pan = { x: e.clientX - drag.x, y: e.clientY - drag.y }; paint(); } });
+canvas.addEventListener("pointerdown", e => { drag = { x: e.clientX - pan.x, y: e.clientY - pan.y }; canvas.setPointerCapture(e.pointerId); hideInspection(); });
+canvas.addEventListener("pointermove", e => {
+  const rect = canvas.getBoundingClientRect(); pointer = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  if (drag) pan = { x: e.clientX - drag.x, y: e.clientY - drag.y };
+  paint();
+});
+canvas.addEventListener("pointerleave", () => { pointer = null; hideInspection(); paint(); });
 for (const name of ["pointerup", "pointercancel", "lostpointercapture"]) canvas.addEventListener(name, () => { drag = null; });
 window.addEventListener("resize", paint);
 window.addEventListener("pagehide", () => { running = false; worker?.terminate(); worker = null; });

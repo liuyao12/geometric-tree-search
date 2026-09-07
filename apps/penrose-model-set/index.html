@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Penrose tiling · GCTS marking controls</title>
 <meta name="description" content="Grow Penrose rhombs in cyclotomic integers. Toggle marking enforcement, explore direction settings, and watch live search and backtracking.">
-<link rel="stylesheet" href="./demo.css?v=20260907-arrows">
+<link rel="stylesheet" href="./demo.css?v=20260907-hover">
 </head><body><main>
 <header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with explicit edge matching or matching enforced by Ammann bars.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
 <section class="workbench" aria-label="Interactive Penrose tiling">
@@ -26,7 +26,11 @@
 <label>Playback <select id="playbackSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
 </div>
 <div class="canvas-head"><strong id="modeLabel">Explicit Penrose edge-arrow matching</strong><span id="runState" class="badge">initializing</span></div>
-<canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: drag to pan and scroll to zoom"></canvas>
+<div class="canvas-wrap">
+<canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: hover over dots to inspect exact coordinates and t/m values; drag to pan and scroll to zoom"></canvas>
+<div id="pointTooltip" class="point-tooltip" role="status" hidden><strong id="point_title"></strong><p id="point_coordinate" class="point-coordinate"></p><p id="point_basis"></p><p id="point_t"></p><p id="point_m"></p><p id="point_detail" class="point-detail"></p></div>
+</div>
+<p class="hint">Hover over a vertex for its exact coordinate and t-value. Show Ammann bars to inspect endpoint m-values. Drag to pan; scroll to zoom.</p>
 <p class="event" id="eventLabel">One thick-rhomb seed</p>
 <div class="stats">
 <div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span id="matchingPrunesLabel">edge-arrow prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
@@ -34,10 +38,11 @@
 </section>
 <p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
 <details><summary>How to use the marking controls</summary>
+<p>The hover inspector reports the current placed patch. Here t is the sum of stored corner weights divided by ten (a full vertex has t = 1); at bar endpoints outside that vertex support, t = 0. The marking m is a five-vector of stripe-end counts by direction at each exact port. Matching tiles agree on m; their values are not added. At vertices outside the marking support, m is undefined. Vertex coordinates lie in ℤ[ζ₅]; decoration ports can have rational denominators in ℚ(ζ₅).</p>
 <p>With “Enforce Ammann bars” off, the search explicitly checks the Penrose edge arrows: single/double arrow type and direction must agree along each shared edge. With it on, the search checks only the complete Ammann markings, without calling the edge-arrow predicate. Matching bars enforce the same local edge compatibility.</p>
 <p>“Show edge arrows” / “Show Ammann bars,” direction highlighting, colors and line weight change only the drawing. All five Ammann directions are always enforced in bar mode, including gray directions. The 1- and 3-direction options highlight those families in the fixed cyclotomic frame; they do not weaken the rule.</p>
 <p>Both searches check exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking and no window oracle. The two complete local rules accept the same shared-edge orientations, so the same seed and proposal order give the same search path. Computation costs may differ. A finite patch or a budget stop does not establish infinite extendibility.</p>
 <p>The thick and thin rhombs each carry a fixed arrow template and a complete fixed five-stripe template. The solver finds compatible rigid orientations; these may resolve differently as the search extends or backtracks. Neither mode accepts arbitrary unmarked rhomb tilings.</p>
 </details>
 <footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · <a href="https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17" target="_blank" rel="noreferrer">Penrose edge arrows ↗</a> · supplied, not learned</span></footer>
-</main><script type="module" src="./demo.js?v=20260907-arrows"></script></body></html>
+</main><script type="module" src="./demo.js?v=20260907-hover"></script></body></html>
