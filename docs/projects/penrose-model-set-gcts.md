@@ -22,7 +22,7 @@ Both modes retain exact convex non-overlap, corner capacity, and one simple
 outer boundary. There is no window oracle or target list. DFS rolls placements
 and assignments back on failure. The seed and proposal ordering are shared:
 seed 17, target 60 uses 4,461 proposals, 725 matching rejections and 607
-backtracks in either mode. The growth regression checks the identical traces,
+backtracks in either mode at extent zero. The growth regression checks the identical traces,
 valid edge arrows in both results, and zero calls to the inactive predicate.
 A finite patch or a budget stop does not decide infinite extendibility.
 
@@ -39,18 +39,43 @@ the actual worker module without a local preview. Worker compute time excludes
 playback waiting and drawing. The catalog remains at `reference.html`; its
 separately named `makeCyclotomicSearch` is the reference path documented below.
 
+### Extended marking support and extent
+
+`penrose-extensions.js` extends both ends of each fixed stripe by `extent`
+times the original stripe length (0–4 in quarter steps). The UI defaults to 2;
+the solver API defaults to 0 for compatibility with the reference path.
+In each of five separate channels the domain is the closed tile plus that
+channel's extended segment. The value is 1 on the segment, 0 elsewhere inside
+the tile, and undefined outside this domain. Thus overlapping extensions of
+different directions are compatible, while a stripe entering another tile
+without coinciding with its corresponding stripe is rejected. This support
+is specified geometrically; it is not enumerated as a finite lattice sample.
+
+The solver adds pairwise orientation constraints for extension/tile overlaps,
+including tiles with no shared edge, to the Ammann propagation graph. It
+never invokes edge-arrow matching in marked mode. Exact rational orientation
+and segment predicates handle all decisions; conservative floating bounds
+only cull distant objects. State-pair compatibility is cached across proposals.
+Extent zero recovers the previous port rule. Changing extent restarts marked
+search but changes only the illustration in arrow mode.
+
+Tests preserve 240 window-certified tiles from three phases at extents .25,
+2 and 4, verify a conflict between tiles without a common edge, and check
+rational extension endpoints and component values. For seed 17 / target 60,
+extent 2 reaches the target in 221 proposals with zero backtracks, versus
+4,461 / 607 at extent zero. These are tree-size statistics, not a general
+runtime guarantee: extension checks have a higher per-proposal cost.
+
 ### Point inspector
 
-`point-inspection.js` indexes the exact vertices and Ammann stripe endpoints
-of the current placed patch. Hover reports canonical coordinates in the basis
-(1, ζ₅, ζ₅², ζ₅³), summed stored vertex weights divided by ten as t(x), and
-individual tile contributions. The marking m at each port is the five-vector
-counting stripe ends in each direction family. Values agree on shared support
-and are not summed. Outside its support m is undefined; t is zero at ports
-outside its vertex support. This displays the implemented finite fields,
-without assigning a continuous extension to bar interiors. Exact port
-coordinates may be in ℚ(ζ₅) with nontrivial denominators. Tests check both the
-field values and pointer hover/leave behavior without a local preview.
+`point-inspection.js` indexes vertices, stripe endpoints and extension
+endpoints. Hover reports canonical coordinates in (1, ζ₅, ζ₅², ζ₅³), summed
+stored vertex weights / 10 as t(x), and lazily samples each tile's m at that
+exact point. Each component is 1, 0, or undefined (—) according to the support
+above. Shared defined values agree; they are not summed. The corner field t
+remains zero at nonvertex sample locations. Exact endpoints may have rational
+denominators in ℚ(ζ₅). Controller tests cover hover/leave behavior and extent
+changes without a local preview.
 
 ## Reference model-set design
 

@@ -1,4 +1,4 @@
-import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-arrows";
+import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-extent";
 
 let search, done = false, computeMs = 0;
 self.onmessage = ({ data }) => {

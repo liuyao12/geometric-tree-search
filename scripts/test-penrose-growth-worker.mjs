@@ -15,8 +15,8 @@ const request = message => new Promise((resolve, reject) => {
   worker.postMessage(message);
 });
 try {
-  let state = await request({ type: "init", options: { useMarkings: true, targetCount: 40, nodeLimit: 100, seed: 17 } });
-  assert.equal(state.tiles.length, 1); assert.equal(state.done, false);
+  let state = await request({ type: "init", options: { useMarkings: true, extent: 2, targetCount: 40, nodeLimit: 100, seed: 17 } });
+  assert.equal(state.extent, 2); assert.equal(state.tiles.length, 1); assert.equal(state.done, false);
   let batches = 0;
   while (!state.done) {
     state = await request({ type: "advance", events: 50 }); assert(!state.error); batches++;

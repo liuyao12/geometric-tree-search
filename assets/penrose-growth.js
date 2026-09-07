@@ -1,7 +1,9 @@
 import { asFive, latticeKey } from "./cyclotomic-five.js";
-import { solveAmmannDecorations } from "./penrose-ammann.js?v=20260907-arrows";
+import { solveAmmannDecorations } from "./penrose-ammann.js?v=20260907-extent";
 
-import { solveArrowDecorations } from "./penrose-arrows.js?v=20260907-arrows";
+import { solveArrowDecorations } from "./penrose-arrows.js?v=20260907-extent";
+
+import { validateExtent } from "./penrose-extensions.js?v=20260907-extent";
 
 const mod5 = n => (n % 5 + 5) % 5;
 const sign = (a, b) => {
@@ -63,7 +65,8 @@ const edgeDistance = (t, k) => {
 };
 const priority = (key, seed) => { let h = (2166136261 ^ seed) >>> 0; for (const c of key) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0; return h; };
 
-export function createPenroseGrowth({ useMarkings = true, markingDirections = 5, targetCount = 60, nodeLimit = 10000, seed = 1 } = {}) {
+export function createPenroseGrowth({ useMarkings = true, markingDirections = 5, extent = 0, targetCount = 60, nodeLimit = 10000, seed = 1 } = {}) {
+  validateExtent(extent);
   if (![targetCount, nodeLimit, seed].every(Number.isSafeInteger) || targetCount < 1 || targetCount > 420 || nodeLimit < 1 || nodeLimit > 100000) throw new RangeError("Invalid search budget");
   if (markingDirections !== 5) throw new RangeError("Tiling requires all five Ammann directions");
   const active = [], edges = new Map(), totals = new Map(), ids = new Set(), candidatesCache = new Map();
@@ -125,7 +128,7 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
       }
       const before = marking;
       stats[useMarkings ? "markingChecks" : "edgeChecks"]++;
-      const next = useMarkings ? solveAmmannDecorations([...active, tile]) : solveArrowDecorations([...active, tile]);
+      const next = useMarkings ? solveAmmannDecorations([...active, tile], { extent }) : solveArrowDecorations([...active, tile]);
       if (!next.success) {
         stats[useMarkings ? "markingPrunes" : "edgePrunes"]++;
         yield { type: "reject", tile, message: useMarkings ? "Fixed Ammann stripes cannot match" : "Penrose edge-arrow type or direction cannot match" }; continue;
@@ -145,7 +148,7 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
   }
   function* run() {
     const tile = growthRhomb([0, 0, 0, 0, 0], 0, 1); put(tile);
-    marking = useMarkings ? solveAmmannDecorations(active) : solveArrowDecorations(active);
+    marking = useMarkings ? solveAmmannDecorations(active, { extent }) : solveArrowDecorations(active);
     status = "searching";
     yield { type: "add", tile, message: "Same thick-rhomb seed in both searches" };
     if (!(yield* search()) && status !== "budget reached") status = "frontier exhausted";
@@ -153,6 +156,6 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
   const iterator = run();
   return {
     next() { const step = iterator.next(); if (step.value) lastEvent = step.value; return step; },
-    snapshot() { return { tiles: [...active], orientations: marking ? [...marking.orientationByTile] : [], stats: { ...stats }, status, event: lastEvent, useMarkings, markingDirections }; }
+    snapshot() { return { tiles: [...active], orientations: marking ? [...marking.orientationByTile] : [], stats: { ...stats }, status, event: lastEvent, useMarkings, markingDirections, extent, extensionPairs: marking?.extensionPairs || 0 }; }
   };
 }

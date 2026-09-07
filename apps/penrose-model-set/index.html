@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Penrose tiling · GCTS marking controls</title>
 <meta name="description" content="Grow Penrose rhombs in cyclotomic integers. Toggle marking enforcement, explore direction settings, and watch live search and backtracking.">
-<link rel="stylesheet" href="./demo.css?v=20260907-hover">
+<link rel="stylesheet" href="./demo.css?v=20260907-extent">
 </head><body><main>
 <header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with explicit edge matching or matching enforced by Ammann bars.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
 <section class="workbench" aria-label="Interactive Penrose tiling">
@@ -14,6 +14,7 @@
 </div>
 <div class="marking-controls" role="group" aria-label="Marking settings">
 <span>Marking settings</span>
+<label>Extent <input id="extent" type="range" min="0" max="4" step="0.25" value="2" aria-label="Marking extension in stripe lengths per end"><output id="extentValue" for="extent">2×</output></label>
 <label>Highlight <select id="markingDirections"><option value="1">1 direction</option><option value="3">3 directions</option><option value="5" selected>All 5 directions</option></select></label>
 <label><input type="checkbox" id="directionColors">Color by direction</label>
 <label>Line weight <input type="range" id="stripeWidth" min="1" max="3" step="0.25" value="1.5"></label>
@@ -30,7 +31,7 @@
 <canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: hover over dots to inspect exact coordinates and t/m values; drag to pan and scroll to zoom"></canvas>
 <div id="pointTooltip" class="point-tooltip" role="status" hidden><strong id="point_title"></strong><p id="point_coordinate" class="point-coordinate"></p><p id="point_basis"></p><p id="point_t"></p><p id="point_m"></p><p id="point_detail" class="point-detail"></p></div>
 </div>
-<p class="hint">Hover over a vertex for its exact coordinate and t-value. Show Ammann bars to inspect endpoint m-values. Drag to pan; scroll to zoom.</p>
+<p class="hint">Hover over a vertex for its exact coordinate and t-value. Show Ammann bars to inspect stripe and extension endpoints. Drag to pan; scroll to zoom.</p>
 <p class="event" id="eventLabel">One thick-rhomb seed</p>
 <div class="stats">
 <div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span id="matchingPrunesLabel">edge-arrow prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
@@ -38,11 +39,12 @@
 </section>
 <p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
 <details><summary>How to use the marking controls</summary>
-<p>The hover inspector reports the current placed patch. Here t is the sum of stored corner weights divided by ten (a full vertex has t = 1); at bar endpoints outside that vertex support, t = 0. The marking m is a five-vector of stripe-end counts by direction at each exact port. Matching tiles agree on m; their values are not added. At vertices outside the marking support, m is undefined. Vertex coordinates lie in ℤ[ζ₅]; decoration ports can have rational denominators in ℚ(ζ₅).</p>
+<p>Extent adds the selected multiple of each stripe’s original length at both ends. Dashed lines show extensions. At zero, the original edge-port rule is recovered. In Ammann mode, changing extent restarts the search. In edge-arrow mode it changes only the drawing.</p>
+<p>For each direction, m = 1 on its bar and extension, m = 0 elsewhere inside the tile, and m is undefined outside that component’s support. An extension reaching a neighboring tile must meet its corresponding bar, even without a shared edge. Different directions are separate components. The inspector uses — for undefined components. The t-value remains the summed corner weights divided by ten; stripe and extension endpoints outside vertex support have t = 0.</p>
 <p>With “Enforce Ammann bars” off, the search explicitly checks the Penrose edge arrows: single/double arrow type and direction must agree along each shared edge. With it on, the search checks only the complete Ammann markings, without calling the edge-arrow predicate. Matching bars enforce the same local edge compatibility.</p>
 <p>“Show edge arrows” / “Show Ammann bars,” direction highlighting, colors and line weight change only the drawing. All five Ammann directions are always enforced in bar mode, including gray directions. The 1- and 3-direction options highlight those families in the fixed cyclotomic frame; they do not weaken the rule.</p>
-<p>Both searches check exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking and no window oracle. The two complete local rules accept the same shared-edge orientations, so the same seed and proposal order give the same search path. Computation costs may differ. A finite patch or a budget stop does not establish infinite extendibility.</p>
+<p>Both searches check exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking and no window oracle. At extent zero the two modes have the same search path. Positive extent adds overlap constraints that can prune earlier; geometric checking costs may offset the reduction in proposals. A finite patch or a budget stop does not establish infinite extendibility.</p>
 <p>The thick and thin rhombs each carry a fixed arrow template and a complete fixed five-stripe template. The solver finds compatible rigid orientations; these may resolve differently as the search extends or backtracks. Neither mode accepts arbitrary unmarked rhomb tilings.</p>
 </details>
 <footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · <a href="https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17" target="_blank" rel="noreferrer">Penrose edge arrows ↗</a> · supplied, not learned</span></footer>
-</main><script type="module" src="./demo.js?v=20260907-hover"></script></body></html>
+</main><script type="module" src="./demo.js?v=20260907-extent"></script></body></html>

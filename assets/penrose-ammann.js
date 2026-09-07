@@ -1,5 +1,7 @@
 import { canonical, cycloAdd, cycloMultiply, edgePort, latticeKey, starMap } from "./cyclotomic-five.js";
 
+import { extensionStatesCompatible, validateExtent } from "./penrose-extensions.js?v=20260907-extent";
+
 const sub = (a, b) => cycloAdd(a, { ...canonical(b), coeff: canonical(b).coeff.map(n => -n) });
 const conjugate = a => starMap(starMap(a));
 const one = { coeff: [1, 0, 0, 0], denominator: 1 };
@@ -71,7 +73,8 @@ export function ammannSignature(state, edge, directionCount = 5) {
   return signature.split(";").filter(port => Number(port.slice(port.lastIndexOf(":") + 1)) < directionCount).join(";");
 }
 
-export function solveAmmannDecorations(tiles, { directionCount = 5 } = {}) {
+export function solveAmmannDecorations(tiles, { directionCount = 5, extent = 0 } = {}) {
+  validateExtent(extent);
   if (!Number.isInteger(directionCount) || directionCount < 1 || directionCount > 5) throw new RangeError("Marking direction count must be 1–5");
   const states = tiles.map(ammannStates), edges = new Map(), neighbors = tiles.map(() => []);
   states.forEach((choices, i) => {
@@ -92,6 +95,18 @@ export function solveAmmannDecorations(tiles, { directionCount = 5 } = {}) {
         masks[s] |= 1 << t; reverse[t] |= 1 << s;
       }
     }
+    neighbors[i].push({ at: j, masks }); neighbors[j].push({ at: i, masks: reverse });
+  }
+  let extensionPairs = 0;
+  if (extent) for (let i = 0; i < tiles.length; i++) for (let j = i + 1; j < tiles.length; j++) {
+    const masks = [0, 0], reverse = [0, 0];
+    for (let s = 0; s < 2; s++) for (let t = 0; t < 2; t++) {
+      if (extensionStatesCompatible(tiles[i], states[i][s], tiles[j], states[j][t], extent)) {
+        masks[s] |= 1 << t; reverse[t] |= 1 << s;
+      }
+    }
+    if (masks[0] === 3 && masks[1] === 3) continue;
+    extensionPairs++;
     neighbors[i].push({ at: j, masks }); neighbors[j].push({ at: i, masks: reverse });
   }
   let branches = 0;
@@ -117,7 +132,7 @@ export function solveAmmannDecorations(tiles, { directionCount = 5 } = {}) {
     return null;
   };
   const domains = solve(tiles.map(() => 3));
-  if (!domains) return { success: false, reason: "no consistent rigid tile marking", sharedEdges, branches };
+  if (!domains) return { success: false, reason: "no consistent rigid tile marking", sharedEdges, branches, extensionPairs, extent };
   const byTile = new Map(), orientationByTile = new Map();
   let interiorEndpoints = 0, boundaryEndpoints = 0;
   tiles.forEach((tile, i) => {
@@ -128,7 +143,7 @@ export function solveAmmannDecorations(tiles, { directionCount = 5 } = {}) {
     }
   });
   return { success: true, byTile, orientationByTile, sharedEdges, branches, interiorEndpoints, boundaryEndpoints,
-    templates: 2, stripesPerTile: 5, segments: tiles.length * 5, directionCount,
+    extent, extensionPairs, templates: 2, stripesPerTile: 5, segments: tiles.length * 5, directionCount,
     families: new Set([...byTile.values()].flat().map(bar => bar.family)).size,
     source: "Classical fixed Ammann templates; not a learned rediscovery" };
 }

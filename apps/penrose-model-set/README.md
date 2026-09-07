@@ -6,7 +6,7 @@ Use GitHub Pages for publication; no local preview.
 One canvas and one worker run genuine DFS growth in ℤ[ζ₅]. With **Enforce
 Ammann bars** off, `penrose-arrows.js` explicitly matches the type and direction
 of standard single/double Penrose edge arrows. With it on, only the complete
-Ammann port/direction rule is checked; the search never invokes the arrow
+Ammann rule with the selected extension is checked; the search never invokes the arrow
 predicate. Both modes retain exact non-overlap, corner capacity and a single
 outer boundary. There is no window oracle or precomputed target tiling.
 
@@ -15,7 +15,7 @@ Tiling](https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17).
 The thin template's acute starting corner is rotated 180° to align its state
 index with the fixed Ammann template. Tests exhaust all 640 oriented local
 adjacencies: 160 are accepted and 480 rejected by both predicates. This local
-correspondence makes the complete rules equivalent on finite patches.
+correspondence makes the extent-zero rules equivalent on finite patches.
 
 The checkbox switches the predicate and restarts from the same seed. Seed,
 target and budget also restart. Start/Pause, Step and Reset control playback.
@@ -25,25 +25,38 @@ enforcement: all five are always checked in Ammann mode. The growth API rejects
 partial enforcement. The lower-level Ammann solver retains diagnostic partial
 signatures for reference use.
 
-Both modes now reject arbitrary periodic rhomb tilings. Seed 17, target 60
-uses 4,461 proposals and 607 backtracks in each mode, with 725 rejections by
-the selected matching predicate. Worker compute time excludes playback and
-rendering; equivalent search paths need not have equal compute cost. A finite
-patch or budget stop does not prove infinite extendibility.
+**Extent** ranges from 0 to 4 in quarter steps (UI default 2). It extends each
+stripe at both ends by that multiple of its own original length. The visible
+extensions are dashed. Changing extent restarts marked search; in arrow mode
+it changes only the illustration. For each direction, the marking is 1 on the
+extended stripe and 0 elsewhere inside the tile, with undefined values outside
+that component's support. Extension/tile overlap must agree, even between
+tiles without a common edge. Crossing different directions does not conflict.
+The constraints use exact rational cyclotomic predicates; conservative bounding
+boxes skip distant pairs, and cached state-pair masks avoid repeated geometry.
 
-Hover over the vertex dots to inspect exact coordinates and summed corner
-weights t(x). In the bar view, endpoint dots also expose m(x), a five-vector
-of stripe-end counts by direction. Per-tile m values glue rather than add.
-The inspector reports the current placed patch, excluding trial overlays.
-Stored t support consists of vertices (weights / 10); bar ports outside it
-have t = 0. At vertices outside marking support m is undefined. Decoration
-ports may have rational denominators in ℚ(ζ₅), while vertices are in ℤ[ζ₅].
+Both modes reject arbitrary periodic rhomb tilings. Seed 17, target 60 uses
+4,461 proposals and 607 backtracks at extent zero. With extent 2 it uses 221
+proposals and no backtracking. This is a search-tree comparison, not a claim
+of equal per-proposal cost or guaranteed runtime improvement. Worker compute
+time excludes playback and drawing. Finite patches do not prove infinite
+extendibility. Tests retain 240 window-certified reference tiles at extents
+0.25, 2 and 4 and witness a conflict between non-edge-neighboring tiles.
+
+Hover over dots to inspect exact coordinates and summed corner weights t(x).
+The bar view includes extension endpoints. The five-component marking m is
+sampled at the hovered point: 1 means on a bar, 0 means off the bar inside a
+tile, and — means outside that component's support. Per-tile values must agree
+where both are defined; they are not summed. Stored t support still consists
+of vertices (weights / 10); other sample points have t = 0. Coordinates retain
+exact rational denominators in ℚ(ζ₅).
 
 `reference.html` preserves the window-certified P1/P2/P3 catalog.
 
 Validation (Node, no local browser preview):
 
 ```sh
+node scripts/test-penrose-extensions.mjs
 node scripts/test-penrose-point-inspection.mjs
 node scripts/test-penrose-arrows.mjs
 node scripts/test-penrose-marking-settings.mjs

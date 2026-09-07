@@ -1,9 +1,11 @@
 import { embedding } from "../../assets/cyclotomic-five.js";
-import { ammannStates } from "../../assets/penrose-ammann.js?v=20260907-arrows";
+import { ammannStates } from "../../assets/penrose-ammann.js?v=20260907-extent";
 
-import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-arrows";
+import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-hover";
+import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-extent";
+
+import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
 const $ = id => document.getElementById(id);
 const canvas = $("tilingCanvas");
@@ -14,8 +16,8 @@ const drawn = new Map();
 let pointer = null, inspectKey = null, inspectPoints = [], drag;
 function hideInspection() { $("pointTooltip").hidden = true; }
 function inspect(ctx, screen) {
-  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations);
-  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints(snapshot); }
+  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value;
+  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }); }
   let nearest = null, distance = 12;
   for (const point of inspectPoints) {
     if (!point.vertex && !showMarking) continue;
@@ -37,18 +39,22 @@ function inspect(ctx, screen) {
   $("pointTooltip").hidden = false;
 }
 function visual(tile) {
-  if (!drawn.has(tile.id)) drawn.set(tile.id, {
+  const key = tile.id + "/" + $("extent").value;
+  if (!drawn.has(key)) drawn.set(key, {
     points: tile.exactPoints.map(p => embedding(p)),
     arrows: arrowStates(tile).map(s => ({ start: s.start, arrows: s.arrows.map(a => ({ type: a.type, from: embedding(a.from), to: embedding(a.to) })) })),
-    states: ammannStates(tile).map(s => ({ start: s.start, bars: s.bars.map(b => ({ family: b.family, from: embedding(b.from), to: embedding(b.to) })) }))
+    states: ammannStates(tile).map(s => ({ start: s.start, bars: s.bars.map(b => { const e = extendBar(b, Number($("extent").value)); return { family: b.family, from: embedding(b.from), to: embedding(b.to), extFrom: embedding(e.from), extTo: embedding(e.to) }; }) }))
   });
-  return drawn.get(tile.id);
+  return drawn.get(key);
 }
 function paint() {
   const ctx = canvas.getContext("2d"), width = canvas.clientWidth, height = canvas.clientHeight, dpr = devicePixelRatio || 1;
   canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); ctx.scale(dpr, dpr);
   if (!snapshot) { hideInspection(); return; }
   for (const tile of snapshot.tiles) for (const p of visual(tile).points) radius = Math.max(radius, Math.abs(p.x) + 1, Math.abs(p.y) + 1);
+  if (showMarking) for (const tile of snapshot.tiles) for (const state of visual(tile).states) for (const bar of state.bars) {
+    for (const p of [bar.extFrom, bar.extTo]) radius = Math.max(radius, Math.abs(p.x) + .5, Math.abs(p.y) + .5);
+  }
   const scale = Math.min(width, height) / (2 * radius) * zoom;
   const screen = p => ({ x: width / 2 + p.x * scale + pan.x, y: height / 2 + p.y * scale + pan.y });
   const polygon = (tile, fill, stroke, lineWidth = 1) => {
@@ -82,12 +88,26 @@ function paint() {
       }
     }
   }
+  if (showMarking && Number($("extent").value)) {
+    ctx.setLineDash([3, 4]); ctx.globalAlpha = .42; ctx.lineWidth = Number($("stripeWidth").value);
+    for (const tile of snapshot.tiles) {
+      const view = visual(tile), state = view.states.find(s => s.start === orientations.get(tile.id)) || view.states[0];
+      for (const bar of state.bars) {
+        ctx.strokeStyle = $("directionColors").checked ? colors[bar.family] : "#643920";
+        for (const [from, to] of [[bar.extFrom, bar.from], [bar.to, bar.extTo]]) {
+          const a = screen(from), b = screen(to); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+  }
   const event = snapshot.event;
   if (event?.tile && ["try", "reject", "remove"].includes(event.type)) polygon(event.tile, event.type === "try" ? "#9c82b55c" : "#e8806244", event.type === "try" ? "#725488" : "#b73e2b", 2);
   inspect(ctx, screen);
 }
 function syncSettings() {
   const enabled = $("useMarkings").checked;
+  $("extentValue").textContent = $("extent").value + "×";
   $("markingDirections").disabled = !showMarking;
   $("showMarking").textContent = showMarking ? "Show edge arrows" : "Show Ammann bars";
   $("showMarking").setAttribute("aria-pressed", String(showMarking));
@@ -95,7 +115,7 @@ function syncSettings() {
   $("matchingPrunesLabel").textContent = enabled ? "Ammann prunes" : "edge-arrow prunes";
   $("modeLabel").textContent = enabled ? "Ammann matching · no explicit arrow check" : "Explicit Penrose edge-arrow matching";
   $("markingHint").textContent = enabled
-    ? "All five Ammann directions are enforced. Direction highlighting changes only the drawing; no edge-arrow predicate is called."
+    ? `All five directions enforced · extent ${$("extent").value}× per stripe end. Overlapping extensions must agree; no edge-arrow predicate is called.`
     : "Single/double arrows must agree in type and direction on shared edges. Ammann bars are not checked.";
 }
 function render() {
@@ -129,11 +149,11 @@ function reset(autostart = false) {
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "One thick-rhomb seed"; $("pruneDetail").textContent = "No proposals yet";
-  const options = { useMarkings: $("useMarkings").checked, targetCount: Number($("targetCount").value), nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
+  const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: Number($("targetCount").value), nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
   if ($("shuffleSeed").value.trim() === "" || !Number.isSafeInteger(options.seed)) { error("Enter an integer shuffle seed, then retry."); return; }
   $("statusMessage").textContent = "Ready from the seed. Changing marking rules restarts the search; display settings do not.";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-arrows", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-extent", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;
@@ -149,6 +169,10 @@ $("stepTiling").addEventListener("click", () => { running = false; advance(1); r
 $("resetTiling").addEventListener("click", () => reset());
 for (const id of ["useMarkings", "targetCount", "nodeLimit", "shuffleSeed"]) $(id).addEventListener("change", () => reset());
 $("showMarking").addEventListener("click", () => { showMarking = !showMarking; render(); });
+$("extent").addEventListener("input", () => {
+  drawn.clear(); inspectKey = null;
+  if ($("useMarkings").checked) reset(); else render();
+});
 $("markingDirections").addEventListener("change", render);
 for (const id of ["directionColors", "stripeWidth"]) $(id).addEventListener("input", render);
 $("fitView").addEventListener("click", () => { radius = 5; zoom = 1; pan = { x: 0, y: 0 }; render(); });
