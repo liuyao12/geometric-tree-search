@@ -17,7 +17,7 @@ class Element {
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
-for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", targetCount: "40", nodeLimit: "1000", shuffleSeed: "17", playbackSpeed: "24" })) elements.get(id).value = value;
+for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", nodeLimit: "1000", shuffleSeed: "17", playbackSpeed: "24" })) elements.get(id).value = value;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
 globalThis.devicePixelRatio = 1;
@@ -37,6 +37,8 @@ await import("../apps/penrose-model-set/demo.js");
 const flush = () => new Promise(resolve => setImmediate(resolve));
 await flush();
 assert.equal(workers.length, 1); assert.equal(workers[0].messages[0].options.useMarkings, false);
+assert.equal(workers[0].messages[0].options.targetCount, null);
+assert.equal(elements.get("startTiling").textContent, "Run to corona 3");
 elements.get("tilingCanvas").fire("pointermove", { clientX: 400, clientY: 250 });
 assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_coordinate").textContent, "x = 0");
@@ -71,6 +73,12 @@ assert.equal(workers.length, 3); assert(workers[1].terminated);
 assert.equal(workers[2].messages[0].options.extent, 2, "extent reaches the solver");
 elements.get("stepTiling").fire("click"); await flush();
 assert.equal(workers[2].messages.at(-1).events, 1);
+assert.equal(workers[2].messages.at(-1).targetCorona, 3);
+workers[2].onmessage({data:{...workers[2].growth.snapshot(),pausedCorona:3,done:false,computeMs:0}});
+assert.equal(elements.get("startTiling").textContent, "Run to corona 5");
+elements.get("stepTiling").fire("click"); await flush();
+assert.equal(workers[2].messages.at(-1).targetCorona, 5);
+assert.equal(workers.length, 3, "continuation preserves the worker");
 elements.get("shuffleSeed").value = "1.5"; elements.get("shuffleSeed").fire("change"); await flush();
 assert(workers[2].terminated); assert.equal(workers.length, 3);
 assert.equal(elements.get("runState").textContent, "error");

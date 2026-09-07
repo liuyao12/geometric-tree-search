@@ -67,23 +67,36 @@ const priority = (key, seed) => { let h = (2166136261 ^ seed) >>> 0; for (const 
 
 export function createPenroseGrowth({ useMarkings = true, markingDirections = 5, extent = 0, targetCount = 60, nodeLimit = 10000, seed = 1 } = {}) {
   validateExtent(extent);
-  if (![targetCount, nodeLimit, seed].every(Number.isSafeInteger) || targetCount < 1 || targetCount > 420 || nodeLimit < 1 || nodeLimit > 100000) throw new RangeError("Invalid search budget");
+  if (![nodeLimit, seed].every(Number.isSafeInteger) || (targetCount !== null && (!Number.isSafeInteger(targetCount) || targetCount < 1 || targetCount > 420)) || nodeLimit < 1 || nodeLimit > 100000) throw new RangeError("Invalid search budget");
   if (markingDirections !== 5) throw new RangeError("Tiling requires all five Ammann directions");
   const active = [], edges = new Map(), totals = new Map(), ids = new Set(), candidatesCache = new Map();
+  const depths = new Map();
+  let minimumFrontierGeneration = 0;
+  const updateCorona = () => {
+    let minimum = Infinity;
+    for (const [v, total] of totals) if (total > 0 && total < 10) minimum = Math.min(minimum, ...depths.get(v));
+    minimumFrontierGeneration = Number.isFinite(minimum) ? minimum : null;
+  };
   const stats = { proposals: 0, capacityPrunes: 0, geometryPrunes: 0, topologyPrunes: 0, markingPrunes: 0, edgePrunes: 0, edgeChecks: 0, markingChecks: 0, backtracks: 0, peak: 1 };
   let status = "ready", marking = null, lastEvent = null;
   const put = tile => {
+    const adjacent = tile.vertices.flatMap(v => depths.get(v) || []);
+    tile.generation = adjacent.length ? Math.min(...adjacent) + 1 : 0;
     active.push(tile); ids.add(tile.id);
+    for (const v of tile.vertices) { if (!depths.has(v)) depths.set(v, []); depths.get(v).push(tile.generation); }
     tile.vertices.forEach((v, k) => totals.set(v, (totals.get(v) || 0) + tile.weights[k]));
     for (let k = 0; k < 4; k++) {
       const key = edgeKey(tile, k); if (!edges.has(key)) edges.set(key, []);
       edges.get(key).push({ tile, k, key, distance: edgeDistance(tile, k) });
     }
+    updateCorona();
   };
   const remove = tile => {
     active.pop(); ids.delete(tile.id);
+    for (const v of tile.vertices) { depths.get(v).pop(); if (!depths.get(v).length) depths.delete(v); }
     tile.vertices.forEach((v, k) => { const n = totals.get(v) - tile.weights[k]; if (n) totals.set(v, n); else totals.delete(v); });
     for (let k = 0; k < 4; k++) { const key = edgeKey(tile, k); edges.get(key).pop(); if (!edges.get(key).length) edges.delete(key); }
+    updateCorona();
   };
   const singleBoundary = () => {
     const graph = new Map();
@@ -109,10 +122,12 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
     candidatesCache.set(edge.key, result); return result;
   };
   function* search() {
-    if (active.length >= targetCount) { status = "target reached"; return true; }
+    if (targetCount !== null && active.length >= targetCount) { status = "target reached"; return true; }
+    if (targetCount === null && active.length >= 2000) { status = "2000-tile safety limit reached"; return false; }
     if (stats.proposals >= nodeLimit) { status = "budget reached"; return false; }
     const frontier = [...edges.values()].filter(r => r.length === 1).map(r => r[0]);
-    frontier.sort((a, b) => compare(a.distance, b.distance) || a.key.localeCompare(b.key));
+    const frontierDepth = e => Math.min(...depths.get(e.tile.vertices[e.k]), ...depths.get(e.tile.vertices[(e.k + 1) % 4]));
+    frontier.sort((a, b) => (targetCount === null ? frontierDepth(a) - frontierDepth(b) : 0) || compare(a.distance, b.distance) || a.key.localeCompare(b.key));
     const edge = frontier[0];
     if (!edge) return false;
     for (const tile of candidates(edge)) {
@@ -140,7 +155,7 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
       marking = next; stats.peak = Math.max(stats.peak, active.length);
       yield { type: "add", tile, message: "Place rhomb" };
       if (yield* search()) return true;
-      if (status === "budget reached") return false;
+      if ((status === "budget reached" || status === "2000-tile safety limit reached")) return false;
       remove(tile); marking = before; stats.backtracks++;
       yield { type: "remove", tile, message: "Backtrack from an exhausted frontier" };
     }
@@ -151,11 +166,12 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
     marking = useMarkings ? solveAmmannDecorations(active, { extent }) : solveArrowDecorations(active);
     status = "searching";
     yield { type: "add", tile, message: "Same thick-rhomb seed in both searches" };
-    if (!(yield* search()) && status !== "budget reached") status = "frontier exhausted";
+    if (!(yield* search()) && status !== "budget reached" && status !== "2000-tile safety limit reached") status = "frontier exhausted";
   }
   const iterator = run();
   return {
+    progress() { return { minimumFrontierGeneration }; },
     next() { const step = iterator.next(); if (step.value) lastEvent = step.value; return step; },
-    snapshot() { return { tiles: [...active], orientations: marking ? [...marking.orientationByTile] : [], stats: { ...stats }, status, event: lastEvent, useMarkings, markingDirections, extent, extensionPairs: marking?.extensionPairs || 0 }; }
+    snapshot() { return { tiles: [...active], orientations: marking ? [...marking.orientationByTile] : [], stats: { ...stats }, minimumFrontierGeneration, status, event: lastEvent, useMarkings, markingDirections, extent, extensionPairs: marking?.extensionPairs || 0 }; }
   };
 }

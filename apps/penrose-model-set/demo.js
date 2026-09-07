@@ -11,6 +11,7 @@ const $ = id => document.getElementById(id);
 const canvas = $("tilingCanvas");
 const colors = ["#b45338", "#ba8219", "#197a69", "#426fa3", "#88569b"];
 let worker = null, snapshot = null, busy = false, running = false, failed = false;
+let coronaTarget = 3;
 let generation = 0, lastTick = 0, radius = 5, zoom = 1, pan = { x: 0, y: 0 }, showMarking = false;
 const drawn = new Map();
 let pointer = null, inspectKey = null, inspectPoints = [], drag;
@@ -122,10 +123,11 @@ function syncSettings() {
 function render() {
   syncSettings();
   if (snapshot?.done) running = false;
-  $("startTiling").textContent = failed ? "Retry" : snapshot?.done ? "Start again" : running ? "Pause" : snapshot && snapshot.stats.proposals ? "Resume tiling" : "Start tiling";
+  $("startTiling").textContent = failed ? "Retry" : snapshot?.done ? "Start again" : running ? "Pause" : `Run to corona ${coronaTarget}`;
   $("stepTiling").disabled = busy || failed || !snapshot || snapshot.done;
   $("runState").textContent = failed ? "error" : !snapshot ? "initializing" : snapshot.done ? snapshot.status : running ? "searching" : snapshot.stats.proposals ? "paused" : "ready";
   if (snapshot) {
+    $("coronaCount").textContent = String(snapshot.minimumFrontierGeneration ?? "—");
     $("eventLabel").textContent = snapshot.event?.message || "Seed ready";
     for (const [key, value] of Object.entries({ placed: snapshot.tiles.length, peak: snapshot.stats.peak, proposals: snapshot.stats.proposals, backtracks: snapshot.stats.backtracks, markingPrunes: snapshot.useMarkings ? snapshot.stats.markingPrunes : snapshot.stats.edgePrunes })) $(key).textContent = value.toLocaleString();
     $("computeTime").textContent = `${(snapshot.computeMs / 1000).toFixed(2)} s`;
@@ -141,26 +143,31 @@ function error(message) {
 function advance(events) {
   if (!worker || busy || failed || snapshot?.done) return;
   busy = true; $("stepTiling").disabled = true;
-  worker.postMessage({ type: "advance", events });
+  worker.postMessage({ type: "advance", events, targetCorona: coronaTarget });
 }
 function reset(autostart = false) {
-  running = false; generation++; const current = generation;
+  running = false; coronaTarget = 3; $("coronaCount").textContent = "0"; generation++; const current = generation;
   worker?.terminate(); worker = null; busy = false; failed = false; snapshot = null;
   radius = 5; zoom = 1; pan = { x: 0, y: 0 }; drawn.clear();
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "One thick-rhomb seed"; $("pruneDetail").textContent = "No proposals yet";
-  const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: Number($("targetCount").value), nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
+  const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: null, nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
   if ($("shuffleSeed").value.trim() === "" || !Number.isSafeInteger(options.seed)) { error("Enter an integer shuffle seed, then retry."); return; }
   $("statusMessage").textContent = "Ready from the seed. Changing marking rules restarts the search; display settings do not.";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-extent", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-corona", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;
     busy = false;
     if (data.error) { error(data.error); return; }
-    snapshot = data; render();
+    snapshot = data;
+    if (data.pausedCorona !== null && data.pausedCorona !== undefined) {
+      running = false; coronaTarget = data.pausedCorona + 2;
+      $("statusMessage").textContent = `Corona ${data.pausedCorona} reached. Continue to corona ${coronaTarget} from this same search state.`;
+    }
+    render();
   };
   worker.onerror = event => { if (current === generation) error(`Search worker failed: ${event.message}`); };
   worker.postMessage({ type: "init", options }); render();
@@ -168,7 +175,7 @@ function reset(autostart = false) {
 $("startTiling").addEventListener("click", () => { if (failed || snapshot?.done) return reset(true); running = !running; render(); });
 $("stepTiling").addEventListener("click", () => { running = false; advance(1); render(); });
 $("resetTiling").addEventListener("click", () => reset());
-for (const id of ["useMarkings", "targetCount", "nodeLimit", "shuffleSeed"]) $(id).addEventListener("change", () => reset());
+for (const id of ["useMarkings", "nodeLimit", "shuffleSeed"]) $(id).addEventListener("change", () => reset());
 $("showMarking").addEventListener("click", () => { showMarking = !showMarking; render(); });
 $("extent").addEventListener("input", () => {
   drawn.clear(); inspectKey = null;

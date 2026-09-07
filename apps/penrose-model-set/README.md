@@ -1,5 +1,26 @@
 # Penrose tiling: edge arrows and Ammann bars
 
+## Corona milestones
+
+The interactive demo uses frontier corona count instead of a tile target.
+Run pauses at corona 3; the next Run continues the existing DFS/worker to 5,
+then 7, and onward. It never reseeds or discards the stack at a milestone.
+This uses the active turtle engine's criterion: seed generation 0, each new
+tile's generation one plus the minimum incident generation, and corona equal
+to the minimum generation at an unfinished vertex (0 < sum(t) < 1). Depths
+are restored on rollback. Corona mode prioritizes the earliest frontier
+generation, then physical distance. Merely reaching an outer tile is not
+corona completion. The worker stops its batch at the milestone placement.
+
+Shuffle seed controls deterministic pseudo-random candidate ranking. Changing
+the seed changes branch order; repeated runs and Continue retain the same
+order. There is no fresh random draw on every Run. Proposal budgets remain
+active, with an explicit 2,000-tile safety limit. Tile-count mode remains an
+API option for regression comparisons; historical tile-count timings below
+refer to that mode. With seed 17 and extent 2, coronas 3 and 5 are reached at
+77 and 208 tiles (317 and 2,003 cumulative proposals).
+
+
 Published app: <https://liuyao12.github.io/geometric-tree-search/penrose-model-set/>.
 Use GitHub Pages for publication; no local preview.
 
@@ -18,7 +39,7 @@ adjacencies: 160 are accepted and 480 rejected by both predicates. This local
 correspondence makes the extent-zero rules equivalent on finite patches.
 
 The checkbox switches the predicate and restarts from the same seed. Seed,
-target and budget also restart. Start/Pause, Step and Reset control playback.
+budget also restarts. Start/Pause, Step and Reset control playback.
 Show edge arrows / Show Ammann bars, direction highlighting, colors and line
 weight only affect rendering. Highlighting 1 or 3 directions never weakens
 enforcement: all five are always checked in Ammann mode. The growth API rejects

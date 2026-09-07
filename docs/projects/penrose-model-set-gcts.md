@@ -1,5 +1,26 @@
 # Penrose GCTS on the cyclotomic integer lattice
 
+## Corona milestones
+
+The interactive demo uses frontier corona count instead of a tile target.
+Run pauses at corona 3; the next Run continues the existing DFS/worker to 5,
+then 7, and onward. It never reseeds or discards the stack at a milestone.
+This uses the active turtle engine's criterion: seed generation 0, each new
+tile's generation one plus the minimum incident generation, and corona equal
+to the minimum generation at an unfinished vertex (0 < sum(t) < 1). Depths
+are restored on rollback. Corona mode prioritizes the earliest frontier
+generation, then physical distance. Merely reaching an outer tile is not
+corona completion. The worker stops its batch at the milestone placement.
+
+Shuffle seed controls deterministic pseudo-random candidate ranking. Changing
+the seed changes branch order; repeated runs and Continue retain the same
+order. There is no fresh random draw on every Run. Proposal budgets remain
+active, with an explicit 2,000-tile safety limit. Tile-count mode remains an
+API option for regression comparisons; historical tile-count timings below
+refer to that mode. With seed 17 and extent 2, coronas 3 and 5 are reached at
+77 and 208 tiles (317 and 2,003 cumulative proposals).
+
+
 ## Single-canvas edge-matching demo (September 2026)
 
 The default UI follows `GCTS-I.html`: one canvas, one worker and an **Enforce
@@ -26,7 +47,7 @@ backtracks in either mode at extent zero. The growth regression checks the ident
 valid edge arrows in both results, and zero calls to the inactive predicate.
 A finite patch or a budget stop does not decide infinite extendibility.
 
-The checkbox, seed, target and budget restart and pause. The drawing starts
+The checkbox, seed and budget restart and pause. The drawing starts
 with edge arrows; users can switch to bars, highlight 1/3/5 direction families,
 change colors and line weight without touching search state. All five bar
 directions are always enforced in Ammann mode, even when only some are

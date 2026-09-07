@@ -9,7 +9,7 @@
 <header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with explicit edge matching or matching enforced by Ammann bars.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
 <section class="workbench" aria-label="Interactive Penrose tiling">
 <div class="toolbar" aria-label="Tiling controls">
-<button type="button" class="primary" id="startTiling">Start tiling</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
+<button type="button" class="primary" id="startTiling">Run to corona 3</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
 <button type="button" id="showMarking" aria-pressed="false">Show Ammann bars</button><button type="button" id="fitView">Fit view</button>
 <label class="enforcement"><input type="checkbox" id="useMarkings">Enforce Ammann bars</label>
 </div>
@@ -23,7 +23,7 @@
 </div>
 <p class="hint" id="markingHint">Penrose edge-arrow matching is enforced. Ammann bars are not checked.</p>
 <div class="search-controls" aria-label="Search settings">
-<label>Target <select id="targetCount"><option value="40">40 tiles</option><option value="60" selected>60 tiles</option><option value="100">100 tiles</option><option value="160">160 tiles</option></select></label>
+<span>Frontier corona: <strong id="coronaCount">0</strong> · pauses at 3, 5, 7, …</span>
 <label>Proposal budget <select id="nodeLimit"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="30000">30,000</option></select></label>
 <label>Shuffle seed <input type="number" id="shuffleSeed" value="17" step="1" aria-label="Candidate-order seed"></label>
 <label>Playback <select id="playbackSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
@@ -41,6 +41,7 @@
 </section>
 <p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
 <details><summary>How to use the marking controls</summary>
+<p>Run pauses at frontier corona 3, then continues the same search to 5, 7, and onward. As in the turtle demo, a tile’s generation is one plus the earliest generation incident at its vertices (the seed is 0); the displayed corona is the minimum generation at an unfinished point with 0 &lt; t &lt; 1. Proposal budgets and a 2,000-tile safety limit still apply. Shuffle seed deterministically changes branch ordering; it is not reseeded on Continue.</p>
 <p>Intermediate dots use exact rational subdivisions in ℚ(ζ₅), with 4, 8 or 16 steps per original stripe length. They are inspection samples, not an enumeration of all cyclotomic integer points. The solver still checks whole segments between dots.</p>
 <p>Extent adds the selected multiple of each stripe’s original length at both ends. Dashed lines show extensions. At zero, the original edge-port rule is recovered. In Ammann mode, changing extent restarts the search. In edge-arrow mode it changes only the drawing.</p>
 <p>For each direction, m = 1 on its bar and extension, m = 0 elsewhere inside the tile, and m is undefined outside that component’s support. An extension reaching a neighboring tile must meet its corresponding bar, even without a shared edge. Different directions are separate components. The inspector uses — for undefined components. The t-value remains the summed corner weights divided by ten; stripe and extension endpoints outside vertex support have t = 0.</p>
@@ -50,4 +51,4 @@
 <p>The thick and thin rhombs each carry a fixed arrow template and a complete fixed five-stripe template. The solver finds compatible rigid orientations; these may resolve differently as the search extends or backtracks. Neither mode accepts arbitrary unmarked rhomb tilings.</p>
 </details>
 <footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · <a href="https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17" target="_blank" rel="noreferrer">Penrose edge arrows ↗</a> · supplied, not learned</span></footer>
-</main><script type="module" src="./demo.js?v=20260907-samples"></script></body></html>
+</main><script type="module" src="./demo.js?v=20260907-corona"></script></body></html>
