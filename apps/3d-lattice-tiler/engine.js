@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { GeometricFrontierMarking } from "../../assets/geometric-frontier-marking.js?v=20260824-gcts-i-v1";
+import { VectorMarkings } from "./vector-markings.js?v=20260906-global-section";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js?v=20260830-occupancy-v3";
@@ -186,7 +186,7 @@ export const createTilingStream = (() => {
       tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET ?? BASE_COLOR_PALETTE_SIZE;
 
     const tick = () => new Promise(resolve => {
-      if (typeof requestAnimationFrame === "function") requestAnimationFrame(resolve);
+      if (typeof window !== "undefined" && typeof requestAnimationFrame === "function") requestAnimationFrame(resolve);
       else setTimeout(resolve, 0);
     });
     const uiYieldIntervalMs = Math.max(8, +config.ui_yield_interval_ms || 24);
@@ -730,6 +730,7 @@ export const createTilingStream = (() => {
     let nodeCounter = 0;
     let searchWorkCounter = 1;
     let stateVersion = 0;
+    let vectorMarking = null;
     let latestFrontierGraph = null;
     let latestFrontierGraphVersion = -1;
     const randomSeed = (Math.floor(Number(config.random_seed) || 1) >>> 0) || 1;
@@ -1015,6 +1016,8 @@ export const createTilingStream = (() => {
       const growth = growthStats();
       return {
         ...searchStats,
+        ...(vectorMarking?.stats() ?? {}),
+        ...(vectorMarking ? {marking_payload_bytes:vectorMarking.stats().marking_memory_bytes} : {}),
         isohedral_certificate_patch_sizes_tried:
           searchStats.isohedral_certificate_patch_sizes_tried.slice(),
         generic_periodic_certificate_check_sizes:
@@ -1549,6 +1552,10 @@ export const createTilingStream = (() => {
 
     const isMoveValid = (move) => {
       const { orient, translation } = move;
+      if (vectorMarking && !vectorMarking.compatible(markMove(move))) {
+        searchStats.marking_geometric_prunes += 1;
+        return {ok:false,reason:"global-section"};
+      }
       if (overBudget()) {
         noteIncompleteSearch();
         return { ok: false, budget: true, reason: "budget" };
@@ -1658,8 +1665,6 @@ export const createTilingStream = (() => {
     const completeCandidatesForLatticePoint = (option) => {
       const point = option.point ?? String(option.pointKey ?? option.point_key).split(",").map(Number);
       const candidates = new Map();
-      const blockerAlternatives = [];
-      let obstructionComplete = gctsFailureMarkingEnabled && allSystemTilesAreConvexPolyhedra;
       let attempts = 0;
       candidateScan:
       for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex += 1) {
@@ -1677,28 +1682,9 @@ export const createTilingStream = (() => {
               : !translation.every(Number.isInteger)) continue;
             const move = { prototile_idx: prototileIndex, orient, translation };
             const key = placementGeometryKey(move);
-            if (candidates.has(key) || blockerAlternatives.some(item => item.key === key)) continue;
-            if (obstructionComplete) {
-              const blockers = [];
-              for (const placement of state.placements) {
-                if (!convexPlacementInteriorsOverlap(placement, move)) continue;
-                blockers.push(placement);
-                if (markingBlockerMode === "first") break;
-              }
-              if (blockers.length) {
-                blockerAlternatives.push({ key, blockers });
-                continue;
-              }
-            }
+            if (candidates.has(key)) continue;
             const validity = isMoveValid(move);
-            if (!validity.ok) {
-              // Convex interior overlap is the common obstruction in this
-              // lane. If another global constraint rejected the candidate,
-              // retain the full local context instead of pretending that a
-              // smaller certificate was proved.
-              obstructionComplete = false;
-              continue;
-            }
+            if (!validity.ok) continue;
             candidates.set(key, {
               ...move,
               occupancy_data: validity.occData,
@@ -1706,31 +1692,6 @@ export const createTilingStream = (() => {
             });
           }
         }
-      }
-      if (!candidates.size && obstructionComplete && blockerAlternatives.length) {
-        const unresolved = blockerAlternatives.slice();
-        const selected = [];
-        while (unresolved.length) {
-          let bestPlacement = null;
-          let bestCoverage = 0;
-          for (const placement of state.placements) {
-            const coverage = unresolved.reduce((sum, conflict) =>
-              sum + (conflict.blockers.includes(placement) ? 1 : 0), 0);
-            if (coverage > bestCoverage) {
-              bestCoverage = coverage;
-              bestPlacement = placement;
-            }
-          }
-          if (!bestPlacement || bestCoverage === 0) {
-            obstructionComplete = false;
-            break;
-          }
-          selected.push(bestPlacement);
-          for (let index = unresolved.length - 1; index >= 0; index -= 1) {
-            if (unresolved[index].blockers.includes(bestPlacement)) unresolved.splice(index, 1);
-          }
-        }
-        if (obstructionComplete) option._gcts_obstruction_context = selected;
       }
       return [...candidates.values()].sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
     };
@@ -1971,6 +1932,7 @@ export const createTilingStream = (() => {
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
+      if (vectorMarking) vectorMarking.add(markMove(move));
       searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
       if (countWork) {
         for (const tracker of activeAgentBranchTrackers) {
@@ -2031,7 +1993,7 @@ export const createTilingStream = (() => {
         }
       }
 
-      invalidateCandidateCaches(changedOccupancyPositions);
+      invalidateCandidateCaches(vectorMarking ? null : changedOccupancyPositions);
 
       if (added.length) {
         const activeVerts = new Set();
@@ -2074,7 +2036,7 @@ export const createTilingStream = (() => {
         const stack = state.viz_faces.get(k);
         if (stack) { stack.pop(); if (stack.length === 1) stack[0].internal = false; if (stack.length === 0) state.viz_faces.delete(k); }
       }
-      invalidateCandidateCaches(changedOccupancyPositions);
+      invalidateCandidateCaches(vectorMarking ? null : changedOccupancyPositions);
       for (const k of rb.added) {
         state.frontier.delete(k);
         const stack = state.viz_faces.get(k);
@@ -2082,6 +2044,7 @@ export const createTilingStream = (() => {
       }
       for (const o of move.occupancy_data) latticeAdd(o.pos, -o.weight);
       state.placements.pop();
+      if (vectorMarking) vectorMarking.remove(markMove(move));
       state.placed_volume -= tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
     };
@@ -2338,6 +2301,7 @@ export const createTilingStream = (() => {
       : 20000;
     const genericGeometricNogoodRequested = config.generic_geometric_nogood === true;
     const genericGeometricNogoodEnabled = genericGeometricNogoodRequested
+      && !gctsFailureMarkingEnabled
       && genericFailureMemoEnabled
       && !targetRegion
       && genericGeometricNogoodCapacity > 0;
@@ -2374,54 +2338,28 @@ export const createTilingStream = (() => {
         return Math.max(...coordinates) - Math.min(...coordinates);
       })))
     ));
-    const configuredMarkingReachMultiplier = Number(config.gcts_marking_reach_multiplier);
-    const markingReachMultiplier = Number.isFinite(configuredMarkingReachMultiplier)
-      ? Math.max(1, configuredMarkingReachMultiplier)
-      : 1;
-    const configuredMarkingMaxClauses = Number(config.gcts_marking_max_clauses);
-    const markingMaxClauses = Number.isFinite(configuredMarkingMaxClauses)
-      ? Math.max(0, Math.floor(configuredMarkingMaxClauses))
-      : 20000;
-    const configuredMarkingMaxContext = Number(config.gcts_marking_max_context_tiles);
-    const markingMaxContext = Number.isFinite(configuredMarkingMaxContext)
-      ? Math.max(1, Math.floor(configuredMarkingMaxContext))
-      : Infinity;
-    const configuredMarkingActivationFailures = Number(config.gcts_marking_activation_failures);
-    const markingActivationFailures = Number.isFinite(configuredMarkingActivationFailures)
-      ? Math.max(0, Math.floor(configuredMarkingActivationFailures))
-      : 0;
-    const markingSymmetry = config.gcts_marking_symmetry === "rotations" ? "rotations" : "fixed";
-    const markingBlockerMode = config.gcts_marking_blocker_mode === "all" ? "all" : "first";
-    searchStats.marking_blocker_mode = markingBlockerMode;
-    const identityCubicRotation = PROPER_CUBIC_ROTATIONS.find(matrix =>
-      matrix.every((row, rowIndex) => row.every((value, columnIndex) => value === (rowIndex === columnIndex ? 1 : 0)))
-    ) ?? PROPER_CUBIC_ROTATIONS[0];
-    const frontierMarking = new GeometricFrontierMarking({
-      rotations: markingSymmetry === "rotations" ? PROPER_CUBIC_ROTATIONS : [identityCubicRotation],
-      reach: maximumTileAxisSpan * markingReachMultiplier,
-      maxClauses: markingMaxClauses,
-      maxContext: markingMaxContext,
-      activationFailures: markingActivationFailures,
-      usePivotIndex: config.gcts_marking_index !== false
+    const markMove = move => ({
+      type: move.prototile_idx,
+      index: prototiles[move.prototile_idx].unique_orientations.indexOf(move.orient),
+      orientation: move.orient, translation: move.translation
     });
+    const startedAt = performance.now();
+    const cpuStartedAt = cpuTimeBudget ? process.cpuUsage() : null;
+    if (gctsFailureMarkingEnabled) {
+      const synthesisStarted = performance.now();
+      vectorMarking = new VectorMarkings(prototiles.map((tile,type) =>
+        tile.unique_orientations.map((orientation,index) => ({orientation,type,index}))),
+        MAX_SOLID_ANGLE, {extent: config.marking_extent ?? 0});
+      for (const move of state.placements) vectorMarking.add(markMove(move));
+      searchStats.marking_synthesis_ms = performance.now() - synthesisStarted;
+    }
     const updateFrontierMarkingStats = () => {
-      const stats = frontierMarking.stats();
-      searchStats.marking_observed_failures = stats.observed_failures;
-      searchStats.marking_geometric_clauses = stats.clauses;
-      searchStats.marking_geometric_prunes = stats.prunes;
-      searchStats.marking_duplicate_failures = stats.duplicates;
-      searchStats.marking_skipped_large_contexts = stats.skipped_large;
-      searchStats.marking_average_context_tiles = stats.average_context_tokens;
-      searchStats.marking_max_context_tiles = stats.max_context_tokens;
-      searchStats.marking_context_tokens = stats.context_tokens;
-      searchStats.marking_payload_bytes = stats.payload_bytes;
-      searchStats.marking_frontier_checks = stats.frontier_checks;
-      searchStats.marking_clause_checks = stats.clause_checks;
-      searchStats.marking_avoided_clause_checks = stats.avoided_clause_checks;
-      searchStats.marking_reach = stats.reach;
-      searchStats.marking_rotation_count = stats.rotations;
-      searchStats.marking_activated = stats.activated;
-      searchStats.marking_capacity_reached = stats.capacity_reached;
+      if (!vectorMarking) return;
+      Object.assign(searchStats, vectorMarking.stats());
+      searchStats.marking_started_empty = false;
+      searchStats.marking_payload_bytes = vectorMarking.stats().marking_memory_bytes;
+      searchStats.marking_geometric_clauses = 0;
+      searchStats.marking_kind = "vector_global_section";
     };
     updateFrontierMarkingStats();
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
@@ -2520,8 +2458,6 @@ export const createTilingStream = (() => {
         || layerLag.layer_lag <= forcedMoveLayerLagCap;
     };
     const branchDetails = !!config.branch_details;
-    const startedAt = performance.now();
-    const cpuStartedAt = cpuTimeBudget ? process.cpuUsage() : null;
     const budgetElapsedMilliseconds = () => {
       if (!cpuTimeBudget) return performance.now() - startedAt;
       const usage = process.cpuUsage(cpuStartedAt);
@@ -2558,6 +2494,7 @@ export const createTilingStream = (() => {
     let searchIncomplete = false;
     const noteIncompleteSearch = () => { searchIncomplete = true; };
     const goalMet = () => {
+      if (vectorMarking?.conflicts) return false;
       if (criterion === "count") return state.placements.length >= targetVal;
       if (criterion === "layer") return calculateFrontierStats().min_gen >= targetVal;
       if (criterion === "shell") return completeShellDepthStats().complete_shell_depth >= targetVal;
@@ -6303,13 +6240,11 @@ export const createTilingStream = (() => {
         }
       }
       if (gctsFailureMarkingEnabled) {
-        const markedConflict = frontierMarking.firstConflict(frontierPointOptions().slice(0, 1), state.placements);
+        const markedConflict = vectorMarking?.conflicts;
         updateFrontierMarkingStats();
         if (markedConflict) {
           searchStats.failed_leaves += 1;
-          yield nodeStatus(parentId, "fail", "Learned geometric marking", {
-            marking_frontier_point: markedConflict.point ?? markedConflict.pointKey
-          });
+          yield nodeStatus(parentId, "fail", "Inconsistent vector-valued global section");
           return false;
         }
       }
@@ -6524,16 +6459,13 @@ export const createTilingStream = (() => {
         if (analysis.deadEnd) {
           searchStats.failed_leaves += 1;
           if (gctsFailureMarkingEnabled && !searchIncomplete) {
-            frontierMarking.encode(
-              analysis.deadEnd.point,
-              analysis.deadEnd.weight,
-              analysis.deadEnd._gcts_obstruction_context ?? state.placements,
-              {
-                failed_patch_tiles: state.placements.length,
-                frontier_point: analysis.deadEnd.point.slice(),
-                minimized_blockers: analysis.deadEnd._gcts_obstruction_context?.length ?? null
-              }
-            );
+            const markPlacements = state.placements.map(markMove);
+            if (vectorMarking.observeDeadPoint(analysis.deadEnd.point, markPlacements)) {
+              const synthesisStarted = performance.now();
+              vectorMarking.rebuild(markPlacements);
+              searchStats.marking_synthesis_ms += performance.now() - synthesisStarted;
+              invalidateCandidateCaches();
+            }
             updateFrontierMarkingStats();
           }
           yield nodeStatus(parentId, "fail", "Dead End", { frontier_stats: analysisStats, frontier_dual: frontierDual });

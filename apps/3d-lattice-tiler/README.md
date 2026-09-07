@@ -31,12 +31,9 @@ independent workers:
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
-2. **GCTS** is the cold-start algorithm defined in the GCTS-I essay. It uses
-   the same branch order as free-range, starts with an empty marking, and
-   records exact local obstructions when an incomplete lattice point has no
-   possible oriented tile continuation. Coordinates are relative to the failed
-   point, so a translated recurrence is rejected by geometric overlap. Nothing
-   is loaded from the catalog or a previous run.
+2. **GCTS** uses vector-valued tile fields and a global section, with the same
+   branch order as free-range. Fields are synthesized from geometry and refined
+   only using certified pair obstructions. No prior tile knowledge is loaded.
 3. **RL** searches the same complete lattice-point branches as free-range but
    orders them with a cold greedy linear contextual-return learner. Its
    11-dimensional weights start at zero with an identity ridge matrix on every
@@ -53,8 +50,8 @@ independent workers:
    disabled, so periodic, isohedral, and larger recurring clusters must emerge
    as sequences of next-placement predictions.
 4. **GCTS + RL** uses exactly the RL action order and adds the same sound
-   geometric-failure pruning as GCTS. This isolates the interaction between
-   learned ordering and learned exact failure markings.
+   global-section checks as GCTS. This isolates learned ordering from marking
+   compatibility.
 5. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
@@ -169,24 +166,38 @@ The exhaustive complete-rank, delayed-nogood, and crystal-rank policies remain
 available to the headless research and regression harnesses. They are not extra
 public comparison lanes.
 
-## GCTS-I failure markings
+## GCTS-I vector markings and global section (September 2026)
 
-At the selected oldest incomplete lattice point, the GCTS and free-range lanes
-enumerate every prototile, proper orientation, and supported lattice-point
-anchor. A zero-candidate point is therefore a genuine local obstruction, not a
-failure of face-matching candidate generation. For each rejected candidate the
-learner retains one exact blocking placement. Their union is a sufficient
-certificate that no tile can complete that point. The certificate is stored as
-a sparse tile marking relative to the point and matched as a subset of later
-local contexts.
+GCTS and GCTS+RL now use `vector-markings.js`, not the former forbidden-context
+scanner. Each oriented tile carries a finite function into R^rank. The vectors
+are represented sparsely as basis vectors; equality compares the FULL vector,
+not wildcard coordinates. Placing a tile checks its field against a single
+reference-counted global section, and backtracking removes its contributions.
 
-The selected general settings use one maximum-tile-span of marking support,
-translation normalization, immediate activation, first-blocker certificates,
-a pivot index, and no context truncation. The joint four-case tuning report is
-[`data/lattice-gcts-i-marking-tuning-2026-08-24.json`](../../data/lattice-gcts-i-marking-tuning-2026-08-24.json).
-The 24-element proper cubic rotation quotient remains available through
-`gcts_marking_symmetry: "rotations"`, but translation normalization processed
-more search work per wall-clock second on the present hard cases.
+Synthesis starts from geometry alone. Every geometrically admissible overlapping
+pair equates its two marking values. Equivalence classes become vector basis
+coordinates. A certified two-placement dead-point obstruction may remove an
+equality and refine the fields. Certificates are independently rechecked using
+integer lattice weights, closed under the available symmetry group, and never
+inferred from a timeout or a policy score. The induced group action permutes
+basis coordinates and is verified on every rebuild. Existing placements are
+reinserted into the rebuilt section; candidate caches are invalidated.
+
+This preserves every infinite tiling: its overlapping pairs belong to the
+superset used to impose equalities. Higher-order failures are NOT projected to
+pair constraints. Thus this conservative learner may produce a constant field
+and no extra pruning; arbitrary hierarchical markings are not claimed.
+Support is the occupancy support, optionally expanded by `marking_extent`
+(0–2 lattice steps, default 0). Above 4096 support slots, or for non-integer
+weights/coordinates, use the sound constant-field fallback. Such cases remain
+searchable; no new numerical obstruction is certified by the marking learner.
+
+Telemetry reports rank, support slots, revision, certified pair count, global
+section points/conflicts, synthesis time and approximate marking memory.
+Synthesis is charged to both the run clock and the time budget. These changes
+preserve the deployed shell search, contextual RL learner, catalogue and history
+UI. Earlier failure-clause benchmark figures below are historical, not timings
+for this new representation.
 
 Terminal results distinguish evidence strength. `certified_tiling` means the
 engine has an exact translational quotient certificate or an exact finite

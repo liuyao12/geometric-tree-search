@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260831-substitution-v277";
+} from "./engine.js?v=20260906-global-section";
 
 const $ = (id) => document.getElementById(id);
 
@@ -530,9 +530,9 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
-  learning_free_range: "Starts with an empty marking and records exact local frontier failures; translated recurrences are pruned by geometric overlap.",
+  learning_free_range: "Vector-valued tile markings are checked against a global section. Certified pair obstructions refine the equivariant fields; rollback restores the section.",
   rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
-  gcts_rl: "Combines the same one-tile cold linear learner with exact GCTS failure markings; RL orders but never removes legal branches.",
+  gcts_rl: "Combines the same cold linear RL ordering with vector-valued global-section checks. Marking synthesis and online training are both timed.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Bounded positive-certificate search: it accepts only an exact periodic quotient preserved by symmetries taking the root to every tile class; failure is inconclusive."
 };
@@ -3133,7 +3133,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced10-v255", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260906-global-section", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3643,7 +3643,7 @@ function formatGrowthResult(result, target) {
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
   const learningMilliseconds =
-    (result?.stats?.agent_score_time_ms ?? 0) + (result?.stats?.agent_training_time_ms ?? 0);
+    (result?.stats?.agent_score_time_ms ?? 0) + (result?.stats?.agent_training_time_ms ?? 0) + (result?.stats?.marking_synthesis_ms ?? 0);
   const learnedBytes = result?.memory?.learnedPayloadBytes ?? 0;
   const certificateBytes = result?.memory?.certificatePayloadBytes ?? 0;
   const searchCacheEntries = result?.memory?.transientSearchCacheEntries ?? 0;
@@ -3655,9 +3655,9 @@ function formatGrowthResult(result, target) {
   const gctsPrunes = (result?.stats?.marking_geometric_prunes ?? 0)
     + (result?.stats?.generic_geometric_nogood_prunes ?? 0);
   const learningSuffix = result?.mode === "gcts_rl"
-    ? ` (RL ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} weights; GCTS ${gctsClauses} failures, ${gctsPrunes} reuses; learner ${formatElapsed(learningMilliseconds)})`
+    ? ` (RL ${result.stats?.agent_model_weight_count ?? 0} weights; GCTS rank ${result.stats?.marking_rank ?? 0}, ${gctsPrunes} section rejections; learner ${formatElapsed(learningMilliseconds)})`
     : result?.mode === "gcts"
-    ? ` (learned ${gctsClauses}, reused ${gctsPrunes})`
+    ? ` (marking rank ${result.stats?.marking_rank ?? 0}; section ${result.stats?.global_section_points ?? 0} points; ${gctsPrunes} rejections)`
     : result?.mode === "rl"
       ? ` (learned ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} geometric weights; learner ${formatElapsed(learningMilliseconds)})`
     : "";
@@ -3894,7 +3894,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced10-v255", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260906-global-section", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -3961,9 +3961,9 @@ function startGrowthBenchmark() {
         const gctsPrunes = (message.result.stats?.marking_geometric_prunes ?? 0)
           + (message.result.stats?.generic_geometric_nogood_prunes ?? 0);
         if (mode.id === "gcts_rl") {
-          series.status = `RL ${message.result.stats?.agent_model_weight_count ?? 0} weights; GCTS ${gctsClauses} failures / ${gctsPrunes} reuses; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
+          series.status = `RL ${message.result.stats?.agent_model_weight_count ?? 0} weights; GCTS rank ${message.result.stats?.marking_rank ?? 0}; ${gctsPrunes} section rejections`;
         } else if (mode.id === "gcts") {
-          series.status = `learned ${gctsClauses} geometric failures; reused ${gctsPrunes}; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
+          series.status = `vector rank ${message.result.stats?.marking_rank ?? 0}; section ${message.result.stats?.global_section_points ?? 0} points; ${gctsPrunes} rejections`;
         } else if (mode.id === "rl") {
           series.status = `${message.result.stats?.agent_model_weight_count ?? 0} anonymous geometric weights; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         }
