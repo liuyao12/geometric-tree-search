@@ -68,8 +68,11 @@ runtime guarantee: extension checks have a higher per-proposal cost.
 
 ### Point inspector
 
-`point-inspection.js` indexes vertices, stripe endpoints and extension
-endpoints. Hover reports canonical coordinates in (1, ζ₅, ζ₅², ζ₅³), summed
+`point-inspection.js` indexes vertices, stripe endpoints, extension
+endpoints and exact rational intermediate samples along the full extended
+segments. The Points selector chooses 4/8/16 subdivisions per original stripe
+length (default 8). It changes only sampling and rendering, not the search.
+The samples are in ℚ(ζ₅); they do not enumerate every integer-ring point. Hover reports canonical coordinates in (1, ζ₅, ζ₅², ζ₅³), summed
 stored vertex weights / 10 as t(x), and lazily samples each tile's m at that
 exact point. Each component is 1, 0, or undefined (—) according to the support
 above. Shared defined values agree; they are not summed. The corner field t

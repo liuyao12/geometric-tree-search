@@ -17,7 +17,7 @@ class Element {
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
-for (const [id, value] of Object.entries({ extent: "2", markingDirections: "5", stripeWidth: "1.5", targetCount: "40", nodeLimit: "1000", shuffleSeed: "17", playbackSpeed: "24" })) elements.get(id).value = value;
+for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", targetCount: "40", nodeLimit: "1000", shuffleSeed: "17", playbackSpeed: "24" })) elements.get(id).value = value;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
 globalThis.devicePixelRatio = 1;
@@ -52,7 +52,8 @@ assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_title").textContent, "Ammann endpoint");
 assert.match(elements.get("point_t").textContent, /t\(x\) = 0/);
 assert.match(elements.get("point_m").textContent, /m\(x\) = \(/);
-assert.equal(workers.length, 1); assert.equal(workers[0].messages.length, 1, "display controls must not touch the search");
+elements.get("pointDensity").value = "16"; elements.get("pointDensity").fire("change");
+assert.equal(workers.length, 1); assert.equal(workers[0].messages.length, 1, "display controls and sample density must not touch the search");
 elements.get("extent").value = "1.5"; elements.get("extent").fire("input");
 assert.equal(workers.length, 1, "extent only changes drawing in arrow mode");
 elements.get("useMarkings").checked = true; elements.get("useMarkings").fire("change"); await flush();

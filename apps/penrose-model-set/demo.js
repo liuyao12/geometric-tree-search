@@ -3,7 +3,7 @@ import { ammannStates } from "../../assets/penrose-ammann.js?v=20260907-extent";
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-extent";
+import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-samples";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
@@ -16,15 +16,15 @@ const drawn = new Map();
 let pointer = null, inspectKey = null, inspectPoints = [], drag;
 function hideInspection() { $("pointTooltip").hidden = true; }
 function inspect(ctx, screen) {
-  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value;
-  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }); }
+  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value + "/" + $("pointDensity").value + "/" + showMarking;
+  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }, { subdivisions: Number($("pointDensity").value), includeIntermediate: showMarking }); }
   let nearest = null, distance = 12;
   for (const point of inspectPoints) {
     if (!point.vertex && !showMarking) continue;
     const p = screen(point.position);
     // Small vertex dots make the exact support discoverable in either view.
     ctx.fillStyle = point.vertex ? "#34483f" : "#643920";
-    ctx.beginPath(); ctx.arc(p.x, p.y, point.vertex ? 2.1 : 1.8, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(p.x, p.y, point.vertex ? 2.1 : point.intermediate ? 1.25 : 1.8, 0, 2 * Math.PI); ctx.fill();
     if (pointer && !drag) {
       const d = Math.hypot(pointer.x - p.x, pointer.y - p.y);
       if (d < distance) { distance = d; nearest = point; }
@@ -107,6 +107,7 @@ function paint() {
 }
 function syncSettings() {
   const enabled = $("useMarkings").checked;
+  $("pointDensity").disabled = !showMarking;
   $("extentValue").textContent = $("extent").value + "×";
   $("markingDirections").disabled = !showMarking;
   $("showMarking").textContent = showMarking ? "Show edge arrows" : "Show Ammann bars";
@@ -173,6 +174,7 @@ $("extent").addEventListener("input", () => {
   drawn.clear(); inspectKey = null;
   if ($("useMarkings").checked) reset(); else render();
 });
+$("pointDensity").addEventListener("change", () => { inspectKey = null; render(); });
 $("markingDirections").addEventListener("change", render);
 for (const id of ["directionColors", "stripeWidth"]) $(id).addEventListener("input", render);
 $("fitView").addEventListener("click", () => { radius = 5; zoom = 1; pan = { x: 0, y: 0 }; render(); });

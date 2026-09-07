@@ -44,7 +44,10 @@ extendibility. Tests retain 240 window-certified reference tiles at extents
 0.25, 2 and 4 and witness a conflict between non-edge-neighboring tiles.
 
 Hover over dots to inspect exact coordinates and summed corner weights t(x).
-The bar view includes extension endpoints. The five-component marking m is
+The bar view includes intermediate points throughout stripes and extensions.
+The Points selector chooses 4, 8 or 16 exact rational subdivisions per original
+stripe length (default 8), without changing solver state. These are inspection
+samples in ℚ(ζ₅), not all integer-ring points; whole-segment checks remain active. The five-component marking m is
 sampled at the hovered point: 1 means on a bar, 0 means off the bar inside a
 tile, and — means outside that component's support. Per-tile values must agree
 where both are defined; they are not summed. Stored t support still consists
