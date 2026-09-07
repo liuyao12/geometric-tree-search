@@ -8,7 +8,7 @@
 <header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with explicit edge matching or matching enforced by Ammann bars.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
 <section class="workbench" aria-label="Interactive Penrose tiling">
 <div class="toolbar" aria-label="Tiling controls">
-<button type="button" class="primary" id="startTiling">Run to corona 3</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
+<button type="button" class="primary" id="startTiling">Run</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
 <button type="button" id="showMarking" aria-pressed="false">Show Ammann bars</button><button type="button" id="fitView">Fit view</button>
 <label class="enforcement"><input type="checkbox" id="useMarkings">Enforce Ammann bars</label>
 </div>
@@ -21,11 +21,7 @@
 <label>Line weight <input type="range" id="stripeWidth" min="1" max="3" step="0.25" value="1.5"></label>
 </div>
 <p class="hint" id="markingHint">Penrose edge-arrow matching is enforced. Ammann bars are not checked.</p>
-<div class="search-controls" aria-label="Corona progress and playback">
-<span>Frontier corona: <strong id="coronaCount">0</strong> · pauses at 3, 5, 7, …</span>
-<label>Playback <select id="playbackSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
-</div>
-<div class="canvas-head"><strong id="modeLabel">Explicit Penrose edge-arrow matching</strong><span id="runState" class="badge">initializing</span></div>
+<div class="canvas-head"><strong id="modeLabel">Explicit Penrose edge-arrow matching</strong><span id="statusMessage" class="badge" aria-live="polite">initializing</span></div>
 <div class="canvas-wrap">
 <canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: hover over dots to inspect exact coordinates and t/m values; drag to pan and scroll to zoom"></canvas>
 <div id="pointTooltip" class="point-tooltip" role="status" hidden><strong id="point_title"></strong><p id="point_coordinate" class="point-coordinate"></p><p id="point_basis"></p><p id="point_t"></p><p id="point_m"></p><p id="point_detail" class="point-detail"></p></div>
@@ -36,7 +32,6 @@
 <div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span id="matchingPrunesLabel">edge-arrow prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
 </div><p class="prunes" id="pruneDetail">No proposals yet</p>
 </section>
-<p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
 <details><summary>How to use the marking controls</summary>
 <p>Run pauses at frontier corona 3, then continues the same search to 5, 7, and onward. As in the turtle demo, a tile’s generation is one plus the earliest generation incident at its vertices (the seed is 0); the displayed corona is the minimum generation at an unfinished point with 0 &lt; t &lt; 1. Branch ordering is reproducible and continues unchanged between milestones. Internal safety limits prevent unbounded runs.</p>
 <p>Intermediate dots use exact rational subdivisions in ℚ(ζ₅), with 4, 8 or 16 steps per original stripe length. They are inspection samples, not an enumeration of all cyclotomic integer points. The solver still checks whole segments between dots.</p>
@@ -48,4 +43,4 @@
 <p>The thick and thin rhombs each carry a fixed arrow template and a complete fixed five-stripe template. The solver finds compatible rigid orientations; these may resolve differently as the search extends or backtracks. Neither mode accepts arbitrary unmarked rhomb tilings.</p>
 </details>
 <footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · <a href="https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17" target="_blank" rel="noreferrer">Penrose edge arrows ↗</a> · supplied, not learned</span></footer>
-</main><script type="module" src="./demo.js?v=20260907-simple"></script></body></html>
+</main><script type="module" src="./demo.js?v=20260907-status"></script></body></html>

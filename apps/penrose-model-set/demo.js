@@ -123,16 +123,21 @@ function syncSettings() {
 function render() {
   syncSettings();
   if (snapshot?.done) running = false;
-  $("startTiling").textContent = failed ? "Retry" : snapshot?.done ? "Start again" : running ? "Pause" : `Run to corona ${coronaTarget}`;
+  $("startTiling").textContent = failed ? "Retry" : snapshot?.done ? "Start again" : running ? "Pause" : snapshot?.stats.proposals ? "Continue" : "Run";
   $("stepTiling").disabled = busy || failed || !snapshot || snapshot.done;
-  $("runState").textContent = failed ? "error" : !snapshot ? "initializing" : snapshot.done ? snapshot.status : running ? "searching" : snapshot.stats.proposals ? "paused" : "ready";
+  if (!failed) {
+    const corona = snapshot?.minimumFrontierGeneration ?? 0;
+    $("statusMessage").textContent = !snapshot ? "initializing"
+      : snapshot.done ? `${snapshot.status} · corona ${corona}`
+      : running ? `tiling · corona ${corona}`
+      : snapshot.pausedCorona != null ? `pausing at corona ${snapshot.pausedCorona}`
+      : snapshot.stats.proposals ? `paused at corona ${corona}` : "ready";
+  }
   if (snapshot) {
-    $("coronaCount").textContent = String(snapshot.minimumFrontierGeneration ?? "—");
     $("eventLabel").textContent = snapshot.event?.message || "Seed ready";
     for (const [key, value] of Object.entries({ placed: snapshot.tiles.length, peak: snapshot.stats.peak, proposals: snapshot.stats.proposals, backtracks: snapshot.stats.backtracks, markingPrunes: snapshot.useMarkings ? snapshot.stats.markingPrunes : snapshot.stats.edgePrunes })) $(key).textContent = value.toLocaleString();
     $("computeTime").textContent = `${(snapshot.computeMs / 1000).toFixed(2)} s`;
     $("pruneDetail").textContent = `Prunes: ${snapshot.stats.edgePrunes} edge arrows · ${snapshot.stats.capacityPrunes} capacity · ${snapshot.stats.geometryPrunes} overlap · ${snapshot.stats.topologyPrunes} boundary`;
-    if (snapshot.done) $("statusMessage").textContent = `${snapshot.status}: ${snapshot.tiles.length} tiles after ${snapshot.stats.proposals.toLocaleString()} proposals. Change the marking checkbox and start again to compare from the same seed.`;
   }
   paint();
 }
@@ -146,14 +151,14 @@ function advance(events) {
   worker.postMessage({ type: "advance", events, targetCorona: coronaTarget });
 }
 function reset(autostart = false) {
-  running = false; coronaTarget = 3; $("coronaCount").textContent = "0"; generation++; const current = generation;
+  running = false; coronaTarget = 3; generation++; const current = generation;
   worker?.terminate(); worker = null; busy = false; failed = false; snapshot = null;
   radius = 5; zoom = 1; pan = { x: 0, y: 0 }; drawn.clear();
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "One thick-rhomb seed"; $("pruneDetail").textContent = "No proposals yet";
   const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: null, nodeLimit: 100000, seed: 17 };
-  $("statusMessage").textContent = "Ready from the seed. Changing marking rules restarts the search; display settings do not.";
+  $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
   try { worker = new Worker(new URL("./growth-worker.js?v=20260907-corona", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
@@ -164,7 +169,6 @@ function reset(autostart = false) {
     snapshot = data;
     if (data.pausedCorona !== null && data.pausedCorona !== undefined) {
       running = false; coronaTarget = data.pausedCorona + 2;
-      $("statusMessage").textContent = `Corona ${data.pausedCorona} reached. Continue to corona ${coronaTarget} from this same search state.`;
     }
     render();
   };
@@ -197,7 +201,7 @@ window.addEventListener("resize", paint);
 window.addEventListener("pagehide", () => { running = false; worker?.terminate(); worker = null; });
 window.addEventListener("pageshow", event => { if (event.persisted) reset(); });
 function tick(time) {
-  if (running && time - lastTick >= 50) { lastTick = time; advance(Number($("playbackSpeed").value)); }
+  if (running && time - lastTick >= 50) { lastTick = time; advance(200); }
   requestAnimationFrame(tick);
 }
 reset(); requestAnimationFrame(tick);

@@ -12,7 +12,10 @@ are restored on rollback. Corona mode prioritizes the earliest frontier
 generation, then physical distance. Merely reaching an outer tile is not
 corona completion. The worker stops its batch at the milestone placement.
 
-The UI exposes corona progress, playback and marking controls. Branch ordering
+The UI exposes Run/Pause/Continue, Step, Reset and marking controls. A single
+status shows ready, tiling, or “pausing at corona N”; there is no permanent
+milestone reminder or playback selector. Worker batches remain bounded and
+use a fixed automatic rate. Branch ordering
 uses fixed seed 17 for repeatable comparisons; Continue does not reseed. A
 100,000-proposal guard and 2,000-tile safety limit remain internal. Tile-count
 mode remains an API option for regression comparisons. With seed 17 and extent
@@ -37,7 +40,7 @@ index with the fixed Ammann template. Tests exhaust all 640 oriented local
 adjacencies: 160 are accepted and 480 rejected by both predicates. This local
 correspondence makes the extent-zero rules equivalent on finite patches.
 
-The checkbox switches the predicate and restarts from the same seed. Start/Pause, Step and Reset control playback.
+The checkbox switches the predicate and restarts from the same seed. Run/Pause/Continue, Step and Reset control the search.
 Show edge arrows / Show Ammann bars, direction highlighting, colors and line
 weight only affect rendering. Highlighting 1 or 3 directions never weakens
 enforcement: all five are always checked in Ammann mode. The growth API rejects

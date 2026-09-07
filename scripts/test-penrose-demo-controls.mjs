@@ -17,7 +17,7 @@ class Element {
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
-for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", playbackSpeed: "24" })) elements.get(id).value = value;
+for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5" })) elements.get(id).value = value;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
 globalThis.devicePixelRatio = 1;
@@ -38,7 +38,7 @@ const flush = () => new Promise(resolve => setImmediate(resolve));
 await flush();
 assert.equal(workers.length, 1); assert.equal(workers[0].messages[0].options.useMarkings, false);
 assert.equal(workers[0].messages[0].options.targetCount, null);
-assert.equal(elements.get("startTiling").textContent, "Run to corona 3");
+assert.equal(elements.get("startTiling").textContent, "Run");
 elements.get("tilingCanvas").fire("pointermove", { clientX: 400, clientY: 250 });
 assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_coordinate").textContent, "x = 0");
@@ -75,10 +75,14 @@ elements.get("stepTiling").fire("click"); await flush();
 assert.equal(workers[2].messages.at(-1).events, 1);
 assert.equal(workers[2].messages.at(-1).targetCorona, 3);
 workers[2].onmessage({data:{...workers[2].growth.snapshot(),pausedCorona:3,done:false,computeMs:0}});
-assert.equal(elements.get("startTiling").textContent, "Run to corona 5");
+assert.equal(elements.get("startTiling").textContent, "Continue");
+assert.equal(elements.get("statusMessage").textContent, "pausing at corona 3");
 elements.get("stepTiling").fire("click"); await flush();
 assert.equal(workers[2].messages.at(-1).targetCorona, 5);
 assert.equal(workers.length, 3, "continuation preserves the worker");
+assert.equal(elements.has("playbackSpeed"), false);
+assert.equal(elements.has("coronaCount"), false);
+assert.equal(elements.has("runState"), false);
 assert.equal(elements.has("shuffleSeed"), false);
 assert.equal(elements.has("nodeLimit"), false);
 assert.equal(workers[0].messages[0].options.seed, 17);
