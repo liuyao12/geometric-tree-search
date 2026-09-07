@@ -1,11 +1,15 @@
 import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-corona";
 
+import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-mixed";
+
 let search, done = false, computeMs = 0;
 self.onmessage = ({ data }) => {
   try {
     let pausedCorona = null;
     if (data.type === "init") {
-      search = createPenroseGrowth(data.options); done = false; computeMs = 0;
+      const kinds = data.options.tileKinds || ["thick", "thin"];
+      const classic = kinds.length === 2 && kinds.includes("thick") && kinds.includes("thin");
+      search = (classic ? createPenroseGrowth : createMixedGrowth)(data.options); done = false; computeMs = 0;
       search.next();
     } else if (data.type === "advance" && search && !done) {
       const start = performance.now();

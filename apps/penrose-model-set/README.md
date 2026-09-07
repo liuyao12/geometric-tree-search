@@ -1,4 +1,42 @@
-# Penrose tiling: edge arrows and Ammann bars
+# Penrose tiling: P1, P2, P3 and mixed selections
+
+The tile picker exposes ten fixed decorated prototiles: two P3 rhombs, P2 kite
+and dart, and P1's three pentagons, diamond, boat and star. Presets select a
+family; individual checkboxes permit arbitrary subsets. Selected types are
+allowed, not mandatory. P3 remains the default.
+
+`penrose-mixed-growth.js` performs whole-edge DFS for custom selections, with
+exact concave-polygon overlap, T-junction rejection, corner capacities and one
+outer boundary. Its unmarked mode explicitly compares edge ports. Its marked
+mode instead compares entire extended marking supports, including isolated
+contacts and intervals through concave polygons; it never calls the edge-port
+predicate. Each branch places a rigid decorated orientation. Both P3 tiles
+selected alone retain the original independent arrow/CSP engine below.
+
+The shared construction scale is deliberate. P3 edges have length 1, P2 edges
+1 and φ, and P1 edges √(7−4φ). Thus P2/P3 may mix along full edges, while P1
+cannot attach to P2/P3 under this engine's whole-edge convention. Resizing P1
+independently would change the relationship between its markings and the
+other sets. The picker states this limitation. A mixed finite patch is an
+experiment, not a certification of infinite extendibility.
+
+Templates are generated offline by `scripts/generate-penrose-mixed-templates.mjs`:
+identify HBS cells through pentagon centers in the supplied exact P1 patch;
+enumerate and consistently decorate their rhomb decompositions; derive P2
+faces from thick diagonals and thin double-arrow edges; clip the resulting
+Ammann lines to P1/P2 polygons. This reproduces exactly six P1 and two P2 rigid
+templates, across 116 P1 and 70 P2 occurrences. Runtime imports only these
+fixed templates, never the reference patch. See Porrier, *HBS Tilings
+extended*, https://arxiv.org/html/2307.14011v2, sections 2–3.
+
+`test-penrose-mixed.mjs` checks all templates, exact concave clipping, both
+predicates on P1/P2/mixed growth, capacities, non-overlap, integral vertices,
+corona bookkeeping and hover values. The marked 20-tile P2/P3 regression
+contains all four kinds. Worker tests check P2 corona pauses and continuation
+in addition to the original P3 tests. Controller tests cover presets,
+individual selection, empty-selection recovery and display controls.
+
+## Standard two-rhomb preset
 
 ## Corona milestones
 

@@ -1,7 +1,7 @@
 import { canonical, embedding, latticeKey, edgePort } from '../../assets/cyclotomic-five.js';
-import { ammannStates } from '../../assets/penrose-ammann.js?v=20260907-extent';
+import { tileStates, tileMarkingValue } from '../../assets/penrose-mixed-markings.js?v=20260907-mixed';
 
-import { extendBar, markingValue } from "../../assets/penrose-extensions.js?v=20260907-extent";
+import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
 export function formatCyclotomic(point) {
   const { coeff, denominator } = canonical(point), basis = ['', 'ζ₅', 'ζ₅²', 'ζ₅³'];
@@ -44,7 +44,7 @@ export function inspectionPoints(snapshot, { subdivisions = 8, includeIntermedia
       let values;
       Object.defineProperty(item, 'markings', { get() {
         if (!values) values = new Map(context.flatMap(({ tile, state, label }) => {
-          const value = markingValue(tile, state, item.exact, extent);
+          const value = tileMarkingValue(tile, state, item.exact, extent);
           return value ? [[tile.id, { label, value }]] : [];
         }));
         return values;
@@ -59,7 +59,7 @@ export function inspectionPoints(snapshot, { subdivisions = 8, includeIntermedia
       const item = at(point); item.vertex = true; item.t += tile.weights[k];
       item.contributions.set(tile.id, { label, weight: tile.weights[k] });
     });
-    const states = ammannStates(tile), state = states.find(s => s.start === orientations.get(tile.id)) || states[0];
+    const states = tileStates(tile), state = states.find(s => s.start === orientations.get(tile.id)) || states[0];
     context.push({ tile, state, label });
     for (const bar of state.bars) {
       for (const end of bar.ends) at(end.point);
@@ -93,6 +93,6 @@ export function inspectionText(point, useMarkings) {
     m: !values.length ? 'm(x) = undefined · outside marking support'
       : mismatch ? `m(x): mismatch · ${values.map(v => `(${vector(v.value)})`).join(' ≠ ')}`
       : `m(x) = (${vector(merged)}) · ${values.length} tile support${values.length === 1 ? '' : 's'} compatible`,
-    detail: `${tParts.join(' · ')}${tParts.length ? '\n' : ''}${values.map(v => `${v.label}: m = (${vector(v.value)})`).join(' · ')}${values.length ? '\n' : ''}1 = bar, 0 = off bar inside tile, — = outside component support.\n${useMarkings ? 'Ammann matching enforced' : 'Ammann values shown; search checks edge arrows'}`
+    detail: `${tParts.join(' · ')}${tParts.length ? '\n' : ''}${values.map(v => `${v.label}: m = (${vector(v.value)})`).join(' · ')}${values.length ? '\n' : ''}1 = bar, 0 = off bar inside tile, — = outside component support.\n${useMarkings ? 'Ammann matching enforced' : 'Ammann values shown; search checks edge decorations'}`
   };
 }

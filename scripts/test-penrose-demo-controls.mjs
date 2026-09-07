@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createMixedGrowth } from "../assets/penrose-mixed-growth.js";
 import { createPenroseGrowth } from "../assets/penrose-growth.js";
 
 // Controller unit test with a DOM/canvas transport double, not a browser or
@@ -18,6 +19,7 @@ class Element {
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
 for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5" })) elements.get(id).value = value;
+for (const kind of ["thick", "thin"]) elements.get("tile_" + kind).checked = true;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
 globalThis.devicePixelRatio = 1;
@@ -28,7 +30,7 @@ globalThis.Worker = class {
   terminate() { this.terminated = true; }
   postMessage(message) {
     this.messages.push(message);
-    if (message.type === "init") { this.growth = createPenroseGrowth(message.options); this.growth.next(); }
+    if (message.type === "init") { this.growth = (message.options.tileKinds.length === 2 && message.options.tileKinds.includes("thick") && message.options.tileKinds.includes("thin") ? createPenroseGrowth : createMixedGrowth)(message.options); this.growth.next(); }
     else this.growth.next();
     queueMicrotask(() => this.onmessage?.({ data: { ...this.growth.snapshot(), done: false, computeMs: 0 } }));
   }
@@ -88,3 +90,17 @@ assert.equal(elements.has("nodeLimit"), false);
 assert.equal(workers[0].messages[0].options.seed, 17);
 assert.equal(workers[0].messages[0].options.nodeLimit, 100000);
 console.log("ok: one canvas/worker; checkbox switches predicates; highlighting preserves all five enforced directions; display-only controls preserve search; corona continuation and fixed internal settings");
+
+elements.get("tileSet").value = "P2"; elements.get("tileSet").fire("change"); await flush();
+assert.deepEqual(workers.at(-1).messages[0].options.tileKinds, ["kite", "dart"]);
+assert.equal(workers.at(-1).growth.snapshot().tiles[0].kind, "kite");
+assert.equal(elements.get("showMarking").textContent, "Show edge decorations");
+elements.get("tile_p5").checked = true; elements.get("tile_p5").fire("change"); await flush();
+assert.deepEqual(workers.at(-1).messages[0].options.tileKinds, ["kite", "dart", "p5"]);
+assert.match(elements.get("tileHint").textContent, /P1 edges cannot join/);
+for (const id of ids.filter(id => id.startsWith("tile_"))) elements.get(id).checked = false;
+elements.get("tile_p5").fire("change"); await flush();
+assert.equal(elements.get("statusMessage").textContent, "Choose at least one tile");
+elements.get("tileSet").value = "P1"; elements.get("tileSet").fire("change"); await flush();
+assert.equal(workers.at(-1).growth.snapshot().tiles[0].kind, "p5");
+console.log("ok: presets, custom selection, mixed rendering, empty selection and recovery");
