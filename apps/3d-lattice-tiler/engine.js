@@ -18,6 +18,7 @@ import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candi
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
 import { normalizeProposalProgram } from "./proposal-learner.js";
+import { exactDomainModel, periodicDomainSearch } from "./periodic-domain-search.js";
 import { INTERESTING_TILE_REVIEW } from "../../assets/interesting-tile-review.js?v=20260906";
 export { INTERESTING_TILE_REVIEW };
 
@@ -4909,7 +4910,7 @@ export const createTilingStream = (() => {
         }
       }
       tilingEvidence = {
-        kind: "translational_certificate",
+        kind: evidenceStrategy === "isohedral" ? "isohedral_certificate" : "translational_certificate",
         certified: true,
         can_tile: true,
         strategy: evidenceStrategy,
@@ -5355,7 +5356,9 @@ export const createTilingStream = (() => {
           const matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
           for (let row = 0; row < 3; row++) matrix[row][permutation[row]] = signs[permutation[row]];
           const det = determinant(matrix);
-          if (det === 1 || includeMirrors) rotations.push({ matrix, determinant: det });
+          const preservesLayers = !prototiles.some(tile => tile.lattice_symmetry === "a2_layers")
+            || matrix.map(row => row.reduce((sum, x) => sum + x, 0)).every((x, _, sums) => x === sums[0]);
+          if ((det === 1 || includeMirrors) && preservesLayers) rotations.push({ matrix, determinant: det });
         }
       }
       return rotations;
@@ -6945,6 +6948,45 @@ export const createTilingStream = (() => {
       searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
     };
 
+    async function* expandStructuralCertificate(template) {
+      searchStats.structural_phase = "expansion";
+      Object.assign(state.placements[0], {_periodic_motif_index:0,_periodic_base_color_id:0,_periodic_cell:[0,0,0],color_id:TRANSLATIONAL_CELL_COLOR_OFFSET});
+      yield nodeStatus(rootId,"working","certified domain; expanding to the display goal",preflightStatusPayload(template));
+      const existing = new Set(state.placements.map(placementGeometryKey));
+      const basis = template.period_vectors;
+      // Exhaust the entire certified orbit in increasing coefficient boxes.
+      // No heuristic cell budget and no face-contact restriction: a weighted
+      // quotient need not be a face-to-face geometric tiling.
+      for(let radius=0; !goalMet(); radius++) {
+        for(let x=-radius;x<=radius;x++)for(let y=-radius;y<=radius;y++)for(let z=-radius;z<=radius;z++) {
+          if(Math.max(Math.abs(x),Math.abs(y),Math.abs(z))!==radius)continue;
+          for(const [motifIndex,descriptor] of template.motif.entries()) {
+            if(goalMet())return true;
+            if(stopToken.stop || overBudget() || state.placements.length>=safetyMax) {
+              noteIncompleteSearch();
+              searchStats.termination_reason ??= state.placements.length>=safetyMax ? "safety_tile_limit" : "stopped";
+              return false;
+            }
+            const orient=prototiles[descriptor.prototile_idx].unique_orientations[descriptor.orientation_index];
+            const translation=startMove.translation.map((v,i)=>v+descriptor.translation[i]+x*basis[0][i]+y*basis[1][i]+z*basis[2][i]);
+            const move={prototile_idx:descriptor.prototile_idx,orient,translation,is_forced:true,node_id:rootId,
+              _periodic_motif_index:motifIndex,_periodic_base_color_id:motifIndex%BASE_COLOR_PALETTE_SIZE,_periodic_cell:[x,y,z],
+              occupancy_data:orient.occupancy.map(point=>({pos:vecAdd(point.pos,translation),weight:point.weight}))};
+            const key=placementGeometryKey(move);if(existing.has(key))continue;
+            if(!moveFitsRegion(orient,translation))continue;
+            const rollback=applyMove(move);existing.add(key);
+            searchStats.structural_translated_tiles=(searchStats.structural_translated_tiles??0)+1;
+            yield fastPlacementDelta(move,rollback,rootId);
+            if(shouldSnapshot())yield snapshot(rootId);
+            await yieldToBrowser();
+          }
+        }
+        yield nodeStatus(rootId,"working",`certified ${tilingStrategy} expansion · radius ${radius}`,{search_stats:searchStatsSnapshot()});
+        await tick();
+      }
+      return true;
+    }
+
     applyInitialPatch();
     if (initialPatchDescriptors.length) {
       yield nodeStatus(rootId, "working", `resumed ${state.placements.length}-tile patch`, {
@@ -6962,106 +7004,125 @@ export const createTilingStream = (() => {
         strategy: tilingStrategy
       };
       yield nodeStatus(rootId, "fail", "Local edge-angle obstruction");
-    } else if (tilingStrategy === "translational") {
-      const configuredGoalPreflightMs = Number(config.periodic_goal_preflight_time_ms);
-      success = yield* tryPeriodicTemplatePatch(rootId, {
-        force: true,
-        discoveryTimeMs: config.periodic_stop_at_growth_goal !== false
-          ? Number.isFinite(configuredGoalPreflightMs) && configuredGoalPreflightMs > 0
-            ? configuredGoalPreflightMs
-            : 1000
-          : null
-      });
-      if (
-        !success
-        && config.periodic_stop_at_growth_goal !== false
-        && searchStats.termination_reason !== "translational_growth_goal_without_certificate"
-        && !overBudget()
-      ) {
-        const growthGoalReached = yield* search(rootId);
-        if (growthGoalReached) {
-          const configuredGoalCheckMs = Number(config.periodic_goal_patch_check_time_ms);
-          const goalCheckMs = Number.isFinite(configuredGoalCheckMs) && configuredGoalCheckMs > 0
-            ? configuredGoalCheckMs
-            : 1000;
-          const goalCheckStartedAt = performance.now();
-          let goalCheckTimedOut = false;
-          const goalCheckBudgetExceeded = () => {
-            const exceeded = performance.now() - goalCheckStartedAt >= goalCheckMs;
-            if (exceeded) goalCheckTimedOut = true;
-            return exceeded;
-          };
-          let goalTemplate = findBoundaryPeriodicTemplate(state.placements.length, {
-            budget_exceeded: goalCheckBudgetExceeded,
-            on_budget_exceeded: () => { goalCheckTimedOut = true; }
-          });
-          if (!goalTemplate && !goalCheckBudgetExceeded()) {
-            goalTemplate = minePeriodicTemplateFromCurrentPatch({
-              budget_exceeded: goalCheckBudgetExceeded,
-              on_budget_exceeded: () => { goalCheckTimedOut = true; }
+    } else if (["translational", "isohedral"].includes(tilingStrategy)) {
+      const isohedral = tilingStrategy === "isohedral";
+      const tile = prototiles[0];
+      const exactCellModel = prototiles.length === 1 && tile.is_polycube;
+      const exactWeightedModel = prototiles.length === 1 && tile.geometry_model === "lattice_function";
+      const model = (exactCellModel || exactWeightedModel) && exactDomainModel(
+        tile.unique_orientations.map(orient => ({
+          points: exactCellModel
+            ? polycubeCellsForOrient(orient).map(pos => ({pos, weight: 1}))
+            : orient.occupancy
+        })), exactCellModel ? 1 : MAX_SOLID_ANGLE
+      );
+      searchStats.structural_phase = "discovery";
+      if (!model) {
+        // Preserve positive discovery for geometric/irrational-weight and
+        // mixed systems. This fallback is explicitly NOT a negative decider.
+        searchStats.structural_scope = "geometric_certificate_search_only";
+        searchStats.structural_negative_decision_supported = false;
+        const previousStopAtGoal = config.periodic_stop_at_growth_goal;
+        const previousMax = config.periodic_patch_max_tiles;
+        const previousUnbounded = config.periodic_patch_unbounded;
+        config.periodic_stop_at_growth_goal = false;
+        config.periodic_patch_unbounded = true;
+        try {
+          for (let round=1; !stopToken.stop && !overBudget() && !success; round++) {
+            searchStats.structural_discovery_round = round;
+            // Dovetail limits: no unfinished small-size search is abandoned
+            // forever. Display count/shell never limits motif discovery.
+            const one = findTranslationalPolyhedronTemplate();
+            let template = one && (!isohedral ? one : certifyConfiguredIsohedralTemplate(one));
+            if (!template && isohedral) {
+              const previousHorizon = config.isohedral_search_horizon_tiles;
+              config.isohedral_search_horizon_tiles = Math.max(8, round * 8);
+              const found = yield* searchIsohedral(rootId);
+              config.isohedral_search_horizon_tiles = previousHorizon;
+              template = found ? tilingEvidence?.periodic_template : null;
+              // A successful seed is already part of the certified motif.
+            }
+            if (template) {
+              searchStats.structural_phase = "expansion";
+              tilingEvidence = {kind: isohedral ? "isohedral_certificate" : "translational_certificate", certified:true, can_tile:true,
+                strategy:tilingStrategy, periodic_template:template, period_vectors:template.period_vectors, patch_size:template.motif.length};
+              success = yield* expandStructuralCertificate(template);
+              break;
+            }
+            if (!isohedral) success = yield* tryPeriodicTemplatePatch(rootId, {
+              force:true, maximumPatchSize:round, motifNodeLimit:Math.pow(2,Math.min(round+8,40)), discoveryTimeMs:round*1000
             });
+            if (!success) {
+              yield nodeStatus(rootId,"working",`${tilingStrategy}: continuing certificate discovery (round ${round}; negative decision unavailable for this model)`,{search_stats:searchStatsSnapshot()});
+              await tick();
+            }
           }
-          if (goalTemplate) {
-            tilingEvidence = {
-              kind: "translational_certificate",
-              certified: true,
-              can_tile: true,
-              strategy: "translational",
-              source: "translational_growth_goal_patch",
-              patch_size: goalTemplate.motif.length,
-              certificate_kind: goalTemplate.kind,
-              period_vectors: goalTemplate.period_vectors.map(vector => vector.slice()),
-              periodic_template: goalTemplate
-            };
-            success = true;
-          } else {
-            searchStats.termination_reason = goalCheckTimedOut
-              ? "translational_growth_goal_certificate_check_timed_out"
-              : "translational_growth_goal_without_certificate";
-          }
-          yield {
-            type: "translational_check",
-            patch_size: state.placements.length,
-            certified: !!goalTemplate,
-            check_completed: !goalCheckTimedOut,
-            growth_goal_reached: true,
-            growth_goal_criterion: criterion,
-            growth_goal_target: targetVal,
-            periodic_template: goalTemplate,
-            frontier_stats: frontierStatsWithCandidateCount(),
-            search_stats: searchStatsSnapshot()
-          };
-          yield snapshot(rootId);
+        } finally {
+          config.periodic_stop_at_growth_goal = previousStopAtGoal;
+          config.periodic_patch_max_tiles = previousMax;
+          config.periodic_patch_unbounded = previousUnbounded;
         }
-      }
-      if (!success) {
-        yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
-      }
-    } else if (tilingStrategy === "isohedral") {
-      const configuredIsohedralTemplate = preflightEnabled
-        ? certifyConfiguredIsohedralTemplate(config.known_periodic_template)
-        : null;
-      if (configuredIsohedralTemplate) {
-        success = yield* tryPeriodicTemplatePatch(rootId, {
-          force: true,
-          template: configuredIsohedralTemplate,
-          evidenceStrategy: "isohedral"
+        if (!success) noteIncompleteSearch();
+      } else {
+        const maxCopies = isohedral ? isohedralRotations.length : Infinity;
+        searchStats.structural_scope = exactCellModel ? `exact_polycube_${tile.polycube_lattice}` : "integer_weight_Z3_lattice_function";
+        searchStats.isohedral_complete_motif_bound = isohedral ? maxCopies : null;
+        const enumeration = periodicDomainSearch(model, {
+          rootOrientation: tile.unique_orientations.indexOf(startOrient), maxCopies,
+          domainAllowed: h => !exactCellModel || [[h[0],0,0],[h[1],h[3],0],[h[2],h[4],h[5]]].every(v=>isPolycubeTranslationVector(tile,v)),
+          translationAllowed: v => !exactCellModel || isPolycubeTranslationVector(tile,v)
         });
-        if (success) {
+        let certified = null, exhausted = false, workSinceYield = 0;
+        while (!stopToken.stop && !overBudget()) {
+          const next = enumeration.next();
+          if (next.done) { exhausted = true; break; }
+          const event = next.value;
+          searchWorkCounter++;
+          searchStats.structural_domains_started = event.domains;
+          searchStats.structural_exact_nodes = event.nodes;
+          if (event.type === "domain") {
+            searchStats.structural_domain_determinant = event.determinant;
+            searchStats.structural_domain_copies = event.copies;
+          }
+          if (event.type === "solution") {
+            const [a,b,c,d,e,f] = event.hnf;
+            const placements = event.placements.map(p => ({
+              prototile_idx: 0, orient: tile.unique_orientations[p.orientation],
+              translation: vecAdd(startMove.translation, p.translation)
+            }));
+            const periodic = certifyPeriodicPlacementMotif(placements, [[a,0,0],[b,d,0],[c,e,f]]);
+            certified = periodic && (isohedral ? isohedralSymmetryCertificate(periodic, placements) : periodic);
+            if (certified) break;
+          }
+          if (event.type === "domain" || ++workSinceYield >= 128) {
+            workSinceYield = 0;
+            yield nodeStatus(rootId, "working", `${tilingStrategy}: exact domain ${searchStats.structural_domain_determinant}, ${searchStats.structural_domain_copies} tiles`, {search_stats: searchStatsSnapshot()});
+            await tick();
+          }
+        }
+        if (certified) {
+          searchStats.structural_phase = "expansion";
           tilingEvidence = {
-            kind: "isohedral_certificate",
-            certified: true,
-            can_tile: true,
-            strategy: "isohedral",
-            source: "configured_verified_template",
-            patch_size: configuredIsohedralTemplate.motif.length,
-            certificate_kind: configuredIsohedralTemplate.kind,
-            period_vectors: configuredIsohedralTemplate.period_vectors.map(vector => vector.slice()),
-            periodic_template: configuredIsohedralTemplate
+            kind: isohedral ? "isohedral_certificate" : "translational_certificate",
+            certified: true, can_tile: true, strategy: tilingStrategy,
+            source: "systematic_exact_quotient_enumeration", periodic_template: certified,
+            period_vectors: certified.period_vectors, patch_size: certified.motif.length
           };
+          success = yield* expandStructuralCertificate(certified);
+        } else if (isohedral && exhausted) {
+          searchStats.structural_phase = "proved_no_isohedral_tiling";
+          tilingEvidence = {
+            kind: "no_isohedral_tiling", certified: true, can_tile: null, can_tile_isohedrally: false,
+            strategy: "isohedral", model: searchStats.structural_scope,
+            point_group_order: maxCopies, complete_motif_bound: maxCopies,
+            domains_checked: searchStats.structural_domains_started ?? 0,
+            note: "All HNF quotients through the point-group orbit bound, and every exact cover within each, exhausted. Other non-isohedral tilings are not excluded."
+          };
+        } else {
+          noteIncompleteSearch();
+          searchStats.termination_reason ??= stopToken.stop ? "stopped" : "resource_pause";
         }
       }
-      if (!success) success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
       // The hybrid learner has no catalog hint, but it may spend a bounded
@@ -7129,8 +7190,7 @@ export const createTilingStream = (() => {
     // it succeeds only after its requested live patch was actually produced.
     // Dedicated translational/isohedral proof lanes still report certificates
     // immediately, as does a count-only discovery run.
-    const structuralGoalRequired = tilingStrategy === "translational"
-      && config.periodic_stop_at_growth_goal !== false;
+    const structuralGoalRequired = ["translational", "isohedral"].includes(tilingStrategy);
     const certificateCompletesRun = (tilingStrategy !== "generic" || criterion === "count")
       && (!structuralGoalRequired || goalMet());
     success = success || (
@@ -7240,6 +7300,7 @@ export const createTilingStream = (() => {
       !success
       && ["translational", "isohedral"].includes(tilingStrategy)
       && tilingEvidence?.can_tile !== false
+      && tilingEvidence?.can_tile_isohedrally !== false
     ) {
       noteIncompleteSearch();
       searchStats.termination_reason ??= tilingStrategy === "translational"
@@ -7290,7 +7351,7 @@ export const createTilingStream = (() => {
       && tilingEvidence?.can_tile === true
       && structuralGoalRequired
       && !success;
-    const resultKind = provenImpossible
+    const resultKind = tilingEvidence?.can_tile_isohedrally === false ? "no_isohedral_tiling" : provenImpossible
       ? "no_tiling"
       : extensionImpossible
         ? "patch_extension_impossible"

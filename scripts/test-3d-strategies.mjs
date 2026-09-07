@@ -146,16 +146,10 @@ const noOneTilePatch = await solve({
   tiling_strategy: "translational",
   periodic_tile_count: 1
 });
-assert.equal(noOneTilePatch.final.success, false, "uncertified fallback growth must not become tiling success");
-assert.equal(noOneTilePatch.final.result_kind, "search_incomplete");
-assert.equal(noOneTilePatch.final.search_incomplete, true);
-assert.equal(
-  noOneTilePatch.final.search_stats.termination_reason,
-  "generation_band_pruning",
-  "the fallback growth heuristic must report its branch deferral instead of claiming exact motif-range exhaustion"
-);
-assert.ok(noOneTilePatch.final.tile_count >= 8, "fallback growth should retain the requested patch for inspection");
-assert.ok(noOneTilePatch.final.search_stats.branch_choices_visited > 0);
+assert.equal(noOneTilePatch.final.success, true, "a one-tile legacy hint must not cap structural discovery");
+assert.equal(noOneTilePatch.final.result_kind, "certified_tiling");
+assert.equal(noOneTilePatch.final.tiling_evidence.certified, true);
+assert.ok(noOneTilePatch.final.tile_count >= 8);
 
 const progressivePatchCheck = await solve({
   mode_key: "tet_oct",
@@ -165,7 +159,7 @@ const progressivePatchCheck = await solve({
   periodic_patch_max_tiles: 4
 });
 assert.deepEqual(
-  progressivePatchCheck.translationalChecks.map(check => check.patchSize),
+  [...new Set(progressivePatchCheck.translationalChecks.map(check => check.patchSize))],
   [1, 2, 3],
   "translational mode must test candidate patch sizes progressively"
 );

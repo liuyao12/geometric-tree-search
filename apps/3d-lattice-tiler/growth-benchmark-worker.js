@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260906-global-section";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260907-structural-domains";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -137,7 +137,7 @@ function configureMode(baseConfig, mode) {
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_preflight: mode.templates,
-    periodic_patch_unbounded: false,
+    periodic_patch_unbounded: mode.id === "translational",
     periodic_stop_at_growth_goal: mode.id === "translational",
     periodic_goal_preflight_time_ms: mode.id === "translational" ? 1000 : null,
     periodic_motif_node_limit: mode.id === "translational" ? 2500 : baseConfig.periodic_motif_node_limit,
@@ -315,9 +315,12 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
     ? JSON.stringify(final.tiling_evidence.periodic_template).length
     : 0;
-  const exactNoTiling = final?.result_kind === "no_tiling"
+  const exactNoTiling = (final?.result_kind === "no_tiling"
     && final?.can_tile === false
-    && final?.tiling_evidence?.certified === true;
+    && final?.tiling_evidence?.certified === true)
+    || (final?.result_kind === "no_isohedral_tiling"
+      && final?.tiling_evidence?.can_tile_isohedrally === false
+      && final?.tiling_evidence?.certified === true);
   if (exactNoTiling) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     queueHistory({ point, snapshot: terminalSnapshot });

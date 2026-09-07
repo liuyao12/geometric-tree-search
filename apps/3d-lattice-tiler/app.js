@@ -5,7 +5,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260906-global-section";
+} from "./engine.js?v=20260907-structural-domains";
 
 const $ = (id) => document.getElementById(id);
 
@@ -536,7 +536,7 @@ const STRATEGY_DESCRIPTIONS = {
   rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
   gcts_rl: "Combines the same cold linear RL ordering with vector-valued global-section checks. Marking synthesis and online training are both timed.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
-  isohedral: "Bounded positive-certificate search: it accepts only an exact periodic quotient preserved by symmetries taking the root to every tile class; failure is inconclusive."
+  isohedral: "Exact finite quotient decision for integer Z³ polycubes and integer-weight lattice functions, followed by certified expansion. Other geometric representations remain certificate-only; no negative conclusion is claimed for them."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -3085,7 +3085,7 @@ function handleMessage(message) {
     if (message.search_stats) updateSearchMetrics(message.search_stats);
     const translationalGoalInconclusive = message.search_stats?.termination_reason
       === "translational_growth_goal_without_certificate";
-    const prefix = translationalGoalInconclusive
+    const prefix = message.result_kind === "no_isohedral_tiling" ? "No isohedral tiling in this lattice group" : translationalGoalInconclusive
       ? "Translational inconclusive at goal"
       : message.result_kind === "certified_tiling"
       ? "Certified"
@@ -3160,7 +3160,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260906-global-section", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260907-structural-domains", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3689,6 +3689,9 @@ function formatGrowthResult(result, target) {
       ? ` (learned ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} geometric weights; learner ${formatElapsed(learningMilliseconds)})`
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
+  if (result?.resultKind === "no_isohedral_tiling") {
+    return `${result.label}: no isohedral tiling in the configured lattice symmetry group (exhaustive quotient proof). Non-isohedral tilings remain possible.${memorySuffix}`;
+  }
   if (result?.resultKind === "known_aperiodic_construction") {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
@@ -3921,7 +3924,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260906-global-section", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260907-structural-domains", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
