@@ -1,6 +1,54 @@
 # Penrose GCTS on the cyclotomic integer lattice
 
-## Current design (September 2026)
+## Live with / without marking comparison (September 2026)
+
+The main app now compares two real depth-first searches, inspired by the
+marking-enforcement control in `GCTS-I.html`. `penrose-growth.js` implements
+both lanes; its sole rule-switch is `useMarkings`. Neither lane calls a
+pentagrid/window predicate, uses a target tile list, or uses the previous
+add-only solver. `growth-worker.js` advances each iterator in bounded batches,
+and `comparison.js` displays its current actual patch and counters.
+
+Both searches begin with the same unit thick rhomb and consider translations
+of the same ten rhomb orientations at the nearest exposed edge. A shared
+integer seed determines the deterministic candidate order. They enforce:
+
+- exact corner-angle capacity at canonical cyclotomic addresses;
+- exact convex polygon non-overlap (including containment), using separating
+  axes and integer comparisons in ℚ(√5);
+- one simple boundary cycle, ruling out holes and pinched growth patches.
+
+The marked lane additionally solves the rigid Ammann template orientations
+before descent. Each DFS rollback removes the actual last tile and restores
+its parent marking assignment. Failed-placement results are not cached across
+branches. Candidate *geometry* is cached, since it is state independent.
+At a node-budget stop the current valid patch is retained and reported as a
+budget stop, never as a tiling impossibility proof.
+
+The unmarked lane can produce non-Penrose and periodic tilings, so timings are
+not an equal-solution benchmark. For the default seed 17 and target 60, the
+unmarked lane completes after 148 proposals and no backtracks; the marked lane
+completes after 4,461 proposals, 725 marking prunes and 607 backtracks. The
+right-hand constraints narrow the allowed completions but do not guarantee
+less search. Playback speed controls events per batch and is not solver time.
+
+The stripe-visibility checkbox is deliberately independent of enforcement.
+Unmarked stripes use an arbitrary rigid orientation and may not line up.
+Marked stripes use a consistent assignment for the entire current patch.
+Changing controls resets both workers. Pausing stops requesting new batches;
+an already requested bounded batch may finish. Pan and zoom are shared.
+
+`test-penrose-growth.mjs` checks exact overlap, corner totals, boundary topology,
+rigid-marking compatibility, matching seeds/proposal order, deterministic
+budget stops, and LIFO rollback. It also verifies that an unmarked result is
+actually incompatible with the markings. `test-penrose-growth-worker.mjs`
+exercises the actual worker protocol without a local browser preview.
+
+The previous catalog is retained at `reference.html`. Its separately named
+`makeCyclotomicSearch` remains a window-certified reference experiment; the
+following sections document that path and the common exact arithmetic.
+
+## Reference model-set design
 
 The ambient search object is the ring of integers of the fifth cyclotomic
 field, O_K = ℤ[ζ₅], with independent basis (1, ζ₅, ζ₅², ζ₅³). A vertex address
