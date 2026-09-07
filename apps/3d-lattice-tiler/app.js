@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
+  INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
 } from "./engine.js?v=20260906-global-section";
@@ -13,6 +14,7 @@ const candidateResearchPanel = $("candidateResearchPanel");
 const candidateResearchTitle = $("candidateResearchTitle");
 const candidateResearchDetail = $("candidateResearchDetail");
 const candidateSearchButton = $("candidateSearchButton");
+let catalogueRegression = new Map();
 const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
@@ -773,6 +775,7 @@ function polycubeCubeCount(figure) {
 }
 
 const catalogGroupDefinitions = [
+  { id: "geometric-research", title: "Geometric research benchmarks · separate model", test: figure => figureHasCategory(figure, "Geometric Research Benchmarks") },
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
   { id: "a2-layered", title: "Primary search · non-polycubes on A₂ slices · x+y+z=k", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
@@ -1373,10 +1376,32 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
 
 function updateCandidateResearchPanel() {
   const candidate = selectedCensusCandidate();
+  let reviewNote = document.getElementById("candidateGeometricReview");
+  if (!reviewNote) {
+    reviewNote = document.createElement("p");
+    reviewNote.id = "candidateGeometricReview";
+    candidateResearchPanel.append(reviewNote);
+  }
+  const review = INTERESTING_TILE_REVIEW.previous_geometric_reviews[candidate?.id];
+  reviewNote.textContent = review && !candidate?.research_review
+    ? `Geometric re-review (2026-09-06): ${review.classification.replaceAll("_", " ")}, for exact Kuhn alcoves with the full A₂ group including reflections. This does not reclassify the weighted lattice function used by the interactive lanes. Earlier weighted results below retain their original scope.`
+    : "";
+  const latest = catalogueRegression.get(rootFigure()?.mode_key);
+  if (latest) {
+    const certificates = latest.attempts.filter(a => a.can_tile === true && a.evidence?.certified).length;
+    const patches = latest.attempts.filter(a => a.result_kind === "patch_found").length;
+    reviewNote.textContent += ` Latest six-lane regression: ${certificates} certified-positive lane results; ${patches} finite-patch goals. Budget: 250 ms / 500 nodes per lane, eight-tile target. Other outcomes are not new non-tiling proofs; this short pass does not supersede deeper historical searches.`;
+  }
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
   const layeredLattice = selectedLayeredLattice();
   candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic && !layeredLattice);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
+  if (candidate?.research_review) {
+    candidateResearchTitle.textContent = candidate.name;
+    candidateResearchDetail.textContent = `${candidate.research_review.note} Scope: ${candidate.research_review.scope}`;
+    candidateSearchButton.textContent = "Explore weighted counterpart · shell 2";
+    return;
+  }
   if (layeredLattice && !candidate) {
     candidateSearchButton.textContent = "Load layered shell-2 curriculum";
     candidateResearchTitle.textContent = `${rootFigure()?.name ?? "A₂ prism"} · layered lattice function`;
@@ -1741,7 +1766,9 @@ function renderSystemTileList() {
             ?? figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
             ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
-            : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
+            : figure.census_candidate.research_review
+              ? `${figure.census_candidate.research_review.classification.replaceAll("_", " ")} · geometric model · ${figure.census_candidate.alcoves.length} alcoves`
+              : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -4128,3 +4155,10 @@ setRunButton();
 renderGrowthChart();
 animate();
 void restoreLatestCheckpoint();
+fetch(new URL("../../assets/interesting-catalog-regression.json", import.meta.url))
+  .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+  .then(report => {
+    catalogueRegression = new Map(report.results.map(row => [row.mode_key, row]));
+    updateCandidateResearchPanel();
+  })
+  .catch(error => console.warn("Catalogue regression report unavailable", error));

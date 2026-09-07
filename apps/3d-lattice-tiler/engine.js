@@ -18,6 +18,8 @@ import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candi
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
 import { normalizeProposalProgram } from "./proposal-learner.js";
+import { INTERESTING_TILE_REVIEW } from "../../assets/interesting-tile-review.js?v=20260906";
+export { INTERESTING_TILE_REVIEW };
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
 
@@ -8453,11 +8455,11 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
-    ...Object.fromEntries([...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES, ...A2_SLICED_SIZE10_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
+    ...Object.fromEntries([...INTERESTING_TILE_REVIEW.candidates, ...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES, ...A2_SLICED_SIZE10_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
       const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
       return [candidate.registry_id, {
         name: candidate.name,
-        category: candidate.screening.status === "periodic"
+        category: candidate.research_review ? ["Geometric Research Benchmarks"] : candidate.screening.status === "periodic"
           ? ["GCTS Periodic Controls"]
           : ["Unresolved A2 Sliced Candidates", "A2 Layered Solids"],
         census_candidate: candidate,
@@ -8465,7 +8467,7 @@ export const tileSpecs = (() => {
           equation: "x+y+z=k",
           base_layer: geometry.layer_sums[0],
           top_layer: geometry.layer_sums.at(-1),
-          role: candidate.screening.status === "periodic"
+          role: candidate.research_review ? "Geometric research benchmark; interactive lanes use the weighted model" : candidate.screening.status === "periodic"
             ? `${candidate.screening.motif_tiles}-copy periodic quotient control`
             : `consecutive-layer exact-through-${candidate.screening.periodic_exact_through} candidate`
         },
