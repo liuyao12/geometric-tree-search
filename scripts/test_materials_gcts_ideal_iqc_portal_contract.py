@@ -10,7 +10,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 
 def main() -> None:
     source = (APP_DIR / "app.js").read_text()
-    html = (APP_DIR / "index.html").read_text()
+    html = (APP_DIR / "research.html").read_text()
     alias = (ROOT / "iqc-growth-live" / "index.html").read_text()
     readme = (APP_DIR / "README.md").read_text()
     benchmark = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text()

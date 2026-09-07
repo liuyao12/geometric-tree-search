@@ -13,7 +13,7 @@ ROOT = Path(__file__).parents[1]
 
 def test_published_cdyb_is_a_selectable_positions_only_sample() -> None:
     app = (ROOT / "apps/iqc-growth-live/app.js").read_text(encoding="utf-8")
-    html = (ROOT / "apps/iqc-growth-live/index.html").read_text(encoding="utf-8")
+    html = (ROOT / "apps/iqc-growth-live/research.html").read_text(encoding="utf-8")
     readme = (ROOT / "apps/iqc-growth-live/README.md").read_text(encoding="utf-8")
     fixture = (ROOT / "apps/iqc-growth-live/cdyb-browser-fixture.js").read_text(encoding="utf-8")
 

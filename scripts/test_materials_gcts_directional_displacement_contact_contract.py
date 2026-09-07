@@ -11,7 +11,7 @@ def test_full_uij_enters_directional_contact_geometry_without_motion_claims() ->
     source = (APP / "app.js").read_text(encoding="utf-8")
     envelopes = (APP / "colored-distance-envelopes.js").read_text(encoding="utf-8")
     displacement = (APP / "displacement-envelope.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
     assert "directionalPairDisplacementSigma" in displacement

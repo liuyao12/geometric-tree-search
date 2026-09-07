@@ -8,7 +8,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 
 def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> None:
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     source = (APP / "app.js").read_text(encoding="utf-8")
     audit = (APP / "microstructure-audit.js").read_text(encoding="utf-8")
     css = (APP / "style.css").read_text(encoding="utf-8")

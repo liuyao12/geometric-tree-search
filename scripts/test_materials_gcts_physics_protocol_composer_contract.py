@@ -32,7 +32,7 @@ class SelectOptionParser(HTMLParser):
 def main() -> None:
     source = (APP / "app.js").read_text()
     module = (APP / "physics-compression-map.js").read_text()
-    html = (APP / "index.html").read_text()
+    html = (APP / "research.html").read_text()
     root_html = (ROOT / "iqc-growth-live" / "index.html").read_text()
     css = (APP / "style.css").read_text()
 

@@ -12,7 +12,7 @@ def main() -> None:
     source = (APP / "app.js").read_text()
     outcome = (APP / "physics-protocol-outcome.js").read_text()
     styles = (APP / "style.css").read_text()
-    html = (APP / "index.html").read_text()
+    html = (APP / "research.html").read_text()
 
     for needle in (
         'export const REPLICATE_SEED_MODE_IDS = Object.freeze([',

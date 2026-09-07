@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text()
 ATLAS = (ROOT / "apps/iqc-growth-live/evidence-atlas.js").read_text()
 README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 BACKEND = (ROOT / "scripts/materials_gcts_cdyb_site_resolved_completion_section.py").read_text()

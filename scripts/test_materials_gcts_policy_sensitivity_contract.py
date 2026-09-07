@@ -8,7 +8,7 @@ APP_DIR = ROOT / "apps/iqc-growth-live"
 
 
 def test_policy_sensitivity_history_is_frozen_and_coordinate_free() -> None:
-    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    html = (APP_DIR / "research.html").read_text(encoding="utf-8")
     source = (APP_DIR / "app.js").read_text(encoding="utf-8")
     css = (APP_DIR / "style.css").read_text(encoding="utf-8")
     readme = (APP_DIR / "README.md").read_text(encoding="utf-8")

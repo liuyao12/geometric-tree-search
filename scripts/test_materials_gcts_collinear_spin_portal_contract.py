@@ -2,7 +2,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text()
 DB = (ROOT / "apps/iqc-growth-live/structure-database.js").read_text()
 IO = (ROOT / "apps/iqc-growth-live/structure-io.js").read_text()
 MODULE = (ROOT / "apps/iqc-growth-live/collinear-spin-geometry.js").read_text()

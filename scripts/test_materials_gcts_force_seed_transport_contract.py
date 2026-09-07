@@ -11,7 +11,7 @@ def test_residual_force_vectors_are_transportable_but_never_become_a_force_field
     source = (APP / "app.js").read_text(encoding="utf-8")
     projection = (APP / "local-constraint-relaxation.js").read_text(encoding="utf-8")
     force_seed = (APP / "force-seed-geometry.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
     benchmark = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text(
         encoding="utf-8")

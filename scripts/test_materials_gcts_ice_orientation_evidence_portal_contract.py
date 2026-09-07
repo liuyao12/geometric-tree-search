@@ -10,7 +10,7 @@ PORTAL = ROOT / "apps" / "iqc-growth-live"
 
 def test_global_orientation_evidence_is_interactive_and_receipt_visible() -> None:
     app = (PORTAL / "app.js").read_text()
-    html = (PORTAL / "index.html").read_text()
+    html = (PORTAL / "research.html").read_text()
     module = (PORTAL / "ice-orientation-evidence.mjs").read_text()
     atlas = (PORTAL / "evidence-atlas.js").read_text()
     readme = (PORTAL / "README.md").read_text()

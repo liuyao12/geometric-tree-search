@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## September 2026 · focused workspace and reversible search
+
+The main page now follows **atomic patch → cluster discovery → GCTS learning
+→ tree search**. It runs a position-only continuous-space overlap learner,
+worker-based reversible DFS, timed pause/resume, explicit atoms and a
+retained best structure. Markings can be trained with different channels
+and reach and selected within the current experiment.
+
+See the [pipeline audit](../../docs/projects/materials-pipeline-makeover-audit.md)
+for correspondence with GCTS-I, invariants and remaining scientific limits.
+Run `node apps/iqc-growth-live/test-continuous-pipeline.mjs` for core tests.
+The earlier physics and benchmark portal is preserved at
+[research.html](research.html); the development notes below describe that console.
+Its specialized results do not certify the new generic engine.
+
 ## Build 454 · configurational pair-virial tensor
 
 Every active central interaction pair now contributes the translation-invariant

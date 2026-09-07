@@ -10,7 +10,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 def test_recorded_conditions_are_visible_but_never_controls() -> None:
     parser = (APP_DIR / "structure-io.js").read_text(encoding="utf-8")
     source = (APP_DIR / "app.js").read_text(encoding="utf-8")
-    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    html = (APP_DIR / "research.html").read_text(encoding="utf-8")
     css = (APP_DIR / "style.css").read_text(encoding="utf-8")
 
     assert '"_diffrn_ambient_temperature"' in parser

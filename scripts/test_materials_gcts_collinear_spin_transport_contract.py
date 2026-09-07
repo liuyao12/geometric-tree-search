@@ -9,7 +9,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 def test_collinear_scalar_spin_reaches_marking_admission_and_receipt() -> None:
     source = (APP / "app.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     coloring = (APP / "collinear-spin-coloring.js").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
     benchmark = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text(

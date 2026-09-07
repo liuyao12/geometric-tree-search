@@ -12,7 +12,7 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     io = (APP / "structure-io.js").read_text(encoding="utf-8")
     envelopes = (APP / "colored-distance-envelopes.js").read_text(encoding="utf-8")
     uncertainty = (APP / "ensemble-geometry-uncertainty.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
     assert 'id="ensembleControls"' in html

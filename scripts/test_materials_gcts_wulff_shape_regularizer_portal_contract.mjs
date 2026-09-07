@@ -6,7 +6,7 @@ import {
   orientedEnergyKernelEstimate,
 } from "../apps/iqc-growth-live/wulff-shape-regularizer.mjs";
 
-const html = readFileSync(new URL("../apps/iqc-growth-live/index.html", import.meta.url), "utf8");
+const html = readFileSync(new URL("../apps/iqc-growth-live/research.html", import.meta.url), "utf8");
 const app = readFileSync(new URL("../apps/iqc-growth-live/app.js", import.meta.url), "utf8");
 const normalization = readFileSync(new URL("../apps/iqc-growth-live/score-normalization.mjs", import.meta.url), "utf8");
 

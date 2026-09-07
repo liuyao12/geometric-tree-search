@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 const app = readFileSync(new URL("../apps/iqc-growth-live/app.js", import.meta.url), "utf8");
-const document = readFileSync(new URL("../apps/iqc-growth-live/index.html", import.meta.url), "utf8");
+const document = readFileSync(new URL("../apps/iqc-growth-live/research.html", import.meta.url), "utf8");
 const styles = readFileSync(new URL("../apps/iqc-growth-live/style.css", import.meta.url), "utf8");
 const readme = readFileSync(new URL("../apps/iqc-growth-live/README.md", import.meta.url), "utf8");
 const benchmark = readFileSync(new URL("../docs/projects/materials-recursive-gcts-benchmark.md", import.meta.url), "utf8");

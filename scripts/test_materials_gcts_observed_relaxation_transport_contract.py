@@ -10,7 +10,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 def test_observed_non_affine_vectors_seed_only_bounded_fail_closed_projection() -> None:
     source = (APP / "app.js").read_text(encoding="utf-8")
     projection = (APP / "local-constraint-relaxation.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
     benchmark = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text(
         encoding="utf-8")

@@ -8,7 +8,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 
 def test_external_geometry_drives_render_search_and_receipt() -> None:
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     source = (APP / "app.js").read_text(encoding="utf-8")
     environments = (APP / "growth-environments.js").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")

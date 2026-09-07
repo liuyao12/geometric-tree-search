@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 APP_DIR = ROOT / "apps/iqc-growth-live"
 APP = (APP_DIR / "app.js").read_text()
-HTML = (APP_DIR / "index.html").read_text()
+HTML = (APP_DIR / "research.html").read_text()
 CSS = (APP_DIR / "style.css").read_text()
 README = (APP_DIR / "README.md").read_text()
 POSES = (APP_DIR / "proper-pose-orbits.js").read_text()

@@ -9,7 +9,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     source = (APP / "app.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     css = (APP / "style.css").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
     normalized_readme = " ".join(readme.split())

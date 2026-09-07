@@ -12,7 +12,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 
 def test_ice_evidence_is_executed_linked_and_claim_bounded() -> None:
     atlas = (APP_DIR / "evidence-atlas.js").read_text(encoding="utf-8")
-    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    html = (APP_DIR / "research.html").read_text(encoding="utf-8")
     css = (APP_DIR / "style.css").read_text(encoding="utf-8")
     artifact = json.loads((APP_DIR / "ice-molecular-port-artifact.json").read_text(encoding="utf-8"))
 

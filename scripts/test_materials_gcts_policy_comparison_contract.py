@@ -8,7 +8,7 @@ APP_DIR = ROOT / "apps/iqc-growth-live"
 
 
 def test_policy_comparison_reuses_one_hard_admitted_frontier() -> None:
-    html = (APP_DIR / "index.html").read_text()
+    html = (APP_DIR / "research.html").read_text()
     source = (APP_DIR / "app.js").read_text()
     readme = (APP_DIR / "README.md").read_text()
 

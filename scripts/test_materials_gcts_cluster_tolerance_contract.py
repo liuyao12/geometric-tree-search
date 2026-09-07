@@ -8,7 +8,7 @@ APP_DIR = ROOT / "apps/iqc-growth-live"
 
 
 def test_tolerance_controls_all_metric_isometry_learners() -> None:
-    html = (APP_DIR / "index.html").read_text()
+    html = (APP_DIR / "research.html").read_text()
     source = (APP_DIR / "app.js").read_text()
 
     assert 'id="clusterToleranceSelect"' in html

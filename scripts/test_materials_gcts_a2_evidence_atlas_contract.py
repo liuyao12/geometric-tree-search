@@ -15,7 +15,7 @@ def require(text: str, needle: str, label: str) -> None:
 
 def main() -> None:
     atlas = (APP / "evidence-atlas.js").read_text()
-    html = (APP / "index.html").read_text()
+    html = (APP / "research.html").read_text()
     root_html = (ROOT / "iqc-growth-live" / "index.html").read_text()
     css = (APP / "style.css").read_text()
 

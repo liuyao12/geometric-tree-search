@@ -8,7 +8,7 @@ APP_DIR = ROOT / "apps/iqc-growth-live"
 
 
 def test_constraint_ledger_covers_admission_and_ranking_terms() -> None:
-    html = (APP_DIR / "index.html").read_text()
+    html = (APP_DIR / "research.html").read_text()
     source = (APP_DIR / "app.js").read_text()
     style = (APP_DIR / "style.css").read_text()
 

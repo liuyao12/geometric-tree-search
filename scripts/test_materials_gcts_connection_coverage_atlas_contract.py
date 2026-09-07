@@ -10,7 +10,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 def main() -> None:
     source = (APP / "app.js").read_text()
-    html = (APP / "index.html").read_text()
+    html = (APP / "research.html").read_text()
     alias = (ROOT / "iqc-growth-live" / "index.html").read_text()
     styles = (APP / "style.css").read_text()
 

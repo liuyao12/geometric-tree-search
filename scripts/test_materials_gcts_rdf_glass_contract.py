@@ -9,7 +9,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 def test_browser_uses_a_real_amorphous_negative_control_and_partial_rdf() -> None:
     source = (APP / "app.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
     assert 'import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1"' in source

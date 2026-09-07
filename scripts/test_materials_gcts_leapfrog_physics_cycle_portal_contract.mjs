@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
-const html = fs.readFileSync("apps/iqc-growth-live/index.html", "utf8");
+const html = fs.readFileSync("apps/iqc-growth-live/research.html", "utf8");
 const alias = fs.readFileSync("iqc-growth-live/index.html", "utf8");
 const app = fs.readFileSync("apps/iqc-growth-live/app.js", "utf8");
 const moduleText = fs.readFileSync("apps/iqc-growth-live/leapfrog-physics-cycle.mjs", "utf8");

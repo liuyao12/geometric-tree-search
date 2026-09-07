@@ -9,7 +9,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 
 def test_growth_certificate_separates_replay_continuation_and_recurrence() -> None:
     source = (APP / "app.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
     for element_id in (

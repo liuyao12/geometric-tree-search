@@ -2,7 +2,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text()
 FIT = (ROOT / "apps/iqc-growth-live/contact-envelope-fit.js").read_text()
 VOID = (ROOT / "apps/iqc-growth-live/interstitial-clearance.js").read_text()
 

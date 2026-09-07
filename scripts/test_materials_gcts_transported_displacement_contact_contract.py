@@ -11,7 +11,7 @@ def test_reported_covariance_rotates_with_clusters_and_reaches_hard_growth_gates
     source = (APP / "app.js").read_text(encoding="utf-8")
     displacement = (APP / "displacement-envelope.js").read_text(encoding="utf-8")
     envelopes = (APP / "colored-distance-envelopes.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
     assert "rotateDisplacementTensor" in displacement

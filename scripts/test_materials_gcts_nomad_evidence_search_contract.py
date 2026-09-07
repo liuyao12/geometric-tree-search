@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text()
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
 DATABASE = (ROOT / "apps/iqc-growth-live/structure-database.js").read_text()
 STYLE = (ROOT / "apps/iqc-growth-live/style.css").read_text()

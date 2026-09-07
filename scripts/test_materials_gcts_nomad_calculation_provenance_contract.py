@@ -10,7 +10,7 @@ APP = ROOT / "apps" / "iqc-growth-live"
 def test_nomad_calculation_vectors_remain_diagnostic_geometry() -> None:
     database = (APP / "structure-database.js").read_text(encoding="utf-8")
     source = (APP / "app.js").read_text(encoding="utf-8")
-    html = (APP / "index.html").read_text(encoding="utf-8")
+    html = (APP / "research.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
     normalized_readme = " ".join(readme.split())
 

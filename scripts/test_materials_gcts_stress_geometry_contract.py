@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 APP_DIR = ROOT / "apps" / "iqc-growth-live"
 APP = (APP_DIR / "app.js").read_text(encoding="utf-8")
 DATABASE = (APP_DIR / "structure-database.js").read_text(encoding="utf-8")
-HTML = (APP_DIR / "index.html").read_text(encoding="utf-8")
+HTML = (APP_DIR / "research.html").read_text(encoding="utf-8")
 README = (APP_DIR / "README.md").read_text(encoding="utf-8")
 
 

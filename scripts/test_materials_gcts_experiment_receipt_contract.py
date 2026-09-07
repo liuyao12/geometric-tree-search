@@ -9,7 +9,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 
 def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     source = (APP_DIR / "app.js").read_text(encoding="utf-8")
-    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    html = (APP_DIR / "research.html").read_text(encoding="utf-8")
     css = (APP_DIR / "style.css").read_text(encoding="utf-8")
 
     assert 'schema: "gcts-materials-growth-receipt-v1"' in source

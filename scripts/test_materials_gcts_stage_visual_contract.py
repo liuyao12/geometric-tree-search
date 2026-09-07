@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 APP = ROOT / "apps" / "iqc-growth-live" / "app.js"
 STYLE = ROOT / "apps" / "iqc-growth-live" / "style.css"
-HTML = ROOT / "apps" / "iqc-growth-live" / "index.html"
+HTML = ROOT / "apps" / "iqc-growth-live" / "research.html"
 
 
 def test_clustering_is_full_scene_and_marking_uses_per_cluster_scenes() -> None:

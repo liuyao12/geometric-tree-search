@@ -4,7 +4,7 @@ import fs from "node:fs";
 const root = new URL("../", import.meta.url);
 const read = (path) => fs.readFileSync(new URL(path, root), "utf8");
 const app = read("apps/iqc-growth-live/app.js");
-const html = read("apps/iqc-growth-live/index.html");
+const html = read("apps/iqc-growth-live/research.html");
 const css = read("apps/iqc-growth-live/style.css");
 const moduleSource = read("apps/iqc-growth-live/classical-nucleation-evidence.mjs");
 const atlas = read("apps/iqc-growth-live/evidence-atlas.js");

@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text(encoding="utf-8")
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text(encoding="utf-8")
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text(encoding="utf-8")
 
 
 def test_clustering_exposes_geometry_pose_and_derived_channel_rank() -> None:

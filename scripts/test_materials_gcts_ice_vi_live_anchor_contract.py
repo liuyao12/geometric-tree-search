@@ -13,7 +13,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 ARTIFACT = APP_DIR / "ice-vi-anchor-trace-artifact.json"
 MODULE = APP_DIR / "ice-vi-anchor-trace.js"
 APP = (APP_DIR / "app.js").read_text()
-HTML = (APP_DIR / "index.html").read_text()
+HTML = (APP_DIR / "research.html").read_text()
 NODE = Path("/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node")
 
 

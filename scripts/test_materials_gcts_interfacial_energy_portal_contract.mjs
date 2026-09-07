@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
-const html = readFileSync(new URL("../apps/iqc-growth-live/index.html", import.meta.url), "utf8");
+const html = readFileSync(new URL("../apps/iqc-growth-live/research.html", import.meta.url), "utf8");
 const app = readFileSync(new URL("../apps/iqc-growth-live/app.js", import.meta.url), "utf8");
 const readme = readFileSync(new URL("../apps/iqc-growth-live/README.md", import.meta.url), "utf8");
 

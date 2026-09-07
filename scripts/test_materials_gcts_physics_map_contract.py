@@ -9,7 +9,7 @@ APP_DIR = ROOT / "apps" / "iqc-growth-live"
 
 def test_physics_map_preserves_claim_boundaries() -> None:
     atlas = (APP_DIR / "evidence-atlas.js").read_text(encoding="utf-8")
-    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    html = (APP_DIR / "research.html").read_text(encoding="utf-8")
     css = (APP_DIR / "style.css").read_text(encoding="utf-8")
 
     for layer in ("bonding", "orientation", "order", "defects", "kinetics"):

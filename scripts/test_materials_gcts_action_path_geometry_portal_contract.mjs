@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
-const html = fs.readFileSync("apps/iqc-growth-live/index.html", "utf8");
+const html = fs.readFileSync("apps/iqc-growth-live/research.html", "utf8");
 const alias = fs.readFileSync("iqc-growth-live/index.html", "utf8");
 const app = fs.readFileSync("apps/iqc-growth-live/app.js", "utf8");
 const barrier = fs.readFileSync("apps/iqc-growth-live/external-action-barrier.mjs", "utf8");

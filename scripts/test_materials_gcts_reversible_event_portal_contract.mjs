@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const app = await readFile(new URL("../apps/iqc-growth-live/app.js", import.meta.url), "utf8");
-const html = await readFile(new URL("../apps/iqc-growth-live/index.html", import.meta.url), "utf8");
+const html = await readFile(new URL("../apps/iqc-growth-live/research.html", import.meta.url), "utf8");
 const readme = await readFile(new URL("../apps/iqc-growth-live/README.md", import.meta.url), "utf8");
 
 assert.match(html, /id="actionBarrierCatalog"/);

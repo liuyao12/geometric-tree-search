@@ -4,7 +4,7 @@ import { hierarchyPhysicsProtocolConformanceChannels,
   hierarchyPhysicsProtocolConformanceRequirements }
   from "../apps/iqc-growth-live/hierarchy-physics-protocol-conformance.mjs";
 
-const html = fs.readFileSync("apps/iqc-growth-live/index.html", "utf8");
+const html = fs.readFileSync("apps/iqc-growth-live/research.html", "utf8");
 const alias = fs.readFileSync("iqc-growth-live/index.html", "utf8");
 const app = fs.readFileSync("apps/iqc-growth-live/app.js", "utf8");
 const atlas = fs.readFileSync("apps/iqc-growth-live/evidence-atlas.js", "utf8");

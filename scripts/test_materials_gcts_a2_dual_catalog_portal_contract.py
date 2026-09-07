@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / "apps" / "iqc-growth-live"
-HTML = (APP / "index.html").read_text()
+HTML = (APP / "research.html").read_text()
 JS = (APP / "evidence-atlas.js").read_text()
 CSS = (APP / "style.css").read_text()
 README = (APP / "README.md").read_text()

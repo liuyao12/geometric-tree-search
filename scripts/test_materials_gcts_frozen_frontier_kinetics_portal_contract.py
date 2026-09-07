@@ -3,7 +3,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
-HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/research.html").read_text()
 KINETICS = (ROOT / "apps/iqc-growth-live/frozen-frontier-kinetics.mjs").read_text()
 BARRIER = (ROOT / "apps/iqc-growth-live/external-action-barrier.mjs").read_text()
 PHYSICS = (ROOT / "apps/iqc-growth-live/physics-compression-map.js").read_text()

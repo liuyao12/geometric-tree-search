@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_observed_nucleation_site_geometry_contract():
     app = (ROOT / "apps/iqc-growth-live/app.js").read_text()
-    html = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+    html = (ROOT / "apps/iqc-growth-live/research.html").read_text()
     readme = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
     assert 'id="nucleationSiteSelect"' in html
