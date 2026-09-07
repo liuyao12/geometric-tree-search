@@ -1,5 +1,8 @@
-import { MAX_VALUE, PENROSE_CATALOG, deriveP2Model, exactToPoint, makePenroseModelSet, makeSelectedTileSearch, makeUniversalVertexAtlas, pointTotals } from "../../assets/penrose-model-set.js";
+import { MAX_VALUE, PENROSE_CATALOG, deriveP2Model, exactToPoint, makeP1FrontierSearch, makeP1Model, makePenroseModelSet, makeSelectedTileSearch, makeUniversalVertexAtlas, pointTotals } from "../../assets/penrose-model-set.js";
 import { benchmarkGCTSPruning, learnPenroseGCTS, markingForTile } from "../../assets/penrose-gcts-marking.js";
+import { makeCyclotomicSearch } from "../../assets/penrose-model-set.js";
+import { embedding, residueLayer, canonical } from "../../assets/cyclotomic-five.js";
+import { auditGoldenBars } from "../../assets/penrose-golden-bars.js";
 
 const $ = id => document.getElementById(id);
 const canvas = $("canvas");
@@ -16,11 +19,12 @@ let rollback = null;
 let running = true;
 let nodes = 0;
 let backtracks = 0;
-let lastFrame = 0;
+let lastEvent = null;
 let camera = { x: 0, y: 0, zoom: 1 };
 let dragging = false;
 let dragStart = null;
 let learnedMarking = null;
+let goldenBars = null;
 let activeFamily = "P3";
 let selectionDirty = false;
 let searchSolved = false;
@@ -66,7 +70,7 @@ function drawTile(tile, width, height, fill, stroke, lineWidth = 1) {
 }
 
 function catalogEntryFor(tile, index = 0) {
-  if (tile.presentation === "P2" || tile.presentation === "P3") {
+  if (tile.presentation === "P1" || tile.presentation === "P2" || tile.presentation === "P3") {
     return PENROSE_CATALOG.find(entry =>
       entry.id === `${tile.presentation.toLowerCase()}-${tile.kind}` &&
       selectedCatalog.has(entry.id)
@@ -76,24 +80,11 @@ function catalogEntryFor(tile, index = 0) {
   return choices.length ? choices[index % choices.length] : null;
 }
 
-function drawCatalogBadge(tile, entry, width, height) {
-  if (!entry || entry.family !== "P1" || camera.zoom < .72) return;
-  const p = transform(tile.centerExact, width, height);
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, 5.6, 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(248,247,242,.88)";
-  ctx.fill();
-  ctx.fillStyle = entry.color;
-  ctx.font = "800 7px ui-sans-serif,system-ui";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(entry.short, p.x, p.y + .2);
-}
-
 function drawAtlas(width, height) {
   if (!$("atlasToggle").checked || !atlas?.points) return;
   ctx.save();
-  for (const site of atlas.points) {
+  const sites = model.online ? [...new Map(active.flatMap(tile => tile.exactPoints.map((exact, k) => [tile.vertices[k], { exact }]))).values()] : atlas.points;
+  for (const site of sites) {
     const p = transform(site.exact, width, height);
     if (p.x < -3 || p.y < -3 || p.x > width + 3 || p.y > height + 3) continue;
     ctx.beginPath();
@@ -102,34 +93,6 @@ function drawAtlas(width, height) {
     ctx.fill();
   }
   ctx.restore();
-}
-
-function drawPoints(width, height) {
-  if (!$("pointsToggle").checked) return;
-  const totals = pointTotals(active);
-  const visible = new Map();
-  active.forEach(tile => tile.vertices.forEach((id, index) => {
-    if (!visible.has(id)) visible.set(id, tile.exactPoints[index]);
-  }));
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  visible.forEach((point, id) => {
-    const value = totals.get(id) || 0;
-    const p = transform(point, width, height);
-    const radius = value === MAX_VALUE ? 5.5 : 4;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-    ctx.fillStyle = value === MAX_VALUE ? "#126f68" : "rgba(248,247,242,.92)";
-    ctx.fill();
-    ctx.strokeStyle = value === MAX_VALUE ? "#fff" : "#6e7772";
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    if (camera.zoom > .76) {
-      ctx.fillStyle = value === MAX_VALUE ? "#fff" : "#43504b";
-      ctx.font = "700 7px ui-monospace,monospace";
-      ctx.fillText(String(value), p.x, p.y + .3);
-    }
-  });
 }
 
 function drawLearnedMarking(width, height) {
@@ -167,32 +130,31 @@ function drawLearnedMarking(width, height) {
   ctx.restore();
 }
 
+function drawGoldenBars(width, height) {
+  if (!goldenBars || !$("goldenToggle").checked) return;
+  ctx.save();
+  ctx.lineWidth = 1.65;
+  for (const tile of active) for (const bar of goldenBars.byTile.get(tile.id) || []) {
+    const from = transform(bar.from, width, height), to = transform(bar.to, width, height);
+    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y);
+    ctx.strokeStyle = bar.color; ctx.stroke();
+  }
+  ctx.restore();
+}
+
 function drawWindow() {
   const { width, height } = resize(windowCanvas, windowCtx);
   windowCtx.clearRect(0, 0, width, height);
-  const center = { x: width / 2, y: height / 2 };
-  const radius = Math.min(width, height) * .37;
-  windowCtx.beginPath();
-  for (let i = 0; i < 10; i++) {
-    const angle = -Math.PI / 2 + i * Math.PI / 5;
-    const r = radius * (i % 2 ? .82 : 1);
-    const x = center.x + Math.cos(angle) * r;
-    const y = center.y + Math.sin(angle) * r;
-    i ? windowCtx.lineTo(x, y) : windowCtx.moveTo(x, y);
-  }
-  windowCtx.closePath();
-  windowCtx.fillStyle = "rgba(94,182,167,.15)";
-  windowCtx.fill();
-  windowCtx.strokeStyle = "#126f68";
-  windowCtx.stroke();
-  const phase = Number($("phaseInput").value) / 100;
-  for (let i = 0; i < 78; i++) {
-    const angle = i * 2.399963 + phase * 8;
-    const r = radius * .92 * Math.sqrt((i + .5) / 78);
-    windowCtx.beginPath();
-    windowCtx.arc(center.x + Math.cos(angle) * r, center.y + Math.sin(angle) * r, 1.25, 0, Math.PI * 2);
-    windowCtx.fillStyle = i < active.length / 3 ? "#126f68" : "rgba(52,67,61,.28)";
-    windowCtx.fill();
+  const points = new Map();
+  for (const tile of active) tile.exactPoints.forEach((p, k) => points.set(tile.vertices[k], p));
+  const samples = [...points.values()].map(exact => ({ exact, p: embedding(exact, true) }));
+  const extent = Math.max(2, ...samples.map(({ p }) => Math.max(Math.abs(p.x), Math.abs(p.y))));
+  const scale = Math.min(width, height) * .42 / extent;
+  const colors = ["#777", "#d4594c", "#d18e2f", "#22877d", "#5578b5"];
+  for (const { exact, p } of samples) {
+    const layer = canonical(exact).denominator === 1 ? residueLayer(exact) : 0;
+    windowCtx.beginPath(); windowCtx.arc(width / 2 + p.x * scale, height / 2 + p.y * scale, 2, 0, Math.PI * 2);
+    windowCtx.fillStyle = colors[layer]; windowCtx.fill();
   }
 }
 
@@ -208,19 +170,20 @@ function draw() {
       tile.kind === "thin" ? "#d7ab42" :
       tile.kind === "kite" ? "#4c8fbd" : "#8b7eab";
     drawTile(tile, width, height, entry ? `${entry.color}dd` : `${fallback}66`, "rgba(248,247,242,.93)", 1);
-    drawCatalogBadge(tile, entry, width, height);
   });
   if (trial) drawTile(trial, width, height, "rgba(139,126,171,.62)", "#655681", 2.4);
   if (rollback) drawTile(rollback, width, height, "rgba(238,118,93,.58)", "#bc4936", 3);
   drawLearnedMarking(width, height);
-  drawPoints(width, height);
+  drawGoldenBars(width, height);
   drawWindow();
 }
 
 function updateMetrics() {
   const totals = pointTotals(active);
   const saturated = [...totals.values()].filter(value => value === MAX_VALUE).length;
-  $("atlasMetric").textContent = (atlas?.points.length || 0).toLocaleString();
+  const onlineP1 = model?.online;
+  const createdVertices = new Set(active.flatMap(tile => tile.vertices)).size;
+  $("atlasMetric").textContent = (onlineP1 ? createdVertices : atlas?.points.length || 0).toLocaleString();
   $("placedMetric").textContent = active.length.toLocaleString();
   $("nodesMetric").textContent = nodes.toLocaleString();
   $("backtrackMetric").textContent = backtracks.toLocaleString();
@@ -230,24 +193,41 @@ function updateMetrics() {
   $("timelineHead").style.left = `${progress}%`;
 }
 
-function applyEvent() {
+function finishTrace() {
+  const onlineP1 = model?.online;
+  running = false;
+  $("runButton").textContent = "Replay selected set";
+  $("runState").textContent = searchSolved ? "complete" : searchStopped ? "budget reached" : "frontier exhausted";
+  $("runState").parentElement.classList.add("paused");
+  $("eventLabel").textContent = searchSolved
+    ? onlineP1 ? "online growth target reached · exact lattice placements" : "selected catalog completed the exact patch"
+    : searchStopped ? "node limit reached before completion" : "selected catalog trace complete";
+  $("status").textContent = searchSolved
+    ? onlineP1
+      ? `Grew ${active.length} tiles from one seed, creating ${new Set(active.flatMap(tile => tile.vertices)).size} vertices on demand with ${backtracks} rollbacks.`
+      : `Completed ${active.length} selected tiles with ${backtracks} visible rollbacks.`
+    : `Stopped at ${active.length} tiles: ${searchStopped ? "proposal budget reached" : "no admissible continuation for the selected catalog"}.`;
+  if (model.stats) $("status").textContent += ` ${model.stats.capacityPrunes} capacity prunes · ${model.stats.windowPrunes} window prunes · ${model.stats.memoHits} memo hits.`;
+}
+
+function renderEvent(event) {
+  const eventEntry = catalogEntryFor(event.tile, active.length);
+  const compiledLabel = eventEntry ? ` · ${eventEntry.family} ${eventEntry.name}` : " · no selected proposal";
+  $("eventLabel").textContent = `${event.message}${compiledLabel}`;
+  $("status").textContent = `Node ${nodes}: ${event.type.toUpperCase()} · exact ${event.tile.kind} tile${compiledLabel}`;
+  updateMetrics();
+  if (model) draw();
+}
+
+function applyEvent(render = true) {
   if (!trace.length) return;
   if (cursor >= trace.length) {
-    running = false;
-    $("runButton").textContent = "Replay selected set";
-    $("runState").textContent = "complete";
-    $("runState").parentElement.classList.add("paused");
-    $("eventLabel").textContent = searchSolved
-      ? "selected catalog completed the exact-cover patch"
-      : searchStopped ? "node limit reached before completion" : "selected catalog exhausted · no completion";
-    $("status").textContent = searchSolved
-      ? `Completed ${active.length} selected tiles with ${backtracks} visible rollbacks.`
-      : `No completion for this selected catalog in the current exact patch; ${backtracks} branches rolled back.`;
+    finishTrace();
     return;
   }
   const event = trace[cursor++];
-  const eventEntry = catalogEntryFor(event.tile, active.length);
-  nodes++;
+  lastEvent = event;
+  if (event.type === "try") nodes++;
   trial = null;
   rollback = null;
   if (event.type === "try" || event.type === "reject" || event.type === "witness") trial = event.tile;
@@ -260,66 +240,96 @@ function applyEvent() {
     rollback = event.tile;
     backtracks++;
   }
-  const compiledLabel = eventEntry ? ` · ${eventEntry.family} ${eventEntry.name}` : " · no selected proposal";
-  $("eventLabel").textContent = `${event.message}${compiledLabel}`;
-  $("status").textContent = `Node ${nodes}: ${event.type.toUpperCase()} · exact ${event.tile.kind} tile${compiledLabel}`;
-  updateMetrics();
-  if (model) draw();
+  if (render) renderEvent(event);
 }
 
 function rebuild(autostart = true) {
   const target = Number($("targetInput").value);
   const phaseCode = Number($("phaseInput").value) * 10;
   const radius = Math.max(10, Math.ceil(target / 30) + 7);
-  const fixedSeed = makeUniversalVertexAtlas({ radius, phaseCode, samples: 1 });
-  const p3Model = fixedSeed.base;
-  const p2Model = deriveP2Model(p3Model);
-  const search = makeSelectedTileSearch({
-    p3Model,
-    p2Model,
-    selectedIds: selectedCatalog,
-    preferredFamily: activeFamily,
-    targetCount: target
-  });
+  let search;
+  if (activeFamily === "P1") {
+    const p1Model = makeP1Model();
+    search = makeP1FrontierSearch({ p1Model, selectedIds: selectedCatalog, targetCount: target });
+  } else if ([...selectedCatalog].every(id => id.startsWith("p3-"))) {
+    search = makeCyclotomicSearch({ targetCount: target, phaseCode, selectedIds: selectedCatalog });
+  } else {
+    const fixedSeed = makeUniversalVertexAtlas({ radius, phaseCode, samples: 1 });
+    const p3Model = fixedSeed.base;
+    const p2Model = deriveP2Model(p3Model);
+    search = makeSelectedTileSearch({
+      p3Model,
+      p2Model,
+      selectedIds: selectedCatalog,
+      preferredFamily: activeFamily,
+      targetCount: target
+    });
+  }
   model = search.model;
   trace = search.trace;
   searchSolved = search.success;
   searchStopped = search.stopped;
+  goldenBars = model.presentation === "P3" ? auditGoldenBars(search.solution) : null;
+  $("goldenToggle").disabled = !goldenBars;
+  $("goldenStatus").textContent = goldenBars
+    ? `${goldenBars.survivors}/${goldenBars.candidates} golden-port segments survive · ${goldenBars.families} directions · ${goldenBars.interiorEndpoints} interior endpoints continue exactly. Finite-patch evidence; Ammann equivalence remains unproved.`
+    : "Golden-port propagation is available for P3 rhombs.";
   atlas = {
     points: model.vertices.map(vertex => ({ exact: vertex.exact })),
     presentation: model.presentation
   };
+  const onlineP1 = model.presentation === "P1" && model.online;
+  $("atlasControl").hidden = onlineP1;
+  $("phaseControl").hidden = onlineP1;
+  $("windowControl").hidden = onlineP1;
+  $("reachableLegend").hidden = onlineP1;
+  $("atlasMetricLabel").textContent = model.online ? "created vertices" : "reachable sites";
+  $("windowInset").hidden = onlineP1 || !$("windowToggle").checked;
   active = [];
   cursor = 0;
   nodes = 0;
   backtracks = 0;
   trial = null;
   rollback = null;
+  lastEvent = null;
   const canRun = trace.length > 0;
   running = autostart && canRun;
   selectionDirty = false;
   $("runButton").textContent = running ? "Pause trace" : "Run selected set";
   $("runState").textContent = running ? "running" : canRun ? "ready" : "empty catalog";
   $("runState").parentElement.classList.toggle("paused", !running);
-  $("presentationLabel").textContent = model.presentation === "P2+P3"
+  $("presentationLabel").textContent = model.presentation === "P1"
+    ? "LIVE SEARCH / EXACT P1 SIX-TILE PATCH"
+    : model.presentation === "P2+P3"
     ? "LIVE SEARCH / MIXED P2+P3 EXACT ATOMS"
     : model.presentation === "P2"
       ? "LIVE SEARCH / EXACT P2 KITES + DARTS"
       : "LIVE SEARCH / EXACT P3 RHOMBS";
-  $("eventLabel").textContent = `${model.presentation} exact candidates compiled · ${search.universeAtoms} common atoms`;
+  $("eventLabel").textContent = model.online
+    ? "one seed tile ready · exact candidates will be created on exposed edges"
+    : `${model.presentation} exact candidates compiled · ${search.universeAtoms} common atoms`;
   $("status").textContent = canRun
-    ? `${selectedCatalog.size} selected prototiles compile to ${model.tiles.length.toLocaleString()} exact placements; ${atlas.points.length.toLocaleString()} reachable support points.`
+    ? model.online
+      ? `${selectedCatalog.size} selected prototiles grew ${search.solution.length.toLocaleString()} placements without a target point set; playback shows every trial and rollback.`
+      : `${selectedCatalog.size} selected prototiles compile to ${model.tiles.length.toLocaleString()} exact placements; ${atlas.points.length.toLocaleString()} reachable support points.`
     : "No implemented prototile is selected. Choose tiles, then run.";
   updateMetrics();
   draw();
 }
 
-function animate(time) {
-  const speed = Number($("speedInput").value);
-  const interval = 520 - speed * 4.75;
-  if (running && time - lastFrame > interval) {
-    applyEvent();
-    lastFrame = time;
+function animate() {
+  if (running) {
+    const deadline = performance.now() + 12;
+    let advanced = false;
+    while (running && cursor < trace.length && performance.now() < deadline) {
+      applyEvent(false);
+      advanced = true;
+    }
+    if (advanced) {
+      if (lastEvent) renderEvent(lastEvent);
+      else { updateMetrics(); draw(); }
+    }
+    if (cursor >= trace.length) finishTrace();
   }
   requestAnimationFrame(animate);
 }
@@ -342,13 +352,12 @@ $("stepButton").addEventListener("click", () => {
 $("resetButton").addEventListener("click", () => rebuild(false));
 $("targetInput").addEventListener("input", event => { $("targetOutput").textContent = `${event.target.value} tiles`; });
 $("targetInput").addEventListener("change", stageSelection);
-$("speedInput").addEventListener("input", event => { $("speedOutput").textContent = `${event.target.value}%`; });
 $("phaseInput").addEventListener("input", event => { $("phaseOutput").textContent = (event.target.value / 100).toFixed(2); drawWindow(); });
 $("phaseInput").addEventListener("change", stageSelection);
-$("pointsToggle").addEventListener("change", draw);
 $("atlasToggle").addEventListener("change", draw);
 $("markingToggle").addEventListener("change", draw);
 $("barsToggle").addEventListener("change", draw);
+$("goldenToggle").addEventListener("change", draw);
 $("windowToggle").addEventListener("change", event => { $("windowInset").hidden = !event.target.checked; });
 canvas.addEventListener("wheel", event => { event.preventDefault(); camera.zoom = Math.max(.45, Math.min(3.5, camera.zoom * Math.exp(-event.deltaY * .001))); draw(); }, { passive: false });
 canvas.addEventListener("pointerdown", event => { dragging = true; dragStart = { x: event.clientX - camera.x, y: event.clientY - camera.y }; canvas.setPointerCapture(event.pointerId); });
@@ -398,22 +407,27 @@ function syncCatalog() {
   });
   const entries = PENROSE_CATALOG.filter(entry => selectedCatalog.has(entry.id));
   const families = [...new Set(entries.map(entry => entry.family))];
+  const completeFamily = families.length === 1 &&
+    entries.length === PENROSE_CATALOG.filter(entry => entry.family === families[0]).length;
   const mode = families.length > 1 ? `${families.join("+")} exact-atom candidate mix` :
-    entries.length === 2 ? `${families[0]} complete preset` :
+    completeFamily ? `${families[0]} complete preset` :
     entries.length ? `${families[0]} partial selection` : "empty selection";
   $("catalogState").textContent = `${entries.length} selected · ${mode}`;
+  const p1 = activeFamily === "P1";
   const p2 = activeFamily === "P2";
-  $("weightALabel").textContent = p2 ? "dart" : "thin rhomb";
-  $("weightAValue").textContent = p2 ? "1 / 2 / 6" : "1 / 4";
+  $("weightALabel").textContent = p1 ? "convex P1 corners" : p2 ? "dart" : "thin rhomb";
+  $("weightAValue").textContent = p1 ? "1 / 3 / 4" : p2 ? "1 / 2 / 6" : "1 / 4";
   $("weightAIcon").className = p2 ? "dart" : "thin";
-  $("weightBLabel").textContent = p2 ? "kite" : "thick rhomb";
-  $("weightBValue").textContent = p2 ? "2 / 4" : "2 / 3";
+  $("weightBLabel").textContent = p1 ? "reflex P1 corners" : p2 ? "kite" : "thick rhomb";
+  $("weightBValue").textContent = p1 ? "7" : p2 ? "2 / 4" : "2 / 3";
   $("weightBIcon").className = p2 ? "kite" : "thick";
-  $("legendALabel").textContent = p2 ? "kite" : "thick";
+  $("legendALabel").textContent = p1 ? "pentagons" : p2 ? "kite" : "thick";
   $("legendAIcon").className = p2 ? "tile-kite" : "tile-thick";
-  $("legendBLabel").textContent = p2 ? "dart" : "thin";
+  $("legendBLabel").textContent = p1 ? "star · boat · diamond" : p2 ? "dart" : "thin";
   $("legendBIcon").className = p2 ? "tile-dart" : "tile-thin";
-  $("presentationLabel").textContent = p2
+  $("presentationLabel").textContent = p1
+    ? "LIVE SEARCH / EXACT P1 SIX-TILE PATCH"
+    : p2
     ? "LIVE SEARCH / EXACT P2 KITES + DARTS"
     : "LIVE SEARCH / EXACT P3 RHOMBS";
   $("learnMarkingButton").textContent = p2 ? "Learn marking on underlying P3" : "Learn P3 marking";
@@ -429,13 +443,9 @@ function buildCatalog() {
     button.dataset.tile = entry.id;
     button.style.setProperty("--tile-color", entry.color);
     button.setAttribute("aria-label", `${entry.family} ${entry.name}`);
-    if (entry.family === "P1") {
-      button.disabled = true;
-      button.title = "P1 exact recomposition is cataloged but not implemented yet";
-    }
     button.innerHTML = `<canvas aria-hidden="true"></canvas><div><span>${entry.family}</span><b>${entry.name}</b></div>`;
     button.addEventListener("click", () => {
-      if (entry.family === "P1") return;
+      activeFamily = entry.family;
       selectedCatalog.has(entry.id) ? selectedCatalog.delete(entry.id) : selectedCatalog.add(entry.id);
       syncCatalog();
       stageSelection();
@@ -445,12 +455,11 @@ function buildCatalog() {
   });
   document.querySelectorAll("[data-family]").forEach(button => button.addEventListener("click", () => {
     const family = button.dataset.family;
-    if (family === "P1") return;
     if (family !== "implemented") activeFamily = family;
     selectedCatalog.clear();
     PENROSE_CATALOG
       .filter(entry => family === "implemented"
-        ? entry.family === "P2" || entry.family === "P3"
+        ? true
         : entry.family === family)
       .forEach(entry => selectedCatalog.add(entry.id));
     syncCatalog();
@@ -527,5 +536,5 @@ async function learnMarking() {
 
 buildCatalog();
 $("learnMarkingButton").addEventListener("click", learnMarking);
-rebuild(false);
+rebuild(true);
 requestAnimationFrame(animate);

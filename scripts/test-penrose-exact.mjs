@@ -3,6 +3,8 @@ import {
   MAX_VALUE,
   deriveP2Model,
   makeCyclotomicHost,
+  makeP1FrontierSearch,
+  makeP1Model,
   makePenroseModelSet,
   makeSelectedTileSearch,
   makeSearchTrace,
@@ -51,6 +53,56 @@ assert.deepEqual(
   models[0].tiles.map(tile => tile.id),
   "exact construction must be deterministic"
 );
+
+const p1 = makeP1Model();
+assert.equal(p1.presentation, "P1");
+assert.equal(p1.exact, true);
+assert.equal(p1.tiles.length, 241);
+assert.equal(p1.vertices.length, 435);
+assert.deepEqual([...new Set(p1.tiles.map(tile => tile.kind))].sort(),
+  ["boat", "diamond", "p2", "p3", "p5", "star"]);
+for (const tile of p1.tiles) {
+  tile.exactPoints.forEach(assertExactPoint);
+  assertExactPoint(tile.centerExact);
+  assert.equal(tile.weights.reduce((sum, weight) => sum + weight, 0),
+    5 * (tile.exactPoints.length - 2));
+}
+assert.equal(Math.max(...pointTotals(p1.tiles).values()), MAX_VALUE);
+const p1Search = makeP1FrontierSearch({
+  p1Model: p1,
+  selectedIds: new Set(["p1-p5", "p1-p3", "p1-p2", "p1-star", "p1-boat", "p1-diamond"]),
+  targetCount: 60
+});
+assert.equal(p1Search.success, true);
+assert.equal(p1Search.model.online, true);
+assert.equal(p1Search.model.vertices.length, 0);
+assert.equal(p1Search.solution.length, 60);
+assert(p1Search.trace.some(event => event.type === "remove"));
+assert([...pointTotals(p1Search.solution).values()].every(value => value <= MAX_VALUE));
+const p1EdgeCounts = new Map();
+p1Search.solution.forEach(tile => tile.vertices.forEach((vertex, index) => {
+  const next = tile.vertices[(index + 1) % tile.vertices.length];
+  const edge = [vertex, next].sort().join("|");
+  p1EdgeCounts.set(edge, (p1EdgeCounts.get(edge) || 0) + 1);
+}));
+const p1BoundaryGraph = new Map();
+[...p1EdgeCounts].filter(([, count]) => count === 1).forEach(([edge]) => {
+  const [from, to] = edge.split("|");
+  if (!p1BoundaryGraph.has(from)) p1BoundaryGraph.set(from, []);
+  if (!p1BoundaryGraph.has(to)) p1BoundaryGraph.set(to, []);
+  p1BoundaryGraph.get(from).push(to);
+  p1BoundaryGraph.get(to).push(from);
+});
+assert([...p1BoundaryGraph.values()].every(neighbors => neighbors.length === 2));
+const p1BoundarySeen = new Set();
+const p1BoundaryQueue = [p1BoundaryGraph.keys().next().value];
+while (p1BoundaryQueue.length) {
+  const vertex = p1BoundaryQueue.pop();
+  if (p1BoundarySeen.has(vertex)) continue;
+  p1BoundarySeen.add(vertex);
+  p1BoundaryQueue.push(...p1BoundaryGraph.get(vertex));
+}
+assert.equal(p1BoundarySeen.size, p1BoundaryGraph.size, "online P1 growth must have one outer boundary and no holes");
 
 const marking = learnPenroseGCTS(models);
 assert.equal(marking.rank, 5);

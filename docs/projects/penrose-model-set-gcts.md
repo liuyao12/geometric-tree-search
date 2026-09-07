@@ -1,120 +1,124 @@
-# Point-capacity tiling on Delone and model sets
+# Penrose GCTS on the cyclotomic integer lattice
 
-## The ambient object
+## Current design (September 2026)
 
-The useful replacement for a lattice is not the whole cyclotomic field
-\(\mathbb Q(\zeta_5)\), nor even the full planar cyclotomic module
-\(\mathbb Z[\zeta_5]\). Their planar images are not discrete. For Penrose
-tilings, use a regular model set (or a finite union of model sets)
-
-\[
-  \Lambda(W)=\{\pi(x):x\in L,\ \pi_{\mathrm{int}}(x)\in W\},
-\]
-
-where \(L\) is a lattice in a higher-dimensional physical/internal product,
-\(\pi\) is one-to-one on \(L\), and the compact window \(W\) has nonempty
-interior and negligible boundary. Then \(\Lambda(W)\) is a Delone set, a Meyer
-set, and has finite local complexity.
-
-De Bruijn's regular pentagrid is an equivalent concrete presentation for the
-Penrose rhomb tiling used by the interactive app. Its vertices have coordinates
-in a translate/scale of the cyclotomic module, while the pentagrid strip
-indices carry the higher-dimensional lift.
-
-## Weighted-patch formulation
-
-Let \(\Lambda\subset\mathbb R^d\) be a Delone set of finite local complexity.
-A prototile placement is represented by a finite weighted patch
+The ambient search object is the ring of integers of the fifth cyclotomic
+field, O_K = ℤ[ζ₅], with independent basis (1, ζ₅, ζ₅², ζ₅³). A vertex address
+is four integers. The relation 1 + ζ₅ + ζ₅² + ζ₅³ + ζ₅⁴ = 0 reduces the
+legacy five-coefficient representation to
 
 \[
-  f_T:\Lambda\longrightarrow \{0,\ldots,M\}
+(a_0-a_4,a_1-a_4,a_2-a_4,a_3-a_4).
 \]
 
-with finite support: the points of \(\Lambda\) inside or on the boundary of the
-placed tile. A family of placements is a tiling exactly when
+The Minkowski embedding z ↦ (σ₁(z), σ₂(z)), with σ₁(ζ₅)=ζ₅ and
+σ₂(ζ₅)=ζ₅², embeds this rank-four module as a lattice in ℂ² ≅ ℝ⁴.
+Its projection into either individual complex plane is dense. Thus a bounded
+physical disk alone does not bound lattice enumeration. The new P3 solver
+avoids exhaustive enumeration: only unit-edge rhombs attached to the finite
+frontier are proposed. The canvas draws σ₁, and the inset draws the actual
+σ₂ coordinates of the placed vertices. Both views use the same fixed rotation.
+
+For the Penrose model-set condition one also retains the residue
+Σ aᵢ mod 5, which is invariant under changing the five-coordinate gauge.
+This labels the finite cyclic component of internal space; it is not a fifth
+independent integer coordinate. Inset colors identify these residue layers.
+The inset displays samples, not an invented acceptance-window outline.
+
+## GCTS growth and its oracle
+
+`makeCyclotomicSearch` starts with one exact seed chosen from ten orientations.
+At each exposed edge it constructs the incident rhombs by adding/subtracting
+unit directions in ℤ[ζ₅]. It uses no precomputed target tiling or target atom
+list. Placements and shared vertices have canonical four-coefficient keys.
+
+Each proposed corner contributes its angle in 36° units. The GCTS capacity
+bound is ten: thin rhombs contribute (4,1,4,1), thick rhombs (2,3,2,3).
+A candidate exceeding a site's current capacity is rejected before placement.
+Surviving candidates must pass an exact local de Bruijn pentagrid predicate:
+compute the other three strip indices from its two generating indices using
+rational arithmetic in ℚ(√5), then compare all five indices. This predicate
+certifies that admitted rhombs belong to one Penrose tiling, supplying both
+non-overlap and matching admissibility. Capacity alone does not force Penrose
+aperiodicity or prevent every geometric overlap.
+
+The search orders exposed edges from the centre outwards, records actual
+proposals and rejections, and caches failed placements. Capacity failures are
+monotone while this solver only adds tiles; window failures are state
+independent at a fixed phase. The cache is discarded on every new run.
+Changing to a solver that rolls back would require invalidating or
+state-keying capacity failures. The current exact-window mode normally has
+one admitted continuation per exposed edge and needs no recursive backtracks.
+The UI reports zero rather than manufacturing speculative rollbacks.
+
+Targets and proposal budgets are finite. A partial catalog may exhaust its
+frontier without reaching the target; budget exhaustion is reported separately.
+Reaching a target certifies a connected finite patch, not an infinite tiling
+proof or a claim that the boundary has no holes. P1 retains its separate
+frontier DFS. P2 and mixed P2/P3 catalogs retain the earlier bounded atom-cover
+solver described below.
+
+## Golden-port experiment
+
+`penrose-golden-bars.js` augments each rhomb edge with two exact ports at
 
 \[
-  \sum_T f_T(p)=M\qquad (p\in\Lambda)
+t\in\{1-\varphi/2,\varphi/2\},\qquad
+\varphi=-\zeta_5^2-\zeta_5^3.
 \]
 
-together with geometric non-overlap and any model-set or matching-rule
-admissibility conditions. On a bounded search region, require equality at
-interior sites and retain a deficit \(0\leq d(p)\leq M\) on the open frontier.
+These ports belong to (1/2)ℤ[ζ₅]; tile vertices still belong to ℤ[ζ₅].
+The implementation enumerates segments between different edges, keeps those
+parallel to one of the five cyclotomic directions, and repeatedly removes any
+segment lacking a same-line continuation across an interior edge. Parallelism
+is tested exactly by a·conj(b) = conj(a)·b, using integer ring arithmetic.
+No floating-point tolerance decides which bars survive.
 
-For Penrose rhombs, take \(M=10\) and measure corner angles in units of
-\(36^\circ\). A thin rhomb contributes \(1\) or \(4\) at its corners; a thick
-rhomb contributes \(2\) or \(3\). Thus a completed vertex star has total
-\(360^\circ/36^\circ=10\).
+For phase 173 and 120 tiles, this leaves 313 of 1,200 candidate segments,
+508 supported interior endpoints, 118 boundary endpoints, and all five
+families. Boundary endpoints are unresolved, not counted as successful joins.
+The app draws these retained segments as solid colored lines. The optional
+old midpoint-cochain experiment remains available as a diagnostic baseline.
 
-## What replaces lattice translation
+This is **finite-patch golden-port propagation**, not yet an Ammann matching
+rule rediscovery. In particular, it does not learn one transferable decoration
+per marked prototile, show that the decoration rejects precisely the forbidden
+contacts, or establish Fibonacci spacing and infinite continuation. Selection
+uses the already window-certified patch. Multiple phases passing this geometric
+audit are not a held-out transfer test of a fixed learned rule. Those are the
+next research gates before replacing the window predicate by learned GCTS
+markings. The five direction channels should not be confused with the rank-four
+integer coordinate lattice.
 
-There is no transitive translation action on a general Delone set. The correct
-local replacement is the patch groupoid (equivalently, translation classes of
-pointed finite patches). A failure certificate is keyed by the canonical
-translation class of a radius-\(r\) neighborhood around the failed site,
-including:
+## Arithmetic and validation
 
-- relative point coordinates or their exact algebraic lifts;
-- current deficits \(d(p)\);
-- tile/matching labels;
-- internal-window or star-map data when it affects admissibility.
+`cyclotomic-five.js` implements canonical rational ring coordinates,
+multiplication modulo Φ₅, the star automorphism, residue layers, and golden
+ports. Intermediate integer products use BigInt; conversion back to bounded
+integer storage checks safe-integer range. Rational denominators are permitted
+for centres and markings but excluded from integer residue-layer queries.
+The existing exact ℚ(√5) machinery handles pentagrid floors and ordering.
+Only the rendering embeddings use floating-point trigonometry.
 
-Finite local complexity guarantees only finitely many such local keys at each
-fixed radius. This is the property needed for geometric memoization.
+Run `node scripts/test-penrose-cyclotomic.mjs` for ring identities, gauge
+invariance, conjugate embeddings, golden-port reversal, deterministic growth,
+empty/partial/budget-limited catalogs, and 600 rhombs across five phases checked
+against independent bounded pentagrid enumeration. It also independently
+checks matching endpoints for all retained interior golden segments. Run
+`node scripts/test-penrose-exact.mjs` for the P1/P2/mixed-catalog regressions
+and the historical midpoint learner.
 
-## First interactive experiment
+The exact pentagrid construction follows N. G. de Bruijn, “Algebraic theory
+of Penrose's non-periodic tilings of the plane. I, II” (1981):
+<https://pure.tue.nl/ws/files/4344195/597566.pdf>.
+For the relation between Ammann patterns and projection constructions, see
+Boyle and Steinhardt, “Coxeter pairs, Ammann patterns, and Penrose-like tilings”:
+<https://arxiv.org/abs/1608.08215>.
 
-`apps/penrose-model-set/` constructs a nonsingular pentagrid patch, dualizes
-grid intersections into thin and thick rhombs, and replays a point-capacity
-search trace.
+## Earlier catalog and midpoint experiments
 
-After fixing the central tile, every Penrose vertex lies in a common translate
-of the cyclotomic module:
-
-\[
- \delta(T_0)+\mathbb Z[\zeta_5].
-\]
-
-This host is dense rather than Delone, so drawing a coefficient-height
-exhaustion obscures the tiling. The canvas now shows only the smaller finite
-support actually reachable by the active bounded patch:
-
-\[
- S(T,R)=\{p:p\text{ is a vertex of an admitted }T\text{-tile in }R\}.
-\]
-
-The universal module remains the exact address space; it is no longer used as
-background decoration. The active window oracle selects the relevant Delone
-subset.
-
-Speculative locally admissible branches are shown and rolled back; the accepted
-completion is certified by the pentagrid window oracle.
-This separates two layers that a general solver should keep distinct:
-
-1. the universal point-capacity constraint on \(\Lambda\);
-2. the host-specific admissibility oracle (a cut-and-project window here).
-
-The next solver step is to enumerate all finite weighted patches admitted by a
-chosen window, rather than using the canonical pentagrid completion as the
-completion oracle.
-
-### Exact arithmetic boundary
-
-The combinatorial model contains no floating-point coordinates. A point is
-stored as
-
-\[
-  x={1\over d}\sum_{j=0}^4 a_j\zeta_5^j,\qquad
-  (a_0,\ldots,a_4,d)\in\mathbb Z^5\times\mathbb Z_{>0}.
-\]
-
-Tile corners, centers, host sites, edge ports, translations, keys, and
-adjacency tests retain this representation. Pentagrid intersections require
-floors and comparisons in \(\mathbb Q(\sqrt5)\); these are represented by
-reduced triples \((a,b,d)\) for \((a+b\sqrt5)/d\) and compared using integer
-arithmetic. Radius decisions use the exact squared cyclotomic norm. The single
-lossy boundary is `exactToPoint`, called by the canvas renderer after all
-tiling decisions have been made.
+The following records the retained P1/P2 paths and the original midpoint
+learner; the current P3 lattice-growth path and golden-port audit are above.
 
 ## Penrose catalog
 
@@ -133,15 +137,30 @@ every thick rhomb; the bounded four-edge faces of that graph are the kites and
 darts. Their corner-capacity vectors are respectively permutations of
 \((2,2,2,4)\) and \((1,2,1,6)\), and every completed vertex still sums to ten.
 
-The P1 six-tile family remains visible as a disabled catalog reference until
-its exact recomposition is implemented. Cross-family pseudo-mixing has been
-removed rather than presenting recolored P3 atoms as if they were P2 or P1
-tiles.
+P1 uses an online exact frontier search. A public-domain reference patch is
+used offline only to recover the six prototile shapes, legal edge contacts, and
+which of the ten unit-edge directions each edge follows. It is not used as the
+target support. Runtime growth starts from one tile, generates candidates on
+exposed edges, and creates a new cyclotomic vertex only when a placement needs
+it. The reference data itself contains no SVG coordinates: its 435 vertices
+are integer coefficient vectors in \(\mathbb Z[\zeta_5]\), and its 241 tiles
+are lists of those exact vertex IDs.
+The three congruent pentagons remain distinct matched types; interior P-5,
+P-3, and P-2 instances are verified by their five, three, and two pentagon
+neighbors respectively. Corner weights are derived from exact direction turns,
+giving only \(1,3,4,\) and \(7\) units and a maximum completed-site total of ten.
 
-Catalog selection is staged. The P2 and P3 buttons replace the current
-selection with the corresponding two-tile preset; individual implemented tiles
-may then be removed or added across the two families. No model is rebuilt until
-`Run selected set` is pressed.
+Candidate collision tests, two-axis broad-phase bounds, segment intersections,
+edge matching, and point-capacity checks are all exact integer computations in
+\(\mathbb Q(\sqrt5)\). A successful bounded growth patch is required to have
+one degree-two boundary cycle. Thus it has one open outside frontier and no
+enclosed holes. No background support points are drawn in P1 mode.
+
+Catalog selection is staged. The P1, P2, and P3 buttons replace the current
+selection with their complete presets; individual tiles may then be removed or
+added. No model is rebuilt until `Run selected set` is pressed. P1 grows on its
+own dynamically created host, while P2/P3 mixing uses the common atomization
+below; a common three-presentation atomization remains future work.
 
 Mixed P2/P3 search uses a common exact atomization rather than polygon
 intersection tests. A thin P3 rhomb is one atom, a thick P3 rhomb is split into

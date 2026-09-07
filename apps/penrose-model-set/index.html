@@ -3,25 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Penrose Model-Set Tiler — GCTS</title>
-  <meta name="description" content="A live backtracking laboratory for point-capacity tilings on a Penrose model set.">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./catalog.css">
+  <title>Penrose Cyclotomic Lattice — GCTS</title>
+  <meta name="description" content="Exact rank-four cyclotomic lattice growth, GCTS pruning and golden-port Ammann-bar experiments.">
+  <link rel="stylesheet" href="./style.css?v=20260906-cyclotomic">
+  <link rel="stylesheet" href="./catalog.css?v=20260906-cyclotomic">
 </head>
 <body>
   <main class="app-shell">
     <aside class="sidebar">
       <header>
         <p class="eyebrow"><a href="../../">GCTS</a> / aperiodic laboratory</p>
-        <h1>Penrose<br>Model-Set Tiler</h1>
-        <p class="lede">The lattice is gone. The local capacity rule survives.</p>
+        <h1>Penrose<br>Cyclotomic Lattice</h1>
+        <p class="lede">Four integer coordinates. Two complex embeddings.</p>
       </header>
+
+      <div class="run-row">
+        <button id="runButton" class="primary" type="button">Run selected set</button>
+        <button id="stepButton" type="button">Step</button>
+        <button id="resetButton" type="button">Reset</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">Generating cyclotomic frontier proposals…</p>
 
       <section class="setting-card">
         <div class="section-title"><span>01</span><h2>The host set</h2></div>
-        <p><strong>Only reachable support is drawn.</strong> The faint points are the exact vertices touched by some tile in the current finite P2 or P3 patch—not a dense view of the universal cyclotomic module.</p>
-        <code>S(T,R) = { p : p is a vertex of an admitted tile in R }</code>
-        <div class="tags"><span>finite active support</span><span>exact Z[ζ₅]</span><span>no model floats</span></div>
+        <p>Search in the ring of integers <strong>ℤ[ζ₅] ≅ ℤ⁴</strong>. Rhombs attach at exposed edges; exact corner loads and the internal-window predicate prune proposals before placement.</p>
+        <code>z = a₀ + a₁ζ₅ + a₂ζ₅² + a₃ζ₅³<br>z⋆ = a₀ + a₁ζ₅² + a₂ζ₅⁴ + a₃ζ₅</code>
+        <div class="tags"><span>rank 4 lattice</span><span>2D physical view</span><span>exact arithmetic</span></div>
       </section>
 
       <section>
@@ -36,14 +43,18 @@
 
       <section>
         <div class="section-title catalog-title"><span>03</span><h2>Mixable catalog</h2><button id="clearCatalog" type="button">clear</button></div>
-        <p class="explain">P1, P2, and P3 follow the standard Penrose naming. A family button only preselects its tiles. You may then toggle individual implemented tiles across P2 and P3; the search starts only when you press Run. P1 remains disabled until its exact recomposition is implemented.</p>
-        <div class="family-actions"><button data-family="P3" type="button">P3 · 2</button><button data-family="P2" type="button">P2 · 2</button><button data-family="P1" type="button" disabled title="Exact P1 recomposition not implemented yet">P1 · 6</button><button data-family="implemented" type="button">P2+P3 · 4</button></div>
+        <p class="explain">P1, P2, and P3 follow the standard Penrose naming. A family button preselects its tiles; every individual tile remains independently toggleable before Run. P1 is the original six-tile set: three marked pentagons, star, boat, and diamond.</p>
+        <div class="family-actions"><button data-family="P3" type="button">P3 · 2</button><button data-family="P2" type="button">P2 · 2</button><button data-family="P1" type="button">P1 · 6</button><button data-family="implemented" type="button">All · 10</button></div>
         <div id="tileCatalog" class="tile-catalog" aria-label="Penrose prototile catalog"></div>
         <p id="catalogState" class="catalog-state"></p>
       </section>
 
       <section>
-        <div class="section-title"><span>04</span><h2>GCTS marking learner</h2></div>
+        <div class="section-title"><span>04</span><h2>Ammann-bar experiment</h2></div>
+        <label class="check"><input id="goldenToggle" type="checkbox" checked><span>show straight golden-port strands</span></label>
+        <p id="goldenStatus" class="explain" aria-live="polite">Testing exact edge continuation…</p>
+        <p class="explain">Candidate ports sit at φ/2 and 1−φ/2 along each edge. Propagation removes segments that cannot continue on exactly the same line across a shared edge.</p>
+        <details><summary>Compare the midpoint GCTS baseline</summary>
         <p class="explain"><strong>Ammann bars do not generally live on the vertex set.</strong> Their ports lie inside tile edges at exact algebraic positions. Learn a sparse equivariant tensor over those support ports, then test whether its induced strands are genuinely straight.</p>
         <code>θ[tile, orientation, exact port, channel] ∈ ℝ</code>
         <button id="learnMarkingButton" class="learn-button" type="button">Learn P3 marking</button>
@@ -64,32 +75,26 @@
           <p id="comparisonSummary">The same ordered proposals will be replayed against all three filters.</p>
         </div>
         <label class="check"><input id="markingToggle" type="checkbox" checked disabled><span>show learned edge marking</span></label>
-        <label class="check"><input id="barsToggle" type="checkbox" checked disabled><span>show Ammann-bar candidate strands</span></label>
+        <label class="check"><input id="barsToggle" type="checkbox" disabled><span>show midpoint baseline strands</span></label>
+        </details>
       </section>
 
       <section>
         <div class="section-title"><span>05</span><h2>Experiment</h2></div>
-        <label class="field"><span>Patch target</span><input id="targetInput" type="range" min="60" max="420" step="20" value="240"><output id="targetOutput">240 tiles</output></label>
-        <label class="field"><span>Trace speed</span><input id="speedInput" type="range" min="1" max="100" value="62"><output id="speedOutput">62%</output></label>
-        <label class="field"><span>Window phase</span><input id="phaseInput" type="range" min="0" max="100" value="17"><output id="phaseOutput">0.17</output></label>
-        <label class="check"><input id="pointsToggle" type="checkbox" checked><span>show active point values</span></label>
-        <label class="check"><input id="atlasToggle" type="checkbox" checked><span>show reachable exact support</span></label>
-        <label class="check"><input id="windowToggle" type="checkbox" checked><span>show acceptance window inset</span></label>
+        <label class="field"><span>Growth target</span><input id="targetInput" type="range" min="60" max="420" step="20" value="120"><output id="targetOutput">120 tiles</output></label>
+        <div class="equation"><b>MAX</b><span>playback</span><strong>12 ms / frame</strong></div>
+        <label id="phaseControl" class="field"><span>Window phase</span><input id="phaseInput" type="range" min="0" max="100" value="17"><output id="phaseOutput">0.17</output></label>
+        <label id="atlasControl" class="check"><input id="atlasToggle" type="checkbox" checked><span>show reachable exact support</span></label>
+        <label id="windowControl" class="check"><input id="windowToggle" type="checkbox" checked><span>show conjugate embedding</span></label>
       </section>
 
-      <div class="run-row">
-        <button id="runButton" class="primary" type="button">Run selected set</button>
-        <button id="stepButton" type="button">Step</button>
-        <button id="resetButton" type="button">Reset</button>
-      </div>
-      <p id="status" class="status" aria-live="polite">Building the pentagrid patch…</p>
       <details>
         <summary>Why this is the proper generalization</summary>
         <p>Each individual Penrose vertex set is Delone, while the common cyclotomic module is dense. The universal module remains the exact ambient address space, but the canvas now draws only the finite support reachable by the active patch.</p>
-        <p>All model coordinates are exact integer coefficient vectors in the basis 1, ζ₅, …, ζ₅⁴, with an exact integer denominator. Pentagrid floors and radius comparisons are performed in ℚ(√5). Conversion to floating-point occurs only when a coordinate is projected to a canvas pixel.</p>
-        <p>Ammann-bar crossings require an augmented support set on tile edges, for example exact parameters involving φ/2 = (1+√5)/4. These are algebraic points, but usually not Penrose vertices. The current midpoint support is an intentionally visible baseline; the next learner adds the classical one/double golden ports.</p>
+        <p>All model coordinates are exact integer coefficient vectors in the basis 1, ζ₅, …, ζ₅⁴, with an exact integer denominator. Pentagrid floors and radius comparisons are performed in ℚ(√5). The P1 patch is reconstructed from unit-edge direction steps in ℤ[ζ₅]. Conversion to floating-point occurs only when a coordinate is projected to a canvas pixel.</p>
+        <p>Ammann-bar crossings require an augmented support set on tile edges, for example exact parameters involving φ/2 = (1+√5)/4. These are algebraic points, but usually not Penrose vertices. The golden-port experiment now propagates exactly straight segments on the finite patch. It does not yet prove a tile-local matching rule or held-out Ammann equivalence.</p>
         <p>The P2 view follows the standard mutual-local-derivation rule illustrated in Figures 30–32 of <a href="https://www.cs.toronto.edu/~jessebett/projects/penrose-tiling/Thesis/Bettencourt_Penrose_Tiling_Thesis_2015_reducedsize.pdf#page=48" target="_blank" rel="noreferrer">Bettencourt’s Penrose-tiling thesis ↗</a>.</p>
-        <p>This first implementation uses de Bruijn’s regular pentagrid, dual to a Penrose rhomb tiling. The accepted completion is certified by that pentagrid window oracle. <a href="https://pure.tue.nl/ws/files/4344195/597566.pdf" target="_blank" rel="noreferrer">Original 1981 paper ↗</a></p>
+        <p>P3 generates lattice translations on exposed edges and checks each candidate with an exact de Bruijn pentagrid predicate. No precomputed target patch is queried. P2/mixed catalogs retain the bounded model-set solver. <a href="https://pure.tue.nl/ws/files/4344195/597566.pdf" target="_blank" rel="noreferrer">Original 1981 paper ↗</a></p>
         <p><a href="https://arxiv.org/abs/2603.13553" target="_blank" rel="noreferrer">2026 cocycle paper ↗</a> explains why matching rules, bar continuity, cycle closure, and height functions are related but distinct tests. <a href="https://arxiv.org/abs/2205.13973" target="_blank" rel="noreferrer">2022 Ammann-bar paper ↗</a> gives the geometric straight-line viewpoint and its equivalence to edge matching.</p>
       </details>
     </aside>
@@ -101,7 +106,7 @@
         <div class="live paused"><i></i><span id="runState">ready</span></div>
       </div>
       <div class="legend">
-        <span><i class="atlas-point"></i>reachable</span>
+        <span id="reachableLegend"><i class="atlas-point"></i>reachable</span>
         <span><i id="legendAIcon" class="tile-thick"></i><em id="legendALabel">thick</em></span>
         <span><i id="legendBIcon" class="tile-thin"></i><em id="legendBLabel">thin</em></span>
         <span><i class="tile-trial"></i>trial</span>
@@ -109,12 +114,12 @@
       </div>
       <aside id="windowInset" class="window-inset">
         <span>INTERNAL SPACE</span>
-        <canvas id="windowCanvas" width="220" height="150" aria-label="Cut and project acceptance window"></canvas>
-        <small>π⊥(L) ∩ W</small>
+        <canvas id="windowCanvas" width="220" height="150" aria-label="Actual conjugate coordinates of placed vertices"></canvas>
+        <small>z⋆ · colors: residue Σaᵢ mod 5</small>
       </aside>
       <div class="timeline"><div id="timelineFill"></div><i id="timelineHead"></i></div>
       <div class="metrics">
-        <div><span>reachable sites</span><b id="atlasMetric">0</b></div>
+        <div><span id="atlasMetricLabel">reachable sites</span><b id="atlasMetric">0</b></div>
         <div><span>placed</span><b id="placedMetric">0</b></div>
         <div><span>nodes</span><b id="nodesMetric">0</b></div>
         <div><span>backtracks</span><b id="backtrackMetric">0</b></div>
@@ -123,6 +128,6 @@
       </div>
     </section>
   </main>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=20260906-cyclotomic"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+[hidden] {
+  display: none !important;
+}
+
 .catalog-title button {
   margin-left: auto;
   border: 0;

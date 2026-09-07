@@ -1,3 +1,6 @@
+import { P1_EXACT_TILES, P1_EXACT_VERTICES, P1_SOURCE } from "./penrose-p1-patch.js";
+import { canonical, latticeKey, residueLayer } from "./cyclotomic-five.js";
+
 const TAU = Math.PI * 2;
 
 export const PHI = (1 + Math.sqrt(5)) / 2;
@@ -265,6 +268,92 @@ export function makePenroseModelSet({ radius = 14, phaseCode = 173 } = {}) {
   };
 }
 
+// The pentagrid is a local admissibility predicate, never a target tile list.
+// Vertices are keyed in Z^4; the five strip indices are a redundant lift.
+export function makeCyclotomicSearch({ targetCount = 120, phaseCode = 173,
+  selectedIds = new Set(["p3-thick", "p3-thin"]), nodeLimit = 20000 } = {}) {
+  if (!Number.isSafeInteger(targetCount) || targetCount < 1 || targetCount > 2000 || !Number.isSafeInteger(nodeLimit) || nodeLimit < 1) throw new RangeError("Invalid bounded search budget");
+  const selected = new Set(selectedIds), gammas = exactGammas(phaseCode);
+  const baseAt = (i, j, ki, kj) => {
+    const ai = qSub(qInt(ki), gammas[i]), aj = qSub(qInt(kj), gammas[j]);
+    return Array.from({ length: 5 }, (_, m) => m === i ? ki - 1 : m === j ? kj - 1 :
+      Number(qFloor(qAdd(qAdd(qMul(sinRatio(j - m, j - i), ai), qMul(sinRatio(m - i, j - i), aj)), gammas[m]))));
+  };
+  const makeTile = (base, i, j) => {
+    const corners = [base, base.map((n, k) => n + (k === i)), base.map((n, k) => n + (k === i || k === j)), base.map((n, k) => n + (k === j))];
+    const exactPoints = corners.map(c => exactFromCoeff(c));
+    const vertices = exactPoints.map(latticeKey);
+    const w = Math.min(j - i, 5 - j + i) === 1 ? 2 : 4;
+    return { id: tileKey(vertices), vertices, exactPoints, latticePoints: exactPoints.map(canonical),
+      base, families: [i, j], edgeFamilies: [i, j, i, j], edgeSigns: [1, 1, -1, -1],
+      weights: [w, 5 - w, w, 5 - w], kind: w === 2 ? "thick" : "thin", presentation: "P3",
+      centerExact: exactAverage(exactPoints), atoms: [] };
+  };
+  const admitted = tile => {
+    const [i, j] = tile.families, b = tile.base;
+    const expected = baseAt(i, j, b[i] + 1, b[j] + 1);
+    return b.every((n, k) => n === expected[k]);
+  };
+  const seeds = [];
+  for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) {
+    const tile = makeTile(baseAt(i, j, 0, 0), i, j);
+    if (selected.has(`p3-${tile.kind}`)) seeds.push(tile);
+  }
+  seeds.sort((a, b) => compareExactNorm(a.centerExact, b.centerExact));
+  const active = [], trace = [], totals = new Map(), edges = new Map(), ids = new Set(), failures = new Set();
+  const stats = { proposals: 0, capacityPrunes: 0, windowPrunes: 0, memoHits: 0, backtracks: 0 };
+  let stopped = false;
+  const edgeId = (t, k) => [t.vertices[k], t.vertices[(k + 1) % 4]].sort().join("|");
+  const addTile = tile => {
+    active.push(tile); ids.add(tile.id);
+    tile.vertices.forEach((v, k) => totals.set(v, (totals.get(v) || 0) + tile.weights[k]));
+    for (let k = 0; k < 4; k++) { const key = edgeId(tile, k); if (!edges.has(key)) edges.set(key, []); edges.get(key).push({ tile, k }); }
+    trace.push({ type: "add", tile, message: "create four-coefficient lattice vertices; add GCTS corner loads" });
+  };
+  const candidates = ({ tile, k }) => {
+    const family = tile.edgeFamilies[k];
+    const low = tile.exactPoints[tile.edgeSigns[k] > 0 ? k : (k + 1) % 4].coeff;
+    const result = [];
+    for (let other = 0; other < 5; other++) if (other !== family) for (const side of [0, 1]) {
+      const b = low.map((n, index) => n - (index === other ? side : 0));
+      const t = makeTile(b, Math.min(family, other), Math.max(family, other));
+      if (!ids.has(t.id) && selected.has(`p3-${t.kind}`)) result.push(t);
+    }
+    return result;
+  };
+  if (seeds.length) addTile(seeds[0]);
+  while (active.length && active.length < targetCount && !stopped) {
+    const frontier = [...edges.values()].filter(r => r.length === 1).map(r => r[0]);
+    frontier.sort((a, b) => compareExactNorm(exactAverage([a.tile.exactPoints[a.k], a.tile.exactPoints[(a.k + 1) % 4]]), exactAverage([b.tile.exactPoints[b.k], b.tile.exactPoints[(b.k + 1) % 4]])));
+    let placed = false;
+    for (const edge of frontier) {
+      for (const tile of candidates(edge)) {
+        if (failures.has(tile.id)) { stats.memoHits++; continue; }
+        if (stats.proposals >= nodeLimit) { stopped = true; break; }
+        stats.proposals++;
+        trace.push({ type: "try", tile, message: "translate a rhomb by an element of Z[ζ₅] at an exposed edge" });
+        if (tile.vertices.some((v, k) => (totals.get(v) || 0) + tile.weights[k] > MAX_VALUE)) {
+          stats.capacityPrunes++; failures.add(tile.id);
+          trace.push({ type: "reject", tile, message: "GCTS prune: a lattice-site angle load would exceed ten" }); continue;
+        }
+        if (!admitted(tile)) {
+          stats.windowPrunes++; failures.add(tile.id);
+          trace.push({ type: "reject", tile, message: "exact internal-window predicate rejects this lattice placement" }); continue;
+        }
+        addTile(tile); placed = true; break;
+      }
+      if (placed || stopped) break;
+    }
+    if (!placed) break;
+  }
+  const vertices = new Map();
+  for (const tile of active) tile.exactPoints.forEach((exact, k) => vertices.set(tile.vertices[k], { id: tile.vertices[k], exact, lattice: canonical(exact).coeff, layer: residueLayer(exact) }));
+  return { model: { tiles: active, vertices: [...vertices.values()], presentation: "P3", online: true,
+    radius: Math.max(8, Math.ceil(Math.sqrt(targetCount / 3)) + 1), exact: true, latticeRank: 4, phaseCode,
+    oracle: "exact pentagrid predicate", stats }, solution: active, trace, nodes: stats.proposals,
+    success: active.length === targetCount, stopped, universeAtoms: 0, stats };
+}
+
 export function deriveP2Model(p3Model) {
   const vertexById = new Map(p3Model.vertices.map(vertex => [vertex.id, vertex]));
   const segments = new Map();
@@ -426,6 +515,482 @@ export function deriveP2Model(p3Model) {
   };
 }
 
+function exactDirectionCode(from, to) {
+  const difference = to.coeff.map((value, index) => {
+    const left = value * (from.denominator || 1);
+    const right = from.coeff[index] * (to.denominator || 1);
+    return left - right;
+  });
+  for (let family = 0; family < 5; family++) for (const sign of [1, -1]) {
+    const target = Array.from({ length: 5 }, (_, index) => index === family ? sign : 0);
+    const gauge = difference[0] - target[0];
+    if (difference.every((value, index) => value - target[index] === gauge)) {
+      return unitDirectionCode(family, sign);
+    }
+  }
+  throw new Error("P1 edge is not a cyclotomic unit");
+}
+
+function exactPolygonWeights(points) {
+  const directions = points.map((point, index) =>
+    exactDirectionCode(point, points[(index + 1) % points.length])
+  );
+  const turns = directions.map((direction, index) => {
+    let turn = mod20(directions[(index + 1) % directions.length] - direction);
+    if (turn > 10) turn -= 20;
+    return turn;
+  });
+  const orientation = Math.sign(turns.reduce((sum, turn) => sum + turn, 0));
+  if (!orientation) throw new Error("P1 polygon has no winding");
+  const weights = points.map((_, index) => {
+    const incomingTurn = turns[(index + turns.length - 1) % turns.length];
+    return (10 - orientation * incomingTurn) / 2;
+  });
+  if (!weights.every(Number.isSafeInteger)) throw new Error("P1 angle is not a multiple of 36 degrees");
+  return { directions, weights };
+}
+
+export function makeP1Model() {
+  const vertices = P1_EXACT_VERTICES.map(coeff => {
+    const exact = exactFromCoeff(coeff);
+    return { id: coeffKey(coeff), coeff, exact, value: 0 };
+  });
+  const tiles = P1_EXACT_TILES.map(([kind, indices], tileIndex) => {
+    const exactPoints = indices.map(index => vertices[index].exact);
+    const { directions, weights } = exactPolygonWeights(exactPoints);
+    return {
+      id: `p1:${tileIndex}`,
+      vertices: indices.map(index => vertices[index].id),
+      exactPoints,
+      centerExact: exactAverage(exactPoints),
+      weights,
+      directions,
+      kind,
+      presentation: "P1",
+      atoms: [`p1:${tileIndex}`]
+    };
+  }).sort((left, right) =>
+    compareExactNorm(left.centerExact, right.centerExact) || left.id.localeCompare(right.id)
+  );
+  const usedVertices = new Set(tiles.flatMap(tile => tile.vertices));
+  const incident = new Map(vertices.map(vertex => [vertex.id, []]));
+  tiles.forEach((tile, tileIndex) => tile.vertices.forEach(vertex => incident.get(vertex)?.push(tileIndex)));
+  return {
+    tiles,
+    vertices: vertices.filter(vertex => usedVertices.has(vertex.id)),
+    incident,
+    radius: 13,
+    presentation: "P1",
+    exact: true,
+    source: P1_SOURCE
+  };
+}
+
+export function makeP1Search({ p1Model, selectedIds, targetCount = 220 }) {
+  const selected = selectedIds instanceof Set ? selectedIds : new Set(selectedIds);
+  const tiles = p1Model.tiles.filter(tile => selected.has(`p1-${tile.kind}`));
+  const model = { ...p1Model, tiles };
+  const trace = tiles.length ? makeSearchTrace(model, Math.min(targetCount, tiles.length)) : [];
+  const selectedKinds = new Set(tiles.map(tile => tile.kind));
+  return {
+    model,
+    trace,
+    success: selectedKinds.size === 6,
+    stopped: false,
+    nodes: trace.length,
+    universeAtoms: Math.min(targetCount, tiles.length),
+    solution: tiles.slice(0, Math.min(targetCount, tiles.length))
+  };
+}
+
+const normalizedCoeff = coeff => {
+  const gauge = coeff[4];
+  return coeff.map(value => value - gauge);
+};
+const p1PointKey = point => coeffKey(normalizedCoeff(point.coeff));
+const p1Add = (left, right) => exactFromCoeff(normalizedCoeff(
+  left.coeff.map((value, index) => value + right.coeff[index])
+));
+const p1Sub = (left, right) => exactFromCoeff(normalizedCoeff(
+  left.coeff.map((value, index) => value - right.coeff[index])
+));
+
+function p1PairSign(a, b) {
+  if (b === 0n) return a < 0n ? -1 : a > 0n ? 1 : 0;
+  if (a === 0n) return b < 0n ? -1 : 1;
+  if ((a > 0n) === (b > 0n)) return a > 0n ? 1 : -1;
+  const comparison = a * a - 5n * b * b;
+  return a > 0n ? (comparison > 0n ? 1 : -1) : (comparison > 0n ? -1 : 1);
+}
+
+function p1CrossSign(origin, left, right) {
+  const a = p1Sub(left, origin).coeff.map(BigInt);
+  const b = p1Sub(right, origin).coeff.map(BigInt);
+  const sinePairs = [[0n, 0n], [2n, 0n], [-1n, 1n], [1n, -1n], [-2n, 0n]];
+  let rational = 0n;
+  let radical = 0n;
+  for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) {
+    if (!a[i] || !b[j]) continue;
+    const amount = a[i] * b[j];
+    const [ra, rb] = sinePairs[mod5(j - i)];
+    rational += amount * ra;
+    radical += amount * rb;
+  }
+  return p1PairSign(rational, radical);
+}
+
+const p1ProperIntersection = (a, b, c, d) => {
+  const abC = p1CrossSign(a, b, c);
+  const abD = p1CrossSign(a, b, d);
+  const cdA = p1CrossSign(c, d, a);
+  const cdB = p1CrossSign(c, d, b);
+  return abC * abD < 0 && cdA * cdB < 0;
+};
+
+const p1EdgeKey = (left, right) => [p1PointKey(left), p1PointKey(right)].sort().join("|");
+const p1EdgeFeature = (tile, edgeIndex) => {
+  const next = (edgeIndex + 1) % (tile.vertices?.length || tile.exactPoints.length);
+  return `${tile.kind}:${tile.weights[edgeIndex]},${tile.weights[next]}`;
+};
+
+function makeP1FrontierRules(p1Model) {
+  const referenceEdges = new Map();
+  p1Model.tiles.forEach(tile => tile.exactPoints.forEach((point, edgeIndex) => {
+    const next = tile.exactPoints[(edgeIndex + 1) % tile.exactPoints.length];
+    const key = p1EdgeKey(point, next);
+    if (!referenceEdges.has(key)) referenceEdges.set(key, []);
+    referenceEdges.get(key).push({ tile, edgeIndex });
+  }));
+  const contacts = new Set();
+  referenceEdges.forEach(records => {
+    if (records.length !== 2) return;
+    contacts.add(`${p1EdgeFeature(records[0].tile, records[0].edgeIndex)}>${p1EdgeFeature(records[1].tile, records[1].edgeIndex)}`);
+    contacts.add(`${p1EdgeFeature(records[1].tile, records[1].edgeIndex)}>${p1EdgeFeature(records[0].tile, records[0].edgeIndex)}`);
+  });
+
+  const prototypeMap = new Map();
+  p1Model.tiles.forEach(tile => {
+    const origin = tile.exactPoints[0];
+    const exactPoints = tile.exactPoints.map(point => p1Sub(point, origin));
+    const key = `${tile.kind}:${exactPoints.map(p1PointKey).join("|")}`;
+    if (!prototypeMap.has(key)) prototypeMap.set(key, {
+      kind: tile.kind,
+      exactPoints,
+      weights: [...tile.weights],
+      directions: [...tile.directions]
+    });
+  });
+  return { contacts, prototypes: [...prototypeMap.values()] };
+}
+
+export function makeP1FrontierSearch({
+  p1Model,
+  selectedIds,
+  targetCount = 220,
+  nodeLimit = 120000
+}) {
+  const selected = selectedIds instanceof Set ? selectedIds : new Set(selectedIds);
+  const selectedKinds = new Set(
+    [...selected].filter(id => id.startsWith("p1-")).map(id => id.slice(3))
+  );
+  const { contacts, prototypes } = makeP1FrontierRules(p1Model);
+  const enabledPrototypes = prototypes.filter(prototype => selectedKinds.has(prototype.kind));
+  const seedKind = ["p3", "p5", "p2", "diamond", "star", "boat"].find(kind => selectedKinds.has(kind));
+  const seedSource = p1Model.tiles.find(tile => tile.kind === seedKind);
+  if (!seedSource || !enabledPrototypes.length) {
+    return {
+      model: { ...p1Model, tiles: [], vertices: [], radius: 12, presentation: "P1" },
+      trace: [], success: false, stopped: false, nodes: 0, universeAtoms: 0, solution: []
+    };
+  }
+
+  const makePlacement = (prototype, offset) => {
+    const exactPoints = prototype.exactPoints.map(point => p1Add(point, offset));
+    const vertices = exactPoints.map(p1PointKey);
+    return {
+      id: `p1g:${prototype.kind}:${tileKey(vertices)}`,
+      kind: prototype.kind,
+      presentation: "P1",
+      exactPoints,
+      vertices,
+      centerExact: exactAverage(exactPoints),
+      weights: [...prototype.weights],
+      directions: [...prototype.directions],
+      atoms: []
+    };
+  };
+
+  const initialSeed = [seedSource];
+  const active = [...initialSeed];
+  const kindCounts = new Map();
+  initialSeed.forEach(tile => kindCounts.set(tile.kind, (kindCounts.get(tile.kind) || 0) + 1));
+  const placementIds = new Set(initialSeed.map(tile => tileKey(tile.vertices)));
+  const totals = new Map();
+  const edges = new Map();
+  const trace = initialSeed.flatMap((tile, index) => [
+    { type: "try", tile, message: index ? "extend the finite legal seed corona" : "start from one exact P1 tile; no target support exists" },
+    { type: "add", tile, message: "seed placement creates only its own exact vertices and exposed edges" }
+  ]);
+  let nodes = initialSeed.length;
+  let stopped = false;
+
+  const projectionCache = new Map();
+  const projection = (point, axis) => {
+    const key = `${p1PointKey(point)}:${axis}`;
+    if (projectionCache.has(key)) return projectionCache.get(key);
+    let rational = 0n;
+    let radical = 0n;
+    point.coeff.forEach((coefficient, family) => {
+      const separation = Math.min(mod5(family - axis), mod5(axis - family));
+      const [ra, rb] = separation === 0 ? [4n, 0n] :
+        separation === 1 ? [-1n, 1n] : [-1n, -1n];
+      rational += BigInt(coefficient) * ra;
+      radical += BigInt(coefficient) * rb;
+    });
+    const value = [rational, radical];
+    projectionCache.set(key, value);
+    return value;
+  };
+  const comparePair = (left, right) => p1PairSign(left[0] - right[0], left[1] - right[1]);
+  const normPair = coeff => {
+    const values = coeff.map(BigInt);
+    let rational = 4n * values.reduce((sum, value) => sum + value * value, 0n);
+    let radical = 0n;
+    for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) {
+      const separation = Math.min(mod5(i - j), mod5(j - i));
+      rational -= 2n * values[i] * values[j];
+      radical += (separation === 1 ? 2n : -2n) * values[i] * values[j];
+    }
+    return [rational, radical];
+  };
+  const edgeNorm = (from, to) => normPair(normalizedCoeff(
+    from.coeff.map((value, index) => value + to.coeff[index])
+  ));
+  const compareEdgeNorm = (left, right) => comparePair(left.norm, right.norm);
+  const orderedPair = (left, right) => comparePair(left, right) <= 0 ? [left, right] : [right, left];
+  const segmentBounds = (from, to) => [0, 1].map(axis => orderedPair(projection(from, axis), projection(to, axis)));
+  const boundsOverlap = (left, right) => left.every(([low, high], axis) =>
+    comparePair(high, right[axis][0]) >= 0 && comparePair(right[axis][1], low) >= 0
+  );
+
+  const addEdgeRecord = (tile, edgeIndex) => {
+    const from = tile.exactPoints[edgeIndex];
+    const to = tile.exactPoints[(edgeIndex + 1) % tile.exactPoints.length];
+    const key = p1EdgeKey(from, to);
+    if (!edges.has(key)) edges.set(key, []);
+    edges.get(key).push({
+      tile,
+      edgeIndex,
+      from,
+      to,
+      feature: p1EdgeFeature(tile, edgeIndex),
+      bounds: segmentBounds(from, to),
+      norm: edgeNorm(from, to)
+    });
+  };
+  const add = tile => {
+    active.push(tile);
+    kindCounts.set(tile.kind, (kindCounts.get(tile.kind) || 0) + 1);
+    placementIds.add(tileKey(tile.vertices));
+    tile.vertices.forEach((vertex, index) => totals.set(vertex, (totals.get(vertex) || 0) + tile.weights[index]));
+    tile.exactPoints.forEach((_, edgeIndex) => addEdgeRecord(tile, edgeIndex));
+  };
+  const remove = tile => {
+    active.pop();
+    const nextKindCount = (kindCounts.get(tile.kind) || 0) - 1;
+    if (nextKindCount) kindCounts.set(tile.kind, nextKindCount);
+    else kindCounts.delete(tile.kind);
+    placementIds.delete(tileKey(tile.vertices));
+    tile.vertices.forEach((vertex, index) => {
+      const next = (totals.get(vertex) || 0) - tile.weights[index];
+      if (next) totals.set(vertex, next);
+      else totals.delete(vertex);
+    });
+    tile.exactPoints.forEach((point, edgeIndex) => {
+      const next = tile.exactPoints[(edgeIndex + 1) % tile.exactPoints.length];
+      const key = p1EdgeKey(point, next);
+      const records = (edges.get(key) || []).filter(record => record.tile.id !== tile.id);
+      if (records.length) edges.set(key, records);
+      else edges.delete(key);
+    });
+  };
+  initialSeed.forEach(tile => {
+    tile.vertices.forEach((vertex, index) => totals.set(vertex, (totals.get(vertex) || 0) + tile.weights[index]));
+    tile.exactPoints.forEach((_, edgeIndex) => addEdgeRecord(tile, edgeIndex));
+  });
+
+  const frontierRecords = () => [...edges.values()]
+    .filter(records => records.length === 1)
+    .map(records => records[0]);
+  const candidateTemplateCache = new Map();
+  const candidateTemplatesAt = frontier => {
+    const reverseDelta = p1PointKey(p1Sub(frontier.from, frontier.to));
+    const templateKey = `${frontier.feature}:${reverseDelta}`;
+    if (candidateTemplateCache.has(templateKey)) return candidateTemplateCache.get(templateKey);
+    const templates = [];
+    for (const prototype of enabledPrototypes) {
+      for (let edgeIndex = 0; edgeIndex < prototype.exactPoints.length; edgeIndex++) {
+        const from = prototype.exactPoints[edgeIndex];
+        const to = prototype.exactPoints[(edgeIndex + 1) % prototype.exactPoints.length];
+        if (p1PointKey(p1Sub(to, from)) !== reverseDelta) continue;
+        const feature = p1EdgeFeature(prototype, edgeIndex);
+        if (contacts.has(`${frontier.feature}>${feature}`)) templates.push({ prototype, edgeIndex });
+      }
+    }
+    candidateTemplateCache.set(templateKey, templates);
+    return templates;
+  };
+  const candidateCache = new Map();
+  const candidateCountCache = new Map();
+  const candidateProposalCount = frontier => {
+    const reverseDelta = p1PointKey(p1Sub(frontier.from, frontier.to));
+    const countKey = `${frontier.feature}:${reverseDelta}`;
+    if (candidateCountCache.has(countKey)) return candidateCountCache.get(countKey);
+    const unique = new Set();
+    for (const { prototype, edgeIndex } of candidateTemplatesAt(frontier)) {
+      const offset = p1Sub(exactFromCoeff([0, 0, 0, 0, 0]), prototype.exactPoints[edgeIndex]);
+      const points = prototype.exactPoints.map(point => p1Add(point, offset));
+      unique.add(`${prototype.kind}:${tileKey(points.map(p1PointKey))}`);
+    }
+    candidateCountCache.set(countKey, unique.size);
+    return unique.size;
+  };
+  const candidatesAt = frontier => {
+    const cacheKey = `${frontier.feature}:${p1PointKey(frontier.from)}>${p1PointKey(frontier.to)}`;
+    if (candidateCache.has(cacheKey)) return candidateCache.get(cacheKey);
+    const candidates = new Map();
+    for (const { prototype, edgeIndex } of candidateTemplatesAt(frontier)) {
+      const from = prototype.exactPoints[edgeIndex];
+      const offset = p1Sub(frontier.to, from);
+      const candidate = makePlacement(prototype, offset);
+      candidates.set(candidate.id, candidate);
+    }
+    const result = [...candidates.values()].sort((left, right) =>
+      left.kind.localeCompare(right.kind) || left.id.localeCompare(right.id)
+    );
+    candidateCache.set(cacheKey, result);
+    return result;
+  };
+
+  const fits = tile => {
+    if (placementIds.has(tileKey(tile.vertices))) return false;
+    if (tile.vertices.some((vertex, index) => (totals.get(vertex) || 0) + tile.weights[index] > MAX_VALUE)) return false;
+    for (let edgeIndex = 0; edgeIndex < tile.exactPoints.length; edgeIndex++) {
+      const from = tile.exactPoints[edgeIndex];
+      const to = tile.exactPoints[(edgeIndex + 1) % tile.exactPoints.length];
+      const records = edges.get(p1EdgeKey(from, to)) || [];
+      if (records.length >= 2) return false;
+      if (records.length === 1 && !contacts.has(`${records[0].feature}>${p1EdgeFeature(tile, edgeIndex)}`)) return false;
+    }
+    for (let edgeIndex = 0; edgeIndex < tile.exactPoints.length; edgeIndex++) {
+      const a = tile.exactPoints[edgeIndex];
+      const b = tile.exactPoints[(edgeIndex + 1) % tile.exactPoints.length];
+      const candidateBounds = segmentBounds(a, b);
+      for (const records of edges.values()) {
+        if (records.length !== 1) continue;
+        const record = records[0];
+        if (p1EdgeKey(a, b) === p1EdgeKey(record.from, record.to)) continue;
+        if (!boundsOverlap(candidateBounds, record.bounds)) continue;
+        if (p1ProperIntersection(a, b, record.from, record.to)) return false;
+      }
+    }
+    return true;
+  };
+
+  const available = frontier => candidatesAt(frontier).filter(fits);
+  const hasSingleBoundary = () => {
+    const graph = new Map();
+    for (const record of frontierRecords()) {
+      const from = p1PointKey(record.from);
+      const to = p1PointKey(record.to);
+      if (!graph.has(from)) graph.set(from, []);
+      if (!graph.has(to)) graph.set(to, []);
+      graph.get(from).push(to);
+      graph.get(to).push(from);
+    }
+    if (!graph.size || [...graph.values()].some(neighbors => neighbors.length !== 2)) return false;
+    const start = graph.keys().next().value;
+    const seen = new Set([start]);
+    const queue = [start];
+    while (queue.length) {
+      const point = queue.pop();
+      for (const neighbor of graph.get(point)) {
+        if (seen.has(neighbor)) continue;
+        seen.add(neighbor);
+        queue.push(neighbor);
+      }
+    }
+    return seen.size === graph.size;
+  };
+  const search = () => {
+    if (active.length >= targetCount) {
+      return hasSingleBoundary();
+    }
+    if (nodes >= nodeLimit) { stopped = true; return false; }
+    const frontierOptions = frontierRecords()
+      .sort((left, right) =>
+        compareEdgeNorm(left, right) ||
+        p1EdgeKey(left.from, left.to).localeCompare(p1EdgeKey(right.from, right.to))
+      )
+      .map(record => ({ record, proposalCount: candidateProposalCount(record) }));
+    const minimumProposalCount = Math.min(...frontierOptions.map(option => option.proposalCount));
+    const orderedFrontiers = frontierOptions
+      .filter(option => option.proposalCount <= minimumProposalCount + 1)
+      .sort((left, right) =>
+        compareEdgeNorm(left.record, right.record) ||
+        left.proposalCount - right.proposalCount ||
+        p1EdgeKey(left.record.from, left.record.to).localeCompare(p1EdgeKey(right.record.from, right.record.to))
+      );
+    let frontier = null;
+    for (const { record } of orderedFrontiers) {
+      const candidates = available(record);
+      if (candidates.length) { frontier = { record, candidates }; break; }
+    }
+    if (!frontier || !frontier.candidates.length) {
+      trace.push({ type: "witness", tile: active.at(-1), message: "dead exposed edge: no exact matching P1 placement" });
+      return false;
+    }
+    const orderedCandidates = [...frontier.candidates].sort((left, right) =>
+      (kindCounts.get(left.kind) || 0) - (kindCounts.get(right.kind) || 0) ||
+      left.kind.localeCompare(right.kind) ||
+      left.id.localeCompare(right.id)
+    );
+    for (const tile of orderedCandidates) {
+      nodes++;
+      trace.push({ type: "try", tile, message: "generate an exact candidate on the nearest constrained frontier edge" });
+      if (!fits(tile)) {
+        trace.push({ type: "reject", tile, message: "pruned: collision, edge mismatch, or point capacity" });
+        continue;
+      }
+      add(tile);
+      trace.push({ type: "add", tile, message: "frontier placement creates only exact vertices that are needed now" });
+      if (search()) return true;
+      remove(tile);
+      trace.push({ type: "remove", tile, message: "rollback from a dead online-growth branch" });
+      if (stopped) return false;
+    }
+    return false;
+  };
+
+  const success = search();
+  return {
+    model: {
+      ...p1Model,
+      tiles: [...active],
+      vertices: [],
+      radius: Math.max(10, Math.ceil(Math.sqrt(targetCount)) + 2),
+      presentation: "P1",
+      online: true
+    },
+    trace,
+    success,
+    stopped,
+    nodes,
+    universeAtoms: 0,
+    solution: [...active]
+  };
+}
+
 function alignedCopy(model, anchor) {
   const offset2 = anchor.center2;
   const moveCoeff = coeff => exactFromCoeff(coeff.map((value, index) => 2 * value - offset2[index]), 2);
@@ -509,12 +1074,14 @@ export function makeSearchTrace(model, targetCount = 220) {
   const trace = [];
   const active = new Set();
   const outer = model.tiles.filter(tile => !targetIds.has(tile.id));
+  const decoyPool = [...outer, ...target];
   let branch = 0;
 
   order.forEach((tile, index) => {
     if (index > 5 && index % 11 === 4) {
-      const decoy = outer.find(candidate =>
+      const decoy = decoyPool.find(candidate =>
         !active.has(candidate.id) &&
+        candidate.id !== tile.id &&
         candidate.vertices.some(vertex => tile.vertices.includes(vertex))
       );
       if (decoy) {
