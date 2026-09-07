@@ -120,6 +120,14 @@ accepted prefix: each new O has exactly two hydrogen-isotope neighbors, and
 each new hydrogen isotope belongs to one O. Rendering retains species colors
 for new atoms and exposes live species counts.
 
+The learner and search contain no oxygen/hydrogen identities, valence tables,
+or prescribed stoichiometry. `test-continuous-anonymous-labels.mjs` replaces
+element names with opaque labels (including reversed label order), checks the
+same learned geometric vocabulary and port count, and verifies every new
+connected component against an observed support. The 1.32× nearest-spacing
+connectivity threshold and majority-component trigger remain explicit geometric
+heuristics—not learned chemical facts or certified GCTS section constraints.
+
 ## Remaining research
 
 1. Transported section compatibility with disjoint-patch validation and
