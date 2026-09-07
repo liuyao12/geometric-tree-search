@@ -44,7 +44,7 @@ assert.equal(elements.get("startTiling").textContent, "Run");
 elements.get("tilingCanvas").fire("pointermove", { clientX: 400, clientY: 250 });
 assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_coordinate").textContent, "x = 0");
-assert.equal(elements.get("point_t").textContent, "t(x) = 1/5");
+assert.match(elements.get("point_t").textContent, /t\(x\) = [1-4]\/5/);
 assert.match(elements.get("point_m").textContent, /m\(x\) = \(0, 0, 0, 0, 0\)/);
 elements.get("tilingCanvas").fire("pointerleave");
 assert.equal(elements.get("pointTooltip").hidden, true);

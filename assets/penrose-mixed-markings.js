@@ -10,7 +10,7 @@ export function tileStates(tile){
     const signatures=new Map(tile.exactPoints.map((a,i)=>[edgeKey(a,tile.exactPoints[(i+1)%tile.exactPoints.length]),[]]));
     const bars=tile.bars.map((b,stripe)=>({...b,stripe,tileId:tile.id,ends:[{point:b.from},{point:b.to}]}));
     for(const b of bars)for(const p of[b.from,b.to])tile.exactPoints.forEach((a,i)=>{const q=tile.exactPoints[(i+1)%tile.exactPoints.length];if(onSegment(p,a,q))signatures.get(edgeKey(a,q)).push(`${latticeKey(p)}:${b.family}`);});
-    states.set(tile,[{start:0,bars,signatures:new Map([...signatures].map(([k,v])=>[k,[...new Set(v)].sort().join(';')]))}]);
+    states.set(tile,[{start:tile.arrowStart ?? 0,bars,signatures:new Map([...signatures].map(([k,v])=>[k,[...new Set(v)].sort().join(';')]))}]);
   }
   return states.get(tile);
 }

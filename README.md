@@ -11,6 +11,10 @@ Pages site. The main way to use it is to open the page in a browser:
 
 - [Geometrically Constrained Tree Search](https://liuyao12.github.io/geometric-tree-search/)
 
+## Required base tiling algorithm
+
+All new or revised tiling tree searches must use the [basic tiling algorithm](./docs/basic-tiling-algorithm.md): complete point–candidate bipartite bookkeeping, global dead-point detection, forced-move propagation before branching, incremental dependency updates and exact rollback. GCTS constraints and RL policies are layers on this shared baseline. The Penrose demo uses this baseline for P1, P2, P3 and mixed selections.
+
 ## Browser Pages
 
 - [Held Circle Packing Search](./circle-packing-search/)

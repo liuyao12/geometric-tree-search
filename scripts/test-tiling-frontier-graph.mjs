@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {createFrontierGraph} from '../assets/tiling-frontier-graph.js';
+const A={id:'A',vertices:['p','q']},B={id:'B',vertices:['q']},C={id:'C',vertices:['r']};
+let blocked=new Set();
+const graph=createFrontierGraph({enumerate:p=>({p:[A],q:[A,B],r:[C]})[p.key],legal:t=>!blocked.has(t.id),compatibleWithAddition:t=>!blocked.has(t.id),footprint:()=>({x0:0,x1:1,y0:0,y1:1})});
+const point=(key,depth=0)=>({key,total:1,depth});
+graph.build([point('p',10),point('q'),point('r')]);
+assert.equal(graph.summary().candidates,3);assert.equal(graph.summary().incidences,4);
+const before=graph.inspect();assert.equal(graph.choose().forced,true);
+blocked=new Set(['A','C']);const delta=graph.push(A,[point('q'),point('r')]);
+assert.equal(graph.choose().dead,true,'dead point wins over a forced point anywhere else');
+blocked=new Set();graph.pop(delta);assert.deepEqual(graph.inspect(),before);
+assert.equal(graph.summary().fullBuilds,1);assert.equal(graph.summary().rollbacks,1);
+console.log('ok: shared candidate identities, global dead/forced priority and exact graph rollback');

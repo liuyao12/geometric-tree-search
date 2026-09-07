@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { createPenroseGrowth, growthRhomb, interiorsOverlap } from "../assets/penrose-growth.js";
+// Historical edge-first baseline; current algorithm: test-penrose-frontier.mjs.
+import { createLegacyPenroseGrowth as createPenroseGrowth, growthRhomb, interiorsOverlap } from "../assets/penrose-growth.js";
 import { asFive, cycloMultiply } from "../assets/cyclotomic-five.js";
 import { ammannStates, solveAmmannDecorations } from "../assets/penrose-ammann.js";
 

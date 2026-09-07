@@ -1,6 +1,6 @@
-import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-corona";
+import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-frontier";
 
-import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-mixed";
+import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-frontier";
 
 let search, done = false, computeMs = 0;
 self.onmessage = ({ data }) => {
@@ -15,7 +15,7 @@ self.onmessage = ({ data }) => {
       const start = performance.now();
       for (let i = 0; i < Math.min(200, Math.max(1, data.events)); i++) {
         const step = search.next(); done = step.done;
-        if (step.value?.type === "add" && Number.isInteger(data.targetCorona) && search.progress().minimumFrontierGeneration >= data.targetCorona) {
+        if (step.value?.type === "add" && Number.isInteger(data.targetCorona) && search.progress().minimumFrontierGeneration >= data.targetCorona && search.progress().deadPoints === 0) {
           pausedCorona = data.targetCorona; break;
         }
         if (done || performance.now() - start > 12) break;

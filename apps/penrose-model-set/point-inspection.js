@@ -1,5 +1,5 @@
 import { canonical, embedding, latticeKey, edgePort } from '../../assets/cyclotomic-five.js';
-import { tileStates, tileMarkingValue } from '../../assets/penrose-mixed-markings.js?v=20260907-mixed';
+import { tileStates, tileMarkingValue } from '../../assets/penrose-mixed-markings.js?v=20260907-frontier';
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 

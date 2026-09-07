@@ -1,9 +1,9 @@
 import { embedding } from "../../assets/cyclotomic-five.js";
-import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-mixed";
+import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-frontier";
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-mixed";
+import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-frontier";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
@@ -46,7 +46,7 @@ function visual(tile) {
   const key = tile.id + "/" + $("extent").value;
   if (!drawn.has(key)) drawn.set(key, {
     points: tile.exactPoints.map(p => embedding(p)),
-    arrows: (tile.bars ? [{start: 0, arrows: []}] : arrowStates(tile)).map(s => ({ start: s.start, arrows: s.arrows.map(a => ({ type: a.type, from: embedding(a.from), to: embedding(a.to) })) })),
+    arrows: (!snapshot?.mixed && tile.arrowStart !== undefined ? [arrowStates(tile).find(s => s.start === tile.arrowStart)] : tile.bars ? [{start: 0, arrows: []}] : arrowStates(tile)).map(s => ({ start: s.start, arrows: s.arrows.map(a => ({ type: a.type, from: embedding(a.from), to: embedding(a.to) })) })),
     states: tileStates(tile).map(s => ({ start: s.start, bars: s.bars.map(b => { const e = extendBar(b, Number($("extent").value)); return { family: b.family, from: embedding(b.from), to: embedding(b.to), extFrom: embedding(e.from), extTo: embedding(e.to) }; }) }))
   });
   return drawn.get(key);
@@ -77,7 +77,7 @@ function paint() {
         const a = screen(bar.from), b = screen(bar.to); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
     } else {
-      if (tile.bars) {
+      if (tile.bars && (snapshot.mixed || tile.arrowStart === undefined)) {
         const state = tileStates(tile)[0];
         for (const bar of state.bars) for (const end of bar.ends) {
           const p = screen(embedding(end.point)); ctx.fillStyle = colors[bar.family];
@@ -118,7 +118,7 @@ function paint() {
 }
 function syncSettings() {
   const enabled = $("useMarkings").checked;
-  const selected = selectedKinds(), classic = selected.length === 2 && selected.includes("thick") && selected.includes("thin");
+  const selected = selectedKinds(), classic = selected.length > 0 && selected.every(k => k === "thick" || k === "thin");
   $("tileHint").textContent = selected.length === 0 ? "Choose at least one tile."
     : selected.some(k => ["p5", "p3", "p2", "diamond", "boat", "star"].includes(k)) && selected.some(k => ["thick", "thin", "kite", "dart"].includes(k))
     ? "Allowed tiles, not required tiles. Shared construction scale: P1 edges cannot join P2/P3 by a whole edge."
@@ -153,6 +153,7 @@ function render() {
     $("eventLabel").textContent = snapshot.event?.message || "Seed ready";
     for (const [key, value] of Object.entries({ placed: snapshot.tiles.length, peak: snapshot.stats.peak, proposals: snapshot.stats.proposals, backtracks: snapshot.stats.backtracks, markingPrunes: snapshot.useMarkings ? snapshot.stats.markingPrunes : snapshot.stats.edgePrunes })) $(key).textContent = value.toLocaleString();
     $("computeTime").textContent = `${(snapshot.computeMs / 1000).toFixed(2)} s`;
+    $("graphDetail").textContent = snapshot.graph ? `${snapshot.graph.points} unfinished points · ${snapshot.graph.candidates} candidates · ${snapshot.graph.incidences} incidences · ${snapshot.stats.forcedMoves} forced placements · ${snapshot.stats.branches} branches` : "";
     $("pruneDetail").textContent = `Prunes: ${snapshot.stats.edgePrunes} edge matches · ${snapshot.stats.capacityPrunes} capacity · ${snapshot.stats.geometryPrunes} overlap · ${snapshot.stats.topologyPrunes} boundary`;
   }
   paint();
@@ -172,12 +173,12 @@ function reset(autostart = false) {
   radius = 5; zoom = 1; pan = { x: 0, y: 0 }; drawn.clear();
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
-  $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "Seed ready"; $("pruneDetail").textContent = "No proposals yet";
+  $("graphDetail").textContent = ""; $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "Seed ready"; $("pruneDetail").textContent = "No proposals yet";
   const options = { tileKinds: selectedKinds(), useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: null, nodeLimit: 100000, seed: 17 };
   if (!options.tileKinds.length) { error("Choose at least one tile"); return; }
   $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-mixed", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-frontier", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;

@@ -1,3 +1,4 @@
+import { createMixedGrowth } from "./penrose-mixed-growth.js?v=20260907-frontier";
 import { asFive, latticeKey } from "./cyclotomic-five.js";
 import { solveAmmannDecorations } from "./penrose-ammann.js?v=20260907-extent";
 
@@ -65,7 +66,7 @@ const edgeDistance = (t, k) => {
 };
 const priority = (key, seed) => { let h = (2166136261 ^ seed) >>> 0; for (const c of key) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0; return h; };
 
-export function createPenroseGrowth({ useMarkings = true, markingDirections = 5, extent = 0, targetCount = 60, nodeLimit = 10000, seed = 1 } = {}) {
+export function createLegacyPenroseGrowth({ useMarkings = true, markingDirections = 5, extent = 0, targetCount = 60, nodeLimit = 10000, seed = 1 } = {}) {
   validateExtent(extent);
   if (![nodeLimit, seed].every(Number.isSafeInteger) || (targetCount !== null && (!Number.isSafeInteger(targetCount) || targetCount < 1 || targetCount > 420)) || nodeLimit < 1 || nodeLimit > 100000) throw new RangeError("Invalid search budget");
   if (markingDirections !== 5) throw new RangeError("Tiling requires all five Ammann directions");
@@ -175,3 +176,6 @@ export function createPenroseGrowth({ useMarkings = true, markingDirections = 5,
     snapshot() { return { tiles: [...active], orientations: marking ? [...marking.orientationByTile] : [], stats: { ...stats }, minimumFrontierGeneration, status, event: lastEvent, useMarkings, markingDirections, extent, extensionPairs: marking?.extensionPairs || 0 }; }
   };
 }
+
+// All current Penrose growth uses the shared point–candidate baseline.
+export function createPenroseGrowth(options = {}) { return createMixedGrowth({ ...options, tileKinds: ["thick", "thin"] }); }
