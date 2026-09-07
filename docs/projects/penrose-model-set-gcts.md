@@ -35,7 +35,9 @@ list. Placements and shared vertices have canonical four-coefficient keys.
 Each proposed corner contributes its angle in 36° units. The GCTS capacity
 bound is ten: thin rhombs contribute (4,1,4,1), thick rhombs (2,3,2,3).
 A candidate exceeding a site's current capacity is rejected before placement.
-Surviving candidates must pass an exact local de Bruijn pentagrid predicate:
+The remaining proposal must admit a consistent assignment of the two rigid
+orientations of each fixed Ammann prototile (see below). Only then does it pass
+to the exact local de Bruijn pentagrid predicate:
 compute the other three strip indices from its two generating indices using
 rational arithmetic in ℚ(√5), then compare all five indices. This predicate
 certifies that admitted rhombs belong to one Penrose tiling, supplying both
@@ -43,7 +45,7 @@ non-overlap and matching admissibility. Capacity alone does not force Penrose
 aperiodicity or prevent every geometric overlap.
 
 The search orders exposed edges from the centre outwards, records actual
-proposals and rejections, and caches failed placements. Capacity failures are
+proposals and rejections, and caches failed placements. Capacity and complete-marking infeasibility are
 monotone while this solver only adds tiles; window failures are state
 independent at a fixed phase. The cache is discarded on every new run.
 Changing to a solver that rolls back would require invalidating or
@@ -58,37 +60,70 @@ proof or a claim that the boundary has no holes. P1 retains its separate
 frontier DFS. P2 and mixed P2/P3 catalogs retain the earlier bounded atom-cover
 solver described below.
 
-## Golden-port experiment
+## Fixed Ammann prototiles (current)
 
-`penrose-golden-bars.js` augments each rhomb edge with two exact ports at
+The default stripes are now defined by **one complete decoration for each of
+the two rhomb shapes**, implemented in `penrose-ammann.js`. Each contains five
+segments. A placed copy can be turned over or rotated, but cannot add, remove,
+or move a stripe. Boundary tiles retain all five segments too. The catalog
+thumbnails use the same exact templates as the tiling renderer.
+
+The templates follow Figure 1 of Porrier and Fernique, *Ammann Bars for
+Octagonal Tilings*, arXiv:2205.13973v6 (2024):
+<https://arxiv.org/pdf/2205.13973#page=2>.
+We normalize the rhomb edge to one and use the exact algebraic edge parameters
 
 \[
-t\in\{1-\varphi/2,\varphi/2\},\qquad
-\varphi=-\zeta_5^2-\zeta_5^3.
+a=\frac1{4\varphi},\quad b=\frac1{2\varphi^2},\quad m=\frac12,
+\qquad \varphi=-\zeta_5^2-\zeta_5^3.
 \]
 
-These ports belong to (1/2)ℤ[ζ₅]; tile vertices still belong to ℤ[ζ₅].
-The implementation enumerates segments between different edges, keeps those
-parallel to one of the five cyclotomic directions, and repeatedly removes any
-segment lacking a same-line continuation across an interior edge. Parallelism
-is tested exactly by a·conj(b) = conj(a)·b, using integer ring arithmetic.
-No floating-point tolerance decides which bars survive.
+The reference drawing uses rounded coordinates, so the implementation uses
+these exact lengths and the required line directions. Starting at an acute
+corner, label the four edges in boundary order by 0,1,2,3. Each stripe is a
+pair of edge parameters:
 
-For phase 173 and 120 tiles, this leaves 313 of 1,200 candidate segments,
-508 supported interior endpoints, 118 boundary endpoints, and all five
-families. Boundary endpoints are unresolved, not counted as successful joins.
-The app draws these retained segments as solid colored lines. The optional
-old midpoint-cochain experiment remains available as a diagnostic baseline.
+| Shape | Complete stripe endpoints `(edge, parameter)` |
+| --- | --- |
+| Thick | `(0,a)—(3,m)`, `(3,1−a)—(0,m)`, `(0,m)—(1,b)`, `(3,m)—(2,1−b)`, `(1,b)—(2,1−b)` |
+| Thin | `(0,m)—(1,m)`, `(0,m)—(3,1−b)`, `(1,m)—(2,b)`, `(0,a)—(3,1−b)`, `(1,1−a)—(2,b)` |
 
-This is **finite-patch golden-port propagation**, not yet an Ammann matching
-rule rediscovery. In particular, it does not learn one transferable decoration
-per marked prototile, show that the decoration rejects precisely the forbidden
-contacts, or establish Fibonacci spacing and infinite continuation. Selection
-uses the already window-certified patch. Multiple phases passing this geometric
-audit are not a held-out transfer test of a fixed learned rule. Those are the
-next research gates before replacing the window predicate by learned GCTS
-markings. The five direction channels should not be confused with the rank-four
-integer coordinate lattice.
+The two acute starting corners give two rigid orientations of the same
+decorated shape. These are not two separately learned patterns. Reflection
+symmetry of the templates means that no additional reflected pattern is needed.
+Stripe directions are **perpendicular** to the five edge-direction families.
+Exact orthogonality is checked by u·conj(v) + conj(u)·v = 0.
+Port coordinates can have denominator four; vertex coordinates remain integral.
+
+On each shared edge the solver equates the entire multiset of port positions
+and stripe directions, including multiple stripes meeting at one port. Arc
+consistency propagates the two-state orientation domains; DFS resolves any
+remaining choices. No stripe is individually selected or deleted. This
+constraint solver runs on a proposed extension *before* the window check, and
+infeasible proposals count as `markingPrunes`. On rejection its orientation
+choices are discarded; a future extension may resolve an earlier ambiguous
+orientation differently. Rendering uses the final consistent orientation of
+each tile for the whole trace.
+
+For phase 170 and 420 tiles, capacity rejects 537 proposals, fixed markings
+reject a further 411, and the window rejects 217. Every accepted tile carries
+five stripes and all 793 shared edges match. The window still selects the
+requested phase and certifies geometric non-overlap. Removing it would need
+an independent exact geometric collision check and a genuine growth DFS;
+this implementation does not claim window-free growth.
+
+These are supplied classical markings, **not a learned GCTS rediscovery**.
+They provide a correct fixed target for a future marking learner. The five
+direction channels should not be confused with the rank-four coordinate lattice.
+
+### Retired finite-patch overlay
+
+`penrose-golden-bars.js` retains the earlier experimental baseline for tests.
+It selected segments independently on every tile, used only two edge ports,
+and kept directions parallel to the edges. Thus it did not define reusable
+striped prototiles even when some strands continued straight. It is no longer
+the app's default marking or its tiling constraint. The midpoint experiment
+remains in the explicitly labelled historical diagnostic disclosure.
 
 ## Arithmetic and validation
 
@@ -99,6 +134,11 @@ integer storage checks safe-integer range. Rational denominators are permitted
 for centres and markings but excluded from integer residue-layer queries.
 The existing exact ℚ(√5) machinery handles pentagrid floors and ordering.
 Only the rendering embeddings use floating-point trigonometry.
+
+Run `node scripts/test-penrose-ammann.mjs` for exact rigid-copy checks against
+the two prototypes, full stripe retention on boundary tiles, and shared-edge
+matching across 900 tiles in five phases. The test also verifies actual
+marking-based proposal rejection.
 
 Run `node scripts/test-penrose-cyclotomic.mjs` for ring identities, gauge
 invariance, conjugate embeddings, golden-port reversal, deterministic growth,

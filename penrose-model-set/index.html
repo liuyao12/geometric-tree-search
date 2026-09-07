@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Penrose Cyclotomic Lattice — GCTS</title>
-  <meta name="description" content="Exact rank-four cyclotomic lattice growth, GCTS pruning and golden-port Ammann-bar experiments.">
-  <link rel="stylesheet" href="./style.css?v=20260906-cyclotomic">
-  <link rel="stylesheet" href="./catalog.css?v=20260906-cyclotomic">
+  <meta name="description" content="Exact rank-four cyclotomic lattice growth, GCTS pruning and fixed Ammann prototile markings.">
+  <link rel="stylesheet" href="./style.css?v=20260907-fixed-ammann">
+  <link rel="stylesheet" href="./catalog.css?v=20260907-fixed-ammann">
 </head>
 <body>
   <main class="app-shell">
@@ -51,11 +51,12 @@
       </section>
 
       <section>
-        <div class="section-title"><span>04</span><h2>Ammann-bar experiment</h2></div>
-        <label class="check"><input id="goldenToggle" type="checkbox" checked><span>show straight golden-port strands</span></label>
-        <p id="goldenStatus" class="explain" aria-live="polite">Testing exact edge continuation…</p>
-        <p class="explain">Candidate ports sit at φ/2 and 1−φ/2 along each edge. Propagation removes segments that cannot continue on exactly the same line across a shared edge.</p>
-        <details><summary>Compare the midpoint GCTS baseline</summary>
+        <div class="section-title"><span>04</span><h2>Fixed Ammann markings</h2></div>
+        <label class="check"><input id="goldenToggle" type="checkbox" checked><span>show the fixed stripes on every rhomb</span></label>
+        <p id="goldenStatus" class="explain" aria-live="polite">Checking rigid prototile orientations…</p>
+        <p class="explain">Each catalog rhomb has one permanent five-stripe decoration. Copies only rotate or reflect; no stripes are removed at the patch boundary. GCTS rejects a placement when its complete edge markings cannot match its neighbors.</p>
+        <p class="explain">These are the classical <a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Ammann templates ↗</a>, supplied as constraints. They are not a learned rediscovery.</p>
+        <details><summary>Older midpoint learner (diagnostic only)</summary>
         <p class="explain"><strong>Ammann bars do not generally live on the vertex set.</strong> Their ports lie inside tile edges at exact algebraic positions. Learn a sparse equivariant tensor over those support ports, then test whether its induced strands are genuinely straight.</p>
         <code>θ[tile, orientation, exact port, channel] ∈ ℝ</code>
         <button id="learnMarkingButton" class="learn-button" type="button">Learn P3 marking</button>
@@ -75,7 +76,7 @@
           <div class="comparison-winner"><b>compatibility tensor</b><span id="tensorNodes">—</span><span id="tensorBacktracks">—</span><span id="tensorPrunes">—</span><span id="tensorFalse">—</span></div>
           <p id="comparisonSummary">The same ordered proposals will be replayed against all three filters.</p>
         </div>
-        <label class="check"><input id="markingToggle" type="checkbox" checked disabled><span>show learned edge marking</span></label>
+        <label class="check"><input id="markingToggle" type="checkbox" disabled><span>show learned edge marking</span></label>
         <label class="check"><input id="barsToggle" type="checkbox" disabled><span>show midpoint baseline strands</span></label>
         </details>
       </section>
@@ -93,9 +94,9 @@
         <summary>Why this is the proper generalization</summary>
         <p>Each individual Penrose vertex set is Delone, while the common cyclotomic module is dense. The universal module remains the exact ambient address space, but the canvas now draws only the finite support reachable by the active patch.</p>
         <p>All model coordinates are exact integer coefficient vectors in the basis 1, ζ₅, …, ζ₅⁴, with an exact integer denominator. Pentagrid floors and radius comparisons are performed in ℚ(√5). The P1 patch is reconstructed from unit-edge direction steps in ℤ[ζ₅]. Conversion to floating-point occurs only when a coordinate is projected to a canvas pixel.</p>
-        <p>Ammann-bar crossings require an augmented support set on tile edges, for example exact parameters involving φ/2 = (1+√5)/4. These are algebraic points, but usually not Penrose vertices. The golden-port experiment now propagates exactly straight segments on the finite patch. It does not yet prove a tile-local matching rule or held-out Ammann equivalence.</p>
+        <p>Ammann-bar crossings require an augmented support set on tile edges, for example exact parameters involving φ/2 = (1+√5)/4. These are algebraic points, but usually not Penrose vertices. The current markings use exact edge parameters 1/(4φ), 1/(2φ²), 1/2, and their complements. The same complete template is used for every copy of a given rhomb, including tiles on the outer boundary.</p>
         <p>The P2 view follows the standard mutual-local-derivation rule illustrated in Figures 30–32 of <a href="https://www.cs.toronto.edu/~jessebett/projects/penrose-tiling/Thesis/Bettencourt_Penrose_Tiling_Thesis_2015_reducedsize.pdf#page=48" target="_blank" rel="noreferrer">Bettencourt’s Penrose-tiling thesis ↗</a>.</p>
-        <p>P3 generates lattice translations on exposed edges and checks each candidate with an exact de Bruijn pentagrid predicate. No precomputed target patch is queried. P2/mixed catalogs retain the bounded model-set solver. <a href="https://pure.tue.nl/ws/files/4344195/597566.pdf" target="_blank" rel="noreferrer">Original 1981 paper ↗</a></p>
+        <p>P3 generates lattice translations on exposed edges, checks capacity and fixed Ammann marking compatibility, then applies an exact de Bruijn pentagrid predicate. No precomputed target patch is queried. P2/mixed catalogs retain the bounded model-set solver. <a href="https://pure.tue.nl/ws/files/4344195/597566.pdf" target="_blank" rel="noreferrer">Original 1981 paper ↗</a></p>
         <p><a href="https://arxiv.org/abs/2603.13553" target="_blank" rel="noreferrer">2026 cocycle paper ↗</a> explains why matching rules, bar continuity, cycle closure, and height functions are related but distinct tests. <a href="https://arxiv.org/abs/2205.13973" target="_blank" rel="noreferrer">2022 Ammann-bar paper ↗</a> gives the geometric straight-line viewpoint and its equivalence to edge matching.</p>
       </details>
     </aside>
@@ -129,6 +130,6 @@
       </div>
     </section>
   </main>
-  <script type="module" src="./app.js?v=20260906-cyclotomic"></script>
+  <script type="module" src="./app.js?v=20260907-fixed-ammann"></script>
 </body>
 </html>

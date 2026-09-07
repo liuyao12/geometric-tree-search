@@ -1,5 +1,6 @@
 import { P1_EXACT_TILES, P1_EXACT_VERTICES, P1_SOURCE } from "./penrose-p1-patch.js";
 import { canonical, latticeKey, residueLayer } from "./cyclotomic-five.js";
+import { solveAmmannDecorations } from "./penrose-ammann.js";
 
 const TAU = Math.PI * 2;
 
@@ -301,7 +302,7 @@ export function makeCyclotomicSearch({ targetCount = 120, phaseCode = 173,
   }
   seeds.sort((a, b) => compareExactNorm(a.centerExact, b.centerExact));
   const active = [], trace = [], totals = new Map(), edges = new Map(), ids = new Set(), failures = new Set();
-  const stats = { proposals: 0, capacityPrunes: 0, windowPrunes: 0, memoHits: 0, backtracks: 0 };
+  const stats = { proposals: 0, capacityPrunes: 0, markingPrunes: 0, windowPrunes: 0, memoHits: 0, backtracks: 0 };
   let stopped = false;
   const edgeId = (t, k) => [t.vertices[k], t.vertices[(k + 1) % 4]].sort().join("|");
   const addTile = tile => {
@@ -322,6 +323,7 @@ export function makeCyclotomicSearch({ targetCount = 120, phaseCode = 173,
     return result;
   };
   if (seeds.length) addTile(seeds[0]);
+  let ammann = solveAmmannDecorations(active);
   while (active.length && active.length < targetCount && !stopped) {
     const frontier = [...edges.values()].filter(r => r.length === 1).map(r => r[0]);
     frontier.sort((a, b) => compareExactNorm(exactAverage([a.tile.exactPoints[a.k], a.tile.exactPoints[(a.k + 1) % 4]]), exactAverage([b.tile.exactPoints[b.k], b.tile.exactPoints[(b.k + 1) % 4]])));
@@ -336,11 +338,16 @@ export function makeCyclotomicSearch({ targetCount = 120, phaseCode = 173,
           stats.capacityPrunes++; failures.add(tile.id);
           trace.push({ type: "reject", tile, message: "GCTS prune: a lattice-site angle load would exceed ten" }); continue;
         }
+        const decorated = solveAmmannDecorations([...active, tile]);
+        if (!decorated.success) {
+          stats.markingPrunes++; failures.add(tile.id);
+          trace.push({ type: "reject", tile, message: "GCTS marking prune: neither rigid orientation matches all shared-edge stripes" }); continue;
+        }
         if (!admitted(tile)) {
           stats.windowPrunes++; failures.add(tile.id);
           trace.push({ type: "reject", tile, message: "exact internal-window predicate rejects this lattice placement" }); continue;
         }
-        addTile(tile); placed = true; break;
+        addTile(tile); ammann = decorated; placed = true; break;
       }
       if (placed || stopped) break;
     }
@@ -350,7 +357,7 @@ export function makeCyclotomicSearch({ targetCount = 120, phaseCode = 173,
   for (const tile of active) tile.exactPoints.forEach((exact, k) => vertices.set(tile.vertices[k], { id: tile.vertices[k], exact, lattice: canonical(exact).coeff, layer: residueLayer(exact) }));
   return { model: { tiles: active, vertices: [...vertices.values()], presentation: "P3", online: true,
     radius: Math.max(8, Math.ceil(Math.sqrt(targetCount / 3)) + 1), exact: true, latticeRank: 4, phaseCode,
-    oracle: "exact pentagrid predicate", stats }, solution: active, trace, nodes: stats.proposals,
+    oracle: "fixed Ammann markings + exact pentagrid predicate", stats, ammann }, solution: active, trace, nodes: stats.proposals,
     success: active.length === targetCount, stopped, universeAtoms: 0, stats };
 }
 

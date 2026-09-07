@@ -1,8 +1,8 @@
-import { MAX_VALUE, PENROSE_CATALOG, deriveP2Model, exactToPoint, makeP1FrontierSearch, makeP1Model, makePenroseModelSet, makeSelectedTileSearch, makeUniversalVertexAtlas, pointTotals } from "../../assets/penrose-model-set.js";
+import { MAX_VALUE, PENROSE_CATALOG, deriveP2Model, exactToPoint, makeP1FrontierSearch, makeP1Model, makePenroseModelSet, makeSelectedTileSearch, makeUniversalVertexAtlas, pointTotals } from "../../assets/penrose-model-set.js?v=20260907-fixed-ammann";
 import { benchmarkGCTSPruning, learnPenroseGCTS, markingForTile } from "../../assets/penrose-gcts-marking.js";
-import { makeCyclotomicSearch } from "../../assets/penrose-model-set.js";
+import { makeCyclotomicSearch } from "../../assets/penrose-model-set.js?v=20260907-fixed-ammann";
 import { embedding, residueLayer, canonical } from "../../assets/cyclotomic-five.js";
-import { auditGoldenBars } from "../../assets/penrose-golden-bars.js";
+import { solveAmmannDecorations, ammannStates, ammannPrototype } from "../../assets/penrose-ammann.js";
 
 const $ = id => document.getElementById(id);
 const canvas = $("canvas");
@@ -207,7 +207,7 @@ function finishTrace() {
       ? `Grew ${active.length} tiles from one seed, creating ${new Set(active.flatMap(tile => tile.vertices)).size} vertices on demand with ${backtracks} rollbacks.`
       : `Completed ${active.length} selected tiles with ${backtracks} visible rollbacks.`
     : `Stopped at ${active.length} tiles: ${searchStopped ? "proposal budget reached" : "no admissible continuation for the selected catalog"}.`;
-  if (model.stats) $("status").textContent += ` ${model.stats.capacityPrunes} capacity prunes · ${model.stats.windowPrunes} window prunes · ${model.stats.memoHits} memo hits.`;
+  if (model.stats) $("status").textContent += ` ${model.stats.capacityPrunes} capacity prunes · ${model.stats.markingPrunes} stripe-matching prunes · ${model.stats.windowPrunes} window prunes.`;
 }
 
 function renderEvent(event) {
@@ -269,11 +269,12 @@ function rebuild(autostart = true) {
   trace = search.trace;
   searchSolved = search.success;
   searchStopped = search.stopped;
-  goldenBars = model.presentation === "P3" ? auditGoldenBars(search.solution) : null;
+  goldenBars = model.presentation === "P3" ? model.ammann || solveAmmannDecorations(search.solution) : null;
+  if (goldenBars && !goldenBars.success) goldenBars = null;
   $("goldenToggle").disabled = !goldenBars;
   $("goldenStatus").textContent = goldenBars
-    ? `${goldenBars.survivors}/${goldenBars.candidates} golden-port segments survive · ${goldenBars.families} directions · ${goldenBars.interiorEndpoints} interior endpoints continue exactly. Finite-patch evidence; Ammann equivalence remains unproved.`
-    : "Golden-port propagation is available for P3 rhombs.";
+    ? `2 fixed prototiles · 5 stripes on every tile · ${goldenBars.sharedEdges} shared edges match exactly. ${model.stats?.markingPrunes ?? 0} candidate placements rejected by the markings before the window check.`
+    : "Fixed Ammann markings are available for P3 rhombs.";
   atlas = {
     points: model.vertices.map(vertex => ({ exact: vertex.exact })),
     presentation: model.presentation
@@ -372,6 +373,25 @@ function drawCatalogIcon(canvasElement, entry) {
   canvasElement.width = width * ratio;
   canvasElement.height = height * ratio;
   context.scale(ratio, ratio);
+  if (entry.family === "P3") {
+    const tile = ammannPrototype(entry.id === "p3-thick" ? "thick" : "thin");
+    const points = tile.exactPoints.map(exactToPoint);
+    const center = { x: points.reduce((s, p) => s + p.x, 0) / 4, y: points.reduce((s, p) => s + p.y, 0) / 4 };
+    const span = Math.max(...points.map(p => p.x)) - Math.min(...points.map(p => p.x));
+    const tall = Math.max(...points.map(p => p.y)) - Math.min(...points.map(p => p.y));
+    const scale = Math.min((width - 12) / span, (height - 12) / tall);
+    const project = exact => { const p = exactToPoint(exact); return { x: width / 2 + (p.x - center.x) * scale, y: height / 2 + (p.y - center.y) * scale }; };
+    context.beginPath();
+    tile.exactPoints.forEach((exact, i) => { const p = project(exact); i ? context.lineTo(p.x, p.y) : context.moveTo(p.x, p.y); });
+    context.closePath(); context.fillStyle = `${entry.color}cc`; context.fill();
+    context.strokeStyle = entry.color; context.lineWidth = 1; context.stroke();
+    context.strokeStyle = "#753c1b"; context.lineWidth = 1.15;
+    for (const bar of ammannStates(tile)[0].bars) {
+      const a = project(bar.from), b = project(bar.to);
+      context.beginPath(); context.moveTo(a.x, a.y); context.lineTo(b.x, b.y); context.stroke();
+    }
+    return;
+  }
   context.beginPath();
   entry.points.forEach(([x, y], index) => {
     const px = width / 2 + x * 27;
