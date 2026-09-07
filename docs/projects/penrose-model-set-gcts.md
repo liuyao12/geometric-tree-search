@@ -1,52 +1,53 @@
 # Penrose GCTS on the cyclotomic integer lattice
 
-## Live with / without marking comparison (September 2026)
+## Single-canvas marking demo (September 2026)
 
-The main app now compares two real depth-first searches, inspired by the
-marking-enforcement control in `GCTS-I.html`. `penrose-growth.js` implements
-both lanes; its sole rule-switch is `useMarkings`. Neither lane calls a
-pentagrid/window predicate, uses a target tile list, or uses the previous
-add-only solver. `growth-worker.js` advances each iterator in bounded batches,
-and `comparison.js` displays its current actual patch and counters.
+The default UI now follows `GCTS-I.html`: one live canvas with a **Tiling with
+marking** checkbox and separate marking settings. It uses one instance of
+`growth-worker.js`; `demo.js` replaces the earlier side-by-side controller.
+No second solver runs in the background. Rule changes terminate the previous
+worker and reset to the same seed, preventing a mixture of rules in one trace.
 
-Both searches begin with the same unit thick rhomb and consider translations
-of the same ten rhomb orientations at the nearest exposed edge. A shared
-integer seed determines the deterministic candidate order. They enforce:
+The solver in `penrose-growth.js` always enforces exact convex non-overlap,
+corner capacity, and a single outer boundary. It uses no window oracle or
+precomputed target. The seed and proposal ordering are deterministic. DFS
+removes real placements when branches fail, restores their parent marking
+assignments, and preserves the current valid patch at a budget stop.
 
-- exact corner-angle capacity at canonical cyclotomic addresses;
-- exact convex polygon non-overlap (including containment), using separating
-  axes and integer comparisons in ℚ(√5);
-- one simple boundary cycle, ruling out holes and pinched growth patches.
+Enabling marking adds the fixed Ammann constraint solver. The direction
+setting chooses 1, 3, or all 5 families in the fixed cyclotomic frame. Its
+`markingDirections` argument becomes `directionCount` in the marking solver.
+Shared-edge port/direction multisets are filtered to those families before
+comparison; the two rigid orientations and all five prototile stripes remain
+unchanged. Partial settings are weaker experiments and do not preserve the
+full rotation symmetry or impose the complete Ammann rule. The five channels
+are not the rank-four lattice coordinates.
 
-The marked lane additionally solves the rigid Ammann template orientations
-before descent. Each DFS rollback removes the actual last tile and restores
-its parent marking assignment. Failed-placement results are not cached across
-branches. Candidate *geometry* is cached, since it is state independent.
-At a node-budget stop the current valid patch is retained and reported as a
-budget stop, never as a tiling impossibility proof.
+The Show/Hide button, direction colors, and line weight change only rendering.
+Inactive direction families appear gray when partial marking is enforced.
+Unmarked displayed stripes use arbitrary rigid orientations and need not join.
+Changing enforcement, directions, seed, target or budget resets and pauses;
+changing display or playback settings leaves the solver state intact. Invalid
+seed input stops the old worker and reports an error. Pausing stops new batch
+requests; a bounded in-flight batch may finish.
 
-The unmarked lane can produce non-Penrose and periodic tilings, so timings are
-not an equal-solution benchmark. For the default seed 17 and target 60, the
-unmarked lane completes after 148 proposals and no backtracks; the marked lane
-completes after 4,461 proposals, 725 marking prunes and 607 backtracks. The
-right-hand constraints narrow the allowed completions but do not guarantee
-less search. Playback speed controls events per batch and is not solver time.
+Unmarked rhombs admit more tilings, including periodic ones. Marking reduces
+that freedom, so it need not accelerate the search. With seed 17 and target
+60, no marking needs 148 proposals; full marking needs 4,461 proposals,
+including 725 marking prunes and 607 backtracks. A finite target or exhausted
+budget does not decide infinite tileability. Worker compute time excludes
+playback waiting and main-thread rendering.
 
-The stripe-visibility checkbox is deliberately independent of enforcement.
-Unmarked stripes use an arbitrary rigid orientation and may not line up.
-Marked stripes use a consistent assignment for the entire current patch.
-Changing controls resets both workers. Pausing stops requesting new batches;
-an already requested bounded batch may finish. Pan and zoom are shared.
+`test-penrose-marking-settings.mjs` checks the enforced signatures for 1/3/5
+families, preservation of whole templates, and independence of inactive
+settings. `test-penrose-demo-controls.mjs` checks one canvas/worker, rule resets,
+display-only changes, single stepping and input-error handling using a transport
+double. `test-penrose-growth-worker.mjs` exercises the actual worker protocol.
+`test-penrose-growth.mjs` covers exact geometry, boundary, marking compatibility,
+deterministic budget stops and LIFO rollback.
 
-`test-penrose-growth.mjs` checks exact overlap, corner totals, boundary topology,
-rigid-marking compatibility, matching seeds/proposal order, deterministic
-budget stops, and LIFO rollback. It also verifies that an unmarked result is
-actually incompatible with the markings. `test-penrose-growth-worker.mjs`
-exercises the actual worker protocol without a local browser preview.
-
-The previous catalog is retained at `reference.html`. Its separately named
-`makeCyclotomicSearch` remains a window-certified reference experiment; the
-following sections document that path and the common exact arithmetic.
+The previous catalog remains at `reference.html`. Its separately named
+`makeCyclotomicSearch` is the window-certified reference path documented below.
 
 ## Reference model-set design
 

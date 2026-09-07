@@ -2,39 +2,43 @@
 <html lang="en"><head>
 <base href="../apps/penrose-model-set/">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Penrose tiling · with and without markings</title>
-<meta name="description" content="Compare live cyclotomic rhomb tiling searches with and without Ammann matching rules. Exact geometry, actual backtracking, no window oracle.">
-<link rel="stylesheet" href="./comparison.css?v=20260907-comparison">
+<title>Penrose tiling · GCTS marking controls</title>
+<meta name="description" content="Grow Penrose rhombs in cyclotomic integers. Toggle marking enforcement, explore direction settings, and watch live search and backtracking.">
+<link rel="stylesheet" href="./demo.css?v=20260907-settings">
 </head><body><main>
-<header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Tiling with and without markings</h1><p>Two live searches in ℤ[ζ₅]. One pair of rhombs. Different matching rules.</p></div><a href="./reference.html">Window-certified catalog &amp; marking reference ↗</a></header>
-<div class="controls" aria-label="Shared search controls">
-<button type="button" class="primary" id="compareRun">Run both</button><button type="button" id="compareStep">Step both</button><button type="button" id="compareReset">Reset</button>
-<label>Target <select id="compareTarget"><option value="40">40 tiles</option><option value="60" selected>60 tiles</option><option value="100">100 tiles</option><option value="160">160 tiles</option></select></label>
-<label>Proposal budget <select id="compareBudget"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="30000">30,000</option></select></label>
-<label>Shuffle seed <input type="number" id="compareSeed" value="17" step="1" aria-label="Shared candidate-order seed"></label>
-<label>Playback <select id="compareSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
-<label><input type="checkbox" id="showStripes" checked>Show stripes</label>
+<header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with or without matching rules.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
+<section class="workbench" aria-label="Interactive Penrose tiling">
+<div class="toolbar" aria-label="Tiling controls">
+<button type="button" class="primary" id="startTiling">Start tiling</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
+<button type="button" id="showMarking" aria-pressed="true">Hide marking</button><button type="button" id="fitView">Fit view</button>
+<label class="enforcement"><input type="checkbox" id="useMarkings">Tiling with marking</label>
 </div>
-<p class="intro">Both lanes start from the same tile and grow without a window oracle. “Show stripes” changes the drawing only: the left lane ignores them; the right lane requires them to match. Violet = trial · red = rejection or rollback.</p>
-<div class="lanes"><section class="lane" aria-labelledby="plainTitle">
- <div class="lane-head"><div><h2 id="plainTitle">Without marking</h2><p>Exact geometry + corner capacity</p></div><span id="plainStatus" class="badge">initializing</span></div>
- <canvas id="plainCanvas" aria-label="Without marking: live cyclotomic rhomb growth"></canvas>
- <p class="event" id="plainEvent">One seed rhomb</p>
- <div class="stats"><div><strong id="plain-placed">0</strong><span>tiles placed</span></div><div><strong id="plain-peak">0</strong><span>largest patch</span></div><div><strong id="plain-proposals">0</strong><span>proposals</span></div><div><strong id="plain-backtracks">0</strong><span>backtracks</span></div></div>
- <p class="prunes" id="plainPrunes">No proposals yet</p>
- </section><section class="lane" aria-labelledby="markedTitle">
- <div class="lane-head"><div><h2 id="markedTitle">With Ammann marking</h2><p>Same search + fixed stripe matching</p></div><span id="markedStatus" class="badge">initializing</span></div>
- <canvas id="markedCanvas" aria-label="With Ammann marking: live cyclotomic rhomb growth"></canvas>
- <p class="event" id="markedEvent">One seed rhomb</p>
- <div class="stats"><div><strong id="marked-placed">0</strong><span>tiles placed</span></div><div><strong id="marked-peak">0</strong><span>largest patch</span></div><div><strong id="marked-proposals">0</strong><span>proposals</span></div><div><strong id="marked-backtracks">0</strong><span>backtracks</span></div></div>
- <p class="prunes" id="markedPrunes">No proposals yet</p>
- </section></div>
-<p id="comparisonSummary" class="summary" aria-live="polite">Ready to compare.</p>
-<details><summary>What this comparison demonstrates</summary>
-<p>Each lane runs a real depth-first search in its own worker. Candidates attach to the nearest exposed edge, with the same deterministic ordering and proposal budget. Both enforce exact polygon non-overlap, corner capacity, and a single outer boundary. The right lane also solves the rigid orientations of the two fixed Ammann-striped prototiles. Exhausted branches are genuinely removed and retried.</p>
-<p>Unmarked rhombs can form tilings that are not Penrose tilings, including periodic ones. Markings restrict the allowed solutions, so the right lane need not finish faster. Proposal counts and backtracks show the effect of the extra rule; the synchronized playback is not a wall-clock speed benchmark. A finite target or exhausted budget does not settle infinite tileability.</p>
-<p>The left-hand stripes are independent copies of the fixed templates; they may fail to line up because they are not enforced. On the right, every accepted patch has a consistent assignment of complete templates. Ambiguous template orientations can be resolved differently as the search extends or backtracks.</p>
-<p>Vertices have four independent integer coefficients in ℤ[ζ₅]. Geometry and stripe tests use exact algebraic arithmetic; only the 2D rendering uses floating point. The earlier model-set experiment remains available through the reference link above.</p>
+<div class="marking-controls" role="group" aria-label="Marking settings">
+<span>Marking settings</span>
+<label>Enforce <select id="markingDirections" disabled><option value="1">1 direction</option><option value="3">3 directions</option><option value="5" selected>All 5 directions</option></select></label>
+<label><input type="checkbox" id="directionColors">Color by direction</label>
+<label>Line weight <input type="range" id="stripeWidth" min="1" max="3" step="0.25" value="1.5"></label>
+</div>
+<p class="hint" id="markingHint">Marking is not enforced. Visible stripes may fail to line up.</p>
+<div class="search-controls" aria-label="Search settings">
+<label>Target <select id="targetCount"><option value="40">40 tiles</option><option value="60" selected>60 tiles</option><option value="100">100 tiles</option><option value="160">160 tiles</option></select></label>
+<label>Proposal budget <select id="nodeLimit"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="30000">30,000</option></select></label>
+<label>Shuffle seed <input type="number" id="shuffleSeed" value="17" step="1" aria-label="Candidate-order seed"></label>
+<label>Playback <select id="playbackSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
+</div>
+<div class="canvas-head"><strong id="modeLabel">Tiling without marking</strong><span id="runState" class="badge">initializing</span></div>
+<canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: drag to pan and scroll to zoom"></canvas>
+<p class="event" id="eventLabel">One thick-rhomb seed</p>
+<div class="stats">
+<div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span>marking prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
+</div><p class="prunes" id="pruneDetail">No proposals yet</p>
+</section>
+<p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
+<details><summary>How to use the marking controls</summary>
+<p>Start tiling with the checkbox off to ignore markings. Check “Tiling with marking” to start again from the same seed with the chosen directions enforced. “Show marking,” direction colors and line weight only change the drawing; they do not change or restart the search.</p>
+<p>All five directions give the complete fixed Ammann rule. The 1- and 3-direction settings are weaker experiments, enforcing the first direction families in the fixed cyclotomic frame. All five stripes remain on every rhomb; unenforced directions appear gray. These settings count marking channels, not the rank-four integer coordinate lattice.</p>
+<p>The search checks exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking. It uses no window oracle. Unmarked rhombs allow more tilings, including periodic ones, so adding matching rules does not guarantee a faster search. A finite patch or a budget stop is not a proof about infinite tiling.</p>
+<p>The thick and thin rhombs each carry a complete, fixed five-stripe template. When matching is enforced, the solver finds compatible rigid orientations for the selected direction families. These orientations can be resolved differently as the search extends or backtracks.</p>
 </details>
-<footer><span>Drag either canvas to pan both; scroll to zoom.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann prototiles ↗</a> · supplied markings, not learned</span></footer>
-</main><script type="module" src="./comparison.js?v=20260907-comparison"></script></body></html>
+<footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · supplied, not learned</span></footer>
+</main><script type="module" src="./demo.js?v=20260907-settings"></script></body></html>

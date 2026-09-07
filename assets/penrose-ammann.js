@@ -62,7 +62,17 @@ export function ammannStates(tile) {
 // Arc consistency propagates domains; DFS resolves remaining orientation
 // choices. Nothing consults a window, a target tiling, or neighboring stripes
 // to change the template itself.
-export function solveAmmannDecorations(tiles) {
+// Partial direction sets are deliberately weaker diagnostic constraints.
+// They never alter the five-stripe prototile itself.
+export function ammannSignature(state, edge, directionCount = 5) {
+  if (!Number.isInteger(directionCount) || directionCount < 1 || directionCount > 5) throw new RangeError("Marking direction count must be 1–5");
+  const signature = state.signatures.get(edge);
+  if (signature === undefined || directionCount === 5) return signature;
+  return signature.split(";").filter(port => Number(port.slice(port.lastIndexOf(":") + 1)) < directionCount).join(";");
+}
+
+export function solveAmmannDecorations(tiles, { directionCount = 5 } = {}) {
+  if (!Number.isInteger(directionCount) || directionCount < 1 || directionCount > 5) throw new RangeError("Marking direction count must be 1–5");
   const states = tiles.map(ammannStates), edges = new Map(), neighbors = tiles.map(() => []);
   states.forEach((choices, i) => {
     for (const edge of choices[0].signatures.keys()) {
@@ -78,7 +88,7 @@ export function solveAmmannDecorations(tiles) {
     const [i, j] = owners;
     const masks = [0, 0], reverse = [0, 0];
     for (let s = 0; s < 2; s++) for (let t = 0; t < 2; t++) {
-      if (states[i][s].signatures.get(edge) === states[j][t].signatures.get(edge)) {
+      if (ammannSignature(states[i][s], edge, directionCount) === ammannSignature(states[j][t], edge, directionCount)) {
         masks[s] |= 1 << t; reverse[t] |= 1 << s;
       }
     }
@@ -118,7 +128,7 @@ export function solveAmmannDecorations(tiles) {
     }
   });
   return { success: true, byTile, orientationByTile, sharedEdges, branches, interiorEndpoints, boundaryEndpoints,
-    templates: 2, stripesPerTile: 5, segments: tiles.length * 5,
+    templates: 2, stripesPerTile: 5, segments: tiles.length * 5, directionCount,
     families: new Set([...byTile.values()].flat().map(bar => bar.family)).size,
     source: "Classical fixed Ammann templates; not a learned rediscovery" };
 }
