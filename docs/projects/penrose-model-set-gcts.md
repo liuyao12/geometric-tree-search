@@ -1,53 +1,43 @@
 # Penrose GCTS on the cyclotomic integer lattice
 
-## Single-canvas marking demo (September 2026)
+## Single-canvas edge-matching demo (September 2026)
 
-The default UI now follows `GCTS-I.html`: one live canvas with a **Tiling with
-marking** checkbox and separate marking settings. It uses one instance of
-`growth-worker.js`; `demo.js` replaces the earlier side-by-side controller.
-No second solver runs in the background. Rule changes terminate the previous
-worker and reset to the same seed, preventing a mixture of rules in one trace.
+The default UI follows `GCTS-I.html`: one canvas, one worker and an **Enforce
+Ammann bars** checkbox. With it off, `penrose-arrows.js` enforces standard
+Penrose single/double arrow types and directions explicitly on shared edges.
+With it on, `penrose-growth.js` invokes only the complete Ammann solver, never
+the edge-arrow predicate. Each solver resolves the two rigid orientations of
+each prototile. No markings are inferred or changed to fit neighboring tiles.
 
-The solver in `penrose-growth.js` always enforces exact convex non-overlap,
-corner capacity, and a single outer boundary. It uses no window oracle or
-precomputed target. The seed and proposal ordering are deterministic. DFS
-removes real placements when branches fail, restores their parent marking
-assignments, and preserves the current valid patch at a budget stop.
+The arrow templates follow [Treibergs, slide 17](https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17).
+The thin arrow template is indexed from the opposite acute corner to match
+our Ammann orientation convention. `test-penrose-arrows.mjs` exhausts all ten
+lattice rhomb orientations, four edges, exterior neighbors, and both states
+of each tile: all 640 local adjacency cases agree between the independent
+predicates (160 accepted, 480 rejected). It also rejects a periodic 3×3 patch
+of identical rhombs. Thus full Ammann matching enforces the edge rule without
+explicitly evaluating it during marked growth.
 
-Enabling marking adds the fixed Ammann constraint solver. The direction
-setting chooses 1, 3, or all 5 families in the fixed cyclotomic frame. Its
-`markingDirections` argument becomes `directionCount` in the marking solver.
-Shared-edge port/direction multisets are filtered to those families before
-comparison; the two rigid orientations and all five prototile stripes remain
-unchanged. Partial settings are weaker experiments and do not preserve the
-full rotation symmetry or impose the complete Ammann rule. The five channels
-are not the rank-four lattice coordinates.
+Both modes retain exact convex non-overlap, corner capacity, and one simple
+outer boundary. There is no window oracle or target list. DFS rolls placements
+and assignments back on failure. The seed and proposal ordering are shared:
+seed 17, target 60 uses 4,461 proposals, 725 matching rejections and 607
+backtracks in either mode. The growth regression checks the identical traces,
+valid edge arrows in both results, and zero calls to the inactive predicate.
+A finite patch or a budget stop does not decide infinite extendibility.
 
-The Show/Hide button, direction colors, and line weight change only rendering.
-Inactive direction families appear gray when partial marking is enforced.
-Unmarked displayed stripes use arbitrary rigid orientations and need not join.
-Changing enforcement, directions, seed, target or budget resets and pauses;
-changing display or playback settings leaves the solver state intact. Invalid
-seed input stops the old worker and reports an error. Pausing stops new batch
-requests; a bounded in-flight batch may finish.
+The checkbox, seed, target and budget restart and pause. The drawing starts
+with edge arrows; users can switch to bars, highlight 1/3/5 direction families,
+change colors and line weight without touching search state. All five bar
+directions are always enforced in Ammann mode, even when only some are
+highlighted. Partial enforcement is rejected by the growth API. The five
+channels are distinct from the rank-four coordinate lattice. Playback speed
+also preserves state. Invalid seed input terminates the old worker.
 
-Unmarked rhombs admit more tilings, including periodic ones. Marking reduces
-that freedom, so it need not accelerate the search. With seed 17 and target
-60, no marking needs 148 proposals; full marking needs 4,461 proposals,
-including 725 marking prunes and 607 backtracks. A finite target or exhausted
-budget does not decide infinite tileability. Worker compute time excludes
-playback waiting and main-thread rendering.
-
-`test-penrose-marking-settings.mjs` checks the enforced signatures for 1/3/5
-families, preservation of whole templates, and independence of inactive
-settings. `test-penrose-demo-controls.mjs` checks one canvas/worker, rule resets,
-display-only changes, single stepping and input-error handling using a transport
-double. `test-penrose-growth-worker.mjs` exercises the actual worker protocol.
-`test-penrose-growth.mjs` covers exact geometry, boundary, marking compatibility,
-deterministic budget stops and LIFO rollback.
-
-The previous catalog remains at `reference.html`. Its separately named
-`makeCyclotomicSearch` is the window-certified reference path documented below.
+Controller tests use a DOM/worker transport double; integration tests exercise
+the actual worker module without a local preview. Worker compute time excludes
+playback waiting and drawing. The catalog remains at `reference.html`; its
+separately named `makeCyclotomicSearch` is the reference path documented below.
 
 ## Reference model-set design
 

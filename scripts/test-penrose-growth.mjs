@@ -3,6 +3,8 @@ import { createPenroseGrowth, growthRhomb, interiorsOverlap } from "../assets/pe
 import { asFive, cycloMultiply } from "../assets/cyclotomic-five.js";
 import { ammannStates, solveAmmannDecorations } from "../assets/penrose-ammann.js";
 
+import { arrowStates } from "../assets/penrose-arrows.js";
+
 const tile = growthRhomb([0, 0, 0, 0, 0], 0, 1);
 assert(interiorsOverlap(tile, tile), "identical tiles overlap");
 assert(!interiorsOverlap(tile, growthRhomb([1, 0, 0, 0, 0], 0, 1)), "a shared edge is allowed");
@@ -41,13 +43,22 @@ function run(useMarkings, options = {}) {
   const seen = new Set(), queue = [graph.keys().next().value];
   while (queue.length) { const v = queue.pop(); if (seen.has(v)) continue; seen.add(v); queue.push(...graph.get(v)); }
   assert.equal(seen.size, graph.size, "there is one boundary, with no enclosed holes");
+  const arrowAssignments = new Map(result.orientations), arrowEdges = new Map();
+  for (const tile of result.tiles) {
+    const state = arrowStates(tile).find(s => s.start === arrowAssignments.get(tile.id)); assert(state);
+    for (const [edge, signature] of state.signatures) {
+      if (arrowEdges.has(edge)) assert.equal(signature, arrowEdges.get(edge)); else arrowEdges.set(edge, signature);
+    }
+  }
   if (useMarkings) {
+    assert.equal(result.stats.edgeChecks, 0, "bar mode never invokes the edge-arrow predicate");
+    assert(result.stats.markingChecks > 0);
     const assignments = new Map(result.orientations), signatures = new Map();
     for (const tile of result.tiles) {
       const state = ammannStates(tile).find(s => s.start === assignments.get(tile.id)); assert(state); assert.equal(state.bars.length, 5);
       for (const [edge, signature] of state.signatures) { if (signatures.has(edge)) assert.equal(signature, signatures.get(edge)); else signatures.set(edge, signature); }
     }
-  } else { assert.equal(result.stats.markingPrunes, 0); assert.equal(result.orientations.length, 0); }
+  } else { assert.equal(result.stats.markingPrunes, 0); assert.equal(result.stats.markingChecks, 0); assert(result.stats.edgeChecks > 0); assert(result.stats.edgePrunes > 0); }
   return { result, events };
 }
 const plain = run(false), marked = run(true);
@@ -55,7 +66,8 @@ assert.equal(plain.result.status, "target reached"); assert.equal(marked.result.
 assert.equal(plain.events[0].tile.id, marked.events[0].tile.id, "both lanes have exactly the same seed");
 assert.equal(plain.events.find(e => e.type === "try").tile.id, marked.events.find(e => e.type === "try").tile.id);
 assert(marked.result.stats.backtracks > 0); assert(marked.result.stats.markingPrunes > 0);
-assert(!solveAmmannDecorations(plain.result.tiles).success, "unmarked lane must actually permit incompatible markings");
+assert(solveAmmannDecorations(plain.result.tiles).success, "explicit edge rules must yield an Ammann-compatible patch");
+assert.deepEqual(plain.events.map(e => [e.type, e.tile.id]), marked.events.map(e => [e.type, e.tile.id]), "equivalent local rules produce the same DFS path");
 const limited = run(true, { nodeLimit: 100 }); assert.equal(limited.result.status, "budget reached");
 const repeat = run(true, { nodeLimit: 100 });
 assert.deepEqual(limited.events, repeat.events, "same seed and budget reproduce the real trace");

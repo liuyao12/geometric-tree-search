@@ -4,41 +4,41 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Penrose tiling · GCTS marking controls</title>
 <meta name="description" content="Grow Penrose rhombs in cyclotomic integers. Toggle marking enforcement, explore direction settings, and watch live search and backtracking.">
-<link rel="stylesheet" href="./demo.css?v=20260907-settings">
+<link rel="stylesheet" href="./demo.css?v=20260907-arrows">
 </head><body><main>
-<header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with or without matching rules.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
+<header><div><p><a href="../../GCTS-I.html">GCTS I</a> / cyclotomic tiling laboratory</p><h1>Penrose tiling</h1><p>Grow rhombs in ℤ[ζ₅], with explicit edge matching or matching enforced by Ammann bars.</p></div><a href="./reference.html">Prototiles &amp; window reference ↗</a></header>
 <section class="workbench" aria-label="Interactive Penrose tiling">
 <div class="toolbar" aria-label="Tiling controls">
 <button type="button" class="primary" id="startTiling">Start tiling</button><button type="button" id="stepTiling">Step</button><button type="button" id="resetTiling">Reset</button>
-<button type="button" id="showMarking" aria-pressed="true">Hide marking</button><button type="button" id="fitView">Fit view</button>
-<label class="enforcement"><input type="checkbox" id="useMarkings">Tiling with marking</label>
+<button type="button" id="showMarking" aria-pressed="false">Show Ammann bars</button><button type="button" id="fitView">Fit view</button>
+<label class="enforcement"><input type="checkbox" id="useMarkings">Enforce Ammann bars</label>
 </div>
 <div class="marking-controls" role="group" aria-label="Marking settings">
 <span>Marking settings</span>
-<label>Enforce <select id="markingDirections" disabled><option value="1">1 direction</option><option value="3">3 directions</option><option value="5" selected>All 5 directions</option></select></label>
+<label>Highlight <select id="markingDirections"><option value="1">1 direction</option><option value="3">3 directions</option><option value="5" selected>All 5 directions</option></select></label>
 <label><input type="checkbox" id="directionColors">Color by direction</label>
 <label>Line weight <input type="range" id="stripeWidth" min="1" max="3" step="0.25" value="1.5"></label>
 </div>
-<p class="hint" id="markingHint">Marking is not enforced. Visible stripes may fail to line up.</p>
+<p class="hint" id="markingHint">Penrose edge-arrow matching is enforced. Ammann bars are not checked.</p>
 <div class="search-controls" aria-label="Search settings">
 <label>Target <select id="targetCount"><option value="40">40 tiles</option><option value="60" selected>60 tiles</option><option value="100">100 tiles</option><option value="160">160 tiles</option></select></label>
 <label>Proposal budget <select id="nodeLimit"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="30000">30,000</option></select></label>
 <label>Shuffle seed <input type="number" id="shuffleSeed" value="17" step="1" aria-label="Candidate-order seed"></label>
 <label>Playback <select id="playbackSpeed"><option value="2">Slow</option><option value="24" selected>Normal</option><option value="150">Fast</option></select></label>
 </div>
-<div class="canvas-head"><strong id="modeLabel">Tiling without marking</strong><span id="runState" class="badge">initializing</span></div>
+<div class="canvas-head"><strong id="modeLabel">Explicit Penrose edge-arrow matching</strong><span id="runState" class="badge">initializing</span></div>
 <canvas id="tilingCanvas" aria-label="Live Penrose rhomb tiling: drag to pan and scroll to zoom"></canvas>
 <p class="event" id="eventLabel">One thick-rhomb seed</p>
 <div class="stats">
-<div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span>marking prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
+<div><strong id="placed">0</strong><span>tiles placed</span></div><div><strong id="peak">0</strong><span>largest patch</span></div><div><strong id="proposals">0</strong><span>proposals</span></div><div><strong id="backtracks">0</strong><span>backtracks</span></div><div><strong id="markingPrunes">0</strong><span id="matchingPrunesLabel">edge-arrow prunes</span></div><div><strong id="computeTime">0.00 s</strong><span>worker compute</span></div>
 </div><p class="prunes" id="pruneDetail">No proposals yet</p>
 </section>
 <p id="statusMessage" class="status" aria-live="polite">Ready from the seed. Changing marking rules restarts the search; display settings do not.</p>
 <details><summary>How to use the marking controls</summary>
-<p>Start tiling with the checkbox off to ignore markings. Check “Tiling with marking” to start again from the same seed with the chosen directions enforced. “Show marking,” direction colors and line weight only change the drawing; they do not change or restart the search.</p>
-<p>All five directions give the complete fixed Ammann rule. The 1- and 3-direction settings are weaker experiments, enforcing the first direction families in the fixed cyclotomic frame. All five stripes remain on every rhomb; unenforced directions appear gray. These settings count marking channels, not the rank-four integer coordinate lattice.</p>
-<p>The search checks exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking. It uses no window oracle. Unmarked rhombs allow more tilings, including periodic ones, so adding matching rules does not guarantee a faster search. A finite patch or a budget stop is not a proof about infinite tiling.</p>
-<p>The thick and thin rhombs each carry a complete, fixed five-stripe template. When matching is enforced, the solver finds compatible rigid orientations for the selected direction families. These orientations can be resolved differently as the search extends or backtracks.</p>
+<p>With “Enforce Ammann bars” off, the search explicitly checks the Penrose edge arrows: single/double arrow type and direction must agree along each shared edge. With it on, the search checks only the complete Ammann markings, without calling the edge-arrow predicate. Matching bars enforce the same local edge compatibility.</p>
+<p>“Show edge arrows” / “Show Ammann bars,” direction highlighting, colors and line weight change only the drawing. All five Ammann directions are always enforced in bar mode, including gray directions. The 1- and 3-direction options highlight those families in the fixed cyclotomic frame; they do not weaken the rule.</p>
+<p>Both searches check exact polygon non-overlap, corner capacity and a single outer boundary, with genuine backtracking and no window oracle. The two complete local rules accept the same shared-edge orientations, so the same seed and proposal order give the same search path. Computation costs may differ. A finite patch or a budget stop does not establish infinite extendibility.</p>
+<p>The thick and thin rhombs each carry a fixed arrow template and a complete fixed five-stripe template. The solver finds compatible rigid orientations; these may resolve differently as the search extends or backtracks. Neither mode accepts arbitrary unmarked rhomb tilings.</p>
 </details>
-<footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · supplied, not learned</span></footer>
-</main><script type="module" src="./demo.js?v=20260907-settings"></script></body></html>
+<footer><span>Green: thick · gold: thin · violet: trial · red: rejection or rollback.</span><span><a href="https://arxiv.org/pdf/2205.13973#page=2" target="_blank" rel="noreferrer">Classical Ammann markings ↗</a> · <a href="https://www.math.utah.edu/~treiberg/PenroseSlides.pdf#page=17" target="_blank" rel="noreferrer">Penrose edge arrows ↗</a> · supplied, not learned</span></footer>
+</main><script type="module" src="./demo.js?v=20260907-arrows"></script></body></html>
