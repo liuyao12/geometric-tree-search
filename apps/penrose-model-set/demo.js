@@ -152,8 +152,7 @@ function reset(autostart = false) {
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "One thick-rhomb seed"; $("pruneDetail").textContent = "No proposals yet";
-  const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: null, nodeLimit: Number($("nodeLimit").value), seed: Number($("shuffleSeed").value) };
-  if ($("shuffleSeed").value.trim() === "" || !Number.isSafeInteger(options.seed)) { error("Enter an integer shuffle seed, then retry."); return; }
+  const options = { useMarkings: $("useMarkings").checked, extent: Number($("extent").value), targetCount: null, nodeLimit: 100000, seed: 17 };
   $("statusMessage").textContent = "Ready from the seed. Changing marking rules restarts the search; display settings do not.";
   running = autostart; busy = true;
   try { worker = new Worker(new URL("./growth-worker.js?v=20260907-corona", import.meta.url), { type: "module" }); }
@@ -175,7 +174,7 @@ function reset(autostart = false) {
 $("startTiling").addEventListener("click", () => { if (failed || snapshot?.done) return reset(true); running = !running; render(); });
 $("stepTiling").addEventListener("click", () => { running = false; advance(1); render(); });
 $("resetTiling").addEventListener("click", () => reset());
-for (const id of ["useMarkings", "nodeLimit", "shuffleSeed"]) $(id).addEventListener("change", () => reset());
+$("useMarkings").addEventListener("change", () => reset());
 $("showMarking").addEventListener("click", () => { showMarking = !showMarking; render(); });
 $("extent").addEventListener("input", () => {
   drawn.clear(); inspectKey = null;

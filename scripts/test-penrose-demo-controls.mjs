@@ -17,7 +17,7 @@ class Element {
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
-for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", nodeLimit: "1000", shuffleSeed: "17", playbackSpeed: "24" })) elements.get(id).value = value;
+for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5", playbackSpeed: "24" })) elements.get(id).value = value;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
 globalThis.devicePixelRatio = 1;
@@ -79,7 +79,8 @@ assert.equal(elements.get("startTiling").textContent, "Run to corona 5");
 elements.get("stepTiling").fire("click"); await flush();
 assert.equal(workers[2].messages.at(-1).targetCorona, 5);
 assert.equal(workers.length, 3, "continuation preserves the worker");
-elements.get("shuffleSeed").value = "1.5"; elements.get("shuffleSeed").fire("change"); await flush();
-assert(workers[2].terminated); assert.equal(workers.length, 3);
-assert.equal(elements.get("runState").textContent, "error");
-console.log("ok: one canvas/worker; checkbox switches predicates; highlighting preserves all five enforced directions; display-only controls preserve search; step and invalid-input handling");
+assert.equal(elements.has("shuffleSeed"), false);
+assert.equal(elements.has("nodeLimit"), false);
+assert.equal(workers[0].messages[0].options.seed, 17);
+assert.equal(workers[0].messages[0].options.nodeLimit, 100000);
+console.log("ok: one canvas/worker; checkbox switches predicates; highlighting preserves all five enforced directions; display-only controls preserve search; corona continuation and fixed internal settings");

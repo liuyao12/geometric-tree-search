@@ -12,13 +12,12 @@ are restored on rollback. Corona mode prioritizes the earliest frontier
 generation, then physical distance. Merely reaching an outer tile is not
 corona completion. The worker stops its batch at the milestone placement.
 
-Shuffle seed controls deterministic pseudo-random candidate ranking. Changing
-the seed changes branch order; repeated runs and Continue retain the same
-order. There is no fresh random draw on every Run. Proposal budgets remain
-active, with an explicit 2,000-tile safety limit. Tile-count mode remains an
-API option for regression comparisons; historical tile-count timings below
-refer to that mode. With seed 17 and extent 2, coronas 3 and 5 are reached at
-77 and 208 tiles (317 and 2,003 cumulative proposals).
+The UI exposes corona progress, playback and marking controls. Branch ordering
+uses fixed seed 17 for repeatable comparisons; Continue does not reseed. A
+100,000-proposal guard and 2,000-tile safety limit remain internal. Tile-count
+mode remains an API option for regression comparisons. With seed 17 and extent
+2, coronas 3 and 5 are reached at 77 and 208 tiles (317 and 2,003 cumulative
+proposals). Historical tile-count timings below refer to the API mode.
 
 
 Published app: <https://liuyao12.github.io/geometric-tree-search/penrose-model-set/>.
@@ -38,8 +37,7 @@ index with the fixed Ammann template. Tests exhaust all 640 oriented local
 adjacencies: 160 are accepted and 480 rejected by both predicates. This local
 correspondence makes the extent-zero rules equivalent on finite patches.
 
-The checkbox switches the predicate and restarts from the same seed. Seed,
-budget also restarts. Start/Pause, Step and Reset control playback.
+The checkbox switches the predicate and restarts from the same seed. Start/Pause, Step and Reset control playback.
 Show edge arrows / Show Ammann bars, direction highlighting, colors and line
 weight only affect rendering. Highlighting 1 or 3 directions never weakens
 enforcement: all five are always checked in Ammann mode. The growth API rejects

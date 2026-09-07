@@ -12,13 +12,12 @@ are restored on rollback. Corona mode prioritizes the earliest frontier
 generation, then physical distance. Merely reaching an outer tile is not
 corona completion. The worker stops its batch at the milestone placement.
 
-Shuffle seed controls deterministic pseudo-random candidate ranking. Changing
-the seed changes branch order; repeated runs and Continue retain the same
-order. There is no fresh random draw on every Run. Proposal budgets remain
-active, with an explicit 2,000-tile safety limit. Tile-count mode remains an
-API option for regression comparisons; historical tile-count timings below
-refer to that mode. With seed 17 and extent 2, coronas 3 and 5 are reached at
-77 and 208 tiles (317 and 2,003 cumulative proposals).
+The UI exposes corona progress, playback and marking controls. Branch ordering
+uses fixed seed 17 for repeatable comparisons; Continue does not reseed. A
+100,000-proposal guard and 2,000-tile safety limit remain internal. Tile-count
+mode remains an API option for regression comparisons. With seed 17 and extent
+2, coronas 3 and 5 are reached at 77 and 208 tiles (317 and 2,003 cumulative
+proposals). Historical tile-count timings below refer to the API mode.
 
 
 ## Single-canvas edge-matching demo (September 2026)
@@ -47,13 +46,13 @@ backtracks in either mode at extent zero. The growth regression checks the ident
 valid edge arrows in both results, and zero calls to the inactive predicate.
 A finite patch or a budget stop does not decide infinite extendibility.
 
-The checkbox, seed and budget restart and pause. The drawing starts
+The marking checkbox restarts and pauses. The drawing starts
 with edge arrows; users can switch to bars, highlight 1/3/5 direction families,
 change colors and line weight without touching search state. All five bar
 directions are always enforced in Ammann mode, even when only some are
 highlighted. Partial enforcement is rejected by the growth API. The five
 channels are distinct from the rank-four coordinate lattice. Playback speed
-also preserves state. Invalid seed input terminates the old worker.
+also preserves state. Worker errors stop the run and can be retried.
 
 Controller tests use a DOM/worker transport double; integration tests exercise
 the actual worker module without a local preview. Worker compute time excludes
