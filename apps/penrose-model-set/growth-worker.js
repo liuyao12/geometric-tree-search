@@ -2,7 +2,9 @@ import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-f
 
 import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-frontier";
 
-let search, done = false, computeMs = 0;
+import { createSearchStatus } from "./search-status.js?v=20260907-activity";
+
+let activity, search, done = false, computeMs = 0;
 self.onmessage = ({ data }) => {
   try {
     let pausedCorona = null;
@@ -10,11 +12,11 @@ self.onmessage = ({ data }) => {
       const kinds = data.options.tileKinds || ["thick", "thin"];
       const classic = kinds.length === 2 && kinds.includes("thick") && kinds.includes("thin");
       search = (classic ? createPenroseGrowth : createMixedGrowth)(data.options); done = false; computeMs = 0;
-      search.next();
+      activity = createSearchStatus(); activity.accept(search.next().value);
     } else if (data.type === "advance" && search && !done) {
       const start = performance.now();
       for (let i = 0; i < Math.min(200, Math.max(1, data.events)); i++) {
-        const step = search.next(); done = step.done;
+        const step = search.next(); done = step.done; activity.accept(step.value);
         if (step.value?.type === "add" && Number.isInteger(data.targetCorona) && search.progress().minimumFrontierGeneration >= data.targetCorona && search.progress().deadPoints === 0) {
           pausedCorona = data.targetCorona; break;
         }
@@ -22,7 +24,7 @@ self.onmessage = ({ data }) => {
       }
       computeMs += performance.now() - start;
     }
-    self.postMessage({ ...search.snapshot(), done, computeMs, pausedCorona });
+    self.postMessage({ ...search.snapshot(), done, computeMs, pausedCorona, activity: activity.snapshot() });
   } catch (error) {
     self.postMessage({ error: error.message, done: true });
   }

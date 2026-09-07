@@ -3,9 +3,11 @@ import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-fr
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText } from "./point-inspection.js?v=20260907-frontier";
+import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-frontier";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
+
+import { activityText } from "./search-status.js?v=20260907-activity";
 
 const $ = id => document.getElementById(id);
 const canvas = $("tilingCanvas");
@@ -143,11 +145,15 @@ function render() {
   $("stepTiling").disabled = busy || failed || !snapshot || snapshot.done;
   if (!failed) {
     const corona = snapshot?.minimumFrontierGeneration ?? 0;
+    const activity = activityText(snapshot?.activity, key => {
+      const [coeff, denominator] = key.split("/");
+      return formatCyclotomic({ coeff: coeff.split(",").map(Number), denominator: Number(denominator) });
+    });
     $("statusMessage").textContent = !snapshot ? "initializing"
       : snapshot.done ? `${snapshot.status} · corona ${corona}`
-      : running ? `tiling · corona ${corona}`
-      : snapshot.pausedCorona != null ? `pausing at corona ${snapshot.pausedCorona}`
-      : snapshot.stats.proposals ? `paused at corona ${corona}` : "ready";
+      : running ? (activity === "ready" ? "tiling" : activity)
+      : snapshot.pausedCorona != null ? `${activity === "ready" ? "" : activity + " · "}pausing at corona ${snapshot.pausedCorona}`
+      : snapshot.stats.proposals ? `${activity === "ready" ? "" : activity + " · "}paused at corona ${corona}` : "ready";
   }
   if (snapshot) {
     $("eventLabel").textContent = snapshot.event?.message || "Seed ready";
@@ -178,7 +184,7 @@ function reset(autostart = false) {
   if (!options.tileKinds.length) { error("Choose at least one tile"); return; }
   $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-frontier", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-activity", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;

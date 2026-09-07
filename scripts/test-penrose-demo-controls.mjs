@@ -104,3 +104,13 @@ assert.equal(elements.get("statusMessage").textContent, "Choose at least one til
 elements.get("tileSet").value = "P1"; elements.get("tileSet").fire("change"); await flush();
 assert.equal(workers.at(-1).growth.snapshot().tiles[0].kind, "p5");
 console.log("ok: presets, custom selection, mixed rendering, empty selection and recovery");
+const last = workers.at(-1);
+const updateActivity = (activity, pausedCorona = null) => last.onmessage({ data: { ...last.growth.snapshot(), activity, pausedCorona, done: false, computeMs: 0 } });
+updateActivity({kind:'branch',count:3,frontier:'1,0,1,0/1'});
+elements.get('startTiling').fire('click');
+assert.equal(elements.get('statusMessage').textContent,'3-way branching at [1 + ζ₅²]');
+updateActivity({kind:'forced',count:7});
+assert.equal(elements.get('statusMessage').textContent,'7 forced moves');
+updateActivity({kind:'forced',count:8},3);
+assert.equal(elements.get('statusMessage').textContent,'8 forced moves · pausing at corona 3');
+console.log('ok: visible branch coordinates, forced streak and corona pause status');
