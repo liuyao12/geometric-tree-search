@@ -203,3 +203,21 @@ The timer accumulates worker-request time (including initialization and snapshot
 delivery), excludes idle/paused time, and resumes from its retained total.
 The controller test covers exclusive dispatch, independent milestones, compact
 model retention, pause/resume timing, and reset/stale-result isolation.
+
+### Infinite Ammann lines
+
+Each method button retains its active timer. Ammann uses exact supporting-line
+incidence: if a source line intersects the closed target polygon, a collinear
+line of the same family must occur in the target decoration. The check is
+symmetric, includes boundary tangency, and has no finite extent or sampled
+marking points. Only geometry/corner capacity and line matching constrain this
+method; boundary arrow/port labels still select template decorations, but are
+not compared for acceptance. The other two methods are unchanged.
+
+Infinite support disables spatial-distance pruning for this method: all legal
+frontier candidates are rechecked against each added tile, with bounded relative
+pair caching. Display lines are clipped by the canvas, not by a marking extent.
+Tests cover distant incidence, mismatched offsets/families, tangency, line-only
+growth, and independence from edge labels. This uses the existing transferred
+decorations; it does not establish their equivalence to standard Penrose matching
+rules for P1/P2 or experimental mixtures.

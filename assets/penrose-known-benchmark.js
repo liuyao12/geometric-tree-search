@@ -3,10 +3,20 @@ import {canonical} from './cyclotomic-five.js?v=20260908-speed';
 import {num,add,sub,mul,conj} from './penrose-polygon.js?v=20260908-speed';
 import {arrowStates} from './penrose-arrows.js?v=20260908-speed';
 import {ammannStates,exactlyPerpendicular} from './penrose-ammann.js?v=20260908-speed';
-import {mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260908-speed';
-import {box} from './penrose-polygon.js?v=20260908-speed';
+import {orient} from './penrose-polygon.js?v=20260908-speed';
+import {geometricPlacementAllowed} from './cyclotomic-tile-catalog.js?v=20260908-lines';
+// A connected polygon meets an infinite line iff its vertices touch or
+// straddle that line. Exact orientations include tangency and concave tiles.
+export function infiniteLinesCompatible(a,b){
+ for(const [source,target] of [[a,b],[b,a]])for(const line of source.bars){
+  const signs=target.exactPoints.map(p=>orient(line.from,line.to,p));
+  if(signs.every(s=>s>0)||signs.every(s=>s<0))continue;
+  if(!target.bars.some(t=>t.family===line.family&&!orient(line.from,line.to,t.from)&&!orient(line.from,line.to,t.to)))return false;
+ }
+ return true;
+}
 // Benchmark-only adapter. It is never supplied to the blind learner.
-export function knownPenroseBenchmark(problem,extent=2){
+export function knownPenroseBenchmark(problem){
  const cache=new WeakMap();
  function marked(t){if(!cache.has(t)){
   if(t.labels.some(l=>l.ports)){
@@ -20,7 +30,10 @@ export function knownPenroseBenchmark(problem,extent=2){
   if(!arrow)throw Error('Independent input arrows do not match the benchmark orientation');
   const state=ammannStates(t).find(s=>s.start===arrow.start);cache.set(t,{...t,bars:state.bars,arrowStart:arrow.start});
  }return cache.get(t);}
- const boxes=new WeakMap(),footprint=t=>{if(!boxes.has(t))boxes.set(t,box([...t.exactPoints,...extendedBars(marked(t),extent).flatMap(b=>[b.from,b.to])]));return boxes.get(t);};
- const direct=(a,b)=>mixedMarkingsCompatible(marked(a),marked(b),extent);
- return{decorate:marked,problem:{...problem,footprint},extraAllowed:problem.memoizePairs?problem.memoizePairs(direct,{footprint}):direct};
+ // Every candidate may be affected by a distant infinite line. A common
+ // bucket deliberately disables finite-distance pruning in the graph/cache.
+ const footprint=()=>({x0:0,x1:0,y0:0,y1:0});
+ const direct=(a,b)=>infiniteLinesCompatible(marked(a),marked(b));
+ const pairAllowed=problem.memoizePairs?problem.memoizePairs(geometricPlacementAllowed):geometricPlacementAllowed;
+ return{decorate:marked,problem:{...problem,pairAllowed,footprint},extraAllowed:problem.memoizePairs?problem.memoizePairs(direct,{footprint}):direct};
 }

@@ -35,12 +35,16 @@ export function translateCatalogTile(v,origin){
  });
  return tile;
 }
-export function geometricPairAllowed(a,b){
+export function geometricPlacementAllowed(a,b){
  if(separated(box(a.exactPoints),box(b.exactPoints)))return true;
  if(overlap(a.exactPoints,b.exactPoints))return false;
  for(const[p,q]of[[a,b],[b,a]])for(const v of p.exactPoints)for(let i=0;i<q.exactPoints.length;i++){
   const x=q.exactPoints[i],y=q.exactPoints[(i+1)%q.exactPoints.length];if(!same(v,x)&&!same(v,y)&&onSegment(v,x,y))return false;
  }
+ return true;
+}
+export function geometricPairAllowed(a,b){
+ if(!geometricPlacementAllowed(a,b))return false;
  for(const[e,label]of a.signatures)if(b.signatures.has(e)&&b.signatures.get(e)!==label)return false;
  return true;
 }

@@ -1,6 +1,6 @@
 import {latticeKey} from '../../assets/cyclotomic-five.js?v=20260908-speed';
 import {selectedPenroseProblem} from '../../assets/penrose-selection-problem.js?v=20260908-speed';
-import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js?v=20260908-speed';
+import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js?v=20260908-lines';
 import {createObstructionSearch} from '../../assets/cyclotomic-obstruction-search.js?v=20260908-speed';
 import {createSearchStatus} from './search-status.js?v=20260908-speed';
 let search,activity,benchmark,done=false,computeMs=0,compact=false,lastRevision=-1,typeIds,wireCache;

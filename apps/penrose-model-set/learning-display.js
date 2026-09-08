@@ -1,5 +1,4 @@
 import {embedding,cycloAdd,latticeKey} from '../../assets/cyclotomic-five.js?v=20260908-speed';
-import {extendBar} from '../../assets/penrose-extensions.js?v=20260908-speed';
 // Geometry survives worker snapshots. A point shared by many fiber channels
 // is translated once, rather than once per scalar value on every redraw.
 export function createDisplayCache(){
@@ -13,7 +12,7 @@ export function createDisplayCache(){
    if(showPoints){if(c.definitions!==definitions){c.definitions=definitions;c.marking=(plans.get(t.type)||[]).map(r=>{const point=cycloAdd(t.origin,r.offset);return{point,key:latticeKey(point),xy:embedding(point),values:r.values};});}
     for(const v of c.marking||[]){const p=get(v);p.marked=true;for(const[channel,value]of v.values){const prior=p.values.get(channel);p.values.set(channel,prior!==undefined&&prior!==value?'conflict':value);}}
    }
-   if(showBars&&!c.bars)c.bars=(t.bars||[]).map(b=>{const ex=extendBar(b,2);return{from:embedding(ex.from),to:embedding(ex.to)};});
+   if(showBars&&!c.bars)c.bars=(t.bars||[]).map(b=>({from:embedding(b.from),to:embedding(b.to)}));
    drawTiles.push({kind:t.kind,loop:c.vertices.map(v=>v.xy),bars:showBars?c.bars:[]});
   }
   cached=next;return{points:[...points.values()],tiles:drawTiles};
