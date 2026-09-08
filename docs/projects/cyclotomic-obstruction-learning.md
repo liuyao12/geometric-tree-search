@@ -191,3 +191,15 @@ on 60,000 randomized operations, including large coefficients and overflow.
 Additional checks cover relative-pair translation invariance and eviction,
 all tile sets, graph rollback, model delta messages, cached point inspection,
 known-bar rendering data, and corona-3/5 continuation.
+
+### Individual search controls
+
+The main app now runs one selected method at a time. Switching methods pauses
+the current search and keeps its patch, marking, corona target, and elapsed
+active time. Workers initialize lazily; a pending batch finishes before another
+worker receives work. Run/Continue and Step affect only the selected method,
+and Reset clears only that method. Changing allowed tiles clears all methods.
+The timer accumulates worker-request time (including initialization and snapshot
+delivery), excludes idle/paused time, and resumes from its retained total.
+The controller test covers exclusive dispatch, independent milestones, compact
+model retention, pause/resume timing, and reset/stale-result isolation.

@@ -1,20 +1,36 @@
 export const LANE_IDS=['learned','plain','known'];
-// Each lane owns a worker and advances independently of the displayed canvas.
-export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0),options=()=>({})}){
- let lanes={},running=false,target=3,epoch=0;
- const eligible=l=>!l.busy&&!l.state?.done&&l.state?.pausedCorona!==target;
- function emit(){notify({lanes,running,target});}
- function pump(id,step=false){const l=lanes[id];if(!l||!eligible(l))return;l.busy=true;l.worker.postMessage({type:'advance',targetCorona:target,step});}
- function reset(){epoch++;const version=epoch;Object.values(lanes).forEach(l=>l.worker.terminate());running=false;target=3;lanes={};
-  for(const id of LANE_IDS){const worker=makeWorker(),l=lanes[id]={worker,busy:true,state:null};
-   worker.onmessage=({data})=>{if(version!==epoch)return;l.busy=false;if(data.learning&&!data.learning.tables)data.learning.tables=l.state?.learning?.tables||[];l.state=data;
-    if(LANE_IDS.every(k=>lanes[k]?.state&&(lanes[k].state.done||lanes[k].state.pausedCorona===target)))running=false;
-    emit();if(running&&eligible(l))schedule(()=>{if(version===epoch&&running)pump(id);});};
-   worker.onerror=e=>worker.onmessage({data:{done:true,error:e.message}});
-   worker.postMessage({...options(),type:'init',mode:id});
-  }emit();
+// Keep each search, but dispatch work to only one worker at a time.
+export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0),options=()=>({}),now=()=>performance.now()}){
+ let lanes={},running=false,selected='learned',stepPending=false;
+ const fresh=()=>({worker:null,busy:false,state:null,target:3,elapsedMs:0,started:null});
+ const elapsed=id=>{const l=lanes[id];return l?l.elapsedMs+(l.started===null?0:now()-l.started):0;};
+ function emit(){notify({lanes,running,selected,target:lanes[selected]?.target});}
+ function dispatch(l,message){l.busy=true;l.started=now();l.worker.postMessage(message);}
+ function pump(){
+  if(Object.values(lanes).some(l=>l.busy))return;
+  const id=selected,l=lanes[id];if(!l)return;
+  if(!l.worker){
+   l.worker=makeWorker();l.worker.onmessage=({data})=>{
+    if(lanes[id]!==l)return;
+    l.elapsedMs+=now()-l.started;l.started=null;l.busy=false;
+    if(data.learning&&!data.learning.tables)data.learning.tables=l.state?.learning?.tables||[];l.state=data;
+    if(id===selected&&(data.done||data.pausedCorona===l.target)){running=false;stepPending=false;}
+    emit();schedule(pump);
+   };
+   l.worker.onerror=e=>l.worker.onmessage({data:{done:true,error:e.message}});
+   dispatch(l,{...options(),type:'init',mode:id});emit();return;
+  }
+  if(l.state?.done||(!running&&!stepPending))return;
+  const step=stepPending;stepPending=false;
+  dispatch(l,{type:'advance',targetCorona:l.target,step});emit();
  }
- return{reset,toggle(){if(running){running=false;emit();return;}
-  if(LANE_IDS.every(id=>lanes[id].state?.done||lanes[id].state?.pausedCorona===target))target+=2;
-  running=true;emit();LANE_IDS.forEach(id=>pump(id));},step(){running=false;if(LANE_IDS.every(id=>lanes[id].state?.done||lanes[id].state?.pausedCorona===target))target+=2;LANE_IDS.forEach(id=>pump(id,true));emit();},dispose(){epoch++;Object.values(lanes).forEach(l=>l.worker.terminate());}};
+ function prepare(){const l=lanes[selected];if(l.state?.pausedCorona===l.target)l.target+=2;}
+ function stop(){running=false;stepPending=false;}
+ function reset(){stop();Object.values(lanes).forEach(l=>l.worker?.terminate());lanes=Object.fromEntries(LANE_IDS.map(id=>[id,fresh()]));emit();pump();}
+ return{reset,elapsed,select(id){if(!LANE_IDS.includes(id)||id===selected)return;stop();selected=id;emit();pump();},
+  toggle(){if(running){stop();emit();return;}if(lanes[selected]?.state?.done)return;prepare();running=true;emit();pump();},
+  step(){if(lanes[selected]?.state?.done)return;stop();prepare();stepPending=true;pump();emit();},
+  resetCurrent(){stop();lanes[selected]?.worker?.terminate();lanes[selected]=fresh();emit();pump();},
+  dispose(){stop();Object.values(lanes).forEach(l=>l.worker?.terminate());lanes={};}
+ };
 }

@@ -1,6 +1,6 @@
 import {createDisplayCache} from './learning-display.js?v=20260908-speed';
 import {TILE_KINDS,TILE_PRESETS} from '../../assets/penrose-selection-problem.js?v=20260908-speed';
-import {createLaneRunner,LANE_IDS} from './lanes.js?v=20260908-speed';
+import {createLaneRunner,LANE_IDS} from './lanes.js?v=20260908-solo';
 import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js?v=20260908-speed';
 import {embedding,cycloAdd,latticeKey} from '../../assets/cyclotomic-five.js?v=20260908-speed';
 import {activityText} from './search-status.js?v=20260908-speed';
@@ -12,11 +12,11 @@ const keyCoordinate=key=>{if(!key)return'?';const [s,d]=key.split('/');return co
 const count=n=>(n||0).toLocaleString();
 function queueDraw(){if(drawPending)return;drawPending=true;requestAnimationFrame(()=>{drawPending=false;draw();});}
 function render(update){latest=update;const {lanes,running,target}=update;
- const complete=LANE_IDS.every(id=>lanes[id]?.state?.done||lanes[id]?.state?.pausedCorona===target);
- $('runLearning').textContent=running?'Pause all':complete?'Continue all':'Run all';
- $('runLearning').disabled=!tileKinds.length||LANE_IDS.every(id=>lanes[id]?.state?.done);$('stepLearning').disabled=!tileKinds.length;
+ const lane=lanes[selected],complete=lane?.state?.pausedCorona===target;
+ $('runLearning').textContent=running?'Pause':complete||lane?.state?.stats?.proposals?'Continue':'Run';
+ $('runLearning').disabled=!tileKinds.length||lane?.state?.done;$('stepLearning').disabled=!tileKinds.length;
  for(const id of LANE_IDS){const s=lanes[id]?.state,card=$('lane_'+id);card.setAttribute('aria-pressed',String(id===selected));
-  $('laneStatus_'+id).textContent=s?.error?'Error':!s?'Initializing':s.pausedCorona?`Paused at corona ${s.pausedCorona}`:s.done?s.status:`Corona ${s.minimumFrontierGeneration??'closed'} · ${count(s.tiles.length)} tiles`;
+  $('laneStatus_'+id).textContent=s?.error?'Error':!s?(lanes[id]?.worker?'Initializing':'Ready'):s.pausedCorona?`Paused at corona ${s.pausedCorona}`:s.done?s.status:`Corona ${s.minimumFrontierGeneration??'closed'} · ${count(s.tiles.length)} tiles`;
   $('laneMemory_'+id).textContent=s?.learning?`${count(s.learning.addresses)} marking points · ${count(s.learning.entries)} values`:id==='known'?'Continuous bar geometry':'No marking table';
  }
  const next=lanes[selected]?.state;if(state!==next){state=next;view=null;$('pointInfo').textContent='';queueDraw();}
@@ -25,7 +25,7 @@ function render(update){latest=update;const {lanes,running,target}=update;
  const activity=activityText(state.activity,keyCoordinate);
  $('learningStatus').textContent=state.pausedCorona?`Pausing at corona ${state.pausedCorona} · ${activity}`:state.done?state.status:!running?`Paused · ${activity}`:activity;
  $('coronaStatus').textContent=`${names[selected]} · corona ${state.minimumFrontierGeneration??'closed'}`;
- $('learningStats').textContent=`${count(state.tiles.length)} tiles · ${count(state.stats.proposals)} proposals · ${count(state.stats.backtracks)} backtracks · ${(state.computeMs/1000).toFixed(2)} s worker time`;
+ $('learningStats').textContent=`${count(state.tiles.length)} tiles · ${count(state.stats.proposals)} proposals · ${count(state.stats.backtracks)} backtracks`;
  const m=state.learning,mem=state.memory,g=state.graph;
  const lines=m?[`Template marking: ${count(m.addresses)} points · ${count(m.entries)} defined values`, `Active marking: ${count(mem.activeMarking.points)} points · ${count(mem.activeMarking.values)} defined values`]:selected==='known'?[`Continuous bars: ${count(mem.bars.points)} distinct endpoints · ${count(mem.bars.segments)} segments`,`${count(mem.bars.endpointReferences)} endpoint references · ${count(mem.bars.familyValues)} family labels; no discrete point-value table`]:['Marking: 0 points · 0 values'];
  lines.push(`Active t field: ${count(mem.tPoints)} points · ${count(mem.tValues)} values`,`Search graph: ${count(g.points)} frontier points · ${count(g.retainedCandidates)} candidate records · ${count(g.incidences)} legal links`);
@@ -42,8 +42,8 @@ function draw(){const bounds=canvas.getBoundingClientRect(),dpr=devicePixelRatio
  if(showBars)for(const tile of frame.tiles)for(const bar of tile.bars){const a=screen(bar.from),b=screen(bar.to);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='#733bd266';ctx.lineWidth=1;ctx.stroke();}
  hits=points.map(p=>({...p,...screen(p.xy)}));for(const p of hits){ctx.beginPath();ctx.arc(p.x,p.y,p.marked?3:1.5,0,Math.PI*2);ctx.fillStyle=p.marked?'#733bd2':'#51645d';ctx.fill();}}
 runner=createLaneRunner({makeWorker:()=>new Worker(new URL('./learning-worker.js?v=20260908-speed',import.meta.url),{type:'module'}),notify:render,options:()=>({tileKinds:[...tileKinds],compact:true})});
-$('runLearning').onclick=()=>runner.toggle();$('stepLearning').onclick=()=>runner.step();$('resetLearning').onclick=()=>resetSelection();
-for(const id of LANE_IDS)$('lane_'+id).onclick=()=>{selected=id;render(latest);};
+$('runLearning').onclick=()=>runner.toggle();$('stepLearning').onclick=()=>runner.step();$('resetLearning').onclick=()=>{delete displays[selected];runner.resetCurrent();};
+for(const id of LANE_IDS)$('lane_'+id).onclick=()=>{selected=id;runner.select(id);render(latest);};
 $('fitLearning').onclick=()=>{view=null;queueDraw();};$('showPoints').onchange=queueDraw;
 canvas.onpointermove=e=>{const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const p=hits.reduce((best,p)=>Math.hypot(p.x-x,p.y-y)<Math.min(9,best?Math.hypot(best.x-x,best.y-y):Infinity)?p:best,null);$('pointInfo').textContent=p?`${coordinate(p.point)}\n t = ${p.total}/10; m = ${p.values.size?[...p.values].sort((a,b)=>a[0]-b[0]).map(([c,v])=>`${c}:${v}`).join(', '):'undefined'}${p.values.size?' (unlisted channels undefined)':''}`:'';};
 function resetSelection(){
@@ -59,4 +59,6 @@ function resetSelection(){
 }
 $('tileSet').onchange=()=>{const ks=TILE_PRESETS[$('tileSet').value];if(!ks)return;for(const k of TILE_KINDS)$('tile_'+k).checked=ks.includes(k);resetSelection();};
 for(const k of TILE_KINDS)$('tile_'+k).onchange=resetSelection;
+function updateTimer(){const l=latest?.lanes[selected];$('elapsedTime').textContent=`${((runner?.elapsed(selected)||0)/1000).toFixed(2)} s active time${l?.busy?' · working':latest?.running?'':' · paused'}`;}
+setInterval(updateTimer,100);
 new ResizeObserver(queueDraw).observe(canvas);resetSelection();
