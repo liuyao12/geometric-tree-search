@@ -4,7 +4,10 @@ import {num,add,sub,mul,conj,areaSign,overlap,onSegment,same,box,separated} from
 // No marking patterns, bar positions, reference patch, or tile-name rules exist
 // in this catalog generator or its geometry predicate.
 export function coordinateOrder(a,b){a=canonical(a);b=canonical(b);for(let i=0;i<4;i++){const d=BigInt(a.coeff[i])*BigInt(b.denominator)-BigInt(b.coeff[i])*BigInt(a.denominator);if(d)return d<0n?-1:1;}return 0;}
-export const tileSignature=(kind,points,weights,labels)=>kind+':'+points.map((p,i)=>latticeKey(p)+'~'+weights[i]).sort().join('|')+'@'+labels.map(l=>l.code+':'+latticeKey(l.from)+'>'+latticeKey(l.to)).sort().join('|');
+const axisKey=p=>[latticeKey(p),latticeKey(mul(p,num(-1)))].sort()[0];
+const labelValue=l=>l.ports?l.code+':'+[...new Set(l.ports.map(p=>latticeKey(p.point)+'@'+axisKey(p.axis)))].sort().join(';'):l.code+':'+latticeKey(l.from)+'>'+latticeKey(l.to);
+const transformLabel=(l,point,vector)=>({...l,from:point(l.from),to:point(l.to),...(l.ports?{ports:l.ports.map(p=>({point:point(p.point),axis:vector(p.axis)}))}:{})});
+export const tileSignature=(kind,points,weights,labels)=>kind+':'+points.map((p,i)=>latticeKey(p)+'~'+weights[i]).sort().join('|')+'@'+labels.map(l=>l.ports?[latticeKey(l.from),latticeKey(l.to)].sort().join('>')+'@'+labelValue(l):labelValue(l)).sort().join('|');
 export function cyclotomicCatalog(templates,{reflections=true}={}){
  const axes=Array.from({length:5},(_,i)=>canonical({coeff:Array.from({length:5},(_,j)=>+(i===j)),denominator:1})),unique=new Map();
  for(const template of templates)for(const reflect of(reflections?[false,true]:[false]))for(const axis of axes)for(const sign of[1,-1]){
@@ -13,16 +16,16 @@ export function cyclotomicCatalog(templates,{reflections=true}={}){
   if(areaSign(exactPoints)<0){exactPoints.reverse();weights.reverse();}
   const origin=exactPoints.slice().sort(coordinateOrder)[0];
   exactPoints=exactPoints.map(p=>sub(p,origin));
-  const labels=(template.labels||[]).map(l=>({code:l.code,from:sub(transform(l.from),origin),to:sub(transform(l.to),origin)}));
+  const labels=(template.labels||[]).map(l=>transformLabel(l,p=>sub(transform(p),origin),transform));
   const type=tileSignature(template.kind,exactPoints,weights,labels);
-  unique.set(type,{kind:template.kind,type,exactPoints,weights,labels});
+  unique.set(type,{kind:template.kind,type,exactPoints,weights,labels,sourceTransform:{factor,reflect,offset:origin}});
  }
  return [...unique.values()];
 }
 export function translateCatalogTile(v,origin){
  const exactPoints=v.exactPoints.map(p=>add(p,origin)),vertices=exactPoints.map(latticeKey);
- const labels=v.labels.map(l=>({...l,from:add(l.from,origin),to:add(l.to,origin)}));
- const signatures=new Map(labels.map(l=>[[latticeKey(l.from),latticeKey(l.to)].sort().join('|'),l.code+':'+latticeKey(l.from)+'>'+latticeKey(l.to)]));
+ const labels=v.labels.map(l=>transformLabel(l,p=>add(p,origin),p=>p));
+ const signatures=new Map(labels.map(l=>[[latticeKey(l.from),latticeKey(l.to)].sort().join('|'),labelValue(l)]));
  const physicalOrigin=add(origin,v.offset||num(0));
  return{...v,exactPoints,vertices,labels,signatures,origin:physicalOrigin,id:v.type+'#'+latticeKey(physicalOrigin)};
 }
@@ -49,7 +52,7 @@ export function makeCyclotomicProblem(templates,{fullWeight,reflections=true}={}
   const key=tile.type+'@'+JSON.stringify(g),act=p=>mul(g.factor,g.reflect?conj(p):p);let plan=actionCache.get(key);
   if(!plan){const v=byType.get(tile.type);let points=v.exactPoints.map(act),weights=v.weights.slice();if(areaSign(points)<0){points.reverse();weights.reverse();}
    const offset=points.slice().sort(coordinateOrder)[0];points=points.map(p=>sub(p,offset));
-   const labels=v.labels.map(l=>({...l,from:sub(act(l.from),offset),to:sub(act(l.to),offset)}));
+   const labels=v.labels.map(l=>transformLabel(l,p=>sub(act(p),offset),act));
    const type=tileSignature(v.kind,points,weights,labels),target=byType.get(type);if(!target)throw Error('Orientation catalog is not closed under requested action');
    plan={target,offset};actionCache.set(key,plan);
   }

@@ -132,3 +132,24 @@ Ammann lane instead reports continuous segment geometry, endpoint references,
 and family labels, without inventing a discrete marking table. These are not
 total heap measurements: object overhead, undo closures, geometry caches,
 and message/display copies are excluded.
+
+## P1, P2, P3 and mixed selections
+
+The main selector offers P3 rhombs, P2 kite/dart, P1 pentagonal tiles, all tiles,
+and arbitrary subsets. A selection change resets all three workers to the
+same allowed catalog. Switching lanes continues to preserve their searches.
+Pure rhomb selections retain the independent arrow input. P1/P2 and mixed
+selections use the boundary-only dataset in `penrose-local-templates.js`,
+exported from the existing transferred decorations. These are supplied local
+rules, not a claim to infer aperiodicity from undecorated P1/P2 shapes.
+
+Each port records an exact point and an unoriented normal axis. Both transform
+under the rigid action; the learner never receives bar interiors or extension
+geometry. Tests compare shared-edge decisions with the existing boundary
+extractor and verify known decorations survive quotienting by symmetries.
+The benchmark reconstructs its bars separately from template rigid transforms.
+
+Mixed inputs use the existing common scale and whole-edge convention. P1
+cannot share whole edges with P2/P3 at that scale; mixed P2/P3 can be attempted.
+Selecting a tile permits it rather than requiring it, and an arbitrary subset
+may exhaust its frontier. No mixed input is promised an infinite Penrose tiling.

@@ -1,6 +1,6 @@
 export const LANE_IDS=['learned','plain','known'];
 // Each lane owns a worker and advances independently of the displayed canvas.
-export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0)}){
+export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0),options=()=>({})}){
  let lanes={},running=false,target=3,epoch=0;
  const eligible=l=>!l.busy&&!l.state?.done&&l.state?.pausedCorona!==target;
  function emit(){notify({lanes,running,target});}
@@ -11,7 +11,7 @@ export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0
     if(LANE_IDS.every(k=>lanes[k]?.state&&(lanes[k].state.done||lanes[k].state.pausedCorona===target)))running=false;
     emit();if(running&&eligible(l))schedule(()=>{if(version===epoch&&running)pump(id);});};
    worker.onerror=e=>worker.onmessage({data:{done:true,error:e.message}});
-   worker.postMessage({type:'init',mode:id});
+   worker.postMessage({...options(),type:'init',mode:id});
   }emit();
  }
  return{reset,toggle(){if(running){running=false;emit();return;}

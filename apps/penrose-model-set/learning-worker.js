@@ -1,13 +1,13 @@
 import {latticeKey} from '../../assets/cyclotomic-five.js';
-import {blindPenroseProblem} from '../../assets/penrose-blind-problem.js';
-import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js';
+import {selectedPenroseProblem} from '../../assets/penrose-selection-problem.js?v=20260908-sets';
+import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js?v=20260908-sets';
 import {createObstructionSearch} from '../../assets/cyclotomic-obstruction-search.js?v=20260908-lanes';
 import {createSearchStatus} from './search-status.js';
 let search,activity,benchmark,done=false,computeMs=0;
 self.onmessage=({data})=>{try{
  let pausedCorona=null;
  if(data.type==='init'){
-  const start=performance.now(),problem=blindPenroseProblem(),adapter=data.mode==='known'?knownPenroseBenchmark(problem):{problem};benchmark=data.mode==='known'?adapter:null;
+  const start=performance.now(),problem=selectedPenroseProblem(data.tileKinds),adapter=data.mode==='known'?knownPenroseBenchmark(problem):{problem};benchmark=data.mode==='known'?adapter:null;
   search=createObstructionSearch({...adapter,learn:data.mode==='learned',targetCount:Infinity,nodeLimit:100000,seed:data.seed||1});
   activity=createSearchStatus();activity.accept(search.next().value);done=false;computeMs=performance.now()-start;
  }else if(data.type==='advance'&&search&&!done){
