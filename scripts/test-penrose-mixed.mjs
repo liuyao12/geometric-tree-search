@@ -29,7 +29,7 @@ for(const kinds of[p1,p2,mix])for(const enabled of[false,true]){
   if(enabled)assert(mixedMarkingsCompatible(a,b,2));
  }
  if(kinds===mix&&enabled){const seed=createMixedGrowth({tileKinds:mix,useMarkings:true,extent:2});seed.next();assert(seed.inspectGraph().some(p=>p.candidates.some(id=>id.startsWith('kite:')||id.startsWith('dart:'))),'P2 placements must be included around the P3 seed');}
- const points=inspectionPoints(s);assert(points.some(p=>p.intermediate&&p.extension));const t=s.tiles[0],bar=t.bars[0];assert.equal(tileMarkingValue(t,tileStates(t)[0],bar.from,2)[bar.family],1);assert.match(inspectionText(points.find(p=>p.vertex),enabled).coordinate,/x = /);
+ const points=inspectionPoints(s);assert(points.every(p=>!p.intermediate));const t=s.tiles[0],bar=t.bars[0];assert.equal(tileMarkingValue(t,tileStates(t)[0],bar.from,2)[bar.family],1);assert.match(inspectionText(points.find(p=>p.vertex),enabled).coordinate,/x = /);
  console.log('ok:',kinds.join('/'),enabled?'markings':'edges',s.tiles.length,'tiles',s.stats.proposals,'proposals');
 }
 assert.throws(()=>createMixedGrowth({tileKinds:[]}));

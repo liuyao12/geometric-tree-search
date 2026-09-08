@@ -1,10 +1,11 @@
+import {collectCandidateContacts} from './penrose-candidate-contacts.js?v=20260907-contacts';
 import {embedding,latticeKey} from './cyclotomic-five.js';
 import {num,sub,box,separated} from './penrose-polygon.js';
-import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260907-frontier';
+import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260907-contacts';
 import {tileStates,mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260907-frontier';
 import {arrowStates} from './penrose-arrows.js?v=20260907-extent';
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
-import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260907-frontier';
+import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260907-contacts';
 const priority=(key,seed)=>{let h=(2166136261^seed)>>>0;for(const c of key)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
 export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings=true,extent=0,targetCount=60,nodeLimit=10000,seed=1,markingDirections=5}={}) {
   validateExtent(extent);
@@ -70,6 +71,11 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
     progress(){return{minimumFrontierGeneration,deadPoints:graph.summary().deadPoints};},
     snapshot(){return{tiles:active.slice(),orientations:active.map(t=>[t.id,t.arrowStart ?? 0]),stats:{...stats},status,event,minimumFrontierGeneration,useMarkings,extent,markingDirections:5,tileKinds:[...allowed],mixed:!classic,graph:graph.summary()};},
     inspectGraph(){return graph.inspect();},
+    candidateContacts(displayExtent=extent){
+      validateExtent(displayExtent);
+      const candidates=graph.candidateRecords().filter(({tile:t})=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>!mixedGeometryConflict(t,a)));
+      return collectCandidateContacts(active,candidates,displayExtent);
+    },
     // Slow independent rebuild is exposed only for invariant tests.
     rebuildGraphForAudit(){const before={...stats};try{return frontier().map(p=>({key:p.key,depth:p.depth,total:p.total,candidates:[...anchored.values()].map(v=>translateVariant(v,p.exact)).filter(t=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>pair(t,a))).map(t=>t.id).sort()})).sort((a,b)=>a.key.localeCompare(b.key));}finally{Object.assign(stats,before);}}
   };

@@ -1,7 +1,7 @@
-import { canonical, embedding, latticeKey, edgePort } from '../../assets/cyclotomic-five.js';
+import { canonical, embedding, latticeKey } from '../../assets/cyclotomic-five.js';
 import { tileStates, tileMarkingValue } from '../../assets/penrose-mixed-markings.js?v=20260907-frontier';
 
-import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
+
 
 export function formatCyclotomic(point) {
   const { coeff, denominator } = canonical(point), basis = ['', 'ζ₅', 'ζ₅²', 'ζ₅³'];
@@ -20,22 +20,8 @@ export function fraction(n, d = 10) {
   return d === 1 ? String(n) : `${n}/${d}`;
 }
 
-// Rational subdivisions are exact Q(zeta_5) inspection samples, not an
-// enumeration of every integer-ring address along the segment.
-export function barSamplePoints(bar, extent, subdivisions = 8) {
-  if (![4, 8, 16].includes(subdivisions)) throw new RangeError('Point density must be 4, 8 or 16');
-  // Also validates the allowed extent and preserves its exact endpoint.
-  extendBar(bar, extent);
-  const samples = [];
-  for (let k = -extent * subdivisions; k <= (1 + extent) * subdivisions; k++) {
-    if (k === 0 || k === subdivisions || k === -extent * subdivisions || k === (1 + extent) * subdivisions) continue;
-    samples.push({ point: edgePort(bar.from, bar.to, { coeff: [k, 0, 0, 0], denominator: subdivisions }), extension: k < 0 || k > subdivisions });
-  }
-  return samples;
-}
-
-// Exact sample locations; m is evaluated lazily only at the hovered point.
-export function inspectionPoints(snapshot, { subdivisions = 8, includeIntermediate = true } = {}) {
+// Only placed support points and contacts induced by current candidates.
+export function inspectionPoints(snapshot, { contacts = null, integersOnly = false } = {}) {
   const points = new Map(), orientations = new Map(snapshot.orientations), context = [], extent = snapshot.extent || 0;
   const at = point => {
     const key = latticeKey(point);
@@ -63,17 +49,14 @@ export function inspectionPoints(snapshot, { subdivisions = 8, includeIntermedia
     context.push({ tile, state, label });
     for (const bar of state.bars) {
       for (const end of bar.ends) at(end.point);
-      if (includeIntermediate) for (const sample of barSamplePoints(bar, extent, subdivisions)) {
-        const item = at(sample.point); item.intermediate = true;
-        if (sample.extension) item.extension = true;
-      }
-      if (extent) {
-        const extended = extendBar(bar, extent);
-        at(extended.from).extension = true; at(extended.to).extension = true;
-      }
     }
   });
-  return [...points.values()];
+  for (const contact of contacts?.points || []) {
+    const item=at(contact.point);item.extension ||= contact.extension;
+    item.candidateContacts=contact.records.map(r=>({...r,...contacts.candidates[r.candidate]}));
+    item.conflict=item.candidateContacts.some(r=>r.value===0);
+  }
+  return [...points.values()].filter(p=>!integersOnly || p.exact.denominator===1);
 }
 const vector = value => value.map(v => v === null ? '—' : v).join(', ');
 export function inspectionText(point, useMarkings) {
@@ -86,13 +69,13 @@ export function inspectionText(point, useMarkings) {
   });
   const tParts = [...point.contributions.values()].map(c => `${c.label}: ${fraction(c.weight)}`);
   return {
-    title: point.vertex ? 'Tile vertex' : point.intermediate ? (point.extension ? 'Extension sample' : 'Stripe sample') : point.extension ? 'Extension endpoint' : 'Ammann endpoint',
+    title: point.vertex ? 'Tile vertex' : point.candidateContacts ? (point.conflict ? 'Candidate conflict witness' : 'Candidate contact') : 'Ammann endpoint',
     coordinate: `x = ${formatCyclotomic(point.exact)}`,
     basis: `Basis coefficients: (${point.exact.coeff.join(', ')})${point.exact.denominator === 1 ? '' : ` / ${point.exact.denominator}`}`,
     t: `t(x) = ${fraction(point.t)}${tParts.length > 1 ? ` = ${tParts.map(p => p.split(': ')[1]).join(' + ')}` : tParts.length ? '' : ' · outside vertex support'}`,
     m: !values.length ? 'm(x) = undefined · outside marking support'
       : mismatch ? `m(x): mismatch · ${values.map(v => `(${vector(v.value)})`).join(' ≠ ')}`
       : `m(x) = (${vector(merged)}) · ${values.length} tile support${values.length === 1 ? '' : 's'} compatible`,
-    detail: `${tParts.join(' · ')}${tParts.length ? '\n' : ''}${values.map(v => `${v.label}: m = (${vector(v.value)})`).join(' · ')}${values.length ? '\n' : ''}1 = bar, 0 = off bar inside tile, — = outside component support.\n${useMarkings ? 'Ammann matching enforced' : 'Ammann values shown; search checks edge decorations'}`
+    detail: `${(point.candidateContacts || []).map(r=>`${r.kind} candidate #${r.candidate+1}: m${r.family+1}(x) = ${r.value} ${r.value===0?'≠':'='} 1 on placed bar; ${r.legal?'currently legal':'currently rejected'}${r.weight?`; adds t = ${fraction(r.weight)}`:''}`).join('\n')}${point.candidateContacts?'\n':''}${tParts.join(' · ')}${tParts.length ? '\n' : ''}${values.map(v => `${v.label}: m = (${vector(v.value)})`).join(' · ')}${values.length ? '\n' : ''}1 = bar, 0 = off bar inside tile, — = outside component support.\n${useMarkings ? 'Ammann matching enforced' : 'Ammann values shown; search checks edge decorations'}`
   };
 }

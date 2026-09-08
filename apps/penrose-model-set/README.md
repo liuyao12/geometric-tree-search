@@ -73,11 +73,30 @@ are separate components. Extent restarts marked search; in unmarked mode it
 only changes the illustration. Showing bars/arrows, colors, line width,
 highlighting and sample density never change legality.
 
-Vertex hover reports the exact coordinate in Q(zeta_5), t and m. Intermediate
-dots use exact rational subdivisions (4/8/16 per stripe length), not every
-integer-ring point. They do not define the continuous segment predicate or
-create extra unfinished t obligations. Vertex coordinates remain integral in
-Z[zeta_5]; marking ports and displayed subdivisions can be rational.
+Vertex hover reports the exact coordinate in Q(zeta_5), t and m. Extension
+points are now derived from geometrically admissible candidates incident to
+the current frontier, including candidates rejected by marking constraints.
+They include candidate vertices, marking ports, boundary intersections and
+one exact mismatch witness per relevant open interval. Intervals are split at
+candidate boundary and collinear marking endpoints; there is no uniform grid.
+
+Candidate inspection runs in the worker on demand while paused, separately
+from search compute. Its data is discarded when the patch or extent changes.
+Hover identifies candidate alternatives and the compared marking component;
+candidate values are never merged into the placed patch's m or t. Red points
+witness a local disagreement. Blue points show other contacts; agreement at a
+point does not mean the candidate passes every constraint. "Integer contacts"
+filters the finite contact set to Z[zeta_5]; the default retains Q(zeta_5)
+contacts because marking ports need not be algebraic integers. This inspects
+the current finite candidate graph, not every possible future candidate.
+
+The integer-ring points on a physical line through two distinct ring points
+are already dense. Their lifts form an affine rank-two lattice in a plane
+inside the rank-four lattice. On the real axis, they are m+nφ, lifted in the
+basis (1,ζ,ζ²,ζ³) to (m,0,−n,−n). A bounded interval contains infinitely many
+such points, so membership in the integer ring alone cannot define a finite
+display or finite marking support. A finite candidate-derived set is used here;
+no cut-and-project window is added to the search.
 
 ## Verification
 
@@ -92,3 +111,5 @@ Z[zeta_5]; marking ports and displayed subdivisions can be rational.
   display-only settings and status.
 - Existing arrow/stripe/extension tests validate the fixed matching predicates;
   `test-penrose-growth.mjs` explicitly preserves the historical edge-first trace.
+
+- `test-penrose-candidate-contacts.mjs`: exact contact provenance, interval witnesses, integer filtering and unchanged search state.

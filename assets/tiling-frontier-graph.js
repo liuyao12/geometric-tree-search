@@ -79,5 +79,6 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
   }
   // Read-only copies for tests and policy adapters; no engine state escapes.
   function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
-  return { build, push, pop, choose, summary, inspect };
+  function candidateRecords() { return [...candidates.values()].filter(r => r.points.size > 0).map(r => ({tile:r.tile,legal:r.legal})); }
+  return { build, push, pop, choose, summary, inspect, candidateRecords };
 }

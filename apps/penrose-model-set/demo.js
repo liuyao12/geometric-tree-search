@@ -3,7 +3,7 @@ import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-fr
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-frontier";
+import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-contacts";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
@@ -19,18 +19,25 @@ let worker = null, snapshot = null, busy = false, running = false, failed = fals
 let coronaTarget = 3;
 let generation = 0, lastTick = 0, radius = 5, zoom = 1, pan = { x: 0, y: 0 }, showMarking = false;
 const drawn = new Map();
+let candidateContacts = null, contactKey = null, pendingContactKey = null;
 let pointer = null, inspectKey = null, inspectPoints = [], drag;
+function currentContactKey() { return snapshot ? snapshot.tiles.map(t=>t.id).join(";") + "/" + $("extent").value : null; }
+function requestContacts() {
+  if (!snapshot || !worker || busy || running || !showMarking || $("pointDensity").value === "none") return;
+  const key=currentContactKey();if(key===contactKey || pendingContactKey) return;
+  pendingContactKey=key;worker.postMessage({type:"inspect",key,extent:Number($("extent").value)});
+}
 function hideInspection() { $("pointTooltip").hidden = true; }
 function inspect(ctx, screen) {
-  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value + "/" + $("pointDensity").value + "/" + showMarking;
-  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }, { subdivisions: Number($("pointDensity").value), includeIntermediate: showMarking }); }
+  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value + "/" + $("pointDensity").value + "/" + showMarking + "/" + (contactKey || "");
+  if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }, { contacts: showMarking && $("pointDensity").value !== "none" && contactKey === currentContactKey() ? candidateContacts : null, integersOnly: $("pointDensity").value === "integers" }); }
   let nearest = null, distance = 12;
   for (const point of inspectPoints) {
-    if (!point.vertex && !showMarking) continue;
+    if (!point.vertex && (!showMarking || $("pointDensity").value === "none")) continue;
     const p = screen(point.position);
     // Small vertex dots make the exact support discoverable in either view.
-    ctx.fillStyle = point.vertex ? "#34483f" : "#643920";
-    ctx.beginPath(); ctx.arc(p.x, p.y, point.vertex ? 2.1 : point.intermediate ? 1.25 : 1.8, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = point.vertex ? "#34483f" : point.conflict ? "#b73e2b" : point.candidateContacts ? "#426fa3" : "#643920";
+    ctx.beginPath(); ctx.arc(p.x, p.y, point.vertex ? 2.1 : point.candidateContacts ? 1.8 : 1.5, 0, 2 * Math.PI); ctx.fill();
     if (pointer && !drag) {
       const d = Math.hypot(pointer.x - p.x, pointer.y - p.y);
       if (d < distance) { distance = d; nearest = point; }
@@ -162,7 +169,7 @@ function render() {
     $("graphDetail").textContent = snapshot.graph ? `${snapshot.graph.points} unfinished points · ${snapshot.graph.candidates} candidates · ${snapshot.graph.incidences} incidences · ${snapshot.stats.forcedMoves} forced placements · ${snapshot.stats.branches} branches` : "";
     $("pruneDetail").textContent = `Prunes: ${snapshot.stats.edgePrunes} edge matches · ${snapshot.stats.capacityPrunes} capacity · ${snapshot.stats.geometryPrunes} overlap · ${snapshot.stats.topologyPrunes} boundary`;
   }
-  paint();
+  paint(); requestContacts();
 }
 function error(message) {
   failed = true; running = false; busy = false; worker?.terminate(); worker = null;
@@ -177,6 +184,7 @@ function reset(autostart = false) {
   running = false; coronaTarget = 3; generation++; const current = generation;
   worker?.terminate(); worker = null; busy = false; failed = false; snapshot = null;
   radius = 5; zoom = 1; pan = { x: 0, y: 0 }; drawn.clear();
+  candidateContacts = null; contactKey = null; pendingContactKey = null;
   pointer = null; inspectKey = null; inspectPoints = []; hideInspection();
   for (const key of ["placed", "peak", "proposals", "backtracks", "markingPrunes"]) $(key).textContent = "0";
   $("graphDetail").textContent = ""; $("computeTime").textContent = "0.00 s"; $("eventLabel").textContent = "Seed ready"; $("pruneDetail").textContent = "No proposals yet";
@@ -184,13 +192,19 @@ function reset(autostart = false) {
   if (!options.tileKinds.length) { error("Choose at least one tile"); return; }
   $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-activity", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-contacts", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;
+    if (data.type === "inspection") {
+      pendingContactKey=null;
+      if (data.key === currentContactKey()) { contactKey=data.key; candidateContacts=data.contacts || null; inspectKey=null; }
+      render(); if (data.error) $("eventLabel").textContent = `Candidate contacts unavailable: ${data.error}`; return;
+    }
     busy = false;
     if (data.error) { error(data.error); return; }
     snapshot = data;
+    if (contactKey !== currentContactKey()) { candidateContacts=null; contactKey=null; }
     if (data.pausedCorona !== null && data.pausedCorona !== undefined) {
       running = false; coronaTarget = data.pausedCorona + 2;
     }

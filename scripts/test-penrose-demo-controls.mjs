@@ -18,7 +18,7 @@ class Element {
   getContext() { return new Proxy({}, { get: (_, key) => key === "canvas" ? this : () => {} }); }
 }
 const elements = new Map(ids.map(id => [id, new Element()]));
-for (const [id, value] of Object.entries({ pointDensity: "8", extent: "2", markingDirections: "5", stripeWidth: "1.5" })) elements.get(id).value = value;
+for (const [id, value] of Object.entries({ pointDensity: "contacts", extent: "2", markingDirections: "5", stripeWidth: "1.5" })) elements.get(id).value = value;
 for (const kind of ["thick", "thin"]) elements.get("tile_" + kind).checked = true;
 globalThis.document = { getElementById(id) { assert(elements.has(id), `missing control ${id}`); return elements.get(id); } };
 globalThis.window = { addEventListener() {} };
@@ -29,6 +29,7 @@ globalThis.Worker = class {
   constructor() { this.messages = []; this.terminated = false; workers.push(this); }
   terminate() { this.terminated = true; }
   postMessage(message) {
+    if (message.type === "inspect") { queueMicrotask(() => this.onmessage?.({data:{type:"inspection",key:message.key,contacts:{points:[],candidates:[]}}})); return; }
     this.messages.push(message);
     if (message.type === "init") { this.growth = (message.options.tileKinds.length === 2 && message.options.tileKinds.includes("thick") && message.options.tileKinds.includes("thin") ? createPenroseGrowth : createMixedGrowth)(message.options); this.growth.next(); }
     else this.growth.next();
@@ -56,8 +57,8 @@ assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_title").textContent, "Ammann endpoint");
 assert.match(elements.get("point_t").textContent, /t\(x\) = 0/);
 assert.match(elements.get("point_m").textContent, /m\(x\) = \(/);
-elements.get("pointDensity").value = "16"; elements.get("pointDensity").fire("change");
-assert.equal(workers.length, 1); assert.equal(workers[0].messages.length, 1, "display controls and sample density must not touch the search");
+elements.get("pointDensity").value = "integers"; elements.get("pointDensity").fire("change");
+assert.equal(workers.length, 1); assert.equal(workers[0].messages.length, 1, "display controls and contact filter must not touch the search");
 elements.get("extent").value = "1.5"; elements.get("extent").fire("input");
 assert.equal(workers.length, 1, "extent only changes drawing in arrow mode");
 elements.get("useMarkings").checked = true; elements.get("useMarkings").fire("change"); await flush();

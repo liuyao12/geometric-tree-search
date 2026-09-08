@@ -1,12 +1,15 @@
-import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-frontier";
+import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-contacts";
 
-import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-frontier";
+import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-contacts";
 
 import { createSearchStatus } from "./search-status.js?v=20260907-activity";
 
 let activity, search, done = false, computeMs = 0;
 self.onmessage = ({ data }) => {
   try {
+    if (data.type === "inspect") {
+      self.postMessage({ type: "inspection", key: data.key, contacts: search.candidateContacts(data.extent) }); return;
+    }
     let pausedCorona = null;
     if (data.type === "init") {
       const kinds = data.options.tileKinds || ["thick", "thin"];
@@ -26,6 +29,6 @@ self.onmessage = ({ data }) => {
     }
     self.postMessage({ ...search.snapshot(), done, computeMs, pausedCorona, activity: activity.snapshot() });
   } catch (error) {
-    self.postMessage({ error: error.message, done: true });
+    self.postMessage(data.type === "inspect" ? {type:"inspection",key:data.key,error:error.message} : { error: error.message, done: true });
   }
 };
