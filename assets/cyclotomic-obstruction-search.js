@@ -1,7 +1,7 @@
 import {pointCompletion,createLocalPairTeacher} from './cyclotomic-local-certificate.js';
-import {createPairPointMarking} from './cyclotomic-pair-marking.js';
+import {createPairPointMarking} from './cyclotomic-pair-marking.js?v=20260908-lanes';
 import {latticeKey,embedding} from './cyclotomic-five.js';
-import {createFrontierGraph} from './tiling-frontier-graph.js';
+import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260908-lanes';
 import {createObstructionMarking} from './cyclotomic-obstruction-marking.js';
 const priority=(key,seed)=>{let h=(2166136261^seed)>>>0;for(const c of key)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
 // Generic adapter: a finite catalog, exact base pair predicate and t support.
@@ -58,7 +58,7 @@ export function createObstructionSearch({problem,learn=false,markingKind='pairs'
   }}
   function* run(){put({...seedTile});graph.build(frontier());stats.peak=1;status='searching';yield{type:'add',tile:active[0]};if(!(yield*dfs())&&!stopped)status='frontier exhausted';}
   const iterator=run();return{next(){const r=iterator.next();if(r.value)event=r.value;return r;},inspectGraph:()=>graph.inspect(),progress:()=>({minimumFrontierGeneration,deadPoints:graph.summary().deadPoints}),
-    snapshot:()=>({tiles:active.slice(),stats:{...stats},status,event,minimumFrontierGeneration,graph:graph.summary(),learning:learner?{...learner.snapshot(),localTeacher:localTeacher?.snapshot()||null,proofSource:proofLearner?{...proofLearner.snapshot(),tables:undefined}:null}:null}),
+    snapshot:()=>({tiles:active.slice(),stats:{...stats},status,event,minimumFrontierGeneration,memory:{tPoints:totals.size,tValues:totals.size,activeMarking:learner?.memory?.()||{points:0,values:0}},graph:graph.summary(),learning:learner?{...learner.snapshot(),localTeacher:localTeacher?.snapshot()||null,proofSource:proofLearner?{...proofLearner.snapshot(),tables:undefined}:null}:null}),
     // Independent checker includes the local failed-child exclusions already
     // represented by the graph, so it verifies soundness, not equal domains.
     audit(){for(const p of graph.inspect())for(const id of p.candidates){const t=graph.candidateRecords().find(r=>r.tile.id===id).tile;if(!capacity(t)||!active.every(a=>pairAllowed(t,a))||learner?.rejects(t))throw Error('Stale legal candidate');}return true;}

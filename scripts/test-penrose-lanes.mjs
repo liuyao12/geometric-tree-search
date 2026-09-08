@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {createLaneRunner,LANE_IDS} from '../apps/penrose-model-set/lanes.js';
+const workers=[],scheduled=[];let state;
+const runner=createLaneRunner({makeWorker(){const w={messages:[],postMessage(m){this.messages.push(m);},terminate(){this.terminated=true;},reply(data){this.onmessage({data});}};workers.push(w);return w;},notify:s=>{state=s;},schedule:fn=>scheduled.push(fn)});
+runner.reset();assert.equal(workers.length,3);assert.deepEqual(workers.map(w=>w.messages[0].mode),LANE_IDS);
+runner.toggle();for(const w of workers)w.reply({done:false});while(scheduled.length)scheduled.shift()();
+assert(workers.every(w=>w.messages.at(-1).type==='advance'),'all workers advance independently');
+workers[0].reply({done:false,pausedCorona:3});assert(state.running,'fast lane cannot pause the others');
+workers[1].reply({done:false});while(scheduled.length)scheduled.shift()();assert.equal(workers[1].messages.length,3,'hidden lane continues');
+workers[1].reply({done:false,pausedCorona:3});workers[2].reply({done:false,pausedCorona:3});assert(!state.running);
+runner.toggle();assert.equal(state.target,5);assert(workers.every(w=>w.messages.at(-1).targetCorona===5));
+runner.toggle();workers[0].reply({done:false});assert(!scheduled.length,'pause must not queue further work');
+const old=workers[1];runner.reset();old.reply({done:true,error:'stale'});assert(!state.lanes.plain.state,'stale worker result ignored after reset');assert(workers.slice(0,3).every(w=>w.terminated));runner.dispose();
+console.log('ok: three independent lanes, common milestones, pause/continue, and reset isolation');

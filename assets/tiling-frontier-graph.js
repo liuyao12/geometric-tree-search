@@ -85,7 +85,7 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
   function summary() {
     let incidences = 0, forcedPoints = 0, deadPoints = 0; const live = new Set();
     for (const p of points.values()) { incidences += p.legal.size; forcedPoints += +(p.legal.size === 1); deadPoints += +(p.legal.size === 0); for (const id of p.legal) live.add(id); }
-    return { points: points.size, candidates: live.size, incidences, forcedPoints, deadPoints, ...counters };
+    return { retainedCandidates:candidates.size, points: points.size, candidates: live.size, incidences, forcedPoints, deadPoints, ...counters };
   }
   // Read-only copies for tests and policy adapters; no engine state escapes.
   function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }

@@ -112,3 +112,23 @@ The worker separately passed cold online pause/continue checks at coronas 3
 and 5 (159 and 298 tiles). Source and the complete timing/certificate report
 are published alongside the experimental page; no local preview was used.
 See [recorded benchmark](../cyclotomic-learning-benchmark.json).
+
+## Main app: concurrent lanes and memory counts
+
+The main Penrose entry point now runs learned points, explicit edge arrows,
+and continuous Ammann bars in independent workers. Run all advances each to
+the shared corona milestone; a completed lane waits while others continue.
+Lane selection changes only the canvas and inspection, not the search. Pause
+all stops scheduling new batches, Continue all advances the milestone, and
+Reset all replaces all workers and empties the learner. The previous P1/P2/P3
+app remains at `apps/penrose-model-set/ammann.html`.
+
+Memory cost is reported as logical records rather than estimated bytes:
+unique oriented-template point addresses and defined scalar entries; active
+world marking addresses and stored 0/1 values; active t-field points and
+values; current graph candidate records and legal incidences; and learner
+certificate/cache counts. Undefined components are not stored values. The
+Ammann lane instead reports continuous segment geometry, endpoint references,
+and family labels, without inventing a discrete marking table. These are not
+total heap measurements: object overhead, undo closures, geometry caches,
+and message/display copies are excluded.

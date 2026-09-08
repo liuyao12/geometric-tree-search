@@ -39,6 +39,7 @@ export function createPairPointMarking({pose,anchor,rigid,actions}){
   const old=aggregate.get(r.key);if(old){old.zeros|=r.zeros;old.ones|=r.ones;}else aggregate.set(r.key,{zeros:r.zeros,ones:r.ones});
  }}
  function rejects(tile){stats.checks++;for(const r of support(tile)){const value=aggregate.get(r.key);if(value){const conflict=(value.zeros&r.ones)|(value.ones&r.zeros);if(conflict){stats.prunes++;return{point:r.point,channels:conflict.toString()};}}}return null;}
- return{learnPair,support,rebuild,rejects,get revision(){return revision;},
+ function memory(){let values=0;for(const r of aggregate.values())for(let bits of [r.zeros,r.ones])while(bits){bits&=bits-1n;values++;}return{points:aggregate.size,values};}
+ return{learnPair,support,rebuild,rejects,memory,get revision(){return revision;},
   snapshot:()=>({revision,rules:ruleCount,...stats,addresses:[...tables.values()].reduce((s,rows)=>s+new Set([...rows.values()].map(r=>latticeKey(r.offset))).size,0),certificates,tables:[...tables].map(([type,rows])=>({type,rows:[...rows.values()]}))})};
 }

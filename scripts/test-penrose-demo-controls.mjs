@@ -5,7 +5,7 @@ import { createPenroseGrowth } from "../assets/penrose-growth.js";
 
 // Controller unit test with a DOM/canvas transport double, not a browser or
 // local preview. The real worker protocol has its own integration test.
-const html = await readFile(new URL("../apps/penrose-model-set/index.html", import.meta.url), "utf8");
+const html = await readFile(new URL("../apps/penrose-model-set/ammann.html", import.meta.url), "utf8");
 const ids = [...html.matchAll(/id="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length);
 assert.equal((html.match(/<canvas /g) || []).length, 1);
