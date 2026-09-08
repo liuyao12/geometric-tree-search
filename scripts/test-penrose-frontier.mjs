@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {createMixedGrowth} from '../assets/penrose-mixed-growth.js';
 for(const useMarkings of [false,true]){
- const search=createMixedGrowth({tileKinds:['thick','thin'],useMarkings,extent:2,targetCount:18,nodeLimit:200});
+ const search=createMixedGrowth({tileKinds:['thick','thin'],useMarkings,extent:2,targetCount:18,nodeLimit:1000});
  let additions=0,removals=0;const stack=[];
  for(let n=0;n<2000;n++){
   const before=search.inspectGraph();const r=search.next();if(r.done)break;
@@ -30,4 +30,4 @@ for(const useMarkings of [false,true]){
 // forced chains; a finite patch target is deliberately not supplied.
 const s=createMixedGrowth({tileKinds:['thin'],useMarkings:true,extent:2,targetCount:null,nodeLimit:100});
 const parents=[];let count=0;while(true){const before=s.inspectGraph(),r=s.next();if(r.done)break;if(r.value.type==='try')parents.push(before);if(r.value.type==='remove'){assert.deepEqual(s.inspectGraph(),parents.pop());count++;}}
-assert.equal(s.snapshot().status,'frontier exhausted');assert(s.snapshot().graph.deadPoints>0);assert.equal(s.snapshot().graph.fullBuilds,1);console.log('ok: impossible subset detects dead points');
+assert.equal(s.snapshot().status,'frontier exhausted');assert(s.snapshot().stats.deadPoints>0);assert.equal(s.snapshot().graph.fullBuilds,1);console.log('ok: impossible subset detects dead points');

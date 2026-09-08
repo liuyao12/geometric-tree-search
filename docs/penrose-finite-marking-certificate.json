@@ -1,0 +1,110 @@
+{
+  "scope": "All nonoverlapping, whole-edge, vertex-aligned pairs in the fixed P1/P2/P3 catalog, modulo a rigid motion of the first tile. Mixed pairs included. No claim of exhaustive distant placements or infinite extendibility.",
+  "oracle": "P3 Ammann edge ports (independently checked against arrows); P1/P2 transferred bar edge ports; mixed ports experimental.",
+  "neighbors": 8012,
+  "allowed": 7486,
+  "forbidden": 526,
+  "sharedEdge": 772,
+  "proposedOrbits": 494,
+  "incompatibleOrbitPairs": 1129,
+  "selectedOrbits": 239,
+  "entries": {
+    "p3": 53,
+    "p5": 60,
+    "diamond": 31,
+    "p2": 46,
+    "boat": 52,
+    "star": 50,
+    "kite": 70,
+    "dart": 54,
+    "thick": 77,
+    "thin": 70
+  },
+  "levels": [
+    {
+      "extent": 0,
+      "orbits": 44,
+      "entries": 112
+    },
+    {
+      "extent": 0.25,
+      "orbits": 52,
+      "entries": 136
+    },
+    {
+      "extent": 0.5,
+      "orbits": 82,
+      "entries": 202
+    },
+    {
+      "extent": 0.75,
+      "orbits": 79,
+      "entries": 196
+    },
+    {
+      "extent": 1,
+      "orbits": 83,
+      "entries": 203
+    },
+    {
+      "extent": 1.25,
+      "orbits": 83,
+      "entries": 203
+    },
+    {
+      "extent": 1.5,
+      "orbits": 84,
+      "entries": 205
+    },
+    {
+      "extent": 1.75,
+      "orbits": 84,
+      "entries": 205
+    },
+    {
+      "extent": 2,
+      "orbits": 88,
+      "entries": 213
+    },
+    {
+      "extent": 2.25,
+      "orbits": 86,
+      "entries": 209
+    },
+    {
+      "extent": 2.5,
+      "orbits": 86,
+      "entries": 209
+    },
+    {
+      "extent": 2.75,
+      "orbits": 86,
+      "entries": 209
+    },
+    {
+      "extent": 3,
+      "orbits": 88,
+      "entries": 213
+    },
+    {
+      "extent": 3.25,
+      "orbits": 81,
+      "entries": 200
+    },
+    {
+      "extent": 3.5,
+      "orbits": 91,
+      "entries": 228
+    },
+    {
+      "extent": 3.75,
+      "orbits": 91,
+      "entries": 228
+    },
+    {
+      "extent": 4,
+      "orbits": 94,
+      "entries": 233
+    }
+  ]
+}

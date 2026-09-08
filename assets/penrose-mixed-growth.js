@@ -4,7 +4,7 @@ import {ammannStates,exactlyPerpendicular} from './penrose-ammann.js?v=20260907-
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
 import {num,add,sub,mul,conj,areaSign,overlap,onSegment,same,box,separated} from './penrose-polygon.js';
 import {tileStates,edgeKey,mixedMarkingsCompatible} from './penrose-mixed-markings.js?v=20260907-frontier';
-import { createPenrosePointSearch } from './penrose-point-search.js?v=20260907-contacts';
+import { createPenrosePointSearch } from './penrose-point-search.js?v=20260907-finite';
 export const TILE_KINDS=['thick','thin','kite','dart','p5','p3','p2','diamond','boat','star'];
 const axes=Array.from({length:5},(_,i)=>canonical({coeff:Array.from({length:5},(_,j)=>+(i===j)),denominator:1}));
 const hash=(s,seed)=>{let h=(2166136261^seed)>>>0;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
@@ -18,7 +18,7 @@ export function mixedVariants(){
     if(areaSign(exactPoints)<0){exactPoints.reverse();weights.reverse();}
     const bars=template.bars.map(b=>{const from=transform(b.from),to=transform(b.to);return{from,to,family:axes.findIndex(a=>exactlyPerpendicular(sub(to,from),a))};});
     const id=template.kind+':'+exactPoints.map(latticeKey).sort().join('|')+'@'+bars.map(b=>[latticeKey(b.from),latticeKey(b.to)].sort().join('>')).sort().join('|');
-    const variant={kind:template.kind,presentation:template.presentation,exactPoints,weights,bars,variantId:id};
+    const variant={kind:template.kind,presentation:template.presentation,exactPoints,weights,bars,markingTransform:{factor,reflect,delta:num(0)},variantId:id};
     if(template.presentation==='P3'){
       const signature=bs=>bs.map(b=>[latticeKey(b.from),latticeKey(b.to)].sort().join('>')).sort().join('|');
       variant.arrowStart=ammannStates(variant).find(s=>signature(s.bars)===signature(bars))?.start;
@@ -32,7 +32,7 @@ export function translateVariant(v,delta){
   const exactPoints=v.exactPoints.map(p=>add(p,delta)),vertices=exactPoints.map(latticeKey);
   const bars=v.bars.map(b=>({...b,from:add(b.from,delta),to:add(b.to,delta)}));
   const id=v.kind+':'+vertices.slice().sort().join('|')+'@'+bars.map(b=>[latticeKey(b.from),latticeKey(b.to)].sort().join('>')).sort().join('|');
-  return {kind:v.kind,presentation:v.presentation,exactPoints,vertices,weights:v.weights,bars,id,arrowStart:v.arrowStart};
+  return {kind:v.kind,presentation:v.presentation,exactPoints,vertices,weights:v.weights,bars,id,markingTransform:v.markingTransform?{...v.markingTransform,delta:add(v.markingTransform.delta,delta)}:undefined,arrowStart:v.arrowStart};
 }
 export function mixedGeometryConflict(a,b){
   if(separated(box(a.exactPoints),box(b.exactPoints)))return false;

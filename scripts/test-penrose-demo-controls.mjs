@@ -46,7 +46,7 @@ elements.get("tilingCanvas").fire("pointermove", { clientX: 400, clientY: 250 })
 assert.equal(elements.get("pointTooltip").hidden, false);
 assert.equal(elements.get("point_coordinate").textContent, "x = 0");
 assert.match(elements.get("point_t").textContent, /t\(x\) = [1-4]\/5/);
-assert.match(elements.get("point_m").textContent, /m\(x\) = \(0, 0, 0, 0, 0\)/);
+assert.match(elements.get("point_m").textContent, /m\(x\) = undefined/);
 elements.get("tilingCanvas").fire("pointerleave");
 assert.equal(elements.get("pointTooltip").hidden, true);
 elements.get("showMarking").fire("click"); elements.get("directionColors").fire("input"); elements.get("stripeWidth").fire("input");
@@ -54,7 +54,7 @@ const { inspectionPoints } = await import("../apps/penrose-model-set/point-inspe
 const endpoint = inspectionPoints(workers[0].growth.snapshot()).find(p => !p.vertex);
 elements.get("tilingCanvas").fire("pointermove", { clientX: 400 + endpoint.position.x * 50, clientY: 250 + endpoint.position.y * 50 });
 assert.equal(elements.get("pointTooltip").hidden, false);
-assert.equal(elements.get("point_title").textContent, "Ammann endpoint");
+assert.equal(elements.get("point_title").textContent, "Fixed marking point");
 assert.match(elements.get("point_t").textContent, /t\(x\) = 0/);
 assert.match(elements.get("point_m").textContent, /m\(x\) = \(/);
 elements.get("pointDensity").value = "integers"; elements.get("pointDensity").fire("change");

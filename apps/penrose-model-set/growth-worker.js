@@ -1,6 +1,6 @@
-import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-contacts";
+import { createPenroseGrowth } from "../../assets/penrose-growth.js?v=20260907-finite";
 
-import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-contacts";
+import { createMixedGrowth } from "../../assets/penrose-mixed-growth.js?v=20260907-finite";
 
 import { createSearchStatus } from "./search-status.js?v=20260907-activity";
 

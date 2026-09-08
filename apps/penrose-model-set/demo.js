@@ -3,7 +3,7 @@ import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-fr
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-contacts";
+import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-finite";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
@@ -141,7 +141,7 @@ function syncSettings() {
   $("matchingPrunesLabel").textContent = enabled ? "Ammann prunes" : "edge prunes";
   $("modeLabel").textContent = enabled ? "Ammann matching · no explicit edge check" : classic ? "Explicit Penrose edge-arrow matching" : "Explicit edge-decoration matching";
   $("markingHint").textContent = enabled
-    ? `All five directions enforced · extent ${$("extent").value}× per stripe end. Overlapping extensions must agree; no edge-arrow predicate is called.`
+    ? `All five directions enforced · extent ${$("extent").value}× per stripe end. Only shared finite marking points are compared; no edge-arrow predicate is called.`
     : classic ? "Single/double arrows must agree in type and direction on shared edges. Ammann bars are not checked."
     : "Colored edge ports must agree in position and direction on shared edges. Extended bars are not checked.";
 }
@@ -192,7 +192,7 @@ function reset(autostart = false) {
   if (!options.tileKinds.length) { error("Choose at least one tile"); return; }
   $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-contacts", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-finite", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;
