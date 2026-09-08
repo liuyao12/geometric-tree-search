@@ -1,6 +1,6 @@
-import {num,add} from './penrose-polygon.js';
-import {arrowStates} from './penrose-arrows.js';
-import {makeCyclotomicProblem} from './cyclotomic-tile-catalog.js';
+import {num,add} from './penrose-polygon.js?v=20260908-speed';
+import {arrowStates} from './penrose-arrows.js?v=20260908-speed';
+import {makeCyclotomicProblem} from './cyclotomic-tile-catalog.js?v=20260908-speed';
 // Standalone shape/optional-arrow input. This fixture does not import or query
 // Ammann templates, the live marked variant catalog, or a reference tiling.
 export function blindPenroseProblem({arrows=true,kinds=['thick','thin']}={}){

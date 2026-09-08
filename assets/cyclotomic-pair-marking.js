@@ -1,4 +1,4 @@
-import {canonical,latticeKey,cycloAdd,cycloMultiply,starMap} from './cyclotomic-five.js';
+import {canonical,latticeKey,cycloAdd,cycloMultiply,starMap} from './cyclotomic-five.js?v=20260908-speed';
 const zero={coeff:[0,0,0,0],denominator:1};
 const sub=(a,b)=>cycloAdd(a,{...canonical(b),coeff:canonical(b).coeff.map(n=>-n)});
 // A fresh channel encodes one proven forbidden relative pair. Distinct
@@ -7,6 +7,7 @@ const sub=(a,b)=>cycloAdd(a,{...canonical(b),coeff:canonical(b).coeff.map(n=>-n)
 export function createPairPointMarking({pose,anchor,rigid,actions}){
  const tables=new Map(),known=new Set(),cache=new WeakMap(),prepared=new Map(),certificates=[];let revision=0,ruleCount=0,aggregate=new Map();
  const stats={entries:0,checks:0,prunes:0};
+ let detailCache=null,activeMemory=null;
  const pairKey=(a,b)=>[pose(a)+'|'+pose(b)+'|'+latticeKey(sub(anchor(b),anchor(a))),pose(b)+'|'+pose(a)+'|'+latticeKey(sub(anchor(a),anchor(b)))].sort()[0];
  function support(tile){const old=cache.get(tile);if(old?.revision===revision)return old.rows;
   const type=pose(tile);let plan=prepared.get(type);
@@ -35,11 +36,14 @@ export function createPairPointMarking({pose,anchor,rigid,actions}){
    add(pose(x),sub(witness,anchor(x)),channel,0);add(pose(y),sub(witness,anchor(y)),channel,1);
   });revision++;return true;
  }
- function rebuild(tiles){aggregate=new Map();for(const tile of tiles)for(const r of support(tile)){
+ function rebuild(tiles){activeMemory=null;aggregate=new Map();for(const tile of tiles)for(const r of support(tile)){
   const old=aggregate.get(r.key);if(old){old.zeros|=r.zeros;old.ones|=r.ones;}else aggregate.set(r.key,{zeros:r.zeros,ones:r.ones});
  }}
  function rejects(tile){stats.checks++;for(const r of support(tile)){const value=aggregate.get(r.key);if(value){const conflict=(value.zeros&r.ones)|(value.ones&r.zeros);if(conflict){stats.prunes++;return{point:r.point,channels:conflict.toString()};}}}return null;}
- function memory(){let values=0;for(const r of aggregate.values())for(let bits of [r.zeros,r.ones])while(bits){bits&=bits-1n;values++;}return{points:aggregate.size,values};}
+ function memory(){if(activeMemory)return activeMemory;let values=0;for(const r of aggregate.values())for(let bits of [r.zeros,r.ones])while(bits){bits&=bits-1n;values++;}return activeMemory={points:aggregate.size,values};}
  return{learnPair,support,rebuild,rejects,memory,get revision(){return revision;},
-  snapshot:()=>({revision,rules:ruleCount,...stats,addresses:[...tables.values()].reduce((s,rows)=>s+new Set([...rows.values()].map(r=>latticeKey(r.offset))).size,0),certificates,tables:[...tables].map(([type,rows])=>({type,rows:[...rows.values()]}))})};
+  snapshot({details=true}={}){
+   if(detailCache?.revision!==revision)detailCache={revision,addresses:[...tables.values()].reduce((s,rows)=>s+new Set([...rows.values()].map(r=>latticeKey(r.offset))).size,0),certificates:certificates.slice(),tables:[...tables].map(([type,rows])=>({type,rows:[...rows.values()]}))};
+   return{revision,rules:ruleCount,...stats,addresses:detailCache.addresses,...(details?{certificates:detailCache.certificates,tables:detailCache.tables}:{})};
+  }};
 }

@@ -1,4 +1,4 @@
-import { canonical, cycloAdd, cycloMultiply, embedding } from './cyclotomic-five.js';
+import { canonical, cycloAdd, cycloMultiply, embedding } from './cyclotomic-five.js?v=20260908-speed';
 
 export function validateExtent(extent) {
   if (!Number.isFinite(extent) || extent < 0 || extent > 4 || !Number.isInteger(extent * 4)) throw new RangeError('Extent must be 0–4 in quarter steps');

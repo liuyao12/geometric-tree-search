@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {createDisplayCache} from '../apps/penrose-model-set/learning-display.js';
+import {cycloAdd,latticeKey} from '../assets/cyclotomic-five.js';
+const p=(x,y=0)=>({coeff:[x,y,0,0],denominator:1});
+const tiles=[{id:'a',type:'x',kind:'thick',origin:p(0),exactPoints:[p(0),p(1),p(1,1),p(0,1)],weights:[2,3,2,3]},{id:'b',type:'x',kind:'thick',origin:p(1),exactPoints:[p(1),p(2),p(2,1),p(1,1)],weights:[2,3,2,3]}];
+const tables=[{type:'x',rows:[{offset:p(0),channel:0,value:0},{offset:p(0),channel:1,value:1},{offset:p(1),channel:0,value:1}]}];
+const oracle=(ts,model)=>{const points=new Map();const get=p=>{const k=latticeKey(p);if(!points.has(k))points.set(k,{total:0,values:new Map()});return points.get(k);};for(const t of ts){t.exactPoints.forEach((p,i)=>get(p).total+=t.weights[i]);for(const r of model[0].rows){const a=get(cycloAdd(t.origin,r.offset)),old=a.values.get(r.channel);a.values.set(r.channel,old!==undefined&&old!==r.value?'conflict':r.value);}}return points;};
+const cache=createDisplayCache(),check=(ts,m)=>{const f=cache.frame(ts,m);assert.deepEqual(new Map(f.points.map(p=>[latticeKey(p.point),{total:p.total,values:p.values}])),oracle(ts,m));return f;};
+check(tiles,tables);check(structuredClone(tiles),tables);check(tiles.slice(0,1),tables);check(tiles,[{type:'x',rows:[...tables[0].rows,{offset:p(0,1),channel:4,value:0}]}]);assert(cache.frame(tiles,tables,false).points.every(p=>!p.values.size));check(tiles,tables);
+console.log('ok: cached drawing preserves zeros, conflicts, model changes, backtracking, and display toggles');

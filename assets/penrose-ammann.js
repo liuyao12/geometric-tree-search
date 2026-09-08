@@ -1,6 +1,6 @@
-import { canonical, cycloAdd, cycloMultiply, edgePort, latticeKey, starMap } from "./cyclotomic-five.js";
+import { canonical, cycloAdd, cycloMultiply, edgePort, latticeKey, starMap } from "./cyclotomic-five.js?v=20260908-speed";
 
-import { extensionStatesCompatible, validateExtent } from "./penrose-extensions.js?v=20260907-extent";
+import { extensionStatesCompatible, validateExtent } from "./penrose-extensions.js?v=20260908-speed";
 
 const sub = (a, b) => cycloAdd(a, { ...canonical(b), coeff: canonical(b).coeff.map(n => -n) });
 const conjugate = a => starMap(starMap(a));

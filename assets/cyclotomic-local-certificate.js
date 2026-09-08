@@ -1,4 +1,4 @@
-import {latticeKey,canonical,cycloAdd} from './cyclotomic-five.js';
+import {latticeKey,canonical,cycloAdd} from './cyclotomic-five.js?v=20260908-speed';
 const sub=(a,b)=>cycloAdd(a,{...canonical(b),coeff:canonical(b).coeff.map(n=>-n)});
 // Exhaustive finite completion of ONE prescribed point. Other frontier points
 // are deliberately relaxed. Thus failure is sound; success proves only this

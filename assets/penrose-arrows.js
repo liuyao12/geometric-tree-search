@@ -1,4 +1,4 @@
-import { latticeKey } from './cyclotomic-five.js';
+import { latticeKey } from './cyclotomic-five.js?v=20260908-speed';
 
 // Standard Penrose P3 edge arrows: same type and direction on a shared edge.
 // Andrejs Treibergs, Penrose Tiling, slide 17:

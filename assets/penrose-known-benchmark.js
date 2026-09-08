@@ -1,10 +1,10 @@
-import {MIXED_TEMPLATES} from './penrose-mixed-templates.js';
-import {canonical} from './cyclotomic-five.js';
-import {num,add,sub,mul,conj} from './penrose-polygon.js';
-import {arrowStates} from './penrose-arrows.js';
-import {ammannStates,exactlyPerpendicular} from './penrose-ammann.js';
-import {mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js';
-import {box} from './penrose-polygon.js';
+import {MIXED_TEMPLATES} from './penrose-mixed-templates.js?v=20260908-speed';
+import {canonical} from './cyclotomic-five.js?v=20260908-speed';
+import {num,add,sub,mul,conj} from './penrose-polygon.js?v=20260908-speed';
+import {arrowStates} from './penrose-arrows.js?v=20260908-speed';
+import {ammannStates,exactlyPerpendicular} from './penrose-ammann.js?v=20260908-speed';
+import {mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260908-speed';
+import {box} from './penrose-polygon.js?v=20260908-speed';
 // Benchmark-only adapter. It is never supplied to the blind learner.
 export function knownPenroseBenchmark(problem,extent=2){
  const cache=new WeakMap();
@@ -20,5 +20,7 @@ export function knownPenroseBenchmark(problem,extent=2){
   if(!arrow)throw Error('Independent input arrows do not match the benchmark orientation');
   const state=ammannStates(t).find(s=>s.start===arrow.start);cache.set(t,{...t,bars:state.bars,arrowStart:arrow.start});
  }return cache.get(t);}
- return{decorate:marked,problem:{...problem,footprint:t=>box([...t.exactPoints,...extendedBars(marked(t),extent).flatMap(b=>[b.from,b.to])])},extraAllowed:(a,b)=>mixedMarkingsCompatible(marked(a),marked(b),extent)};
+ const boxes=new WeakMap(),footprint=t=>{if(!boxes.has(t))boxes.set(t,box([...t.exactPoints,...extendedBars(marked(t),extent).flatMap(b=>[b.from,b.to])]));return boxes.get(t);};
+ const direct=(a,b)=>mixedMarkingsCompatible(marked(a),marked(b),extent);
+ return{decorate:marked,problem:{...problem,footprint},extraAllowed:problem.memoizePairs?problem.memoizePairs(direct,{footprint}):direct};
 }

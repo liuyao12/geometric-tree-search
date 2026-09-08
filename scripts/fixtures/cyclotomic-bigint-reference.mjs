@@ -1,16 +1,10 @@
+// Reference implementation from commit 1e5094b69, retained only for arithmetic differential tests.
 // Q(zeta_5), in the independent basis 1,zeta,zeta²,zeta³.
 // Rational denominators are for decoration ports/centres, not lattice vertices.
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) [a, b] = [b, a % b]; return a; };
 const safe = n => { const value = Number(n); if (!Number.isSafeInteger(value)) throw new RangeError("Cyclotomic coefficient overflow"); return value; };
 export function canonical(point) {
   if (![4, 5].includes(point.coeff.length) || !point.coeff.every(Number.isSafeInteger) || !Number.isSafeInteger(point.denominator ?? 1) || (point.denominator ?? 1) <= 0) throw new TypeError("Expected exact cyclotomic coefficients and a positive denominator");
-  // IEEE doubles represent these integer operations exactly inside the safe
-  // range. Keep BigInt as the checked fallback for larger intermediates.
-  const gaugeNumber=point.coeff[4]??0,coeffNumber=point.coeff.slice(0,4).map(n=>n-gaugeNumber),den=point.denominator??1;
-  if(coeffNumber.every(Number.isSafeInteger)){
-    let divisor=den;if(divisor!==1)for(const n of coeffNumber){let a=Math.abs(n),b=divisor;while(b){const r=a%b;a=b;b=r;}divisor=a;if(divisor===1)break;}
-    return{coeff:coeffNumber.map(n=>n/divisor||0),denominator:den/divisor};
-  }
   const gauge = BigInt(point.coeff[4] ?? 0);
   const coeff = point.coeff.slice(0, 4).map(n => BigInt(n) - gauge);
   const d = BigInt(point.denominator ?? 1);
@@ -21,21 +15,10 @@ export const latticeKey = p => { const q = canonical(p); return `${q.coeff.join(
 export const asFive = p => { const q = canonical(p); return { coeff: [...q.coeff, 0], denominator: q.denominator }; };
 export function cycloAdd(a, b) {
   a = canonical(a); b = canonical(b);
-  const denominator=a.denominator*b.denominator;
-  if(Number.isSafeInteger(denominator)){
-    const left=a.coeff.map(n=>n*b.denominator),right=b.coeff.map(n=>n*a.denominator),coeff=left.map((n,i)=>n+right[i]);
-    if([...left,...right,...coeff].every(Number.isSafeInteger))return canonical({coeff,denominator});
-  }
   return canonical({ coeff: a.coeff.map((n, i) => safe(BigInt(n) * BigInt(b.denominator) + BigInt(b.coeff[i]) * BigInt(a.denominator))), denominator: safe(BigInt(a.denominator) * BigInt(b.denominator)) });
 }
 export function cycloMultiply(a, b) {
   a = canonical(a); b = canonical(b);
-  const denominator=a.denominator*b.denominator;
-  if(Number.isSafeInteger(denominator)&&Math.max(...a.coeff.map(Math.abs))*Math.max(...b.coeff.map(Math.abs))<=Number.MAX_SAFE_INTEGER/64){
-    const c=Array(7).fill(0);for(let i=0;i<4;i++)for(let j=0;j<4;j++)c[i+j]+=a.coeff[i]*b.coeff[j];
-    for(let i=6;i>=4;i--)for(let j=1;j<=4;j++)c[i-j]-=c[i];
-    return canonical({coeff:c.slice(0,4),denominator});
-  }
   const c = Array(7).fill(0n);
   a.coeff.forEach((x, i) => b.coeff.forEach((y, j) => { c[i + j] += BigInt(x) * BigInt(y); }));
   for (let i = 6; i >= 4; i--) for (let j = 1; j <= 4; j++) c[i - j] -= c[i];

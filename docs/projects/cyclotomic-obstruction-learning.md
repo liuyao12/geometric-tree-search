@@ -153,3 +153,41 @@ Mixed inputs use the existing common scale and whole-edge convention. P1
 cannot share whole edges with P2/P3 at that scale; mixed P2/P3 can be attempted.
 Selecting a tile permits it rather than requiring it, and an arbitrary subset
 may exhaust its frontier. No mixed input is promised an infinite Penrose tiling.
+
+## Performance repair (2026-09-08)
+
+The multi-set app repeatedly normalized small exact coordinates with BigInt,
+reconstructed boundary labels for discarded candidates, repeated equivalent
+relative-pair tests, exported full models/proof tables every display batch,
+and translated each displayed point once per scalar fiber value. Three workers
+amplified the serialization and main-thread rendering cost.
+
+The repaired implementation uses checked safe-integer arithmetic with the
+original BigInt fallback; lazy boundary labels; bounded relative-pair caches
+(8192 results per predicate); lightweight corona checks; cached model exports;
+compact worker frames with model definitions only when their revision changes;
+and display caches grouped by geometric address. Batches run for approximately
+50 ms, with Step and exact corona pauses retained. The geometric and Ammann
+predicates are unchanged; cached predicates exclude dynamic capacity and learned
+constraints. No branch ordering or proof criterion was weakened.
+
+Two alternating-order comparisons against commit `1e5094b69` gave:
+
+| Benchmark | Before | After | Speedup |
+| --- | ---: | ---: | ---: |
+| P3, corona 3, worker + display preparation | 15.89 s | 2.12 s | 7.49× |
+| P2, eight-tile core search | 0.98 s | 0.30 s | 3.29× |
+| P1, eight-tile core search | 19.67 s | 7.11 s | 2.77× |
+
+P3 reached the same 159 tiles with 380 proposals and 28 rules. Its display
+traffic dropped from approximately 55.8 MB to 1.25 MB. P1/P2 full event traces
+and learned table hashes agree exactly across versions. The P3 benchmark
+includes structured cloning and point-display preparation, not browser paint
+or three-worker CPU contention; these timings are not universal device promises.
+See [performance report](../penrose-speed-report.json).
+
+The optimized arithmetic was compared with the former BigInt implementation
+on 60,000 randomized operations, including large coefficients and overflow.
+Additional checks cover relative-pair translation invariance and eviction,
+all tile sets, graph rollback, model delta messages, cached point inspection,
+known-bar rendering data, and corona-3/5 continuation.

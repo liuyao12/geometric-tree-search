@@ -7,7 +7,7 @@ export function createLaneRunner({makeWorker,notify,schedule=fn=>setTimeout(fn,0
  function pump(id,step=false){const l=lanes[id];if(!l||!eligible(l))return;l.busy=true;l.worker.postMessage({type:'advance',targetCorona:target,step});}
  function reset(){epoch++;const version=epoch;Object.values(lanes).forEach(l=>l.worker.terminate());running=false;target=3;lanes={};
   for(const id of LANE_IDS){const worker=makeWorker(),l=lanes[id]={worker,busy:true,state:null};
-   worker.onmessage=({data})=>{if(version!==epoch)return;l.busy=false;l.state=data;
+   worker.onmessage=({data})=>{if(version!==epoch)return;l.busy=false;if(data.learning&&!data.learning.tables)data.learning.tables=l.state?.learning?.tables||[];l.state=data;
     if(LANE_IDS.every(k=>lanes[k]?.state&&(lanes[k].state.done||lanes[k].state.pausedCorona===target)))running=false;
     emit();if(running&&eligible(l))schedule(()=>{if(version===epoch&&running)pump(id);});};
    worker.onerror=e=>worker.onmessage({data:{done:true,error:e.message}});

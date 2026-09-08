@@ -1,4 +1,4 @@
-import {canonical,latticeKey,cycloAdd} from './cyclotomic-five.js';
+import {canonical,latticeKey,cycloAdd} from './cyclotomic-five.js?v=20260908-speed';
 const sub=(a,b)=>cycloAdd(a,{...canonical(b),coeff:canonical(b).coeff.map(n=>-n)});
 const popcount=n=>{let c=0;while(n){n&=n-1n;c++;}return c;};
 
@@ -57,7 +57,7 @@ export function createObstructionMarking({movesAt,pairAllowed,pose,anchor,
   }
   function exportTables(){return [...tables].map(([type,rows])=>({type,rows:[...rows.values()].map(r=>({offset:r.offset,mask:r.mask.toString()}))}));}
   return{learn,rebuild,rejects,support,
-    snapshot(){return{revision,slotCount,...stats,cachedMasks:maskCache.size,tables:exportTables()};},
+    snapshot({details=true}={}){return{revision,slotCount,...stats,cachedMasks:maskCache.size,...(details?{tables:exportTables()}:{})};},
     // Exposes certified rows for independent validation, never a training oracle.
     rows(){return exportTables();}
   };

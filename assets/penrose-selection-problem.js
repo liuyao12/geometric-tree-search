@@ -1,6 +1,6 @@
-import {blindPenroseProblem} from './penrose-blind-problem.js';
-import {makeCyclotomicProblem} from './cyclotomic-tile-catalog.js?v=20260908-sets';
-import {LOCAL_TEMPLATES} from './penrose-local-templates.js';
+import {blindPenroseProblem} from './penrose-blind-problem.js?v=20260908-speed';
+import {makeCyclotomicProblem} from './cyclotomic-tile-catalog.js?v=20260908-speed';
+import {LOCAL_TEMPLATES} from './penrose-local-templates.js?v=20260908-speed';
 export const TILE_KINDS=['thick','thin','kite','dart','p5','p3','p2','diamond','boat','star'];
 export const TILE_PRESETS={P3:['thick','thin'],P2:['kite','dart'],P1:['p5','p3','p2','diamond','boat','star'],all:TILE_KINDS};
 export function selectedPenroseProblem(kinds=TILE_PRESETS.P3){

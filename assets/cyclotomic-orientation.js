@@ -1,4 +1,4 @@
-import {canonical} from './cyclotomic-five.js';
+import {canonical} from './cyclotomic-five.js?v=20260908-speed';
 const sine = [[0n, 0n], [2n, 0n], [-1n, 1n], [1n, -1n], [-2n, 0n]];
 const sign = (a, b) => {
   if (!b) return a < 0n ? -1 : a > 0n ? 1 : 0;

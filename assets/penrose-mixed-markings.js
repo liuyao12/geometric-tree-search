@@ -1,7 +1,7 @@
-import {latticeKey} from './cyclotomic-five.js';
-import {ammannStates} from './penrose-ammann.js?v=20260907-extent';
-import {extendBar,markingValue} from './penrose-extensions.js?v=20260907-extent';
-import {pointInPolygon,onSegment,segmentCuts,lerp,num,add,mul,box,separated} from './penrose-polygon.js';
+import {latticeKey} from './cyclotomic-five.js?v=20260908-speed';
+import {ammannStates} from './penrose-ammann.js?v=20260908-speed';
+import {extendBar,markingValue} from './penrose-extensions.js?v=20260908-speed';
+import {pointInPolygon,onSegment,segmentCuts,lerp,num,add,mul,box,separated} from './penrose-polygon.js?v=20260908-speed';
 export const edgeKey=(a,b)=>[latticeKey(a),latticeKey(b)].sort().join('|');
 const states=new WeakMap(),extensions=new WeakMap();
 export function tileStates(tile){

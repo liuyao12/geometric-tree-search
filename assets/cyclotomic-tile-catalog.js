@@ -1,5 +1,5 @@
-import {canonical,latticeKey} from './cyclotomic-five.js';
-import {num,add,sub,mul,conj,areaSign,overlap,onSegment,same,box,separated} from './penrose-polygon.js';
+import {canonical,latticeKey} from './cyclotomic-five.js?v=20260908-speed';
+import {num,add,sub,mul,conj,areaSign,overlap,onSegment,same,box,separated} from './penrose-polygon.js?v=20260908-speed';
 // Input labels are optional directed edge labels from the problem definition.
 // No marking patterns, bar positions, reference patch, or tile-name rules exist
 // in this catalog generator or its geometry predicate.
@@ -24,10 +24,16 @@ export function cyclotomicCatalog(templates,{reflections=true}={}){
 }
 export function translateCatalogTile(v,origin){
  const exactPoints=v.exactPoints.map(p=>add(p,origin)),vertices=exactPoints.map(latticeKey);
- const labels=v.labels.map(l=>transformLabel(l,p=>add(p,origin),p=>p));
- const signatures=new Map(labels.map(l=>[[latticeKey(l.from),latticeKey(l.to)].sort().join('|'),labelValue(l)]));
  const physicalOrigin=add(origin,v.offset||num(0));
- return{...v,exactPoints,vertices,labels,signatures,origin:physicalOrigin,id:v.type+'#'+latticeKey(physicalOrigin)};
+ const tile={...v,exactPoints,vertices,origin:physicalOrigin,id:v.type+'#'+latticeKey(physicalOrigin)};
+ let labels,signatures;
+ // Most enumerated placements are duplicates or fail capacity/geometry.
+ // Construct boundary decorations only if an actual comparison needs them.
+ Object.defineProperties(tile,{
+  labels:{enumerable:true,get:()=>labels||(labels=v.labels.map(l=>transformLabel(l,p=>add(p,origin),p=>p)))},
+  signatures:{enumerable:true,get:()=>signatures||(signatures=new Map(tile.labels.map(l=>[[latticeKey(l.from),latticeKey(l.to)].sort().join('|'),labelValue(l)])))}
+ });
+ return tile;
 }
 export function geometricPairAllowed(a,b){
  if(separated(box(a.exactPoints),box(b.exactPoints)))return true;
@@ -48,6 +54,22 @@ export function makeCyclotomicProblem(templates,{fullWeight,reflections=true}={}
  const axes=Array.from({length:5},(_,i)=>canonical({coeff:Array.from({length:5},(_,j)=>+(i===j)),denominator:1}));
  const actions=axes.flatMap(a=>[1,-1].flatMap(sign=>(reflections?[false,true]:[false]).map(reflect=>({factor:mul(a,num(sign)),reflect}))));
  const actionCache=new Map(),byType=new Map(catalog.map(v=>[v.type,v]));
+ const typeNumbers=new Map(catalog.map((t,i)=>[t.type,i])),memoStats=[];
+ // Predicates on fixed oriented tiles depend on relative placement only.
+ // Bound each cache; do not retain tile objects or whole search branches.
+ function memoizePairs(predicate,{limit=8192,footprint=t=>box(t.exactPoints)}={}){
+  const values=new Map(),stats={hits:0,misses:0,entries:0,limit};memoStats.push(stats);
+  return(a,b)=>{
+   if(separated(footprint(a),footprint(b)))return true;
+   let i=typeNumbers.get(a.type),j=typeNumbers.get(b.type);if(i===undefined||j===undefined)return predicate(a,b);
+   let delta=sub(b.origin,a.origin);if(i>j){[i,j]=[j,i];delta={...delta,coeff:delta.coeff.map(n=>-n)};}
+   let key=latticeKey(delta);if(i===j)key=[key,latticeKey({...delta,coeff:delta.coeff.map(n=>-n)})].sort()[0];key=i+'|'+j+'|'+key;
+   if(values.has(key)){stats.hits++;return values.get(key);}stats.misses++;const value=predicate(a,b);
+   if(values.size>=limit)values.delete(values.keys().next().value);values.set(key,value);stats.entries=values.size;return value;
+  };
+ }
+ const pairAllowed=memoizePairs(geometricPairAllowed);
+
  function rigid(tile,g){
   const key=tile.type+'@'+JSON.stringify(g),act=p=>mul(g.factor,g.reflect?conj(p):p);let plan=actionCache.get(key);
   if(!plan){const v=byType.get(tile.type);let points=v.exactPoints.map(act),weights=v.weights.slice();if(areaSign(points)<0){points.reverse();weights.reverse();}
@@ -59,6 +81,6 @@ export function makeCyclotomicProblem(templates,{fullWeight,reflections=true}={}
   return translateCatalogTile(plan.target,add(act(tile.origin),plan.offset));
  }
  return{catalog,actions,rigid,resolve:(type,origin)=>{const v=byType.get(type);if(!v)throw Error('Unknown oriented tile in proof');return translateCatalogTile(v,origin);},translate:(t,d)=>translateCatalogTile(byType.get(t.type),add(t.origin,d)),fullWeight,seedTile:translateCatalogTile(catalog[0],num(0)),
-  movesAt:p=>moves.map(t=>translateCatalogTile(t,p)),pairAllowed:geometricPairAllowed,
+  movesAt:p=>moves.map(t=>translateCatalogTile(t,p)),pairAllowed,memoizePairs,cacheStats:()=>memoStats.map(s=>({...s})),
   footprint:t=>box(t.exactPoints),pose:t=>t.type,anchor:t=>t.origin};
 }

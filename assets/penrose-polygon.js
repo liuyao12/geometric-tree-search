@@ -1,5 +1,5 @@
-import {canonical,cycloAdd,cycloMultiply,embedding,latticeKey} from './cyclotomic-five.js';
-import {rationalOrientation as orient} from './cyclotomic-orientation.js';
+import {canonical,cycloAdd,cycloMultiply,embedding,latticeKey} from './cyclotomic-five.js?v=20260908-speed';
+import {rationalOrientation as orient} from './cyclotomic-orientation.js?v=20260908-speed';
 export {orient};
 export const num=(n,d=1)=>canonical({coeff:[n,0,0,0],denominator:d});
 export const neg=p=>({...canonical(p),coeff:canonical(p).coeff.map(n=>-n)});
