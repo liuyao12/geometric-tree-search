@@ -3,7 +3,7 @@ import { tileStates } from "../../assets/penrose-mixed-markings.js?v=20260907-fr
 
 import { arrowStates } from "../../assets/penrose-arrows.js?v=20260907-extent";
 
-import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260907-restored";
+import { inspectionPoints, inspectionText, formatCyclotomic } from "./point-inspection.js?v=20260908-online";
 
 import { extendBar } from "../../assets/penrose-extensions.js?v=20260907-extent";
 
@@ -21,7 +21,7 @@ let generation = 0, lastTick = 0, radius = 5, zoom = 1, pan = { x: 0, y: 0 }, sh
 const drawn = new Map();
 let candidateContacts = null, contactKey = null, pendingContactKey = null;
 let pointer = null, inspectKey = null, inspectPoints = [], drag;
-function currentContactKey() { return snapshot ? snapshot.tiles.map(t=>t.id).join(";") + "/" + $("extent").value : null; }
+function currentContactKey() { return snapshot ? snapshot.tiles.map(t=>t.id).join(";") + "/" + $("extent").value + "/" + (snapshot.learning?.revision||0) : null; }
 function requestContacts() {
   if (!snapshot || !worker || busy || running || !showMarking || $("pointDensity").value === "none") return;
   const key=currentContactKey();if(key===contactKey || pendingContactKey) return;
@@ -29,7 +29,7 @@ function requestContacts() {
 }
 function hideInspection() { $("pointTooltip").hidden = true; }
 function inspect(ctx, screen) {
-  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value + "/" + $("pointDensity").value + "/" + showMarking + "/" + (contactKey || "");
+  const key = snapshot.tiles.map(t => t.id).join(";") + JSON.stringify(snapshot.orientations) + "/" + $("extent").value + "/" + $("pointDensity").value + "/" + showMarking + "/" + (contactKey || "") + "/" + (snapshot.learning?.revision||0);
   if (key !== inspectKey) { inspectKey = key; inspectPoints = inspectionPoints({ ...snapshot, extent: Number($("extent").value) }, { contacts: showMarking && $("pointDensity").value !== "none" && contactKey === currentContactKey() ? candidateContacts : null, integersOnly: $("pointDensity").value === "integers" }); }
   let nearest = null, distance = 12;
   for (const point of inspectPoints) {
@@ -139,9 +139,9 @@ function syncSettings() {
   $("showMarking").setAttribute("aria-pressed", String(showMarking));
   $("directionColors").disabled = !showMarking; $("stripeWidth").disabled = !showMarking;
   $("matchingPrunesLabel").textContent = enabled ? "Ammann prunes" : "edge prunes";
-  $("modeLabel").textContent = enabled ? "Ammann matching · no explicit edge check" : classic ? "Explicit Penrose edge-arrow matching" : "Explicit edge-decoration matching";
+  $("modeLabel").textContent = enabled ? "Online point learning · bar teacher" : classic ? "Explicit Penrose edge-arrow matching" : "Explicit edge-decoration matching";
   $("markingHint").textContent = enabled
-    ? `All five directions enforced · extent ${$("extent").value}× per stripe end. Overlapping extensions must agree; no edge-arrow predicate is called.`
+    ? `All five directions enforced · extent ${$("extent").value}× per stripe end. ${snapshot?.learning ? `${snapshot.learning.points} learned points · ${snapshot.learning.learnedRejections} rejections reused.` : "Precise bars teach new conflicts."}`
     : classic ? "Single/double arrows must agree in type and direction on shared edges. Ammann bars are not checked."
     : "Colored edge ports must agree in position and direction on shared edges. Extended bars are not checked.";
 }
@@ -192,7 +192,7 @@ function reset(autostart = false) {
   if (!options.tileKinds.length) { error("Choose at least one tile"); return; }
   $("statusMessage").textContent = "ready";
   running = autostart; busy = true;
-  try { worker = new Worker(new URL("./growth-worker.js?v=20260907-restored", import.meta.url), { type: "module" }); }
+  try { worker = new Worker(new URL("./growth-worker.js?v=20260908-online", import.meta.url), { type: "module" }); }
   catch (cause) { error(`Cannot start the search worker: ${cause.message}`); return; }
   worker.onmessage = ({ data }) => {
     if (current !== generation) return;

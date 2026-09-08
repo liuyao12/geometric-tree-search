@@ -14,11 +14,13 @@ const goodContacts=candidateBarContacts(placed,good,2),badContacts=candidateBarC
 assert(goodContacts.length>0);assert(goodContacts.every(c=>c.value===1));
 assert(badContacts.some(c=>c.type==='witness'&&c.extension&&c.value===0&&latticeKey(c.point)===latticeKey(num(1,2))));
 for(const x of[num(1,3),num(2,3)])assert(badContacts.some(c=>latticeKey(c.point)===latticeKey(x)),'candidate boundary determines exact contact');
-const s=createPenroseGrowth({useMarkings:true,extent:2,targetCount:4});s.next();
+const s=createPenroseGrowth({useMarkings:true,extent:2,targetCount:4});s.next();assert.equal(s.candidateContacts(2).points.length,0,'empty learner has no invented contacts');
+while(s.snapshot().stats.proposals<3&&!s.next().done){}
 const before=s.snapshot(),graph=s.inspectGraph(),contacts=s.candidateContacts(2);
 assert.deepEqual(s.snapshot(),before);assert.deepEqual(s.inspectGraph(),graph,'inspection must not mutate the graph');
-assert(contacts.points.length>0);assert(contacts.points.some(p=>p.extension&&p.records.some(r=>r.value===0)));
-const points=inspectionPoints(before,{contacts});const witness=points.find(p=>p.conflict&&!p.vertex);assert(witness);assert.match(inspectionText(witness,true).detail,/candidate #\d+: m\d\(x\) = 0 ≠ 1/);
+assert(contacts.points.length>0);assert(contacts.points.some(p=>p.records.some(r=>r.value!==r.placedValue)));
+const points=inspectionPoints(before,{contacts});const witness=points.find(p=>p.conflict&&!p.vertex);assert(witness);assert.match(inspectionText(witness,true).detail,/candidate #\d+: m\d\(x\) = [01] ≠ [01]/);
 assert(inspectionPoints(before,{contacts,integersOnly:true}).every(p=>p.exact.denominator===1));
-assert(inspectionPoints(before).every(p=>!p.intermediate&&!p.extension),'without candidate data, do not invent extension dots');
+assert(inspectionPoints(before).every(p=>!p.intermediate));
+assert(inspectionPoints(before).filter(p=>!p.vertex).every(p=>p.learned),'display actual learned points without sampling');
 console.log('ok: exact candidate boundary contacts, interval conflict witnesses, integer filter, provenance and unchanged search state',contacts.points.length,'points');

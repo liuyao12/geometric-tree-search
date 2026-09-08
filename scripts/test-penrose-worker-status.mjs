@@ -12,7 +12,7 @@ const request=data=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>re
 try{
  let s=await request({type:'init',options});assert.deepEqual(s.activity,{kind:'ready'});
  const inspected=await request({type:'inspect',key:'seed',extent:2});
- assert.equal(inspected.type,'inspection');assert.equal(inspected.key,'seed');assert(inspected.contacts.points.length>0);
+ assert.equal(inspected.type,'inspection');assert.equal(inspected.key,'seed');assert.equal(inspected.contacts.points.length,0);
  const invalid=await request({type:'inspect',key:'bad',extent:-1});assert.equal(invalid.type,'inspection');assert(invalid.error);
  while(!s.done){s=await request({type:'advance',events:200});assert(!s.error);assert(s.activity);}
  assert.deepEqual(s.activity,expected.snapshot());

@@ -1,13 +1,14 @@
-import {collectCandidateContacts} from './penrose-candidate-contacts.js?v=20260907-restored';
+import {createOnlineMarkings} from './penrose-online-markings.js';
+import {collectCandidateContacts} from './penrose-candidate-contacts.js?v=20260908-online';
 import {embedding,latticeKey} from './cyclotomic-five.js';
 import {num,sub,box,separated} from './penrose-polygon.js';
-import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260907-restored';
+import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260908-online';
 import {tileStates,mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260907-frontier';
 import {arrowStates} from './penrose-arrows.js?v=20260907-extent';
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
-import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260907-restored';
+import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260908-online';
 const priority=(key,seed)=>{let h=(2166136261^seed)>>>0;for(const c of key)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
-export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings=true,extent=0,targetCount=60,nodeLimit=10000,seed=1,markingDirections=5}={}) {
+export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings=true,extent=0,targetCount=60,nodeLimit=10000,seed=1,markingDirections=5,learnMarkings=true}={}) {
   validateExtent(extent);
   if(!Array.isArray(tileKinds)||!tileKinds.length||tileKinds.some(k=>!TILE_KINDS.includes(k)))throw Error('Choose at least one tile');
   if(markingDirections!==5)throw Error('Tiling requires all five Ammann directions');
@@ -15,10 +16,14 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   const allowed=new Set(tileKinds),classic=[...allowed].every(k=>k==='thick'||k==='thin');
   const pool=mixedVariants().filter(t=>allowed.has(t.kind)),anchored=new Map();
   for(const v of pool)for(const point of v.exactPoints){const t=translateVariant(v,sub(num(0),point));anchored.set(t.id,t);}
+  const learner=useMarkings&&learnMarkings?createOnlineMarkings(extent,{autoLearn:false}):null;
   const active=[],totals=new Map(),positions=new Map(),depths=new Map(),ids=new Set();
   const stats={proposals:0,capacityPrunes:0,geometryPrunes:0,topologyPrunes:0,markingPrunes:0,edgePrunes:0,edgeChecks:0,markingChecks:0,backtracks:0,peak:0,forcedMoves:0,branches:0,deadPoints:0};
   let status='ready',event=null,minimumFrontierGeneration=0,stopped=false;
   const bounds=new WeakMap(),edgeLabels=new WeakMap();
+  // Every legal graph node has passed the teacher, so new lessons cannot
+  // invalidate it, including after rollback. Keep the full bar envelope in
+  // spatial bookkeeping from the start; growing point tables stay inside it.
   function footprint(tile){
     if(!bounds.has(tile))bounds.set(tile,useMarkings?box([...tile.exactPoints,...extendedBars(tile,extent).flatMap(b=>[b.from,b.to])]):box(tile.exactPoints));
     return bounds.get(tile);
@@ -31,7 +36,7 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
     if(separated(footprint(a),footprint(b)))return true;
     if(mixedGeometryConflict(a,b)){stats.geometryPrunes++;return false;}
     stats[useMarkings?'markingChecks':'edgeChecks']++;
-    if(useMarkings){if(!mixedMarkingsCompatible(a,b,extent)){stats.markingPrunes++;return false;}}
+    if(useMarkings){if(!(learner?learner.compatible(a,b):mixedMarkingsCompatible(a,b,extent))){stats.markingPrunes++;return false;}}
     else for(const[e,s]of signatures(a))if(signatures(b).has(e)&&signatures(b).get(e)!==s){stats.edgePrunes++;return false;}
     return true;
   }
@@ -46,12 +51,24 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   function remove(t){active.pop();ids.delete(t.id);t.vertices.forEach((v,k)=>{const total=totals.get(v)-t.weights[k];if(total)totals.set(v,total);else{totals.delete(v);positions.delete(v);}depths.get(v).pop();if(!depths.get(v).length)depths.delete(v);});frontier();}
   const compare=(a,b)=>a.depth-b.depth||distance(a)-distance(b)||a.key.localeCompare(b.key);
   function distance(p){const e=embedding(p.exact);return e.x*e.x+e.y*e.y;}
+  function learnAtDecision(choice){
+    if(!learner)return;
+    // The teacher already gives exact graph domains. Learn one unresolved
+    // counterexample at the frontier actually being used, not every rejected
+    // hypothetical neighbor discovered while constructing the graph.
+    for(const {tile:t,legal}of graph.candidateRecords()){
+      if(legal||!t.vertices.includes(choice.point.key)||ids.has(t.id)||t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10))continue;
+      if(!active.every(a=>!mixedGeometryConflict(t,a)&&learner.pointCompatible(t,a)))continue;
+      for(const a of active)if(learner.explainRejection(t,a))return;
+    }
+  }
   function* dfs(){
     const choice=graph.choose(compare);
     if(choice?.dead){stats.deadPoints++;yield{type:'dead',frontier:choice.point.key,message:'Dead point: no legal candidate'};return false;}
     if(targetCount!==null&&active.length>=targetCount){status='target reached';return true;}
     if(stats.proposals>=nodeLimit||active.length>=2000){status=active.length>=2000?'2000-tile safety limit reached':'budget reached';stopped=true;return false;}
     if(!choice)return false;
+    learnAtDecision(choice);
     const options=choice.candidates.sort((a,b)=>priority(a.id,seed)-priority(b.id,seed)||a.id.localeCompare(b.id));
     if(!choice.forced)stats.branches++;
     for(const candidate of options){
@@ -69,14 +86,24 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   const iterator=run();return{
     next(){const r=iterator.next();if(r.value)event=r.value;return r;},
     progress(){return{minimumFrontierGeneration,deadPoints:graph.summary().deadPoints};},
-    snapshot(){return{tiles:active.slice(),orientations:active.map(t=>[t.id,t.arrowStart ?? 0]),stats:{...stats},status,event,minimumFrontierGeneration,useMarkings,extent,markingDirections:5,tileKinds:[...allowed],mixed:!classic,graph:graph.summary()};},
+    snapshot(){return{tiles:active.slice(),orientations:active.map(t=>[t.id,t.arrowStart ?? 0]),stats:{...stats},status,event,minimumFrontierGeneration,useMarkings,extent,markingDirections:5,tileKinds:[...allowed],mixed:!classic,graph:graph.summary(),learning:learner?.snapshot()||null};},
     inspectGraph(){return graph.inspect();},
     candidateContacts(displayExtent=extent){
       validateExtent(displayExtent);
       const candidates=graph.candidateRecords().filter(({tile:t})=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>!mixedGeometryConflict(t,a)));
-      return collectCandidateContacts(active,candidates,displayExtent);
+      if(!learner)return collectCandidateContacts(active,candidates,displayExtent);
+      const points=new Map(),metadata=[];
+      for(const {tile,legal}of candidates){const index=metadata.length;metadata.push({kind:tile.kind,legal});const q=learner.support(tile);
+        active.forEach((a,placed)=>{for(const[key,p]of learner.support(a)){const other=q.get(key);if(!other)continue;
+          for(let family=0;family<5;family++){const value=other.value[family],placedValue=p.value[family];if(value===null||placedValue===null)continue;
+            if(!points.has(key))points.set(key,{point:p.point,extension:p.extension,records:[]});
+            points.get(key).records.push({candidate:index,placed,family,value,placedValue,weight:tile.weights[tile.vertices.indexOf(key)]||0,type:value===placedValue?'contact':'witness'});
+          }
+        }});
+      }
+      return {points:[...points.values()],candidates:metadata};
     },
     // Slow independent rebuild is exposed only for invariant tests.
-    rebuildGraphForAudit(){const before={...stats};try{return frontier().map(p=>({key:p.key,depth:p.depth,total:p.total,candidates:[...anchored.values()].map(v=>translateVariant(v,p.exact)).filter(t=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>pair(t,a))).map(t=>t.id).sort()})).sort((a,b)=>a.key.localeCompare(b.key));}finally{Object.assign(stats,before);}}
+    rebuildGraphForAudit(){const before={...stats};try{return frontier().map(p=>({key:p.key,depth:p.depth,total:p.total,candidates:[...anchored.values()].map(v=>translateVariant(v,p.exact)).filter(t=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>useMarkings?(!mixedGeometryConflict(t,a)&&mixedMarkingsCompatible(t,a,extent)):pair(t,a))).map(t=>t.id).sort()})).sort((a,b)=>a.key.localeCompare(b.key));}finally{Object.assign(stats,before);}}
   };
 }

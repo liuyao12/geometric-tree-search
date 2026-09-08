@@ -4,7 +4,7 @@ import {ammannStates,exactlyPerpendicular} from './penrose-ammann.js?v=20260907-
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
 import {num,add,sub,mul,conj,areaSign,overlap,onSegment,same,box,separated} from './penrose-polygon.js';
 import {tileStates,edgeKey,mixedMarkingsCompatible} from './penrose-mixed-markings.js?v=20260907-frontier';
-import { createPenrosePointSearch } from './penrose-point-search.js?v=20260907-restored';
+import { createPenrosePointSearch } from './penrose-point-search.js?v=20260908-online';
 export const TILE_KINDS=['thick','thin','kite','dart','p5','p3','p2','diamond','boat','star'];
 const axes=Array.from({length:5},(_,i)=>canonical({coeff:Array.from({length:5},(_,j)=>+(i===j)),denominator:1}));
 const hash=(s,seed)=>{let h=(2166136261^seed)>>>0;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};

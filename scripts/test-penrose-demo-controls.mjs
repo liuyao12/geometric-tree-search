@@ -115,3 +115,12 @@ assert.equal(elements.get('statusMessage').textContent,'7 forced moves');
 updateActivity({kind:'forced',count:8},3);
 assert.equal(elements.get('statusMessage').textContent,'8 forced moves · pausing at corona 3');
 console.log('ok: visible branch coordinates, forced streak and corona pause status');
+
+elements.get("tileSet").value="P3";elements.get("tileSet").fire("change");await flush();
+elements.get("useMarkings").checked=true;elements.get("useMarkings").fire("change");await flush();
+assert.equal(workers.at(-1).growth.snapshot().learning.points,0);
+assert.match(elements.get("markingHint").textContent,/0 learned points/);
+elements.get("stepTiling").fire("click");await flush();
+assert(workers.at(-1).growth.snapshot().learning.points>0);
+assert.match(elements.get("modeLabel").textContent,/Online point learning/);
+console.log("ok: empty initial learner and visible learning progress after a frontier decision");

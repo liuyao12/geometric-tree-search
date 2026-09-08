@@ -65,30 +65,57 @@ turtle demo. A known dead point prevents a milestone pause. Forced propagation
 continues after resuming. A 100,000-placement-attempt and 2,000-tile safety guard
 remain internal. Candidate ordering uses fixed seed 17.
 
-Extent 0–4 extends each stripe at both ends by that multiple of its length.
-For each direction, m is 1 on the extended stripe, 0 elsewhere inside the tile,
-and undefined outside component support. Concave intervals and isolated
-contacts are checked exactly, including nonneighbors. Different directions
-are separate components. Extent restarts marked search; in unmarked mode it
-only changes the illustration. Showing bars/arrows, colors, line width,
-highlighting and sample density never change legality.
+The live marked search now uses `assets/penrose-online-markings.js`.
+Each search starts with empty partial point tables. For a geometry-admissible
+pair, existing points are compared first. A disagreement rejects it without
+a line query. Previously teacher-verified relative placements are reused, including rejections.
+Otherwise, the precise continuous bar predicate supplies an exact verdict.
+At each frontier decision the learner selects at most one geometrically
+admissible rejected candidate whose rejection is not already explained by
+points. It adds one witness pair, chosen among existing learned addresses and candidate-induced
+boundary points and interval witnesses to minimize newly needed table entries.
+The two prototiles receive values 1 and 0 at the corresponding local address,
+closed under their decorated symmetries. Values transform by a permutation of
+the five families, never sign negation. Undefined components are not zeros.
 
-Vertex hover reports the exact coordinate in Q(zeta_5), t and m. Extension
-points are now derived from geometrically admissible candidates incident to
-the current frontier, including candidates rejected by marking constraints.
-They include candidate vertices, marking ports, boundary intersections and
-one exact mismatch witness per relevant open interval. Intervals are split at
-candidate boundary and collinear marking endpoints; there is no uniform grid.
+Only a rejection that the existing points cannot explain adds a lesson.
+Bookkeeping alone caches verdicts without training: the initial seed has an
+empty marking, and irrelevant hypothetical neighbors do not flood the stencil.
+There is no offline enumeration in the live path and no union of independently
+chosen covers over extent settings. The displayed point count is the sum of
+distinct learned addresses over the prototiles; symmetry copies count.
+This greedy choice does not promise a globally minimum stencil.
 
-Candidate inspection runs in the worker on demand while paused, separately
-from search compute. Its data is discarded when the patch or extent changes.
-Hover identifies candidate alternatives and the compared marking component;
-candidate values are never merged into the placed patch's m or t. Red points
-witness a local disagreement. Blue points show other contacts; agreement at a
-point does not mean the candidate passes every constraint. "Integer contacts"
-filters the finite contact set to Z[zeta_5]; the default retains Q(zeta_5)
-contacts because marking ports need not be algebraic integers. This inspects
-the current finite candidate graph, not every possible future candidate.
+Learning persists across backtracking and corona continuation. Reset, changing
+tile selection, or changing enforced extent creates a fresh learner. Tables
+are shared by all placements of a prototile and are never tailored to a chosen
+neighbor. The bar teacher remains necessary for unresolved pairs: this is
+online learning with exact verification, not an unverified point-only solver.
+Unmarked search continues to use its independent edge predicate and does not
+train the learner. `learnMarkings:false` is available to headless comparisons
+for the original continuous marked predicate, with no extra UI control.
+
+The base graph still classifies every candidate exactly. Every admitted pair
+has passed the teacher; subsequent learned constraints are consequences of
+that same rule. Therefore they cannot invalidate already legal graph nodes
+or nodes restored on rollback. The graph's spatial bounds cover the complete
+extended-bar envelope from initialization, so newly learned points never
+escape the indexed region. No graph rebuilding or loss of forced moves is
+needed as the tables grow.
+
+Extent 0–4 extends stripe guides by that multiple of their length. In marked
+mode the dots and hover values are the actual learned supports. Candidate
+inspection only compares these tables, does not query the teacher or train,
+and keeps candidate values separate from the placed patch. In unmarked mode
+the earlier geometric contact illustration is retained. Integer filtering,
+showing bars, colors, line weight and highlighting only change the drawing.
+
+Validation: `test-penrose-online-markings.mjs` compares all 8,012 geometric
+neighbor pairs against the bar teacher before and after learning, verifies
+point provenance and reuse, and compares full graph/search traces for P3,
+P2, P1 and mixed tiles. The existing actual-worker test retains corona 3 and 5
+checks. This guarantees the teacher remains in control of search correctness;
+it does not prove infinite extendibility or standalone stencil completeness.
 
 The integer-ring points on a physical line through two distinct ring points
 are already dense. Their lifts form an affine rank-two lattice in a plane
@@ -117,8 +144,8 @@ no cut-and-project window is added to the search.
 ## Offline finite-point experiment
 
 The generated finite tables and their generator are retained for research,
-but the live demo uses the earlier continuous bar predicate and candidate
-contact display. The finite experiment preserved all edge-compatible pairs,
+but the live demo uses a separate online learner supervised by the earlier
+continuous bar predicate. The finite experiment preserved all edge-compatible pairs,
 including corner-only pairs that can violate the stronger Ammann constraints.
 It also accumulated separate covers across extent settings, producing more
 points without recovering the old pruning. Its certificate concerns that
