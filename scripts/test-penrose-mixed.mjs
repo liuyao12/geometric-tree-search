@@ -1,4 +1,3 @@
-import {finiteMarkingsCompatible} from '../assets/penrose-finite-markings.js';
 import assert from 'node:assert/strict';
 import {MIXED_TEMPLATES} from '../assets/penrose-mixed-templates.js';
 import {createMixedGrowth,mixedGeometryConflict,TILE_KINDS} from '../assets/penrose-mixed-growth.js';
@@ -27,7 +26,7 @@ for(const kinds of[p1,p2,mix])for(const enabled of[false,true]){
  for(let i=0;i<s.tiles.length;i++)for(let j=i+1;j<s.tiles.length;j++){
   const a=s.tiles[i],b=s.tiles[j];assert(!mixedGeometryConflict(a,b));
   for(const[e,sig]of tileStates(a)[0].signatures)if(tileStates(b)[0].signatures.has(e))assert.equal(sig,tileStates(b)[0].signatures.get(e));
-  if(enabled)assert(finiteMarkingsCompatible(a,b,2));
+  if(enabled)assert(mixedMarkingsCompatible(a,b,2));
  }
  if(kinds===mix&&enabled){const seed=createMixedGrowth({tileKinds:mix,useMarkings:true,extent:2});seed.next();assert(seed.inspectGraph().some(p=>p.candidates.some(id=>id.startsWith('kite:')||id.startsWith('dart:'))),'P2 placements must be included around the P3 seed');}
  const points=inspectionPoints(s);assert(points.every(p=>!p.intermediate));const t=s.tiles[0],bar=t.bars[0];assert.equal(tileMarkingValue(t,tileStates(t)[0],bar.from,2)[bar.family],1);assert.match(inspectionText(points.find(p=>p.vertex),enabled).coordinate,/x = /);

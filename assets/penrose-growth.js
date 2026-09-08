@@ -1,4 +1,4 @@
-import { createMixedGrowth } from "./penrose-mixed-growth.js?v=20260907-finite";
+import { createMixedGrowth } from "./penrose-mixed-growth.js?v=20260907-restored";
 import { asFive, latticeKey } from "./cyclotomic-five.js";
 import { solveAmmannDecorations } from "./penrose-ammann.js?v=20260907-extent";
 

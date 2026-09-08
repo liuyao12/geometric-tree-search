@@ -65,51 +65,30 @@ turtle demo. A known dead point prevents a milestone pause. Forced propagation
 continues after resuming. A 100,000-placement-attempt and 2,000-tile safety guard
 remain internal. Candidate ordering uses fixed seed 17.
 
-The marked search uses finite tables in `assets/penrose-finite-marking-data.js`.
-Rows contain exact Q(zeta_5) coordinates, one of five components, a 0/1 value,
-and an activation extent. Undefined components impose no constraint. Every
-placement rigidly transforms its fixed table and permutes the five components;
-rotations/reflections never negate values. Runtime hashes shared coordinates
-and compares defined values only. It calls neither edge matching nor line
-incidence to determine marking compatibility.
+Extent 0–4 extends each stripe at both ends by that multiple of its length.
+For each direction, m is 1 on the extended stripe, 0 elsewhere inside the tile,
+and undefined outside component support. Concave intervals and isolated
+contacts are checked exactly, including nonneighbors. Different directions
+are separate components. Extent restarts marked search; in unmarked mode it
+only changes the illustration. Showing bars/arrows, colors, line width,
+highlighting and sample density never change legality.
 
-Generate tables with `node scripts/generate-penrose-finite-markings.mjs`.
-The generator exhaustively enumerates 8,012 nonoverlapping whole-edge,
-vertex-aligned pairs, including rejected placements and mixed tile sets.
-Edge-port rules label 7,486 allowed and 526 forbidden pairs. The P3 labels
-are independently checked against arrows. P1/P2 use the transferred edge
-port decorations; mixed rules remain experimental.
+Vertex hover reports the exact coordinate in Q(zeta_5), t and m. Extension
+points are now derived from geometrically admissible candidates incident to
+the current frontier, including candidates rejected by marking constraints.
+They include candidate vertices, marking ports, boundary intersections and
+one exact mismatch witness per relevant open interval. Intervals are split at
+candidate boundary and collinear marking endpoints; there is no uniform grid.
 
-Bar intersections and candidate-defined interval witnesses propose paired
-positive/exclusion points. The generator groups points by the decorated tile's
-symmetries, records support combinations that would reject an allowed pair,
-and selects compatible witness pairs with a greedy cover and redundancy
-removal. This is not a proof of minimum cardinality. Extent zero covers every
-forbidden edge placement. Additional extents select alternative covers;
-their union gives monotone support growth through all 17 quarter steps.
-Every good pair remains compatible. Supports are fixed before search and
-never inferred from the currently chosen neighbors.
-
-The certificate is `docs/penrose-finite-marking-certificate.json`.
-`test-penrose-finite-markings.mjs` independently checks all catalog pairs,
-P3 arrows, point provenance, every extent's support monotonicity, symmetry
-quotients, and matching marked/unmarked search traces at extent zero.
-Preserving every edge-compatible corner pair is more conservative than the
-previous continuous predicate and can substantially increase backtracking.
-The worker regression checks corona 3 and continuation toward 5; set
-`PENROSE_LONG_CORONA_TEST=1` for the optional full corona-5 performance run.
-
-This certifies the finite neighbor catalog, not all distant placements or
-infinite extendibility. Additional support can meet nonneighbors during search;
-no universal correctness claim is made for those experimental interactions.
-
-Extent 0–4 also draws the corresponding continuous bar guides. Only dots carry
-runtime values. Hover shows exact coordinates, vertex t sums, and the actual
-partial m tables, including interior zeros. Candidate inspection reports only
-shared fixed support points; rejected candidate values are kept separate from
-the placed patch. “Integer points” restricts the drawing, not search, to
-Z[zeta_5]. Showing bars, colors, width, or point visibility never changes
-legality. Changing extent restarts marked search; unmarked search is unchanged.
+Candidate inspection runs in the worker on demand while paused, separately
+from search compute. Its data is discarded when the patch or extent changes.
+Hover identifies candidate alternatives and the compared marking component;
+candidate values are never merged into the placed patch's m or t. Red points
+witness a local disagreement. Blue points show other contacts; agreement at a
+point does not mean the candidate passes every constraint. "Integer contacts"
+filters the finite contact set to Z[zeta_5]; the default retains Q(zeta_5)
+contacts because marking ports need not be algebraic integers. This inspects
+the current finite candidate graph, not every possible future candidate.
 
 The integer-ring points on a physical line through two distinct ring points
 are already dense. Their lifts form an affine rank-two lattice in a plane
@@ -134,3 +113,15 @@ no cut-and-project window is added to the search.
   `test-penrose-growth.mjs` explicitly preserves the historical edge-first trace.
 
 - `test-penrose-candidate-contacts.mjs`: exact contact provenance, interval witnesses, integer filtering and unchanged search state.
+
+## Offline finite-point experiment
+
+The generated finite tables and their generator are retained for research,
+but the live demo uses the earlier continuous bar predicate and candidate
+contact display. The finite experiment preserved all edge-compatible pairs,
+including corner-only pairs that can violate the stronger Ammann constraints.
+It also accumulated separate covers across extent settings, producing more
+points without recovering the old pruning. Its certificate concerns that
+weaker pair classification; it does not certify equivalence to the live rule.
+A replacement should seek a small stencil reproducing the working bar rule
+and test it against actual compatible patches.

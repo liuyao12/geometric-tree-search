@@ -41,16 +41,7 @@ for(const v of mixedVariants()){
 }
 for(const rows of Object.values(FINITE_MARKINGS))extensions+=rows.filter(r=>r[4]>0&&r[3]===1).length;
 assert(extensions>0);assert(positives&&zeros);
-// Exercise edge-supervised search traces, including failed candidate alternatives.
-// At extent zero the two predicates must produce exactly the same graph and trace.
-for(const kinds of[['thick','thin'],['kite','dart'],['p5','p3','p2','diamond','boat','star'],['thick','thin','kite','dart']]){
- const settings={tileKinds:kinds,extent:0,targetCount:6,nodeLimit:100,seed:17};
- const edge=createMixedGrowth({...settings,useMarkings:false}),marked=createMixedGrowth({...settings,useMarkings:true});
- for(let i=0;i<1000;i++){
-  const a=edge.next(),b=marked.next();assert.equal(a.done,b.done);assert.equal(a.value?.type,b.value?.type);assert.equal(a.value?.tile?.id,b.value?.tile?.id);
-  assert.deepEqual(marked.inspectGraph(),edge.inspectGraph());if(a.done)break;
- }
- assert.equal(marked.snapshot().stats.edgeChecks,0);assert.equal(edge.snapshot().stats.markingChecks,0);
- const inspection=marked.candidateContacts(0);assert(inspection.points.length);
-}
-console.log(`ok: ${good} allowed pairs preserved; ${bad} forbidden pairs excluded at every extent; ${arrows} independent arrow comparisons; symmetry, provenance, edge-supervised traces, fixed-point runtime`);
+// This experiment is deliberately disconnected from the live marked search.
+// The checks above certify its weaker local classification, not equivalence
+// to the continuous Ammann predicate restored in the demo.
+console.log(`ok: offline experiment: ${good} allowed pairs, ${bad} forbidden pairs, ${arrows} arrow comparisons; not the live marking predicate`);

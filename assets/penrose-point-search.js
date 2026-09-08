@@ -1,11 +1,11 @@
-import {finiteMarkingSupport,finiteMarkingBounds,finiteMarkingsCompatible} from './penrose-finite-markings.js';
+import {collectCandidateContacts} from './penrose-candidate-contacts.js?v=20260907-restored';
 import {embedding,latticeKey} from './cyclotomic-five.js';
 import {num,sub,box,separated} from './penrose-polygon.js';
-import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260907-finite';
-import {tileStates} from './penrose-mixed-markings.js?v=20260907-frontier';
+import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260907-restored';
+import {tileStates,mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260907-frontier';
 import {arrowStates} from './penrose-arrows.js?v=20260907-extent';
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
-import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260907-finite';
+import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260907-restored';
 const priority=(key,seed)=>{let h=(2166136261^seed)>>>0;for(const c of key)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
 export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings=true,extent=0,targetCount=60,nodeLimit=10000,seed=1,markingDirections=5}={}) {
   validateExtent(extent);
@@ -20,7 +20,7 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   let status='ready',event=null,minimumFrontierGeneration=0,stopped=false;
   const bounds=new WeakMap(),edgeLabels=new WeakMap();
   function footprint(tile){
-    if(!bounds.has(tile))bounds.set(tile,useMarkings?finiteMarkingBounds(tile,extent):box(tile.exactPoints));
+    if(!bounds.has(tile))bounds.set(tile,useMarkings?box([...tile.exactPoints,...extendedBars(tile,extent).flatMap(b=>[b.from,b.to])]):box(tile.exactPoints));
     return bounds.get(tile);
   }
   function signatures(tile){
@@ -31,7 +31,7 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
     if(separated(footprint(a),footprint(b)))return true;
     if(mixedGeometryConflict(a,b)){stats.geometryPrunes++;return false;}
     stats[useMarkings?'markingChecks':'edgeChecks']++;
-    if(useMarkings){if(!finiteMarkingsCompatible(a,b,extent)){stats.markingPrunes++;return false;}}
+    if(useMarkings){if(!mixedMarkingsCompatible(a,b,extent)){stats.markingPrunes++;return false;}}
     else for(const[e,s]of signatures(a))if(signatures(b).has(e)&&signatures(b).get(e)!==s){stats.edgePrunes++;return false;}
     return true;
   }
@@ -74,16 +74,7 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
     candidateContacts(displayExtent=extent){
       validateExtent(displayExtent);
       const candidates=graph.candidateRecords().filter(({tile:t})=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>!mixedGeometryConflict(t,a)));
-      const points=new Map(),metadata=[];
-      for(const {tile,legal}of candidates){const index=metadata.length;metadata.push({kind:tile.kind,legal});const q=finiteMarkingSupport(tile,displayExtent).points;
-        active.forEach((a,placed)=>{for(const[key,p]of finiteMarkingSupport(a,displayExtent).points){const other=q.get(key);if(!other)continue;
-          for(let family=0;family<5;family++){const value=other.value[family],placedValue=p.value[family];if(value===null||placedValue===null)continue;
-            if(!points.has(key))points.set(key,{point:p.point,extension:p.extension,records:[]});
-            points.get(key).records.push({candidate:index,placed,family,value,placedValue,weight:tile.weights[tile.vertices.indexOf(key)]||0,type:value===placedValue?'contact':'witness'});
-          }
-        }});
-      }
-      return {points:[...points.values()],candidates:metadata};
+      return collectCandidateContacts(active,candidates,displayExtent);
     },
     // Slow independent rebuild is exposed only for invariant tests.
     rebuildGraphForAudit(){const before={...stats};try{return frontier().map(p=>({key:p.key,depth:p.depth,total:p.total,candidates:[...anchored.values()].map(v=>translateVariant(v,p.exact)).filter(t=>!ids.has(t.id)&&!t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)&&active.every(a=>pair(t,a))).map(t=>t.id).sort()})).sort((a,b)=>a.key.localeCompare(b.key));}finally{Object.assign(stats,before);}}

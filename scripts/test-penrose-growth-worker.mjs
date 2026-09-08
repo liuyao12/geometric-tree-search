@@ -26,7 +26,7 @@ try {
   const frozen = await request({ type: "advance", events: 50 }); assert.deepEqual(frozen, state);
   state = await request({type:"init",options:{useMarkings:true,extent:2,targetCount:null,nodeLimit:10000,seed:17}});
   let previousProposals = 0;
-  for (const targetCorona of (process.env.PENROSE_LONG_CORONA_TEST ? [3,5] : [3])) {
+  for (const targetCorona of [3,5]) {
     do {
       state = await request({type:"advance",events:200,targetCorona});
       assert(!state.error); assert(!state.done, "milestones suspend, not terminate");
@@ -42,23 +42,14 @@ try {
     assert.equal(Math.min(...[...totals].filter(([,t])=>t>0&&t<10).map(([v])=>depths.get(v))),targetCorona);
   }
   assert(state.tiles.length>40,"corona target is independent of old tile count");
-  // Sparse learned supports deliberately retain every edge-compatible corner
-  // pair. Reaching corona 5 under a fixed proposal cap is a performance test,
-  // not a worker invariant. Always verify real continuation toward it.
-  const beforeContinue=state.stats.proposals;
-  state=await request({type:"advance",events:10,targetCorona:5});
-  assert(!state.error);assert(!state.done);assert(state.stats.proposals>beforeContinue);
-  assert.equal(state.graph.fullBuilds,1);
-  if(state.pausedCorona!==undefined&&state.pausedCorona!==null)assert.equal(state.pausedCorona,5);
-
   state = await request({type:"init",options:{tileKinds:["kite","dart"],useMarkings:true,extent:2,targetCount:null,nodeLimit:10000,seed:17}});
   assert.equal(state.mixed,true);
-  for (const targetCorona of (process.env.PENROSE_LONG_CORONA_TEST ? [3,5] : [3])) {
+  for (const targetCorona of [3,5]) {
     do { state = await request({type:"advance",events:200,targetCorona}); assert(!state.error); assert(!state.done); } while(state.pausedCorona!==targetCorona);
     assert.equal(state.minimumFrontierGeneration,targetCorona);
     assert.equal(state.graph.fullBuilds,1); assert.equal(state.graph.deadPoints,0);
     assert(state.tiles.every(t=>["kite","dart"].includes(t.kind)));
   }
   const invalid = await request({ type: "init", options: { targetCount: -1 } }); assert(invalid.error);
-  console.log("ok: actual worker corona 3 milestones, continuation toward 5, bounded batches, terminal freeze, and invalid-input reporting");
+  console.log("ok: actual worker initialization, bounded live batches, terminal freeze, and invalid-input reporting");
 } finally { await worker.terminate(); }
