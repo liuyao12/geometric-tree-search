@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Learning point markings · Penrose GCTS</title><link rel="stylesheet" href="./demo.css?v=20260907-sidebar">
+<style>.learning-canvas{min-height:570px}#learningCanvas{width:100%;height:570px;display:block}#pointInfo{white-space:pre-wrap;overflow-wrap:anywhere;min-height:3em}.control-panel label{display:grid;gap:6px;margin:12px 0}.control-panel select{max-width:100%}</style></head>
+<body><main><header><div><p><a href="./index.html">Penrose tiling</a> / experimental learner</p><h1>Learning point markings</h1><p>Exact constraints in ℤ[ζ₅], learned from failed neighborhoods.</p></div></header>
+<section class="workbench"><aside class="control-panel">
+<label>Search<select id="searchMode"><option value="learned">Learn point markings</option><option value="plain">Plain edge-arrow search</option><option value="known">Known Ammann benchmark</option></select></label>
+<div class="toolbar"><button id="runLearning" class="primary">Run</button><button id="stepLearning">Step</button><button id="resetLearning">Reset</button><button id="fitLearning">Fit view</button></div>
+<label><span><input id="showPoints" type="checkbox" checked> Show marking</span></label>
+<p id="modeInfo" class="hint"></p>
+<p class="hint">P3 thick and thin rhombs. All modes enforce the same supplied edge arrows.</p>
+</aside><div class="canvas-panel"><div class="canvas-wrap learning-canvas"><canvas id="learningCanvas" aria-label="Penrose tiling with learned point constraints"></canvas></div>
+<div class="status-bar"><strong id="learningStatus" aria-live="polite">Initializing</strong><span id="coronaStatus"></span></div>
+<p id="learningStats" class="hint"></p><p id="pointInfo" class="point-coordinate"></p>
+</div></section>
+<details><summary>What is being learned?</summary>
+<p>The learner starts with no marking points. At a dead frontier point, it checks whether a pair of placed tiles makes completion around that point impossible. Only an exhaustive negative certificate becomes a rule; a timeout or a failed larger cluster is insufficient.</p>
+<p>Each certified pair gets conflicting 0/1 values in a fresh channel at a common world point, transported to both tile templates. Rotations and reflections permute channels. Subsequent matching uses only equality of defined values at coincident points. Undefined is different from zero. The marking reuses the failed frontier vertex wherever possible; some proofs require a point outside one of the tiles.</p>
+<p>Learning survives backtracking and Continue. Reset or a mode change starts empty. The point–candidate graph maintains forced moves and branching. The learner does not inspect Ammann bars. Its adaptive channels are not the classical five line families.</p>
+<p>The known benchmark adds the existing continuous Ammann predicate with extent 2. It is a stronger constraint and can produce a different patch. This comparison measures this implementation, not a claim of universal superiority over Ammann markings. Run stops at a completed frontier corona; finite patches do not prove infinite extendibility.</p>
+</details></main><script type="module" src="./learning.js?v=20260908-learned-pairs"></script></body></html>

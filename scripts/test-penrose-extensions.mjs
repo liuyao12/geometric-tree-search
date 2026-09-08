@@ -21,15 +21,15 @@ const zero = run(0), extended = run(2);
 assert.equal(zero.status, 'target reached'); assert.equal(extended.status, 'target reached');
 assert(extended.stats.proposals < zero.stats.proposals);
 assert.equal(extended.stats.edgeChecks, 0);
-const assignment = new Map(zero.orientations);
-let nonneighborConflict = false;
-for (let i = 0; i < zero.tiles.length; i++) for (let j = i + 1; j < zero.tiles.length; j++) {
-  const a = zero.tiles[i], b = zero.tiles[j];
-  const sa = ammannStates(a).find(s => s.start === assignment.get(a.id)), sb = ammannStates(b).find(s => s.start === assignment.get(b.id));
-  const shared = [...sa.signatures.keys()].some(k => sb.signatures.has(k));
-  if (!shared && !extensionStatesCompatible(a, sa, b, sb, 2)) nonneighborConflict = true;
-}
-assert(nonneighborConflict, 'positive extent must detect incompatible tiles without a shared edge');
+// A fixed corner-contact fixture avoids assuming that a particular random
+// unextended run happens to produce a conflict at positive extent.
+const fixtureA={kind:'thick',weights:[3,2,3,2],exactPoints:[[0,1,0,0],[0,0,0,0],[1,0,0,0],[1,1,0,0]].map(coeff=>({coeff,denominator:1}))};
+const fixtureB={kind:'thick',weights:[3,2,3,2],exactPoints:[[-1,2,0,0],[-1,1,0,0],[0,1,0,0],[0,2,0,0]].map(coeff=>({coeff,denominator:1}))};
+const sa=ammannStates(fixtureA).find(s=>s.start===1),sb=ammannStates(fixtureB).find(s=>s.start===1);
+assert(![...sa.signatures.keys()].some(k=>sb.signatures.has(k)),'fixture has no shared edge');
+assert(extensionStatesCompatible(fixtureA,sa,fixtureB,sb,0));
+const nonneighborConflict=!extensionStatesCompatible(fixtureA,sa,fixtureB,sb,2);
+assert(nonneighborConflict,'positive extent must detect incompatible tiles without a shared edge');
 const tile = extended.tiles[0], state = ammannStates(tile).find(s => s.start === new Map(extended.orientations).get(tile.id));
 const bar = state.bars[0], ex = extendBar(bar, 2);
 assert.notEqual(latticeKey(ex.from), latticeKey(bar.from));

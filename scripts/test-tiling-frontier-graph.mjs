@@ -12,3 +12,7 @@ assert.equal(graph.choose().dead,true,'dead point wins over a forced point anywh
 blocked=new Set();graph.pop(delta);assert.deepEqual(graph.inspect(),before);
 assert.equal(graph.summary().fullBuilds,1);assert.equal(graph.summary().rollbacks,1);
 console.log('ok: shared candidate identities, global dead/forced priority and exact graph rollback');
+
+const saved=graph.inspect();const refinement=graph.refine(t=>t.id!=="A");
+assert(graph.choose().dead);assert(graph.inspect().filter(p=>p.key==="p"||p.key==="q").every(p=>!p.candidates.includes("A")));
+graph.pop(refinement);assert.deepEqual(graph.inspect(),saved,"learned-domain refinement must trail every shared incidence");

@@ -63,6 +63,16 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     sync(frontier);
     const delta = trail; trail = null; counters.updates++; return delta;
   }
+  // Reversible pruning after a learned constraint or an exhausted child.
+  // Callers append this delta to the current placement frame's undo trail.
+  function refine(allowed) {
+    if(trail)throw Error('Cannot refine an open graph transaction');trail=[];
+    for(const record of candidates.values())if(record.legal&&!allowed(record.tile)){
+      trail.push(()=>{record.legal=true;});record.legal=false;
+      for(const key of record.points)if(points.has(key))drop(points.get(key).legal,record.tile.id);
+    }
+    const delta=trail;trail=null;return delta;
+  }
   function pop(delta) { if (trail) throw Error('Cannot roll back an open update'); for (let i = delta.length - 1; i >= 0; i--) delta[i](); counters.rollbacks++; }
   function choose(compare = (a, b) => a.depth - b.depth || a.key.localeCompare(b.key)) {
     const frontier = [...points.values()];
@@ -80,5 +90,5 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
   // Read-only copies for tests and policy adapters; no engine state escapes.
   function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
   function candidateRecords() { return [...candidates.values()].filter(r => r.points.size > 0).map(r => ({tile:r.tile,legal:r.legal})); }
-  return { build, push, pop, choose, summary, inspect, candidateRecords };
+  return { build, push, pop, refine, choose, summary, inspect, candidateRecords };
 }
