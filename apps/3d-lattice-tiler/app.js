@@ -5,7 +5,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260907-structural-domains";
+} from "./engine.js?v=20260909-featured-tile";
 
 const $ = (id) => document.getElementById(id);
 
@@ -775,6 +775,7 @@ function polycubeCubeCount(figure) {
 }
 
 const catalogGroupDefinitions = [
+  { id: "featured", title: "Featured tile", test: figure => figure.mode_key === "mathematica_16_vertex" },
   { id: "geometric-research", title: "Geometric research benchmarks · separate model", test: figure => figureHasCategory(figure, "Geometric Research Benchmarks") },
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
   { id: "a2-layered", title: "Primary search · non-polycubes on A₂ slices · x+y+z=k", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
@@ -843,7 +844,12 @@ function groupedCatalogFigures() {
     if (!isGctsFigureVisibleInCatalog(figure)) continue;
     groups.get(catalogGroupForFigure(figure).id).push(figure);
   }
-  return catalogGroupDefinitions
+  const originalOrder = ["featured", "aperiodic", "polycubes", "fedorov", "space", "platonic", "sphere", "other"];
+  const displayGroups = [
+    ...originalOrder.map(id => catalogGroupDefinitions.find(group => group.id === id)),
+    ...catalogGroupDefinitions.filter(group => !originalOrder.includes(group.id))
+  ];
+  return displayGroups
     .map(group => ({ ...group, figures: sortCatalogFigures(group.id, groups.get(group.id) ?? []) }))
     .filter(group => group.figures.length);
 }
@@ -3160,7 +3166,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260907-structural-domains", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260909-featured-tile", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3924,7 +3930,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260907-structural-domains", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260909-featured-tile", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

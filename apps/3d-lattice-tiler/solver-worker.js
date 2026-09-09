@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260907-structural-domains";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260909-featured-tile";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

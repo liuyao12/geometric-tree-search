@@ -1,6 +1,7 @@
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
+import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
 import { VectorMarkings } from "./vector-markings.js?v=20260906-global-section";
@@ -8102,8 +8103,9 @@ export const tileSpecs = (() => {
       for (const v of mirrorVerts) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirrorVerts.map(v => sub3(v, minv));
       const mirrorOcc = this.occupancy_points.map(p => [sub3(reflect(p.pos), minv), p.weight, p.symbolic, p.display_symbolic, p.kind]);
-      const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
-      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle, {
+      const preserveWinding = this.geometry_model === "lattice_function";
+      const faceData = this.faces.map((f,i)=>({ v: preserveWinding ? f.slice().reverse() : f.slice(), type: this.face_types[i] }));
+      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, preserveWinding, true, this.solid_angle, {
         polycube_lattice: this.polycube_lattice,
         geometry_model: this.geometry_model,
         lattice_symmetry: this.lattice_symmetry
@@ -8516,6 +8518,20 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
+    "mathematica_16_vertex": {
+      name: "16-vertex lattice tile",
+      category: ["Lattice Polyhedra"],
+      description: "User-supplied nonconvex shell: 16 vertices, 19 faces, volume 27. Exact Z³ weights on 57 points, capacity 24. Certified periodic tiling: 64 proper-rotation copies per 12×12×12 cell; reflections are unnecessary.",
+      build: () => [make_tile("16-vertex lattice tile", {
+        v: MATHEMATICA_LATTICE_TILE.vertices,
+        f_data: MATHEMATICA_LATTICE_TILE.faces.map(v => ({ v, type: "default" })),
+        occ: MATHEMATICA_LATTICE_TILE.points.map(p => [p.pos, p.weight, null, null, p.kind]),
+        skip_winding: true,
+        geometry_model: "lattice_function",
+        solid_angle: { kind: "rational", max_value: MATHEMATICA_LATTICE_TILE.capacity }
+      })]
+    },
+
     ...Object.fromEntries([...INTERESTING_TILE_REVIEW.candidates, ...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES, ...A2_SLICED_SIZE10_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
       const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
       return [candidate.registry_id, {

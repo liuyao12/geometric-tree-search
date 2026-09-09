@@ -1433,3 +1433,15 @@ The strict audit covers every registered system and every deduplicated catalog
 figure. It distinguishes exact certificates, certified local obstructions,
 completed layer patches, balanced finite patches, and unresolved bounded
 searches; strict mode fails if any system or figure remains unresolved.
+
+## Featured 16-vertex lattice tile
+
+The catalog starts with **16-vertex lattice tile** (`mathematica_16_vertex`).
+Original categories follow; candidate and research groups come afterward,
+with their existing classifications and benchmark semantics preserved.
+
+The authored 57-point Z³ function uses exact integer weights at capacity 24.
+The nonconvex shell retains its supplied face winding, including under
+reflection. Its geometry is labeled `lattice_function` so convex-only probes
+do not reinterpret it. No search scheduling, marking, or rollback logic is
+changed; this catalog addition is not an engine-wide conformance claim.
