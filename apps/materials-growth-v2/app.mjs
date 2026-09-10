@@ -7,6 +7,7 @@ const $ = (id) => document.getElementById(id),
     type: "module",
   });
 let atoms = [],
+  latestAtoms = null,
   grammar,
   marking,
   sections = [],
@@ -122,6 +123,10 @@ function setStage(n) {
     showAtoms(atoms, true);
   }
   if (n === 2) gallery();
+  if (n === 3) {
+    highlight.clear();
+    showAtoms(latestAtoms || atoms, true);
+  }
 }
 document
   .querySelectorAll("[data-stage]")
@@ -130,6 +135,7 @@ $("to-clusters").onclick = () => setStage(1);
 $("to-learning").onclick = () => setStage(2);
 $("to-growth").onclick = () => setStage(3);
 function invalidate() {
+  latestAtoms = null;
   grammar = marking = null;
   sections = [];
   curve = [];
@@ -233,6 +239,8 @@ $("grow").onclick = () => {
 };
 $("pause").onclick = () => worker.postMessage({ kind: "pause" });
 $("reset").onclick = () => {
+  latestAtoms = null;
+  $("growth-stats").textContent = "No placements yet";
   worker.postMessage({ kind: "reset" });
   lock(false);
   for (const id of ["marking", "angle", "mask"]) $(id).disabled = false;
@@ -301,6 +309,7 @@ worker.onmessage = ({ data: d }) => {
   }
   if (d.kind === "snapshot") {
     const s = d.state;
+    latestAtoms = s.atoms;
     highlight.clear();
     if (stage === 3) showAtoms(s.atoms);
     $("growth-stats").textContent =
