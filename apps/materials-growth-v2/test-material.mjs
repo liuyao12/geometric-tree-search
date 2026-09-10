@@ -30,7 +30,10 @@ for (const id of ["nacl", "ice"]) {
     }),
   );
   const m = drain(learnSections(g));
-  const experiment = new MaterialExperiment(g, m, { maximumPoints: 20000 });
+  const experiment = new MaterialExperiment(g, m, {
+    maximumPoints: 20000,
+    seedMode: "patch",
+  });
   for (let i = 0; i < 400; i++) {
     const e = experiment.step();
     if (["unknown", "complete", "exhausted", "budget"].includes(e.kind)) {

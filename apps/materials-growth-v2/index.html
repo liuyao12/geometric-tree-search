@@ -138,13 +138,11 @@
               <option value="1">Also ±1° around local axes</option>
               <option value="3">Also ±3° around local axes</option>
             </select></label
-          ><label class="check"
-            ><input id="mask" type="checkbox" checked /> Input fills its
-            bounding box</label
           >
           <p class="muted">
-            With this mask, missing positions inside the box are observed empty.
-            Disable for irregular or incomplete crops.
+            Starts with one atom at the origin, selected near the training
+            patch's center. The remaining observed positions are not hidden
+            growth constraints.
           </p>
           <div class="actions">
             <button id="grow" class="primary" disabled>Grow for 1 minute</button
@@ -156,9 +154,9 @@
           </div>
           <div id="growth-stats" class="readout">No placements yet</div>
           <p class="note">
-            Known limitation: the current held-out ice test matches 165 of 208
-            new sites. A legal learned-constraint assignment is not yet verified
-            material reproduction.
+            Structural comparisons appear below the scene as atoms accumulate.
+            Low RDF error is not proof of reproduction; inspect partial RDFs and
+            angular/composition errors too.
           </p>
           <p class="note">
             Continuous pose coverage is incomplete. A singleton is a provisional
@@ -174,6 +172,7 @@
             <h2 id="view-title">Atoms, before assumptions.</h2>
           </div>
           <span id="legend"></span>
+          <button id="fit-view">Fit view</button>
         </div>
         <div id="scene"></div>
         <div id="gallery" hidden></div>
@@ -183,6 +182,52 @@
         </footer>
       </article>
     </main>
+    <section id="evaluation" hidden>
+      <div>
+        <p class="eyebrow">STRUCTURAL COMPARISON · EVALUATION ONLY</p>
+        <h2>Does the growth resemble the sample?</h2>
+        <label
+          >Radial channel<select id="rdf-channel">
+            <option value="total">Total RDF</option>
+          </select></label
+        ><canvas
+          id="rdf-chart"
+          width="720"
+          height="250"
+          aria-label="Reference and grown radial distribution functions"
+        ></canvas>
+        <p class="muted">
+          Teal: training sample · amber: generated atoms · distances in Å. Same
+          radial window and bins; edge-corrected finite-window g(r), not a
+          periodic bulk RDF.
+        </p>
+      </div>
+      <div>
+        <div id="metric-stats" class="readout">
+          Waiting for at least 24 grown atoms.
+        </div>
+        <p class="note">
+          RDF measures pair distances, not angles or long-range uniqueness. A
+          one-atom seed has no RDF. Surfaces and incomplete frontiers affect all
+          these estimates. Comparison against training data is not held-out
+          validation.
+        </p>
+        <a href="https://docs.lammps.org/compute_rdf.html"
+          >RDF normalization reference ↗</a
+        >
+      </div>
+      <details id="benchmarks">
+        <summary>Multi-material single-seed regression results</summary>
+        <p class="muted">
+          Same search protocol: at most 160 steps / 10 seconds, 8,000 cached
+          points / 20,000 candidates. Lower errors mean closer agreement, not
+          “percent correct.” Crystalline, quasicrystalline and disordered
+          references are included; input names are not classifications of
+          generated output. Results include unresolved cases.
+        </p>
+        <div id="benchmark-table">Loading benchmark artifact…</div>
+      </details>
+    </section>
     <div class="scope">
       Research implementation · finite point kernel + approximate
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite

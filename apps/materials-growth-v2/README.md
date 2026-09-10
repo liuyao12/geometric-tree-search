@@ -8,6 +8,24 @@ Four stages: an observed configuration → repeated local supports → interval-
 
 This is a working **research baseline**, not a finished general-purpose materials generator. In particular, satisfying the learned point constraints does not establish that a generated patch is the continuation of the input material. The ice hold-out below deliberately exposes this distinction.
 
+The target scope is **crystalline, quasicrystalline, and amorphous materials**, including 2D structures. The algorithm does not receive a phase label or a periodicity assumption. Example names describe reference inputs, not a predicted phase of the output. These families are all in the regression suite, including a published melt-quenched Si configuration; that is test coverage, **not a claim that the current learner can grow all of them**. Statistical local-environment learning, richer overlap sections and long-range diffraction/order diagnostics are still needed. In particular, an amorphous target should be assessed by ensemble/local statistics, not by exact reproduction of one realization or a periodic unit cell.
+
+## Single-atom growth and structural fidelity
+
+The browser now starts stage 4 with **one atom at the origin**. Its label is taken from the observation atom closest to the centroid. No other training positions are fixed, no observation bounding-box emptiness mask is applied, and no training atom is merely hidden in the renderer. The rest of the input influences only the learned support/connection library. Support occurrence frequency breaks otherwise equal candidate-ordering scores in this mode. The master graph scheduler is unchanged. `seedMode: 'patch'` remains an explicit headless reconstruction control for historical tests, not the browser default.
+
+`metrics.mjs` is an evaluation-only module: it is not imported by the search engine. The worker compares the generated patch to the training patch centered on the selected seed, using:
+
+- Total and species-pair partial RDF curves, nearest-neighbor distances, composition total variation, four-nearest-neighbor angular-distribution total variation, and coordination counts within 1.25 times the reference median nearest-neighbor distance.
+- A common origin-centered disk/ball window: radius is the smaller of the two patches' 90th-percentile radii, with RDF range 0.6 times that radius. Both curves use 64 linearly smoothed bins. Pairs are translation-edge-corrected by the ratio of window volume to its overlap with a translated copy. Total g(r) is normalized by N(N−1), shell volume and window volume; unlike-label partials use N_a N_b, and like-label partials use N_a(N_a−1). Planar references use area/ring normalization; nonplanar growth against a planar reference is flagged rather than scored with a 3D volume.
+- RDF error is `sum(abs(g_ref-g_grown))/sum(g_ref+g_grown)`, **not a percent-correct value**. Missing partial-channel pairs report unavailable, not perfect agreement. Fewer than 24 atoms in either common window report insufficient data. Metric budgets are 1,500 atoms per common window, 50,000 atoms scanned per patch and 12 labels; a large outer growth region does not unnecessarily disable the core-window comparison.
+
+Finite growth is not a homogeneous periodic bulk sample. Window truncation, interfaces, incomplete frontier obligations and anisotropy remain important even after edge correction. The 90% window also omits outer outliers; no global correctness claim is based on it. The standard density/shell normalization and its homogeneous-system limitation are described in [LAMMPS' RDF documentation](https://docs.lammps.org/compute_rdf.html); our disk/ball edge correction is an explicitly different finite-window estimator. It passes a uniform-ball control with mean g ≈ 0.996, plus identity, rotation, wrong-scale, missing-label, planar and insufficient-data controls. No physical bond exclusions are applied.
+
+RDF discards angles and does not establish long-range order or structural uniqueness. The new scores are **training-reference fidelity diagnostics**, not held-out accuracy, confidence intervals, phase classification or physical stability. Structure factors, orientational order parameters, independently sampled reference windows and replicate uncertainty are future evaluation requirements for distinguishing crystal/quasicrystal/amorphous outcomes rigorously.
+
+`benchmark-results.json` records eleven single-seed cases under identical limits (160 steps or 10 cooperative search seconds, 8,000 cached points and 20,000 candidates). Eight produce enough atoms for metrics. The Cd–Yb crop stops on ambiguous correspondence; the quenched-Si and random-packing inputs produce no near-exact recurring supports at the tested 0.03 Å tolerance. These are learner/domain limitations, not impossible materials. The 2D cases have relatively small RDF and angular errors, while silicon demonstrates that modest radial error can coexist with considerably larger angular error. All results, including unresolved ones, are shown in the browser regression table. The browser's larger memory limits differ from this fixed test protocol.
+
 ## Reduction and continuous geometry
 
 - An atomic base placement contributes integer `t=1` at its anchor. A recurring anchored neighborhood supplies extended `m` support. Its other atoms are requirements for neighboring base placements, not additional unit contributions counted repeatedly. This is a point-model reduction, **not volumetric polyhedral tiling**.
@@ -16,7 +34,7 @@ This is a working **research baseline**, not a finished general-purpose material
 - Rigid registration estimates real-valued rotations. Candidate poses come from observed occurrence rotations and transported relative connections, optionally supplemented by small rotations about local axes. There is no spatial lattice or global angular grid. Nevertheless this finite evidence pool is **not an exhaustive search of SO(3)**.
 - Position correspondence uses a fixed-anchor epsilon ball and rejects ambiguous multiple correspondences. It does not chain near-neighbor matches transitively. A spatial hash accelerates lookup; it is not a lattice constraint. Mapping can depend on proposal order. Orientation-cache rounding and point-identical placement deduplication are approximate; this is not a symmetry certificate.
 - Marking compatibility requires the **common intersection of all assigned closed intervals** at each point/channel, not pairwise approximate equality. Real-valued comparisons are approximate floating-point semantics; no exact geometric certificate is claimed.
-- The optional complete bounding-box mask says that unobserved positions inside that explicit box are empty. Disable it for irregular/incomplete observation windows. No emptiness is inferred outside the mask. This is a problem-defining observation constraint, not learned chemistry.
+- In the legacy headless `seedMode: 'patch'` control only, an optional complete bounding-box mask declares missing positions empty. The browser's single-seed mode always disables that mask and retains only the one seed observation.
 
 ## Master-algorithm ledger
 
@@ -35,7 +53,7 @@ Normative reference: `docs/basic-tiling-algorithm.md` (local contract read on 20
 | Verification                                      | Independent accumulation of selected t/m data checks capacity, interval intersection, and remaining obligations. Export includes the compiled model, selected IDs, observations, grammar, poses, marking version, parameters, and counters.                                                                                            |
 | Remaining gaps                                    | Literal graph-delta journaling, certified continuous pose coverage, certified symmetry quotienting, generic irregular/hierarchical cluster discovery, geometric non-overlap beyond point correspondence, rich equivariant learned representations, held-out model selection, RL, and verified long-range material reproduction.        |
 
-An exported legal partial assignment is not a finished finite tiling. Frontier obligations may remain unfilled. Budget exhaustion and pauses are checkpoints/unknown, never proof of untileability. The display shows fixed observed atoms even before their anchors have been assigned; it reports seed reconstruction separately from new atoms. It renders the current branch, not the union of incompatible branches.
+An exported legal partial assignment is not a finished finite tiling. Frontier obligations may remain unfilled. Budget exhaustion and pauses are checkpoints/unknown, never proof of untileability. The display shows the single seed even before its local context has been assigned, then only the currently selected additional atomic placements. It renders the current branch, not the union of incompatible branches.
 
 ## Learning and visualization
 
@@ -45,6 +63,8 @@ Stage 2 highlights actual proposals in the full scene. Stage 3 gives each suppor
 
 Examples reuse v1's documented fixtures, including a diffraction-derived **D₂O** ice VIII configuration (deuterium is not silently relabeled hydrogen). XYZ/CIF/JSON import uses the existing parser. File contents are processed locally. The periodic table/database UI from v1 is not yet ported.
 
+Additional ideal controls are FCC Cu, BCC Fe, diamond Si, cubic CsCl and 2D h-BN, with explicitly illustrative, unrelaxed cell parameters. `asi-sample.mjs` contains frame 0 of the 216-atom file in Rosset, Drabold and Deringer's [a-Si research dataset](https://github.com/lamrosset/aSi-data), [DOI 10.5281/zenodo.14203730](https://doi.org/10.5281/zenodo.14203730), licensed CC BY 4.0. Attribution, original header, source blob identity and frame SHA-256 are retained. Coordinates/species are unchanged; forces and energies are omitted. The dataset spans disorder through paracrystallinity, so the sampled frame is named by provenance rather than treated as a phase certificate. Its periodic metadata is not passed into learning/search. The random Cu–Zr packing remains a separate negative control, not a thermodynamically validated glass.
+
 ## Tests and observed results
 
 Run from the repository root:
@@ -52,12 +72,14 @@ Run from the repository root:
 ```sh
 node apps/materials-growth-v2/test-kernel.mjs
 node apps/materials-growth-v2/test-material.mjs
+node apps/materials-growth-v2/test-metrics.mjs
+node apps/materials-growth-v2/test-single-seed.mjs apps/materials-growth-v2/benchmark-results.json
 node apps/materials-growth-v2/verify-artifact.mjs exported-audit.json
 ```
 
 Kernel controls cover global ordering, shared forced placements, fractional residuals, marking-only dependencies, nontransitive interval examples, exact semantic rollback, atomic failed expansion, and 32 tiny models checked against exhaustive subset enumeration. Graph rebuilding checks incremental state but shares the legality predicate; subset verification separately accumulates point values. These tests are evidence, not exhaustive proof of implementation correctness.
 
-Material controls include arbitrary proper rotation, opaque relabeling, zero marking error, independent assignment checks, graph checks, complete reconstruction of seed anchors, and preservation of both label species among new atoms. With position error 0.03 Å, marking error 0.05, 400 search steps, and the stated cache limits:
+The following **historical full-patch controls** explicitly run `seedMode: 'patch'` and are not single-atom browser benchmarks. They include arbitrary proper rotation, opaque relabeling, zero marking error, independent assignment checks, graph checks, complete reconstruction of seed anchors, and preservation of both label species among new atoms. With position error 0.03 Å, marking error 0.05, 400 search steps, and the stated cache limits:
 
 | Control             | Seed anchors reconstructed | New atoms           | Held-out extension agreement                                              |
 | ------------------- | -------------------------- | ------------------- | ------------------------------------------------------------------------- |

@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { samplePatch } from "../iqc-growth-live/continuous-samples.mjs";
+import { samplePatch, sampleCatalog } from "./samples.mjs";
+import { centralSeed } from "./seed.mjs";
+import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(new URL("./worker.mjs", import.meta.url), {
@@ -20,6 +22,11 @@ const palette = {
     D: "#cdd6df",
     O: "#e35050",
     C: "#505e70",
+    B: "#e49a9a",
+    N: "#3050f8",
+    Si: "#d9b58f",
+    Fe: "#d86c37",
+    Cs: "#7650bd",
     Na: "#aa79df",
     Cl: "#62b969",
     Cd: "#d4b862",
@@ -72,7 +79,7 @@ function showAtoms(list, fit = false) {
   if (fit && list.length) {
     const box = new THREE.Box3().setFromObject(group),
       center = box.getCenter(new THREE.Vector3()),
-      size = box.getSize(new THREE.Vector3()).length();
+      size = Math.max(12, box.getSize(new THREE.Vector3()).length());
     controls.target.copy(center);
     camera.position
       .copy(center)
@@ -106,6 +113,7 @@ function setStage(n) {
     .forEach((p) => (p.hidden = +p.dataset.panel !== n));
   $("scene").hidden = n === 2;
   $("gallery").hidden = n !== 2;
+  $("evaluation").hidden = n !== 3;
   $("view-label").textContent = [
     "OBSERVED PATCH",
     "REGISTRATION IN PROGRESS",
@@ -116,7 +124,7 @@ function setStage(n) {
     "Atoms, before assumptions.",
     "Repetition under rotation.",
     "Markings over neighborhoods.",
-    "Observed atoms + accepted additions.",
+    "One seed. Geometry-led growth.",
   ][n];
   if (n < 2) {
     highlight.clear();
@@ -125,7 +133,7 @@ function setStage(n) {
   if (n === 2) gallery();
   if (n === 3) {
     highlight.clear();
-    showAtoms(latestAtoms || atoms, true);
+    showAtoms(latestAtoms || [centralSeed(atoms).atom], true);
   }
 }
 document
@@ -145,6 +153,7 @@ function invalidate() {
   $("cluster-stats").textContent = "Not yet identified";
   $("learning-stats").textContent = "No training samples yet";
   $("growth-stats").textContent = "No placements yet";
+  renderMetrics(null);
 }
 function load(data) {
   invalidate();
@@ -181,6 +190,10 @@ for (const name of ["epsilon", "error"])
   };
 $("epsilon").onchange = $("neighbors").onchange = () => invalidate();
 $("error").onchange = () => {
+  latestAtoms = null;
+  renderMetrics(null);
+  $("growth-stats").textContent = "No placements yet";
+  $("export").disabled = true;
   marking = null;
   worker.postMessage({ kind: "reset" });
   $("grow").disabled = $("to-growth").disabled = true;
@@ -209,6 +222,10 @@ $("discover").onclick = () => {
   });
 };
 $("learn").onclick = () => {
+  latestAtoms = null;
+  renderMetrics(null);
+  $("growth-stats").textContent = "No placements yet";
+  $("export").disabled = true;
   marking = null;
   $("grow").disabled = $("to-growth").disabled = true;
   curve = [];
@@ -223,7 +240,7 @@ $("grow").onclick = () => {
   lock(true);
   $("grow").disabled = true;
   $("pause").disabled = false;
-  for (const id of ["marking", "angle", "mask"]) $(id).disabled = true;
+  for (const id of ["marking", "angle"]) $(id).disabled = true;
   status("Searching; time budget is 60 seconds, not an atom target");
   worker.postMessage({
     kind: "grow",
@@ -231,7 +248,7 @@ $("grow").onclick = () => {
     options: {
       marked: $("marking").value === "yes",
       angularReach: +$("angle").value,
-      completeCrop: $("mask").checked,
+      seedMode: "single",
       maximumPoints: 20000,
       maximumCandidates: 40000,
     },
@@ -243,15 +260,16 @@ $("reset").onclick = () => {
   $("growth-stats").textContent = "No placements yet";
   worker.postMessage({ kind: "reset" });
   lock(false);
-  for (const id of ["marking", "angle", "mask"]) $(id).disabled = false;
+  for (const id of ["marking", "angle"]) $(id).disabled = false;
   $("grow").disabled = !marking;
   $("pause").disabled = true;
   $("export").disabled = true;
   highlight.clear();
-  showAtoms(atoms, true);
+  showAtoms([centralSeed(atoms).atom], true);
+  renderMetrics(null);
   status("Search reset; the learned marking is retained");
 };
-for (const id of ["marking", "angle", "mask"])
+for (const id of ["marking", "angle"])
   $(id).onchange = () => $("reset").click();
 $("export").onclick = () => worker.postMessage({ kind: "export" });
 worker.onmessage = ({ data: d }) => {
@@ -263,7 +281,7 @@ worker.onmessage = ({ data: d }) => {
   }
   if (d.kind === "discovery") {
     highlight = new Set(d.ids);
-    showAtoms(atoms);
+    if (stage === 1) showAtoms(atoms);
     status(`Registering ${d.done} / ${d.total} observed neighborhoods`);
   }
   if (d.kind === "discovered") {
@@ -279,7 +297,7 @@ worker.onmessage = ({ data: d }) => {
     }
     lock(false);
     highlight.clear();
-    showAtoms(atoms);
+    if (stage < 2) showAtoms(atoms);
     $("to-learning").disabled = $("learn").disabled = !grammar.types.length;
     $("cluster-stats").textContent =
       `${grammar.types.length} recurring support classes · ${grammar.types.reduce((n, t) => n + t.occurrences.length, 0)} occurrences · ${grammar.residuals.length} uncovered observed atoms`;
@@ -310,10 +328,11 @@ worker.onmessage = ({ data: d }) => {
   if (d.kind === "snapshot") {
     const s = d.state;
     latestAtoms = s.atoms;
+    renderMetrics(s.metrics);
     highlight.clear();
     if (stage === 3) showAtoms(s.atoms);
     $("growth-stats").textContent =
-      `${s.seedCovered} / ${s.seedAtoms} seed anchors reconstructed · ${s.atoms.length - s.seedAtoms} new atoms · ${s.frontier.length} frontier obligations · ${s.stats.branches} branches · ${s.stats.backtracks} backtracks · ${s.stats.forced} certified forced · ${s.unresolved} unresolved domains · ${s.candidateCount} cached candidates · independent check: ${s.validation.legal ? "legal partial assignment" : "INVALID"}`;
+      `1 seed + ${s.atoms.length - 1} new atoms · ${s.frontier.length} frontier obligations · ${s.stats.branches} branches · ${s.stats.backtracks} backtracks · ${s.stats.forced} certified forced · ${s.unresolved} unresolved domains · ${s.candidateCount} cached candidates · independent check: ${s.validation.legal ? "legal partial assignment" : "INVALID"}`;
     $("export").disabled = false;
     status(
       `${s.status}${d.event?.message ? " — " + d.event.message : ""} · ${d.paused ? "paused" : "running"}`,
@@ -425,4 +444,19 @@ function animate(time) {
   else if (grammar) drawGallery(time);
 }
 requestAnimationFrame(animate);
+$("sample").replaceChildren();
+for (const [id, name] of sampleCatalog) {
+  const o = document.createElement("option");
+  o.value = id;
+  o.textContent = name;
+  $("sample").append(o);
+}
+$("fit-view").onclick = () => {
+  if (stage !== 2)
+    showAtoms(
+      stage === 3 ? latestAtoms || [centralSeed(atoms).atom] : atoms,
+      true,
+    );
+};
+loadBenchmarks();
 load(samplePatch("nacl"));

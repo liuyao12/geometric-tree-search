@@ -1,4 +1,5 @@
 import { PointSearch, verify } from "./kernel.mjs";
+import { centralSeed } from "./seed.mjs";
 import {
   PointRegistry,
   transform,
@@ -15,6 +16,7 @@ export class MaterialExperiment {
     marking,
     {
       marked = true,
+      seedMode = "single",
       angularReach = 0,
       positionError = grammar.epsilon,
       completeCrop = true,
@@ -25,6 +27,7 @@ export class MaterialExperiment {
     this.grammar = grammar;
     this.marking = marking;
     this.options = {
+      seedMode,
       marked,
       angularReach,
       positionError,
@@ -38,7 +41,13 @@ export class MaterialExperiment {
     this.events = [];
     this.best = null;
     this.unresolved = 0;
-    grammar.atoms.forEach((a) => {
+    if (!["single", "patch"].includes(seedMode))
+      throw Error("Unknown seed mode");
+    this.seedOrigin = centralSeed(grammar.atoms);
+    this.observation =
+      seedMode === "single" ? [this.seedOrigin.atom] : grammar.atoms;
+    this.options.completeCrop = seedMode === "patch" && completeCrop;
+    this.observation.forEach((a) => {
       const id = this.registry.intern(a.position);
       if (this.seed.has(id))
         throw Error("Input positions merge within the chosen error");
@@ -78,7 +87,10 @@ export class MaterialExperiment {
     this.engine = new PointSearch({
       preference: (c) =>
         (c.meta.sources || []).filter((id) => this.engine.placed.has(id))
-          .length,
+          .length +
+        (seedMode === "single"
+          ? grammar.types[c.meta.type].occurrences.length * 1e-6
+          : 0),
       required: [...this.seed.keys()].map((id) => ({ id, complete: false })),
       fixedMarks,
       complete: false,
@@ -113,7 +125,7 @@ export class MaterialExperiment {
     for (const [i, s] of this.marking.sections[type.id].sites.entries()) {
       if (!this.options.marked && i) continue;
       const position = transform(pose, s.position);
-      const observed = this.grammar.atoms.filter(
+      const observed = this.observation.filter(
         (a) => distance(a.position, position) <= this.options.positionError,
       );
       if (observed.length > 1) return;
@@ -281,6 +293,7 @@ export class MaterialExperiment {
       validation = verify(model, selected);
     return {
       schema: "materials-growth-v2/1",
+      seedOrigin: this.seedOrigin,
       atoms,
       seedAtoms: this.seed.size,
       seedCovered: [...this.seed.keys()].filter(

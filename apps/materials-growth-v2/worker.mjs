@@ -1,5 +1,6 @@
 import { discover, learnSections } from "./learning.mjs";
 import { MaterialExperiment } from "./material.mjs";
+import { compareStructure } from "./metrics.mjs";
 let grammar,
   marking,
   experiment,
@@ -9,6 +10,22 @@ let grammar,
   revision = 0;
 const send = (kind, data = {}) => postMessage({ kind, ...data });
 const yieldUI = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
+function snapshot(full = false) {
+  const state = experiment.snapshot(full),
+    origin = state.seedOrigin.origin;
+  const reference = grammar.atoms.map((a) => ({
+    ...a,
+    position: a.position.map((v, k) => v - origin[k]),
+  }));
+  const generated =
+    state.options.seedMode === "single"
+      ? state.atoms
+      : state.atoms.map((a) => ({
+          ...a,
+          position: a.position.map((v, k) => v - origin[k]),
+        }));
+  return { ...state, metrics: compareStructure(reference, generated) };
+}
 async function runGenerator(generator, token) {
   for (;;) {
     const next = generator.next();
@@ -32,7 +49,7 @@ function tick() {
     } while (performance.now() < until && performance.now() < deadline);
     if (performance.now() >= deadline) paused = true;
     if (paused || !tick.last || performance.now() - tick.last > 600) {
-      send("snapshot", { state: experiment.snapshot(false), paused, event });
+      send("snapshot", { state: snapshot(), paused, event });
       tick.last = performance.now();
     }
     if (!paused) timer = setTimeout(tick, 0);
@@ -46,8 +63,7 @@ onmessage = async ({ data }) => {
     if (data.kind === "pause") {
       paused = true;
       clearTimeout(timer);
-      if (experiment)
-        send("snapshot", { state: experiment.snapshot(false), paused });
+      if (experiment) send("snapshot", { state: snapshot(), paused });
       return;
     }
     if (data.kind === "discover") {
@@ -77,7 +93,7 @@ onmessage = async ({ data }) => {
       tick();
     }
     if (data.kind === "export" && experiment)
-      send("artifact", { state: experiment.snapshot(true) });
+      send("artifact", { state: snapshot(true) });
     if (data.kind === "reset") {
       revision++;
       paused = true;
