@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-point-quotient";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-periodic-preview";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -220,6 +220,7 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   let bestSnapshot = null;
   let terminalSnapshot = null;
   let checkedPatchSize = 0;
+  let lastPeriodicReportAt = -Infinity;
   const points = [];
   let lastHistoryTileCount = null;
   let lastHistoryFlushAt = epochNow();
@@ -242,7 +243,17 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   for await (const message of createTilingStream(config, tileSpecs, stopToken, preparedSystem)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
-    if (message.type === "translational_check") {
+    if (["periodic_progress", "periodic_work"].includes(message.type)
+      && searchElapsedMilliseconds() - lastPeriodicReportAt >= 250) {
+      lastPeriodicReportAt = searchElapsedMilliseconds();
+      post(sequence, { type: "mode-status", mode: mode.id,
+        text: `searching periodic cells · ${message.stats.quotients} tested · ${message.stats.nodes} nodes · preview only` });
+      if (terminalSnapshot) {
+        queueHistory({point:{milliseconds:Math.round(searchElapsedMilliseconds()),tiles:lastHistoryTileCount??0},stats:message.search_stats});
+        flushHistory();
+      }
+    }
+    if (message.type === "translational_check" || message.type === "isohedral_certificate") {
       checkedPatchSize = Math.max(checkedPatchSize, message.patch_size ?? 0);
       const targetPatchCheck = message.source === "generic_target_patch";
       const growthCheckpoint = message.source === "generic_growth_checkpoint";
@@ -290,7 +301,7 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
       lastHistoryTileCount = tiles;
       best = Math.max(best, tiles);
     } else if (message.type === "full_update") {
-      if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount) {
+      if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount || ["translational", "isohedral"].includes(mode.id)) {
         const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
         queueHistory({ point, snapshot });
         lastHistoryTileCount = tiles;
@@ -302,7 +313,10 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
         && (!bestSnapshot || tiles > (bestSnapshot.tile_count ?? 0))
       ) bestSnapshot = snapshot;
     }
-    if (message.type === "full_update") terminalSnapshot = message;
+    if (message.type === "full_update") {
+      terminalSnapshot = message;
+      if (["translational", "isohedral"].includes(mode.id)) flushHistory();
+    }
     if (message.type === "finished") final = message;
     if (!final) await awaitClockBudget();
   }
@@ -362,6 +376,9 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     learnedProgram,
     reusedLearnedPatch: false,
     resultKind: final?.result_kind ?? null,
+    terminationReason: final?.termination_reason ?? null,
+    message: final?.message ?? null,
+    searchScope: final?.search_scope ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
     checkedPatchSize,
     searchIncomplete: !!final?.search_incomplete,

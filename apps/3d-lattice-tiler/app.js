@@ -5,7 +5,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260910-point-quotient";
+} from "./engine.js?v=20260910-periodic-preview";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3164,7 +3164,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-point-quotient", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-periodic-preview", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3407,11 +3407,11 @@ function appendGrowthHistorySamples(series, samples) {
     const point = {
       ...sample.point,
       historySnapshot: sample.snapshot ?? null,
-      historyDelta: sample.delta ?? null
+      historyDelta: sample.delta ?? (sample.stats ? {search_stats:sample.stats} : null)
     };
     series.points.push(point);
     if (sample.snapshot) series.historyModel = createGrowthHistoryModel(sample.snapshot);
-    else if (sample.delta) series.historyModel = applyGrowthHistoryDelta(series.historyModel, sample.delta);
+    else if (point.historyDelta) series.historyModel = applyGrowthHistoryDelta(series.historyModel, point.historyDelta);
   }
   series.snapshot = growthSnapshotFromModel(series.historyModel) ?? series.snapshot;
 }
@@ -3758,6 +3758,11 @@ function formatGrowthResult(result, target) {
     }
     return `${result.label} reached ${patchSize} tiles; target-patch quotient check timed out ${formatElapsed(result.milliseconds)}`;
   }
+  if (["translational", "isohedral"].includes(result?.mode) && !result?.success && result?.stats?.search_model === "point-quotient-v1") {
+    if (result.terminationReason === "unsupported_exact_data") return `${result.label}: ${result.message}; seed preview only`;
+    const scope = result.searchScope;
+    return `${result.label} inconclusive · ${result.stats.quotients ?? 0} cells · ${result.stats.nodes ?? 0} nodes${scope ? ` · up to ${scope.max_tiles} tiles, ${scope.max_volume} points/cell` : ""} · preview only`;
+  }
   if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
     return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
   }
@@ -3928,7 +3933,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-point-quotient", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-periodic-preview", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

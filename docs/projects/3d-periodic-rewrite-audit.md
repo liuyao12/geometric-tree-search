@@ -37,3 +37,25 @@ The public-version adapter and browser worker were tested. Browser runs display 
 The initial diagonal-first screen through six cubes found 205 periodic and 190 isohedral point certificates among 207 tiles. After prioritizing a small number of skew HNFs at each volume, the same family returned 207 periodic and 207 isohedral point certificates in about two seconds total. These are empirical timing observations, not a learned pruning theorem. Final counts and the expanded census are in `runs/3d-periodic-rewrite-20260910/stress-summary.json`.
 
 Historical scripts describing voxel exact cover or geometric face-to-face obstruction retain those semantics; the new point-value lane must not inherit their negative conclusions. No aperiodicity or non-tiling claim follows from the unresolved stress cases.
+
+## Live progress repair (2026-09-10)
+
+The initial rewrite emitted geometry only after certification, and the six-lane
+comparison worker discarded periodic progress. Consequently, an unfinished or
+inconclusive periodic search had no displayed tile or growth-curve samples.
+
+Both periodic lanes now immediately publish an input seed preview. As search
+proceeds they retain the largest consistent motif candidate observed after the
+global dead-point check, and send cell/node progress through cooperative worker
+checkpoints. These previews are not growth milestones or proofs of extension.
+The curve holds the retained preview count while the cell search continues;
+only the independently checked certificate produces the repeating patch.
+Bounded or unsupported searches retain the preview and report the actual scope
+or unsupported-data reason. The other four lanes retain their growth semantics.
+
+Verification: `scripts/test-3d-periodic-worker.mjs` runs the actual comparison
+worker with Node's message transport for both lanes, testing pre-certificate
+geometry, inconclusive history and scope, unchanged-count certificate snapshots,
+progress across pause/resume, and unsupported exact-data previews. The existing
+periodic regression suite also passes, including independent eight-tile periodic
+and isohedral replay, graph rollback, global scheduler, and cancellation.

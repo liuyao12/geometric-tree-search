@@ -146,8 +146,8 @@ export class QuotientGraph {
 }
 
 export async function searchPeriodic(orientations,capacity,config={},stop={},progress=()=>{},checkpoint=async()=>{}) {
-  let lastYield=performance.now();
-  const cooperative=async()=>{if(!stop.stop&&performance.now()-lastYield>16){await pause();if(!stop.stop)await checkpoint();lastYield=performance.now();}};
+  let lastYield=performance.now(), activeDomain=null, bestPreview=0;
+  const cooperative=async()=>{if(!stop.stop&&performance.now()-lastYield>16){await pause();if(!stop.stop)await checkpoint({stats:{...stats},hnf:activeDomain?.h,counts:activeDomain?.tileCounts});lastYield=performance.now();}};
   const started=performance.now(), iso=config.tiling_strategy==='isohedral';
   const maxTiles=Math.max(1,Math.floor(config.periodic_patch_max_tiles??config.periodic_tile_count??8));
   const counts=config.periodic_patch_max_tiles!==undefined||config.periodic_tile_count===undefined?Array.from({length:maxTiles},(_,i)=>i+1):[maxTiles];
@@ -178,7 +178,7 @@ export async function searchPeriodic(orientations,capacity,config={},stop={},pro
     if(interrupted())break;
     if(stats.quotients>=maxForms){reason='quotient_limit';break;}
     if(periodVectors(h).some(v=>orientations.some(o=>!allowed(v,o))))continue;
-    stats.quotients++; const rows=[], roots=[];
+    stats.quotients++; activeDomain={h,tileCounts}; const rows=[], roots=[];
     for(const o of orientations) {
       for(let x=0;x<h.a;x++)for(let y=0;y<h.d;y++)for(let z=0;z<h.f;z++) {
         const t=[x,y,z];if(!allowed(t,o))continue;
@@ -201,6 +201,13 @@ export async function searchPeriodic(orientations,capacity,config={},stop={},pro
       stats.nodes++;if(++local>limit){capped=true;return false;}
       const decision=graph.decision();
       if(decision.kind==='dead')return false;
+      // A retained preview is a consistent motif candidate, not a certificate or
+      // an attained growth goal. Never retain a node with a known dead point.
+      if(chosen.length>bestPreview) {
+        bestPreview=chosen.length;
+        progress({hnf:h,counts:tileCounts,stats:{...stats},certified:false,
+          motif:chosen.map(i=>({prototile_idx:rows[i].o.type,orientation_index:rows[i].o.index,translation:rows[i].translation}))});
+      }
       if(decision.kind==='complete') {
         if(!tileCounts.includes(chosen.length)||requireAll&&[...required].some(s=>!chosen.some(i=>rows[i].o.species===s)))return false;
         const cert={version:PERIODIC_VERSION,kind:'exact_point_quotient',model:'integer point values on Z3',capacity,point_model:orientations.map(o=>({type:o.type,index:o.index,species:o.species,translationLattice:o.translationLattice,points:o.points.map(p=>({pos:p.pos,weight:p.weight}))})),hnf:h,period_vectors:periodVectors(h),cell_volume:q,
@@ -232,45 +239,77 @@ export async function searchPeriodic(orientations,capacity,config={},stop={},pro
   return {certificate:null,status:'unknown',reason:reason??(stats.capped_quotients?'per_quotient_node_limit':'bounded_period_family'),stats:{...stats,elapsed_ms:performance.now()-started},scope:{max_tiles:maxTiles,max_volume:maxVolume,max_quotients:maxForms,all_tested_quotients_exhausted:!reason&&!stats.capped_quotients}};
 }
 
+function displayStats(stats,config) {
+  return {...stats,search_model:PERIODIC_VERSION,tiling_strategy:config.tiling_strategy,
+    visited_nodes:stats.nodes??0,branch_choices_visited:stats.decisions??0};
+}
+
+function placementSnapshot(prototiles,capacity,colors,placements,searchStats,previewKind=null) {
+  const faces=[],totals=new Map();
+  placements=placements.map((m,n)=> {
+    const o=prototiles[m.prototile_idx].unique_orientations[m.orientation_index];
+    const colorId=(m.periodic_motif_index??n)%colors.length;
+    const vs=o.verts.map(p=>add(p,m.translation));
+    o.faces.forEach((f,j)=>faces.push({key:`${n}:${j}`,v:f.map(k=>vs[k]),color:colors[colorId],color_id:colorId,type_idx:m.prototile_idx,internal:false}));
+    for(const p of o.occupancy){const k=key(add(p.pos,m.translation));totals.set(k,(totals.get(k)||0)+p.weight);}
+    return {...m,color_id:colorId};
+  });
+  const frontier=[...totals].filter(([,w])=>w<capacity).map(([k,weight])=>({pos:k.split(',').map(Number),weight,max_value:capacity,frontier:true}));
+  return {type:'full_update',faces,placements,tile_count:placements.length,frontier_points:frontier,
+    preview_kind:previewKind,tile_counts:prototiles.map((_,type)=>({type_idx:type,count:placements.filter(p=>p.prototile_idx===type).length,color:colors[type%colors.length]})),
+    frontier_stats:{point_count:frontier.length,total_faces:faces.length,min_gen:0},search_stats:searchStats};
+}
+
 export async function* periodicStream(config,prototiles,capacity,colors,stop={}) {
-  let orientations;
-  try {orientations=exactOrientations(prototiles,capacity);}catch(error){yield {type:'finished',success:false,result_kind:'search_incomplete',can_tile:null,search_incomplete:true,tile_count:0,termination_reason:'unsupported_exact_data',message:error.message};return;}
-  yield {type:'search_prepared',search_model:PERIODIC_VERSION,orientations:orientations.length};
-  // Search sends progress through a small queue so worker pause/stop remains live.
+  let orientations,unsupported;
+  try {orientations=exactOrientations(prototiles,capacity);}catch(error){unsupported=error.message;}
+  yield {type:'search_prepared',search_model:PERIODIC_VERSION,orientations:orientations?.length??0};
+  // Always draw the seed, even if no admissible quotient or exact adapter exists.
+  // This is only an input preview; it makes no claim of extendibility.
+  let snapshot=placementSnapshot(prototiles,capacity,colors,
+    prototiles[0]?.unique_orientations?.length?[{prototile_idx:0,orientation_index:0,translation:[0,0,0]}]:[],
+    displayStats({},config),'seed');
+  yield snapshot;
+  if(unsupported){yield {type:'finished',success:false,result_kind:'search_incomplete',can_tile:null,search_incomplete:true,tile_count:snapshot.tile_count,
+    termination_reason:'unsupported_exact_data',message:unsupported,search_stats:snapshot.search_stats};return;}
+  // Every checkpoint suspends the producer until the consumer resumes it.
   const updates=[];let done=false,result,error,resume=null;
-  const checkpoint=()=>new Promise(resolve=>{resume=resolve;updates.push({type:'periodic_work'});});
-  const task=searchPeriodic(orientations,capacity,config,stop,p=>updates.push({type:'periodic_progress',...p}),checkpoint).then(r=>{result=r;done=true;},e=>{error=e;done=true;});
+  const checkpoint=p=>new Promise(resolve=>{resume=resolve;updates.push({type:'periodic_work',...p,search_stats:displayStats(p.stats,config)});});
+  const report=p=>{
+    if(p.motif)updates.push(placementSnapshot(prototiles,capacity,colors,p.motif,displayStats(p.stats,config),'consistent_motif'));
+    updates.push({type:'periodic_progress',...p,search_stats:displayStats(p.stats,config)});
+  };
+  const task=searchPeriodic(orientations,capacity,config,stop,report,checkpoint).then(r=>{result=r;done=true;},e=>{error=e;done=true;});
   try {
-    while(!done){
-      while(updates.length){yield updates.shift();if(resume){const release=resume;resume=null;release();}}
-      await pause();
+    // Drain final queued snapshots as well as those produced before completion.
+    while(!done||updates.length){
+      while(updates.length){const update=updates.shift();if(update.type==='full_update')snapshot=update;yield update;if(resume){const release=resume;resume=null;release();}}
+      if(!done)await pause();
     }
   } finally {
     if(!done){stop.stop=true;if(resume)resume();await task;}
   }
   await task;if(error)throw error;
   const cert=result.certificate,iso=config.tiling_strategy==='isohedral';
-  if(!cert){yield {type:'finished',success:false,result_kind:'search_incomplete',can_tile:null,search_incomplete:true,tile_count:0,termination_reason:result.reason,search_stats:result.stats,search_scope:result.scope};return;}
+  const searchStats=displayStats(result.stats,config);
+  if(!cert){yield {type:'finished',success:false,result_kind:'search_incomplete',can_tile:null,search_incomplete:true,tile_count:snapshot.tile_count,
+    termination_reason:result.reason,search_stats:searchStats,search_scope:result.scope};return;}
   cert.prototile_counts=prototiles.map((_,type)=>({prototile_idx:type,count:cert.motif.filter(m=>m.prototile_idx===type).length})).filter(p=>p.count);
   cert.mixed_prototile=new Set(cert.motif.map(m=>orientations.find(o=>o.type===m.prototile_idx).species)).size>1;
   yield {type:iso?'isohedral_certificate':'translational_check',certified:true,patch_size:cert.motif.length,periodic_template:cert};
-  const placements=[],faces=[],totals=new Map(),limit=Math.min(Math.max(1,+config.safety_max_tiles||2000),config.criterion==='count'?Math.max(1,+config.target_val||80):Math.max(cert.motif.length*8,24));
+  const placements=[],limit=Math.min(Math.max(1,+config.safety_max_tiles||2000),config.criterion==='count'?Math.max(1,+config.target_val||80):Math.max(cert.motif.length*8,24));
   for(let radius=0;placements.length<limit;radius++) {
     for(let x=-radius;x<=radius;x++)for(let y=-radius;y<=radius;y++)for(let z=-radius;z<=radius;z++) {
       if(Math.max(Math.abs(x),Math.abs(y),Math.abs(z))!==radius)continue;
       for(let i=0;i<cert.motif.length&&placements.length<limit;i++) {
-        const m=cert.motif[i],o=orientations.find(o=>o.type===m.prototile_idx&&o.index===m.orientation_index);
+        const m=cert.motif[i];
         const t=m.translation.map((v,j)=>v+x*cert.period_vectors[0][j]+y*cert.period_vectors[1][j]+z*cert.period_vectors[2][j]);
-        const colorId=i%colors.length,n=placements.length;
-        placements.push({...m,translation:t,periodic_motif_index:i,color_id:colorId});
-        const vs=o.orientation.verts.map(p=>add(p,t));
-        o.orientation.faces.forEach((f,j)=>faces.push({key:`${n}:${j}`,v:f.map(k=>vs[k]),color:colors[colorId],color_id:colorId,type_idx:o.type,internal:false}));
-        for(const p of o.points){const k=key(add(p.pos,t));totals.set(k,(totals.get(k)||0)+p.weight);}
+        placements.push({...m,translation:t,periodic_motif_index:i});
       }
     }
   }
-  const searchStats={...result.stats,search_model:PERIODIC_VERSION,tiling_strategy:config.tiling_strategy,visited_nodes:result.stats.nodes,branch_choices_visited:result.stats.decisions,growth_axis_rank:3};
-  yield {type:'full_update',faces,placements,tile_count:placements.length,frontier_points:[...totals].filter(([,w])=>w<capacity).map(([k,weight])=>({pos:k.split(',').map(Number),weight,max_value:capacity,frontier:true})),tile_counts:prototiles.map((_,type)=>({type_idx:type,count:placements.filter(p=>p.prototile_idx===type).length,color:colors[type%colors.length]})),frontier_stats:{point_count:[...totals.values()].filter(w=>w<capacity).length,total_faces:faces.length,min_gen:0},search_stats:searchStats};
+  searchStats.growth_axis_rank=3;
+  yield placementSnapshot(prototiles,capacity,colors,placements,searchStats);
   yield {type:'finished',success:true,result_kind:'certified_tiling',can_tile:true,search_incomplete:false,tile_count:placements.length,goal_reached:config.criterion==='count'&&placements.length>=config.target_val,search_stats:searchStats,
     tiling_evidence:{kind:iso?'isohedral_certificate':'translational_certificate',certified:true,strategy:config.tiling_strategy,model:'integer point values; geometric faithfulness separate',patch_size:cert.motif.length,certificate:cert,period_vectors:cert.period_vectors}};
 }

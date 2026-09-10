@@ -70,7 +70,7 @@ for(const strategy of ['translational','isohedral']) {
 // producer; otherwise a paused/closed worker could keep searching in background.
 const token={stop:false},stream=periodicStream({periodic_patch_max_tiles:8,include_mirrors:true},
   [tileSpecs.TILING_REGISTRY.mathematica_16_vertex.build()[0]],24,tileSpecs.COLOR_PALETTE,token);
-await stream.next();await stream.next();
+while((await stream.next()).value?.type!=='periodic_work') {}
 await Promise.race([stream.return(),new Promise((_,reject)=>setTimeout(()=>reject(Error('checkpoint cancellation hung')),1000))]);
 assert.equal(token.stop,true);
 const stopped=await searchPeriodic(cube,1,{}, {stop:true});assert.equal(stopped.reason,'stopped');assert.equal(stopped.status,'unknown');
