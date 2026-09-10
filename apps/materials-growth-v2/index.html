@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Materials Growth · GCTS v2</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../3d-lattice-tiler/vendor/three.module.min.js",
+          "three/addons/controls/OrbitControls.js": "../3d-lattice-tiler/vendor/OrbitControls.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="../iqc-growth-live/">GCTS</a>
+      <h1>Materials Growth <small>v2 / geometry-first</small></h1>
+      <a href="README.md">Method & limitations ↗</a>
+    </header>
+    <nav aria-label="Pipeline">
+      <button data-stage="0" class="active">
+        01 <span>Sample configuration</span></button
+      ><button data-stage="1">02 <span>Cluster identification</span></button
+      ><button data-stage="2">03 <span>GCTS learning</span></button
+      ><button data-stage="3">04 <span>Material growth</span></button>
+    </nav>
+    <main>
+      <aside>
+        <section data-panel="0">
+          <p class="eyebrow">OBSERVATION → GEOMETRY</p>
+          <h2>Start with positions.</h2>
+          <p>
+            Species are opaque labels. No chemistry, force field, lattice, or
+            target structure is supplied to the search.
+          </p>
+          <label
+            >Example<select id="sample">
+              <option value="nacl">NaCl · cubic control</option>
+              <option value="ice">Ice VIII · diffraction-derived D₂O</option>
+              <option value="graphene">Graphene · 2D control</option>
+              <option value="cdyb">Cd–Yb · quasicrystal model crop</option>
+              <option value="glass">Cu–Zr · random packing control</option>
+            </select></label
+          >
+          <p id="source" class="muted"></p>
+          <label class="file"
+            >Or import Cartesian XYZ / CIF<input
+              id="file"
+              type="file"
+              accept=".xyz,.cif,.json"
+          /></label>
+          <p id="sample-count"></p>
+          <button id="to-clusters" class="primary">Identify clusters →</button>
+        </section>
+        <section data-panel="1" hidden>
+          <p class="eyebrow">RECURRING LOCAL SUPPORTS</p>
+          <h2>Find geometric repetition.</h2>
+          <p>
+            Register colored point collections under proper, real-valued
+            rotations. Watch the observed neighborhood under consideration.
+          </p>
+          <label
+            >Nearest-neighbor proposal size<select id="neighbors">
+              <option>3</option>
+              <option selected>5</option>
+              <option>6</option>
+              <option>8</option>
+              <option>12</option>
+            </select></label
+          ><label
+            >Position error / Å <output id="epsilon-label">0.03</output
+            ><input
+              id="epsilon"
+              type="range"
+              min="0.005"
+              max="0.15"
+              step="0.005"
+              value="0.03" /></label
+          ><button id="discover" class="primary">Run identification</button>
+          <div id="cluster-stats" class="readout">Not yet identified</div>
+          <p class="note">
+            Baseline: anchored nearest-neighbor proposals, not exhaustive
+            irregular-cluster mining. A finite crop can leave unsupported
+            boundary anchors. No artificial “gap cluster” is invented.
+          </p>
+          <button id="to-learning" disabled>Continue to learning →</button>
+        </section>
+        <section data-panel="2" hidden>
+          <p class="eyebrow">LOCAL SECTIONS, NOT POTENTIALS</p>
+          <h2>Learn overlap markings.</h2>
+          <p>
+            Each support carries label-occupancy channels. Positions rotate;
+            these scalar channels do not. Shared points require a common
+            intersection of all error intervals.
+          </p>
+          <label
+            >Marking error <output id="error-label">0.05</output
+            ><input
+              id="error"
+              type="range"
+              min="0"
+              max="0.3"
+              step="0.01"
+              value="0.05" /></label
+          ><button id="learn" class="primary" disabled>Train a marking</button
+          ><label
+            >Displayed label channel<select id="channel">
+              <option>Identify supports first</option>
+            </select></label
+          ><canvas
+            id="curve"
+            width="520"
+            height="200"
+            aria-label="Training mean square error curve"
+          ></canvas>
+          <div id="learning-stats" class="readout">No training samples yet</div>
+          <p class="note">
+            This first representation fits empirical occupancy, not an RL policy
+            or a learned physical potential. Halo opacity shows a channel value;
+            halo radius is only a display glyph.
+          </p>
+          <button id="to-growth" disabled>Continue to growth →</button>
+        </section>
+        <section data-panel="3" hidden>
+          <p class="eyebrow">FRONTIER → CONSTRAINTS → SEARCH</p>
+          <h2>Expand, then inspect.</h2>
+          <label
+            >Marking<select id="marking">
+              <option value="yes">Current trained local section</option>
+              <option value="no">Anchor-only ablation</option>
+            </select></label
+          ><label
+            >Local rotation exploration<select id="angle">
+              <option value="0">Observed registered poses</option>
+              <option value="1">Also ±1° around local axes</option>
+              <option value="3">Also ±3° around local axes</option>
+            </select></label
+          ><label class="check"
+            ><input id="mask" type="checkbox" checked /> Input fills its
+            bounding box</label
+          >
+          <p class="muted">
+            With this mask, missing positions inside the box are observed empty.
+            Disable for irregular or incomplete crops.
+          </p>
+          <div class="actions">
+            <button id="grow" class="primary" disabled>Grow for 1 minute</button
+            ><button id="pause" disabled>Pause</button>
+          </div>
+          <div class="actions">
+            <button id="reset">Reset search</button
+            ><button id="export" disabled>Export audit JSON</button>
+          </div>
+          <div id="growth-stats" class="readout">No placements yet</div>
+          <p class="note">
+            Known limitation: the current held-out ice test matches 165 of 208
+            new sites. A legal learned-constraint assignment is not yet verified
+            material reproduction.
+          </p>
+          <p class="note">
+            Continuous pose coverage is incomplete. A singleton is a provisional
+            branch, not a forced move. Empty sampled domains and memory limits
+            mean unresolved, not impossible.
+          </p>
+        </section>
+      </aside>
+      <article>
+        <div class="scene-head">
+          <div>
+            <span class="eyebrow" id="view-label">OBSERVED PATCH</span>
+            <h2 id="view-title">Atoms, before assumptions.</h2>
+          </div>
+          <span id="legend"></span>
+        </div>
+        <div id="scene"></div>
+        <div id="gallery" hidden></div>
+        <footer>
+          <span id="status" role="status">Ready</span
+          ><span>Drag to orbit · scroll to zoom</span>
+        </footer>
+      </article>
+    </main>
+    <div class="scope">
+      Research implementation · finite point kernel + approximate
+      continuous-space adapter · no claim of exhaustive SO(3) search, infinite
+      growth, or physical stability
+    </div>
+    <script type="module" src="app.mjs"></script>
+  </body>
+</html>
