@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260824-polycube10-v107">
+  <link rel="stylesheet" href="./style.css?v=20260910-periodic-trace-20260824-polycube10-v107">
 </head>
 <body>
   <div class="app-shell">
@@ -200,10 +200,11 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Six cold-start lanes enumerate orientations and the tile stabilizer before a shared search clock; the equal cap is applied independently. The Run button becomes Pause, then Continue to resume exact search state with more clock time. Only certified exhaustive failure drops to zero. Periodic lanes show the seed and largest consistent motif preview while checking cells; only a certificate establishes a repeating tiling.</small>
+            <small>The six lanes start together after preprocessing. Pause and Continue preserve search state. Periodic lanes show placements, rejections, and backtracking inside an outlined cell. A rollback to zero starts another attempt; it does not prove non-tiling. Replay and the arrows inspect recorded steps.</small>
           </div>
           <div class="growth-history-controls" aria-label="Growth snapshot history">
             <button id="growthHistoryBack" type="button" aria-label="Previous growth snapshot" title="Previous snapshot" disabled>←</button>
+            <button id="growthReplayButton" type="button" aria-label="Replay search attempts" disabled>Replay</button>
             <span id="growthViewState" class="growth-view-state">Current · Free-range</span>
             <button id="growthHistoryForward" type="button" aria-label="Next growth snapshot" title="Next snapshot" disabled>→</button>
           </div>
@@ -260,6 +261,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260910-periodic-preview"></script>
+  <script type="module" src="./app.js?v=20260910-periodic-trace"></script>
 </body>
 </html>

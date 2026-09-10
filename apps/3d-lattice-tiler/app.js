@@ -5,7 +5,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260910-periodic-preview";
+} from "./engine.js?v=20260910-periodic-trace";
 
 const $ = (id) => document.getElementById(id);
 
@@ -66,6 +66,8 @@ const growthChart = $("growthChart");
 const growthViewState = $("growthViewState");
 const growthHistoryBack = $("growthHistoryBack");
 const growthHistoryForward = $("growthHistoryForward");
+const growthReplayButton = $("growthReplayButton");
+let growthReplayTimer = null;
 const growthBenchmarkStatus = $("growthBenchmarkStatus");
 
 const metricTiles = $("metricTiles");
@@ -330,7 +332,8 @@ scene.add(rimLight);
 const faceGroup = new THREE.Group();
 const edgeGroup = new THREE.Group();
 const frontierPointGroup = new THREE.Group();
-scene.add(faceGroup, edgeGroup, frontierPointGroup);
+const periodicCellGroup = new THREE.Group();
+scene.add(faceGroup, edgeGroup, frontierPointGroup, periodicCellGroup);
 
 let thumbnailRenderer = null;
 function getThumbnailRenderer() {
@@ -2578,6 +2581,16 @@ function updateScene(snapshot, options = {}) {
     pointMesh.instanceMatrix.needsUpdate = true;
   }
 
+  const cellBatches=new Map(),h=snapshot.periodic_state?.hnf;
+  if(h) {
+    const vectors=[[h.a,0,0],[h.b,h.d,0],[h.c,h.e,h.f]],positions=[];
+    const corner=mask=>[0,1,2].map(j=>vectors.reduce((sum,v,i)=>sum+((mask&(1<<i))?v[j]:0),0)/scale);
+    for(let mask=0;mask<8;mask++)for(let i=0;i<3;i++)if(!(mask&(1<<i)))positions.push(...corner(mask),...corner(mask|(1<<i)));
+    cellBatches.set('cell',{positions});
+  }
+  reconcileRenderBatches(periodicCellGroup,cellBatches,
+    batch=>new THREE.LineSegments(geometryFromPositions(batch.positions),new THREE.LineBasicMaterial({color:0x64748b,transparent:true,opacity:0.55})),
+    (object,batch)=>replaceObjectGeometry(object,geometryFromPositions(batch.positions)));
   updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
   requestRender();
@@ -3164,7 +3177,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-periodic-preview", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-periodic-trace", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3308,7 +3321,7 @@ function selectedGrowthMode() {
 
 function growthHistorySnapshotIndices(series) {
   return (series?.points ?? [])
-    .map((point, index) => point?.historySnapshot || point?.historyDelta || point?.snapshot ? index : null)
+    .map((point, index) => point?.historySnapshot || point?.historyDelta?.action || point?.snapshot ? index : null)
     .filter(index => index !== null);
 }
 
@@ -3330,7 +3343,8 @@ function createGrowthHistoryModel(snapshot) {
     tile_count: snapshot?.tile_count ?? 0,
     tile_counts: snapshot?.tile_counts ?? [],
     frontier_stats: snapshot?.frontier_stats ?? null,
-    search_stats: snapshot?.search_stats ?? null
+    search_stats: snapshot?.search_stats ?? null,
+    periodic_state: snapshot?.periodic_state ?? null
   };
 }
 
@@ -3386,14 +3400,18 @@ function growthSnapshotFromModel(model) {
       pos: point.pos?.slice()
     })),
     frontier_stats: model.frontier_stats,
-    search_stats: model.search_stats
+    search_stats: model.search_stats,
+    periodic_state: model.periodic_state
   };
 }
 
 function growthSnapshotAt(series, pointIndex) {
   if (!Number.isInteger(pointIndex)) return series?.snapshot ?? null;
   let model = null;
-  for (let index = 0; index <= pointIndex; index += 1) {
+  // Start at the nearest full snapshot, so replay does not rebuild its entire past.
+  let start=pointIndex;
+  while(start>0&&!series?.points?.[start]?.historySnapshot&&!series?.points?.[start]?.snapshot)start--;
+  for (let index = start; index <= pointIndex; index += 1) {
     const point = series?.points?.[index];
     if (point?.historySnapshot) model = createGrowthHistoryModel(point.historySnapshot);
     else if (point?.historyDelta) model = applyGrowthHistoryDelta(model, point.historyDelta);
@@ -3425,6 +3443,7 @@ function updateGrowthHistoryButtons() {
     : indices.indexOf(pointIndex);
   growthHistoryBack.disabled = !indices.length || position <= 0;
   growthHistoryForward.disabled = pointIndex == null;
+  growthReplayButton.disabled = !indices.length;
 }
 
 function stepGrowthHistory(direction) {
@@ -3444,6 +3463,25 @@ function stepGrowthHistory(direction) {
     showGrowthSnapshot(modeId, nextPosition < indices.length ? indices[nextPosition] : null);
   }
   renderGrowthChart();
+}
+
+function stopGrowthReplay() {
+  clearInterval(growthReplayTimer);growthReplayTimer=null;
+  growthReplayButton.textContent='Replay';
+  growthReplayButton.setAttribute('aria-label','Replay search attempts');
+}
+function toggleGrowthReplay() {
+  if(growthReplayTimer){stopGrowthReplay();return;}
+  const modeId=selectedGrowthMode(),indices=growthHistorySnapshotIndices(growthSeries.get(modeId));
+  if(!indices.length)return;
+  if(growthInspection.pointIndex==null)showGrowthSnapshot(modeId,indices[0]);
+  growthReplayButton.textContent='Pause replay';
+  growthReplayButton.setAttribute('aria-label','Pause search replay');
+  growthReplayTimer=setInterval(()=>{
+    if(selectedGrowthMode()!==modeId){stopGrowthReplay();return;}
+    stepGrowthHistory(1);
+    if(growthInspection.pointIndex==null)stopGrowthReplay();
+  },250);
 }
 
 function showGrowthSnapshot(modeId, pointIndex = null) {
@@ -3470,7 +3508,10 @@ function showGrowthSnapshot(modeId, pointIndex = null) {
   const displayedPoint = growthInspection.pointIndex == null ? series.points?.at(-1) : inspectedPoint;
   const tiles = displayedPoint?.tiles ?? snapshot.tile_count ?? 0;
   const time = displayedPoint ? ` at ${(displayedPoint.milliseconds / 1000).toFixed(2)}s` : "";
-  setStatus(`${modeLabel}: ${tiles} tiles${time}${growthInspection.pointIndex == null ? " · current" : " · historical sample"}`);
+  const state=snapshot.periodic_state;
+  const action=state ? state.action==='place' ? state.forced ? 'forced placement' : 'trying a tile'
+    : state.action==='reject' ? `rejected: ${(state.reason??'failed branch').replaceAll('_',' ')}` : 'backtracking' : '';
+  setStatus(`${modeLabel}: ${tiles} tiles${time}${action ? ` · ${action}` : ''}${growthInspection.pointIndex == null ? " · current" : " · historical sample"}`);
 }
 
 function showSelectedGrowthSnapshot() {
@@ -3487,7 +3528,7 @@ function scheduleGrowthUiRefresh({ showCurrent = false } = {}) {
     growthUiRefreshShowCurrent = false;
     if (shouldShowCurrent) showSelectedGrowthSnapshot();
     renderGrowthChart();
-  }, 300);
+  }, ["translational","isohedral"].includes(selectedGrowthMode()) ? 50 : 300);
 }
 
 function handleGrowthPlotClick(event) {
@@ -3869,6 +3910,7 @@ function extendGrowthBenchmark() {
 }
 
 function startGrowthBenchmark() {
+  stopGrowthReplay();
   if (!hasRunnableSelection()) {
     growthBenchmarkStatus.textContent = "Choose a figure or enable a custom lattice tile first.";
     return;
@@ -3933,7 +3975,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-periodic-preview", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-periodic-trace", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -4059,6 +4101,7 @@ function bindControls() {
   });
 
   strategyRadios.forEach(radio => radio.addEventListener("change", () => {
+    stopGrowthReplay();
     updateStrategyUI();
     showSelectedGrowthSnapshot();
     renderGrowthChart();
@@ -4099,8 +4142,9 @@ function bindControls() {
     else if (growthPaused) extendGrowthBenchmark();
     else pauseGrowthBenchmark();
   });
-  growthHistoryBack.addEventListener("click", () => stepGrowthHistory(-1));
-  growthHistoryForward.addEventListener("click", () => stepGrowthHistory(1));
+  growthHistoryBack.addEventListener("click", () => {stopGrowthReplay();stepGrowthHistory(-1);});
+  growthHistoryForward.addEventListener("click", () => {stopGrowthReplay();stepGrowthHistory(1);});
+  growthReplayButton.addEventListener("click", toggleGrowthReplay);
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();

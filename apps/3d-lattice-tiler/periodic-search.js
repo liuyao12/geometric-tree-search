@@ -145,8 +145,8 @@ export class QuotientGraph {
   }
 }
 
-export async function searchPeriodic(orientations,capacity,config={},stop={},progress=()=>{},checkpoint=async()=>{}) {
-  let lastYield=performance.now(), activeDomain=null, bestPreview=0;
+export async function searchPeriodic(orientations,capacity,config={},stop={},progress=()=>{},checkpoint=async()=>{},trace=async()=>{}) {
+  let lastYield=performance.now(), activeDomain=null;
   const cooperative=async()=>{if(!stop.stop&&performance.now()-lastYield>16){await pause();if(!stop.stop)await checkpoint({stats:{...stats},hnf:activeDomain?.h,counts:activeDomain?.tileCounts});lastYield=performance.now();}};
   const started=performance.now(), iso=config.tiling_strategy==='isohedral';
   const maxTiles=Math.max(1,Math.floor(config.periodic_patch_max_tiles??config.periodic_tile_count??8));
@@ -195,41 +195,43 @@ export async function searchPeriodic(orientations,capacity,config={},stop={},pro
     stats.max_candidates=Math.max(stats.max_candidates,rows.length);stats.max_edges=Math.max(stats.max_edges,rows.reduce((n,r)=>n+r.entries.length,0));
     let local=0,capped=false,found=null;
     const limit=config.periodic_nodes_per_quotient??4000;
+    const state=(action,details={})=>trace({action,...details,hnf:h,counts:tileCounts,stats:{...stats},
+      motif:chosen.map(i=>({prototile_idx:rows[i].o.type,orientation_index:rows[i].o.index,translation:rows[i].translation}))});
+    const reject=async(reason,details={})=>{await state('reject',{reason,...details});return false;};
     async function dfs() {
       if(stats.nodes%32===0)await cooperative();
       if(interrupted())return false;
       stats.nodes++;if(++local>limit){capped=true;return false;}
       const decision=graph.decision();
-      if(decision.kind==='dead')return false;
-      // A retained preview is a consistent motif candidate, not a certificate or
-      // an attained growth goal. Never retain a node with a known dead point.
-      if(chosen.length>bestPreview) {
-        bestPreview=chosen.length;
-        progress({hnf:h,counts:tileCounts,stats:{...stats},certified:false,
-          motif:chosen.map(i=>({prototile_idx:rows[i].o.type,orientation_index:rows[i].o.index,translation:rows[i].translation}))});
-      }
+      if(decision.kind==='dead')return reject('dead_point',{point:decision.point});
       if(decision.kind==='complete') {
-        if(!tileCounts.includes(chosen.length)||requireAll&&[...required].some(s=>!chosen.some(i=>rows[i].o.species===s)))return false;
+        if(!tileCounts.includes(chosen.length)||requireAll&&[...required].some(s=>!chosen.some(i=>rows[i].o.species===s)))return reject('tile_inventory');
         const cert={version:PERIODIC_VERSION,kind:'exact_point_quotient',model:'integer point values on Z3',capacity,point_model:orientations.map(o=>({type:o.type,index:o.index,species:o.species,translationLattice:o.translationLattice,points:o.points.map(p=>({pos:p.pos,weight:p.weight}))})),hnf:h,period_vectors:periodVectors(h),cell_volume:q,
           motif:chosen.map(i=>({prototile_idx:rows[i].o.type,orientation_index:rows[i].o.index,orientation_id:`${rows[i].o.type}:${rows[i].o.index}`,translation:rows[i].translation})),include_reflections:!!config.include_mirrors};
         if(!verifyPeriodic(orientations,capacity,cert))throw Error('Independent periodic replay failed');
-        if(iso){cert.isohedral=certifyIsohedral(orientations,capacity,cert,!!config.include_mirrors);if(!cert.isohedral){stats.isohedral_rejections++;return false;}}
+        if(iso){cert.isohedral=certifyIsohedral(orientations,capacity,cert,!!config.include_mirrors);if(!cert.isohedral){stats.isohedral_rejections++;return reject('not_isohedral');}}
         found=cert;return true;
       }
-      if(chosen.length>=Math.max(...tileCounts))return false;
+      if(chosen.length>=Math.max(...tileCounts))return reject('motif_size');
       if(decision.kind==='forced')stats.forced++;else stats.decisions++;
       for(const i of decision.options) {
         const mark=graph.apply(i);stats.eliminations+=graph.trail.length-mark;chosen.push(i);
+        await state('place',{forced:decision.kind==='forced'});
         const done=await dfs();chosen.pop();graph.undo(i,mark);
-        if(done)return true;stats.backtracks++;if(capped||reason)return false;
+        if(done)return true;stats.backtracks++;
+        // Successful unwinding and resource cleanup are not failed attempts.
+        if(capped||reason)return false;
+        await state('backtrack');
       }
       return false;
     }
     // Translating ANY chosen placement to the origin is sound. All root
     // orientations/types are retained; no unproved rotational quotienting.
     for(const i of roots) {
-      const mark=graph.apply(i);chosen.push(i);await dfs();chosen.pop();graph.undo(i,mark);
+      const mark=graph.apply(i);chosen.push(i);await state('place',{root:true});
+      await dfs();chosen.pop();graph.undo(i,mark);
       if(found||capped||reason)break;
+      await state('backtrack',{root:true});
     }
     if(capped)stats.capped_quotients++;
     progress({hnf:h,counts:tileCounts,stats:{...stats},certified:!!found});
@@ -274,16 +276,21 @@ export async function* periodicStream(config,prototiles,capacity,colors,stop={})
     termination_reason:'unsupported_exact_data',message:unsupported,search_stats:snapshot.search_stats};return;}
   // Every checkpoint suspends the producer until the consumer resumes it.
   const updates=[];let done=false,result,error,resume=null;
-  const checkpoint=p=>new Promise(resolve=>{resume=resolve;updates.push({type:'periodic_work',...p,search_stats:displayStats(p.stats,config)});});
-  const report=p=>{
-    if(p.motif)updates.push(placementSnapshot(prototiles,capacity,colors,p.motif,displayStats(p.stats,config),'consistent_motif'));
-    updates.push({type:'periodic_progress',...p,search_stats:displayStats(p.stats,config)});
-  };
-  const task=searchPeriodic(orientations,capacity,config,stop,report,checkpoint).then(r=>{result=r;done=true;},e=>{error=e;done=true;});
+  const checkpoint=p=>new Promise(resolve=>{
+    resume=resolve;
+    const searchStats=displayStats(p.stats,config);
+    const message=p.action
+      ? {...placementSnapshot(prototiles,capacity,colors,p.motif,searchStats,'search_state'),
+          periodic_state:{action:p.action,reason:p.reason,forced:!!p.forced,root:!!p.root,point:p.point,hnf:p.hnf,counts:p.counts}}
+      : {type:'periodic_work',...p,search_stats:searchStats};
+    updates.push({message,release:resolve});
+  });
+  const report=p=>updates.push({message:{type:'periodic_progress',...p,search_stats:displayStats(p.stats,config)}});
+  const task=searchPeriodic(orientations,capacity,config,stop,report,checkpoint,checkpoint).then(r=>{result=r;done=true;},e=>{error=e;done=true;});
   try {
     // Drain final queued snapshots as well as those produced before completion.
     while(!done||updates.length){
-      while(updates.length){const update=updates.shift();if(update.type==='full_update')snapshot=update;yield update;if(resume){const release=resume;resume=null;release();}}
+      while(updates.length){const {message,release}=updates.shift();if(message.type==='full_update')snapshot=message;yield message;if(release){resume=null;release();}}
       if(!done)await pause();
     }
   } finally {

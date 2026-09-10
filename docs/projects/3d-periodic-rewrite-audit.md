@@ -59,3 +59,29 @@ geometry, inconclusive history and scope, unchanged-count certificate snapshots,
 progress across pause/resume, and unsupported exact-data previews. The existing
 periodic regression suite also passes, including independent eight-tile periodic
 and isohedral replay, graph rollback, global scheduler, and cancellation.
+
+## Active placement trace and replay (2026-09-10)
+
+The largest-candidate preview described above has been replaced, at the user's
+request, by the actual search stack. Every root/child placement, rejection, and
+genuine rollback emits a full state with its cell, action, and failure reason.
+This includes dead trial states; they are labeled rejections, never milestones.
+Successful recursive unwinding and resource-limit cleanup are not displayed as
+failed branches. Returning to zero is an ordinary rollback, not a non-tiling
+certificate. The point rules, candidate order, and positive verifiers are unchanged.
+
+Each trace callback suspends the producer until its corresponding message is
+consumed. Pause and cancellation therefore retain/control the actual stack.
+The live renderer refreshes at up to 20 Hz; every attempted state is retained
+for the existing history arrows and a new four-steps-per-second Replay control.
+Replay uses recorded search timestamps and does not delay or alter search.
+The outlined cell is context for the current recorded attempt. Preparing new
+candidate domains remains a separate cell/node progress phase. Trace-generation
+cost is included in search time; these timings should not be equated with older
+runs that did not retain every attempt.
+
+The worker regression exercises both lanes' failing roots and checks every
+placement/removal against a stack replay. A two-type fixture checks nested
+backtracking, rejection of wrong inventory, successful completion without fake
+rollback, and cancellation while a trial callback is suspended. The existing
+graph/scheduler/independent eight-tile certificate tests continue to pass.

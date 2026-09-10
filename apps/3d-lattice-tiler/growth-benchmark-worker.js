@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-periodic-preview";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-periodic-trace";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -247,7 +247,7 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
       && searchElapsedMilliseconds() - lastPeriodicReportAt >= 250) {
       lastPeriodicReportAt = searchElapsedMilliseconds();
       post(sequence, { type: "mode-status", mode: mode.id,
-        text: `searching periodic cells · ${message.stats.quotients} tested · ${message.stats.nodes} nodes · preview only` });
+        text: `searching periodic cells · ${message.stats.quotients} tested · ${message.stats.nodes} nodes · tracing attempts` });
       if (terminalSnapshot) {
         queueHistory({point:{milliseconds:Math.round(searchElapsedMilliseconds()),tiles:lastHistoryTileCount??0},stats:message.search_stats});
         flushHistory();
@@ -312,6 +312,12 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
         && Array.isArray(snapshot?.placements)
         && (!bestSnapshot || tiles > (bestSnapshot.tile_count ?? 0))
       ) bestSnapshot = snapshot;
+    }
+    if (message.periodic_state) {
+      const state=message.periodic_state;
+      const action=state.action==='place' ? state.forced ? 'forced placement' : 'trying a tile'
+        : state.action==='reject' ? `rejecting: ${(state.reason??'failed branch').replaceAll('_',' ')}` : 'backtracking';
+      post(sequence,{type:'mode-status',mode:mode.id,text:`${action} · ${message.tile_count} live · cell ${message.search_stats.quotients}`});
     }
     if (message.type === "full_update") {
       terminalSnapshot = message;
