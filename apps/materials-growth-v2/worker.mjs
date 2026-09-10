@@ -1,5 +1,5 @@
 import { discover, learnSections } from "./learning.mjs";
-import { MaterialExperiment } from "./material.mjs";
+import { MaterialExperiment } from "./material.mjs?v=single-seed-rdf-1";
 import { compareStructure } from "./metrics.mjs";
 let grammar,
   marking,

@@ -5,9 +5,12 @@ import { centralSeed } from "./seed.mjs";
 import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
-  worker = new Worker(new URL("./worker.mjs", import.meta.url), {
-    type: "module",
-  });
+  worker = new Worker(
+    new URL("./worker.mjs?v=single-seed-rdf-1", import.meta.url),
+    {
+      type: "module",
+    },
+  );
 let atoms = [],
   latestAtoms = null,
   grammar,
