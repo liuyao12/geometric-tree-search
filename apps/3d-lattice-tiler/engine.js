@@ -1,23 +1,14 @@
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
+import { periodicStream } from "./periodic-search.js?v=20260910-point-quotient";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
 import { VectorMarkings } from "./vector-markings.js?v=20260906-global-section";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
-import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js?v=20260830-occupancy-v3";
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
 import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
-import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-1";
-import { A2_SLICED_SIZE8_CANDIDATES } from "../../assets/a2-sliced-size8-candidates.js?v=20260830-7";
-import { A2_SLICED_SIZE9_CANDIDATES } from "../../assets/a2-sliced-size9-candidates.js?v=20260830-13";
-import { A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES } from "../../assets/a2-sliced-size9-palindromic-candidates.js?v=20260831-15";
-import { A2_SLICED_SIZE10_CANDIDATES } from "../../assets/a2-sliced-size10-candidates.js?v=20260831-7";
-import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
-import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
-import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 import { exactDomainModel, periodicDomainSearch } from "./periodic-domain-search.js";
 import { INTERESTING_TILE_REVIEW } from "../../assets/interesting-tile-review.js?v=20260906";
@@ -134,7 +125,8 @@ export function preprocessTilingSystem(config, tileSpecs) {
     ? tileSpecs.withPolycubeLattice(polycubeLattice, buildBaseTiles)
     : buildBaseTiles();
   const prototiles = [];
-  for (const tile of baseTiles) {
+  for (const [species, tile] of baseTiles.entries()) {
+    tile.__species_id = species;
     prototiles.push(tile);
     if (!includeMirrors || !tile.is_chiral) continue;
     const mirror = tile.get_mirror_copy?.();
@@ -143,6 +135,7 @@ export function preprocessTilingSystem(config, tileSpecs) {
       ? tile.name.substring(10)
       : `reflected ${tile.name}`;
     mirror.__is_mirror = true;
+    mirror.__species_id = species;
     prototiles.push(mirror);
   }
 
@@ -591,6 +584,11 @@ export const createTilingStream = (() => {
       default_opacities: modeDef.default_viz?.opacities ?? [],
       default_internal: !!modeDef.default_viz?.internal
     };
+
+    if (["translational", "isohedral"].includes(config.tiling_strategy)) {
+      yield* periodicStream(config, prototiles, MAX_SOLID_ANGLE, COLOR_PALETTE, stopToken);
+      return;
+    }
 
     const conwayFigureRefs = customSystem?.figure_refs ?? [];
     const isDirectConwaySystem = !includeMirrors && config.tiling_strategy === "free_range" && (
@@ -8532,25 +8530,6 @@ export const tileSpecs = (() => {
       })]
     },
 
-    ...Object.fromEntries([...INTERESTING_TILE_REVIEW.candidates, ...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES, ...A2_SLICED_SIZE10_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
-      const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
-      return [candidate.registry_id, {
-        name: candidate.name,
-        category: candidate.research_review ? ["Geometric Research Benchmarks"] : candidate.screening.status === "periodic"
-          ? ["GCTS Periodic Controls"]
-          : ["Unresolved A2 Sliced Candidates", "A2 Layered Solids"],
-        census_candidate: candidate,
-        layered_lattice: {
-          equation: "x+y+z=k",
-          base_layer: geometry.layer_sums[0],
-          top_layer: geometry.layer_sums.at(-1),
-          role: candidate.research_review ? "Geometric research benchmark; interactive lanes use the weighted model" : candidate.screening.status === "periodic"
-            ? `${candidate.screening.motif_tiles}-copy periodic quotient control`
-            : `consecutive-layer exact-through-${candidate.screening.periodic_exact_through} candidate`
-        },
-        build: () => [make_tile(candidate.name, makeA2SlicedAlcoveUnion(candidate.alcoves))]
-      }];
-    })),
     ...Object.fromEntries(A2_LAYERED_PRISM_SPECS.map(spec => [spec.id, {
       name: spec.name,
       category: ["A2 Layered Solids"],
@@ -8563,42 +8542,6 @@ export const tileSpecs = (() => {
       build: () => [make_tile(spec.name, makeA2LayeredPrism(spec.loop, {
         geometryModel: spec.geometry_model
       }))]
-    }])),
-    ...Object.fromEntries([...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].map(candidate => [candidate.registry_id, {
-      name: candidate.name,
-      category: [candidate.screening.status === "periodic"
-        ? "GCTS Periodic Controls"
-        : "Unresolved A2 Layered Candidates", "A2 Layered Solids"],
-      census_candidate: candidate,
-      layered_lattice: {
-        equation: "x+y+z=3k",
-        base_layer: 0,
-        top_layer: 3 * (Math.max(...candidate.cells.map(cell => cell.k)) + 1),
-        role: candidate.screening.status === "periodic"
-          ? "eight-copy periodic benchmark"
-          : `multi-layer exact-through-${candidate.screening.periodic_exact_through} candidate`
-      },
-      build: () => [make_tile(candidate.name, makeA2LayeredPolyprism(candidate.cells))]
-    }])),
-    ...Object.fromEntries(POLYCUBE_GCTS_CANDIDATES.map(candidate => [candidate.registry_id, {
-      name: candidate.name,
-      category: [candidate.screening.status === "inconclusive"
-        ? "Unresolved Polycube Candidates"
-        : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
-          ? "GCTS Periodic Controls"
-          : "GCTS Non-Tiler Controls", "Polycubes"],
-      census_candidate: candidate,
-      build: () => [make_tile(candidate.name, generatePolycubeData(candidate.voxels))]
-    }])),
-    ...Object.fromEntries(LATTICE_POLYHEDRON_GCTS_EXAMPLES.map(candidate => [candidate.registry_id, {
-      name: candidate.name,
-      category: [candidate.screening.status === "inconclusive"
-        ? "Unresolved Lattice Candidates"
-        : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
-          ? "GCTS Periodic Controls"
-          : "Face-to-face Obstruction Controls"],
-      census_candidate: candidate,
-      build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),
     "scd_conway": {
       name: "Schmitt–Conway–Danzer Biprism",

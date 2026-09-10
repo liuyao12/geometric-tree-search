@@ -1,0 +1,188 @@
+[
+  {
+    "id": "p7-0109",
+    "voxels": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "certificate": null,
+    "status": "unknown",
+    "reason": "time_limit",
+    "stats": {
+      "quotients": 194,
+      "nodes": 49444,
+      "forced": 168,
+      "decisions": 746,
+      "backtracks": 47919,
+      "eliminations": 7384545,
+      "capped_quotients": 22,
+      "isohedral_rejections": 768,
+      "max_candidates": 504,
+      "max_edges": 9912,
+      "elapsed_ms": 4000.230834
+    },
+    "scope": {
+      "max_tiles": 8,
+      "max_volume": 512,
+      "max_quotients": 20000,
+      "all_tested_quotients_exhausted": false
+    }
+  },
+  {
+    "id": "p7-0244",
+    "voxels": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "certificate": null,
+    "status": "unknown",
+    "reason": "time_limit",
+    "stats": {
+      "quotients": 188,
+      "nodes": 43360,
+      "forced": 32,
+      "decisions": 504,
+      "backtracks": 42021,
+      "eliminations": 8756607,
+      "capped_quotients": 19,
+      "isohedral_rejections": 32,
+      "max_candidates": 504,
+      "max_edges": 9996,
+      "elapsed_ms": 4000.274208
+    },
+    "scope": {
+      "max_tiles": 8,
+      "max_volume": 512,
+      "max_quotients": 20000,
+      "all_tested_quotients_exhausted": false
+    }
+  },
+  {
+    "id": "p7-0970",
+    "voxels": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        1
+      ]
+    ],
+    "certificate": null,
+    "status": "unknown",
+    "reason": "time_limit",
+    "stats": {
+      "quotients": 358,
+      "nodes": 125122,
+      "forced": 4722,
+      "decisions": 14494,
+      "backtracks": 123996,
+      "eliminations": 5458398,
+      "capped_quotients": 35,
+      "isohedral_rejections": 225,
+      "max_candidates": 210,
+      "max_edges": 5880,
+      "elapsed_ms": 4000.135709
+    },
+    "scope": {
+      "max_tiles": 8,
+      "max_volume": 512,
+      "max_quotients": 20000,
+      "all_tested_quotients_exhausted": false
+    }
+  }
+]

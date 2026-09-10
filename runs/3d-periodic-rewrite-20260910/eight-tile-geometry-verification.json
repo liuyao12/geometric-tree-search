@@ -1,0 +1,21 @@
+{
+  "result": "certified_infinite_tiling",
+  "exact_rational": true,
+  "include_reflections": true,
+  "source_shell_embedded": true,
+  "dimensions": [
+    6,
+    6,
+    6
+  ],
+  "tiles_per_cell": 8,
+  "cell_volume": 216,
+  "point_residues_verified": 216,
+  "weight_at_every_residue": 24,
+  "clipped_faces": 255,
+  "planes": 29,
+  "edge_segments": 868,
+  "uncancelled_lines": 0,
+  "boundary_cancels": true,
+  "geometry_proof": "Oriented surface contributions cancel exactly; periodic covering multiplicity is constant. Total tile volume equals cell volume, so the multiplicity is one."
+}

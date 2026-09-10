@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260909-featured-tile";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-point-quotient";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -141,9 +141,7 @@ function configureMode(baseConfig, mode) {
     periodic_stop_at_growth_goal: mode.id === "translational",
     periodic_goal_preflight_time_ms: mode.id === "translational" ? 1000 : null,
     periodic_motif_node_limit: mode.id === "translational" ? 2500 : baseConfig.periodic_motif_node_limit,
-    periodic_patch_max_tiles: mode.id === "translational"
-      ? translationalPatchGoal
-      : baseConfig.periodic_patch_max_tiles,
+    periodic_patch_max_tiles: baseConfig.periodic_patch_max_tiles ?? 8,
     snapshot_every: 1,
     placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),
     branch_cap: null,

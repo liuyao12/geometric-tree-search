@@ -1,0 +1,617 @@
+{
+  "source": "c39c17eb431106f54c2865b34f5fef88ca89fea4",
+  "preserved_manual_ids": [
+    "mathematica_16_vertex",
+    "a2_hexagonal_prism",
+    "a2_hat_prism",
+    "a2_turtle_prism",
+    "scd_conway",
+    "1_cross",
+    "2_cross",
+    "3_cross",
+    "t_cross",
+    "1_semicross",
+    "2_semicross",
+    "buckled_ring",
+    "large_buckled_ring",
+    "double_ring",
+    "tuning_fork",
+    "twisted_h",
+    "cube",
+    "letter_o",
+    "1_cross_plus",
+    "hex_prism",
+    "rhombic",
+    "elongated_dod",
+    "trunc_oct",
+    "twist",
+    "knuckle",
+    "tet_oct",
+    "tetragonal_disphenoid",
+    "corner_tetra",
+    "big_corner_tetra",
+    "diamond_lattice",
+    "perovskite",
+    "orthoscheme",
+    "elongated_sq_bipyramid",
+    "gyrobifastigium",
+    "laves_c15",
+    "escher_compound",
+    "fcc_pure",
+    "hcp_pure",
+    "barlow_fcc",
+    "barlow_hcp"
+  ],
+  "removed": [
+    {
+      "id": "research_a2sa_10_76076",
+      "name": "24-copy periodic parent · a2sa_10_76076",
+      "source_kind": "a2_geometric_research"
+    },
+    {
+      "id": "research_a2pair_20_4c8015f2f0fc",
+      "name": "24-copy periodic chain cluster · a2pair_20_4c8015f2f0fc",
+      "source_kind": "a2_geometric_research"
+    },
+    {
+      "id": "research_a2sa_10_65558",
+      "name": "Deep geometric non-tiler · a2sa_10_65558",
+      "source_kind": "a2_geometric_research"
+    },
+    {
+      "id": "a2_sliced_9_11364",
+      "name": "A2 Consecutive-Layer Size-9 Candidate 11364",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_13833",
+      "name": "A2 Consecutive-Layer Size-9 Candidate 13833",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_14433",
+      "name": "A2 Consecutive-Layer Size-9 Periodic Control 14433",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_15089",
+      "name": "A2 Consecutive-Layer Size-9 Periodic Control 15089",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_15635",
+      "name": "A2 Consecutive-Layer Size-9 Candidate 15635",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_16327",
+      "name": "A2 Consecutive-Layer Size-9 Periodic Control 16327",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_01109",
+      "name": "A2 Consecutive-Layer Size-9 Periodic Control 01109",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_9_03727",
+      "name": "A2 Consecutive-Layer Size-9 Periodic Control 03727",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_pal_9_04636",
+      "name": "A2 Palindromic-Profile Size-9 Candidate 04636",
+      "source_kind": "a2_sliced_palindromic_alcove_census"
+    },
+    {
+      "id": "a2_sliced_pal_9_01085",
+      "name": "A2 Palindromic-Profile Size-9 Candidate 01085",
+      "source_kind": "a2_sliced_palindromic_alcove_census"
+    },
+    {
+      "id": "a2_sliced_pal_9_04468",
+      "name": "A2 Palindromic-Profile Size-9 Candidate 04468",
+      "source_kind": "a2_sliced_palindromic_alcove_census"
+    },
+    {
+      "id": "a2_sliced_pal_9_15353",
+      "name": "A2 Palindromic-Profile Size-9 Periodic Control 15353",
+      "source_kind": "a2_sliced_palindromic_alcove_census"
+    },
+    {
+      "id": "a2_sliced_pal_9_17745",
+      "name": "A2 Palindromic-Profile Size-9 Periodic Control 17745",
+      "source_kind": "a2_sliced_palindromic_alcove_census"
+    },
+    {
+      "id": "a2_sliced_10_36141",
+      "name": "A2 Consecutive-Layer Size-10 Candidate 36141",
+      "source_kind": "a2_sliced_size10_alcove_census"
+    },
+    {
+      "id": "a2_sliced_10_35323",
+      "name": "A2 Consecutive-Layer Size-10 Candidate 35323",
+      "source_kind": "a2_sliced_size10_alcove_census"
+    },
+    {
+      "id": "a2_sliced_10_36194",
+      "name": "A2 Consecutive-Layer Size-10 Periodic Control 36194",
+      "source_kind": "a2_sliced_size10_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_00888",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 00888",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_00240",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 00240",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_00834",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 00834",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_03138",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 03138",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_00279",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 00279",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_01059",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 01059",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_03306",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 03306",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02979",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02979",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_00682",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 00682",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_03235",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 03235",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02992",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02992",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02946",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02946",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02965",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02965",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02920",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02920",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_8_02951",
+      "name": "A2 Consecutive-Layer Size-8 Candidate 02951",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00139",
+      "name": "A2 Consecutive-Layer Candidate 00139",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00170",
+      "name": "A2 Consecutive-Layer Candidate 00170",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00569",
+      "name": "A2 Consecutive-Layer Candidate 00569",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00822",
+      "name": "A2 Consecutive-Layer Candidate 00822",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00674",
+      "name": "A2 Consecutive-Layer Candidate 00674",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00120",
+      "name": "A2 Consecutive-Layer Candidate 00120",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00626",
+      "name": "A2 Consecutive-Layer Candidate 00626",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_sliced_7_00699",
+      "name": "A2 Consecutive-Layer Candidate 00699",
+      "source_kind": "a2_sliced_alcove_census"
+    },
+    {
+      "id": "a2_layered_9_00000",
+      "name": "A2 Directed-Layer Candidate 00000",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_9_00002",
+      "name": "A2 Directed-Layer Candidate 00002",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_9_00003",
+      "name": "A2 Directed-Layer Candidate 00003",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_9_00010",
+      "name": "A2 Directed-Layer Candidate 00010",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_8_02131",
+      "name": "A2 Layer-Essential Candidate 02131",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_8_02151",
+      "name": "A2 Layer-Essential Candidate 02151",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_8_03411",
+      "name": "A2 Layer-Essential Candidate 03411",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_8_04836",
+      "name": "A2 Layer-Essential Candidate 04836",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00232",
+      "name": "A2 Layered Candidate 00232",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00235",
+      "name": "A2 Layered Candidate 00235",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00694",
+      "name": "A2 Layered Candidate 00694",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00809",
+      "name": "A2 Layered Candidate 00809",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00211",
+      "name": "A2 Layered Candidate 00211",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00755",
+      "name": "A2 Layered Candidate 00755",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00777",
+      "name": "A2 Layered Candidate 00777",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "a2_layered_7_00128",
+      "name": "A2 Layered Candidate 00128",
+      "source_kind": "a2_layered_polyprism_census"
+    },
+    {
+      "id": "polycube_p9_42947",
+      "name": "Polycube candidate p9-42947",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_02127",
+      "name": "Polycube candidate p9-02127",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_08203",
+      "name": "Polycube candidate p9-08203",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_08219",
+      "name": "Polycube candidate p9-08219",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_20656",
+      "name": "Polycube candidate p9-20656",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_24025",
+      "name": "Polycube candidate p9-24025",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_48258",
+      "name": "Polycube candidate p9-48258",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p9_43172",
+      "name": "Polycube periodic control p9-43172",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_052588",
+      "name": "Polycube non-tiler control p10-052588",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_054782",
+      "name": "Polycube candidate p10-054782",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_055695",
+      "name": "Polycube candidate p10-055695",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_290795",
+      "name": "Polycube candidate p10-290795",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_346304",
+      "name": "Polycube candidate p10-346304",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "polycube_p10_052670",
+      "name": "Polycube non-tiler control p10-052670",
+      "source_kind": "polycube_census"
+    },
+    {
+      "id": "census_10_45033",
+      "name": "Candidate 10_45033",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_10_16113",
+      "name": "Candidate 10_16113",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_10_45026",
+      "name": "Candidate 10_45026",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_9_11683",
+      "name": "Candidate 9_11683",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_34718",
+      "name": "Candidate 11_34718",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_34757",
+      "name": "Candidate 11_34757",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_38606",
+      "name": "Candidate 11_38606",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_57333",
+      "name": "Candidate 11_57333",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_60154",
+      "name": "Candidate 11_60154",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_146131",
+      "name": "Candidate 11_146131",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_151715",
+      "name": "Candidate 11_151715",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_11_155503",
+      "name": "Candidate 11_155503",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_034169",
+      "name": "Candidate 12_034169",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_008578",
+      "name": "Candidate 12_008578",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_086564",
+      "name": "Candidate 12_086564",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_087032",
+      "name": "Candidate 12_087032",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_093409",
+      "name": "Candidate 12_093409",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_124794",
+      "name": "Candidate 12_124794",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_149299",
+      "name": "Candidate 12_149299",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_146184",
+      "name": "Candidate 12_146184",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_171483",
+      "name": "Candidate 12_171483",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_186004",
+      "name": "Candidate 12_186004",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_196957",
+      "name": "Candidate 12_196957",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_218797",
+      "name": "Candidate 12_218797",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_235174",
+      "name": "Candidate 12_235174",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_249673",
+      "name": "Candidate 12_249673",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_257228",
+      "name": "Candidate 12_257228",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_300447",
+      "name": "Candidate 12_300447",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_339175",
+      "name": "Candidate 12_339175",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_357723",
+      "name": "Candidate 12_357723",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_387800",
+      "name": "Candidate 12_387800",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_452558",
+      "name": "Candidate 12_452558",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_464758",
+      "name": "Candidate 12_464758",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_490743",
+      "name": "Candidate 12_490743",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_204255",
+      "name": "Candidate 12_204255",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_405129",
+      "name": "Candidate 12_405129",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_424326",
+      "name": "Candidate 12_424326",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_121693",
+      "name": "Candidate 12_121693",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_12_158688",
+      "name": "Candidate 12_158688",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_13_0635270",
+      "name": "Candidate 13_0635270",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_13_0492735",
+      "name": "Candidate 13_0492735",
+      "source_kind": "lattice_census"
+    },
+    {
+      "id": "census_13_1072824",
+      "name": "Candidate 13_1072824",
+      "source_kind": "lattice_census"
+    }
+  ]
+}

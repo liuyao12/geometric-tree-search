@@ -1,5 +1,21 @@
 # 3D Lattice Tiler
 
+## 2026-09-10 periodic rewrite
+
+Translational and Isohedral now use the independent exact point-quotient engine
+in `periodic-search.js`. Enable **Allow reflected tiles** and choose **Up to 8
+tiles** to rediscover the 16-vertex tile's eight-copy unit. Isohedral additionally
+verifies tile-transitive affine symmetries of the entire periodic motif. Bounded
+failure is unknown; numerical solid angles are not rounded into certificates.
+The motif bound is independent of the displayed tile count.
+
+See [the audit and conformance report](../../docs/projects/3d-periodic-rewrite-audit.md)
+for the published-version routing bug, precise model/verification limits,
+catalog provenance cleanup, and systematic stress census. The
+[1,230-tile stress report](../../docs/projects/3d-lattice-stress-results.md)
+contains the ranked shortlist and geometric cross-check. Earlier structural
+lane descriptions below document the previous implementation.
+
 A standalone, generic lattice-tiling playground derived from the polyhedron
 catalog in the original Observable notebook:
 

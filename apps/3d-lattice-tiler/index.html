@@ -69,11 +69,11 @@
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="translational">
-              <span><b>Translational</b><small>Search increasing periodic domains, then expand a certified tiling to the goal.</small></span>
+              <span><b>Translational</b><small>Search exact periodic point-value tilings, then show a repeating patch.</small></span>
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="isohedral">
-              <span><b>Isohedral</b><small>Tile-transitive quotient search. Complete negative decisions for supported exact Z³ models.</small></span>
+              <span><b>Isohedral</b><small>Verify a repeating point-value tiling with one tile orbit; bounded failure is inconclusive.</small></span>
             </label>
           </div>
           <small id="strategyDescription">Prioritizes forced moves, then explores sensible legal placements with backtracking.</small>
@@ -96,7 +96,7 @@
             <option value="no_brainer">No-brainer</option>
             <option value="crystal">Crystal</option>
           </select>
-          <select id="periodicTileCountSelect"><option value="4" selected>Up to 4</option></select>
+
           <label class="field">
             <span>Snapshots</span>
             <select id="snapshotSelect">
@@ -123,11 +123,13 @@
             <span>Time cap</span>
             <input id="timeCapInput" type="number" value="0" min="0" max="3600">
           </label>
-          <label><input id="mirrorCheckbox" type="checkbox"><span>Mirror tiles</span></label>
+
           <label><input id="exhaustiveCheckbox" type="checkbox"><span>Exhaustive</span></label>
           <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
         </div>
 
+        <label><input id="mirrorCheckbox" type="checkbox"><span>Allow reflected tiles</span></label>
+        <label class="field"><span>Periodic motif limit</span><select id="periodicTileCountSelect"><option value="4">Up to 4 tiles</option><option value="8" selected>Up to 8 tiles</option><option value="16">Up to 16 tiles</option><option value="64">Up to 64 tiles</option></select></label>
         <div class="action-row">
           <label class="frontier-select-field">
             <span>Lattice</span>
@@ -258,6 +260,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260909-featured-tile"></script>
+  <script type="module" src="./app.js?v=20260910-point-quotient"></script>
 </body>
 </html>

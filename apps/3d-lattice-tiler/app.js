@@ -5,7 +5,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260909-featured-tile";
+} from "./engine.js?v=20260910-point-quotient";
 
 const $ = (id) => document.getElementById(id);
 
@@ -535,8 +535,8 @@ const STRATEGY_DESCRIPTIONS = {
   learning_free_range: "Vector-valued tile markings are checked against a global section. Certified pair obstructions refine the equivariant fields; rollback restores the section.",
   rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
   gcts_rl: "Combines the same cold linear RL ordering with vector-valued global-section checks. Marking synthesis and online training are both timed.",
-  translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
-  isohedral: "Exact finite quotient decision for integer Z³ polycubes and integer-weight lattice functions, followed by certified expansion. Other geometric representations remain certificate-only; no negative conclusion is claimed for them."
+  translational: "Search exact point-value quotients up to the selected motif limit. Rotations may occur within the repeating motif; bounded failure is inconclusive.",
+  isohedral: "Search exact periodic point-value tilings and verify affine symmetries carrying every tile to every other tile. Bounded failure is inconclusive."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -554,7 +554,7 @@ function updateStrategyUI() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
   strategySelect.value = strategy;
   strategyDescription.textContent = STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational;
-  periodicTileCountSelect.disabled = strategy !== "translational";
+  periodicTileCountSelect.disabled = !["translational", "isohedral"].includes(strategy);
 }
 
 function initFigureSelection() {
@@ -2056,13 +2056,7 @@ function configKey() {
     periodic_stop_at_growth_goal: tilingStrategy === "translational",
     periodic_goal_preflight_time_ms: tilingStrategy === "translational" ? 1000 : null,
     periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
-    periodic_patch_max_tiles: tilingStrategy === "translational"
-      ? selectedCriterion === "count"
-        ? Math.max(1, +maxTilesInput.value)
-        : selectedCriterion === "shell"
-          ? Math.max(24, 24 * +shellInput.value)
-          : Math.max(1, Number(periodicTileCountSelect.value) || 4)
-      : Math.max(1, Number(periodicTileCountSelect.value) || 4),
+    periodic_patch_max_tiles: Math.max(1, Math.min(64, Number(periodicTileCountSelect.value) || 8)),
     periodic_template_max_volume: 512,
     isohedral_search_horizon_tiles:
       positiveSearchParam("isohedral_search_horizon_tiles") ?? candidateIsohedralHorizon,
@@ -3051,9 +3045,13 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message.snapshot);
     return;
   }
-  if (message.type === "translational_check") {
+  if (message.type === "periodic_progress") {
+    setStatus(`Checking periodic cells: ${message.stats.quotients} tested · ${message.stats.nodes} search nodes`);
+    return;
+  }
+  if (message.type === "translational_check" || message.type === "isohedral_certificate") {
     setStatus(message.certified
-      ? `Certified ${message.patch_size}-tile translational patch`
+      ? `Certified ${message.patch_size}-tile ${message.type === "isohedral_certificate" ? "isohedral" : "periodic"} tiling`
       : message.growth_goal_reached
         ? message.check_completed
           ? message.growth_goal_criterion === "shell"
@@ -3107,7 +3105,7 @@ function handleMessage(message) {
               ? (message.best_effort ? "No tiling found: best" : "No tiling found")
               : "Finished";
     const finishedTileCount = message.tile_count ?? 0;
-    setStatus(`${prefix}: ${finishedTileCount} tile${finishedTileCount === 1 ? "" : "s"}`);
+    setStatus(message.termination_reason === "unsupported_exact_data" ? "Exact point data unavailable for this tile" : `${prefix}: ${finishedTileCount} tile${finishedTileCount === 1 ? "" : "s"}`);
     if (lastSnapshot) queueCheckpointSave(lastSnapshot, { immediate: true, reason: "finished" });
     setRunButton();
   }
@@ -3166,7 +3164,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260909-featured-tile", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-point-quotient", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3930,7 +3928,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260909-featured-tile", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-point-quotient", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
