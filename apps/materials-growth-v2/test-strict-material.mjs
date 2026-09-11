@@ -3,6 +3,7 @@ import { discover, learnSections } from "./learning.mjs";
 import { samplePatch } from "./samples.mjs";
 import { MaterialExperiment } from "./material.mjs";
 import { acceptsOverlap } from "./overlap-rules.mjs";
+import { checkPeriodicReference } from "./reference-check.mjs";
 const drain = (g) => {
   let r;
   do {
@@ -35,8 +36,8 @@ for (const id of ["nacl", "ice"]) {
     }
   assert.equal(positives, m.overlapRules.pairs);
   const e = new MaterialExperiment(g, m, {
-    maximumPoints: 20000,
-    maximumCandidates: 40000,
+    maximumPoints: 40000,
+    maximumCandidates: 80000,
   });
   for (let i = 0; i < 30; i++) {
     const ev = e.step();
@@ -46,7 +47,43 @@ for (const id of ["nacl", "ice"]) {
   const s = e.snapshot(false);
   assert(s.validation.legal);
   if (id === "nacl") assert.equal(s.atoms.length, 30);
-  if (id === "ice") assert(s.overlapChecks.rejections > 0);
+  if (id === "ice") {
+    assert.equal(
+      s.atoms.length,
+      30,
+      "Ice must actually grow, not pass a vacuous one-atom audit",
+    );
+    assert(s.atoms.some((a) => a.species === "O"));
+    assert(s.atoms.some((a) => a.species === "D"));
+    assert(s.overlapChecks.rejections > 0);
+    for (let i = 30; i < 220; i++) {
+      const ev = e.step();
+      assert(
+        !["unknown", "budget", "complete", "exhausted"].includes(ev.kind),
+        JSON.stringify(ev),
+      );
+    }
+    const grown = e.snapshot(false);
+    assert(grown.atoms.length > g.atoms.length);
+    assert(grown.validation.legal && grown.overlapValidation.legal);
+    const check = checkPeriodicReference(samplePatch(id), e, grown);
+    assert.equal(
+      check.fraction,
+      1,
+      "All grown sites must match one rigidly aligned periodic reference",
+    );
+    const corrupted = {
+      ...grown,
+      atoms: grown.atoms.map((a, i) =>
+        i ? a : { ...a, species: "wrong-label" },
+      ),
+    };
+    assert(checkPeriodicReference(samplePatch(id), e, corrupted).fraction < 1);
+    console.log(
+      "Ice strict continuation beyond input and global periodic-site evaluation PASS",
+      check,
+    );
+  }
   console.log(
     JSON.stringify({
       sample: id,

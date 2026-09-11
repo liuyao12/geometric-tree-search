@@ -26,7 +26,9 @@ assert(
   g.discovery.coverage.supportComponents <
     g.discovery.initialCoverage.supportComponents,
 );
-assert(g.discovery.coverage.missingAnchors.length > 0); // Never conceal crop limitations.
+assert.equal(g.discovery.coverage.missingAnchors.length, 0);
+assert(g.discovery.contextCompletion.classes > 0);
+assert(g.types.some((t) => t.role === "context"));
 assert(g.connections.length > 0);
 for (const t of g.types)
   for (const o of t.occurrences) {

@@ -1,0 +1,443 @@
+{
+  "schema": "strict-sample-audit/1",
+  "protocol": {
+    "epsilon": 0.03,
+    "observedOnly": true,
+    "maximumSteps": 400,
+    "growthSeconds": 12,
+    "caseWallSeconds": 45,
+    "maximumPoints": 40000,
+    "maximumCandidates": 80000,
+    "minimumAtoms": 64,
+    "caveat": "Finite growth verified means >=64 actual atoms, all input labels represented, independent point and overlap legality, and graph consistency. It is NOT proof of reconstruction, corona completion or indefinite extendability. RDF/composition/angular comparisons use the training crop, not held-out data. Default adaptive discovery includes disclosed broader contexts for disconnected supports."
+  },
+  "results": [
+    {
+      "id": "nacl",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 216,
+      "types": 2,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "Na": 231,
+        "Cl": 169
+      },
+      "periodicReference": null,
+      "completedCorona": 6,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1363307467428572,
+        "compositionTV": 0.006779359430605009,
+        "angleTV": 0.10170225385527876
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 2.33786675
+    },
+    {
+      "id": "ice",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 192,
+      "types": 39,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 294,
+      "steps": 294,
+      "composition": {
+        "D": 213,
+        "O": 81
+      },
+      "periodicReference": {
+        "matched": 294,
+        "total": 294,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 4,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1389706672487523,
+        "compositionTV": 0.039426782273603134,
+        "angleTV": 0.07351184479454366
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 13.871290457999999
+    },
+    {
+      "id": "copper",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 256,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 126,
+      "steps": 126,
+      "composition": {
+        "Cu": 126
+      },
+      "periodicReference": {
+        "matched": 126,
+        "total": 126,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 2,
+      "beyondInputCount": false,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.05364974459476834,
+        "compositionTV": 0,
+        "angleTV": 0.035104669887278554
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 14.438208791
+    },
+    {
+      "id": "iron",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 250,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 82,
+      "steps": 82,
+      "composition": {
+        "Fe": 82
+      },
+      "periodicReference": {
+        "matched": 82,
+        "total": 82,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 2,
+      "beyondInputCount": false,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.07169200568569245,
+        "compositionTV": 0,
+        "angleTV": 0.027091136079900064
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 14.605294208999997
+    },
+    {
+      "id": "silicon",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 216,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "Si": 400
+      },
+      "periodicReference": {
+        "matched": 400,
+        "total": 400,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 7,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.11545157257535019,
+        "compositionTV": 0,
+        "angleTV": 0.10579489476041193
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 5.231503499999999
+    },
+    {
+      "id": "cscl",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 250,
+      "types": 2,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 112,
+      "steps": 112,
+      "composition": {
+        "Cs": 48,
+        "Cl": 64
+      },
+      "periodicReference": {
+        "matched": 112,
+        "total": 112,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 3,
+      "beyondInputCount": false,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.22971759687052068,
+        "compositionTV": 0.15455512229705778,
+        "angleTV": 0.282057042996241
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 15.493158790999994
+    },
+    {
+      "id": "zincblende",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 216,
+      "types": 2,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "Zn": 216,
+        "S": 184
+      },
+      "periodicReference": {
+        "matched": 400,
+        "total": 400,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 7,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.11545157257534941,
+        "compositionTV": 0.0032243618450515377,
+        "angleTV": 0.08005672488431072
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 3.6298322909999987
+    },
+    {
+      "id": "sc",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 216,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "X": 400
+      },
+      "periodicReference": {
+        "matched": 400,
+        "total": 400,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "completedCorona": 6,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1363307467428562,
+        "compositionTV": 0,
+        "angleTV": 0.10170225385527876
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 3.538935958999995
+    },
+    {
+      "id": "square",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 225,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "X": 400
+      },
+      "periodicReference": null,
+      "completedCorona": 13,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.03861270745473517,
+        "compositionTV": 0,
+        "angleTV": 0.007497741644083073
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 4.029894209000005
+    },
+    {
+      "id": "triangular",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 225,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "X": 400
+      },
+      "periodicReference": null,
+      "completedCorona": 11,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1454156769265918,
+        "compositionTV": 0,
+        "angleTV": 0.06374534931789996
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 12.578320500000002
+    },
+    {
+      "id": "bn",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 162,
+      "types": 2,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "B": 208,
+        "N": 192
+      },
+      "periodicReference": null,
+      "completedCorona": 15,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1448324121337923,
+        "compositionTV": 0.006383596092465416,
+        "angleTV": 0.019564539875981984
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 1.0638599159999866
+    },
+    {
+      "id": "graphene",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 162,
+      "types": 1,
+      "outcome": "finite growth verified",
+      "status": "searching",
+      "stop": "branch",
+      "atoms": 400,
+      "steps": 400,
+      "composition": {
+        "C": 400
+      },
+      "periodicReference": null,
+      "completedCorona": 15,
+      "beyondInputCount": true,
+      "metrics": {
+        "status": "measured",
+        "rdfError": 0.1448324121337923,
+        "compositionTV": 0,
+        "angleTV": 0.019564539875981984
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 1.875692458000005
+    },
+    {
+      "id": "cdyb",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 506,
+      "types": 75,
+      "outcome": "unresolved",
+      "status": "unresolved geometry",
+      "stop": "unknown",
+      "message": "Ambiguous point correspondence: reduce positional error or inspect the input",
+      "atoms": 1,
+      "steps": 0,
+      "composition": {
+        "Cd": 1,
+        "Yb": 0
+      },
+      "periodicReference": null,
+      "completedCorona": 0,
+      "beyondInputCount": false,
+      "metrics": {
+        "status": "insufficient data: need at least 24 atoms in each patch",
+        "rdfError": null
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 1.5146776249999967
+    },
+    {
+      "id": "asi",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 216,
+      "types": 6,
+      "outcome": "unresolved",
+      "status": "unresolved geometry",
+      "stop": "unknown",
+      "message": "Ambiguous point correspondence: reduce positional error or inspect the input",
+      "atoms": 1,
+      "steps": 5,
+      "composition": {
+        "Si": 1
+      },
+      "periodicReference": null,
+      "completedCorona": 0,
+      "beyondInputCount": false,
+      "metrics": {
+        "status": "insufficient data: need at least 24 atoms in each patch",
+        "rdfError": null
+      },
+      "legal": true,
+      "overlapsLegal": true,
+      "seconds": 0.5030422499999986
+    },
+    {
+      "id": "glass",
+      "neighbors": 0,
+      "epsilon": 0.03,
+      "inputAtoms": 180,
+      "types": 0,
+      "outcome": "unsupported",
+      "status": "no recurring supports",
+      "atoms": 1
+    }
+  ]
+}

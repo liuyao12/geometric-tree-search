@@ -176,6 +176,34 @@ export function* discover(
     }
     recurring.forEach((t, i) => (t.id = i));
   }
+  // A support can contain a label without providing any placement anchored at
+  // that label. The point-capacity adapter then cannot discharge those sites.
+  // Recover broader observed contexts, without chemical identities or formulae.
+  const anchorLabels = new Set(recurring.map((t) => t.sites[0].species));
+  const missingAnchorLabels = [
+    ...new Set(recurring.flatMap((t) => t.sites.map((s) => s.species))),
+  ].filter((s) => !anchorLabels.has(s));
+  let contextCompletion = null;
+  if (
+    !neighbors &&
+    (missingAnchorLabels.length || initialCoverage.supportComponents > 1)
+  ) {
+    const broader = yield* discover(atoms, {
+      epsilon,
+      neighbors: 5,
+      boundaryPolicy,
+    });
+    for (const type of broader.types)
+      recurring.push({ ...type, role: "context" });
+    recurring.forEach((t, i) => (t.id = i));
+    contextCompletion = {
+      reason:
+        "disconnected supports or missing anchor labels in the point-capacity compilation",
+      missingAnchorLabels,
+      neighbors: 5,
+      classes: broader.types.length,
+    };
+  }
   const occupied = new Set(
     recurring.flatMap((t) => t.occurrences.flatMap((o) => o.ids)),
   );
@@ -183,22 +211,23 @@ export function* discover(
   // set is not asserted exhaustive over SO(3).
   const byAnchor = new Map();
   recurring.forEach((t) =>
-    t.occurrences.forEach((o) =>
-      byAnchor.set(o.anchor, { type: t.id, pose: o.pose }),
-    ),
+    t.occurrences.forEach((o) => {
+      if (!byAnchor.has(o.anchor)) byAnchor.set(o.anchor, []);
+      byAnchor.get(o.anchor).push({ type: t.id, pose: o.pose });
+    }),
   );
   const connections = [];
   for (const type of recurring)
     for (const o of type.occurrences)
       for (let k = 1; k < o.mapping.length; k++) {
-        const target = byAnchor.get(o.ids[o.mapping[k]]);
-        if (!target) continue;
-        connections.push({
-          parent: type.id,
-          site: k,
-          child: target.type,
-          pose: compose(inverse(o.pose), target.pose),
-        });
+        const targets = byAnchor.get(o.ids[o.mapping[k]]) || [];
+        for (const target of targets)
+          connections.push({
+            parent: type.id,
+            site: k,
+            child: target.type,
+            pose: compose(inverse(o.pose), target.pose),
+          });
       }
   return {
     schema: "materials-v2-observation/1",
@@ -217,6 +246,7 @@ export function* discover(
       partialObservations,
       observedRecurringClasses: observedTypes.length,
       initialCoverage,
+      contextCompletion,
       connectorFragments,
       coverage: coverageReport(atoms, recurring),
     },

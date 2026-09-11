@@ -1,12 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { samplePatch, sampleCatalog } from "./samples.mjs";
+import { samplePatch, sampleCatalog } from "./samples.mjs?v=sample-audit-1";
+import "./sample-audit-ui.mjs";
 import { centralSeed } from "./seed.mjs";
 import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=observed-overlaps-1", import.meta.url),
+    new URL("./worker.mjs?v=sample-audit-1", import.meta.url),
     {
       type: "module",
     },
@@ -332,6 +333,9 @@ worker.onmessage = ({ data: d }) => {
     if (coverage)
       $("cluster-stats").textContent +=
         ` · ${grammar.types.filter((t) => t.role === "connector").length} connector motifs · atoms covered ${coverage.coveredAtoms}/${coverage.atoms} · placement anchors ${coverage.anchoredAtoms}/${coverage.atoms} · ${coverage.supportComponents} observed support components (not volume coverage)`;
+    if (grammar.discovery?.contextCompletion)
+      $("cluster-stats").textContent +=
+        ` · ${grammar.discovery.contextCompletion.classes} broader observed context classes added for disconnected supports / missing anchors`;
     if (stage === 1) {
       $("gallery").hidden = false;
       $("scene").classList.add("with-clusters");
@@ -451,7 +455,7 @@ function gallery() {
       "aria-label",
       `Rotating motif ${type.id + 1}, ${type.sites.length} atoms`,
     );
-    cap.textContent = `${type.role === "connector" ? "Connector" : "Local motif"} ${type.id + 1} · ${type.sites.length} sites · ${type.occurrences.length} observations`;
+    cap.textContent = `${type.role === "connector" ? "Connector" : type.role === "context" ? "Growth context" : "Local motif"} ${type.id + 1} · ${type.sites.length} sites · ${type.occurrences.length} observations`;
     f.append(c, cap);
     if (stage === 1) {
       const select = document.createElement("button");

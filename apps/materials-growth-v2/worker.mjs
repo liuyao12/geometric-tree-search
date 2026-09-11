@@ -1,4 +1,4 @@
-import { discover, learnSections } from "./learning.mjs?v=observed-overlaps-1";
+import { discover, learnSections } from "./learning.mjs?v=sample-audit-1";
 import { MaterialExperiment } from "./material.mjs?v=observed-overlaps-1";
 import { compareStructure } from "./metrics.mjs";
 import { CoronaCheckpoints } from "./coronas.mjs";

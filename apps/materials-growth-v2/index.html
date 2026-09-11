@@ -64,7 +64,9 @@
           </p>
           <label
             >Neighborhood proposal<select id="neighbors">
-              <option value="0" selected>Adaptive first shell</option>
+              <option value="0" selected>
+                Adaptive shells + context completion
+              </option>
               <option>3</option>
               <option>5</option>
               <option>6</option>
@@ -97,8 +99,10 @@
             classification is a hypothesis, not proof of a bulk environment. No
             gap atoms are invented. If local supports are disconnected, the
             learner also tests recurring unions with their nearest neighboring
-            supports. Atom coverage, placement-anchor coverage and connectivity
-            are reported separately; none establishes volume coverage.
+            supports and broader nearest-five contexts. The small motifs remain
+            visible; added contexts are labeled separately. Atom coverage,
+            placement-anchor coverage and connectivity are reported separately;
+            none establishes volume coverage.
           </p>
           <button id="to-learning" disabled>Continue to learning →</button>
         </section>
@@ -252,6 +256,30 @@
           >RDF normalization reference ↗</a
         >
       </div>
+      <details id="sample-audit" open>
+        <summary>Current strict-rule audit · every sample</summary>
+        <p class="note">
+          Single-atom seed; default adaptive discovery; 0.03 Å positional
+          tolerance; unseen overlapping connections forbidden. Each run allows
+          up to 400 search steps or 12 seconds of growth. “Finite growth
+          verified” requires at least 64 actual atoms, every input label
+          represented, independent point and overlap checks, and consistent
+          frontier bookkeeping. This is not a reconstruction or
+          indefinite-growth certificate. Corona counts refer to the active point
+          frontier.
+        </p>
+        <div id="sample-audit-table" style="overflow-x: auto">
+          Loading current audit…
+        </div>
+        <p class="note">
+          RDF and angular errors are diagnostics against the training crop, not
+          held-out validation. Reference-site checks use one rigid alignment of
+          the whole grown patch and an evaluation-only periodic cell; matching
+          sites does not prove complete coverage. Unsupported and unresolved
+          samples remain visible rather than being silently relaxed.
+          <a href="strict-sample-results.json">Download full audit</a>
+        </p>
+      </details>
       <details id="benchmarks">
         <summary>Multi-material single-seed regression results</summary>
         <p class="muted">
@@ -271,6 +299,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=observed-overlaps-1"></script>
+    <script type="module" src="app.mjs?v=sample-audit-1"></script>
   </body>
 </html>

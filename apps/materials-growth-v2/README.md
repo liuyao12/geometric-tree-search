@@ -8,6 +8,52 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
+### Fifteen-sample strict audit and anchor-context completion
+
+`node apps/materials-growth-v2/audit-samples.mjs apps/materials-growth-v2/strict-sample-results.json`
+runs every catalogue sample from one atom under the default observed-only rules.
+Each case has a separate worker and a 45-second hard deadline, plus a cooperative
+12-second growth window / 400-step limit. No failed case is removed from the
+report. The UI exposes actual atoms, active-frontier corona, RDF diagnostics,
+independent legality and, where available, evaluation-only periodic site matching.
+The finite-growth threshold is 64 atoms with every input label represented; it is
+not a successful-reconstruction or infinite-growth claim. Wall times and atom
+counts can vary by machine. Added fixtures are ideal ZnS zincblende and synthetic
+simple-cubic, square-sheet and triangular-sheet controls, not experimental data.
+
+The default learner now detects disconnected local supports or a label with no
+retained placement anchor. It retains the small motifs and adds recurring
+nearest-five contexts (including distance ties) labeled **Growth context**. This
+is a disclosed geometric proposal heuristic, not chemistry, a symmetry proof or
+an automatic tolerance relaxation. It currently retains recurring finite-crop
+contexts too: an observed boundary context is not certified as a bulk rule.
+All observed types at an anchor are now transported; the old map overwrote
+alternatives when several supports shared an anchor. NaCl retains its two
+seven-site motifs. Ice retains its O/D/D local motif and connector motifs while
+adding 33 broader contexts, covering all 192 observed atoms and all anchors in
+one support component. A regression requires strict growth past the input size
+and species-resolved periodic-site agreement under **one global rigid alignment**.
+Evaluation cells are never passed to discovery or candidate generation.
+
+Master-contract evidence: no kernel scheduling, point capacity, interval
+semantics or rollback rules change. Additional observed proposals enter the same
+incidence/dependency graph and strict relation filter. `test-discovery.mjs`,
+`test-ice-connectors.mjs`, `test-strict-material.mjs`, `test-overlap-rules.mjs`,
+`test-kernel.mjs`, `test-coronas.mjs` and `test-memory-resume.mjs` cover the changed
+proposal path, opaque relabeling/rigid motion, positive relation witnesses,
+negative overlaps, scheduling and rollback. Domains remain incomplete over
+continuous poses; a stalled sampled search is unknown, never an impossibility.
+
+**Remaining audit failures:** Cd–Yb and quenched Si encounter ambiguous
+correspondences in the fixed-anchor point cache; random Cu–Zr has no recurring
+supports at the tested tolerance. Varying tolerance from 0.005 to 0.12 Å did not
+establish successful growth for the first two (smaller Cd–Yb tolerance instead
+reached the memory budget without producing Yb). These require better
+branch-aware correspondence and/or support discovery, not disabling strict
+connections or adding chemical rules. The negative control is intentionally not
+converted into a periodic synthetic material. The all-materials objective is
+therefore **not yet achieved**.
+
 ### Observed-only geometric overlap learning (default)
 
 Training now compiles every observed ordered pair of overlapping motif occurrences
@@ -40,9 +86,9 @@ The verifier shares the geometric matching primitive, not an independent geometr
 implementation. Tests cover positive sample replay, global rotation, an unseen
 rigid hinge connection using a single opaque label, mark-only dependencies, graph
 pruning and restoration, and preservation of global-dead priority. Strict NaCl
-reaches 30 atoms in the test. Strict ice rejects many proposed connections and
-does not show sustained growth in that short test; it never silently falls back
-to occupancy-only matching to keep the animation moving.
+reaches 30 atoms in the short test. With anchor-context completion, strict ice
+also continues beyond its input size; neither case falls back to occupancy-only
+matching to keep the animation moving.
 
 Run `test-overlap-rules.mjs` and `test-strict-material.mjs` with Node. Historical
 material/connector and eleven-sample benchmark tests explicitly use
