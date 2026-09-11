@@ -120,6 +120,6 @@ try {
   $("comparison").textContent =
     "Interactive data could not load. All primary results remain in Tables 1 and 2; use the raw-data links below.";
   $("quality-chart").textContent =
-    "See Table 2 for the complete ice measurements.";
+    "See Table 1 for the complete ice measurements.";
   console.error(error);
 }

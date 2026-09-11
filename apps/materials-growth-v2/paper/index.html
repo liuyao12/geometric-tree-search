@@ -3,12 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>
-      Geometry-Constrained Materials Growth — Interactive Research Paper
-    </title>
+    <title>From Atomic Motifs to Generative Rules — A GCTS Research Perspective</title>
     <meta
       name="description"
-      content="A reproducible implementation study of geometric materials growth: matched search benchmarks, an ice quality ablation, and the limits of the evidence."
+      content="A materials-science perspective on learning geometric cluster compatibility, testing local-to-global structure, and constructing atomistic configurations with GCTS."
     />
     <link
       rel="icon"
@@ -17,86 +15,45 @@
     <link rel="stylesheet" href="paper.css" />
     <script type="module" src="paper.mjs"></script>
   </head>
-  <body>
-    <header class="top">
-      <a href="../">← Materials Growth Lab</a
-      ><span>INTERACTIVE RESEARCH PAPER · 01</span
-      ><button id="print">Print / save PDF</button>
-    </header>
-    <section class="hero">
-      <p class="eyebrow">GEOMETRY → LOCAL RULES → CONSTRUCTIVE SEARCH</p>
-      <h1>Geometry-Constrained<br />Materials Growth</h1>
-      <p class="subtitle">
-        An interactive implementation study of dependency-local search, observed
-        overlap rules, and the gap between valid growth and faithful
-        reconstruction.
-      </p>
-      <div class="meta">
-        Materials Growth Lab · Research draft · September 2026<br />Not peer
-        reviewed · Author review required before submission
-      </div>
-      <div class="highlights">
-        <div>
-          <strong>2.81–7.47×</strong
-          ><span>fewer candidate-validity checks</span>
-        </div>
-        <div>
-          <strong>1.02–1.52×</strong><span>median search-time speedup</span>
-        </div>
-        <div>
-          <strong>9 / 9</strong
-          ><span>paired traces and final states match</span>
-        </div>
-      </div>
-      <p class="scope">
-        Measured against full cached-candidate revalidation in the same
-        implementation—not against molecular dynamics or a state-of-the-art
-        solver.
-      </p>
-    </section>
-    <div class="layout">
-      <nav class="toc" aria-label="Paper sections">
-        <a href="#abstract">Abstract</a><a href="#method">01 / Method</a
-        ><a href="#results">02 / Matched benchmark</a
-        ><a href="#quality">03 / What counts as correct?</a
-        ><a href="#context">04 / Existing methods</a
-        ><a href="#outlook">05 / Research case</a
-        ><a href="#reproduce">06 / Reproduce</a
-        ><a href="#references">References</a>
-      </nav>
-      <main>
-        <section id="abstract">
-          <p class="eyebrow">ABSTRACT</p>
-          <p class="lead">
-            Can geometric constraints learned from a small configuration support
-            economical, auditable structure expansion?
-          </p>
-          <p>
-            We study a geometry-first materials-growth implementation in which
-            recurring labeled point clusters supply candidate placements and
-            observed overlap relations restrict their compatibility. Our
-            controlled contribution is an implementation ablation: replacing
-            global cached-candidate revalidation with dependency-local updates
-            reduces validity evaluations by 2.81–7.47× over three fixed growth
-            prefixes, while preserving candidate, search-trace, geometry,
-            rollback-stack and final semantic-state hashes in all nine paired
-            trials. Median search-time speedups are 1.02–1.52×; cold-start
-            pipeline speedups are smaller.
-          </p>
-          <p>
-            A separate Ice VIII ablation finds no gain in reference-site
-            membership from the observed-overlap restriction: both variants
-            reach 100%, despite markedly different label proportions. This
-            negative result identifies an important validation gap. The evidence
-            supports efficient constraint bookkeeping for this implementation,
-            not superiority over molecular dynamics, general amorphous
-            synthesis, or a demonstrated advantage from learned GCTS markings.
-          </p>
-        </section>
-
-        <section id="method">
-          <p class="eyebrow">01 / METHOD</p>
-          <h2>Learn locally. Search globally. Keep the distinction precise.</h2>
+  <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
+<section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
+<div class="layout"><nav class="toc" aria-label="Paper sections"><a href="#abstract">Abstract</a><a href="#problem">01 / Materials question</a><a href="#context">02 / Materials context</a><a href="#model">03 / Formal framework</a><a href="#method">04 / GCTS realization</a><a href="#quality">05 / Structural validation</a><a href="#results">06 / Computational evidence</a><a href="#outlook">07 / Research programme</a><a href="#reproduce">Reproducibility</a><a href="#references">References</a></nav><main>
+<section id="abstract"><p class="eyebrow">ABSTRACT</p>
+<p class="lead">When is a description of local atomic order sufficient to construct a larger material?</p>
+<p>Recurring coordination environments provide a language for discussing crystals, quasicrystals and glasses. Their identification, however, does not by itself specify how they can be assembled: shared atoms must be identified consistently, local motifs must cover the configuration, and compatible neighborhoods must remain compatible when loops close. We formulate a research programme in which a learned cluster library and its geometric overlap constraints define a family of admissible atomistic configurations. GCTS supplies a constructive, reversible search for members of this family.</p>
+<p>The intended contribution is an inspectable connection between local structural information and global realizability—not a model of physical growth kinetics. We place this programme alongside cluster analysis, quasicrystal matching rules, information-constrained reconstruction and generative models of amorphous materials. Two existing experiments delimit what the prototype currently establishes: an ice example exposes the weakness of reference-site membership as a reconstruction metric, while a matched implementation benchmark demonstrates reduced bookkeeping cost without changing the measured search. Neither demonstrates general amorphous generation or an advantage of learned GCTS markings.</p>
+<p>The materials hypothesis is testable: can explicit geometric assembly rules produce larger, distinct configurations with held-out structural fidelity, while requiring less data, less search or less subsequent relaxation than an appropriate alternative?</p></section><section id="problem"><p class="eyebrow">01 / THE MATERIALS QUESTION</p><h2>From a vocabulary of motifs to rules of assembly</h2>
+<p>A useful local motif need not be a molecule, a nearest-neighbor shell or a convex polyhedron. Here it is a finite set of labeled atomic positions, possibly irregular and overlapping other motifs. A catalogue of such motifs tells us what recurs. An assembly model must additionally explain which relative arrangements are admissible and how their shared atoms are counted.</p>
+<p>This distinction matters differently across material classes. A periodic crystal supplies a controlled reconstruction test. A quasicrystal asks whether local overlap information can constrain nonperiodic long-range order. An amorphous material asks for a family of different configurations with appropriate structural statistics, rather than a single recovered arrangement. We do not assume one finite cluster library will solve all three tasks.</p>
+<div class="pipeline"><div><b>OBSERVATION</b><strong>Atomic patches</strong><span>Positions, labels, provenance</span></div><div><b>DESCRIPTION</b><strong>Recurring motifs</strong><span>Geometry and uncertainty</span></div><div><b>ASSEMBLY</b><strong>Overlap rules</strong><span>Shared sites and compatibility</span></div><div><b>VALIDATION</b><strong>Larger structures</strong><span>Coverage, order, diversity</span></div></div>
+<h3>Why a theorist might care</h3><p>The framework turns a structural interpretation into a falsifiable construction problem. If a proposed motif library systematically leaves uncovered sites, the description is incomplete. If its allowed overlaps admit unwanted order, the constraints are insufficient. If additional constraints suppress held-out observed arrangements, they are too restrictive. Search can expose these failures on tested instances; only a complete, correctly specified search can certify impossibility for its declared problem.</p>
+<aside class="callout"><strong>“Growth” means extending an atomistic configuration.</strong><p>No search step is assigned a physical time. No attachment probability, free energy or chemical mechanism is inferred by default. A generated structure is a geometric candidate for further study, not evidence of a realizable synthesis pathway or equilibrium population.</p></aside></section><section id="context"><p class="eyebrow">02 / MATERIALS CONTEXT</p><h2>Building on precise cluster and reconstruction methods</h2>
+<p>Materials science already has algorithmic descriptions of local order. Sun and colleagues compare packing motifs with a cluster-alignment method in metallic liquids and glasses <a href="#ref1">[1]</a>. Such methods motivate our starting point, but recognizing an environment and constructing a complete configuration from it are different tasks.</p>
+<p>The closest conceptual precedent is quasicrystal matching-rule theory. Kalugin and Katz describe an algorithmic procedure to extract and validate matching rules from phased diffraction data, with a geometric framework and a mechanism for robust long-range quasiperiodic order <a href="#ref2">[2]</a>. Thus neither “geometric matching rules” nor “extract rules from structural data” can serve as a standalone novelty claim here. A substantive comparison must identify what our representation, input assumptions and constructive search add.</p>
+<div class="table-wrap"><table><caption>Relevant materials approaches and the comparison each motivates. These are conceptual comparisons, not measured rankings.</caption><thead><tr><th>Approach</th><th>Connection to this programme</th><th>Question for GCTS</th></tr></thead><tbody>
+<tr><th>Cluster alignment <a href="#ref1">[1]</a></th><td>Identifies recurring local packing motifs.</td><td>Can learned overlaps turn the motif catalogue into a covering, constructive model?</td></tr>
+<tr><th>Quasicrystal matching rules <a href="#ref2">[2]</a></th><td>Connects geometric local constraints to long-range order.</td><td>What can be inferred from finite noisy position samples, and what can the search actually certify?</td></tr>
+<tr><th>Amorphous network generation <a href="#ref3">[3]</a></th><td>Constructs structural models of amorphous Si and Ge.</td><td>Can sample-derived rules recover network structure without prescribing the same network model?</td></tr>
+<tr><th>Reverse Monte Carlo; information-constrained reconstruction <a href="#ref4">[4]</a>, <a href="#ref5">[5]</a></th><td>Uses structural observations and constraints to reconstruct configurations.</td><td>Do explicit overlap relations retain useful information beyond the chosen aggregate observables?</td></tr>
+<tr><th>Amorphous diffusion models <a href="#ref6">[6]</a></th><td>Generate configurations and assess local order, connectivity, diversity and properties.</td><td>Can inspectable rules improve data efficiency or constraint satisfaction at matched output quality?</td></tr>
+</tbody></table></div>
+<p>Limbu and colleagues demonstrate amorphous-silicon reconstruction without total-energy functionals and evaluate electronic and vibrational properties <a href="#ref5">[5]</a>. Yang and Schwalbe-Koda report rapid amorphous generation with structural and mechanical validation <a href="#ref6">[6]</a>. These set a more relevant standard than computational speed alone. Avoiding a force field inside the generator is not, by itself, a new materials method.</p>
+<p>Our proposed role is complementary: construct geometric candidates with an inspectable record of the local rules they satisfy, then test them against independent structural or physical evidence. The usefulness and novelty of that integration remain to be demonstrated.</p></section><section id="model"><p class="eyebrow">03 / A LOCAL-TO-GLOBAL FORMULATION</p><h2>What must a cluster model specify?</h2>
+<p>The following is a proposed formal framework for the research programme, not a claim that every component is implemented. Let the observations be finite configurations X = {(xᵢ, sᵢ)}, where xᵢ ∈ ℝᵈ and sᵢ is an opaque species label. For ensemble learning, each observation also carries its preparation conditions and provenance; these are not inferred from coordinates.</p>
+<h3>1. Motifs, motions and error bars</h3>
+<p>A motif Cₐ is a finite labeled point set. Its placement is gCₐ, where g is an allowed rigid motion. In three dimensions, rotations and translations may be allowed without restricting orientations to a lattice; reflections must be declared separately. Exact copies can be grouped modulo these motions. Approximate matches instead require a label-preserving point correspondence and an explicit residual criterion, such as maximum position error ≤ ε.</p>
+<p>Approximate closeness is not generally transitive. Consequently, “one representative per isometry class” is exact language; noisy motifs require an operational clustering rule, representative and uncertainty model. Varying ε and reporting sensitivity is part of the scientific analysis, not merely a display setting.</p>
+<h3>2. Overlaps, coverage and consistency</h3>
+<p>An overlap rule specifies the allowed relative poses of two motifs and the identities of any shared atoms. Multiple motif descriptions may refer to one atom; that atom must not be duplicated. Pairwise acceptable registrations do not alone guarantee that correspondences and poses remain consistent around a loop or across a larger neighborhood.</p>
+<p>Coverage must also be explicit. Every observed atomic site should be accounted for, including sites outside the most conspicuous motifs. If spatial cells or interstitial volumes are intended to be covered, their domain and coverage criterion must be supplied separately. A union of atomic point supports does not automatically tile physical volume. “Gap-filling clusters” therefore require a declared meaning of gap, rather than an ad hoc chemical rule.</p>
+<h3>3. The admissible family is not a probability distribution</h3>
+<div class="equation">Ω(C, R, ε; B) = { configurations admitting a consistent motif cover under rules R, tolerance ε and boundary specification B }</div>
+<p>This definition names a family of realizations. It does not assert that the family is nonempty, that a finite patch extends indefinitely, or that a finite proposal generator explores it completely. An observation may motivate a rule without proving it necessary. An overlap missing from finite training data is unobserved—not automatically forbidden.</p>
+<p>For a fixed candidate universe and boundary specification, adding constraints can only shrink the admitted family. The scientific task is to remove unwanted configurations without excluding valid held-out ones. Successful reconstruction of training data is a necessary diagnostic for a model intended to explain those data, not evidence that this trade-off has been solved.</p>
+<p>Nor does finding members of Ω specify their relative frequencies. A deterministic tree search can strongly bias the structures it returns. To claim an amorphous ensemble, one must separately define and test a sampling procedure, motif frequencies and diversity. To claim thermodynamic sampling would require further physical justification.</p>
+<aside class="callout"><strong>The central hypothesis</strong><p>A compact, sample-derived set of geometric compatibility rules may retain enough higher-order information to support useful structure generation. The hypothesis fails if the rules mostly memorize their inputs, admit structurally wrong assemblies, or become so restrictive that held-out valid continuations are rejected.</p></aside></section><section id="method">
+          <p class="eyebrow">04 / CONSTRUCTIVE REALIZATION</p>
+          <h2>GCTS as a test of geometric realizability</h2>
           <div class="pipeline">
             <div>
               <b>01</b><strong>Observe</strong
@@ -165,7 +122,7 @@ On failure, restore the exact semantic state and try the next alternative.</pre
             domain is not a proof of impossibility. These material runs use
             incomplete-domain semantics.
           </p>
-          <h3>The optimization under test</h3>
+          <h3>Computational support, not the materials hypothesis</h3>
           <p>
             After a placement changes points Δ, the local variant revalidates
             candidates whose recorded dependencies meet Δ. The baseline updates
@@ -180,10 +137,101 @@ On failure, restore the exact semantic state and try the next alternative.</pre
             bounded executions; they do not constitute a proof for all geometric
             inputs.
           </p>
-        </section>
-
-        <section id="results">
-          <p class="eyebrow">02 / MATCHED IMPLEMENTATION BENCHMARK</p>
+        <p>Incremental constraint maintenance and reversible search have established algorithmic precedents <a href="#ref7">[7]</a>, <a href="#ref8">[8]</a>. The benchmark below evaluates their use in this implementation; it does not establish a new general search algorithm.</p></section><section id="quality">
+          <p class="eyebrow">05 / STRUCTURAL VALIDATION: AN ICE COUNTEREXAMPLE</p>
+          <h2>Correct sites are not yet the correct material.</h2>
+          <p>
+            We compare occupancy-only matching with observed-overlap
+            restrictions on the same 192-atom Ice VIII D₂O crop. These are
+            different constraint models, not equivalent implementations. Each
+            starts with one central atom, uses the same discovered supports and
+            proposal policy, and grows to 220 atoms in one deterministic run.
+          </p>
+          <figure class="interactive">
+            <div class="figure-head">
+              <span>FIGURE 1 · ICE QUALITY ABLATION</span
+              ><span class="pill amber">No demonstrated quality gain</span>
+            </div>
+            <label class="range"
+              >Growth prefix
+              <input
+                id="milestone"
+                type="range"
+                min="0"
+                max="2"
+                step="1"
+                value="2"
+              /><output id="atom-count">220 atoms</output></label
+            >
+            <div id="quality-chart" aria-live="polite"></div>
+            <figcaption>
+              Site membership uses one global rigid alignment, chosen over
+              first-placement occurrence witnesses, modulo the reference cell.
+              No per-atom realignment. The reference is evaluation-only.
+            </figcaption>
+          </figure>
+          <div class="table-wrap">
+            <table>
+              <caption>
+                Table 1. Ice label counts and species-resolved site membership;
+                one run per model.
+              </caption>
+              <thead>
+                <tr>
+                  <th>Atoms</th>
+                  <th>Occupancy-only O / D</th>
+                  <th>Overlap-restricted O / D</th>
+                  <th>Site membership, both</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>64</th>
+                  <td>32 / 32</td>
+                  <td>10 / 54</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th>128</th>
+                  <td>34 / 94</td>
+                  <td>31 / 97</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th>220</th>
+                  <td>81 / 139</td>
+                  <td>34 / 186</td>
+                  <td>100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="callout">
+            <strong
+              >Do not call 100% site membership a reconstruction
+              success.</strong
+            >
+            <p>
+              At 220 atoms the restricted prefix contains 34 O and 186 D, versus
+              81 O and 139 D for occupancy-only growth. Both finish corona 3 and
+              occupy reference-compatible sites, but neither statistic proves
+              volumetric coverage. In particular, the restricted prefix is far
+              from the bulk sample’s 1:2 label ratio. Boundary effects and
+              incomplete filling need investigation; these observations do not
+              establish their cause.
+            </p>
+          </aside>
+          <p>
+            This ablation does not establish a quality advantage for the learned
+            restrictions. A stronger evaluation must combine species-resolved
+            RDFs, density and coverage, label proportions, angular and
+            higher-order motifs, and structure factors. Reference-site
+            membership cannot detect missing sites; pair statistics alone cannot
+            specify all higher-order connections. These additional metrics are
+            proposed work, not measured results in this paper.
+          </p>
+        </section><section id="results">
+          <p class="eyebrow">06 / SUPPORTING COMPUTATIONAL EVIDENCE</p>
           <h2>Less repeated work. The same measured search.</h2>
           <p>
             Three timing trials per material, paired with alternating execution
@@ -208,7 +256,7 @@ On failure, restore the exact semantic state and try the next alternative.</pre
           </p>
           <figure class="interactive">
             <div class="figure-head">
-              <span>FIGURE 1 · EXPLORE THE ABLATION</span
+              <span>FIGURE 2 · EXPLORE THE ABLATION</span
               ><span class="pill">Recorded data · no simulation</span>
             </div>
             <div class="controls">
@@ -238,7 +286,7 @@ On failure, restore the exact semantic state and try the next alternative.</pre
           <div class="table-wrap">
             <table>
               <caption>
-                Table 1. All tested materials; global / dependency-local. Times
+                Table 2. All tested materials; global / dependency-local. Times
                 are medians of three trials.
               </caption>
               <thead>
@@ -316,230 +364,20 @@ On failure, restore the exact semantic state and try the next alternative.</pre
               claim.
             </p>
           </details>
-        </section>
-
-        <section id="quality">
-          <p class="eyebrow">03 / A NEGATIVE RESULT THAT MATTERS</p>
-          <h2>Correct sites are not yet the correct material.</h2>
-          <p>
-            We compare occupancy-only matching with observed-overlap
-            restrictions on the same 192-atom Ice VIII D₂O crop. These are
-            different constraint models, not equivalent implementations. Each
-            starts with one central atom, uses the same discovered supports and
-            proposal policy, and grows to 220 atoms in one deterministic run.
-          </p>
-          <figure class="interactive">
-            <div class="figure-head">
-              <span>FIGURE 2 · ICE QUALITY ABLATION</span
-              ><span class="pill amber">No demonstrated quality gain</span>
-            </div>
-            <label class="range"
-              >Growth prefix
-              <input
-                id="milestone"
-                type="range"
-                min="0"
-                max="2"
-                step="1"
-                value="2"
-              /><output id="atom-count">220 atoms</output></label
-            >
-            <div id="quality-chart" aria-live="polite"></div>
-            <figcaption>
-              Site membership uses one global rigid alignment, chosen over
-              first-placement occurrence witnesses, modulo the reference cell.
-              No per-atom realignment. The reference is evaluation-only.
-            </figcaption>
-          </figure>
-          <div class="table-wrap">
-            <table>
-              <caption>
-                Table 2. Ice label counts and species-resolved site membership;
-                one run per model.
-              </caption>
-              <thead>
-                <tr>
-                  <th>Atoms</th>
-                  <th>Occupancy-only O / D</th>
-                  <th>Overlap-restricted O / D</th>
-                  <th>Site membership, both</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>64</th>
-                  <td>32 / 32</td>
-                  <td>10 / 54</td>
-                  <td>100%</td>
-                </tr>
-                <tr>
-                  <th>128</th>
-                  <td>34 / 94</td>
-                  <td>31 / 97</td>
-                  <td>100%</td>
-                </tr>
-                <tr>
-                  <th>220</th>
-                  <td>81 / 139</td>
-                  <td>34 / 186</td>
-                  <td>100%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <aside class="callout">
-            <strong
-              >Do not call 100% site membership a reconstruction
-              success.</strong
-            >
-            <p>
-              At 220 atoms the restricted prefix contains 34 O and 186 D, versus
-              81 O and 139 D for occupancy-only growth. Both finish corona 3 and
-              occupy reference-compatible sites, but neither statistic proves
-              volumetric coverage. In particular, the restricted prefix is far
-              from the bulk sample’s 1:2 label ratio. Boundary effects and
-              incomplete filling need investigation; these observations do not
-              establish their cause.
-            </p>
-          </aside>
-          <p>
-            This ablation does not establish a quality advantage for the learned
-            restrictions. A stronger evaluation must combine species-resolved
-            RDFs, density and coverage, label proportions, angular and
-            higher-order motifs, and structure factors. Reference-site
-            membership cannot detect missing sites; pair statistics alone cannot
-            specify all higher-order connections. These additional metrics are
-            proposed work, not measured results in this paper.
-          </p>
-        </section>
-
-        <section id="context">
-          <p class="eyebrow">04 / POSITION RELATIVE TO EXISTING METHODS</p>
-          <h2>The case is integration—not reinventing propagation.</h2>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Prior approach</th>
-                  <th>Relevant precedent</th>
-                  <th>What this study establishes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Constraint propagation <a href="#ref1">[1]</a></th>
-                  <td>
-                    Local consistency and affected-constraint updates already
-                    have a long history.
-                  </td>
-                  <td>
-                    A matched implementation benefit in this geometric growth
-                    engine; not a new general propagation algorithm.
-                  </td>
-                </tr>
-                <tr>
-                  <th>Algorithm X / Dancing Links <a href="#ref2">[2]</a></th>
-                  <td>Reversible local updates support exact-cover search.</td>
-                  <td>
-                    No executed comparison with DLX; continuous proposals and
-                    learned relations differ from a fixed exact-cover matrix.
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    Amorphous network construction <a href="#ref3">[3]</a>
-                  </th>
-                  <td>
-                    Structural models of amorphous Si and Ge can be built by
-                    network methods.
-                  </td>
-                  <td>
-                    No demonstrated advantage on amorphous reconstruction or
-                    realism.
-                  </td>
-                </tr>
-                <tr>
-                  <th>Reverse Monte Carlo <a href="#ref4">[4]</a></th>
-                  <td>
-                    Disordered structures can be constrained by measured
-                    structural information without an interatomic potential.
-                  </td>
-                  <td>
-                    “No force field” alone is not novel; the proposed
-                    distinction is local relational structure and explicit
-                    constructive search.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p>
-            We have not run optimized CSP solvers, DLX, network-generation
-            methods, reverse Monte Carlo or molecular dynamics as competitors.
-            Consequently, this manuscript makes no state-of-the-art claim and no
-            extrapolated MD cost or physical fidelity comparison.
-          </p>
-        </section>
-
-        <section id="outlook">
-          <p class="eyebrow">05 / THE RESEARCH CASE</p>
-          <h2>A useful hypothesis, with a test that could refute it.</h2>
-          <p class="lead">
-            Reusable local geometric rules could make constrained structure
-            generation cheaper while keeping every accepted connection
-            inspectable.
-          </p>
-          <p>
-            The demonstrated part is efficient bookkeeping without changing the
-            measured result. The more ambitious GCTS hypothesis is that
-            informative local markings reduce wasted branching and invalid
-            constructions on genuinely ambiguous inputs. That hypothesis remains
-            untested here: the matched material prefixes never backtrack, and
-            the ice quality ablation does not separate the models by site
-            membership.
-          </p>
-          <ol>
-            <li>
-              <strong>Build an ensemble, not one amorphous crop.</strong> Obtain
-              multiple independently sampled configurations of the same material
-              and thermodynamic conditions, with provenance and usage rights.
-              Split by configuration or trajectory before extracting clusters;
-              do not leak overlapping neighborhoods across train and test.
-            </li>
-            <li>
-              <strong>Separate unknown from forbidden.</strong> An overlap
-              absent from a finite sample is unobserved, not necessarily
-              impossible. Evaluate held-out positive acceptance and rejection of
-              deliberately corrupted geometric connections across tolerance and
-              neighborhood reach.
-            </li>
-            <li>
-              <strong>Test learned markings against fair controls.</strong>
-              Compare occupancy-only, extracted relational rules and a verified
-              point-marking compilation with equal proposal budgets, plus a
-              relevant optimized constraint solver. Measure accepted legal
-              growth per second, branch expansions, backtracks and memory,
-              alongside structure quality.
-            </li>
-            <li>
-              <strong>Make ambiguity real.</strong> Use held-out amorphous
-              ensembles with multiple valid continuations. Require improved
-              yield at matched structural fidelity across independent seeds—not
-              merely a larger point count or recovery of known crystalline
-              sites.
-            </li>
-          </ol>
-          <p>
-            Hierarchical clusters, learned proposal agents and amortization
-            across many growth runs are promising extensions, not established
-            advantages in the present measurements. Successful held-out
-            amorphous growth, completeness in continuous pose space, and
-            physical stability remain open.
-          </p>
-        </section>
-
-        <section id="reproduce">
-          <p class="eyebrow">06 / REPRODUCIBILITY</p>
+        </section><section id="outlook"><p class="eyebrow">07 / A MATERIALS VALIDATION PROGRAMME</p><h2>What would make the method useful?</h2>
+<p>The first substantive target should be one well-characterized amorphous system with multiple independent configurations—not an expanded list of easy crystals. Amorphous silicon offers a network-focused comparison; silica offers partial pair correlations and ring statistics as well as a recent generative comparator <a href="#ref3">[3]</a>, <a href="#ref5">[5]</a>, <a href="#ref6">[6]</a>. Choosing between them should follow data availability, licensing and reproducible baseline access.</p>
+<div class="table-wrap"><table><caption>Proposed acceptance criteria; these experiments have not been completed.</caption><thead><tr><th>Claim</th><th>Required test</th><th>Failure to detect</th></tr></thead><tbody>
+<tr><th>Transferable local rules</th><td>Hold out whole configurations or trajectories before motif extraction; evaluate observed and corrupted overlaps across tolerances.</td><td>Training leakage or rejecting valid unseen connections.</td></tr>
+<tr><th>Faithful larger structures</th><td>Partial RDFs, structure factors, density, composition, angular distributions and appropriate network statistics, with boundary treatment stated.</td><td>Correct pair distances but wrong connectivity, missing sites or wrong proportions.</td></tr>
+<tr><th>New configurations</th><td>Independent runs; motif-frequency and diversity tests; comparison with training patches over increasing length scales.</td><td>Memorization, repeated crops or artificial periodicity.</td></tr>
+<tr><th>Useful computation</th><td>Time and memory per accepted structure at matched fidelity, including training, validation and any relaxation.</td><td>Faster production of lower-quality or biased samples.</td></tr>
+<tr><th>Specific benefit from GCTS</th><td>Compare occupancy-only, observed relational rules and verified point-marking implementations with matched proposal policies and budgets.</td><td>Attributing a proposal or bookkeeping improvement to learned markings.</td></tr>
+</tbody></table></div>
+<p>Physical validation can remain outside the geometric generator. For example, independently relaxing generated configurations and examining their structural change, energy and a selected property tests their usefulness without inserting a force field into GCTS. Any relaxation cost and rejected structures belong in the comparison; physical realism must not be assumed from geometric acceptance.</p>
+<h3>A theoretical agenda</h3><p>Three questions deserve attention even before an application-level speed advantage is established. Which information is lost when observed neighborhoods are reduced to pairwise overlap rules? When can those relations be represented by finite-channel point markings with specified transformation behavior? And what additional assumptions would let finite construction tests imply anything about infinite extension or ensemble statistics? The prototype is a place to investigate these questions, not a proof of their resolution.</p>
+<p>Hierarchical clusters could encode recurring multi-motif relations that pairwise rules miss, but any larger cluster must retain a consistent expansion into its constituents. Such hierarchy, learned proposals and statistical sampling remain research directions, not measured contributions of the present study.</p>
+<p class="lead">The objective is not simply to grow more atoms. It is to learn what local structural information is sufficient—and what is missing—when we ask a material description to become a construction.</p></section><section id="reproduce">
+          <p class="eyebrow">REPRODUCIBILITY &amp; SCOPE</p>
           <h2>Inspect the evidence. Rerun the comparison.</h2>
           <p>
             The artifact contains the raw measurements, benchmark intervention
@@ -580,47 +418,14 @@ node apps/materials-growth-v2/paper/quality.mjs /tmp/gcts-quality.json</pre
             require author work before submission. This is an AI-assisted
             research draft, not a peer-reviewed publication.
           </p>
-        </section>
-        <section id="references">
-          <p class="eyebrow">REFERENCES</p>
-          <ol class="references">
-            <li id="ref1">
-              Mackworth, A. K. (1977).
-              <a href="https://www.cs.ubc.ca/~mack/Publications/AI77.pdf"
-                >Consistency in Networks of Relations.</a
-              >
-              <i>Artificial Intelligence</i> 8, 99–118.
-            </li>
-            <li id="ref2">
-              Knuth, D. E. (2000).
-              <a href="https://arxiv.org/abs/cs/0011047">Dancing Links.</a>
-              arXiv:cs/0011047.
-            </li>
-            <li id="ref3">
-              Wooten, F., Winer, K. & Weaire, D. (1985).
-              <a
-                href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1392"
-                >Computer Generation of Structural Models of Amorphous Si and
-                Ge.</a
-              >
-              <i>Physical Review Letters</i> 54, 1392–1395.
-            </li>
-            <li id="ref4">
-              McGreevy, R. L. & Pusztai, L. (1988).
-              <a href="https://doi.org/10.1080/08927028808080958"
-                >Reverse Monte Carlo Simulation: A New Technique for the
-                Determination of Disordered Structures.</a
-              >
-              <i>Molecular Simulation</i> 1, 359–367.
-            </li>
-          </ol>
-        </section>
-        <footer>
-          Materials Growth Lab · Evidence before extrapolation.<a href="../"
-            >Explore the laboratory →</a
-          >
-        </footer>
-      </main>
-    </div>
-  </body>
-</html>
+        </section><section id="references"><p class="eyebrow">REFERENCES</p><h2>Materials foundations and algorithmic support</h2><ol class="references">
+<li id="ref1">Sun, Y. et al. (2016). <a href="https://www.nature.com/articles/srep23734">‘Crystal Genes’ in Metallic Liquids and Glasses.</a> <i>Scientific Reports</i> 6, 23734.</li>
+<li id="ref2">Kalugin, P. &amp; Katz, A. (2019 preprint). <a href="https://arxiv.org/abs/1909.07436">Robust matching rules for real quasicrystals.</a> arXiv:1909.07436. <a href="https://doi.org/10.1088/1742-6596/1458/1/012002">Related proceedings publication.</a></li>
+<li id="ref3">Wooten, F., Winer, K. &amp; Weaire, D. (1985). <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1392">Computer Generation of Structural Models of Amorphous Si and Ge.</a> <i>Physical Review Letters</i> 54, 1392–1395.</li>
+<li id="ref4">McGreevy, R. L. &amp; Pusztai, L. (1988). <a href="https://doi.org/10.1080/08927028808080958">Reverse Monte Carlo Simulation: A New Technique for the Determination of Disordered Structures.</a> <i>Molecular Simulation</i> 1, 359–367.</li>
+<li id="ref5">Limbu, D. K., Elliott, S. R., Atta-Fynn, R. &amp; Biswas, P. (2020). <a href="https://www.nature.com/articles/s41598-020-64327-3">Disorder by design: A data-driven approach to amorphous semiconductors without total-energy functionals.</a> <i>Scientific Reports</i> 10, 7742.</li>
+<li id="ref6">Yang, K. &amp; Schwalbe-Koda, D. (online 2025; volume 2026). <a href="https://www.nature.com/articles/s41524-025-01901-1">A generative diffusion model for amorphous materials.</a> <i>npj Computational Materials</i> 12, 29.</li>
+<li id="ref7">Mackworth, A. K. (1977). <a href="https://www.cs.ubc.ca/~mack/Publications/AI77.pdf">Consistency in Networks of Relations.</a> <i>Artificial Intelligence</i> 8, 99–118.</li>
+<li id="ref8">Knuth, D. E. (2000). <a href="https://arxiv.org/abs/cs/0011047">Dancing Links.</a> arXiv:cs/0011047.</li>
+</ol></section>
+<footer>Materials Growth Lab · Local descriptions, testable constructions.<a href="../">Explore the laboratory →</a></footer></main></div></body></html>

@@ -93,6 +93,12 @@ for (const local of report.results.filter((r) => r.mode === "local")) {
   assert(local.legal && global.legal);
 }
 const html = readFileSync(new URL("index.html", import.meta.url), "utf8");
+assert.match(html, /From Atomic Motifs/);
+assert(html.indexOf('id="quality"') < html.indexOf('id="results"'));
+const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+assert.equal(new Set(ids).size, ids.length, 'Unique page anchors');
+for (const [, anchor] of html.matchAll(/href="#([^"]+)"/g))
+  assert(ids.includes(anchor), `Missing anchor: ${anchor}`);
 for (const [, path] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
   if (/^(https?:|data:|#)/.test(path)) continue;
   assert(existsSync(new URL(path, import.meta.url)), path);
