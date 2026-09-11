@@ -95,7 +95,10 @@
             Adaptive shells use radial gaps and rigid registration, not
             chemistry. Possible crop fragments remain inspectable; their
             classification is a hypothesis, not proof of a bulk environment. No
-            gap atoms are invented.
+            gap atoms are invented. If local supports are disconnected, the
+            learner also tests recurring unions with their nearest neighboring
+            supports. Atom coverage, placement-anchor coverage and connectivity
+            are reported separately; none establishes volume coverage.
           </p>
           <button id="to-learning" disabled>Continue to learning →</button>
         </section>
@@ -155,6 +158,9 @@
             patch's center. The remaining observed positions are not hidden
             growth constraints.
           </p>
+          <p class="note">Research limitation: additional connector motifs do not
+            guarantee the reference material. The ice control grows with both
+            labels but has not passed structural reconstruction validation.</p>
           <div class="actions">
             <button id="grow" class="primary" disabled>Run</button>
           </div>
@@ -249,6 +255,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=corona-checkpoints-1"></script>
+    <script type="module" src="app.mjs?v=connector-supports-1"></script>
   </body>
 </html>

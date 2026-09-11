@@ -1,4 +1,4 @@
-import { discover, learnSections } from "./learning.mjs?v=adaptive-shell-1";
+import { discover, learnSections } from "./learning.mjs?v=connector-supports-1";
 import { MaterialExperiment } from "./material.mjs?v=single-seed-rdf-1";
 import { compareStructure } from "./metrics.mjs";
 import { CoronaCheckpoints } from "./coronas.mjs";

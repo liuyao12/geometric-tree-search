@@ -8,6 +8,38 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
+### Connecting disconnected supports
+
+Adaptive discovery now checks the connectivity of the observed local-support
+hypergraph. When first-shell proposals form separate finite components, it finds
+components that match complete recurring local observations, then proposes unions
+with their nearest component shell (minimum inter-component atom distance, shell
+width `max(4*epsilon, 0.08*nearestDistance)`). Missing placement anchors are preferred;
+no labels are interpreted as chemistry. Unions are capped at 38 atoms and retained
+only after repeated proper rigid registration. Possible truncated connector
+contexts are separated under the crop hypothesis and retained in exported metadata.
+Small local motifs are not removed just because a larger connector contains them.
+
+For the default ice VIII crop this gives one three-site local motif and five
+connector classes (four 12-site and one 15-site class). The input is D2O: D labels
+remain unchanged. Stage 02 distinguishes local/connector motifs and reports atom
+coverage, placement-anchor coverage and observed support components separately.
+At 0.03 Å, coverage remains 168/192 atoms, anchor coverage increases from 56 to 72,
+and support components decrease from 56 to 30. These are finite-crop observations,
+not a full reconstruction claim. The default single-seed control reaches 100 atoms
+with both species and legal point assignments; periodic-reference fidelity is
+reported independently and is not asserted by this test. Only 13/100 positions
+match the periodic reference in its original frame in this run (no global
+registration optimization is applied). This is not successful ice reconstruction;
+the result is evidence that local compatibility remains insufficient. Run
+`node apps/materials-growth-v2/test-ice-connectors.mjs`.
+
+This is a one-level geometric connector proposal, not exhaustive irregular-cluster
+discovery, certified volume filling, a chemical bond graph, or a physical growth
+law. Uncovered crop atoms and missing anchors remain explicit. Continuous pose
+completeness, strong GCTS marking learning and general material fidelity remain
+open; introducing connector templates does not resolve those engine limitations.
+
 ### Adaptive discovery update
 
 The default proposal now selects a first radial shell at the first adjacent

@@ -6,6 +6,7 @@ import {
   compose,
   I,
 } from "./geometry.mjs?v=adaptive-shell-1";
+import { connectorProposals, coverageReport } from "./support-connectivity.mjs";
 export function* discover(
   input,
   { epsilon = 0.025, neighbors = 0, boundaryPolicy = "crop-hypothesis" } = {},
@@ -41,6 +42,45 @@ export function* discover(
     throw Error("Positional error exceeds a quarter of the closest spacing");
   const types = [],
     proposals = [];
+  function record(ids, role = "local") {
+    const i = ids[0],
+      sites = ids.map((j) => atoms[j]);
+    let selected = null,
+      registration = null;
+    for (const type of types) {
+      if (type.role !== role || type.sites.length !== sites.length) continue;
+      const r = register(type.sites, sites, epsilon);
+      if (r) {
+        selected = type;
+        registration = r;
+        break;
+      }
+    }
+    if (!selected) {
+      selected = {
+        id: types.length,
+        role,
+        sites: sites.map((s) => ({
+          species: s.species,
+          position: s.position.map((v, k) => v - atoms[i].position[k]),
+        })),
+        occurrences: [],
+      };
+      types.push(selected);
+      registration = {
+        pose: { r: I, t: atoms[i].position },
+        mapping: ids.map((_, i) => i),
+        max: 0,
+      };
+    }
+    selected.occurrences.push({
+      anchor: i,
+      ids,
+      pose: registration.pose,
+      mapping: registration.mapping,
+      residual: registration.max,
+    });
+  }
   for (let i = 0; i < atoms.length; i++) {
     // Irregular nearest-neighbor collections; no formula, lattice or sphere
     // is supplied. The distinguished atom is only the t=1 compilation anchor.
@@ -62,43 +102,8 @@ export function* discover(
         .slice(0, 18)
         .map((x) => x.j),
     ];
-    const sites = ids.map((j) => atoms[j]);
     proposals.push({ ids });
-    let selected = null,
-      registration = null;
-    for (const type of types) {
-      if (type.sites.length !== sites.length) continue;
-      const r = register(type.sites, sites, epsilon);
-      if (r) {
-        selected = type;
-        registration = r;
-        break;
-      }
-    }
-    if (!selected) {
-      selected = {
-        id: types.length,
-        sites: sites.map((s) => ({
-          species: s.species,
-          position: s.position.map((v, k) => v - atoms[i].position[k]),
-        })),
-        occurrences: [],
-      };
-      types.push(selected);
-      registration = {
-        pose: { r: I, t: atoms[i].position },
-        mapping: ids.map((_, i) => i),
-        max: 0,
-        rms: 0,
-      };
-    }
-    selected.occurrences.push({
-      anchor: i,
-      ids,
-      pose: registration.pose,
-      mapping: registration.mapping,
-      residual: registration.max,
-    });
+    record(ids);
     if (i % 4 === 0)
       yield { kind: "discovery", done: i + 1, total: atoms.length, ids };
   }
@@ -133,6 +138,43 @@ export function* discover(
       .map((id) => originalIds.indexOf(id))
       .filter((id) => id >= 0);
   });
+  const initialCoverage = coverageReport(atoms, recurring);
+  const connectorFragments = [];
+  if (!neighbors) {
+    const bridges = connectorProposals(atoms, proposals, recurring, epsilon);
+    for (let i = 0; i < bridges.length; i++) {
+      record(bridges[i].ids, "connector");
+      proposals.push(bridges[i]);
+      if (i % 4 === 0)
+        yield {
+          kind: "discovery",
+          phase: "connectors",
+          done: i + 1,
+          total: bridges.length,
+          ids: bridges[i].ids,
+        };
+    }
+    const connectors = types.filter(
+      (t) => t.role === "connector" && t.occurrences.length >= 2,
+    );
+    for (const t of connectors) {
+      const partial =
+        boundaryPolicy !== "preserve" &&
+        connectors.some(
+          (larger) =>
+            larger.sites.length > t.sites.length &&
+            register(t.sites, larger.sites, epsilon, { subset: true }),
+        );
+      if (partial)
+        connectorFragments.push({
+          sites: t.sites,
+          anchors: t.occurrences.map((o) => o.anchor),
+          status: "possible truncated connector context",
+        });
+      else recurring.push(t);
+    }
+    recurring.forEach((t, i) => (t.id = i));
+  }
   const occupied = new Set(
     recurring.flatMap((t) => t.occurrences.flatMap((o) => o.ids)),
   );
@@ -173,6 +215,9 @@ export function* discover(
         "geometric proposal hypothesis; not arbitrary-cluster mining or a bulk certificate",
       partialObservations,
       observedRecurringClasses: observedTypes.length,
+      initialCoverage,
+      connectorFragments,
+      coverage: coverageReport(atoms, recurring),
     },
     poseUniverse:
       "observed relative poses, continuously registered; incomplete over SO(3)",

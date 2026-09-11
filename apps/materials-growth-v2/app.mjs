@@ -6,7 +6,7 @@ import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=corona-checkpoints-1", import.meta.url),
+    new URL("./worker.mjs?v=connector-supports-1", import.meta.url),
     {
       type: "module",
     },
@@ -324,6 +324,10 @@ worker.onmessage = ({ data: d }) => {
     $("to-learning").disabled = $("learn").disabled = !grammar.types.length;
     $("cluster-stats").textContent =
       `${grammar.types.length} retained motifs · ${grammar.types.reduce((n, t) => n + t.occurrences.length, 0)} complete observations · ${grammar.discovery?.partialObservations.length || 0} possible crop-fragment classes · ${grammar.residuals.length} uncovered observed atoms`;
+    const coverage = grammar.discovery?.coverage;
+    if (coverage)
+      $("cluster-stats").textContent +=
+        ` · ${grammar.types.filter((t) => t.role === "connector").length} connector motifs · atoms covered ${coverage.coveredAtoms}/${coverage.atoms} · placement anchors ${coverage.anchoredAtoms}/${coverage.atoms} · ${coverage.supportComponents} observed support components (not volume coverage)`;
     if (stage === 1) {
       $("gallery").hidden = false;
       $("scene").classList.add("with-clusters");
@@ -425,7 +429,7 @@ function gallery() {
       "aria-label",
       `Rotating motif ${type.id + 1}, ${type.sites.length} atoms`,
     );
-    cap.textContent = `Support ${type.id + 1} · ${type.sites.length} sites · ${type.occurrences.length} observations`;
+    cap.textContent = `${type.role === "connector" ? "Connector" : "Local motif"} ${type.id + 1} · ${type.sites.length} sites · ${type.occurrences.length} observations`;
     f.append(c, cap);
     if (stage === 1) {
       const select = document.createElement("button");
