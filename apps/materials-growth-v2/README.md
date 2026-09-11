@@ -8,6 +8,18 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
+### Resumable browser memory checkpoints
+
+The browser uses `softMemory: true`: reaching a point/candidate quota pauses only
+after the current placement and its domain expansion finish. Continue doubles
+both working quotas relative to current usage and resumes the existing engine,
+trail and stack. This is not a guarantee of unlimited memory; one transaction may
+overshoot a quota, and browser/OS memory limits still apply. Unresolved geometry
+and exhausted searches are not relabeled as resumable memory events. Headless
+controls retain hard quotas by default, preserving historical benchmark semantics.
+`test-memory-resume.mjs` compares repeated point/candidate pauses against an
+uninterrupted control, including placements, frontier, generations and stack.
+
 ### Connecting disconnected supports
 
 Adaptive discovery now checks the connectivity of the observed local-support

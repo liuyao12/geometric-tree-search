@@ -158,17 +158,20 @@
             patch's center. The remaining observed positions are not hidden
             growth constraints.
           </p>
-          <p class="note">Research limitation: additional connector motifs do not
-            guarantee the reference material. The ice control grows with both
-            labels but has not passed structural reconstruction validation.</p>
+          <p class="note">
+            Research limitation: additional connector motifs do not guarantee
+            the reference material. The ice control grows with both labels but
+            has not passed structural reconstruction validation.
+          </p>
           <div class="actions">
             <button id="grow" class="primary" disabled>Run</button>
           </div>
           <p class="note">
             Automatically pauses after coronas 3, 5, 7, … (completed
             active-frontier generations, not geometric shells). You can pause at
-            any time. Unresolved domains or memory limits may stop growth
-            earlier.
+            any time. At a working-memory checkpoint, Continue expands the
+            budget without resetting the search. Browser memory is finite;
+            unresolved geometry may still stop growth.
           </p>
           <div class="actions">
             <button id="reset">Reset search</button
@@ -255,6 +258,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=connector-supports-1"></script>
+    <script type="module" src="app.mjs?v=resumable-memory-1"></script>
   </body>
 </html>

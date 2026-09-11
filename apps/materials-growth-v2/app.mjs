@@ -6,7 +6,7 @@ import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=connector-supports-1", import.meta.url),
+    new URL("./worker.mjs?v=resumable-memory-1", import.meta.url),
     {
       type: "module",
     },
@@ -273,6 +273,7 @@ $("grow").onclick = () => {
       seedMode: "single",
       maximumPoints: 20000,
       maximumCandidates: 40000,
+      softMemory: true,
     },
   });
 };
@@ -375,12 +376,9 @@ worker.onmessage = ({ data: d }) => {
       growthRunning = false;
       $("grow").textContent = "Continue";
       lock(false);
-      $("grow").disabled = [
-        "budget",
-        "unknown",
-        "exhausted",
-        "complete",
-      ].includes(d.event?.kind);
+      $("grow").disabled = ["unknown", "exhausted", "complete"].includes(
+        d.event?.kind,
+      );
     }
   }
   if (d.kind === "artifact") {

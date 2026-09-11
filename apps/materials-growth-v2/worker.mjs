@@ -1,5 +1,5 @@
 import { discover, learnSections } from "./learning.mjs?v=connector-supports-1";
-import { MaterialExperiment } from "./material.mjs?v=single-seed-rdf-1";
+import { MaterialExperiment } from "./material.mjs?v=resumable-memory-1";
 import { compareStructure } from "./metrics.mjs";
 import { CoronaCheckpoints } from "./coronas.mjs";
 let grammar,
@@ -103,6 +103,7 @@ onmessage = async ({ data }) => {
         experiment = new MaterialExperiment(grammar, marking, data.options);
       }
       paused = false;
+      experiment.continueWithMoreMemory();
       tick();
     }
     if (data.kind === "export" && experiment)

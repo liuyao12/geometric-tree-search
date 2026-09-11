@@ -22,6 +22,7 @@ export class MaterialExperiment {
       completeCrop = true,
       maximumPoints = 1600,
       maximumCandidates = 40000,
+      softMemory = false,
     } = {},
   ) {
     this.grammar = grammar;
@@ -34,6 +35,7 @@ export class MaterialExperiment {
       completeCrop,
       maximumPoints,
       maximumCandidates,
+      softMemory,
     };
     this.registry = new PointRegistry(positionError);
     this.seed = new Map();
@@ -41,6 +43,7 @@ export class MaterialExperiment {
     this.events = [];
     this.best = null;
     this.unresolved = 0;
+    this.memoryCheckpoint = false;
     if (!["single", "patch"].includes(seedMode))
       throw Error("Unknown seed mode");
     this.seedOrigin = centralSeed(grammar.atoms);
@@ -104,8 +107,11 @@ export class MaterialExperiment {
     const before = this.registry.points.length,
       id = this.registry.intern(position);
     if (before !== this.registry.points.length) {
-      if (this.registry.points.length > this.options.maximumPoints)
-        throw Error("Point memory budget reached — unknown");
+      if (this.registry.points.length > this.options.maximumPoints) {
+        if (!this.options.softMemory)
+          throw Error("Point memory budget reached — unknown");
+        this.memoryCheckpoint = true;
+      }
       const p = this.engine.ensure(id);
       const inside = position.every(
         (v, k) =>
@@ -155,8 +161,11 @@ export class MaterialExperiment {
         c.meta.sources.push(source);
       return;
     }
-    if (this.engine.candidates.size >= this.options.maximumCandidates)
-      throw Error("Candidate memory budget reached — unknown");
+    if (this.engine.candidates.size >= this.options.maximumCandidates) {
+      if (!this.options.softMemory)
+        throw Error("Candidate memory budget reached — unknown");
+      this.memoryCheckpoint = true;
+    }
     const m = [];
     section.sites.forEach((s, i) => {
       if (!this.options.marked && i) return;
@@ -211,10 +220,14 @@ export class MaterialExperiment {
       }
   }
   step() {
+    if (this.memoryCheckpoint) return this.memoryPause();
     const checkpoint = this.engine.trail.length;
     try {
       const event = this.nextStep();
       if (event.id) this.transport(event.id);
+      // Quotas pause only after a full transaction, never halfway through
+      // domain expansion or after consuming an untried branch alternative.
+      if (this.memoryCheckpoint) return this.memoryPause();
       return event;
     } catch (error) {
       this.engine.undo(checkpoint);
@@ -223,6 +236,26 @@ export class MaterialExperiment {
         kind === "budget" ? "budget / unresolved" : "unresolved geometry";
       return { kind, message: error.message };
     }
+  }
+  memoryPause() {
+    this.engine.status = "working-memory checkpoint";
+    return {
+      kind: "budget",
+      resumable: true,
+      message:
+        "Working budget reached. Continue expands it and resumes this search.",
+    };
+  }
+  continueWithMoreMemory() {
+    if (!this.memoryCheckpoint) return;
+    this.options.maximumPoints = Math.ceil(
+      Math.max(this.options.maximumPoints, this.registry.points.length) * 2,
+    );
+    this.options.maximumCandidates = Math.ceil(
+      Math.max(this.options.maximumCandidates, this.engine.candidates.size) * 2,
+    );
+    this.memoryCheckpoint = false;
+    this.engine.status = "searching";
   }
   nextStep() {
     let d = this.engine.decision();
