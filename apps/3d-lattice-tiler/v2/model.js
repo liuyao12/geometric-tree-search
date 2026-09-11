@@ -1,6 +1,7 @@
 import {tileSpecs, preprocessTilingSystem} from '../engine.js';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.1.0';
 
-export const VERSION = '2.0.0';
+export const VERSION = '2.1.0';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},
@@ -8,8 +9,8 @@ export const MODES = [
   {id:'both',name:'GCTS + RL',color:'#ffc56c'}
 ];
 export const CASES = [
-  {id:'a2_hat_prism',name:'Hat prism',group:'Research',note:'Exact layered point model of the hat prism. Its six allowed orientations preserve the layer structure. The planar hat theorem does not certify this 3D point model.'},
-  {id:'a2_turtle_prism',name:'Turtle prism',group:'Research',note:'Exact layered turtle point model, with six layer-preserving orientations. Periodic status of this point problem is not established here.'},
+  {id:'a2_hat_prism',name:'Hat prism',group:'Research',note:'Single slab on the index-3 A₂ sublattice. Cap weights are doubled: interior t = 1, rim values are planar angles. Six in-plane rotations; reflected tiles are optional.'},
+  {id:'a2_turtle_prism',name:'Turtle prism',group:'Research',note:'Single slab using the Turtle demo’s index-3 point domain. Each cap retains 11 boundary vertices and 2 interior points. Interior t = 1; rim values are planar angles.'},
   {id:'buckled_ring',name:'Buckled ring',group:'Periodic stress control',note:'The reference screen found small periodic and isohedral point certificates. Retained as a nonconvex search stress control, not a nonperiodic example.'},
   {id:'twisted_h',name:'Twisted H',group:'Periodic stress control',note:'The reference screen found small periodic and isohedral point certificates. Retained as a search stress control, not a nonperiodic example.'},
   {id:'tuning_fork',name:'Reinhardt tuning fork',group:'Research',note:'Large nonconvex support. The reference eight-copy periodic and isohedral probes remained unknown within two seconds. This is a bounded miss, not aperiodicity.'},
@@ -21,6 +22,7 @@ export function catalog() {
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 export function prepareModel(config) {
+  if(!config.custom&&SLAB_TILES[config.tile])return prepareSlab(config,VERSION);
   const prepared = preprocessTilingSystem({mode_key:config.tile,include_mirrors:config.mirrors,custom_system:config.custom,polycube_lattice:'z3'},tileSpecs);
   const capacity=prepared.prototiles.reduce((a,t)=>a*t.solid_angle.max_value/gcd(a,t.solid_angle.max_value),1);
   if(!Number.isSafeInteger(capacity)||capacity<1)throw Error('This tile needs an exact point representation before it can enter the v2 comparison.');

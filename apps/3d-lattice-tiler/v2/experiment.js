@@ -1,5 +1,5 @@
-import {prepareModel} from './model.js';
-import {search} from './search.js';
+import {prepareModel} from './model.js?v=2.1.0';
+import {search} from './search.js?v=2.1.0';
 import {VectorMarkings} from '../vector-markings.js';
 import {preprocessTilingSystem,tileSpecs} from '../engine.js';
 import {periodicStream} from '../periodic-search.js';
@@ -10,6 +10,7 @@ export async function* runExperiment(data){
     yield {type:'model',model};
     if(data.action==='preview')return;
     if(data.action==='probe'){
+      if(model.slab)throw Error('The 3D periodic/isohedral probe does not certify this one-slab model. Use the original explorer for the historical 3D prism probe.');
       const p=preprocessTilingSystem({mode_key:data.tile,include_mirrors:data.mirrors,custom_system:data.custom},tileSpecs);
       for(const t of p.prototiles)t.rescaleOccupancyWeights(model.capacity);
       for await(const e of periodicStream({tiling_strategy:data.strategy,periodic_patch_max_tiles:8,periodic_require_all_types:false,include_mirrors:data.mirrors,time_limit_ms:data.timeMs,node_limit:data.nodes,criterion:'count',target_val:20},p.prototiles,model.capacity,['#4fdac5','#b7a2ff'],{})){

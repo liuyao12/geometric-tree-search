@@ -7,7 +7,54 @@ The complete previously published explorer remains at
 are unchanged. The new workbench reuses the published exact tile adapters,
 Three.js renderer dependencies and separate periodic verifier.
 
-## Experiment and scope
+## V2.1: 2D tiles in one slab
+
+The named hat, turtle and A₂ hexagon prism presets now use a single slab.
+This replaces their v2.0 half-weight 3D point-window model. It does not modify
+the original explorer, ordinary 3D tiles, or historical results.
+
+For the thin prism, the old cap point had weight `2*a / 48`, where `a / 12`
+is its planar angle value. Both end-cap copies now have `4*a / 48`.
+Thus cap-interior points have `48 / 48 = 1`; one placed tile saturates them
+immediately and the scheduler omits them from the frontier. Rim points carry
+the corresponding planar-angle values. There are no intermediate sampled
+layers or vertical-edge interior samples in this thickness-one construction.
+
+Hat and turtle use exactly the demo's index-3 predicate, relative to the
+normalized first vertex: `x ≡ y ≡ z (mod 3)` on `x+y+z=0`. Sampling is applied
+to every orientation's t-support before lifting it to the caps; it does not
+multiply values by three. Hat retains ten boundary points and one interior
+point per cap; turtle retains eleven boundary points and two interior points.
+The hexagon control uses the full A₂ point domain.
+
+The caps are at coordinate sums 0 and 3. Allowed translations have sum zero,
+and for hat/turtle belong to the index-3 lattice. This is an explicit point
+placement domain, not a hidden polygon-intersection test. Candidates that
+would move either cap outside the slab are excluded during complete domain
+enumeration; the independent verifier enforces the same condition separately.
+Both caps' finite targets are hexagonal windows in the declared lattice basis,
+with 14, 38 or 74 required points. Exterior points remain constrained by
+capacity, but only lateral extension is allowed. Every required point begins
+at generation zero, and all four search lanes share this model.
+
+The orientation group is the planar A₂ group, with six rotations and optional
+reflected planar tiles (twelve orientations for hat/turtle when enabled).
+This is explicitly different from v2.0's proper cubic prism rotations.
+Prism geometry is just the display of these planar orientations, extruded
+by `(1,1,1)`. The existing three-dimensional quotient probes cannot certify
+this new rank-two slab problem: their button is disabled for slab presets,
+and programmatic requests return an explanatory unsupported-model error.
+They remain available for ordinary 3D tiles and in the original explorer.
+
+`test-3d-lattice-slab.mjs` compares the support/weights with the demo engine,
+checks all aligned slab candidates against an independent enumeration,
+checks that full-cap points have no remaining legal incidence or frontier
+obligation, tests exact rollback, and replays all four lanes' solutions.
+It also rejects shifted-slab and wrong-coset certificates. Historical v2.0
+benchmarks below and on the page retain their original weights and targets;
+none is presented as evidence for the new slab model.
+
+## V2.0 experiment and scope (historical)
 
 The unit of comparison is a **finite exact point window**, not a tile-count
 growth milestone. Every point in a centered integer cube is a required root

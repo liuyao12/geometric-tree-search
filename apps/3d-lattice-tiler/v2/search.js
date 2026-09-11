@@ -18,6 +18,12 @@ export class PointGraph {
       const o=model.orientations[oi];
       for(const a of o.cells){
         const translation=p.pos.map((x,i)=>x-a.pos[i]);const id=`${oi}@${translation}`;
+        if(model.placementDomain?.kind==='a2_slab'){
+          const d=model.placementDomain;
+          if(translation.reduce((a,b)=>a+b,0)!==0)continue;
+          if(d.index3&&((translation[0]-translation[1])%3!==0||(translation[1]-translation[2])%3!==0))continue;
+          if(o.cells.some(c=>!d.layerSums.includes(c.pos.reduce((a,b)=>a+b,0))))continue;
+        }
         if(unique.has(id))continue;
         if(this.candidates.length>=candidateLimit){const e=Error('Complete graph exceeds the 180,000-candidate memory budget. Reduce the window.');e.kind='resource_limit';throw e;}
         const c={id,oi,translation,valid:true,selected:false,cells:o.cells.map(q=>({k:key(plus(q.pos,translation)),weight:q.weight})),marks:(o.marks??[]).map(m=>({k:key(plus(m.pos,translation)),value:JSON.stringify(m.value)})),points:[]};
@@ -72,6 +78,13 @@ export function verify(model,placements){
   const totals=new Map(),section=new Map(),ids=new Set();
   for(const p of placements){
     const o=model.orientations[p.oi];if(!o||p.translation.length!==3||p.translation.some(x=>!Number.isSafeInteger(x)))return {ok:false,reason:'invalid placement'};
+    // Replay the slab's point-domain restrictions independently of enumeration.
+    if(model.placementDomain?.kind==='a2_slab'){
+      const d=model.placementDomain;
+      if(p.translation[0]+p.translation[1]+p.translation[2]!==0)return {ok:false,reason:'translation leaves slab'};
+      if(d.index3&&((p.translation[0]-p.translation[1])%3!==0||(p.translation[1]-p.translation[2])%3!==0))return {ok:false,reason:'translation leaves sublattice'};
+      if(o.cells.some(c=>{const q=plus(c.pos,p.translation);return ![0,3].includes(q[0]+q[1]+q[2])||(d.index3&&((q[0]-q[1])%3!==0||(q[1]-q[2])%3!==0));}))return {ok:false,reason:'support leaves slab domain'};
+    }
     const id=`${p.oi}@${p.translation}`;if(ids.has(id))return {ok:false,reason:'duplicate placement'};ids.add(id);
     if(!o.cells.some(c=>model.required.some(q=>key(plus(c.pos,p.translation))===key(q.pos))))return {ok:false,reason:'placement misses target'};
     for(const c of o.cells){const k=key(plus(c.pos,p.translation)),v=(totals.get(k)??0)+c.weight;if(v>model.capacity)return {ok:false,reason:'capacity exceeded'};totals.set(k,v);}

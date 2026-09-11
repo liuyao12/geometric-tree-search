@@ -1,5 +1,15 @@
 # 3D Lattice Tiler
 
+## V2.1 single-slab 2D presets · 2026-09-11
+
+Hat and turtle now use the Turtle demo's index-3 A₂ point domain, lifted onto
+two caps of one slab. Cap weights are doubled: interior t = 1, with planar
+angle values on the rim. The search forbids normal translations and uses a
+finite planar target on both caps. Six in-plane rotations are allowed, with
+reflected planar tiles optional. The hexagon prism is a full-A₂ slab control.
+The old 3D reference results are labeled historical. See the protocol report
+for the domain, transformation and verification details.
+
 ## V2 research workbench · 2026-09-11
 
 The existing main URLs now open a redesigned finite point-window comparison

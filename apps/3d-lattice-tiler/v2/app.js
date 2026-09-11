@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js';
+import {catalog,MODES,VERSION} from './model.js?v=2.1.0';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 const labels={finite_exact:'Verified window',unknown:'Unknown',exhausted_finite:'Exhausted finite',error:'Unavailable'};
@@ -42,7 +42,16 @@ new ResizeObserver(()=>{const r=$('canvas').getBoundingClientRect();renderer.set
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
 function renderPatch(fit=false){const r=results[active],model=models[active]??models.preview;if(!model)return;draw(model,r?.placements??[{oi:0,translation:[0,0,0]}],fit);$('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${labels[r.result]??'searching'}`:'Tile geometry';$('coverage').textContent=r?`${r.verification?.covered??r.covered??0} / ${model.required.length} required points complete`:'Amber points = required window';}
 function config(){return {tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(120,Number($('seconds').value)||10))*1000,nodes:10000,custom};}
-function lock(value){busy=value;for(const id of ['run','suite','probe','tile','radius','seconds','seed','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;}
+function lock(value){busy=value;for(const id of ['run','suite','probe','tile','radius','seconds','seed','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab;}
+function syncModelUI(model){
+  const slab=!!model.slab;
+  [...$('radius').options].forEach((o,i)=>{const r=i+1;o.textContent=slab?`Slab radius ${r} · ${2*(1+3*r*(r+1))} points`:`${2*r+1} × ${2*r+1} × ${2*r+1} · ${(2*r+1)**3} points`;});
+  $('domainBadge').textContent=slab?`Single slab · ${model.slab.sublatticeIndex===3?'index-3 A₂':'A₂'}`:'Exact point model · Z³';
+  $('targetNote').textContent=slab?'Both caps carry planar t-values. Cap interiors have t = 1 and leave the frontier immediately. Growth is lateral only.':'All required points must sum to 1. Tiles may extend beyond the window.';
+  $('probe').disabled=busy||slab;
+  if(slab)$('probeResults').textContent='The 3D probes apply to the historical prism model, available in the original explorer. They do not test this single slab.';
+  else if($('probeResults').textContent.startsWith('The 3D probes'))$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';
+}
 function refresh(){
   for(const m of MODES){const r=results[m.id],s=r?.stats,b=$(`lane-${m.id}`);b.classList.toggle('selected',active===m.id);b.setAttribute('aria-pressed',String(active===m.id));b.innerHTML=`<div class="lane-name">${m.name}</div><div class="lane-value">${time(s?.totalMs)}</div><div class="lane-state">${r?labels[r.result]??'Searching…':'Ready to run'}</div><div class="lane-detail"><span>${fmt(s?.branches)} branches</span><span>${fmt(s?.forced)} forced</span></div>`;}
   $('rows').innerHTML=MODES.map(m=>{const r=results[m.id],s=r?.stats;return `<tr><td style="color:${m.color}">${m.name}</td><td>${time(s?.totalMs)}</td><td>${s?fmt(s.branches):'—'}</td><td>${s?fmt(s.backtracks):'—'}</td><td>${s?fmt(s.forced):'—'}</td><td>${s?fmt(s.capacityCuts+s.lookaheadCuts):'—'}</td><td>${s?fmt(s.clusterValidated):'—'}</td><td>${r?labels[r.result]??'Running':'Not run'}</td></tr>`;}).join('');
@@ -65,17 +74,17 @@ function drawChart(){
 async function preview(){
   const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);$('tileName').textContent=custom?.name??selected?.name??'Custom system';$('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js',import.meta.url),{type:'module'});worker=w;
-  w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
+  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.1.0',import.meta.url),{type:'module'});worker=w;
+  w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.1.0',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
     w.onmessage=({data:e})=>{
-      if(e.type==='model'){models[c.mode]=e.model;models.preview=e.model;return;}
+      if(e.type==='model'){models[c.mode]=e.model;models.preview=e.model;syncModelUI(e.model);return;}
       if(e.type==='progress'||e.type==='result'){results[c.mode]=e;(series[c.mode]??=[[0,0]]).push([e.stats.totalMs,e.verification?.covered??e.covered??0]);refresh();if(active===c.mode)renderPatch();}
       if(e.type==='result'||e.type==='probe'||e.type==='error')finish(e);
     };
@@ -98,7 +107,7 @@ $('run').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false
 $('suite').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);const c=config();try{for(const test of cases.slice(0,5)){if(cancelled)break;$('tile').value=test.id;$('tileName').textContent=test.name;$('tileNote').textContent=test.note;await compare({...c,tile:test.id,custom:null});}$('status').textContent=cancelled?'Suite stopped. Completed runs are retained.':`Research suite complete. Export contains ${archive.length} experiment(s).`;}finally{lock(false);}};
 $('stop').onclick=()=>{cancelled=true;worker?.cancel?.();};
 $('probe').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);$('probeResults').textContent='';try{for(const strategy of ['translational','isohedral']){if(cancelled)break;$('status').textContent=`Checking ${strategy} · up to 8 motif tiles`;const r=await runWorker({...config(),mode:strategy},'probe',strategy);const p=document.createElement('div');p.textContent=`${strategy}: ${r.event?.success?'certificate found':r.message??'unknown within bounds'}`;$('probeResults').append(p);archive.push({probe:strategy,config:config(),result:r});}$('status').textContent='Structural probe results are separate from the finite-window race.';}finally{lock(false);}};
-$('export').onclick=()=>{const data={version:VERSION,exportedAt:new Date().toISOString(),protocol:'Exact finite Z³ point window; open exterior; all target points root generation 0; sequential cold online runs; timings include preparation and verification; no held-out claim',experiments:archive,current:{config:runConfig,results,series}},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`lattice-v2-evidence-${Date.now()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('export').onclick=()=>{const data={version:VERSION,exportedAt:new Date().toISOString(),protocol:'Exact finite point target; exported model declares the single-slab or 3D domain, weights and boundary; all target points root generation 0; sequential cold online runs; timings include preparation and verification; no held-out claim',experiments:archive,current:{config:runConfig,results,series}},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`lattice-v2-evidence-${Date.now()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 $('import').onclick=()=>{try{const value=JSON.parse($('custom').value);if(!value||typeof value!=='object'||(!value.polycubes?.length&&!value.polyhedra?.length&&!value.figure_refs?.length))throw Error('Include polycubes, polyhedra or figure_refs.');custom=value;if(!$('tile').querySelector('option[value="custom"]')){const o=document.createElement('option');o.value='custom';o.textContent='Custom system';$('tile').append(o);}$('tile').value='custom';preview();}catch(e){$('status').textContent=`Custom system: ${e.message}`;}};
 for(const id of ['tile','radius','mirrors'])$(id).onchange=()=>preview();
 $('fit').onclick=fitView;$('points').onclick=()=>{showPoints=!showPoints;pointGroup.visible=showPoints;$('points').textContent=`Points ${showPoints?'on':'off'}`;$('points').setAttribute('aria-pressed',String(showPoints));};$('edges').onclick=()=>{showEdges=!showEdges;edgeGroup.visible=showEdges;$('edges').textContent=`Edges ${showEdges?'on':'off'}`;$('edges').setAttribute('aria-pressed',String(showEdges));};
@@ -107,5 +116,5 @@ refresh();preview();
 fetch(new URL('./reference/summary.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();}).then(data=>{
   const probes=new Map(data.probes.map(p=>[`${p.tile}:${p.strategy}`,p]));
   $('referenceRows').innerHTML=cases.slice(0,5).map(c=>`<tr><td>${c.name}</td>${MODES.map(m=>`<td>${data.rows.filter(r=>r.tile===c.id&&r.mode===m.id&&r.result==='finite_exact').length} / 3</td>`).join('')}<td>${['translational','isohedral'].map(s=>probes.get(`${c.id}:${s}`)?.success?'Found':'Unknown').join(' / ')}</td></tr>`).join('');
-  $('referenceNote').textContent=data.conclusion;
+  $('referenceNote').textContent='Historical v2.0 only: these half-weight 3D prism measurements do not apply to the current single-slab hat/turtle model. '+data.conclusion;
 }).catch(()=>{$('referenceRows').textContent='Recorded measurements are unavailable. Live comparisons remain available.';});
