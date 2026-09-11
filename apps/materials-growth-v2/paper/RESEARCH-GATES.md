@@ -6,6 +6,18 @@ https://www.nature.com/nature/for-authors/editorial-criteria-and-processes
 
 ## Current evidence
 
+- The connection-transfer study adds 24 published silicon configurations and
+  disjoint spatial regions of an 8,302-site Cd–Yb model. Rotation-invariant
+  cross-motif channels distinguish some hinge alternatives that individual-motif
+  invariants cannot. Local held-out retention and conditional rejection are
+  reported at four training sizes, with empirical calibration and a tight control.
+- The new learned-relation bridge agrees with point markings on 1,024 subsets
+  and 32 finite attachment traces. It remains candidate-conditioned, not a
+  reusable motif-local spatial section or complete continuous-pose search.
+- The existing strict production mode fails the single-frame silicon audit
+  with unknown after 15 backtracks. New local features are not yet enabled in
+  production bulk growth; no improvement in bulk generation is established.
+
 - Follow-up diagnosis: all 14 absent reference sites in the 220-atom ice
   checkpoint were pending frontier obligations; two remain pending at 440 atoms.
   Do not infer missing rules from that finite-prefix coverage deficit alone.

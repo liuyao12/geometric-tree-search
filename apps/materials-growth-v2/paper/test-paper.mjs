@@ -21,6 +21,7 @@ class Element {
   addEventListener(event, fn) {
     this.events[event] = fn;
   }
+  getContext() { return {clearRect(){},fillRect(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},arc(){},fill(){},fillText(){}}; }
   text() {
     return [this.textContent, ...this.children.map((c) => c.text())].join(" ");
   }
@@ -35,6 +36,7 @@ const nodes = Object.fromEntries(
     "atom-count",
     "quality-chart",
     "structure-material", "structure-epsilon", "structure-step", "structure-window", "structure-comparison",
+    "connection-domain", "connection-size", "connection-threshold", "connection-comparison", "connection-curve", "connection-angle", "connection-canvas", "connection-degrees", "connection-live",
   ].map((id) => [id, new Element()]),
 );
 nodes.material.value = "ice";
@@ -81,6 +83,16 @@ for(const material of ['ice','copper'])for(const epsilon of (material==='ice'?['
     assert.doesNotMatch(nodes['structure-comparison'].text(), /NaN|undefined/);
   }
 assert.equal(structuralCases,36);
+nodes['connection-domain'].value='quasicrystal';nodes['connection-size'].value='1';nodes['connection-threshold'].value='calibrated';nodes['connection-angle'].value='0';
+await import('./connection-figure.mjs');
+for(const domain of ['silicon','quasicrystal'])for(const size of ['0.125','0.25','0.5','1'])for(const threshold of ['calibrated','strict']){
+  nodes['connection-domain'].value=domain;nodes['connection-size'].value=size;nodes['connection-threshold'].value=threshold;
+  nodes['connection-domain'].events.change();
+  assert.match(nodes['connection-comparison'].text(),/Held-out observed connections retained/);
+  assert.doesNotMatch(nodes['connection-comparison'].text(),/NaN|undefined/);
+  assert.match(nodes['connection-curve'].innerHTML,/<svg/);
+  for(const angle of ['0','60','120','180','360']){nodes['connection-angle'].value=angle;nodes['connection-angle'].events.input();assert.match(nodes['connection-live'].textContent,/Individual motifs:/);assert.doesNotMatch(nodes['connection-live'].textContent,/NaN|undefined/);}
+}
 const report = JSON.parse(
   readFileSync(new URL("results.json", import.meta.url), "utf8"),
 );

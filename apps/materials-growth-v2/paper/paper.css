@@ -488,6 +488,19 @@ footer a {
     transition: none;
   }
 }
+.connection-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+#connection-transfer .controls label { min-width:160px; font-size:14px; }
+#connection-transfer .controls select { min-width:0; max-width:100%; font-size:14px; }
+#connection-transfer .range { font-size:14px; }
+.connection-card { padding:1rem; border:1px solid #c4d4d4; border-radius:8px; }
+.connection-card h4 { margin:0 0 .8rem; }
+.connection-card p { font-size:14px; }
+.connection-meter { height:8px; background:#e2e9e8; border-radius:4px; overflow:hidden; }
+.connection-meter span { display:block; height:100%; background:#176d70; }
+#connection-canvas { width:100%; height:auto; display:block; border-radius:8px; }
+#connection-curve svg { width:100%; height:auto; }
+#connection-live { min-height:3em; font-size:14px; }
+@media(max-width:650px){.connection-grid{grid-template-columns:1fr;}}
 @media print {
   body {
     background: white;
