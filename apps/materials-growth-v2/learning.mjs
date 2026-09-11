@@ -5,8 +5,17 @@ import {
   transform,
   compose,
   I,
-} from "./geometry.mjs";
-export function* discover(input, { epsilon = 0.025, neighbors = 8 } = {}) {
+} from "./geometry.mjs?v=adaptive-shell-1";
+export function* discover(
+  input,
+  { epsilon = 0.025, neighbors = 0, boundaryPolicy = "crop-hypothesis" } = {},
+) {
+  if (!Number.isInteger(neighbors) || neighbors < 0 || neighbors > 18)
+    throw Error(
+      "Neighbor count must be an integer from 0 (adaptive shell) to 18",
+    );
+  if (!["crop-hypothesis", "preserve"].includes(boundaryPolicy))
+    throw Error("Unknown boundary policy");
   if (input.length < 4 || input.length > 600)
     throw Error("Use 4–600 observed atoms for this browser experiment");
   if (!Number.isFinite(epsilon) || epsilon <= 0)
@@ -35,7 +44,17 @@ export function* discover(input, { epsilon = 0.025, neighbors = 8 } = {}) {
   for (let i = 0; i < atoms.length; i++) {
     // Irregular nearest-neighbor collections; no formula, lattice or sphere
     // is supplied. The distinguished atom is only the t=1 compilation anchor.
-    const cutoff = rows[i][Math.min(neighbors - 1, rows[i].length - 1)].d;
+    // First resolved radial gap, relative to local spacing and positional error.
+    // This is a proposal heuristic, not a chemical bond or a completeness proof.
+    const gap = rows[i].findIndex(
+      (x, k, row) =>
+        k > 0 && x.d - row[k - 1].d > Math.max(4 * epsilon, 0.08 * row[0].d),
+    );
+    const shellEnd = gap > 0 ? gap - 1 : Math.min(17, rows[i].length - 1);
+    const cutoff =
+      rows[i][
+        neighbors ? Math.min(neighbors - 1, rows[i].length - 1) : shellEnd
+      ].d;
     const ids = [
       i,
       ...rows[i]
@@ -83,8 +102,37 @@ export function* discover(input, { epsilon = 0.025, neighbors = 8 } = {}) {
     if (i % 4 === 0)
       yield { kind: "discovery", done: i + 1, total: atoms.length, ids };
   }
-  const recurring = types.filter((t) => t.occurrences.length >= 2);
+  const observedTypes = types.filter((t) => t.occurrences.length >= 2);
+  const partialObservations = [];
+  // Keep the measured partial observations separate. A subset is evidence of
+  // possible crop truncation, never proof that a real surface/defect is absent.
+  if (!neighbors && boundaryPolicy === "crop-hypothesis") {
+    for (const type of observedTypes) {
+      const completions = observedTypes
+        .filter((t) => t.sites.length > type.sites.length)
+        .filter((t) =>
+          register(type.sites, t.sites, epsilon, { subset: true }),
+        );
+      if (completions.length)
+        partialObservations.push({
+          observedType: type.id,
+          compatibleObservedTypes: completions.map((t) => t.id),
+          anchors: type.occurrences.map((o) => o.anchor),
+          sites: type.sites,
+          status:
+            "possible crop truncation; surface/defect alternative retained",
+        });
+    }
+  }
+  const partialIds = new Set(partialObservations.map((p) => p.observedType));
+  const recurring = observedTypes.filter((t) => !partialIds.has(t.id));
+  const originalIds = recurring.map((t) => t.id);
   recurring.forEach((t, i) => (t.id = i));
+  partialObservations.forEach((p) => {
+    p.compatibleTypes = p.compatibleObservedTypes
+      .map((id) => originalIds.indexOf(id))
+      .filter((id) => id >= 0);
+  });
   const occupied = new Set(
     recurring.flatMap((t) => t.occurrences.flatMap((o) => o.ids)),
   );
@@ -118,6 +166,14 @@ export function* discover(input, { epsilon = 0.025, neighbors = 8 } = {}) {
     connections,
     residuals: atoms.map((_, i) => i).filter((i) => !occupied.has(i)),
     proposals,
+    discovery: {
+      method: neighbors ? "legacy nearest-k" : "adaptive first radial gap",
+      boundaryPolicy,
+      scope:
+        "geometric proposal hypothesis; not arbitrary-cluster mining or a bulk certificate",
+      partialObservations,
+      observedRecurringClasses: observedTypes.length,
+    },
     poseUniverse:
       "observed relative poses, continuously registered; incomplete over SO(3)",
   };

@@ -2,7 +2,31 @@
 
 A separate application; v1 is not replaced. Open `apps/materials-growth-v2/` from a static HTTP server. No build step or backend service is required. Coordinates and local imports remain in a browser worker.
 
+Project direction: [balanced growth and a reproducible materials research platform](RESEARCH-ROADMAP.md).
+That document defines the next implementation and validation gates; it does not
+claim those capabilities already exist in this release.
+
 ## What this release establishes
+
+### Adaptive discovery update
+
+The default proposal now selects a first radial shell at the first adjacent
+distance gap exceeding `max(4 * epsilon, 0.08 * nearestDistance)`. If no gap is
+resolved, it falls back to a capped neighborhood; this is a heuristic, not a
+universal shell detector. The legacy nearest-k control remains available.
+Registered strict subsets of larger recurring motifs are separated as possible
+crop fragments under the explicitly selected crop hypothesis. All partial
+observations remain in the export and stage-02 gallery; “preserve all environments”
+keeps them as motifs for surface/defect investigations. No boundary geometry or
+periodic extension is inferred as fact. Residual coverage remains reported.
+
+NaCl now yields the two seven-site octahedral motifs by default, without element
+rules. FCC, BCC, diamond and graphene controls yield 13, 9, 5 and 4 sites
+respectively. Stage 02 retains the full proposal scene and adds rotating motif
+views with observation highlighting; marking glyphs remain exclusive to stage 03.
+This does not solve arbitrary irregular cluster discovery, linear-support
+registration, symmetry-group enumeration, or the GCTS growth integration gaps.
+Run `node apps/materials-growth-v2/test-discovery.mjs` for the new controls.
 
 Four stages: an observed configuration → repeated local supports → interval-valued local sections → reversible frontier search. The search receives only positions and opaque species labels. There are no molecular formulas, bonding rules, force fields, reference unit cells, or reference-extension coordinates in the learner or search.
 
@@ -30,7 +54,7 @@ RDF discards angles and does not establish long-range order or structural unique
 
 - An atomic base placement contributes integer `t=1` at its anchor. A recurring anchored neighborhood supplies extended `m` support. Its other atoms are requirements for neighboring base placements, not additional unit contributions counted repeatedly. This is a point-model reduction, **not volumetric polyhedral tiling**.
 - `m` has one scalar occupancy channel per opaque label. Missing assignments are unconstrained; zero is assigned. Channels transform trivially; their point positions transform under proper SE(3). Reflections are not allowed in this release.
-- Clustering uses irregular nearest-k collections with cutoff ties, followed by colored rigid registration and maximum positional residual checks. It is still an **anchored nearest-neighbor proposal baseline**, not arbitrary subgraph mining. Uncovered atoms are reported, not silently repaired with invented chemistry or gap polyhedra. Periodic closure of a crop is not assumed by clustering.
+- Clustering uses adaptive first-shell or legacy nearest-k collections, followed by colored rigid registration and maximum positional residual checks. It is still an **anchored local proposal baseline**, not arbitrary subgraph mining. Uncovered atoms are reported, not silently repaired with invented chemistry or gap polyhedra. Periodic closure of a crop is not assumed by clustering.
 - Rigid registration estimates real-valued rotations. Candidate poses come from observed occurrence rotations and transported relative connections, optionally supplemented by small rotations about local axes. There is no spatial lattice or global angular grid. Nevertheless this finite evidence pool is **not an exhaustive search of SO(3)**.
 - Position correspondence uses a fixed-anchor epsilon ball and rejects ambiguous multiple correspondences. It does not chain near-neighbor matches transitively. A spatial hash accelerates lookup; it is not a lattice constraint. Mapping can depend on proposal order. Orientation-cache rounding and point-identical placement deduplication are approximate; this is not a symmetry certificate.
 - Marking compatibility requires the **common intersection of all assigned closed intervals** at each point/channel, not pairwise approximate equality. Real-valued comparisons are approximate floating-point semantics; no exact geometric certificate is claimed.
@@ -59,7 +83,7 @@ An exported legal partial assignment is not a finished finite tiling. Frontier o
 
 The first representation fits empirical label occupancy at each registered local point using 24 gradient steps, followed by exact empirical-mean calibration. The chart reports actual fitting MSE, not validation accuracy. This fit is intentionally simple; colored registration already supplies strong label information, and no acceleration benefit is claimed. All samples are observation occurrences, not independent held-out examples. The halo is a value glyph, not a physical potential or a reconstructed equipotential surface.
 
-Stage 2 highlights actual proposals in the full scene. Stage 3 gives each support a separate rotating coordinate view, with a selectable displayed channel. Stage 4 shows only atoms in the scene, with search bookkeeping alongside. Growth runs in one-minute bursts, pauses/resumes in the worker, and stops earlier on unresolved domains or explicit memory budgets. The browser implementation currently uses up to 20,000 cached points and 40,000 cached candidates, not an atom-count target. Initialization and an individual search transaction are not preemptible; the time budget is cooperative.
+Stage 2 highlights actual proposals in the full scene. Stage 3 gives each support a separate rotating coordinate view, with a selectable displayed channel. Stage 4 shows only atoms in the scene, with search bookkeeping alongside. A single Run/Pause/Continue button controls growth without a duration limit. It automatically pauses after active-frontier coronas 3, 5, 7, and onward: all remaining frontier points must have generation greater than the threshold, with no degree-zero domain anywhere. Empty frontier is handled by the search termination path, not counted as infinitely many completed coronas. Manual pauses preserve the pending threshold; automatic pauses advance it. If one transaction crosses several thresholds, the next target is the next uncompleted odd generation. Checkpoints preserve the search stack and do not alter forced/branch ordering. These are finite active-domain checkpoints, not certified coverage of continuous space. Growth may stop earlier on unresolved domains or explicit memory budgets. The browser implementation currently uses up to 20,000 cached points and 40,000 cached candidates, not an atom-count target. Initialization and an individual search transaction are not preemptible; manual pause is serviced between worker transactions.
 
 Examples reuse v1's documented fixtures, including a diffraction-derived **D₂O** ice VIII configuration (deuterium is not silently relabeled hydrogen). XYZ/CIF/JSON import uses the existing parser. File contents are processed locally. The periodic table/database UI from v1 is not yet ported.
 

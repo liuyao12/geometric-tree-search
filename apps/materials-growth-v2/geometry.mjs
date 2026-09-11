@@ -122,9 +122,11 @@ export function fitRigid(source, target) {
   ];
   return { r, t: sub(b, rotate(r, a)) };
 }
-export function register(source, target, epsilon) {
+export function register(source, target, epsilon, { subset = false } = {}) {
   if (
-    source.length !== target.length ||
+    (subset
+      ? source.length > target.length
+      : source.length !== target.length) ||
     source[0].species !== target[0].species
   )
     return null;
@@ -165,12 +167,13 @@ export function register(source, target, epsilon) {
       const used = new Set(),
         mapping = [];
       let valid = true;
-      for (const s of source) {
+      for (const [si, s] of source.entries()) {
         const p = transform(pose, s.position);
         let index = -1,
           d = Infinity;
         target.forEach((t, i) => {
           if (
+            (si === 0 ? i === 0 : i !== 0) &&
             !used.has(i) &&
             s.species === t.species &&
             distance(p, t.position) < d

@@ -1,11 +1,12 @@
-import { discover, learnSections } from "./learning.mjs";
+import { discover, learnSections } from "./learning.mjs?v=adaptive-shell-1";
 import { MaterialExperiment } from "./material.mjs?v=single-seed-rdf-1";
 import { compareStructure } from "./metrics.mjs";
+import { CoronaCheckpoints } from "./coronas.mjs";
 let grammar,
   marking,
   experiment,
   paused = true,
-  deadline = 0,
+  checkpoints = new CoronaCheckpoints(),
   timer,
   revision = 0;
 const send = (kind, data = {}) => postMessage({ kind, ...data });
@@ -24,7 +25,11 @@ function snapshot(full = false) {
           ...a,
           position: a.position.map((v, k) => v - origin[k]),
         }));
-  return { ...state, metrics: compareStructure(reference, generated) };
+  return {
+    ...state,
+    coronas: checkpoints.progress(experiment.engine),
+    metrics: compareStructure(reference, generated),
+  };
 }
 async function runGenerator(generator, token) {
   for (;;) {
@@ -46,8 +51,13 @@ function tick() {
         paused = true;
         break;
       }
-    } while (performance.now() < until && performance.now() < deadline);
-    if (performance.now() >= deadline) paused = true;
+      const checkpoint = checkpoints.check(experiment.engine);
+      if (checkpoint) {
+        event = checkpoint;
+        paused = true;
+        break;
+      }
+    } while (performance.now() < until);
     if (paused || !tick.last || performance.now() - tick.last > 600) {
       send("snapshot", { state: snapshot(), paused, event });
       tick.last = performance.now();
@@ -86,10 +96,13 @@ onmessage = async ({ data }) => {
       send("learned", { marking });
     }
     if (data.kind === "grow") {
-      if (!experiment)
+      if (!paused) return;
+      clearTimeout(timer);
+      if (!experiment) {
+        checkpoints = new CoronaCheckpoints();
         experiment = new MaterialExperiment(grammar, marking, data.options);
+      }
       paused = false;
-      deadline = performance.now() + data.seconds * 1000;
       tick();
     }
     if (data.kind === "export" && experiment)

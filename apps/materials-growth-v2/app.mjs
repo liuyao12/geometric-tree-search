@@ -6,7 +6,7 @@ import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=single-seed-rdf-1", import.meta.url),
+    new URL("./worker.mjs?v=corona-checkpoints-1", import.meta.url),
     {
       type: "module",
     },
@@ -19,6 +19,7 @@ let atoms = [],
   curve = [],
   stage = 0,
   busy = false,
+  growthRunning = false,
   highlight = new Set();
 const palette = {
     H: "#e6e9ed",
@@ -115,7 +116,8 @@ function setStage(n) {
     .querySelectorAll("[data-panel]")
     .forEach((p) => (p.hidden = +p.dataset.panel !== n));
   $("scene").hidden = n === 2;
-  $("gallery").hidden = n !== 2;
+  $("gallery").hidden = n !== 2 && !(n === 1 && grammar);
+  $("scene").classList.toggle("with-clusters", n === 1 && !!grammar);
   $("evaluation").hidden = n !== 3;
   $("view-label").textContent = [
     "OBSERVED PATCH",
@@ -133,7 +135,7 @@ function setStage(n) {
     highlight.clear();
     showAtoms(atoms, true);
   }
-  if (n === 2) gallery();
+  if (n === 2 || (n === 1 && grammar)) gallery();
   if (n === 3) {
     highlight.clear();
     showAtoms(latestAtoms || [centralSeed(atoms).atom], true);
@@ -146,8 +148,13 @@ $("to-clusters").onclick = () => setStage(1);
 $("to-learning").onclick = () => setStage(2);
 $("to-growth").onclick = () => setStage(3);
 function invalidate() {
+  growthRunning = false;
+  $("grow").textContent = "Run";
   latestAtoms = null;
   grammar = marking = null;
+  $("gallery").replaceChildren();
+  $("gallery").hidden = stage !== 2;
+  $("scene").classList.remove("with-clusters");
   sections = [];
   curve = [];
   worker.postMessage({ kind: "reset" });
@@ -192,6 +199,7 @@ for (const name of ["epsilon", "error"])
     $(`${name}-label`).value = $(name).value;
   };
 $("epsilon").onchange = $("neighbors").onchange = () => invalidate();
+$("boundary-policy").onchange = () => invalidate();
 $("error").onchange = () => {
   latestAtoms = null;
   renderMetrics(null);
@@ -209,6 +217,7 @@ function lock(value) {
     "file",
     "epsilon",
     "neighbors",
+    "boundary-policy",
     "learn",
     "error",
   ])
@@ -221,7 +230,11 @@ $("discover").onclick = () => {
   worker.postMessage({
     kind: "discover",
     atoms,
-    options: { epsilon: +$("epsilon").value, neighbors: +$("neighbors").value },
+    options: {
+      epsilon: +$("epsilon").value,
+      neighbors: +$("neighbors").value,
+      boundaryPolicy: $("boundary-policy").value,
+    },
   });
 };
 $("learn").onclick = () => {
@@ -240,14 +253,20 @@ $("learn").onclick = () => {
   });
 };
 $("grow").onclick = () => {
+  if (growthRunning) {
+    $("grow").disabled = true;
+    status("Pausing after the current search transaction…");
+    worker.postMessage({ kind: "pause" });
+    return;
+  }
   lock(true);
-  $("grow").disabled = true;
-  $("pause").disabled = false;
+  growthRunning = true;
+  $("grow").textContent = "Pause";
+  $("grow").disabled = false;
   for (const id of ["marking", "angle"]) $(id).disabled = true;
-  status("Searching; time budget is 60 seconds, not an atom target");
+  status("Searching; automatic pauses at completed coronas 3, 5, 7, …");
   worker.postMessage({
     kind: "grow",
-    seconds: 60,
     options: {
       marked: $("marking").value === "yes",
       angularReach: +$("angle").value,
@@ -257,15 +276,15 @@ $("grow").onclick = () => {
     },
   });
 };
-$("pause").onclick = () => worker.postMessage({ kind: "pause" });
 $("reset").onclick = () => {
+  growthRunning = false;
+  $("grow").textContent = "Run";
   latestAtoms = null;
   $("growth-stats").textContent = "No placements yet";
   worker.postMessage({ kind: "reset" });
   lock(false);
   for (const id of ["marking", "angle"]) $(id).disabled = false;
   $("grow").disabled = !marking;
-  $("pause").disabled = true;
   $("export").disabled = true;
   highlight.clear();
   showAtoms([centralSeed(atoms).atom], true);
@@ -278,7 +297,8 @@ $("export").onclick = () => worker.postMessage({ kind: "export" });
 worker.onmessage = ({ data: d }) => {
   if (d.kind === "error") {
     lock(false);
-    $("pause").disabled = true;
+    growthRunning = false;
+    $("grow").textContent = "Continue";
     $("grow").disabled = !marking;
     status(`Unresolved: ${d.message}`);
   }
@@ -303,7 +323,12 @@ worker.onmessage = ({ data: d }) => {
     if (stage < 2) showAtoms(atoms);
     $("to-learning").disabled = $("learn").disabled = !grammar.types.length;
     $("cluster-stats").textContent =
-      `${grammar.types.length} recurring support classes · ${grammar.types.reduce((n, t) => n + t.occurrences.length, 0)} occurrences · ${grammar.residuals.length} uncovered observed atoms`;
+      `${grammar.types.length} retained motifs · ${grammar.types.reduce((n, t) => n + t.occurrences.length, 0)} complete observations · ${grammar.discovery?.partialObservations.length || 0} possible crop-fragment classes · ${grammar.residuals.length} uncovered observed atoms`;
+    if (stage === 1) {
+      $("gallery").hidden = false;
+      $("scene").classList.add("with-clusters");
+      gallery();
+    }
     status(
       `Identification finished. ${grammar.residuals.length ? "Coverage incomplete; no reconstruction guarantee." : "Observed atoms covered; anchor-domain coverage is checked by search."}`,
     );
@@ -317,6 +342,8 @@ worker.onmessage = ({ data: d }) => {
       `Epoch ${d.epoch} / ${d.epochs} · MSE ${d.loss.toExponential(3)}`;
   }
   if (d.kind === "learned") {
+    growthRunning = false;
+    $("grow").textContent = "Run";
     marking = d.marking;
     sections = marking.sections;
     lock(false);
@@ -341,6 +368,8 @@ worker.onmessage = ({ data: d }) => {
       `${s.status}${d.event?.message ? " — " + d.event.message : ""} · ${d.paused ? "paused" : "running"}`,
     );
     if (d.paused) {
+      growthRunning = false;
+      $("grow").textContent = "Continue";
       lock(false);
       $("grow").disabled = [
         "budget",
@@ -348,7 +377,6 @@ worker.onmessage = ({ data: d }) => {
         "exhausted",
         "complete",
       ].includes(d.event?.kind);
-      $("pause").disabled = true;
     }
   }
   if (d.kind === "artifact") {
@@ -393,14 +421,52 @@ function gallery() {
     c.width = 400;
     c.height = 340;
     c.dataset.type = type.id;
+    c.setAttribute(
+      "aria-label",
+      `Rotating motif ${type.id + 1}, ${type.sites.length} atoms`,
+    );
     cap.textContent = `Support ${type.id + 1} · ${type.sites.length} sites · ${type.occurrences.length} observations`;
     f.append(c, cap);
+    if (stage === 1) {
+      const select = document.createElement("button");
+      select.textContent = "Highlight observations";
+      select.onclick = () => {
+        highlight = new Set(type.occurrences.flatMap((o) => o.ids));
+        showAtoms(atoms);
+      };
+      f.append(select);
+    }
     $("gallery").append(f);
+  }
+  if (!grammar.types.length)
+    $("gallery").textContent =
+      "No recurring motifs resolved at this tolerance.";
+  if (stage === 1 && grammar.discovery?.partialObservations.length) {
+    const details = document.createElement("details");
+    const summary = document.createElement("summary");
+    summary.textContent =
+      "Inspect possible crop fragments (not used as growth motifs)";
+    details.append(summary);
+    grammar.discovery.partialObservations.forEach((p, i) => {
+      const f = document.createElement("figure"),
+        c = document.createElement("canvas"),
+        cap = document.createElement("figcaption");
+      c.width = 400;
+      c.height = 340;
+      c.dataset.partial = i;
+      cap.textContent = `${p.sites.length} sites · ${p.anchors.length} observations · possible truncation, not a certified surface classification`;
+      f.append(c, cap);
+      details.append(f);
+    });
+    $("gallery").append(details);
   }
 }
 function drawGallery(time) {
   for (const c of $("gallery").querySelectorAll("canvas")) {
-    const type = grammar.types[+c.dataset.type],
+    const partial = c.dataset.partial !== undefined,
+      type = partial
+        ? grammar.discovery.partialObservations[+c.dataset.partial]
+        : grammar.types[+c.dataset.type],
       ctx = c.getContext("2d"),
       r = Math.max(...type.sites.map((s) => Math.hypot(...s.position)), 1),
       angle = time * 0.00018,
@@ -422,14 +488,16 @@ function drawGallery(time) {
     for (const p of pts) {
       const values = sections[type.id]?.sites[p.i]?.values || [],
         v = values[+$("channel").value] ?? 0.5;
+      if (stage === 2) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 18, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(28,156,157,${0.04 + v * 0.18})`;
+        ctx.fill();
+        ctx.strokeStyle = `rgba(28,156,157,${0.2 + v * 0.5})`;
+        ctx.stroke();
+      }
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 18, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(28,156,157,${0.04 + v * 0.18})`;
-      ctx.fill();
-      ctx.strokeStyle = `rgba(28,156,157,${0.2 + v * 0.5})`;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, stage === 1 ? 12 : 7, 0, Math.PI * 2);
       ctx.fillStyle = color(p.s.species);
       ctx.fill();
       ctx.strokeStyle = "#6d858d";
@@ -437,14 +505,22 @@ function drawGallery(time) {
     }
     ctx.fillStyle = "#789097";
     ctx.font = "16px system-ui";
-    ctx.fillText("local section · rotating coordinates", 20, 320);
+    ctx.fillText(
+      stage === 2
+        ? "local section · rotating coordinates"
+        : partial
+          ? "partial observation · rotating coordinates"
+          : "geometric motif · rotating coordinates",
+      20,
+      320,
+    );
   }
 }
 function animate(time) {
   requestAnimationFrame(animate);
   controls.update();
   if (stage !== 2) renderer.render(scene, camera);
-  else if (grammar) drawGallery(time);
+  if ((stage === 1 || stage === 2) && grammar) drawGallery(time);
 }
 requestAnimationFrame(animate);
 $("sample").replaceChildren();

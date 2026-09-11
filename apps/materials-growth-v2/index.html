@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Materials Growth · GCTS v2</title>
-    <link rel="stylesheet" href="style.css?v=single-seed-rdf-1" />
+    <link rel="stylesheet" href="style.css?v=adaptive-shell-1" />
     <script type="importmap">
       {
         "imports": {
@@ -63,12 +63,22 @@
             rotations. Watch the observed neighborhood under consideration.
           </p>
           <label
-            >Nearest-neighbor proposal size<select id="neighbors">
+            >Neighborhood proposal<select id="neighbors">
+              <option value="0" selected>Adaptive first shell</option>
               <option>3</option>
-              <option selected>5</option>
+              <option>5</option>
               <option>6</option>
               <option>8</option>
               <option>12</option>
+            </select></label
+          ><label
+            >Boundary interpretation<select id="boundary-policy">
+              <option value="crop-hypothesis">
+                Crop hypothesis · separate partial motifs
+              </option>
+              <option value="preserve">
+                Preserve all environments · surfaces / defects
+              </option>
             </select></label
           ><label
             >Position error / Å <output id="epsilon-label">0.03</output
@@ -82,9 +92,10 @@
           ><button id="discover" class="primary">Run identification</button>
           <div id="cluster-stats" class="readout">Not yet identified</div>
           <p class="note">
-            Baseline: anchored nearest-neighbor proposals, not exhaustive
-            irregular-cluster mining. A finite crop can leave unsupported
-            boundary anchors. No artificial “gap cluster” is invented.
+            Adaptive shells use radial gaps and rigid registration, not
+            chemistry. Possible crop fragments remain inspectable; their
+            classification is a hypothesis, not proof of a bulk environment. No
+            gap atoms are invented.
           </p>
           <button id="to-learning" disabled>Continue to learning →</button>
         </section>
@@ -145,9 +156,14 @@
             growth constraints.
           </p>
           <div class="actions">
-            <button id="grow" class="primary" disabled>Grow for 1 minute</button
-            ><button id="pause" disabled>Pause</button>
+            <button id="grow" class="primary" disabled>Run</button>
           </div>
+          <p class="note">
+            Automatically pauses after coronas 3, 5, 7, … (completed
+            active-frontier generations, not geometric shells). You can pause at
+            any time. Unresolved domains or memory limits may stop growth
+            earlier.
+          </p>
           <div class="actions">
             <button id="reset">Reset search</button
             ><button id="export" disabled>Export audit JSON</button>
@@ -233,6 +249,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=single-seed-rdf-1"></script>
+    <script type="module" src="app.mjs?v=corona-checkpoints-1"></script>
   </body>
 </html>
