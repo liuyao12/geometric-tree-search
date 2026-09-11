@@ -6,7 +6,7 @@ import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=resumable-memory-1", import.meta.url),
+    new URL("./worker.mjs?v=observed-overlaps-1", import.meta.url),
     {
       type: "module",
     },
@@ -17,6 +17,7 @@ let atoms = [],
   marking,
   sections = [],
   curve = [],
+  overlapCurve = [],
   stage = 0,
   busy = false,
   growthRunning = false,
@@ -157,6 +158,7 @@ function invalidate() {
   $("scene").classList.remove("with-clusters");
   sections = [];
   curve = [];
+  overlapCurve = [];
   worker.postMessage({ kind: "reset" });
   for (const id of ["learn", "to-learning", "grow", "to-growth", "export"])
     $(id).disabled = true;
@@ -238,6 +240,7 @@ $("discover").onclick = () => {
   });
 };
 $("learn").onclick = () => {
+  overlapCurve = [];
   latestAtoms = null;
   renderMetrics(null);
   $("growth-stats").textContent = "No placements yet";
@@ -249,7 +252,7 @@ $("learn").onclick = () => {
   status("Fitting empirical local sections…");
   worker.postMessage({
     kind: "learn",
-    options: { error: +$("error").value, epochs: 24 },
+    options: { error: +$("error").value, epochs: 24, observedOnly: true },
   });
 };
 $("grow").onclick = () => {
@@ -346,6 +349,15 @@ worker.onmessage = ({ data: d }) => {
     $("learning-stats").textContent =
       `Epoch ${d.epoch} / ${d.epochs} · MSE ${d.loss.toExponential(3)}`;
   }
+  if (d.kind === "overlap-learning") {
+    overlapCurve.push(d.classes);
+    drawCurve();
+    $("learning-stats").textContent =
+      `${d.pairs} observed overlapping pairs · ${d.classes} geometric relation classes · ${d.done}/${d.total} occurrences processed`;
+    status(
+      "Learning observed-only overlap relations; unseen connections will be rejected.",
+    );
+  }
   if (d.kind === "learned") {
     growthRunning = false;
     $("grow").textContent = "Run";
@@ -354,10 +366,10 @@ worker.onmessage = ({ data: d }) => {
     lock(false);
     $("grow").disabled = $("to-growth").disabled = false;
     $("learning-stats").textContent =
-      `${marking.samples} observed occurrences · ${marking.labels.length} scalar label channels · ${marking.curve.length} gradient steps + empirical-mean calibration`;
+      `${marking.overlapRules?.pairs || 0} observed overlapping pairs · ${marking.overlapRules?.classes || 0} geometric relation classes · observed-only connections · ${marking.labels.length} auxiliary label channels`;
     gallery();
     status(
-      "Marking trained. Unobserved connections remain hypotheses, not certified negatives.",
+      "Observed-only rules trained. Unseen overlapping geometries are forbidden in this computational model; no physics or chemistry is assumed.",
     );
   }
   if (d.kind === "snapshot") {
@@ -369,6 +381,9 @@ worker.onmessage = ({ data: d }) => {
     $("growth-stats").textContent =
       `1 seed + ${s.atoms.length - 1} new atoms · ${s.frontier.length} frontier obligations · ${s.stats.branches} branches · ${s.stats.backtracks} backtracks · ${s.stats.forced} certified forced · ${s.unresolved} unresolved domains · ${s.candidateCount} cached candidates · independent check: ${s.validation.legal ? "legal partial assignment" : "INVALID"}`;
     $("export").disabled = false;
+    if (s.overlapValidation)
+      $("growth-stats").textContent +=
+        ` · observed-overlap audit: ${s.overlapValidation.legal ? "pass" : "FAIL"} (${s.overlapValidation.checked} pairs) · ${s.overlapChecks.rejections} rejection evaluations`;
     status(
       `${s.status}${d.event?.message ? " — " + d.event.message : ""} · ${d.paused ? "paused" : "running"}`,
     );
@@ -402,13 +417,22 @@ function drawCurve() {
   ctx.clearRect(0, 0, c.width, c.height);
   ctx.fillStyle = "#68818a";
   ctx.font = "18px system-ui";
-  ctx.fillText("Training MSE (log scale)", 12, 24);
+  ctx.fillText(
+    overlapCurve.length
+      ? "Observed overlap classes learned"
+      : "Auxiliary label fit MSE (log scale)",
+    12,
+    24,
+  );
   ctx.strokeStyle = "#147c7c";
   ctx.lineWidth = 3;
   ctx.beginPath();
-  curve.forEach((v, i) => {
-    const x = 20 + (i / 23) * 475,
-      y = 45 + (Math.min(12, -Math.log10(Math.max(v, 1e-12))) / 12) * 125;
+  const values = overlapCurve.length ? overlapCurve : curve;
+  values.forEach((v, i) => {
+    const x = 20 + (i / Math.max(1, values.length - 1)) * 475,
+      y = overlapCurve.length
+        ? 170 - (125 * v) / Math.max(1, ...values)
+        : 45 + (Math.min(12, -Math.log10(Math.max(v, 1e-12))) / 12) * 125;
     i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
   });
   ctx.stroke();
@@ -509,7 +533,7 @@ function drawGallery(time) {
     ctx.font = "16px system-ui";
     ctx.fillText(
       stage === 2
-        ? "local section · rotating coordinates"
+        ? "auxiliary occupancy · rotating coordinates"
         : partial
           ? "partial observation · rotating coordinates"
           : "geometric motif · rotating coordinates",

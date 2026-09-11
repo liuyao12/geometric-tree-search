@@ -29,7 +29,7 @@ for (const id of ["nacl", "ice"]) {
       neighbors: id === "ice" ? 5 : 6,
     }),
   );
-  const m = drain(learnSections(g));
+  const m = drain(learnSections(g, { observedOnly: false })); // Historical occupancy-only control.
   const experiment = new MaterialExperiment(g, m, {
     maximumPoints: 20000,
     seedMode: "patch",
@@ -104,7 +104,7 @@ assert.deepEqual(
   a.types.map((t) => t.occurrences.length).sort((a, b) => a - b),
   b.types.map((t) => t.occurrences.length).sort((a, b) => a - b),
 );
-const zero = drain(learnSections(a, { error: 0 }));
+const zero = drain(learnSections(a, { error: 0, observedOnly: false }));
 assert.ok(
   zero.sections.every((s) =>
     s.sites.every((p) =>

@@ -1,4 +1,5 @@
-import { PointSearch, verify } from "./kernel.mjs";
+import { PointSearch, verify } from "./kernel.mjs?v=observed-overlaps-1";
+import { overlapConstraint, verifyOverlaps } from "./overlap-rules.mjs";
 import { centralSeed } from "./seed.mjs";
 import {
   PointRegistry,
@@ -87,7 +88,12 @@ export class MaterialExperiment {
           hi: +(s === label),
         }),
       );
+    this.overlapFilter =
+      marked && marking.overlapRules
+        ? overlapConstraint(grammar, marking.overlapRules, this.registry)
+        : null;
     this.engine = new PointSearch({
+      constraint: this.overlapFilter,
       preference: (c) =>
         (c.meta.sources || []).filter((id) => this.engine.placed.has(id))
           .length +
@@ -324,6 +330,16 @@ export class MaterialExperiment {
     };
     const selected = [...this.engine.placed.keys()],
       validation = verify(model, selected);
+    const overlapValidation = this.overlapFilter
+      ? verifyOverlaps(
+          this.grammar,
+          this.marking.overlapRules,
+          this.registry,
+          this.engine.candidates,
+          selected,
+        )
+      : null;
+    if (overlapValidation && !overlapValidation.legal) validation.legal = false;
     return {
       schema: "materials-growth-v2/1",
       seedOrigin: this.seedOrigin,
@@ -344,6 +360,13 @@ export class MaterialExperiment {
       candidateCount: this.engine.candidates.size,
       unresolved: this.unresolved,
       validation,
+      overlapValidation,
+      overlapChecks: this.overlapFilter
+        ? { ...this.overlapFilter.counters }
+        : null,
+      connectionPolicy: this.overlapFilter
+        ? "observed-only"
+        : "occupancy-only ablation",
       scope:
         "approximate continuous-space adaptation; finite pose evidence is not exhaustive",
       options: this.options,

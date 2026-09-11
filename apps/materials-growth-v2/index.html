@@ -104,14 +104,15 @@
         </section>
         <section data-panel="2" hidden>
           <p class="eyebrow">LOCAL SECTIONS, NOT POTENTIALS</p>
-          <h2>Learn overlap markings.</h2>
+          <h2>Learn observed connections.</h2>
           <p>
-            Each support carries label-occupancy channels. Positions rotate;
-            these scalar channels do not. Shared points require a common
-            intersection of all error intervals.
+            Learn the relative geometries of overlapping cluster pairs present
+            in the sample. During growth, an overlap must match an observed pair
+            under proper rotation and translation, within the stage-02 position
+            error. Unseen overlaps are forbidden, not merely discouraged.
           </p>
           <label
-            >Marking error <output id="error-label">0.05</output
+            >Auxiliary label error <output id="error-label">0.05</output
             ><input
               id="error"
               type="range"
@@ -121,20 +122,22 @@
               value="0.05" /></label
           ><button id="learn" class="primary" disabled>Train a marking</button
           ><label
-            >Displayed label channel<select id="channel">
+            >Auxiliary label glyph<select id="channel">
               <option>Identify supports first</option>
             </select></label
           ><canvas
             id="curve"
             width="520"
             height="200"
-            aria-label="Training mean square error curve"
+            aria-label="Observed overlap rule learning progress"
           ></canvas>
           <div id="learning-stats" class="readout">No training samples yet</div>
           <p class="note">
-            This first representation fits empirical occupancy, not an RL policy
-            or a learned physical potential. Halo opacity shows a channel value;
-            halo radius is only a display glyph.
+            The curve counts geometric overlap classes learned from the sample.
+            Colored halos are auxiliary label-occupancy glyphs, not the overlap
+            relation itself or a physical potential. This finite rule catalogue
+            restricts pairwise overlaps; it does not certify a unique global
+            structure.
           </p>
           <button id="to-growth" disabled>Continue to growth →</button>
         </section>
@@ -143,8 +146,10 @@
           <h2>Expand, then inspect.</h2>
           <label
             >Marking<select id="marking">
-              <option value="yes">Current trained local section</option>
-              <option value="no">Anchor-only ablation</option>
+              <option value="yes">Observed-only overlap rules</option>
+              <option value="no">
+                Unrestricted anchor-only control (ablation)
+              </option>
             </select></label
           ><label
             >Local rotation exploration<select id="angle">
@@ -248,7 +253,8 @@
           points / 20,000 candidates. Lower errors mean closer agreement, not
           “percent correct.” Crystalline, quasicrystalline and disordered
           references are included; input names are not classifications of
-          generated output. Results include unresolved cases.
+          generated output. These are historical occupancy-only results, not
+          results for the new observed-only overlap rules. Results include unresolved cases.
         </p>
         <div id="benchmark-table">Loading benchmark artifact…</div>
       </details>
@@ -258,6 +264,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=resumable-memory-1"></script>
+    <script type="module" src="app.mjs?v=observed-overlaps-1"></script>
   </body>
 </html>

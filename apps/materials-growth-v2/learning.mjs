@@ -7,6 +7,7 @@ import {
   I,
 } from "./geometry.mjs?v=adaptive-shell-1";
 import { connectorProposals, coverageReport } from "./support-connectivity.mjs";
+import { learnOverlapRules } from "./overlap-rules.mjs";
 export function* discover(
   input,
   { epsilon = 0.025, neighbors = 0, boundaryPolicy = "crop-hypothesis" } = {},
@@ -224,7 +225,10 @@ export function* discover(
   };
 }
 
-export function* learnSections(grammar, { error = 0.05, epochs = 24 } = {}) {
+export function* learnSections(
+  grammar,
+  { error = 0.05, epochs = 24, observedOnly = true } = {},
+) {
   if (!grammar.types.length)
     throw Error(
       "No repeated supports were found. No growth claim is available.",
@@ -286,6 +290,7 @@ export function* learnSections(grammar, { error = 0.05, epochs = 24 } = {}) {
         Math.min(1, v + error),
       ]);
     }
+  const overlapRules = observedOnly ? yield* learnOverlapRules(grammar) : null;
   return {
     schema: "materials-v2-sections/1",
     version: JSON.stringify([
@@ -293,16 +298,25 @@ export function* learnSections(grammar, { error = 0.05, epochs = 24 } = {}) {
       grammar.types.map((t) => t.sites),
       grammar.connections,
       error,
+      observedOnly,
+      overlapRules,
     ]),
     labels,
     sections,
     error,
     curve,
-    scope: "learned hypothesis",
+    overlapRules,
+    connectionPolicy: observedOnly
+      ? "observed-only"
+      : "occupancy-only ablation",
+    scope: observedOnly
+      ? "problem-defining observed-only restriction"
+      : "learned hypothesis",
     representation:
       "scalar occupancy channels; positions rotate, label channels transform trivially",
-    negativeEvidence:
-      "unseen poses are unknown; supplied complete-crop absence is a problem-defining observation constraint",
+    negativeEvidence: observedOnly
+      ? "unseen overlapping cluster geometries are forbidden by the user-selected computational model"
+      : "unseen poses are unconstrained by occupancy alone",
     samples: grammar.types.reduce((s, t) => s + t.occurrences.length, 0),
   };
 }

@@ -37,7 +37,7 @@ for (const [id, name] of sampleCatalog) {
     console.log(results.at(-1));
     continue;
   }
-  const marking = drain(learnSections(grammar)),
+  const marking = drain(learnSections(grammar, { observedOnly: false })), // Historical baseline; not strict-mode evidence.
     e = new MaterialExperiment(grammar, marking, {
       maximumPoints: 8000,
       maximumCandidates: 20000,

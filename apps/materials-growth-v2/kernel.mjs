@@ -11,11 +11,13 @@ export class PointSearch {
     expand = null,
     version = "1",
     preference = () => 0,
+    constraint = null,
   }) {
     this.capacity = capacity;
     this.version = version;
     this.expand = expand;
     this.preference = preference;
+    this.constraint = constraint;
     if (!Number.isSafeInteger(capacity) || capacity < 1)
       throw Error("Positive integer capacity required");
     this.points = new Map();
@@ -130,7 +132,7 @@ export class PointSearch {
       pair[1] = Math.min(pair[1], x.hi);
       if (pair[0] > pair[1]) return "marking";
     }
-    return null;
+    return this.constraint?.(c, this) || null;
   }
   updateCandidate(id) {
     const c = this.candidates.get(id),

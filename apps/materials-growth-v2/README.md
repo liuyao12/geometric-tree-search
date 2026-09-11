@@ -8,6 +8,47 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
+### Observed-only geometric overlap learning (default)
+
+Training now compiles every observed ordered pair of overlapping motif occurrences
+into a finite relation catalogue. Entries retain atom labels, membership in each
+support, distinguished anchors, coordinates and sample witnesses. Equivalent
+entries are grouped under proper rigid registration at the stage-02 positional
+tolerance. No element names, bonds, force fields or physical assumptions are used.
+An unseen overlap is forbidden by the user-requested closed-world computational
+model, even if it might be physically possible. Missing sample evidence can
+therefore prevent continuation. Disjoint supports are not constrained by this
+pairwise relation; a collection of allowed pairs is not a proof that the complete
+configuration occurs in the sample or has a unique infinite extension.
+
+`overlap-rules.mjs` implements a **relational geometric constraint plug-in**, not
+a neural marking or an equivalent compilation to scalar point-interval markings.
+The earlier occupancy fit remains an explicitly auxiliary glyph/channel. The main
+training chart counts learned geometric relation classes. Constraint rejection is
+part of kernel candidate legality and removes incidence edges globally, before
+dead/forced/generation scheduling. Its dependencies are all shared section points,
+including mark-only points. Undo revalidates those dependencies; immutable cached
+pair comparisons never encode branch exclusions. Rule catalogues are frozen per
+search instance and exports retain their witnesses and versioned model inputs.
+The master scheduler is unchanged; incomplete pose enumeration remains unresolved,
+not certified dead/forced. This is conformance evidence for the filter integration,
+not a declaration that the material adapter meets the complete master contract.
+
+An independent selected-pair traversal verifies the relation without consulting
+the search graph/cache, both for displayed snapshots and exported artifacts.
+The verifier shares the geometric matching primitive, not an independent geometry
+implementation. Tests cover positive sample replay, global rotation, an unseen
+rigid hinge connection using a single opaque label, mark-only dependencies, graph
+pruning and restoration, and preservation of global-dead priority. Strict NaCl
+reaches 30 atoms in the test. Strict ice rejects many proposed connections and
+does not show sustained growth in that short test; it never silently falls back
+to occupancy-only matching to keep the animation moving.
+
+Run `test-overlap-rules.mjs` and `test-strict-material.mjs` with Node. Historical
+material/connector and eleven-sample benchmark tests explicitly use
+`observedOnly:false`; their earlier growth/accuracy numbers are **not** results
+for this stricter model. The UI's anchor-only ablation is labeled unrestricted.
+
 ### Resumable browser memory checkpoints
 
 The browser uses `softMemory: true`: reaching a point/candidate quota pauses only

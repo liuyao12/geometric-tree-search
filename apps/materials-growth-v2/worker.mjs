@@ -1,5 +1,5 @@
-import { discover, learnSections } from "./learning.mjs?v=connector-supports-1";
-import { MaterialExperiment } from "./material.mjs?v=resumable-memory-1";
+import { discover, learnSections } from "./learning.mjs?v=observed-overlaps-1";
+import { MaterialExperiment } from "./material.mjs?v=observed-overlaps-1";
 import { compareStructure } from "./metrics.mjs";
 import { CoronaCheckpoints } from "./coronas.mjs";
 let grammar,

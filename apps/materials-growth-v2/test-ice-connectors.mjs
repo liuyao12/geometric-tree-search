@@ -56,10 +56,15 @@ assert.deepEqual(
   moved.types.map((t) => t.sites.length).sort((a, b) => a - b),
   g.types.map((t) => t.sites.length).sort((a, b) => a - b),
 );
-const e = new MaterialExperiment(g, drain(learnSections(g)), {
-  maximumPoints: 20000,
-  maximumCandidates: 40000,
-});
+const e = new MaterialExperiment(
+  g,
+  drain(learnSections(g, { observedOnly: false })),
+  {
+    // Historical connector-only control.
+    maximumPoints: 20000,
+    maximumCandidates: 40000,
+  },
+);
 for (let i = 0; i < 100; i++) {
   const event = e.step();
   assert(
