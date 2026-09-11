@@ -34,6 +34,7 @@ const nodes = Object.fromEntries(
     "milestone",
     "atom-count",
     "quality-chart",
+    "structure-material", "structure-epsilon", "structure-step", "structure-window", "structure-comparison",
   ].map((id) => [id, new Element()]),
 );
 nodes.material.value = "ice";
@@ -66,6 +67,20 @@ for (let i = 0; i < 3; i++) {
   assert.match(nodes["quality-chart"].text(), /100%/);
 }
 assert.match(nodes["quality-chart"].text(), /O 34.*D 186/);
+nodes['structure-material'].value='ice'; nodes['structure-epsilon'].value='.03';
+nodes['structure-step'].value='220'; nodes['structure-window'].value='6';
+await import('./structural-figure.mjs');
+assert.match(nodes['structure-comparison'].text(), /114\/128/);
+let structuralCases=0;
+for(const material of ['ice','copper'])for(const epsilon of (material==='ice'?['.015','.03','.06']:['.03']))
+  for(const step of ['64','128','220'])for(const radius of ['2','4','6']){
+    nodes['structure-material'].value=material;nodes['structure-epsilon'].value=epsilon;
+    nodes['structure-step'].value=step;nodes['structure-window'].value=radius;
+    nodes['structure-step'].events.change(); structuralCases++;
+    assert.match(nodes['structure-comparison'].text(), /Atom-count ceiling/);
+    assert.doesNotMatch(nodes['structure-comparison'].text(), /NaN|undefined/);
+  }
+assert.equal(structuralCases,36);
 const report = JSON.parse(
   readFileSync(new URL("results.json", import.meta.url), "utf8"),
 );

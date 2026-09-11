@@ -118,7 +118,7 @@ try {
   $("milestone").addEventListener("input", () => quality(ice));
 } catch (error) {
   $("comparison").textContent =
-    "Interactive data could not load. All primary results remain in Tables 1 and 2; use the raw-data links below.";
+    "Interactive data could not load. All primary results remain in Tables 1–3; use the raw-data links below.";
   $("quality-chart").textContent =
     "See Table 1 for the complete ice measurements.";
   console.error(error);
