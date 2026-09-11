@@ -1,0 +1,151 @@
+{
+  "schema": "finite-conflict-marking-controls/1",
+  "scope": "16 deterministic finite CSP controls; not material replicates or a novelty/speedup claim.",
+  "subsets": 16384,
+  "rows": [
+    {
+      "seed": 1,
+      "subsets": 1024,
+      "edges": 7,
+      "legal": 100,
+      "complete": 2,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 2,
+      "subsets": 1024,
+      "edges": 8,
+      "legal": 79,
+      "complete": 1,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 3,
+      "subsets": 1024,
+      "edges": 8,
+      "legal": 97,
+      "complete": 2,
+      "traceEqual": true,
+      "backtracks": 0
+    },
+    {
+      "seed": 4,
+      "subsets": 1024,
+      "edges": 9,
+      "legal": 90,
+      "complete": 2,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 5,
+      "subsets": 1024,
+      "edges": 7,
+      "legal": 87,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 2
+    },
+    {
+      "seed": 6,
+      "subsets": 1024,
+      "edges": 8,
+      "legal": 77,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 2
+    },
+    {
+      "seed": 7,
+      "subsets": 1024,
+      "edges": 9,
+      "legal": 74,
+      "complete": 1,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 8,
+      "subsets": 1024,
+      "edges": 12,
+      "legal": 69,
+      "complete": 1,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 9,
+      "subsets": 1024,
+      "edges": 11,
+      "legal": 78,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 2
+    },
+    {
+      "seed": 10,
+      "subsets": 1024,
+      "edges": 14,
+      "legal": 66,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 4
+    },
+    {
+      "seed": 11,
+      "subsets": 1024,
+      "edges": 10,
+      "legal": 80,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 2
+    },
+    {
+      "seed": 12,
+      "subsets": 1024,
+      "edges": 8,
+      "legal": 93,
+      "complete": 1,
+      "traceEqual": true,
+      "backtracks": 1
+    },
+    {
+      "seed": 13,
+      "subsets": 1024,
+      "edges": 11,
+      "legal": 66,
+      "complete": 0,
+      "traceEqual": true,
+      "backtracks": 4
+    },
+    {
+      "seed": 14,
+      "subsets": 1024,
+      "edges": 6,
+      "legal": 132,
+      "complete": 8,
+      "traceEqual": true,
+      "backtracks": 0
+    },
+    {
+      "seed": 15,
+      "subsets": 1024,
+      "edges": 9,
+      "legal": 75,
+      "complete": 1,
+      "traceEqual": true,
+      "backtracks": 0
+    },
+    {
+      "seed": 16,
+      "subsets": 1024,
+      "edges": 8,
+      "legal": 94,
+      "complete": 2,
+      "traceEqual": true,
+      "backtracks": 0
+    }
+  ]
+}

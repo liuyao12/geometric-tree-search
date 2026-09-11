@@ -6,6 +6,13 @@ https://www.nature.com/nature/for-authors/editorial-criteria-and-processes
 
 ## Current evidence
 
+- Follow-up diagnosis: all 14 absent reference sites in the 220-atom ice
+  checkpoint were pending frontier obligations; two remain pending at 440 atoms.
+  Do not infer missing rules from that finite-prefix coverage deficit alone.
+- A finite candidate-conditioned compiler now exactly encodes forbidden pairs as
+  point markings, with exact redundancy/star reductions and exhaustive controls.
+  It is a verification reference, not a reusable motif-local spatial field.
+
 - A same-result implementation ablation reduces redundant validity evaluations.
 - Eight deterministic structural-sensitivity runs add coverage, neighbor recovery,
   composition and angular diagnostics. They do not show an overlap-rule advantage.

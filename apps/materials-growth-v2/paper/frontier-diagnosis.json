@@ -1,0 +1,451 @@
+{
+  "scope": "Post-hoc diagnostic of known ice counterexample; no new scientific validation claim.",
+  "results": [
+    {
+      "step": 220,
+      "atoms": 220,
+      "coverage": {
+        "factor": 6,
+        "radius": 5.839584194366431,
+        "referenceSites": 128,
+        "generatedAtoms": 114,
+        "coveredSites": 114,
+        "siteRecall": 0.890625,
+        "numberRatio": 0.890625,
+        "centers": 54,
+        "expectedEdges": 71,
+        "recoveredEdges": 68,
+        "neighborRecall": 0.9577464788732394,
+        "exactStars": 51,
+        "exactStarFraction": 0.9444444444444444,
+        "angleReference": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "angleGenerated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "angleTV": 0
+      },
+      "missing": [
+        {
+          "species": "D",
+          "position": [
+            2.33895,
+            -1.9352472299999999,
+            -2.0871297199999996
+          ],
+          "key": "10:0:-1:-1",
+          "matches": [
+            {
+              "id": "p1530",
+              "active": true,
+              "total": 0,
+              "generation": 5,
+              "degree": 1,
+              "assignedMarks": 10
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            0,
+            5.847375,
+            4.38855079
+          ],
+          "key": "17:0:1:0",
+          "matches": [
+            {
+              "id": "p657",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            4.6779,
+            5.847375,
+            4.38855079
+          ],
+          "key": "17:1:1:0",
+          "matches": [
+            {
+              "id": "p2069",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            -3.508425,
+            2.68782579
+          ],
+          "key": "20:0:-1:0",
+          "matches": [
+            {
+              "id": "p1358",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            -2.33895,
+            1.169475,
+            -0.9871007900000001
+          ],
+          "key": "21:-1:0:-1",
+          "matches": [
+            {
+              "id": "p2753",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            1.169475,
+            -0.9871007900000001
+          ],
+          "key": "21:0:0:-1",
+          "matches": [
+            {
+              "id": "p873",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            5.847375,
+            -0.9871007900000001
+          ],
+          "key": "21:0:1:-1",
+          "matches": [
+            {
+              "id": "p1587",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 6
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            7.01685,
+            1.169475,
+            -0.9871007900000001
+          ],
+          "key": "21:1:0:-1",
+          "matches": [
+            {
+              "id": "p2561",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            -2.33895,
+            -1.169475,
+            0.9871007900000001
+          ],
+          "key": "22:-1:-1:0",
+          "matches": [
+            {
+              "id": "p2737",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            -2.33895,
+            3.508425,
+            0.9871007900000001
+          ],
+          "key": "22:-1:0:0",
+          "matches": [
+            {
+              "id": "p2652",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            7.01685,
+            -1.169475,
+            0.9871007900000001
+          ],
+          "key": "22:1:-1:0",
+          "matches": [
+            {
+              "id": "p1344",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            7.01685,
+            3.508425,
+            0.9871007900000001
+          ],
+          "key": "22:1:0:0",
+          "matches": [
+            {
+              "id": "p755",
+              "active": true,
+              "total": 0,
+              "generation": 4,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            -1.169475,
+            -2.68782579
+          ],
+          "key": "23:0:-1:-1",
+          "matches": [
+            {
+              "id": "p4304",
+              "active": true,
+              "total": 0,
+              "generation": 5,
+              "degree": 4,
+              "assignedMarks": 2
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            3.508425,
+            -2.68782579
+          ],
+          "key": "23:0:0:-1",
+          "matches": [
+            {
+              "id": "p3275",
+              "active": true,
+              "total": 0,
+              "generation": 5,
+              "degree": 4,
+              "assignedMarks": 4
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "attempts": 220,
+        "accepted": 220,
+        "forced": 0,
+        "branches": 220,
+        "backtracks": 0,
+        "eliminated": 61527,
+        "checks": 414275
+      }
+    },
+    {
+      "step": 440,
+      "atoms": 440,
+      "coverage": {
+        "factor": 6,
+        "radius": 5.839584194366431,
+        "referenceSites": 128,
+        "generatedAtoms": 126,
+        "coveredSites": 126,
+        "siteRecall": 0.984375,
+        "numberRatio": 0.984375,
+        "centers": 55,
+        "expectedEdges": 73,
+        "recoveredEdges": 72,
+        "neighborRecall": 0.9863013698630136,
+        "exactStars": 54,
+        "exactStarFraction": 0.9818181818181818,
+        "angleReference": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "angleGenerated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "angleTV": 0
+      },
+      "missing": [
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            -1.169475,
+            -2.68782579
+          ],
+          "key": "23:0:-1:-1",
+          "matches": [
+            {
+              "id": "p4304",
+              "active": true,
+              "total": 0,
+              "generation": 5,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        },
+        {
+          "species": "O",
+          "position": [
+            2.33895,
+            3.508425,
+            -2.68782579
+          ],
+          "key": "23:0:0:-1",
+          "matches": [
+            {
+              "id": "p3275",
+              "active": true,
+              "total": 0,
+              "generation": 5,
+              "degree": 4,
+              "assignedMarks": 8
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "attempts": 440,
+        "accepted": 440,
+        "forced": 0,
+        "branches": 440,
+        "backtracks": 0,
+        "eliminated": 106861,
+        "checks": 813971
+      }
+    }
+  ]
+}
