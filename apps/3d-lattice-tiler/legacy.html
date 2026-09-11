@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Lattice Tiler</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23178273%27/%3E%3Cpath d=%27M8 10 16 6l8 4v12l-8 4-8-4z%27 fill=%27%23fff%27 fill-opacity=%27.92%27/%3E%3Cpath d=%27M8 10l8 4 8-4M16 14v12%27 stroke=%27%23178273%27 stroke-width=%272%27 fill=%27none%27/%3E%3C/svg%3E">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css?v=20260910-periodic-trace-20260824-polycube10-v107">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <h1>3D Lattice Tiler</h1>
+        <div class="status-line" id="status">Ready</div>
+      </header>
+
+      <section class="control-panel">
+        <div class="target-line">
+          <label class="inline-field is-active" id="maxTileField">
+            <input type="radio" name="criterion" value="count" checked>
+            <span>Tile</span>
+            <input id="maxTilesInput" type="number" value="80" min="1" max="2000">
+          </label>
+          <input id="layerInput" type="hidden" value="2">
+          <label class="inline-field" id="shellField" title="Order-independent face-adjacency shell; exhaustive failure can prove non-tiling">
+            <input type="radio" name="criterion" value="shell">
+            <span>Shell</span>
+            <input id="shellInput" type="number" value="3" min="1" max="20">
+          </label>
+          <label class="inline-field" id="regionField">
+            <input type="radio" name="criterion" value="region">
+            <span>Box</span>
+          </label>
+        </div>
+
+        <div id="regionSizeFields" class="split-fields region-fields is-hidden">
+          <label class="field"><span>Width</span><input id="regionWidthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Depth</span><input id="regionDepthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Height</span><input id="regionHeightInput" type="number" value="4" min="1" max="100" step="1"></label>
+        </div>
+
+        <fieldset class="choice-field">
+          <legend>Tiling mode</legend>
+          <div class="radio-cards mode-cards">
+            <label>
+              <input type="radio" name="tilingStrategy" value="free_range" checked>
+              <span><b>Free-range</b><small>Forced-first tree search without learning.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="learning_free_range">
+              <span><b>GCTS</b><small>Glue vector-valued tile markings into a global section.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="rl_free_range">
+              <span><b>RL</b><small>Cold online learning orders every legal branch without pruning.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="gcts_rl">
+              <span><b>GCTS + RL</b><small>Global-section checks plus cold learned branch ordering.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="translational">
+              <span><b>Translational</b><small>Search exact periodic point-value tilings, then show a repeating patch.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="isohedral">
+              <span><b>Isohedral</b><small>Verify a repeating point-value tiling with one tile orbit; bounded failure is inconclusive.</small></span>
+            </label>
+          </div>
+          <small id="strategyDescription">Prioritizes forced moves, then explores sensible legal placements with backtracking.</small>
+        </fieldset>
+
+        <div class="is-hidden" aria-hidden="true">
+          <select id="strategySelect">
+            <option value="free_range" selected>Free-range</option>
+            <option value="learning_free_range">GCTS</option>
+            <option value="rl_free_range">RL</option>
+            <option value="gcts_rl">GCTS + RL</option>
+            <option value="translational">Translational</option>
+            <option value="isohedral">Isohedral</option>
+          </select>
+          <select id="faceOrderSelect"><option value="mrv" selected>MRV</option></select>
+          <select id="moveOrderSelect">
+            <option value="balanced" selected>Balanced</option>
+            <option value="global">Complete global</option>
+            <option value="shell">Complete shell</option>
+            <option value="no_brainer">No-brainer</option>
+            <option value="crystal">Crystal</option>
+          </select>
+
+          <label class="field">
+            <span>Snapshots</span>
+            <select id="snapshotSelect">
+              <option value="0" selected>Final only</option>
+              <option value="1">Every step</option>
+              <option value="5">Every 5</option>
+              <option value="10">Every 10</option>
+              <option value="25">Every 25</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Branch cap</span>
+            <input id="branchCapInput" type="number" value="0" min="0" max="5000">
+          </label>
+          <label class="field">
+            <span>Node cap</span>
+            <input id="nodeCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Candidate cap</span>
+            <input id="candidateCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Time cap</span>
+            <input id="timeCapInput" type="number" value="0" min="0" max="3600">
+          </label>
+
+          <label><input id="exhaustiveCheckbox" type="checkbox"><span>Exhaustive</span></label>
+          <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
+        </div>
+
+        <label><input id="mirrorCheckbox" type="checkbox"><span>Allow reflected tiles</span></label>
+        <label class="field"><span>Periodic motif limit</span><select id="periodicTileCountSelect"><option value="4">Up to 4 tiles</option><option value="8" selected>Up to 8 tiles</option><option value="16">Up to 16 tiles</option><option value="64">Up to 64 tiles</option></select></label>
+        <div class="action-row">
+          <label class="frontier-select-field">
+            <span>Lattice</span>
+            <select id="polycubeLatticeSelect" aria-label="Lattice frontier">
+              <option value="z3" selected>Z³ · integer</option>
+              <option value="fcc">FCC · faces</option>
+              <option value="half">½Z³ · refined</option>
+            </select>
+          </label>
+          <button id="runButton" class="primary-button" type="button">Run</button>
+          <button id="fitButton" type="button">Fit</button>
+        </div>
+      </section>
+
+      <section class="selected-tile-panel">
+        <div class="selected-tile-header">
+          <h2>Selected tiles</h2>
+          <div class="display-toggles">
+            <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
+            <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
+          </div>
+        </div>
+        <div id="selectedTiles" class="selected-tiles"></div>
+        <div id="candidateResearchPanel" class="candidate-research-panel is-hidden">
+          <div>
+            <b id="candidateResearchTitle">Unresolved census candidate</b>
+            <small id="candidateResearchDetail" class="candidate-research-detail" tabindex="0" aria-label="Research note"></small>
+          </div>
+          <button id="candidateSearchButton" type="button">Apply exact shell preset</button>
+        </div>
+      </section>
+
+      <section class="metrics">
+        <div><b id="metricTiles">0</b><span>tiles</span></div>
+        <div><b id="metricFrontier">0</b><span>frontier points</span></div>
+        <div class="is-hidden" aria-hidden="true"><b id="metricLayer">0</b><span id="metricLayerDetail">internal oldest generation</span></div>
+        <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
+        <div><b id="metricGrowth">—</b><span>3D growth balance</span><small id="metricGrowthDetail">center spans 0 × 0 × 0</small></div>
+      </section>
+
+      <section class="tile-panel">
+        <div class="catalog-section">
+          <h2>Tile catalog</h2>
+          <details class="catalog-criteria">
+            <summary>What makes a tile interesting?</summary>
+            <p>Bounded unresolved cases; delayed non-tiling obstructions; and periodic controls with found domains of ≥5 tiles. A found domain is not necessarily minimal. Long finite survival is not evidence of aperiodicity.</p>
+            <p>Geometric research benchmarks use exact alcoves and the full A₂ group. Interactive lanes use weighted lattice functions: these classifications are kept separate.</p>
+            <a href="../../assets/interesting-catalog-regression.json" target="_blank" rel="noopener">Latest six-lane bounded catalogue re-review (JSON)</a>
+          </details>
+          <div class="catalog-scroll">
+            <div id="systemTileList" class="system-tile-list"></div>
+          </div>
+        </div>
+
+        <div class="custom-builder-launch">
+          <button id="customBuilderButton" type="button">Custom lattice tile</button>
+        </div>
+
+        <div id="tileList" class="tile-list is-hidden"></div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <section class="viewport-panel">
+        <div id="viewport" class="viewport"></div>
+      </section>
+      <section class="growth-panel" aria-labelledby="growthChartTitle">
+        <div class="growth-header">
+          <div>
+            <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
+            <small>The six lanes start together after preprocessing. Pause and Continue preserve search state. Periodic lanes show placements, rejections, and backtracking inside an outlined cell. A rollback to zero starts another attempt; it does not prove non-tiling. Replay and the arrows inspect recorded steps.</small>
+          </div>
+          <div class="growth-history-controls" aria-label="Growth snapshot history">
+            <button id="growthHistoryBack" type="button" aria-label="Previous growth snapshot" title="Previous snapshot" disabled>←</button>
+            <button id="growthReplayButton" type="button" aria-label="Replay search attempts" disabled>Replay</button>
+            <span id="growthViewState" class="growth-view-state">Current · Free-range</span>
+            <button id="growthHistoryForward" type="button" aria-label="Next growth snapshot" title="Next snapshot" disabled>→</button>
+          </div>
+        </div>
+        <div class="growth-chart-wrap">
+          <div id="growthChart" class="growth-chart" role="img" aria-label="Interactive growth curve comparing tile count over elapsed seconds"></div>
+        </div>
+        <div id="growthBenchmarkStatus" class="growth-status">No benchmark run yet.</div>
+      </section>
+      <section class="tree-panel is-hidden">
+        <div class="tree-header">
+          <h2>Search tree</h2>
+          <span id="elapsedTime">0.0s</span>
+        </div>
+        <div id="treePanel" class="tree"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="customBuilderDialog" class="custom-builder-dialog">
+    <div class="custom-builder-dialog-shell">
+      <div class="custom-builder-dialog-header">
+        <h2>Custom lattice tile</h2>
+        <button id="closeBuilderButton" type="button" aria-label="Close custom lattice tile builder">x</button>
+      </div>
+      <div class="custom-builder">
+        <div class="builder-topline">
+          <label><input id="customPolycubeCheckbox" type="checkbox"><span>Include</span></label>
+          <input id="customNameInput" type="text" value="Custom polycube">
+        </div>
+        <div id="customShapeMatch" class="custom-shape-match"></div>
+        <div id="polycubeBuilder" class="polycube-builder"></div>
+        <div class="builder-tools">
+          <button id="clearBuilderButton" type="button">Clear</button>
+        </div>
+        <div class="custom-polyhedron-editor">
+          <div class="builder-topline">
+            <label><input id="customPolyhedronCheckbox" type="checkbox"><span>Include convex polyhedron</span></label>
+          </div>
+          <label class="field">
+            <span>Integer-lattice polyhedron JSON</span>
+            <textarea id="customPolyhedronInput" rows="9" spellcheck="false">{
+  "name": "User lattice cube",
+  "vertices": [
+    [0,0,0], [1,0,0], [0,1,0], [1,1,0],
+    [0,0,1], [1,0,1], [0,1,1], [1,1,1]
+  ]
+}</textarea>
+          </label>
+          <div id="customPolyhedronStatus" class="custom-shape-match">Faces are optional; the convex hull is inferred.</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
+  <script type="module" src="./app.js?v=20260910-periodic-trace"></script>
+</body>
+</html>

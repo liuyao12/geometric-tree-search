@@ -1,5 +1,21 @@
 # 3D Lattice Tiler
 
+## V2 research workbench · 2026-09-11
+
+The existing main URLs now open a redesigned finite point-window comparison
+workbench. Four sequential cold lanes share complete candidate incidence,
+exact rollback, global dead/forced propagation and the reference scheduler.
+GCTS supplies conservative vector markings and proved lookahead; the
+experimental RL lane proposes irregular three-placement clusters with online
+returns. Periodic/isohedral probes, the catalog, custom systems and interactive
+3D inspection are retained. The previous full explorer is at `legacy.html`.
+
+Read [the v2 protocol and conformance report](../../docs/projects/3d-lattice-v2.md)
+for exact model scope, independently verified benchmark evidence, the learned
+return ablation, and remaining gaps. The reference results are mixed and do
+not prove general superiority or aperiodicity. Historical descriptions below
+refer to the original explorer and retain their original semantics.
+
 ## 2026-09-10 periodic rewrite
 
 Translational and Isohedral now use the independent exact point-quotient engine
