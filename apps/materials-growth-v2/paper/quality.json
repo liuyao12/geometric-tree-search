@@ -1,0 +1,118 @@
+{
+  "schema": "ice-model-quality-ablation/1",
+  "protocol": {
+    "input": "192-atom Ice VIII D2O crop",
+    "epsilon": 0.03,
+    "seed": "one central atom",
+    "milestones": [
+      64,
+      128,
+      220
+    ],
+    "scope": "Same discovery and candidate-generation policy, different learned constraint sets. One deterministic run each, no stochastic confidence intervals. Reference cell is evaluation-only. Global rigid alignment optimized over first-placement occurrence witnesses, not separately per atom. Site membership does not establish density or complete reconstruction."
+  },
+  "rows": [
+    {
+      "observedOnly": false,
+      "atoms": 64,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 2,
+      "legal": true,
+      "overlapLegal": null,
+      "counts": {
+        "O": 32,
+        "D": 32
+      }
+    },
+    {
+      "observedOnly": false,
+      "atoms": 128,
+      "periodic": {
+        "matched": 128,
+        "total": 128,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 2,
+      "legal": true,
+      "overlapLegal": null,
+      "counts": {
+        "O": 34,
+        "D": 94
+      }
+    },
+    {
+      "observedOnly": false,
+      "atoms": 220,
+      "periodic": {
+        "matched": 220,
+        "total": 220,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 3,
+      "legal": true,
+      "overlapLegal": null,
+      "counts": {
+        "O": 81,
+        "D": 139
+      }
+    },
+    {
+      "observedOnly": true,
+      "atoms": 64,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 2,
+      "legal": true,
+      "overlapLegal": true,
+      "counts": {
+        "O": 10,
+        "D": 54
+      }
+    },
+    {
+      "observedOnly": true,
+      "atoms": 128,
+      "periodic": {
+        "matched": 128,
+        "total": 128,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 2,
+      "legal": true,
+      "overlapLegal": true,
+      "counts": {
+        "O": 31,
+        "D": 97
+      }
+    },
+    {
+      "observedOnly": true,
+      "atoms": 220,
+      "periodic": {
+        "matched": 220,
+        "total": 220,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "corona": 3,
+      "legal": true,
+      "overlapLegal": true,
+      "counts": {
+        "O": 34,
+        "D": 186
+      }
+    }
+  ]
+}

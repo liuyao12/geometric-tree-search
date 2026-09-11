@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      Geometry-Constrained Materials Growth — Interactive Research Paper
+    </title>
+    <meta
+      name="description"
+      content="A reproducible implementation study of geometric materials growth: matched search benchmarks, an ice quality ablation, and the limits of the evidence."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d353a'/%3E%3Cpath d='M8 16 16 7 24 16 16 25Z' fill='none' stroke='%239ae4cc' stroke-width='2'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="paper.css" />
+    <script type="module" src="paper.mjs"></script>
+  </head>
+  <body>
+    <header class="top">
+      <a href="../">← Materials Growth Lab</a
+      ><span>INTERACTIVE RESEARCH PAPER · 01</span
+      ><button id="print">Print / save PDF</button>
+    </header>
+    <section class="hero">
+      <p class="eyebrow">GEOMETRY → LOCAL RULES → CONSTRUCTIVE SEARCH</p>
+      <h1>Geometry-Constrained<br />Materials Growth</h1>
+      <p class="subtitle">
+        An interactive implementation study of dependency-local search, observed
+        overlap rules, and the gap between valid growth and faithful
+        reconstruction.
+      </p>
+      <div class="meta">
+        Materials Growth Lab · Research draft · September 2026<br />Not peer
+        reviewed · Author review required before submission
+      </div>
+      <div class="highlights">
+        <div>
+          <strong>2.81–7.47×</strong
+          ><span>fewer candidate-validity checks</span>
+        </div>
+        <div>
+          <strong>1.02–1.52×</strong><span>median search-time speedup</span>
+        </div>
+        <div>
+          <strong>9 / 9</strong
+          ><span>paired traces and final states match</span>
+        </div>
+      </div>
+      <p class="scope">
+        Measured against full cached-candidate revalidation in the same
+        implementation—not against molecular dynamics or a state-of-the-art
+        solver.
+      </p>
+    </section>
+    <div class="layout">
+      <nav class="toc" aria-label="Paper sections">
+        <a href="#abstract">Abstract</a><a href="#method">01 / Method</a
+        ><a href="#results">02 / Matched benchmark</a
+        ><a href="#quality">03 / What counts as correct?</a
+        ><a href="#context">04 / Existing methods</a
+        ><a href="#outlook">05 / Research case</a
+        ><a href="#reproduce">06 / Reproduce</a
+        ><a href="#references">References</a>
+      </nav>
+      <main>
+        <section id="abstract">
+          <p class="eyebrow">ABSTRACT</p>
+          <p class="lead">
+            Can geometric constraints learned from a small configuration support
+            economical, auditable structure expansion?
+          </p>
+          <p>
+            We study a geometry-first materials-growth implementation in which
+            recurring labeled point clusters supply candidate placements and
+            observed overlap relations restrict their compatibility. Our
+            controlled contribution is an implementation ablation: replacing
+            global cached-candidate revalidation with dependency-local updates
+            reduces validity evaluations by 2.81–7.47× over three fixed growth
+            prefixes, while preserving candidate, search-trace, geometry,
+            rollback-stack and final semantic-state hashes in all nine paired
+            trials. Median search-time speedups are 1.02–1.52×; cold-start
+            pipeline speedups are smaller.
+          </p>
+          <p>
+            A separate Ice VIII ablation finds no gain in reference-site
+            membership from the observed-overlap restriction: both variants
+            reach 100%, despite markedly different label proportions. This
+            negative result identifies an important validation gap. The evidence
+            supports efficient constraint bookkeeping for this implementation,
+            not superiority over molecular dynamics, general amorphous
+            synthesis, or a demonstrated advantage from learned GCTS markings.
+          </p>
+        </section>
+
+        <section id="method">
+          <p class="eyebrow">01 / METHOD</p>
+          <h2>Learn locally. Search globally. Keep the distinction precise.</h2>
+          <div class="pipeline">
+            <div>
+              <b>01</b><strong>Observe</strong
+              ><span>Positions + opaque labels</span>
+            </div>
+            <div>
+              <b>02</b><strong>Identify</strong
+              ><span>Recurring geometric supports</span>
+            </div>
+            <div>
+              <b>03</b><strong>Constrain</strong
+              ><span>Observed relative overlaps</span>
+            </div>
+            <div>
+              <b>04</b><strong>Expand</strong
+              ><span>One seed; reversible search</span>
+            </div>
+          </div>
+          <p>
+            The input is a finite labeled point configuration. Species labels
+            are treated as symbols: the search is not told molecular
+            stoichiometry, bond chemistry, energies or a target lattice.
+            Recurring supports are compared geometrically; placements are
+            represented by rigid poses and approximate point correspondences.
+            The reference cell used in evaluation does not enter the search.
+          </p>
+          <h3>Point values and the frontier graph</h3>
+          <p>
+            The base search maintains a complete incidence graph between current
+            frontier points and the <em>registered</em> candidate placements.
+            Each placement assigns occupancy values <i>t</i> and optional
+            marking values <i>m</i> at points. Exact coverage requires occupancy
+            sum 1; partial states may not exceed 1. Marking assignments must
+            agree where both are defined. A missing assignment is unconstrained,
+            not zero.
+          </p>
+          <div class="equation">
+            Σ<sub>c selected</sub> t<sub>c</sub>(p) ≤ 1 &nbsp; · &nbsp;
+            m<sub>c</sub>(p) = m<sub>d</sub>(p) on their common assigned domain
+          </div>
+          <p>
+            In the material adapter, anchor occupancy and labeled support-site
+            assignments are supplemented by an observed-overlap predicate. This
+            relational geometric plug-in is
+            <strong
+              >not yet an equivalent compilation of the learned relations into
+              point-value GCTS markings</strong
+            >. “Learning” here includes extraction of recurring geometric
+            relations; it is not evidence of a trained neural field or an RL
+            advantage.
+          </p>
+          <h3>Search contract and continuous-space limits</h3>
+          <pre>
+Maintain frontier ↔ candidate incidence, including marking-only dependencies.
+Check globally certified dead ends.
+Propagate globally certified forced moves.
+Otherwise branch at the earliest generation; degree breaks generation ties.
+On failure, restore the exact semantic state and try the next alternative.</pre
+          >
+          <p>
+            Rigid poses live in continuous space, but this implementation
+            registers a finite, geometry-derived set of proposals with tolerance
+            ε = 0.03 in sample coordinate units. It does not enumerate every
+            possible rotation or correspondence. A singleton in an incomplete
+            proposal domain is not a proved forced move, and an empty sampled
+            domain is not a proof of impossibility. These material runs use
+            incomplete-domain semantics.
+          </p>
+          <h3>The optimization under test</h3>
+          <p>
+            After a placement changes points Δ, the local variant revalidates
+            candidates whose recorded dependencies meet Δ. The baseline updates
+            the same frontier state and revalidates every cached candidate. Both
+            use the same legality predicate, geometric relation cache, proposal
+            policy, rules and scheduler. Thus the intervention targets redundant
+            evaluation work, not a different admissible solution set.
+          </p>
+          <p>
+            This optimization relies on complete dependency tracking for every
+            state-dependent constraint. The tests below check equivalence on
+            bounded executions; they do not constitute a proof for all geometric
+            inputs.
+          </p>
+        </section>
+
+        <section id="results">
+          <p class="eyebrow">02 / MATCHED IMPLEMENTATION BENCHMARK</p>
+          <h2>Less repeated work. The same measured search.</h2>
+          <p>
+            Three timing trials per material, paired with alternating execution
+            order. Each run uses a fresh worker, on Apple M4 / arm64 / macOS
+            with Node 24.19.0. Fixed prefixes comprise 96 NaCl atoms, 64 ice
+            atoms, and 64 copper atoms. Discovery, relation learning,
+            initialization and final verification are included in the cold-start
+            total, but not in search-only timing. Data acquisition is excluded.
+          </p>
+          <p>
+            Input crops contain 216 NaCl atoms, 192 ice atoms, and 256 copper
+            atoms. NaCl and copper are ideal crystalline controls. Ice is a
+            deterministic 2×2×2 expansion of diffraction-derived coordinates:
+            <a href="https://www.crystallography.net/cod/1566658.html"
+              >COD 1566658</a
+            >, as documented in the
+            <a href="../../iqc-growth-live/ice-viii-browser-fixture.js"
+              >fixture and its provenance</a
+            >. These three crystalline cases are a limited implementation test,
+            not a representative benchmark of quasicrystalline or amorphous
+            materials.
+          </p>
+          <figure class="interactive">
+            <div class="figure-head">
+              <span>FIGURE 1 · EXPLORE THE ABLATION</span
+              ><span class="pill">Recorded data · no simulation</span>
+            </div>
+            <div class="controls">
+              <label
+                >Material<select id="material">
+                  <option value="nacl">NaCl · 96 atoms</option>
+                  <option value="ice" selected>Ice VIII · 64 atoms</option>
+                  <option value="copper">Copper · 64 atoms</option>
+                </select></label
+              ><label
+                >Metric<select id="metric">
+                  <option value="checks">Candidate-validity checks</option>
+                  <option value="growth">Search time</option>
+                  <option value="total">Cold-start pipeline time</option>
+                </select></label
+              >
+            </div>
+            <div id="comparison" aria-live="polite">
+              <p>Loading recorded measurements…</p>
+            </div>
+            <figcaption>
+              Bars start at zero. Counts are identical across repeats; times
+              show medians with the observed range. Ratios are baseline ÷ local,
+              not percentage-point differences.
+            </figcaption>
+          </figure>
+          <div class="table-wrap">
+            <table>
+              <caption>
+                Table 1. All tested materials; global / dependency-local. Times
+                are medians of three trials.
+              </caption>
+              <thead>
+                <tr>
+                  <th>Material</th>
+                  <th>Checks</th>
+                  <th>Check ratio</th>
+                  <th>Search, ms</th>
+                  <th>Search ratio</th>
+                  <th>Total, ms</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>NaCl · 96</th>
+                  <td>20,644 / 3,283</td>
+                  <td>6.29×</td>
+                  <td>465 / 438</td>
+                  <td>1.06×</td>
+                  <td>654 / 630</td>
+                </tr>
+                <tr>
+                  <th>Ice VIII · 64</th>
+                  <td>879,537 / 117,685</td>
+                  <td>7.47×</td>
+                  <td>3,884 / 2,555</td>
+                  <td>1.52×</td>
+                  <td>4,466 / 3,142</td>
+                </tr>
+                <tr>
+                  <th>Copper · 64</th>
+                  <td>26,740 / 9,520</td>
+                  <td>2.81×</td>
+                  <td>6,022 / 5,900</td>
+                  <td>1.02×</td>
+                  <td>7,831 / 7,730</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The work-count reduction is much larger than the elapsed-time
+            reduction. Validity calls are not equivalent to expensive geometric
+            cache misses; registration, proposal construction and other costs
+            remain. Copper’s approximately 2% timing difference is small and
+            should not be treated as a robust general speedup. These are
+            descriptive timing repeats on one machine, not independent material
+            replicates or a statistical generalization.
+          </p>
+          <details>
+            <summary>Equivalence checks, budgets and rollback evidence</summary>
+            <p>
+              All nine local/global pairs have identical hashes for the decision
+              trace, final semantic state, candidate-creation keys, atom
+              geometry and rollback stack. Final point/overlap legality and a
+              rebuilt frontier-graph audit pass. The graph audit rebuilds
+              bookkeeping but shares the production legality predicate; it is
+              not a fully independent geometric oracle. The primary check count
+              excludes final verification.
+            </p>
+            <p>
+              Both modes have point and candidate ceilings of 40,000 and 80,000,
+              and a 120-second per-worker timeout. All listed prefixes finish
+              within the ceilings. Each material prefix has zero backtracks and
+              zero certified forced moves, so this experiment does not
+              demonstrate reduced combinatorial search. A separate exact finite
+              fixture exercises a failed branch, marking-only dependency and
+              rollback, and matches traces and final states between refresh
+              variants.
+            </p>
+            <p>
+              Source hashes and every timing trial are available below. Recorded
+              RSS is a shared-process high-water mark and is unsuitable for
+              isolated per-case memory comparisons; we make no memory-saving
+              claim.
+            </p>
+          </details>
+        </section>
+
+        <section id="quality">
+          <p class="eyebrow">03 / A NEGATIVE RESULT THAT MATTERS</p>
+          <h2>Correct sites are not yet the correct material.</h2>
+          <p>
+            We compare occupancy-only matching with observed-overlap
+            restrictions on the same 192-atom Ice VIII D₂O crop. These are
+            different constraint models, not equivalent implementations. Each
+            starts with one central atom, uses the same discovered supports and
+            proposal policy, and grows to 220 atoms in one deterministic run.
+          </p>
+          <figure class="interactive">
+            <div class="figure-head">
+              <span>FIGURE 2 · ICE QUALITY ABLATION</span
+              ><span class="pill amber">No demonstrated quality gain</span>
+            </div>
+            <label class="range"
+              >Growth prefix
+              <input
+                id="milestone"
+                type="range"
+                min="0"
+                max="2"
+                step="1"
+                value="2"
+              /><output id="atom-count">220 atoms</output></label
+            >
+            <div id="quality-chart" aria-live="polite"></div>
+            <figcaption>
+              Site membership uses one global rigid alignment, chosen over
+              first-placement occurrence witnesses, modulo the reference cell.
+              No per-atom realignment. The reference is evaluation-only.
+            </figcaption>
+          </figure>
+          <div class="table-wrap">
+            <table>
+              <caption>
+                Table 2. Ice label counts and species-resolved site membership;
+                one run per model.
+              </caption>
+              <thead>
+                <tr>
+                  <th>Atoms</th>
+                  <th>Occupancy-only O / D</th>
+                  <th>Overlap-restricted O / D</th>
+                  <th>Site membership, both</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>64</th>
+                  <td>32 / 32</td>
+                  <td>10 / 54</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th>128</th>
+                  <td>34 / 94</td>
+                  <td>31 / 97</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th>220</th>
+                  <td>81 / 139</td>
+                  <td>34 / 186</td>
+                  <td>100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="callout">
+            <strong
+              >Do not call 100% site membership a reconstruction
+              success.</strong
+            >
+            <p>
+              At 220 atoms the restricted prefix contains 34 O and 186 D, versus
+              81 O and 139 D for occupancy-only growth. Both finish corona 3 and
+              occupy reference-compatible sites, but neither statistic proves
+              volumetric coverage. In particular, the restricted prefix is far
+              from the bulk sample’s 1:2 label ratio. Boundary effects and
+              incomplete filling need investigation; these observations do not
+              establish their cause.
+            </p>
+          </aside>
+          <p>
+            This ablation does not establish a quality advantage for the learned
+            restrictions. A stronger evaluation must combine species-resolved
+            RDFs, density and coverage, label proportions, angular and
+            higher-order motifs, and structure factors. Reference-site
+            membership cannot detect missing sites; pair statistics alone cannot
+            specify all higher-order connections. These additional metrics are
+            proposed work, not measured results in this paper.
+          </p>
+        </section>
+
+        <section id="context">
+          <p class="eyebrow">04 / POSITION RELATIVE TO EXISTING METHODS</p>
+          <h2>The case is integration—not reinventing propagation.</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prior approach</th>
+                  <th>Relevant precedent</th>
+                  <th>What this study establishes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Constraint propagation <a href="#ref1">[1]</a></th>
+                  <td>
+                    Local consistency and affected-constraint updates already
+                    have a long history.
+                  </td>
+                  <td>
+                    A matched implementation benefit in this geometric growth
+                    engine; not a new general propagation algorithm.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Algorithm X / Dancing Links <a href="#ref2">[2]</a></th>
+                  <td>Reversible local updates support exact-cover search.</td>
+                  <td>
+                    No executed comparison with DLX; continuous proposals and
+                    learned relations differ from a fixed exact-cover matrix.
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Amorphous network construction <a href="#ref3">[3]</a>
+                  </th>
+                  <td>
+                    Structural models of amorphous Si and Ge can be built by
+                    network methods.
+                  </td>
+                  <td>
+                    No demonstrated advantage on amorphous reconstruction or
+                    realism.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Reverse Monte Carlo <a href="#ref4">[4]</a></th>
+                  <td>
+                    Disordered structures can be constrained by measured
+                    structural information without an interatomic potential.
+                  </td>
+                  <td>
+                    “No force field” alone is not novel; the proposed
+                    distinction is local relational structure and explicit
+                    constructive search.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            We have not run optimized CSP solvers, DLX, network-generation
+            methods, reverse Monte Carlo or molecular dynamics as competitors.
+            Consequently, this manuscript makes no state-of-the-art claim and no
+            extrapolated MD cost or physical fidelity comparison.
+          </p>
+        </section>
+
+        <section id="outlook">
+          <p class="eyebrow">05 / THE RESEARCH CASE</p>
+          <h2>A useful hypothesis, with a test that could refute it.</h2>
+          <p class="lead">
+            Reusable local geometric rules could make constrained structure
+            generation cheaper while keeping every accepted connection
+            inspectable.
+          </p>
+          <p>
+            The demonstrated part is efficient bookkeeping without changing the
+            measured result. The more ambitious GCTS hypothesis is that
+            informative local markings reduce wasted branching and invalid
+            constructions on genuinely ambiguous inputs. That hypothesis remains
+            untested here: the matched material prefixes never backtrack, and
+            the ice quality ablation does not separate the models by site
+            membership.
+          </p>
+          <ol>
+            <li>
+              <strong>Build an ensemble, not one amorphous crop.</strong> Obtain
+              multiple independently sampled configurations of the same material
+              and thermodynamic conditions, with provenance and usage rights.
+              Split by configuration or trajectory before extracting clusters;
+              do not leak overlapping neighborhoods across train and test.
+            </li>
+            <li>
+              <strong>Separate unknown from forbidden.</strong> An overlap
+              absent from a finite sample is unobserved, not necessarily
+              impossible. Evaluate held-out positive acceptance and rejection of
+              deliberately corrupted geometric connections across tolerance and
+              neighborhood reach.
+            </li>
+            <li>
+              <strong>Test learned markings against fair controls.</strong>
+              Compare occupancy-only, extracted relational rules and a verified
+              point-marking compilation with equal proposal budgets, plus a
+              relevant optimized constraint solver. Measure accepted legal
+              growth per second, branch expansions, backtracks and memory,
+              alongside structure quality.
+            </li>
+            <li>
+              <strong>Make ambiguity real.</strong> Use held-out amorphous
+              ensembles with multiple valid continuations. Require improved
+              yield at matched structural fidelity across independent seeds—not
+              merely a larger point count or recovery of known crystalline
+              sites.
+            </li>
+          </ol>
+          <p>
+            Hierarchical clusters, learned proposal agents and amortization
+            across many growth runs are promising extensions, not established
+            advantages in the present measurements. Successful held-out
+            amorphous growth, completeness in continuous pose space, and
+            physical stability remain open.
+          </p>
+        </section>
+
+        <section id="reproduce">
+          <p class="eyebrow">06 / REPRODUCIBILITY</p>
+          <h2>Inspect the evidence. Rerun the comparison.</h2>
+          <p>
+            The artifact contains the raw measurements, benchmark intervention
+            and a rollback regression. No server or account is needed to read
+            this paper. Interactive figures read the accompanying JSON; the
+            tables remain available without JavaScript.
+          </p>
+          <p>
+            The tested production engine is
+            <a
+              href="https://github.com/liuyao12/geometric-tree-search/tree/f89b4712426881ade21747e3c3d6a22d765f0385/apps/materials-growth-v2"
+              >revision f89b47124</a
+            >. The ice quality run uses ceilings of 80,000 points and 160,000
+            candidates, with ε = 0.03 and measurements at 64, 128 and 220 atoms.
+            Its larger budget differs from the timing benchmark and is not used
+            for a speed comparison.
+          </p>
+          <div class="downloads">
+            <a href="results.json">Raw timing & trace data ↗</a
+            ><a href="quality.json">Raw ice quality data ↗</a
+            ><a href="benchmark.mjs">Matched benchmark source ↗</a
+            ><a href="quality.mjs">Ice ablation source ↗</a
+            ><a href="test-refresh.mjs">Rollback regression ↗</a
+            ><a href="../README.md">Implementation & limitations ↗</a>
+          </div>
+          <p>From the repository root, using Node.js:</p>
+          <pre>
+node apps/materials-growth-v2/paper/test-refresh.mjs
+node apps/materials-growth-v2/paper/benchmark.mjs /tmp/gcts-results.json
+node apps/materials-growth-v2/paper/quality.mjs /tmp/gcts-quality.json</pre
+          >
+          <p>
+            Compare recorded source SHA-256 values before interpreting a rerun.
+            Timings depend on machine load and runtime. The benchmark uses an
+            isolated refresh-method substitution; it does not alter the
+            production application. Authorship, affiliations, broader novelty
+            review, independent replication and venue-specific formatting still
+            require author work before submission. This is an AI-assisted
+            research draft, not a peer-reviewed publication.
+          </p>
+        </section>
+        <section id="references">
+          <p class="eyebrow">REFERENCES</p>
+          <ol class="references">
+            <li id="ref1">
+              Mackworth, A. K. (1977).
+              <a href="https://www.cs.ubc.ca/~mack/Publications/AI77.pdf"
+                >Consistency in Networks of Relations.</a
+              >
+              <i>Artificial Intelligence</i> 8, 99–118.
+            </li>
+            <li id="ref2">
+              Knuth, D. E. (2000).
+              <a href="https://arxiv.org/abs/cs/0011047">Dancing Links.</a>
+              arXiv:cs/0011047.
+            </li>
+            <li id="ref3">
+              Wooten, F., Winer, K. & Weaire, D. (1985).
+              <a
+                href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1392"
+                >Computer Generation of Structural Models of Amorphous Si and
+                Ge.</a
+              >
+              <i>Physical Review Letters</i> 54, 1392–1395.
+            </li>
+            <li id="ref4">
+              McGreevy, R. L. & Pusztai, L. (1988).
+              <a href="https://doi.org/10.1080/08927028808080958"
+                >Reverse Monte Carlo Simulation: A New Technique for the
+                Determination of Disordered Structures.</a
+              >
+              <i>Molecular Simulation</i> 1, 359–367.
+            </li>
+          </ol>
+        </section>
+        <footer>
+          Materials Growth Lab · Evidence before extrapolation.<a href="../"
+            >Explore the laboratory →</a
+          >
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,753 @@
+{
+  "schema": "gcts-refresh-ablation/1",
+  "created": "2026-09-11T06:25:48.408Z",
+  "protocol": {
+    "cases": [
+      {
+        "id": "nacl",
+        "steps": 96
+      },
+      {
+        "id": "ice",
+        "steps": 64
+      },
+      {
+        "id": "copper",
+        "steps": 64
+      }
+    ],
+    "trials": 3,
+    "order": "paired alternating; local/global, global/local, local/global",
+    "epsilon": 0.03,
+    "observedOnly": true,
+    "maximumPoints": 40000,
+    "maximumCandidates": 80000,
+    "hardTimeoutSeconds": 120,
+    "scope": "Global cached-candidate revalidation vs dependency-local refresh; same scheduler, rules, proposal/cache policy. Not a comparison against state-of-the-art CSP packages or molecular dynamics. Timing repeats are not independent material replicates. Worker processes share one parent; RSS is process-wide high-water mark, not isolated per-case memory."
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M4"
+  },
+  "sources": {
+    "kernel.mjs": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+    "material.mjs": "47881dc86b24e6b6f54b2add5a316baa97f35a57682b37cd6079cee40db9a791",
+    "geometry.mjs": "fca52794d99a6174b97dab3fa500359ba67dab907ae7bfb4c57d5ac766bf0ad2",
+    "learning.mjs": "1af8d2eb1a8c0e4a47f09f0ed5eeb7638324bfe14963d3f1fed4e883055e231e",
+    "overlap-rules.mjs": "09325217a7b3cfd0d713950b57286b56a64f2d9ac4662ccea8c2dbb29e7c567a",
+    "samples.mjs": "c8d279e3597706f130370b81884726908aedc7eb2e1ded30d1e61e6383e58880",
+    "paper/benchmark.mjs": "aa641c49443709d8fdf47423aea645b3d8bbf1bf8c07b81bde53085deb9d9a46"
+  },
+  "results": [
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "local",
+      "trial": 0,
+      "atoms": 96,
+      "checks": 3283,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 3285
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 45.37441700000001,
+        "learning": 90.165833,
+        "initialization": 1.2327499999999816,
+        "growth": 441.926209,
+        "verification": 56.556666000000064,
+        "total": 635.2558750000001
+      },
+      "peakRssMiB": 131.984375
+    },
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "global",
+      "trial": 0,
+      "atoms": 96,
+      "checks": 20644,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 20646
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 43.40158399999996,
+        "learning": 89.39324999999997,
+        "initialization": 1.2924580000000105,
+        "growth": 468.83887500000014,
+        "verification": 55.80312499999991,
+        "total": 658.729292
+      },
+      "peakRssMiB": 134.8125
+    },
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "global",
+      "trial": 1,
+      "atoms": 96,
+      "checks": 20644,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 20646
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 42.29541700000004,
+        "learning": 90.80887499999994,
+        "initialization": 1.2019159999999829,
+        "growth": 462.811334,
+        "verification": 55.82395799999995,
+        "total": 652.9414999999999
+      },
+      "peakRssMiB": 137.328125
+    },
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "local",
+      "trial": 1,
+      "atoms": 96,
+      "checks": 3283,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 3285
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 43.328125,
+        "learning": 88.90887500000008,
+        "initialization": 1.224833000000217,
+        "growth": 436.24474999999984,
+        "verification": 56.77170799999976,
+        "total": 626.4782909999999
+      },
+      "peakRssMiB": 140.3125
+    },
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "local",
+      "trial": 2,
+      "atoms": 96,
+      "checks": 3283,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 3285
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 42.16783399999986,
+        "learning": 89.98704099999986,
+        "initialization": 1.2198750000002292,
+        "growth": 438.47533399999975,
+        "verification": 57.776250000000346,
+        "total": 629.626334
+      },
+      "peakRssMiB": 141.015625
+    },
+    {
+      "id": "nacl",
+      "steps": 96,
+      "mode": "global",
+      "trial": 2,
+      "atoms": 96,
+      "checks": 20644,
+      "initialChecks": 2,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 195,
+        "checks": 20646
+      },
+      "points": 351,
+      "candidates": 397,
+      "traceHash": "cf6c31633e3b709fdeadc03a57db944409afb744554b04582cfb1381e287cb4c",
+      "stateHash": "d63e6dabcdcda168920a07b4a86455cb9ec7bdd36027837bd70814f0dd8d9e11",
+      "candidateHash": "9e82e2fffc83804d7cfaa18fa63dd44ac8e679c373d49d99d2acdf2a8daf055e",
+      "geometryHash": "768cc424175f08d42655c2473f8ea513acc07f0d3bd9f1be6845648f9e838c77",
+      "stackHash": "3f2ee3672f4bfdac666db8368f0de73a57efd77c31594ad0a6cefef3a4f4c81d",
+      "legal": true,
+      "periodic": null,
+      "milliseconds": {
+        "discovery": 41.70158300000003,
+        "learning": 89.10999999999967,
+        "initialization": 1.7508340000003955,
+        "growth": 465.3607079999997,
+        "verification": 56.31204200000002,
+        "total": 654.2351669999998
+      },
+      "peakRssMiB": 141.015625
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "local",
+      "trial": 0,
+      "atoms": 64,
+      "checks": 117685,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 117845
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 53.22720799999979,
+        "learning": 446.86620900000025,
+        "initialization": 6.021499999999833,
+        "growth": 2540.269875,
+        "verification": 75.16779099999985,
+        "total": 3121.5525829999997
+      },
+      "peakRssMiB": 390.609375
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "global",
+      "trial": 0,
+      "atoms": 64,
+      "checks": 879537,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 879697
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 53.49195799999961,
+        "learning": 445.60925000000043,
+        "initialization": 6.4270419999993464,
+        "growth": 3869.8397079999995,
+        "verification": 76.72608300000138,
+        "total": 4452.094041
+      },
+      "peakRssMiB": 470.3125
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "global",
+      "trial": 1,
+      "atoms": 64,
+      "checks": 879537,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 879697
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 53.57883299999958,
+        "learning": 447.488292,
+        "initialization": 6.101624999999331,
+        "growth": 3883.654042,
+        "verification": 75.59179100000074,
+        "total": 4466.414583
+      },
+      "peakRssMiB": 472.296875
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "local",
+      "trial": 1,
+      "atoms": 64,
+      "checks": 117685,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 117845
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 54.803916000000754,
+        "learning": 439.2735840000005,
+        "initialization": 6.117915999999241,
+        "growth": 2584.7820839999986,
+        "verification": 74.01808300000266,
+        "total": 3158.9955830000017
+      },
+      "peakRssMiB": 475.109375
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "local",
+      "trial": 2,
+      "atoms": 64,
+      "checks": 117685,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 117845
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 53.5110829999976,
+        "learning": 450.6003340000025,
+        "initialization": 6.441124999997555,
+        "growth": 2555.196041000003,
+        "verification": 75.99504199999865,
+        "total": 3141.743624999999
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "ice",
+      "steps": 64,
+      "mode": "global",
+      "trial": 2,
+      "atoms": 64,
+      "checks": 879537,
+      "initialChecks": 160,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 22516,
+        "checks": 879697
+      },
+      "points": 10488,
+      "candidates": 23027,
+      "traceHash": "a306a92c430a68de63dfba2c74f7a97580af16b644bdc12fae456efdbb8d4686",
+      "stateHash": "edd5d718bac95fb565e454f7ba498b0afb32732844959f8b9d076145b5fb6505",
+      "candidateHash": "3ab87972ae998ac842d1625a7faba81143d7675fe9df616ec9212c061236d576",
+      "geometryHash": "c291798ad43981789d5c1573a38e6b3f7e98fa888a54782829c72d297392ecdf",
+      "stackHash": "6b4e7cde0b4a3ba2076766ac261923f6a8c4e0e8754c5b2599ce6e73eca75295",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 53.998333000003186,
+        "learning": 444.0588339999995,
+        "initialization": 6.01683299999786,
+        "growth": 3914.5663330000025,
+        "verification": 75.95583400000032,
+        "total": 4494.596167000003
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "local",
+      "trial": 0,
+      "atoms": 64,
+      "checks": 9520,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 9528
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 179.67733299999963,
+        "learning": 1288.4550419999978,
+        "initialization": 1.759874999999738,
+        "growth": 5862.510917,
+        "verification": 339.89316600000166,
+        "total": 7672.296332999998
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "global",
+      "trial": 0,
+      "atoms": 64,
+      "checks": 26740,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 26748
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 178.3863749999946,
+        "learning": 1290.021041,
+        "initialization": 1.8155000000042492,
+        "growth": 6021.761584,
+        "verification": 339.270958000001,
+        "total": 7831.255458
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "global",
+      "trial": 1,
+      "atoms": 64,
+      "checks": 26740,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 26748
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 178.24379199999385,
+        "learning": 1289.6088330000057,
+        "initialization": 1.9836670000004233,
+        "growth": 5951.552082999995,
+        "verification": 337.5787500000006,
+        "total": 7758.967124999996
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "local",
+      "trial": 1,
+      "atoms": 64,
+      "checks": 9520,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 9528
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 181.7443329999951,
+        "learning": 1320.8326670000024,
+        "initialization": 1.7934580000001006,
+        "growth": 5912.663667000001,
+        "verification": 344.52350000000297,
+        "total": 7761.557625000001
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "local",
+      "trial": 2,
+      "atoms": 64,
+      "checks": 9520,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 9528
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 180.57616599999892,
+        "learning": 1302.8517500000016,
+        "initialization": 1.7732089999990421,
+        "growth": 5900.295790999997,
+        "verification": 344.34208399999625,
+        "total": 7729.838999999993
+      },
+      "peakRssMiB": 475.578125
+    },
+    {
+      "id": "copper",
+      "steps": 64,
+      "mode": "global",
+      "trial": 2,
+      "atoms": 64,
+      "checks": 26740,
+      "initialChecks": 8,
+      "stats": {
+        "attempts": 64,
+        "accepted": 64,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 0,
+        "eliminated": 192,
+        "checks": 26748
+      },
+      "points": 365,
+      "candidates": 700,
+      "traceHash": "04f3e17fe145aa2596e5b35a0b82a6807e80e37ba1415823069da74c01910ab7",
+      "stateHash": "6d784c033ed767c1111bd0c9fafc3cb3839eae684d36f2830404b171acc5baa7",
+      "candidateHash": "d8a039d8024edea7c5a9f86987c827d82f0f97c9b0afabe75be135a54ce67988",
+      "geometryHash": "976bcf0b2b5b130c558a1412f43a1c170b7ad7f5c7223dafe41f5c9e8233ff8e",
+      "stackHash": "b1cd5456b9e5845e0847c9d91193c6370683187fbc275a2b71c7143db4c3e8f8",
+      "legal": true,
+      "periodic": {
+        "matched": 64,
+        "total": 64,
+        "fraction": 1,
+        "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
+      },
+      "milliseconds": {
+        "discovery": 179.33550000000105,
+        "learning": 1289.2729580000014,
+        "initialization": 1.7194999999919673,
+        "growth": 6067.942792000002,
+        "verification": 351.5297920000012,
+        "total": 7889.800541999997
+      },
+      "peakRssMiB": 475.578125
+    }
+  ]
+}
