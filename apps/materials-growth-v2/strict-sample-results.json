@@ -38,7 +38,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 2.2899054589999994
+      "seconds": 2.316011417
     },
     {
       "id": "ice",
@@ -49,15 +49,15 @@
       "outcome": "finite growth verified",
       "status": "searching",
       "stop": "branch",
-      "atoms": 300,
-      "steps": 300,
+      "atoms": 294,
+      "steps": 294,
       "composition": {
-        "D": 219,
+        "D": 213,
         "O": 81
       },
       "periodicReference": {
-        "matched": 300,
-        "total": 300,
+        "matched": 294,
+        "total": 294,
         "fraction": 1,
         "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
       },
@@ -65,13 +65,13 @@
       "beyondInputCount": true,
       "metrics": {
         "status": "measured",
-        "rdfError": 0.14044279307018767,
-        "compositionTV": 0.04065430647830576,
-        "angleTV": 0.07196037358992942
+        "rdfError": 0.1389706672487523,
+        "compositionTV": 0.039426782273603134,
+        "angleTV": 0.07351184479454366
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 13.948479583
+      "seconds": 13.819157583
     },
     {
       "id": "copper",
@@ -82,14 +82,14 @@
       "outcome": "finite growth verified",
       "status": "searching",
       "stop": "branch",
-      "atoms": 133,
-      "steps": 133,
+      "atoms": 128,
+      "steps": 128,
       "composition": {
-        "Cu": 133
+        "Cu": 128
       },
       "periodicReference": {
-        "matched": 133,
-        "total": 133,
+        "matched": 128,
+        "total": 128,
         "fraction": 1,
         "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
       },
@@ -97,13 +97,13 @@
       "beyondInputCount": false,
       "metrics": {
         "status": "measured",
-        "rdfError": 0.030711679839349516,
+        "rdfError": 0.050922406545578204,
         "compositionTV": 0,
-        "angleTV": 0.0374924104432301
+        "angleTV": 0.037037037037037
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 14.397028999999998
+      "seconds": 14.370612583
     },
     {
       "id": "iron",
@@ -135,7 +135,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 15.648136167000004
+      "seconds": 15.767709416999999
     },
     {
       "id": "silicon",
@@ -167,7 +167,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 4.992505417
+      "seconds": 4.9787436249999955
     },
     {
       "id": "cscl",
@@ -178,15 +178,15 @@
       "outcome": "finite growth verified",
       "status": "searching",
       "stop": "branch",
-      "atoms": 112,
-      "steps": 112,
+      "atoms": 111,
+      "steps": 111,
       "composition": {
-        "Cs": 48,
+        "Cs": 47,
         "Cl": 64
       },
       "periodicReference": {
-        "matched": 112,
-        "total": 112,
+        "matched": 111,
+        "total": 111,
         "fraction": 1,
         "scope": "Species-resolved site membership under one global rigid alignment, modulo the reference cell. Not a density, coverage or completeness proof. Evaluation metadata never enters search."
       },
@@ -194,13 +194,13 @@
       "beyondInputCount": false,
       "metrics": {
         "status": "measured",
-        "rdfError": 0.22971759687052068,
-        "compositionTV": 0.15455512229705778,
-        "angleTV": 0.282057042996241
+        "rdfError": 0.23607556811242145,
+        "compositionTV": 0.16052973021341324,
+        "angleTV": 0.2806271164454611
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 15.238654374999998
+      "seconds": 15.484216250000005
     },
     {
       "id": "zincblende",
@@ -233,7 +233,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 3.5062991249999906
+      "seconds": 3.296421208
     },
     {
       "id": "diamond",
@@ -265,7 +265,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 4.572474291999999
+      "seconds": 4.347340540999998
     },
     {
       "id": "sic",
@@ -298,7 +298,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 3.4327641659999935
+      "seconds": 3.494643875000009
     },
     {
       "id": "hcp",
@@ -309,23 +309,23 @@
       "outcome": "finite growth verified",
       "status": "searching",
       "stop": "branch",
-      "atoms": 258,
-      "steps": 258,
+      "atoms": 254,
+      "steps": 254,
       "composition": {
-        "X": 258
+        "X": 254
       },
       "periodicReference": null,
       "completedCorona": 3,
       "beyondInputCount": true,
       "metrics": {
         "status": "measured",
-        "rdfError": 0.12921601191704313,
+        "rdfError": 0.12324084519882081,
         "compositionTV": 0,
-        "angleTV": 0.3565456674473068
+        "angleTV": 0.35632936507936513
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 14.593269750000006
+      "seconds": 14.577316166999998
     },
     {
       "id": "kagome",
@@ -352,7 +352,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 2.920994624999992
+      "seconds": 2.93020541699999
     },
     {
       "id": "checkerboard",
@@ -380,7 +380,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 2.2279591250000084
+      "seconds": 2.1473422080000018
     },
     {
       "id": "sc",
@@ -412,7 +412,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 3.533362540999995
+      "seconds": 3.4831964169999994
     },
     {
       "id": "square",
@@ -439,7 +439,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 4.0421103330000046
+      "seconds": 4.0549192089999995
     },
     {
       "id": "triangular",
@@ -450,10 +450,10 @@
       "outcome": "finite growth verified",
       "status": "searching",
       "stop": "branch",
-      "atoms": 400,
-      "steps": 400,
+      "atoms": 399,
+      "steps": 399,
       "composition": {
-        "X": 400
+        "X": 399
       },
       "periodicReference": null,
       "completedCorona": 11,
@@ -466,7 +466,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 12.54519179099999
+      "seconds": 12.688601291
     },
     {
       "id": "bn",
@@ -494,7 +494,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 1.0647901669999993
+      "seconds": 1.0773431660000061
     },
     {
       "id": "graphene",
@@ -521,7 +521,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 1.8679002920000056
+      "seconds": 1.8924112500000048
     },
     {
       "id": "cdyb",
@@ -530,25 +530,27 @@
       "inputAtoms": 506,
       "types": 75,
       "outcome": "unresolved",
-      "status": "unresolved geometry",
-      "stop": "unknown",
-      "message": "Ambiguous point correspondence: reduce positional error or inspect the input",
-      "atoms": 1,
-      "steps": 0,
+      "status": "budget / unresolved",
+      "stop": "budget",
+      "message": "Point memory budget reached — unknown",
+      "atoms": 46,
+      "steps": 46,
       "composition": {
-        "Cd": 1,
+        "Cd": 46,
         "Yb": 0
       },
       "periodicReference": null,
-      "completedCorona": 0,
+      "completedCorona": 2,
       "beyondInputCount": false,
       "metrics": {
-        "status": "insufficient data: need at least 24 atoms in each patch",
-        "rdfError": null
+        "status": "measured",
+        "rdfError": 0.39647694129391753,
+        "compositionTV": 0.12658227848101267,
+        "angleTV": 0.21240851760764332
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 1.5103238330000022
+      "seconds": 7.786577458999993
     },
     {
       "id": "asi",
@@ -557,11 +559,11 @@
       "inputAtoms": 216,
       "types": 6,
       "outcome": "unresolved",
-      "status": "unresolved geometry",
+      "status": "unknown",
       "stop": "unknown",
-      "message": "Ambiguous point correspondence: reduce positional error or inspect the input",
+      "message": "No continuation found among the sampled candidates. More training configurations or additional pose proposals are needed.",
       "atoms": 1,
-      "steps": 5,
+      "steps": 15,
       "composition": {
         "Si": 1
       },
@@ -574,7 +576,7 @@
       },
       "legal": true,
       "overlapsLegal": true,
-      "seconds": 0.5082655830000004
+      "seconds": 0.5085806659999944
     },
     {
       "id": "glass",

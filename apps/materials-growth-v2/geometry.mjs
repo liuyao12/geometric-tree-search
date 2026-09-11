@@ -218,7 +218,7 @@ export class PointRegistry {
     this.points = [];
     this.cells = new Map();
   }
-  intern(position) {
+  matches(position) {
     const c = position.map((v) => Math.floor(v / this.epsilon)),
       found = [];
     for (let x = -1; x <= 1; x++)
@@ -228,6 +228,10 @@ export class PointRegistry {
             [c[0] + x, c[1] + y, c[2] + z].join(),
           ) || [])
             if (distance(position, p.position) <= this.epsilon) found.push(p);
+    return found;
+  }
+  intern(position) {
+    const found = this.matches(position);
     if (found.length > 1)
       throw Error(
         "Ambiguous point correspondence: reduce positional error or inspect the input",
@@ -235,7 +239,7 @@ export class PointRegistry {
     if (found.length) return found[0].id;
     const p = { id: "p" + this.points.length, position: [...position] };
     this.points.push(p);
-    const key = c.join();
+    const key = position.map((v) => Math.floor(v / this.epsilon)).join();
     if (!this.cells.has(key)) this.cells.set(key, []);
     this.cells.get(key).push(p);
     return p.id;

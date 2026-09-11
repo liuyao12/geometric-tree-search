@@ -8,6 +8,31 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
+### Ambiguous correspondences are candidate alternatives
+
+Growth no longer aborts merely because a proposed site lies within tolerance of
+two fixed cache points. `PointRegistry.matches` returns all current matches;
+the material adapter emits injective site-to-point assignments as separate
+ordinary candidates. The singular registry API still rejects ambiguity, rather
+than choosing the nearest point arbitrarily. No positional tolerance is widened,
+no learned overlap restriction is disabled, and no physics is introduced.
+Each candidate goes through existing global legality, incidence and rollback.
+
+This is an approximate finite correspondence extension, not certified SO(3)
+coverage: at most 4096 assignments are compiled per proposed pose, with truncated
+poses counted in exported `correspondences` diagnostics. Later cache insertions
+do not exhaustively regenerate earlier poses. Domains therefore remain incomplete;
+zero/singleton sampled domains cannot certify dead/forced moves. Fixed-point
+snapping remains order-dependent. The master scheduler is unchanged.
+`test-correspondences.mjs` checks both assignments at an ambiguous site, tolerance
+bounds, injectivity, strict legality, undo/graph consistency and the two original
+failing samples, including resumable soft-memory checkpoints. Existing negative
+overlap, memory-resume and point-kernel controls remain required.
+
+This removes an implementation stop, not every data-coverage problem: Cd–Yb can
+now continue until resource checkpoints; quenched Si may still exhaust the current
+sampled alternatives. Neither is thereby certified as reconstructed material.
+
 ### Sample families and the expanded strict audit
 
 The picker now has an All-families option and six input-family filters: crystalline
@@ -61,12 +86,12 @@ proposal path, opaque relabeling/rigid motion, positive relation witnesses,
 negative overlaps, scheduling and rollback. Domains remain incomplete over
 continuous poses; a stalled sampled search is unknown, never an impossibility.
 
-**Remaining audit failures:** Cd–Yb and quenched Si encounter ambiguous
-correspondences in the fixed-anchor point cache; random Cu–Zr has no recurring
-supports at the tested tolerance. Varying tolerance from 0.005 to 0.12 Å did not
+**Remaining audit failures:** Cd–Yb reaches resource limits without demonstrating
+both labels; quenched Si exhausts sampled alternatives; random Cu–Zr has no recurring
+supports at the tested tolerance. Earlier, varying tolerance from 0.005 to 0.12 Å did not
 establish successful growth for the first two (smaller Cd–Yb tolerance instead
 reached the memory budget without producing Yb). These require better
-branch-aware correspondence and/or support discovery, not disabling strict
+more complete correspondence/pose enumeration and/or support discovery, not disabling strict
 connections or adding chemical rules. The negative control is intentionally not
 converted into a periodic synthetic material. The all-materials objective is
 therefore **not yet achieved**.
@@ -204,7 +229,7 @@ RDF discards angles and does not establish long-range order or structural unique
 - `m` has one scalar occupancy channel per opaque label. Missing assignments are unconstrained; zero is assigned. Channels transform trivially; their point positions transform under proper SE(3). Reflections are not allowed in this release.
 - Clustering uses adaptive first-shell or legacy nearest-k collections, followed by colored rigid registration and maximum positional residual checks. It is still an **anchored local proposal baseline**, not arbitrary subgraph mining. Uncovered atoms are reported, not silently repaired with invented chemistry or gap polyhedra. Periodic closure of a crop is not assumed by clustering.
 - Rigid registration estimates real-valued rotations. Candidate poses come from observed occurrence rotations and transported relative connections, optionally supplemented by small rotations about local axes. There is no spatial lattice or global angular grid. Nevertheless this finite evidence pool is **not an exhaustive search of SO(3)**.
-- Position correspondence uses a fixed-anchor epsilon ball and rejects ambiguous multiple correspondences. It does not chain near-neighbor matches transitively. A spatial hash accelerates lookup; it is not a lattice constraint. Mapping can depend on proposal order. Orientation-cache rounding and point-identical placement deduplication are approximate; this is not a symmetry certificate.
+- Position correspondence uses fixed-anchor epsilon balls and represents multiple matches as candidate alternatives (with the bounds above). It does not chain near-neighbor matches transitively. A spatial hash accelerates lookup; it is not a lattice constraint. Mapping can depend on proposal order. Orientation-cache rounding and point-identical placement deduplication are approximate; this is not a symmetry certificate.
 - Marking compatibility requires the **common intersection of all assigned closed intervals** at each point/channel, not pairwise approximate equality. Real-valued comparisons are approximate floating-point semantics; no exact geometric certificate is claimed.
 - In the legacy headless `seedMode: 'patch'` control only, an optional complete bounding-box mask declares missing positions empty. The browser's single-seed mode always disables that mask and retains only the one seed observation.
 

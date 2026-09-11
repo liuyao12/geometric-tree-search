@@ -6,13 +6,13 @@ import {
   sampleFamilies,
   samplesInFamily,
 } from "./samples.mjs?v=sample-families-1";
-import "./sample-audit-ui.mjs?v=sample-families-1";
+import "./sample-audit-ui.mjs?v=correspondence-branches-1";
 import { centralSeed } from "./seed.mjs";
 import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
 const $ = (id) => document.getElementById(id),
   worker = new Worker(
-    new URL("./worker.mjs?v=sample-audit-1", import.meta.url),
+    new URL("./worker.mjs?v=correspondence-branches-1", import.meta.url),
     {
       type: "module",
     },

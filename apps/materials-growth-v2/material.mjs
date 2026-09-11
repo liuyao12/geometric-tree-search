@@ -9,7 +9,7 @@ import {
   axisAngle,
   product,
   distance,
-} from "./geometry.mjs";
+} from "./geometry.mjs?v=correspondence-branches-1";
 
 export class MaterialExperiment {
   constructor(
@@ -44,6 +44,11 @@ export class MaterialExperiment {
     this.events = [];
     this.best = null;
     this.unresolved = 0;
+    this.correspondences = {
+      ambiguousSites: 0,
+      alternatives: 0,
+      truncatedPoses: 0,
+    };
     this.memoryCheckpoint = false;
     if (!["single", "patch"].includes(seedMode))
       throw Error("Unknown seed mode");
@@ -156,10 +161,42 @@ export class MaterialExperiment {
       )
         return;
     }
+    // Multiple nearby fixed cache points are correspondence alternatives, not
+    // a fatal error and not permission to pick an arbitrary nearest point.
+    // Compile each injective assignment into the ordinary candidate graph.
+    const section = this.marking.sections[type.id];
+    const choices = section.sites.map((s) => {
+      const p = transform(pose, s.position),
+        matches = this.registry.matches(p);
+      if (matches.length > 1) this.correspondences.ambiguousSites++;
+      return matches.length ? matches.map((m) => m.id) : [this.point(p)];
+    });
+    let count = 0;
+    const sites = [],
+      used = new Set();
+    const visit = (i) => {
+      if (count >= 4096) return false;
+      if (i === choices.length) {
+        count++;
+        this.emitAssignment(type, pose, [...sites], source);
+        return true;
+      }
+      for (const id of choices[i]) {
+        if (used.has(id)) continue;
+        sites.push(id);
+        used.add(id);
+        if (!visit(i + 1)) return false;
+        sites.pop();
+        used.delete(id);
+      }
+      return true;
+    };
+    if (!visit(0)) this.correspondences.truncatedPoses++;
+    this.correspondences.alternatives += Math.max(0, count - 1);
+  }
+  emitAssignment(type, pose, sites, source) {
     const section = this.marking.sections[type.id],
-      sites = section.sites.map((s) => this.point(transform(pose, s.position))),
       anchor = sites[0];
-    if (new Set(sites).size !== sites.length) return;
     const id = JSON.stringify([type.id, sites]);
     if (this.engine.candidates.has(id)) {
       const c = this.engine.candidates.get(id);
@@ -282,7 +319,11 @@ export class MaterialExperiment {
         this.engine.stack.pop();
       }
       this.engine.status = "unknown";
-      return d;
+      return {
+        ...d,
+        message:
+          "No continuation found among the sampled candidates. More training configurations or additional pose proposals are needed.",
+      };
     }
     return this.engine.advance();
   }
@@ -359,6 +400,11 @@ export class MaterialExperiment {
       pointCount: this.registry.points.length,
       candidateCount: this.engine.candidates.size,
       unresolved: this.unresolved,
+      correspondences: {
+        ...this.correspondences,
+        scope:
+          "Injective assignments to fixed points within tolerance; at most 4096 assignments per proposed pose. Later cache insertions do not exhaustively regenerate old poses. Domains remain incomplete, never certified dead or forced.",
+      },
       validation,
       overlapValidation,
       overlapChecks: this.overlapFilter
