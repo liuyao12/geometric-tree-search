@@ -12,6 +12,11 @@ export const sampleCatalog = [
   ["silicon", "Si · ideal diamond"],
   ["cscl", "CsCl · ideal cubic binary"],
   ["zincblende", "ZnS · ideal zincblende"],
+  ["diamond", "C · ideal diamond"],
+  ["sic", "SiC · ideal cubic binary"],
+  ["hcp", "Hexagonal close packing · geometric control"],
+  ["kagome", "Kagome sheet · geometric control"],
+  ["checkerboard", "Binary square sheet · geometric control"],
   ["sc", "Simple cubic · geometric control"],
   ["square", "Square sheet · geometric control"],
   ["triangular", "Triangular sheet · geometric control"],
@@ -21,6 +26,79 @@ export const sampleCatalog = [
   ["glass", "Cu–Zr · disordered negative control"],
 ];
 export function samplePatch(id) {
+  if (["diamond", "sic"].includes(id)) {
+    const s = samplePatch(id === "diamond" ? "silicon" : "zincblende");
+    const a = id === "diamond" ? 3.57 : 4.36;
+    const ratio = a / s.evaluation.cell[0];
+    const label = (species) =>
+      id === "diamond" ? "C" : species === "Zn" ? "Si" : "C";
+    return {
+      name: sampleCatalog.find((s) => s[0] === id)[1],
+      source: `Ideal geometric control · illustrative cell scale ${a} Å · no thermal relaxation or experimental claim`,
+      atoms: s.atoms.map((p) => ({
+        species: label(p.species),
+        position: p.position.map((v) => v * ratio),
+      })),
+      evaluation: {
+        cell: [a, a, a],
+        sites: s.evaluation.sites.map((p) => ({
+          ...p,
+          species: label(p.species),
+        })),
+      },
+    };
+  }
+  if (id === "hcp" || id === "kagome") {
+    const atoms = [],
+      a = id === "hcp" ? 2 : 4,
+      c = Math.sqrt(8 / 3) * a;
+    const basis =
+      id === "hcp"
+        ? [
+            [0, 0, 0],
+            [a / 2, (Math.sqrt(3) * a) / 6, c / 2],
+          ]
+        : [
+            [0, 0, 0],
+            [a / 2, 0, 0],
+            [a / 4, (Math.sqrt(3) * a) / 4, 0],
+          ];
+    const n = id === "hcp" ? 2 : 3;
+    for (let i = -n; i <= n; i++)
+      for (let j = -n; j <= n; j++)
+        for (let k = id === "hcp" ? -2 : 0; k <= (id === "hcp" ? 2 : 0); k++)
+          for (const p of basis)
+            atoms.push({
+              species: "X",
+              position: [
+                a * (i + j / 2) + p[0],
+                (Math.sqrt(3) * a * j) / 2 + p[1],
+                c * k + p[2],
+              ],
+            });
+    return {
+      name: sampleCatalog.find((s) => s[0] === id)[1],
+      source:
+        "Synthetic geometry-only control; X is an opaque label. Ideal positions, no physical stability claim.",
+      atoms,
+    };
+  }
+  if (id === "checkerboard") {
+    const s = samplePatch("square");
+    return {
+      ...s,
+      name: sampleCatalog.find((s) => s[0] === id)[1],
+      source:
+        "Synthetic binary square geometry; X and Y are opaque labels, not chemistry",
+      atoms: s.atoms.map((a) => ({
+        ...a,
+        species:
+          Math.abs(Math.round((a.position[0] + a.position[1]) / 2)) % 2
+            ? "Y"
+            : "X",
+      })),
+    };
+  }
   if (["square", "triangular"].includes(id)) {
     const atoms = [];
     for (let i = -7; i <= 7; i++)
@@ -139,3 +217,35 @@ sampleCatalog.splice(sampleCatalog.length - 1, 0, [
   "asi",
   "Melt-quenched Si · a-Si research dataset",
 ]);
+
+// Navigation metadata only. Neither discovery nor search consumes these labels.
+export const sampleFamilies = [
+  [
+    "crystalline",
+    "Crystalline solids",
+    [
+      "nacl",
+      "copper",
+      "iron",
+      "silicon",
+      "cscl",
+      "zincblende",
+      "diamond",
+      "sic",
+    ],
+  ],
+  ["molecular", "Molecular / ice", ["ice"]],
+  [
+    "sheets",
+    "2D sheets",
+    ["graphene", "bn", "square", "triangular", "kagome", "checkerboard"],
+  ],
+  ["quasicrystalline", "Quasicrystalline samples", ["cdyb"]],
+  ["disordered", "Disordered samples", ["asi", "glass"]],
+  ["controls", "3D geometric controls", ["sc", "hcp"]],
+];
+export function samplesInFamily(family = "all") {
+  if (family === "all") return sampleCatalog;
+  const ids = sampleFamilies.find((f) => f[0] === family)?.[2] || [];
+  return ids.map((id) => sampleCatalog.find((s) => s[0] === id));
+}

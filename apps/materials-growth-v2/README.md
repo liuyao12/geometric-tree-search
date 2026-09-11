@@ -8,7 +8,24 @@ claim those capabilities already exist in this release.
 
 ## What this release establishes
 
-### Fifteen-sample strict audit and anchor-context completion
+### Sample families and the expanded strict audit
+
+The picker now has an All-families option and six input-family filters: crystalline
+solids, molecular/ice, 2D sheets, quasicrystalline, disordered and 3D geometric
+controls. Family metadata is for browsing only: it never enters learning or search
+and does not classify generated material. The current sample is retained when it
+belongs to a newly selected family; otherwise the first matching example loads.
+All-families mode uses native labeled option groups, with no text field required.
+
+The 20 examples include five additions: ideal diamond C and cubic SiC, plus
+geometry-only HCP, kagome-sheet and binary-square controls. New cell scales are
+illustrative, not measured material parameters. Their fixture integrity, opaque
+labels, family membership, copy isolation and interior coordination are covered
+by `test-sample-library.mjs`; all examples also appear in the strict growth audit.
+This extension changes samples and navigation only, not the engine or marking
+semantics described by the master-contract ledger below.
+
+### Strict audit and anchor-context completion
 
 `node apps/materials-growth-v2/audit-samples.mjs apps/materials-growth-v2/strict-sample-results.json`
 runs every catalogue sample from one atom under the default observed-only rules.

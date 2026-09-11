@@ -1,7 +1,9 @@
-import { sampleCatalog } from "./samples.mjs?v=sample-audit-1";
+import { sampleCatalog } from "./samples.mjs?v=sample-families-1";
 const target = document.getElementById("sample-audit-table");
 try {
-  const response = await fetch("strict-sample-results.json?v=sample-audit-1");
+  const response = await fetch(
+    "strict-sample-results.json?v=sample-families-1",
+  );
   if (!response.ok) throw Error("Audit unavailable");
   const report = await response.json();
   const table = document.createElement("table");

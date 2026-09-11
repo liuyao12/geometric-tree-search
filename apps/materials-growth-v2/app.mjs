@@ -1,7 +1,12 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { samplePatch, sampleCatalog } from "./samples.mjs?v=sample-audit-1";
-import "./sample-audit-ui.mjs";
+import {
+  samplePatch,
+  sampleCatalog,
+  sampleFamilies,
+  samplesInFamily,
+} from "./samples.mjs?v=sample-families-1";
+import "./sample-audit-ui.mjs?v=sample-families-1";
 import { centralSeed } from "./seed.mjs";
 import { renderMetrics, loadBenchmarks } from "./metrics-ui.mjs";
 import { parseStructureText } from "../iqc-growth-live/structure-io.js";
@@ -217,6 +222,7 @@ function lock(value) {
   for (const id of [
     "discover",
     "sample",
+    "sample-family",
     "file",
     "epsilon",
     "neighbors",
@@ -553,13 +559,32 @@ function animate(time) {
   if ((stage === 1 || stage === 2) && grammar) drawGallery(time);
 }
 requestAnimationFrame(animate);
-$("sample").replaceChildren();
-for (const [id, name] of sampleCatalog) {
-  const o = document.createElement("option");
-  o.value = id;
-  o.textContent = name;
-  $("sample").append(o);
+for (const [id, name, ids] of sampleFamilies)
+  $("sample-family").add(new Option(`${name} (${ids.length})`, id));
+function populateSamples() {
+  const previous = $("sample").value,
+    family = $("sample-family").value;
+  $("sample").replaceChildren();
+  for (const [id, name] of sampleFamilies) {
+    if (family !== "all" && family !== id) continue;
+    const group = document.createElement("optgroup");
+    group.label = name;
+    for (const [key, label] of samplesInFamily(id))
+      group.append(new Option(label, key));
+    $("sample").append(group);
+  }
+  const available = samplesInFamily(family);
+  $("sample").value = available.some((s) => s[0] === previous)
+    ? previous
+    : available[0][0];
+  $("sample-library-count").textContent =
+    `${available.length} of ${sampleCatalog.length} examples`;
+  return previous !== $("sample").value;
 }
+populateSamples();
+$("sample-family").onchange = () => {
+  if (populateSamples()) load(samplePatch($("sample").value));
+};
 $("fit-view").onclick = () => {
   if (stage !== 2)
     showAtoms(

@@ -37,6 +37,14 @@
             target structure is supplied to the search.
           </p>
           <label
+            >Sample family<select
+              id="sample-family"
+              aria-describedby="sample-family-note"
+            >
+              <option value="all">All families</option>
+            </select></label
+          >
+          <label
             >Example<select id="sample">
               <option value="nacl">NaCl · cubic control</option>
               <option value="ice">Ice VIII · diffraction-derived D₂O</option>
@@ -45,6 +53,11 @@
               <option value="glass">Cu–Zr · random packing control</option>
             </select></label
           >
+          <p id="sample-family-note" class="note">
+            Groups describe the input sample, not the grown output. Ideal
+            controls are not experimental data.
+          </p>
+          <p id="sample-library-count" class="muted" aria-live="polite"></p>
           <p id="source" class="muted"></p>
           <label class="file"
             >Or import Cartesian XYZ / CIF<input
@@ -299,6 +312,6 @@
       continuous-space adapter · no claim of exhaustive SO(3) search, infinite
       growth, or physical stability
     </div>
-    <script type="module" src="app.mjs?v=sample-audit-1"></script>
+    <script type="module" src="app.mjs?v=sample-families-1"></script>
   </body>
 </html>
