@@ -28,8 +28,10 @@
   margin: 8px 0;
   color: #25565d;
 }
-#benchmarks {
+#benchmarks,
+#sample-audit {
   grid-column: 1/-1;
+  min-width: 0;
   border-top: 1px solid #dde8e9;
   padding-top: 14px;
 }
@@ -39,6 +41,9 @@ summary {
 }
 #benchmark-table {
   overflow-x: auto;
+}
+#sample-audit table {
+  font-size: 14px;
 }
 table {
   width: 100%;
