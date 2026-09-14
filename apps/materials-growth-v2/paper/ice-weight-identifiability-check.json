@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "siteVariables": 2100,
+  "trainingRows": 55200,
+  "uniqueComplementEdges": 15127,
+  "forcedHalfSites": 1806,
+  "freeComplementSites": 12,
+  "freeComplementParameters": 6,
+  "unobservedSites": 282,
+  "totalFreeParameters": 288,
+  "exactArithmetic": "Fractions and affine free parameters in [0,1]",
+  "scope": "Complete weight solution family conditional on the supplied degree-two training selections; not unrestricted inverse-tiling learning."
+}

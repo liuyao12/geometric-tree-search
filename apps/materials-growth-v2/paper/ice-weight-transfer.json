@@ -1,0 +1,736 @@
+{
+  "scope": "Does a validation cover fill for every weight assignment allowed by training?",
+  "groups": [
+    {
+      "phase": "Ih",
+      "covers": 25,
+      "universallyFilledCovers": 24,
+      "atoms": 9600,
+      "universallyFilledAtoms": 9594
+    },
+    {
+      "phase": "II",
+      "covers": 25,
+      "universallyFilledCovers": 17,
+      "atoms": 7200,
+      "universallyFilledAtoms": 7146
+    },
+    {
+      "phase": "VI",
+      "covers": 25,
+      "universallyFilledCovers": 22,
+      "atoms": 6000,
+      "universallyFilledAtoms": 5982
+    },
+    {
+      "phase": "VIII",
+      "covers": 25,
+      "universallyFilledCovers": 23,
+      "atoms": 4800,
+      "universallyFilledAtoms": 4791
+    }
+  ],
+  "results": [
+    {
+      "id": "c00400",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00401",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00402",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00403",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00404",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00405",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00406",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00407",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00408",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00409",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00410",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00411",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00412",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00413",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00414",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00415",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00416",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00417",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00418",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00419",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00420",
+      "universallyFilledAtoms": 378,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00421",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00422",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00423",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00424",
+      "universallyFilledAtoms": 384,
+      "atoms": 384,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00900",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00901",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00902",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00903",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00904",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00905",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00906",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00907",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00908",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00909",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00910",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00911",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00912",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00913",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00914",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00915",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00916",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00917",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00918",
+      "universallyFilledAtoms": 276,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00919",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00920",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00921",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00922",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c00923",
+      "universallyFilledAtoms": 288,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c00924",
+      "universallyFilledAtoms": 282,
+      "atoms": 288,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01400",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01401",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01402",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01403",
+      "universallyFilledAtoms": 234,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01404",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01405",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01406",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01407",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01408",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01409",
+      "universallyFilledAtoms": 234,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01410",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01411",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01412",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01413",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01414",
+      "universallyFilledAtoms": 234,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01415",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01416",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01417",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01418",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01419",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01420",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01421",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01422",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01423",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01424",
+      "universallyFilledAtoms": 240,
+      "atoms": 240,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01900",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01901",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01902",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01903",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01904",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01905",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01906",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01907",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01908",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01909",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01910",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01911",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01912",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01913",
+      "universallyFilledAtoms": 189,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01914",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01915",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01916",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01917",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01918",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01919",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01920",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01921",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01922",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    },
+    {
+      "id": "c01923",
+      "universallyFilledAtoms": 186,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1/2",
+      "maximumPossiblePointSum": "3/2"
+    },
+    {
+      "id": "c01924",
+      "universallyFilledAtoms": 192,
+      "atoms": 192,
+      "minimumPossiblePointSum": "1",
+      "maximumPossiblePointSum": "1"
+    }
+  ],
+  "limits": "Universal consistency of one supplied cover, conditional on two-incidence training. Failure is not proof that another cover or some learned weight choice cannot work."
+}
