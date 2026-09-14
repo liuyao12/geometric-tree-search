@@ -44,6 +44,19 @@
 <div class="downloads"><a href="weighted-reset-evidence.json" download>Download weighted witnesses (~422 kB)</a><a href="verify-weighted-reset.mjs" download>Standalone verifier (Node.js)</a><a href="WEIGHTED-RESET-REPORT.md">Methods, limitations and reproduction</a></div>
 <p><small>Run: <code>node verify-weighted-reset.mjs weighted-reset-evidence.json</code>. Checks five covers and the scalar equality graph. The production growth engine has not been replaced by this isolated experiment.</small></p>
 </section>
+<section id="ice-family"><p class="eyebrow">ICE FAMILY · VERIFIED COVERS, NOT BLIND GROWTH · 14 SEPTEMBER 2026</p>
+<h2>One frozen dictionary.<br>Four held-out ice configurations.</h2>
+<p>Alternative motif groupings recover complete weighted covers for two hexagonal and two cubic ice controls without adding test-specific motifs. The 79-type, nine-site dictionary was fitted on four other synthetic configurations. These are generator-based structural tests, not samples established to share temperature and pressure.</p>
+<div class="table-wrap"><table><caption>Frozen-library reconstruction of supplied coordinates. Geometry tolerance: 0.05 Å.</caption><thead><tr><th>Test</th><th>Matched alternative paths</th><th>Selected motifs</th><th>Exactly filled atoms</th></tr></thead><tbody>
+<tr><th>Ih c002</th><td>685 / 768</td><td>128</td><td>384 / 384</td></tr>
+<tr><th>Ih c003</th><td>688 / 768</td><td>128</td><td>384 / 384</td></tr>
+<tr><th>Ic c006</th><td>384 / 384</td><td>64</td><td>192 / 192</td></tr>
+<tr><th>Ic c007</th><td>384 / 384</td><td>64</td><td>192 / 192</td></tr>
+</tbody></table></div>
+<aside class="callout"><strong>Coverage is working; informative markings are still missing.</strong><p>The larger dictionary's 711 scalar marking variables collapse to two classes—exactly H and O. All recovered test covers satisfy them, but they add nothing beyond species matching. This is not a GCTS speedup or a successful blind-growth result.</p></aside>
+<details><summary>Why alternative groupings matter</summary><p>A fixed grouping initially failed on both hexagonal test configurations. Searching alternative unions recovered exact filling without changing the dictionary. Selection uses a specialized graph-matching control, not the reference GCTS tree-search algorithm. Missing motifs in one grouping do not establish that a material cannot be represented.</p></details>
+<div class="downloads"><a href="ICE-FAMILY-REPORT.md">Methods, limits and reproduction</a><a href="ice-evidence/coordinates.json" download>Coordinates</a><a href="ice-evidence/provenance.json" download>Provenance</a><a href="ice-evidence/composed-dictionary.json" download>Frozen training dictionary</a><a href="ice-evidence/overlap-regular-sweep.json" download>Base filling witnesses</a><a href="ice-evidence/selected-supports.json" download>Selected unions</a><a href="ice-evidence/selected-dictionary.json" download>Test poses</a><a href="ice-evidence/composed-markings.json" download>Scalar marks</a><a href="ice-evidence/verify-ice-composed.mjs" download>Cover verifier</a><a href="ice-evidence/verify-ice-composed-markings.py" download>Scalar verifier</a></div>
+</section>
 <section id="boron-benchmark"><p class="eyebrow">BORON FAMILY · FIRST DIAGNOSTIC · 14 SEPTEMBER 2026</p>
 <h2>Harder crystals expose the limits of pair supports.</h2>
 <p>We checked all six coordinate models supplied with the <a href="https://authors.library.caltech.edu/records/dcaev-djw82">2016 boron study</a>, including both τ models. All pass independent input checks. These are six configurations, not six established phases or an exhaustive boron census.</p>
