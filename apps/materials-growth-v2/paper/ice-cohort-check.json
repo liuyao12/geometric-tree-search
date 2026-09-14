@@ -1,0 +1,13 @@
+{
+  "sameConditionClaimAdmitted": false,
+  "conditionReasons": [
+    "missing file-linked condition evidence"
+  ],
+  "independentTrajectoryHoldoutAdmitted": false,
+  "independenceReasons": [
+    "independent runs not documented",
+    "unknown trajectory identities"
+  ],
+  "exploratoryGeometryTrainingAllowed": true,
+  "scope": "Provenance claim gate only. Disjoint trajectory IDs alone do not establish independence; declared evidence requires audit. Same elements need not imply same composition, equilibrium or sampling distribution."
+}
