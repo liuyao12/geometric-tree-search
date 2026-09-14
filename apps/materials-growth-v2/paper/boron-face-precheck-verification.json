@@ -1,0 +1,220 @@
+{
+  "verifiedPositiveFits": 8,
+  "verifiedExactObstructions": 6,
+  "types": 16,
+  "pairTypes": 4,
+  "variables": 219,
+  "results": [
+    {
+      "files": [
+        "alpha-B-symmetry.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 324,
+      "uniqueEquations": 16,
+      "activeVariables": 14,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/2",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.5,
+      "activeScalarClasses": 7
+    },
+    {
+      "files": [
+        "beta-B105-symmetry.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 2835,
+      "uniqueEquations": 71,
+      "activeVariables": 58,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/6",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.16666666666666666,
+      "activeScalarClasses": 11
+    },
+    {
+      "files": [
+        "beta-B106.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 2862,
+      "uniqueEquations": 161,
+      "activeVariables": 65,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-115/42"
+    },
+    {
+      "files": [
+        "gamma-B-symmetry.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 756,
+      "uniqueEquations": 22,
+      "activeVariables": 18,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/3",
+      "maximumWeight": "2/3",
+      "numericalMaxMin": 0.3333333333333333,
+      "activeScalarClasses": 3
+    },
+    {
+      "files": [
+        "tau-B105-symmetry.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 5670,
+      "uniqueEquations": 89,
+      "activeVariables": 70,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/6",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.16666666666666663,
+      "activeScalarClasses": 11
+    },
+    {
+      "files": [
+        "tau-B106.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 5724,
+      "uniqueEquations": 163,
+      "activeVariables": 89,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-8/3"
+    },
+    {
+      "files": [
+        "alpha-B-symmetry.cif",
+        "beta-B105-symmetry.cif",
+        "beta-B106.cif",
+        "gamma-B-symmetry.cif",
+        "tau-B105-symmetry.cif",
+        "tau-B106.cif"
+      ],
+      "roleTies": false,
+      "requiredPoints": 18171,
+      "uniqueEquations": 417,
+      "activeVariables": 219,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-35/6"
+    },
+    {
+      "files": [
+        "alpha-B-symmetry.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 324,
+      "uniqueEquations": 47,
+      "activeVariables": 14,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/2",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.5,
+      "activeScalarClasses": 2
+    },
+    {
+      "files": [
+        "beta-B105-symmetry.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 2835,
+      "uniqueEquations": 173,
+      "activeVariables": 58,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/6",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.16666666666666666,
+      "activeScalarClasses": 5
+    },
+    {
+      "files": [
+        "beta-B106.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 2862,
+      "uniqueEquations": 165,
+      "activeVariables": 65,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-58/21"
+    },
+    {
+      "files": [
+        "gamma-B-symmetry.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 756,
+      "uniqueEquations": 31,
+      "activeVariables": 18,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/3",
+      "maximumWeight": "2/3",
+      "numericalMaxMin": 0.3333333333333333,
+      "activeScalarClasses": 2
+    },
+    {
+      "files": [
+        "tau-B105-symmetry.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 5670,
+      "uniqueEquations": 191,
+      "activeVariables": 70,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact positive finite-quotient precheck passed",
+      "exactEquations": true,
+      "minimumWeight": "1/6",
+      "maximumWeight": "1",
+      "numericalMaxMin": 0.16666666666666663,
+      "activeScalarClasses": 5
+    },
+    {
+      "files": [
+        "tau-B106.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 5724,
+      "uniqueEquations": 167,
+      "activeVariables": 89,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-8/3"
+    },
+    {
+      "files": [
+        "alpha-B-symmetry.cif",
+        "beta-B105-symmetry.cif",
+        "beta-B106.cif",
+        "gamma-B-symmetry.cif",
+        "tau-B105-symmetry.cif",
+        "tau-B106.cif"
+      ],
+      "roleTies": true,
+      "requiredPoints": 18171,
+      "uniqueEquations": 563,
+      "activeVariables": 219,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "exact restricted nonnegative filling obstruction",
+      "farkasRhs": "-35/6"
+    }
+  ],
+  "scope": "All-occurrences training diagnostic; not held-out transfer or growth."
+}
