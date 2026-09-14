@@ -15,6 +15,14 @@ for trial in range(30):
         if all(d==2 for _,d in g.degree) and nx.is_connected(g):exists=True;break
     result=m.select([[i] for i in range(n)],edges,list(range(len(edges))),2,2.)
     assert (result['status']=='connected positive finite cover')==exists,(trial,result,exists)
+    conflicts=[tuple(rng.sample(range(len(edges)),2))] if len(edges)>=2 else []
+    exists_marked=False
+    for choice in itertools.combinations(range(len(edges)),n):
+        if any(a in choice and b in choice for a,b in conflicts):continue
+        g=nx.Graph();g.add_nodes_from(range(n));g.add_edges_from(edges[i] for i in choice)
+        if all(d==2 for _,d in g.degree) and nx.is_connected(g):exists_marked=True;break
+    marked=m.select([[i] for i in range(n)],edges,list(range(len(edges))),2,2.,conflicts)
+    assert (marked['status']=='connected positive finite cover')==exists_marked,(trial,marked,exists_marked)
 edges=[]
 for offset in (0,5):
     edges.extend((a+offset,b+offset) for a,b in itertools.combinations(range(4),2) if (a,b)!=(0,1))
@@ -22,4 +30,4 @@ for offset in (0,5):
 edges.append((4,9))
 result=m.select([[i] for i in range(10)],edges,list(range(len(edges))),3,2.)
 assert result['status']=='connected positive finite cover'
-print('30 exhaustive even-degree tests and one odd-degree bridge test passed')
+print('30 exhaustive unmarked and 30 conflict-constrained tests, plus one odd-degree bridge test passed')

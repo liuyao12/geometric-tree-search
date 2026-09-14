@@ -1,0 +1,87 @@
+{
+  "verifiedCovers": 200,
+  "attemptedConfigurations": 200,
+  "typeCount": 350,
+  "singletonTypes": 66,
+  "epsilonAngstrom": 0.15,
+  "sharedPositiveWeight": "1/2",
+  "scalarClasses": 8,
+  "allOccurrenceFitZeroWeightSites": 1734,
+  "allOccurrenceFitTotalSites": 2100,
+  "allOccurrenceFitEmptyTypes": 166,
+  "groups": [
+    {
+      "phase": "Ih",
+      "split": "train",
+      "configurations": 25,
+      "candidateOccurrences": 6437,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 9600,
+      "selectedMotifs": 3200
+    },
+    {
+      "phase": "II",
+      "split": "train",
+      "configurations": 25,
+      "candidateOccurrences": 7286,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 7200,
+      "selectedMotifs": 2400
+    },
+    {
+      "phase": "VI",
+      "split": "train",
+      "configurations": 25,
+      "candidateOccurrences": 6104,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 6000,
+      "selectedMotifs": 2000
+    },
+    {
+      "phase": "VIII",
+      "split": "train",
+      "configurations": 25,
+      "candidateOccurrences": 8018,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 4800,
+      "selectedMotifs": 1600
+    },
+    {
+      "phase": "Ih",
+      "split": "test",
+      "configurations": 25,
+      "candidateOccurrences": 6416,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 9600,
+      "selectedMotifs": 3200
+    },
+    {
+      "phase": "II",
+      "split": "test",
+      "configurations": 25,
+      "candidateOccurrences": 7214,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 7200,
+      "selectedMotifs": 2400
+    },
+    {
+      "phase": "VI",
+      "split": "test",
+      "configurations": 25,
+      "candidateOccurrences": 6100,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 6000,
+      "selectedMotifs": 2000
+    },
+    {
+      "phase": "VIII",
+      "split": "test",
+      "configurations": 25,
+      "candidateOccurrences": 7935,
+      "verifiedConnectedCovers": 25,
+      "exactlyFilledAtoms": 4800,
+      "selectedMotifs": 1600
+    }
+  ],
+  "scope": "Finite supplied-coordinate covers with a tested uniform-weight hypothesis. Specialized MILP, not reference tree search, learned t optimization, independent-trajectory validation or blind growth."
+}

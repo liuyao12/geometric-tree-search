@@ -20,6 +20,7 @@ for r in s['results']:
         for p in ids:totals[p]+=1
         for u,j in enumerate(o['permutation']):
             p=ids[j];label=d['scalarLabels'][d['offsets'][o['type']]+u]
+            if label is None:continue
             if p in marks:assert marks[p]==label
             marks[p]=label
     assert all(t==s['degreeHypothesis'] for t in totals) and nx.is_connected(graph)

@@ -1,0 +1,74 @@
+{
+  "verifiedTrainingWitnessSets": 2,
+  "classes": 8,
+  "unassignedSites": 282,
+  "classSizes": [
+    1204,
+    602,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "groups": [
+    {
+      "phase": "Ih",
+      "split": "train",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "II",
+      "split": "train",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "VI",
+      "split": "train",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "VIII",
+      "split": "train",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "Ih",
+      "split": "test",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "II",
+      "split": "test",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "VI",
+      "split": "test",
+      "configurations": 25,
+      "conflictingPoints": 0,
+      "coversWithConflicts": 0
+    },
+    {
+      "phase": "VIII",
+      "split": "test",
+      "configurations": 25,
+      "conflictingPoints": 3,
+      "coversWithConflicts": 1
+    }
+  ],
+  "scope": "Selected-cover scalar equalities; validation uses first selected cover only, not existential reconstruction or independent-trajectory generalization."
+}

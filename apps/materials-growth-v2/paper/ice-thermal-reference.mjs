@@ -9,7 +9,7 @@ const results=[];
 for(const c of d.configurations.filter(c=>!c.training))for(const marked of [false,true]){
  const model={capacity:2,required:Array.from({length:c.atoms},(_,i)=>String(i)),candidates:c.occurrences.flatMap((o,i)=>o.matched?[{
   id:String(i).padStart(6,'0'),t:o.ids.map(p=>({point:String(p),value:1})),
-  m:marked?o.permutation.map((j,u)=>({point:String(o.ids[j]),lo:d.scalarLabels[d.offsets[o.type]+u],hi:d.scalarLabels[d.offsets[o.type]+u]})):[]
+  m:marked?o.permutation.flatMap((j,u)=>{const v=d.scalarLabels[d.offsets[o.type]+u];return v==null?[]:[{point:String(o.ids[j]),lo:v,hi:v}];}):[]
  }]:[])};
  const engine=new PointSearch(model),initial=JSON.stringify(engine.semanticState()),start=performance.now();let steps=0,last;
  while(steps<10000&&performance.now()-start<1000){

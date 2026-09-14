@@ -20,6 +20,7 @@ for run in r['results']:
         if run['marked']:
             for u,j in enumerate(o['permutation']):
                 p=ids[j];label=d['scalarLabels'][d['offsets'][o['type']]+u]
+                if label is None:continue
                 if p in marks:assert marks[p]==label
                 marks[p]=label
     assert all(t<=2 for t in totals);complete=all(t==2 for t in totals);assert complete==(run['status']=='exact finite cover')
