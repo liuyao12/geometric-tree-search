@@ -1,0 +1,88 @@
+{
+  "source": "reference",
+  "verifiedRuns": 600,
+  "searchMode": "reference",
+  "groups": [
+    {
+      "phase": "Ih",
+      "marked": false,
+      "runs": 75,
+      "complete": 64,
+      "connectedComplete": 20,
+      "unknownOrIncomplete": 11,
+      "branches": 31306,
+      "backtracks": 49382
+    },
+    {
+      "phase": "Ih",
+      "marked": true,
+      "runs": 75,
+      "complete": 64,
+      "connectedComplete": 20,
+      "unknownOrIncomplete": 11,
+      "branches": 31306,
+      "backtracks": 49382
+    },
+    {
+      "phase": "II",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 4,
+      "unknownOrIncomplete": 0,
+      "branches": 7323,
+      "backtracks": 2085
+    },
+    {
+      "phase": "II",
+      "marked": true,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 4,
+      "unknownOrIncomplete": 0,
+      "branches": 7323,
+      "backtracks": 2085
+    },
+    {
+      "phase": "VI",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 3,
+      "unknownOrIncomplete": 0,
+      "branches": 5495,
+      "backtracks": 466
+    },
+    {
+      "phase": "VI",
+      "marked": true,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 3,
+      "unknownOrIncomplete": 0,
+      "branches": 5495,
+      "backtracks": 466
+    },
+    {
+      "phase": "VIII",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 0,
+      "unknownOrIncomplete": 0,
+      "branches": 4875,
+      "backtracks": 595
+    },
+    {
+      "phase": "VIII",
+      "marked": true,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 0,
+      "unknownOrIncomplete": 0,
+      "branches": 4875,
+      "backtracks": 595
+    }
+  ],
+  "scope": "Remaining 300 author-validation frames, frozen admitted motifs. Finite supplied-coordinate reconstruction, not independent trajectories or blind growth."
+}

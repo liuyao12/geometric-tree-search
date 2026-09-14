@@ -4,7 +4,14 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const raw=readFileSync(process.argv[2]),d=JSON.parse(raw),kernelRaw=readFileSync(process.argv[3]);
-const {PointSearch,verify}=await import(pathToFileURL(process.argv[3]).href);
+const {PointSearch:BaseSearch,verify}=await import(pathToFileURL(process.argv[3]).href);
+const mode=process.argv[5]||'reference';assert.ok(['reference','branch-exclusions'].includes(mode));
+let PointSearch=BaseSearch,exclusionHash=null;
+if(mode==='branch-exclusions'){
+ const url=new URL('./branch-local-exclusions.mjs',import.meta.url);
+ const {branchExclusionClass}=await import(url.href);PointSearch=branchExclusionClass(BaseSearch);
+ exclusionHash=createHash('sha256').update(readFileSync(url)).digest('hex');
+}
 const results=[];
 for(const c of d.configurations.filter(c=>!c.training))for(const marked of [false,true]){
  const model={capacity:2,required:Array.from({length:c.atoms},(_,i)=>String(i)),candidates:c.occurrences.flatMap((o,i)=>o.matched?[{
@@ -24,7 +31,7 @@ for(const c of d.configurations.filter(c=>!c.training))for(const marked of [fals
  const selected=[...engine.placed.keys()],check=verify(model,selected),stats={...engine.stats},seconds=(performance.now()-start)/1000;
  engine.undo(0);engine.auditGraph();assert.equal(JSON.stringify(engine.semanticState()),initial);
  const r={id:c.id,marked,status:check.complete?'exact finite cover':last?.kind==='exhausted'?'exhausted finite pool':'budget unknown',
-  selected,steps,seconds,stats,rootSemanticRollback:true};results.push(r);console.log(JSON.stringify({...r,selected:selected.length}));
+  selected,steps,seconds,stats,parentExclusions:engine.exclusionCount||0,rootSemanticRollback:true};results.push(r);console.log(JSON.stringify({...r,selected:selected.length}));
 }
 writeFileSync(process.argv[4],JSON.stringify({scope:'Supplied-coordinate finite pool, all required atoms roots at generation zero; uniform t=1/2 hypothesis; no connectivity constraint or blind growth.',
- dictionaryHash:createHash('sha256').update(raw).digest('hex'),kernelHash:createHash('sha256').update(kernelRaw).digest('hex'),results}),{flag:'wx'});
+ mode,exclusionHash,dictionaryHash:createHash('sha256').update(raw).digest('hex'),kernelHash:createHash('sha256').update(kernelRaw).digest('hex'),results}),{flag:'wx'});

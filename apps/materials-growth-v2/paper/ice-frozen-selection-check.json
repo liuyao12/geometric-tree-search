@@ -1,0 +1,40 @@
+{
+  "source": "connected-selection control",
+  "verifiedRuns": 300,
+  "searchMode": "connected-selection",
+  "groups": [
+    {
+      "phase": "Ih",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 75,
+      "unknownOrIncomplete": 0
+    },
+    {
+      "phase": "II",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 75,
+      "unknownOrIncomplete": 0
+    },
+    {
+      "phase": "VI",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 75,
+      "unknownOrIncomplete": 0
+    },
+    {
+      "phase": "VIII",
+      "marked": false,
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 75,
+      "unknownOrIncomplete": 0
+    }
+  ],
+  "scope": "Remaining 300 author-validation frames, frozen admitted motifs. Finite supplied-coordinate reconstruction, not independent trajectories or blind growth."
+}
