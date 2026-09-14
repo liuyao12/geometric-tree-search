@@ -3,7 +3,7 @@ import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
-const [poolDir,markDir,selectionDir,kernelPath,dest]=process.argv.slice(2);
+const [poolDir,markDir,selectionDir,kernelPath,dest,fixedUniverseDir]=process.argv.slice(2);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const {PointSearch,verify}=await import(pathToFileURL(kernelPath));mkdirSync(dest);
 const results=[];
@@ -28,13 +28,16 @@ for(let fold=0;fold<6;fold++){
  const raw=readFileSync(`${poolDir}/${fold}.json`),pool=JSON.parse(raw),mr=readFileSync(`${markDir}/${fold}.json`),marks=JSON.parse(mr);
  const sr=readFileSync(`${selectionDir}/${fold}.json`),selection=JSON.parse(sr);
  assert.equal(marks.trainingDictionaryHash,pool.frozenDictionaryHash);assert.equal(marks.selectedArtifactHash,hash(sr));
+ const fixedIds=fixedUniverseDir?new Set(JSON.parse(readFileSync(`${fixedUniverseDir}/${fold}-false.json`)).model.candidates.map(c=>c.id)):null;
  const capacity=selection.summary.learnedDenominator,seen=new Set(),base=[];
  for(const [index,o] of pool.testConfiguration.occurrences.entries()){
+  const candidateId=String(index).padStart(6,'0');if(fixedIds&&!fixedIds.has(candidateId))continue;
   const inventory=JSON.stringify([o.type,[...o.ids].sort((a,b)=>a-b)]);
   const m=o.permutation.flatMap((p,u)=>marks.labels[3*o.type+u]===null?[]:[{point:String(o.ids[p]),lo:marks.labels[3*o.type+u],hi:marks.labels[3*o.type+u]}]).sort((a,b)=>a.point.localeCompare(b.point));
-  const identity=JSON.stringify([inventory,m]);if(seen.has(identity))continue;seen.add(identity);
-  base.push({id:String(index).padStart(6,'0'),inventory,m,t:o.ids.map(p=>({point:String(p),value:1}))});
+  const identity=JSON.stringify([inventory,m]);if(!fixedIds&&seen.has(identity))continue;seen.add(identity);
+  base.push({id:candidateId,inventory,m,t:o.ids.map(p=>({point:String(p),value:1}))});
  }
+ if(fixedIds)assert.equal(base.length,fixedIds.size);
  for(const marked of [false,true]){
   const candidates=base.map(c=>({...c,m:marked?c.m:[]}));
   const model={capacity,required:Array.from({length:pool.testConfiguration.atoms},(_,i)=>String(i)),candidates};

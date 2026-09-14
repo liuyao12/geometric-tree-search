@@ -15,7 +15,7 @@ import numpy as np
 from scipy.optimize import milp, Bounds, LinearConstraint
 from scipy.sparse import coo_matrix
 
-def selection(c,k):
+def selection(c,k,seed=None):
     rows=[];cols=[];seen=set();pool=[]
     # Uniform scalar t and no marking: within a template, site permutations
     # have the same point function in this target-ID model.
@@ -24,6 +24,10 @@ def selection(c,k):
         if key in seen:continue
         seen.add(key);pool.append(original)
         rows.extend(o['ids']);cols.extend([len(pool)-1]*3)
+    if seed is not None:
+        np.random.default_rng(seed).shuffle(pool)
+        rows=[p for original in pool for p in c['occurrences'][original]['ids']]
+        cols=[j for j in range(len(pool)) for _ in range(3)]
     n=c['atoms']
     if (n*k)%3:return {'status':'exact divisibility obstruction','selected':[]}
     counts=np.bincount(rows,minlength=n)

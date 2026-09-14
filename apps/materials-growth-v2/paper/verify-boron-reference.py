@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 
 def sha(raw):return hashlib.sha256(raw).hexdigest()
-def verify(training,pools,selections,markings,search):
+def verify(training,pools,selections,markings,search,ensemble=None):
     results=[]
     for fold in range(6):
         dr=(Path(training)/str(fold)/'training-dictionary.json').read_bytes();d=json.loads(dr)
@@ -17,14 +17,20 @@ def verify(training,pools,selections,markings,search):
         def connect(group):
             for v in group[1:]:adj[group[0]].add(v);adj[v].add(group[0])
         trial=s['trainingTrials'][-1]
-        for c,selected in zip(d['configurations'],trial['fits']):
-            points=[[] for _ in range(c['atoms'])]
-            for i in selected['selected']:
-                o=c['occurrences'][i]
-                for u,p in enumerate(o['permutation']):
-                    v=3*o['type']+u;points[o['ids'][p]].append(v);active.add(v)
-            assert all(len(g)==trial['k'] for g in points)
-            for g in points:connect(g)
+        bundles=[trial['fits']]
+        if ensemble:
+            er=(Path(ensemble)/f'{fold}.json').read_bytes();e=json.loads(er)
+            assert marks['ensembleHash']==sha(er) and e['trainingDictionaryHash']==sha(dr) and e['selectedArtifactHash']==sha(sr)
+            bundles=e['covers']
+        for bundle in bundles:
+            for c,selected in zip(d['configurations'],bundle):
+                points=[[] for _ in range(c['atoms'])]
+                for i in selected['selected']:
+                    o=c['occurrences'][i]
+                    for u,p in enumerate(o['permutation']):
+                        v=3*o['type']+u;points[o['ids'][p]].append(v);active.add(v)
+                assert all(len(g)==trial['k'] for g in points)
+                for g in points:connect(g)
         for t in d['types']:
             for a,b in t['symmetryTies']:connect([3*t['id']+a,3*t['id']+b])
         unseen=set(range(n));label_components={}
@@ -74,6 +80,6 @@ def verify(training,pools,selections,markings,search):
     out={'verifiedResults':results,'trainingOnlyMarkingPartitionsChecked':True,'matchedCandidatePools':True}
     print(json.dumps(out,indent=2));return out
 if __name__=='__main__':
-    out=verify(*sys.argv[1:6])
+    out=verify(*sys.argv[1:6],ensemble=sys.argv[7] if len(sys.argv)>7 else None)
     if len(sys.argv)>6:
         with Path(sys.argv[6]).open('x') as f:json.dump(out,f,indent=2)

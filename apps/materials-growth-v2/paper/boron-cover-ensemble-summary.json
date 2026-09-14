@@ -1,0 +1,257 @@
+{
+  "scope": "Training-cover robustness of scalar marks: no new atomic configurations.\n\nPool the original selected cover and eight alternative valid covers generated\nby seeded candidate-order shuffles. Only five training inputs are consulted.\nThis probes cover-choice dependence, not a physical ensemble or generalization.\n",
+  "results": [
+    {
+      "fold": 0,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 46,
+          "assignedVariables": 978,
+          "observedVariables": 978
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 26,
+          "assignedVariables": 1419,
+          "observedVariables": 1419
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 16,
+          "assignedVariables": 1659,
+          "observedVariables": 1659
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 5,
+          "assignedVariables": 1965,
+          "observedVariables": 1965
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 1,
+          "assignedVariables": 2250,
+          "observedVariables": 2250
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 42,
+          "assignedVariables": 981,
+          "observedVariables": 981
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 19,
+          "assignedVariables": 1398,
+          "observedVariables": 1398
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 14,
+          "assignedVariables": 1641,
+          "observedVariables": 1641
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 7,
+          "assignedVariables": 1962,
+          "observedVariables": 1962
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 3,
+          "assignedVariables": 2244,
+          "observedVariables": 2244
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 37,
+          "assignedVariables": 837,
+          "observedVariables": 837
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 25,
+          "assignedVariables": 1182,
+          "observedVariables": 1182
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 16,
+          "assignedVariables": 1407,
+          "observedVariables": 1407
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 7,
+          "assignedVariables": 1656,
+          "observedVariables": 1656
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 1,
+          "assignedVariables": 1932,
+          "observedVariables": 1932
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 43,
+          "assignedVariables": 945,
+          "observedVariables": 945
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 29,
+          "assignedVariables": 1338,
+          "observedVariables": 1338
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 17,
+          "assignedVariables": 1569,
+          "observedVariables": 1569
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 5,
+          "assignedVariables": 1905,
+          "observedVariables": 1905
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 2,
+          "assignedVariables": 2196,
+          "observedVariables": 2196
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 58,
+          "assignedVariables": 870,
+          "observedVariables": 870
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 29,
+          "assignedVariables": 1287,
+          "observedVariables": 1287
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 13,
+          "assignedVariables": 1527,
+          "observedVariables": 1527
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 6,
+          "assignedVariables": 1821,
+          "observedVariables": 1821
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 3,
+          "assignedVariables": 2157,
+          "observedVariables": 2157
+        }
+      ]
+    },
+    {
+      "fold": 5,
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "snapshots": [
+        {
+          "additionalCoversPerConfiguration": 0,
+          "classes": 19,
+          "assignedVariables": 648,
+          "observedVariables": 648
+        },
+        {
+          "additionalCoversPerConfiguration": 1,
+          "classes": 15,
+          "assignedVariables": 894,
+          "observedVariables": 894
+        },
+        {
+          "additionalCoversPerConfiguration": 2,
+          "classes": 18,
+          "assignedVariables": 1059,
+          "observedVariables": 1059
+        },
+        {
+          "additionalCoversPerConfiguration": 4,
+          "classes": 10,
+          "assignedVariables": 1254,
+          "observedVariables": 1254
+        },
+        {
+          "additionalCoversPerConfiguration": 8,
+          "classes": 4,
+          "assignedVariables": 1479,
+          "observedVariables": 1479
+        }
+      ]
+    }
+  ]
+}

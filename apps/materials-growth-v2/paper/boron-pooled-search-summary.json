@@ -1,0 +1,270 @@
+{
+  "scope": "Declared finite point-model search; known target poses; learned scalar hypotheses; shared base-placement inventory; no continuous completeness",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "results": [
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 153,
+      "required": 12,
+      "capacity": 3,
+      "steps": 16,
+      "seconds": 0.0024700419999999996,
+      "stats": {
+        "attempts": 15,
+        "accepted": 15,
+        "forced": 1,
+        "branches": 11,
+        "backtracks": 3,
+        "eliminated": 156,
+        "checks": 2178
+      },
+      "rootSemanticRollback": true,
+      "selected": 12
+    },
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 153,
+      "required": 12,
+      "capacity": 3,
+      "steps": 16,
+      "seconds": 0.001370625000000004,
+      "stats": {
+        "attempts": 15,
+        "accepted": 15,
+        "forced": 1,
+        "branches": 11,
+        "backtracks": 3,
+        "eliminated": 156,
+        "checks": 2178
+      },
+      "rootSemanticRollback": true,
+      "selected": 12
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 2273,
+      "required": 105,
+      "capacity": 3,
+      "steps": 133,
+      "seconds": 0.020724957999999995,
+      "stats": {
+        "attempts": 132,
+        "accepted": 132,
+        "forced": 8,
+        "branches": 108,
+        "backtracks": 21,
+        "eliminated": 2540,
+        "checks": 35552
+      },
+      "rootSemanticRollback": true,
+      "selected": 105
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 2273,
+      "required": 105,
+      "capacity": 3,
+      "steps": 133,
+      "seconds": 0.021297374999999986,
+      "stats": {
+        "attempts": 132,
+        "accepted": 132,
+        "forced": 8,
+        "branches": 108,
+        "backtracks": 21,
+        "eliminated": 2540,
+        "checks": 35552
+      },
+      "rootSemanticRollback": true,
+      "selected": 105
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 1979,
+      "required": 106,
+      "capacity": 3,
+      "steps": 107,
+      "seconds": 0.014392416999999994,
+      "stats": {
+        "attempts": 106,
+        "accepted": 106,
+        "forced": 2,
+        "branches": 104,
+        "backtracks": 0,
+        "eliminated": 1873,
+        "checks": 22939
+      },
+      "rootSemanticRollback": true,
+      "selected": 106
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 1979,
+      "required": 106,
+      "capacity": 3,
+      "steps": 107,
+      "seconds": 0.015156499999999995,
+      "stats": {
+        "attempts": 106,
+        "accepted": 106,
+        "forced": 2,
+        "branches": 104,
+        "backtracks": 0,
+        "eliminated": 1873,
+        "checks": 22939
+      },
+      "rootSemanticRollback": true,
+      "selected": 106
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 336,
+      "required": 28,
+      "capacity": 3,
+      "steps": 317,
+      "seconds": 0.012743750000000035,
+      "stats": {
+        "attempts": 316,
+        "accepted": 316,
+        "forced": 31,
+        "branches": 122,
+        "backtracks": 258,
+        "eliminated": 2139,
+        "checks": 60761
+      },
+      "rootSemanticRollback": true,
+      "selected": 28
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 336,
+      "required": 28,
+      "capacity": 3,
+      "steps": 317,
+      "seconds": 0.012266999999999997,
+      "stats": {
+        "attempts": 316,
+        "accepted": 316,
+        "forced": 31,
+        "branches": 122,
+        "backtracks": 258,
+        "eliminated": 2139,
+        "checks": 60761
+      },
+      "rootSemanticRollback": true,
+      "selected": 28
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 3970,
+      "required": 210,
+      "capacity": 3,
+      "steps": 1149,
+      "seconds": 0.16742525,
+      "stats": {
+        "attempts": 1148,
+        "accepted": 1148,
+        "forced": 101,
+        "branches": 428,
+        "backtracks": 843,
+        "eliminated": 13234,
+        "checks": 394809
+      },
+      "rootSemanticRollback": true,
+      "selected": 210
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 3970,
+      "required": 210,
+      "capacity": 3,
+      "steps": 1149,
+      "seconds": 0.19084620899999993,
+      "stats": {
+        "attempts": 1148,
+        "accepted": 1148,
+        "forced": 101,
+        "branches": 428,
+        "backtracks": 843,
+        "eliminated": 13234,
+        "checks": 394809
+      },
+      "rootSemanticRollback": true,
+      "selected": 210
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "candidates": 3467,
+      "required": 212,
+      "capacity": 3,
+      "steps": 85696,
+      "seconds": 10.387068709,
+      "stats": {
+        "attempts": 85695,
+        "accepted": 85695,
+        "forced": 6777,
+        "branches": 20293,
+        "backtracks": 78707,
+        "eliminated": 689940,
+        "checks": 34443531
+      },
+      "rootSemanticRollback": true,
+      "selected": 212
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "candidates": 3467,
+      "required": 212,
+      "capacity": 3,
+      "steps": 85685,
+      "seconds": 11.051889708000001,
+      "stats": {
+        "attempts": 85684,
+        "accepted": 85684,
+        "forced": 6774,
+        "branches": 20292,
+        "backtracks": 78700,
+        "eliminated": 689816,
+        "checks": 34440620
+      },
+      "rootSemanticRollback": true,
+      "selected": 212
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "scope": "Training-cover choice sensitivity, not new physical configurations",
+  "results": [
+    {
+      "fold": 0,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 39,
+      "classesByRound": [
+        46,
+        26,
+        16,
+        5,
+        1
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "fold": 1,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 32,
+      "classesByRound": [
+        42,
+        19,
+        14,
+        7,
+        3
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "fold": 2,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 39,
+      "classesByRound": [
+        37,
+        25,
+        16,
+        7,
+        1
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "fold": 3,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 32,
+      "classesByRound": [
+        43,
+        29,
+        17,
+        5,
+        2
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "fold": 4,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 32,
+      "classesByRound": [
+        58,
+        29,
+        13,
+        6,
+        3
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "fold": 5,
+      "verifiedCovers": 45,
+      "additionalCoversConflictingWithOriginalMarks": 32,
+      "classesByRound": [
+        19,
+        15,
+        18,
+        10,
+        4
+      ],
+      "uniqueCoversPerConfiguration": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    }
+  ]
+}
