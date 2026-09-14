@@ -1,0 +1,101 @@
+{
+  "scope": "Geometric-neighborhood marked variants of frozen three-site motifs.\n\nDescriptor: neighbor count within 1.35 times pooled training median nearest\ndistance, in the same finite minimum-image quotient as prior controls. Each\nobserved ordered triple of site descriptors is a marked variant. All variants\nare offered at each test geometry; no test descriptor selects a candidate.\nThis is a declared descriptor hypothesis, not chemistry or general anchor learning.\n",
+  "results": [
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "geometricTypes": 851,
+      "markedVariants": 1334,
+      "typesWithMultipleVariants": 262,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 153,
+      "testMarkedCandidates": 324
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "geometricTypes": 846,
+      "markedVariants": 1322,
+      "typesWithMultipleVariants": 245,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 2273,
+      "testMarkedCandidates": 5733
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "geometricTypes": 730,
+      "markedVariants": 1060,
+      "typesWithMultipleVariants": 208,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 1979,
+      "testMarkedCandidates": 4180
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "geometricTypes": 829,
+      "markedVariants": 1302,
+      "typesWithMultipleVariants": 256,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 336,
+      "testMarkedCandidates": 928
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "geometricTypes": 822,
+      "markedVariants": 1290,
+      "typesWithMultipleVariants": 250,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 3970,
+      "testMarkedCandidates": 10318
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "geometricTypes": 633,
+      "markedVariants": 900,
+      "typesWithMultipleVariants": 160,
+      "descriptorLabels": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "testBasePlacements": 3462,
+      "testMarkedCandidates": 7405
+    }
+  ]
+}

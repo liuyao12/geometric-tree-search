@@ -1,0 +1,366 @@
+{
+  "scope": "Known-coordinate finite point models; learned context variants; no continuous completeness or blind growth",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "results": [
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 16,
+      "seconds": 0.002744250000000001,
+      "candidates": 153,
+      "selected": 12,
+      "stats": {
+        "attempts": 15,
+        "accepted": 15,
+        "forced": 1,
+        "branches": 11,
+        "backtracks": 3,
+        "eliminated": 156,
+        "checks": 2178
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "steps": 51,
+      "seconds": 0.0048124579999999995,
+      "candidates": 324,
+      "selected": 12,
+      "stats": {
+        "attempts": 50,
+        "accepted": 50,
+        "forced": 0,
+        "branches": 17,
+        "backtracks": 38,
+        "eliminated": 565,
+        "checks": 17592
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 0,
+      "heldOut": "alpha-B-symmetry.cif",
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "steps": 166,
+      "seconds": 0.014385207999999998,
+      "candidates": 324,
+      "selected": 12,
+      "stats": {
+        "attempts": 165,
+        "accepted": 165,
+        "forced": 20,
+        "branches": 64,
+        "backtracks": 134,
+        "eliminated": 1093,
+        "checks": 58661
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 133,
+      "seconds": 0.020919833000000013,
+      "candidates": 2273,
+      "selected": 105,
+      "stats": {
+        "attempts": 132,
+        "accepted": 132,
+        "forced": 8,
+        "branches": 108,
+        "backtracks": 21,
+        "eliminated": 2540,
+        "checks": 35552
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "steps": 18812,
+      "seconds": 3.6941824160000003,
+      "candidates": 5733,
+      "selected": 105,
+      "stats": {
+        "attempts": 18811,
+        "accepted": 18811,
+        "forced": 0,
+        "branches": 2600,
+        "backtracks": 18706,
+        "eliminated": 543742,
+        "checks": 21598051
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 1,
+      "heldOut": "beta-B105-symmetry.cif",
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "steps": 972,
+      "seconds": 0.19001133400000025,
+      "candidates": 5733,
+      "selected": 105,
+      "stats": {
+        "attempts": 971,
+        "accepted": 971,
+        "forced": 84,
+        "branches": 341,
+        "backtracks": 783,
+        "eliminated": 15543,
+        "checks": 786104
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 107,
+      "seconds": 0.013071291000000202,
+      "candidates": 1979,
+      "selected": 106,
+      "stats": {
+        "attempts": 106,
+        "accepted": 106,
+        "forced": 2,
+        "branches": 104,
+        "backtracks": 0,
+        "eliminated": 1873,
+        "checks": 22939
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "steps": 557,
+      "seconds": 0.10009866700000021,
+      "candidates": 4180,
+      "selected": 106,
+      "stats": {
+        "attempts": 556,
+        "accepted": 556,
+        "forced": 0,
+        "branches": 199,
+        "backtracks": 450,
+        "eliminated": 14701,
+        "checks": 547969
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 2,
+      "heldOut": "beta-B106.cif",
+      "lane": "marked",
+      "status": "budget-unknown",
+      "steps": 51800,
+      "seconds": 15.00965125,
+      "candidates": 4180,
+      "selected": 36,
+      "stats": {
+        "attempts": 51800,
+        "accepted": 51800,
+        "forced": 13742,
+        "branches": 13492,
+        "backtracks": 38025,
+        "eliminated": 1339615,
+        "checks": 25042231
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 317,
+      "seconds": 0.01220470899999782,
+      "candidates": 336,
+      "selected": 28,
+      "stats": {
+        "attempts": 316,
+        "accepted": 316,
+        "forced": 31,
+        "branches": 122,
+        "backtracks": 258,
+        "eliminated": 2139,
+        "checks": 60761
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "steps": 21958,
+      "seconds": 1.636595290999998,
+      "candidates": 928,
+      "selected": 28,
+      "stats": {
+        "attempts": 21957,
+        "accepted": 21957,
+        "forced": 452,
+        "branches": 2649,
+        "backtracks": 21478,
+        "eliminated": 470984,
+        "checks": 11638361
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 3,
+      "heldOut": "gamma-B-symmetry.cif",
+      "lane": "marked",
+      "status": "budget-unknown",
+      "steps": 100000,
+      "seconds": 10.292043541000004,
+      "candidates": 928,
+      "selected": 20,
+      "stats": {
+        "attempts": 100000,
+        "accepted": 100000,
+        "forced": 25320,
+        "branches": 27486,
+        "backtracks": 74661,
+        "eliminated": 984386,
+        "checks": 49127402
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 1149,
+      "seconds": 0.16834000000000016,
+      "candidates": 3970,
+      "selected": 210,
+      "stats": {
+        "attempts": 1148,
+        "accepted": 1148,
+        "forced": 101,
+        "branches": 428,
+        "backtracks": 843,
+        "eliminated": 13234,
+        "checks": 394809
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "lane": "unmarked-expanded",
+      "status": "budget-unknown",
+      "steps": 41224,
+      "seconds": 15.003706458000003,
+      "candidates": 10318,
+      "selected": 165,
+      "stats": {
+        "attempts": 41224,
+        "accepted": 41224,
+        "forced": 1,
+        "branches": 2432,
+        "backtracks": 41059,
+        "eliminated": 1373161,
+        "checks": 48273179
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 4,
+      "heldOut": "tau-B105-symmetry.cif",
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "steps": 3085,
+      "seconds": 0.9585178749999977,
+      "candidates": 10318,
+      "selected": 210,
+      "stats": {
+        "attempts": 3084,
+        "accepted": 3084,
+        "forced": 41,
+        "branches": 875,
+        "backtracks": 2839,
+        "eliminated": 106257,
+        "checks": 2282441
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "steps": 85624,
+      "seconds": 9.932152333999998,
+      "candidates": 3462,
+      "selected": 212,
+      "stats": {
+        "attempts": 85623,
+        "accepted": 85623,
+        "forced": 6781,
+        "branches": 20281,
+        "backtracks": 78633,
+        "eliminated": 688970,
+        "checks": 34409972
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "steps": 333,
+      "seconds": 0.12478854100000171,
+      "candidates": 7405,
+      "selected": 212,
+      "stats": {
+        "attempts": 332,
+        "accepted": 332,
+        "forced": 3,
+        "branches": 241,
+        "backtracks": 118,
+        "eliminated": 9571,
+        "checks": 179986
+      },
+      "rootSemanticRollback": true
+    },
+    {
+      "fold": 5,
+      "heldOut": "tau-B106.cif",
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "steps": 1347,
+      "seconds": 0.38880520900000554,
+      "candidates": 7405,
+      "selected": 212,
+      "stats": {
+        "attempts": 1346,
+        "accepted": 1346,
+        "forced": 73,
+        "branches": 601,
+        "backtracks": 1063,
+        "eliminated": 27124,
+        "checks": 890001
+      },
+      "rootSemanticRollback": true
+    }
+  ]
+}

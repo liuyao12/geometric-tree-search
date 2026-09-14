@@ -1,0 +1,149 @@
+{
+  "scope": "Independent context-library, candidate expansion and final point-cover checks.\n\nTest neighbor descriptors are computed only here for post-search evaluation.\nThe frozen candidate builder and reference search do not receive them.\n",
+  "results": [
+    {
+      "fold": 0,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 0,
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 0,
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 12,
+      "posthocContextMatches": 7
+    },
+    {
+      "fold": 1,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 4,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 1,
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 4,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 1,
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 6,
+      "assignedPoints": 105,
+      "posthocContextMatches": 97
+    },
+    {
+      "fold": 2,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 2,
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 2,
+      "lane": "marked",
+      "status": "budget-unknown",
+      "componentsIncludingUnfilledSingletons": 60,
+      "assignedPoints": 47,
+      "posthocContextMatches": 17
+    },
+    {
+      "fold": 3,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 3,
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 3,
+      "lane": "marked",
+      "status": "budget-unknown",
+      "componentsIncludingUnfilledSingletons": 3,
+      "assignedPoints": 26,
+      "posthocContextMatches": 14
+    },
+    {
+      "fold": 4,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 4,
+      "lane": "unmarked-expanded",
+      "status": "budget-unknown",
+      "componentsIncludingUnfilledSingletons": 39,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 4,
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 2,
+      "assignedPoints": 210,
+      "posthocContextMatches": 198
+    },
+    {
+      "fold": 5,
+      "lane": "unmarked-collapsed",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 5,
+      "lane": "unmarked-expanded",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 0,
+      "posthocContextMatches": 0
+    },
+    {
+      "fold": 5,
+      "lane": "marked",
+      "status": "exact finite point-cover witness",
+      "componentsIncludingUnfilledSingletons": 1,
+      "assignedPoints": 212,
+      "posthocContextMatches": 186
+    }
+  ]
+}
