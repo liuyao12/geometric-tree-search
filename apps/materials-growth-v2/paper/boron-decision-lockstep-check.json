@@ -1,0 +1,50 @@
+{
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "results": [
+    {
+      "fold": 2,
+      "marked": false,
+      "modelSourceHash": "71c4d20b1bc21c4e012ff3e9c95a7a9c88e56aa0b34511919dfb3a1b14a624d1",
+      "steps": 5000,
+      "branchVisits": 1329,
+      "repeatedPlacementSets": 1034,
+      "traceHash": "dba99eec55b2a868edc359fcde95b22936e057d9e653e92a3d292e48aecd5e71",
+      "lockstep": true,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "marked": true,
+      "modelSourceHash": "6ed050ea4781190f216bece2a8bdf40052176bb230bffe419d2d8bc0f2fb8d5b",
+      "steps": 5000,
+      "branchVisits": 1329,
+      "repeatedPlacementSets": 1034,
+      "traceHash": "dba99eec55b2a868edc359fcde95b22936e057d9e653e92a3d292e48aecd5e71",
+      "lockstep": true,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "marked": false,
+      "modelSourceHash": "bcd4b34d3d79aee4cfa06042d660952b38b9fac254fefa1a31aba547eac0adb0",
+      "steps": 5000,
+      "branchVisits": 1084,
+      "repeatedPlacementSets": 859,
+      "traceHash": "317f82192ada3e83b3e46d084d1f477a3205d63ddbf2732135ae9a285e26892e",
+      "lockstep": true,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "marked": true,
+      "modelSourceHash": "70c1ee419851f8185455257e0392510adb6d3894e4d9aaecfb1b3f74bd2228a8",
+      "steps": 5000,
+      "branchVisits": 1084,
+      "repeatedPlacementSets": 859,
+      "traceHash": "ec6bcb0269050e83ee711683d2dfc3db3adda465b541cdd905778c41ff82ac37",
+      "lockstep": true,
+      "rootRollback": true
+    }
+  ],
+  "scope": "Fixed 5000-step prefixes of four hard boron models. Exact scheduler/advance/state agreement; repeated placement sets are not full-stack transpositions or pruning certificates."
+}

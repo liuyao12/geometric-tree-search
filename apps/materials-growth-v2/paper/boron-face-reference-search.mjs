@@ -6,15 +6,21 @@ import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 import {residualCapacityClass,independentResidualDomains} from './residual-capacity-filter.mjs';
 import {branchExclusionClass} from './branch-local-exclusions.mjs';
-const [inputPath,learningPath,kernelPath,dest,mode]=process.argv.slice(2);
-assert(!mode||['residual','branch-exclusions','residual-exclusions'].includes(mode));
+import {linearFrontierClass} from './linear-frontier-decision.mjs';
+const [inputPath,learningPath,kernelPath,dest,mode,stepArg,secondsArg,ordering='id']=process.argv.slice(2);
+assert(['id','filling-mass'].includes(ordering));
+assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions'].includes(mode));
+const maxSteps=stepArg===undefined?100000:Number(stepArg),maxSeconds=secondsArg===undefined?15:Number(secondsArg);
+assert(Number.isSafeInteger(maxSteps)&&maxSteps>0&&Number.isFinite(maxSeconds)&&maxSeconds>0);
+const linear=!!mode?.startsWith('linear');
 const residual=!!mode?.startsWith('residual'),exclusions=!!mode?.endsWith('exclusions');
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const raw=readFileSync(inputPath),learnRaw=readFileSync(learningPath),d=JSON.parse(raw),learning=JSON.parse(learnRaw),r=learning.result;
 assert.equal(hash(raw),learning.inputHash);assert.equal(r.status,'exact shared integer training cover');
 const {PointSearch,verify}=await import(pathToFileURL(kernelPath));mkdirSync(dest);const results=[];
 const CapacityEngine=residual?residualCapacityClass(PointSearch):PointSearch;
-const Engine=exclusions?branchExclusionClass(CapacityEngine):CapacityEngine;
+const ExclusionEngine=exclusions?branchExclusionClass(CapacityEngine):CapacityEngine;
+const Engine=linear?linearFrontierClass(ExclusionEngine):ExclusionEngine;
 function audit(e,model){
  const filtered=residual?independentResidualDomains(e,model):null;
  const selected=new Set(e.placed.keys()),totals=new Map(model.required.map(p=>[p,0])),marks=new Map();
@@ -40,9 +46,10 @@ for(const [fold,c] of d.configurations.entries()){
  });
  for(const marked of [false,true]){
   const model={capacity:r.capacity,required:Array.from({length:c.atoms},(_,i)=>String(i)),candidates:base.map(c=>({...c,m:marked?c.m:[]}))};
-  const e=new Engine(model),root=JSON.stringify(e.semanticState());audit(e,model);
+  const scores=new Map(model.candidates.map(c=>[c.id,c.t.reduce((sum,x)=>sum+x.value,0)]));
+  const e=new Engine({...model,preference:ordering==='filling-mass'?c=>scores.get(c.id):()=>0}),root=JSON.stringify(e.semanticState());audit(e,model);
   let steps=0,last;const start=performance.now();
-  while(steps<100000&&performance.now()-start<15000){
+  while(steps<maxSteps&&performance.now()-start<maxSeconds*1000){
    const choice=e.decision(),frontier=[...e.graph].map(([p,cs])=>({generation:e.points.get(p).generation,count:cs.size}));
    if(frontier.some(x=>x.count===0))assert.equal(choice.kind,'dead');
    else if(frontier.some(x=>x.count===1))assert.equal(choice.kind,'forced');
@@ -54,7 +61,7 @@ for(const [fold,c] of d.configurations.entries()){
   const selected=[...e.placed.keys()],check=verify(model,selected);assert(check.legal);
   const result={fold,file:c.file,marked,status:check.complete?'exact finite point-cover witness':last?.kind==='exhausted'?'exhausted finite pool':'budget-unknown',
    steps,seconds:(performance.now()-start)/1000,selected,stats:{...e.stats},required:c.atoms,candidates:base.length,
-   residualCapacityFilter:residual,branchLocalExclusions:exclusions,exclusionCount:e.exclusionCount||0,residualDiagnostics:e.capacityDiagnostics?{...e.capacityDiagnostics}:null};
+   residualCapacityFilter:residual,branchLocalExclusions:exclusions,linearFrontierDecision:linear,ordering,maxSteps,maxSeconds,exclusionCount:e.exclusionCount||0,residualDiagnostics:e.capacityDiagnostics?{...e.capacityDiagnostics}:null};
   e.undo(0);audit(e,model);assert.equal(JSON.stringify(e.semanticState()),root);result.rootSemanticRollback=true;
   writeFileSync(`${dest}/${fold}-${marked}.json`,JSON.stringify({inputHash:hash(raw),learningHash:hash(learnRaw),model,result}),{flag:'wx'});
   results.push({...result,selected:selected.length});console.log(JSON.stringify(results.at(-1)));

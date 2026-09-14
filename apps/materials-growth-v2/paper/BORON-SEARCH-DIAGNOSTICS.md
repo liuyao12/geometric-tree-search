@@ -89,7 +89,66 @@ material growth. Tiny exhaustive tests are bounded evidence, not a proof that
 the entire implementation is free of bugs. The mathematical necessity arguments
 apply to the declared fixed models, not an incomplete sampled pose universe.
 
-## Reproduce
+## Follow-up: scheduler overhead and repeated placement sets
+
+A representation-only scheduler now scans the frontier once rather than
+constructing candidate-ID arrays at every point and sorting the whole frontier.
+It preserves the original comparator, first encountered dead/unknown point,
+global forced-move priority, generation ordering and candidate preference.
+The production kernel remains unchanged. This is not new pruning or a learned
+GCTS marking. Pure deterministic preference callbacks are assumed.
+
+Lockstep tests on 160 small models cover 4,207 decisions, 1,007 advances,
+mark-only dependencies, root rollback and synthetic mixed generations and
+incomplete domains. Four hard material lanes each match the original engine
+for 5,000 advances, including returned actions, counters and checked semantic
+states. State equality is checked every 100 advances and at the end; decision
+and action equality are checked at every advance.
+
+At branch visits in these prefixes, the same sorted placement set recurs:
+
+| Model | Branch visits per lane | Repeated placement sets per lane |
+| --- | ---: | ---: |
+| β-106 | 1,329 | 1,034 |
+| τ-106 | 1,084 | 859 |
+
+Counts hold separately for marked and unmarked lanes. These are not identical
+full search states: stacks can retain different remaining alternatives. A
+hash of a placement set is not a sufficient justification for rejecting a
+branch, and no transposition pruning was introduced in this experiment.
+
+The linear scheduler was run on all six materials, marked and unmarked, with
+the original 100,000-advance / 15-second budgets. A second 12-run control adds
+parent exclusions and orders candidates by descending sum of their t-values
+only after selecting the usual earliest-generation point. That heuristic
+contains no selected training-answer IDs, chemistry or new candidate gate.
+It is hand-chosen, not learned GCTS. Both controls still complete α, β-105, γ
+and τ-105 with connected covers; β-106 and τ-106 remain budget-unknown.
+
+All 24 final states pass independent candidate reconstruction, exact filling,
+marking consistency and connectivity checks. Partial-state legality is not
+success. The linear version visits more states before some time cutoffs, but
+this is not a controlled speedup study; executions partly overlap and have
+audit overhead. More throughput and this simple candidate preference do not
+resolve the difficult inputs. Certified local conflict reuse is a next test,
+not an implemented result or a substitute for learning informative markings.
+
+Additional reproduction commands (new output paths):
+
+```
+node test-linear-frontier-decision.mjs KERNEL
+node boron-decision-lockstep.mjs KERNEL ORIGINAL_SEARCH_FOLDER LOCKSTEP_JSON
+node boron-face-reference-search.mjs PRECHECK LEARNING KERNEL LINEAR_FOLDER linear
+node boron-face-reference-search.mjs PRECHECK LEARNING KERNEL MASS_FOLDER linear-exclusions 100000 15 filling-mass
+python verify-boron-face-search.py PRECHECK LEARNING LINEAR_FOLDER LINEAR_CHECK
+python verify-boron-face-search.py PRECHECK LEARNING MASS_FOLDER MASS_CHECK
+```
+
+The source artifact used here is `precheck-v2.json`, verified by the input
+hash recorded in `periodic-connected-c12-v1.json`. Do not substitute the
+older `precheck.json` merely because it has the shorter filename.
+
+## Earlier control reproduction
 
 ```
 node test-residual-capacity-filter.mjs /absolute/path/kernel.mjs
