@@ -1,0 +1,49 @@
+{
+  "scope": "Complete conflict coverage for these fixed finite t/m candidate models only; no transfer or infinite-growth theorem.",
+  "proofHash": "f6da837706f16c42ab1eeb0b80185bee80373c39d2fb2dd8dd302d06aac27681",
+  "mutationRejections": 162,
+  "results": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "allMarkConflictingPairs": 0,
+      "directCapacityProofs": 0,
+      "exactDualProofs": 0,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "allMarkConflictingPairs": 0,
+      "directCapacityProofs": 0,
+      "exactDualProofs": 0,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    },
+    {
+      "file": "beta-B106.cif",
+      "allMarkConflictingPairs": 648,
+      "directCapacityProofs": 621,
+      "exactDualProofs": 27,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "allMarkConflictingPairs": 324,
+      "directCapacityProofs": 324,
+      "exactDualProofs": 0,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "allMarkConflictingPairs": 0,
+      "directCapacityProofs": 0,
+      "exactDualProofs": 0,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    },
+    {
+      "file": "tau-B106.cif",
+      "allMarkConflictingPairs": 1485,
+      "directCapacityProofs": 1431,
+      "exactDualProofs": 54,
+      "allMarkConflictsExcludedByUnmarkedExactFilling": true
+    }
+  ]
+}
