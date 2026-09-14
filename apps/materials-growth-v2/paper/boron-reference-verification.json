@@ -1,0 +1,102 @@
+{
+  "verifiedResults": [
+    {
+      "fold": 0,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 12,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 0,
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "selected": 12,
+      "assignedTestPoints": 5,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 1,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 105,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 4
+    },
+    {
+      "fold": 1,
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "selected": 105,
+      "assignedTestPoints": 98,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 2,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 106,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 2,
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "selected": 106,
+      "assignedTestPoints": 88,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 3,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 28,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 3,
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "selected": 28,
+      "assignedTestPoints": 19,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 4,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 210,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 4,
+      "marked": true,
+      "status": "exact finite point-cover witness",
+      "selected": 210,
+      "assignedTestPoints": 202,
+      "positiveComponentsIncludingUnfilledSingletons": 3
+    },
+    {
+      "fold": 5,
+      "marked": false,
+      "status": "exact finite point-cover witness",
+      "selected": 212,
+      "assignedTestPoints": 0,
+      "positiveComponentsIncludingUnfilledSingletons": 1
+    },
+    {
+      "fold": 5,
+      "marked": true,
+      "status": "budget-unknown",
+      "selected": 205,
+      "assignedTestPoints": 175,
+      "positiveComponentsIncludingUnfilledSingletons": 3
+    }
+  ],
+  "trainingOnlyMarkingPartitionsChecked": true,
+  "matchedCandidatePools": true
+}
