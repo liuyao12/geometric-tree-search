@@ -1,0 +1,71 @@
+{
+  "scope": "Frozen-weight held-out finite candidate pools and subset feasibility control.\n\nEvery training type and every site permutation gets a proper Kabsch fit to each\nknown-coordinate three-site support. This is not exhaustive continuous-pose\nsearch. Candidate identity is (template, decorated target-ID point map), with\none use per identity. No one-candidate-per-observed-support constraint is added.\nMILP selection is a diagnostic, not the master GCTS tree search.\n",
+  "results": [
+    {
+      "heldOut": "alpha-B-symmetry.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.1060990814951324,
+      "supports": 148,
+      "matchedSupports": 91,
+      "acceptedFits": 222,
+      "distinctCandidates": 153,
+      "underCapacityPoints": 12,
+      "status": "exact finite-pool capacity obstruction"
+    },
+    {
+      "heldOut": "beta-B105-symmetry.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.1060990814951324,
+      "supports": 1419,
+      "matchedSupports": 1335,
+      "acceptedFits": 2940,
+      "distinctCandidates": 2285,
+      "underCapacityPoints": 18,
+      "status": "exact finite-pool capacity obstruction"
+    },
+    {
+      "heldOut": "beta-B106.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.106099081495133,
+      "supports": 1442,
+      "matchedSupports": 1210,
+      "acceptedFits": 2411,
+      "distinctCandidates": 1981,
+      "underCapacityPoints": 27,
+      "status": "exact finite-pool capacity obstruction"
+    },
+    {
+      "heldOut": "gamma-B-symmetry.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.1060990814951324,
+      "supports": 412,
+      "matchedSupports": 216,
+      "acceptedFits": 424,
+      "distinctCandidates": 336,
+      "underCapacityPoints": 20,
+      "status": "exact finite-pool capacity obstruction"
+    },
+    {
+      "heldOut": "tau-B105-symmetry.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.1060990814951324,
+      "supports": 2838,
+      "matchedSupports": 2558,
+      "acceptedFits": 5116,
+      "distinctCandidates": 3986,
+      "underCapacityPoints": 28,
+      "status": "exact finite-pool capacity obstruction"
+    },
+    {
+      "heldOut": "tau-B106.cif",
+      "proposalDomain": "library-bound",
+      "radius": 2.0999903152009747,
+      "supports": 2888,
+      "matchedSupports": 2287,
+      "acceptedFits": 4274,
+      "distinctCandidates": 3474,
+      "underCapacityPoints": 62,
+      "status": "exact finite-pool capacity obstruction"
+    }
+  ]
+}

@@ -94,11 +94,11 @@ def solve(types, configurations):
         labels=labels,activeScalarClasses=len({labels[v] for v in active}))
     return out
 
-def propose_supports(c):
+def propose_supports(c, radius_override=None):
     atoms=Atoms('B'*c['atoms'],positions=c['positions'],cell=c['cell'],pbc=True)
     vectors=atoms.get_all_distances(mic=True,vector=True)
     distances=np.linalg.norm(vectors,axis=2);np.fill_diagonal(distances,np.inf)
-    radius=float(np.median(distances.min(axis=1)))*1.35
+    radius=float(np.median(distances.min(axis=1)))*1.35 if radius_override is None else float(radius_override)
     supports={}
     for a in range(len(atoms)):
         for b,d in itertools.combinations(np.flatnonzero(distances[a]<=radius).tolist(),2):

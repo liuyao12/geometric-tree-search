@@ -11,7 +11,7 @@ from pathlib import Path
 import sys
 import numpy as np
 
-def verify(source_path, result_path):
+def verify(source_path, result_path, allow_multiple_placements=False):
     raw=Path(source_path).read_bytes();source=json.loads(raw)
     data=json.loads(Path(result_path).read_text())
     assert hashlib.sha256(raw).hexdigest()==data['inputHash']
@@ -21,7 +21,9 @@ def verify(source_path, result_path):
         original=source[c['file']];cell=np.array(original['cell']);inv=np.linalg.inv(cell)
         seen=set()
         for o in c['occurrences']:
-            ids=o['ids'];assert len(set(ids))==3 and tuple(ids) not in seen;seen.add(tuple(ids))
+            ids=o['ids'];identity=(o['type'],tuple(ids),tuple(o['permutation'])) if allow_multiple_placements else tuple(ids)
+            assert len(set(ids))==3 and identity not in seen;seen.add(identity)
+            assert all(0<=i<original['atoms'] for i in ids)
             lifted=np.array(o['liftedPositions'])
             shifts=(lifted-np.array(original['positions'])[ids])@inv
             assert np.max(np.abs(shifts-np.rint(shifts)))<1e-9

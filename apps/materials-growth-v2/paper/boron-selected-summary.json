@@ -1,0 +1,53 @@
+{
+  "scope": "Training-selected occurrences with a shared reciprocal-weight hypothesis.\n\nChoose the smallest feasible k from (2,3,4,6,12), using five training inputs\nonly; every site of every motif has t=1/k. Require binary selected occurrences\nto give integer incidence k at every atom. Test the frozen hypothesis on the\nheld-out finite alternative-match pool. Unmarked MILP control, not base GCTS.\n",
+  "results": [
+    {
+      "heldOut": "alpha-B-symmetry.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 12,
+      "positiveComponents": 3,
+      "markingsTested": false
+    },
+    {
+      "heldOut": "beta-B105-symmetry.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 105,
+      "positiveComponents": 7,
+      "markingsTested": false
+    },
+    {
+      "heldOut": "beta-B106.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 106,
+      "positiveComponents": 1,
+      "markingsTested": false
+    },
+    {
+      "heldOut": "gamma-B-symmetry.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 28,
+      "positiveComponents": 1,
+      "markingsTested": false
+    },
+    {
+      "heldOut": "tau-B105-symmetry.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 210,
+      "positiveComponents": 1,
+      "markingsTested": false
+    },
+    {
+      "heldOut": "tau-B106.cif",
+      "learnedDenominator": 3,
+      "testStatus": "exact integer coverage witness",
+      "selected": 212,
+      "positiveComponents": 6,
+      "markingsTested": false
+    }
+  ]
+}
