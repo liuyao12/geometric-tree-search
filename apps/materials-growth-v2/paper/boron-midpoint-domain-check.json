@@ -1,0 +1,60 @@
+{
+  "scope": "Independent compiled-incidence and t-capacity audit; midpoint generation, geometric snapping and role-learning are not independently reconstructed here.",
+  "compiledHash": "5516d7d5daca45041c1da0d3500bf25ad309027194c5ad364b5feb8322dc7d1e",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "compiledAnchors": 1728,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 0,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "compiledAnchors": 28296,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 0,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    },
+    {
+      "file": "beta-B106.cif",
+      "compiledAnchors": 25866,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 27,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "compiledAnchors": 5022,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 0,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "compiledAnchors": 57348,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 0,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    },
+    {
+      "file": "tau-B106.cif",
+      "compiledAnchors": 53568,
+      "selectedInterclusterSharedAnchors": 0,
+      "maximumSelectedAtomOverlap": 1,
+      "markConflictingPairs": 54,
+      "conflictsNotAlreadyCapacityForbidden": 0,
+      "trainingAgreement": true
+    }
+  ]
+}
