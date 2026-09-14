@@ -1,0 +1,92 @@
+{
+  "capacity": 12,
+  "verifiedConfigurations": 6,
+  "verifiedAtoms": 18171,
+  "selectedOccurrences": 13419,
+  "weightRoles": 157,
+  "observedScalarClasses": 78,
+  "unobservedRoles": 0,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "atoms": 324,
+      "selected": 108,
+      "selectedByType": {
+        "0": 27,
+        "12": 81
+      },
+      "positiveComponents": 1
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "atoms": 2835,
+      "selected": 1458,
+      "selectedByType": {
+        "1": 81,
+        "2": 54,
+        "3": 27,
+        "13": 162,
+        "12": 972,
+        "14": 162
+      },
+      "positiveComponents": 1
+    },
+    {
+      "file": "beta-B106.cif",
+      "atoms": 2862,
+      "selected": 3186,
+      "selectedByType": {
+        "4": 27,
+        "5": 27,
+        "13": 1107,
+        "14": 1620,
+        "12": 378,
+        "15": 27
+      },
+      "positiveComponents": 1
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "atoms": 756,
+      "selected": 324,
+      "selectedByType": {
+        "6": 54,
+        "13": 216,
+        "12": 54
+      },
+      "positiveComponents": 1
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "atoms": 5670,
+      "selected": 2916,
+      "selectedByType": {
+        "7": 108,
+        "2": 108,
+        "8": 54,
+        "3": 54,
+        "12": 1944,
+        "13": 324,
+        "14": 324
+      },
+      "positiveComponents": 1
+    },
+    {
+      "file": "tau-B106.cif",
+      "atoms": 5724,
+      "selected": 5427,
+      "selectedByType": {
+        "5": 54,
+        "9": 27,
+        "10": 54,
+        "11": 27,
+        "14": 2673,
+        "15": 81,
+        "13": 1512,
+        "12": 999
+      },
+      "positiveComponents": 1
+    }
+  ],
+  "scope": "Joint all-input training; no held-out, coordinate-blind growth or reference-search claim."
+}
