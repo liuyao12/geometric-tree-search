@@ -1,0 +1,21 @@
+{
+  "challengeHash": "ed3ae13f06909edba34e0ef97b7806d5d27b0892b1d96e272a2d119f66737572",
+  "groups": {
+    "trainingAlternatives": {
+      "covers": 300,
+      "oldBinaryRejected": 152,
+      "connected": 51
+    },
+    "validationSelectedCovers": {
+      "covers": 300,
+      "oldBinaryRejected": 0,
+      "refitRejected": 5
+    }
+  },
+  "verifiedRank": 344,
+  "verifiedNullity": 3,
+  "verifiedForcedZeroTypes": 340,
+  "exhaustiveContrastMaximum": 7,
+  "scope": "Independent atom-incidence and exact GF(2) verification of the cover challenge.\n\nReconstruct equations from actual pointwise motif markings, not saved cycle rows.\nUses dense boolean reduced row elimination, independent of the generator's\ninteger-bitset echelon solver and MILP optimizer. No SciPy optimizer is used.\n",
+  "interpretation": "Training decomposition sensitivity; not a physical falsification or blind-growth test."
+}

@@ -4,7 +4,9 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const raw=readFileSync(process.argv[2]),d=JSON.parse(raw),mr=readFileSync(process.argv[3]),m=JSON.parse(mr);
-const {PointSearch:BaseSearch,verify}=await import(pathToFileURL(process.argv[4]).href);assert(m.allContrastFeasible);
+const {PointSearch:BaseSearch,verify}=await import(pathToFileURL(process.argv[4]).href);
+assert.equal(m.dictionaryHash,d.sourceDictionaryHash);
+for(const ti of d.admittedTypeIds){assert(m.ports[ti]);assert([0,1].includes(m.contrasts[ti]));}
 const mode=process.argv[6]||'expanded';assert(['expanded','quotient'].includes(mode));let PointSearch=BaseSearch;
 if(mode==='quotient'){const {binaryQuotientClass}=await import('./binary-marking-quotient.mjs');PointSearch=binaryQuotientClass(BaseSearch);}
 const results=[];
@@ -30,5 +32,8 @@ for(const c of d.configurations){
  const r={id:c.id,selected,steps,seconds:(performance.now()-start)/1000,stats,status:check.complete?'exact finite cover':last?.kind==='exhausted'?'exhausted decorated pool':'budget unknown'};
  e.undo(0);e.auditGraph();assert.equal(JSON.stringify(e.semanticState()),initial);results.push(r);console.log(JSON.stringify({...r,selected:selected.length}));
 }
-writeFileSync(process.argv[5],JSON.stringify({mode,dictionaryHash:createHash('sha256').update(raw).digest('hex'),markingHash:createHash('sha256').update(mr).digest('hex'),results,
+writeFileSync(process.argv[5],JSON.stringify({mode,dictionaryHash:createHash('sha256').update(raw).digest('hex'),markingHash:createHash('sha256').update(mr).digest('hex'),
+ kernelHash:createHash('sha256').update(readFileSync(process.argv[4])).digest('hex'),
+ runnerHash:createHash('sha256').update(readFileSync(new URL(import.meta.url))).digest('hex'),
+ quotientHash:mode==='quotient'?createHash('sha256').update(readFileSync(new URL('./binary-marking-quotient.mjs',import.meta.url))).digest('hex'):null,results,
  scope:'Binary decorated marking hypothesis, expanded variants or exact existential quotient; exact t=1/2, fixed observed candidates, all roots generation zero. Not a same-solution-set comparison to unmarked tiling or blind growth.'}),{flag:'wx'});
