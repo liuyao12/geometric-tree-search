@@ -94,22 +94,26 @@ def solve(types, configurations):
         labels=labels,activeScalarClasses=len({labels[v] for v in active}))
     return out
 
+def propose_supports(c):
+    atoms=Atoms('B'*c['atoms'],positions=c['positions'],cell=c['cell'],pbc=True)
+    vectors=atoms.get_all_distances(mic=True,vector=True)
+    distances=np.linalg.norm(vectors,axis=2);np.fill_diagonal(distances,np.inf)
+    radius=float(np.median(distances.min(axis=1)))*1.35
+    supports={}
+    for a in range(len(atoms)):
+        for b,d in itertools.combinations(np.flatnonzero(distances[a]<=radius).tolist(),2):
+            ids=tuple(sorted((a,b,d)))
+            if ids not in supports:
+                lifted={a:atoms.positions[a],b:atoms.positions[a]+vectors[a,b],d:atoms.positions[a]+vectors[a,d]}
+                supports[ids]=np.array([lifted[i] for i in ids])
+    return radius,supports
+
 def main():
     raw=Path(sys.argv[1]).read_bytes(); inputs=json.loads(raw)['results']
     epsilon=float(sys.argv[3]) if len(sys.argv)>3 else .05
     types=[]; configs=[]
     for c in inputs:
-        atoms=Atoms('B'*c['atoms'],positions=c['positions'],cell=c['cell'],pbc=True)
-        vectors=atoms.get_all_distances(mic=True,vector=True)
-        distances=np.linalg.norm(vectors,axis=2);np.fill_diagonal(distances,np.inf)
-        radius=float(np.median(distances.min(axis=1)))*1.35
-        supports={}
-        for a in range(len(atoms)):
-            for b,d in itertools.combinations(np.flatnonzero(distances[a]<=radius).tolist(),2):
-                ids=tuple(sorted((a,b,d)))
-                if ids not in supports:
-                    lifted={a:atoms.positions[a],b:atoms.positions[a]+vectors[a,b],d:atoms.positions[a]+vectors[a,d]}
-                    supports[ids]=np.array([lifted[i] for i in ids])
+        radius,supports=propose_supports(c)
         occurrences=[]
         for ids,positions in sorted(supports.items()):
             lengths=np.sort([np.linalg.norm(positions[a]-positions[b]) for a,b in ((0,1),(0,2),(1,2))])
@@ -130,7 +134,7 @@ def main():
                 found=(t,dict(permutation=[0,1,2],rotationRow=np.eye(3).tolist(),translation=center.tolist(),residual=0.))
             t,fit=found;t['trainingOccurrences']+=1
             occurrences.append({'ids':ids,'type':t['id'],'liftedPositions':positions.tolist(),**fit})
-        config={'file':c['file'],'atoms':len(atoms),'radius':radius,'occurrences':occurrences}
+        config={'file':c['file'],'atoms':c['atoms'],'radius':radius,'occurrences':occurrences}
         configs.append(config)
         print(json.dumps({'file':c['file'],'supports':len(occurrences),'typesSoFar':len(types)}),flush=True)
     results=[solve(types,[c]) for c in configs]+[solve(types,configs)]
