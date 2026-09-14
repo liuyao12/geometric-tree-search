@@ -20,8 +20,12 @@ The author's validation split is **not an independent-trajectory holdout**.
 Absence of exact duplicates does not establish absence of temporal correlation,
 permutation-equivalent duplicates or leakage from shared trajectories. File-level
 temperature, imposed pressure and trajectory identifiers are missing. The paper's
-100 K / 1 bar evaluation conditions are not automatically assigned to these
-training files. Admission as a verified same-condition ensemble remains pending.
+dataset-sampling methods explicitly state NPT at 100 K / 1 bar, providing
+paper-level evidence for a shared sampling protocol, not merely evaluation
+conditions. File-level provenance and trajectory independence still need checking
+before admission as a verified same-condition ensemble. The released VIII frames
+contain 64 molecules; reconciling released-file details with the manuscript is
+part of that audit.
 
 ## Frozen geometric rule
 
