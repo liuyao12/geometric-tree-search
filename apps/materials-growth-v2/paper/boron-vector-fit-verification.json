@@ -1,0 +1,59 @@
+{
+  "scope": "Direct vector residual and eigen-equation check, without the sparse solver.",
+  "results": [
+    {
+      "fold": 0,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.1283517598679528,
+      "overlapMaximumMismatch": 7.1379091504182846,
+      "participationFraction": 0.006331436089182722,
+      "maximumSiteNorm": 16.067396895965643,
+      "siteNormAbovePointOne": 72
+    },
+    {
+      "fold": 1,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.17609764893955068,
+      "overlapMaximumMismatch": 11.555968844981821,
+      "participationFraction": 0.001428429574765223,
+      "maximumSiteNorm": 28.570641837044278,
+      "siteNormAbovePointOne": 16
+    },
+    {
+      "fold": 2,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.15206526239292104,
+      "overlapMaximumMismatch": 5.9378627467947735,
+      "participationFraction": 0.006917081761611647,
+      "maximumSiteNorm": 14.78490220455029,
+      "siteNormAbovePointOne": 69
+    },
+    {
+      "fold": 3,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.17361307874853277,
+      "overlapMaximumMismatch": 10.160130200725145,
+      "participationFraction": 0.0022891835504770274,
+      "maximumSiteNorm": 25.31776723984289,
+      "siteNormAbovePointOne": 81
+    },
+    {
+      "fold": 4,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.1674455004894526,
+      "overlapMaximumMismatch": 10.455243503222032,
+      "participationFraction": 0.0018694306002083967,
+      "maximumSiteNorm": 25.676596633021035,
+      "siteNormAbovePointOne": 33
+    },
+    {
+      "fold": 5,
+      "verifiedEigenEquation": true,
+      "overlapRmsMismatch": 0.15301655414006402,
+      "overlapMaximumMismatch": 8.310925741596446,
+      "participationFraction": 0.0022754542734486024,
+      "maximumSiteNorm": 22.758996077850455,
+      "siteNormAbovePointOne": 9
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "scope": "Fixed-pose vector consistency through spanning-tree transport and cycle closure.\n\nFor R_a v_a = R_b v_b, a spanning tree expresses all vectors in a component\nas orthogonal transports of one root vector. Cycle residuals give a 3x3 Gram\nmatrix. This tests numerical exact compatibility, not optimal tolerance fitting:\nthe unit-root diagnostic forces tree equations exactly instead of distributing\nerrors over every variable. It is not a global least-squares optimizer.\n",
+  "results": [
+    {
+      "fold": 0,
+      "observedVariables": 2250,
+      "constraints": 20332,
+      "components": 1,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 2250,
+      "largestComponentVariables": 2250,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.1660275960274435,
+      "largestComponentUnitRootMaximum": 1.9999999860825475
+    },
+    {
+      "fold": 1,
+      "observedVariables": 2244,
+      "constraints": 17814,
+      "components": 3,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 2238,
+      "largestComponentVariables": 2238,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.1512881248225317,
+      "largestComponentUnitRootMaximum": 1.999976852968325
+    },
+    {
+      "fold": 2,
+      "observedVariables": 1932,
+      "constraints": 17501,
+      "components": 1,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 1932,
+      "largestComponentVariables": 1932,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.1714799776081994,
+      "largestComponentUnitRootMaximum": 1.9999834392624969
+    },
+    {
+      "fold": 3,
+      "observedVariables": 2196,
+      "constraints": 19810,
+      "components": 2,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 2193,
+      "largestComponentVariables": 2193,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.1769148673850927,
+      "largestComponentUnitRootMaximum": 1.999968852492451
+    },
+    {
+      "fold": 4,
+      "observedVariables": 2157,
+      "constraints": 14928,
+      "components": 3,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 2148,
+      "largestComponentVariables": 2148,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.1209867731791208,
+      "largestComponentUnitRootMaximum": 1.99999113104032
+    },
+    {
+      "fold": 5,
+      "observedVariables": 1479,
+      "constraints": 14092,
+      "components": 4,
+      "numericallyFullRankComponents": 1,
+      "variablesInFullRankComponents": 1471,
+      "largestComponentVariables": 1471,
+      "largestComponentNullity": 0,
+      "largestComponentUnitRootRms": 1.137136132465652,
+      "largestComponentUnitRootMaximum": 1.9999426827793245
+    }
+  ]
+}
