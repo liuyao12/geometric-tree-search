@@ -1,0 +1,75 @@
+{
+  "verifiedFrames": 2000,
+  "thresholdAngstrom": 1.2565871629534322,
+  "gapEndpoints": [
+    1.094334787622144,
+    1.4188395382847205
+  ],
+  "groups": [
+    {
+      "phase": "Ih",
+      "split": "train",
+      "frames": 400,
+      "atoms": 153600,
+      "components": 51200,
+      "OHHComponents": 51200
+    },
+    {
+      "phase": "Ih",
+      "split": "test",
+      "frames": 100,
+      "atoms": 38400,
+      "components": 12800,
+      "OHHComponents": 12800
+    },
+    {
+      "phase": "II",
+      "split": "train",
+      "frames": 400,
+      "atoms": 115200,
+      "components": 38400,
+      "OHHComponents": 38400
+    },
+    {
+      "phase": "II",
+      "split": "test",
+      "frames": 100,
+      "atoms": 28800,
+      "components": 9600,
+      "OHHComponents": 9600
+    },
+    {
+      "phase": "VI",
+      "split": "train",
+      "frames": 400,
+      "atoms": 96000,
+      "components": 32000,
+      "OHHComponents": 32000
+    },
+    {
+      "phase": "VI",
+      "split": "test",
+      "frames": 100,
+      "atoms": 24000,
+      "components": 8000,
+      "OHHComponents": 8000
+    },
+    {
+      "phase": "VIII",
+      "split": "train",
+      "frames": 400,
+      "atoms": 76800,
+      "components": 25600,
+      "OHHComponents": 25600
+    },
+    {
+      "phase": "VIII",
+      "split": "test",
+      "frames": 100,
+      "atoms": 19200,
+      "components": 6400,
+      "OHHComponents": 6400
+    }
+  ],
+  "scope": "Frozen threshold independently checked; neither independent-trajectory transfer nor overlapping motif learning nor growth."
+}
