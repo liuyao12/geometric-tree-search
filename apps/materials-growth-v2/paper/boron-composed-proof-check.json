@@ -1,0 +1,160 @@
+{
+  "scope": "Independent exact replay of dead-point, forced and resolution proof nodes.\n\nNo search graph, branch stack, JavaScript verifier or optimizer is consulted.\nThe separate filling verifier binds candidate values to the learned model.\n",
+  "results": [
+    {
+      "fold": 0,
+      "marked": false,
+      "proofNodes": 108,
+      "nodeTypes": {
+        "force": 108
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "d1809608c44ae80aaa0f2970737610f9747479448615017efea032f9c0bc2a9b"
+    },
+    {
+      "fold": 0,
+      "marked": true,
+      "proofNodes": 108,
+      "nodeTypes": {
+        "force": 108
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "331aae0f3003d1dce8c17c8be7131a72ccb78165c9164fd723728c95e2f6f456"
+    },
+    {
+      "fold": 1,
+      "marked": false,
+      "proofNodes": 1458,
+      "nodeTypes": {
+        "force": 1458
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "36526dafd7a4ecb11d14a43f50539b5278f424557be5938f444b030556a84e16"
+    },
+    {
+      "fold": 1,
+      "marked": true,
+      "proofNodes": 1458,
+      "nodeTypes": {
+        "force": 1458
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "cab91a6cfdff01309f2ea11ab56717e70c5b631edb9e384f95d5c63ce901b6bd"
+    },
+    {
+      "fold": 2,
+      "marked": false,
+      "proofNodes": 12979,
+      "nodeTypes": {
+        "force": 2735,
+        "dead": 1075,
+        "resolve": 9169
+      },
+      "leavesUsingEarlierClauses": 2073,
+      "registeredClauses": 1075,
+      "trainingWitnessPreserved": true,
+      "runHash": "c2de59ae5d9c8054523a689ced12ba94dac275148e489f140ffde1d04297fe69"
+    },
+    {
+      "fold": 2,
+      "marked": true,
+      "proofNodes": 12682,
+      "nodeTypes": {
+        "force": 2697,
+        "dead": 1048,
+        "resolve": 8937
+      },
+      "leavesUsingEarlierClauses": 2022,
+      "registeredClauses": 1048,
+      "trainingWitnessPreserved": true,
+      "runHash": "ffdb62b62b3a35200331d6dbedc017efcfaed89a48f79597af1fca9ffcc4970b"
+    },
+    {
+      "fold": 3,
+      "marked": false,
+      "proofNodes": 323,
+      "nodeTypes": {
+        "force": 323
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "754286e40ac1c4400b702c0f7ed94efe886ef485d8d98b4d908c1a63313d2f37"
+    },
+    {
+      "fold": 3,
+      "marked": true,
+      "proofNodes": 323,
+      "nodeTypes": {
+        "force": 323
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "6609fab642264dd405b217f58c750557637ab77ca8b9d05f24e2f885a65f28c2"
+    },
+    {
+      "fold": 4,
+      "marked": false,
+      "proofNodes": 2916,
+      "nodeTypes": {
+        "force": 2916
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "a01858d40ccf6f9b3d1e659e3198938a32dc48a34ec66a593b7b153a839cb6e5"
+    },
+    {
+      "fold": 4,
+      "marked": true,
+      "proofNodes": 2916,
+      "nodeTypes": {
+        "force": 2916
+      },
+      "leavesUsingEarlierClauses": 0,
+      "registeredClauses": 0,
+      "trainingWitnessPreserved": true,
+      "runHash": "56a38260375a8002a811bf3f562ef3805f3bdc7684ae3c784b1f3d799332d568"
+    },
+    {
+      "fold": 5,
+      "marked": false,
+      "proofNodes": 24012,
+      "nodeTypes": {
+        "force": 3001,
+        "dead": 1277,
+        "resolve": 19734
+      },
+      "leavesUsingEarlierClauses": 1909,
+      "registeredClauses": 1277,
+      "trainingWitnessPreserved": true,
+      "runHash": "e1af7e78942316f736850d1fff4074f9163872d8f445c1999584469c10c936f9"
+    },
+    {
+      "fold": 5,
+      "marked": true,
+      "proofNodes": 23589,
+      "nodeTypes": {
+        "force": 2980,
+        "dead": 1261,
+        "resolve": 19348
+      },
+      "leavesUsingEarlierClauses": 1888,
+      "registeredClauses": 1261,
+      "trainingWitnessPreserved": true,
+      "runHash": "65c56cf210b56721eca7f076dad6d2e15cbd3e1665e5c556d9909a0a7efedfb4"
+    }
+  ],
+  "verifiedNodes": 82872,
+  "registeredClauses": 4661,
+  "allTrainingWitnessesPreserved": true
+}

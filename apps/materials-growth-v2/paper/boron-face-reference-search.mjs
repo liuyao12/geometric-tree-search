@@ -8,22 +8,23 @@ import {residualCapacityClass,independentResidualDomains} from './residual-capac
 import {branchExclusionClass} from './branch-local-exclusions.mjs';
 import {linearFrontierClass} from './linear-frontier-decision.mjs';
 import {certifiedDeadPointClass} from './certified-dead-point.mjs';
+import {composedPointProofClass} from './composed-point-proofs.mjs';
 const [inputPath,learningPath,kernelPath,dest,mode,stepArg,secondsArg,ordering='id']=process.argv.slice(2);
 assert(['id','filling-mass'].includes(ordering));
-assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions','linear-nogoods'].includes(mode));
+assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions','linear-nogoods','linear-composed'].includes(mode));
 const maxSteps=stepArg===undefined?100000:Number(stepArg),maxSeconds=secondsArg===undefined?15:Number(secondsArg);
 assert(Number.isSafeInteger(maxSteps)&&maxSteps>0&&Number.isFinite(maxSeconds)&&maxSeconds>0);
 const linear=!!mode?.startsWith('linear');
-const nogoods=mode==='linear-nogoods';
-const residual=!!mode?.startsWith('residual'),exclusions=!!mode?.endsWith('exclusions')||nogoods;
+const composed=mode==='linear-composed',nogoods=mode==='linear-nogoods'||composed;
+const residual=!!mode?.startsWith('residual'),exclusions=!!mode?.endsWith('exclusions')||(nogoods&&!composed);
 const hash=x=>createHash('sha256').update(x).digest('hex');
-const researchSourceHashes=Object.fromEntries(['boron-face-reference-search.mjs','linear-frontier-decision.mjs','branch-local-exclusions.mjs','certified-dead-point.mjs'].map(name=>[name,hash(readFileSync(new URL(name,import.meta.url)))]));
+const researchSourceHashes=Object.fromEntries(['boron-face-reference-search.mjs','linear-frontier-decision.mjs','branch-local-exclusions.mjs','certified-dead-point.mjs','composed-point-proofs.mjs'].map(name=>[name,hash(readFileSync(new URL(name,import.meta.url)))]));
 const raw=readFileSync(inputPath),learnRaw=readFileSync(learningPath),d=JSON.parse(raw),learning=JSON.parse(learnRaw),r=learning.result;
 assert.equal(hash(raw),learning.inputHash);assert.equal(r.status,'exact shared integer training cover');
 const {PointSearch,verify}=await import(pathToFileURL(kernelPath));mkdirSync(dest);const results=[];
 const CapacityEngine=residual?residualCapacityClass(PointSearch):PointSearch;
 const ExclusionEngine=exclusions?branchExclusionClass(CapacityEngine):CapacityEngine;
-const ProofEngine=nogoods?certifiedDeadPointClass(ExclusionEngine):ExclusionEngine;
+const ProofEngine=composed?composedPointProofClass(ExclusionEngine):nogoods?certifiedDeadPointClass(ExclusionEngine):ExclusionEngine;
 const Engine=linear?linearFrontierClass(ProofEngine):ProofEngine;
 function audit(e,model){
  const filtered=residual?independentResidualDomains(e,model):null;
@@ -67,12 +68,13 @@ for(const [fold,c] of d.configurations.entries()){
   const result={fold,file:c.file,marked,status:check.complete?'exact finite point-cover witness':last?.kind==='exhausted'?'exhausted finite pool':'budget-unknown',
    steps,seconds:(performance.now()-start)/1000,selected,stats:{...e.stats},required:c.atoms,candidates:base.length,
    residualCapacityFilter:residual,branchLocalExclusions:exclusions,linearFrontierDecision:linear,ordering,maxSteps,maxSeconds,exclusionCount:e.exclusionCount||0,residualDiagnostics:e.capacityDiagnostics?{...e.capacityDiagnostics}:null,
-   proofDiagnostics:e.proofDiagnostics?{...e.proofDiagnostics}:null,proofVersion:e.proofVersion??null};
+   proofDiagnostics:e.proofDiagnostics?{...e.proofDiagnostics}:null,proofVersion:e.proofVersion??null,composedProofs:composed};
   const certificates=e.certificates?[...e.certificates]:null;
+  const proofNodes=composed?[...e.proofNodes]:null;
   e.undo(0);audit(e,model);
   if(nogoods){e.stack=[];e.clearCertificates();audit(e,model);result.rootBaseStateAfterProofReset=true;}
   assert.equal(JSON.stringify(e.semanticState()),root);result.rootSemanticRollback=!nogoods;
-  writeFileSync(`${dest}/${fold}-${marked}.json`,JSON.stringify({inputHash:hash(raw),learningHash:hash(learnRaw),researchSourceHashes,model,result,...(nogoods?{certificates}: {})}),{flag:'wx'});
+  writeFileSync(`${dest}/${fold}-${marked}.json`,JSON.stringify({inputHash:hash(raw),learningHash:hash(learnRaw),researchSourceHashes,model,result,...(nogoods?{certificates}: {}),...(composed?{proofNodes}:{})}),{flag:'wx'});
   results.push({...result,selected:selected.length});console.log(JSON.stringify(results.at(-1)));
  }
 }
