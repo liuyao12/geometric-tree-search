@@ -14,7 +14,7 @@ from scipy.optimize import milp,Bounds,LinearConstraint
 from scipy.sparse import coo_matrix
 from scipy.sparse.csgraph import connected_components
 
-def select(parts,pairs,allowed,k,budget,conflicts=()):
+def select(parts,pairs,allowed,k,budget,conflicts=(),required=()):
     n=len(parts);edges=[pairs[i] for i in allowed];m=len(edges);cuts=[];start=time.monotonic();rounds=0
     if not m:return {'status':'empty candidate pool','selected':[]}
     while time.monotonic()-start<budget:
@@ -24,7 +24,9 @@ def select(parts,pairs,allowed,k,budget,conflicts=()):
         for i,(a,b) in enumerate(conflicts):rows.extend([n+len(cuts)+i]*2);cols.extend([a,b]);values.extend([1,1])
         A=coo_matrix((values,(rows,cols)),shape=(n+len(cuts)+len(conflicts),m)).tocsc()
         crossing=2 if k%2==0 else 1
-        result=milp(np.zeros(m),integrality=np.ones(m),bounds=Bounds(0,1),
+        lower=np.zeros(m)
+        for index in required:lower[index]=1
+        result=milp(np.zeros(m),integrality=np.ones(m),bounds=Bounds(lower,1),
             constraints=LinearConstraint(A,np.r_[np.full(n,k),np.full(len(cuts),crossing),np.full(len(conflicts),-np.inf)],np.r_[np.full(n,k),np.full(len(cuts),np.inf),np.ones(len(conflicts))]),
             options={'time_limit':max(.01,budget-(time.monotonic()-start))})
         rounds+=1
@@ -32,7 +34,7 @@ def select(parts,pairs,allowed,k,budget,conflicts=()):
         chosen=np.flatnonzero(result.x>.5);degree=np.zeros(n,int);rr=[];cc=[]
         for j in chosen:
             a,b=edges[j];degree[a]+=1;degree[b]+=1;rr.extend([a,b]);cc.extend([b,a])
-        assert np.all(degree==k)
+        assert np.all(degree==k) and set(required)<=set(chosen)
         count,labels=connected_components(coo_matrix((np.ones(len(rr)),(rr,cc)),shape=(n,n)).tocsr(),directed=False)
         if count==1:return {'status':'connected positive finite cover','selected':[allowed[int(j)] for j in chosen],'rounds':rounds,'cuts':len(cuts)}
         for label in range(count):

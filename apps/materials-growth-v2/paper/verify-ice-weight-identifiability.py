@@ -11,7 +11,7 @@ assert r['dictionaryHash']==hashlib.sha256(raw).hexdigest();rebuilt=[];hashes=[]
 for path in sys.argv[4:]:
     b=Path(path).read_bytes();hashes.append(hashlib.sha256(b).hexdigest());chosen={x['id']:x for x in json.loads(b)['results']}
     for c in d['configurations']:
-        if not c['training']:continue
+        if not c['training'] or c['id'] not in chosen:continue
         points=defaultdict(list)
         for index in chosen[c['id']]['selected']:
             o=c['occurrences'][index]

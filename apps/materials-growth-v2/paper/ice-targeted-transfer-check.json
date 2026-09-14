@@ -1,0 +1,7 @@
+{
+  "verifiedValidationCovers": 100,
+  "universallyFilledCovers": 100,
+  "independentParameterPerturbations": 18,
+  "exactIntegerArithmetic": true,
+  "scope": "Checks an affine basis of training-consistent weights on the original selected covers; no universal reconstruction claim."
+}

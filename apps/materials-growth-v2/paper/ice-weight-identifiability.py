@@ -17,7 +17,7 @@ raw=Path(sys.argv[1]).read_bytes();d=json.loads(raw);g=nx.Graph();edges=[];hashe
 for path in sys.argv[3:]:
     b=Path(path).read_bytes();hashes.append(hashlib.sha256(b).hexdigest());chosen={r['id']:r for r in json.loads(b)['results']}
     for c in d['configurations']:
-        if not c['training']:continue
+        if not c['training'] or c['id'] not in chosen:continue
         r=chosen[c['id']];assert r['status']=='connected positive finite cover';rows=defaultdict(list)
         for index in r['selected']:
             o=c['occurrences'][index]
