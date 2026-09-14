@@ -44,6 +44,21 @@
 <div class="downloads"><a href="weighted-reset-evidence.json" download>Download weighted witnesses (~422 kB)</a><a href="verify-weighted-reset.mjs" download>Standalone verifier (Node.js)</a><a href="WEIGHTED-RESET-REPORT.md">Methods, limitations and reproduction</a></div>
 <p><small>Run: <code>node verify-weighted-reset.mjs weighted-reset-evidence.json</code>. Checks five covers and the scalar equality graph. The production growth engine has not been replaced by this isolated experiment.</small></p>
 </section>
+<section id="boron-benchmark"><p class="eyebrow">BORON FAMILY · FIRST DIAGNOSTIC · 14 SEPTEMBER 2026</p>
+<h2>Harder crystals expose the limits of pair supports.</h2>
+<p>We checked all six coordinate models supplied with the <a href="https://authors.library.caltech.edu/records/dcaev-djw82">2016 boron study</a>, including both τ models. All pass independent input checks. These are six configurations, not six established phases or an exhaustive boron census.</p>
+<div class="table-wrap"><table><caption>Pre-search pair-support tests: three data-scaled radii × two geometric tolerances per model.</caption><thead><tr><th>Model</th><th>Atoms / cell</th><th>Exact positive filling / 6</th><th>Other outcomes</th></tr></thead><tbody>
+<tr><th>α</th><td>12</td><td>5</td><td>1 verification/positivity gate failure</td></tr>
+<tr><th>β-105</th><td>105</td><td>0</td><td>6 restricted LP infeasibility reports</td></tr>
+<tr><th>β-106</th><td>106</td><td>0</td><td>6 restricted LP infeasibility reports</td></tr>
+<tr><th>γ</th><td>28</td><td>5</td><td>1 restricted LP infeasibility report</td></tr>
+<tr><th>τ-105</th><td>210</td><td>0</td><td>6 restricted LP infeasibility reports</td></tr>
+<tr><th>τ-106</th><td>212</td><td>0</td><td>6 restricted LP infeasibility reports</td></tr>
+</tbody></table></div>
+<aside class="callout"><strong>Passing filling is not learning useful connections.</strong><p>Every passing setting has connected positive supports, but its scalar markings collapse to one value. No blind growth has been tested. The failures concern this restricted pair dictionary, not the existence of the crystal or the general GCTS method.</p></aside>
+<details><summary>Scope, reproducibility and next cases</summary><p>Pairs are grouped by observed length; endpoint-symmetric weights are fitted and checked by exact rational substitution. This is a finite periodic-quotient diagnostic, not an infinite-lift certificate. LP infeasibility is numerical, not independently certified. Larger irregular motifs and non-atomic marking supports remain to be learned. Tetragonal variants, δ/B52, reported pseudo-cubic B52 and high-pressure α-Ga-type boron are still queued for coordinate acquisition. The production growth app is unchanged.</p></details>
+<div class="downloads"><a href="BORON-FIRST-RESULT.md">Methods and limitations</a><a href="boron-pair-precheck.json" download>All 36 outcomes</a><a href="boron-input-audit.py" download>Input audit</a><a href="boron-pair-precheck.py" download>Pair test</a><a href="presearch-markings.py" download>Exact checker dependency</a><a href="test-boron-precheck.py" download>Synthetic controls</a></div>
+</section>
 <section id="centered-support-report" data-report-version="2026-09-13"><p class="eyebrow">HISTORICAL PRELIMINARY REPORT · 13 SEPTEMBER 2026 · PREVIOUS CENTERED-SUPPORT MODEL</p>
 <p><strong>Model boundary:</strong> The geometric checks below remain useful, but the centered-support completion requirement differs from the weighted filling model in the <a href="#preliminary-report">current progress report</a>. These are not results from the revised pipeline.</p>
 <h2>From a consistent patch<br>to a structure that can continue</h2>

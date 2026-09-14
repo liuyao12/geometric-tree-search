@@ -1,0 +1,547 @@
+{
+  "scope": "Restricted geometry-only pair-support diagnostic, not free growth.\n\nUse all minimum-image unordered pairs below a data-scaled radius; cluster their\nlengths with bounded bin width. Endpoint-symmetric shared weights are learned by\nLP and accepted only after exact rational substitution. No chemistry is input.\nThe periodic quotient excludes distinct images of the same atom pair, so these\ntests are explicitly finite-quotient controls, not an infinite-lift certificate.\n",
+  "results": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 1.9839525554528907,
+      "pairs": 33,
+      "types": 4,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "1/6",
+        "1/6",
+        "1/4",
+        "1/6"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 12,
+        "assignedMarkingPoints": 12
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 1.9839525554528907,
+      "pairs": 33,
+      "types": 3,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "unknown: rational verification or positive-support gate failed"
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.328987782488176,
+      "pairs": 39,
+      "types": 5,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "1/7",
+        "3/14",
+        "1/7",
+        "1/7",
+        "1/7"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 12,
+        "assignedMarkingPoints": 12
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.328987782488176,
+      "pairs": 39,
+      "types": 4,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "2/7",
+        "1/7",
+        "1/7",
+        "1/7"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 12,
+        "assignedMarkingPoints": 12
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.760281816282283,
+      "pairs": 42,
+      "types": 6,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "1/8",
+        "1/4",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 12,
+        "assignedMarkingPoints": 12
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.760281816282283,
+      "pairs": 42,
+      "types": 5,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "3/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 12,
+        "assignedMarkingPoints": 12
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 1.9603334782239032,
+      "pairs": 330,
+      "types": 14,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 1.9603334782239032,
+      "pairs": 330,
+      "types": 5,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.3012610396541473,
+      "pairs": 336,
+      "types": 15,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.3012610396541473,
+      "pairs": 336,
+      "types": 6,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.7274204914419524,
+      "pairs": 342,
+      "types": 16,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.7274204914419524,
+      "pairs": 342,
+      "types": 7,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 1.967243012916804,
+      "pairs": 337,
+      "types": 28,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 1.967243012916804,
+      "pairs": 337,
+      "types": 7,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.309372232554509,
+      "pairs": 340,
+      "types": 30,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.309372232554509,
+      "pairs": 340,
+      "types": 8,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.7370337571016403,
+      "pairs": 364,
+      "types": 42,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "beta-B106.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.7370337571016403,
+      "pairs": 364,
+      "types": 12,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 2.0015374409999973,
+      "pairs": 84,
+      "types": 10,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "3/8",
+        "3/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "3/8",
+        "1/4"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 28,
+        "assignedMarkingPoints": 28
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 2.0015374409999973,
+      "pairs": 84,
+      "types": 4,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.349630908999997,
+      "pairs": 92,
+      "types": 11,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "2/7",
+        "2/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 28,
+        "assignedMarkingPoints": 28
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.349630908999997,
+      "pairs": 92,
+      "types": 5,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "2/7",
+        "1/7",
+        "1/7",
+        "1/7",
+        "1/7"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 28,
+        "assignedMarkingPoints": 28
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.7847477439999966,
+      "pairs": 116,
+      "types": 15,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "2/5",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10",
+        "7/40",
+        "1/10",
+        "3/20",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10",
+        "3/20"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 28,
+        "assignedMarkingPoints": 28
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.7847477439999966,
+      "pairs": 116,
+      "types": 7,
+      "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "status": "exact finite-quotient t/m precheck passed",
+      "weights": [
+        "4/63",
+        "11/63",
+        "1/9",
+        "1/7",
+        "1/9",
+        "4/63",
+        "4/63"
+      ],
+      "scalarMarkClasses": 1,
+      "positiveComponents": 1,
+      "precheck": {
+        "valid": true,
+        "errors": [],
+        "filledRequired": 28,
+        "assignedMarkingPoints": 28
+      },
+      "blindGrowthTested": false
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 1.9653350209000133,
+      "pairs": 660,
+      "types": 18,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 1.9653350209000133,
+      "pairs": 660,
+      "types": 6,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.3071324158391464,
+      "pairs": 672,
+      "types": 19,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.3071324158391464,
+      "pairs": 672,
+      "types": 7,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.7343791595130624,
+      "pairs": 688,
+      "types": 21,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.7343791595130624,
+      "pairs": 688,
+      "types": 9,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.01,
+      "radius": 1.968702852055995,
+      "pairs": 670,
+      "types": 29,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.15,
+      "lengthBinWidth": 0.05,
+      "radius": 1.968702852055995,
+      "pairs": 670,
+      "types": 7,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.01,
+      "radius": 2.311085956761386,
+      "pairs": 680,
+      "types": 33,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.35,
+      "lengthBinWidth": 0.05,
+      "radius": 2.311085956761386,
+      "pairs": 680,
+      "types": 9,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.01,
+      "radius": 2.7390648376431237,
+      "pairs": 728,
+      "types": 47,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    },
+    {
+      "file": "tau-B106.cif",
+      "radiusScale": 1.6,
+      "lengthBinWidth": 0.05,
+      "radius": 2.7390648376431237,
+      "pairs": 728,
+      "types": 15,
+      "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "status": "restricted LP infeasible"
+    }
+  ]
+}
