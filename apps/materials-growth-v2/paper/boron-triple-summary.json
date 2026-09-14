@@ -1,0 +1,234 @@
+{
+  "scope": "Known-coordinate training prechecks, not held-out transfer or growth",
+  "conditionMatchedEnsemble": false,
+  "runs": [
+    {
+      "artifactHash": "1bdf2baaa1224f88deca34c2a453ec5d877761b4416d3824d5fee7e2dc25eae9",
+      "inputHash": "d50e14922fe5da498aaeae0f5d23e859ec6b4ec6f6d7b9ad06ffc0bda2262368",
+      "epsilonAngstrom": 0.05,
+      "radiusScale": 1.35,
+      "types": 89,
+      "occurrences": 9147,
+      "singleOccurrenceTypes": 0,
+      "typeConfigurationCounts": {
+        "1": 23,
+        "2": 29,
+        "3": 6,
+        "4": 15,
+        "5": 12,
+        "6": 4
+      },
+      "results": [
+        {
+          "configurations": [
+            "alpha-B-symmetry.cif"
+          ],
+          "activeVariables": 24,
+          "requiredPoints": 12,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.02631578947368421,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "beta-B105-symmetry.cif"
+          ],
+          "activeVariables": 99,
+          "requiredPoints": 105,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492753623188406,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "beta-B106.cif"
+          ],
+          "activeVariables": 189,
+          "requiredPoints": 106,
+          "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+          "status": "numerical restricted LP infeasibility"
+        },
+        {
+          "configurations": [
+            "gamma-B-symmetry.cif"
+          ],
+          "activeVariables": 81,
+          "requiredPoints": 28,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.020833333333333332,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "tau-B105-symmetry.cif"
+          ],
+          "activeVariables": 105,
+          "requiredPoints": 210,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.009012648802517636,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": true,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "tau-B106.cif"
+          ],
+          "activeVariables": 231,
+          "requiredPoints": 212,
+          "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+          "status": "numerical restricted LP infeasibility"
+        },
+        {
+          "configurations": [
+            "alpha-B-symmetry.cif",
+            "beta-B105-symmetry.cif",
+            "beta-B106.cif",
+            "gamma-B-symmetry.cif",
+            "tau-B105-symmetry.cif",
+            "tau-B106.cif"
+          ],
+          "activeVariables": 267,
+          "requiredPoints": 673,
+          "solverStatus": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+          "status": "numerical restricted LP infeasibility"
+        }
+      ]
+    },
+    {
+      "artifactHash": "9f5852e1f90861824ae73ca28b8c41ac940c2d5b180bc14db6f9cc91bc1d9ff5",
+      "inputHash": "d50e14922fe5da498aaeae0f5d23e859ec6b4ec6f6d7b9ad06ffc0bda2262368",
+      "epsilonAngstrom": 0.01,
+      "radiusScale": 1.35,
+      "types": 857,
+      "occurrences": 9147,
+      "singleOccurrenceTypes": 60,
+      "typeConfigurationCounts": {
+        "1": 406,
+        "2": 318,
+        "3": 54,
+        "4": 70,
+        "5": 9
+      },
+      "results": [
+        {
+          "configurations": [
+            "alpha-B-symmetry.cif"
+          ],
+          "activeVariables": 42,
+          "requiredPoints": 12,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.02631578947368421,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "beta-B105-symmetry.cif"
+          ],
+          "activeVariables": 348,
+          "requiredPoints": 105,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492753623188406,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 2
+        },
+        {
+          "configurations": [
+            "beta-B106.cif"
+          ],
+          "activeVariables": 1566,
+          "requiredPoints": 106,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492753623188406,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "gamma-B-symmetry.cif"
+          ],
+          "activeVariables": 162,
+          "requiredPoints": 28,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.020833333333333332,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "tau-B105-symmetry.cif"
+          ],
+          "activeVariables": 537,
+          "requiredPoints": 210,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492753623188406,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 2
+        },
+        {
+          "configurations": [
+            "tau-B106.cif"
+          ],
+          "activeVariables": 1932,
+          "requiredPoints": 212,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492753623188406,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": false,
+          "activeScalarClasses": 1
+        },
+        {
+          "configurations": [
+            "alpha-B-symmetry.cif",
+            "beta-B105-symmetry.cif",
+            "beta-B106.cif",
+            "gamma-B-symmetry.cif",
+            "tau-B105-symmetry.cif",
+            "tau-B106.cif"
+          ],
+          "activeVariables": 2571,
+          "requiredPoints": 673,
+          "solverStatus": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "status": "exact finite-quotient precheck passed",
+          "minimumWeight": 0.014492751994651094,
+          "exactFilling": true,
+          "exactSymmetry": true,
+          "rationalPolished": true,
+          "activeScalarClasses": 1
+        }
+      ]
+    }
+  ]
+}
