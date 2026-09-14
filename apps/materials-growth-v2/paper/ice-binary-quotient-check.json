@@ -1,0 +1,43 @@
+{
+  "mode": "quotient",
+  "groups": [
+    {
+      "phase": "Ih",
+      "runs": 75,
+      "complete": 64,
+      "connectedComplete": 20,
+      "unknownOrIncomplete": 11,
+      "branches": 15745,
+      "backtracks": 18260
+    },
+    {
+      "phase": "II",
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 35,
+      "unknownOrIncomplete": 0,
+      "branches": 8075,
+      "backtracks": 3769
+    },
+    {
+      "phase": "VI",
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 13,
+      "unknownOrIncomplete": 0,
+      "branches": 5975,
+      "backtracks": 1678
+    },
+    {
+      "phase": "VIII",
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 17,
+      "unknownOrIncomplete": 0,
+      "branches": 4582,
+      "backtracks": 93
+    }
+  ],
+  "verifiedRuns": 300,
+  "scope": "Binary decorated marking hypothesis, expanded variants or exact existential quotient; exact t=1/2, fixed observed candidates, all roots generation zero. Not a same-solution-set comparison to unmarked tiling or blind growth."
+}

@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "phase": "Ih",
+      "runs": 75,
+      "complete": 11,
+      "connectedComplete": 1,
+      "unknownOrIncomplete": 64,
+      "branches": 214062,
+      "backtracks": 428874
+    },
+    {
+      "phase": "II",
+      "runs": 75,
+      "complete": 63,
+      "connectedComplete": 8,
+      "unknownOrIncomplete": 12,
+      "branches": 69247,
+      "backtracks": 135993
+    },
+    {
+      "phase": "VI",
+      "runs": 75,
+      "complete": 69,
+      "connectedComplete": 5,
+      "unknownOrIncomplete": 6,
+      "branches": 33718,
+      "backtracks": 65683
+    },
+    {
+      "phase": "VIII",
+      "runs": 75,
+      "complete": 75,
+      "connectedComplete": 1,
+      "unknownOrIncomplete": 0,
+      "branches": 4699,
+      "backtracks": 1136
+    }
+  ],
+  "verifiedRuns": 300,
+  "scope": "Binary decorated marking hypothesis; two variants per physical placement, exact t=1/2, fixed observed candidates, all roots generation zero. Not a same-solution-set speedup comparison or blind growth."
+}
