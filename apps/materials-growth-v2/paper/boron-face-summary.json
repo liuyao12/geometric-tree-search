@@ -1,0 +1,411 @@
+{
+  "scope": "Geometry-only face-connected cluster proposals on periodic supercells.\n\nMerge graph triangles sharing an edge. Reject winding components as finite\nmotifs. Retain every remaining edge as a pair proposal and uncovered atoms as\nsingletons. This establishes atom coverage, not learned additive t filling.\nNo target motif size, boron chemistry, or named polyhedron is supplied.\n",
+  "results": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 96,
+      "radius": 1.9839525554528907,
+      "triangleComponents": 8,
+      "finiteComponents": 8,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 8
+      },
+      "fallbackPairs": 24,
+      "singletonAtoms": 0,
+      "coveredAtoms": 96
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 324,
+      "radius": 1.9839525554528907,
+      "triangleComponents": 27,
+      "finiteComponents": 27,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 27
+      },
+      "fallbackPairs": 81,
+      "singletonAtoms": 0,
+      "coveredAtoms": 324
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 96,
+      "radius": 2.328987782488176,
+      "triangleComponents": 24,
+      "finiteComponents": 24,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "3": 16,
+        "12": 8
+      },
+      "fallbackPairs": 24,
+      "singletonAtoms": 0,
+      "coveredAtoms": 96
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 324,
+      "radius": 2.328987782488176,
+      "triangleComponents": 81,
+      "finiteComponents": 81,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "3": 54,
+        "12": 27
+      },
+      "fallbackPairs": 81,
+      "singletonAtoms": 0,
+      "coveredAtoms": 324
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 840,
+      "radius": 1.9603334782239032,
+      "triangleComponents": 48,
+      "finiteComponents": 48,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 32,
+        "28": 16
+      },
+      "fallbackPairs": 384,
+      "singletonAtoms": 0,
+      "coveredAtoms": 840
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 2835,
+      "radius": 1.9603334782239032,
+      "triangleComponents": 162,
+      "finiteComponents": 162,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 108,
+        "28": 54
+      },
+      "fallbackPairs": 1296,
+      "singletonAtoms": 0,
+      "coveredAtoms": 2835
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 840,
+      "radius": 2.3012610396541473,
+      "triangleComponents": 48,
+      "finiteComponents": 48,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 32,
+        "29": 16
+      },
+      "fallbackPairs": 336,
+      "singletonAtoms": 0,
+      "coveredAtoms": 840
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 2835,
+      "radius": 2.3012610396541473,
+      "triangleComponents": 162,
+      "finiteComponents": 162,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 108,
+        "29": 54
+      },
+      "fallbackPairs": 1134,
+      "singletonAtoms": 0,
+      "coveredAtoms": 2835
+    },
+    {
+      "file": "beta-B106.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 848,
+      "radius": 1.967243012916804,
+      "triangleComponents": 20,
+      "finiteComponents": 16,
+      "windingComponents": 4,
+      "finiteSizeCounts": {
+        "28": 8,
+        "29": 8
+      },
+      "fallbackPairs": 1400,
+      "singletonAtoms": 0,
+      "coveredAtoms": 848
+    },
+    {
+      "file": "beta-B106.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 2862,
+      "radius": 1.967243012916804,
+      "triangleComponents": 63,
+      "finiteComponents": 54,
+      "windingComponents": 9,
+      "finiteSizeCounts": {
+        "28": 27,
+        "29": 27
+      },
+      "fallbackPairs": 4725,
+      "singletonAtoms": 0,
+      "coveredAtoms": 2862
+    },
+    {
+      "file": "beta-B106.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 848,
+      "radius": 2.309372232554509,
+      "triangleComponents": 20,
+      "finiteComponents": 16,
+      "windingComponents": 4,
+      "finiteSizeCounts": {
+        "28": 8,
+        "29": 8
+      },
+      "fallbackPairs": 1392,
+      "singletonAtoms": 0,
+      "coveredAtoms": 848
+    },
+    {
+      "file": "beta-B106.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 2862,
+      "radius": 2.309372232554509,
+      "triangleComponents": 63,
+      "finiteComponents": 54,
+      "windingComponents": 9,
+      "finiteSizeCounts": {
+        "28": 27,
+        "29": 27
+      },
+      "fallbackPairs": 4698,
+      "singletonAtoms": 0,
+      "coveredAtoms": 2862
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 224,
+      "radius": 2.0015374409999973,
+      "triangleComponents": 16,
+      "finiteComponents": 16,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "14": 16
+      },
+      "fallbackPairs": 128,
+      "singletonAtoms": 0,
+      "coveredAtoms": 224
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 756,
+      "radius": 2.0015374409999973,
+      "triangleComponents": 54,
+      "finiteComponents": 54,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "14": 54
+      },
+      "fallbackPairs": 432,
+      "singletonAtoms": 0,
+      "coveredAtoms": 756
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 224,
+      "radius": 2.349630908999997,
+      "triangleComponents": 16,
+      "finiteComponents": 16,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "18": 16
+      },
+      "fallbackPairs": 64,
+      "singletonAtoms": 0,
+      "coveredAtoms": 224
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 756,
+      "radius": 2.349630908999997,
+      "triangleComponents": 54,
+      "finiteComponents": 54,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "18": 54
+      },
+      "fallbackPairs": 216,
+      "singletonAtoms": 0,
+      "coveredAtoms": 756
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 1680,
+      "radius": 1.9653350209000133,
+      "triangleComponents": 96,
+      "finiteComponents": 96,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 64,
+        "28": 32
+      },
+      "fallbackPairs": 768,
+      "singletonAtoms": 0,
+      "coveredAtoms": 1680
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 5670,
+      "radius": 1.9653350209000133,
+      "triangleComponents": 324,
+      "finiteComponents": 324,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 216,
+        "28": 108
+      },
+      "fallbackPairs": 2592,
+      "singletonAtoms": 0,
+      "coveredAtoms": 5670
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 1680,
+      "radius": 2.3071324158391464,
+      "triangleComponents": 96,
+      "finiteComponents": 96,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 64,
+        "29": 32
+      },
+      "fallbackPairs": 672,
+      "singletonAtoms": 0,
+      "coveredAtoms": 1680
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 5670,
+      "radius": 2.3071324158391464,
+      "triangleComponents": 324,
+      "finiteComponents": 324,
+      "windingComponents": 0,
+      "finiteSizeCounts": {
+        "12": 216,
+        "29": 108
+      },
+      "fallbackPairs": 2268,
+      "singletonAtoms": 0,
+      "coveredAtoms": 5670
+    },
+    {
+      "file": "tau-B106.cif",
+      "repeat": 2,
+      "radiusScale": 1.15,
+      "atoms": 1696,
+      "radius": 1.968702852055995,
+      "triangleComponents": 52,
+      "finiteComponents": 48,
+      "windingComponents": 4,
+      "finiteSizeCounts": {
+        "12": 16,
+        "28": 16,
+        "29": 16
+      },
+      "fallbackPairs": 2288,
+      "singletonAtoms": 0,
+      "coveredAtoms": 1696
+    },
+    {
+      "file": "tau-B106.cif",
+      "repeat": 3,
+      "radiusScale": 1.15,
+      "atoms": 5724,
+      "radius": 1.968702852055995,
+      "triangleComponents": 171,
+      "finiteComponents": 162,
+      "windingComponents": 9,
+      "finiteSizeCounts": {
+        "12": 54,
+        "28": 54,
+        "29": 54
+      },
+      "fallbackPairs": 7722,
+      "singletonAtoms": 0,
+      "coveredAtoms": 5724
+    },
+    {
+      "file": "tau-B106.cif",
+      "repeat": 2,
+      "radiusScale": 1.35,
+      "atoms": 1696,
+      "radius": 2.311085956761386,
+      "triangleComponents": 52,
+      "finiteComponents": 48,
+      "windingComponents": 4,
+      "finiteSizeCounts": {
+        "12": 16,
+        "28": 16,
+        "29": 16
+      },
+      "fallbackPairs": 2304,
+      "singletonAtoms": 0,
+      "coveredAtoms": 1696
+    },
+    {
+      "file": "tau-B106.cif",
+      "repeat": 3,
+      "radiusScale": 1.35,
+      "atoms": 5724,
+      "radius": 2.311085956761386,
+      "triangleComponents": 171,
+      "finiteComponents": 162,
+      "windingComponents": 9,
+      "finiteSizeCounts": {
+        "12": 54,
+        "28": 54,
+        "29": 54
+      },
+      "fallbackPairs": 7776,
+      "singletonAtoms": 0,
+      "coveredAtoms": 5724
+    }
+  ]
+}
