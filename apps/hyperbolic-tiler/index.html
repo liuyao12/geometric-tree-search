@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hyperbolic Tiling Lab · GCTS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><a class="brand" href="../../">GCTS <span>/ hyperbolic geometry</span></a><div class="header-links"><a href="https://github.com/liuyao12/geometric-tree-search/tree/main/apps/hyperbolic-tiler">Source</a><a href="#notes">Mathematics &amp; scope</a></div></header>
+<main>
+<div class="title"><div><p class="eyebrow">CONGRUENT TILES. EXPONENTIALLY GROWING SPACE.</p><h1>Hyperbolic Tiling Lab</h1><p>See the tiling. Then watch a search find its way.</p></div><span class="version">Böröczky family · v1</span></div>
+<div class="workspace">
+<aside class="controls">
+<label for="tile">Prototile</label><select id="tile"><option value="2">Böröczky pentagon · binary</option><option value="3">Ternary hexagon · derived variant</option><option value="4">Quaternary heptagon · derived variant</option></select>
+<canvas id="preview" aria-label="The exact geodesic prototile in the upper half-plane"></canvas><div id="tile-meta" class="small"></div>
+<div class="divider"></div><label>Experiment</label><div class="tabs" role="group" aria-label="Experiment mode"><button id="known-tab" class="active">Known tiling</button><button id="search-tab">Live search</button></div>
+<p id="mode-help" class="small"></p>
+<div id="search-controls" hidden>
+<label for="radius">Cover a hyperbolic disk <output id="radius-value">1.8</output></label><input id="radius" type="range" min="0.6" max="3" step="0.1" value="1.8">
+<div class="inline"><label for="seed">Search seed</label><input id="seed" type="number" min="0" max="4294967295" value="1"></div>
+<label class="check"><input id="prune" type="checkbox"> Prune impossible angle sums</label>
+<p class="small muted">Off: discover obstructions by growing patches.<br>On: also reject impossible vertex counts.</p>
+</div>
+<div id="known-controls"><label for="extent">Displayed hyperbolic radius <output id="extent-value">5.0</output></label><input id="extent" type="range" min="2" max="6" step="0.2" value="5"></div>
+<div class="transport"><button id="play" class="primary">Animate</button><button id="step" title="One search event (N)">Step</button><button id="reset" title="Reset experiment (R)">Reset</button></div>
+<label for="speed">Animation speed <output id="speed-value">12 events/s</output></label><input id="speed" type="range" min="1" max="60" step="1" value="12">
+<div class="divider"></div><label for="model">Model of the hyperbolic plane</label><select id="model"><option value="disk">Poincaré disk</option><option value="upper">Upper half-plane</option><option value="klein">Klein disk · straight-edge check</option></select>
+<div class="inline"><label class="check"><input id="show-edges" type="checkbox" checked> Frontier / target</label><button id="home">Recenter</button></div>
+<div class="exports"><button id="export-patch">Export patch</button><button id="export-trace">Export trace</button></div>
+<p class="small muted">Drag to pan by a hyperbolic isometry. Wheel to zoom. Space plays/pauses; N steps; R resets.</p>
+</aside>
+<section class="viewer">
+<div class="stage"><canvas id="view" aria-label="Interactive hyperbolic tiling" tabindex="0"></canvas><div class="stage-top"><span id="mode-badge">EXPLICIT CONSTRUCTION</span><span id="model-badge">POINCARÉ DISK</span></div><div class="stage-bottom"><span id="stage-caption"></span><span id="zoom-label">100%</span></div></div>
+<div class="metrics"><div><b id="s-tiles">0</b><span>tiles in patch</span></div><div><b id="s-tries">—</b><span>candidates tried</span></div><div><b id="s-rejects">—</b><span>rejected</span></div><div><b id="s-backs">—</b><span>backtracks</span></div><div><b id="s-depth">—</b><span>maximum depth</span></div></div>
+<div class="event-bar"><span id="event-dot"></span><strong id="event-title">Known tiling</strong><span id="event-detail"></span></div>
+<div class="trace-panel"><div class="trace-heading"><h2>Search tree</h2><span class="legend"><i class="accepted"></i>accepted <i class="rejected"></i>rejected <i class="removed"></i>backtracked</span></div><canvas id="tree" aria-label="Attempted-placement search tree, with branches and backtracks"></canvas><p id="tree-caption" class="small muted">Switch to Live search to inspect actual branches, not a prerecorded animation.</p><div id="log" class="event-log" role="log" aria-label="Recent search events"></div></div>
+</section>
+</div>
+<section id="notes" class="notes">
+<h2>What is being searched?</h2>
+<div class="note-grid"><article><h3>The shape and the known tiling</h3><p>In the upper half-plane, take the vertices (0,1), (1,1), …, (m,1), (m,m), (0,m), and connect them by <strong>hyperbolic geodesics</strong>. The binary case m = 2 is the five-sided tile discussed here. Each of the m lower edges is congruent to the upper edge.</p><div class="formula">T<sub>m</sub> = { m<sup>k</sup>(P<sub>m</sub> + mj) : k, j ∈ ℤ }</div><p>These apparent dilations are hyperbolic isometries. “Known tiling” displays a finite window of this explicit infinite tiling; its animation only reveals tiles. It does not perform a search.</p></article>
+<article><h3>A genuine, restricted tree search</h3><p>“Live search” starts from one tile. It selects the exposed side nearest the origin that meets the target disk, then tries every length-compatible side of a fresh congruent tile. It computes disk isometries, detects interior overlaps in the Klein model, rejects T-junctions, and recursively grows the patch. An exhausted branch is actually removed.</p><p>The goal is to cover a <em>finite hyperbolic disk</em>, allowing tiles to extend beyond it. This version searches <strong>edge-to-edge tilings only</strong>. It uses floating-point geometry with tolerances, not a formal certificate or a decision procedure for infinite tilability. The presets have reflection symmetry, so orientation-preserving copies already include their reflected shapes.</p></article>
+<article><h3>Why the angle test is so small</h3><p>Write α = arctan(1/2). The corner types are a = π/2 − α, b = π − 2α, and c = π/2 + α. Because α/π is irrational, an interior vertex must have either a+a+c+c or b+c+c. With the optional pruning enabled, the search rejects a partial vertex multiset that cannot be extended to either. With it disabled, the same mismatch may surface only after more placements and backtracking.</p><p>The tile area is 2(m−1)α, an irrational multiple of π. Gauss–Bonnet therefore rules out a cocompact symmetry group in any tiling by this tile. The explicit tiling nevertheless has the infinite cyclic symmetry z ↦ mz: this is <strong>weak aperiodicity</strong>, not the absence of every infinite-order symmetry.</p></article>
+<article><h3>Sources and the Margulis–Mozes examples</h3><p>The binary construction and its convex geodesic-edge modification are described by <a href="https://arxiv.org/abs/0705.0291">Dolbilin &amp; Frettlöh, <em>Properties of Böröczky tilings…</em></a>, Figure 1 and the following paragraph. The m = 3 and m = 4 presets here are explicit generalizations derived from that construction, <strong>not claimed to be specific Margulis–Mozes tiles</strong>.</p><p><a href="https://doi.org/10.1007/BF02764015">Margulis &amp; Mozes (1998)</a> construct other convex hyperbolic monotiles. <a href="https://doi.org/10.32917/hmj/1533088825">Ahara et al. (2018)</a> study a rhombus they found. Those exact vertex specifications have not yet been verified for this app and are deliberately not included. The geometry engine and tile definitions are separated to support their later addition.</p></article></div>
+<p class="footnote">All animation events are produced locally in your browser. Nothing is sent to a server. Trace recording pauses at 50,000 events rather than silently discarding backtracks. A 600-tile safety limit reports “limit”, never “impossible”.</p>
+</section>
+</main>
+<script src="engine.js"></script><script src="app.js"></script>
+</body>
+</html>
