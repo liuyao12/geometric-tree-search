@@ -1,0 +1,80 @@
+{
+  "scope": "Independently reconstruct cross-configuration motif-count rankings.\n\nThis verifies only withholding for ranking. The motif/weight model was jointly\ntrained, so this must not be reported as wholly held-out reconstruction.\n",
+  "priorHash": "fd05db4714c3d4a002f0b9e5b8461fb06cf9c55dbca5fecbcd8e526c6beb0208",
+  "folds": [
+    {
+      "fold": 0,
+      "trainingConfigurations": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "unseenTypes": 1,
+      "distinctRanks": 10
+    },
+    {
+      "fold": 1,
+      "trainingConfigurations": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "unseenTypes": 1,
+      "distinctRanks": 9
+    },
+    {
+      "fold": 2,
+      "trainingConfigurations": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "unseenTypes": 1,
+      "distinctRanks": 9
+    },
+    {
+      "fold": 3,
+      "trainingConfigurations": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "unseenTypes": 1,
+      "distinctRanks": 10
+    },
+    {
+      "fold": 4,
+      "trainingConfigurations": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "unseenTypes": 2,
+      "distinctRanks": 8
+    },
+    {
+      "fold": 5,
+      "trainingConfigurations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "unseenTypes": 3,
+      "distinctRanks": 9
+    }
+  ],
+  "verifiedSearchBindings": 12,
+  "scopeLimitation": "Target selected witness withheld only for ranking; shared dictionary and t/m values use all six inputs."
+}

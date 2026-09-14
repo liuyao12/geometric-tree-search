@@ -1,0 +1,62 @@
+{
+  "scope": "Independent incidence-pair reconstruction of context features and rankings.",
+  "priorHash": "540c5d109f89dd9c5e66206e35e88dccc9e0d0970df13accd9d7b64ec893588b",
+  "folds": [
+    {
+      "fold": 0,
+      "candidates": 108,
+      "contextMatches": 0,
+      "uniqueContexts": 2,
+      "sharedContexts": 0,
+      "contextFallbacks": 108,
+      "ambiguousSharedContexts": 0
+    },
+    {
+      "fold": 1,
+      "candidates": 1458,
+      "contextMatches": 567,
+      "uniqueContexts": 12,
+      "sharedContexts": 6,
+      "contextFallbacks": 891,
+      "ambiguousSharedContexts": 0
+    },
+    {
+      "fold": 2,
+      "candidates": 4779,
+      "contextMatches": 2268,
+      "uniqueContexts": 90,
+      "sharedContexts": 27,
+      "contextFallbacks": 2511,
+      "ambiguousSharedContexts": 7
+    },
+    {
+      "fold": 3,
+      "candidates": 486,
+      "contextMatches": 0,
+      "uniqueContexts": 6,
+      "sharedContexts": 0,
+      "contextFallbacks": 486,
+      "ambiguousSharedContexts": 0
+    },
+    {
+      "fold": 4,
+      "candidates": 2916,
+      "contextMatches": 1026,
+      "uniqueContexts": 25,
+      "sharedContexts": 6,
+      "contextFallbacks": 1890,
+      "ambiguousSharedContexts": 0
+    },
+    {
+      "fold": 5,
+      "candidates": 7884,
+      "contextMatches": 2565,
+      "uniqueContexts": 133,
+      "sharedContexts": 27,
+      "contextFallbacks": 5319,
+      "ambiguousSharedContexts": 6
+    }
+  ],
+  "verifiedSearchBindings": 12,
+  "limitation": "Target witness withheld only for ranking; geometry and t/m fitted jointly. Shared contexts do not establish shared selection semantics or independent samples."
+}

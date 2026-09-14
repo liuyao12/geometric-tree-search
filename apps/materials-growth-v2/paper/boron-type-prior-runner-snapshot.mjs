@@ -10,7 +10,7 @@ import {linearFrontierClass} from './linear-frontier-decision.mjs';
 import {certifiedDeadPointClass} from './certified-dead-point.mjs';
 import {composedPointProofClass} from './composed-point-proofs.mjs';
 const [inputPath,learningPath,kernelPath,dest,mode,stepArg,secondsArg,ordering='id',priorPath]=process.argv.slice(2);
-assert(['id','filling-mass','type-prior','context-prior'].includes(ordering));
+assert(['id','filling-mass','type-prior'].includes(ordering));
 assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions','linear-nogoods','linear-composed'].includes(mode));
 const maxSteps=stepArg===undefined?100000:Number(stepArg),maxSeconds=secondsArg===undefined?15:Number(secondsArg);
 assert(Number.isSafeInteger(maxSteps)&&maxSteps>0&&Number.isFinite(maxSeconds)&&maxSeconds>0);
@@ -21,7 +21,7 @@ const hash=x=>createHash('sha256').update(x).digest('hex');
 const researchSourceHashes=Object.fromEntries(['boron-face-reference-search.mjs','linear-frontier-decision.mjs','branch-local-exclusions.mjs','certified-dead-point.mjs','composed-point-proofs.mjs'].map(name=>[name,hash(readFileSync(new URL(name,import.meta.url)))]));
 const raw=readFileSync(inputPath),learnRaw=readFileSync(learningPath),d=JSON.parse(raw),learning=JSON.parse(learnRaw),r=learning.result;
 assert.equal(hash(raw),learning.inputHash);assert.equal(r.status,'exact shared integer training cover');
-const priorRaw=ordering.endsWith('-prior')?readFileSync(priorPath):null,priors=priorRaw?JSON.parse(priorRaw):null;
+const priorRaw=ordering==='type-prior'?readFileSync(priorPath):null,priors=priorRaw?JSON.parse(priorRaw):null;
 if(priors){assert.equal(priors.inputHash,hash(raw));assert.equal(priors.learningHash,hash(learnRaw));}
 const {PointSearch,verify}=await import(pathToFileURL(kernelPath));mkdirSync(dest);const results=[];
 const CapacityEngine=residual?residualCapacityClass(PointSearch):PointSearch;
@@ -55,7 +55,7 @@ for(const [fold,c] of d.configurations.entries()){
  });
  for(const marked of [false,true]){
   const model={capacity:r.capacity,required:Array.from({length:c.atoms},(_,i)=>String(i)),candidates:base.map(c=>({...c,m:marked?c.m:[]}))};
-  const scores=new Map(model.candidates.map(candidate=>[candidate.id,ordering==='context-prior'?prior.occurrenceRanks[Number(candidate.id)]:ordering==='type-prior'?prior.types[c.occurrences[Number(candidate.id)].type].rank:candidate.t.reduce((sum,x)=>sum+x.value,0)]));
+  const scores=new Map(model.candidates.map(candidate=>[candidate.id,ordering==='type-prior'?prior.types[c.occurrences[Number(candidate.id)].type].rank:candidate.t.reduce((sum,x)=>sum+x.value,0)]));
   const e=new Engine({...model,preference:ordering!=='id'?c=>scores.get(c.id):()=>0}),root=JSON.stringify(e.semanticState());audit(e,model);
   let steps=0,last;const start=performance.now();
   while(steps<maxSteps&&performance.now()-start<maxSeconds*1000){
