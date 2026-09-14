@@ -1,0 +1,128 @@
+{
+  "scope": "Independent fixed-t filling, marking and connectedness checks; specialized MILP controls, not reference search.",
+  "runsHash": "ccd081848e76927e429953c544d5fd2cdbcbfc6d4fcbd242c268a7751a457cd1",
+  "checked": 12,
+  "mutationRejections": 24,
+  "checks": [
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "seed": 101,
+      "selected": 108,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "cc46a614f407b8d2051c4748d6e88bc661ee4de0d574016feb4f6da6aeb3d22b"
+    },
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "seed": 202,
+      "selected": 108,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "cc46a614f407b8d2051c4748d6e88bc661ee4de0d574016feb4f6da6aeb3d22b"
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "seed": 101,
+      "selected": 1458,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "cdcc1c5cb11f0ed1abc3bf337a332f54702265e6c21447c9ad0a4a18e52c3994"
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "seed": 202,
+      "selected": 1458,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "cdcc1c5cb11f0ed1abc3bf337a332f54702265e6c21447c9ad0a4a18e52c3994"
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "seed": 101,
+      "selected": 3175,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 1077,
+      "selectionHash": "9adab3530224629d8d5de6c5df576d1bc6a1a6ca159ca79a9d14e43af35b6ae8"
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "seed": 202,
+      "selected": 3166,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 1144,
+      "selectionHash": "ef98429fa7806d659f2379a7f636e6b4076fb748c9164e3bc2a9589ca3ee3df1"
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "seed": 101,
+      "selected": 324,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "0f6e3c9cb3c7f0ea9a97029ef7b0af9dad6321585cc182cbbfb2fcde03a13d86"
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "seed": 202,
+      "selected": 324,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "0f6e3c9cb3c7f0ea9a97029ef7b0af9dad6321585cc182cbbfb2fcde03a13d86"
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "seed": 101,
+      "selected": 2916,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "75394e9720a2ce901a82a37e44bab4d56e453f4bb81048bf758f65a8de731d40"
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "seed": 202,
+      "selected": 2916,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 0,
+      "selectionHash": "75394e9720a2ce901a82a37e44bab4d56e453f4bb81048bf758f65a8de731d40"
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "seed": 101,
+      "selected": 5417,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 890,
+      "selectionHash": "b275227d88d54a702c6470623dbd1d0acfaa7c5742d6cb17e8b75c264bb0ca4f"
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "seed": 202,
+      "selected": 5412,
+      "positiveComponents": 1,
+      "markDisagreementPoints": 0,
+      "changedSelectionsFromParent": 865,
+      "selectionHash": "41c1627061d40a5b20e3120272a38181d0784221c980305ee285e3a3d013c2a8"
+    }
+  ]
+}
