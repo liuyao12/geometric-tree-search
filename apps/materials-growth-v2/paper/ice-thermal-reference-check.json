@@ -1,0 +1,89 @@
+{
+  "runs": 200,
+  "verifiedFiniteCovers": 194,
+  "connectedFiniteCovers": 16,
+  "groups": [
+    {
+      "phase": "Ih",
+      "marked": false,
+      "runs": 25,
+      "complete": 22,
+      "connectedComplete": 4,
+      "positiveComponentsTotal": 108,
+      "branches": 9255,
+      "backtracks": 14102
+    },
+    {
+      "phase": "Ih",
+      "marked": true,
+      "runs": 25,
+      "complete": 22,
+      "connectedComplete": 4,
+      "positiveComponentsTotal": 108,
+      "branches": 9255,
+      "backtracks": 14102
+    },
+    {
+      "phase": "II",
+      "marked": false,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 3,
+      "positiveComponentsTotal": 72,
+      "branches": 2217,
+      "backtracks": 203
+    },
+    {
+      "phase": "II",
+      "marked": true,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 3,
+      "positiveComponentsTotal": 72,
+      "branches": 2217,
+      "backtracks": 203
+    },
+    {
+      "phase": "VI",
+      "marked": false,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 1,
+      "positiveComponentsTotal": 101,
+      "branches": 3025,
+      "backtracks": 2581
+    },
+    {
+      "phase": "VI",
+      "marked": true,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 1,
+      "positiveComponentsTotal": 101,
+      "branches": 3025,
+      "backtracks": 2581
+    },
+    {
+      "phase": "VIII",
+      "marked": false,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 0,
+      "positiveComponentsTotal": 98,
+      "branches": 1540,
+      "backtracks": 21
+    },
+    {
+      "phase": "VIII",
+      "marked": true,
+      "runs": 25,
+      "complete": 25,
+      "connectedComplete": 0,
+      "positiveComponentsTotal": 98,
+      "branches": 1540,
+      "backtracks": 21
+    }
+  ],
+  "scope": "Supplied-coordinate finite pool, all required atoms roots at generation zero; uniform t=1/2 hypothesis; no connectivity constraint or blind growth.",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85"
+}
