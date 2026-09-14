@@ -7,20 +7,24 @@ import assert from 'node:assert/strict';
 import {residualCapacityClass,independentResidualDomains} from './residual-capacity-filter.mjs';
 import {branchExclusionClass} from './branch-local-exclusions.mjs';
 import {linearFrontierClass} from './linear-frontier-decision.mjs';
+import {certifiedDeadPointClass} from './certified-dead-point.mjs';
 const [inputPath,learningPath,kernelPath,dest,mode,stepArg,secondsArg,ordering='id']=process.argv.slice(2);
 assert(['id','filling-mass'].includes(ordering));
-assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions'].includes(mode));
+assert(!mode||['residual','branch-exclusions','residual-exclusions','linear','linear-exclusions','linear-nogoods'].includes(mode));
 const maxSteps=stepArg===undefined?100000:Number(stepArg),maxSeconds=secondsArg===undefined?15:Number(secondsArg);
 assert(Number.isSafeInteger(maxSteps)&&maxSteps>0&&Number.isFinite(maxSeconds)&&maxSeconds>0);
 const linear=!!mode?.startsWith('linear');
-const residual=!!mode?.startsWith('residual'),exclusions=!!mode?.endsWith('exclusions');
+const nogoods=mode==='linear-nogoods';
+const residual=!!mode?.startsWith('residual'),exclusions=!!mode?.endsWith('exclusions')||nogoods;
 const hash=x=>createHash('sha256').update(x).digest('hex');
+const researchSourceHashes=Object.fromEntries(['boron-face-reference-search.mjs','linear-frontier-decision.mjs','branch-local-exclusions.mjs','certified-dead-point.mjs'].map(name=>[name,hash(readFileSync(new URL(name,import.meta.url)))]));
 const raw=readFileSync(inputPath),learnRaw=readFileSync(learningPath),d=JSON.parse(raw),learning=JSON.parse(learnRaw),r=learning.result;
 assert.equal(hash(raw),learning.inputHash);assert.equal(r.status,'exact shared integer training cover');
 const {PointSearch,verify}=await import(pathToFileURL(kernelPath));mkdirSync(dest);const results=[];
 const CapacityEngine=residual?residualCapacityClass(PointSearch):PointSearch;
 const ExclusionEngine=exclusions?branchExclusionClass(CapacityEngine):CapacityEngine;
-const Engine=linear?linearFrontierClass(ExclusionEngine):ExclusionEngine;
+const ProofEngine=nogoods?certifiedDeadPointClass(ExclusionEngine):ExclusionEngine;
+const Engine=linear?linearFrontierClass(ProofEngine):ProofEngine;
 function audit(e,model){
  const filtered=residual?independentResidualDomains(e,model):null;
  const selected=new Set(e.placed.keys()),totals=new Map(model.required.map(p=>[p,0])),marks=new Map();
@@ -30,7 +34,8 @@ function audit(e,model){
  }
  const expected=new Map([...totals].filter(([,v])=>v<model.capacity).map(([p])=>[p,new Map()]));
  for(const c of model.candidates){const incident=[];
-  if(!selected.has(c.id)&&!e.branchBlocked?.has(c.id)&&c.t.every(x=>totals.get(x.point)+x.value<=model.capacity)&&c.m.every(x=>!marks.has(x.point)||marks.get(x.point)===x.lo))
+  const cutBlocked=(e.certificates||[]).some(cert=>cert.ids.includes(c.id)&&cert.ids.every(id=>id===c.id||selected.has(id)));
+  if(!selected.has(c.id)&&!e.branchBlocked?.has(c.id)&&!cutBlocked&&c.t.every(x=>totals.get(x.point)+x.value<=model.capacity)&&c.m.every(x=>!marks.has(x.point)||marks.get(x.point)===x.lo))
    for(const x of c.t)if(expected.has(x.point)&&(!filtered||filtered.get(x.point)?.has(c.id))){expected.get(x.point).set(c.id,x.value);incident.push(x.point);}
   assert.deepEqual([...e.reverse.get(c.id)].sort(),incident.sort());
  }
@@ -61,10 +66,14 @@ for(const [fold,c] of d.configurations.entries()){
   const selected=[...e.placed.keys()],check=verify(model,selected);assert(check.legal);
   const result={fold,file:c.file,marked,status:check.complete?'exact finite point-cover witness':last?.kind==='exhausted'?'exhausted finite pool':'budget-unknown',
    steps,seconds:(performance.now()-start)/1000,selected,stats:{...e.stats},required:c.atoms,candidates:base.length,
-   residualCapacityFilter:residual,branchLocalExclusions:exclusions,linearFrontierDecision:linear,ordering,maxSteps,maxSeconds,exclusionCount:e.exclusionCount||0,residualDiagnostics:e.capacityDiagnostics?{...e.capacityDiagnostics}:null};
-  e.undo(0);audit(e,model);assert.equal(JSON.stringify(e.semanticState()),root);result.rootSemanticRollback=true;
-  writeFileSync(`${dest}/${fold}-${marked}.json`,JSON.stringify({inputHash:hash(raw),learningHash:hash(learnRaw),model,result}),{flag:'wx'});
+   residualCapacityFilter:residual,branchLocalExclusions:exclusions,linearFrontierDecision:linear,ordering,maxSteps,maxSeconds,exclusionCount:e.exclusionCount||0,residualDiagnostics:e.capacityDiagnostics?{...e.capacityDiagnostics}:null,
+   proofDiagnostics:e.proofDiagnostics?{...e.proofDiagnostics}:null,proofVersion:e.proofVersion??null};
+  const certificates=e.certificates?[...e.certificates]:null;
+  e.undo(0);audit(e,model);
+  if(nogoods){e.stack=[];e.clearCertificates();audit(e,model);result.rootBaseStateAfterProofReset=true;}
+  assert.equal(JSON.stringify(e.semanticState()),root);result.rootSemanticRollback=!nogoods;
+  writeFileSync(`${dest}/${fold}-${marked}.json`,JSON.stringify({inputHash:hash(raw),learningHash:hash(learnRaw),researchSourceHashes,model,result,...(nogoods?{certificates}: {})}),{flag:'wx'});
   results.push({...result,selected:selected.length});console.log(JSON.stringify(results.at(-1)));
  }
 }
-writeFileSync(`${dest}/summary.json`,JSON.stringify({scope:'In-sample known-coordinate reference search; same full pool marked/unmarked; no periodic selection lock or connectivity cuts in search; no blind growth',residualCapacityFilter:residual,branchLocalExclusions:exclusions,kernelHash:hash(readFileSync(kernelPath)),results},null,2),{flag:'wx'});
+writeFileSync(`${dest}/summary.json`,JSON.stringify({scope:'In-sample known-coordinate reference search; same full pool marked/unmarked; no periodic selection lock or connectivity cuts in search; no blind growth',researchSourceHashes,residualCapacityFilter:residual,branchLocalExclusions:exclusions,kernelHash:hash(readFileSync(kernelPath)),results},null,2),{flag:'wx'});

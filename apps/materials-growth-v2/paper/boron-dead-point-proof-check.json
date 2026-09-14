@@ -1,0 +1,127 @@
+{
+  "scope": "Verify every stored dead-point certificate without consulting search state.\n\nRecompute exact totals and interval intersections from each certificate alone.\nCheck the complete positive-support candidate set at its required point.\nSource model reconstruction is separately verified by verify-boron-face-search.py.\n",
+  "results": [
+    {
+      "fold": 0,
+      "marked": false,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "826b61c347f959611870c779558d861f85b0419222491089118d6d9588ebe2fe"
+    },
+    {
+      "fold": 0,
+      "marked": true,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "45a16d0c5e5ff7d4df5c1b44da5b015b1e8122819dfd89c6479f0b043d0930dd"
+    },
+    {
+      "fold": 1,
+      "marked": false,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "da6255a282a6aaa0d3641f1dafc2304dfec6d3da899a3a7be7bbb601d97586e0"
+    },
+    {
+      "fold": 1,
+      "marked": true,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "e3a77f5364e2aa0ab359e148cce3c7676b6c319c46029984903e29c1254cbb0a"
+    },
+    {
+      "fold": 2,
+      "marked": false,
+      "certificates": 119,
+      "minimumSize": 4,
+      "maximumSize": 16,
+      "meanSize": 9.798319327731093,
+      "trainingWitnessPreserved": true,
+      "runHash": "5acdf5a0541a271102f47656864b110f1c1f0b219b91407605649be2cec2ce4b"
+    },
+    {
+      "fold": 2,
+      "marked": true,
+      "certificates": 118,
+      "minimumSize": 4,
+      "maximumSize": 16,
+      "meanSize": 9.779661016949152,
+      "trainingWitnessPreserved": true,
+      "runHash": "f5965d8fab913d2ae4c82c37e35aeb9e69f9af826b74df901183feeef9ee7f01"
+    },
+    {
+      "fold": 3,
+      "marked": false,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "b58d97c012aefed6668c4ceaec620d48529940121e0d05937fb67d9498874010"
+    },
+    {
+      "fold": 3,
+      "marked": true,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "01d44743be97be93db9b76b640c850ee68bb843eb02c4909e59ba95013d0fa0d"
+    },
+    {
+      "fold": 4,
+      "marked": false,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "59aeea295c7c5833a673e69685ba31f37d1c13da6907a097fe527ea1619ed292"
+    },
+    {
+      "fold": 4,
+      "marked": true,
+      "certificates": 0,
+      "minimumSize": null,
+      "maximumSize": null,
+      "meanSize": null,
+      "trainingWitnessPreserved": true,
+      "runHash": "ad42e1883300e40565251e14476657d6344b7b7374f4961866c73befb8d6414f"
+    },
+    {
+      "fold": 5,
+      "marked": false,
+      "certificates": 438,
+      "minimumSize": 4,
+      "maximumSize": 17,
+      "meanSize": 9.454337899543379,
+      "trainingWitnessPreserved": true,
+      "runHash": "71a73f94d3362c92a3bd0e50bb024bf93cccb349e0dcaa51df4bb66a674c19e0"
+    },
+    {
+      "fold": 5,
+      "marked": true,
+      "certificates": 438,
+      "minimumSize": 4,
+      "maximumSize": 17,
+      "meanSize": 9.454337899543379,
+      "trainingWitnessPreserved": true,
+      "runHash": "025f634cc8a40a04d8ddd5dab3bd539262555886e01c30b934fed5b76765df86"
+    }
+  ],
+  "totalCertificates": 1113,
+  "allStoredTrainingWitnessesPreserved": true
+}
