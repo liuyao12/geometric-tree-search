@@ -1,0 +1,137 @@
+{
+  "results": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "marked": false,
+      "complete": true,
+      "selected": 108,
+      "positiveComponents": 1,
+      "filledPoints": 324,
+      "required": 324,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "marked": true,
+      "complete": true,
+      "selected": 108,
+      "positiveComponents": 1,
+      "filledPoints": 324,
+      "required": 324,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "marked": false,
+      "complete": true,
+      "selected": 1458,
+      "positiveComponents": 1,
+      "filledPoints": 2835,
+      "required": 2835,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "marked": true,
+      "complete": true,
+      "selected": 1458,
+      "positiveComponents": 1,
+      "filledPoints": 2835,
+      "required": 2835,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "marked": false,
+      "complete": false,
+      "selected": 1882,
+      "positiveComponents": null,
+      "filledPoints": 2219,
+      "required": 2862,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "marked": true,
+      "complete": false,
+      "selected": 1890,
+      "positiveComponents": null,
+      "filledPoints": 2223,
+      "required": 2862,
+      "localMarkDisagreements": 675,
+      "capacityCompatibleLocalMarkDisagreements": 27
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "marked": false,
+      "complete": true,
+      "selected": 324,
+      "positiveComponents": 1,
+      "filledPoints": 756,
+      "required": 756,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "marked": true,
+      "complete": true,
+      "selected": 324,
+      "positiveComponents": 1,
+      "filledPoints": 756,
+      "required": 756,
+      "localMarkDisagreements": 324,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "marked": false,
+      "complete": true,
+      "selected": 2916,
+      "positiveComponents": 1,
+      "filledPoints": 5670,
+      "required": 5670,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "marked": true,
+      "complete": true,
+      "selected": 2916,
+      "positiveComponents": 1,
+      "filledPoints": 5670,
+      "required": 5670,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "marked": false,
+      "complete": false,
+      "selected": 2099,
+      "positiveComponents": null,
+      "filledPoints": 4120,
+      "required": 5724,
+      "localMarkDisagreements": 0,
+      "capacityCompatibleLocalMarkDisagreements": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "marked": true,
+      "complete": false,
+      "selected": 1566,
+      "positiveComponents": null,
+      "filledPoints": 3877,
+      "required": 5724,
+      "localMarkDisagreements": 1539,
+      "capacityCompatibleLocalMarkDisagreements": 54
+    }
+  ],
+  "scope": "Independent candidate reconstruction and exact final-state checks; in-sample finite pools, not blind growth."
+}
