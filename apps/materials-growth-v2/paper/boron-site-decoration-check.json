@@ -1,0 +1,71 @@
+{
+  "scope": "Witnessed self-pose pool only; proper-registration residuals numerical, atom-ID filling exact. Hard-model conflict equality proves unchanged partial legality, not complete continuous poses.",
+  "compiledHash": "d2b405795abb3460703a0b1c6610e9209b6d53b90004d40a217e20aa5ef0121b",
+  "siteVariables": 219,
+  "siteClasses": 89,
+  "tiedClasses": 78,
+  "selfPoseWitnessesChecked": 81,
+  "maximumSelfPoseResidual": 0.022533294489618647,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "physicalCandidates": 108,
+      "decoratedCandidates": 243,
+      "oldConflictingPairs": 0,
+      "newConflictingPairs": 405,
+      "oneVariantPerPhysicalCandidate": false,
+      "identicalPartialLegalityAfterProjection": false,
+      "trainingFillingVerified": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "physicalCandidates": 1458,
+      "decoratedCandidates": 1566,
+      "oldConflictingPairs": 0,
+      "newConflictingPairs": 162,
+      "oneVariantPerPhysicalCandidate": false,
+      "identicalPartialLegalityAfterProjection": false,
+      "trainingFillingVerified": true
+    },
+    {
+      "file": "beta-B106.cif",
+      "physicalCandidates": 4779,
+      "decoratedCandidates": 4779,
+      "oldConflictingPairs": 648,
+      "newConflictingPairs": 648,
+      "oneVariantPerPhysicalCandidate": true,
+      "identicalPartialLegalityAfterProjection": true,
+      "trainingFillingVerified": true
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "physicalCandidates": 486,
+      "decoratedCandidates": 540,
+      "oldConflictingPairs": 324,
+      "newConflictingPairs": 702,
+      "oneVariantPerPhysicalCandidate": false,
+      "identicalPartialLegalityAfterProjection": false,
+      "trainingFillingVerified": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "physicalCandidates": 2916,
+      "decoratedCandidates": 3132,
+      "oldConflictingPairs": 0,
+      "newConflictingPairs": 324,
+      "oneVariantPerPhysicalCandidate": false,
+      "identicalPartialLegalityAfterProjection": false,
+      "trainingFillingVerified": true
+    },
+    {
+      "file": "tau-B106.cif",
+      "physicalCandidates": 7884,
+      "decoratedCandidates": 7884,
+      "oldConflictingPairs": 1485,
+      "newConflictingPairs": 1485,
+      "oneVariantPerPhysicalCandidate": true,
+      "identicalPartialLegalityAfterProjection": true,
+      "trainingFillingVerified": true
+    }
+  ]
+}
