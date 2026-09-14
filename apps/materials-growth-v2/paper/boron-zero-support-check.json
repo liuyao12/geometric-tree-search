@@ -1,0 +1,36 @@
+{
+  "scope": "Exact exclusions in the supplied complete finite candidate models; not a proof that every retained candidate admits integer completion.",
+  "proofHash": "c28325b98fb4b52c5f93c9b3b88c411e7bf09a2470d6f44de766f0a8e0c3dfef",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "excluded": 0,
+      "trainingWitnessPreserved": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "excluded": 0,
+      "trainingWitnessPreserved": true
+    },
+    {
+      "file": "beta-B106.cif",
+      "excluded": 486,
+      "trainingWitnessPreserved": true
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "excluded": 162,
+      "trainingWitnessPreserved": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "excluded": 0,
+      "trainingWitnessPreserved": true
+    },
+    {
+      "file": "tau-B106.cif",
+      "excluded": 1026,
+      "trainingWitnessPreserved": true
+    }
+  ]
+}
