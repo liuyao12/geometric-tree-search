@@ -1,6 +1,8 @@
 # Moving-anchor calibration in GCTS-I
 
-The new lane is a first controlled experiment for learning finite point supports.
+The experiment in the final Geometric Deep Learning section is a first controlled
+experiment for learning finite point supports. It is independent of the usual
+Turtle tiling demo, which retains its original controls and scroll stages.
 It does not implement general continuous-domain GCTS or discover a square tile
 without supervision. The existing Turtle engine and its benchmarks are unchanged.
 

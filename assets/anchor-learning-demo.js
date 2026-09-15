@@ -1,8 +1,5 @@
 import { CORNERS, VERSION, createModel, objective, trainStep, compileModel, search } from './anchor-learning.js';
 
-const card = document.getElementById('turtle-tiling-card');
-const select = document.getElementById('tiling-lane');
-const panel = document.getElementById('anchor-lane');
 const $ = id => document.getElementById(id);
 let model, initial, elapsed, running = false, lastTime, iterator = null, frame = null, result = null, compiled = null;
 const canvas = $('anchor-canvas'), ctx = canvas.getContext('2d');
@@ -19,16 +16,6 @@ function reset() {
   draw();
 }
 function stop() { running = false; cancelAnimationFrame(animation); train.textContent = 'Train'; }
-function activate() {
-  const active = select.value === 'anchors';
-  if (active && $('turtle-start').textContent === 'Pause tiling') $('turtle-start').click();
-  if (!active) stop();
-  for (const child of card.children) if (child.matches('.interactive-toolbar, #turtle-tiling, figcaption')) child.hidden = active;
-  panel.hidden = !active;
-  card.classList.toggle('anchor-active', active);
-  if (active) draw();
-  window.dispatchEvent(new Event('resize'));
-}
 function draw() {
   const loss = objective(model);
   const movement = Math.sqrt(model.anchors.reduce((s, p, i) => s + (p.x - initial.anchors[i].x) ** 2 + (p.y - initial.anchors[i].y) ** 2, 0) / 4);
@@ -145,15 +132,4 @@ $('anchor-export').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
   const a = document.createElement('a'); a.href = url; a.download = 'gcts-moving-anchors.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-select.addEventListener('change', activate);
-// The parent Turtle card supports drag gestures; experiment controls and its
-// scrollable details must retain their ordinary pointer behavior.
-panel.addEventListener('pointerdown', event => event.stopPropagation());
-function hashLane() {
-  if (location.hash === '#anchor-learning') {
-    select.value = 'anchors'; activate();
-    if (window.innerWidth <= 900) card.scrollIntoView({ block: 'start' });
-  }
-}
-window.addEventListener('hashchange', hashLane);
-reset(); hashLane();
+reset();
