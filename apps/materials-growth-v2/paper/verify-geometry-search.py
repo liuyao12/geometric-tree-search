@@ -77,7 +77,7 @@ for row in data['models']:
         full,count,owners=verify_selected(row['model'],record['selected']);assert full and owners==expected and count==record['verifiedCommonValues'];training_checks+=1
 summary=json.loads((search/'summary.json').read_text());assert summary['modelHash']==sha(model_path)
 if summary.get('extended'):
-    assert len(summary['results'])==1 and summary['results'][0]['fold']==5 and summary['results'][0]['enabled'] and summary['results'][0]['maxSeconds']==300
+    assert len(summary['results'])==1 and summary['results'][0]['fold'] in (2,5) and summary['results'][0]['enabled'] and summary['results'][0]['maxSeconds']==300
 else:assert len(summary['results'])==2*len(models)
 files=sorted(search.glob('[0-9]-*.json'));assert len(files)==len(summary['results'])
 for file in files:

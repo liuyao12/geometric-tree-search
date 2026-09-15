@@ -1,0 +1,23 @@
+{
+  "scope": "Independently verify registered geometry, training lifts, and search witnesses.\n\nRebuild integer point totals and scalar marks. Verify cloud witnesses with the\nseparate Python membership implementation, not the JavaScript search filter.\n",
+  "modelHash": "12eeaf3f3e0af1086c3c77d445a1877ba8eae2d2608e8d266e3d06b40f8d0c1b",
+  "portableHash": "3b0377f8e237a0c65721c6d9f441d176b191bf0f198bd74d758f0ce1018c0b02",
+  "registeredVariantsChecked": 67941,
+  "trainingLiftsChecked": 18,
+  "maxAnchorResidualAngstrom": 0.029549495131679725,
+  "maxCommonValueResidualAngstrom": 0.031103596339989617,
+  "results": [
+    {
+      "file": "beta-B106.cif",
+      "portableEnabled": true,
+      "status": "budget-unknown",
+      "selected": 550,
+      "scalarComplete": false,
+      "verifiedCommonValues": 69,
+      "positiveSupportComponents": null,
+      "matchingTrainingDecompositions": []
+    }
+  ],
+  "registrationHash": "cb54afb0fa0b663b78fbfd605ad64aa184529a42c544a6bbe52e9ffdbac83a69",
+  "limits": "Registrations use observed base-pair geometry but no target junction-state tables. Missing cloud witnesses are not certified legal markings. No continuous-pose completeness or independent family transfer claim."
+}

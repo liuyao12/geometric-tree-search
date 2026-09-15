@@ -1,0 +1,38 @@
+{
+  "scope": "Extended 300-second portable-cloud beta-B106 reconstruction diagnostic on geometry-only registrations. No matched extended control or continuous-pose completeness claim.",
+  "extended": true,
+  "modelHash": "12eeaf3f3e0af1086c3c77d445a1877ba8eae2d2608e8d266e3d06b40f8d0c1b",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "sourceHashes": {
+    "boron-beta-geometry-extended.mjs": "ea8cae81a3d6c4d26cd81afd8b7fcf5b555c0e09eeebf70e5a1e1ba51d7e2ac6",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635"
+  },
+  "results": [
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "enabled": true,
+      "maxSeconds": 300,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.2971305,
+      "seconds": 300.19460729199994,
+      "steps": 3294,
+      "stats": {
+        "attempts": 3294,
+        "accepted": 3294,
+        "forced": 464,
+        "branches": 533,
+        "backtracks": 2712,
+        "eliminated": 262883,
+        "checks": 301801194
+      },
+      "selected": 550,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 69,
+      "rootRollback": true
+    }
+  ]
+}
