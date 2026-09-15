@@ -533,7 +533,7 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
   const desired=polygonOccupancy(boundary),seedOrigin=seed?.loop?.[0]??[0,0,0],seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(a2Sub(entry.point,seedOrigin))));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
@@ -578,7 +578,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   const startPointMap=new Map(startPoints.map(point=>[a2Key(point),point]));
   const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=initialChosen.slice(),usedPlacements=new Set(initialChosen.map(placement=>placement.id)),exhaustedBranches=new Set();
   const placementGeneration=placement=>{const adjacent=[...placement.occupancy.keys()].map(key=>pointDepth.get(key)).filter(Number.isFinite);return adjacent.length?Math.min(...adjacent)+1:0;};
-  initialChosen.forEach(placement=>{if(!Number.isFinite(placement.generation))placement.generation=placementGeneration(placement);for(const [key,entry] of placement.occupancy){const next=(sums.get(key)||0)+entry.weight;if(next>targetAt(entry.point)+1e-7)throw new Error(`Initial placements exceed the t-value maximum at ${key}`);pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,next);}});
+  initialChosen.forEach(placement=>{if(!Number.isFinite(placement.generation))placement.generation=completePointGrowth?0:placementGeneration(placement);for(const [key,entry] of placement.occupancy){const next=(sums.get(key)||0)+entry.weight;if(next>targetAt(entry.point)+1e-7)throw new Error(`Initial placements exceed the t-value maximum at ${key}`);pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,next);}});
   for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}let nodes=0,backtracks=0,exactMemoPrunes=0,best=initialChosen.slice(),bestFilled=0,lastImprovementNode=0;
   const frontierPattern=(pointKey,additions=null)=>{
     const center=pointKey.split(",").map(Number),tokens=[];
@@ -632,7 +632,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       if(current<1e-7)newPoints++;
     }
     if(maximize&&placementFilter&&!placementFilter(placement))return false;
-    if(maximize&&!newPoints)return false;
+    if(maximize&&!completePointGrowth&&!newPoints)return false;
     if(!maximize&&(chosen.some(other=>polygonsOverlap(placement.loop,other.loop))||(seed&&polygonsOverlap(placement.loop,seed.loop))))return false;
     return ignoreMarking||learner.compatible(placement,markingSeed?[markingSeed,...chosen]:chosen,count);
   };
@@ -715,7 +715,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
         const value=incidence.markingEntries.get(key),contact=learner.contacts?.get(key);
         if(value!==undefined&&contact&&contact.value!==value){invalid=true;break;}
       }
-      if(!invalid&&![...incidence.placement.occupancy.keys()].some(key=>(sums.get(key)||0)<1e-7))invalid=true;
+      if(!invalid&&!completePointGrowth&&![...incidence.placement.occupancy.keys()].some(key=>(sums.get(key)||0)<1e-7))invalid=true;
       if(invalid){rememberCandidateBeforeChange(delta,candidateId);candidateLegal.set(candidateId,false);}
       if(invalid)for(const pointKey of incidence.frontierPoints){
         if(!frontierGraph.get(pointKey)?.legal.has(candidateId))continue;
@@ -771,7 +771,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     if(stopToken.stop)return "unknown";
     if(nodes>=nodeLimit)return "unknown";
     if(maximize&&learner.revision>0&&nodes-lastImprovementNode>=markingStagnationNodes)return "stagnant";
-    if(maximize?chosen.length>=targetPlacements:[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
+    if(maximize?(!completePointGrowth&&chosen.length>=targetPlacements):[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
     if(maximize){
       // The frontier-candidate graph is the branching engine. Close forced
@@ -794,6 +794,8 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
         if(!legal.length){if(!legalAt(entry.point,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(entry.point));noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
         viable.push({...entry,legal});
       }
+      // A growth checkpoint must pass the whole-frontier dead-point scan.
+      if(completePointGrowth&&chosen.length>=targetPlacements)return true;
       const byGeneration=(left,right)=>left.introduced-right.introduced||left.legal.length-right.legal.length||left.distance-right.distance||right.value-left.value||left.norm-right.norm||lexicalCompare(left.point,right.point);
       const forced=viable.filter(entry=>entry.legal.length===1).sort(byGeneration);
       const selected=forced[0]??viable.sort(byGeneration)[0];

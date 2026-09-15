@@ -1,5 +1,5 @@
-import {A2_TILE_LOOPS,A2_SYMMETRIES,tileOrientations,a2Transform,a2Add,a2Sub,solveA2Tiling,makeHexBoundary,NoA2Marking,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-fixed-prefix';
-export const VERSION='hat-local-patches-v1';
+import {A2_TILE_LOOPS,A2_SYMMETRIES,tileOrientations,a2Transform,a2Add,a2Sub,solveA2Tiling,makeHexBoundary,NoA2Marking,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-constraints';
+export const VERSION='hat-connection-constraints-v2';
 export const ORIENTATIONS=tileOrientations('hat',A2_TILE_LOOPS.hat);
 export const HAT=ORIENTATIONS[0];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -19,8 +19,19 @@ export function verifyPatch(specs,support=[]){
  }
  return {tiles:specs.length,completePoints:[...sums.values()].filter(v=>v===12).length,openPoints:[...sums.values()].filter(v=>v<12).length,conflicts,agreements,compatible:conflicts===0};
 }
+// An inspectable disagreement at one shared geometric point and channel.
+export function conflictWitness(specs,support){
+ const contacts=new Map();
+ for(const spec of specs){const p=materialize(spec),sym=p.orientation.symmetry;
+  for(const e of support){const point=a2Add(a2Transform(e.point,sym),p.translation).map(v=>v||0),component=sym.permutation.indexOf(e.component),value=e.value*parity(sym.permutation)||0,at=`${point}|${component}`;
+   if(contacts.has(at)&&contacts.get(at)!==value)return {point,component,values:[contacts.get(at),value]};
+   contacts.set(at,value);
+  }
+ }
+ return null;
+}
 // Canonicalize the full undecorated point model under all A2 symmetries and
-// translations, so training/test splits cannot share rotated/reflected copies.
+// translations, retaining one representative of each observed local patch.
 export function canonicalPatch(specs){
  const data=specs.map(spec=>{const p=materialize(spec);return [...p.orientation.occupancy.values()].map(e=>({point:a2Add(e.point,p.translation),weight:e.weight}));});
  let best=null;
@@ -57,42 +68,68 @@ export function encode(samples){
   }
  }
  const labels=new Map();support.forEach((e,i)=>{const [r,s]=find(i);if(!labels.has(r))labels.set(r,labels.size+1);e.value=zero[r]?0:s*labels.get(r);});
- const training=samples.map(s=>verifyPatch(s.placements,support));if(training.some(r=>!r.compatible))throw new Error('Encoding lost a training patch');
- return {version:VERSION,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,trainingCount:samples.length,trainingConflicts:0,scope:'Learned hypothesis on a fixed one-step A2 marking domain; no supplied Hat marking.'};
+ const checks=samples.map(s=>verifyPatch(s.placements,support));if(checks.some(r=>!r.compatible))throw new Error('Encoding lost an observed extension');
+ return {version:VERSION,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,sampleConflicts:0,scope:'Learned hypothesis on a fixed one-step A2 marking domain; no supplied Hat marking.'};
 }
 function shuffle(items,seed){let state=seed>>>0;const a=[...items];for(let i=a.length-1;i>0;i--){state=(Math.imul(1664525,state)+1013904223)>>>0;const j=Math.floor(state/4294967296*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 export async function grow({seed=1,support=[],initial=[{orientation:0,translation:[0,0,0]}],target=32,budget=500,onEvent=()=>{},wait=null,audit=false}={}){
- const started=performance.now();let forced=0,branches=0;
+ const started=performance.now();let forced=0,branches=0,lastFailure=null;
  const r=await solveA2Tiling({boundary:makeHexBoundary(10),tiles:['hat'],maximize:true,targetPlacements:target,nodeLimit:budget,randomSeed:seed,
-  initialPlacements:initial.map(materialize),fixedInitialPlacements:true,marking:support.length?new SparseA2Marking(support):new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
-  onEvent:e=>{if(e.type==='placement'){if(e.forced)forced++;else branches++;}onEvent({type:e.type,placements:compact(e.placements),nodes:e.nodes,backtracks:e.backtracks,forced,branches});}});
+  initialPlacements:initial.map(materialize),fixedInitialPlacements:true,completePointGrowth:true,marking:support.length?new SparseA2Marking(support):new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
+  onEvent:e=>{if(e.type==='fail')lastFailure={point:e.choice,placements:compact(e.placements)};if(e.type==='placement'){if(e.forced)forced++;else branches++;}onEvent({type:e.type,placements:compact(e.placements),nodes:e.nodes,backtracks:e.backtracks,forced,branches});}});
  const placements=compact(r.placements),verification=verifyPatch(placements,support);
  if(!verification.compatible)throw new Error('Returned patch has a marking conflict');
- return {result:r.result,placements,verification,nodes:r.stats.nodes,backtracks:r.stats.backtracks,forced,branches,prunes:r.stats.prunes,elapsedMs:performance.now()-started};
+ return {result:r.result,placements,verification,nodes:r.stats.nodes,backtracks:r.stats.backtracks,forced,branches,lastFailure,prunes:r.stats.prunes,elapsedMs:performance.now()-started};
 }
-export async function collect({seed=90210,trainCount=16,testCount=8,target=12,budget=120,onProgress=()=>{},wait=null}={}){
- const started=performance.now(),pairs=shuffle(attachments(),seed),training=[],test=[],attempts=[],seen=new Set();let model=null,duplicates=0;
- const trials=[...pairs,...shuffle(pairs,seed^0x9e3779b9)];
- for(let i=0;i<trials.length;i++){
-  if(wait)await wait();
-  const searchSeed=Math.imul(i+1,1987)^((seed^90210)>>>0);
-  const r=await grow({seed:searchSeed,initial:[{orientation:0,translation:[0,0,0]},trials[i]],target,budget,wait});
-  const row={attachment:trials[i],seed:searchSeed,result:r.result,tiles:r.placements.length,nodes:r.nodes,elapsedMs:r.elapsedMs};attempts.push(row);
-  if(r.result==='yes'){
-   if(!r.placements.some(p=>p.orientation===trials[i].orientation&&key(p.translation)===key(trials[i].translation))||!r.placements.some(p=>p.orientation===0&&key(p.translation)==='0,0,0'))throw new Error('The collection search lost its fixed seed pair');
-   const canonical=canonicalPatch(r.placements);
-   if(seen.has(canonical))duplicates++;
-   else{seen.add(canonical);const sample={seed:searchSeed,attachment:trials[i],placements:r.placements,canonical,verification:r.verification};
-    if(training.length<trainCount){training.push(sample);model=encode(training);}else test.push({...sample,evaluation:verifyPatch(sample.placements,model.support)});
-   }
-  }
-  onProgress({attempts:attempts.length,total:trials.length,training:training.length,test:test.length,duplicates,model,latest:r.placements});
-  if(training.length>=trainCount&&test.length>=testCount)break;
+// A negative labels the fixed pair, only after its entire unmarked search
+// exhausts. A failed child or a budget limit cannot label that pair negative.
+export const ROOT={orientation:0,translation:[0,0,0]};
+export async function examine({attachment,seed=1,target=12,budget=120,wait=null,onEvent=()=>{},audit=false}){
+ const r=await grow({initial:[ROOT,attachment],seed,target,budget,wait,onEvent,audit});
+ if(![ROOT,attachment].every(wanted=>r.placements.some(p=>p.orientation===wanted.orientation&&key(p.translation)===key(wanted.translation))))throw new Error('Search lost its fixed connection');
+ return {attachment,seed,target,budget,result:r.result,status:r.result==='no'?'dead':r.result==='yes'?'extended':'unresolved',
+  placements:r.placements,verification:r.verification,nodes:r.nodes,backtracks:r.backtracks,lastFailure:r.lastFailure,elapsedMs:r.elapsedMs,
+  scope:'Unmarked A2 point model; both initial Hats fixed; complete frontier candidates; no spatial cutoff.'};
+}
+export function summarize(connections,config,elapsedMs=0){
+ const samples=[],seen=new Set();let duplicates=0;
+ for(const connection of connections)if(connection.status!=='dead')for(const row of [...(connection.history||[]),connection])if(row.status==='extended'){
+  const canonical=canonicalPatch(row.placements);
+  if(seen.has(canonical)){duplicates++;continue;}seen.add(canonical);
+  samples.push({attachment:row.attachment,seed:row.seed,placements:row.placements,canonical,verification:row.verification});
  }
- if(!model)throw new Error('No completed local patches were collected within this budget.');
- const survivors=pairs.filter(p=>verifyPatch([{orientation:0,translation:[0,0,0]},p],model.support).compatible).length;
- return {version:VERSION,config:{seed,trainCount,testCount,target,budget,attachmentPasses:2,domain:'A2',halo:1,rank:3},training,test,model,attempts,duplicates,
-  attachmentCount:pairs.length,attachmentSurvivors:survivors,testPassed:test.filter(s=>s.evaluation.compatible).length,elapsedMs:performance.now()-started,
-  status:training.length===trainCount&&test.length===testCount?'collected':'sample budget exhausted',
-  semantics:'Consistent finite point-value patches, not infinite tilings. Marking exclusions are learned hypotheses.'};
+ const model=samples.length?encode(samples):null;
+ const counts={extended:0,dead:0,unresolved:0},encoding={deadSeparated:0,deadUnseparated:0,extendedRejected:0,unresolvedRejected:0};
+ const audited=connections.map(row=>{
+  counts[row.status]++;
+  const codeConflict=model?!verifyPatch([ROOT,row.attachment],model.support).compatible:null;
+  if(row.status==='dead')encoding[codeConflict?'deadSeparated':'deadUnseparated']++;
+  else if(codeConflict)encoding[row.status==='extended'?'extendedRejected':'unresolvedRejected']++;
+  return {...row,codeConflict,codeWitness:codeConflict?conflictWitness([ROOT,row.attachment],model.support):null};
+ });
+ if(encoding.extendedRejected)throw new Error('Point codes rejected an observed extension');
+ return {version:VERSION,config,connections:audited,samples,model,counts,encoding,duplicates,attachmentCount:connections.length,elapsedMs,
+  semantics:'Finite extension is provisional; only exhausted unmarked fixed-pair searches exclude connections. Point codes are a proposed compression, not a global pruning certificate.'};
+}
+export async function collect({seed=90210,target=12,budget=120,onProgress=()=>{},wait=null}={}){
+ const started=performance.now(),pairs=shuffle(attachments(),seed),connections=[];let model=null;
+ for(let i=0;i<pairs.length;i++){
+  if(wait)await wait();
+  const row=await examine({attachment:pairs[i],seed:Math.imul(i+1,1987)^((seed^90210)>>>0),target,budget,wait});
+  connections.push(row);
+  const counts={extended:0,dead:0,unresolved:0};connections.forEach(r=>counts[r.status]++);
+  if(row.status==='extended')model=encode(connections.filter(r=>r.status==='extended'));
+  onProgress({attempts:connections.length,total:pairs.length,counts,model,latest:row.placements,status:row.status});
+ }
+ return summarize(connections,{seed,target,budget,domain:'A2',halo:1,rank:3},performance.now()-started);
+}
+export function incorporate(report,index,row){
+ const previous=report.connections[index];
+ if(!previous||JSON.stringify(previous.attachment)!==JSON.stringify(row.attachment))throw new Error('Connection mismatch');
+ // A timeout at greater depth does not erase a witnessed smaller extension.
+ // Keep every search record; proved failure takes precedence over checkpoints.
+ const history=[...(previous.history||[]),{...previous,history:undefined},row];
+ const evidence=row.status==='unresolved'&&previous.status!=='unresolved'?previous:row;
+ const connections=report.connections.map((r,i)=>i===index?{...evidence,history,lastAttempt:row}:r);
+ return summarize(connections,report.config,report.elapsedMs+row.elapsedMs);
 }

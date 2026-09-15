@@ -128,22 +128,22 @@
         <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
         <section id="learning-experiments" data-wrap-with-demo aria-label="Tiling learning experiments">
           <label class="learning-picker">Experiment <select id="learning-kind">
-            <option value="hat">Hat · learn from local patches</option>
+            <option value="hat">Hat · learn local connections</option>
             <option value="turtle">Turtle · fit a known example</option>
           </select></label>
           <div id="hat-learning-panel">
             <div class="hat-learning-controls">
-              <button id="hat-collect" type="button">Collect &amp; learn</button>
-              <button id="hat-compare" type="button" disabled>Test new growth</button>
+              <button id="hat-collect" type="button">Examine all connections</button>
+              <button id="hat-compare" type="button" disabled>Search farther</button>
               <button id="hat-reset" type="button">Reset</button>
               <label>Seed <input id="hat-seed" type="number" min="1" max="1000000" value="90210"></label>
               <button id="hat-export" type="button" disabled>Export</button>
             </div>
             <div class="hat-learning-controls">
-              <label>Inspect <select id="hat-patch" disabled aria-label="Collected Hat patch"></select></label>
+              <label>Inspect <select id="hat-patch" disabled aria-label="Hat connection and extension outcome"></select></label>
               <label><input id="hat-show-marks" type="checkbox" checked> Point codes</label>
             </div>
-            <canvas id="hat-learning-canvas" width="720" height="400" aria-label="Collected Hat patches on the left and the inferred geometric point markings on the right."></canvas>
+            <canvas id="hat-learning-canvas" width="720" height="400" aria-label="Selected Hat connection and extension on the left; proposed geometric point codes on the right."></canvas>
             <div id="hat-learning-metrics"></div>
             <div id="hat-learning-status" role="status" aria-live="polite"></div>
           </div>
@@ -2507,6 +2507,6 @@
     })();
   </script>
   <script type="module" src="assets/anchor-learning-demo.js?v=20260915-3"></script>
-  <script type="module" src="assets/hat-learning-demo.js?v=20260915-1"></script>
+  <script type="module" src="assets/hat-learning-demo.js?v=20260915-constraints"></script>
 </body>
 </html>
