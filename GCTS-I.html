@@ -6,6 +6,7 @@
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
   <link rel="stylesheet" href="assets/anchor-learning.css?v=20260915-3">
+  <link rel="stylesheet" href="assets/hat-learning.css?v=20260915-1">
   <script>
     window.MathJax = {
       tex: {
@@ -125,7 +126,28 @@
         <h2 id="anchor-learning">Geometric Deep Learning</h2>
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
         <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
-        <section id="anchor-lane" data-wrap-with-demo aria-label="Turtle training and tiling">
+        <section id="learning-experiments" data-wrap-with-demo aria-label="Tiling learning experiments">
+          <label class="learning-picker">Experiment <select id="learning-kind">
+            <option value="hat">Hat · learn from local patches</option>
+            <option value="turtle">Turtle · fit a known example</option>
+          </select></label>
+          <div id="hat-learning-panel">
+            <div class="hat-learning-controls">
+              <button id="hat-collect" type="button">Collect &amp; learn</button>
+              <button id="hat-compare" type="button" disabled>Test new growth</button>
+              <button id="hat-reset" type="button">Reset</button>
+              <label>Seed <input id="hat-seed" type="number" min="1" max="1000000" value="90210"></label>
+              <button id="hat-export" type="button" disabled>Export</button>
+            </div>
+            <div class="hat-learning-controls">
+              <label>Inspect <select id="hat-patch" disabled aria-label="Collected Hat patch"></select></label>
+              <label><input id="hat-show-marks" type="checkbox" checked> Point codes</label>
+            </div>
+            <canvas id="hat-learning-canvas" width="720" height="400" aria-label="Collected Hat patches on the left and the inferred geometric point markings on the right."></canvas>
+            <div id="hat-learning-metrics"></div>
+            <div id="hat-learning-status" role="status" aria-live="polite"></div>
+          </div>
+        <section id="anchor-lane" aria-label="Turtle training and tiling" hidden>
           <div class="anchor-controls">
             <button id="anchor-train" type="button">Train Turtle</button>
             <button id="anchor-check" type="button" disabled>Tile with learned marking</button>
@@ -137,6 +159,7 @@
           <canvas id="anchor-canvas" width="720" height="400" aria-label="Turtle anchor and point-value training on the left; a Turtle patch grown with the fitted marking on the right."></canvas>
           <div id="anchor-metrics"></div>
           <div id="anchor-result" role="status" aria-live="polite"></div>
+        </section>
         </section>
       </section>
     </article>
@@ -2484,5 +2507,6 @@
     })();
   </script>
   <script type="module" src="assets/anchor-learning-demo.js?v=20260915-3"></script>
+  <script type="module" src="assets/hat-learning-demo.js?v=20260915-1"></script>
 </body>
 </html>

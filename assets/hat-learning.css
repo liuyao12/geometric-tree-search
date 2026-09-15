@@ -1,0 +1,15 @@
+#learning-experiments { margin: 22px 0; }
+#learning-experiments [hidden] { display: none !important; }
+.learning-picker { display: flex; gap: 10px; align-items: center; font: 13px system-ui; margin-bottom: 10px; }
+.learning-picker select { max-width: 100%; min-width: 0; padding: 6px; border: 1px solid #bccbbf; border-radius: 5px; background: #fafcf8; color: #284d3e; }
+#hat-learning-panel { border: 1px solid #dce5e1; border-radius: 12px; padding: 12px; background: #fafcfb; color: #294d43; font: 12px/1.5 system-ui; }
+.hat-learning-controls { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; margin-bottom: 9px; }
+#hat-learning-panel button, #hat-learning-panel select, #hat-learning-panel input { font: inherit; }
+#hat-learning-panel button, #hat-learning-panel select { padding: 6px 8px; border: 1px solid #b8c2b6; border-radius: 5px; color: #284d3e; background: #f3f4eb; }
+#hat-learning-panel button { cursor: pointer; }
+#hat-learning-panel button:disabled { opacity: .5; cursor: default; }
+#hat-collect { background: #315d4d !important; color: white !important; }
+#hat-seed { width: 75px; }
+#hat-learning-canvas { display: block; width: 100%; height: auto; aspect-ratio: 720/400; border: 1px solid #e0e5d9; border-radius: 6px; }
+#hat-learning-metrics { margin-top: 8px; font-weight: 600; font-variant-numeric: tabular-nums; }
+#hat-learning-status { margin-top: 5px; background: #eeefe5; padding: 8px; border-radius: 5px; }

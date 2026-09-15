@@ -533,7 +533,7 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
   const desired=polygonOccupancy(boundary),seedOrigin=seed?.loop?.[0]??[0,0,0],seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(a2Sub(entry.point,seedOrigin))));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
@@ -871,7 +871,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],sta
   // A retained live patch is a provisional search prefix, not a frozen
   // boundary condition. If it cannot continue under a newly selected mode,
   // unwind its newest placement and resume from the preceding graph state.
-  while(result===false&&chosen.length&&initialChosen.length&&!stopToken.stop){
+  while(!fixedInitialPlacements&&result===false&&chosen.length&&initialChosen.length&&!stopToken.stop){
     const removed=chosen[chosen.length-1],context=chosen.slice(0,-1);exhaustedBranches.add(branchKey(removed,context));
     chosen.pop();usedPlacements.delete(removed.id);learner.pop?.(removed);backtracks++;
     sums.clear();pointDepth.clear();for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}chosen.forEach(placement=>{for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
