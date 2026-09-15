@@ -1,0 +1,18 @@
+{
+  "models": 300,
+  "states": 18313,
+  "membershipChecks": 298720,
+  "rollbacks": 4113,
+  "searchAdvances": 2413,
+  "complete": 100,
+  "exhausted": 185,
+  "unknown": 15,
+  "referencePointDecisions": true,
+  "completeIncidence": true,
+  "pointTotalsAndGenerations": true,
+  "extendedMarkDependencies": true,
+  "sharedInventory": true,
+  "lazyBacktrackingLockstep": true,
+  "unknownCompletionNotPruned": true,
+  "limits": "Lockstep with scalar equality markings. Cloud-set semantics and material execution still require separate tests."
+}

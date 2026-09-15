@@ -9,7 +9,17 @@ lazy enumeration and trailed rollback. The supplied-frontier scheduler matches
 the existing linear reference comparator on 20,000 randomized states. Explicit
 candidate membership checks cover 717,400 cases. Shared inventory, point totals,
 cloud legality, generations and the search stack are not implemented by this
-domain class and still require end-to-end integration/lockstep tests.
+domain class itself; the subsequent integration status follows below.
+
+`factorized-point-state.mjs` and `factorized-point-search.mjs` now add dependency
+updates, point totals/generations, shared inventory, marking callbacks and lazy
+DFS. The scalar-equality lockstep suite compares 300 explicit reference models:
+18,313 audited states, 298,720 membership checks and 2,413 search advances;
+100 complete, 185 exhausted and 15 unknown results agree. Manual rollback tests
+cover 4,113 reversals. Initial frontier insertion order required a correction
+before this suite passed. Material cloud callbacks and common-value completion
+checks are still pending separate end-to-end tests. The scalar result is not
+a factorized ice reconstruction or material speedup.
 
 The storage compiler retains duplicate endpoint values and source identities;
 all old coupled choices embed on the diagonal. The multi-cover c01500 block model
