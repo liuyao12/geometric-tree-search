@@ -1,0 +1,150 @@
+{
+  "scope": "Rebuild raw periodic geometry and check registrations and training coverage.\n\nTraining selections are used only here, after geometry-only proposal generation.\nAccepted fits are checked; omitted approximate poses are not certified impossible.\n",
+  "registrationHash": "cb54afb0fa0b663b78fbfd605ad64aa184529a42c544a6bbe52e9ffdbac83a69",
+  "portableHash": "3b0377f8e237a0c65721c6d9f441d176b191bf0f198bd74d758f0ce1018c0b02",
+  "checkedRegistrations": 67941,
+  "maxResidualAngstrom": 0.02999134560936327,
+  "ambiguousOrTruncatedTemplateQueries": 0,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "candidateEdges": 0,
+      "registrationsChecked": 0,
+      "distinctLocalConnectionPatterns": 0,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "candidateEdges": 0,
+      "registrationsChecked": 0,
+      "distinctLocalConnectionPatterns": 0,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    },
+    {
+      "file": "beta-B106.cif",
+      "candidateEdges": 3888,
+      "registrationsChecked": 49059,
+      "distinctLocalConnectionPatterns": 48267,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 2781,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 2770,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 2761,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "candidateEdges": 0,
+      "registrationsChecked": 0,
+      "distinctLocalConnectionPatterns": 0,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "candidateEdges": 0,
+      "registrationsChecked": 0,
+      "distinctLocalConnectionPatterns": 0,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 0,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    },
+    {
+      "file": "tau-B106.cif",
+      "candidateEdges": 5724,
+      "registrationsChecked": 18882,
+      "distinctLocalConnectionPatterns": 18720,
+      "trainingCoverage": [
+        {
+          "record": 0,
+          "selectedCoupledEdges": 4293,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 1,
+          "selectedCoupledEdges": 4283,
+          "missingRegisteredConnections": 0
+        },
+        {
+          "record": 2,
+          "selectedCoupledEdges": 4278,
+          "missingRegisteredConnections": 0
+        }
+      ]
+    }
+  ],
+  "allTrainingConnectionsCovered": true,
+  "limits": "No known cover was used by the generator. The learned library is in-sample, base-pair incidence is target-derived, and approximate proposal completeness is not established."
+}

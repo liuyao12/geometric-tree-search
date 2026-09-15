@@ -1,0 +1,38 @@
+{
+  "scope": "Extended 300-second portable-cloud tau-B106 reconstruction diagnostic on geometry-only registrations. No matched extended control or continuous-pose completeness claim.",
+  "extended": true,
+  "modelHash": "12eeaf3f3e0af1086c3c77d445a1877ba8eae2d2608e8d266e3d06b40f8d0c1b",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "sourceHashes": {
+    "boron-geometry-extended.mjs": "dca4abed9d648e37a0b1c989e37b5a7e2d3114bc42d2deefc9d97e6c89df0b29",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635"
+  },
+  "results": [
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "enabled": true,
+      "maxSeconds": 300,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.13978425,
+      "seconds": 109.68964670899999,
+      "steps": 5761,
+      "stats": {
+        "attempts": 5760,
+        "accepted": 5760,
+        "forced": 2828,
+        "branches": 2772,
+        "backtracks": 260,
+        "eliminated": 20127,
+        "checks": 127962162
+      },
+      "selected": 5427,
+      "status": "verified finite registered filling",
+      "scalarComplete": true,
+      "markingStatus": "verified-common-values",
+      "commonValues": 2052,
+      "rootRollback": true
+    }
+  ]
+}

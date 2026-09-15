@@ -1,0 +1,57 @@
+{
+  "scope": "Compare local connection patterns, not near-equal floating-point rotations.",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "oldRegistrationHash": "47942577a956570ccf65f8e88b7fd11559ed65db890a6b6b15e0cddddc6863f9",
+  "geometryRegistrationHash": "cb54afb0fa0b663b78fbfd605ad64aa184529a42c544a6bbe52e9ffdbac83a69",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "oldPatterns": 0,
+      "geometryPatterns": 0,
+      "retainedOldPatterns": 0,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "oldPatterns": 0,
+      "geometryPatterns": 0,
+      "retainedOldPatterns": 0,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "oldPatterns": 47025,
+      "geometryPatterns": 48267,
+      "retainedOldPatterns": 47025,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 1242
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "oldPatterns": 0,
+      "geometryPatterns": 0,
+      "retainedOldPatterns": 0,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "oldPatterns": 0,
+      "geometryPatterns": 0,
+      "retainedOldPatterns": 0,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "oldPatterns": 18369,
+      "geometryPatterns": 18720,
+      "retainedOldPatterns": 18369,
+      "oldPatternsNotRecovered": 0,
+      "additionalPatterns": 351
+    }
+  ],
+  "limits": "Same learned input family; compares discrete arm selections only. Does not assert equality of marking-value sets or complete continuous-pose coverage."
+}
