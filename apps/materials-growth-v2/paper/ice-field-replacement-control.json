@@ -1,0 +1,1234 @@
+{
+  "scope": "Fixed-witness replacement control for periodic Gaussian markings.\n\nOn every independently accepted developmental cover, replace each decoration\nin turn with every fitting decoration of the same base. Geometry, pose, t,\nand all other selected decorations remain fixed. At each endpoint exactly one\nother tile remains. Two radius-r Hilbert balls intersect iff center distance\nis at most 2r; numerical boundary uncertainty is reported, not pruned.\nRejected decorations are incompatible with this witness context, not physical\nnegatives, globally forbidden motifs, or proof of search acceleration.\n",
+  "sourceHashes": {
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "gcts-ice-field-transfer-check-v1.json": "566068b84402112885c13a23eace4e71ec869461aa96d1f054f5c64ffca765f4"
+  },
+  "codeHash": "e93c2515a6e2ed4a190410806e4b61195318454f1c64878f2ca536a0c1ad65bd",
+  "summary": {
+    "configurations": 67,
+    "radius": 1.1063594889735058,
+    "pairSeparationThreshold": 2.2127189779470116,
+    "selectedPlacements": 6256,
+    "testedReplacementsIncludingIdentity": 1367236,
+    "rejected": 0,
+    "numericallyUnknown": 0,
+    "originalWitnessesRetained": 6256,
+    "maximumEndpointDistance": 1.4041444402339631,
+    "scalarReferenceChecks": 1446,
+    "maxSquaredReferenceError": 1.7763568394002505e-15
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42563,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2815904211751927,
+      "maxDistanceWitness": {
+        "edge": 106,
+        "motif": 4966,
+        "distances": [
+          1.2815904211751927,
+          0.9886192846718534
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00401",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42495,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3972974814842574,
+      "maxDistanceWitness": {
+        "edge": 48,
+        "motif": 4847,
+        "distances": [
+          0.8371330330118159,
+          1.3972974814842574
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00402",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42471,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2583705365166984,
+      "maxDistanceWitness": {
+        "edge": 98,
+        "motif": 6806,
+        "distances": [
+          0.8830475916466579,
+          1.2583705365166984
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00404",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 39454,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2700347109947026,
+      "maxDistanceWitness": {
+        "edge": 213,
+        "motif": 4966,
+        "distances": [
+          1.2700347109947026,
+          0.9436705902151094
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00405",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 40250,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3980048318564742,
+      "maxDistanceWitness": {
+        "edge": 93,
+        "motif": 7755,
+        "distances": [
+          0.8836412061386839,
+          1.3980048318564742
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00406",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 40302,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.393365261212382,
+      "maxDistanceWitness": {
+        "edge": 12,
+        "motif": 4847,
+        "distances": [
+          1.0220287913191461,
+          1.393365261212382
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00407",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 41191,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.317983502473366,
+      "maxDistanceWitness": {
+        "edge": 236,
+        "motif": 4847,
+        "distances": [
+          0.878369670706826,
+          1.317983502473366
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00408",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42951,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2439540236629396,
+      "maxDistanceWitness": {
+        "edge": 235,
+        "motif": 4659,
+        "distances": [
+          0.8182287066001521,
+          1.2439540236629396
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00409",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 40066,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2679459763668324,
+      "maxDistanceWitness": {
+        "edge": 56,
+        "motif": 6806,
+        "distances": [
+          0.8578080053792745,
+          1.2679459763668324
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00410",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 40112,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3323690842543707,
+      "maxDistanceWitness": {
+        "edge": 38,
+        "motif": 4924,
+        "distances": [
+          0.9925048601543284,
+          1.3323690842543707
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00411",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 43583,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2706905821771792,
+      "maxDistanceWitness": {
+        "edge": 205,
+        "motif": 6806,
+        "distances": [
+          0.8531358219305607,
+          1.2706905821771792
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00412",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 43851,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3297812912681959,
+      "maxDistanceWitness": {
+        "edge": 131,
+        "motif": 5001,
+        "distances": [
+          0.7646987809877067,
+          1.3297812912681959
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00413",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 38409,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.240207966433839,
+      "maxDistanceWitness": {
+        "edge": 209,
+        "motif": 4966,
+        "distances": [
+          1.240207966433839,
+          0.8678754394749886
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00414",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 39311,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2886448226245026,
+      "maxDistanceWitness": {
+        "edge": 42,
+        "motif": 6806,
+        "distances": [
+          0.8876361620564337,
+          1.2886448226245026
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00415",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 40844,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2550499803612818,
+      "maxDistanceWitness": {
+        "edge": 150,
+        "motif": 7054,
+        "distances": [
+          1.2550499803612818,
+          1.0719650725730336
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00416",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 43386,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3083032097736045,
+      "maxDistanceWitness": {
+        "edge": 148,
+        "motif": 4966,
+        "distances": [
+          1.3083032097736045,
+          0.8878817541656752
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00417",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 41340,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2664169156990164,
+      "maxDistanceWitness": {
+        "edge": 5,
+        "motif": 6806,
+        "distances": [
+          0.8812685689220938,
+          1.2664169156990164
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00418",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 41493,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.363574456461605,
+      "maxDistanceWitness": {
+        "edge": 138,
+        "motif": 6806,
+        "distances": [
+          0.8907575708481527,
+          1.363574456461605
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00419",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 41339,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2505202105606512,
+      "maxDistanceWitness": {
+        "edge": 5,
+        "motif": 4788,
+        "distances": [
+          0.7611725477566756,
+          1.2505202105606512
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00421",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42624,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2427966546456066,
+      "maxDistanceWitness": {
+        "edge": 196,
+        "motif": 7142,
+        "distances": [
+          1.2427966546456066,
+          1.1259761932767447
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00422",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 42702,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2987805523874971,
+      "maxDistanceWitness": {
+        "edge": 60,
+        "motif": 3271,
+        "distances": [
+          1.2987805523874971,
+          0.8438815968607638
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00423",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 43023,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.3216549429030908,
+      "maxDistanceWitness": {
+        "edge": 76,
+        "motif": 6806,
+        "distances": [
+          0.9911123340674584,
+          1.3216549429030908
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00424",
+      "selectedPlacements": 128,
+      "testedReplacementsIncludingIdentity": 44185,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 128,
+      "maxEndpointDistance": 1.2280081823796203,
+      "maxDistanceWitness": {
+        "edge": 14,
+        "motif": 5112,
+        "distances": [
+          1.2280081823796203,
+          0.9351989303976209
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00902",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 7232,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.3136356888987328,
+      "maxDistanceWitness": {
+        "edge": 176,
+        "motif": 1902,
+        "distances": [
+          0.9503366123390855,
+          1.3136356888987328
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00905",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 7024,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.3088162005827322,
+      "maxDistanceWitness": {
+        "edge": 249,
+        "motif": 2252,
+        "distances": [
+          0.8912474071644105,
+          1.3088162005827322
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00906",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 8522,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.2742484681700559,
+      "maxDistanceWitness": {
+        "edge": 83,
+        "motif": 1902,
+        "distances": [
+          0.8877290946211579,
+          1.2742484681700559
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00907",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 8105,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.2746086586059342,
+      "maxDistanceWitness": {
+        "edge": 237,
+        "motif": 1902,
+        "distances": [
+          1.026968821913224,
+          1.2746086586059342
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00912",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 8314,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.2795684779689764,
+      "maxDistanceWitness": {
+        "edge": 42,
+        "motif": 1621,
+        "distances": [
+          1.2795684779689764,
+          0.956194475345771
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00913",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 8278,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.3465605122484818,
+      "maxDistanceWitness": {
+        "edge": 35,
+        "motif": 1057,
+        "distances": [
+          1.3465605122484818,
+          0.8673324165974017
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00916",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 8388,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.338452994060187,
+      "maxDistanceWitness": {
+        "edge": 38,
+        "motif": 1902,
+        "distances": [
+          0.9711496885133923,
+          1.338452994060187
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00919",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 6550,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.336637149217083,
+      "maxDistanceWitness": {
+        "edge": 285,
+        "motif": 1902,
+        "distances": [
+          0.914329963748161,
+          1.336637149217083
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c00920",
+      "selectedPlacements": 96,
+      "testedReplacementsIncludingIdentity": 7450,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 96,
+      "maxEndpointDistance": 1.3434187328751177,
+      "maxDistanceWitness": {
+        "edge": 81,
+        "motif": 1057,
+        "distances": [
+          1.3434187328751177,
+          0.85503971924873
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01402",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4428,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2279683826594134,
+      "maxDistanceWitness": {
+        "edge": 204,
+        "motif": 3361,
+        "distances": [
+          0.9496838794075368,
+          1.2279683826594134
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01404",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4828,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.3028859308867335,
+      "maxDistanceWitness": {
+        "edge": 212,
+        "motif": 9724,
+        "distances": [
+          1.1397957421131508,
+          1.3028859308867335
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01405",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4846,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.4041444402339631,
+      "maxDistanceWitness": {
+        "edge": 160,
+        "motif": 2080,
+        "distances": [
+          0.8577320498416804,
+          1.4041444402339631
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01406",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4678,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2574072716093103,
+      "maxDistanceWitness": {
+        "edge": 154,
+        "motif": 1717,
+        "distances": [
+          1.2574072716093103,
+          1.0619647180799034
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01408",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4947,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2697203210907981,
+      "maxDistanceWitness": {
+        "edge": 218,
+        "motif": 8580,
+        "distances": [
+          1.2697203210907981,
+          1.0582163285074513
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01410",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4524,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2560333951654024,
+      "maxDistanceWitness": {
+        "edge": 21,
+        "motif": 3296,
+        "distances": [
+          0.987026114738647,
+          1.2560333951654024
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01411",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4383,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2514971187837534,
+      "maxDistanceWitness": {
+        "edge": 201,
+        "motif": 717,
+        "distances": [
+          1.1721718074355718,
+          1.2514971187837534
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01412",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4669,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2630299764854511,
+      "maxDistanceWitness": {
+        "edge": 60,
+        "motif": 4263,
+        "distances": [
+          1.2630299764854511,
+          0.9127655402686956
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01417",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4359,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.2987746199830132,
+      "maxDistanceWitness": {
+        "edge": 104,
+        "motif": 4263,
+        "distances": [
+          1.2987746199830132,
+          0.8312729677997496
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01418",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 5073,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.3534356399503777,
+      "maxDistanceWitness": {
+        "edge": 86,
+        "motif": 7602,
+        "distances": [
+          1.069133312687886,
+          1.3534356399503777
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01421",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4060,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.3025369972032104,
+      "maxDistanceWitness": {
+        "edge": 49,
+        "motif": 4263,
+        "distances": [
+          1.3025369972032104,
+          0.9664490650236313
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01422",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4643,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.1946190872996068,
+      "maxDistanceWitness": {
+        "edge": 66,
+        "motif": 9796,
+        "distances": [
+          1.1171677090041547,
+          1.1946190872996068
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01424",
+      "selectedPlacements": 80,
+      "testedReplacementsIncludingIdentity": 4520,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 80,
+      "maxEndpointDistance": 1.278168972364822,
+      "maxDistanceWitness": {
+        "edge": 181,
+        "motif": 4263,
+        "distances": [
+          1.278168972364822,
+          0.9036337369047073
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01900",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12779,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.0729258949211486,
+      "maxDistanceWitness": {
+        "edge": 11,
+        "motif": 1490,
+        "distances": [
+          0.8669639590695094,
+          1.0729258949211486
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01901",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 15145,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.3258709035477192,
+      "maxDistanceWitness": {
+        "edge": 185,
+        "motif": 6600,
+        "distances": [
+          1.1280681050034778,
+          1.3258709035477192
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01902",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12049,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.0824852994923126,
+      "maxDistanceWitness": {
+        "edge": 110,
+        "motif": 1041,
+        "distances": [
+          0.7920570404644953,
+          1.0824852994923126
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01903",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11989,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2639289670874032,
+      "maxDistanceWitness": {
+        "edge": 30,
+        "motif": 6600,
+        "distances": [
+          1.0827128936343904,
+          1.2639289670874032
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01904",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 10920,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2160496922603816,
+      "maxDistanceWitness": {
+        "edge": 105,
+        "motif": 5792,
+        "distances": [
+          1.2160496922603816,
+          0.9838502737490984
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01905",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12526,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1080903097208012,
+      "maxDistanceWitness": {
+        "edge": 209,
+        "motif": 6062,
+        "distances": [
+          1.1080903097208012,
+          1.0943029581543486
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01906",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11781,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2177078512553665,
+      "maxDistanceWitness": {
+        "edge": 270,
+        "motif": 1490,
+        "distances": [
+          0.90671474148718,
+          1.2177078512553665
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01907",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11302,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2537928615526683,
+      "maxDistanceWitness": {
+        "edge": 152,
+        "motif": 6600,
+        "distances": [
+          1.028487615513408,
+          1.2537928615526683
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01908",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11926,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.135172266045249,
+      "maxDistanceWitness": {
+        "edge": 35,
+        "motif": 1041,
+        "distances": [
+          0.7940360319633101,
+          1.135172266045249
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01909",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 14833,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1865577195403725,
+      "maxDistanceWitness": {
+        "edge": 72,
+        "motif": 967,
+        "distances": [
+          0.8563950435022206,
+          1.1865577195403725
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01910",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 14131,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1458194030185809,
+      "maxDistanceWitness": {
+        "edge": 56,
+        "motif": 519,
+        "distances": [
+          1.1458194030185809,
+          0.7852285692201635
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01911",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 13795,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2390735378881752,
+      "maxDistanceWitness": {
+        "edge": 285,
+        "motif": 6676,
+        "distances": [
+          1.2390735378881752,
+          1.0187474107251615
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01912",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 13570,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2208200265219247,
+      "maxDistanceWitness": {
+        "edge": 209,
+        "motif": 6600,
+        "distances": [
+          1.0836361990614847,
+          1.2208200265219247
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01915",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11064,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2502741470678667,
+      "maxDistanceWitness": {
+        "edge": 69,
+        "motif": 6676,
+        "distances": [
+          1.2502741470678667,
+          1.00745575198549
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01916",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12333,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1122059256854255,
+      "maxDistanceWitness": {
+        "edge": 103,
+        "motif": 8490,
+        "distances": [
+          1.1122059256854255,
+          0.9249472200164127
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01917",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 11126,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.2701902999410455,
+      "maxDistanceWitness": {
+        "edge": 292,
+        "motif": 5608,
+        "distances": [
+          1.2701902999410455,
+          1.092063826921849
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01918",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 13217,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.0997013122711115,
+      "maxDistanceWitness": {
+        "edge": 230,
+        "motif": 8419,
+        "distances": [
+          1.0997013122711115,
+          0.8094802070668287
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01919",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 13523,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1251369783529113,
+      "maxDistanceWitness": {
+        "edge": 47,
+        "motif": 5791,
+        "distances": [
+          1.1251369783529113,
+          1.0365724384664252
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01920",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12028,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.17072949749011,
+      "maxDistanceWitness": {
+        "edge": 261,
+        "motif": 564,
+        "distances": [
+          0.9128240685917486,
+          1.17072949749011
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01921",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 14563,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1271239134145379,
+      "maxDistanceWitness": {
+        "edge": 169,
+        "motif": 1041,
+        "distances": [
+          0.8790732830179485,
+          1.1271239134145379
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01922",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12128,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1095263412331893,
+      "maxDistanceWitness": {
+        "edge": 282,
+        "motif": 6062,
+        "distances": [
+          1.0344974417755528,
+          1.1095263412331893
+        ]
+      },
+      "exclusions": []
+    },
+    {
+      "id": "c01924",
+      "selectedPlacements": 64,
+      "testedReplacementsIncludingIdentity": 12742,
+      "rejected": 0,
+      "numericallyUnknown": 0,
+      "originalWitnessesRetained": 64,
+      "maxEndpointDistance": 1.1355519689576719,
+      "maxDistanceWitness": {
+        "edge": 157,
+        "motif": 8419,
+        "distances": [
+          1.1355519689576719,
+          0.8310689563760234
+        ]
+      },
+      "exclusions": []
+    }
+  ],
+  "seconds": 47.82403295789845,
+  "limits": "Same-base decoration replacements at known poses in positive covers only. Not geometry challenges, false-positive rates, global realizability or full search. Uncertainty guard is numerical, not certified interval arithmetic."
+}

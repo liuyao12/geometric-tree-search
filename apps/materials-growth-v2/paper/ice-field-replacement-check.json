@@ -1,0 +1,490 @@
+{
+  "scope": "Independent all-replacement compatibility audit using nonnegative bounds.\n\nUses independently evaluated norms, reconstructs incidence without producer\nhelpers, and computes remaining cross kernels from world-coordinate component\ndifferences. Proves compatibility numerically, not exact real arithmetic.\nDoes not replay or certify the producer's reported maximum distance.\n",
+  "sourceHashes": {
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "gcts-ice-field-replacement-control-v1.json": "b02e61076095c24a3e60ddf32713d25ef05dd90ab5313d10ce9530a9dba4b60c",
+    "gcts-ice-field-norm-bound-v2.json": "2b7968a9f0ed063e20467276cab0a582c8af87c24d4db73a326ceae08026c878"
+  },
+  "verifierHash": "52620a940bff52bb19e4f597c28b4f087087fe083495b2f2d83bf195b9b3e4ac",
+  "summary": {
+    "configurations": 67,
+    "replacementsVerifiedCompatible": 1367236,
+    "normBoundEndpoints": 0,
+    "explicitKernelEndpoints": 2734472
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "replacementsVerifiedCompatible": 42563,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 85126,
+      "maximumSquaredUpperBound": 1.6424740076735607
+    },
+    {
+      "id": "c00401",
+      "replacementsVerifiedCompatible": 42495,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 84990,
+      "maximumSquaredUpperBound": 1.9524402517880854
+    },
+    {
+      "id": "c00402",
+      "replacementsVerifiedCompatible": 42471,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 84942,
+      "maximumSquaredUpperBound": 1.5834964072024116
+    },
+    {
+      "id": "c00404",
+      "replacementsVerifiedCompatible": 39454,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 78908,
+      "maximumSquaredUpperBound": 1.6129881671570614
+    },
+    {
+      "id": "c00405",
+      "replacementsVerifiedCompatible": 40250,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 80500,
+      "maximumSquaredUpperBound": 1.9544175099266774
+    },
+    {
+      "id": "c00406",
+      "replacementsVerifiedCompatible": 40302,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 80604,
+      "maximumSquaredUpperBound": 1.9414667511795296
+    },
+    {
+      "id": "c00407",
+      "replacementsVerifiedCompatible": 41191,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 82382,
+      "maximumSquaredUpperBound": 1.737080512818775
+    },
+    {
+      "id": "c00408",
+      "replacementsVerifiedCompatible": 42951,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 85902,
+      "maximumSquaredUpperBound": 1.5474216130127678
+    },
+    {
+      "id": "c00409",
+      "replacementsVerifiedCompatible": 40066,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 80132,
+      "maximumSquaredUpperBound": 1.6076869990137737
+    },
+    {
+      "id": "c00410",
+      "replacementsVerifiedCompatible": 40112,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 80224,
+      "maximumSquaredUpperBound": 1.775207376706169
+    },
+    {
+      "id": "c00411",
+      "replacementsVerifiedCompatible": 43583,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 87166,
+      "maximumSquaredUpperBound": 1.6146545556620795
+    },
+    {
+      "id": "c00412",
+      "replacementsVerifiedCompatible": 43851,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 87702,
+      "maximumSquaredUpperBound": 1.768318282633431
+    },
+    {
+      "id": "c00413",
+      "replacementsVerifiedCompatible": 38409,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 76818,
+      "maximumSquaredUpperBound": 1.5381158000317612
+    },
+    {
+      "id": "c00414",
+      "replacementsVerifiedCompatible": 39311,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 78622,
+      "maximumSquaredUpperBound": 1.660605478906525
+    },
+    {
+      "id": "c00415",
+      "replacementsVerifiedCompatible": 40844,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 81688,
+      "maximumSquaredUpperBound": 1.5751504532331688
+    },
+    {
+      "id": "c00416",
+      "replacementsVerifiedCompatible": 43386,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 86772,
+      "maximumSquaredUpperBound": 1.7116572887292687
+    },
+    {
+      "id": "c00417",
+      "replacementsVerifiedCompatible": 41340,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 82680,
+      "maximumSquaredUpperBound": 1.6038118043975544
+    },
+    {
+      "id": "c00418",
+      "replacementsVerifiedCompatible": 41493,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 82986,
+      "maximumSquaredUpperBound": 1.859335298343882
+    },
+    {
+      "id": "c00419",
+      "replacementsVerifiedCompatible": 41339,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 82678,
+      "maximumSquaredUpperBound": 1.5638007970471073
+    },
+    {
+      "id": "c00421",
+      "replacementsVerifiedCompatible": 42624,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 85248,
+      "maximumSquaredUpperBound": 1.544543524826265
+    },
+    {
+      "id": "c00422",
+      "replacementsVerifiedCompatible": 42702,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 85404,
+      "maximumSquaredUpperBound": 1.6868309232865388
+    },
+    {
+      "id": "c00423",
+      "replacementsVerifiedCompatible": 43023,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 86046,
+      "maximumSquaredUpperBound": 1.7467717881293445
+    },
+    {
+      "id": "c00424",
+      "replacementsVerifiedCompatible": 44185,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 88370,
+      "maximumSquaredUpperBound": 1.5080040960169
+    },
+    {
+      "id": "c00902",
+      "replacementsVerifiedCompatible": 7232,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 14464,
+      "maximumSquaredUpperBound": 1.7256387231735244
+    },
+    {
+      "id": "c00905",
+      "replacementsVerifiedCompatible": 7024,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 14048,
+      "maximumSquaredUpperBound": 1.7129998469344025
+    },
+    {
+      "id": "c00906",
+      "replacementsVerifiedCompatible": 8522,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 17044,
+      "maximumSquaredUpperBound": 1.6237091586597339
+    },
+    {
+      "id": "c00907",
+      "replacementsVerifiedCompatible": 8105,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 16210,
+      "maximumSquaredUpperBound": 1.6246272326193505
+    },
+    {
+      "id": "c00912",
+      "replacementsVerifiedCompatible": 8314,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 16628,
+      "maximumSquaredUpperBound": 1.6372954898392218
+    },
+    {
+      "id": "c00913",
+      "replacementsVerifiedCompatible": 8278,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 16556,
+      "maximumSquaredUpperBound": 1.8132252131737916
+    },
+    {
+      "id": "c00916",
+      "replacementsVerifiedCompatible": 8388,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 16776,
+      "maximumSquaredUpperBound": 1.791456417334587
+    },
+    {
+      "id": "c00919",
+      "replacementsVerifiedCompatible": 6550,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 13100,
+      "maximumSquaredUpperBound": 1.7865988686919574
+    },
+    {
+      "id": "c00920",
+      "replacementsVerifiedCompatible": 7450,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 14900,
+      "maximumSquaredUpperBound": 1.804773891866979
+    },
+    {
+      "id": "c01402",
+      "replacementsVerifiedCompatible": 4428,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 8856,
+      "maximumSquaredUpperBound": 1.507906348843287
+    },
+    {
+      "id": "c01404",
+      "replacementsVerifiedCompatible": 4828,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9656,
+      "maximumSquaredUpperBound": 1.6975117489400358
+    },
+    {
+      "id": "c01405",
+      "replacementsVerifiedCompatible": 4846,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9692,
+      "maximumSquaredUpperBound": 1.9716216090691985
+    },
+    {
+      "id": "c01406",
+      "replacementsVerifiedCompatible": 4678,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9356,
+      "maximumSquaredUpperBound": 1.5810730467239367
+    },
+    {
+      "id": "c01408",
+      "replacementsVerifiedCompatible": 4947,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9894,
+      "maximumSquaredUpperBound": 1.6121896938275622
+    },
+    {
+      "id": "c01410",
+      "replacementsVerifiedCompatible": 4524,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9048,
+      "maximumSquaredUpperBound": 1.577619889802672
+    },
+    {
+      "id": "c01411",
+      "replacementsVerifiedCompatible": 4383,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 8766,
+      "maximumSquaredUpperBound": 1.566245038351223
+    },
+    {
+      "id": "c01412",
+      "replacementsVerifiedCompatible": 4669,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9338,
+      "maximumSquaredUpperBound": 1.5952447215305132
+    },
+    {
+      "id": "c01417",
+      "replacementsVerifiedCompatible": 4359,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 8718,
+      "maximumSquaredUpperBound": 1.6868155135364273
+    },
+    {
+      "id": "c01418",
+      "replacementsVerifiedCompatible": 5073,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 10146,
+      "maximumSquaredUpperBound": 1.8317880315239259
+    },
+    {
+      "id": "c01421",
+      "replacementsVerifiedCompatible": 4060,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 8120,
+      "maximumSquaredUpperBound": 1.6966026291136567
+    },
+    {
+      "id": "c01422",
+      "replacementsVerifiedCompatible": 4643,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9286,
+      "maximumSquaredUpperBound": 1.427114763776977
+    },
+    {
+      "id": "c01424",
+      "replacementsVerifiedCompatible": 4520,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 9040,
+      "maximumSquaredUpperBound": 1.6337159219458035
+    },
+    {
+      "id": "c01900",
+      "replacementsVerifiedCompatible": 12779,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 25558,
+      "maximumSquaredUpperBound": 1.1511699760245617
+    },
+    {
+      "id": "c01901",
+      "replacementsVerifiedCompatible": 15145,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 30290,
+      "maximumSquaredUpperBound": 1.7579336529115306
+    },
+    {
+      "id": "c01902",
+      "replacementsVerifiedCompatible": 12049,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 24098,
+      "maximumSquaredUpperBound": 1.1717744236488028
+    },
+    {
+      "id": "c01903",
+      "replacementsVerifiedCompatible": 11989,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 23978,
+      "maximumSquaredUpperBound": 1.5975164338799088
+    },
+    {
+      "id": "c01904",
+      "replacementsVerifiedCompatible": 10920,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 21840,
+      "maximumSquaredUpperBound": 1.4787768540834512
+    },
+    {
+      "id": "c01905",
+      "replacementsVerifiedCompatible": 12526,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 25052,
+      "maximumSquaredUpperBound": 1.2278641345353325
+    },
+    {
+      "id": "c01906",
+      "replacementsVerifiedCompatible": 11781,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 23562,
+      "maximumSquaredUpperBound": 1.4828124110408578
+    },
+    {
+      "id": "c01907",
+      "replacementsVerifiedCompatible": 11302,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 22604,
+      "maximumSquaredUpperBound": 1.5719965397172082
+    },
+    {
+      "id": "c01908",
+      "replacementsVerifiedCompatible": 11926,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 23852,
+      "maximumSquaredUpperBound": 1.2886160736300762
+    },
+    {
+      "id": "c01909",
+      "replacementsVerifiedCompatible": 14833,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 29666,
+      "maximumSquaredUpperBound": 1.4079192218343124
+    },
+    {
+      "id": "c01910",
+      "replacementsVerifiedCompatible": 14131,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 28262,
+      "maximumSquaredUpperBound": 1.3129021043659692
+    },
+    {
+      "id": "c01911",
+      "replacementsVerifiedCompatible": 13795,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 27590,
+      "maximumSquaredUpperBound": 1.5353032323304807
+    },
+    {
+      "id": "c01912",
+      "replacementsVerifiedCompatible": 13570,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 27140,
+      "maximumSquaredUpperBound": 1.490401537193902
+    },
+    {
+      "id": "c01915",
+      "replacementsVerifiedCompatible": 11064,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 22128,
+      "maximumSquaredUpperBound": 1.5631854428617455
+    },
+    {
+      "id": "c01916",
+      "replacementsVerifiedCompatible": 12333,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 24666,
+      "maximumSquaredUpperBound": 1.2370020211712367
+    },
+    {
+      "id": "c01917",
+      "replacementsVerifiedCompatible": 11126,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 22252,
+      "maximumSquaredUpperBound": 1.6133833981017198
+    },
+    {
+      "id": "c01918",
+      "replacementsVerifiedCompatible": 13217,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 26434,
+      "maximumSquaredUpperBound": 1.2093429762547876
+    },
+    {
+      "id": "c01919",
+      "replacementsVerifiedCompatible": 13523,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 27046,
+      "maximumSquaredUpperBound": 1.2659332200939497
+    },
+    {
+      "id": "c01920",
+      "replacementsVerifiedCompatible": 12028,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 24056,
+      "maximumSquaredUpperBound": 1.370607556324941
+    },
+    {
+      "id": "c01921",
+      "replacementsVerifiedCompatible": 14563,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 29126,
+      "maximumSquaredUpperBound": 1.270408316223583
+    },
+    {
+      "id": "c01922",
+      "replacementsVerifiedCompatible": 12128,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 24256,
+      "maximumSquaredUpperBound": 1.2310487019277796
+    },
+    {
+      "id": "c01924",
+      "replacementsVerifiedCompatible": 12742,
+      "normBoundEndpoints": 0,
+      "explicitKernelEndpoints": 25484,
+      "maximumSquaredUpperBound": 1.2894782742464523
+    }
+  ],
+  "limits": "Complete numerical compatibility audit for this fixed-witness replacement set. Norm report is an independently computed dependency, not recomputed here. No maximum-distance, global-admissibility, geometry, physical-negative or arbitrary-rotation certificate."
+}
