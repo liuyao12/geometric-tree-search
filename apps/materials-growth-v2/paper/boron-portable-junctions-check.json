@@ -1,0 +1,73 @@
+{
+  "scope": "Verify portable exports and common cloud witnesses for all training covers.\n\nUses the separately raw-geometry-checked junction artifact. Does not claim a\ncomplete pose generator or a complete algorithm for continuous set intersection.\n",
+  "portableHash": "3b0377f8e237a0c65721c6d9f441d176b191bf0f198bd74d758f0ce1018c0b02",
+  "jointGeometryHash": "47942577a956570ccf65f8e88b7fd11559ed65db890a6b6b15e0cddddc6863f9",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "motifs": 3876,
+  "markingRadiusAngstrom": 0.06,
+  "maxMarkingResidualAngstrom": 0.038502483753674925,
+  "maxAnchorRegistrationResidualAngstrom": 0.0233612416575278,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 0,
+      "commonWitnessChecks": 0,
+      "rotatedCommonWitnessChecks": 0,
+      "consensusDiscoveredWithoutTargetCloud": 0,
+      "consensusUnknown": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 0,
+      "commonWitnessChecks": 0,
+      "rotatedCommonWitnessChecks": 0,
+      "consensusDiscoveredWithoutTargetCloud": 0,
+      "consensusUnknown": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 16624,
+      "commonWitnessChecks": 4050,
+      "rotatedCommonWitnessChecks": 4050,
+      "consensusDiscoveredWithoutTargetCloud": 4050,
+      "consensusUnknown": 0
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 0,
+      "commonWitnessChecks": 0,
+      "rotatedCommonWitnessChecks": 0,
+      "consensusDiscoveredWithoutTargetCloud": 0,
+      "consensusUnknown": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 0,
+      "commonWitnessChecks": 0,
+      "rotatedCommonWitnessChecks": 0,
+      "consensusDiscoveredWithoutTargetCloud": 0,
+      "consensusUnknown": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "trainingRecords": 3,
+      "endpointAssignments": 25708,
+      "commonWitnessChecks": 6156,
+      "rotatedCommonWitnessChecks": 6156,
+      "consensusDiscoveredWithoutTargetCloud": 6156,
+      "consensusUnknown": 0
+    }
+  ],
+  "sourceHashes": {
+    "portable-cloud-markings.py": "8d68c0d59c537430298a4be2e5ae346a8c077c33433d5267aa93c5cbd49c611d",
+    "export-portable-junctions.py": "da8facbae9cce3a4dbd9cb0067d157c75117a50fc40666e62748c2714654b075",
+    "verify-portable-junctions.py": "5aa978c5948ed30d59b91aebe44c3ee368155717a9f52b14e19dafdafb256dfa",
+    "test-portable-cloud-markings.py": "e3f4d30afea8a4dfeacdbb03b9f1398702d999b369a0e24e026edf6d89d57a3c"
+  },
+  "limits": "Checks both supplied training-neighborhood witnesses and proposals using assignments alone. Placements still come from known-coordinate registrations. No independent generalization, pose completeness, or new search reconstruction is established."
+}
