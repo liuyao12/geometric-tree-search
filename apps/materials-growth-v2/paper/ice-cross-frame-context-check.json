@@ -1,0 +1,24 @@
+{
+  "libraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "reportHash": "d4cc3fe4c7002f719f0d0dd23069f2997933d72aa5f5b78c78e70137e61bc22a",
+  "verifierHash": "9b6fddfec0e9f4b7933a660ef2538784b261e4b4b13158b80405eb481f77a51b",
+  "verifiedContexts": 11147,
+  "minimalityToleranceAngstrom": 1e-08,
+  "eligibleComparisons": 34346,
+  "summary": {
+    "motifs": 11147,
+    "bases": 278,
+    "basesSeenInOneFrame": 72,
+    "noCrossFrameContext": 82,
+    "withinExistingTolerance": 5769,
+    "existingToleranceAngstrom": 0.15,
+    "quantilesAngstrom": {
+      "0.5": 0.1475526164328113,
+      "0.9": 0.2529422681940409,
+      "0.95": 0.3449509579545862,
+      "1": 5.18331602883719
+    },
+    "distanceChecks": 25271
+  },
+  "limits": "Verify cross-frame nearest distances using independent bipartite matching.\n\nEnumerates every same-base candidate with a signature lower bound capable of\nbeating the reported distance. Checks minimality within 1e-8 Angstrom, not an\nexact-real certificate. The compiler's nearest-neighbor traversal is not used.\n Does not refit the dictionary or certify scientific transfer."
+}
