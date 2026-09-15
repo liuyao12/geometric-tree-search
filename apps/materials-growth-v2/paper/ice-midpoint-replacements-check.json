@@ -1,0 +1,694 @@
+{
+  "resultHash": "033f9704a097835590f09ba295eb4904ff18fe57c69d7ea332e18303b3b6830c",
+  "pairWitnessCheckHash": "8ea03bb89fe2e391f0379058be0225cfc1609bbbac9d952212c356530b46ede0",
+  "verifierHash": "020bea5e1a07e7c2a919d27af304b1831cfe9438754383a7438318bc84be3a40",
+  "summary": {
+    "configurations": 97,
+    "tested": 1599419,
+    "rejected": 3083,
+    "unknown": 0,
+    "identitiesRetained": 8880
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "tested": 42563,
+      "rejected": 46,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00401",
+      "tested": 42495,
+      "rejected": 67,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00402",
+      "tested": 42471,
+      "rejected": 9,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00403",
+      "tested": 41811,
+      "rejected": 46,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00404",
+      "tested": 39454,
+      "rejected": 20,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00405",
+      "tested": 40250,
+      "rejected": 170,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00406",
+      "tested": 40302,
+      "rejected": 132,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00407",
+      "tested": 41191,
+      "rejected": 39,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00408",
+      "tested": 42951,
+      "rejected": 10,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00409",
+      "tested": 40066,
+      "rejected": 28,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00410",
+      "tested": 40112,
+      "rejected": 63,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00411",
+      "tested": 43583,
+      "rejected": 16,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00412",
+      "tested": 43851,
+      "rejected": 116,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00413",
+      "tested": 38409,
+      "rejected": 8,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00414",
+      "tested": 39311,
+      "rejected": 17,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00415",
+      "tested": 40844,
+      "rejected": 7,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00416",
+      "tested": 43386,
+      "rejected": 51,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00417",
+      "tested": 41340,
+      "rejected": 9,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00418",
+      "tested": 41493,
+      "rejected": 15,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00419",
+      "tested": 41339,
+      "rejected": 13,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00421",
+      "tested": 42624,
+      "rejected": 9,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00422",
+      "tested": 42702,
+      "rejected": 42,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00423",
+      "tested": 43023,
+      "rejected": 14,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00424",
+      "tested": 44185,
+      "rejected": 2,
+      "unknown": 0,
+      "identitiesRetained": 128
+    },
+    {
+      "id": "c00900",
+      "tested": 6558,
+      "rejected": 34,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00901",
+      "tested": 6783,
+      "rejected": 71,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00902",
+      "tested": 7232,
+      "rejected": 78,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00903",
+      "tested": 7213,
+      "rejected": 114,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00904",
+      "tested": 6211,
+      "rejected": 60,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00905",
+      "tested": 7024,
+      "rejected": 48,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00906",
+      "tested": 8522,
+      "rejected": 48,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00907",
+      "tested": 8105,
+      "rejected": 29,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00908",
+      "tested": 6782,
+      "rejected": 65,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00909",
+      "tested": 8161,
+      "rejected": 40,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00911",
+      "tested": 7128,
+      "rejected": 105,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00912",
+      "tested": 8314,
+      "rejected": 40,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00913",
+      "tested": 8278,
+      "rejected": 61,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00914",
+      "tested": 6503,
+      "rejected": 63,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00915",
+      "tested": 7318,
+      "rejected": 53,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00916",
+      "tested": 8388,
+      "rejected": 53,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00917",
+      "tested": 7128,
+      "rejected": 84,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00919",
+      "tested": 6550,
+      "rejected": 112,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00920",
+      "tested": 7450,
+      "rejected": 71,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00921",
+      "tested": 7217,
+      "rejected": 67,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00922",
+      "tested": 7986,
+      "rejected": 91,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00923",
+      "tested": 7639,
+      "rejected": 122,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c00924",
+      "tested": 7988,
+      "rejected": 69,
+      "unknown": 0,
+      "identitiesRetained": 96
+    },
+    {
+      "id": "c01400",
+      "tested": 4608,
+      "rejected": 28,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01401",
+      "tested": 4478,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01402",
+      "tested": 4428,
+      "rejected": 4,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01403",
+      "tested": 5133,
+      "rejected": 7,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01404",
+      "tested": 4828,
+      "rejected": 15,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01405",
+      "tested": 4846,
+      "rejected": 62,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01406",
+      "tested": 4678,
+      "rejected": 17,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01407",
+      "tested": 4874,
+      "rejected": 4,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01408",
+      "tested": 4947,
+      "rejected": 34,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01409",
+      "tested": 4771,
+      "rejected": 37,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01410",
+      "tested": 4524,
+      "rejected": 6,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01411",
+      "tested": 4383,
+      "rejected": 11,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01412",
+      "tested": 4669,
+      "rejected": 5,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01413",
+      "tested": 4477,
+      "rejected": 11,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01414",
+      "tested": 4572,
+      "rejected": 44,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01415",
+      "tested": 4732,
+      "rejected": 13,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01416",
+      "tested": 4496,
+      "rejected": 58,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01417",
+      "tested": 4359,
+      "rejected": 9,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01418",
+      "tested": 5073,
+      "rejected": 18,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01419",
+      "tested": 4217,
+      "rejected": 39,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01420",
+      "tested": 5026,
+      "rejected": 56,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01421",
+      "tested": 4060,
+      "rejected": 26,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01422",
+      "tested": 4643,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01423",
+      "tested": 4037,
+      "rejected": 3,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01424",
+      "tested": 4520,
+      "rejected": 10,
+      "unknown": 0,
+      "identitiesRetained": 80
+    },
+    {
+      "id": "c01900",
+      "tested": 12779,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01901",
+      "tested": 15145,
+      "rejected": 8,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01902",
+      "tested": 12049,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01903",
+      "tested": 11989,
+      "rejected": 6,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01904",
+      "tested": 10920,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01905",
+      "tested": 12526,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01906",
+      "tested": 11781,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01907",
+      "tested": 11302,
+      "rejected": 5,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01908",
+      "tested": 11926,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01909",
+      "tested": 14833,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01910",
+      "tested": 14131,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01911",
+      "tested": 13795,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01912",
+      "tested": 13570,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01913",
+      "tested": 10884,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01914",
+      "tested": 12334,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01915",
+      "tested": 11064,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01916",
+      "tested": 12333,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01917",
+      "tested": 11126,
+      "rejected": 13,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01918",
+      "tested": 13217,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01919",
+      "tested": 13523,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01920",
+      "tested": 12028,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01921",
+      "tested": 14563,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01922",
+      "tested": 12128,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01923",
+      "tested": 11118,
+      "rejected": 1,
+      "unknown": 0,
+      "identitiesRetained": 64
+    },
+    {
+      "id": "c01924",
+      "tested": 12742,
+      "rejected": 0,
+      "unknown": 0,
+      "identitiesRetained": 64
+    }
+  ],
+  "limits": "World-coordinate kernel evaluation with long-double summation and guarded comparisons, not an exact certificate. Verifies substitution identities/classifications, not stored distances or all-geometric negative connections. Radius chosen developmentally; no held-out or speedup claim."
+}

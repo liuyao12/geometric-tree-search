@@ -1,0 +1,46 @@
+{
+  "resultHash": "0ea6ad41a63842e573795a751109911f259e5abc90e97f78285cbc4eb7ae7a6c",
+  "priorCheckHash": "f30a8cf4ed126d4aa2dabe15f58eee8b28ddd1639d60019fb57c4dcfde5f90d0",
+  "verifierHash": "3e75ad8ede8a8704bfbf078d59e95fb5a15b97704d8df33323815e712b7175cb",
+  "configurations": 97,
+  "checkedPairs": 8880,
+  "maxDistanceDisagreement": 1.1109169140155473e-14,
+  "summary": [
+    {
+      "radius": 0.2,
+      "sourceWitnessCovers": 0,
+      "midpointWitnessCovers": 0
+    },
+    {
+      "radius": 0.3,
+      "sourceWitnessCovers": 0,
+      "midpointWitnessCovers": 9
+    },
+    {
+      "radius": 0.4,
+      "sourceWitnessCovers": 0,
+      "midpointWitnessCovers": 51
+    },
+    {
+      "radius": 0.5,
+      "sourceWitnessCovers": 2,
+      "midpointWitnessCovers": 78
+    },
+    {
+      "radius": 0.6,
+      "sourceWitnessCovers": 27,
+      "midpointWitnessCovers": 97
+    },
+    {
+      "radius": 0.8,
+      "sourceWitnessCovers": 54,
+      "midpointWitnessCovers": 97
+    },
+    {
+      "radius": 1.1063594889735058,
+      "sourceWitnessCovers": 97,
+      "midpointWitnessCovers": 97
+    }
+  ],
+  "limits": "Numerical common midpoint witnesses at exactly two-field anchors. Not all-pose completeness, physical neighborhoods, learned thresholds, negative specificity or search."
+}
