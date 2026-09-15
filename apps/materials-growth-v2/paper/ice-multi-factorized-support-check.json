@@ -1,0 +1,19 @@
+{
+  "scope": "Independent brute-array replay of signature-support elimination records.",
+  "proofHash": "811041dd60e12fdab124bab6cb58c1d41edebe5cb8858dc932d1f3527a843b9e",
+  "filteredHash": "ffd9fcf023d355f3d9d978c48c2877efaedafa65e7928dc211e91b9d7172197f",
+  "verifierHash": "77cdd221dc0ee019aee6a52b148c0b3ba876bf88d6cdb51361903fce2d7c7b1d",
+  "results": [
+    {
+      "file": "c01500",
+      "removedRecordsChecked": 66056,
+      "trainingLiftsPreserved": 2
+    },
+    {
+      "file": "c01900",
+      "removedRecordsChecked": 48360,
+      "trainingLiftsPreserved": 0
+    }
+  ],
+  "limits": "Necessary signature relaxation only; surviving cloud pairs need not agree. Finite half-weight model, not a new learned law or continuous-pose certificate."
+}
