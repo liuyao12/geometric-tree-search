@@ -1,0 +1,1033 @@
+{
+  "scope": "Replay alternative t-covers and frozen-marking positive witnesses independently.\n\nRebuilds observed clouds independently, checks every accepted endpoint, and\nreplays every degree-preserving swap and verifies exact t coverage. Does not\ncertify completeness of the new endpoint match lists or blind generalization.\n",
+  "alternativeCoverHash": "31c2d64de28d51a6b98f06acc37adb6c9becef4e0f86953cc597da6d2e14964e",
+  "swapsReplayed": 654,
+  "changedConfigurations": 68,
+  "resultHash": "d5fcf46e2c247516cc6eb175136602f337627078309f36e69c421eb7b7216861",
+  "pairedPrecheckHash": "d1b0955d73509e9e9189354aa14a6356559407f7ced097205bd8bd09b12998d3",
+  "verifierHash": "83e2a788a99afb6b3750473c6380347d1426630e80d953284ea63d09e35313dc",
+  "acceptedEndpointFitsChecked": 25955,
+  "maxMarkResidualAngstrom": 0.1499994305974445,
+  "summary": {
+    "training": {
+      "configurations": 100,
+      "edges": 9200,
+      "coupledEdges": 7270,
+      "factorizedEdges": 7574,
+      "otherConfigurationEdges": 1102,
+      "coupledComplete": 32,
+      "factorizedComplete": 32
+    },
+    "developmental": {
+      "configurations": 0,
+      "edges": 0,
+      "coupledEdges": 0,
+      "factorizedEdges": 0,
+      "otherConfigurationEdges": 0,
+      "coupledComplete": 0,
+      "factorizedComplete": 0
+    }
+  },
+  "results": [
+    {
+      "id": "c00000",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 51,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00001",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 30,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00002",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 29,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00003",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 36,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00004",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 20,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00005",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 21,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00006",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 27,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00007",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 15,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00008",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 15,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00009",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 18,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00010",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 19,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00011",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 16,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00012",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 13,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00013",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 17,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00014",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 18,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00015",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 17,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00016",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 10,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00017",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 24,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00018",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00019",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 10,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00020",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 15,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00021",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 18,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00022",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 14,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00023",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 12,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00024",
+      "training": true,
+      "edges": 128,
+      "coupledEdges": 128,
+      "factorizedEdges": 128,
+      "otherConfigurationEdges": 18,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00500",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 79,
+      "factorizedEdges": 82,
+      "otherConfigurationEdges": 20,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00501",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 96,
+      "factorizedEdges": 96,
+      "otherConfigurationEdges": 11,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00502",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 91,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00503",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 91,
+      "otherConfigurationEdges": 11,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00504",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 91,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00505",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00506",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 84,
+      "factorizedEdges": 84,
+      "otherConfigurationEdges": 6,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00507",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 68,
+      "factorizedEdges": 74,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00508",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 84,
+      "factorizedEdges": 84,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00509",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 84,
+      "factorizedEdges": 87,
+      "otherConfigurationEdges": 7,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00510",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 96,
+      "factorizedEdges": 96,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00511",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 78,
+      "factorizedEdges": 79,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00512",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 92,
+      "otherConfigurationEdges": 6,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00513",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 1,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00514",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00515",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 96,
+      "factorizedEdges": 96,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00516",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 79,
+      "factorizedEdges": 81,
+      "otherConfigurationEdges": 3,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00517",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 85,
+      "factorizedEdges": 87,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00518",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 66,
+      "factorizedEdges": 72,
+      "otherConfigurationEdges": 1,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00519",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 96,
+      "factorizedEdges": 96,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c00520",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 84,
+      "factorizedEdges": 85,
+      "otherConfigurationEdges": 3,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00521",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 1,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00522",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00523",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 90,
+      "factorizedEdges": 90,
+      "otherConfigurationEdges": 1,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c00524",
+      "training": true,
+      "edges": 96,
+      "coupledEdges": 96,
+      "factorizedEdges": 96,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c01000",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 68,
+      "factorizedEdges": 72,
+      "otherConfigurationEdges": 26,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01001",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 80,
+      "factorizedEdges": 80,
+      "otherConfigurationEdges": 18,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c01002",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 57,
+      "factorizedEdges": 63,
+      "otherConfigurationEdges": 19,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01003",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 72,
+      "factorizedEdges": 73,
+      "otherConfigurationEdges": 14,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01004",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 56,
+      "factorizedEdges": 63,
+      "otherConfigurationEdges": 12,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01005",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 64,
+      "factorizedEdges": 70,
+      "otherConfigurationEdges": 22,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01006",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 60,
+      "factorizedEdges": 65,
+      "otherConfigurationEdges": 14,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01007",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 60,
+      "factorizedEdges": 65,
+      "otherConfigurationEdges": 16,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01008",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 80,
+      "factorizedEdges": 80,
+      "otherConfigurationEdges": 16,
+      "coupledComplete": true,
+      "factorizedComplete": true
+    },
+    {
+      "id": "c01009",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 67,
+      "factorizedEdges": 76,
+      "otherConfigurationEdges": 26,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01010",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 63,
+      "factorizedEdges": 67,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01011",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 68,
+      "factorizedEdges": 73,
+      "otherConfigurationEdges": 14,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01012",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 51,
+      "factorizedEdges": 58,
+      "otherConfigurationEdges": 17,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01013",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 54,
+      "factorizedEdges": 58,
+      "otherConfigurationEdges": 11,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01014",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 68,
+      "factorizedEdges": 72,
+      "otherConfigurationEdges": 11,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01015",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 59,
+      "factorizedEdges": 62,
+      "otherConfigurationEdges": 11,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01016",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 57,
+      "factorizedEdges": 62,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01017",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 56,
+      "factorizedEdges": 61,
+      "otherConfigurationEdges": 12,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01018",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 57,
+      "factorizedEdges": 60,
+      "otherConfigurationEdges": 8,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01019",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 63,
+      "factorizedEdges": 65,
+      "otherConfigurationEdges": 6,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01020",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 63,
+      "factorizedEdges": 66,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01021",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 75,
+      "factorizedEdges": 76,
+      "otherConfigurationEdges": 8,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01022",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 63,
+      "factorizedEdges": 67,
+      "otherConfigurationEdges": 15,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01023",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 61,
+      "factorizedEdges": 66,
+      "otherConfigurationEdges": 12,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01024",
+      "training": true,
+      "edges": 80,
+      "coupledEdges": 41,
+      "factorizedEdges": 47,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01500",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 6,
+      "factorizedEdges": 12,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01501",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 10,
+      "factorizedEdges": 26,
+      "otherConfigurationEdges": 17,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01502",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 10,
+      "factorizedEdges": 18,
+      "otherConfigurationEdges": 7,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01503",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 20,
+      "factorizedEdges": 26,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01504",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 8,
+      "factorizedEdges": 13,
+      "otherConfigurationEdges": 6,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01505",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 16,
+      "factorizedEdges": 21,
+      "otherConfigurationEdges": 3,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01506",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 30,
+      "factorizedEdges": 34,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01507",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 19,
+      "factorizedEdges": 22,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01508",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 9,
+      "factorizedEdges": 16,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01509",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 25,
+      "factorizedEdges": 30,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01510",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 18,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01511",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 9,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 8,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01512",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 7,
+      "factorizedEdges": 14,
+      "otherConfigurationEdges": 5,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01513",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 9,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 7,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01514",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 15,
+      "factorizedEdges": 19,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01515",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 19,
+      "factorizedEdges": 23,
+      "otherConfigurationEdges": 4,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01516",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 3,
+      "factorizedEdges": 21,
+      "otherConfigurationEdges": 14,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01517",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 9,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01518",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 13,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 9,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01519",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 9,
+      "factorizedEdges": 14,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01520",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 17,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 1,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01521",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 14,
+      "factorizedEdges": 18,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01522",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 16,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01523",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 11,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 6,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    },
+    {
+      "id": "c01524",
+      "training": true,
+      "edges": 64,
+      "coupledEdges": 14,
+      "factorizedEdges": 20,
+      "otherConfigurationEdges": 2,
+      "coupledComplete": false,
+      "factorizedComplete": false
+    }
+  ]
+}
