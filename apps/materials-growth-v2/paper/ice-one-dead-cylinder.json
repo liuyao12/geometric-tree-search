@@ -1,0 +1,92 @@
+{
+  "sourceModelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "blocksHash": "15ec926b6cd0f899d7420c0c0fa0e1992ac3a6e5db1e98182444643cebed4968",
+  "diagnosticHash": "81cdc8c481076c6f6d30a49c48a754bd5c039c6e06ecef680ccd1ca0d2c6f015",
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "steps": 1,
+      "decision": {
+        "kind": "dead",
+        "point": "91"
+      },
+      "cylinders": [
+        {
+          "erase": 0,
+          "keptSide": 1,
+          "keptIndex": 0,
+          "parentAlternatives": 36,
+          "relaxedDecision": {
+            "kind": "dead",
+            "point": "91"
+          },
+          "certifiedDead": true
+        },
+        {
+          "erase": 1,
+          "keptSide": 0,
+          "keptIndex": 0,
+          "parentAlternatives": 36,
+          "relaxedDecision": {
+            "kind": "dead",
+            "point": "157"
+          },
+          "certifiedDead": true
+        }
+      ],
+      "prefix": [],
+      "failed": "0000000000000049/0000000000000000/0000000000000000",
+      "identicalSerializedClouds": {
+        "records": 118102,
+        "unique": 118102,
+        "conceptualCandidates": "21289071",
+        "ifIdenticalValuesMerged": "21289071",
+        "scope": "Diagnostic only; no candidate merging performed. Different point order may represent the same cloud."
+      }
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "steps": 1,
+      "decision": {
+        "kind": "dead",
+        "point": "85"
+      },
+      "cylinders": [
+        {
+          "erase": 0,
+          "keptSide": 1,
+          "keptIndex": 0,
+          "parentAlternatives": 120,
+          "relaxedDecision": {
+            "kind": "dead",
+            "point": "85"
+          },
+          "certifiedDead": true
+        },
+        {
+          "erase": 1,
+          "keptSide": 0,
+          "keptIndex": 0,
+          "parentAlternatives": 120,
+          "relaxedDecision": {
+            "kind": "dead",
+            "point": "9"
+          },
+          "certifiedDead": true
+        }
+      ],
+      "prefix": [],
+      "failed": "0000000000000043/0000000000000000/0000000000000000",
+      "identicalSerializedClouds": {
+        "records": 97008,
+        "unique": 97008,
+        "conceptualCandidates": "12640506",
+        "ifIdenticalValuesMerged": "12640506",
+        "scope": "Diagnostic only; no candidate merging performed. Different point order may represent the same cloud."
+      }
+    }
+  ],
+  "limits": "First dead child per frame only. Erased-marking cylinders are parent-local necessary impossibility tests, not learned transferable markings. Independent certificate replay required; search is unchanged."
+}

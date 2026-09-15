@@ -1,0 +1,62 @@
+{
+  "scope": "Replay relaxed endpoint-cylinder dead points with independent cloud matching.",
+  "sourceModelHash": "cf64e69dd65366e69275174fc9e52d66daea52a53c2a1b8da1723aaaabea4631",
+  "blocksHash": "402aa0ec767272636d70d153878217fe865a80ee907ff766cb80c2da0a8aa0bb",
+  "diagnosticHash": "6c3b719cc335af9843bb1b01e97f5884e745aa586a3cb443dcb180d41e054de6",
+  "verifierHash": "59be0473f3ae97ff8b85f75119f84ae450755eab7f655e52148156163459339a",
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "certificates": [
+        {
+          "erasedSide": 0,
+          "deadPoint": "91",
+          "incidentBlocksChecked": 10,
+          "pairChecks": 2612,
+          "reasons": {
+            "inventory": 1,
+            "marking": 9
+          }
+        },
+        {
+          "erasedSide": 1,
+          "deadPoint": "157",
+          "incidentBlocksChecked": 10,
+          "pairChecks": 1287,
+          "reasons": {
+            "inventory": 1,
+            "marking": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "certificates": [
+        {
+          "erasedSide": 0,
+          "deadPoint": "106",
+          "incidentBlocksChecked": 9,
+          "pairChecks": 2614,
+          "reasons": {
+            "inventory": 1,
+            "marking": 8
+          }
+        },
+        {
+          "erasedSide": 1,
+          "deadPoint": "59",
+          "incidentBlocksChecked": 8,
+          "pairChecks": 1486,
+          "reasons": {
+            "inventory": 1,
+            "marking": 7
+          }
+        }
+      ]
+    }
+  ],
+  "limits": "Parent-local impossibility in the declared finite pool and guarded cloud predicate. Does not justify transferring exclusions to other configurations. Search remains unchanged."
+}
