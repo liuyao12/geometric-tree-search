@@ -1,0 +1,18 @@
+{
+  "libraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "mapsHash": "6cec17035463da318c7595e0e29fdb1dabbcd3610cd45ef5e0792d23f0648d78",
+  "coverageHash": "7a379c0556af289b67d6815d4c21076c8a7dbf5a9f7f163176bb92a974ff70b0",
+  "nearestHash": "d4cc3fe4c7002f719f0d0dd23069f2997933d72aa5f5b78c78e70137e61bc22a",
+  "verifierHash": "0b1f96da72b562ce542215b87208472564771a78e6c9c00a89616013270d8666",
+  "independentlyEnumeratedPermutations": 2224,
+  "verifiedMaps": 313,
+  "verifiedAdditionalContexts": 114,
+  "summary": {
+    "contexts": 11147,
+    "originalCovered": 5769,
+    "additionalCovered": 114,
+    "totalCovered": 5883,
+    "cloudChecks": 654
+  },
+  "limits": "Numerical Procrustes proposal enumeration, not continuous max-error feasibility. Directly checks every additional positive witness; does not certify absence of further context matches. No search or physical validity conclusion."
+}

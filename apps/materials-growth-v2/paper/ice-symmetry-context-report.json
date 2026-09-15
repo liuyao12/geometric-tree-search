@@ -1,0 +1,2411 @@
+{
+  "scope": "Training cross-frame coverage under finite tolerance-feasible base self-maps.\n\nBoth cloud values rotate with the same proper base transform; endpoint swaps\nfollow the support permutation. Not independent rotation of individual clouds.\nCoverage uses either endpoint, matching the preceding substitution diagnostic.\nThis is sensitivity analysis only, not an exact symmetry quotient or new search.\n",
+  "libraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "mapsHash": "6cec17035463da318c7595e0e29fdb1dabbcd3610cd45ef5e0792d23f0648d78",
+  "nearestHash": "d4cc3fe4c7002f719f0d0dd23069f2997933d72aa5f5b78c78e70137e61bc22a",
+  "codeHash": "1e8d439b23cb8e03d379010227fbb8914f807547c5ba9c462dcdd70793f16c69",
+  "summary": {
+    "contexts": 11147,
+    "originalCovered": 5769,
+    "additionalCovered": 114,
+    "totalCovered": 5883,
+    "cloudChecks": 654
+  },
+  "witnesses": [
+    {
+      "motif": 10122,
+      "donor": 7793,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14022441084838966
+      }
+    },
+    {
+      "motif": 9961,
+      "donor": 8223,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.13035172034767734
+      }
+    },
+    {
+      "motif": 7814,
+      "donor": 8423,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1489913657441453
+      }
+    },
+    {
+      "motif": 10174,
+      "donor": 8942,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1435714747670518
+      }
+    },
+    {
+      "motif": 7793,
+      "donor": 10122,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14022441084838827
+      }
+    },
+    {
+      "motif": 10071,
+      "donor": 10463,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.13317323259200822
+      }
+    },
+    {
+      "motif": 7959,
+      "donor": 10937,
+      "base": 236,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1407081663561989
+      }
+    },
+    {
+      "motif": 10894,
+      "donor": 7611,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.13506258568202298
+      }
+    },
+    {
+      "motif": 10580,
+      "donor": 7611,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.13579145445386223
+      }
+    },
+    {
+      "motif": 10635,
+      "donor": 7614,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13769526069154694
+      }
+    },
+    {
+      "motif": 8569,
+      "donor": 7614,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13769526069154694
+      }
+    },
+    {
+      "motif": 8451,
+      "donor": 7676,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1474402679774298
+      }
+    },
+    {
+      "motif": 10791,
+      "donor": 7717,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1393757198244553
+      }
+    },
+    {
+      "motif": 10059,
+      "donor": 7724,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.11297840590735056
+      }
+    },
+    {
+      "motif": 10655,
+      "donor": 7738,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.11225562301559885
+      }
+    },
+    {
+      "motif": 8325,
+      "donor": 7751,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.12389870477494178
+      }
+    },
+    {
+      "motif": 10516,
+      "donor": 7805,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.14724951474057058
+      }
+    },
+    {
+      "motif": 8013,
+      "donor": 7928,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14839715311557117
+      }
+    },
+    {
+      "motif": 7861,
+      "donor": 7973,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.12980732041080215
+      }
+    },
+    {
+      "motif": 7928,
+      "donor": 8013,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14839715311557086
+      }
+    },
+    {
+      "motif": 10761,
+      "donor": 8093,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.1337541776682299
+      }
+    },
+    {
+      "motif": 8972,
+      "donor": 8145,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1331804377203728
+      }
+    },
+    {
+      "motif": 9994,
+      "donor": 8281,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.12216547587997913
+      }
+    },
+    {
+      "motif": 11010,
+      "donor": 8286,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1144127825126073
+      }
+    },
+    {
+      "motif": 8521,
+      "donor": 8313,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.13055603161004956
+      }
+    },
+    {
+      "motif": 9000,
+      "donor": 8351,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.10954691642340729
+      }
+    },
+    {
+      "motif": 8285,
+      "donor": 8424,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.12758073134690603
+      }
+    },
+    {
+      "motif": 8616,
+      "donor": 8443,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14541634612536153
+      }
+    },
+    {
+      "motif": 7738,
+      "donor": 8556,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14623491523991655
+      }
+    },
+    {
+      "motif": 10000,
+      "donor": 8556,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14623491523991655
+      }
+    },
+    {
+      "motif": 10974,
+      "donor": 8556,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.11448581735783836
+      }
+    },
+    {
+      "motif": 9172,
+      "donor": 8583,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.11430035108591154
+      }
+    },
+    {
+      "motif": 10361,
+      "donor": 8738,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14331995995091004
+      }
+    },
+    {
+      "motif": 10839,
+      "donor": 8825,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14796206093319136
+      }
+    },
+    {
+      "motif": 10140,
+      "donor": 8843,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.147283827319478
+      }
+    },
+    {
+      "motif": 9937,
+      "donor": 8891,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.12005071750319506
+      }
+    },
+    {
+      "motif": 8583,
+      "donor": 9172,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.11430035108591145
+      }
+    },
+    {
+      "motif": 8721,
+      "donor": 9966,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1328755140230673
+      }
+    },
+    {
+      "motif": 10577,
+      "donor": 10059,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.14815373789153802
+      }
+    },
+    {
+      "motif": 8953,
+      "donor": 10437,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.13754155714575084
+      }
+    },
+    {
+      "motif": 8284,
+      "donor": 10773,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.12040989399319403
+      }
+    },
+    {
+      "motif": 8118,
+      "donor": 10837,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1370472860952584
+      }
+    },
+    {
+      "motif": 10589,
+      "donor": 10839,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.13900051674968175
+      }
+    },
+    {
+      "motif": 10997,
+      "donor": 10867,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14165283721723143
+      }
+    },
+    {
+      "motif": 8480,
+      "donor": 11102,
+      "base": 237,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.14609031529998479
+      }
+    },
+    {
+      "motif": 9934,
+      "donor": 7735,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14155099509498123
+      }
+    },
+    {
+      "motif": 9998,
+      "donor": 7828,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.14286285370690613
+      }
+    },
+    {
+      "motif": 8733,
+      "donor": 7978,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13494749004867215
+      }
+    },
+    {
+      "motif": 8151,
+      "donor": 8420,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1269107572897756
+      }
+    },
+    {
+      "motif": 7781,
+      "donor": 8546,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14804010213539365
+      }
+    },
+    {
+      "motif": 8783,
+      "donor": 8620,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.14124176541384775
+      }
+    },
+    {
+      "motif": 7978,
+      "donor": 8733,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1349474900486723
+      }
+    },
+    {
+      "motif": 8620,
+      "donor": 8783,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14124176541384667
+      }
+    },
+    {
+      "motif": 9133,
+      "donor": 8914,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.14551343864585922
+      }
+    },
+    {
+      "motif": 8914,
+      "donor": 9133,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1455134386458595
+      }
+    },
+    {
+      "motif": 10922,
+      "donor": 9965,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.10749104370146928
+      }
+    },
+    {
+      "motif": 10620,
+      "donor": 10828,
+      "base": 239,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13854228386525133
+      }
+    },
+    {
+      "motif": 7713,
+      "donor": 7776,
+      "base": 241,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.11362668709973035
+      }
+    },
+    {
+      "motif": 10295,
+      "donor": 8063,
+      "base": 243,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14633832251154982
+      }
+    },
+    {
+      "motif": 10906,
+      "donor": 8081,
+      "base": 243,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14614950082872183
+      }
+    },
+    {
+      "motif": 10599,
+      "donor": 10118,
+      "base": 243,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1354928357394883
+      }
+    },
+    {
+      "motif": 10118,
+      "donor": 10599,
+      "base": 243,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.13549283573948903
+      }
+    },
+    {
+      "motif": 8612,
+      "donor": 7639,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.10619923788862753
+      }
+    },
+    {
+      "motif": 11043,
+      "donor": 7656,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1214069524308555
+      }
+    },
+    {
+      "motif": 10865,
+      "donor": 7674,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.10394131716901807
+      }
+    },
+    {
+      "motif": 8193,
+      "donor": 7674,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14862816326557937
+      }
+    },
+    {
+      "motif": 10171,
+      "donor": 7801,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.13964930896256006
+      }
+    },
+    {
+      "motif": 7907,
+      "donor": 8442,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.0899360726606816
+      }
+    },
+    {
+      "motif": 7639,
+      "donor": 8612,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.10619923788862642
+      }
+    },
+    {
+      "motif": 8154,
+      "donor": 8688,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.11934389647759036
+      }
+    },
+    {
+      "motif": 10793,
+      "donor": 8709,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1484545913436238
+      }
+    },
+    {
+      "motif": 10336,
+      "donor": 8713,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1481795492700599
+      }
+    },
+    {
+      "motif": 8147,
+      "donor": 9045,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.11644695228043879
+      }
+    },
+    {
+      "motif": 9117,
+      "donor": 9045,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.13348293468505576
+      }
+    },
+    {
+      "motif": 9090,
+      "donor": 9959,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.08714409337942788
+      }
+    },
+    {
+      "motif": 10668,
+      "donor": 10310,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13733222126142725
+      }
+    },
+    {
+      "motif": 11088,
+      "donor": 10405,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1355740146322754
+      }
+    },
+    {
+      "motif": 10310,
+      "donor": 10668,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13733222126142597
+      }
+    },
+    {
+      "motif": 7656,
+      "donor": 11043,
+      "base": 245,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.12140695243085511
+      }
+    },
+    {
+      "motif": 10607,
+      "donor": 7695,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1323291003106326
+      }
+    },
+    {
+      "motif": 8829,
+      "donor": 7695,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.1450413058397684
+      }
+    },
+    {
+      "motif": 10147,
+      "donor": 7906,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.14415654458436705
+      }
+    },
+    {
+      "motif": 8686,
+      "donor": 7906,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14640184421395405
+      }
+    },
+    {
+      "motif": 10626,
+      "donor": 8033,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13322535278797953
+      }
+    },
+    {
+      "motif": 9148,
+      "donor": 8401,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.09254496805258033
+      }
+    },
+    {
+      "motif": 9173,
+      "donor": 8401,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1487259801464264
+      }
+    },
+    {
+      "motif": 8741,
+      "donor": 8554,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.11407444622373089
+      }
+    },
+    {
+      "motif": 10780,
+      "donor": 8554,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.11407444622373089
+      }
+    },
+    {
+      "motif": 8591,
+      "donor": 8640,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1468926007167582
+      }
+    },
+    {
+      "motif": 8554,
+      "donor": 8741,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.11407444622373109
+      }
+    },
+    {
+      "motif": 10991,
+      "donor": 8805,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.11286423976627998
+      }
+    },
+    {
+      "motif": 7695,
+      "donor": 8829,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14504130583976912
+      }
+    },
+    {
+      "motif": 10627,
+      "donor": 9916,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.14480714861102542
+      }
+    },
+    {
+      "motif": 10486,
+      "donor": 10607,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.10199211149500739
+      }
+    },
+    {
+      "motif": 8033,
+      "donor": 10626,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.1332253527879798
+      }
+    },
+    {
+      "motif": 10861,
+      "donor": 10627,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.13057815831303296
+      }
+    },
+    {
+      "motif": 8805,
+      "donor": 10991,
+      "base": 246,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.11286423976627953
+      }
+    },
+    {
+      "motif": 11094,
+      "donor": 8579,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.08459279609099164
+      }
+    },
+    {
+      "motif": 9132,
+      "donor": 8579,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.08459279609099164
+      }
+    },
+    {
+      "motif": 10114,
+      "donor": 9102,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.1190165837340489
+      }
+    },
+    {
+      "motif": 8579,
+      "donor": 9132,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.08459279609099152
+      }
+    },
+    {
+      "motif": 10643,
+      "donor": 9132,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.08459279609099152
+      }
+    },
+    {
+      "motif": 9102,
+      "donor": 10114,
+      "base": 248,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.11901658373404923
+      }
+    },
+    {
+      "motif": 9944,
+      "donor": 8178,
+      "base": 248,
+      "pose": 2,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.10158616162404269
+      }
+    },
+    {
+      "motif": 8178,
+      "donor": 9944,
+      "base": 248,
+      "pose": 2,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.10158616162404256
+      }
+    },
+    {
+      "motif": 9155,
+      "donor": 9987,
+      "base": 248,
+      "pose": 2,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.14776489470190926
+      }
+    },
+    {
+      "motif": 10790,
+      "donor": 7675,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13819453955608466
+      }
+    },
+    {
+      "motif": 10670,
+      "donor": 8367,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.13498792160227674
+      }
+    },
+    {
+      "motif": 8449,
+      "donor": 8866,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.09926368372299525
+      }
+    },
+    {
+      "motif": 8367,
+      "donor": 10670,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.1349879216022768
+      }
+    },
+    {
+      "motif": 10406,
+      "donor": 10790,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          4,
+          3,
+          5,
+          7,
+          6,
+          8
+        ],
+        "maxResidual": 0.14747836942558037
+      }
+    },
+    {
+      "motif": 7675,
+      "donor": 10790,
+      "base": 249,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maxResidual": 0.13819453955608582
+      }
+    },
+    {
+      "motif": 10759,
+      "donor": 8491,
+      "base": 255,
+      "pose": 1,
+      "endpoint": 0,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          6,
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "maxResidual": 0.13745752017440643
+      }
+    },
+    {
+      "motif": 8491,
+      "donor": 10759,
+      "base": 255,
+      "pose": 1,
+      "endpoint": 1,
+      "fit": {
+        "permutation": [
+          1,
+          0,
+          2,
+          7,
+          6,
+          8,
+          3,
+          4,
+          5
+        ],
+        "maxResidual": 0.1374575201744091
+      }
+    }
+  ],
+  "limits": "Finite Procrustes self-map sensitivity within positional tolerance. Only positive context matches, not search candidates or full reconstructions. No complete continuous-pose, independent-trajectory or physical-condition claim."
+}
