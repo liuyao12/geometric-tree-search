@@ -1,0 +1,32 @@
+{
+  "scope": "Independent selected-state replay; no claim about unvisited search states.",
+  "sourceModelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "blocksHash": "9c0c007882baa376287fa7016eb4475eb38cf7f7d554af970808d4179c5dda64",
+  "verifierHash": "cca49a53069b8e7e82954d083a78e9b793322ee80c37d862368f8ae83ded66cd",
+  "membershipModuleHash": "8d68c0d59c537430298a4be2e5ae346a8c077c33433d5267aa93c5cbd49c611d",
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "selected": 26,
+      "complete": false,
+      "verifiedAssignments": 52,
+      "commonValues": 27,
+      "positiveSupportComponents": 1,
+      "matchingTrainingSupportCovers": [],
+      "runHash": "5246b404be4f7bacfc48917e80b62a09b36ca5967e82a05677b5ada35445eae0"
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "selected": 24,
+      "complete": false,
+      "verifiedAssignments": 48,
+      "commonValues": 25,
+      "positiveSupportComponents": 1,
+      "matchingTrainingSupportCovers": [],
+      "runHash": "bb80fac1496eb3838226d9999a9fd7d5e876e0f306c6544d661e5ac9b30c24ab"
+    }
+  ],
+  "limits": "Checks selected t sums, shared inventory and supplied common cloud witnesses. Does not prove continuous-pose completeness, training transfer, or material provenance."
+}
