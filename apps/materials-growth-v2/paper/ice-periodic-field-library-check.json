@@ -1,0 +1,14 @@
+{
+  "scope": "Independent source-coordinate verification of supplied Gaussian-field covers.\n\nDoes not import the field producer, its rotation helper, or its image extractor.\nFixed image boxes have per-cell singular-value completeness checks. Verifies\ninteger t totals and a single coordinate-derived field shared at each anchor.\nNumerical residuals are reported; no zero-tolerance/exact real-field claim.\n",
+  "libraryHash": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+  "verifierHash": "3171ff170992f5bcc95b35fa0c94664f42c6e8a6e4a7bfc8ca957192b73fa2e3",
+  "verifiedCovers": 168,
+  "trainingConfigurations": 100,
+  "verifiedAssignments": 29120,
+  "commonAnchorFields": 14560,
+  "checkedAtomTotals": 43680,
+  "maxCoordinateResidualAngstrom": 2.4307546523878914e-14,
+  "maxAmplitudeResidual": 1.8318679906315083e-15,
+  "coverIndependentOccurrences": 10090,
+  "limits": "Independent positive checks on supplied covers, with inherited anchors/t halves and fixed field parameters. No learned uncertainty radius, proof of forbidden joins, search reconstruction, same-condition certification or transfer."
+}
