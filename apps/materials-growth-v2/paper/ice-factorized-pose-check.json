@@ -1,0 +1,719 @@
+{
+  "scope": "Verify positive pose witnesses against periodic coordinates and cloud values.\n\nUses independent observed-cloud reconstruction and supplied marking bijections.\nChecks existence of a positional fit, not completeness of pose enumeration.\n",
+  "poseHash": "4911a63128565cbd364f4515abe16913dd11d32122ef22bbcab847b491a6d3ab",
+  "verifierHash": "caa9ffa579e93707b76a4d8e26f90860e5eb91ebba6334416de726026c4014f9",
+  "endpointFitsChecked": 3528,
+  "maxPositionResidualAngstrom": 0.14991268665361362,
+  "maxMarkResidualAngstrom": 0.14999193843091718,
+  "summary": {
+    "edges": 9200,
+    "savedPoseMatched": 871,
+    "anyPoseMatched": 888,
+    "procrustesProposals": 9652,
+    "configurations": 100,
+    "completeConfigurations": 0
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "edges": 128,
+      "savedPoseMatched": 16,
+      "anyPoseMatched": 16,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00401",
+      "edges": 128,
+      "savedPoseMatched": 12,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00402",
+      "edges": 128,
+      "savedPoseMatched": 12,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00403",
+      "edges": 128,
+      "savedPoseMatched": 19,
+      "anyPoseMatched": 19,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00404",
+      "edges": 128,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00405",
+      "edges": 128,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00406",
+      "edges": 128,
+      "savedPoseMatched": 14,
+      "anyPoseMatched": 14,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00407",
+      "edges": 128,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00408",
+      "edges": 128,
+      "savedPoseMatched": 16,
+      "anyPoseMatched": 16,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00409",
+      "edges": 128,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00410",
+      "edges": 128,
+      "savedPoseMatched": 10,
+      "anyPoseMatched": 10,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00411",
+      "edges": 128,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00412",
+      "edges": 128,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00413",
+      "edges": 128,
+      "savedPoseMatched": 6,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00414",
+      "edges": 128,
+      "savedPoseMatched": 12,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00415",
+      "edges": 128,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00416",
+      "edges": 128,
+      "savedPoseMatched": 20,
+      "anyPoseMatched": 20,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00417",
+      "edges": 128,
+      "savedPoseMatched": 19,
+      "anyPoseMatched": 19,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00418",
+      "edges": 128,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00419",
+      "edges": 128,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00420",
+      "edges": 128,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00421",
+      "edges": 128,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00422",
+      "edges": 128,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00423",
+      "edges": 128,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00424",
+      "edges": 128,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 128
+    },
+    {
+      "id": "c00900",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 99
+    },
+    {
+      "id": "c00901",
+      "edges": 96,
+      "savedPoseMatched": 1,
+      "anyPoseMatched": 1,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00902",
+      "edges": 96,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00903",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 98
+    },
+    {
+      "id": "c00904",
+      "edges": 96,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00905",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00906",
+      "edges": 96,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 7,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00907",
+      "edges": 96,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00908",
+      "edges": 96,
+      "savedPoseMatched": 1,
+      "anyPoseMatched": 1,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00909",
+      "edges": 96,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00910",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00911",
+      "edges": 96,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00912",
+      "edges": 96,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00913",
+      "edges": 96,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00914",
+      "edges": 96,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 7,
+      "procrustesProposals": 99
+    },
+    {
+      "id": "c00915",
+      "edges": 96,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00916",
+      "edges": 96,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00917",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00918",
+      "edges": 96,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00919",
+      "edges": 96,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 97
+    },
+    {
+      "id": "c00920",
+      "edges": 96,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 98
+    },
+    {
+      "id": "c00921",
+      "edges": 96,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 100
+    },
+    {
+      "id": "c00922",
+      "edges": 96,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00923",
+      "edges": 96,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c00924",
+      "edges": 96,
+      "savedPoseMatched": 6,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 96
+    },
+    {
+      "id": "c01400",
+      "edges": 80,
+      "savedPoseMatched": 12,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01401",
+      "edges": 80,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01402",
+      "edges": 80,
+      "savedPoseMatched": 21,
+      "anyPoseMatched": 21,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01403",
+      "edges": 80,
+      "savedPoseMatched": 6,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01404",
+      "edges": 80,
+      "savedPoseMatched": 15,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01405",
+      "edges": 80,
+      "savedPoseMatched": 6,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01406",
+      "edges": 80,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01407",
+      "edges": 80,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01408",
+      "edges": 80,
+      "savedPoseMatched": 17,
+      "anyPoseMatched": 17,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01409",
+      "edges": 80,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01410",
+      "edges": 80,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01411",
+      "edges": 80,
+      "savedPoseMatched": 16,
+      "anyPoseMatched": 16,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01412",
+      "edges": 80,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01413",
+      "edges": 80,
+      "savedPoseMatched": 17,
+      "anyPoseMatched": 17,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01414",
+      "edges": 80,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 82
+    },
+    {
+      "id": "c01415",
+      "edges": 80,
+      "savedPoseMatched": 16,
+      "anyPoseMatched": 16,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01416",
+      "edges": 80,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 7,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01417",
+      "edges": 80,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01418",
+      "edges": 80,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01419",
+      "edges": 80,
+      "savedPoseMatched": 10,
+      "anyPoseMatched": 10,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01420",
+      "edges": 80,
+      "savedPoseMatched": 11,
+      "anyPoseMatched": 11,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01421",
+      "edges": 80,
+      "savedPoseMatched": 9,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 82
+    },
+    {
+      "id": "c01422",
+      "edges": 80,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 13,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01423",
+      "edges": 80,
+      "savedPoseMatched": 12,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01424",
+      "edges": 80,
+      "savedPoseMatched": 10,
+      "anyPoseMatched": 10,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01900",
+      "edges": 64,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 9,
+      "procrustesProposals": 79
+    },
+    {
+      "id": "c01901",
+      "edges": 64,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 74
+    },
+    {
+      "id": "c01902",
+      "edges": 64,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 77
+    },
+    {
+      "id": "c01903",
+      "edges": 64,
+      "savedPoseMatched": 10,
+      "anyPoseMatched": 10,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01904",
+      "edges": 64,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 83
+    },
+    {
+      "id": "c01905",
+      "edges": 64,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 76
+    },
+    {
+      "id": "c01906",
+      "edges": 64,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 80
+    },
+    {
+      "id": "c01907",
+      "edges": 64,
+      "savedPoseMatched": 0,
+      "anyPoseMatched": 1,
+      "procrustesProposals": 87
+    },
+    {
+      "id": "c01908",
+      "edges": 64,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 76
+    },
+    {
+      "id": "c01909",
+      "edges": 64,
+      "savedPoseMatched": 13,
+      "anyPoseMatched": 15,
+      "procrustesProposals": 85
+    },
+    {
+      "id": "c01910",
+      "edges": 64,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 79
+    },
+    {
+      "id": "c01911",
+      "edges": 64,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 7,
+      "procrustesProposals": 78
+    },
+    {
+      "id": "c01912",
+      "edges": 64,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 81
+    },
+    {
+      "id": "c01913",
+      "edges": 64,
+      "savedPoseMatched": 2,
+      "anyPoseMatched": 2,
+      "procrustesProposals": 83
+    },
+    {
+      "id": "c01914",
+      "edges": 64,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 83
+    },
+    {
+      "id": "c01915",
+      "edges": 64,
+      "savedPoseMatched": 7,
+      "anyPoseMatched": 7,
+      "procrustesProposals": 87
+    },
+    {
+      "id": "c01916",
+      "edges": 64,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 6,
+      "procrustesProposals": 75
+    },
+    {
+      "id": "c01917",
+      "edges": 64,
+      "savedPoseMatched": 1,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 84
+    },
+    {
+      "id": "c01918",
+      "edges": 64,
+      "savedPoseMatched": 8,
+      "anyPoseMatched": 8,
+      "procrustesProposals": 86
+    },
+    {
+      "id": "c01919",
+      "edges": 64,
+      "savedPoseMatched": 14,
+      "anyPoseMatched": 14,
+      "procrustesProposals": 82
+    },
+    {
+      "id": "c01920",
+      "edges": 64,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 82
+    },
+    {
+      "id": "c01921",
+      "edges": 64,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 86
+    },
+    {
+      "id": "c01922",
+      "edges": 64,
+      "savedPoseMatched": 10,
+      "anyPoseMatched": 12,
+      "procrustesProposals": 87
+    },
+    {
+      "id": "c01923",
+      "edges": 64,
+      "savedPoseMatched": 4,
+      "anyPoseMatched": 4,
+      "procrustesProposals": 75
+    },
+    {
+      "id": "c01924",
+      "edges": 64,
+      "savedPoseMatched": 5,
+      "anyPoseMatched": 5,
+      "procrustesProposals": 75
+    }
+  ],
+  "limits": "Positive witnesses only; no independent exhaustive pose coverage or unknown-as-impossible claim. Fixed assigned bases and developmental selected covers, not search or blind growth."
+}
