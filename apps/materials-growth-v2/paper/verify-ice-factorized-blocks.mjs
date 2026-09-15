@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
+import {readLargeJSON} from './large-json-input.mjs';
 import {createHash} from 'node:crypto';
 import {FactorizedCandidateDomain} from './factorized-candidate-domain.mjs';
 const [sourcePath,blocksPath,output]=process.argv.slice(2);
 const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
-const source=JSON.parse(readFileSync(sourcePath)),data=JSON.parse(readFileSync(blocksPath));
+const source=readLargeJSON(sourcePath),data=readLargeJSON(blocksPath);
 assert.equal(data.sourceModelHash,hash(sourcePath));assert.equal(data.models.length,source.models.length);
 const results=[];
 for(let i=0;i<data.models.length;i++){

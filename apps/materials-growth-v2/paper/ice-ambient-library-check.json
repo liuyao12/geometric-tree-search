@@ -1,0 +1,34 @@
+{
+  "scope": "Replay ambient markings against source atoms without the ambient constructor.\n\nIndependent minimum-image proposals enumerate a 5x5x5 image neighborhood\naround fractional wrapping. Checks cover the supplied bounded ice cells only,\nnot arbitrary skew-cell closest-vector completeness. Exact t uses integer halves.\n",
+  "libraryHash": "fe8d63c9cb6bd9495c32d349c645740e98f7e3de7e3ebede4965b675ac6c63e6",
+  "priorLibraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "verifierHash": "72a70b0e1b8b99d54950b82403c933718300b739178134bf9ab7f138e3723bde",
+  "verifiedCovers": 168,
+  "verifiedAssignments": 29120,
+  "checkedAtomTotals": 43680,
+  "maxCoordinateResidualAngstrom": 2.2892141885363926e-14,
+  "coverIndependentOccurrences": 10090,
+  "summary": {
+    "baseMotifs": 278,
+    "decoratedMotifs": 10090,
+    "trainingConfigurations": 100,
+    "trainingCovers": 168,
+    "distinctSelectedOccurrences": 10090,
+    "occurrencesWithCoverDependentOldMarkings": 1057,
+    "occurrencesWithCoverDependentNewMarkings": 0,
+    "verifiedTransportAssignments": 29120,
+    "ambientCloudSizeHistogram": {
+      "15": 3220,
+      "21": 2010,
+      "18": 1062,
+      "24": 1096,
+      "27": 297,
+      "30": 405,
+      "39": 97,
+      "33": 580,
+      "36": 423,
+      "42": 10
+    }
+  },
+  "limits": "Supplied-cover positive verification only. Reconstructs geometric neighbor clouds from source positions; no search, transfer, negative-rule or arbitrary-cell guarantee."
+}

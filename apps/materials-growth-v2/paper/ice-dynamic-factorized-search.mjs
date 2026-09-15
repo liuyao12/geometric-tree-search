@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {readLargeJSON} from './large-json-input.mjs';
 import {createHash} from 'node:crypto';
 import {makeFactorizedCloudSearch} from './factorized-cloud-search.mjs';
 import {DynamicFactorizedSupportSearch} from './dynamic-factorized-support.mjs';
@@ -9,12 +10,13 @@ import {CoupledEndpointSearch} from './coupled-endpoint-search.mjs';
 import {RelationalEndpointSearch} from './relational-endpoint-search.mjs';
 const [sourcePath,blocksPath,dest,indexPath,indexCheckPath,ordering='baseline',relationPath,relationCheckPath]=process.argv.slice(2),hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
 assert(['baseline','support-rich','interleaved','coupled-observed','context-relation'].includes(ordering));
-const source=JSON.parse(readFileSync(sourcePath)),data=JSON.parse(readFileSync(blocksPath));assert.equal(data.sourceModelHash,hash(sourcePath));
+const source=readLargeJSON(sourcePath),data=readLargeJSON(blocksPath);assert.equal(data.sourceModelHash,hash(sourcePath));
 const relation=ordering==='context-relation'?JSON.parse(readFileSync(relationPath)):null;
 if(relation){const check=JSON.parse(readFileSync(relationCheckPath));assert.equal(check.relationHash,hash(relationPath));assert.equal(relation.libraryHash,source.portableHash);}
 const index=indexPath?JSON.parse(readFileSync(indexPath)):null;
 if(index){const check=JSON.parse(readFileSync(indexCheckPath));assert.equal(index.blocksHash,hash(blocksPath));assert.equal(index.sourceModelHash,hash(sourcePath));assert.equal(check.indexHash,hash(indexPath));assert.equal(check.blocksHash,hash(blocksPath));}
 const sourceHashes=Object.fromEntries(['ice-dynamic-factorized-search.mjs','dynamic-factorized-support.mjs','factorized-cloud-search.mjs','factorized-point-state.mjs','factorized-point-search.mjs','factorized-candidate-domain.mjs','portable-cloud-filter.mjs'].map(n=>[n,hash(new URL(n,import.meta.url))]));
+sourceHashes.largeJSONInput=hash(new URL('large-json-input.mjs',import.meta.url));
 if(index){sourceHashes.partnerIndex=hash(indexPath);sourceHashes.partnerIndexCheck=hash(indexCheckPath);}
 sourceHashes.supportOrdering=hash(new URL('support-ordered-factorized-search.mjs',import.meta.url));
 sourceHashes.interleavedOrdering=hash(new URL('interleaved-factorized-search.mjs',import.meta.url));
