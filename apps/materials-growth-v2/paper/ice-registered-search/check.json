@@ -1,0 +1,43 @@
+{
+  "sourceHashes": {
+    "coordinates.json": "54e5fc81f08df313c42cd8520adfea3a900ed2488af81c96a63753f99fd8bb6b",
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "gcts-ice-gaussian-registered-model-v1.json": "051bad0c4378b374302869ed2323e3ad8421f583948d4abbe53cb8d80a953df2",
+    "summary.json": "75cd0c5332423269ad858fbc6a9c766c3183e7980103100161edeb827e7d1147"
+  },
+  "verifierHash": "435d2ba3a562165f97925ffa24751bab1d40ab8d5d2e51aeb507b29ada4d3d54",
+  "results": [
+    {
+      "id": "c01400",
+      "enabled": false,
+      "selectedPlacements": 44,
+      "complete": false,
+      "filledAtoms": 117,
+      "halfFilledAtoms": 30,
+      "untouchedAtoms": 93,
+      "supportComponents": 6,
+      "maxPositionErrorAngstrom": 0.1489892069128073,
+      "checkedFieldPairs": 39,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 1.1381394601903028
+    },
+    {
+      "id": "c01400",
+      "enabled": true,
+      "selectedPlacements": 44,
+      "complete": false,
+      "filledAtoms": 117,
+      "halfFilledAtoms": 30,
+      "untouchedAtoms": 93,
+      "supportComponents": 6,
+      "maxPositionErrorAngstrom": 0.1489892069128073,
+      "checkedFieldPairs": 39,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 1.1381394601903028
+    }
+  ],
+  "limits": "Independent numerical replay of selected geometry, integer t, field assignments and connectivity counts. No proof of complete registration enumeration, runtime graph/scheduling, absence of solutions on failure, complete continuous-space growth or same-condition provenance."
+}
