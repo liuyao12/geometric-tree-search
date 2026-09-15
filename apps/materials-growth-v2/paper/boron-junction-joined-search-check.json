@@ -1,0 +1,48 @@
+{
+  "scope": "Rebuild base candidates and verify final implicit-junction marking lifts.",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "connectionHash": "47942577a956570ccf65f8e88b7fd11559ed65db890a6b6b15e0cddddc6863f9",
+  "summaryHash": "d857741870c1a286bb3ffaeb27bd25471d40d97130184647a2cf682d6fe60484",
+  "checks": [
+    {
+      "file": "beta-B106.cif",
+      "connectionMode": "learned-connections",
+      "complete": false,
+      "selected": 3007,
+      "positiveSupportComponents": null,
+      "coupledConnectionsChecked": 0,
+      "junctionLiftsChecked": 1350,
+      "filledPoints": 2740
+    },
+    {
+      "file": "beta-B106.cif",
+      "connectionMode": "uncoupled",
+      "complete": false,
+      "selected": 2890,
+      "positiveSupportComponents": null,
+      "coupledConnectionsChecked": 0,
+      "junctionLiftsChecked": 1350,
+      "filledPoints": 2661
+    },
+    {
+      "file": "tau-B106.cif",
+      "connectionMode": "learned-connections",
+      "complete": true,
+      "selected": 5400,
+      "positiveSupportComponents": 1,
+      "coupledConnectionsChecked": 4266,
+      "junctionLiftsChecked": 2052,
+      "filledPoints": 5724
+    },
+    {
+      "file": "tau-B106.cif",
+      "connectionMode": "uncoupled",
+      "complete": true,
+      "selected": 5400,
+      "positiveSupportComponents": 1,
+      "coupledConnectionsChecked": 0,
+      "junctionLiftsChecked": 2052,
+      "filledPoints": 5724
+    }
+  ]
+}

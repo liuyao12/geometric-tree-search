@@ -1,0 +1,151 @@
+{
+  "scope": "Explicit scalar junction labels with learned class-pair connection restrictions; all recorded fillings lifted and checked by the native point-value verifier.",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "connectionHash": "47942577a956570ccf65f8e88b7fd11559ed65db890a6b6b15e0cddddc6863f9",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "baseCandidates": 108,
+      "markedVariants": 108,
+      "excludedCombinations": 0,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 108,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 108,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 108,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "baseCandidates": 1458,
+      "markedVariants": 1458,
+      "excludedCombinations": 0,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 1458,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 1458,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 1458,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "file": "beta-B106.cif",
+      "baseCandidates": 4779,
+      "markedVariants": 48348,
+      "excludedCombinations": 63594,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 3186,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 3175,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 3166,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "baseCandidates": 486,
+      "markedVariants": 486,
+      "excludedCombinations": 0,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 324,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 324,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 324,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "baseCandidates": 2916,
+      "markedVariants": 2916,
+      "excludedCombinations": 0,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 2916,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 2916,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 2916,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "file": "tau-B106.cif",
+      "baseCandidates": 7884,
+      "markedVariants": 21663,
+      "excludedCombinations": 18945,
+      "lifted": [
+        {
+          "name": "original",
+          "selected": 5427,
+          "complete": true
+        },
+        {
+          "name": "alternative-101",
+          "selected": 5417,
+          "complete": true
+        },
+        {
+          "name": "alternative-202",
+          "selected": 5412,
+          "complete": true
+        },
+        {
+          "name": "reference-search-witness",
+          "selected": 5400,
+          "complete": true
+        }
+      ]
+    }
+  ]
+}

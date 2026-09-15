@@ -1,0 +1,51 @@
+{
+  "scope": "Check joint-neighborhood source provenance, proper rotations and training coverage.\n\nChecks every retained witness, not completeness of approximate registration.\nRebuilds coordinates without using the learner's geometry construction code.\n",
+  "joinedHash": "47942577a956570ccf65f8e88b7fd11559ed65db890a6b6b15e0cddddc6863f9",
+  "sourceFitsChecked": 42332,
+  "targetFitsChecked": 65394,
+  "maxResidualAngstrom": 0.02999134560936395,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "classOnlyStatePairs": 0,
+      "jointGeometryStatePairs": 0,
+      "trainingConnectionsChecked": 0,
+      "templateMediatedCrossConfigurationWitnesses": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "classOnlyStatePairs": 0,
+      "jointGeometryStatePairs": 0,
+      "trainingConnectionsChecked": 0,
+      "templateMediatedCrossConfigurationWitnesses": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "classOnlyStatePairs": 49464,
+      "jointGeometryStatePairs": 47025,
+      "trainingConnectionsChecked": 8312,
+      "templateMediatedCrossConfigurationWitnesses": 54
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "classOnlyStatePairs": 0,
+      "jointGeometryStatePairs": 0,
+      "trainingConnectionsChecked": 0,
+      "templateMediatedCrossConfigurationWitnesses": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "classOnlyStatePairs": 0,
+      "jointGeometryStatePairs": 0,
+      "trainingConnectionsChecked": 0,
+      "templateMediatedCrossConfigurationWitnesses": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "classOnlyStatePairs": 18792,
+      "jointGeometryStatePairs": 18369,
+      "trainingConnectionsChecked": 12854,
+      "templateMediatedCrossConfigurationWitnesses": 207
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "scope": "Independently rebuild observed class relations and compiled state-pair tables.",
+  "connectionHash": "b88c52fa1ef4debd6e6f27fc80b953e5565b249b0887ba85fd728534aec582cd",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "rulesVerified": 3784,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "coupledEdges": 0,
+      "uncoupledPresentStatePairs": 0,
+      "learnedPresentStatePairs": 0,
+      "excludedStateCombinations": 0,
+      "trainingConnectionsVerified": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "coupledEdges": 0,
+      "uncoupledPresentStatePairs": 0,
+      "learnedPresentStatePairs": 0,
+      "excludedStateCombinations": 0,
+      "trainingConnectionsVerified": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "coupledEdges": 3888,
+      "uncoupledPresentStatePairs": 110619,
+      "learnedPresentStatePairs": 49464,
+      "excludedStateCombinations": 61155,
+      "trainingConnectionsVerified": 8312
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "coupledEdges": 0,
+      "uncoupledPresentStatePairs": 0,
+      "learnedPresentStatePairs": 0,
+      "excludedStateCombinations": 0,
+      "trainingConnectionsVerified": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "coupledEdges": 0,
+      "uncoupledPresentStatePairs": 0,
+      "learnedPresentStatePairs": 0,
+      "excludedStateCombinations": 0,
+      "trainingConnectionsVerified": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "coupledEdges": 5724,
+      "uncoupledPresentStatePairs": 37314,
+      "learnedPresentStatePairs": 18792,
+      "excludedStateCombinations": 18522,
+      "trainingConnectionsVerified": 12854
+    }
+  ],
+  "limits": "Checks algebraic compilation and provenance; geometric fits are separately checked by verify-boron-junctions.py."
+}

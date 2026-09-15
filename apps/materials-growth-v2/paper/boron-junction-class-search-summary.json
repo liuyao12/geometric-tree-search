@@ -1,0 +1,147 @@
+{
+  "scope": "Same bitset implementation, base pool, junction library, generation-tie policy and budget; uncoupled versus learned class-pair compatibility. Both are in-sample restricted models, not blind growth.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "connectionHash": "b88c52fa1ef4debd6e6f27fc80b953e5565b249b0887ba85fd728534aec582cd",
+  "sourceHashes": {
+    "boron-junction-connection-search.mjs": "24d18151b631ec0b27f8ee1f516f4baabec4bcbc00c6e739d7cbc10b6b4356ed",
+    "junction-mandatory-order.mjs": "6a6baa340bf643549c05c231c69a83955cf077d448e5688227593ec303ce37f9",
+    "junction-connection-filter.mjs": "ea3df7a02a435e166127472d573ca2cd8315411a39eafe59aaa92b4926b9b535",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "connectionMode": "uncoupled",
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 3714,
+      "steps": 19970,
+      "seconds": 100.065140292,
+      "compileSeconds": 0.187420417,
+      "setupSeconds": 0.11014166700000004,
+      "connectionDiagnostics": {
+        "rebuilds": 25873,
+        "arcChecks": 247605818,
+        "stateTests": 525507257,
+        "removed": 33944077
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 14068,
+        "accepted": 14068,
+        "forced": 6408,
+        "branches": 7660,
+        "backtracks": 5902,
+        "eliminated": 3320088,
+        "checks": 158570570
+      },
+      "selected": 2901,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "connectionMode": "learned-connections",
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 3774,
+      "steps": 19769,
+      "seconds": 100.04010004199999,
+      "compileSeconds": 0.1566457079999964,
+      "setupSeconds": 0.12963804200000595,
+      "connectionDiagnostics": {
+        "rebuilds": 25013,
+        "arcChecks": 239485670,
+        "stateTests": 369850307,
+        "removed": 33526528
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 14526,
+        "accepted": 14526,
+        "forced": 7441,
+        "branches": 7085,
+        "backtracks": 5243,
+        "eliminated": 665563,
+        "checks": 154033981
+      },
+      "selected": 3124,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": true,
+      "connectionMode": "uncoupled",
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 2473,
+      "steps": 5401,
+      "seconds": 45.675464000000005,
+      "compileSeconds": 0.36309879199997525,
+      "setupSeconds": 0.12747508299999755,
+      "connectionDiagnostics": {
+        "rebuilds": 5401,
+        "arcChecks": 65340097,
+        "stateTests": 169344968,
+        "removed": 6450656
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 5400,
+        "accepted": 5400,
+        "forced": 2555,
+        "branches": 2845,
+        "backtracks": 0,
+        "eliminated": 1803698,
+        "checks": 49494812
+      },
+      "selected": 5400,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": true,
+      "connectionMode": "learned-connections",
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 2476,
+      "steps": 5401,
+      "seconds": 46.030373165999976,
+      "compileSeconds": 0.3593291249999893,
+      "setupSeconds": 0.12805137500001001,
+      "connectionDiagnostics": {
+        "rebuilds": 5401,
+        "arcChecks": 63847353,
+        "stateTests": 156014054,
+        "removed": 6505363
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 5400,
+        "accepted": 5400,
+        "forced": 2560,
+        "branches": 2840,
+        "backtracks": 0,
+        "eliminated": 1857370,
+        "checks": 49549519
+      },
+      "selected": 5400,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    }
+  ]
+}
