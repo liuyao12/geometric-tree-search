@@ -1,0 +1,497 @@
+{
+  "manifest": {
+    "policy": "coupled-observed",
+    "phases": [
+      "Ih",
+      "II",
+      "VI"
+    ],
+    "budgetSecondsPerFrame": 30,
+    "parentManifestHash": "b074270c1dccee34adf15248dcbb5bc27482c9e3db32443d3b5d3256576c8f32",
+    "configurations": [
+      {
+        "id": "c00000",
+        "phase": "Ih",
+        "split": "train",
+        "sourceFile": "Ih-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "ecbce8c886e7138d8260ce8cbc846567c110aef820af3ad3913dfe24231d3f6a",
+        "geometrySha256": "87ebfeeec64136f2fb196a1aa76100c21a9f6a5da1f6d8b8a7245413a9af5a7a",
+        "shuffleSeed": 3400208584485070931,
+        "atoms": 384,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00400",
+        "phase": "Ih",
+        "split": "test",
+        "sourceFile": "Ih-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "7518664a20d821c6788cba562a2613fa3c263a71f8895c04fd7046c4b57fcd24",
+        "geometrySha256": "6234e225ba1de1c393c6e0254afbd648c165c3f0bfe29ef3f6278ab5cdc1ba9c",
+        "shuffleSeed": 3674121558504636409,
+        "atoms": 384,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00500",
+        "phase": "II",
+        "split": "train",
+        "sourceFile": "II-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "9c92763a8c2b7c2f381f457861df1e8a8aed89005c6e2263091d589d0b8f557e",
+        "geometrySha256": "736480455a15dc6d941a47108ac659036201599d5a3bef1e6f533be52b1c668c",
+        "shuffleSeed": 15038560974236732112,
+        "atoms": 288,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00900",
+        "phase": "II",
+        "split": "test",
+        "sourceFile": "II-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "6126a8706069834b8cd34888e0865dac2bbd32d7481a76893bc93f886abd8914",
+        "geometrySha256": "24615a275f41042d99e8d7740c2e1659a378ccc1fd6aa69582b4d94d174fddfc",
+        "shuffleSeed": 5421597858388322292,
+        "atoms": 288,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c01000",
+        "phase": "VI",
+        "split": "train",
+        "sourceFile": "VI-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "d18f5a67e9ced537377445d7d190c2909112c1e3bef10c60d6a2e202d4575265",
+        "geometrySha256": "679d9dbb7abeed37094f4c2e8bc9a2cc735e260234d5b49ca8b21ee3dca5e425",
+        "shuffleSeed": 6245467879085846415,
+        "atoms": 240,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c01400",
+        "phase": "VI",
+        "split": "test",
+        "sourceFile": "VI-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "5b76d17d5f78aaad77ebb15233fe6559ee92873e54e31aebfae22efbea8224c6",
+        "geometrySha256": "8ea2f9b0aee30b67dcee569190d7e0c78af4dfb7b8f7617fd0d21be710ed9ad7",
+        "shuffleSeed": 5883580401000718550,
+        "atoms": 240,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      }
+    ],
+    "orderingHash": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917",
+    "scope": "Restricted learned hypothesis retaining only paired endpoint source observations. Not equivalent to factorized model. Same finite registrations, half t values and reference scheduler; no training-cover or oracle-answer replay. Developmental comparison, not blind validation."
+  },
+  "results": [
+    {
+      "phase": "Ih",
+      "split": "training",
+      "result": {
+        "file": "c00000",
+        "fold": 0,
+        "setupSeconds": 0.5119165840000001,
+        "seconds": 1.215647083,
+        "steps": 129,
+        "selected": 128,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 128,
+        "stats": {
+          "attempts": 128,
+          "accepted": 128,
+          "forced": 67,
+          "branches": 61,
+          "backtracks": 0
+        },
+        "supportStats": {
+          "refreshes": 130,
+          "passes": 570,
+          "pairChecks": 418449,
+          "removed": 70803
+        },
+        "cloudStats": {
+          "checks": 1774300,
+          "hits": 1696947,
+          "evictions": 0
+        },
+        "status": "complete-awaiting-independent-verification",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.021952416999999967
+      },
+      "independentCheck": {
+        "file": "c00000",
+        "fold": 0,
+        "selected": 128,
+        "complete": true,
+        "verifiedAssignments": 256,
+        "commonValues": 128,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [
+          "original"
+        ],
+        "runHash": "b6bf681bb38ec3145d6164b35237a7c7b17deb8de742baa3aacdeec6a77a1db6"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+        "partnerIndexCheck": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "38dcbf9db7f1117ab40114abd9a4b28f79c7943f39c7796fa0f61bed7361ed35"
+    },
+    {
+      "phase": "Ih",
+      "split": "developmental",
+      "result": {
+        "file": "c00400",
+        "fold": 1,
+        "setupSeconds": 0.4816829580000003,
+        "seconds": 0.016687208000000283,
+        "steps": 1,
+        "selected": 0,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 0,
+        "stats": {
+          "attempts": 0,
+          "accepted": 0,
+          "forced": 0,
+          "branches": 0,
+          "backtracks": 0
+        },
+        "supportStats": {
+          "refreshes": 3,
+          "passes": 19,
+          "pairChecks": 50402,
+          "removed": 2702
+        },
+        "cloudStats": {
+          "checks": 50402,
+          "hits": 11913,
+          "evictions": 0
+        },
+        "status": "exhausted-finite-pool",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.015907208999999967
+      },
+      "independentCheck": {
+        "file": "c00400",
+        "fold": 1,
+        "selected": 0,
+        "complete": false,
+        "verifiedAssignments": 0,
+        "commonValues": 0,
+        "positiveSupportComponents": 0,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "27e38dd62c7f07cc4f0dce212c99cccb2d65ca672e41370212bbdd11ca12cd00"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+        "partnerIndexCheck": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "38dcbf9db7f1117ab40114abd9a4b28f79c7943f39c7796fa0f61bed7361ed35"
+    },
+    {
+      "phase": "II",
+      "split": "training",
+      "result": {
+        "file": "c00500",
+        "fold": 0,
+        "setupSeconds": 0.549952792,
+        "seconds": 30.007912875,
+        "steps": 430,
+        "selected": 40,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 44,
+        "stats": {
+          "attempts": 430,
+          "accepted": 430,
+          "forced": 181,
+          "branches": 125,
+          "backtracks": 221
+        },
+        "supportStats": {
+          "refreshes": 653,
+          "passes": 3761,
+          "pairChecks": 12315463,
+          "removed": 1284056
+        },
+        "cloudStats": {
+          "checks": 17216579,
+          "hits": 17107375,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.16329679199999736
+      },
+      "independentCheck": {
+        "file": "c00500",
+        "fold": 0,
+        "selected": 40,
+        "complete": false,
+        "verifiedAssignments": 80,
+        "commonValues": 44,
+        "positiveSupportComponents": 4,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "909a38ffb019b609bd044770bdb97ee8c8a97b0808da10cb8ed7e03943350983"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+        "partnerIndexCheck": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "f61b3c9cb3083ac0eff841744851c1f4d70383947e5b86f046f2539017fb9c96"
+    },
+    {
+      "phase": "II",
+      "split": "developmental",
+      "result": {
+        "file": "c00900",
+        "fold": 1,
+        "setupSeconds": 0.3305550839999996,
+        "seconds": 0.06691591700000209,
+        "steps": 1,
+        "selected": 0,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 0,
+        "stats": {
+          "attempts": 0,
+          "accepted": 0,
+          "forced": 0,
+          "branches": 0,
+          "backtracks": 0
+        },
+        "supportStats": {
+          "refreshes": 3,
+          "passes": 15,
+          "pairChecks": 84142,
+          "removed": 3450
+        },
+        "cloudStats": {
+          "checks": 84142,
+          "hits": 62708,
+          "evictions": 0
+        },
+        "status": "exhausted-finite-pool",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.06467612500000178
+      },
+      "independentCheck": {
+        "file": "c00900",
+        "fold": 1,
+        "selected": 0,
+        "complete": false,
+        "verifiedAssignments": 0,
+        "commonValues": 0,
+        "positiveSupportComponents": 0,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "290fd89fc8c299059e88ec567c1802edd0bd63b90bbf89edf18c8ee1c30463f7"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+        "partnerIndexCheck": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "f61b3c9cb3083ac0eff841744851c1f4d70383947e5b86f046f2539017fb9c96"
+    },
+    {
+      "phase": "VI",
+      "split": "training",
+      "result": {
+        "file": "c01000",
+        "fold": 0,
+        "setupSeconds": 0.22516712500000005,
+        "seconds": 0.9671441250000001,
+        "steps": 81,
+        "selected": 80,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 80,
+        "stats": {
+          "attempts": 80,
+          "accepted": 80,
+          "forced": 32,
+          "branches": 48,
+          "backtracks": 0
+        },
+        "supportStats": {
+          "refreshes": 82,
+          "passes": 304,
+          "pairChecks": 519011,
+          "removed": 44234
+        },
+        "cloudStats": {
+          "checks": 981311,
+          "hits": 951297,
+          "evictions": 0
+        },
+        "status": "complete-awaiting-independent-verification",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.04128654200000005
+      },
+      "independentCheck": {
+        "file": "c01000",
+        "fold": 0,
+        "selected": 80,
+        "complete": true,
+        "verifiedAssignments": 160,
+        "commonValues": 80,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [
+          "original"
+        ],
+        "runHash": "3584e27cb064ff5cf450c145e78a61fc1a230f435b32ba138a30ad494d6ad1aa"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+        "partnerIndexCheck": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "1544a4109c977d3a173036dd14eb22f8cafb8fdfed6de7d37aa468a8fb3b2671"
+    },
+    {
+      "phase": "VI",
+      "split": "developmental",
+      "result": {
+        "file": "c01400",
+        "fold": 1,
+        "setupSeconds": 0.18899424999999997,
+        "seconds": 0.03615583300000003,
+        "steps": 1,
+        "selected": 0,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 0,
+        "stats": {
+          "attempts": 0,
+          "accepted": 0,
+          "forced": 0,
+          "branches": 0,
+          "backtracks": 0
+        },
+        "supportStats": {
+          "refreshes": 3,
+          "passes": 13,
+          "pairChecks": 55841,
+          "removed": 1892
+        },
+        "cloudStats": {
+          "checks": 55841,
+          "hits": 43953,
+          "evictions": 0
+        },
+        "status": "exhausted-finite-pool",
+        "ordering": "coupled-observed",
+        "modelRestriction": "Only endpoint pairs with equal sourceCandidate identity; learned restricted hypothesis, not redundant factorized pruning.",
+        "rootRollback": true,
+        "undoSeconds": 0.036877040999999965
+      },
+      "independentCheck": {
+        "file": "c01400",
+        "fold": 1,
+        "selected": 0,
+        "complete": false,
+        "verifiedAssignments": 0,
+        "commonValues": 0,
+        "positiveSupportComponents": 0,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "b598af3d289fdf020c03e34096ec3c1e31165f11847eb490f7a03fd1f654580c"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "d3121a3011436f68be906074be581407fbe2607dcd2b574c6995e7fabd016e50",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+        "partnerIndexCheck": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+        "coupledModel": "86e379c15a850137ecba120fca625ddb3d852d59bbb463d3658781527c364917"
+      },
+      "checkHash": "1544a4109c977d3a173036dd14eb22f8cafb8fdfed6de7d37aa468a8fb3b2671"
+    }
+  ],
+  "completeRuns": 2
+}

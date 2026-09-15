@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import {makeFactorizedCloudSearch} from './factorized-cloud-search.mjs';
 import {DynamicFactorizedSupportSearch} from './dynamic-factorized-support.mjs';
 import {InterleavedFactorizedSearch} from './interleaved-factorized-search.mjs';
-const Engine=process.argv.includes('--interleaved')?InterleavedFactorizedSearch:DynamicFactorizedSupportSearch;
+import {CoupledEndpointSearch} from './coupled-endpoint-search.mjs';
+const Engine=process.argv.includes('--coupled')?CoupledEndpointSearch:process.argv.includes('--interleaved')?InterleavedFactorizedSearch:DynamicFactorizedSupportSearch;
 const cloud=(x,reverse=false)=>({colors:[[0],[0]],vectors:reverse?[[1+x,0,0],[x,0,0]]:[[x,0,0],[1+x,0,0]]});
 const model={capacity:2,cloudRadius:.1,required:['a','b'],blocks:[0,1].map(i=>({id:String(i),inventory:String(i),t:[{point:'a',value:1},{point:'b',value:1}],markPoints:['a','b'],endpointChoices:[[{cloud:i}],[{cloud:i}]]}))};
 const build=pool=>makeFactorizedCloudSearch(model,pool,{Engine});
@@ -18,4 +19,4 @@ const bad=makeFactorizedCloudSearch({...model,cloudRadius:0},crossed,{Engine});a
 const guarded=build([cloud(0),cloud(.20000000015)]);
 assert(guarded.blocks.every(b=>b.domain.count===1n));guarded.advance();guarded.advance();assert.equal(guarded.advance().kind,'unknown');assert.notEqual(guarded.status,'exhausted');
 assert.throws(()=>makeFactorizedCloudSearch({...model,capacity:1},[cloud(0),cloud(0)],{Engine}),/half-weight/);
-console.log(JSON.stringify({interleaved:Engine===InterleavedFactorizedSearch,permutedCloudCompletion:true,rootRollback:true,signatureFalsePositiveRejected:true,twoSidedGuardPreserved:true,unknownNotPruned:true,invalidCapacityRejected:true}));
+console.log(JSON.stringify({coupled:Engine===CoupledEndpointSearch,interleaved:Engine===InterleavedFactorizedSearch,permutedCloudCompletion:true,rootRollback:true,signatureFalsePositiveRejected:true,twoSidedGuardPreserved:true,unknownNotPruned:true,invalidCapacityRejected:true}));

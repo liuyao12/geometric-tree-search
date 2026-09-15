@@ -15,6 +15,8 @@ for row in data['models']:
     for choice in run['selected']:
         assert isinstance(choice['index'],int) and 0<=choice['index']<len(row['blocks'])
         b=row['blocks'][choice['index']]
+        if run['result'].get('ordering')=='coupled-observed':
+            assert b['endpointChoices'][0][choice['left']]['sourceCandidate']==b['endpointChoices'][1][choice['right']]['sourceCandidate'], 'Unobserved endpoint pairing'
         assert b['id']==choice['block'] and b['inventory'] not in owners
         owners.add(b['inventory'])
         expected='/'.join(f'{x:016d}' for x in (choice['index'],choice['left'],choice['right']))
