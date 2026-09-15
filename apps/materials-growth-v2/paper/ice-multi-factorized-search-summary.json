@@ -1,0 +1,68 @@
+{
+  "scope": "Full Cartesian endpoint markings in a finite registered ice pool; global dead/forced/earliest-generation search. Thirty-second search budget per frame; setup and final audits separate. No training selection supplied to search.",
+  "sourceModelHash": "cf64e69dd65366e69275174fc9e52d66daea52a53c2a1b8da1723aaaabea4631",
+  "blocksHash": "402aa0ec767272636d70d153878217fe865a80ee907ff766cb80c2da0a8aa0bb",
+  "sourceHashes": {
+    "ice-factorized-search.mjs": "7252a82cd554ee76a2d19758803f275fd8c74802d66d9a03271ea888d790c572",
+    "factorized-cloud-search.mjs": "63319115bea72ae740b73c5453689c19b330ccd5ea68c4c3f3fc07fc821f94f8",
+    "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+    "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+    "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef"
+  },
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "setupSeconds": 0.14290854200000014,
+      "seconds": 30.013164708,
+      "steps": 1802,
+      "stats": {
+        "attempts": 1802,
+        "accepted": 1802,
+        "forced": 0,
+        "branches": 9,
+        "backtracks": 1793
+      },
+      "cloudStats": {
+        "checks": 12860837,
+        "hits": 10149315,
+        "evictions": 13
+      },
+      "selected": 9,
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 10,
+      "status": "budget-unknown",
+      "rootRollback": true,
+      "finalAuditSeconds": 0.2862650839999987
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "setupSeconds": 0.0502321660000016,
+      "seconds": 30.018130084,
+      "steps": 1169,
+      "stats": {
+        "attempts": 1169,
+        "accepted": 1169,
+        "forced": 0,
+        "branches": 9,
+        "backtracks": 1160
+      },
+      "cloudStats": {
+        "checks": 6573239,
+        "hits": 3820136,
+        "evictions": 13
+      },
+      "selected": 9,
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 10,
+      "status": "budget-unknown",
+      "rootRollback": true,
+      "finalAuditSeconds": 0.25329966699999934
+    }
+  ],
+  "limits": "Shared numerical cloud predicates in runtime audits. Independent witness replay pending. No continuous-pose completeness, negative specificity, condition-matched provenance or blind growth claim."
+}
