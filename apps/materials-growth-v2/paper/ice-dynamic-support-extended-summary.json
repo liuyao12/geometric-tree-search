@@ -1,0 +1,38 @@
+{
+  "scope": "Same finite registered variant pool and shared-placement inventory; scalar-only versus portable cloud constraints. Pairwise-disjointness relaxation feeds the reference-order frontier; common cloud values are required to certify completion. Not a complete continuous-pose search.",
+  "modelHash": "f6f0dec000bc423c7fefca5856fc305450f8c8e1effd4cfd97797b7b268c6f63",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "sourceHashes": {
+    "ice-dynamic-support-extended.mjs": "68bec75fb675d3294559300354bf479348f5de81293dbaa3f6b70bb0501eb31a",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "dynamic-half-support.mjs": "fc77b1bb0824c8d98c584fd1673b3084731d338e4f48a4937c6a95c8c8f7295c"
+  },
+  "results": [
+    {
+      "fold": 0,
+      "file": "c01500",
+      "enabled": true,
+      "maxSeconds": 300,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.13691162499999995,
+      "seconds": 300.03847325000004,
+      "steps": 21223,
+      "stats": {
+        "attempts": 21223,
+        "accepted": 21223,
+        "forced": 7182,
+        "branches": 5571,
+        "backtracks": 14015,
+        "eliminated": 57545209,
+        "checks": 388677874
+      },
+      "selected": 36,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 38,
+      "rootRollback": true
+    }
+  ]
+}
