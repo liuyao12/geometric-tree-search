@@ -1,0 +1,8 @@
+{
+  "profileHash": "4ed81a4d4f65ec4bdadd56a0813b288ba38c74c2ace740a3675e6aa38ed25496",
+  "modelHash": "051bad0c4378b374302869ed2323e3ad8421f583948d4abbe53cb8d80a953df2",
+  "verifierHash": "37c6861e1cef50182795309910f7d40f2bc2faaf2cdcd9a42ad7d34c4f65ff92",
+  "geometryGroups": 2,
+  "checkedWitnesses": 4,
+  "limits": "Verifies saved dead-point certificates independent of markings; does not independently replay aggregate visit counts or prove all marked states with the same geometry are equivalent."
+}
