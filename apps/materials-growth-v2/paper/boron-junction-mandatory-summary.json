@@ -1,0 +1,126 @@
+{
+  "scope": "Fixed observed poses and all-root target; original marked model versus implicit learned junction markings. Restricted hypothesis; not guaranteed solution-set equivalence or blind growth.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "sourceHashes": {
+    "boron-junction-mandatory-search.mjs": "a2a47c38970938de7f8dbe41dac05c2bbb66ff31244aa7988d7e689029892608",
+    "junction-mandatory-order.mjs": "6a6baa340bf643549c05c231c69a83955cf077d448e5688227593ec303ce37f9",
+    "junction-marking-arc-filter.mjs": "bd67add0e4a5320b0ad01183bdd3d65bfdd0ed3e738aef33a504032d5ab65e44",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": false,
+      "ordering": "candidate-count/id",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 0,
+      "steps": 536500,
+      "seconds": 100.0238895,
+      "setupSeconds": 0.06046020800000002,
+      "junctionDiagnostics": null,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 366232,
+        "accepted": 366232,
+        "forced": 195713,
+        "branches": 170519,
+        "backtracks": 170268,
+        "eliminated": 175880,
+        "checks": 35822129
+      },
+      "selected": 764,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 3004,
+      "steps": 14932,
+      "seconds": 100.05819491599999,
+      "setupSeconds": 0.09471312499999476,
+      "junctionDiagnostics": {
+        "rebuilds": 19100,
+        "stateTests": 227529818,
+        "removed": 7724764
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 10765,
+        "accepted": 10765,
+        "forced": 4850,
+        "branches": 5915,
+        "backtracks": 4167,
+        "eliminated": 2463906,
+        "checks": 99740837
+      },
+      "selected": 2873,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": false,
+      "ordering": "candidate-count/id",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 0,
+      "steps": 337400,
+      "seconds": 100.04586162499999,
+      "setupSeconds": 0.09620645800000056,
+      "junctionDiagnostics": null,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 234058,
+        "accepted": 234058,
+        "forced": 130288,
+        "branches": 103770,
+        "backtracks": 103342,
+        "eliminated": 119816,
+        "checks": 32938548
+      },
+      "selected": 1780,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": true,
+      "ordering": "generation-tie mandatory preference",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "mandatoryPreferencePlacements": 2473,
+      "steps": 5401,
+      "seconds": 57.62371887500002,
+      "setupSeconds": 0.13193383400002495,
+      "junctionDiagnostics": {
+        "rebuilds": 5401,
+        "stateTests": 57357970,
+        "removed": 1802554
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 5400,
+        "accepted": 5400,
+        "forced": 2555,
+        "branches": 2845,
+        "backtracks": 0,
+        "eliminated": 1803698,
+        "checks": 44846710
+      },
+      "selected": 5400,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    }
+  ]
+}

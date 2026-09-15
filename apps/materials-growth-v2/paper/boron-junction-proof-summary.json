@@ -1,0 +1,46 @@
+{
+  "scope": "Fixed observed poses and all-root target; original marked model versus implicit learned junction markings. Restricted hypothesis; not guaranteed solution-set equivalence or blind growth.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "sourceHashes": {
+    "boron-junction-proof-search.mjs": "ae7a50cfb4af4fdde8776380f57ac9f1dbbc9dcd56bb2143167045b237106412",
+    "junction-required-backjump.mjs": "63a1e450da7a79a4794d40b0afa1c44967c12e83f6fbc5d3773aedb58e1942e1",
+    "junction-mandatory-order.mjs": "6a6baa340bf643549c05c231c69a83955cf077d448e5688227593ec303ce37f9",
+    "junction-marking-arc-filter.mjs": "bd67add0e4a5320b0ad01183bdd3d65bfdd0ed3e738aef33a504032d5ab65e44",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "ordering": "generation-tie mandatory preference with verified parent pruning",
+      "maxSteps": 1000000,
+      "maxSeconds": 100,
+      "requiredParentPrunes": 1404,
+      "mandatoryPreferencePlacements": 2700,
+      "steps": 11420,
+      "seconds": 100.038690875,
+      "setupSeconds": 0.093478375,
+      "junctionDiagnostics": {
+        "rebuilds": 14854,
+        "stateTests": 174685401,
+        "removed": 3950802
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 9391,
+        "accepted": 9391,
+        "forced": 4211,
+        "branches": 5180,
+        "backtracks": 3433,
+        "eliminated": 1392777,
+        "checks": 75506602
+      },
+      "selected": 2873,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    }
+  ]
+}

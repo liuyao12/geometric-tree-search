@@ -1,0 +1,26 @@
+{
+  "scope": "Compare a verified finite search filling with supplied training decompositions.\n\nThis measures placement-set novelty on unchanged coordinates, not a new material.\n",
+  "runHash": "470b56dea168c749781379dfff87434de54f70ac94bec7576e610d963630e836",
+  "learningHash": "6acf725fd0528c8a9c351bf75c9d2ea0ec274bf47857d332492ebf240c3f9993",
+  "alternativeHash": "ccd081848e76927e429953c544d5fd2cdbcbfc6d4fcbd242c268a7751a457cd1",
+  "file": "tau-B106.cif",
+  "selected": 5400,
+  "comparisons": [
+    {
+      "trainingRecord": "original",
+      "placements": 5427,
+      "symmetricDifference": 967
+    },
+    {
+      "trainingRecord": "alternative-101",
+      "placements": 5417,
+      "symmetricDifference": 819
+    },
+    {
+      "trainingRecord": "alternative-202",
+      "placements": 5412,
+      "symmetricDifference": 830
+    }
+  ],
+  "differentFromEveryTrainingRecord": true
+}

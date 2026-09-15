@@ -1,0 +1,16 @@
+{
+  "scope": "Rebuild base candidates and verify final implicit-junction marking lifts.",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "summaryHash": "16689e2f0b1d22c472f17b0dc3d38585849086a7492a20c00aa55c2c8c5fe5a3",
+  "checks": [
+    {
+      "file": "beta-B106.cif",
+      "junction": true,
+      "complete": false,
+      "selected": 2897,
+      "positiveSupportComponents": null,
+      "junctionLiftsChecked": 1350,
+      "filledPoints": 2668
+    }
+  ]
+}
