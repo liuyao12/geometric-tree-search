@@ -1,0 +1,46 @@
+{
+  "scope": "Independent fixed-pool and final-state checks for the portable ice search.",
+  "modelHash": "26d0c7f51fdcdb7406fc2409b891a4de5c54ae1c01b9e025c082ec07cf552a14",
+  "portableHash": "f3c3e8162971c2d73b88ef1b58499b58bb707bee7349346c6ef3b8c6ac50a955",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "registeredCandidatesChecked": 107555,
+  "results": [
+    {
+      "id": "c01500",
+      "enabled": false,
+      "status": "verified finite registered filling",
+      "selected": 64,
+      "complete": true,
+      "positiveSupportComponents": 3,
+      "verifiedCommonValues": 0
+    },
+    {
+      "id": "c01500",
+      "enabled": true,
+      "status": "budget-unknown",
+      "selected": 33,
+      "complete": false,
+      "positiveSupportComponents": null,
+      "verifiedCommonValues": 34
+    },
+    {
+      "id": "c01900",
+      "enabled": false,
+      "status": "budget-unknown",
+      "selected": 63,
+      "complete": false,
+      "positiveSupportComponents": null,
+      "verifiedCommonValues": 0
+    },
+    {
+      "id": "c01900",
+      "enabled": true,
+      "status": "budget-unknown",
+      "selected": 47,
+      "complete": false,
+      "positiveSupportComponents": null,
+      "verifiedCommonValues": 48
+    }
+  ],
+  "limits": "Fixed registered candidate pool only. Cloud witness membership checked with separate Python implementation; runtime graph/scheduler/rollback audits are recorded by the unchanged JS harness. No independent continuous-pose completeness or connected-growth claim."
+}

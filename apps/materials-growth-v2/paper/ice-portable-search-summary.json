@@ -1,0 +1,112 @@
+{
+  "scope": "Same finite registered variant pool and shared-placement inventory; scalar-only versus portable cloud constraints. Pairwise-disjointness relaxation feeds the reference-order frontier; common cloud values are required to certify completion. Not a complete continuous-pose search.",
+  "modelHash": "26d0c7f51fdcdb7406fc2409b891a4de5c54ae1c01b9e025c082ec07cf552a14",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "sourceHashes": {
+    "boron-portable-search.mjs": "ecfa21819168ac5be4b39105931b5b56d1b1dc2fcbff83dfc72f7a27fd0f39f1",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635"
+  },
+  "results": [
+    {
+      "fold": 0,
+      "file": "c01500",
+      "enabled": false,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.5029549170000001,
+      "seconds": 7.122559915999999,
+      "steps": 172,
+      "stats": {
+        "attempts": 171,
+        "accepted": 171,
+        "forced": 0,
+        "branches": 64,
+        "backtracks": 107,
+        "eliminated": 164168,
+        "checks": 16711604
+      },
+      "selected": 64,
+      "status": "verified finite registered filling",
+      "scalarComplete": true,
+      "markingStatus": "disabled",
+      "commonValues": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 0,
+      "file": "c01500",
+      "enabled": true,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.5276965419999997,
+      "seconds": 30.226072207999998,
+      "steps": 290,
+      "stats": {
+        "attempts": 290,
+        "accepted": 290,
+        "forced": 13,
+        "branches": 41,
+        "backtracks": 248,
+        "eliminated": 411471,
+        "checks": 32124034
+      },
+      "selected": 33,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 34,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "c01900",
+      "enabled": false,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.4097505000000019,
+      "seconds": 30.034485084,
+      "steps": 923,
+      "stats": {
+        "attempts": 923,
+        "accepted": 923,
+        "forced": 0,
+        "branches": 67,
+        "backtracks": 860,
+        "eliminated": 857245,
+        "checks": 87114107
+      },
+      "selected": 63,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "disabled",
+      "commonValues": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "c01900",
+      "enabled": true,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.4378496670000022,
+      "seconds": 30.046323375000007,
+      "steps": 525,
+      "stats": {
+        "attempts": 525,
+        "accepted": 525,
+        "forced": 9,
+        "branches": 91,
+        "backtracks": 470,
+        "eliminated": 281265,
+        "checks": 48698541
+      },
+      "selected": 47,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 48,
+      "rootRollback": true
+    }
+  ]
+}

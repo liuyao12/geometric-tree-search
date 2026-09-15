@@ -1,0 +1,2626 @@
+{
+  "scope": "Check first-pose sensitivity on the first developmental frame of each phase.\n\nEnumerate all species-preserving proper Procrustes proposals for the already\nassigned base type, not all types or all continuous maximum-error feasible poses.\nEndpoint markings remain locked to the base rotation.\n",
+  "inputHashes": {
+    "coordinates.json": "54e5fc81f08df313c42cd8520adfea3a900ed2488af81c96a63753f99fd8bb6b",
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "thermal-selection-k2.json": "ca8dff48d1b9ecc43c9fa64521c39e90ec31edf8bf124d18037fd376f7b37134",
+    "gcts-ice-portable-pairs-v1.json": "f3c3e8162971c2d73b88ef1b58499b58bb707bee7349346c6ef3b8c6ac50a955",
+    "gcts-ice-portable-precheck-v1.json": "d1b0955d73509e9e9189354aa14a6356559407f7ced097205bd8bd09b12998d3"
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "edges": 128,
+      "savedPoseMatched": 0,
+      "anyPoseMatched": 0,
+      "procrustesProposals": 128,
+      "rows": [
+        {
+          "edge": 0,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 3,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 6,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 7,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 8,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 11,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 13,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 15,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 17,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 18,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 20,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 21,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 24,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 27,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 29,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 31,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 33,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 36,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 38,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 41,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 42,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 43,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 46,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 48,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 49,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 51,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 53,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 55,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 58,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 61,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 64,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 65,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 67,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 68,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 69,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 71,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 73,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 74,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 76,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 78,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 80,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 81,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 85,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 86,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 88,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 89,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 93,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 94,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 96,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 98,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 102,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 104,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 106,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 107,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 108,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 110,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 112,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 114,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 116,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 119,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 120,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 121,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 125,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 127,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 128,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 130,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 131,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 134,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 137,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 138,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 139,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 142,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 145,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 147,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 148,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 149,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 151,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 153,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 156,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 157,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 160,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 162,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 163,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 168,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 169,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 172,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 175,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 176,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 177,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 179,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 182,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 185,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 186,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 189,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 192,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 193,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 194,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 198,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 199,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 202,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 204,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 205,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 206,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 208,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 211,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 212,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 214,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 215,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 216,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 218,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 220,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 221,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 223,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 226,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 230,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 231,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 232,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 233,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 234,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 237,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 238,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 239,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 244,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 245,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 250,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 251,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 252,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 255,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        }
+      ]
+    },
+    {
+      "id": "c00900",
+      "edges": 96,
+      "savedPoseMatched": 0,
+      "anyPoseMatched": 0,
+      "procrustesProposals": 99,
+      "rows": [
+        {
+          "edge": 1,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 3,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 8,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 11,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 14,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 18,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 20,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 25,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 27,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 30,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 34,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 38,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 40,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 44,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 47,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 49,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 53,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 56,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 62,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 64,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 70,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 73,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 74,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 79,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 82,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 85,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 91,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 94,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 95,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 97,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 101,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 106,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 107,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 108,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 109,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 114,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 121,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 122,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 124,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 125,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 133,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 134,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 137,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 141,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 143,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 150,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 152,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 153,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 157,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 158,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 160,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 172,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 174,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 175,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 176,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 178,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 182,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 186,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 187,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 188,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 193,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 198,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 199,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 201,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 203,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 207,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 209,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 211,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 215,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 218,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 221,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 223,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 224,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 229,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 231,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 234,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 236,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 237,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 245,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 248,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 251,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 252,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 257,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 260,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 266,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 270,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 273,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 275,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 277,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 283,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 286,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 290,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 292,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 293,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 296,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 300,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        }
+      ]
+    },
+    {
+      "id": "c01400",
+      "edges": 80,
+      "savedPoseMatched": 3,
+      "anyPoseMatched": 3,
+      "procrustesProposals": 80,
+      "rows": [
+        {
+          "edge": 2,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 5,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 9,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 11,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 17,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 18,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 22,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 23,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 27,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 29,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 32,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 33,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 38,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 40,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 44,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 45,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 50,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 51,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 57,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 58,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 60,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 63,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 66,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 69,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 74,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 75,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 79,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 80,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 83,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 84,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 88,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 91,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 96,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 98,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 102,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 104,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 105,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 109,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 111,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 114,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 123,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 125,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 126,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 129,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 131,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 132,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 133,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 136,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 141,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 145,
+          "savedPoseMatched": true,
+          "anyPoseMatched": true,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 2
+        },
+        {
+          "edge": 147,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 150,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 151,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 153,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 154,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 157,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 162,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 166,
+          "savedPoseMatched": true,
+          "anyPoseMatched": true,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 2
+        },
+        {
+          "edge": 167,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 170,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 171,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 174,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 175,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 185,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 189,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 192,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 195,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 198,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 200,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 202,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 203,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 208,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 210,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 211,
+          "savedPoseMatched": true,
+          "anyPoseMatched": true,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 2
+        },
+        {
+          "edge": 216,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 221,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 222,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 226,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 228,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 229,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        }
+      ]
+    },
+    {
+      "id": "c01900",
+      "edges": 64,
+      "savedPoseMatched": 0,
+      "anyPoseMatched": 0,
+      "procrustesProposals": 79,
+      "rows": [
+        {
+          "edge": 4,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 8,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 11,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 15,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 20,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 25,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 30,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 33,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 36,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 39,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 42,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 47,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 51,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 57,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 61,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 64,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 66,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 71,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 75,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 80,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 81,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 85,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 90,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 94,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 95,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 104,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 107,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 110,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 119,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 123,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 126,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 128,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 134,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 142,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 148,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 157,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 166,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 168,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 177,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 179,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 181,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 184,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 187,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 189,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 191,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 195,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 198,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 207,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 210,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 211,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 213,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 216,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 222,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 225,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 236,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 237,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 240,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 241,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 249,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 250,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 256,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 268,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 270,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 1,
+          "witnessedPoseEntries": 0
+        },
+        {
+          "edge": 271,
+          "savedPoseMatched": false,
+          "anyPoseMatched": false,
+          "procrustesProposals": 2,
+          "witnessedPoseEntries": 0
+        }
+      ]
+    }
+  ],
+  "limits": "A four-frame developmental sensitivity diagnostic. No complete continuous-pose or all-template enumeration. This does not prove that unmatched connections are impossible or forbidden."
+}
