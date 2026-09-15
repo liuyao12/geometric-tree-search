@@ -1,0 +1,972 @@
+{
+  "scope": "Independent positive-witness replay, not nearest-neighbor optimality proof.\n\nRebuilds periodic query fields without importing producer code. Evaluates each\nRKHS discrepancy as one signed quadratic form in world coordinates, rather\nthan the producer's three cached inner products in the base frame.\n",
+  "resultHash": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+  "libraryHash": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+  "verifierHash": "e3048d5e5ccb47306f54b771e9f55d3905b127abb1aa6c20bd8284340932caf1",
+  "checkedEndpointDistances": 21966,
+  "maxSquaredDistanceDiscrepancy": 6.328271240363392e-15,
+  "verifiedConfigurations": 120,
+  "results": [
+    {
+      "id": "c00020",
+      "split": "calibration",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00021",
+      "split": "calibration",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00022",
+      "split": "calibration",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00023",
+      "split": "calibration",
+      "assignments": 254,
+      "missing": 1,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00024",
+      "split": "calibration",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00520",
+      "split": "calibration",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00521",
+      "split": "calibration",
+      "assignments": 186,
+      "missing": 3,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00522",
+      "split": "calibration",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00523",
+      "split": "calibration",
+      "assignments": 180,
+      "missing": 6,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00524",
+      "split": "calibration",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01020",
+      "split": "calibration",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01021",
+      "split": "calibration",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01022",
+      "split": "calibration",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01023",
+      "split": "calibration",
+      "assignments": 156,
+      "missing": 2,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01024",
+      "split": "calibration",
+      "assignments": 156,
+      "missing": 2,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01520",
+      "split": "calibration",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01521",
+      "split": "calibration",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01522",
+      "split": "calibration",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01523",
+      "split": "calibration",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c01524",
+      "split": "calibration",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": null,
+      "complete": null
+    },
+    {
+      "id": "c00400",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00401",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00402",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00403",
+      "split": "developmental",
+      "assignments": 254,
+      "missing": 1,
+      "accepted": 127,
+      "complete": false
+    },
+    {
+      "id": "c00404",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00405",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00406",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00407",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00408",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00409",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00410",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00411",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00412",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00413",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00414",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00415",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00416",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00417",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00418",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00419",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00420",
+      "split": "developmental",
+      "assignments": 254,
+      "missing": 1,
+      "accepted": 127,
+      "complete": false
+    },
+    {
+      "id": "c00421",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00422",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00423",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00424",
+      "split": "developmental",
+      "assignments": 256,
+      "missing": 0,
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00900",
+      "split": "developmental",
+      "assignments": 188,
+      "missing": 2,
+      "accepted": 94,
+      "complete": false
+    },
+    {
+      "id": "c00901",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00902",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00903",
+      "split": "developmental",
+      "assignments": 186,
+      "missing": 3,
+      "accepted": 93,
+      "complete": false
+    },
+    {
+      "id": "c00904",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00905",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00906",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00907",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00908",
+      "split": "developmental",
+      "assignments": 188,
+      "missing": 2,
+      "accepted": 94,
+      "complete": false
+    },
+    {
+      "id": "c00909",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00910",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00911",
+      "split": "developmental",
+      "assignments": 186,
+      "missing": 3,
+      "accepted": 93,
+      "complete": false
+    },
+    {
+      "id": "c00912",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00913",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00914",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00915",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00916",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00917",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00918",
+      "split": "developmental",
+      "assignments": 188,
+      "missing": 2,
+      "accepted": 94,
+      "complete": false
+    },
+    {
+      "id": "c00919",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00920",
+      "split": "developmental",
+      "assignments": 192,
+      "missing": 0,
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00921",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00922",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00923",
+      "split": "developmental",
+      "assignments": 190,
+      "missing": 1,
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00924",
+      "split": "developmental",
+      "assignments": 188,
+      "missing": 2,
+      "accepted": 94,
+      "complete": false
+    },
+    {
+      "id": "c01400",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01401",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01402",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01403",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01404",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01405",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01406",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01407",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01408",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01409",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01410",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01411",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01412",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01413",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01414",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01415",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01416",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01417",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01418",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01419",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01420",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01421",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01422",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01423",
+      "split": "developmental",
+      "assignments": 158,
+      "missing": 1,
+      "accepted": 79,
+      "complete": false
+    },
+    {
+      "id": "c01424",
+      "split": "developmental",
+      "assignments": 160,
+      "missing": 0,
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01900",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01901",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01902",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01903",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01904",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01905",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01906",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01907",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01908",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01909",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01910",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01911",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01912",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01913",
+      "split": "developmental",
+      "assignments": 126,
+      "missing": 1,
+      "accepted": 63,
+      "complete": false
+    },
+    {
+      "id": "c01914",
+      "split": "developmental",
+      "assignments": 126,
+      "missing": 1,
+      "accepted": 63,
+      "complete": false
+    },
+    {
+      "id": "c01915",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01916",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01917",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01918",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01919",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01920",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01921",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01922",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01923",
+      "split": "developmental",
+      "assignments": 126,
+      "missing": 1,
+      "accepted": 63,
+      "complete": false
+    },
+    {
+      "id": "c01924",
+      "split": "developmental",
+      "assignments": 128,
+      "missing": 0,
+      "accepted": 64,
+      "complete": true
+    }
+  ],
+  "limits": "Positive witnesses independently verified; nearest-neighbor optimality not re-proved. Missing assigned bases checked exactly within frozen fit library. Threshold protocol replayed but no statistical guarantee, specificity, physics, search or blind-growth claim."
+}
