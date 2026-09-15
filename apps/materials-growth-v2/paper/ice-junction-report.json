@@ -1,0 +1,3671 @@
+{
+  "scope": "Assemble verified junction-only learning-curve evidence without coordinates.",
+  "epsilonAngstrom": 0.15,
+  "results": [
+    {
+      "sourceTrainingFramesPerPhase": 1,
+      "trainingConfigurations": 4,
+      "summary": {
+        "templates": 329,
+        "singletonTemplates": 294,
+        "trainingJunctions": 368,
+        "developmentJunctions": 9200,
+        "developmentMatched": 1408,
+        "developmentConfigurationsComplete": 0,
+        "fitTests": 27325,
+        "seconds": 4.364933208096772
+      },
+      "verification": {
+        "scope": "Check saved junction registrations without the learner's fitting routine.\n\nReconstruct local vectors by independent atom-to-anchor minimum images, verify\nproper rotations and component/species bijections, and recompute maximum errors.\nMetadata are used only for post-hoc reporting, not registration.\n",
+        "learnedHash": "e2e079ef2b3d58babc949a5f25eeb73bf4b2c544adab744e5b0c8b23ac79c257",
+        "codeHashes": {
+          "ice-junction-clouds.py": "0cc31525e94f5415e5544f701cb593aae37b432bc9ffdf51aba2c1819fdfc50d",
+          "ice-motif-dictionary.py": "7c2e6603298f776376e492580304dcacaf9c2b9f7c70347343aa8d8ca5d0353a"
+        },
+        "sourceHashes": {
+          "coordinates": "279dacac4f6199a9f9b27dfa0401ff3d958fad87f14ce2ba5c3afcb3b69f2a66",
+          "cover": "23a34c41ea795bf6aa7b2c27aaef4f24d0e899f1efbdfae3a63b931d5297b546",
+          "dictionary": "9ab8edbafed472d003c34d330450bd71e990084da4a018f677f367e4cdafb6e1",
+          "selection": "a1da7db72bf3031154d256e03227dfeb84ac5c059753b4dbb4559312658ca0a5"
+        },
+        "verifiedRegistrations": 1776,
+        "templatesWithObservedTrainingSource": 329,
+        "maxResidualAngstrom": 0.14999171749320858,
+        "counts": {
+          "trainingJunctions": 368,
+          "trainingMatched": 368,
+          "trainingConfigurationsComplete": 4,
+          "developmentJunctions": 9200,
+          "developmentMatched": 1408,
+          "developmentConfigurationsComplete": 0
+        },
+        "byPhase": {
+          "Ih": {
+            "trainingJunctions": 128,
+            "trainingMatched": 128,
+            "developmentJunctions": 3200,
+            "developmentMatched": 506
+          },
+          "II": {
+            "trainingJunctions": 96,
+            "trainingMatched": 96,
+            "developmentJunctions": 2400,
+            "developmentMatched": 304
+          },
+          "VI": {
+            "trainingJunctions": 80,
+            "trainingMatched": 80,
+            "developmentJunctions": 2000,
+            "developmentMatched": 322
+          },
+          "VIII": {
+            "trainingJunctions": 64,
+            "trainingMatched": 64,
+            "developmentJunctions": 1600,
+            "developmentMatched": 276
+          }
+        },
+        "basePairTypesObserved": 96,
+        "basePairTypesWithMultipleJunctionContexts": 95,
+        "results": [
+          {
+            "id": "c00000",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00500",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c01000",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01500",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c00400",
+            "training": false,
+            "junctions": 128,
+            "matched": 24
+          },
+          {
+            "id": "c00401",
+            "training": false,
+            "junctions": 128,
+            "matched": 18
+          },
+          {
+            "id": "c00402",
+            "training": false,
+            "junctions": 128,
+            "matched": 17
+          },
+          {
+            "id": "c00403",
+            "training": false,
+            "junctions": 128,
+            "matched": 25
+          },
+          {
+            "id": "c00404",
+            "training": false,
+            "junctions": 128,
+            "matched": 17
+          },
+          {
+            "id": "c00405",
+            "training": false,
+            "junctions": 128,
+            "matched": 22
+          },
+          {
+            "id": "c00406",
+            "training": false,
+            "junctions": 128,
+            "matched": 16
+          },
+          {
+            "id": "c00407",
+            "training": false,
+            "junctions": 128,
+            "matched": 22
+          },
+          {
+            "id": "c00408",
+            "training": false,
+            "junctions": 128,
+            "matched": 26
+          },
+          {
+            "id": "c00409",
+            "training": false,
+            "junctions": 128,
+            "matched": 24
+          },
+          {
+            "id": "c00410",
+            "training": false,
+            "junctions": 128,
+            "matched": 23
+          },
+          {
+            "id": "c00411",
+            "training": false,
+            "junctions": 128,
+            "matched": 16
+          },
+          {
+            "id": "c00412",
+            "training": false,
+            "junctions": 128,
+            "matched": 21
+          },
+          {
+            "id": "c00413",
+            "training": false,
+            "junctions": 128,
+            "matched": 17
+          },
+          {
+            "id": "c00414",
+            "training": false,
+            "junctions": 128,
+            "matched": 23
+          },
+          {
+            "id": "c00415",
+            "training": false,
+            "junctions": 128,
+            "matched": 14
+          },
+          {
+            "id": "c00416",
+            "training": false,
+            "junctions": 128,
+            "matched": 19
+          },
+          {
+            "id": "c00417",
+            "training": false,
+            "junctions": 128,
+            "matched": 25
+          },
+          {
+            "id": "c00418",
+            "training": false,
+            "junctions": 128,
+            "matched": 19
+          },
+          {
+            "id": "c00419",
+            "training": false,
+            "junctions": 128,
+            "matched": 17
+          },
+          {
+            "id": "c00420",
+            "training": false,
+            "junctions": 128,
+            "matched": 16
+          },
+          {
+            "id": "c00421",
+            "training": false,
+            "junctions": 128,
+            "matched": 15
+          },
+          {
+            "id": "c00422",
+            "training": false,
+            "junctions": 128,
+            "matched": 24
+          },
+          {
+            "id": "c00423",
+            "training": false,
+            "junctions": 128,
+            "matched": 23
+          },
+          {
+            "id": "c00424",
+            "training": false,
+            "junctions": 128,
+            "matched": 23
+          },
+          {
+            "id": "c00900",
+            "training": false,
+            "junctions": 96,
+            "matched": 14
+          },
+          {
+            "id": "c00901",
+            "training": false,
+            "junctions": 96,
+            "matched": 10
+          },
+          {
+            "id": "c00902",
+            "training": false,
+            "junctions": 96,
+            "matched": 7
+          },
+          {
+            "id": "c00903",
+            "training": false,
+            "junctions": 96,
+            "matched": 7
+          },
+          {
+            "id": "c00904",
+            "training": false,
+            "junctions": 96,
+            "matched": 15
+          },
+          {
+            "id": "c00905",
+            "training": false,
+            "junctions": 96,
+            "matched": 11
+          },
+          {
+            "id": "c00906",
+            "training": false,
+            "junctions": 96,
+            "matched": 18
+          },
+          {
+            "id": "c00907",
+            "training": false,
+            "junctions": 96,
+            "matched": 10
+          },
+          {
+            "id": "c00908",
+            "training": false,
+            "junctions": 96,
+            "matched": 7
+          },
+          {
+            "id": "c00909",
+            "training": false,
+            "junctions": 96,
+            "matched": 17
+          },
+          {
+            "id": "c00910",
+            "training": false,
+            "junctions": 96,
+            "matched": 5
+          },
+          {
+            "id": "c00911",
+            "training": false,
+            "junctions": 96,
+            "matched": 5
+          },
+          {
+            "id": "c00912",
+            "training": false,
+            "junctions": 96,
+            "matched": 14
+          },
+          {
+            "id": "c00913",
+            "training": false,
+            "junctions": 96,
+            "matched": 20
+          },
+          {
+            "id": "c00914",
+            "training": false,
+            "junctions": 96,
+            "matched": 12
+          },
+          {
+            "id": "c00915",
+            "training": false,
+            "junctions": 96,
+            "matched": 12
+          },
+          {
+            "id": "c00916",
+            "training": false,
+            "junctions": 96,
+            "matched": 19
+          },
+          {
+            "id": "c00917",
+            "training": false,
+            "junctions": 96,
+            "matched": 13
+          },
+          {
+            "id": "c00918",
+            "training": false,
+            "junctions": 96,
+            "matched": 6
+          },
+          {
+            "id": "c00919",
+            "training": false,
+            "junctions": 96,
+            "matched": 14
+          },
+          {
+            "id": "c00920",
+            "training": false,
+            "junctions": 96,
+            "matched": 19
+          },
+          {
+            "id": "c00921",
+            "training": false,
+            "junctions": 96,
+            "matched": 14
+          },
+          {
+            "id": "c00922",
+            "training": false,
+            "junctions": 96,
+            "matched": 18
+          },
+          {
+            "id": "c00923",
+            "training": false,
+            "junctions": 96,
+            "matched": 10
+          },
+          {
+            "id": "c00924",
+            "training": false,
+            "junctions": 96,
+            "matched": 7
+          },
+          {
+            "id": "c01400",
+            "training": false,
+            "junctions": 80,
+            "matched": 16
+          },
+          {
+            "id": "c01401",
+            "training": false,
+            "junctions": 80,
+            "matched": 20
+          },
+          {
+            "id": "c01402",
+            "training": false,
+            "junctions": 80,
+            "matched": 16
+          },
+          {
+            "id": "c01403",
+            "training": false,
+            "junctions": 80,
+            "matched": 14
+          },
+          {
+            "id": "c01404",
+            "training": false,
+            "junctions": 80,
+            "matched": 12
+          },
+          {
+            "id": "c01405",
+            "training": false,
+            "junctions": 80,
+            "matched": 11
+          },
+          {
+            "id": "c01406",
+            "training": false,
+            "junctions": 80,
+            "matched": 10
+          },
+          {
+            "id": "c01407",
+            "training": false,
+            "junctions": 80,
+            "matched": 11
+          },
+          {
+            "id": "c01408",
+            "training": false,
+            "junctions": 80,
+            "matched": 21
+          },
+          {
+            "id": "c01409",
+            "training": false,
+            "junctions": 80,
+            "matched": 7
+          },
+          {
+            "id": "c01410",
+            "training": false,
+            "junctions": 80,
+            "matched": 15
+          },
+          {
+            "id": "c01411",
+            "training": false,
+            "junctions": 80,
+            "matched": 15
+          },
+          {
+            "id": "c01412",
+            "training": false,
+            "junctions": 80,
+            "matched": 12
+          },
+          {
+            "id": "c01413",
+            "training": false,
+            "junctions": 80,
+            "matched": 11
+          },
+          {
+            "id": "c01414",
+            "training": false,
+            "junctions": 80,
+            "matched": 14
+          },
+          {
+            "id": "c01415",
+            "training": false,
+            "junctions": 80,
+            "matched": 15
+          },
+          {
+            "id": "c01416",
+            "training": false,
+            "junctions": 80,
+            "matched": 12
+          },
+          {
+            "id": "c01417",
+            "training": false,
+            "junctions": 80,
+            "matched": 11
+          },
+          {
+            "id": "c01418",
+            "training": false,
+            "junctions": 80,
+            "matched": 14
+          },
+          {
+            "id": "c01419",
+            "training": false,
+            "junctions": 80,
+            "matched": 11
+          },
+          {
+            "id": "c01420",
+            "training": false,
+            "junctions": 80,
+            "matched": 13
+          },
+          {
+            "id": "c01421",
+            "training": false,
+            "junctions": 80,
+            "matched": 12
+          },
+          {
+            "id": "c01422",
+            "training": false,
+            "junctions": 80,
+            "matched": 14
+          },
+          {
+            "id": "c01423",
+            "training": false,
+            "junctions": 80,
+            "matched": 8
+          },
+          {
+            "id": "c01424",
+            "training": false,
+            "junctions": 80,
+            "matched": 7
+          },
+          {
+            "id": "c01900",
+            "training": false,
+            "junctions": 64,
+            "matched": 17
+          },
+          {
+            "id": "c01901",
+            "training": false,
+            "junctions": 64,
+            "matched": 10
+          },
+          {
+            "id": "c01902",
+            "training": false,
+            "junctions": 64,
+            "matched": 14
+          },
+          {
+            "id": "c01903",
+            "training": false,
+            "junctions": 64,
+            "matched": 11
+          },
+          {
+            "id": "c01904",
+            "training": false,
+            "junctions": 64,
+            "matched": 10
+          },
+          {
+            "id": "c01905",
+            "training": false,
+            "junctions": 64,
+            "matched": 6
+          },
+          {
+            "id": "c01906",
+            "training": false,
+            "junctions": 64,
+            "matched": 7
+          },
+          {
+            "id": "c01907",
+            "training": false,
+            "junctions": 64,
+            "matched": 4
+          },
+          {
+            "id": "c01908",
+            "training": false,
+            "junctions": 64,
+            "matched": 7
+          },
+          {
+            "id": "c01909",
+            "training": false,
+            "junctions": 64,
+            "matched": 22
+          },
+          {
+            "id": "c01910",
+            "training": false,
+            "junctions": 64,
+            "matched": 21
+          },
+          {
+            "id": "c01911",
+            "training": false,
+            "junctions": 64,
+            "matched": 9
+          },
+          {
+            "id": "c01912",
+            "training": false,
+            "junctions": 64,
+            "matched": 9
+          },
+          {
+            "id": "c01913",
+            "training": false,
+            "junctions": 64,
+            "matched": 11
+          },
+          {
+            "id": "c01914",
+            "training": false,
+            "junctions": 64,
+            "matched": 8
+          },
+          {
+            "id": "c01915",
+            "training": false,
+            "junctions": 64,
+            "matched": 22
+          },
+          {
+            "id": "c01916",
+            "training": false,
+            "junctions": 64,
+            "matched": 8
+          },
+          {
+            "id": "c01917",
+            "training": false,
+            "junctions": 64,
+            "matched": 9
+          },
+          {
+            "id": "c01918",
+            "training": false,
+            "junctions": 64,
+            "matched": 8
+          },
+          {
+            "id": "c01919",
+            "training": false,
+            "junctions": 64,
+            "matched": 13
+          },
+          {
+            "id": "c01920",
+            "training": false,
+            "junctions": 64,
+            "matched": 6
+          },
+          {
+            "id": "c01921",
+            "training": false,
+            "junctions": 64,
+            "matched": 11
+          },
+          {
+            "id": "c01922",
+            "training": false,
+            "junctions": 64,
+            "matched": 13
+          },
+          {
+            "id": "c01923",
+            "training": false,
+            "junctions": 64,
+            "matched": 11
+          },
+          {
+            "id": "c01924",
+            "training": false,
+            "junctions": 64,
+            "matched": 9
+          }
+        ],
+        "limits": "Selected connected covers and their junction registrations only. No independently held-out cohort, forbidden-connection proof, learned edge-marking search, or growth certification."
+      }
+    },
+    {
+      "sourceTrainingFramesPerPhase": 5,
+      "trainingConfigurations": 20,
+      "summary": {
+        "templates": 1356,
+        "singletonTemplates": 1037,
+        "trainingJunctions": 1840,
+        "developmentJunctions": 9200,
+        "developmentMatched": 3655,
+        "developmentConfigurationsComplete": 0,
+        "fitTests": 92054,
+        "seconds": 7.964618082856759
+      },
+      "verification": {
+        "scope": "Check saved junction registrations without the learner's fitting routine.\n\nReconstruct local vectors by independent atom-to-anchor minimum images, verify\nproper rotations and component/species bijections, and recompute maximum errors.\nMetadata are used only for post-hoc reporting, not registration.\n",
+        "learnedHash": "30f16bec9349ad3fc08c970573af2a1f67ee0b2f2f84135f46bb8c8e9882b035",
+        "codeHashes": {
+          "ice-junction-clouds.py": "0cc31525e94f5415e5544f701cb593aae37b432bc9ffdf51aba2c1819fdfc50d",
+          "ice-motif-dictionary.py": "7c2e6603298f776376e492580304dcacaf9c2b9f7c70347343aa8d8ca5d0353a"
+        },
+        "sourceHashes": {
+          "coordinates": "b8851bd3a0fb1150376571671aef17e427ea9c4a49ff152d15f46cabc0c6c87d",
+          "cover": "67df2e44085e8264f85971157878545e817303b9dd47bab9a052e0e1851aa491",
+          "dictionary": "a5ff944c822add981caebc267bf224d853726f1f52746ccbb500ef24b63f3962",
+          "selection": "2760b054a84094ce1fe2cd6b607d27d692a34d831c3ec267b3729a892ef1b1c1"
+        },
+        "verifiedRegistrations": 5495,
+        "templatesWithObservedTrainingSource": 1356,
+        "maxResidualAngstrom": 0.14999171749320858,
+        "counts": {
+          "trainingJunctions": 1840,
+          "trainingMatched": 1840,
+          "trainingConfigurationsComplete": 20,
+          "developmentJunctions": 9200,
+          "developmentMatched": 3655,
+          "developmentConfigurationsComplete": 0
+        },
+        "byPhase": {
+          "Ih": {
+            "trainingJunctions": 640,
+            "trainingMatched": 640,
+            "developmentJunctions": 3200,
+            "developmentMatched": 1287
+          },
+          "II": {
+            "trainingJunctions": 480,
+            "trainingMatched": 480,
+            "developmentJunctions": 2400,
+            "developmentMatched": 833
+          },
+          "VI": {
+            "trainingJunctions": 400,
+            "trainingMatched": 400,
+            "developmentJunctions": 2000,
+            "developmentMatched": 830
+          },
+          "VIII": {
+            "trainingJunctions": 320,
+            "trainingMatched": 320,
+            "developmentJunctions": 1600,
+            "developmentMatched": 705
+          }
+        },
+        "basePairTypesObserved": 171,
+        "basePairTypesWithMultipleJunctionContexts": 171,
+        "results": [
+          {
+            "id": "c00000",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00001",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00002",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00003",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00004",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00500",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00501",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00502",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00503",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00504",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c01000",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01001",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01002",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01003",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01004",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01500",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01501",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01502",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01503",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01504",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c00400",
+            "training": false,
+            "junctions": 128,
+            "matched": 48
+          },
+          {
+            "id": "c00401",
+            "training": false,
+            "junctions": 128,
+            "matched": 40
+          },
+          {
+            "id": "c00402",
+            "training": false,
+            "junctions": 128,
+            "matched": 42
+          },
+          {
+            "id": "c00403",
+            "training": false,
+            "junctions": 128,
+            "matched": 55
+          },
+          {
+            "id": "c00404",
+            "training": false,
+            "junctions": 128,
+            "matched": 45
+          },
+          {
+            "id": "c00405",
+            "training": false,
+            "junctions": 128,
+            "matched": 51
+          },
+          {
+            "id": "c00406",
+            "training": false,
+            "junctions": 128,
+            "matched": 50
+          },
+          {
+            "id": "c00407",
+            "training": false,
+            "junctions": 128,
+            "matched": 54
+          },
+          {
+            "id": "c00408",
+            "training": false,
+            "junctions": 128,
+            "matched": 60
+          },
+          {
+            "id": "c00409",
+            "training": false,
+            "junctions": 128,
+            "matched": 59
+          },
+          {
+            "id": "c00410",
+            "training": false,
+            "junctions": 128,
+            "matched": 60
+          },
+          {
+            "id": "c00411",
+            "training": false,
+            "junctions": 128,
+            "matched": 45
+          },
+          {
+            "id": "c00412",
+            "training": false,
+            "junctions": 128,
+            "matched": 50
+          },
+          {
+            "id": "c00413",
+            "training": false,
+            "junctions": 128,
+            "matched": 39
+          },
+          {
+            "id": "c00414",
+            "training": false,
+            "junctions": 128,
+            "matched": 54
+          },
+          {
+            "id": "c00415",
+            "training": false,
+            "junctions": 128,
+            "matched": 53
+          },
+          {
+            "id": "c00416",
+            "training": false,
+            "junctions": 128,
+            "matched": 59
+          },
+          {
+            "id": "c00417",
+            "training": false,
+            "junctions": 128,
+            "matched": 61
+          },
+          {
+            "id": "c00418",
+            "training": false,
+            "junctions": 128,
+            "matched": 52
+          },
+          {
+            "id": "c00419",
+            "training": false,
+            "junctions": 128,
+            "matched": 48
+          },
+          {
+            "id": "c00420",
+            "training": false,
+            "junctions": 128,
+            "matched": 47
+          },
+          {
+            "id": "c00421",
+            "training": false,
+            "junctions": 128,
+            "matched": 53
+          },
+          {
+            "id": "c00422",
+            "training": false,
+            "junctions": 128,
+            "matched": 53
+          },
+          {
+            "id": "c00423",
+            "training": false,
+            "junctions": 128,
+            "matched": 51
+          },
+          {
+            "id": "c00424",
+            "training": false,
+            "junctions": 128,
+            "matched": 58
+          },
+          {
+            "id": "c00900",
+            "training": false,
+            "junctions": 96,
+            "matched": 35
+          },
+          {
+            "id": "c00901",
+            "training": false,
+            "junctions": 96,
+            "matched": 32
+          },
+          {
+            "id": "c00902",
+            "training": false,
+            "junctions": 96,
+            "matched": 22
+          },
+          {
+            "id": "c00903",
+            "training": false,
+            "junctions": 96,
+            "matched": 24
+          },
+          {
+            "id": "c00904",
+            "training": false,
+            "junctions": 96,
+            "matched": 39
+          },
+          {
+            "id": "c00905",
+            "training": false,
+            "junctions": 96,
+            "matched": 29
+          },
+          {
+            "id": "c00906",
+            "training": false,
+            "junctions": 96,
+            "matched": 45
+          },
+          {
+            "id": "c00907",
+            "training": false,
+            "junctions": 96,
+            "matched": 34
+          },
+          {
+            "id": "c00908",
+            "training": false,
+            "junctions": 96,
+            "matched": 19
+          },
+          {
+            "id": "c00909",
+            "training": false,
+            "junctions": 96,
+            "matched": 48
+          },
+          {
+            "id": "c00910",
+            "training": false,
+            "junctions": 96,
+            "matched": 17
+          },
+          {
+            "id": "c00911",
+            "training": false,
+            "junctions": 96,
+            "matched": 28
+          },
+          {
+            "id": "c00912",
+            "training": false,
+            "junctions": 96,
+            "matched": 36
+          },
+          {
+            "id": "c00913",
+            "training": false,
+            "junctions": 96,
+            "matched": 49
+          },
+          {
+            "id": "c00914",
+            "training": false,
+            "junctions": 96,
+            "matched": 36
+          },
+          {
+            "id": "c00915",
+            "training": false,
+            "junctions": 96,
+            "matched": 38
+          },
+          {
+            "id": "c00916",
+            "training": false,
+            "junctions": 96,
+            "matched": 50
+          },
+          {
+            "id": "c00917",
+            "training": false,
+            "junctions": 96,
+            "matched": 27
+          },
+          {
+            "id": "c00918",
+            "training": false,
+            "junctions": 96,
+            "matched": 21
+          },
+          {
+            "id": "c00919",
+            "training": false,
+            "junctions": 96,
+            "matched": 36
+          },
+          {
+            "id": "c00920",
+            "training": false,
+            "junctions": 96,
+            "matched": 41
+          },
+          {
+            "id": "c00921",
+            "training": false,
+            "junctions": 96,
+            "matched": 26
+          },
+          {
+            "id": "c00922",
+            "training": false,
+            "junctions": 96,
+            "matched": 43
+          },
+          {
+            "id": "c00923",
+            "training": false,
+            "junctions": 96,
+            "matched": 31
+          },
+          {
+            "id": "c00924",
+            "training": false,
+            "junctions": 96,
+            "matched": 27
+          },
+          {
+            "id": "c01400",
+            "training": false,
+            "junctions": 80,
+            "matched": 30
+          },
+          {
+            "id": "c01401",
+            "training": false,
+            "junctions": 80,
+            "matched": 35
+          },
+          {
+            "id": "c01402",
+            "training": false,
+            "junctions": 80,
+            "matched": 39
+          },
+          {
+            "id": "c01403",
+            "training": false,
+            "junctions": 80,
+            "matched": 35
+          },
+          {
+            "id": "c01404",
+            "training": false,
+            "junctions": 80,
+            "matched": 37
+          },
+          {
+            "id": "c01405",
+            "training": false,
+            "junctions": 80,
+            "matched": 29
+          },
+          {
+            "id": "c01406",
+            "training": false,
+            "junctions": 80,
+            "matched": 34
+          },
+          {
+            "id": "c01407",
+            "training": false,
+            "junctions": 80,
+            "matched": 32
+          },
+          {
+            "id": "c01408",
+            "training": false,
+            "junctions": 80,
+            "matched": 47
+          },
+          {
+            "id": "c01409",
+            "training": false,
+            "junctions": 80,
+            "matched": 31
+          },
+          {
+            "id": "c01410",
+            "training": false,
+            "junctions": 80,
+            "matched": 36
+          },
+          {
+            "id": "c01411",
+            "training": false,
+            "junctions": 80,
+            "matched": 38
+          },
+          {
+            "id": "c01412",
+            "training": false,
+            "junctions": 80,
+            "matched": 32
+          },
+          {
+            "id": "c01413",
+            "training": false,
+            "junctions": 80,
+            "matched": 29
+          },
+          {
+            "id": "c01414",
+            "training": false,
+            "junctions": 80,
+            "matched": 27
+          },
+          {
+            "id": "c01415",
+            "training": false,
+            "junctions": 80,
+            "matched": 41
+          },
+          {
+            "id": "c01416",
+            "training": false,
+            "junctions": 80,
+            "matched": 33
+          },
+          {
+            "id": "c01417",
+            "training": false,
+            "junctions": 80,
+            "matched": 34
+          },
+          {
+            "id": "c01418",
+            "training": false,
+            "junctions": 80,
+            "matched": 33
+          },
+          {
+            "id": "c01419",
+            "training": false,
+            "junctions": 80,
+            "matched": 27
+          },
+          {
+            "id": "c01420",
+            "training": false,
+            "junctions": 80,
+            "matched": 28
+          },
+          {
+            "id": "c01421",
+            "training": false,
+            "junctions": 80,
+            "matched": 27
+          },
+          {
+            "id": "c01422",
+            "training": false,
+            "junctions": 80,
+            "matched": 39
+          },
+          {
+            "id": "c01423",
+            "training": false,
+            "junctions": 80,
+            "matched": 34
+          },
+          {
+            "id": "c01424",
+            "training": false,
+            "junctions": 80,
+            "matched": 23
+          },
+          {
+            "id": "c01900",
+            "training": false,
+            "junctions": 64,
+            "matched": 36
+          },
+          {
+            "id": "c01901",
+            "training": false,
+            "junctions": 64,
+            "matched": 27
+          },
+          {
+            "id": "c01902",
+            "training": false,
+            "junctions": 64,
+            "matched": 32
+          },
+          {
+            "id": "c01903",
+            "training": false,
+            "junctions": 64,
+            "matched": 27
+          },
+          {
+            "id": "c01904",
+            "training": false,
+            "junctions": 64,
+            "matched": 20
+          },
+          {
+            "id": "c01905",
+            "training": false,
+            "junctions": 64,
+            "matched": 19
+          },
+          {
+            "id": "c01906",
+            "training": false,
+            "junctions": 64,
+            "matched": 27
+          },
+          {
+            "id": "c01907",
+            "training": false,
+            "junctions": 64,
+            "matched": 26
+          },
+          {
+            "id": "c01908",
+            "training": false,
+            "junctions": 64,
+            "matched": 32
+          },
+          {
+            "id": "c01909",
+            "training": false,
+            "junctions": 64,
+            "matched": 51
+          },
+          {
+            "id": "c01910",
+            "training": false,
+            "junctions": 64,
+            "matched": 35
+          },
+          {
+            "id": "c01911",
+            "training": false,
+            "junctions": 64,
+            "matched": 25
+          },
+          {
+            "id": "c01912",
+            "training": false,
+            "junctions": 64,
+            "matched": 23
+          },
+          {
+            "id": "c01913",
+            "training": false,
+            "junctions": 64,
+            "matched": 23
+          },
+          {
+            "id": "c01914",
+            "training": false,
+            "junctions": 64,
+            "matched": 24
+          },
+          {
+            "id": "c01915",
+            "training": false,
+            "junctions": 64,
+            "matched": 34
+          },
+          {
+            "id": "c01916",
+            "training": false,
+            "junctions": 64,
+            "matched": 19
+          },
+          {
+            "id": "c01917",
+            "training": false,
+            "junctions": 64,
+            "matched": 26
+          },
+          {
+            "id": "c01918",
+            "training": false,
+            "junctions": 64,
+            "matched": 34
+          },
+          {
+            "id": "c01919",
+            "training": false,
+            "junctions": 64,
+            "matched": 35
+          },
+          {
+            "id": "c01920",
+            "training": false,
+            "junctions": 64,
+            "matched": 29
+          },
+          {
+            "id": "c01921",
+            "training": false,
+            "junctions": 64,
+            "matched": 21
+          },
+          {
+            "id": "c01922",
+            "training": false,
+            "junctions": 64,
+            "matched": 32
+          },
+          {
+            "id": "c01923",
+            "training": false,
+            "junctions": 64,
+            "matched": 24
+          },
+          {
+            "id": "c01924",
+            "training": false,
+            "junctions": 64,
+            "matched": 24
+          }
+        ],
+        "limits": "Selected connected covers and their junction registrations only. No independently held-out cohort, forbidden-connection proof, learned edge-marking search, or growth certification."
+      }
+    },
+    {
+      "sourceTrainingFramesPerPhase": 10,
+      "trainingConfigurations": 40,
+      "summary": {
+        "templates": 2308,
+        "singletonTemplates": 1574,
+        "trainingJunctions": 3680,
+        "developmentJunctions": 9200,
+        "developmentMatched": 4841,
+        "developmentConfigurationsComplete": 0,
+        "fitTests": 145913,
+        "seconds": 10.287444250192493
+      },
+      "verification": {
+        "scope": "Check saved junction registrations without the learner's fitting routine.\n\nReconstruct local vectors by independent atom-to-anchor minimum images, verify\nproper rotations and component/species bijections, and recompute maximum errors.\nMetadata are used only for post-hoc reporting, not registration.\n",
+        "learnedHash": "fb6ddd3aabac70645f420f60c59896a51ee452ec1657740e72fddccaff5b2160",
+        "codeHashes": {
+          "ice-junction-clouds.py": "0cc31525e94f5415e5544f701cb593aae37b432bc9ffdf51aba2c1819fdfc50d",
+          "ice-motif-dictionary.py": "7c2e6603298f776376e492580304dcacaf9c2b9f7c70347343aa8d8ca5d0353a"
+        },
+        "sourceHashes": {
+          "coordinates": "1dedfbe371492e43b2d2fcaeba6c06a0e9c4d0c6c277cff75cf0727b97fdb32c",
+          "cover": "ea9e79e73a7bafbaae3c4125368cd4b393b88e8c4f6e23e1904784170883b084",
+          "dictionary": "8936d1a0fa49eb0164984e432fdffc2e51f968f40acff0be89854e5bc6e958d5",
+          "selection": "9df956cefa5c4f72c2637e12869d80e9db071de7c388a3a8f07c88cb4bf33f31"
+        },
+        "verifiedRegistrations": 8521,
+        "templatesWithObservedTrainingSource": 2308,
+        "maxResidualAngstrom": 0.1499986208790366,
+        "counts": {
+          "trainingJunctions": 3680,
+          "trainingMatched": 3680,
+          "trainingConfigurationsComplete": 40,
+          "developmentJunctions": 9200,
+          "developmentMatched": 4841,
+          "developmentConfigurationsComplete": 0
+        },
+        "byPhase": {
+          "Ih": {
+            "trainingJunctions": 1280,
+            "trainingMatched": 1280,
+            "developmentJunctions": 3200,
+            "developmentMatched": 1636
+          },
+          "II": {
+            "trainingJunctions": 960,
+            "trainingMatched": 960,
+            "developmentJunctions": 2400,
+            "developmentMatched": 1110
+          },
+          "VI": {
+            "trainingJunctions": 800,
+            "trainingMatched": 800,
+            "developmentJunctions": 2000,
+            "developmentMatched": 1169
+          },
+          "VIII": {
+            "trainingJunctions": 640,
+            "trainingMatched": 640,
+            "developmentJunctions": 1600,
+            "developmentMatched": 926
+          }
+        },
+        "basePairTypesObserved": 204,
+        "basePairTypesWithMultipleJunctionContexts": 204,
+        "results": [
+          {
+            "id": "c00000",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00001",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00002",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00003",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00004",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00005",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00006",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00007",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00008",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00009",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00500",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00501",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00502",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00503",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00504",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00505",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00506",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00507",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00508",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00509",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c01000",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01001",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01002",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01003",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01004",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01005",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01006",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01007",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01008",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01009",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01500",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01501",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01502",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01503",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01504",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01505",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01506",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01507",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01508",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01509",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c00400",
+            "training": false,
+            "junctions": 128,
+            "matched": 64
+          },
+          {
+            "id": "c00401",
+            "training": false,
+            "junctions": 128,
+            "matched": 63
+          },
+          {
+            "id": "c00402",
+            "training": false,
+            "junctions": 128,
+            "matched": 58
+          },
+          {
+            "id": "c00403",
+            "training": false,
+            "junctions": 128,
+            "matched": 70
+          },
+          {
+            "id": "c00404",
+            "training": false,
+            "junctions": 128,
+            "matched": 62
+          },
+          {
+            "id": "c00405",
+            "training": false,
+            "junctions": 128,
+            "matched": 60
+          },
+          {
+            "id": "c00406",
+            "training": false,
+            "junctions": 128,
+            "matched": 67
+          },
+          {
+            "id": "c00407",
+            "training": false,
+            "junctions": 128,
+            "matched": 69
+          },
+          {
+            "id": "c00408",
+            "training": false,
+            "junctions": 128,
+            "matched": 68
+          },
+          {
+            "id": "c00409",
+            "training": false,
+            "junctions": 128,
+            "matched": 69
+          },
+          {
+            "id": "c00410",
+            "training": false,
+            "junctions": 128,
+            "matched": 68
+          },
+          {
+            "id": "c00411",
+            "training": false,
+            "junctions": 128,
+            "matched": 62
+          },
+          {
+            "id": "c00412",
+            "training": false,
+            "junctions": 128,
+            "matched": 62
+          },
+          {
+            "id": "c00413",
+            "training": false,
+            "junctions": 128,
+            "matched": 49
+          },
+          {
+            "id": "c00414",
+            "training": false,
+            "junctions": 128,
+            "matched": 65
+          },
+          {
+            "id": "c00415",
+            "training": false,
+            "junctions": 128,
+            "matched": 66
+          },
+          {
+            "id": "c00416",
+            "training": false,
+            "junctions": 128,
+            "matched": 74
+          },
+          {
+            "id": "c00417",
+            "training": false,
+            "junctions": 128,
+            "matched": 74
+          },
+          {
+            "id": "c00418",
+            "training": false,
+            "junctions": 128,
+            "matched": 63
+          },
+          {
+            "id": "c00419",
+            "training": false,
+            "junctions": 128,
+            "matched": 62
+          },
+          {
+            "id": "c00420",
+            "training": false,
+            "junctions": 128,
+            "matched": 59
+          },
+          {
+            "id": "c00421",
+            "training": false,
+            "junctions": 128,
+            "matched": 67
+          },
+          {
+            "id": "c00422",
+            "training": false,
+            "junctions": 128,
+            "matched": 77
+          },
+          {
+            "id": "c00423",
+            "training": false,
+            "junctions": 128,
+            "matched": 68
+          },
+          {
+            "id": "c00424",
+            "training": false,
+            "junctions": 128,
+            "matched": 70
+          },
+          {
+            "id": "c00900",
+            "training": false,
+            "junctions": 96,
+            "matched": 43
+          },
+          {
+            "id": "c00901",
+            "training": false,
+            "junctions": 96,
+            "matched": 40
+          },
+          {
+            "id": "c00902",
+            "training": false,
+            "junctions": 96,
+            "matched": 35
+          },
+          {
+            "id": "c00903",
+            "training": false,
+            "junctions": 96,
+            "matched": 41
+          },
+          {
+            "id": "c00904",
+            "training": false,
+            "junctions": 96,
+            "matched": 53
+          },
+          {
+            "id": "c00905",
+            "training": false,
+            "junctions": 96,
+            "matched": 31
+          },
+          {
+            "id": "c00906",
+            "training": false,
+            "junctions": 96,
+            "matched": 57
+          },
+          {
+            "id": "c00907",
+            "training": false,
+            "junctions": 96,
+            "matched": 43
+          },
+          {
+            "id": "c00908",
+            "training": false,
+            "junctions": 96,
+            "matched": 31
+          },
+          {
+            "id": "c00909",
+            "training": false,
+            "junctions": 96,
+            "matched": 63
+          },
+          {
+            "id": "c00910",
+            "training": false,
+            "junctions": 96,
+            "matched": 24
+          },
+          {
+            "id": "c00911",
+            "training": false,
+            "junctions": 96,
+            "matched": 41
+          },
+          {
+            "id": "c00912",
+            "training": false,
+            "junctions": 96,
+            "matched": 43
+          },
+          {
+            "id": "c00913",
+            "training": false,
+            "junctions": 96,
+            "matched": 63
+          },
+          {
+            "id": "c00914",
+            "training": false,
+            "junctions": 96,
+            "matched": 46
+          },
+          {
+            "id": "c00915",
+            "training": false,
+            "junctions": 96,
+            "matched": 49
+          },
+          {
+            "id": "c00916",
+            "training": false,
+            "junctions": 96,
+            "matched": 64
+          },
+          {
+            "id": "c00917",
+            "training": false,
+            "junctions": 96,
+            "matched": 41
+          },
+          {
+            "id": "c00918",
+            "training": false,
+            "junctions": 96,
+            "matched": 34
+          },
+          {
+            "id": "c00919",
+            "training": false,
+            "junctions": 96,
+            "matched": 45
+          },
+          {
+            "id": "c00920",
+            "training": false,
+            "junctions": 96,
+            "matched": 51
+          },
+          {
+            "id": "c00921",
+            "training": false,
+            "junctions": 96,
+            "matched": 36
+          },
+          {
+            "id": "c00922",
+            "training": false,
+            "junctions": 96,
+            "matched": 51
+          },
+          {
+            "id": "c00923",
+            "training": false,
+            "junctions": 96,
+            "matched": 44
+          },
+          {
+            "id": "c00924",
+            "training": false,
+            "junctions": 96,
+            "matched": 41
+          },
+          {
+            "id": "c01400",
+            "training": false,
+            "junctions": 80,
+            "matched": 43
+          },
+          {
+            "id": "c01401",
+            "training": false,
+            "junctions": 80,
+            "matched": 44
+          },
+          {
+            "id": "c01402",
+            "training": false,
+            "junctions": 80,
+            "matched": 55
+          },
+          {
+            "id": "c01403",
+            "training": false,
+            "junctions": 80,
+            "matched": 48
+          },
+          {
+            "id": "c01404",
+            "training": false,
+            "junctions": 80,
+            "matched": 54
+          },
+          {
+            "id": "c01405",
+            "training": false,
+            "junctions": 80,
+            "matched": 46
+          },
+          {
+            "id": "c01406",
+            "training": false,
+            "junctions": 80,
+            "matched": 49
+          },
+          {
+            "id": "c01407",
+            "training": false,
+            "junctions": 80,
+            "matched": 50
+          },
+          {
+            "id": "c01408",
+            "training": false,
+            "junctions": 80,
+            "matched": 58
+          },
+          {
+            "id": "c01409",
+            "training": false,
+            "junctions": 80,
+            "matched": 40
+          },
+          {
+            "id": "c01410",
+            "training": false,
+            "junctions": 80,
+            "matched": 49
+          },
+          {
+            "id": "c01411",
+            "training": false,
+            "junctions": 80,
+            "matched": 50
+          },
+          {
+            "id": "c01412",
+            "training": false,
+            "junctions": 80,
+            "matched": 41
+          },
+          {
+            "id": "c01413",
+            "training": false,
+            "junctions": 80,
+            "matched": 52
+          },
+          {
+            "id": "c01414",
+            "training": false,
+            "junctions": 80,
+            "matched": 35
+          },
+          {
+            "id": "c01415",
+            "training": false,
+            "junctions": 80,
+            "matched": 54
+          },
+          {
+            "id": "c01416",
+            "training": false,
+            "junctions": 80,
+            "matched": 45
+          },
+          {
+            "id": "c01417",
+            "training": false,
+            "junctions": 80,
+            "matched": 42
+          },
+          {
+            "id": "c01418",
+            "training": false,
+            "junctions": 80,
+            "matched": 42
+          },
+          {
+            "id": "c01419",
+            "training": false,
+            "junctions": 80,
+            "matched": 43
+          },
+          {
+            "id": "c01420",
+            "training": false,
+            "junctions": 80,
+            "matched": 40
+          },
+          {
+            "id": "c01421",
+            "training": false,
+            "junctions": 80,
+            "matched": 51
+          },
+          {
+            "id": "c01422",
+            "training": false,
+            "junctions": 80,
+            "matched": 51
+          },
+          {
+            "id": "c01423",
+            "training": false,
+            "junctions": 80,
+            "matched": 45
+          },
+          {
+            "id": "c01424",
+            "training": false,
+            "junctions": 80,
+            "matched": 42
+          },
+          {
+            "id": "c01900",
+            "training": false,
+            "junctions": 64,
+            "matched": 46
+          },
+          {
+            "id": "c01901",
+            "training": false,
+            "junctions": 64,
+            "matched": 32
+          },
+          {
+            "id": "c01902",
+            "training": false,
+            "junctions": 64,
+            "matched": 38
+          },
+          {
+            "id": "c01903",
+            "training": false,
+            "junctions": 64,
+            "matched": 34
+          },
+          {
+            "id": "c01904",
+            "training": false,
+            "junctions": 64,
+            "matched": 29
+          },
+          {
+            "id": "c01905",
+            "training": false,
+            "junctions": 64,
+            "matched": 26
+          },
+          {
+            "id": "c01906",
+            "training": false,
+            "junctions": 64,
+            "matched": 31
+          },
+          {
+            "id": "c01907",
+            "training": false,
+            "junctions": 64,
+            "matched": 34
+          },
+          {
+            "id": "c01908",
+            "training": false,
+            "junctions": 64,
+            "matched": 40
+          },
+          {
+            "id": "c01909",
+            "training": false,
+            "junctions": 64,
+            "matched": 57
+          },
+          {
+            "id": "c01910",
+            "training": false,
+            "junctions": 64,
+            "matched": 39
+          },
+          {
+            "id": "c01911",
+            "training": false,
+            "junctions": 64,
+            "matched": 37
+          },
+          {
+            "id": "c01912",
+            "training": false,
+            "junctions": 64,
+            "matched": 35
+          },
+          {
+            "id": "c01913",
+            "training": false,
+            "junctions": 64,
+            "matched": 33
+          },
+          {
+            "id": "c01914",
+            "training": false,
+            "junctions": 64,
+            "matched": 32
+          },
+          {
+            "id": "c01915",
+            "training": false,
+            "junctions": 64,
+            "matched": 50
+          },
+          {
+            "id": "c01916",
+            "training": false,
+            "junctions": 64,
+            "matched": 31
+          },
+          {
+            "id": "c01917",
+            "training": false,
+            "junctions": 64,
+            "matched": 34
+          },
+          {
+            "id": "c01918",
+            "training": false,
+            "junctions": 64,
+            "matched": 44
+          },
+          {
+            "id": "c01919",
+            "training": false,
+            "junctions": 64,
+            "matched": 49
+          },
+          {
+            "id": "c01920",
+            "training": false,
+            "junctions": 64,
+            "matched": 37
+          },
+          {
+            "id": "c01921",
+            "training": false,
+            "junctions": 64,
+            "matched": 33
+          },
+          {
+            "id": "c01922",
+            "training": false,
+            "junctions": 64,
+            "matched": 41
+          },
+          {
+            "id": "c01923",
+            "training": false,
+            "junctions": 64,
+            "matched": 29
+          },
+          {
+            "id": "c01924",
+            "training": false,
+            "junctions": 64,
+            "matched": 35
+          }
+        ],
+        "limits": "Selected connected covers and their junction registrations only. No independently held-out cohort, forbidden-connection proof, learned edge-marking search, or growth certification."
+      }
+    },
+    {
+      "sourceTrainingFramesPerPhase": 25,
+      "trainingConfigurations": 100,
+      "summary": {
+        "templates": 4423,
+        "singletonTemplates": 2647,
+        "trainingJunctions": 9200,
+        "developmentJunctions": 9200,
+        "developmentMatched": 6356,
+        "developmentConfigurationsComplete": 0,
+        "fitTests": 288607,
+        "seconds": 19.603776291944087
+      },
+      "verification": {
+        "scope": "Check saved junction registrations without the learner's fitting routine.\n\nReconstruct local vectors by independent atom-to-anchor minimum images, verify\nproper rotations and component/species bijections, and recompute maximum errors.\nMetadata are used only for post-hoc reporting, not registration.\n",
+        "learnedHash": "ed7609c75cfd2a245444bfa32c527cc6ef6372c5ea717dc764536b42982ee013",
+        "codeHashes": {
+          "ice-junction-clouds.py": "0cc31525e94f5415e5544f701cb593aae37b432bc9ffdf51aba2c1819fdfc50d",
+          "ice-motif-dictionary.py": "7c2e6603298f776376e492580304dcacaf9c2b9f7c70347343aa8d8ca5d0353a"
+        },
+        "sourceHashes": {
+          "coordinates": "54e5fc81f08df313c42cd8520adfea3a900ed2488af81c96a63753f99fd8bb6b",
+          "cover": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+          "dictionary": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+          "selection": "ca8dff48d1b9ecc43c9fa64521c39e90ec31edf8bf124d18037fd376f7b37134"
+        },
+        "verifiedRegistrations": 15556,
+        "templatesWithObservedTrainingSource": 4423,
+        "maxResidualAngstrom": 0.14999943059744442,
+        "counts": {
+          "trainingJunctions": 9200,
+          "trainingMatched": 9200,
+          "trainingConfigurationsComplete": 100,
+          "developmentJunctions": 9200,
+          "developmentMatched": 6356,
+          "developmentConfigurationsComplete": 0
+        },
+        "byPhase": {
+          "Ih": {
+            "trainingJunctions": 3200,
+            "trainingMatched": 3200,
+            "developmentJunctions": 3200,
+            "developmentMatched": 2143
+          },
+          "II": {
+            "trainingJunctions": 2400,
+            "trainingMatched": 2400,
+            "developmentJunctions": 2400,
+            "developmentMatched": 1525
+          },
+          "VI": {
+            "trainingJunctions": 2000,
+            "trainingMatched": 2000,
+            "developmentJunctions": 2000,
+            "developmentMatched": 1528
+          },
+          "VIII": {
+            "trainingJunctions": 1600,
+            "trainingMatched": 1600,
+            "developmentJunctions": 1600,
+            "developmentMatched": 1160
+          }
+        },
+        "basePairTypesObserved": 269,
+        "basePairTypesWithMultipleJunctionContexts": 269,
+        "results": [
+          {
+            "id": "c00000",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00001",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00002",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00003",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00004",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00005",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00006",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00007",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00008",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00009",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00010",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00011",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00012",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00013",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00014",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00015",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00016",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00017",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00018",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00019",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00020",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00021",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00022",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00023",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00024",
+            "training": true,
+            "junctions": 128,
+            "matched": 128
+          },
+          {
+            "id": "c00500",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00501",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00502",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00503",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00504",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00505",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00506",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00507",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00508",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00509",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00510",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00511",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00512",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00513",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00514",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00515",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00516",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00517",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00518",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00519",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00520",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00521",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00522",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00523",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c00524",
+            "training": true,
+            "junctions": 96,
+            "matched": 96
+          },
+          {
+            "id": "c01000",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01001",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01002",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01003",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01004",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01005",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01006",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01007",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01008",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01009",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01010",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01011",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01012",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01013",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01014",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01015",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01016",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01017",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01018",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01019",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01020",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01021",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01022",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01023",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01024",
+            "training": true,
+            "junctions": 80,
+            "matched": 80
+          },
+          {
+            "id": "c01500",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01501",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01502",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01503",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01504",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01505",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01506",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01507",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01508",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01509",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01510",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01511",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01512",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01513",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01514",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01515",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01516",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01517",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01518",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01519",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01520",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01521",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01522",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01523",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c01524",
+            "training": true,
+            "junctions": 64,
+            "matched": 64
+          },
+          {
+            "id": "c00400",
+            "training": false,
+            "junctions": 128,
+            "matched": 87
+          },
+          {
+            "id": "c00401",
+            "training": false,
+            "junctions": 128,
+            "matched": 83
+          },
+          {
+            "id": "c00402",
+            "training": false,
+            "junctions": 128,
+            "matched": 77
+          },
+          {
+            "id": "c00403",
+            "training": false,
+            "junctions": 128,
+            "matched": 94
+          },
+          {
+            "id": "c00404",
+            "training": false,
+            "junctions": 128,
+            "matched": 79
+          },
+          {
+            "id": "c00405",
+            "training": false,
+            "junctions": 128,
+            "matched": 81
+          },
+          {
+            "id": "c00406",
+            "training": false,
+            "junctions": 128,
+            "matched": 87
+          },
+          {
+            "id": "c00407",
+            "training": false,
+            "junctions": 128,
+            "matched": 89
+          },
+          {
+            "id": "c00408",
+            "training": false,
+            "junctions": 128,
+            "matched": 84
+          },
+          {
+            "id": "c00409",
+            "training": false,
+            "junctions": 128,
+            "matched": 80
+          },
+          {
+            "id": "c00410",
+            "training": false,
+            "junctions": 128,
+            "matched": 89
+          },
+          {
+            "id": "c00411",
+            "training": false,
+            "junctions": 128,
+            "matched": 85
+          },
+          {
+            "id": "c00412",
+            "training": false,
+            "junctions": 128,
+            "matched": 82
+          },
+          {
+            "id": "c00413",
+            "training": false,
+            "junctions": 128,
+            "matched": 66
+          },
+          {
+            "id": "c00414",
+            "training": false,
+            "junctions": 128,
+            "matched": 80
+          },
+          {
+            "id": "c00415",
+            "training": false,
+            "junctions": 128,
+            "matched": 93
+          },
+          {
+            "id": "c00416",
+            "training": false,
+            "junctions": 128,
+            "matched": 92
+          },
+          {
+            "id": "c00417",
+            "training": false,
+            "junctions": 128,
+            "matched": 104
+          },
+          {
+            "id": "c00418",
+            "training": false,
+            "junctions": 128,
+            "matched": 85
+          },
+          {
+            "id": "c00419",
+            "training": false,
+            "junctions": 128,
+            "matched": 80
+          },
+          {
+            "id": "c00420",
+            "training": false,
+            "junctions": 128,
+            "matched": 78
+          },
+          {
+            "id": "c00421",
+            "training": false,
+            "junctions": 128,
+            "matched": 94
+          },
+          {
+            "id": "c00422",
+            "training": false,
+            "junctions": 128,
+            "matched": 99
+          },
+          {
+            "id": "c00423",
+            "training": false,
+            "junctions": 128,
+            "matched": 90
+          },
+          {
+            "id": "c00424",
+            "training": false,
+            "junctions": 128,
+            "matched": 85
+          },
+          {
+            "id": "c00900",
+            "training": false,
+            "junctions": 96,
+            "matched": 64
+          },
+          {
+            "id": "c00901",
+            "training": false,
+            "junctions": 96,
+            "matched": 56
+          },
+          {
+            "id": "c00902",
+            "training": false,
+            "junctions": 96,
+            "matched": 61
+          },
+          {
+            "id": "c00903",
+            "training": false,
+            "junctions": 96,
+            "matched": 55
+          },
+          {
+            "id": "c00904",
+            "training": false,
+            "junctions": 96,
+            "matched": 67
+          },
+          {
+            "id": "c00905",
+            "training": false,
+            "junctions": 96,
+            "matched": 47
+          },
+          {
+            "id": "c00906",
+            "training": false,
+            "junctions": 96,
+            "matched": 73
+          },
+          {
+            "id": "c00907",
+            "training": false,
+            "junctions": 96,
+            "matched": 65
+          },
+          {
+            "id": "c00908",
+            "training": false,
+            "junctions": 96,
+            "matched": 42
+          },
+          {
+            "id": "c00909",
+            "training": false,
+            "junctions": 96,
+            "matched": 80
+          },
+          {
+            "id": "c00910",
+            "training": false,
+            "junctions": 96,
+            "matched": 40
+          },
+          {
+            "id": "c00911",
+            "training": false,
+            "junctions": 96,
+            "matched": 56
+          },
+          {
+            "id": "c00912",
+            "training": false,
+            "junctions": 96,
+            "matched": 60
+          },
+          {
+            "id": "c00913",
+            "training": false,
+            "junctions": 96,
+            "matched": 76
+          },
+          {
+            "id": "c00914",
+            "training": false,
+            "junctions": 96,
+            "matched": 59
+          },
+          {
+            "id": "c00915",
+            "training": false,
+            "junctions": 96,
+            "matched": 64
+          },
+          {
+            "id": "c00916",
+            "training": false,
+            "junctions": 96,
+            "matched": 78
+          },
+          {
+            "id": "c00917",
+            "training": false,
+            "junctions": 96,
+            "matched": 53
+          },
+          {
+            "id": "c00918",
+            "training": false,
+            "junctions": 96,
+            "matched": 46
+          },
+          {
+            "id": "c00919",
+            "training": false,
+            "junctions": 96,
+            "matched": 63
+          },
+          {
+            "id": "c00920",
+            "training": false,
+            "junctions": 96,
+            "matched": 77
+          },
+          {
+            "id": "c00921",
+            "training": false,
+            "junctions": 96,
+            "matched": 53
+          },
+          {
+            "id": "c00922",
+            "training": false,
+            "junctions": 96,
+            "matched": 72
+          },
+          {
+            "id": "c00923",
+            "training": false,
+            "junctions": 96,
+            "matched": 55
+          },
+          {
+            "id": "c00924",
+            "training": false,
+            "junctions": 96,
+            "matched": 63
+          },
+          {
+            "id": "c01400",
+            "training": false,
+            "junctions": 80,
+            "matched": 55
+          },
+          {
+            "id": "c01401",
+            "training": false,
+            "junctions": 80,
+            "matched": 56
+          },
+          {
+            "id": "c01402",
+            "training": false,
+            "junctions": 80,
+            "matched": 71
+          },
+          {
+            "id": "c01403",
+            "training": false,
+            "junctions": 80,
+            "matched": 62
+          },
+          {
+            "id": "c01404",
+            "training": false,
+            "junctions": 80,
+            "matched": 65
+          },
+          {
+            "id": "c01405",
+            "training": false,
+            "junctions": 80,
+            "matched": 62
+          },
+          {
+            "id": "c01406",
+            "training": false,
+            "junctions": 80,
+            "matched": 65
+          },
+          {
+            "id": "c01407",
+            "training": false,
+            "junctions": 80,
+            "matched": 67
+          },
+          {
+            "id": "c01408",
+            "training": false,
+            "junctions": 80,
+            "matched": 71
+          },
+          {
+            "id": "c01409",
+            "training": false,
+            "junctions": 80,
+            "matched": 50
+          },
+          {
+            "id": "c01410",
+            "training": false,
+            "junctions": 80,
+            "matched": 61
+          },
+          {
+            "id": "c01411",
+            "training": false,
+            "junctions": 80,
+            "matched": 63
+          },
+          {
+            "id": "c01412",
+            "training": false,
+            "junctions": 80,
+            "matched": 67
+          },
+          {
+            "id": "c01413",
+            "training": false,
+            "junctions": 80,
+            "matched": 65
+          },
+          {
+            "id": "c01414",
+            "training": false,
+            "junctions": 80,
+            "matched": 54
+          },
+          {
+            "id": "c01415",
+            "training": false,
+            "junctions": 80,
+            "matched": 63
+          },
+          {
+            "id": "c01416",
+            "training": false,
+            "junctions": 80,
+            "matched": 55
+          },
+          {
+            "id": "c01417",
+            "training": false,
+            "junctions": 80,
+            "matched": 58
+          },
+          {
+            "id": "c01418",
+            "training": false,
+            "junctions": 80,
+            "matched": 57
+          },
+          {
+            "id": "c01419",
+            "training": false,
+            "junctions": 80,
+            "matched": 52
+          },
+          {
+            "id": "c01420",
+            "training": false,
+            "junctions": 80,
+            "matched": 57
+          },
+          {
+            "id": "c01421",
+            "training": false,
+            "junctions": 80,
+            "matched": 62
+          },
+          {
+            "id": "c01422",
+            "training": false,
+            "junctions": 80,
+            "matched": 64
+          },
+          {
+            "id": "c01423",
+            "training": false,
+            "junctions": 80,
+            "matched": 62
+          },
+          {
+            "id": "c01424",
+            "training": false,
+            "junctions": 80,
+            "matched": 64
+          },
+          {
+            "id": "c01900",
+            "training": false,
+            "junctions": 64,
+            "matched": 54
+          },
+          {
+            "id": "c01901",
+            "training": false,
+            "junctions": 64,
+            "matched": 48
+          },
+          {
+            "id": "c01902",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01903",
+            "training": false,
+            "junctions": 64,
+            "matched": 48
+          },
+          {
+            "id": "c01904",
+            "training": false,
+            "junctions": 64,
+            "matched": 42
+          },
+          {
+            "id": "c01905",
+            "training": false,
+            "junctions": 64,
+            "matched": 41
+          },
+          {
+            "id": "c01906",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01907",
+            "training": false,
+            "junctions": 64,
+            "matched": 43
+          },
+          {
+            "id": "c01908",
+            "training": false,
+            "junctions": 64,
+            "matched": 48
+          },
+          {
+            "id": "c01909",
+            "training": false,
+            "junctions": 64,
+            "matched": 59
+          },
+          {
+            "id": "c01910",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01911",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01912",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01913",
+            "training": false,
+            "junctions": 64,
+            "matched": 48
+          },
+          {
+            "id": "c01914",
+            "training": false,
+            "junctions": 64,
+            "matched": 42
+          },
+          {
+            "id": "c01915",
+            "training": false,
+            "junctions": 64,
+            "matched": 57
+          },
+          {
+            "id": "c01916",
+            "training": false,
+            "junctions": 64,
+            "matched": 40
+          },
+          {
+            "id": "c01917",
+            "training": false,
+            "junctions": 64,
+            "matched": 44
+          },
+          {
+            "id": "c01918",
+            "training": false,
+            "junctions": 64,
+            "matched": 50
+          },
+          {
+            "id": "c01919",
+            "training": false,
+            "junctions": 64,
+            "matched": 53
+          },
+          {
+            "id": "c01920",
+            "training": false,
+            "junctions": 64,
+            "matched": 45
+          },
+          {
+            "id": "c01921",
+            "training": false,
+            "junctions": 64,
+            "matched": 40
+          },
+          {
+            "id": "c01922",
+            "training": false,
+            "junctions": 64,
+            "matched": 50
+          },
+          {
+            "id": "c01923",
+            "training": false,
+            "junctions": 64,
+            "matched": 37
+          },
+          {
+            "id": "c01924",
+            "training": false,
+            "junctions": 64,
+            "matched": 46
+          }
+        ],
+        "limits": "Selected connected covers and their junction registrations only. No independently held-out cohort, forbidden-connection proof, learned edge-marking search, or growth certification."
+      }
+    }
+  ],
+  "limits": "Junction-library-only ablation. Upstream geometry and selected covers fixed from 100-training-frame pilot. Same 100 developmental configurations; not independent holdout. No new tree search or growth result."
+}
