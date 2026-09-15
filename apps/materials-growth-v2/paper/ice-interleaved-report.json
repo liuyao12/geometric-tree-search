@@ -1,0 +1,481 @@
+{
+  "manifest": {
+    "policy": "interleaved",
+    "phases": [
+      "Ih",
+      "II",
+      "VI"
+    ],
+    "budgetSecondsPerFrame": 30,
+    "parentManifestHash": "b074270c1dccee34adf15248dcbb5bc27482c9e3db32443d3b5d3256576c8f32",
+    "configurations": [
+      {
+        "id": "c00000",
+        "phase": "Ih",
+        "split": "train",
+        "sourceFile": "Ih-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "ecbce8c886e7138d8260ce8cbc846567c110aef820af3ad3913dfe24231d3f6a",
+        "geometrySha256": "87ebfeeec64136f2fb196a1aa76100c21a9f6a5da1f6d8b8a7245413a9af5a7a",
+        "shuffleSeed": 3400208584485070931,
+        "atoms": 384,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00400",
+        "phase": "Ih",
+        "split": "test",
+        "sourceFile": "Ih-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "7518664a20d821c6788cba562a2613fa3c263a71f8895c04fd7046c4b57fcd24",
+        "geometrySha256": "6234e225ba1de1c393c6e0254afbd648c165c3f0bfe29ef3f6278ab5cdc1ba9c",
+        "shuffleSeed": 3674121558504636409,
+        "atoms": 384,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00500",
+        "phase": "II",
+        "split": "train",
+        "sourceFile": "II-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "9c92763a8c2b7c2f381f457861df1e8a8aed89005c6e2263091d589d0b8f557e",
+        "geometrySha256": "736480455a15dc6d941a47108ac659036201599d5a3bef1e6f533be52b1c668c",
+        "shuffleSeed": 15038560974236732112,
+        "atoms": 288,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c00900",
+        "phase": "II",
+        "split": "test",
+        "sourceFile": "II-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "6126a8706069834b8cd34888e0865dac2bbd32d7481a76893bc93f886abd8914",
+        "geometrySha256": "24615a275f41042d99e8d7740c2e1659a378ccc1fd6aa69582b4d94d174fddfc",
+        "shuffleSeed": 5421597858388322292,
+        "atoms": 288,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c01000",
+        "phase": "VI",
+        "split": "train",
+        "sourceFile": "VI-train.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "d18f5a67e9ced537377445d7d190c2909112c1e3bef10c60d6a2e202d4575265",
+        "geometrySha256": "679d9dbb7abeed37094f4c2e8bc9a2cc735e260234d5b49ca8b21ee3dca5e425",
+        "shuffleSeed": 6245467879085846415,
+        "atoms": 240,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      },
+      {
+        "id": "c01400",
+        "phase": "VI",
+        "split": "test",
+        "sourceFile": "VI-test.extxyz",
+        "sourceFrame": 0,
+        "sourceSha256": "5b76d17d5f78aaad77ebb15233fe6559ee92873e54e31aebfae22efbea8224c6",
+        "geometrySha256": "8ea2f9b0aee30b67dcee569190d7e0c78af4dfb7b8f7617fd0d21be710ed9ad7",
+        "shuffleSeed": 5883580401000718550,
+        "atoms": 240,
+        "temperatureK": null,
+        "pressurePa": null,
+        "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+        "independentTrajectoryId": null
+      }
+    ],
+    "orderingHash": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe",
+    "scope": "Same registered model and markings; only candidate enumeration order changes. No oracle witness or training cover is supplied to the search policy. Developmental follow-up, not blind validation."
+  },
+  "results": [
+    {
+      "phase": "Ih",
+      "split": "training",
+      "result": {
+        "file": "c00000",
+        "fold": 0,
+        "setupSeconds": 0.4890105840000001,
+        "seconds": 30.007903,
+        "steps": 2831,
+        "selected": 91,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 103,
+        "stats": {
+          "attempts": 2831,
+          "accepted": 2831,
+          "forced": 0,
+          "branches": 134,
+          "backtracks": 2740
+        },
+        "supportStats": {
+          "refreshes": 5572,
+          "passes": 11288,
+          "pairChecks": 64811507,
+          "removed": 6615257
+        },
+        "cloudStats": {
+          "checks": 149612663,
+          "hits": 148566985,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.011961250000000291
+      },
+      "independentCheck": {
+        "file": "c00000",
+        "fold": 0,
+        "selected": 91,
+        "complete": false,
+        "verifiedAssignments": 182,
+        "commonValues": 103,
+        "positiveSupportComponents": 13,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "1742bb7ebb7cb587c89a051463d76c8acc68719e6b97a821af4c909dfbc937a1"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+        "partnerIndexCheck": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "d33e8b919a1f282ac180317c0de0c072e9d43e909b83b64c0ef541926436461e"
+    },
+    {
+      "phase": "Ih",
+      "split": "developmental",
+      "result": {
+        "file": "c00400",
+        "fold": 1,
+        "setupSeconds": 0.4626522079999995,
+        "seconds": 30.007246124999998,
+        "steps": 1052,
+        "selected": 47,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 55,
+        "stats": {
+          "attempts": 1052,
+          "accepted": 1052,
+          "forced": 0,
+          "branches": 56,
+          "backtracks": 1005
+        },
+        "supportStats": {
+          "refreshes": 2058,
+          "passes": 4586,
+          "pairChecks": 92919286,
+          "removed": 3138509
+        },
+        "cloudStats": {
+          "checks": 105526238,
+          "hits": 105322364,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.017587957999996434
+      },
+      "independentCheck": {
+        "file": "c00400",
+        "fold": 1,
+        "selected": 47,
+        "complete": false,
+        "verifiedAssignments": 94,
+        "commonValues": 55,
+        "positiveSupportComponents": 9,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "716ff007ff1400ac1e384147b81bbbc56644e6d48f9bbbb57c9247e0a2322732"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+        "partnerIndexCheck": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "d33e8b919a1f282ac180317c0de0c072e9d43e909b83b64c0ef541926436461e"
+    },
+    {
+      "phase": "II",
+      "split": "training",
+      "result": {
+        "file": "c00500",
+        "fold": 0,
+        "setupSeconds": 0.34433862499999995,
+        "seconds": 30.002732458,
+        "steps": 4312,
+        "selected": 73,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 78,
+        "stats": {
+          "attempts": 4312,
+          "accepted": 4312,
+          "forced": 0,
+          "branches": 113,
+          "backtracks": 4239
+        },
+        "supportStats": {
+          "refreshes": 8552,
+          "passes": 24084,
+          "pairChecks": 50825683,
+          "removed": 13112468
+        },
+        "cloudStats": {
+          "checks": 191214527,
+          "hits": 189885686,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.010570625000000292
+      },
+      "independentCheck": {
+        "file": "c00500",
+        "fold": 0,
+        "selected": 73,
+        "complete": false,
+        "verifiedAssignments": 146,
+        "commonValues": 78,
+        "positiveSupportComponents": 6,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "01e614dd47f6e8b066073dcedef380f7687b9b551fae2bd774e597b99302a51a"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+        "partnerIndexCheck": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "bd478960b179b7852760a22a1836df47c17d7db471760375a616a88bfc692b72"
+    },
+    {
+      "phase": "II",
+      "split": "developmental",
+      "result": {
+        "file": "c00900",
+        "fold": 1,
+        "setupSeconds": 0.2395190419999999,
+        "seconds": 30.008439459,
+        "steps": 2918,
+        "selected": 60,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 62,
+        "stats": {
+          "attempts": 2918,
+          "accepted": 2918,
+          "forced": 2,
+          "branches": 102,
+          "backtracks": 2858
+        },
+        "supportStats": {
+          "refreshes": 5777,
+          "passes": 13091,
+          "pairChecks": 86568502,
+          "removed": 7304797
+        },
+        "cloudStats": {
+          "checks": 131945236,
+          "hits": 131298931,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.007770334000000731
+      },
+      "independentCheck": {
+        "file": "c00900",
+        "fold": 1,
+        "selected": 60,
+        "complete": false,
+        "verifiedAssignments": 120,
+        "commonValues": 62,
+        "positiveSupportComponents": 4,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "fd4124bc8ead55c0343a43eef8e458bf3b61d01fdad78dc8e0d2ec8ee297cc54"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+        "partnerIndexCheck": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "bd478960b179b7852760a22a1836df47c17d7db471760375a616a88bfc692b72"
+    },
+    {
+      "phase": "VI",
+      "split": "training",
+      "result": {
+        "file": "c01000",
+        "fold": 0,
+        "setupSeconds": 0.14884629200000002,
+        "seconds": 30.000773000000002,
+        "steps": 4833,
+        "selected": 35,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 38,
+        "stats": {
+          "attempts": 4833,
+          "accepted": 4833,
+          "forced": 0,
+          "branches": 1550,
+          "backtracks": 4798
+        },
+        "supportStats": {
+          "refreshes": 9632,
+          "passes": 22917,
+          "pairChecks": 103396274,
+          "removed": 10084706
+        },
+        "cloudStats": {
+          "checks": 148593025,
+          "hits": 147845484,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.0049582919999993464
+      },
+      "independentCheck": {
+        "file": "c01000",
+        "fold": 0,
+        "selected": 35,
+        "complete": false,
+        "verifiedAssignments": 70,
+        "commonValues": 38,
+        "positiveSupportComponents": 3,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "101ffd2bfea79b20c0d5fd38324586b4ed533104754312d5ed5f127c6db3fb62"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+        "partnerIndexCheck": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "8d8b761337cc1c041afb38bd16b962be3c8c6ae9098aec121728ce52a4219229"
+    },
+    {
+      "phase": "VI",
+      "split": "developmental",
+      "result": {
+        "file": "c01400",
+        "fold": 1,
+        "setupSeconds": 0.13353133399999934,
+        "seconds": 30.000198958000002,
+        "steps": 11389,
+        "selected": 65,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 68,
+        "stats": {
+          "attempts": 11389,
+          "accepted": 11389,
+          "forced": 0,
+          "branches": 130,
+          "backtracks": 11324
+        },
+        "supportStats": {
+          "refreshes": 22714,
+          "passes": 70455,
+          "pairChecks": 39336144,
+          "removed": 12302513
+        },
+        "cloudStats": {
+          "checks": 224311663,
+          "hits": 221278864,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "interleaved",
+        "rootRollback": true,
+        "undoSeconds": 0.00393895799999882
+      },
+      "independentCheck": {
+        "file": "c01400",
+        "fold": 1,
+        "selected": 65,
+        "complete": false,
+        "verifiedAssignments": 130,
+        "commonValues": 68,
+        "positiveSupportComponents": 5,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "8f202550c514e6b0efe947fe804b9e727aa0e0bd2991f82109ce913e94c61ed6"
+      },
+      "sourceHashes": {
+        "ice-dynamic-factorized-search.mjs": "062f29fbf1d66947aabfff751b7696960dd7424fd93e01d22ceeee008864e7c8",
+        "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+        "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+        "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+        "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+        "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+        "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+        "partnerIndex": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+        "partnerIndexCheck": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b",
+        "supportOrdering": "f2c33ef6da4518eba5b5d3d31622c1309fc813d31b3b7d1b457a6fad83c4223b",
+        "interleavedOrdering": "0513e24af144499873997b10d70d3db2fcca29bdabf8af449d435ddaf8683abe"
+      },
+      "checkHash": "8d8b761337cc1c041afb38bd16b962be3c8c6ae9098aec121728ce52a4219229"
+    }
+  ],
+  "completeRuns": 0
+}

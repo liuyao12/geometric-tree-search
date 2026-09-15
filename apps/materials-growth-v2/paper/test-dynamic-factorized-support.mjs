@@ -1,6 +1,12 @@
 import assert from 'node:assert/strict';
 import {DynamicFactorizedSupportSearch} from './dynamic-factorized-support.mjs';
 import {SupportOrderedFactorizedSearch} from './support-ordered-factorized-search.mjs';
+import {InterleavedFactorizedSearch,diagonalPairs} from './interleaved-factorized-search.mjs';
+for(let a=0;a<9;a++)for(let b=0;b<9;b++){
+ const left=Array.from({length:a},(_,i)=>2*i),right=Array.from({length:b},(_,i)=>3*i);
+ const pairs=[...diagonalPairs(left,right)].map(JSON.stringify);
+ assert.equal(new Set(pairs).size,a*b);assert.deepEqual(pairs.sort(),left.flatMap(i=>right.map(j=>JSON.stringify([i,j]))).sort());
+}
 let seed=19438,states=0,memberships=0,rollbacks=0,solutions=0,iteratorRollbacks=0;
 const random=n=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed%n;};
 const snapshot=e=>JSON.stringify({p:[...e.points],g:[...e.graph].map(([p,v])=>[p,[...v].sort()]).sort(),d:e.blocks.map(b=>b.domain.snapshot()),o:[...e.owners],k:[...e.placed]});
@@ -12,7 +18,7 @@ for(let trial=0;trial<100;trial++){
  }
  const records=model.blocks.flatMap((b,i)=>b.endpointChoices.flatMap((cs,side)=>cs.map((_,j)=>[i,side,j])));
  const neighbors=records.map(([i,s,j])=>records.flatMap(([k,t,l],n)=>model.blocks[i].inventory!==model.blocks[k].inventory&&model.blocks[i].markPoints[s]===model.blocks[k].markPoints[t]&&model.blocks[i].endpointChoices[s][j]===model.blocks[k].endpointChoices[t][l]?[n]:[]));
- const ordered=process.argv.includes('--support-order'),Engine=ordered?SupportOrderedFactorizedSearch:DynamicFactorizedSupportSearch;
+ const ordered=process.argv.includes('--support-order'),interleaved=process.argv.includes('--interleaved'),Engine=interleaved?InterleavedFactorizedSearch:ordered?SupportOrderedFactorizedSearch:DynamicFactorizedSupportSearch;
  const e=new Engine(model,{partnerIndex:ordered||process.argv.includes('--indexed')?{records,neighbors}:null}),all=[];
  for(const b of e.blocks)for(let left=0;left<2;left++)for(let right=0;right<2;right++)all.push({id:e.candidateId(b.index,left,right),b,left,right,marks:new Map([[b.markPoints[0],b.endpointChoices[0][left]],[b.markPoints[1],b.endpointChoices[1][right]]])});
  function audit(){
@@ -52,4 +58,4 @@ for(let trial=0;trial<100;trial++){
  assert.equal(last.kind,trialSolutions?'complete':'exhausted');e.undo(0);assert.equal(snapshot(e),root);
 }
 assert(solutions>0);
-console.log(JSON.stringify({models:100,indexed:process.argv.includes('--indexed'),supportOrdered:process.argv.includes('--support-order'),states,memberships,rollbacks,iteratorRollbacks,fullSelections:312500,solutionsPreserved:solutions,dfsOutcomesMatch:true,scope:'Dynamic fixed-point domains vs explicit decorated candidates; scalar singleton marking model. Cloud/material integration remains separate.'}));
+console.log(JSON.stringify({models:100,indexed:process.argv.includes('--indexed'),supportOrdered:process.argv.includes('--support-order'),interleaved:process.argv.includes('--interleaved'),states,memberships,rollbacks,iteratorRollbacks,fullSelections:312500,solutionsPreserved:solutions,dfsOutcomesMatch:true,scope:'Dynamic fixed-point domains vs explicit decorated candidates; scalar singleton marking model. Cloud/material integration remains separate.'}));

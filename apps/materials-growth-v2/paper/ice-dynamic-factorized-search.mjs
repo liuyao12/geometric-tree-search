@@ -4,19 +4,21 @@ import {createHash} from 'node:crypto';
 import {makeFactorizedCloudSearch} from './factorized-cloud-search.mjs';
 import {DynamicFactorizedSupportSearch} from './dynamic-factorized-support.mjs';
 import {SupportOrderedFactorizedSearch} from './support-ordered-factorized-search.mjs';
+import {InterleavedFactorizedSearch} from './interleaved-factorized-search.mjs';
 const [sourcePath,blocksPath,dest,indexPath,indexCheckPath,ordering='baseline']=process.argv.slice(2),hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
-assert(['baseline','support-rich'].includes(ordering));
+assert(['baseline','support-rich','interleaved'].includes(ordering));
 const source=JSON.parse(readFileSync(sourcePath)),data=JSON.parse(readFileSync(blocksPath));assert.equal(data.sourceModelHash,hash(sourcePath));
 const index=indexPath?JSON.parse(readFileSync(indexPath)):null;
 if(index){const check=JSON.parse(readFileSync(indexCheckPath));assert.equal(index.blocksHash,hash(blocksPath));assert.equal(index.sourceModelHash,hash(sourcePath));assert.equal(check.indexHash,hash(indexPath));assert.equal(check.blocksHash,hash(blocksPath));}
 const sourceHashes=Object.fromEntries(['ice-dynamic-factorized-search.mjs','dynamic-factorized-support.mjs','factorized-cloud-search.mjs','factorized-point-state.mjs','factorized-point-search.mjs','factorized-candidate-domain.mjs','portable-cloud-filter.mjs'].map(n=>[n,hash(new URL(n,import.meta.url))]));
 if(index){sourceHashes.partnerIndex=hash(indexPath);sourceHashes.partnerIndexCheck=hash(indexCheckPath);}
 sourceHashes.supportOrdering=hash(new URL('support-ordered-factorized-search.mjs',import.meta.url));
+sourceHashes.interleavedOrdering=hash(new URL('interleaved-factorized-search.mjs',import.meta.url));
 const snapshot=e=>JSON.stringify({points:[...e.points],graph:[...e.graph].map(([p,v])=>[p,[...v].sort()]).sort(),domains:e.blocks.map(b=>b.domain.snapshot()),owners:[...e.owners],placed:[...e.placed]});
 mkdirSync(dest);const results=[];
 for(const [rowIndex,row] of data.models.entries()){
  const partnerIndex=index?.models[rowIndex]??null;if(partnerIndex){assert.equal(partnerIndex.file,row.file);assert.equal(partnerIndex.fold,row.fold);}
- const setup=performance.now(),e=makeFactorizedCloudSearch(row,source.clouds,{Engine:ordering==='support-rich'?SupportOrderedFactorizedSearch:DynamicFactorizedSupportSearch,partnerIndex});
+ const setup=performance.now(),e=makeFactorizedCloudSearch(row,source.clouds,{Engine:ordering==='interleaved'?InterleavedFactorizedSearch:ordering==='support-rich'?SupportOrderedFactorizedSearch:DynamicFactorizedSupportSearch,partnerIndex});
  const root=snapshot(e),setupSeconds=(performance.now()-setup)/1000;console.log(JSON.stringify({phase:'setup',file:row.file,seconds:setupSeconds,supportStats:e.supportStats}));
  const start=performance.now();let steps=0,last,lastProgress=start;
  while(steps<1000000&&performance.now()-start<30000){
