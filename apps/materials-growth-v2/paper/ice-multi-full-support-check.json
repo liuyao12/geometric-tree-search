@@ -1,0 +1,22 @@
+{
+  "scope": "Independent brute-array and augmenting-path replay of support eliminations.",
+  "proofHash": "5197d9806d506c9554a7cb3af23cc221ada76cc2f0ecdb113cd42d84dc07967b",
+  "filteredHash": "8ffdd814a44170cbaefd1331457fe6e04cbdb5d451d32c4b5202a8ecbccb4d4e",
+  "verifierHash": "313121e9ad3b26106ef737b554e15c1b42a3b5903546c795fba450b277962e44",
+  "membershipModuleHash": "8d68c0d59c537430298a4be2e5ae346a8c077c33433d5267aa93c5cbd49c611d",
+  "results": [
+    {
+      "file": "c01500",
+      "removedRecordsChecked": 107598,
+      "trainingLiftsPreserved": 2,
+      "fullCloud": true
+    },
+    {
+      "file": "c01900",
+      "removedRecordsChecked": 84225,
+      "trainingLiftsPreserved": 0,
+      "fullCloud": true
+    }
+  ],
+  "limits": "Necessary support only; fullCloud records whether pair bijections were required. Surviving candidates need not form a global filling. Finite half-weight model, not a new learned law or continuous-pose certificate."
+}

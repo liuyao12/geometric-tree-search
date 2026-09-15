@@ -8,7 +8,7 @@ for trial in range(100):
         points=r.sample(['a','b','c'],2)
         blocks.append({'id':str(i),'inventory':str(r.randrange(3)),'t':[{'point':p,'value':1} for p in points],'markPoints':points,'endpointChoices':[[{'cloud':r.randrange(3)} for _ in range(2)] for side in (0,1)]})
     row={'capacity':2,'required':['a','b','c'],'cloudRadius':0,'blocks':blocks}
-    result=s.prune(row,clouds);removed+=len(result['removals'])
+    result=s.prune(row,clouds,full_cloud=True);removed+=len(result['removals'])
     for assignment in itertools.product([None,(0,0),(0,1),(1,0),(1,1)],repeat=4):
         states+=1;totals=dict.fromkeys(row['required'],0);marks={};owners=set();valid=True
         for i,choices in enumerate(assignment):
@@ -25,4 +25,11 @@ for trial in range(100):
             solutions+=1
             assert all(choices is None or all(index in result['allowed'][i][side] for side,index in enumerate(choices)) for i,choices in enumerate(assignment))
 assert solutions>0 and removed>0
-print(json.dumps({'models':100,'subsets':states,'solutionsPreserved':solutions,'endpointRemovals':removed,'scope':'Exhaustive scalar singleton-cloud controls; material proof replay separate.'}))
+pair_clouds=[{'colors':[['x'],['x']],'vectors':[[0,0,0],[1,1,0]]},{'colors':[['x'],['x']],'vectors':[[0,1,0],[1,0,0]]}]
+pair_blocks=[{'id':str(i),'inventory':str(i),'t':[{'point':p,'value':1} for p in ['a','b']],'markPoints':['a','b'],'endpointChoices':[[{'cloud':i}],[{'cloud':i}]]} for i in range(2)]
+pair_row={'capacity':2,'required':['a','b'],'cloudRadius':0,'blocks':pair_blocks}
+assert not s.prune(pair_row,pair_clouds)['removals']
+assert len(s.prune(pair_row,pair_clouds,full_cloud=True)['removals'])==4
+pair_clouds[1]['vectors']=list(reversed(pair_clouds[0]['vectors']))
+assert not s.prune(pair_row,pair_clouds,full_cloud=True)['removals']
+print(json.dumps({'models':100,'subsets':states,'solutionsPreserved':solutions,'endpointRemovals':removed,'signatureFalsePositiveRejected':True,'permutedCloudPreserved':True,'scope':'Full-bijection exhaustive scalar controls plus two-point correspondence regressions; material proof replay separate.'}))

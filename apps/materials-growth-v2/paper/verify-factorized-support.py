@@ -1,9 +1,10 @@
-"""Independent brute-array replay of signature-support elimination records."""
-import collections,hashlib,json,pathlib,sys
+"""Independent brute-array and augmenting-path replay of support eliminations."""
+import collections,hashlib,json,pathlib,sys,importlib.util
 import numpy as np
 source_path,blocks_path,filtered_path,proof_path,output=map(pathlib.Path,sys.argv[1:])
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 source=json.loads(source_path.read_text());data=json.loads(blocks_path.read_text());filtered=json.loads(filtered_path.read_text());proof=json.loads(proof_path.read_text())
+spec=importlib.util.spec_from_file_location('cloud',pathlib.Path(__file__).with_name('portable-cloud-markings.py'));cloud=importlib.util.module_from_spec(spec);spec.loader.exec_module(cloud)
 assert proof['originalBlocksHash']==digest(blocks_path) and proof['sourceModelHash']==digest(source_path) and proof['filteredHash']==digest(filtered_path)
 def feature(c):
     groups=collections.defaultdict(list)
@@ -14,6 +15,7 @@ def feature(c):
     return layout,value
 reports=[]
 for row,new,p in zip(data['models'],filtered['models'],proof['proofs'],strict=True):
+    for field in ('file','fold','capacity','required','cloudRadius'):assert row[field]==new[field]
     assert row['capacity']==2 and p['threshold']==2*row['cloudRadius']+1e-8
     for mark,atom in p['anchorWitnesses'].items():
         assert atom in row['required']
@@ -34,12 +36,16 @@ for row,new,p in zip(data['models'],filtered['models'],proof['proofs'],strict=Tr
         i,side,j=token;key,x=records[token]
         if removal['reason']=='empty-other-endpoint':assert count[i,1-side]==0
         else:
-            assert removal['reason']=='no-complement-signature'
+            assert removal['reason']==('no-complement-cloud' if p.get('fullCloud',False) else 'no-complement-signature')
             # No producer KD tree or support routine is used in this check.
             near=np.flatnonzero(live[key] & (np.max(np.abs(arrays[key]-x),axis=1)<=p['threshold']))
             for k in near:
-                other,s,_=groups[key][k]
-                assert count[other,1-s]==0 or row['blocks'][other]['inventory']==row['blocks'][i]['inventory']
+                other,s,other_j=groups[key][k]
+                if count[other,1-s]==0 or row['blocks'][other]['inventory']==row['blocks'][i]['inventory']:continue
+                assert p.get('fullCloud',False)
+                a=source['clouds'][row['blocks'][i]['endpointChoices'][side][j]['cloud']]
+                b=source['clouds'][row['blocks'][other]['endpointChoices'][s][other_j]['cloud']]
+                assert cloud.contains(a,b,p['threshold']) is None
         removed.add(token);count[i,side]-=1;kkey,index=offset[token];live[kkey][index]=False
     allowed=[[[j for j in range(len(b['endpointChoices'][side])) if (i,side,j) not in removed] for side in (0,1)] for i,b in enumerate(row['blocks'])]
     assert allowed==p['allowed']
@@ -52,6 +58,6 @@ for row,new,p in zip(data['models'],filtered['models'],proof['proofs'],strict=Tr
         for old,c in zip(oldlift['selected'],lift['selected'],strict=True):
             assert old['block']==c['block'];b=byid[c['block']]
             assert b['endpointChoices'][0][c['left']]['originalIndex']==old['left'] and b['endpointChoices'][1][c['right']]['originalIndex']==old['right']
-    reports.append({'file':row['file'],'removedRecordsChecked':len(removed),'trainingLiftsPreserved':len(new['trainingLifts'])})
+    reports.append({'file':row['file'],'removedRecordsChecked':len(removed),'trainingLiftsPreserved':len(new['trainingLifts']),'fullCloud':p.get('fullCloud',False)})
     print(json.dumps(reports[-1]),flush=True)
-with output.open('x') as f:json.dump({'scope':__doc__,'proofHash':digest(proof_path),'filteredHash':digest(filtered_path),'verifierHash':digest(pathlib.Path(__file__)),'results':reports,'limits':'Necessary signature relaxation only; surviving cloud pairs need not agree. Finite half-weight model, not a new learned law or continuous-pose certificate.'},f,indent=2)
+with output.open('x') as f:json.dump({'scope':__doc__,'proofHash':digest(proof_path),'filteredHash':digest(filtered_path),'verifierHash':digest(pathlib.Path(__file__)),'membershipModuleHash':digest(pathlib.Path(cloud.__file__)),'results':reports,'limits':'Necessary support only; fullCloud records whether pair bijections were required. Surviving candidates need not form a global filling. Finite half-weight model, not a new learned law or continuous-pose certificate.'},f,indent=2)

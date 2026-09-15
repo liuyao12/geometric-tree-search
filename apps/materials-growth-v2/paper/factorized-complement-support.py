@@ -9,10 +9,13 @@ from collections import defaultdict
 import importlib.util, pathlib
 import numpy as np
 from scipy.spatial import cKDTree
+from scipy.optimize import linear_sum_assignment
+from functools import lru_cache
+import json
 spec=importlib.util.spec_from_file_location('half',pathlib.Path(__file__).with_name('half-cloud-support.py'))
 half=importlib.util.module_from_spec(spec);spec.loader.exec_module(half)
 
-def prune(row,clouds):
+def prune(row,clouds,full_cloud=False):
     assert row['capacity']==2 and 0<=row['cloudRadius']<=1
     blocks=row['blocks'];atoms=defaultdict(set);anchors=defaultdict(set)
     for i,b in enumerate(blocks):
@@ -36,6 +39,18 @@ def prune(row,clouds):
     trees={key:cKDTree(np.asarray([records[k][4] for k in ids])) for key,ids in buckets.items()}
     alive=np.ones(len(records),dtype=bool);counts={(i,s):len(ids) for (i,s),ids in endpoint_records.items()}
     threshold=2*row['cloudRadius']+1e-8;removals=[];passes=0;queries=0
+    vectors={};colors={}
+    @lru_cache(maxsize=200000)
+    def pair_possible(a,b):
+        for c in (a,b):
+            if c not in vectors:
+                vectors[c]=np.asarray(clouds[c]['vectors'])
+                colors[c]=np.asarray([json.dumps(x,sort_keys=True) for x in clouds[c]['colors']])
+        distances=np.linalg.norm(vectors[a][:,None,:]-vectors[b][None,:,:],axis=2)
+        permitted=(colors[a][:,None]==colors[b][None,:]) & (distances<=threshold+1e-10)
+        if permitted.shape[0]!=permitted.shape[1] or not permitted.any(axis=0).all() or not permitted.any(axis=1).all():return False
+        rows,cols=linear_sum_assignment(~permitted)
+        return bool(permitted[rows,cols].all())
     while True:
         passes+=1;changed=False
         for k,(i,side,j,key,x) in enumerate(records):
@@ -46,13 +61,16 @@ def prune(row,clouds):
                 queries+=1;local=trees[key].query_ball_point(x,threshold,p=np.inf)
                 supported=False
                 for index in local:
-                    q=buckets[key][index];other,other_side,_,_,_=records[q]
+                    q=buckets[key][index];other,other_side,other_j,_,_=records[q]
                     if alive[q] and counts[other,1-other_side]>0 and blocks[other]['inventory']!=blocks[i]['inventory']:
+                        if full_cloud:
+                            a=blocks[i]['endpointChoices'][side][j]['cloud'];b=blocks[other]['endpointChoices'][other_side][other_j]['cloud']
+                            if not pair_possible(min(a,b),max(a,b)):continue
                         supported=True;break
                 if supported:continue
-                reason='no-complement-signature'
+                reason='no-complement-cloud' if full_cloud else 'no-complement-signature'
             alive[k]=False;counts[i,side]-=1;changed=True
             removals.append({'block':i,'side':side,'index':j,'reason':reason})
         if not changed:break
     allowed=[[[records[k][2] for k in endpoint_records[i,side] if alive[k]] for side in (0,1)] for i in range(len(blocks))]
-    return {'allowed':allowed,'removals':removals,'anchorWitnesses':witnesses,'threshold':threshold,'passes':passes,'queries':queries}
+    return {'allowed':allowed,'removals':removals,'anchorWitnesses':witnesses,'threshold':threshold,'passes':passes,'queries':queries,'fullCloud':full_cloud,'pairChecks':pair_possible.cache_info().misses}
