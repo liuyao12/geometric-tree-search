@@ -1,0 +1,28 @@
+{
+  "scope": "Independent endpoint-record replay and exact Cartesian cardinalities; no material search performed.",
+  "sourceModelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "blocksHash": "15ec926b6cd0f899d7420c0c0fa0e1992ac3a6e5db1e98182444643cebed4968",
+  "verifierHash": "384923b0949f83628f3ba6378c53e8296a2caf603d580bff9b096a2ae32679a7",
+  "domainHash": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+  "results": [
+    {
+      "file": "c01500",
+      "geometricBlocks": 319,
+      "coupledCandidates": 59051,
+      "factorizedCandidates": "21289071",
+      "storedEndpointChoices": 118102,
+      "largestBlock": "555025",
+      "trainingLiftsPreserved": 1
+    },
+    {
+      "file": "c01900",
+      "geometricBlocks": 272,
+      "coupledCandidates": 48504,
+      "factorizedCandidates": "12640506",
+      "storedEndpointChoices": 97008,
+      "largestBlock": "555025",
+      "trainingLiftsPreserved": 0
+    }
+  ],
+  "limits": "All coupled candidates embed as diagonal choices; off-diagonal choices define a broader factorized hypothesis. No false-positive rate, continuous-pose completeness, runtime inventory/cloud-constraint integration or speedup claim."
+}

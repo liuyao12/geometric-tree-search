@@ -1,5 +1,22 @@
 # Next experiment: factorized endpoint unions in reference search
 
+## Implemented foundation (not a search result)
+
+`factorized-candidate-domain.mjs` stores the decorated Cartesian product itself,
+not one projected geometric choice. It supports exact BigInt cardinality,
+separable endpoint filters, sparse pair exclusions, whole-block disabling,
+lazy enumeration and trailed rollback. The supplied-frontier scheduler matches
+the existing linear reference comparator on 20,000 randomized states. Explicit
+candidate membership checks cover 717,400 cases. Shared inventory, point totals,
+cloud legality, generations and the search stack are not implemented by this
+domain class and still require end-to-end integration/lockstep tests.
+
+The storage compiler retains duplicate endpoint values and source identities;
+all old coupled choices embed on the diagonal. The multi-cover c01500 block model
+represents 41,672,906 choices with 186,368 endpoint records. Independent replay
+checks every record and retained training lift. This does not show a runtime
+speedup or validate the larger factorized model's non-connection specificity.
+
 The coupled raw-cloud pilot remains unresolved for both one-cover and multi-cover
 libraries on c01500/c01900 at 30 seconds. Do not infer factorized search performance
 from these runs: their markings still require training-observed endpoint pairs.
