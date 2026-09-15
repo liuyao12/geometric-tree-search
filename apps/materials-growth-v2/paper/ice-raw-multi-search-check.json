@@ -1,0 +1,28 @@
+{
+  "scope": "Independent full-pool and final-state checks for raw-library ice searches.",
+  "modelHash": "cf64e69dd65366e69275174fc9e52d66daea52a53c2a1b8da1723aaaabea4631",
+  "portableHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "registeredCandidatesChecked": 175862,
+  "results": [
+    {
+      "id": "c01500",
+      "enabled": true,
+      "status": "budget-unknown",
+      "selected": 37,
+      "complete": false,
+      "positiveSupportComponents": null,
+      "verifiedCommonValues": 38
+    },
+    {
+      "id": "c01900",
+      "enabled": true,
+      "status": "budget-unknown",
+      "selected": 47,
+      "complete": false,
+      "positiveSupportComponents": null,
+      "verifiedCommonValues": 48
+    }
+  ],
+  "limits": "Coupled raw-cloud markings, full registered candidate pool only. Cloud witness membership checked with separate Python implementation; runtime graph/scheduler/rollback audits are recorded by the unchanged JS harness. No independent continuous-pose completeness or connected-growth claim."
+}

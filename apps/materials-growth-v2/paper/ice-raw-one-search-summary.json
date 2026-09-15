@@ -1,0 +1,62 @@
+{
+  "scope": "Raw-cloud learned library, coupled endpoints, all finite registered variants and shared inventory. Marked-only 30-second diagnostic using global dead/forced then earliest generation. No support preprocessing or dynamic complement propagation. Common-cloud witnesses required for completion; unknown is not impossible. Not complete continuous-pose search or blind growth.",
+  "modelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "sourceHashes": {
+    "ice-raw-library-search.mjs": "79edf1690f80e5075695850eb0f63fc90eface46faa5892c017309775e5f26ed",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635"
+  },
+  "results": [
+    {
+      "fold": 0,
+      "file": "c01500",
+      "enabled": true,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.5929082920000001,
+      "seconds": 30.156797167,
+      "steps": 304,
+      "stats": {
+        "attempts": 304,
+        "accepted": 304,
+        "forced": 13,
+        "branches": 49,
+        "backtracks": 256,
+        "eliminated": 254982,
+        "checks": 33482221
+      },
+      "selected": 37,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 38,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "c01900",
+      "enabled": true,
+      "maxSeconds": 30,
+      "maxSteps": 1000000,
+      "setupSeconds": 0.46519458400000074,
+      "seconds": 30.064211583000002,
+      "steps": 515,
+      "stats": {
+        "attempts": 515,
+        "accepted": 515,
+        "forced": 9,
+        "branches": 92,
+        "backtracks": 451,
+        "eliminated": 278008,
+        "checks": 47291915
+      },
+      "selected": 55,
+      "status": "budget-unknown",
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 56,
+      "rootRollback": true
+    }
+  ]
+}
