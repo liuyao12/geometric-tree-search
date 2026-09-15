@@ -1,0 +1,108 @@
+{
+  "scope": "Independently verify registered geometry, training lifts, and search witnesses.\n\nRebuild integer point totals and scalar marks. Verify cloud witnesses with the\nseparate Python membership implementation, not the JavaScript search filter.\n",
+  "modelHash": "8ff0cad28e3121bd4fcb4ccebcd94680b331d08c096cc37b06b96968e24573e8",
+  "portableHash": "3b0377f8e237a0c65721c6d9f441d176b191bf0f198bd74d758f0ce1018c0b02",
+  "registeredVariantsChecked": 65394,
+  "trainingLiftsChecked": 18,
+  "maxAnchorResidualAngstrom": 0.028813529819279936,
+  "maxCommonValueResidualAngstrom": 0.02887686281525598,
+  "results": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "portableEnabled": false,
+      "status": "verified finite registered filling",
+      "selected": 108,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "portableEnabled": true,
+      "status": "verified finite registered filling",
+      "selected": 108,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "portableEnabled": false,
+      "status": "verified finite registered filling",
+      "selected": 1458,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "portableEnabled": true,
+      "status": "verified finite registered filling",
+      "selected": 1458,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "portableEnabled": false,
+      "status": "budget-unknown",
+      "selected": 693,
+      "scalarComplete": false,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "beta-B106.cif",
+      "portableEnabled": true,
+      "status": "budget-unknown",
+      "selected": 435,
+      "scalarComplete": false,
+      "verifiedCommonValues": 14
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "portableEnabled": false,
+      "status": "verified finite registered filling",
+      "selected": 324,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "portableEnabled": true,
+      "status": "verified finite registered filling",
+      "selected": 324,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "portableEnabled": false,
+      "status": "verified finite registered filling",
+      "selected": 2916,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "portableEnabled": true,
+      "status": "verified finite registered filling",
+      "selected": 2916,
+      "scalarComplete": true,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "portableEnabled": false,
+      "status": "budget-unknown",
+      "selected": 1612,
+      "scalarComplete": false,
+      "verifiedCommonValues": 0
+    },
+    {
+      "file": "tau-B106.cif",
+      "portableEnabled": true,
+      "status": "budget-unknown",
+      "selected": 1183,
+      "scalarComplete": false,
+      "verifiedCommonValues": 26
+    }
+  ],
+  "limits": "Finite pose registrations remain proposed using the old target tables. Missing cloud witnesses are not certified legal markings. No continuous-pose completeness or independent family transfer claim."
+}
