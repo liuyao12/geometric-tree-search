@@ -47,6 +47,9 @@ async function init(){
     if(!frame||!mesh)return;const state=current.states[policy.value],count=Number(reveal.value);totals=coverage(state,current.atoms,count);const dummy=new THREE.Object3D(),tint=new THREE.Color();
     frame.atoms.forEach((a,i)=>{const t=totals[i];let radius=a.species==='H'?.19:.29;radius*=t===0?.6:1;if(i===selected)radius*=1.35;dummy.position.set(...a.position);dummy.scale.setScalar(radius);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);tint.set(i===selected?'#58c4ff':t===0?'#49636d':color.value==='element'?(a.species==='O'?'#f15461':'#f5f3e9'):t===1?'#f5b44a':'#4cdbc0');mesh.setColorAt(i,tint);});
     mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true;
+    // The initial camera render can cache the default instances' origin bound.
+    // Recompute after positioning/scaling so picking uses the displayed atoms.
+    mesh.computeBoundingSphere();
     const full=totals.filter(t=>t===2).length,half=totals.filter(t=>t===1).length,empty=totals.filter(t=>t===0).length;
     q('[data-ice-count]').textContent=`${count} / ${state.supports.length} saved placements`;
     status.textContent=`${full} fully filled · ${half} half-filled · ${empty} untouched atom sites. ${count===state.supports.length?`${state.commonValues} verified common marking values in this saved final state.`:'Partial reveal only; common markings were verified for the saved final state.'}`;
