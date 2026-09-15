@@ -1,0 +1,29 @@
+{
+  "sourceHashes": {
+    "coordinates.json": "54e5fc81f08df313c42cd8520adfea3a900ed2488af81c96a63753f99fd8bb6b",
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "gcts-ice-Ih-registered-model-v1.json": "44b784d6bb2843e6865cf7221411297a5140ba113efeafb29608c7148e944fdd",
+    "gcts-ice-Ih-composed-loop-v1.json": "003aaf263d9f24ab1c2afe6d086e310c7b0dfdbb43619bbffe575196b18c9edb"
+  },
+  "verifierHash": "9a0e311f05e916d4d152eb2506a4e35e49ab6b112e23446158c122ce96b4516d",
+  "results": [
+    {
+      "id": "c00400",
+      "enabled": true,
+      "selectedPlacements": 0,
+      "complete": false,
+      "filledAtoms": 0,
+      "halfFilledAtoms": 0,
+      "untouchedAtoms": 384,
+      "supportComponents": 0,
+      "maxPositionErrorAngstrom": 0.0,
+      "checkedFieldPairs": 0,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 0.0
+    }
+  ],
+  "limits": "Independent numerical replay of selected geometry, integer t, field assignments and connectivity counts. No proof of complete registration enumeration, runtime graph/scheduling, absence of solutions on failure, complete continuous-space growth or same-condition provenance."
+}

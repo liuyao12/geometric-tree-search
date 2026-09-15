@@ -1,0 +1,10 @@
+{
+  "resultHash": "003aaf263d9f24ab1c2afe6d086e310c7b0dfdbb43619bbffe575196b18c9edb",
+  "modelHash": "44b784d6bb2843e6865cf7221411297a5140ba113efeafb29608c7148e944fdd",
+  "verifierHash": "4895852bfa6bf9c259fa62ed148d69b83e67f3d0648379f102f40ff76347667c",
+  "verifiedCores": 11,
+  "composedCores": 6,
+  "checkedBlockers": 44,
+  "maximumProofDepth": 4,
+  "limits": "Exact integer t-capacity and consumed inventory leaves, with strictly earlier verified exclusions. Certifies exclusions for this finite pool only, not search chronology, timing, marked-state equivalence, pose completeness or transfer to other data."
+}

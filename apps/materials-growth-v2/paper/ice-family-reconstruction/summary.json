@@ -1,0 +1,116 @@
+{
+  "rows": [
+    {
+      "id": "c01400",
+      "enabled": true,
+      "selectedPlacements": 80,
+      "complete": true,
+      "filledAtoms": 240,
+      "halfFilledAtoms": 0,
+      "untouchedAtoms": 0,
+      "supportComponents": 4,
+      "maxPositionErrorAngstrom": 0.14901267785478803,
+      "checkedFieldPairs": 80,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 1.1705174330657282,
+      "status": "verified-finite-filling",
+      "registeredPlacements": 229,
+      "missingRegistrations": 6,
+      "decoratedCandidates": 13612,
+      "verifiedCores": 51,
+      "totalRounds": 52,
+      "cumulativeSeconds": 71.750972375,
+      "peakSavedRoundPlacementCount": 80,
+      "distinctSelectedDecorations": 39,
+      "artifactHashes": {
+        "gcts-ice-gaussian-registered-model-v1.json": "051bad0c4378b374302869ed2323e3ad8421f583948d4abbe53cb8d80a953df2",
+        "gcts-ice-composed-core-loop-v2.json": "0120a1749e61c5d938eed5846c9db99f321e6a936925956216db4ad89f2e6e3d",
+        "gcts-ice-composed-core-state-check-v2.json": "4c6b4290fef3476c4a0e3da474bf4b20ab8a8ca5e68ee9782e6394ef465ba066",
+        "gcts-ice-composed-core-proof-check-v2.json": "eaa29930cbcf566f855ff515402536a17b42c3a2306950b2087c702f12f728b8"
+      }
+    },
+    {
+      "id": "c00900",
+      "enabled": true,
+      "selectedPlacements": 23,
+      "complete": false,
+      "filledAtoms": 48,
+      "halfFilledAtoms": 42,
+      "untouchedAtoms": 198,
+      "supportComponents": 7,
+      "maxPositionErrorAngstrom": 0.14598431979671855,
+      "checkedFieldPairs": 16,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 1.1945180894897844,
+      "status": "incomplete-unknown",
+      "registeredPlacements": 297,
+      "missingRegistrations": 4,
+      "decoratedCandidates": 23036,
+      "verifiedCores": 39,
+      "totalRounds": 40,
+      "cumulativeSeconds": 120.40639766599999,
+      "peakSavedRoundPlacementCount": 94,
+      "distinctSelectedDecorations": 21,
+      "artifactHashes": {
+        "gcts-ice-II-registered-model-v1.json": "d7008f89c5d859e830c76d8d8df39184b9fee739afd4dcf84c0e02e4ae33cb7e",
+        "gcts-ice-II-composed-loop-v1.json": "4291d7622f75322f1171acf1ae3ea04b8a2910466a6784bf73757515b95890a0",
+        "gcts-ice-II-composed-state-check-v1.json": "724499815f2b25d1b2b8ff495fa955d6cae44e2e5930c93c0aca0b4e3104f06e",
+        "gcts-ice-II-composed-proof-check-v1.json": "930bd73c426d724790c90992c4df54101b2d405a70e07dec5ef02d2b4d265f57"
+      }
+    },
+    {
+      "id": "c00400",
+      "enabled": true,
+      "selectedPlacements": 0,
+      "complete": false,
+      "filledAtoms": 0,
+      "halfFilledAtoms": 0,
+      "untouchedAtoms": 384,
+      "supportComponents": 0,
+      "maxPositionErrorAngstrom": 0.0,
+      "checkedFieldPairs": 0,
+      "incompatiblePairs": 0,
+      "maxFieldDistance": 0.0,
+      "status": "incomplete-unknown",
+      "registeredPlacements": 257,
+      "missingRegistrations": 1,
+      "decoratedCandidates": 83212,
+      "verifiedCores": 11,
+      "totalRounds": 12,
+      "cumulativeSeconds": 122.131952167,
+      "peakSavedRoundPlacementCount": 100,
+      "distinctSelectedDecorations": 0,
+      "artifactHashes": {
+        "gcts-ice-Ih-registered-model-v1.json": "44b784d6bb2843e6865cf7221411297a5140ba113efeafb29608c7148e944fdd",
+        "gcts-ice-Ih-composed-loop-v1.json": "003aaf263d9f24ab1c2afe6d086e310c7b0dfdbb43619bbffe575196b18c9edb",
+        "gcts-ice-Ih-composed-state-check-v1.json": "0e4202f40000fb80e98baa2e78d24b61166d8cbdf2b8b27658f11ff8a60074f1",
+        "gcts-ice-Ih-composed-proof-check-v1.json": "bc08a1c45fd77db38761c5d1c0a015078218ba2d0b4a1ae50074d802e8c84f8b"
+      }
+    }
+  ],
+  "sharedSourceHashes": {
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba"
+  },
+  "selectedDecorationOverlap": [
+    {
+      "first": "c01400",
+      "second": "c00900",
+      "sharedSelectedDecorations": 3
+    },
+    {
+      "first": "c01400",
+      "second": "c00400",
+      "sharedSelectedDecorations": 0
+    },
+    {
+      "first": "c00900",
+      "second": "c00400",
+      "sharedSelectedDecorations": 0
+    }
+  ],
+  "codeHash": "97826b630b8dcb9260b41c76e951e1514d3630e6fe2ba86a2357b755894fcc54",
+  "limits": "Developmental cases, finite assigned-base registrations at known atom positions. Frozen library and radius, but not established identical conditions or independent trajectories. Incomplete states may be dead ends, not extendable growth. Proof-assisted search is not a learned-marking speedup. No pose completeness or growth beyond input."
+}

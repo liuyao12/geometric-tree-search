@@ -20,7 +20,7 @@
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
 <script type="module" src="preliminary-figure.mjs"></script>
-<link rel="stylesheet" href="preliminary-report.css" />
+<link rel="stylesheet" href="preliminary-report.css?v=2" />
   </head>
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
@@ -28,6 +28,17 @@
 <section id="preliminary-report" data-report-version="ice-phase-expansion-2026-09-15"><p class="eyebrow">PROGRESS REPORT · 15 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
 <h2>Learn local connections.<br>Test global reconstruction.</h2>
 <aside class="callout" id="ice-proof-reconstruction"><strong>New: inspect a verified 240-atom ice VI filling in 3D.</strong>
+<details id="ice-family-followup"><summary>Family-wide follow-up: the frozen library also covers Ih and II, but marked search has not reconstructed them</summary>
+<p>Two further developmental configurations use the same dictionary, field library, fit-frame list, tolerance and radius. Neither receives a selected cover or ice VI's exclusion proofs. Each starts a fresh proof-assisted search with a 120-second / 40-round segment; these are feasibility tests, not matched performance comparisons with the two-segment VI result.</p>
+<div class="table-responsive"><table><thead><tr><th>Configuration</th><th>Decorated candidates</th><th>Checked exclusions</th><th>Marked search outcome</th></tr></thead><tbody>
+<tr><td>Ice VI · 240 atoms</td><td>13,612</td><td>51</td><td>Verified full filling; four support components</td></tr>
+<tr><td>Ice II · 288 atoms</td><td>23,036</td><td>39</td><td>Budget unknown; 48 atoms fully filled in final snapshot</td></tr>
+<tr><td>Ice Ih · 384 atoms</td><td>83,212</td><td>11</td><td>Budget unknown; restart exhausted budget before placing an atom in final snapshot</td></tr>
+</tbody></table></div>
+<p>The Ih run reached 100 placements in an earlier round, but that dead-end placement set was not retained for independent replay; it is not a verified reconstruction. This exposes a checkpoint limitation as well as search cost. After the searches stopped, a separate integer solver found complete <em>unmarked</em> fillings for both new pools. Those witnesses were never supplied to tree search and do not establish Gaussian marking compatibility.</p>
+<p><strong>Conclusion:</strong> one reconstructed phase is not yet family-wide reconstruction. Shared-library identity is verified; identical-condition and independent-trajectory provenance are still unestablished. General anchor/t learning, useful marking selectivity and extension beyond known positions remain open.</p>
+<p><a href="ice-family-reconstruction/summary.json">Hash-linked three-case summary</a> · <a href="ice-family-reconstruction/README.md">Protocol and limitations</a> · <a href="ice-family-reconstruction/II-results.json">II search</a> · <a href="ice-family-reconstruction/Ih-results.json">Ih search</a> · <a href="ice-family-reconstruction/II-unmarked-feasibility.json">II unmarked diagnostic</a> · <a href="ice-family-reconstruction/Ih-unmarked-feasibility.json">Ih unmarked diagnostic</a></p>
+</details>
 <p>The reference search with checked geometric exclusions now finds 80 placements filling every atomic target. Independent replay verifies all t-sums, all 80 overlap-field pairs, and a maximum positional error of 0.1491 Å. No selected cover or mixed-integer solver answer was supplied to this search.</p>
 <p>The run resumes the earlier 40-proof experiment and reaches 51 verified exclusions after 52 restarted searches: 71.75 seconds cumulative acquisition/search time, excluding parsing and independent audits. This is <strong>complete finite reconstruction, not connected growth</strong>: the selected supports form four components. The registered candidate pool uses known target positions; continuous-pose completeness, growth beyond the sample and a learned-marking speedup remain unestablished.</p>
 <p><a href="#ice-inspection">Rotate the actual configuration and reveal its saved placements ↓</a> · <a href="ice-composed-reconstruction/results.json">Search and proof record</a> · <a href="ice-composed-reconstruction/state-check.json">Independent geometry and field replay</a> · <a href="ice-composed-reconstruction/proof-check.json">51 checked exclusions</a> · <a href="ice-composed-reconstruction/README.md">Scope and reproduction evidence</a></p>

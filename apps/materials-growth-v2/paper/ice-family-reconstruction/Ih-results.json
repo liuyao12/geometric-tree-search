@@ -1,0 +1,695 @@
+{
+  "scope": "Restarted marked reference search with ordered, validated geometry-only proof composition. No selected cover or feasibility-solver witness supplied.",
+  "sourceHash": "44b784d6bb2843e6865cf7221411297a5140ba113efeafb29608c7148e944fdd",
+  "kernelHash": "747db2cb5e626968d4bbf18fc1cb804b4a66ad2f177f3d5b097bc4b53257ba85",
+  "resumeHash": null,
+  "resumeCheckHash": null,
+  "initialCoreCount": 0,
+  "totalRounds": 12,
+  "cumulativeSeconds": 122.131952167,
+  "codeHashes": {
+    "ice-composed-core-loop.mjs": "693d760483f2f785247bb5b5c1e110a750c01707a7fc64c076e66900e09a89ae",
+    "gaussian-point-filter.mjs": "48a6b00d11d78f5130783b3a811706878b883654ef6b90c3198c607ac8518160",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "verified-geometry-cores.mjs": "c538ac8491ea8273cab1d972a38bbed049f6101d5928e140c8f14cbee4600a7e",
+    "composed-geometry-core.mjs": "34a5fbf82f372eec864aef804ff971ab66c091bd633a89b0fb6d19b8fcfa310d"
+  },
+  "cores": [
+    {
+      "owners": [
+        "edge:120",
+        "edge:131",
+        "edge:145",
+        "edge:204",
+        "edge:245",
+        "edge:97",
+        "edge:99"
+      ],
+      "point": "a:169",
+      "blockers": [
+        {
+          "inventory": "edge:133",
+          "reason": "capacity",
+          "point": "a:42"
+        },
+        {
+          "inventory": "edge:147",
+          "reason": "capacity",
+          "point": "a:48"
+        },
+        {
+          "inventory": "edge:204",
+          "reason": "consumed"
+        },
+        {
+          "inventory": "edge:248",
+          "reason": "capacity",
+          "point": "a:177"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "owners": [
+        "edge:120",
+        "edge:131",
+        "edge:145",
+        "edge:245",
+        "edge:97",
+        "edge:99"
+      ],
+      "point": "a:169",
+      "blockers": [
+        {
+          "inventory": "edge:133",
+          "reason": "capacity",
+          "point": "a:42"
+        },
+        {
+          "inventory": "edge:147",
+          "reason": "capacity",
+          "point": "a:48"
+        },
+        {
+          "inventory": "edge:204",
+          "reason": "prior-core",
+          "dependency": 0
+        },
+        {
+          "inventory": "edge:248",
+          "reason": "capacity",
+          "point": "a:177"
+        }
+      ],
+      "dependencies": [
+        0
+      ]
+    },
+    {
+      "owners": [
+        "edge:120",
+        "edge:131",
+        "edge:145",
+        "edge:146",
+        "edge:204",
+        "edge:245",
+        "edge:97"
+      ],
+      "point": "a:169",
+      "blockers": [
+        {
+          "inventory": "edge:133",
+          "reason": "capacity",
+          "point": "a:42"
+        },
+        {
+          "inventory": "edge:147",
+          "reason": "capacity",
+          "point": "a:48"
+        },
+        {
+          "inventory": "edge:204",
+          "reason": "consumed"
+        },
+        {
+          "inventory": "edge:248",
+          "reason": "capacity",
+          "point": "a:177"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "owners": [
+        "edge:120",
+        "edge:131",
+        "edge:145",
+        "edge:146",
+        "edge:245",
+        "edge:97"
+      ],
+      "point": "a:169",
+      "blockers": [
+        {
+          "inventory": "edge:133",
+          "reason": "capacity",
+          "point": "a:42"
+        },
+        {
+          "inventory": "edge:147",
+          "reason": "capacity",
+          "point": "a:48"
+        },
+        {
+          "inventory": "edge:204",
+          "reason": "prior-core",
+          "dependency": 2
+        },
+        {
+          "inventory": "edge:248",
+          "reason": "capacity",
+          "point": "a:177"
+        }
+      ],
+      "dependencies": [
+        2
+      ]
+    },
+    {
+      "owners": [
+        "edge:104",
+        "edge:196",
+        "edge:211",
+        "edge:29",
+        "edge:5",
+        "edge:63",
+        "edge:64"
+      ],
+      "point": "a:89",
+      "blockers": [
+        {
+          "inventory": "edge:62",
+          "reason": "capacity",
+          "point": "a:18"
+        },
+        {
+          "inventory": "edge:210",
+          "reason": "capacity",
+          "point": "a:191"
+        },
+        {
+          "inventory": "edge:211",
+          "reason": "consumed"
+        },
+        {
+          "inventory": "edge:212",
+          "reason": "capacity",
+          "point": "a:276"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "owners": [
+        "edge:104",
+        "edge:196",
+        "edge:29",
+        "edge:5",
+        "edge:63",
+        "edge:64"
+      ],
+      "point": "a:89",
+      "blockers": [
+        {
+          "inventory": "edge:62",
+          "reason": "capacity",
+          "point": "a:18"
+        },
+        {
+          "inventory": "edge:210",
+          "reason": "capacity",
+          "point": "a:191"
+        },
+        {
+          "inventory": "edge:211",
+          "reason": "prior-core",
+          "dependency": 4
+        },
+        {
+          "inventory": "edge:212",
+          "reason": "capacity",
+          "point": "a:276"
+        }
+      ],
+      "dependencies": [
+        4
+      ]
+    },
+    {
+      "owners": [
+        "edge:104",
+        "edge:163",
+        "edge:186",
+        "edge:196",
+        "edge:218",
+        "edge:220",
+        "edge:29",
+        "edge:38",
+        "edge:5",
+        "edge:63"
+      ],
+      "point": "a:239",
+      "blockers": [
+        {
+          "inventory": "edge:38",
+          "reason": "consumed"
+        },
+        {
+          "inventory": "edge:64",
+          "reason": "prior-core",
+          "dependency": 5
+        },
+        {
+          "inventory": "edge:187",
+          "reason": "capacity",
+          "point": "a:206"
+        },
+        {
+          "inventory": "edge:219",
+          "reason": "capacity",
+          "point": "a:94"
+        }
+      ],
+      "dependencies": [
+        5
+      ]
+    },
+    {
+      "owners": [
+        "edge:104",
+        "edge:163",
+        "edge:186",
+        "edge:196",
+        "edge:218",
+        "edge:220",
+        "edge:29",
+        "edge:5",
+        "edge:63"
+      ],
+      "point": "a:239",
+      "blockers": [
+        {
+          "inventory": "edge:38",
+          "reason": "prior-core",
+          "dependency": 6
+        },
+        {
+          "inventory": "edge:64",
+          "reason": "prior-core",
+          "dependency": 5
+        },
+        {
+          "inventory": "edge:187",
+          "reason": "capacity",
+          "point": "a:206"
+        },
+        {
+          "inventory": "edge:219",
+          "reason": "capacity",
+          "point": "a:94"
+        }
+      ],
+      "dependencies": [
+        6,
+        5
+      ]
+    },
+    {
+      "owners": [
+        "edge:123",
+        "edge:125",
+        "edge:184",
+        "edge:20",
+        "edge:257",
+        "edge:32",
+        "edge:81"
+      ],
+      "point": "a:112",
+      "blockers": [
+        {
+          "inventory": "edge:33",
+          "reason": "capacity",
+          "point": "a:8"
+        },
+        {
+          "inventory": "edge:183",
+          "reason": "capacity",
+          "point": "a:108"
+        },
+        {
+          "inventory": "edge:184",
+          "reason": "consumed"
+        },
+        {
+          "inventory": "edge:185",
+          "reason": "capacity",
+          "point": "a:329"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "owners": [
+        "edge:123",
+        "edge:125",
+        "edge:20",
+        "edge:257",
+        "edge:32",
+        "edge:81"
+      ],
+      "point": "a:112",
+      "blockers": [
+        {
+          "inventory": "edge:33",
+          "reason": "capacity",
+          "point": "a:8"
+        },
+        {
+          "inventory": "edge:183",
+          "reason": "capacity",
+          "point": "a:108"
+        },
+        {
+          "inventory": "edge:184",
+          "reason": "prior-core",
+          "dependency": 8
+        },
+        {
+          "inventory": "edge:185",
+          "reason": "capacity",
+          "point": "a:329"
+        }
+      ],
+      "dependencies": [
+        8
+      ]
+    },
+    {
+      "owners": [
+        "edge:163",
+        "edge:186",
+        "edge:219",
+        "edge:35",
+        "edge:36",
+        "edge:62",
+        "edge:63"
+      ],
+      "point": "a:239",
+      "blockers": [
+        {
+          "inventory": "edge:38",
+          "reason": "capacity",
+          "point": "a:125"
+        },
+        {
+          "inventory": "edge:64",
+          "reason": "capacity",
+          "point": "a:18"
+        },
+        {
+          "inventory": "edge:187",
+          "reason": "capacity",
+          "point": "a:206"
+        },
+        {
+          "inventory": "edge:219",
+          "reason": "consumed"
+        }
+      ],
+      "dependencies": []
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "priorCores": 0,
+      "setupSeconds": 0.6016595,
+      "searchAndDerivationSeconds": 6.816546708,
+      "steps": 55,
+      "stats": {
+        "attempts": 55,
+        "accepted": 55,
+        "forced": 0,
+        "branches": 55,
+        "backtracks": 0,
+        "eliminated": 30361,
+        "checks": 4826351
+      },
+      "selected": 55,
+      "scalarComplete": false,
+      "newCoreSize": 7,
+      "newCoreDependencies": [],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 1,
+      "priorCores": 1,
+      "setupSeconds": 0.39286691600000084,
+      "searchAndDerivationSeconds": 6.344850708999998,
+      "steps": 54,
+      "stats": {
+        "attempts": 54,
+        "accepted": 54,
+        "forced": 0,
+        "branches": 54,
+        "backtracks": 0,
+        "eliminated": 30362,
+        "checks": 4743138
+      },
+      "selected": 54,
+      "scalarComplete": false,
+      "newCoreSize": 6,
+      "newCoreDependencies": [
+        0
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 2,
+      "priorCores": 2,
+      "setupSeconds": 0.3994874170000003,
+      "searchAndDerivationSeconds": 7.094803666999996,
+      "steps": 55,
+      "stats": {
+        "attempts": 55,
+        "accepted": 55,
+        "forced": 0,
+        "branches": 55,
+        "backtracks": 0,
+        "eliminated": 29430,
+        "checks": 4826351
+      },
+      "selected": 55,
+      "scalarComplete": false,
+      "newCoreSize": 7,
+      "newCoreDependencies": [],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 3,
+      "priorCores": 3,
+      "setupSeconds": 0.4129283330000035,
+      "searchAndDerivationSeconds": 7.53243075,
+      "steps": 54,
+      "stats": {
+        "attempts": 54,
+        "accepted": 54,
+        "forced": 0,
+        "branches": 54,
+        "backtracks": 0,
+        "eliminated": 29431,
+        "checks": 4743138
+      },
+      "selected": 54,
+      "scalarComplete": false,
+      "newCoreSize": 6,
+      "newCoreDependencies": [
+        2
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 4,
+      "priorCores": 4,
+      "setupSeconds": 0.42657216699999845,
+      "searchAndDerivationSeconds": 11.418461625000004,
+      "steps": 96,
+      "stats": {
+        "attempts": 96,
+        "accepted": 96,
+        "forced": 0,
+        "branches": 96,
+        "backtracks": 0,
+        "eliminated": 61424,
+        "checks": 8238084
+      },
+      "selected": 96,
+      "scalarComplete": false,
+      "newCoreSize": 7,
+      "newCoreDependencies": [],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 5,
+      "priorCores": 5,
+      "setupSeconds": 0.4108262499999982,
+      "searchAndDerivationSeconds": 11.909037750000003,
+      "steps": 95,
+      "stats": {
+        "attempts": 95,
+        "accepted": 95,
+        "forced": 0,
+        "branches": 95,
+        "backtracks": 0,
+        "eliminated": 61425,
+        "checks": 8154871
+      },
+      "selected": 95,
+      "scalarComplete": false,
+      "newCoreSize": 6,
+      "newCoreDependencies": [
+        4
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 6,
+      "priorCores": 6,
+      "setupSeconds": 0.40694237499999875,
+      "searchAndDerivationSeconds": 7.965941999999996,
+      "steps": 57,
+      "stats": {
+        "attempts": 57,
+        "accepted": 57,
+        "forced": 0,
+        "branches": 57,
+        "backtracks": 0,
+        "eliminated": 32114,
+        "checks": 4992777
+      },
+      "selected": 57,
+      "scalarComplete": false,
+      "newCoreSize": 10,
+      "newCoreDependencies": [
+        5
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 7,
+      "priorCores": 7,
+      "setupSeconds": 0.40329820800000743,
+      "searchAndDerivationSeconds": 7.776950624999998,
+      "steps": 56,
+      "stats": {
+        "attempts": 56,
+        "accepted": 56,
+        "forced": 0,
+        "branches": 56,
+        "backtracks": 0,
+        "eliminated": 32115,
+        "checks": 4909564
+      },
+      "selected": 56,
+      "scalarComplete": false,
+      "newCoreSize": 9,
+      "newCoreDependencies": [
+        6,
+        5
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 8,
+      "priorCores": 8,
+      "setupSeconds": 0.4022878329999949,
+      "searchAndDerivationSeconds": 8.968778458000001,
+      "steps": 63,
+      "stats": {
+        "attempts": 63,
+        "accepted": 63,
+        "forced": 0,
+        "branches": 63,
+        "backtracks": 0,
+        "eliminated": 35796,
+        "checks": 5492055
+      },
+      "selected": 63,
+      "scalarComplete": false,
+      "newCoreSize": 7,
+      "newCoreDependencies": [],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 9,
+      "priorCores": 9,
+      "setupSeconds": 0.4045133339999884,
+      "searchAndDerivationSeconds": 8.854970875,
+      "steps": 62,
+      "stats": {
+        "attempts": 62,
+        "accepted": 62,
+        "forced": 0,
+        "branches": 62,
+        "backtracks": 0,
+        "eliminated": 35797,
+        "checks": 5408842
+      },
+      "selected": 62,
+      "scalarComplete": false,
+      "newCoreSize": 6,
+      "newCoreDependencies": [
+        8
+      ],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 10,
+      "priorCores": 10,
+      "setupSeconds": 0.41087229200000003,
+      "searchAndDerivationSeconds": 14.609216042,
+      "steps": 100,
+      "stats": {
+        "attempts": 100,
+        "accepted": 100,
+        "forced": 0,
+        "branches": 100,
+        "backtracks": 0,
+        "eliminated": 63712,
+        "checks": 8570936
+      },
+      "selected": 100,
+      "scalarComplete": false,
+      "newCoreSize": 7,
+      "newCoreDependencies": [],
+      "status": "verified-core-proposal",
+      "rootRollback": true
+    },
+    {
+      "round": 11,
+      "priorCores": 11,
+      "setupSeconds": 0.6138914999999979,
+      "searchAndDerivationSeconds": 0.2244733750000014,
+      "steps": 0,
+      "stats": {
+        "attempts": 0,
+        "accepted": 0,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 249636
+      },
+      "selected": 0,
+      "scalarComplete": false,
+      "newCoreSize": null,
+      "newCoreDependencies": [],
+      "status": "budget-unknown",
+      "rootRollback": true
+    }
+  ],
+  "status": "budget-unknown",
+  "selected": [],
+  "secondsIncludingRestarts": 122.131952167,
+  "limits": "Developmental finite registered pool and radius. Static validated rules per restart; no in-stack rule mutation. Up to 40 additional restarts/120 seconds per segment, cooperative budget. Cumulative time retains prior acquisition but excludes parsing and independent audits. Independent proof/witness replay pending. Not learned material markings, continuous completeness or blind growth."
+}
