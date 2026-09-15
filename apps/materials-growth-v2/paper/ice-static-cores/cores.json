@@ -1,0 +1,60 @@
+{
+  "scope": "Shrink finite-pool t-only dead-point witnesses; no learned generalization.",
+  "modelHash": "051bad0c4378b374302869ed2323e3ad8421f583948d4abbe53cb8d80a953df2",
+  "profileHash": "4ed81a4d4f65ec4bdadd56a0813b288ba38c74c2ace740a3675e6aa38ed25496",
+  "priorCheckHash": "8851aec1cd8297242ad89c997f76513890d3deb745d4c70595a9d425e1740383",
+  "codeHash": "ed4c00cdb31dcae9ca45545d3336e2a5452de021af0db6c81472f434b3a23622",
+  "cores": [
+    {
+      "owners": [
+        "edge:123",
+        "edge:154",
+        "edge:155",
+        "edge:169",
+        "edge:171",
+        "edge:205",
+        "edge:40",
+        "edge:42",
+        "edge:63"
+      ],
+      "point": "a:118",
+      "sourceOwners": 44,
+      "blockers": [
+        {
+          "inventory": "edge:38",
+          "reason": "capacity",
+          "point": "a:141",
+          "current": 2,
+          "contribution": 1
+        },
+        {
+          "inventory": "edge:153",
+          "reason": "capacity",
+          "point": "a:152",
+          "current": 2,
+          "contribution": 1
+        },
+        {
+          "inventory": "edge:172",
+          "reason": "capacity",
+          "point": "a:45",
+          "current": 2,
+          "contribution": 1
+        },
+        {
+          "inventory": "edge:204",
+          "reason": "capacity",
+          "point": "a:206",
+          "current": 2,
+          "contribution": 1
+        },
+        {
+          "inventory": "edge:205",
+          "reason": "consumed"
+        }
+      ]
+    }
+  ],
+  "seconds": 0.035458083963021636,
+  "limits": "Inclusion-minimal for the chosen dead-point predicate and deletion order, not minimum cardinality. Pool-specific integer contradiction valid for all decorations of these inventory supports. Not a transferable material marking or an exclusion inferred merely from a timeout."
+}
