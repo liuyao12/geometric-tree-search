@@ -1,0 +1,114 @@
+{
+  "scope": "Dynamic complementary support to a fixed point after every change, then unchanged global dead/forced/earliest-generation DFS. Every surviving decorated candidate remains distinct.",
+  "sourceModelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "blocksHash": "9c0c007882baa376287fa7016eb4475eb38cf7f7d554af970808d4179c5dda64",
+  "sourceHashes": {
+    "ice-dynamic-factorized-search.mjs": "320a48b77adcd25484c48146fb2a901bf90d7914c8a6d6bba58452d02124128e",
+    "dynamic-factorized-support.mjs": "765354d348800bc9ef2d7d2937ef1ae414988d8fad2fc56c4d4a601b7d450232",
+    "factorized-cloud-search.mjs": "058d1c1b5e0d331007ca94d92fed335b2e61ad7af7a37422d662f3f62a21836b",
+    "factorized-point-state.mjs": "2e94cf10075d1022de126872e844c77371379f33f4de2f5f00e9c463d71f472e",
+    "factorized-point-search.mjs": "a38598c32a31500a1f2a5ae821b0b07a9870815a92ec6fca9f387042aa513126",
+    "factorized-candidate-domain.mjs": "d7f8eea5568de271d79299bd4a77893551d572930ef57ded8733796bfd59248a",
+    "portable-cloud-filter.mjs": "461f6f97e886bd98a17c87daa05eb11d9383afba526a5ddc6d0170426b5bf3ef",
+    "partnerIndex": "27ff21e752e831f4580178bb85c2ff82b627b8614073dfc6674c66eede370e6a",
+    "partnerIndexCheck": "6d9eb4707389d0e3e925bdbd6cac1a31a4011b0d05861afad5b43a939f2a0a0e"
+  },
+  "preprocessing": {
+    "originalBlocksHash": "15ec926b6cd0f899d7420c0c0fa0e1992ac3a6e5db1e98182444643cebed4968",
+    "moduleHash": "c9dd380d61e685e67aeeb9ebc90119c622da329f3a3dd17c354f39ceae712952",
+    "reports": [
+      {
+        "file": "c01500",
+        "fold": 0,
+        "before": "21289071",
+        "after": "1934561",
+        "removedEndpointRecords": 76135,
+        "passes": 3,
+        "trainingLiftsPreserved": 1,
+        "seconds": 6.636626041028649,
+        "fullCloud": true,
+        "pairChecks": 278019
+      },
+      {
+        "file": "c01900",
+        "fold": 1,
+        "before": "12640506",
+        "after": "2245516",
+        "removedEndpointRecords": 53610,
+        "passes": 3,
+        "trainingLiftsPreserved": 0,
+        "seconds": 6.110922124935314,
+        "fullCloud": true,
+        "pairChecks": 301360
+      }
+    ],
+    "scope": "Necessary complement pruning of a finite half-weight model; fullCloud identifies optional bijection checks. Survivors retain original cloud values. Not new learned markings."
+  },
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "setupSeconds": 1.0635737909999998,
+      "seconds": 4.755347125,
+      "steps": 182,
+      "selected": 64,
+      "scalarComplete": true,
+      "markingStatus": "verified-common-values",
+      "commonValues": 64,
+      "stats": {
+        "attempts": 181,
+        "accepted": 181,
+        "forced": 0,
+        "branches": 67,
+        "backtracks": 117
+      },
+      "supportStats": {
+        "refreshes": 299,
+        "passes": 654,
+        "pairChecks": 9072204,
+        "removed": 637079
+      },
+      "cloudStats": {
+        "checks": 18278895,
+        "hits": 18070037,
+        "evictions": 0
+      },
+      "status": "complete-awaiting-independent-verification",
+      "rootRollback": true,
+      "undoSeconds": 0.03167737500000021
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "setupSeconds": 1.1515277079999997,
+      "seconds": 30.007677791000003,
+      "steps": 1900,
+      "selected": 56,
+      "scalarComplete": false,
+      "markingStatus": "verified-common-values",
+      "commonValues": 59,
+      "stats": {
+        "attempts": 1900,
+        "accepted": 1900,
+        "forced": 0,
+        "branches": 269,
+        "backtracks": 1844
+      },
+      "supportStats": {
+        "refreshes": 3745,
+        "passes": 9206,
+        "pairChecks": 14351623,
+        "removed": 5408428
+      },
+      "cloudStats": {
+        "checks": 158026293,
+        "hits": 157350859,
+        "evictions": 1
+      },
+      "status": "budget-unknown",
+      "rootRollback": true,
+      "undoSeconds": 1.0801634580000028
+    }
+  ],
+  "limits": "Correctness-first global recomputation, not incremental support maintenance. Thirty-second search budget checked between atomic advances; one advance may overshoot. Setup and rollback separate. Scalar exhaustive domain tests; independent material witness replay required. No full continuous-pose or blind-growth claim."
+}

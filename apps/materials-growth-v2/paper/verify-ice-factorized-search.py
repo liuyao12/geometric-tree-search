@@ -39,7 +39,16 @@ for row in data['models']:
                 assert cloud.contains(a,witnesses[point],row['cloudRadius']) is not None
                 checks+=1
     else: assert not witnesses
-    results.append({'file':row['file'],'fold':row['fold'],'selected':len(ids),'complete':complete,'verifiedAssignments':checks,'commonValues':len(witnesses),'runHash':digest(path)})
+    supports=[{t['point'] for t in row['blocks'][c['index']]['t']} for c in run['selected']]
+    remaining=set(range(len(supports)));components=0
+    while remaining:
+        components+=1;front=[remaining.pop()]
+        while front:
+            i=front.pop();neighbors={j for j in remaining if supports[i]&supports[j]}
+            remaining-=neighbors;front.extend(neighbors)
+    selected_blocks={c['block'] for c in run['selected']}
+    same_cover=[lift['name'] for lift in row['trainingLifts'] if {c['block'] for c in lift['selected']}==selected_blocks]
+    results.append({'file':row['file'],'fold':row['fold'],'selected':len(ids),'complete':complete,'verifiedAssignments':checks,'commonValues':len(witnesses),'positiveSupportComponents':components,'matchingTrainingSupportCovers':same_cover,'runHash':digest(path)})
 report={'scope':__doc__,'sourceModelHash':digest(source_path),'blocksHash':digest(blocks_path),'verifierHash':digest(pathlib.Path(__file__)),'membershipModuleHash':digest(pathlib.Path(cloud.__file__)),'results':results,'limits':'Checks selected t sums, shared inventory and supplied common cloud witnesses. Does not prove continuous-pose completeness, training transfer, or material provenance.'}
 with output.open('x') as f:json.dump(report,f,indent=2)
 print(json.dumps(report))

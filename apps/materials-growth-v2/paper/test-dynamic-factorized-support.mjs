@@ -9,7 +9,9 @@ for(let trial=0;trial<100;trial++){
   const a=points[random(3)],b=points.filter(p=>p!==a)[random(2)];
   model.blocks.push({id:String(i),inventory:String(random(4)),t:[{point:a,value:1},{point:b,value:1}],markPoints:[a,b],endpointChoices:[[random(3),random(3)],[random(3),random(3)]]});
  }
- const e=new DynamicFactorizedSupportSearch(model),all=[];
+ const records=model.blocks.flatMap((b,i)=>b.endpointChoices.flatMap((cs,side)=>cs.map((_,j)=>[i,side,j])));
+ const neighbors=records.map(([i,s,j])=>records.flatMap(([k,t,l],n)=>model.blocks[i].inventory!==model.blocks[k].inventory&&model.blocks[i].markPoints[s]===model.blocks[k].markPoints[t]&&model.blocks[i].endpointChoices[s][j]===model.blocks[k].endpointChoices[t][l]?[n]:[]));
+ const e=new DynamicFactorizedSupportSearch(model,{partnerIndex:process.argv.includes('--indexed')?{records,neighbors}:null}),all=[];
  for(const b of e.blocks)for(let left=0;left<2;left++)for(let right=0;right<2;right++)all.push({id:e.candidateId(b.index,left,right),b,left,right,marks:new Map([[b.markPoints[0],b.endpointChoices[0][left]],[b.markPoints[1],b.endpointChoices[1][right]]])});
  function audit(){
   let live=new Set(all.filter(c=>!e.owners.has(c.b.inventory)&&c.b.t.every(t=>e.points.get(t.point).total+1<=2)&&[...c.marks].every(([p,v])=>e.points.get(p).marks.every(a=>a.value===v))).map(c=>c.id));
@@ -39,4 +41,4 @@ for(let trial=0;trial<100;trial++){
  }
 }
 assert(solutions>0);
-console.log(JSON.stringify({models:100,states,memberships,rollbacks,fullSelections:312500,solutionsPreserved:solutions,scope:'Dynamic fixed-point domains vs explicit decorated candidates; scalar singleton marking model. Cloud/material integration remains separate.'}));
+console.log(JSON.stringify({models:100,indexed:process.argv.includes('--indexed'),states,memberships,rollbacks,fullSelections:312500,solutionsPreserved:solutions,scope:'Dynamic fixed-point domains vs explicit decorated candidates; scalar singleton marking model. Cloud/material integration remains separate.'}));

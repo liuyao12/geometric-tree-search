@@ -1,0 +1,24 @@
+{
+  "scope": "Independent brute-array completeness check for the conservative partner index.",
+  "indexHash": "27ff21e752e831f4580178bb85c2ff82b627b8614073dfc6674c66eede370e6a",
+  "blocksHash": "9c0c007882baa376287fa7016eb4475eb38cf7f7d554af970808d4179c5dda64",
+  "sourceModelHash": "5054b31104ca4d0afdaec58e79e26783f5e076e8bebd0f804e11b1104d248fbb",
+  "verifierHash": "3d19b0e95e021bb310f6b4511b6c3ea7f313319c1670d764a9aa78110069b8ef",
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "records": 41967,
+      "directedEdges": 522470,
+      "seconds": 2.509113375097513
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "records": 43398,
+      "directedEdges": 618756,
+      "seconds": 1.0876591668929905
+    }
+  ],
+  "limits": "Complete signature superset, not certified cloud compatibility. Runtime must retain full marking checks."
+}

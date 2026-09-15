@@ -15,8 +15,25 @@ export class DynamicFactorizedSupportSearch extends FactorizedPointSearch {
    info.witness=model.required.find(p=>this.blocks.every(b=>b.t.some(t=>t.point===p)===indices.has(b.index)));
    if(info.witness===undefined)throw Error(`No required incidence witness for ${point}`);
   }
+  // Completeness is an external precondition, checked by the independent
+  // index verifier and hash-bound by the material runner. Validate shape here.
+  this.partnerIndex=options.partnerIndex??null;
+  if(this.partnerIndex){
+   const g=this.partnerIndex;this.endpointIndex=this.blocks.map(b=>b.endpointChoices.map(cs=>new Array(cs.length)));
+   let n=0;
+   for(const b of this.blocks)for(let side=0;side<2;side++)for(let j=0;j<b.endpointChoices[side].length;j++){
+    if(JSON.stringify(g.records[n])!==JSON.stringify([b.index,side,j]))throw Error('Partner-index records mismatch');
+    this.endpointIndex[b.index][side][j]=n++;
+   }
+   if(g.records.length!==n||g.neighbors.length!==n)throw Error('Partner-index size mismatch');
+   for(const ns of g.neighbors){let previous=-1;for(const k of ns){if(!Number.isSafeInteger(k)||k<=previous||k>=n)throw Error('Invalid partner-index adjacency');previous=k;}}
+  }
   this.supportStats={refreshes:0,passes:0,pairChecks:0,removed:0};
   this.refresh(new Set(this.points.keys()));
+ }
+ *partners(index,side,j,info){
+  if(this.partnerIndex){for(const k of this.partnerIndex.neighbors[this.endpointIndex[index][side][j]])yield this.partnerIndex.records[k];}
+  else for(const m of info.members)for(const k of this.blocks[m.index].domain.endpointIndices(m.side))yield [m.index,m.side,k];
  }
  refresh(changed,inventories=new Set()){
   if(!this.supportAnchors)return super.refresh(changed,inventories);
@@ -36,14 +53,12 @@ export class DynamicFactorizedSupportSearch extends FactorizedPointSearch {
      const before=[...b.domain.endpointIndices(side)],keep=[];
      for(const j of before){
       const value=b.endpointChoices[side][j];let supported=false;
-      for(const member of info.members){
-       const other=this.blocks[member.index];
-       if(other.inventory===b.inventory||other.domain.count===0n)continue;
-       for(const k of other.domain.endpointIndices(member.side)){
+      for(const [otherIndex,otherSide,k] of this.partners(index,side,j,info)){
+       const other=this.blocks[otherIndex];
+       if(other.inventory===b.inventory||other.domain.count===0n||!other.domain.containsEndpoint(otherSide,k))continue;
+       if(other.markPoints[otherSide]!==point)throw Error('Partner-index anchor mismatch');
         this.supportStats.pairChecks++;
-        if(this.compatible(value,[{value:other.endpointChoices[member.side][k]}])){supported=true;break;}
-       }
-       if(supported)break;
+        if(this.compatible(value,[{value:other.endpointChoices[otherSide][k]}])){supported=true;break;}
       }
       if(supported)keep.push(j);
      }
