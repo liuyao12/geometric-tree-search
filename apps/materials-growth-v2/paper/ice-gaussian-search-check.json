@@ -1,0 +1,93 @@
+{
+  "sourceHashes": {
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e",
+    "gcts-ice-pair-radius-v1.json": "0ea6ad41a63842e573795a751109911f259e5abc90e97f78285cbc4eb7ae7a6c",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "summary.json": "6bfe29afa178e94c68041a53184494a743e074e977e3b92339c7293f439f58f7"
+  },
+  "verifierHash": "e3b1dfdec983f6e130bfe02913e6c6a3d82f5b85807ef606d79df44a3ad6256b",
+  "results": [
+    {
+      "id": "c00400",
+      "enabled": false,
+      "placements": 128,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 124,
+      "checkedOverlapPairs": 128,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 0.9725488237126589
+    },
+    {
+      "id": "c00400",
+      "enabled": true,
+      "placements": 128,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 124,
+      "checkedOverlapPairs": 128,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 0.9725488237126589
+    },
+    {
+      "id": "c00900",
+      "enabled": false,
+      "placements": 96,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 88,
+      "checkedOverlapPairs": 96,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 1.1553867327237122
+    },
+    {
+      "id": "c00900",
+      "enabled": true,
+      "placements": 96,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 88,
+      "checkedOverlapPairs": 96,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 1.1553867327237122
+    },
+    {
+      "id": "c01400",
+      "enabled": false,
+      "placements": 80,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 78,
+      "checkedOverlapPairs": 80,
+      "incompatiblePairsAtRadius06": 1,
+      "maxEndpointDistance": 1.2408903103842692
+    },
+    {
+      "id": "c01400",
+      "enabled": true,
+      "placements": 80,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 78,
+      "checkedOverlapPairs": 80,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 1.1705174330657282
+    },
+    {
+      "id": "c01900",
+      "enabled": false,
+      "placements": 64,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 63,
+      "checkedOverlapPairs": 64,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 0.9359043641747479
+    },
+    {
+      "id": "c01900",
+      "enabled": true,
+      "placements": 64,
+      "complete": true,
+      "changedDecorationsFromSuppliedWitness": 63,
+      "checkedOverlapPairs": 64,
+      "incompatiblePairsAtRadius06": 0,
+      "maxEndpointDistance": 0.9359043641747479
+    }
+  ],
+  "limits": "Independent selected integer t totals, inventory, fitting membership, known-pose identity and signed world-coordinate field checks. Relies on prior geometric-pose witnesses; not an independent verification of candidate-universe completeness, runtime scheduling, timings, full continuous registration or blind growth."
+}
