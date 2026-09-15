@@ -47,7 +47,7 @@ export function independentResidualDomains(engine,model){
  const putMark=x=>{const key=JSON.stringify([x.point,x.channel??'0']),range=marks.get(key)||[-Infinity,Infinity];range[0]=Math.max(range[0],x.lo);range[1]=Math.min(range[1],x.hi);marks.set(key,range);};
  for(const x of model.fixedMarks||[])putMark(x);
  for(const c of model.candidates)if(chosen.has(c.id)){for(const x of c.t)totals.set(x.point,(totals.get(x.point)||0)+x.value);for(const x of c.m||[])putMark(x);}
- const alive=new Set(model.candidates.filter(c=>!chosen.has(c.id)&&!engine.branchBlocked?.has(c.id)&&c.t.every(x=>(totals.get(x.point)||0)+x.value<=model.capacity)&&
+ const alive=new Set(model.candidates.filter(c=>!chosen.has(c.id)&&!engine.staticCertifiedExclusions?.has(c.id)&&!engine.branchBlocked?.has(c.id)&&c.t.every(x=>(totals.get(x.point)||0)+x.value<=model.capacity)&&
   (c.m||[]).every(x=>{const range=marks.get(JSON.stringify([x.point,x.channel??'0']));return !range||Math.max(range[0],x.lo)<=Math.min(range[1],x.hi);})).map(c=>c.id));
  const frontier=new Map([...totals].filter(([p,v])=>engine.points.get(p)?.active&&v<model.capacity).map(([p])=>[p,[]]));
  for(const c of model.candidates)for(const x of c.t)if(frontier.has(x.point))frontier.get(x.point).push([c.id,x.value]);
