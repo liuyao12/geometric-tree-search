@@ -22,8 +22,10 @@ def load(name,file):
 half=load('half','half-cloud-support.py');cloud=load('cloud','portable-cloud-markings.py')
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
-def learn(library):
-    radius=library['markingRadiusAngstrom'];motifs=library['motifs']
+def learn(library,radius=None):
+    radius=library['markingRadiusAngstrom'] if radius is None else radius
+    if not np.isfinite(radius) or radius<0:raise ValueError('Invalid substitution radius')
+    motifs=library['motifs']
     groups=defaultdict(list)
     for i,m in enumerate(motifs):groups[m['base']].append(i)
     neighbors=[{i} for i in range(len(motifs))];witnesses=[];checked=0

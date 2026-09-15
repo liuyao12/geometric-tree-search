@@ -1,8 +1,11 @@
 """Independent selected-state replay; no claim about unvisited search states."""
 import hashlib, importlib.util, json, pathlib, sys
-source_path, blocks_path, directory, output = map(pathlib.Path, sys.argv[1:])
+source_path, blocks_path, directory, output = map(pathlib.Path, sys.argv[1:5])
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 source=json.loads(source_path.read_text()); data=json.loads(blocks_path.read_text())
+relation_path=pathlib.Path(sys.argv[5]) if len(sys.argv)>5 else None
+relation=json.loads(relation_path.read_text()) if relation_path else None
+if relation:assert relation['libraryHash']==source['portableHash']
 assert data['sourceModelHash']==digest(source_path)
 spec=importlib.util.spec_from_file_location('cloud', pathlib.Path(__file__).with_name('portable-cloud-markings.py'))
 cloud=importlib.util.module_from_spec(spec);spec.loader.exec_module(cloud)
@@ -11,12 +14,16 @@ for row in data['models']:
     path=directory/f"{row['fold']}.json"; run=json.loads(path.read_text())
     assert run['sourceModelHash']==digest(source_path) and run['blocksHash']==digest(blocks_path)
     assert run['result']['file']==row['file'] and run['result']['fold']==row['fold']
+    if run['result'].get('ordering')=='context-relation':assert relation and run['sourceHashes']['relation']==digest(relation_path)
     totals={p:0 for p in row['required']}; marks={}; owners=set(); ids=set()
     for choice in run['selected']:
         assert isinstance(choice['index'],int) and 0<=choice['index']<len(row['blocks'])
         b=row['blocks'][choice['index']]
         if run['result'].get('ordering')=='coupled-observed':
             assert b['endpointChoices'][0][choice['left']]['sourceCandidate']==b['endpointChoices'][1][choice['right']]['sourceCandidate'], 'Unobserved endpoint pairing'
+        if run['result'].get('ordering')=='context-relation':
+            a=b['endpointChoices'][0][choice['left']]['sourceMotif'];c=b['endpointChoices'][1][choice['right']]['sourceMotif']
+            assert c in relation['neighbors'][a], 'Pair outside frozen relation'
         assert b['id']==choice['block'] and b['inventory'] not in owners
         owners.add(b['inventory'])
         expected='/'.join(f'{x:016d}' for x in (choice['index'],choice['left'],choice['right']))

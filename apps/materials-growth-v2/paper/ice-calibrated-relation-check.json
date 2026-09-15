@@ -1,0 +1,10 @@
+{
+  "libraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+  "relationHash": "77850b7a36c32148ca6397abc0c1f8db51ff23fbb3cc61353b2eae2664af42f4",
+  "verifierHash": "14df55b46fa5361777d8a6158800d0faea1d97d1154ed863c97ea6e4d309ab1d",
+  "independentAllPairEnumeration": true,
+  "assignmentChecks": 155950,
+  "directedPairs": 227151,
+  "witnesses": 108002,
+  "limits": "Floating-point declared tolerance; verifies only the explicit one-step substitution hypothesis, not physical validity or transfer."
+}

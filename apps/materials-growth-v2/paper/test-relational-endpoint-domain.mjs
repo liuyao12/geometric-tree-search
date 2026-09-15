@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {RelationalEndpointDomain} from './relational-endpoint-search.mjs';
+const d=new RelationalEndpointDomain(2,3,[[0,0],[0,2],[1,2]]),root=d.snapshot();
+assert.equal(d.count,3n);assert(!d.has(1,0));
+d.setAllowed(1,[2]);assert.equal(d.count,2n);
+d.forbid(0,2);assert.equal(d.count,1n);assert.deepEqual(d.sole(),[1,2]);
+assert.deepEqual([...d.endpointIndices(0)],[1]);
+d.setEnabled(false);assert.equal(d.count,0n);assert.deepEqual([...d.values()],[]);
+d.undo(0);assert.deepEqual(d.snapshot(),root);assert.equal(d.count,3n);
+d.forbid(1,1);assert.equal(d.count,3n);d.undo(0);
+assert.throws(()=>new RelationalEndpointDomain(1,1,[[0,0],[0,0]]));
+assert.equal(new RelationalEndpointDomain(0,0,[]).count,0n);
+console.log(JSON.stringify({cachedCounts:true,nonCartesianMembership:true,rollback:true,emptyDomain:true}));

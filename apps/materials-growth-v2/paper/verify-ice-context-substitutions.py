@@ -8,11 +8,20 @@ import numpy as np
 from scipy.spatial.distance import cdist
 from scipy.optimize import linear_sum_assignment
 
-source,relation_path,output=map(Path,sys.argv[1:])
+source,relation_path,output=map(Path,sys.argv[1:4])
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 library=json.loads(source.read_text());relation=json.loads(relation_path.read_text())
 assert relation['libraryHash']==sha(source)
-radius=relation['radiusAngstrom'];assert radius==library['markingRadiusAngstrom']
+radius=relation['radiusAngstrom']
+if 'calibration' in relation:
+    cp,kp=map(Path,sys.argv[4:]);calibration=json.loads(cp.read_text());check=json.loads(kp.read_text())
+    assert relation['calibration']['reportHash']==check['reportHash']==sha(cp)
+    assert relation['calibration']['checkHash']==sha(kp)
+    assert calibration['libraryHash']==check['libraryHash']==sha(source)
+    finite=[r['distanceAngstrom'] for r in calibration['results'] if r['distanceAngstrom'] is not None]
+    assert relation['calibration']['quantile']==.95 and radius==float(np.quantile(finite,.95))
+    assert relation['markingRadiusAngstrom']==library['markingRadiusAngstrom']
+else:assert radius==library['markingRadiusAngstrom']
 motifs=library['motifs'];expected=[{i} for i in range(len(motifs))];checks=0
 for side in range(2):
     buckets=defaultdict(list);features={};colors={};vectors={}

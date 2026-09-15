@@ -8,30 +8,35 @@ import sys
 
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('source',type=Path);p.add_argument('output',type=Path);p.add_argument('--node',required=True)
-p.add_argument('--policy',choices=['interleaved','coupled-observed'],default='interleaved')
+p.add_argument('--policy',choices=['interleaved','coupled-observed','context-relation'],default='interleaved')
+p.add_argument('--relation',type=Path);p.add_argument('--relation-check',type=Path)
 a=p.parse_args();here=Path(__file__).resolve().parent
 def read(p):return json.loads(p.read_text())
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 a.output.mkdir()
 ordering_module='coupled-endpoint-search.mjs' if a.policy=='coupled-observed' else 'interleaved-factorized-search.mjs'
+if a.policy=='context-relation':ordering_module='relational-endpoint-search.mjs'
 manifest={'policy':a.policy,'phases':['Ih','II','VI'],'budgetSecondsPerFrame':30,
           'parentManifestHash':digest(a.source/'manifest.json'),'configurations':read(a.source/'manifest.json')['configurations'],
           'orderingHash':digest(here/ordering_module),
           'scope':'Same registered model and markings; only candidate enumeration order changes. No oracle witness or training cover is supplied to the search policy. Developmental follow-up, not blind validation.'}
 if a.policy=='coupled-observed':
     manifest['scope']='Restricted learned hypothesis retaining only paired endpoint source observations. Not equivalent to factorized model. Same finite registrations, half t values and reference scheduler; no training-cover or oracle-answer replay. Developmental comparison, not blind validation.'
+if a.policy=='context-relation':
+    assert a.relation and a.relation_check and read(a.relation_check)['relationHash']==digest(a.relation)
+    manifest.update(relationHash=digest(a.relation),relationCheckHash=digest(a.relation_check),scope='Frozen training-calibrated substitution relation. Restricted learned hypothesis, unchanged overlap radius and reference scheduler. Same finite six developmental/training frames; no blind-validation or continuous-growth claim.')
 with (a.output/'manifest.json').open('x') as f:json.dump(manifest,f,indent=2)
 rows=[]
 for phase in manifest['phases']:
     source=a.source/phase;out=a.output/phase
     subprocess.run([a.node,str(here/'ice-dynamic-factorized-search.mjs'),str(source/'source.json'),str(source/'filtered.json'),
-                    str(out),str(source/'index.json'),str(source/'index-check.json'),a.policy],check=True)
+                    str(out),str(source/'index.json'),str(source/'index-check.json'),a.policy]+([str(a.relation),str(a.relation_check)] if a.policy=='context-relation' else []),check=True)
     check_path=a.output/f'{phase}-check.json'
-    subprocess.run([sys.executable,str(here/'verify-ice-factorized-search.py'),str(source/'source.json'),str(source/'filtered.json'),str(out),str(check_path)],check=True)
+    subprocess.run([sys.executable,str(here/'verify-ice-factorized-search.py'),str(source/'source.json'),str(source/'filtered.json'),str(out),str(check_path)]+([str(a.relation)] if a.policy=='context-relation' else []),check=True)
     summary=read(out/'summary.json');check=read(check_path)
     assert summary['sourceModelHash']==check['sourceModelHash']==digest(source/'source.json')
     assert summary['blocksHash']==check['blocksHash']==digest(source/'filtered.json')
-    assert summary['sourceHashes']['coupledModel' if a.policy=='coupled-observed' else 'interleavedOrdering']==manifest['orderingHash']
+    assert summary['sourceHashes']['relationModel' if a.policy=='context-relation' else 'coupledModel' if a.policy=='coupled-observed' else 'interleavedOrdering']==manifest['orderingHash']
     for result,verified in zip(summary['results'],check['results'],strict=True):
         assert result['file']==verified['file'] and result['selected']==verified['selected']
         assert verified['runHash']==digest(out/f"{result['fold']}.json")

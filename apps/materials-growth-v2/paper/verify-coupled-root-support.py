@@ -46,21 +46,23 @@ for phase in ['Ih','II','VI']:
         for point in {p for b in blocks for p in b['markPoints']}:
             incident={i for i,b in enumerate(blocks) if point in b['markPoints']}
             assert any({i for i,b in enumerate(blocks) if any(t['point']==p for t in b['t'])}==incident for p in model['required'])
-        adjacency=[]
-        for ci,(bi,ends) in enumerate(candidates):
-            adjacency.append([])
-            for side,e in enumerate(ends):
-                supported=set()
-                for other in graph['neighbors'][e]:
-                    if other not in owners:continue
-                    for cj in owners[other]:
-                        bj=candidates[cj][0];_,os,_=graph['records'][other]
-                        assert blocks[bi]['markPoints'][side]==blocks[bj]['markPoints'][os]
-                        if blocks[bi]['inventory']!=blocks[bj]['inventory']:supported.add(cj)
-                adjacency[-1].append(supported)
+        # Share endpoint support instead of expanding the Cartesian set of
+        # partner candidates. Existence at a live endpoint means at least one
+        # live paired candidate contains it; candidate identities remain intact.
+        adjacency={}
+        for e in owners:
+            bi,side,_=graph['records'][e];supported=set()
+            for other in graph['neighbors'][e]:
+                if other not in owners:continue
+                bj,os,_=graph['records'][other]
+                assert blocks[bi]['markPoints'][side]==blocks[bj]['markPoints'][os]
+                if blocks[bi]['inventory']!=blocks[bj]['inventory']:supported.add(other)
+            adjacency[e]=supported
         live=set(range(len(candidates)));passes=0
         while True:
-            removed={i for i in live if any(not (partners&live) for partners in adjacency[i])}
+            active_endpoints={e for i in live for e in candidates[i][1]}
+            supported={e for e in active_endpoints if adjacency[e]&active_endpoints}
+            removed={i for i in live if any(e not in supported for e in candidates[i][1])}
             if not removed:break
             live-=removed;passes+=1
         covered={t['point'] for i in live for t in blocks[candidates[i][0]]['t']}

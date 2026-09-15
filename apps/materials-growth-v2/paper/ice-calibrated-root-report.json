@@ -1,0 +1,93 @@
+{
+  "scope": "Independent necessary-support propagation for the one-step geometric substitution relation, using verified conservative adjacency.",
+  "results": [
+    {
+      "phase": "Ih",
+      "file": "c00000",
+      "initialPairs": 64311,
+      "remainingPairs": 54728,
+      "passes": 4,
+      "deadRequiredPoints": [],
+      "restrictedRootFailureCertified": false,
+      "blocksHash": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+      "indexHash": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+      "indexCheckHash": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448"
+    },
+    {
+      "phase": "Ih",
+      "file": "c00400",
+      "initialPairs": 57628,
+      "remainingPairs": 47906,
+      "passes": 7,
+      "deadRequiredPoints": [
+        "171",
+        "200",
+        "228",
+        "359",
+        "40",
+        "7"
+      ],
+      "restrictedRootFailureCertified": true,
+      "blocksHash": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+      "indexHash": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9",
+      "indexCheckHash": "2c78d196c42ec2b2a93b202b715b1921627aaa3e2e45ccaac4fb2346a7196448"
+    },
+    {
+      "phase": "II",
+      "file": "c00500",
+      "initialPairs": 119084,
+      "remainingPairs": 115979,
+      "passes": 3,
+      "deadRequiredPoints": [],
+      "restrictedRootFailureCertified": false,
+      "blocksHash": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+      "indexHash": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+      "indexCheckHash": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef"
+    },
+    {
+      "phase": "II",
+      "file": "c00900",
+      "initialPairs": 68704,
+      "remainingPairs": 63300,
+      "passes": 4,
+      "deadRequiredPoints": [],
+      "restrictedRootFailureCertified": false,
+      "blocksHash": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+      "indexHash": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f",
+      "indexCheckHash": "7132ec54a3d7562ed7ed87ded8fb721848adfd82fafd3340b7cfeb967fcb0eef"
+    },
+    {
+      "phase": "VI",
+      "file": "c01000",
+      "initialPairs": 52486,
+      "remainingPairs": 47189,
+      "passes": 5,
+      "deadRequiredPoints": [],
+      "restrictedRootFailureCertified": false,
+      "blocksHash": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+      "indexHash": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+      "indexCheckHash": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b"
+    },
+    {
+      "phase": "VI",
+      "file": "c01400",
+      "initialPairs": 49239,
+      "remainingPairs": 43623,
+      "passes": 4,
+      "deadRequiredPoints": [
+        "168",
+        "239",
+        "67"
+      ],
+      "restrictedRootFailureCertified": true,
+      "blocksHash": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+      "indexHash": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862",
+      "indexCheckHash": "4969814d8c818dde56958c7f0965c5058c6bbfe80150a37f24427fafb3d21d5b"
+    }
+  ],
+  "codeHash": "b5fe2a6ea6eb8e73eda183b6c2cc8f4044e2e9af66b97a5e53656db1693f3b51",
+  "limits": "Conditional on the complete conservative index and prior factorized preprocessing. Root failure applies only to this finite learned substitution hypothesis. Nonempty support proves neither a filling nor actual cloud compatibility.",
+  "relationHash": "77850b7a36c32148ca6397abc0c1f8db51ff23fbb3cc61353b2eae2664af42f4",
+  "relationCheckHash": "f459cff19e0f60172f97a62c979871b0d7de38b7df5c872ae944e52e02610834",
+  "hypothesis": "One-step geometric endpoint substitution, not exact pairing. Nonempty conservative support does not prove a filling or actual cloud compatibility."
+}
