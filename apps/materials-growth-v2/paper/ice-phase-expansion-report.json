@@ -1,0 +1,986 @@
+{
+  "scope": "Collect hash-bound phase tests without exporting coordinate-derived clouds.",
+  "manifestHash": "b074270c1dccee34adf15248dcbb5bc27482c9e3db32443d3b5d3256576c8f32",
+  "configurations": [
+    {
+      "id": "c00000",
+      "phase": "Ih",
+      "split": "train",
+      "sourceFile": "Ih-train.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "ecbce8c886e7138d8260ce8cbc846567c110aef820af3ad3913dfe24231d3f6a",
+      "geometrySha256": "87ebfeeec64136f2fb196a1aa76100c21a9f6a5da1f6d8b8a7245413a9af5a7a",
+      "shuffleSeed": 3400208584485070931,
+      "atoms": 384,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    },
+    {
+      "id": "c00400",
+      "phase": "Ih",
+      "split": "test",
+      "sourceFile": "Ih-test.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "7518664a20d821c6788cba562a2613fa3c263a71f8895c04fd7046c4b57fcd24",
+      "geometrySha256": "6234e225ba1de1c393c6e0254afbd648c165c3f0bfe29ef3f6278ab5cdc1ba9c",
+      "shuffleSeed": 3674121558504636409,
+      "atoms": 384,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    },
+    {
+      "id": "c00500",
+      "phase": "II",
+      "split": "train",
+      "sourceFile": "II-train.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "9c92763a8c2b7c2f381f457861df1e8a8aed89005c6e2263091d589d0b8f557e",
+      "geometrySha256": "736480455a15dc6d941a47108ac659036201599d5a3bef1e6f533be52b1c668c",
+      "shuffleSeed": 15038560974236732112,
+      "atoms": 288,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    },
+    {
+      "id": "c00900",
+      "phase": "II",
+      "split": "test",
+      "sourceFile": "II-test.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "6126a8706069834b8cd34888e0865dac2bbd32d7481a76893bc93f886abd8914",
+      "geometrySha256": "24615a275f41042d99e8d7740c2e1659a378ccc1fd6aa69582b4d94d174fddfc",
+      "shuffleSeed": 5421597858388322292,
+      "atoms": 288,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    },
+    {
+      "id": "c01000",
+      "phase": "VI",
+      "split": "train",
+      "sourceFile": "VI-train.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "d18f5a67e9ced537377445d7d190c2909112c1e3bef10c60d6a2e202d4575265",
+      "geometrySha256": "679d9dbb7abeed37094f4c2e8bc9a2cc735e260234d5b49ca8b21ee3dca5e425",
+      "shuffleSeed": 6245467879085846415,
+      "atoms": 240,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    },
+    {
+      "id": "c01400",
+      "phase": "VI",
+      "split": "test",
+      "sourceFile": "VI-test.extxyz",
+      "sourceFrame": 0,
+      "sourceSha256": "5b76d17d5f78aaad77ebb15233fe6559ee92873e54e31aebfae22efbea8224c6",
+      "geometrySha256": "8ea2f9b0aee30b67dcee569190d7e0c78af4dfb7b8f7617fd0d21be710ed9ad7",
+      "shuffleSeed": 5883580401000718550,
+      "atoms": 240,
+      "temperatureK": null,
+      "pressurePa": null,
+      "conditionStatus": "Paper-linked conditions under review; not asserted from missing frame metadata.",
+      "independentTrajectoryId": null
+    }
+  ],
+  "results": [
+    {
+      "phase": "Ih",
+      "split": "training",
+      "atoms": 384,
+      "result": {
+        "file": "c00000",
+        "fold": 0,
+        "setupSeconds": 0.486558667,
+        "seconds": 30.000924166999997,
+        "steps": 2458,
+        "selected": 91,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 103,
+        "stats": {
+          "attempts": 2458,
+          "accepted": 2458,
+          "forced": 0,
+          "branches": 119,
+          "backtracks": 2367
+        },
+        "supportStats": {
+          "refreshes": 4826,
+          "passes": 10425,
+          "pairChecks": 79290361,
+          "removed": 6847241
+        },
+        "cloudStats": {
+          "checks": 146236032,
+          "hits": 145383858,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.011927290999999968
+      },
+      "independentCheck": {
+        "file": "c00000",
+        "fold": 0,
+        "selected": 91,
+        "complete": false,
+        "verifiedAssignments": 182,
+        "commonValues": 103,
+        "positiveSupportComponents": 13,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "ea028b983aa398eb31a947bad383141cf5a4709f3ea58bf595cb7b3c593ee73b"
+      },
+      "artifactHashes": {
+        "source": "442b3190f0c504500c72e6434c17fd59f9f9248c0dca6da2723210c41963afec",
+        "blocks": "892f95bfd987ffbb1809f0c46a80e63997af55646d757c6ca68202a4de2a786e",
+        "filtered": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+        "proof": "c369a026713d1952dd9659d92fed162aeb78d8c23646e89387b088df66227097",
+        "index": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9"
+      },
+      "checkHash": "f90372d867be998e829432d204331222f7a4e9f319fcafd1d501b55d1aee860c"
+    },
+    {
+      "phase": "Ih",
+      "split": "developmental",
+      "atoms": 384,
+      "result": {
+        "file": "c00400",
+        "fold": 1,
+        "setupSeconds": 0.4558459169999987,
+        "seconds": 30.020769375000004,
+        "steps": 1021,
+        "selected": 36,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 43,
+        "stats": {
+          "attempts": 1021,
+          "accepted": 1021,
+          "forced": 0,
+          "branches": 59,
+          "backtracks": 985
+        },
+        "supportStats": {
+          "refreshes": 2007,
+          "passes": 4486,
+          "pairChecks": 96818187,
+          "removed": 2884893
+        },
+        "cloudStats": {
+          "checks": 108018940,
+          "hits": 107829712,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.01481025000000227
+      },
+      "independentCheck": {
+        "file": "c00400",
+        "fold": 1,
+        "selected": 36,
+        "complete": false,
+        "verifiedAssignments": 72,
+        "commonValues": 43,
+        "positiveSupportComponents": 8,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "7fd561a0bac001ee7de363bd0907f4467a51004ea8fb596d4012fe0bbf332a48"
+      },
+      "artifactHashes": {
+        "source": "442b3190f0c504500c72e6434c17fd59f9f9248c0dca6da2723210c41963afec",
+        "blocks": "892f95bfd987ffbb1809f0c46a80e63997af55646d757c6ca68202a4de2a786e",
+        "filtered": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+        "proof": "c369a026713d1952dd9659d92fed162aeb78d8c23646e89387b088df66227097",
+        "index": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9"
+      },
+      "checkHash": "f90372d867be998e829432d204331222f7a4e9f319fcafd1d501b55d1aee860c"
+    },
+    {
+      "phase": "Ih",
+      "split": "training",
+      "atoms": 384,
+      "result": {
+        "file": "c00000",
+        "fold": 0,
+        "setupSeconds": 0.48907412499999986,
+        "seconds": 30.002614833,
+        "steps": 1334,
+        "selected": 42,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 49,
+        "stats": {
+          "attempts": 1334,
+          "accepted": 1334,
+          "forced": 0,
+          "branches": 83,
+          "backtracks": 1292
+        },
+        "supportStats": {
+          "refreshes": 2627,
+          "passes": 5253,
+          "pairChecks": 110523163,
+          "removed": 4190216
+        },
+        "cloudStats": {
+          "checks": 128614945,
+          "hits": 128340616,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.013214749999999185
+      },
+      "independentCheck": {
+        "file": "c00000",
+        "fold": 0,
+        "selected": 42,
+        "complete": false,
+        "verifiedAssignments": 84,
+        "commonValues": 49,
+        "positiveSupportComponents": 7,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "20f87dd2d870d6785efb55dd117adb8e1f016fb013042ba9de2e84b7f2cb56b5"
+      },
+      "artifactHashes": {
+        "source": "442b3190f0c504500c72e6434c17fd59f9f9248c0dca6da2723210c41963afec",
+        "blocks": "892f95bfd987ffbb1809f0c46a80e63997af55646d757c6ca68202a4de2a786e",
+        "filtered": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+        "proof": "c369a026713d1952dd9659d92fed162aeb78d8c23646e89387b088df66227097",
+        "index": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9"
+      },
+      "checkHash": "7a2b4e96bd04cda194953f106d5f54906ce8daf5be3343562ccbd6fc43cb2dff"
+    },
+    {
+      "phase": "Ih",
+      "split": "developmental",
+      "atoms": 384,
+      "result": {
+        "file": "c00400",
+        "fold": 1,
+        "setupSeconds": 0.46046366700000363,
+        "seconds": 30.021798749999995,
+        "steps": 1076,
+        "selected": 46,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 53,
+        "stats": {
+          "attempts": 1076,
+          "accepted": 1076,
+          "forced": 0,
+          "branches": 47,
+          "backtracks": 1030
+        },
+        "supportStats": {
+          "refreshes": 2107,
+          "passes": 4225,
+          "pairChecks": 94726520,
+          "removed": 3258381
+        },
+        "cloudStats": {
+          "checks": 107248229,
+          "hits": 107019600,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.013326958000005107
+      },
+      "independentCheck": {
+        "file": "c00400",
+        "fold": 1,
+        "selected": 46,
+        "complete": false,
+        "verifiedAssignments": 92,
+        "commonValues": 53,
+        "positiveSupportComponents": 7,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "d45d4fad19587a321919b61f788d9e86c7b31974c836e95adbbc5e3ad907e99d"
+      },
+      "artifactHashes": {
+        "source": "442b3190f0c504500c72e6434c17fd59f9f9248c0dca6da2723210c41963afec",
+        "blocks": "892f95bfd987ffbb1809f0c46a80e63997af55646d757c6ca68202a4de2a786e",
+        "filtered": "be51736a94277f53fc1ec4a33cab4c8d5c423a85295522a7c89036143bb44182",
+        "proof": "c369a026713d1952dd9659d92fed162aeb78d8c23646e89387b088df66227097",
+        "index": "2b7dce8e32f0c77f8aa1cc34952bcb67a523c49c1473b5c4b2ba9746233a51c9"
+      },
+      "checkHash": "7a2b4e96bd04cda194953f106d5f54906ce8daf5be3343562ccbd6fc43cb2dff"
+    },
+    {
+      "phase": "II",
+      "split": "training",
+      "atoms": 288,
+      "result": {
+        "file": "c00500",
+        "fold": 0,
+        "setupSeconds": 0.338795334,
+        "seconds": 30.001234,
+        "steps": 7138,
+        "selected": 90,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 93,
+        "stats": {
+          "attempts": 7138,
+          "accepted": 7138,
+          "forced": 0,
+          "branches": 140,
+          "backtracks": 7048
+        },
+        "supportStats": {
+          "refreshes": 14187,
+          "passes": 31742,
+          "pairChecks": 13762684,
+          "removed": 4708651
+        },
+        "cloudStats": {
+          "checks": 310609895,
+          "hits": 307906559,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.008378458999999566
+      },
+      "independentCheck": {
+        "file": "c00500",
+        "fold": 0,
+        "selected": 90,
+        "complete": false,
+        "verifiedAssignments": 180,
+        "commonValues": 93,
+        "positiveSupportComponents": 4,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "eb1d516c2ca68b35766e746ad774898ac9fb0f1bc10fb9221d8a1e8a00e8050f"
+      },
+      "artifactHashes": {
+        "source": "22165255eb8c661dfa444390de5bd358487a68de59a6b8d1033f95f673ed0211",
+        "blocks": "6433e041e5dc598856cf1550ecf61dd8bbf325baec0168e8b30400f5a32468e5",
+        "filtered": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+        "proof": "414a880347af59b013e88495bddacae92a57140dcb59495b3bb9dac7f43d80ba",
+        "index": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f"
+      },
+      "checkHash": "1a72f37404ac84043e5b434e177d2cf09ca2730e02e6b97739418940f972425c"
+    },
+    {
+      "phase": "II",
+      "split": "developmental",
+      "atoms": 288,
+      "result": {
+        "file": "c00900",
+        "fold": 1,
+        "setupSeconds": 0.2351029579999995,
+        "seconds": 30.000322957999998,
+        "steps": 4264,
+        "selected": 72,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 76,
+        "stats": {
+          "attempts": 4264,
+          "accepted": 4264,
+          "forced": 0,
+          "branches": 142,
+          "backtracks": 4192
+        },
+        "supportStats": {
+          "refreshes": 8457,
+          "passes": 16924,
+          "pairChecks": 72447000,
+          "removed": 9885882
+        },
+        "cloudStats": {
+          "checks": 152969701,
+          "hits": 151900602,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.006724708000001555
+      },
+      "independentCheck": {
+        "file": "c00900",
+        "fold": 1,
+        "selected": 72,
+        "complete": false,
+        "verifiedAssignments": 144,
+        "commonValues": 76,
+        "positiveSupportComponents": 6,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "9f91fbb06886f9c33ec9c62bf7d3d2f49f9aec88c642526ab0ae9e5cfe7ee5e7"
+      },
+      "artifactHashes": {
+        "source": "22165255eb8c661dfa444390de5bd358487a68de59a6b8d1033f95f673ed0211",
+        "blocks": "6433e041e5dc598856cf1550ecf61dd8bbf325baec0168e8b30400f5a32468e5",
+        "filtered": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+        "proof": "414a880347af59b013e88495bddacae92a57140dcb59495b3bb9dac7f43d80ba",
+        "index": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f"
+      },
+      "checkHash": "1a72f37404ac84043e5b434e177d2cf09ca2730e02e6b97739418940f972425c"
+    },
+    {
+      "phase": "II",
+      "split": "training",
+      "atoms": 288,
+      "result": {
+        "file": "c00500",
+        "fold": 0,
+        "setupSeconds": 0.341150666,
+        "seconds": 30.001819334,
+        "steps": 1586,
+        "selected": 30,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 33,
+        "stats": {
+          "attempts": 1586,
+          "accepted": 1586,
+          "forced": 0,
+          "branches": 33,
+          "backtracks": 1556
+        },
+        "supportStats": {
+          "refreshes": 3143,
+          "passes": 7759,
+          "pairChecks": 110646216,
+          "removed": 6329177
+        },
+        "cloudStats": {
+          "checks": 134798684,
+          "hits": 134544775,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.010271374999996623
+      },
+      "independentCheck": {
+        "file": "c00500",
+        "fold": 0,
+        "selected": 30,
+        "complete": false,
+        "verifiedAssignments": 60,
+        "commonValues": 33,
+        "positiveSupportComponents": 4,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "75434688487b505ee1f6245080995059933056ea420db7f07379076b39a42456"
+      },
+      "artifactHashes": {
+        "source": "22165255eb8c661dfa444390de5bd358487a68de59a6b8d1033f95f673ed0211",
+        "blocks": "6433e041e5dc598856cf1550ecf61dd8bbf325baec0168e8b30400f5a32468e5",
+        "filtered": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+        "proof": "414a880347af59b013e88495bddacae92a57140dcb59495b3bb9dac7f43d80ba",
+        "index": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f"
+      },
+      "checkHash": "7ee5857d8f2e90f273a4eb47248c05a22929de4865f2c1eff25e95e022db0927"
+    },
+    {
+      "phase": "II",
+      "split": "developmental",
+      "atoms": 288,
+      "result": {
+        "file": "c00900",
+        "fold": 1,
+        "setupSeconds": 0.23870687499999985,
+        "seconds": 30.000283458000002,
+        "steps": 1394,
+        "selected": 35,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 39,
+        "stats": {
+          "attempts": 1394,
+          "accepted": 1394,
+          "forced": 0,
+          "branches": 80,
+          "backtracks": 1359
+        },
+        "supportStats": {
+          "refreshes": 2754,
+          "passes": 10975,
+          "pairChecks": 107880074,
+          "removed": 3818173
+        },
+        "cloudStats": {
+          "checks": 123394302,
+          "hits": 123168720,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.007318125000005239
+      },
+      "independentCheck": {
+        "file": "c00900",
+        "fold": 1,
+        "selected": 35,
+        "complete": false,
+        "verifiedAssignments": 70,
+        "commonValues": 39,
+        "positiveSupportComponents": 5,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "2b2cecd16b62ac32689e922b5fe30e6f08f5dab3926e84e629b22475b6d160d4"
+      },
+      "artifactHashes": {
+        "source": "22165255eb8c661dfa444390de5bd358487a68de59a6b8d1033f95f673ed0211",
+        "blocks": "6433e041e5dc598856cf1550ecf61dd8bbf325baec0168e8b30400f5a32468e5",
+        "filtered": "3d36fbf19910cbd0ceb5aca1729726708321978dbbca137921829bdf24b11f01",
+        "proof": "414a880347af59b013e88495bddacae92a57140dcb59495b3bb9dac7f43d80ba",
+        "index": "57a6338d1c06a8965b4949d1e11774ebe92242037aa384ad2fba668adce4c71f"
+      },
+      "checkHash": "7ee5857d8f2e90f273a4eb47248c05a22929de4865f2c1eff25e95e022db0927"
+    },
+    {
+      "phase": "VI",
+      "split": "training",
+      "atoms": 240,
+      "result": {
+        "file": "c01000",
+        "fold": 0,
+        "setupSeconds": 0.14997645800000003,
+        "seconds": 30.006851208,
+        "steps": 4826,
+        "selected": 35,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 38,
+        "stats": {
+          "attempts": 4826,
+          "accepted": 4826,
+          "forced": 0,
+          "branches": 1564,
+          "backtracks": 4791
+        },
+        "supportStats": {
+          "refreshes": 9618,
+          "passes": 22813,
+          "pairChecks": 102652110,
+          "removed": 10066299
+        },
+        "cloudStats": {
+          "checks": 147860163,
+          "hits": 147112077,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.0056059590000004395
+      },
+      "independentCheck": {
+        "file": "c01000",
+        "fold": 0,
+        "selected": 35,
+        "complete": false,
+        "verifiedAssignments": 70,
+        "commonValues": 38,
+        "positiveSupportComponents": 3,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "f5dfca3f9f2e276f86fab02c91913813aaed7377d4244f266c84c8e255fc9ca7"
+      },
+      "artifactHashes": {
+        "source": "27be2168f4965885c21b67151340d295f1d09868e61ef4723c6babf6e24f6d59",
+        "blocks": "6f71c390163f36537c34fd623775c53f81008b167be0637d9e079be9c3bfce14",
+        "filtered": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+        "proof": "556100da5f37da748bf219c6829d014debb258edf5b5545578f9925d06fcb6b2",
+        "index": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862"
+      },
+      "checkHash": "699c83b453d8c02b5ce290e92a17e33999520fbe09508a926052b6726b1cfa0e"
+    },
+    {
+      "phase": "VI",
+      "split": "developmental",
+      "atoms": 240,
+      "result": {
+        "file": "c01400",
+        "fold": 1,
+        "setupSeconds": 0.13518687499999943,
+        "seconds": 30.002245708,
+        "steps": 7935,
+        "selected": 53,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 57,
+        "stats": {
+          "attempts": 7935,
+          "accepted": 7935,
+          "forced": 0,
+          "branches": 249,
+          "backtracks": 7882
+        },
+        "supportStats": {
+          "refreshes": 15818,
+          "passes": 47045,
+          "pairChecks": 67016742,
+          "removed": 14040035
+        },
+        "cloudStats": {
+          "checks": 172128270,
+          "hits": 170370947,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "baseline",
+        "rootRollback": true,
+        "undoSeconds": 0.0035591659999990952
+      },
+      "independentCheck": {
+        "file": "c01400",
+        "fold": 1,
+        "selected": 53,
+        "complete": false,
+        "verifiedAssignments": 106,
+        "commonValues": 57,
+        "positiveSupportComponents": 5,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "8151c6c0658a7a1e7f0cb8f1d5b5f66759e8ef28d77908e0ed0d9b1a38952897"
+      },
+      "artifactHashes": {
+        "source": "27be2168f4965885c21b67151340d295f1d09868e61ef4723c6babf6e24f6d59",
+        "blocks": "6f71c390163f36537c34fd623775c53f81008b167be0637d9e079be9c3bfce14",
+        "filtered": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+        "proof": "556100da5f37da748bf219c6829d014debb258edf5b5545578f9925d06fcb6b2",
+        "index": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862"
+      },
+      "checkHash": "699c83b453d8c02b5ce290e92a17e33999520fbe09508a926052b6726b1cfa0e"
+    },
+    {
+      "phase": "VI",
+      "split": "training",
+      "atoms": 240,
+      "result": {
+        "file": "c01000",
+        "fold": 0,
+        "setupSeconds": 0.15223095900000005,
+        "seconds": 30.001358125000003,
+        "steps": 5142,
+        "selected": 37,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 48,
+        "stats": {
+          "attempts": 5142,
+          "accepted": 5142,
+          "forced": 0,
+          "branches": 767,
+          "backtracks": 5105
+        },
+        "supportStats": {
+          "refreshes": 10248,
+          "passes": 30724,
+          "pairChecks": 96247536,
+          "removed": 8013468
+        },
+        "cloudStats": {
+          "checks": 160078166,
+          "hits": 159284919,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.005075582999998005
+      },
+      "independentCheck": {
+        "file": "c01000",
+        "fold": 0,
+        "selected": 37,
+        "complete": false,
+        "verifiedAssignments": 74,
+        "commonValues": 48,
+        "positiveSupportComponents": 11,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "c8a6bca03886bf55d80f9807832c48e280f0fd63ee14dd11cc7eb48f2c428b99"
+      },
+      "artifactHashes": {
+        "source": "27be2168f4965885c21b67151340d295f1d09868e61ef4723c6babf6e24f6d59",
+        "blocks": "6f71c390163f36537c34fd623775c53f81008b167be0637d9e079be9c3bfce14",
+        "filtered": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+        "proof": "556100da5f37da748bf219c6829d014debb258edf5b5545578f9925d06fcb6b2",
+        "index": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862"
+      },
+      "checkHash": "9311ebceab2c3a029062aff8e92edb088c98502aa491577a74a9b8f50fb45767"
+    },
+    {
+      "phase": "VI",
+      "split": "developmental",
+      "atoms": 240,
+      "result": {
+        "file": "c01400",
+        "fold": 1,
+        "setupSeconds": 0.13628083299999708,
+        "seconds": 30.005134,
+        "steps": 3280,
+        "selected": 17,
+        "scalarComplete": false,
+        "markingStatus": "verified-common-values",
+        "commonValues": 21,
+        "stats": {
+          "attempts": 3280,
+          "accepted": 3280,
+          "forced": 0,
+          "branches": 587,
+          "backtracks": 3263
+        },
+        "supportStats": {
+          "refreshes": 6544,
+          "passes": 15727,
+          "pairChecks": 121368843,
+          "removed": 4996352
+        },
+        "cloudStats": {
+          "checks": 133988893,
+          "hits": 133742298,
+          "evictions": 0
+        },
+        "status": "budget-unknown",
+        "ordering": "support-rich",
+        "rootRollback": true,
+        "undoSeconds": 0.003815207999999984
+      },
+      "independentCheck": {
+        "file": "c01400",
+        "fold": 1,
+        "selected": 17,
+        "complete": false,
+        "verifiedAssignments": 34,
+        "commonValues": 21,
+        "positiveSupportComponents": 5,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "573064f80fd9b8c8e8ebad4e73853318ef41620f7a1b1b4b39cec9affea4802f"
+      },
+      "artifactHashes": {
+        "source": "27be2168f4965885c21b67151340d295f1d09868e61ef4723c6babf6e24f6d59",
+        "blocks": "6f71c390163f36537c34fd623775c53f81008b167be0637d9e079be9c3bfce14",
+        "filtered": "f504f5ad921b37a55dfd92ccbf13c9f7b9c12fe47847d7490534469ba174cb41",
+        "proof": "556100da5f37da748bf219c6829d014debb258edf5b5545578f9925d06fcb6b2",
+        "index": "9303f6b55ca99bc91bab9c9b5063db6eaa9c7517ff976820555980fe0c6ed862"
+      },
+      "checkHash": "9311ebceab2c3a029062aff8e92edb088c98502aa491577a74a9b8f50fb45767"
+    }
+  ],
+  "completeRuns": 0,
+  "completeConfigurations": [],
+  "limits": "Developmental, not blind. Conditions and independent trajectories unverified. Fixed registered positions; no beyond-input growth. Endpoint factorization broadens the coupled learned hypothesis. Half weights inherited, not relearned.",
+  "summarizerHash": "b5be075a239fe5dc2a9555cf3a9d6464bab24c3f0cd6cccd45a87fa0bf8cacee",
+  "separateConnectedExistenceDiagnostic": [
+    {
+      "phase": "Ih",
+      "result": {
+        "file": "c00000",
+        "fold": 0,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 13,
+        "compileSeconds": 3.1830230839550495,
+        "solveSeconds": 0.11523329094052315,
+        "witnessPairs": 693,
+        "testedPairs": 1107,
+        "solverStatus": 0,
+        "selected": 128,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 128,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c00000",
+        "fold": 0,
+        "selected": 128,
+        "complete": true,
+        "verifiedAssignments": 256,
+        "commonValues": 128,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "bea5f51428bff916969404dd1f2ec4353e6e70f1b740ae70f7bf7bb832e8c4f3"
+      },
+      "checkHash": "e3c3a760b359213d78b8ec42b183d7dcb684485404517c3c999ec94983a97eae"
+    },
+    {
+      "phase": "Ih",
+      "result": {
+        "file": "c00400",
+        "fold": 1,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 7,
+        "compileSeconds": 0.15554708405397832,
+        "solveSeconds": 0.05616337503306568,
+        "witnessPairs": 650,
+        "testedPairs": 993,
+        "solverStatus": 0,
+        "selected": 128,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 128,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c00400",
+        "fold": 1,
+        "selected": 128,
+        "complete": true,
+        "verifiedAssignments": 256,
+        "commonValues": 128,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "0f2c5e95e2f4bcb1b9762483c889530d85805458d0a2e5a488c20f6c4dd998e2"
+      },
+      "checkHash": "e3c3a760b359213d78b8ec42b183d7dcb684485404517c3c999ec94983a97eae"
+    },
+    {
+      "phase": "II",
+      "result": {
+        "file": "c00500",
+        "fold": 0,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 23,
+        "compileSeconds": 1.0968891659285873,
+        "solveSeconds": 0.19649554090574384,
+        "witnessPairs": 1463,
+        "testedPairs": 1840,
+        "solverStatus": 0,
+        "selected": 96,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 96,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c00500",
+        "fold": 0,
+        "selected": 96,
+        "complete": true,
+        "verifiedAssignments": 192,
+        "commonValues": 96,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "53bf4dd9562f38cf81a550815a6fcef2812175cab06477ed00afc941936e432a"
+      },
+      "checkHash": "dbe698f46b7197e123a77f57d577d3437ed5a5b59c8ceda358045dc635267f6d"
+    },
+    {
+      "phase": "II",
+      "result": {
+        "file": "c00900",
+        "fold": 1,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 15,
+        "compileSeconds": 0.16495624999515712,
+        "solveSeconds": 0.17820262489840388,
+        "witnessPairs": 1053,
+        "testedPairs": 1349,
+        "solverStatus": 0,
+        "selected": 96,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 96,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c00900",
+        "fold": 1,
+        "selected": 96,
+        "complete": true,
+        "verifiedAssignments": 192,
+        "commonValues": 96,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "925d42a44a8e2ac64256c7cf37ab24da77bee2da15b2f1d2c258972e20b09ebc"
+      },
+      "checkHash": "dbe698f46b7197e123a77f57d577d3437ed5a5b59c8ceda358045dc635267f6d"
+    },
+    {
+      "phase": "VI",
+      "result": {
+        "file": "c01000",
+        "fold": 0,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 0,
+        "compileSeconds": 0.6005885831546038,
+        "solveSeconds": 0.024637291906401515,
+        "witnessPairs": 858,
+        "testedPairs": 941,
+        "solverStatus": 0,
+        "selected": 80,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 80,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c01000",
+        "fold": 0,
+        "selected": 80,
+        "complete": true,
+        "verifiedAssignments": 160,
+        "commonValues": 80,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "17c71258b083371847dd219aabfc1d67ab6f2af482cab69d2f318d89056f8496"
+      },
+      "checkHash": "a7fdb2738ceff7dbb294e51187cc5ab1d9f99fe5f2aa423ada92af15d236d621"
+    },
+    {
+      "phase": "VI",
+      "result": {
+        "file": "c01400",
+        "fold": 1,
+        "solver": "scipy-milp-positive-existence-oracle",
+        "referenceSearch": false,
+        "connectedCoverRequested": true,
+        "connectivityCuts": 24,
+        "compileSeconds": 0.10538616706617177,
+        "solveSeconds": 0.23917483282275498,
+        "witnessPairs": 729,
+        "testedPairs": 848,
+        "solverStatus": 0,
+        "selected": 80,
+        "scalarComplete": true,
+        "markingStatus": "verified-common-values",
+        "commonValues": 80,
+        "status": "complete-awaiting-independent-verification"
+      },
+      "independentCheck": {
+        "file": "c01400",
+        "fold": 1,
+        "selected": 80,
+        "complete": true,
+        "verifiedAssignments": 160,
+        "commonValues": 80,
+        "positiveSupportComponents": 1,
+        "matchingTrainingSupportCovers": [],
+        "runHash": "5c8fcb92d705ac49990c0130535aa47f463070f4645332d10617194dc233e7c0"
+      },
+      "checkHash": "a7fdb2738ceff7dbb294e51187cc5ab1d9f99fe5f2aa423ada92af15d236d621"
+    }
+  ]
+}
