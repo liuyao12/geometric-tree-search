@@ -1,0 +1,263 @@
+{
+  "scope": "Fixed observed poses and all-root finite target; original versus original-plus-halo; not blind growth or guaranteed solution-set equivalence.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "sourceHashes": {
+    "boron-halo-search.mjs": "76be47caca440c209b01a3c33bed198d28e4251e8ce5d6459692c9efcf33ac39",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "halo": false,
+      "steps": 109,
+      "seconds": 0.010488792000000004,
+      "setupSeconds": 0.017575208000000002,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 108,
+        "accepted": 108,
+        "forced": 108,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 1188
+      },
+      "selected": 108,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "halo": true,
+      "steps": 109,
+      "seconds": 0.013205791999999989,
+      "setupSeconds": 0.003208707999999987,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 108,
+        "accepted": 108,
+        "forced": 108,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 1350
+      },
+      "selected": 108,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "halo": false,
+      "steps": 1459,
+      "seconds": 0.22300587499999996,
+      "setupSeconds": 0.02776516599999998,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 1458,
+        "accepted": 1458,
+        "forced": 1458,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 36288
+      },
+      "selected": 1458,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "halo": true,
+      "steps": 1459,
+      "seconds": 0.304996209,
+      "setupSeconds": 0.039011416,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 1458,
+        "accepted": 1458,
+        "forced": 1458,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 38772
+      },
+      "selected": 1458,
+      "markOnlyPoints": 1674,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "halo": false,
+      "steps": 78017,
+      "seconds": 15.019117625000002,
+      "setupSeconds": 0.04356945900000005,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 53466,
+        "accepted": 53466,
+        "forced": 28648,
+        "branches": 24818,
+        "backtracks": 24551,
+        "eliminated": 26001,
+        "checks": 5220340
+      },
+      "selected": 788,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "halo": true,
+      "steps": 65333,
+      "seconds": 15.023264167,
+      "setupSeconds": 0.064765625,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 44801,
+        "accepted": 44801,
+        "forced": 24026,
+        "branches": 20775,
+        "backtracks": 20532,
+        "eliminated": 21859,
+        "checks": 4475808
+      },
+      "selected": 750,
+      "markOnlyPoints": 810,
+      "rootRollback": true
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "halo": false,
+      "steps": 325,
+      "seconds": 0.014627667000000656,
+      "setupSeconds": 0.007071833000001789,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 324,
+        "accepted": 324,
+        "forced": 323,
+        "branches": 1,
+        "backtracks": 0,
+        "eliminated": 162,
+        "checks": 5940
+      },
+      "selected": 324,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "halo": true,
+      "steps": 325,
+      "seconds": 0.01957445899999948,
+      "setupSeconds": 0.00797899999999936,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 324,
+        "accepted": 324,
+        "forced": 323,
+        "branches": 1,
+        "backtracks": 0,
+        "eliminated": 162,
+        "checks": 6480
+      },
+      "selected": 324,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "halo": false,
+      "steps": 2917,
+      "seconds": 0.9372783750000017,
+      "setupSeconds": 0.05617720800000097,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 2916,
+        "accepted": 2916,
+        "forced": 2916,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 116316
+      },
+      "selected": 2916,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "halo": true,
+      "steps": 2917,
+      "seconds": 1.153248374999999,
+      "setupSeconds": 0.06966191699999763,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 2916,
+        "accepted": 2916,
+        "forced": 2916,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 121284
+      },
+      "selected": 2916,
+      "markOnlyPoints": 3348,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "halo": false,
+      "steps": 48900,
+      "seconds": 15.029644499999995,
+      "setupSeconds": 0.08459158400000161,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 34472,
+        "accepted": 34472,
+        "forced": 19591,
+        "branches": 14881,
+        "backtracks": 14428,
+        "eliminated": 19880,
+        "checks": 4787181
+      },
+      "selected": 1813,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "halo": true,
+      "steps": 39700,
+      "seconds": 15.041258792,
+      "setupSeconds": 0.10491249999999855,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 28097,
+        "accepted": 28097,
+        "forced": 16050,
+        "branches": 12047,
+        "backtracks": 11603,
+        "eliminated": 16627,
+        "checks": 3955285
+      },
+      "selected": 1801,
+      "markOnlyPoints": 2322,
+      "rootRollback": true
+    }
+  ]
+}

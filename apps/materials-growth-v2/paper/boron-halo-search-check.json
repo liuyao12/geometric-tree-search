@@ -1,0 +1,177 @@
+{
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "searchSummaryHash": "75a3b5a96e148166b7a9a30cb8f0d4cf0b61f89bb2571a52ceabaad705ba0f15",
+  "alternativeHash": "ccd081848e76927e429953c544d5fd2cdbcbfc6d4fcbd242c268a7751a457cd1",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "halo": false,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 108
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "halo": true,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 108
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "halo": false,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 1458
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "halo": true,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 1458
+    },
+    {
+      "file": "beta-B106.cif",
+      "halo": false,
+      "complete": false,
+      "positiveSupportComponents": 1,
+      "selected": 788
+    },
+    {
+      "file": "beta-B106.cif",
+      "halo": true,
+      "complete": false,
+      "positiveSupportComponents": 1,
+      "selected": 750
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "halo": false,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 324
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "halo": true,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 324
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "halo": false,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 2916
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "halo": true,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 2916
+    },
+    {
+      "file": "tau-B106.cif",
+      "halo": false,
+      "complete": false,
+      "positiveSupportComponents": 1,
+      "selected": 1813
+    },
+    {
+      "file": "tau-B106.cif",
+      "halo": true,
+      "complete": false,
+      "positiveSupportComponents": 1,
+      "selected": 1801
+    }
+  ],
+  "alternativeChecks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 108
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 108
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 1458
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 1458
+    },
+    {
+      "file": "beta-B106.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 3175
+    },
+    {
+      "file": "beta-B106.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 3166
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 324
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 324
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 2916
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 2916
+    },
+    {
+      "file": "tau-B106.cif",
+      "seed": 101,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 5417
+    },
+    {
+      "file": "tau-B106.cif",
+      "seed": 202,
+      "complete": true,
+      "positiveSupportComponents": 1,
+      "selected": 5412
+    }
+  ]
+}
