@@ -1,0 +1,10 @@
+{
+  "priorHash": "1cd2c83f2f065174e6314ccbdcd4bde9cc11b41bf14887edf726264b8c40ea30",
+  "resultHash": "0120a1749e61c5d938eed5846c9db99f321e6a936925956216db4ad89f2e6e3d",
+  "verifierHash": "ea7e07db970dbe37264599c769ddb6d8fb97560d6423a650ffc593af01a8520a",
+  "preservedProofPrefix": 40,
+  "additionalCores": 11,
+  "totalRounds": 52,
+  "cumulativeSeconds": 71.750972375,
+  "limits": "Checks recorded hash links, proof-prefix immutability, round counts and arithmetic accounting. Does not independently measure elapsed time or verify new proof semantics; use the separate proof-DAG checker."
+}
