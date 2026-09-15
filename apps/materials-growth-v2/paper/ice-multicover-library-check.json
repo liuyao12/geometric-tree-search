@@ -1,0 +1,26 @@
+{
+  "scope": "Independent provenance, exact-cover and raw-cloud transport checks.",
+  "verifierHash": "b9f5256d4cbc2c45be22d19abd792b0b751a426e946fddd1c7f1e41173b117ab",
+  "results": [
+    {
+      "libraryHash": "59877517abc0f2b9b8d1f7355063c26a72bee0b6d5c516016909bb24e34455bc",
+      "baseMotifs": 269,
+      "decoratedMotifs": 9200,
+      "trainingConfigurations": 100,
+      "trainingCovers": 100,
+      "endpointTransportsChecked": 18400,
+      "maxCoordinateDifference": 1.7319479184152442e-14
+    },
+    {
+      "libraryHash": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+      "baseMotifs": 278,
+      "decoratedMotifs": 11147,
+      "trainingConfigurations": 100,
+      "trainingCovers": 168,
+      "endpointTransportsChecked": 29120,
+      "maxCoordinateDifference": 1.7319479184152442e-14
+    }
+  ],
+  "originalLibraryIsExactPrefix": true,
+  "limits": "Verifies training-observed libraries and exact t coverage, not transferable or exclusive markings. Alternative connectivity has a separate swap-replay certificate."
+}
