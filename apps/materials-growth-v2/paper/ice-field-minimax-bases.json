@@ -1,0 +1,2981 @@
+{
+  "scope": "Repair failed assigned-base field prechecks using fitting bases only.\n\nFrozen 80-frame field library, same global diagnostic radius and positional\ntolerance. Search label-preserving proper Procrustes proposals for the same\nobserved atomic support, retaining the inferred component partition. Stop at\nthe first positive paired-field witness. Not complete continuous-pose search.\n",
+  "sourceHashes": {
+    "coordinates.json": "54e5fc81f08df313c42cd8520adfea3a900ed2488af81c96a63753f99fd8bb6b",
+    "overlap-broad.json": "ef10b70dbb00288535b84a30c060f56784c5bc677878154f32a51c4d32240a42",
+    "thermal-dictionary-e015.json": "c5bed931f2fb1a449a216773035ee48498c1b4558483cc6c91b1dc2ec1e72dba",
+    "gcts-ice-periodic-field-library-v1.json": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+    "gcts-ice-field-transfer-v1.json": "bd4728be8499e66da9e349ec51f867357ff1615cce21d29a3dc96c270d5bb04e"
+  },
+  "codeHash": "1425a8d78c4de4d8a7db53056894360f75b0f8048206a1a203eec54f9b701470",
+  "summary": {
+    "configurations": 100,
+    "occurrences": 9200,
+    "attempted": 41,
+    "rescued": 37,
+    "accepted": 9196,
+    "complete": 97,
+    "minimaxEnabled": true,
+    "minimaxRefinements": 496
+  },
+  "results": [
+    {
+      "id": "c00400",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00401",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00402",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00403",
+      "previousAccepted": 127,
+      "occurrences": 128,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 30,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 4,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 3,
+            "motif": 3,
+            "permutation": [
+              2,
+              0,
+              3,
+              1,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.8364347149461924,
+                0.4972857177864687,
+                0.23039939782577223
+              ],
+              [
+                -0.4402123867916662,
+                0.35916185640173426,
+                0.8229312337135128
+              ],
+              [
+                0.32648127380918246,
+                -0.7897529207237264,
+                0.5193267777231182
+              ]
+            ],
+            "translation": [
+              9.536138991350931,
+              8.16524333507517,
+              13.138331454057955
+            ],
+            "roots": [
+              7,
+              84
+            ],
+            "maxPositionResidualAngstrom": 0.11240124707384397,
+            "endpointDistances": [
+              0.5726359235467271,
+              0.4146920635661575
+            ]
+          }
+        }
+      ],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00404",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00405",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00406",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00407",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00408",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00409",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00410",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00411",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00412",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00413",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00414",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00415",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00416",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00417",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00418",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00419",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00420",
+      "previousAccepted": 127,
+      "occurrences": 128,
+      "attempted": 1,
+      "rescued": 0,
+      "repairs": [
+        {
+          "edge": 25,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 259,
+          "geometricProposals": 0,
+          "minimaxRefinements": 0,
+          "witness": null
+        }
+      ],
+      "accepted": 127,
+      "complete": false
+    },
+    {
+      "id": "c00421",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00422",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00423",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00424",
+      "previousAccepted": 128,
+      "occurrences": 128,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 128,
+      "complete": true
+    },
+    {
+      "id": "c00900",
+      "previousAccepted": 94,
+      "occurrences": 96,
+      "attempted": 2,
+      "rescued": 2,
+      "repairs": [
+        {
+          "edge": 143,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 154,
+          "geometricProposals": 1,
+          "minimaxRefinements": 6,
+          "witness": {
+            "base": 154,
+            "motif": 5038,
+            "permutation": [
+              1,
+              0,
+              3,
+              2,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.32353561280943793,
+                -0.6237815039524579,
+                0.7114923348644246
+              ],
+              [
+                0.9418502385914707,
+                -0.1401542615064501,
+                0.3054094154520628
+              ],
+              [
+                -0.09079006173150556,
+                0.7689300477341166,
+                0.6328536532109127
+              ]
+            ],
+            "translation": [
+              1.9029601051991372,
+              -2.1458678211353672,
+              9.888798560020733
+            ],
+            "roots": [
+              24,
+              57
+            ],
+            "maxPositionResidualAngstrom": 0.128233322480496,
+            "endpointDistances": [
+              0.47330281571034644,
+              0.5313405791657683
+            ]
+          }
+        },
+        {
+          "edge": 209,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 78,
+          "geometricProposals": 1,
+          "minimaxRefinements": 64,
+          "witness": {
+            "base": 78,
+            "motif": 3235,
+            "permutation": [
+              3,
+              1,
+              2,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.19521899360319728,
+                -0.1156586450539383,
+                0.9739161269641459
+              ],
+              [
+                -0.9155946992405608,
+                0.37742095019855293,
+                -0.13870750907506335
+              ],
+              [
+                -0.35153362749407374,
+                -0.918790783680109,
+                -0.17957618039525536
+              ]
+            ],
+            "translation": [
+              6.415790096172613,
+              6.681091308561945,
+              4.662002465975947
+            ],
+            "roots": [
+              40,
+              61
+            ],
+            "maxPositionResidualAngstrom": 0.13924468988395178,
+            "endpointDistances": [
+              0.46677731449215853,
+              0.5887980557723904
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00901",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 168,
+          "previousBase": 163,
+          "previousRadius": null,
+          "basesTested": 73,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 73,
+            "motif": 3221,
+            "permutation": [
+              3,
+              1,
+              2,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.9973960248987727,
+                -0.06866428556315932,
+                -0.022054147098176758
+              ],
+              [
+                0.06666253241143721,
+                0.9944525573588566,
+                -0.08136472168528659
+              ],
+              [
+                0.027518653466715785,
+                0.07968266468016098,
+                0.9964403628220045
+              ]
+            ],
+            "translation": [
+              -3.270803159006071,
+              -0.45502951248751417,
+              11.17478561092019
+            ],
+            "roots": [
+              35,
+              33
+            ],
+            "maxPositionResidualAngstrom": 0.11989202528424923,
+            "endpointDistances": [
+              0.48298091716368996,
+              0.45855942729666904
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00902",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00903",
+      "previousAccepted": 93,
+      "occurrences": 96,
+      "attempted": 3,
+      "rescued": 3,
+      "repairs": [
+        {
+          "edge": 51,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 81,
+          "geometricProposals": 1,
+          "minimaxRefinements": 20,
+          "witness": {
+            "base": 81,
+            "motif": 3243,
+            "permutation": [
+              3,
+              0,
+              2,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.9986145282083164,
+                0.027812583682746726,
+                0.044670843289240494
+              ],
+              [
+                -0.02872707673601033,
+                0.9993879513939744,
+                0.019961905489169696
+              ],
+              [
+                -0.04408831039499071,
+                -0.0212175115752385,
+                0.9988023018040505
+              ]
+            ],
+            "translation": [
+              -0.5170174370119692,
+              2.2709796792294648,
+              5.669549868156529
+            ],
+            "roots": [
+              38,
+              8
+            ],
+            "maxPositionResidualAngstrom": 0.12001226807556217,
+            "endpointDistances": [
+              0.5102182596513724,
+              0.5915890538982657
+            ]
+          }
+        },
+        {
+          "edge": 104,
+          "previousBase": 163,
+          "previousRadius": null,
+          "basesTested": 73,
+          "geometricProposals": 1,
+          "minimaxRefinements": 3,
+          "witness": {
+            "base": 73,
+            "motif": 3221,
+            "permutation": [
+              0,
+              3,
+              2,
+              1,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.38651340831571396,
+                0.913706124253774,
+                -0.12549304240999676
+              ],
+              [
+                -0.6702850146177904,
+                -0.18482966799709089,
+                0.7187182987839628
+              ],
+              [
+                0.6335024738475759,
+                0.3619103650480767,
+                0.683882667787223
+              ]
+            ],
+            "translation": [
+              7.611931287394884,
+              2.955096847135952,
+              3.9684769559813686
+            ],
+            "roots": [
+              22,
+              19
+            ],
+            "maxPositionResidualAngstrom": 0.1195038970699988,
+            "endpointDistances": [
+              0.5375213839361617,
+              0.45382981607525724
+            ]
+          }
+        },
+        {
+          "edge": 275,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 71,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 71,
+            "motif": 3216,
+            "permutation": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.4008163552138153,
+                0.9135677887260142,
+                -0.06884870946774047
+              ],
+              [
+                -0.5301680137779258,
+                -0.17000283155790802,
+                0.8306749752033359
+              ],
+              [
+                0.7471734246879246,
+                0.369449499478013,
+                0.5524843353214315
+              ]
+            ],
+            "translation": [
+              1.1899198195898704,
+              2.556595396560147,
+              3.773742604023904
+            ],
+            "roots": [
+              74,
+              87
+            ],
+            "maxPositionResidualAngstrom": 0.1151058457491105,
+            "endpointDistances": [
+              0.6159149518091043,
+              0.6074926181050148
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00904",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 250,
+          "previousBase": 163,
+          "previousRadius": null,
+          "basesTested": 65,
+          "geometricProposals": 1,
+          "minimaxRefinements": 1,
+          "witness": {
+            "base": 65,
+            "motif": 3204,
+            "permutation": [
+              1,
+              0,
+              3,
+              2,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.44269832094680167,
+                0.8964365067326738,
+                0.020488680479810006
+              ],
+              [
+                -0.5563949473309009,
+                -0.2925466198010474,
+                0.7777153321284246
+              ],
+              [
+                0.7031663097841981,
+                0.3328934734113941,
+                0.6282826403336088
+              ]
+            ],
+            "translation": [
+              1.458425435549801,
+              5.345785941683753,
+              9.473850638620075
+            ],
+            "roots": [
+              60,
+              90
+            ],
+            "maxPositionResidualAngstrom": 0.14905230354827118,
+            "endpointDistances": [
+              0.5115846336921023,
+              0.4677093894620189
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00905",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00906",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00907",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00908",
+      "previousAccepted": 94,
+      "occurrences": 96,
+      "attempted": 2,
+      "rescued": 2,
+      "repairs": [
+        {
+          "edge": 112,
+          "previousBase": 156,
+          "previousRadius": null,
+          "basesTested": 2,
+          "geometricProposals": 1,
+          "minimaxRefinements": 1,
+          "witness": {
+            "base": 1,
+            "motif": 1,
+            "permutation": [
+              0,
+              2,
+              1,
+              3,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.5514332458614817,
+                -0.38135275998942064,
+                0.7419511087714082
+              ],
+              [
+                0.7206999703601609,
+                0.6657010904701881,
+                -0.19347767537797608
+              ],
+              [
+                -0.42013441668296336,
+                0.6414141646356538,
+                0.6419306359126447
+              ]
+            ],
+            "translation": [
+              6.454436050755885,
+              8.846098531501585,
+              1.2641165857613612
+            ],
+            "roots": [
+              21,
+              77
+            ],
+            "maxPositionResidualAngstrom": 0.13354847951842547,
+            "endpointDistances": [
+              0.8235090377602448,
+              0.8526114878510628
+            ]
+          }
+        },
+        {
+          "edge": 172,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 82,
+          "geometricProposals": 1,
+          "minimaxRefinements": 56,
+          "witness": {
+            "base": 82,
+            "motif": 3250,
+            "permutation": [
+              1,
+              2,
+              3,
+              0,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.391063258990959,
+                -0.5976304793373146,
+                0.6999338094665966
+              ],
+              [
+                0.9189957342335242,
+                -0.2121061314964423,
+                0.332351966207814
+              ],
+              [
+                -0.05016341224394716,
+                0.7732068281829032,
+                0.632166776193892
+              ]
+            ],
+            "translation": [
+              -4.016659563878182,
+              4.279841292616265,
+              6.7649063785072565
+            ],
+            "roots": [
+              71,
+              37
+            ],
+            "maxPositionResidualAngstrom": 0.12127088417971765,
+            "endpointDistances": [
+              0.5979685866071041,
+              0.591889601487133
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00909",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 35,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 109,
+          "geometricProposals": 1,
+          "minimaxRefinements": 9,
+          "witness": {
+            "base": 109,
+            "motif": 3463,
+            "permutation": [
+              1,
+              2,
+              0,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.2759254197155667,
+                -0.6237040846117978,
+                0.7313401244245714
+              ],
+              [
+                0.9605325399439346,
+                -0.2068285650820667,
+                0.18600855995073712
+              ],
+              [
+                0.03524772990764102,
+                0.7538004772515421,
+                0.6561573271950145
+              ]
+            ],
+            "translation": [
+              -1.7833249460376783,
+              7.247980895947487,
+              3.2457578962038665
+            ],
+            "roots": [
+              17,
+              6
+            ],
+            "maxPositionResidualAngstrom": 0.13501924450657551,
+            "endpointDistances": [
+              0.7365645799818146,
+              0.7296119294838022
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00910",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 0,
+      "repairs": [
+        {
+          "edge": 89,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 259,
+          "geometricProposals": 0,
+          "minimaxRefinements": 9,
+          "witness": null
+        }
+      ],
+      "accepted": 95,
+      "complete": false
+    },
+    {
+      "id": "c00911",
+      "previousAccepted": 93,
+      "occurrences": 96,
+      "attempted": 3,
+      "rescued": 3,
+      "repairs": [
+        {
+          "edge": 153,
+          "previousBase": 163,
+          "previousRadius": null,
+          "basesTested": 65,
+          "geometricProposals": 1,
+          "minimaxRefinements": 1,
+          "witness": {
+            "base": 65,
+            "motif": 3204,
+            "permutation": [
+              3,
+              2,
+              0,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.4727548560320475,
+                0.8793259550841749,
+                -0.057347282528654786
+              ],
+              [
+                -0.6011223937587161,
+                -0.2742290868072924,
+                0.7506332497768994
+              ],
+              [
+                0.6443250063592973,
+                0.3893382496803285,
+                0.65822565546775
+              ]
+            ],
+            "translation": [
+              7.48157778285438,
+              -8.695893769614583,
+              9.38458444367582
+            ],
+            "roots": [
+              80,
+              27
+            ],
+            "maxPositionResidualAngstrom": 0.14093539795039134,
+            "endpointDistances": [
+              0.5248600771306361,
+              0.5504915807203586
+            ]
+          }
+        },
+        {
+          "edge": 176,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 133,
+          "geometricProposals": 1,
+          "minimaxRefinements": 10,
+          "witness": {
+            "base": 133,
+            "motif": 4234,
+            "permutation": [
+              2,
+              0,
+              3,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.07978106354593226,
+                -0.9920033636607926,
+                -0.09779728209491956
+              ],
+              [
+                0.028501588833123093,
+                0.10034005689289363,
+                -0.9945448870798735
+              ],
+              [
+                0.9964048581442522,
+                0.07655847091213508,
+                0.036278908447309355
+              ]
+            ],
+            "translation": [
+              5.734859252892726,
+              9.47719261244158,
+              3.8186717243192367
+            ],
+            "roots": [
+              85,
+              33
+            ],
+            "maxPositionResidualAngstrom": 0.14031661313793825,
+            "endpointDistances": [
+              1.0569292684867113,
+              0.7365712762298362
+            ]
+          }
+        },
+        {
+          "edge": 203,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 78,
+          "geometricProposals": 1,
+          "minimaxRefinements": 66,
+          "witness": {
+            "base": 78,
+            "motif": 3235,
+            "permutation": [
+              2,
+              1,
+              0,
+              3,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.8403375244970255,
+                0.1391026408786677,
+                0.5239115385471019
+              ],
+              [
+                0.07365427005853643,
+                -0.9868507021321002,
+                0.14387751806145763
+              ],
+              [
+                0.5370362123957334,
+                -0.08231735541160981,
+                -0.8395331795549734
+              ]
+            ],
+            "translation": [
+              5.4753007071542426,
+              12.596889120960418,
+              -0.06831098477986759
+            ],
+            "roots": [
+              80,
+              40
+            ],
+            "maxPositionResidualAngstrom": 0.14142390641065825,
+            "endpointDistances": [
+              0.5335548959016355,
+              0.5347283257436869
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00912",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00913",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00914",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 161,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 90,
+          "geometricProposals": 1,
+          "minimaxRefinements": 4,
+          "witness": {
+            "base": 90,
+            "motif": 3315,
+            "permutation": [
+              3,
+              2,
+              0,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.3406999537275629,
+                -0.6409341473595704,
+                0.6878422495590812
+              ],
+              [
+                0.9361808517025401,
+                -0.1639341811996261,
+                0.3109517601492473
+              ],
+              [
+                -0.08653874528523858,
+                0.7498859933235644,
+                0.6558826439094024
+              ]
+            ],
+            "translation": [
+              -6.297503889971717,
+              10.335088890716031,
+              5.571090284431511
+            ],
+            "roots": [
+              94,
+              31
+            ],
+            "maxPositionResidualAngstrom": 0.1422783248581706,
+            "endpointDistances": [
+              0.6127041480787709,
+              0.6945923856180726
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00915",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 220,
+          "previousBase": 159,
+          "previousRadius": null,
+          "basesTested": 66,
+          "geometricProposals": 1,
+          "minimaxRefinements": 1,
+          "witness": {
+            "base": 66,
+            "motif": 3207,
+            "permutation": [
+              1,
+              3,
+              2,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.3695659279675788,
+                0.9289573556353768,
+                -0.021430265896384748
+              ],
+              [
+                -0.6372476459064201,
+                -0.23659551976126936,
+                0.7334425661329045
+              ],
+              [
+                0.6762665618468708,
+                0.284711769057449,
+                0.6794135308396423
+              ]
+            ],
+            "translation": [
+              8.0968959561048,
+              4.365185892718819,
+              1.9934428854563657
+            ],
+            "roots": [
+              49,
+              73
+            ],
+            "maxPositionResidualAngstrom": 0.11213604388640605,
+            "endpointDistances": [
+              0.4928838535583924,
+              0.6169258579835134
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00916",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00917",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 23,
+          "previousBase": 269,
+          "previousRadius": null,
+          "basesTested": 68,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 68,
+            "motif": 3210,
+            "permutation": [
+              2,
+              1,
+              0,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.33984727374266316,
+                0.9353054403472555,
+                0.09852696984331594
+              ],
+              [
+                -0.5747664229953892,
+                -0.2894734433139338,
+                0.7654075284533461
+              ],
+              [
+                0.7444107666649944,
+                0.2034916678215623,
+                0.6359589228876612
+              ]
+            ],
+            "translation": [
+              -0.8234346267598418,
+              -4.304839675513563,
+              7.031783795719234
+            ],
+            "roots": [
+              4,
+              44
+            ],
+            "maxPositionResidualAngstrom": 0.13576680553993048,
+            "endpointDistances": [
+              0.5296768047294175,
+              0.5780478302715741
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00918",
+      "previousAccepted": 94,
+      "occurrences": 96,
+      "attempted": 2,
+      "rescued": 0,
+      "repairs": [
+        {
+          "edge": 48,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 259,
+          "geometricProposals": 0,
+          "minimaxRefinements": 1,
+          "witness": null
+        },
+        {
+          "edge": 150,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 259,
+          "geometricProposals": 0,
+          "minimaxRefinements": 3,
+          "witness": null
+        }
+      ],
+      "accepted": 94,
+      "complete": false
+    },
+    {
+      "id": "c00919",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00920",
+      "previousAccepted": 96,
+      "occurrences": 96,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00921",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 4,
+          "previousBase": 163,
+          "previousRadius": null,
+          "basesTested": 73,
+          "geometricProposals": 1,
+          "minimaxRefinements": 1,
+          "witness": {
+            "base": 73,
+            "motif": 3221,
+            "permutation": [
+              2,
+              0,
+              3,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.4083278767193247,
+                -0.5932055900145865,
+                0.6938122750927187
+              ],
+              [
+                0.9125086786493386,
+                -0.28558841202661445,
+                0.2928603255918335
+              ],
+              [
+                0.024418363653734676,
+                0.7526927572997916,
+                0.6579189590100827
+              ]
+            ],
+            "translation": [
+              -3.8509632472124986,
+              -1.7154015085858962,
+              7.442183531037799
+            ],
+            "roots": [
+              0,
+              57
+            ],
+            "maxPositionResidualAngstrom": 0.11720505064739828,
+            "endpointDistances": [
+              0.5511361132969946,
+              0.5402882841419889
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00922",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 149,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 13,
+          "geometricProposals": 1,
+          "minimaxRefinements": 8,
+          "witness": {
+            "base": 12,
+            "motif": 36,
+            "permutation": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.664274100010813,
+                0.3779981528377437,
+                -0.6448699996945729
+              ],
+              [
+                -0.48507463684818414,
+                -0.4383989496852186,
+                -0.7566432168476103
+              ],
+              [
+                -0.5687200688752129,
+                0.8154285728168662,
+                -0.10785975103078133
+              ]
+            ],
+            "translation": [
+              -3.51099206255624,
+              -2.1941501871320104,
+              11.077479042090403
+            ],
+            "roots": [
+              27,
+              78
+            ],
+            "maxPositionResidualAngstrom": 0.13483968921915018,
+            "endpointDistances": [
+              0.9465123408010329,
+              1.0329772080956656
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00923",
+      "previousAccepted": 95,
+      "occurrences": 96,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 227,
+          "previousBase": 166,
+          "previousRadius": null,
+          "basesTested": 3,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 2,
+            "motif": 2,
+            "permutation": [
+              1,
+              0,
+              2,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.6522733052624154,
+                0.39158077199297886,
+                -0.6490023376286302
+              ],
+              [
+                -0.579766725772415,
+                -0.2938132863465325,
+                -0.7599633520462574
+              ],
+              [
+                -0.4882725457458952,
+                0.8719737678231112,
+                0.03537893863853875
+              ]
+            ],
+            "translation": [
+              2.3743114864997987,
+              8.027867146799242,
+              5.28974943135893
+            ],
+            "roots": [
+              69,
+              51
+            ],
+            "maxPositionResidualAngstrom": 0.14687908291716056,
+            "endpointDistances": [
+              1.0173110332489912,
+              0.9634251616877374
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c00924",
+      "previousAccepted": 94,
+      "occurrences": 96,
+      "attempted": 2,
+      "rescued": 2,
+      "repairs": [
+        {
+          "edge": 97,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 15,
+          "geometricProposals": 1,
+          "minimaxRefinements": 14,
+          "witness": {
+            "base": 14,
+            "motif": 51,
+            "permutation": [
+              0,
+              1,
+              3,
+              2,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.27205697522066746,
+                -0.8994776178667236,
+                0.3419430028390485
+              ],
+              [
+                0.42733466403129405,
+                0.4313161056637236,
+                0.7945763033921542
+              ],
+              [
+                -0.8621891249320199,
+                -0.07004592744681226,
+                0.5017205207055754
+              ]
+            ],
+            "translation": [
+              2.3777416159888833,
+              8.044846949770498,
+              5.470827251704264
+            ],
+            "roots": [
+              17,
+              33
+            ],
+            "maxPositionResidualAngstrom": 0.13307378464043787,
+            "endpointDistances": [
+              0.8918374189770929,
+              0.7263496344322177
+            ]
+          }
+        },
+        {
+          "edge": 122,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 71,
+          "geometricProposals": 1,
+          "minimaxRefinements": 4,
+          "witness": {
+            "base": 71,
+            "motif": 3216,
+            "permutation": [
+              3,
+              2,
+              0,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.9984335419367811,
+                -0.05397542508811012,
+                0.014734850597538538
+              ],
+              [
+                0.053804095641972936,
+                0.998481945527531,
+                0.011786591861361327
+              ],
+              [
+                -0.015348668597744817,
+                -0.010975333348682082,
+                0.9998219643667376
+              ]
+            ],
+            "translation": [
+              9.317601353355254,
+              7.794750742719459,
+              1.373312633741813
+            ],
+            "roots": [
+              84,
+              22
+            ],
+            "maxPositionResidualAngstrom": 0.12436730700105338,
+            "endpointDistances": [
+              0.5497749327193865,
+              0.4340195897931884
+            ]
+          }
+        }
+      ],
+      "accepted": 96,
+      "complete": true
+    },
+    {
+      "id": "c01400",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 91,
+          "previousBase": 231,
+          "previousRadius": null,
+          "basesTested": 196,
+          "geometricProposals": 1,
+          "minimaxRefinements": 15,
+          "witness": {
+            "base": 206,
+            "motif": 5910,
+            "permutation": [
+              3,
+              0,
+              1,
+              2,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.9931982121877523,
+                0.027273862154195867,
+                -0.11319650060954385
+              ],
+              [
+                -0.025947660171820576,
+                0.9995765052895192,
+                0.013173040833436523
+              ],
+              [
+                0.11350784219013353,
+                -0.010146256274389689,
+                0.993485290905182
+              ]
+            ],
+            "translation": [
+              4.4465490556734535,
+              3.4785734895475686,
+              2.731115752400755
+            ],
+            "roots": [
+              41,
+              16
+            ],
+            "maxPositionResidualAngstrom": 0.12068092142807574,
+            "endpointDistances": [
+              0.39501869586015165,
+              0.4448925225394208
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01401",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 241,
+          "previousBase": 223,
+          "previousRadius": 1.128047984639452,
+          "basesTested": 193,
+          "geometricProposals": 1,
+          "minimaxRefinements": 10,
+          "witness": {
+            "base": 203,
+            "motif": 5813,
+            "permutation": [
+              2,
+              1,
+              0,
+              3,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.9790295710175495,
+                0.033704168420299586,
+                0.2009107466122433
+              ],
+              [
+                0.05056479568653403,
+                0.995560523587235,
+                0.07938794185447351
+              ],
+              [
+                -0.19734310352878318,
+                0.08788215351142845,
+                -0.9763874367195747
+              ]
+            ],
+            "translation": [
+              8.05146410773187,
+              9.056132744021639,
+              6.815179001462536
+            ],
+            "roots": [
+              69,
+              75
+            ],
+            "maxPositionResidualAngstrom": 0.13613925646993777,
+            "endpointDistances": [
+              0.5222547115637862,
+              0.5442774283544746
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01402",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01403",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 100,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 156,
+          "geometricProposals": 1,
+          "minimaxRefinements": 20,
+          "witness": {
+            "base": 161,
+            "motif": 5627,
+            "permutation": [
+              0,
+              1,
+              3,
+              2,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.682780686512318,
+                0.5306472056706699,
+                -0.5022191526014088
+              ],
+              [
+                0.42513277684056683,
+                0.8475862499057643,
+                0.31758411645816265
+              ],
+              [
+                0.5941991721481916,
+                0.0033304781327588573,
+                -0.8043110416585182
+              ]
+            ],
+            "translation": [
+              7.053074925097067,
+              2.5453322622006183,
+              4.3358356992305955
+            ],
+            "roots": [
+              18,
+              61
+            ],
+            "maxPositionResidualAngstrom": 0.12391188865725226,
+            "endpointDistances": [
+              0.5340435804927117,
+              0.50699782845714
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01404",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01405",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01406",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01407",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 84,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 51,
+          "geometricProposals": 1,
+          "minimaxRefinements": 43,
+          "witness": {
+            "base": 50,
+            "motif": 1618,
+            "permutation": [
+              3,
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.940177644401618,
+                0.3358740202022311,
+                -0.05704944803077229
+              ],
+              [
+                0.24784168221930722,
+                -0.7891996018867372,
+                -0.5619061211061144
+              ],
+              [
+                -0.23375306954589603,
+                0.5141523421467674,
+                -0.8252314048452499
+              ]
+            ],
+            "translation": [
+              6.7420700030085925,
+              7.68534652195121,
+              6.371129842876898
+            ],
+            "roots": [
+              15,
+              26
+            ],
+            "maxPositionResidualAngstrom": 0.1381083280501938,
+            "endpointDistances": [
+              1.0069842135894929,
+              0.9604883468169017
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01408",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01409",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 179,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 185,
+          "geometricProposals": 1,
+          "minimaxRefinements": 3,
+          "witness": {
+            "base": 195,
+            "motif": 5716,
+            "permutation": [
+              1,
+              2,
+              3,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.012251319229585667,
+                0.9999227784298862,
+                -0.0020838316130978862
+              ],
+              [
+                -0.6529115367309294,
+                -0.006421214967799571,
+                0.7574069534946151
+              ],
+              [
+                0.7573350846097066,
+                0.010639792074766674,
+                0.6529397862313298
+              ]
+            ],
+            "translation": [
+              9.242619118974385,
+              3.8640115890974442,
+              9.265480716906204
+            ],
+            "roots": [
+              41,
+              69
+            ],
+            "maxPositionResidualAngstrom": 0.10955897752379588,
+            "endpointDistances": [
+              0.5391298733388478,
+              0.4679448504604034
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01410",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01411",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01412",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01413",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 115,
+          "previousBase": 231,
+          "previousRadius": null,
+          "basesTested": 103,
+          "geometricProposals": 1,
+          "minimaxRefinements": 11,
+          "witness": {
+            "base": 103,
+            "motif": 3375,
+            "permutation": [
+              2,
+              0,
+              3,
+              1,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.5700503719737977,
+                0.5581431454012143,
+                0.6029252048589224
+              ],
+              [
+                0.6745327682038461,
+                0.10104847022112826,
+                -0.7312966233240968
+              ],
+              [
+                -0.469092867172153,
+                0.8235687196024436,
+                -0.31888312288454557
+              ]
+            ],
+            "translation": [
+              10.438262731107343,
+              9.575645508685453,
+              8.506188097993734
+            ],
+            "roots": [
+              69,
+              21
+            ],
+            "maxPositionResidualAngstrom": 0.14630677430273054,
+            "endpointDistances": [
+              0.8588168729270456,
+              0.864927215401001
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01414",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 36,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 89,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 89,
+            "motif": 3311,
+            "permutation": [
+              3,
+              2,
+              1,
+              0,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.01220098840425804,
+                0.1806806654081558,
+                -0.9834661321212973
+              ],
+              [
+                0.754826890980081,
+                0.6433992585293073,
+                0.12756864339359442
+              ],
+              [
+                0.655810567569099,
+                -0.7439031464321167,
+                -0.12853251803762628
+              ]
+            ],
+            "translation": [
+              6.691480132889373,
+              8.984596062727235,
+              1.1295053585918646
+            ],
+            "roots": [
+              50,
+              5
+            ],
+            "maxPositionResidualAngstrom": 0.14381394973059897,
+            "endpointDistances": [
+              0.9147423700663987,
+              0.9013181676768538
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01415",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 232,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 114,
+          "geometricProposals": 1,
+          "minimaxRefinements": 3,
+          "witness": {
+            "base": 114,
+            "motif": 3509,
+            "permutation": [
+              3,
+              1,
+              2,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.7568705528639892,
+                0.4565943639002258,
+                0.46762009480122546
+              ],
+              [
+                0.272664586300282,
+                -0.8708495754765504,
+                0.40899271420161953
+              ],
+              [
+                0.5939705292226669,
+                -0.1820511020204486,
+                -0.7836175129922027
+              ]
+            ],
+            "translation": [
+              6.623881009614156,
+              8.922477918983938,
+              1.2832989281273688
+            ],
+            "roots": [
+              69,
+              61
+            ],
+            "maxPositionResidualAngstrom": 0.12297361010488811,
+            "endpointDistances": [
+              1.0011634603399953,
+              0.9625168497472336
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01416",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 150,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 114,
+          "geometricProposals": 1,
+          "minimaxRefinements": 2,
+          "witness": {
+            "base": 114,
+            "motif": 3509,
+            "permutation": [
+              2,
+              3,
+              1,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.7677201200256792,
+                0.44370753543173613,
+                0.4623088148725388
+              ],
+              [
+                0.2860540757257817,
+                -0.8829070062334891,
+                0.37235505113330547
+              ],
+              [
+                0.5733924337383826,
+                -0.15361914380998365,
+                -0.8047498217375771
+              ]
+            ],
+            "translation": [
+              6.686695716852935,
+              8.890867021448901,
+              1.15870032583249
+            ],
+            "roots": [
+              65,
+              28
+            ],
+            "maxPositionResidualAngstrom": 0.12471370218307638,
+            "endpointDistances": [
+              0.945836511867126,
+              0.9561983736998741
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01417",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01418",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01419",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 97,
+          "previousBase": 233,
+          "previousRadius": null,
+          "basesTested": 159,
+          "geometricProposals": 1,
+          "minimaxRefinements": 54,
+          "witness": {
+            "base": 169,
+            "motif": 5605,
+            "permutation": [
+              2,
+              0,
+              1,
+              3,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                0.9989240453167832,
+                -0.024191550785568863,
+                -0.039566659683911584
+              ],
+              [
+                0.02210434504952614,
+                0.9983833821756044,
+                -0.05236430201513669
+              ],
+              [
+                0.04076946918816482,
+                0.051433365301039764,
+                0.9978439052857542
+              ]
+            ],
+            "translation": [
+              8.767902926993758,
+              2.39911667381215,
+              4.418145328852314
+            ],
+            "roots": [
+              17,
+              26
+            ],
+            "maxPositionResidualAngstrom": 0.11735549654274323,
+            "endpointDistances": [
+              0.5131690588253397,
+              0.4099508330039123
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01420",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 76,
+          "previousBase": 231,
+          "previousRadius": null,
+          "basesTested": 103,
+          "geometricProposals": 1,
+          "minimaxRefinements": 10,
+          "witness": {
+            "base": 103,
+            "motif": 3375,
+            "permutation": [
+              1,
+              2,
+              0,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.511765612435204,
+                0.5802205031328829,
+                0.6335930284283793
+              ],
+              [
+                0.6957685234742701,
+                0.15272108057120662,
+                -0.7018421712120164
+              ],
+              [
+                -0.5039862296444764,
+                0.8000127744563754,
+                -0.3255417654239743
+              ]
+            ],
+            "translation": [
+              4.441968731380234,
+              3.538745169695814,
+              8.478099837085836
+            ],
+            "roots": [
+              15,
+              29
+            ],
+            "maxPositionResidualAngstrom": 0.14890873229780982,
+            "endpointDistances": [
+              0.9450044793336665,
+              0.8977808898519938
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01421",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01422",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01423",
+      "previousAccepted": 79,
+      "occurrences": 80,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 51,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 176,
+          "geometricProposals": 1,
+          "minimaxRefinements": 3,
+          "witness": {
+            "base": 186,
+            "motif": 5669,
+            "permutation": [
+              3,
+              2,
+              0,
+              1,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                0.9961820424423208,
+                -0.0064006986496175575,
+                0.08706531670098426
+              ],
+              [
+                0.011121348369211307,
+                0.9984874720208892,
+                -0.05384314095392641
+              ],
+              [
+                -0.08658899425386891,
+                0.05460585384489955,
+                0.9947464736303279
+              ]
+            ],
+            "translation": [
+              8.39382699639173,
+              3.89753295825073,
+              4.786033833871921
+            ],
+            "roots": [
+              8,
+              33
+            ],
+            "maxPositionResidualAngstrom": 0.12035163568001309,
+            "endpointDistances": [
+              0.6428497769794599,
+              0.5260947035346621
+            ]
+          }
+        }
+      ],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01424",
+      "previousAccepted": 80,
+      "occurrences": 80,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 80,
+      "complete": true
+    },
+    {
+      "id": "c01900",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01901",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01902",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01903",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01904",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01905",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01906",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01907",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01908",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01909",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01910",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01911",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01912",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01913",
+      "previousAccepted": 63,
+      "occurrences": 64,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 91,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 231,
+          "geometricProposals": 1,
+          "minimaxRefinements": 6,
+          "witness": {
+            "base": 247,
+            "motif": 7652,
+            "permutation": [
+              1,
+              3,
+              0,
+              2,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.06700745841717795,
+                0.997615965259079,
+                -0.016504132108848574
+              ],
+              [
+                0.9817080605079291,
+                0.06296643165608981,
+                -0.17967891478484405
+              ],
+              [
+                -0.1782113477033111,
+                -0.028242066933833465,
+                -0.9835868549371097
+              ]
+            ],
+            "translation": [
+              1.0865153135734937,
+              7.514248406607186,
+              9.51956998675637
+            ],
+            "roots": [
+              40,
+              10
+            ],
+            "maxPositionResidualAngstrom": 0.12356877030226389,
+            "endpointDistances": [
+              0.7631848861219679,
+              0.9140153194303468
+            ]
+          }
+        }
+      ],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01914",
+      "previousAccepted": 63,
+      "occurrences": 64,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 170,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 230,
+          "geometricProposals": 3,
+          "minimaxRefinements": 16,
+          "witness": {
+            "base": 246,
+            "motif": 7643,
+            "permutation": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "rotationRow": [
+              [
+                -0.9952091473045316,
+                -0.07680466155852896,
+                -0.06049625677896835
+              ],
+              [
+                0.07321784899449175,
+                -0.9955436540167196,
+                0.05943045966217873
+              ],
+              [
+                -0.06479120086868935,
+                0.05471633129073876,
+                0.9963976231304826
+              ]
+            ],
+            "translation": [
+              3.6022837823250304,
+              3.884563500946287,
+              4.1011268826774305
+            ],
+            "roots": [
+              20,
+              24
+            ],
+            "maxPositionResidualAngstrom": 0.13392962285746549,
+            "endpointDistances": [
+              0.6359850650925686,
+              0.7986760546808689
+            ]
+          }
+        }
+      ],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01915",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01916",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01917",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01918",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01919",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01920",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01921",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01922",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01923",
+      "previousAccepted": 63,
+      "occurrences": 64,
+      "attempted": 1,
+      "rescued": 1,
+      "repairs": [
+        {
+          "edge": 206,
+          "previousBase": null,
+          "previousRadius": null,
+          "basesTested": 224,
+          "geometricProposals": 1,
+          "minimaxRefinements": 6,
+          "witness": {
+            "base": 240,
+            "motif": 7607,
+            "permutation": [
+              3,
+              1,
+              2,
+              0,
+              5,
+              4
+            ],
+            "rotationRow": [
+              [
+                -0.5018135701058898,
+                0.12990444882662944,
+                0.8551654664640238
+              ],
+              [
+                0.7492703299485123,
+                -0.4286914326196182,
+                0.5047946396876529
+              ],
+              [
+                0.43217717838454783,
+                0.8940629115300497,
+                0.11778962904255086
+              ]
+            ],
+            "translation": [
+              9.457503217793917,
+              3.8615781558629134,
+              3.2511609654009215
+            ],
+            "roots": [
+              31,
+              26
+            ],
+            "maxPositionResidualAngstrom": 0.1285523238526695,
+            "endpointDistances": [
+              0.8606067220653317,
+              0.7735073299450125
+            ]
+          }
+        }
+      ],
+      "accepted": 64,
+      "complete": true
+    },
+    {
+      "id": "c01924",
+      "previousAccepted": 64,
+      "occurrences": 64,
+      "attempted": 0,
+      "rescued": 0,
+      "repairs": [],
+      "accepted": 64,
+      "complete": true
+    }
+  ],
+  "poseOptimizerHash": "34148e4172c92f78e21ecfab98a8f59ce98ecff99b6e45c196271690f32310ef",
+  "limits": "Positive first-witness rescue only, pending independent replay. Same atoms and component partition, no training expansion or phase input. Broad radius already shown ineffective for decoration pruning. No blind growth, full continuous-pose completeness, condition-matched provenance or new specificity claim."
+}

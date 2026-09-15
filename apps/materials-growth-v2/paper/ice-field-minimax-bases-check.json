@@ -1,0 +1,13 @@
+{
+  "scope": "Independent positive periodic-position and field check of alternative bases.\n\nEnumerates independent bounded periodic images, checks their cell bounds, and\nevaluates a signed Gaussian quadratic form in world coordinates. Does not prove\nabsence of alternatives or completeness of the producer's Procrustes proposals.\n",
+  "rescueHash": "91a0a5fbc20b1b59be902795c6b414fa704b42497f84723d959d11cb357a6695",
+  "priorWitnessCheckHash": "566068b84402112885c13a23eace4e71ec869461aa96d1f054f5c64ffca765f4",
+  "libraryHash": "70aa5b589a6cb58d5491812b18c230deb02804fd438a1b7e92007d9d3c38e39e",
+  "verifierHash": "988eafe03799893a88eee9b5e4205dd82cc7b6833748064a56b6ff6b9c3babfd",
+  "rescuedOccurrences": 37,
+  "checkedEndpointFields": 74,
+  "completeCoverWitnesses": 97,
+  "maxPeriodicPositionErrorAngstrom": 0.14905230354827143,
+  "maxEndpointFieldDistance": 1.056929268486711,
+  "limits": "Positive composed witnesses only. Failure absence and all-continuous-pose completeness not verified. Retains broad ineffective-pruning field radius. No search reconstruction, negative specificity or condition provenance claim."
+}
