@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
-  <link rel="stylesheet" href="assets/anchor-learning.css?v=20260915-2">
+  <link rel="stylesheet" href="assets/anchor-learning.css?v=20260915-3">
   <script>
     window.MathJax = {
       tex: {
@@ -125,33 +125,19 @@
         <h2 id="anchor-learning">Geometric Deep Learning</h2>
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
         <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
-        <h3>Three point-domain regimes</h3>
-        <p>The ambient point domain and the points required to be covered are separate choices. On a lattice, both t- and m-values live on lattice points, but the equation \(\sum_g t(g^{-1}x)=1\) need only hold on an explicitly declared subset \(Q\). Elsewhere the total must remain at most 1, and overlapping assigned markings must still agree.</p>
-        <p>A second regime uses a Delone set, or another locally finite set of points. For Penrose tilings, \(\mathbb{Q}(\zeta_5)\) supplies exact coordinate arithmetic; it is not itself a locally finite physical point set. A cut-and-project construction can use a higher-dimensional lattice and an acceptance window to select the relevant points. The allowed placements and a complete finite candidate enumeration still need to be specified. See <a href="https://www.math.uni-bielefeld.de/~mspiess/Preprints/tomo.pdf">Huck and Spiess on cyclotomic Delone sets</a>.</p>
-        <p>In the third regime, anchor locations are themselves trainable, along with their t- and m-values. Exact coincidence constraints change discontinuously when anchors move, so a smooth contact loss can propose a model which must then be frozen and checked separately. Separation, coordinate gauges and nontrivial marking values need explicit treatment. A small training loss is not an exact tiling certificate.</p>
-        <p>The experiment below provides a first calibration on a square lattice tile. Compare learning coordinates against freezing the same perturbed anchors. The known contact graph and unit translations are supplied in this experiment; discovering new contact graphs, general Delone sets and material structures remains future work.</p>
-                    <section id="anchor-lane" data-wrap-with-demo aria-label="Moving-anchor learning experiment">
-                      <div class="anchor-heading"><strong>Learn the points, then check the tile</strong><span class="anchor-badge">Calibration experiment</span></div>
-                      <div>Four anchors of a square tile start off the lattice. Gradient descent moves their coordinates and learns their t- and m-values.</div>
-                      <div class="anchor-controls">
-                        <button id="anchor-train" type="button">Train</button>
-                        <button id="anchor-check" type="button" disabled>Freeze &amp; exact check</button>
-                        <button id="anchor-reset" type="button">Reset</button>
-                        <label>Seed <input id="anchor-seed" type="number" min="1" max="9999" value="7"></label>
-                        <label><input id="anchor-freeze" type="checkbox"> Freeze anchors</label>
-                      </div>
-                      <canvas id="anchor-canvas" width="640" height="350" aria-label="Learned square anchors and translated contact patches. Coordinates and values are also available below."></canvas>
-                      <div id="anchor-metrics"></div>
-                      <div id="anchor-loss"></div>
-                      <div id="anchor-result" role="status" aria-live="polite"></div>
-                      <details><summary>Point values &amp; experiment scope</summary>
-                        <pre id="anchor-values"></pre>
-                        <div>Known square contacts, unit translations and t-symmetry supervise training. A center constraint removes translation drift; a unit marking norm prevents the all-zero solution. Unit translations reverse m. This is supervised calibration, with no RL or held-out generalization claim.</div>
-                        <div class="anchor-model-note">The exact check first rounds nearby anchors to integers, t to twelfths and m to ±1. It searches all 32 translations/marking-phase candidates on a 4 × 4 torus with 16 required points. Both marking phases are allowed. The learned marking defines a restricted problem; failure does not disprove unmarked tiling. The continuous model is not certified.</div>
-                        <div class="anchor-model-note">The graph is rebuilt completely at each move. Global dead ends precede forced moves, then branching; all required points have root generation 0. Final t-sums and m-agreement are independently replayed.</div>
-                        <button id="anchor-export" type="button" disabled>Export training &amp; certificate</button>
-                      </details>
-                    </section>
+        <section id="anchor-lane" data-wrap-with-demo aria-label="Turtle training and tiling">
+          <div class="anchor-controls">
+            <button id="anchor-train" type="button">Train Turtle</button>
+            <button id="anchor-check" type="button" disabled>Tile with learned marking</button>
+            <button id="anchor-reset" type="button">Reset</button>
+            <label>Seed <input id="anchor-seed" type="number" min="1" max="9999" value="7"></label>
+            <label><input id="anchor-marks" type="checkbox" checked> Markings</label>
+            <button id="anchor-export" type="button" disabled>Export</button>
+          </div>
+          <canvas id="anchor-canvas" width="720" height="400" aria-label="Turtle anchor and point-value training on the left; a Turtle patch grown with the fitted marking on the right."></canvas>
+          <div id="anchor-metrics"></div>
+          <div id="anchor-result" role="status" aria-live="polite"></div>
+        </section>
       </section>
     </article>
   </main>
@@ -2497,6 +2483,6 @@
       syncDemoStageToScroll();
     })();
   </script>
-  <script type="module" src="assets/anchor-learning-demo.js?v=20260915-2"></script>
+  <script type="module" src="assets/anchor-learning-demo.js?v=20260915-3"></script>
 </body>
 </html>
