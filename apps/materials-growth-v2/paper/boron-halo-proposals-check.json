@@ -1,0 +1,159 @@
+{
+  "scope": "Independent library pose fit and neighbor-set reconstruction for halo support.\n\nChecks support/coverage, not optimality or uniqueness of the anchor clustering.\n",
+  "proposalsHash": "5e9fcc23c48675d2dae869b7bda9f0f0df4a31c73bbe592955585e4cb24a00ef",
+  "totalProposedAnchors": 303,
+  "maximumIndependentPoseResidual": 0.029139894153800812,
+  "checks": [
+    {
+      "type": 0,
+      "anchors": 6,
+      "selectedOccurrences": 27,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 6,
+      "maximumObservedPointCoverageError": 1.3339319245520533e-14,
+      "sourceConfigurations": [
+        0
+      ]
+    },
+    {
+      "type": 1,
+      "anchors": 12,
+      "selectedOccurrences": 81,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 12,
+      "maximumObservedPointCoverageError": 1.6940705162219698e-14,
+      "sourceConfigurations": [
+        1
+      ]
+    },
+    {
+      "type": 2,
+      "anchors": 34,
+      "selectedOccurrences": 162,
+      "frameCoordinateCloudPatterns": 4,
+      "anchorsSupportedInEveryOccurrence": 13,
+      "maximumObservedPointCoverageError": 0.017475056428105675,
+      "sourceConfigurations": [
+        1,
+        4
+      ]
+    },
+    {
+      "type": 3,
+      "anchors": 50,
+      "selectedOccurrences": 81,
+      "frameCoordinateCloudPatterns": 6,
+      "anchorsSupportedInEveryOccurrence": 0,
+      "maximumObservedPointCoverageError": 0.01926302650624865,
+      "sourceConfigurations": [
+        1,
+        4
+      ]
+    },
+    {
+      "type": 4,
+      "anchors": 36,
+      "selectedOccurrences": 27,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 36,
+      "maximumObservedPointCoverageError": 1.6881232242081456e-14,
+      "sourceConfigurations": [
+        2
+      ]
+    },
+    {
+      "type": 5,
+      "anchors": 63,
+      "selectedOccurrences": 81,
+      "frameCoordinateCloudPatterns": 3,
+      "anchorsSupportedInEveryOccurrence": 13,
+      "maximumObservedPointCoverageError": 0.018350345027342767,
+      "sourceConfigurations": [
+        2,
+        5
+      ]
+    },
+    {
+      "type": 6,
+      "anchors": 10,
+      "selectedOccurrences": 54,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 10,
+      "maximumObservedPointCoverageError": 4.550560269027492e-15,
+      "sourceConfigurations": [
+        3
+      ]
+    },
+    {
+      "type": 7,
+      "anchors": 12,
+      "selectedOccurrences": 108,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 12,
+      "maximumObservedPointCoverageError": 1.4582537476432216e-14,
+      "sourceConfigurations": [
+        4
+      ]
+    },
+    {
+      "type": 8,
+      "anchors": 12,
+      "selectedOccurrences": 54,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 12,
+      "maximumObservedPointCoverageError": 8.837884781867389e-15,
+      "sourceConfigurations": [
+        4
+      ]
+    },
+    {
+      "type": 9,
+      "anchors": 6,
+      "selectedOccurrences": 27,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 6,
+      "maximumObservedPointCoverageError": 1.5309810464659356e-14,
+      "sourceConfigurations": [
+        5
+      ]
+    },
+    {
+      "type": 10,
+      "anchors": 57,
+      "selectedOccurrences": 54,
+      "frameCoordinateCloudPatterns": 2,
+      "anchorsSupportedInEveryOccurrence": 21,
+      "maximumObservedPointCoverageError": 0.012390480599586333,
+      "sourceConfigurations": [
+        5
+      ]
+    },
+    {
+      "type": 11,
+      "anchors": 5,
+      "selectedOccurrences": 27,
+      "frameCoordinateCloudPatterns": 1,
+      "anchorsSupportedInEveryOccurrence": 5,
+      "maximumObservedPointCoverageError": 1.2436975805296829e-14,
+      "sourceConfigurations": [
+        5
+      ]
+    },
+    {
+      "type": 12,
+      "status": "rank-deficient frame correctly deferred"
+    },
+    {
+      "type": 13,
+      "status": "rank-deficient frame correctly deferred"
+    },
+    {
+      "type": 14,
+      "status": "rank-deficient frame correctly deferred"
+    },
+    {
+      "type": 15,
+      "status": "rank-deficient frame correctly deferred"
+    }
+  ]
+}
