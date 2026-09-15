@@ -64,6 +64,13 @@ joint arrangements. The remaining variants use the original exact integer t
 contributions and scalar marking agreement; the kernel needs no new geometric
 legality primitive. β-B106 has 48,348 explicit variants; τ-B106 has 21,663.
 
+These scalar state labels are compiled for each fixed target. They are not yet
+a portable marking assigned once to a geometric motif and transported to new
+positions. A next requirement is a shared, rotation-covariant representation of
+the endpoint neighborhoods, rather than target-local state indices. The present
+compiler establishes a finite GCTS encoding, not that stronger learned-growth
+capability.
+
 The search keeps these label domains implicit and propagates their binary
 compatibility through the existing frontier graph. Both the selected and absent
 states of a shared candidate participate in propagation. Domains are rebuilt
