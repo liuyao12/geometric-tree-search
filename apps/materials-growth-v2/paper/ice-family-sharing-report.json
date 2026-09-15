@@ -1,0 +1,4085 @@
+{
+  "scope": "Audit observed cross-phase sharing; never treat phase labels as search inputs.\n\nCounts use existing learned base identities, not a new isometry classifier.\nExact serialized cloud equality is storage equality, not tolerance equivalence.\n",
+  "phases": [
+    {
+      "phase": "II",
+      "trainingFrames": 25,
+      "bases": 129,
+      "decoratedMotifs": 2629,
+      "placementObservations": 4320
+    },
+    {
+      "phase": "Ih",
+      "trainingFrames": 25,
+      "bases": 62,
+      "decoratedMotifs": 3200,
+      "placementObservations": 3200
+    },
+    {
+      "phase": "VI",
+      "trainingFrames": 25,
+      "bases": 122,
+      "decoratedMotifs": 2450,
+      "placementObservations": 3840
+    },
+    {
+      "phase": "VIII",
+      "trainingFrames": 25,
+      "bases": 55,
+      "decoratedMotifs": 2868,
+      "placementObservations": 3200
+    }
+  ],
+  "pairwise": [
+    {
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "sharedBases": 23,
+      "sharedDecoratedMotifs": 0
+    },
+    {
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "sharedBases": 42,
+      "sharedDecoratedMotifs": 0
+    },
+    {
+      "phases": [
+        "II",
+        "VIII"
+      ],
+      "sharedBases": 0,
+      "sharedDecoratedMotifs": 0
+    },
+    {
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "sharedBases": 19,
+      "sharedDecoratedMotifs": 0
+    },
+    {
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "sharedBases": 11,
+      "sharedDecoratedMotifs": 0
+    },
+    {
+      "phases": [
+        "VI",
+        "VIII"
+      ],
+      "sharedBases": 7,
+      "sharedDecoratedMotifs": 0
+    }
+  ],
+  "baseSharingHistogram": {
+    "1": 200,
+    "2": 66,
+    "3": 12,
+    "4": 0
+  },
+  "bases": [
+    {
+      "base": 0,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 253,
+      "exactStoredEndpointValues": [
+        253,
+        253
+      ],
+      "exactStoredPairs": 253,
+      "exactCartesianPairs": 64009,
+      "unobservedExactCartesianPairs": 63756
+    },
+    {
+      "base": 1,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 646,
+      "exactStoredEndpointValues": [
+        646,
+        645
+      ],
+      "exactStoredPairs": 646,
+      "exactCartesianPairs": 416670,
+      "unobservedExactCartesianPairs": 416024
+    },
+    {
+      "base": 2,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 314,
+      "exactStoredEndpointValues": [
+        309,
+        307
+      ],
+      "exactStoredPairs": 314,
+      "exactCartesianPairs": 94863,
+      "unobservedExactCartesianPairs": 94549
+    },
+    {
+      "base": 3,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 405,
+      "exactStoredEndpointValues": [
+        405,
+        405
+      ],
+      "exactStoredPairs": 405,
+      "exactCartesianPairs": 164025,
+      "unobservedExactCartesianPairs": 163620
+    },
+    {
+      "base": 4,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 230,
+      "exactStoredEndpointValues": [
+        230,
+        230
+      ],
+      "exactStoredPairs": 230,
+      "exactCartesianPairs": 52900,
+      "unobservedExactCartesianPairs": 52670
+    },
+    {
+      "base": 5,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 836,
+      "exactStoredEndpointValues": [
+        820,
+        821
+      ],
+      "exactStoredPairs": 836,
+      "exactCartesianPairs": 673220,
+      "unobservedExactCartesianPairs": 672384
+    },
+    {
+      "base": 6,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 131,
+      "exactStoredEndpointValues": [
+        131,
+        129
+      ],
+      "exactStoredPairs": 131,
+      "exactCartesianPairs": 16899,
+      "unobservedExactCartesianPairs": 16768
+    },
+    {
+      "base": 7,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 126,
+      "exactStoredEndpointValues": [
+        125,
+        124
+      ],
+      "exactStoredPairs": 126,
+      "exactCartesianPairs": 15500,
+      "unobservedExactCartesianPairs": 15374
+    },
+    {
+      "base": 8,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 369,
+      "exactStoredEndpointValues": [
+        344,
+        343
+      ],
+      "exactStoredPairs": 369,
+      "exactCartesianPairs": 117992,
+      "unobservedExactCartesianPairs": 117623
+    },
+    {
+      "base": 9,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 121,
+      "exactStoredEndpointValues": [
+        121,
+        121
+      ],
+      "exactStoredPairs": 121,
+      "exactCartesianPairs": 14641,
+      "unobservedExactCartesianPairs": 14520
+    },
+    {
+      "base": 10,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 177,
+      "exactStoredEndpointValues": [
+        172,
+        175
+      ],
+      "exactStoredPairs": 177,
+      "exactCartesianPairs": 30100,
+      "unobservedExactCartesianPairs": 29923
+    },
+    {
+      "base": 11,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 12,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 143,
+      "exactStoredEndpointValues": [
+        141,
+        140
+      ],
+      "exactStoredPairs": 143,
+      "exactCartesianPairs": 19740,
+      "unobservedExactCartesianPairs": 19597
+    },
+    {
+      "base": 13,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 154,
+      "exactStoredEndpointValues": [
+        154,
+        154
+      ],
+      "exactStoredPairs": 154,
+      "exactCartesianPairs": 23716,
+      "unobservedExactCartesianPairs": 23562
+    },
+    {
+      "base": 14,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 78,
+      "exactStoredEndpointValues": [
+        78,
+        78
+      ],
+      "exactStoredPairs": 78,
+      "exactCartesianPairs": 6084,
+      "unobservedExactCartesianPairs": 6006
+    },
+    {
+      "base": 15,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 25,
+      "exactStoredEndpointValues": [
+        25,
+        25
+      ],
+      "exactStoredPairs": 25,
+      "exactCartesianPairs": 625,
+      "unobservedExactCartesianPairs": 600
+    },
+    {
+      "base": 16,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 158,
+      "exactStoredEndpointValues": [
+        150,
+        148
+      ],
+      "exactStoredPairs": 158,
+      "exactCartesianPairs": 22200,
+      "unobservedExactCartesianPairs": 22042
+    },
+    {
+      "base": 17,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 23,
+      "exactStoredEndpointValues": [
+        23,
+        23
+      ],
+      "exactStoredPairs": 23,
+      "exactCartesianPairs": 529,
+      "unobservedExactCartesianPairs": 506
+    },
+    {
+      "base": 18,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 45,
+      "exactStoredEndpointValues": [
+        40,
+        43
+      ],
+      "exactStoredPairs": 45,
+      "exactCartesianPairs": 1720,
+      "unobservedExactCartesianPairs": 1675
+    },
+    {
+      "base": 19,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        3,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 12,
+      "unobservedExactCartesianPairs": 8
+    },
+    {
+      "base": 20,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 157,
+      "exactStoredEndpointValues": [
+        146,
+        148
+      ],
+      "exactStoredPairs": 157,
+      "exactCartesianPairs": 21608,
+      "unobservedExactCartesianPairs": 21451
+    },
+    {
+      "base": 21,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 71,
+      "exactStoredEndpointValues": [
+        70,
+        71
+      ],
+      "exactStoredPairs": 71,
+      "exactCartesianPairs": 4970,
+      "unobservedExactCartesianPairs": 4899
+    },
+    {
+      "base": 22,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 23,
+      "exactStoredEndpointValues": [
+        22,
+        23
+      ],
+      "exactStoredPairs": 23,
+      "exactCartesianPairs": 506,
+      "unobservedExactCartesianPairs": 483
+    },
+    {
+      "base": 23,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        6,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 36,
+      "unobservedExactCartesianPairs": 30
+    },
+    {
+      "base": 24,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 28,
+      "exactStoredEndpointValues": [
+        26,
+        27
+      ],
+      "exactStoredPairs": 28,
+      "exactCartesianPairs": 702,
+      "unobservedExactCartesianPairs": 674
+    },
+    {
+      "base": 25,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 49,
+      "unobservedExactCartesianPairs": 42
+    },
+    {
+      "base": 26,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 474,
+      "exactStoredEndpointValues": [
+        428,
+        438
+      ],
+      "exactStoredPairs": 474,
+      "exactCartesianPairs": 187464,
+      "unobservedExactCartesianPairs": 186990
+    },
+    {
+      "base": 27,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 55,
+      "exactStoredEndpointValues": [
+        53,
+        54
+      ],
+      "exactStoredPairs": 55,
+      "exactCartesianPairs": 2862,
+      "unobservedExactCartesianPairs": 2807
+    },
+    {
+      "base": 28,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 9,
+      "exactStoredEndpointValues": [
+        9,
+        8
+      ],
+      "exactStoredPairs": 9,
+      "exactCartesianPairs": 72,
+      "unobservedExactCartesianPairs": 63
+    },
+    {
+      "base": 29,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 39,
+      "exactStoredEndpointValues": [
+        36,
+        37
+      ],
+      "exactStoredPairs": 39,
+      "exactCartesianPairs": 1332,
+      "unobservedExactCartesianPairs": 1293
+    },
+    {
+      "base": 30,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 31,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 9,
+      "exactStoredEndpointValues": [
+        9,
+        8
+      ],
+      "exactStoredPairs": 9,
+      "exactCartesianPairs": 72,
+      "unobservedExactCartesianPairs": 63
+    },
+    {
+      "base": 32,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 33,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 34,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 88,
+      "exactStoredEndpointValues": [
+        86,
+        87
+      ],
+      "exactStoredPairs": 88,
+      "exactCartesianPairs": 7482,
+      "unobservedExactCartesianPairs": 7394
+    },
+    {
+      "base": 35,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 36,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        10,
+        9
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 90,
+      "unobservedExactCartesianPairs": 80
+    },
+    {
+      "base": 37,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 57,
+      "exactStoredEndpointValues": [
+        54,
+        50
+      ],
+      "exactStoredPairs": 57,
+      "exactCartesianPairs": 2700,
+      "unobservedExactCartesianPairs": 2643
+    },
+    {
+      "base": 38,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 39,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 40,
+      "phases": [
+        "Ih",
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 14,
+      "exactStoredEndpointValues": [
+        11,
+        14
+      ],
+      "exactStoredPairs": 14,
+      "exactCartesianPairs": 154,
+      "unobservedExactCartesianPairs": 140
+    },
+    {
+      "base": 41,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        6,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 36,
+      "unobservedExactCartesianPairs": 30
+    },
+    {
+      "base": 42,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 43,
+      "phases": [
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        4,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 20,
+      "unobservedExactCartesianPairs": 15
+    },
+    {
+      "base": 44,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 45,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 46,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 47,
+      "phases": [
+        "II",
+        "Ih"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        10,
+        11
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 110,
+      "unobservedExactCartesianPairs": 99
+    },
+    {
+      "base": 48,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 49,
+      "phases": [
+        "Ih",
+        "VIII"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 50,
+      "phases": [
+        "II",
+        "Ih",
+        "VI"
+      ],
+      "coupledVariants": 64,
+      "exactStoredEndpointValues": [
+        63,
+        60
+      ],
+      "exactStoredPairs": 64,
+      "exactCartesianPairs": 3780,
+      "unobservedExactCartesianPairs": 3716
+    },
+    {
+      "base": 51,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 52,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 53,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 54,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 55,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 56,
+      "phases": [
+        "Ih",
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 70,
+      "exactStoredEndpointValues": [
+        65,
+        65
+      ],
+      "exactStoredPairs": 70,
+      "exactCartesianPairs": 4225,
+      "unobservedExactCartesianPairs": 4155
+    },
+    {
+      "base": 57,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 58,
+      "phases": [
+        "Ih",
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        11,
+        11
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 121,
+      "unobservedExactCartesianPairs": 110
+    },
+    {
+      "base": 59,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 60,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 61,
+      "phases": [
+        "Ih"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 62,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 177,
+      "exactStoredEndpointValues": [
+        175,
+        169
+      ],
+      "exactStoredPairs": 177,
+      "exactCartesianPairs": 29575,
+      "unobservedExactCartesianPairs": 29398
+    },
+    {
+      "base": 63,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 133,
+      "exactStoredEndpointValues": [
+        130,
+        128
+      ],
+      "exactStoredPairs": 133,
+      "exactCartesianPairs": 16640,
+      "unobservedExactCartesianPairs": 16507
+    },
+    {
+      "base": 64,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 18,
+      "exactStoredEndpointValues": [
+        18,
+        17
+      ],
+      "exactStoredPairs": 18,
+      "exactCartesianPairs": 306,
+      "unobservedExactCartesianPairs": 288
+    },
+    {
+      "base": 65,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 69,
+      "exactStoredEndpointValues": [
+        68,
+        68
+      ],
+      "exactStoredPairs": 69,
+      "exactCartesianPairs": 4624,
+      "unobservedExactCartesianPairs": 4555
+    },
+    {
+      "base": 66,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 89,
+      "exactStoredEndpointValues": [
+        86,
+        86
+      ],
+      "exactStoredPairs": 89,
+      "exactCartesianPairs": 7396,
+      "unobservedExactCartesianPairs": 7307
+    },
+    {
+      "base": 67,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 49,
+      "exactStoredEndpointValues": [
+        48,
+        49
+      ],
+      "exactStoredPairs": 49,
+      "exactCartesianPairs": 2352,
+      "unobservedExactCartesianPairs": 2303
+    },
+    {
+      "base": 68,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 83,
+      "exactStoredEndpointValues": [
+        80,
+        80
+      ],
+      "exactStoredPairs": 83,
+      "exactCartesianPairs": 6400,
+      "unobservedExactCartesianPairs": 6317
+    },
+    {
+      "base": 69,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 56,
+      "exactStoredEndpointValues": [
+        55,
+        54
+      ],
+      "exactStoredPairs": 56,
+      "exactCartesianPairs": 2970,
+      "unobservedExactCartesianPairs": 2914
+    },
+    {
+      "base": 70,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 29,
+      "exactStoredEndpointValues": [
+        27,
+        29
+      ],
+      "exactStoredPairs": 29,
+      "exactCartesianPairs": 783,
+      "unobservedExactCartesianPairs": 754
+    },
+    {
+      "base": 71,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 33,
+      "exactStoredEndpointValues": [
+        31,
+        33
+      ],
+      "exactStoredPairs": 33,
+      "exactCartesianPairs": 1023,
+      "unobservedExactCartesianPairs": 990
+    },
+    {
+      "base": 72,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 118,
+      "exactStoredEndpointValues": [
+        115,
+        113
+      ],
+      "exactStoredPairs": 118,
+      "exactCartesianPairs": 12995,
+      "unobservedExactCartesianPairs": 12877
+    },
+    {
+      "base": 73,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 40,
+      "exactStoredEndpointValues": [
+        39,
+        38
+      ],
+      "exactStoredPairs": 40,
+      "exactCartesianPairs": 1482,
+      "unobservedExactCartesianPairs": 1442
+    },
+    {
+      "base": 74,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 35,
+      "exactStoredEndpointValues": [
+        35,
+        35
+      ],
+      "exactStoredPairs": 35,
+      "exactCartesianPairs": 1225,
+      "unobservedExactCartesianPairs": 1190
+    },
+    {
+      "base": 75,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 14,
+      "exactStoredEndpointValues": [
+        14,
+        14
+      ],
+      "exactStoredPairs": 14,
+      "exactCartesianPairs": 196,
+      "unobservedExactCartesianPairs": 182
+    },
+    {
+      "base": 76,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 16,
+      "exactStoredEndpointValues": [
+        15,
+        16
+      ],
+      "exactStoredPairs": 16,
+      "exactCartesianPairs": 240,
+      "unobservedExactCartesianPairs": 224
+    },
+    {
+      "base": 77,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 19,
+      "exactStoredEndpointValues": [
+        17,
+        18
+      ],
+      "exactStoredPairs": 19,
+      "exactCartesianPairs": 306,
+      "unobservedExactCartesianPairs": 287
+    },
+    {
+      "base": 78,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 131,
+      "exactStoredEndpointValues": [
+        130,
+        127
+      ],
+      "exactStoredPairs": 131,
+      "exactCartesianPairs": 16510,
+      "unobservedExactCartesianPairs": 16379
+    },
+    {
+      "base": 79,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 35,
+      "exactStoredEndpointValues": [
+        33,
+        35
+      ],
+      "exactStoredPairs": 35,
+      "exactCartesianPairs": 1155,
+      "unobservedExactCartesianPairs": 1120
+    },
+    {
+      "base": 80,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 31,
+      "exactStoredEndpointValues": [
+        31,
+        29
+      ],
+      "exactStoredPairs": 31,
+      "exactCartesianPairs": 899,
+      "unobservedExactCartesianPairs": 868
+    },
+    {
+      "base": 81,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 85,
+      "exactStoredEndpointValues": [
+        83,
+        82
+      ],
+      "exactStoredPairs": 85,
+      "exactCartesianPairs": 6806,
+      "unobservedExactCartesianPairs": 6721
+    },
+    {
+      "base": 82,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 27,
+      "exactStoredEndpointValues": [
+        27,
+        26
+      ],
+      "exactStoredPairs": 27,
+      "exactCartesianPairs": 702,
+      "unobservedExactCartesianPairs": 675
+    },
+    {
+      "base": 83,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 150,
+      "exactStoredEndpointValues": [
+        145,
+        143
+      ],
+      "exactStoredPairs": 150,
+      "exactCartesianPairs": 20735,
+      "unobservedExactCartesianPairs": 20585
+    },
+    {
+      "base": 84,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 72,
+      "exactStoredEndpointValues": [
+        70,
+        70
+      ],
+      "exactStoredPairs": 72,
+      "exactCartesianPairs": 4900,
+      "unobservedExactCartesianPairs": 4828
+    },
+    {
+      "base": 85,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 54,
+      "exactStoredEndpointValues": [
+        51,
+        52
+      ],
+      "exactStoredPairs": 54,
+      "exactCartesianPairs": 2652,
+      "unobservedExactCartesianPairs": 2598
+    },
+    {
+      "base": 86,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        9,
+        9
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 81,
+      "unobservedExactCartesianPairs": 71
+    },
+    {
+      "base": 87,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 43,
+      "exactStoredEndpointValues": [
+        42,
+        41
+      ],
+      "exactStoredPairs": 43,
+      "exactCartesianPairs": 1722,
+      "unobservedExactCartesianPairs": 1679
+    },
+    {
+      "base": 88,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 89,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 90,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 25,
+      "exactStoredEndpointValues": [
+        24,
+        24
+      ],
+      "exactStoredPairs": 25,
+      "exactCartesianPairs": 576,
+      "unobservedExactCartesianPairs": 551
+    },
+    {
+      "base": 91,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 50,
+      "exactStoredEndpointValues": [
+        46,
+        49
+      ],
+      "exactStoredPairs": 50,
+      "exactCartesianPairs": 2254,
+      "unobservedExactCartesianPairs": 2204
+    },
+    {
+      "base": 92,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 72,
+      "exactStoredEndpointValues": [
+        69,
+        71
+      ],
+      "exactStoredPairs": 72,
+      "exactCartesianPairs": 4899,
+      "unobservedExactCartesianPairs": 4827
+    },
+    {
+      "base": 93,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 94,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 49,
+      "unobservedExactCartesianPairs": 42
+    },
+    {
+      "base": 95,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        10,
+        11
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 110,
+      "unobservedExactCartesianPairs": 99
+    },
+    {
+      "base": 96,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 74,
+      "exactStoredEndpointValues": [
+        72,
+        72
+      ],
+      "exactStoredPairs": 74,
+      "exactCartesianPairs": 5184,
+      "unobservedExactCartesianPairs": 5110
+    },
+    {
+      "base": 97,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        9,
+        10
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 90,
+      "unobservedExactCartesianPairs": 79
+    },
+    {
+      "base": 98,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 99,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 8,
+      "exactStoredEndpointValues": [
+        8,
+        7
+      ],
+      "exactStoredPairs": 8,
+      "exactCartesianPairs": 56,
+      "unobservedExactCartesianPairs": 48
+    },
+    {
+      "base": 100,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 19,
+      "exactStoredEndpointValues": [
+        19,
+        16
+      ],
+      "exactStoredPairs": 19,
+      "exactCartesianPairs": 304,
+      "unobservedExactCartesianPairs": 285
+    },
+    {
+      "base": 101,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 8,
+      "exactStoredEndpointValues": [
+        8,
+        8
+      ],
+      "exactStoredPairs": 8,
+      "exactCartesianPairs": 64,
+      "unobservedExactCartesianPairs": 56
+    },
+    {
+      "base": 102,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 33,
+      "exactStoredEndpointValues": [
+        29,
+        32
+      ],
+      "exactStoredPairs": 33,
+      "exactCartesianPairs": 928,
+      "unobservedExactCartesianPairs": 895
+    },
+    {
+      "base": 103,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 12,
+      "exactStoredEndpointValues": [
+        12,
+        11
+      ],
+      "exactStoredPairs": 12,
+      "exactCartesianPairs": 132,
+      "unobservedExactCartesianPairs": 120
+    },
+    {
+      "base": 104,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        10,
+        10
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 100,
+      "unobservedExactCartesianPairs": 90
+    },
+    {
+      "base": 105,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 26,
+      "exactStoredEndpointValues": [
+        26,
+        26
+      ],
+      "exactStoredPairs": 26,
+      "exactCartesianPairs": 676,
+      "unobservedExactCartesianPairs": 650
+    },
+    {
+      "base": 106,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 107,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        3
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 12,
+      "unobservedExactCartesianPairs": 8
+    },
+    {
+      "base": 108,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 109,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 16,
+      "exactStoredEndpointValues": [
+        15,
+        16
+      ],
+      "exactStoredPairs": 16,
+      "exactCartesianPairs": 240,
+      "unobservedExactCartesianPairs": 224
+    },
+    {
+      "base": 110,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        9,
+        10
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 90,
+      "unobservedExactCartesianPairs": 80
+    },
+    {
+      "base": 111,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 13,
+      "exactStoredEndpointValues": [
+        13,
+        13
+      ],
+      "exactStoredPairs": 13,
+      "exactCartesianPairs": 169,
+      "unobservedExactCartesianPairs": 156
+    },
+    {
+      "base": 112,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 49,
+      "unobservedExactCartesianPairs": 42
+    },
+    {
+      "base": 113,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 114,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 37,
+      "exactStoredEndpointValues": [
+        34,
+        34
+      ],
+      "exactStoredPairs": 37,
+      "exactCartesianPairs": 1156,
+      "unobservedExactCartesianPairs": 1119
+    },
+    {
+      "base": 115,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 116,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        5,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 30,
+      "unobservedExactCartesianPairs": 24
+    },
+    {
+      "base": 117,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 118,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 63,
+      "exactStoredEndpointValues": [
+        59,
+        62
+      ],
+      "exactStoredPairs": 63,
+      "exactCartesianPairs": 3658,
+      "unobservedExactCartesianPairs": 3595
+    },
+    {
+      "base": 119,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 22,
+      "exactStoredEndpointValues": [
+        20,
+        21
+      ],
+      "exactStoredPairs": 22,
+      "exactCartesianPairs": 420,
+      "unobservedExactCartesianPairs": 398
+    },
+    {
+      "base": 120,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 121,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 122,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 49,
+      "unobservedExactCartesianPairs": 42
+    },
+    {
+      "base": 123,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 124,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 30,
+      "exactStoredEndpointValues": [
+        29,
+        27
+      ],
+      "exactStoredPairs": 30,
+      "exactCartesianPairs": 783,
+      "unobservedExactCartesianPairs": 753
+    },
+    {
+      "base": 125,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 126,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 127,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 128,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        6,
+        5
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 30,
+      "unobservedExactCartesianPairs": 24
+    },
+    {
+      "base": 129,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 130,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 131,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 132,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        2,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 6,
+      "unobservedExactCartesianPairs": 3
+    },
+    {
+      "base": 133,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        4
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 20,
+      "unobservedExactCartesianPairs": 15
+    },
+    {
+      "base": 134,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 135,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        6,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 36,
+      "unobservedExactCartesianPairs": 30
+    },
+    {
+      "base": 136,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        5,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 30,
+      "unobservedExactCartesianPairs": 24
+    },
+    {
+      "base": 137,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 138,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 139,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 140,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        1,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 141,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        11,
+        10
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 110,
+      "unobservedExactCartesianPairs": 99
+    },
+    {
+      "base": 142,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 143,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 144,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        1
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 145,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        2,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 6,
+      "unobservedExactCartesianPairs": 3
+    },
+    {
+      "base": 146,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 147,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 148,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 149,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 150,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 151,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 152,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 153,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 154,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 155,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 156,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 157,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 158,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        11,
+        11
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 121,
+      "unobservedExactCartesianPairs": 110
+    },
+    {
+      "base": 159,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 160,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 161,
+      "phases": [
+        "II",
+        "VI"
+      ],
+      "coupledVariants": 26,
+      "exactStoredEndpointValues": [
+        25,
+        22
+      ],
+      "exactStoredPairs": 26,
+      "exactCartesianPairs": 550,
+      "unobservedExactCartesianPairs": 524
+    },
+    {
+      "base": 162,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 163,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 164,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 165,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 166,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 167,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 46,
+      "exactStoredEndpointValues": [
+        45,
+        46
+      ],
+      "exactStoredPairs": 46,
+      "exactCartesianPairs": 2070,
+      "unobservedExactCartesianPairs": 2024
+    },
+    {
+      "base": 168,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 60,
+      "exactStoredEndpointValues": [
+        56,
+        57
+      ],
+      "exactStoredPairs": 60,
+      "exactCartesianPairs": 3192,
+      "unobservedExactCartesianPairs": 3132
+    },
+    {
+      "base": 169,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 123,
+      "exactStoredEndpointValues": [
+        121,
+        119
+      ],
+      "exactStoredPairs": 123,
+      "exactCartesianPairs": 14399,
+      "unobservedExactCartesianPairs": 14276
+    },
+    {
+      "base": 170,
+      "phases": [
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 81,
+      "exactStoredEndpointValues": [
+        78,
+        77
+      ],
+      "exactStoredPairs": 81,
+      "exactCartesianPairs": 6006,
+      "unobservedExactCartesianPairs": 5925
+    },
+    {
+      "base": 171,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 172,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 82,
+      "exactStoredEndpointValues": [
+        79,
+        79
+      ],
+      "exactStoredPairs": 82,
+      "exactCartesianPairs": 6241,
+      "unobservedExactCartesianPairs": 6159
+    },
+    {
+      "base": 173,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 83,
+      "exactStoredEndpointValues": [
+        79,
+        81
+      ],
+      "exactStoredPairs": 83,
+      "exactCartesianPairs": 6399,
+      "unobservedExactCartesianPairs": 6316
+    },
+    {
+      "base": 174,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 18,
+      "exactStoredEndpointValues": [
+        18,
+        18
+      ],
+      "exactStoredPairs": 18,
+      "exactCartesianPairs": 324,
+      "unobservedExactCartesianPairs": 306
+    },
+    {
+      "base": 175,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 79,
+      "exactStoredEndpointValues": [
+        77,
+        77
+      ],
+      "exactStoredPairs": 79,
+      "exactCartesianPairs": 5929,
+      "unobservedExactCartesianPairs": 5850
+    },
+    {
+      "base": 176,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 100,
+      "exactStoredEndpointValues": [
+        93,
+        97
+      ],
+      "exactStoredPairs": 100,
+      "exactCartesianPairs": 9021,
+      "unobservedExactCartesianPairs": 8921
+    },
+    {
+      "base": 177,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 65,
+      "exactStoredEndpointValues": [
+        60,
+        61
+      ],
+      "exactStoredPairs": 65,
+      "exactCartesianPairs": 3660,
+      "unobservedExactCartesianPairs": 3595
+    },
+    {
+      "base": 178,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 22,
+      "exactStoredEndpointValues": [
+        21,
+        21
+      ],
+      "exactStoredPairs": 22,
+      "exactCartesianPairs": 441,
+      "unobservedExactCartesianPairs": 419
+    },
+    {
+      "base": 179,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        1,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 180,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 39,
+      "exactStoredEndpointValues": [
+        39,
+        38
+      ],
+      "exactStoredPairs": 39,
+      "exactCartesianPairs": 1482,
+      "unobservedExactCartesianPairs": 1443
+    },
+    {
+      "base": 181,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 92,
+      "exactStoredEndpointValues": [
+        87,
+        88
+      ],
+      "exactStoredPairs": 92,
+      "exactCartesianPairs": 7656,
+      "unobservedExactCartesianPairs": 7564
+    },
+    {
+      "base": 182,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 13,
+      "exactStoredEndpointValues": [
+        12,
+        13
+      ],
+      "exactStoredPairs": 13,
+      "exactCartesianPairs": 156,
+      "unobservedExactCartesianPairs": 143
+    },
+    {
+      "base": 183,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 9,
+      "exactStoredEndpointValues": [
+        9,
+        8
+      ],
+      "exactStoredPairs": 9,
+      "exactCartesianPairs": 72,
+      "unobservedExactCartesianPairs": 63
+    },
+    {
+      "base": 184,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 45,
+      "exactStoredEndpointValues": [
+        44,
+        40
+      ],
+      "exactStoredPairs": 45,
+      "exactCartesianPairs": 1760,
+      "unobservedExactCartesianPairs": 1715
+    },
+    {
+      "base": 185,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 50,
+      "exactStoredEndpointValues": [
+        43,
+        48
+      ],
+      "exactStoredPairs": 50,
+      "exactCartesianPairs": 2064,
+      "unobservedExactCartesianPairs": 2014
+    },
+    {
+      "base": 186,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 13,
+      "exactStoredEndpointValues": [
+        13,
+        13
+      ],
+      "exactStoredPairs": 13,
+      "exactCartesianPairs": 169,
+      "unobservedExactCartesianPairs": 156
+    },
+    {
+      "base": 187,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 36,
+      "exactStoredEndpointValues": [
+        34,
+        34
+      ],
+      "exactStoredPairs": 36,
+      "exactCartesianPairs": 1156,
+      "unobservedExactCartesianPairs": 1120
+    },
+    {
+      "base": 188,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 73,
+      "exactStoredEndpointValues": [
+        72,
+        71
+      ],
+      "exactStoredPairs": 73,
+      "exactCartesianPairs": 5112,
+      "unobservedExactCartesianPairs": 5039
+    },
+    {
+      "base": 189,
+      "phases": [
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 190,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        10,
+        10
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 100,
+      "unobservedExactCartesianPairs": 90
+    },
+    {
+      "base": 191,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 37,
+      "exactStoredEndpointValues": [
+        35,
+        35
+      ],
+      "exactStoredPairs": 37,
+      "exactCartesianPairs": 1225,
+      "unobservedExactCartesianPairs": 1188
+    },
+    {
+      "base": 192,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 112,
+      "exactStoredEndpointValues": [
+        106,
+        107
+      ],
+      "exactStoredPairs": 112,
+      "exactCartesianPairs": 11342,
+      "unobservedExactCartesianPairs": 11230
+    },
+    {
+      "base": 193,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 27,
+      "exactStoredEndpointValues": [
+        26,
+        26
+      ],
+      "exactStoredPairs": 27,
+      "exactCartesianPairs": 676,
+      "unobservedExactCartesianPairs": 649
+    },
+    {
+      "base": 194,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 195,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 58,
+      "exactStoredEndpointValues": [
+        55,
+        52
+      ],
+      "exactStoredPairs": 58,
+      "exactCartesianPairs": 2860,
+      "unobservedExactCartesianPairs": 2802
+    },
+    {
+      "base": 196,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 197,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 198,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 15,
+      "exactStoredEndpointValues": [
+        14,
+        15
+      ],
+      "exactStoredPairs": 15,
+      "exactCartesianPairs": 210,
+      "unobservedExactCartesianPairs": 195
+    },
+    {
+      "base": 199,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 21,
+      "exactStoredEndpointValues": [
+        18,
+        19
+      ],
+      "exactStoredPairs": 21,
+      "exactCartesianPairs": 342,
+      "unobservedExactCartesianPairs": 321
+    },
+    {
+      "base": 200,
+      "phases": [
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 16,
+      "exactStoredEndpointValues": [
+        14,
+        15
+      ],
+      "exactStoredPairs": 16,
+      "exactCartesianPairs": 210,
+      "unobservedExactCartesianPairs": 194
+    },
+    {
+      "base": 201,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        10,
+        11
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 110,
+      "unobservedExactCartesianPairs": 99
+    },
+    {
+      "base": 202,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 203,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        6,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 42,
+      "unobservedExactCartesianPairs": 35
+    },
+    {
+      "base": 204,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        6,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 36,
+      "unobservedExactCartesianPairs": 30
+    },
+    {
+      "base": 205,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 11,
+      "exactStoredEndpointValues": [
+        10,
+        10
+      ],
+      "exactStoredPairs": 11,
+      "exactCartesianPairs": 100,
+      "unobservedExactCartesianPairs": 89
+    },
+    {
+      "base": 206,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 207,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 14,
+      "exactStoredEndpointValues": [
+        13,
+        14
+      ],
+      "exactStoredPairs": 14,
+      "exactCartesianPairs": 182,
+      "unobservedExactCartesianPairs": 168
+    },
+    {
+      "base": 208,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        1
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 209,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 210,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 211,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 212,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 213,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 214,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 215,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 216,
+      "phases": [
+        "VI",
+        "VIII"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        2,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 6,
+      "unobservedExactCartesianPairs": 3
+    },
+    {
+      "base": 217,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 218,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 219,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 220,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        1
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 221,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        5,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 30,
+      "unobservedExactCartesianPairs": 24
+    },
+    {
+      "base": 222,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 223,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        1,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 224,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 225,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        6
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 42,
+      "unobservedExactCartesianPairs": 35
+    },
+    {
+      "base": 226,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 227,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 228,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 229,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 230,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 231,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 232,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 233,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 234,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        1
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 235,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 236,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 72,
+      "exactStoredEndpointValues": [
+        65,
+        63
+      ],
+      "exactStoredPairs": 72,
+      "exactCartesianPairs": 4095,
+      "unobservedExactCartesianPairs": 4023
+    },
+    {
+      "base": 237,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 367,
+      "exactStoredEndpointValues": [
+        341,
+        345
+      ],
+      "exactStoredPairs": 367,
+      "exactCartesianPairs": 117645,
+      "unobservedExactCartesianPairs": 117278
+    },
+    {
+      "base": 238,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 222,
+      "exactStoredEndpointValues": [
+        200,
+        208
+      ],
+      "exactStoredPairs": 222,
+      "exactCartesianPairs": 41600,
+      "unobservedExactCartesianPairs": 41378
+    },
+    {
+      "base": 239,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 117,
+      "exactStoredEndpointValues": [
+        108,
+        109
+      ],
+      "exactStoredPairs": 117,
+      "exactCartesianPairs": 11772,
+      "unobservedExactCartesianPairs": 11655
+    },
+    {
+      "base": 240,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 191,
+      "exactStoredEndpointValues": [
+        176,
+        176
+      ],
+      "exactStoredPairs": 191,
+      "exactCartesianPairs": 30976,
+      "unobservedExactCartesianPairs": 30785
+    },
+    {
+      "base": 241,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 20,
+      "exactStoredEndpointValues": [
+        17,
+        20
+      ],
+      "exactStoredPairs": 20,
+      "exactCartesianPairs": 340,
+      "unobservedExactCartesianPairs": 320
+    },
+    {
+      "base": 242,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 252,
+      "exactStoredEndpointValues": [
+        239,
+        234
+      ],
+      "exactStoredPairs": 252,
+      "exactCartesianPairs": 55926,
+      "unobservedExactCartesianPairs": 55674
+    },
+    {
+      "base": 243,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 68,
+      "exactStoredEndpointValues": [
+        65,
+        63
+      ],
+      "exactStoredPairs": 68,
+      "exactCartesianPairs": 4095,
+      "unobservedExactCartesianPairs": 4027
+    },
+    {
+      "base": 244,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 12,
+      "exactStoredEndpointValues": [
+        8,
+        12
+      ],
+      "exactStoredPairs": 12,
+      "exactCartesianPairs": 96,
+      "unobservedExactCartesianPairs": 84
+    },
+    {
+      "base": 245,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 96,
+      "exactStoredEndpointValues": [
+        89,
+        88
+      ],
+      "exactStoredPairs": 96,
+      "exactCartesianPairs": 7832,
+      "unobservedExactCartesianPairs": 7736
+    },
+    {
+      "base": 246,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 87,
+      "exactStoredEndpointValues": [
+        84,
+        83
+      ],
+      "exactStoredPairs": 87,
+      "exactCartesianPairs": 6972,
+      "unobservedExactCartesianPairs": 6885
+    },
+    {
+      "base": 247,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 41,
+      "exactStoredEndpointValues": [
+        38,
+        38
+      ],
+      "exactStoredPairs": 41,
+      "exactCartesianPairs": 1444,
+      "unobservedExactCartesianPairs": 1403
+    },
+    {
+      "base": 248,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 30,
+      "exactStoredEndpointValues": [
+        28,
+        27
+      ],
+      "exactStoredPairs": 30,
+      "exactCartesianPairs": 756,
+      "unobservedExactCartesianPairs": 726
+    },
+    {
+      "base": 249,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 53,
+      "exactStoredEndpointValues": [
+        48,
+        48
+      ],
+      "exactStoredPairs": 53,
+      "exactCartesianPairs": 2304,
+      "unobservedExactCartesianPairs": 2251
+    },
+    {
+      "base": 250,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 10,
+      "exactStoredEndpointValues": [
+        10,
+        8
+      ],
+      "exactStoredPairs": 10,
+      "exactCartesianPairs": 80,
+      "unobservedExactCartesianPairs": 70
+    },
+    {
+      "base": 251,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 252,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 253,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        3
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 12,
+      "unobservedExactCartesianPairs": 8
+    },
+    {
+      "base": 254,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 5,
+      "exactStoredEndpointValues": [
+        5,
+        5
+      ],
+      "exactStoredPairs": 5,
+      "exactCartesianPairs": 25,
+      "unobservedExactCartesianPairs": 20
+    },
+    {
+      "base": 255,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 20,
+      "exactStoredEndpointValues": [
+        18,
+        19
+      ],
+      "exactStoredPairs": 20,
+      "exactCartesianPairs": 342,
+      "unobservedExactCartesianPairs": 322
+    },
+    {
+      "base": 256,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 257,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 258,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        1
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 259,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 8,
+      "exactStoredEndpointValues": [
+        8,
+        6
+      ],
+      "exactStoredPairs": 8,
+      "exactCartesianPairs": 48,
+      "unobservedExactCartesianPairs": 40
+    },
+    {
+      "base": 260,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 261,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 9,
+      "exactStoredEndpointValues": [
+        8,
+        7
+      ],
+      "exactStoredPairs": 9,
+      "exactCartesianPairs": 56,
+      "unobservedExactCartesianPairs": 47
+    },
+    {
+      "base": 262,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 6,
+      "exactStoredEndpointValues": [
+        5,
+        6
+      ],
+      "exactStoredPairs": 6,
+      "exactCartesianPairs": 30,
+      "unobservedExactCartesianPairs": 24
+    },
+    {
+      "base": 263,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 7,
+      "exactStoredEndpointValues": [
+        7,
+        7
+      ],
+      "exactStoredPairs": 7,
+      "exactCartesianPairs": 49,
+      "unobservedExactCartesianPairs": 42
+    },
+    {
+      "base": 264,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 265,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 4,
+      "exactStoredEndpointValues": [
+        4,
+        4
+      ],
+      "exactStoredPairs": 4,
+      "exactCartesianPairs": 16,
+      "unobservedExactCartesianPairs": 12
+    },
+    {
+      "base": 266,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 3,
+      "exactStoredEndpointValues": [
+        3,
+        3
+      ],
+      "exactStoredPairs": 3,
+      "exactCartesianPairs": 9,
+      "unobservedExactCartesianPairs": 6
+    },
+    {
+      "base": 267,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        1,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 2,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 268,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 269,
+      "phases": [
+        "II"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 270,
+      "phases": [
+        "VI"
+      ],
+      "coupledVariants": 2,
+      "exactStoredEndpointValues": [
+        2,
+        2
+      ],
+      "exactStoredPairs": 2,
+      "exactCartesianPairs": 4,
+      "unobservedExactCartesianPairs": 2
+    },
+    {
+      "base": 271,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 272,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 273,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 274,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 275,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 276,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    },
+    {
+      "base": 277,
+      "phases": [
+        "VIII"
+      ],
+      "coupledVariants": 1,
+      "exactStoredEndpointValues": [
+        1,
+        1
+      ],
+      "exactStoredPairs": 1,
+      "exactCartesianPairs": 1,
+      "unobservedExactCartesianPairs": 0
+    }
+  ],
+  "summary": {
+    "bases": 278,
+    "exactObservedPairs": 11147,
+    "exactCartesianPairs": 2523435,
+    "unobservedExactCartesianPairs": 2512288
+  },
+  "limits": "Descriptive training audit only. Unobserved is not forbidden; exact storage inequality is not geometric incompatibility. Phase labels are post-hoc metadata. Conditions and independent trajectories are not verified. No search or transfer success is established.",
+  "sourceHashes": {
+    "library": "242e77defab2ea8d109cbd6097ee89fd26f01e3d37952df263de74175b75349b",
+    "provenance": "7089036f3cc8ee97914ee035f7e8ac5a4350aa6a0292d23b672d967bb41f040c",
+    "code": "75a89fba5068a4079ac4e5938e6144f1094eb0e7e99cacae124d45785e86ffbd"
+  }
+}
