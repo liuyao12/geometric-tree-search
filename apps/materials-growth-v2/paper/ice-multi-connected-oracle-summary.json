@@ -1,0 +1,44 @@
+{
+  "scope": "Positive-witness existence diagnostic, NOT the reference tree-search benchmark.\n\nIndependent endpoint choices let a pair of selected blocks choose one verified\ncommon cloud at each anchor. A binary feasibility model coordinates these local\npairs. Any positive result is lifted to full decorated candidates for replay.\nMissing witnesses or solver failure never prove the original model impossible.\n",
+  "sourceModelHash": "cf64e69dd65366e69275174fc9e52d66daea52a53c2a1b8da1723aaaabea4631",
+  "blocksHash": "8ffdd814a44170cbaefd1331457fe6e04cbdb5d451d32c4b5202a8ecbccb4d4e",
+  "results": [
+    {
+      "file": "c01500",
+      "fold": 0,
+      "solver": "scipy-milp-positive-existence-oracle",
+      "referenceSearch": false,
+      "connectedCoverRequested": true,
+      "connectivityCuts": 2,
+      "compileSeconds": 3.0389517080038786,
+      "solveSeconds": 0.10574679193086922,
+      "witnessPairs": 2535,
+      "testedPairs": 9800,
+      "solverStatus": 0,
+      "selected": 64,
+      "scalarComplete": true,
+      "markingStatus": "verified-common-values",
+      "commonValues": 64,
+      "status": "complete-awaiting-independent-verification"
+    },
+    {
+      "file": "c01900",
+      "fold": 1,
+      "solver": "scipy-milp-positive-existence-oracle",
+      "referenceSearch": false,
+      "connectedCoverRequested": true,
+      "connectivityCuts": 20,
+      "compileSeconds": 0.7043672911822796,
+      "solveSeconds": 0.3686650418676436,
+      "witnessPairs": 1937,
+      "testedPairs": 8568,
+      "solverStatus": 0,
+      "selected": 64,
+      "scalarComplete": true,
+      "markingStatus": "verified-common-values",
+      "commonValues": 64,
+      "status": "complete-awaiting-independent-verification"
+    }
+  ],
+  "limits": "Positive witnesses only. Optional connected-cover query is explicitly separate from the base point-value model. No reference-search speedup, continuous-pose completeness or negative impossibility claim."
+}
