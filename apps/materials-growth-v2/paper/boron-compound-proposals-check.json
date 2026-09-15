@@ -1,0 +1,40 @@
+{
+  "scope": "Verify compound expansions, geometric witnesses and cross-source provenance.",
+  "proposalHash": "f36a0a7f7d9afcb46e7d076b40311efcdbe948c3bef4074f44fee7c441da117c",
+  "sourceOccurrencesChecked": 783,
+  "geometricWitnessesChecked": 39123,
+  "maximumExternalResidualAngstrom": 0.02852628325075798,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "proposals": 27,
+      "crossConfigurationProposals": 0
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "proposals": 486,
+      "crossConfigurationProposals": 324
+    },
+    {
+      "file": "beta-B106.cif",
+      "proposals": 108,
+      "crossConfigurationProposals": 54
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "proposals": 54,
+      "crossConfigurationProposals": 0
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "proposals": 1188,
+      "crossConfigurationProposals": 270
+    },
+    {
+      "file": "tau-B106.cif",
+      "proposals": 324,
+      "crossConfigurationProposals": 54
+    }
+  ],
+  "limits": "Checks recorded witnesses, not exhaustive compound discovery or continuous-pose completeness."
+}

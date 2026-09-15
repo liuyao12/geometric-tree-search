@@ -1,0 +1,91 @@
+{
+  "scope": "Rebuild the unchanged marked model and check every saved compound-policy run.",
+  "compoundHash": "f36a0a7f7d9afcb46e7d076b40311efcdbe948c3bef4074f44fee7c441da117c",
+  "summaryHash": "9d742bf04247829b6f6045a209c585d3b266544d52e4a97923c46c85b389c973",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "policy": "baseline",
+      "complete": true,
+      "selected": 108,
+      "filledPoints": 324
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "policy": "cross-compound",
+      "complete": true,
+      "selected": 108,
+      "filledPoints": 324
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "policy": "baseline",
+      "complete": true,
+      "selected": 1458,
+      "filledPoints": 2835
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "policy": "cross-compound",
+      "complete": true,
+      "selected": 1458,
+      "filledPoints": 2835
+    },
+    {
+      "file": "beta-B106.cif",
+      "policy": "baseline",
+      "complete": false,
+      "selected": 779,
+      "filledPoints": 1658
+    },
+    {
+      "file": "beta-B106.cif",
+      "policy": "cross-compound",
+      "complete": false,
+      "selected": 764,
+      "filledPoints": 1651
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "policy": "baseline",
+      "complete": true,
+      "selected": 324,
+      "filledPoints": 756
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "policy": "cross-compound",
+      "complete": true,
+      "selected": 324,
+      "filledPoints": 756
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "policy": "baseline",
+      "complete": true,
+      "selected": 2916,
+      "filledPoints": 5670
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "policy": "cross-compound",
+      "complete": true,
+      "selected": 2916,
+      "filledPoints": 5670
+    },
+    {
+      "file": "tau-B106.cif",
+      "policy": "baseline",
+      "complete": false,
+      "selected": 1769,
+      "filledPoints": 3977
+    },
+    {
+      "file": "tau-B106.cif",
+      "policy": "cross-compound",
+      "complete": false,
+      "selected": 1769,
+      "filledPoints": 3977
+    }
+  ]
+}
