@@ -7,14 +7,21 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import argparse
 
-directory, output = map(Path,sys.argv[1:])
+parser=argparse.ArgumentParser();parser.add_argument('directory',type=Path);parser.add_argument('output',type=Path)
+parser.add_argument('--relation',type=Path);parser.add_argument('--relation-check',type=Path)
+args=parser.parse_args();directory,output=args.directory,args.output
 def read(p):return json.loads(p.read_text())
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 rows=[]
+relation=read(args.relation) if args.relation else None
+if relation:
+    assert args.relation_check and read(args.relation_check)['relationHash']==sha(args.relation)
 for phase in ['Ih','II','VI']:
     path=directory/phase
     data=read(path/'filtered.json'); index=read(path/'index.json'); check=read(path/'index-check.json')
+    if relation:assert read(path/'source.json')['portableHash']==relation['libraryHash']
     assert check['indexHash']==sha(path/'index.json')
     assert check['blocksHash']==index['blocksHash']==sha(path/'filtered.json')
     for model, graph in zip(data['models'],index['models'],strict=True):
@@ -26,11 +33,14 @@ for phase in ['Ih','II','VI']:
             right={c['sourceCandidate']:j for j,c in enumerate(b['endpointChoices'][1])}
             assert len(right)==len(b['endpointChoices'][1])
             for i,c in enumerate(b['endpointChoices'][0]):
-                if c['sourceCandidate'] not in right:continue
-                j=right[c['sourceCandidate']];ends=[record_id[bi,0,i],record_id[bi,1,j]]
-                ci=len(candidates);candidates.append((bi,ends))
-                for endpoint in ends:
-                    assert endpoint not in owners;owners[endpoint]=ci
+                if relation:
+                    permitted=set(relation['neighbors'][c['sourceMotif']])
+                    js=[j for j,d in enumerate(b['endpointChoices'][1]) if d['sourceMotif'] in permitted]
+                else:js=[right[c['sourceCandidate']]] if c['sourceCandidate'] in right else []
+                for j in js:
+                    ends=[record_id[bi,0,i],record_id[bi,1,j]]
+                    ci=len(candidates);candidates.append((bi,ends))
+                    for endpoint in ends:owners.setdefault(endpoint,set()).add(ci)
         # Establish that each marking anchor requires exactly two incident
         # placements in any full filling, using a positive-support witness.
         for point in {p for b in blocks for p in b['markPoints']}:
@@ -43,9 +53,10 @@ for phase in ['Ih','II','VI']:
                 supported=set()
                 for other in graph['neighbors'][e]:
                     if other not in owners:continue
-                    cj=owners[other];bj=candidates[cj][0];_,os,_=graph['records'][other]
-                    assert blocks[bi]['markPoints'][side]==blocks[bj]['markPoints'][os]
-                    if blocks[bi]['inventory']!=blocks[bj]['inventory']:supported.add(cj)
+                    for cj in owners[other]:
+                        bj=candidates[cj][0];_,os,_=graph['records'][other]
+                        assert blocks[bi]['markPoints'][side]==blocks[bj]['markPoints'][os]
+                        if blocks[bi]['inventory']!=blocks[bj]['inventory']:supported.add(cj)
                 adjacency[-1].append(supported)
         live=set(range(len(candidates)));passes=0
         while True:
@@ -59,5 +70,10 @@ for phase in ['Ih','II','VI']:
                          blocksHash=sha(path/'filtered.json'),indexHash=sha(path/'index.json'),indexCheckHash=sha(path/'index-check.json')))
 report=dict(scope=__doc__,results=rows,codeHash=sha(Path(__file__)),
             limits='Relies on separately verified complete conservative index and prior factorized preprocessing. No conclusion from a nonempty fixed point. Does not certify floating-point geometric exactness or impossibility outside the paired finite learned hypothesis.')
+if relation:
+    report.update(relationHash=sha(args.relation),relationCheckHash=sha(args.relation_check),
+                  scope='Independent necessary-support propagation for the one-step geometric substitution relation, using verified conservative adjacency.',
+                  limits='Conditional on the complete conservative index and prior factorized preprocessing. Root failure applies only to this finite learned substitution hypothesis. Nonempty support proves neither a filling nor actual cloud compatibility.',
+                  hypothesis='One-step geometric endpoint substitution, not exact pairing. Nonempty conservative support does not prove a filling or actual cloud compatibility.')
 with output.open('x') as f:json.dump(report,f,indent=2)
 print(json.dumps([dict(phase=r['phase'],file=r['file'],initial=r['initialPairs'],remaining=r['remainingPairs'],dead=len(r['deadRequiredPoints'])) for r in rows]))
