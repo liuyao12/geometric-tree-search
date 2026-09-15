@@ -1,0 +1,69 @@
+{
+  "scope": "Fixed observed poses and all-root target; original marked model versus implicit learned junction markings. Restricted hypothesis; not guaranteed solution-set equivalence or blind growth.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "sourceHashes": {
+    "boron-junction-extended-search.mjs": "eaaee2fdc9e3793f2a7b1d061df40c12dc2c80fb6434df39e227beef5cea334a",
+    "junction-marking-filter.mjs": "a5b74129bbe3d989594c7b59bc1c35bed7ec6d1c6404934aaa13c88a6ebda89a",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "maxSteps": 1000000,
+      "maxSeconds": 300,
+      "steps": 11580,
+      "seconds": 300.04907937499996,
+      "setupSeconds": 0.08762125000000003,
+      "junctionDiagnostics": {
+        "rebuilds": 16027,
+        "stateTests": 222584666,
+        "removed": 7675849
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 7134,
+        "accepted": 7134,
+        "forced": 2573,
+        "branches": 4561,
+        "backtracks": 4446,
+        "eliminated": 1446752,
+        "checks": 788051414
+      },
+      "selected": 558,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": true,
+      "maxSteps": 1000000,
+      "maxSeconds": 300,
+      "steps": 5694,
+      "seconds": 93.47971350000002,
+      "setupSeconds": 0.12839520899998025,
+      "junctionDiagnostics": {
+        "rebuilds": 5823,
+        "stateTests": 72341063,
+        "removed": 8443252
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 5564,
+        "accepted": 5564,
+        "forced": 2945,
+        "branches": 2619,
+        "backtracks": 129,
+        "eliminated": 1514018,
+        "checks": 177565190
+      },
+      "selected": 5427,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    }
+  ]
+}

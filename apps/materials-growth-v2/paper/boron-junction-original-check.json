@@ -1,0 +1,140 @@
+{
+  "scope": "Independent raw-geometry and training-cover checks for learned junctions.",
+  "junctionHash": "37585c9c814815d1ec0a90b97150db0ca55fe5476734160344a921bd861820c1",
+  "libraryClasses": 115,
+  "sourceFitsChecked": 3483,
+  "targetFitsChecked": 5643,
+  "maximumResidualAngstrom": 0.029898835608739068,
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "junctionPoints": 0,
+      "states": 0,
+      "multipleStatePoints": 0,
+      "pointsWithCrossConfigurationSupport": 0,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 108
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "junctionPoints": 27,
+      "states": 27,
+      "multipleStatePoints": 0,
+      "pointsWithCrossConfigurationSupport": 27,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 1458
+    },
+    {
+      "file": "beta-B106.cif",
+      "junctionPoints": 1350,
+      "states": 2403,
+      "multipleStatePoints": 702,
+      "pointsWithCrossConfigurationSupport": 324,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 6480
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "junctionPoints": 0,
+      "states": 0,
+      "multipleStatePoints": 0,
+      "pointsWithCrossConfigurationSupport": 0,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 486
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "junctionPoints": 54,
+      "states": 54,
+      "multipleStatePoints": 0,
+      "pointsWithCrossConfigurationSupport": 54,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 2916
+    },
+    {
+      "file": "tau-B106.cif",
+      "junctionPoints": 2052,
+      "states": 3078,
+      "multipleStatePoints": 513,
+      "pointsWithCrossConfigurationSupport": 243,
+      "allTrainingCoversPreserved": true,
+      "expandedCandidateCount": 8478
+    }
+  ],
+  "alternativeChecks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "seed": 101,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "seed": 202,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "seed": 101,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "seed": 202,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "beta-B106.cif",
+      "seed": 101,
+      "unsupportedJunctions": 747,
+      "preserved": false
+    },
+    {
+      "file": "beta-B106.cif",
+      "seed": 202,
+      "unsupportedJunctions": 775,
+      "preserved": false
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "seed": 101,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "seed": 202,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "seed": 101,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "seed": 202,
+      "unsupportedJunctions": 0,
+      "preserved": true
+    },
+    {
+      "file": "tau-B106.cif",
+      "seed": 101,
+      "unsupportedJunctions": 706,
+      "preserved": false
+    },
+    {
+      "file": "tau-B106.cif",
+      "seed": 202,
+      "unsupportedJunctions": 734,
+      "preserved": false
+    }
+  ],
+  "alternativeRole": "withheld decompositions on the same coordinates",
+  "limits": "Recorded fits verified, not exhaustive approximate correspondence or independent material generalization."
+}

@@ -1,0 +1,301 @@
+{
+  "scope": "Fixed observed poses and all-root target; original marked model versus implicit learned junction markings. Restricted hypothesis; not guaranteed solution-set equivalence or blind growth.",
+  "compiledHash": "254757fbb972e805416a091273a14728c3c991d2dfbe31fcf0678a0c8b6896a3",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "sourceHashes": {
+    "boron-junction-search.mjs": "3a7d192c7e2c4134c3f0bcfea7d872e05703cc978203e5db61aca471816f0252",
+    "junction-marking-filter.mjs": "a5b74129bbe3d989594c7b59bc1c35bed7ec6d1c6404934aaa13c88a6ebda89a",
+    "linear-frontier-decision.mjs": "259271eca4c48912598a7a99e314af0dfe9a1f274c2490e95482b7926fb78635",
+    "branch-local-exclusions.mjs": "46b9ff489043481b37291d4fc9b83dfc84334ff17157df62f62a2c820cabcf02"
+  },
+  "results": [
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "junction": false,
+      "steps": 109,
+      "seconds": 0.006351917000000014,
+      "setupSeconds": 0.008612499999999997,
+      "junctionDiagnostics": null,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 108,
+        "accepted": 108,
+        "forced": 108,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 1188
+      },
+      "selected": 108,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 0,
+      "file": "alpha-B-symmetry.cif",
+      "junction": true,
+      "steps": 109,
+      "seconds": 0.01732775000000001,
+      "setupSeconds": 0.0044220420000000045,
+      "junctionDiagnostics": {
+        "rebuilds": 109,
+        "stateTests": 0,
+        "removed": 0
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 108,
+        "accepted": 108,
+        "forced": 108,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 12420
+      },
+      "selected": 108,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "junction": false,
+      "steps": 1459,
+      "seconds": 0.235912042,
+      "setupSeconds": 0.0316985,
+      "junctionDiagnostics": null,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 1458,
+        "accepted": 1458,
+        "forced": 1458,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 36288
+      },
+      "selected": 1458,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 1,
+      "file": "beta-B105-symmetry.cif",
+      "junction": true,
+      "steps": 1459,
+      "seconds": 2.336105292,
+      "setupSeconds": 0.03659524999999996,
+      "junctionDiagnostics": {
+        "rebuilds": 1459,
+        "stateTests": 39393,
+        "removed": 0
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 1458,
+        "accepted": 1458,
+        "forced": 1458,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 2283726
+      },
+      "selected": 1458,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": false,
+      "steps": 64600,
+      "seconds": 15.021955750000002,
+      "setupSeconds": 0.05758612499999981,
+      "junctionDiagnostics": null,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 44311,
+        "accepted": 44311,
+        "forced": 23757,
+        "branches": 20554,
+        "backtracks": 20289,
+        "eliminated": 21613,
+        "checks": 4325722
+      },
+      "selected": 783,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 2,
+      "file": "beta-B106.cif",
+      "junction": true,
+      "steps": 610,
+      "seconds": 15.078849582999995,
+      "setupSeconds": 0.07905641699999978,
+      "junctionDiagnostics": {
+        "rebuilds": 654,
+        "stateTests": 8919941,
+        "removed": 285132
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 567,
+        "accepted": 567,
+        "forced": 444,
+        "branches": 123,
+        "backtracks": 43,
+        "eliminated": 122905,
+        "checks": 33939374
+      },
+      "selected": 509,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "junction": false,
+      "steps": 325,
+      "seconds": 0.01657970799999748,
+      "setupSeconds": 0.00832233300000371,
+      "junctionDiagnostics": null,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 324,
+        "accepted": 324,
+        "forced": 323,
+        "branches": 1,
+        "backtracks": 0,
+        "eliminated": 162,
+        "checks": 5940
+      },
+      "selected": 324,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 3,
+      "file": "gamma-B-symmetry.cif",
+      "junction": true,
+      "steps": 325,
+      "seconds": 0.11490829200000008,
+      "setupSeconds": 0.018354249999996682,
+      "junctionDiagnostics": {
+        "rebuilds": 325,
+        "stateTests": 0,
+        "removed": 0
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 324,
+        "accepted": 324,
+        "forced": 323,
+        "branches": 1,
+        "backtracks": 0,
+        "eliminated": 162,
+        "checks": 161676
+      },
+      "selected": 324,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "junction": false,
+      "steps": 2917,
+      "seconds": 1.0222906250000015,
+      "setupSeconds": 0.06065308400000504,
+      "junctionDiagnostics": null,
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 2916,
+        "accepted": 2916,
+        "forced": 2916,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 116316
+      },
+      "selected": 2916,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 4,
+      "file": "tau-B105-symmetry.cif",
+      "junction": true,
+      "steps": 2917,
+      "seconds": 9.096808624999998,
+      "setupSeconds": 0.06580970800000069,
+      "junctionDiagnostics": {
+        "rebuilds": 2917,
+        "stateTests": 157518,
+        "removed": 0
+      },
+      "status": "exact finite point-cover witness",
+      "stats": {
+        "attempts": 2916,
+        "accepted": 2916,
+        "forced": 2916,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 0,
+        "checks": 9110721
+      },
+      "selected": 2916,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": false,
+      "steps": 44287,
+      "seconds": 15.0357235,
+      "setupSeconds": 0.09322858300000371,
+      "junctionDiagnostics": null,
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 31260,
+        "accepted": 31260,
+        "forced": 17813,
+        "branches": 13447,
+        "backtracks": 13027,
+        "eliminated": 18185,
+        "checks": 4329876
+      },
+      "selected": 1768,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    },
+    {
+      "fold": 5,
+      "file": "tau-B106.cif",
+      "junction": true,
+      "steps": 600,
+      "seconds": 15.084484291,
+      "setupSeconds": 0.12690200000000187,
+      "junctionDiagnostics": {
+        "rebuilds": 601,
+        "stateTests": 6400400,
+        "removed": 588942
+      },
+      "status": "budget-unknown",
+      "stats": {
+        "attempts": 600,
+        "accepted": 600,
+        "forced": 600,
+        "branches": 0,
+        "backtracks": 0,
+        "eliminated": 420570,
+        "checks": 27761755
+      },
+      "selected": 600,
+      "markOnlyPoints": 0,
+      "rootRollback": true
+    }
+  ]
+}

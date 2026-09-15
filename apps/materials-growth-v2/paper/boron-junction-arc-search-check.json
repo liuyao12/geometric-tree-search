@@ -1,0 +1,115 @@
+{
+  "scope": "Rebuild base candidates and verify final implicit-junction marking lifts.",
+  "junctionHash": "56a6fd34c6620378aebbb8f5f14129feaeb8f327ce66825051716392cbdd2955",
+  "summaryHash": "b987b88556499bbb96b991d72b16e9e8b79bbb9daad3e7294a14941c8ada1221",
+  "checks": [
+    {
+      "file": "alpha-B-symmetry.cif",
+      "junction": false,
+      "complete": true,
+      "selected": 108,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 324
+    },
+    {
+      "file": "alpha-B-symmetry.cif",
+      "junction": true,
+      "complete": true,
+      "selected": 108,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 324
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "junction": false,
+      "complete": true,
+      "selected": 1458,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 2835
+    },
+    {
+      "file": "beta-B105-symmetry.cif",
+      "junction": true,
+      "complete": true,
+      "selected": 1458,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 27,
+      "filledPoints": 2835
+    },
+    {
+      "file": "beta-B106.cif",
+      "junction": false,
+      "complete": false,
+      "selected": 793,
+      "positiveSupportComponents": null,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 1660
+    },
+    {
+      "file": "beta-B106.cif",
+      "junction": true,
+      "complete": false,
+      "selected": 500,
+      "positiveSupportComponents": null,
+      "junctionLiftsChecked": 1350,
+      "filledPoints": 1556
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "junction": false,
+      "complete": true,
+      "selected": 324,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 756
+    },
+    {
+      "file": "gamma-B-symmetry.cif",
+      "junction": true,
+      "complete": true,
+      "selected": 324,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 756
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "junction": false,
+      "complete": true,
+      "selected": 2916,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 5670
+    },
+    {
+      "file": "tau-B105-symmetry.cif",
+      "junction": true,
+      "complete": true,
+      "selected": 2916,
+      "positiveSupportComponents": 1,
+      "junctionLiftsChecked": 54,
+      "filledPoints": 5670
+    },
+    {
+      "file": "tau-B106.cif",
+      "junction": false,
+      "complete": false,
+      "selected": 1805,
+      "positiveSupportComponents": null,
+      "junctionLiftsChecked": 0,
+      "filledPoints": 3990
+    },
+    {
+      "file": "tau-B106.cif",
+      "junction": true,
+      "complete": false,
+      "selected": 980,
+      "positiveSupportComponents": null,
+      "junctionLiftsChecked": 2052,
+      "filledPoints": 3490
+    }
+  ]
+}
