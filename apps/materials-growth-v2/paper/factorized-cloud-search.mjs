@@ -12,7 +12,7 @@ export function factorizedCloudWitnesses(state,pool,radius){
  }
  return {valid:true,status:'verified-common-values',witnesses};
 }
-export function makeFactorizedCloudSearch(model,pool){
+export function makeFactorizedCloudSearch(model,pool,{Engine=FactorizedPointSearch}={}){
  if(!Number.isFinite(model.cloudRadius)||model.cloudRadius<0)throw Error('Invalid cloud radius');
  const used=new Set(model.blocks.flatMap(b=>b.endpointChoices.flat().map(c=>c.cloud)));
  for(const index of used){
@@ -31,7 +31,7 @@ export function makeFactorizedCloudSearch(model,pool){
   if(cache.size>=200000){cache.clear();stats.evictions++;}
   cache.set(key,result);return result;
  });
- const state=new FactorizedPointSearch(model,{compatible,terminalCheck:e=>factorizedCloudWitnesses(e,pool,model.cloudRadius)});
+ const state=new Engine(model,{compatible,terminalCheck:e=>factorizedCloudWitnesses(e,pool,model.cloudRadius)});
  state.cloudStats=stats;state.cloudCheck=()=>factorizedCloudWitnesses(state,pool,model.cloudRadius);
  return state;
 }
