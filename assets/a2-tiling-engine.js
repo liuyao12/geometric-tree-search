@@ -533,11 +533,11 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
   const desired=polygonOccupancy(boundary),seedOrigin=seed?.loop?.[0]??[0,0,0],seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(a2Sub(entry.point,seedOrigin))));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
-  const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop)).map(orientation=>({...orientation,occupancy:new Map([...orientation.occupancy].filter(([,entry])=>pointAllowed(entry.point)))}));
+  const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop)).filter(orientation=>allowReflections||permutationParity(orientation.symmetry.permutation)>0).map(orientation=>({...orientation,occupancy:new Map([...orientation.occupancy].filter(([,entry])=>pointAllowed(entry.point)))}));
   const memoRadius=Math.max(1,...orientedTiles.map(orientation=>{const points=[...orientation.occupancy.values()].map(entry=>entry.point);let diameter=1;for(const left of points)for(const right of points)diameter=Math.max(diameter,...a2Sub(left,right).map(Math.abs));return diameter;}));
   const preferredRanks=new Map(preferredPlacements.map((id,index)=>[id,index]));
   const clusterWeights=new Map(clusterProposals);

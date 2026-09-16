@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
-  <link rel="stylesheet" href="assets/anchor-learning.css?v=20260915-3">
-  <link rel="stylesheet" href="assets/hat-learning.css?v=20260915-1">
+
+  <link rel="stylesheet" href="assets/tile-learning.css?v=20260915-1">
   <script>
     window.MathJax = {
       tex: {
@@ -36,6 +36,12 @@
         <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of tree search with "geometric constraints", in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
                   <figure class="interactive-card" id="turtle-tiling-card">
+                    <nav class="panel-navigation" aria-label="Tiling panel views">
+                      <button id="panel-tiling-tab" type="button" aria-selected="true">Tiling</button>
+                      <button id="panel-learning-tab" type="button" aria-selected="false">Learn markings</button>
+                      <label>Tiles <select id="turtle-tile-set"><option value="turtle">Turtle</option><option value="hat">Hat</option><option value="mixed">Turtle + Hat · rotations only</option></select></label>
+                    </nav>
+                    <div id="tiling-panel-page">
                     <div class="interactive-toolbar" aria-label="Turtle tiling controls">
                       <div class="toolbar-row toolbar-button-row">
                         <button type="button" id="turtle-start">Start tiling</button>
@@ -53,6 +59,7 @@
         </span>
                       </div>
                       <div class="toolbar-row toolbar-toggle-row">
+                        <label class="toolbar-toggle">Rules <select id="turtle-marking-source"><option value="standard">Usual Turtle</option><option value="none">Unmarked</option><option value="learned" disabled>Learned · provisional</option></select></label>
                         <label class="toolbar-toggle">
         <input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
                         <span class="toolbar-toggle marking-rank-control" id="turtle-marking-rank-control" role="radiogroup" aria-label="Marking rank" hidden="">
@@ -61,12 +68,15 @@
         </label>
                       </div>
                     </div>
+                    <p id="learned-marking-note"></p>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
         </canvas>
                     <figcaption>
                       <span id="turtle-status-readout" aria-live="polite"></span>
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
+                    </div>
+                    <div id="learning-panel-page" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -126,47 +136,14 @@
         <h2 id="anchor-learning">Geometric Deep Learning</h2>
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
         <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
-        <section id="learning-experiments" data-wrap-with-demo aria-label="Tiling learning experiments">
-          <label class="learning-picker">Experiment <select id="learning-kind">
-            <option value="hat">Hat · learn local connections</option>
-            <option value="turtle">Turtle · fit a known example</option>
-          </select></label>
-          <div id="hat-learning-panel">
-            <div class="hat-learning-controls">
-              <button id="hat-collect" type="button">Examine all connections</button>
-              <button id="hat-compare" type="button" disabled>Search farther</button>
-              <button id="hat-reset" type="button">Reset</button>
-              <label>Seed <input id="hat-seed" type="number" min="1" max="1000000" value="90210"></label>
-              <button id="hat-export" type="button" disabled>Export</button>
-            </div>
-            <div class="hat-learning-controls">
-              <label>Inspect <select id="hat-patch" disabled aria-label="Hat connection and extension outcome"></select></label>
-              <label><input id="hat-show-marks" type="checkbox" checked> Point codes</label>
-            </div>
-            <canvas id="hat-learning-canvas" width="720" height="400" aria-label="Selected Hat connection and extension on the left; proposed geometric point codes on the right."></canvas>
-            <div id="hat-learning-metrics"></div>
-            <div id="hat-learning-status" role="status" aria-live="polite"></div>
-          </div>
-        <section id="anchor-lane" aria-label="Turtle training and tiling" hidden>
-          <div class="anchor-controls">
-            <button id="anchor-train" type="button">Train Turtle</button>
-            <button id="anchor-check" type="button" disabled>Tile with learned marking</button>
-            <button id="anchor-reset" type="button">Reset</button>
-            <label>Seed <input id="anchor-seed" type="number" min="1" max="9999" value="7"></label>
-            <label><input id="anchor-marks" type="checkbox" checked> Markings</label>
-            <button id="anchor-export" type="button" disabled>Export</button>
-          </div>
-          <canvas id="anchor-canvas" width="720" height="400" aria-label="Turtle anchor and point-value training on the left; a Turtle patch grown with the fitted marking on the right."></canvas>
-          <div id="anchor-metrics"></div>
-          <div id="anchor-result" role="status" aria-live="polite"></div>
-        </section>
-        </section>
+        <p><button type="button" id="open-marking-lab">Learn markings in the floating panel</button> <a href="GCTS-learning.html">Open learning page</a></p>
       </section>
     </article>
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260902-local-corona-counts-1';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, SparseA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260915-three-sets';
+    import {createConnectionLearner, TILE_SETS, parity} from './assets/tile-connection-learning.js?v=20260915-three-sets';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -191,6 +168,13 @@
       const tileHeading = document.querySelector('[data-demo-stage="tile"]');
       const windowDragHandle = document.getElementById('turtle-window-drag');
       const windowResizeHandle = document.getElementById('turtle-window-resize');
+      const tileSetPicker = document.getElementById('turtle-tile-set');
+      const markingSourcePicker = document.getElementById('turtle-marking-source');
+      const learningFrame = document.getElementById('tiling-learning-frame');
+      let selectedTileSet = 'turtle', markingSource = 'standard', manualPanelMode = false;
+      const learnedModels = new Map(), customModels = new Set();
+      let displayMarking = null;
+      const genericMode = () => selectedTileSet !== 'turtle' || markingSource === 'learned';
       const sqrt2 = Math.sqrt(2);
       const sqrt3 = Math.sqrt(3);
       const sqrt6 = Math.sqrt(6);
@@ -612,6 +596,10 @@
       }
 
       function makeSeedPlacement() {
+        if (genericMode()) {
+          const learner = createConnectionLearner(selectedTileSet);
+          return demoPlacementFromShared(learner.materialize(learner.roots[0]), {generation:0,step:0,forced:true,branchCount:0});
+        }
         const orientation = orientations[seedOrientationIndex];
         const translation = [0, 0, 0];
         return makePlacement(orientation, translation, {
@@ -1312,7 +1300,10 @@
         const demoRect = demoCard.getBoundingClientRect();
         const headingRect = tileHeading.getBoundingClientRect();
         const minimumTop = Math.max(12, headingRect.top);
-        demoSafeY = Math.max(0, minimumTop - demoRect.top);
+        const maximumTop = Math.max(12, window.innerHeight-demoRect.height-12);
+        demoSafeY = manualPanelMode
+          ? clamp(demoRect.top,Math.min(minimumTop,maximumTop),maximumTop)-demoRect.top
+          : Math.max(0, minimumTop-demoRect.top);
         syncDemoPosition();
       }
 
@@ -1460,6 +1451,16 @@
       }
 
       function drawMarkings(placement) {
+        if (placement.sharedSpec) {
+          ctx.save();
+          for (const entry of placement.markings) {
+            const direction = [1,1,1]; direction[entry.component] = -2;
+            const a = projectA2(entry.point), b = projectA2(entry.point.map((v,i)=>v+direction[i]*.25));
+            ctx.setLineDash(entry.value < 0 ? [2,2] : []);
+            drawLine(worldToScreen(a.x,a.y),worldToScreen(b.x,b.y),entry.value===0?'#9dafa066':`hsl(${Math.abs(entry.value)*137.5%360} 65% 36%)`,Math.max(.5,1.7*scale));
+          }
+          ctx.restore(); return;
+        }
         ctx.save();
         ctx.lineCap = 'round';
         placement.markSegments.forEach(segment => {
@@ -1513,7 +1514,7 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          const isReflected = placement.orientation.planeSign < 0;
+          const isReflected = placement.sharedSpec && selectedTileSet === 'mixed' ? placement.sharedSpec.tile === 'hat' : placement.orientation.planeSign < 0;
           ctx.fillStyle = isReflected ? tileColors.reflectedFill : tileColors.directFill;
           ctx.strokeStyle = isReflected ? tileColors.reflectedStroke : tileColors.directStroke;
           ctx.setLineDash([]);
@@ -1684,7 +1685,7 @@
         const rect = canvas.getBoundingClientRect();
         const ratio = window.devicePixelRatio || 1;
         const visible = visiblePlacements();
-        const keys = visible.map(placement => `${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
+        const keys = visible.map(placement => `${placement.sharedSpec?.tile||'turtle'}:${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
         const viewKey = [canvas.width, canvas.height, ratio, scale, offset.x, offset.y,
           showMarkings, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
         // Shared-engine events reconstruct placement objects, so compare stable
@@ -1833,7 +1834,7 @@
       }
 
       function updateMarkExtensionControl() {
-        if (markExtensionControl) markExtensionControl.hidden = !showMarkings;
+        if (markExtensionControl) markExtensionControl.hidden = !showMarkings || genericMode() || markingSource !== 'standard';
       }
 
       function selectedMarkingRank() {
@@ -1842,7 +1843,7 @@
 
       function updateMarkingRankControl() {
         markingRankInputs.forEach(input => { input.checked = Number(input.value) === markingRank; });
-        if (markingRankControl) markingRankControl.hidden = !showMarkings;
+        if (markingRankControl) markingRankControl.hidden = !showMarkings || genericMode() || markingSource !== 'standard';
       }
 
       function refreshPlacementsForMarkingRank() {
@@ -1887,6 +1888,7 @@
       }
 
       function setDemoStage(stageName) {
+        if (manualPanelMode) return;
         const stage = demoStages[stageName];
         if (!stage || stageName === activeDemoStage) return;
         activeDemoStage = stageName;
@@ -2018,11 +2020,20 @@
         return sharedTurtleOrientations.find(orientation => sameSymmetry(orientation.symmetry, symmetry));
       }
       function demoPlacementFromShared(placement, extras = {}) {
+        if (genericMode()) {
+          const symmetry = placement.orientation.symmetry;
+          const spec = {tile:placement.tile,orientation:placement.orientation.index,translation:[...placement.translation]};
+          const learner = createConnectionLearner(selectedTileSet), full = learner.materialize(spec);
+          return {sharedSpec:spec,orientation:{...symmetry,orientationIndex:placement.orientation.index,planeSign:parity(symmetry.permutation)},translation:spec.translation,
+            vertices3d:full.loop,points:full.loop.map(projectA2),occupancy:[...placement.orientation.occupancy.values()].map(e=>({point:add3(e.point,spec.translation),value:e.weight,kind:e.weight===12?'interior':'vertex'})),
+            markings:displayMarking?learner.entries(spec,displayMarking.support):[],markSegments:[],values:[],generation:placement.generation,...extras};
+        }
         const localOrientation = orientations.find(orientation => sameSymmetry(orientation, placement.orientation.symmetry)) || orientations[0];
         const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
         return makePlacement(localOrientation, subtract3(placement.translation, shiftedOrigin), { generation: placement.generation, ...extras });
       }
       function sharedPlacementFromDemo(placement) {
+        if (placement.sharedSpec) return {...createConnectionLearner(selectedTileSet).materialize(placement.sharedSpec),generation:placement.generation};
         const orientation = sharedOrientationFor(placement.orientation);
         const shiftedOrigin = a2Transform(turtleVertices3d[0], orientation.symmetry);
         return { tile: 'turtle', orientation, translation: add3(placement.translation, shiftedOrigin), generation: placement.generation };
@@ -2030,10 +2041,11 @@
       function createSharedLiveTilingSearch(useMarking, retainedPlacements = null) {
         const existing = retainedPlacements?.length ? retainedPlacements : [makeSeedPlacement()];
         const seed = existing[0];
-        const initialPlacements = existing.slice(1).map(sharedPlacementFromDemo);
+        const generic = genericMode();
+        const initialPlacements = (generic ? existing : existing.slice(1)).map(sharedPlacementFromDemo);
         const latticePointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
-        const sharedSeedOrientation = sharedOrientationFor(seed.orientation);
-        const sharedSeedTranslation = add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
+        const sharedSeedOrientation = generic ? null : sharedOrientationFor(seed.orientation);
+        const sharedSeedTranslation = generic ? null : add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
         const stopToken = { stop: false };
         const queue = [];
         const waiters = [];
@@ -2051,7 +2063,7 @@
           if (waiter) waiter({ value, done: false });
           else queue.push(value);
         };
-        const placementsFor = event => [seed, ...(event.placements || []).map(placement => demoPlacementFromShared(placement))];
+        const placementsFor = event => [...(generic ? [] : [seed]), ...(event.placements || []).map(placement => demoPlacementFromShared(placement))];
         const adapt = event => {
           const frontier = typeof event.choice === 'string' ? event.choice.split(',').map(Number) : event.choice;
           if (event.type === 'trial') return { type: 'trial', valid: true, frontier, frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0, placement: demoPlacementFromShared(event.candidate, { frontier }) };
@@ -2065,13 +2077,16 @@
         };
         solveA2Tiling({
           boundary: makeHexBoundary(220),
-          seed: { loop: seed.vertices3d, markingPlacement: { tile: 'turtle', orientation: sharedSeedOrientation, translation: sharedSeedTranslation } },
+          seed: generic ? null : { loop: seed.vertices3d, markingPlacement: { tile: 'turtle', orientation: sharedSeedOrientation, translation: sharedSeedTranslation } },
           initialPlacements,
-          tiles: ['turtle'],
+          tiles: TILE_SETS[selectedTileSet].tiles,
+          allowReflections: TILE_SETS[selectedTileSet].allowReflections,
+          fixedInitialPlacements: generic,
+          completePointGrowth: generic,
           maximize: true,
           targetPlacements: 1000,
           nodeLimit: 1000000,
-          marking: useMarking ? new FixedTurtleMarking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank }) : new NoA2Marking(),
+          marking: useMarking ? (markingSource === 'learned' ? new SparseA2Marking(displayMarking.support) : new FixedTurtleMarking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank })) : new NoA2Marking(),
           latticePointFilter,
           // These deterministic branch orders keep both comparison modes
           // representative without making the reader wait through a long,
@@ -2080,7 +2095,7 @@
           stopToken,
           waitForSearchDemand,
           onEvent: event => { const converted = adapt(event); if (converted) push(converted); }
-        }).finally(() => {
+        }).catch(error => { statusText = error.message; stopTiling(); draw(); }).finally(() => {
           done = true;
           while (demandWaiters.length) demandWaiters.shift()();
           while (waiters.length) waiters.shift()({ value: undefined, done: true });
@@ -2263,12 +2278,13 @@
         if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
         statusText = `${markingRulesToggle?.checked
-          ? `branching with rank-${markingRank} marking constraints`
+          ? markingSource === 'learned' ? 'branching with provisional learned marking' : `branching with rank-${markingRank} marking constraints`
           : 'branching without marking constraints'}${usingSublattice() ? ' on the turtle sublattice' : ''}`;
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         resumeSearchTimer();
+        const playbackIterator = liveSearchIterator;
         timer = window.setInterval(async () => {
           if (playbackTickBusy) return;
           playbackTickBusy = true;
@@ -2279,6 +2295,7 @@
             const next = pendingPlaybackEvent
               ? { value: pendingPlaybackEvent, done: false }
               : await liveSearchIterator?.next();
+            if (liveSearchIterator !== playbackIterator) return;
             pendingPlaybackEvent = null;
             if (!next || next.done) {
               if (pendingDeadEnd) {
@@ -2400,6 +2417,10 @@
         draw();
       });
       markingRulesToggle.addEventListener('change', () => {
+        if(markingRulesToggle.checked && markingSource==='none') {
+          configurePanel(selectedTileSet,selectedTileSet==='turtle'?'standard':'learned');return;
+        }
+        updatePanelControls();
         showMarkings = markingRulesToggle.checked || showMarkings;
         if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: marking flag set' : 'Stage: marking flag cleared';
         if (stageNote) stageNote.textContent = markingRulesToggle.checked ? `The next Start tiling run will use the rank-${markingRank} marking as a compatibility constraint.` : 'The next Start tiling run will use only the t-value tile constraints.';
@@ -2474,6 +2495,65 @@
         updateMarkingButton();
         draw();
       });
+      function updatePanelControls() {
+        markingSourcePicker.querySelector('[value="standard"]').disabled = selectedTileSet !== 'turtle';
+        markingSourcePicker.querySelector('[value="learned"]').disabled = !learnedModels.has(selectedTileSet);
+        markingSourcePicker.value = markingSource;
+        markingRulesToggle.disabled = selectedTileSet !== 'turtle' && !learnedModels.has(selectedTileSet);
+        sublatticeToggle.disabled = genericMode();
+        if (genericMode()) sublatticeToggle.checked = false;
+        document.getElementById('learned-marking-note').textContent = markingSource === 'learned'
+          ? `${TILE_SETS[selectedTileSet].label} · learned matching rules (${markingRulesToggle.checked?'enforced, provisional':'display only'}). Failure with these rules does not prove unmarked failure.`
+          : selectedTileSet === 'mixed' ? 'Turtle + Hat · rotations only; no reflected placements.' : '';
+        updateMarkingButton();
+      }
+      function configurePanel(setId, source) {
+        manualPanelMode = true;
+        stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
+        selectedTileSet = setId; markingSource = source; tileSetPicker.value = setId;
+        displayMarking = source === 'learned' ? learnedModels.get(setId) : null;
+        markingRulesToggle.checked = source !== 'none';
+        showMarkings = source !== 'none';
+        updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
+        learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId},location.origin);
+      }
+      function panelView(view) {
+        manualPanelMode = true; stopTiling();
+        document.getElementById('tiling-panel-page').hidden = view !== 'tiling';
+        document.getElementById('learning-panel-page').hidden = view !== 'learning';
+        document.getElementById('panel-tiling-tab').setAttribute('aria-selected',String(view==='tiling'));
+        document.getElementById('panel-learning-tab').setAttribute('aria-selected',String(view==='learning'));
+        if (view==='tiling') resizeCanvas();
+        learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId:selectedTileSet},location.origin);
+        window.requestAnimationFrame(updateTextWrap);
+      }
+      document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
+      document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
+      document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
+      tileSetPicker.onchange=()=>configurePanel(tileSetPicker.value,tileSetPicker.value==='turtle'?'standard':learnedModels.has(tileSetPicker.value)?'learned':'none');
+      markingSourcePicker.onchange=()=>configurePanel(selectedTileSet,markingSourcePicker.value);
+      window.addEventListener('message', event => {
+        if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
+        const data=event.data;
+        if(data?.type==='gcts-learner-loaded'){learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:selectedTileSet},location.origin);return;}
+        if(!['gcts-marking-ready','gcts-use-marking'].includes(data?.type)||!TILE_SETS[data.setId])return;
+        try {createConnectionLearner(data.setId).validateModel(data.model);} catch {return;}
+        if(data.type==='gcts-marking-ready'&&data.recorded&&customModels.has(data.setId))return;
+        if(data.recorded)customModels.delete(data.setId);else customModels.add(data.setId);
+        const changed=JSON.stringify(learnedModels.get(data.setId))!==JSON.stringify(data.model);
+        learnedModels.set(data.setId,data.model);
+        if(data.type==='gcts-use-marking'){
+          configurePanel(data.setId,'learned');panelView('tiling');startTilingPlayback({reset:true});
+        }else if(changed&&selectedTileSet===data.setId&&markingSource==='learned')configurePanel(data.setId,'learned');
+        updatePanelControls();
+      });
+      fetch('./assets/data/tile-markings.json?v=20260915-1').then(r=>r.json()).then(data=>{
+        for(const [setId,model] of Object.entries(data.models)){createConnectionLearner(setId).validateModel(model);if(!learnedModels.has(setId))learnedModels.set(setId,model);}
+        updatePanelControls();
+      }).catch(()=>{});
+      try {const saved=sessionStorage.getItem('gcts-requested-marking');if(saved){const model=JSON.parse(saved);createConnectionLearner(model.setId).validateModel(model);learnedModels.set(model.setId,model);customModels.add(model.setId);sessionStorage.removeItem('gcts-requested-marking');configurePanel(model.setId,'learned');panelView('tiling');}}catch{}
+      // Small inspectable state for integration tests and exported screenshots.
+      window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking});
       function demoStageForScroll() {
         const demoRect = demoCard?.getBoundingClientRect();
         const triggerLine = demoRect
@@ -2506,7 +2586,7 @@
       syncDemoStageToScroll();
     })();
   </script>
-  <script type="module" src="assets/anchor-learning-demo.js?v=20260915-3"></script>
-  <script type="module" src="assets/hat-learning-demo.js?v=20260915-constraints"></script>
+
+
 </body>
 </html>
