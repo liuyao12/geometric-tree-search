@@ -1,6 +1,8 @@
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260915-auto';
 import {createConnectionLearner,TILE_SETS} from './tile-connection-learning.js?v=20260915-three-sets';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
+const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
+const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
 const embedded=window.parent!==window;if(embedded)document.body.classList.add('embedded');
 let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,paused=false,epoch=0;
 const reports=new Map(),recordedReports=new Map(),automaticStarts=new Set();
@@ -33,7 +35,7 @@ function install(data,recorded=false,index=0){if(data.setId!==setId)return;repor
  }
 }
 function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=TILE_SETS[setId].label;message('Examine every legal connection; use all extension and failure evidence.');draw();}
-async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);$('learning-set').value=id;reset();const token=epoch;
+async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);selectTiles(id);reset();const token=epoch;
  if(reports.has(id)){install(reports.get(id),recordedReports.get(id));return;}
  try{const r=await fetch(`./assets/data/tile-connections-${id}.json?v=20260915-1`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Learn markings to collect all connections for this tile set.');}
 }
@@ -54,7 +56,7 @@ function launch(kind){$('learn-sync').textContent='The result will update the Ti
 }
 function pause(button){paused=!paused;worker.postMessage({type:paused?'pause':'resume'});button.textContent=paused?'Continue':mode==='collect'?'Pause learning':'Pause search';}
 $('learn-start').onclick=()=>mode==='collect'?pause($('learn-start')):launch('collect');$('learn-deeper').onclick=()=>mode==='extend'?pause($('learn-deeper')):launch('extend');
-$('learn-reset').onclick=reset;$('learn-marks').onchange=draw;picker.onchange=()=>{shown=report.connections[+picker.value]?.placements||[];describe();draw();};$('learning-set').onchange=()=>choose($('learning-set').value);
+$('learn-reset').onclick=reset;$('learn-marks').onchange=draw;picker.onchange=()=>{shown=report.connections[+picker.value]?.placements||[];describe();draw();};tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)choose(input.value);}));
 $('learn-export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({...report,markingMetadata:markingMetadata(model)},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`${setId}-connection-evidence.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('message',e=>{
  if(e.origin!==location.origin||e.source!==parent)return;
@@ -62,7 +64,7 @@ window.addEventListener('message',e=>{
  if(data?.type==='gcts-select-tiles'&&data.setId!==setId)choose(data.setId);
  if(data?.type==='gcts-start-learning'&&TILE_SETS[data.setId]&&!automaticStarts.has(data.requestId)){
   automaticStarts.add(data.requestId);
-  setId=data.setId;learner=createConnectionLearner(setId);$('learning-set').value=setId;
+  setId=data.setId;learner=createConnectionLearner(setId);selectTiles(setId);
   reset();launch('collect');
  }
 });

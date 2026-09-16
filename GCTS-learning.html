@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn tiling markings · GCTS</title><link rel="stylesheet" href="assets/tile-learning.css?v=20260915-auto"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn tiling markings · GCTS</title><link rel="stylesheet" href="assets/tile-learning.css?v=20260915-radios"></head>
 <body class="learning-page">
 <header><h1>Learn local matching rules</h1><a href="GCTS-I.html#anchor-learning">Back to the tiler</a></header>
 <main>
- <label id="learning-set-control">Tiles <select id="learning-set"><option value="turtle">Turtle</option><option value="hat">Hat</option><option value="mixed">Turtle + Hat · rotations only</option></select></label>
+ <div id="learning-set-control" class="tile-set-options" role="radiogroup" aria-label="Tiles">
+  <span>Tiles</span><label><input type="radio" name="learning-tiles" value="turtle" checked> Turtle</label><label><input type="radio" name="learning-tiles" value="hat"> Hat</label><label><input type="radio" name="learning-tiles" value="mixed"> Turtle + Hat <small>(rotations only)</small></label>
+ </div>
  <div class="learning-controls"><button id="learn-start">Learn markings</button><button id="learn-deeper" disabled>Search farther</button><button id="learn-reset">Reset</button><label>Target <input id="learn-target" type="number" min="3" max="96" value="12"></label><label>Budget <input id="learn-budget" type="number" min="1" max="100000" value="120"></label></div>
  <div class="learning-controls"><label>Connection <select id="learn-connection" disabled></select></label><label><input id="learn-marks" type="checkbox" checked> Point codes</label></div>
  <canvas id="learn-canvas" width="720" height="360" aria-label="Connection and extension on the left; learned tile markings on the right"></canvas>
@@ -12,5 +14,5 @@
  <div class="learning-controls actions"><button id="learn-export" disabled>Export evidence</button></div>
  <p class="scope">Learned matching rules are provisional. Extension searches use unmarked tiles; finite patches do not establish infinite tilings.</p>
 </main>
-<script type="module" src="assets/tile-learning-page.js?v=20260915-auto"></script>
+<script type="module" src="assets/tile-learning-page.js?v=20260915-radios"></script>
 </body></html>

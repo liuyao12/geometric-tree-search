@@ -26,7 +26,13 @@
 #learned-marking-note:empty { display: none; }
 #open-marking-lab { color: #315d4d; background: #f2f6ed; border: 1px solid #b5c6b7; border-radius: 5px; padding: 8px 12px; cursor: pointer; }
 #turtle-marking-source { max-width: 180px; font: inherit; }
-@media(max-width: 500px) { #learn-connection { max-width: 220px; } .panel-navigation { gap: 5px; } #turtle-tile-set { max-width: 200px; } }
+@media(max-width: 500px) { #learn-connection { max-width: 220px; } .panel-navigation { gap: 5px; } }
 
 #learn-metadata { margin-top: 5px; color: #365c4d; font-variant-numeric: tabular-nums; }
 #learn-sync { margin-top: 4px; color: #537064; font-size: 12px; }
+
+.tile-set-options { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; min-width: 0; }
+.tile-set-options label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; white-space: nowrap; }
+.tile-set-options input[type=radio] { margin: 0; padding: 0; accent-color: #315d4d; }
+.tile-set-options small { font-size: inherit; color: #5d7066; }
+.panel-navigation .tile-set-options { flex-basis: 100%; }

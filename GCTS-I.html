@@ -6,7 +6,7 @@
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
-  <link rel="stylesheet" href="assets/tile-learning.css?v=20260915-auto">
+  <link rel="stylesheet" href="assets/tile-learning.css?v=20260915-radios">
   <script>
     window.MathJax = {
       tex: {
@@ -39,7 +39,12 @@
                     <nav class="panel-navigation" aria-label="Tiling panel views">
                       <button id="panel-tiling-tab" type="button" aria-selected="true">Tiling</button>
                       <button id="panel-learning-tab" type="button" aria-selected="false">Learn markings</button>
-                      <label>Tiles <select id="turtle-tile-set"><option value="turtle">Turtle</option><option value="hat">Hat</option><option value="mixed">Turtle + Hat · rotations only</option></select></label>
+                      <div id="turtle-tile-set" class="tile-set-options" role="radiogroup" aria-label="Tiles">
+                        <span>Tiles</span>
+                        <label><input type="radio" name="tiling-tiles" value="turtle" checked> Turtle</label>
+                        <label><input type="radio" name="tiling-tiles" value="hat"> Hat</label>
+                        <label><input type="radio" name="tiling-tiles" value="mixed"> Turtle + Hat <small>(rotations only)</small></label>
+                      </div>
                     </nav>
                     <div id="tiling-panel-page">
                     <div class="interactive-toolbar" aria-label="Turtle tiling controls">
@@ -76,7 +81,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260915-auto" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260915-radios" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -169,7 +174,7 @@
       const tileHeading = document.querySelector('[data-demo-stage="tile"]');
       const windowDragHandle = document.getElementById('turtle-window-drag');
       const windowResizeHandle = document.getElementById('turtle-window-resize');
-      const tileSetPicker = document.getElementById('turtle-tile-set');
+      const tileSetInputs = Array.from(document.querySelectorAll('input[name="tiling-tiles"]'));
       const markingSourcePicker = document.getElementById('turtle-marking-source');
       const learningFrame = document.getElementById('tiling-learning-frame');
       let selectedTileSet = 'turtle', markingSource = 'standard', manualPanelMode = false;
@@ -2512,7 +2517,7 @@
       function configurePanel(setId, source) {
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
-        selectedTileSet = setId; markingSource = source; tileSetPicker.value = setId;
+        selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
         displayMarking = source === 'learned' ? learnedModels.get(setId) : null;
         markingRulesToggle.checked = source !== 'none';
         showMarkings = source !== 'none';
@@ -2532,7 +2537,7 @@
       document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
       document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
-      tileSetPicker.onchange=()=>configurePanel(tileSetPicker.value,tileSetPicker.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(tileSetPicker.value)?'learned':'none');
+      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)configurePanel(input.value,input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');}));
       markingSourcePicker.onchange=()=>configurePanel(selectedTileSet,markingSourcePicker.value);
       window.addEventListener('message', event => {
         if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
