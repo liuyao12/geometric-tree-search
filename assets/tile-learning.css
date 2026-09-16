@@ -43,3 +43,6 @@
   .panel-tabs [role=tab] { padding-left: 6px; padding-right: 6px; }
   .panel-navigation .tile-set-options { gap: 7px; }
 }
+
+.mark-extension-control.is-disabled { opacity: .45; }
+.mark-extension-control input:disabled { cursor: default; }
