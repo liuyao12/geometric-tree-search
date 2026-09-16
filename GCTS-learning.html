@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn tiling markings · GCTS</title><link rel="stylesheet" href="assets/tile-learning.css?v=20260915-1"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn tiling markings · GCTS</title><link rel="stylesheet" href="assets/tile-learning.css?v=20260915-auto"></head>
 <body class="learning-page">
 <header><h1>Learn local matching rules</h1><a href="GCTS-I.html#anchor-learning">Back to the tiler</a></header>
 <main>
@@ -8,9 +8,9 @@
  <div class="learning-controls"><button id="learn-start">Learn markings</button><button id="learn-deeper" disabled>Search farther</button><button id="learn-reset">Reset</button><label>Target <input id="learn-target" type="number" min="3" max="96" value="12"></label><label>Budget <input id="learn-budget" type="number" min="1" max="100000" value="120"></label></div>
  <div class="learning-controls"><label>Connection <select id="learn-connection" disabled></select></label><label><input id="learn-marks" type="checkbox" checked> Point codes</label></div>
  <canvas id="learn-canvas" width="720" height="360" aria-label="Connection and extension on the left; learned tile markings on the right"></canvas>
- <div id="learn-metrics"></div><div id="learn-status" role="status" aria-live="polite"></div>
- <div class="learning-controls actions"><button id="learn-apply" disabled>Use in tiling panel</button><button id="learn-export" disabled>Export evidence</button></div>
+ <div id="learn-metrics"></div><div id="learn-metadata"></div><div id="learn-sync" role="status"></div><div id="learn-status" role="status" aria-live="polite"></div>
+ <div class="learning-controls actions"><button id="learn-export" disabled>Export evidence</button></div>
  <p class="scope">Learned matching rules are provisional. Extension searches use unmarked tiles; finite patches do not establish infinite tilings.</p>
 </main>
-<script type="module" src="assets/tile-learning-page.js?v=20260915-1"></script>
+<script type="module" src="assets/tile-learning-page.js?v=20260915-auto"></script>
 </body></html>

@@ -3,7 +3,11 @@
 `GCTS-I.html` now has **Tiling** and **Learn markings** views in the same floating
 panel. The second view embeds the independent `GCTS-learning.html` page. The
 article's final Geometric Deep Learning section links to it without a second
-in-article canvas. Learning can continue while the tiling view is visible.
+in-article canvas. Entering the Geometric Deep Learning section automatically
+selects Turtle, opens the learning view and starts a fresh collection once per
+page visit. A pending-start handshake handles an iframe that has not loaded yet.
+Manual tab changes, pauses, resizing and further scrolling do not restart it.
+Learning can continue while the tiling view is visible.
 
 ## Inventories and learned results
 
@@ -68,11 +72,19 @@ checkpoints for that connection. All search history is exported.
 The learner posts a versioned, inventory-specific model to its parent after
 collection or deeper evidence updates. The main panel checks message origin and
 source, inventory, reflection setting, complete point/channel domain, and exact
-integer values. **Use in tiling panel** switches to that model and tile set,
-resets the search state, then starts the same shared graph engine with
-`SparseA2Marking`. Changing rules never reuses a stale graph or incompatible
-prefix. A separate-page session can transfer its chosen model through
-session storage when returning to the main page.
+integer values. A completed live run automatically selects its model in the matching tiling view,
+resets stale search state and displays the new marking. The next tiling run uses
+`SparseA2Marking`; no manual transfer control is needed. The learning view stays
+open so completion does not interrupt inspection. Changing rules never reuses a stale graph or incompatible
+prefix. A separate-page session saves its current model automatically through
+session storage when returning to the main page. Restoring that explicit model
+takes precedence over the article's automatic Turtle start.
+
+Both views display marking metadata: points, total assigned channel values,
+nonzero values and distinct scalar values. Explicit zeros count toward the total;
+coordinates on different tile prototypes count as separate marking points.
+Turtle has 56 points / 168 values, Hat 50 / 150, and mixed 106 / 318. Metadata also
+accompanies JSON evidence exports.
 
 Recorded models are available immediately. **Usual Turtle**, unmarked search,
 and the original Turtle controls remain available. Learned rules are explicitly
