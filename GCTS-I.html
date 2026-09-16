@@ -255,6 +255,7 @@
       let demoSafeY = 0;
       let demoSize = { width: null, canvasHeight: null };
       let activeDemoStage = null;
+      let activeScrollAnchor = null;
       const articleContent = document.querySelector('.article-content');
       let wrapTargets = articleWrapTargets();
       const demoCard = document.getElementById('turtle-tiling-card');
@@ -2479,8 +2480,10 @@
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
         learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId},location.origin);
       }
-      function panelView(view) {
-        manualPanelMode = true; stopTiling();
+      function panelView(view, { manual = true } = {}) {
+        if (manual) manualPanelMode = true;
+        if (document.getElementById(`panel-${view}-tab`).getAttribute('aria-selected') === 'true') return;
+        stopTiling();
         document.getElementById('tiling-panel-page').hidden = view !== 'tiling';
         document.getElementById('learning-panel-page').hidden = view !== 'learning';
         document.getElementById('panel-tiling-tab').setAttribute('aria-selected',String(view==='tiling'));
@@ -2539,19 +2542,31 @@
       }
 
       function startPendingLearning() {
+        if (pendingLearningStart) learningFrame.loading = 'eager';
         if(!pendingLearningStart||!learnerReady)return;
         pendingLearningStart=false;
         learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId:'turtle',requestId:'article-turtle-learning'},location.origin);
       }
       function syncDemoStageToScroll() {
-        const heading=document.getElementById('anchor-learning');
-        if(!learningSectionEntered && heading.getBoundingClientRect().top<=window.innerHeight*.65){
-          learningSectionEntered=true;
-          configurePanel('turtle','standard');panelView('learning');
-          pendingLearningStart=true;startPendingLearning();
-          return;
+        const heading = document.getElementById('anchor-learning');
+        const anchor = heading.getBoundingClientRect().top <= window.innerHeight * .65
+          ? 'learning' : demoStageForScroll();
+        if (anchor !== activeScrollAnchor) {
+          const previousAnchor = activeScrollAnchor;
+          activeScrollAnchor = anchor;
+          if (anchor === 'learning' && !learningSectionEntered) {
+            learningSectionEntered = true;
+            configurePanel('turtle', 'standard');
+            panelView('learning', { manual: false });
+            pendingLearningStart = true;
+            startPendingLearning();
+          } else if (previousAnchor !== null) {
+            // Follow section crossings, while allowing manual tabs within a section.
+            // Returning to learning keeps its current run and learned markings.
+            panelView(anchor === 'learning' ? 'learning' : 'tiling', { manual: false });
+          }
         }
-        setDemoStage(demoStageForScroll());
+        if (anchor !== 'learning') setDemoStage(anchor);
       }
 
       window.addEventListener('resize', () => {
