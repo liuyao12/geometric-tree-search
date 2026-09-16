@@ -139,7 +139,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, SparseA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260915-three-sets';
+    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, SparseA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260915-hat-rank1';
     import {createConnectionLearner, TILE_SETS, parity} from './assets/tile-connection-learning.js?v=20260915-three-sets';
     import {markingMetadataText} from './assets/marking-metadata.js?v=20260915-auto';
     (() => {
@@ -1448,7 +1448,7 @@
       }
 
       function drawMarkings(placement) {
-        if (placement.sharedSpec) {
+        if (placement.sharedSpec && markingSource === 'learned') {
           ctx.save();
           for (const entry of placement.markings) {
             const direction = [1,1,1]; direction[entry.component] = -2;
@@ -1831,7 +1831,7 @@
       }
 
       function updateMarkExtensionControl() {
-        const disabled = selectedTileSet !== 'turtle' || markingSource !== 'standard';
+        const disabled = markingSource !== 'standard';
         markExtensionInput.disabled = disabled;
         markExtensionControl.classList.toggle('is-disabled', disabled);
       }
@@ -2013,14 +2013,22 @@
       function sharedOrientationFor(symmetry) {
         return sharedTurtleOrientations.find(orientation => sameSymmetry(orientation.symmetry, symmetry));
       }
+      let fixedDisplayCache = null;
+      function fixedPanelMarking() {
+        const key = `${selectedTileSet}:${markingRank}:${markingExtension}`;
+        if (fixedDisplayCache?.key !== key) fixedDisplayCache = {key, marking:new FixedA2Marking(markingExtension, {rank:markingRank, tiles:TILE_SETS[selectedTileSet].tiles})};
+        return fixedDisplayCache.marking;
+      }
       function demoPlacementFromShared(placement, extras = {}) {
         if (genericMode()) {
           const symmetry = placement.orientation.symmetry;
           const spec = {tile:placement.tile,orientation:placement.orientation.index,translation:[...placement.translation]};
           const learner = createConnectionLearner(selectedTileSet), full = learner.materialize(spec);
+          const fixed = markingSource === 'standard' ? fixedPanelMarking() : null;
+          const fixedEntries = fixed ? [...fixed.entries(placement)].map(([key,value])=>{const [point,component]=key.split('|');return {point:point.split(',').map(Number),component:Number(component),value};}) : [];
           return {sharedSpec:spec,orientation:{...symmetry,orientationIndex:placement.orientation.index,planeSign:parity(symmetry.permutation)},translation:spec.translation,
             vertices3d:full.loop,points:full.loop.map(projectA2),occupancy:[...placement.orientation.occupancy.values()].map(e=>({point:add3(e.point,spec.translation),value:e.weight,kind:e.weight===12?'interior':'vertex'})),
-            markings:displayMarking?learner.entries(spec,displayMarking.support):[],markSegments:[],values:[],generation:placement.generation,...extras};
+            markings:fixed?fixedEntries:displayMarking?learner.entries(spec,displayMarking.support):[],markSegments:fixed?fixed.segments(placement):[],values:[],generation:placement.generation,...extras};
         }
         const localOrientation = orientations.find(orientation => sameSymmetry(orientation, placement.orientation.symmetry)) || orientations[0];
         const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
@@ -2080,7 +2088,7 @@
           maximize: true,
           targetPlacements: 1000,
           nodeLimit: 1000000,
-          marking: useMarking ? (markingSource === 'learned' ? new SparseA2Marking(displayMarking.support) : new FixedTurtleMarking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank })) : new NoA2Marking(),
+          marking: useMarking ? (markingSource === 'learned' ? new SparseA2Marking(displayMarking.support) : new FixedA2Marking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank, tiles:TILE_SETS[selectedTileSet].tiles })) : new NoA2Marking(),
           latticePointFilter,
           // These deterministic branch orders keep both comparison modes
           // representative without making the reader wait through a long,
@@ -2460,7 +2468,8 @@
         draw();
       });
       function updatePanelControls() {
-        for (const value of ['rank1', 'rank3']) markingSourcePicker.querySelector(`[value="${value}"]`).disabled = selectedTileSet !== 'turtle';
+        markingSourcePicker.querySelector('[value="rank1"]').disabled = false;
+        markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle';
         markingSourcePicker.querySelector('[value="learned"]').disabled = !learnedModels.has(selectedTileSet);
         syncMarkingSelection();
         sublatticeToggle.disabled = genericMode();
@@ -2503,7 +2512,7 @@
       document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
       document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
-      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)configurePanel(input.value,input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');}));
+      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)configurePanel(input.value,markingSource==='standard'&&markingRank===1?'standard':input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');}));
       markingSourcePicker.onchange = () => {
         const value = markingSourcePicker.value;
         if (value === 'rank1' || value === 'rank3') markingRank = value === 'rank1' ? 1 : 3;

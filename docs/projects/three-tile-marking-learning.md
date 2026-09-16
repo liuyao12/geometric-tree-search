@@ -86,8 +86,10 @@ coordinates on different tile prototypes count as separate marking points.
 Turtle has 56 points / 168 values, Hat 50 / 150, and mixed 106 / 318. Metadata also
 accompanies JSON evidence exports.
 
-Recorded models are available immediately. **Usual Turtle**, unmarked search,
-and the original Turtle controls remain available. Learned rules are explicitly
+Recorded models are available immediately. The **Tiling with** selector offers
+no marking, rank 1, rank 3 and learned marking. Rank 1 is available for all three
+inventories; rank 3 remains Turtle-only. Extent applies to fixed rank-1/rank-3
+markings and remains disabled for unmarked and learned search. Learned rules are explicitly
 labeled provisional in the tiler: failure under them does not prove failure
 of the unmarked problem. Extension searches in the learning page always remain
 unmarked, so learned restrictions cannot generate their own negative evidence.
@@ -132,3 +134,27 @@ and reflection/model mismatch rejection. The existing Turtle regression passes.
 Browser checks exercise all three model handoffs, exact marked compatibility,
 both tile types without reflections, background learning, deeper evidence,
 export, cancellation, ordinary Turtle, and desktop/mobile layout.
+
+
+## Fixed scalar markings for Hat and mixed search
+
+`FixedA2Marking` applies the rank-1 marking to each selected prototype.
+`FixedTurtleMarking` retains its existing API and Turtle data. Hat uses scalar
+one on the lattice points of chords 0–6, 2–10, 4–12 and 8–10 (indices in
+`A2_TILE_LOOPS.hat`), including the selected number of primitive lattice steps
+beyond each endpoint. Other positive t-support sites are explicitly zero.
+All symmetries transform point locations and leave scalar values unchanged.
+The mixed inventory uses the same scalar channel across both prototypes and
+retains its six rotations per tile, with no reflections. The renderer draws
+these same domains; rank 3 is not defined here for Hat.
+
+These are problem-defining fixed markings, not learned rules or an assertion
+that every unmarked patch extends. The search scheduler and rollback algorithm
+are unchanged. `tests/test_fixed_a2_marking.mjs` checks the explicit Hat support,
+assigned-zero conflicts, extension-only points, scalar transformation under
+all orientations, contact rollback, and 12-tile marked growth for each set.
+All three pass the engine's frontier graph audit and independent integer t-sum
+and m-equality replay; the mixed witness includes both prototypes. The existing
+Turtle point-learning regression also passes. These are consistent finite
+patches, not infinite-tiling certificates; the activation and geometric-fidelity
+gaps in the shared-engine audit above still apply.
