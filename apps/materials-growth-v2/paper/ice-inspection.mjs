@@ -32,8 +32,11 @@ async function init(){
     THREE=await import('../../3d-lattice-tiler/vendor/three.module.min.js');
     ({OrbitControls}=await import('../../3d-lattice-tiler/vendor/OrbitControls.js'));
     renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#102b35');host.prepend(renderer.domElement);
-    renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','Rotatable 3D view of source atom positions, colored by geometric coverage. Use the Rotate view button as an alternative to dragging.');
+    renderer.domElement.setAttribute('role','img');renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label','3D source atom positions. Drag to orbit; Shift-drag or right-drag to pan; scroll to zoom. Arrow keys pan. R resets.');
     scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(40,1,.1,1000);controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.addEventListener('change',render);
+    controls.screenSpacePanning=true;controls.listenToKeyEvents(renderer.domElement);
+    renderer.domElement.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='r')viewHome();});
+    for(const button of root.querySelectorAll('[data-ice-mode]'))button.onclick=()=>{const pan=button.dataset.iceMode==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;for(const b of root.querySelectorAll('[data-ice-mode]'))b.setAttribute('aria-pressed',String(b===button));};
     scene.add(new THREE.HemisphereLight(0xd5f2ff,0x344855,2.2));const light=new THREE.DirectionalLight(0xffffff,2.8);light.position.set(12,20,18);scene.add(light);
     new ResizeObserver(()=>{const w=renderer.domElement.clientWidth,h=renderer.domElement.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();render();}).observe(renderer.domElement);
     const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down;
@@ -77,6 +80,6 @@ async function init(){
     finally{if(version===loadVersion)host.setAttribute('aria-busy','false');}
   }
   config.onchange=loadConfig;policy.onchange=updateState;color.onchange=updateAtoms;reveal.oninput=updateAtoms;q('[data-ice-retry]').onclick=loadConfig;
-  q('[data-ice-reset]').onclick=viewHome;q('[data-ice-rotate]').onclick=()=>{if(!camera||!frame)return;camera.position.sub(controls.target).applyAxisAngle(new THREE.Vector3(0,1,0),Math.PI/6).add(controls.target);controls.update();render();};
+  q('[data-ice-reset]').onclick=viewHome;
   await loadConfig();
 }

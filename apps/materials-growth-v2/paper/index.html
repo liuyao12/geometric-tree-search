@@ -13,19 +13,40 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d353a'/%3E%3Cpath d='M8 16 16 7 24 16 16 25Z' fill='none' stroke='%239ae4cc' stroke-width='2'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="paper.css" />
-    <link rel="stylesheet" href="ice-inspection.css?v=2" />
+    <link rel="stylesheet" href="ice-inspection.css?v=3" />
     <script type="importmap">{"imports":{"three":"../../3d-lattice-tiler/vendor/three.module.min.js"}}</script>
-    <script type="module" src="ice-inspection.mjs?v=3"></script>
+    <script type="module" src="ice-inspection.mjs?v=4"></script>
+    <link rel="stylesheet" href="report-visuals.css?v=1" />
+    <script type="module" src="report-visuals.mjs?v=1"></script>
     <script type="module" src="paper.mjs"></script>
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
-<script type="module" src="preliminary-figure.mjs"></script>
+<script type="module" src="preliminary-figure.mjs?v=2"></script>
 <link rel="stylesheet" href="preliminary-report.css?v=5" />
   </head>
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
 <div class="layout"><nav class="toc" aria-label="Paper sections"><a href="#abstract">Abstract</a><a href="#problem">01 / Materials question</a><a href="#context">02 / Materials context</a><a href="#model">03 / Formal framework</a><a href="#method">04 / GCTS realization</a><a href="#connection-transfer">New / Connection transfer</a><a href="#quality">05 / Structural validation</a><a href="#validation-study">Extended structural study</a><a href="#results">06 / Computational evidence</a><a href="#outlook">07 / Research programme</a><a href="#marking-reference">Verified finite markings</a><a href="#reproduce">Reproducibility</a><a href="#references">References</a></nav><main>
 <section id="preliminary-report" data-report-version="ice-learned-support-2026-09-16"><p class="eyebrow">PROGRESS REPORT · 16 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
+<div id="report-visual-overview">
+<h2>The evidence, at a glance</h2>
+<p class="lead">Reconstructing known geometry is working in these finite tests. Growing an unknown material remains the next challenge.</p>
+<div class="rv-process" aria-label="Experimental pipeline and its current limits">
+<div><span class="rv-number">01</span><div class="rv-cloud" aria-hidden="true">● · ●<br> · ● ·<br>● · ●</div><h3>Observe</h3><p>Atomic configurations supply geometry, not chemical rules.</p></div>
+<div><span class="rv-number">02</span><div class="rv-overlap" aria-hidden="true"><i></i><i></i></div><h3>Learn &amp; freeze</h3><p>Motifs, filling weights and compatibility markings. Fully learnable anchor support remains unfinished.</p></div>
+<div><span class="rv-number">03</span><div class="rv-tree" aria-hidden="true">●<br>╱　╲<br>●　　●</div><h3>Search &amp; verify</h3><p>Fill supplied targets, then independently check t-sums and m-agreement.</p></div>
+</div>
+<figure class="rv-results" aria-labelledby="rv-title">
+<h3 id="rv-title">Do new targets still admit a filling?</h3>
+<p>20 excluded ice frames · five frames each of Ih, II, VI and VIII · frozen learned library</p>
+<div class="rv-tabs" role="group" aria-label="Result to visualize"><button type="button" data-rv-mode="complete" aria-pressed="true">Reconstruction found</button><button type="button" data-rv-mode="retained" aria-pressed="false">Original cover retained</button></div>
+<div data-rv-chart role="img" aria-label="Loading verified reconstruction results">Loading the recorded results…</div>
+<p data-rv-explanation aria-live="polite"></p>
+<details><summary>Inspect search work (not a speedup comparison)</summary><div data-rv-work></div><p>Counts are summed over the 20 targets. Markings restrict the solution set; fewer backtracks do not establish equivalent-task acceleration.</p></details>
+<figcaption>Each square is one target, in source-frame order within each phase. These are excluded frames, not independently prepared trajectories. Target positions are supplied; this is not blind growth. <a href="ice-frozen-frame-transfer/summary.json">Plotted result data</a> · <a href="#frozen-frame-transfer">Protocol and verification</a>.</figcaption>
+</figure>
+<div id="rv-scene-slot"></div>
+</div>
 <h2>Learn local connections.<br>Test global reconstruction.</h2>
 <aside class="callout" id="learned-point-support"><strong>New learning experiment: anchor count, positions and t-values are inferred—not fixed.</strong>
 <details id="frozen-frame-transfer" open><summary>Frozen-library transfer: twenty excluded source frames also reconstruct</summary>
@@ -153,9 +174,9 @@
 <label>Configuration<select data-ice-config aria-label="Ice configuration"></select></label>
 <label>Saved result<select data-ice-policy><option value="baseline">GCTS baseline · partial</option><option value="support-rich">GCTS ranked · partial</option><option value="connected-oracle" selected>Separate solver · full witness</option></select></label>
 <label>Atom colors<select data-ice-color><option value="coverage">Geometric t-coverage</option><option value="element">Element identity</option></select></label>
-<button type="button" data-ice-rotate>Rotate 30°</button><button type="button" data-ice-reset>Reset view</button>
+<button type="button" data-ice-mode="orbit" aria-pressed="true">Orbit</button><button type="button" data-ice-mode="pan" aria-pressed="false">Pan</button><button type="button" data-ice-reset>Reset view</button>
 </div>
-<div class="ice-viewport" data-ice-viewport><div class="ice-scene-tag"><strong data-ice-tag>Loading verified saved results…</strong><span data-ice-color-legend>Teal: t = 1 · amber: t = ½ · small gray: t = 0</span></div><div class="ice-scene-hint">Drag to rotate · scroll / pinch to zoom · cell coordinates in Å · sphere sizes are illustrative</div></div>
+<div class="ice-viewport" data-ice-viewport><div class="ice-scene-tag"><strong data-ice-tag>Loading verified saved results…</strong><span data-ice-color-legend>Teal: t = 1 · amber: t = ½ · small gray: t = 0</span></div><div class="ice-scene-hint">Drag: orbit · right-drag / Shift-drag: pan · scroll: zoom · two fingers: pan + pinch · arrows: pan · R: reset · coordinates in Å</div></div>
 <label class="ice-reveal"><span>Reveal saved supports<br><strong data-ice-count>—</strong></span><input data-ice-reveal type="range" min="0" max="1" value="1" aria-label="Number of saved motif placements to reveal" disabled></label>
 <div class="ice-readout" data-ice-status role="status">Loading the saved-state comparison…</div>
 <p class="ice-caption" data-ice-method>Saved-state inspection, not the full search history.</p>
@@ -697,7 +718,7 @@
 <figure class="interactive" aria-labelledby="prelim-figure-title"><div class="figure-head"><span id="prelim-figure-title">SAVED COORDINATES / FINITE SILICON PATCH</span><span class="pill amber">Not a bulk structure</span></div>
 <div class="controls"><label>Configuration<select id="prelim-config"><option value="union">Verified 34-atom union</option><option value="alternative">Second verified alternative</option><option value="prefix">Fixed 14-atom prefix</option></select></label><label>View<select id="prelim-focus"><option value="full">Whole patch</option><option value="triple">Obstructed neighborhood</option></select></label></div>
 <canvas id="prelim-canvas" width="960" height="510" role="img" aria-label="Projection of saved silicon positions, highlighting a three-point continuation obstruction"></canvas>
-<div class="range"><label for="prelim-yaw">Rotate</label><input id="prelim-yaw" type="range" min="-180" max="180" value="25" /><output id="prelim-yaw-value">25°</output></div>
+<div class="rv-tabs"><button type="button" id="prelim-pan" aria-pressed="false">Pan mode</button><button type="button" id="prelim-reset">Reset view</button></div><p class="fine">Drag to orbit · Shift-drag or Pan mode to pan · scroll / pinch to zoom · two fingers to pan · arrow keys to orbit (Shift: pan) · R to reset.</p>
 <p class="legend"><span class="prelim-dot old"></span> Fixed-prefix atom <span class="prelim-dot new"></span> Added atom <span class="prelim-dot blocked"></span> Obstructed triple. Colors denote computational roles, not elements; all atoms are Si. Lines show tested distances, not chemical bonds.</p>
 <p id="prelim-live" aria-live="polite">Loading the saved coordinates…</p>
 <figcaption>Orthographic projection of actual saved coordinates, in ångströms. The second alternative moves one atom elsewhere in the patch but leaves the obstructed triple unchanged. No interpolation is presented as a search trajectory. Use “Obstructed neighborhood” to inspect its geometry.</figcaption></figure>
