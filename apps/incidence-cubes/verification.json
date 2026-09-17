@@ -1,0 +1,18 @@
+{
+  "lean": "verified",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "mathlibCommit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "formalCommit": "9f87b46b5148b2737a473c751c5427e2cae775f0",
+  "runId": 35205742885,
+  "runUrl": "https://github.com/liuyao12/geometric-tree-search/actions/runs/35205742885",
+  "verifiedAt": "2026-09-17T09:35:26Z",
+  "publicTheoremsAudited": 17,
+  "axiomsObserved": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "forbiddenAxiomsObserved": [],
+  "summary": "Lean 4.19.0 · 17 kernel-checked theorems · geometric completion still in progress",
+  "detail": "The four implemented modules compiled in GitHub Actions run 35205742885 at commit 9f87b46b5148b2737a473c751c5427e2cae775f0. All 17 public theorems were audited: only propext, Classical.choice and Quot.sound occur; no sorryAx or native-computation assumptions. This verifies the implemented algebra, cancellation and coordinate bridge—not arbitrary-input Penrose completion, its uniqueness, or a full reduction between the two geometric theories. See axiom-audit.txt and the linked run."
+}

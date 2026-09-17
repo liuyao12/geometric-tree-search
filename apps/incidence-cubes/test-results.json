@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "seed": 20260917,
+  "cases": {
+    "penrose": 250,
+    "fomin": 250,
+    "surface": 250,
+    "bridge": 250
+  },
+  "checks": 68502,
+  "maximumResiduals": {
+    "penroseEdge": 2.8760827307762205e-15,
+    "penroseFace": 1.6849510671934667e-16,
+    "fominRatio": 4.551914400963142e-15
+  },
+  "note": "Deterministic numerical/exact-arithmetic software tests. Not Lean proof evidence."
+}

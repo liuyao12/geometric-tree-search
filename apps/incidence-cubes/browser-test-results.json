@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "Penrose completion, edge contacts, face selection and slider",
+    "Fomin completion and visibility of mode-specific controls",
+    "Exact surface perturbation and reset",
+    "Bridge hyperbola range and keyboard tab navigation",
+    "Desktop sticky panel, screenshot inspected separately",
+    "Scroll-synchronized mode with manual override",
+    "No horizontal overflow at 1440, 1000, 820 and 390 pixels"
+  ],
+  "javascriptErrors": [],
+  "method": "Actual local assets assembled in Chromium; verification loader supplied with local verification.json. Not a live-site or Lean test."
+}

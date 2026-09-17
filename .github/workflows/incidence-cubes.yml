@@ -1,9 +1,9 @@
 name: Incidence cubes Lean
 on:
   push:
-    paths: ['apps/incidence-cubes/formal/**', '.github/workflows/incidence-cubes.yml']
+    paths: ['apps/incidence-cubes/**', '.github/workflows/incidence-cubes.yml']
   pull_request:
-    paths: ['apps/incidence-cubes/formal/**', '.github/workflows/incidence-cubes.yml']
+    paths: ['apps/incidence-cubes/**', '.github/workflows/incidence-cubes.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,6 +13,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+      - name: Test mathematical engine and cube encoding
+        run: node apps/incidence-cubes/test.cjs
       - uses: leanprover/lean-action@v1
         with:
           lake-package-directory: apps/incidence-cubes/formal
@@ -33,3 +35,4 @@ jobs:
           path: |
             apps/incidence-cubes/formal/axiom-audit.txt
             apps/incidence-cubes/formal/lake-manifest.json
+            apps/incidence-cubes/test-results.json
