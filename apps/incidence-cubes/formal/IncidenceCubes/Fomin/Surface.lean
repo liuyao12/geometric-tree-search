@@ -22,7 +22,7 @@ theorem total_product (T : ClosedQuadrangulation Face Edge) (w : Edge → G) :
     rw [← Fintype.prod_prod_type (fun x : Face × Fin 2 => w (T.negative x))]
     exact Equiv.prod_comp T.negative w
   rw [hp, hn]
-  group
+  exact div_self' _
 theorem last_face (T : ClosedQuadrangulation Face Edge) (w : Edge → G) (missing : Face)
     (h : ∀ f, f ≠ missing → faceWeight T w f = 1) : faceWeight T w missing = 1 := by
   classical
