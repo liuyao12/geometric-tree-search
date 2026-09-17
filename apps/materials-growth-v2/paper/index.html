@@ -20,7 +20,7 @@
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
 <script type="module" src="preliminary-figure.mjs"></script>
-<link rel="stylesheet" href="preliminary-report.css?v=4" />
+<link rel="stylesheet" href="preliminary-report.css?v=5" />
   </head>
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
@@ -28,6 +28,20 @@
 <section id="preliminary-report" data-report-version="ice-learned-support-2026-09-16"><p class="eyebrow">PROGRESS REPORT · 16 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
 <h2>Learn local connections.<br>Test global reconstruction.</h2>
 <aside class="callout" id="learned-point-support"><strong>New learning experiment: anchor count, positions and t-values are inferred—not fixed.</strong>
+<details id="frozen-frame-transfer" open><summary>Frozen-library transfer: twenty excluded source frames also reconstruct</summary>
+<p>We fixed a new cohort before running search: validation frames 50–54 from each of Ih, II, VI and VIII. Independent admission checks confirm that all twenty frames are absent from the dictionary's 200 stored configurations and support-training observations, with no exact source-geometry duplicates to those dictionary frames. The learned support and marking files remain byte-identical.</p>
+<p><strong>All twenty new targets reconstruct, unmarked and at 1, 2, 4 and 8 marking channels.</strong> Independent replay verifies every target atom's t-sum, proper-rotation registration within 0.15 Å, and common allowed m-values. No selected placements or refitted learned values are supplied. Known target coordinates are still used to propose poses.</p>
+<p><small>Counters total twenty new targets; scroll the table sideways on narrow screens.</small></p>
+<div class="table-responsive"><table><thead><tr><th>Channels</th><th>New targets reconstructed</th><th>Saved unmarked covers retained</th><th>Backtracks</th><th>Forced moves</th></tr></thead><tbody>
+<tr><td>0</td><td>20 / 20</td><td>20 / 20</td><td>1,154</td><td>20</td></tr>
+<tr><td>1</td><td>20 / 20</td><td>5 / 20</td><td>1,137</td><td>24</td></tr>
+<tr><td>2</td><td>20 / 20</td><td>0 / 20</td><td>745</td><td>27</td></tr>
+<tr><td>4</td><td>20 / 20</td><td>0 / 20</td><td>952</td><td>34</td></tr>
+<tr><td>8</td><td>20 / 20</td><td>0 / 20</td><td>480</td><td>118</td></tr>
+</tbody></table></div>
+<p>This is evidence of <strong>transfer to excluded frames</strong>, not independent-trajectory or same-condition validation: temperature/pressure and trajectory identifiers remain unestablished for all twenty frames. The eight-channel witnesses still have 5–50 support components and some repeated mapped supports. Joint anchor/t/m learning, connected growth and extension beyond target coordinates remain open. No timing speedup or necessity of the learned marking restrictions is claimed.</p>
+<p><a href="ice-frozen-frame-transfer/README.md">Protocol and limitations</a> · <a href="ice-frozen-frame-transfer/cohort-check.json">Independent frame-exclusion check</a> · <a href="ice-frozen-frame-transfer/transfer.json">Cohort-to-search evidence</a> · <a href="ice-frozen-frame-transfer/summary.json">Channel results</a> · <a href="ice-frozen-frame-transfer/check-8.json">Eight-channel replay</a></p>
+</details>
 <details id="interval-reconstruction" open><summary>Learned markings now permit alternate reconstructions of all twenty ice targets</summary>
 <p>The frozen training-only interval markings now run through the reference tree search on the full no-prefix geometry pools. Independent replay verifies <strong>20/20 complete targets at each of 1, 2, 4 and 8 channels</strong>, including exact rational t-sums and a common allowed m-value at every overlap. No calibration retraining or selected cover is supplied to search.</p>
 <p><small>Counters total twenty targets. On narrow screens, scroll the table sideways to compare cover retention and search effort.</small></p>

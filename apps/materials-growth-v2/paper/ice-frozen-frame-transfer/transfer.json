@@ -1,0 +1,53 @@
+{
+  "manifestHash": "a4cbeda49c4bbb52cbcb1b2cb8e3cba6f0bf9c9b8616cf27f8190e66dfd349eb",
+  "cohortCheckHash": "0b803866d7d76f24cf305ab594df239384376b24e66b8bde2d63f7104ef21ef3",
+  "summaryHash": "844713d5db5f5e654a78228751de90b69559d2ce9c5b9d59467d99238d1a84f9",
+  "binderHash": "cf7970f17877e0cf0943c94dfe9632592a5b079b107776cd6bcee3bcea2407ef",
+  "generatorHash": "4a5c833539507e729440c81c2559845b60c996e6e44151b123022e760978fa28",
+  "sourcePoolHash": "74f47b257f0f1ab5e20ff765c54b00bce9587984afa8ffefc00225b0cb8953a4",
+  "proposalHash": "b3ff1d3f9bee7f47ad288a0fb46d1e6472ee46a8f0257620957bbf32eac43f3a",
+  "targetIds": [
+    "c00450",
+    "c00451",
+    "c00452",
+    "c00453",
+    "c00454",
+    "c00950",
+    "c00951",
+    "c00952",
+    "c00953",
+    "c00954",
+    "c01450",
+    "c01451",
+    "c01452",
+    "c01453",
+    "c01454",
+    "c01950",
+    "c01951",
+    "c01952",
+    "c01953",
+    "c01954"
+  ],
+  "preparationAndDiagnosticSeconds": 72.29052679077722,
+  "proposalPassesTruncated": 0,
+  "baseComplete": 20,
+  "markedComplete": [
+    {
+      "channels": 1,
+      "complete": 20
+    },
+    {
+      "channels": 2,
+      "complete": 20
+    },
+    {
+      "channels": 4,
+      "complete": 20
+    },
+    {
+      "channels": 8,
+      "complete": 20
+    }
+  ],
+  "admission": "Excluded recorded frames and exact source geometries, not independent trajectories or verified matched conditions."
+}

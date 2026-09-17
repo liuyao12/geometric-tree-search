@@ -1,0 +1,39 @@
+{
+  "manifestHash": "a4cbeda49c4bbb52cbcb1b2cb8e3cba6f0bf9c9b8616cf27f8190e66dfd349eb",
+  "targetHash": "f7617c0296b6714035302394446b4c0012f44cbcc73f72a06e2304660d62b1be",
+  "verifierHash": "c27cefcaf6d486de1d23da235064323e09d19c1a1b5ba0ffe0a37f05a917c665",
+  "targetIds": [
+    "c00450",
+    "c00451",
+    "c00452",
+    "c00453",
+    "c00454",
+    "c00950",
+    "c00951",
+    "c00952",
+    "c00953",
+    "c00954",
+    "c01450",
+    "c01451",
+    "c01452",
+    "c01453",
+    "c01454",
+    "c01950",
+    "c01951",
+    "c01952",
+    "c01953",
+    "c01954"
+  ],
+  "phaseCounts": {
+    "Ih": 5,
+    "II": 5,
+    "VI": 5,
+    "VIII": 5
+  },
+  "dictionaryFrameOverlap": 0,
+  "supportObservationFrameOverlap": 0,
+  "exactSourceGeometryDuplicatesToDictionary": 0,
+  "unknownConditionFrames": 20,
+  "unknownTrajectoryFrames": 20,
+  "limits": "Verifies source-index selection, unchanged coordinates/metadata, recorded dictionary/observation exclusion and frozen source bytes. Not independent trajectory or matched-condition admission; does not audit every earlier exploratory experiment or prove no distribution-level information leakage."
+}

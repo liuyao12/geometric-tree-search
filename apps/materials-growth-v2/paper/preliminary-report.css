@@ -10,6 +10,8 @@
 #no-prefix-reconstruction table{min-width:560px}
 #interval-reconstruction .table-responsive{max-width:100%;overflow-x:auto}
 #interval-reconstruction table{min-width:580px}
+#frozen-frame-transfer .table-responsive{max-width:100%;overflow-x:auto}
+#frozen-frame-transfer table{min-width:580px}
 #ice-family-followup table{min-width:560px}
 .prelim-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:10px;margin-right:4px}
 .prelim-dot.old{background:#227d70}.prelim-dot.new{background:#8a9ca7}.prelim-dot.blocked{background:#c47622}
