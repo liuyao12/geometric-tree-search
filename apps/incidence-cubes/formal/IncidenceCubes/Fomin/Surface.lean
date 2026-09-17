@@ -16,12 +16,13 @@ theorem total_product (T : ClosedQuadrangulation Face Edge) (w : Edge → G) :
   unfold faceWeight
   rw [Finset.prod_div_distrib]
   have hp : (∏ f : Face, ∏ i : Fin 2, w (T.positive (f, i))) = ∏ e : Edge, w e := by
-    rw [← Fintype.prod_prod_type]
+    rw [← Fintype.prod_prod_type (fun x : Face × Fin 2 => w (T.positive x))]
     exact Equiv.prod_comp T.positive w
   have hn : (∏ f : Face, ∏ i : Fin 2, w (T.negative (f, i))) = ∏ e : Edge, w e := by
-    rw [← Fintype.prod_prod_type]
+    rw [← Fintype.prod_prod_type (fun x : Face × Fin 2 => w (T.negative x))]
     exact Equiv.prod_comp T.negative w
-  rw [hp, hn, div_self]
+  rw [hp, hn]
+  group
 theorem last_face (T : ClosedQuadrangulation Face Edge) (w : Edge → G) (missing : Face)
     (h : ∀ f, f ≠ missing → faceWeight T w f = 1) : faceWeight T w missing = 1 := by
   classical
