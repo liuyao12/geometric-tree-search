@@ -52,6 +52,16 @@ exact rational t-sums. All 5,520 atom targets have sum one. No duplicate
 type/ordered-correspondence selections occur. Omitted placements, duplicate
 selections and reflected poses are rejected in corruption controls.
 
+A stricter diagnostic ignores the ordering of anchors and groups selected
+poses by motif type and mapped atom/t-support. It finds 1–8 repeated selections
+in the five Ih cases, 0–1 in II, zero in VI, and 8–44 in VIII. These are distinct
+rigid-pose candidates under the declared inventory, not identical selected IDs;
+they can nevertheless fill the same sampled support through different anchor
+permutations. The sum-one result therefore does not establish distinct useful
+connections. Symmetry-aware placement identity must be resolved before calling
+these witnesses generative growth. This diagnostic does not justify blindly
+merging poses that may act differently on future extended markings.
+
 The checker also now verifies incomplete saved states instead of silently
 skipping them: deleting a placement from a legal incomplete state remains an
 incomplete result; falsely claiming completion is rejected. These checks do

@@ -29,10 +29,13 @@ const rows=pool.models.map(model=>{
  }
  const components=new Map();
  for(const id of s.selected){const root=find(id);components.set(root,(components.get(root)??0)+1);}
+ const mappedSupports=new Map();
+ for(const id of s.selected){const g=model.geometry[id],key=JSON.stringify([g.type,g.ids.map((a,i)=>[a,g.units[i]]).sort((a,b)=>a[0]-b[0])]);mappedSupports.set(key,(mappedSupports.get(key)??0)+1);}
  return {id:model.id,atoms:c.atoms,candidates:p.candidateCount,correspondenceLeaves:p.correspondenceLeaves,proposalTruncated:p.truncated,
   proposalAndDiagnosticSeconds:p.seconds,status:s.status,complete:c.complete,placements:c.placements,
   fullyFilled:c.fullyFilled,partiallyFilled:c.partiallyFilled,untouched:c.untouched,
   maxPositionErrorAngstrom:c.maxPositionErrorAngstrom,duplicateTypeCorrespondences:c.duplicateTypeCorrespondences,
+  repeatedUnorderedTypeSupportSelections:[...mappedSupports.values()].reduce((n,v)=>n+v-1,0),
   supportComponents:components.size,componentPlacementCounts:[...components.values()].sort((a,b)=>b-a),
   selectedMotifTypes:new Set(s.selected.map(id=>model.geometry[id].type)).size,
   searchSeconds:s.seconds,stats:s.stats,rollbackVerified:s.rollbackVerified};
