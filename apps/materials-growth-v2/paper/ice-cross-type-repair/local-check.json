@@ -1,0 +1,79 @@
+{
+  "repairHash": "f3ce26160e0421487218f616bec7e1615bade5356b30e358f0f82b31790ff1a0",
+  "poolHash": "c8223c9c724748c286c745573c5c996d5f4e9d67aca27fe6e38359a85e838b70",
+  "supportHash": "0cff00f9bea397aca34305e7d283e975a547ce4e0c9a97dc768bf98b3549f752",
+  "verifierHash": "d698e76f93f51f644dcb1f6e37614489edc45ffa8c2ef5d17f1deaaae00c59f1",
+  "rows": [
+    {
+      "id": "c00023",
+      "atoms": 384,
+      "placements": 129,
+      "fixedPlacements": 127,
+      "addedPlacements": 2,
+      "fullyFilled": 384,
+      "maxPositionErrorAngstrom": 0.14743053792624314,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c00521",
+      "atoms": 288,
+      "placements": 97,
+      "fixedPlacements": 93,
+      "addedPlacements": 4,
+      "fullyFilled": 288,
+      "maxPositionErrorAngstrom": 0.14907484860020484,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c01020",
+      "atoms": 240,
+      "placements": 81,
+      "fixedPlacements": 79,
+      "addedPlacements": 2,
+      "fullyFilled": 240,
+      "maxPositionErrorAngstrom": 0.13833298538898237,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c01022",
+      "atoms": 240,
+      "placements": 81,
+      "fixedPlacements": 78,
+      "addedPlacements": 3,
+      "fullyFilled": 240,
+      "maxPositionErrorAngstrom": 0.14395068730742705,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c01023",
+      "atoms": 240,
+      "placements": 81,
+      "fixedPlacements": 78,
+      "addedPlacements": 3,
+      "fullyFilled": 240,
+      "maxPositionErrorAngstrom": 0.1421090865864482,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c01024",
+      "atoms": 240,
+      "placements": 82,
+      "fixedPlacements": 78,
+      "addedPlacements": 4,
+      "fullyFilled": 240,
+      "maxPositionErrorAngstrom": 0.14034229808667908,
+      "duplicateTypeCorrespondences": 0
+    },
+    {
+      "id": "c01521",
+      "atoms": 192,
+      "placements": 64,
+      "fixedPlacements": 63,
+      "addedPlacements": 1,
+      "fullyFilled": 192,
+      "maxPositionErrorAngstrom": 0.14941044279214327,
+      "duplicateTypeCorrespondences": 0
+    }
+  ],
+  "limits": "Independent exact rational t filling and tolerance-based proper-pose replay. Distinct supplied rigid placements; repeated type/correspondence counts reported separately. Does not independently certify the scheduler trace. No marking check, pose-universe completeness or blind-growth claim."
+}
