@@ -1,0 +1,2002 @@
+{
+  "markingHash": "5d391d6b13c2be56f7f015d50c5e13b27f21207a52596b56f495ce5365646578",
+  "supportHash": "0cff00f9bea397aca34305e7d283e975a547ce4e0c9a97dc768bf98b3549f752",
+  "poseHash": "0b80d8465083438b9bcb1506640ce9f8c12c46d0dec097f42e39e97f0537ad52",
+  "verifierHash": "839a91a7dc741ce7b49710be22776edf01f19894e7d7c25ca1e4a8bfdee46d93",
+  "summary": [
+    {
+      "channels": 1,
+      "trainingPassed": 80,
+      "trainingTotal": 80,
+      "calibrationTValid": 11,
+      "calibrationRetained": 3,
+      "calibrationTotal": 20
+    },
+    {
+      "channels": 2,
+      "trainingPassed": 80,
+      "trainingTotal": 80,
+      "calibrationTValid": 11,
+      "calibrationRetained": 2,
+      "calibrationTotal": 20
+    },
+    {
+      "channels": 4,
+      "trainingPassed": 80,
+      "trainingTotal": 80,
+      "calibrationTValid": 11,
+      "calibrationRetained": 1,
+      "calibrationTotal": 20
+    },
+    {
+      "channels": 8,
+      "trainingPassed": 80,
+      "trainingTotal": 80,
+      "calibrationTValid": 11,
+      "calibrationRetained": 0,
+      "calibrationTotal": 20
+    }
+  ],
+  "rows": [
+    {
+      "id": "c00000",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00001",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00002",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00003",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00004",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00005",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00006",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00007",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00008",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00009",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00010",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00011",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00012",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00013",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00014",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00015",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00016",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00017",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00018",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00019",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00020",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        1,
+        5
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00021",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        2,
+        8,
+        9,
+        12
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00022",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "c00023",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 1,
+      "conflictingSitesByRun": [
+        2,
+        2,
+        6,
+        11
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00024",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        1,
+        1,
+        6,
+        14
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00500",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00501",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00502",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00503",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00504",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00505",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00506",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00507",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00508",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00509",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00510",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00511",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00512",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00513",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00514",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00515",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00516",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00517",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00518",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00519",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c00520",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        4,
+        11,
+        22,
+        32
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00521",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 3,
+      "conflictingSitesByRun": [
+        2,
+        5,
+        14,
+        23
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00522",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 1,
+      "conflictingSitesByRun": [
+        16,
+        21,
+        30,
+        51
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00523",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 6,
+      "conflictingSitesByRun": [
+        18,
+        20,
+        28,
+        50
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c00524",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        10,
+        13,
+        25,
+        40
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01000",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01001",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01002",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01003",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01004",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01005",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01006",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01007",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01008",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01009",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01010",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01011",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01012",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01013",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01014",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01015",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01016",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01017",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01018",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01019",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01020",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 1,
+      "conflictingSitesByRun": [
+        6,
+        12,
+        26,
+        34
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01021",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        3,
+        8,
+        18,
+        33
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01022",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 3,
+      "missingTypes": 1,
+      "conflictingSitesByRun": [
+        8,
+        10,
+        18,
+        26
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01023",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 2,
+      "conflictingSitesByRun": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01024",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 0,
+      "missingTypes": 2,
+      "conflictingSitesByRun": [
+        8,
+        9,
+        17,
+        25
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01500",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01501",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01502",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01503",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01504",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01505",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01506",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01507",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01508",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01509",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01510",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01511",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01512",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01513",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01514",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01515",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01516",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01517",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01518",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01519",
+      "training": true,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "retainedByRun": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c01520",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        6,
+        8,
+        11
+      ],
+      "retainedByRun": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01521",
+      "training": false,
+      "tValid": false,
+      "failedMappings": 2,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01522",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        2,
+        2,
+        3,
+        6
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01523",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        1,
+        5,
+        9,
+        9
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c01524",
+      "training": false,
+      "tValid": true,
+      "failedMappings": 0,
+      "missingTypes": 0,
+      "conflictingSitesByRun": [
+        2,
+        5,
+        5,
+        9
+      ],
+      "retainedByRun": [
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "trainingOverlapPairs": 9168,
+  "newPairsInTValidCalibration": 633,
+  "calibrationConnectionNovelty": [
+    {
+      "id": "c00020",
+      "distinctOverlapPairs": 293,
+      "absentFromTraining": 20
+    },
+    {
+      "id": "c00021",
+      "distinctOverlapPairs": 297,
+      "absentFromTraining": 35
+    },
+    {
+      "id": "c00022",
+      "distinctOverlapPairs": 288,
+      "absentFromTraining": 27
+    },
+    {
+      "id": "c00024",
+      "distinctOverlapPairs": 298,
+      "absentFromTraining": 49
+    },
+    {
+      "id": "c00520",
+      "distinctOverlapPairs": 258,
+      "absentFromTraining": 72
+    },
+    {
+      "id": "c00524",
+      "distinctOverlapPairs": 271,
+      "absentFromTraining": 108
+    },
+    {
+      "id": "c01021",
+      "distinctOverlapPairs": 234,
+      "absentFromTraining": 122
+    },
+    {
+      "id": "c01520",
+      "distinctOverlapPairs": 186,
+      "absentFromTraining": 52
+    },
+    {
+      "id": "c01522",
+      "distinctOverlapPairs": 169,
+      "absentFromTraining": 48
+    },
+    {
+      "id": "c01523",
+      "distinctOverlapPairs": 166,
+      "absentFromTraining": 56
+    },
+    {
+      "id": "c01524",
+      "distinctOverlapPairs": 171,
+      "absentFromTraining": 58
+    }
+  ],
+  "limits": "Independent source-coordinate t and common-box m replay on supplied poses, not tree search. Calibration was already seen by the upstream geometric dictionary. No proof that rejected unobserved connections are invalid or that abstract pair counts are realizable connection counts."
+}
