@@ -16,7 +16,7 @@ For all 630,763 same-species anchor pairs (including self pairs) with t_i + t_j 
 
 The reason is structural, not optimizer failure. Any scalar solution of the same equalities is constant on each connected component. Adding scalar channels with the same invariant action repeats those equalities channel by channel. It cannot distinguish anchors already connected by an equality path.
 
-This is **not** a no-go result for GCTS generally, the earlier Gaussian-field variants, nontrivial transformation actions, context-dependent decorations, or learned off-atom/mark-only anchors. Those are different hypothesis spaces. It is also not a proof that unobserved material connections are physically impossible.
+This is **not** a no-go result for GCTS generally, the earlier Gaussian-field variants, nontrivial transformation actions, context-dependent decorations, nonzero m-tolerances, or learned off-atom/mark-only anchors. Those are different hypothesis spaces. In particular, approximate agreement along a chain does not force its endpoints to be equal; the component-rank argument uses exact m-equality. It is also not a proof that unobserved material connections are physically impossible.
 
 ## Evidence and next requirement
 
