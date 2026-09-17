@@ -6,7 +6,7 @@ This is a new inference experiment, not an upgrade to the earlier fixed-anchor s
 
 The same 80 fit frames provide source positions plus previously inferred motif types, poses and selected occurrence proposals. The learner does not read inherited anchor coordinates, occurrence atom lists/permutations or half weights. It inverse-transforms nearby source atoms, proposes shared same-species points within a fixed 4 Å reach, and refines their coordinates by means or minimum-enclosing-ball fits. Species are opaque labels; there are no chemical valence rules. Final correspondence must be unique within 0.15 Å.
 
-A mixed-integer model minimizes the number of positive anchors over the finite candidate pool. Each anchor has an independent weight in [0,1] and a binary inclusion gate. Every training atom must receive total weight 1. No equal-weight constraint or prescribed anchor count is supplied. A motif type with no positive anchors is retired: its occurrences are omitted, not treated as zero-support tiles.
+A mixed-integer model minimizes the number of positive anchors over the finite candidate pool. Each anchor has an independent weight in [0,1] and a binary inclusion gate. Every training atom must receive total weight 1. No equal-weight constraint or prescribed anchor count is supplied. A motif type with no positive anchors is retired: its occurrences are omitted, not treated as zero-support tiles. Crucially, the supplied occurrence proposals come from the earlier half-weight cover pipeline: recovering half-weights is not independent evidence of discovering them without upstream bias.
 
 ## Observations
 
