@@ -6,6 +6,8 @@
 #prelim-canvas{display:block;width:100%;height:auto;background:#f1f5f2;border-radius:8px}
 #prelim-live{min-height:3em;font-size:14px}
 #ice-family-followup .table-responsive{max-width:100%;overflow-x:auto}
+#no-prefix-reconstruction .table-responsive{max-width:100%;overflow-x:auto}
+#no-prefix-reconstruction table{min-width:560px}
 #ice-family-followup table{min-width:560px}
 .prelim-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:10px;margin-right:4px}
 .prelim-dot.old{background:#227d70}.prelim-dot.new{background:#8a9ca7}.prelim-dot.blocked{background:#c47622}

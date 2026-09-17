@@ -20,7 +20,7 @@
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
 <script type="module" src="preliminary-figure.mjs"></script>
-<link rel="stylesheet" href="preliminary-report.css?v=2" />
+<link rel="stylesheet" href="preliminary-report.css?v=3" />
   </head>
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
@@ -28,6 +28,18 @@
 <section id="preliminary-report" data-report-version="ice-learned-support-2026-09-16"><p class="eyebrow">PROGRESS REPORT · 16 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
 <h2>Learn local connections.<br>Test global reconstruction.</h2>
 <aside class="callout" id="learned-point-support"><strong>New learning experiment: anchor count, positions and t-values are inferred—not fixed.</strong>
+<details id="no-prefix-reconstruction" open><summary>New: 20/20 ice targets reconstructed without supplied tile placements</summary>
+<p>The unchanged reference tree search now starts from an <strong>empty placement state</strong> and fills all 5,520 atoms across twenty calibration configurations, using one frozen learned support library. Candidate registration skips the saved pose list entirely. No fixed prefix, selected cover or separate feasibility-solver answer is supplied to search.</p>
+<div class="table-responsive"><table><thead><tr><th>Ice family</th><th>Atoms / frame</th><th>Verified</th><th>Attempts / frame</th><th>Support components</th></tr></thead><tbody>
+<tr><td>Ih</td><td>384</td><td>5 / 5</td><td>222–366</td><td>24–38</td></tr>
+<tr><td>II</td><td>288</td><td>5 / 5</td><td>96–115</td><td>9–14</td></tr>
+<tr><td>VI</td><td>240</td><td>5 / 5</td><td>80–81</td><td>3–7</td></tr>
+<tr><td>VIII</td><td>192</td><td>5 / 5</td><td>80–116</td><td>20–52</td></tr>
+</tbody></table></div>
+<p>Independent replay checks proper rotations, unique element-label correspondences within 0.15 Å, and exact rational t-sums. Graph audits, rollback and corrupted-witness controls pass. The completed bounded proposal passes cost 73.09 seconds including separate feasibility diagnostics; reference searches and their in-loop audits cost 0.79 seconds total, excluding training, parsing and independent replay. These are diagnostic timings, not a speedup claim.</p>
+<p><strong>A stronger unmarked baseline—not the finished GCTS method.</strong> Known target coordinates remain supplied, no m-values are used, and each cover has multiple shared-atom support components. The upstream dictionary saw these calibration frames. Joint anchor/t/m learning, useful connection discrimination, independent-condition validation and growth beyond the sample remain open. A smaller, truncated pool timed out despite admitting a filling: proposal coverage and ordering still matter.</p>
+<p><a href="ice-no-prefix-reconstruction/README.md">Protocol, failed precursor and limitations</a> · <a href="ice-no-prefix-reconstruction/summary.json">Twenty-case evidence</a> · <a href="ice-no-prefix-reconstruction/check.json">Independent replay</a> · <a href="ice-no-prefix-reconstruction/search.json">Reference-search record</a></p>
+</details>
 <details id="cross-type-repair"><summary>Conditional unmarked reconstruction reaches 20/20 calibration configurations</summary>
 <p>The frozen learned motif library now fills all twenty calibration configurations when valid supplied prefixes are retained and gaps may use alternative learned types. Eleven cases passed direct pose-refitted replay; the unchanged reference point search completes the nine remaining residual problems. Two cases require releasing neighboring fixed placements before searching again.</p>
 <p>Independent source-coordinate replay verifies every selected proper rotation and exact rational t sum within the unchanged 0.15 Å positional tolerance. The reference-search inputs contain candidate pools and fixed prefixes, not the separate feasibility solver's selected repairs. Omission, duplication and reflection controls are rejected.</p>

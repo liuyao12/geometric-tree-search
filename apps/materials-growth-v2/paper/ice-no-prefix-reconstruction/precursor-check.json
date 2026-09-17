@@ -1,0 +1,23 @@
+{
+  "repairHash": "165b170f82acdd6218ca220397f6a5863628896e08b0f37bacf5c6bdaa2d4990",
+  "poolHash": "e302b3e0f46efac10d4cb922c934eef918144622dcf325de43c76b6ff3095cf9",
+  "supportHash": "0cff00f9bea397aca34305e7d283e975a547ce4e0c9a97dc768bf98b3549f752",
+  "verifierHash": "e51a4e18b7099d2abb88f8ca45ce7dc86f2985ef7321bae11eeedc0e579e0d65",
+  "rows": [
+    {
+      "id": "c00020",
+      "atoms": 384,
+      "placements": 124,
+      "fixedPlacements": 0,
+      "addedPlacements": 124,
+      "complete": false,
+      "searchStatus": "budget-unknown",
+      "fullyFilled": 369,
+      "partiallyFilled": 6,
+      "untouched": 9,
+      "maxPositionErrorAngstrom": 0.14960913150200197,
+      "duplicateTypeCorrespondences": 0
+    }
+  ],
+  "limits": "Independent exact rational t filling and tolerance-based proper-pose replay. Distinct supplied rigid placements; repeated type/correspondence counts reported separately. Does not independently certify the scheduler trace. No marking check, pose-universe completeness or blind-growth claim."
+}
