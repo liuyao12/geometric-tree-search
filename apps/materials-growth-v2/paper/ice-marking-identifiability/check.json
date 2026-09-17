@@ -1,0 +1,38 @@
+{
+  "markingHash": "ebf67006ad214633cf0407794ba93d67dc08ac35da35e98f6539b90c1db3e705",
+  "supportHash": "0cff00f9bea397aca34305e7d283e975a547ce4e0c9a97dc768bf98b3549f752",
+  "verifierHash": "54e463a47eb7d4c92a8068478f9ff57d75d0fdeada74f0af8b4439b58fbabc35",
+  "frames": 80,
+  "atomicSites": 22080,
+  "anchorCount": 1509,
+  "verifiedEqualityEdges": 9168,
+  "equalityClasses": 5,
+  "rank": 1504,
+  "classSizes": [
+    1004,
+    502,
+    1,
+    1,
+    1
+  ],
+  "isolatedAnchors": [
+    {
+      "index": 397,
+      "t": 1.0
+    },
+    {
+      "index": 398,
+      "t": 1.0
+    },
+    {
+      "index": 401,
+      "t": 1.0
+    }
+  ],
+  "speciesAndCapacityCompatibleAnchorPairs": 630763,
+  "markingConflictsOnCompatiblePairs": 0,
+  "redundancyCertified": true,
+  "redundancyAssumptions": "Scalar invariant values only on positive t-support; species-preserving correspondences; no extended marking-only anchors. Then every pair in any t-legal overlap agrees, so m adds no filtering.",
+  "maxPositionErrorAngstrom": 0.14961492339580312,
+  "limits": "Exact combinatorial rank after tolerance-based source replay. Scalar invariant action, one m per learned t-anchor, supplied poses. No evidence of incorrect physical connections or of general GCTS impossibility. More channels with the same identity action obey the same component equalities."
+}
