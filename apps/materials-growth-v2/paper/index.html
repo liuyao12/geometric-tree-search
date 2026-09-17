@@ -20,7 +20,7 @@
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
 <script type="module" src="preliminary-figure.mjs"></script>
-<link rel="stylesheet" href="preliminary-report.css?v=3" />
+<link rel="stylesheet" href="preliminary-report.css?v=4" />
   </head>
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
@@ -28,6 +28,20 @@
 <section id="preliminary-report" data-report-version="ice-learned-support-2026-09-16"><p class="eyebrow">PROGRESS REPORT · 16 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
 <h2>Learn local connections.<br>Test global reconstruction.</h2>
 <aside class="callout" id="learned-point-support"><strong>New learning experiment: anchor count, positions and t-values are inferred—not fixed.</strong>
+<details id="interval-reconstruction" open><summary>Learned markings now permit alternate reconstructions of all twenty ice targets</summary>
+<p>The frozen training-only interval markings now run through the reference tree search on the full no-prefix geometry pools. Independent replay verifies <strong>20/20 complete targets at each of 1, 2, 4 and 8 channels</strong>, including exact rational t-sums and a common allowed m-value at every overlap. No calibration retraining or selected cover is supplied to search.</p>
+<p><small>Counters total twenty targets. On narrow screens, scroll the table sideways to compare cover retention and search effort.</small></p>
+<div class="table-responsive"><table><thead><tr><th>Channels</th><th>Fresh reconstructions</th><th>Saved unmarked covers retained</th><th>Backtracks</th><th>Forced moves</th></tr></thead><tbody>
+<tr><td>0</td><td>20 / 20</td><td>20 / 20</td><td>775</td><td>11</td></tr>
+<tr><td>1</td><td>20 / 20</td><td>4 / 20</td><td>818</td><td>22</td></tr>
+<tr><td>2</td><td>20 / 20</td><td>0 / 20</td><td>530</td><td>17</td></tr>
+<tr><td>4</td><td>20 / 20</td><td>0 / 20</td><td>772</td><td>29</td></tr>
+<tr><td>8</td><td>20 / 20</td><td>0 / 20</td><td>492</td><td>112</td></tr>
+</tbody></table></div>
+<p>At two or more channels the markings reject every saved unmarked search cover, yet search finds alternative covers of the same atomic targets. <strong>Rejecting a decomposition is not the same as excluding its configuration.</strong> This resolves an important ambiguity in the earlier supplied-cover retention failures; it does not establish that the alternative connections are the scientifically desired ones.</p>
+<p>All candidate geometry and ordering remain unchanged in the marked comparison. A separate unmarked one-per-type/support inventory ablation also retains 20/20 reconstruction, but is not applied to marked poses. Eight-channel marked covers still have 7–40 support components and some repeated mapped supports. Joint anchor/t/m learning, independent-condition validation and growth beyond the input remain open. Lower backtracks are not a speedup claim: markings restrict the problem, and timing runs were not controlled comparisons.</p>
+<p><a href="ice-interval-reconstruction/README.md">Method, controls and limitations</a> · <a href="ice-interval-reconstruction/summary.json">Channel comparison</a> · <a href="ice-interval-reconstruction/check-8.json">Eight-channel independent replay</a> · <a href="ice-interval-reconstruction/search-8.json">Search witnesses</a></p>
+</details>
 <details id="no-prefix-reconstruction" open><summary>New: 20/20 ice targets reconstructed without supplied tile placements</summary>
 <p>The unchanged reference tree search now starts from an <strong>empty placement state</strong> and fills all 5,520 atoms across twenty calibration configurations, using one frozen learned support library. Candidate registration skips the saved pose list entirely. No fixed prefix, selected cover or separate feasibility-solver answer is supplied to search.</p>
 <div class="table-responsive"><table><thead><tr><th>Ice family</th><th>Atoms / frame</th><th>Verified</th><th>Attempts / frame</th><th>Support components</th></tr></thead><tbody>
