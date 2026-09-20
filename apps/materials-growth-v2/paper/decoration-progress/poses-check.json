@@ -1,0 +1,84 @@
+{
+  "poolHash": "171a5b6e1612381db6da771810f669b9c4d8acb533e56e99aa0f35ed2ce26a79",
+  "searchHash": "0b9082eccc19888dec615e0117e325b52a98a2512b2fbc258416eac1cdf5fd4a",
+  "verifierHash": "718b4e5e7f14ee622f0683b81b28558378853a7dff59b1701003bf679c0f5b4b",
+  "finitePoolsReenumerated": 87,
+  "unknownUnverifiedPools": [
+    "oxalic-beta-0163"
+  ],
+  "positiveWitnesses": [
+    {
+      "configuration": "oxalic-beta-0134",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.12876430320389887,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0139",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.10216785017731292,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0141",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.14442967436784535,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0145",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.09729372019096513,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0154",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.13846132311260842,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0155",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.11064987285474036,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0159",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.14859412875763972,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0160",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.1172570418064033,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0162",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.14549675532173284,
+      "periodicReachabilityPaths": 5
+    }
+  ],
+  "limits": "Completeness is relative to consistency-surviving contexts and generated finite representative sites; preprocessing soundness tested separately. Exact rational sums; approximate rigid geometry and marking balls. Atom target and motif partition/poses are given. No blind growth."
+}

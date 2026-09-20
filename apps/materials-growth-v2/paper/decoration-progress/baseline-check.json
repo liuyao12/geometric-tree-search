@@ -1,0 +1,57 @@
+{
+  "poolHash": "60b67d8ecd0cada7a2e1924c3a0c35a0c2c2ec2e1e4c03e7b6c44fead2554176",
+  "searchHash": "cb19a9ed5daf83882b3368da27db55a1e85e5f45b4912a636726bdcdb21131ed",
+  "verifierHash": "25587bb057c0e55b7099292d57bd7a1b270a131b5c750dcd067d317714f95fa5",
+  "finitePoolsReenumerated": 88,
+  "positiveWitnesses": [
+    {
+      "configuration": "oxalic-beta-0134",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.12876430320389887,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0145",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.09729372019096513,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0154",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.13846132311260842,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0155",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.11064987285474036,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0160",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.1172570418064033,
+      "periodicReachabilityPaths": 5
+    },
+    {
+      "configuration": "oxalic-beta-0162",
+      "requiredAtoms": 16,
+      "activatedLatentPoints": 14,
+      "allActiveSumsOne": true,
+      "maximumMarkBallError": 0.14549675532173284,
+      "periodicReachabilityPaths": 5
+    }
+  ],
+  "limits": "Completeness is relative to consistency-surviving contexts and generated finite representative sites; preprocessing soundness tested separately. Exact rational sums; approximate rigid geometry and marking balls. Atom target and motif partition/poses are given. No blind growth."
+}
