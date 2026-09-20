@@ -7,6 +7,10 @@ try{
  assert.match(await figure.innerText(),/not learned connections/);
  const data=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/check.json');return r.json();});
  assert.deepEqual(data.summary.map(r=>r.fullyMatched),[44,44]);assert.equal(data.sharedAcrossTrainingPhases,24);
+ await page.locator('#offatom-interface-test summary').click();
+ const interfaces=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/interface-check.json');return r.json();});
+ assert.equal(interfaces.frozenModelFailureCounts.matched,17);assert.equal(interfaces.frozenModelFailureCounts.anchorCoincidenceFails,82);
+ assert.match(await page.locator('#offatom-interface-test').innerText(),/unconstrained in GCTS/);
  for(const href of await figure.locator('a').evaluateAll(nodes=>nodes.map(n=>n.href))){assert.equal((await page.request.get(href)).status(),200);}
  await figure.screenshot({path:'/tmp/gcts-nested-report-desktop.png'});
  await page.setViewportSize({width:390,height:844});await figure.screenshot({path:'/tmp/gcts-nested-report-mobile.png'});

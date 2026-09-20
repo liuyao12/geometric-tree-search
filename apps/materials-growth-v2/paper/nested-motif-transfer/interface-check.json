@@ -1,0 +1,48 @@
+{
+  "resultHash": "0927129abfaa0b34b492b4d2989568c12289a838692a033921165edb80c57a18",
+  "coordinateHash": "674ff5927bd8f1f96f2368d620166064014bbaab03d384ec55cbcbc22fc4f14e",
+  "metadataHash": "456e93a9d4d497412f3902bdd906d938c13d5ab201fe10669a91e9ba52edc48e",
+  "motifHash": "6003d03d17ac89614a847c7dba1b920d3d08ad5ecd239270b9b1253cbb5016f0",
+  "verifierHash": "488c296793b73a4a7ab2123d4f2a0a7520bd9cbe7f143c263ee0ea5fd781bc2c",
+  "summary": [
+    {
+      "phase": "alpha",
+      "framesWithPairs": 44,
+      "pairs": 99,
+      "matchedPairs": 2,
+      "allProposedPairsMatched": 0
+    },
+    {
+      "phase": "beta",
+      "framesWithPairs": 44,
+      "pairs": 49,
+      "matchedPairs": 15,
+      "allProposedPairsMatched": 15
+    }
+  ],
+  "frozenModelFailureCounts": {
+    "anchorCoincidenceFails": 82,
+    "unseenTypePair": 19,
+    "markingAgreementFails": 14,
+    "matched": 17,
+    "noRecurringInterface": 12,
+    "valueTargetPriorFails": 4
+  },
+  "models": 306,
+  "recurringModels": 59,
+  "anchorCount": 612,
+  "anchorsMoreThan015FromTemplateAtoms": 612,
+  "anchorRadiusQuantiles": {
+    "min": 0.30333440401100503,
+    "median": 1.9977349937439466,
+    "p90": 2.699797850873171,
+    "p99": 6.58895598078594,
+    "max": 9.646698574099728
+  },
+  "maximumVerifiedErrors": [
+    0.2769647414594648,
+    0.29986287792038985,
+    0.2989696808562593
+  ],
+  "limits": "Positive pair-witness replay only. Unknown pairs are not proved inadmissible; missed overlaps impose no GCTS marking restriction. Independent minimum-image enumeration is certified for these checked cells. Base motif pose correctness is a prerequisite checked separately. Locality, learned t-values, globally consistent multi-way overlaps, full tile interfaces and condition matching remain unproved."
+}
