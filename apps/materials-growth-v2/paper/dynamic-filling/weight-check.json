@@ -1,0 +1,16 @@
+{
+  "resultHash": "f13c54b9653e2cef896df441dc0a01d0859928bfd5ec7bd5176e29db96605cf7",
+  "verifierHash": "7230bff560c458ea8a0c8b10e7f2963dc6291f33be90c66886d91c6090091d2a",
+  "uniquePartitions": 4826,
+  "exactTrainingSums": 4774,
+  "exactEvaluationSums": {
+    "oxalic-beta-0130": 14,
+    "oxalic-beta-0134": 14,
+    "oxalic-beta-0137": 14,
+    "oxalic-beta-0145": 14,
+    "oxalic-beta-0160": 14
+  },
+  "rationalOptimalityCertificates": 4612,
+  "freeParameters": 4612,
+  "limits": "Exact algebra applies to the inferred finite incidences; geometric/common-ball witnesses remain approximate. Minimum-point-count and minimum-norm are explicit priors. No rigid exact-support, full material coverage or growth proof."
+}

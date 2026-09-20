@@ -18,6 +18,8 @@
     <script type="module" src="ice-inspection.mjs?v=4"></script>
     <link rel="stylesheet" href="report-visuals.css?v=1" />
     <script type="module" src="report-visuals.mjs?v=1"></script>
+    <link rel="stylesheet" href="dynamic-filling/figure.css" />
+    <script type="module" src="dynamic-filling/figure.mjs"></script>
     <script type="module" src="paper.mjs"></script>
 <script type="module" src="structural-figure.mjs"></script>
 <script type="module" src="connection-figure.mjs"></script>
@@ -27,7 +29,29 @@
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
 <div class="layout"><nav class="toc" aria-label="Paper sections"><a href="#abstract">Abstract</a><a href="#problem">01 / Materials question</a><a href="#context">02 / Materials context</a><a href="#model">03 / Formal framework</a><a href="#method">04 / GCTS realization</a><a href="#connection-transfer">New / Connection transfer</a><a href="#quality">05 / Structural validation</a><a href="#validation-study">Extended structural study</a><a href="#results">06 / Computational evidence</a><a href="#outlook">07 / Research programme</a><a href="#marking-reference">Verified finite markings</a><a href="#reproduce">Reproducibility</a><a href="#references">References</a></nav><main>
-<section id="preliminary-report" data-report-version="ice-learned-support-2026-09-16"><p class="eyebrow">PROGRESS REPORT · 16 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
+<section id="preliminary-report" data-report-version="dynamic-filling-2026-09-20"><p class="eyebrow">PROGRESS REPORT · UPDATED 20 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
+<figure id="dynamic-filling" class="df-figure">
+<p class="eyebrow">NEW · LEARNED WEIGHTS → REFERENCE POINT SEARCH</p>
+<h2>Six reconstructions.<br>Eighty-two unresolved by this model.</h2>
+<p>The unchanged reference engine fills <strong>6/44 β and 0/44 α oxalic-acid targets</strong> using frozen learned contexts and regularized t-values. Latent sites are generated from all surviving contact alternatives—not a previously selected successful cover—and become filling obligations during search.</p>
+<p><strong>Known atom positions and motif poses are still supplied: this is not blind growth, and no speedup is established.</strong></p>
+<div class="df-legend"><span><i class="df-pass"></i>Verified finite reconstruction</span><span><i class="df-miss"></i>No solution in the declared fixed-pose pool</span></div>
+<div data-df-matrix aria-label="Choose an evaluation frame">Loading verified results…</div>
+<div class="df-inspector">
+<h3 data-df-title>Inspect a frame</h3><p data-df-case aria-live="polite"></p>
+<div class="df-stage" role="group" aria-label="Recorded placement stage"><button data-df-stage="0" type="button">Before placement</button><button data-df-stage="1" type="button">1 placement</button><button data-df-stage="2" type="button">2 placements</button></div>
+<div data-df-points></div><p data-df-state aria-live="polite"></p>
+<p class="df-small">Occupancy schematic, not atomic positions. Solid outlines: required atom sites. Dashed outlines: possible latent sites. Rings fill as t accumulates; unused latent sites need not be filled.</p>
+</div>
+<div class="df-weights" aria-label="Regularized learned port weights"><div><b>½</b><span>9,160 ports</span></div><div><b>⅓</b><span>64 ports</span></div><div><b>⅔</b><span>32 ports</span></div></div>
+<p><strong>What is learned, and what is assumed?</strong> Training supplies 4,774 point-sum equations. They leave 4,612 free parameters: a declared minimum-norm regularizer chooses the port weights above. A minimum-point-count prior resolves anchor correspondences. Atom-site occupancy is fixed at one. Geometry is approximate; the compiled t-sums are exact rationals.</p>
+<details><summary>Evidence, failure modes and the remaining scientific gap</summary>
+<p>Independent replay re-enumerates all 88 finite candidate pools and checks every successful target’s source atom geometry, all active t-sums, common Euclidean marking values and periodic connectivity. A separate interval-based search is checked against the original Euclidean marking balls afterward. The six nonempty pools contain 2, 2, 4, 416, 2 and 2 placements. Each successful run selects two motifs; total branch decisions are three, with no backtracks.</p>
+<p><strong>This is target-conditioned reconstruction, not blind growth.</strong> Atomic coordinates, the fitted motif partition, original poses and periodic cell remain given. Failure of this restricted pool does not prove geometric impossibility. The source-order evaluation frames are not independent trajectories; identical temperature/pressure provenance is unverified. Contact preprocessing already uses learned markings, so these results are not an unmarked-versus-GCTS speedup comparison. Broad transfer, joint anchor-count/position/t/m learning, and growth beyond supplied coordinates remain open.</p>
+<p>The earlier pair-interface results below measure a different diagnostic; their counts are not a stage-by-stage funnel into this experiment. The production growth app is unchanged by this report update.</p>
+</details>
+<figcaption><a href="dynamic-filling/README.md">Protocol and reproduction</a> · <a href="dynamic-filling/results.json">Plotted data</a> · <a href="dynamic-filling/check.json">Independent geometry/filling replay</a> · <a href="dynamic-filling/weight-check.json">Exact weight-fit checks</a></figcaption>
+</figure>
 <div id="report-visual-overview">
 <h2>The evidence, at a glance</h2>
 <p class="lead">Reconstructing known geometry is working in these finite tests. Growing an unknown material remains the next challenge.</p>
