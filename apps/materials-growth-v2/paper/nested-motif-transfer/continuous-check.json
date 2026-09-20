@@ -1,0 +1,214 @@
+{
+  "resultHash": "50d7de773590a561962f17ff5d38327b0fe3624b9c3e4efcd64bb6ef0addf731",
+  "interfaceHash": "0927129abfaa0b34b492b4d2989568c12289a838692a033921165edb80c57a18",
+  "motifHash": "6003d03d17ac89614a847c7dba1b920d3d08ad5ecd239270b9b1253cbb5016f0",
+  "verifierHash": "b64c519bc547b901e9dad8dd93f774e584a3e96f0a07c335da3875fb335f9d1d",
+  "micVerifierHash": "488c296793b73a4a7ab2123d4f2a0a7520bd9cbe7f143c263ee0ea5fd781bc2c",
+  "summary": [
+    {
+      "phase": "alpha",
+      "pairs": 99,
+      "baselineMatched": 2,
+      "refittedMatched": 22,
+      "frames": 44,
+      "allPairsMatched": 3
+    },
+    {
+      "phase": "beta",
+      "pairs": 49,
+      "baselineMatched": 15,
+      "refittedMatched": 32,
+      "frames": 44,
+      "allPairsMatched": 29
+    }
+  ],
+  "recovered": [
+    {
+      "configuration": "oxalic-alpha-0131",
+      "observation": 393,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0133",
+      "observation": 397,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0138",
+      "observation": 406,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0140",
+      "observation": 410,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0140",
+      "observation": 411,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0142",
+      "observation": 414,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0145",
+      "observation": 420,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0155",
+      "observation": 440,
+      "interface": 48
+    },
+    {
+      "configuration": "oxalic-alpha-0155",
+      "observation": 441,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0157",
+      "observation": 444,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0157",
+      "observation": 445,
+      "interface": 48
+    },
+    {
+      "configuration": "oxalic-alpha-0160",
+      "observation": 450,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0162",
+      "observation": 455,
+      "interface": 48
+    },
+    {
+      "configuration": "oxalic-alpha-0163",
+      "observation": 456,
+      "interface": 40
+    },
+    {
+      "configuration": "oxalic-alpha-0164",
+      "observation": 458,
+      "interface": 48
+    },
+    {
+      "configuration": "oxalic-alpha-0166",
+      "observation": 463,
+      "interface": 48
+    },
+    {
+      "configuration": "oxalic-alpha-0169",
+      "observation": 472,
+      "interface": 8
+    },
+    {
+      "configuration": "oxalic-alpha-0170",
+      "observation": 478,
+      "interface": 140
+    },
+    {
+      "configuration": "oxalic-alpha-0171",
+      "observation": 482,
+      "interface": 127
+    },
+    {
+      "configuration": "oxalic-alpha-0173",
+      "observation": 485,
+      "interface": 127
+    },
+    {
+      "configuration": "oxalic-beta-0130",
+      "observation": 489,
+      "interface": 247
+    },
+    {
+      "configuration": "oxalic-beta-0132",
+      "observation": 491,
+      "interface": 222
+    },
+    {
+      "configuration": "oxalic-beta-0139",
+      "observation": 498,
+      "interface": 222
+    },
+    {
+      "configuration": "oxalic-beta-0140",
+      "observation": 499,
+      "interface": 242
+    },
+    {
+      "configuration": "oxalic-beta-0143",
+      "observation": 502,
+      "interface": 250
+    },
+    {
+      "configuration": "oxalic-beta-0144",
+      "observation": 503,
+      "interface": 229
+    },
+    {
+      "configuration": "oxalic-beta-0146",
+      "observation": 505,
+      "interface": 219
+    },
+    {
+      "configuration": "oxalic-beta-0157",
+      "observation": 516,
+      "interface": 219
+    },
+    {
+      "configuration": "oxalic-beta-0158",
+      "observation": 517,
+      "interface": 250
+    },
+    {
+      "configuration": "oxalic-beta-0159",
+      "observation": 518,
+      "interface": 240
+    },
+    {
+      "configuration": "oxalic-beta-0162",
+      "observation": 521,
+      "interface": 224
+    },
+    {
+      "configuration": "oxalic-beta-0165",
+      "observation": 524,
+      "interface": 250
+    },
+    {
+      "configuration": "oxalic-beta-0167",
+      "observation": 526,
+      "interface": 236
+    },
+    {
+      "configuration": "oxalic-beta-0169",
+      "observation": 529,
+      "interface": 258
+    },
+    {
+      "configuration": "oxalic-beta-0171",
+      "observation": 533,
+      "interface": 258
+    },
+    {
+      "configuration": "oxalic-beta-0171",
+      "observation": 534,
+      "interface": 258
+    },
+    {
+      "configuration": "oxalic-beta-0172",
+      "observation": 535,
+      "interface": 258
+    }
+  ],
+  "maximumAtomErrorAngstrom": 0.15000000000713584,
+  "limits": "Checks every reported positive pair, not absence of other continuous poses, nor simultaneous choices for motifs shared by multiple pairs. No new learned values, t-filling, global configuration reconstruction, condition matching or growth claim."
+}

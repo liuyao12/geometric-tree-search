@@ -1,0 +1,34 @@
+{
+  "resultHash": "a773069dbc5ae555b9b12a1e8b9bb24eced5f3fe55f0a6c65f0f3805ae5e986c",
+  "interfaceHash": "0927129abfaa0b34b492b4d2989568c12289a838692a033921165edb80c57a18",
+  "motifHash": "6003d03d17ac89614a847c7dba1b920d3d08ad5ecd239270b9b1253cbb5016f0",
+  "verifierHash": "b64c519bc547b901e9dad8dd93f774e584a3e96f0a07c335da3875fb335f9d1d",
+  "micVerifierHash": "488c296793b73a4a7ab2123d4f2a0a7520bd9cbe7f143c263ee0ea5fd781bc2c",
+  "summary": [
+    {
+      "phase": "alpha",
+      "pairs": 99,
+      "baselineMatched": 2,
+      "refittedMatched": 3,
+      "frames": 44,
+      "allPairsMatched": 0
+    },
+    {
+      "phase": "beta",
+      "pairs": 49,
+      "baselineMatched": 15,
+      "refittedMatched": 15,
+      "frames": 44,
+      "allPairsMatched": 15
+    }
+  ],
+  "recovered": [
+    {
+      "configuration": "oxalic-alpha-0157",
+      "observation": 444,
+      "interface": 40
+    }
+  ],
+  "maximumAtomErrorAngstrom": 0.1484763949105788,
+  "limits": "Checks every reported positive pair, not absence of other continuous poses, nor simultaneous choices for motifs shared by multiple pairs. No new learned values, t-filling, global configuration reconstruction, condition matching or growth claim."
+}
