@@ -15,6 +15,9 @@ try{
  const shared=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/shared-periodic-check.json');return r.json();});
  assert.deepEqual(shared.sharedPoseFrames,{alpha:3,beta:29});assert.equal(shared.periodicGraphsWithConstructiveConnectivityProof,88);
  assert.match(await page.locator('#periodic-interface-audit').innerText(),/not learned or validated markings/);
+ const learned=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/periodic-interface-check.json');return r.json();});
+ assert.deepEqual(learned.summary.filter(r=>!r.training).map(r=>r.connectedMatchedPeriodicGraphs),[4,23]);assert.equal(learned.crossPhaseModels,4);
+ assert.match(await page.locator('#periodic-interface-learning').innerText(),/does not establish t-filling/);
  assert.match(await page.locator('#offatom-interface-test').innerText(),/unconstrained in GCTS/);
  for(const href of await figure.locator('a').evaluateAll(nodes=>nodes.map(n=>n.href))){assert.equal((await page.request.get(href)).status(),200);}
  await figure.screenshot({path:'/tmp/gcts-nested-report-desktop.png'});

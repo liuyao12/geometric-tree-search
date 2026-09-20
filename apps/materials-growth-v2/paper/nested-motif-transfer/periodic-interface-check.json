@@ -1,0 +1,803 @@
+{
+  "resultHash": "1c24394e22e0ebdf16b00ab739887f77df9c2c31ec3dd30aec33015efab82cf5",
+  "coordinateHash": "674ff5927bd8f1f96f2368d620166064014bbaab03d384ec55cbcbc22fc4f14e",
+  "metadataHash": "456e93a9d4d497412f3902bdd906d938c13d5ab201fe10669a91e9ba52edc48e",
+  "motifHash": "6003d03d17ac89614a847c7dba1b920d3d08ad5ecd239270b9b1253cbb5016f0",
+  "verifierHash": "bc8eb129e41350c9b3468b6a2d0ef57a67b80dfa4612edaeb886415fa5fb8939",
+  "summary": [
+    {
+      "phase": "alpha",
+      "training": true,
+      "frames": 120,
+      "admitted": 120,
+      "proposedEdges": 3031,
+      "recurringMatchedEdges": 1087,
+      "connectedMatchedPeriodicGraphs": 42
+    },
+    {
+      "phase": "alpha",
+      "training": false,
+      "frames": 44,
+      "admitted": 44,
+      "proposedEdges": 1290,
+      "recurringMatchedEdges": 229,
+      "connectedMatchedPeriodicGraphs": 4
+    },
+    {
+      "phase": "beta",
+      "training": true,
+      "frames": 120,
+      "admitted": 119,
+      "proposedEdges": 1743,
+      "recurringMatchedEdges": 1198,
+      "connectedMatchedPeriodicGraphs": 80
+    },
+    {
+      "phase": "beta",
+      "training": false,
+      "frames": 44,
+      "admitted": 44,
+      "proposedEdges": 663,
+      "recurringMatchedEdges": 365,
+      "connectedMatchedPeriodicGraphs": 23
+    }
+  ],
+  "models": 3241,
+  "recurringModels": 754,
+  "crossPhaseModels": 4,
+  "observations": 6727,
+  "selfImageObservations": 1647,
+  "maximumPairErrors": [
+    0.29999084326336317,
+    0.299947697892797,
+    0.2999908432633631
+  ],
+  "positiveGraphProofs": [
+    {
+      "configuration": "oxalic-alpha-0010",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0011",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0013",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0014",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0019",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0024",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0028",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0029",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0030",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0031",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0032",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0033",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0036",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0037",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0038",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0039",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0041",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0042",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0044",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0047",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0048",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0051",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0055",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0057",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0058",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0074",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0080",
+      "training": true,
+      "maxPathSteps": 5
+    },
+    {
+      "configuration": "oxalic-alpha-0085",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0086",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0087",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0088",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0091",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0096",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0102",
+      "training": true,
+      "maxPathSteps": 1
+    },
+    {
+      "configuration": "oxalic-alpha-0107",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0112",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0119",
+      "training": true,
+      "maxPathSteps": 5
+    },
+    {
+      "configuration": "oxalic-alpha-0123",
+      "training": true,
+      "maxPathSteps": 5
+    },
+    {
+      "configuration": "oxalic-alpha-0126",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0127",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0128",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0129",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0010",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0011",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0012",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0013",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0015",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0016",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0017",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0018",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0019",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0020",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0021",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0022",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0023",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0024",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0025",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0026",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0027",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0028",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0029",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0030",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0031",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0032",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0033",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0034",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0035",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0036",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0037",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0038",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0039",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0040",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0041",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0042",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0043",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0045",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0046",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0047",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0048",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0050",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0052",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0053",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0054",
+      "training": true,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-beta-0055",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0056",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0057",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0058",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0059",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0060",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0061",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0062",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0063",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0064",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0065",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0066",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0067",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0068",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0069",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0071",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0072",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0073",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0075",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-beta-0076",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0077",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0078",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0091",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0092",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0094",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0096",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0097",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0100",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0101",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-beta-0103",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0106",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0112",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0122",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0123",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0124",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0125",
+      "training": true,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-beta-0127",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0128",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0129",
+      "training": true,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-alpha-0139",
+      "training": false,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0140",
+      "training": false,
+      "maxPathSteps": 4
+    },
+    {
+      "configuration": "oxalic-alpha-0153",
+      "training": false,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-alpha-0167",
+      "training": false,
+      "maxPathSteps": 5
+    },
+    {
+      "configuration": "oxalic-beta-0130",
+      "training": false,
+      "maxPathSteps": 3
+    },
+    {
+      "configuration": "oxalic-beta-0134",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0135",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0137",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0138",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0139",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0140",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0141",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0142",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0145",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0146",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0147",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0149",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0151",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0154",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0157",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0158",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0159",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0160",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0162",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0163",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0165",
+      "training": false,
+      "maxPathSteps": 2
+    },
+    {
+      "configuration": "oxalic-beta-0166",
+      "training": false,
+      "maxPathSteps": 3
+    }
+  ],
+  "limits": "Replays source motif geometry, every claimed explicit-image pair witness, training-only recurrence, and constructive paths in positive matched graphs. Numerical Voronoi regeneration is a consistency check, not an independent exact tessellation proof. Does not verify missing-pair impossibility, all cross-interface coincidences, common values for multi-way overlaps, learned t-values, GCTS filling, condition matching or blind growth."
+}
