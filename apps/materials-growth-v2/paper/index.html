@@ -20,6 +20,8 @@
     <script type="module" src="report-visuals.mjs?v=1"></script>
     <link rel="stylesheet" href="dynamic-filling/figure.css" />
     <link rel="stylesheet" href="decoration-progress/figure.css" />
+    <link rel="stylesheet" href="family-checkpoint/figure.css" />
+    <script type="module" src="family-checkpoint/figure.mjs"></script>
     <script type="module" src="decoration-progress/figure.mjs"></script>
     <script type="module" src="dynamic-filling/figure.mjs"></script>
     <script type="module" src="paper.mjs"></script>
@@ -31,9 +33,22 @@
   <body><header class="top"><a href="../">← Materials Growth Lab</a><span>RESEARCH PERSPECTIVE · MATERIALS THEORY</span><button id="print">Print / save PDF</button></header>
 <section class="hero"><p class="eyebrow">LOCAL ORDER · OVERLAP CONSTRAINTS · GLOBAL REALIZABILITY</p><h1>From Atomic Motifs<br>to Generative Rules</h1><p class="subtitle">A GCTS perspective on constructing atomistic configurations from local geometric information.</p><div class="meta">Materials Growth Lab · Research perspective with prototype evidence<br>September 2026 · Not peer reviewed</div><p class="scope">The question is not whether clusters exist, but what their allowed connections tell us about the structures they can form.</p></section>
 <div class="layout"><nav class="toc" aria-label="Paper sections"><a href="#abstract">Abstract</a><a href="#problem">01 / Materials question</a><a href="#context">02 / Materials context</a><a href="#model">03 / Formal framework</a><a href="#method">04 / GCTS realization</a><a href="#connection-transfer">New / Connection transfer</a><a href="#quality">05 / Structural validation</a><a href="#validation-study">Extended structural study</a><a href="#results">06 / Computational evidence</a><a href="#outlook">07 / Research programme</a><a href="#marking-reference">Verified finite markings</a><a href="#reproduce">Reproducibility</a><a href="#references">References</a></nav><main>
-<section id="preliminary-report" data-report-version="decoration-progress-2026-09-20"><p class="eyebrow">PROGRESS REPORT · UPDATED 20 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
+<section id="preliminary-report" data-report-version="family-checkpoint-2026-09-20"><p class="eyebrow">PROGRESS REPORT · UPDATED 20 SEPTEMBER 2026 · NOT PEER REVIEWED</p>
+<figure id="family-checkpoint" class="fc-figure">
+<p class="eyebrow">NEW SHARED-FAMILY STUDY · TRAINING RECOVERY ≠ TRANSFER</p>
+<h2>We can recover four ice phases.<br>Learning reusable rules is the hard part.</h2>
+<p><strong>No family is yet validated end to end.</strong> A shared geometric core and learned off-atom markings reconstruct all 16 pilot training targets. But the first held-out target has no surviving full decoration in the frozen library. This new study uses different libraries and splits from the earlier results below.</p>
+<div data-fc-tabs class="fc-tabs" role="group" aria-label="Choose the experiment to inspect"></div>
+<h3 data-fc-title>16 of 16 training targets reconstructed</h3>
+<p data-fc-description aria-live="polite">Select an experiment to distinguish full training reconstruction from weaker held-out pair-graph diagnostics.</p>
+<div data-fc-chart class="fc-chart"></div>
+<p class="fc-note">Each circle represents one configuration. Filled circles meet the criterion named above; hollow circles do not. Circles are grouped by outcome, not source-frame order. These experiments are not a stage-by-stage funnel.</p>
+<div class="fc-failure"><h3>The held-out check we must not hide</h3><p>One excluded ice Ih configuration · frozen pilot library · both verified motif poses</p><div class="fc-audit"><div><strong>376,832</strong><span>eligible decorations / poses</span></div><div><strong>559,059</strong><span>compatible pair contacts</span></div><div><strong>0</strong><span>candidates after consistency pruning</span></div></div><p>Independent checks agree on the complete inventory, raw geometry, contacts and pruning. All 1,472 full training decoration types occur in only one training frame. Shared cores and pair interfaces have not yet become reusable full matching rules.</p></div>
+<details><summary>What this does—and does not—establish</summary><p>The 16 training reconstructions use 1,472 placements: 1,471 forced and one branch, with no backtracks. Target coordinates and finite atom-valid poses are still supplied. Pair connectivity is not a joint t/m filling. The larger study uses a larger evaluation cohort. No blind growth, continuous-pose completeness, independent-trajectory validation or speedup is claimed.</p><p>A separate completed oxalic-acid training cohort verifies 232/240 connected reconstructions; eight remain unresolved in that snapshot. Later ordering controls are not mixed into its count.</p><p>The geometry dictionary used 1,600 training frames; the small connection pilot used only 16, and the larger one 100. Paper-level common sampling conditions do not establish verified per-frame conditions. The production growth app is unchanged.</p><p>Selected evidence SHA-256: <code data-fc-hash>462f25bb083d2cc7348da786b5d1cc23b2f1c09b66fec28a803dde461dcb81eb</code></p></details>
+<figcaption><a href="family-checkpoint/results.json">Plotted results and receipt hashes</a> · <a href="family-checkpoint/README.md">Protocol, provenance and limitations</a></figcaption>
+</figure>
 <figure id="decoration-progress" class="dp-figure">
-<p class="eyebrow">LATEST VERIFIED RESULT · SAME 88 DEVELOPMENTAL TARGETS</p>
+<p class="eyebrow">EARLIER VERIFIED RESULT · SAME 88 DEVELOPMENTAL TARGETS</p>
 <h2>More ways to connect.<br>One more reconstruction.</h2>
 <p><strong>No material family is yet validated end to end.</strong> This is a preliminary methods demonstration, not a demonstrated general material-growth platform. The missing milestone is a frozen family library that reconstructs a predefined independent benchmark and then expands without supplied target coordinates.</p>
 <p>Keeping the original decorations and adding training-derived alternatives increases verified finite reconstructions from nine to ten. Every previous success survives. <strong>All ten are β oxalic acid; none is α.</strong></p>
