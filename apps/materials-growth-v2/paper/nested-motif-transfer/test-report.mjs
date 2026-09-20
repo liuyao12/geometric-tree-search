@@ -12,6 +12,9 @@ try{
  assert.equal(interfaces.frozenModelFailureCounts.matched,17);assert.equal(interfaces.frozenModelFailureCounts.anchorCoincidenceFails,82);
  const continuous=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/continuous-check.json');return r.json();});
  assert.deepEqual(continuous.summary.map(r=>r.refittedMatched),[22,32]);
+ const shared=await page.evaluate(async()=>{const r=await fetch('nested-motif-transfer/shared-periodic-check.json');return r.json();});
+ assert.deepEqual(shared.sharedPoseFrames,{alpha:3,beta:29});assert.equal(shared.periodicGraphsWithConstructiveConnectivityProof,88);
+ assert.match(await page.locator('#periodic-interface-audit').innerText(),/not learned or validated markings/);
  assert.match(await page.locator('#offatom-interface-test').innerText(),/unconstrained in GCTS/);
  for(const href of await figure.locator('a').evaluateAll(nodes=>nodes.map(n=>n.href))){assert.equal((await page.request.get(href)).status(),200);}
  await figure.screenshot({path:'/tmp/gcts-nested-report-desktop.png'});

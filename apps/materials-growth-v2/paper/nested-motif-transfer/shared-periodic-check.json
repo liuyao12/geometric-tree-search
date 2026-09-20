@@ -1,0 +1,635 @@
+{
+  "sharedHash": "8076843899328d637fe650f50ead835e3470d3b5172bbf433e6654094af310c9",
+  "proposalHash": "f3649c9fcc3d02204a3dd2c00474156d071dbc507795050916d30830f1637819",
+  "verifierHash": "32f190b313646b4670955b8b9b5fd08580d7403dd9b985f63366fbe614c9ef84",
+  "sharedPoseFrames": {
+    "alpha": 3,
+    "beta": 29
+  },
+  "nearestGraphForestFrames": {
+    "alpha": 44,
+    "beta": 44
+  },
+  "periodicGraphsWithConstructiveConnectivityProof": 88,
+  "largerImageBoxStableGraphs": 88,
+  "poseReplayMaximumAtomError": 0.15000000000713584,
+  "rows": [
+    {
+      "configuration": "oxalic-alpha-0130",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0131",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0132",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0133",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0134",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0135",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0136",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0137",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0138",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0139",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0140",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0141",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0142",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0143",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0144",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0145",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0146",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0147",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0148",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0149",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0150",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0151",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0152",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0153",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0154",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0155",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0156",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0157",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0158",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0159",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0160",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0161",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0162",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0163",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0164",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0165",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0166",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0167",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0168",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0169",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 7,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0170",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 8,
+      "maxPathSteps": 3,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0171",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 4,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0172",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-alpha-0173",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 4,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0130",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0131",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0132",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0133",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0134",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0135",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0136",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0137",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0138",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0139",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0140",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0141",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0142",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0143",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0144",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0145",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0146",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0147",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0148",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0149",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0150",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0151",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0152",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0153",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0154",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0155",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0156",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0157",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0158",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0159",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0160",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0161",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0162",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0163",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0164",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0165",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0166",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0167",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0168",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0169",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0170",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0171",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 3,
+      "maxPathSteps": 3,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0172",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 2,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    },
+    {
+      "configuration": "oxalic-beta-0173",
+      "unitTranslationPaths": 3,
+      "motifReachabilityPaths": 1,
+      "maxPathSteps": 2,
+      "largerImageBoxSameEdges": true
+    }
+  ],
+  "limits": "Positive shared-pose replay and integer paths in recorded candidate graphs. A forest proves zero translation cycles regardless of edge shifts. Enlarged-box agreement is a numerical geometry control, not exact Voronoi certification. No learned markings on the new periodic proposals, cross-interface common-value audit, t-learning, reconstruction or growth."
+}
