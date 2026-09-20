@@ -1,0 +1,42 @@
+{
+  "resultHash": "6003d03d17ac89614a847c7dba1b920d3d08ad5ecd239270b9b1253cbb5016f0",
+  "coordinateHash": "674ff5927bd8f1f96f2368d620166064014bbaab03d384ec55cbcbc22fc4f14e",
+  "metadataHash": "456e93a9d4d497412f3902bdd906d938c13d5ab201fe10669a91e9ba52edc48e",
+  "verifierHash": "2e87f62c5e5b104ef7714b93cc5ed5d8c4a35631daef9aa7fb1bec9cb80a8a49",
+  "summary": [
+    {
+      "phase": "alpha",
+      "frames": 44,
+      "fullyMatched": 44,
+      "unmatchedAtoms": 0,
+      "selectedSizes": {
+        "8": 157,
+        "16": 5,
+        "4": 16,
+        "2": 4
+      }
+    },
+    {
+      "phase": "beta",
+      "frames": 44,
+      "fullyMatched": 44,
+      "unmatchedAtoms": 0,
+      "selectedSizes": {
+        "8": 83,
+        "4": 9,
+        "2": 2
+      }
+    }
+  ],
+  "types": 291,
+  "recurringTypes": 92,
+  "sharedAcrossTrainingPhases": 24,
+  "sharedTypeSizes": {
+    "2": 2,
+    "4": 4,
+    "8": 17,
+    "3": 1
+  },
+  "maximumVerifiedErrorAngstrom": 0.1499964709119042,
+  "limits": "Checks source-derived template geometry, every positive periodic pose, training-only recurrence counts, partitions, and cut cost optimality within the recorded hierarchy. Does not certify hierarchy construction, absence of further matches, connection learning, t/m learning, physical conditions or growth."
+}

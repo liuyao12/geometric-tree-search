@@ -1,0 +1,2990 @@
+{
+  "resultHash": "166034b9f3cb52b4e17f679f5deda619be7e73f497da28b2e6bcfccadec132e9",
+  "coordinateHash": "674ff5927bd8f1f96f2368d620166064014bbaab03d384ec55cbcbc22fc4f14e",
+  "verifierHash": "c9a46b96eae1678ebb80a569217d9a25dbadfa55a3b6676c4ed8251639fa5c9d",
+  "summary": [
+    {
+      "phase": "alpha",
+      "training": true,
+      "frames": 120,
+      "fullyMatched": 120,
+      "matchedClusters": 240
+    },
+    {
+      "phase": "alpha",
+      "training": false,
+      "frames": 44,
+      "fullyMatched": 3,
+      "matchedClusters": 30
+    },
+    {
+      "phase": "beta",
+      "training": true,
+      "frames": 120,
+      "fullyMatched": 120,
+      "matchedClusters": 240
+    },
+    {
+      "phase": "beta",
+      "training": false,
+      "frames": 44,
+      "fullyMatched": 41,
+      "matchedClusters": 84
+    }
+  ],
+  "rows": [
+    {
+      "id": "oxalic-alpha-0010",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.9124860962503954e-15
+    },
+    {
+      "id": "oxalic-alpha-0011",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.238295532636232e-15
+    },
+    {
+      "id": "oxalic-alpha-0012",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.38687727968545e-15
+    },
+    {
+      "id": "oxalic-alpha-0013",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.8121130011168874e-15
+    },
+    {
+      "id": "oxalic-alpha-0014",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.408075537984705e-15
+    },
+    {
+      "id": "oxalic-alpha-0015",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.2048753568532793e-15
+    },
+    {
+      "id": "oxalic-alpha-0016",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.1102230246251565e-15
+    },
+    {
+      "id": "oxalic-alpha-0017",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.9210699969213605e-15
+    },
+    {
+      "id": "oxalic-alpha-0018",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.5497856851807737e-15
+    },
+    {
+      "id": "oxalic-alpha-0019",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13691088737837978
+    },
+    {
+      "id": "oxalic-alpha-0020",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1266137061308437
+    },
+    {
+      "id": "oxalic-alpha-0021",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.0350724194510405e-15
+    },
+    {
+      "id": "oxalic-alpha-0022",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.1732005798429136e-15
+    },
+    {
+      "id": "oxalic-alpha-0023",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.25139345079954e-15
+    },
+    {
+      "id": "oxalic-alpha-0024",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09686779145740089
+    },
+    {
+      "id": "oxalic-alpha-0025",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 4.2668531467930064e-15
+    },
+    {
+      "id": "oxalic-alpha-0026",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6280244754541882e-15
+    },
+    {
+      "id": "oxalic-alpha-0027",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.9229891214236004e-15
+    },
+    {
+      "id": "oxalic-alpha-0028",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1424437437789
+    },
+    {
+      "id": "oxalic-alpha-0029",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.06521608905106299
+    },
+    {
+      "id": "oxalic-alpha-0030",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.791697176633923e-15
+    },
+    {
+      "id": "oxalic-alpha-0031",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1319774160875648
+    },
+    {
+      "id": "oxalic-alpha-0032",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.642161963698626e-15
+    },
+    {
+      "id": "oxalic-alpha-0033",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.0990657691074291
+    },
+    {
+      "id": "oxalic-alpha-0034",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1499569087920163
+    },
+    {
+      "id": "oxalic-alpha-0035",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14817748642732473
+    },
+    {
+      "id": "oxalic-alpha-0036",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.419119578669598e-15
+    },
+    {
+      "id": "oxalic-alpha-0037",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.282405540617579e-15
+    },
+    {
+      "id": "oxalic-alpha-0038",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14561938885298772
+    },
+    {
+      "id": "oxalic-alpha-0039",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.3820826609804605e-15
+    },
+    {
+      "id": "oxalic-alpha-0040",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.8153779904938864e-15
+    },
+    {
+      "id": "oxalic-alpha-0041",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6408716299153279e-15
+    },
+    {
+      "id": "oxalic-alpha-0042",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 5.5366773462560405e-15
+    },
+    {
+      "id": "oxalic-alpha-0043",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1392832205828961
+    },
+    {
+      "id": "oxalic-alpha-0044",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.9075250565055145e-15
+    },
+    {
+      "id": "oxalic-alpha-0045",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1441195189494807
+    },
+    {
+      "id": "oxalic-alpha-0046",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13591035053446793
+    },
+    {
+      "id": "oxalic-alpha-0047",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1334737503786761
+    },
+    {
+      "id": "oxalic-alpha-0048",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09024588697073045
+    },
+    {
+      "id": "oxalic-alpha-0049",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10294149210541438
+    },
+    {
+      "id": "oxalic-alpha-0050",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.2560739669470201e-15
+    },
+    {
+      "id": "oxalic-alpha-0051",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13673911080297654
+    },
+    {
+      "id": "oxalic-alpha-0052",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1204230407767078
+    },
+    {
+      "id": "oxalic-alpha-0053",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1361864100437163
+    },
+    {
+      "id": "oxalic-alpha-0054",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1458666265918668
+    },
+    {
+      "id": "oxalic-alpha-0055",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6011864169946886e-15
+    },
+    {
+      "id": "oxalic-alpha-0056",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14477707616896576
+    },
+    {
+      "id": "oxalic-alpha-0057",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14949685496527637
+    },
+    {
+      "id": "oxalic-alpha-0058",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.07749070493695173
+    },
+    {
+      "id": "oxalic-alpha-0059",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13747393442767833
+    },
+    {
+      "id": "oxalic-alpha-0060",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6380590039071275e-15
+    },
+    {
+      "id": "oxalic-alpha-0061",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12278197371427474
+    },
+    {
+      "id": "oxalic-alpha-0062",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1318990676429884
+    },
+    {
+      "id": "oxalic-alpha-0063",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14263109127445406
+    },
+    {
+      "id": "oxalic-alpha-0064",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13475973998618343
+    },
+    {
+      "id": "oxalic-alpha-0065",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12371067345132403
+    },
+    {
+      "id": "oxalic-alpha-0066",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.7410273223106287e-15
+    },
+    {
+      "id": "oxalic-alpha-0067",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11923830079608383
+    },
+    {
+      "id": "oxalic-alpha-0068",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14941293178202342
+    },
+    {
+      "id": "oxalic-alpha-0069",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13946306401128294
+    },
+    {
+      "id": "oxalic-alpha-0070",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1489514020685455
+    },
+    {
+      "id": "oxalic-alpha-0071",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1307304536806009
+    },
+    {
+      "id": "oxalic-alpha-0072",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14177476442364675
+    },
+    {
+      "id": "oxalic-alpha-0073",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14550048348023986
+    },
+    {
+      "id": "oxalic-alpha-0074",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14903830816452004
+    },
+    {
+      "id": "oxalic-alpha-0075",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10690192608213374
+    },
+    {
+      "id": "oxalic-alpha-0076",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14906820550695546
+    },
+    {
+      "id": "oxalic-alpha-0077",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.3570961897053288e-15
+    },
+    {
+      "id": "oxalic-alpha-0078",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13519973361262683
+    },
+    {
+      "id": "oxalic-alpha-0079",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12454126936490205
+    },
+    {
+      "id": "oxalic-alpha-0080",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.986027322597818e-15
+    },
+    {
+      "id": "oxalic-alpha-0081",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.3322676295501878e-15
+    },
+    {
+      "id": "oxalic-alpha-0082",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.6645352591003753e-15
+    },
+    {
+      "id": "oxalic-alpha-0083",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.732828342805683e-15
+    },
+    {
+      "id": "oxalic-alpha-0084",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.7589013068428988e-15
+    },
+    {
+      "id": "oxalic-alpha-0085",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.9737225873866478e-15
+    },
+    {
+      "id": "oxalic-alpha-0086",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 4.906381921628701e-15
+    },
+    {
+      "id": "oxalic-alpha-0087",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.9402604660312443e-15
+    },
+    {
+      "id": "oxalic-alpha-0088",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.2952975651910796e-15
+    },
+    {
+      "id": "oxalic-alpha-0089",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.7568546617496849e-15
+    },
+    {
+      "id": "oxalic-alpha-0090",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.432376777795247e-15
+    },
+    {
+      "id": "oxalic-alpha-0091",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.275593053709152e-15
+    },
+    {
+      "id": "oxalic-alpha-0092",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.0548402006058023e-15
+    },
+    {
+      "id": "oxalic-alpha-0093",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.9204858463853073e-15
+    },
+    {
+      "id": "oxalic-alpha-0094",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.60276399113671e-15
+    },
+    {
+      "id": "oxalic-alpha-0095",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.1159222082551386e-15
+    },
+    {
+      "id": "oxalic-alpha-0096",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.8032391223219326e-15
+    },
+    {
+      "id": "oxalic-alpha-0097",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.5100665727558127e-15
+    },
+    {
+      "id": "oxalic-alpha-0098",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.5091579852790046e-15
+    },
+    {
+      "id": "oxalic-alpha-0099",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6339779077076528e-15
+    },
+    {
+      "id": "oxalic-alpha-0100",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.762488016117004e-15
+    },
+    {
+      "id": "oxalic-alpha-0101",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.5006317966765382e-15
+    },
+    {
+      "id": "oxalic-alpha-0102",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.008365213833455622
+    },
+    {
+      "id": "oxalic-alpha-0103",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6327487113796743e-15
+    },
+    {
+      "id": "oxalic-alpha-0104",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.5781674828995729e-15
+    },
+    {
+      "id": "oxalic-alpha-0105",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.804578976366243e-15
+    },
+    {
+      "id": "oxalic-alpha-0106",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.6327487113796743e-15
+    },
+    {
+      "id": "oxalic-alpha-0107",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.3998087782498815e-15
+    },
+    {
+      "id": "oxalic-alpha-0108",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.2254610794457916e-15
+    },
+    {
+      "id": "oxalic-alpha-0109",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.222391593422712e-15
+    },
+    {
+      "id": "oxalic-alpha-0110",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.7992619478660193e-15
+    },
+    {
+      "id": "oxalic-alpha-0111",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.1401849173675506e-15
+    },
+    {
+      "id": "oxalic-alpha-0112",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.3970411803855647e-15
+    },
+    {
+      "id": "oxalic-alpha-0113",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.7132910424096547e-15
+    },
+    {
+      "id": "oxalic-alpha-0114",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.332267629550188e-15
+    },
+    {
+      "id": "oxalic-alpha-0115",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.8310199171319975e-15
+    },
+    {
+      "id": "oxalic-alpha-0116",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.208168129976666e-15
+    },
+    {
+      "id": "oxalic-alpha-0117",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4462335984775943e-15
+    },
+    {
+      "id": "oxalic-alpha-0118",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.2471804591407974e-15
+    },
+    {
+      "id": "oxalic-alpha-0119",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.249921324755229e-15
+    },
+    {
+      "id": "oxalic-alpha-0120",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.796772485134768e-15
+    },
+    {
+      "id": "oxalic-alpha-0121",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4430367374763575e-15
+    },
+    {
+      "id": "oxalic-alpha-0122",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.0593061958263988e-15
+    },
+    {
+      "id": "oxalic-alpha-0123",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.1677507034667502e-15
+    },
+    {
+      "id": "oxalic-alpha-0124",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4430367374763575e-15
+    },
+    {
+      "id": "oxalic-alpha-0125",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 3.23206409458737e-15
+    },
+    {
+      "id": "oxalic-alpha-0126",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.293968995742916e-15
+    },
+    {
+      "id": "oxalic-alpha-0127",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.8210604396034096e-15
+    },
+    {
+      "id": "oxalic-alpha-0128",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 2.920938045804495e-15
+    },
+    {
+      "id": "oxalic-alpha-0129",
+      "phase": "alpha",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.119147766318116e-15
+    },
+    {
+      "id": "oxalic-beta-0010",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.0778135743658255
+    },
+    {
+      "id": "oxalic-beta-0011",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.104745242069155
+    },
+    {
+      "id": "oxalic-beta-0012",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14106790084519344
+    },
+    {
+      "id": "oxalic-beta-0013",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10336347059916624
+    },
+    {
+      "id": "oxalic-beta-0014",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10896064580395846
+    },
+    {
+      "id": "oxalic-beta-0015",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11822643570666279
+    },
+    {
+      "id": "oxalic-beta-0016",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11514185825383051
+    },
+    {
+      "id": "oxalic-beta-0017",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13975881896607903
+    },
+    {
+      "id": "oxalic-beta-0018",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12315312579400346
+    },
+    {
+      "id": "oxalic-beta-0019",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1363635896989642
+    },
+    {
+      "id": "oxalic-beta-0020",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14077265142884735
+    },
+    {
+      "id": "oxalic-beta-0021",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13685853134124504
+    },
+    {
+      "id": "oxalic-beta-0022",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13766695126147713
+    },
+    {
+      "id": "oxalic-beta-0023",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11699445835355861
+    },
+    {
+      "id": "oxalic-beta-0024",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1337269111642852
+    },
+    {
+      "id": "oxalic-beta-0025",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10739689748038625
+    },
+    {
+      "id": "oxalic-beta-0026",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13026766622813465
+    },
+    {
+      "id": "oxalic-beta-0027",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11715077604006795
+    },
+    {
+      "id": "oxalic-beta-0028",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11393159148730862
+    },
+    {
+      "id": "oxalic-beta-0029",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14169135108967745
+    },
+    {
+      "id": "oxalic-beta-0030",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10351060031926174
+    },
+    {
+      "id": "oxalic-beta-0031",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11222863708268666
+    },
+    {
+      "id": "oxalic-beta-0032",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14859111583124723
+    },
+    {
+      "id": "oxalic-beta-0033",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12520468750922034
+    },
+    {
+      "id": "oxalic-beta-0034",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1452303562038605
+    },
+    {
+      "id": "oxalic-beta-0035",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11068089952511379
+    },
+    {
+      "id": "oxalic-beta-0036",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1356668490969959
+    },
+    {
+      "id": "oxalic-beta-0037",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11401048590212585
+    },
+    {
+      "id": "oxalic-beta-0038",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1316398747742033
+    },
+    {
+      "id": "oxalic-beta-0039",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14156526220765045
+    },
+    {
+      "id": "oxalic-beta-0040",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11981805544914359
+    },
+    {
+      "id": "oxalic-beta-0041",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12550439505766994
+    },
+    {
+      "id": "oxalic-beta-0042",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13500395385686398
+    },
+    {
+      "id": "oxalic-beta-0043",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14873764815340126
+    },
+    {
+      "id": "oxalic-beta-0044",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12771865139808236
+    },
+    {
+      "id": "oxalic-beta-0045",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12254963484906592
+    },
+    {
+      "id": "oxalic-beta-0046",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12042318423219246
+    },
+    {
+      "id": "oxalic-beta-0047",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14233932979220915
+    },
+    {
+      "id": "oxalic-beta-0048",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1450234743565
+    },
+    {
+      "id": "oxalic-beta-0049",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10848021447210145
+    },
+    {
+      "id": "oxalic-beta-0050",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14073630027446107
+    },
+    {
+      "id": "oxalic-beta-0051",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13365146267583836
+    },
+    {
+      "id": "oxalic-beta-0052",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.141895805084333
+    },
+    {
+      "id": "oxalic-beta-0053",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13050416699930315
+    },
+    {
+      "id": "oxalic-beta-0054",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1444440138038333
+    },
+    {
+      "id": "oxalic-beta-0055",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.149728110348381
+    },
+    {
+      "id": "oxalic-beta-0056",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13133810143610078
+    },
+    {
+      "id": "oxalic-beta-0057",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1447882596101028
+    },
+    {
+      "id": "oxalic-beta-0058",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12927032893348744
+    },
+    {
+      "id": "oxalic-beta-0059",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11077210631067118
+    },
+    {
+      "id": "oxalic-beta-0060",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14680068426229695
+    },
+    {
+      "id": "oxalic-beta-0061",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13347415076221875
+    },
+    {
+      "id": "oxalic-beta-0062",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13507411619349868
+    },
+    {
+      "id": "oxalic-beta-0063",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13309370057196793
+    },
+    {
+      "id": "oxalic-beta-0064",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14681477464480075
+    },
+    {
+      "id": "oxalic-beta-0065",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1460218605768279
+    },
+    {
+      "id": "oxalic-beta-0066",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09654899548332388
+    },
+    {
+      "id": "oxalic-beta-0067",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13395775395084067
+    },
+    {
+      "id": "oxalic-beta-0068",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13778809876741038
+    },
+    {
+      "id": "oxalic-beta-0069",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1109587634221609
+    },
+    {
+      "id": "oxalic-beta-0070",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11229783168617272
+    },
+    {
+      "id": "oxalic-beta-0071",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11399055861645481
+    },
+    {
+      "id": "oxalic-beta-0072",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11668679671600486
+    },
+    {
+      "id": "oxalic-beta-0073",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13953008339886452
+    },
+    {
+      "id": "oxalic-beta-0074",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11081180142092013
+    },
+    {
+      "id": "oxalic-beta-0075",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14425352805258046
+    },
+    {
+      "id": "oxalic-beta-0076",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1288879488246228
+    },
+    {
+      "id": "oxalic-beta-0077",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12902658836780306
+    },
+    {
+      "id": "oxalic-beta-0078",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13931692024866663
+    },
+    {
+      "id": "oxalic-beta-0079",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13170991192142475
+    },
+    {
+      "id": "oxalic-beta-0080",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 7.8700639775985e-16
+    },
+    {
+      "id": "oxalic-beta-0081",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4525556596590422e-15
+    },
+    {
+      "id": "oxalic-beta-0082",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13675562467876584
+    },
+    {
+      "id": "oxalic-beta-0083",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13122900974066273
+    },
+    {
+      "id": "oxalic-beta-0084",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14015640138540264
+    },
+    {
+      "id": "oxalic-beta-0085",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.3707970199897202e-15
+    },
+    {
+      "id": "oxalic-beta-0086",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13977613291955554
+    },
+    {
+      "id": "oxalic-beta-0087",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13960059733703667
+    },
+    {
+      "id": "oxalic-beta-0088",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1457508678010109
+    },
+    {
+      "id": "oxalic-beta-0089",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4432899320127035e-15
+    },
+    {
+      "id": "oxalic-beta-0090",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13892585514587116
+    },
+    {
+      "id": "oxalic-beta-0091",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11241198831487141
+    },
+    {
+      "id": "oxalic-beta-0092",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13644209665146595
+    },
+    {
+      "id": "oxalic-beta-0093",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14869849334837726
+    },
+    {
+      "id": "oxalic-beta-0094",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10453302264765263
+    },
+    {
+      "id": "oxalic-beta-0095",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.4964871128147458e-15
+    },
+    {
+      "id": "oxalic-beta-0096",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13501139766468725
+    },
+    {
+      "id": "oxalic-beta-0097",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12447875713684278
+    },
+    {
+      "id": "oxalic-beta-0098",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12208813549917615
+    },
+    {
+      "id": "oxalic-beta-0099",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.142589527112966
+    },
+    {
+      "id": "oxalic-beta-0100",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14736525635956324
+    },
+    {
+      "id": "oxalic-beta-0101",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09593006214255681
+    },
+    {
+      "id": "oxalic-beta-0102",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.252891508054659e-15
+    },
+    {
+      "id": "oxalic-beta-0103",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1478418616057608
+    },
+    {
+      "id": "oxalic-beta-0104",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14837376393779564
+    },
+    {
+      "id": "oxalic-beta-0105",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14763444344211024
+    },
+    {
+      "id": "oxalic-beta-0106",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1415800074759028
+    },
+    {
+      "id": "oxalic-beta-0107",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14617760999002982
+    },
+    {
+      "id": "oxalic-beta-0108",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11191986233980314
+    },
+    {
+      "id": "oxalic-beta-0109",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1469543909443252
+    },
+    {
+      "id": "oxalic-beta-0110",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13972017376100837
+    },
+    {
+      "id": "oxalic-beta-0111",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14185112420998736
+    },
+    {
+      "id": "oxalic-beta-0112",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1471797192836704
+    },
+    {
+      "id": "oxalic-beta-0113",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13846446215652364
+    },
+    {
+      "id": "oxalic-beta-0114",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10389139853090776
+    },
+    {
+      "id": "oxalic-beta-0115",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13889125838463962
+    },
+    {
+      "id": "oxalic-beta-0116",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14831410926480929
+    },
+    {
+      "id": "oxalic-beta-0117",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12164636067574625
+    },
+    {
+      "id": "oxalic-beta-0118",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14516402089981878
+    },
+    {
+      "id": "oxalic-beta-0119",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14009618954343955
+    },
+    {
+      "id": "oxalic-beta-0120",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 1.2852281065831682e-15
+    },
+    {
+      "id": "oxalic-beta-0121",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14652349891930166
+    },
+    {
+      "id": "oxalic-beta-0122",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13462815025720146
+    },
+    {
+      "id": "oxalic-beta-0123",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14364231599474117
+    },
+    {
+      "id": "oxalic-beta-0124",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13852480351975158
+    },
+    {
+      "id": "oxalic-beta-0125",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14027058251102414
+    },
+    {
+      "id": "oxalic-beta-0126",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1495592872178428
+    },
+    {
+      "id": "oxalic-beta-0127",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14124800011458788
+    },
+    {
+      "id": "oxalic-beta-0128",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.132644823749145
+    },
+    {
+      "id": "oxalic-beta-0129",
+      "phase": "beta",
+      "training": true,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11044019588786678
+    },
+    {
+      "id": "oxalic-alpha-0130",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.12537763090584114
+    },
+    {
+      "id": "oxalic-alpha-0131",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14741898305948722
+    },
+    {
+      "id": "oxalic-alpha-0132",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1464642528381533
+    },
+    {
+      "id": "oxalic-alpha-0133",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.11245030270937133
+    },
+    {
+      "id": "oxalic-alpha-0134",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13005867845442523
+    },
+    {
+      "id": "oxalic-alpha-0135",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13318325377569087
+    },
+    {
+      "id": "oxalic-alpha-0136",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1340595555778093
+    },
+    {
+      "id": "oxalic-alpha-0137",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.12707285721807646
+    },
+    {
+      "id": "oxalic-alpha-0138",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0139",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13208194830576475
+    },
+    {
+      "id": "oxalic-alpha-0140",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0141",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0142",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0143",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13263436429142586
+    },
+    {
+      "id": "oxalic-alpha-0144",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.12646792374936636
+    },
+    {
+      "id": "oxalic-alpha-0145",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1401054749995856
+    },
+    {
+      "id": "oxalic-alpha-0146",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13775985920909653
+    },
+    {
+      "id": "oxalic-alpha-0147",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14962990637582282
+    },
+    {
+      "id": "oxalic-alpha-0148",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14923696229973363
+    },
+    {
+      "id": "oxalic-alpha-0149",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0150",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0151",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0152",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1334094989857829
+    },
+    {
+      "id": "oxalic-alpha-0153",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13675805091224588
+    },
+    {
+      "id": "oxalic-alpha-0154",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0155",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.10752499593621108
+    },
+    {
+      "id": "oxalic-alpha-0156",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.13774674169061973
+    },
+    {
+      "id": "oxalic-alpha-0157",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0158",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1465326547085848
+    },
+    {
+      "id": "oxalic-alpha-0159",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14692405408423156
+    },
+    {
+      "id": "oxalic-alpha-0160",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0161",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.147255848167777
+    },
+    {
+      "id": "oxalic-alpha-0162",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1021432656283495
+    },
+    {
+      "id": "oxalic-alpha-0163",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14313999878767164
+    },
+    {
+      "id": "oxalic-alpha-0164",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0165",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.1486150719373195
+    },
+    {
+      "id": "oxalic-alpha-0166",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14031169857535025
+    },
+    {
+      "id": "oxalic-alpha-0167",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14847961364115547
+    },
+    {
+      "id": "oxalic-alpha-0168",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0169",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0170",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0171",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0172",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-alpha-0173",
+      "phase": "alpha",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-beta-0130",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11912371791760308
+    },
+    {
+      "id": "oxalic-beta-0131",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10475642861881686
+    },
+    {
+      "id": "oxalic-beta-0132",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10606540409607544
+    },
+    {
+      "id": "oxalic-beta-0133",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11241718606200159
+    },
+    {
+      "id": "oxalic-beta-0134",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09807617209535692
+    },
+    {
+      "id": "oxalic-beta-0135",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13087182096931052
+    },
+    {
+      "id": "oxalic-beta-0136",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13799270741711672
+    },
+    {
+      "id": "oxalic-beta-0137",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14735793222569535
+    },
+    {
+      "id": "oxalic-beta-0138",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1488559502207605
+    },
+    {
+      "id": "oxalic-beta-0139",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1479354946981798
+    },
+    {
+      "id": "oxalic-beta-0140",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10179409527560278
+    },
+    {
+      "id": "oxalic-beta-0141",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11068902708876767
+    },
+    {
+      "id": "oxalic-beta-0142",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1266710340551726
+    },
+    {
+      "id": "oxalic-beta-0143",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11229623059846605
+    },
+    {
+      "id": "oxalic-beta-0144",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13468117316598197
+    },
+    {
+      "id": "oxalic-beta-0145",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12925387502959024
+    },
+    {
+      "id": "oxalic-beta-0146",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11291497620865869
+    },
+    {
+      "id": "oxalic-beta-0147",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.08668772113699794
+    },
+    {
+      "id": "oxalic-beta-0148",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1023808373338193
+    },
+    {
+      "id": "oxalic-beta-0149",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.122681279252216
+    },
+    {
+      "id": "oxalic-beta-0150",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12701447278438147
+    },
+    {
+      "id": "oxalic-beta-0151",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1428477451974275
+    },
+    {
+      "id": "oxalic-beta-0152",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09975697780111645
+    },
+    {
+      "id": "oxalic-beta-0153",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11053519999150625
+    },
+    {
+      "id": "oxalic-beta-0154",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12546105833566792
+    },
+    {
+      "id": "oxalic-beta-0155",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14081789635662334
+    },
+    {
+      "id": "oxalic-beta-0156",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.0908180650274532
+    },
+    {
+      "id": "oxalic-beta-0157",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13266041132381268
+    },
+    {
+      "id": "oxalic-beta-0158",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14716236512768016
+    },
+    {
+      "id": "oxalic-beta-0159",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14465349787107037
+    },
+    {
+      "id": "oxalic-beta-0160",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13625802819023397
+    },
+    {
+      "id": "oxalic-beta-0161",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.09741543511157583
+    },
+    {
+      "id": "oxalic-beta-0162",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14602740094344868
+    },
+    {
+      "id": "oxalic-beta-0163",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.1279864012572181
+    },
+    {
+      "id": "oxalic-beta-0164",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.10340074088727079
+    },
+    {
+      "id": "oxalic-beta-0165",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.12879750652542174
+    },
+    {
+      "id": "oxalic-beta-0166",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.11517484076666035
+    },
+    {
+      "id": "oxalic-beta-0167",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.13878325069046846
+    },
+    {
+      "id": "oxalic-beta-0168",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14402106184444605
+    },
+    {
+      "id": "oxalic-beta-0169",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14503860775632996
+    },
+    {
+      "id": "oxalic-beta-0170",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14868787506639816
+    },
+    {
+      "id": "oxalic-beta-0171",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 0,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.0
+    },
+    {
+      "id": "oxalic-beta-0172",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 1,
+      "fullyMatched": false,
+      "maxMatchedErrorAngstrom": 0.14296442649714172
+    },
+    {
+      "id": "oxalic-beta-0173",
+      "phase": "beta",
+      "training": false,
+      "clusters": 2,
+      "matched": 2,
+      "fullyMatched": true,
+      "maxMatchedErrorAngstrom": 0.14834687540281605
+    }
+  ],
+  "limits": "Checks partition coverage and every claimed periodic proper-isometry match. Does not verify optimality of the persistence score, completeness of correspondence search, matching uniqueness, overlap connections or GCTS filling/marking values. Development split, not condition-matched or trajectory-independent validation."
+}

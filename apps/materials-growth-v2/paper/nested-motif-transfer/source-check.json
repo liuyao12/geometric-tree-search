@@ -1,0 +1,47 @@
+{
+  "provenanceHash": "0dab06b027f30dc1af8dfc0ab02aa8289b2fbffc34983348654b2a54b719cb04",
+  "coordinateHash": "a4b051d9c7979a725f495fea88a77766eb4cd403c846746017988621d9d983f1",
+  "verifierHash": "0be5660413467e68b46c7847acce90ef4567233e9b10e5c0d550b170bc6871c6",
+  "rows": [
+    {
+      "phase": "alpha",
+      "sourceFrames": 174,
+      "atomCountDistribution": {
+        "8": 10,
+        "32": 164
+      },
+      "volumePerAtomRangeAngstrom3": [
+        8.687708943129607,
+        1953.124999999998
+      ],
+      "allCoordinateRecordsExact": true,
+      "frameConditionsAvailable": false,
+      "inputDeckStatePoint": {
+        "temperatureK": 298.0,
+        "pressurePa": 100000.0,
+        "ensemble": "npt"
+      }
+    },
+    {
+      "phase": "beta",
+      "sourceFrames": 174,
+      "atomCountDistribution": {
+        "8": 10,
+        "16": 164
+      },
+      "volumePerAtomRangeAngstrom3": [
+        8.36710983604929,
+        1953.124999999998
+      ],
+      "allCoordinateRecordsExact": true,
+      "frameConditionsAvailable": false,
+      "inputDeckStatePoint": {
+        "temperatureK": 298.0,
+        "pressurePa": 100000.0,
+        "ensemble": "npt"
+      }
+    }
+  ],
+  "conditionMatchedFramesAdmitted": 0,
+  "limits": "Exact raw-coordinate and input-deck replay, not proof that frames were generated at the deck conditions. Periodic flags do not identify a thermodynamic phase; the training files contain multiple atom counts. No learned motif or growth result."
+}
