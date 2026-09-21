@@ -67,6 +67,14 @@ frontiers = [[-2, -2, -2], [6, 4, 4]]
 resumed = solve(model, pair, time_ms=10000, encoding='voxel-cover', frontier='occupancy', resume_points=frontiers)
 assert resumed['status'] == 'valid' and resumed['stats']['initialFrontierConstraints'] == 2
 assert set(map(tuple, resumed['frontierPoints'])).issuperset(map(tuple, frontiers))
+for batch in (1, 4, 16):
+    batched = solve(model, pair, encoding='voxel-cover', frontier='occupancy', resume_points=frontiers, frontier_batch=batch)
+    assert batched['status'] == 'valid' and batched['stats']['frontierBatch'] == batch
+try:
+    solve(model, pair, frontier_batch=0)
+    raise AssertionError('Accepted a zero batch')
+except ValueError:
+    pass
 
 for mutation in ['capacity', 'domain', 'center', 'corner', 'voxels']:
     damaged = deepcopy(model)

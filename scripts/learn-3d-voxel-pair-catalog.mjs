@@ -15,18 +15,43 @@ import {pairOrbits,transportPatch} from './lib/3d-pair-orbits.mjs';
 import {verifyPointObstruction} from './lib/verify-point-obstruction.mjs';
 const execute=promisify(execFile),args=Object.fromEntries(process.argv.slice(2).map(a=>a.replace(/^--/,'').split('='))),tile=args.tile??'p9-48258';
 const record=tile==='cube'?{voxels:[[0,0,0]]}:POLYCUBE_GCTS_CANDIDATES.find(t=>t.id===tile);if(!record)throw Error('Unknown catalogue tile');
+const frontierBatch=Number(args['frontier-batch']??1);
 const timeMs=Number(args['pair-ms']??5000),frontier=args.frontier??'nogood',maxGroups=Number(args['max-groups']??100000),output=args.output??`/tmp/gcts-orbits-${tile}`;
-if(!Number.isSafeInteger(timeMs)||timeMs<1||!Number.isSafeInteger(maxGroups)||maxGroups<1||!['nogood','occupancy'].includes(frontier))throw Error('Invalid oracle options');
+if(!Number.isSafeInteger(frontierBatch)||frontierBatch<1||!Number.isSafeInteger(timeMs)||timeMs<1||!Number.isSafeInteger(maxGroups)||maxGroups<1||!['nogood','occupancy'].includes(frontier))throw Error('Invalid oracle options');
 await mkdir(output,{recursive:true});
 const started=performance.now(),model=prepareVoxelPointModel(record.voxels,{name:tile,radius:1}),orbits=pairOrbits(model),sha=x=>createHash('sha256').update(x).digest('hex');
 const modelSha=sha(JSON.stringify(model)),orbitSha=sha(JSON.stringify(orbits.groups)),sources={};
 for(const p of ['scripts/learn-3d-voxel-pair-catalog.mjs','scripts/solve_point_pair_corona.py','scripts/lib/3d-pair-orbits.mjs','scripts/lib/verify-point-obstruction.mjs','apps/3d-lattice-tiler/voxel-point-model.js','apps/3d-lattice-tiler/corona-graph.js','apps/3d-lattice-tiler/marking-learning.js','apps/3d-lattice-tiler/v2/search.js'])sources[p]=sha(await readFile(new URL('../'+p,import.meta.url)));
 let checkpoint;try{checkpoint=JSON.parse(await readFile(`${output}/checkpoint.json`));}catch(e){if(e.code!=='ENOENT')throw e;}
 if(checkpoint){
+ if(args.parent||args.resolved)throw Error('Parent/import evidence requires a fresh output directory');
  if(args.resume!=='true')throw Error('Output already contains a checkpoint; use --resume=true explicitly');
  if(checkpoint.modelSha!==modelSha||checkpoint.orbitSha!==orbitSha||JSON.stringify(checkpoint.sources)!==JSON.stringify(sources))throw Error('Checkpoint model, orbits or source version changed');
 }else checkpoint={tile,modelSha,orbitSha,sources,runs:[],groups:{}};
-const run={timeMs,frontier,startedAt:new Date().toISOString(),attempted:0};checkpoint.runs.push(run);
+// Explicitly fork a historical receipt when the oracle source changes. Retain
+// its source hashes and run costs; verify every inherited artifact before use.
+if(args.parent){
+ const parentRaw=await readFile(`${args.parent}/checkpoint.json`),parent=JSON.parse(parentRaw);
+ if(parent.modelSha!==modelSha||parent.orbitSha!==orbitSha)throw Error('Parent geometry or pair catalogue changed');
+ checkpoint.parents=[...(parent.parents??[]),{checkpointSha256:sha(parentRaw),sources:parent.sources,runs:parent.runs}];
+ for(const [gi,entry] of Object.entries(parent.groups)){
+  const raw=await readFile(`${args.parent}/${entry.file}`);if(sha(raw)!==entry.sha256||JSON.parse(raw).status!==entry.status)throw Error('Parent artifact changed');
+  const file=`inherited-${gi}.json`;await writeFile(`${output}/${file}`,raw);checkpoint.groups[gi]={...entry,file};
+ }
+}
+if(args.resolved){
+ if(!args.parent)throw Error('Imported refinements require an explicit parent checkpoint');
+ const manifestRaw=await readFile(args.resolved),manifest=JSON.parse(manifestRaw);checkpoint.importedEvidence={manifestSha256:sha(manifestRaw),sources:manifest.sources,rows:[]};
+ for(const entry of manifest.rows){
+  const gi=entry.orbit,prior=checkpoint.groups[gi];if(!Number.isInteger(gi)||!prior)throw Error('Imported orbit is not in parent');
+  const before=JSON.parse(await readFile(`${output}/${prior.file}`)),raw=await readFile(entry.file),result=JSON.parse(raw);
+  if(sha(raw)!==entry.sha256||!before.problemSha256||result.problemSha256!==before.problemSha256)throw Error('Imported result belongs to another problem');
+  if(!['valid','invalid','unresolved'].includes(result.status)||before.status!=='unresolved'&&result.status!==before.status)throw Error('Imported evidence conflicts with a resolved label');
+  const file=`imported-${gi}.json`;await writeFile(`${output}/${file}`,raw);checkpoint.groups[gi]={file,sha256:sha(raw),status:result.status};checkpoint.importedEvidence.rows.push({orbit:gi,sha256:sha(raw),status:result.status});
+ }
+}
+
+const run={timeMs,frontier,frontierBatch,startedAt:new Date().toISOString(),attempted:0};checkpoint.runs.push(run);
 async function save(){await writeFile(`${output}/checkpoint-next.json`,JSON.stringify(checkpoint));await rename(`${output}/checkpoint-next.json`,`${output}/checkpoint.json`);}
 const labels=Array(orbits.pairs.length),groupReport=[];
 for(let gi=0;gi<orbits.groups.length;gi++){
@@ -35,7 +60,7 @@ for(let gi=0;gi<orbits.groups.length;gi++){
  if((!result||result.status==='unresolved')&&run.attempted<maxGroups){
   const inputFile=`${output}/pair-${gi}.json`,resultFile=`${output}/result-${gi}-run-${checkpoint.runs.length}.json`;
   await writeFile(inputFile,JSON.stringify({model,pair:group.pair}));
-  const command=[fileURLToPath(new URL('./solve_point_pair_corona.py',import.meta.url)),`--input=${inputFile}`,`--output=${resultFile}`,`--time-ms=${timeMs}`,'--encoding=voxel-cover',`--frontier=${frontier}`];
+  const command=[fileURLToPath(new URL('./solve_point_pair_corona.py',import.meta.url)),`--input=${inputFile}`,`--output=${resultFile}`,`--time-ms=${timeMs}`,'--encoding=voxel-cover',`--frontier=${frontier}`,`--frontier-batch=${frontierBatch}`];
   // Only a terminal unresolved occupancy run can supply saved necessary point
   // constraints; the Python oracle rebuilds them and checks the problem hash.
   if(prior&&result.stats?.frontier==='occupancy'&&frontier==='occupancy')command.push(`--resume=${output}/${prior.file}`);
@@ -59,6 +84,7 @@ for(let gi=0;gi<orbits.groups.length;gi++){
 }
 const trainer=new OnlineMarking(model,orbits.transforms);let marking;
 for(const row of labels)marking=trainer.add(row);
+marking=trainer.snapshot({maxEvaluations:2048});
 let positivePassed=0,negativeBlocked=0;
 for(const row of labels){const compatible=pairCompatible(marking.fields,row.pair);if(row.status==='valid'&&compatible)positivePassed++;if(row.status==='invalid'&&!compatible)negativeBlocked++;}
 if(positivePassed!==marking.counts.valid||positivePassed!==marking.positivePassed||negativeBlocked!==marking.negativeBlocked)throw Error('Independent marking classification failed');
@@ -72,5 +98,5 @@ if(marking.accepted){
 }
 run.elapsedMs=performance.now()-started;await save();
 await writeFile(`${output}/learning.json.gz`,gzipSync(JSON.stringify({model,labels,marking,growth})));
-const summary={protocol:{tile,modelSha,orbitSha,sources,runs:checkpoint.runs,oracle:'Validated binary-cover PB/SAT control with viable frontier; exact proper-rotation and seed-exchange orbits',scope:'Local pair labels and a learned restriction. Neither infinite construction nor aperiodicity proof.'},pairs:labels.length,orbits:orbits.groups.length,groups:groupReport,learning:{complete:marking.complete,accepted:marking.accepted,counts:marking.counts,positivePassed,negativeBlocked,points:marking.points,values:marking.values},growth:growth?{result:growth.result,verification:growth.verification,stats:growth.stats}:null};
+const summary={protocol:{tile,modelSha,orbitSha,sources,runs:checkpoint.runs,parents:checkpoint.parents??[],importedEvidence:checkpoint.importedEvidence??null,oracle:'Validated binary-cover PB/SAT control with viable frontier; exact proper-rotation and seed-exchange orbits',scope:'Local pair labels and a learned restriction. Neither infinite construction nor aperiodicity proof.'},pairs:labels.length,orbits:orbits.groups.length,groups:groupReport,learning:{complete:marking.complete,accepted:marking.accepted,counts:marking.counts,positivePassed,negativeBlocked,points:marking.points,values:marking.values},growth:growth?{result:growth.result,verification:growth.verification,stats:growth.stats}:null};
 await writeFile(`${output}/summary.json`,JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify({...summary.learning,pairs:labels.length,orbits:orbits.groups.length,growth:summary.growth?.result??null}));

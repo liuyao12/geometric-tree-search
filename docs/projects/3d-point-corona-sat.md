@@ -338,3 +338,63 @@ node scripts/test-patch-period-proposals.mjs
 Thus the complete pair classifier is useful local evidence, but has not resolved
 this tile's infinite tilability. The next local-catalogue collection targets
 p9-42947 using resumable occupancy-frontier constraints and exact pair orbits.
+
+## p9-42947: batched frontier refinement
+
+The first two-second-per-orbit pass visits all 271 symmetry groups (1,408 raw
+pairs), resolving only two negative groups, or three raw pairs. The other 1,405
+pairs remain unknown. That pass costs 559.28 seconds including replay and
+provisional synthesis; its cutoffs are not negative labels.
+
+The occupancy oracle now optionally collects several dead corners from each
+candidate patch before invoking SAT again (`--frontier-batch=4`). Each corner
+adds the same exact necessary condition as before. This changes refinement
+order, not the completion test, candidate universe, or admissible patches.
+The default remains one. Partial batches interrupted by a budget stop remain
+unresolved; only fully added conditions are checkpointed for replay.
+
+Five targeted four-corner runs yield valid witnesses, independently transported
+and replayed for all 27 represented raw pairs:
+
+| Orbit | Raw pairs | Time | SAT rounds | Frontier conditions |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 6 | 15.36 s | 36 | 115 |
+| 130 | 3 | 5.72 s | 16 | 55 |
+| 31 | 6 | 8.00 s | 21 | 73 |
+| 74 | 6 | 10.35 s | 25 | 84 |
+| 2 | 6 | 11.71 s | 27 | 93 |
+
+A p9-48258 negative control (orbit 27) remains negative after 11 rounds and
+40 conditions. All 460 dead-frontier obstruction records from these six runs
+pass independent replay. Negative exhaustion still relies on trusted Z3 UNSAT,
+not an exported proof. The earlier one-corner resumed controls for p9-42947
+orbits 1 and 130 take 61 and 31 additional rounds respectively; these mixed
+concurrent runs are not an isolated timing comparison.
+[Targeted refinement receipt](../../data/3d-batched-corona-refinement-2026-09-21.json).
+
+A subsequent ten-group refinement, reusing saved necessary frontier conditions,
+takes 122.05 seconds. Including the imported witnesses, the catalogue now has
+**81 valid, 3 invalid, and 1,324 unresolved pairs**. All 81 positives pass the
+provisional marking, and all three negatives are blocked with 48 scalar values.
+**The marking is not accepted and no marked growth starts:** the catalogue is
+incomplete. These are local extension labels, not a new infinite classification.
+[Catalogue checkpoint receipt](../../data/3d-p9-42947-local-catalogue-2026-09-21.json).
+
+The runner supports an explicit `--parent=<older-output>` when source versions
+change. It keeps the parent's source hashes, run costs and checkpoint digest,
+checks geometry and exact pair orbits, hashes each inherited artifact, and
+replays positive witnesses and obstruction records. Optional imported resolved
+results must match the original problem digest and cannot contradict an existing
+resolved label. Ordinary resume still rejects changed sources. The cube control
+checks this migration and rejects wrong-pair and conflicting imports.
+
+```sh
+node scripts/learn-3d-voxel-pair-catalog.mjs \
+  --tile=p9-42947 --output=/tmp/new-catalogue \
+  --parent=/tmp/prior-catalogue --pair-ms=15000 --max-groups=10 \
+  --frontier=occupancy --frontier-batch=4
+node scripts/test-3d-orbit-parent.mjs
+```
+
+Browser learning remains the reference graph implementation. No research labels
+or learned assignments from this experiment are bundled into either 3D app.

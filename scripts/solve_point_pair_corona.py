@@ -53,7 +53,9 @@ def voxel_core_domain(model, core):
     return centers
 
 
-def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, encoding='points', frontier='nogood', resume_points=None):
+def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, encoding='points', frontier='nogood', resume_points=None, frontier_batch=1):
+    if type(frontier_batch) is not int or frontier_batch < 1:
+        raise ValueError('Positive integer frontier batch required')
     started = time.perf_counter()
     deadline = started + time_ms / 1000
     capacity = model['capacity']
@@ -115,7 +117,7 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
     nogoods = []
     rounds = 0
     constrained = set()
-    stats = {'backend': 'z3-pb2bv-sat', 'encoding': encoding, 'frontier': frontier, 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
+    stats = {'backend': 'z3-pb2bv-sat', 'encoding': encoding, 'frontier': frontier, 'frontierBatch': frontier_batch, 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
     result = {'status': 'unresolved', 'reason': None, 'placements': pair}
     try:
         # Adding the seeds first makes their identities stable in the receipt.
@@ -224,7 +226,7 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
                     totals[p] += w
             assert all(n <= capacity for n in totals.values())
             assert all(totals[p] == capacity for p in core)
-            dead = None
+            dead_points = []
             legality = {}
             for p, n in totals.items():
                 check_time()
@@ -245,18 +247,21 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
                     if viable:
                         break
                 if not viable:
-                    dead = p
-                    break
+                    dead_points.append(p)
+                    if len(dead_points) >= (frontier_batch if frontier == 'occupancy' else 1):
+                        break
+            dead = dead_points[0] if dead_points else None
             placements = [descriptor(specs[i]) for i in selected]
             result['placements'] = placements
             if dead is None:
                 result.update(status='valid', reason=None, verification={'coreComplete': True, 'frontierViable': True})
                 break
             if frontier == 'occupancy':
-                if dead in constrained:
-                    raise AssertionError('Encoded frontier point remains dead')
-                constrain_frontier(dead)
-                nogoods.append({'deadPoint': list(dead), 'placements': placements})
+                for point in dead_points:
+                    if point in constrained:
+                        raise AssertionError('Encoded frontier point remains dead')
+                    constrain_frontier(point)
+                    nogoods.append({'deadPoint': list(point), 'placements': placements})
                 continue
             # A dead frontier cannot be repaired by adding tiles: all placements
             # touching it are already selected or capacity-incompatible. Thus
@@ -305,6 +310,7 @@ if __name__ == '__main__':
     parser.add_argument('--max-rounds', type=int, default=1000)
     parser.add_argument('--encoding', choices=('points', 'voxel-cover'), default='points')
     parser.add_argument('--frontier', choices=('nogood', 'occupancy'), default='nogood')
+    parser.add_argument('--frontier-batch', type=int, default=1)
     parser.add_argument('--resume', help='Previous occupancy-frontier result for this exact input')
     args = parser.parse_args()
     data = json.loads(Path(args.input).read_text())
@@ -312,7 +318,7 @@ if __name__ == '__main__':
     prior = json.loads(Path(args.resume).read_text()) if args.resume else None
     if prior and (prior.get('problemSha256') != problem_hash or prior.get('stats', {}).get('frontier') != 'occupancy'):
         parser.error('Resume state belongs to a different problem or frontier mode')
-    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds, args.encoding, args.frontier, prior.get('frontierPoints') if prior else None)
+    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds, args.encoding, args.frontier, prior.get('frontierPoints') if prior else None, args.frontier_batch)
     result['problemSha256'] = problem_hash
     result['stats']['cumulativeMs'] = result['stats']['elapsedMs'] + (prior['stats'].get('cumulativeMs', prior['stats']['elapsedMs']) if prior else 0)
     Path(args.output).write_text(json.dumps(result))
