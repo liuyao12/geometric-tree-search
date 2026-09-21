@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "tile": "p10-346304",
+  "orbit": 182,
+  "rootedCatalogueMembers": 6,
+  "voxels": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      3
+    ],
+    [
+      1,
+      2,
+      1
+    ],
+    [
+      1,
+      3,
+      1
+    ],
+    [
+      2,
+      1,
+      1
+    ],
+    [
+      3,
+      1,
+      1
+    ]
+  ],
+  "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+  "cnfSha256": "8747483d550dbf2b2859fb2609926faa4f727630d42e905d62978ca30cf7fa5f",
+  "proofSha256": "b90e7fee3b42228a7ab7f52e89bd3ccf9cef123d93d9bb54913c760e9176b685",
+  "proofAdditions": 69520,
+  "files": {
+    "frontier.json": "03393f350a9a1d5039bb522de7f19f34590a3a34217336d73aa577827940b360",
+    "pair.input.json": "eeafc57f31d62fcaf829a253ab1c965e5921263a047c85ad35034cb29bd0a57f",
+    "proof.drup.gz": "2437dfa5eb22f9ffbb40ad714b5d4a9432c79009d8bf61ada911953572a7b47b"
+  },
+  "sourceHashes": {
+    "scripts/certify_voxel_obstruction.py": "3002b760b9aabca235baaec476135717281b395661705459f7c30a1041952fc2",
+    "scripts/verify_voxel_pair_certificate.py": "04e5938cade9e0e9a197b8a51067dbb71d730dca62e4e021f73db9a153ff41f0"
+  }
+}

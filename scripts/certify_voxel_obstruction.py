@@ -22,7 +22,8 @@ class Formula:
         return v
     def all(self, literals): return -self.any([-x for x in literals])
 
-def construct(data, frontier_points=None, check_time=lambda: None):
+def construct(data, frontier_points=None, check_time=lambda: None, amo='pairwise'):
+    if amo not in ('pairwise','sequential'):raise ValueError('Unknown at-most-one encoding')
     model=data['model']
     if model['capacity'] != 8 or model['placementDomain'] != {'kind':'scaled_cubic','translationStep':2}: raise ValueError('Wrong voxel domain')
     orientations=[list(map(tuple,o['voxels'])) for o in model['orientations']]
@@ -60,7 +61,16 @@ def construct(data, frontier_points=None, check_time=lambda: None):
         for q in cells(s): by_voxel[q].append(v)
     for q,vs in by_voxel.items():
         check_time()
-        f.clauses.extend([-a,-b] for a,b in combinations(vs,2))
+        if amo=='pairwise' or len(vs)<6:
+            f.clauses.extend([-a,-b] for a,b in combinations(vs,2))
+        else:
+            # Prefix variables encode that an earlier placement is selected.
+            # This is logically the same at-most-one constraint, with 3n-4
+            # clauses rather than n(n-1)/2; small cliques retain pairwise form.
+            previous=f.new();f.clauses.append([-vs[0],previous])
+            for v in vs[1:-1]:
+                current=f.new();f.clauses.extend([[-v,current],[-previous,current],[-v,-previous]]);previous=current
+            f.clauses.append([-vs[-1],-previous])
         if q in target: f.clauses.append(vs)
     for q in target:
         if q not in by_voxel: f.clauses.append([])
@@ -98,18 +108,18 @@ def construct(data, frontier_points=None, check_time=lambda: None):
     return f,variables,{'candidates':len(variables),'targetVoxels':len(target),'pairExclusionEdges':len(exclusions),'frontierPoints':len(frontier_points or [])}
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--input',required=True);parser.add_argument('--frontier-result');parser.add_argument('--output',required=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--input',required=True);parser.add_argument('--frontier-result');parser.add_argument('--output',required=True);parser.add_argument('--amo',choices=['pairwise','sequential'],default='pairwise')
     from pysat.solvers import Glucose3
     a=parser.parse_args();raw=Path(a.input).read_bytes();data=json.loads(raw)
     prior=json.loads(Path(a.frontier_result).read_text()) if a.frontier_result else None
     if prior:
         expected=hashlib.sha256(json.dumps(data,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         if prior.get('problemSha256')!=expected: raise ValueError('Frontier receipt belongs to another problem')
-    started=time.perf_counter();f,variables,stats=construct(data,prior.get('frontierPoints') if prior else None)
+    started=time.perf_counter();f,variables,stats=construct(data,prior.get('frontierPoints') if prior else None,amo=a.amo)
     with Glucose3(bootstrap_with=f.clauses,with_proof=True) as solver:
         sat=solver.solve();proof=solver.get_proof() if not sat else []
         assignment=solver.get_model() if sat else []
-    stats.update(variables=f.variables,clauses=len(f.clauses),solveMs=(time.perf_counter()-started)*1000)
+    stats.update(atMostOne=a.amo,variables=f.variables,clauses=len(f.clauses),solveMs=(time.perf_counter()-started)*1000)
     dimacs=f'p cnf {f.variables} {len(f.clauses)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in f.clauses)
     trace='\n'.join(proof)+'\n';out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True)
     out.with_suffix('.cnf').write_text(dimacs);out.with_suffix('.drup').write_text(trace)

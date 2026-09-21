@@ -1,0 +1,2359 @@
+{
+  "date": "2026-09-21",
+  "scope": "SAT research controls for exact unmarked voxel-corona and point-window extension with viable frontier. Not the reference browser graph scheduler, a cold speedup claim, or an infinite-tiling certificate.",
+  "runs": [
+    {
+      "tile": "p9-42947",
+      "kind": "window",
+      "inputSha256": "442f568b9c34fb509e34e46998010c4e66283bea9fa4ceebde27626aedae87a2",
+      "resultSha256": "55306cd9f2550fc7d7482a33a7091f3e6617c7cf5b80ea2e6054b878e30f54ef",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 2312,
+        "targetVoxels": 125,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 106.21287500000001,
+        "rounds": 8,
+        "elapsedMs": 1130.418042,
+        "frontierConstraints": 42,
+        "variables": 7358,
+        "clauses": 576441,
+        "cachedFrontierPoints": 733,
+        "cumulativeMs": 1130.418042
+      },
+      "tiles": 34,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "covered": 91,
+        "required": 91,
+        "frontierViable": true,
+        "deadPoints": 0,
+        "frontierPoints": 527
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 306
+      },
+      "obstructionsReplayed": 42,
+      "artifact": "tmp/gcts-p9-42947-frontier-r1-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "3d1471e30abe5f338e1529b39475bdfffad2f03428e20f0eb79a1e26ecc49047",
+        "solve_voxel_pair_corona.py": "f6d4404a9182a544f4c96523f02a1c1e81e1bc6827bab840afafc2d8e0a2f081",
+        "certify_voxel_obstruction.py": "958b1cc4393a6b3a0c109e675ab0c019afd3f23c439c390c6991c64505f2984e"
+      }
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "window",
+      "inputSha256": "8568e360aa1b33dd0ab34c11086012ebcc54780d5776ba23ae5bacfac2db03c2",
+      "resultSha256": "7a541ff759903da0bb8929825f3ef5d06fbe13da0249d9c44fd556bdcb6b42ab",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 5256,
+        "targetVoxels": 343,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 293.048791,
+        "rounds": 9,
+        "elapsedMs": 30015.458458,
+        "frontierConstraints": 64,
+        "variables": 13281,
+        "clauses": 1387842,
+        "cachedFrontierPoints": 884,
+        "cumulativeMs": 30015.458458
+      },
+      "tiles": 79,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "covered": 341,
+        "required": 341,
+        "frontierViable": false,
+        "deadPoints": 21,
+        "frontierPoints": 1012
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 125,
+        "required": 125,
+        "voxels": 711
+      },
+      "obstructionsReplayed": 64,
+      "artifact": "tmp/gcts-p9-42947-frontier-r2-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "3d1471e30abe5f338e1529b39475bdfffad2f03428e20f0eb79a1e26ecc49047",
+        "solve_voxel_pair_corona.py": "f6d4404a9182a544f4c96523f02a1c1e81e1bc6827bab840afafc2d8e0a2f081",
+        "certify_voxel_obstruction.py": "958b1cc4393a6b3a0c109e675ab0c019afd3f23c439c390c6991c64505f2984e"
+      }
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "window",
+      "inputSha256": "6d509e0093e5e577b3d99d1753cf72ea5240eaeae0586fb4fd8ef2b8d93777b1",
+      "resultSha256": "61c917eba1e1d7cb94c3df32b30bd8573d882137242e668de29161b02379ba65",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 2800,
+        "targetVoxels": 125,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 168.427458,
+        "rounds": 11,
+        "elapsedMs": 5760.437458,
+        "frontierConstraints": 63,
+        "variables": 9110,
+        "clauses": 851145,
+        "cachedFrontierPoints": 1023,
+        "cumulativeMs": 5760.437458
+      },
+      "tiles": 31,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "covered": 91,
+        "required": 91,
+        "frontierViable": true,
+        "deadPoints": 0,
+        "frontierPoints": 576
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 310
+      },
+      "obstructionsReplayed": 63,
+      "artifact": "tmp/gcts-p10-346304-frontier-r1-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "3d1471e30abe5f338e1529b39475bdfffad2f03428e20f0eb79a1e26ecc49047",
+        "solve_voxel_pair_corona.py": "f6d4404a9182a544f4c96523f02a1c1e81e1bc6827bab840afafc2d8e0a2f081",
+        "certify_voxel_obstruction.py": "958b1cc4393a6b3a0c109e675ab0c019afd3f23c439c390c6991c64505f2984e"
+      }
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "window",
+      "inputSha256": "d1f1b73a996d8c66fc0bade274e28385947fddf9a6bb3201e4875918f21bad07",
+      "resultSha256": "dcf7e3bf81dcf77847cb8f1675561f98b2c59a8fa28c7d1bed3ff346701d00d1",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 6272,
+        "targetVoxels": 343,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 453.892917,
+        "rounds": 1,
+        "elapsedMs": 30028.054375,
+        "frontierConstraints": 0,
+        "variables": 6272,
+        "clauses": 1883688,
+        "cachedFrontierPoints": 0,
+        "cumulativeMs": 30028.054375
+      },
+      "tiles": 1,
+      "point": {
+        "complete": false,
+        "coreComplete": false,
+        "covered": 10,
+        "required": 341,
+        "frontierViable": true,
+        "deadPoints": 0,
+        "frontierPoints": 44
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 10,
+        "required": 125,
+        "voxels": 10
+      },
+      "obstructionsReplayed": 0,
+      "artifact": "tmp/gcts-p10-346304-frontier-r2-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "3d1471e30abe5f338e1529b39475bdfffad2f03428e20f0eb79a1e26ecc49047",
+        "solve_voxel_pair_corona.py": "f6d4404a9182a544f4c96523f02a1c1e81e1bc6827bab840afafc2d8e0a2f081",
+        "certify_voxel_obstruction.py": "958b1cc4393a6b3a0c109e675ab0c019afd3f23c439c390c6991c64505f2984e"
+      }
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "window",
+      "inputSha256": "8568e360aa1b33dd0ab34c11086012ebcc54780d5776ba23ae5bacfac2db03c2",
+      "resultSha256": "14a37c4c67c51f42f6bb6eeb94c5d91de81c88696c37a309b450a7c9dacbb6cb",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "sequential",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 5256,
+        "targetVoxels": 343,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 78.196958,
+        "rounds": 3,
+        "elapsedMs": 30044.203208,
+        "frontierConstraints": 16,
+        "variables": 53420,
+        "clauses": 174827,
+        "cachedFrontierPoints": 353,
+        "cumulativeMs": 30044.203208
+      },
+      "tiles": 80,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "covered": 341,
+        "required": 341,
+        "frontierViable": false,
+        "deadPoints": 41,
+        "frontierPoints": 997
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 125,
+        "required": 125,
+        "voxels": 720
+      },
+      "obstructionsReplayed": 16,
+      "artifact": "tmp/gcts-p9-42947-frontier-r2-sequential-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "318ca60f17db0b5d53de9a9022b07fdadd7ef3f4a3248992e3a79c8d6c060ca9",
+        "solve_voxel_pair_corona.py": "852d9e1bf52aa426b2b5e463ff416700cc9ccf7e3ae219fdec5130a40254f0b7",
+        "certify_voxel_obstruction.py": "3002b760b9aabca235baaec476135717281b395661705459f7c30a1041952fc2"
+      }
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "window",
+      "inputSha256": "8568e360aa1b33dd0ab34c11086012ebcc54780d5776ba23ae5bacfac2db03c2",
+      "resultSha256": "369f58b3af0dd8e9f9e184f9e3b3b1ce06692e031f7bf82174e0d20ae560a577",
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "cadical195-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 5256,
+        "targetVoxels": 343,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 288.269958,
+        "rounds": 3,
+        "elapsedMs": 30014.890291,
+        "frontierConstraints": 24,
+        "variables": 8669,
+        "clauses": 1328594,
+        "cachedFrontierPoints": 485,
+        "cumulativeMs": 30014.890291
+      },
+      "tiles": 81,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "covered": 341,
+        "required": 341,
+        "frontierViable": false,
+        "deadPoints": 49,
+        "frontierPoints": 1005
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 125,
+        "required": 125,
+        "voxels": 729
+      },
+      "obstructionsReplayed": 24,
+      "artifact": "tmp/gcts-p9-42947-frontier-r2-cadical-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "139d0e0037297f1176b1ec7306d4fc9529ece7705acde255cec0dd78f1308b16",
+        "solve_voxel_pair_corona.py": "83bc46aecdd4ecaa6ad2e478af27d7639b995f1d446d23f93d531439a8aefe62",
+        "certify_voxel_obstruction.py": "3002b760b9aabca235baaec476135717281b395661705459f7c30a1041952fc2"
+      }
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "b8c2a5ea7ba37eabdc657697e43b2bb903381c44cf88430188bf98f431c3dfcc",
+      "resultSha256": "c4bd357a81f8e01584bd567808eea5f2cf750204a59f9141a6986e0ac375051d",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "sequential",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 46.443375,
+        "rounds": 3,
+        "elapsedMs": 10056.837292,
+        "frontierConstraints": 8,
+        "variables": 37503,
+        "clauses": 140804,
+        "cachedFrontierPoints": 470,
+        "cumulativeMs": 10056.837292
+      },
+      "tiles": 41,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 15
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 410
+      },
+      "obstructionsReplayed": 8,
+      "artifact": "tmp/gcts-p10-346304-pair102-sequential-20260921.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "b8c2a5ea7ba37eabdc657697e43b2bb903381c44cf88430188bf98f431c3dfcc",
+      "resultSha256": "d33f27bba5575238fa354308840d4dd8e431861120c04d26d19a8f74d7827c76",
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "cadical195-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 213.68895799999999,
+        "rounds": 3,
+        "elapsedMs": 10007.371749999998,
+        "frontierConstraints": 12,
+        "variables": 5657,
+        "clauses": 946047,
+        "cachedFrontierPoints": 269,
+        "cumulativeMs": 10007.371749999998
+      },
+      "tiles": 40,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 19
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 400
+      },
+      "obstructionsReplayed": 12,
+      "artifact": "tmp/gcts-p10-346304-pair102-cadical-20260921.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "b8c2a5ea7ba37eabdc657697e43b2bb903381c44cf88430188bf98f431c3dfcc",
+      "resultSha256": "29614a8e1e80f3a23115349fdfe5762a554366dd9c1a9acbf6594d21f3089dba",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 218.596542,
+        "rounds": 2,
+        "elapsedMs": 5017.880125000001,
+        "frontierConstraints": 4,
+        "variables": 4618,
+        "clauses": 934532,
+        "cachedFrontierPoints": 213,
+        "cumulativeMs": 5017.880125000001
+      },
+      "tiles": 43,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 34
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 430
+      },
+      "obstructionsReplayed": 4,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-102.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "64f7b638aa8b5a42b7a2cec2b1b5291022519ed198e7f53b369610e4a983fb66",
+      "resultSha256": "c82733e1f6d3ad7b72c39c070c0ca9f760e110fe9908229daab9192a5a048596",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 211.931709,
+        "rounds": 2,
+        "elapsedMs": 5021.51825,
+        "frontierConstraints": 4,
+        "variables": 4303,
+        "clauses": 927401,
+        "cachedFrontierPoints": 192,
+        "cumulativeMs": 5021.51825
+      },
+      "tiles": 42,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 16
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 420
+      },
+      "obstructionsReplayed": 4,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-100.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "f3d72a816dc873dbc7e8536443e3bb6bf62efc930396846a82d025c989afb582",
+      "resultSha256": "fa8087ace009757a80d020cd058df2aa76e247c9b388622580169b826e220506",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3434,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 20,
+        "preparationMs": 241.91166600000003,
+        "rounds": 1,
+        "elapsedMs": 5012.554625,
+        "frontierConstraints": 20,
+        "variables": 6771,
+        "clauses": 1008381,
+        "cachedFrontierPoints": 0,
+        "cumulativeMs": 10023.303625
+      },
+      "tiles": 2,
+      "point": {
+        "complete": false,
+        "coreComplete": false,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 4,
+        "required": 27,
+        "voxels": 20
+      },
+      "obstructionsReplayed": 0,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-18.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "e06fb0a7faf656f8af46d039f5ccfd49622dad7d162a595e20425faaef479f7f",
+      "resultSha256": "d3d669d2357c6bf0a2bc030e261d9486b32971d3acf9d051d5263d7ecadb5108",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3502,
+        "targetVoxels": 176,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 218.122458,
+        "rounds": 4,
+        "elapsedMs": 5013.953958,
+        "frontierConstraints": 12,
+        "variables": 5755,
+        "clauses": 1009764,
+        "cachedFrontierPoints": 274,
+        "cumulativeMs": 5013.953958
+      },
+      "tiles": 43,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 32
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 22,
+        "required": 27,
+        "voxels": 430
+      },
+      "obstructionsReplayed": 12,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-142.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "4a7947a838c23beea404f0bc945a9de91962a6b938dc68e50456f6bffc51bc1b",
+      "resultSha256": "f712892afebe01e9aeb13bc6217ff5b0d544bc1d094ef7eaf1e68a566f4c58c4",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3526,
+        "targetVoxels": 179,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 222.21058299999999,
+        "rounds": 4,
+        "elapsedMs": 5012.299292,
+        "frontierConstraints": 12,
+        "variables": 5626,
+        "clauses": 1015693,
+        "cachedFrontierPoints": 324,
+        "cumulativeMs": 5012.299292
+      },
+      "tiles": 45,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 30
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 450
+      },
+      "obstructionsReplayed": 12,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-236.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "cbea5b6a5aec9dbbe847372167ab9416d882ac81ba1b456eaaf6232180600a72",
+      "resultSha256": "7b845360a07304fa5e015a1223f50a3606b66234ce0e4ecd61526a037ed4a5c4",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3442,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 52,
+        "preparationMs": 268.004083,
+        "rounds": 2,
+        "elapsedMs": 5018.510582999999,
+        "frontierConstraints": 56,
+        "variables": 9461,
+        "clauses": 1042017,
+        "cachedFrontierPoints": 496,
+        "cumulativeMs": 10019.341250000001
+      },
+      "tiles": 41,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 10
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 410
+      },
+      "obstructionsReplayed": 4,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-4.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "da1f08b6052f81a29ecbf7d36e78235ecb623efa28d8b0e589bb5bbc9c364eeb",
+      "resultSha256": "bd005f2e722bb700a41592623b07be03883b972fd1fc5be5489d30e100dbe55c",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3511,
+        "targetVoxels": 178,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 219.52100000000002,
+        "rounds": 9,
+        "elapsedMs": 5015.726,
+        "frontierConstraints": 32,
+        "variables": 7389,
+        "clauses": 1035679,
+        "cachedFrontierPoints": 431,
+        "cumulativeMs": 5015.726
+      },
+      "tiles": 47,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 35
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 470
+      },
+      "obstructionsReplayed": 32,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-52.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "eeafc57f31d62fcaf829a253ab1c965e5921263a047c85ad35034cb29bd0a57f",
+      "resultSha256": "aa0c23fdeede6af60b01c5bc3bf185cb3b6d6eaad0e252483bb33b6a305e2b05",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3576,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 222.65016599999998,
+        "rounds": 5,
+        "elapsedMs": 5029.212708,
+        "frontierConstraints": 16,
+        "variables": 6925,
+        "clauses": 1051177,
+        "cachedFrontierPoints": 404,
+        "cumulativeMs": 5029.212708
+      },
+      "tiles": 44,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 30
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 440
+      },
+      "obstructionsReplayed": 16,
+      "artifact": "gcts-p10-346304-window-proposals-20260921/result-182.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "b8c2a5ea7ba37eabdc657697e43b2bb903381c44cf88430188bf98f431c3dfcc",
+      "resultSha256": "98297bc9ce43ff815daee7f289e6162c04f131085f6aa2b8f98076cd4ccdb44a",
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 28,
+        "phaseHintsOutsidePool": 3,
+        "preparationMs": 212.052667,
+        "rounds": 3,
+        "elapsedMs": 5001.322292,
+        "frontierConstraints": 8,
+        "variables": 5269,
+        "clauses": 941879,
+        "cachedFrontierPoints": 274,
+        "cumulativeMs": 5001.322292
+      },
+      "tiles": 43,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 36
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 430
+      },
+      "obstructionsReplayed": 8,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-102.json",
+      "phaseHintSha256": "9c9a15643adc27ac70ec862b0779dbdfe2663dfe89c9e30f3c7490b4acce0fdd"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "64f7b638aa8b5a42b7a2cec2b1b5291022519ed198e7f53b369610e4a983fb66",
+      "resultSha256": "eef7dbd62a6ea52e15726d0b7c9b445ab89b869a56601a1a259cf395ec555c86",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3280,
+        "targetVoxels": 164,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 27,
+        "phaseHintsOutsidePool": 4,
+        "preparationMs": 217.034583,
+        "rounds": 6,
+        "elapsedMs": 5015.675291,
+        "frontierConstraints": 20,
+        "variables": 6584,
+        "clauses": 958445,
+        "cachedFrontierPoints": 439,
+        "cumulativeMs": 5015.675291
+      },
+      "tiles": 41,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 34
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 410
+      },
+      "obstructionsReplayed": 20,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-100.json",
+      "phaseHintSha256": "b92a3e667eb443f0282e4b91f298161b4f4accfcf2e0a9d421be49ad20cb9210"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "f3d72a816dc873dbc7e8536443e3bb6bf62efc930396846a82d025c989afb582",
+      "resultSha256": "d4bd13d9b0b9e5e169e04d72d9c504d47eeb0009eeaf7213498fc84bea6eece2",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3434,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 20,
+        "phaseHints": 27,
+        "phaseHintsOutsidePool": 4,
+        "preparationMs": 263.47620900000004,
+        "rounds": 1,
+        "elapsedMs": 5124.106334,
+        "frontierConstraints": 20,
+        "variables": 6771,
+        "clauses": 1008381,
+        "cachedFrontierPoints": 0,
+        "cumulativeMs": 10134.855334
+      },
+      "tiles": 2,
+      "point": {
+        "complete": false,
+        "coreComplete": false,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 4,
+        "required": 27,
+        "voxels": 20
+      },
+      "obstructionsReplayed": 0,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-18.json",
+      "phaseHintSha256": "9d47d53f06aa1266df6839787c93c14b5643f795b07670d4c030d8cc69aff621"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "e06fb0a7faf656f8af46d039f5ccfd49622dad7d162a595e20425faaef479f7f",
+      "resultSha256": "d739d276dcf72719727acd4c547db60cf824ad6d7f82912e34b5ef7ab9ef9f58",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3502,
+        "targetVoxels": 176,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 28,
+        "phaseHintsOutsidePool": 3,
+        "preparationMs": 217.52529199999998,
+        "rounds": 6,
+        "elapsedMs": 5064.407,
+        "frontierConstraints": 20,
+        "variables": 6554,
+        "clauses": 1023437,
+        "cachedFrontierPoints": 419,
+        "cumulativeMs": 5064.407
+      },
+      "tiles": 47,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 29
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 470
+      },
+      "obstructionsReplayed": 20,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-142.json",
+      "phaseHintSha256": "382a2dc9a8b5b7aca77b719e86f8900a163e0d38b78e976aed6bf6e79f5025ec"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "4a7947a838c23beea404f0bc945a9de91962a6b938dc68e50456f6bffc51bc1b",
+      "resultSha256": "1a426907d988625f85162440c09caa177a7a7b10312542e8eb16a7b19aa4c755",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3526,
+        "targetVoxels": 179,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 27,
+        "phaseHintsOutsidePool": 4,
+        "preparationMs": 218.846542,
+        "rounds": 4,
+        "elapsedMs": 5029.911125,
+        "frontierConstraints": 12,
+        "variables": 6005,
+        "clauses": 1022441,
+        "cachedFrontierPoints": 395,
+        "cumulativeMs": 5029.911125
+      },
+      "tiles": 45,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 44
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 450
+      },
+      "obstructionsReplayed": 12,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-236.json",
+      "phaseHintSha256": "9c9a15643adc27ac70ec862b0779dbdfe2663dfe89c9e30f3c7490b4acce0fdd"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "cbea5b6a5aec9dbbe847372167ab9416d882ac81ba1b456eaaf6232180600a72",
+      "resultSha256": "6f29b34aee1b0bbe8d791ad42dbe10f4473f8bca1c8920de94fbfce898e63f72",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3442,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 52,
+        "phaseHints": 25,
+        "phaseHintsOutsidePool": 6,
+        "preparationMs": 269.689,
+        "rounds": 2,
+        "elapsedMs": 5021.711084,
+        "frontierConstraints": 56,
+        "variables": 9461,
+        "clauses": 1042017,
+        "cachedFrontierPoints": 496,
+        "cumulativeMs": 10022.541751
+      },
+      "tiles": 41,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 10
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 410
+      },
+      "obstructionsReplayed": 4,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-4.json",
+      "phaseHintSha256": "382a2dc9a8b5b7aca77b719e86f8900a163e0d38b78e976aed6bf6e79f5025ec"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "da1f08b6052f81a29ecbf7d36e78235ecb623efa28d8b0e589bb5bbc9c364eeb",
+      "resultSha256": "439ac92d11b6b9acebaace98dc5a234adb575ecad7a9f77ee4f2303a4dd3ff2c",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3511,
+        "targetVoxels": 178,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 25,
+        "phaseHintsOutsidePool": 6,
+        "preparationMs": 220.086917,
+        "rounds": 7,
+        "elapsedMs": 5015.243584,
+        "frontierConstraints": 24,
+        "variables": 7379,
+        "clauses": 1038153,
+        "cachedFrontierPoints": 530,
+        "cumulativeMs": 5015.243584
+      },
+      "tiles": 49,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 26
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 490
+      },
+      "obstructionsReplayed": 24,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-52.json",
+      "phaseHintSha256": "74d90829759038af655790f6286857682b151a5e14309ec692c69b8175daacc4"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "eeafc57f31d62fcaf829a253ab1c965e5921263a047c85ad35034cb29bd0a57f",
+      "resultSha256": "2970218dd034d28ddf75eb1305ff3d74f769108e9af45f21f4c7745fa8a91b72",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3576,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 26,
+        "phaseHintsOutsidePool": 5,
+        "preparationMs": 220.09754099999998,
+        "rounds": 12,
+        "elapsedMs": 5013.417291,
+        "frontierConstraints": 44,
+        "variables": 9032,
+        "clauses": 1076358,
+        "cachedFrontierPoints": 604,
+        "cumulativeMs": 5013.417291
+      },
+      "tiles": 45,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 20
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 20,
+        "required": 27,
+        "voxels": 450
+      },
+      "obstructionsReplayed": 44,
+      "artifact": "gcts-p10-346304-hinted-proposals-20260921/result-182.json",
+      "phaseHintSha256": "3ed4f89476fcb0791672b0812df134ec73d9cec55625065a82d14eb92dd0e8cc"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "eeafc57f31d62fcaf829a253ab1c965e5921263a047c85ad35034cb29bd0a57f",
+      "resultSha256": "4d6a7c74feea1641165c2425e98f6ec2d3bb390ad0f8a79d178e6d5dae283466",
+      "status": "invalid",
+      "reason": "complete finite voxel formula exhausted",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3576,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 44,
+        "phaseHints": 26,
+        "phaseHintsOutsidePool": 5,
+        "preparationMs": 306.441291,
+        "rounds": 8,
+        "elapsedMs": 10949.052,
+        "frontierConstraints": 99,
+        "variables": 11450,
+        "clauses": 1103168,
+        "cachedFrontierPoints": 1057,
+        "cumulativeMs": 15962.469291
+      },
+      "tiles": 45,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 13
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 450
+      },
+      "obstructionsReplayed": 55,
+      "artifact": "tmp/gcts-p10-346304-pair182-hinted-continuation-20260921.json",
+      "phaseHintSha256": "3ed4f89476fcb0791672b0812df134ec73d9cec55625065a82d14eb92dd0e8cc"
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "window",
+      "inputSha256": "8568e360aa1b33dd0ab34c11086012ebcc54780d5776ba23ae5bacfac2db03c2",
+      "resultSha256": "1065d9d7360874c8286a9ea9fc7ec951ad40abed8dffb6645d4e1ea790991590",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 5256,
+        "targetVoxels": 343,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 64,
+        "phaseHints": 34,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 410.402833,
+        "rounds": 8,
+        "elapsedMs": 60059.780333,
+        "frontierConstraints": 120,
+        "variables": 16367,
+        "clauses": 1417922,
+        "cachedFrontierPoints": 1063,
+        "cumulativeMs": 90075.23879100001
+      },
+      "tiles": 71,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "covered": 341,
+        "required": 341,
+        "frontierViable": false,
+        "deadPoints": 19,
+        "frontierPoints": 914
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 125,
+        "required": 125,
+        "voxels": 639
+      },
+      "obstructionsReplayed": 56,
+      "artifact": "tmp/gcts-p9-42947-frontier-r2-hinted-continuation-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "2055bbf0dfc9d8025f1219d77bdf9f2003564b8c3c0d09b6e5f48df800b61a81",
+        "solve_voxel_pair_corona.py": "66c5bd5a2684ca3df9047100059b03ecc5cdd4dd597a7cc634cdb2f8227bcf54",
+        "certify_voxel_obstruction.py": "3002b760b9aabca235baaec476135717281b395661705459f7c30a1041952fc2"
+      },
+      "phaseHintSha256": "55306cd9f2550fc7d7482a33a7091f3e6617c7cf5b80ea2e6054b878e30f54ef"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "window",
+      "inputSha256": "63868051b0e3d75ea07e868f5578412efb9d81603e37df3c8f949c9281e2eb64",
+      "resultSha256": "fac900633e531bc4a2617ecef9a7d76df46b91f825d3e60c35e95cd7ab2503dd",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 8,
+        "scope": "Exact unmarked finite point window plus viable exposed frontier; nonreference SAT scheduling",
+        "problem": "point-window",
+        "candidates": 2358,
+        "targetVoxels": 108,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 25,
+        "phaseHintsOutsidePool": 6,
+        "preparationMs": 129.038125,
+        "rounds": 11,
+        "elapsedMs": 6228.360292,
+        "frontierConstraints": 57,
+        "variables": 7916,
+        "clauses": 694738,
+        "cachedFrontierPoints": 909,
+        "cumulativeMs": 6228.360292
+      },
+      "tiles": 32,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "covered": 54,
+        "required": 54,
+        "frontierViable": true,
+        "deadPoints": 0,
+        "frontierPoints": 593
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 10,
+        "required": 10,
+        "voxels": 320
+      },
+      "obstructionsReplayed": 57,
+      "artifact": "tmp/gcts-p10-346304-root-corona-hinted-20260921.json",
+      "sourceHashes": {
+        "solve_voxel_frontier_window.py": "2055bbf0dfc9d8025f1219d77bdf9f2003564b8c3c0d09b6e5f48df800b61a81",
+        "solve_voxel_pair_corona.py": "66c5bd5a2684ca3df9047100059b03ecc5cdd4dd597a7cc634cdb2f8227bcf54",
+        "certify_voxel_obstruction.py": "3002b760b9aabca235baaec476135717281b395661705459f7c30a1041952fc2"
+      },
+      "phaseHintSha256": "61c917eba1e1d7cb94c3df32b30bd8573d882137242e668de29161b02379ba65"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "65d22506b8db0f0f144f21de087f428199a34d984bf01b13ae677a5bfd0cffdf",
+      "resultSha256": "2fc27f50afd880f8be2e84e83b2cb9c16b92bcf3da90596cc39234aace62c19f",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3184,
+        "targetVoxels": 160,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 24,
+        "phaseHints": 32,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 243.29116700000003,
+        "rounds": 4,
+        "elapsedMs": 4925.223084,
+        "frontierConstraints": 33,
+        "variables": 8191,
+        "clauses": 955838,
+        "cachedFrontierPoints": 695,
+        "cumulativeMs": 9941.510876
+      },
+      "tiles": 36,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 24,
+        "required": 27,
+        "voxels": 360
+      },
+      "obstructionsReplayed": 9,
+      "artifact": "gcts-p10-346304-root-corona-proposals-20260921/result-1.json",
+      "phaseHintSha256": "3b9d6cba641f9ca3d0dc1f3aac8ba79db69cb72a2f83c8ac2407a7f23f41a625"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "77041a4dab6512dc141fbbde26f10bdee9c03409bec33b8260ef708622d818d9",
+      "resultSha256": "ca8d0b95b6c55fe345f5d85842b1cb323ede8728793ab6df1288c67ed6c5ce46",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3128,
+        "targetVoxels": 156,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 32,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 207.320125,
+        "rounds": 13,
+        "elapsedMs": 6830.315667,
+        "frontierConstraints": 48,
+        "variables": 8884,
+        "clauses": 946246,
+        "cachedFrontierPoints": 851,
+        "cumulativeMs": 6830.315667
+      },
+      "tiles": 35,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 24,
+        "required": 27,
+        "voxels": 350
+      },
+      "obstructionsReplayed": 48,
+      "artifact": "gcts-p10-346304-root-corona-proposals-20260921/result-43.json",
+      "phaseHintSha256": "dad2133fa8cec769fb131ce19a4616605f108367d55f0ed208855f943b34e139"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "f6d825182a0946c0da794bdb400cbe6e56e98bafa4718d2685d51d2c0c5ccbd0",
+      "resultSha256": "39180b8b74704a6ce06e8a33fb9dda3404fe89023d25886061813706e85a90a6",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3564,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 32,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 218.717583,
+        "rounds": 16,
+        "elapsedMs": 6109.522500000001,
+        "frontierConstraints": 58,
+        "variables": 10139,
+        "clauses": 1089921,
+        "cachedFrontierPoints": 1028,
+        "cumulativeMs": 6109.522500000001
+      },
+      "tiles": 45,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 450
+      },
+      "obstructionsReplayed": 58,
+      "artifact": "gcts-p10-346304-root-corona-proposals-20260921/result-223.json",
+      "phaseHintSha256": "119669dc3d6dca8053e7a0d50f17cd8ac17906139f53abe5aa7b8d76c6c45f6e"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "c58bc4eac892379a62f42e89da586d1e162621962a4f973ab63ef2039730bddd",
+      "resultSha256": "797cbdcbc89ca5939232843c9aac7d13c93aebcb617469df406c43ef9fade9c7",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3504,
+        "targetVoxels": 178,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 32,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 217.938208,
+        "rounds": 23,
+        "elapsedMs": 10011.394166999999,
+        "frontierConstraints": 88,
+        "variables": 11345,
+        "clauses": 1081698,
+        "cachedFrontierPoints": 906,
+        "cumulativeMs": 10011.394166999999
+      },
+      "tiles": 42,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 8
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 420
+      },
+      "obstructionsReplayed": 88,
+      "artifact": "gcts-p10-346304-root-corona-proposals-20260921/result-81.json",
+      "phaseHintSha256": "fd60db53a82ebb3b2c58411111a6779936ffdb125f1e53e28e9ebf672ec69da8"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "f339625c91f88ba48c4b0dd9f67dc86d7c34e35f56e512dd53e3cc60cec20b08",
+      "resultSha256": "7f8da4ea15d0c1dd4686f5a7d5e6e3add3b3807c426db42244c511945ce64cad",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3384,
+        "targetVoxels": 171,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 36,
+        "phaseHintsOutsidePool": 9,
+        "preparationMs": 216.931709,
+        "rounds": 20,
+        "elapsedMs": 8615.645209,
+        "frontierConstraints": 72,
+        "variables": 10535,
+        "clauses": 1039501,
+        "cachedFrontierPoints": 1007,
+        "cumulativeMs": 8615.645209
+      },
+      "tiles": 41,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 25,
+        "required": 27,
+        "voxels": 410
+      },
+      "obstructionsReplayed": 72,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-188.json",
+      "phaseHintSha256": "38257d4814f42e39134ff0dfc795bca0e20e42cc2849f646ef0b782780a052ac"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "abe1f66fa479da5d349cdfe65e326933fb2e2f874e8892d92bde159e6d649671",
+      "resultSha256": "eb3cfe62d60b4bef48ffcae09a5f2e98bcf485f65125731da6ca2479f36bfa24",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3856,
+        "targetVoxels": 192,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 41,
+        "phaseHintsOutsidePool": 4,
+        "preparationMs": 267.564666,
+        "rounds": 6,
+        "elapsedMs": 10024.451541,
+        "frontierConstraints": 20,
+        "variables": 6984,
+        "clauses": 1117709,
+        "cachedFrontierPoints": 323,
+        "cumulativeMs": 10024.451541
+      },
+      "tiles": 47,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 25
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 470
+      },
+      "obstructionsReplayed": 20,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-67.json",
+      "phaseHintSha256": "abb6742ff010c2a7cb677df0d3a00c91d404d06a35ef364ad94acd2ded6dc738"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "3afdf686927d6692c89c30cfb91443ffadbe45143ada94e689a7aac54cfb6b98",
+      "resultSha256": "70207a1f9322bdf61e3b4871407f8a02fe176b4b4d1f40fd592a5bfba921cf5a",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3745,
+        "targetVoxels": 192,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 37,
+        "phaseHintsOutsidePool": 8,
+        "preparationMs": 227.68954199999996,
+        "rounds": 17,
+        "elapsedMs": 4072.014834000001,
+        "frontierConstraints": 59,
+        "variables": 10818,
+        "clauses": 1149135,
+        "cachedFrontierPoints": 1053,
+        "cumulativeMs": 4072.014834000001
+      },
+      "tiles": 48,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 480
+      },
+      "obstructionsReplayed": 59,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-197.json",
+      "phaseHintSha256": "6fdc84a1a2e508c81b97f5b37c0238000409509f6fd54e263c3a3ec082b2ba97"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "7c121b34239421586fdf69bcc44506e021b2149ef6ae1d4cbc9b00c3a66d67a8",
+      "resultSha256": "727ac75e2cc6aceb542a7d53e5eddd18612d23998ee8e1c41a2383ce4ceb7b43",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3868,
+        "targetVoxels": 192,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 41,
+        "phaseHintsOutsidePool": 4,
+        "preparationMs": 268.33670800000004,
+        "rounds": 10,
+        "elapsedMs": 10013.896749999998,
+        "frontierConstraints": 36,
+        "variables": 8434,
+        "clauses": 1146322,
+        "cachedFrontierPoints": 535,
+        "cumulativeMs": 10013.896749999998
+      },
+      "tiles": 48,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 29
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 24,
+        "required": 27,
+        "voxels": 480
+      },
+      "obstructionsReplayed": 36,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-273.json",
+      "phaseHintSha256": "27cce1a55374d3c3a480d6ef5a426dcb5e2739dfd8b84a1b0cfaee8744da94b5"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "12606650b7c963a16a734f556b012e6584f4adfe1c0d9e8d90a5e8e8f5883ef4",
+      "resultSha256": "ac80f20545aba135d0df9be5d9e540b81eb8ad025df25e9130d9a309e92b982f",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3364,
+        "targetVoxels": 168,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 32,
+        "phaseHintsOutsidePool": 13,
+        "preparationMs": 217.849042,
+        "rounds": 10,
+        "elapsedMs": 10056.056042,
+        "frontierConstraints": 36,
+        "variables": 8775,
+        "clauses": 1012133,
+        "cachedFrontierPoints": 734,
+        "cumulativeMs": 10056.056042
+      },
+      "tiles": 40,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 10
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 26,
+        "required": 27,
+        "voxels": 400
+      },
+      "obstructionsReplayed": 36,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-255.json",
+      "phaseHintSha256": "41226275701014704442d9759e6d3479bfcfb019cf229af68c2ee13f57f41711"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "e06fb0a7faf656f8af46d039f5ccfd49622dad7d162a595e20425faaef479f7f",
+      "resultSha256": "a44fc96533898ef7be52efa06e64122e4d81937789a6928130451aa5c2103d7e",
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3502,
+        "targetVoxels": 176,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 29,
+        "phaseHintsOutsidePool": 16,
+        "preparationMs": 219.388792,
+        "rounds": 13,
+        "elapsedMs": 10048.979333,
+        "frontierConstraints": 48,
+        "variables": 9450,
+        "clauses": 1058646,
+        "cachedFrontierPoints": 764,
+        "cumulativeMs": 10048.979333
+      },
+      "tiles": 47,
+      "point": {
+        "complete": false,
+        "coreComplete": true,
+        "frontierViable": false,
+        "deadPoints": 28
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 23,
+        "required": 27,
+        "voxels": 470
+      },
+      "obstructionsReplayed": 48,
+      "artifact": "gcts-p10-346304-positive-patch-proposals-20260921/result-142.json",
+      "phaseHintSha256": "5a524192609f0c484efcce14fad769ce0bbfd5de2a49c98a872ae1eb1181490b"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "65d22506b8db0f0f144f21de087f428199a34d984bf01b13ae677a5bfd0cffdf",
+      "resultSha256": "7c3fd7802221ed91ba80bdb29ef663a2313008d9b18aba17945e32d85d3cbd2e",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3184,
+        "targetVoxels": 160,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 24,
+        "phaseHints": 0,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 241.53533399999998,
+        "rounds": 4,
+        "elapsedMs": 4896.55525,
+        "frontierConstraints": 33,
+        "variables": 8191,
+        "clauses": 955838,
+        "cachedFrontierPoints": 695,
+        "cumulativeMs": 9912.843042
+      },
+      "tiles": 36,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 24,
+        "required": 27,
+        "voxels": 360
+      },
+      "obstructionsReplayed": 9,
+      "artifact": "tmp/gcts-p10-346304-root-corona-pair1-unhinted-control-20260921.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "77041a4dab6512dc141fbbde26f10bdee9c03409bec33b8260ef708622d818d9",
+      "resultSha256": "039c7a88b4f023e94355de368c942898dc8695442570c8e00abc05ce00932b59",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3128,
+        "targetVoxels": 156,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 0,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 204.18475,
+        "rounds": 12,
+        "elapsedMs": 6729.145667,
+        "frontierConstraints": 42,
+        "variables": 8935,
+        "clauses": 947820,
+        "cachedFrontierPoints": 902,
+        "cumulativeMs": 6729.145667
+      },
+      "tiles": 34,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 23,
+        "required": 27,
+        "voxels": 340
+      },
+      "obstructionsReplayed": 42,
+      "artifact": "tmp/gcts-p10-346304-root-corona-pair43-unhinted-control-20260921.json"
+    },
+    {
+      "tile": "p10-346304",
+      "kind": "pair",
+      "inputSha256": "f6d825182a0946c0da794bdb400cbe6e56e98bafa4718d2685d51d2c0c5ccbd0",
+      "resultSha256": "b5efee2f32b2cc30c47752bf6af11f31afa3c9f868ceb6a1ba8a343cdc9a49a8",
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "atMostOne": "pairwise",
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3564,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "phaseHints": 0,
+        "phaseHintsOutsidePool": 0,
+        "preparationMs": 216.401458,
+        "rounds": 11,
+        "elapsedMs": 5339.703874999999,
+        "frontierConstraints": 39,
+        "variables": 8887,
+        "clauses": 1076962,
+        "cachedFrontierPoints": 963,
+        "cumulativeMs": 5339.703874999999
+      },
+      "tiles": 44,
+      "point": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": 0
+      },
+      "voxel": {
+        "ok": true,
+        "covered": 23,
+        "required": 27,
+        "voxels": 440
+      },
+      "obstructionsReplayed": 39,
+      "artifact": "tmp/gcts-p10-346304-root-corona-pair223-unhinted-control-20260921.json"
+    }
+  ],
+  "listedOracleMs": 402395.21696,
+  "costScope": "Sum of the listed oracle calls only; excludes inherited pilot runs, proof generation/checking, import/synthesis and replay costs. Cumulative fields overlap listed calls and must not be added again.",
+  "latestCatalogue": {
+    "tile": "p10-346304",
+    "pairs": 1924,
+    "orbits": 365,
+    "learning": {
+      "complete": false,
+      "accepted": false,
+      "counts": {
+        "valid": 27,
+        "invalid": 24,
+        "unresolved": 1873
+      },
+      "positivePassed": 27,
+      "negativeBlocked": 24,
+      "points": 96,
+      "values": 96
+    },
+    "resolvedGroups": [
+      {
+        "orbit": 1,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 0,
+            "translation": [
+              2,
+              -2,
+              2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "valid",
+        "reason": null,
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3184,
+          "targetVoxels": 160,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 24,
+          "phaseHints": 32,
+          "phaseHintsOutsidePool": 0,
+          "preparationMs": 243.29116700000003,
+          "rounds": 4,
+          "elapsedMs": 4925.223084,
+          "frontierConstraints": 33,
+          "variables": 8191,
+          "clauses": 955838,
+          "cachedFrontierPoints": 695,
+          "cumulativeMs": 9941.510876
+        }
+      },
+      {
+        "orbit": 2,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 0,
+            "translation": [
+              4,
+              -2,
+              2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "invalid",
+        "reason": "complete finite voxel formula exhausted",
+        "stats": {
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "preparationMs": 220.161792,
+          "rounds": 4,
+          "elapsedMs": 1029.5330000000001,
+          "frontierConstraints": 12,
+          "variables": 5420,
+          "clauses": 986321,
+          "cachedFrontierPoints": 231,
+          "cumulativeMs": 1029.5330000000001
+        }
+      },
+      {
+        "orbit": 3,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 0,
+            "translation": [
+              4,
+              2,
+              -2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "invalid",
+        "reason": "complete finite voxel formula exhausted",
+        "stats": {
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "preparationMs": 213.826583,
+          "rounds": 2,
+          "elapsedMs": 833.2972919999999,
+          "frontierConstraints": 4,
+          "variables": 4722,
+          "clauses": 975997,
+          "cachedFrontierPoints": 133,
+          "cumulativeMs": 833.2972919999999
+        }
+      },
+      {
+        "orbit": 8,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 0,
+            "translation": [
+              2,
+              2,
+              6
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "invalid",
+        "reason": "complete finite voxel formula exhausted",
+        "stats": {
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3780,
+          "targetVoxels": 192,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "preparationMs": 228.91616599999998,
+          "rounds": 9,
+          "elapsedMs": 2342.815458,
+          "frontierConstraints": 32,
+          "variables": 9331,
+          "clauses": 1142090,
+          "cachedFrontierPoints": 679,
+          "cumulativeMs": 2342.815458
+        }
+      },
+      {
+        "orbit": 43,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 1,
+            "translation": [
+              0,
+              2,
+              2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "valid",
+        "reason": null,
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3128,
+          "targetVoxels": 156,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "phaseHints": 32,
+          "phaseHintsOutsidePool": 0,
+          "preparationMs": 207.320125,
+          "rounds": 13,
+          "elapsedMs": 6830.315667,
+          "frontierConstraints": 48,
+          "variables": 8884,
+          "clauses": 946246,
+          "cachedFrontierPoints": 851,
+          "cumulativeMs": 6830.315667
+        }
+      },
+      {
+        "orbit": 182,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 3,
+            "translation": [
+              4,
+              -2,
+              -2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "invalid",
+        "reason": "complete finite voxel formula exhausted",
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 8,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3576,
+          "targetVoxels": 180,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 44,
+          "phaseHints": 26,
+          "phaseHintsOutsidePool": 5,
+          "preparationMs": 306.441291,
+          "rounds": 8,
+          "elapsedMs": 10949.052,
+          "frontierConstraints": 99,
+          "variables": 11450,
+          "clauses": 1103168,
+          "cachedFrontierPoints": 1057,
+          "cumulativeMs": 15962.469291
+        }
+      },
+      {
+        "orbit": 188,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 3,
+            "translation": [
+              2,
+              2,
+              2
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "valid",
+        "reason": null,
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3384,
+          "targetVoxels": 171,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "phaseHints": 36,
+          "phaseHintsOutsidePool": 9,
+          "preparationMs": 216.931709,
+          "rounds": 20,
+          "elapsedMs": 8615.645209,
+          "frontierConstraints": 72,
+          "variables": 10535,
+          "clauses": 1039501,
+          "cachedFrontierPoints": 1007,
+          "cumulativeMs": 8615.645209
+        }
+      },
+      {
+        "orbit": 197,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 3,
+            "translation": [
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "members": 6,
+        "status": "valid",
+        "reason": null,
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3745,
+          "targetVoxels": 192,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "phaseHints": 37,
+          "phaseHintsOutsidePool": 8,
+          "preparationMs": 227.68954199999996,
+          "rounds": 17,
+          "elapsedMs": 4072.014834000001,
+          "frontierConstraints": 59,
+          "variables": 10818,
+          "clauses": 1149135,
+          "cachedFrontierPoints": 1053,
+          "cumulativeMs": 4072.014834000001
+        }
+      },
+      {
+        "orbit": 223,
+        "pair": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "oi": 3,
+            "translation": [
+              0,
+              0,
+              4
+            ]
+          }
+        ],
+        "members": 3,
+        "status": "valid",
+        "reason": null,
+        "stats": {
+          "atMostOne": "pairwise",
+          "backend": "glucose3-incremental",
+          "solverVersion": "python-sat 1.9.dev15",
+          "encoding": "voxel-cover",
+          "frontier": "occupancy",
+          "frontierBatch": 4,
+          "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+          "candidates": 3564,
+          "targetVoxels": 180,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 0,
+          "phaseHints": 32,
+          "phaseHintsOutsidePool": 0,
+          "preparationMs": 218.717583,
+          "rounds": 16,
+          "elapsedMs": 6109.522500000001,
+          "frontierConstraints": 58,
+          "variables": 10139,
+          "clauses": 1089921,
+          "cachedFrontierPoints": 1028,
+          "cumulativeMs": 6109.522500000001
+        }
+      }
+    ],
+    "checkpointSha256": "cedafd48bed9c6ce71b790bb41c22d9e30e46e99d926c12ffa198846cf9a8b22",
+    "summarySha256": "8db6979349ba68e88728ba86b1d8df7f201c73e798b4e218b94d3b0eae0e5e09",
+    "learnedAssignmentsPublished": false
+  },
+  "newPairProof": {
+    "verified": true,
+    "geometry": {
+      "volume": 10,
+      "orientations": 8,
+      "properRotations": 24,
+      "relativePairSchemas": 48
+    },
+    "stats": {
+      "candidates": 3576,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 99,
+      "variables": 11450,
+      "clauses": 1103168
+    },
+    "checkerSeconds": 4.195087125,
+    "proofMethod": "DRAT-trim, RUP-only mode",
+    "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity."
+  },
+  "artifacts": {
+    "witnesses": "3d-viable-frontier-witnesses-2026-09-21.json",
+    "pairCertificate": "p10-346304-pair-obstruction/manifest.json"
+  },
+  "unresolvedPolicy": "Any time, round or process budget remains unresolved. No marking activated on this incomplete catalogue."
+}

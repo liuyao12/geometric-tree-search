@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {verifyPointWindowFrontier} from './lib/verify-point-window-frontier.mjs';
+const model={capacity:3,required:[{pos:[0,0,0]}],orientations:[{cells:[{pos:[0,0,0],weight:3}]},{cells:[{pos:[0,0,0],weight:1}]}]},root={oi:0,translation:[0,0,0]};
+assert.ok(verifyPointWindowFrontier(model,[root],[root]).complete);
+const dead=verifyPointWindowFrontier(model,[root,{oi:1,translation:[2,0,0]}],[root]);assert.ok(dead.coreComplete);assert.equal(dead.frontierViable,false);assert.deepEqual(dead.deadPoints,[[2,0,0]]);
+const missing=verifyPointWindowFrontier(model,[{oi:0,translation:[2,0,0]}]);assert.equal(missing.coreComplete,false);assert.ok(missing.frontierViable);assert.equal(missing.complete,false);
+assert.throws(()=>verifyPointWindowFrontier(model,[],[root]),/fixed/);
+assert.throws(()=>verifyPointWindowFrontier(model,[root,root]),/Invalid/);
+assert.throws(()=>verifyPointWindowFrontier(model,[{oi:0,translation:[0]}]),/Invalid/);
+assert.throws(()=>verifyPointWindowFrontier({...model,orientations:[{...model.orientations[0],marks:[{pos:[0,0,0],value:1}]}]},[root]),/unmarked/);
+console.log('PASS complete target versus viable frontier, missing fixed seed, malformed/duplicate placements and unmarked-only verifier.');

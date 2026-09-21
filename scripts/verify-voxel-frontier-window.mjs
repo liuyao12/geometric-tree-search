@@ -1,0 +1,17 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {verifyPointWindowFrontier} from './lib/verify-point-window-frontier.mjs';
+import {verifyPointObstruction} from './lib/verify-point-obstruction.mjs';
+import {verifyVoxelPatch} from '../apps/3d-lattice-tiler/voxel-point-model.js';
+const args=Object.fromEntries(process.argv.slice(2).map(a=>a.replace(/^--/,'').split('=')));
+if(!args.input||!args.result||!args.output)throw Error('Supply --input, --result and --output');
+const input=await readFile(args.input),raw=await readFile(args.result),data=JSON.parse(input),result=JSON.parse(raw);
+const ordered=x=>Array.isArray(x)?x.map(ordered):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,ordered(x[k])])):x;
+const sha=b=>createHash('sha256').update(b).digest('hex');
+if(result.problemSha256!==sha(JSON.stringify(ordered(data))))throw Error('Result belongs to another problem');
+if(result.stats?.problem!=='point-window'||data.pair||data.pairExclusions?.length)throw Error('Expected unmarked window protocol');
+for(const n of result.nogoods??[])verifyPointObstruction(data.model,n);
+const lastPatch=verifyPointWindowFrontier(data.model,result.placements,data.fixed),voxel=verifyVoxelPatch(data.model,result.placements,{requireTarget:false});
+if(!voxel.ok||result.status==='valid'&&!lastPatch.complete)throw Error('Window witness failed independent replay');
+const receipt={inputSha256:sha(input),resultSha256:sha(raw),status:result.status,tiles:result.placements.length,lastPatch,voxel,obstructionsReplayed:result.nogoods?.length??0,scope:'Positive patch and individual dead-frontier checks replayed in point and voxel models. Does not re-prove an UNSAT result or certify infinite extension.'};
+await writeFile(args.output,JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({...receipt,lastPatch:{...lastPatch,deadPoints:lastPatch.deadPoints.length}}));

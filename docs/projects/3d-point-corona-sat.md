@@ -549,3 +549,16 @@ experiment, not an accepted marking or reference graph lane. Period proposals
 from the unmarked patch exhaust 10,440 sampled bases without a certificate;
 no periodicity or aperiodicity classification follows. Further work must resolve
 the pending pair coronas or find a stronger independently justified obstruction.
+
+
+## Viable-frontier windows and the first p10 positive classes
+
+The [viable-frontier follow-up](3d-viable-frontier-search.md) strengthens the
+finite window check and uses verified patches to propose full pair-corona tests.
+The p10-346304 catalogue now contains 27 positives, 24 negatives and 1,873
+unresolved pairs. All resolved labels fit the provisional 96-value marking,
+but it is not accepted. Five positive classes have replayable witnesses;
+one newly negative class has a published RUP proof and excludes six raw pairs.
+The p9-42947 seven-cube with viable frontier remains unresolved after continuation.
+The phase-hint controls establish no speedup, and no infinite construction or
+aperiodic monotile follows from these finite results.

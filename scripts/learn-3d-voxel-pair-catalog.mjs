@@ -18,7 +18,7 @@ const record=tile==='cube'?{voxels:[[0,0,0]]}:POLYCUBE_GCTS_CANDIDATES.find(t=>t
 const frontierBatch=Number(args['frontier-batch']??1),oracle=args.oracle??'z3';
 if(!['z3','glucose'].includes(oracle))throw Error('Unknown oracle');
 const timeMs=Number(args['pair-ms']??5000),frontier=args.frontier??'nogood',maxGroups=Number(args['max-groups']??100000),output=args.output??`/tmp/gcts-orbits-${tile}`;
-if(!Number.isSafeInteger(frontierBatch)||frontierBatch<1||!Number.isSafeInteger(timeMs)||timeMs<1||!Number.isSafeInteger(maxGroups)||maxGroups<1||!['nogood','occupancy'].includes(frontier))throw Error('Invalid oracle options');
+if(!Number.isSafeInteger(frontierBatch)||frontierBatch<1||!Number.isSafeInteger(timeMs)||timeMs<1||!Number.isSafeInteger(maxGroups)||maxGroups<0||!['nogood','occupancy'].includes(frontier))throw Error('Invalid oracle options');
 await mkdir(output,{recursive:true});
 if(oracle==='glucose'&&frontier!=='occupancy')throw Error('Glucose oracle requires occupancy frontier');
 const started=performance.now(),model=prepareVoxelPointModel(record.voxels,{name:tile,radius:1}),orbits=pairOrbits(model),sha=x=>createHash('sha256').update(x).digest('hex');
@@ -35,7 +35,7 @@ if(checkpoint){
 if(args.parent){
  const parentRaw=await readFile(`${args.parent}/checkpoint.json`),parent=JSON.parse(parentRaw);
  if(parent.modelSha!==modelSha||parent.orbitSha!==orbitSha)throw Error('Parent geometry or pair catalogue changed');
- checkpoint.parents=[...(parent.parents??[]),{checkpointSha256:sha(parentRaw),sources:parent.sources,runs:parent.runs}];
+ checkpoint.parents=[...(parent.parents??[]),{checkpointSha256:sha(parentRaw),sources:parent.sources,runs:parent.runs,importedEvidence:parent.importedEvidence??null}];
  for(const [gi,entry] of Object.entries(parent.groups)){
   const raw=await readFile(`${args.parent}/${entry.file}`);if(sha(raw)!==entry.sha256||JSON.parse(raw).status!==entry.status)throw Error('Parent artifact changed');
   const file=`inherited-${gi}.json`;await writeFile(`${output}/${file}`,raw);checkpoint.groups[gi]={...entry,file};
@@ -45,14 +45,19 @@ if(args.resolved){
  if(!args.parent)throw Error('Imported refinements require an explicit parent checkpoint');
  const manifestRaw=await readFile(args.resolved),manifest=JSON.parse(manifestRaw);checkpoint.importedEvidence={manifestSha256:sha(manifestRaw),sources:manifest.sources,rows:[]};
  for(const entry of manifest.rows){
-  const gi=entry.orbit,prior=checkpoint.groups[gi];if(!Number.isInteger(gi)||!prior)throw Error('Imported orbit is not in parent');
-  const before=JSON.parse(await readFile(`${output}/${prior.file}`)),raw=await readFile(entry.file),result=JSON.parse(raw);
-  if(sha(raw)!==entry.sha256||!before.problemSha256||result.problemSha256!==before.problemSha256)throw Error('Imported result belongs to another problem');
-  if(!['valid','invalid','unresolved'].includes(result.status)||before.status!=='unresolved'&&result.status!==before.status)throw Error('Imported evidence conflicts with a resolved label');
+  const gi=entry.orbit,prior=checkpoint.groups[gi];if(!Number.isInteger(gi)||gi<0||gi>=orbits.groups.length)throw Error('Imported orbit is outside the catalogue');
+  const before=prior?JSON.parse(await readFile(`${output}/${prior.file}`)):null,raw=await readFile(entry.file),result=JSON.parse(raw);
+  // Unattempted classes can receive external witnesses too. Reconstruct their
+  // exact problem identity rather than relying on an older result file.
+  const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])])):x;
+  const problemSha=sha(JSON.stringify(canonical({model,pair:orbits.groups[gi].pair})));
+  if(sha(raw)!==entry.sha256||result.problemSha256!==problemSha)throw Error('Imported result belongs to another problem');
+  if(!['valid','invalid','unresolved'].includes(result.status)||before&&before.status!=='unresolved'&&result.status!==before.status)throw Error('Imported evidence conflicts with a resolved label');
   const file=`imported-${gi}.json`;await writeFile(`${output}/${file}`,raw);checkpoint.groups[gi]={file,sha256:sha(raw),status:result.status};checkpoint.importedEvidence.rows.push({orbit:gi,sha256:sha(raw),status:result.status});
  }
 }
 
+await writeFile(`${output}/model.json`,JSON.stringify(model));
 const run={timeMs,frontier,frontierBatch,oracle,startedAt:new Date().toISOString(),attempted:0};checkpoint.runs.push(run);
 async function save(){await writeFile(`${output}/checkpoint-next.json`,JSON.stringify(checkpoint));await rename(`${output}/checkpoint-next.json`,`${output}/checkpoint.json`);}
 const labels=Array(orbits.pairs.length),groupReport=[];
