@@ -14,7 +14,7 @@ import z3
 from solve_point_pair_corona import voxel_core_domain
 
 
-def solve(model, time_ms=20000, marked=False, max_candidates=100000):
+def solve(model, time_ms=20000, marked=False, max_candidates=100000, fixed=None, pair_exclusions=None):
     start = time.perf_counter()
     deadline = start + time_ms/1000
     def budget():
@@ -28,34 +28,71 @@ def solve(model, time_ms=20000, marked=False, max_candidates=100000):
     core = {tuple(p['pos']) for p in model['required']}
     target = voxel_core_domain(model, core)
     by_point, by_mark = defaultdict(list), defaultdict(lambda: defaultdict(list))
+    fixed = fixed or []
+    fixed_specs = []
+    for p in fixed:
+        oi, t = p['oi'], p['translation']
+        if type(oi) is not int or not 0 <= oi < len(model['orientations']) or len(t) != 3 or any(type(x) is not int or x % 2 for x in t):
+            raise ValueError('Invalid fixed placement')
+        fixed_specs.append((oi, tuple(t)))
+    if len(set(fixed_specs)) != len(fixed_specs):
+        raise ValueError('Duplicate fixed placement')
     specs, seen = [], set()
+    variables = {}
     solver = z3.Then('simplify', 'propagate-values', 'pb-preprocess', 'pb2bv', 'sat').solver()
-    result = {'result': 'unknown', 'reason': None, 'placements': [], 'stats': {'marked': marked, 'backend': 'z3-pb2bv-sat', 'solverVersion': z3.get_version_string(), 'scope': 'Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling'}}
+    result = {'result': 'unknown', 'reason': None, 'placements': [], 'stats': {'marked': marked, 'fixedPlacements': fixed, 'backend': 'z3-pb2bv-sat', 'solverVersion': z3.get_version_string(), 'scope': 'Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling'}}
+    def add_candidate(oi, t):
+        spec = (oi, t)
+        if spec in seen:
+            return variables[spec]
+        if len(specs) >= max_candidates:
+            raise TimeoutError('candidate budget')
+        seen.add(spec)
+        variable = z3.Bool(f'p{len(specs)}')
+        specs.append((spec, variable))
+        variables[spec] = variable
+        o = model['orientations'][oi]
+        for v in o['voxels']:
+            q = tuple(2*v[k]+1+t[k] for k in range(3))
+            by_point[q].append((variable, 1))
+        if marked:
+            for m in o.get('marks', []):
+                if m['value'] is None or m['value'] == '*':
+                    continue
+                if isinstance(m['value'], (list, dict)):
+                    raise ValueError('This control requires scalar marking entries')
+                k = (tuple(m['pos'][i]+t[i] for i in range(3)), m.get('component', 0))
+                by_mark[k][json.dumps(m['value'])].append(variable)
+        return variable
     try:
+        for oi, t in fixed_specs:
+            solver.add(add_candidate(oi, t))
         for p in sorted(core):
             budget()
             for oi, o in enumerate(model['orientations']):
                 for c in o['cells']:
                     t = tuple(p[k]-c['pos'][k] for k in range(3))
-                    spec = (oi, t)
-                    if any(x % 2 for x in t) or spec in seen:
-                        continue
-                    seen.add(spec)
-                    if len(specs) >= max_candidates:
-                        raise TimeoutError('candidate budget')
-                    variable = z3.Bool(f'p{len(specs)}')
-                    specs.append((spec, variable))
-                    for v in o['voxels']:
-                        q = tuple(2*v[k]+1+t[k] for k in range(3))
-                        by_point[q].append((variable, 1))
-                    if marked:
-                        for m in o.get('marks', []):
-                            if m['value'] is None or m['value'] == '*':
-                                continue
-                            if isinstance(m['value'], (list, dict)):
-                                raise ValueError('This control requires scalar marking entries')
-                            k = (tuple(m['pos'][i]+t[i] for i in range(3)), m.get('component', 0))
-                            by_mark[k][json.dumps(m['value'])].append(variable)
+                    if not any(x % 2 for x in t):
+                        add_candidate(oi, t)
+        excluded_edges = set()
+        for pair in pair_exclusions or []:
+            if len(pair) != 2:
+                raise ValueError('Pair exclusions require exactly two placements')
+            a, b = pair
+            if any(type(p['oi']) is not int or not 0 <= p['oi'] < len(model['orientations']) or len(p['translation']) != 3 or any(type(x) is not int or x % 2 for x in p['translation']) for p in pair):
+                raise ValueError('Invalid pair exclusion')
+            delta = tuple(b['translation'][i]-a['translation'][i] for i in range(3))
+            for (oi, t), v in specs:
+                if oi != a['oi']:
+                    continue
+                other = (b['oi'], tuple(t[i]+delta[i] for i in range(3)))
+                if other in variables:
+                    edge = tuple(sorted((str(v), str(variables[other]))))
+                    if edge not in excluded_edges:
+                        solver.add(z3.Or(z3.Not(v), z3.Not(variables[other])))
+                        excluded_edges.add(edge)
+            budget()
+        result['stats']['pairExclusionEdges'] = len(excluded_edges)
         for p, terms in by_point.items():
             budget()
             solver.add(z3.PbEq(terms, 1) if p in target else z3.PbLe(terms, 1))
@@ -80,7 +117,7 @@ def solve(model, time_ms=20000, marked=False, max_candidates=100000):
             assignment = solver.model()
             result.update(result='finite_exact', placements=[{'oi': oi, 'translation': list(t)} for (oi, t), v in specs if z3.is_true(assignment.eval(v))])
         elif status == z3.unsat:
-            result.update(result='restricted_model_failure' if marked else 'exhausted_finite', reason='complete finite formula UNSAT; trusted solver, no exported proof')
+            result.update(result='restricted_model_failure' if marked or pair_exclusions else 'exhausted_finite', reason='complete finite formula UNSAT; trusted solver, no exported proof')
         else:
             result['reason'] = solver.reason_unknown()
     except TimeoutError as e:
@@ -99,7 +136,8 @@ if __name__ == '__main__':
     if args.time_ms < 1:
         parser.error('time must be positive')
     raw = Path(args.input).read_bytes()
-    result = solve(json.loads(raw)['model'], args.time_ms, args.marked)
+    data = json.loads(raw)
+    result = solve(data['model'], args.time_ms, args.marked, fixed=data.get('fixed'), pair_exclusions=data.get('pairExclusions'))
     result['inputSha256'] = hashlib.sha256(raw).hexdigest()
     result['sourceSha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     Path(args.output).write_text(json.dumps(result))

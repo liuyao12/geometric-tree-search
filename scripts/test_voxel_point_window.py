@@ -56,3 +56,15 @@ bad=copy.deepcopy(m);bad['orientations'][0]['cells'].append(bad['orientations'][
 try: solve(bad);raise AssertionError('Duplicate accepted')
 except ValueError: pass
 print(f'PASS {count} exhaustive finite-window/marking controls, independent witness replay, budget and duplicate-site rejection.')
+
+# Fixed seeds are obligations even outside the finite target. They participate
+# in all global capacity and marking conflicts and cannot be silently dropped.
+m=model([[0,0,0]],[[1,1,1]])
+far={'oi':0,'translation':[10,0,0]}
+r=solve(m,fixed=[far]);assert r['result']=='finite_exact' and far in r['placements'];assert valid(m,r['placements'])
+m=model([[0,0,0],[1,0,0]],[[1,1,1]])
+assert solve(m,fixed=[{'oi':0,'translation':[10,0,0]},{'oi':0,'translation':[12,0,0]}])['result']=='exhausted_finite'
+for fixed in [[far,far],[{'oi':0,'translation':[1,0,0]}]]:
+    try: solve(m,fixed=fixed);raise AssertionError('Invalid fixed seed accepted')
+    except ValueError: pass
+print('PASS fixed-root inclusion, exterior overlap and invalid fixed-placement controls.')

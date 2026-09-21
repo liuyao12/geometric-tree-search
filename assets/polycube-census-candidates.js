@@ -67,8 +67,8 @@ const FRESH_VOLUME9_BOUNDED = [
     id: "p9-48258",
     voxels: [[0,0,2],[0,1,2],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4],[0,3,2],[0,4,2]],
     mirror_equivalent_id: null,
-    description: "Fresh highly symmetric achiral volume-nine bounded-unresolved representative with a verified radius-two corona.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 63456, periodic_deep_nodes: 908937, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 183, corona_placements_considered: 784, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    description: "Achiral nine-cube cross with a checked pair-corona/window obstruction to integer-grid tiling; unrestricted Euclidean placements remain outside this certificate.",
+    screening: { status: "exact_rejection", certificate: "pair_corona_window_obstruction", grid_only: true, grid_obstruction_report: "docs/projects/p9-48258-grid-obstruction.md", grid_obstruction_manifest: "data/p9-48258-grid-obstruction/manifest.json", grid_obstruction_pairs: 4, grid_obstruction_schemas: 192, grid_obstruction_target_voxels: 343, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 63456, periodic_deep_nodes: 908937, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 183, corona_placements_considered: 784, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   }
 ];
@@ -955,7 +955,9 @@ export const POLYCUBE_GCTS_CANDIDATES = Object.freeze(records.map(candidate => O
   registry_id: `polycube_${candidate.id.replaceAll("-", "_")}`,
   name: ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
     ? `Polycube periodic control ${candidate.id}`
-    : candidate.screening.certificate
+    : candidate.screening.grid_only
+      ? `Polycube grid non-tiler control ${candidate.id}`
+      : candidate.screening.certificate
       ? `Polycube non-tiler control ${candidate.id}`
       : `Polycube candidate ${candidate.id}`,
   kind: "polycube_census",

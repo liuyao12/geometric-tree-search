@@ -1,0 +1,21 @@
+{
+  "status": "UNSAT",
+  "stats": {
+    "candidates": 1394,
+    "targetVoxels": 180,
+    "pairExclusionEdges": 0,
+    "frontierPoints": 52,
+    "variables": 4673,
+    "clauses": 136084,
+    "solveMs": 934.999833
+  },
+  "proofCheck": {
+    "verified": true,
+    "method": "independent reverse unit propagation",
+    "additions": 28380
+  },
+  "inputSha256": "ae29a29aca7b0170ace3c2a657b654976c2be585849066d7ed282e7d4e810268",
+  "cnfSha256": "d1a2f87a5053fa6b7f64180075b3a79dc7d35f6df50d03f1efc1bd783a8636b3",
+  "proofSha256": "d3390b4eb2ea8fa446871b65e8e7c62ac534aed2ffca628a4501be95ced3b114",
+  "totalMs": 112065.73691700002
+}

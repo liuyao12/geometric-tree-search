@@ -1,0 +1,50 @@
+{
+  "tile": "p9-48258",
+  "scope": "No tiling of the integer cubic grid by this polycube under proper cubic rotations and integer translations. Does not rule out unrestricted Euclidean placements.",
+  "cases": [
+    "pair-22",
+    "pair-24",
+    "pair-27",
+    "pair-29",
+    "root-window"
+  ],
+  "checkers": {
+    "solver": "PySAT 1.9.dev15 / Glucose3",
+    "python": "scripts/lib/check_rup.py",
+    "external": {
+      "repository": "https://github.com/marijnheule/drat-trim",
+      "revision": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"
+    }
+  },
+  "files": {
+    "pair-22.cnf.gz": "1c60173e57e6faba1674af00eb71e82a99db8af0c2cb052523d8158d963354f3",
+    "pair-22.drat-check.log": "811c72fc8a31772e4883d2daafd6bf240f4b6aad18e3e6e287870262acddf850",
+    "pair-22.drup.gz": "be76b195c842dd633386a437092bddb695a10d8908f7602ac69d4cccf79776c8",
+    "pair-22.frontier.json": "54420efd289e856e2a568afc4a70ac19f4f6b17b00765ce5d1d4df173357590d",
+    "pair-22.input.json": "027822416ce89fa1a13fcd771996c4073adb740d5ca382d46c45bfb8fd5b66db",
+    "pair-22.json": "eaf3b2c77d150544922fee89871c09deb97f593633417775417cff0b71940ef9",
+    "pair-24.cnf.gz": "68838fc35661ece3f034474b0544a1fea7eec97cba43359cf397c839f6efa570",
+    "pair-24.drat-check.log": "c3b522b4ccaf11d54d1917b5a90742df92af3060b7342f2cdddd0066da26f660",
+    "pair-24.drup.gz": "4952ae5aa363dfda344d23aa30f4d7b246cfb0d549176a269104bdf41ca59534",
+    "pair-24.frontier.json": "e0ea1cd6853ff6fd880c094233663f9091883699e736e9a3c341d126c5cc69bb",
+    "pair-24.input.json": "ae29a29aca7b0170ace3c2a657b654976c2be585849066d7ed282e7d4e810268",
+    "pair-24.json": "b96a3edc9a7b100a40c66f1496d8e8c998c7d2ac2c915ec095056b3a27a571f2",
+    "pair-27.cnf.gz": "f132d97d776f5430c3699c5a8de4e4e33672dfc4070f66019335b411bcd9ed2c",
+    "pair-27.drat-check.log": "1a6201c1edd9fb813c6ed933a046e08d13d1cc243aef0b2f82dd5e5c339a250b",
+    "pair-27.drup.gz": "cf8215b9946a9fd8009f01babc45fd4ccd7d49f15ab4ad8d29a141315cf1a6f7",
+    "pair-27.frontier.json": "b85c57e2db7e69d84d530fcc1f847e76d0020afd149ca92cb8e859c87c2c8df3",
+    "pair-27.input.json": "655551730dbfc188f3ba793bb26320de186d165c9d0e533d6f3df1829786f67d",
+    "pair-27.json": "8d9b01a59b45ab5b66932581bbb4c60ac80acf12995fc0ee81e7a77a83177282",
+    "pair-29.cnf.gz": "a9378519460da703450c2a498e34939a38a72df160ba67caac9e405317c2e1c5",
+    "pair-29.drat-check.log": "570dbda215ab19cc2811c13559748ae94d68caacf43b5801fdfd5f098980e8d3",
+    "pair-29.drup.gz": "673541568f587478099c6df40b6a44584a82f25165b2f2fc8794fed3132eaa1d",
+    "pair-29.frontier.json": "412da613e8c2871b8d8a1c616b121baa0bebced54843448322e1919f43de2a52",
+    "pair-29.input.json": "2468cb1dfeff09ff1de089f838d7594ad770dbc4e91239cc901dd5dd37c50450",
+    "pair-29.json": "d2c1449daf36136c151c45aa34d355801d9ef94214425299d89dfa32480488c2",
+    "root-window.cnf.gz": "6d4506f612ebc2c28438fb3be3a7146ac6c9decf7ccdebad676f501a3d6e25ba",
+    "root-window.drat-check.log": "82ec2c072b2d50772cdb6e211c394270226c471e98090cc0f6a21d1d3a041bf1",
+    "root-window.drup.gz": "57f6fad9364a3787b845fa33718a679ce7a7f64f808ed6a9e69dd9b0181fafaf",
+    "root-window.input.json": "889dffaef5e8be14761e31adcf3b62cb508575a7fc64f07a3282e5f7b1bd649d",
+    "root-window.json": "cbfe2b478b7bde918b569905cdc564e9d0da6830c679cce2c65e22d748a2d776"
+  }
+}

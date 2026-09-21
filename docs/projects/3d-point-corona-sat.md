@@ -1,5 +1,9 @@
 # Exact finite corona constraints for the 3D catalogue
 
+**New result:** a [checked pair-corona/window certificate](p9-48258-grid-obstruction.md)
+now excludes p9-48258 from integer-grid tiling under proper cubic rotations.
+The chronological experiments below retain their original scope and costs.
+
 This research control addresses the label-collection bottleneck in
 [the geometric polycube study](3d-voxel-marking-research.md). It uses the same
 integer point model and the same definition of a viable pair corona. It uses
@@ -372,9 +376,10 @@ orbits 1 and 130 take 61 and 31 additional rounds respectively; these mixed
 concurrent runs are not an isolated timing comparison.
 [Targeted refinement receipt](../../data/3d-batched-corona-refinement-2026-09-21.json).
 
-A subsequent ten-group refinement, reusing saved necessary frontier conditions,
-takes 122.05 seconds. Including the imported witnesses, the catalogue now has
-**81 valid, 3 invalid, and 1,324 unresolved pairs**. All 81 positives pass the
+A ten-group refinement takes 122.05 seconds; a further twenty-group pass takes
+250.52 seconds; another fifteen-group pass takes 148.71 seconds, each reusing
+saved necessary frontier conditions. Including imported witnesses, the catalogue
+now has **252 valid, 3 invalid, and 1,153 unresolved pairs**. All 252 positives pass the
 provisional marking, and all three negatives are blocked with 48 scalar values.
 **The marking is not accepted and no marked growth starts:** the catalogue is
 incomplete. These are local extension labels, not a new infinite classification.

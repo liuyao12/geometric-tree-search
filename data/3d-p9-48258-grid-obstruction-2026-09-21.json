@@ -1,0 +1,80 @@
+{
+  "verified": true,
+  "geometry": {
+    "orientations": 3,
+    "properRotations": 24,
+    "localPairs": 4,
+    "relativePairSchemas": 192,
+    "requiredVoxels": 343
+  },
+  "cases": [
+    {
+      "case": "pair-22",
+      "candidates": 1408,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 48,
+      "proofCheck": {
+        "verified": true,
+        "method": "external DRAT-trim"
+      },
+      "seconds": 1.205372791
+    },
+    {
+      "case": "pair-24",
+      "candidates": 1394,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 52,
+      "proofCheck": {
+        "verified": true,
+        "method": "external DRAT-trim"
+      },
+      "seconds": 0.880533375
+    },
+    {
+      "case": "pair-27",
+      "candidates": 1392,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 40,
+      "proofCheck": {
+        "verified": true,
+        "method": "external DRAT-trim"
+      },
+      "seconds": 0.639880292
+    },
+    {
+      "case": "pair-29",
+      "candidates": 1404,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 56,
+      "proofCheck": {
+        "verified": true,
+        "method": "external DRAT-trim"
+      },
+      "seconds": 0.740149916
+    },
+    {
+      "case": "root-window",
+      "candidates": 2205,
+      "targetVoxels": 343,
+      "pairExclusionEdges": 35808,
+      "frontierPoints": 0,
+      "proofCheck": {
+        "verified": true,
+        "method": "external DRAT-trim"
+      },
+      "seconds": 0.6140954999999999
+    }
+  ],
+  "scope": "No tiling of the integer cubic grid by this polycube under proper cubic rotations and integer translations. Does not rule out unrestricted Euclidean placements.",
+  "sources": {
+    "scripts/certify_voxel_obstruction.py": "0ed03623648f82a1bffb09efc6972ab20811024c6ab6ae4a0593913cc71f55cf",
+    "scripts/verify_p9_48258_certificate.py": "d9d23a4d2e17e56074203d6106894f5088c2dbb885875bcacb3160b5e917610f",
+    "scripts/lib/check_rup.py": "77cb2d1a0f9ccabd10584f0726c9281109f2e851c472350e204d244f66e07f75"
+  },
+  "manifest": "data/p9-48258-grid-obstruction/manifest.json",
+  "manifestSha256": "90cda959223c9406d7fcbdbbcf3a9f7cc524b467ad367535e8a2bbda32eddeab"
+}
