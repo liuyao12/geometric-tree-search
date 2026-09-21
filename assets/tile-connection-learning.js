@@ -1,4 +1,5 @@
-import {validateMarkingReduction} from './marking-reduction.js?v=20260920-compact';
+import {learningLattice,learningPointFilter,restrictLearningOrientation} from './learning-lattice.js';
+import {validateMarkingReduction} from './marking-reduction.js?v=20260921-sublattice';
 import {A2_TILE_LOOPS,A2_SYMMETRIES,tileOrientations,a2Transform,a2Add,a2Sub,solveA2Tiling,makeHexBoundary,NoA2Marking,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-three-sets';
 export const VERSION='tile-connection-markings-v1';
 export const TILE_SETS=Object.freeze({
@@ -11,15 +12,16 @@ const key=p=>p.join(','),id=p=>`${p.tile}:${typeof p.orientation==='number'?p.or
 export const compact=placements=>placements.map(p=>({tile:p.tile,orientation:p.orientation.index,translation:[...p.translation]}));
 function shuffle(items,seed){let state=seed>>>0;const a=[...items];for(let i=a.length-1;i>0;i--){state=(Math.imul(1664525,state)+1013904223)>>>0;const j=Math.floor(state/4294967296*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 const learners=new Map();
-export function createConnectionLearner(setId){
- if(learners.has(setId))return learners.get(setId);
+export function createConnectionLearner(setId,{lattice='A2'}={}){
+ learningLattice(lattice);const cacheKey=`${setId}:${lattice}`,pointFilter=learningPointFilter(lattice);
+ if(learners.has(cacheKey))return learners.get(cacheKey);
  const config=TILE_SETS[setId];if(!config)throw new Error('Unknown tile set');
  const symmetries=A2_SYMMETRIES.filter(s=>config.allowReflections||parity(s.permutation)>0);
- const orientations=config.tiles.flatMap(tile=>tileOrientations(tile,A2_TILE_LOOPS[tile])).filter(o=>config.allowReflections||parity(o.symmetry.permutation)>0);
+ const orientations=config.tiles.flatMap(tile=>tileOrientations(tile,A2_TILE_LOOPS[tile])).filter(o=>config.allowReflections||parity(o.symmetry.permutation)>0).map(o=>restrictLearningOrientation(o,lattice));
  const roots=config.tiles.map(tile=>({tile,orientation:0,translation:[0,0,0]}));
  function materialize(spec){
   const index=typeof spec.orientation==='number'?spec.orientation:spec.orientation.index,o=orientations.find(o=>o.tile===spec.tile&&o.index===index);
-  if(!o||spec.translation?.length!==3||!spec.translation.every(Number.isSafeInteger)||spec.translation.reduce((s,v)=>s+v,0)!==0)throw new Error('Invalid placement for this tile set');
+  if(!o||spec.translation?.length!==3||!spec.translation.every(Number.isSafeInteger)||spec.translation.reduce((s,v)=>s+v,0)!==0||(pointFilter&&!pointFilter(spec.translation)))throw new Error('Invalid placement for this tile set');
   return {id:id(spec),tile:spec.tile,orientation:o,translation:[...spec.translation],loop:o.loop.map(p=>a2Add(p,spec.translation))};
  }
  function entries(spec,support){const p=materialize(spec),sym=p.orientation.symmetry;
@@ -36,7 +38,7 @@ export function createConnectionLearner(setId){
  function pointDomain(tile,halo=1){
   const o=orientations.find(o=>o.tile===tile&&o.index===0);if(!o)throw new Error('Unknown tile');
   const points=new Map([...o.occupancy.values()].map(e=>[key(e.point),e.point]));
-  const steps=[[1,-1,0],[1,0,-1],[0,1,-1],[-1,1,0],[-1,0,1],[0,-1,1]];
+  const steps=lattice==='A2'?[[1,-1,0],[1,0,-1],[0,1,-1],[-1,1,0],[-1,0,1],[0,-1,1]]:[[2,-1,-1],[-1,2,-1],[-1,-1,2],[-2,1,1],[1,-2,1],[1,1,-2]];
   for(let layer=0;layer<halo;layer++)for(const p of [...points.values()])for(const d of steps){const q=a2Add(p,d);points.set(key(q),q);}
   return [...points.values()].sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
  }
@@ -67,9 +69,10 @@ export function createConnectionLearner(setId){
   }
   const labels=new Map();support.forEach((e,i)=>{const [r,s]=find(i);if(!labels.has(r))labels.set(r,labels.size+1);e.value=zero[r]?0:s*labels.get(r);});
   if(samples.some(s=>!verifyPatch(s.placements,support).compatible))throw new Error('Encoding rejected an observed extension');
-  return {...(halo===1?{}:{supportHalo:halo}),version:VERSION,setId,tiles:config.tiles,allowReflections:config.allowReflections,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
+  return {...(halo===1?{}:{supportHalo:halo}),version:VERSION,setId,lattice,tiles:config.tiles,allowReflections:config.allowReflections,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
  }
  function validateModel(model){
+  if((model?.lattice??'A2')!==lattice)throw new Error('Marking belongs to a different lattice');
   if(model?.version!==VERSION||model.setId!==setId||model.allowReflections!==config.allowReflections||JSON.stringify(model.tiles)!==JSON.stringify(config.tiles))throw new Error('Marking belongs to a different tile set or symmetry group');
   const halo=model.supportHalo??1;if(!Number.isInteger(halo)||halo<1||halo>3)throw new Error('Invalid marking halo');
   const domain=new Set(config.tiles.flatMap(tile=>pointDomain(tile,halo).flatMap(point=>[0,1,2].map(c=>`${tile}:${point}|${c}`))));
@@ -81,7 +84,7 @@ export function createConnectionLearner(setId){
  async function grow({seed=1,support=[],initial=[roots[0]],target=32,budget=500,onEvent=()=>{},wait=null,audit=false}={}){
   const started=performance.now();let lastFailure=null;
   const r=await solveA2Tiling({boundary:makeHexBoundary(10),tiles:config.tiles,allowReflections:config.allowReflections,maximize:true,targetPlacements:target,nodeLimit:budget,randomSeed:seed,
-   initialPlacements:initial.map(materialize),fixedInitialPlacements:true,completePointGrowth:true,marking:support.length?new SparseA2Marking(support):new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
+   latticePointFilter:pointFilter,initialPlacements:initial.map(materialize),fixedInitialPlacements:true,completePointGrowth:true,marking:support.length?new SparseA2Marking(support):new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
    onEvent:e=>{if(e.type==='fail')lastFailure={point:e.choice,placements:compact(e.placements)};onEvent({type:e.type,placements:compact(e.placements),nodes:e.nodes,backtracks:e.backtracks});}});
   const placements=compact(r.placements),verification=verifyPatch(placements,support);if(!verification.compatible)throw new Error('Returned marking conflict');
   return {result:r.result,placements,verification,nodes:r.stats.nodes,backtracks:r.stats.backtracks,lastFailure,elapsedMs:performance.now()-started};
@@ -114,12 +117,12 @@ export function createConnectionLearner(setId){
    if(row.status==='extended')model=encode(rows.filter(r=>r.status==='extended'));
    onProgress({attempts:rows.length,total:pairs.length,counts,model,latest:row.placements,status:row.status});
   }
-  return summarize(rows,{seed,target,budget,domain:'A2',halo:1,rank:3},performance.now()-started);
+  return summarize(rows,{seed,target,budget,domain:lattice,halo:1,rank:3},performance.now()-started);
  }
  function incorporate(report,index,row){const previous=report.connections[index];
   if(!previous||id(previous.root)!==id(row.root)||id(previous.attachment)!==id(row.attachment))throw new Error('Connection mismatch');
   const history=[...(previous.history||[]),{...previous,history:undefined},row],evidence=row.status==='unresolved'&&previous.status!=='unresolved'?previous:row;
   return summarize(report.connections.map((r,i)=>i===index?{...evidence,history,lastAttempt:row}:r),report.config,report.elapsedMs+row.elapsedMs);
  }
- const learner={setId,config,orientations,roots,materialize,entries,verifyPatch,pointDomain,connections,canonicalPatch,encode,validateModel,grow,examine,summarize,collect,incorporate};learners.set(setId,learner);return learner;
+ const learner={setId,lattice,pointFilter,config,orientations,roots,materialize,entries,verifyPatch,pointDomain,connections,canonicalPatch,encode,validateModel,grow,examine,summarize,collect,incorporate};learners.set(cacheKey,learner);return learner;
 }

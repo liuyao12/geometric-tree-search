@@ -1,15 +1,17 @@
-import {rememberMarking} from './marking-library.js?v=20260920-browser-only';
-import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-interior';
+import {rememberMarking} from './marking-library.js?v=20260921-sublattice';
+import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-sublattice';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
-import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
-import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260920-qualified';
+import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260921-sublattice';
+import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-sublattice';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
 const embedded=window.parent!==window;if(embedded)document.body.classList.add('embedded');
+let lattice='A2';
+const learningKey=()=>`${setId}:${lattice}`;
 let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,runningSetId=null,paused=false,epoch=0;
 const reports=new Map(),automaticStarts=new Set();
-const send=(type,data={})=>{if(embedded)parent.postMessage({type,setId,...data},location.origin);};
+const send=(type,data={})=>{if(embedded)parent.postMessage({type,setId,lattice,...data},location.origin);};
 const message=t=>$('learn-status').textContent=t;
 const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
 function mapFor(points,box){const p=points.map(project),xs=p.map(q=>q[0]),ys=p.map(q=>q[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min((box.w-30)/Math.max(1,maxx-minx),(box.h-30)/Math.max(1,maxy-miny));return p=>{const q=project(p);return[box.x+box.w/2+(q[0]-(minx+maxx)/2)*scale,box.y+box.h/2+(q[1]-(miny+maxy)/2)*scale];};}
@@ -36,14 +38,14 @@ function describe(){const row=report?.connections[+picker.value];if(!row)return;
  $('learn-deeper').disabled=!!mode||row.status!=='unresolved';
 }
 function install(data,index=0,completed=false){
- if(data.setId!==setId||data.criterion!==CORONA_CRITERION)throw new Error('Outdated learning evidence');
+ if(data.setId!==setId||(data.lattice??'A2')!==lattice||data.criterion!==CORONA_CRITERION)throw new Error('Outdated learning evidence');
  if(data.model)learner.validateModel(data.model);
  const candidate=data.model??data.candidateModel;
  if(candidate)learner.validateCandidate(candidate);
  model=candidate?(candidate.reduction?.preserveInterior?candidate:reduceMarking(candidate,{preserveInterior:true})):null;
  let persisted=false;
  if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
- report=data;reports.set(setId,data);
+ report=data;reports.set(learningKey(),data);
  picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='valid'?'1-corona valid':row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
  $('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
  finish(true);describe();draw();
@@ -57,12 +59,12 @@ function install(data,index=0,completed=false){
  }
 }
 function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=TILE_SETS[setId].label;message('Classify every second-tile placement using a complete one-corona check, then train the marking.');draw();}
-function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);selectTiles(id);reset();
- if(reports.has(id))install(reports.get(id));
+function choose(id,nextLattice=lattice){if(!TILE_SETS[id])return;setId=id;lattice=nextLattice;learner=createConnectionLearner(id,{lattice});$('learn-sublattice').checked=lattice==='turtle-sublattice';selectTiles(id);reset();
+ if(reports.has(learningKey()))install(reports.get(learningKey()));
 }
-function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-qualified',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=setId;paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-sublattice',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
- if(kind==='collect'){automaticStarts.add(setId);$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
+ if(kind==='collect'){automaticStarts.add(learningKey());$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;
   if(data.type==='progress'){shown=data.latest;model=data.model;const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts}/${data.total} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;message(data.phase==='train'?'Training a marking on all classified pairs…':'Checking whether each fixed pair has a complete one-corona…');draw();}
   else if(data.type==='collected')install(data.report,0,true);
@@ -71,22 +73,24 @@ function launch(kind){$('learn-sync').textContent='Save when every valid pair pa
   else if(data.type==='error'){finish();message(data.message);}
  };
  worker.onerror=()=>{if(worker===active){finish();message('Learning worker could not run. Reload to retry.');}};
- if(kind==='collect'){const budget=Math.max(1,Math.min(1000000,Math.round(+$('learn-budget').value||5000)));worker.postMessage({type:kind,setId,seed:90210,budget});}
- else{const index=+picker.value,row=report.connections[index],last=row.lastAttempt||row;worker.postMessage({type:kind,setId,index,root:row.root,attachment:row.attachment,seed:1090213,budget:last.budget*4});}
+ if(kind==='collect'){const budget=Math.max(1,Math.min(1000000,Math.round(+$('learn-budget').value||5000)));worker.postMessage({type:kind,setId,lattice,seed:90210,budget});}
+ else{const index=+picker.value,row=report.connections[index],last=row.lastAttempt||row;worker.postMessage({type:kind,setId,lattice,index,root:row.root,attachment:row.attachment,seed:1090213,budget:last.budget*4});}
  draw();
 }
 function pause(button){paused=!paused;worker.postMessage({type:paused?'pause':'resume'});button.textContent=paused?'Continue':mode==='collect'?'Pause learning':'Pause search';}
 $('learn-start').onclick=()=>mode==='collect'?pause($('learn-start')):launch('collect');$('learn-deeper').onclick=()=>mode==='extend'?pause($('learn-deeper')):launch('extend');
 $('learn-reset').onclick=reset;$('learn-marks').onchange=draw;picker.onchange=()=>{shown=report.connections[+picker.value]?.placements||[];describe();draw();};tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)choose(input.value);}));
+$('learn-sublattice').onchange=()=>{choose(setId,$('learn-sublattice').checked?'turtle-sublattice':'A2');send('gcts-learning-lattice');launch('collect');};
 $('learn-export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({...report,markingMetadata:markingMetadata(model)},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`${setId}-${model?.marking?.id??'candidate'}-connection-evidence.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('message',e=>{
  if(e.origin!==location.origin||e.source!==parent)return;
  const data=e.data;
- if(data?.type==='gcts-select-tiles'&&data.setId!==setId)choose(data.setId);
+ const nextLattice=data?.lattice??lattice;
+ if(data?.type==='gcts-select-tiles'&&(data.setId!==setId||nextLattice!==lattice))choose(data.setId,nextLattice);
  if(data?.type==='gcts-start-learning'&&TILE_SETS[data.setId]){
-  if(automaticStarts.has(data.setId)){if(data.setId!==setId)choose(data.setId);return;}
-  setId=data.setId;learner=createConnectionLearner(setId);selectTiles(setId);
-  reset();launch('collect');
+  const key=`${data.setId}:${nextLattice}`;
+  if(automaticStarts.has(key)){if(data.setId!==setId||nextLattice!==lattice)choose(data.setId,nextLattice);return;}
+  choose(data.setId,nextLattice);launch('collect');
  }
 });
 choose(new URLSearchParams(location.search).get('set')||'turtle');send('gcts-learner-loaded');

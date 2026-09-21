@@ -1,4 +1,5 @@
 import {A2_TILE_LOOPS,tileOrientations,a2Transform,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-three-sets';
+import {restrictLearningOrientation} from './learning-lattice.js';
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
 const pointKey=e=>`${e.tile}:${e.point}`;
 export const activeMarkingSupport=model=>model?.reducedSupport??model?.support??[];
@@ -10,7 +11,7 @@ export const activeMarkingSupport=model=>model?.reducedSupport??model?.support??
 function conflictGraph(model) {
   const support=model.support,points=[...new Set(support.map(pointKey))],index=new Map(points.map((p,i)=>[p,i]));
   const relations=[],witnesses=[],witnessIndex=new Map();
-  const orientations=model.tiles.flatMap(tile=>tileOrientations(tile,A2_TILE_LOOPS[tile])).filter(o=>model.allowReflections||parity(o.symmetry.permutation)>0);
+  const orientations=model.tiles.flatMap(tile=>tileOrientations(tile,A2_TILE_LOOPS[tile])).filter(o=>model.allowReflections||parity(o.symmetry.permutation)>0).map(o=>restrictLearningOrientation(o,model.lattice));
   for(const tile of model.tiles){
     const root=orientations.find(o=>o.tile===tile&&o.index===0),left=support.filter(e=>e.tile===tile);
     for(const o of orientations){

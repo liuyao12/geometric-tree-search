@@ -179,6 +179,54 @@ Generated output paths are ignored by Git. The historical comparison below
 records past measurements and remains reproducible by running those algorithms;
 it is not a source of pre-trained values for the application.
 
+## Learning on the sublattice
+
+The Learn markings page offers a **sublattice** checkbox. Switching it starts
+classification and training on that domain. The article passes its current
+lattice choice into the learner; selecting a saved marking restores that
+marking's domain for tiling. Reports and automatic-start state are separate for
+each inventory and lattice. Marking names, metadata, and exported evidence include
+the domain. Existing browser models with no lattice field retain full A₂ semantics.
+
+`A2` is the full integer plane x+y+z=0. `turtle-sublattice` is its index-three
+subgroup x≡y≡z (mod 3). Both t-support and m-support are restricted to it; retained
+t-values stay in integer twelfths. Permutations and overall sign preserve this
+domain, and translations belong to it. The same individual-reflection / mixed-
+rotation policy remains. One marking-support layer uses the six sublattice
+neighbors ±(2,−1,−1), ±(−1,2,−1), ±(−1,−1,2). Training tries one through three
+such layers; this is not just hiding full-lattice markings in the drawing.
+
+The full candidate catalog and one-corona obligations are regenerated using
+restricted t-values. `latticePointFilter` passes the same restriction to the
+existing shared graph engine for classification and subsequent marked growth.
+The reducer uses restricted t-capacities when deciding which marking conflicts
+must survive point removal, including mark-only overlaps. Cached learners and
+saved-value comparisons include the domain; cross-domain models are rejected.
+No trained point assignments or reports are bundled.
+
+At seed 90210 and 5,000 attempts per pair, browser-equivalent runs give:
+
+| Sublattice inventory | Pairs | Valid accepted | Invalid blocked | Saved? |
+| --- | ---: | ---: | ---: | --- |
+| Turtle | 247 | 41 / 41 | 176 / 206 | Yes |
+| Hat | 227 | 44 / 44 | 0 / 183 | No |
+| Turtle + Hat | 473 | 83 / 83 | 0 / 390 | No |
+
+All these checks resolved. Hat and mixed candidates currently fail the existing
+majority-rejection gate; the UI shows them as unsaved candidates. This does not
+establish that no useful sublattice marking exists with other domains or value
+transformation rules.
+
+Conformance evidence: `tests/test_sublattice_learning.mjs` checks exact restricted
+t-data, subgroup-preserving placements and transformations, all catalog witnesses,
+independent finite DFS and graph-audited valid/invalid replays per inventory,
+exhaustive bounded pair compatibility before/after reduction, domain validation,
+and a 24-tile graph-audited marked Turtle checkpoint. Full-lattice regression
+coverage remains in `tests/test_tile_corona_learning.mjs`. The existing generation
+scheduler and rollback code are unchanged. One-corona labels certify only their
+finite point obligations; growth checkpoints do not prove whole-plane coverage
+or geometric faithfulness of the restricted point model.
+
 ## Fixed scalar markings for Hat and mixed search
 
 `FixedA2Marking` applies the rank-1 marking to each selected prototype.
