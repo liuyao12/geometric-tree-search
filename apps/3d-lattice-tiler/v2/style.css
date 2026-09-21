@@ -3,3 +3,5 @@
 #clusterDetail{margin-top:15px;font-size:.875rem}#clusterList{font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);max-height:240px;overflow:auto}#inspection{line-height:1.8}
 
 .viewer[hidden], .viewer-foot[hidden], #markingLearning[hidden] { display: none !important; }
+
+.marking-library{display:flex;flex-wrap:wrap;gap:8px;align-items:end;padding:12px 16px}.marking-library label{display:flex;flex-direction:column;gap:4px;flex:1;min-width:180px}.marking-library select{max-width:100%}.marking-library button{white-space:nowrap}

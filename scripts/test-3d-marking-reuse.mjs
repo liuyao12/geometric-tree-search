@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {prepareModel} from '../apps/3d-lattice-tiler/v2/model.js';
+import {runExperiment} from '../apps/3d-lattice-tiler/v2/experiment.js';
+import {learnMarking,reuseMarking} from '../apps/3d-lattice-tiler/marking-learning.js';
+import {remember3DMarking,matching3DMarkings,STORAGE_KEY} from '../apps/3d-lattice-tiler/marking-storage.js';
+import {preprocessTilingSystem,legacyMarkingModel,createTilingStream,tileSpecs} from '../apps/3d-lattice-tiler/engine.js';
+const collect=async stream=>{const events=[];for await(const e of stream)events.push(e);return events;};
+const model=prepareModel({tile:'cube',radius:1,mirrors:false});
+const events=await collect(learnMarking(model,{timeMs:10000})),marking=events.at(-1).marking;
+assert.ok(marking.accepted);
+const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v)};
+assert.equal(matching3DMarkings(model,storage).length,0);
+const saved=remember3DMarking(model,marking,storage),entry=matching3DMarkings(model,storage)[0];
+assert.equal(entry.marking.saved.id,saved.saved.id);
+assert.equal(matching3DMarkings(prepareModel({tile:'cube',radius:2,mirrors:false}),storage).length,1,'Target size does not change the system');
+for(const altered of [{...model,capacity:2*model.capacity},{...model,allowReflections:true},{...model,placementDomain:{kind:'scaled_cubic',translationStep:2}},prepareModel({tile:'a2_hat_prism',radius:1})]){
+ assert.equal(matching3DMarkings(altered,storage).length,0);
+ await assert.rejects(collect(reuseMarking(altered,entry)),/different tile or lattice/);
+}
+const reused=(await collect(reuseMarking(model,entry))).at(-1);assert.ok(reused.marking.reused);assert.equal(reused.marking.pairs,26);assert.equal(reused.marking.trainingMs,marking.elapsedMs);
+const mutate=change=>{const e=structuredClone(entry);change(e.marking);return e;};
+for(const broken of [mutate(m=>m.evidence.pop()),mutate(m=>m.evidence.push(m.evidence[0])),mutate(m=>m.evidence[0].placements=[]),mutate(m=>m.evidence[0].status='unresolved'),mutate(m=>m.fields[0].push({pos:[999,0,0],value:0})),mutate(m=>m.version='old')])await assert.rejects(collect(reuseMarking(model,broken)));
+await assert.rejects(collect(reuseMarking(model,entry,{timeMs:0})),/budget/);
+const reusedRun=await collect(runExperiment({tile:'cube',radius:1,mode:'gcts',timeMs:5000,nodes:1000,savedMarking:entry}));
+assert.equal(reusedRun.at(-1).result,'finite_exact');assert.ok(reusedRun.at(-1).marking.reused);assert.equal(reusedRun.filter(e=>e.phase==='pair').length,0);
+const cold=await collect(runExperiment({tile:'cube',radius:1,mode:'gcts',timeMs:5000,nodes:1000}));assert.equal(cold.at(-1).result,'finite_exact');assert.ok(cold.some(e=>e.phase==='pair'));assert.ok(!cold.at(-1).marking.reused);
+const config={mode_key:'cube',tiling_strategy:'learning_free_range',gcts_failure_marking:true,complete_lattice_point_branching:true,criterion:'count',target_val:8,time_limit_ms:5000,node_limit:1000};
+const legacyModel=legacyMarkingModel(preprocessTilingSystem(config,tileSpecs));
+const legacyLearned=(await collect(learnMarking(legacyModel,{timeMs:10000}))).at(-1).marking;
+remember3DMarking(legacyModel,legacyLearned,storage);
+const legacy=await collect(createTilingStream({...config,savedMarking:matching3DMarkings(legacyModel,storage).at(-1)},tileSpecs));
+assert.ok(legacy.at(-1).success);assert.ok(legacy.at(-1).search_stats.marking_reused);assert.equal(legacy.filter(e=>e.phase==='pair').length,0);
+const damaged={getItem:()=>'{invalid'};assert.deepEqual(matching3DMarkings(model,damaged),[]);
+assert.equal(remember3DMarking(model,marking,{getItem:()=>{throw Error('blocked');}}).saved.persisted,false);
+assert.equal(JSON.parse(data.get(STORAGE_KEY)).length,2);
+assert.notEqual(JSON.parse(data.get(STORAGE_KEY))[0].marking.saved.name,JSON.parse(data.get(STORAGE_KEY))[1].marking.saved.name);
+console.log('PASS browser-only history, exact system matching, positive witness/complete catalog replay, malformed records, explicit v1/v2 reuse, and cold runs.');

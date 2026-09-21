@@ -1,5 +1,21 @@
-import {remember3DMarking} from './marking-storage.js?v=20260921-free-components';
-import {MarkingPreview} from './marking-preview.js?v=20260921-free-components';
+import {MarkingLibrary} from './marking-library.js?v=20260921-marking-library';
+import {remember3DMarking} from './marking-storage.js?v=20260921-marking-library';
+import {MarkingPreview} from './marking-preview.js?v=20260921-marking-library';
+let libraryWorker=null,libraryKey=null;
+const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry)});
+function runMarkingSelection(savedMarking=null){
+ if(growthRunning)stopGrowthBenchmark('Starting a standalone GCTS run.');
+ strategySelect.value=setRadioValue(strategyRadios,'learning_free_range','free_range');updateStrategyUI();
+ const config=JSON.parse(configKey());if(savedMarking)config.savedMarking=savedMarking;
+ startNewRun(config);
+}
+function refreshMarkingLibrary(){
+ const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
+ markingLibrary.lock(running||growthRunning);
+ if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-marking-library',import.meta.url),{type:'module'});libraryWorker=w;
+ w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
+}
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
 function showMarkingView(learning){markingPreview.host.hidden=!learning;document.getElementById('viewport').hidden=learning;document.getElementById('showLearning').disabled=!markingPreview.model;document.getElementById('showLearning').setAttribute('aria-pressed',String(learning));document.getElementById('showTiling').setAttribute('aria-pressed',String(!learning));window.dispatchEvent(new Event('resize'));}
 document.getElementById('showTiling').onclick=()=>showMarkingView(false);document.getElementById('showLearning').onclick=()=>showMarkingView(true);
@@ -10,7 +26,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-free-components";
+} from "./engine.js?v=20260921-marking-library";
 
 const $ = (id) => document.getElementById(id);
 
@@ -2084,14 +2100,15 @@ function configKey() {
 }
 
 function setRunButton() {
+  refreshMarkingLibrary();
   runButton.disabled = !hasRunnableSelection();
   const extensionSeconds = Math.max(1, Number(timeCapInput.value) || 60);
   runButton.textContent = !growthRunning
-    ? "Run"
+    ? running ? "Pause" : paused ? "Continue" : "Run"
     : growthPaused
       ? `Continue +${extensionSeconds}s`
       : "Pause";
-  runButton.dataset.state = !growthRunning ? "run" : growthPaused ? "continue" : "pause";
+  runButton.dataset.state = !growthRunning ? running ? "pause" : paused ? "continue" : "run" : growthPaused ? "continue" : "pause";
   if (runButton.disabled) runButton.textContent = "Choose a figure";
 }
 
@@ -3045,7 +3062,7 @@ function renderTree() {
 
 function handleMessage(message) {
   if(message.type==='marking-learning-model'){markingPreview.reset(message.model);showMarkingView(true);return;}
-  if(message.type==='marking-learning'||message.type==='marking-learned'){if(message.type==='marking-learned')message.marking=remember3DMarking(markingPreview.model,message.marking);markingPreview.accept(message);if(message.type==='marking-learned'&&message.marking.accepted)showMarkingView(false);return;}
+  if(message.type==='marking-learning'||message.type==='marking-learned'){if(message.type==='marking-learned'){message.marking=remember3DMarking(markingPreview.model,message.marking);markingLibrary.refresh(markingPreview.model,message.marking);}markingPreview.accept(message);if(message.type==='marking-learned'&&message.marking.accepted)showMarkingView(false);return;}
   if (message.type === "palette") return;
   if (message.type === "prototile_info") {
     initTileControls(message);
@@ -3185,7 +3202,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-free-components", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-marking-library", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3983,7 +4000,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-free-components", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-marking-library", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -4018,7 +4035,7 @@ function startGrowthBenchmark() {
       } else if(message.type==='marking-learning-model'){
         series.learningModel=message.model;if(selectedGrowthMode()===mode.id){markingPreview.reset(message.model);showMarkingView(true);}
       } else if(message.type==='marking-learning'||message.type==='marking-learned'){
-        if(message.type==='marking-learned')message.event.marking=remember3DMarking(series.learningModel,message.event.marking);
+        if(message.type==='marking-learned'){message.event.marking=remember3DMarking(series.learningModel,message.event.marking);markingLibrary.refresh(series.learningModel,message.event.marking);}
         series.learningEvent=message.event;
         if(selectedGrowthMode()===mode.id){if(markingPreview.model!==series.learningModel)markingPreview.reset(series.learningModel);markingPreview.accept(message.event);if(message.type==='marking-learned'&&message.event.marking.accepted)showMarkingView(false);}
         series.status=message.event.type==='marking-learned'?(message.event.marking.accepted?'marking validated; tiling':'marking not activated'):`learning · ${message.event.pairs??0} pairs`;
@@ -4155,7 +4172,9 @@ function bindControls() {
   });
 
   runButton.addEventListener("click", () => {
-    if (!growthRunning) startGrowthBenchmark();
+    if (!growthRunning && running) pauseRun();
+    else if (!growthRunning && paused) continueRun();
+    else if (!growthRunning) startGrowthBenchmark();
     else if (growthPaused) extendGrowthBenchmark();
     else pauseGrowthBenchmark();
   });

@@ -1,5 +1,6 @@
-import {selectMask} from './marking-mask.js?v=20260921-free-components';
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-free-components';
+import {markingSystem} from './marking-storage.js?v=20260921-marking-library';
+import {selectMask} from './marking-mask.js?v=20260921-marking-library';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-library';
 export const LEARNING_VERSION='pair-corona-marking-2';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -114,6 +115,35 @@ export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=2
  const result={...snapshot,version:LEARNING_VERSION,complete,accepted:qualifies,reason:reason??(snapshot?.counts.unresolved?'unresolved pairs':!qualifies?'marking did not pass acceptance':null),evidence,elapsedMs:performance.now()-started,scope:'Learned restriction supported by viable pair-corona labels; neither redundant pruning nor an infinite-tiling certificate.'};
  yield {type:'marking-learned',marking:result,model:qualifies?{...model,orientations:model.orientations.map((o,i)=>({...o,marks:snapshot.fields[i]}))}:null};
 }
+
+// Reuse is explicit and replays saved evidence; it never supplies oracle labels
+// to a cold run. Stored negative labels retain their original finite scope.
+export async function* reuseMarking(model,entry,{timeMs=10000,stop=()=>false}={}){
+ const started=performance.now(),deadline=started+timeMs,m=structuredClone(entry?.marking);
+ validatePointModel(model);
+ if(!entry?.domain||JSON.stringify(markingSystem(model))!==JSON.stringify(markingSystem(entry.domain)))throw Error('Saved marking belongs to a different tile or lattice');
+ if(m?.version!==LEARNING_VERSION||!m.accepted||!m.complete||m.counts?.unresolved||!Array.isArray(m.evidence)||!Number.isSafeInteger(m.extent)||m.extent<0||m.extent>8)throw Error('Saved marking is incomplete or incompatible');
+ const domains=markingDomain(model,m.extent);
+ if(!Array.isArray(m.fields)||m.fields.length!==domains.length)throw Error('Invalid saved marking fields');
+ let values=0;
+ m.fields.forEach((field,oi)=>{const eligible=new Set(domains[oi].map(s=>pointKey(s.pos))),seen=new Set();for(const v of field){const k=pointKey(v.pos);if(!eligible.has(k)||seen.has(k)||(v.component??0)!==0||!Number.isSafeInteger(v.value))throw Error('Invalid saved point value');seen.add(k);values++;}});
+ const rows=new Map(m.evidence.map(row=>[JSON.stringify(row.pair),row]));
+ if(rows.size!==m.evidence.length)throw Error('Duplicate saved pair');
+ let pairs=0,positivePassed=0,negativeBlocked=0;const counts={valid:0,invalid:0,unresolved:0};
+ for(const pair of neighboringPairs(model,pointSymmetries(model))){
+  if(stop()||performance.now()>=deadline)throw Error('Saved marking validation budget reached');
+  const row=rows.get(JSON.stringify(pair));if(!row||!['valid','invalid'].includes(row.status))throw Error('Saved pair catalog is incomplete');
+  counts[row.status]++;pairs++;
+  const agrees=pairCompatible(m.fields,pair);
+  if(row.status==='valid'){if(!agrees||!verifyCorona(model,pair,row.placements).complete)throw Error('Saved marking rejects a positive or has an invalid corona witness');positivePassed++;}
+  else if(!agrees)negativeBlocked++;
+  if(pairs%8===0){yield {type:'marking-learning',phase:'replay',pairs,counts:{...counts},placements:row.placements,elapsedMs:performance.now()-started,snapshot:m};await new Promise(r=>setTimeout(r,0));}
+ }
+ if(pairs!==rows.size||!counts.valid||counts.invalid&&negativeBlocked*2<=counts.invalid)throw Error('Saved marking does not pass acceptance');
+ const marking={...m,pairs,counts,positivePassed,negativeBlocked,points:values,values,elapsedMs:performance.now()-started,reused:true,trainingMs:m.trainingMs??m.elapsedMs};
+ yield {type:'marking-learned',marking,model:{...model,orientations:model.orientations.map((o,i)=>({...o,marks:marking.fields[i]}))}};
+}
+
 // Adapter used by the legacy engine; ordinary exact section matching, no scan
 // of a runtime forbidden-pair classifier. The marking is frozen before growth.
 export class LearnedSection{
@@ -123,5 +153,5 @@ export class LearnedSection{
  add(move){for(const s of this.entries(move)){const old=this.section.get(s.key);if(old&&old.value!==s.basis)throw Error('Incompatible marking prefix');this.section.set(s.key,{value:s.basis,count:(old?.count??0)+1});}}
  remove(move){for(const s of this.entries(move)){const old=this.section.get(s.key);if(--old.count===0)this.section.delete(s.key);}}
  observeDeadPoint(){return false;}
- stats(){return {marking_rank:this.marking.labelCount,marking_slots:this.marking.values,marking_revision:this.marking.pairs,marking_certified_pairs:0,marking_learned_pairs:this.marking.pairs,marking_valid_passed:this.marking.positivePassed,marking_invalid_blocked:this.marking.negativeBlocked,marking_learning_ms:this.marking.elapsedMs,marking_scope:this.marking.scope,global_section_points:this.section.size,global_section_conflicts:0,marking_memory_bytes:this.marking.values*40+this.section.size*48};}
+ stats(){return {marking_rank:this.marking.labelCount,marking_slots:this.marking.values,marking_revision:this.marking.pairs,marking_certified_pairs:0,marking_learned_pairs:this.marking.pairs,marking_valid_passed:this.marking.positivePassed,marking_invalid_blocked:this.marking.negativeBlocked,marking_learning_ms:this.marking.elapsedMs,marking_reused:!!this.marking.reused,marking_training_ms:this.marking.trainingMs??this.marking.elapsedMs,marking_scope:this.marking.scope,global_section_points:this.section.size,global_section_conflicts:0,marking_memory_bytes:this.marking.values*40+this.section.size*48};}
 }

@@ -217,7 +217,10 @@ it is not a train/test split.
    timestamped browser-local model and start the marked tiler automatically.
    Keep separate runs and their tile/lattice provenance. Do not put learned
    markings into the source tree. Cold benchmark lanes may save their results
-   for inspection but must not silently reuse earlier runs.
+   for inspection but must not silently reuse earlier runs. Explicit browser-library
+   reuse must recheck system identity, complete catalog coverage, positive corona
+   witnesses and marking scores; report replay cost separately from original
+   training. Saved negative labels keep their original proof scope.
 8. **Use markings as markings.** The tiler compares assigned point components
    through its normal global section and candidate dependency graph. Do not
    substitute a runtime pair classifier, failure-clause scanner, or lookahead

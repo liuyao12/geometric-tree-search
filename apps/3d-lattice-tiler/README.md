@@ -5,7 +5,9 @@
 Both v1 and v2 now enumerate neighboring pairs, classify them using unmarked
 one-corona search with viable frontier, and display incremental point-marking
 updates. A complete qualifying marking is saved only in the browser and
-automatically starts the marked lane. Read the
+automatically starts the marked lane. Both versions offer **Learn new marking**
+and **Tile with marking** for explicit reuse of a compatible browser-local run;
+cold comparisons continue to train from scratch. Read the
 [shared learning protocol and conformance report](../../docs/projects/3d-gcts-marking-learning.md).
 The conservative-marking and lookahead descriptions below are historical; they
 remain explicitly named controls, not the current GCTS learning lane.

@@ -1,8 +1,8 @@
-import {learnMarking,LearnedSection} from './marking-learning.js?v=20260921-free-components';
+import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-marking-library';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260921-free-components";
+import { periodicStream } from "./periodic-search.js?v=20260921-marking-library";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
@@ -173,6 +173,13 @@ export function preprocessTilingSystem(config, tileSpecs) {
   };
   summary.fingerprint = latticePatchFingerprint(JSON.stringify(summary));
   return { modeDef, customSystem, baseTiles, prototiles, polycubeLattice, summary };
+}
+
+export function legacyMarkingModel(prepared,includeMirrors=false){
+ const gcd=(a,b)=>b?gcd(b,a%b):a;
+ const capacity=prepared.prototiles.reduce((a,t)=>{const b=Math.max(1,t.solid_angle?.max_value??tileSpecs.LEGACY_SOLID_ANGLE_MAX);return Math.abs(a*b)/gcd(a,b);},1);
+ for(const tile of prepared.prototiles)tile.rescaleOccupancyWeights?.(capacity);
+ return {capacity,allowReflections:!!includeMirrors,domain:'Z³',orientations:prepared.prototiles.flatMap((tile,type)=>tile.unique_orientations.map((o,index)=>({type,index,cells:o.occupancy,vertices:o.verts,faces:o.faces})))};
 }
 
 export const createTilingStream = (() => {
@@ -2355,14 +2362,16 @@ export const createTilingStream = (() => {
           tile.unique_orientations.map((orientation,index) => ({orientation,type,index}))),
           MAX_SOLID_ANGLE, {extent: config.marking_extent ?? 0});
       }else{
-        const learningModel={capacity:MAX_SOLID_ANGLE,allowReflections:!!includeMirrors,domain:'Z³',orientations:prototiles.flatMap((tile,type)=>tile.unique_orientations.map((o,index)=>({type,index,cells:o.occupancy,vertices:o.verts,faces:o.faces})))};
+        const learningModel=legacyMarkingModel(prepared,includeMirrors);
         yield {type:'marking-learning-model',model:learningModel};
         let learned;
-        for await(const event of learnMarking(learningModel,{timeMs:Number(config.time_limit_ms)>0?Number(config.time_limit_ms):Infinity,pairNodes:config.marking_pair_nodes??500,extent:config.marking_extent??1,stop:()=>!!stopToken.stop})){
+        const learningOptions={timeMs:Number(config.time_limit_ms)>0?Number(config.time_limit_ms):Infinity,pairNodes:config.marking_pair_nodes??500,extent:config.marking_extent??1,stop:()=>!!stopToken.stop};
+        for await(const event of (config.savedMarking?reuseMarking(learningModel,config.savedMarking,learningOptions):learnMarking(learningModel,learningOptions))){
           if(event.type==='marking-learned')learned=event.marking;
           yield event;
         }
         searchStats.marking_learning_ms=learned.elapsedMs;
+        searchStats.marking_reused=!!learned.reused;
         searchStats.marking_learning_pairs=learned.pairs??0;
         searchStats.marking_learning_complete=learned.complete;
         if(!learned.accepted){

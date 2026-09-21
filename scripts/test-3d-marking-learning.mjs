@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import {CoronaGraph,checkCorona,verifyCorona,placementKey,add,pointKey} from '../apps/3d-lattice-tiler/corona-graph.js';
-import {learnMarking,pairCompatible,LearnedSection,pointSymmetries,OnlineMarking,neighboringPairs} from '../apps/3d-lattice-tiler/marking-learning.js';
+import {learnMarking,reuseMarking,pairCompatible,LearnedSection,pointSymmetries,OnlineMarking,neighboringPairs} from '../apps/3d-lattice-tiler/marking-learning.js';
 import {prepareModel} from '../apps/3d-lattice-tiler/v2/model.js';
 import {search,verify,PointGraph} from '../apps/3d-lattice-tiler/v2/search.js';
 import {createTilingStream,tileSpecs} from '../apps/3d-lattice-tiler/engine.js';
-import {remember3DMarking,STORAGE_KEY} from '../apps/3d-lattice-tiler/marking-storage.js';
+import {remember3DMarking,markingSystem,STORAGE_KEY} from '../apps/3d-lattice-tiler/marking-storage.js';
 const toy=weights=>({capacity:3,orientations:[{type:0,index:0,cells:weights.map((weight,x)=>({pos:[x,0,0],weight})),vertices:[],faces:[]}],allowReflections:false});
 const pair=[{oi:0,translation:[0,0,0]},{oi:0,translation:[1,0,0]}];
 const collect=async stream=>{let last;for await(const e of stream)last=e;return last;};
@@ -45,6 +45,7 @@ for(const [tile,pairs,valid,invalid,blocked] of [['cube',26,26,0,0],['a2_turtle_
  const marking=last.marking;assert.ok(marking.accepted);assert.ok(marking.complete);assert.equal(marking.pairs,pairs);assert.deepEqual(marking.counts,{valid,invalid,unresolved:0});assert.ok(marking.negativeBlocked>=blocked,'Must retain the previous negative exclusions');
  for(const row of marking.evidence){if(row.status==='valid'){assert.ok(verifyCorona(model,row.pair,row.placements).complete);assert.ok(pairCompatible(marking.fields,row.pair));}}
  assert.equal(marking.evidence.filter(row=>row.status==='invalid'&&!pairCompatible(marking.fields,row.pair)).length,marking.negativeBlocked);
+ const replay=await collect(reuseMarking(model,{domain:markingSystem(model),marking},{timeMs:30000}));assert.ok(replay.marking.reused);assert.equal(replay.marking.negativeBlocked,marking.negativeBlocked);assert.deepEqual(replay.model.orientations.map(o=>o.marks),last.model.orientations.map(o=>o.marks));
  const grown=await collect(search(last.model,{mode:'gcts',learnedRestriction:true,timeMs:5000,nodes:10000}));assert.equal(grown.result,'finite_exact');assert.ok(verify(last.model,grown.placements).ok);assert.ok(verify(model,grown.placements).ok);
  const section=new LearnedSection(model,marking),spec=marking.evidence[0].pair[0],o=model.orientations[spec.oi],move={type:o.type,index:o.index,translation:spec.translation};section.add(move);section.add(move);section.remove(move);assert.ok(section.compatible(move));section.remove(move);assert.equal(section.section.size,0);
  console.log(`${tile}: ${pairs} labels, all ${valid} positives pass, ${marking.negativeBlocked}/${invalid} negatives blocked, marked finite window verified.`);

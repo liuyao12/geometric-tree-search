@@ -183,3 +183,35 @@ using 60 values. It also exhausts possible extra marking contacts. This is a
 synthesis regression against recorded research labels, not a claim that the
 browser's bounded graph oracle finishes that hard catalogue. See the
 [full research receipt and oracle limitations](3d-point-corona-sat.md).
+
+## Browser marking library and standalone runs (v2.2.5; also v1)
+
+Both pages now provide **Learn new marking** and a **Saved marking** selector.
+A fresh browser has no saved assignments. Each successful fresh run receives
+its own short timestamp, point/value counts, and unique identity. Learning still
+automatically starts marked tiling. **Tile with marking** explicitly reuses the
+selected browser-local result without collecting a fresh set of labels. Storage
+failure retains that run for the current visit.
+
+The selector matches exact tile weights, orientation identities, reflection
+policy, and placement domain. A different finite target size can reuse the same
+system's marking; a different lattice, tile inventory, or reflection policy cannot.
+Both workers check this identity again, enumerate the complete pair catalogue,
+replay every saved positive corona with frontier viability, and recompute all
+positive/negative marking decisions before activation. Incomplete, malformed,
+duplicate, incompatible-version, and below-threshold records are rejected. Stored
+negative labels retain the original exhausted-search provenance; this replay is
+not a new proof of each negative or of infinite extension.
+
+Reuse reports validation time separately from the original training cost. Cold
+comparison and suite buttons still train from scratch. A standalone reuse run
+is not mixed into the cold comparison's speedup claim. No learned assignments
+are distributed in the application or this repository.
+
+`node scripts/test-3d-marking-reuse.mjs` covers exact system matching, changed target
+size, missing/duplicate pairs, invalid positive witnesses, malformed fields,
+storage failure, fresh training, and both worker/engine reuse paths. Browser checks
+cover empty storage, learning-to-tiling switching, reload persistence, reflection
+filtering, distinct new runs, and both pages with no script errors. Reproduce with
+`scripts/test-3d-marking-library-browser.cjs` (Playwright; `GCTS_TEST_URL` points
+to the repository root URL, and `CHROME_PATH` can select an installed Chromium).

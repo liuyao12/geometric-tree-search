@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260921-free-components";
+import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-marking-library";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
@@ -122,6 +122,10 @@ const runStream = async (seq, config) => {
 self.onmessage = (event) => {
   const { type, seq, config, reason = "ui" } = event.data ?? {};
 
+  if(type==='marking-library-model'){
+    try{self.postMessage({type,model:legacyMarkingModel(preprocessTilingSystem(config,tileSpecs),config.include_mirrors)});}
+    catch(error){self.postMessage({type,error:error.message});}return;
+  }
   if (type === "start") {
     stopCurrentRun();
     activeSeq = seq;

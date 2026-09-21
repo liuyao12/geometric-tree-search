@@ -1217,3 +1217,5 @@ button:disabled {
 
 #viewport[hidden], #markingLearning[hidden] { display: none !important; }
 .marking-view-tabs { display: flex; gap: 8px; padding: 8px; }
+
+.marking-library{display:flex;flex-wrap:wrap;gap:8px;align-items:end;padding:12px 16px}.marking-library label{display:flex;flex-direction:column;gap:4px;flex:1;min-width:180px}.marking-library select{max-width:100%}.marking-library button{white-space:nowrap}
