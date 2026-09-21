@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-corona" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-interior" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -121,7 +121,7 @@
         <div class="math-display">\[g\cdot m(g^{-1} {\bf x}) = h \cdot m(h^{-1} {\bf x})\]</div>
         <p>on the overlap.</p>
         <p><em>Remark (made by GPT).</em> In Yasushi Nagai's <a href="https://doi.org/10.1007/s00454-019-00081-2"><em>A General Framework for Tilings, Delone Sets, Functions, and Measures and Their Interrelation</em></a> (2019), a tiling and its global marking function are <em>abstract patterns</em> in possibly different \(G\)-abstract pattern spaces. Nagai writes this symmetry group as \(\Gamma\). His Theorems 3.6 and 5.5 say, under their hypotheses, that pattern-equivariant functions determine the original pattern up to mutual local derivability (MLD); Theorem 5.5 includes actions on vector-valued functions.</p>
-        <p>
+        <p id="anchor-known-marking" data-demo-stage="markedTiling">
         <em>Example.</em> The turtle admits a marking of straight lines (see <a href="https://arxiv.org/abs/2307.12322">Akiyama &amp; Araki</a> or <a href="https://mathblock8128.wordpress.com/">mathblock8128</a>). The two colors represent \(\pm 1\) values for the lattice points on <em>three</em> separate markings, or a rank-3 bundle. The group \(G\) acts on \(\mathbb{R}^3\) by permuting and negating the components (swapping the two colors upon reflections). Note that the domain of each marking may be taken to be arbitrarily long, a sign of long-range order.</p>
         <figure>
         <img src="https://mathblock8128.wordpress.com/wp-content/uploads/2023/08/spar_crossing_control_landscape_cb_2.png?w=800" alt="Turtle tiling with straight-line markings">
@@ -129,7 +129,7 @@
         </figure>
         <p>
         <em>Example.</em> The classic "domino puzzle" (with the checkerboard argument) may be cast as a problem of tiling with marking. It seems that a good source of candidates for markings would be the eigenfunctions of the Laplacian operator, with Dirichlet or Neumann (or mixed) boundary conditions.</p>
-        <p data-demo-stage="markedTiling">The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
+        <p>The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
         <h2 id="anchor-learning">Geometric Deep Learning</h2>
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
         <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
@@ -170,6 +170,7 @@
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
       const learnedModels = new Map(), customModels = new Set();
       let learningSectionEntered=false, learnerReady=false, pendingLearningStart=false;
+      let learningTileSet = 'turtle';
       let displayMarking = null;
       const markingEnabled = () => markingSource !== 'none';
       const genericMode = () => selectedTileSet !== 'turtle' || markingSource === 'learned';
@@ -2491,7 +2492,7 @@
         orientations = buildOrientations(markingExtension, markingRank);
         showMarkings = source !== 'none';
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
-        learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId},location.origin);
+        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId},location.origin);
       }
       function panelView(view, { manual = true } = {}) {
         if (manual) manualPanelMode = true;
@@ -2504,7 +2505,7 @@
         document.getElementById('panel-tiling-tab').tabIndex=view==='tiling'?0:-1;
         document.getElementById('panel-learning-tab').tabIndex=view==='learning'?0:-1;
         if (view==='tiling') resizeCanvas();
-        learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId:selectedTileSet},location.origin);
+        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId:selectedTileSet},location.origin);
         window.requestAnimationFrame(updateTextWrap);
       }
       document.querySelector('.panel-tabs').addEventListener('keydown',event=>{
@@ -2525,14 +2526,14 @@
       window.addEventListener('message', event => {
         if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
         const data=event.data;
-        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:selectedTileSet},location.origin);startPendingLearning();return;}
+        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:activeScrollAnchor==='learning'?selectedTileSet:learningTileSet},location.origin);startPendingLearning();return;}
         if(data?.type!=='gcts-marking-ready'||!TILE_SETS[data.setId])return;
         try {createConnectionLearner(data.setId).validateModel(data.model);if(!data.model.reduction?.preserveInterior)data.model=reduceMarking(data.model,{preserveInterior:true});} catch {return;}
         if(data.type==='gcts-marking-ready'&&data.recorded&&customModels.has(data.setId))return;
         if(data.recorded)customModels.delete(data.setId);else customModels.add(data.setId);
         const changed=JSON.stringify(learnedModels.get(data.setId))!==JSON.stringify(data.model);
         learnedModels.set(data.setId,data.model);
-        if(selectedTileSet===data.setId && !data.recorded && (changed||markingSource!=='learned'))configurePanel(data.setId,'learned');
+        if(activeScrollAnchor==='learning' && selectedTileSet===data.setId && !data.recorded && (changed||markingSource!=='learned'))configurePanel(data.setId,'learned');
         updatePanelControls();
       });
       for(const setId of Object.keys(TILE_SETS))try{const saved=localStorage.getItem(`gcts-corona-marking:${setId}`);if(saved){const model=JSON.parse(saved);createConnectionLearner(setId).validateModel(model);learnedModels.set(setId,model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}));customModels.add(setId);}}catch{localStorage.removeItem(`gcts-corona-marking:${setId}`);}
@@ -2540,7 +2541,7 @@
         for(const [setId,model] of Object.entries(data.models)){createConnectionLearner(setId).validateModel(model);if(!learnedModels.has(setId))learnedModels.set(setId,reduceMarking(model,{preserveInterior:true}));}
         updatePanelControls();
       }).catch(()=>{});
-      try {const saved=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(saved){const model=JSON.parse(saved);createConnectionLearner(model.setId).validateModel(model);learnedModels.set(model.setId,model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}));customModels.add(model.setId);sessionStorage.removeItem('gcts-requested-marking');learningSectionEntered=true;configurePanel(model.setId,'learned');panelView('tiling');}}catch{}
+      try {const saved=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(saved){const model=JSON.parse(saved);createConnectionLearner(model.setId).validateModel(model);learnedModels.set(model.setId,model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}));customModels.add(model.setId);sessionStorage.removeItem('gcts-requested-marking');learningSectionEntered=true;learningTileSet=model.setId;configurePanel(model.setId,'learned');panelView('tiling');}}catch{}
       // Small inspectable state for integration tests and exported screenshots.
       window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,rank:markingRank,extent:markingExtension,usesMarking:markingEnabled(),placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking});
       function demoStageForScroll() {
@@ -2568,16 +2569,28 @@
         if (anchor !== activeScrollAnchor) {
           const previousAnchor = activeScrollAnchor;
           activeScrollAnchor = anchor;
-          if (anchor === 'learning' && !learningSectionEntered) {
+          if (previousAnchor === 'learning') learningTileSet = selectedTileSet;
+          if (anchor === 'learning') {
+            const firstVisit = !learningSectionEntered;
             learningSectionEntered = true;
-            configurePanel('turtle', 'standard');
+            // This section owns training and tiling with an approved learned model.
+            // Known markings belong to the earlier Turtle example.
+            const setId = firstVisit ? 'turtle' : learningTileSet;
+            configurePanel(setId, learnedModels.has(setId) ? 'learned' : 'none');
             panelView('learning', { manual: false });
-            pendingLearningStart = true;
-            startPendingLearning();
-          } else if (previousAnchor !== null) {
-            // Follow section crossings, while allowing manual tabs within a section.
-            // Returning to learning keeps its current run and learned markings.
-            panelView(anchor === 'learning' ? 'learning' : 'tiling', { manual: false });
+            if (firstVisit) {
+              pendingLearningStart = true;
+              startPendingLearning();
+            }
+          } else {
+            if (previousAnchor === 'learning' || selectedTileSet !== 'turtle' || markingSource === 'learned') {
+              configurePanel('turtle', 'none');
+              activeDemoStage = null;
+            }
+            // Section crossings restore article defaults; manual choices still
+            // remain in effect while reading within the same section.
+            manualPanelMode = false;
+            panelView('tiling', { manual: false });
           }
         }
         if (anchor !== 'learning') setDemoStage(anchor);

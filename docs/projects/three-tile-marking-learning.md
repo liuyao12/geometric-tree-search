@@ -4,7 +4,12 @@
 
 `GCTS-I.html` embeds `GCTS-learning.html` in its **Learn markings** tab.
 Entering the final Geometric Deep Learning section selects Turtle and starts
-one fresh collection per page visit. Scrolling back selects Tiling. Manual tab
+one fresh collection per page visit. Known rank-3 Turtle tiling starts at the
+“The turtle admits a marking…” example (`#anchor-known-marking`). Scrolling back
+restores that known-marking Tiling view. The learning section selects an approved
+learned marking when available, otherwise no marking; background completion does
+not replace the earlier known-marking example. Its inventory and training run
+survive section crossings. Manual tab
 changes and pauses do not restart collection; learning can run in the background.
 
 The current experiment enumerates every t-legal second placement whose positive
