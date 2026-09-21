@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260915-tabs" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-centered" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -141,6 +141,7 @@
   <script type="module">
     import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, SparseA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260915-hat-rank1';
     import {createConnectionLearner, TILE_SETS, parity} from './assets/tile-connection-learning.js?v=20260915-three-sets';
+    import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
     import {markingMetadataText} from './assets/marking-metadata.js?v=20260915-auto';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
@@ -1451,8 +1452,7 @@
         if (placement.sharedSpec && markingSource === 'learned') {
           ctx.save();
           for (const entry of placement.markings) {
-            const direction = [1,1,1]; direction[entry.component] = -2;
-            const a = projectA2(entry.point), b = projectA2(entry.point.map((v,i)=>v+direction[i]*.25));
+            const [a, b] = markingSegmentEndpoints(entry).map(projectA2);
             ctx.setLineDash(entry.value < 0 ? [2,2] : []);
             drawLine(worldToScreen(a.x,a.y),worldToScreen(b.x,b.y),entry.value===0?'#9dafa066':`hsl(${Math.abs(entry.value)*137.5%360} 65% 36%)`,Math.max(.5,1.7*scale));
           }
@@ -1656,7 +1656,10 @@
         placement.vertices3d.forEach(include);
         placement.occupancy.forEach(entry => include(entry.point));
         if (showMarkings) {
-          placement.markings.forEach(entry => include(entry.point));
+          placement.markings.forEach(entry => {
+            include(entry.point);
+            if (placement.sharedSpec && markingSource === 'learned') markingSegmentEndpoints(entry).forEach(include);
+          });
           placement.markSegments.forEach(segment => {
             include(segment.displayFromPoint || segment.fromPoint);
             include(segment.displayToPoint || segment.toPoint);
