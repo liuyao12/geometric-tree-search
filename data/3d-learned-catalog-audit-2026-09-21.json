@@ -1,0 +1,5120 @@
+{
+  "schema": "gcts.learned_catalog_audit.v1",
+  "date": "2026-09-21",
+  "scope": "Diagnostic finite point-window sweep; no new geometric tiling or aperiodicity claim. No learned assignments included.",
+  "runs": {
+    "app": {
+      "protocol": {
+        "version": "2.2.1",
+        "commit": "19aac62e420ef8c0541e64559e4fa843d53ff556",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "cd374f76d7249c672cdb68113e4c84959e75d5ff914e638b1a36f945266acb5e",
+          "apps/3d-lattice-tiler/corona-graph.js": "134aa8c05b94514baa0b3ded462a99ef754f1afb56342d30f002e33be467a32c",
+          "apps/3d-lattice-tiler/marking-learning.js": "0b3b537c11631d5d0c120e09d771f5d35acfe491ac0ebad3eefd9bf10713f0e4",
+          "apps/3d-lattice-tiler/v2/experiment.js": "5cafb7ee23668b67859049ac39113f77aba294ba26e9461fc07d3effa31a2f45",
+          "apps/3d-lattice-tiler/v2/model.js": "6e7f04c9bfdb37494004d985703a507a97c001b5bd20bb74e1aeb7f6342af273",
+          "apps/3d-lattice-tiler/v2/slab.js": "03f402dab25a933dd140bb81f3578a0b3a55a781f4c95449636413d7ee7bfb42",
+          "apps/3d-lattice-tiler/v2/search.js": "139a4ae21ed08477dfc349a7089a0100e0f81467f09750172cd49f007e1d2e34"
+        },
+        "catalog": "app",
+        "timeMs": 3000,
+        "pairNodes": 500,
+        "radius": 1,
+        "mirrors": false,
+        "nodes": 10000,
+        "seed": 1,
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 152.97166699999997,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 6,
+            "points": 132,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 14,
+            "required": 14,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 5,
+            "accepted": 5,
+            "forced": 1,
+            "branches": 4,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 2.3409580000000005,
+            "peakTrail": 277,
+            "markingCuts": 0,
+            "elapsedMs": 4.9581249999999955,
+            "candidates": 162,
+            "edges": 924,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 182520,
+            "preparationMs": 3.064207999999951,
+            "totalMs": 8.022332999999946
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "mode": "gcts",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 2473.68725,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 6,
+            "points": 132,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 8,
+            "required": 14,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 77,
+            "accepted": 77,
+            "forced": 11,
+            "branches": 1,
+            "backtracks": 77,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 2.9130409999997937,
+            "peakTrail": 273,
+            "markingCuts": 5383,
+            "elapsedMs": 19.050832999999784,
+            "candidates": 162,
+            "edges": 924,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 269904,
+            "preparationMs": 2312.23675,
+            "totalMs": 2331.287583
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 226,
+            "counts": {
+              "valid": 6,
+              "invalid": 220,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 220,
+              "valid": 6
+            },
+            "positivePassed": 6,
+            "negativeBlocked": 220,
+            "points": 81,
+            "values": 81,
+            "elapsedMs": 2309.0331669999996
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 154.791291,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 6,
+            "points": 156,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 14,
+            "required": 14,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 6,
+            "accepted": 6,
+            "forced": 1,
+            "branches": 3,
+            "backtracks": 2,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 2.8668750000001637,
+            "peakTrail": 288,
+            "markingCuts": 0,
+            "elapsedMs": 5.933082999999897,
+            "candidates": 180,
+            "edges": 1092,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 231648,
+            "preparationMs": 3.325000000000273,
+            "totalMs": 9.25808300000017
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "mode": "gcts",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 2672.605958,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 6,
+            "points": 156,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 10,
+            "required": 14,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 92,
+            "accepted": 92,
+            "forced": 14,
+            "branches": 1,
+            "backtracks": 92,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.5406250000005457,
+            "peakTrail": 263,
+            "markingCuts": 6181,
+            "elapsedMs": 24.34795800000029,
+            "candidates": 180,
+            "edges": 1092,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 335448,
+            "preparationMs": 2505.6680420000002,
+            "totalMs": 2530.0160000000005
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 248,
+            "counts": {
+              "valid": 6,
+              "invalid": 242,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 242,
+              "valid": 6
+            },
+            "positivePassed": 6,
+            "negativeBlocked": 242,
+            "points": 87,
+            "values": 87,
+            "elapsedMs": 2502.243083
+          }
+        },
+        {
+          "tile": "buckled_ring",
+          "name": "Buckled ring",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 544.3305839999994,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 100,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 25,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 650,
+            "branches": 2244,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.5649579999999332,
+            "peakTrail": 1090,
+            "markingCuts": 0,
+            "elapsedMs": 399.24020800000017,
+            "candidates": 492,
+            "edges": 2700,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 618480,
+            "preparationMs": 2.1844169999994847,
+            "totalMs": 401.42462499999965
+          },
+          "learning": null
+        },
+        {
+          "tile": "buckled_ring",
+          "name": "Buckled ring",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3147.876875000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 100,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3005.2519580000007,
+            "preparationMs": 3005.25525,
+            "learningMs": 3002.921874999999,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 13
+            },
+            "pairOutcomes": {
+              "attempt budget": 12,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 300,
+            "values": 300,
+            "elapsedMs": 3002.921874999999
+          }
+        },
+        {
+          "tile": "twisted_h",
+          "name": "Twisted H",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 286.7868330000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 192,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1067,
+            "accepted": 1067,
+            "forced": 10,
+            "branches": 210,
+            "backtracks": 1039,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 9.415541999998823,
+            "peakTrail": 1917,
+            "markingCuts": 0,
+            "elapsedMs": 138.06466699999874,
+            "candidates": 960,
+            "edges": 5184,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1469880,
+            "preparationMs": 2.5255830000005517,
+            "totalMs": 140.5902499999993
+          },
+          "learning": null
+        },
+        {
+          "tile": "twisted_h",
+          "name": "Twisted H",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3156.909917000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 192,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3013.4119999999984,
+            "preparationMs": 3013.419833,
+            "learningMs": 3010.7753329999996,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 5,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "attempt budget": 3,
+              "valid": 1,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3010.7753329999996
+          }
+        },
+        {
+          "tile": "tuning_fork",
+          "name": "Reinhardt tuning fork",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 357.7412919999988,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 1248,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 52,
+            "accepted": 52,
+            "forced": 2,
+            "branches": 21,
+            "backtracks": 31,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 121.71099999999933,
+            "peakTrail": 6525,
+            "markingCuts": 0,
+            "elapsedMs": 203.05045900000005,
+            "candidates": 4320,
+            "edges": 33696,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 19088568,
+            "preparationMs": 5.748374999999214,
+            "totalMs": 208.79883399999926
+          },
+          "learning": null
+        },
+        {
+          "tile": "tuning_fork",
+          "name": "Reinhardt tuning fork",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3258.306417,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 1248,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3108.3205830000006,
+            "preparationMs": 3108.3247500000016,
+            "learningMs": 3102.478292,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 12,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 12
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 12
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 3312,
+            "values": 3312,
+            "elapsedMs": 3102.478292
+          }
+        },
+        {
+          "tile": "mathematica_16_vertex",
+          "name": "16-vertex lattice tile",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 213.82641599999988,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 456,
+            "capacity": 24
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 40,
+            "accepted": 40,
+            "forced": 12,
+            "branches": 11,
+            "backtracks": 30,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 30.446583000000828,
+            "peakTrail": 2660,
+            "markingCuts": 0,
+            "elapsedMs": 66.1526249999988,
+            "candidates": 2080,
+            "edges": 12312,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 5237536,
+            "preparationMs": 1.2844159999986005,
+            "totalMs": 67.43704099999741
+          },
+          "learning": null
+        },
+        {
+          "tile": "mathematica_16_vertex",
+          "name": "16-vertex lattice tile",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3222.9817079999993,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 456,
+            "capacity": 24
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3074.2070829999975,
+            "preparationMs": 3074.2107909999977,
+            "learningMs": 3072.0285000000003,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 28,
+            "counts": {
+              "valid": 0,
+              "invalid": 25,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "invalid": 25,
+              "candidate dependency budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 25,
+            "points": 1128,
+            "values": 1128,
+            "elapsedMs": 3072.0285000000003
+          }
+        },
+        {
+          "tile": "cube",
+          "name": "Cube",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 151.0460000000021,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 8,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 64,
+            "accepted": 64,
+            "forced": 27,
+            "branches": 37,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 0.47554200000013225,
+            "peakTrail": 640,
+            "markingCuts": 0,
+            "elapsedMs": 4.149459000000206,
+            "candidates": 64,
+            "edges": 216,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 47808,
+            "preparationMs": 1.4241250000013679,
+            "totalMs": 5.573584000001574
+          },
+          "learning": null
+        },
+        {
+          "tile": "cube",
+          "name": "Cube",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 261.0126249999994,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 8,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 64,
+            "accepted": 64,
+            "forced": 27,
+            "branches": 37,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 0.48700000000098953,
+            "peakTrail": 640,
+            "markingCuts": 0,
+            "elapsedMs": 3.9828750000015134,
+            "candidates": 64,
+            "edges": 216,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 47808,
+            "preparationMs": 111.76037499999802,
+            "totalMs": 115.74324999999953
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 26,
+            "counts": {
+              "valid": 26,
+              "invalid": 0,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 26
+            },
+            "positivePassed": 26,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 110.24866699999984
+          }
+        },
+        {
+          "tile": "a2_hexagonal_prism",
+          "name": "A2 Hexagonal Prism",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 149.72045799999978,
+          "model": {
+            "domain": "Two copies of A\u2082",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": false
+            },
+            "orientations": 1,
+            "points": 38,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 14,
+            "required": 14,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 5,
+            "accepted": 5,
+            "forced": 1,
+            "branches": 2,
+            "backtracks": 2,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1.1812499999978172,
+            "peakTrail": 154,
+            "markingCuts": 0,
+            "elapsedMs": 3.5022079999980633,
+            "candidates": 37,
+            "edges": 266,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 67984,
+            "preparationMs": 2.046915999999328,
+            "totalMs": 5.549123999997391
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hexagonal_prism",
+          "name": "A2 Hexagonal Prism",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 247.4041670000006,
+          "model": {
+            "domain": "Two copies of A\u2082",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": false
+            },
+            "orientations": 1,
+            "points": 38,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 14,
+            "required": 14,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 3,
+            "accepted": 3,
+            "forced": 2,
+            "branches": 1,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1.524541999999201,
+            "peakTrail": 208,
+            "markingCuts": 12,
+            "elapsedMs": 3.057333999997354,
+            "candidates": 37,
+            "edges": 266,
+            "points": 14,
+            "clusters": 0,
+            "memoryEstimateBytes": 95920,
+            "preparationMs": 98.09929199999897,
+            "totalMs": 101.15662599999632
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 24,
+            "counts": {
+              "valid": 6,
+              "invalid": 18,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 6,
+              "invalid": 18
+            },
+            "positivePassed": 6,
+            "negativeBlocked": 18,
+            "points": 18,
+            "values": 18,
+            "elapsedMs": 96.65358399999968
+          }
+        },
+        {
+          "tile": "scd_conway",
+          "name": "Schmitt\u2013Conway\u2013Danzer Biprism",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 147.25950000000012,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "scd_conway",
+          "name": "Schmitt\u2013Conway\u2013Danzer Biprism",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 151.34220899999855,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "1_cross",
+          "name": "1-Cross (Heptacube)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 583.5331249999981,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 32,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 12,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 271,
+            "branches": 3169,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1.7724589999997988,
+            "peakTrail": 568,
+            "markingCuts": 0,
+            "elapsedMs": 422.80525000000125,
+            "candidates": 160,
+            "edges": 864,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 250944,
+            "preparationMs": 2.49199999999837,
+            "totalMs": 425.2972499999996
+          },
+          "learning": null
+        },
+        {
+          "tile": "1_cross",
+          "name": "1-Cross (Heptacube)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3146.4147080000002,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 32,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3002.1439169999976,
+            "preparationMs": 3002.1479579999977,
+            "learningMs": 2999.563083000001,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 26,
+            "counts": {
+              "valid": 4,
+              "invalid": 5,
+              "unresolved": 17
+            },
+            "pairOutcomes": {
+              "invalid": 5,
+              "attempt budget": 16,
+              "valid": 4,
+              "time budget": 1
+            },
+            "positivePassed": 4,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 2999.563083000001
+          }
+        },
+        {
+          "tile": "2_cross",
+          "name": "2-Cross (Tridecacube)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1181.0175419999978,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 56,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 14,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 600,
+            "branches": 2669,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.870416000001569,
+            "peakTrail": 1033,
+            "markingCuts": 0,
+            "elapsedMs": 1033.6564580000013,
+            "candidates": 256,
+            "edges": 1512,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 651288,
+            "preparationMs": 3.3406249999970896,
+            "totalMs": 1036.9970829999984
+          },
+          "learning": null
+        },
+        {
+          "tile": "2_cross",
+          "name": "2-Cross (Tridecacube)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3153.203042000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 56,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3008.393,
+            "preparationMs": 3008.396499999999,
+            "learningMs": 3004.967042,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 7,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 7
+            },
+            "pairOutcomes": {
+              "attempt budget": 6,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 152,
+            "values": 152,
+            "elapsedMs": 3004.967042
+          }
+        },
+        {
+          "tile": "3_cross",
+          "name": "3-Cross (Nonadecacube)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1083.854041999999,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 80,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 17,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 496,
+            "branches": 2556,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 7.817917000000307,
+            "peakTrail": 1468,
+            "markingCuts": 0,
+            "elapsedMs": 935.3103329999976,
+            "candidates": 352,
+            "edges": 2160,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1235232,
+            "preparationMs": 4.1038750000006985,
+            "totalMs": 939.4142079999983
+          },
+          "learning": null
+        },
+        {
+          "tile": "3_cross",
+          "name": "3-Cross (Nonadecacube)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3158.5704170000026,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 80,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3014.548083999998,
+            "preparationMs": 3014.551209000001,
+            "learningMs": 3010.324208000002,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 224,
+            "values": 224,
+            "elapsedMs": 3010.324208000002
+          }
+        },
+        {
+          "tile": "t_cross",
+          "name": "T-Cross",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3149.7520000000004,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 768,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 8,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 1768,
+            "accepted": 1768,
+            "forced": 14,
+            "branches": 265,
+            "backtracks": 1768,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 103.15587500000402,
+            "peakTrail": 4570,
+            "markingCuts": 0,
+            "elapsedMs": 2998.520875000002,
+            "candidates": 2880,
+            "edges": 20736,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 15481968,
+            "preparationMs": 6.064166000003752,
+            "totalMs": 3004.5850410000057
+          },
+          "learning": null
+        },
+        {
+          "tile": "t_cross",
+          "name": "T-Cross",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3443.0005410000012,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 768,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3292.512125000001,
+            "preparationMs": 3292.5154580000017,
+            "learningMs": 3287.904625000003,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 11,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 11
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 11
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2016,
+            "values": 2016,
+            "elapsedMs": 3287.904625000003
+          }
+        },
+        {
+          "tile": "1_semicross",
+          "name": "1-Semicross (Tripod)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 809.7390839999935,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 160,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 21,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 474,
+            "branches": 1922,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 5.308291000001191,
+            "peakTrail": 1343,
+            "markingCuts": 0,
+            "elapsedMs": 661.1521659999999,
+            "candidates": 896,
+            "edges": 4320,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 926952,
+            "preparationMs": 1.937166999996407,
+            "totalMs": 663.0893329999963
+          },
+          "learning": null
+        },
+        {
+          "tile": "1_semicross",
+          "name": "1-Semicross (Tripod)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3152.9419999999955,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 160,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3006.8699160000033,
+            "preparationMs": 3006.8730829999986,
+            "learningMs": 3004.7965410000033,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 11,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 11
+            },
+            "pairOutcomes": {
+              "attempt budget": 10,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 496,
+            "values": 496,
+            "elapsedMs": 3004.7965410000033
+          }
+        },
+        {
+          "tile": "2_semicross",
+          "name": "2-Semicross (Corner)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1312.4131669999988,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 256,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 25,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 292,
+            "branches": 1362,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 12.265041999999085,
+            "peakTrail": 2072,
+            "markingCuts": 0,
+            "elapsedMs": 1161.3162079999965,
+            "candidates": 1280,
+            "edges": 6912,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1948224,
+            "preparationMs": 2.5571669999990263,
+            "totalMs": 1163.8733749999956
+          },
+          "learning": null
+        },
+        {
+          "tile": "2_semicross",
+          "name": "2-Semicross (Corner)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3171.289791000003,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 256,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3021.6980420000036,
+            "preparationMs": 3021.7007920000033,
+            "learningMs": 3019.071084000003,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 784,
+            "values": 784,
+            "elapsedMs": 3019.071084000003
+          }
+        },
+        {
+          "tile": "large_buckled_ring",
+          "name": "Large Buckled Ring",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 2540.6034590000054,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 192,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 17,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 227,
+            "branches": 1558,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 11.291292000001704,
+            "peakTrail": 1342,
+            "markingCuts": 0,
+            "elapsedMs": 2390.6503749999974,
+            "candidates": 800,
+            "edges": 5184,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1737680,
+            "preparationMs": 3.2269999999989523,
+            "totalMs": 2393.8773749999964
+          },
+          "learning": null
+        },
+        {
+          "tile": "large_buckled_ring",
+          "name": "Large Buckled Ring",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3174.084959,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 192,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3016.745708000002,
+            "preparationMs": 3016.7480829999986,
+            "learningMs": 3013.1260420000035,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 536,
+            "values": 536,
+            "elapsedMs": 3013.1260420000035
+          }
+        },
+        {
+          "tile": "double_ring",
+          "name": "Double Buckled Ring",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1722.2202079999988,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 228,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 22,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 263,
+            "branches": 1776,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 11.401541999999608,
+            "peakTrail": 1555,
+            "markingCuts": 0,
+            "elapsedMs": 1570.5392500000016,
+            "candidates": 996,
+            "edges": 6156,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1759848,
+            "preparationMs": 2.8292919999948936,
+            "totalMs": 1573.3685419999965
+          },
+          "learning": null
+        },
+        {
+          "tile": "double_ring",
+          "name": "Double Buckled Ring",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3165.9957919999943,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 228,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3015.2053749999977,
+            "preparationMs": 3015.2079169999997,
+            "learningMs": 3012.383292000006,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 624,
+            "values": 624,
+            "elapsedMs": 3012.383292000006
+          }
+        },
+        {
+          "tile": "letter_o",
+          "name": "Letter O",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 593.781624999996,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 240,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 2754,
+            "accepted": 2754,
+            "forced": 15,
+            "branches": 354,
+            "backtracks": 2736,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 12.132417000000714,
+            "peakTrail": 1746,
+            "markingCuts": 0,
+            "elapsedMs": 439.387917,
+            "candidates": 1008,
+            "edges": 6480,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1867824,
+            "preparationMs": 3.563124999993306,
+            "totalMs": 442.9510419999933
+          },
+          "learning": null
+        },
+        {
+          "tile": "letter_o",
+          "name": "Letter O",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3160.9827919999952,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 240,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3012.5767909999995,
+            "preparationMs": 3012.5807910000003,
+            "learningMs": 3008.892,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 2,
+              "invalid": 0,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "valid": 2,
+              "time budget": 1
+            },
+            "positivePassed": 2,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3008.892
+          }
+        },
+        {
+          "tile": "1_cross_plus",
+          "name": "1-Cross + 1",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3151.0790409999972,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 216,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 8,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 9553,
+            "accepted": 9553,
+            "forced": 274,
+            "branches": 1230,
+            "backtracks": 9553,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 11.503708000003826,
+            "peakTrail": 1035,
+            "markingCuts": 0,
+            "elapsedMs": 2998.360375000004,
+            "candidates": 1056,
+            "edges": 5832,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1761096,
+            "preparationMs": 2.6589999999996508,
+            "totalMs": 3001.0193750000035
+          },
+          "learning": null
+        },
+        {
+          "tile": "1_cross_plus",
+          "name": "1-Cross + 1",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3169.785957999993,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 216,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3020.927416000006,
+            "preparationMs": 3020.9297499999957,
+            "learningMs": 3018.1744999999937,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "attempt budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 552,
+            "values": 552,
+            "elapsedMs": 3018.1744999999937
+          }
+        },
+        {
+          "tile": "hex_prism",
+          "name": "Hexagonal Prism",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 168.67712499998743,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 132,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 28,
+            "accepted": 28,
+            "forced": 5,
+            "branches": 11,
+            "backtracks": 15,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 7.119333000009647,
+            "peakTrail": 1254,
+            "markingCuts": 0,
+            "elapsedMs": 16.20191600000544,
+            "candidates": 812,
+            "edges": 3564,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1260368,
+            "preparationMs": 1.9298330000019632,
+            "totalMs": 18.131749000007403
+          },
+          "learning": null
+        },
+        {
+          "tile": "hex_prism",
+          "name": "Hexagonal Prism",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3205.9641249999986,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 4,
+            "points": 132,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3055.665624999994,
+            "preparationMs": 3055.6686659999978,
+            "learningMs": 3053.5938749999914,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 4,
+              "invalid": 2,
+              "unresolved": 7
+            },
+            "pairOutcomes": {
+              "valid": 4,
+              "invalid": 2,
+              "candidate dependency budget": 6,
+              "time budget": 1
+            },
+            "positivePassed": 4,
+            "negativeBlocked": 2,
+            "points": 72,
+            "values": 72,
+            "elapsedMs": 3053.5938749999914
+          }
+        },
+        {
+          "tile": "rhombic",
+          "name": "Rhombic Dodecahedron",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 160.35079199999745,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 33,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 24,
+            "accepted": 24,
+            "forced": 11,
+            "branches": 6,
+            "backtracks": 10,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 2.010041999994428,
+            "peakTrail": 655,
+            "markingCuts": 0,
+            "elapsedMs": 7.210542000000714,
+            "candidates": 179,
+            "edges": 891,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 287768,
+            "preparationMs": 1.0957499999931315,
+            "totalMs": 8.306291999993846
+          },
+          "learning": null
+        },
+        {
+          "tile": "rhombic",
+          "name": "Rhombic Dodecahedron",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 1179.457500000004,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 33,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 14,
+            "accepted": 14,
+            "forced": 13,
+            "branches": 1,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 4.461250000007567,
+            "peakTrail": 1327,
+            "markingCuts": 130,
+            "elapsedMs": 8.941667000006419,
+            "candidates": 179,
+            "edges": 891,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 647576,
+            "preparationMs": 1019.0500420000026,
+            "totalMs": 1027.991709000009
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 98,
+            "counts": {
+              "valid": 18,
+              "invalid": 80,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 18,
+              "invalid": 80
+            },
+            "positivePassed": 18,
+            "negativeBlocked": 80,
+            "points": 48,
+            "values": 48,
+            "elapsedMs": 1016.6836249999906
+          }
+        },
+        {
+          "tile": "elongated_dod",
+          "name": "Elongated Dodecahedron",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 153.21391700000095,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "elongated_dod",
+          "name": "Elongated Dodecahedron",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 151.79925000001094,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "trunc_oct",
+          "name": "Truncated Octahedron",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 163.906415999998,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 57,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 15,
+            "accepted": 15,
+            "forced": 1,
+            "branches": 8,
+            "backtracks": 6,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.9366250000020955,
+            "peakTrail": 773,
+            "markingCuts": 0,
+            "elapsedMs": 9.545709000012721,
+            "candidates": 251,
+            "edges": 1539,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 643304,
+            "preparationMs": 2.820208000004641,
+            "totalMs": 12.365917000017362
+          },
+          "learning": null
+        },
+        {
+          "tile": "trunc_oct",
+          "name": "Truncated Octahedron",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 2489.4480839999887,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 57,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 9,
+            "accepted": 9,
+            "forced": 8,
+            "branches": 1,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 11.88779200000863,
+            "peakTrail": 1259,
+            "markingCuts": 84,
+            "elapsedMs": 18.44916699999885,
+            "candidates": 251,
+            "edges": 1539,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1197128,
+            "preparationMs": 2318.786374999996,
+            "totalMs": 2337.235541999995
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 146,
+            "counts": {
+              "valid": 14,
+              "invalid": 132,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 14,
+              "invalid": 132
+            },
+            "positivePassed": 14,
+            "negativeBlocked": 132,
+            "points": 54,
+            "values": 54,
+            "elapsedMs": 2315.756958999991
+          }
+        },
+        {
+          "tile": "twist",
+          "name": "Twist (Tetracube)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 929.3300000000017,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 240,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 26,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 535,
+            "branches": 1772,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 8.560292000009213,
+            "peakTrail": 2016,
+            "markingCuts": 0,
+            "elapsedMs": 776.5502500000002,
+            "candidates": 1344,
+            "edges": 6480,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1390464,
+            "preparationMs": 1.948833000002196,
+            "totalMs": 778.4990830000024
+          },
+          "learning": null
+        },
+        {
+          "tile": "twist",
+          "name": "Twist (Tetracube)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3177.979541000008,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 240,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3019.1066250000003,
+            "preparationMs": 3019.110083000007,
+            "learningMs": 3017.910625000004,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 7,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 6
+            },
+            "pairOutcomes": {
+              "valid": 1,
+              "attempt budget": 5,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3017.910625000004
+          }
+        },
+        {
+          "tile": "knuckle",
+          "name": "Knuckle (Pentacube)",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 215.08574999999837,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 288,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 207,
+            "accepted": 207,
+            "forced": 1,
+            "branches": 50,
+            "backtracks": 182,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 11.174541000000318,
+            "peakTrail": 2161,
+            "markingCuts": 0,
+            "elapsedMs": 64.77883300000394,
+            "candidates": 1536,
+            "edges": 7776,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1834392,
+            "preparationMs": 2.2541669999918668,
+            "totalMs": 67.03299999999581
+          },
+          "learning": null
+        },
+        {
+          "tile": "knuckle",
+          "name": "Knuckle (Pentacube)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3149.7135830000043,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 288,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3003.142374999996,
+            "preparationMs": 3003.146292000005,
+            "learningMs": 3000.548125000001,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 6,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 5
+            },
+            "pairOutcomes": {
+              "attempt budget": 4,
+              "valid": 1,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3000.548125000001
+          }
+        },
+        {
+          "tile": "tet_oct",
+          "name": "Tetrahedron + Octahedron",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "This catalog tile has numerical or symbolic weights. V2 does not round them into an exact certificate. Use the original explorer for its geometry.",
+          "elapsedMs": 148.21512500000244,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "tet_oct",
+          "name": "Tetrahedron + Octahedron",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "This catalog tile has numerical or symbolic weights. V2 does not round them into an exact certificate. Use the original explorer for its geometry.",
+          "elapsedMs": 148.057707999993,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "tetragonal_disphenoid",
+          "name": "Tetragonal Disphenoid (B\u2083 alcove)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 241.4983329999959,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 36,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 13,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 0,
+            "branches": 4070,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1.285375000006752,
+            "peakTrail": 723,
+            "markingCuts": 0,
+            "elapsedMs": 94.6420000000071,
+            "candidates": 432,
+            "edges": 972,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 197928,
+            "preparationMs": 1.2969589999993332,
+            "totalMs": 95.93895900000643
+          },
+          "learning": null
+        },
+        {
+          "tile": "tetragonal_disphenoid",
+          "name": "Tetragonal Disphenoid (B\u2083 alcove)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: unresolved pairs",
+          "elapsedMs": 1677.9766249999957,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 6,
+            "points": 36,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 1528.2937079999974,
+            "preparationMs": 1528.2977079999982,
+            "learningMs": 1526.8950840000034,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": true,
+            "accepted": false,
+            "reason": "unresolved pairs",
+            "pairs": 145,
+            "counts": {
+              "valid": 126,
+              "invalid": 0,
+              "unresolved": 19
+            },
+            "pairOutcomes": {
+              "valid": 126,
+              "attempt budget": 19
+            },
+            "positivePassed": 126,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 1526.8950840000034
+          }
+        },
+        {
+          "tile": "corner_tetra",
+          "name": "Corner Tetrahedron",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 147.04966600000625,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "corner_tetra",
+          "name": "Corner Tetrahedron",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 147.34683300000324,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "big_corner_tetra",
+          "name": "Big Corner Tetrahedron",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.01312499999767,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "big_corner_tetra",
+          "name": "Big Corner Tetrahedron",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.0122080000001,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "diamond_lattice",
+          "name": "Double FCC Lattice (Diamond)",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "This catalog tile has numerical or symbolic weights. V2 does not round them into an exact certificate. Use the original explorer for its geometry.",
+          "elapsedMs": 148.21450000000186,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "diamond_lattice",
+          "name": "Double FCC Lattice (Diamond)",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "This catalog tile has numerical or symbolic weights. V2 does not round them into an exact certificate. Use the original explorer for its geometry.",
+          "elapsedMs": 148.04212499999267,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "perovskite",
+          "name": "Perovskite (Cuboctahedron + Octa)",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.34245799999917,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "perovskite",
+          "name": "Perovskite (Cuboctahedron + Octa)",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.5666659999988,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "orthoscheme",
+          "name": "Orthoscheme (B\u0303\u2083 alcove)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 634.6936660000065,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 120,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 5,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 2566,
+            "branches": 2580,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.6689579999947455,
+            "peakTrail": 897,
+            "markingCuts": 0,
+            "elapsedMs": 484.5833749999874,
+            "candidates": 1080,
+            "edges": 3240,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 652248,
+            "preparationMs": 1.4268329999904381,
+            "totalMs": 486.01020799997787
+          },
+          "learning": null
+        },
+        {
+          "tile": "orthoscheme",
+          "name": "Orthoscheme (B\u0303\u2083 alcove)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3152.253708000004,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 120,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3004.271583000009,
+            "preparationMs": 3004.2755000000034,
+            "learningMs": 3002.760374999998,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 22,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 22
+            },
+            "pairOutcomes": {
+              "attempt budget": 21,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 480,
+            "values": 480,
+            "elapsedMs": 3002.760374999998
+          }
+        },
+        {
+          "tile": "elongated_sq_bipyramid",
+          "name": "Elongated Bipyramid (J15)",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 163.95970900000248,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 3,
+            "points": 87,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 73,
+            "accepted": 73,
+            "forced": 15,
+            "branches": 14,
+            "backtracks": 59,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 3.6494590000074822,
+            "peakTrail": 849,
+            "markingCuts": 0,
+            "elapsedMs": 15.187209000010625,
+            "candidates": 429,
+            "edges": 2349,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 605448,
+            "preparationMs": 1.9653330000001006,
+            "totalMs": 17.152542000010726
+          },
+          "learning": null
+        },
+        {
+          "tile": "elongated_sq_bipyramid",
+          "name": "Elongated Bipyramid (J15)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3153.245167000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 3,
+            "points": 87,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3005.9106670000037,
+            "preparationMs": 3005.9142500000016,
+            "learningMs": 3004.043125000011,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 143,
+            "counts": {
+              "valid": 15,
+              "invalid": 127,
+              "unresolved": 1
+            },
+            "pairOutcomes": {
+              "invalid": 127,
+              "valid": 15,
+              "time budget": 1
+            },
+            "positivePassed": 15,
+            "negativeBlocked": 127,
+            "points": 117,
+            "values": 117,
+            "elapsedMs": 3004.043125000011
+          }
+        },
+        {
+          "tile": "gyrobifastigium",
+          "name": "Gyrobifastigium (J26)",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.07920899998862,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "gyrobifastigium",
+          "name": "Gyrobifastigium (J26)",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.31404199999815,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "laves_c15",
+          "name": "Laves C15 (Truncated Tetra + Tetra))",
+          "mode": "free",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.0634999999893,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "laves_c15",
+          "name": "Laves C15 (Truncated Tetra + Tetra))",
+          "mode": "gcts",
+          "result": "unsupported",
+          "reason": "Noninteger point data is unsupported by the exact v2 engine.",
+          "elapsedMs": 148.86379099999613,
+          "model": null,
+          "verification": null,
+          "stats": null,
+          "learning": null
+        },
+        {
+          "tile": "escher_compound",
+          "name": "Escher Solid",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 161.01320800000394,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 69,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 11,
+            "accepted": 11,
+            "forced": 1,
+            "branches": 8,
+            "backtracks": 2,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 5.309790999992401,
+            "peakTrail": 917,
+            "markingCuts": 0,
+            "elapsedMs": 10.743915999992169,
+            "candidates": 287,
+            "edges": 1863,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 874952,
+            "preparationMs": 3.141791000001831,
+            "totalMs": 13.885706999994
+          },
+          "learning": null
+        },
+        {
+          "tile": "escher_compound",
+          "name": "Escher Solid",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3180.1467910000065,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 69,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3032.459833000001,
+            "preparationMs": 3032.463499999998,
+            "learningMs": 3029.122125000009,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 57,
+            "counts": {
+              "valid": 13,
+              "invalid": 44,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 13,
+              "invalid": 44
+            },
+            "positivePassed": 13,
+            "negativeBlocked": 44,
+            "points": 48,
+            "values": 48,
+            "elapsedMs": 3029.122125000009
+          }
+        },
+        {
+          "tile": "fcc_pure",
+          "name": "FCC (Pure Rhombic Dodecahedron)",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 456.8825829999987,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 553,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 23,
+            "accepted": 23,
+            "forced": 3,
+            "branches": 3,
+            "backtracks": 19,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 199.51879200000258,
+            "peakTrail": 3443,
+            "markingCuts": 0,
+            "elapsedMs": 280.29116700000304,
+            "candidates": 1227,
+            "edges": 14931,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 27539640,
+            "preparationMs": 7.9053339999954915,
+            "totalMs": 288.19650099999853
+          },
+          "learning": null
+        },
+        {
+          "tile": "fcc_pure",
+          "name": "FCC (Pure Rhombic Dodecahedron)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3277.1378330000007,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 553,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3127.7737920000072,
+            "preparationMs": 3127.778999999995,
+            "learningMs": 3121.8614579999994,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 13
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 13
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 847,
+            "values": 847,
+            "elapsedMs": 3121.8614579999994
+          }
+        },
+        {
+          "tile": "hcp_pure",
+          "name": "HCP (Pure Trapezo-Rhombic Dodecahedron)",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 2383.5475420000002,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 4256,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 33,
+            "accepted": 33,
+            "forced": 0,
+            "branches": 5,
+            "backtracks": 30,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1675.552582999997,
+            "peakTrail": 11007,
+            "markingCuts": 0,
+            "elapsedMs": 2225.072,
+            "candidates": 9408,
+            "edges": 114912,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 202890984,
+            "preparationMs": 6.987249999991036,
+            "totalMs": 2232.059249999991
+          },
+          "learning": null
+        },
+        {
+          "tile": "hcp_pure",
+          "name": "HCP (Pure Trapezo-Rhombic Dodecahedron)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3321.4585840000072,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 4256,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3161.081999999995,
+            "preparationMs": 3161.086415999991,
+            "learningMs": 3152.3282499999914,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 13
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 13
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 6704,
+            "values": 6704,
+            "elapsedMs": 3152.3282499999914
+          }
+        },
+        {
+          "tile": "barlow_fcc",
+          "name": "Barlow Packing (Root: FCC)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3163.363333000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 9,
+            "points": 4809,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 25,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 42,
+            "accepted": 42,
+            "forced": 1,
+            "branches": 5,
+            "backtracks": 42,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1989.1671670000069,
+            "peakTrail": 12255,
+            "markingCuts": 0,
+            "elapsedMs": 3004.0302079999965,
+            "candidates": 10635,
+            "edges": 129843,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 230377944,
+            "preparationMs": 10.465083000002778,
+            "totalMs": 3014.4952909999993
+          },
+          "learning": null
+        },
+        {
+          "tile": "barlow_fcc",
+          "name": "Barlow Packing (Root: FCC)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3322.0327499999985,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 9,
+            "points": 4809,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3160.2606249999953,
+            "preparationMs": 3160.264249999993,
+            "learningMs": 3149.5037500000035,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 13
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 13
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 7551,
+            "values": 7551,
+            "elapsedMs": 3149.5037500000035
+          }
+        },
+        {
+          "tile": "barlow_hcp",
+          "name": "Barlow Packing (Root: HCP)",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3156.557124999992,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 9,
+            "points": 4809,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 22,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 43,
+            "accepted": 43,
+            "forced": 9,
+            "branches": 3,
+            "backtracks": 43,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 1944.2467919999908,
+            "peakTrail": 12809,
+            "markingCuts": 0,
+            "elapsedMs": 2993.323875000002,
+            "candidates": 10635,
+            "edges": 129843,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 230391240,
+            "preparationMs": 10.440207999999984,
+            "totalMs": 3003.764083000002
+          },
+          "learning": null
+        },
+        {
+          "tile": "barlow_hcp",
+          "name": "Barlow Packing (Root: HCP)",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3357.511375000002,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 9,
+            "points": 4809,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3193.6360419999983,
+            "preparationMs": 3193.639666999996,
+            "learningMs": 3183.021041999993,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 13,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 13
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 13
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 7551,
+            "values": 7551,
+            "elapsedMs": 3183.021041999993
+          }
+        }
+      ]
+    },
+    "historical_polycubes": {
+      "protocol": {
+        "version": "2.2.1",
+        "commit": "19aac62e420ef8c0541e64559e4fa843d53ff556",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "cd374f76d7249c672cdb68113e4c84959e75d5ff914e638b1a36f945266acb5e",
+          "apps/3d-lattice-tiler/corona-graph.js": "134aa8c05b94514baa0b3ded462a99ef754f1afb56342d30f002e33be467a32c",
+          "apps/3d-lattice-tiler/marking-learning.js": "0b3b537c11631d5d0c120e09d771f5d35acfe491ac0ebad3eefd9bf10713f0e4",
+          "apps/3d-lattice-tiler/v2/experiment.js": "5cafb7ee23668b67859049ac39113f77aba294ba26e9461fc07d3effa31a2f45",
+          "apps/3d-lattice-tiler/v2/model.js": "6e7f04c9bfdb37494004d985703a507a97c001b5bd20bb74e1aeb7f6342af273",
+          "apps/3d-lattice-tiler/v2/slab.js": "03f402dab25a933dd140bb81f3578a0b3a55a781f4c95449636413d7ee7bfb42",
+          "apps/3d-lattice-tiler/v2/search.js": "139a4ae21ed08477dfc349a7089a0100e0f81467f09750172cd49f007e1d2e34"
+        },
+        "catalog": "polycubes",
+        "timeMs": 3000,
+        "pairNodes": 500,
+        "radius": 1,
+        "mirrors": false,
+        "nodes": 10000,
+        "seed": 1,
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "p9-42947",
+          "name": "p9-42947",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 326.93116599999996,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 296,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 576,
+            "accepted": 576,
+            "forced": 40,
+            "branches": 133,
+            "backtracks": 551,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 15.203291000000036,
+            "peakTrail": 2318,
+            "markingCuts": 0,
+            "elapsedMs": 171.00745800000004,
+            "candidates": 1368,
+            "edges": 7992,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 2363088,
+            "preparationMs": 3.068708000000015,
+            "totalMs": 174.07616600000006
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-42947",
+          "name": "p9-42947",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3171.08775,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 296,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3021.329916,
+            "preparationMs": 3021.332583,
+            "learningMs": 3018.2295830000003,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 816,
+            "values": 816,
+            "elapsedMs": 3018.2295830000003
+          }
+        },
+        {
+          "tile": "p9-02127",
+          "name": "p9-02127",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 311.23487499999965,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 456,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 379,
+            "accepted": 379,
+            "forced": 0,
+            "branches": 78,
+            "backtracks": 355,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 24.63729199999989,
+            "peakTrail": 3000,
+            "markingCuts": 0,
+            "elapsedMs": 159.31195800000023,
+            "candidates": 2064,
+            "edges": 12312,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 3638016,
+            "preparationMs": 3.1324580000000424,
+            "totalMs": 162.44441600000027
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-02127",
+          "name": "p9-02127",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3159.106083,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 456,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3011.906,
+            "preparationMs": 3011.9087090000003,
+            "learningMs": 3008.6204580000003,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "valid": 1,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3008.6204580000003
+          }
+        },
+        {
+          "tile": "p9-08203",
+          "name": "p9-08203",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 1701.4134589999994,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 864,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 2490,
+            "accepted": 2490,
+            "forced": 9,
+            "branches": 281,
+            "backtracks": 2469,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 40.765832999999475,
+            "peakTrail": 4617,
+            "markingCuts": 0,
+            "elapsedMs": 1548.3962499999998,
+            "candidates": 3840,
+            "edges": 23328,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 6441432,
+            "preparationMs": 3.392291000000114,
+            "totalMs": 1551.788541
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-08203",
+          "name": "p9-08203",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3205.050208999999,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 864,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3054.072583000001,
+            "preparationMs": 3054.0752500000017,
+            "learningMs": 3050.556875,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2352,
+            "values": 2352,
+            "elapsedMs": 3050.556875
+          }
+        },
+        {
+          "tile": "p9-08219",
+          "name": "p9-08219",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 2958.494667000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 864,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 26,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 5,
+            "branches": 1579,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 40.52883400000064,
+            "peakTrail": 4617,
+            "markingCuts": 0,
+            "elapsedMs": 2808.310375000001,
+            "candidates": 3840,
+            "edges": 23328,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 6441432,
+            "preparationMs": 3.3441250000014406,
+            "totalMs": 2811.6545000000024
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-08219",
+          "name": "p9-08219",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3197.4776250000014,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 864,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3045.9352499999986,
+            "preparationMs": 3045.9373330000017,
+            "learningMs": 3042.418084000001,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 1,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 1
+            },
+            "pairOutcomes": {
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2376,
+            "values": 2376,
+            "elapsedMs": 3042.418084000001
+          }
+        },
+        {
+          "tile": "p9-20656",
+          "name": "p9-20656",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 2159.7034160000003,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 480,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 20,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 422,
+            "branches": 1803,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 26.034082999998645,
+            "peakTrail": 3028,
+            "markingCuts": 0,
+            "elapsedMs": 2006.6048330000012,
+            "candidates": 2304,
+            "edges": 12960,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 4231392,
+            "preparationMs": 3.3104160000002594,
+            "totalMs": 2009.9152490000015
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-20656",
+          "name": "p9-20656",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3194.0946250000015,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 480,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3044.069542000001,
+            "preparationMs": 3044.071834000002,
+            "learningMs": 3040.7047920000005,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "valid": 1,
+              "candidate dependency budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3040.7047920000005
+          }
+        },
+        {
+          "tile": "p9-24025",
+          "name": "p9-24025",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3151.8379170000007,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 912,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 15,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 2863,
+            "accepted": 2863,
+            "forced": 33,
+            "branches": 317,
+            "backtracks": 2863,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 47.88966699999946,
+            "peakTrail": 4278,
+            "markingCuts": 0,
+            "elapsedMs": 2999.1791669999984,
+            "candidates": 4176,
+            "edges": 24624,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 7315344,
+            "preparationMs": 3.4833330000001297,
+            "totalMs": 3002.6624999999985
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-24025",
+          "name": "p9-24025",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3186.2000000000007,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 912,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3028.185958000002,
+            "preparationMs": 3028.1884580000005,
+            "learningMs": 3025.792042000001,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2520,
+            "values": 2520,
+            "elapsedMs": 3025.792042000001
+          }
+        },
+        {
+          "tile": "p9-48258",
+          "name": "p9-48258",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1034.8565000000017,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 3,
+            "points": 120,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 19,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 120,
+            "branches": 3632,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 6.251874999998108,
+            "peakTrail": 1391,
+            "markingCuts": 0,
+            "elapsedMs": 880.9185409999991,
+            "candidates": 576,
+            "edges": 3240,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 1073064,
+            "preparationMs": 2.945833000001585,
+            "totalMs": 883.8643740000007
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-48258",
+          "name": "p9-48258",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3168.121207999997,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 3,
+            "points": 120,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3017.8052919999973,
+            "preparationMs": 3017.807832999999,
+            "learningMs": 3014.6759580000034,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 5,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "valid": 1,
+              "attempt budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 3014.6759580000034
+          }
+        },
+        {
+          "tile": "p9-43172",
+          "name": "p9-43172",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 265.7300000000032,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 456,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 223,
+            "accepted": 223,
+            "forced": 4,
+            "branches": 40,
+            "backtracks": 203,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 24.392166999998153,
+            "peakTrail": 2844,
+            "markingCuts": 0,
+            "elapsedMs": 111.15791699999681,
+            "candidates": 2064,
+            "edges": 12312,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 3634272,
+            "preparationMs": 3.219167000002926,
+            "totalMs": 114.37708399999974
+          },
+          "learning": null
+        },
+        {
+          "tile": "p9-43172",
+          "name": "p9-43172",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3193.0834590000013,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 456,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3040.8056670000005,
+            "preparationMs": 3040.8090420000008,
+            "learningMs": 3037.515041999999,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 2,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 1224,
+            "values": 1224,
+            "elapsedMs": 3037.515041999999
+          }
+        },
+        {
+          "tile": "p10-052588",
+          "name": "p10-052588",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3164.7006249999977,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 912,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 17,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 3180,
+            "accepted": 3180,
+            "forced": 1,
+            "branches": 370,
+            "backtracks": 3180,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 45.670791999997164,
+            "peakTrail": 4131,
+            "markingCuts": 0,
+            "elapsedMs": 2999.3725419999973,
+            "candidates": 3936,
+            "edges": 24624,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 6908616,
+            "preparationMs": 3.541791000003286,
+            "totalMs": 3002.9143330000006
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-052588",
+          "name": "p10-052588",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3193.167291000005,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 912,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3037.7236670000057,
+            "preparationMs": 3037.7267090000023,
+            "learningMs": 3034.079042000005,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 1,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 1
+            },
+            "pairOutcomes": {
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2472,
+            "values": 2472,
+            "elapsedMs": 3034.079042000005
+          }
+        },
+        {
+          "tile": "p10-054782",
+          "name": "p10-054782",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3152.443708999999,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 960,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 18,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 4326,
+            "accepted": 4326,
+            "forced": 240,
+            "branches": 447,
+            "backtracks": 4326,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 46.742458000000624,
+            "peakTrail": 4224,
+            "markingCuts": 0,
+            "elapsedMs": 2997.852458000001,
+            "candidates": 4032,
+            "edges": 25920,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 7405056,
+            "preparationMs": 3.6769579999963753,
+            "totalMs": 3001.5294159999976
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-054782",
+          "name": "p10-054782",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3186.685375000001,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 960,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3030.5189580000006,
+            "preparationMs": 3030.5214999999953,
+            "learningMs": 3026.7795419999966,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 1,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 1
+            },
+            "pairOutcomes": {
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2616,
+            "values": 2616,
+            "elapsedMs": 3026.7795419999966
+          }
+        },
+        {
+          "tile": "p10-055695",
+          "name": "p10-055695",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 229.15129100000195,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 468,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 72,
+            "accepted": 72,
+            "forced": 6,
+            "branches": 24,
+            "backtracks": 52,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 23.090457999998762,
+            "peakTrail": 2780,
+            "markingCuts": 0,
+            "elapsedMs": 70.75737500000105,
+            "candidates": 1980,
+            "edges": 12636,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 3573408,
+            "preparationMs": 4.128624999997555,
+            "totalMs": 74.8859999999986
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-055695",
+          "name": "p10-055695",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3188.8581660000054,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 12,
+            "points": 468,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3035.0305000000008,
+            "preparationMs": 3035.0335420000047,
+            "learningMs": 3031.3776670000007,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 2,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 1284,
+            "values": 1284,
+            "elapsedMs": 3031.3776670000007
+          }
+        },
+        {
+          "tile": "p10-290795",
+          "name": "p10-290795",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3151.322834000006,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 1056,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 12,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 2429,
+            "accepted": 2429,
+            "forced": 0,
+            "branches": 175,
+            "backtracks": 2429,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 64.45091700000194,
+            "peakTrail": 4755,
+            "markingCuts": 0,
+            "elapsedMs": 2998.5153750000027,
+            "candidates": 4992,
+            "edges": 28512,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 9926856,
+            "preparationMs": 3.703125,
+            "totalMs": 3002.2185000000027
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-290795",
+          "name": "p10-290795",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3231.8629169999986,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 1056,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3079.0663330000025,
+            "preparationMs": 3079.0703330000033,
+            "learningMs": 3075.2745829999985,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 8,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 8
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 7,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2976,
+            "values": 2976,
+            "elapsedMs": 3075.2745829999985
+          }
+        },
+        {
+          "tile": "p10-346304",
+          "name": "p10-346304",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 192.8627919999999,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 352,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 23,
+            "accepted": 23,
+            "forced": 1,
+            "branches": 21,
+            "backtracks": 1,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 20.6530830000047,
+            "peakTrail": 2654,
+            "markingCuts": 0,
+            "elapsedMs": 40.28662500000064,
+            "candidates": 1664,
+            "edges": 9504,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 3334608,
+            "preparationMs": 3.3072079999983544,
+            "totalMs": 43.593832999998995
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-346304",
+          "name": "p10-346304",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3191.2515000000058,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 8,
+            "points": 352,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3040.9329170000055,
+            "preparationMs": 3040.935292000002,
+            "learningMs": 3037.5036249999976,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 2,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 928,
+            "values": 928,
+            "elapsedMs": 3037.5036249999976
+          }
+        },
+        {
+          "tile": "p10-052670",
+          "name": "p10-052670",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 3149.470749999993,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 936,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 19,
+            "required": 27,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 3634,
+            "accepted": 3634,
+            "forced": 31,
+            "branches": 576,
+            "backtracks": 3634,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 43.15079100000003,
+            "peakTrail": 4459,
+            "markingCuts": 0,
+            "elapsedMs": 2998.177665999996,
+            "candidates": 4008,
+            "edges": 25272,
+            "points": 27,
+            "clusters": 0,
+            "memoryEstimateBytes": 7202952,
+            "preparationMs": 3.5901669999948354,
+            "totalMs": 3001.767832999991
+          },
+          "learning": null
+        },
+        {
+          "tile": "p10-052670",
+          "name": "p10-052670",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "Marking not activated: learning time budget",
+          "elapsedMs": 3204.1503329999978,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 24,
+            "points": 936,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 0,
+            "required": 27
+          },
+          "stats": {
+            "totalMs": 3052.4257919999945,
+            "preparationMs": 3052.4283339999965,
+            "learningMs": 3048.7532090000022,
+            "attempts": 0,
+            "branches": 0,
+            "backtracks": 0,
+            "forced": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "clusterValidated": 0
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2544,
+            "values": 2544,
+            "elapsedMs": 3048.7532090000022
+          }
+        }
+      ]
+    },
+    "larger_windows": {
+      "protocol": {
+        "version": "2.2.1",
+        "commit": "19aac62e420ef8c0541e64559e4fa843d53ff556",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "cd374f76d7249c672cdb68113e4c84959e75d5ff914e638b1a36f945266acb5e",
+          "apps/3d-lattice-tiler/corona-graph.js": "134aa8c05b94514baa0b3ded462a99ef754f1afb56342d30f002e33be467a32c",
+          "apps/3d-lattice-tiler/marking-learning.js": "0b3b537c11631d5d0c120e09d771f5d35acfe491ac0ebad3eefd9bf10713f0e4",
+          "apps/3d-lattice-tiler/v2/experiment.js": "5cafb7ee23668b67859049ac39113f77aba294ba26e9461fc07d3effa31a2f45",
+          "apps/3d-lattice-tiler/v2/model.js": "6e7f04c9bfdb37494004d985703a507a97c001b5bd20bb74e1aeb7f6342af273",
+          "apps/3d-lattice-tiler/v2/slab.js": "03f402dab25a933dd140bb81f3578a0b3a55a781f4c95449636413d7ee7bfb42",
+          "apps/3d-lattice-tiler/v2/search.js": "139a4ae21ed08477dfc349a7089a0100e0f81467f09750172cd49f007e1d2e34"
+        },
+        "catalog": "app",
+        "timeMs": 10000,
+        "pairNodes": 500,
+        "radius": 3,
+        "mirrors": false,
+        "nodes": 10000,
+        "seed": 1,
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "rhombic",
+          "name": "Rhombic Dodecahedron",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 215.508792,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 33,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 343,
+            "required": 343,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 70,
+            "accepted": 70,
+            "forced": 59,
+            "branches": 6,
+            "backtracks": 7,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 10.596707999999978,
+            "peakTrail": 3165,
+            "markingCuts": 0,
+            "elapsedMs": 42.770790999999974,
+            "candidates": 1023,
+            "edges": 11319,
+            "points": 343,
+            "clusters": 0,
+            "memoryEstimateBytes": 1680552,
+            "preparationMs": 2.307290999999964,
+            "totalMs": 45.07808199999994
+          },
+          "learning": null
+        },
+        {
+          "tile": "rhombic",
+          "name": "Rhombic Dodecahedron",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 1261.905625,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 33,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 343,
+            "required": 343,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 63,
+            "accepted": 63,
+            "forced": 62,
+            "branches": 1,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 38.22633300000007,
+            "peakTrail": 6189,
+            "markingCuts": 882,
+            "elapsedMs": 73.69670799999994,
+            "candidates": 1023,
+            "edges": 11319,
+            "points": 343,
+            "clusters": 0,
+            "memoryEstimateBytes": 3717288,
+            "preparationMs": 1021.3591250000001,
+            "totalMs": 1095.055833
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 98,
+            "counts": {
+              "valid": 18,
+              "invalid": 80,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 18,
+              "invalid": 80
+            },
+            "positivePassed": 18,
+            "negativeBlocked": 80,
+            "points": 48,
+            "values": 48,
+            "elapsedMs": 1019.2543329999999
+          }
+        },
+        {
+          "tile": "trunc_oct",
+          "name": "Truncated Octahedron",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 214.93529200000012,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 57,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 343,
+            "required": 343,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 31,
+            "accepted": 31,
+            "forced": 27,
+            "branches": 3,
+            "backtracks": 1,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 21.16991599999983,
+            "peakTrail": 2931,
+            "markingCuts": 0,
+            "elapsedMs": 52.293541000000005,
+            "candidates": 1191,
+            "edges": 19551,
+            "points": 343,
+            "clusters": 0,
+            "memoryEstimateBytes": 3132792,
+            "preparationMs": 2.8131670000000213,
+            "totalMs": 55.106708000000026
+          },
+          "learning": null
+        },
+        {
+          "tile": "trunc_oct",
+          "name": "Truncated Octahedron",
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 2562.517291,
+          "model": {
+            "domain": "Z\u00b3",
+            "placementDomain": null,
+            "orientations": 1,
+            "points": 57,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 343,
+            "required": 343,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 30,
+            "accepted": 30,
+            "forced": 29,
+            "branches": 1,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 43.956749999999374,
+            "peakTrail": 4551,
+            "markingCuts": 610,
+            "elapsedMs": 74.86495800000012,
+            "candidates": 1191,
+            "edges": 19551,
+            "points": 343,
+            "clusters": 0,
+            "memoryEstimateBytes": 5744232,
+            "preparationMs": 2321.6138329999994,
+            "totalMs": 2396.4787909999995
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 146,
+            "counts": {
+              "valid": 14,
+              "invalid": 132,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "valid": 14,
+              "invalid": 132
+            },
+            "positivePassed": 14,
+            "negativeBlocked": 132,
+            "points": 54,
+            "values": 54,
+            "elapsedMs": 2318.6130409999996
+          }
+        }
+      ]
+    }
+  }
+}

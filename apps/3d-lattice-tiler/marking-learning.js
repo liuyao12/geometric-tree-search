@@ -1,4 +1,4 @@
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-catalog-audit';
 export const LEARNING_VERSION='pair-corona-marking-1';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;

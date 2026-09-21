@@ -1,4 +1,4 @@
-import {markingDomain} from './marking-learning.js?v=20260921-corona-learning';
+import {markingDomain} from './marking-learning.js?v=20260921-catalog-audit';
 // Shared inspection surface for the two engines. Data comes from the live
 // worker, never from a recorded marking or an independent classifier.
 export class MarkingPreview{

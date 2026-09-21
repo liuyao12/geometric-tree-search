@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {CoronaGraph,checkCorona,verifyCorona,placementKey,add,pointKey} from '../apps/3d-lattice-tiler/corona-graph.js';
-import {learnMarking,pairCompatible,LearnedSection} from '../apps/3d-lattice-tiler/marking-learning.js';
+import {learnMarking,pairCompatible,LearnedSection,pointSymmetries,OnlineMarking,neighboringPairs} from '../apps/3d-lattice-tiler/marking-learning.js';
 import {prepareModel} from '../apps/3d-lattice-tiler/v2/model.js';
 import {search,verify,PointGraph} from '../apps/3d-lattice-tiler/v2/search.js';
 import {createTilingStream,tileSpecs} from '../apps/3d-lattice-tiler/engine.js';
@@ -8,6 +8,12 @@ import {remember3DMarking,STORAGE_KEY} from '../apps/3d-lattice-tiler/marking-st
 const toy=weights=>({capacity:3,orientations:[{type:0,index:0,cells:weights.map((weight,x)=>({pos:[x,0,0],weight})),vertices:[],faces:[]}],allowReflections:false});
 const pair=[{oi:0,translation:[0,0,0]},{oi:0,translation:[1,0,0]}];
 const collect=async stream=>{let last;for await(const e of stream)last=e;return last;};
+// A symmetric slab must not retain translated duplicates as orientation slots.
+for(const mirrors of [false,true]){
+ const hex=prepareModel({tile:'a2_hexagonal_prism',radius:1,mirrors});assert.equal(hex.orientations.length,1);
+ const symmetries=pointSymmetries(hex),trainer=new OnlineMarking(hex,symmetries),pair=neighboringPairs(hex,symmetries).next().value;
+ const s=trainer.add({pair,status:'unresolved'});for(const action of s.representation)assert.equal(new Set(Object.values(action)).size,s.labelCount);
+}
 // Complete forward/reverse incidence against a fresh independent enumerator.
 function audit(graph){
  graph.audit();
@@ -22,6 +28,7 @@ const positive=await collect(checkCorona(toy([1,2]),pair,{audit:true}));assert.e
 const negative=await collect(checkCorona(toy([2,1,2]),pair,{audit:true}));assert.equal(negative.status,'invalid');
 assert.equal((await collect(checkCorona(toy([1,2]),pair,{nodes:0}))).status,'unresolved');
 assert.equal((await collect(checkCorona(toy([1,2]),pair,{candidateLimit:1}))).status,'unresolved');
+const memoryLimited=await collect(checkCorona(toy([1,2]),pair,{dependencyLimit:1}));assert.equal(memoryLimited.status,'unresolved');assert.equal(memoryLimited.reason,'candidate dependency budget');
 // A completed pair core can still expose a dead outer frontier.
 const badModel={capacity:3,orientations:[{type:0,index:0,cells:[{pos:[0,0,0],weight:3}],vertices:[],faces:[]},{type:1,index:0,cells:[{pos:[0,0,0],weight:1}],vertices:[],faces:[]}]};
 const fixed=[{oi:0,translation:[0,0,0]},{oi:0,translation:[1,0,0]}];const frontier=verifyCorona(badModel,fixed,[...fixed,{oi:1,translation:[2,0,0]}]);assert.ok(frontier.coreComplete);assert.equal(frontier.frontierViable,false);assert.equal(frontier.complete,false);

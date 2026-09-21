@@ -12,11 +12,16 @@ export function validatePointModel(model){
  for(const o of model.orientations)if(!o.cells?.length||new Set(o.cells.map(c=>pointKey(c.pos))).size!==o.cells.length||o.cells.some(c=>c.pos.length!==3||!c.pos.every(Number.isSafeInteger)||!Number.isSafeInteger(c.weight)||c.weight<1||c.weight>model.capacity))throw Error('Learning needs exact positive integer point weights');
 }
 export class CoronaGraph{
- constructor(model,{candidateLimit=100000}={}){validatePointModel(model);this.model=model;this.limit=candidateLimit;this.points=new Map();this.candidates=new Map();this.dependencies=new Map();this.totals=new Map();this.generations=new Map();this.selected=[];this.used=new Set();this.active=new Set();}
+ constructor(model,{candidateLimit=100000,dependencyLimit=1000000}={}){validatePointModel(model);this.model=model;this.limit=candidateLimit;this.dependencyLimit=dependencyLimit;this.dependencyEntries=0;this.points=new Map();this.candidates=new Map();this.dependencies=new Map();this.totals=new Map();this.generations=new Map();this.selected=[];this.used=new Set();this.active=new Set();}
  legal(c){return !this.used.has(c.id)&&c.cells.every(p=>(this.totals.get(p.k)??0)+p.weight<=this.model.capacity);}
  candidate(oi,translation){
   const id=placementKey({oi,translation});if(this.candidates.has(id))return this.candidates.get(id);
   if(this.candidates.size>=this.limit){const e=Error('candidate budget');e.kind='resource_limit';throw e;}
+  // Candidate count alone does not bound memory for large supports: a single
+  // FCC candidate carries hundreds of entries in the reverse dependency graph.
+  const entries=this.model.orientations[oi].cells.length;
+  if(this.dependencyEntries+entries>this.dependencyLimit){const e=Error('candidate dependency budget');e.kind='resource_limit';throw e;}
+  this.dependencyEntries+=entries;
   const c={id,oi,translation,cells:this.model.orientations[oi].cells.map(p=>({k:pointKey(add(p.pos,translation)),weight:p.weight})),points:new Set()};c.valid=this.legal(c);this.candidates.set(id,c);
   for(const p of c.cells){if(!this.dependencies.has(p.k))this.dependencies.set(p.k,new Set());this.dependencies.get(p.k).add(c);}return c;
  }
@@ -62,7 +67,7 @@ export function verifyCorona(model,pair,placements){
  }
  return {complete:[...core].every(k=>totals.get(k)===model.capacity)&&!dead.length,coreComplete:[...core].every(k=>totals.get(k)===model.capacity),frontierViable:!dead.length,deadPoints:dead};
 }
-export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000}={}){
+export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000,dependencyLimit=1000000}={}){
  let graph,n=0,backtracks=0,reason=null,last=0,best=pair,won=false;const core=new Set(pair.flatMap(p=>model.orientations[p.oi].cells.map(c=>pointKey(add(c.pos,p.translation)))));
  const expired=()=>{if(stop())reason='cancelled';else if(performance.now()>=deadline)reason='time budget';else if(n>=nodes)reason='attempt budget';return !!reason;};
  async function* visit(depth){
@@ -78,7 +83,7 @@ export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=
    graph.rollback(undo);backtracks++;if(audit)graph.audit();if(reason)return false;
   }return false;
  }
- try{graph=new CoronaGraph(model,{candidateLimit});for(const p of pair)graph.apply(p,{root:true});won=yield* visit(0);if(won){best=graph.descriptors();if(!verifyCorona(model,pair,best).complete)throw Error('Independent corona verification failed');}}
+ try{graph=new CoronaGraph(model,{candidateLimit,dependencyLimit});for(const p of pair)graph.apply(p,{root:true});won=yield* visit(0);if(won){best=graph.descriptors();if(!verifyCorona(model,pair,best).complete)throw Error('Independent corona verification failed');}}
  catch(e){if(e.kind!=='resource_limit')throw e;reason=e.message;}
  yield {type:'corona-result',status:won?'valid':reason?'unresolved':'invalid',reason,placements:best,nodes:n,backtracks,verification:won?verifyCorona(model,pair,best):null};
 }

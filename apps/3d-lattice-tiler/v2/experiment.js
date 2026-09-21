@@ -1,7 +1,7 @@
-import {prepareModel} from './model.js?v=2.2.0';
-import {search} from './search.js?v=2.2.0';
-import {learnMarking} from '../marking-learning.js?v=20260921-corona-learning';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-corona-learning';
+import {prepareModel} from './model.js?v=2.2.1';
+import {search} from './search.js?v=2.2.1';
+import {learnMarking} from '../marking-learning.js?v=20260921-catalog-audit';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-catalog-audit';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();

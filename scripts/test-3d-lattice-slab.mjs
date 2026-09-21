@@ -40,7 +40,8 @@ for(const name of ['hat','turtle'])for(const mirrors of [false,true]){
   assert.equal(verify(model,[{oi:0,translation:[1,0,-1]}]).reason,'translation leaves sublattice');
 }
 for(const name of ['hat','turtle'])for(const mode of ['free','gcts','rl','both']){
-  let result;for await(const e of runExperiment({tile:`a2_${name}_prism`,radius:1,mirrors:true,mode,seed:1,timeMs:3000,nodes:10000}))if(e.type==='result')result=e;
+  // The learned lanes include fresh collection of the entire pair catalogue.
+  let result;for await(const e of runExperiment({tile:`a2_${name}_prism`,radius:1,mirrors:true,mode,seed:1,timeMs:['gcts','both'].includes(mode)?30000:3000,nodes:10000}))if(e.type==='result')result=e;
   assert.equal(result.result,'finite_exact',`${name} ${mode}`);assert(verify(result.model,result.placements).ok);
 }
 let probe;for await(const e of runExperiment({tile:'a2_hat_prism',radius:1,action:'probe',strategy:'translational'}))probe=e;

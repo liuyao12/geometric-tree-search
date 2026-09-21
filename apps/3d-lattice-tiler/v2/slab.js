@@ -8,7 +8,7 @@ export function prepareSlab(config,version){
   const tile=SLAB_TILES[config.tile],index3=tile!=='hexagon';
   const radius=config.radius??1;
   if(!Number.isInteger(radius)||radius<1||radius>3)throw Error('Slab radius must be 1–3.');
-  const orientations=tileOrientations(tile,A2_TILE_LOOPS[tile]).filter(o=>config.mirrors||parity(o.symmetry.permutation)===1).map((o,index)=>{
+  const rawOrientations=tileOrientations(tile,A2_TILE_LOOPS[tile]).filter(o=>config.mirrors||parity(o.symmetry.permutation)===1).map((o,index)=>{
     // The demo normalizes the first vertex to zero, then samples this coset.
     const support=[...o.occupancy.values()].filter(p=>!index3||onIndex3(p.point));
     const vertices=[...o.loop.map(p=>p.slice()),...o.loop.map(p=>p.map(x=>x+1))],n=o.loop.length;
@@ -17,6 +17,16 @@ export function prepareSlab(config,version){
     // Before this adjustment each end carried 2*a/48. Now both copies carry
     // a/12, so a cap-interior point contributes 48/48 = 1 immediately.
     return {type:0,index,cells,vertices,faces,marks:[],planarSymmetry:o.symmetry};
+  });
+  // First-vertex normalization can encode the same hexagon at several origins.
+  // Keep one representative per translated weighted solid. Otherwise the
+  // point-group lookup collapses several orientation slots onto one image.
+  // Anchors lie in the same permitted lateral translation lattice.
+  const seen=new Set(),orientations=rawOrientations.filter(o=>{
+    const anchor=o.cells.filter(c=>c.pos.reduce((a,b)=>a+b,0)===0).map(c=>c.pos).sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2])[0];
+    const shift=p=>p.map((v,i)=>v-anchor[i]);
+    const signature=JSON.stringify([o.cells.map(c=>`${shift(c.pos)}:${c.weight}`).sort(),o.vertices.map(p=>shift(p).join(',')).sort()]);
+    if(seen.has(signature))return false;seen.add(signature);return true;
   });
   const basis=index3?[[1,1,-2],[-1,2,-1]]:[[1,0,-1],[0,1,-1]],required=[];
   for(let q=-radius;q<=radius;q++)for(let r=-radius;r<=radius;r++){

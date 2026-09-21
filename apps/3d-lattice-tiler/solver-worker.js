@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260921-corona-learning";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260921-catalog-audit";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
