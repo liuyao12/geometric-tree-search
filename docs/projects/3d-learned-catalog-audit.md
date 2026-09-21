@@ -1,5 +1,10 @@
 # Catalogue audit of the learned GCTS lane
 
+Follow-up: [geometric voxel checks](3d-voxel-marking-research.md) found overlaps
+in the six successful historical-polycube point windows and introduced an
+explicit center-and-corner research model. The point results below keep their
+original scope; they must not be interpreted as geometric packing certificates.
+
 ## Purpose and scope
 
 This September 21, 2026 experiment tests the new pair-corona learner against

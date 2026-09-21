@@ -1,0 +1,240 @@
+{
+  "schema": "gcts.vertex_point_voxel_audit.v1",
+  "scope": "Proper cubic rotations and integer translations; archived finite point windows replayed before independent voxel overlap checks.",
+  "rows": [
+    {
+      "tile": "p9-42947",
+      "artifact": "p9-42947-free.json.gz",
+      "sha256": "36b8e16620704c04793caaaf62cca329011ebe9c2b12860cf5c3bca0f7abda7e",
+      "pointVerified": true,
+      "placements": 25,
+      "voxelOverlapCount": 29,
+      "firstOverlap": {
+        "voxel": [
+          -3,
+          -2,
+          -2
+        ],
+        "placements": [
+          0,
+          2
+        ],
+        "poses": [
+          {
+            "oi": 5,
+            "translation": [
+              -4,
+              -2,
+              -2
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 0,
+            "translation": [
+              -4,
+              -4,
+              -3
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    },
+    {
+      "tile": "p9-02127",
+      "artifact": "p9-02127-free.json.gz",
+      "sha256": "92d0eb7dd17e73d09a3fd9f117813f14d11e722a073f05f6d4a035d9123509dc",
+      "pointVerified": true,
+      "placements": 24,
+      "voxelOverlapCount": 39,
+      "firstOverlap": {
+        "voxel": [
+          -4,
+          -2,
+          -1
+        ],
+        "placements": [
+          2,
+          3
+        ],
+        "poses": [
+          {
+            "oi": 5,
+            "translation": [
+              -4,
+              -2,
+              -2
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 5,
+            "translation": [
+              -4,
+              -2,
+              -1
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    },
+    {
+      "tile": "p9-08203",
+      "artifact": "p9-08203-free.json.gz",
+      "sha256": "57b35d3274bb97dc9f4b0762a8d41b4a86f56b95544b929e9b1e9294f3d28483",
+      "pointVerified": true,
+      "placements": 21,
+      "voxelOverlapCount": 21,
+      "firstOverlap": {
+        "voxel": [
+          -1,
+          -1,
+          -2
+        ],
+        "placements": [
+          0,
+          1
+        ],
+        "poses": [
+          {
+            "oi": 13,
+            "translation": [
+              -1,
+              -2,
+              -2
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 13,
+            "translation": [
+              -1,
+              -2,
+              -3
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    },
+    {
+      "tile": "p9-43172",
+      "artifact": "p9-43172-free.json.gz",
+      "sha256": "50b3daea87aedb07e732989d4fc82582ec5cd342f5c7f0c82c02011841c75161",
+      "pointVerified": true,
+      "placements": 20,
+      "voxelOverlapCount": 27,
+      "firstOverlap": {
+        "voxel": [
+          1,
+          -1,
+          -1
+        ],
+        "placements": [
+          1,
+          2
+        ],
+        "poses": [
+          {
+            "oi": 4,
+            "translation": [
+              -1,
+              -2,
+              -2
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 5,
+            "translation": [
+              -1,
+              -1,
+              -2
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    },
+    {
+      "tile": "p10-055695",
+      "artifact": "p10-055695-free.json.gz",
+      "sha256": "62080681153f522845bfdcb81247b4ea52e1eca4aec2f8b45ca584507f2ea267",
+      "pointVerified": true,
+      "placements": 20,
+      "voxelOverlapCount": 19,
+      "firstOverlap": {
+        "voxel": [
+          -2,
+          -2,
+          1
+        ],
+        "placements": [
+          0,
+          2
+        ],
+        "poses": [
+          {
+            "oi": 8,
+            "translation": [
+              -3,
+              -4,
+              -1
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 4,
+            "translation": [
+              -4,
+              -2,
+              1
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    },
+    {
+      "tile": "p10-346304",
+      "artifact": "p10-346304-free.json.gz",
+      "sha256": "21b722f98e0154654a601671e4d6cf50682129ec6ee126dd5dc8908a8e553242",
+      "pointVerified": true,
+      "placements": 22,
+      "voxelOverlapCount": 20,
+      "firstOverlap": {
+        "voxel": [
+          -2,
+          -1,
+          -2
+        ],
+        "placements": [
+          0,
+          1
+        ],
+        "poses": [
+          {
+            "oi": 5,
+            "translation": [
+              -4,
+              -2,
+              -5
+            ],
+            "generation": 1
+          },
+          {
+            "oi": 5,
+            "translation": [
+              -4,
+              -2,
+              -2
+            ],
+            "generation": 1
+          }
+        ]
+      }
+    }
+  ]
+}

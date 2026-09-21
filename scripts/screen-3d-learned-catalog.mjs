@@ -7,12 +7,39 @@ import {gzipSync} from 'node:zlib';
 import {execFileSync} from 'node:child_process';
 import {catalog,VERSION} from '../apps/3d-lattice-tiler/v2/model.js';
 import {runExperiment} from '../apps/3d-lattice-tiler/v2/experiment.js';
-import {verify} from '../apps/3d-lattice-tiler/v2/search.js';
+import {verify,search} from '../apps/3d-lattice-tiler/v2/search.js';
 import {POLYCUBE_GCTS_CANDIDATES} from '../assets/polycube-census-candidates.js';
+import {prepareVoxelPointModel,verifyVoxelPatch} from '../apps/3d-lattice-tiler/voxel-point-model.js';
+import {learnMarking} from '../apps/3d-lattice-tiler/marking-learning.js';
+
+async function* runCase(config){
+ if(config.pointModel!=='voxel-center-corner'){yield* runExperiment(config);return;}
+ const started=performance.now();let marking=null,model=prepareVoxelPointModel(config.custom.polycubes[0].voxels,{name:config.tile,mirrors:config.mirrors,radius:config.radius});
+ if(config.mode==='gcts'){
+  for await(const e of learnMarking(model,{timeMs:Math.max(0,config.timeMs-(performance.now()-started)),pairNodes:config.pairNodes})){
+   if(e.type==='marking-learned'){
+    marking=e.marking;
+    for(const row of marking.evidence)if(row.status==='valid'&&!verifyVoxelPatch(model,row.placements,{requireTarget:false}).ok)throw Error('Corona has geometric voxel overlap');
+    if(e.model)model=e.model;
+   }
+   yield e;
+  }
+  if(!marking.accepted){yield {type:'result',result:'unknown',reason:marking.reason,model,marking,stats:{totalMs:performance.now()-started}};return;}
+ }
+ const preparationMs=performance.now()-started;
+ for await(const e of search(model,{...config,learnedRestriction:!!marking?.accepted,timeMs:Math.max(0,config.timeMs-preparationMs)})){
+  e.stats.totalMs=performance.now()-started;e.stats.preparationMs=preparationMs;e.marking=marking;
+  if(e.type==='result'){
+   e.voxelVerification=verifyVoxelPatch(model,e.placements);
+   if(e.result==='finite_exact'&&!e.voxelVerification.ok)throw Error('Geometric voxel replay failed');
+  }
+  yield e;
+ }
+}
 
 if(!isMainThread){
  let last,progress=null;
- for await(const event of runExperiment(workerData)){
+ for await(const event of runCase(workerData)){
   if(event.phase==='update'){
    progress={pairs:event.pairs,counts:event.counts};
    parentPort.postMessage({type:'progress',progress});
@@ -25,16 +52,17 @@ if(!isMainThread){
  const args=Object.fromEntries(process.argv.slice(2).map(s=>s.replace(/^--/,'').split('=')));
  const timeMs=Number(args['time-ms']??3000),pairNodes=Number(args['pair-nodes']??500),radius=Number(args.radius??1),mirrors=args.mirrors==='true';
  const output=args.output??'/tmp/gcts-catalog-screen';
+ if(args.model==='voxel-center-corner'&&args.catalog!=='polycubes')throw Error('The voxel model requires --catalog=polycubes');
  if(!(timeMs>0&&pairNodes>0))throw Error('Positive time and pair budgets required');
  await mkdir(output,{recursive:true});
  const pool=args.catalog==='polycubes'?POLYCUBE_GCTS_CANDIDATES.map(c=>({id:c.id,name:c.id,priorStatus:c.screening.status,custom:{name:c.id,polycubes:[{name:c.id,voxels:c.voxels}],polycube_lattice:'z3'}})):catalog();
  const chosen=pool.filter(c=>!args.tiles||args.tiles.split(',').includes(c.id));
  if(!chosen.length)throw Error('No matching catalogue tiles');
- const sources={};for(const path of ['scripts/screen-3d-learned-catalog.mjs','apps/3d-lattice-tiler/corona-graph.js','apps/3d-lattice-tiler/marking-learning.js','apps/3d-lattice-tiler/v2/experiment.js','apps/3d-lattice-tiler/v2/model.js','apps/3d-lattice-tiler/v2/slab.js','apps/3d-lattice-tiler/v2/search.js'])sources[path]=createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex');
- const protocol={version:VERSION,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sources,catalog:args.catalog??'app',timeMs,pairNodes,radius,mirrors,nodes:10000,seed:1,cold:true,sequential:true,scope:'Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct.'};
+ const sources={};for(const path of ['scripts/screen-3d-learned-catalog.mjs','apps/3d-lattice-tiler/voxel-point-model.js','apps/3d-lattice-tiler/corona-graph.js','apps/3d-lattice-tiler/marking-learning.js','apps/3d-lattice-tiler/v2/experiment.js','apps/3d-lattice-tiler/v2/model.js','apps/3d-lattice-tiler/v2/slab.js','apps/3d-lattice-tiler/v2/search.js'])sources[path]=createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex');
+ const protocol={version:VERSION,pointModel:args.model??'catalogue',commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sources,catalog:args.catalog??'app',timeMs,pairNodes,radius,mirrors,nodes:10000,seed:1,cold:true,sequential:true,scope:'Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct.'};
  const rows=[];
  for(const tile of chosen)for(const mode of ['free','gcts']){
-  const config={tile:tile.id,custom:tile.custom,mode,timeMs,pairNodes,radius,mirrors,nodes:protocol.nodes,seed:protocol.seed};
+  const config={tile:tile.id,custom:tile.custom,pointModel:args.model,mode,timeMs,pairNodes,radius,mirrors,nodes:protocol.nodes,seed:protocol.seed};
   const started=performance.now();let progress=null;
   const reply=await new Promise(resolve=>{
    const worker=new Worker(new URL(import.meta.url),{workerData:config,resourceLimits:{maxOldGenerationSizeMb:1024}});
@@ -47,6 +75,7 @@ if(!isMainThread){
   const result=reply.last,marking=result?.marking;
   const pairOutcomes={};for(const e of marking?.evidence??[]){const k=e.reason??e.status;pairOutcomes[k]=(pairOutcomes[k]??0)+1;}
   const row={tile:tile.id,name:tile.name,mode,result:result?.result??result?.kind??reply.type,reason:result?.reason??result?.message??reply.message??null,elapsedMs:performance.now()-started,model:result?.model?{domain:result.model.domain,placementDomain:result.model.placementDomain??null,orientations:result.model.orientations.length,points:result.model.orientations.reduce((n,o)=>n+o.cells.length,0),capacity:result.model.capacity}:null,verification:result?.verification??null,stats:result?.stats??null,learning:marking?{complete:marking.complete,accepted:marking.accepted,reason:marking.reason,pairs:marking.pairs??0,counts:marking.counts??{},pairOutcomes,positivePassed:marking.positivePassed??0,negativeBlocked:marking.negativeBlocked??0,points:marking.points??0,values:marking.values??0,elapsedMs:marking.elapsedMs}:reply.progress};
+  if(result?.voxelVerification)row.voxelVerification=result.voxelVerification;
   rows.push(row);
   await writeFile(`${output}/${tile.id}-${mode}.json.gz`,gzipSync(JSON.stringify({config,...reply})));
   await writeFile(`${output}/summary.json`,JSON.stringify({protocol,rows},null,2));

@@ -1,0 +1,2088 @@
+{
+  "schema": "gcts.voxel_marking_research.v1",
+  "date": "2026-09-21",
+  "scope": "Finite grid-aligned point windows and bounded local labels; no new infinite tiling or aperiodicity certificate. No learned assignments included.",
+  "runs": {
+    "voxel_screen": {
+      "protocol": {
+        "version": "2.2.2",
+        "pointModel": "voxel-center-corner",
+        "commit": "4dada4cf4931c1b4e32854d51cc614678585970d",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "6c627632f7ca8871e7529d0467fd4d755910c1a9d4800d0259105ca60df09163",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "3016b5e5f985e32e98428e6f98dd307e2b7181e5d3d37596a735ddab1dedfd9d",
+          "apps/3d-lattice-tiler/marking-learning.js": "1c2f8ff8bcb7bb0d9b42ce5e98edcffe973dd5e4d42792b3e01b940e595fa09b",
+          "apps/3d-lattice-tiler/v2/experiment.js": "50aa3178b1b11d37244cbe22a0b41af967b72cea6c0be5bddb744e6762f9b086",
+          "apps/3d-lattice-tiler/v2/model.js": "3fec086e3f787fb9451f5e3de61fba2423cf688b50a2ba1dfc68536e53b733ad",
+          "apps/3d-lattice-tiler/v2/slab.js": "03f402dab25a933dd140bb81f3578a0b3a55a781f4c95449636413d7ee7bfb42",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "polycubes",
+        "timeMs": 5000,
+        "pairNodes": 500,
+        "radius": 1,
+        "mirrors": false,
+        "nodes": 10000,
+        "seed": 1,
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "p9-42947",
+          "name": "p9-42947",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 1278.8735840000002,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 8,
+            "points": 368,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 5038,
+            "accepted": 5038,
+            "forced": 1362,
+            "branches": 1352,
+            "backtracks": 5004,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 34.41949999999997,
+            "peakTrail": 3910,
+            "markingCuts": 0,
+            "elapsedMs": 1102.8029999999999,
+            "candidates": 2312,
+            "edges": 20888,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 4884944,
+            "totalMs": 1104.2121670000001,
+            "preparationMs": 1.177500000000009
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 306
+          }
+        },
+        {
+          "tile": "p9-42947",
+          "name": "p9-42947",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5170.938792,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 8,
+            "points": 368,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5025.775459
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 5,
+            "counts": {
+              "valid": 0,
+              "invalid": 1,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "invalid": 1,
+              "attempt budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 1,
+            "points": 1928,
+            "values": 1928,
+            "elapsedMs": 5023.826334
+          }
+        },
+        {
+          "tile": "p9-02127",
+          "name": "p9-02127",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 297.2366670000001,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 564,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 357,
+            "accepted": 357,
+            "forced": 101,
+            "branches": 113,
+            "backtracks": 314,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 47.49841599999945,
+            "peakTrail": 5544,
+            "markingCuts": 0,
+            "elapsedMs": 140.64458299999933,
+            "candidates": 3480,
+            "edges": 32100,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 7489056,
+            "totalMs": 142.4915000000001,
+            "preparationMs": 1.442167000000154
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 387
+          }
+        },
+        {
+          "tile": "p9-02127",
+          "name": "p9-02127",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5182.742166999999,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 564,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5034.451667
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 7,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 7
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 6,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2952,
+            "values": 2952,
+            "elapsedMs": 5032.715208
+          }
+        },
+        {
+          "tile": "p9-08203",
+          "name": "p9-08203",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3373.226999999999,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1080,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 4766,
+            "accepted": 4766,
+            "forced": 312,
+            "branches": 888,
+            "backtracks": 4734,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 90.91991699999926,
+            "peakTrail": 7952,
+            "markingCuts": 0,
+            "elapsedMs": 3219.585459,
+            "candidates": 6480,
+            "edges": 61128,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 13380672,
+            "totalMs": 3223.382625,
+            "preparationMs": 2.8877919999995356
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 288
+          }
+        },
+        {
+          "tile": "p9-08203",
+          "name": "p9-08203",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5176.245041000002,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1080,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5019.067791000001
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 5,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 5
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 4,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 5640,
+            "values": 5640,
+            "elapsedMs": 5016.84
+          }
+        },
+        {
+          "tile": "p9-08219",
+          "name": "p9-08219",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 290.91991699999926,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1080,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 61,
+            "accepted": 61,
+            "forced": 4,
+            "branches": 33,
+            "backtracks": 27,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 81.17095899999913,
+            "peakTrail": 8044,
+            "markingCuts": 0,
+            "elapsedMs": 136.2267920000013,
+            "candidates": 6480,
+            "edges": 61128,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 13382880,
+            "totalMs": 139.10404199999903,
+            "preparationMs": 2.123708999999508
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 306
+          }
+        },
+        {
+          "tile": "p9-08219",
+          "name": "p9-08219",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5183.892958,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1080,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5026.540541000002
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 1,
+              "candidate dependency budget": 1,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 5640,
+            "values": 5640,
+            "elapsedMs": 5024.2590420000015
+          }
+        },
+        {
+          "tile": "p9-20656",
+          "name": "p9-20656",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 245.8585830000011,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 588,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 51,
+            "accepted": 51,
+            "forced": 2,
+            "branches": 49,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 52.47479200000089,
+            "peakTrail": 6390,
+            "markingCuts": 0,
+            "elapsedMs": 91.01483400000143,
+            "candidates": 3840,
+            "edges": 33636,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 8563248,
+            "totalMs": 93.67449999999735,
+            "preparationMs": 2.254624999997759
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 459
+          }
+        },
+        {
+          "tile": "p9-20656",
+          "name": "p9-20656",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5175.620416000002,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 588,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5022.681916000001
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 12,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 12
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 11,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 3108,
+            "values": 3108,
+            "elapsedMs": 5021.111291000001
+          }
+        },
+        {
+          "tile": "p9-24025",
+          "name": "p9-24025",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 306.61358299999847,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1128,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 42,
+            "accepted": 42,
+            "forced": 5,
+            "branches": 32,
+            "backtracks": 5,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 96.81341700000121,
+            "peakTrail": 8808,
+            "markingCuts": 0,
+            "elapsedMs": 148.53770900000018,
+            "candidates": 7032,
+            "edges": 64200,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 15070272,
+            "totalMs": 152.03150000000096,
+            "preparationMs": 2.38591599999927
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 333
+          }
+        },
+        {
+          "tile": "p9-24025",
+          "name": "p9-24025",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5218.820124999998,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1128,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5061.776167
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 11,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 11
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 10,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 5928,
+            "values": 5928,
+            "elapsedMs": 5059.017374999999
+          }
+        },
+        {
+          "tile": "p9-48258",
+          "name": "p9-48258",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 1283.5863750000062,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 3,
+            "points": 147,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 82,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 3516,
+            "branches": 2502,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 14.362332999997307,
+            "peakTrail": 2755,
+            "markingCuts": 0,
+            "elapsedMs": 1135.5827500000014,
+            "candidates": 975,
+            "edges": 8409,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 2200392,
+            "totalMs": 1136.6221250000017,
+            "preparationMs": 0.8857920000009472
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 306
+          }
+        },
+        {
+          "tile": "p9-48258",
+          "name": "p9-48258",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5166.657583,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 3,
+            "points": 147,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5017.472332999998
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 8,
+            "counts": {
+              "valid": 1,
+              "invalid": 0,
+              "unresolved": 7
+            },
+            "pairOutcomes": {
+              "valid": 1,
+              "attempt budget": 6,
+              "time budget": 1
+            },
+            "positivePassed": 1,
+            "negativeBlocked": 0,
+            "points": 0,
+            "values": 0,
+            "elapsedMs": 5016.331708000005
+          }
+        },
+        {
+          "tile": "p9-43172",
+          "name": "p9-43172",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 236.73320799999783,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 564,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 38,
+            "accepted": 38,
+            "forced": 6,
+            "branches": 29,
+            "backtracks": 4,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 45.234708999996656,
+            "peakTrail": 5112,
+            "markingCuts": 0,
+            "elapsedMs": 81.2835419999974,
+            "candidates": 3480,
+            "edges": 32100,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 7478688,
+            "totalMs": 83.12099999999919,
+            "preparationMs": 1.4587919999976293
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 306
+          }
+        },
+        {
+          "tile": "p9-43172",
+          "name": "p9-43172",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5185.3710409999985,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 564,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5033.809500000003
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 6,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 6
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 5,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2952,
+            "values": 2952,
+            "elapsedMs": 5030.0789580000055
+          }
+        },
+        {
+          "tile": "p10-052588",
+          "name": "p10-052588",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 5156.216583000001,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1152,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 67,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 4616,
+            "accepted": 4616,
+            "forced": 877,
+            "branches": 538,
+            "backtracks": 4616,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 88.80991700000595,
+            "peakTrail": 7306,
+            "markingCuts": 0,
+            "elapsedMs": 5002.653459000001,
+            "candidates": 6600,
+            "edges": 64848,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 14422128,
+            "totalMs": 5005.757250000002,
+            "preparationMs": 2.5005830000009155
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 200
+          }
+        },
+        {
+          "tile": "p10-052588",
+          "name": "p10-052588",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5164.727083999998,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1152,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5006.927792000002
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 6,
+            "counts": {
+              "valid": 0,
+              "invalid": 4,
+              "unresolved": 2
+            },
+            "pairOutcomes": {
+              "invalid": 4,
+              "candidate dependency budget": 1,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 4,
+            "points": 5976,
+            "values": 5976,
+            "elapsedMs": 5004.544791
+          }
+        },
+        {
+          "tile": "p10-054782",
+          "name": "p10-054782",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 5155.890417000002,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1200,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 59,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 5696,
+            "accepted": 5696,
+            "forced": 306,
+            "branches": 649,
+            "backtracks": 5696,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 93.95716700000048,
+            "peakTrail": 7502,
+            "markingCuts": 0,
+            "elapsedMs": 5002.433624999998,
+            "candidates": 6720,
+            "edges": 67920,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 15238608,
+            "totalMs": 5005.535082999995,
+            "preparationMs": 2.5267499999972642
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": false,
+            "covered": 25,
+            "required": 27,
+            "voxels": 210
+          }
+        },
+        {
+          "tile": "p10-054782",
+          "name": "p10-054782",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5184.903249999996,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1200,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5025.724667000002
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 8,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 8
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 7,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 6216,
+            "values": 6216,
+            "elapsedMs": 5023.233709
+          }
+        },
+        {
+          "tile": "p10-055695",
+          "name": "p10-055695",
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 708.4500410000037,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 588,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": true,
+            "covered": 91,
+            "required": 91,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 856,
+            "accepted": 856,
+            "forced": 122,
+            "branches": 209,
+            "backtracks": 824,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 47.65512499999022,
+            "peakTrail": 4912,
+            "markingCuts": 0,
+            "elapsedMs": 554.9106659999961,
+            "candidates": 3312,
+            "edges": 33192,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 7404864,
+            "totalMs": 557.5159580000036,
+            "preparationMs": 2.3118329999997513
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 320
+          }
+        },
+        {
+          "tile": "p10-055695",
+          "name": "p10-055695",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5177.815041000009,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 12,
+            "points": 588,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5024.888749999998
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 3,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 3
+            },
+            "pairOutcomes": {
+              "attempt budget": 2,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 3036,
+            "values": 3036,
+            "elapsedMs": 5022.48279200001
+          }
+        },
+        {
+          "tile": "p10-290795",
+          "name": "p10-290795",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 5156.22391700001,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1296,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 74,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 9480,
+            "accepted": 9480,
+            "forced": 161,
+            "branches": 1805,
+            "backtracks": 9480,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 130.8483750000014,
+            "peakTrail": 9945,
+            "markingCuts": 0,
+            "elapsedMs": 5005.229542000001,
+            "candidates": 8400,
+            "edges": 74064,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 20319192,
+            "totalMs": 5009.047875000004,
+            "preparationMs": 3.1768750000046566
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 310
+          }
+        },
+        {
+          "tile": "p10-290795",
+          "name": "p10-290795",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5306.887374999991,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1296,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5144.831250000003
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 14,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 14
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 13,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 6840,
+            "values": 6840,
+            "elapsedMs": 5142.141499999998
+          }
+        },
+        {
+          "tile": "p10-346304",
+          "name": "p10-346304",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "attempt budget",
+          "elapsedMs": 3742.901833000011,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 8,
+            "points": 432,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 53,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 10000,
+            "accepted": 10000,
+            "forced": 74,
+            "branches": 2617,
+            "backtracks": 10000,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 40.388082999998005,
+            "peakTrail": 3366,
+            "markingCuts": 0,
+            "elapsedMs": 3587.96033300001,
+            "candidates": 2800,
+            "edges": 24688,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 6774288,
+            "totalMs": 3589.5849580000067,
+            "preparationMs": 1.3101250000036089
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": true,
+            "covered": 27,
+            "required": 27,
+            "voxels": 150
+          }
+        },
+        {
+          "tile": "p10-346304",
+          "name": "p10-346304",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5176.955541999996,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 8,
+            "points": 432,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5021.655583
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "attempt budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 2280,
+            "values": 2280,
+            "elapsedMs": 5019.420499999993
+          }
+        },
+        {
+          "tile": "p10-052670",
+          "name": "p10-052670",
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 5152.112500000003,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1176,
+            "capacity": 8
+          },
+          "verification": {
+            "ok": false,
+            "covered": 23,
+            "required": 91,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 3242,
+            "accepted": 3242,
+            "forced": 566,
+            "branches": 205,
+            "backtracks": 3242,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 98.9427919999871,
+            "peakTrail": 4867,
+            "markingCuts": 0,
+            "elapsedMs": 4998.610374999989,
+            "candidates": 6696,
+            "edges": 66384,
+            "points": 91,
+            "clusters": 0,
+            "memoryEstimateBytes": 14843400,
+            "totalMs": 5002.398583000002,
+            "preparationMs": 3.20045800000662
+          },
+          "learning": null,
+          "voxelVerification": {
+            "ok": false,
+            "covered": 20,
+            "required": 27,
+            "voxels": 60
+          }
+        },
+        {
+          "tile": "p10-052670",
+          "name": "p10-052670",
+          "mode": "gcts",
+          "result": "unknown",
+          "reason": "learning time budget",
+          "elapsedMs": 5173.683332999994,
+          "model": {
+            "domain": "Integer voxel grid; coordinates in half-unit steps; centers and corners required",
+            "placementDomain": {
+              "kind": "scaled_cubic",
+              "translationStep": 2
+            },
+            "orientations": 24,
+            "points": 1176,
+            "capacity": 8
+          },
+          "verification": null,
+          "stats": {
+            "totalMs": 5013.200749999989
+          },
+          "learning": {
+            "complete": false,
+            "accepted": false,
+            "reason": "learning time budget",
+            "pairs": 4,
+            "counts": {
+              "valid": 0,
+              "invalid": 0,
+              "unresolved": 4
+            },
+            "pairOutcomes": {
+              "candidate dependency budget": 3,
+              "time budget": 1
+            },
+            "positivePassed": 0,
+            "negativeBlocked": 0,
+            "points": 6120,
+            "values": 6120,
+            "elapsedMs": 5010.694042000003
+          }
+        }
+      ]
+    },
+    "fixed_seed_control": {
+      "protocol": {
+        "oracleSha256": "3016b5e5f985e32e98428e6f98dd307e2b7181e5d3d37596a735ddab1dedfd9d",
+        "nodes": 500,
+        "timeMs": 10000,
+        "mirrors": false,
+        "pairsPerTile": 2,
+        "ordering": "AB then BA, sequential",
+        "scope": "Same unmarked point model and search order; first pairs are a diagnostic sample, not a completed catalogue"
+      },
+      "rows": [
+        {
+          "tile": "p9-42947",
+          "index": 0,
+          "fixedSeedFilter": false,
+          "elapsedMs": 1363.8992079999998,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 11314,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 418618,
+          "peakDependencyEntries": 418618,
+          "verification": null,
+          "traceDigest": "9689e83cb23212ebc6992f0ffb507533a0714a1f56691c314b8e54510a507e82"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 0,
+          "fixedSeedFilter": true,
+          "elapsedMs": 1243.5180839999998,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 10920,
+          "fixedRejected": 394,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 404040,
+          "peakDependencyEntries": 404040,
+          "verification": null,
+          "traceDigest": "9689e83cb23212ebc6992f0ffb507533a0714a1f56691c314b8e54510a507e82"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 1,
+          "fixedSeedFilter": true,
+          "elapsedMs": 1300.424834,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 12292,
+          "fixedRejected": 394,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 454804,
+          "peakDependencyEntries": 454804,
+          "verification": null,
+          "traceDigest": "7ba5d150db6da7f4213c36b916459c7d013cf01e785249f9ad3ec61adaecf268"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 1,
+          "fixedSeedFilter": false,
+          "elapsedMs": 1342.9417919999996,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 12686,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 469382,
+          "peakDependencyEntries": 469382,
+          "verification": null,
+          "traceDigest": "7ba5d150db6da7f4213c36b916459c7d013cf01e785249f9ad3ec61adaecf268"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 0,
+          "fixedSeedFilter": false,
+          "elapsedMs": 469.1617500000002,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 24,
+          "backtracks": 3,
+          "cachedCandidates": 27777,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "d73c1d7e801938422212e582845fa0e1dca12cc77bb28a3d245f32e0fe31467a"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 0,
+          "fixedSeedFilter": true,
+          "elapsedMs": 514.5910829999993,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 27,
+          "backtracks": 4,
+          "cachedCandidates": 27777,
+          "fixedRejected": 1242,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "148a29637b6a4a5f5570f0ca2a18a78c0bfa98e988f7d401e3ce34def6c157ea"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 1,
+          "fixedSeedFilter": true,
+          "elapsedMs": 787.7611670000006,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 78,
+          "backtracks": 57,
+          "cachedCandidates": 27777,
+          "fixedRejected": 1439,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "0c5dd9205be46dd98e5dae56ddad67472791ce85001289f50186a7f26498af33"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 1,
+          "fixedSeedFilter": false,
+          "elapsedMs": 689.4428750000006,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 55,
+          "backtracks": 35,
+          "cachedCandidates": 27777,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "670669f0174bc30bae22a305fe0dc8ffd7d2e7e1b555e6691118b895f242341c"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 0,
+          "fixedSeedFilter": false,
+          "elapsedMs": 4429.072083,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 21670,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 866800,
+          "peakDependencyEntries": 866800,
+          "verification": null,
+          "traceDigest": "3691df6bb264bc9525f1fc7eb700ca3c507a6936921dcf9dd95ee16428d726fd"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 0,
+          "fixedSeedFilter": true,
+          "elapsedMs": 4043.3574590000007,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 20062,
+          "fixedRejected": 1608,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 802480,
+          "peakDependencyEntries": 802480,
+          "verification": null,
+          "traceDigest": "3691df6bb264bc9525f1fc7eb700ca3c507a6936921dcf9dd95ee16428d726fd"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 1,
+          "fixedSeedFilter": true,
+          "elapsedMs": 558.0141249999997,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 24,
+          "backtracks": 10,
+          "cachedCandidates": 25000,
+          "fixedRejected": 1281,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 1000000,
+          "peakDependencyEntries": 1000000,
+          "verification": null,
+          "traceDigest": "3b3834a9ecd0b437ab316188ee2b54e7b95e018e8d19c6fe5f21c07e700d0c3d"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 1,
+          "fixedSeedFilter": false,
+          "elapsedMs": 500.161709,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 22,
+          "backtracks": 10,
+          "cachedCandidates": 25000,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 1000000,
+          "peakDependencyEntries": 1000000,
+          "verification": null,
+          "traceDigest": "a91d2c9fd4cb58bb0c33a94059d99153456158443bb399ca5a0f2a55e228b25a"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 0,
+          "fixedSeedFilter": false,
+          "elapsedMs": 369.3640000000014,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 5,
+          "backtracks": 0,
+          "cachedCandidates": 22727,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999988,
+          "peakDependencyEntries": 999988,
+          "verification": null,
+          "traceDigest": "85034d393f438d4a33e6647d7dfcc8b90deadc0bca323925dc6506e0ffaf24a4"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 0,
+          "fixedSeedFilter": true,
+          "elapsedMs": 376.5002080000013,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 6,
+          "backtracks": 0,
+          "cachedCandidates": 22727,
+          "fixedRejected": 1526,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999988,
+          "peakDependencyEntries": 999988,
+          "verification": null,
+          "traceDigest": "6b585ba696523fd137b9a958dd5421908628a5b9396def15ff5ecd4368ded330"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 1,
+          "fixedSeedFilter": true,
+          "elapsedMs": 377.75374999999985,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 6,
+          "backtracks": 0,
+          "cachedCandidates": 22727,
+          "fixedRejected": 1526,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999988,
+          "peakDependencyEntries": 999988,
+          "verification": null,
+          "traceDigest": "f0dd595d89ad5cba087279bf35fa8a56b9fd05e4225e81a8f2446741361135a1"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 1,
+          "fixedSeedFilter": false,
+          "elapsedMs": 392.7826249999998,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 6,
+          "backtracks": 0,
+          "cachedCandidates": 22727,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999988,
+          "peakDependencyEntries": 999988,
+          "verification": null,
+          "traceDigest": "f0dd595d89ad5cba087279bf35fa8a56b9fd05e4225e81a8f2446741361135a1"
+        },
+        {
+          "tile": "fcc_pure",
+          "index": 0,
+          "fixedSeedFilter": false,
+          "elapsedMs": 212.4789579999997,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 0,
+          "backtracks": 0,
+          "cachedCandidates": 1808,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999824,
+          "peakDependencyEntries": 999824,
+          "verification": null,
+          "traceDigest": "54e46726329bb755c15abd9e947ae030c87fa2e8aa0fdc76a253b869408334f6"
+        },
+        {
+          "tile": "fcc_pure",
+          "index": 0,
+          "fixedSeedFilter": true,
+          "elapsedMs": 544.9048330000005,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 1,
+          "backtracks": 0,
+          "cachedCandidates": 1808,
+          "fixedRejected": 5013,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999824,
+          "peakDependencyEntries": 999824,
+          "verification": null,
+          "traceDigest": "54e46726329bb755c15abd9e947ae030c87fa2e8aa0fdc76a253b869408334f6"
+        },
+        {
+          "tile": "fcc_pure",
+          "index": 1,
+          "fixedSeedFilter": true,
+          "elapsedMs": 562.231541000001,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 1,
+          "backtracks": 0,
+          "cachedCandidates": 1808,
+          "fixedRejected": 5013,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999824,
+          "peakDependencyEntries": 999824,
+          "verification": null,
+          "traceDigest": "9bbecb86d9fa56a50dc7a090111fe1e540478b9be10872a149079a014d588b25"
+        },
+        {
+          "tile": "fcc_pure",
+          "index": 1,
+          "fixedSeedFilter": false,
+          "elapsedMs": 210.9310000000005,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 0,
+          "backtracks": 0,
+          "cachedCandidates": 1808,
+          "fixedRejected": 0,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999824,
+          "peakDependencyEntries": 999824,
+          "verification": null,
+          "traceDigest": "9bbecb86d9fa56a50dc7a090111fe1e540478b9be10872a149079a014d588b25"
+        }
+      ]
+    },
+    "branch_cache_control": {
+      "protocol": {
+        "oracleSha256": "3016b5e5f985e32e98428e6f98dd307e2b7181e5d3d37596a735ddab1dedfd9d",
+        "model": "voxel-center-corner-1",
+        "nodes": 500,
+        "timeMs": 10000,
+        "mirrors": false,
+        "pairsPerTile": 2,
+        "ordering": "AB then BA, sequential",
+        "experiment": "retain=false deletes branch caches and omits newly enumerated candidates blocked by that branch prefix",
+        "scope": "Diagnostic pairs, not completed catalogue"
+      },
+      "rows": [
+        {
+          "tile": "p9-42947",
+          "index": 0,
+          "retainBranchCaches": true,
+          "elapsedMs": 101.21645900000001,
+          "type": "corona-result",
+          "status": "invalid",
+          "reason": null,
+          "nodes": 12,
+          "backtracks": 12,
+          "cachedCandidates": 3669,
+          "fixedRejected": 618,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 168774,
+          "peakDependencyEntries": 168774,
+          "verification": null,
+          "traceDigest": "3b888178f0c2dffb0a620d6452ce899f6d199defd95041e1c8671ad78850e9e4"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 0,
+          "retainBranchCaches": false,
+          "elapsedMs": 227.249292,
+          "type": "corona-result",
+          "status": "invalid",
+          "reason": null,
+          "nodes": 12,
+          "backtracks": 12,
+          "cachedCandidates": 1842,
+          "fixedRejected": 618,
+          "capacityRejectedAtBirth": 3576,
+          "dependencyEntries": 84732,
+          "peakDependencyEntries": 114126,
+          "verification": null,
+          "traceDigest": "3b888178f0c2dffb0a620d6452ce899f6d199defd95041e1c8671ad78850e9e4"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 1,
+          "retainBranchCaches": false,
+          "elapsedMs": 5270.043959,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 1936,
+          "fixedRejected": 650,
+          "capacityRejectedAtBirth": 133792,
+          "dependencyEntries": 89056,
+          "peakDependencyEntries": 518374,
+          "verification": null,
+          "traceDigest": "7f7c285be536e778d59952c9134460a63c415a266ac8d811997c4e28e9bf45fd"
+        },
+        {
+          "tile": "p9-42947",
+          "index": 1,
+          "retainBranchCaches": true,
+          "elapsedMs": 1437.1394170000003,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "attempt budget",
+          "nodes": 500,
+          "backtracks": 500,
+          "cachedCandidates": 17228,
+          "fixedRejected": 650,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 792488,
+          "peakDependencyEntries": 792488,
+          "verification": null,
+          "traceDigest": "7f7c285be536e778d59952c9134460a63c415a266ac8d811997c4e28e9bf45fd"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 0,
+          "retainBranchCaches": true,
+          "elapsedMs": 463.908958,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 19,
+          "backtracks": 5,
+          "cachedCandidates": 22222,
+          "fixedRejected": 1884,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999990,
+          "peakDependencyEntries": 999990,
+          "verification": null,
+          "traceDigest": "f3c1f07758391ea74e114818db91b81ccb77385bedb045a2dbec28e22d4fdb9d"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 0,
+          "retainBranchCaches": false,
+          "elapsedMs": 887.8784580000001,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 28,
+          "backtracks": 11,
+          "cachedCandidates": 22222,
+          "fixedRejected": 1884,
+          "capacityRejectedAtBirth": 26250,
+          "dependencyEntries": 999990,
+          "peakDependencyEntries": 999990,
+          "verification": null,
+          "traceDigest": "6c63b2e7722f7e94a88d2734ea004c328e863a933b9581ae85d49a56b208495a"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 1,
+          "retainBranchCaches": false,
+          "elapsedMs": 846.3235839999998,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 25,
+          "backtracks": 7,
+          "cachedCandidates": 22222,
+          "fixedRejected": 1969,
+          "capacityRejectedAtBirth": 28394,
+          "dependencyEntries": 999990,
+          "peakDependencyEntries": 999990,
+          "verification": null,
+          "traceDigest": "a2794863a380f3e99c2fcf45f55648a0ddb7debb0aa8801d3f71d784d54a2e31"
+        },
+        {
+          "tile": "p9-08203",
+          "index": 1,
+          "retainBranchCaches": true,
+          "elapsedMs": 457.9057499999999,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 23,
+          "backtracks": 7,
+          "cachedCandidates": 22222,
+          "fixedRejected": 1969,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999990,
+          "peakDependencyEntries": 999990,
+          "verification": null,
+          "traceDigest": "43c7d594244783a1c2a25eddd2e266918aead0f0eaf500288027cedcce51f1e4"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 0,
+          "retainBranchCaches": true,
+          "elapsedMs": 912.2201669999995,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 73,
+          "backtracks": 67,
+          "cachedCandidates": 20000,
+          "fixedRejected": 2402,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 1000000,
+          "peakDependencyEntries": 1000000,
+          "verification": null,
+          "traceDigest": "fe54619792e5c985400e6003d32398c5010262fb72389e27776d750435555ebd"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 0,
+          "retainBranchCaches": false,
+          "elapsedMs": 10052.151167000002,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "time budget",
+          "nodes": 214,
+          "backtracks": 214,
+          "cachedCandidates": 5551,
+          "fixedRejected": 2402,
+          "capacityRejectedAtBirth": 332614,
+          "dependencyEntries": 277550,
+          "peakDependencyEntries": 929700,
+          "verification": null,
+          "traceDigest": "0f8e654c6ccde4fcd9f920e70131aae229e94445d191213fa6012c27a92bef8e"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 1,
+          "retainBranchCaches": false,
+          "elapsedMs": 10102.412209000002,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "time budget",
+          "nodes": 245,
+          "backtracks": 245,
+          "cachedCandidates": 5790,
+          "fixedRejected": 2419,
+          "capacityRejectedAtBirth": 320641,
+          "dependencyEntries": 289500,
+          "peakDependencyEntries": 994700,
+          "verification": null,
+          "traceDigest": "d33096d0af4ed6872537bdae819430fec06476e990695f9e1e9cd9056513d118"
+        },
+        {
+          "tile": "p10-054782",
+          "index": 1,
+          "retainBranchCaches": true,
+          "elapsedMs": 508.38116699999955,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 23,
+          "backtracks": 13,
+          "cachedCandidates": 20000,
+          "fixedRejected": 2419,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 1000000,
+          "peakDependencyEntries": 1000000,
+          "verification": null,
+          "traceDigest": "09e1636aa2e8793b5b8cfbc1570e28c9311e4e398dec11021318dae2265c4ca0"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 0,
+          "retainBranchCaches": true,
+          "elapsedMs": 358.70187499999884,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 4,
+          "backtracks": 0,
+          "cachedCandidates": 18518,
+          "fixedRejected": 2598,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "dffdefb15b828e5924d714ca58b728009a45aeb5133ebf8956ed1fa3bfc51b40"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 0,
+          "retainBranchCaches": false,
+          "elapsedMs": 510.99874999999884,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 4,
+          "backtracks": 0,
+          "cachedCandidates": 18518,
+          "fixedRejected": 2598,
+          "capacityRejectedAtBirth": 18716,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "dffdefb15b828e5924d714ca58b728009a45aeb5133ebf8956ed1fa3bfc51b40"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 1,
+          "retainBranchCaches": false,
+          "elapsedMs": 522.7727079999968,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 5,
+          "backtracks": 0,
+          "cachedCandidates": 18518,
+          "fixedRejected": 2590,
+          "capacityRejectedAtBirth": 15840,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "ab71528b94710b68568366b8fdb48353959aa598346206bf83bb8e3deea37ef0"
+        },
+        {
+          "tile": "p10-290795",
+          "index": 1,
+          "retainBranchCaches": true,
+          "elapsedMs": 348.262999999999,
+          "type": "corona-result",
+          "status": "unresolved",
+          "reason": "candidate dependency budget",
+          "nodes": 4,
+          "backtracks": 0,
+          "cachedCandidates": 18518,
+          "fixedRejected": 2590,
+          "capacityRejectedAtBirth": 0,
+          "dependencyEntries": 999972,
+          "peakDependencyEntries": 999972,
+          "verification": null,
+          "traceDigest": "e9802e6a6e022a12841292eb84b3a1d642197669b4039b2b16f09fa1372b6aa8"
+        }
+      ]
+    }
+  }
+}

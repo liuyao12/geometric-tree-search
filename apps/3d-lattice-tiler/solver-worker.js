@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260921-catalog-audit";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260921-voxel-audit";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

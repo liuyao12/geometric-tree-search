@@ -5,30 +5,55 @@ export const sub=(a,b)=>a.map((v,i)=>v-b[i]);
 export const placementKey=p=>`${p.oi}@${p.translation}`;
 export function allowedTranslation(model,p){
  const d=model.placementDomain;
- return p.every(Number.isSafeInteger)&&(!d||d.kind!=='a2_slab'||p.reduce((a,b)=>a+b,0)===0&&(!d.index3||(p[0]-p[1])%3===0&&(p[1]-p[2])%3===0));
+ return p.every(Number.isSafeInteger)&&(!d||d.kind!=='scaled_cubic'||p.every(x=>x%d.translationStep===0))&&(!d||d.kind!=='a2_slab'||p.reduce((a,b)=>a+b,0)===0&&(!d.index3||(p[0]-p[1])%3===0&&(p[1]-p[2])%3===0));
 }
 export function validatePointModel(model){
  if(!Number.isSafeInteger(model.capacity)||model.capacity<1||!model.orientations?.length)throw Error('Learning needs an exact integer point model');
+ if(model.placementDomain?.kind==='scaled_cubic'&&(!Number.isSafeInteger(model.placementDomain.translationStep)||model.placementDomain.translationStep<1))throw Error('Invalid translation step');
  for(const o of model.orientations)if(!o.cells?.length||new Set(o.cells.map(c=>pointKey(c.pos))).size!==o.cells.length||o.cells.some(c=>c.pos.length!==3||!c.pos.every(Number.isSafeInteger)||!Number.isSafeInteger(c.weight)||c.weight<1||c.weight>model.capacity))throw Error('Learning needs exact positive integer point weights');
 }
 export class CoronaGraph{
- constructor(model,{candidateLimit=100000,dependencyLimit=1000000}={}){validatePointModel(model);this.model=model;this.limit=candidateLimit;this.dependencyLimit=dependencyLimit;this.dependencyEntries=0;this.points=new Map();this.candidates=new Map();this.dependencies=new Map();this.totals=new Map();this.generations=new Map();this.selected=[];this.used=new Set();this.active=new Set();}
+ constructor(model,{candidateLimit=100000,dependencyLimit=1000000,fixed=[],retainBranchCaches=true,filterAtBirth=!retainBranchCaches}={}){
+  validatePointModel(model);this.model=model;this.limit=candidateLimit;this.dependencyLimit=dependencyLimit;this.dependencyEntries=0;this.points=new Map();this.candidates=new Map();this.dependencies=new Map();this.totals=new Map();this.generations=new Map();this.selected=[];this.used=new Set();this.active=new Set();
+  this.fixedIds=new Set();this.fixedTotals=new Map();this.fixedRejected=new Set();
+  this.pointOrder=[];this.candidateOrder=[];this.rejectedOrder=[];this.retainBranchCaches=retainBranchCaches;this.peakDependencyEntries=0;
+  if(filterAtBirth&&retainBranchCaches)throw Error('Birth filtering requires branch cache rollback');
+  this.filterAtBirth=filterAtBirth;this.capacityRejectedAtBirth=0;
+  for(const p of fixed){
+   const id=placementKey(p),o=model.orientations[p.oi];
+   if(!o||!allowedTranslation(model,p.translation)||this.fixedIds.has(id))throw Error('Invalid fixed oracle seed');
+   this.fixedIds.add(id);
+   for(const c of o.cells){const k=pointKey(add(c.pos,p.translation)),n=(this.fixedTotals.get(k)??0)+c.weight;if(n>model.capacity)throw Error('Fixed oracle seeds exceed capacity');this.fixedTotals.set(k,n);}
+  }
+ }
  legal(c){return !this.used.has(c.id)&&c.cells.every(p=>(this.totals.get(p.k)??0)+p.weight<=this.model.capacity);}
  candidate(oi,translation){
   const id=placementKey({oi,translation});if(this.candidates.has(id))return this.candidates.get(id);
-  if(this.candidates.size>=this.limit){const e=Error('candidate budget');e.kind='resource_limit';throw e;}
+  if(this.fixedRejected.has(id))return null;
+  if(this.candidates.size+this.fixedRejected.size>=this.limit){const e=Error('candidate budget');e.kind='resource_limit';throw e;}
+  const cells=this.model.orientations[oi].cells.map(p=>({k:pointKey(add(p.pos,translation)),weight:p.weight}));
+  // The seed pair never rolls back. A placement conflicting with it can never
+  // become legal, so it needs no mutable incidence or dependency records.
+  if(!this.fixedIds.has(id)&&cells.some(p=>(this.fixedTotals.get(p.k)??0)+p.weight>this.model.capacity)){this.fixedRejected.add(id);this.rejectedOrder.push(id);return null;}
+  // A newly exposed frontier point was untouched in the parent. An already
+  // placed blocker cannot roll back while this point survives. Omit a newly
+  // enumerated illegal candidate only within that branch; releaseCaches drops
+  // the point on rollback so every later activation enumerates it afresh.
+  // Existing candidate nodes are always retained and updated reversibly.
+  if(this.filterAtBirth&&!this.fixedIds.has(id)&&cells.some(p=>(this.totals.get(p.k)??0)+p.weight>this.model.capacity)){this.capacityRejectedAtBirth++;return null;}
   // Candidate count alone does not bound memory for large supports: a single
   // FCC candidate carries hundreds of entries in the reverse dependency graph.
   const entries=this.model.orientations[oi].cells.length;
   if(this.dependencyEntries+entries>this.dependencyLimit){const e=Error('candidate dependency budget');e.kind='resource_limit';throw e;}
   this.dependencyEntries+=entries;
-  const c={id,oi,translation,cells:this.model.orientations[oi].cells.map(p=>({k:pointKey(add(p.pos,translation)),weight:p.weight})),points:new Set()};c.valid=this.legal(c);this.candidates.set(id,c);
+  this.peakDependencyEntries=Math.max(this.peakDependencyEntries,this.dependencyEntries);
+  const c={id,oi,translation,cells,points:new Set()};c.valid=this.legal(c);this.candidates.set(id,c);this.candidateOrder.push(c);
   for(const p of c.cells){if(!this.dependencies.has(p.k))this.dependencies.set(p.k,new Set());this.dependencies.get(p.k).add(c);}return c;
  }
  point(k){
   if(this.points.has(k))return this.points.get(k);
-  const pos=k.split(',').map(Number),p={k,pos,incident:new Set(),degree:0};this.points.set(k,p);
-  for(let oi=0;oi<this.model.orientations.length;oi++)for(const a of this.model.orientations[oi].cells){const t=sub(pos,a.pos);if(!allowedTranslation(this.model,t))continue;const c=this.candidate(oi,t);if(p.incident.has(c))continue;p.incident.add(c);c.points.add(p);if(c.valid)p.degree++;}
+  const pos=k.split(',').map(Number),p={k,pos,incident:new Set(),degree:0};this.points.set(k,p);this.pointOrder.push(p);
+  for(let oi=0;oi<this.model.orientations.length;oi++)for(const a of this.model.orientations[oi].cells){const t=sub(pos,a.pos);if(!allowedTranslation(this.model,t))continue;const c=this.candidate(oi,t);if(!c||p.incident.has(c))continue;p.incident.add(c);c.points.add(p);if(c.valid)p.degree++;}
   return p;
  }
  refresh(keys){
@@ -38,14 +63,26 @@ export class CoronaGraph{
  }
  apply(spec,{root=false}={}){
   if(!allowedTranslation(this.model,spec.translation))throw Error('Placement leaves learning lattice');
-  const c=this.candidate(spec.oi,spec.translation);if(!this.legal(c))throw Error('Illegal oracle placement');
+  const c=this.candidate(spec.oi,spec.translation);if(!c||!this.legal(c))throw Error('Illegal oracle placement');
   const generation=root?0:1+Math.min(...c.cells.flatMap(p=>[...(this.generations.get(p.k)?.keys()??[])]));
   const undo=c.cells.map(p=>[p.k,this.totals.get(p.k),this.generations.get(p.k)]);
+  undo.cacheSizes=[this.pointOrder.length,this.candidateOrder.length,this.rejectedOrder.length];
   this.selected.push(c);this.used.add(c.id);
   for(const p of c.cells){this.totals.set(p.k,(this.totals.get(p.k)??0)+p.weight);const counts=new Map(this.generations.get(p.k));counts.set(generation,(counts.get(generation)??0)+1);this.generations.set(p.k,counts);}
   this.refresh(c.cells.map(p=>p.k));return undo;
  }
- rollback(undo){const c=this.selected.pop();this.used.delete(c.id);for(const [k,n,g] of undo){if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}}this.refresh(undo.map(([k])=>k));}
+ rollback(undo){const c=this.selected.at(-1);if(this.fixedIds.has(c.id))throw Error('Cannot roll back a fixed oracle seed');this.selected.pop();this.used.delete(c.id);for(const [k,n,g] of undo){if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}}this.refresh(undo.map(([k])=>k));if(!this.retainBranchCaches)this.releaseCaches(undo.cacheSizes);}
+ releaseCaches([pointCount,candidateCount,rejectedCount]){
+  // A parent frontier already had complete incidence. Newly created points
+  // therefore become inactive on rollback; their cache entries are disposable.
+  while(this.pointOrder.length>pointCount){const p=this.pointOrder.pop();if(this.active.has(p.k))throw Error('Rollback would discard an active frontier point');for(const c of p.incident)c.points.delete(p);this.points.delete(p.k);}
+  while(this.candidateOrder.length>candidateCount){
+   const c=this.candidateOrder.pop();if(c.points.size||this.used.has(c.id))throw Error('Rollback would discard a parent candidate');
+   for(const cell of c.cells){const set=this.dependencies.get(cell.k);set.delete(c);if(!set.size)this.dependencies.delete(cell.k);}
+   this.dependencyEntries-=c.cells.length;this.candidates.delete(c.id);
+  }
+  while(this.rejectedOrder.length>rejectedCount)this.fixedRejected.delete(this.rejectedOrder.pop());
+ }
  schedule(){let forced=null,branch=null;
   for(const k of this.active){const p=this.points.get(k);if(!p.degree)return {kind:'dead',point:p};if(p.degree===1)forced??=p;const generation=Math.min(...this.generations.get(k).keys());if(!branch||generation<branch.generation||generation===branch.generation&&p.degree<branch.point.degree)branch={point:p,generation};}
   return {kind:forced?'forced':branch?'branch':'closed',point:forced??branch?.point};
@@ -67,7 +104,7 @@ export function verifyCorona(model,pair,placements){
  }
  return {complete:[...core].every(k=>totals.get(k)===model.capacity)&&!dead.length,coreComplete:[...core].every(k=>totals.get(k)===model.capacity),frontierViable:!dead.length,deadPoints:dead};
 }
-export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000,dependencyLimit=1000000}={}){
+export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000,dependencyLimit=1000000,fixedSeedFilter=true,retainBranchCaches=true,filterAtBirth=!retainBranchCaches}={}){
  let graph,n=0,backtracks=0,reason=null,last=0,best=pair,won=false;const core=new Set(pair.flatMap(p=>model.orientations[p.oi].cells.map(c=>pointKey(add(c.pos,p.translation)))));
  const expired=()=>{if(stop())reason='cancelled';else if(performance.now()>=deadline)reason='time budget';else if(n>=nodes)reason='attempt budget';return !!reason;};
  async function* visit(depth){
@@ -83,7 +120,7 @@ export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=
    graph.rollback(undo);backtracks++;if(audit)graph.audit();if(reason)return false;
   }return false;
  }
- try{graph=new CoronaGraph(model,{candidateLimit,dependencyLimit});for(const p of pair)graph.apply(p,{root:true});won=yield* visit(0);if(won){best=graph.descriptors();if(!verifyCorona(model,pair,best).complete)throw Error('Independent corona verification failed');}}
+ try{graph=new CoronaGraph(model,{candidateLimit,dependencyLimit,fixed:fixedSeedFilter?pair:[],retainBranchCaches,filterAtBirth});for(const p of pair)graph.apply(p,{root:true});won=yield* visit(0);if(won){best=graph.descriptors();if(!verifyCorona(model,pair,best).complete)throw Error('Independent corona verification failed');}}
  catch(e){if(e.kind!=='resource_limit')throw e;reason=e.message;}
- yield {type:'corona-result',status:won?'valid':reason?'unresolved':'invalid',reason,placements:best,nodes:n,backtracks,verification:won?verifyCorona(model,pair,best):null};
+ yield {type:'corona-result',status:won?'valid':reason?'unresolved':'invalid',reason,placements:best,nodes:n,backtracks,cachedCandidates:graph?.candidates.size??0,fixedRejected:graph?.fixedRejected.size??0,capacityRejectedAtBirth:graph?.capacityRejectedAtBirth??0,dependencyEntries:graph?.dependencyEntries??0,peakDependencyEntries:graph?.peakDependencyEntries??0,verification:won?verifyCorona(model,pair,best):null};
 }

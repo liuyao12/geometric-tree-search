@@ -11,6 +11,7 @@ export class PointGraph {
   constructor(model,{candidateLimit=180000}={}) {
     this.model=model;this.points=new Map();this.candidates=[];this.dependencies=new Map();this.markDependencies=new Map();this.totals=new Map();this.section=new Map();this.selected=[];this.trail=[];this.edges=0;this.markingCuts=0;
     if(!Number.isSafeInteger(model.capacity)||model.capacity<1)throw Error('Invalid capacity');
+    if(model.placementDomain?.kind==='scaled_cubic'&&(!Number.isSafeInteger(model.placementDomain.translationStep)||model.placementDomain.translationStep<1))throw Error('Invalid translation step');
     for(const o of model.orientations){
       if(!o.cells.length||new Set(o.cells.map(c=>key(c.pos))).size!==o.cells.length||o.cells.some(c=>!Number.isSafeInteger(c.weight)||c.weight<=0||c.weight>model.capacity||c.pos.length!==3||c.pos.some(x=>!Number.isSafeInteger(x))))throw Error('Invalid exact point model');
       if(new Set(markingSlots(o.marks).map(markKey)).size!==markingSlots(o.marks).length)throw Error('Duplicate marking point');
@@ -21,6 +22,7 @@ export class PointGraph {
       const o=model.orientations[oi];
       for(const a of o.cells){
         const translation=p.pos.map((x,i)=>x-a.pos[i]);const id=`${oi}@${translation}`;
+        if(model.placementDomain?.kind==='scaled_cubic'&&translation.some(x=>x%model.placementDomain.translationStep!==0))continue;
         if(model.placementDomain?.kind==='a2_slab'){
           const d=model.placementDomain;
           if(translation.reduce((a,b)=>a+b,0)!==0)continue;
@@ -71,6 +73,7 @@ export class PointGraph {
 
 // Independent certificate replay: no graph, caches, scheduler, or learned data.
 export function verify(model,placements){
+  if(model.placementDomain?.kind==='scaled_cubic'&&(!Number.isSafeInteger(model.placementDomain.translationStep)||model.placementDomain.translationStep<1))return {ok:false,reason:'invalid translation step'};
   if(!Number.isSafeInteger(model.capacity)||model.capacity<1||!Array.isArray(model.required)||!model.required.length||!Array.isArray(model.orientations))return {ok:false,reason:'invalid model'};
   const exactPoint=p=>Array.isArray(p)&&p.length===3&&p.every(Number.isSafeInteger);
   if(model.required.some(p=>!exactPoint(p.pos))||new Set(model.required.map(p=>key(p.pos))).size!==model.required.length)return {ok:false,reason:'invalid target'};
@@ -81,6 +84,7 @@ export function verify(model,placements){
   const totals=new Map(),section=new Map(),ids=new Set();
   for(const p of placements){
     const o=model.orientations[p.oi];if(!o||p.translation.length!==3||p.translation.some(x=>!Number.isSafeInteger(x)))return {ok:false,reason:'invalid placement'};
+    if(model.placementDomain?.kind==='scaled_cubic'&&p.translation.some(x=>x%model.placementDomain.translationStep!==0))return {ok:false,reason:'translation leaves scaled lattice'};
     // Replay the slab's point-domain restrictions independently of enumeration.
     if(model.placementDomain?.kind==='a2_slab'){
       const d=model.placementDomain;
