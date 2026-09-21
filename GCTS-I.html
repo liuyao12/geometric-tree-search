@@ -6,7 +6,7 @@
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
-  <link rel="stylesheet" href="assets/tile-learning.css?v=20260915-marking-select">
+  <link rel="stylesheet" href="assets/tile-learning.css?v=20260920-named">
   <script>
     window.MathJax = {
       tex: {
@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-qualified" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-named" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -141,6 +141,7 @@
   <script type="module">
     import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260920-corona';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260920-qualified';
+    import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260920-named';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260920-interior';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
     import {markingMetadataText} from './assets/marking-metadata.js?v=20260920-compact';
@@ -168,7 +169,7 @@
       const markingSourcePicker = document.getElementById('turtle-marking-source');
       const learningFrame = document.getElementById('tiling-learning-frame');
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
-      const learnedModels = new Map(), customModels = new Set();
+      const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
       let learningSectionEntered=false, learnerReady=false, pendingLearningStart=false;
       let learningTileSet = 'turtle';
       let displayMarking = null;
@@ -1842,7 +1843,7 @@
       }
 
       function syncMarkingSelection() {
-        markingSourcePicker.value = markingSource === 'standard' ? `rank${markingRank}` : markingSource;
+        markingSourcePicker.value = markingSource === 'standard' ? `rank${markingRank}` : markingSource === 'learned' && displayMarking?.marking ? `learned:${displayMarking.marking.id}` : markingSource;
       }
 
       function refreshPlacementsForMarkingRank() {
@@ -2475,20 +2476,25 @@
       function updatePanelControls() {
         markingSourcePicker.querySelector('[value="rank1"]').disabled = false;
         markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle';
-        markingSourcePicker.querySelector('[value="learned"]').disabled = !learnedModels.has(selectedTileSet);
+        markingSourcePicker.querySelectorAll('[data-learned-marking]').forEach(option=>option.remove());
+        const saved=[...markingLibrary.values()].filter(model=>model.setId===selectedTileSet).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
+        const placeholder=markingSourcePicker.querySelector('[value="learned"]');placeholder.disabled=true;placeholder.hidden=saved.length>0;
+        for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=model.marking.name;option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
         syncMarkingSelection();
         sublatticeToggle.disabled = genericMode();
         if (genericMode()) sublatticeToggle.checked = false;
         document.getElementById('learned-marking-note').textContent = markingSource === 'learned'
-          ? `${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · learned matching rules · accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
+          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · learned matching rules · accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
           : selectedTileSet === 'mixed' ? 'Turtle + Hat · rotations only; no reflected placements.' : '';
         updateMarkingButton();
       }
-      function configurePanel(setId, source) {
+      function configurePanel(setId, source, markingId=null) {
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
+        if(markingId){const model=markingLibrary.get(markingId);if(model?.setId===setId)learnedModels.set(setId,model);}
         displayMarking = source === 'learned' ? learnedModels.get(setId) : null;
+        if(displayMarking)try{localStorage.setItem(`gcts-selected-marking:${setId}`,displayMarking.marking.id);}catch{}
         orientations = buildOrientations(markingExtension, markingRank);
         showMarkings = source !== 'none';
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
@@ -2521,30 +2527,41 @@
       markingSourcePicker.onchange = () => {
         const value = markingSourcePicker.value;
         if (value === 'rank1' || value === 'rank3') markingRank = value === 'rank1' ? 1 : 3;
-        configurePanel(selectedTileSet, value.startsWith('rank') ? 'standard' : value);
+        configurePanel(selectedTileSet, value.startsWith('rank') ? 'standard' : value.startsWith('learned:')?'learned':value, value.startsWith('learned:')?value.slice(8):null);
       };
+      function registerMarking(model,{origin='training',select=false}={}) {
+        createConnectionLearner(model.setId).validateModel(model);
+        const result=rememberMarking(model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}),{origin});
+        const saved=result.model.reduction?.preserveInterior?result.model:reduceMarking(result.model,{preserveInterior:true});markingLibrary.set(saved.marking.id,saved);
+        if(select||!learnedModels.has(saved.setId))learnedModels.set(saved.setId,saved);
+        if(saved.marking.origin!=='recorded')customModels.add(saved.setId);
+        return {...result,model:saved};
+      }
       window.addEventListener('message', event => {
         if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
         const data=event.data;
         if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:activeScrollAnchor==='learning'?selectedTileSet:learningTileSet},location.origin);startPendingLearning();return;}
         if(data?.type!=='gcts-marking-ready'||!TILE_SETS[data.setId])return;
-        try {createConnectionLearner(data.setId).validateModel(data.model);if(!data.model.reduction?.preserveInterior)data.model=reduceMarking(data.model,{preserveInterior:true});} catch {return;}
-        if(data.type==='gcts-marking-ready'&&data.recorded&&customModels.has(data.setId))return;
-        if(data.recorded)customModels.delete(data.setId);else customModels.add(data.setId);
-        learnedModels.set(data.setId,data.model);
+        let saved;try {saved=registerMarking(data.model,{origin:data.recorded?'recorded':'training',select:!data.recorded}).model;} catch {return;}
         if(activeScrollAnchor==='learning' && selectedTileSet===data.setId && !data.recorded){
-          configurePanel(data.setId,'learned');
+          configurePanel(data.setId,'learned',saved.marking.id);
           panelView('tiling', {manual:false});
           startTilingPlayback({reset:true});
         }
         updatePanelControls();
       });
-      for(const setId of Object.keys(TILE_SETS))try{const saved=localStorage.getItem(`gcts-corona-marking:${setId}`);if(saved){const model=JSON.parse(saved);createConnectionLearner(setId).validateModel(model);learnedModels.set(setId,model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}));customModels.add(setId);}}catch{localStorage.removeItem(`gcts-corona-marking:${setId}`);}
+      for(const model of savedMarkings().sort((a,b)=>(b.marking?.createdAt??'').localeCompare(a.marking?.createdAt??'')))try{registerMarking(model);}catch{}
+      // Migrate the former single-model slots without losing existing runs.
+      for(const setId of Object.keys(TILE_SETS))try{
+        const legacy=localStorage.getItem(`gcts-corona-marking:${setId}`);
+        if(legacy){const result=registerMarking(JSON.parse(legacy),{origin:'legacy'});if(result.persisted)localStorage.removeItem(`gcts-corona-marking:${setId}`);}
+        const selected=markingLibrary.get(localStorage.getItem(`gcts-selected-marking:${setId}`));if(selected?.setId===setId)learnedModels.set(setId,selected);
+      }catch{}
       fetch('./assets/data/tile-corona-markings.json?v=20260920-qualified').then(r=>r.json()).then(data=>{
-        for(const [setId,model] of Object.entries(data.models)){createConnectionLearner(setId).validateModel(model);if(!learnedModels.has(setId))learnedModels.set(setId,reduceMarking(model,{preserveInterior:true}));}
+        for(const model of Object.values(data.models))try{registerMarking(model,{origin:'recorded'});}catch{}
         updatePanelControls();
       }).catch(()=>{});
-      try {const saved=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(saved){const model=JSON.parse(saved);createConnectionLearner(model.setId).validateModel(model);learnedModels.set(model.setId,model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}));customModels.add(model.setId);sessionStorage.removeItem('gcts-requested-marking');learningSectionEntered=true;learningTileSet=model.setId;configurePanel(model.setId,'learned');panelView('tiling');}}catch{}
+      try {const value=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(value){const model=registerMarking(JSON.parse(value),{origin:'legacy',select:true}).model;learningSectionEntered=true;learningTileSet=model.setId;configurePanel(model.setId,'learned',model.marking.id);panelView('tiling');}}catch{}
       // Small inspectable state for integration tests and exported screenshots.
       window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,rank:markingRank,extent:markingExtension,usesMarking:markingEnabled(),placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking});
       function demoStageForScroll() {

@@ -1,3 +1,4 @@
+import {rememberMarking} from './marking-library.js?v=20260920-named';
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-interior';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
@@ -14,7 +15,7 @@ const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
 function mapFor(points,box){const p=points.map(project),xs=p.map(q=>q[0]),ys=p.map(q=>q[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min((box.w-30)/Math.max(1,maxx-minx),(box.h-30)/Math.max(1,maxy-miny));return p=>{const q=project(p);return[box.x+box.w/2+(q[0]-(minx+maxx)/2)*scale,box.y+box.h/2+(q[1]-(miny+maxy)/2)*scale];};}
 function polygon(loop,map,fill,core=false){ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo(...map(p)):ctx.moveTo(...map(p)));ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle='#52786b';ctx.lineWidth=core?2.5:1;ctx.stroke();}
 function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#7d9088':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?1:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
-function draw(){$('learn-metadata').textContent=model?`${report?.model?'Saved marking':'Candidate — not saved'} · ${markingMetadataText(model)}`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
+function draw(){$('learn-metadata').textContent=model?`${report?.model?model.marking.name:'Candidate — not saved'} · ${markingMetadataText(model)}`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
  const specs=shown.length?shown:[learner.roots[0]],placements=specs.map(learner.materialize);
  const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,activeMarkingSupport(model)):[]);
  const map=mapFor([...placements.flatMap(p=>p.loop),...entries.flat().flatMap(markingSegmentEndpoints)],{x:0,y:35,w:370,h:315});
@@ -40,14 +41,14 @@ function install(data,recorded=false,index=0){
  const candidate=data.model??data.candidateModel;
  if(candidate)learner.validateCandidate(candidate);
  model=candidate?(candidate.reduction?.preserveInterior?candidate:reduceMarking(candidate,{preserveInterior:true})):null;
- if(data.model)data={...data,model};else data={...data,candidateModel:model};
+ let persisted=false;
+ if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings},{origin:recorded?'recorded':'training'});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
  report=data;reports.set(setId,data);recordedReports.set(setId,recorded);
  picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='valid'?'1-corona valid':row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
  $('learn-metrics').textContent=`${recorded?'Recorded · ':''}${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
  finish();describe();draw();
  if(data.model){
-  try{localStorage.setItem(`gcts-corona-marking:${setId}`,JSON.stringify(model));}catch{}
-  $('learn-sync').textContent=embedded?'Saved and available in Tiling. Successful training starts it automatically.':'Saved for the tiler.';
+  $('learn-sync').textContent=`${persisted?'Saved':'Available this visit; browser storage could not save it'}: ${model.marking.name}.${model.marking.sameValuesAs?` Same values as ${model.marking.sameValuesAs.name}.`:''}${embedded?' Available in Tiling; successful training starts it automatically.':''}`;
   if(!embedded)sessionStorage.setItem('gcts-requested-marking',JSON.stringify(model));
   send('gcts-marking-ready',{model,counts:data.counts,recorded});
  }else{
@@ -78,7 +79,7 @@ function launch(kind){$('learn-sync').textContent='Save when every valid pair pa
 function pause(button){paused=!paused;worker.postMessage({type:paused?'pause':'resume'});button.textContent=paused?'Continue':mode==='collect'?'Pause learning':'Pause search';}
 $('learn-start').onclick=()=>mode==='collect'?pause($('learn-start')):launch('collect');$('learn-deeper').onclick=()=>mode==='extend'?pause($('learn-deeper')):launch('extend');
 $('learn-reset').onclick=reset;$('learn-marks').onchange=draw;picker.onchange=()=>{shown=report.connections[+picker.value]?.placements||[];describe();draw();};tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)choose(input.value);}));
-$('learn-export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({...report,markingMetadata:markingMetadata(model)},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`${setId}-connection-evidence.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('learn-export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({...report,markingMetadata:markingMetadata(model)},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`${setId}-${model?.marking?.id??'candidate'}-connection-evidence.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('message',e=>{
  if(e.origin!==location.origin||e.source!==parent)return;
  const data=e.data;

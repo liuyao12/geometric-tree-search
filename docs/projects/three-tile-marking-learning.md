@@ -83,6 +83,35 @@ Recorded invalid cases have replayable settings, not formal proof transcripts.
 Even perfect pair classification would certify only this finite criterion;
 mark-only interactions beyond the audited pairs remain learned restrictions.
 
+### Named marking history
+
+Every successful fresh training run receives a UUID and a UTC timestamped name,
+for example `Turtle · 2026-09-20 19:20:00.000Z`. The Tiling dropdown lists all
+saved runs for the selected inventory, newest first. A successful run selects
+and starts its own entry; selecting an older entry uses that exact saved model.
+The browser retains both the history and the last selection per inventory.
+Old single-model storage slots migrate without discarding the previous marking.
+Recorded built-in models have stable entries labeled “recorded”, without implying
+an unknown historical training timestamp. Reloading recorded data or a cached
+report does not create another run.
+
+The learner reports “Same values as …” when a new run has the same complete
+point/channel assignments as an earlier marking. Comparison ignores entry order,
+names and display reduction; it does not claim to recognize mathematical
+equivalence under relabeling or symmetry. The current exhaustive learner is
+deterministic, so rerunning the same experiment commonly produces the same
+values. Runs still retain distinct names and identities. JSON evidence exports
+include the name, ID, creation time, settings and any exact-value match.
+A storage failure leaves the current result usable and reports that it could
+not be persisted; unreadable history is not overwritten.
+
+`tests/test_marking_library.mjs` covers distinct run identities, repeated names
+at one timestamp, exact-value comparisons, immutable entries, migration reuse,
+reload/import identity and storage failures. Browser checks perform two complete
+training runs, verify both dropdown entries and automatic starts, select and grow
+an older model, and check retained selection/history after reload and mobile layout.
+The matching rules, acceptance gate and shared search engine are unchanged.
+
 ### Interior markings in the display
 
 The current panels preserve every interior t=1 point when reducing a marking.
