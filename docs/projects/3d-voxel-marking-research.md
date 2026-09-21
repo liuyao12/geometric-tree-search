@@ -139,3 +139,9 @@ still needs an infinite construction and proof excluding every periodic tiling,
 including a separate alignment argument if the claim allows arbitrary isometries.
 Learned markings must be proved necessary or enforced by geometry before they
 can support that universal claim. No aperiodic monotile is certified here.
+
+The [finite point-corona follow-up](3d-point-corona-sat.md) raises the reference
+budgets and introduces a separately labeled PB/SAT control with a finite-universe
+completeness argument. Together they resolve three previously unknown sampled
+pairs out of fourteen, with no new global tile classification. The app's oracle
+and its resource limits are unchanged by that research experiment.

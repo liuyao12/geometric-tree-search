@@ -1,0 +1,603 @@
+{
+  "protocol": {
+    "options": {
+      "nodes": 10000,
+      "dependencyLimit": 4000000,
+      "candidateLimit": 300000,
+      "timeMs": 20000
+    },
+    "model": "voxel-center-corner-1",
+    "selection": "First previously unresolved pair per tile, unless max-per-tile is specified",
+    "mirrors": false,
+    "heapLimitMiB": 1024,
+    "heapMeasurement": "Sampled worker heapUsed at yielded events; not peak process RSS",
+    "sources": {
+      "scripts/refine-3d-corona-pairs.mjs": "58480c79955e85c6446abe03301fee80ca4a1bc4c5298e6acfe2e34a74dc31d8",
+      "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f"
+    },
+    "timingNote": "Sequential within each campaign. Small diagnostics and tests also ran during collection; these are label/limit experiments, not isolated timing benchmarks.",
+    "priorSource": "Faithful 5-second catalogue sweep described in data/3d-voxel-marking-research-2026-09-21.json. Each row contains the exact pair for independent reconstruction."
+  },
+  "rows": [
+    {
+      "tile": "p9-42947",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            4,
+            0
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 19452,
+      "fixedRejected": 650,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 894792,
+      "peakDependencyEntries": 894792,
+      "verification": null,
+      "elapsedMs": 6729.021833,
+      "peakHeapBytes": 188113328,
+      "artifactSha256": "f8bb9af7d44425ff3e5bf85abcc6a06b65262cb850a535958e0efe55bf041472"
+    },
+    {
+      "tile": "p9-02127",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 70
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 37712,
+      "fixedRejected": 956,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1772464,
+      "peakDependencyEntries": 1772464,
+      "verification": null,
+      "elapsedMs": 10970.34,
+      "peakHeapBytes": 228764776,
+      "artifactSha256": "a94d3a1d5de4ad1e2129c87701ea7a35da448bbd937279142f0a7c9dcb122721"
+    },
+    {
+      "tile": "p9-08203",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            4
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 19
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 48639,
+      "fixedRejected": 1884,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 2188755,
+      "peakDependencyEntries": 2188755,
+      "verification": null,
+      "elapsedMs": 17460.495625,
+      "peakHeapBytes": 281326312,
+      "artifactSha256": "af19b458a37afe86627c0b8671d821baf4f85839c3a00bfd71e98c286b2267ee"
+    },
+    {
+      "tile": "p9-08219",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 43349,
+      "fixedRejected": 2001,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1950705,
+      "peakDependencyEntries": 1950705,
+      "verification": null,
+      "elapsedMs": 18348.204458,
+      "peakHeapBytes": 267965896,
+      "artifactSha256": "7088cbc2ee3e2d874526d9a9507f5de56302f284338af153d1738a8bafeecced"
+    },
+    {
+      "tile": "p9-20656",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 20
+      },
+      "type": "corona-result",
+      "status": "valid",
+      "reason": null,
+      "nodes": 62,
+      "backtracks": 15,
+      "cachedCandidates": 40100,
+      "fixedRejected": 1074,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1964900,
+      "peakDependencyEntries": 1964900,
+      "verification": {
+        "complete": true,
+        "coreComplete": true,
+        "frontierViable": true,
+        "deadPoints": []
+      },
+      "elapsedMs": 766.2766669999983,
+      "peakHeapBytes": 224633728,
+      "artifactSha256": "c3d92f9c5802728e906ee469a09c50441fefdbdc0473068eef749c9835171ebe"
+    },
+    {
+      "tile": "p9-24025",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 11
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "time budget",
+      "nodes": 8388,
+      "backtracks": 8388,
+      "cachedCandidates": 60525,
+      "fixedRejected": 2033,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 2844675,
+      "peakDependencyEntries": 2844675,
+      "verification": null,
+      "elapsedMs": 20061.599583000003,
+      "peakHeapBytes": 332452904,
+      "artifactSha256": "1f665c5547cb49dcc33f7e2cfe9f6a3146f52fb6b4cca3d0b019b37e45624d8f"
+    },
+    {
+      "tile": "p9-48258",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 11359,
+      "fixedRejected": 274,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 556591,
+      "peakDependencyEntries": 556591,
+      "verification": null,
+      "elapsedMs": 3472.5664169999945,
+      "peakHeapBytes": 162677816,
+      "artifactSha256": "8b4fb5a6151e4cecf14db216780d9b1354828195ad66b8d5eb12b9aa44222c30"
+    },
+    {
+      "tile": "p9-43172",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            4,
+            -2
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 162
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 30184,
+      "fixedRejected": 1026,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1418648,
+      "peakDependencyEntries": 1418648,
+      "verification": null,
+      "elapsedMs": 10716.373458000002,
+      "peakHeapBytes": 233428448,
+      "artifactSha256": "e9e0555ef0e0c9d91682572ca4803657776f7f09b59c9f61fa0f579f5db4beb9"
+    },
+    {
+      "tile": "p10-052588",
+      "index": 3,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            2,
+            6
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 64
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 37228,
+      "fixedRejected": 2324,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1786944,
+      "peakDependencyEntries": 1786944,
+      "verification": null,
+      "elapsedMs": 17780.886916000003,
+      "peakHeapBytes": 210368880,
+      "artifactSha256": "9b4f1a7f33e726f8d47953f5c0b65d7b7315b1bef8438e7d11905cbe302bfea6"
+    },
+    {
+      "tile": "p10-054782",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 73
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "time budget",
+      "nodes": 9489,
+      "backtracks": 9489,
+      "cachedCandidates": 44443,
+      "fixedRejected": 2402,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 2222150,
+      "peakDependencyEntries": 2222150,
+      "verification": null,
+      "elapsedMs": 20033.758499999996,
+      "peakHeapBytes": 250813712,
+      "artifactSha256": "07f9c1db3488d6503e51057a980eb1940d89d05e146c796a21b3f84145ddc5da"
+    },
+    {
+      "tile": "p10-055695",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            4
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 34694,
+      "fixedRejected": 1093,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1700006,
+      "peakDependencyEntries": 1700006,
+      "verification": null,
+      "elapsedMs": 11387.401374999987,
+      "peakHeapBytes": 239304448,
+      "artifactSha256": "5cce6e828643e5ebcddd27eaff8e1043a02a0d0b4546b561064484e4e0c1d4dc"
+    },
+    {
+      "tile": "p10-290795",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 4
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "time budget",
+      "nodes": 6677,
+      "backtracks": 6677,
+      "cachedCandidates": 44265,
+      "fixedRejected": 2598,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 2390310,
+      "peakDependencyEntries": 2390310,
+      "verification": null,
+      "elapsedMs": 20039.325083000003,
+      "peakHeapBytes": 273232936,
+      "artifactSha256": "b0843f151b1f8a2bb44f9a55a3c185ca10eed90ae3dc8770bdc4cc7e926e0e8a"
+    },
+    {
+      "tile": "p10-346304",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500
+      },
+      "type": "corona-result",
+      "status": "unresolved",
+      "reason": "attempt budget",
+      "nodes": 10000,
+      "backtracks": 10000,
+      "cachedCandidates": 14988,
+      "fixedRejected": 746,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 809352,
+      "peakDependencyEntries": 809352,
+      "verification": null,
+      "elapsedMs": 8471.372541000019,
+      "peakHeapBytes": 166260288,
+      "artifactSha256": "66bf4fa82f3ad084452e5ba397ece9a52aded3004ad1c8d55c3924b2a085e4bf"
+    },
+    {
+      "tile": "p10-052670",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "previous": {
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 82
+      },
+      "type": "corona-result",
+      "status": "invalid",
+      "reason": null,
+      "nodes": 326,
+      "backtracks": 326,
+      "cachedCandidates": 22685,
+      "fixedRejected": 2336,
+      "capacityRejectedAtBirth": 0,
+      "dependencyEntries": 1111565,
+      "peakDependencyEntries": 1111565,
+      "verification": null,
+      "elapsedMs": 937.5144169999985,
+      "peakHeapBytes": 160044552,
+      "artifactSha256": "fe6a8b04df33a6550eda15cc157d1f3212b96a7b5770de373beed94a186c45b9"
+    }
+  ]
+}
