@@ -1,4 +1,4 @@
-import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260920-corona';
+import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260920-qualified';
 self.requestAnimationFrame=cb=>setTimeout(cb,0);
 let paused=false,resume=null;
 const wait=async()=>{if(paused)await new Promise(resolve=>resume=resolve);};

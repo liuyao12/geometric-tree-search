@@ -43,10 +43,12 @@ two, or three nearest-neighbor A₂ layers; the best classification is retained.
 This is deterministic constraint learning, not gradient descent.
 
 A model is saved and automatically transferred to the matching tiling inventory
-**only when the complete catalog is resolved and every classification agrees**.
+**only when the complete catalog is resolved, every valid pair is accepted,
+and more than half of the invalid pairs are blocked**. A perfect classifier also
+qualifies; the exact valid acceptance and invalid rejection counts are displayed.
 The gate checks catalog coverage, uniqueness, counts and actual marking decisions.
-An imperfect candidate remains visible with its errors and point/value metadata;
-JSON export retains evidence but does not promote it to an installed marking.
+Candidates that reject a valid pair or block too few invalid pairs remain
+unapproved. JSON exports retain the labels, errors and point/value metadata.
 Retries keep the same corona criterion and increase the selected unresolved
 pair's budget. A timeout cannot replace an already resolved result.
 
@@ -61,15 +63,20 @@ Seed 90210, 5,000 attempted placements per pair:
 | Turtle + Hat | 624 | 82 | 542 | 0 | 583 / 624 (93.4%) | 41 |
 
 Increasing the domain through three layers did not improve these scores. All
-valid pairs are accepted, but no candidate reaches 100%, so **none is saved**.
-`assets/data/tile-corona-markings.json` therefore has an empty model map.
+valid pairs are accepted, and the invalid rejection rates are 89.7%, 93.9% and
+92.4%, respectively. **All three qualify and are saved**, without labeling them
+perfect. `assets/data/tile-corona-markings.json` contains the three approved models.
 `assets/data/tile-corona-{turtle,hat,mixed}.json` contains all labels, witnesses,
 search settings, candidate values and training-domain trials. The ordinary
 rank-1/rank-3 tiling modes remain available. Old provisional models are rejected
 by the new gate; the learned option is disabled without an approved model.
 
 Accepted models, when available, persist per inventory in local storage and
-transfer automatically by the existing same-origin iframe message. Import
+transfer automatically by the existing same-origin iframe message. A successful
+fresh training run in the learning section selects learned marking, switches to
+the Tiling tab and starts the marked search, including a repeated successful run
+with unchanged values. Loading recorded evidence enables the dropdown without
+interrupting current training or the earlier known-marking example. Import
 validation checks every recorded label against the marking; it does not rerun
 all oracle searches or independently certify the provenance of external labels.
 Recorded invalid cases have replayable settings, not formal proof transcripts.
@@ -106,13 +113,13 @@ collision predicate is added. Conventional polygon fidelity and whole-plane
 coverage are not established by these runs.
 
 `tests/test_tile_corona_learning.mjs` checks all 1,248 catalog entries, all valid
-corona witnesses, each candidate's predictions, incomplete/imperfect save gates,
+corona witnesses, each candidate's predictions, incomplete, false-rejection and majority-rejection save gates,
 and zero-budget semantics. An independent finite DFS agrees on one valid and the
 hardest recorded invalid case per inventory; graph-audited engine replays agree
 on the same cases. This is representative negative-search cross-checking, not
 an independent reproof of every negative. Existing fixed-marking and Turtle
 regressions also pass. Browser checks cover all three reports, automatic Turtle
-collection, no imperfect transfers, old-model rejection, unresolved searches,
+collection, automatic learned tiling after successful training, old-model rejection, unresolved searches,
 usual tiling controls and mobile/scroll tab behavior.
 
 Regenerate and verify:

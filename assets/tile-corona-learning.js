@@ -2,6 +2,8 @@ import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connectio
 import {solveA2Tiling,makeHexBoundary,NoA2Marking,a2Add} from './a2-tiling-engine.js?v=20260920-corona';
 export {TILE_SETS,parity};
 export const CORONA_CRITERION='complete-pair-one-corona-v1';
+export const MARKING_ACCEPTANCE='all-valid-majority-invalid-v1';
+export const markingQualifies=({valid,invalid,unresolved,validAccepted,invalidBlocked})=>valid>0&&unresolved===0&&validAccepted===valid&&(invalid===0||invalidBlocked*2>invalid);
 const id=p=>`${p.tile}:${typeof p.orientation==='number'?p.orientation:p.orientation.index}:${p.translation}`;
 const pairId=r=>`${id(r.root)}>${id(r.attachment)}`;
 const cache=new Map();
@@ -33,9 +35,10 @@ export function createCoronaLearner(setId){
   const counts={valid:0,invalid:0,unresolved:0};let correct=0;
   const connections=rows.map(row=>{counts[row.status]++;const check=candidate?base.verifyPatch([row.root,row.attachment],candidate.support):null,predicted=check?(check.compatible?'valid':'invalid'):null;if(row.status!=='unresolved'&&predicted===row.status)correct++;return {...row,predicted,codeConflict:check?!check.compatible:null,codeWitness:check?.witness??null};});
   const catalog=new Set(base.connections().map(pairId)),total=catalog.size,complete=rows.length===total&&new Set(rows.map(pairId)).size===total&&rows.every(r=>catalog.has(pairId(r)))&&counts.unresolved===0;
-  const accepted=!!candidate&&complete&&correct===total;
-  const classification={criterion:CORONA_CRITERION,total,correct,...counts,perfect:accepted,training};
-  const model=accepted?{...candidate,classification:{...classification,labels:rows.map(({root,attachment,status})=>({root,attachment,status}))},scope:'Exactly classifies the enumerated pair one-corona tests; not an infinite-tiling certificate.'}:null;
+  const validAccepted=connections.filter(r=>r.status==='valid'&&r.predicted==='valid').length,invalidBlocked=connections.filter(r=>r.status==='invalid'&&r.predicted==='invalid').length;
+  const accepted=!!candidate&&complete&&markingQualifies({...counts,validAccepted,invalidBlocked});
+  const classification={criterion:CORONA_CRITERION,total,correct,...counts,perfect:complete&&correct===total,accepted,acceptance:MARKING_ACCEPTANCE,validAccepted,invalidBlocked,training};
+  const model=accepted?{...candidate,classification:{...classification,labels:rows.map(({root,attachment,status})=>({root,attachment,status}))},scope:'Accepts every valid pair and blocks most invalid pairs in the complete one-corona catalog; finite learned restriction, not an infinite-tiling certificate.'}:null;
   return {criterion:CORONA_CRITERION,setId,connections,counts,classification,candidateModel:candidate,model,attachmentCount:total};
  }
  async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{}}={}){
@@ -46,9 +49,16 @@ export function createCoronaLearner(setId){
  }
  function validateModel(model){
   base.validateModel(model);const c=model.classification,all=base.connections(),catalog=new Set(all.map(pairId));
-  if(c?.criterion!==CORONA_CRITERION||!c.perfect||c.unresolved!==0||c.total!==all.length||c.correct!==all.length||c.labels?.length!==all.length)throw new Error('Marking has not perfectly classified every one-corona test');
-  let valid=0,invalid=0;for(const row of c.labels){if(!catalog.delete(pairId(row))||!['valid','invalid'].includes(row.status))throw new Error('Incomplete one-corona classification');const predicted=base.verifyPatch([row.root,row.attachment],model.support).compatible?'valid':'invalid';if(predicted!==row.status)throw new Error('Marking misclassified a one-corona test');if(row.status==='valid')valid++;else invalid++;}
-  if(valid!==c.valid||invalid!==c.invalid)throw new Error('Wrong one-corona classification counts');return model;
+  if(c?.criterion!==CORONA_CRITERION||c.acceptance!==MARKING_ACCEPTANCE||!c.accepted||c.unresolved!==0||c.total!==all.length||c.labels?.length!==all.length)throw new Error('Marking needs a complete qualifying one-corona classification');
+  let valid=0,invalid=0,validAccepted=0,invalidBlocked=0;
+  for(const row of c.labels){
+   if(!catalog.delete(pairId(row))||!['valid','invalid'].includes(row.status))throw new Error('Incomplete one-corona classification');
+   const compatible=base.verifyPatch([row.root,row.attachment],model.support).compatible;
+   if(row.status==='valid'){valid++;if(compatible)validAccepted++;else throw new Error('Marking rejects a valid one-corona pair');}
+   else{invalid++;if(!compatible)invalidBlocked++;}
+  }
+  if(!markingQualifies({valid,invalid,unresolved:0,validAccepted,invalidBlocked}))throw new Error('Marking must block most invalid one-corona pairs');
+  if(valid!==c.valid||invalid!==c.invalid||validAccepted!==c.validAccepted||invalidBlocked!==c.invalidBlocked||c.correct!==validAccepted+invalidBlocked||c.perfect!==(c.correct===all.length))throw new Error('Wrong one-corona classification counts');return model;
  }
  function incorporate(report,index,row){const previous=report.connections[index];if(!previous||pairId(previous)!==pairId(row))throw new Error('Connection mismatch');return {...train(report.connections.map((r,i)=>i===index?(row.status==='unresolved'&&r.status!=='unresolved'?r:row):r)),settings:report.settings,elapsedMs:report.elapsedMs+row.elapsedMs};}
  const learner={...base,validateCandidate:base.validateModel,corePoints,verifyCorona,examine,collect,train,validateModel,incorporate};cache.set(setId,learner);return learner;

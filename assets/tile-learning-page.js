@@ -1,7 +1,7 @@
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-interior';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
-import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260920-corona';
+import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260920-qualified';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
@@ -31,7 +31,7 @@ function finish(){worker?.terminate();worker=null;mode=null;paused=false;$('lear
 function describe(){const row=report?.connections[+picker.value];if(!row)return;
  const actual=row.status==='valid'?'Valid: complete one-corona witness':row.status==='invalid'?'Invalid: one-corona search exhausted':'Unresolved: search budget reached';
  const c=report.classification,prediction=row.predicted?` · marking ${row.predicted==='valid'?'accepts':'rejects'} this pair${row.status==='unresolved'?'':row.predicted===row.status?' (correct)':' (incorrect)'}`:'';
- message(`${actual}${prediction}. Classification: ${c.correct}/${c.total} correct (${(100*c.correct/c.total).toFixed(1)}%). ${c.perfect?'Perfect classification — marking saved.':'Not saved: all pairs must be resolved and classified correctly.'}`);
+ message(`${actual}${prediction}. Classification: ${c.correct}/${c.total} correct (${(100*c.correct/c.total).toFixed(1)}%). Accepts ${c.validAccepted}/${c.valid} valid pairs; blocks ${c.invalidBlocked}/${c.invalid} invalid pairs (${(100*c.invalidBlocked/Math.max(1,c.invalid)).toFixed(1)}%). ${c.accepted?'Marking saved.':'Not saved: resolve all pairs, accept every valid pair, and block more than half of invalid pairs.'}`);
  $('learn-deeper').disabled=!!mode||row.status!=='unresolved';
 }
 function install(data,recorded=false,index=0){
@@ -47,7 +47,7 @@ function install(data,recorded=false,index=0){
  finish();describe();draw();
  if(data.model){
   try{localStorage.setItem(`gcts-corona-marking:${setId}`,JSON.stringify(model));}catch{}
-  $('learn-sync').textContent=embedded?'100% classification: saved and available in Tiling.':'100% classification: saved for the tiler.';
+  $('learn-sync').textContent=embedded?'Saved and available in Tiling. Successful training starts it automatically.':'Saved for the tiler.';
   if(!embedded)sessionStorage.setItem('gcts-requested-marking',JSON.stringify(model));
   send('gcts-marking-ready',{model,counts:data.counts,recorded});
  }else{
@@ -58,9 +58,9 @@ function install(data,recorded=false,index=0){
 function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=TILE_SETS[setId].label;message('Classify every second-tile placement using a complete one-corona check, then train the marking.');draw();}
 async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);selectTiles(id);reset();const token=epoch;
  if(reports.has(id)){install(reports.get(id),recordedReports.get(id));return;}
- try{const r=await fetch(`./assets/data/tile-corona-${id}.json?v=20260920-corona`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Classify & learn to run every one-corona check.');}
+ try{const r=await fetch(`./assets/data/tile-corona-${id}.json?v=20260920-qualified`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Classify & learn to run every one-corona check.');}
 }
-function launch(kind){$('learn-sync').textContent='A marking transfers to Tiling only after 100% classification.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-corona',import.meta.url),{type:'module'});const active=worker;mode=kind;paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-qualified',import.meta.url),{type:'module'});const active=worker;mode=kind;paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
  if(kind==='collect'){$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;
