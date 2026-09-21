@@ -207,6 +207,9 @@ it is not a train/test split.
    the evolving point values and individual `*` entries, resolved/unresolved
    counts, and actual classification scores. Provisional values may change;
    they must not filter the unmarked search that supplies their own labels.
+   Make collected pairs inspectable with their oracle label, current marking
+   decision, agreeing/conflicting overlap values, and any positive corona
+   witness. Distinguish the unmarked witness from the learned pair decision.
    Include the number of active points and assigned component values, stating
    whether counts cover prototypes or all represented orientations.
    Tiling views must inspect the active placed marking section, including

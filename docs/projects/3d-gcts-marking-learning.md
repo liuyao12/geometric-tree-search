@@ -278,3 +278,35 @@ by successful continuation and automatic tiling in each page, and verifies a
 coalesced corona frame updates the marking values. Turtle's continued slab run
 passes 41/41 positives and rejects at least 192/206 negatives. These are finite
 local classification checks, not infinite-extension certificates.
+
+
+## Pair inspection in both pages (v2.2.8; also v1)
+
+After a run, **Learn markings → Inspect pair** lists each collected pair with
+its oracle label and the current marking's accept/reject decision. Previous and
+next controls step through the evidence. A valid pair can display its actual
+unmarked corona witness; invalid and unresolved entries show the two seed tiles.
+Unresolved remains unknown even when the provisional marking rejects it.
+
+The preview reconstructs both seed tiles' assigned markings at world coordinates,
+including exterior and interior support. Blue rings show assigned overlaps that
+agree; red crosses show conflicts. Hover gives the point, component, and each
+seed tile's value. Missing components remain free and zero is assigned. These
+are the selected learned values, not a known marking or a pair lookup used by
+the search. Only the seed pair receives this overlay: a positive witness was
+found by the unmarked oracle and need not satisfy the final learned field on
+all its additional tiles. The independent positive witness replay and acceptance
+gate remain unchanged.
+
+The short v2 entry page is synchronized with the full entry page. The inspector
+is shared by both versions; switching between Tiling and Learn markings preserves
+the selected pair. It also works on incomplete runs and after continuation.
+
+Validation: `test-3d-marking-pair-display.mjs` compares every reconstructed pair
+decision against the production matcher for a fresh Turtle run, and checks
+translated conflicts, individual free components, assigned zero, and unresolved
+labels. `test-3d-marking-pair-browser.cjs` trains Turtle and Hat in v2, inspects
+positive and rejected negative pairs, toggles witnesses, and exercises incomplete
+then continued cube learning in v1. Existing learning and continuation browser
+regressions also pass. This is inspection of the same finite local constraints;
+it adds no pruning rule, bundled assignments, or infinite-extension claim.

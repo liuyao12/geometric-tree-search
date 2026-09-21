@@ -2,7 +2,7 @@ import {MarkingOverlay} from './marking-overlay.js?v=20260921-marking-continuati
 import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-marking-continuation';
 import {MarkingLibrary} from './marking-library.js?v=20260921-marking-continuation';
 import {remember3DMarking} from './marking-storage.js?v=20260921-marking-continuation';
-import {MarkingPreview} from './marking-preview.js?v=20260921-marking-continuation';
+import {MarkingPreview} from './marking-preview.js?v=20260921-pair-inspection';
 let libraryWorker=null,libraryKey=null;
 const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry),resume:entry=>runMarkingSelection(null,entry)});
 function runMarkingSelection(savedMarking=null,learningCheckpoint=null){

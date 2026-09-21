@@ -1,5 +1,5 @@
-import {prepareModel} from './model.js?v=2.2.7';
-import {search} from './search.js?v=2.2.7';
+import {prepareModel} from './model.js?v=2.2.8';
+import {search} from './search.js?v=2.2.8';
 import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-marking-continuation';
 import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-marking-continuation';
 import {periodicStream} from '../periodic-search.js';
