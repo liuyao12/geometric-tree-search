@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-sublattice" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-tile-system" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -141,10 +141,10 @@
   <script type="module">
     import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260920-corona';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-sublattice';
-    import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260921-sublattice';
+    import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260921-tile-system';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-sublattice';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
-    import {markingMetadataText} from './assets/marking-metadata.js?v=20260921-sublattice';
+    import {markingMetadataText} from './assets/marking-metadata.js?v=20260921-tile-system';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -171,7 +171,7 @@
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
       const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
       let learningSectionEntered=false, learnerReady=false, pendingLearningStart=null;
-      let learningTileSet = 'turtle';
+      let learningTileSet = 'turtle', learningLattice = 'A2';
       let displayMarking = null;
       const markingEnabled = () => markingSource !== 'none';
       const genericMode = () => selectedTileSet !== 'turtle' || markingSource === 'learned';
@@ -2481,10 +2481,9 @@
         const saved=[...markingLibrary.values()].filter(model=>model.setId===selectedTileSet).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
         for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=model.marking.name;option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
         syncMarkingSelection();
-        sublatticeToggle.disabled = markingSource === 'learned';
-        if (displayMarking) sublatticeToggle.checked = displayMarking.lattice === 'turtle-sublattice';
+        sublatticeToggle.disabled = false;
         document.getElementById('learned-marking-note').textContent = markingSource === 'learned'
-          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · learned matching rules · accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
+          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · training check: accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
           : selectedTileSet === 'mixed' ? 'Turtle + Hat · rotations only; no reflected placements.' : '';
         updateMarkingButton();
       }
@@ -2494,12 +2493,11 @@
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
         if(markingId){const model=markingLibrary.get(markingId);if(model?.setId===setId)learnedModels.set(setId,model);}
         displayMarking = source === 'learned' ? learnedModels.get(setId) : null;
-        if(displayMarking)sublatticeToggle.checked=displayMarking.lattice==='turtle-sublattice';
         if(displayMarking)try{localStorage.setItem(`gcts-selected-marking:${setId}`,displayMarking.marking.id);}catch{}
         orientations = buildOrientations(markingExtension, markingRank);
         showMarkings = source !== 'none';
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
-        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId,lattice:usingSublattice()?'turtle-sublattice':'A2'},location.origin);
+        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId,lattice:learningLattice},location.origin);
       }
       function learningPanelVisible() { return !document.getElementById('learning-panel-page').hidden; }
       function requestLearningFor(setId) { learningTileSet=setId;pendingLearningStart=setId;startPendingLearning(); }
@@ -2514,7 +2512,7 @@
         document.getElementById('panel-tiling-tab').tabIndex=view==='tiling'?0:-1;
         document.getElementById('panel-learning-tab').tabIndex=view==='learning'?0:-1;
         if (view==='tiling') resizeCanvas();
-        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId:selectedTileSet,lattice:usingSublattice()?'turtle-sublattice':'A2'},location.origin);
+        if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId:selectedTileSet,lattice:learningLattice},location.origin);
         window.requestAnimationFrame(updateTextWrap);
       }
       document.querySelector('.panel-tabs').addEventListener('keydown',event=>{
@@ -2534,6 +2532,7 @@
       };
       function registerMarking(model,{origin='training',select=false}={}) {
         if(model.marking?.origin==='recorded')throw new Error('Bundled recordings are not browser-trained markings');
+        // Validate evidence on its training domain; tiling may use either lattice.
         createConnectionLearner(model.setId,{lattice:model.lattice}).validateModel(model);
         const result=rememberMarking(model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}),{origin});
         const saved=result.model.reduction?.preserveInterior?result.model:reduceMarking(result.model,{preserveInterior:true});markingLibrary.set(saved.marking.id,saved);
@@ -2544,8 +2543,8 @@
       window.addEventListener('message', event => {
         if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
         const data=event.data;
-        if(data?.type==='gcts-learning-lattice'&&TILE_SETS[data.setId]){sublatticeToggle.checked=data.lattice==='turtle-sublattice';configurePanel(data.setId,'none');return;}
-        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:learningPanelVisible()?selectedTileSet:learningTileSet,lattice:usingSublattice()?'turtle-sublattice':'A2'},location.origin);startPendingLearning();return;}
+        if(data?.type==='gcts-learning-lattice'&&TILE_SETS[data.setId]){learningLattice=data.lattice==='turtle-sublattice'?'turtle-sublattice':'A2';return;}
+        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:learningPanelVisible()?selectedTileSet:learningTileSet,lattice:learningLattice},location.origin);startPendingLearning();return;}
         if(data?.type!=='gcts-marking-ready'||!TILE_SETS[data.setId])return;
         let saved;try {saved=registerMarking(data.model,{select:!!data.completed}).model;} catch {return;}
         if((activeScrollAnchor==='learning'||learningPanelVisible()) && selectedTileSet===data.setId && data.completed){
@@ -2582,7 +2581,7 @@
         if (pendingLearningStart) learningFrame.loading = 'eager';
         if(!pendingLearningStart||!learnerReady)return;
         const setId=pendingLearningStart;pendingLearningStart=null;
-        learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId,lattice:usingSublattice()?'turtle-sublattice':'A2',requestId:`article-${setId}-learning`},location.origin);
+        learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId,lattice:learningLattice,requestId:`article-${setId}-learning`},location.origin);
       }
       function syncDemoStageToScroll() {
         const heading = document.getElementById('anchor-learning');

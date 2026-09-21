@@ -1,7 +1,7 @@
-import {rememberMarking} from './marking-library.js?v=20260921-sublattice';
+import {rememberMarking} from './marking-library.js?v=20260921-tile-system';
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-sublattice';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
-import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260921-sublattice';
+import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260921-tile-system';
 import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-sublattice';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));

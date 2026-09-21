@@ -1,10 +1,10 @@
 // Saved runs have independent identities. Value equality is exact and ignores
-// names, run times, array order and optional display-only reduction metadata.
+// names, training lattice, run times, array order and display-only reduction metadata.
 export const MARKING_LIBRARY_KEY='gcts-marking-library-v1';
 const labels={turtle:'Turtle',hat:'Hat',mixed:'Turtle + Hat'};
 export function markingValues(model){
  const entries=model.support.map(e=>[e.tile,...e.point,e.component,e.value]).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
- return JSON.stringify([model.setId,model.lattice??'A2',model.allowReflections,entries]);
+ return JSON.stringify([model.setId,model.allowReflections,entries]);
 }
 function read(storage){
  const raw=storage?.getItem(MARKING_LIBRARY_KEY);if(!raw)return [];

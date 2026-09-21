@@ -182,9 +182,12 @@ it is not a source of pre-trained values for the application.
 ## Learning on the sublattice
 
 The Learn markings page offers a **sublattice** checkbox. Switching it starts
-classification and training on that domain. The article passes its current
-lattice choice into the learner; selecting a saved marking restores that
-marking's domain for tiling. Reports and automatic-start state are separate for
+classification and training on that domain. The training and tiling lattice
+controls are independent. Saved markings belong to the tile system, not to a
+search lattice: selecting a marking preserves the tiler's current lattice,
+and its sublattice checkbox remains available. Marking coordinates and values
+are applied unchanged, including mark-only points outside the t-support.
+Reports and automatic-start state are separate for
 each inventory and lattice. Marking names, metadata, and exported evidence include
 the domain. Existing browser models with no lattice field retain full A₂ semantics.
 
@@ -197,11 +200,16 @@ neighbors ±(2,−1,−1), ±(−1,2,−1), ±(−1,−1,2). Training tries one 
 such layers; this is not just hiding full-lattice markings in the drawing.
 
 The full candidate catalog and one-corona obligations are regenerated using
-restricted t-values. `latticePointFilter` passes the same restriction to the
-existing shared graph engine for classification and subsequent marked growth.
+restricted t-values. `latticePointFilter` passes that restriction to the existing
+shared graph engine for classification. Subsequent marked tiling uses the tiler's
+independently selected t-domain and the saved marking's point assignments.
 The reducer uses restricted t-capacities when deciding which marking conflicts
-must survive point removal, including mark-only overlaps. Cached learners and
-saved-value comparisons include the domain; cross-domain models are rejected.
+must survive point removal, including mark-only overlaps. Cached learners include
+the training domain; saved-value comparisons use only the tile system and point
+assignments, independent of training provenance. Validation of stored
+classification evidence uses its original training domain; application to a
+tile system does not require its search lattice to match. Metadata labels scores
+as training checks, not measurements on the currently selected tiling domain.
 No trained point assignments or reports are bundled.
 
 At seed 90210 and 5,000 attempts per pair, browser-equivalent runs give:
@@ -221,7 +229,8 @@ Conformance evidence: `tests/test_sublattice_learning.mjs` checks exact restrict
 t-data, subgroup-preserving placements and transformations, all catalog witnesses,
 independent finite DFS and graph-audited valid/invalid replays per inventory,
 exhaustive bounded pair compatibility before/after reduction, domain validation,
-and a 24-tile graph-audited marked Turtle checkpoint. Full-lattice regression
+and 24-tile graph-audited Turtle checkpoints using the same sublattice-trained
+marking on both tiling lattices. Full-lattice regression
 coverage remains in `tests/test_tile_corona_learning.mjs`. The existing generation
 scheduler and rollback code are unchanged. One-corona labels certify only their
 finite point obligations; growth checkpoints do not prove whole-plane coverage

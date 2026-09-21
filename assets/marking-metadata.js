@@ -1,5 +1,6 @@
 // Sites belong to tile prototypes: coincident coordinates on different tiles
 // are separate points. Explicit zeros count as assigned values.
+// model.lattice records the training domain, not a restriction on tiling.
 export function markingMetadata(model){
  const support=model?.reducedSupport??model?.support??[],tiles=[...new Set(support.map(e=>e.tile))];
  const perTile=tiles.map(tile=>{const entries=support.filter(e=>e.tile===tile);return {tile,points:new Set(entries.map(e=>e.point.join(','))).size,values:entries.length};});
@@ -7,5 +8,5 @@ export function markingMetadata(model){
 }
 export function markingMetadataText(model){
  const m=markingMetadata(model);
- return `${m.lattice==='turtle-sublattice'?'Sublattice':'Full lattice'} · ${m.points} points${m.perTile.length>1?' across '+m.perTile.length+' tiles':''} · ${m.values} assigned values · ${m.nonzero} nonzero · ${m.distinctValues} distinct values${model?.reduction?` · reduced from ${model.reduction.originalPoints} points / ${model.reduction.originalValues} values; same exclusions`:""}`;
+ return `Trained on ${m.lattice==='turtle-sublattice'?'sublattice':'full lattice'} · ${m.points} points${m.perTile.length>1?' across '+m.perTile.length+' tiles':''} · ${m.values} assigned values · ${m.nonzero} nonzero · ${m.distinctValues} distinct values${model?.reduction?` · reduced from ${model.reduction.originalPoints} points / ${model.reduction.originalValues} values; same exclusions on training lattice`:""}`;
 }
