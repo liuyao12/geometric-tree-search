@@ -1,0 +1,573 @@
+{
+  "protocol": {
+    "inputSha256": "aff594239bbf63df7ab2ab2132e6eed32e0c2b4e9fc474d5976701991457dfb3",
+    "sources": {
+      "scripts/grow-3d-learned-voxel-windows.mjs": "eb7e4689ddb6dab19bace29ec3c515f95b9132d422b143b3f7f05b4d02a923a4",
+      "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f"
+    },
+    "radii": [
+      2,
+      3
+    ],
+    "seeds": [
+      1,
+      2
+    ],
+    "timeMs": 20000,
+    "nodes": 1000000,
+    "scope": "Sequential warm finite point-window growth; learned restriction, not an unmarked non-tiling proof. Collection and synthesis excluded.",
+    "timingNote": "Growth lanes ran sequentially, but separate diagnostics overlapped part of the run. Cutoff evidence, not an isolated timing benchmark."
+  },
+  "rows": [
+    {
+      "radius": 2,
+      "seed": 1,
+      "mode": "free",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 181,
+        "required": 341,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 92,
+        "required": 125,
+        "voxels": 414
+      },
+      "tiles": 46,
+      "stats": {
+        "attempts": 76380,
+        "accepted": 76380,
+        "forced": 29430,
+        "branches": 20826,
+        "backtracks": 76380,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 40.326542,
+        "peakTrail": 4022,
+        "markingCuts": 0,
+        "elapsedMs": 20025.630875,
+        "candidates": 2205,
+        "edges": 29295,
+        "points": 341,
+        "clusters": 0,
+        "memoryEstimateBytes": 5005488
+      },
+      "artifactSha256": "664cdb65cb60bdbb0b15f7922649802d653e268c766ec6281ba6230fea30da3c",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 92,
+        "required": 125,
+        "voxels": 414
+      }
+    },
+    {
+      "radius": 2,
+      "seed": 1,
+      "mode": "gcts",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 162,
+        "required": 341,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 97,
+        "required": 125,
+        "voxels": 315
+      },
+      "tiles": 35,
+      "stats": {
+        "attempts": 51075,
+        "accepted": 51075,
+        "forced": 19790,
+        "branches": 13175,
+        "backtracks": 51075,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 47.94770900000003,
+        "peakTrail": 4233,
+        "markingCuts": 721643,
+        "elapsedMs": 20018.155166999997,
+        "candidates": 2205,
+        "edges": 29295,
+        "points": 341,
+        "clusters": 0,
+        "memoryEstimateBytes": 6774552
+      },
+      "artifactSha256": "78fbf42f88415b0500e8b2a82d6f15062730ddab2c0adc97385d0e947f7d3e74",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 97,
+        "required": 125,
+        "voxels": 315
+      }
+    },
+    {
+      "radius": 2,
+      "seed": 2,
+      "mode": "free",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 179,
+        "required": 341,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 99,
+        "required": 125,
+        "voxels": 360
+      },
+      "tiles": 40,
+      "stats": {
+        "attempts": 63539,
+        "accepted": 63539,
+        "forced": 25544,
+        "branches": 17229,
+        "backtracks": 63539,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 31.78125,
+        "peakTrail": 3753,
+        "markingCuts": 0,
+        "elapsedMs": 20021.010125,
+        "candidates": 2205,
+        "edges": 29295,
+        "points": 341,
+        "clusters": 0,
+        "memoryEstimateBytes": 4999032
+      },
+      "artifactSha256": "230c15a04db16d04bef3ca3738399f9bb9feb83406368c2a988518255839fd38",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 99,
+        "required": 125,
+        "voxels": 360
+      }
+    },
+    {
+      "radius": 2,
+      "seed": 2,
+      "mode": "gcts",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 134,
+        "required": 341,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 84,
+        "required": 125,
+        "voxels": 198
+      },
+      "tiles": 22,
+      "stats": {
+        "attempts": 47565,
+        "accepted": 47565,
+        "forced": 17964,
+        "branches": 12653,
+        "backtracks": 47565,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 42.07829199999833,
+        "peakTrail": 3525,
+        "markingCuts": 710846,
+        "elapsedMs": 20008.774291999995,
+        "candidates": 2205,
+        "edges": 29295,
+        "points": 341,
+        "clusters": 0,
+        "memoryEstimateBytes": 6757560
+      },
+      "artifactSha256": "8ddfb6f6cca24d5c89e8d8facdfcc3f826eac51225870caefdd06ad38fffd679",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 84,
+        "required": 125,
+        "voxels": 198
+      }
+    },
+    {
+      "radius": 3,
+      "seed": 1,
+      "mode": "free",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 224,
+        "required": 855,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 167,
+        "required": 343,
+        "voxels": 324
+      },
+      "tiles": 36,
+      "stats": {
+        "attempts": 51595,
+        "accepted": 51595,
+        "forced": 19926,
+        "branches": 14511,
+        "backtracks": 51595,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 62.892791999998735,
+        "peakTrail": 3902,
+        "markingCuts": 0,
+        "elapsedMs": 20033.004833999992,
+        "candidates": 4131,
+        "edges": 70701,
+        "points": 855,
+        "clusters": 0,
+        "memoryEstimateBytes": 9416976
+      },
+      "artifactSha256": "d1ebdf01f1fa69105399e6e97785da348f18d665177af18b390da16568aea644",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 167,
+        "required": 343,
+        "voxels": 324
+      }
+    },
+    {
+      "radius": 3,
+      "seed": 1,
+      "mode": "gcts",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 175,
+        "required": 855,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 127,
+        "required": 343,
+        "voxels": 342
+      },
+      "tiles": 38,
+      "stats": {
+        "attempts": 35858,
+        "accepted": 35858,
+        "forced": 13506,
+        "branches": 9304,
+        "backtracks": 35858,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 87.46054200000071,
+        "peakTrail": 5117,
+        "markingCuts": 610542,
+        "elapsedMs": 20038.436667,
+        "candidates": 4131,
+        "edges": 70701,
+        "points": 855,
+        "clusters": 0,
+        "memoryEstimateBytes": 12750936
+      },
+      "artifactSha256": "5f70d0a08a4b9ce4907c430386343989f1897cfa877872b3ebe2ebdc2de3b031",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 127,
+        "required": 343,
+        "voxels": 342
+      }
+    },
+    {
+      "radius": 3,
+      "seed": 2,
+      "mode": "free",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 221,
+        "required": 855,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 143,
+        "required": 343,
+        "voxels": 315
+      },
+      "tiles": 35,
+      "stats": {
+        "attempts": 47989,
+        "accepted": 47989,
+        "forced": 19786,
+        "branches": 12940,
+        "backtracks": 47989,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 64.96987499999523,
+        "peakTrail": 3887,
+        "markingCuts": 0,
+        "elapsedMs": 20045.898790999985,
+        "candidates": 4131,
+        "edges": 70701,
+        "points": 855,
+        "clusters": 0,
+        "memoryEstimateBytes": 9416616
+      },
+      "artifactSha256": "98c180dbdd53c3cfec3b5d65ee918dde03edc4d03f278512f3be61e7512f4971",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 143,
+        "required": 343,
+        "voxels": 315
+      }
+    },
+    {
+      "radius": 3,
+      "seed": 2,
+      "mode": "gcts",
+      "result": "unknown",
+      "reason": "time budget",
+      "pointReplay": {
+        "ok": false,
+        "covered": 177,
+        "required": 855,
+        "reason": "incomplete window"
+      },
+      "voxelReplay": {
+        "ok": false,
+        "covered": 120,
+        "required": 343,
+        "voxels": 288
+      },
+      "tiles": 32,
+      "stats": {
+        "attempts": 36949,
+        "accepted": 36949,
+        "forced": 15685,
+        "branches": 8923,
+        "backtracks": 36949,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 90.52020800000173,
+        "peakTrail": 4449,
+        "markingCuts": 686264,
+        "elapsedMs": 20040.920458000008,
+        "candidates": 4131,
+        "edges": 70701,
+        "points": 855,
+        "clusters": 0,
+        "memoryEstimateBytes": 12734904
+      },
+      "artifactSha256": "0ce95859568c56b7716711f4cf854da94760c55ee5cad45220576ac13d369889",
+      "partialPackingReplay": {
+        "ok": true,
+        "covered": 120,
+        "required": 343,
+        "voxels": 288
+      }
+    }
+  ],
+  "satControls": [
+    {
+      "result": "unknown",
+      "reason": "timeout",
+      "placements": [],
+      "stats": {
+        "marked": false,
+        "backend": "z3-pb2bv-sat",
+        "solverVersion": "4.16.0",
+        "scope": "Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling",
+        "candidates": 2205,
+        "targetPoints": 341,
+        "targetVoxels": 343,
+        "markingSites": 0,
+        "preparationMs": 276.880833,
+        "elapsedMs": 20013.400208
+      },
+      "inputSha256": "52346e6a7b146ee7436aba1fa50decfffc738eb81bdd425c32c12fd842a880c5",
+      "sourceSha256": "1cf43bd45da7be32d93a9294b603a0714b72e16251bb921d98238324bab00a4e"
+    },
+    {
+      "result": "unknown",
+      "reason": "timeout",
+      "placements": [],
+      "stats": {
+        "marked": true,
+        "backend": "z3-pb2bv-sat",
+        "solverVersion": "4.16.0",
+        "scope": "Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling",
+        "candidates": 2205,
+        "targetPoints": 341,
+        "targetVoxels": 343,
+        "markingSites": 6096,
+        "preparationMs": 1296.571417,
+        "elapsedMs": 20013.543333999998
+      },
+      "inputSha256": "52346e6a7b146ee7436aba1fa50decfffc738eb81bdd425c32c12fd842a880c5",
+      "sourceSha256": "1cf43bd45da7be32d93a9294b603a0714b72e16251bb921d98238324bab00a4e"
+    }
+  ],
+  "periodProposals": [
+    {
+      "mode": "free",
+      "seed": 1,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 208,
+        "selectedVectors": 36,
+        "bases": 866,
+        "fullPoolBases": 426,
+        "searchNodes": 1884,
+        "budgetStops": 0,
+        "elapsedMs": 118.93824999999998
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    },
+    {
+      "mode": "gcts",
+      "seed": 1,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 274,
+        "selectedVectors": 36,
+        "bases": 1148,
+        "fullPoolBases": 421,
+        "searchNodes": 1370,
+        "budgetStops": 0,
+        "elapsedMs": 138.24387499999997
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    },
+    {
+      "mode": "free",
+      "seed": 2,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 249,
+        "selectedVectors": 36,
+        "bases": 1020,
+        "fullPoolBases": 557,
+        "searchNodes": 2549,
+        "budgetStops": 0,
+        "elapsedMs": 128.30325000000005
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    },
+    {
+      "mode": "gcts",
+      "seed": 2,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 270,
+        "selectedVectors": 36,
+        "bases": 1292,
+        "fullPoolBases": 418,
+        "searchNodes": 1219,
+        "budgetStops": 0,
+        "elapsedMs": 145.78975000000003
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    },
+    {
+      "mode": "free",
+      "seed": 3,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 150,
+        "selectedVectors": 36,
+        "bases": 764,
+        "fullPoolBases": 290,
+        "searchNodes": 1059,
+        "budgetStops": 0,
+        "elapsedMs": 77.98275000000001
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    },
+    {
+      "mode": "gcts",
+      "seed": 3,
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 169,
+        "selectedVectors": 36,
+        "bases": 817,
+        "fullPoolBases": 417,
+        "searchNodes": 1127,
+        "budgetStops": 0,
+        "elapsedMs": 82.68262500000003
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    }
+  ],
+  "additionalSources": {
+    "scripts/solve_voxel_point_window.py": "1cf43bd45da7be32d93a9294b603a0714b72e16251bb921d98238324bab00a4e",
+    "scripts/lib/patch-period-proposals.mjs": "a6e7a3b57dc4415c8dacd021fbebeaf9a0ededf7826d8c66aea40ce8f8d8da95",
+    "assets/polycube-periodic-tiler.js": "07274e0a05662ce652cb75bc3e1cdb7bdcb84dee0649fce36c47da1f5d4eb979"
+  }
+}

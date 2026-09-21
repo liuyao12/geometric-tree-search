@@ -285,3 +285,56 @@ Raw markings and patches remain in the local output directory; no learned
 assignments are bundled. Reproduce with `scripts/learn-3d-voxel-pair-catalog.mjs`
 and `scripts/train-masked-3d-catalog.mjs`. These measurements use the headless
 research encoder and specialized SAT oracle, not a browser SAT dependency.
+
+## Larger growth and period proposals after complete pair learning
+
+The p9-48258 marking was tested beyond its successful 91-point target. Two seeds
+at each of two larger sizes were run both unmarked and marked, with 20 seconds
+and one million attempts per run. All eight stop **unknown** at the time limit:
+
+| Radius | Required weighted points | Equivalent fully covered voxel region | Completed runs |
+| --- | ---: | --- | ---: |
+| 2 | 341 | 7 × 7 × 7 | 0 / 4 |
+| 3 | 855 | 9 × 9 × 9 | 0 / 4 |
+
+The voxel region is larger than the initially required center cube because
+requiring complete corner weights forces all eight incident voxels to be present.
+Every returned partial patch passes independent nonoverlap and marking replay,
+but none fills its target. Runs were sequential within the growth runner; some
+separate diagnostics overlapped, so these are cutoff observations, not isolated
+speed measurements.
+
+A separate finite-window PB/SAT control (`solve_voxel_point_window.py`) uses the
+validated center/corner reduction and exact scalar m-value agreement. It shares
+the full 2,205-placement candidate universe at radius 2. Both its unmarked and
+marked runs also time out at 20 seconds. Unlike the pair oracle, it imposes no
+exposed-frontier viability condition, matching the v2 finite-window target.
+A marked UNSAT would remain a restricted-model result. The control passes 72
+small exhaustive comparisons, including assigned zero, individual free values,
+marking conflicts and independent positive witness replay. It is explicitly a
+nonreference scheduler and does not replace the browser graph engine.
+
+Six previously verified radius-1 patches also supplied period proposals. We rank
+same-orientation displacement vectors by recurrence, take up to 36 per patch,
+and try independent triples with tile-volume-divisible determinant. A quotient
+exact-cover search uses only placements present in that patch. Across the six
+patches, 5,907 basis proposals were tested; 2,529 had a placement pool covering
+every quotient class. None yielded a periodic construction. These counts are
+basis proposals, not distinct HNF quotients or a complete periodic search.
+Successful proposals must pass the existing independent periodic verifier;
+failure says nothing about unproposed bases or placements.
+
+[Aggregate growth, SAT and period-proposal receipt](../../data/3d-p9-48258-larger-windows-2026-09-21.json).
+Full patches and learned fields remain local. Reproduce growth with:
+
+```sh
+node scripts/grow-3d-learned-voxel-windows.mjs \
+  --input=/tmp/gcts-p9-48258-masked-final/marking.json.gz \
+  --output=/tmp/gcts-larger-windows --radii=2,3 --seeds=1,2 --time-ms=20000
+python3 scripts/test_voxel_point_window.py
+node scripts/test-patch-period-proposals.mjs
+```
+
+Thus the complete pair classifier is useful local evidence, but has not resolved
+this tile's infinite tilability. The next local-catalogue collection targets
+p9-42947 using resumable occupancy-frontier constraints and exact pair orbits.
