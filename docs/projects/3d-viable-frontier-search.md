@@ -11,9 +11,8 @@ contain geometry and placements, without learned markings.
 
 The p10-346304 catalogue now has **54 positive, 24 negative and 1,846 unresolved
 pairs**, out of 1,924 pairs in 365 symmetry classes. Ten classes have positive
-witnesses and four have negative outcomes. One of the negative classes now has
-an independently checked proof; the original three retain their trusted-solver
-scope. The provisional 144-value marking, counted across eight orientations,
+witnesses and four have negative outcomes. All four negative classes now have
+independently checked RUP proofs, covering all 24 negative pairs. The provisional 144-value marking, counted across eight orientations,
 passes all 54 positives and blocks all 24 negatives. It remains **unaccepted**:
 most of the catalogue is unresolved, and no marked growth run has started.
 
@@ -124,6 +123,34 @@ is therefore necessary in that grid domain. It is not a non-tiling proof for the
 whole tile, an unrestricted Euclidean statement, or an aperiodicity result.
 It also shows why occurrence inside a viable finite window alone must not be
 turned into a positive pair label.
+
+### Proofs for the other three negative classes
+
+The original negative classes now also have independent proof bundles:
+[class 2](../../data/p10-346304-pair-obstructions/orbit-2/manifest.json),
+[class 3](../../data/p10-346304-pair-obstructions/orbit-3/manifest.json), and
+[class 8](../../data/p10-346304-pair-obstructions/orbit-8/manifest.json).
+Each formula is rebuilt from its exact pair, center/corner model and retained
+necessary frontier conditions. Glucose produces an UNSAT trace; DRAT-trim checks
+it, extracts the needed lemmas, and checks the resulting additions-only trace
+again in RUP-only mode. The generation, trimming and checking costs are in the
+aggregate receipt and are separate from the search timings above.
+
+| Class | Retained frontier conditions | CNF variables | CNF clauses | Final checker time |
+| --- | ---: | ---: | ---: | ---: |
+| 2 | 12 | 5,420 | 986,321 | 0.43 s |
+| 3 | 4 | 4,722 | 975,997 | 0.37 s |
+| 8 | 32 | 9,331 | 1,142,090 | 0.63 s |
+
+Together with class 182, the four proofs cover all 24 currently negative rooted
+pairs. They justify 192 distinct relative-placement schemas under proper cubic
+rotations and exchanging the two tiles. They do not classify any unresolved
+pair or exclude a tiling of the whole tile. The periodic comparison below still
+uses **class 182 alone**; the larger proof set was produced afterward.
+
+Replay each bundle with `scripts/verify_voxel_pair_certificate.py`, substituting
+its directory in the `--bundle` argument. The shared verifier reconstructs the
+formula and checks the compressed trace without learned assignments.
 
 ## Encoding controls and verification
 

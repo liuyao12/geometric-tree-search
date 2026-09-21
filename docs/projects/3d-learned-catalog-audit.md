@@ -7,8 +7,8 @@ historical; this result does not establish a true aperiodic monotile. The
 [next complete catalogue](3d-point-corona-sat.md#p9-42947-complete-classification-and-limits-of-the-pair-marking)
 for p9-42947 fits all 1,408 labels, but shows mixed warm growth and no infinite
 classification. The [viable-frontier follow-up](3d-viable-frontier-search.md)
-adds p10-346304's first ten positive pair classes and a proof-checked negative
-class. Its catalogue remains incomplete; no marking has been activated.
+adds p10-346304's first ten positive pair classes and four proof-checked negative
+classes. Its catalogue remains incomplete; no marking has been activated.
 
 Follow-up: [geometric voxel checks](3d-voxel-marking-research.md) found overlaps
 in the six successful historical-polycube point windows and introduced an

@@ -3151,5 +3151,163 @@
     "witnesses": "3d-viable-frontier-witnesses-2026-09-21.json",
     "pairCertificate": "p10-346304-pair-obstruction/manifest.json"
   },
-  "unresolvedPolicy": "Any time, round or process budget remains unresolved. No marking activated on this incomplete catalogue."
+  "unresolvedPolicy": "Any time, round or process budget remains unresolved. No marking activated on this incomplete catalogue.",
+  "additionalPairProofs": [
+    {
+      "orbit": 2,
+      "bundle": "p10-346304-pair-obstructions/orbit-2",
+      "manifestSha256": "a712cff44f738d4dcfdb45d3aa84a21e593dd0b569717dadf9e3bb8fbebeb34f",
+      "rawPairMembers": 6,
+      "generation": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 12,
+          "variables": 5420,
+          "clauses": 986321
+        },
+        "checkerSeconds": 0.8402052910000002,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalMs": 4907.954207999999,
+        "proofBytes": 21820909,
+        "gzipBytes": 4672827
+      },
+      "verification": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 12,
+          "variables": 5420,
+          "clauses": 986321
+        },
+        "checkerSeconds": 0.4270546249999998,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalTrimMs": 2468.56575,
+        "proofBytes": 2891049,
+        "gzipBytes": 705121
+      }
+    },
+    {
+      "orbit": 3,
+      "bundle": "p10-346304-pair-obstructions/orbit-3",
+      "manifestSha256": "e171d4bce5e7f08f65aa730b150c4c5c218f58b4d80d60a0db89df23dcca2fae",
+      "rawPairMembers": 6,
+      "generation": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 4,
+          "variables": 4722,
+          "clauses": 975997
+        },
+        "checkerSeconds": 0.704753041,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalMs": 4787.32775,
+        "proofBytes": 17411079,
+        "gzipBytes": 3413852
+      },
+      "verification": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3434,
+          "targetVoxels": 174,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 4,
+          "variables": 4722,
+          "clauses": 975997
+        },
+        "checkerSeconds": 0.3655216250000004,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalTrimMs": 2415.5304589999996,
+        "proofBytes": 2345843,
+        "gzipBytes": 546591
+      }
+    },
+    {
+      "orbit": 8,
+      "bundle": "p10-346304-pair-obstructions/orbit-8",
+      "manifestSha256": "63e46672d5562b898a356a9acc89c30610a0b86318be406edbc320f282b871d5",
+      "rawPairMembers": 6,
+      "generation": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3780,
+          "targetVoxels": 192,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 32,
+          "variables": 9331,
+          "clauses": 1142090
+        },
+        "checkerSeconds": 1.2587216250000015,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalMs": 6955.7140420000005,
+        "proofBytes": 37751114,
+        "gzipBytes": 7856823
+      },
+      "verification": {
+        "verified": true,
+        "geometry": {
+          "volume": 10,
+          "orientations": 8,
+          "properRotations": 24,
+          "relativePairSchemas": 48
+        },
+        "stats": {
+          "candidates": 3780,
+          "targetVoxels": 192,
+          "pairExclusionEdges": 0,
+          "frontierPoints": 32,
+          "variables": 9331,
+          "clauses": 1142090
+        },
+        "checkerSeconds": 0.6287856669999998,
+        "proofMethod": "DRAT-trim, RUP-only mode",
+        "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity.",
+        "totalTrimMs": 3634.222,
+        "proofBytes": 6169320,
+        "gzipBytes": 1124896
+      }
+    }
+  ]
 }
