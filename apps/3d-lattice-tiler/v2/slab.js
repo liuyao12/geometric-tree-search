@@ -24,7 +24,7 @@ export function prepareSlab(config,version){
     const p=basis[0].map((x,i)=>q*x+r*basis[1][i]);
     for(const layer of [0,1])required.push({pos:p.map(x=>x+layer),generation:0});
   }
-  return {version,capacity:48,orientations,required,name:`${tile[0].toUpperCase()+tile.slice(1)} · single slab`,domain:index3?'Two copies of the index-3 A₂ sublattice':'Two copies of A₂',
+  return {version,capacity:48,allowReflections:!!config.mirrors,orientations,required,name:`${tile[0].toUpperCase()+tile.slice(1)} · single slab`,domain:index3?'Two copies of the index-3 A₂ sublattice':'Two copies of A₂',
     boundary:'Single slab: support only on x+y+z=0 and 3; open lateral boundary. Normal translations are forbidden.',
     placementDomain:{kind:'a2_slab',layerSums:[0,3],translationSum:0,index3},
     slab:{normal:[1,1,1],height:[1,1,1],basis,sublatticeIndex:index3?3:1,capWeightMultiplier:2,planarCapacity:12,source:'GCTS-I.html: isTurtleSublatticeVector / tileOrientations',pointsPerCap:required.length/2},

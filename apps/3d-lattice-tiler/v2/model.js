@@ -1,7 +1,7 @@
-import {tileSpecs, preprocessTilingSystem} from '../engine.js';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.1.0';
+import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-corona-learning';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.0';
 
-export const VERSION = '2.1.0';
+export const VERSION = '2.2.0';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},
@@ -42,5 +42,5 @@ export function prepareModel(config) {
   const radius=config.radius??1,required=[];
   if(!Number.isInteger(radius)||radius<1||radius>3)throw Error('Window radius must be 1–3.');
   for(let x=-radius;x<=radius;x++)for(let y=-radius;y<=radius;y++)for(let z=-radius;z<=radius;z++)required.push({pos:[x,y,z],generation:0});
-  return {version:VERSION,capacity,orientations,required,name:prepared.modeDef.name,domain:'Z³',boundary:'open exterior; every selected placement touches the finite required cube',transformations:prepared.summary};
+  return {version:VERSION,capacity,allowReflections:!!config.mirrors,orientations,required,name:prepared.modeDef.name,domain:'Z³',boundary:'open exterior; every selected placement touches the finite required cube',transformations:prepared.summary};
 }

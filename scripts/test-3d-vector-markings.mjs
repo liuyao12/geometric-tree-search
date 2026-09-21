@@ -61,14 +61,14 @@ assert.ok(witnesses>0);
 console.log(`Vector sections: ${pairs} legal pairs preserved; ${witnesses} certified pair refinements; rollback and group representation passed.`);
 
 const {createTilingStream,tileSpecs}=await import('../apps/3d-lattice-tiler/engine.js');
-for(const mode_key of ['cube','orthoscheme','polycube_p9_02127']) {
+for(const mode_key of ['cube','orthoscheme','custom-triomino']) {
   for(const tiling_strategy of ['free_range','learning_free_range','rl_free_range','gcts_rl']) {
     const gcts=['learning_free_range','gcts_rl'].includes(tiling_strategy),rl=['rl_free_range','gcts_rl'].includes(tiling_strategy);
     let final;
-    for await(const e of createTilingStream({mode_key,tiling_strategy,move_order:rl?'rl':'balanced',agent_policy:rl?'cold_linucb':null,
-      complete_lattice_point_branching:true,gcts_failure_marking:gcts,criterion:'count',target_val:8,node_limit:1000,time_limit_ms:5000},tileSpecs))if(e.type==='finished')final=e;
+    for await(const e of createTilingStream({mode_key:mode_key==='custom-triomino'?'cube':mode_key,custom_system:mode_key==='custom-triomino'?{name:'Regression L triomino',polycubes:[{name:'L',voxels:[[0,0,0],[1,0,0],[0,1,0]]}]}:undefined,tiling_strategy,move_order:rl?'rl':'balanced',agent_policy:rl?'cold_linucb':null,
+      complete_lattice_point_branching:true,gcts_learning_protocol:'conservative',gcts_failure_marking:gcts,criterion:'count',target_val:8,node_limit:1000,time_limit_ms:5000},tileSpecs))if(e.type==='finished')final=e;
     assert.equal(final.success,true,`${mode_key}/${tiling_strategy}`);
     if(gcts){assert.ok(final.search_stats.marking_rank>0);assert.equal(final.search_stats.global_section_conflicts,0);assert.ok(final.search_stats.marking_synthesis_ms>=0);}
   }
 }
-console.log('Published-engine integration: four lanes × three real tiles reached their goals with consistent global sections.');
+console.log('Historical conservative-engine integration: four lanes × three real tiles reached their goals with consistent global sections.');

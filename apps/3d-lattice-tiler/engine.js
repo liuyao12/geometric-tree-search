@@ -1,7 +1,8 @@
+import {learnMarking,LearnedSection} from './marking-learning.js?v=20260921-corona-learning';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260910-periodic-trace";
+import { periodicStream } from "./periodic-search.js?v=20260921-corona-learning";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
@@ -2349,9 +2350,27 @@ export const createTilingStream = (() => {
     const cpuStartedAt = cpuTimeBudget ? process.cpuUsage() : null;
     if (gctsFailureMarkingEnabled) {
       const synthesisStarted = performance.now();
-      vectorMarking = new VectorMarkings(prototiles.map((tile,type) =>
-        tile.unique_orientations.map((orientation,index) => ({orientation,type,index}))),
-        MAX_SOLID_ANGLE, {extent: config.marking_extent ?? 0});
+      if(config.gcts_learning_protocol==='conservative'){
+        vectorMarking = new VectorMarkings(prototiles.map((tile,type) =>
+          tile.unique_orientations.map((orientation,index) => ({orientation,type,index}))),
+          MAX_SOLID_ANGLE, {extent: config.marking_extent ?? 0});
+      }else{
+        const learningModel={capacity:MAX_SOLID_ANGLE,allowReflections:!!includeMirrors,domain:'Z³',orientations:prototiles.flatMap((tile,type)=>tile.unique_orientations.map((o,index)=>({type,index,cells:o.occupancy,vertices:o.verts,faces:o.faces})))};
+        yield {type:'marking-learning-model',model:learningModel};
+        let learned;
+        for await(const event of learnMarking(learningModel,{timeMs:Number(config.time_limit_ms)>0?Number(config.time_limit_ms):Infinity,pairNodes:config.marking_pair_nodes??500,extent:config.marking_extent??1,stop:()=>!!stopToken.stop})){
+          if(event.type==='marking-learned')learned=event.marking;
+          yield event;
+        }
+        searchStats.marking_learning_ms=learned.elapsedMs;
+        searchStats.marking_learning_pairs=learned.pairs??0;
+        searchStats.marking_learning_complete=learned.complete;
+        if(!learned.accepted){
+          yield {type:'finished',success:false,result_kind:'search_incomplete',search_incomplete:true,can_tile:null,tile_count:state.placements.length,search_stats:{...searchStats,termination_reason:learned.reason,marking_learning_accepted:false},marking:learned};return;
+        }
+        vectorMarking=new LearnedSection(learningModel,learned);
+        searchStats.marking_learning_accepted=true;
+      }
       for (const move of state.placements) vectorMarking.add(markMove(move));
       searchStats.marking_synthesis_ms = performance.now() - synthesisStarted;
     }
@@ -2361,7 +2380,7 @@ export const createTilingStream = (() => {
       searchStats.marking_started_empty = false;
       searchStats.marking_payload_bytes = vectorMarking.stats().marking_memory_bytes;
       searchStats.marking_geometric_clauses = 0;
-      searchStats.marking_kind = "vector_global_section";
+      searchStats.marking_kind = vectorMarking instanceof LearnedSection ? "learned_pair_corona_section" : "vector_global_section";
     };
     updateFrontierMarkingStats();
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
@@ -7275,7 +7294,13 @@ export const createTilingStream = (() => {
             note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
           };
     }
-    // Exact GCTS markings are sound pruning rules, but exhausting a bounded
+    if(vectorMarking instanceof LearnedSection && !success){
+      tilingEvidence={kind:'learned_marking_search',certified:false,can_tile:null,note:'Failure under a learned finite-sample restriction is not an unmarked non-tiling proof.'};
+      noteIncompleteSearch();searchStats.termination_reason ??= 'learned_marking_target_exhausted';
+    }
+    // Historical conservative markings preserve infinite tilings; learned
+    // pair-corona markings above carry the explicitly restricted scope.
+    // Exact conservative markings are sound pruning rules, but exhausting a bounded
     // growth-layer search is not by itself a non-tiling theorem.  A failed
     // GCTS run may terminate logically only when an explicit exact
     // obstruction above has set can_tile=false; all resource, generation-band,

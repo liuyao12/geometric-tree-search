@@ -1,5 +1,15 @@
 # 3D Lattice Tiler
 
+## Live GCTS marking learning · 2026-09-21
+
+Both v1 and v2 now enumerate neighboring pairs, classify them using unmarked
+one-corona search with viable frontier, and display incremental point-marking
+updates. A complete qualifying marking is saved only in the browser and
+automatically starts the marked lane. Read the
+[shared learning protocol and conformance report](../../docs/projects/3d-gcts-marking-learning.md).
+The conservative-marking and lookahead descriptions below are historical; they
+remain explicitly named controls, not the current GCTS learning lane.
+
 ## V2.1 single-slab 2D presets · 2026-09-11
 
 Hat and turtle now use the Turtle demo's index-3 A₂ point domain, lifted onto

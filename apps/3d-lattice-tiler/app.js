@@ -1,3 +1,8 @@
+import {remember3DMarking} from './marking-storage.js?v=20260921-corona-learning';
+import {MarkingPreview} from './marking-preview.js?v=20260921-corona-learning';
+const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
+function showMarkingView(learning){markingPreview.host.hidden=!learning;document.getElementById('viewport').hidden=learning;document.getElementById('showLearning').disabled=!markingPreview.model;document.getElementById('showLearning').setAttribute('aria-pressed',String(learning));document.getElementById('showTiling').setAttribute('aria-pressed',String(!learning));window.dispatchEvent(new Event('resize'));}
+document.getElementById('showTiling').onclick=()=>showMarkingView(false);document.getElementById('showLearning').onclick=()=>showMarkingView(true);
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
@@ -5,7 +10,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260910-periodic-trace";
+} from "./engine.js?v=20260921-corona-learning";
 
 const $ = (id) => document.getElementById(id);
 
@@ -535,7 +540,7 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
-  learning_free_range: "Vector-valued tile markings are checked against a global section. Certified pair obstructions refine the equivariant fields; rollback restores the section.",
+  learning_free_range: "Classifies neighboring pairs with unmarked one-corona checks, updates point markings after each label, then starts marked tiling only after complete validation.",
   rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
   gcts_rl: "Combines the same cold linear RL ordering with vector-valued global-section checks. Marking synthesis and online training are both timed.",
   translational: "Search exact point-value quotients up to the selected motif limit. Rotations may occur within the repeating motif; bounded failure is inconclusive.",
@@ -2041,6 +2046,7 @@ function configKey() {
     complete_lattice_point_branching: isGcts || isRl || tilingStrategy === "translational"
       || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
     gcts_failure_marking: isGcts,
+    marking_pair_nodes: Math.max(1,Math.min(1000000,Math.floor(+document.getElementById('markingPairBudget').value||500))),
     gcts_marking_reach_multiplier: 1,
     gcts_marking_max_clauses: 20000,
     gcts_marking_max_context_tiles: 1000000,
@@ -3038,6 +3044,8 @@ function renderTree() {
 }
 
 function handleMessage(message) {
+  if(message.type==='marking-learning-model'){markingPreview.reset(message.model);showMarkingView(true);return;}
+  if(message.type==='marking-learning'||message.type==='marking-learned'){if(message.type==='marking-learned')message.marking=remember3DMarking(markingPreview.model,message.marking);markingPreview.accept(message);if(message.type==='marking-learned'&&message.marking.accepted)showMarkingView(false);return;}
   if (message.type === "palette") return;
   if (message.type === "prototile_info") {
     initTileControls(message);
@@ -3177,7 +3185,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260910-periodic-trace", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-corona-learning", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3975,7 +3983,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260910-periodic-trace", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-corona-learning", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -4007,6 +4015,13 @@ function startGrowthBenchmark() {
           setStatus(`All six lanes ready; search clock starts after preprocessing.`);
           growthBenchmarkStatus.textContent = `All six lanes ready; starting simultaneously to ${targetLabel}…`;
         }
+      } else if(message.type==='marking-learning-model'){
+        series.learningModel=message.model;if(selectedGrowthMode()===mode.id){markingPreview.reset(message.model);showMarkingView(true);}
+      } else if(message.type==='marking-learning'||message.type==='marking-learned'){
+        if(message.type==='marking-learned')message.event.marking=remember3DMarking(series.learningModel,message.event.marking);
+        series.learningEvent=message.event;
+        if(selectedGrowthMode()===mode.id){if(markingPreview.model!==series.learningModel)markingPreview.reset(series.learningModel);markingPreview.accept(message.event);if(message.type==='marking-learned'&&message.event.marking.accepted)showMarkingView(false);}
+        series.status=message.event.type==='marking-learned'?(message.event.marking.accepted?'marking validated; tiling':'marking not activated'):`learning · ${message.event.pairs??0} pairs`;
       } else if (message.type === "prototile-info") {
         series.prototileInfo = message.info;
       } else if (message.type === "mode-status") {
@@ -4094,7 +4109,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, shellInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
+  [document.getElementById('markingPairBudget'), maxTilesInput, layerInput, shellInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
@@ -4104,6 +4119,8 @@ function bindControls() {
     stopGrowthReplay();
     updateStrategyUI();
     showSelectedGrowthSnapshot();
+    const learning=growthSeries.get(selectedGrowthMode());markingPreview.host.hidden=!learning?.learningModel;
+    if(learning?.learningModel){markingPreview.reset(learning.learningModel);if(learning.learningEvent)markingPreview.accept(learning.learningEvent);}showMarkingView(!!learning?.learningModel&&learning.learningEvent?.type!=='marking-learned');
     renderGrowthChart();
   }));
   polycubeLatticeSelect.addEventListener("change", () => {

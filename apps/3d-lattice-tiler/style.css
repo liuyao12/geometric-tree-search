@@ -1214,3 +1214,6 @@ button:disabled {
   .growth-header { align-items: flex-start; }
   .growth-history-controls { max-width: 100%; }
 }
+
+#viewport[hidden], #markingLearning[hidden] { display: none !important; }
+.marking-view-tabs { display: flex; gap: 8px; padding: 8px; }

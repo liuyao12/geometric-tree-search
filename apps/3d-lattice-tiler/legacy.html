@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260910-periodic-trace-20260824-polycube10-v107">
+  <link rel="stylesheet" href="./style.css?v=20260921-corona-learning-20260824-polycube10-v107">
 </head>
 <body>
   <div class="app-shell">
@@ -57,7 +57,7 @@
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="learning_free_range">
-              <span><b>GCTS</b><small>Glue vector-valued tile markings into a global section.</small></span>
+              <span><b>GCTS</b><small>Learn point markings from unmarked pair-corona checks.</small></span>
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="rl_free_range">
@@ -128,6 +128,7 @@
           <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
         </div>
 
+        <label class="field"><span>Attempts per corona pair</span><input id="markingPairBudget" type="number" min="1" max="1000000" value="500"></label>
         <label><input id="mirrorCheckbox" type="checkbox"><span>Allow reflected tiles</span></label>
         <label class="field"><span>Periodic motif limit</span><select id="periodicTileCountSelect"><option value="4">Up to 4 tiles</option><option value="8" selected>Up to 8 tiles</option><option value="16">Up to 16 tiles</option><option value="64">Up to 64 tiles</option></select></label>
         <div class="action-row">
@@ -194,6 +195,8 @@
 
     <main class="workspace">
       <section class="viewport-panel">
+        <div class="marking-view-tabs"><button id="showTiling" type="button">Tiling</button><button id="showLearning" type="button" disabled>Learn markings</button></div>
+        <section id="markingLearning" class="growth-panel" hidden></section>
         <div id="viewport" class="viewport"></div>
       </section>
       <section class="growth-panel" aria-labelledby="growthChartTitle">
@@ -261,6 +264,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260910-periodic-trace"></script>
+  <script type="module" src="./app.js?v=20260921-corona-learning"></script>
 </body>
 </html>

@@ -2,15 +2,18 @@
 // participates in legality. All reversible changes share one trail.
 export const key=p=>p.join(',');
 const plus=(a,b)=>a.map((x,i)=>x+b[i]);
+// Absent components are free; assigned zero is still a matching value.
+export const markingSlots=marks=>(marks??[]).flatMap(m=>Array.isArray(m.value)?m.value.flatMap((value,component)=>value===null||value==='*'?[]:[{...m,component,value}]):m.value===null||m.value==='*'?[]:[{...m,component:m.component??0}]);
+const markKey=m=>`${key(m.pos)}|${m.component??0}`;
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 const hash=s=>{let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;};
 export class PointGraph {
   constructor(model,{candidateLimit=180000}={}) {
-    this.model=model;this.points=new Map();this.candidates=[];this.dependencies=new Map();this.markDependencies=new Map();this.totals=new Map();this.section=new Map();this.selected=[];this.trail=[];this.edges=0;
+    this.model=model;this.points=new Map();this.candidates=[];this.dependencies=new Map();this.markDependencies=new Map();this.totals=new Map();this.section=new Map();this.selected=[];this.trail=[];this.edges=0;this.markingCuts=0;
     if(!Number.isSafeInteger(model.capacity)||model.capacity<1)throw Error('Invalid capacity');
     for(const o of model.orientations){
       if(!o.cells.length||new Set(o.cells.map(c=>key(c.pos))).size!==o.cells.length||o.cells.some(c=>!Number.isSafeInteger(c.weight)||c.weight<=0||c.weight>model.capacity||c.pos.length!==3||c.pos.some(x=>!Number.isSafeInteger(x))))throw Error('Invalid exact point model');
-      if(new Set((o.marks??[]).map(m=>key(m.pos))).size!==(o.marks??[]).length)throw Error('Duplicate marking point');
+      if(new Set(markingSlots(o.marks).map(markKey)).size!==markingSlots(o.marks).length)throw Error('Duplicate marking point');
     }
     for(const p of model.required)this.points.set(key(p.pos),{pos:p.pos,generation:p.generation??0,incident:[],degree:0});
     const unique=new Map();
@@ -26,7 +29,7 @@ export class PointGraph {
         }
         if(unique.has(id))continue;
         if(this.candidates.length>=candidateLimit){const e=Error('Complete graph exceeds the 180,000-candidate memory budget. Reduce the window.');e.kind='resource_limit';throw e;}
-        const c={id,oi,translation,valid:true,selected:false,cells:o.cells.map(q=>({k:key(plus(q.pos,translation)),weight:q.weight})),marks:(o.marks??[]).map(m=>({k:key(plus(m.pos,translation)),value:JSON.stringify(m.value)})),points:[]};
+        const c={id,oi,translation,valid:true,selected:false,cells:o.cells.map(q=>({k:key(plus(q.pos,translation)),weight:q.weight})),marks:markingSlots(o.marks).map(m=>({k:`${key(plus(m.pos,translation))}|${m.component}`,value:JSON.stringify(m.value)})),points:[]};
         unique.set(id,c);this.candidates.push(c);
         for(const cell of c.cells){
           if(!this.dependencies.has(cell.k))this.dependencies.set(cell.k,new Set());this.dependencies.get(cell.k).add(c);
@@ -47,7 +50,7 @@ export class PointGraph {
     const affected=new Set();
     for(const p of c.cells){this.trail.push(['total',p.k,this.totals.get(p.k)]);this.totals.set(p.k,(this.totals.get(p.k)??0)+p.weight);for(const n of this.dependencies.get(p.k)??[])affected.add(n);}
     for(const m of c.marks){const prev=this.section.get(m.k);this.trail.push(['mark',m.k,prev]);this.section.set(m.k,{value:m.value,count:(prev?.count??0)+1});for(const n of this.markDependencies.get(m.k)??[])affected.add(n);}
-    for(const n of affected)if(n.valid&&!this.legal(n))this.disable(n);
+    for(const n of affected)if(n.valid&&!this.legal(n)){if(!n.selected&&n.cells.every(p=>(this.totals.get(p.k)??0)+p.weight<=this.model.capacity))this.markingCuts++;this.disable(n);}
     return mark;
   }
   rollback(mark){while(this.trail.length>mark){const [kind,item,old]=this.trail.pop();if(kind==='valid'){item.valid=true;for(const p of item.points)p.degree++;}else if(kind==='selected'){item.selected=false;delete item.generation;this.selected.pop();}else{const map=kind==='total'?this.totals:this.section;if(old===undefined)map.delete(item);else map.set(item,old);}}}
@@ -73,7 +76,7 @@ export function verify(model,placements){
   if(model.required.some(p=>!exactPoint(p.pos))||new Set(model.required.map(p=>key(p.pos))).size!==model.required.length)return {ok:false,reason:'invalid target'};
   for(const o of model.orientations){
     if(!Array.isArray(o.cells)||!o.cells.length||o.cells.some(c=>!exactPoint(c.pos)||!Number.isSafeInteger(c.weight)||c.weight<=0||c.weight>model.capacity)||new Set(o.cells.map(c=>key(c.pos))).size!==o.cells.length)return {ok:false,reason:'invalid support'};
-    if((o.marks??[]).some(m=>!exactPoint(m.pos)||m.value===undefined)||new Set((o.marks??[]).map(m=>key(m.pos))).size!==(o.marks??[]).length)return {ok:false,reason:'invalid marking'};
+    if((o.marks??[]).some(m=>!exactPoint(m.pos)||m.value===undefined)||new Set(markingSlots(o.marks).map(markKey)).size!==markingSlots(o.marks).length)return {ok:false,reason:'invalid marking'};
   }
   const totals=new Map(),section=new Map(),ids=new Set();
   for(const p of placements){
@@ -88,21 +91,21 @@ export function verify(model,placements){
     const id=`${p.oi}@${p.translation}`;if(ids.has(id))return {ok:false,reason:'duplicate placement'};ids.add(id);
     if(!o.cells.some(c=>model.required.some(q=>key(plus(c.pos,p.translation))===key(q.pos))))return {ok:false,reason:'placement misses target'};
     for(const c of o.cells){const k=key(plus(c.pos,p.translation)),v=(totals.get(k)??0)+c.weight;if(v>model.capacity)return {ok:false,reason:'capacity exceeded'};totals.set(k,v);}
-    for(const m of o.marks??[]){const k=key(plus(m.pos,p.translation)),v=JSON.stringify(m.value);if(section.has(k)&&section.get(k)!==v)return {ok:false,reason:'marking disagreement'};section.set(k,v);}
+    for(const m of markingSlots(o.marks)){const k=`${key(plus(m.pos,p.translation))}|${m.component}`,v=JSON.stringify(m.value);if(section.has(k)&&section.get(k)!==v)return {ok:false,reason:'marking disagreement'};section.set(k,v);}
   }
   const covered=model.required.filter(p=>totals.get(key(p.pos))===model.capacity).length;
   return {ok:covered===model.required.length,covered,required:model.required.length,reason:covered===model.required.length?'finite exact point window':'incomplete window'};
 }
 
 export async function* search(model,config={}) {
-  const started=performance.now(),mode=config.mode??'free',gcts=['gcts','both'].includes(mode),rl=['rl','both'].includes(mode);
+  const started=performance.now(),mode=config.mode??'free',gcts=config.gctsLookahead===true&&['gcts','both'].includes(mode),rl=['rl','both'].includes(mode);
   const stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,capacityCuts:0,lookaheadCuts:0,probes:0,clusterProposals:0,clusterValidated:0,clusterUses:0,learningMs:0,graphMs:0,peakTrail:0};
   const graph=new PointGraph(model);stats.graphMs=performance.now()-started;
   const seed=config.seed??1,library=new Map(),limit=config.timeMs??10000,nodeLimit=config.nodes??10000;
   let stopReason=null,best=[],lastEmit=0;
   const expired=()=>{if(performance.now()-started>=limit)stopReason='time budget';else if(stats.attempts>=nodeLimit)stopReason='attempt budget';return !!stopReason;};
   const descriptors=()=>graph.selected.map(c=>({oi:c.oi,translation:c.translation.slice(),generation:c.generation}));
-  const metric=()=>({...stats,elapsedMs:performance.now()-started,candidates:graph.candidates.length,edges:graph.edges,points:graph.points.size,clusters:library.size,memoryEstimateBytes:graph.candidates.reduce((s,c)=>s+160+c.cells.length*40+c.marks.length*40,0)+graph.edges*8+stats.peakTrail*24});
+  const metric=()=>({...stats,markingCuts:graph.markingCuts,elapsedMs:performance.now()-started,candidates:graph.candidates.length,edges:graph.edges,points:graph.points.size,clusters:library.size,memoryEstimateBytes:graph.candidates.reduce((s,c)=>s+160+c.cells.length*40+c.marks.length*40,0)+graph.edges*8+stats.peakTrail*24});
   function residualDead(){
     for(const [k,p] of graph.points){const d=model.capacity-(graph.totals.get(k)??0);if(!d)continue;let sum=0,g=0;
       for(const c of p.incident)if(c.valid){const w=c.cells.find(q=>q.k===k).weight;sum+=w;g=gcd(g,w);}
@@ -175,5 +178,5 @@ export async function* search(model,config={}) {
   const won=yield* visit(0),placements=won?descriptors():Array.from(best);
   const verification=verify(model,placements);
   if(won&&!verification.ok)throw Error('Independent verification failed');
-  yield {type:'result',mode,result:won?'finite_exact':stopReason?'unknown':'exhausted_finite',reason:stopReason,placements,verification,stats:metric(),clusters:[...library.values()],config,model};
+  yield {type:'result',mode,result:won?'finite_exact':stopReason?'unknown':config.learnedRestriction?'exhausted_marked':'exhausted_finite',reason:stopReason,placements,verification,stats:metric(),clusters:[...library.values()],config,model};
 }

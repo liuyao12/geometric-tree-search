@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260910-periodic-trace";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260921-corona-learning";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -242,6 +242,8 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   post(sequence, { type: "series-start", mode: effectiveMode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken, preparedSystem)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
+    if(message.type==='marking-learning-model')post(sequence,{type:message.type,mode:mode.id,model:message.model});
+    if(message.type==='marking-learning'||message.type==='marking-learned')post(sequence,{type:message.type,mode:mode.id,event:message});
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
     if (["periodic_progress", "periodic_work"].includes(message.type)
       && searchElapsedMilliseconds() - lastPeriodicReportAt >= 250) {

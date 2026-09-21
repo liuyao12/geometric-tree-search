@@ -1,3 +1,8 @@
+> **2026-09-21 update:** The active GCTS and GCTS+RL lanes now use the
+> [shared pair-corona marking learner](3d-gcts-marking-learning.md).
+> Conservative markings and default GCTS lookahead described below are historical
+> v2.0/v2.1 behavior; retain those semantics when interpreting recorded results.
+
 # 3D Lattice Tiler v2
 
 V2 replaces the main workbench at both existing entry points:
