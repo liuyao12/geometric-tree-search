@@ -555,9 +555,9 @@ the pending pair coronas or find a stronger independently justified obstruction.
 
 The [viable-frontier follow-up](3d-viable-frontier-search.md) strengthens the
 finite window check and uses verified patches to propose full pair-corona tests.
-The p10-346304 catalogue now contains 27 positives, 24 negatives and 1,873
-unresolved pairs. All resolved labels fit the provisional 96-value marking,
-but it is not accepted. Five positive classes have replayable witnesses;
+The p10-346304 catalogue now contains 54 positives, 24 negatives and 1,846
+unresolved pairs. All resolved labels fit the provisional 144-value marking,
+but it is not accepted. Ten positive classes have replayable witnesses;
 one newly negative class has a published RUP proof and excludes six raw pairs.
 The p9-42947 seven-cube with viable frontier remains unresolved after continuation.
 The phase-hint controls establish no speedup, and no infinite construction or

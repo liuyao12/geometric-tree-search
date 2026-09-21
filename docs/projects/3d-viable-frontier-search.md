@@ -9,12 +9,12 @@ contain geometry and placements, without learned markings.
 
 ## Current catalogue progress
 
-The p10-346304 catalogue now has **27 positive, 24 negative and 1,873 unresolved
-pairs**, out of 1,924 pairs in 365 symmetry classes. Five classes have positive
+The p10-346304 catalogue now has **54 positive, 24 negative and 1,846 unresolved
+pairs**, out of 1,924 pairs in 365 symmetry classes. Ten classes have positive
 witnesses and four have negative outcomes. One of the negative classes now has
 an independently checked proof; the original three retain their trusted-solver
-scope. The provisional 96-value marking, counted across eight orientations,
-passes all 27 positives and blocks all 24 negatives. It remains **unaccepted**:
+scope. The provisional 144-value marking, counted across eight orientations,
+passes all 54 positives and blocks all 24 negatives. It remains **unaccepted**:
 most of the catalogue is unresolved, and no marked growth run has started.
 
 After the first three positive classes, a six-pair pass proposed from class 223's
@@ -22,6 +22,17 @@ After the first three positive classes, a six-pair pass proposed from class 223'
 positive pairs. Four checks reach their ten-second budgets. Their saved necessary
 frontier conditions are retained for later continuation. The two new witnesses
 contain 41 and 48 tiles. No direct label is inferred from proximity or the ranking.
+
+The next twelve proposals from class 197's witness resolve five further classes:
+255, 321, 49, 81 and 82. They add 27 positive pairs (class 255 has three members;
+the others have six). Their 38-, 42-, 43-, 43- and 47-tile witnesses pass independent
+weighted-point and voxel replay. Oracle calls take 7.80, 4.77, 6.64, 5.47 and
+5.22 seconds; classes 255 and 81 also inherit earlier unsuccessful calls and
+necessary frontier conditions. Seven checks remain unresolved at ten seconds.
+These runs use no phase hints. All twelve results, including the unresolved
+checkpoints, are retained. The published receipt now lists 52 oracle calls and
+1,624 independently replayed dead-point records, and the geometric witness
+bundle contains thirteen cases. None contains learned m-values.
 
 ## A stronger finite-window check
 
@@ -144,5 +155,93 @@ fixed seeds, exact pair/window equivalence, 1,022 exhaustive Boolean projections
 of the two nonoverlap encodings, both solver backends, reversible contradictory
 phase hints, bounded unknown outcomes, proposal transports, empty proposal
 reports, and imported unattempted pair classes.
+
+
+## Complete periodic-quotient controls
+
+The earlier patch-period probe allowed only placements seen in its source patch.
+The new `solve_patch_period_quotients.py` uses a patch only to propose **period
+lattices**. For each proposed period it includes every allowed orientation at
+every translation in the finite quotient. An exact cover then gives an infinite
+periodic grid construction. Tiles overlapping their own periodic copies are
+excluded. The formula keeps distinct orientation/anchor identities even when
+they occupy the same quotient sites; merging those identities can make relative
+pair clauses unsound. Global translation symmetry places some anchor at zero,
+without fixing its orientation.
+
+Period proposals come from triples of repeated equal-orientation displacement
+vectors, deduplicated by integer Hermite normal form and proper rotations. This
+is a sampled search, not an exhaustive screen above the catalogue's previous
+13-copy HNF boundary. The tested periods have 14–21 tiles per cell.
+
+The second control adds the 48 relative-pair schemas proved impossible by class
+182. It rechecks the published RUP proof before use and admits no learned
+assignments. A pair related by a nonzero period vector can give a unit exclusion:
+selecting that quotient placement would force both forbidden tiles in the lifted
+infinite tiling. A separate JS point-group calculation reproduces all 48 schemas.
+These clauses are proved necessary in the grid domain; this is a clause-filter
+control, not the browser GCTS marking lane.
+
+| Sample and control | Period lattices checked | UNSAT for that lattice | Budget unresolved | Periodic constructions | Quotient calls total |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Initial eight-witness proposals, plain | 24 | 7 | 17 | 0 | 101.43 s |
+| Same initial proposals, proved pair | 24 | 12 | 12 | 0 | 99.07 s |
+| Expanded thirteen-witness proposals, plain | 32 | 7 | 25 | 0 | 143.12 s |
+| Same expanded proposals, proved pair | 32 | 7 | 25 | 0 | 143.50 s |
+
+The [plain pilot](../../data/3d-p10-period-pilot-2026-09-21.json),
+[pair-filter pilot](../../data/3d-p10-period-pair-pilot-2026-09-21.json), and
+[expanded matched run](../../data/3d-p10-period-controls-2026-09-21.json) retain
+individual bases, outcomes, actual times, bounds and source hashes. Each call
+has a nominal five-second budget, including formula preparation; interrupted
+calls can slightly exceed it. The expanded run alternates which control goes
+first. Its proof verification and preparation cost another 4.82 seconds; total
+wall time is 291.66 seconds. Earlier patch construction, corona learning and
+proof generation are additional costs. The pilot's reported run time excludes
+proof preparation; its checker-only time is recorded separately. These are
+single-pass diagnostics, not a cold GCTS speedup benchmark. A short independent
+proof test also overlapped part of the expanded run.
+
+The five extra pilot completions do not persist as an advantage on the new
+sample. Both expanded controls finish the same seven lattices. Across both
+samples, 56 distinct lattices were attempted and 19 received trusted-solver
+UNSAT results. Each result excludes only that period lattice. The individual
+periodic UNSAT searches do not have exported proof traces; the independently
+checked proof is the redundant pair constraint. No global non-tiling,
+aperiodicity, or infinite-extension conclusion follows.
+
+The expanded proposal pool contains 168 lattices from the top 96 of 524 observed
+displacement vectors. Thirteen of those appeared in the pilot; 32 new ones were
+selected. Untested proposals and other period lattices remain open. Certificates,
+when found, include explicit orientation geometry keys and translations; tiny
+positive controls pass the separate JavaScript periodic verifier even when the
+solver's orientation table is reordered and translated.
+
+Reproduce the expanded comparison after installing `python-sat==1.9.dev15`:
+
+```sh
+python3 scripts/benchmark_patch_period_quotients.py \
+  --input=data/3d-viable-frontier-witnesses-2026-09-21.json \
+  --tile=p10-346304 --output=/tmp/p10-period-controls.json \
+  --pair-certificate=data/p10-346304-pair-obstruction \
+  --checker=/path/to/drat-trim \
+  --skip-report=data/3d-p10-period-pilot-2026-09-21.json \
+  --min-copies=14 --max-copies=64 --max-vectors=96 --max-bases=32 \
+  --time-ms=5000
+python3 scripts/test_patch_period_quotients.py
+python3 scripts/audit_patch_period_receipts.py
+python3 scripts/test_patch_period_pair_certificate.py \
+  --bundle=data/p10-346304-pair-obstruction --checker=/path/to/drat-trim
+```
+
+The tests require Node on `PATH` or `GCTS_NODE_BINARY`. They cover 275 integer
+basis transformations, fourteen exhaustive tiny covers with and without origin
+symmetry, self-overlap, wraparound pair clauses, distinct placement identities,
+budget-unknown behavior, independent certificate replay, and damaged-certificate
+rejection. The receipt audit reconstructs all proposal identities and complete
+placement-pool sizes; it does not re-prove the historical timed UNSAT outcomes.
+The pilot source hashes identify the early implementation; its occupancy
+deduplication changed none of the tested p10 pools, as the audit confirms.
+No learned marking is included in these data or tools.
 
 No infinite construction or true aperiodic monotile has been established.

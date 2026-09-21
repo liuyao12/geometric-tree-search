@@ -1,0 +1,2245 @@
+{
+  "tile": "p10-346304",
+  "inputSha256": "573b90cadeea6e2c2e80949bf38b8d322d996e141c40ce35887c422ba3742b0f",
+  "sourceSha256": "2e96d5ad8bd4a002c5351356c62555c9ba94471111c63d488619ef76ff0da3d0",
+  "bounds": {
+    "input": "data/3d-viable-frontier-witnesses-2026-09-21.json",
+    "tile": "p10-346304",
+    "output": "/tmp/gcts-p10-346304-proof-period-quotients-20260921.json",
+    "time_ms": 5000,
+    "max_vectors": 64,
+    "max_bases": 24,
+    "min_copies": 14,
+    "max_copies": 64,
+    "pair_certificate": "data/p10-346304-pair-obstruction",
+    "checker": "/tmp/gcts-drat-trim/drat-trim"
+  },
+  "pairConstraintProof": {
+    "verified": true,
+    "geometry": {
+      "volume": 10,
+      "orientations": 8,
+      "properRotations": 24,
+      "relativePairSchemas": 48
+    },
+    "stats": {
+      "candidates": 3576,
+      "targetVoxels": 180,
+      "pairExclusionEdges": 0,
+      "frontierPoints": 99,
+      "variables": 11450,
+      "clauses": 1103168
+    },
+    "checkerSeconds": 4.201413792,
+    "proofMethod": "DRAT-trim, RUP-only mode",
+    "scope": "This relative pair cannot have a complete one-corona with viable exposed frontier, and cannot occur in any tiling of the integer cubic grid by the declared proper rotations. Does not exclude all tilings of the tile or establish aperiodicity."
+  },
+  "proposalStats": {
+    "vectors": 327,
+    "selectedVectors": 64,
+    "eligibleTriples": 37,
+    "uniqueLatticesUpToRotation": 32
+  },
+  "proposals": [
+    {
+      "basis": [
+        [
+          50,
+          0,
+          0
+        ],
+        [
+          16,
+          3,
+          0
+        ],
+        [
+          21,
+          2,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        15,
+        -100
+      ],
+      "sourceVectors": [
+        [
+          3,
+          3,
+          -3
+        ],
+        [
+          1,
+          -1,
+          -5
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          2,
+          25,
+          0
+        ],
+        [
+          3,
+          18,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -87
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          3,
+          0,
+          -4
+        ],
+        [
+          4,
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          2,
+          7,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -90
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          3,
+          0,
+          -4
+        ],
+        [
+          4,
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          25,
+          0
+        ],
+        [
+          3,
+          18,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -96
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          3,
+          3,
+          -4
+        ],
+        [
+          4,
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          1,
+          7,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -99
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          3,
+          3,
+          -4
+        ],
+        [
+          4,
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          2,
+          2,
+          5
+        ]
+      ],
+      "copies": 18,
+      "score": [
+        3,
+        14,
+        -105
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          5,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          6
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          3,
+          25,
+          0
+        ],
+        [
+          0,
+          19,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -108
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          -4
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          2,
+          10,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        14,
+        -110
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          5,
+          2,
+          2
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          30,
+          0
+        ],
+        [
+          3,
+          6,
+          1
+        ]
+      ],
+      "copies": 18,
+      "score": [
+        3,
+        14,
+        -123
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "copies": 18,
+      "score": [
+        3,
+        13,
+        -102
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          5,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          6
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          25,
+          0
+        ],
+        [
+          0,
+          10,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        13,
+        -107
+      ],
+      "sourceVectors": [
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          5,
+          1,
+          2
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          13,
+          4,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        11,
+        -94
+      ],
+      "sourceVectors": [
+        [
+          2,
+          1,
+          -3
+        ],
+        [
+          3,
+          4,
+          3
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          2,
+          7,
+          0
+        ],
+        [
+          10,
+          6,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -90
+      ],
+      "sourceVectors": [
+        [
+          5,
+          2,
+          2
+        ],
+        [
+          2,
+          -2,
+          -4
+        ],
+        [
+          2,
+          5,
+          -2
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          4,
+          5,
+          0
+        ],
+        [
+          8,
+          1,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -92
+      ],
+      "sourceVectors": [
+        [
+          4,
+          0,
+          -1
+        ],
+        [
+          3,
+          4,
+          3
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          1,
+          5,
+          0
+        ],
+        [
+          7,
+          2,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -96
+      ],
+      "sourceVectors": [
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          2,
+          -2,
+          -4
+        ],
+        [
+          1,
+          3,
+          -4
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          29,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -96
+      ],
+      "sourceVectors": [
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          1,
+          3,
+          -4
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          50,
+          0,
+          0
+        ],
+        [
+          12,
+          3,
+          0
+        ],
+        [
+          17,
+          2,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        10,
+        -100
+      ],
+      "sourceVectors": [
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          1,
+          -1,
+          -5
+        ],
+        [
+          1,
+          5,
+          -1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          14,
+          0,
+          0
+        ],
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          6,
+          4,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -101
+      ],
+      "sourceVectors": [
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          2,
+          -1,
+          -3
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          27,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        10,
+        -102
+      ],
+      "sourceVectors": [
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          -4
+        ],
+        [
+          1,
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          17,
+          0,
+          0
+        ],
+        [
+          2,
+          10,
+          0
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "copies": 17,
+      "score": [
+        3,
+        10,
+        -120
+      ],
+      "sourceVectors": [
+        [
+          4,
+          1,
+          4
+        ],
+        [
+          0,
+          4,
+          -5
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          39,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        9,
+        -84
+      ],
+      "sourceVectors": [
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          1,
+          3,
+          -4
+        ],
+        [
+          3,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          7,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        9,
+        -91
+      ],
+      "sourceVectors": [
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          4,
+          1,
+          3
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          2,
+          20,
+          0
+        ],
+        [
+          0,
+          8,
+          1
+        ]
+      ],
+      "copies": 16,
+      "score": [
+        3,
+        9,
+        -94
+      ],
+      "sourceVectors": [
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          4,
+          2,
+          3
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          1,
+          10,
+          0
+        ],
+        [
+          8,
+          8,
+          1
+        ]
+      ],
+      "copies": 16,
+      "score": [
+        3,
+        9,
+        -94
+      ],
+      "sourceVectors": [
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          30,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          14,
+          2,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        9,
+        -95
+      ],
+      "sourceVectors": [
+        [
+          4,
+          -2,
+          -2
+        ],
+        [
+          1,
+          5,
+          2
+        ],
+        [
+          0,
+          4,
+          -5
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          50,
+          0,
+          0
+        ],
+        [
+          13,
+          3,
+          0
+        ],
+        [
+          27,
+          1,
+          1
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        9,
+        -97
+      ],
+      "sourceVectors": [
+        [
+          2,
+          -2,
+          -4
+        ],
+        [
+          1,
+          5,
+          -1
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          2,
+          14,
+          0
+        ],
+        [
+          3,
+          6,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        9,
+        -100
+      ],
+      "sourceVectors": [
+        [
+          2,
+          4,
+          -2
+        ],
+        [
+          2,
+          -1,
+          5
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          1,
+          5,
+          0
+        ],
+        [
+          4,
+          3,
+          3
+        ]
+      ],
+      "copies": 15,
+      "score": [
+        3,
+        9,
+        -102
+      ],
+      "sourceVectors": [
+        [
+          3,
+          3,
+          -2
+        ],
+        [
+          3,
+          4,
+          3
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          85,
+          0,
+          0
+        ],
+        [
+          12,
+          2,
+          0
+        ],
+        [
+          39,
+          0,
+          1
+        ]
+      ],
+      "copies": 17,
+      "score": [
+        3,
+        9,
+        -103
+      ],
+      "sourceVectors": [
+        [
+          2,
+          -2,
+          -4
+        ],
+        [
+          2,
+          5,
+          -2
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          15,
+          0
+        ],
+        [
+          2,
+          4,
+          2
+        ]
+      ],
+      "copies": 18,
+      "score": [
+        3,
+        9,
+        -106
+      ],
+      "sourceVectors": [
+        [
+          2,
+          4,
+          -2
+        ],
+        [
+          0,
+          0,
+          6
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          38,
+          0,
+          0
+        ],
+        [
+          11,
+          5,
+          0
+        ],
+        [
+          14,
+          1,
+          1
+        ]
+      ],
+      "copies": 19,
+      "score": [
+        3,
+        9,
+        -106
+      ],
+      "sourceVectors": [
+        [
+          1,
+          3,
+          -4
+        ],
+        [
+          3,
+          4,
+          3
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "basis": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          1,
+          14,
+          0
+        ],
+        [
+          3,
+          6,
+          1
+        ]
+      ],
+      "copies": 14,
+      "score": [
+        3,
+        9,
+        -108
+      ],
+      "sourceVectors": [
+        [
+          4,
+          2,
+          3
+        ],
+        [
+          2,
+          5,
+          -2
+        ],
+        [
+          6,
+          -3,
+          1
+        ]
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "basis": [
+        [
+          50,
+          0,
+          0
+        ],
+        [
+          16,
+          3,
+          0
+        ],
+        [
+          21,
+          2,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 31.728082999999963,
+        "elapsedMs": 1717.964833
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          2,
+          25,
+          0
+        ],
+        [
+          3,
+          18,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 32.238875,
+        "elapsedMs": 4376.64
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          2,
+          7,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 31.34716599999976,
+        "elapsedMs": 5021.175666000001
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          25,
+          0
+        ],
+        [
+          3,
+          18,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 32.43800000000263,
+        "elapsedMs": 5013.341583000002
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          1,
+          7,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 31.978957999999835,
+        "elapsedMs": 5106.757291000001
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          2,
+          2,
+          5
+        ]
+      ],
+      "copies": 18,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1440,
+        "quotientSites": 180,
+        "variables": 15660,
+        "clauses": 46981,
+        "originSymmetry": true,
+        "pairExclusionClauses": 4320,
+        "preparationMs": 38.12754200000157,
+        "elapsedMs": 5012.373708000002
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          3,
+          25,
+          0
+        ],
+        [
+          0,
+          19,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 132.33141699999962,
+        "elapsedMs": 5078.173458000002
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          2,
+          10,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 32.37099999999771,
+        "elapsedMs": 5033.293125
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          30,
+          0
+        ],
+        [
+          3,
+          6,
+          1
+        ]
+      ],
+      "copies": 18,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1440,
+        "quotientSites": 180,
+        "variables": 15660,
+        "clauses": 46981,
+        "originSymmetry": true,
+        "pairExclusionClauses": 4320,
+        "preparationMs": 40.615166000002034,
+        "elapsedMs": 5018.717541000001
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "copies": 18,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1440,
+        "quotientSites": 180,
+        "variables": 15660,
+        "clauses": 46981,
+        "originSymmetry": true,
+        "pairExclusionClauses": 4320,
+        "preparationMs": 38.32266699999565,
+        "elapsedMs": 5081.596583
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          1,
+          25,
+          0
+        ],
+        [
+          0,
+          10,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 33.84041600000387,
+        "elapsedMs": 5011.355000000001
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          13,
+          4,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 30.53445799999821,
+        "elapsedMs": 971.9877080000003
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          2,
+          7,
+          0
+        ],
+        [
+          10,
+          6,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 31.547832999997638,
+        "elapsedMs": 5030.168457999998
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          4,
+          5,
+          0
+        ],
+        [
+          8,
+          1,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 30.76704100000427,
+        "elapsedMs": 3158.791583000003
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          28,
+          0,
+          0
+        ],
+        [
+          1,
+          5,
+          0
+        ],
+        [
+          7,
+          2,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 30.267999999992412,
+        "elapsedMs": 1867.234499999995
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          29,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 31.036541999995393,
+        "elapsedMs": 4154.965333999997
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          50,
+          0,
+          0
+        ],
+        [
+          12,
+          3,
+          0
+        ],
+        [
+          17,
+          2,
+          1
+        ]
+      ],
+      "copies": 15,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1200,
+        "quotientSites": 150,
+        "variables": 13050,
+        "clauses": 39151,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3600,
+        "preparationMs": 32.47224999999787,
+        "elapsedMs": 4557.025666000001
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          14,
+          0,
+          0
+        ],
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          6,
+          4,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 31.07599999999877,
+        "elapsedMs": 632.0900420000015
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          27,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 29.91958299999453,
+        "elapsedMs": 5099.319874999992
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          17,
+          0,
+          0
+        ],
+        [
+          2,
+          10,
+          0
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "copies": 17,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1360,
+        "quotientSites": 170,
+        "variables": 14790,
+        "clauses": 44371,
+        "originSymmetry": true,
+        "pairExclusionClauses": 4080,
+        "preparationMs": 37.734958000001484,
+        "elapsedMs": 5075.042166000003
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          140,
+          0,
+          0
+        ],
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          39,
+          0,
+          1
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 30.013707999998473,
+        "elapsedMs": 4677.306625
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          7,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "copies": 14,
+      "status": "unsat_period_lattice",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1120,
+        "quotientSites": 140,
+        "variables": 12180,
+        "clauses": 36541,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3360,
+        "preparationMs": 31.68945900000608,
+        "elapsedMs": 2309.880708999998
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit.",
+      "proofBackedPairConstraints": true
+    },
+    {
+      "basis": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          2,
+          20,
+          0
+        ],
+        [
+          0,
+          8,
+          1
+        ]
+      ],
+      "copies": 16,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1280,
+        "quotientSites": 160,
+        "variables": 13920,
+        "clauses": 41761,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3840,
+        "preparationMs": 34.429750000001036,
+        "elapsedMs": 5043.396458999993
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    },
+    {
+      "basis": [
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          1,
+          10,
+          0
+        ],
+        [
+          8,
+          8,
+          1
+        ]
+      ],
+      "copies": 16,
+      "status": "unknown",
+      "certificate": null,
+      "stats": {
+        "backend": "glucose3",
+        "solverVersion": "python-sat 1.9.dev15",
+        "candidatePlacements": 1280,
+        "quotientSites": 160,
+        "variables": 13920,
+        "clauses": 41761,
+        "originSymmetry": true,
+        "pairExclusionClauses": 3840,
+        "preparationMs": 36.37762500000008,
+        "elapsedMs": 5021.473499999999
+      },
+      "scope": "Complete placement pool for this period lattice, with supplied relative pair restrictions if present; nonreference SAT scheduling. Unknown at a budget limit."
+    }
+  ],
+  "scope": "Patch-derived sampled period lattices with complete quotient searches. Missing a certificate is not an aperiodicity or non-tiling proof.",
+  "elapsedMs": 99139.922208
+}
