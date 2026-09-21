@@ -57,19 +57,31 @@ export function createConnectionLearner(setId,{lattice='A2'}={}){
   for(const sym of symmetries){const transformed=data.map(tile=>({...tile,points:tile.points.map(e=>({point:a2Transform(e.point,sym),weight:e.weight}))}));const origin=transformed.flatMap(t=>t.points).map(e=>e.point).sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2])[0];const value=transformed.map(tile=>tile.tile+':'+tile.points.map(e=>`${a2Sub(e.point,origin)}:${e.weight}`).sort().join(';')).sort().join('|');if(best===null||value<best)best=value;}
   return best;
  }
- function encode(samples,{halo=1}={}){
+ function createEncoder({halo=1}={}){
   const support=config.tiles.flatMap(tile=>pointDomain(tile,halo).flatMap(point=>[0,1,2].map(component=>({tile,point:[...point],component})))),n=support.length;
   const parent=Array.from({length:n},(_,i)=>i),sign=Array(n).fill(1),zero=Array(n).fill(false);let observations=0;
   function find(i){if(parent[i]!==i){const [r,s]=find(parent[i]);sign[i]*=s;parent[i]=r;}return[parent[i],sign[i]];}
   function join(i,j,relation){const [a,x]=find(i),[b,y]=find(j);if(a===b){if(x!==relation*y)zero[a]=true;return;}parent[b]=a;sign[b]=relation*x*y;zero[a]||=zero[b];}
-  for(const sample of samples){verifyPatch(sample.placements);const contacts=new Map();
-   for(const spec of sample.placements){const p=materialize(spec),sym=p.orientation.symmetry,s=parity(sym.permutation);
-    support.forEach((e,i)=>{if(e.tile!==p.tile)return;const at=`${a2Add(a2Transform(e.point,sym),p.translation)}|${sym.permutation.indexOf(e.component)}`;const prior=contacts.get(at);if(prior){observations++;join(i,prior.i,s*prior.sign);}else contacts.set(at,{i,sign:s});});
+  let sampleCount=0;
+  function contactsFor(specs){verifyPatch(specs);const contacts=new Map(),pairs=[];
+   for(const spec of specs){const p=materialize(spec),sym=p.orientation.symmetry,s=parity(sym.permutation);
+    support.forEach((e,i)=>{if(e.tile!==p.tile)return;const at=`${a2Add(a2Transform(e.point,sym),p.translation)}|${sym.permutation.indexOf(e.component)}`;const prior=contacts.get(at);if(prior)pairs.push([i,prior.i,s*prior.sign]);else contacts.set(at,{i,sign:s});});
    }
+   return pairs;
   }
-  const labels=new Map();support.forEach((e,i)=>{const [r,s]=find(i);if(!labels.has(r))labels.set(r,labels.size+1);e.value=zero[r]?0:s*labels.get(r);});
-  if(samples.some(s=>!verifyPatch(s.placements,support).compatible))throw new Error('Encoding rejected an observed extension');
-  return {...(halo===1?{}:{supportHalo:halo}),version:VERSION,setId,lattice,tiles:config.tiles,allowReflections:config.allowReflections,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
+  function addContacts(pairs){for(const [i,j,relation] of pairs){observations++;join(i,j,relation);}sampleCount++;}
+  function snapshot(){
+   const labels=new Map(),assigned=support.map((e,i)=>{const [r,s]=find(i);if(!labels.has(r))labels.set(r,labels.size+1);return {...e,point:[...e.point],value:zero[r]?0:s*labels.get(r)};});
+   return {...(halo===1?{}:{supportHalo:halo}),version:VERSION,setId,lattice,tiles:config.tiles,allowReflections:config.allowReflections,support:assigned,classes:labels.size,nonzero:assigned.filter(e=>e.value!==0).length,observations,sampleCount,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
+  }
+  return {contactsFor,addContacts,snapshot};
+ }
+ function encode(samples,options={}){
+  const encoder=createEncoder(options);
+  for(const sample of samples)encoder.addContacts(encoder.contactsFor(sample.placements));
+  const model=encoder.snapshot();
+  if(samples.some(s=>!verifyPatch(s.placements,model.support).compatible))throw new Error('Encoding rejected an observed extension');
+  return model;
  }
  function validateModel(model){
   if((model?.lattice??'A2')!==lattice)throw new Error('Marking belongs to a different lattice');
@@ -124,5 +136,5 @@ export function createConnectionLearner(setId,{lattice='A2'}={}){
   const history=[...(previous.history||[]),{...previous,history:undefined},row],evidence=row.status==='unresolved'&&previous.status!=='unresolved'?previous:row;
   return summarize(report.connections.map((r,i)=>i===index?{...evidence,history,lastAttempt:row}:r),report.config,report.elapsedMs+row.elapsedMs);
  }
- const learner={setId,lattice,pointFilter,config,orientations,roots,materialize,entries,verifyPatch,pointDomain,connections,canonicalPatch,encode,validateModel,grow,examine,summarize,collect,incorporate};learners.set(cacheKey,learner);return learner;
+ const learner={setId,lattice,pointFilter,config,orientations,roots,materialize,entries,verifyPatch,pointDomain,connections,canonicalPatch,createEncoder,encode,validateModel,grow,examine,summarize,collect,incorporate};learners.set(cacheKey,learner);return learner;
 }

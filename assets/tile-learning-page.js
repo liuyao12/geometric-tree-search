@@ -2,7 +2,7 @@ import {rememberMarking,markingName} from './marking-library.js?v=20260921-compo
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-component-stars';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata} from './marking-metadata.js?v=20260921-domain-names';
-import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-component-stars';
+import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-online-marking';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
@@ -11,14 +11,22 @@ let lattice='A2';
 const learningKey=()=>`${setId}:${lattice}`;
 let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,runningSetId=null,paused=false,epoch=0;
 const reports=new Map(),automaticStarts=new Set();
-let searchFrame=null,searchBounds=null,frameTimer=null;
+let searchFrame=null,searchBounds=null,frameTimer=null,onlineUpdate=null,hover=null;
+let changedValues=new Set(),markingHits=[];
+const valueKey=e=>`${e.tile}:${e.point}|${e.component}`;
+function updateMarking(update){
+ const before=new Map(activeMarkingSupport(model).map(e=>[valueKey(e),e.value])),after=new Map(activeMarkingSupport(update.model).map(e=>[valueKey(e),e.value]));
+ changedValues=new Set([...new Set([...before.keys(),...after.keys()])].filter(key=>before.get(key)!==after.get(key)));
+ onlineUpdate={...update,changed:changedValues.size};model=update.model;
+}
+
 const send=(type,data={})=>{if(embedded)parent.postMessage({type,setId,lattice,...data},location.origin);};
 const message=t=>$('learn-status').textContent=t;
 const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
 function mapFor(points,box){const p=points.map(project),xs=p.map(q=>q[0]),ys=p.map(q=>q[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min((box.w-30)/Math.max(1,maxx-minx),(box.h-30)/Math.max(1,maxy-miny));return p=>{const q=project(p);return[box.x+box.w/2+(q[0]-(minx+maxx)/2)*scale,box.y+box.h/2+(q[1]-(miny+maxy)/2)*scale];};}
 function polygon(loop,map,fill,core=false){ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo(...map(p)):ctx.moveTo(...map(p)));ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle='#52786b';ctx.lineWidth=core?2.5:1;ctx.stroke();}
 function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#7d9088':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?1:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
-function draw(){$('learn-metadata').textContent=model?report?.model?markingName(model):`Candidate · ${markingMetadata(model).points} points · ${markingMetadata(model).values} values`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode&&searchFrame?`Pair ${searchFrame.index+1} · ${searchFrame.type==='frontier-viable'?'1-corona viable':searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'1-corona viable':searchFrame.status==='invalid'?'1-corona failed':'unresolved'):'filling the 1-corona'}`:mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
+function draw(){markingHits=[];$('learn-metadata').textContent=onlineUpdate?`Provisional · ${onlineUpdate.attempts} pairs · accepts ${onlineUpdate.validAccepted}/${onlineUpdate.counts.valid} valid · blocks ${onlineUpdate.invalidBlocked}/${onlineUpdate.counts.invalid} invalid · ${onlineUpdate.changed} values changed · ${Math.round(onlineUpdate.elapsedMs)} ms update`:model?report?.model?markingName(model):`Candidate · ${markingMetadata(model).points} points · ${markingMetadata(model).values} values`:'Marking: awaiting the first positive pair…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode&&searchFrame?`Pair ${searchFrame.index+1} · ${searchFrame.type==='frontier-viable'?'1-corona viable':searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'1-corona viable':searchFrame.status==='invalid'?'1-corona failed':'unresolved'):'filling the 1-corona'}`:mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':onlineUpdate?'Evolving point marking':'Candidate point marking',390,23);
  const specs=shown.length?shown:[learner.roots[0]],placements=specs.map(learner.materialize);
  const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,activeMarkingSupport(model)):[]);
  const map=mapFor(mode&&searchBounds?searchBounds:[...placements.flatMap(p=>p.loop),...entries.flat().flatMap(markingSegmentEndpoints)],{x:0,y:35,w:370,h:315});
@@ -35,10 +43,28 @@ function draw(){$('learn-metadata').textContent=model?report?.model?markingName(
  const row=!mode&&report?.connections[+picker.value];
  const witness=row&&model?learner.verifyPatch([row.root,row.attachment],activeMarkingSupport(model)).witness:null;
  if(witness&&$('learn-marks').checked){const q=map(witness.point);ctx.strokeStyle='#b5403d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(...q,6,0,2*Math.PI);ctx.stroke();ctx.fillStyle='#b5403d';ctx.fillText(`${witness.values[0]} ≠ ${witness.values[1]}`,Math.min(q[0]+8,310),q[1]-8);}
- for(const [i,tile] of learner.config.tiles.entries()){const root=learner.roots[i],p=learner.materialize(root),n=learner.config.tiles.length,box={x:390,y:32+i*310/n,w:310,h:310/n},tileMarks=model?activeMarkingSupport(model).filter(e=>e.tile===tile):[],m=mapFor([...p.loop,...learner.pointDomain(tile),...tileMarks.flatMap(markingSegmentEndpoints)],box);polygon(p.loop,m,tile==='hat'?'#ecd1ad':'#bad9d2');if(model&&$('learn-marks').checked)marks(tileMarks,m);ctx.fillStyle='#486656';ctx.font='12px system-ui';ctx.fillText(tile,box.x,box.y+18);}
+ for(const [i,tile] of learner.config.tiles.entries()){const root=learner.roots[i],p=learner.materialize(root),n=learner.config.tiles.length,box={x:390,y:32+i*310/n,w:310,h:310/n},tileMarks=model?activeMarkingSupport(model).filter(e=>e.tile===tile):[],m=mapFor([...p.loop,...learner.pointDomain(tile,model?.supportHalo??1),...tileMarks.flatMap(markingSegmentEndpoints)],box);polygon(p.loop,m,tile==='hat'?'#ecd1ad':'#bad9d2');
+  if(model&&$('learn-marks').checked){
+   const points=new Map(learner.pointDomain(tile,model.supportHalo??1).map(point=>[point.join(),{tile,point,values:['*','*','*']}]));
+   for(const e of tileMarks)points.get(e.point.join()).values[e.component]=e.value;
+   for(const point of points.values()){
+    const [x,y]=m(point.point);markingHits.push({...point,x,y});
+    const changed=[0,1,2].some(component=>changedValues.has(valueKey({...point,component})));
+    ctx.beginPath();ctx.arc(x,y,changed?3.5:1.5,0,2*Math.PI);ctx.fillStyle=changed?'#ed9a33':'#8baba0';ctx.fill();
+   }
+   marks(tileMarks,m);
+  }
+  ctx.fillStyle='#486656';ctx.font='12px system-ui';ctx.fillText(tile,box.x,box.y+18);}
  ctx.strokeStyle='#e1e7df';ctx.beginPath();ctx.moveTo(380,35);ctx.lineTo(380,348);ctx.stroke();
+ if(onlineUpdate){ctx.fillStyle='#65796e';ctx.font='11px system-ui';ctx.fillText('Orange: changed · hover a point for values',390,355);}
+ if(hover&&model&&$('learn-marks').checked){
+  const hit=markingHits.filter(p=>Math.hypot(p.x-hover.x,p.y-hover.y)<10).sort((a,b)=>Math.hypot(a.x-hover.x,a.y-hover.y)-Math.hypot(b.x-hover.x,b.y-hover.y))[0];
+  if(hit){const text=`${hit.tile} (${hit.point})  m=(${hit.values.join(',')})`;ctx.font='12px system-ui';const width=ctx.measureText(text).width+12,x=Math.max(390,Math.min(hit.x+8,720-width)),y=Math.max(48,Math.min(hit.y-10,335));ctx.fillStyle='#fffdf4';ctx.fillRect(x,y-16,width,23);ctx.strokeStyle='#718a7d';ctx.strokeRect(x,y-16,width,23);ctx.fillStyle='#294d43';ctx.fillText(text,x+6,y);}
+ }
 }
-function finish(completed=false){clearTimeout(frameTimer);frameTimer=null;searchFrame=null;searchBounds=null;if(mode==='collect'&&!completed)automaticStarts.delete(runningSetId);runningSetId=null;worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Classify & learn';$('learn-deeper').textContent='Retry unresolved';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status!=='unresolved';}
+canvas.addEventListener('mousemove',e=>{const box=canvas.getBoundingClientRect();hover={x:(e.clientX-box.left)*canvas.width/box.width,y:(e.clientY-box.top)*canvas.height/box.height};draw();});
+canvas.addEventListener('mouseleave',()=>{hover=null;draw();});
+function finish(completed=false){onlineUpdate=null;changedValues.clear();clearTimeout(frameTimer);frameTimer=null;searchFrame=null;searchBounds=null;if(mode==='collect'&&!completed)automaticStarts.delete(runningSetId);runningSetId=null;worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Classify & learn';$('learn-deeper').textContent='Retry unresolved';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status!=='unresolved';}
 function describe(){const row=report?.connections[+picker.value];if(!row)return;
  const actual=row.status==='valid'?'Valid: complete one-corona with viable frontier':row.status==='invalid'?'Invalid: one-corona search exhausted':'Unresolved: search budget reached';
  const c=report.classification,prediction=row.predicted?` · marking ${row.predicted==='valid'?'accepts':'rejects'} this pair${row.status==='unresolved'?'':row.predicted===row.status?' (correct)':' (incorrect)'}`:'';
@@ -66,13 +92,13 @@ function install(data,index=0,completed=false){
   if(!embedded)sessionStorage.removeItem('gcts-requested-marking');
  }
 }
-function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · 0 pairs`;message('Classify every second-tile placement using a complete one-corona check, then train the marking.');draw();}
+function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · 0 pairs`;message('Classify every second-tile placement using a complete one-corona check, update the marking after each label.');draw();}
 function choose(id,nextLattice=lattice){if(!TILE_SETS[id])return;setId=id;lattice=nextLattice;learner=createConnectionLearner(id,{lattice});$('learn-sublattice').checked=lattice==='turtle-sublattice';selectTiles(id);reset();
  if(reports.has(learningKey()))install(reports.get(learningKey()));
 }
-function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-component-stars',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-online-marking',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
- searchFrame=null;searchBounds=null;clearTimeout(frameTimer);
+ searchFrame=null;searchBounds=null;onlineUpdate=null;changedValues.clear();clearTimeout(frameTimer);
  if(kind==='collect'){automaticStarts.add(learningKey());$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;
   if(data.type==='search-frame'){
@@ -87,7 +113,12 @@ function launch(kind){$('learn-sync').textContent='Save when every valid pair pa
    message(`Pair ${searchFrame.index+1} · ${action} ${searchFrame.nodes} attempts · ${searchFrame.backtracks} backtracks. Gold core points still need filling; green points are complete.${searchFrame.type==='frontier-viable'||searchFrame.type==='pair-result'&&searchFrame.status==='valid'?' Blue rings mark the viable frontier.':''}`);draw();
    frameTimer=setTimeout(()=>{if(worker===active)active.postMessage({type:'frame-shown',id:data.id});},0);
   }
-  else if(data.type==='progress'){const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;if(data.phase==='train'){searchFrame=null;searchBounds=null;shown=data.latest;model=data.model;message('Training a marking on all classified pairs…');draw();}}
+  else if(data.type==='learning-frame'){
+   updateMarking(data.update);draw();
+   // Give each updated assignment a painted frame before the next pair begins.
+   frameTimer=setTimeout(()=>{if(worker===active)active.postMessage({type:'frame-shown',id:data.id});},24);
+  }
+  else if(data.type==='progress'){const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;if(data.phase==='train'){message('Checking the completed marking before saving…');draw();}}
   else if(data.type==='collected')install(data.report,0,true);
   else if(data.type==='extended')install(learner.incorporate(report,data.index,data.row),data.index,true);
   else if(data.type==='error'){finish();message(data.message);}

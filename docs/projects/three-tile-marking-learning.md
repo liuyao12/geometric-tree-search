@@ -150,6 +150,41 @@ training runs, verify both dropdown entries and automatic starts, select and gro
 an older model, and check retained selection/history after reload and mobile layout.
 The matching rules, acceptance gate and shared search engine are unchanged.
 
+### Markings evolve during classification
+
+The browser worker now publishes a provisional marking after each one-corona
+outcome. Each of the three candidate support sizes maintains its own signed
+union-find state: a positive pair adds overlap equalities; a negative pair adds
+an exclusion test and can change the chosen support size. Unresolved pairs add
+neither kind of constraint. After each outcome the learner selects the support
+with the same scoring and tie-breaking as batch training. This is the existing
+equality-based learner, not the separate directional SAT experiment.
+
+Cached contact indices avoid rebuilding geometric overlaps for earlier pairs.
+The displayed support is component-reduced when its numeric assignments change;
+an unchanged assignment reuses the previous reduction. The worker waits for the
+learning frame to be displayed before continuing, using the search animation's
+existing acknowledgment and pause mechanism. The right-hand prototype displays
+current values, orange points identify changes (including individual omissions),
+and hover reveals the full vector with `*`. Prefix acceptance/rejection counts
+and update time include the current label only, never future labels.
+
+Provisional models have no saved identity or complete classification certificate.
+They are not persisted, exported as successful models, transferred to the tiler,
+or used to prune the ongoing unmarked corona searches. Only the completed batch
+validation can save and automatically start a marking. The shared search engine,
+frontier viability check, scheduler, rollback, final scores and marking values
+remain unchanged. The usual finite-sample limitations continue to apply.
+
+`tests/test_online_marking.mjs` regenerates the catalogs for all three inventories
+on both lattices, independently replays each observed prefix against the current
+values, checks partial snapshots against batch training, and requires identical
+final assignments. Browser checks cover sequential visible updates, exact hover
+vectors, pause/resume/reset, no premature persistence, and final automatic tiling.
+Measured solver-only updates were usually under 1 ms locally; occasional support
+reduction passes take tens to hundreds of milliseconds. Timings vary by browser
+and hardware; the UI reports the actual solver-plus-reduction time per update.
+
 ### Individual component wildcards
 
 New runs use `all-legal-component-conflicts-v2`. A single point/channel entry

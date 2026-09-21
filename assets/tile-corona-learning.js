@@ -1,4 +1,4 @@
-import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connection-learning.js?v=20260921-component-stars';
+import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connection-learning.js?v=20260921-online-marking';
 import {solveA2Tiling,makeHexBoundary,NoA2Marking,a2Add} from './a2-tiling-engine.js?v=20260921-viable-corona';
 export {TILE_SETS,parity};
 export const CORONA_CRITERION='viable-pair-one-corona-v2';
@@ -59,8 +59,35 @@ export function createCoronaLearner(setId,{lattice='A2'}={}){
   const model=accepted?{...candidate,classification:{...classification,labels:rows.map(({root,attachment,status})=>({root,attachment,status}))},scope:'Accepts every valid pair and blocks most invalid pairs in the complete one-corona catalog with viable exposed frontiers; finite learned restriction, not an infinite-tiling certificate.'}:null;
   return {criterion:CORONA_CRITERION,setId,lattice,connections,counts,classification,candidateModel:candidate,model,attachmentCount:total};
  }
- async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{},onSearch=()=>{}}={}){
+ // Same signed equalities and halo selection as batch training, updated from
+ // the observed prefix only. Negatives are tested, never joined as equalities.
+ function createOnlineTrainer(){
+  const counts={valid:0,invalid:0,unresolved:0},states=[1,2,3].map(halo=>({encoder:base.createEncoder({halo}),rows:[],model:null}));
+  let attempts=0;
+  return {add(row){
+   if(row.criterion!==CORONA_CRITERION||!Object.hasOwn(counts,row.status))throw new Error('Invalid one-corona label');
+   const started=performance.now();counts[row.status]++;attempts++;
+   let candidate=null,bestCorrect=-1,invalidBlocked=0;
+   for(const state of states){
+    const contacts=state.encoder.contactsFor([row.root,row.attachment]);state.rows.push({contacts,status:row.status});
+    if(row.status==='valid'){state.encoder.addContacts(contacts);state.model=state.encoder.snapshot();}
+   }
+   if(counts.valid)for(const state of states){
+    const support=state.model.support;let blocked=0;
+    for(const sample of state.rows){
+     if(sample.status!=='invalid')continue;
+     if(sample.contacts.some(([i,j,sign])=>support[i].value!==sign*support[j].value))blocked++;
+    }
+    const correct=counts.valid+blocked;
+    if(correct>bestCorrect){candidate=state.model;bestCorrect=correct;invalidBlocked=blocked;}
+    if(correct===attempts)break;
+   }
+   return {attempts,counts:{...counts},model:candidate,validAccepted:candidate?counts.valid:0,invalidBlocked,status:row.status,elapsedMs:performance.now()-started};
+  }};
+ }
+ async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{},onSearch=()=>{},onLearning=null}={}){
   const started=performance.now(),pairs=base.connections(),rows=[],counts={valid:0,invalid:0,unresolved:0};
+  const online=onLearning?createOnlineTrainer():null;
   onProgress({phase:'classify',attempts:0,total:pairs.length,counts:{...counts},model:null,latest:[]});
   for(let i=0;i<pairs.length;i++){
    const pair=pairs[i],context={index:i,root:pair.root,attachment:pair.attachment};
@@ -69,6 +96,7 @@ export function createCoronaLearner(setId,{lattice='A2'}={}){
    rows.push(row);counts[row.status]++;
    onSearch({...context,type:'pair-result',status:row.status,placements:row.status==='invalid'?(row.lastFailure?.placements??row.placements):row.placements,choice:row.lastFailure?.point,nodes:row.nodes,backtracks:row.backtracks});if(wait)await wait();
    onProgress({phase:'classify',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:row.placements});
+   if(online)await onLearning({...online.add(row),index:i,root:row.root,attachment:row.attachment});
   }
   onProgress({phase:'train',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:rows.at(-1)?.placements??[]});await new Promise(requestAnimationFrame);
   return {...train(rows),settings:{budget,seed,lattice},elapsedMs:performance.now()-started};
@@ -87,5 +115,5 @@ export function createCoronaLearner(setId,{lattice='A2'}={}){
   if(valid!==c.valid||invalid!==c.invalid||validAccepted!==c.validAccepted||invalidBlocked!==c.invalidBlocked||c.correct!==validAccepted+invalidBlocked||c.perfect!==(c.correct===all.length))throw new Error('Wrong one-corona classification counts');return model;
  }
  function incorporate(report,index,row){const previous=report.connections[index];if(!previous||pairId(previous)!==pairId(row))throw new Error('Connection mismatch');return {...train(report.connections.map((r,i)=>i===index?(row.status==='unresolved'&&r.status!=='unresolved'?r:row):r)),settings:report.settings,elapsedMs:report.elapsedMs+row.elapsedMs};}
- const learner={...base,validateCandidate:base.validateModel,corePoints,verifyFrontier,verifyCorona,examine,collect,train,validateModel,incorporate};cache.set(cacheKey,learner);return learner;
+ const learner={...base,validateCandidate:base.validateModel,corePoints,verifyFrontier,verifyCorona,examine,collect,train,createOnlineTrainer,validateModel,incorporate};cache.set(cacheKey,learner);return learner;
 }
