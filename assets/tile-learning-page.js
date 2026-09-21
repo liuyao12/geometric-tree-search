@@ -85,8 +85,7 @@ function launch(kind){$('learn-sync').textContent='Save when every valid pair pa
    }
    const action=searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'Succeeded: the 1-corona is filled and every frontier point has a candidate.':searchFrame.status==='invalid'?'Failed: no complete 1-corona with viable frontier exists for this pair.':'Unresolved: search budget reached.'):{'pair-start':'Trying to fill the 1-corona…',placement:'Placed a tile.',backtrack:'Backtracking: removed a tile.',fail:'Dead frontier point: trying another branch.','frontier-viable':`Frontier check passed: ${searchFrame.frontierPoints} open points have candidates.`}[searchFrame.type];
    message(`Pair ${searchFrame.index+1} · ${action} ${searchFrame.nodes} attempts · ${searchFrame.backtracks} backtracks. Gold core points still need filling; green points are complete.${searchFrame.type==='frontier-viable'||searchFrame.type==='pair-result'&&searchFrame.status==='valid'?' Blue rings mark the viable frontier.':''}`);draw();
-   const delay=+$('learn-speed').value*(searchFrame.type==='pair-result'?4:1);
-   frameTimer=setTimeout(()=>{if(worker===active)active.postMessage({type:'frame-shown',id:data.id});},delay);
+   frameTimer=setTimeout(()=>{if(worker===active)active.postMessage({type:'frame-shown',id:data.id});},0);
   }
   else if(data.type==='progress'){const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;if(data.phase==='train'){searchFrame=null;searchBounds=null;shown=data.latest;model=data.model;message('Training a marking on all classified pairs…');draw();}}
   else if(data.type==='collected')install(data.report,0,true);

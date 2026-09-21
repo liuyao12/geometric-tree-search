@@ -245,8 +245,7 @@ valid/invalid/unresolved totals accumulate only after each search returns.
 The finite candidate enumeration can know its catalog size internally, but it
 has no validity labels before searching.
 
-Normal and Slow speed settings hold each real search frame and leave an outcome
-visible longer; Fast removes the extra hold. The worker drains its frame queue
+Learning always uses Fast speed, without an extra frame hold or speed selector. The worker drains its frame queue
 through the existing search-demand hook and waits for a display acknowledgment,
 so rendering cannot build up an unbounded backlog. Pause gates further frames;
 reset, inventory/domain changes, and worker replacement cancel the old queue.
