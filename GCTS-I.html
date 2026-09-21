@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-corona-animation" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-viable-corona" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -139,8 +139,8 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260920-corona';
-    import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-corona-animation';
+    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260921-viable-corona';
+    import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-viable-corona';
     import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260921-tile-system';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-sublattice';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
@@ -2483,7 +2483,7 @@
         syncMarkingSelection();
         sublatticeToggle.disabled = false;
         document.getElementById('learned-marking-note').textContent = markingSource === 'learned'
-          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · training check: accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
+          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · ${displayMarking.classification.criterion==='viable-pair-one-corona-v2'?'training check (viable frontier)':'earlier training (frontier not checked)'}: accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
           : selectedTileSet === 'mixed' ? 'Turtle + Hat · rotations only; no reflected placements.' : '';
         updateMarkingButton();
       }
@@ -2533,7 +2533,7 @@
       function registerMarking(model,{origin='training',select=false}={}) {
         if(model.marking?.origin==='recorded')throw new Error('Bundled recordings are not browser-trained markings');
         // Validate evidence on its training domain; tiling may use either lattice.
-        createConnectionLearner(model.setId,{lattice:model.lattice}).validateModel(model);
+        createConnectionLearner(model.setId,{lattice:model.lattice}).validateModel(model,{allowLegacy:origin==='legacy'});
         const result=rememberMarking(model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}),{origin});
         const saved=result.model.reduction?.preserveInterior?result.model:reduceMarking(result.model,{preserveInterior:true});markingLibrary.set(saved.marking.id,saved);
         if(select||!learnedModels.has(saved.setId))learnedModels.set(saved.setId,saved);
@@ -2554,7 +2554,7 @@
         }
         updatePanelControls();
       });
-      for(const model of savedMarkings().sort((a,b)=>(b.marking?.createdAt??'').localeCompare(a.marking?.createdAt??'')))try{registerMarking(model);}catch{}
+      for(const model of savedMarkings().sort((a,b)=>(b.marking?.createdAt??'').localeCompare(a.marking?.createdAt??'')))try{registerMarking(model,{origin:'legacy'});}catch{}
       // Migrate the former single-model slots without losing existing runs.
       for(const setId of Object.keys(TILE_SETS))try{
         const legacy=localStorage.getItem(`gcts-corona-marking:${setId}`);

@@ -551,10 +551,13 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   if(requiredPoints!==null&&(!maximize||!completePointGrowth||!Array.isArray(requiredPoints)||requiredPoints.some(p=>!Array.isArray(p)||p.length!==3||!p.every(Number.isSafeInteger)||p.reduce((s,v)=>s+v,0)!==0)))throw new Error("Finite required points need complete point growth and integer A2 coordinates");
+  if(requireViableFrontier&&requiredPoints===null)throw new Error("Viable frontier checks need finite required points");
   const requiredPointMap=requiredPoints===null?null:new Map(requiredPoints.map(p=>[a2Key(p),p]));
   const isRequired=key=>requiredPointMap===null||requiredPointMap.has(key);
+  // Outer points are viability probes, not additional corona fill obligations.
+  const isTracked=key=>requireViableFrontier||isRequired(key);
   const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
   const desired=polygonOccupancy(boundary),seedOrigin=seed?.loop?.[0]??[0,0,0],seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(a2Sub(entry.point,seedOrigin))));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
@@ -644,7 +647,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     return incidence;
   };
   const candidateIsLegal=(placement,{ignoreMarking=false,count=false}={})=>{
-    if(usedPlacements.has(placement.id)||exhaustedBranches.has(branchKey(placement)))return false;
+    if(usedPlacements.has(placement.id)||(!requireViableFrontier&&exhaustedBranches.has(branchKey(placement))))return false;
     let newPoints=0;
     materializePlacement(placement);
     for(const [key,entry] of placement.occupancy){
@@ -666,7 +669,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     return legal;
   };
   const frontierMeta=pointKey=>{
-    if(!isRequired(pointKey))return null;
+    if(!isTracked(pointKey))return null;
     const value=sums.get(pointKey)||0,point=pointKey.split(",").map(Number),target=targetAt(point);
     if(!((value>1e-7||startPointMap.has(pointKey))&&value<target-1e-7))return null;
     return{point:pointKey,value,distance:distanceFromInitial(pointKey),introduced:pointDepth.get(pointKey)??Infinity,norm:point.reduce((sum,coordinate)=>sum+Math.abs(coordinate),0)};
@@ -679,7 +682,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   const updateFrontierGeneration=key=>{
     frontierGenerationPointUpdates++;
     const value=sums.get(key)||0;
-    const active=isRequired(key)&&(value>1e-7||startPointMap.has(key))&&value<targetAt(key.split(",").map(Number))-1e-7;
+    const active=isTracked(key)&&(value>1e-7||startPointMap.has(key))&&value<targetAt(key.split(",").map(Number))-1e-7;
     const previous=frontierGenerations.get(key),next=active?(pointDepth.get(key)??Infinity):undefined;
     if(previous===next)return;
     if(previous!==undefined){
@@ -728,7 +731,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       const incidence=candidateIncidence.get(candidateId);if(!incidence)continue;
       if(!candidateLegal.get(candidateId))continue;
       frontierGraphCandidateRevalidations++;
-      let invalid=usedPlacements.has(candidateId)||exhaustedBranches.has(`${contextPrefix}=>${candidateId}`);
+      let invalid=usedPlacements.has(candidateId)||(!requireViableFrontier&&exhaustedBranches.has(`${contextPrefix}=>${candidateId}`));
       if(!invalid)for(const key of occupancyKeys){
         const entry=incidence.placement.occupancy.get(key);if(!entry)continue;
         if((sums.get(key)||0)+entry.weight>targetAt(entry.point)+1e-7){invalid=true;break;}
@@ -791,8 +794,9 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   async function search(depth=0,trackers=[]){
     if(waitForSearchDemand)await waitForSearchDemand();
     if(stopToken.stop)return "unknown";
-    if(requiredPointMap&&[...requiredPointMap].every(([key,p])=>(sums.get(key)||0)===targetAt(p)))return true;
-    if(nodes>=nodeLimit)return "unknown";
+    const coreComplete=requiredPointMap&&[...requiredPointMap].every(([key,p])=>(sums.get(key)||0)===targetAt(p));
+    if(coreComplete&&!requireViableFrontier)return true;
+    if(nodes>=nodeLimit&&!coreComplete)return "unknown";
     if(maximize&&learner.revision>0&&nodes-lastImprovementNode>=markingStagnationNodes)return "stagnant";
     if(maximize?(!requiredPointMap&&!completePointGrowth&&chosen.length>=targetPlacements):[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
@@ -801,7 +805,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       // points first; for a genuine choice, preserve balanced growth by using
       // the frontier point introduced in the earliest placement generation.
       const incrementalGraphActive=!graphNeedsGlobalPlacementUpdate();
-      const frontier=(incrementalGraphActive?[...frontierGraph.values()]:[...sums].filter(([point,value])=>isRequired(point)&&value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
+      const frontier=(incrementalGraphActive?[...frontierGraph.values()]:[...sums].filter(([point,value])=>isTracked(point)&&value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
         const coordinates=point.split(",").map(Number);return{point,value,distance:distanceFromInitial(point),introduced:pointDepth.get(point)??Infinity,norm:coordinates.reduce((sum,v)=>sum+Math.abs(v),0)};
       })).sort((a,b)=>a.distance-b.distance||b.value-a.value||a.introduced-b.introduced||a.norm-b.norm||lexicalCompare(a.point,b.point));
       if(auditFrontierGraph&&incrementalGraphActive)for(const entry of frontier){
@@ -815,8 +819,10 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       for(const entry of frontier){
         const legal=incrementalGraphActive?[...entry.legal.values()]:legalAt(entry.point);
         if(!legal.length){if(!legalAt(entry.point,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(entry.point));noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
-        viable.push({...entry,legal});
+        if(isRequired(entry.point))viable.push({...entry,legal});
       }
+      // Completing the core is only a success after all exposed points pass.
+      if(coreComplete&&requireViableFrontier){emit("frontier-viable",{frontierPoints:frontier.length});return true;}
       // A growth checkpoint must pass the whole-frontier dead-point scan.
       if(!requiredPointMap&&completePointGrowth&&chosen.length>=targetPlacements)return true;
       const byGeneration=(left,right)=>left.introduced-right.introduced||left.legal.length-right.legal.length||left.distance-right.distance||right.value-left.value||left.norm-right.norm||lexicalCompare(left.point,right.point);
@@ -843,6 +849,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       if(waitForSearchDemand)await waitForSearchDemand();
       if(stopToken.stop)return "unknown";
       if(nodes>=nodeLimit)return "unknown";
+      if(requireViableFrontier&&exhaustedBranches.has(branchKey(placement)))continue;
       // A learned revision may have invalidated options computed earlier at this node.
       if(usedPlacements.has(placement.id)||!learner.compatible(placement,markingSeed?[markingSeed,...chosen]:chosen))continue;
       materializePlacement(placement);
@@ -873,7 +880,9 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       // permanent failure differently, but it may not make the same observed
       // failed branch unknown again.
       exhaustedBranches.add(branchKey(placement,context));
-      if(maximize)invalidateExhaustedCandidate(placement.id);
+      // A failed corona extension is still a legal one-step frontier candidate.
+      // Keep finite-search memo exclusions out of the geometric viability graph.
+      if(maximize&&!requireViableFrontier)invalidateExhaustedCandidate(placement.id);
       backtracks++;emit("backtrack",{removed:placement,choice,...choiceInfo});
       if(animationDelayMs>0)await new Promise(resolve=>setTimeout(resolve,animationDelayMs));
       let update=null;

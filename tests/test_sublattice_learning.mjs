@@ -5,10 +5,10 @@ import {reduceMarking,activeMarkingSupport} from '../assets/marking-reduction.js
 import {markingValues} from '../assets/marking-library.js';
 import {markingMetadata} from '../assets/marking-metadata.js';
 import {a2Transform} from '../assets/a2-tiling-engine.js';
-import {reference} from './corona-reference.mjs';
+import {reference,frontierReference} from './corona-reference.mjs';
 globalThis.requestAnimationFrame=cb=>setImmediate(cb);
 const lattice='turtle-sublattice';
-for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,41,206,176],hat:[227,44,183,0],mixed:[473,83,390,0]})){
+for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,41,206,176],hat:[227,41,186,166],mixed:[473,71,402,344]})){
  const learner=createCoronaLearner(setId,{lattice}),full=createCoronaLearner(setId);
  assert.notEqual(learner,full);assert.equal(createCoronaLearner(setId,{lattice}),learner);
  assert.throws(()=>createCoronaLearner(setId,{lattice:'unknown'}),/Unknown learning lattice/);
@@ -22,7 +22,7 @@ for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,4
  assert.equal(r.lattice,lattice);assert.equal(r.settings.lattice,lattice);
  assert.equal(r.connections.length,total);assert.deepEqual(r.counts,{valid,invalid,unresolved:0});
  assert.equal(r.classification.validAccepted,valid);assert.equal(r.classification.invalidBlocked,blocked);
- assert.equal(r.classification.accepted,setId==='turtle');assert.equal(!!r.model,setId==='turtle');
+ assert.equal(r.classification.accepted,true);assert.ok(r.model);
  const candidate=r.candidateModel;assert.ok(candidate.support.every(e=>onLattice(e.point)));
  learner.validateCandidate(candidate);assert.throws(()=>full.validateCandidate(candidate),/different lattice/);
  assert.equal(markingValues(candidate),markingValues({...candidate,lattice:'A2'}),'Training provenance does not change marking values');
@@ -31,7 +31,7 @@ for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,4
  for(const row of r.connections){
   const pair=[row.root,row.attachment];assert.ok(pair.every(p=>onLattice(p.translation)));
   assert.ok(learner.corePoints(pair).every(onLattice));
-  if(row.status==='valid')assert.ok(learner.verifyCorona(pair,row.placements).complete);
+  if(row.status==='valid'){assert.ok(learner.verifyCorona(pair,row.placements).complete);assert.deepEqual(frontierReference(learner,row.placements).deadPoints,[]);}
   assert.equal(learner.verifyPatch(pair,candidate.support).compatible,learner.verifyPatch(pair,activeMarkingSupport(reduced)).compatible);
  }
  // Independent bounded translation enumeration includes mark-only contacts,

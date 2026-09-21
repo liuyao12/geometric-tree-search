@@ -1,9 +1,9 @@
-import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260921-corona-animation';
+import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260921-viable-corona';
 self.requestAnimationFrame=cb=>setTimeout(cb,0);
 let paused=false,resume=null,frameAck=null,frameId=0;
 const frames=[];
 const pauseGate=async()=>{if(paused)await new Promise(resolve=>resume=resolve);};
-const enqueue=event=>{if(['pair-start','placement','backtrack','fail','pair-result'].includes(event.type))frames.push(event);};
+const enqueue=event=>{if(['pair-start','placement','backtrack','fail','frontier-viable','pair-result'].includes(event.type))frames.push(event);};
 // The solver's existing demand hook drains actual events before searching on.
 // Waiting for the displayed frame prevents an unbounded animation backlog.
 const wait=async()=>{

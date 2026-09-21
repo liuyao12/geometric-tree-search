@@ -32,13 +32,18 @@ Each pair is classified **before any marking is trained**. A complete one-corona
 means that every point in the union of the two core tiles' positive t-support
 has total t-value 1 (integer capacity 12). The two core tiles remain fixed.
 Additional tiles must respect capacity everywhere, including outside the core;
-their outer boundary need not be completed. Every added tile touches a required
+their outer boundary need not be completed, but **every unfinished exposed point
+must have at least one legal candidate**. A dead outer point rejects that
+completion; the search backtracks and may find another completion for the same
+pair. Candidates obey the selected lattice, inventory, reflection policy,
+placement uniqueness and all t-capacities. Every added tile touches a required
 core point. This is a finite point-domain criterion, not a tile-count checkpoint
 or a claim of infinite extendibility. Polygon outlines are only illustrations.
 
 The unmarked search returns:
 
-- **Valid:** a complete corona with independently verified integer capacities.
+- **Valid:** a complete corona with independently verified integer capacities
+  and a viable exposed frontier (no degree-zero point).
 - **Invalid:** exhausted finite search for that pair and inventory.
 - **Unresolved:** budget exhaustion or cancellation; never a negative label.
 
@@ -62,9 +67,28 @@ unapproved. JSON exports retain the labels, errors and point/value metadata.
 Retries keep the same corona criterion and increase the selected unresolved
 pair's budget. A timeout cannot replace an already resolved result.
 
+### Viable-frontier criterion
+
+Current runs use `viable-pair-one-corona-v2`. Stored markings from the earlier
+core-only criterion remain available in that browser, labeled “earlier training
+(frontier not checked)”; their values and history are not deleted or relabeled as
+new evidence. New training cannot combine old core-only labels with v2 labels.
+
+At seed 90210 and 5,000 attempted placements per pair, all checks resolve:
+
+| Full-lattice inventory | Pairs | Valid accepted | Invalid blocked |
+| --- | ---: | ---: | ---: |
+| Turtle | 304 | 41 / 41 | 236 / 263 |
+| Hat | 320 | 41 / 41 | 262 / 279 |
+| Turtle + Hat | 624 | 70 / 70 | 501 / 554 |
+
+All three qualify for saving. Some pairs keep their valid label but need different
+witnesses: filling the core alone could previously stop at a dead outer frontier.
+No learned models or generated reports accompany these measurements.
+
 ### Historical measurements (not bundled models)
 
-Seed 90210, 5,000 attempted placements per pair:
+Former core-only criterion, seed 90210, 5,000 attempted placements per pair:
 
 | Inventory | Pairs | Valid | Invalid | Unresolved | Correct marking classifications | Invalid pairs still accepted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -139,11 +163,27 @@ The historical reduction benchmarks below retain the original reduction policy.
 
 The optional `requiredPoints` mode of `solveA2Tiling` explicitly activates every
 finite obligation, including untouched zero-valued points, at generation zero.
-Only these points belong to the frontier. Candidate validity still depends on
-all t- and m-support, including exterior points. Completion checks all required
-capacities and ignores tile-count milestones. The normal growth mode is unchanged.
+The new `requireViableFrontier` option also tracks every exposed unfinished
+point of the whole patch in the complete candidate-incidence graph. A global
+degree-zero scan precedes acceptance, even when all core points have already
+reached capacity and the placement budget is exhausted. Candidate validity still
+depends on all t- and m-support, including exterior points.
 
-The complete point/candidate graph, global dead-before-forced order,
+This is explicitly a bounded corona check: outer points are viability probes,
+not additional fill obligations. Forced propagation and branching choose among
+required core points after the global dead-point scan; outer singleton probes
+are not filled, which would expand the requested corona. The target therefore
+remains finite. Graph incidence, dependencies and rollback cover both classes.
+The optional mode defaults off, preserving historical core-only engine callers
+and ordinary growth. Completion ignores tile-count milestones.
+
+In this finite mode, exhausted search branches are skipped when branching but
+remain in the geometric candidate graph if they are still t/m-legal. Failing
+to extend a candidate to a complete corona does not erase it as a legal
+one-step continuation of an outer frontier point. This distinction also keeps
+graph audits exact after backtracking.
+
+The complete point/candidate graph, global dead-point checks before core forced moves,
 earliest-generation branching, orientation enumeration and exact rollback are
 retained. Corona classification always uses `NoA2Marking`, so candidate markings
 cannot create their own negative labels. Integer t-values and independent integer
@@ -157,9 +197,16 @@ freshly generated corona witnesses, each candidate's predictions, incomplete, fa
 and zero-budget semantics. An independent finite DFS agrees on one valid and the
 hardest recorded invalid case per inventory; graph-audited engine replays agree
 on the same cases. This is representative negative-search cross-checking, not
-an independent reproof of every negative. Existing fixed-marking and Turtle
+an independent reproof of every negative. Every valid witness also passes a
+separate all-frontier enumerator. `tests/test_corona_frontier.mjs` generates an
+old-style completion with seven dead outer points at runtime, rejects it even
+when its core is already filled, and verifies an alternate viable completion for
+the same pair. A Hat sublattice regression also checks that exhausted branches
+do not hide legal frontier candidates. Graph audits cover the exposed frontier
+and rollback.
+Existing fixed-marking and Turtle
 regressions also pass. Browser checks cover all three reports, automatic Turtle
-collection, automatic learned tiling after successful training, old-model rejection, unresolved searches,
+collection, automatic learned tiling after successful training, legacy provenance labels, unresolved searches,
 usual tiling controls and mobile/scroll tab behavior.
 
 Regenerate and verify:
@@ -167,6 +214,7 @@ Regenerate and verify:
 ```
 node scripts/train-tile-corona-markings.mjs /tmp/pair-corona-markings
 node tests/test_tile_corona_learning.mjs
+node tests/test_corona_frontier.mjs
 node tests/test_fixed_a2_marking.mjs
 node tests/test_turtle_point_learning.mjs
 ```
@@ -184,7 +232,9 @@ it is not a source of pre-trained values for the application.
 The learning canvas streams actual pair-start, placement, dead-end, backtracking,
 and pair-result events from the unmarked search. It keeps the fixed pair darker
 than the surrounding tiles. Gold dots mark unfinished required points of the
-fixed pair; green dots have total t-value 1. A red ring marks a reported dead end.
+fixed pair; green dots have total t-value 1. A red ring marks a reported dead end,
+including dead outer points. Blue rings show the exposed frontier after its
+viability check passes.
 The viewport stays fixed during each pair's search. Success, exhausted failure,
 and budget-limited unresolved results have distinct labels, shown before the
 next pair starts. Retry unresolved uses the same animated path.
@@ -244,20 +294,20 @@ At seed 90210 and 5,000 attempts per pair, browser-equivalent runs give:
 | Sublattice inventory | Pairs | Valid accepted | Invalid blocked | Saved? |
 | --- | ---: | ---: | ---: | --- |
 | Turtle | 247 | 41 / 41 | 176 / 206 | Yes |
-| Hat | 227 | 44 / 44 | 0 / 183 | No |
-| Turtle + Hat | 473 | 83 / 83 | 0 / 390 | No |
+| Hat | 227 | 41 / 41 | 166 / 186 | Yes |
+| Turtle + Hat | 473 | 71 / 71 | 344 / 402 | Yes |
 
-All these checks resolved. Hat and mixed candidates currently fail the existing
-majority-rejection gate; the UI shows them as unsaved candidates. This does not
-establish that no useful sublattice marking exists with other domains or value
-transformation rules.
+All these checks resolved under the viable-frontier criterion and all three
+models pass the existing save gate. Earlier core-only sublattice checks had
+44 Hat and 83 mixed positives, whose equality constraints prevented useful
+rejection. The stricter labels yield nontrivial qualifying markings.
 
 Conformance evidence: `tests/test_sublattice_learning.mjs` checks exact restricted
 t-data, subgroup-preserving placements and transformations, all catalog witnesses,
 independent finite DFS and graph-audited valid/invalid replays per inventory,
 exhaustive bounded pair compatibility before/after reduction, domain validation,
-and 24-tile graph-audited Turtle checkpoints using the same sublattice-trained
-marking on both tiling lattices. Full-lattice regression
+and graph-audited marked growth using the same sublattice-trained
+markings on both tiling lattices. Full-lattice regression
 coverage remains in `tests/test_tile_corona_learning.mjs`. The existing generation
 scheduler and rollback code are unchanged. One-corona labels certify only their
 finite point obligations; growth checkpoints do not prove whole-plane coverage

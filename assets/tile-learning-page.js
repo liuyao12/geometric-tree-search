@@ -2,7 +2,7 @@ import {rememberMarking} from './marking-library.js?v=20260921-tile-system';
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-sublattice';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260921-tile-system';
-import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-corona-animation';
+import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-viable-corona';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
@@ -18,7 +18,7 @@ const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
 function mapFor(points,box){const p=points.map(project),xs=p.map(q=>q[0]),ys=p.map(q=>q[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min((box.w-30)/Math.max(1,maxx-minx),(box.h-30)/Math.max(1,maxy-miny));return p=>{const q=project(p);return[box.x+box.w/2+(q[0]-(minx+maxx)/2)*scale,box.y+box.h/2+(q[1]-(miny+maxy)/2)*scale];};}
 function polygon(loop,map,fill,core=false){ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo(...map(p)):ctx.moveTo(...map(p)));ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle='#52786b';ctx.lineWidth=core?2.5:1;ctx.stroke();}
 function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#7d9088':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?1:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
-function draw(){$('learn-metadata').textContent=model?`${report?.model?model.marking.name:'Candidate — not saved'} · ${markingMetadataText(model)}`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode&&searchFrame?`Pair ${searchFrame.index+1} · ${searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'1-corona filled':searchFrame.status==='invalid'?'1-corona failed':'unresolved'):'filling the 1-corona'}`:mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
+function draw(){$('learn-metadata').textContent=model?`${report?.model?model.marking.name:'Candidate — not saved'} · ${markingMetadataText(model)}`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode&&searchFrame?`Pair ${searchFrame.index+1} · ${searchFrame.type==='frontier-viable'?'1-corona viable':searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'1-corona viable':searchFrame.status==='invalid'?'1-corona failed':'unresolved'):'filling the 1-corona'}`:mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
  const specs=shown.length?shown:[learner.roots[0]],placements=specs.map(learner.materialize);
  const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,activeMarkingSupport(model)):[]);
  const map=mapFor(mode&&searchBounds?searchBounds:[...placements.flatMap(p=>p.loop),...entries.flat().flatMap(markingSegmentEndpoints)],{x:0,y:35,w:370,h:315});
@@ -27,6 +27,7 @@ function draw(){$('learn-metadata').textContent=model?`${report?.model?model.mar
   const pair=[searchFrame.root,searchFrame.attachment],sums=new Map();
   for(const p of placements)for(const e of p.orientation.occupancy.values()){const point=e.point.map((v,i)=>v+p.translation[i]),key=point.join();sums.set(key,(sums.get(key)||0)+e.weight);}
   for(const point of learner.corePoints(pair)){const q=map(point),complete=sums.get(point.join())===12;ctx.beginPath();ctx.arc(...q,2.5,0,2*Math.PI);ctx.fillStyle=complete?'#27806b':'#d69a30';ctx.fill();}
+  if(searchFrame.type==='frontier-viable'||searchFrame.type==='pair-result'&&searchFrame.status==='valid')for(const [key,value] of sums){if(value<=0||value>=12)continue;ctx.beginPath();ctx.arc(...map(key.split(',').map(Number)),2.5,0,2*Math.PI);ctx.strokeStyle='#397ca6';ctx.lineWidth=1.3;ctx.stroke();}
   if((searchFrame.type==='fail'||searchFrame.type==='pair-result'&&searchFrame.status==='invalid')&&searchFrame.choice){const point=Array.isArray(searchFrame.choice)?searchFrame.choice:searchFrame.choice.split(',').map(Number);ctx.beginPath();ctx.arc(...map(point),6,0,2*Math.PI);ctx.strokeStyle='#b5403d';ctx.lineWidth=2;ctx.stroke();}
  }
  // Draw markings after every fill, including exterior marks crossing a neighbor.
@@ -39,7 +40,7 @@ function draw(){$('learn-metadata').textContent=model?`${report?.model?model.mar
 }
 function finish(completed=false){clearTimeout(frameTimer);frameTimer=null;searchFrame=null;searchBounds=null;if(mode==='collect'&&!completed)automaticStarts.delete(runningSetId);runningSetId=null;worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Classify & learn';$('learn-deeper').textContent='Retry unresolved';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status!=='unresolved';}
 function describe(){const row=report?.connections[+picker.value];if(!row)return;
- const actual=row.status==='valid'?'Valid: complete one-corona witness':row.status==='invalid'?'Invalid: one-corona search exhausted':'Unresolved: search budget reached';
+ const actual=row.status==='valid'?'Valid: complete one-corona with viable frontier':row.status==='invalid'?'Invalid: one-corona search exhausted':'Unresolved: search budget reached';
  const c=report.classification,prediction=row.predicted?` · marking ${row.predicted==='valid'?'accepts':'rejects'} this pair${row.status==='unresolved'?'':row.predicted===row.status?' (correct)':' (incorrect)'}`:'';
  message(`${actual}${prediction}. Classification: ${c.correct}/${c.total} correct (${(100*c.correct/c.total).toFixed(1)}%). Accepts ${c.validAccepted}/${c.valid} valid pairs; blocks ${c.invalidBlocked}/${c.invalid} invalid pairs (${(100*c.invalidBlocked/Math.max(1,c.invalid)).toFixed(1)}%). ${c.accepted?'Marking saved.':'Not saved: resolve all pairs, accept every valid pair, and block more than half of invalid pairs.'}`);
  $('learn-deeper').disabled=!!mode||row.status!=='unresolved';
@@ -69,7 +70,7 @@ function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;mod
 function choose(id,nextLattice=lattice){if(!TILE_SETS[id])return;setId=id;lattice=nextLattice;learner=createConnectionLearner(id,{lattice});$('learn-sublattice').checked=lattice==='turtle-sublattice';selectTiles(id);reset();
  if(reports.has(learningKey()))install(reports.get(learningKey()));
 }
-function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-corona-animation',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-viable-corona',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
  searchFrame=null;searchBounds=null;clearTimeout(frameTimer);
  if(kind==='collect'){automaticStarts.add(learningKey());$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
@@ -82,8 +83,8 @@ function launch(kind){$('learn-sync').textContent='Save when every valid pair pa
     const steps=[[0,0,0],[1,-1,0],[1,0,-1],[0,1,-1],[-1,1,0],[-1,0,1],[0,-1,1]];
     searchBounds=loops.flatMap(p=>steps.map(d=>p.map((v,i)=>v+radius*d[i])));
    }
-   const action=searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'Succeeded: the 1-corona is filled.':searchFrame.status==='invalid'?'Failed: no complete 1-corona exists for this pair.':'Unresolved: search budget reached.'):{'pair-start':'Trying to fill the 1-corona…',placement:'Placed a tile.',backtrack:'Backtracking: removed a tile.',fail:'Dead end: trying another branch.'}[searchFrame.type];
-   message(`Pair ${searchFrame.index+1} · ${action} ${searchFrame.nodes} attempts · ${searchFrame.backtracks} backtracks. Gold points still need filling; green points are complete.`);draw();
+   const action=searchFrame.type==='pair-result'?(searchFrame.status==='valid'?'Succeeded: the 1-corona is filled and every frontier point has a candidate.':searchFrame.status==='invalid'?'Failed: no complete 1-corona with viable frontier exists for this pair.':'Unresolved: search budget reached.'):{'pair-start':'Trying to fill the 1-corona…',placement:'Placed a tile.',backtrack:'Backtracking: removed a tile.',fail:'Dead frontier point: trying another branch.','frontier-viable':`Frontier check passed: ${searchFrame.frontierPoints} open points have candidates.`}[searchFrame.type];
+   message(`Pair ${searchFrame.index+1} · ${action} ${searchFrame.nodes} attempts · ${searchFrame.backtracks} backtracks. Gold core points still need filling; green points are complete.${searchFrame.type==='frontier-viable'||searchFrame.type==='pair-result'&&searchFrame.status==='valid'?' Blue rings mark the viable frontier.':''}`);draw();
    const delay=+$('learn-speed').value*(searchFrame.type==='pair-result'?4:1);
    frameTimer=setTimeout(()=>{if(worker===active)active.postMessage({type:'frame-shown',id:data.id});},delay);
   }

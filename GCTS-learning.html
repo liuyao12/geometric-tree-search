@@ -12,7 +12,7 @@
  <canvas id="learn-canvas" width="720" height="360" aria-label="Connection and extension on the left; learned tile markings on the right"></canvas>
  <div id="learn-metrics"></div><div id="learn-metadata"></div><div id="learn-sync" role="status"></div><div id="learn-status" role="status" aria-live="polite"></div>
  <div class="learning-controls actions"><button id="learn-export" disabled>Export evidence</button></div>
- <p class="scope">Check every neighboring pair with unmarked one-corona search, then train on all labels. Save when every valid pair passes and more than half of invalid pairs are blocked, with none unresolved. One corona does not establish an infinite tiling.</p>
+ <p class="scope">Check every neighboring pair with unmarked one-corona search. A completion succeeds only if every exposed frontier point has a legal candidate. Then train on all labels. Save when every valid pair passes and more than half of invalid pairs are blocked, with none unresolved. One corona does not establish an infinite tiling.</p>
 </main>
-<script type="module" src="assets/tile-learning-page.js?v=20260921-corona-animation"></script>
+<script type="module" src="assets/tile-learning-page.js?v=20260921-viable-corona"></script>
 </body></html>
