@@ -34,20 +34,23 @@ function conflictGraph(model) {
   return {points,relations,witnesses};
 }
 
-export function reduceMarking(model) {
+export function reduceMarking(model,{preserveInterior=false}={}) {
+  // Keep t=1 sites when showing how a neighbor’s exterior meets the tile interior.
+  const interior=new Set(preserveInterior?model.tiles.flatMap(tile=>[...tileOrientations(tile,A2_TILE_LOOPS[tile]).find(o=>o.index===0).occupancy.values()].filter(e=>e.weight===12).map(e=>`${tile}:${e.point}`)):[]);
   const {points,relations,witnesses}=conflictGraph(model),incident=points.map(()=>[]);
   witnesses.forEach((w,i)=>w.points.forEach(p=>incident[p].push(i)));
   const kept=points.map(()=>true),live=witnesses.map(()=>true),counts=relations.map(r=>r.witnesses.length);
   // Whole-point deletion removes all three channels, including assigned zeros.
   const order=points.map((_,i)=>i).sort((a,b)=>incident[a].reduce((n,w)=>n+witnesses[w].relations.length,0)-incident[b].reduce((n,w)=>n+witnesses[w].relations.length,0)||a-b);
   for(const p of order){
+    if(interior.has(points[p]))continue;
     const losses=new Map(),affected=incident[p].filter(w=>live[w]);
     for(const w of affected)for(const r of witnesses[w].relations)losses.set(r,(losses.get(r)||0)+1);
     if([...losses].some(([r,n])=>n>=counts[r]))continue;
     kept[p]=false;for(const w of affected)live[w]=false;for(const [r,n] of losses)counts[r]-=n;
   }
   const keep=new Set(points.filter((_,i)=>kept[i])),reducedSupport=model.support.filter(e=>keep.has(pointKey(e))).map(e=>({...e,point:[...e.point]}));
-  return {...model,reducedSupport,reduction:{method:'all-legal-pair-conflicts-v1',originalPoints:points.length,points:keep.size,originalValues:model.support.length,values:reducedSupport.length,pairConflicts:relations.length,scope:'Same marking compatibility for every t-legal pair, including mark-only overlaps; no claim of equivalence to known markings.'}};
+  return {...model,reducedSupport,reduction:{method:'all-legal-pair-conflicts-v1',...(preserveInterior?{preserveInterior:true}:{}),originalPoints:points.length,points:keep.size,originalValues:model.support.length,values:reducedSupport.length,pairConflicts:relations.length,scope:'Same marking compatibility for every t-legal pair, including mark-only overlaps; no claim of equivalence to known markings.'}};
 }
 
 export function validateMarkingReduction(model) {

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createCoronaLearner,CORONA_CRITERION} from '../assets/tile-corona-learning.js';
+import {reduceMarking,validateMarkingReduction} from '../assets/marking-reduction.js';
 import {SparseA2Marking,a2Add,a2Sub} from '../assets/a2-tiling-engine.js';
 globalThis.requestAnimationFrame=cb=>setImmediate(cb);
 const expected={turtle:[304,41,263,277],hat:[320,41,279,303],mixed:[624,82,542,583]};
@@ -29,6 +30,14 @@ for(const [setId,[total,valid,invalid,correct]] of Object.entries(expected)){
  assert.equal(r.criterion,CORONA_CRITERION);assert.equal(r.connections.length,total);assert.deepEqual(r.counts,{valid,invalid,unresolved:0});assert.equal(r.classification.correct,correct);assert.equal(r.model,null);assert.equal(r.classification.perfect,false);
  const catalog=new Set(learner.connections().map(p=>JSON.stringify([p.root,p.attachment])));for(const row of r.connections){assert.ok(catalog.delete(JSON.stringify([row.root,row.attachment])));const checked=learner.verifyCorona([row.root,row.attachment],row.placements);if(row.status==='valid')assert.ok(checked.complete);else assert.equal(row.result,'no');}
  assert.equal(catalog.size,0);
+ const display=reduceMarking(r.candidateModel,{preserveInterior:true});validateMarkingReduction(display);
+ const retained=new Set(display.reducedSupport.map(e=>`${e.tile}:${e.point}:${e.component}`));
+ for(const root of learner.roots){
+  const occupancy=learner.materialize(root).orientation.occupancy;
+  for(const e of r.candidateModel.support.filter(e=>e.tile===root.tile))if(occupancy.get(e.point.join(','))?.weight===12)assert.ok(retained.has(`${e.tile}:${e.point}:${e.component}`),'Interior assignment was removed');
+  assert.ok(display.reducedSupport.some(e=>e.tile===root.tile&&!occupancy.has(e.point.join(','))),'Missing exterior assignments');
+ }
+ for(const row of r.connections)assert.equal(learner.verifyPatch([row.root,row.attachment],display.reducedSupport).compatible,learner.verifyPatch([row.root,row.attachment],r.candidateModel.support).compatible);
  const marking=new SparseA2Marking(r.candidateModel.support);let matches=0;
  for(const row of r.connections){marking.reset([learner.materialize(row.root)]);const predicted=marking.compatible(learner.materialize(row.attachment))?'valid':'invalid';if(predicted===row.status)matches++;}assert.equal(matches,correct);
  assert.throws(()=>learner.validateModel(r.candidateModel),/perfectly classified/);

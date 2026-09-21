@@ -1,4 +1,4 @@
-import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-compact';
+import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-interior';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
 import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260920-corona';
@@ -13,12 +13,14 @@ const message=t=>$('learn-status').textContent=t;
 const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
 function mapFor(points,box){const p=points.map(project),xs=p.map(q=>q[0]),ys=p.map(q=>q[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min((box.w-30)/Math.max(1,maxx-minx),(box.h-30)/Math.max(1,maxy-miny));return p=>{const q=project(p);return[box.x+box.w/2+(q[0]-(minx+maxx)/2)*scale,box.y+box.h/2+(q[1]-(miny+maxy)/2)*scale];};}
 function polygon(loop,map,fill,core=false){ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo(...map(p)):ctx.moveTo(...map(p)));ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle='#52786b';ctx.lineWidth=core?2.5:1;ctx.stroke();}
-function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#acb9b355':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?.6:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
+function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#7d9088':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?1:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
 function draw(){$('learn-metadata').textContent=model?`${report?.model?'Saved marking':'Candidate — not saved'} · ${markingMetadataText(model)}`:'Marking: awaiting complete classification…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode?'One-corona classification':'Pair & one-corona witness',15,23);ctx.fillText(report?.model?'Saved point marking':'Candidate point marking',390,23);
  const specs=shown.length?shown:[learner.roots[0]],placements=specs.map(learner.materialize);
  const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,activeMarkingSupport(model)):[]);
  const map=mapFor([...placements.flatMap(p=>p.loop),...entries.flat().flatMap(markingSegmentEndpoints)],{x:0,y:35,w:370,h:315});
- for(const [i,p] of placements.entries()){polygon(p.loop,map,p.tile==='hat'?(i<2?'#ecd1ad':'#f6e8d4'):(i<2?'#bad9d2':'#deece7'),i<2);marks(entries[i],map);}
+ for(const [i,p] of placements.entries())polygon(p.loop,map,p.tile==='hat'?(i<2?'#ecd1ad':'#f6e8d4'):(i<2?'#bad9d2':'#deece7'),i<2);
+ // Draw markings after every fill, including exterior marks crossing a neighbor.
+ for(const values of entries)marks(values,map);
  const row=!mode&&report?.connections[+picker.value];
  const witness=row&&model?learner.verifyPatch([row.root,row.attachment],activeMarkingSupport(model)).witness:null;
  if(witness&&$('learn-marks').checked){const q=map(witness.point);ctx.strokeStyle='#b5403d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(...q,6,0,2*Math.PI);ctx.stroke();ctx.fillStyle='#b5403d';ctx.fillText(`${witness.values[0]} ≠ ${witness.values[1]}`,Math.min(q[0]+8,310),q[1]-8);}
@@ -37,7 +39,7 @@ function install(data,recorded=false,index=0){
  if(data.model)learner.validateModel(data.model);
  const candidate=data.model??data.candidateModel;
  if(candidate)learner.validateCandidate(candidate);
- model=candidate?(candidate.reducedSupport?candidate:reduceMarking(candidate)):null;
+ model=candidate?(candidate.reduction?.preserveInterior?candidate:reduceMarking(candidate,{preserveInterior:true})):null;
  if(data.model)data={...data,model};else data={...data,candidateModel:model};
  report=data;reports.set(setId,data);recordedReports.set(setId,recorded);
  picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='valid'?'1-corona valid':row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];

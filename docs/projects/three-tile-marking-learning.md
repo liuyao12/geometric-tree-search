@@ -71,6 +71,18 @@ Recorded invalid cases have replayable settings, not formal proof transcripts.
 Even perfect pair classification would certify only this finite criterion;
 mark-only interactions beyond the audited pairs remain learned restrictions.
 
+### Interior markings in the display
+
+The current panels preserve every interior t=1 point when reducing a marking.
+Training already assigned these points; the previous unrestricted reduction
+removed them because other overlapping assignments witnessed the same conflicts.
+Retaining them shows the neighbor-exterior/tile-interior comparisons directly.
+Remaining point deletions still preserve every original t-legal pair exclusion.
+Zero-valued segments are visible gray, and the pair view paints every tile fill
+before any marking, so later tiles cannot obscure neighboring markings.
+This changes neither the trained values nor the corona classification scores.
+The historical reduction benchmarks below retain the original reduction policy.
+
 ### Shared-engine conformance and verification
 
 The optional `requiredPoints` mode of `solveA2Tiling` explicitly activates every
