@@ -97,7 +97,88 @@ node scripts/screen-3d-point-corona-sat.mjs \
   --output=/tmp/gcts-voxel-cover-screen --time-ms=20000 --encoding=voxel-cover
 ```
 
-### Earlier weighted-formula and graph controls
+### Whole-point frontier constraints and resumable catalogues
+
+The optional `--frontier=occupancy` control requires `--encoding=voxel-cover`.
+It replaces patch-specific rejection clauses with an exact condition on each
+encountered dead corner. Let B(v) mean that a selected placement occupies voxel
+v, and let A(c) mean that every voxel of an additional placement c is unoccupied.
+For a corner q with its eight incident voxels N(q), enforce:
+
+```
+all v in N(q) are unoccupied
+OR all v in N(q) are occupied
+OR some allowed placement c touching q has A(c).
+```
+
+The first two cases mean q is absent from the frontier. The third supplies a
+legal candidate. All placements touching q are enumerated, including those
+outside the finite core-covering SAT universe. Occupancy variables are exactly
+the disjunction of the corresponding placement variables, and availability
+variables are exactly the conjunction of empty voxel tests. Hence this is the
+original viable-frontier condition, not a learned generalization of a failed
+patch. Independent weighted-point replay still checks every final positive and
+every recorded failed patch.
+
+On the previously unresolved second p9-42947 pair, a fresh 30-second run produces
+a **37-tile viable corona in 28.9 seconds**, after adding 89 corner conditions.
+The witness passes independent point sums, full exposed-frontier enumeration
+and voxel nonoverlap. All 89 intermediate obstructions also replay as dead. The
+[witness receipt](../../data/3d-occupancy-frontier-2026-09-21.json) records the
+exact pair, source hashes, replay checks and local artifact digest.
+This is a local witness for that pair, not an infinite tiling of p9-42947.
+
+The oracle can save these corner locations and rebuild their necessary
+conditions in a later run. `--resume=<previous result>` verifies an exact
+input digest and frontier mode before reuse; it never reuses provisional labels
+as constraints. Reported cumulative time includes both runs. Tests check resume,
+reject a changed pair, and exercise outer-corner candidates outside the SAT pool.
+
+`learn-3d-voxel-pair-catalog.mjs` adds exact proper-rotation and seed-exchange
+orbits. Each transform maps every orientation's weighted t-support exactly, and
+its normalization offset must belong to the declared translation lattice.
+Every member carries an explicit transform from its representative. Positive
+witnesses are transformed and independently replayed for **every raw pair**;
+negative labels transfer by the same bijection of the complete local problem.
+Unknown labels remain unknown throughout the orbit.
+
+For p9-48258 this reduces 686 pairs to 60 representatives. The regression also
+checks every weighted seed transport across all fourteen catalogue tiles and
+checks all 26 cube pairs via their three orbits. A partial cube pass does not
+activate a marking; resuming to all three orbits accepts the empty marking and
+verifies marked finite growth. Successful and failed local labels are fed to the
+same `OnlineMarking` encoder, with every raw pair independently rescored. A
+complete catalogue, no unknowns, all positives passed and a majority of negatives
+blocked are still required before marked search can start.
+
+The [first p9-48258 catalogue pass](../../data/3d-p9-48258-orbits-pass1-2026-09-21.json)
+checks all 60 representatives with five seconds each. Nine orbits resolve
+positive, covering **70 of the 686 raw pairs**; their transported witnesses all
+pass independent replay. The other 51 orbits, covering 616 pairs, remain
+unresolved. The provisional encoder passes the 70 positives with an empty
+marking, but the unresolved catalogue prevents activation. The pass takes about
+287 seconds including collection, replay and encoding. It does not establish
+that the unresolved pairs are valid or that there are no negative connections.
+The checkpoint retains their necessary frontier-point conditions for larger
+subsequent attempts without repeating the nine resolved searches.
+
+Run one process per output directory. Resume only after the previous process is
+terminal; checkpoints alone are not evidence that a process has stopped:
+
+```sh
+node scripts/learn-3d-voxel-pair-catalog.mjs \
+  --tile=p9-48258 --output=/tmp/gcts-cross-orbits \
+  --pair-ms=5000 --frontier=occupancy
+node scripts/learn-3d-voxel-pair-catalog.mjs \
+  --tile=p9-48258 --output=/tmp/gcts-cross-orbits \
+  --pair-ms=20000 --frontier=occupancy --resume=true
+```
+
+These helpers are headless research controls. The app's reference scheduler,
+browser storage and acceptance threshold are unchanged. Full learned assignments
+remain in the requested local output directory and are not bundled into the app.
+
+### Earlier weighted-formula and graph controls (measurements)
 
 The 14-case refinement takes the first unresolved pair of every historical
 polycube record from the earlier five-second faithful-model sweep. The reference
@@ -131,9 +212,9 @@ or accepted marking results from this sample.
 The current bottleneck is now explicit: many finite core completions fail at an
 outer frontier, while several large formulas time out before producing a first
 core completion. More time or a larger dependency cap alone does not solve most
-of these cases. A next research direction is a proved equivalent binary-cover
-encoding for the center-and-corner voxel model, retaining the same independent
-frontier check and keeping its specialized scheduling separate from the app.
+of these cases. These measurements motivated the binary-cover and whole-point
+frontier controls above. Their specialized scheduling remains separate from
+the app. The subsequent full p9-48258 catalogue below closes that local collection gap.
 
 Python requires `z3-solver`; the recorded runs use Z3 4.16.0. For one input file
 containing `model` and `pair`:
@@ -161,6 +242,46 @@ node scripts/screen-3d-point-corona-sat.mjs \
   --output=/tmp/gcts-point-sat-screen-20260921 --time-ms=20000
 ```
 
-These are label experiments on previously unresolved pairs. They do not complete
-any tile's pair catalogue, certify a redundant learned marking, resolve any
+The fourteen-case screens are label experiments on previously unresolved pairs.
+They do not complete any tile's pair catalogue, certify a redundant learned marking, resolve any
 unknown tile's infinite tilability, or establish an aperiodic monotile.
+
+
+## Complete p9-48258 catalogue and conditional free values
+
+The continued occupancy-frontier run classifies all 686 pairs through 60 verified
+symmetry orbits: **622 valid, 64 invalid, no unresolved pairs**. All 622 transported
+positive witnesses and 1,415 recorded frontier obstructions were independently
+replayed. Negative exhaustion is trusted Z3 UNSAT; no independently checkable
+UNSAT proof is exported. Collection across the 5-, 20-, and 60-second passes cost
+723.82 seconds (about 12.1 minutes). See the [complete catalogue receipt](../../data/3d-p9-48258-complete-2026-09-21.json).
+
+The all-assigned equality encoder blocks none of the 64 negatives. Free values
+require a different operation: remove their equality edges **before** recomputing
+connected components. A symmetry-preserving support-mask search then passes all
+622 positives and blocks all 64 negatives with 60 scalar assignments across three
+orientations (20 each), using six categorical labels at extent 1. Interior points
+remain eligible. Support search is heuristic, with no minimality claim.
+
+An exhaustive audit of every possible active-mark overlap finds no additional
+rejected pair outside the known negatives, including noncontact placements.
+This preservation statement is conditional on the local negative labels and the
+declared grid-aligned transformation group. It neither supplies an infinite
+construction nor justifies unrestricted geometric alignment.
+
+Sequential warm searches of the same 91-point window all pass independent point
+and voxel replay:
+
+| Seed | Unmarked time / attempts | Marked time / attempts |
+| --- | --- | --- |
+| 1 | 4.19 s / 53,479 | 12.55 s / 64,848 |
+| 2 | 11.89 s / 151,531 | 2.67 s / 12,948 |
+| 3 | 18.96 s / 229,323 | 4.48 s / 24,369 |
+
+These exclude the 12.1-minute collection cost and roughly 1.1 seconds of support
+search over three extents. They show mixed warm performance, not a cold speedup.
+[Full synthesis, contact audit and growth receipt](../../data/3d-p9-48258-masked-2026-09-21.json).
+Raw markings and patches remain in the local output directory; no learned
+assignments are bundled. Reproduce with `scripts/learn-3d-voxel-pair-catalog.mjs`
+and `scripts/train-masked-3d-catalog.mjs`. These measurements use the headless
+research encoder and specialized SAT oracle, not a browser SAT dependency.

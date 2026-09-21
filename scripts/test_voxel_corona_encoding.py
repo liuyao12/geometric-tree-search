@@ -4,6 +4,11 @@ from collections import Counter
 from copy import deepcopy
 from itertools import product
 from random import Random
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 
 from solve_point_pair_corona import solve, voxel_core_domain
 
@@ -56,6 +61,13 @@ for encoding in ('points', 'voxel-cover'):
     voxels = [tuple(x//2 for x in p['translation']) for p in result['placements']]
     assert required_voxels.issubset(voxels) and len(set(voxels)) == len(voxels)
 
+# These outer corners are necessarily partial in the finite cube patch, and
+# their legal additions lie outside the core-covering SAT candidate universe.
+frontiers = [[-2, -2, -2], [6, 4, 4]]
+resumed = solve(model, pair, time_ms=10000, encoding='voxel-cover', frontier='occupancy', resume_points=frontiers)
+assert resumed['status'] == 'valid' and resumed['stats']['initialFrontierConstraints'] == 2
+assert set(map(tuple, resumed['frontierPoints'])).issuperset(map(tuple, frontiers))
+
 for mutation in ['capacity', 'domain', 'center', 'corner', 'voxels']:
     damaged = deepcopy(model)
     if mutation == 'capacity':
@@ -73,4 +85,22 @@ for mutation in ['capacity', 'domain', 'center', 'corner', 'voxels']:
     except ValueError:
         continue
     raise AssertionError('Accepted invalid reduction: ' + mutation)
+
+with tempfile.TemporaryDirectory() as directory:
+    root = Path(directory)
+    input_file = root/'input.json'
+    input_file.write_text(json.dumps({'model': model, 'pair': pair}))
+    command = [sys.executable, str(Path(__file__).with_name('solve_point_pair_corona.py')),
+               f'--input={input_file}', '--encoding=voxel-cover', '--frontier=occupancy']
+    state = root/'state.json'
+    subprocess.run([*command, f'--output={state}', '--max-rounds=0'], check=True, capture_output=True)
+    assert json.loads(state.read_text())['status'] == 'unresolved'
+    resumed_file = root/'resumed.json'
+    subprocess.run([*command, f'--output={resumed_file}', f'--resume={state}'], check=True, capture_output=True)
+    assert json.loads(resumed_file.read_text())['status'] == 'valid'
+    changed = deepcopy(pair)
+    changed[1]['translation'] = [2, 2, 0]
+    input_file.write_text(json.dumps({'model': model, 'pair': changed}))
+    wrong = subprocess.run([*command, f'--output={resumed_file}', f'--resume={state}'], capture_output=True)
+    assert wrong.returncode != 0 and b'different problem' in wrong.stderr
 print(f'PASS 256 corner subsets, {len(patches)} whole-patch equivalences, both solver encodings and invalid-model rejection.')

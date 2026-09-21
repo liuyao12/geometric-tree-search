@@ -1,0 +1,2806 @@
+{
+  "protocol": {
+    "tile": "p9-48258",
+    "modelSha": "34339c6670b35a7d8c888d85db2d568c3d1a88adeb14b9dca75cde3a562bc98c",
+    "orbitSha": "520e4cae446fa786c5d93bf04e94f23c7d1da2022e97720530d7850c8a1b930e",
+    "sources": {
+      "scripts/learn-3d-voxel-pair-catalog.mjs": "af9616d9bc6f0d710a6f5a9ba5636fe18c5ac5b4bfc13e4c4aa9f896d031af41",
+      "scripts/solve_point_pair_corona.py": "b95ccba6c4e88febf53e1d2f07cf073867021638d4395271139074247cebbf22",
+      "scripts/lib/3d-pair-orbits.mjs": "c66ce0d8c1ce40e263b2c537e43c91cc469ad9386a7f8a7e811ba2965a0ddea7",
+      "scripts/lib/verify-point-obstruction.mjs": "ac8b284efad0f74d1d34a062b5f961a7a862a269dadc9693252af3738c1b90a3",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+      "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+      "apps/3d-lattice-tiler/marking-learning.js": "708ade25c954ad65c0d68d6f8901b9306ec5e23b396ce697cc73410b445ed556",
+      "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+    },
+    "runs": [
+      {
+        "timeMs": 5000,
+        "frontier": "occupancy",
+        "startedAt": "2026-09-21T19:14:07.267Z",
+        "attempted": 60,
+        "elapsedMs": 287290.43183300004
+      }
+    ],
+    "oracle": "Validated binary-cover PB/SAT control with viable frontier; exact proper-rotation and seed-exchange orbits",
+    "scope": "Local pair labels and a learned restriction. Neither infinite construction nor aperiodicity proof."
+  },
+  "pairs": 686,
+  "orbits": 60,
+  "groups": [
+    {
+      "orbit": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 2,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 792,
+        "points": 940,
+        "corePoints": 78,
+        "formulaCorePoints": 132,
+        "dependencies": 38808,
+        "formulaDependencies": 7128,
+        "preparationMs": 123.562291,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 15,
+        "availabilityExpressions": 975,
+        "occupiedVariables": 935,
+        "rounds": 16,
+        "frontierNogoods": 15,
+        "elapsedMs": 1614.5285410000001,
+        "cumulativeMs": 1614.5285410000001
+      }
+    },
+    {
+      "orbit": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 862,
+        "points": 1006,
+        "corePoints": 84,
+        "formulaCorePoints": 146,
+        "dependencies": 42238,
+        "formulaDependencies": 7758,
+        "preparationMs": 137.36075,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 25,
+        "availabilityExpressions": 1268,
+        "occupiedVariables": 1109,
+        "rounds": 26,
+        "frontierNogoods": 25,
+        "elapsedMs": 4038.3935410000004,
+        "cumulativeMs": 4038.3935410000004
+      }
+    },
+    {
+      "orbit": 2,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 910,
+        "points": 1052,
+        "corePoints": 87,
+        "formulaCorePoints": 154,
+        "dependencies": 44590,
+        "formulaDependencies": 8190,
+        "preparationMs": 142.501667,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 14,
+        "availabilityExpressions": 1017,
+        "occupiedVariables": 1016,
+        "rounds": 15,
+        "frontierNogoods": 14,
+        "elapsedMs": 2658.040542,
+        "cumulativeMs": 2658.040542
+      }
+    },
+    {
+      "orbit": 3,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 948,
+        "points": 1072,
+        "corePoints": 90,
+        "formulaCorePoints": 160,
+        "dependencies": 46452,
+        "formulaDependencies": 8532,
+        "preparationMs": 148.305208,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 31,
+        "availabilityExpressions": 1566,
+        "occupiedVariables": 1345,
+        "rounds": 32,
+        "frontierNogoods": 31,
+        "elapsedMs": 5000.018042000001,
+        "cumulativeMs": 5000.018042000001
+      }
+    },
+    {
+      "orbit": 4,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 968,
+        "points": 1098,
+        "corePoints": 90,
+        "formulaCorePoints": 162,
+        "dependencies": 47432,
+        "formulaDependencies": 8712,
+        "preparationMs": 148.55504200000001,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 21,
+        "availabilityExpressions": 1047,
+        "occupiedVariables": 981,
+        "rounds": 22,
+        "frontierNogoods": 21,
+        "elapsedMs": 4097.698958999999,
+        "cumulativeMs": 4097.698958999999
+      }
+    },
+    {
+      "orbit": 5,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1004,
+        "points": 1162,
+        "corePoints": 90,
+        "formulaCorePoints": 162,
+        "dependencies": 49196,
+        "formulaDependencies": 9036,
+        "preparationMs": 155.96729200000001,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 32,
+        "availabilityExpressions": 1387,
+        "occupiedVariables": 1204,
+        "rounds": 33,
+        "frontierNogoods": 32,
+        "elapsedMs": 4158.490084,
+        "cumulativeMs": 4158.490084
+      }
+    },
+    {
+      "orbit": 6,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 998,
+        "points": 1162,
+        "corePoints": 88,
+        "formulaCorePoints": 162,
+        "dependencies": 48902,
+        "formulaDependencies": 8982,
+        "preparationMs": 154.384167,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 39,
+        "availabilityExpressions": 1738,
+        "occupiedVariables": 1499,
+        "rounds": 40,
+        "frontierNogoods": 39,
+        "elapsedMs": 5009.203667000001,
+        "cumulativeMs": 5009.203667000001
+      }
+    },
+    {
+      "orbit": 7,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 996,
+        "points": 1124,
+        "corePoints": 90,
+        "formulaCorePoints": 164,
+        "dependencies": 48804,
+        "formulaDependencies": 8964,
+        "preparationMs": 153.22762500000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1411,
+        "occupiedVariables": 1264,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5017.400583000001,
+        "cumulativeMs": 5017.400583000001
+      }
+    },
+    {
+      "orbit": 8,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1064,
+        "points": 1202,
+        "corePoints": 94,
+        "formulaCorePoints": 174,
+        "dependencies": 52136,
+        "formulaDependencies": 9576,
+        "preparationMs": 165.35925,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 38,
+        "availabilityExpressions": 1460,
+        "occupiedVariables": 1230,
+        "rounds": 39,
+        "frontierNogoods": 38,
+        "elapsedMs": 5012.361083,
+        "cumulativeMs": 5012.361083
+      }
+    },
+    {
+      "orbit": 9,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1046,
+        "points": 1188,
+        "corePoints": 93,
+        "formulaCorePoints": 174,
+        "dependencies": 51254,
+        "formulaDependencies": 9414,
+        "preparationMs": 165.10833399999999,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 34,
+        "availabilityExpressions": 1642,
+        "occupiedVariables": 1387,
+        "rounds": 35,
+        "frontierNogoods": 34,
+        "elapsedMs": 5017.281209,
+        "cumulativeMs": 5017.281209
+      }
+    },
+    {
+      "orbit": 10,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1038,
+        "points": 1174,
+        "corePoints": 92,
+        "formulaCorePoints": 174,
+        "dependencies": 50862,
+        "formulaDependencies": 9342,
+        "preparationMs": 160.32475000000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 16,
+        "availabilityExpressions": 989,
+        "occupiedVariables": 952,
+        "rounds": 17,
+        "frontierNogoods": 16,
+        "elapsedMs": 5011.269584,
+        "cumulativeMs": 5011.269584
+      }
+    },
+    {
+      "orbit": 11,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            6,
+            6
+          ]
+        }
+      ],
+      "members": 4,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1078,
+        "points": 1226,
+        "corePoints": 94,
+        "formulaCorePoints": 174,
+        "dependencies": 52822,
+        "formulaDependencies": 9702,
+        "preparationMs": 166.12429199999997,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 23,
+        "availabilityExpressions": 1161,
+        "occupiedVariables": 1037,
+        "rounds": 24,
+        "frontierNogoods": 23,
+        "elapsedMs": 3306.3539169999995,
+        "cumulativeMs": 3306.3539169999995
+      }
+    },
+    {
+      "orbit": 12,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            6
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1122,
+        "points": 1258,
+        "corePoints": 96,
+        "formulaCorePoints": 182,
+        "dependencies": 54978,
+        "formulaDependencies": 10098,
+        "preparationMs": 173.709583,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 35,
+        "availabilityExpressions": 1519,
+        "occupiedVariables": 1286,
+        "rounds": 36,
+        "frontierNogoods": 35,
+        "elapsedMs": 5010.27,
+        "cumulativeMs": 5010.27
+      }
+    },
+    {
+      "orbit": 13,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1084,
+        "points": 1246,
+        "corePoints": 94,
+        "formulaCorePoints": 174,
+        "dependencies": 53116,
+        "formulaDependencies": 9756,
+        "preparationMs": 169.18016699999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 36,
+        "availabilityExpressions": 1510,
+        "occupiedVariables": 1309,
+        "rounds": 37,
+        "frontierNogoods": 36,
+        "elapsedMs": 5010.990957999999,
+        "cumulativeMs": 5010.990957999999
+      }
+    },
+    {
+      "orbit": 14,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1112,
+        "points": 1252,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 54488,
+        "formulaDependencies": 10008,
+        "preparationMs": 172.631292,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 22,
+        "availabilityExpressions": 1150,
+        "occupiedVariables": 1029,
+        "rounds": 23,
+        "frontierNogoods": 22,
+        "elapsedMs": 5011.314209,
+        "cumulativeMs": 5011.314209
+      }
+    },
+    {
+      "orbit": 15,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1124,
+        "points": 1262,
+        "corePoints": 96,
+        "formulaCorePoints": 182,
+        "dependencies": 55076,
+        "formulaDependencies": 10116,
+        "preparationMs": 174.13875000000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 36,
+        "availabilityExpressions": 1474,
+        "occupiedVariables": 1254,
+        "rounds": 37,
+        "frontierNogoods": 36,
+        "elapsedMs": 5011.441,
+        "cumulativeMs": 5011.441
+      }
+    },
+    {
+      "orbit": 16,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            10,
+            0
+          ]
+        }
+      ],
+      "members": 4,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1136,
+        "points": 1308,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 55664,
+        "formulaDependencies": 10224,
+        "preparationMs": 174.04066699999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1419,
+        "occupiedVariables": 1222,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5003.955250000001,
+        "cumulativeMs": 5003.955250000001
+      }
+    },
+    {
+      "orbit": 17,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            10,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1170,
+        "points": 1330,
+        "corePoints": 96,
+        "formulaCorePoints": 186,
+        "dependencies": 57330,
+        "formulaDependencies": 10530,
+        "preparationMs": 182.905,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1536,
+        "occupiedVariables": 1291,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5009.693458,
+        "cumulativeMs": 5009.693458
+      }
+    },
+    {
+      "orbit": 18,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            10,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1186,
+        "points": 1330,
+        "corePoints": 96,
+        "formulaCorePoints": 186,
+        "dependencies": 58114,
+        "formulaDependencies": 10674,
+        "preparationMs": 185.062083,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 6,
+        "availabilityExpressions": 457,
+        "occupiedVariables": 561,
+        "rounds": 7,
+        "frontierNogoods": 6,
+        "elapsedMs": 1095.6490000000001,
+        "cumulativeMs": 1095.6490000000001
+      }
+    },
+    {
+      "orbit": 19,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            10,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1202,
+        "points": 1342,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 58898,
+        "formulaDependencies": 10818,
+        "preparationMs": 186.075917,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1471,
+        "occupiedVariables": 1274,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5011.661332999999,
+        "cumulativeMs": 5011.661332999999
+      }
+    },
+    {
+      "orbit": 20,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1042,
+        "points": 1140,
+        "corePoints": 94,
+        "formulaCorePoints": 172,
+        "dependencies": 51058,
+        "formulaDependencies": 9378,
+        "preparationMs": 169.604292,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1230,
+        "occupiedVariables": 1098,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5011.580084,
+        "cumulativeMs": 5011.580084
+      }
+    },
+    {
+      "orbit": 21,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1008,
+        "points": 1107,
+        "corePoints": 92,
+        "formulaCorePoints": 167,
+        "dependencies": 49392,
+        "formulaDependencies": 9072,
+        "preparationMs": 157.31887500000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 32,
+        "availabilityExpressions": 1484,
+        "occupiedVariables": 1254,
+        "rounds": 33,
+        "frontierNogoods": 32,
+        "elapsedMs": 5017.533667,
+        "cumulativeMs": 5017.533667
+      }
+    },
+    {
+      "orbit": 22,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1096,
+        "points": 1192,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 53704,
+        "formulaDependencies": 9864,
+        "preparationMs": 169.322917,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 25,
+        "availabilityExpressions": 1370,
+        "occupiedVariables": 1201,
+        "rounds": 26,
+        "frontierNogoods": 25,
+        "elapsedMs": 5000.123042,
+        "cumulativeMs": 5000.123042
+      }
+    },
+    {
+      "orbit": 23,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1124,
+        "points": 1222,
+        "corePoints": 96,
+        "formulaCorePoints": 184,
+        "dependencies": 55076,
+        "formulaDependencies": 10116,
+        "preparationMs": 174.89104100000003,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1440,
+        "occupiedVariables": 1223,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5012.516958,
+        "cumulativeMs": 5012.516958
+      }
+    },
+    {
+      "orbit": 24,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1084,
+        "points": 1186,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 53116,
+        "formulaDependencies": 9756,
+        "preparationMs": 168.110459,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 32,
+        "availabilityExpressions": 1318,
+        "occupiedVariables": 1170,
+        "rounds": 33,
+        "frontierNogoods": 32,
+        "elapsedMs": 5008.760917,
+        "cumulativeMs": 5008.760917
+      }
+    },
+    {
+      "orbit": 25,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1100,
+        "points": 1201,
+        "corePoints": 95,
+        "formulaCorePoints": 182,
+        "dependencies": 53900,
+        "formulaDependencies": 9900,
+        "preparationMs": 168.498125,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 27,
+        "availabilityExpressions": 1399,
+        "occupiedVariables": 1185,
+        "rounds": 28,
+        "frontierNogoods": 27,
+        "elapsedMs": 5003.095708,
+        "cumulativeMs": 5003.095708
+      }
+    },
+    {
+      "orbit": 26,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1088,
+        "points": 1180,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 53312,
+        "formulaDependencies": 9792,
+        "preparationMs": 166.481542,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 20,
+        "availabilityExpressions": 1040,
+        "occupiedVariables": 987,
+        "rounds": 21,
+        "frontierNogoods": 20,
+        "elapsedMs": 5000.056625,
+        "cumulativeMs": 5000.056625
+      }
+    },
+    {
+      "orbit": 27,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1088,
+        "points": 1180,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 53312,
+        "formulaDependencies": 9792,
+        "preparationMs": 166.806667,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 17,
+        "availabilityExpressions": 1050,
+        "occupiedVariables": 982,
+        "rounds": 18,
+        "frontierNogoods": 17,
+        "elapsedMs": 5002.290458,
+        "cumulativeMs": 5002.290458
+      }
+    },
+    {
+      "orbit": 28,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1040,
+        "points": 1133,
+        "corePoints": 94,
+        "formulaCorePoints": 171,
+        "dependencies": 50960,
+        "formulaDependencies": 9360,
+        "preparationMs": 161.78645899999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 27,
+        "availabilityExpressions": 1215,
+        "occupiedVariables": 1087,
+        "rounds": 28,
+        "frontierNogoods": 27,
+        "elapsedMs": 5011.59,
+        "cumulativeMs": 5011.59
+      }
+    },
+    {
+      "orbit": 29,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1096,
+        "points": 1180,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 53704,
+        "formulaDependencies": 9864,
+        "preparationMs": 168.056125,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 20,
+        "availabilityExpressions": 1207,
+        "occupiedVariables": 1110,
+        "rounds": 21,
+        "frontierNogoods": 20,
+        "elapsedMs": 5004.972583000001,
+        "cumulativeMs": 5004.972583000001
+      }
+    },
+    {
+      "orbit": 30,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1122,
+        "points": 1216,
+        "corePoints": 96,
+        "formulaCorePoints": 184,
+        "dependencies": 54978,
+        "formulaDependencies": 10098,
+        "preparationMs": 172.701042,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 24,
+        "availabilityExpressions": 1238,
+        "occupiedVariables": 1098,
+        "rounds": 25,
+        "frontierNogoods": 24,
+        "elapsedMs": 5011.262792,
+        "cumulativeMs": 5011.262792
+      }
+    },
+    {
+      "orbit": 31,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1008,
+        "points": 1107,
+        "corePoints": 92,
+        "formulaCorePoints": 167,
+        "dependencies": 49392,
+        "formulaDependencies": 9072,
+        "preparationMs": 155.78175,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1403,
+        "occupiedVariables": 1231,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5000.206875,
+        "cumulativeMs": 5000.206875
+      }
+    },
+    {
+      "orbit": 32,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1100,
+        "points": 1201,
+        "corePoints": 95,
+        "formulaCorePoints": 182,
+        "dependencies": 53900,
+        "formulaDependencies": 9900,
+        "preparationMs": 170.030334,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1318,
+        "occupiedVariables": 1134,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5007.334709000001,
+        "cumulativeMs": 5007.334709000001
+      }
+    },
+    {
+      "orbit": 33,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1040,
+        "points": 1133,
+        "corePoints": 94,
+        "formulaCorePoints": 171,
+        "dependencies": 50960,
+        "formulaDependencies": 9360,
+        "preparationMs": 166.44312500000004,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1371,
+        "occupiedVariables": 1173,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5010.5614160000005,
+        "cumulativeMs": 5010.5614160000005
+      }
+    },
+    {
+      "orbit": 34,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1122,
+        "points": 1216,
+        "corePoints": 96,
+        "formulaCorePoints": 184,
+        "dependencies": 54978,
+        "formulaDependencies": 10098,
+        "preparationMs": 175.15995800000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1346,
+        "occupiedVariables": 1153,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5004.165542,
+        "cumulativeMs": 5004.165542
+      }
+    },
+    {
+      "orbit": 35,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1074,
+        "points": 1174,
+        "corePoints": 94,
+        "formulaCorePoints": 174,
+        "dependencies": 52626,
+        "formulaDependencies": 9666,
+        "preparationMs": 170.711125,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 32,
+        "availabilityExpressions": 1339,
+        "occupiedVariables": 1139,
+        "rounds": 33,
+        "frontierNogoods": 32,
+        "elapsedMs": 5000.195667,
+        "cumulativeMs": 5000.195667
+      }
+    },
+    {
+      "orbit": 36,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1102,
+        "points": 1208,
+        "corePoints": 96,
+        "formulaCorePoints": 180,
+        "dependencies": 53998,
+        "formulaDependencies": 9918,
+        "preparationMs": 170.146083,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1524,
+        "occupiedVariables": 1314,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5010.962125000001,
+        "cumulativeMs": 5010.962125000001
+      }
+    },
+    {
+      "orbit": 37,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1152,
+        "points": 1241,
+        "corePoints": 96,
+        "formulaCorePoints": 186,
+        "dependencies": 56448,
+        "formulaDependencies": 10368,
+        "preparationMs": 177.967583,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1243,
+        "occupiedVariables": 1080,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5012.01225,
+        "cumulativeMs": 5012.01225
+      }
+    },
+    {
+      "orbit": 38,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1172,
+        "points": 1270,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 57428,
+        "formulaDependencies": 10548,
+        "preparationMs": 180.93183299999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1315,
+        "occupiedVariables": 1130,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5019.206333,
+        "cumulativeMs": 5019.206333
+      }
+    },
+    {
+      "orbit": 39,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1042,
+        "points": 1140,
+        "corePoints": 94,
+        "formulaCorePoints": 172,
+        "dependencies": 51058,
+        "formulaDependencies": 9378,
+        "preparationMs": 163.1465,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 34,
+        "availabilityExpressions": 1441,
+        "occupiedVariables": 1225,
+        "rounds": 35,
+        "frontierNogoods": 34,
+        "elapsedMs": 5010.600458,
+        "cumulativeMs": 5010.600458
+      }
+    },
+    {
+      "orbit": 40,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1124,
+        "points": 1222,
+        "corePoints": 96,
+        "formulaCorePoints": 184,
+        "dependencies": 55076,
+        "formulaDependencies": 10116,
+        "preparationMs": 173.34312500000001,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 24,
+        "availabilityExpressions": 1274,
+        "occupiedVariables": 1098,
+        "rounds": 25,
+        "frontierNogoods": 24,
+        "elapsedMs": 5000.059333,
+        "cumulativeMs": 5000.059333
+      }
+    },
+    {
+      "orbit": 41,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            10,
+            0
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1168,
+        "points": 1256,
+        "corePoints": 96,
+        "formulaCorePoints": 186,
+        "dependencies": 57232,
+        "formulaDependencies": 10512,
+        "preparationMs": 181.18675,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1216,
+        "occupiedVariables": 1071,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5012.879916,
+        "cumulativeMs": 5012.879916
+      }
+    },
+    {
+      "orbit": 42,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            10,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1188,
+        "points": 1282,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 58212,
+        "formulaDependencies": 10692,
+        "preparationMs": 186.534834,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 28,
+        "availabilityExpressions": 1370,
+        "occupiedVariables": 1184,
+        "rounds": 29,
+        "frontierNogoods": 28,
+        "elapsedMs": 5037.33,
+        "cumulativeMs": 5037.33
+      }
+    },
+    {
+      "orbit": 43,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1102,
+        "points": 1208,
+        "corePoints": 96,
+        "formulaCorePoints": 180,
+        "dependencies": 53998,
+        "formulaDependencies": 9918,
+        "preparationMs": 171.407541,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1207,
+        "occupiedVariables": 1087,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5018.085875,
+        "cumulativeMs": 5018.085875
+      }
+    },
+    {
+      "orbit": 44,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1172,
+        "points": 1270,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 57428,
+        "formulaDependencies": 10548,
+        "preparationMs": 181.56291700000003,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1393,
+        "occupiedVariables": 1204,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5018.532875,
+        "cumulativeMs": 5018.532875
+      }
+    },
+    {
+      "orbit": 45,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            10,
+            -2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1188,
+        "points": 1282,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 58212,
+        "formulaDependencies": 10692,
+        "preparationMs": 189.1285,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1220,
+        "occupiedVariables": 1076,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5011.819541,
+        "cumulativeMs": 5011.819541
+      }
+    },
+    {
+      "orbit": 46,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 962,
+        "points": 1060,
+        "corePoints": 88,
+        "formulaCorePoints": 160,
+        "dependencies": 47138,
+        "formulaDependencies": 8658,
+        "preparationMs": 148.972209,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 24,
+        "availabilityExpressions": 1200,
+        "occupiedVariables": 1046,
+        "rounds": 25,
+        "frontierNogoods": 24,
+        "elapsedMs": 4163.741792,
+        "cumulativeMs": 4163.741792
+      }
+    },
+    {
+      "orbit": 47,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1006,
+        "points": 1102,
+        "corePoints": 90,
+        "formulaCorePoints": 165,
+        "dependencies": 49294,
+        "formulaDependencies": 9054,
+        "preparationMs": 158.509542,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1458,
+        "occupiedVariables": 1242,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5017.168417,
+        "cumulativeMs": 5017.168417
+      }
+    },
+    {
+      "orbit": 48,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 962,
+        "points": 1060,
+        "corePoints": 88,
+        "formulaCorePoints": 160,
+        "dependencies": 47138,
+        "formulaDependencies": 8658,
+        "preparationMs": 151.661625,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 34,
+        "availabilityExpressions": 1483,
+        "occupiedVariables": 1270,
+        "rounds": 35,
+        "frontierNogoods": 34,
+        "elapsedMs": 5004.9223329999995,
+        "cumulativeMs": 5004.9223329999995
+      }
+    },
+    {
+      "orbit": 49,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1006,
+        "points": 1102,
+        "corePoints": 90,
+        "formulaCorePoints": 165,
+        "dependencies": 49294,
+        "formulaDependencies": 9054,
+        "preparationMs": 157.91466699999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1520,
+        "occupiedVariables": 1327,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5012.144834,
+        "cumulativeMs": 5012.144834
+      }
+    },
+    {
+      "orbit": 50,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1052,
+        "points": 1168,
+        "corePoints": 90,
+        "formulaCorePoints": 168,
+        "dependencies": 51548,
+        "formulaDependencies": 9468,
+        "preparationMs": 169.74366700000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 29,
+        "availabilityExpressions": 1334,
+        "occupiedVariables": 1161,
+        "rounds": 30,
+        "frontierNogoods": 29,
+        "elapsedMs": 5010.687125,
+        "cumulativeMs": 5010.687125
+      }
+    },
+    {
+      "orbit": 51,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            6
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1070,
+        "points": 1188,
+        "corePoints": 93,
+        "formulaCorePoints": 174,
+        "dependencies": 52430,
+        "formulaDependencies": 9630,
+        "preparationMs": 165.462084,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1415,
+        "occupiedVariables": 1219,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5008.480792,
+        "cumulativeMs": 5008.480792
+      }
+    },
+    {
+      "orbit": 52,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1070,
+        "points": 1188,
+        "corePoints": 93,
+        "formulaCorePoints": 174,
+        "dependencies": 52430,
+        "formulaDependencies": 9630,
+        "preparationMs": 165.20049999999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 30,
+        "availabilityExpressions": 1280,
+        "occupiedVariables": 1116,
+        "rounds": 31,
+        "frontierNogoods": 30,
+        "elapsedMs": 5007.354375,
+        "cumulativeMs": 5007.354375
+      }
+    },
+    {
+      "orbit": 53,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            8
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1122,
+        "points": 1249,
+        "corePoints": 94,
+        "formulaCorePoints": 177,
+        "dependencies": 54978,
+        "formulaDependencies": 10098,
+        "preparationMs": 171.17041700000001,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1446,
+        "occupiedVariables": 1253,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5011.435292,
+        "cumulativeMs": 5011.435292
+      }
+    },
+    {
+      "orbit": 54,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            8
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "valid",
+      "reason": null,
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1140,
+        "points": 1262,
+        "corePoints": 96,
+        "formulaCorePoints": 182,
+        "dependencies": 55860,
+        "formulaDependencies": 10260,
+        "preparationMs": 175.33254100000002,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 7,
+        "availabilityExpressions": 557,
+        "occupiedVariables": 611,
+        "rounds": 8,
+        "frontierNogoods": 7,
+        "elapsedMs": 1247.467458,
+        "cumulativeMs": 1247.467458
+      }
+    },
+    {
+      "orbit": 55,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            10
+          ]
+        }
+      ],
+      "members": 4,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1160,
+        "points": 1308,
+        "corePoints": 94,
+        "formulaCorePoints": 180,
+        "dependencies": 56840,
+        "formulaDependencies": 10440,
+        "preparationMs": 177.95287499999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1359,
+        "occupiedVariables": 1220,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5003.777417,
+        "cumulativeMs": 5003.777417
+      }
+    },
+    {
+      "orbit": 56,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            10
+          ]
+        }
+      ],
+      "members": 16,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1192,
+        "points": 1330,
+        "corePoints": 96,
+        "formulaCorePoints": 186,
+        "dependencies": 58408,
+        "formulaDependencies": 10728,
+        "preparationMs": 184.272292,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1307,
+        "occupiedVariables": 1191,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5004.872375,
+        "cumulativeMs": 5004.872375
+      }
+    },
+    {
+      "orbit": 57,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            10
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1210,
+        "points": 1342,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 59290,
+        "formulaDependencies": 10890,
+        "preparationMs": 182.176792,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 32,
+        "availabilityExpressions": 1489,
+        "occupiedVariables": 1298,
+        "rounds": 33,
+        "frontierNogoods": 32,
+        "elapsedMs": 5010.672458,
+        "cumulativeMs": 5010.672458
+      }
+    },
+    {
+      "orbit": 58,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1140,
+        "points": 1262,
+        "corePoints": 96,
+        "formulaCorePoints": 182,
+        "dependencies": 55860,
+        "formulaDependencies": 10260,
+        "preparationMs": 178.087084,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 33,
+        "availabilityExpressions": 1500,
+        "occupiedVariables": 1279,
+        "rounds": 34,
+        "frontierNogoods": 33,
+        "elapsedMs": 5012.519958999999,
+        "cumulativeMs": 5012.519958999999
+      }
+    },
+    {
+      "orbit": 59,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            10
+          ]
+        }
+      ],
+      "members": 8,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "z3-pb2bv-sat",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "solverVersion": "4.16.0",
+        "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+        "candidates": 1210,
+        "points": 1342,
+        "corePoints": 97,
+        "formulaCorePoints": 190,
+        "dependencies": 59290,
+        "formulaDependencies": 10890,
+        "preparationMs": 185.40754099999998,
+        "initialFrontierConstraints": 0,
+        "frontierConstraints": 31,
+        "availabilityExpressions": 1440,
+        "occupiedVariables": 1257,
+        "rounds": 32,
+        "frontierNogoods": 31,
+        "elapsedMs": 5013.5154999999995,
+        "cumulativeMs": 5013.5154999999995
+      }
+    }
+  ],
+  "learning": {
+    "complete": false,
+    "accepted": false,
+    "counts": {
+      "valid": 70,
+      "invalid": 0,
+      "unresolved": 616
+    },
+    "positivePassed": 70,
+    "negativeBlocked": 0,
+    "points": 0,
+    "values": 0
+  },
+  "growth": null
+}

@@ -1,0 +1,375 @@
+{
+  "protocol": {
+    "inputSha256": "ff0a1562c3a02e19ff086faf805616983a5ad81acddaf44a6285265750a2cc0d",
+    "sources": {
+      "scripts/train-masked-3d-catalog.mjs": "148c916a85c9395275fbaeb2005511a98720fbdc34829de8bdb781bc43e799ca",
+      "scripts/lib/masked-point-encoder.mjs": "696c80ca5d27994dab79d866541590b4ed406b21e084a806f99a39a2fc9f6f4c",
+      "scripts/lib/audit-marking-contacts.mjs": "a729fc2fc390cdc26bbb9f76228f406a7b969680615e78a8ead585409bb5da3c",
+      "scripts/lib/3d-pair-orbits.mjs": "c66ce0d8c1ce40e263b2c537e43c91cc469ad9386a7f8a7e811ba2965a0ddea7",
+      "scripts/lib/verify-point-obstruction.mjs": "ac8b284efad0f74d1d34a062b5f961a7a862a269dadc9693252af3738c1b90a3",
+      "apps/3d-lattice-tiler/marking-learning.js": "708ade25c954ad65c0d68d6f8901b9306ec5e23b396ce697cc73410b445ed556",
+      "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+      "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+    },
+    "timeMs": 20000,
+    "nodes": 1000000,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "trainingIncludedInGrowth": false,
+    "oracleRuns": [
+      {
+        "timeMs": 5000,
+        "frontier": "occupancy",
+        "startedAt": "2026-09-21T19:14:07.267Z",
+        "attempted": 60,
+        "elapsedMs": 287290.43183300004
+      },
+      {
+        "timeMs": 20000,
+        "frontier": "occupancy",
+        "startedAt": "2026-09-21T19:19:41.080Z",
+        "attempted": 51,
+        "elapsedMs": 419940.946208
+      },
+      {
+        "timeMs": 60000,
+        "frontier": "occupancy",
+        "startedAt": "2026-09-21T19:28:07.339Z",
+        "attempted": 1,
+        "elapsedMs": 16588.190333
+      }
+    ],
+    "scope": "Warm sequential finite-window comparison; catalogue collection and synthesis reported separately. No infinite construction or aperiodicity proof."
+  },
+  "replay": {
+    "positiveWitnesses": 622,
+    "obstructions": 1415
+  },
+  "learning": {
+    "accepted": true,
+    "chosenExtent": 1,
+    "candidates": [
+      {
+        "version": "masked-orbit-equalities-research-1",
+        "extent": 1,
+        "counts": {
+          "valid": 622,
+          "invalid": 64,
+          "unresolved": 0
+        },
+        "positivePassed": 622,
+        "negativeBlocked": 64,
+        "points": 60,
+        "values": 60,
+        "labelCount": 6,
+        "evaluations": 92,
+        "elapsedMs": 79.53829200000109,
+        "scope": "Research support-mask search; each mask rebuilds positive equalities. All observed positives pass, no optimum or unobserved-pair claim."
+      },
+      {
+        "version": "masked-orbit-equalities-research-1",
+        "extent": 2,
+        "counts": {
+          "valid": 622,
+          "invalid": 64,
+          "unresolved": 0
+        },
+        "positivePassed": 622,
+        "negativeBlocked": 64,
+        "points": 60,
+        "values": 60,
+        "labelCount": 6,
+        "evaluations": 526,
+        "elapsedMs": 300.31154199999946,
+        "scope": "Research support-mask search; each mask rebuilds positive equalities. All observed positives pass, no optimum or unobserved-pair claim."
+      },
+      {
+        "version": "masked-orbit-equalities-research-1",
+        "extent": 3,
+        "counts": {
+          "valid": 622,
+          "invalid": 64,
+          "unresolved": 0
+        },
+        "positivePassed": 622,
+        "negativeBlocked": 64,
+        "points": 60,
+        "values": 60,
+        "labelCount": 60,
+        "evaluations": 752,
+        "elapsedMs": 696.9478749999998,
+        "scope": "Research support-mask search; each mask rebuilds positive equalities. All observed positives pass, no optimum or unobserved-pair claim."
+      }
+    ]
+  },
+  "contactAudit": {
+    "expandedLabels": 2058,
+    "counts": {
+      "touchCompatible": 222,
+      "touchConflict": 192,
+      "noncontactCompatible": 0,
+      "noncontactConflict": 0,
+      "rejectedWithoutNegativeLabel": 0
+    },
+    "noExtraPairExclusions": true,
+    "scope": "Exhaustive pair-exclusion audit in the declared lattice and orientation group. Preservation of infinite tilings additionally relies on the negative local labels; no standalone UNSAT proof is supplied."
+  },
+  "rows": [
+    {
+      "mode": "free",
+      "seed": 1,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 369
+      },
+      "stats": {
+        "attempts": 53479,
+        "accepted": 53479,
+        "forced": 15374,
+        "branches": 12211,
+        "backtracks": 53438,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 16.329666999999972,
+        "peakTrail": 3025,
+        "markingCuts": 0,
+        "elapsedMs": 4191.018833999999,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 2206872
+      },
+      "artifactSha256": "297c6fcd92dfb360dfae342f97221483a182d82e6e84b27af5b3d20d912f6326"
+    },
+    {
+      "mode": "gcts",
+      "seed": 1,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 351
+      },
+      "stats": {
+        "attempts": 64848,
+        "accepted": 64848,
+        "forced": 23867,
+        "branches": 17052,
+        "backtracks": 64809,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 21.33104199999798,
+        "peakTrail": 3984,
+        "markingCuts": 394558,
+        "elapsedMs": 12551.368749999998,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 3009888
+      },
+      "artifactSha256": "ac1669104bfd4b4a6bca4c20e5dcb2f3151cddd334f9e371c5a587678a95681c"
+    },
+    {
+      "mode": "free",
+      "seed": 2,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 369
+      },
+      "stats": {
+        "attempts": 151531,
+        "accepted": 151531,
+        "forced": 58670,
+        "branches": 35779,
+        "backtracks": 151490,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 16.559832999999344,
+        "peakTrail": 3025,
+        "markingCuts": 0,
+        "elapsedMs": 11890.887499999997,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 2206872
+      },
+      "artifactSha256": "2cd5a677639d255858063e27345d16e3b87461dfc1acd76dc952647633d3fc01"
+    },
+    {
+      "mode": "gcts",
+      "seed": 2,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 351
+      },
+      "stats": {
+        "attempts": 12948,
+        "accepted": 12948,
+        "forced": 4494,
+        "branches": 3611,
+        "backtracks": 12909,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 22.75391600000148,
+        "peakTrail": 3705,
+        "markingCuts": 77228,
+        "elapsedMs": 2667.535625000004,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 3003192
+      },
+      "artifactSha256": "08bf013a6cd7315f446c0f4f8e1a2747ecdeb56c778e3df6f52d799161583b52"
+    },
+    {
+      "mode": "free",
+      "seed": 3,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 315
+      },
+      "stats": {
+        "attempts": 229323,
+        "accepted": 229323,
+        "forced": 71376,
+        "branches": 66154,
+        "backtracks": 229288,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 12.457792000001064,
+        "peakTrail": 2908,
+        "markingCuts": 0,
+        "elapsedMs": 18959.457834,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 2204064
+      },
+      "artifactSha256": "d5f6406c0c3c55d8dc9fef3a89fb5b8e38c1f52791ecc3fe8144a8475b2cf8c5"
+    },
+    {
+      "mode": "gcts",
+      "seed": 3,
+      "result": "finite_exact",
+      "reason": null,
+      "pointReplay": {
+        "ok": true,
+        "covered": 91,
+        "required": 91,
+        "reason": "finite exact point window"
+      },
+      "voxelReplay": {
+        "ok": true,
+        "covered": 27,
+        "required": 27,
+        "voxels": 306
+      },
+      "stats": {
+        "attempts": 24369,
+        "accepted": 24369,
+        "forced": 9996,
+        "branches": 5977,
+        "backtracks": 24335,
+        "capacityCuts": 0,
+        "lookaheadCuts": 0,
+        "probes": 0,
+        "clusterProposals": 0,
+        "clusterValidated": 0,
+        "clusterUses": 0,
+        "learningMs": 0,
+        "graphMs": 19.103250000000116,
+        "peakTrail": 3355,
+        "markingCuts": 134344,
+        "elapsedMs": 4477.9882080000025,
+        "candidates": 975,
+        "edges": 8409,
+        "points": 91,
+        "clusters": 0,
+        "memoryEstimateBytes": 2994792
+      },
+      "artifactSha256": "10c3311433797caaec5c11782fba5876c244834ad0df61413922e94a38889fd8"
+    }
+  ]
+}

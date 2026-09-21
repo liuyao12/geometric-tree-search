@@ -6,6 +6,7 @@ universe contains EVERY placement touching the seed support. See the projection
 argument in docs/projects/3d-point-corona-sat.md before changing that universe.
 """
 import argparse
+import hashlib
 import json
 import time
 from collections import defaultdict
@@ -52,7 +53,7 @@ def voxel_core_domain(model, core):
     return centers
 
 
-def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, encoding='points'):
+def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, encoding='points', frontier='nogood', resume_points=None):
     started = time.perf_counter()
     deadline = started + time_ms / 1000
     capacity = model['capacity']
@@ -104,12 +105,17 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
     core = set(fixed)
     if encoding not in ('points', 'voxel-cover'):
         raise ValueError('Unknown encoding')
+    if frontier not in ('nogood', 'occupancy') or frontier == 'occupancy' and encoding != 'voxel-cover':
+        raise ValueError('Occupancy frontier constraints require the validated voxel-cover encoding')
+    if resume_points and frontier != 'occupancy':
+        raise ValueError('Only occupancy frontier constraints can be resumed')
     formula_core = voxel_core_domain(model, core) if encoding == 'voxel-cover' else core
     formula_capacity = 1 if encoding == 'voxel-cover' else capacity
     candidates = {}
     nogoods = []
     rounds = 0
-    stats = {'backend': 'z3-pb2bv-sat', 'encoding': encoding, 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
+    constrained = set()
+    stats = {'backend': 'z3-pb2bv-sat', 'encoding': encoding, 'frontier': frontier, 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
     result = {'status': 'unresolved', 'reason': None, 'placements': pair}
     try:
         # Adding the seeds first makes their identities stable in the receipt.
@@ -150,6 +156,54 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
         if not formula_core.issubset(by_point):
             solver.add(z3.BoolVal(False))
         stats.update(candidates=len(specs), points=len(by_point), corePoints=len(core), formulaCorePoints=len(formula_core), dependencies=sum(map(len, candidates.values())), formulaDependencies=sum(map(len, by_point.values())), preparationMs=(time.perf_counter()-started)*1000)
+        occupancy = {}
+        availability = {}
+
+        def occupied(p):
+            if p not in occupancy:
+                terms = by_point.get(p, [])
+                if not terms:
+                    occupancy[p] = z3.BoolVal(False)
+                else:
+                    variable = z3.Bool('occupied_' + '_'.join(str(x) for x in p))
+                    solver.add(variable == z3.Or([v for v, _ in terms]))
+                    occupancy[p] = variable
+            return occupancy[p]
+
+        def available(spec):
+            if spec not in availability:
+                variable = z3.Bool('available_' + str(len(availability)))
+                # Center nonoverlap is equivalent to full point legality in the
+                # validated voxel model. A selected placement overlaps itself.
+                solver.add(variable == z3.And([z3.Not(occupied(p)) for p, _ in cells(spec) if all(x % 2 for x in p)]))
+                availability[spec] = variable
+            return availability[spec]
+
+        def constrain_frontier(p):
+            if len(p) != 3 or any(type(x) is not int or x % 2 for x in p):
+                raise ValueError('Expected a corner in half-unit coordinates')
+            if p in constrained:
+                return
+            incident = set()
+            for oi, support in enumerate(supports):
+                for anchor, _ in support:
+                    t = tuple(p[i]-anchor[i] for i in range(3))
+                    if allowed(t):
+                        incident.add((oi, t))
+            choices = []
+            for spec in sorted(incident):
+                check_time()
+                choices.append(available(spec))
+            neighbors = [occupied(tuple(p[i]+d[i] for i in range(3))) for d in product([-1, 1], repeat=3)]
+            # A corner may be untouched, complete, or partial with at least one
+            # legal addition. Choices include placements outside the SAT pool.
+            solver.add(z3.Or(z3.Not(z3.Or(neighbors)), z3.And(neighbors), z3.Or(choices)))
+            constrained.add(p)
+            stats.update(frontierConstraints=len(constrained), availabilityExpressions=len(availability), occupiedVariables=len(occupancy))
+
+        for p in resume_points or []:
+            constrain_frontier(tuple(p))
+        stats['initialFrontierConstraints'] = len(constrained)
 
         for _ in range(max_rounds):
             check_time()
@@ -198,6 +252,12 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
             if dead is None:
                 result.update(status='valid', reason=None, verification={'coreComplete': True, 'frontierViable': True})
                 break
+            if frontier == 'occupancy':
+                if dead in constrained:
+                    raise AssertionError('Encoded frontier point remains dead')
+                constrain_frontier(dead)
+                nogoods.append({'deadPoint': list(dead), 'placements': placements})
+                continue
             # A dead frontier cannot be repaired by adding tiles: all placements
             # touching it are already selected or capacity-incompatible. Thus
             # every legal superset of this selected set is also impossible.
@@ -233,7 +293,7 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, en
             raise Limit('frontier refinement budget')
     except Limit as error:
         result.update(status='unresolved', reason=str(error))
-    return {**result, 'stats': {**stats, 'rounds': rounds, 'frontierNogoods': len(nogoods), 'elapsedMs': (time.perf_counter()-started)*1000}, 'nogoods': nogoods}
+    return {**result, 'frontierPoints': sorted(constrained), 'stats': {**stats, 'rounds': rounds, 'frontierNogoods': len(nogoods), 'elapsedMs': (time.perf_counter()-started)*1000}, 'nogoods': nogoods}
 
 
 if __name__ == '__main__':
@@ -244,8 +304,16 @@ if __name__ == '__main__':
     parser.add_argument('--max-candidates', type=int, default=100000)
     parser.add_argument('--max-rounds', type=int, default=1000)
     parser.add_argument('--encoding', choices=('points', 'voxel-cover'), default='points')
+    parser.add_argument('--frontier', choices=('nogood', 'occupancy'), default='nogood')
+    parser.add_argument('--resume', help='Previous occupancy-frontier result for this exact input')
     args = parser.parse_args()
     data = json.loads(Path(args.input).read_text())
-    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds, args.encoding)
+    problem_hash = hashlib.sha256(json.dumps(data, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    prior = json.loads(Path(args.resume).read_text()) if args.resume else None
+    if prior and (prior.get('problemSha256') != problem_hash or prior.get('stats', {}).get('frontier') != 'occupancy'):
+        parser.error('Resume state belongs to a different problem or frontier mode')
+    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds, args.encoding, args.frontier, prior.get('frontierPoints') if prior else None)
+    result['problemSha256'] = problem_hash
+    result['stats']['cumulativeMs'] = result['stats']['elapsedMs'] + (prior['stats'].get('cumulativeMs', prior['stats']['elapsedMs']) if prior else 0)
     Path(args.output).write_text(json.dumps(result))
-    print(json.dumps({k: v for k, v in result.items() if k not in ('placements', 'nogoods')}), flush=True)
+    print(json.dumps({k: v for k, v in result.items() if k not in ('placements', 'nogoods', 'frontierPoints')}), flush=True)

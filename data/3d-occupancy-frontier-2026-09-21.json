@@ -1,0 +1,74 @@
+{
+  "protocol": {
+    "tile": "p9-42947",
+    "pairIndex": 1,
+    "timeMs": 30000,
+    "encoding": "voxel-cover",
+    "frontier": "occupancy",
+    "cold": true,
+    "scope": "Positive finite viable pair corona; not infinite extension or aperiodicity.",
+    "sources": {
+      "scripts/solve_point_pair_corona.py": "b95ccba6c4e88febf53e1d2f07cf073867021638d4395271139074247cebbf22",
+      "scripts/lib/verify-point-obstruction.mjs": "ac8b284efad0f74d1d34a062b5f961a7a862a269dadc9693252af3738c1b90a3",
+      "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f"
+    }
+  },
+  "pair": [
+    {
+      "oi": 0,
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "oi": 0,
+      "translation": [
+        2,
+        4,
+        0
+      ]
+    }
+  ],
+  "status": "valid",
+  "placements": 37,
+  "stats": {
+    "backend": "z3-pb2bv-sat",
+    "encoding": "voxel-cover",
+    "frontier": "occupancy",
+    "solverVersion": "4.16.0",
+    "scope": "Finite seed-support corona with viable exposed frontier; research control, not reference scheduling",
+    "candidates": 1936,
+    "points": 713,
+    "corePoints": 84,
+    "formulaCorePoints": 142,
+    "dependencies": 89056,
+    "formulaDependencies": 17424,
+    "preparationMs": 272.1425,
+    "initialFrontierConstraints": 0,
+    "frontierConstraints": 89,
+    "availabilityExpressions": 4971,
+    "occupiedVariables": 1204,
+    "rounds": 90,
+    "frontierNogoods": 89,
+    "elapsedMs": 28910.394083,
+    "cumulativeMs": 28910.394083
+  },
+  "problemSha256": "c1fa2c1813d1a863f083fd457a5690107fe3273618cabd91f279a5fe2e43200b",
+  "artifactSha256": "320aa24c2946b93cba56558f7d54d932113b7945afd28687be84443ca29b4f6b",
+  "pointReplay": {
+    "complete": true,
+    "coreComplete": true,
+    "frontierViable": true,
+    "deadPoints": []
+  },
+  "voxelReplay": {
+    "ok": true,
+    "covered": 27,
+    "required": 27,
+    "voxels": 333
+  },
+  "obstructionsReplayed": 89
+}
