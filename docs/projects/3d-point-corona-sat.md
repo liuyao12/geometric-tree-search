@@ -62,6 +62,43 @@ checked UNSAT proof.
 
 ## Reproduction and checks
 
+### Validated binary-cover reduction
+
+`--encoding=voxel-cover` specializes the formula after checking every orientation's
+explicit t-data against its distinct unit voxels. It requires capacity 8 and
+translations in even half-unit coordinates. Missing center constraints, changed
+corner weights, duplicate voxels or a different translation domain are rejected.
+
+For a legal packing, a seed corner reaches 8/8 exactly when all eight incident
+voxels are occupied. Expand each core corner into those eight voxel centers and
+retain the seed centers. The formula then requires exactly one selected copy at
+each required center and at most one at every other center. Distinct occupied
+voxels already imply every corner's upper bound. Thus both the core completion
+and all capacity constraints are equivalent to the original weighted formula.
+The candidate universe and subsequent weighted frontier check are unchanged.
+
+In the same fourteen-pair sample with a twenty-second budget, this encoding
+resolves **five** cases: the previous three, plus a positive p9-48258 pair and a
+negative p10-054782 pair. The new positive passes independent weighted-point,
+viable-frontier and voxel replay. The new negative exhausts the core formula.
+The other nine remain unresolved. These remain local results, with no new
+infinite-tiling classification. The [binary-cover receipt](../../data/3d-voxel-cover-corona-2026-09-21.json)
+records all cases and source hashes.
+
+`test_voxel_corona_encoding.py` checks all 256 voxel subsets around one corner,
+137 complete/defective/overlapping patches, both solver encodings on a cube
+pair, and rejection of invalid reductions. The generic weighted oracle retains
+its independent 43-case exhaustive regression.
+
+```sh
+python3 scripts/test_voxel_corona_encoding.py
+node scripts/screen-3d-point-corona-sat.mjs \
+  --input=/tmp/gcts-voxel-screen-final \
+  --output=/tmp/gcts-voxel-cover-screen --time-ms=20000 --encoding=voxel-cover
+```
+
+### Earlier weighted-formula and graph controls
+
 The 14-case refinement takes the first unresolved pair of every historical
 polycube record from the earlier five-second faithful-model sweep. The reference
 search receives 10,000 attempts, four million dependency entries and 20 seconds

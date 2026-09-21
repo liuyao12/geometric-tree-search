@@ -9,6 +9,7 @@ import argparse
 import json
 import time
 from collections import defaultdict
+from itertools import product
 from pathlib import Path
 
 import z3
@@ -18,7 +19,40 @@ class Limit(Exception):
     pass
 
 
-def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000):
+def voxel_core_domain(model, core):
+    """Validate the reduction, then expand complete corners into voxel centers.
+
+    With distinct unit voxels, a corner reaches 8 exactly when its eight incident
+    voxels are present. Nonoverlapping centers already imply all corner upper
+    bounds. This is not valid for arbitrary weighted point models.
+    """
+    if model['capacity'] != 8 or model.get('placementDomain') != {'kind': 'scaled_cubic', 'translationStep': 2}:
+        raise ValueError('Voxel cover requires capacity eight and even translations')
+    for orientation in model['orientations']:
+        voxels = orientation.get('voxels')
+        if (not voxels or any(len(v) != 3 or any(type(x) is not int for x in v) for v in voxels)
+                or len({tuple(v) for v in voxels}) != len(voxels)):
+            raise ValueError('Voxel cover requires distinct integer voxels')
+        expected = defaultdict(int)
+        for v in voxels:
+            expected[tuple(2*x+1 for x in v)] = 8
+            for delta in product([0, 1], repeat=3):
+                expected[tuple(2*(v[i]+delta[i]) for i in range(3))] += 1
+        actual = {tuple(c['pos']): c['weight'] for c in orientation['cells']}
+        if dict(expected) != actual:
+            raise ValueError('Point data does not match the center-and-corner voxel model')
+    centers = set()
+    for p in core:
+        if all(x % 2 for x in p):
+            centers.add(p)
+        else:
+            if any(x % 2 for x in p):
+                raise ValueError('Invalid voxel core point')
+            centers.update(tuple(p[i]+delta[i] for i in range(3)) for delta in product([-1, 1], repeat=3))
+    return centers
+
+
+def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000, encoding='points'):
     started = time.perf_counter()
     deadline = started + time_ms / 1000
     capacity = model['capacity']
@@ -68,10 +102,14 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000):
             if fixed[p] > capacity:
                 raise ValueError('Overlapping seeds')
     core = set(fixed)
+    if encoding not in ('points', 'voxel-cover'):
+        raise ValueError('Unknown encoding')
+    formula_core = voxel_core_domain(model, core) if encoding == 'voxel-cover' else core
+    formula_capacity = 1 if encoding == 'voxel-cover' else capacity
     candidates = {}
     nogoods = []
     rounds = 0
-    stats = {'backend': 'z3-pb2bv-sat', 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
+    stats = {'backend': 'z3-pb2bv-sat', 'encoding': encoding, 'solverVersion': z3.get_version_string(), 'scope': 'Finite seed-support corona with viable exposed frontier; research control, not reference scheduling'}
     result = {'status': 'unresolved', 'reason': None, 'placements': pair}
     try:
         # Adding the seeds first makes their identities stable in the receipt.
@@ -98,14 +136,20 @@ def solve(model, pair, time_ms=30000, max_candidates=100000, max_rounds=1000):
         by_point = defaultdict(list)
         for i, support in enumerate(candidates.values()):
             for p, w in support:
-                by_point[p].append((variables[i], w))
+                if encoding == 'voxel-cover':
+                    if all(x % 2 for x in p):
+                        by_point[p].append((variables[i], 1))
+                else:
+                    by_point[p].append((variables[i], w))
         solver = z3.Then('simplify', 'propagate-values', 'pb-preprocess', 'pb2bv', 'sat').solver()
         for i in range(len(seeds)):
             solver.add(variables[i])
         for p, terms in by_point.items():
             check_time()
-            solver.add(z3.PbEq(terms, capacity) if p in core else z3.PbLe(terms, capacity))
-        stats.update(candidates=len(specs), points=len(by_point), corePoints=len(core), dependencies=sum(map(len, candidates.values())), preparationMs=(time.perf_counter()-started)*1000)
+            solver.add(z3.PbEq(terms, formula_capacity) if p in formula_core else z3.PbLe(terms, formula_capacity))
+        if not formula_core.issubset(by_point):
+            solver.add(z3.BoolVal(False))
+        stats.update(candidates=len(specs), points=len(by_point), corePoints=len(core), formulaCorePoints=len(formula_core), dependencies=sum(map(len, candidates.values())), formulaDependencies=sum(map(len, by_point.values())), preparationMs=(time.perf_counter()-started)*1000)
 
         for _ in range(max_rounds):
             check_time()
@@ -199,8 +243,9 @@ if __name__ == '__main__':
     parser.add_argument('--time-ms', type=int, default=30000)
     parser.add_argument('--max-candidates', type=int, default=100000)
     parser.add_argument('--max-rounds', type=int, default=1000)
+    parser.add_argument('--encoding', choices=('points', 'voxel-cover'), default='points')
     args = parser.parse_args()
     data = json.loads(Path(args.input).read_text())
-    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds)
+    result = solve(data['model'], data['pair'], args.time_ms, args.max_candidates, args.max_rounds, args.encoding)
     Path(args.output).write_text(json.dumps(result))
     print(json.dumps({k: v for k, v in result.items() if k not in ('placements', 'nogoods')}), flush=True)

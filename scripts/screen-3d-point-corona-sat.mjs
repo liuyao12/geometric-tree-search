@@ -11,9 +11,10 @@ import {verifyCorona,allowedTranslation} from '../apps/3d-lattice-tiler/corona-g
 import {POLYCUBE_GCTS_CANDIDATES} from '../assets/polycube-census-candidates.js';
 const execute=promisify(execFile),args=Object.fromEntries(process.argv.slice(2).map(a=>a.replace(/^--/,'').split('=')));
 if(!args.input)throw Error('Supply --input=<archived voxel screen directory>');
-const output=args.output??'/tmp/gcts-point-sat-screen',timeMs=Number(args['time-ms']??20000);await mkdir(output,{recursive:true});
+const output=args.output??'/tmp/gcts-point-sat-screen',timeMs=Number(args['time-ms']??20000),encoding=args.encoding??'points';await mkdir(output,{recursive:true});
+if(!['points','voxel-cover'].includes(encoding))throw Error('Unsupported encoding');
 if(!Number.isSafeInteger(timeMs)||timeMs<1)throw Error('Positive integer time budget required');
-const report={protocol:{timeMs,model:'voxel-center-corner-1',mirrors:false,selection:'First previously unresolved pair per tile',backend:'Research PB/SAT control; not the reference graph scheduler',sources:{}},rows:[]};
+const report={protocol:{timeMs,encoding,model:'voxel-center-corner-1',mirrors:false,selection:'First previously unresolved pair per tile',backend:'Research PB/SAT control; not the reference graph scheduler',sources:{}},rows:[]};
 for(const path of ['scripts/solve_point_pair_corona.py','scripts/screen-3d-point-corona-sat.mjs','apps/3d-lattice-tiler/corona-graph.js','apps/3d-lattice-tiler/voxel-point-model.js'])report.protocol.sources[path]=createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex');
 function verifyObstruction(model,{deadPoint,placements}){
  const sums=new Map(),used=new Set();
@@ -36,7 +37,7 @@ for(const tile of POLYCUBE_GCTS_CANDIDATES.filter(c=>!args.tiles||args.tiles.spl
  const prefix=`${output}/${tile.id}-${index}`,input={model,pair:previous.pair};await writeFile(`${prefix}-input.json`,JSON.stringify(input));
  const started=performance.now();let result;
  try{
-  await execute(args.python??'python3',[fileURLToPath(new URL('./solve_point_pair_corona.py',import.meta.url)),`--input=${prefix}-input.json`,`--output=${prefix}-output.json`,`--time-ms=${timeMs}`],{timeout:timeMs+15000,maxBuffer:1048576});
+  await execute(args.python??'python3',[fileURLToPath(new URL('./solve_point_pair_corona.py',import.meta.url)),`--input=${prefix}-input.json`,`--output=${prefix}-output.json`,`--time-ms=${timeMs}`,`--encoding=${encoding}`],{timeout:timeMs+15000,maxBuffer:1048576});
   result=JSON.parse(await readFile(`${prefix}-output.json`));
  }catch(e){result={status:'unresolved',reason:e.killed?'process time limit':e.message,stats:{},nogoods:[]};}
  const solveMs=performance.now()-started,verificationStart=performance.now();
