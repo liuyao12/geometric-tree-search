@@ -1593,7 +1593,7 @@
         const lines = [`t=${formatTValue(pointEntry.value)} at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
-          if (markingRank === 1) {
+          if (markingSource === 'standard' && markingRank === 1) {
             lines.push(`m=${mark.vector.some(value => value !== null && value !== 0) ? 1 : 0}`);
           } else {
             lines.push(formatMarkVector(mark.vector));

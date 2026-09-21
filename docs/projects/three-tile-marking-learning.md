@@ -400,3 +400,17 @@ The generated measurements include timings,
 reduction cost, roots/settings and placement hashes. No training examples are
 held out or removed. The shared engine's existing infinite-coverage and geometric
 faithfulness limitations remain unchanged.
+
+### Tooltip marking source
+
+The tooltip reads the transformed, active marking entries of visible placements,
+including exterior marking points and explicit zeros. Scalar formatting applies
+only to the known rank-1 marking. Learned markings always show their actual
+three-component values, regardless of the previously selected known rank;
+missing components remain `*`, not implicit zero.
+
+Browser regression checks reproduce the former rank-1-to-learned collapse, then
+compare displayed tooltip vectors against independently materialized learned
+entries across all three inventories on both lattices, after rank-1 and (for
+Turtle) rank-3 selections. This presentation fix does not change t/m values,
+classification, candidate pruning, scheduling or rollback.
