@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getC
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
 const embedded=window.parent!==window;if(embedded)document.body.classList.add('embedded');
-let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,paused=false,epoch=0;
+let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,runningSetId=null,paused=false,epoch=0;
 const reports=new Map(),recordedReports=new Map(),automaticStarts=new Set();
 const send=(type,data={})=>{if(embedded)parent.postMessage({type,setId,...data},location.origin);};
 const message=t=>$('learn-status').textContent=t;
@@ -28,14 +28,14 @@ function draw(){$('learn-metadata').textContent=model?`${report?.model?model.mar
  for(const [i,tile] of learner.config.tiles.entries()){const root=learner.roots[i],p=learner.materialize(root),n=learner.config.tiles.length,box={x:390,y:32+i*310/n,w:310,h:310/n},tileMarks=model?activeMarkingSupport(model).filter(e=>e.tile===tile):[],m=mapFor([...p.loop,...learner.pointDomain(tile),...tileMarks.flatMap(markingSegmentEndpoints)],box);polygon(p.loop,m,tile==='hat'?'#ecd1ad':'#bad9d2');if(model&&$('learn-marks').checked)marks(tileMarks,m);ctx.fillStyle='#486656';ctx.font='12px system-ui';ctx.fillText(tile,box.x,box.y+18);}
  ctx.strokeStyle='#e1e7df';ctx.beginPath();ctx.moveTo(380,35);ctx.lineTo(380,348);ctx.stroke();
 }
-function finish(){worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Classify & learn';$('learn-deeper').textContent='Retry unresolved';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status!=='unresolved';}
+function finish(completed=false){if(mode==='collect'&&!completed)automaticStarts.delete(runningSetId);runningSetId=null;worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Classify & learn';$('learn-deeper').textContent='Retry unresolved';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status!=='unresolved';}
 function describe(){const row=report?.connections[+picker.value];if(!row)return;
  const actual=row.status==='valid'?'Valid: complete one-corona witness':row.status==='invalid'?'Invalid: one-corona search exhausted':'Unresolved: search budget reached';
  const c=report.classification,prediction=row.predicted?` · marking ${row.predicted==='valid'?'accepts':'rejects'} this pair${row.status==='unresolved'?'':row.predicted===row.status?' (correct)':' (incorrect)'}`:'';
  message(`${actual}${prediction}. Classification: ${c.correct}/${c.total} correct (${(100*c.correct/c.total).toFixed(1)}%). Accepts ${c.validAccepted}/${c.valid} valid pairs; blocks ${c.invalidBlocked}/${c.invalid} invalid pairs (${(100*c.invalidBlocked/Math.max(1,c.invalid)).toFixed(1)}%). ${c.accepted?'Marking saved.':'Not saved: resolve all pairs, accept every valid pair, and block more than half of invalid pairs.'}`);
  $('learn-deeper').disabled=!!mode||row.status!=='unresolved';
 }
-function install(data,recorded=false,index=0){
+function install(data,recorded=false,index=0,completed=false){
  if(data.setId!==setId||data.criterion!==CORONA_CRITERION)throw new Error('Outdated learning evidence');
  if(data.model)learner.validateModel(data.model);
  const candidate=data.model??data.candidateModel;
@@ -45,12 +45,12 @@ function install(data,recorded=false,index=0){
  if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings},{origin:recorded?'recorded':'training'});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
  report=data;reports.set(setId,data);recordedReports.set(setId,recorded);
  picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='valid'?'1-corona valid':row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
- $('learn-metrics').textContent=`${recorded?'Recorded · ':''}${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
- finish();describe();draw();
+ $('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${recorded?'Recorded · ':''}${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
+ finish(true);describe();draw();
  if(data.model){
   $('learn-sync').textContent=`${persisted?'Saved':'Available this visit; browser storage could not save it'}: ${model.marking.name}.${model.marking.sameValuesAs?` Same values as ${model.marking.sameValuesAs.name}.`:''}${embedded?' Available in Tiling; successful training starts it automatically.':''}`;
   if(!embedded)sessionStorage.setItem('gcts-requested-marking',JSON.stringify(model));
-  send('gcts-marking-ready',{model,counts:data.counts,recorded});
+  send('gcts-marking-ready',{model,counts:data.counts,recorded,completed});
  }else{
   $('learn-sync').textContent='Candidate only — no marking saved or transferred.';
   if(!embedded)sessionStorage.removeItem('gcts-requested-marking');
@@ -61,14 +61,14 @@ async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnec
  if(reports.has(id)){install(reports.get(id),recordedReports.get(id));return;}
  try{const r=await fetch(`./assets/data/tile-corona-${id}.json?v=20260920-qualified`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Classify & learn to run every one-corona check.');}
 }
-function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-qualified',import.meta.url),{type:'module'});const active=worker;mode=kind;paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-qualified',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=setId;paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
- if(kind==='collect'){$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
+ if(kind==='collect'){automaticStarts.add(setId);$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;
-  if(data.type==='progress'){shown=data.latest;model=data.model;const c=data.counts;$('learn-metrics').textContent=`${data.attempts}/${data.total} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;message(data.phase==='train'?'Training a marking on all classified pairs…':'Checking whether each fixed pair has a complete one-corona…');draw();}
-  else if(data.type==='collected')install(data.report);
+  if(data.type==='progress'){shown=data.latest;model=data.model;const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts}/${data.total} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;message(data.phase==='train'?'Training a marking on all classified pairs…':'Checking whether each fixed pair has a complete one-corona…');draw();}
+  else if(data.type==='collected')install(data.report,false,0,true);
   else if(data.type==='growth'){shown=data.placements;message(`${shown.length} tiles · ${data.nodes} attempts · ${data.backtracks} backtracks`);draw();}
-  else if(data.type==='extended')install(learner.incorporate(report,data.index,data.row),false,data.index);
+  else if(data.type==='extended')install(learner.incorporate(report,data.index,data.row),false,data.index,true);
   else if(data.type==='error'){finish();message(data.message);}
  };
  worker.onerror=()=>{if(worker===active){finish();message('Learning worker could not run. Reload to retry.');}};
@@ -84,8 +84,8 @@ window.addEventListener('message',e=>{
  if(e.origin!==location.origin||e.source!==parent)return;
  const data=e.data;
  if(data?.type==='gcts-select-tiles'&&data.setId!==setId)choose(data.setId);
- if(data?.type==='gcts-start-learning'&&TILE_SETS[data.setId]&&!automaticStarts.has(data.requestId)){
-  automaticStarts.add(data.requestId);
+ if(data?.type==='gcts-start-learning'&&TILE_SETS[data.setId]){
+  if(automaticStarts.has(data.setId)){if(data.setId!==setId)choose(data.setId);return;}
   setId=data.setId;learner=createConnectionLearner(setId);selectTiles(setId);
   reset();launch('collect');
  }

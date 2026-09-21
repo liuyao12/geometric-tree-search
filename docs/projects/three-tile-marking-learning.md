@@ -11,6 +11,16 @@ learned marking when available, otherwise no marking; background completion does
 not replace the earlier known-marking example. Its inventory and training run
 survive section crossings. Manual tab
 changes and pauses do not restart collection; learning can run in the background.
+The top tile-set controls apply to both panel tabs. Opening Learn markings manually
+uses the selected inventory even outside the learning section. Selecting a new
+inventory in Learn markings starts its first collection automatically; returning
+to an already completed inventory displays its report without retraining. An
+interrupted inventory is eligible to start again when selected. The
+Classify & learn button still starts a fresh named run. A pending iframe startup
+carries the selected inventory rather than defaulting to Turtle. Switching
+inventories cancels an unfinished run; completed reports and named markings remain
+available. Hat uses its full allowed symmetry group; the mixed inventory continues
+to use rotations only in classification, training and marked search.
 
 The current experiment enumerates every t-legal second placement whose positive
 support touches the fixed first tile. Both root types are included for the mixed

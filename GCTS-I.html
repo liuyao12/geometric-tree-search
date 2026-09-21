@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-named" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260920-inventories" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -170,7 +170,7 @@
       const learningFrame = document.getElementById('tiling-learning-frame');
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
       const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
-      let learningSectionEntered=false, learnerReady=false, pendingLearningStart=false;
+      let learningSectionEntered=false, learnerReady=false, pendingLearningStart=null;
       let learningTileSet = 'turtle';
       let displayMarking = null;
       const markingEnabled = () => markingSource !== 'none';
@@ -2500,8 +2500,10 @@
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
         if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId},location.origin);
       }
+      function learningPanelVisible() { return !document.getElementById('learning-panel-page').hidden; }
+      function requestLearningFor(setId) { learningTileSet=setId;pendingLearningStart=setId;startPendingLearning(); }
       function panelView(view, { manual = true } = {}) {
-        if (manual) manualPanelMode = true;
+        if (manual) {manualPanelMode = true;if(view==='learning')requestLearningFor(selectedTileSet);}
         if (document.getElementById(`panel-${view}-tab`).getAttribute('aria-selected') === 'true') return;
         stopTiling();
         document.getElementById('tiling-panel-page').hidden = view !== 'tiling';
@@ -2523,7 +2525,7 @@
       document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
       document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
-      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked)configurePanel(input.value,markingSource==='standard'&&markingRank===1?'standard':input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');}));
+      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked){configurePanel(input.value,markingSource==='standard'&&markingRank===1?'standard':input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');if(learningPanelVisible())requestLearningFor(input.value);}}));
       markingSourcePicker.onchange = () => {
         const value = markingSourcePicker.value;
         if (value === 'rank1' || value === 'rank3') markingRank = value === 'rank1' ? 1 : 3;
@@ -2540,10 +2542,10 @@
       window.addEventListener('message', event => {
         if(event.origin!==location.origin||event.source!==learningFrame.contentWindow)return;
         const data=event.data;
-        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:activeScrollAnchor==='learning'?selectedTileSet:learningTileSet},location.origin);startPendingLearning();return;}
+        if(data?.type==='gcts-learner-loaded'){learnerReady=true;learningFrame.contentWindow.postMessage({type:'gcts-select-tiles',setId:learningPanelVisible()?selectedTileSet:learningTileSet},location.origin);startPendingLearning();return;}
         if(data?.type!=='gcts-marking-ready'||!TILE_SETS[data.setId])return;
-        let saved;try {saved=registerMarking(data.model,{origin:data.recorded?'recorded':'training',select:!data.recorded}).model;} catch {return;}
-        if(activeScrollAnchor==='learning' && selectedTileSet===data.setId && !data.recorded){
+        let saved;try {saved=registerMarking(data.model,{origin:data.recorded?'recorded':'training',select:!!data.completed}).model;} catch {return;}
+        if((activeScrollAnchor==='learning'||learningPanelVisible()) && selectedTileSet===data.setId && data.completed){
           configurePanel(data.setId,'learned',saved.marking.id);
           panelView('tiling', {manual:false});
           startTilingPlayback({reset:true});
@@ -2579,8 +2581,8 @@
       function startPendingLearning() {
         if (pendingLearningStart) learningFrame.loading = 'eager';
         if(!pendingLearningStart||!learnerReady)return;
-        pendingLearningStart=false;
-        learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId:'turtle',requestId:'article-turtle-learning'},location.origin);
+        const setId=pendingLearningStart;pendingLearningStart=null;
+        learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId,requestId:`article-${setId}-learning`},location.origin);
       }
       function syncDemoStageToScroll() {
         const heading = document.getElementById('anchor-learning');
@@ -2599,8 +2601,7 @@
             configurePanel(setId, learnedModels.has(setId) ? 'learned' : 'none');
             panelView('learning', { manual: false });
             if (firstVisit) {
-              pendingLearningStart = true;
-              startPendingLearning();
+              requestLearningFor(setId);
             }
           } else {
             if (previousAnchor === 'learning' || selectedTileSet !== 'turtle' || markingSource === 'learned') {
