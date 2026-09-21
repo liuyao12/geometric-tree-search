@@ -1,4 +1,4 @@
-import {markingDomain} from './marking-learning.js?v=20260921-voxel-audit';
+import {markingDomain} from './marking-learning.js?v=20260921-shared-points';
 // Shared inspection surface for the two engines. Data comes from the live
 // worker, never from a recorded marking or an independent classifier.
 export class MarkingPreview{

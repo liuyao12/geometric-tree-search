@@ -19,6 +19,10 @@ export class CoronaGraph{
   this.pointOrder=[];this.candidateOrder=[];this.rejectedOrder=[];this.retainBranchCaches=retainBranchCaches;this.peakDependencyEntries=0;
   if(filterAtBirth&&retainBranchCaches)throw Error('Birth filtering requires branch cache rollback');
   this.filterAtBirth=filterAtBirth;this.capacityRejectedAtBirth=0;
+  // Share each spatial total across all candidate supports. Candidate weights
+  // are orientation data, so neither coordinate strings nor weights need to be
+  // copied into a new object for every candidate/point incidence.
+  this.sites=new Map();this.orientationWeights=model.orientations.map(o=>o.cells.map(c=>c.weight));
   for(const p of fixed){
    const id=placementKey(p),o=model.orientations[p.oi];
    if(!o||!allowedTranslation(model,p.translation)||this.fixedIds.has(id))throw Error('Invalid fixed oracle seed');
@@ -26,28 +30,34 @@ export class CoronaGraph{
    for(const c of o.cells){const k=pointKey(add(c.pos,p.translation)),n=(this.fixedTotals.get(k)??0)+c.weight;if(n>model.capacity)throw Error('Fixed oracle seeds exceed capacity');this.fixedTotals.set(k,n);}
   }
  }
- legal(c){return !this.used.has(c.id)&&c.cells.every(p=>(this.totals.get(p.k)??0)+p.weight<=this.model.capacity);}
+ legal(c){
+  if(c.selected)return false;
+  for(let i=0;i<c.cells.length;i++)if(c.cells[i].total+c.weights[i]>this.model.capacity)return false;
+  return true;
+ }
  candidate(oi,translation){
   const id=placementKey({oi,translation});if(this.candidates.has(id))return this.candidates.get(id);
   if(this.fixedRejected.has(id))return null;
   if(this.candidates.size+this.fixedRejected.size>=this.limit){const e=Error('candidate budget');e.kind='resource_limit';throw e;}
-  const cells=this.model.orientations[oi].cells.map(p=>({k:pointKey(add(p.pos,translation)),weight:p.weight}));
+  const support=this.model.orientations[oi].cells,weights=this.orientationWeights[oi];
+  const keys=support.map(p=>`${p.pos[0]+translation[0]},${p.pos[1]+translation[1]},${p.pos[2]+translation[2]}`);
   // The seed pair never rolls back. A placement conflicting with it can never
   // become legal, so it needs no mutable incidence or dependency records.
-  if(!this.fixedIds.has(id)&&cells.some(p=>(this.fixedTotals.get(p.k)??0)+p.weight>this.model.capacity)){this.fixedRejected.add(id);this.rejectedOrder.push(id);return null;}
+  if(!this.fixedIds.has(id)&&keys.some((k,i)=>(this.fixedTotals.get(k)??0)+weights[i]>this.model.capacity)){this.fixedRejected.add(id);this.rejectedOrder.push(id);return null;}
   // A newly exposed frontier point was untouched in the parent. An already
   // placed blocker cannot roll back while this point survives. Omit a newly
   // enumerated illegal candidate only within that branch; releaseCaches drops
   // the point on rollback so every later activation enumerates it afresh.
   // Existing candidate nodes are always retained and updated reversibly.
-  if(this.filterAtBirth&&!this.fixedIds.has(id)&&cells.some(p=>(this.totals.get(p.k)??0)+p.weight>this.model.capacity)){this.capacityRejectedAtBirth++;return null;}
+  if(this.filterAtBirth&&!this.fixedIds.has(id)&&keys.some((k,i)=>(this.totals.get(k)??0)+weights[i]>this.model.capacity)){this.capacityRejectedAtBirth++;return null;}
   // Candidate count alone does not bound memory for large supports: a single
   // FCC candidate carries hundreds of entries in the reverse dependency graph.
   const entries=this.model.orientations[oi].cells.length;
   if(this.dependencyEntries+entries>this.dependencyLimit){const e=Error('candidate dependency budget');e.kind='resource_limit';throw e;}
   this.dependencyEntries+=entries;
   this.peakDependencyEntries=Math.max(this.peakDependencyEntries,this.dependencyEntries);
-  const c={id,oi,translation,cells,points:new Set()};c.valid=this.legal(c);this.candidates.set(id,c);this.candidateOrder.push(c);
+  const cells=keys.map(k=>{let site=this.sites.get(k);if(!site){site={k,total:this.totals.get(k)??0};this.sites.set(k,site);}return site;});
+  const c={id,oi,translation,cells,weights,selected:false,points:new Set()};c.valid=this.legal(c);this.candidates.set(id,c);this.candidateOrder.push(c);
   for(const p of c.cells){if(!this.dependencies.has(p.k))this.dependencies.set(p.k,new Set());this.dependencies.get(p.k).add(c);}return c;
  }
  point(k){
@@ -67,18 +77,24 @@ export class CoronaGraph{
   const generation=root?0:1+Math.min(...c.cells.flatMap(p=>[...(this.generations.get(p.k)?.keys()??[])]));
   const undo=c.cells.map(p=>[p.k,this.totals.get(p.k),this.generations.get(p.k)]);
   undo.cacheSizes=[this.pointOrder.length,this.candidateOrder.length,this.rejectedOrder.length];
-  this.selected.push(c);this.used.add(c.id);
-  for(const p of c.cells){this.totals.set(p.k,(this.totals.get(p.k)??0)+p.weight);const counts=new Map(this.generations.get(p.k));counts.set(generation,(counts.get(generation)??0)+1);this.generations.set(p.k,counts);}
+  this.selected.push(c);this.used.add(c.id);c.selected=true;
+  for(let i=0;i<c.cells.length;i++){const p=c.cells[i];p.total+=c.weights[i];this.totals.set(p.k,p.total);const counts=new Map(this.generations.get(p.k));counts.set(generation,(counts.get(generation)??0)+1);this.generations.set(p.k,counts);}
   this.refresh(c.cells.map(p=>p.k));return undo;
  }
- rollback(undo){const c=this.selected.at(-1);if(this.fixedIds.has(c.id))throw Error('Cannot roll back a fixed oracle seed');this.selected.pop();this.used.delete(c.id);for(const [k,n,g] of undo){if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}}this.refresh(undo.map(([k])=>k));if(!this.retainBranchCaches)this.releaseCaches(undo.cacheSizes);}
+ rollback(undo){const c=this.selected.at(-1);if(this.fixedIds.has(c.id))throw Error('Cannot roll back a fixed oracle seed');this.selected.pop();this.used.delete(c.id);c.selected=false;for(const [k,n,g] of undo){this.sites.get(k).total=n??0;if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}}this.refresh(undo.map(([k])=>k));if(!this.retainBranchCaches)this.releaseCaches(undo.cacheSizes);}
  releaseCaches([pointCount,candidateCount,rejectedCount]){
   // A parent frontier already had complete incidence. Newly created points
   // therefore become inactive on rollback; their cache entries are disposable.
   while(this.pointOrder.length>pointCount){const p=this.pointOrder.pop();if(this.active.has(p.k))throw Error('Rollback would discard an active frontier point');for(const c of p.incident)c.points.delete(p);this.points.delete(p.k);}
   while(this.candidateOrder.length>candidateCount){
    const c=this.candidateOrder.pop();if(c.points.size||this.used.has(c.id))throw Error('Rollback would discard a parent candidate');
-   for(const cell of c.cells){const set=this.dependencies.get(cell.k);set.delete(c);if(!set.size)this.dependencies.delete(cell.k);}
+   for(const cell of c.cells){
+    const set=this.dependencies.get(cell.k);set.delete(c);
+    if(!set.size){
+     if(cell.total)throw Error('Rollback would discard an occupied shared point');
+     this.dependencies.delete(cell.k);this.sites.delete(cell.k);
+    }
+   }
    this.dependencyEntries-=c.cells.length;this.candidates.delete(c.id);
   }
   while(this.rejectedOrder.length>rejectedCount)this.fixedRejected.delete(this.rejectedOrder.pop());
@@ -88,7 +104,7 @@ export class CoronaGraph{
   return {kind:forced?'forced':branch?'branch':'closed',point:forced??branch?.point};
  }
  descriptors(){return this.selected.map(c=>({oi:c.oi,translation:[...c.translation]}));}
- audit(){for(const p of this.points.values()){const valid=[...p.incident].filter(c=>this.legal(c));if(valid.length!==p.degree||[...p.incident].some(c=>c.valid!==this.legal(c)))throw Error('Oracle incidence mismatch');}return true;}
+ audit(){for(const s of this.sites.values())if(s.total!==(this.totals.get(s.k)??0))throw Error('Shared point total mismatch');for(const c of this.candidates.values())if(c.selected!==this.used.has(c.id))throw Error('Shared candidate selection mismatch');for(const p of this.points.values()){const valid=[...p.incident].filter(c=>this.legal(c));if(valid.length!==p.degree||[...p.incident].some(c=>c.valid!==this.legal(c)))throw Error('Oracle incidence mismatch');}return true;}
 }
 // Independent replay, including complete candidate enumeration at every exposed
 // point. A finite pair core can be filled while its outer frontier is dead.

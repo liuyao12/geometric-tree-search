@@ -36,8 +36,9 @@ const fixed=[{oi:0,translation:[0,0,0]},{oi:0,translation:[1,0,0]}];const fronti
 const decorated={capacity:1,required:[{pos:[0,0,0]},{pos:[1,0,0]}],orientations:[{cells:[{pos:[0,0,0],weight:1}],marks:[{pos:[4,0,0],value:[null,0]}]},{cells:[{pos:[0,0,0],weight:1}],marks:[{pos:[3,0,0],value:[1,1]}]}]};
 const dg=new PointGraph(decorated),a=dg.candidates.find(c=>c.oi===0&&c.translation[0]===0),b=dg.candidates.find(c=>c.oi===1&&c.translation[0]===1),undo=dg.apply(a);assert.equal(b.valid,false);assert.ok(dg.markingCuts);dg.rollback(undo);assert.ok(b.valid);dg.verifyDomains();
 for(const [tile,pairs,valid,invalid,blocked] of [['cube',26,26,0,0],['a2_turtle_prism',247,41,206,176],['a2_hat_prism',227,41,186,166]]){
- const model=prepareModel({tile,radius:1,mirrors:true});let previous=0,last;
+ const model=prepareModel({tile,radius:1,mirrors:true});let previous=0,last,elapsed=0;
  for await(const e of learnMarking(model,{timeMs:30000,audit:tile==='cube'})){
+  if(e.type==='marking-learning'){assert.ok(Number.isFinite(e.elapsedMs)&&e.elapsedMs>=elapsed,'Learning progress must not reset its clock');elapsed=e.elapsedMs;}
   if(e.phase==='update'){assert.equal(e.pairs,++previous);assert.equal(e.snapshot.counts.valid,e.snapshot.positivePassed);assert.equal(e.snapshot.saved,undefined);}
   last=e;
  }

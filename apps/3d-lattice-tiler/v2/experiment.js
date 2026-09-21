@@ -1,7 +1,7 @@
-import {prepareModel} from './model.js?v=2.2.2';
-import {search} from './search.js?v=2.2.2';
-import {learnMarking} from '../marking-learning.js?v=20260921-voxel-audit';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-voxel-audit';
+import {prepareModel} from './model.js?v=2.2.3';
+import {search} from './search.js?v=2.2.3';
+import {learnMarking} from '../marking-learning.js?v=20260921-shared-points';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-shared-points';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();
@@ -22,7 +22,7 @@ export async function* runExperiment(data){
     if(['gcts','both'].includes(data.mode)){
       for await(const e of learnMarking(model,{timeMs:Math.max(0,data.timeMs-(performance.now()-started)),pairNodes:data.pairNodes??500,extent:data.markingExtent??1})){
         if(e.type==='marking-learned'){marking=e.marking;if(e.model)model=e.model;}
-        yield {...e,mode:data.mode};
+        yield {...e,mode:data.mode,elapsedMs:performance.now()-started};
       }
       if(!marking.accepted){
         yield {type:'result',mode:data.mode,result:'unknown',reason:`Marking not activated: ${marking.reason}`,placements:[],verification:{ok:false,covered:0,required:model.required.length},stats:{totalMs:performance.now()-started,preparationMs:performance.now()-started,learningMs:marking.elapsedMs,attempts:0,branches:0,backtracks:0,forced:0,capacityCuts:0,lookaheadCuts:0,clusterValidated:0},marking,model,config:data};return;

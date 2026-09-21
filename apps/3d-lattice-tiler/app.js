@@ -1,5 +1,5 @@
-import {remember3DMarking} from './marking-storage.js?v=20260921-voxel-audit';
-import {MarkingPreview} from './marking-preview.js?v=20260921-voxel-audit';
+import {remember3DMarking} from './marking-storage.js?v=20260921-shared-points';
+import {MarkingPreview} from './marking-preview.js?v=20260921-shared-points';
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
 function showMarkingView(learning){markingPreview.host.hidden=!learning;document.getElementById('viewport').hidden=learning;document.getElementById('showLearning').disabled=!markingPreview.model;document.getElementById('showLearning').setAttribute('aria-pressed',String(learning));document.getElementById('showTiling').setAttribute('aria-pressed',String(!learning));window.dispatchEvent(new Event('resize'));}
 document.getElementById('showTiling').onclick=()=>showMarkingView(false);document.getElementById('showLearning').onclick=()=>showMarkingView(true);
@@ -10,7 +10,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-voxel-audit";
+} from "./engine.js?v=20260921-shared-points";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3185,7 +3185,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-voxel-audit", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-shared-points", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3983,7 +3983,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-voxel-audit", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-shared-points", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

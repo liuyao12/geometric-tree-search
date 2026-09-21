@@ -24,11 +24,11 @@ for(const tile of ['cube','a2_hexagonal_prism','a2_turtle_prism']){
   const plain=new CoronaGraph(model,{retainBranchCaches:true}),fixed=new CoronaGraph(model,{fixed:pair,retainBranchCaches:false});
   const roots=[];for(const p of pair){plain.apply(p,{root:true});roots.push(fixed.apply(p,{root:true}));}
   audit(plain);audit(fixed);assert.deepEqual(fixed.descriptors(),plain.descriptors());
-  const baseline=state(fixed),cacheCounts=[fixed.points.size,fixed.candidates.size,fixed.dependencyEntries],choice=fixed.schedule();
+  const baseline=state(fixed),cacheCounts=[fixed.points.size,fixed.candidates.size,fixed.dependencyEntries,fixed.sites.size],choice=fixed.schedule();
   if(choice.point){for(const c of [...choice.point.incident].filter(c=>c.valid).slice(0,3)){
    const undo=fixed.apply(c);audit(fixed);const next=fixed.schedule();
    if(next.point){const child=[...next.point.incident].find(c=>c.valid);if(child){const second=fixed.apply(child);audit(fixed);fixed.rollback(second);audit(fixed);}}
-   fixed.rollback(undo);audit(fixed);assert.equal(state(fixed),baseline);assert.deepEqual([fixed.points.size,fixed.candidates.size,fixed.dependencyEntries],cacheCounts);
+   fixed.rollback(undo);audit(fixed);assert.equal(state(fixed),baseline);assert.deepEqual([fixed.points.size,fixed.candidates.size,fixed.dependencyEntries,fixed.sites.size],cacheCounts);
   }}
   assert.throws(()=>fixed.rollback(roots.at(-1)),/fixed oracle seed/);assert.equal(state(fixed),baseline);
   assert.ok(fixed.dependencyEntries<=plain.dependencyEntries||fixed.points.size>plain.points.size);

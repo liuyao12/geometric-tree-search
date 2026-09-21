@@ -1,4 +1,4 @@
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-voxel-audit';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-shared-points';
 export const LEARNING_VERSION='pair-corona-marking-1';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -72,9 +72,9 @@ export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=2
   validatePointModel(model);transforms=pointSymmetries(model);trainer=new OnlineMarking(model,transforms,{extent,maxSlots});
   for(const pair of neighboringPairs(model,transforms,{maxPairs})){
    if(stop()||performance.now()>=deadline){reason=stop()?'cancelled':'learning time budget';break;}
-   yield {type:'marking-learning',phase:'pair',pair,placements:pair,pairs:evidence.length,counts:{...trainer.counts},snapshot};let row;
+   yield {type:'marking-learning',phase:'pair',pair,placements:pair,pairs:evidence.length,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};let row;
    for await(const e of checkCorona(model,pair,{nodes:pairNodes,deadline,stop,audit})){
-    if(e.type==='corona-step')yield {...e,type:'marking-learning',phase:'corona',pair,pairs:evidence.length,counts:{...trainer.counts},snapshot};else row=e;
+    if(e.type==='corona-step')yield {...e,type:'marking-learning',phase:'corona',pair,pairs:evidence.length,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};else row=e;
    }
    row={...row,pair};evidence.push(row);snapshot=trainer.add(row);
    yield {type:'marking-learning',phase:'update',pair,placements:row.placements,snapshot,pairs:evidence.length,counts:snapshot.counts,status:row.status,elapsedMs:performance.now()-started};await new Promise(r=>setTimeout(r,0));

@@ -1,0 +1,418 @@
+{
+  "protocol": {
+    "referenceSha256": "3016b5e5f985e32e98428e6f98dd307e2b7181e5d3d37596a735ddab1dedfd9d",
+    "currentSha256": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+    "nodes": 500,
+    "dependencyLimit": 1000000,
+    "timeLimit": "none",
+    "trace": "Every apply and rollback, including the selected prefix after each mutation",
+    "scope": "Two diagnostic pairs per system; no complete-catalogue speedup claim"
+  },
+  "rows": [
+    {
+      "tile": "a2_turtle_prism",
+      "kind": "slab",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -5,
+            1,
+            4
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "invalid",
+        "reason": null,
+        "nodes": 0,
+        "backtracks": 0,
+        "cachedCandidates": 330,
+        "fixedRejected": 469,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 8580,
+        "peakDependencyEntries": 8580,
+        "verification": null
+      },
+      "referenceMs": 7.590000000000003,
+      "currentMs": 6.533874999999995,
+      "mutations": 2,
+      "traceDigest": "a96c8721b01db4033bf1c7d7f02ab71e24dce07354c967fa93e4e409dfa3a49d"
+    },
+    {
+      "tile": "a2_turtle_prism",
+      "kind": "slab",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -2,
+            -2,
+            4
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "valid",
+        "reason": null,
+        "nodes": 18,
+        "backtracks": 9,
+        "cachedCandidates": 1864,
+        "fixedRejected": 431,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 48464,
+        "peakDependencyEntries": 48464,
+        "verification": {
+          "complete": true,
+          "coreComplete": true,
+          "frontierViable": true,
+          "deadPoints": []
+        }
+      },
+      "referenceMs": 34.92433399999999,
+      "currentMs": 29.479332999999997,
+      "mutations": 29,
+      "traceDigest": "b3e1910f138e68e7b97b3703dd29ed2b15b4b1130373766a9cb1c0115369ae2c"
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "vertex",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -1,
+            1
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500,
+        "backtracks": 500,
+        "cachedCandidates": 10920,
+        "fixedRejected": 394,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 404040,
+        "peakDependencyEntries": 404040,
+        "verification": null
+      },
+      "referenceMs": 1227.6778749999999,
+      "currentMs": 444.1014580000001,
+      "mutations": 1002,
+      "traceDigest": "b00a04274d2733efd236a2ca5dc349fadf5fee46394c165f7bb68620757fee68"
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "vertex",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -1,
+            0,
+            1
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500,
+        "backtracks": 500,
+        "cachedCandidates": 12292,
+        "fixedRejected": 394,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 454804,
+        "peakDependencyEntries": 454804,
+        "verification": null
+      },
+      "referenceMs": 1276.7077910000003,
+      "currentMs": 450.3252920000002,
+      "mutations": 1002,
+      "traceDigest": "5a0e19208df38fce2f29b203ef63fb67bc6781a051bdc2261cb8ee7ed9f52a13"
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "voxel",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "invalid",
+        "reason": null,
+        "nodes": 12,
+        "backtracks": 12,
+        "cachedCandidates": 3669,
+        "fixedRejected": 618,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 168774,
+        "peakDependencyEntries": 168774,
+        "verification": null
+      },
+      "referenceMs": 95.61562499999991,
+      "currentMs": 56.53483300000016,
+      "mutations": 26,
+      "traceDigest": "24202982a68d0aa20236009db2b784aa34f1b6c586c383edf0ec20fc2e3fc638"
+    },
+    {
+      "tile": "p9-42947",
+      "kind": "voxel",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            4,
+            0
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "attempt budget",
+        "nodes": 500,
+        "backtracks": 500,
+        "cachedCandidates": 17228,
+        "fixedRejected": 650,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 792488,
+        "peakDependencyEntries": 792488,
+        "verification": null
+      },
+      "referenceMs": 1470.2569160000003,
+      "currentMs": 594.0336669999997,
+      "mutations": 1002,
+      "traceDigest": "aceaa57b32da2e8496f494a4cd5ba9adcaa01a8a38c9bc3ea3badf8c7aa97a33"
+    },
+    {
+      "tile": "p10-054782",
+      "kind": "voxel",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 73,
+        "backtracks": 67,
+        "cachedCandidates": 20000,
+        "fixedRejected": 2402,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 1000000,
+        "peakDependencyEntries": 1000000,
+        "verification": null
+      },
+      "referenceMs": 929.9161670000003,
+      "currentMs": 440.47754200000054,
+      "mutations": 142,
+      "traceDigest": "f8d6c88cefb23af25d6a1665300903ce522d39f420582a4a1a9994acf1ad2981"
+    },
+    {
+      "tile": "p10-054782",
+      "kind": "voxel",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            2,
+            6
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 23,
+        "backtracks": 13,
+        "cachedCandidates": 20000,
+        "fixedRejected": 2419,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 1000000,
+        "peakDependencyEntries": 1000000,
+        "verification": null
+      },
+      "referenceMs": 532.6311660000001,
+      "currentMs": 331.2545,
+      "mutations": 38,
+      "traceDigest": "2f821928c9ff6bc9644358b952611782314118d81a16c9d124a469aade282c7e"
+    },
+    {
+      "tile": "fcc_pure",
+      "kind": "vertex",
+      "index": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            6,
+            0
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 1,
+        "backtracks": 0,
+        "cachedCandidates": 1808,
+        "fixedRejected": 5013,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 999824,
+        "peakDependencyEntries": 999824,
+        "verification": null
+      },
+      "referenceMs": 605.4390420000009,
+      "currentMs": 297.85329099999944,
+      "mutations": 3,
+      "traceDigest": "df223fa41650dccb9f35826cb2e15b5dc91293f63c16d5ae830256b42a0a9c7b"
+    },
+    {
+      "tile": "fcc_pure",
+      "kind": "vertex",
+      "index": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            0,
+            -6
+          ]
+        }
+      ],
+      "result": {
+        "type": "corona-result",
+        "status": "unresolved",
+        "reason": "candidate dependency budget",
+        "nodes": 1,
+        "backtracks": 0,
+        "cachedCandidates": 1808,
+        "fixedRejected": 5013,
+        "capacityRejectedAtBirth": 0,
+        "dependencyEntries": 999824,
+        "peakDependencyEntries": 999824,
+        "verification": null
+      },
+      "referenceMs": 509.27487499999916,
+      "currentMs": 285.1748329999991,
+      "mutations": 3,
+      "traceDigest": "97aa29825cd1a9c6ef58735bed9db131519a1f3d6547854eaa4be286f9b4290f"
+    }
+  ]
+}

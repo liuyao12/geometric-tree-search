@@ -114,3 +114,41 @@ finite regression controls, not a census of all 3D systems. Full 3D prisms are
 separate models and can remain unresolved within the same time or node budgets.
 Browser checks exercise both entry points, worker progress, current values,
 automatic learning/tiling view changes, saved metadata, and clean page execution.
+
+## Faster live corona checks (v2.2.3; also used by v1)
+
+The shared oracle now keeps one total record per spatial point, referenced by
+every candidate using that point. Candidate weights share their orientation's
+array. Legality checks read those totals directly instead of repeating string-key
+map lookups for every candidate cell. Applying and undoing a placement updates
+the same records; audits compare them with independently reconstructed domains
+and the existing totals map. Experimental branch-cache removal also releases
+unreferenced point records. Candidate limits, decision order, and label semantics
+are unchanged.
+
+The diagnostic comparison against commit `d4377be` checks every apply/rollback
+prefix (including interrupted mutations), final labels, reasons, counts and
+placements. All ten cases matched exactly. Measurements from one sequential
+AB/BA pass with a 500-attempt limit and no time limit:
+
+| Pair | Previous oracle | Shared point records |
+| --- | ---: | ---: |
+| p9-42947, vertex model, first | 1,228 ms | 444 ms |
+| p9-42947, vertex model, second | 1,277 ms | 450 ms |
+| p9-42947, center/corner model, second | 1,470 ms | 594 ms |
+| p10-054782, center/corner model, first | 930 ms | 440 ms |
+| FCC, first | 605 ms | 298 ms |
+
+These are oracle timings, including trace instrumentation, not a claim that the
+GCTS lane beats unmarked search. Difficult examples still stop unresolved at
+their attempt or dependency budget. The change does not relax the acceptance
+gate or convert a budget stop into a negative label. Full Turtle/Hat learning and
+marked finite-window regression checks retain the scores above. Every learning
+phase now reports elapsed time; the v2 lane includes preparation so its displayed
+clock no longer drops to zero between sample updates.
+
+Reproduce with `scripts/benchmark-3d-corona-shared-points.mjs`, supplying the
+previous oracle module as its first argument. The complete aggregate receipt,
+source hashes and trace digests are in
+[the shared-point comparison](../../data/3d-corona-shared-points-2026-09-21.json).
+It contains no learned marking assignments.
