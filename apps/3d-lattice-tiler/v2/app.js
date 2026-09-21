@@ -1,16 +1,16 @@
-import {MarkingOverlay} from '../marking-overlay.js?v=20260921-marking-display';
-import {placedMarkingPoints} from '../marking-display.js?v=20260921-marking-display';
-import {MarkingLibrary} from '../marking-library.js?v=20260921-marking-display';
-import {remember3DMarking} from '../marking-storage.js?v=20260921-marking-display';
-import {MarkingPreview} from '../marking-preview.js?v=20260921-marking-display';
+import {MarkingOverlay} from '../marking-overlay.js?v=20260921-marking-continuation';
+import {placedMarkingPoints} from '../marking-display.js?v=20260921-marking-continuation';
+import {MarkingLibrary} from '../marking-library.js?v=20260921-marking-continuation';
+import {remember3DMarking} from '../marking-storage.js?v=20260921-marking-continuation';
+import {MarkingPreview} from '../marking-preview.js?v=20260921-marking-continuation';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.2.6';
+import {catalog,MODES,VERSION} from './model.js?v=2.2.7';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 const learningPreview=new MarkingPreview(document.getElementById('markingLearning'));
 const learningStates={};
-const markingLibrary=new MarkingLibrary($('markingLibrary'),{learn:()=>runGcts(),use:entry=>runGcts(entry)});
+const markingLibrary=new MarkingLibrary($('markingLibrary'),{learn:()=>runGcts(),use:entry=>runGcts(entry),resume:entry=>runGcts(null,entry)});
 let learningPaint=null,selectedView='tiling';
 function paintLearning(){if(learningPaint===null)learningPaint=requestAnimationFrame(()=>{learningPaint=null;showLearning();refresh();renderPatch();});}
 const labels={learning:'Learning markings',exhausted_marked:'Exhausted marked',finite_exact:'Verified window',unknown:'Unknown',exhausted_finite:'Exhausted finite',error:'Unavailable'};
@@ -77,7 +77,7 @@ function inspect(){
   if(!s){$('inspection').textContent=r.message??r.reason??'No completed measurement.';$('clusterList').textContent='No clusters retained.';return;}
   if(r.result==='learning'&&!r.marking){$('inspection').textContent='Classifying the first neighboring pair with unmarked one-corona search…';$('clusterList').textContent='No clusters yet.';return;}
   const marking=r.marking;
-  if(marking){$('inspection').textContent=`${marking.pairs??0} one-corona pairs; accepts ${marking.positivePassed??0}/${marking.counts?.valid??0} valid and blocks ${marking.negativeBlocked??0}/${marking.counts?.invalid??0} invalid. ${marking.values??0} assigned point values across orientations. ${marking.reused?'Validation':'Learning'} ${time(marking.elapsedMs)}. ${fmt(s.markingCuts)} marking-based eliminations. ${marking.reused?'Reused browser marking; validation charged to this run. Original training '+time(marking.trainingMs)+'. ':''}${marking.accepted?'Validated marking used in this search.':'Learning incomplete or below the acceptance threshold.'} A learned restriction is not an unmarked impossibility proof.`;$('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2):'No clusters retained.';return;}
+  if(marking){$('inspection').textContent=`${marking.pairs??0} one-corona pairs; accepts ${marking.positivePassed??0}/${marking.counts?.valid??0} valid and blocks ${marking.negativeBlocked??0}/${marking.counts?.invalid??0} invalid. ${marking.values??0} assigned point values across orientations. ${marking.reused?'Validation':'Learning'} ${time(marking.elapsedMs)}.${marking.continued?' Continued run; cumulative training '+time(marking.trainingMs)+'. ':''} ${fmt(s.markingCuts)} marking-based eliminations. ${marking.reused?'Reused browser marking; validation charged to this run. Original training '+time(marking.trainingMs)+'. ':''}${marking.accepted?'Validated marking used in this search.':'Learning incomplete or below the acceptance threshold.'} A learned restriction is not an unmarked impossibility proof.`;$('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2):'No clusters retained.';return;}
   $('inspection').textContent=`${r.reason?`Stopped: ${r.reason}. `:''}${fmt(s.attempts)} attempted base placements; ${fmt(s.candidates)} candidate nodes and ${fmt(s.edges)} incidence edges. Preparation ${time(s.preparationMs)}, graph construction ${time(s.graphMs)}, cluster proposal / learning ${time(s.learningMs)}. Estimated graph and trail footprint ${(s.memoryEstimateBytes/1048576).toFixed(1)} MiB (not process memory). ${fmt(s.capacityCuts)} residual-capacity contradictions; ${fmt(s.lookaheadCuts)} context-local failed-move eliminations from ${fmt(s.probes)} probes. ${marking?.rank?`Vector marking rank ${marking.rank}${marking.constantFallback?' (constant resource fallback)':''}; no boundary-specific pair rules are generalized. `:''}${fmt(s.clusterProposals)} sampled clusters, ${fmt(s.clusterValidated)} validated, ${fmt(s.clusterUses)} used for ordering. These proposals never remove base alternatives.`;
   $('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2)+`\nShowing ${Math.min(5,r.clusters.length)} of ${r.clusters.length}. Export contains the full library.`:'No cluster library in this lane. Live proposals are exported at completion.';
 }
@@ -90,17 +90,21 @@ function drawChart(){
 async function preview(){
   markingLibrary.refresh(null);markingOverlay.set([]);selectedView='tiling';document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);$('tileName').textContent=custom?.name??selected?.name??'Custom system';$('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.2.6',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.2.7',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.2.6',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.2.7',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
     w.onmessage=({data:e})=>{
-      if(e.type==='model'){models[c.mode]=e.model;models.preview=e.model;syncModelUI(e.model);return;}
+      if(e.type==='model'){
+        // Corona witnesses belong to the unmarked oracle, not the marked growth run.
+        if(results[c.mode]?.result==='learning')results[c.mode].placements=[];
+        models[c.mode]=e.model;models.preview=e.model;syncModelUI(e.model);return;
+      }
       if(e.type==='marking-learning'||e.type==='marking-learned'){
         if(active===c.mode&&(!learningStates[c.mode]||e.type==='marking-learned'))selectedView=e.marking?.accepted?'tiling':'learning';
         if(e.type==='marking-learned'){e.marking=remember3DMarking(models[c.mode],e.marking);markingLibrary.refresh(models[c.mode],e.marking);}
@@ -127,10 +131,10 @@ async function compare(c){
   for(const m of MODES){if(cancelled)break;active=m.id;showLearning();$('status').textContent=`${cases.find(x=>x.id===c.tile)?.name??'Custom'} · ${m.name} · cold sequential run`;const r=await runWorker({...c,mode:m.id});if(r.type==='error'){results[m.id]={result:r.kind==='resource_limit'?'unknown':'error',message:r.message};$('status').textContent=r.message;}else results[m.id]=r;refresh();renderPatch();}
   archive.push({config:c,results:structuredClone(results),series:structuredClone(series)});verdict();
 }
-async function runGcts(savedMarking=null){
+async function runGcts(savedMarking=null,learningCheckpoint=null){
  if(busy)return;previewSequence++;worker?.terminate();cancelled=false;lock(true);
- const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{})};runConfig=c;active='gcts';selectedView='learning';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
- $('status').textContent=savedMarking?'Validating the selected browser marking…':'Learning a new marking from unmarked corona checks…';
+ const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{}),...(learningCheckpoint?{learningCheckpoint}:{})};if(learningCheckpoint){c.pairNodes=Math.max(c.pairNodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));$('pairBudget').value=c.pairNodes;}runConfig=c;active='gcts';selectedView='learning';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
+ $('status').textContent=savedMarking?'Validating the selected browser marking…':learningCheckpoint?'Continuing unresolved corona checks…':'Learning a new marking from unmarked corona checks…';
  try{const r=await runWorker(c);results.gcts=r.type==='error'?{result:'error',message:r.message}:r;archive.push({config:c,results:structuredClone(results)});refresh();showLearning();renderPatch(true);$('status').textContent=r.type==='error'?r.message:cancelled?'Stopped.':r.result==='finite_exact'?'Marked window verified.':r.reason??'Marked search finished.';$('verdict').textContent=savedMarking?'Explicit reuse run: validation and tiling are timed; original training is reported separately. Run comparison for cold measurements.':'Standalone GCTS run. Run comparison to measure against free-range.';}finally{lock(false);}
 }
 $('run').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);try{await compare(config());$('status').textContent=cancelled?'Stopped. Partial evidence is available to export.':'Comparison complete. Select a method to inspect its patch.';}finally{lock(false);}};

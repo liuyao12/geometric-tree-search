@@ -6,7 +6,12 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
  try {
  const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(()=>{const Original=Worker;window.workResults=[];window.Worker=class extends Original{constructor(...args){super(...args);this.addEventListener('message',({data})=>{if(data.type==='result')window.workResults.push(data);});}};});
+ // Leave a paint interval between installing a learned model and its first
+ // growth frame, so stale unmarked corona placements cannot hide in a fast run.
+ await page.addInitScript(()=>{const Original=Worker;window.workResults=[];window.Worker=class extends Original{
+  constructor(...args){super(...args);this.addEventListener('message',({data})=>{if(data.type==='result')window.workResults.push(data);});}
+  set onmessage(handler){super.onmessage=e=>{if(e.data.type==='model'&&e.data.model.orientations.some(o=>o.marks?.length))this.marked=true;if(this.marked&&e.data.type!=='model')setTimeout(()=>handler(e),150);else handler(e);};}
+ };});
  await page.goto(base+'/3d-lattice-tiler/');
  await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
  assert.ok(await page.locator('#markings').isDisabled());

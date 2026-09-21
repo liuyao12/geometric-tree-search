@@ -242,3 +242,39 @@ No learned assignments are bundled. The existing learning and reuse suites pass;
 Turtle retains all 41 positives and blocks 192/206 negatives, and Hat retains all
 41 positives and blocks 176/186 negatives in the reflected index-3 slab controls.
 These finite classification results do not establish infinite extension.
+
+
+## Continue unfinished learning (v2.2.7; also v1)
+
+Both pages offer **Continue learning** after an incomplete run. The checkpoint
+lives in page memory for this visit and is keyed by the exact tile/lattice system.
+The worker checks the system, support extent and learner version, re-enumerates
+the catalogue, rejects duplicate or foreign pairs, and independently replays
+positive corona witnesses. Resolved labels rebuild the equality constraints;
+old provisional values are not used as targets or oracle filters. Negative labels
+retain their original exhausted-search scope.
+
+Unresolved pairs are retried from their fixed seeds before unseen pairs. The
+per-pair attempt limit is the larger of the current control and twice the previous
+limit, capped at one million for automatic increases. This continues sample
+collection, not the interrupted search stack. Timeouts remain unresolved. The
+current run's cost and cumulative training cost are recorded separately. Cold
+comparison lanes and Learn new marking still start fresh.
+
+The full enumerated pair count is shown from the start of classification. The
+preview consumes the latest snapshot even when browser painting skips an update
+and receives a subsequent corona frame. At activation, the tiling view discards
+the unmarked corona preview before receiving placements from marked growth.
+This prevents a transient comparison of an oracle patch against newly installed
+markings. Once the unchanged acceptance gate is
+met, the new marking is named, saved only in the browser, and automatically used
+for tiling. Incomplete checkpoints never appear as usable saved markings.
+
+`test-3d-marking-continuation.mjs` checks partial and unresolved catalogues,
+retained positive/negative evidence, increased limits, checkpoint identity and
+witness rejection, cumulative costs, and both engine adapters. The browser test
+`test-3d-marking-continuation-browser.cjs` exercises a low-budget cube run followed
+by successful continuation and automatic tiling in each page, and verifies a
+coalesced corona frame updates the marking values. Turtle's continued slab run
+passes 41/41 positives and rejects at least 192/206 negatives. These are finite
+local classification checks, not infinite-extension certificates.

@@ -239,6 +239,12 @@ must not become an unmarked non-tiling claim. Retain the unmarked baseline,
 report learning and verification costs, and record actual marked-growth results.
 Known markings are comparison controls, not an implicit learning target.
 
+Explicit continuation may retain resolved labels for the same tile/lattice and
+support. Recheck identity, catalogue membership and positive witnesses; rebuild
+constraints from the labels. Retry unresolved checks with declared budgets,
+keeping them unknown until resolved. Report cumulative training cost separately
+from the latest attempt. A continuation is not a cold comparison run.
+
 ## 7. RL proposes clusters
 
 The primary RL role is proposing, composing, and selecting clusters: finite

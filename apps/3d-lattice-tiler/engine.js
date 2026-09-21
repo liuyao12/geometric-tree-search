@@ -1,8 +1,8 @@
-import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-marking-display';
+import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-marking-continuation';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260921-marking-display";
+import { periodicStream } from "./periodic-search.js?v=20260921-marking-continuation";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
@@ -2368,7 +2368,7 @@ export const createTilingStream = (() => {
         const learningModel=legacyMarkingModel(prepared,includeMirrors);
         yield {type:'marking-learning-model',model:learningModel};
         let learned;
-        const learningOptions={timeMs:Number(config.time_limit_ms)>0?Number(config.time_limit_ms):Infinity,pairNodes:config.marking_pair_nodes??500,extent:config.marking_extent??1,stop:()=>!!stopToken.stop};
+        const learningOptions={timeMs:Number(config.time_limit_ms)>0?Number(config.time_limit_ms):Infinity,pairNodes:config.marking_pair_nodes??500,extent:config.marking_extent??1,checkpoint:config.learningCheckpoint,stop:()=>!!stopToken.stop};
         for await(const event of (config.savedMarking?reuseMarking(learningModel,config.savedMarking,learningOptions):learnMarking(learningModel,learningOptions))){
           if(event.type==='marking-learned')learned=event.marking;
           yield event;

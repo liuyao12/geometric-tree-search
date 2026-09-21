@@ -1,14 +1,15 @@
-import {matching3DMarkings,markingSystem} from './marking-storage.js?v=20260921-marking-display';
+import {matching3DMarkings,markingSystem} from './marking-storage.js?v=20260921-marking-continuation';
 // Assignments live in this browser only. Workers revalidate before using them.
 export class MarkingLibrary{
- constructor(host,{learn,use}){
-  host.innerHTML='<label>Saved marking <select aria-label="Saved marking"></select></label><button type="button" class="marking-use">Tile with marking</button><button type="button" class="marking-new">Learn new marking</button>';
-  this.select=host.querySelector('select');this.use=host.querySelector('.marking-use');this.learn=host.querySelector('.marking-new');this.model=null;this.entries=[];this.visit=[];this.busy=false;
+ constructor(host,{learn,use,resume}){
+  host.innerHTML='<label>Saved marking <select aria-label="Saved marking"></select></label><button type="button" class="marking-use">Tile with marking</button><button type="button" class="marking-new">Learn new marking</button><button type="button" class="marking-continue" title="Keep resolved labels and retry unfinished pairs with a larger attempt budget. Retained for this visit.">Continue learning</button>';
+  this.select=host.querySelector('select');this.use=host.querySelector('.marking-use');this.learn=host.querySelector('.marking-new');this.continue=host.querySelector('.marking-continue');this.checkpoints=new Map();this.continue.onclick=()=>{const entry=this.checkpoints.get(JSON.stringify(markingSystem(this.model)));if(entry)resume?.(entry);};this.model=null;this.entries=[];this.visit=[];this.busy=false;
   this.use.onclick=()=>{const entry=this.entries.find(e=>e.marking.saved.id===this.select.value);if(entry)use(entry);};this.learn.onclick=learn;
   this.refresh();
  }
  refresh(model=this.model,marking=null){
   this.model=model;
+  if(model&&marking){const key=JSON.stringify(markingSystem(model));if(marking.accepted)this.checkpoints.delete(key);else if(marking.evidence?.length&&(marking.counts?.unresolved||!marking.complete))this.checkpoints.set(key,{domain:markingSystem(model),marking});}
   if(model&&marking?.accepted&&marking.saved){const entry={domain:{...markingSystem(model),extent:marking.extent},marking};this.visit=this.visit.filter(e=>e.marking.saved.id!==marking.saved.id);this.visit.push(entry);}
   const selected=marking?.saved?.id??this.select.value;
   const system=model&&JSON.stringify(markingSystem(model));
@@ -20,5 +21,5 @@ export class MarkingLibrary{
   if(this.entries.some(e=>e.marking.saved.id===selected))this.select.value=selected;
   this.lock(this.busy);
  }
- lock(busy){this.busy=busy;this.select.disabled=busy||!this.entries.length;this.use.disabled=busy||!this.entries.length;this.learn.disabled=busy;}
+ lock(busy){this.busy=busy;this.select.disabled=busy||!this.entries.length;this.use.disabled=busy||!this.entries.length;this.learn.disabled=busy;this.continue.hidden=!this.model||!this.checkpoints.has(JSON.stringify(markingSystem(this.model)));this.continue.disabled=busy;}
 }

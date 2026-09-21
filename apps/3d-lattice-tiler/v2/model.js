@@ -1,7 +1,7 @@
-import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-marking-display';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.6';
+import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-marking-continuation';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.7';
 
-export const VERSION = '2.2.6';
+export const VERSION = '2.2.7';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},

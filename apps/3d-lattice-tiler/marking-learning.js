@@ -1,6 +1,6 @@
-import {markingSystem} from './marking-storage.js?v=20260921-marking-display';
-import {selectMask} from './marking-mask.js?v=20260921-marking-display';
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-display';
+import {markingSystem} from './marking-storage.js?v=20260921-marking-continuation';
+import {selectMask} from './marking-mask.js?v=20260921-marking-continuation';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-continuation';
 export const LEARNING_VERSION='pair-corona-marking-2';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -86,24 +86,47 @@ export class OnlineMarking{
  }
 }
 export function pairCompatible(fields,pair){const section=new Map();for(const p of pair)for(const m of fields[p.oi]){const k=`${add(m.pos,p.translation)}|${m.component??0}`;if(section.has(k)&&section.get(k)!==m.value)return false;section.set(k,m.value);}return true;}
-export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=20000,maxSlots=12000,extent=1,stop=()=>false,audit=false}={}){
- const started=performance.now(),deadline=started+timeMs;let snapshot=null,reason=null,complete=false,trainer,transforms;const evidence=[];
+export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=20000,maxSlots=12000,extent=1,stop=()=>false,audit=false,checkpoint=null}={}){
+ if(checkpoint)pairNodes=Math.max(pairNodes,Math.min(1000000,Math.max(1,(checkpoint.marking?.pairNodes??0)*2)));
+ const started=performance.now(),deadline=started+timeMs;let snapshot=null,reason=null,complete=false,trainer,transforms;const evidence=[];let totalPairs=0,retained=0;
  try{
   validatePointModel(model);transforms=pointSymmetries(model);trainer=new OnlineMarking(model,transforms,{extent,maxSlots});
-  for(const pair of neighboringPairs(model,transforms,{maxPairs})){
-   if(stop()||performance.now()>=deadline){reason=stop()?'cancelled':'learning time budget';break;}
-   yield {type:'marking-learning',phase:'pair',pair,placements:pair,pairs:evidence.length,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};let row;
-   for await(const e of checkCorona(model,pair,{nodes:pairNodes,deadline,stop,audit})){
-    if(e.type==='corona-step')yield {...e,type:'marking-learning',phase:'corona',pair,pairs:evidence.length,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};else row=e;
+  const catalog=[...neighboringPairs(model,transforms,{maxPairs})];totalPairs=catalog.length;
+  const known=new Map();
+  if(checkpoint){
+   const previous=checkpoint.marking;
+   if(JSON.stringify(markingSystem(model))!==JSON.stringify(markingSystem(checkpoint.domain))||previous?.version!==LEARNING_VERSION||previous.extent!==extent||!Array.isArray(previous.evidence))throw Error('Learning checkpoint belongs to a different system or support');
+   const eligible=new Set(catalog.map(pair=>JSON.stringify(pair)));
+   for(const row of previous.evidence){
+    if(stop()||performance.now()>=deadline)throw Error('Learning checkpoint replay budget reached');
+    const key=JSON.stringify(row.pair);
+    if(!eligible.has(key)||known.has(key)||!['valid','invalid','unresolved'].includes(row.status))throw Error('Invalid checkpoint pair catalogue');
+    if(row.status==='valid'&&!verifyCorona(model,row.pair,row.placements).complete)throw Error('Invalid checkpoint corona witness');
+    known.set(key,row);evidence.push(row);snapshot=trainer.add(row);
+    if(row.status!=='unresolved')retained++;
+    if(evidence.length%8===0){yield {type:'marking-learning',phase:'resume',snapshot,pairs:evidence.length,totalPairs,retained,pairNodes,placements:row.placements,counts:{...trainer.counts},elapsedMs:performance.now()-started};await new Promise(r=>setTimeout(r,0));}
    }
-   row={...row,pair};evidence.push(row);snapshot=trainer.add(row);
-   yield {type:'marking-learning',phase:'update',pair,placements:row.placements,snapshot,pairs:evidence.length,counts:snapshot.counts,status:row.status,elapsedMs:performance.now()-started};await new Promise(r=>setTimeout(r,0));
+   yield {type:'marking-learning',phase:'resume',snapshot,pairs:evidence.length,totalPairs,retained,pairNodes,counts:{...trainer.counts},elapsedMs:performance.now()-started};
+  }
+  // Retry unresolved checks before unseen pairs; resolved labels stay fixed.
+  const pending=catalog.filter(pair=>known.get(JSON.stringify(pair))?.status==='unresolved').concat(catalog.filter(pair=>!known.has(JSON.stringify(pair))));
+  for(const pair of pending){
+   if(stop()||performance.now()>=deadline){reason=stop()?'cancelled':'learning time budget';break;}
+   yield {type:'marking-learning',phase:'pair',pair,placements:pair,pairs:evidence.length,totalPairs,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};let row;
+   for await(const e of checkCorona(model,pair,{nodes:pairNodes,deadline,stop,audit})){
+    if(e.type==='corona-step')yield {...e,type:'marking-learning',phase:'corona',pair,pairs:evidence.length,totalPairs,counts:{...trainer.counts},snapshot,elapsedMs:performance.now()-started};else row=e;
+   }
+   row={...row,pair};const old=known.get(JSON.stringify(pair));
+   if(old){evidence[evidence.indexOf(old)]=row;const index=trainer.rows.findIndex(r=>JSON.stringify(r.pair)===JSON.stringify(pair));trainer.rows.splice(index,1);trainer.counts.unresolved--;}
+   else evidence.push(row);
+   known.set(JSON.stringify(pair),row);snapshot=trainer.add(row);
+   yield {type:'marking-learning',phase:'update',pair,placements:row.placements,snapshot,pairs:evidence.length,totalPairs,counts:snapshot.counts,status:row.status,elapsedMs:performance.now()-started};await new Promise(r=>setTimeout(r,0));
   }
   complete=!reason;
  }catch(e){if(e.kind!=='resource_limit')throw e;reason=e.message;}
  if(snapshot&&complete&&trainer.maskLearning){
   snapshot=trainer.snapshot({maxEvaluations:2048});
-  yield {type:'marking-learning',phase:'refine',snapshot,pairs:evidence.length,counts:snapshot.counts,elapsedMs:performance.now()-started};
+  yield {type:'marking-learning',phase:'refine',snapshot,pairs:evidence.length,totalPairs,counts:snapshot.counts,elapsedMs:performance.now()-started};
  }
  if(snapshot){
   let positivePassed=0,negativeBlocked=0;
@@ -112,7 +135,8 @@ export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=2
   if(positivePassed!==snapshot.positivePassed||negativeBlocked!==snapshot.negativeBlocked)throw Error('Independent marking replay disagrees with training scores');
  }
  const qualifies=!!snapshot&&complete&&!snapshot.counts.unresolved&&snapshot.counts.valid>0&&snapshot.positivePassed===snapshot.counts.valid&&(snapshot.counts.invalid===0||snapshot.negativeBlocked*2>snapshot.counts.invalid);
- const result={...snapshot,version:LEARNING_VERSION,complete,accepted:qualifies,reason:reason??(snapshot?.counts.unresolved?'unresolved pairs':!qualifies?'marking did not pass acceptance':null),evidence,elapsedMs:performance.now()-started,scope:'Learned restriction supported by viable pair-corona labels; neither redundant pruning nor an infinite-tiling certificate.'};
+ const elapsedMs=performance.now()-started;
+ const result={...snapshot,totalPairs,retained,pairNodes,continued:!!checkpoint,trainingMs:(checkpoint?.marking.trainingMs??checkpoint?.marking.elapsedMs??0)+elapsedMs,extent,version:LEARNING_VERSION,complete,accepted:qualifies,reason:reason??(snapshot?.counts.unresolved?'unresolved pairs':!qualifies?'marking did not pass acceptance':null),evidence,elapsedMs,scope:'Learned restriction supported by viable pair-corona labels; neither redundant pruning nor an infinite-tiling certificate.'};
  yield {type:'marking-learned',marking:result,model:qualifies?{...model,orientations:model.orientations.map((o,i)=>({...o,marks:snapshot.fields[i]}))}:null};
 }
 

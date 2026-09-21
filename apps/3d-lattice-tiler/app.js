@@ -1,21 +1,21 @@
-import {MarkingOverlay} from './marking-overlay.js?v=20260921-marking-display';
-import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-marking-display';
-import {MarkingLibrary} from './marking-library.js?v=20260921-marking-display';
-import {remember3DMarking} from './marking-storage.js?v=20260921-marking-display';
-import {MarkingPreview} from './marking-preview.js?v=20260921-marking-display';
+import {MarkingOverlay} from './marking-overlay.js?v=20260921-marking-continuation';
+import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-marking-continuation';
+import {MarkingLibrary} from './marking-library.js?v=20260921-marking-continuation';
+import {remember3DMarking} from './marking-storage.js?v=20260921-marking-continuation';
+import {MarkingPreview} from './marking-preview.js?v=20260921-marking-continuation';
 let libraryWorker=null,libraryKey=null;
-const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry)});
-function runMarkingSelection(savedMarking=null){
+const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry),resume:entry=>runMarkingSelection(null,entry)});
+function runMarkingSelection(savedMarking=null,learningCheckpoint=null){
  if(growthRunning)stopGrowthBenchmark('Starting a standalone GCTS run.');
  strategySelect.value=setRadioValue(strategyRadios,'learning_free_range','free_range');updateStrategyUI();
- const config=JSON.parse(configKey());if(savedMarking)config.savedMarking=savedMarking;
+ const config=JSON.parse(configKey());if(savedMarking)config.savedMarking=savedMarking;if(learningCheckpoint){config.learningCheckpoint=learningCheckpoint;config.marking_pair_nodes=Math.max(config.marking_pair_nodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));document.getElementById('markingPairBudget').value=config.marking_pair_nodes;}
  startNewRun(config);
 }
 function refreshMarkingLibrary(){
  const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
  markingLibrary.lock(running||growthRunning);
  if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
- const w=new Worker(new URL('./solver-worker.js?v=20260921-marking-display',import.meta.url),{type:'module'});libraryWorker=w;
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-marking-continuation',import.meta.url),{type:'module'});libraryWorker=w;
  w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
 }
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
@@ -28,7 +28,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-marking-display";
+} from "./engine.js?v=20260921-marking-continuation";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3215,7 +3215,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-marking-display", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-marking-continuation", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -4018,7 +4018,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-marking-display", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-marking-continuation", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

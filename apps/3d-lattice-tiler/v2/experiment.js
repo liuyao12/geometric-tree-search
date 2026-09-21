@@ -1,7 +1,7 @@
-import {prepareModel} from './model.js?v=2.2.6';
-import {search} from './search.js?v=2.2.6';
-import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-marking-display';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-marking-display';
+import {prepareModel} from './model.js?v=2.2.7';
+import {search} from './search.js?v=2.2.7';
+import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-marking-continuation';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-marking-continuation';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();
@@ -20,7 +20,7 @@ export async function* runExperiment(data){
     }
     let marking=null;
     if(['gcts','both'].includes(data.mode)){
-      const options={timeMs:Math.max(0,data.timeMs-(performance.now()-started)),pairNodes:data.pairNodes??500,extent:data.markingExtent??1};
+      const options={timeMs:Math.max(0,data.timeMs-(performance.now()-started)),pairNodes:data.pairNodes??500,extent:data.markingExtent??1,checkpoint:data.learningCheckpoint};
       for await(const e of (data.savedMarking?reuseMarking(model,data.savedMarking,options):learnMarking(model,options))){
         if(e.type==='marking-learned'){marking=e.marking;if(e.model)model=e.model;}
         yield {...e,mode:data.mode,elapsedMs:performance.now()-started};
