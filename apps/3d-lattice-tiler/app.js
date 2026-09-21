@@ -1,6 +1,8 @@
-import {MarkingLibrary} from './marking-library.js?v=20260921-marking-library';
-import {remember3DMarking} from './marking-storage.js?v=20260921-marking-library';
-import {MarkingPreview} from './marking-preview.js?v=20260921-marking-library';
+import {MarkingOverlay} from './marking-overlay.js?v=20260921-marking-display';
+import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-marking-display';
+import {MarkingLibrary} from './marking-library.js?v=20260921-marking-display';
+import {remember3DMarking} from './marking-storage.js?v=20260921-marking-display';
+import {MarkingPreview} from './marking-preview.js?v=20260921-marking-display';
 let libraryWorker=null,libraryKey=null;
 const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry)});
 function runMarkingSelection(savedMarking=null){
@@ -13,7 +15,7 @@ function refreshMarkingLibrary(){
  const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
  markingLibrary.lock(running||growthRunning);
  if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
- const w=new Worker(new URL('./solver-worker.js?v=20260921-marking-library',import.meta.url),{type:'module'});libraryWorker=w;
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-marking-display',import.meta.url),{type:'module'});libraryWorker=w;
  w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
 }
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
@@ -26,7 +28,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-marking-library";
+} from "./engine.js?v=20260921-marking-display";
 
 const $ = (id) => document.getElementById(id);
 
@@ -356,6 +358,9 @@ const frontierPointGroup = new THREE.Group();
 const periodicCellGroup = new THREE.Group();
 scene.add(faceGroup, edgeGroup, frontierPointGroup, periodicCellGroup);
 
+const markingOverlay = new MarkingOverlay({scene,camera,canvas:renderer.domElement,host:viewport,button:$('markings'),render:requestRender});
+let liveMarkingPoints = new Map();
+controls.addEventListener('change',()=>markingOverlay.inspect());
 let thumbnailRenderer = null;
 function getThumbnailRenderer() {
   if (thumbnailRenderer) return thumbnailRenderer;
@@ -2377,6 +2382,7 @@ function scheduleLiveUpdateFromDelta(delta) {
     tile_counts: delta.tile_counts ?? lastSnapshot?.tile_counts ?? [],
     frontier_stats: delta.frontier_stats ?? lastSnapshot?.frontier_stats ?? null,
     search_stats: delta.search_stats ?? lastSnapshot?.search_stats ?? null,
+    marking_points: [...liveMarkingPoints.values()],
     frontier_points: [...liveFrontierPoints.values()]
   };
   if (liveUpdateRenderQueued) return;
@@ -2398,6 +2404,7 @@ function flushLiveUpdateNow() {
   const latest = pendingLiveSnapshot;
   pendingLiveSnapshot = null;
   if (!latest) return;
+  latest.marking_points = [...liveMarkingPoints.values()];
   latest.faces = liveFaces();
   latest.frontier_points = [...liveFrontierPoints.values()];
   applyingFullUpdate = true;
@@ -2448,6 +2455,8 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
     else liveFrontierPoints.delete(key);
   }
 
+  applyMarkingUpdates(liveMarkingPoints, delta.marking_updates);
+
   // A full snapshot can be waiting for its throttled render while newer
   // placement deltas arrive. Keep that pending render at the current state;
   // otherwise the older snapshot would erase faces restored by backtracking.
@@ -2457,6 +2466,7 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
       tile_count: delta.tile_count ?? pendingFullUpdate.tile_count,
       tile_counts: delta.tile_counts ?? pendingFullUpdate.tile_counts,
       faces: liveFaces(),
+      marking_points: [...liveMarkingPoints.values()],
       frontier_points: [...liveFrontierPoints.values()],
       frontier_stats: delta.frontier_stats ?? pendingFullUpdate.frontier_stats,
       search_stats: delta.search_stats ?? pendingFullUpdate.search_stats
@@ -2480,6 +2490,8 @@ function updateScene(snapshot, options = {}) {
   if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
   if (syncLive && snapshot?.frontier_points) resetLiveFrontierPoints(snapshot);
 
+  if (syncLive) liveMarkingPoints = new Map((snapshot?.marking_points ?? []).map(p=>[markingPointKey(p),p]));
+  markingOverlay.set(snapshot?.marking_points ?? [], prototileInfo?.scale ?? 2);
   const faces = snapshot?.faces ?? [];
   const scale = prototileInfo?.scale ?? 2;
   const faceBatches = new Map();
@@ -3155,6 +3167,7 @@ function scheduleFullUpdate(snapshot) {
   // snapshot, not to whichever frame happened to be rendered previously.
   resetLiveFaceStacks(snapshot);
   resetLiveFrontierPoints(snapshot);
+  liveMarkingPoints = new Map((snapshot?.marking_points ?? []).map(p=>[markingPointKey(p),p]));
   if (liveUpdateTimer) {
     clearTimeout(liveUpdateTimer);
     liveUpdateTimer = null;
@@ -3202,7 +3215,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-marking-library", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-marking-display", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3276,6 +3289,8 @@ function resetRunView() {
   currentOpacities = {};
   liveFaceStacks = new Map();
   liveFrontierPoints = new Map();
+  liveMarkingPoints = new Map();
+  markingOverlay.set([]);
   clearTree();
   clearObjectGroup(faceGroup);
   clearObjectGroup(edgeGroup);
@@ -3365,6 +3380,7 @@ function createGrowthHistoryModel(snapshot) {
   return {
     faceStacks,
     frontierPoints,
+    markingPoints: new Map((snapshot?.marking_points ?? []).map(p=>[markingPointKey(p),p])),
     tile_count: snapshot?.tile_count ?? 0,
     tile_counts: snapshot?.tile_counts ?? [],
     frontier_stats: snapshot?.frontier_stats ?? null,
@@ -3403,6 +3419,7 @@ function applyGrowthHistoryDelta(model, delta) {
     if (point.frontier) model.frontierPoints.set(key, { ...point, pos: point.pos?.slice() });
     else model.frontierPoints.delete(key);
   }
+  applyMarkingUpdates(model.markingPoints, delta.marking_updates);
   model.tile_count = delta.tile_count ?? model.tile_count;
   model.tile_counts = delta.tile_counts ?? model.tile_counts;
   model.frontier_stats = delta.frontier_stats ?? model.frontier_stats;
@@ -3414,6 +3431,7 @@ function growthSnapshotFromModel(model) {
   if (!model) return null;
   return {
     type: "full_update",
+    marking_points: [...model.markingPoints.values()],
     tile_count: model.tile_count,
     tile_counts: model.tile_counts,
     faces: [...model.faceStacks.values()].flat().map(face => ({
@@ -4000,7 +4018,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-marking-library", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-marking-display", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

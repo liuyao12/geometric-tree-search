@@ -1,6 +1,6 @@
-import {markingSystem} from './marking-storage.js?v=20260921-marking-library';
-import {selectMask} from './marking-mask.js?v=20260921-marking-library';
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-library';
+import {markingSystem} from './marking-storage.js?v=20260921-marking-display';
+import {selectMask} from './marking-mask.js?v=20260921-marking-display';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-display';
 export const LEARNING_VERSION='pair-corona-marking-2';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -152,6 +152,8 @@ export class LearnedSection{
  compatible(move){return !this.conflicts&&this.entries(move).every(s=>!this.section.has(s.key)||this.section.get(s.key).value===s.basis);}
  add(move){for(const s of this.entries(move)){const old=this.section.get(s.key);if(old&&old.value!==s.basis)throw Error('Incompatible marking prefix');this.section.set(s.key,{value:s.basis,count:(old?.count??0)+1});}}
  remove(move){for(const s of this.entries(move)){const old=this.section.get(s.key);if(--old.count===0)this.section.delete(s.key);}}
+ points(keys=this.section.keys()) {return [...keys].map(key=>{const [position,component]=key.split('|'),entry=this.section.get(key);return {pos:position.split(',').map(Number),component:Number(component),value:entry?.value,count:entry?.count??0};});}
+ updates(move){return this.points(this.entries(move).map(e=>e.key));}
  observeDeadPoint(){return false;}
  stats(){return {marking_rank:this.marking.labelCount,marking_slots:this.marking.values,marking_revision:this.marking.pairs,marking_certified_pairs:0,marking_learned_pairs:this.marking.pairs,marking_valid_passed:this.marking.positivePassed,marking_invalid_blocked:this.marking.negativeBlocked,marking_learning_ms:this.marking.elapsedMs,marking_reused:!!this.marking.reused,marking_training_ms:this.marking.trainingMs??this.marking.elapsedMs,marking_scope:this.marking.scope,global_section_points:this.section.size,global_section_conflicts:0,marking_memory_bytes:this.marking.values*40+this.section.size*48};}
 }

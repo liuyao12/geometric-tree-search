@@ -1,4 +1,4 @@
-import {matching3DMarkings,markingSystem} from './marking-storage.js?v=20260921-marking-library';
+import {matching3DMarkings,markingSystem} from './marking-storage.js?v=20260921-marking-display';
 // Assignments live in this browser only. Workers revalidate before using them.
 export class MarkingLibrary{
  constructor(host,{learn,use}){

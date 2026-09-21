@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260921-marking-library";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260921-marking-display";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -303,7 +303,7 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
       lastHistoryTileCount = tiles;
       best = Math.max(best, tiles);
     } else if (message.type === "full_update") {
-      if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount || ["translational", "isohedral"].includes(mode.id)) {
+      if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount || snapshot.marking_points?.length || ["translational", "isohedral"].includes(mode.id)) {
         const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
         queueHistory({ point, snapshot });
         lastHistoryTileCount = tiles;

@@ -209,6 +209,9 @@ it is not a train/test split.
    they must not filter the unmarked search that supplies their own labels.
    Include the number of active points and assigned component values, stating
    whether counts cover prototypes or all represented orientations.
+   Tiling views must inspect the active placed marking section, including
+   overlapping assignment counts; their displayed values must follow rollback
+   and must not come from an unrelated known or selected saved marking.
 7. **Validate, then activate.** Replay every labeled pair with the completed
    marking. The current demo gate requires the complete catalog, no unresolved
    labels, acceptance of every positive, and rejection of more than half the

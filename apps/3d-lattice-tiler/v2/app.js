@@ -1,9 +1,11 @@
-import {MarkingLibrary} from '../marking-library.js?v=20260921-marking-library';
-import {remember3DMarking} from '../marking-storage.js?v=20260921-marking-library';
-import {MarkingPreview} from '../marking-preview.js?v=20260921-marking-library';
+import {MarkingOverlay} from '../marking-overlay.js?v=20260921-marking-display';
+import {placedMarkingPoints} from '../marking-display.js?v=20260921-marking-display';
+import {MarkingLibrary} from '../marking-library.js?v=20260921-marking-display';
+import {remember3DMarking} from '../marking-storage.js?v=20260921-marking-display';
+import {MarkingPreview} from '../marking-preview.js?v=20260921-marking-display';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.2.5';
+import {catalog,MODES,VERSION} from './model.js?v=2.2.6';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 const learningPreview=new MarkingPreview(document.getElementById('markingLearning'));
@@ -18,13 +20,14 @@ for(const m of MODES){const b=document.createElement('button');b.className='lane
 
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,.01,2000),renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));$('canvas').append(renderer.domElement);
-const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;camera.position.set(12,10,14);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.addEventListener('change',()=>markingOverlay.inspect());camera.position.set(12,10,14);
 scene.add(new THREE.HemisphereLight('#d7e9ff','#354869',2.5));const light=new THREE.DirectionalLight('#ffffff',3);light.position.set(5,10,8);scene.add(light);
 const geometryGroup=new THREE.Group(),pointGroup=new THREE.Group(),edgeGroup=new THREE.Group();scene.add(geometryGroup,pointGroup,edgeGroup);
+const markingOverlay = new MarkingOverlay({scene,camera,canvas:renderer.domElement,host:$('canvas'),button:$('markings')});
 let showPoints=true,showEdges=true;
 function clear(group){while(group.children.length){const child=group.children[0];group.remove(child);child.geometry?.dispose();if(Array.isArray(child.material))child.material.forEach(m=>m.dispose());else child.material?.dispose();}}
 function draw(model,placements,fit=false){
-  if(!model)return;[geometryGroup,pointGroup,edgeGroup].forEach(clear);
+  if(!model)return;markingOverlay.set(placedMarkingPoints(model,placements));[geometryGroup,pointGroup,edgeGroup].forEach(clear);
   const palette=['#4fdac5','#91afff','#c1acff','#ffd18b','#80cfea','#eaadcc'];
   for(const [i,p] of placements.entries()){
     const o=model.orientations[p.oi],positions=[];
@@ -85,14 +88,14 @@ function drawChart(){
   $('chart').innerHTML=s+'</svg>';
 }
 async function preview(){
-  markingLibrary.refresh(null);selectedView='tiling';document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
+  markingLibrary.refresh(null);markingOverlay.set([]);selectedView='tiling';document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);$('tileName').textContent=custom?.name??selected?.name??'Custom system';$('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.2.5',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.2.6',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.2.5',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.2.6',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);

@@ -215,3 +215,30 @@ cover empty storage, learning-to-tiling switching, reload persistence, reflectio
 filtering, distinct new runs, and both pages with no script errors. Reproduce with
 `scripts/test-3d-marking-library-browser.cjs` (Playwright; `GCTS_TEST_URL` points
 to the repository root URL, and `CHROME_PATH` can select an installed Chromium).
+
+## Inspecting the marking used by a tiling (v2.2.6; also v1)
+
+Both Tiling views now draw assigned learned point values, including points outside
+positive t-support. **Markings** toggles this overlay independently of occupancy
+points and geometry. Hover reports the lattice coordinate, component value, and
+number of tile assignments agreeing there. Free components do not create points;
+assigned zero remains visible. Values come from the active search, not the saved
+selector's current choice or a known marking.
+
+V2 reconstructs the section from its returned model and placements. V1 exports
+its actual reference-counted section in snapshots and per-move updates, including
+removals on rollback. The same data travels through live display and history
+replay. Root markings are emitted immediately after validation, before growth.
+Switching to an unmarked system clears the overlay. This display change adds no
+legality rule and changes neither the learner nor the acceptance threshold.
+
+Verification: `test-3d-marking-display.mjs` checks component wildcards, assigned
+zero, overlap counts and rollback, then compares v1 snapshot/delta transport with
+an independent placement reconstruction. `test-3d-marking-overlay-browser.cjs`
+trains Turtle and Hat in a fresh browser, verifies both finite marked windows,
+and checks hovered values/counts against the worker results. It also checks v1
+with a browser-generated constant-zero control after a genuine cube learning run.
+No learned assignments are bundled. The existing learning and reuse suites pass;
+Turtle retains all 41 positives and blocks 192/206 negatives, and Hat retains all
+41 positives and blocks 176/186 negatives in the reflected index-3 slab controls.
+These finite classification results do not establish infinite extension.

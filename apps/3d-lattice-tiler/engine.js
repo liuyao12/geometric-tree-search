@@ -1,8 +1,8 @@
-import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-marking-library';
+import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-marking-display';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260921-marking-library";
+import { periodicStream } from "./periodic-search.js?v=20260921-marking-display";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
@@ -1165,6 +1165,7 @@ export const createTilingStream = (() => {
         tile_counts: tileCounts(),
         faces,
         frontier_points: frontierPointSnapshot(),
+        marking_points: vectorMarking instanceof LearnedSection ? vectorMarking.points() : [],
         node_id,
         frontier_stats: frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
@@ -1234,6 +1235,7 @@ export const createTilingStream = (() => {
         frontier_face_keys: newKeys,
         covered_face_keys: coveredKeys,
         lattice_updates: latticeUpdatesForMove(move),
+        marking_updates: vectorMarking instanceof LearnedSection ? vectorMarking.updates(markMove(move)) : [],
         frontier_stats: extra.frontier_stats ?? frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
       };
@@ -1259,6 +1261,7 @@ export const createTilingStream = (() => {
         frontier_face_keys: newKeys,
         covered_face_keys: coveredKeys,
         lattice_updates: latticeUpdatesForMove(move),
+        marking_updates: vectorMarking instanceof LearnedSection ? vectorMarking.updates(markMove(move)) : [],
         faces: [...newKeys, ...coveredKeys]
           .map(key => state.viz_faces.get(key)?.at(-1))
           .filter(Boolean)
@@ -2392,6 +2395,7 @@ export const createTilingStream = (() => {
       searchStats.marking_kind = vectorMarking instanceof LearnedSection ? "learned_pair_corona_section" : "vector_global_section";
     };
     updateFrontierMarkingStats();
+    if (vectorMarking instanceof LearnedSection) {bestSnapshot = null; yield snapshot(rootId);}
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
     searchStats.generic_geometric_nogood_disable_reason = genericGeometricNogoodEnabled
       ? null
