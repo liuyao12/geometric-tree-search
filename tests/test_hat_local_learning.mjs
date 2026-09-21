@@ -1,8 +1,8 @@
-import assert from 'node:assert/strict';import fs from 'node:fs';
-import {HAT,ORIENTATIONS,attachments,encode,verifyPatch,canonicalPatch,grow,materialize,examine,summarize,incorporate,ROOT,conflictWitness} from '../assets/hat-local-learning.js';
+import assert from 'node:assert/strict';
+import {collect,HAT,ORIENTATIONS,attachments,encode,verifyPatch,canonicalPatch,grow,materialize,examine,summarize,incorporate,ROOT,conflictWitness} from '../assets/hat-local-learning.js';
 import {A2_SYMMETRIES,a2Transform,a2Add,solveA2Tiling,makeHexBoundary,NoA2Marking} from '../assets/a2-tiling-engine.js';
-globalThis.requestAnimationFrame=callback=>setTimeout(callback,0);
-const report=JSON.parse(fs.readFileSync(new URL('../assets/data/hat-local-patches.json',import.meta.url)));
+globalThis.requestAnimationFrame=callback=>setImmediate(callback);
+const report=await collect();
 const signatures=new Set();for(const sample of report.samples){assert.equal(verifyPatch(sample.placements).tiles,12);assert.ok(sample.placements.some(p=>p.orientation===sample.attachment.orientation&&p.translation.join()===sample.attachment.translation.join()));assert.ok(sample.placements.some(p=>p.orientation===0&&p.translation.join()==='0,0,0'));const signature=canonicalPatch(sample.placements);assert.ok(!signatures.has(signature));signatures.add(signature);assert.equal(signature,sample.canonical);}
 const inferred=encode(report.samples);assert.deepEqual(inferred,report.model);
 assert.equal(report.connections.length,320);assert.deepEqual(report.counts,{extended:40,dead:279,unresolved:1});

@@ -1,4 +1,4 @@
-import {rememberMarking} from './marking-library.js?v=20260920-named';
+import {rememberMarking} from './marking-library.js?v=20260920-browser-only';
 import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-interior';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
@@ -8,7 +8,7 @@ const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-t
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
 const embedded=window.parent!==window;if(embedded)document.body.classList.add('embedded');
 let setId='turtle',learner=createConnectionLearner(setId),report=null,model=null,shown=[],worker=null,mode=null,runningSetId=null,paused=false,epoch=0;
-const reports=new Map(),recordedReports=new Map(),automaticStarts=new Set();
+const reports=new Map(),automaticStarts=new Set();
 const send=(type,data={})=>{if(embedded)parent.postMessage({type,setId,...data},location.origin);};
 const message=t=>$('learn-status').textContent=t;
 const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
@@ -35,40 +35,39 @@ function describe(){const row=report?.connections[+picker.value];if(!row)return;
  message(`${actual}${prediction}. Classification: ${c.correct}/${c.total} correct (${(100*c.correct/c.total).toFixed(1)}%). Accepts ${c.validAccepted}/${c.valid} valid pairs; blocks ${c.invalidBlocked}/${c.invalid} invalid pairs (${(100*c.invalidBlocked/Math.max(1,c.invalid)).toFixed(1)}%). ${c.accepted?'Marking saved.':'Not saved: resolve all pairs, accept every valid pair, and block more than half of invalid pairs.'}`);
  $('learn-deeper').disabled=!!mode||row.status!=='unresolved';
 }
-function install(data,recorded=false,index=0,completed=false){
+function install(data,index=0,completed=false){
  if(data.setId!==setId||data.criterion!==CORONA_CRITERION)throw new Error('Outdated learning evidence');
  if(data.model)learner.validateModel(data.model);
  const candidate=data.model??data.candidateModel;
  if(candidate)learner.validateCandidate(candidate);
  model=candidate?(candidate.reduction?.preserveInterior?candidate:reduceMarking(candidate,{preserveInterior:true})):null;
  let persisted=false;
- if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings},{origin:recorded?'recorded':'training'});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
- report=data;reports.set(setId,data);recordedReports.set(setId,recorded);
+ if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
+ report=data;reports.set(setId,data);
  picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='valid'?'1-corona valid':row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
- $('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${recorded?'Recorded · ':''}${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
+ $('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.connections.length}/${data.attachmentCount} pairs · ${data.counts.valid} valid · ${data.counts.invalid} invalid · ${data.counts.unresolved} unresolved`;
  finish(true);describe();draw();
  if(data.model){
   $('learn-sync').textContent=`${persisted?'Saved':'Available this visit; browser storage could not save it'}: ${model.marking.name}.${model.marking.sameValuesAs?` Same values as ${model.marking.sameValuesAs.name}.`:''}${embedded?' Available in Tiling; successful training starts it automatically.':''}`;
   if(!embedded)sessionStorage.setItem('gcts-requested-marking',JSON.stringify(model));
-  send('gcts-marking-ready',{model,counts:data.counts,recorded,completed});
+  send('gcts-marking-ready',{model,counts:data.counts,completed});
  }else{
   $('learn-sync').textContent='Candidate only — no marking saved or transferred.';
   if(!embedded)sessionStorage.removeItem('gcts-requested-marking');
  }
 }
 function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;model=null;shown=[];picker.replaceChildren();picker.disabled=true;$('learn-deeper').disabled=true;$('learn-export').disabled=true;$('learn-metrics').textContent=TILE_SETS[setId].label;message('Classify every second-tile placement using a complete one-corona check, then train the marking.');draw();}
-async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);selectTiles(id);reset();const token=epoch;
- if(reports.has(id)){install(reports.get(id),recordedReports.get(id));return;}
- try{const r=await fetch(`./assets/data/tile-corona-${id}.json?v=20260920-qualified`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Classify & learn to run every one-corona check.');}
+function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnectionLearner(id);selectTiles(id);reset();
+ if(reports.has(id))install(reports.get(id));
 }
 function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-qualified',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=setId;paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
  if(kind==='collect'){automaticStarts.add(setId);$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;
   if(data.type==='progress'){shown=data.latest;model=data.model;const c=data.counts;$('learn-metrics').textContent=`${TILE_SETS[setId].label} · ${data.attempts}/${data.total} pairs · ${c.valid} valid · ${c.invalid} invalid · ${c.unresolved} unresolved`;message(data.phase==='train'?'Training a marking on all classified pairs…':'Checking whether each fixed pair has a complete one-corona…');draw();}
-  else if(data.type==='collected')install(data.report,false,0,true);
+  else if(data.type==='collected')install(data.report,0,true);
   else if(data.type==='growth'){shown=data.placements;message(`${shown.length} tiles · ${data.nodes} attempts · ${data.backtracks} backtracks`);draw();}
-  else if(data.type==='extended')install(learner.incorporate(report,data.index,data.row),false,data.index,true);
+  else if(data.type==='extended')install(learner.incorporate(report,data.index,data.row),data.index,true);
   else if(data.type==='error'){finish();message(data.message);}
  };
  worker.onerror=()=>{if(worker===active){finish();message('Learning worker could not run. Reload to retry.');}};

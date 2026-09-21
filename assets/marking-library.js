@@ -9,10 +9,13 @@ export function markingValues(model){
 function read(storage){
  const raw=storage?.getItem(MARKING_LIBRARY_KEY);if(!raw)return [];
  const data=JSON.parse(raw);if(data.version!==1||!Array.isArray(data.models))throw new Error('Unreadable saved marking library');
- return data.models;
+ const models=data.models.filter(model=>model.marking?.origin!=='recorded');
+ if(models.length!==data.models.length)try{storage.setItem(MARKING_LIBRARY_KEY,JSON.stringify({version:1,models}));}catch{}
+ return models;
 }
 export function savedMarkings(storage=globalThis.localStorage){try{return read(storage);}catch{return [];}}
 export function rememberMarking(model,{origin='training',storage=globalThis.localStorage,now=new Date()}={}){
+ if(origin==='recorded'||model.marking?.origin==='recorded')throw new Error('Only browser-trained markings can be saved');
  let models=[],readable=true;try{models=read(storage);}catch{readable=false;}
  const signature=markingValues(model),same=models.filter(m=>m.setId===model.setId&&markingValues(m)===signature);
  const existing=model.marking?.id?models.find(m=>m.marking?.id===model.marking.id):null;
@@ -21,7 +24,7 @@ export function rememberMarking(model,{origin='training',storage=globalThis.loca
  let named=model;
  if(!model.marking?.id||existing){
   const id=crypto.randomUUID(),createdAt=now.toISOString();
-  let name=origin==='recorded'?`${labels[model.setId]} · recorded`:origin==='legacy'?`${labels[model.setId]} · previous marking`:`${labels[model.setId]} · ${createdAt.replace('T',' ')}`;
+  let name=origin==='legacy'?`${labels[model.setId]} · previous marking`:`${labels[model.setId]} · ${createdAt.replace('T',' ')}`;
   if(models.some(m=>m.marking?.name===name))name+=` · ${id.slice(0,6)}`;
   const prior=same.at(-1)?.marking;
   named={...model,marking:{id,name,createdAt,origin,...(prior?{sameValuesAs:{id:prior.id,name:prior.name}}:{})}};

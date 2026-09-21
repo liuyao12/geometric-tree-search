@@ -10,3 +10,10 @@ Thumbs.db
 runs/*.json
 runs/*.ndjson
 runs/*.sqlite*
+
+# GCTS learned outputs belong to browser storage or external experiment folders.
+assets/data/tile-corona-*.json
+assets/data/tile-connections-*.json
+assets/data/tile-markings.json
+assets/data/hat-local-patches.json
+assets/data/marking-comparison.json

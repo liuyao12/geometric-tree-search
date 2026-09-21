@@ -49,5 +49,4 @@ $('hat-reset').addEventListener('click',reset);$('hat-show-marks').addEventListe
 $('hat-seed').addEventListener('change',()=>{$('hat-seed').value=Math.max(1,Math.min(1000000,Math.round(+$('hat-seed').value||90210)));});
 exportButton.addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='hat-local-patch-learning.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('learning-kind').addEventListener('change',()=>{const hat=$('learning-kind').value==='hat';$('hat-learning-panel').hidden=!hat;$('anchor-lane').hidden=hat;if(!hat&&worker)reset();if(hat)$('anchor-reset').click();window.dispatchEvent(new Event('resize'));});
-reset();const epoch=loadEpoch;
-fetch(new URL('./data/hat-local-patches.json?v=20260915-constraints',import.meta.url)).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(loadEpoch===epoch)install(data,true);}).catch(()=>{if(loadEpoch===epoch)message('Examine connections to collect extension and failure evidence.');});
+reset();

@@ -8,7 +8,7 @@ Turtle learning example is still labeled as fitting known data.
 
 ## Recorded experiment
 
-Regenerate `assets/data/hat-local-patches.json` with:
+Generate an external experiment report (no learned data is bundled) with:
 
 ```
 node scripts/train-hat-local-patches.mjs /tmp/hat-local-patches.json

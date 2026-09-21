@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import {createCoronaLearner,CORONA_CRITERION,markingQualifies} from '../assets/tile-corona-learning.js';
 import {reduceMarking,validateMarkingReduction} from '../assets/marking-reduction.js';
 import {SparseA2Marking,a2Add,a2Sub} from '../assets/a2-tiling-engine.js';
@@ -30,7 +29,7 @@ function reference(learner,pair){
  return dfs();
 }
 for(const [setId,[total,valid,invalid,correct]] of Object.entries(expected)){
- const learner=createCoronaLearner(setId),r=JSON.parse(fs.readFileSync(new URL(`../assets/data/tile-corona-${setId}.json`,import.meta.url)));
+ const learner=createCoronaLearner(setId),r=await learner.collect({budget:5000,seed:90210});
  assert.equal(r.criterion,CORONA_CRITERION);assert.equal(r.connections.length,total);assert.deepEqual(r.counts,{valid,invalid,unresolved:0});assert.equal(r.classification.correct,correct);assert.ok(r.model);learner.validateModel(r.model);assert.equal(r.classification.accepted,true);assert.equal(r.classification.validAccepted,valid);assert.equal(r.classification.invalidBlocked,correct-valid);assert.equal(r.classification.perfect,false);
  const catalog=new Set(learner.connections().map(p=>JSON.stringify([p.root,p.attachment])));for(const row of r.connections){assert.ok(catalog.delete(JSON.stringify([row.root,row.attachment])));const checked=learner.verifyCorona([row.root,row.attachment],row.placements);if(row.status==='valid')assert.ok(checked.complete);else assert.equal(row.result,'no');}
  assert.equal(catalog.size,0);

@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import {SparseA2Marking,solveA2Tiling,makeHexBoundary} from '../assets/a2-tiling-engine.js';
 globalThis.requestAnimationFrame=cb=>setImmediate(cb);
 import {createConnectionLearner,parity} from '../assets/tile-connection-learning.js';
 import {reduceMarking,validateMarkingReduction,activeMarkingSupport,CompactA2Marking} from '../assets/marking-reduction.js';
-const data=JSON.parse(fs.readFileSync(new URL('../assets/data/tile-markings.json',import.meta.url)));
+const data={models:{}};
+for(const id of ['turtle','hat','mixed'])data.models[id]=(await createConnectionLearner(id).collect()).model;
 for(const [setId,model] of Object.entries(data.models)){
  const learner=createConnectionLearner(setId),reduced=reduceMarking(model);learner.validateModel(reduced);assert.ok(reduced.reduction.points<reduced.reduction.originalPoints);
  const bad=structuredClone(reduced);bad.reducedSupport=[];assert.throws(()=>validateMarkingReduction(bad),/lost a marking conflict/);

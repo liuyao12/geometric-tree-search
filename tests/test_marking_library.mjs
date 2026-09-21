@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import {rememberMarking,savedMarkings,markingValues,MARKING_LIBRARY_KEY} from '../assets/marking-library.js';
 const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
-const model=JSON.parse(fs.readFileSync(new URL('../assets/data/tile-corona-turtle.json',import.meta.url))).model;
+// Synthetic storage fixture, not a learned tile marking.
+const model={setId:'turtle',allowReflections:true,support:[{tile:'turtle',point:[0,0,0],component:0,value:1}]};
 const now=new Date('2026-09-20T19:20:00.000Z');
-const recorded=rememberMarking(model,{origin:'recorded',storage,now}).model;
-assert.equal(rememberMarking(model,{origin:'recorded',storage,now}).model.marking.id,recorded.marking.id);
+const prior=rememberMarking(model,{storage,now}).model;
+assert.throws(()=>rememberMarking(model,{origin:'recorded',storage,now}),/browser-trained/);
 const first=rememberMarking(model,{storage,now}).model,second=rememberMarking(model,{storage,now}).model;
 assert.notEqual(first.marking.id,second.marking.id);assert.notEqual(first.marking.name,second.marking.name);
-assert.equal(first.marking.sameValuesAs.id,recorded.marking.id);assert.equal(second.marking.sameValuesAs.id,first.marking.id);
+assert.equal(first.marking.sameValuesAs.id,prior.marking.id);assert.equal(second.marking.sameValuesAs.id,first.marking.id);
 assert.equal(rememberMarking(second,{storage}).model.marking.id,second.marking.id);
 assert.equal(savedMarkings(storage).length,3);
 const reordered={...model,support:[...model.support].reverse()};assert.equal(markingValues(reordered),markingValues(model));
@@ -20,4 +20,5 @@ assert.equal(rememberMarking(model,{origin:'legacy',storage,now}).model.marking.
 const blocked={getItem:()=>null,setItem:()=>{throw new Error('quota')}};const unsaved=rememberMarking(model,{storage:blocked,now});assert.equal(unsaved.persisted,false);assert.ok(unsaved.model.marking.id);
 const unreadable={getItem:()=>'{broken',setItem:()=>assert.fail('must not overwrite unreadable history')};assert.equal(rememberMarking(model,{storage:unreadable,now}).persisted,false);
 assert.equal(JSON.parse(storage.getItem(MARKING_LIBRARY_KEY)).models.length,5);
+const library=JSON.parse(storage.getItem(MARKING_LIBRARY_KEY));library.models.push({...model,marking:{id:'old-bundle',origin:'recorded'}});storage.setItem(MARKING_LIBRARY_KEY,JSON.stringify(library));assert.equal(savedMarkings(storage).length,5);assert.ok(!storage.getItem(MARKING_LIBRARY_KEY).includes('old-bundle'));
 console.log('PASS distinct named runs, exact same-value detection, stable reload/import, legacy reuse, no overwrites and storage failures.');

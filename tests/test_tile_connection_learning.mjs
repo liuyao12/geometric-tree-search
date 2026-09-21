@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import {createConnectionLearner,TILE_SETS,parity} from '../assets/tile-connection-learning.js';
 import {a2Add,A2_SYMMETRIES,a2Transform,tileOrientations,A2_TILE_LOOPS} from '../assets/a2-tiling-engine.js';
-globalThis.requestAnimationFrame=cb=>setTimeout(cb,0);
+globalThis.requestAnimationFrame=cb=>setImmediate(cb);
 const id=p=>`${p.tile}:${p.orientation}:${p.translation}`;
 function totals(learner,specs){const sums=new Map();for(const spec of specs){const p=learner.materialize(spec);for(const e of p.orientation.occupancy.values()){const key=a2Add(e.point,p.translation).join();sums.set(key,(sums.get(key)||0)+e.weight);}}return sums;}
 function legalAt(learner,specs,point){const sums=totals(learner,specs),used=new Set(specs.map(id)),legal=new Map();
@@ -13,7 +12,8 @@ function legalAt(learner,specs,point){const sums=totals(learner,specs),used=new 
 }
 const expected={turtle:[304,39,263,2,236],hat:[320,40,279,1,262],mixed:[624,69,554,1,501]};
 for(const setId of Object.keys(TILE_SETS)){
- const learner=createConnectionLearner(setId),report=JSON.parse(fs.readFileSync(new URL(`../assets/data/tile-connections-${setId}.json`,import.meta.url)));
+ const learner=createConnectionLearner(setId),report=await learner.collect();
+ report.markedCheck=await learner.grow({support:report.model.support,target:24,budget:2000,seed:701});
  const [count,extended,dead,unresolved,separated]=expected[setId];assert.equal(report.attachmentCount,count);assert.deepEqual(report.counts,{extended,dead,unresolved});assert.equal(report.encoding.deadSeparated,separated);assert.equal(report.encoding.extendedRejected,0);
  assert.equal(learner.validateModel(report.model),report.model);assert.deepEqual(learner.encode(report.samples),report.model);assert.ok(report.model.nonzero>0);
  // Enumerate integer translations independently of the support-alignment collector.
@@ -54,4 +54,4 @@ for(const setId of Object.keys(TILE_SETS)){
  }
  console.log(JSON.stringify({setId,passed:true,connections:count,deadReplays:dead,extendedFrontiers:extended,encodedFailures:separated,markedGrowth:24}));
 }
-const turtle=createConnectionLearner('turtle'),hat=JSON.parse(fs.readFileSync(new URL('../assets/data/tile-connections-hat.json',import.meta.url)));assert.throws(()=>turtle.validateModel(hat.model));
+const turtle=createConnectionLearner('turtle'),hat=createConnectionLearner('hat').encode([{placements:[{tile:'hat',orientation:0,translation:[0,0,0]}]}]);assert.throws(()=>turtle.validateModel(hat));

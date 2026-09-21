@@ -62,7 +62,7 @@ unapproved. JSON exports retain the labels, errors and point/value metadata.
 Retries keep the same corona criterion and increase the selected unresolved
 pair's budget. A timeout cannot replace an already resolved result.
 
-### Recorded results
+### Historical measurements (not bundled models)
 
 Seed 90210, 5,000 attempted placements per pair:
 
@@ -72,21 +72,22 @@ Seed 90210, 5,000 attempted placements per pair:
 | Hat | 320 | 41 | 279 | 0 | 303 / 320 (94.7%) | 17 |
 | Turtle + Hat | 624 | 82 | 542 | 0 | 583 / 624 (93.4%) | 41 |
 
-Increasing the domain through three layers did not improve these scores. All
-valid pairs are accepted, and the invalid rejection rates are 89.7%, 93.9% and
-92.4%, respectively. **All three qualify and are saved**, without labeling them
-perfect. `assets/data/tile-corona-markings.json` contains the three approved models.
-`assets/data/tile-corona-{turtle,hat,mixed}.json` contains all labels, witnesses,
-search settings, candidate values and training-domain trials. The ordinary
-rank-1/rank-3 tiling modes remain available. Old provisional models are rejected
-by the new gate; the learned option is disabled without an approved model.
-
+Increasing the domain through three layers did not improve these historical
+scores. All valid pairs were accepted, with invalid rejection rates of 89.7%,
+93.9% and 92.4%. These measurements document prior experiments; they do not
+supply a marking to the page. **No learned models, labels, patches or generated
+training reports are bundled in the repository or fetched by the demo.**
+The ordinary fixed rank-1/rank-3 markings remain part of the implementation.
+A clean browser has only no marking, rank 1 and rank 3 in the dropdown; named
+learned entries appear only after successful browser training. Previously trained
+local markings can be restored in the same browser.
 Accepted models, when available, persist per inventory in local storage and
 transfer automatically by the existing same-origin iframe message. A successful
 fresh training run in the learning section selects learned marking, switches to
 the Tiling tab and starts the marked search, including a repeated successful run
-with unchanged values. Loading recorded evidence enables the dropdown without
-interrupting current training or the earlier known-marking example. Import
+with unchanged values. Training runs entirely in the browser worker. Models stay
+in browser local storage; evidence export is an explicit browser download. No
+training result is uploaded or written back to the repository. Import
 validation checks every recorded label against the marking; it does not rerun
 all oracle searches or independently certify the provenance of external labels.
 Recorded invalid cases have replayable settings, not formal proof transcripts.
@@ -101,9 +102,9 @@ saved runs for the selected inventory, newest first. A successful run selects
 and starts its own entry; selecting an older entry uses that exact saved model.
 The browser retains both the history and the last selection per inventory.
 Old single-model storage slots migrate without discarding the previous marking.
-Recorded built-in models have stable entries labeled “recorded”, without implying
-an unknown historical training timestamp. Reloading recorded data or a cached
-report does not create another run.
+Earlier entries explicitly tagged as bundled recordings are removed from local
+storage. Actual locally trained markings are retained. Reopening a cached report
+does not create another run.
 
 The learner reports “Same values as …” when a new run has the same complete
 point/channel assignments as an earlier marking. Comparison ignores entry order,
@@ -152,7 +153,7 @@ collision predicate is added. Conventional polygon fidelity and whole-plane
 coverage are not established by these runs.
 
 `tests/test_tile_corona_learning.mjs` checks all 1,248 catalog entries, all valid
-corona witnesses, each candidate's predictions, incomplete, false-rejection and majority-rejection save gates,
+freshly generated corona witnesses, each candidate's predictions, incomplete, false-rejection and majority-rejection save gates,
 and zero-budget semantics. An independent finite DFS agrees on one valid and the
 hardest recorded invalid case per inventory; graph-audited engine replays agree
 on the same cases. This is representative negative-search cross-checking, not
@@ -170,10 +171,13 @@ node tests/test_fixed_a2_marking.mjs
 node tests/test_turtle_point_learning.mjs
 ```
 
-The older `tile-connections-*` data, `tile-markings.json` and associated scripts
-are retained as historical growth-checkpoint experiments. They are no longer
-loaded by the active learning or tiling panels. The historical comparison below
-applies to those old models, not to the current unapproved corona candidates.
+The old generated `tile-connections-*`, `tile-corona-*`, `tile-markings`,
+`hat-local-patches` and marking-comparison files have been removed. Tests now
+collect their evidence and train models in memory; storage tests use an explicitly
+synthetic fixture. CLI experiment scripts default to temporary output folders.
+Generated output paths are ignored by Git. The historical comparison below
+records past measurements and remains reproducible by running those algorithms;
+it is not a source of pre-trained values for the application.
 
 ## Fixed scalar markings for Hat and mixed search
 
@@ -251,8 +255,8 @@ single-run measurements; times are machine-dependent and not a speed guarantee.
 Hat and mixed learned rules still need substantially more search than known
 rank 1. We do not claim parity with known markings for those inventories.
 
-Reproduce with `node scripts/benchmark-compact-markings.mjs output.json`.
-[Full measurements](../../assets/data/marking-comparison.json) include timings,
+Reproduce with `node scripts/benchmark-compact-markings.mjs /tmp/marking-comparison.json`.
+The generated measurements include timings,
 reduction cost, roots/settings and placement hashes. No training examples are
 held out or removed. The shared engine's existing infinite-coverage and geometric
 faithfulness limitations remain unchanged.

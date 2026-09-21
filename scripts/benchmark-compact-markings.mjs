@@ -6,7 +6,8 @@ import {reduceMarking,activeMarkingSupport,CompactA2Marking} from '../assets/mar
 import assert from 'node:assert/strict';
 globalThis.requestAnimationFrame=cb=>setImmediate(cb);
 const target=32,nodeLimit=1500,seeds=[1,7,10],rows=[],reductions={};
-const models=JSON.parse(fs.readFileSync(new URL('../assets/data/tile-markings.json',import.meta.url))).models;
+const models={};
+for(const id of Object.keys(TILE_SETS))models[id]=(await createConnectionLearner(id).collect()).model;
 for(const setId of Object.keys(TILE_SETS)){
  const learner=createConnectionLearner(setId),model=models[setId],start=performance.now(),compact=reduceMarking(model);
  reductions[setId]={...compact.reduction,reductionMs:Math.round(performance.now()-start)};
