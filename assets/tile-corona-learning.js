@@ -20,7 +20,7 @@ export function createCoronaLearner(setId,{lattice='A2'}={}){
  async function examine({root,attachment,budget=5000,seed=1,wait=null,onEvent=()=>{},audit=false}){
   const pair=[root,attachment];base.verifyPatch(pair);const required=corePoints(pair),started=performance.now();let lastFailure=null;
   const result=await solveA2Tiling({boundary:makeHexBoundary(10),latticePointFilter:base.pointFilter,tiles:base.config.tiles,allowReflections:base.config.allowReflections,initialPlacements:pair.map(base.materialize),fixedInitialPlacements:true,completePointGrowth:true,requiredPoints:required,maximize:true,targetPlacements:Infinity,nodeLimit:budget,randomSeed:seed,marking:new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
-   onEvent:e=>{if(e.type==='fail')lastFailure={point:e.choice,placements:compact(e.placements)};onEvent({type:e.type,placements:compact(e.placements),nodes:e.nodes,backtracks:e.backtracks});}});
+   onEvent:e=>{if(e.type==='fail')lastFailure={point:e.choice,placements:compact(e.placements)};onEvent({type:e.type,placements:compact(e.placements),choice:e.choice,nodes:e.nodes,backtracks:e.backtracks});}});
   const placements=compact(result.placements),verification=verifyCorona(pair,placements);if(result.result==='yes'&&!verification.complete)throw new Error('Incomplete corona labeled valid');
   return {root,attachment,criterion:CORONA_CRITERION,budget,seed,status:result.result==='yes'?'valid':result.result==='no'?'invalid':'unresolved',result:result.result,placements,verification,nodes:result.stats.nodes,backtracks:result.stats.backtracks,lastFailure,elapsedMs:performance.now()-started};
  }
@@ -41,9 +41,17 @@ export function createCoronaLearner(setId,{lattice='A2'}={}){
   const model=accepted?{...candidate,classification:{...classification,labels:rows.map(({root,attachment,status})=>({root,attachment,status}))},scope:'Accepts every valid pair and blocks most invalid pairs in the complete one-corona catalog; finite learned restriction, not an infinite-tiling certificate.'}:null;
   return {criterion:CORONA_CRITERION,setId,lattice,connections,counts,classification,candidateModel:candidate,model,attachmentCount:total};
  }
- async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{}}={}){
+ async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{},onSearch=()=>{}}={}){
   const started=performance.now(),pairs=base.connections(),rows=[],counts={valid:0,invalid:0,unresolved:0};
-  for(let i=0;i<pairs.length;i++){if(wait)await wait();const row=await examine({...pairs[i],budget,seed:seed^Math.imul(i+1,1987),wait});rows.push(row);counts[row.status]++;onProgress({phase:'classify',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:row.placements});}
+  onProgress({phase:'classify',attempts:0,total:pairs.length,counts:{...counts},model:null,latest:[]});
+  for(let i=0;i<pairs.length;i++){
+   const pair=pairs[i],context={index:i,root:pair.root,attachment:pair.attachment};
+   onSearch({...context,type:'pair-start',placements:[pair.root,pair.attachment],nodes:0,backtracks:0});if(wait)await wait();
+   const row=await examine({...pair,budget,seed:seed^Math.imul(i+1,1987),wait,onEvent:e=>onSearch({...context,...e})});
+   rows.push(row);counts[row.status]++;
+   onSearch({...context,type:'pair-result',status:row.status,placements:row.status==='invalid'?(row.lastFailure?.placements??row.placements):row.placements,choice:row.lastFailure?.point,nodes:row.nodes,backtracks:row.backtracks});if(wait)await wait();
+   onProgress({phase:'classify',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:row.placements});
+  }
   onProgress({phase:'train',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:rows.at(-1)?.placements??[]});await new Promise(requestAnimationFrame);
   return {...train(rows),settings:{budget,seed,lattice},elapsedMs:performance.now()-started};
  }

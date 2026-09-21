@@ -73,7 +73,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-tile-system" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-corona-animation" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -140,7 +140,7 @@
 
   <script type="module">
     import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260920-corona';
-    import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-sublattice';
+    import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-corona-animation';
     import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260921-tile-system';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-sublattice';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';

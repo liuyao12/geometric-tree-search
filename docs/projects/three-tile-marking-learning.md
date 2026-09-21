@@ -179,6 +179,33 @@ Generated output paths are ignored by Git. The historical comparison below
 records past measurements and remains reproducible by running those algorithms;
 it is not a source of pre-trained values for the application.
 
+## Watching the one-corona check
+
+The learning canvas streams actual pair-start, placement, dead-end, backtracking,
+and pair-result events from the unmarked search. It keeps the fixed pair darker
+than the surrounding tiles. Gold dots mark unfinished required points of the
+fixed pair; green dots have total t-value 1. A red ring marks a reported dead end.
+The viewport stays fixed during each pair's search. Success, exhausted failure,
+and budget-limited unresolved results have distinct labels, shown before the
+next pair starts. Retry unresolved uses the same animated path.
+
+The counter reports completed checks as “320 pairs”, with no denominator or
+precomputed classification counts. A running pair has its own sequential number;
+valid/invalid/unresolved totals accumulate only after each search returns.
+The finite candidate enumeration can know its catalog size internally, but it
+has no validity labels before searching.
+
+Normal and Slow speed settings hold each real search frame and leave an outcome
+visible longer; Fast removes the extra hold. The worker drains its frame queue
+through the existing search-demand hook and waits for a display acknowledgment,
+so rendering cannot build up an unbounded backlog. Pause gates further frames;
+reset, inventory/domain changes, and worker replacement cancel the old queue.
+This changes presentation timing only: candidate enumeration, node budgets,
+generation order, exact rollback, and classification/training criteria are
+unchanged. The complete catalog regression checks event order alongside the
+existing independent search and marking checks. Browser checks verify visible
+placement/backtracking/success/failure, pause/resume, and the full fresh Hat run.
+
 ## Learning on the sublattice
 
 The Learn markings page offers a **sublattice** checkbox. Switching it starts
