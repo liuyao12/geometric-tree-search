@@ -1,140 +1,116 @@
 # Learning point markings for the three article tile sets
 
-`GCTS-I.html` now has **Tiling** and **Learn markings** views in the same floating
-panel. The second view embeds the independent `GCTS-learning.html` page. The
-article's final Geometric Deep Learning section links to it without a second
-in-article canvas. Entering the Geometric Deep Learning section automatically
-selects Turtle, opens the learning view and starts a fresh collection once per
-page visit. A pending-start handshake handles an iframe that has not loaded yet.
-Manual tab changes, pauses, resizing and further scrolling do not restart it.
-Learning can continue while the tiling view is visible.
+## Current pipeline: classify complete pair coronas, then learn
 
-## Inventories and learned results
+`GCTS-I.html` embeds `GCTS-learning.html` in its **Learn markings** tab.
+Entering the final Geometric Deep Learning section selects Turtle and starts
+one fresh collection per page visit. Scrolling back selects Tiling. Manual tab
+changes and pauses do not restart collection; learning can run in the background.
 
-Each model is learned separately from unmarked extension searches; the known
-Turtle marking is never supplied to this learner. All collected positive and
-negative outcomes are used, with no held-out split. The current recorded runs
-use seed 90210, target 12 tiles and 120 attempted placements per connection.
+The current experiment enumerates every t-legal second placement whose positive
+support touches the fixed first tile. Both root types are included for the mixed
+inventory. These are ordered, rooted connections, not symmetry-orbit counts.
+Turtle and Hat each allow 12 orientations including reflections; Turtle + Hat
+allows six rotations per prototype and no reflections.
 
-| Tile set | Symmetries per tile | Connections | Extended | Exhausted | Unknown | Failures separated by code |
+Each pair is classified **before any marking is trained**. A complete one-corona
+means that every point in the union of the two core tiles' positive t-support
+has total t-value 1 (integer capacity 12). The two core tiles remain fixed.
+Additional tiles must respect capacity everywhere, including outside the core;
+their outer boundary need not be completed. Every added tile touches a required
+core point. This is a finite point-domain criterion, not a tile-count checkpoint
+or a claim of infinite extendibility. Polygon outlines are only illustrations.
+
+The unmarked search returns:
+
+- **Valid:** a complete corona with independently verified integer capacities.
+- **Invalid:** exhausted finite search for that pair and inventory.
+- **Unresolved:** budget exhaustion or cancellation; never a negative label.
+
+After all pairs have been examined, training uses every valid and invalid label,
+with no held-out samples. Only the central valid pairs supply equality constraints;
+the surrounding witness tiles do not silently add positive training connections.
+A signed union-find equates overlapping point/channel variables, forces zero
+on inconsistent sign cycles, and assigns distinct integer magnitudes to free
+classes. Three channels transform by coordinate permutation and permutation-parity
+sign. Assigned zero remains a value. Domains use positive t-support plus one,
+two, or three nearest-neighbor A₂ layers; the best classification is retained.
+This is deterministic constraint learning, not gradient descent.
+
+A model is saved and automatically transferred to the matching tiling inventory
+**only when the complete catalog is resolved and every classification agrees**.
+The gate checks catalog coverage, uniqueness, counts and actual marking decisions.
+An imperfect candidate remains visible with its errors and point/value metadata;
+JSON export retains evidence but does not promote it to an installed marking.
+Retries keep the same corona criterion and increase the selected unresolved
+pair's budget. A timeout cannot replace an already resolved result.
+
+### Recorded results
+
+Seed 90210, 5,000 attempted placements per pair:
+
+| Inventory | Pairs | Valid | Invalid | Unresolved | Correct marking classifications | Invalid pairs still accepted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Turtle only | 12, including reflections | 304 | 39 | 263 | 2 | 236 |
-| Hat only | 12, including reflections | 320 | 40 | 279 | 1 | 262 |
-| Turtle + Hat | 6 rotations; no reflections | 624 | 69 | 554 | 1 | 501 |
+| Turtle | 304 | 41 | 263 | 0 | 277 / 304 (91.1%) | 27 |
+| Hat | 320 | 41 | 279 | 0 | 303 / 320 (94.7%) | 17 |
+| Turtle + Hat | 624 | 82 | 542 | 0 | 583 / 624 (93.4%) | 41 |
 
-The mixed inventory includes both same-type and cross-type connections. Both
-root tile types are enumerated. These are ordered, rooted connections; symmetry
-or exchange can relate different rows, so the count is not an orbit count.
-Each possible second placement has positive t-support touching the root and
-respects point capacity. Whole successful patches are deduplicated under the
-allowed symmetry group and translations, preserving tile identity.
+Increasing the domain through three layers did not improve these scores. All
+valid pairs are accepted, but no candidate reaches 100%, so **none is saved**.
+`assets/data/tile-corona-markings.json` therefore has an empty model map.
+`assets/data/tile-corona-{turtle,hat,mixed}.json` contains all labels, witnesses,
+search settings, candidate values and training-domain trials. The ordinary
+rank-1/rank-3 tiling modes remain available. Old provisional models are rejected
+by the new gate; the learned option is disabled without an approved model.
 
-Turtle yields 35 unique patches, 9 equality classes and 85 nonzero entries out
-of 168 assigned channels. Hat yields 36 patches, 6 classes and 76/150 nonzero
-entries. The mixed model yields 60 patches, 11 classes and 318/318 nonzero
-entries across the two prototypes. Recorded collection times were approximately
-26.6, 21.3 and 51.4 seconds respectively; timings include yielding and incremental
-encoding. They are not acceleration benchmarks.
+Accepted models, when available, persist per inventory in local storage and
+transfer automatically by the existing same-origin iframe message. Import
+validation checks every recorded label against the marking; it does not rerun
+all oracle searches or independently certify the provenance of external labels.
+Recorded invalid cases have replayable settings, not formal proof transcripts.
+Even perfect pair classification would certify only this finite criterion;
+mark-only interactions beyond the audited pairs remain learned restrictions.
 
-A separate marked growth check at seed 701, target 24 and budget 2000 reached
-24 tiles for each model (23, 129 and 696 attempted placements respectively).
-The mixed check contains both tile types and no reflected placements. These
-are finite consistency checks, not infinite-tiling certificates or prediction
-scores. Full evidence and the marked check are in
-`assets/data/tile-connections-{turtle,hat,mixed}.json`; the small
-`assets/data/tile-markings.json` contains models for the main panel.
+### Shared-engine conformance and verification
 
-Regenerate with:
+The optional `requiredPoints` mode of `solveA2Tiling` explicitly activates every
+finite obligation, including untouched zero-valued points, at generation zero.
+Only these points belong to the frontier. Candidate validity still depends on
+all t- and m-support, including exterior points. Completion checks all required
+capacities and ignores tile-count milestones. The normal growth mode is unchanged.
+
+The complete point/candidate graph, global dead-before-forced order,
+earliest-generation branching, orientation enumeration and exact rollback are
+retained. Corona classification always uses `NoA2Marking`, so candidate markings
+cannot create their own negative labels. Integer t-values and independent integer
+witness verification support the exact finite result; the engine's generic
+comparison tolerances do not substitute for that verification. No geometric
+collision predicate is added. Conventional polygon fidelity and whole-plane
+coverage are not established by these runs.
+
+`tests/test_tile_corona_learning.mjs` checks all 1,248 catalog entries, all valid
+corona witnesses, each candidate's predictions, incomplete/imperfect save gates,
+and zero-budget semantics. An independent finite DFS agrees on one valid and the
+hardest recorded invalid case per inventory; graph-audited engine replays agree
+on the same cases. This is representative negative-search cross-checking, not
+an independent reproof of every negative. Existing fixed-marking and Turtle
+regressions also pass. Browser checks cover all three reports, automatic Turtle
+collection, no imperfect transfers, old-model rejection, unresolved searches,
+usual tiling controls and mobile/scroll tab behavior.
+
+Regenerate and verify:
 
 ```
-node scripts/train-tile-connection-markings.mjs /tmp/three-tile-markings
+node scripts/train-tile-corona-markings.mjs /tmp/pair-corona-markings
+node tests/test_tile_corona_learning.mjs
+node tests/test_fixed_a2_marking.mjs
+node tests/test_turtle_point_learning.mjs
 ```
 
-## Encoding and result transfer
-
-For each prototype, the domain is its positive t-support plus one nearest-neighbor
-A₂ step, with three assigned scalar channels at every site. Locations and tile
-values remain fixed. Point/channel variables from all retained extension
-witnesses are equated on overlap. A signed union-find solves the equations;
-odd sign cycles force zero, and free classes receive distinct integer magnitudes.
-Under a symmetry, channels permute and values acquire permutation-parity sign.
-Assigned zero is not missing. The mixed learner shares equality classes between
-the two tile types through cross-type observations; it does not combine two
-independently learned single-tile models.
-
-Every negative root connection is audited against the proposed code, including
-an inspectable conflicting point/channel where available. Failures that the
-fixed domain cannot distinguish remain in the explicit ledger. Finite extension
-is provisional. Timeout remains unknown; a deeper timeout cannot erase an
-existing finite witness. Deeper unmarked failure supersedes earlier positive
-checkpoints for that connection. All search history is exported.
-
-The learner posts a versioned, inventory-specific model to its parent after
-collection or deeper evidence updates. The main panel checks message origin and
-source, inventory, reflection setting, complete point/channel domain, and exact
-integer values. A completed live run automatically selects its model in the matching tiling view,
-resets stale search state and displays the new marking. The next tiling run uses
-`SparseA2Marking`; no manual transfer control is needed. The learning view stays
-open so completion does not interrupt inspection. Changing rules never reuses a stale graph or incompatible
-prefix. A separate-page session saves its current model automatically through
-session storage when returning to the main page. Restoring that explicit model
-takes precedence over the article's automatic Turtle start.
-
-Both views display marking metadata: points, total assigned channel values,
-nonzero values and distinct scalar values. Explicit zeros count toward the total;
-coordinates on different tile prototypes count as separate marking points.
-Turtle has 56 points / 168 values, Hat 50 / 150, and mixed 106 / 318. Metadata also
-accompanies JSON evidence exports.
-
-Recorded models are available immediately. The **Tiling with** selector offers
-no marking, rank 1, rank 3 and learned marking. Rank 1 is available for all three
-inventories; rank 3 remains Turtle-only. Extent applies to fixed rank-1/rank-3
-markings and remains disabled for unmarked and learned search. Learned rules are explicitly
-labeled provisional in the tiler: failure under them does not prove failure
-of the unmarked problem. Extension searches in the learning page always remain
-unmarked, so learned restrictions cannot generate their own negative evidence.
-
-## Shared algorithm contract and validation
-
-- Integer A₂ triples, capacity 12, and unique tile/transformation identities define
-  the point model. Polygons author and draw the point data; polygon predicates
-  are not additional legality constraints in this growth experiment.
-- Root searches keep both initial placements fixed. Complete growth mode admits
-  candidates that only fill existing gaps, sets root generations to zero, and
-  scans the full frontier for dead points before accepting a checkpoint.
-- Candidate enumeration covers every allowed tile/orientation/support alignment.
-  `allowReflections: false` filters orientations before candidate generation and
-  also rejects disallowed initial orientations. Inversion on the A₂ plane is a
-  rotation; reflection parity comes from the coordinate permutation, not the
-  common coordinate sign.
-- The engine uses global dead-before-forced decisions, earliest-generation
-  branching, complete forward/reverse incidence, and reversible t/m state.
-  Sparse markings include mark-only support dependencies and explicit zeros.
-- The engine's comparison tolerances operate on small exact integer capacities
-  in this experiment. Independent verification uses integer sums and equality.
-- Unbounded growth activates exposed positive support, not a fair exhaustion of
-  untouched zero-valued points. The result does not establish whole-plane
-  coverage or an infinite construction. Point-model correctness is separate
-  from faithful realization by conventional polygons.
-- Root failure means exhaustive search in the specified unmarked point problem.
-  The last dead point is an example branch witness, not a full proof transcript.
-  Replay and graph audits check the computation; this is not a formal proof
-  kernel. Code conflicts outside audited roots, including mark-only interactions,
-  remain hypotheses and can restrict the unmarked solution set.
-- The default shared-engine reflection behavior and legacy Turtle benchmark
-  behavior are preserved. New inventories and learned-mode searches use the
-  complete point-growth options explicitly.
-
-`tests/test_tile_connection_learning.mjs` independently enumerates all 1,248
-rooted connections by integer translations; replays all 1,096 exhausted root
-searches with graph auditing; independently checks every active frontier in the
-148 positive checkpoints; reproduces all three models; checks covariance under
-each allowed symmetry; and verifies marked growth, budgets, retained evidence,
-and reflection/model mismatch rejection. The existing Turtle regression passes.
-Browser checks exercise all three model handoffs, exact marked compatibility,
-both tile types without reflections, background learning, deeper evidence,
-export, cancellation, ordinary Turtle, and desktop/mobile layout.
-
+The older `tile-connections-*` data, `tile-markings.json` and associated scripts
+are retained as historical growth-checkpoint experiments. They are no longer
+loaded by the active learning or tiling panels. The historical comparison below
+applies to those old models, not to the current unapproved corona candidates.
 
 ## Fixed scalar markings for Hat and mixed search
 
@@ -159,7 +135,7 @@ Turtle point-learning regression also passes. These are consistent finite
 patches, not infinite-tiling certificates; the activation and geometric-fidelity
 gaps in the shared-engine audit above still apply.
 
-## September 20: exact point reduction and known-marking comparison
+## Historical growth-based models: point reduction and comparison
 
 Completed models now carry a `reducedSupport` alongside their original `support`.
 The reduced support is used for matching, dependency bookkeeping and drawing.

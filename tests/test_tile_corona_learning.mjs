@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createCoronaLearner,CORONA_CRITERION} from '../assets/tile-corona-learning.js';
+import {SparseA2Marking,a2Add,a2Sub} from '../assets/a2-tiling-engine.js';
+globalThis.requestAnimationFrame=cb=>setImmediate(cb);
+const expected={turtle:[304,41,263,277],hat:[320,41,279,303],mixed:[624,82,542,583]};
+// Independent finite-capacity DFS: pre-enumerate all candidates touching the
+// core, then recompute every domain from integer sums at each recursive node.
+function reference(learner,pair){
+ const core=learner.corePoints(pair),sums=new Map(),used=new Set(pair.map(p=>`${p.tile}:${p.orientation}:${p.translation}`)),pool=new Map();
+ for(const spec of pair)for(const e of learner.materialize(spec).orientation.occupancy.values()){const key=a2Add(e.point,spec.translation).join();sums.set(key,(sums.get(key)||0)+e.weight);}
+ for(const point of core)for(const o of learner.orientations)for(const a of o.occupancy.values()){
+  const shift=a2Sub(point,a.point),id=`${o.tile}:${o.index}:${shift}`;if(pool.has(id)||used.has(id))continue;
+  const entries=[...o.occupancy.values()].map(e=>({key:a2Add(e.point,shift).join(),value:e.weight}));if(entries.some(e=>(sums.get(e.key)||0)+e.value>12))continue;
+  pool.set(id,{id,entries,keys:new Set(entries.map(e=>e.key))});
+ }
+ let nodes=0;
+ function dfs(){
+  if(++nodes>100000)throw new Error('Reference solver budget exhausted');
+  const open=core.map(p=>p.join()).filter(p=>(sums.get(p)||0)<12);if(!open.length)return true;
+  const legal=[...pool.values()].filter(p=>!used.has(p.id)&&p.entries.every(e=>(sums.get(e.key)||0)+e.value<=12));
+  const domains=open.map(point=>legal.filter(p=>p.keys.has(point))).sort((a,b)=>a.length-b.length);if(!domains[0].length)return false;
+  for(const p of domains[0]){used.add(p.id);for(const e of p.entries)sums.set(e.key,(sums.get(e.key)||0)+e.value);if(dfs())return true;for(const e of p.entries)sums.set(e.key,sums.get(e.key)-e.value);used.delete(p.id);}return false;
+ }
+ return dfs();
+}
+for(const [setId,[total,valid,invalid,correct]] of Object.entries(expected)){
+ const learner=createCoronaLearner(setId),r=JSON.parse(fs.readFileSync(new URL(`../assets/data/tile-corona-${setId}.json`,import.meta.url)));
+ assert.equal(r.criterion,CORONA_CRITERION);assert.equal(r.connections.length,total);assert.deepEqual(r.counts,{valid,invalid,unresolved:0});assert.equal(r.classification.correct,correct);assert.equal(r.model,null);assert.equal(r.classification.perfect,false);
+ const catalog=new Set(learner.connections().map(p=>JSON.stringify([p.root,p.attachment])));for(const row of r.connections){assert.ok(catalog.delete(JSON.stringify([row.root,row.attachment])));const checked=learner.verifyCorona([row.root,row.attachment],row.placements);if(row.status==='valid')assert.ok(checked.complete);else assert.equal(row.result,'no');}
+ assert.equal(catalog.size,0);
+ const marking=new SparseA2Marking(r.candidateModel.support);let matches=0;
+ for(const row of r.connections){marking.reset([learner.materialize(row.root)]);const predicted=marking.compatible(learner.materialize(row.attachment))?'valid':'invalid';if(predicted===row.status)matches++;}assert.equal(matches,correct);
+ assert.throws(()=>learner.validateModel(r.candidateModel),/perfectly classified/);
+ const wrong={...r.candidateModel,classification:{...r.classification,correct:total,perfect:true,labels:r.connections.map(({root,attachment,status})=>({root,attachment,status}))}};assert.throws(()=>learner.validateModel(wrong),/misclassified/);
+ const partial=learner.train(r.connections.slice(0,-1));assert.equal(partial.model,null);
+ const unknown=await learner.examine({...r.connections.find(x=>x.status==='valid'),budget:0});assert.equal(unknown.status,'unresolved');assert.equal(learner.incorporate({...r,connections:r.connections.map((x,i)=>i?x:unknown)},0,unknown).model,null);
+ const cases=[r.connections.find(x=>x.status==='valid'),r.connections.filter(x=>x.status==='invalid').sort((a,b)=>b.nodes-a.nodes)[0]];
+ for(const row of cases){assert.equal(reference(learner,[row.root,row.attachment]),row.status==='valid');const replay=await learner.examine({...row,audit:true});assert.equal(replay.status,row.status);}
+ console.log(`${setId}: all ${total} pair labels/witnesses audited; independent valid/invalid corona replay; imperfect/unresolved save gates passed`);
+}

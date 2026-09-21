@@ -1,0 +1,55 @@
+import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connection-learning.js?v=20260920-corona';
+import {solveA2Tiling,makeHexBoundary,NoA2Marking,a2Add} from './a2-tiling-engine.js?v=20260920-corona';
+export {TILE_SETS,parity};
+export const CORONA_CRITERION='complete-pair-one-corona-v1';
+const id=p=>`${p.tile}:${typeof p.orientation==='number'?p.orientation:p.orientation.index}:${p.translation}`;
+const pairId=r=>`${id(r.root)}>${id(r.attachment)}`;
+const cache=new Map();
+export function createCoronaLearner(setId){
+ if(cache.has(setId))return cache.get(setId);
+ const base=createConnectionLearner(setId);
+ function corePoints(pair){const points=new Map();for(const spec of pair)for(const e of base.materialize(spec).orientation.occupancy.values()){const p=a2Add(e.point,spec.translation);points.set(p.join(','),p);}return [...points.values()];}
+ function verifyCorona(pair,placements){
+  base.verifyPatch(placements);if(!pair.every(p=>placements.some(q=>id(p)===id(q))))throw new Error('Corona lost its fixed pair');
+  const required=corePoints(pair),sums=new Map();for(const spec of placements)for(const e of base.materialize(spec).orientation.occupancy.values()){const key=a2Add(e.point,spec.translation).join(',');sums.set(key,(sums.get(key)||0)+e.weight);}
+  const complete=required.every(p=>sums.get(p.join(','))===12);
+  return {complete,requiredPoints:required.length,completedPoints:required.filter(p=>sums.get(p.join(','))===12).length};
+ }
+ async function examine({root,attachment,budget=5000,seed=1,wait=null,onEvent=()=>{},audit=false}){
+  const pair=[root,attachment];base.verifyPatch(pair);const required=corePoints(pair),started=performance.now();let lastFailure=null;
+  const result=await solveA2Tiling({boundary:makeHexBoundary(10),tiles:base.config.tiles,allowReflections:base.config.allowReflections,initialPlacements:pair.map(base.materialize),fixedInitialPlacements:true,completePointGrowth:true,requiredPoints:required,maximize:true,targetPlacements:Infinity,nodeLimit:budget,randomSeed:seed,marking:new NoA2Marking(),auditFrontierGraph:audit,waitForSearchDemand:wait,
+   onEvent:e=>{if(e.type==='fail')lastFailure={point:e.choice,placements:compact(e.placements)};onEvent({type:e.type,placements:compact(e.placements),nodes:e.nodes,backtracks:e.backtracks});}});
+  const placements=compact(result.placements),verification=verifyCorona(pair,placements);if(result.result==='yes'&&!verification.complete)throw new Error('Incomplete corona labeled valid');
+  return {root,attachment,criterion:CORONA_CRITERION,budget,seed,status:result.result==='yes'?'valid':result.result==='no'?'invalid':'unresolved',result:result.result,placements,verification,nodes:result.stats.nodes,backtracks:result.stats.backtracks,lastFailure,elapsedMs:performance.now()-started};
+ }
+ function train(rows){
+  const positives=rows.filter(r=>r.status==='valid').map(r=>({placements:[r.root,r.attachment]}));
+  let candidate=null,bestCorrect=-1;const training=[];
+  if(positives.length)for(const halo of [1,2,3]){
+    const proposal=base.encode(positives,{halo}),correct=rows.filter(r=>r.status!=='unresolved'&&base.verifyPatch([r.root,r.attachment],proposal.support).compatible===(r.status==='valid')).length;
+    training.push({halo,correct,total:rows.length});if(correct>bestCorrect){candidate=proposal;bestCorrect=correct;}
+    if(correct===rows.length)break;
+  }
+  const counts={valid:0,invalid:0,unresolved:0};let correct=0;
+  const connections=rows.map(row=>{counts[row.status]++;const check=candidate?base.verifyPatch([row.root,row.attachment],candidate.support):null,predicted=check?(check.compatible?'valid':'invalid'):null;if(row.status!=='unresolved'&&predicted===row.status)correct++;return {...row,predicted,codeConflict:check?!check.compatible:null,codeWitness:check?.witness??null};});
+  const catalog=new Set(base.connections().map(pairId)),total=catalog.size,complete=rows.length===total&&new Set(rows.map(pairId)).size===total&&rows.every(r=>catalog.has(pairId(r)))&&counts.unresolved===0;
+  const accepted=!!candidate&&complete&&correct===total;
+  const classification={criterion:CORONA_CRITERION,total,correct,...counts,perfect:accepted,training};
+  const model=accepted?{...candidate,classification:{...classification,labels:rows.map(({root,attachment,status})=>({root,attachment,status}))},scope:'Exactly classifies the enumerated pair one-corona tests; not an infinite-tiling certificate.'}:null;
+  return {criterion:CORONA_CRITERION,setId,connections,counts,classification,candidateModel:candidate,model,attachmentCount:total};
+ }
+ async function collect({budget=5000,seed=90210,wait=null,onProgress=()=>{}}={}){
+  const started=performance.now(),pairs=base.connections(),rows=[],counts={valid:0,invalid:0,unresolved:0};
+  for(let i=0;i<pairs.length;i++){if(wait)await wait();const row=await examine({...pairs[i],budget,seed:seed^Math.imul(i+1,1987),wait});rows.push(row);counts[row.status]++;onProgress({phase:'classify',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:row.placements});}
+  onProgress({phase:'train',attempts:rows.length,total:pairs.length,counts:{...counts},model:null,latest:rows.at(-1)?.placements??[]});await new Promise(requestAnimationFrame);
+  return {...train(rows),settings:{budget,seed},elapsedMs:performance.now()-started};
+ }
+ function validateModel(model){
+  base.validateModel(model);const c=model.classification,all=base.connections(),catalog=new Set(all.map(pairId));
+  if(c?.criterion!==CORONA_CRITERION||!c.perfect||c.unresolved!==0||c.total!==all.length||c.correct!==all.length||c.labels?.length!==all.length)throw new Error('Marking has not perfectly classified every one-corona test');
+  let valid=0,invalid=0;for(const row of c.labels){if(!catalog.delete(pairId(row))||!['valid','invalid'].includes(row.status))throw new Error('Incomplete one-corona classification');const predicted=base.verifyPatch([row.root,row.attachment],model.support).compatible?'valid':'invalid';if(predicted!==row.status)throw new Error('Marking misclassified a one-corona test');if(row.status==='valid')valid++;else invalid++;}
+  if(valid!==c.valid||invalid!==c.invalid)throw new Error('Wrong one-corona classification counts');return model;
+ }
+ function incorporate(report,index,row){const previous=report.connections[index];if(!previous||pairId(previous)!==pairId(row))throw new Error('Connection mismatch');return {...train(report.connections.map((r,i)=>i===index?(row.status==='unresolved'&&r.status!=='unresolved'?r:row):r)),settings:report.settings,elapsedMs:report.elapsedMs+row.elapsedMs};}
+ const learner={...base,validateCandidate:base.validateModel,corePoints,verifyCorona,examine,collect,train,validateModel,incorporate};cache.set(setId,learner);return learner;
+}

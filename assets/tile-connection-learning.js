@@ -33,11 +33,11 @@ export function createConnectionLearner(setId){
   }
   return {tiles:specs.length,completePoints:[...sums.values()].filter(v=>v===12).length,openPoints:[...sums.values()].filter(v=>v<12).length,conflicts,agreements,compatible:conflicts===0,witness};
  }
- function pointDomain(tile){
+ function pointDomain(tile,halo=1){
   const o=orientations.find(o=>o.tile===tile&&o.index===0);if(!o)throw new Error('Unknown tile');
   const points=new Map([...o.occupancy.values()].map(e=>[key(e.point),e.point]));
   const steps=[[1,-1,0],[1,0,-1],[0,1,-1],[-1,1,0],[-1,0,1],[0,-1,1]];
-  for(const p of [...points.values()])for(const d of steps){const q=a2Add(p,d);points.set(key(q),q);}
+  for(let layer=0;layer<halo;layer++)for(const p of [...points.values()])for(const d of steps){const q=a2Add(p,d);points.set(key(q),q);}
   return [...points.values()].sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
  }
  function connections(){const result=[];
@@ -55,8 +55,8 @@ export function createConnectionLearner(setId){
   for(const sym of symmetries){const transformed=data.map(tile=>({...tile,points:tile.points.map(e=>({point:a2Transform(e.point,sym),weight:e.weight}))}));const origin=transformed.flatMap(t=>t.points).map(e=>e.point).sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2])[0];const value=transformed.map(tile=>tile.tile+':'+tile.points.map(e=>`${a2Sub(e.point,origin)}:${e.weight}`).sort().join(';')).sort().join('|');if(best===null||value<best)best=value;}
   return best;
  }
- function encode(samples){
-  const support=config.tiles.flatMap(tile=>pointDomain(tile).flatMap(point=>[0,1,2].map(component=>({tile,point:[...point],component})))),n=support.length;
+ function encode(samples,{halo=1}={}){
+  const support=config.tiles.flatMap(tile=>pointDomain(tile,halo).flatMap(point=>[0,1,2].map(component=>({tile,point:[...point],component})))),n=support.length;
   const parent=Array.from({length:n},(_,i)=>i),sign=Array(n).fill(1),zero=Array(n).fill(false);let observations=0;
   function find(i){if(parent[i]!==i){const [r,s]=find(parent[i]);sign[i]*=s;parent[i]=r;}return[parent[i],sign[i]];}
   function join(i,j,relation){const [a,x]=find(i),[b,y]=find(j);if(a===b){if(x!==relation*y)zero[a]=true;return;}parent[b]=a;sign[b]=relation*x*y;zero[a]||=zero[b];}
@@ -67,11 +67,12 @@ export function createConnectionLearner(setId){
   }
   const labels=new Map();support.forEach((e,i)=>{const [r,s]=find(i);if(!labels.has(r))labels.set(r,labels.size+1);e.value=zero[r]?0:s*labels.get(r);});
   if(samples.some(s=>!verifyPatch(s.placements,support).compatible))throw new Error('Encoding rejected an observed extension');
-  return {version:VERSION,setId,tiles:config.tiles,allowReflections:config.allowReflections,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
+  return {...(halo===1?{}:{supportHalo:halo}),version:VERSION,setId,tiles:config.tiles,allowReflections:config.allowReflections,support,classes:labels.size,nonzero:support.filter(e=>e.value!==0).length,observations,sampleCount:samples.length,scope:'Provisional matching rules inferred from finite extensions; no known markings supplied.'};
  }
  function validateModel(model){
   if(model?.version!==VERSION||model.setId!==setId||model.allowReflections!==config.allowReflections||JSON.stringify(model.tiles)!==JSON.stringify(config.tiles))throw new Error('Marking belongs to a different tile set or symmetry group');
-  const domain=new Set(config.tiles.flatMap(tile=>pointDomain(tile).flatMap(point=>[0,1,2].map(c=>`${tile}:${point}|${c}`))));
+  const halo=model.supportHalo??1;if(!Number.isInteger(halo)||halo<1||halo>3)throw new Error('Invalid marking halo');
+  const domain=new Set(config.tiles.flatMap(tile=>pointDomain(tile,halo).flatMap(point=>[0,1,2].map(c=>`${tile}:${point}|${c}`))));
   if(model.support?.length!==domain.size)throw new Error('Incomplete marking domain');
   for(const e of model.support){if(!Array.isArray(e.point)||e.point.length!==3||!e.point.every(Number.isSafeInteger)||e.point.reduce((s,v)=>s+v,0)!==0||![0,1,2].includes(e.component))throw new Error('Invalid marking coordinate');const token=`${e.tile}:${e.point}|${e.component}`;if(!domain.delete(token)||!Number.isSafeInteger(e.value)||Math.abs(e.value)>10000)throw new Error('Invalid marking entry');}
   validateMarkingReduction(model);

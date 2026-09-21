@@ -7,12 +7,12 @@
  <div id="learning-set-control" class="tile-set-options" role="radiogroup" aria-label="Tiles">
   <label><input type="radio" name="learning-tiles" value="turtle" checked> Turtle</label><label><input type="radio" name="learning-tiles" value="hat"> Hat</label><label><input type="radio" name="learning-tiles" value="mixed"> Turtle + Hat</label>
  </div>
- <div class="learning-controls"><button id="learn-start">Learn markings</button><button id="learn-deeper" disabled>Search farther</button><button id="learn-reset">Reset</button><label>Target <input id="learn-target" type="number" min="3" max="96" value="12"></label><label>Budget <input id="learn-budget" type="number" min="1" max="100000" value="120"></label></div>
+ <div class="learning-controls"><button id="learn-start">Classify &amp; learn</button><button id="learn-deeper" disabled>Retry unresolved</button><button id="learn-reset">Reset</button><span>1-corona check</span><label>Budget <input id="learn-budget" type="number" min="1" max="1000000" value="5000"></label></div>
  <div class="learning-controls"><label>Connection <select id="learn-connection" disabled></select></label><label><input id="learn-marks" type="checkbox" checked> Point codes</label></div>
  <canvas id="learn-canvas" width="720" height="360" aria-label="Connection and extension on the left; learned tile markings on the right"></canvas>
  <div id="learn-metrics"></div><div id="learn-metadata"></div><div id="learn-sync" role="status"></div><div id="learn-status" role="status" aria-live="polite"></div>
  <div class="learning-controls actions"><button id="learn-export" disabled>Export evidence</button></div>
- <p class="scope">Learned matching rules are provisional. Extension searches use unmarked tiles; finite patches do not establish infinite tilings.</p>
+ <p class="scope">Check every neighboring pair with unmarked one-corona search, then train on all labels. Save only at 100% accuracy with no unresolved pairs. One corona does not establish an infinite tiling.</p>
 </main>
-<script type="module" src="assets/tile-learning-page.js?v=20260920-compact"></script>
+<script type="module" src="assets/tile-learning-page.js?v=20260920-corona"></script>
 </body></html>
