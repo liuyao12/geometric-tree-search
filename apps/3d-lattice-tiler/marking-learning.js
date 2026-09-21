@@ -1,6 +1,6 @@
-import {markingSystem} from './marking-storage.js?v=20260921-marking-continuation';
-import {selectMask} from './marking-mask.js?v=20260921-marking-continuation';
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-marking-continuation';
+import {markingSystem} from './marking-storage.js?v=20260921-vector-learning';
+import {selectMask} from './marking-mask.js?v=20260921-vector-learning';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,verifyCorona,checkCorona} from './corona-graph.js?v=20260921-vector-learning';
 export const LEARNING_VERSION='pair-corona-marking-2';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
@@ -40,8 +40,9 @@ export function markingDomain(model,extent=1){
  return model.orientations.map((o,oi)=>{const points=new Map(o.cells.map(c=>[pointKey(c.pos),c.pos]));for(let n=0;n<extent;n++)for(const p of [...points.values()])for(const d of steps){const q=add(p,d);points.set(pointKey(q),q);}return [...points.values()].map(pos=>({oi,pos:[...pos],component:0}));});
 }
 export class OnlineMarking{
- constructor(model,transforms,{extent=1,maxSlots=12000,maskLearning=true}={}){
-  this.maskLearning=maskLearning;this.positiveEdges=new Map();this.previousMask=null;this.model=model;this.transforms=transforms;this.extent=extent;this.byOrientation=markingDomain(model,extent);this.slots=this.byOrientation.flat();if(this.slots.length>maxSlots){const e=Error('marking support budget');e.kind='resource_limit';throw e;}
+ constructor(model,transforms,{extent=1,maxSlots=12000,maskLearning=true,maxComponents=4}={}){
+  if(!Number.isInteger(maxComponents)||maxComponents<1||maxComponents>4)throw Error('Invalid marking component budget');
+  this.maxComponents=maxComponents;this.componentMasks=[];this.maskLearning=maskLearning;this.positiveEdges=new Map();this.previousMask=null;this.model=model;this.transforms=transforms;this.extent=extent;this.byOrientation=markingDomain(model,extent);this.slots=this.byOrientation.flat();if(this.slots.length>maxSlots){const e=Error('marking support budget');e.kind='resource_limit';throw e;}
   this.slots.forEach((s,i)=>s.id=i);this.parent=this.slots.map((_,i)=>i);this.rows=[];this.counts={valid:0,invalid:0,unresolved:0};
   const lookup=new Map(this.slots.map(s=>[`${s.oi}:${s.pos}`,s.id]));
   this.actions=transforms.map(g=>this.slots.map(s=>{const target=g.map[s.oi],index=lookup.get(`${target.oi}:${sub(g.transform(s.pos),target.shift)}`);if(index===undefined)throw Error('Marking support is not closed under the point group');return index;}));
@@ -56,6 +57,48 @@ export class OnlineMarking{
   return this.snapshot({started});
  }
  snapshot({started=performance.now(),maxEvaluations=64}={}){
+  const base=this.scalarSnapshot({started,maxEvaluations});
+  if(!this.maskLearning||!this.counts.valid||!this.counts.invalid||this.maxComponents===1)return {...base,componentCount:1};
+  const fields=base.fields.map(f=>[...f]),representation=base.representation.map(m=>({...m}));
+  let labelCount=base.labelCount,componentCount=1;
+  let remaining=this.rows.filter(r=>r.status==='invalid'&&pairCompatible(fields,r.pair));
+  const masks=[];
+  // Each additional field solves the same positive equalities with its own
+  // free slots. Combining fields preserves every positive and only adds cuts.
+  // Rebuild on every sample: old equality partitions are never reused after
+  // changing support, and previous masks are proposals, not fixed constraints.
+  while(remaining.length&&componentCount<this.maxComponents){
+   const chosen=selectMask(this.slots.length,this.orbits,[...this.positiveEdges.values()],remaining.map(r=>r.contacts),{
+    initialMasks:this.componentMasks,maxEvaluations,seed:this.rows.length+componentCount*65537,
+   });
+   if(!chosen.blocked)break;
+   const codes=new Map(),assigned=this.slots.map((_,i)=>{
+    if(!chosen.active[i])return null;
+    const root=chosen.find(i);if(!codes.has(root))codes.set(root,labelCount+codes.size+1);return codes.get(root);
+   });
+   this.byOrientation.forEach((list,oi)=>{for(const s of list)if(chosen.active[s.id])fields[oi].push({pos:s.pos,component:componentCount,value:assigned[s.id]});});
+   this.actions.forEach((action,g)=>{
+    const mapping={};
+    for(let i=0;i<assigned.length;i++)if(chosen.active[i]){
+     const a=assigned[i],b=assigned[action[i]];
+     if(b===null||mapping[a]!==undefined&&mapping[a]!==b)throw Error('Non-equivariant vector marking');mapping[a]=b;
+    }
+    if(new Set(Object.values(mapping)).size!==codes.size)throw Error('Noninvertible vector label action');
+    Object.assign(representation[g],mapping);
+   });
+   masks.push(chosen.mask);labelCount+=codes.size;componentCount++;
+   remaining=remaining.filter(r=>pairCompatible(fields,r.pair));
+  }
+  this.componentMasks=masks;
+  const positivePassed=this.rows.filter(r=>r.status==='valid'&&pairCompatible(fields,r.pair)).length;
+  if(positivePassed!==this.counts.valid)throw Error('Vector marking rejects a positive pair');
+  return {...base,fields,representation,labelCount,componentCount,positivePassed,
+   negativeBlocked:this.counts.invalid-remaining.length,
+   points:fields.reduce((n,f)=>n+new Set(f.map(m=>pointKey(m.pos))).size,0),
+   values:fields.reduce((n,f)=>n+f.length,0),updateMs:performance.now()-started,
+   scope:'Up to four independent categorical point components with individual free values; each component is fixed by point-group transformations and its labels permute. Finite pair evidence only.'};
+ }
+ scalarSnapshot({started=performance.now(),maxEvaluations=64}={}){
   const labels=new Map(),values=this.slots.map((_,i)=>{const r=this.find(i);if(!labels.has(r))labels.set(r,labels.size+1);return labels.get(r);});
   // Keep a witness for every negative currently distinguished. Free variables
   // are omitted, not replaced by zero. Delete complete symmetry orbits so the
@@ -149,8 +192,8 @@ export async function* reuseMarking(model,entry,{timeMs=10000,stop=()=>false}={}
  if(m?.version!==LEARNING_VERSION||!m.accepted||!m.complete||m.counts?.unresolved||!Array.isArray(m.evidence)||!Number.isSafeInteger(m.extent)||m.extent<0||m.extent>8)throw Error('Saved marking is incomplete or incompatible');
  const domains=markingDomain(model,m.extent);
  if(!Array.isArray(m.fields)||m.fields.length!==domains.length)throw Error('Invalid saved marking fields');
- let values=0;
- m.fields.forEach((field,oi)=>{const eligible=new Set(domains[oi].map(s=>pointKey(s.pos))),seen=new Set();for(const v of field){const k=pointKey(v.pos);if(!eligible.has(k)||seen.has(k)||(v.component??0)!==0||!Number.isSafeInteger(v.value))throw Error('Invalid saved point value');seen.add(k);values++;}});
+ let values=0,points=0,componentCount=1;
+ m.fields.forEach((field,oi)=>{const eligible=new Set(domains[oi].map(s=>pointKey(s.pos))),seen=new Set();for(const v of field){const k=pointKey(v.pos),component=v.component??0,id=`${k}|${component}`;if(!eligible.has(k)||seen.has(id)||!Number.isInteger(component)||component<0||component>=4||!Number.isSafeInteger(v.value))throw Error('Invalid saved point value');seen.add(id);values++;componentCount=Math.max(componentCount,component+1);}points+=new Set(field.map(v=>pointKey(v.pos))).size;});
  const rows=new Map(m.evidence.map(row=>[JSON.stringify(row.pair),row]));
  if(rows.size!==m.evidence.length)throw Error('Duplicate saved pair');
  let pairs=0,positivePassed=0,negativeBlocked=0;const counts={valid:0,invalid:0,unresolved:0};
@@ -164,7 +207,7 @@ export async function* reuseMarking(model,entry,{timeMs=10000,stop=()=>false}={}
   if(pairs%8===0){yield {type:'marking-learning',phase:'replay',pairs,counts:{...counts},placements:row.placements,elapsedMs:performance.now()-started,snapshot:m};await new Promise(r=>setTimeout(r,0));}
  }
  if(pairs!==rows.size||!counts.valid||counts.invalid&&negativeBlocked*2<=counts.invalid)throw Error('Saved marking does not pass acceptance');
- const marking={...m,pairs,counts,positivePassed,negativeBlocked,points:values,values,elapsedMs:performance.now()-started,reused:true,trainingMs:m.trainingMs??m.elapsedMs};
+ const marking={...m,pairs,counts,positivePassed,negativeBlocked,points,values,componentCount,elapsedMs:performance.now()-started,reused:true,trainingMs:m.trainingMs??m.elapsedMs};
  yield {type:'marking-learned',marking,model:{...model,orientations:model.orientations.map((o,i)=>({...o,marks:marking.fields[i]}))}};
 }
 

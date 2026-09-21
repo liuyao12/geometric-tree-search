@@ -242,6 +242,13 @@ must not become an unmarked non-tiling claim. Retain the unmarked baseline,
 report learning and verification costs, and record actual marked-growth results.
 Known markings are comparison controls, not an implicit learning target.
 
+Independent marking components may use different free-value supports. Each must
+satisfy every positive overlap constraint; a negative is rejected when at least one
+component has an assigned disagreement. Rebuild and revalidate every component when
+new labels arrive. Declare the component transformation action and synthesis budget;
+combining bounded scalar searches is not a completeness or minimum-rank proof.
+Count distinct spatial points separately from assigned component values.
+
 Explicit continuation may retain resolved labels for the same tile/lattice and
 support. Recheck identity, catalogue membership and positive witnesses; rebuild
 constraints from the labels. Retry unresolved checks with declared budgets,

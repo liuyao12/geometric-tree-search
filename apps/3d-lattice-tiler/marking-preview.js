@@ -1,5 +1,6 @@
-import {markingDomain} from './marking-learning.js?v=20260921-marking-continuation';
-import {inspectPairMarking,pairInspectionText} from './marking-pair-display.js?v=20260921-pair-inspection';
+import {markingVectors} from './marking-display.js?v=20260921-vector-learning';
+import {markingDomain} from './marking-learning.js?v=20260921-vector-learning';
+import {inspectPairMarking,pairInspectionText} from './marking-pair-display.js?v=20260921-vector-learning';
 
 // Shared view for both engines. Values and witnesses come from the worker.
 export class MarkingPreview {
@@ -82,7 +83,7 @@ export class MarkingPreview {
   }
   const s=this.snapshot;
   if(s&&s.extent!==this.domainExtent){this.domainExtent=s.extent;this.domains=markingDomain(this.model,s.extent);}
-  this.detail.textContent=s?`${s.accepted?'Validated':'Provisional'} · accepts ${s.positivePassed??0}/${s.counts?.valid??0} valid · blocks ${s.negativeBlocked??0}/${s.counts?.invalid??0} invalid · ${s.points??0} points / ${s.values??0} values across orientations. Pair marks: blue rings agree, red rings conflict. Hover for values; * is free. Orange on the right: changed.`:'Awaiting the first label.';
+  this.detail.textContent=s?`${s.accepted?'Validated':'Provisional'} · accepts ${s.positivePassed??0}/${s.counts?.valid??0} valid · blocks ${s.negativeBlocked??0}/${s.counts?.invalid??0} invalid · ${s.points??0} points / ${s.values??0} values across orientations · ${s.componentCount??1} component${s.componentCount>1?'s':''}. Pair marks: blue rings agree, red rings conflict. Hover for values; * is free. Orange on the right: changed.`:'Awaiting the first label.';
   this.updatePairDetail();this.draw();
  }
  project(p){return [(p[0]-p[2])*.8,p[1]*.8-(p[0]+p[2])*.35];}
@@ -122,9 +123,9 @@ export class MarkingPreview {
   if(this.deadPoint){ctx.beginPath();ctx.arc(...left(this.deadPoint),8,0,2*Math.PI);ctx.strokeStyle='#b5403d';ctx.lineWidth=2;ctx.stroke();}
   if(pairPoints.length){ctx.fillStyle='#486656';ctx.font='11px system-ui';ctx.fillText('Markings shown on the two seed tiles only',14,290);}
   const oi=+this.select.value,o=this.model.orientations[oi],domain=this.domains[oi];
-  const right=this.map(domain.map(m=>m.pos),410,375),field=new Map((this.snapshot?.fields?.[oi]??[]).map(m=>[m.pos.join(),m.value]));
+  const right=this.map(domain.map(m=>m.pos),410,375),componentCount=this.snapshot?.componentCount??1,field=markingVectors(this.snapshot?.fields?.[oi]??[],componentCount);
   this.geometry(o,[0,0,0],right,true);
-  for(const m of domain){const [x,y]=right(m.pos),value=field.get(m.pos.join())??'*',changed=this.changed.has(`${oi}:${m.pos}|0`);ctx.beginPath();ctx.arc(x,y,changed?5:value==='*'?2:3.5,0,2*Math.PI);ctx.fillStyle=changed?'#e39931':value==='*'?'#9cafaa':`hsl(${value*137.5%360} 60% 40%)`;ctx.fill();this.hits.push({x,y,pos:m.pos,value,side:'marking',text:`(${m.pos})  m=(${value})`});}
+  for(const m of domain){const [x,y]=right(m.pos),values=field.get(m.pos.join())??Array(componentCount).fill('*'),value=values.find(v=>v!=='*')??'*',changed=values.some((_,c)=>this.changed.has(`${oi}:${m.pos}|${c}`));ctx.beginPath();ctx.arc(x,y,changed?5:value==='*'?2:3.5,0,2*Math.PI);ctx.fillStyle=changed?'#e39931':value==='*'?'#9cafaa':`hsl(${value*137.5%360} 60% 40%)`;ctx.fill();this.hits.push({x,y,pos:m.pos,value,values,side:'marking',text:`(${m.pos})  m=(${values.join(', ')})`});}
   ctx.strokeStyle='#d5e1d9';ctx.beginPath();ctx.moveTo(400,35);ctx.lineTo(400,286);ctx.stroke();
   if(this.hover) {
    const hit=this.hits.filter(h=>Math.hypot(h.x-this.hover.x,h.y-this.hover.y)<9).sort((a,b)=>Number(b.conflict??false)-Number(a.conflict??false)||Math.hypot(a.x-this.hover.x,a.y-this.hover.y)-Math.hypot(b.x-this.hover.x,b.y-this.hover.y))[0];

@@ -19,3 +19,13 @@ export function placedMarkingPoints(model, placements) {
   }
   return [...points.values()];
 }
+
+// Missing components are displayed independently; assigned zero is retained.
+export function markingVectors(field=[],componentCount=1){
+ const points=new Map();
+ for(const m of field){
+  const key=m.pos.join(),values=points.get(key)??Array(componentCount).fill('*');
+  values[m.component??0]=m.value;points.set(key,values);
+ }
+ return points;
+}

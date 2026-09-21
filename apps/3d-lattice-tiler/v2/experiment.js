@@ -1,7 +1,7 @@
-import {prepareModel} from './model.js?v=2.2.8';
-import {search} from './search.js?v=2.2.8';
-import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-marking-continuation';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-marking-continuation';
+import {prepareModel} from './model.js?v=2.2.9';
+import {search} from './search.js?v=2.2.9';
+import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-vector-learning';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-vector-learning';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();

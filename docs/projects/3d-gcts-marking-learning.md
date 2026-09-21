@@ -19,10 +19,12 @@ negative label or an accepted marking. No recorded labels or markings are used.
 
 A signed cubic point-group operation is admitted only when it maps every species'
 weighted orientation set to itself and respects the slab translation domain.
-Positive equality constraints are closed under these operations. The current
-3D encoder uses **scalar categorical point codes**, with an induced permutation
+Positive equality constraints are closed under these operations. The initial
+3D encoder used **scalar categorical point codes**, with an induced permutation
 of code labels under the group, rather than three directional real components.
-Equivalently these labels index basis vectors with a permutation action. The
+Equivalently these labels index basis vectors with a permutation action. Since
+v2.2.9, the live learner can combine up to four such components, each with its
+own free values, while the group fixes component indices. The
 support includes the t-support plus one neighbor layer by default. For a slab
 that layer is lateral and respects its A₂ lattice or sublattice; for Z³ it uses
 the six axial neighbors. Every new resolved or unresolved sample updates the
@@ -310,3 +312,50 @@ positive and rejected negative pairs, toggles witnesses, and exercises incomplet
 then continued cube learning in v1. Existing learning and continuation browser
 regressions also pass. This is inspection of the same finite local constraints;
 it adds no pruning rule, bundled assignments, or infinite-extension claim.
+
+## Independent vector components in both live lanes (v2.2.9)
+
+The scalar learner could find different useful free-value masks but retain only
+one at a time. The live learner now keeps that scalar field as its first component,
+then synthesizes additional components against the negatives still accepted.
+Each component independently rebuilds the positive equality graph on its active
+support. Their conjunction preserves every labeled positive and retains the first
+component's exclusions. After every sample, all components are rebuilt and checked;
+a later positive can remove an earlier disagreement. Previous masks are proposals,
+not fixed values. No negative examples supply positive equalities.
+
+This is bounded constraint synthesis: up to four components, 64 mask evaluations
+per component per sample and 2,048 per component during final refinement. It is not
+a general SAT solver or a proof of minimum rank/support. The group fixes component
+indices and permutes categorical value labels within each component. Each individual
+entry may be free, and zero remains assigned. Interior points remain eligible.
+Unknown corona checks remain unknown, and the existing complete-catalogue acceptance
+gate is unchanged. The unmarked oracle never uses provisional fields.
+
+Both previews show the whole vector on hover, including individual `*` entries.
+Metadata counts distinct spatial points per orientation separately from assigned
+component values. Browser-local saving, explicit reuse, and continuation accept
+these fields; older scalar browser markings remain usable after normal replay.
+The ordinary global-section matcher in each engine consumes the actual components,
+with no runtime pair lookup. Training is charged to the lane's elapsed time.
+
+Fresh reflected index-3 slab controls, using the same 500-attempt corona limit:
+
+| Tile | Positive pairs passed | Negative pairs blocked | Components | Points / values, all orientations | Growth |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Turtle | 41 / 41 | 206 / 206 | 2 | 348 / 348 | 14-point finite window verified |
+| Hat | 41 / 41 | 186 / 186 | 2 | 336 / 336 | 14-point finite window verified |
+
+The two components happen to have disjoint support in these runs, so the point
+and value counts coincide. This is neither a required property nor a directional
+constancy assumption. These are complete local classifications for the stated
+point systems, not infinite-extension certificates or a speedup claim.
+
+Validation: `test-3d-vector-marking.mjs` exercises a translated-point fixture in
+which independent components improve on the scalar field, a later positive changing
+the constraints, all admitted slab symmetries, section rollback, assigned zero,
+per-component free values, distinct point/value counts, and saved-field validation.
+The shared learning tests independently verify marked Turtle and Hat windows.
+`test-3d-vector-marking-browser.cjs` checks fresh browser learning, automatic marked
+tiling, complete vector tooltips, and reuse after reload. Existing continuation,
+pair inspection, and v1/v2 browser tests exercise the shared integration.
