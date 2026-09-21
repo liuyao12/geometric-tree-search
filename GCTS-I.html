@@ -6,7 +6,7 @@
   <title>Geometrically Constrained Tree Search — I: Learning matching rules in tiling</title>
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
-  <link rel="stylesheet" href="assets/tile-learning.css?v=20260920-named">
+  <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
   <script>
     window.MathJax = {
       tex: {
@@ -65,7 +65,6 @@
         </label>
                       </div>
                     </div>
-                    <p id="learned-marking-note"></p>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
         </canvas>
                     <figcaption>
@@ -73,7 +72,7 @@
                       <span id="turtle-timer-readout" class="timer-readout" aria-label="Elapsed active search time">0.0 s</span>
                     </figcaption>
                     </div>
-                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-fast-learning" loading="lazy"></iframe></div>
+                    <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-domain-names" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -141,10 +140,9 @@
   <script type="module">
     import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260921-viable-corona';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-viable-corona';
-    import {savedMarkings,rememberMarking} from './assets/marking-library.js?v=20260921-tile-system';
+    import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-domain-names';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-sublattice';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
-    import {markingMetadataText} from './assets/marking-metadata.js?v=20260921-tile-system';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -170,6 +168,8 @@
       const learningFrame = document.getElementById('tiling-learning-frame');
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
       const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
+      const tilingLattice = () => usingSublattice()?'turtle-sublattice':'A2';
+      const markingContext = (setId=selectedTileSet) => markingDomain({setId,lattice:tilingLattice()});
       let learningSectionEntered=false, learnerReady=false, pendingLearningStart=null;
       let learningTileSet = 'turtle', learningLattice = 'A2';
       let displayMarking = null;
@@ -2431,7 +2431,7 @@
         if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       sublatticeToggle?.addEventListener('change', () => {
-        if(genericMode()){configurePanel(selectedTileSet,markingSource);return;}
+        if(genericMode()||(markingSource==='none'&&learnedModels.has(markingContext()))){configurePanel(selectedTileSet,markingSource==='standard'?'standard':learnedModels.has(markingContext())?'learned':'none');return;}
         stopTiling();
         liveSearchIterator?.cancel?.();
         orientations = buildOrientations(markingExtension, markingRank);
@@ -2447,6 +2447,7 @@
         if (stageNote) stageNote.textContent = usingSublattice()
           ? 'The grid and search use the sublattice containing 11 turtle boundary vertices and every marking line; retained t- and m-values are unchanged.'
           : 'The grid and search use every A2 lattice point.';
+        updatePanelControls();
         draw();
       });
       latticeToggle.addEventListener('change', draw);
@@ -2478,22 +2479,20 @@
         markingSourcePicker.querySelector('[value="rank1"]').disabled = false;
         markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle';
         markingSourcePicker.querySelectorAll('[data-learned-marking]').forEach(option=>option.remove());
-        const saved=[...markingLibrary.values()].filter(model=>model.setId===selectedTileSet).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
-        for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=model.marking.name;option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
+        const saved=[...markingLibrary.values()].filter(model=>markingDomain(model)===markingContext()).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
+        for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=markingName(model);option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
         syncMarkingSelection();
         sublatticeToggle.disabled = false;
-        document.getElementById('learned-marking-note').textContent = markingSource === 'learned'
-          ? `${displayMarking.marking.name} · ${markingMetadataText(displayMarking)}. ${TILE_SETS[selectedTileSet].label} · ${displayMarking.classification.criterion==='viable-pair-one-corona-v2'?'training check (viable frontier)':'earlier training (frontier not checked)'}: accepts ${displayMarking.classification.validAccepted}/${displayMarking.classification.valid} valid pairs; blocks ${displayMarking.classification.invalidBlocked}/${displayMarking.classification.invalid} invalid pairs (${(100*displayMarking.classification.invalidBlocked/Math.max(1,displayMarking.classification.invalid)).toFixed(1)}%). One corona does not establish an infinite tiling.`
-          : selectedTileSet === 'mixed' ? 'Turtle + Hat · rotations only; no reflected placements.' : '';
         updateMarkingButton();
       }
       function configurePanel(setId, source, markingId=null) {
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
-        if(markingId){const model=markingLibrary.get(markingId);if(model?.setId===setId)learnedModels.set(setId,model);}
-        displayMarking = source === 'learned' ? learnedModels.get(setId) : null;
-        if(displayMarking)try{localStorage.setItem(`gcts-selected-marking:${setId}`,displayMarking.marking.id);}catch{}
+        if(markingId){const model=markingLibrary.get(markingId);if(model&&markingDomain(model)===markingContext(setId))learnedModels.set(markingContext(setId),model);}
+        displayMarking = source === 'learned' ? learnedModels.get(markingContext(setId))??null : null;
+        if(source==='learned'&&!displayMarking)source=markingSource='none';
+        if(displayMarking)try{localStorage.setItem(`gcts-selected-marking:${markingContext(setId)}`,displayMarking.marking.id);}catch{}
         orientations = buildOrientations(markingExtension, markingRank);
         showMarkings = source !== 'none';
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
@@ -2524,7 +2523,7 @@
       document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
       document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
-      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked){configurePanel(input.value,learningPanelVisible()?'none':markingSource==='standard'&&markingRank===1?'standard':input.value==='turtle'&&!customModels.has('turtle')?'standard':learnedModels.has(input.value)?'learned':'none');if(learningPanelVisible())requestLearningFor(input.value);}}));
+      tileSetInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked){configurePanel(input.value,learningPanelVisible()?'none':markingSource==='standard'&&markingRank===1?'standard':input.value==='turtle'&&!customModels.has(markingContext('turtle'))?'standard':learnedModels.has(markingContext(input.value))?'learned':'none');if(learningPanelVisible())requestLearningFor(input.value);}}));
       markingSourcePicker.onchange = () => {
         const value = markingSourcePicker.value;
         if (value === 'rank1' || value === 'rank3') markingRank = value === 'rank1' ? 1 : 3;
@@ -2532,12 +2531,12 @@
       };
       function registerMarking(model,{origin='training',select=false}={}) {
         if(model.marking?.origin==='recorded')throw new Error('Bundled recordings are not browser-trained markings');
-        // Validate evidence on its training domain; tiling may use either lattice.
+        // Validate evidence and scope the marking to its tile system and lattice.
         createConnectionLearner(model.setId,{lattice:model.lattice}).validateModel(model,{allowLegacy:origin==='legacy'});
         const result=rememberMarking(model.reduction?.preserveInterior?model:reduceMarking(model,{preserveInterior:true}),{origin});
-        const saved=result.model.reduction?.preserveInterior?result.model:reduceMarking(result.model,{preserveInterior:true});markingLibrary.set(saved.marking.id,saved);
-        if(select||!learnedModels.has(saved.setId))learnedModels.set(saved.setId,saved);
-        customModels.add(saved.setId);
+        const saved=result.model.reduction?.preserveInterior?result.model:reduceMarking(result.model,{preserveInterior:true});saved.marking={...saved.marking,name:markingName(saved)};markingLibrary.set(saved.marking.id,saved);
+        if(select||!learnedModels.has(markingDomain(saved)))learnedModels.set(markingDomain(saved),saved);
+        customModels.add(markingDomain(saved));
         return {...result,model:saved};
       }
       window.addEventListener('message', event => {
@@ -2548,6 +2547,7 @@
         if(data?.type!=='gcts-marking-ready'||!TILE_SETS[data.setId])return;
         let saved;try {saved=registerMarking(data.model,{select:!!data.completed}).model;} catch {return;}
         if((activeScrollAnchor==='learning'||learningPanelVisible()) && selectedTileSet===data.setId && data.completed){
+          sublatticeToggle.checked=(saved.lattice??'A2')==='turtle-sublattice';
           configurePanel(data.setId,'learned',saved.marking.id);
           panelView('tiling', {manual:false});
           startTilingPlayback({reset:true});
@@ -2559,10 +2559,11 @@
       for(const setId of Object.keys(TILE_SETS))try{
         const legacy=localStorage.getItem(`gcts-corona-marking:${setId}`);
         if(legacy){const result=registerMarking(JSON.parse(legacy),{origin:'legacy'});if(result.persisted)localStorage.removeItem(`gcts-corona-marking:${setId}`);}
-        const selected=markingLibrary.get(localStorage.getItem(`gcts-selected-marking:${setId}`));if(selected?.setId===setId)learnedModels.set(setId,selected);
+        const selected=markingLibrary.get(localStorage.getItem(`gcts-selected-marking:${setId}`));if(selected?.setId===setId)learnedModels.set(markingDomain(selected),selected);
+        for(const lattice of ['A2','turtle-sublattice']){const key=markingDomain({setId,lattice}),saved=markingLibrary.get(localStorage.getItem(`gcts-selected-marking:${key}`));if(saved&&markingDomain(saved)===key)learnedModels.set(key,saved);}
       }catch{}
       updatePanelControls();
-      try {const value=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(value){const model=registerMarking(JSON.parse(value),{origin:'legacy',select:true}).model;learningSectionEntered=true;learningTileSet=model.setId;configurePanel(model.setId,'learned',model.marking.id);panelView('tiling');}}catch{}
+      try {const value=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(value){const model=registerMarking(JSON.parse(value),{origin:'legacy',select:true}).model;learningSectionEntered=true;learningTileSet=model.setId;learningLattice=model.lattice??'A2';sublatticeToggle.checked=learningLattice==='turtle-sublattice';configurePanel(model.setId,'learned',model.marking.id);panelView('tiling');}}catch{}
       // Small inspectable state for integration tests and exported screenshots.
       window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,lattice:usingSublattice()?'turtle-sublattice':'A2',rank:markingRank,extent:markingExtension,usesMarking:markingEnabled(),placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking});
       function demoStageForScroll() {
@@ -2597,7 +2598,7 @@
             // This section owns training and tiling with an approved learned model.
             // Known markings belong to the earlier Turtle example.
             const setId = firstVisit ? 'turtle' : learningTileSet;
-            configurePanel(setId, learnedModels.has(setId) ? 'learned' : 'none');
+            configurePanel(setId, learnedModels.has(markingContext(setId)) ? 'learned' : 'none');
             panelView('learning', { manual: false });
             if (firstVisit) {
               requestLearningFor(setId);

@@ -1,6 +1,6 @@
 // Sites belong to tile prototypes: coincident coordinates on different tiles
 // are separate points. Explicit zeros count as assigned values.
-// model.lattice records the training domain, not a restriction on tiling.
+// A learned marking belongs to its tile system and lattice.
 export function markingMetadata(model){
  const support=model?.reducedSupport??model?.support??[],tiles=[...new Set(support.map(e=>e.tile))];
  const perTile=tiles.map(tile=>{const entries=support.filter(e=>e.tile===tile);return {tile,points:new Set(entries.map(e=>e.point.join(','))).size,values:entries.length};});

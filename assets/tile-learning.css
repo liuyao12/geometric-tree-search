@@ -24,8 +24,6 @@
 .panel-tabs [role=tab]:focus-visible { outline: 2px solid #5b947b; outline-offset: -3px; }
 #tiling-learning-frame { display: block; border: 0; width: 100%; height: min(560px, 74vh); background: #f7faf7; }
 #tiling-panel-page[hidden], #learning-panel-page[hidden] { display: none !important; }
-#learned-marking-note { margin: 0; padding: 6px 12px; background: #edf2e7; color: #385749; font: 12px/1.4 system-ui; }
-#learned-marking-note:empty { display: none; }
 #open-marking-lab { color: #315d4d; background: #f2f6ed; border: 1px solid #b5c6b7; border-radius: 5px; padding: 8px 12px; cursor: pointer; }
 #tiling-panel-page .toolbar-toggle-row { flex-wrap: wrap; }
 #turtle-marking-source { max-width: min(360px, 60vw); font: inherit; }

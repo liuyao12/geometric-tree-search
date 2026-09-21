@@ -25,7 +25,7 @@ for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,4
  assert.equal(r.classification.accepted,true);assert.ok(r.model);
  const candidate=r.candidateModel;assert.ok(candidate.support.every(e=>onLattice(e.point)));
  learner.validateCandidate(candidate);assert.throws(()=>full.validateCandidate(candidate),/different lattice/);
- assert.equal(markingValues(candidate),markingValues({...candidate,lattice:'A2'}),'Training provenance does not change marking values');
+ assert.notEqual(markingValues(candidate),markingValues({...candidate,lattice:'A2'}),'Marking identity includes its lattice');
  const reduced=reduceMarking(candidate,{preserveInterior:true});learner.validateCandidate(reduced);
  assert.equal(markingMetadata(reduced).lattice,lattice);
  for(const row of r.connections){
@@ -58,12 +58,6 @@ for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,4
   learner.validateModel({...reduced,classification:r.model.classification});
   const grown=await learner.grow({support:activeMarkingSupport(reduced),target:24,budget:3000,audit:true});
   assert.equal(grown.result,'yes');assert.ok(grown.placements.every(p=>onLattice(p.translation)));assert.ok(learner.verifyPatch(grown.placements,candidate.support).compatible);
-  // A saved marking belongs to the tile system. Its training-domain validation
-  // is separate from application to the full tiling lattice.
-  const fullGrown=await full.grow({support:activeMarkingSupport(reduced),target:24,budget:3000,audit:true});
-  assert.equal(fullGrown.result,'yes');assert.ok(full.verifyPatch(fullGrown.placements,activeMarkingSupport(reduced)).compatible);
-  assert.ok(full.verifyPatch(fullGrown.placements,candidate.support).compatible);
-  assert.ok(full.materialize(full.roots[0]).orientation.occupancy.size>learner.materialize(learner.roots[0]).orientation.occupancy.size);
 
  }else assert.throws(()=>learner.validateModel(candidate),/qualifying one-corona/);
  console.log(`${setId} sublattice: ${valid} valid, ${invalid} invalid, ${blocked} blocked; independent corona replay, domain isolation and exhaustive reduction passed`);

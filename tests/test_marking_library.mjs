@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {rememberMarking,savedMarkings,markingValues,MARKING_LIBRARY_KEY} from '../assets/marking-library.js';
+import {rememberMarking,savedMarkings,markingValues,markingDomain,markingName,MARKING_LIBRARY_KEY} from '../assets/marking-library.js';
 const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
 // Synthetic storage fixture, not a learned tile marking.
 const model={setId:'turtle',allowReflections:true,support:[{tile:'turtle',point:[0,0,0],component:0,value:1}]};
@@ -22,3 +22,20 @@ const unreadable={getItem:()=>'{broken',setItem:()=>assert.fail('must not overwr
 assert.equal(JSON.parse(storage.getItem(MARKING_LIBRARY_KEY)).models.length,5);
 const library=JSON.parse(storage.getItem(MARKING_LIBRARY_KEY));library.models.push({...model,marking:{id:'old-bundle',origin:'recorded'}});storage.setItem(MARKING_LIBRARY_KEY,JSON.stringify(library));assert.equal(savedMarkings(storage).length,5);assert.ok(!storage.getItem(MARKING_LIBRARY_KEY).includes('old-bundle'));
 console.log('PASS distinct named runs, exact same-value detection, stable reload/import, legacy reuse, no overwrites and storage failures.');
+
+// Lattice is part of marking identity, even when the point assignments coincide.
+const subModel={...model,lattice:'turtle-sublattice'},sub=rememberMarking(subModel,{storage,now}).model;
+assert.notEqual(markingValues(subModel),markingValues(model));
+assert.equal(markingValues({...model,lattice:'A2'}),markingValues(model));
+assert.notEqual(markingDomain(sub),markingDomain(first));
+assert.equal(sub.marking.sameValuesAs,undefined);
+assert.equal(rememberMarking(subModel,{origin:'legacy',storage,now}).model.marking.id,sub.marking.id);
+assert.match(prior.marking.name,/^09-20 \d{2}:\d{2} · 1 points · 1 values$/);
+assert.match(first.marking.name,/#2/);assert.match(second.marking.name,/#3/);
+assert.equal(savedMarkings(storage).find(m=>m.marking.id===first.marking.id).marking.name,first.marking.name);
+const mixed={...model,setId:'mixed',support:[...model.support,{tile:'hat',point:[0,0,0],component:0,value:0},{tile:'hat',point:[0,0,0],component:1,value:2}],marking:prior.marking};
+assert.match(markingName(mixed),/2 points · 3 values$/);
+const old={...first,marking:{...first.marking,name:'Turtle · full lattice · 2026-09-20T19:20:00.000Z'}};
+const oldStorage={getItem:()=>JSON.stringify({version:1,models:[old]}),setItem:()=>assert.fail('Renaming the view must not overwrite history')};
+const restored=savedMarkings(oldStorage)[0];assert.equal(restored.marking.id,old.marking.id);assert.deepEqual(restored.support,old.support);assert.match(restored.marking.name,/^09-20 \d{2}:\d{2} · 1 points · 1 values$/);
+console.log('PASS lattice-specific identity, compact local timestamps, same-minute run numbers, assigned-value counts and old-name presentation.');

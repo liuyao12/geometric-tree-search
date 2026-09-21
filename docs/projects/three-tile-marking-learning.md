@@ -70,9 +70,9 @@ pair's budget. A timeout cannot replace an already resolved result.
 ### Viable-frontier criterion
 
 Current runs use `viable-pair-one-corona-v2`. Stored markings from the earlier
-core-only criterion remain available in that browser, labeled “earlier training
-(frontier not checked)”; their values and history are not deleted or relabeled as
-new evidence. New training cannot combine old core-only labels with v2 labels.
+core-only criterion remain available in that browser with their original
+criterion recorded in the saved evidence; their values and history are not
+deleted or relabeled as new evidence. New training cannot combine old core-only labels with v2 labels.
 
 At seed 90210 and 5,000 attempted placements per pair, all checks resolve:
 
@@ -120,18 +120,20 @@ mark-only interactions beyond the audited pairs remain learned restrictions.
 
 ### Named marking history
 
-Every successful fresh training run receives a UUID and a UTC timestamped name,
-for example `Turtle · 2026-09-20 19:20:00.000Z`. The Tiling dropdown lists all
-saved runs for the selected inventory, newest first. A successful run selects
+Every successful fresh training run receives a UUID and a full UTC creation
+timestamp in its stored evidence. Its compact display name uses local month,
+day, hour and minute, plus point/value counts. The Tiling dropdown lists saved
+runs for the selected inventory and lattice, newest first. A successful run selects
 and starts its own entry; selecting an older entry uses that exact saved model.
-The browser retains both the history and the last selection per inventory.
+The browser retains both the history and the last selection per inventory/lattice.
 Old single-model storage slots migrate without discarding the previous marking.
 Earlier entries explicitly tagged as bundled recordings are removed from local
 storage. Actual locally trained markings are retained. Reopening a cached report
 does not create another run.
 
 The learner reports “Same values as …” when a new run has the same complete
-point/channel assignments as an earlier marking. Comparison ignores entry order,
+point/channel assignments as an earlier marking in the same inventory and lattice.
+Comparison ignores entry order,
 names and display reduction; it does not claim to recognize mathematical
 equivalence under relabeling or symmetry. The current exhaustive learner is
 deterministic, so rerunning the same experiment commonly produces the same
@@ -206,7 +208,7 @@ do not hide legal frontier candidates. Graph audits cover the exposed frontier
 and rollback.
 Existing fixed-marking and Turtle
 regressions also pass. Browser checks cover all three reports, automatic Turtle
-collection, automatic learned tiling after successful training, legacy provenance labels, unresolved searches,
+collection, automatic learned tiling after successful training, legacy history, unresolved searches,
 usual tiling controls and mobile/scroll tab behavior.
 
 Regenerate and verify:
@@ -259,13 +261,19 @@ placement/backtracking/success/failure, pause/resume, and the full fresh Hat run
 
 The Learn markings page offers a **sublattice** checkbox. Switching it starts
 classification and training on that domain. The training and tiling lattice
-controls are independent. Saved markings belong to the tile system, not to a
-search lattice: selecting a marking preserves the tiler's current lattice,
-and its sublattice checkbox remains available. Marking coordinates and values
-are applied unchanged, including mark-only points outside the t-support.
-Reports and automatic-start state are separate for
-each inventory and lattice. Marking names, metadata, and exported evidence include
-the domain. Existing browser models with no lattice field retain full A₂ semantics.
+controls are independent while choosing what to train. Saved markings belong to
+both the tile system and lattice. The Tiling dropdown lists only matching runs;
+switching lattice selects its remembered marking, or no marking if none exists.
+Known rank-1/rank-3 selections remain known markings when changing lattice.
+Successful training selects its own lattice before automatically starting tiling.
+Reports, automatic-start state and remembered selections are separate for each
+inventory and lattice. Existing browser models without a lattice field retain
+full A₂ semantics; existing run IDs and point values are preserved.
+
+The details banner has been removed. Names use local `MM-DD HH:mm` followed by
+point and assigned-value counts (including explicit zeros, counting points per
+tile prototype). Same-minute runs in a domain get `#2`, `#3`, etc. Existing names
+are formatted this way when loaded, without discarding their stored evidence.
 
 `A2` is the full integer plane x+y+z=0. `turtle-sublattice` is its index-three
 subgroup x≡y≡z (mod 3). Both t-support and m-support are restricted to it; retained
@@ -278,14 +286,12 @@ such layers; this is not just hiding full-lattice markings in the drawing.
 The full candidate catalog and one-corona obligations are regenerated using
 restricted t-values. `latticePointFilter` passes that restriction to the existing
 shared graph engine for classification. Subsequent marked tiling uses the tiler's
-independently selected t-domain and the saved marking's point assignments.
+matching t-domain and the saved marking's point assignments.
 The reducer uses restricted t-capacities when deciding which marking conflicts
 must survive point removal, including mark-only overlaps. Cached learners include
-the training domain; saved-value comparisons use only the tile system and point
-assignments, independent of training provenance. Validation of stored
-classification evidence uses its original training domain; application to a
-tile system does not require its search lattice to match. Metadata labels scores
-as training checks, not measurements on the currently selected tiling domain.
+the training domain; saved-value comparisons include tile system, lattice and
+point assignments. Stored classification evidence is validated on that same
+domain. Application in the demo requires the tile system and lattice to match.
 No trained point assignments or reports are bundled.
 
 At seed 90210 and 5,000 attempts per pair, browser-equivalent runs give:
@@ -305,8 +311,9 @@ Conformance evidence: `tests/test_sublattice_learning.mjs` checks exact restrict
 t-data, subgroup-preserving placements and transformations, all catalog witnesses,
 independent finite DFS and graph-audited valid/invalid replays per inventory,
 exhaustive bounded pair compatibility before/after reduction, domain validation,
-and graph-audited marked growth using the same sublattice-trained
-markings on both tiling lattices. Full-lattice regression
+and graph-audited marked growth on the matching sublattice.
+Storage and browser checks cover per-domain selection, old history, compact
+names and automatic tiling on the training lattice. Full-lattice regression
 coverage remains in `tests/test_tile_corona_learning.mjs`. The existing generation
 scheduler and rollback code are unchanged. One-corona labels certify only their
 finite point obligations; growth checkpoints do not prove whole-plane coverage
