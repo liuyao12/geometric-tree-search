@@ -24,13 +24,11 @@ for(const [setId,[total,valid,invalid,correct]] of Object.entries(expected)){
  assert.equal(r.criterion,CORONA_CRITERION);assert.equal(r.connections.length,total);assert.deepEqual(r.counts,{valid,invalid,unresolved:0});assert.equal(r.classification.correct,correct);assert.ok(r.model);learner.validateModel(r.model);assert.equal(r.classification.accepted,true);assert.equal(r.classification.validAccepted,valid);assert.equal(r.classification.invalidBlocked,correct-valid);assert.equal(r.classification.perfect,false);
  const catalog=new Set(learner.connections().map(p=>JSON.stringify([p.root,p.attachment])));for(const row of r.connections){assert.ok(catalog.delete(JSON.stringify([row.root,row.attachment])));const checked=learner.verifyCorona([row.root,row.attachment],row.placements);if(row.status==='valid'){assert.ok(checked.complete);assert.ok(checked.frontierViable);assert.deepEqual(frontierReference(learner,row.placements).deadPoints,[]);}else assert.equal(row.result,'no');}
  assert.equal(catalog.size,0);
- const display=reduceMarking(r.candidateModel,{preserveInterior:true});validateMarkingReduction(display);
- const retained=new Set(display.reducedSupport.map(e=>`${e.tile}:${e.point}:${e.component}`));
- for(const root of learner.roots){
-  const occupancy=learner.materialize(root).orientation.occupancy;
-  for(const e of r.candidateModel.support.filter(e=>e.tile===root.tile))if(occupancy.get(e.point.join(','))?.weight===12)assert.ok(retained.has(`${e.tile}:${e.point}:${e.component}`),'Interior assignment was removed');
-  assert.ok(display.reducedSupport.some(e=>e.tile===root.tile&&!occupancy.has(e.point.join(','))),'Missing exterior assignments');
- }
+ const display=reduceMarking(r.candidateModel);validateMarkingReduction(display);
+ const componentCounts=new Map();for(const e of display.reducedSupport){const key=`${e.tile}:${e.point}`;componentCounts.set(key,(componentCounts.get(key)??0)+1);}
+ assert.ok([...componentCounts.values()].some(n=>n<3),'No individual component was freed');
+ assert.ok(display.reduction.values<display.reduction.points*3);
+ if(setId==='turtle')assert.equal(display.reducedSupport.filter(e=>e.point.join()==='-2,1,1').length,0,'Unnecessary center retained');
  for(const row of r.connections)assert.equal(learner.verifyPatch([row.root,row.attachment],display.reducedSupport).compatible,learner.verifyPatch([row.root,row.attachment],r.candidateModel.support).compatible);
  const marking=new SparseA2Marking(r.candidateModel.support);let matches=0;
  for(const row of r.connections){marking.reset([learner.materialize(row.root)]);const predicted=marking.compatible(learner.materialize(row.attachment))?'valid':'invalid';if(predicted===row.status)matches++;}assert.equal(matches,correct);

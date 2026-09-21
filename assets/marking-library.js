@@ -1,5 +1,5 @@
 // Saved runs have independent identities. Value equality is exact and ignores
-// names, run times, array order and display-only reduction metadata.
+// names, run times and array order. Omitted components are part of identity.
 import {markingMetadata} from './marking-metadata.js?v=20260921-domain-names';
 export const MARKING_LIBRARY_KEY='gcts-marking-library-v1';
 export const markingDomain=model=>`${model.setId}:${model.lattice??'A2'}`;
@@ -19,7 +19,7 @@ function nameRuns(models){
  return named;
 }
 export function markingValues(model){
- const entries=model.support.map(e=>[e.tile,...e.point,e.component,e.value]).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+ const entries=(model.reducedSupport??model.support).map(e=>[e.tile,...e.point,e.component,e.value]).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
  return JSON.stringify([markingDomain(model),model.allowReflections,entries]);
 }
 function read(storage){

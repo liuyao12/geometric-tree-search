@@ -132,9 +132,10 @@ storage. Actual locally trained markings are retained. Reopening a cached report
 does not create another run.
 
 The learner reports “Same values as …” when a new run has the same complete
-point/channel assignments as an earlier marking in the same inventory and lattice.
+active point/channel assignments as an earlier marking in the same inventory and lattice.
 Comparison ignores entry order,
-names and display reduction; it does not claim to recognize mathematical
+names and reduction metadata; omitted components are part of marking identity.
+It does not claim to recognize mathematical
 equivalence under relabeling or symmetry. The current exhaustive learner is
 deterministic, so rerunning the same experiment commonly produces the same
 values. Runs still retain distinct names and identities. JSON evidence exports
@@ -149,17 +150,42 @@ training runs, verify both dropdown entries and automatic starts, select and gro
 an older model, and check retained selection/history after reload and mobile layout.
 The matching rules, acceptance gate and shared search engine are unchanged.
 
-### Interior markings in the display
+### Individual component wildcards
 
-The current panels preserve every interior t=1 point when reducing a marking.
-Training already assigned these points; the previous unrestricted reduction
-removed them because other overlapping assignments witnessed the same conflicts.
-Retaining them shows the neighbor-exterior/tile-interior comparisons directly.
-Remaining point deletions still preserve every original t-legal pair exclusion.
-Zero-valued segments are visible gray, and the pair view paints every tile fill
-before any marking, so later tiles cannot obscure neighboring markings.
-This changes neither the trained values nor the corona classification scores.
-The historical reduction benchmarks below retain the original reduction policy.
+New runs use `all-legal-component-conflicts-v2`. A single point/channel entry
+can be omitted independently of the other two channels at that point. Omission
+means `*`, compatible with any value; an assigned zero still constrains overlap.
+The reducer greedily removes a component only while every previously excluded
+t-legal relative placement retains a disagreement witness. This preserves all
+positive and negative decisions and all mark-only pair exclusions, not just
+accuracy on the training catalog. It is support sparsification after encoding,
+not a joint optimization of new labels and wildcard locations.
+
+There is no forced retention of interior values in new runs. The unused Turtle
+center becomes `(*,*,*)`; interior or exterior components survive where needed.
+The tooltip displays partial vectors, the renderer draws only assigned channels,
+and names count active points and assigned values. The original dense entries
+remain in exported evidence and in the unchanged candidate tie-breaking score;
+only active entries constrain compatibility and frontier dependencies.
+
+| Domain | Inventory | Active points | Assigned values |
+| --- | --- | ---: | ---: |
+| Full A₂ | Turtle | 31 | 50 |
+| Full A₂ | Hat | 28 | 46 |
+| Full A₂ | Turtle + Hat | 58 | 96 |
+| Sublattice | Turtle | 18 | 33 |
+| Sublattice | Hat | 18 | 32 |
+| Sublattice | Turtle + Hat | 34 | 64 |
+
+Existing named browser models keep their exact active support, including older
+whole-point reductions. New training creates a separately named component-sparse
+run. Import validation accepts partial points only if their assigned values are
+unchanged subsets and every original conflict remains represented.
+`tests/test_component_marking.mjs` distinguishes `*` from zero and checks contact
+rollback. Catalog tests replay every label; the reduction and sublattice tests
+independently enumerate all t-legal relative placements within support bounds.
+Browser checks verify fresh training, automatic tiling, `*` tooltip components,
+counts, reload, and preservation of earlier named models.
 
 ### Shared-engine conformance and verification
 
@@ -344,14 +370,14 @@ gaps in the shared-engine audit above still apply.
 
 ## Historical growth-based models: point reduction and comparison
 
-Completed models now carry a `reducedSupport` alongside their original `support`.
+The historical whole-point models carried a `reducedSupport` alongside their original `support`.
 The reduced support is used for matching, dependency bookkeeping and drawing.
 The dense values remain available for evidence export and the original candidate
 ranking, so removing redundant matching points does not change search choices.
-Progressive training displays its current dense model; completed and recorded
-models are reduced automatically before they reach the tiler.
+New unnamed models are reduced before reaching the tiler; existing named
+models retain their active assignments.
 
-The reduction removes whole prototype points, including all assigned zero values
+The historical reduction removed whole prototype points, including all assigned zero values
 at those points. For every allowed relative orientation and integer translation,
 we enumerate all unequal overlapping point/channel pairs. Relative placements
 already excluded by integer t-capacity need no marking witness. Mark-only overlaps
@@ -374,8 +400,8 @@ of translations from support bounds (rather than using the reducer's conflict
 witness generator). It checks 10,500 t-legal relative placements, verifies
 identical full/reduced exclusions, rejects tampered reductions, exercises ranking
 rollback, and audits the frontier graph during marked growth for all three sets.
-Imported reduced supports are checked for whole-point subset membership and for
-preservation of every original conflict before use.
+Current validation uses individual point/channel subset membership and checks
+preservation of every original conflict, accepting legacy whole-point models too.
 
 The 32-tile comparison uses identical orientation-zero fixed roots, complete
 point growth, a budget of 1,500 attempts, seeds 1, 7 and 10, and each inventory's
@@ -414,3 +440,30 @@ compare displayed tooltip vectors against independently materialized learned
 entries across all three inventories on both lattices, after rank-1 and (for
 Turtle) rank-3 selections. This presentation fix does not change t/m values,
 classification, candidate pruning, scheduling or rollback.
+
+### Hat directional-constancy feasibility check
+
+`scripts/check-hat-directional.mjs` regenerates unmarked Hat pair labels, then
+uses an optional local `z3-solver` installation through Python to solve a finite
+constraint problem. A two-layer point domain supplies individual assignment
+bits. Each component has one value in {-1,0,+1} for every parallel lattice line;
+all assigned entries on that line share it, even across gaps. Positive overlaps
+must agree whenever both entries are assigned; each negative pair must have at
+least one assigned disagreement. No known marking or learned values seed the
+solver. Each call has a 20-second limit; unknown is not infeasibility.
+
+Solutions exist on both domains: independent geometric replay passes all 41
+positive pairs and rejects all 279 full-lattice / 186 sublattice negatives.
+However, the returned solutions fail a subsequent unbounded marked-growth search
+from one Hat (target 24, budget 5,000). Extra conflicts between placements,
+including contacts beyond the labeled neighboring pairs, remain possible.
+Thus perfect pair classification does not establish a usable tiling marking.
+This is not a proof that every directionally constant Hat marking fails; no such
+condition is imposed on the browser learner by this change.
+
+Run `node scripts/check-hat-directional.mjs /tmp/hat-directional-check` with
+Python's optional `z3-solver` package installed. Generated assignments are written
+outside the repository and are not bundled or installed into the demo. Search
+geometry, scheduler and rollback are unchanged; this is a separate finite
+marking-feasibility experiment followed by exact patch replay and graph-audited
+growth. The finite alphabet and two-layer domain limit its conclusions.

@@ -1,5 +1,5 @@
 import {learningLattice,learningPointFilter,restrictLearningOrientation} from './learning-lattice.js';
-import {validateMarkingReduction} from './marking-reduction.js?v=20260921-sublattice';
+import {validateMarkingReduction} from './marking-reduction.js?v=20260921-component-stars';
 import {A2_TILE_LOOPS,A2_SYMMETRIES,tileOrientations,a2Transform,a2Add,a2Sub,solveA2Tiling,makeHexBoundary,NoA2Marking,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-three-sets';
 export const VERSION='tile-connection-markings-v1';
 export const TILE_SETS=Object.freeze({

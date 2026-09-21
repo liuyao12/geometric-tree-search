@@ -39,3 +39,7 @@ const old={...first,marking:{...first.marking,name:'Turtle · full lattice · 20
 const oldStorage={getItem:()=>JSON.stringify({version:1,models:[old]}),setItem:()=>assert.fail('Renaming the view must not overwrite history')};
 const restored=savedMarkings(oldStorage)[0];assert.equal(restored.marking.id,old.marking.id);assert.deepEqual(restored.support,old.support);assert.match(restored.marking.name,/^09-20 \d{2}:\d{2} · 1 points · 1 values$/);
 console.log('PASS lattice-specific identity, compact local timestamps, same-minute run numbers, assigned-value counts and old-name presentation.');
+
+const masked={...mixed,reducedSupport:mixed.support.slice(0,2)};
+assert.notEqual(markingValues(masked),markingValues(mixed),'Individual stars change marking identity');
+assert.match(markingName(masked),/2 points · 2 values$/);

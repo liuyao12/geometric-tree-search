@@ -2,14 +2,15 @@ import {A2_TILE_LOOPS,tileOrientations,a2Transform,SparseA2Marking} from './a2-t
 import {restrictLearningOrientation} from './learning-lattice.js';
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
 const pointKey=e=>`${e.tile}:${e.point}`;
+const valueKey=e=>`${pointKey(e)}|${e.component}`;
 export const activeMarkingSupport=model=>model?.reducedSupport??model?.support??[];
 
 // All conflicts arise at an aligned pair of assigned point/channel values.
 // Fix the first tile's orientation to identity by equivariance, enumerate every
 // allowed relative orientation and alignment, and keep even mark-only contacts.
 // Pairs already forbidden by t-capacity need no additional marking witness.
-function conflictGraph(model) {
-  const support=model.support,points=[...new Set(support.map(pointKey))],index=new Map(points.map((p,i)=>[p,i]));
+function conflictGraph(model,{wholePoints=false}={}) {
+  const support=model.support,atomKey=wholePoints?pointKey:valueKey,points=[...new Set(support.map(atomKey))],index=new Map(points.map((p,i)=>[p,i]));
   const relations=[],witnesses=[],witnessIndex=new Map();
   const orientations=model.tiles.flatMap(tile=>tileOrientations(tile,A2_TILE_LOOPS[tile])).filter(o=>model.allowReflections||parity(o.symmetry.permutation)>0).map(o=>restrictLearningOrientation(o,model.lattice));
   for(const tile of model.tiles){
@@ -21,7 +22,7 @@ function conflictGraph(model) {
         if(a.component!==b.component||a.value===b.value)continue;
         const shift=a.point.map((v,i)=>v-b.point[i]),key=shift.join(',');
         let pair=pairs.get(key);if(!pair){pair={shift,witnesses:new Set()};pairs.set(key,pair);}
-        const x=index.get(pointKey(a)),y=index.get(pointKey(b.original)),token=x<=y?`${x}:${y}`:`${y}:${x}`;
+        const x=index.get(atomKey(a)),y=index.get(atomKey(b.original)),token=x<=y?`${x}:${y}`:`${y}:${x}`;
         let w=witnessIndex.get(token);if(w===undefined){w=witnesses.length;witnessIndex.set(token,w);witnesses.push({points:[...new Set([x,y])],relations:[]});}
         pair.witnesses.add(w);
       }
@@ -35,23 +36,26 @@ function conflictGraph(model) {
   return {points,relations,witnesses};
 }
 
-export function reduceMarking(model,{preserveInterior=false}={}) {
+export const COMPONENT_REDUCTION='all-legal-component-conflicts-v2';
+export function reduceMarking(model,{preserveInterior=false,wholePoints=false}={}) {
   // Keep t=1 sites when showing how a neighbor’s exterior meets the tile interior.
   const interior=new Set(preserveInterior?model.tiles.flatMap(tile=>[...tileOrientations(tile,A2_TILE_LOOPS[tile]).find(o=>o.index===0).occupancy.values()].filter(e=>e.weight===12).map(e=>`${tile}:${e.point}`)):[]);
-  const {points,relations,witnesses}=conflictGraph(model),incident=points.map(()=>[]);
+  const atomKey=wholePoints?pointKey:valueKey;
+  const {points,relations,witnesses}=conflictGraph(model,{wholePoints}),incident=points.map(()=>[]);
   witnesses.forEach((w,i)=>w.points.forEach(p=>incident[p].push(i)));
   const kept=points.map(()=>true),live=witnesses.map(()=>true),counts=relations.map(r=>r.witnesses.length);
-  // Whole-point deletion removes all three channels, including assigned zeros.
+  // Omission means *, not zero. Delete one assigned component at a time,
+  // retaining a disagreement witness for every previously excluded legal pair.
   const order=points.map((_,i)=>i).sort((a,b)=>incident[a].reduce((n,w)=>n+witnesses[w].relations.length,0)-incident[b].reduce((n,w)=>n+witnesses[w].relations.length,0)||a-b);
   for(const p of order){
-    if(interior.has(points[p]))continue;
+    if(interior.has(points[p].split('|')[0]))continue;
     const losses=new Map(),affected=incident[p].filter(w=>live[w]);
     for(const w of affected)for(const r of witnesses[w].relations)losses.set(r,(losses.get(r)||0)+1);
     if([...losses].some(([r,n])=>n>=counts[r]))continue;
     kept[p]=false;for(const w of affected)live[w]=false;for(const [r,n] of losses)counts[r]-=n;
   }
-  const keep=new Set(points.filter((_,i)=>kept[i])),reducedSupport=model.support.filter(e=>keep.has(pointKey(e))).map(e=>({...e,point:[...e.point]}));
-  return {...model,reducedSupport,reduction:{method:'all-legal-pair-conflicts-v1',...(preserveInterior?{preserveInterior:true}:{}),originalPoints:points.length,points:keep.size,originalValues:model.support.length,values:reducedSupport.length,pairConflicts:relations.length,scope:'Same marking compatibility for every t-legal pair, including mark-only overlaps; no claim of equivalence to known markings.'}};
+  const keep=new Set(points.filter((_,i)=>kept[i])),reducedSupport=model.support.filter(e=>keep.has(atomKey(e))).map(e=>({...e,point:[...e.point]}));
+  return {...model,reducedSupport,reduction:{method:wholePoints?'all-legal-pair-conflicts-v1':COMPONENT_REDUCTION,...(preserveInterior?{preserveInterior:true}:{}),originalPoints:new Set(model.support.map(pointKey)).size,points:new Set(reducedSupport.map(pointKey)).size,originalValues:model.support.length,values:reducedSupport.length,pairConflicts:relations.length,scope:'Same marking compatibility for every t-legal pair, including mark-only overlaps; no claim of equivalence to known markings.'}};
 }
 
 export function validateMarkingReduction(model) {
@@ -59,9 +63,7 @@ export function validateMarkingReduction(model) {
   if(!Array.isArray(model.reducedSupport))throw new Error('Invalid reduced marking support');
   const full=new Map(model.support.map(e=>[`${pointKey(e)}|${e.component}`,e.value])),kept=new Set();
   for(const e of model.reducedSupport){if(!Array.isArray(e.point)||e.point.length!==3||!e.point.every(Number.isSafeInteger)||![0,1,2].includes(e.component)||!Number.isSafeInteger(e.value))throw new Error('Invalid reduced marking entry');const key=`${pointKey(e)}|${e.component}`;if(kept.has(key)||!full.has(key)||full.get(key)!==e.value)throw new Error('Invalid reduced marking entry');kept.add(key);}
-  const reducedPoints=new Set(model.reducedSupport.map(pointKey));
-  if(model.support.some(e=>reducedPoints.has(pointKey(e))&&!kept.has(`${pointKey(e)}|${e.component}`)))throw new Error('Reduction must retain whole points');
-  const {points,relations,witnesses}=conflictGraph(model),live=points.map(p=>reducedPoints.has(p));
+  const {points,relations,witnesses}=conflictGraph(model),live=points.map(p=>kept.has(p));
   if(relations.some(r=>!r.witnesses.some(w=>witnesses[w].points.every(p=>live[p]))))throw new Error('Reduction lost a marking conflict');
 }
 

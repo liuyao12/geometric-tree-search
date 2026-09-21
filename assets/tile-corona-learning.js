@@ -1,4 +1,4 @@
-import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connection-learning.js?v=20260921-sublattice';
+import {createConnectionLearner,TILE_SETS,compact,parity} from './tile-connection-learning.js?v=20260921-component-stars';
 import {solveA2Tiling,makeHexBoundary,NoA2Marking,a2Add} from './a2-tiling-engine.js?v=20260921-viable-corona';
 export {TILE_SETS,parity};
 export const CORONA_CRITERION='viable-pair-one-corona-v2';

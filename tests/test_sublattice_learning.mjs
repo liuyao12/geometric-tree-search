@@ -26,7 +26,7 @@ for(const [setId,[total,valid,invalid,blocked]] of Object.entries({turtle:[247,4
  const candidate=r.candidateModel;assert.ok(candidate.support.every(e=>onLattice(e.point)));
  learner.validateCandidate(candidate);assert.throws(()=>full.validateCandidate(candidate),/different lattice/);
  assert.notEqual(markingValues(candidate),markingValues({...candidate,lattice:'A2'}),'Marking identity includes its lattice');
- const reduced=reduceMarking(candidate,{preserveInterior:true});learner.validateCandidate(reduced);
+ const reduced=reduceMarking(candidate);learner.validateCandidate(reduced);
  assert.equal(markingMetadata(reduced).lattice,lattice);
  for(const row of r.connections){
   const pair=[row.root,row.attachment];assert.ok(pair.every(p=>onLattice(p.translation)));

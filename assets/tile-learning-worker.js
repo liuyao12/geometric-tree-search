@@ -1,4 +1,4 @@
-import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260921-viable-corona';
+import {createCoronaLearner as createConnectionLearner} from './tile-corona-learning.js?v=20260921-component-stars';
 self.requestAnimationFrame=cb=>setTimeout(cb,0);
 let paused=false,resume=null,frameAck=null,frameId=0;
 const frames=[];

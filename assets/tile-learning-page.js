@@ -1,8 +1,8 @@
-import {rememberMarking,markingName} from './marking-library.js?v=20260921-domain-names';
-import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-sublattice';
+import {rememberMarking,markingName} from './marking-library.js?v=20260921-component-stars';
+import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260921-component-stars';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
 import {markingMetadata} from './marking-metadata.js?v=20260921-domain-names';
-import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-viable-corona';
+import {createCoronaLearner as createConnectionLearner,TILE_SETS,CORONA_CRITERION} from './tile-corona-learning.js?v=20260921-component-stars';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
@@ -50,7 +50,7 @@ function install(data,index=0,completed=false){
  if(data.model)learner.validateModel(data.model);
  const candidate=data.model??data.candidateModel;
  if(candidate)learner.validateCandidate(candidate);
- model=candidate?(candidate.reduction?.preserveInterior?candidate:reduceMarking(candidate,{preserveInterior:true})):null;
+ model=candidate?(candidate.reducedSupport?candidate:reduceMarking(candidate)):null;
  let persisted=false;
  if(data.model){const saved=rememberMarking({...model,trainingSettings:data.settings});model=saved.model;persisted=saved.persisted;data={...data,model};}else data={...data,candidateModel:model};
  report=data;reports.set(learningKey(),data);
@@ -70,7 +70,7 @@ function reset(){$('learn-sync').textContent='';epoch++;finish();report=null;mod
 function choose(id,nextLattice=lattice){if(!TILE_SETS[id])return;setId=id;lattice=nextLattice;learner=createConnectionLearner(id,{lattice});$('learn-sublattice').checked=lattice==='turtle-sublattice';selectTiles(id);reset();
  if(reports.has(learningKey()))install(reports.get(learningKey()));
 }
-function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-viable-corona',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
+function launch(kind){$('learn-sync').textContent='Save when every valid pair passes and most invalid pairs are blocked, with none unresolved.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260921-component-stars',import.meta.url),{type:'module'});const active=worker;mode=kind;runningSetId=learningKey();paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
  searchFrame=null;searchBounds=null;clearTimeout(frameTimer);
  if(kind==='collect'){automaticStarts.add(learningKey());$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating all second-tile placements and checking each one-corona…');}else $('learn-deeper').textContent='Pause search';
