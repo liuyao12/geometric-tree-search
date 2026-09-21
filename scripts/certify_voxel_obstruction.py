@@ -22,7 +22,7 @@ class Formula:
         return v
     def all(self, literals): return -self.any([-x for x in literals])
 
-def construct(data, frontier_points=None):
+def construct(data, frontier_points=None, check_time=lambda: None):
     model=data['model']
     if model['capacity'] != 8 or model['placementDomain'] != {'kind':'scaled_cubic','translationStep':2}: raise ValueError('Wrong voxel domain')
     orientations=[list(map(tuple,o['voxels'])) for o in model['orientations']]
@@ -51,12 +51,15 @@ def construct(data, frontier_points=None):
     if not target: raise ValueError('Empty target')
     candidates=set(seeds)
     for q in target:
+        check_time()
         for oi,o in enumerate(orientations):
             for anchor in o: candidates.add((oi,tuple(q[i]-anchor[i] for i in range(3))))
     f=Formula();variables={s:f.new() for s in sorted(candidates)};by_voxel=defaultdict(list)
     for s,v in variables.items():
+        check_time()
         for q in cells(s): by_voxel[q].append(v)
     for q,vs in by_voxel.items():
+        check_time()
         f.clauses.extend([-a,-b] for a,b in combinations(vs,2))
         if q in target: f.clauses.append(vs)
     for q in target:
@@ -77,13 +80,21 @@ def construct(data, frontier_points=None):
     def avail(s):
         if s not in available: available[s]=f.all([-occ(q) for q in cells(s)])
         return available[s]
-    for q in frontier_points or []:
+    constrained=set()
+    def constrain_frontier(q):
+        check_time()
+        q=tuple(q)
+        if q in constrained: return
         if len(q)!=3 or any(type(x) is not int or x%2 for x in q): raise ValueError('Invalid corner')
         adjacent=[tuple(q[i]//2+d[i] for i in range(3)) for d in product([-1,0],repeat=3)]
         incident={(oi,tuple(p[i]-v[i] for i in range(3))) for p in adjacent for oi,o in enumerate(orientations) for v in o}
         choices=[avail(s) for s in sorted(incident)]
         neighbors=[occ(p) for p in adjacent]
         f.clauses.append([-f.any(neighbors),f.all(neighbors)]+choices)
+        constrained.add(q)
+    f.constrain_frontier=constrain_frontier
+    f.constrained=constrained
+    for q in frontier_points or []: constrain_frontier(q)
     return f,variables,{'candidates':len(variables),'targetVoxels':len(target),'pairExclusionEdges':len(exclusions),'frontierPoints':len(frontier_points or [])}
 
 def main():

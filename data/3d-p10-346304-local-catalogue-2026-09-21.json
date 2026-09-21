@@ -1,0 +1,9653 @@
+{
+  "protocol": {
+    "tile": "p10-346304",
+    "modelSha": "d7d37a43c50e5f135d908cdff7d57f20e760654510f88b5374118f11af71cc9f",
+    "orbitSha": "b781b6cc65d0d88a680c6bc81badbcdd4c60e0475151d72f281e8bf43022aca4",
+    "sources": {
+      "scripts/learn-3d-voxel-pair-catalog.mjs": "82c9daab0f9dd461138e28ba8a2b9e3b20631f96ce4e93e13391b3634dda102b",
+      "scripts/solve_point_pair_corona.py": "a5191ee7fe726c27abcc4e04366fc7f0fce687cdfd6d761a641b7f31ff0e8fbe",
+      "scripts/solve_voxel_pair_corona.py": "c02713aef2ae8cb0615af2e9af40b2e11e95cf763d414a87886b30739a49635c",
+      "scripts/certify_voxel_obstruction.py": "958b1cc4393a6b3a0c109e675ab0c019afd3f23c439c390c6991c64505f2984e",
+      "scripts/lib/3d-pair-orbits.mjs": "c66ce0d8c1ce40e263b2c537e43c91cc469ad9386a7f8a7e811ba2965a0ddea7",
+      "scripts/lib/verify-point-obstruction.mjs": "ac8b284efad0f74d1d34a062b5f961a7a862a269dadc9693252af3738c1b90a3",
+      "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+      "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+      "apps/3d-lattice-tiler/marking-learning.js": "3c6a61778ac9b2b83a33cf8518d9249bfb84c15a31c1d4ca116bae1c76be3998",
+      "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+    },
+    "runs": [
+      {
+        "timeMs": 5000,
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "oracle": "glucose",
+        "startedAt": "2026-09-21T21:27:06.354Z",
+        "attempted": 20,
+        "elapsedMs": 96176.78675
+      }
+    ],
+    "parents": [],
+    "importedEvidence": null,
+    "oracle": "Validated binary-cover incremental Glucose control with viable frontier; exact proper-rotation and seed-exchange orbits",
+    "scope": "Local pair labels and a learned restriction. Neither infinite construction nor aperiodicity proof."
+  },
+  "pairs": 1924,
+  "orbits": 365,
+  "groups": [
+    {
+      "orbit": 0,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 2,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3200,
+        "targetVoxels": 160,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 204.520916,
+        "rounds": 5,
+        "elapsedMs": 5024.132958,
+        "frontierConstraints": 16,
+        "variables": 6189,
+        "clauses": 933477,
+        "cachedFrontierPoints": 472,
+        "cumulativeMs": 5024.132958
+      }
+    },
+    {
+      "orbit": 1,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3184,
+        "targetVoxels": 160,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 209.360667,
+        "rounds": 7,
+        "elapsedMs": 5016.287792,
+        "frontierConstraints": 24,
+        "variables": 7518,
+        "clauses": 947628,
+        "cachedFrontierPoints": 584,
+        "cumulativeMs": 5016.287792
+      }
+    },
+    {
+      "orbit": 2,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "invalid",
+      "reason": "complete finite voxel formula exhausted",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3434,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 220.161792,
+        "rounds": 4,
+        "elapsedMs": 1029.5330000000001,
+        "frontierConstraints": 12,
+        "variables": 5420,
+        "clauses": 986321,
+        "cachedFrontierPoints": 231,
+        "cumulativeMs": 1029.5330000000001
+      }
+    },
+    {
+      "orbit": 3,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "invalid",
+      "reason": "complete finite voxel formula exhausted",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3434,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 213.826583,
+        "rounds": 2,
+        "elapsedMs": 833.2972919999999,
+        "frontierConstraints": 4,
+        "variables": 4722,
+        "clauses": 975997,
+        "cachedFrontierPoints": 133,
+        "cumulativeMs": 833.2972919999999
+      }
+    },
+    {
+      "orbit": 4,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3442,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 214.665583,
+        "rounds": 14,
+        "elapsedMs": 5000.830667000001,
+        "frontierConstraints": 52,
+        "variables": 9060,
+        "clauses": 1036615,
+        "cachedFrontierPoints": 700,
+        "cumulativeMs": 5000.830667000001
+      }
+    },
+    {
+      "orbit": 5,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3528,
+        "targetVoxels": 180,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 220.31712499999998,
+        "rounds": 5,
+        "elapsedMs": 5046.010499999999,
+        "frontierConstraints": 16,
+        "variables": 6520,
+        "clauses": 1023453,
+        "cachedFrontierPoints": 340,
+        "cumulativeMs": 5046.010499999999
+      }
+    },
+    {
+      "orbit": 6,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3636,
+        "targetVoxels": 185,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 226.49037500000003,
+        "rounds": 4,
+        "elapsedMs": 5016.0487920000005,
+        "frontierConstraints": 12,
+        "variables": 6862,
+        "clauses": 1066588,
+        "cachedFrontierPoints": 568,
+        "cumulativeMs": 5016.0487920000005
+      }
+    },
+    {
+      "orbit": 7,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3720,
+        "targetVoxels": 189,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 227.78562499999998,
+        "rounds": 4,
+        "elapsedMs": 5034.893333,
+        "frontierConstraints": 12,
+        "variables": 5961,
+        "clauses": 1076739,
+        "cachedFrontierPoints": 262,
+        "cumulativeMs": 5034.893333
+      }
+    },
+    {
+      "orbit": 8,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "invalid",
+      "reason": "complete finite voxel formula exhausted",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3780,
+        "targetVoxels": 192,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 228.91616599999998,
+        "rounds": 9,
+        "elapsedMs": 2342.815458,
+        "frontierConstraints": 32,
+        "variables": 9331,
+        "clauses": 1142090,
+        "cachedFrontierPoints": 679,
+        "cumulativeMs": 2342.815458
+      }
+    },
+    {
+      "orbit": 9,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3826,
+        "targetVoxels": 195,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 228.51112500000002,
+        "rounds": 3,
+        "elapsedMs": 5035.18925,
+        "frontierConstraints": 8,
+        "variables": 5619,
+        "clauses": 1095816,
+        "cachedFrontierPoints": 244,
+        "cumulativeMs": 5035.18925
+      }
+    },
+    {
+      "orbit": 10,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3910,
+        "targetVoxels": 199,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 272.95554100000004,
+        "rounds": 10,
+        "elapsedMs": 5010.948666,
+        "frontierConstraints": 36,
+        "variables": 8974,
+        "clauses": 1170739,
+        "cachedFrontierPoints": 525,
+        "cumulativeMs": 5010.948666
+      }
+    },
+    {
+      "orbit": 11,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3720,
+        "targetVoxels": 189,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 228.53287499999996,
+        "rounds": 5,
+        "elapsedMs": 5018.995667,
+        "frontierConstraints": 16,
+        "variables": 6347,
+        "clauses": 1082333,
+        "cachedFrontierPoints": 243,
+        "cumulativeMs": 5018.995667
+      }
+    },
+    {
+      "orbit": 12,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3826,
+        "targetVoxels": 195,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 228.70612500000001,
+        "rounds": 3,
+        "elapsedMs": 5002.152959,
+        "frontierConstraints": 9,
+        "variables": 5856,
+        "clauses": 1101156,
+        "cachedFrontierPoints": 341,
+        "cumulativeMs": 5002.152959
+      }
+    },
+    {
+      "orbit": 13,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3910,
+        "targetVoxels": 199,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 275.776209,
+        "rounds": 9,
+        "elapsedMs": 5012.123292,
+        "frontierConstraints": 32,
+        "variables": 8448,
+        "clauses": 1164248,
+        "cachedFrontierPoints": 489,
+        "cumulativeMs": 5012.123292
+      }
+    },
+    {
+      "orbit": 14,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3960,
+        "targetVoxels": 198,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 270.21266699999995,
+        "rounds": 6,
+        "elapsedMs": 5012.4079169999995,
+        "frontierConstraints": 20,
+        "variables": 7843,
+        "clauses": 1156018,
+        "cachedFrontierPoints": 492,
+        "cumulativeMs": 5012.4079169999995
+      }
+    },
+    {
+      "orbit": 15,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 4012,
+        "targetVoxels": 201,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 271.399,
+        "rounds": 5,
+        "elapsedMs": 5004.829583999999,
+        "frontierConstraints": 16,
+        "variables": 7117,
+        "clauses": 1165035,
+        "cachedFrontierPoints": 345,
+        "cumulativeMs": 5004.829583999999
+      }
+    },
+    {
+      "orbit": 16,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 4012,
+        "targetVoxels": 201,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 275.771292,
+        "rounds": 3,
+        "elapsedMs": 5012.873958,
+        "frontierConstraints": 8,
+        "variables": 5924,
+        "clauses": 1149996,
+        "cachedFrontierPoints": 225,
+        "cumulativeMs": 5012.873958
+      }
+    },
+    {
+      "orbit": 17,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "time budget",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 4064,
+        "targetVoxels": 204,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 276.870583,
+        "rounds": 5,
+        "elapsedMs": 5001.152292,
+        "frontierConstraints": 16,
+        "variables": 7007,
+        "clauses": 1181076,
+        "cachedFrontierPoints": 409,
+        "cumulativeMs": 5001.152292
+      }
+    },
+    {
+      "orbit": 18,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3434,
+        "targetVoxels": 174,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 218.25137499999997,
+        "rounds": 6,
+        "elapsedMs": 5010.749,
+        "frontierConstraints": 20,
+        "variables": 6771,
+        "clauses": 1008381,
+        "cachedFrontierPoints": 415,
+        "cumulativeMs": 5010.749
+      }
+    },
+    {
+      "orbit": 19,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "solver: timeout",
+      "stats": {
+        "backend": "glucose3-incremental",
+        "solverVersion": "python-sat 1.9.dev15",
+        "encoding": "voxel-cover",
+        "frontier": "occupancy",
+        "frontierBatch": 4,
+        "scope": "Exact finite seed-support corona with viable frontier; nonreference SAT scheduling",
+        "candidates": 3604,
+        "targetVoxels": 183,
+        "pairExclusionEdges": 0,
+        "frontierPoints": 0,
+        "preparationMs": 240.505917,
+        "rounds": 6,
+        "elapsedMs": 5011.406917,
+        "frontierConstraints": 20,
+        "variables": 7130,
+        "clauses": 1060447,
+        "cachedFrontierPoints": 404,
+        "cumulativeMs": 5011.406917
+      }
+    },
+    {
+      "orbit": 20,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 21,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 22,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 23,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            0,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 24,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 25,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            0,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 26,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 27,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            -4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 28,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            4,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 29,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 30,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 31,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 32,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 33,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            8,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 34,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 35,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 36,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 37,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 38,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            -2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 39,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 40,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 41,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            2,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 42,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            6,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 43,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 44,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 45,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 46,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 47,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 48,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 49,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            0,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 50,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 51,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 52,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 53,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 54,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 55,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 56,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 57,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 58,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 59,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 60,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 61,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 62,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 63,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 64,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 65,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 66,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            6,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 67,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            6,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 68,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            6,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 69,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 70,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 71,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 72,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 73,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 74,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 75,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 76,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 77,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 78,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            6,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 79,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 80,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 81,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            -4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 82,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            -4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 83,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            2,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 84,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            4,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 85,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            6,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 86,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            8,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 87,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 88,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 89,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 90,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 91,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 92,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 93,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 94,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 95,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 96,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 97,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 98,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 99,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 100,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 101,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 102,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 103,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 104,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 105,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 106,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 107,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 108,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 109,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 110,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 111,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 112,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 113,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 114,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 115,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 116,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 117,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 118,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 119,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 120,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 121,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 122,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 123,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 124,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 125,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 126,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 127,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 128,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            8,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 129,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 130,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 131,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 132,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 133,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 134,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 135,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 136,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 137,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 138,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 139,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 140,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 141,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 142,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 143,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -4,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 144,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            -2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 145,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 146,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 147,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 148,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 149,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 150,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 151,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 152,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 153,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -4,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 154,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 155,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 156,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 157,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 158,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 159,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 160,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 161,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 162,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 163,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 164,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 165,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            -4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 166,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 167,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -4,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 168,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -2,
+            -6,
+            6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 169,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            0,
+            -6,
+            6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 170,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 171,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 172,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -4,
+            -6,
+            6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 173,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 174,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 175,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 176,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 177,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 178,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 179,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 1,
+          "translation": [
+            -8,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 180,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 181,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 182,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 183,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 184,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 185,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 186,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 187,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 188,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 189,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 190,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 191,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 192,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 193,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 194,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 195,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 196,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 197,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 198,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 199,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 200,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 201,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 202,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            6,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 203,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            6,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 204,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            6,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 205,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            0,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 206,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 207,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 208,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 209,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 210,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 211,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 212,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 213,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 214,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 215,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 216,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 217,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            4,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 218,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            6,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 219,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            6,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 220,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 221,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            8,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 222,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 223,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 224,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 225,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 226,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 227,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 228,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 229,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 230,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 231,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 232,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 233,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 234,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 235,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 236,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 237,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 238,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 239,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 240,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 241,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 242,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 243,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 244,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 245,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 246,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 247,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            4,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 248,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            4,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 249,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            8,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 250,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            8,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 251,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 252,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 253,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 254,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 255,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 256,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            4,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 257,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 258,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            4,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 259,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 260,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 261,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            8,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 262,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            8,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 263,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 264,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 265,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 266,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            4,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 267,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 268,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            8,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 269,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 270,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 271,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 272,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 273,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 274,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 275,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 276,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 277,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 278,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 279,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 280,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 281,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 282,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 283,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 284,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 285,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 286,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 287,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 288,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            0,
+            6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 289,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 290,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            0,
+            8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 291,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 292,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 293,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 294,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            0,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 295,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            2,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 296,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            0,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 297,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            2,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 298,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -2,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 299,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            0,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 300,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 301,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 302,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            0,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 303,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            2,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 304,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -4,
+            6,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 305,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 306,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            -6,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 307,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -6,
+            -6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 308,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            0,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 309,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 310,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            2,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 311,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 312,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 313,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 3,
+          "translation": [
+            -8,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 314,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 1,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 315,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 316,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            -4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 317,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -4,
+            -2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 318,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -4,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 319,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 320,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 321,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 322,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -2,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 323,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            0,
+            2
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 324,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -2,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 325,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            0,
+            4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 326,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            6,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 327,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            6,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 328,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 329,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            -2,
+            0
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 330,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            0,
+            0
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 331,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 332,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 333,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 334,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            -2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 335,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 336,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 337,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 338,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 339,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 340,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 341,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            6,
+            -2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 342,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            6,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 343,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            -2,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 344,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            0,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 345,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 346,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            2,
+            -6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 347,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            4,
+            -6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 348,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            6,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 349,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            8,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 350,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            -2,
+            -6
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 351,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            0,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 352,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            -6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 353,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -4,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 1,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 354,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -2,
+            -6,
+            -4
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 355,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -6,
+            -4,
+            -4
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 356,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -2,
+            -2,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 357,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -2,
+            0,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 358,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            0,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 359,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -2,
+            -6,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 360,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            -6,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 361,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -2,
+            -4,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 362,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            0,
+            -4,
+            -8
+          ]
+        }
+      ],
+      "members": 6,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 363,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -6,
+            -4,
+            -6
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    },
+    {
+      "orbit": 364,
+      "pair": [
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oi": 7,
+          "translation": [
+            -4,
+            -4,
+            -8
+          ]
+        }
+      ],
+      "members": 3,
+      "status": "unresolved",
+      "reason": "catalogue pass limit",
+      "stats": {}
+    }
+  ],
+  "learning": {
+    "complete": false,
+    "accepted": false,
+    "counts": {
+      "valid": 0,
+      "invalid": 18,
+      "unresolved": 1906
+    },
+    "positivePassed": 0,
+    "negativeBlocked": 18,
+    "points": 2280,
+    "values": 2280
+  },
+  "growth": null,
+  "rootedControls": [
+    {
+      "mode": "free",
+      "tiles": 74,
+      "artifactSha256": "607c69402e20e7f76d97d34af1b35b7880f84fb86b3f93f8dfeeca5d8ba23827",
+      "result": "finite_exact",
+      "reason": null,
+      "stats": {
+        "marked": false,
+        "fixedPlacements": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "backend": "z3-pb2bv-sat",
+        "solverVersion": "4.16.0",
+        "scope": "Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling",
+        "pairExclusionEdges": 0,
+        "candidates": 6272,
+        "targetPoints": 341,
+        "targetVoxels": 343,
+        "markingSites": 0,
+        "preparationMs": 801.368459,
+        "elapsedMs": 13215.386959
+      },
+      "inputSha256": "d1f1b73a996d8c66fc0bade274e28385947fddf9a6bb3201e4875918f21bad07",
+      "sourceSha256": "f7701b75288c1b8aced189d333b224a9947520fbfd92c4f4b95725bcaa6c4929"
+    },
+    {
+      "mode": "exclusions",
+      "tiles": 0,
+      "artifactSha256": "d4f0f810b1f3c15c057fa56ccca569d443663ad89d698da89aad82d971e17ca5",
+      "result": "unknown",
+      "reason": "timeout",
+      "stats": {
+        "marked": false,
+        "fixedPlacements": [
+          {
+            "oi": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "backend": "z3-pb2bv-sat",
+        "solverVersion": "4.16.0",
+        "scope": "Validated voxel reduction of a finite point target, no frontier viability; nonreference SAT scheduling",
+        "pairExclusionEdges": 35232,
+        "candidates": 6272,
+        "targetPoints": 341,
+        "targetVoxels": 343,
+        "markingSites": 0,
+        "preparationMs": 4873.814875,
+        "elapsedMs": 20017.837958
+      },
+      "inputSha256": "872143181c652f72cb2b3bcc12366e6e05906dd09e9565e7353d2e33c2fa9ab8",
+      "sourceSha256": "f7701b75288c1b8aced189d333b224a9947520fbfd92c4f4b95725bcaa6c4929"
+    }
+  ],
+  "rootedReplay": {
+    "point": {
+      "ok": true,
+      "covered": 341,
+      "required": 341,
+      "reason": "finite exact point window"
+    },
+    "voxel": {
+      "ok": true,
+      "covered": 125,
+      "required": 125,
+      "voxels": 740
+    },
+    "tiles": 74,
+    "period": {
+      "found": false,
+      "certificate": null,
+      "reason": "proposal pool exhausted",
+      "stats": {
+        "vectors": 307,
+        "selectedVectors": 80,
+        "bases": 10440,
+        "fullPoolBases": 6469,
+        "searchNodes": 76596,
+        "budgetStops": 0,
+        "elapsedMs": 3033.325292
+      },
+      "scope": "Heuristic period bases and placement pool from a finite patch; no negative periodicity or aperiodicity claim."
+    }
+  }
+}

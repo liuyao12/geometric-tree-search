@@ -378,11 +378,11 @@ concurrent runs are not an isolated timing comparison.
 
 A ten-group refinement takes 122.05 seconds; a further twenty-group pass takes
 250.52 seconds; another fifteen-group pass takes 148.71 seconds, each reusing
-saved necessary frontier conditions. Including imported witnesses, the catalogue
-now has **252 valid, 3 invalid, and 1,153 unresolved pairs**. All 252 positives pass the
+saved necessary frontier conditions. Including imported witnesses, that earlier checkpoint had
+**252 valid, 3 invalid, and 1,153 unresolved pairs**. All 252 positives pass the
 provisional marking, and all three negatives are blocked with 48 scalar values.
-**The marking is not accepted and no marked growth starts:** the catalogue is
-incomplete. These are local extension labels, not a new infinite classification.
+**That marking was not accepted and no marked growth started:** its catalogue
+was incomplete. The later incremental pass below completes it. These are local extension labels, not a new infinite classification.
 [Catalogue checkpoint receipt](../../data/3d-p9-42947-local-catalogue-2026-09-21.json).
 
 The runner supports an explicit `--parent=<older-output>` when source versions
@@ -403,3 +403,149 @@ node scripts/test-3d-orbit-parent.mjs
 
 Browser learning remains the reference graph implementation. No research labels
 or learned assignments from this experiment are bundled into either 3D app.
+
+## Incremental voxel SAT oracle
+
+`scripts/solve_voxel_pair_corona.py` provides an additional headless research
+backend using Glucose3 through PySAT. It asks the same finite pair-corona
+existence question, with the same necessary viable-frontier conditions. The
+browser lanes continue to use their unmarked point/candidate graph.
+
+The voxel CNF builder now exposes incremental frontier constraints. The solver
+retains its clause state across refinements. For checking each proposed patch,
+voxel occupancy is an integer bitset, and each possible frontier addition has
+a cached overlap mask. A candidate may extend outside the finite SAT placement
+pool: its mask only needs cells in the union of that pool's occupied cells,
+because a selected patch cannot occupy any other cell. This preserves the full
+frontier candidate universe. Centers are either empty or full, so only partial
+corners need frontier candidates in this validated voxel reduction.
+
+Each SAT answer is checked at every exposed corner. Up to the configured batch
+size of dead corners receives exact occupancy/availability constraints before
+the next solve. A positive requires a complete check, not merely no dead corner
+in a sampled subset. UNSAT is a finite negative; interrupted or timed-out solves
+remain unresolved. Necessary corner constraints can be resumed from either
+backend after checking the exact problem hash. Both use distinct placements,
+fixed seeds and complete enumeration of placements touching the core.
+
+`test_incremental_voxel_corona.py` compares easy cases against the Z3 backend,
+replays positives using the original weighted point values, recovers all four
+proof-certified p9-48258 negatives, compares incremental and static CNF assembly,
+and checks resumption, resource stops and invalid models. The shared builder
+still regenerates all five archived p9-48258 formulas byte for byte; DRAT-trim
+continues to verify their traces. The catalogue runner independently replays all
+new and inherited positive witnesses under every transported pair, and every
+recorded dead-frontier obstruction. New negative labels use trusted Glucose3
+UNSAT unless a proof is separately exported and checked.
+
+Use `--oracle=glucose --frontier=occupancy` with
+`scripts/learn-3d-voxel-pair-catalog.mjs`; install `python-sat==1.9.dev15` in the
+Python environment selected by `--python`. This is a separate SAT scheduling
+control, not an acceleration claim for the live reference graph lane.
+
+## p9-42947: complete classification and limits of the pair marking
+
+The incremental oracle completes **all 1,408 pairs (271 symmetry classes)**:
+1,405 have independently replayed viable one-coronas, and three are invalid.
+The actual live encoder assigns **48 scalar values at 48 points across eight
+orientations**, passes all 1,405 positives and blocks all three negatives. The
+complete acceptance gate passes. Assignments and full experimental witnesses
+remain outside the repository; the [aggregate receipt](../../data/3d-p9-42947-local-catalogue-2026-09-21.json)
+contains scores, source hashes, costs and validation results.
+
+The two incremental passes take 118.89 and 387.00 seconds, reusing earlier
+necessary frontier conditions and witnesses. The recorded earlier catalogue
+passes total 1,080.56 seconds; separately imported targeted work adds further
+cost. Thus 505.89 seconds is the cost of finishing the inherited catalogue,
+not a cold end-to-end discovery time. This remains a headless SAT labeling
+control, not a claim that the browser graph oracle completes this case quickly.
+
+### What the marking excludes
+
+The exhaustive contact audit transports 11,264 labels across all root
+orientations, then enumerates every capacity-legal relative placement with an
+assigned marking overlap. It finds 120 compatible contacts and 24 conflicts,
+all accounted for by negative labels. There are no mark-only noncontact
+conflicts and no additional excluded pairs.
+
+The three negative raw pairs form two symmetry classes. Each pair leaves an
+empty unit voxel for which **all 72 covering placements overlap the fixed pair**.
+The empty voxel shares a corner with a seed, so completing that seed's weighted
+support requires covering it. This supplies a short independent proof of both
+negative classes without a SAT solver or any learned value. All 24 proper
+rotations plus seed exchange generate 24 relative exclusion schemas.
+
+```sh
+python3 scripts/verify_p9_42947_pair_obstructions.py
+python3 scripts/test_p9_42947_pair_obstructions.py
+```
+
+The [small geometry certificate](../../data/3d-p9-42947-pair-obstructions-2026-09-21.json)
+contains only the prototype, complete orientation table, two pairs and their
+unfillable voxels. The verifier independently generates the proper cubic orbit,
+checks nonoverlap and the corona obligation, and exhausts possible covering
+placements. It takes about 2 ms in the recorded replay. Both negatives were also
+recovered by the reference graph in 12 attempts each and by independently
+RUP/DRAT-checked voxel formulas; the geometric argument is the simpler published
+certificate. These are necessary grid pair exclusions, not global non-tiling.
+
+### Warm growth after completed learning
+
+Sequential reference-graph runs use the same 91-point target, seeds, 15-second
+budget and one-million-attempt limit. Both point and voxel replay pass every
+completed patch. Learning and validation costs are excluded here:
+
+| Seed | Unmarked ms | Marked ms | Unmarked branches | Marked branches |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 1,056 | 1,099 | 1,352 | 1,255 |
+| 2 | 447 | 223 | 487 | 203 |
+| 3 | 476 | 682 | 582 | 648 |
+
+The effect is mixed. These measurements do not establish a general warm speedup,
+and the catalogue cost makes a cold speedup implausible for these small windows.
+
+The larger 341-point reference-graph window remains unknown at 15 seconds
+for both modes and both seeds 1 and 2. Marking cuts are active (13,030 and
+16,131), but neither marked run completes. These runs use the original centered
+window without a fixed root, independently of the rooted SAT controls below.
+
+A separate rooted SAT control fixes orientation zero at the origin and shifts
+the target center to physical `(1,1,1)`. Completing the radius-two weighted
+window requires a full **7×7×7 cube of 343 voxels**. Both marked and unmarked runs
+find verified 77-tile patches. The marked run takes 9.48 seconds; the earlier
+unmarked run took 1.63 seconds. These separate runs are not a controlled speed
+comparison. On the larger **9×9×9 cube**, both runs reach their 30-second budget
+without a result. No negative label follows from those stops.
+
+Period proposals extracted from each 77-tile patch produce no certificate. The
+marked patch exhausts 8,547 proposed bases (6,269 with a full placement pool),
+using 66,541 exact-cover nodes without a per-basis cutoff. This only exhausts
+that heuristic proposal pool, not all periodic tilings.
+
+The learned rule's demonstrated role is to prevent two cavity configurations.
+The complete pair catalogue still leaves the genuinely hard extension problem
+open. Larger context tests or cluster constructions must remain separately
+identified; a three-tile obstruction whose every pair is accepted cannot be
+excluded by deterministic pairwise agreement while preserving those pair labels.
+No infinite construction or aperiodic monotile has been established.
+
+## Next case: p10-346304 pilot
+
+A fresh incremental pass attempts the first 20 of 365 pair classes for this
+achiral ten-cube tile, with five seconds per class and batches of four frontier
+conditions. It takes 96.18 seconds including enumeration, replay and synthesis.
+Three classes are exhausted negatives, covering 18 of 1,924 raw pairs; the other
+17 attempted classes time out. All unattempted pairs stay unresolved. There are
+**zero positive labels and 1,906 unresolved pairs**, so no marking is accepted
+and no learned-marking growth starts. These negatives currently rely on trusted
+Glucose UNSAT; their recorded dead-frontier conditions are independently replayed.
+[Partial-catalogue receipt](../../data/3d-p10-346304-local-catalogue-2026-09-21.json).
+
+A separate unmarked rooted 7×7×7 SAT control finds a 74-tile finite patch in
+13.22 seconds, verified against both point sums and voxel occupancy. A control
+adding the 144 symmetry-expanded necessary pair exclusions (35,232 candidate
+conflict edges) reaches its 20-second budget. This is an explicit clause-filter
+experiment, not an accepted marking or reference graph lane. Period proposals
+from the unmarked patch exhaust 10,440 sampled bases without a certificate;
+no periodicity or aperiodicity classification follows. Further work must resolve
+the pending pair coronas or find a stronger independently justified obstruction.
