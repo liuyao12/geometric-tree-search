@@ -42,12 +42,12 @@ for(const [tile,pairs,valid,invalid,blocked] of [['cube',26,26,0,0],['a2_turtle_
   if(e.phase==='update'){assert.equal(e.pairs,++previous);assert.equal(e.snapshot.counts.valid,e.snapshot.positivePassed);assert.equal(e.snapshot.saved,undefined);}
   last=e;
  }
- const marking=last.marking;assert.ok(marking.accepted);assert.ok(marking.complete);assert.equal(marking.pairs,pairs);assert.deepEqual(marking.counts,{valid,invalid,unresolved:0});assert.equal(marking.negativeBlocked,blocked);
+ const marking=last.marking;assert.ok(marking.accepted);assert.ok(marking.complete);assert.equal(marking.pairs,pairs);assert.deepEqual(marking.counts,{valid,invalid,unresolved:0});assert.ok(marking.negativeBlocked>=blocked,'Must retain the previous negative exclusions');
  for(const row of marking.evidence){if(row.status==='valid'){assert.ok(verifyCorona(model,row.pair,row.placements).complete);assert.ok(pairCompatible(marking.fields,row.pair));}}
- assert.equal(marking.evidence.filter(row=>row.status==='invalid'&&!pairCompatible(marking.fields,row.pair)).length,blocked);
+ assert.equal(marking.evidence.filter(row=>row.status==='invalid'&&!pairCompatible(marking.fields,row.pair)).length,marking.negativeBlocked);
  const grown=await collect(search(last.model,{mode:'gcts',learnedRestriction:true,timeMs:5000,nodes:10000}));assert.equal(grown.result,'finite_exact');assert.ok(verify(last.model,grown.placements).ok);assert.ok(verify(model,grown.placements).ok);
  const section=new LearnedSection(model,marking),spec=marking.evidence[0].pair[0],o=model.orientations[spec.oi],move={type:o.type,index:o.index,translation:spec.translation};section.add(move);section.add(move);section.remove(move);assert.ok(section.compatible(move));section.remove(move);assert.equal(section.section.size,0);
- console.log(`${tile}: ${pairs} labels, all ${valid} positives pass, ${blocked}/${invalid} negatives blocked, marked finite window verified.`);
+ console.log(`${tile}: ${pairs} labels, all ${valid} positives pass, ${marking.negativeBlocked}/${invalid} negatives blocked, marked finite window verified.`);
 }
 const short=await collect(learnMarking(prepareModel({tile:'cube',radius:1}),{maxPairs:1,timeMs:10000}));assert.equal(short.marking.complete,false);assert.equal(short.marking.accepted,false);assert.equal(short.model,null);
 const unknown=await collect(learnMarking(prepareModel({tile:'cube',radius:1}),{pairNodes:0,timeMs:10000}));assert.equal(unknown.marking.accepted,false);assert.ok(unknown.marking.counts.unresolved);assert.equal(unknown.model,null);

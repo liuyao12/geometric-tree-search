@@ -1,7 +1,7 @@
-import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-shared-points';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.3';
+import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-free-components';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.4';
 
-export const VERSION = '2.2.3';
+export const VERSION = '2.2.4';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},

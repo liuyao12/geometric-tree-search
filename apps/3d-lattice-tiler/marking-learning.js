@@ -1,5 +1,6 @@
-import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-shared-points';
-export const LEARNING_VERSION='pair-corona-marking-1';
+import {selectMask} from './marking-mask.js?v=20260921-free-components';
+import {pointKey,add,sub,placementKey,allowedTranslation,validatePointModel,checkCorona} from './corona-graph.js?v=20260921-free-components';
+export const LEARNING_VERSION='pair-corona-marking-2';
 const permutations=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
 const parity=p=>((p[0]>p[1])+(p[0]>p[2])+(p[1]>p[2]))%2?-1:1;
 const minimum=cells=>[0,1,2].map(i=>Math.min(...cells.map(c=>c.pos[i])));
@@ -38,8 +39,8 @@ export function markingDomain(model,extent=1){
  return model.orientations.map((o,oi)=>{const points=new Map(o.cells.map(c=>[pointKey(c.pos),c.pos]));for(let n=0;n<extent;n++)for(const p of [...points.values()])for(const d of steps){const q=add(p,d);points.set(pointKey(q),q);}return [...points.values()].map(pos=>({oi,pos:[...pos],component:0}));});
 }
 export class OnlineMarking{
- constructor(model,transforms,{extent=1,maxSlots=12000}={}){
-  this.model=model;this.transforms=transforms;this.extent=extent;this.byOrientation=markingDomain(model,extent);this.slots=this.byOrientation.flat();if(this.slots.length>maxSlots){const e=Error('marking support budget');e.kind='resource_limit';throw e;}
+ constructor(model,transforms,{extent=1,maxSlots=12000,maskLearning=true}={}){
+  this.maskLearning=maskLearning;this.positiveEdges=new Map();this.previousMask=null;this.model=model;this.transforms=transforms;this.extent=extent;this.byOrientation=markingDomain(model,extent);this.slots=this.byOrientation.flat();if(this.slots.length>maxSlots){const e=Error('marking support budget');e.kind='resource_limit';throw e;}
   this.slots.forEach((s,i)=>s.id=i);this.parent=this.slots.map((_,i)=>i);this.rows=[];this.counts={valid:0,invalid:0,unresolved:0};
   const lookup=new Map(this.slots.map(s=>[`${s.oi}:${s.pos}`,s.id]));
   this.actions=transforms.map(g=>this.slots.map(s=>{const target=g.map[s.oi],index=lookup.get(`${target.oi}:${sub(g.transform(s.pos),target.shift)}`);if(index===undefined)throw Error('Marking support is not closed under the point group');return index;}));
@@ -50,7 +51,10 @@ export class OnlineMarking{
  contacts(pair){const seen=new Map(),contacts=[];for(const p of pair)for(const s of this.byOrientation[p.oi]){const k=pointKey(add(s.pos,p.translation));if(seen.has(k))contacts.push([seen.get(k),s.id]);else seen.set(k,s.id);}return contacts;}
  add(row){
   const started=performance.now();if(!Object.hasOwn(this.counts,row.status))throw Error('Unknown label');const contacts=this.contacts(row.pair);this.rows.push({...row,contacts});this.counts[row.status]++;
-  if(row.status==='valid')for(const [i,j] of contacts)for(const action of this.actions)this.join(action[i],action[j]);
+  if(row.status==='valid')for(const [i,j] of contacts)for(const action of this.actions){const a=action[i],b=action[j];this.join(a,b);if(this.maskLearning&&a!==b)this.positiveEdges.set(Math.min(a,b)*this.slots.length+Math.max(a,b),[a,b]);}
+  return this.snapshot({started});
+ }
+ snapshot({started=performance.now(),maxEvaluations=64}={}){
   const labels=new Map(),values=this.slots.map((_,i)=>{const r=this.find(i);if(!labels.has(r))labels.set(r,labels.size+1);return labels.get(r);});
   // Keep a witness for every negative currently distinguished. Free variables
   // are omitted, not replaced by zero. Delete complete symmetry orbits so the
@@ -62,7 +66,22 @@ export class OnlineMarking{
   const positivePassed=this.rows.filter(r=>r.status==='valid'&&r.contacts.every(([i,j])=>!kept.has(i)||!kept.has(j)||values[i]===values[j])).length;
   const negativeBlocked=this.rows.filter(r=>r.status==='invalid'&&r.contacts.some(([i,j])=>kept.has(i)&&kept.has(j)&&values[i]!==values[j])).length;
   const representation=this.actions.map(action=>{const mapping={};for(let i=0;i<values.length;i++){if(mapping[values[i]]!==undefined&&mapping[values[i]]!==values[action[i]])throw Error('Non-equivariant learned labels');mapping[values[i]]=values[action[i]];}if(new Set(Object.values(mapping)).size!==labels.size)throw Error('Noninvertible label action');return mapping;});
-  return {version:LEARNING_VERSION,fields,counts:{...this.counts},pairs:this.rows.length,positivePassed,negativeBlocked,points:fields.reduce((n,f)=>n+f.length,0),values:fields.reduce((n,f)=>n+f.length,0),labelCount:labels.size,representation,extent:this.extent,updateMs:performance.now()-started,scope:'Provisional scalar point codes with a point-group permutation of labels; finite pair evidence only.'};
+  const baseline={version:LEARNING_VERSION,fields,counts:{...this.counts},pairs:this.rows.length,positivePassed,negativeBlocked,points:fields.reduce((n,f)=>n+f.length,0),values:fields.reduce((n,f)=>n+f.length,0),labelCount:labels.size,representation,extent:this.extent,updateMs:performance.now()-started,scope:'Provisional scalar point codes with a point-group permutation of labels; finite pair evidence only.'};
+  if(!this.maskLearning||!this.counts.valid||!this.counts.invalid)return baseline;
+  const chosen=selectMask(this.slots.length,this.orbits,[...this.positiveEdges.values()],this.rows.filter(r=>r.status==='invalid').map(r=>r.contacts),{
+   initialMasks:[this.orbits.map(o=>kept.has(o[0])),this.previousMask],maxEvaluations,seed:this.rows.length,
+  });
+  this.previousMask=chosen.mask;
+  // Keep the legacy separator when it is stronger or equally sparse. Every
+  // proposed mask is scored against the entire currently labeled prefix.
+  if(chosen.blocked<baseline.negativeBlocked||chosen.blocked===baseline.negativeBlocked&&chosen.points>=baseline.points)return {...baseline,updateMs:performance.now()-started};
+  const codes=new Map(),assigned=this.slots.map((_,i)=>{if(!chosen.active[i])return null;const r=chosen.find(i);if(!codes.has(r))codes.set(r,codes.size+1);return codes.get(r);});
+  const maskedFields=this.byOrientation.map(list=>list.filter(s=>chosen.active[s.id]).map(s=>({pos:s.pos,component:s.component,value:assigned[s.id]})));
+  const maskedRepresentation=this.actions.map(action=>{const mapping={};for(let i=0;i<assigned.length;i++)if(chosen.active[i]){const a=assigned[i],b=assigned[action[i]];if(b===null||mapping[a]!==undefined&&mapping[a]!==b)throw Error('Non-equivariant free-value marking');mapping[a]=b;}if(new Set(Object.values(mapping)).size!==codes.size)throw Error('Noninvertible free-value action');return mapping;});
+  const passed=this.rows.filter(r=>r.status==='valid'&&pairCompatible(maskedFields,r.pair)).length;
+  const blocked=this.rows.filter(r=>r.status==='invalid'&&!pairCompatible(maskedFields,r.pair)).length;
+  if(passed!==this.counts.valid||blocked!==chosen.blocked)throw Error('Free-value marking replay failed');
+  return {...baseline,fields:maskedFields,representation:maskedRepresentation,labelCount:codes.size,positivePassed:passed,negativeBlocked:blocked,points:chosen.points,values:chosen.points,updateMs:performance.now()-started,scope:'Conditional positive equalities with symmetry-preserving free-value support search; finite pair evidence only.'};
  }
 }
 export function pairCompatible(fields,pair){const section=new Map();for(const p of pair)for(const m of fields[p.oi]){const k=`${add(m.pos,p.translation)}|${m.component??0}`;if(section.has(k)&&section.get(k)!==m.value)return false;section.set(k,m.value);}return true;}
@@ -81,6 +100,10 @@ export async function* learnMarking(model,{timeMs=10000,pairNodes=500,maxPairs=2
   }
   complete=!reason;
  }catch(e){if(e.kind!=='resource_limit')throw e;reason=e.message;}
+ if(snapshot&&complete&&trainer.maskLearning){
+  snapshot=trainer.snapshot({maxEvaluations:2048});
+  yield {type:'marking-learning',phase:'refine',snapshot,pairs:evidence.length,counts:snapshot.counts,elapsedMs:performance.now()-started};
+ }
  if(snapshot){
   let positivePassed=0,negativeBlocked=0;
   for(const row of evidence){const compatible=pairCompatible(snapshot.fields,row.pair);if(row.status==='valid'&&compatible)positivePassed++;if(row.status==='invalid'&&!compatible)negativeBlocked++;}

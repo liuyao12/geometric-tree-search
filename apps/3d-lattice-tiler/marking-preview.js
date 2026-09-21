@@ -1,4 +1,4 @@
-import {markingDomain} from './marking-learning.js?v=20260921-shared-points';
+import {markingDomain} from './marking-learning.js?v=20260921-free-components';
 // Shared inspection surface for the two engines. Data comes from the live
 // worker, never from a recorded marking or an independent classifier.
 export class MarkingPreview{
@@ -15,11 +15,11 @@ export class MarkingPreview{
    this.status.textContent=event.marking.accepted?`${event.marking.saved?.persisted?'Saved':'Validated this visit'} · ${event.marking.saved?.name??'marking'} · starting marked tiling`:`Marking not activated · ${event.marking.reason}`;
   }else{
    this.placements=event.placements??this.placements;
-   if(event.phase==='update'){
+   if(event.phase==='update'||event.phase==='refine'){
     const before=new Map((this.snapshot?.fields??[]).flatMap((f,oi)=>f.map(m=>[`${oi}:${m.pos}|${m.component}`,m.value]))),after=new Map(event.snapshot.fields.flatMap((f,oi)=>f.map(m=>[`${oi}:${m.pos}|${m.component}`,m.value])));
     this.changed=new Set([...new Set([...before.keys(),...after.keys()])].filter(k=>before.get(k)!==after.get(k)));this.snapshot=event.snapshot;
    }
-   const c=event.counts??{};this.status.textContent=`${event.pairs??0} pairs · ${c.valid??0} valid · ${c.invalid??0} invalid · ${c.unresolved??0} unresolved · ${event.phase==='pair'?'trying the next pair':event.phase==='update'?event.status: event.action??'filling the 1-corona'}`;
+   const c=event.counts??{};this.status.textContent=`${event.pairs??0} pairs · ${c.valid??0} valid · ${c.invalid??0} invalid · ${c.unresolved??0} unresolved · ${event.phase==='pair'?'trying the next pair':event.phase==='refine'?'refining free values':event.phase==='update'?event.status: event.action??'filling the 1-corona'}`;
   }
   const s=this.snapshot;
   if(s&&s.extent!==this.domainExtent){this.domainExtent=s.extent;this.domains=markingDomain(this.model,s.extent);}

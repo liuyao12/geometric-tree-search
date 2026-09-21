@@ -195,7 +195,9 @@ it is not a train/test split.
    positive nor negative constraints.
 5. **Allow individual free values.** Each component may be `*`, meaning absent
    and compatible with every value. Zero remains an assigned value. Interior,
-   boundary and exterior points are all eligible. There is no requirement to
+   boundary and exterior points are all eligible. When a value becomes free, remove
+   its incident positive equality edges before solving again; deleting its
+   assignment after merging classes leaves spurious equality paths. There is no requirement to
    retain interior points: exterior markings on neighboring tiles can overlap
    and disagree. Sparsification is secondary to passing positives and retaining
    the required negative exclusions; describe its validation scope and any

@@ -28,10 +28,17 @@ that layer is lateral and respects its A₂ lattice or sublattice; for Z³ it us
 the six axial neighbors. Every new resolved or unresolved sample updates the
 reported prefix scores. Positives merge equality classes; negatives identify
 required disagreement alternatives. This is incremental equality synthesis,
-not a general SAT optimizer or gradient descent.
+not a general SAT optimizer or gradient descent. Since v2.2.4, each update also
+tries symmetry-preserving masks of free values and rebuilds equality components
+on the active slots. An inactive slot cannot bridge two assigned classes. The
+previous separator remains a scored fallback; a bounded search tries up to 64
+masks per sample and 2,048 at final refinement. These are synthesis budgets, not
+oracle cutoffs, and do not imply optimal support. Every new positive revalidates
+the previous mask. Both v1 and v2 use this shared implementation.
 
 The reducer removes assignments in complete symmetry orbits while retaining a
-witness for every currently distinguished negative. It preserves every positive
+witness for every currently distinguished negative; support-mask proposals may
+separate additional negatives by freeing equality bridges. It preserves every positive
 and the observed negative score, not all unobserved relative-placement decisions.
 Interior points have no special retention or exclusion rule. Omission is `*`;
 zero is an ordinary assigned value. The v2 matcher also supports independent
@@ -98,7 +105,7 @@ reference-counted sections, and the browser-storage acceptance boundary.
 `node scripts/test-3d-lattice-v2.mjs` retains tiny exhaustive point-window,
 mark-only interaction, rollback, and scheduler tests.
 
-Fresh collection with reflections allowed, one-layer support, and a 500-attempt
+Historical v2.2.3 collection with reflections allowed, one-layer support, and a 500-attempt
 pair budget gives:
 
 | Point model | Pairs | Positives passed | Negatives blocked | Marked growth |
@@ -152,3 +159,27 @@ previous oracle module as its first argument. The complete aggregate receipt,
 source hashes and trace digests are in
 [the shared-point comparison](../../data/3d-corona-shared-points-2026-09-21.json).
 It contains no learned marking assignments.
+
+
+## Conditional free values in both live lanes (v2.2.4)
+
+The browser learner now performs the support-mask step after each label and a
+final refinement before independent replay and activation. The preview updates
+its current values during refinement. There are no bundled markings or imported
+labels in either browser lane. The unmarked graph still supplies every label;
+unknown, incomplete and failed acceptance outcomes never start marked tiling.
+
+Current complete slab regressions retain all 41 positives and increase rejection
+from 176 to **192 / 206** for Turtle and from 166 to **176 / 186** for Hat.
+Both marked finite windows independently verify. The cube retains an empty
+marking and both engine adapters pass. These scores need not equal the 2D demo:
+the 3D learner uses scalar codes on the declared slab point model.
+
+`test-3d-masked-point-encoder.mjs` tests a free slot splitting a positive equality
+path and a later positive forcing the previous separator to change.
+`test-3d-live-mask-catalog.mjs` exercises the live incremental encoder against
+all 686 recorded p9-48258 labels: 622 positives pass, all 64 negatives are blocked,
+using 60 values. It also exhausts possible extra marking contacts. This is a
+synthesis regression against recorded research labels, not a claim that the
+browser's bounded graph oracle finishes that hard catalogue. See the
+[full research receipt and oracle limitations](3d-point-corona-sat.md).
