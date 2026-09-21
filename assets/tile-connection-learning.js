@@ -1,3 +1,4 @@
+import {validateMarkingReduction} from './marking-reduction.js?v=20260920-compact';
 import {A2_TILE_LOOPS,A2_SYMMETRIES,tileOrientations,a2Transform,a2Add,a2Sub,solveA2Tiling,makeHexBoundary,NoA2Marking,SparseA2Marking} from './a2-tiling-engine.js?v=20260915-three-sets';
 export const VERSION='tile-connection-markings-v1';
 export const TILE_SETS=Object.freeze({
@@ -73,6 +74,7 @@ export function createConnectionLearner(setId){
   const domain=new Set(config.tiles.flatMap(tile=>pointDomain(tile).flatMap(point=>[0,1,2].map(c=>`${tile}:${point}|${c}`))));
   if(model.support?.length!==domain.size)throw new Error('Incomplete marking domain');
   for(const e of model.support){if(!Array.isArray(e.point)||e.point.length!==3||!e.point.every(Number.isSafeInteger)||e.point.reduce((s,v)=>s+v,0)!==0||![0,1,2].includes(e.component))throw new Error('Invalid marking coordinate');const token=`${e.tile}:${e.point}|${e.component}`;if(!domain.delete(token)||!Number.isSafeInteger(e.value)||Math.abs(e.value)>10000)throw new Error('Invalid marking entry');}
+  validateMarkingReduction(model);
   return model;
  }
  async function grow({seed=1,support=[],initial=[roots[0]],target=32,budget=500,onEvent=()=>{},wait=null,audit=false}={}){

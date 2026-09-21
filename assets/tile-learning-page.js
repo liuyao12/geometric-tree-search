@@ -1,6 +1,7 @@
+import {reduceMarking,activeMarkingSupport} from './marking-reduction.js?v=20260920-compact';
 import {markingSegmentEndpoints} from './marking-segments.js?v=20260920-centered';
-import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260915-auto';
-import {createConnectionLearner,TILE_SETS} from './tile-connection-learning.js?v=20260915-three-sets';
+import {markingMetadata,markingMetadataText} from './marking-metadata.js?v=20260920-compact';
+import {createConnectionLearner,TILE_SETS} from './tile-connection-learning.js?v=20260920-compact';
 const $=id=>document.getElementById(id),canvas=$('learn-canvas'),ctx=canvas.getContext('2d'),picker=$('learn-connection');
 const tileSetInputs=Array.from(document.querySelectorAll('input[name="learning-tiles"]'));
 const selectTiles=id=>tileSetInputs.forEach(input=>{input.checked=input.value===id;});
@@ -15,12 +16,12 @@ function polygon(loop,map,fill){ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo
 function marks(entries,map){for(const e of entries){const [q,tip]=markingSegmentEndpoints(e).map(map);ctx.strokeStyle=e.value===0?'#acb9b355':`hsl(${Math.abs(e.value)*137.5%360} 60% 37%)`;ctx.lineWidth=e.value===0?.6:1.7;ctx.setLineDash(e.value<0?[2,2]:[]);ctx.beginPath();ctx.moveTo(...q);ctx.lineTo(...tip);ctx.stroke();}ctx.setLineDash([]);}
 function draw(){$('learn-metadata').textContent=model?markingMetadataText(model):'Marking: collecting evidence…';ctx.fillStyle='#fafbf7';ctx.fillRect(0,0,720,360);ctx.fillStyle='#294d43';ctx.font='14px system-ui';ctx.fillText(mode?'Searching local connections':'Connection & extension',15,23);ctx.fillText('Learned point codes',390,23);
  const specs=shown.length?shown:[learner.roots[0]],placements=specs.map(learner.materialize);
- const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,model.support):[]);
+ const entries=specs.map(spec=>model&&$('learn-marks').checked?learner.entries(spec,activeMarkingSupport(model)):[]);
  const map=mapFor([...placements.flatMap(p=>p.loop),...entries.flat().flatMap(markingSegmentEndpoints)],{x:0,y:35,w:370,h:315});
  for(const [i,p] of placements.entries()){polygon(p.loop,map,p.tile==='hat'?'#ecd1ad':'#bad9d2');marks(entries[i],map);}
  const witness=!mode&&report?.connections[+picker.value]?.codeWitness;
  if(witness&&$('learn-marks').checked){const q=map(witness.point);ctx.strokeStyle='#b5403d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(...q,6,0,2*Math.PI);ctx.stroke();ctx.fillStyle='#b5403d';ctx.fillText(`${witness.values[0]} ≠ ${witness.values[1]}`,Math.min(q[0]+8,310),q[1]-8);}
- for(const [i,tile] of learner.config.tiles.entries()){const root=learner.roots[i],p=learner.materialize(root),n=learner.config.tiles.length,box={x:390,y:32+i*310/n,w:310,h:310/n},tileMarks=model?model.support.filter(e=>e.tile===tile):[],m=mapFor([...p.loop,...learner.pointDomain(tile),...tileMarks.flatMap(markingSegmentEndpoints)],box);polygon(p.loop,m,tile==='hat'?'#ecd1ad':'#bad9d2');if(model&&$('learn-marks').checked)marks(tileMarks,m);ctx.fillStyle='#486656';ctx.font='12px system-ui';ctx.fillText(tile,box.x,box.y+18);}
+ for(const [i,tile] of learner.config.tiles.entries()){const root=learner.roots[i],p=learner.materialize(root),n=learner.config.tiles.length,box={x:390,y:32+i*310/n,w:310,h:310/n},tileMarks=model?activeMarkingSupport(model).filter(e=>e.tile===tile):[],m=mapFor([...p.loop,...learner.pointDomain(tile),...tileMarks.flatMap(markingSegmentEndpoints)],box);polygon(p.loop,m,tile==='hat'?'#ecd1ad':'#bad9d2');if(model&&$('learn-marks').checked)marks(tileMarks,m);ctx.fillStyle='#486656';ctx.font='12px system-ui';ctx.fillText(tile,box.x,box.y+18);}
  ctx.strokeStyle='#e1e7df';ctx.beginPath();ctx.moveTo(380,35);ctx.lineTo(380,348);ctx.stroke();
 }
 function finish(){worker?.terminate();worker=null;mode=null;paused=false;$('learn-start').disabled=false;$('learn-start').textContent='Learn markings';$('learn-deeper').textContent='Search farther';picker.disabled=!report;$('learn-export').disabled=!report;$('learn-deeper').disabled=!report||report.connections[+picker.value]?.status==='dead';}
@@ -28,7 +29,7 @@ function describe(){const row=report?.connections[+picker.value];if(!row)return;
  message(`${row.status==='dead'?'Excluded after exhaustive unmarked search':row.status==='extended'?`Extended to ${row.placements.length} tiles`:'Unresolved; retained'} · ${report.encoding.deadSeparated}/${report.counts.dead} failures encoded; ${report.encoding.deadUnseparated} remain unseparated.${row.lastAttempt?.status==='unresolved'?' Deeper search reached its budget; earlier evidence retained.':''}`);
  $('learn-deeper').disabled=!!mode||row.status==='dead';
 }
-function install(data,recorded=false,index=0){if(data.setId!==setId)return;report=data;model=data.model;if(model)learner.validateModel(model);reports.set(setId,data);recordedReports.set(setId,recorded);picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='extended'?`${row.placements.length} tiles`:row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
+function install(data,recorded=false,index=0){if(data.setId!==setId)return;if(data.model){learner.validateModel(data.model);data={...data,model:data.model.reducedSupport?data.model:reduceMarking(data.model)};}report=data;model=data.model;reports.set(setId,data);recordedReports.set(setId,recorded);picker.replaceChildren(...data.connections.map((row,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${row.root.tile}–${row.attachment.tile} · ${row.status==='extended'?`${row.placements.length} tiles`:row.status}`;return o;}));picker.value=index;shown=data.connections[index]?.placements||[];
  $('learn-metrics').textContent=`${recorded?'Recorded · ':''}${data.attachmentCount} connections · ${data.counts.extended} extended · ${data.counts.dead} dead · ${data.counts.unresolved} unresolved`;
  finish();describe();draw();
  if(model){
@@ -42,7 +43,7 @@ async function choose(id){if(!TILE_SETS[id])return;setId=id;learner=createConnec
  if(reports.has(id)){install(reports.get(id),recordedReports.get(id));return;}
  try{const r=await fetch(`./assets/data/tile-connections-${id}.json?v=20260915-1`);if(!r.ok)throw new Error();const data=await r.json();if(token===epoch)install(data,true);}catch{if(token===epoch)message('Learn markings to collect all connections for this tile set.');}
 }
-function launch(kind){$('learn-sync').textContent='The result will update the Tiling view automatically.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260915-1',import.meta.url),{type:'module'});const active=worker;mode=kind;paused=false;
+function launch(kind){$('learn-sync').textContent='The result will update the Tiling view automatically.';epoch++;worker?.terminate();worker=new Worker(new URL('./tile-learning-worker.js?v=20260920-compact',import.meta.url),{type:'module'});const active=worker;mode=kind;paused=false;
  $('learn-start').disabled=kind!=='collect';$('learn-deeper').disabled=kind!=='extend';$('learn-export').disabled=true;picker.disabled=true;
  if(kind==='collect'){$('learn-start').textContent='Pause learning';report=null;model=null;shown=[];picker.replaceChildren();message('Enumerating every legal connection…');}else $('learn-deeper').textContent='Pause search';
  worker.onmessage=({data})=>{if(worker!==active)return;

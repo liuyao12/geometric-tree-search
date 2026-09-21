@@ -158,3 +158,62 @@ and m-equality replay; the mixed witness includes both prototypes. The existing
 Turtle point-learning regression also passes. These are consistent finite
 patches, not infinite-tiling certificates; the activation and geometric-fidelity
 gaps in the shared-engine audit above still apply.
+
+## September 20: exact point reduction and known-marking comparison
+
+Completed models now carry a `reducedSupport` alongside their original `support`.
+The reduced support is used for matching, dependency bookkeeping and drawing.
+The dense values remain available for evidence export and the original candidate
+ranking, so removing redundant matching points does not change search choices.
+Progressive training displays its current dense model; completed and recorded
+models are reduced automatically before they reach the tiler.
+
+The reduction removes whole prototype points, including all assigned zero values
+at those points. For every allowed relative orientation and integer translation,
+we enumerate all unequal overlapping point/channel pairs. Relative placements
+already excluded by integer t-capacity need no marking witness. Mark-only overlaps
+remain in the enumeration. A point can be deleted only if every previously
+forbidden t-legal pair retains at least one disagreement witness. Equivariance
+allows the first tile to be fixed at orientation zero. Outside the finite
+support-difference bounds there can be no marking overlap. Consequently this
+preserves the learned compatibility relation for every legal pair, and therefore
+for every finite patch; it is not merely a check against the recorded samples.
+This does not prove that the learned hypotheses equal the known marking.
+
+| Inventory | Original points / values | Active points / values | Preserved pair exclusions |
+| --- | ---: | ---: | ---: |
+| Turtle | 56 / 168 | 30 / 90 | 1,296 |
+| Hat | 50 / 150 | 27 / 81 | 1,234 |
+| Turtle + Hat | 106 / 318 | 58 / 174 | 2,533 |
+
+`tests/test_marking_reduction.mjs` independently enumerates a rectangular range
+of translations from support bounds (rather than using the reducer's conflict
+witness generator). It checks 10,500 t-legal relative placements, verifies
+identical full/reduced exclusions, rejects tampered reductions, exercises ranking
+rollback, and audits the frontier graph during marked growth for all three sets.
+Imported reduced supports are checked for whole-point subset membership and for
+preservation of every original conflict before use.
+
+The 32-tile comparison uses identical orientation-zero fixed roots, complete
+point growth, a budget of 1,500 attempts, seeds 1, 7 and 10, and each inventory's
+original reflection policy. Known markings use extent 1: Turtle rank 3, Hat and
+mixed rank 1. All modes reached 32 tiles. These are finite consistency checks,
+not infinite-tiling certificates or held-out prediction scores.
+
+| Inventory | Known attempts | Learned attempts, dense or reduced |
+| --- | ---: | ---: |
+| Turtle | 31, 31, 31 | 31, 31, 31 |
+| Hat | 34, 34, 34 | 110, 110, 58 |
+| Turtle + Hat | 36, 36, 36 | 708, 738, 708 |
+
+Reduced and dense learned searches have identical attempts, backtracks and
+placement hashes in all nine runs. Reduced matching took less time in these
+single-run measurements; times are machine-dependent and not a speed guarantee.
+Hat and mixed learned rules still need substantially more search than known
+rank 1. We do not claim parity with known markings for those inventories.
+
+Reproduce with `node scripts/benchmark-compact-markings.mjs output.json`.
+[Full measurements](../../assets/data/marking-comparison.json) include timings,
+reduction cost, roots/settings and placement hashes. No training examples are
+held out or removed. The shared engine's existing infinite-coverage and geometric
+faithfulness limitations remain unchanged.

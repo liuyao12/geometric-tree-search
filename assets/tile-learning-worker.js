@@ -1,4 +1,4 @@
-import {createConnectionLearner} from './tile-connection-learning.js?v=20260915-three-sets';
+import {createConnectionLearner} from './tile-connection-learning.js?v=20260920-compact';
 self.requestAnimationFrame=cb=>setTimeout(cb,0);
 let paused=false,resume=null;
 const wait=async()=>{if(paused)await new Promise(resolve=>resume=resolve);};
