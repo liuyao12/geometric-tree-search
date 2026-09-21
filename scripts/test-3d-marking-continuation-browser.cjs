@@ -30,8 +30,8 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
  }
  // A worker may deliver a newer corona frame before an update is painted.
  const preview=await page.evaluate(async()=>{
-  const {MarkingPreview}=await import('/apps/3d-lattice-tiler/marking-preview.js');
-  const {prepareModel}=await import('/apps/3d-lattice-tiler/v2/model.js');
+  const {MarkingPreview}=await import(new URL('./marking-preview.js',location.href).href);
+  const {prepareModel}=await import(new URL('./v2/model.js',location.href).href);
   const host=document.createElement('div'),p=new MarkingPreview(host);p.reset(prepareModel({tile:'cube',radius:1}));
   p.accept({type:'marking-learning',phase:'corona',totalPairs:26,pairs:2,counts:{valid:2},snapshot:{fields:[[{pos:[0,0,0],component:0,value:7}]],extent:1,counts:{valid:2},positivePassed:2,points:1,values:1}});
   return {value:p.snapshot.fields[0][0].value,status:p.status.textContent,detail:p.detail.textContent};
