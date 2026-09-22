@@ -187,10 +187,14 @@ it is not a train/test split.
 4. **Update after each result.** Keep the current equality/constraint state
    and update the provisional marking as each new label arrives. Positive
    samples require agreement at every overlap where both components are
-   assigned. A rejected negative needs at least one overlap where both are
-   assigned and disagree. Negatives supply inequality alternatives, not
-   positive equalities. An incremental equality encoder may test negatives
-   and choose its support; a SAT solver may solve the combined alternatives.
+   assigned. A **directly** rejected negative needs at least one overlap where
+   both are assigned and disagree. This is one rejection mechanism, not a
+   requirement for every negative: agreement of the two fixed tiles may still
+   eliminate frontier candidates and reveal a dead point, immediately or after
+   further search. State whether synthesis targets direct pair conflicts or
+   operational rejection through the frontier graph. Negatives supply inequality
+   alternatives, not positive equalities. An incremental equality encoder may
+   test negatives and choose its support; a SAT solver may solve the combined alternatives.
    State which method is actually used. Unresolved samples impose neither
    positive nor negative constraints.
 5. **Allow individual free values.** Each component may be `*`, meaning absent
@@ -316,9 +320,13 @@ marking. Only an exhausted unmarked search supplies a negative; unresolved
 calls remain unknown. Do not silently skip unexamined pairs using a hypothesis.
 
 After each resolved label, solve assigned/free component constraints using
-only the observed prefix. Every positive pair must agree; every enforced
-negative needs at least one assigned disagreement. Declare whether the solver
-is SAT/SMT or a bounded heuristic and state the support and value action.
+only the observed prefix. Every positive pair must agree. Requiring an assigned
+disagreement for every negative defines a **strict direct pair classifier**;
+it is not a necessary condition for a useful GCTS marking. A negative can instead
+be rejected by a dead frontier or exhausted marked extension search. Record
+direct conflict, immediate dead frontier, subsequent exhaustion, success, and
+budget-unknown separately. Declare whether the solver is SAT/SMT or a bounded
+heuristic and state the support and value action.
 Recheck every accepted synthesis against its observed constraints. If the
 constraint system is unsatisfiable or times out, disable that marking instead
 of treating it as a tiling impossibility proof. A new pair search starts with
@@ -326,18 +334,32 @@ a fresh graph under the new version; a continuing search must replay its prefix.
 
 Perfect pair classification is insufficient to guarantee any larger marked
 tiling. Conversely, preserving every first-found positive corona as a hard
-agreement constraint can conflict with excluding negative pairs: a finite
+agreement constraint can conflict with directly excluding negative pairs: a finite
 corona may contain a boundary pair that has no corona of its own. Such a witness
 must be replaceable; a positive pair does not certify every completion around
 it. Distinguish alternative completions from alternative markings, and keep
 their hypotheses separate from original unmarked proofs.
+
+When a known working marking exists, test it as an independent control against
+the proposed training objective and support before interpreting a failed
+learning run. Check representability, symmetry action, all positive pairs and
+their marked completions, and both direct and frontier-mediated negative
+rejection. Do not feed its assignments or measured rejection count into the
+learner as targets. The Turtle extent-1 control directly rejects 193 of 206
+negative pairs; the other 13 fail via its frontier search. Requiring 206 direct
+conflicts excludes this control, although all 41 positive pairs have marked
+completions. A positive completion is an existential choice: two first-found
+unmarked witnesses disagree with the control, while alternative completions
+work. See the [known-control audit](projects/a2-online-control.md).
 
 Compare complete cold collection time, including synthesis, replay, failed
 probes and fallback calls, with the same unmarked baseline and pair order.
 Checkpoint tiling benchmarks must state the exact observed prefix and cannot
 claim end-to-end savings while excluding its acquisition cost. The
 [headless online-pair experiment](projects/a2-online-pairs.md) records both
-failure modes and the absence of a speedup in its tested configuration.
+failure modes and the absence of a speedup for its strict direct-conflict
+configuration. Its exclusion of the known Turtle solution prevents using that
+result as evidence against operational online GCTS learning.
 
 ## 7. RL proposes clusters
 

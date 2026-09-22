@@ -1,5 +1,13 @@
 # Online marking synthesis during pair-corona search
 
+> **Correction after testing the known Turtle control:** this experiment
+> required every negative pair to disagree immediately. That excludes the
+> known extent-1 marking: it directly rejects 193/206 negatives and rejects
+> the other 13 through frontier search, while completing all 41 positives.
+> The measurements below remain valid for this overly restrictive variant;
+> they do not test the broader operational learning objective successfully.
+> See the [control audit and longer runs](a2-online-control.md).
+
 ## Result
 
 The requested feedback loop was implemented headlessly and tested on Turtle
@@ -152,8 +160,8 @@ positive witness and a transformed negative pair inside that witness:
 | Hat / 1 | 84 | 13 | 84 |
 | Hat / 3 | 49 | 10 | 49 |
 
-Under the shared equivariant marking action, a field rejecting that negative
-pair must also reject its transformed copy inside the witness. This is a direct
+Under the shared equivariant marking action, a field **directly** rejecting that
+negative pair must also reject its transformed copy inside the witness. This is a direct
 inconsistency between those two training requirements, independent of how large
 the marking halo is. Z3 timeouts earlier in the run are still reported as
 unknown; this separate diagnostic supplies the concrete inconsistency.

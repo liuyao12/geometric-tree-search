@@ -1,0 +1,386 @@
+{
+  "date": "2026-09-22",
+  "engineAndBaselineRevision": "2479a158d392157377607e105f759f8408c8ed09",
+  "purpose": "Audit the known Turtle marking against the overly strict online pair-classifier objective; no revised online learner is measured.",
+  "audit": {
+    "system": "Turtle / index-3 / reflections / known rank-3 extent 1",
+    "knownValues": 39,
+    "domainValues": 90,
+    "representable": true,
+    "transformationMatchesLearned": true,
+    "counts": {
+      "positivePass": 41,
+      "positiveReject": 0,
+      "negativePass": 13,
+      "negativeReject": 193,
+      "positiveCompleted": 41,
+      "negativeRejectedBySearch": 13
+    },
+    "firstStrictConstraintExcludingKnown": 13,
+    "firstFoundPositiveWitnessesRejected": 2,
+    "exceptions": [
+      {
+        "index": 13,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 0,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 29.145666000000006,
+        "verified": true
+      },
+      {
+        "index": 20,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 0,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 22.42470800000001,
+        "verified": true
+      },
+      {
+        "index": 28,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 0,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 18.690958000000023,
+        "verified": true
+      },
+      {
+        "index": 38,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 1,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 22.504541000000017,
+        "verified": true
+      },
+      {
+        "index": 45,
+        "frontierDeadImmediately": false,
+        "unmarkedNodes": 8,
+        "markedNodes": 1,
+        "markedBacktracks": 1,
+        "elapsedMs": 26.369083000000046,
+        "verified": true
+      },
+      {
+        "index": 52,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 0,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 21.687374999999975,
+        "verified": true
+      },
+      {
+        "index": 120,
+        "frontierDeadImmediately": false,
+        "unmarkedNodes": 3,
+        "markedNodes": 1,
+        "markedBacktracks": 1,
+        "elapsedMs": 28.724249999999756,
+        "verified": true
+      },
+      {
+        "index": 161,
+        "frontierDeadImmediately": false,
+        "unmarkedNodes": 3,
+        "markedNodes": 1,
+        "markedBacktracks": 1,
+        "elapsedMs": 27.193708000000242,
+        "verified": true
+      },
+      {
+        "index": 178,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 2,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 20.024209000000155,
+        "verified": true
+      },
+      {
+        "index": 190,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 1,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 21.258792000000085,
+        "verified": true
+      },
+      {
+        "index": 194,
+        "frontierDeadImmediately": false,
+        "unmarkedNodes": 6,
+        "markedNodes": 2,
+        "markedBacktracks": 2,
+        "elapsedMs": 28.42733300000009,
+        "verified": true
+      },
+      {
+        "index": 202,
+        "frontierDeadImmediately": true,
+        "unmarkedNodes": 0,
+        "markedNodes": 0,
+        "markedBacktracks": 0,
+        "elapsedMs": 20.433624999999665,
+        "verified": true
+      },
+      {
+        "index": 208,
+        "frontierDeadImmediately": false,
+        "unmarkedNodes": 8,
+        "markedNodes": 1,
+        "markedBacktracks": 1,
+        "elapsedMs": 26.011665999999877,
+        "verified": true
+      }
+    ],
+    "summary": {
+      "directNegativeRejections": 193,
+      "frontierDeadRejections": 8,
+      "additionalSearchRejections": 5,
+      "unmarkedNodesOnExceptions": 32,
+      "markedNodesOnExceptions": 6
+    }
+  },
+  "smtRegression": {
+    "allPositiveConstraints": "sat",
+    "all206DirectNegativeConflicts": "unsat",
+    "atLeast193DirectNegativeConflicts": "sat",
+    "knownAssignmentPinnedForDiagnosticOnly": true
+  },
+  "largeTarget": {
+    "protocol": {
+      "target": 1000,
+      "ms": 60000,
+      "seeds": [
+        1,
+        3
+      ],
+      "score": "zero in every arm",
+      "lattice": "index3",
+      "tile": "turtle",
+      "reflections": true,
+      "knownExtent": 1,
+      "sequential": true,
+      "derivationExcluded": true
+    },
+    "rows": [
+      {
+        "arm": "unmarked",
+        "seed": 1,
+        "target": 1000,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 88,
+        "nodes": 7827,
+        "backtracks": 7743,
+        "values": 0,
+        "elapsedMs": 60014.751500000006,
+        "verificationMs": 3.4849170000015874,
+        "verified": true
+      },
+      {
+        "arm": "known",
+        "seed": 1,
+        "target": 1000,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 362,
+        "nodes": 1536,
+        "backtracks": 1232,
+        "values": 39,
+        "elapsedMs": 60028.72175,
+        "verificationMs": 19.838833000001614,
+        "verified": true
+      },
+      {
+        "arm": "strict-learned",
+        "seed": 1,
+        "target": 1000,
+        "ms": 60000,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 14,
+        "backtracks": 14,
+        "values": 24,
+        "elapsedMs": 67.80462500000431,
+        "verificationMs": 3.322333999996772,
+        "verified": true
+      },
+      {
+        "arm": "strict-learned",
+        "seed": 3,
+        "target": 1000,
+        "ms": 60000,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 14,
+        "backtracks": 14,
+        "values": 24,
+        "elapsedMs": 65.35983299999498,
+        "verificationMs": 2.988666999997804,
+        "verified": true
+      },
+      {
+        "arm": "known",
+        "seed": 3,
+        "target": 1000,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 175,
+        "nodes": 4657,
+        "backtracks": 4553,
+        "values": 39,
+        "elapsedMs": 60003.856834000006,
+        "verificationMs": 11.768125000002328,
+        "verified": true
+      },
+      {
+        "arm": "unmarked",
+        "seed": 3,
+        "target": 1000,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 88,
+        "nodes": 8085,
+        "backtracks": 8001,
+        "values": 0,
+        "elapsedMs": 60003.977249999996,
+        "verificationMs": 2.5035419999912847,
+        "verified": true
+      }
+    ]
+  },
+  "demoRankingReference": {
+    "protocol": {
+      "target": 500,
+      "ms": 120000,
+      "seeds": [
+        1,
+        3
+      ],
+      "score": "normal GCTS-I marking score",
+      "lattice": "index3",
+      "tile": "turtle",
+      "reflections": true,
+      "knownExtent": 1,
+      "sequential": true,
+      "derivationExcluded": true
+    },
+    "rows": [
+      {
+        "arm": "known",
+        "seed": 1,
+        "target": 500,
+        "ms": 120000,
+        "result": "unknown",
+        "tiles": 362,
+        "nodes": 1408,
+        "backtracks": 1101,
+        "values": 39,
+        "elapsedMs": 120308.692667,
+        "verificationMs": 61.664042000003974,
+        "verified": true
+      },
+      {
+        "arm": "known",
+        "seed": 3,
+        "target": 500,
+        "ms": 120000,
+        "result": "unknown",
+        "tiles": 175,
+        "nodes": 3855,
+        "backtracks": 3715,
+        "values": 39,
+        "elapsedMs": 120042.23612500001,
+        "verificationMs": 26.464124999998603,
+        "verified": true
+      }
+    ]
+  },
+  "matchedTarget": {
+    "protocol": {
+      "target": 128,
+      "ms": 60000,
+      "seeds": [
+        1,
+        3
+      ],
+      "score": "zero in every arm",
+      "lattice": "index3",
+      "tile": "turtle",
+      "reflections": true,
+      "knownExtent": 1,
+      "sequential": true,
+      "derivationExcluded": true
+    },
+    "rows": [
+      {
+        "arm": "unmarked",
+        "seed": 1,
+        "target": 128,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 88,
+        "nodes": 7732,
+        "backtracks": 7651,
+        "values": 0,
+        "elapsedMs": 60009.691791,
+        "verificationMs": 3.547375000001921,
+        "verified": true
+      },
+      {
+        "arm": "known",
+        "seed": 1,
+        "target": 128,
+        "ms": 60000,
+        "result": "yes",
+        "tiles": 128,
+        "nodes": 638,
+        "backtracks": 511,
+        "values": 39,
+        "elapsedMs": 3700.3410000000003,
+        "verificationMs": 10.93095799999719,
+        "verified": true
+      },
+      {
+        "arm": "known",
+        "seed": 3,
+        "target": 128,
+        "ms": 60000,
+        "result": "yes",
+        "tiles": 128,
+        "nodes": 364,
+        "backtracks": 237,
+        "values": 39,
+        "elapsedMs": 2946.041167000003,
+        "verificationMs": 11.526792000004207,
+        "verified": true
+      },
+      {
+        "arm": "unmarked",
+        "seed": 3,
+        "target": 128,
+        "ms": 60000,
+        "result": "unknown",
+        "tiles": 88,
+        "nodes": 8201,
+        "backtracks": 8119,
+        "values": 0,
+        "elapsedMs": 60011.515667,
+        "verificationMs": 2.5779579999943962,
+        "verified": true
+      }
+    ]
+  },
+  "limitations": [
+    "Growth timings exclude learning; the known marking is an independent control.",
+    "Timed-out searches are unknown, not failed tilings.",
+    "Negative exhaustion relies on the existing search engine.",
+    "Turtle/index-3 only; no Hat or full-lattice validation."
+  ],
+  "generatedAssignmentsOrPlacementsBundled": false
+}
