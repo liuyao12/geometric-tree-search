@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-catalogue";
+import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-search-inset";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

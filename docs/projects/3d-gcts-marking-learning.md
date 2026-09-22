@@ -359,3 +359,34 @@ The shared learning tests independently verify marked Turtle and Hat windows.
 `test-3d-vector-marking-browser.cjs` checks fresh browser learning, automatic marked
 tiling, complete vector tooltips, and reuse after reload. Existing continuation,
 pair inspection, and v1/v2 browser tests exercise the shared integration.
+
+
+## Main search view and corner marking (v2.3.1; also v1)
+
+Both pages keep the main 3D viewport visible throughout learning and tiling.
+During sample collection it renders the oracle's actual placements, including
+rollback, dead ends, and successful corona witnesses. The scene reports pair
+count, attempts, and backtracks. Provisional markings appear only in a small
+corner inset; they do not constrain or decorate the unmarked oracle search.
+
+Once the existing acceptance gate validates a marking, the main view switches
+automatically to the tiler's actual placements using that marking. The inset
+stays visible, showing its assigned points, values, orientation, and hover
+values. **Marking** toggles the inset. **Samples & scores** exposes the collected
+pairs and their classifications; selecting one inspects its geometry in the main
+view. **Live search** returns to the current search or completed tiling. This
+supersedes the earlier mutually exclusive Tiling / Learn markings views.
+
+These are display changes, with no new pruning rule or acceptance criterion.
+Oracle scene models discard m-values without mutating the solver model; queued
+training paints cannot overwrite the accepted marked scene. Saved assignments
+remain browser-local. The layout applies to both v2 entry URLs and legacy v1.
+
+Validation: `test-3d-learning-search-view.mjs` checks display projection, rollback,
+core support, counters, and separation of oracle geometry from markings.
+`test-3d-search-inset-browser.cjs` checks real corona frames, automatic marked
+tiling, inset toggling, sample inspection and return to live search in both
+versions, plus a narrow-screen layout. The existing pair-inspection, continuation,
+and marking-overlay browser checks cover classifications, resumption, and actual
+selected marking values. These checks establish finite displayed searches, not
+infinite-extension certificates.

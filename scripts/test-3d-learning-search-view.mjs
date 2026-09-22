@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {learningSearchView} from '../apps/3d-lattice-tiler/learning-search-view.js';
+const model={capacity:2,required:[{pos:[99,99,99]}],orientations:[{cells:[{pos:[0,0,0],weight:1}],marks:[{pos:[0,0,0],component:0,value:7}]}]};
+const pair=[{oi:0,translation:[0,0,0]},{oi:0,translation:[1,0,0]}];
+const first=learningSearchView(model,{phase:'pair',pair,placements:pair,totalPairs:32});
+assert.deepEqual(first.model.required.map(p=>p.pos),[[0,0,0],[1,0,0]]);
+assert.deepEqual(first.model.orientations[0].marks,[]);assert.equal(model.orientations[0].marks[0].value,7);
+const deeper=learningSearchView(model,{phase:'corona',action:'place',placements:[...pair,{oi:0,translation:[2,0,0]}],nodes:5,backtracks:2},first);
+const dead=learningSearchView(model,{phase:'corona',action:'dead',point:[3,0,0],placements:pair,nodes:6,backtracks:3},deeper);
+assert.equal(dead.placements.length,2);assert.deepEqual(dead.deadPoint,[3,0,0]);assert.equal(dead.nodes,6);
+const next=learningSearchView(model,{phase:'pair',pair,placements:pair,totalPairs:32},dead);assert.equal(next.nodes,0);assert.equal(next.backtracks,0);assert.equal(next.deadPoint,null);assert.match(next.detail,/0 attempts/);
+const stopped=learningSearchView(model,{type:'marking-learned',marking:{accepted:false}},dead);assert.equal(stopped.placements.length,2);assert.match(stopped.title,/not activated/);
+console.log('PASS displayed corona frames preserve placements and rollback, use pair core points, omit provisional markings, reset counters, and retain the stopped attempt.');

@@ -1,8 +1,10 @@
-import {MarkingOverlay} from './marking-overlay.js?v=20260921-catalogue';
-import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-catalogue';
-import {MarkingLibrary} from './marking-library.js?v=20260921-catalogue';
-import {remember3DMarking} from './marking-storage.js?v=20260921-catalogue';
-import {MarkingPreview} from './marking-preview.js?v=20260921-catalogue';
+import {learningSearchView} from './learning-search-view.js?v=20260921-search-inset';
+import {LearningScene} from './learning-scene.js?v=20260921-search-inset';
+import {MarkingOverlay} from './marking-overlay.js?v=20260921-search-inset';
+import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-search-inset';
+import {MarkingLibrary} from './marking-library.js?v=20260921-search-inset';
+import {remember3DMarking} from './marking-storage.js?v=20260921-search-inset';
+import {MarkingPreview} from './marking-preview.js?v=20260921-search-inset';
 let libraryWorker=null,libraryKey=null;
 const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry),resume:entry=>runMarkingSelection(null,entry)});
 function runMarkingSelection(savedMarking=null,learningCheckpoint=null){
@@ -15,12 +17,12 @@ function refreshMarkingLibrary(){
  const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
  markingLibrary.lock(running||growthRunning);
  if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
- const w=new Worker(new URL('./solver-worker.js?v=20260921-catalogue',import.meta.url),{type:'module'});libraryWorker=w;
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-search-inset',import.meta.url),{type:'module'});libraryWorker=w;
  w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
 }
-const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
-function showMarkingView(learning){markingPreview.host.hidden=!learning;document.getElementById('viewport').hidden=learning;document.getElementById('showLearning').disabled=!markingPreview.model;document.getElementById('showLearning').setAttribute('aria-pressed',String(learning));document.getElementById('showTiling').setAttribute('aria-pressed',String(!learning));window.dispatchEvent(new Event('resize'));}
-document.getElementById('showTiling').onclick=()=>showMarkingView(false);document.getElementById('showLearning').onclick=()=>showMarkingView(true);
+const markingPreview = new MarkingPreview(document.getElementById('markingLearning'),{compact:true,onInspect:frame=>{legacyInspectionFrame={...learningSearchView(frame.model,{...frame,status:frame.row.status}),inspection:frame.inspection,title:`Inspecting ${frame.row.status} pair${frame.placements.length>2?' · unmarked corona witness':''}`};paintLegacyLearning(legacyInspectionFrame,true);}});
+function showMarkingView(learning){markingPreview.host.hidden=!learning;document.getElementById('viewport').hidden=false;document.getElementById('showLearning').disabled=!markingPreview.model;document.getElementById('showLearning').setAttribute('aria-pressed',String(learning));document.getElementById('showTiling').setAttribute('aria-pressed',String(!learning));window.dispatchEvent(new Event('resize'));}
+document.getElementById('showTiling').onclick=()=>{legacyInspectionFrame=null;if(legacyTraining&&legacyLearningFrame)paintLegacyLearning(legacyLearningFrame,true);else clearLegacyLearning();};document.getElementById('showLearning').onclick=()=>showMarkingView(markingPreview.host.hidden);
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
@@ -28,7 +30,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-catalogue";
+} from "./engine.js?v=20260921-search-inset";
 
 const $ = (id) => document.getElementById(id);
 
@@ -360,6 +362,32 @@ scene.add(faceGroup, edgeGroup, frontierPointGroup, periodicCellGroup);
 
 const markingOverlay = new MarkingOverlay({scene,camera,canvas:renderer.domElement,host:viewport,button:$('markings'),render:requestRender});
 let liveMarkingPoints = new Map();
+const learningScene=new LearningScene(scene);
+let legacyTraining=false,legacyLearningFrame=null,legacyLearningPaint=null,legacyLearningGeneration=0,legacyLearningBounds=null,legacyInspectionFrame=null;
+function clearLegacyLearning(){
+ legacyInspectionFrame=null;
+ legacyLearningGeneration++;if(legacyLearningPaint!==null){cancelAnimationFrame(legacyLearningPaint);legacyLearningPaint=null;}
+ learningScene.clear();for(const g of [faceGroup,edgeGroup,frontierPointGroup,periodicCellGroup])g.visible=true;
+ markingOverlay.set([...liveMarkingPoints.values()],prototileInfo?.scale??2);
+ viewport.dataset.searchPhase='tiling';$('searchPhase').textContent=markingPreview.snapshot?.accepted?'Tiling with learned marking':'';requestRender();
+}
+function paintLegacyLearning(frame,fit=false){
+ learningScene.set(frame,prototileInfo?.scale??2);for(const g of [faceGroup,edgeGroup,frontierPointGroup,periodicCellGroup])g.visible=false;markingOverlay.set([]);
+ viewport.dataset.searchPhase=frame.inspection?'sample':'corona';viewport.dataset.placements=String(frame.placements.length);
+ $('searchPhase').textContent=frame.title+' · '+frame.detail;
+ const bounds=new THREE.Box3().setFromObject(learningScene.group);
+ if(autoFitCheckbox.checked&&(fit||!legacyLearningBounds||!legacyLearningBounds.containsBox(bounds))){fitCameraToObject(camera,controls,learningScene.group,1.8);legacyLearningBounds=bounds.clone();}requestRender();
+}
+function acceptLegacyLearning(event){
+ markingPreview.accept(event);
+ if(event.type==='marking-learned'&&event.marking.accepted){legacyTraining=false;clearLegacyLearning();showMarkingView(true);return;}
+ if(event.phase==='pair')legacyLearningBounds=null;
+ legacyTraining=true;legacyLearningFrame=learningSearchView(markingPreview.model,event,legacyLearningFrame);
+ const generation=legacyLearningGeneration;
+ if(legacyLearningPaint===null)legacyLearningPaint=requestAnimationFrame(()=>{legacyLearningPaint=null;if(generation===legacyLearningGeneration&&!legacyInspectionFrame)paintLegacyLearning(legacyLearningFrame);});
+}
+function resetLegacyLearning(model){legacyTraining=true;legacyLearningFrame=null;legacyLearningBounds=null;clearLegacyLearning();markingPreview.reset(model);showMarkingView(true);}
+
 controls.addEventListener('change',()=>markingOverlay.inspect());
 let thumbnailRenderer = null;
 function getThumbnailRenderer() {
@@ -2497,6 +2525,7 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
 
 function updateScene(snapshot, options = {}) {
   const { preserveView = true, rebuildFaces = true, syncLive = true } = options;
+  if(!legacyTraining&&!legacyInspectionFrame)clearLegacyLearning();
   lastSnapshot = snapshot;
   if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
   if (syncLive && snapshot?.frontier_points) resetLiveFrontierPoints(snapshot);
@@ -2637,6 +2666,7 @@ function updateScene(snapshot, options = {}) {
   reconcileRenderBatches(periodicCellGroup,cellBatches,
     batch=>new THREE.LineSegments(geometryFromPositions(batch.positions),new THREE.LineBasicMaterial({color:0x64748b,transparent:true,opacity:0.55})),
     (object,batch)=>replaceObjectGeometry(object,geometryFromPositions(batch.positions)));
+  if(legacyInspectionFrame)markingOverlay.set([]);
   updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
   requestRender();
@@ -3084,8 +3114,8 @@ function renderTree() {
 }
 
 function handleMessage(message) {
-  if(message.type==='marking-learning-model'){markingPreview.reset(message.model);showMarkingView(true);return;}
-  if(message.type==='marking-learning'||message.type==='marking-learned'){if(message.type==='marking-learned'){message.marking=remember3DMarking(markingPreview.model,message.marking);markingLibrary.refresh(markingPreview.model,message.marking);}markingPreview.accept(message);if(message.type==='marking-learned'&&message.marking.accepted)showMarkingView(false);return;}
+  if(message.type==='marking-learning-model'){resetLegacyLearning(message.model);return;}
+  if(message.type==='marking-learning'||message.type==='marking-learned'){if(message.type==='marking-learned'){message.marking=remember3DMarking(markingPreview.model,message.marking);markingLibrary.refresh(markingPreview.model,message.marking);}acceptLegacyLearning(message);return;}
   if (message.type === "palette") return;
   if (message.type === "prototile_info") {
     initTileControls(message);
@@ -3226,7 +3256,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-catalogue", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-search-inset", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3294,6 +3324,7 @@ function stopSolverWorker() {
 function resetRunView() {
   cancelPendingCheckpointSave();
   rootCentered = false;
+  legacyTraining=false;clearLegacyLearning();markingPreview.host.hidden=true;
   lastSnapshot = null;
   lastSearchStats = null;
   prototileInfo = null;
@@ -4029,7 +4060,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-catalogue", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-search-inset", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -4062,11 +4093,11 @@ function startGrowthBenchmark() {
           growthBenchmarkStatus.textContent = `All six lanes ready; starting simultaneously to ${targetLabel}…`;
         }
       } else if(message.type==='marking-learning-model'){
-        series.learningModel=message.model;if(selectedGrowthMode()===mode.id){markingPreview.reset(message.model);showMarkingView(true);}
+        series.learningModel=message.model;if(selectedGrowthMode()===mode.id){resetLegacyLearning(message.model);}
       } else if(message.type==='marking-learning'||message.type==='marking-learned'){
         if(message.type==='marking-learned'){message.event.marking=remember3DMarking(series.learningModel,message.event.marking);markingLibrary.refresh(series.learningModel,message.event.marking);}
         series.learningEvent=message.event;
-        if(selectedGrowthMode()===mode.id){if(markingPreview.model!==series.learningModel)markingPreview.reset(series.learningModel);markingPreview.accept(message.event);if(message.type==='marking-learned'&&message.event.marking.accepted)showMarkingView(false);}
+        if(selectedGrowthMode()===mode.id){if(markingPreview.model!==series.learningModel)resetLegacyLearning(series.learningModel);acceptLegacyLearning(message.event);}
         series.status=message.event.type==='marking-learned'?(message.event.marking.accepted?'marking validated; tiling':'marking not activated'):`learning · ${message.event.pairs??0} pairs`;
       } else if (message.type === "prototile-info") {
         series.prototileInfo = message.info;
@@ -4166,7 +4197,7 @@ function bindControls() {
     updateStrategyUI();
     showSelectedGrowthSnapshot();
     const learning=growthSeries.get(selectedGrowthMode());markingPreview.host.hidden=!learning?.learningModel;
-    if(learning?.learningModel){markingPreview.reset(learning.learningModel);if(learning.learningEvent)markingPreview.accept(learning.learningEvent);}showMarkingView(!!learning?.learningModel&&learning.learningEvent?.type!=='marking-learned');
+    if(learning?.learningModel){resetLegacyLearning(learning.learningModel);if(learning.learningEvent)acceptLegacyLearning(learning.learningEvent);}else{legacyTraining=false;clearLegacyLearning();showMarkingView(false);}
     renderGrowthChart();
   }));
   polycubeLatticeSelect.addEventListener("change", () => {

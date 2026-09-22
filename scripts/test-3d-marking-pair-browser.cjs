@@ -13,8 +13,8 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
    if(!(await page.locator('#mirrors').isChecked())){await page.check('#mirrors');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));}
    await page.fill('#seconds','60');await page.click('.marking-new');
    await page.waitForFunction(()=>document.querySelector('#status').textContent==='Marked window verified.',{},{timeout:75000});
-   assert.ok(await page.locator('#markingLearning').isHidden());
-   await page.click('#showLearning');
+   assert.ok(await page.locator('#markingLearning').isVisible());
+   await page.locator('.marking-inspection').evaluate(e=>e.open=true);
    const rows=await page.evaluate(()=>{
     const m=JSON.parse(localStorage.getItem('gcts-3d-markings-v1')).at(-1).marking;
     return {count:m.evidence.length,valid:m.evidence.findIndex(r=>r.status==='valid'),negative:m.evidence.findIndex(r=>{
@@ -26,7 +26,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
    await page.selectOption('.marking-pair',String(rows.negative));
    assert.match(await page.locator('.marking-pair-detail').textContent(),/Invalid:.*rejects this pair \(correct\).*conflicts/);
    assert.ok(await page.locator('.marking-witness').isDisabled());
-   await page.click('#showTiling');await page.click('#showLearning');
+   await page.click('#showTiling');await page.click('#showLearning');await page.click('#showLearning');
    assert.equal(await page.locator('.marking-pair').inputValue(),String(rows.negative),'Selection survives repeated final events and view switching');
    if(process.env.GCTS_SCREENSHOTS)await page.screenshot({path:process.env.GCTS_SCREENSHOTS+`/pair-${tile}.png`});
    await page.selectOption('.marking-pair',String(rows.valid));
@@ -41,13 +41,14 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
   await page.waitForFunction(()=>document.querySelector('.marking-new')&&!document.querySelector('.marking-new').disabled);
   await page.fill('#maxTilesInput','8');await page.fill('#markingPairBudget','1');await page.click('.marking-new');
   await page.waitForFunction(()=>!document.querySelector('.marking-continue').hidden&&!document.querySelector('.marking-continue').disabled);
+  await page.locator('.marking-inspection').evaluate(e=>e.open=true);
   const unknown=await page.locator('.marking-pair option').evaluateAll(options=>options.find(o=>o.textContent.includes('unresolved')).value);
   await page.selectOption('.marking-pair',unknown);
   assert.match(await page.locator('.marking-pair-detail').textContent(),/Unresolved:.*not a validity label/);
   assert.ok(await page.locator('.marking-witness').isDisabled());assert.ok(await page.locator('.marking-use').isDisabled());
   await page.fill('#markingPairBudget','500');await page.click('.marking-continue');
   await page.waitForFunction(()=>!document.querySelector('.marking-use').disabled);
-  await page.click('#showLearning');assert.equal(await page.locator('.marking-pair option').count(),26);
+  await page.locator('.marking-inspection').evaluate(e=>e.open=true);assert.equal(await page.locator('.marking-pair option').count(),26);
   assert.match(await page.locator('.marking-pair-detail').textContent(),/Valid:.*accepts this pair \(correct\)/);
   assert.deepEqual(errors,[]);console.log('PASS V1 unknown labels, continuation and validated pair inspection; no page errors.');
  }finally{await browser.close();}

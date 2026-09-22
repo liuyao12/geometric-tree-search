@@ -25,7 +25,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
   if(!(await page.locator('#mirrors').isChecked())){await page.check('#mirrors');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));}
   await page.fill('#seconds','60');await page.click('.marking-new');
   await page.waitForFunction(()=>document.querySelector('#status').textContent==='Marked window verified.',{},{timeout:75000});
-  assert.ok(await page.locator('#markings').isEnabled());assert.ok(await page.locator('#markingLearning').isHidden());
+  assert.ok(await page.locator('#markings').isEnabled());assert.ok(await page.locator('#markingLearning').isVisible());
   const tip=await findTooltip();assert.ok(tip, 'Assigned values are inspectable');
   const match=tip.match(/^\((.*?)\) · m\[(\d+)\] = (\d+)\n(\d+) tile/);assert.ok(match,tip);
   const expected=await page.evaluate(({pos,component,value})=>{

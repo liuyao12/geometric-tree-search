@@ -1,9 +1,9 @@
-import {RESEARCH_TILES} from './research-catalog.js?v=20260921-catalogue';
-import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-catalogue';
+import {RESEARCH_TILES} from './research-catalog.js?v=20260921-search-inset';
+import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-search-inset';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260921-catalogue";
+import { periodicStream } from "./periodic-search.js?v=20260921-search-inset";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";

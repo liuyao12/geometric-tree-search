@@ -14,7 +14,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8894';
   await page.waitForFunction(()=>document.querySelector('#status').textContent==='Marked window verified.',{},{timeout:75000});
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('gcts-3d-markings-v1')).at(-1).marking);
   assert.equal(saved.componentCount,2);assert.equal(saved.negativeBlocked,206);assert.equal(saved.positivePassed,41);
-  await page.click('#showLearning');
+  await page.locator('.marking-inspection').evaluate(e=>e.open=true);
   assert.match(await page.locator('.marking-detail').textContent(),/2 components/);
   // Inspect the shared preview directly so coincident 3D projections do not
   // make a test depend on which projected point the mouse happens to hit.

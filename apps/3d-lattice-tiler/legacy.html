@@ -13,8 +13,8 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260921-catalogue-20260824-polycube10-v107">
-</head>
+  <link rel="stylesheet" href="./style.css?v=20260921-search-inset-20260824-polycube10-v107">
+<link rel="stylesheet" href="./marking-corner.css?v=20260921-search-inset"></head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
@@ -196,9 +196,9 @@
 
     <main class="workspace">
       <section class="viewport-panel">
-        <div class="marking-view-tabs"><button id="showTiling" type="button">Tiling</button><button id="showLearning" type="button" disabled>Learn markings</button><button id="markings" disabled aria-pressed="true">Markings on</button></div>
-        <div id="markingLibrary" class="marking-library"></div><section id="markingLearning" class="growth-panel" hidden></section>
-        <div id="viewport" class="viewport"></div>
+        <div class="marking-view-tabs"><button id="showTiling" type="button">Live search</button><button id="showLearning" type="button" disabled>Marking</button><button id="markings" disabled aria-pressed="true">Markings on</button></div>
+        <div id="markingLibrary" class="marking-library"></div>
+        <div class="search-stage"><div id="viewport" class="viewport"></div><section id="markingLearning" hidden></section><p id="searchPhase" class="search-phase" role="status"></p></div>
       </section>
       <section class="growth-panel" aria-labelledby="growthChartTitle">
         <div class="growth-header">
@@ -265,6 +265,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260921-catalogue"></script>
+  <script type="module" src="./app.js?v=20260921-search-inset"></script>
 </body>
 </html>

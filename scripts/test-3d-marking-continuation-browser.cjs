@@ -20,11 +20,11 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
   await page.fill(legacy?'#markingPairBudget':'#pairBudget','500');
   await page.click('.marking-continue');
   await page.waitForFunction(()=>!document.querySelector('.marking-use').disabled);
-  assert.ok(await page.locator('#markingLearning').isHidden(),'Accepted continuation automatically tiles');
+  assert.ok(await page.locator('#markingLearning').isVisible(),'Accepted continuation tiles with the marking inset visible');
   assert.ok(await page.locator('.marking-continue').isHidden());
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('gcts-3d-markings-v1')).at(-1).marking);
   assert.ok(saved.continued);assert.equal(saved.counts.unresolved,0);assert.equal(saved.totalPairs,26);assert.ok(saved.trainingMs>saved.elapsedMs);
-  await page.click('#showLearning');assert.match(await page.locator('.marking-detail').textContent(),/accepts 26\/26/);
+  await page.locator('.marking-inspection').evaluate(e=>e.open=true);assert.match(await page.locator('.marking-detail').textContent(),/accepts 26\/26/);
   console.log(`${legacy?'V1':'V2'}: incomplete run, continuation, accepted browser-local marking, automatic tiling passed`);
   await page.evaluate(()=>localStorage.clear());
  }

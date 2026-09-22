@@ -1,35 +1,37 @@
-import {RESEARCH_SUITE_IDS,HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-catalogue';
-import {MarkingOverlay} from '../marking-overlay.js?v=20260921-catalogue';
-import {placedMarkingPoints} from '../marking-display.js?v=20260921-catalogue';
-import {MarkingLibrary} from '../marking-library.js?v=20260921-catalogue';
-import {remember3DMarking} from '../marking-storage.js?v=20260921-catalogue';
-import {MarkingPreview} from '../marking-preview.js?v=20260921-catalogue';
+import {learningSearchView} from '../learning-search-view.js?v=20260921-search-inset';
+import {RESEARCH_SUITE_IDS,HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-search-inset';
+import {MarkingOverlay} from '../marking-overlay.js?v=20260921-search-inset';
+import {placedMarkingPoints} from '../marking-display.js?v=20260921-search-inset';
+import {MarkingLibrary} from '../marking-library.js?v=20260921-search-inset';
+import {remember3DMarking} from '../marking-storage.js?v=20260921-search-inset';
+import {MarkingPreview} from '../marking-preview.js?v=20260921-search-inset';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.3.0';
+import {catalog,MODES,VERSION} from './model.js?v=2.3.1';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
-const learningPreview=new MarkingPreview(document.getElementById('markingLearning'));
+let markingOpen=true,sampleInspection=null;
+const learningPreview=new MarkingPreview(document.getElementById('markingLearning'),{compact:true,onInspect:frame=>{sampleInspection=frame;renderPatch(true);}});
 const learningStates={};
 const markingLibrary=new MarkingLibrary($('markingLibrary'),{learn:()=>runGcts(),use:entry=>runGcts(entry),resume:entry=>runGcts(null,entry)});
-let learningPaint=null,selectedView='tiling';
+let learningPaint=null;
 function paintLearning(){if(learningPaint===null)learningPaint=requestAnimationFrame(()=>{learningPaint=null;showLearning();refresh();renderPatch();});}
 const labels={learning:'Learning markings',exhausted_marked:'Exhausted marked',finite_exact:'Verified window',unknown:'Unknown',exhausted_finite:'Exhausted finite',error:'Unavailable'};
 const fmt=n=>Number(n??0).toLocaleString(undefined,{maximumFractionDigits:0}),time=n=>n===undefined?'—':n<1000?`${Math.round(n)} ms`:`${(n/1000).toFixed(2)} s`;
 for(const group of [...new Set(cases.map(c=>c.group))]){const opt=document.createElement('optgroup');opt.label=group;for(const c of cases.filter(c=>c.group===group)){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;opt.append(o);}$('tile').append(opt);}
 const requestedTile=new URLSearchParams(location.search).get('tile');if(cases.some(c=>c.id===requestedTile))$('tile').value=requestedTile;
-for(const m of MODES){const b=document.createElement('button');b.className='lane';b.style.setProperty('--lane',m.color);b.id=`lane-${m.id}`;b.addEventListener('click',()=>{active=m.id;selectedView=results[active]?.result==='learning'?'learning':'tiling';refresh();renderPatch();showLearning();});$('lanes').append(b);}
+for(const m of MODES){const b=document.createElement('button');b.className='lane';b.style.setProperty('--lane',m.color);b.id=`lane-${m.id}`;b.addEventListener('click',()=>{active=m.id;sampleInspection=null;refresh();renderPatch();showLearning();});$('lanes').append(b);}
 
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,.01,2000),renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));$('canvas').append(renderer.domElement);
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.addEventListener('change',()=>markingOverlay.inspect());camera.position.set(12,10,14);
 scene.add(new THREE.HemisphereLight('#d7e9ff','#354869',2.5));const light=new THREE.DirectionalLight('#ffffff',3);light.position.set(5,10,8);scene.add(light);
-const geometryGroup=new THREE.Group(),pointGroup=new THREE.Group(),edgeGroup=new THREE.Group();scene.add(geometryGroup,pointGroup,edgeGroup);
+const geometryGroup=new THREE.Group(),pointGroup=new THREE.Group(),edgeGroup=new THREE.Group(),diagnosticGroup=new THREE.Group();scene.add(geometryGroup,pointGroup,edgeGroup,diagnosticGroup);
 const markingOverlay = new MarkingOverlay({scene,camera,canvas:renderer.domElement,host:$('canvas'),button:$('markings')});
 let showPoints=true,showEdges=true;
 function clear(group){while(group.children.length){const child=group.children[0];group.remove(child);child.geometry?.dispose();if(Array.isArray(child.material))child.material.forEach(m=>m.dispose());else child.material?.dispose();}}
-function draw(model,placements,fit=false){
-  if(!model)return;markingOverlay.set(placedMarkingPoints(model,placements));[geometryGroup,pointGroup,edgeGroup].forEach(clear);
+function draw(model,placements,fit=false,diagnostics=null){
+  if(!model)return;markingOverlay.set(placedMarkingPoints(model,placements));[geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);
   const palette=['#4fdac5','#91afff','#c1acff','#ffd18b','#80cfea','#eaadcc'];
   for(const [i,p] of placements.entries()){
     const o=model.orientations[p.oi],positions=[];
@@ -46,6 +48,9 @@ function draw(model,placements,fit=false){
   const totals=new Map();for(const p of placements)for(const q of model.orientations[p.oi].cells){const k=q.pos.map((x,i)=>x+p.translation[i]).join(',');totals.set(k,(totals.get(k)??0)+q.weight);}
   const positions=[],colors=[];for(const p of model.required){positions.push(...p.pos);const c=new THREE.Color(totals.get(p.pos.join(','))===model.capacity?'#4fdac5':'#ffd18b');colors.push(c.r,c.g,c.b);}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));pointGroup.add(new THREE.Points(g,new THREE.PointsMaterial({size:.095,vertexColors:true,depthTest:false,transparent:true,opacity:.95})));
+  const diagnosticPoints=(diagnostics?.inspection?.points??[]).filter(p=>p.overlap).map(p=>({pos:p.pos,color:p.conflict?'#ed5353':'#369ee7'}));
+  if(diagnostics?.deadPoint)diagnosticPoints.push({pos:diagnostics.deadPoint,color:'#ed5353'});
+  if(diagnosticPoints.length){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(diagnosticPoints.flatMap(p=>p.pos),3));g.setAttribute('color',new THREE.Float32BufferAttribute(diagnosticPoints.flatMap(p=>new THREE.Color(p.color).toArray()),3));diagnosticGroup.add(new THREE.Points(g,new THREE.PointsMaterial({size:9,sizeAttenuation:false,vertexColors:true,depthTest:false})));}
   pointGroup.visible=showPoints;edgeGroup.visible=showEdges;
   $('viewMeta').textContent=`${placements.length} placements · ${model.orientations.length} orientations · capacity ${model.capacity}`;
   if(fit)fitView();
@@ -53,9 +58,29 @@ function draw(model,placements,fit=false){
 function fitView(){const box=new THREE.Box3().setFromObject(geometryGroup);box.expandByObject(pointGroup);if(box.isEmpty())return;const center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()).length();controls.target.copy(center);camera.position.copy(center).add(new THREE.Vector3(1,.8,1.25).normalize().multiplyScalar(Math.max(size*1.9,7)));camera.near=Math.max(.01,size/1000);camera.far=Math.max(2000,size*100);camera.updateProjectionMatrix();controls.update();}
 new ResizeObserver(()=>{const r=$('canvas').getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe($('canvas'));
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
-function showLearning(){const state=learningStates[active];if(state){if(learningPreview.model!==state.model)learningPreview.reset(state.model);learningPreview.accept(state.event);}const visible=!!state&&selectedView==='learning';learningPreview.host.hidden=!visible;document.querySelector('.viewer').hidden=visible;document.querySelector('.viewer-foot').hidden=visible;$('showLearning').disabled=!state;$('showLearning').setAttribute('aria-pressed',String(visible));$('showTiling').setAttribute('aria-pressed',String(!visible));}
-$('showLearning').onclick=()=>{selectedView='learning';showLearning();};$('showTiling').onclick=()=>{selectedView='tiling';showLearning();};
-function renderPatch(fit=false){const r=results[active],model=models[active]??models.preview;if(!model)return;draw(model,r?.placements??[{oi:0,translation:[0,0,0]}],fit);$('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${labels[r.result]??'searching'}`:'Tile geometry';$('coverage').textContent=r?`${r.verification?.covered??r.covered??0} / ${model.required.length} required points complete`:'Amber points = required window';}
+function showLearning(){
+ const state=learningStates[active];if(state){if(learningPreview.model!==state.model)learningPreview.reset(state.model);learningPreview.accept(state.event);}
+ const visible=!!state&&markingOpen;learningPreview.host.hidden=!visible;
+ document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;
+ $('showLearning').disabled=!state;$('showLearning').setAttribute('aria-pressed',String(visible));$('showTiling').setAttribute('aria-pressed',String(!sampleInspection));
+}
+$('showLearning').onclick=()=>{markingOpen=!markingOpen;showLearning();};
+$('showTiling').onclick=()=>{sampleInspection=null;renderPatch(true);showLearning();};
+function renderPatch(fit=false){
+ const r=results[active],state=learningStates[active],model=models[active]??models.preview;if(!model)return;
+ let frame=null,phase='tiling';
+ if(sampleInspection){frame={...learningSearchView(sampleInspection.model,{...sampleInspection,status:sampleInspection.row.status}),inspection:sampleInspection.inspection};frame.title=`Inspecting ${sampleInspection.row.status} pair${sampleInspection.placements.length>2?' · unmarked corona witness':''}`;phase='sample';}
+ else if(state?.frame&&(r?.result==='learning'||r?.result==='unknown'&&!r?.marking?.accepted)){frame=state.frame;phase='corona';if(r.result==='unknown')frame={...frame,title:'Training stopped · last unmarked corona attempt'};}
+ if(frame){
+  draw(frame.model,frame.placements,fit||!!state?.fitPending,frame);if(state)state.fitPending=false;
+  $('viewTitle').textContent=frame.title;$('viewMeta').textContent=frame.detail;$('coverage').textContent='Unmarked sample search · provisional markings shown in the corner';
+ }else{
+  draw(model,r?.placements??[{oi:0,translation:[0,0,0]}],fit);
+  $('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${r.marking?.accepted?'tiling with learned marking · ':''}${labels[r.result]??'searching'}`:'Tile geometry';
+  $('coverage').textContent=r?`${r.verification?.covered??r.covered??0} / ${model.required.length} required points complete`:'Amber points = required window';
+ }
+ const viewer=document.querySelector('.viewer');viewer.dataset.searchPhase=phase;viewer.dataset.placements=String(frame?.placements.length??r?.placements?.length??1);
+}
 function config(){return {tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(120,Number($('seconds').value)||10))*1000,nodes:10000,pairNodes:Math.max(1,Math.min(1000000,Math.floor(+$('pairBudget').value||500))),custom};}
 function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','radius','seconds','seed','pairBudget','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels;}
 function syncModelUI(model){
@@ -97,29 +122,30 @@ function describeTile(selected){
  if(!link.hidden)link.href=new URL('../../'+selected.evidence,document.baseURI).href;
 }
 async function preview(){
-  markingLibrary.refresh(null);markingOverlay.set([]);selectedView='tiling';document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
+  sampleInspection=null;markingOpen=true;
+  markingLibrary.refresh(null);markingOverlay.set([]);document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.3.0',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.3.1',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.3.0',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.3.1',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
     w.onmessage=({data:e})=>{
       if(e.type==='model'){
         // Corona witnesses belong to the unmarked oracle, not the marked growth run.
-        if(results[c.mode]?.result==='learning')results[c.mode].placements=[];
-        models[c.mode]=e.model;models.preview=e.model;syncModelUI(e.model);return;
+        if(results[c.mode]?.marking?.accepted){results[c.mode].placements=[];results[c.mode].result='searching';sampleInspection=null;}
+        models[c.mode]=e.model;models.preview=e.model;syncModelUI(e.model);if(active===c.mode)renderPatch();return;
       }
       if(e.type==='marking-learning'||e.type==='marking-learned'){
-        if(active===c.mode&&(!learningStates[c.mode]||e.type==='marking-learned'))selectedView=e.marking?.accepted?'tiling':'learning';
         if(e.type==='marking-learned'){e.marking=remember3DMarking(models[c.mode],e.marking);markingLibrary.refresh(models[c.mode],e.marking);}
-        learningStates[c.mode]={model:models[c.mode],event:e};
+        const previous=learningStates[c.mode];
+        learningStates[c.mode]={model:models[c.mode],event:e,frame:learningSearchView(models[c.mode],e,previous?.frame),fitPending:e.phase==='pair'||previous?.fitPending||!previous};
         const marking=e.snapshot??e.marking;
-        results[c.mode]={result:'learning',placements:e.placements??results[c.mode]?.placements??[],marking,stats:{totalMs:e.elapsedMs??marking?.elapsedMs??0}};
+        results[c.mode]={result:e.marking?.accepted?'searching':'learning',placements:e.marking?.accepted?[]:e.placements??results[c.mode]?.placements??[],marking,stats:{totalMs:e.elapsedMs??marking?.elapsedMs??0}};
         if(active===c.mode)paintLearning();return;
       }
       if(e.type==='progress'||e.type==='result'){if(e.marking&&learningStates[c.mode]?.event.marking?.saved)e.marking.saved=learningStates[c.mode].event.marking.saved;results[c.mode]=e;(series[c.mode]??=[[0,0]]).push([e.stats.totalMs,e.verification?.covered??e.covered??0]);refresh();if(active===c.mode){renderPatch();showLearning();}}
@@ -136,13 +162,14 @@ function verdict(){
   else $('verdict').textContent='No measured speedup established in this run. Fewer branches alone do not establish acceleration; preparation, validation and learning costs are included.';
 }
 async function compare(c){
+  sampleInspection=null;markingOpen=true;
   for(const k of Object.keys(learningStates))delete learningStates[k];learningPreview.host.hidden=true;results={};series={};models={};runConfig=c;active='free';refresh();
   for(const m of MODES){if(cancelled)break;active=m.id;showLearning();$('status').textContent=`${cases.find(x=>x.id===c.tile)?.name??'Custom'} · ${m.name} · cold sequential run`;const r=await runWorker({...c,mode:m.id});if(r.type==='error'){results[m.id]={result:r.kind==='resource_limit'?'unknown':'error',message:r.message};$('status').textContent=r.message;}else results[m.id]=r;refresh();renderPatch();}
   archive.push({config:c,results:structuredClone(results),series:structuredClone(series)});verdict();
 }
 async function runGcts(savedMarking=null,learningCheckpoint=null){
- if(busy)return;previewSequence++;worker?.terminate();cancelled=false;lock(true);
- const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{}),...(learningCheckpoint?{learningCheckpoint}:{})};if(learningCheckpoint){c.pairNodes=Math.max(c.pairNodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));$('pairBudget').value=c.pairNodes;}runConfig=c;active='gcts';selectedView='learning';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
+ if(busy)return;sampleInspection=null;markingOpen=true;previewSequence++;worker?.terminate();cancelled=false;lock(true);
+ const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{}),...(learningCheckpoint?{learningCheckpoint}:{})};if(learningCheckpoint){c.pairNodes=Math.max(c.pairNodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));$('pairBudget').value=c.pairNodes;}runConfig=c;active='gcts';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
  $('status').textContent=savedMarking?'Validating the selected browser marking…':learningCheckpoint?'Continuing unresolved corona checks…':'Learning a new marking from unmarked corona checks…';
  try{const r=await runWorker(c);results.gcts=r.type==='error'?{result:'error',message:r.message}:r;archive.push({config:c,results:structuredClone(results)});refresh();showLearning();renderPatch(true);$('status').textContent=r.type==='error'?r.message:cancelled?'Stopped.':r.result==='finite_exact'?'Marked window verified.':r.reason??'Marked search finished.';$('verdict').textContent=savedMarking?'Explicit reuse run: validation and tiling are timed; original training is reported separately. Run comparison for cold measurements.':'Standalone GCTS run. Run comparison to measure against free-range.';}finally{lock(false);}
 }
