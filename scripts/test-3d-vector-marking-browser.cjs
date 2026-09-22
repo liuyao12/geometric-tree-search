@@ -5,7 +5,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8894';
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
   const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(base+'/3d-lattice-tiler/?catalogue=all');
+  await page.goto(base+'/3d-lattice-tiler/?experiment=window&catalogue=all');
   await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
   assert.ok(await page.locator('.marking-use').isDisabled());
   await page.selectOption('#tile','a2_turtle_prism');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));

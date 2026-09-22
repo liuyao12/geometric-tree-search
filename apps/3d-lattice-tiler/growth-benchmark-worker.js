@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260921-marking-continuation";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260921-growth";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
@@ -115,6 +115,7 @@ function configureMode(baseConfig, mode) {
     : mode;
   const config = {
     ...baseConfig,
+    search_protocol: baseConfig.criterion==='count'&&['free_range','gcts','rl','gcts_rl'].includes(mode.id)?'seed-growth':'legacy-control',
     tiling_strategy: mode.strategy,
     move_order: shellSearch && mode.proof ? "shell" : mode.moveOrder,
     proposal_program: null,

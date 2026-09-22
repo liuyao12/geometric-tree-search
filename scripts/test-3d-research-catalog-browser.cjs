@@ -5,7 +5,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8894';
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
   const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(base+'/3d-lattice-tiler/?tile=polycube_p10_346304');
+  await page.goto(base+'/3d-lattice-tiler/?experiment=window&tile=polycube_p10_346304');
   await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
   assert.equal(await page.locator('#tile').inputValue(),'polycube_p10_346304');
   assert.equal(await page.locator('#tile option').count(),54);

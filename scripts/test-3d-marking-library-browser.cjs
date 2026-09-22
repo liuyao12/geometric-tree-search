@@ -2,7 +2,7 @@ const {chromium}=require('playwright');
 const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
 const assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});const context=await browser.newContext({viewport:{width:1440,height:1050}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto(base+'/3d-lattice-tiler/?catalogue=all');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
+await page.goto(base+'/3d-lattice-tiler/?experiment=window&catalogue=all');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
 await page.selectOption('#tile','cube');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
 assert.ok(await page.locator('.marking-use').isDisabled());await page.click('.marking-new');await page.waitForFunction(()=>document.querySelector('#status').textContent==='Marked window verified.');
 assert.ok(await page.locator('#markingLearning').isVisible());assert.ok(await page.locator('.viewer').isVisible());assert.equal(await page.locator('#markingLibrary select option').count(),1);assert.match(await page.locator('#markingLibrary select').textContent(),/points.*values/);

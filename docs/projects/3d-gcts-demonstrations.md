@@ -1,6 +1,7 @@
 # Measured GCTS fixed-window demonstrations
 
-These timings use the v2 fixed-window engine, not the article’s seed-based growth.
+These archived timings use the v2 fixed-window engine (`?experiment=window`),
+not the seed-based growth now used by the main comparison.
 See the [algorithm comparison and scope correction](3d-reference-growth-audit.md).
 
 The workbench's default selector contains all 40 manually curated tile systems.

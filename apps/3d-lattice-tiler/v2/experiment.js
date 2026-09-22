@@ -1,13 +1,22 @@
+import {runGrowthExperiment} from '../growth-experiment.js?v=20260921-growth';
 import {verifyVoxelPatch} from '../voxel-point-model.js';
-import {prepareModel} from './model.js?v=2.4.2';
-import {search} from './search.js?v=2.4.2';
+import {prepareModel} from './model.js?v=2.5.0';
+import {search} from './search.js?v=2.5.0';
 import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-search-inset';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-search-inset';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-growth';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();
   try{
     let model=prepareModel(data);
+    if(data.searchProtocol==='seed-growth'&&data.action!=='probe'){
+      const initialMs=performance.now()-started;
+      for await(const e of runGrowthExperiment(model,{...data,timeMs:Math.max(0,(data.timeMs??120000)-initialMs)})){
+        if(e.stats){e.stats.preparationMs=(e.stats.preparationMs??0)+initialMs;e.stats.totalMs+=initialMs;}
+        if(e.elapsedMs!==undefined)e.elapsedMs+=initialMs;e.config=data;yield e;
+      }
+      return;
+    }
     yield {type:'model',model};
     if(data.action==='preview')return;
     if(data.action==='probe'){

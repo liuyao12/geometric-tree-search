@@ -17,7 +17,7 @@ function refreshMarkingLibrary(){
  const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
  markingLibrary.lock(running||growthRunning);
  if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
- const w=new Worker(new URL('./solver-worker.js?v=20260921-search-inset',import.meta.url),{type:'module'});libraryWorker=w;
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-growth',import.meta.url),{type:'module'});libraryWorker=w;
  w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
 }
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'),{compact:true,onInspect:frame=>{legacyInspectionFrame={...learningSearchView(frame.model,{...frame,status:frame.row.status}),inspection:frame.inspection,title:`Inspecting ${frame.row.status} pair${frame.placements.length>2?' · unmarked corona witness':''}`};paintLegacyLearning(legacyInspectionFrame,true);}});
@@ -30,7 +30,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-search-inset";
+} from "./engine.js?v=20260921-growth";
 
 const $ = (id) => document.getElementById(id);
 
@@ -588,9 +588,9 @@ function updateCriterionUI() {
 }
 
 const STRATEGY_DESCRIPTIONS = {
-  free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
+  free_range: "Grows from one seed with the GCTS-I point-frontier policy: global dead ends, forced moves, earliest generation, then fill/incidence/coverage ordering. No marking.",
   learning_free_range: "Classifies neighboring pairs with unmarked one-corona checks, updates point markings after each label, then starts marked tiling only after complete validation.",
-  rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
+  rl_free_range: "Proposes validated short clusters within the same seed-growth point scheduler and updates their returns during this run.",
   gcts_rl: "Combines the same cold linear RL ordering with vector-valued global-section checks. Marking synthesis and online training are both timed.",
   translational: "Search exact point-value quotients up to the selected motif limit. Rotations may occur within the repeating motif; bounded failure is inconclusive.",
   isohedral: "Search exact periodic point-value tilings and verify affine symmetries carrying every tile to every other tile. Bounded failure is inconclusive."
@@ -610,7 +610,9 @@ function setRadioValue(radios, value, fallback) {
 function updateStrategyUI() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
   strategySelect.value = strategy;
-  strategyDescription.textContent = STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational;
+  const growth=criterion()==='count'&&['free_range','learning_free_range','rl_free_range','gcts_rl'].includes(strategy);
+  strategyDescription.textContent = (growth?'Seed-based point growth. ':'Specialized legacy control. ')+(STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational);
+  moveOrderSelect.disabled=growth;faceOrderSelect.disabled=growth;
   periodicTileCountSelect.disabled = !["translational", "isohedral"].includes(strategy);
 }
 
@@ -2075,6 +2077,7 @@ function configKey() {
   const candidateIsohedralHorizon = root?.census_candidate?.last_screening
     ?.isohedral?.growth_horizon_tiles ?? null;
   return JSON.stringify({
+    search_protocol: !isStructural && selectedCriterion === 'count' ? 'seed-growth' : 'legacy-control',
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
     polycube_lattice: selectedPolycubeLattice(),
@@ -2121,7 +2124,7 @@ function configKey() {
     agent_policy: isRl ? "cold_linucb" : null,
     agent_ucb_alpha: isRl ? 0 : null,
     seeded_tie_breaks: isRl || tilingStrategy === "translational",
-    random_seed: 1,
+    random_seed: 10,
     learned_layer_macro: false,
     template_preflight: isStructural,
     periodic_patch_unbounded: false,
@@ -3259,7 +3262,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-search-inset", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-growth", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -4063,7 +4066,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-search-inset", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-growth", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

@@ -1,9 +1,9 @@
 import {RESEARCH_TILES,RESEARCH_BY_ID} from '../research-catalog.js?v=20260921-search-inset';
 import {prepareVoxelPointModel} from '../voxel-point-model.js';
-import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-search-inset';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.4.2';
+import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-growth';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.5.0';
 
-export const VERSION = '2.4.2';
+export const VERSION = '2.5.0';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},

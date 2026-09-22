@@ -4,7 +4,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8894';
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
   const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(base+'/3d-lattice-tiler/');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
+  await page.goto(base+'/3d-lattice-tiler/?experiment=window');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
   await page.fill('#seconds','15');await page.click('#run');
   await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Free-range · cold'),{},{timeout:35000});
   const inset=page.locator('#markingLearning');assert.ok(await inset.isVisible());assert.equal(await inset.getAttribute('data-marking-lane'),'gcts');assert.equal(await inset.getAttribute('data-reference'),'true');

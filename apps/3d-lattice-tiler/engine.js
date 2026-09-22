@@ -1,3 +1,5 @@
+import {prepareSlab,SLAB_TILES} from './v2/slab.js?v=2.5.0';
+import {legacyGrowthStream} from './legacy-growth.js?v=20260921-growth';
 import {RESEARCH_TILES} from './research-catalog.js?v=20260921-search-inset';
 import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-search-inset';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
@@ -181,6 +183,14 @@ export function legacyMarkingModel(prepared,includeMirrors=false){
  const capacity=prepared.prototiles.reduce((a,t)=>{const b=Math.max(1,t.solid_angle?.max_value??tileSpecs.LEGACY_SOLID_ANGLE_MAX);return Math.abs(a*b)/gcd(a,b);},1);
  for(const tile of prepared.prototiles)tile.rescaleOccupancyWeights?.(capacity);
  return {capacity,allowReflections:!!includeMirrors,domain:'Z³',orientations:prepared.prototiles.flatMap((tile,type)=>tile.unique_orientations.map((o,index)=>({type,index,cells:o.occupancy,vertices:o.verts,faces:o.faces})))};
+}
+
+export function referenceGrowthModel(prepared,config){
+ const refs=prepared.customSystem?.figure_refs;
+ const tile=refs?.length===1?refs[0].split('::')[0]:config.mode_key;
+ return SLAB_TILES[tile]&&(!prepared.customSystem||refs?.length===1)
+  ?prepareSlab({tile,mirrors:!!config.include_mirrors,radius:1},'2.5.0')
+  :legacyMarkingModel(prepared,config.include_mirrors);
 }
 
 export const createTilingStream = (() => {
@@ -596,6 +606,11 @@ export const createTilingStream = (() => {
 
     if (["translational", "isohedral"].includes(config.tiling_strategy)) {
       yield* periodicStream(config, prototiles, MAX_SOLID_ANGLE, COLOR_PALETTE, stopToken);
+      return;
+    }
+
+    if(config.search_protocol==='seed-growth'){
+      yield* legacyGrowthStream(referenceGrowthModel(prepared,config),config,COLOR_PALETTE,stopToken);
       return;
     }
 

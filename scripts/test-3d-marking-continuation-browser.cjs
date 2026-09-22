@@ -7,7 +7,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8893';
  const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  for(const legacy of [false,true]){
-  await page.goto(base+(legacy?'/apps/3d-lattice-tiler/legacy.html?tile=cube':'/3d-lattice-tiler/?catalogue=all'));
+  await page.goto(base+(legacy?'/apps/3d-lattice-tiler/legacy.html?tile=cube':'/3d-lattice-tiler/?experiment=window&catalogue=all'));
   if(!legacy){await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));await page.selectOption('#tile','cube');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));}
   await page.waitForFunction(()=>document.querySelector('.marking-new')&&!document.querySelector('.marking-new').disabled);
   if(legacy)await page.fill('#maxTilesInput','8');

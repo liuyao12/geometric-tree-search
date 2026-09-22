@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-search-inset";
+import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel, referenceGrowthModel } from "./engine.js?v=20260921-growth";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
@@ -123,7 +123,7 @@ self.onmessage = (event) => {
   const { type, seq, config, reason = "ui" } = event.data ?? {};
 
   if(type==='marking-library-model'){
-    try{self.postMessage({type,model:legacyMarkingModel(preprocessTilingSystem(config,tileSpecs),config.include_mirrors)});}
+    try{self.postMessage({type,model:config.search_protocol==='seed-growth'?referenceGrowthModel(preprocessTilingSystem(config,tileSpecs),config):legacyMarkingModel(preprocessTilingSystem(config,tileSpecs),config.include_mirrors)});}
     catch(error){self.postMessage({type,error:error.message});}return;
   }
   if (type === "start") {
