@@ -3,10 +3,12 @@
 These timings use the v2 fixed-window engine, not the article’s seed-based growth.
 See the [algorithm comparison and scope correction](3d-reference-growth-audit.md).
 
-The workbench's default selector is reserved for measured demonstration presets.
-The full research catalogue remains available through its separate link, and the
-legacy explorer retains its original model. A hard or unresolved tile does not
-qualify merely because its search is slow.
+The workbench's default selector contains all 40 manually curated tile systems.
+Both versions omit search-generated candidates from their normal catalogue;
+archived research URLs (`?catalogue=all` or an explicit generated tile) still
+work for replay. The Hat benchmark remains an optional measured preset, not a
+restriction on which tiles can be selected. A hard or unresolved tile does not
+qualify as a measured demonstration merely because its search is slow.
 
 ## Protocol
 

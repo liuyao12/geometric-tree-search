@@ -1,4 +1,4 @@
-import {DEMONSTRATIONS,demonstrationConfig} from './demonstrations.js?v=2.4.1';
+import {DEMONSTRATIONS,demonstrationConfig} from './demonstrations.js?v=2.4.2';
 import {learningSearchView} from '../learning-search-view.js?v=20260921-search-inset';
 import {HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-search-inset';
 import {MarkingOverlay} from '../marking-overlay.js?v=20260921-search-inset';
@@ -8,7 +8,7 @@ import {remember3DMarking} from '../marking-storage.js?v=20260921-search-inset';
 import {MarkingPreview} from '../marking-preview.js?v=20260921-search-inset';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.4.1';
+import {catalog,MODES,VERSION} from './model.js?v=2.4.2';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 let markingOpen=true,sampleInspection=null;
@@ -22,11 +22,11 @@ const labels={learning:'Learning markings',exhausted_marked:'Exhausted marked',f
 const fmt=n=>Number(n??0).toLocaleString(undefined,{maximumFractionDigits:0}),time=n=>n===undefined?'—':n<1000?`${Math.round(n)} ms`:`${(n/1000).toFixed(2)} s`;
 for(const group of [...new Set(cases.map(c=>c.group))]){const opt=document.createElement('optgroup');opt.label=group;for(const c of cases.filter(c=>c.group===group)){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;opt.append(o);}$('tile').append(opt);}
 const query=new URLSearchParams(location.search),requestedTile=query.get('tile');
-const researchCatalogue=query.get('catalogue')==='all'||!!requestedTile&&!DEMONSTRATIONS.some(c=>c.tile===requestedTile);
-if(!researchCatalogue){for(const group of [...$('tile').children]){for(const option of [...group.children])if(!DEMONSTRATIONS.some(c=>c.tile===option.value))option.remove();if(!group.children.length)group.remove();else {group.label='GCTS demonstrations';for(const option of group.children)option.textContent=DEMONSTRATIONS.find(d=>d.tile===option.value).name;}}}
+const originalIds=new Set(cases.filter(c=>!c.searchGenerated).map(c=>c.id));
+const researchCatalogue=query.get('catalogue')==='all'||cases.some(c=>c.id===requestedTile&&c.searchGenerated);
+if(!researchCatalogue){for(const group of [...$('tile').children]){for(const option of [...group.children])if(!originalIds.has(option.value))option.remove();if(!group.children.length)group.remove();}}
 if(cases.some(c=>c.id===requestedTile))$('tile').value=requestedTile;else if(!researchCatalogue)$('tile').value=DEMONSTRATIONS[0].tile;
 $('reference').hidden=!researchCatalogue;$('demoEvidence').hidden=researchCatalogue;
-$('catalogueLink').textContent=researchCatalogue?'Measured demonstrations':'Full research catalogue';$('catalogueLink').href=researchCatalogue?'?':'?catalogue=all';
 function applyDemonstration(){const d=DEMONSTRATIONS.find(c=>c.tile===$('tile').value);if(!d)return;$('demonstrationNote').textContent=d.summary;const c=demonstrationConfig(d.tile);$('radius').value=c.radius;$('seconds').value=c.timeMs/1000;$('seed').value=c.seed;$('pairBudget').value=c.pairNodes;$('markingExtent').value=c.markingExtent;$('mirrors').checked=c.mirrors;}
 if(!researchCatalogue)applyDemonstration();
 $('useDemonstration').onclick=()=>{applyDemonstration();preview();};
@@ -141,12 +141,12 @@ async function preview(){
   sampleInspection=null;markingOpen=true;
   markingLibrary.refresh(null);markingOverlay.set([]);document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);const demo=DEMONSTRATIONS.find(c=>c.tile===selected?.id);$('useDemonstration').hidden=!demo;$('demonstrationNote').textContent=demo?.summary??'Research case: no measured GCTS advantage is established.';$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.4.1',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.4.2',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.4.1',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.4.2',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
@@ -200,7 +200,7 @@ $('stop').onclick=()=>{cancelled=true;worker?.cancel?.();};
 $('probe').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);$('probeResults').textContent='';try{for(const strategy of ['translational','isohedral']){if(cancelled)break;$('status').textContent=`Checking ${strategy} · up to 8 motif tiles`;const r=await runWorker({...config(),mode:strategy},'probe',strategy);const p=document.createElement('div');p.textContent=`${strategy}: ${r.event?.success?'certificate found':r.message??'unknown within bounds'}`;$('probeResults').append(p);archive.push({probe:strategy,config:config(),result:r});}$('status').textContent='Structural probe results are separate from the finite-window race.';}finally{lock(false);}};
 $('export').onclick=()=>{const data={version:VERSION,exportedAt:new Date().toISOString(),protocol:'Exact finite point target; exported model declares the single-slab or 3D domain, weights and boundary; all target points root generation 0; sequential cold online runs; timings include preparation and verification; no held-out claim',experiments:archive,current:{config:runConfig,results,series}},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`lattice-v2-evidence-${Date.now()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 $('import').onclick=()=>{try{const value=JSON.parse($('custom').value);if(!value||typeof value!=='object'||(!value.polycubes?.length&&!value.polyhedra?.length&&!value.figure_refs?.length))throw Error('Include polycubes, polyhedra or figure_refs.');custom=value;if(!$('tile').querySelector('option[value="custom"]')){const o=document.createElement('option');o.value='custom';o.textContent='Custom system';$('tile').append(o);}$('tile').value='custom';if(+$('radius').value>3)$('radius').value='3';preview();}catch(e){$('status').textContent=`Custom system: ${e.message}`;}};
-$('tile').onchange=()=>{if(!researchCatalogue)applyDemonstration();else if(!['a2_hat_prism','a2_turtle_prism','a2_hexagonal_prism'].includes($('tile').value)&&+$('radius').value>3)$('radius').value='3';preview();};
+$('tile').onchange=()=>{if(!researchCatalogue)applyDemonstration();if(!['a2_hat_prism','a2_turtle_prism','a2_hexagonal_prism'].includes($('tile').value)&&+$('radius').value>3)$('radius').value='3';preview();};
 for(const id of ['radius','mirrors','markingExtent'])$(id).onchange=()=>preview();
 $('fit').onclick=fitView;$('points').onclick=()=>{showPoints=!showPoints;pointGroup.visible=showPoints;$('points').textContent=`Points ${showPoints?'on':'off'}`;$('points').setAttribute('aria-pressed',String(showPoints));};$('edges').onclick=()=>{showEdges=!showEdges;edgeGroup.visible=showEdges;$('edges').textContent=`Edges ${showEdges?'on':'off'}`;$('edges').setAttribute('aria-pressed',String(showEdges));};
 refresh();preview();

@@ -1,9 +1,9 @@
 import {RESEARCH_TILES,RESEARCH_BY_ID} from '../research-catalog.js?v=20260921-search-inset';
 import {prepareVoxelPointModel} from '../voxel-point-model.js';
 import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-search-inset';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.4.1';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.4.2';
 
-export const VERSION = '2.4.1';
+export const VERSION = '2.4.2';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},
@@ -20,7 +20,7 @@ export const CASES = [
   {id:'cube',name:'Cube',group:'Easy control',note:'Easy periodic control. Useful for checking the protocol and measuring the overhead of extra search machinery.'}
 ];
 export function catalog() {
-  return [...RESEARCH_TILES,...CASES,...Object.entries(tileSpecs.TILING_REGISTRY).filter(([id])=>!RESEARCH_BY_ID.has(id)&&!CASES.some(c=>c.id===id)).map(([id,c])=>({id,name:c.name,group:'Catalog',note:'Legacy catalog geometry. V2 accepts only exact integer point weights; structural status is independent of the finite-window result.'}))];
+  return [...RESEARCH_TILES.map(c=>({...c,searchGenerated:true})),...CASES,...Object.entries(tileSpecs.TILING_REGISTRY).filter(([id])=>!RESEARCH_BY_ID.has(id)&&!CASES.some(c=>c.id===id)).map(([id,c])=>({id,name:c.name,group:'Catalog',note:'Legacy catalog geometry. V2 accepts only exact integer point weights; structural status is independent of the finite-window result.'}))];
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 export function prepareModel(config) {

@@ -898,7 +898,10 @@ function sortCatalogFigures(groupId, figures) {
 
 function groupedCatalogFigures() {
   const groups = new Map(catalogGroupDefinitions.map(group => [group.id, []]));
+  const query = new URLSearchParams(location.search);
+  const includeSearch = query.get('catalogue') === 'all' || !!tileSpecs.TILING_REGISTRY[query.get('tile')]?.census_candidate;
   for (const figure of figureCatalog) {
+    if (figure.census_candidate && !includeSearch) continue;
     if (!isGctsFigureVisibleInCatalog(figure)) continue;
     groups.get(catalogGroupForFigure(figure).id).push(figure);
   }
