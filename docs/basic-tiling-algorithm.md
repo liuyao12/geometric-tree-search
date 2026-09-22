@@ -276,6 +276,35 @@ measure total costs rather than assuming that a stronger marking is faster.
 See [the Hat/Turtle corona-consensus experiment](projects/a2-corona-consensus.md)
 for complete 2- and 3-corona enumerations, bounded benchmarks and limits.
 
+### 6.2 Alternating learned markings and complete coronas
+
+A staged experiment may start from a complete unmarked rooted one-corona
+catalogue, learn several alternative markings, then apply section 6.1 at
+successive radii. This rooted catalogue differs from section 6's pair-centered
+oracle: a positive attachment occurs in at least one rooted corona; absence is
+negative only after complete enumeration. Declare which criterion supplies labels.
+
+Fit agreement throughout every original positive corona, including overlaps
+between its boundary tiles. Declare a finite prototype marking domain; one
+option restricts it to points covered by every original corona. Search over
+individual free components, rebuilding equalities after each support change.
+Distinct alternatives must differ in compatibility, not merely label names.
+A bounded collection of such alternatives is not the complete marking space.
+
+For each alternative independently, enumerate compatible one-coronas, intersect
+their sections, then use that extension to enumerate two-coronas, and so on.
+Promote only completed nonempty intersections. A stage with no new common
+values is a plateau at that radius, not non-tiling evidence. Exhaustive emptiness
+rules out that marked system; a cutoff is unknown. All extensions preserve only
+their initial learned restriction, whose global soundness remains unproved.
+
+Keep alternatives separate. A branch may maintain the subset of markings
+compatible with its entire patch; it cannot choose a different unrelated marking
+at each tile. Benchmark initial and extended markings with the same search and
+ranking, retain the unmarked control, and charge catalogue collection, fitting,
+retries, verification and reduction separately from reuse. See the
+[staged Hat/Turtle experiment](projects/a2-corona-workflow.md).
+
 ## 7. RL proposes clusters
 
 The primary RL role is proposing, composing, and selecting clusters: finite
