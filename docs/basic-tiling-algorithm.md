@@ -305,6 +305,40 @@ ranking, retain the unmarked control, and charge catalogue collection, fitting,
 retries, verification and reduction separately from reuse. See the
 [staged Hat/Turtle experiment](projects/a2-corona-workflow.md).
 
+### 6.3 Online marking probes while collecting pair labels
+
+An explicitly selected online experiment may use the current provisional
+marking to seek the next pair's corona before its unmarked oracle call. Start
+with empty support. A successful marked completion is a positive only after
+independent unmarked core/frontier replay. A rejected fixed pair, exhausted
+marked search or marked timeout is not an unmarked negative: retry without the
+marking. Only an exhausted unmarked search supplies a negative; unresolved
+calls remain unknown. Do not silently skip unexamined pairs using a hypothesis.
+
+After each resolved label, solve assigned/free component constraints using
+only the observed prefix. Every positive pair must agree; every enforced
+negative needs at least one assigned disagreement. Declare whether the solver
+is SAT/SMT or a bounded heuristic and state the support and value action.
+Recheck every accepted synthesis against its observed constraints. If the
+constraint system is unsatisfiable or times out, disable that marking instead
+of treating it as a tiling impossibility proof. A new pair search starts with
+a fresh graph under the new version; a continuing search must replay its prefix.
+
+Perfect pair classification is insufficient to guarantee any larger marked
+tiling. Conversely, preserving every first-found positive corona as a hard
+agreement constraint can conflict with excluding negative pairs: a finite
+corona may contain a boundary pair that has no corona of its own. Such a witness
+must be replaceable; a positive pair does not certify every completion around
+it. Distinguish alternative completions from alternative markings, and keep
+their hypotheses separate from original unmarked proofs.
+
+Compare complete cold collection time, including synthesis, replay, failed
+probes and fallback calls, with the same unmarked baseline and pair order.
+Checkpoint tiling benchmarks must state the exact observed prefix and cannot
+claim end-to-end savings while excluding its acquisition cost. The
+[headless online-pair experiment](projects/a2-online-pairs.md) records both
+failure modes and the absence of a speedup in its tested configuration.
+
 ## 7. RL proposes clusters
 
 The primary RL role is proposing, composing, and selecting clusters: finite

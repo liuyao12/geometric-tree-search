@@ -1,0 +1,1822 @@
+{
+  "date": "2026-09-22",
+  "scope": "Headless online pair-corona marking synthesis; fresh learned hypotheses, independently authorized unmarked negatives, complete catalogs, no bundled assignments or witnesses.",
+  "sourceSha256": {
+    "scripts/experiment-a2-online-pairs.mjs": "a830b2990452b1a73ba7ebd9ad4b42037a4fd652b2d807c9c33b9486866c27ab",
+    "scripts/a2_online_marking_sat.py": "196a07a24509842f726de1dc0f579da37434b13e0cd49c14b6c54586aa63c288",
+    "scripts/benchmark-a2-online-pair-checkpoints.mjs": "0f690be2f29f2ca27ba297a6bd52a4af8fc3167f13b5b002a7dd916aac432fd1",
+    "scripts/diagnose-a2-online-pairs.mjs": "87f0d8fa0541c7678b2292a8f960606755e579a704168de9c558af5881ad6dc3",
+    "scripts/test-a2-online-pairs.mjs": "9a81a353b5611fb11dce4bb8a66af49529092eeaf993a086b09feaf1e6d710ba",
+    "scripts/test_a2_online_marking_sat.py": "b8c670a50a90d716ce5aaff4a9f894ecf0b8cfc01fc5e29bfb1175f1823980ae",
+    "assets/a2-tiling-engine.js": "81222404c9855db2c9f5f64e4f8fb9f79a89c1b346b619e6bdda7700663e60a0",
+    "assets/tile-corona-learning.js": "6d47c1b8ca5918733431e45ea21d7f0fce4780862602f317c84dc5fdeeb89642",
+    "assets/tile-connection-learning.js": "b60a0f7ad3249af49900ac03970d02bb4a315bc249fd5dfad4de734f3713a81b",
+    "assets/learning-lattice.js": "a122f54730d63e32d44cd41c78d233e311fb0f50879213ae2dfd2bf74441a4c9",
+    "scripts/experiment-a2-corona-workflow.mjs": "ca42e0c6ef1d2171542a6a1fab3b519e913c978858753a8c2d36a59103dc11bd",
+    "apps/3d-lattice-tiler/growth-search.js": "f1c6810ea9d29d631a200eb6a6672b59e240f502c1f6e6abd5f9a0c61b65ca5a"
+  },
+  "runs": [
+    {
+      "tile": "turtle",
+      "mode": "baseline",
+      "positiveMode": "pair",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": null,
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 0,
+        "rescuedPositives": 0,
+        "falseNegativeIfTrusted": 0
+      },
+      "timing": {
+        "elapsedMs": 4419.829834,
+        "trainingMs": 0,
+        "replayMs": 0,
+        "searchMs": 4389.993426000004,
+        "witnessReplayMs": 20.792001000001598
+      },
+      "nodes": 1330,
+      "updates": {
+        "sat": 0,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 247,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "turtle",
+      "mode": "online",
+      "positiveMode": "pair",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 246,
+        "rescuedPositives": 41,
+        "falseNegativeIfTrusted": 41
+      },
+      "timing": {
+        "elapsedMs": 15344.24425,
+        "trainingMs": 9827.536955999994,
+        "replayMs": 399.69515699999374,
+        "searchMs": 5086.509908999959,
+        "witnessReplayMs": 20.493746999977702
+      },
+      "nodes": 1380,
+      "updates": {
+        "sat": 247,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 10,
+          "points": 8,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 11,
+          "points": 10,
+          "observedPositive": 1,
+          "observedNegative": 15
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 17,
+          "points": 14,
+          "observedPositive": 3,
+          "observedNegative": 29
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 16,
+          "points": 12,
+          "observedPositive": 11,
+          "observedNegative": 53
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 22,
+          "points": 17,
+          "observedPositive": 25,
+          "observedNegative": 103
+        },
+        {
+          "after": 247,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 24,
+          "points": 21,
+          "observedPositive": 41,
+          "observedNegative": 206
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "turtle",
+      "mode": "online",
+      "positiveMode": "witness",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 17,
+        "fallbacks": 84,
+        "rescuedPositives": 4,
+        "falseNegativeIfTrusted": 4
+      },
+      "timing": {
+        "elapsedMs": 25108.036834,
+        "trainingMs": 20103.614253000014,
+        "replayMs": 276.4922419999639,
+        "searchMs": 4700.921508999938,
+        "witnessReplayMs": 19.77825799999482
+      },
+      "nodes": 1178,
+      "updates": {
+        "sat": 101,
+        "unsat": 121,
+        "unknown": 25
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 10,
+          "points": 9,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 14,
+          "points": 12,
+          "observedPositive": 1,
+          "observedNegative": 15
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 15,
+          "points": 13,
+          "observedPositive": 3,
+          "observedNegative": 29
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 21,
+          "points": 17,
+          "observedPositive": 11,
+          "observedNegative": 53
+        },
+        {
+          "after": 128,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 25,
+          "observedNegative": 103
+        },
+        {
+          "after": 247,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 41,
+          "observedNegative": 206
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "turtle",
+      "mode": "baseline",
+      "positiveMode": "pair",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": null,
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 0,
+        "rescuedPositives": 0,
+        "falseNegativeIfTrusted": 0
+      },
+      "timing": {
+        "elapsedMs": 4341.472083000001,
+        "trainingMs": 0,
+        "replayMs": 0,
+        "searchMs": 4316.661991999921,
+        "witnessReplayMs": 19.25708500017936
+      },
+      "nodes": 1366,
+      "updates": {
+        "sat": 0,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 247,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "turtle",
+      "mode": "online",
+      "positiveMode": "pair",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 3,
+        "fallbacks": 243,
+        "rescuedPositives": 38,
+        "falseNegativeIfTrusted": 38
+      },
+      "timing": {
+        "elapsedMs": 14688.275458999997,
+        "trainingMs": 9054.528250999894,
+        "replayMs": 401.29849500011187,
+        "searchMs": 5204.782368000058,
+        "witnessReplayMs": 19.20959000021685
+      },
+      "nodes": 1371,
+      "updates": {
+        "sat": 247,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 10,
+          "points": 9,
+          "observedPositive": 2,
+          "observedNegative": 6
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 11,
+          "points": 9,
+          "observedPositive": 3,
+          "observedNegative": 13
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 15,
+          "points": 12,
+          "observedPositive": 4,
+          "observedNegative": 28
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 20,
+          "points": 16,
+          "observedPositive": 12,
+          "observedNegative": 52
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 24,
+          "points": 18,
+          "observedPositive": 23,
+          "observedNegative": 105
+        },
+        {
+          "after": 247,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 23,
+          "points": 18,
+          "observedPositive": 41,
+          "observedNegative": 206
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "turtle",
+      "mode": "online",
+      "positiveMode": "witness",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 247,
+        "valid": 41,
+        "invalid": 206,
+        "unresolved": 0,
+        "markedWitnesses": 11,
+        "fallbacks": 72,
+        "rescuedPositives": 3,
+        "falseNegativeIfTrusted": 3
+      },
+      "timing": {
+        "elapsedMs": 34598.392208000005,
+        "trainingMs": 29591.432451999986,
+        "replayMs": 249.59674800003268,
+        "searchMs": 4730.530791000005,
+        "witnessReplayMs": 20.124866000049224
+      },
+      "nodes": 1347,
+      "updates": {
+        "sat": 83,
+        "unsat": 118,
+        "unknown": 46
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 8,
+          "points": 7,
+          "observedPositive": 2,
+          "observedNegative": 6
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 14,
+          "points": 12,
+          "observedPositive": 3,
+          "observedNegative": 13
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 16,
+          "points": 12,
+          "observedPositive": 4,
+          "observedNegative": 28
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 20,
+          "points": 16,
+          "observedPositive": 12,
+          "observedNegative": 52
+        },
+        {
+          "after": 128,
+          "halo": 3,
+          "status": "unknown",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 23,
+          "observedNegative": 105
+        },
+        {
+          "after": 247,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 41,
+          "observedNegative": 206
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "baseline",
+      "positiveMode": "pair",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": null,
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 0,
+        "rescuedPositives": 0,
+        "falseNegativeIfTrusted": 0
+      },
+      "timing": {
+        "elapsedMs": 3073.623707999999,
+        "trainingMs": 0,
+        "replayMs": 0,
+        "searchMs": 3051.210876999874,
+        "witnessReplayMs": 18.315166999949724
+      },
+      "nodes": 1578,
+      "updates": {
+        "sat": 0,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 227,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "online",
+      "positiveMode": "pair",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 226,
+        "rescuedPositives": 41,
+        "falseNegativeIfTrusted": 41
+      },
+      "timing": {
+        "elapsedMs": 11470.926540999993,
+        "trainingMs": 7233.623710999993,
+        "replayMs": 344.95166499998595,
+        "searchMs": 3867.9116320001194,
+        "witnessReplayMs": 16.81471099999908
+      },
+      "nodes": 1632,
+      "updates": {
+        "sat": 227,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 9,
+          "points": 8,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 9,
+          "points": 9,
+          "observedPositive": 4,
+          "observedNegative": 12
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 15,
+          "points": 11,
+          "observedPositive": 6,
+          "observedNegative": 26
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 18,
+          "points": 15,
+          "observedPositive": 16,
+          "observedNegative": 48
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 23,
+          "points": 18,
+          "observedPositive": 24,
+          "observedNegative": 104
+        },
+        {
+          "after": 227,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 23,
+          "points": 20,
+          "observedPositive": 41,
+          "observedNegative": 186
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "online",
+      "positiveMode": "witness",
+      "orderSeed": 1,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 13,
+        "fallbacks": 70,
+        "rescuedPositives": 4,
+        "falseNegativeIfTrusted": 4
+      },
+      "timing": {
+        "elapsedMs": 12193.440833999994,
+        "trainingMs": 8447.897128000084,
+        "replayMs": 233.77953600000183,
+        "searchMs": 3488.4404860000795,
+        "witnessReplayMs": 17.382966999924975
+      },
+      "nodes": 1613,
+      "updates": {
+        "sat": 83,
+        "unsat": 140,
+        "unknown": 4
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 9,
+          "points": 8,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 10,
+          "points": 10,
+          "observedPositive": 4,
+          "observedNegative": 12
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 14,
+          "points": 12,
+          "observedPositive": 6,
+          "observedNegative": 26
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 19,
+          "points": 15,
+          "observedPositive": 16,
+          "observedNegative": 48
+        },
+        {
+          "after": 128,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 24,
+          "observedNegative": 104
+        },
+        {
+          "after": 227,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 41,
+          "observedNegative": 186
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "baseline",
+      "positiveMode": "pair",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": null,
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 0,
+        "fallbacks": 0,
+        "rescuedPositives": 0,
+        "falseNegativeIfTrusted": 0
+      },
+      "timing": {
+        "elapsedMs": 3241.928917000012,
+        "trainingMs": 0,
+        "replayMs": 0,
+        "searchMs": 3223.841285000235,
+        "witnessReplayMs": 15.028872000606498
+      },
+      "nodes": 1799,
+      "updates": {
+        "sat": 0,
+        "unsat": 0,
+        "unknown": 0
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        },
+        {
+          "after": 227,
+          "halo": 1,
+          "status": "empty",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 0,
+          "observedNegative": 0
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "online",
+      "positiveMode": "pair",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 1,
+        "fallbacks": 224,
+        "rescuedPositives": 39,
+        "falseNegativeIfTrusted": 39
+      },
+      "timing": {
+        "elapsedMs": 10742.249750000017,
+        "trainingMs": 6430.790548000106,
+        "replayMs": 325.1885130000592,
+        "searchMs": 3963.0716630000097,
+        "witnessReplayMs": 15.100659000308951
+      },
+      "nodes": 1933,
+      "updates": {
+        "sat": 226,
+        "unsat": 0,
+        "unknown": 1
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 11,
+          "points": 9,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 10,
+          "points": 9,
+          "observedPositive": 3,
+          "observedNegative": 13
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 13,
+          "points": 12,
+          "observedPositive": 5,
+          "observedNegative": 27
+        },
+        {
+          "after": 64,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 18,
+          "points": 15,
+          "observedPositive": 10,
+          "observedNegative": 54
+        },
+        {
+          "after": 128,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 21,
+          "points": 15,
+          "observedPositive": 20,
+          "observedNegative": 108
+        },
+        {
+          "after": 227,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 21,
+          "points": 18,
+          "observedPositive": 41,
+          "observedNegative": 186
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    },
+    {
+      "tile": "hat",
+      "mode": "online",
+      "positiveMode": "witness",
+      "orderSeed": 3,
+      "protocol": {
+        "lattice": "index3",
+        "reflections": true,
+        "rank": 3,
+        "pairMs": 1500,
+        "pairNodes": 5000,
+        "probeMs": 150,
+        "probeNodes": 128,
+        "solverTimeoutMs": 500,
+        "solverVersion": "4.16.0",
+        "score": "zero",
+        "knownMarking": false,
+        "negativeAuthority": "exhausted unmarked pair-corona search only"
+      },
+      "counts": {
+        "total": 227,
+        "valid": 41,
+        "invalid": 186,
+        "unresolved": 0,
+        "markedWitnesses": 4,
+        "fallbacks": 44,
+        "rescuedPositives": 3,
+        "falseNegativeIfTrusted": 2
+      },
+      "timing": {
+        "elapsedMs": 10784.230458999984,
+        "trainingMs": 6956.700791000068,
+        "replayMs": 190.71987500000978,
+        "searchMs": 3616.216831999918,
+        "witnessReplayMs": 15.067279999988386
+      },
+      "nodes": 1965,
+      "updates": {
+        "sat": 48,
+        "unsat": 175,
+        "unknown": 4
+      },
+      "snapshots": [
+        {
+          "after": 8,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 9,
+          "points": 8,
+          "observedPositive": 1,
+          "observedNegative": 7
+        },
+        {
+          "after": 16,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 11,
+          "points": 8,
+          "observedPositive": 3,
+          "observedNegative": 13
+        },
+        {
+          "after": 32,
+          "halo": 1,
+          "status": "sat",
+          "assignedValues": 14,
+          "points": 10,
+          "observedPositive": 5,
+          "observedNegative": 27
+        },
+        {
+          "after": 64,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 10,
+          "observedNegative": 54
+        },
+        {
+          "after": 128,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 20,
+          "observedNegative": 108
+        },
+        {
+          "after": 227,
+          "halo": 3,
+          "status": "unsat",
+          "assignedValues": 0,
+          "points": 0,
+          "observedPositive": 41,
+          "observedNegative": 186
+        }
+      ],
+      "allPrefixConstraintsReplayed": true
+    }
+  ],
+  "checkpointGrowth": {
+    "protocol": {
+      "target": 100,
+      "ms": 3000,
+      "seeds": [
+        1,
+        3
+      ],
+      "trainingOrderSeed": 1,
+      "score": "zero in every arm",
+      "prefixTrainingCostExcluded": true,
+      "armOrder": "forward seed 1, reverse seed 3"
+    },
+    "rows": [
+      {
+        "tile": "turtle",
+        "arm": "unmarked",
+        "after": 0,
+        "seed": 1,
+        "status": "empty",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1204,
+        "backtracks": 1176,
+        "elapsedMs": 3003.476167,
+        "verificationMs": 2.9897500000001855,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-16",
+        "after": 16,
+        "seed": 1,
+        "status": "sat",
+        "values": 11,
+        "result": "no",
+        "tiles": 6,
+        "nodes": 39,
+        "backtracks": 39,
+        "elapsedMs": 95.83812499999976,
+        "verificationMs": 2.142084000000068,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-64",
+        "after": 64,
+        "seed": 1,
+        "status": "sat",
+        "values": 16,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 3,
+        "backtracks": 3,
+        "elapsedMs": 27.373375000000124,
+        "verificationMs": 1.5053330000000642,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-128",
+        "after": 128,
+        "seed": 1,
+        "status": "sat",
+        "values": 22,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 6,
+        "backtracks": 6,
+        "elapsedMs": 27.487417000000278,
+        "verificationMs": 1.928625000000011,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-247",
+        "after": 247,
+        "seed": 1,
+        "status": "sat",
+        "values": 24,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 14,
+        "backtracks": 14,
+        "elapsedMs": 58.26249999999982,
+        "verificationMs": 3.5751249999998436,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-16",
+        "after": 16,
+        "seed": 1,
+        "status": "sat",
+        "values": 14,
+        "result": "no",
+        "tiles": 22,
+        "nodes": 218,
+        "backtracks": 218,
+        "elapsedMs": 354.45458299999973,
+        "verificationMs": 3.002292000000125,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-64",
+        "after": 64,
+        "seed": 1,
+        "status": "sat",
+        "values": 21,
+        "result": "no",
+        "tiles": 66,
+        "nodes": 1425,
+        "backtracks": 1425,
+        "elapsedMs": 2717.967125,
+        "verificationMs": 6.132958999999573,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-128",
+        "after": 128,
+        "seed": 1,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1251,
+        "backtracks": 1213,
+        "elapsedMs": 3001.8861659999993,
+        "verificationMs": 1.8655419999995502,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-247",
+        "after": 247,
+        "seed": 1,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1243,
+        "backtracks": 1208,
+        "elapsedMs": 3001.481915999999,
+        "verificationMs": 1.7046250000003056,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-247",
+        "after": 247,
+        "seed": 3,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1262,
+        "backtracks": 1236,
+        "elapsedMs": 3001.5372499999994,
+        "verificationMs": 1.5622919999987062,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-128",
+        "after": 128,
+        "seed": 3,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1286,
+        "backtracks": 1264,
+        "elapsedMs": 3000.3575409999976,
+        "verificationMs": 1.7550410000003467,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-64",
+        "after": 64,
+        "seed": 3,
+        "status": "sat",
+        "values": 21,
+        "result": "no",
+        "tiles": 66,
+        "nodes": 1425,
+        "backtracks": 1425,
+        "elapsedMs": 2642.988624999998,
+        "verificationMs": 6.809124999999767,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "witness-16",
+        "after": 16,
+        "seed": 3,
+        "status": "sat",
+        "values": 14,
+        "result": "no",
+        "tiles": 22,
+        "nodes": 218,
+        "backtracks": 218,
+        "elapsedMs": 347.91362500000105,
+        "verificationMs": 3.3739590000004682,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-247",
+        "after": 247,
+        "seed": 3,
+        "status": "sat",
+        "values": 24,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 14,
+        "backtracks": 14,
+        "elapsedMs": 54.76825000000099,
+        "verificationMs": 2.9959170000001905,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-128",
+        "after": 128,
+        "seed": 3,
+        "status": "sat",
+        "values": 22,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 6,
+        "backtracks": 6,
+        "elapsedMs": 26.002874999998312,
+        "verificationMs": 1.7785829999993439,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-64",
+        "after": 64,
+        "seed": 3,
+        "status": "sat",
+        "values": 16,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 3,
+        "backtracks": 3,
+        "elapsedMs": 19.699209000002156,
+        "verificationMs": 1.3810410000005504,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "pair-16",
+        "after": 16,
+        "seed": 3,
+        "status": "sat",
+        "values": 11,
+        "result": "no",
+        "tiles": 6,
+        "nodes": 39,
+        "backtracks": 39,
+        "elapsedMs": 82.5011659999982,
+        "verificationMs": 1.3549999999995634,
+        "verified": true
+      },
+      {
+        "tile": "turtle",
+        "arm": "unmarked",
+        "after": 0,
+        "seed": 3,
+        "status": "empty",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 53,
+        "nodes": 1299,
+        "backtracks": 1273,
+        "elapsedMs": 3000.970083,
+        "verificationMs": 1.4573339999988093,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "unmarked",
+        "after": 0,
+        "seed": 1,
+        "status": "empty",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 73,
+        "nodes": 2022,
+        "backtracks": 1959,
+        "elapsedMs": 3000.7681249999987,
+        "verificationMs": 1.4104999999981374,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-16",
+        "after": 16,
+        "seed": 1,
+        "status": "sat",
+        "values": 9,
+        "result": "no",
+        "tiles": 7,
+        "nodes": 67,
+        "backtracks": 67,
+        "elapsedMs": 75.26825000000099,
+        "verificationMs": 1.2607909999969706,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-64",
+        "after": 64,
+        "seed": 1,
+        "status": "sat",
+        "values": 18,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 2,
+        "backtracks": 2,
+        "elapsedMs": 13.295458999997209,
+        "verificationMs": 1.5090420000015001,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-128",
+        "after": 128,
+        "seed": 1,
+        "status": "sat",
+        "values": 23,
+        "result": "no",
+        "tiles": 1,
+        "nodes": 3,
+        "backtracks": 3,
+        "elapsedMs": 14.421249999999418,
+        "verificationMs": 1.0640420000017912,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-227",
+        "after": 227,
+        "seed": 1,
+        "status": "sat",
+        "values": 23,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 21,
+        "backtracks": 21,
+        "elapsedMs": 41.1170409999977,
+        "verificationMs": 2.705207999999402,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-16",
+        "after": 16,
+        "seed": 1,
+        "status": "sat",
+        "values": 10,
+        "result": "unknown",
+        "tiles": 45,
+        "nodes": 2772,
+        "backtracks": 2743,
+        "elapsedMs": 3004.0084169999973,
+        "verificationMs": 2.2514160000027914,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-64",
+        "after": 64,
+        "seed": 1,
+        "status": "sat",
+        "values": 19,
+        "result": "no",
+        "tiles": 22,
+        "nodes": 579,
+        "backtracks": 579,
+        "elapsedMs": 530.0690420000028,
+        "verificationMs": 2.6784589999988384,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-128",
+        "after": 128,
+        "seed": 1,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 73,
+        "nodes": 2008,
+        "backtracks": 1952,
+        "elapsedMs": 3006.425625,
+        "verificationMs": 1.4445830000040587,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-227",
+        "after": 227,
+        "seed": 1,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 73,
+        "nodes": 2019,
+        "backtracks": 1959,
+        "elapsedMs": 3007.875500000002,
+        "verificationMs": 1.4500410000036936,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-227",
+        "after": 227,
+        "seed": 3,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 38,
+        "nodes": 2483,
+        "backtracks": 2466,
+        "elapsedMs": 3000.2727920000034,
+        "verificationMs": 1.3248749999984284,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-128",
+        "after": 128,
+        "seed": 3,
+        "status": "unsat",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 38,
+        "nodes": 2505,
+        "backtracks": 2480,
+        "elapsedMs": 3001.6608330000017,
+        "verificationMs": 2.2673330000034184,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-64",
+        "after": 64,
+        "seed": 3,
+        "status": "sat",
+        "values": 19,
+        "result": "no",
+        "tiles": 22,
+        "nodes": 579,
+        "backtracks": 579,
+        "elapsedMs": 572.0617089999942,
+        "verificationMs": 2.9916250000023865,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "witness-16",
+        "after": 16,
+        "seed": 3,
+        "status": "sat",
+        "values": 10,
+        "result": "unknown",
+        "tiles": 47,
+        "nodes": 2695,
+        "backtracks": 2649,
+        "elapsedMs": 3003.682292000005,
+        "verificationMs": 2.236665999997058,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-227",
+        "after": 227,
+        "seed": 3,
+        "status": "sat",
+        "values": 23,
+        "result": "no",
+        "tiles": 5,
+        "nodes": 21,
+        "backtracks": 21,
+        "elapsedMs": 41.90037499999744,
+        "verificationMs": 2.7617499999978463,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-128",
+        "after": 128,
+        "seed": 3,
+        "status": "sat",
+        "values": 23,
+        "result": "no",
+        "tiles": 1,
+        "nodes": 3,
+        "backtracks": 3,
+        "elapsedMs": 20.236708000004,
+        "verificationMs": 1.2024579999997513,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-64",
+        "after": 64,
+        "seed": 3,
+        "status": "sat",
+        "values": 18,
+        "result": "no",
+        "tiles": 2,
+        "nodes": 2,
+        "backtracks": 2,
+        "elapsedMs": 12.566959000003408,
+        "verificationMs": 1.5780830000003334,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "pair-16",
+        "after": 16,
+        "seed": 3,
+        "status": "sat",
+        "values": 9,
+        "result": "no",
+        "tiles": 7,
+        "nodes": 67,
+        "backtracks": 67,
+        "elapsedMs": 78.93604100000084,
+        "verificationMs": 1.2292079999970156,
+        "verified": true
+      },
+      {
+        "tile": "hat",
+        "arm": "unmarked",
+        "after": 0,
+        "seed": 3,
+        "status": "empty",
+        "values": 0,
+        "result": "unknown",
+        "tiles": 38,
+        "nodes": 2475,
+        "backtracks": 2457,
+        "elapsedMs": 3000.791667000005,
+        "verificationMs": 1.3048750000016298,
+        "verified": true
+      }
+    ]
+  },
+  "witnessContradictions": [
+    {
+      "tile": "turtle",
+      "seed": 1,
+      "overlaps": 58,
+      "firstContradictionAtPair": 102,
+      "positivePairPosition": 102,
+      "negativePairPosition": 45,
+      "independentOccupancyAndCoronaCheck": true
+    },
+    {
+      "tile": "turtle",
+      "seed": 3,
+      "overlaps": 64,
+      "firstContradictionAtPair": 84,
+      "positivePairPosition": 14,
+      "negativePairPosition": 84,
+      "independentOccupancyAndCoronaCheck": true
+    },
+    {
+      "tile": "hat",
+      "seed": 1,
+      "overlaps": 54,
+      "firstContradictionAtPair": 84,
+      "positivePairPosition": 13,
+      "negativePairPosition": 84,
+      "independentOccupancyAndCoronaCheck": true
+    },
+    {
+      "tile": "hat",
+      "seed": 3,
+      "overlaps": 70,
+      "firstContradictionAtPair": 49,
+      "positivePairPosition": 10,
+      "negativePairPosition": 49,
+      "independentOccupancyAndCoronaCheck": true
+    }
+  ],
+  "verification": {
+    "baselineMatchedOnlineLabels": 1896,
+    "positiveRecoveries": 173,
+    "allNegativeLabelsRequireUnmarkedExhaustion": true,
+    "checkpointReplay": true,
+    "prefixReplay": true,
+    "smtUnitTests": 5
+  }
+}
