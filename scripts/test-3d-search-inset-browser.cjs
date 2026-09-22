@@ -5,7 +5,7 @@ const base=process.env.GCTS_TEST_URL??'http://127.0.0.1:8894';
  try{
   const page=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.searchFrames=[];setInterval(()=>{const v=document.querySelector('.viewer')??document.querySelector('#viewport');if(v?.dataset.searchPhase){const frame={phase:v.dataset.searchPhase,tiles:+v.dataset.placements,visible:!!v.getBoundingClientRect().height&&!v.hidden,inset:!document.querySelector('#markingLearning')?.hidden};if(JSON.stringify(frame)!==JSON.stringify(window.searchFrames.at(-1)))window.searchFrames.push(frame);}},20);});
-  await page.goto(base+'/3d-lattice-tiler/?tile=a2_turtle_prism');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
+  await page.goto(base+'/3d-lattice-tiler/?catalogue=all&tile=a2_turtle_prism');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
   await page.check('#mirrors');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready'));
   await page.fill('#seconds','60');await page.click('.marking-new');
   await page.waitForFunction(()=>document.querySelector('.viewer').dataset.searchPhase==='corona'&&+document.querySelector('.viewer').dataset.placements>=2);

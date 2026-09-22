@@ -15,8 +15,8 @@ import {learnMarking} from '../apps/3d-lattice-tiler/marking-learning.js';
 async function* runCase(config){
  if(config.pointModel!=='voxel-center-corner'){yield* runExperiment(config);return;}
  const started=performance.now();let marking=null,model=prepareVoxelPointModel(config.custom.polycubes[0].voxels,{name:config.tile,mirrors:config.mirrors,radius:config.radius});
- if(config.mode==='gcts'){
-  for await(const e of learnMarking(model,{timeMs:Math.max(0,config.timeMs-(performance.now()-started)),pairNodes:config.pairNodes})){
+ if(['gcts','both'].includes(config.mode)){
+  for await(const e of learnMarking(model,{timeMs:Math.max(0,config.timeMs-(performance.now()-started)),pairNodes:config.pairNodes,extent:config.markingExtent??1})){
    if(e.type==='marking-learned'){
     marking=e.marking;
     for(const row of marking.evidence)if(row.status==='valid'&&!verifyVoxelPatch(model,row.placements,{requireTarget:false}).ok)throw Error('Corona has geometric voxel overlap');
@@ -59,10 +59,11 @@ if(!isMainThread){
  const chosen=pool.filter(c=>!args.tiles||args.tiles.split(',').includes(c.id));
  if(!chosen.length)throw Error('No matching catalogue tiles');
  const sources={};for(const path of ['scripts/screen-3d-learned-catalog.mjs','apps/3d-lattice-tiler/voxel-point-model.js','apps/3d-lattice-tiler/corona-graph.js','apps/3d-lattice-tiler/marking-learning.js','apps/3d-lattice-tiler/v2/experiment.js','apps/3d-lattice-tiler/v2/model.js','apps/3d-lattice-tiler/v2/slab.js','apps/3d-lattice-tiler/v2/search.js'])sources[path]=createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex');
- const protocol={version:VERSION,pointModel:args.model??'catalogue',commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sources,catalog:args.catalog??'app',timeMs,pairNodes,radius,mirrors,nodes:10000,seed:1,cold:true,sequential:true,scope:'Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct.'};
+ const protocol={version:VERSION,pointModel:args.model??'catalogue',commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sources,catalog:args.catalog??'app',timeMs,pairNodes,radius,mirrors,markingExtent:Number(args.extent??1),nodes:Number(args.nodes??10000),seeds:(args.seeds??'1').split(',').map(Number),modes:(args.modes??'free,gcts').split(','),cold:true,sequential:true,laneOrder:'rotated across seeds',scope:'Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct.'};
+ if(!protocol.seeds.length||protocol.seeds.some(s=>!Number.isSafeInteger(s)||s<1)||protocol.modes.some(m=>!['free','gcts','rl','both'].includes(m))||!Number.isSafeInteger(protocol.nodes)||protocol.nodes<1||![0,1].includes(protocol.markingExtent))throw Error('Invalid seed, mode, node budget, or extent');
  const rows=[];
- for(const tile of chosen)for(const mode of ['free','gcts']){
-  const config={tile:tile.id,custom:tile.custom,pointModel:args.model,mode,timeMs,pairNodes,radius,mirrors,nodes:protocol.nodes,seed:protocol.seed};
+ for(const tile of chosen)for(const [seedIndex,seed] of protocol.seeds.entries())for(const mode of protocol.modes.slice(seedIndex%protocol.modes.length).concat(protocol.modes.slice(0,seedIndex%protocol.modes.length))){
+  const config={tile:tile.id,custom:tile.custom,pointModel:args.model,mode,timeMs,pairNodes,radius,mirrors,markingExtent:protocol.markingExtent,nodes:protocol.nodes,seed};
   const started=performance.now();let progress=null;
   const reply=await new Promise(resolve=>{
    const worker=new Worker(new URL(import.meta.url),{workerData:config,resourceLimits:{maxOldGenerationSizeMb:1024}});
@@ -74,10 +75,10 @@ if(!isMainThread){
   });
   const result=reply.last,marking=result?.marking;
   const pairOutcomes={};for(const e of marking?.evidence??[]){const k=e.reason??e.status;pairOutcomes[k]=(pairOutcomes[k]??0)+1;}
-  const row={tile:tile.id,name:tile.name,mode,result:result?.result??result?.kind??reply.type,reason:result?.reason??result?.message??reply.message??null,elapsedMs:performance.now()-started,model:result?.model?{domain:result.model.domain,placementDomain:result.model.placementDomain??null,orientations:result.model.orientations.length,points:result.model.orientations.reduce((n,o)=>n+o.cells.length,0),capacity:result.model.capacity}:null,verification:result?.verification??null,stats:result?.stats??null,learning:marking?{complete:marking.complete,accepted:marking.accepted,reason:marking.reason,pairs:marking.pairs??0,counts:marking.counts??{},pairOutcomes,positivePassed:marking.positivePassed??0,negativeBlocked:marking.negativeBlocked??0,points:marking.points??0,values:marking.values??0,elapsedMs:marking.elapsedMs}:reply.progress};
+  const row={tile:tile.id,name:tile.name,seed,mode,result:result?.result??result?.kind??reply.type,reason:result?.reason??result?.message??reply.message??null,elapsedMs:performance.now()-started,model:result?.model?{domain:result.model.domain,placementDomain:result.model.placementDomain??null,orientations:result.model.orientations.length,points:result.model.orientations.reduce((n,o)=>n+o.cells.length,0),capacity:result.model.capacity}:null,verification:result?.verification??null,stats:result?.stats??null,learning:marking?{complete:marking.complete,accepted:marking.accepted,reason:marking.reason,pairs:marking.pairs??0,counts:marking.counts??{},pairOutcomes,positivePassed:marking.positivePassed??0,negativeBlocked:marking.negativeBlocked??0,points:marking.points??0,values:marking.values??0,elapsedMs:marking.elapsedMs}:reply.progress};
   if(result?.voxelVerification)row.voxelVerification=result.voxelVerification;
   rows.push(row);
-  await writeFile(`${output}/${tile.id}-${mode}.json.gz`,gzipSync(JSON.stringify({config,...reply})));
+  await writeFile(`${output}/${tile.id}-${seed}-${mode}.json.gz`,gzipSync(JSON.stringify({config,...reply})));
   await writeFile(`${output}/summary.json`,JSON.stringify({protocol,rows},null,2));
   console.log(JSON.stringify(row));
  }

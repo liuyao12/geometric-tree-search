@@ -19,6 +19,10 @@ The [v2.3.0 live catalogue](3d-research-catalogue.md) now exposes all fourteen
 polycube records directly, using the center-and-corner model in v2. Its 54-entry
 selector and five-case research suite are distinct from the historical sweep below.
 
+**Larger-window follow-up:** the [curated slab demonstrations](3d-gcts-demonstrations.md)
+use fresh tile-support-only markings and longer comparisons. The small-window
+measurements below remain historical; they do not describe those new presets.
+
 ## Purpose and scope
 
 This September 21, 2026 experiment tests the new pair-corona learner against

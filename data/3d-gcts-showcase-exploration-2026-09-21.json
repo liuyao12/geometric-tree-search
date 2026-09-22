@@ -1,0 +1,4805 @@
+{
+  "runs": [
+    {
+      "run": "r3",
+      "protocol": {
+        "version": "2.3.1",
+        "pointModel": "catalogue",
+        "commit": "b55a56f9de899926335bcd32c87b98d9317c1b8f",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "6b75e78adb00832f9cd95457651b1c769af6c9bdae3aa2c20e44a52aa952ef8d",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+          "apps/3d-lattice-tiler/marking-learning.js": "621b6d54ea23b6e9b2e291c5bb8674d14c766e1ac5d0ea603a3f82862043b6b1",
+          "apps/3d-lattice-tiler/v2/experiment.js": "440958db8faaa51a97416643baa550404fd5a8e9f4f6de95adb568ff91328178",
+          "apps/3d-lattice-tiler/v2/model.js": "e2f21aa8377eb6dd1912ac8b7e08276eaff1b19010985f650fb9bceb3ca166ec",
+          "apps/3d-lattice-tiler/v2/slab.js": "03f402dab25a933dd140bb81f3578a0b3a55a781f4c95449636413d7ee7bfb42",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "app",
+        "timeMs": 60000,
+        "pairNodes": 500,
+        "radius": 3,
+        "mirrors": true,
+        "nodes": 1000000,
+        "seeds": [
+          1
+        ],
+        "modes": [
+          "free",
+          "gcts",
+          "rl",
+          "both"
+        ],
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 224.06358400000002,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 19,
+            "accepted": 19,
+            "forced": 6,
+            "branches": 9,
+            "backtracks": 4,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 16.80458299999998,
+            "peakTrail": 1269,
+            "markingCuts": 0,
+            "elapsedMs": 23.312457999999992,
+            "candidates": 924,
+            "edges": 9768,
+            "points": 74,
+            "clusters": 0,
+            "memoryEstimateBytes": 1069560,
+            "preparationMs": 2.6144169999999463,
+            "totalMs": 25.92687499999994
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5229.4039999999995,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1926,
+            "accepted": 1926,
+            "forced": 767,
+            "branches": 425,
+            "backtracks": 1912,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 20.457916999999725,
+            "peakTrail": 1638,
+            "markingCuts": 133461,
+            "elapsedMs": 470.4520419999999,
+            "candidates": 924,
+            "edges": 9768,
+            "points": 74,
+            "clusters": 0,
+            "memoryEstimateBytes": 2113296,
+            "preparationMs": 4572.074,
+            "totalMs": 5042.5260419999995
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 336,
+            "values": 336,
+            "elapsedMs": 4569.302667
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 222.59870800000044,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 17,
+            "accepted": 17,
+            "forced": 6,
+            "branches": 9,
+            "backtracks": 2,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 33,
+            "clusterValidated": 7,
+            "clusterUses": 4,
+            "learningMs": 9.867709999998624,
+            "graphMs": 16.915874999999687,
+            "peakTrail": 1269,
+            "markingCuts": 0,
+            "elapsedMs": 31.651084000000083,
+            "candidates": 924,
+            "edges": 9768,
+            "points": 74,
+            "clusters": 7,
+            "memoryEstimateBytes": 1069560,
+            "preparationMs": 2.552208000000064,
+            "totalMs": 34.20329200000015
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5712.4334579999995,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1917,
+            "accepted": 1917,
+            "forced": 763,
+            "branches": 424,
+            "backtracks": 1903,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 1081,
+            "clusterValidated": 215,
+            "clusterUses": 136,
+            "learningMs": 462.8722050000233,
+            "graphMs": 31.099459000000934,
+            "peakTrail": 1638,
+            "markingCuts": 275357,
+            "elapsedMs": 923.8817500000005,
+            "candidates": 924,
+            "edges": 9768,
+            "points": 74,
+            "clusters": 143,
+            "memoryEstimateBytes": 2113296,
+            "preparationMs": 4600.291917,
+            "totalMs": 5524.173667
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 336,
+            "values": 336,
+            "elapsedMs": 4596.806333
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 225.3824169999989,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 61,
+            "accepted": 61,
+            "forced": 3,
+            "branches": 19,
+            "backtracks": 47,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 21.14679199999955,
+            "peakTrail": 1362,
+            "markingCuts": 0,
+            "elapsedMs": 34.23975000000064,
+            "candidates": 984,
+            "edges": 11544,
+            "points": 74,
+            "clusters": 0,
+            "memoryEstimateBytes": 1305840,
+            "preparationMs": 3.206207999999606,
+            "totalMs": 37.445958000000246
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5960.253250000002,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 102,
+            "accepted": 102,
+            "forced": 47,
+            "branches": 22,
+            "backtracks": 90,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 24.271082999999635,
+            "peakTrail": 1656,
+            "markingCuts": 7065,
+            "elapsedMs": 59.614042000001064,
+            "candidates": 984,
+            "edges": 11544,
+            "points": 74,
+            "clusters": 0,
+            "memoryEstimateBytes": 2454336,
+            "preparationMs": 5710.762999999999,
+            "totalMs": 5770.377042
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 348,
+            "values": 348,
+            "elapsedMs": 5707.7787499999995
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 234.37270799999897,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 58,
+            "accepted": 58,
+            "forced": 3,
+            "branches": 19,
+            "backtracks": 44,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 60,
+            "clusterValidated": 4,
+            "clusterUses": 4,
+            "learningMs": 13.793663999982527,
+            "graphMs": 21.86041699999987,
+            "peakTrail": 1362,
+            "markingCuts": 0,
+            "elapsedMs": 44.26337499999863,
+            "candidates": 984,
+            "edges": 11544,
+            "points": 74,
+            "clusters": 3,
+            "memoryEstimateBytes": 1305840,
+            "preparationMs": 2.7076250000027358,
+            "totalMs": 46.97100000000137
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5980.671999999999,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 74,
+            "required": 74,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 120,
+            "accepted": 120,
+            "forced": 55,
+            "branches": 26,
+            "backtracks": 108,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 69,
+            "clusterValidated": 17,
+            "clusterUses": 13,
+            "learningMs": 49.14937400000781,
+            "graphMs": 23.731041999999434,
+            "peakTrail": 1656,
+            "markingCuts": 19682,
+            "elapsedMs": 112.72262500000215,
+            "candidates": 984,
+            "edges": 11544,
+            "points": 74,
+            "clusters": 15,
+            "memoryEstimateBytes": 2454336,
+            "preparationMs": 5675.792624999998,
+            "totalMs": 5788.51525
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 348,
+            "values": 348,
+            "elapsedMs": 5672.624500000002
+          }
+        }
+      ]
+    },
+    {
+      "run": "r8",
+      "protocol": {
+        "version": "2.3.1",
+        "pointModel": "catalogue",
+        "commit": "b55a56f9de899926335bcd32c87b98d9317c1b8f",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "6b75e78adb00832f9cd95457651b1c769af6c9bdae3aa2c20e44a52aa952ef8d",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+          "apps/3d-lattice-tiler/marking-learning.js": "621b6d54ea23b6e9b2e291c5bb8674d14c766e1ac5d0ea603a3f82862043b6b1",
+          "apps/3d-lattice-tiler/v2/experiment.js": "440958db8faaa51a97416643baa550404fd5a8e9f4f6de95adb568ff91328178",
+          "apps/3d-lattice-tiler/v2/model.js": "e2f21aa8377eb6dd1912ac8b7e08276eaff1b19010985f650fb9bceb3ca166ec",
+          "apps/3d-lattice-tiler/v2/slab.js": "6a83625b9d702a8f4c73ffa9b408f94ccf2ed128421e5fd2e57788681fca58a6",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "app",
+        "timeMs": 60000,
+        "pairNodes": 500,
+        "radius": 8,
+        "mirrors": true,
+        "nodes": 1000000,
+        "seeds": [
+          1
+        ],
+        "modes": [
+          "free",
+          "gcts",
+          "rl",
+          "both"
+        ],
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 483.03925000000004,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1285,
+            "accepted": 1285,
+            "forced": 141,
+            "branches": 279,
+            "backtracks": 1229,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 78.07862500000005,
+            "peakTrail": 4972,
+            "markingCuts": 0,
+            "elapsedMs": 283.428791,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 4408992,
+            "preparationMs": 2.6753340000000208,
+            "totalMs": 286.104125
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 8026.818916,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 56,
+            "required": 434,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 8534,
+            "accepted": 8534,
+            "forced": 3170,
+            "branches": 1958,
+            "backtracks": 8534,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 84.60725000000002,
+            "peakTrail": 2199,
+            "markingCuts": 1153854,
+            "elapsedMs": 3217.1676670000006,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 8468520,
+            "preparationMs": 4619.056041,
+            "totalMs": 7836.223708
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 336,
+            "values": 336,
+            "elapsedMs": 4615.564083
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 333.9805830000005,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 114,
+            "accepted": 114,
+            "forced": 22,
+            "branches": 46,
+            "backtracks": 56,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 154,
+            "clusterValidated": 26,
+            "clusterUses": 20,
+            "learningMs": 35.501663000002736,
+            "graphMs": 76.89854200000082,
+            "peakTrail": 5018,
+            "markingCuts": 0,
+            "elapsedMs": 135.3870420000003,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 26,
+            "memoryEstimateBytes": 4410096,
+            "preparationMs": 2.889374999998836,
+            "totalMs": 138.27641699999913
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 11295.900290999998,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 56,
+            "required": 434,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 8534,
+            "accepted": 8534,
+            "forced": 3170,
+            "branches": 1958,
+            "backtracks": 8534,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 5050,
+            "clusterValidated": 807,
+            "clusterUses": 547,
+            "learningMs": 3212.576982999941,
+            "graphMs": 77.8353330000009,
+            "peakTrail": 2199,
+            "markingCuts": 2493461,
+            "elapsedMs": 6440.409625,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 372,
+            "memoryEstimateBytes": 8468520,
+            "preparationMs": 4663.082333,
+            "totalMs": 11103.491958
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 336,
+            "values": 336,
+            "elapsedMs": 4660.192875000001
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 389.4670410000035,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 426,
+            "accepted": 426,
+            "forced": 26,
+            "branches": 151,
+            "backtracks": 381,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 95.85699999999997,
+            "peakTrail": 5019,
+            "markingCuts": 0,
+            "elapsedMs": 190.13204199999745,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 5226888,
+            "preparationMs": 2.843332999997074,
+            "totalMs": 192.97537499999453
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 8722.138124999998,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 66,
+            "required": 434,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 5387,
+            "accepted": 5387,
+            "forced": 1579,
+            "branches": 1325,
+            "backtracks": 5387,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 97.16883299999972,
+            "peakTrail": 2364,
+            "markingCuts": 979524,
+            "elapsedMs": 2772.7373750000006,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 9575808,
+            "preparationMs": 5754.35425,
+            "totalMs": 8527.091625000001
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 348,
+            "values": 348,
+            "elapsedMs": 5751.310250000002
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 431.00766600000134,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 288,
+            "accepted": 288,
+            "forced": 34,
+            "branches": 113,
+            "backtracks": 243,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 302,
+            "clusterValidated": 58,
+            "clusterUses": 49,
+            "learningMs": 79.18216500000926,
+            "graphMs": 95.93833299999824,
+            "peakTrail": 5019,
+            "markingCuts": 0,
+            "elapsedMs": 232.62658299999748,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 37,
+            "memoryEstimateBytes": 5226888,
+            "preparationMs": 2.820208000001003,
+            "totalMs": 235.44679099999848
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "exhausted_marked",
+          "reason": null,
+          "elapsedMs": 11397.179167000002,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 66,
+            "required": 434,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 5387,
+            "accepted": 5387,
+            "forced": 1579,
+            "branches": 1325,
+            "backtracks": 5387,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 3432,
+            "clusterValidated": 279,
+            "clusterUses": 222,
+            "learningMs": 2660.3325390000755,
+            "graphMs": 95.9406669999953,
+            "peakTrail": 2364,
+            "markingCuts": 2061011,
+            "elapsedMs": 5430.030707999998,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 143,
+            "memoryEstimateBytes": 9575808,
+            "preparationMs": 5774.416208000002,
+            "totalMs": 11204.446916
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 348,
+            "values": 348,
+            "elapsedMs": 5771.365791
+          }
+        }
+      ]
+    },
+    {
+      "run": "support0",
+      "protocol": {
+        "version": "2.3.1",
+        "pointModel": "catalogue",
+        "commit": "b55a56f9de899926335bcd32c87b98d9317c1b8f",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "1ad684cecbb8b52e5dcfebf473b7a6607f4daf93b56c8ad711f9cacbaa6cc9d8",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+          "apps/3d-lattice-tiler/marking-learning.js": "621b6d54ea23b6e9b2e291c5bb8674d14c766e1ac5d0ea603a3f82862043b6b1",
+          "apps/3d-lattice-tiler/v2/experiment.js": "440958db8faaa51a97416643baa550404fd5a8e9f4f6de95adb568ff91328178",
+          "apps/3d-lattice-tiler/v2/model.js": "e2f21aa8377eb6dd1912ac8b7e08276eaff1b19010985f650fb9bceb3ca166ec",
+          "apps/3d-lattice-tiler/v2/slab.js": "6a83625b9d702a8f4c73ffa9b408f94ccf2ed128421e5fd2e57788681fca58a6",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "app",
+        "timeMs": 60000,
+        "pairNodes": 500,
+        "radius": 8,
+        "mirrors": true,
+        "markingExtent": 0,
+        "nodes": 1000000,
+        "seeds": [
+          1
+        ],
+        "modes": [
+          "free",
+          "gcts",
+          "both"
+        ],
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 488.175666,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1285,
+            "accepted": 1285,
+            "forced": 141,
+            "branches": 279,
+            "backtracks": 1229,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 76.46125,
+            "peakTrail": 4972,
+            "markingCuts": 0,
+            "elapsedMs": 283.33587500000004,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 4408992,
+            "preparationMs": 2.712500000000034,
+            "totalMs": 286.0483750000001
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3057.4925,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 197,
+            "accepted": 197,
+            "forced": 95,
+            "branches": 59,
+            "backtracks": 141,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 72.18683299999975,
+            "peakTrail": 6036,
+            "markingCuts": 8791,
+            "elapsedMs": 136.4990829999997,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 7234368,
+            "preparationMs": 2722.443292,
+            "totalMs": 2858.9423749999996
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2719.5982089999998
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3040.2775,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 98,
+            "accepted": 98,
+            "forced": 54,
+            "branches": 31,
+            "backtracks": 44,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 66,
+            "clusterValidated": 40,
+            "clusterUses": 23,
+            "learningMs": 40.49099499999738,
+            "graphMs": 73.5989580000005,
+            "peakTrail": 5952,
+            "markingCuts": 11524,
+            "elapsedMs": 144.15350000000035,
+            "candidates": 3684,
+            "edges": 57288,
+            "points": 434,
+            "clusters": 39,
+            "memoryEstimateBytes": 7232352,
+            "preparationMs": 2699.060125,
+            "totalMs": 2843.2136250000003
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2695.453667
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 390.5625,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 426,
+            "accepted": 426,
+            "forced": 26,
+            "branches": 151,
+            "backtracks": 381,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 93.86687499999971,
+            "peakTrail": 5019,
+            "markingCuts": 0,
+            "elapsedMs": 190.31145899999956,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 5226888,
+            "preparationMs": 2.976166000000376,
+            "totalMs": 193.28762499999993
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3706.2021250000007,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 53,
+            "accepted": 53,
+            "forced": 27,
+            "branches": 20,
+            "backtracks": 7,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 84.60895800000071,
+            "peakTrail": 5828,
+            "markingCuts": 2317,
+            "elapsedMs": 114.12729199999922,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 0,
+            "memoryEstimateBytes": 7833024,
+            "preparationMs": 3390.2005419999996,
+            "totalMs": 3504.327833999999
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3387.1524170000002
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3723.012917,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 434,
+            "required": 434,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 46,
+            "accepted": 46,
+            "forced": 29,
+            "branches": 17,
+            "backtracks": 0,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 42,
+            "clusterValidated": 32,
+            "clusterUses": 17,
+            "learningMs": 33.0457940000033,
+            "graphMs": 89.68833300000006,
+            "peakTrail": 5828,
+            "markingCuts": 7496,
+            "elapsedMs": 148.82908299999872,
+            "candidates": 3804,
+            "edges": 67704,
+            "points": 434,
+            "clusters": 32,
+            "memoryEstimateBytes": 7833024,
+            "preparationMs": 3374.9145420000004,
+            "totalMs": 3523.743624999999
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3371.8797090000007
+          }
+        }
+      ]
+    },
+    {
+      "run": "r12",
+      "protocol": {
+        "version": "2.3.1",
+        "pointModel": "catalogue",
+        "commit": "b55a56f9de899926335bcd32c87b98d9317c1b8f",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "1ad684cecbb8b52e5dcfebf473b7a6607f4daf93b56c8ad711f9cacbaa6cc9d8",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+          "apps/3d-lattice-tiler/marking-learning.js": "621b6d54ea23b6e9b2e291c5bb8674d14c766e1ac5d0ea603a3f82862043b6b1",
+          "apps/3d-lattice-tiler/v2/experiment.js": "440958db8faaa51a97416643baa550404fd5a8e9f4f6de95adb568ff91328178",
+          "apps/3d-lattice-tiler/v2/model.js": "e2f21aa8377eb6dd1912ac8b7e08276eaff1b19010985f650fb9bceb3ca166ec",
+          "apps/3d-lattice-tiler/v2/slab.js": "6a83625b9d702a8f4c73ffa9b408f94ccf2ed128421e5fd2e57788681fca58a6",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "app",
+        "timeMs": 60000,
+        "pairNodes": 500,
+        "radius": 12,
+        "mirrors": true,
+        "markingExtent": 0,
+        "nodes": 1000000,
+        "seeds": [
+          1,
+          2,
+          3
+        ],
+        "modes": [
+          "free",
+          "gcts",
+          "rl",
+          "both"
+        ],
+        "cold": true,
+        "sequential": true,
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 1833.216625,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 7337,
+            "accepted": 7337,
+            "forced": 833,
+            "branches": 1620,
+            "backtracks": 7229,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 156.76841600000006,
+            "peakTrail": 9672,
+            "markingCuts": 0,
+            "elapsedMs": 1617.6865830000002,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 8698176,
+            "preparationMs": 3.106749999999977,
+            "totalMs": 1620.793333
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3181.5859579999997,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 224,
+            "accepted": 224,
+            "forced": 118,
+            "branches": 68,
+            "backtracks": 115,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 136.31362500000068,
+            "peakTrail": 11766,
+            "markingCuts": 9381,
+            "elapsedMs": 233.37425000000076,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 14211312,
+            "preparationMs": 2737.333833,
+            "totalMs": 2970.708083000001
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2734.166416
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 867.8130419999998,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1389,
+            "accepted": 1389,
+            "forced": 226,
+            "branches": 345,
+            "backtracks": 1279,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 1114,
+            "clusterValidated": 95,
+            "clusterUses": 74,
+            "learningMs": 210.09546800000226,
+            "graphMs": 156.29929100000027,
+            "peakTrail": 9718,
+            "markingCuts": 0,
+            "elapsedMs": 658.4379159999999,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 54,
+            "memoryEstimateBytes": 8699280,
+            "preparationMs": 2.901499999999942,
+            "totalMs": 661.3394159999998
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3258.1916250000004,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 220,
+            "accepted": 220,
+            "forced": 137,
+            "branches": 56,
+            "backtracks": 107,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 120,
+            "clusterValidated": 67,
+            "clusterUses": 41,
+            "learningMs": 60.60145100000045,
+            "graphMs": 139.75829199999862,
+            "peakTrail": 11934,
+            "markingCuts": 19139,
+            "elapsedMs": 283.2019999999993,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 62,
+            "memoryEstimateBytes": 14215344,
+            "preparationMs": 2761.0545840000004,
+            "totalMs": 3044.2565839999997
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2757.8818330000004
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4504.087334,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 21760,
+            "accepted": 21760,
+            "forced": 2135,
+            "branches": 4975,
+            "backtracks": 21647,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 152.04229099999975,
+            "peakTrail": 9787,
+            "markingCuts": 0,
+            "elapsedMs": 4289.9049159999995,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 8700936,
+            "preparationMs": 2.9766249999993306,
+            "totalMs": 4292.881540999999
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3235.4035829999993,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 408,
+            "accepted": 408,
+            "forced": 231,
+            "branches": 105,
+            "backtracks": 295,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 133.13624999999956,
+            "peakTrail": 11934,
+            "markingCuts": 14719,
+            "elapsedMs": 267.20308300000033,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 14215344,
+            "preparationMs": 2752.1629170000015,
+            "totalMs": 3019.366000000002
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2748.924250000002
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4366.859291000001,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 13471,
+            "accepted": 13471,
+            "forced": 1401,
+            "branches": 2957,
+            "backtracks": 13354,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 9919,
+            "clusterValidated": 607,
+            "clusterUses": 563,
+            "learningMs": 1504.5271920000669,
+            "graphMs": 153.66849999999977,
+            "peakTrail": 9879,
+            "markingCuts": 0,
+            "elapsedMs": 4150.922458999998,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 90,
+            "memoryEstimateBytes": 8703144,
+            "preparationMs": 2.8658749999995052,
+            "totalMs": 4153.788333999997
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4008.328416999997,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 2054,
+            "accepted": 2054,
+            "forced": 1126,
+            "branches": 481,
+            "backtracks": 1942,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 969,
+            "clusterValidated": 420,
+            "clusterUses": 265,
+            "learningMs": 341.0704240000523,
+            "graphMs": 134.6156669999982,
+            "peakTrail": 11892,
+            "markingCuts": 146988,
+            "elapsedMs": 998.0306249999994,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 93,
+            "memoryEstimateBytes": 14214336,
+            "preparationMs": 2794.5610419999975,
+            "totalMs": 3792.591666999997
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2791.6616250000006
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 41984.98199999999,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 230147,
+            "accepted": 230147,
+            "forced": 26165,
+            "branches": 49021,
+            "backtracks": 230035,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 154.0037080000002,
+            "peakTrail": 9764,
+            "markingCuts": 0,
+            "elapsedMs": 41768.769333000004,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 8700384,
+            "preparationMs": 2.9356670000015583,
+            "totalMs": 41771.705
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3363.68250000001,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 677,
+            "accepted": 677,
+            "forced": 398,
+            "branches": 153,
+            "backtracks": 565,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 149.11558300000615,
+            "peakTrail": 11892,
+            "markingCuts": 21865,
+            "elapsedMs": 349.71804199999315,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 14214336,
+            "preparationMs": 2798.116791999986,
+            "totalMs": 3147.8348339999793
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2794.4442500000005
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "rl",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 60212.503625,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 902,
+            "required": 938,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 205773,
+            "accepted": 205773,
+            "forced": 25263,
+            "branches": 44521,
+            "backtracks": 205773,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 151454,
+            "clusterValidated": 9972,
+            "clusterUses": 8636,
+            "learningMs": 22633.150222998927,
+            "graphMs": 154.09799999999814,
+            "peakTrail": 9624,
+            "markingCuts": 0,
+            "elapsedMs": 60013.08716699999,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 196,
+            "memoryEstimateBytes": 8697024,
+            "preparationMs": 2.8345830000034766,
+            "totalMs": 60015.921749999994
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3492.0968749999884,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 695,
+            "accepted": 695,
+            "forced": 414,
+            "branches": 156,
+            "backtracks": 582,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 320,
+            "clusterValidated": 146,
+            "clusterUses": 96,
+            "learningMs": 119.3317120001011,
+            "graphMs": 137.98154200002318,
+            "peakTrail": 11934,
+            "markingCuts": 46459,
+            "elapsedMs": 450.9466670000111,
+            "candidates": 7188,
+            "edges": 123816,
+            "points": 938,
+            "clusters": 73,
+            "memoryEstimateBytes": 14215344,
+            "preparationMs": 2821.9799999999814,
+            "totalMs": 3272.9266669999924
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2818.7616250000137
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3911.487415999989,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 15610,
+            "accepted": 15610,
+            "forced": 1050,
+            "branches": 3796,
+            "backtracks": 15516,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 195.14408299999195,
+            "peakTrail": 9921,
+            "markingCuts": 0,
+            "elapsedMs": 3692.5394999999844,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 10235928,
+            "preparationMs": 2.838499999983469,
+            "totalMs": 3695.377999999968
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4069.6711249999935,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 512,
+            "accepted": 512,
+            "forced": 300,
+            "branches": 110,
+            "backtracks": 420,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 155.00679200000013,
+            "peakTrail": 11404,
+            "markingCuts": 22658,
+            "elapsedMs": 344.17004199998337,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 15273600,
+            "preparationMs": 3511.596208999981,
+            "totalMs": 3855.7662509999645
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3508.4727499999863
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 612.5455409999995,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 269,
+            "accepted": 269,
+            "forced": 29,
+            "branches": 122,
+            "backtracks": 175,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 343,
+            "clusterValidated": 54,
+            "clusterUses": 45,
+            "learningMs": 108.72558800003026,
+            "graphMs": 197.4114169999957,
+            "peakTrail": 9894,
+            "markingCuts": 0,
+            "elapsedMs": 396.6007919999829,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 50,
+            "memoryEstimateBytes": 10235280,
+            "preparationMs": 3.1357499999867287,
+            "totalMs": 399.73654199996963
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4300.693375000003,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 645,
+            "accepted": 645,
+            "forced": 389,
+            "branches": 143,
+            "backtracks": 551,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 294,
+            "clusterValidated": 168,
+            "clusterUses": 108,
+            "learningMs": 149.2213350001548,
+            "graphMs": 156.1132079999952,
+            "peakTrail": 11492,
+            "markingCuts": 45350,
+            "elapsedMs": 506.3159999999916,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 79,
+            "memoryEstimateBytes": 15275712,
+            "preparationMs": 3575.0647089999984,
+            "totalMs": 4081.38070899999
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3571.7805000000226
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5812.5187500000175,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 22690,
+            "accepted": 22690,
+            "forced": 1351,
+            "branches": 6893,
+            "backtracks": 22594,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 199.48454200002016,
+            "peakTrail": 9948,
+            "markingCuts": 0,
+            "elapsedMs": 5590.708500000008,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 10236576,
+            "preparationMs": 3.0219579999975394,
+            "totalMs": 5593.7304580000055
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3930.375666000007,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 207,
+            "accepted": 207,
+            "forced": 134,
+            "branches": 48,
+            "backtracks": 112,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 154.51604199997382,
+            "peakTrail": 11536,
+            "markingCuts": 9218,
+            "elapsedMs": 256.4724999999744,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 15276768,
+            "preparationMs": 3457.0589169999876,
+            "totalMs": 3713.531416999962
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3453.679124999995
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 8511.111166999995,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 17965,
+            "accepted": 17965,
+            "forced": 843,
+            "branches": 5540,
+            "backtracks": 17869,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 16541,
+            "clusterValidated": 1124,
+            "clusterUses": 993,
+            "learningMs": 3812.3653009983245,
+            "graphMs": 198.86758399999235,
+            "peakTrail": 9948,
+            "markingCuts": 0,
+            "elapsedMs": 8290.247624999989,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 155,
+            "memoryEstimateBytes": 10236576,
+            "preparationMs": 3.215374999999767,
+            "totalMs": 8293.462999999989
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3991.9288340000203,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 129,
+            "accepted": 129,
+            "forced": 79,
+            "branches": 37,
+            "backtracks": 39,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 84,
+            "clusterValidated": 55,
+            "clusterUses": 30,
+            "learningMs": 55.526205999893136,
+            "graphMs": 155.36216600000625,
+            "peakTrail": 11316,
+            "markingCuts": 15935,
+            "elapsedMs": 276.4087909999944,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 52,
+            "memoryEstimateBytes": 15271488,
+            "preparationMs": 3498.2277919999906,
+            "totalMs": 3774.636582999985
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3495.145916999987
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 2222.2250420000055,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 7054,
+            "accepted": 7054,
+            "forced": 484,
+            "branches": 2277,
+            "backtracks": 6962,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 200.62275000000955,
+            "peakTrail": 9840,
+            "markingCuts": 0,
+            "elapsedMs": 2006.112208000006,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 10233984,
+            "preparationMs": 2.8672919999808073,
+            "totalMs": 2008.9794999999867
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4034.150874999992,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 187,
+            "accepted": 187,
+            "forced": 131,
+            "branches": 40,
+            "backtracks": 95,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 161.96866700000828,
+            "peakTrail": 11404,
+            "markingCuts": 8922,
+            "elapsedMs": 252.6433749999851,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 0,
+            "memoryEstimateBytes": 15273600,
+            "preparationMs": 3565.8760840000177,
+            "totalMs": 3818.519459000003
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3562.4652499999793
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 11088.396707999986,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 23881,
+            "accepted": 23881,
+            "forced": 1800,
+            "branches": 7612,
+            "backtracks": 23789,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 20605,
+            "clusterValidated": 2225,
+            "clusterUses": 2005,
+            "learningMs": 4953.708752000413,
+            "graphMs": 197.85612499999115,
+            "peakTrail": 9840,
+            "markingCuts": 0,
+            "elapsedMs": 10870.824166999984,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 202,
+            "memoryEstimateBytes": 10233984,
+            "preparationMs": 2.940249999985099,
+            "totalMs": 10873.76441699997
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4022.1298330000136,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 938,
+            "required": 938,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 137,
+            "accepted": 137,
+            "forced": 84,
+            "branches": 43,
+            "backtracks": 47,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 91,
+            "clusterValidated": 65,
+            "clusterUses": 41,
+            "learningMs": 65.60475300002145,
+            "graphMs": 154.72245800000383,
+            "peakTrail": 11316,
+            "markingCuts": 16787,
+            "elapsedMs": 281.3357079999987,
+            "candidates": 7356,
+            "edges": 146328,
+            "points": 938,
+            "clusters": 56,
+            "memoryEstimateBytes": 15271488,
+            "preparationMs": 3528.828582999995,
+            "totalMs": 3810.1642909999937
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3525.444583000004
+          }
+        }
+      ]
+    },
+    {
+      "run": "r18",
+      "protocol": {
+        "version": "2.3.1",
+        "pointModel": "catalogue",
+        "commit": "b55a56f9de899926335bcd32c87b98d9317c1b8f",
+        "sources": {
+          "scripts/screen-3d-learned-catalog.mjs": "a33250bb25b4f680d4aca3a79ca89a4e74da1eb9c4421d71b99b93ed7896000b",
+          "apps/3d-lattice-tiler/voxel-point-model.js": "b61c2022ba0f8669a6efc37f22ad6cf7404683333bebb936a172918b1904fb2f",
+          "apps/3d-lattice-tiler/corona-graph.js": "9df101d036e52662eca7d275903a34f26261ae458e57b7dc64d6990e391a0ecd",
+          "apps/3d-lattice-tiler/marking-learning.js": "621b6d54ea23b6e9b2e291c5bb8674d14c766e1ac5d0ea603a3f82862043b6b1",
+          "apps/3d-lattice-tiler/v2/experiment.js": "440958db8faaa51a97416643baa550404fd5a8e9f4f6de95adb568ff91328178",
+          "apps/3d-lattice-tiler/v2/model.js": "e2f21aa8377eb6dd1912ac8b7e08276eaff1b19010985f650fb9bceb3ca166ec",
+          "apps/3d-lattice-tiler/v2/slab.js": "650fe331ed2a1f31ab09ecfc7d9b6f8017c7e7def64b909859cd8f4a8c23ee69",
+          "apps/3d-lattice-tiler/v2/search.js": "98b2cce76b01b6c070af3910e6851a266c616bc83dd1fc84cb6bc42812623c6d"
+        },
+        "catalog": "app",
+        "timeMs": 120000,
+        "pairNodes": 500,
+        "radius": 18,
+        "mirrors": true,
+        "markingExtent": 0,
+        "nodes": 1000000,
+        "seeds": [
+          1,
+          2,
+          3
+        ],
+        "modes": [
+          "free",
+          "gcts",
+          "rl",
+          "both"
+        ],
+        "cold": true,
+        "sequential": true,
+        "laneOrder": "rotated across seeds",
+        "scope": "Finite point windows; learned failures do not prove unmarked impossibility. Full 3D and slab models are distinct."
+      },
+      "rows": [
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120253.092584,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1806,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 369814,
+            "accepted": 369814,
+            "forced": 40121,
+            "branches": 82322,
+            "backtracks": 369814,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 334.193916,
+            "peakTrail": 18318,
+            "markingCuts": 0,
+            "elapsedMs": 120048.205458,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 17796816,
+            "preparationMs": 2.848874999999964,
+            "totalMs": 120051.054333
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3713.999499999991,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 653,
+            "accepted": 653,
+            "forced": 399,
+            "branches": 151,
+            "backtracks": 429,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 288.8007090000028,
+            "peakTrail": 24012,
+            "markingCuts": 28333,
+            "elapsedMs": 616.5662089999969,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 29032512,
+            "preparationMs": 2834.7559170000022,
+            "totalMs": 3451.322125999999
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2831.5240420000046
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120246.733917,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1534,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 237779,
+            "accepted": 237779,
+            "forced": 36889,
+            "branches": 56114,
+            "backtracks": 237779,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 178748,
+            "clusterValidated": 14640,
+            "clusterUses": 13398,
+            "learningMs": 39786.733374998454,
+            "graphMs": 324.0825840000034,
+            "peakTrail": 17294,
+            "markingCuts": 0,
+            "elapsedMs": 120042.75925000002,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 512,
+            "memoryEstimateBytes": 17772240,
+            "preparationMs": 3.242207999996026,
+            "totalMs": 120046.00145800001
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 8021.121416000009,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 8441,
+            "accepted": 8441,
+            "forced": 5513,
+            "branches": 1493,
+            "backtracks": 8217,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 2992,
+            "clusterValidated": 1564,
+            "clusterUses": 1057,
+            "learningMs": 1311.670419000904,
+            "graphMs": 283.4260420000064,
+            "peakTrail": 24012,
+            "markingCuts": 585221,
+            "elapsedMs": 4922.454457999993,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 171,
+            "memoryEstimateBytes": 29032512,
+            "preparationMs": 2832.7325420000125,
+            "totalMs": 7755.187000000005
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2829.239583000017
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 3789.439458000008,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 852,
+            "accepted": 852,
+            "forced": 488,
+            "branches": 206,
+            "backtracks": 621,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 286.2866249999788,
+            "peakTrail": 24306,
+            "markingCuts": 32715,
+            "elapsedMs": 686.1797079999815,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 29039568,
+            "preparationMs": 2840.6414159999986,
+            "totalMs": 3526.82112399998
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2837.5471249999828
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "rl",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120247.60858300002,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1688,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 258810,
+            "accepted": 258810,
+            "forced": 34014,
+            "branches": 58191,
+            "backtracks": 258810,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 190837,
+            "clusterValidated": 12504,
+            "clusterUses": 10998,
+            "learningMs": 38251.14796600625,
+            "graphMs": 332.538166000013,
+            "peakTrail": 16891,
+            "markingCuts": 0,
+            "elapsedMs": 120042.46645799998,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 322,
+            "memoryEstimateBytes": 17762568,
+            "preparationMs": 3.0186659999890253,
+            "totalMs": 120045.48512399997
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4828.557458000025,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 2466,
+            "accepted": 2466,
+            "forced": 1537,
+            "branches": 493,
+            "backtracks": 2237,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 1001,
+            "clusterValidated": 507,
+            "clusterUses": 361,
+            "learningMs": 425.3456230001757,
+            "graphMs": 292.3751250000205,
+            "peakTrail": 24222,
+            "markingCuts": 183376,
+            "elapsedMs": 1712.65625,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 131,
+            "memoryEstimateBytes": 29037552,
+            "preparationMs": 2848.972708000045,
+            "totalMs": 4561.628958000045
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2845.705292000028
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 2,
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120248.45308299997,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1944,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 384949,
+            "accepted": 384949,
+            "forced": 46515,
+            "branches": 82397,
+            "backtracks": 384949,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 324.5356669999892,
+            "peakTrail": 19297,
+            "markingCuts": 0,
+            "elapsedMs": 120045.35720899998,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 17820312,
+            "preparationMs": 3.0988329999963753,
+            "totalMs": 120048.45604199998
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "rl",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120255.84895799996,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1934,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 254079,
+            "accepted": 254079,
+            "forced": 31950,
+            "branches": 55674,
+            "backtracks": 254079,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 186280,
+            "clusterValidated": 12450,
+            "clusterUses": 10505,
+            "learningMs": 38917.886780978064,
+            "graphMs": 330.1618330000201,
+            "peakTrail": 19021,
+            "markingCuts": 0,
+            "elapsedMs": 120054.80395799997,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 104,
+            "memoryEstimateBytes": 17813688,
+            "preparationMs": 2.7623339999699965,
+            "totalMs": 120057.56629199994
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 15324.90966600005,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 21707,
+            "accepted": 21707,
+            "forced": 13553,
+            "branches": 4107,
+            "backtracks": 21481,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 8223,
+            "clusterValidated": 4188,
+            "clusterUses": 3174,
+            "learningMs": 3612.456495004124,
+            "graphMs": 284.2112920000218,
+            "peakTrail": 24096,
+            "markingCuts": 1700054,
+            "elapsedMs": 12206.147375000059,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 251,
+            "memoryEstimateBytes": 29034528,
+            "preparationMs": 2855.2329579999205,
+            "totalMs": 15061.38033299998
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2852.1591250000056
+          }
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120256.65758400003,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1934,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 367312,
+            "accepted": 367312,
+            "forced": 52938,
+            "branches": 78541,
+            "backtracks": 367312,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 329.21737500000745,
+            "peakTrail": 19021,
+            "markingCuts": 0,
+            "elapsedMs": 120053.44320800004,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 17813688,
+            "preparationMs": 3.3146249999990687,
+            "totalMs": 120056.75783300004
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_hat_prism",
+          "name": "Hat prism",
+          "seed": 3,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4759.642833000049,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 264,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 3240,
+            "accepted": 3240,
+            "forced": 2097,
+            "branches": 594,
+            "backtracks": 3011,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 284.45483300008345,
+            "peakTrail": 24222,
+            "markingCuts": 123066,
+            "elapsedMs": 1639.349583000061,
+            "candidates": 14604,
+            "edges": 271128,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 29037552,
+            "preparationMs": 2858.2959170000395,
+            "totalMs": 4497.645500000101
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 227,
+            "counts": {
+              "valid": 41,
+              "invalid": 186,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 186,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 186,
+            "points": 168,
+            "values": 228,
+            "elapsedMs": 2855.249833000009
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120223.771083,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1410,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 317045,
+            "accepted": 317045,
+            "forced": 18161,
+            "branches": 103058,
+            "backtracks": 317045,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 418.21649999998044,
+            "peakTrail": 14504,
+            "markingCuts": 0,
+            "elapsedMs": 120019.61937500001,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 20724288,
+            "preparationMs": 3.0056249999906868,
+            "totalMs": 120022.625
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4693.444000000018,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1037,
+            "accepted": 1037,
+            "forced": 714,
+            "branches": 183,
+            "backtracks": 849,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 319.0380829999922,
+            "peakTrail": 23116,
+            "markingCuts": 37294,
+            "elapsedMs": 866.033832999994,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 31024896,
+            "preparationMs": 3559.2900839999784,
+            "totalMs": 4425.323916999972
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3556.0117079999764
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "rl",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120250.17333300004,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1904,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 179373,
+            "accepted": 179373,
+            "forced": 16844,
+            "branches": 56074,
+            "backtracks": 179373,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 154966,
+            "clusterValidated": 16289,
+            "clusterUses": 14674,
+            "learningMs": 49796.66205700708,
+            "graphMs": 414.7121249999618,
+            "peakTrail": 19055,
+            "markingCuts": 0,
+            "elapsedMs": 120044.003792,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 459,
+            "memoryEstimateBytes": 20833512,
+            "preparationMs": 3.03166700003203,
+            "totalMs": 120047.03545900004
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 1,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5293.474500000011,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1531,
+            "accepted": 1531,
+            "forced": 882,
+            "branches": 344,
+            "backtracks": 1349,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 696,
+            "clusterValidated": 343,
+            "clusterUses": 221,
+            "learningMs": 409.2740490004653,
+            "graphMs": 313.3623330000555,
+            "peakTrail": 22852,
+            "markingCuts": 143907,
+            "elapsedMs": 1421.6215000000084,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 115,
+            "memoryEstimateBytes": 31018560,
+            "preparationMs": 3615.560167000047,
+            "totalMs": 5037.181667000055
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3612.090124999988
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 7141.060292000067,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 6736,
+            "accepted": 6736,
+            "forced": 4652,
+            "branches": 1061,
+            "backtracks": 6552,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 317.1387499999255,
+            "peakTrail": 22940,
+            "markingCuts": 288055,
+            "elapsedMs": 3346.9934999999823,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 31020672,
+            "preparationMs": 3527.0602920000674,
+            "totalMs": 6874.05379200005
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3523.481708000065
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 36252.29654199991,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 56007,
+            "accepted": 56007,
+            "forced": 5322,
+            "branches": 18349,
+            "backtracks": 55821,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 49508,
+            "clusterValidated": 4515,
+            "clusterUses": 4062,
+            "learningMs": 14836.080100995256,
+            "graphMs": 413.5816249999916,
+            "peakTrail": 19866,
+            "markingCuts": 0,
+            "elapsedMs": 35987.57333399996,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 301,
+            "memoryEstimateBytes": 20852976,
+            "preparationMs": 2.9518329999409616,
+            "totalMs": 35990.5251669999
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5073.5447499998845,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 1187,
+            "accepted": 1187,
+            "forced": 724,
+            "branches": 258,
+            "backtracks": 998,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 522,
+            "clusterValidated": 291,
+            "clusterUses": 174,
+            "learningMs": 301.3626630010549,
+            "graphMs": 330.76283300016075,
+            "peakTrail": 23160,
+            "markingCuts": 107562,
+            "elapsedMs": 1182.0509160000365,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 105,
+            "memoryEstimateBytes": 31025952,
+            "preparationMs": 3626.8473749998957,
+            "totalMs": 4808.898290999932
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3623.2945419999305
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 2,
+          "mode": "free",
+          "result": "unknown",
+          "reason": "time budget",
+          "elapsedMs": 120231.42637500004,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": false,
+            "covered": 1392,
+            "required": 2054,
+            "reason": "incomplete window"
+          },
+          "stats": {
+            "attempts": 316912,
+            "accepted": 316912,
+            "forced": 21245,
+            "branches": 100596,
+            "backtracks": 316912,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 413.18866700003855,
+            "peakTrail": 14459,
+            "markingCuts": 0,
+            "elapsedMs": 120026.20062499982,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 20723208,
+            "preparationMs": 3.063249999890104,
+            "totalMs": 120029.26387499971
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "rl",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 4275.205792000052,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 5428,
+            "accepted": 5428,
+            "forced": 644,
+            "branches": 1739,
+            "backtracks": 5237,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 4750,
+            "clusterValidated": 527,
+            "clusterUses": 447,
+            "learningMs": 1447.1379339906853,
+            "graphMs": 412.67908299993724,
+            "peakTrail": 20001,
+            "markingCuts": 0,
+            "elapsedMs": 4009.7246250000317,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 163,
+            "memoryEstimateBytes": 20856216,
+            "preparationMs": 3.0399589999578893,
+            "totalMs": 4012.7645839999896
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "both",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 9487.30224999995,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 8645,
+            "accepted": 8645,
+            "forced": 6018,
+            "branches": 1338,
+            "backtracks": 8462,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 2684,
+            "clusterValidated": 1496,
+            "clusterUses": 1162,
+            "learningMs": 1526.7438529951032,
+            "graphMs": 324.23708300013095,
+            "peakTrail": 22896,
+            "markingCuts": 734669,
+            "elapsedMs": 5671.9571660000365,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 143,
+            "memoryEstimateBytes": 31019616,
+            "preparationMs": 3558.854832999874,
+            "totalMs": 9230.81199899991
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3555.078709000023
+          }
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "free",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 2832.1664579999633,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 5655,
+            "accepted": 5655,
+            "forced": 557,
+            "branches": 1840,
+            "backtracks": 5474,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 414.07258300017565,
+            "peakTrail": 19731,
+            "markingCuts": 0,
+            "elapsedMs": 2580.0701670001727,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 20849736,
+            "preparationMs": 2.9704579999670386,
+            "totalMs": 2583.0406250001397
+          },
+          "learning": null
+        },
+        {
+          "tile": "a2_turtle_prism",
+          "name": "Turtle prism",
+          "seed": 3,
+          "mode": "gcts",
+          "result": "finite_exact",
+          "reason": null,
+          "elapsedMs": 5677.491249999963,
+          "model": {
+            "domain": "Two copies of the index-3 A\u2082 sublattice",
+            "placementDomain": {
+              "kind": "a2_slab",
+              "layerSums": [
+                0,
+                3
+              ],
+              "translationSum": 0,
+              "index3": true
+            },
+            "orientations": 12,
+            "points": 312,
+            "capacity": 48
+          },
+          "verification": {
+            "ok": true,
+            "covered": 2054,
+            "required": 2054,
+            "reason": "finite exact point window"
+          },
+          "stats": {
+            "attempts": 3411,
+            "accepted": 3411,
+            "forced": 1781,
+            "branches": 836,
+            "backtracks": 3226,
+            "capacityCuts": 0,
+            "lookaheadCuts": 0,
+            "probes": 0,
+            "clusterProposals": 0,
+            "clusterValidated": 0,
+            "clusterUses": 0,
+            "learningMs": 0,
+            "graphMs": 315.8019590000622,
+            "peakTrail": 22984,
+            "markingCuts": 176838,
+            "elapsedMs": 1867.8788749999367,
+            "candidates": 14844,
+            "edges": 320424,
+            "points": 2054,
+            "clusters": 0,
+            "memoryEstimateBytes": 31021728,
+            "preparationMs": 3546.268332999898,
+            "totalMs": 5414.147207999835
+          },
+          "learning": {
+            "complete": true,
+            "accepted": true,
+            "reason": null,
+            "pairs": 247,
+            "counts": {
+              "valid": 41,
+              "invalid": 206,
+              "unresolved": 0
+            },
+            "pairOutcomes": {
+              "invalid": 206,
+              "valid": 41
+            },
+            "positivePassed": 41,
+            "negativeBlocked": 206,
+            "points": 204,
+            "values": 204,
+            "elapsedMs": 3542.878707999829
+          }
+        }
+      ]
+    }
+  ]
+}

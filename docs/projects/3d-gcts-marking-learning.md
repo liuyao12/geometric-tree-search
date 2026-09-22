@@ -390,3 +390,21 @@ versions, plus a narrow-screen layout. The existing pair-inspection, continuatio
 and marking-overlay browser checks cover classifications, resumption, and actual
 selected marking values. These checks establish finite displayed searches, not
 infinite-extension certificates.
+
+
+## Larger-window demonstration support (v2.4)
+
+The [measured demonstration presets](3d-gcts-demonstrations.md) use extent 0:
+marking values are eligible only where the tile's positive t-support is present.
+This avoids the unsampled mark-only contacts that made the earlier extent-1
+Hat/Turtle fields exhaust larger windows despite perfect local classification.
+The support is explicit in the workbench and checkpoints retain their original
+extent. The complete pair acceptance gate and ordinary marking matcher are
+unchanged; each demonstration run still learns from scratch. Larger slab
+windows are independently replayed separately from the local pair scores.
+
+The default selector is curated using measured cold completion time across three
+seeds, including all learning costs. The full research catalogue and legacy
+explorer remain available separately; their unresolved cases are not presented
+as established speedup demonstrations. No markings are bundled in the preset or
+timing data. The conformance checks and scope are recorded with the measurements.

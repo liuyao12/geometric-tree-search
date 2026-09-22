@@ -7,7 +7,7 @@ const parity=p=>{let sign=1;for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)if(p[i]>p[
 export function prepareSlab(config,version){
   const tile=SLAB_TILES[config.tile],index3=tile!=='hexagon';
   const radius=config.radius??1;
-  if(!Number.isInteger(radius)||radius<1||radius>3)throw Error('Slab radius must be 1–3.');
+  if(!Number.isInteger(radius)||radius<1||radius>18)throw Error('Slab radius must be 1–18.');
   const rawOrientations=tileOrientations(tile,A2_TILE_LOOPS[tile]).filter(o=>config.mirrors||parity(o.symmetry.permutation)===1).map((o,index)=>{
     // The demo normalizes the first vertex to zero, then samples this coset.
     const support=[...o.occupancy.values()].filter(p=>!index3||onIndex3(p.point));
