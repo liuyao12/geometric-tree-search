@@ -255,6 +255,27 @@ constraints from the labels. Retry unresolved checks with declared budgets,
 keeping them unknown until resolved. Report cumulative training cost separately
 from the latest attempt. A continuation is not a cold comparison run.
 
+### 6.1 Extending an existing marking through corona consensus
+
+Given a known marking, enumerate all compatible k-coronas around a rooted tile,
+glue their placed marking sections, and intersect those partial sections. Assign
+a component only when every corona assigns the same value there; a missing value
+in any corona leaves it free. Transport the resulting common section with the
+original marking's symmetry action. Complete enumeration makes these assignments
+necessary for globally extendable tilings of the original **marked** model.
+It does not prove that the original marking is redundant for unmarked tilings.
+An unfinished enumeration yields only a hypothesis and must not be promoted.
+
+A finite corona may fail when every boundary tile is decorated with the new
+extension: that requires those boundary tiles to admit their own neighborhoods.
+Separate root-consensus verification, whole-patch marking agreement, and full
+frontier viability. Support reduction may preserve all pairwise conflicts, but
+must include mark-only contacts, not just positive t-support neighbors. Compare
+the same base search and ranking, report derivation separately from reuse, and
+measure total costs rather than assuming that a stronger marking is faster.
+See [the Hat/Turtle corona-consensus experiment](projects/a2-corona-consensus.md)
+for complete 2- and 3-corona enumerations, bounded benchmarks and limits.
+
 ## 7. RL proposes clusters
 
 The primary RL role is proposing, composing, and selecting clusters: finite
