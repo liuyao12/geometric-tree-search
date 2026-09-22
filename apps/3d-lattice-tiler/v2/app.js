@@ -1,4 +1,4 @@
-import {DEMONSTRATIONS,demonstrationConfig} from './demonstrations.js?v=2.4.0';
+import {DEMONSTRATIONS,demonstrationConfig} from './demonstrations.js?v=2.4.1';
 import {learningSearchView} from '../learning-search-view.js?v=20260921-search-inset';
 import {HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-search-inset';
 import {MarkingOverlay} from '../marking-overlay.js?v=20260921-search-inset';
@@ -8,11 +8,12 @@ import {remember3DMarking} from '../marking-storage.js?v=20260921-search-inset';
 import {MarkingPreview} from '../marking-preview.js?v=20260921-search-inset';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.4.0';
+import {catalog,MODES,VERSION} from './model.js?v=2.4.1';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 let markingOpen=true,sampleInspection=null;
 const learningPreview=new MarkingPreview(document.getElementById('markingLearning'),{compact:true,onInspect:frame=>{sampleInspection=frame;renderPatch(true);}});
+const markingContext=document.createElement('p');markingContext.className='marking-lane-context';learningPreview.host.querySelector('h3').after(markingContext);
 const learningStates={};
 const markingLibrary=new MarkingLibrary($('markingLibrary'),{learn:()=>runGcts(),use:entry=>runGcts(entry),resume:entry=>runGcts(null,entry)});
 let learningPaint=null;
@@ -70,8 +71,12 @@ function fitView(){const box=new THREE.Box3().setFromObject(geometryGroup);box.e
 new ResizeObserver(()=>{const r=$('canvas').getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe($('canvas'));
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
 function showLearning(){
- const state=learningStates[active];if(state){if(learningPreview.model!==state.model)learningPreview.reset(state.model);learningPreview.accept(state.event);}
+ const owner=learningStates[active]?active:learningStates.both?'both':learningStates.gcts?'gcts':null;
+ const state=learningStates[owner];if(state){if(learningPreview.model!==state.model)learningPreview.reset(state.model);learningPreview.accept(state.event);}
  const visible=!!state&&markingOpen;learningPreview.host.hidden=!visible;
+ learningPreview.host.dataset.markingLane=owner??'';learningPreview.host.dataset.reference=String(!!state&&owner!==active);
+ learningPreview.host.querySelector('h3').textContent=owner?`${MODES.find(m=>m.id===owner).name} marking`:'Point marking';
+ markingContext.textContent=owner&&owner!==active?`Reference only · ${MODES.find(m=>m.id===active).name} uses no marking.`:'';
  document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;
  $('showLearning').disabled=!state;$('showLearning').setAttribute('aria-pressed',String(visible));$('showTiling').setAttribute('aria-pressed',String(!sampleInspection));
 }
@@ -136,12 +141,12 @@ async function preview(){
   sampleInspection=null;markingOpen=true;
   markingLibrary.refresh(null);markingOverlay.set([]);document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);const demo=DEMONSTRATIONS.find(c=>c.tile===selected?.id);$('useDemonstration').hidden=!demo;$('demonstrationNote').textContent=demo?.summary??'Research case: no measured GCTS advantage is established.';$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.4.0',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.4.1',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.4.0',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.4.1',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);

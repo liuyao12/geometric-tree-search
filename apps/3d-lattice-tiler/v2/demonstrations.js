@@ -23,7 +23,7 @@ export const DEMONSTRATIONS=[
         ]
       }
     ],
-    "summary": "Measured preset: radius 18, reflections, tile-point marking. Cold GCTS completed all three seeds in 3.5\u20134.5s; at least 26.6\u00d7 faster than free-range under the 120s limit."
+    "summary": "Fixed-window preset: radius 18, reflections, tile-point marking. Cold GCTS completed all three seeds in 3.5\u20134.5s; at least 26.6\u00d7 faster than fixed-window free-range under the 120s limit."
   }
 ];
 export function demonstrationConfig(tile){

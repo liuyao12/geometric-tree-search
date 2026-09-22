@@ -1,4 +1,7 @@
-# Measured GCTS demonstrations
+# Measured GCTS fixed-window demonstrations
+
+These timings use the v2 fixed-window engine, not the article’s seed-based growth.
+See the [algorithm comparison and scope correction](3d-reference-growth-audit.md).
 
 The workbench's default selector is reserved for measured demonstration presets.
 The full research catalogue remains available through its separate link, and the
