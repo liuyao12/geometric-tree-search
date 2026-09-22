@@ -15,6 +15,10 @@ in the six successful historical-polycube point windows and introduced an
 explicit center-and-corner research model. The point results below keep their
 original scope; they must not be interpreted as geometric packing certificates.
 
+The [v2.3.0 live catalogue](3d-research-catalogue.md) now exposes all fourteen
+polycube records directly, using the center-and-corner model in v2. Its 54-entry
+selector and five-case research suite are distinct from the historical sweep below.
+
 ## Purpose and scope
 
 This September 21, 2026 experiment tests the new pair-corona learner against

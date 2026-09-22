@@ -1,11 +1,12 @@
-import {MarkingOverlay} from '../marking-overlay.js?v=20260921-vector-learning';
-import {placedMarkingPoints} from '../marking-display.js?v=20260921-vector-learning';
-import {MarkingLibrary} from '../marking-library.js?v=20260921-vector-learning';
-import {remember3DMarking} from '../marking-storage.js?v=20260921-vector-learning';
-import {MarkingPreview} from '../marking-preview.js?v=20260921-vector-learning';
+import {RESEARCH_SUITE_IDS,HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-catalogue';
+import {MarkingOverlay} from '../marking-overlay.js?v=20260921-catalogue';
+import {placedMarkingPoints} from '../marking-display.js?v=20260921-catalogue';
+import {MarkingLibrary} from '../marking-library.js?v=20260921-catalogue';
+import {remember3DMarking} from '../marking-storage.js?v=20260921-catalogue';
+import {MarkingPreview} from '../marking-preview.js?v=20260921-catalogue';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.2.9';
+import {catalog,MODES,VERSION} from './model.js?v=2.3.0';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 const learningPreview=new MarkingPreview(document.getElementById('markingLearning'));
@@ -16,6 +17,7 @@ function paintLearning(){if(learningPaint===null)learningPaint=requestAnimationF
 const labels={learning:'Learning markings',exhausted_marked:'Exhausted marked',finite_exact:'Verified window',unknown:'Unknown',exhausted_finite:'Exhausted finite',error:'Unavailable'};
 const fmt=n=>Number(n??0).toLocaleString(undefined,{maximumFractionDigits:0}),time=n=>n===undefined?'—':n<1000?`${Math.round(n)} ms`:`${(n/1000).toFixed(2)} s`;
 for(const group of [...new Set(cases.map(c=>c.group))]){const opt=document.createElement('optgroup');opt.label=group;for(const c of cases.filter(c=>c.group===group)){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;opt.append(o);}$('tile').append(opt);}
+const requestedTile=new URLSearchParams(location.search).get('tile');if(cases.some(c=>c.id===requestedTile))$('tile').value=requestedTile;
 for(const m of MODES){const b=document.createElement('button');b.className='lane';b.style.setProperty('--lane',m.color);b.id=`lane-${m.id}`;b.addEventListener('click',()=>{active=m.id;selectedView=results[active]?.result==='learning'?'learning':'tiling';refresh();renderPatch();showLearning();});$('lanes').append(b);}
 
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,.01,2000),renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
@@ -55,16 +57,17 @@ function showLearning(){const state=learningStates[active];if(state){if(learning
 $('showLearning').onclick=()=>{selectedView='learning';showLearning();};$('showTiling').onclick=()=>{selectedView='tiling';showLearning();};
 function renderPatch(fit=false){const r=results[active],model=models[active]??models.preview;if(!model)return;draw(model,r?.placements??[{oi:0,translation:[0,0,0]}],fit);$('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${labels[r.result]??'searching'}`:'Tile geometry';$('coverage').textContent=r?`${r.verification?.covered??r.covered??0} / ${model.required.length} required points complete`:'Amber points = required window';}
 function config(){return {tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(120,Number($('seconds').value)||10))*1000,nodes:10000,pairNodes:Math.max(1,Math.min(1000000,Math.floor(+$('pairBudget').value||500))),custom};}
-function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','radius','seconds','seed','pairBudget','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab;}
+function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','radius','seconds','seed','pairBudget','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels;}
 function syncModelUI(model){
   markingLibrary.refresh(model);
-  const slab=!!model.slab;
-  [...$('radius').options].forEach((o,i)=>{const r=i+1;o.textContent=slab?`Slab radius ${r} · ${2*(1+3*r*(r+1))} points`:`${2*r+1} × ${2*r+1} × ${2*r+1} · ${(2*r+1)**3} points`;});
-  $('domainBadge').textContent=slab?`Single slab · ${model.slab.sublatticeIndex===3?'index-3 A₂':'A₂'}`:'Exact point model · Z³';
-  $('targetNote').textContent=slab?'Both caps carry planar t-values. Cap interiors have t = 1 and leave the frontier immediately. Growth is lateral only.':'All required points must sum to 1. Tiles may extend beyond the window.';
-  $('probe').disabled=busy||slab;
+  const slab=!!model.slab,voxel=!!model.requiredVoxels;
+  [...$('radius').options].forEach((o,i)=>{const r=i+1;o.textContent=voxel?`Voxel radius ${r} · ${(2*r+1)**3+(2*r+2)**3} points`:slab?`Slab radius ${r} · ${2*(1+3*r*(r+1))} points`:`${2*r+1} × ${2*r+1} × ${2*r+1} · ${(2*r+1)**3} points`;});
+  $('domainBadge').textContent=voxel?'Voxel centers + corners · integer translations':slab?`Single slab · ${model.slab.sublatticeIndex===3?'index-3 A₂':'A₂'}`:'Exact point model · Z³';
+  $('targetNote').textContent=voxel?'Centers forbid voxel overlap. Corners must also fill completely, so tiles extend beyond the selected core. Evidence notes use proper rotations; reflected runs are a separate setting.':slab?'Both caps carry planar t-values. Cap interiors have t = 1 and leave the frontier immediately. Growth is lateral only.':'All required points must sum to 1. Tiles may extend beyond the window.';
+  $('probe').disabled=busy||slab||voxel;
+  if(voxel)$('probeResults').textContent='Recorded voxel-period results are linked above. The legacy point-model probes do not apply to this model.';
   if(slab)$('probeResults').textContent='The 3D probes apply to the historical prism model, available in the original explorer. They do not test this single slab.';
-  else if($('probeResults').textContent.startsWith('The 3D probes'))$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';
+  else if(!voxel&&($('probeResults').textContent.startsWith('The 3D probes')||$('probeResults').textContent.startsWith('Recorded voxel')))$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';
 }
 function refresh(){
   for(const m of MODES){const r=results[m.id],s=r?.stats,b=$(`lane-${m.id}`);b.classList.toggle('selected',active===m.id);b.setAttribute('aria-pressed',String(active===m.id));b.innerHTML=`<div class="lane-name">${m.name}</div><div class="lane-value">${time(s?.totalMs)}</div><div class="lane-state">${r?labels[r.result]??'Searching…':'Ready to run'}</div><div class="lane-detail"><span>${fmt(s?.branches)} branches</span><span>${fmt(s?.forced)} forced</span></div>`;}
@@ -87,15 +90,21 @@ function drawChart(){
   for(const m of MODES){const pts=series[m.id]??[];if(pts.length)s+=`<polyline points="${pts.map(([t,c])=>`${left+t/maxT*750},${bottom-c/target*90}`).join(' ')}" fill="none" stroke="${m.color}" stroke-width="2"/>`;}
   $('chart').innerHTML=s+'</svg>';
 }
+function describeTile(selected){
+ $('tileName').textContent=custom?.name??selected?.name??'Custom system';
+ $('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;
+ const link=$('tileEvidence');link.hidden=!!custom||!selected?.evidence;
+ if(!link.hidden)link.href=new URL('../../'+selected.evidence,document.baseURI).href;
+}
 async function preview(){
   markingLibrary.refresh(null);markingOverlay.set([]);selectedView='tiling';document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
-  const selected=cases.find(c=>c.id===$('tile').value);$('tileName').textContent=custom?.name??selected?.name??'Custom system';$('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.2.9',import.meta.url),{type:'module'});worker=w;
+  const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
+  [geometryGroup,pointGroup,edgeGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.3.0',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods on the same point window.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.2.9',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=2.3.0',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
@@ -138,7 +147,7 @@ async function runGcts(savedMarking=null,learningCheckpoint=null){
  try{const r=await runWorker(c);results.gcts=r.type==='error'?{result:'error',message:r.message}:r;archive.push({config:c,results:structuredClone(results)});refresh();showLearning();renderPatch(true);$('status').textContent=r.type==='error'?r.message:cancelled?'Stopped.':r.result==='finite_exact'?'Marked window verified.':r.reason??'Marked search finished.';$('verdict').textContent=savedMarking?'Explicit reuse run: validation and tiling are timed; original training is reported separately. Run comparison for cold measurements.':'Standalone GCTS run. Run comparison to measure against free-range.';}finally{lock(false);}
 }
 $('run').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);try{await compare(config());$('status').textContent=cancelled?'Stopped. Partial evidence is available to export.':'Comparison complete. Select a method to inspect its patch.';}finally{lock(false);}};
-$('suite').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);const c=config();try{for(const test of cases.slice(0,5)){if(cancelled)break;$('tile').value=test.id;$('tileName').textContent=test.name;$('tileNote').textContent=test.note;await compare({...c,tile:test.id,custom:null});}$('status').textContent=cancelled?'Suite stopped. Completed runs are retained.':`Research suite complete. Export contains ${archive.length} experiment(s).`;}finally{lock(false);}};
+$('suite').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);const c=config();try{for(const id of RESEARCH_SUITE_IDS){if(cancelled)break;const test=cases.find(c=>c.id===id);custom=null;$('tile').value=test.id;describeTile(test);await compare({...c,tile:test.id,custom:null});}$('status').textContent=cancelled?'Suite stopped. Completed runs are retained.':`Research suite complete. Export contains ${archive.length} experiment(s).`;}finally{lock(false);}};
 $('stop').onclick=()=>{cancelled=true;worker?.cancel?.();};
 $('probe').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);$('probeResults').textContent='';try{for(const strategy of ['translational','isohedral']){if(cancelled)break;$('status').textContent=`Checking ${strategy} · up to 8 motif tiles`;const r=await runWorker({...config(),mode:strategy},'probe',strategy);const p=document.createElement('div');p.textContent=`${strategy}: ${r.event?.success?'certificate found':r.message??'unknown within bounds'}`;$('probeResults').append(p);archive.push({probe:strategy,config:config(),result:r});}$('status').textContent='Structural probe results are separate from the finite-window race.';}finally{lock(false);}};
 $('export').onclick=()=>{const data={version:VERSION,exportedAt:new Date().toISOString(),protocol:'Exact finite point target; exported model declares the single-slab or 3D domain, weights and boundary; all target points root generation 0; sequential cold online runs; timings include preparation and verification; no held-out claim',experiments:archive,current:{config:runConfig,results,series}},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`lattice-v2-evidence-${Date.now()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
@@ -149,6 +158,6 @@ refresh();preview();
 
 fetch(new URL('./reference/summary.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();}).then(data=>{
   const probes=new Map(data.probes.map(p=>[`${p.tile}:${p.strategy}`,p]));
-  $('referenceRows').innerHTML=cases.slice(0,5).map(c=>`<tr><td>${c.name}</td>${MODES.map(m=>`<td>${data.rows.filter(r=>r.tile===c.id&&r.mode===m.id&&r.result==='finite_exact').length} / 3</td>`).join('')}<td>${['translational','isohedral'].map(s=>probes.get(`${c.id}:${s}`)?.success?'Found':'Unknown').join(' / ')}</td></tr>`).join('');
+  $('referenceRows').innerHTML=HISTORICAL_CASE_IDS.map(id=>cases.find(c=>c.id===id)).map(c=>`<tr><td>${c.name}</td>${MODES.map(m=>`<td>${data.rows.filter(r=>r.tile===c.id&&r.mode===m.id&&r.result==='finite_exact').length} / 3</td>`).join('')}<td>${['translational','isohedral'].map(s=>probes.get(`${c.id}:${s}`)?.success?'Found':'Unknown').join(' / ')}</td></tr>`).join('');
   $('referenceNote').textContent='Historical v2.0 only: these half-weight 3D prism measurements do not apply to the current single-slab hat/turtle model. '+data.conclusion;
 }).catch(()=>{$('referenceRows').textContent='Recorded measurements are unavailable. Live comparisons remain available.';});

@@ -1,7 +1,9 @@
-import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-vector-learning';
-import {SLAB_TILES,prepareSlab} from './slab.js?v=2.2.9';
+import {RESEARCH_TILES,RESEARCH_BY_ID} from '../research-catalog.js?v=20260921-catalogue';
+import {prepareVoxelPointModel} from '../voxel-point-model.js';
+import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-catalogue';
+import {SLAB_TILES,prepareSlab} from './slab.js?v=2.3.0';
 
-export const VERSION = '2.2.9';
+export const VERSION = '2.3.0';
 export const MODES = [
   {id:'free',name:'Free-range',color:'#9dacc4'},
   {id:'gcts',name:'GCTS',color:'#4fdac5'},
@@ -18,10 +20,12 @@ export const CASES = [
   {id:'cube',name:'Cube',group:'Easy control',note:'Easy periodic control. Useful for checking the protocol and measuring the overhead of extra search machinery.'}
 ];
 export function catalog() {
-  return [...CASES,...Object.entries(tileSpecs.TILING_REGISTRY).filter(([id])=>!CASES.some(c=>c.id===id)).map(([id,c])=>({id,name:c.name,group:'Catalog',note:'Legacy catalog geometry. V2 accepts only exact integer point weights; structural status is independent of the finite-window result.'}))];
+  return [...RESEARCH_TILES,...CASES,...Object.entries(tileSpecs.TILING_REGISTRY).filter(([id])=>!RESEARCH_BY_ID.has(id)&&!CASES.some(c=>c.id===id)).map(([id,c])=>({id,name:c.name,group:'Catalog',note:'Legacy catalog geometry. V2 accepts only exact integer point weights; structural status is independent of the finite-window result.'}))];
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 export function prepareModel(config) {
+  const research=!config.custom&&RESEARCH_BY_ID.get(config.tile);
+  if(research)return {...prepareVoxelPointModel(research.voxels,{name:research.name,mirrors:!!config.mirrors,radius:config.radius??1}),catalogueId:research.sourceId,appVersion:VERSION};
   if(!config.custom&&SLAB_TILES[config.tile])return prepareSlab(config,VERSION);
   const prepared = preprocessTilingSystem({mode_key:config.tile,include_mirrors:config.mirrors,custom_system:config.custom,polycube_lattice:'z3'},tileSpecs);
   const capacity=prepared.prototiles.reduce((a,t)=>a*t.solid_angle.max_value/gcd(a,t.solid_angle.max_value),1);

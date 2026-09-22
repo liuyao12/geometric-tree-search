@@ -1,7 +1,8 @@
-import {prepareModel} from './model.js?v=2.2.9';
-import {search} from './search.js?v=2.2.9';
-import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-vector-learning';
-import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-vector-learning';
+import {verifyVoxelPatch} from '../voxel-point-model.js';
+import {prepareModel} from './model.js?v=2.3.0';
+import {search} from './search.js?v=2.3.0';
+import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-catalogue';
+import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-catalogue';
 import {periodicStream} from '../periodic-search.js';
 export async function* runExperiment(data){
   const started=performance.now();
@@ -10,6 +11,7 @@ export async function* runExperiment(data){
     yield {type:'model',model};
     if(data.action==='preview')return;
     if(data.action==='probe'){
+      if(model.requiredVoxels)throw Error('The legacy structural probes use a different point model. Recorded voxel-period evidence is linked in the catalogue.');
       if(model.slab)throw Error('The 3D periodic/isohedral probe does not certify this one-slab model. Use the original explorer for the historical 3D prism probe.');
       const p=preprocessTilingSystem({mode_key:data.tile,include_mirrors:data.mirrors,custom_system:data.custom},tileSpecs);
       for(const t of p.prototiles)t.rescaleOccupancyWeights(model.capacity);
@@ -22,7 +24,7 @@ export async function* runExperiment(data){
     if(['gcts','both'].includes(data.mode)){
       const options={timeMs:Math.max(0,data.timeMs-(performance.now()-started)),pairNodes:data.pairNodes??500,extent:data.markingExtent??1,checkpoint:data.learningCheckpoint};
       for await(const e of (data.savedMarking?reuseMarking(model,data.savedMarking,options):learnMarking(model,options))){
-        if(e.type==='marking-learned'){marking=e.marking;if(e.model)model=e.model;}
+        if(e.type==='marking-learned'){marking=e.marking;if(model.requiredVoxels)for(const row of marking.evidence??[])if(row.status==='valid'&&!verifyVoxelPatch(model,row.placements,{requireTarget:false}).ok)throw Error('Corona witness has voxel overlap');if(e.model)model=e.model;}
         yield {...e,mode:data.mode,elapsedMs:performance.now()-started};
       }
       if(!marking.accepted){
@@ -34,6 +36,12 @@ export async function* runExperiment(data){
     for await(const e of search(model,{...data,learnedRestriction:!!marking?.accepted,timeMs:Math.max(0,data.timeMs-preparationMs)})){
       e.stats.preparationMs=preparationMs;e.stats.totalMs=e.stats.elapsedMs+preparationMs;e.marking=marking;
       e.config=data;
+      if(e.type==='result'&&model.requiredVoxels){
+        const verificationStarted=performance.now();
+        e.voxelVerification=verifyVoxelPatch(model,e.placements);
+        if(e.result==='finite_exact'&&!e.voxelVerification.ok)throw Error('Independent voxel replay failed');
+        e.stats.voxelVerificationMs=performance.now()-verificationStarted;e.stats.totalMs=performance.now()-started;
+      }
       yield e;
     }
   }catch(error){yield {type:'error',message:error.message,kind:error.kind??'unsupported',totalMs:performance.now()-started};}

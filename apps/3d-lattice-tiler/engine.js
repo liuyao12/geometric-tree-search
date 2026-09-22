@@ -1,8 +1,9 @@
-import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-vector-learning';
+import {RESEARCH_TILES} from './research-catalog.js?v=20260921-catalogue';
+import {learnMarking,reuseMarking,LearnedSection} from './marking-learning.js?v=20260921-catalogue';
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
-import { periodicStream } from "./periodic-search.js?v=20260921-vector-learning";
+import { periodicStream } from "./periodic-search.js?v=20260921-catalogue";
 import { MATHEMATICA_LATTICE_TILE } from "../../assets/mathematica-lattice-tile.js";
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
@@ -8554,6 +8555,10 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
+    ...Object.fromEntries(RESEARCH_TILES.map(c=>[c.id,{
+      name:c.name,category:[c.category,'Polycubes'],census_candidate:c.candidate,
+      description:c.note,build:()=>[make_tile(c.name,generatePolycubeData(c.voxels))]
+    }])),
     "mathematica_16_vertex": {
       name: "16-vertex lattice tile",
       category: ["Lattice Polyhedra"],

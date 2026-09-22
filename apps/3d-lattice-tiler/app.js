@@ -1,8 +1,8 @@
-import {MarkingOverlay} from './marking-overlay.js?v=20260921-vector-learning';
-import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-vector-learning';
-import {MarkingLibrary} from './marking-library.js?v=20260921-vector-learning';
-import {remember3DMarking} from './marking-storage.js?v=20260921-vector-learning';
-import {MarkingPreview} from './marking-preview.js?v=20260921-vector-learning';
+import {MarkingOverlay} from './marking-overlay.js?v=20260921-catalogue';
+import {applyMarkingUpdates,markingPointKey} from './marking-display.js?v=20260921-catalogue';
+import {MarkingLibrary} from './marking-library.js?v=20260921-catalogue';
+import {remember3DMarking} from './marking-storage.js?v=20260921-catalogue';
+import {MarkingPreview} from './marking-preview.js?v=20260921-catalogue';
 let libraryWorker=null,libraryKey=null;
 const markingLibrary=new MarkingLibrary(document.getElementById('markingLibrary'),{learn:()=>runMarkingSelection(),use:entry=>runMarkingSelection(entry),resume:entry=>runMarkingSelection(null,entry)});
 function runMarkingSelection(savedMarking=null,learningCheckpoint=null){
@@ -15,7 +15,7 @@ function refreshMarkingLibrary(){
  const c=JSON.parse(configKey()),key=JSON.stringify({mode_key:c.mode_key,custom_system:c.custom_system,polycube_lattice:c.polycube_lattice,include_mirrors:c.include_mirrors});
  markingLibrary.lock(running||growthRunning);
  if(key===libraryKey)return;libraryKey=key;libraryWorker?.terminate();markingLibrary.refresh(null);
- const w=new Worker(new URL('./solver-worker.js?v=20260921-vector-learning',import.meta.url),{type:'module'});libraryWorker=w;
+ const w=new Worker(new URL('./solver-worker.js?v=20260921-catalogue',import.meta.url),{type:'module'});libraryWorker=w;
  w.onmessage=({data})=>{if(libraryWorker!==w)return;markingLibrary.refresh(data.model??null);w.terminate();libraryWorker=null;};w.onerror=()=>{w.terminate();if(libraryWorker===w)libraryWorker=null;};w.postMessage({type:'marking-library-model',config:c});
 }
 const markingPreview = new MarkingPreview(document.getElementById('markingLearning'));
@@ -28,7 +28,7 @@ import {
   INTERESTING_TILE_REVIEW,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260921-vector-learning";
+} from "./engine.js?v=20260921-catalogue";
 
 const $ = (id) => document.getElementById(id);
 
@@ -804,6 +804,7 @@ function polycubeCubeCount(figure) {
 }
 
 const catalogGroupDefinitions = [
+  { id: "unresolved-polycubes", title: "Unresolved polycube research", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "featured", title: "Featured tile", test: figure => figure.mode_key === "mathematica_16_vertex" },
   { id: "geometric-research", title: "Geometric research benchmarks · separate model", test: figure => figureHasCategory(figure, "Geometric Research Benchmarks") },
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
@@ -815,7 +816,6 @@ const catalogGroupDefinitions = [
     test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
   },
   { id: "non-tiler-controls", title: "GCTS non-tiler controls", test: figure => figureHasCategory(figure, "GCTS Non-Tiler Controls") },
-  { id: "unresolved-polycubes", title: "Legacy unresolved polycube benchmarks", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "face-obstruction-controls", title: "Face-to-face obstruction controls", test: figure => figureHasCategory(figure, "Face-to-face Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
@@ -848,6 +848,7 @@ function sortCatalogFigures(groupId, figures) {
         - (b.census_candidate?.survivor_priority ?? Infinity);
       if (priorityDelta !== 0) return priorityDelta;
     }
+    if (groupId === "unresolved-polycubes") return (a.census_candidate?.catalogueReview?.priority??Infinity)-(b.census_candidate?.catalogueReview?.priority??Infinity);
     if (groupId === "unresolved") {
       return (a.census_candidate?.survivor_priority ?? Infinity) - (b.census_candidate?.survivor_priority ?? Infinity);
     }
@@ -1431,6 +1432,13 @@ function updateCandidateResearchPanel() {
   const layeredLattice = selectedLayeredLattice();
   candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic && !layeredLattice);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
+  if(candidate?.catalogueReview){
+    reviewNote.textContent="";
+    candidateResearchTitle.textContent=`${candidate.id} · ${candidate.catalogueReview.status}`;
+    candidateResearchDetail.textContent=candidate.catalogueReview.note+' Evidence concerns integer-grid voxel placements with proper rotations. This explorer retains its legacy point model; use v2 for the center-and-corner model. ';
+    const link=document.createElement('a');link.href=new URL('../../'+candidate.catalogueReview.evidence,import.meta.url);link.textContent='Recorded evidence';candidateResearchDetail.append(link);
+    candidateSearchButton.textContent='Load cold shell-2 curriculum';return;
+  }
   if (candidate?.research_review) {
     candidateResearchTitle.textContent = candidate.name;
     candidateResearchDetail.textContent = `${candidate.research_review.note} Scope: ${candidate.research_review.scope}`;
@@ -1790,7 +1798,10 @@ function renderSystemTileList() {
       name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}\n${angleTitle}`;
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
-      if (figure.census_candidate) {
+      if(figure.census_candidate?.catalogueReview){
+        angles.textContent=`${figure.census_candidate.catalogueReview.status} · ${figure.census_candidate.volume} cubes`;
+        angles.classList.add('is-census-label');
+      } else if (figure.census_candidate) {
         const certificate = figure.census_candidate.screening?.certificate;
         angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.kind === "polycube_census" ? `${figure.census_candidate.volume} cubes` : `${figure.census_candidate.lattice_points} points`}`
@@ -3215,7 +3226,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-vector-learning", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260921-catalogue", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -4018,7 +4029,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-vector-learning", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260921-catalogue", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

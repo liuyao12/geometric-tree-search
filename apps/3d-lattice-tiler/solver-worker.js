@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-vector-learning";
+import { createTilingStream, tileSpecs, preprocessTilingSystem, legacyMarkingModel } from "./engine.js?v=20260921-catalogue";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
