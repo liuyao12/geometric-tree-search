@@ -7,12 +7,12 @@ import {
   createGrowthStateFromPatch,
   exposedMarks,
   shrinkOne
-} from "./chair-gcts.js?v=20260923-tetra-relief";
+} from "./chair-gcts.js?v=20260923-apex-shift";
 import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
-import { makeReliefVisual } from './relief-visual.js?v=20260923-tetra-glass';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-apex-shift';
 
 let markingView = 'relief';
 const viewport = document.getElementById("viewport");
@@ -989,7 +989,7 @@ function showGrowthStep(direction) {
   viewport.dataset.searchPending = 'true';
   updateActionButtons();
   searchStatus.textContent = 'Searching geometric fits…';
-  if (!searchWorker) searchWorker = new Worker(new URL('./search-worker.js?v=20260923-tetra-relief', import.meta.url), {type:'module'});
+  if (!searchWorker) searchWorker = new Worker(new URL('./search-worker.js?v=20260923-apex-shift', import.meta.url), {type:'module'});
   const worker = searchWorker;
   const failed = message => {
     if (searchWorker !== worker) return;

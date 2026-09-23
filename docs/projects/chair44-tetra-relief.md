@@ -1,7 +1,7 @@
 # Chair44 tetrahedral relief
 
 The live [Chair44 viewer](https://liuyao12.github.io/geometric-tree-search/3d-reptiles/)
-now uses the tetrahedral wedge from the earlier volume-\(27\) cube dissection.
+uses a tetrahedral wedge adapted from the earlier volume-\(27\) cube dissection. The apex adjustment separates the formerly coincident green–blue and green–green recess walls.
 Arrows and Relief switch the display; Apply one and Run both search the new
 geometric solid. Apply inflation remains the known marked substitution.
 The old Offset/Centered pyramid controls have been replaced by this one solid.
@@ -10,11 +10,12 @@ The old Offset/Centered pyramid controls have been replaced by this one solid.
 
 A representative wedge has vertices
 \[
-(0,0,0),\quad(3,0,0),\quad(3,3,0),\quad(2,1,1).
+(0,0,0),\quad(6,0,0),\quad(6,6,0),\quad(3,2,2).
 \]
-Scale it by \(1/3\) for each unit square of the chair. Its base occupies one
-triangular half of that square, the apex projects to the triangle's centroid,
-and its normal height is \(1/3\). Each wedge has volume \(1/18\).
+Scale it by \(1/6\) for each unit square of the chair. Its base occupies one
+triangular half of that square and its normal height is \(1/3\). The earlier
+apex \( (4,2,2) \) moves to \( (3,2,2) \), parallel to the hinge. This changes
+the proportions but preserves the base, height, and volume \(1/18\).
 Red adds a wedge; green removes one; blue adds one half and removes the other.
 The triangular half follows the original half-arrowhead handedness: red lies
 on the left of the directed diagonal, green on the right, as viewed outside.
@@ -30,7 +31,7 @@ inside \(90^\circ\) path. No hinge hardware is included here.
 There are sixteen additions and sixteen removals. Exact union-volume and
 oriented-boundary checks give volume \(7\), and a closed mesh. All construction
 coordinates are rational. The exported boundary subdivision uses integer
-coordinates in units of \(1/12\), so multiplying this mesh by \(12\) gives an
+coordinates in units of \(1/6\), so multiplying this mesh by \(6\) gives an
 explicit lattice polyhedron. This is a geometric realization being tested;
 the aperiodicity/extension certificates for the previous square-pyramid relief
 have **not** been transferred to this shape.
@@ -39,26 +40,34 @@ have **not** been transferred to this shape.
 
 The allowed placements are integer translations and the twenty-four proper
 cubic rotations. Reflections and arbitrary free-space orientations are absent.
-Within every unit cube, all possible wedge boundary planes form a common
-arrangement of ninety-six convex chambers. The generator uses rational
-arithmetic, stores their exact volumes and outward faces, and chooses one
-rational interior point per chamber. These points have integer coordinates in
-units of \(1/240\).
+Within every unit cube, the forty-eight possible wedge positions have sixty
+distinct boundary planes. Their exact rational arrangement has 7,776 convex
+chambers. Every chamber lies entirely on one side of every wedge plane.
+Distinct plane-sign signatures and exact total volume \(1\) certify the
+partition during regeneration.
 
-For each placement, \(t(p)=1\) exactly when its solid occupies the chamber
-containing \(p\); otherwise \(t(p)=0\). There are no \(m\)-values and no color or
-arrow rejection test. Every chamber lies entirely on one side of every possible
-wedge plane. Distinct chamber signatures and exact total volume \(1\) certify
-the partition. Thus point overlap/gap tests detect positive-volume solid
-intersections and voids for the declared placements, including interactions
-across cube edges and corners. Shared zero-volume boundary faces are permitted.
-This is a full partition model, not the older near-apex probes.
+The chambers fall into 121 occupancy classes: points in the same class belong
+to exactly the same subset of the forty-eight wedges. The generator selects
+121 rational sample points, closed under the twenty-four proper rotations,
+covering all those classes. Each sample stores integer numerators and an exact
+denominator; the largest denominator is 1,056. This reduction retains every
+possible occupancy distinction, including edge and corner contacts.
 
-The tile occupies six hundred seventy-two chamber points across twenty-two
-cubes. Occupancy is stored as an exact BigInt mask per cube. The renderer takes
-the boundary of the same occupied chamber union. It cancels internal facets
-within a single tile; touching surfaces of different tiles remain displayed,
-with transparency and orientation dimming.
+For each placement, \(t(p)=1\) exactly when its solid contains the sample;
+otherwise \(t(p)=0\). There are no \(m\)-values and no color or arrow rejection
+test. In a cube, any placed tile's occupancy is a Boolean combination of the
+forty-eight wedge memberships and the constant base-cube occupancy. Therefore
+samples representing all membership classes detect every positive-volume
+intersection and gap for the declared placements. Shared zero-volume boundary
+faces are permitted. This is an exact class reduction of the full arrangement,
+not an approximate sampling test.
+
+Occupancy is stored as an exact BigInt mask per cube. The renderer uses the
+same wedge vertices to build 112 outward-oriented triangles, with integer
+coordinates in sixths. Independent rational tests check the boundary volume,
+edge pairing, wedge intersections, and coincident face areas. Separate tile
+surfaces remain visible at matching contacts, with transparency and orientation
+dimming; the correction removes unwanted contacts within a single tile.
 
 ## Search contract and scope
 
@@ -89,10 +98,18 @@ consistent finite patch, not a proof that the new relief forces the hierarchy.
 
 ## Validation
 
-Run `scripts/build-chair-tetra-atoms.py` to regenerate the rational arrangement.
-`node scripts/test-chair-tetra-relief.mjs` independently audits every chamber
-against all possible wedge planes, verifies volume and closed oriented boundary,
-checks all red/green and blue hinge endpoints, and checks rotational covariance.
+Run `scripts/build-chair-tetra-atoms.py` to regenerate the rational arrangement,
+audit its complete partition, and select all occupancy-class representatives.
+Use `--check` to replay that audit and check the stored data without writing it.
+`python3 scripts/verify-chair-tetra-geometry.py` independently checks all 496
+wedge pairs and every pair of rendered triangles with rational arithmetic. It
+reproduces the two old coincident contacts and verifies that the adjusted solid
+has neither coincident face areas nor overlapping wedge interiors. Set
+`NODE_BINARY` if Node is not on the path.
+`node scripts/test-chair-tetra-relief.mjs` independently evaluates every sample against all wedge positions, verifies
+complete occupancy-class representation, volume and closed oriented boundary,
+checks all red/green and blue hinge endpoints, all 864 facing-mark comparisons,
+and rotational covariance.
 It independently enumerates the complete root translation box and replays every
 frontier incidence. It also checks immutable rollback, growth from rotated and
 translated inflation patches, and a sixty-four-tile run with real backtracking.

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {VARIANTS,COLORS,apply} from './chair44.js';
-import {tetraBoundary} from './tetra-relief.js';
+import {tetraBoundary} from './tetra-relief.js?v=20260923-apex-shift';
 const boundary=tetraBoundary();
 export function makeReliefVisual(placements) {
   const group=new THREE.Group(),materials=[],geometries=[];
@@ -9,7 +9,7 @@ export function makeReliefVisual(placements) {
   const protrusions=16*placements.length,indents=16*placements.length;
   for(const placement of placements){
     const rotation=VARIANTS[placement.variantId].rotation;
-    const transform=p=>apply(rotation,p.map(v=>v/12-1)).map((v,i)=>v+1+placement.origin[i]);
+    const transform=p=>apply(rotation,p.map(v=>v/6-1)).map((v,i)=>v+1+placement.origin[i]);
     for(const {vertices,color} of boundary){
       const target=color?colored.get(color):flat;
       for(let i=1;i<vertices.length-1;i++)for(const p of [vertices[0],vertices[i],vertices[i+1]])target.push(...transform(p));

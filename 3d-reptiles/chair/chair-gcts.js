@@ -1,6 +1,6 @@
 import { selectFrontier } from './frontier-order.js';
 export { selectFrontier } from './frontier-order.js';
-import {createTetraPointModel} from './tetra-points.js';
+import {createTetraPointModel} from './tetra-points.js?v=20260923-apex-shift';
 import { createReliefPointModel } from './relief-points.js';
 import { VARIANTS, FACE_DIRECTIONS, add, sub, key, markPoint, markValue, worldMarks, verifyPatch } from './chair44.js';
 export { CANONICAL_CHILDREN, FACE_DIRECTIONS, chairLeaves, localCells } from './chair44.js';
