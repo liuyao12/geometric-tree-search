@@ -315,6 +315,47 @@ controls.maxDistance = 180;
 controls.target.set(0, 0, 0);
 controls.update();
 
+const orbitDriftQuaternion = new THREE.Quaternion();
+const orbitPreviousOffset = new THREE.Vector3();
+const ORBIT_DRIFT_SPEED = 0.085;
+let orbitDrag = null;
+let orbitDriftActive = false;
+let orbitDriftDirection = 1;
+
+renderer.domElement.addEventListener("pointerdown", (event) => {
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+  orbitDrag = {
+    pointerId: event.pointerId,
+    lastX: event.clientX,
+    lastY: event.clientY,
+    distance: 0,
+    panDirection: 0
+  };
+});
+
+renderer.domElement.addEventListener("pointermove", (event) => {
+  if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
+  const deltaX = event.clientX - orbitDrag.lastX;
+  const deltaY = event.clientY - orbitDrag.lastY;
+  orbitDrag.distance += Math.hypot(deltaX, deltaY);
+  if (Math.abs(deltaX) > 0.1) orbitDrag.panDirection = -Math.sign(deltaX);
+  orbitDrag.lastX = event.clientX;
+  orbitDrag.lastY = event.clientY;
+});
+
+renderer.domElement.addEventListener("pointerup", (event) => {
+  if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
+  if (orbitDrag.distance > 4) {
+    orbitDriftActive = orbitDrag.panDirection !== 0;
+    if (orbitDriftActive) orbitDriftDirection = orbitDrag.panDirection;
+  }
+  orbitDrag = null;
+});
+
+renderer.domElement.addEventListener("pointercancel", (event) => {
+  if (orbitDrag?.pointerId === event.pointerId) orbitDrag = null;
+});
+
 const root = new THREE.Group();
 scene.add(root);
 
@@ -1127,8 +1168,24 @@ resizeOrientationBall();
 drawHierarchyPlot();
 updateModePanel();
 
+let previousAnimationTime = null;
+
 function animate(time) {
+  const elapsedSeconds = previousAnimationTime === null
+    ? 0
+    : Math.min(0.05, (time - previousAnimationTime) / 1000);
+  previousAnimationTime = time;
   controls.update();
+  if (orbitDriftActive && orbitDrag === null && transition === null && elapsedSeconds > 0) {
+    orbitPreviousOffset.copy(camera.position).sub(controls.target);
+    orbitDriftQuaternion.setFromAxisAngle(
+      camera.up,
+      orbitDriftDirection * ORBIT_DRIFT_SPEED * elapsedSeconds
+    );
+    orbitPreviousOffset.applyQuaternion(orbitDriftQuaternion);
+    camera.position.copy(controls.target).add(orbitPreviousOffset);
+    camera.lookAt(controls.target);
+  }
   orientationControls.update();
   updateOrientationBoundary();
   if (transition) {

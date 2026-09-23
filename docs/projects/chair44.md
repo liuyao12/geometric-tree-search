@@ -102,7 +102,11 @@ sides of tile-to-tile contacts. Frontier-only marking lists remain search/status
 data and do not determine which arrows are drawn. Local growth and undo share
 the inflation view's fixed seed coordinate frame. Apply one preserves the orbit
 target and viewing direction, moving the camera backward only when the patch
-would leave the padded view. Undo does not automatically zoom back in.
+would leave the padded view. Undo does not automatically zoom back in. After a horizontal drag,
+the view keeps rotating in that direction at \(0.085\) radians per second,
+matching quaquaversal. Drift pauses during dragging and visual transitions.
+It rotates the camera about the existing target, preserving tile coordinates
+and the viewing distance.
 
 
 Chair44 is now served directly at `/3d-reptiles/`. The old `/3d-reptiles/chair/`
