@@ -27,10 +27,10 @@ export function makeReliefVisual(placements) {
   for (const [color, positions] of colored) {
     const geometry = geometryFor(positions);
     const material = new THREE.MeshStandardMaterial({ color: COLORS[color], roughness: .8,
-      metalness: 0, flatShading: true, transparent: true, opacity: .92,
+      metalness: 0, flatShading: true, transparent: true, opacity: .42,
       side: THREE.FrontSide, depthWrite: false });
-    material.userData.baseOpacity = .92;
-    const rear = material.clone(); rear.side = THREE.BackSide; rear.opacity = .28; rear.userData.baseOpacity = .28;
+    material.userData.baseOpacity = .42;
+    const rear = material.clone(); rear.side = THREE.BackSide; rear.opacity = .16; rear.userData.baseOpacity = .16;
     const back = new THREE.Mesh(geometry, rear); back.renderOrder = 3;
     const front = new THREE.Mesh(geometry, material); front.renderOrder = 4;
     group.add(back, front); materials.push(rear, material);

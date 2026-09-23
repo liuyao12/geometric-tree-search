@@ -12,7 +12,7 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
-import { makeReliefVisual } from './relief-visual.js?v=20260923-tetra-relief';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-tetra-glass';
 
 let markingView = 'relief';
 const viewport = document.getElementById("viewport");
