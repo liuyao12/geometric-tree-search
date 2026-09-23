@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260923-eight-directions">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-simple-graph">
   <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -73,14 +73,6 @@
             <span id="scale-left">8 directions</span>
             <span id="scale-right">quarter turns</span>
           </div>
-          <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight one of eight missing-corner directions"></div>
-          <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
-            <div class="matrix-heading">
-              <span>representative rotation</span>
-              <strong id="matrix-title">\(R\in\mathrm{SO}(3)\)</strong>
-            </div>
-            <div id="matrix-values" class="matrix-values" aria-label="Three by three rotation matrix"></div>
-          </section>
           <p id="panel-description">Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.</p>
           <div class="marking-key" aria-label="Chair44 matching rules">
             <label><input id="show-markings" type="checkbox" checked> Show arrows</label>
@@ -180,6 +172,6 @@
       <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-steady-run"></script>
+  <script type="module" src="./chair/app.js?v=20260923-simple-graph"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ import {
   growOne,
   shrinkOne
 } from "./chair-gcts.js?v=20260923-chair44";
-import { VARIANTS, ROTATIONS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
+import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
@@ -25,10 +25,6 @@ const generationLabel = document.getElementById("generation-label");
 const tileLabel = document.getElementById("tile-label");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
 const orientationPlot = document.getElementById("orientation-plot");
-const orientationPanel = document.querySelector(".orientation-panel");
-const orientationMatrix = document.getElementById("orientation-matrix");
-const matrixValues = document.getElementById("matrix-values");
-const chairColorFilter = document.getElementById("chair-color-filter");
 const chairModeSelect = document.getElementById("chair-mode-select");
 const panelKicker = document.getElementById("panel-kicker");
 const hierarchyTitle = document.getElementById("hierarchy-title");
@@ -126,17 +122,6 @@ function updateOrientationBoundary() {
   );
   orientationBoundary.quaternion.copy(orientationCamera.quaternion);
   orientationBoundary.scale.setScalar(Math.sqrt(1 - planeOffset * planeOffset));
-}
-
-const CHAIR_ROTATIONS = new Map();
-for (const [id, rows] of ROTATIONS.entries()) {
-  const key = directionKey(VARIANTS[id].missingCorner);
-  const matrix = new THREE.Matrix4().set(...rows[0], 0, ...rows[1], 0, ...rows[2], 0, 0, 0, 0, 1);
-  const quaternion = new THREE.Quaternion().setFromRotationMatrix(matrix).normalize();
-  const angle = 2 * Math.acos(Math.min(1, Math.abs(quaternion.w)));
-  if (!CHAIR_ROTATIONS.has(key) || angle < CHAIR_ROTATIONS.get(key).angle) {
-    CHAIR_ROTATIONS.set(key, { rows, angle });
-  }
 }
 
 function directionBallPoint(key) {
@@ -237,23 +222,18 @@ function updateSelectedOrientation(key) {
     && !orientationPointSizes.has(key)
   ) return;
   selectedChairOrientation = selectedChairOrientation === key ? null : key;
-  updateChairColorButtons();
   refreshChairHighlight(currentVisual);
   if (transition) {
     refreshChairHighlight(transition.from);
     refreshChairHighlight(transition.to);
   }
-  const rotation = selectedChairOrientation === null ? null : CHAIR_ROTATIONS.get(selectedChairOrientation);
-  orientationSelectionMarker.visible = Boolean(rotation);
-  orientationMatrix.hidden = !rotation;
-  orientationPanel.classList.toggle("has-selection", Boolean(rotation));
-  if (rotation) {
+  const selected = selectedChairOrientation !== null;
+  orientationSelectionMarker.visible = selected;
+  if (selected) {
     const dotSize = orientationPointSizes.get(selectedChairOrientation) ?? 18;
     orientationSelectionMarker.material.uniforms.dotSize.value = dotSize;
     orientationSelectionMarker.material.uniforms.haloSize.value = dotSize + 8;
     orientationSelectionMarker.geometry.setFromPoints([directionBallPoint(selectedChairOrientation)]);
-    matrixValues.textContent = '\\(\\begin{pmatrix}' + rotation.rows.map(row => row.join('&')).join('\\\\') + '\\end{pmatrix}\\)';
-    window.MathJax?.typesetPromise?.([matrixValues]);
   }
 }
 
@@ -280,9 +260,6 @@ function updateOrientationBall() {
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
   orientationPointGeometry.setAttribute("pointSize", new THREE.Float32BufferAttribute(sizes, 1));
   orientationPointGeometry.computeBoundingSphere();
-  chairColorFilter.querySelectorAll("button").forEach((button) => {
-    button.classList.toggle("is-absent", !counts.has(Number(button.dataset.orientation)));
-  });
   panelCount.textContent = String(counts.size);
   if (selectedChairOrientation !== null) {
     const dotSize = orientationPointSizes.get(selectedChairOrientation) ?? 18;
@@ -383,32 +360,7 @@ function orientationIndex(missingCorner) {
   return missingCorner[0] + 2 * missingCorner[1] + 4 * missingCorner[2];
 }
 
-const chairOrientationKeys = DIRECTION_NODES.map(node => node.id);
 let selectedChairOrientation = null;
-
-function updateChairColorButtons() {
-  chairColorFilter.querySelectorAll("button").forEach((button) => {
-    const key = Number(button.dataset.orientation);
-    const active = key === selectedChairOrientation;
-    button.setAttribute("aria-pressed", String(active));
-    button.classList.toggle("is-muted", selectedChairOrientation !== null && !active);
-  });
-}
-
-for (const key of chairOrientationKeys) {
-  const button = document.createElement("button");
-  const bits = DIRECTION_NODES[key].corner.join("");
-  button.type = "button";
-  button.dataset.orientation = String(key);
-  button.style.setProperty("--swatch", `#${CORNER_COLORS[key].toString(16).padStart(6, "0")}`);
-  button.setAttribute("aria-label", `Highlight missing-corner direction ${bits}`);
-  button.setAttribute("aria-pressed", "false");
-  button.title = `Corner ${bits} · three marked rotations`;
-  button.addEventListener("click", () => {
-    updateSelectedOrientation(key);
-  });
-  chairColorFilter.appendChild(button);
-}
 
 function leafCells(leaf) {
   const cells = [];
@@ -725,7 +677,6 @@ function updateModePanel() {
   sceneShell.classList.toggle("is-search", searching);
   orientationPlot.hidden = false;
   hierarchyPlot.hidden = true;
-  orientationMatrix.hidden = selectedChairOrientation === null;
   if (searching) {
     panelKicker.textContent = "corner-direction graph";
     hierarchyTitle.textContent = "Rotations";
