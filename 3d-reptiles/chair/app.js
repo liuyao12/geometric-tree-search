@@ -699,7 +699,7 @@ function updateActionButtons() {
   applyOneButton.disabled = busy || (growthState.complete && growthState.status !== 'consistent finite patch');
   backButton.disabled = busy || (mode === 'search' ? growthState.history.length === 0 : generation === 0);
   backButton.querySelector('span').textContent = 'Undo';
-  runButton.disabled = busy || (growthState.complete && !autoRun);
+  runButton.disabled = !autoRun && (busy || growthState.complete);
   runButton.querySelector('span').textContent = autoRun ? 'Pause' : 'Run';
   runButton.querySelector('b').textContent = autoRun ? 'Ⅱ' : '▶';
 }
@@ -710,6 +710,7 @@ let currentInflationState = inflationStates[generation];
 let mode = "inflation";
 let growthState = createGrowthState(2);
 let autoRun = false;
+let runTimer = null;
 let currentVisual = makeVisual(currentInflationState);
 root.add(currentVisual.group);
 camera.position.copy(cameraDestinationForVisual(currentVisual));
@@ -787,8 +788,32 @@ function cameraDestinationForGrowth(visual) {
   return controls.target.clone().addScaledVector(backward, distance);
 }
 
-function swapVisual(nextVisual, duration, cameraDestination) {
-  setVisualOpacity(nextVisual, 0);
+function stopAutoRun() {
+  autoRun = false;
+  window.clearTimeout(runTimer);
+  runTimer = null;
+}
+
+function scheduleSearchStep() {
+  window.clearTimeout(runTimer);
+  runTimer = null;
+  if (!autoRun) return;
+  if (growthState.complete) {
+    stopAutoRun();
+    updateActionButtons();
+    return;
+  }
+  runTimer = window.setTimeout(() => {
+    runTimer = null;
+    runNextSearchStep();
+  }, 70);
+}
+
+function swapVisual(nextVisual, duration, cameraDestination, crossFade = true) {
+  // Repeatedly cross-fading transparent copies changes their combined opacity.
+  // Local growth replaces geometry in one frame and only animates the camera.
+  const previousVisual = currentVisual;
+  setVisualOpacity(nextVisual, crossFade ? 0 : 1);
   root.add(nextVisual.group);
   if (prefersReducedMotion) {
     disposeVisual(currentVisual);
@@ -796,11 +821,15 @@ function swapVisual(nextVisual, duration, cameraDestination) {
     setVisualOpacity(nextVisual, 1);
     camera.position.copy(cameraDestination);
     updateActionButtons();
-    if (autoRun) window.setTimeout(runNextSearchStep, 60);
+    scheduleSearchStep();
     return;
   }
+  if (!crossFade) {
+    disposeVisual(previousVisual);
+    currentVisual = nextVisual;
+  }
   transition = {
-    from: currentVisual,
+    from: crossFade ? previousVisual : null,
     to: nextVisual,
     start: performance.now(),
     duration,
@@ -848,13 +877,13 @@ function showGrowthStep(direction) {
   drawHierarchyPlot();
   updateOrientationBall();
   refreshChairHighlight(nextVisual);
-  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForGrowth(nextVisual));
+  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForGrowth(nextVisual), false);
 }
 
 function runNextSearchStep() {
   if (!autoRun || transition || mode !== "search") return;
   if (growthState.complete) {
-    autoRun = false;
+    stopAutoRun();
     updateActionButtons();
     return;
   }
@@ -872,12 +901,13 @@ applyOneButton.addEventListener('click', () => {
   showGrowthStep(1);
 });
 backButton.addEventListener("click", () => {
-  autoRun = false;
+  stopAutoRun();
   if (mode === "search") showGrowthStep(-1);
   else showGeneration(generation - 1);
 });
 runButton.addEventListener("click", () => {
-  autoRun = !autoRun;
+  if (autoRun) stopAutoRun();
+  else autoRun = true;
   updateActionButtons();
   if (autoRun) runNextSearchStep();
 });
@@ -888,7 +918,7 @@ document.getElementById('show-markings').addEventListener('change', event => {
   }
 });
 function switchMode(nextMode) {
-  autoRun = false;
+  stopAutoRun();
   if (mode === nextMode) return;
   mode = nextMode;
   chairModeSelect.value = mode;
@@ -1043,15 +1073,17 @@ function animate(time) {
   if (transition) {
     const raw = Math.min(1, (time - transition.start) / transition.duration);
     const eased = raw * raw * (3 - 2 * raw);
-    setVisualOpacity(transition.from, 1 - eased);
-    setVisualOpacity(transition.to, eased);
+    if (transition.from) {
+      setVisualOpacity(transition.from, 1 - eased);
+      setVisualOpacity(transition.to, eased);
+    }
     camera.position.lerpVectors(transition.cameraStart, transition.cameraDestination, eased);
     if (raw >= 1) {
-      disposeVisual(transition.from);
+      if (transition.from) disposeVisual(transition.from);
       currentVisual = transition.to;
       transition = null;
       updateActionButtons();
-      if (autoRun) window.setTimeout(runNextSearchStep, 70);
+      scheduleSearchStep();
     }
   }
   renderer.render(scene, camera);

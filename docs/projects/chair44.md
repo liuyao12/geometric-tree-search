@@ -116,3 +116,10 @@ not an assertion that these eight directions are a subgroup of rotations.
 Tests verify generator orthogonality and determinant, every edge's rotation
 witness, and the three-to-one grouping. Both construction views keep all eight
 nodes visible, with absent directions faded and tile counts controlling size.
+
+Local steps (including Run and Undo) replace the rendered patch in one frame at
+its normal opacity; only a necessary camera dolly is animated. Inflation keeps
+its existing cross-fade. Pause stays enabled during automatic steps and cancels
+the single pending step timer. Browser regression checks cover pause during a
+camera transition, pause between steps, rapid resume, checkpoint stopping, and
+reduced-motion mode. The solver and its decision/rollback semantics are unchanged.
