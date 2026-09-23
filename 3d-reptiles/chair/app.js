@@ -471,7 +471,7 @@ function makeVisual(state) {
   const geometries = [];
   const chairs = [];
   const orientationBuckets = new Map();
-  const faceOpacity = 0.94;
+  const faceOpacity = 0.18;
   const edgeOpacity = 0.48;
 
   for (const leaf of leaves) {
@@ -497,7 +497,7 @@ function makeVisual(state) {
       color,
       transparent: true,
       opacity: faceOpacity,
-      depthWrite: true,
+      depthWrite: false,
       depthTest: true,
       side: THREE.DoubleSide
     });
@@ -571,7 +571,17 @@ function addArrowVisual(group, marks, materials, geometries) {
     const material = new THREE.MeshBasicMaterial({color:COLORS[color],side:THREE.FrontSide,transparent:true,opacity:1,depthWrite:false});
     material.userData.baseOpacity = 1;
     const mesh = new THREE.Mesh(geometry,material); mesh.renderOrder = 4;
-    arrows.add(mesh); materials.push(material); geometries.push(geometry);
+    // Rear arrows remain visible through the body, with lower contrast so
+    // front and back markings can still be distinguished while orbiting.
+    const backMaterial = material.clone();
+    backMaterial.side = THREE.BackSide;
+    backMaterial.opacity = 0.42;
+    backMaterial.userData.baseOpacity = 0.42;
+    const backMesh = new THREE.Mesh(geometry, backMaterial);
+    backMesh.renderOrder = 3;
+    arrows.add(backMesh, mesh);
+    materials.push(backMaterial, material);
+    geometries.push(geometry);
   }
   group.add(arrows);
 }
@@ -592,12 +602,12 @@ function makeSearchVisual(state) {
     const faceMaterial = new THREE.MeshBasicMaterial({
       color,
       transparent: true,
-      opacity: 0.94,
-      depthWrite: true,
+      opacity: 0.18,
+      depthWrite: false,
       depthTest: true,
       side: THREE.DoubleSide
     });
-    faceMaterial.userData.baseOpacity = 0.94;
+    faceMaterial.userData.baseOpacity = 0.18;
     const mesh = new THREE.Mesh(geometry, faceMaterial);
     mesh.renderOrder = 1;
     group.add(mesh);
