@@ -104,7 +104,7 @@
             <b aria-hidden="true">↙</b>
             <span>Go back</span>
           </button>
-          <button id="apply-one-button" class="scene-button apply-one-button" type="button" title="Try one locally matched tile; backtrack if a frontier point becomes impossible">
+          <button id="apply-one-button" class="scene-button apply-one-button" type="button" title="Add one locally matched tile to the displayed patch; backtrack if needed">
             <span>Apply one</span><b aria-hidden="true">+</b>
           </button>
           <button id="inflate-button" class="scene-button substitute-button" type="button" title="Return to the saved inflation stage; click again to expand it">
@@ -170,7 +170,7 @@
           <p>Goodman–Strauss proves that these markings force a unique infinite hierarchy and strong aperiodicity.
           This page renders the marked version, using proper rotations of one handedness. Nested inflation
           illustrates the construction; local matching independently grows a finite patch from the arrow rules.
-          Apply one tries the next local placement and backtracks when necessary. Undo reverses one Apply one action or the entire most recent Run. From local matching, Apply inflation first returns to the saved inflation stage; the next click expands it. Each construction keeps its own history. The finite search is a demonstration, not a new proof of infinite extension.</p>
+          Apply one adds to the displayed patch, keeping its existing tiles when leaving inflation, and backtracks among new local placements when necessary. Undo reverses one Apply one action or the entire most recent Run. From local matching, Apply inflation first returns to the saved inflation stage; the next click expands it. Each construction keeps its own history. The finite search is a demonstration, not a new proof of infinite extension.</p>
         </aside>
       </div>
     </section>
@@ -223,6 +223,6 @@
       <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-marking-highlight"></script>
+  <script type="module" src="./chair/app.js?v=20260924-inflation-growth"></script>
 </body>
 </html>

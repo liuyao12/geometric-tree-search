@@ -22,7 +22,19 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
             save(name) { this.saved.set(name, growthState); },
             restored(name) { return this.saved.get(name) === growthState; },
             savedInflation: null,
-            saveInflation() { this.savedInflation = currentInflationState; },
+            saveInflation() {
+              this.savedInflation = currentInflationState;
+              this.savedTarget = controls.target.toArray();
+            },
+            retainedInflation() {
+              const expected = this.savedInflation.leaves;
+              return expected.every((tile, i) => {
+                const actual = growthState.placements[i];
+                return actual && actual.variantId === tile.variantId
+                  && actual.origin.every((v, axis) => v === tile.origin[axis]);
+              });
+            },
+            sameTarget() { return controls.target.toArray().every((v, i) => Math.abs(v - this.savedTarget[i]) < 1e-9); },
             sameInflation() { return this.savedInflation === currentInflationState; },
             read: () => ({ count: growthState.placements.length, running: autoRun,
               transitioning: Boolean(transition), queued: runTimer !== null,
@@ -52,6 +64,15 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       await page.locator('#inflate-button').click();
       await page.waitForFunction(() => !runCheck.read().transitioning);
       await page.evaluate(() => runCheck.saveInflation());
+      await page.locator('#apply-one-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, 9);
+      assert.equal(await page.evaluate(() => runCheck.retainedInflation()), true);
+      assert.equal(await page.evaluate(() => runCheck.sameTarget()), true);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, 8);
+      assert.equal(await page.evaluate(() => runCheck.retainedInflation()), true);
       await page.locator('#apply-one-button').click();
       await page.waitForFunction(() => !runCheck.read().transitioning);
 
@@ -142,13 +163,23 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       await page.locator('#inflate-button').click();
       await page.waitForFunction(() => !runCheck.read().transitioning);
       assert.equal((await page.evaluate(() => runCheck.read())).inflationGeneration, 2);
+      await page.evaluate(() => runCheck.saveInflation());
+      await page.locator('#apply-one-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, 65);
+      assert.equal(await page.evaluate(() => runCheck.retainedInflation()), true);
+      assert.equal(await page.evaluate(() => runCheck.sameTarget()), true);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, 64);
+      await page.locator('#inflate-button').click(); // Return to the saved 64-tile stage.
+      assert.equal(await page.evaluate(() => runCheck.sameInflation()), true);
       await page.locator('#back-button').click();
       await page.waitForFunction(() => !runCheck.read().transitioning);
       assert.equal((await page.evaluate(() => runCheck.read())).inflationGeneration, 1);
       await page.locator('#chair-mode-select').selectOption('search');
-      await page.locator('#back-button').click();
-      await page.waitForFunction(() => !runCheck.read().transitioning);
-      assert.equal(await page.evaluate(() => runCheck.restored('activeStart')), true);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, 8);
+      assert.equal(await page.locator('#back-button').isDisabled(), true, 'Imported patch is a fresh search root');
 
       await page.waitForSelector('#lattice-title');
       await page.locator('summary').filter({ hasText: 'The point model and its verification' }).click();
@@ -159,7 +190,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       assert.ok(await page.evaluate(() => runCheck.frames > 10));
       assert.deepEqual(await page.evaluate(() => runCheck.violations), []);
       assert.deepEqual(errors, []);
-      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint, grouped Undo, inflation return, scalar model (' + reducedMotion + ').');
+      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint, grouped Undo, growth from 8/64-tile inflation patches, inflation return, scalar model (' + reducedMotion + ').');
       await page.close();
     }
   } finally {

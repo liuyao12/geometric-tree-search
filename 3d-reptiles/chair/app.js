@@ -4,10 +4,11 @@ import {
   CANONICAL_CHILDREN,
   FACE_DIRECTIONS,
   createGrowthState,
+  createGrowthStateFromPatch,
   exposedMarks,
   growOne,
   shrinkOne
-} from "./chair-gcts.js?v=20260923-chair44";
+} from "./chair-gcts.js?v=20260924-inflation-growth";
 import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
@@ -721,7 +722,7 @@ function updateActionButtons() {
   const busy = Boolean(transition);
   chairModeSelect.disabled = busy;
   inflateButton.disabled = (busy && !autoRun) || (mode === 'inflation' && generation === MAX_GENERATION);
-  applyOneButton.disabled = busy || (growthState.complete && growthState.status !== 'consistent finite patch');
+  applyOneButton.disabled = busy || (mode === 'search' && growthState.complete && growthState.status !== 'consistent finite patch');
   backButton.disabled = (busy && !autoRun) || (mode === 'search' ? growthState.history.length === 0 : generation === 0);
   backButton.querySelector('span').textContent = 'Undo';
   runButton.disabled = !autoRun && (busy || growthState.complete);
@@ -972,6 +973,7 @@ document.querySelectorAll('[data-marking-view]').forEach(button => {
 function switchMode(nextMode) {
   stopAutoRun();
   if (mode === nextMode) return;
+  if (nextMode === 'search') growthState = createGrowthStateFromPatch(currentInflationState.leaves);
   mode = nextMode;
   chairModeSelect.value = mode;
   disposeVisual(currentVisual);

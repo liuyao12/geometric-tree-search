@@ -131,7 +131,9 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       assert.ok((await page.evaluate(() => valueCheck.highlight())).dim > 0);
     }
     await graph.press('ArrowRight');
-    await graph.press('ArrowRight');
+    for (let attempt = 0; attempt < 8 && !(await page.evaluate(() => valueCheck.highlight())).bright; attempt++) {
+      await graph.press('ArrowRight');
+    }
     assert.ok((await page.evaluate(() => valueCheck.highlight())).bright > 0);
     await page.screenshot({ path: '/tmp/chair-relief-highlight.png' });
     await arrows.click();
@@ -139,14 +141,14 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await relief.click();
     await page.locator('#apply-one-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
-    assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 2 * 16);
+    assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 9 * 16);
     await page.evaluate(() => valueCheck.highlight());
     await relief.click();
     await page.locator('#run-button').click();
-    await page.waitForFunction(() => valueCheck.read().count >= 4);
+    await page.waitForFunction(() => valueCheck.read().count >= 11);
     await page.locator('#back-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
-    assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 2 * 16);
+    assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 9 * 16);
     await page.evaluate(() => valueCheck.highlight());
     await page.locator('#inflate-button').click();
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 8 * 16);

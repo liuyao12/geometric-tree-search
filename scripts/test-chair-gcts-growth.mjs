@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { VARIANTS, BASE_MARKS, CHILDREN, ROTATIONS, chairLeaves, verifyPatch, childSupertile,
   parentContainingChild, IDENTITY, key, add, COLORS } from '../3d-reptiles/chair/chair44.js';
-import { createGrowthState, enumerateGrowthCandidates, growOne, shrinkOne, selectFrontier } from '../3d-reptiles/chair/chair-gcts.js';
+import { createGrowthStateFromPatch, createGrowthState, enumerateGrowthCandidates, growOne, shrinkOne, selectFrontier } from '../3d-reptiles/chair/chair-gcts.js';
 
 import { DIRECTION_NODES, DIRECTION_EDGES, QUARTER_TURNS, directionKey } from '../3d-reptiles/chair/orientation-graph.js';
 const determinant = r => r[0][0]*(r[1][1]*r[2][2]-r[1][2]*r[2][1])-r[0][1]*(r[1][0]*r[2][2]-r[1][2]*r[2][0])+r[0][2]*(r[1][0]*r[2][1]-r[1][1]*r[2][0]);
@@ -90,6 +90,26 @@ assert.ok(recovered.solverBacktracks>0);
 assert.ok(independent(recovered.placements));
 assert.equal(enumerateGrowthCandidates(recovered).dead,false);
 assert.strictEqual(shrinkOne(recovered),doomed);
+// Imported inflation patches retain exact placements and become fixed roots.
+for (let level = 0; level <= 3; level++) {
+  const leaves = chairLeaves(level, [-3, 7, 2], ROTATIONS[7]);
+  const snapshot = JSON.stringify(leaves);
+  const seeded = createGrowthStateFromPatch(leaves);
+  assert.ok(seeded.placements.every(p => p.generation === 0));
+  assert.equal(seeded.stack.length, 0);
+  assert.equal(seeded.history.length, 0);
+  assert.ok(seeded.catalog.targetCount > leaves.length);
+  const next = growOne(seeded);
+  assert.equal(next.placements.length, leaves.length + 1);
+  assert.deepEqual(next.placements.slice(0, leaves.length), seeded.placements);
+  assert.ok(independent(next.placements));
+  assert.equal(enumerateGrowthCandidates(next).dead, false);
+  assert.strictEqual(shrinkOne(next), seeded);
+  assert.equal(JSON.stringify(leaves), snapshot, 'Import must not mutate inflation data');
+  assert.notStrictEqual(seeded.placements[0].origin, leaves[0].origin);
+}
+assert.throws(() => createGrowthStateFromPatch([]), /Invalid/);
+assert.throws(() => createGrowthStateFromPatch([seed, seed]), /Invalid/);
 let state=createGrowthState();
 const graph=enumerateGrowthCandidates(state);
 assert.deepEqual(new Set(graph.candidateNodes.keys()),neighbors,'Full graph agrees with independent exhaustive enumeration');

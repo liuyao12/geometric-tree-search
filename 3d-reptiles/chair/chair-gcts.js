@@ -1,4 +1,4 @@
-import { VARIANTS, FACE_DIRECTIONS, add, sub, key, markPoint, markValue, worldMarks } from './chair44.js';
+import { VARIANTS, FACE_DIRECTIONS, add, sub, key, markPoint, markValue, worldMarks, verifyPatch } from './chair44.js';
 export { CANONICAL_CHILDREN, FACE_DIRECTIONS, chairLeaves, localCells } from './chair44.js';
 
 // Integer cell-center t=1; doubled-grid panel-center equality m-values.
@@ -58,6 +58,15 @@ export function enumerateGrowthCandidates(state) {
 export function createGrowthState(level=2) {
   return {catalog:{variants:VARIANTS,targetCount:8**level},placements:[{variantId:0,origin:[0,0,0],generation:0}],
     history:[],stack:[],tested:0,rejected:0,solverBacktracks:0,forcedPlacements:0,branchDecisions:0,complete:false,status:'ready'};
+}
+// An imported patch is the fixed root of a new local search. Its tiles have
+// generation zero and no branch frames, so rollback cannot remove them.
+export function createGrowthStateFromPatch(placements) {
+  if (!placements.length || !verifyPatch(placements).valid) throw new Error('Invalid starting Chair44 patch');
+  const state = createGrowthState();
+  return {...state,
+    catalog: {...state.catalog, targetCount: 64 * (Math.floor(placements.length / 64) + 1)},
+    placements: placements.map(({variantId, origin}) => ({variantId, origin: [...origin], generation: 0}))};
 }
 function place(state,candidate,graph) {
   const generations=candidate.cells.map(k=>graph.frontier.get(k)?.generation).filter(g=>g!==undefined);

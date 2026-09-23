@@ -37,11 +37,12 @@ where \(c\) is its incident occupied cell, \(n\) its outward unit normal,
 components. Equality of these six-component values encodes aligned blue/blue
 and red/green contacts; blue's zero is an assigned value, not missing.
 
-`chair-gcts.js` starts from one tile and allows every integer translation of
+`chair-gcts.js` starts from one tile by default, or from the displayed inflation
+patch when entering local matching, and allows every integer translation of
 all 24 proper rotations of that same prototile, without multiplicity limits.
 Every empty face-neighbor cell is an active obligation. New obligations take
 the minimum generation of their incident placed neighbors; a placement takes
-one plus the minimum existing obligation generation on its support. The seed
+one plus the minimum existing obligation generation on its support. Every seed tile
 has generation zero. Continuing earliest-generation growth would expand the
 active domain outward; automatic running pauses every 64 placements, Apply one can continue, and the demo makes no claim
 to cover the infinite domain.
@@ -53,8 +54,9 @@ whole graph is checked for dead points, then singleton points, before branching
 at the earliest generation (degree breaks generation ties). Branch alternatives
 and complete placement/generation snapshots supply rollback. Markings are fixed
 problem-defining data, not learned restrictions or a redundant pruning theorem
-for the unmarked chair. No inflation witness, parent address, collar inventory,
-known neighbor list, or precomputed plan is passed to the search.
+for the unmarked chair. An imported inflation patch supplies fixed starting
+placements only. No inflation witness for future placements, parent address,
+collar inventory, known neighbor list, or precomputed plan is passed to the search.
 
 ## Evidence and limits
 
@@ -183,7 +185,15 @@ Undo may interrupt an active Run, cancelling its queued step and camera motion.
 From local matching, Apply inflation cancels Run and displays the existing saved
 inflation state without expanding it. A subsequent click advances inflation.
 Returning is permitted even at the maximum inflation level. Local and inflation
-states retain their separate histories.
+states retain their separate histories. Entering local matching from inflation
+starts a fresh search rooted at every tile in the displayed inflation patch.
+Apply one therefore takes an eight-tile patch to nine tiles, for example,
+without changing any existing origin or decorated orientation. Imported tiles
+have generation zero; the empty branch stack fixes the whole seed patch during
+solver rollback. User Undo restores the pre-step patch. Checkpoints use the next
+multiple of \(64\) above the seed count, so even a large inflation patch can grow.
+Candidate enumeration, marking equality, and dead/forced/branch scheduling are
+unchanged; inflation supplies the starting patch, not subsequent placements.
 
 ## Arrow and relief display
 
