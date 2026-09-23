@@ -181,16 +181,10 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       assert.equal((await page.evaluate(() => runCheck.read())).count, 8);
       assert.equal(await page.locator('#back-button').isDisabled(), true, 'Imported patch is a fresh search root');
 
-      await page.waitForSelector('#lattice-title');
-      await page.locator('summary').filter({ hasText: 'The point model and its verification' }).click();
-      await page.waitForSelector('#lattice-title ~ details mjx-container');
-      const model = await (await page.request.get(base + 'chair/chair44-lattice.json')).json();
-      assert.equal(model.t.length, 7);
-      assert.equal(model.m.length, 288);
       assert.ok(await page.evaluate(() => runCheck.frames > 10));
       assert.deepEqual(await page.evaluate(() => runCheck.violations), []);
       assert.deepEqual(errors, []);
-      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint, grouped Undo, growth from 8/64-tile inflation patches, inflation return, scalar model (' + reducedMotion + ').');
+      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint, grouped Undo, growth from 8/64-tile inflation patches, inflation return (' + reducedMotion + ').');
       await page.close();
     }
   } finally {

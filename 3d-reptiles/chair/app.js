@@ -545,12 +545,19 @@ function addArrowVisual(group, placements, materials, geometries) {
 function makeArrowBatch(marks) {
   const materials = [], geometries = [];
   const buckets = new Map(Object.keys(COLORS).map(color => [color, []]));
-  const triangles = [
-    [[-.065,-.36],[.065,-.36],[.065,.12]],
-    [[-.065,-.36],[.065,.12],[-.065,.12]],
-    [[-.17,.10],[.17,.10],[0,.42]]
-  ];
   for (const mark of marks) {
+    // Figure 5: viewed from outside, red has the left half-head and green
+    // the right. Their straight edges lie on the diagonal; blue is full.
+    // side = forward × outward normal points right in the face's own view.
+    const left = mark.color === 'green' ? 0 : mark.color === 'red' ? -.13 : -.065;
+    const right = mark.color === 'red' ? 0 : mark.color === 'green' ? .13 : .065;
+    const headLeft = mark.color === 'green' ? 0 : mark.color === 'red' ? -.24 : -.17;
+    const headRight = mark.color === 'red' ? 0 : mark.color === 'green' ? .24 : .17;
+    const triangles = [
+      [[left,-.36],[right,-.36],[right,.12]],
+      [[left,-.36],[right,.12],[left,.12]],
+      [[headLeft,.10],[headRight,.10],[0,.42]]
+    ];
     const normal = new THREE.Vector3(...mark.direction);
     const forward = new THREE.Vector3(...mark.arrow).normalize();
     const side = forward.clone().cross(normal);
@@ -760,7 +767,7 @@ function updateModePanel() {
     panelCountLabel.textContent = "of 8 present";
     scaleLeft.textContent = "8 directions";
     scaleRight.textContent = "quarter turns";
-    panelDescription.textContent = "Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.";
+    panelDescription.textContent = "Three marked rotations per node. No reflections.";
     sceneInstruction.textContent = "Drag to orbit · blue meets blue · red meets green";
     hierarchyPlot.setAttribute("aria-label", "Colors of exposed Chair44 arrows in the local search");
   } else {
@@ -770,7 +777,7 @@ function updateModePanel() {
     panelCountLabel.textContent = "of 8 present";
     scaleLeft.textContent = "8 directions";
     scaleRight.textContent = "quarter turns";
-    panelDescription.textContent = "Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.";
+    panelDescription.textContent = "Three marked rotations per node. No reflections.";
     sceneInstruction.textContent = "Drag to orbit · markings rotate with each chair";
     orientationPlot.setAttribute("aria-label", "Rotatable eight-node graph of missing-corner directions connected by proper quarter turns");
   }

@@ -14,9 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260923-two-views">
-  <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <link rel="stylesheet" href="./chair/style.css?v=20260924-half-arrows">
 </head>
 <body>
   <main>
@@ -73,7 +71,7 @@
             <span id="scale-left">8 directions</span>
             <span id="scale-right">quarter turns</span>
           </div>
-          <p id="panel-description">Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.</p>
+          <p id="panel-description">Three marked rotations per node. No reflections.</p>
           <div class="marking-key" aria-label="Chair44 marking display">
             <div class="marking-toggle" role="group" aria-label="Marking representation">
               <button type="button" data-marking-view="arrows" aria-pressed="true">Arrows</button>
@@ -81,7 +79,7 @@
             </div>
             <div id="arrow-legend" class="marking-legend">
               <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
-              <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
+              <span><svg class="legend-arrow red-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 10h4v12h4z"/></svg><svg class="legend-arrow green-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 20 10h-4v12h-4z"/></svg> Red meets green</span>
               <small>Arrow directions coincide at each contact.</small>
             </div>
             <div id="relief-legend" class="marking-legend" hidden>
@@ -90,6 +88,10 @@
               <span><i class="relief-swatch blue" aria-hidden="true"></i> Blue joins both</span>
               <small>Colored bumps and indents fit together by the same matching rule. The translucent surface lets you see the back.</small>
             </div>
+          </div>
+          <div class="scene-citation">
+            Markings after <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss (2026), Figures 2 &amp; 5</a>.
+            <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
           </div>
           <p id="search-status" class="search-status" aria-live="polite"></p>
           <dl id="search-stats" class="search-stats" aria-live="polite">
@@ -119,110 +121,7 @@
       </div>
     </section>
 
-    <section class="essay-section" aria-labelledby="rule-title">
-      <div class="section-number">01</div>
-      <div class="essay-copy">
-        <p class="kicker">The rule</p>
-        <h2 id="rule-title">One concave solid.<br>Eight smaller chairs.</h2>
-        <p class="body-large">
-          Remove one corner from a <span class="math">\(2\times2\times2\)</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs: one translated central child and seven outer children. At every step, one of the seven outer child addresses is chosen at random for the existing superchair; seven congruent copies then grow around it. Going back and inflating again can therefore choose a different continuation.
-        </p>
-        <div class="turn-diagram chair-facts" aria-label="Chair inflation facts">
-          <div class="turn-card">
-            <span class="fact-glyph">7</span>
-            <strong>unit volume</strong>
-            <small>of one polyhedron</small>
-          </div>
-          <div class="turn-join" aria-hidden="true">→</div>
-          <div class="turn-card">
-            <span class="fact-glyph">8</span>
-            <strong>child chairs</strong>
-            <small>in one inflation</small>
-          </div>
-          <div class="turn-result">
-            <span>linear scale</span>
-            <strong>2 per level</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="essay-section matching-section" aria-labelledby="forcing-title">
-      <div class="section-number">02</div>
-      <div class="essay-copy">
-        <p class="kicker">The Chair44 matching rule</p>
-        <h2 id="forcing-title">Three colors.<br>One forced hierarchy.</h2>
-        <p class="body-large">
-          The bare heptacube admits periodic tilings. Chair44 adds arrows: blue meets blue,
-          and red meets green, with their directions aligned. The same decorated tile occurs
-          everywhere. Its 24 exposed unit panels reproduce Goodman–Strauss’s Figures 2 and 5,
-          including the three arrows inside the concave socket.
-        </p>
-        <div class="search-flow" aria-label="From local arrows to the Chair44 hierarchy">
-          <div><span>1</span><strong>Match the arrows</strong><small>Every shared panel agrees in direction and complementary color.</small></div>
-          <i aria-hidden="true">→</i>
-          <div><span>2</span><strong>Assemble eight chairs</strong><small>One central chair and seven outer chairs form a supertile.</small></div>
-          <i aria-hidden="true">→</i>
-          <div><span>3</span><strong>Repeat at every scale</strong><small>The supertile inherits the same corner markings.</small></div>
-        </div>
-        <aside class="key-idea">
-          <p class="kicker">The paper and the demonstration</p>
-          <p>Goodman–Strauss proves that these markings force a unique infinite hierarchy and strong aperiodicity.
-          This page renders the marked version, using proper rotations of one handedness. Nested inflation
-          illustrates the construction; local matching independently grows a finite patch from the arrow rules.
-          Apply one adds to the displayed patch, keeping its existing tiles when leaving inflation, and backtracks among new local placements when necessary. Undo reverses one Apply one action or the entire most recent Run. From local matching, Apply inflation first returns to the saved inflation stage; the next click expands it. Each construction keeps its own history. The finite search is a demonstration, not a new proof of infinite extension.</p>
-        </aside>
-      </div>
-    </section>
-
-
-    <section class="essay-section" aria-labelledby="lattice-title">
-      <div class="section-number">03</div>
-      <div class="essay-copy">
-        <p class="kicker">The GCTS connection</p>
-        <h2 id="lattice-title">Arrows as<br>lattice values.</h2>
-        <p class="body-large">The arrow rules have an exact realization as a scalar marking on
-          \(\mathbb Z^3\), with values in \(\{-1,0,1\}\). At a touching pair of faces,
-          equal point values mean exactly the permitted color pairing and equal arrow directions.</p>
-        <p>Let \(a\) encode the diagonal arrow direction with components in \(\{-1,0,1\}\), and let \(n\) be the outward unit normal. Set
-          \(b=\sigma n\), where \(\sigma\) is \(1\) for red, \(-1\) for green,
-          and \(0\) for blue. Opposite normals make red and green give the same \(b\);
-          blue matches blue with \(b=0\).</p>
-        <p>Scale a physical unit to \(12\) lattice steps. Around each panel center \(P\),
-          assign, for each signed coordinate unit vector \(d\),</p>
-        <div class="math">\[
-          \begin{aligned}m(P+d)&=a\cdot d,\\m(P+2d)&=b\cdot d.\end{aligned}
-        \]</div>
-        <p>This is a rank-one marking: one scalar value at each assigned point.
-          These small groups of marked points never overlap unless the panels themselves meet.
-          Rotations move the points and leave their scalar values unchanged. Zero is an assigned value;
-          all unlisted points are unmarked.</p>
-        <details>
-          <summary>The point model and its verification</summary>
-          <p>Write \(\mathbf1=(1,1,1)\). For an occupied unit cube with lower corner \(c\), assign
-            \(t(12c+6\mathbf 1)=1\), and place its boundary-panel center at
-            \(P=12c+6\mathbf 1+6n\). Occupancy is required on
-            \((6,6,6)+12\mathbb Z^3\); the other lattice points carry only marking constraints.
-            One tile has \(7\) occupied points and \(288\) assigned scalar marking points.</p>
-          <p>The scalar model agrees with the independent arrow test on all \(864\) facing-panel
-            combinations and \(3000\) nearby tile pairs, giving the same \(44\) neighbors.
-            All \(24\) proper rotations preserve this encoding. The local search stores the equivalent
-            compact value \((a,b)\) at each panel center; it does not use inflation.</p>
-          <p>This realizes the given marking. Discovering a marking from unmarked extension tests
-            is a separate learning problem; this model is a known control for that work.</p>
-        </details>
-        <p><a href="./chair/chair44-lattice.json" download="chair44-lattice.json">Download the scalar lattice prototype</a></p>
-      </div>
-    </section>
-
-    <footer>
-      <p>Arrow design adapted from <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss,
-      <em>Notes on a strongly aperiodic monotile in \(E^3\)</em></a>, September 21, 2026, Figures 2 and 5
-      (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).
-      Chair44 introduced by <a href="https://arxiv.org/abs/2609.19214">Ioannis Tsiokos</a>.</p>
-      <a href="./quaquaversal/">Compare quaquaversal tiling</a>
-    </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260924-inflation-growth"></script>
+  <script type="module" src="./chair/app.js?v=20260924-half-arrows"></script>
 </body>
 </html>

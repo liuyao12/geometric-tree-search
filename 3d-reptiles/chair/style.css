@@ -679,3 +679,9 @@ footer p { margin: 0; }
 .relief-swatch.red { background: #de292d; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
 .relief-swatch.green { background: #9cc83b; clip-path: polygon(0 0, 100% 0, 50% 100%); }
 .relief-swatch.blue { background: #2b407d; transform: rotate(45deg); width: 8px; height: 8px; }
+
+.scene-citation { margin-top: 12px; padding-top: 9px; border-top: 1px solid var(--line); color: var(--muted); font: 11px/1.45 ui-sans-serif, system-ui, sans-serif; grid-column: 1 / -1; }
+.scene-citation a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.legend-arrow { width: 16px; height: 16px; fill: currentColor; vertical-align: -3px; transform: rotate(45deg); }
+.legend-arrow.red-arrow { color: #de292d; }
+.legend-arrow.green-arrow { color: #9cc83b; }

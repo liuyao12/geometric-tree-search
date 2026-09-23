@@ -13,6 +13,11 @@ lower corner \((1,1,1)\). The other five outer faces follow the net folds.
 The three socket arrows follow the paper's translated front-socket/back-corner
 fit, reversing red and green while retaining blue. There are eight arrows of
 each color. An arrow's color and tangent vector are both significant.
+The arrow renderer follows Figure 5's silhouettes: red has a left half-head,
+green a right half-head (viewed from outside), and blue a full head. Red/green
+shafts lie on opposite sides of the diagonal, so their silhouettes coincide
+when matching faces are viewed from opposite sides. This changes the drawing,
+not the matching data.
 
 The renderer draws this marked version, not the microscopic pyramid geometry
 of the original shape-only construction. The prototype admits 24 distinct proper
@@ -201,7 +206,9 @@ The marking toggle selects Arrows or Relief. Relief geometry is built only when
 requested, then retained for toggling. The choice persists through inflation,
 local steps, Run, Undo, and mode changes, including a toggle during a visual
 transition. This display choice does not change the point model or search state.
-The scalar lattice model and its download remain available in the explanation.
+The page contains only the main scene and its controls, with a paper citation
+in the side panel. The scalar lattice model remains in the source and JSON
+artifact; its explanation is retained in this document.
 Arrows and relief are batched by the same eight missing-corner directions as the
 body edges. Selecting a graph node dims all other markings to the edge highlight
 factor, including rear faces and relief creases. Newly created relief and visual

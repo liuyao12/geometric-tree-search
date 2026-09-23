@@ -86,6 +86,10 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     const relief = page.getByRole('button', { name: 'Relief', exact: true });
     assert.deepEqual(await page.evaluate(() => valueCheck.check()), [{ arrows: true, relief: false }]);
     assert.deepEqual(await page.locator('.marking-toggle button').allTextContents(), ['Arrows', 'Relief']);
+    assert.equal(await page.locator('main > section').count(), 1);
+    assert.equal(await page.locator('main > footer').count(), 0);
+    assert.equal(await page.locator('.orientation-panel .scene-citation a').first().getAttribute('href'), 'https://arxiv.org/abs/2609.24779');
+    await page.screenshot({ path: '/tmp/chair-half-arrows.png' });
     await page.evaluate(() => valueCheck.remember());
     const graph = page.locator('#orientation-plot');
     await graph.press('ArrowRight'); // Select a different direction before relief is created.
