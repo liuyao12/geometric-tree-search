@@ -89,3 +89,10 @@ The paper supplies the infinite hierarchy and strong-aperiodicity argument.
 Apply one and Apply inflation are both visible. They select the local-growth or
 nested-inflation view respectively and retain separate histories. Run pauses at
 each 64-chair checkpoint; Apply one continues from the verified patch.
+
+The translucent renderer retains all 24 arrows per tile, including both marked
+sides of tile-to-tile contacts. Frontier-only marking lists remain search/status
+data and do not determine which arrows are drawn. Local growth and undo share
+the inflation view's fixed seed coordinate frame. Apply one preserves the orbit
+target and viewing direction, moving the camera backward only when the patch
+would leave the padded view. Undo does not automatically zoom back in.

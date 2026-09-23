@@ -8,7 +8,7 @@ import {
   growOne,
   shrinkOne
 } from "./chair-gcts.js?v=20260923-chair44";
-import { VARIANTS, ROTATIONS, IDENTITY, COLORS, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
+import { VARIANTS, ROTATIONS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 const viewport = document.getElementById("viewport");
 const sceneShell = document.querySelector(".scene-shell");
@@ -518,7 +518,7 @@ function makeVisual(state) {
     materials.push(faceMaterial, edgeMaterial);
     chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
-  addArrowVisual(group, exposedMarks({ placements: leaves }), materials, geometries);
+  addArrowVisual(group, leaves.flatMap(worldMarks), materials, geometries);
   const parent = makeParentOutline(size, state.missingCorner, state.origin);
   // Keep the original chair fixed in world space; new copies grow around it.
   group.position.set(-1, -1, -1);
@@ -625,13 +625,13 @@ function makeSearchVisual(state) {
     variant.cells.forEach(cell => allCells.push(add(placement.origin, cell)));
   }
 
-  addArrowVisual(group, exposedMarks(state), materials, geometries);
+  addArrowVisual(group, state.placements.flatMap(worldMarks), materials, geometries);
 
   const minima = [0, 1, 2].map(axis => Math.min(...allCells.map(cell => cell[axis])));
   const maxima = [0, 1, 2].map(axis => Math.max(...allCells.map(cell => cell[axis])) + 1);
-  const center = minima.map((minimum, axis) => (minimum + maxima[axis]) / 2);
   const size = Math.max(...maxima.map((maximum, axis) => maximum - minima[axis]));
-  group.position.set(-center[0], -center[1], -center[2]);
+  // Use the same fixed seed frame as inflation, never the patch centroid.
+  group.position.set(-1, -1, -1);
 
   return { group, level: 0, leaves: state.placements, chairs, materials, geometries, size };
 }
@@ -757,6 +757,31 @@ function cameraDestinationForVisual(visual) {
   return sphere.center.clone().addScaledVector(direction, distance);
 }
 
+function cameraDestinationForGrowth(visual) {
+  // Keep the viewing direction and orbit target fixed. Only dolly backward
+  // when a corner of the growing patch would leave the padded view frustum.
+  const backward = camera.position.clone().sub(controls.target).normalize();
+  const right = new THREE.Vector3(1, 0, 0).applyQuaternion(camera.quaternion);
+  const up = new THREE.Vector3(0, 1, 0).applyQuaternion(camera.quaternion);
+  const tangentY = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * 0.85;
+  const tangentX = tangentY * camera.aspect;
+  const bounds = new THREE.Box3().setFromObject(visual.group);
+  let distance = camera.position.distanceTo(controls.target);
+  for (const x of [bounds.min.x, bounds.max.x]) {
+    for (const y of [bounds.min.y, bounds.max.y]) {
+      for (const z of [bounds.min.z, bounds.max.z]) {
+        const point = new THREE.Vector3(x, y, z).sub(controls.target);
+        distance = Math.max(distance, point.dot(backward) + Math.max(
+          Math.abs(point.dot(right)) / tangentX,
+          Math.abs(point.dot(up)) / tangentY,
+          camera.near * 2
+        ));
+      }
+    }
+  }
+  return controls.target.clone().addScaledVector(backward, distance);
+}
+
 function swapVisual(nextVisual, duration, cameraDestination) {
   setVisualOpacity(nextVisual, 0);
   root.add(nextVisual.group);
@@ -816,7 +841,7 @@ function showGrowthStep(direction) {
   const nextVisual = makeSearchVisual(growthState);
   updateReadout();
   drawHierarchyPlot();
-  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForVisual(nextVisual));
+  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForGrowth(nextVisual));
 }
 
 function runNextSearchStep() {
@@ -863,7 +888,7 @@ function switchMode(nextMode) {
   disposeVisual(currentVisual);
   currentVisual = mode === "search" ? makeSearchVisual(growthState) : makeVisual(currentInflationState);
   root.add(currentVisual.group);
-  camera.position.copy(cameraDestinationForVisual(currentVisual));
+  camera.position.copy(mode === "search" ? cameraDestinationForGrowth(currentVisual) : cameraDestinationForVisual(currentVisual));
   updateModePanel();
 }
 chairModeSelect.addEventListener("change", () => switchMode(chairModeSelect.value));
@@ -982,7 +1007,9 @@ function resize() {
   renderer.setSize(width, height, false);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  if (currentVisual && !transition) camera.position.copy(cameraDestinationForVisual(currentVisual));
+  if (currentVisual && !transition) {
+    camera.position.copy(mode === "search" ? cameraDestinationForGrowth(currentVisual) : cameraDestinationForVisual(currentVisual));
+  }
 }
 
 function resizeOrientationBall() {
