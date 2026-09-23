@@ -625,8 +625,6 @@ footer p { margin: 0; }
 
 /* The paper's three arrow colors remain independent of orientation selection. */
 .marking-key { display: grid; gap: 4px; margin-top: 12px; font-size: 12px; line-height: 1.4; }
-.marking-key label { font-weight: 700; display: flex; align-items: center; gap: 7px; margin-bottom: 3px; }
-.marking-key input { accent-color: #2b407d; }
 .marking-key i { font-style: normal; font-weight: 900; font-size: 19px; margin-right: 4px; }
 .blue-arrow { color: #2b407d; } .red-arrow { color: #de292d; } .green-arrow { color: #779d23; }
 .marking-key small { color: var(--muted); }
@@ -667,3 +665,18 @@ footer p { margin: 0; }
   .scene-shell:not(.is-search) .orientation-panel .search-status { display: none; }
 }
 
+
+.marking-toggle { display: flex; border: 1px solid var(--line); margin-bottom: 7px; }
+.marking-toggle button { flex: 1; min-width: 0; padding: 8px 4px; border: 0; background: transparent; color: var(--ink); font-family: inherit; font-size: 11px; font-weight: 600; line-height: 1.25; cursor: pointer; }
+.marking-toggle button + button { border-left: 1px solid var(--line); }
+.marking-toggle button[aria-pressed="true"] { background: #1d6b62; color: #fff; }
+.marking-toggle button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.marking-legend { display: grid; gap: 4px; }
+.marking-legend[hidden] { display: none; }
+.value-swatches { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.value-swatches span { display: inline-flex; align-items: center; gap: 5px; }
+.marking-key .value-symbol { display: inline-block; width: 10px; height: 10px; margin: 0; flex: none; }
+.value-symbol.negative { background: #7054ba; transform: rotate(45deg); }
+.value-symbol.zero { border: 2px solid #63736d; border-radius: 50%; }
+.value-symbol.positive { background: #008781; border-radius: 50%; }
+.marking-legend a { font-size: 11px; line-height: 1.4; margin-top: 3px; }

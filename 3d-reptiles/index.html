@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260923-simple-graph">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-marking-view">
   <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -74,11 +74,25 @@
             <span id="scale-right">quarter turns</span>
           </div>
           <p id="panel-description">Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.</p>
-          <div class="marking-key" aria-label="Chair44 matching rules">
-            <label><input id="show-markings" type="checkbox" checked> Show arrows</label>
-            <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
-            <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
-            <small>Arrow directions coincide at each contact.</small>
+          <div class="marking-key" aria-label="Chair44 marking display">
+            <div class="marking-toggle" role="group" aria-label="Marking representation">
+              <button type="button" data-marking-view="arrows" aria-pressed="true">Arrows</button>
+              <button type="button" data-marking-view="values" aria-pressed="false">Lattice values</button>
+            </div>
+            <div id="arrow-legend" class="marking-legend">
+              <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
+              <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
+              <small>Arrow directions coincide at each contact.</small>
+            </div>
+            <div id="value-legend" class="marking-legend" hidden>
+              <div class="value-swatches" aria-label="Scalar marking values">
+                <span><i class="value-symbol negative" aria-hidden="true"></i> \(-1\)</span>
+                <span><i class="value-symbol zero" aria-hidden="true"></i> \(0\)</span>
+                <span><i class="value-symbol positive" aria-hidden="true"></i> \(1\)</span>
+              </div>
+              <small>Dots mark the assigned lattice values. Hollow circles are assigned zero; unmarked points are omitted. Shared matching points remain visible.</small>
+              <a href="#lattice-title">How the values encode the arrows</a>
+            </div>
           </div>
           <p id="search-status" class="search-status" aria-live="polite"></p>
           <dl id="search-stats" class="search-stats" aria-live="polite">
@@ -211,6 +225,6 @@
       <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-run-history-lattice"></script>
+  <script type="module" src="./chair/app.js?v=20260923-marking-view"></script>
 </body>
 </html>

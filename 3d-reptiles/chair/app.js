@@ -12,6 +12,9 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
+import { makeLatticeMarkVisual } from './lattice-visual.js?v=20260923-marking-view';
+
+let markingView = 'arrows';
 const viewport = document.getElementById("viewport");
 const sceneShell = document.querySelector(".scene-shell");
 const inflateButton = document.getElementById("inflate-button");
@@ -484,7 +487,7 @@ function makeVisual(state) {
   materials.push(parent.material);
   geometries.push(parent.geometry);
 
-  return {
+  const visual = {
     group,
     level,
     state,
@@ -494,6 +497,8 @@ function makeVisual(state) {
     materials,
     geometries
   };
+  applyMarkingView(visual);
+  return visual;
 }
 
 function channelColor(color) { return COLORS[color]; }
@@ -517,7 +522,7 @@ function addArrowVisual(group, marks, materials, geometries) {
   }
   const arrows = new THREE.Group();
   arrows.name = 'chair44-arrows';
-  arrows.visible = document.getElementById('show-markings').checked;
+  arrows.visible = markingView === 'arrows';
   for (const [color,positions] of buckets) {
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
@@ -591,7 +596,28 @@ function makeSearchVisual(state) {
   // Use the same fixed seed frame as inflation, never the patch centroid.
   group.position.set(-1, -1, -1);
 
-  return { group, level: 0, leaves: state.placements, chairs, materials, geometries, size };
+  const visual = { group, level: 0, leaves: state.placements, chairs, materials, geometries, size };
+  applyMarkingView(visual);
+  return visual;
+}
+
+function applyMarkingView(visual) {
+  if (!visual) return;
+  let lattice = visual.group.getObjectByName('chair44-lattice');
+  if (markingView === 'values' && !lattice) {
+    const marks = makeLatticeMarkVisual(visual.leaves);
+    const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
+    for (const material of marks.materials) {
+      material.userData.transitionAmount = amount;
+      material.opacity = material.userData.baseOpacity * amount;
+    }
+    visual.group.add(marks.group);
+    visual.materials.push(...marks.materials);
+    visual.geometries.push(...marks.geometries);
+    lattice = marks.group;
+  }
+  visual.group.getObjectByName('chair44-arrows').visible = markingView === 'arrows';
+  if (lattice) lattice.visible = markingView === 'values';
 }
 
 function setVisualOpacity(visual, amount) {
@@ -672,6 +698,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 viewport.dataset.retainedChildren = "";
 viewport.dataset.tile = "Chair44";
 viewport.dataset.markings = "24";
+viewport.dataset.markingView = markingView;
 
 function updateModePanel() {
   const searching = mode === "search";
@@ -883,11 +910,17 @@ runButton.addEventListener("click", () => {
   updateActionButtons();
   if (autoRun) runNextSearchStep();
 });
-document.getElementById('show-markings').addEventListener('change', event => {
-  for (const visual of [currentVisual, transition?.from, transition?.to]) {
-    const arrows = visual?.group.getObjectByName('chair44-arrows');
-    if (arrows) arrows.visible = event.target.checked;
-  }
+document.querySelectorAll('[data-marking-view]').forEach(button => {
+  button.addEventListener('click', () => {
+    markingView = button.dataset.markingView;
+    viewport.dataset.markingView = markingView;
+    document.querySelectorAll('[data-marking-view]').forEach(option => {
+      option.setAttribute('aria-pressed', String(option.dataset.markingView === markingView));
+    });
+    document.getElementById('arrow-legend').hidden = markingView !== 'arrows';
+    document.getElementById('value-legend').hidden = markingView !== 'values';
+    for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
+  });
 });
 function switchMode(nextMode) {
   stopAutoRun();

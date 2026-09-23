@@ -184,3 +184,23 @@ From local matching, Apply inflation cancels Run and displays the existing saved
 inflation state without expanding it. A subsequent click advances inflation.
 Returning is permitted even at the maximum inflation level. Local and inflation
 states retain their separate histories.
+
+## Arrow and scalar-value display
+
+The marking toggle selects either the arrows or the actual scalar lattice
+marking from `chair-lattice.js`. `lattice-visual.js` places points at the exported
+lattice coordinates divided by 12, in the same fixed tile frame as the arrows.
+Negative values use purple diamonds, zero values use hollow gray circles, and
+positive values use teal discs. Assigned zeros are rendered; absent points are
+not. Coincident agreeing assignments are drawn once, retaining an assignment
+count, so touching tiles never erase their shared marking.
+
+Point geometry is built only when requested, then retained for toggling. The
+choice persists through inflation, local steps, Run, Undo, and mode changes,
+including a toggle during a visual transition. This is a display choice only;
+it does not change the point model or search state.
+
+`node scripts/test-chair-marking-view-browser.cjs` checks every displayed point,
+value, and shared-assignment count against the scalar model for single tiles,
+a supertile, and local growth; it also exercises transitions, grouped Run undo,
+returning to inflation, the legends, and mobile layout.
