@@ -1,6 +1,6 @@
 import {runGrowthExperiment} from '../growth-experiment.js?v=20260921-growth';
 import {verifyVoxelPatch} from '../voxel-point-model.js';
-import {prepareModel} from './model.js?v=2.5.0';
+import {prepareModel} from './model.js?v=20260923-chair-export';
 import {search} from './search.js?v=2.5.0';
 import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-search-inset';
 import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-growth';
@@ -20,6 +20,7 @@ export async function* runExperiment(data){
     yield {type:'model',model};
     if(data.action==='preview')return;
     if(data.action==='probe'){
+      if(model.exactPointImport)throw Error('The solid-angle periodic probe is not a certificate for this imported point domain. Use the exact growth or window search.');
       if(model.requiredVoxels)throw Error('The legacy structural probes use a different point model. Recorded voxel-period evidence is linked in the catalogue.');
       if(model.slab)throw Error('The 3D periodic/isohedral probe does not certify this one-slab model. Use the original explorer for the historical 3D prism probe.');
       const p=preprocessTilingSystem({mode_key:data.tile,include_mirrors:data.mirrors,custom_system:data.custom},tileSpecs);

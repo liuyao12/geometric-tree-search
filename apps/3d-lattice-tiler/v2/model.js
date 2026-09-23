@@ -1,3 +1,5 @@
+import {chair44PointExport} from '../../../3d-reptiles/chair/lattice-export.js?v=20260923-point-export';
+import {prepareExactPointModel} from '../exact-point-import.js?v=20260923-point-export';
 import {RESEARCH_TILES,RESEARCH_BY_ID} from '../research-catalog.js?v=20260921-search-inset';
 import {prepareVoxelPointModel} from '../voxel-point-model.js';
 import {tileSpecs, preprocessTilingSystem} from '../engine.js?v=20260921-growth';
@@ -11,6 +13,7 @@ export const MODES = [
   {id:'both',name:'GCTS + RL',color:'#ffc56c'}
 ];
 export const CASES = [
+  {id:'chair44_relief',name:'Chair44 · centered relief',group:'Research',note:'Exact chamber occupancy and rational cube volumes. Centered apexes and joined dents; no angle rounding. Translations by whole original small cubes. Aperiodicity of this geometric version is unproved.',evidence:'docs/projects/chair44-lattice-export.md'},
   {id:'a2_hat_prism',name:'Hat prism',group:'Research',note:'Single slab on the index-3 A₂ sublattice. Cap weights are doubled: interior t = 1, rim values are planar angles. Six in-plane rotations; reflected tiles are optional.'},
   {id:'a2_turtle_prism',name:'Turtle prism',group:'Research',note:'Single slab using the Turtle demo’s index-3 point domain. Each cap retains 11 boundary vertices and 2 interior points. Interior t = 1; rim values are planar angles.'},
   {id:'buckled_ring',name:'Buckled ring',group:'Periodic stress control',note:'The reference screen found small periodic and isohedral point certificates. Retained as a nonconvex search stress control, not a nonperiodic example.'},
@@ -24,6 +27,7 @@ export function catalog() {
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 export function prepareModel(config) {
+  if(config.custom?.point_model||!config.custom&&config.tile==='chair44_relief')return {...prepareExactPointModel(config.custom??chair44PointExport(),config),appVersion:VERSION};
   const research=!config.custom&&RESEARCH_BY_ID.get(config.tile);
   if(research)return {...prepareVoxelPointModel(research.voxels,{name:research.name,mirrors:!!config.mirrors,radius:config.radius??1}),catalogueId:research.sourceId,appVersion:VERSION};
   if(!config.custom&&SLAB_TILES[config.tile])return prepareSlab(config,VERSION);

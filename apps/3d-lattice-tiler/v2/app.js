@@ -8,7 +8,7 @@ import {remember3DMarking} from '../marking-storage.js?v=20260921-search-inset';
 import {MarkingPreview} from '../marking-preview.js?v=20260921-search-inset';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=2.5.0';
+import {catalog,MODES,VERSION} from './model.js?v=20260923-chair-export';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 let markingOpen=true,sampleInspection=null;
@@ -32,7 +32,7 @@ if(!researchCatalogue){for(const group of [...$('tile').children]){for(const opt
 if(cases.some(c=>c.id===requestedTile))$('tile').value=requestedTile;else if(!researchCatalogue)$('tile').value=DEMONSTRATIONS[0].tile;
 $('reference').hidden=growthMode||!researchCatalogue;$('demoEvidence').hidden=growthMode||researchCatalogue;
 function applyDemonstration(){if(growthMode)return;const d=DEMONSTRATIONS.find(c=>c.tile===$('tile').value);if(!d)return;$('demonstrationNote').textContent=d.summary;const c=demonstrationConfig(d.tile);$('radius').value=c.radius;$('seconds').value=c.timeMs/1000;$('seed').value=c.seed;$('pairBudget').value=c.pairNodes;$('markingExtent').value=c.markingExtent;$('mirrors').checked=c.mirrors;}
-if(growthMode){$('seed').value='10';$('markingExtent').value='0';$('mirrors').checked=true;}else if(!researchCatalogue)applyDemonstration();
+if(growthMode){$('seed').value='10';$('markingExtent').value='0';$('mirrors').checked=requestedTile!=='chair44_relief';if(requestedTile==='chair44_relief')$('targetTiles').value='8';}else if(!researchCatalogue)applyDemonstration();
 $('useDemonstration').onclick=()=>{applyDemonstration();preview();};
 for(const m of MODES){const b=document.createElement('button');b.className='lane';b.style.setProperty('--lane',m.color);b.id=`lane-${m.id}`;b.addEventListener('click',()=>{active=m.id;sampleInspection=null;refresh();renderPatch();showLearning();});$('lanes').append(b);}
 
@@ -63,7 +63,7 @@ function draw(model,placements,fit=false,diagnostics=null){
   }
   const totals=new Map();for(const p of placements)for(const q of model.orientations[p.oi].cells){const k=q.pos.map((x,i)=>x+p.translation[i]).join(',');totals.set(k,(totals.get(k)??0)+q.weight);}
   const positions=[],colors=[];for(const p of model.required){positions.push(...p.pos);const c=new THREE.Color(totals.get(p.pos.join(','))===model.capacity?'#4fdac5':'#ffd18b');colors.push(c.r,c.g,c.b);}
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));pointGroup.add(new THREE.Points(g,new THREE.PointsMaterial({size:.095,vertexColors:true,depthTest:false,transparent:true,opacity:.95})));
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));pointGroup.add(new THREE.Points(g,new THREE.PointsMaterial({size:.095*(model.coordinateScale??1),vertexColors:true,depthTest:false,transparent:true,opacity:.95})));
   const diagnosticPoints=(diagnostics?.inspection?.points??[]).filter(p=>p.overlap).map(p=>({pos:p.pos,color:p.conflict?'#ed5353':'#369ee7'}));
   if(diagnostics?.deadPoint)diagnosticPoints.push({pos:diagnostics.deadPoint,color:'#ed5353'});
   if(diagnosticPoints.length){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(diagnosticPoints.flatMap(p=>p.pos),3));g.setAttribute('color',new THREE.Float32BufferAttribute(diagnosticPoints.flatMap(p=>new THREE.Color(p.color).toArray()),3));diagnosticGroup.add(new THREE.Points(g,new THREE.PointsMaterial({size:9,sizeAttenuation:false,vertexColors:true,depthTest:false})));}
@@ -105,15 +105,17 @@ function renderPatch(fit=false){
  const viewer=document.querySelector('.viewer');viewer.dataset.searchPhase=phase;viewer.dataset.placements=String(frame?.placements.length??r?.placements?.length??1);
 }
 function config(){return {searchProtocol:growthMode?'seed-growth':'fixed-window',targetTiles:Math.max(1,Math.min(5000,Math.floor(+$('targetTiles').value||1000))),tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(600,Number($('seconds').value)||120))*1000,nodes:1000000,markingExtent:Number($('markingExtent').value),pairNodes:Math.max(1,Math.min(1000000,Math.floor(+$('pairBudget').value||500))),custom};}
-function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','targetTiles','radius','seconds','seed','pairBudget','markingExtent','useDemonstration','mirrors','import'])$(id).disabled=value;$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels;}
+const properOnly=()=>$('tile').value==='chair44_relief'||custom?.point_model?.allowReflections===false;
+function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','targetTiles','radius','seconds','seed','pairBudget','markingExtent','useDemonstration','mirrors','import','customFile'])$(id).disabled=value||(id==='mirrors'&&properOnly());$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels||!!models.preview?.exactPointImport;}
 function syncModelUI(model){
   markingLibrary.refresh(model);
-  const slab=!!model.slab,voxel=!!model.requiredVoxels;
-  [...$('radius').options].forEach((o,i)=>{const r=Number(o.value);o.disabled=!slab&&r>3;o.textContent=voxel?`Voxel radius ${r} · ${(2*r+1)**3+(2*r+2)**3} points`:slab?`Slab radius ${r} · ${2*(1+3*r*(r+1))} points`:`${2*r+1} × ${2*r+1} × ${2*r+1} · ${(2*r+1)**3} points`;});
-  $('domainBadge').textContent=voxel?'Voxel centers + corners · integer translations':slab?`Single slab · ${model.slab.sublatticeIndex===3?'index-3 A₂':'A₂'}`:'Exact point model · Z³';
+  const slab=!!model.slab,voxel=!!model.requiredVoxels,exact=!!model.exactPointImport;
+  [...$('radius').options].forEach((o,i)=>{const r=Number(o.value);o.disabled=!slab&&r>3;o.textContent=exact?`Cube radius ${r} · ${model.pointDomain.sites.length*(2*r+1)**3} points`:voxel?`Voxel radius ${r} · ${(2*r+1)**3+(2*r+2)**3} points`:slab?`Slab radius ${r} · ${2*(1+3*r*(r+1))} points`:`${2*r+1} × ${2*r+1} × ${2*r+1} · ${(2*r+1)**3} points`;});
+  $('domainBadge').textContent=exact?'Chair44 / imported exact point domain':voxel?'Voxel centers + corners · integer translations':slab?`Single slab · ${model.slab.sublatticeIndex===3?'index-3 A₂':'A₂'}`:'Exact point model · Z³';
   $('targetNote').textContent=voxel?'Centers forbid voxel overlap. Corners must also fill completely, so tiles extend beyond the selected core. Evidence notes use proper rotations; reflected runs are a separate setting.':slab?'Both caps carry planar t-values. Cap interiors have t = 1 and leave the frontier immediately. Growth is lateral only.':'All required points must sum to 1. Tiles may extend beyond the window.';
   if(growthMode)$('targetNote').textContent='Starts with one tile. New tile support extends the frontier; every exposed point is checked before a growth checkpoint.';
-  $('probe').disabled=busy||slab||voxel;
+  $('probe').disabled=busy||slab||voxel||exact;
+  if(exact){$('probeResults').textContent='Solid-angle probes do not certify this point domain. Use exact growth or window search; no aperiodicity claim.';$('targetNote').textContent='Whole small-cube translations. Occupancy points forbid overlap; exact cube-volume points expose gaps. Solid angles are not rounded.';}
   if(voxel)$('probeResults').textContent='Recorded voxel-period results are linked above. The legacy point-model probes do not apply to this model.';
   if(slab)$('probeResults').textContent='The 3D probes apply to the historical prism model, available in the original explorer. They do not test this single slab.';
   else if(!voxel&&($('probeResults').textContent.startsWith('The 3D probes')||$('probeResults').textContent.startsWith('Recorded voxel')))$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';
@@ -140,6 +142,7 @@ function drawChart(){
   $('chart').innerHTML=s+'</svg>';
 }
 function describeTile(selected){
+ if(properOnly())$('mirrors').checked=false;$('mirrors').disabled=properOnly();
  $('tileName').textContent=custom?.name??selected?.name??'Custom system';
  $('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;
  const link=$('tileEvidence');link.hidden=!!custom||!selected?.evidence;
@@ -149,12 +152,12 @@ async function preview(){
   sampleInspection=null;markingOpen=true;
   markingLibrary.refresh(null);markingOverlay.set([]);document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);const demo=DEMONSTRATIONS.find(c=>c.tile===selected?.id);$('useDemonstration').hidden=growthMode||!demo;$('demonstrationNote').textContent=growthMode?'':demo?.summary??'Research case: no measured GCTS advantage is established.';$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=2.5.0',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=20260923-chair-export',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods with the same search settings.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=2.5.0',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=20260923-chair-export',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
@@ -207,8 +210,9 @@ $('run').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false
 $('suite').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);try{for(const preset of DEMONSTRATIONS){if(cancelled)break;const test=cases.find(c=>c.id===preset.tile);custom=null;$('tile').value=test.id;applyDemonstration();describeTile(test);await compare({...config(),tile:test.id,custom:null});}$('status').textContent=cancelled?'Suite stopped. Completed runs are retained.':`Demonstration suite complete. Export contains ${archive.length} experiment(s).`;}finally{lock(false);}};
 $('stop').onclick=()=>{cancelled=true;worker?.cancel?.();};
 $('probe').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);$('probeResults').textContent='';try{for(const strategy of ['translational','isohedral']){if(cancelled)break;$('status').textContent=`Checking ${strategy} · up to 8 motif tiles`;const r=await runWorker({...config(),mode:strategy},'probe',strategy);const p=document.createElement('div');p.textContent=`${strategy}: ${r.event?.success?'certificate found':r.message??'unknown within bounds'}`;$('probeResults').append(p);archive.push({probe:strategy,config:config(),result:r});}$('status').textContent='Structural probe results are separate from the growth comparison.';}finally{lock(false);}};
+$('customFile').onchange=async()=>{try{const file=$('customFile').files[0];if(!file)return;if(file.size>10000000)throw Error('JSON file exceeds 10 MB');$('custom').value=await file.text();$('import').click();}catch(e){$('status').textContent=`Custom system: ${e.message}`;}};
 $('export').onclick=()=>{const data={version:VERSION,exportedAt:new Date().toISOString(),protocol:growthMode?'Seed-based outward point growth; global dead/forced checks, earliest generation, fill/incidence/coverage/new-point ranking and seeded random ties; same seed and target in all lanes; learned marking is a restricted model; checkpoint checks full frontier viability, not infinite extension.':'Exact finite point target; exported model declares the single-slab or 3D domain, weights and boundary; all target points root generation 0; sequential cold online runs; timings include preparation and verification; no held-out claim',experiments:archive,current:{config:runConfig,results,series}},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=`lattice-v2-evidence-${Date.now()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-$('import').onclick=()=>{try{const value=JSON.parse($('custom').value);if(!value||typeof value!=='object'||(!value.polycubes?.length&&!value.polyhedra?.length&&!value.figure_refs?.length))throw Error('Include polycubes, polyhedra or figure_refs.');custom=value;if(!$('tile').querySelector('option[value="custom"]')){const o=document.createElement('option');o.value='custom';o.textContent='Custom system';$('tile').append(o);}$('tile').value='custom';if(+$('radius').value>3)$('radius').value='3';preview();}catch(e){$('status').textContent=`Custom system: ${e.message}`;}};
+$('import').onclick=()=>{try{const value=JSON.parse($('custom').value);if(!value||typeof value!=='object'||(!value.polycubes?.length&&!value.polyhedra?.length&&!value.figure_refs?.length&&!value.point_model))throw Error('Include polycubes, polyhedra, figure_refs or point_model.');custom=value;if(!$('tile').querySelector('option[value="custom"]')){const o=document.createElement('option');o.value='custom';o.textContent='Custom system';$('tile').append(o);}$('tile').value='custom';if(+$('radius').value>3)$('radius').value='3';preview();}catch(e){$('status').textContent=`Custom system: ${e.message}`;}};
 $('tile').onchange=()=>{if(!researchCatalogue)applyDemonstration();if(!['a2_hat_prism','a2_turtle_prism','a2_hexagonal_prism'].includes($('tile').value)&&+$('radius').value>3)$('radius').value='3';preview();};
 for(const id of ['targetTiles','radius','mirrors','markingExtent'])$(id).onchange=()=>preview();
 $('fit').onclick=fitView;$('points').onclick=()=>{showPoints=!showPoints;pointGroup.visible=showPoints;$('points').textContent=`Points ${showPoints?'on':'off'}`;$('points').setAttribute('aria-pressed',String(showPoints));};$('edges').onclick=()=>{showEdges=!showEdges;edgeGroup.visible=showEdges;$('edges').textContent=`Edges ${showEdges?'on':'off'}`;$('edges').setAttribute('aria-pressed',String(showEdges));};

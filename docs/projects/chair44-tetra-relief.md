@@ -88,6 +88,11 @@ all six original tetrahedron edges, so some are construction lines rather than
 edges of the combined solid. Separate tiles retain their contact surfaces,
 transparency, and orientation dimming.
 
+## Export to the lattice tiler
+
+The [exact point export](chair44-lattice-export.md) retains this geometry and
+imports it into the shared lattice tiler without rounding solid angles.
+
 ## Search contract and scope
 
 - Every cube touched by a placed tile activates all its chamber points. Missing
