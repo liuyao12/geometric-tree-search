@@ -685,3 +685,5 @@ footer p { margin: 0; }
 .legend-arrow { width: 16px; height: 16px; fill: currentColor; vertical-align: -3px; transform: rotate(45deg); }
 .legend-arrow.red-arrow { color: #de292d; }
 .legend-arrow.green-arrow { color: #9cc83b; }
+
+.orientation-panel .matching-description { display: block; margin: 9px 0 0; font: 11px/1.4 ui-sans-serif, system-ui, sans-serif; grid-column: 1 / -1; }

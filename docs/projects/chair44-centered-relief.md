@@ -8,9 +8,10 @@ short, independently checked contradiction certificates. This result does not
 establish that arbitrary physical placements must align to that lattice.
 
 On the [live Chair44 page](https://liuyao12.github.io/geometric-tree-search/3d-reptiles/),
-choose **Relief → Centered** to compare the shapes. This changes the displayed
-geometry. Apply one and Run still use the original arrow search; the separate
-research search below uses only relief occupancy.
+choose **Relief → Centered** to compare the shapes. Apply one and Run now use the selected relief geometry in both the Arrows
+and Relief displays. The [browser growth audit](chair44-geometric-growth.md)
+records the engine integration, branching comparison, and undo semantics.
+The experiments below use the same relief occupancy model.
 
 ## A physical flip-out construction
 

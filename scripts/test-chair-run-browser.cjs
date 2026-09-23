@@ -37,7 +37,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
             sameTarget() { return controls.target.toArray().every((v, i) => Math.abs(v - this.savedTarget[i]) < 1e-9); },
             sameInflation() { return this.savedInflation === currentInflationState; },
             read: () => ({ count: growthState.placements.length, running: autoRun,
-              transitioning: Boolean(transition), queued: runTimer !== null,
+              transitioning: Boolean(transition) || searchPending, pending: searchPending, queued: runTimer !== null,
               complete: growthState.complete, status: growthState.status,
               mode, inflationGeneration: generation })
           };

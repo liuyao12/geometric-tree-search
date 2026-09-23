@@ -14,8 +14,8 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       const response = await route.fetch();
       await route.fulfill({ response, body: (await response.text()) + `
         window.valueCheck = {
-          read: () => ({ markingView, mode, generation, count: growthState.placements.length,
-            running: autoRun, transitioning: Boolean(transition) }),
+          read: () => ({ markingView, mode, generation, rule:growthState.rule, count: growthState.placements.length,
+            running: autoRun, transitioning: Boolean(transition) || searchPending, pending: searchPending }),
           remember() { this.growth = growthState; this.inflation = currentInflationState; },
           unchanged() { return this.growth === growthState && this.inflation === currentInflationState; },
           relief() {
@@ -158,6 +158,16 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await page.locator('#apply-one-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 9 * 16);
+    assert.equal((await page.evaluate(() => valueCheck.read())).rule, 'relief-centered');
+    await page.evaluate(() => valueCheck.remember());
+    await page.getByRole('button', {name:'Offset',exact:true}).click();
+    assert.equal((await page.evaluate(() => valueCheck.read())).rule, 'relief-offset');
+    assert.equal((await page.evaluate(() => valueCheck.read())).count, 9);
+    await page.locator('#back-button').click();
+    await page.waitForFunction(() => !valueCheck.read().transitioning);
+    assert.equal(await page.evaluate(() => valueCheck.unchanged()), true, 'Undo restores the exact pre-rule-change solver snapshot');
+    assert.equal(await page.getByRole('button', {name:'Centered',exact:true}).getAttribute('aria-pressed'), 'true');
+
     await page.evaluate(() => valueCheck.highlight());
     await relief.click();
     await page.locator('#run-button').click();

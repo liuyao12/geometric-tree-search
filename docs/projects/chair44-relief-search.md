@@ -1,6 +1,6 @@
 # Chair44: testing the relief as occupancy only
 
-This experiment tests the **displayed relief**, without an arrow-matching or
+This experiment tests the **offset relief**, without an arrow-matching or
 color-matching predicate. It asks whether additional nonoverlapping pairs can
 extend, and whether the resulting patches exhibit the eight-chair reptile
 structure. It does not test centered pyramids, the proposed letter labels, or
@@ -146,7 +146,7 @@ budget, and `CHAIR_RELIEF_RETRY_UNKNOWN=1` retries stopped cases while retaining
 the previous attempts in the record. Timings in the raw files are
 observations, not a performance comparison with the arrow solver.
 
-The occupancy model is in [chair-relief-points.mjs](../../scripts/lib/chair-relief-points.mjs).
+The occupancy model is in [chair-relief-points.mjs](../../3d-reptiles/chair/relief-points.js).
 Saved counts, gap certificates, and hierarchy audits are in
 [results.json](../data/chair44-relief-search/results.json). All raw finite placement
 witnesses and that summary are in the [replay archive](../data/chair44-relief-search/witnesses.zip).

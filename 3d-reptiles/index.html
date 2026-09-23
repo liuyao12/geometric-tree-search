@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260924-half-arrows">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-geometric-growth">
 </head>
 <body>
   <main>
@@ -91,9 +91,10 @@
                 <button type="button" data-relief-placement="centered" aria-pressed="false">Centered</button>
               </div>
               <small>The translucent surface lets you see the back.</small>
-              <small id="centered-relief-note" hidden>Centered is experimental. Apply one and Run still use the original arrow rules. <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-centered-relief.md">Relief-only tests &amp; physical model ideas</a>.</small>
+              <small id="centered-relief-note" hidden>The blue pair and red/green features are centered on each small square. <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-centered-relief.md">Geometry tests &amp; physical model ideas</a>.</small>
             </div>
           </div>
+          <p id="matching-description" class="matching-description">Matching: offset relief geometry</p>
           <div class="scene-citation">
             Markings after <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss (2026), Figures 2 &amp; 5</a>.
             <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
@@ -101,6 +102,7 @@
           <p id="search-status" class="search-status" aria-live="polite"></p>
           <dl id="search-stats" class="search-stats" aria-live="polite">
             <div><dt>frontier</dt><dd id="frontier-value">0</dd></div>
+            <div><dt>branches</dt><dd id="branch-value">0</dd></div>
             <div><dt>backtracks</dt><dd id="backtrack-value">0</dd></div>
           </dl>
         </aside>
@@ -127,6 +129,6 @@
     </section>
 
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-centered-relief"></script>
+  <script type="module" src="./chair/app.js?v=20260923-geometric-growth"></script>
 </body>
 </html>

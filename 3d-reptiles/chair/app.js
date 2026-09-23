@@ -6,9 +6,8 @@ import {
   createGrowthState,
   createGrowthStateFromPatch,
   exposedMarks,
-  growOne,
   shrinkOne
-} from "./chair-gcts.js?v=20260924-inflation-growth";
+} from "./chair-gcts.js?v=20260923-geometric-growth";
 import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
@@ -40,6 +39,9 @@ const scaleLeft = document.getElementById("scale-left");
 const scaleRight = document.getElementById("scale-right");
 const frontierValue = document.getElementById("frontier-value");
 const backtrackValue = document.getElementById("backtrack-value");
+const branchValue = document.getElementById("branch-value");
+const matchingDescription = document.getElementById("matching-description");
+const activeRule = () => centeredRelief ? "relief-centered" : "relief-offset";
 const sceneInstruction = document.getElementById("scene-instruction");
 
 const MAX_GENERATION = 4;
@@ -755,13 +757,14 @@ function updateReadout() {
     generationValue.textContent = String(growthState.placements.length);
     tileLabel.textContent = "prototile";
     tileValue.textContent = "1";
-    frontierValue.textContent = String(exposedMarks(growthState).length);
+    frontierValue.textContent = growthState.frontierCount === undefined ? "…" : String(growthState.frontierCount);
     backtrackValue.textContent = String(growthState.solverBacktracks);
+    branchValue.textContent = String(growthState.branchDecisions);
     searchStatus.textContent = growthState.status === 'consistent finite patch'
       ? 'Finite patch verified. Apply one to continue.'
       : growthState.status === 'exhausted' ? 'Local search exhausted.'
       : growthState.status.includes('budget') ? 'Backtracking; apply one to continue.'
-      : `${growthState.forcedPlacements} forced · ${growthState.branchDecisions} choices`;
+      : `${growthState.forcedPlacements} forced · ${growthState.branchDecisions} branches`;
   } else {
     generationLabel.textContent = "inflations";
     generationValue.textContent = String(generation);
@@ -771,7 +774,7 @@ function updateReadout() {
 }
 
 function updateActionButtons() {
-  const busy = Boolean(transition);
+  const busy = Boolean(transition) || searchPending;
   chairModeSelect.disabled = busy;
   inflateButton.disabled = (busy && !autoRun) || (mode === 'inflation' && generation === MAX_GENERATION);
   applyOneButton.disabled = busy || (mode === 'search' && growthState.complete && growthState.status !== 'consistent finite patch');
@@ -786,7 +789,9 @@ const inflationStates = [initialInflationState()];
 let generation = 0;
 let currentInflationState = inflationStates[generation];
 let mode = "inflation";
-let growthState = createGrowthState(2);
+let growthState = createGrowthState(2, activeRule());
+let searchPending = false;
+let searchWorker = null;
 let autoRun = false;
 let runTimer = null;
 let runStartState = null;
@@ -814,7 +819,7 @@ function updateModePanel() {
     scaleLeft.textContent = "8 directions";
     scaleRight.textContent = "quarter turns";
     panelDescription.textContent = "Three marked rotations per node. No reflections.";
-    sceneInstruction.textContent = "Drag to orbit · blue meets blue · red meets green";
+    sceneInstruction.textContent = "Drag to orbit · bumps and dents determine the fit";
     hierarchyPlot.setAttribute("aria-label", "Colors of exposed Chair44 arrows in the local search");
   } else {
     panelKicker.textContent = "corner-direction graph";
@@ -871,6 +876,12 @@ function cameraDestinationForGrowth(visual) {
 function stopAutoRun() {
   autoRun = false;
   runStartState = null;
+  if (searchPending) {
+    searchWorker?.terminate();
+    searchWorker = null;
+    searchPending = false;
+    viewport.dataset.searchPending = 'false';
+  }
   window.clearTimeout(runTimer);
   runTimer = null;
 }
@@ -954,15 +965,13 @@ function showGeneration(targetGeneration) {
   swapVisual(nextVisual, 720, cameraDestination);
 }
 
-function showGrowthStep(direction) {
-  if (transition || mode !== "search") return;
-  const nextState = direction > 0 ? growOne(growthState) : shrinkOne(growthState);
+function acceptGrowthState(nextState, direction) {
   if (nextState === growthState) return;
-  // One Run click is one undoable action, including its solver stack/counters.
-  // Keep the solver's internal branch rollback independent from UI history.
   growthState = autoRun && runStartState && direction > 0
     ? { ...nextState, history: [...runStartState.history, runStartState] }
     : nextState;
+  centeredRelief = growthState.rule === 'relief-centered';
+  syncReliefControls();
   const nextVisual = makeSearchVisual(growthState);
   updateReadout();
   drawHierarchyPlot();
@@ -971,8 +980,38 @@ function showGrowthStep(direction) {
   swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForGrowth(nextVisual), false);
 }
 
+function showGrowthStep(direction) {
+  if (transition || searchPending || mode !== "search") return;
+  if (direction < 0) {
+    acceptGrowthState(shrinkOne(growthState), direction);
+    return;
+  }
+  const previous = growthState;
+  searchPending = true;
+  viewport.dataset.searchPending = 'true';
+  updateActionButtons();
+  searchStatus.textContent = 'Searching geometric fits…';
+  if (!searchWorker) searchWorker = new Worker(new URL('./search-worker.js?v=20260923-geometric-growth', import.meta.url), {type:'module'});
+  const worker = searchWorker;
+  const failed = message => {
+    if (searchWorker !== worker) return;
+    stopAutoRun();
+    searchStatus.textContent = `Search stopped: ${message}`;
+    updateActionButtons();
+  };
+  worker.onerror = event => { event.preventDefault(); failed(event.message); };
+  worker.onmessage = ({data}) => {
+    if (searchWorker !== worker || !searchPending) return;
+    if (data.error) { failed(data.error); return; }
+    searchPending = false;
+    viewport.dataset.searchPending = 'false';
+    acceptGrowthState({...data.state,history:[...previous.history,previous]}, direction);
+  };
+  worker.postMessage({state:{...previous,history:[]}});
+}
+
 function runNextSearchStep() {
-  if (!autoRun || transition || mode !== "search") return;
+  if (!autoRun || transition || searchPending || mode !== "search") return;
   if (growthState.complete) {
     stopAutoRun();
     updateActionButtons();
@@ -1006,16 +1045,19 @@ runButton.addEventListener("click", () => {
   if (autoRun) stopAutoRun();
   else {
     runStartState = growthState;
+    // Even an immediately cancelled Run is one undoable transaction.
+    growthState = {...growthState,history:[...growthState.history,growthState]};
     autoRun = true;
   }
   updateActionButtons();
   if (autoRun) runNextSearchStep();
+  else updateReadout();
 });
-document.querySelectorAll('[data-marking-view]').forEach(button => {
+document.querySelectorAll('button[data-marking-view]').forEach(button => {
   button.addEventListener('click', () => {
     markingView = button.dataset.markingView;
     viewport.dataset.markingView = markingView;
-    document.querySelectorAll('[data-marking-view]').forEach(option => {
+    document.querySelectorAll('button[data-marking-view]').forEach(option => {
       option.setAttribute('aria-pressed', String(option.dataset.markingView === markingView));
     });
     document.getElementById('arrow-legend').hidden = markingView !== 'arrows';
@@ -1023,21 +1065,44 @@ document.querySelectorAll('[data-marking-view]').forEach(button => {
     for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
   });
 });
+function syncReliefControls() {
+  viewport.dataset.reliefPlacement = centeredRelief ? 'centered' : 'offset';
+  viewport.dataset.matchingRule = activeRule();
+  document.querySelectorAll('button[data-relief-placement]').forEach(option => {
+    option.setAttribute('aria-pressed', String((option.dataset.reliefPlacement === 'centered') === centeredRelief));
+  });
+  document.getElementById('centered-relief-note').hidden = !centeredRelief;
+  matchingDescription.textContent = `Matching: ${centeredRelief ? 'centered' : 'offset'} relief geometry`;
+}
 document.querySelectorAll('button[data-relief-placement]').forEach(button => {
   button.addEventListener('click', () => {
-    centeredRelief = button.dataset.reliefPlacement === 'centered';
-    viewport.dataset.reliefPlacement = centeredRelief ? 'centered' : 'offset';
-    document.querySelectorAll('button[data-relief-placement]').forEach(option => {
-      option.setAttribute('aria-pressed', String((option.dataset.reliefPlacement === 'centered') === centeredRelief));
-    });
-    document.getElementById('centered-relief-note').hidden = !centeredRelief;
+    const nextCentered = button.dataset.reliefPlacement === 'centered';
+    if (nextCentered === centeredRelief) return;
+    stopAutoRun();
+    finishActiveGrowthTransition();
+    if (mode === 'search') {
+      try {
+        const next = createGrowthStateFromPatch(growthState.placements, nextCentered ? 'relief-centered' : 'relief-offset');
+        growthState = {...next,history:[...growthState.history,growthState]};
+      } catch {
+        searchStatus.textContent = 'This patch overlaps with that relief. Undo growth or return to inflation before changing it.';
+        updateActionButtons();
+        return;
+      }
+    }
+    centeredRelief = nextCentered;
+    syncReliefControls();
     for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
+    updateReadout();
+    updateActionButtons();
+    if (mode === 'search') searchStatus.textContent = 'Geometry changed. Current tiles are the fixed starting patch.';
   });
 });
+syncReliefControls();
 function switchMode(nextMode) {
   stopAutoRun();
   if (mode === nextMode) return;
-  if (nextMode === 'search') growthState = createGrowthStateFromPatch(currentInflationState.leaves);
+  if (nextMode === 'search') growthState = createGrowthStateFromPatch(currentInflationState.leaves, activeRule());
   mode = nextMode;
   chairModeSelect.value = mode;
   disposeVisual(currentVisual);

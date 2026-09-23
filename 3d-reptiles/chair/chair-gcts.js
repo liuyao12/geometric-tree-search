@@ -1,7 +1,11 @@
+import { selectFrontier } from './frontier-order.js';
+export { selectFrontier } from './frontier-order.js';
+import { createReliefPointModel } from './relief-points.js';
 import { VARIANTS, FACE_DIRECTIONS, add, sub, key, markPoint, markValue, worldMarks, verifyPatch } from './chair44.js';
 export { CANONICAL_CHILDREN, FACE_DIRECTIONS, chairLeaves, localCells } from './chair44.js';
 
-// Integer cell-center t=1; doubled-grid panel-center equality m-values.
+// Arrow control: integer cell-center t=1 and panel-center equality m-values.
+// Relief modes: exact cell and panel-probe t-occupancy, without m-values.
 // Rebuild the complete point/candidate graph on each step. No collared inventory,
 // substitution witness, target boundary, or precomputed growth plan is supplied.
 const compiled = new Map();
@@ -30,13 +34,22 @@ function indexState(state) {
   }
   return {occupied,marks,frontier};
 }
-export function selectFrontier(points) {
-  const dead=points.find(p=>p.candidates.size===0);
-  const forced=points.find(p=>p.candidates.size===1);
-  const earliest=[...points].sort((a,b)=>a.generation-b.generation||a.candidates.size-b.candidates.size||a.id.localeCompare(b.id))[0];
-  return {dead,forced,selected:dead??forced??earliest};
+const reliefModels = {
+  'relief-offset': createReliefPointModel(),
+  'relief-centered': createReliefPointModel({centered:true})
+};
+function checkRule(rule) {
+  if (rule !== 'arrows' && !reliefModels[rule]) throw new Error('Unknown Chair44 matching rule');
 }
 export function enumerateGrowthCandidates(state) {
+  const rule = state.rule ?? 'arrows';
+  checkRule(rule);
+  if (reliefModels[rule]) {
+    const graph = reliefModels[rule].graphFor(state.placements);
+    return {frontier:graph.frontier,candidateNodes:graph.candidates,frontierCount:graph.frontier.size,
+      tested:graph.tested,occupancyRejected:graph.rejected,markingRejected:0,
+      dead:Boolean(graph.dead),deadPoint:graph.dead,forced:!graph.dead&&graph.forced,candidates:graph.choices};
+  }
   const index=indexState(state), candidates=new Map(), seen=new Set();
   let tested=0, occupancyRejected=0, markingRejected=0;
   for(const point of index.frontier.values()) for(const variant of VARIANTS) for(const cell of variant.cells) {
@@ -55,30 +68,38 @@ export function enumerateGrowthCandidates(state) {
   return {frontier:index.frontier,candidateNodes:candidates,frontierCount:points.length,tested,
     occupancyRejected,markingRejected,dead:Boolean(dead),forced:!dead&&Boolean(forced),candidates:choices};
 }
-export function createGrowthState(level=2) {
-  return {catalog:{variants:VARIANTS,targetCount:8**level},placements:[{variantId:0,origin:[0,0,0],generation:0}],
+export function createGrowthState(level=2,rule='arrows') {
+  checkRule(rule);
+  return {rule,catalog:{variants:VARIANTS,targetCount:8**level},placements:[{variantId:0,origin:[0,0,0],generation:0}],
     history:[],stack:[],tested:0,rejected:0,solverBacktracks:0,forcedPlacements:0,branchDecisions:0,complete:false,status:'ready'};
 }
 // An imported patch is the fixed root of a new local search. Its tiles have
 // generation zero and no branch frames, so rollback cannot remove them.
-export function createGrowthStateFromPatch(placements) {
-  if (!placements.length || !verifyPatch(placements).valid) throw new Error('Invalid starting Chair44 patch');
-  const state = createGrowthState();
+export function createGrowthStateFromPatch(placements,rule='arrows') {
+  checkRule(rule);
+  if (!placements.length) throw new Error('Invalid starting Chair44 patch');
+  if (reliefModels[rule]) {
+    try { reliefModels[rule].indexState(placements); }
+    catch { throw new Error('Invalid starting Chair44 patch: relief overlaps'); }
+  } else if (!verifyPatch(placements).valid) throw new Error('Invalid starting Chair44 patch');
+  const state = createGrowthState(2,rule);
   return {...state,
     catalog: {...state.catalog, targetCount: 64 * (Math.floor(placements.length / 64) + 1)},
     placements: placements.map(({variantId, origin}) => ({variantId, origin: [...origin], generation: 0}))};
 }
 function place(state,candidate,graph) {
   const generations=candidate.cells.map(k=>graph.frontier.get(k)?.generation).filter(g=>g!==undefined);
-  return {...state,placements:[...state.placements,{variantId:candidate.variantId,origin:candidate.origin,generation:1+Math.min(...generations)}]};
+  return {...state,placements:[...state.placements,{variantId:candidate.variantId,origin:candidate.origin,generation:candidate.generation??(1+Math.min(...generations))}]};
 }
 export function growOne(previous) {
+  // Bound geometric placement caches to one resumable batch of search work.
+  reliefModels[previous.rule]?.clearCache();
   if(previous.complete && previous.status !== 'consistent finite patch') return previous;
   let state={...previous,complete:false,history:[...previous.history,previous]};
   if(previous.complete) state.catalog={...previous.catalog,targetCount:previous.catalog.targetCount+64};
   for(let attempt=0;attempt<32;attempt++) {
     const graph=enumerateGrowthCandidates(state);
-    state={...state,tested:state.tested+graph.tested,rejected:state.rejected+graph.markingRejected,frontierCount:graph.frontierCount};
+    state={...state,tested:state.tested+graph.tested,rejected:state.rejected+graph.markingRejected+(reliefModels[state.rule]?graph.occupancyRejected:0),frontierCount:graph.frontierCount};
     if(graph.dead) {
       let frame;
       const stack=[...state.stack];
