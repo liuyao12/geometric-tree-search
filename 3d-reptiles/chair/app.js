@@ -484,7 +484,7 @@ function makeVisual(state) {
     materials.push(faceMaterial, edgeMaterial);
     chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
-  addArrowVisual(group, leaves.flatMap(worldMarks), materials, geometries);
+  addArrowVisual(group, leaves, materials, geometries);
   const parent = makeParentOutline(size, state.missingCorner, state.origin);
   // Keep the original chair fixed in world space; new copies grow around it.
   group.position.set(-1, -1, -1);
@@ -508,7 +508,41 @@ function makeVisual(state) {
 
 function channelColor(color) { return COLORS[color]; }
 
-function addArrowVisual(group, marks, materials, geometries) {
+// Markings need independent materials for each of the eight graph directions,
+// just like the body/edge batches. Keep all three decorated rotations together.
+function makeOrientedMarkVisual(placements, makeBatch, name) {
+  const buckets = new Map();
+  for (const placement of placements) {
+    const orientation = directionKey(VARIANTS[placement.variantId].missingCorner);
+    if (!buckets.has(orientation)) buckets.set(orientation, []);
+    buckets.get(orientation).push(placement);
+  }
+  const group = new THREE.Group(), materials = [], geometries = [];
+  group.name = name;
+  group.userData.protrusions = 0;
+  group.userData.indents = 0;
+  for (const [orientation, bucket] of buckets) {
+    const batch = makeBatch(bucket);
+    for (const material of batch.materials) material.userData.orientation = orientation;
+    group.add(...batch.group.children);
+    group.userData.protrusions += batch.group.userData.protrusions ?? 0;
+    group.userData.indents += batch.group.userData.indents ?? 0;
+    materials.push(...batch.materials);
+    geometries.push(...batch.geometries);
+  }
+  return { group, materials, geometries };
+}
+
+function addArrowVisual(group, placements, materials, geometries) {
+  const arrows = makeOrientedMarkVisual(placements,
+    bucket => makeArrowBatch(bucket.flatMap(worldMarks)), 'chair44-arrows');
+  group.add(arrows.group);
+  materials.push(...arrows.materials);
+  geometries.push(...arrows.geometries);
+}
+
+function makeArrowBatch(marks) {
+  const materials = [], geometries = [];
   const buckets = new Map(Object.keys(COLORS).map(color => [color, []]));
   const triangles = [
     [[-.065,-.36],[.065,-.36],[.065,.12]],
@@ -546,7 +580,7 @@ function addArrowVisual(group, marks, materials, geometries) {
     materials.push(backMaterial, material);
     geometries.push(geometry);
   }
-  group.add(arrows);
+  return { group: arrows, materials, geometries };
 }
 
 function makeSearchVisual(state) {
@@ -594,7 +628,7 @@ function makeSearchVisual(state) {
     variant.cells.forEach(cell => allCells.push(add(placement.origin, cell)));
   }
 
-  addArrowVisual(group, state.placements.flatMap(worldMarks), materials, geometries);
+  addArrowVisual(group, state.placements, materials, geometries);
 
   const minima = [0, 1, 2].map(axis => Math.min(...allCells.map(cell => cell[axis])));
   const maxima = [0, 1, 2].map(axis => Math.max(...allCells.map(cell => cell[axis])) + 1);
@@ -610,7 +644,7 @@ function makeSearchVisual(state) {
 function applyMarkingView(visual) {
   if (!visual) return;
   if (markingView === 'relief' && !visual.group.getObjectByName('chair44-relief')) {
-    const marks = makeReliefVisual(visual.leaves);
+    const marks = makeOrientedMarkVisual(visual.leaves, makeReliefVisual, 'chair44-relief');
     const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
     for (const material of marks.materials) {
       material.userData.transitionAmount = amount;
@@ -626,6 +660,7 @@ function applyMarkingView(visual) {
   for (const object of visual.group.children) {
     if (object.userData.flatChairBody) object.visible = markingView !== 'relief';
   }
+  refreshChairHighlight(visual);
 }
 
 function setVisualOpacity(visual, amount) {
@@ -645,6 +680,10 @@ function refreshChairHighlight(visual) {
     chair.edgeMaterial.userData.highlightFactor = highlighted ? 1 : 0.12;
   }
   for (const material of visual.materials) {
+    if (material.userData.orientation !== undefined) {
+      const highlighted = selectedChairOrientation === null || material.userData.orientation === selectedChairOrientation;
+      material.userData.highlightFactor = highlighted ? 1 : 0.12;
+    }
     material.opacity = (material.userData.baseOpacity ?? 0.52)
       * (material.userData.highlightFactor ?? 1)
       * (material.userData.transitionAmount ?? 1);

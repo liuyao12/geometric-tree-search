@@ -192,6 +192,10 @@ requested, then retained for toggling. The choice persists through inflation,
 local steps, Run, Undo, and mode changes, including a toggle during a visual
 transition. This display choice does not change the point model or search state.
 The scalar lattice model and its download remain available in the explanation.
+Arrows and relief are batched by the same eight missing-corner directions as the
+body edges. Selecting a graph node dims all other markings to the edge highlight
+factor, including rear faces and relief creases. Newly created relief and visual
+transitions inherit the current selection and opacity.
 
 `node scripts/test-chair-marking-view-browser.cjs` checks both views, transitions,
 grouped Run undo, returning to inflation, the legends, and mobile layout.

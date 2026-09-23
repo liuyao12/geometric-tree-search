@@ -42,6 +42,35 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
               closed:[...edges.values()].every(edge=>edge.count===2&&edge.balance===0),
               flatBodyVisible:currentVisual.group.children.some(object=>object.userData.flatChairBody&&object.visible)};
           },
+          highlight() {
+            let bright = 0, dim = 0;
+            for (const visual of new Set([currentVisual, transition?.from, transition?.to])) {
+              if (!visual) continue;
+              const directions = new Set(visual.chairs.map(chair => chair.orientation));
+              for (const name of ['chair44-arrows', 'chair44-relief']) {
+                const group = visual.group.getObjectByName(name);
+                if (!group) continue;
+                const seen = new Set();
+                group.traverse(object => {
+                  const material = object.material;
+                  if (!material) return;
+                  const orientation = material.userData.orientation;
+                  if (!directions.has(orientation)) throw Error('Marking lost its tile orientation');
+                  seen.add(orientation);
+                  const selected = selectedChairOrientation === null || orientation === selectedChairOrientation;
+                  const factor = selected ? 1 : .12;
+                  const edge = visual.chairs.find(chair => chair.orientation === orientation).edgeMaterial;
+                  const ratio = material.opacity / material.userData.baseOpacity;
+                  const edgeRatio = edge.opacity / edge.userData.baseOpacity;
+                  if (Math.abs(ratio - edgeRatio) > 1e-10 || material.userData.highlightFactor !== factor)
+                    throw Error('Markings must dim with their tile edges, including transition opacity');
+                  if (selected) bright++; else dim++;
+                });
+                if (seen.size !== directions.size) throw Error('Missing marking orientation batch');
+              }
+            }
+            return { bright, dim, selected: selectedChairOrientation };
+          },
           check() {
             return [...new Set([currentVisual, transition?.from, transition?.to])].filter(Boolean).map(visual => {
               return { arrows: visual.group.getObjectByName('chair44-arrows').visible,
@@ -58,7 +87,13 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     assert.deepEqual(await page.evaluate(() => valueCheck.check()), [{ arrows: true, relief: false }]);
     assert.deepEqual(await page.locator('.marking-toggle button').allTextContents(), ['Arrows', 'Relief']);
     await page.evaluate(() => valueCheck.remember());
+    const graph = page.locator('#orientation-plot');
+    await graph.press('ArrowRight'); // Select a different direction before relief is created.
+    assert.ok((await page.evaluate(() => valueCheck.highlight())).dim > 0);
     await relief.click();
+    assert.ok((await page.evaluate(() => valueCheck.highlight())).dim > 0);
+    await graph.press('Escape');
+    assert.equal((await page.evaluate(() => valueCheck.highlight())).dim, 0);
     let reliefState = await page.evaluate(() => valueCheck.relief());
     assert.equal(reliefState.visible, true);
     assert.equal(reliefState.blueCreases, 8 * 14, 'Each blue pair has a joined ramp without a dividing crease');
@@ -75,24 +110,44 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     assert.equal(await page.locator('#arrow-legend').isVisible(), true);
     assert.equal(await page.locator('#relief-legend').isVisible(), false);
     assert.equal(await page.evaluate(() => valueCheck.unchanged()), true);
+    await graph.press('ArrowLeft');
     await page.locator('#inflate-button').click();
     await relief.click(); // Toggle both visuals during an inflation fade.
     assert.ok((await page.evaluate(() => valueCheck.check())).every(view => view.relief && !view.arrows));
     assert.equal(await relief.getAttribute('aria-pressed'), 'true');
+    await page.evaluate(() => valueCheck.highlight());
     await page.waitForFunction(() => !valueCheck.read().transitioning);
     reliefState = await page.evaluate(() => valueCheck.relief());
     assert.equal(reliefState.protrusions, 8 * 16); assert.equal(reliefState.indents, 8 * 16);
     assert.ok(Math.abs(reliefState.volume - 56) < 1e-4);
     await page.screenshot({ path: '/tmp/chair-relief-supertile.png' });
+    await graph.press('Escape');
+    for (let orientation = 0; orientation < 8; orientation++) {
+      await graph.press('ArrowRight');
+      assert.equal((await page.evaluate(() => valueCheck.highlight())).selected, orientation);
+      await arrows.click();
+      assert.ok((await page.evaluate(() => valueCheck.highlight())).dim > 0);
+      await relief.click();
+      assert.ok((await page.evaluate(() => valueCheck.highlight())).dim > 0);
+    }
+    await graph.press('ArrowRight');
+    await graph.press('ArrowRight');
+    assert.ok((await page.evaluate(() => valueCheck.highlight())).bright > 0);
+    await page.screenshot({ path: '/tmp/chair-relief-highlight.png' });
+    await arrows.click();
+    await page.screenshot({ path: '/tmp/chair-arrows-highlight.png' });
+    await relief.click();
     await page.locator('#apply-one-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 2 * 16);
+    await page.evaluate(() => valueCheck.highlight());
     await relief.click();
     await page.locator('#run-button').click();
     await page.waitForFunction(() => valueCheck.read().count >= 4);
     await page.locator('#back-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 2 * 16);
+    await page.evaluate(() => valueCheck.highlight());
     await page.locator('#inflate-button').click();
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 8 * 16);
     await page.setViewportSize({ width: 390, height: 844 });
@@ -103,7 +158,9 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await page.screenshot({ path: '/tmp/chair-relief-mobile.png' });
     await arrows.click();
     assert.ok((await page.evaluate(() => valueCheck.check())).every(view => view.arrows && !view.relief));
+    await graph.press('Escape');
+    assert.equal((await page.evaluate(() => valueCheck.highlight())).dim, 0);
     assert.deepEqual(errors, []);
-    console.log('Passed Arrows/Relief toggle: closed surfaces, correct volume, transition toggle, Run/Undo, inflation return, and mobile layout.');
+    console.log('Passed all eight orientation highlights and Arrows/Relief toggle: closed surfaces, correct volume, transition toggle, Run/Undo, inflation return, and mobile layout.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });
