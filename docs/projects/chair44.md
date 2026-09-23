@@ -204,3 +204,43 @@ it does not change the point model or search state.
 value, and shared-assignment count against the scalar model for single tiles,
 a supertile, and local growth; it also exercises transitions, grouped Run undo,
 returning to inflation, the legends, and mobile layout.
+
+
+## Rank and colored relief
+
+The expanded lattice marking has rank one: each marked lattice point carries
+one scalar value. Its larger spatial support replaces the six components of
+the compact face-center encoding. This is a statement about the refined
+lattice model, not a claim about minimum support on the original lattice.
+
+The Relief display implements a concrete version of the bumps/nicks recipe in
+[Goodman–Strauss, Section 2](https://arxiv.org/html/2609.24779v1#S2).
+It is not a reproduction of Tsiokos's numbered microscopic pyramids.
+Each red panel has a shallow square pyramid, each green panel its recessed
+counterpart, and each blue panel a pair with opposite heights on opposite sides
+of the arrow diagonal. The colored faces are the actual sides of those bumps
+and recesses. Their footprints are cut out of the neutral tile surface; the
+original flat body is hidden only while Relief is selected. Translucent bodies
+and lower-opacity reverse faces retain the view of back and shared markings.
+
+Use local coordinates \(u\) along \(a\times n\) and \(v\) along \(a\), normalized
+in the panel. For opposing normals and aligned arrows, the coordinates transform
+as \((u,v)\mapsto(-u,v)\). The blue height profile satisfies
+\(h_B(-u,v)=-h_B(u,v)\), and the red/green profiles satisfy
+\(h_G(-u,v)=-h_R(u,v)\). Their asymmetric offset along \(v\) records the arrow's
+direction. Each pyramid has height magnitude \(0.12\); all footprints stay
+strictly inside their unit panels. There are \(16\) protrusions and \(16\)
+recesses, with zero net volume change.
+
+`node scripts/test-chair-relief.mjs` compares exact pyramid bases and tips for
+all \(864\) facing-panel combinations, checks all \(24\) proper rotations,
+and verifies the signed-volume balance. The browser test checks that the mesh
+is closed with consistently oriented edges and volume \(7\), and checks a
+supertile's volume, display toggles, growth, grouped undo, and mobile layout.
+Collinear triangulation edges between the two blue cutouts are subdivided so
+there are no mesh T-junctions.
+
+The equality test remains the search's rule; this display does not introduce
+mesh-intersection pruning. Its checked equivalence concerns the allowed
+unit-grid face contacts. It is not a separate certification of the fabricated
+shape under arbitrary continuous placements.

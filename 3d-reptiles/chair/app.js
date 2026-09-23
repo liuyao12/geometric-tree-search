@@ -13,6 +13,7 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
 import { makeLatticeMarkVisual } from './lattice-visual.js?v=20260923-marking-view';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-relief';
 
 let markingView = 'arrows';
 const viewport = document.getElementById("viewport");
@@ -59,6 +60,10 @@ const CUBE_CORNERS = [
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x72877e, 1.5));
+const reliefLight = new THREE.DirectionalLight(0xffffff, 2.2);
+reliefLight.position.set(4, 8, 7);
+scene.add(reliefLight);
 
 const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 500);
 camera.position.set(7.2, 5.6, 8.4);
@@ -460,6 +465,7 @@ function makeVisual(state) {
     faceMaterial.userData.baseOpacity = faceOpacity;
     const mesh = new THREE.Mesh(geometry, faceMaterial);
     mesh.renderOrder = 1;
+    mesh.userData.flatChairBody = true;
     group.add(mesh);
 
     const edgeGeometry = new THREE.BufferGeometry();
@@ -568,6 +574,7 @@ function makeSearchVisual(state) {
     faceMaterial.userData.baseOpacity = 0.18;
     const mesh = new THREE.Mesh(geometry, faceMaterial);
     mesh.renderOrder = 1;
+    mesh.userData.flatChairBody = true;
     group.add(mesh);
 
     const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
@@ -603,9 +610,9 @@ function makeSearchVisual(state) {
 
 function applyMarkingView(visual) {
   if (!visual) return;
-  let lattice = visual.group.getObjectByName('chair44-lattice');
-  if (markingView === 'values' && !lattice) {
-    const marks = makeLatticeMarkVisual(visual.leaves);
+  const name = markingView === 'values' ? 'chair44-lattice' : 'chair44-relief';
+  if (markingView !== 'arrows' && !visual.group.getObjectByName(name)) {
+    const marks = markingView === 'values' ? makeLatticeMarkVisual(visual.leaves) : makeReliefVisual(visual.leaves);
     const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
     for (const material of marks.materials) {
       material.userData.transitionAmount = amount;
@@ -614,10 +621,15 @@ function applyMarkingView(visual) {
     visual.group.add(marks.group);
     visual.materials.push(...marks.materials);
     visual.geometries.push(...marks.geometries);
-    lattice = marks.group;
   }
   visual.group.getObjectByName('chair44-arrows').visible = markingView === 'arrows';
+  const lattice = visual.group.getObjectByName('chair44-lattice');
+  const relief = visual.group.getObjectByName('chair44-relief');
   if (lattice) lattice.visible = markingView === 'values';
+  if (relief) relief.visible = markingView === 'relief';
+  for (const object of visual.group.children) {
+    if (object.userData.flatChairBody) object.visible = markingView !== 'relief';
+  }
 }
 
 function setVisualOpacity(visual, amount) {
@@ -919,6 +931,7 @@ document.querySelectorAll('[data-marking-view]').forEach(button => {
     });
     document.getElementById('arrow-legend').hidden = markingView !== 'arrows';
     document.getElementById('value-legend').hidden = markingView !== 'values';
+    document.getElementById('relief-legend').hidden = markingView !== 'relief';
     for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
   });
 });

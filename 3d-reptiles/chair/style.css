@@ -680,3 +680,8 @@ footer p { margin: 0; }
 .value-symbol.zero { border: 2px solid #63736d; border-radius: 50%; }
 .value-symbol.positive { background: #008781; border-radius: 50%; }
 .marking-legend a { font-size: 11px; line-height: 1.4; margin-top: 3px; }
+
+.marking-key .relief-swatch { display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
+.relief-swatch.red { background: #de292d; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.relief-swatch.green { background: #9cc83b; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.relief-swatch.blue { background: #2b407d; transform: rotate(45deg); width: 8px; height: 8px; }

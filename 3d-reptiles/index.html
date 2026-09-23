@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260923-marking-view">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-relief">
   <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -78,11 +78,18 @@
             <div class="marking-toggle" role="group" aria-label="Marking representation">
               <button type="button" data-marking-view="arrows" aria-pressed="true">Arrows</button>
               <button type="button" data-marking-view="values" aria-pressed="false">Lattice values</button>
+              <button type="button" data-marking-view="relief" aria-pressed="false">Relief</button>
             </div>
             <div id="arrow-legend" class="marking-legend">
               <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
               <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
               <small>Arrow directions coincide at each contact.</small>
+            </div>
+            <div id="relief-legend" class="marking-legend" hidden>
+              <span><i class="relief-swatch red" aria-hidden="true"></i> Red protrudes</span>
+              <span><i class="relief-swatch green" aria-hidden="true"></i> Green recedes</span>
+              <span><i class="relief-swatch blue" aria-hidden="true"></i> Blue has both</span>
+              <small>Colored bumps and indents fit together by the same matching rule. The translucent surface lets you see the back.</small>
             </div>
             <div id="value-legend" class="marking-legend" hidden>
               <div class="value-swatches" aria-label="Scalar marking values">
@@ -196,7 +203,8 @@
         <div class="math">\[
           \begin{aligned}m(P+d)&=a\cdot d,\\m(P+2d)&=b\cdot d.\end{aligned}
         \]</div>
-        <p>These small groups of marked points never overlap unless the panels themselves meet.
+        <p>This is a rank-one marking: one scalar value at each assigned point.
+          These small groups of marked points never overlap unless the panels themselves meet.
           Rotations move the points and leave their scalar values unchanged. Zero is an assigned value;
           all unlisted points are unmarked.</p>
         <details>
@@ -225,6 +233,6 @@
       <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-marking-view"></script>
+  <script type="module" src="./chair/app.js?v=20260923-relief"></script>
 </body>
 </html>
