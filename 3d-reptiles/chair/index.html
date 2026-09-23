@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260923-chair44">
+  <link rel="stylesheet" href="./style.css?v=20260923-page-links">
   <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -31,17 +31,10 @@
           <h1 id="page-title">Chair44</h1>
           <p class="lede">One chair, three arrow colors. Explore the aperiodic monotile through Goodman–Strauss’s markings.</p>
         </div>
-        <div class="tile-picker">
-          <label for="tile-select">Choose tile</label>
-          <div class="select-shell">
-            <select id="tile-select">
-              <option value="../">Quaquaversal prism</option>
-              <option value="./" selected>Chair44 · marked heptacube</option>
-            </select>
-            <span aria-hidden="true">↕</span>
-          </div>
-          <small>Substitution and inflation systems</small>
-        </div>
+        <nav class="tile-nav" aria-label="3D reptiles pages">
+          <a href="../">Quaquaversal</a>
+          <a href="./" aria-current="page">Chair44</a>
+        </nav>
       </header>
 
       <div class="scene-shell">
@@ -187,6 +180,6 @@
       <a href="../">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./app.js?v=20260923-chair44-translucent"></script>
+  <script type="module" src="./app.js?v=20260923-page-links"></script>
 </body>
 </html>

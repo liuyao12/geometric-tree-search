@@ -74,46 +74,28 @@ button { font: inherit; }
   text-transform: uppercase;
 }
 
-.tile-picker {
+.tile-nav {
   display: grid;
-  gap: 5px;
+  grid-template-columns: 1.3fr 1fr;
   align-self: end;
   margin-bottom: 5px;
-}
-
-.tile-picker > label {
-  color: var(--green);
-  font-size: 9px;
-  font-weight: 850;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.select-shell { position: relative; }
-
-.select-shell select {
-  width: 100%;
-  appearance: none;
   border: 1px solid var(--line);
-  border-radius: 0;
-  background: rgba(255, 255, 255, .46);
-  padding: 9px 36px 9px 11px;
+}
+
+.tile-nav a {
+  min-width: 0;
+  padding: 11px 9px;
   color: var(--ink);
-  font: 400 17px/1.15 Georgia, "Times New Roman", serif;
-  cursor: pointer;
+  background: rgba(255, 255, 255, .46);
+  font: 400 15px/1.2 Georgia, "Times New Roman", serif;
+  text-align: center;
+  text-decoration: none;
 }
 
-.select-shell > span {
-  position: absolute;
-  top: 50%;
-  right: 11px;
-  transform: translateY(-50%);
-  color: var(--green);
-  font-size: 14px;
-  pointer-events: none;
-}
-
-.tile-picker small { color: var(--muted); font-size: 9px; }
+.tile-nav a + a { border-left: 1px solid var(--line); }
+.tile-nav a:hover { background: var(--paper-deep); }
+.tile-nav a[aria-current="page"] { background: var(--green); color: white; }
+.tile-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .kicker {
   margin: 0 0 12px;
@@ -709,7 +691,7 @@ footer p { margin: 0; }
   .hero-copy { grid-template-columns: 1fr; }
   .collection-mark { display: flex; margin: 0; justify-content: space-between; align-items: center; }
   .collection-mark .back-link { display: inline-block; }
-  .tile-picker { margin: 4px 0 0; }
+  .tile-nav { margin: 4px 0 0; }
   h1 { font-size: clamp(37px, 11vw, 55px); }
   .essay-section { grid-template-columns: 42px minmax(0, 1fr); }
   .essay-copy { grid-column: 2; }

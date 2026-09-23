@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260923-page-links">
 </head>
 <body>
   <main>
@@ -29,17 +29,10 @@
           <h1 id="page-title">Quaquaversal tiling</h1>
           <p class="lede">A fixed prism gathers an expanding world of orientations.</p>
         </div>
-        <div class="tile-picker">
-          <label for="tile-select">Choose tile</label>
-          <div class="select-shell">
-            <select id="tile-select">
-              <option value="./" selected>Quaquaversal prism</option>
-              <option value="./chair/">Chair44 · marked heptacube</option>
-            </select>
-            <span aria-hidden="true">↕</span>
-          </div>
-          <small>Substitution and inflation systems</small>
-        </div>
+        <nav class="tile-nav" aria-label="3D reptiles pages">
+          <a href="./" aria-current="page">Quaquaversal</a>
+          <a href="./chair/">Chair44</a>
+        </nav>
       </header>
 
       <div class="scene-shell">
@@ -248,6 +241,6 @@
       <a href="../">Return to GCTS</a>
     </footer>
   </main>
-  <script type="module" src="./app.js?v=20260822-depth-edges"></script>
+  <script type="module" src="./app.js?v=20260923-page-links"></script>
 </body>
 </html>

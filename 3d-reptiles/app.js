@@ -12,15 +12,10 @@ const orientationValue = document.getElementById("orientation-value");
 const orientationCurrent = document.getElementById("orientation-current");
 const visualEffectSelect = document.getElementById("visual-effect-select");
 const effectDescription = document.getElementById("effect-description");
-const tileSelect = document.getElementById("tile-select");
 const orientationPanel = document.querySelector(".orientation-panel");
 const orientationMatrix = document.getElementById("orientation-matrix");
 const matrixFactor = document.getElementById("matrix-factor");
 const matrixValues = document.getElementById("matrix-values");
-
-tileSelect.addEventListener("change", () => {
-  window.location.href = tileSelect.value;
-});
 
 const SQRT3 = Math.sqrt(3);
 const INITIAL_GENERATION = 1;

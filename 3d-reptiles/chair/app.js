@@ -27,7 +27,6 @@ const orientationPanel = document.querySelector(".orientation-panel");
 const orientationMatrix = document.getElementById("orientation-matrix");
 const matrixValues = document.getElementById("matrix-values");
 const chairColorFilter = document.getElementById("chair-color-filter");
-const tileSelect = document.getElementById("tile-select");
 const chairModeSelect = document.getElementById("chair-mode-select");
 const panelKicker = document.getElementById("panel-kicker");
 const hierarchyTitle = document.getElementById("hierarchy-title");
@@ -39,10 +38,6 @@ const scaleRight = document.getElementById("scale-right");
 const frontierValue = document.getElementById("frontier-value");
 const backtrackValue = document.getElementById("backtrack-value");
 const sceneInstruction = document.getElementById("scene-instruction");
-
-tileSelect.addEventListener("change", () => {
-  window.location.href = tileSelect.value;
-});
 
 const MAX_GENERATION = 4;
 const RETAINED_CHILD_INDICES = [0, 1, 2, 3, 5, 6, 7];
