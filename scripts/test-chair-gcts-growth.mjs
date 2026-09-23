@@ -3,6 +3,24 @@ import { VARIANTS, BASE_MARKS, CHILDREN, ROTATIONS, chairLeaves, verifyPatch, ch
   parentContainingChild, IDENTITY, key, add, COLORS } from '../3d-reptiles/chair/chair44.js';
 import { createGrowthState, enumerateGrowthCandidates, growOne, shrinkOne, selectFrontier } from '../3d-reptiles/chair/chair-gcts.js';
 
+import { DIRECTION_NODES, DIRECTION_EDGES, QUARTER_TURNS, directionKey } from '../3d-reptiles/chair/orientation-graph.js';
+const determinant = r => r[0][0]*(r[1][1]*r[2][2]-r[1][2]*r[2][1])-r[0][1]*(r[1][0]*r[2][2]-r[1][2]*r[2][0])+r[0][2]*(r[1][0]*r[2][1]-r[1][1]*r[2][0]);
+for (const r of [...ROTATIONS, ...QUARTER_TURNS]) {
+  assert.equal(determinant(r),1,'Every placement and graph generator must preserve handedness');
+  for(let i=0;i<3;i++)for(let j=0;j<3;j++)assert.equal(r[i].reduce((n,v,k)=>n+v*r[j][k],0),i===j?1:0);
+}
+assert.equal(DIRECTION_NODES.length,8);
+assert.equal(DIRECTION_EDGES.length,12);
+for(const node of DIRECTION_NODES) {
+  assert.equal(VARIANTS.filter(v=>directionKey(v.missingCorner)===node.id).length,3);
+  assert.equal(DIRECTION_EDGES.filter(pair=>pair.includes(node.id)).length,3);
+}
+for(const [a,b] of DIRECTION_EDGES) {
+  const transform=(r,id)=>r.map(row=>row.reduce((n,v,i)=>n+v*DIRECTION_NODES[id].vector[i],0)).join(',');
+  assert.ok(QUARTER_TURNS.some(r=>transform(r,a)===DIRECTION_NODES[b].vector.join(',')||transform(r,b)===DIRECTION_NODES[a].vector.join(',')));
+}
+assert.equal(new Set(chairLeaves(2).map(p=>p.variantId)).size,24,'Eight displayed directions must not collapse the marked rotations');
+
 assert.equal(BASE_MARKS.length,24);
 assert.deepEqual(Object.fromEntries(Object.keys(COLORS).map(c=>[c,BASE_MARKS.filter(m=>m.color===c).length])),{red:8,green:8,blue:8});
 assert.equal(VARIANTS.length,24);

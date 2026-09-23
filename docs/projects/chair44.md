@@ -96,3 +96,23 @@ data and do not determine which arrows are drawn. Local growth and undo share
 the inflation view's fixed seed coordinate frame. Apply one preserves the orbit
 target and viewing direction, moving the camera backward only when the patch
 would leave the padded view. Undo does not automatically zoom back in.
+
+
+Chair44 is now served directly at `/3d-reptiles/`. The old `/3d-reptiles/chair/`
+address redirects there, retaining query and fragment. Quaquaversal has its own
+page at `/3d-reptiles/quaquaversal/`, reusing the existing prism assets.
+
+The orientation display has eight permanent nodes, indexed by the missing-corner
+direction. Every node groups three decorated rotations; this is a visualization
+quotient only, and the engine still allows all 24 proper rotations. All three
+coordinate quarter-turn generators and all tile rotations have determinant
+\(1\); reflections are not included. The second inflation already uses all
+24 decorated orientations.
+
+`orientation-graph.js` builds the undirected simple rotation-action graph from
+those three proper generators, giving 12 edges and degree three at each node.
+It is a Schreier graph on the eight directions (the underlying graph is a cube),
+not an assertion that these eight directions are a subgroup of rotations.
+Tests verify generator orthogonality and determinant, every edge's rotation
+witness, and the three-to-one grouping. Both construction views keep all eight
+nodes visible, with absent directions faded and tile counts controlling size.

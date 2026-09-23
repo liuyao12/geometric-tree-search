@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f2f3ee">
-  <title>Quaquaversal Tiling — An Orientation Laboratory</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 22 18 6l9 5-9 16z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27m5 22 13-5 9-6M18 6v11%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
+  <title>Chair44 — Goodman–Strauss’s Arrow Markings</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 7h18v9h-9v9H5z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27M14 7v9H5m9 0h9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
   <script type="importmap">
     {
       "imports": {
@@ -14,7 +14,9 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260923-page-links">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-eight-directions">
+  <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -25,77 +27,90 @@
           <span>3D reptiles</span>
         </div>
         <div class="title-block">
-          <p class="kicker">Example 01 · Conway–Radin, 1998</p>
-          <h1 id="page-title">Quaquaversal tiling</h1>
-          <p class="lede">A fixed prism gathers an expanding world of orientations.</p>
+          <p class="kicker">Example 02 · Chair44 · 2026</p>
+          <h1 id="page-title">Chair44</h1>
+          <p class="lede">One chair, three arrow colors. Explore the aperiodic monotile through Goodman–Strauss’s markings.</p>
         </div>
         <nav class="tile-nav" aria-label="3D reptiles pages">
-          <a href="./" aria-current="page">Quaquaversal</a>
-          <a href="./chair/">Chair44</a>
+          <a href="./quaquaversal/">Quaquaversal</a>
+          <a href="./" aria-current="page">Chair44</a>
         </nav>
       </header>
 
       <div class="scene-shell">
-        <div id="viewport" class="viewport" role="img" aria-label="Interactive expanding Conway–Radin quaquaversal supertile. Drag to rotate and scroll through its transparent faces."></div>
+        <div id="viewport" class="viewport" role="img" aria-label="Interactive Chair44 with 24 red, green, and blue arrow markings. Drag to inspect its outer corners and concave socket."></div>
         <div class="scene-vignette" aria-hidden="true"></div>
 
         <div class="scene-readout" aria-live="polite">
-          <span>stage</span>
+          <span id="generation-label">inflations</span>
           <strong id="generation-value">0</strong>
           <span class="readout-divider" aria-hidden="true"></span>
-          <span>prisms</span>
+          <span id="tile-label">chairs</span>
           <strong id="tile-value">1</strong>
         </div>
 
-        <aside class="orientation-panel" aria-labelledby="orientation-title">
-          <div class="orientation-heading">
-            <div>
-              <span>orientation ball</span>
-              <strong id="orientation-title" aria-label="SO 3 over the real numbers">SO<sub>3</sub>(<span class="number-field">R</span>)</strong>
-            </div>
-            <div class="orientation-count">
-              <b id="orientation-value">1</b>
-              <span>present</span>
-            </div>
-          </div>
-          <div id="orientation-plot" role="application" tabindex="0" aria-label="Rotatable solid axis-angle ball containing one tile orientation"></div>
-          <div class="orientation-scale" aria-hidden="true">
-            <span>identity</span>
-            <span>π boundary</span>
-          </div>
-          <div class="orientation-graph-key" aria-label="Orientation ancestry connections">
-            <span><i aria-hidden="true"></i>retained-copy ancestry</span>
-          </div>
-          <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
-            <div class="matrix-heading">
-              <span>selected element</span>
-              <strong id="matrix-title" aria-label="SO 3 over the dyadic integers with quadratic form q">SO<sub>3</sub>(<span class="number-field">Z</span>[½], <i>q</i>)</strong>
-            </div>
-            <div class="matrix-expression">
-              <span id="matrix-factor" class="matrix-factor"></span>
-              <div id="matrix-values" class="matrix-values" aria-label="Exact three by three matrix"></div>
-            </div>
-            <p><i>q</i> = x² + 3y² + 3z² · MᵀqM = q · det M = 1</p>
-          </section>
-          <label class="effect-control" for="visual-effect-select">
-            <span>Color by</span>
-            <select id="visual-effect-select">
-              <option value="orientation">Orientation</option>
-              <option value="turn-generation">Generation</option>
+        <aside class="orientation-panel hierarchy-panel" aria-labelledby="hierarchy-title">
+          <label class="mode-control" for="chair-mode-select">
+            <span>Construction</span>
+            <select id="chair-mode-select">
+              <option value="inflation" selected>Nested inflation</option>
+              <option value="search">Local arrow matching</option>
             </select>
           </label>
-          <p><span id="orientation-current">1 occurs in the current patch.</span> <span id="effect-description">Dominant classes are grey; the proliferating orbit is colored.</span> Straight lines form the retained-copy ancestry tree; dot area records tile count.</p>
+          <div class="orientation-heading">
+            <div>
+              <span id="panel-kicker">corner-direction graph</span>
+              <strong id="hierarchy-title">Rotations</strong>
+            </div>
+            <div class="orientation-count">
+              <b id="panel-count">7</b>
+              <span id="panel-count-label">of 8 present</span>
+            </div>
+          </div>
+          <div id="orientation-plot" role="application" tabindex="0" aria-label="Rotatable eight-node graph of missing-corner directions connected by proper quarter turns"></div>
+          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Diagram of the active chair construction" hidden></canvas>
+          <div class="orientation-scale" aria-hidden="true">
+            <span id="scale-left">8 directions</span>
+            <span id="scale-right">quarter turns</span>
+          </div>
+          <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight one of eight missing-corner directions"></div>
+          <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
+            <div class="matrix-heading">
+              <span>representative rotation</span>
+              <strong id="matrix-title">\(R\in\mathrm{SO}(3)\)</strong>
+            </div>
+            <div id="matrix-values" class="matrix-values" aria-label="Three by three rotation matrix"></div>
+          </section>
+          <p id="panel-description">Eight missing-corner directions, connected by quarter turns. Each node groups three marked rotations. Dot size shows tile count; pale nodes are absent. No reflections.</p>
+          <div class="marking-key" aria-label="Chair44 matching rules">
+            <label><input id="show-markings" type="checkbox" checked> Show arrows</label>
+            <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
+            <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
+            <small>Arrow directions coincide at each contact.</small>
+          </div>
+          <p id="search-status" class="search-status" aria-live="polite"></p>
+          <dl id="search-stats" class="search-stats" aria-live="polite">
+            <div><dt>frontier</dt><dd id="frontier-value">0</dd></div>
+            <div><dt>backtracks</dt><dd id="backtrack-value">0</dd></div>
+          </dl>
         </aside>
 
-        <p class="scene-instruction">Drag and release to keep panning · scroll through every face</p>
+        <p id="scene-instruction" class="scene-instruction">Drag to orbit · inspect the arrows and inner socket</p>
         <div class="scene-actions">
-          <button id="back-button" class="scene-button back-button" type="button" disabled>
+          <button id="back-button" class="scene-button back-button" type="button">
             <b aria-hidden="true">↙</b>
             <span>Go back</span>
           </button>
-          <button id="substitute-button" class="scene-button substitute-button" type="button" title="Choose a random retained copy and expand">
-            <span>Apply one more expansion</span>
+          <button id="apply-one-button" class="scene-button apply-one-button" type="button" title="Try one locally matched tile; backtrack if a frontier point becomes impossible">
+            <span>Apply one</span><b aria-hidden="true">+</b>
+          </button>
+          <button id="inflate-button" class="scene-button substitute-button" type="button" title="Choose one of seven outer child addresses and expand">
+            <span>Apply inflation</span>
             <b aria-hidden="true">↗</b>
+          </button>
+          <button id="run-button" class="scene-button run-button" type="button">
+            <span>Run</span>
+            <b aria-hidden="true">▶</b>
           </button>
         </div>
       </div>
@@ -105,142 +120,66 @@
       <div class="section-number">01</div>
       <div class="essay-copy">
         <p class="kicker">The rule</p>
-        <h2 id="rule-title">Eight congruent wedges.<br>Two perpendicular turns.</h2>
+        <h2 id="rule-title">One concave solid.<br>Eight smaller chairs.</h2>
         <p class="body-large">
-          Split the 30–60–90 prism into two half-depth slabs, then expand the result by two.
-          Each slab begins with four
-          half-scale copies. In one, a central pair turns by 90°; in the other, an
-          equilateral pair turns by 120°. Repeating those noncommuting rotations sends
-          tile orientations throughout <span class="math">SO(3)</span>. The scene follows
-          a randomly chosen one of the eight child supertiles as the retained copy, so the
-          entire existing patch stays fixed while seven congruent copies grow around it.
-          Going back discards the latest choice; expanding again draws a new one.
+          Remove one corner from a <span class="math">\(2\times2\times2\)</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs: one translated central child and seven outer children. At every step, one of the seven outer child addresses is chosen at random for the existing superchair; seven congruent copies then grow around it. Going back and inflating again can therefore choose a different continuation.
         </p>
-        <div class="turn-diagram" aria-label="The two rotations used by the substitution">
+        <div class="turn-diagram chair-facts" aria-label="Chair inflation facts">
           <div class="turn-card">
-            <span class="turn-glyph quarter-turn" aria-hidden="true"></span>
-            <strong>π / 2</strong>
-            <small>about the long axis</small>
+            <span class="fact-glyph">7</span>
+            <strong>unit volume</strong>
+            <small>of one polyhedron</small>
           </div>
-          <div class="turn-join" aria-hidden="true">×</div>
+          <div class="turn-join" aria-hidden="true">→</div>
           <div class="turn-card">
-            <span class="turn-glyph third-turn" aria-hidden="true"></span>
-            <strong>2π / 3</strong>
-            <small>about an orthogonal axis</small>
+            <span class="fact-glyph">8</span>
+            <strong>child chairs</strong>
+            <small>in one inflation</small>
           </div>
           <div class="turn-result">
-            <span>closure</span>
-            <strong>dense in SO(3)</strong>
+            <span>linear scale</span>
+            <strong>2 per level</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="essay-section matching-section" aria-labelledby="matching-title">
+    <section class="essay-section matching-section" aria-labelledby="forcing-title">
       <div class="section-number">02</div>
       <div class="essay-copy">
-        <p class="kicker">Substitution versus enforcement</p>
-        <h2 id="matching-title">Can local rules force the hierarchy?</h2>
+        <p class="kicker">The Chair44 matching rule</p>
+        <h2 id="forcing-title">Three colors.<br>One forced hierarchy.</h2>
         <p class="body-large">
-          In principle, yes—with decorated or collared tile types. Goodman–Strauss showed
-          that broad classes of substitution tilings in dimension greater than one admit
-          finite local matching rules that force their global hierarchy. The theorem is
-          an existence-and-construction result; it does not turn the bare, unmarked prism
-          above into a known one-tile aperiodic set.
+          The bare heptacube admits periodic tilings. Chair44 adds arrows: blue meets blue,
+          and red meets green, with their directions aligned. The same decorated tile occurs
+          everywhere. Its 24 exposed unit panels reproduce Goodman–Strauss’s Figures 2 and 5,
+          including the three arrows inside the concave socket.
         </p>
-
-        <div class="search-flow" aria-label="How geometric search works without a lattice">
-          <div>
-            <span>1</span>
-            <strong>Choose an exposed face</strong>
-            <small>Use the most constrained frontier face first.</small>
-          </div>
+        <div class="search-flow" aria-label="From local arrows to the Chair44 hierarchy">
+          <div><span>1</span><strong>Match the arrows</strong><small>Every shared panel agrees in direction and complementary color.</small></div>
           <i aria-hidden="true">→</i>
-          <div>
-            <span>2</span>
-            <strong>Mate a compatible face</strong>
-            <small>Its decoration determines finitely many rigid placements.</small>
-          </div>
+          <div><span>2</span><strong>Assemble eight chairs</strong><small>One central chair and seven outer chairs form a supertile.</small></div>
           <i aria-hidden="true">→</i>
-          <div>
-            <span>3</span>
-            <strong>Reject or remember</strong>
-            <small>Check overlap, local rules, then cache the geometric obstruction.</small>
-          </div>
+          <div><span>3</span><strong>Repeat at every scale</strong><small>The supertile inherits the same corner markings.</small></div>
         </div>
-
         <aside class="key-idea">
-          <p class="kicker">The important distinction</p>
-          <p>Continuous ambient motion does not imply continuous branching. Face-to-face contact discretizes each move; dense orientations emerge only after many locally finite choices.</p>
+          <p class="kicker">The paper and the demonstration</p>
+          <p>Goodman–Strauss proves that these markings force a unique infinite hierarchy and strong aperiodicity.
+          This page renders the marked version, using proper rotations of one handedness. Nested inflation
+          illustrates the construction; local matching independently grows a finite patch from the arrow rules.
+          Apply one tries the next local placement and backtracks when necessary; Apply inflation expands the nested supertile. Each construction keeps its own undo history. The finite search is a demonstration, not a new proof of infinite extension.</p>
         </aside>
       </div>
     </section>
 
-    <section class="catalog-section" aria-labelledby="catalog-title">
-      <div class="catalog-heading">
-        <div>
-          <p class="kicker">A non-lattice collection</p>
-          <h2 id="catalog-title">What should join it?</h2>
-        </div>
-        <p>Start with systems that each isolate a different difficulty for geometric search.</p>
-      </div>
-
-      <div class="specimen-list">
-        <article>
-          <span class="specimen-index">A</span>
-          <div>
-            <h3>Pinwheel triangles</h3>
-            <p>The two-dimensional precursor: five-child substitution, infinitely many orientations, and the cleanest test of search modulo the full Euclidean group.</p>
-          </div>
-          <span class="specimen-tag">build next</span>
-        </article>
-        <article>
-          <span class="specimen-index">B</span>
-          <div>
-            <h3>Penrose rhombs</h3>
-            <p>Finite orientations but genuinely non-lattice vertices. Their explicit arrow rules make them the best control case for a face-decoration engine.</p>
-          </div>
-          <span class="specimen-tag">matching rules</span>
-        </article>
-        <article>
-          <span class="specimen-index">C</span>
-          <div>
-            <h3>Sphinx substitution</h3>
-            <p>A rep-tile whose hierarchy has an explicit Goodman–Strauss matching-rule construction—useful for comparing existence proofs with executable constraints.</p>
-          </div>
-          <span class="specimen-tag">hierarchy</span>
-        </article>
-        <article>
-          <span class="specimen-index">D</span>
-          <div>
-            <h3>SCD biprisms</h3>
-            <p>Schmitt–Conway–Danzer screw layers trade substitution for irrational relative rotation, probing whether the search can learn a global helical obstruction.</p>
-          </div>
-          <span class="specimen-tag">3D screw order</span>
-        </article>
-        <article>
-          <span class="specimen-index">E</span>
-          <div>
-            <h3>3D Penrose rhombohedra</h3>
-            <p>Golden prolate and oblate rhombohedra bring explicit three-dimensional matching rules without the quaquaversal tile’s dense orientation group.</p>
-          </div>
-          <span class="specimen-tag">3D local rules</span>
-        </article>
-      </div>
-    </section>
-
     <footer>
-      <p>
-        Sources:
-        <a href="https://math.utexas.edu/users/radin/papers/quaquaversal.pdf">Conway &amp; Radin, <em>Quaquaversal tilings and rotations</em></a>
-        ·
-        <a href="https://www.college-de-france.fr/media/jean-pierre-serre/UPL6510026928295213550_11___Le_groupe_quaquaversal.pdf">Serre, <em>Le groupe quaquaversal, vu comme groupe S-arithmétique</em></a>
-        ·
-        <a href="https://annals.math.princeton.edu/1998/147-1/p04">Goodman–Strauss, <em>Matching rules and substitution tilings</em></a>
-      </p>
-      <a href="../">Return to GCTS</a>
+      <p>Arrow design adapted from <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss,
+      <em>Notes on a strongly aperiodic monotile in \(E^3\)</em></a>, September 21, 2026, Figures 2 and 5
+      (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).
+      Chair44 introduced by <a href="https://arxiv.org/abs/2609.19214">Ioannis Tsiokos</a>.</p>
+      <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./app.js?v=20260923-page-links"></script>
+  <script type="module" src="./chair/app.js?v=20260923-eight-directions"></script>
 </body>
 </html>

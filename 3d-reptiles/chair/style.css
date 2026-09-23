@@ -757,3 +757,8 @@ footer p { margin: 0; }
   .orientation-panel .search-status { display: block; grid-column: 1 / -1; margin: 0; }
   .scene-shell:not(.is-search) .orientation-panel .search-status { display: none; }
 }
+
+/* The same eight-direction graph is available during local growth. */
+.scene-shell.is-search .chair-color-filter { display: grid; }
+.scene-shell.is-search .orientation-matrix:not([hidden]) { display: block; }
+.chair-color-filter button.is-absent { opacity: .3; }
