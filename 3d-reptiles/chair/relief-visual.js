@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {VARIANTS,COLORS,apply} from './chair44.js';
-import {tetraBoundary,TETRA_FEATURES} from './tetra-relief.js?v=20260923-apex-shift';
+import {tetraBoundary,TETRA_FEATURES,BOUNDARY_SCALE} from './tetra-relief.js?v=20260923-centered-union';
 const boundary=tetraBoundary();
 // Keep the triangular base rims and hinges even where the surface is coplanar.
 // Shared edges are drawn once, so transparent outlines do not become darker.
@@ -21,12 +21,12 @@ export function makeReliefVisual(placements) {
   const protrusions=16*placements.length,indents=16*placements.length;
   for(const placement of placements){
     const rotation=VARIANTS[placement.variantId].rotation;
-    const transform=p=>apply(rotation,p.map(v=>v/6-1)).map((v,i)=>v+1+placement.origin[i]);
+    const transform=(p,scale=6)=>apply(rotation,p.map(v=>v/scale-1)).map((v,i)=>v+1+placement.origin[i]);
     for(const [color,vertices] of pyramidEdges)
       for(const p of vertices)outlines.get(color).push(...transform(p));
     for(const {vertices,color} of boundary){
       const target=color?colored.get(color):flat;
-      for(let i=1;i<vertices.length-1;i++)for(const p of [vertices[0],vertices[i],vertices[i+1]])target.push(...transform(p));
+      for(let i=1;i<vertices.length-1;i++)for(const p of [vertices[0],vertices[i],vertices[i+1]])target.push(...transform(p,BOUNDARY_SCALE));
     }
   }
   const geometryFor = positions => {

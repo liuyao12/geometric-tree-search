@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict';
-import {ATOMS,BASE_ATOMIC_CELLS,ATOMIC_TEMPLATES,TETRA_FEATURES,tetraFeatures,tetraPlanes,tetraBoundary,dot,cross,sub} from '../3d-reptiles/chair/tetra-relief.js';
+import {ATOMS,BASE_ATOMIC_CELLS,ATOMIC_TEMPLATES,TETRA_FEATURES,tetraFeatures,tetraPlanes,tetraBoundary,BOUNDARY_SCALE,dot,cross,sub} from '../3d-reptiles/chair/tetra-relief.js';
 import {BASE_MARKS,VARIANTS,FACE_DIRECTIONS,key,apply,chairLeaves,markValue} from '../3d-reptiles/chair/chair44.js';
 import {createTetraPointModel,FULL} from '../3d-reptiles/chair/tetra-points.js';
 import {createGrowthState,createGrowthStateFromPatch,growOne,shrinkOne,enumerateGrowthCandidates} from '../3d-reptiles/chair/chair-gcts.js';
 const bits=ATOMS.map((_,i)=>1n<<BigInt(i));
 import {WEDGES,OCCUPANCY_SIGNATURES,CHAMBER_COUNT} from '../3d-reptiles/chair/tetra-atoms.js';
-assert.equal(CHAMBER_COUNT,7776);
+assert.equal(CHAMBER_COUNT,96);
 assert.equal(TETRA_FEATURES.filter(f=>f.sign>0).length,16);
 assert.equal(TETRA_FEATURES.filter(f=>f.sign<0).length,16);
 for(const f of TETRA_FEATURES){
- assert.ok(f.vertices.flat().every(Number.isInteger));
+ assert.ok(f.vertices.flat().every(x=>Number.isInteger(x/2)));
  const [a,b,c,d]=f.vertices;assert.equal(Math.abs(dot(sub(b,a),cross(sub(c,a),sub(d,a)))),72);
 }
 // The rational arrangement generator certifies completeness. Independently
@@ -25,6 +25,8 @@ for(const atom of ATOMS){
 assert.deepEqual(represented,new Set(OCCUPANCY_SIGNATURES));
 const sig=t=>t.map(key).sort().join(';');
 const shapeSignature=features=>features.map(f=>sig(f.vertices)).sort().join('|');
+const reversedFeatures=mark=>tetraFeatures(mark).map(f=>({...f,vertices:[...f.vertices.slice(0,3),
+ f.vertices[3].map((x,i)=>x-4*f.sign*mark.direction[i])]}));
 let facingCases=0;
 for(const n of FACE_DIRECTIONS){
  const axes=[0,1,2].filter(i=>!n[i]),marks=[];
@@ -34,6 +36,10 @@ for(const n of FACE_DIRECTIONS){
  for(const a of marks)for(const entry of marks){
   const b={...entry,cell:n,direction:n.map(x=>-x)};
   assert.equal(shapeSignature(tetraFeatures(a))===shapeSignature(tetraFeatures(b)),key(markValue(a))===key(markValue(b)));
+  if(key(markValue(a))===key(markValue(b))){
+   assert.equal(shapeSignature(reversedFeatures(a)),shapeSignature(reversedFeatures(b)));
+   assert.notEqual(shapeSignature(reversedFeatures(a)),shapeSignature(tetraFeatures(b)));
+  }
   facingCases++;
  }
 }
@@ -43,10 +49,11 @@ for(const variant of VARIANTS)for(const mark of variant.marks)for(const f of tet
  const cell=[0,1,2].map(i=>Math.floor(f.vertices.reduce((s,p)=>s+p[i],0)/24));
  assert.ok(wedgeLibrary.has(sig(f.vertices.map(p=>p.map((x,i)=>x-6*cell[i])))));
 }
-// Every green cut quarter-turns exactly onto a red bump along a whole leg.
+// The eight intended green/red hinge pairs still quarter-turn exactly.
+const hingePartner=new Map([[0,1],[5,4],[6,8],[9,10],[14,13],[18,21],[19,16],[22,23]]);
 for(const g of BASE_MARKS.filter(m=>m.color==='green')){
  const G=tetraFeatures(g)[0].vertices;let hits=0;
- for(const r of BASE_MARKS.filter(m=>m.color==='red')){
+ for(const r of [BASE_MARKS[hingePartner.get(BASE_MARKS.indexOf(g))]]){
   const R=tetraFeatures(r)[0].vertices,common=G.slice(0,3).filter(p=>R.slice(0,3).some(q=>key(p)===key(q)));
   if(common.length!==2)continue;const delta=sub(common[1],common[0]);if(dot(delta,delta)!==36)continue;
   const axis=delta.map(v=>v/6);
@@ -63,14 +70,14 @@ for(const b of BASE_MARKS.filter(m=>m.color==='blue')){
  const moved=a.map(p=>{const v=sub(p,common[0]);return common[0].map((x,i)=>x+e[i]*dot(e,v)/36-v[i]);});assert.equal(sig(moved),sig(c));
 }
 // Boundary mesh: exact orientation, no degenerate triangles, edge pairing,
-// and volume. Boundary coordinates are integer sixths.
+// and volume. Boundary coordinates are integer twelfths.
 const edges=new Map();let determinantSum=0;
 for(const f of tetraBoundary())for(let i=1;i<f.vertices.length-1;i++){
  const tri=[f.vertices[0],f.vertices[i],f.vertices[i+1]], [a,b,c]=tri;
  assert.ok(cross(sub(b,a),sub(c,a)).some(v=>v));determinantSum+=dot(a,cross(b,c));
  for(let j=0;j<3;j++){const a=key(tri[j]),b=key(tri[(j+1)%3]),id=[a,b].sort().join('|'),e=edges.get(id)??[0,0];e[0]++;e[1]+=a<b?1:-1;edges.set(id,e);}
 }
-assert.equal(determinantSum,7*6*6**3);
+assert.equal(determinantSum,7*6*BOUNDARY_SCALE**3);
 assert.ok([...edges.values()].every(([count,balance])=>count===2&&balance===0));
 // Geometric occupancy is rotation covariant, including every corner contact.
 const globalPoints=t=>new Set(t.flatMap(({cell,mask})=>ATOMS.flatMap((a,i)=>mask&bits[i]?[`${key(a.point.map((v,j)=>v+a.den*cell[j]))}/${a.den}`]:[])));

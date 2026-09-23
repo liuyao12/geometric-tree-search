@@ -1,7 +1,7 @@
-// Adjusted cube-dissection wedge: the same half-square base and depth 1/3,
-// with the apex shifted along the hinge to separate neighboring recess walls.
+// Centered cube-dissection wedge: half-square base and normal depth 1/3.
+// Touching cuts are joined; internal walls are removed from the actual boundary.
 import {BASE_MARKS,VARIANTS,apply,key} from './chair44.js';
-import {ATOMS} from './tetra-atoms.js?v=20260923-apex-shift';
+import {ATOMS,CHAMBERS} from './tetra-atoms.js?v=20260923-centered-union';
 export {ATOMS};
 export const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
 export const sub=(a,b)=>a.map((x,i)=>x-b[i]);
@@ -14,10 +14,7 @@ export function tetraFeatures(mark) {
  const signs=mark.color==='blue'?[1,-1]:[mark.color==='red'?1:-1];
  return signs.map(sign=>{
   const base=corners.filter(p=>-sign*dot(sub(p,center),side)>=0);
-  const right=base.find(p=>{const q=base.filter(v=>v!==p);return dot(sub(q[0],p),sub(q[1],p))===0;});
-  const head=base.reduce((p,q)=>dot(p,mark.arrow)>dot(q,mark.arrow)?p:q);
-  const tail=base.find(p=>p!==right&&p!==head);
-  const apex=right.map((x,i)=>x+(head[i]-x)/2+(tail[i]-x)/3+2*sign*n[i]);
+  const apex=[0,1,2].map(i=>base.reduce((sum,p)=>sum+p[i],0)/3+2*sign*n[i]);
   return {color:mark.color,sign,vertices:[...base,apex]};
  });
 }
@@ -58,24 +55,26 @@ export const ATOMIC_TEMPLATES=VARIANTS.map(v=>{
 });
 // Direct, outward-oriented boundary. The exact geometry audit certifies that
 // the distinct wedges have disjoint interiors and no coincident face areas.
+export const BOUNDARY_SCALE=12;
 export function tetraBoundary() {
- const faces=[];
- for(const mark of BASE_MARKS){
-  const features=tetraFeatures(mark);
-  for(const feature of features){
-   const base=feature.vertices.slice(0,3),apex=feature.vertices[3];
-   if(dot(cross(sub(base[1],base[0]),sub(base[2],base[0])),mark.direction)<0)base.reverse();
-   for(let i=0;i<3;i++)faces.push({vertices:[base[i],base[(i+1)%3],apex],color:mark.color});
-  }
-  if(mark.color!=='blue'){
-   const base=features[0].vertices.slice(0,3);
-   const right=base.find(p=>{const q=base.filter(v=>v!==p);return dot(sub(q[0],p),sub(q[1],p))===0;});
-   const diagonal=base.filter(p=>p!==right),other=diagonal[0].map((x,i)=>x+diagonal[1][i]-right[i]);
-   const flat=[...diagonal,other];
-   if(dot(cross(sub(flat[1],flat[0]),sub(flat[2],flat[0])),mark.direction)<0)flat.reverse();
-   faces.push({vertices:flat,color:null});
+ const faces=new Map();
+ for(const {cell,mask} of BASE_ATOMIC_CELLS)for(const chamber of CHAMBERS)if(mask&(1n<<BigInt(chamber.atom))){
+  for(const local of chamber.faces){
+   const vertices=local.map(p=>p.map((x,j)=>x+BOUNDARY_SCALE*cell[j]));
+   const id=vertices.map(key).sort().join(';');
+   if(faces.has(id))faces.delete(id);else faces.set(id,vertices);
   }
  }
- return faces;
+ return [...faces.values()].map(vertices=>{
+  const p=vertices[0],n=cross(sub(vertices[1],p),sub(vertices[2],p));
+  let color=null;
+  if(n.filter(x=>x!==0).length>1){
+   const sum=[0,1,2].map(j=>vertices.reduce((s,v)=>s+v[j],0)),count=vertices.length;
+   const feature=features.find(f=>f.planes.every(([x,y,z,d])=>x*sum[0]+y*sum[1]+z*sum[2]>=2*count*d));
+   if(!feature)throw Error('Unclassified tetrahedral boundary facet');
+   color=feature.color;
+  }
+  return {vertices,color};
+ });
 }
 export const TETRA_FEATURES=features;

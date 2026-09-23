@@ -1,6 +1,6 @@
 // Exact geometric control: rational sample orbits cover every occupancy class
 // of the common wedge arrangement. No arrow/color matching values.
-import {ATOMS,ATOMIC_TEMPLATES} from './tetra-relief.js?v=20260923-apex-shift';
+import {ATOMS,ATOMIC_TEMPLATES} from './tetra-relief.js?v=20260923-centered-union';
 import {VARIANTS,key} from './chair44.js';
 import {selectFrontier} from './frontier-order.js';
 export const FULL=(1n<<BigInt(ATOMS.length))-1n;

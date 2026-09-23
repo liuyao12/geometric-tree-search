@@ -5,7 +5,7 @@ from collections import defaultdict, Counter
 from pathlib import Path
 import json,subprocess,os
 root=Path(__file__).resolve().parents[1]
-source="import {TETRA_FEATURES,tetraBoundary} from './3d-reptiles/chair/tetra-relief.js'; import {BASE_MARKS} from './3d-reptiles/chair/chair44.js';console.log(JSON.stringify({features:TETRA_FEATURES,marks:BASE_MARKS,boundary:tetraBoundary()}));"
+source="import {TETRA_FEATURES,tetraBoundary,BOUNDARY_SCALE} from './3d-reptiles/chair/tetra-relief.js'; import {BASE_MARKS} from './3d-reptiles/chair/chair44.js';console.log(JSON.stringify({features:TETRA_FEATURES,marks:BASE_MARKS,boundary:tetraBoundary(),boundaryScale:BOUNDARY_SCALE}));"
 D=json.loads(subprocess.check_output([os.environ.get('NODE_BINARY','node'),'--input-type=module','-e',source],cwd=root,text=True))
 marks=[(i,m) for i,m in enumerate(D['marks']) for _ in range(2 if m['color']=='blue' else 1)]
 def sub(a,b):return tuple(x-y for x,y in zip(a,b))
@@ -54,12 +54,16 @@ old_overlaps,old_contacts=inspect(original)
 assert old_overlaps==[]
 assert sorted(tuple(sorted((marks[i][0],marks[j][0]))) for i,j in old_contacts)==[(9,12),(18,19)]
 new_overlaps,new_contacts=inspect(current)
-assert new_overlaps==[] and new_contacts==[]
+assert new_overlaps==[]
+assert sorted(tuple(sorted((marks[i][0],marks[j][0]))) for i,j in new_contacts)==[(9,12),(18,19)]
+assert all((x*3).denominator==1 for t in current for p in t for x in p)
+for t,(_,mark),f in zip(current,marks,D['features']):
+ assert t[3]==tuple(sum(p[i] for p in t[:3])/3+Q(f['sign'],3)*mark['direction'][i] for i in range(3))
 for tet in current:
  a,b,c,d=tet
  assert abs(dot(sub(b,a),cross(sub(c,a),sub(d,a))))/6==Q(1,18)
 # The rendered boundary itself cannot contain a duplicate/coincident patch.
-triangles=[[tuple(Q(x,6) for x in p) for p in f['vertices']] for f in D['boundary']]
+triangles=[[tuple(Q(x,D['boundaryScale']) for x in p) for p in f['vertices']] for f in D['boundary']]
 assert all(not triangle_contact(a,b) for a,b in combinations(triangles,2))
 volume=sum(dot(a,cross(b,c))/6 for a,b,c in triangles)
 assert volume==7
@@ -77,10 +81,23 @@ for pair in edges.values():
  a,b=pair
  if planes[a]==planes[b]:parent[root(b)]=root(a)
 face_sizes=Counter(Counter(root(i) for i in range(len(triangles))).values())
-assert face_sizes=={1:88,2:12}
+assert sum(face_sizes.values())==98
 planar_faces=sum(face_sizes.values())
 vertices={p for triangle in triangles for p in triangle}
 assert len(vertices)-len(edges)+len(triangles)==2
-# Removing the twelve coplanar diagonals preserves the Euler characteristic.
-assert len(vertices)-(len(edges)-12)+planar_faces==2
-print(json.dumps(dict(planar_faces=planar_faces,old_coincident_mark_pairs=[[9,12],[18,19]],new_interior_overlaps=0,new_coincident_faces=0,volume=str(volume),wedge_pairs=496,boundary_triangles=len(triangles))))
+# Every vertex link is a single cycle, including the newly joined cavity edges.
+for vertex in vertices:
+ link=defaultdict(set)
+ for triangle in triangles:
+  if vertex not in triangle:continue
+  a,b=[p for p in triangle if p!=vertex];link[a].add(b);link[b].add(a)
+ assert all(len(neighbors)==2 for neighbors in link.values())
+ seen=set();pending=[next(iter(link))]
+ while pending:
+  p=pending.pop()
+  if p in seen:continue
+  seen.add(p);pending.extend(link[p]-seen)
+ assert seen==set(link), 'Pinched boundary vertex'
+# Merging coplanar triangulation edges preserves the Euler characteristic.
+assert len(vertices)-(len(edges)-(len(triangles)-planar_faces))+planar_faces==2
+print(json.dumps(dict(planar_faces=planar_faces,old_coincident_mark_pairs=[[9,12],[18,19]],new_interior_overlaps=0,raw_cut_contacts=len(new_contacts),boundary_coincident_faces=0,volume=str(volume),wedge_pairs=496,boundary_triangles=len(triangles))))

@@ -18,12 +18,9 @@ for axis in range(3):
   for a,b in product([0,1],repeat=2):
    p=[Q(0)]*3;p[axis]=Q(sign);p[tang[0]]=Q(a);p[tang[1]]=Q(b);corners.append(tuple(p))
   for tri in combinations(corners,3):
-   right=next(p for p in tri if dot(sub([v for v in tri if v!=p][0],p),sub([v for v in tri if v!=p][1],p))==0)
-   for head in [p for p in tri if p!=right]:
-    tail=next(p for p in tri if p!=right and p!=head)
-    apex=tuple(right[i]+Q(1,2)*(head[i]-right[i])+Q(1,3)*(tail[i]-right[i]) if i!=axis else Q(1+sign,3) for i in range(3))
-    tet=(*tri,apex);wedges.append(tet)
-    planes.update(plane(*face) for face in combinations(tet,3))
+   apex=tuple(sum(p[i] for p in tri)/3 if i!=axis else Q(1+sign,3) for i in range(3))
+   tet=(*tri,apex);wedges.append(tet)
+   planes.update(plane(*face) for face in combinations(tet,3))
 print('Wedges',len(wedges),'planes',len(planes),flush=True)
 
 corners=list(product(map(Q,[0,1]),repeat=3))
@@ -125,6 +122,20 @@ source+='export const ATOMS = '+json.dumps(points,separators=(',',':'))+';\n'
 source+='export const WEDGES = '+json.dumps([[[int(x*6) for x in v]for v in t]for t in wedges],separators=(',',':'))+';\n'
 source+='export const OCCUPANCY_SIGNATURES = '+json.dumps([hex(m)[2:] for m in sorted(classes)],separators=(',',':'))+';\n'
 source+='export const CHAMBER_COUNT = '+str(len(atoms))+';\n'
+# The same exact chambers provide the Boolean-union surface. Outward-oriented
+# coincident chamber faces cancel, including internal walls between joined dents.
+representative={int(p['signature'],16):i for i,p in enumerate(points)}
+chambers=[]
+for faces in atoms:
+ vs={v for f in faces for v in f};center=tuple(sum(v[i] for v in vs)/len(vs) for i in range(3))
+ outward=[]
+ for f in faces:
+  f=list(f);n=cross(sub(f[1],f[0]),sub(f[2],f[0]))
+  if dot(n,sub(center,f[0]))>0:f.reverse()
+  assert all((x*12).denominator==1 for v in f for x in v)
+  outward.append([[int(x*12) for x in v] for v in f])
+ chambers.append(dict(atom=representative[signature(center)],faces=outward))
+source+='export const CHAMBERS = '+json.dumps(chambers,separators=(',',':'))+';\n'
 path=Path(__file__).resolve().parents[1]/'3d-reptiles/chair/tetra-atoms.js'
 if '--check' in sys.argv:assert path.read_text()==source,'Generated point data is stale'
 else:path.write_text(source)

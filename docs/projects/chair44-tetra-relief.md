@@ -1,78 +1,92 @@
 # Chair44 tetrahedral relief
 
 The live [Chair44 viewer](https://liuyao12.github.io/geometric-tree-search/3d-reptiles/)
-uses a tetrahedral wedge adapted from the earlier volume-\(27\) cube dissection. The apex adjustment separates the formerly coincident green–blue and green–green recess walls.
-Arrows and Relief switch the display; Apply one and Run both search the new
-geometric solid. Apply inflation remains the known marked substitution.
-The old Offset/Centered pyramid controls have been replaced by this one solid.
+uses the centered tetrahedron from the earlier volume-\(27\) cube dissection.
+Touching dents join into a cavity: the renderer draws the actual solid boundary,
+with their internal walls removed. No apex displacement is used.
+Arrows and Relief switch the display; Apply one and Run search the geometric
+solid. Apply inflation remains the known marked substitution.
 
 ## Solid and folds
 
-A representative wedge has vertices
+In the original lattice units, a representative wedge has vertices
 \[
-(0,0,0),\quad(6,0,0),\quad(6,6,0),\quad(3,2,2).
+(0,0,0),\quad(3,0,0),\quad(3,3,0),\quad(2,1,1).
 \]
-Scale it by \(1/6\) for each unit square of the chair. Its base occupies one
-triangular half of that square and its normal height is \(1/3\). The earlier
-apex \( (4,2,2) \) moves to \( (3,2,2) \), parallel to the hinge. This changes
-the proportions but preserves the base, height, and volume \(1/18\).
+The apex is directly above the base centroid \((2,1,0)\), at integer height.
+Scale by \(1/3\) for each unit square of the chair: the normal height is then
+\(1/3\), and the wedge volume is \(1/18\). All pyramid vertices are on this
+original lattice. The earlier sideways displacement has been undone.
+
 Red adds a wedge; green removes one; blue adds one half and removes the other.
 The triangular half follows the original half-arrowhead handedness: red lies
 on the left of the directed diagonal, green on the right, as viewed outside.
 The blue bump uses the red side and its recess the green side.
+The eight intended green/red pairs remain congruent under quarter-turns about
+their full-edge hinges. All eight blue pairs exchange by half-turns about the
+square diagonals. These are endpoint checks, not a collision-free simultaneous
+mechanism; no hinge hardware is included. A convex-edge hinge may require the
+outside \(270^\circ\) path rather than the inside \(90^\circ\) path.
 
-All eight green cuts have a unique congruent red bump obtained by a quarter-turn
-about a full unit-square edge. All eight blue pairs exchange by a half-turn
-about the square diagonal. This checks the endpoints, not a collision-free
-simultaneous mechanism for the whole chair. As in the earlier cube mechanism,
-a convex-edge hinge may need the outside \(270^\circ\) path rather than the
-inside \(90^\circ\) path. No hinge hardware is included here.
+There are sixteen additions and sixteen removals. The final volume is \(7\).
+Two pairs of raw cuts meet along a positive-area patch: one green/blue and one
+green/green. They have no overlapping interiors. Such a shared wall lies
+inside the combined cavity and is not a face of the remaining solid. Taking
+the exact union removes it; transparency is not used to conceal duplicate faces.
+The boundary is closed, with every vertex link a single cycle.
 
-There are sixteen additions and sixteen removals. Exact union-volume and
-oriented-boundary checks give volume \(7\), and a closed mesh. All construction
-coordinates are rational. The exported boundary subdivision uses integer
-coordinates in units of \(1/6\), so multiplying this mesh by \(6\) gives an
-explicit lattice polyhedron. This is a geometric realization being tested;
-the aperiodicity/extension certificates for the previous square-pyramid relief
-have **not** been transferred to this shape.
+Joining these cavities introduces intersection vertices on a finer lattice.
+For example, in normalized chair coordinates one junction is
+\((3/4,3/2,7/4)\). Thus the **apexes** retain the original lattice, while the
+complete boundary uses coordinates in \((1/12)\mathbb{Z}^3\). Multiplying the
+normalized solid by \(12\) gives integer boundary vertices. This distinction
+matters when choosing manufacturing dimensions.
+
+### Bump/dent reversal experiment
+
+With the half-square bases and centered height fixed, give each marked square
+a reversal bit; both blue halves reverse together. Retaining the contacts in
+the existing eight-chair supertile forces all sixteen red/green bits to agree,
+and all eight blue bits to agree. Each of the four resulting choices has at
+least one coincident raw wall. Reversals alone cannot remove all of them under
+these assumptions.
+
+Reversing the two red/green pairs at zero-based mark indices \((9,10)\) and
+\((16,19)\) does avoid all raw wedge contacts and preserves volume, but breaks
+some existing supertile contacts. The live model therefore retains its matching
+and joins the touching dents instead. This finite design audit is not a proof
+that other reversal patterns cannot tile by some different construction, nor
+that the centered relief forces aperiodicity.
 
 ## Exact geometry as point values
 
 The allowed placements are integer translations and the twenty-four proper
 cubic rotations. Reflections and arbitrary free-space orientations are absent.
-Within every unit cube, the forty-eight possible wedge positions have sixty
-distinct boundary planes. Their exact rational arrangement has 7,776 convex
-chambers. Every chamber lies entirely on one side of every wedge plane.
-Distinct plane-sign signatures and exact total volume \(1\) certify the
-partition during regeneration.
+Within every unit cube, twenty-four possible wedge positions have twenty
+distinct boundary planes. Their exact rational arrangement has ninety-six
+convex chambers. Every chamber lies entirely on one side of every wedge plane.
+Distinct plane-sign signatures and total volume \(1\) certify the partition.
 
-The chambers fall into 121 occupancy classes: points in the same class belong
-to exactly the same subset of the forty-eight wedges. The generator selects
-121 rational sample points, closed under the twenty-four proper rotations,
-covering all those classes. Each sample stores integer numerators and an exact
-denominator; the largest denominator is 1,056. This reduction retains every
-possible occupancy distinction, including edge and corner contacts.
+The chambers fall into forty-nine occupancy classes: points in the same class
+belong to the same subset of the wedges. Forty-nine rational representatives,
+closed under proper cubic rotations, cover every class. Each sample stores
+integer numerators and an exact denominator, at most forty-eight.
 
 For each placement, \(t(p)=1\) exactly when its solid contains the sample;
 otherwise \(t(p)=0\). There are no \(m\)-values and no color or arrow rejection
-test. In a cube, any placed tile's occupancy is a Boolean combination of the
-forty-eight wedge memberships and the constant base-cube occupancy. Therefore
-samples representing all membership classes detect every positive-volume
-intersection and gap for the declared placements. Shared zero-volume boundary
-faces are permitted. This is an exact class reduction of the full arrangement,
-not an approximate sampling test.
+test. In a cube, tile occupancy is a Boolean combination of wedge memberships
+and the constant base-cube occupancy. Class representatives therefore detect
+every positive-volume intersection and gap for the declared placements.
+Shared zero-volume boundaries are permitted. This is an exact reduction of the
+complete arrangement, not approximate sampling.
 
-Occupancy is stored as an exact BigInt mask per cube. The renderer uses the
-same wedge vertices to build 112 outward-oriented triangles, with integer
-coordinates in sixths. Merging adjacent coplanar triangles gives **100 planar
-faces**: twelve pairs merge, and eighty-eight triangles remain separate. This
-counts connected planar surface regions, regardless of color; disconnected
-regions in the same plane are different faces. The outlines show all six edges
-of each tetrahedral fold, including coplanar base hinges, so not every drawn line
-separates geometric faces. Independent rational tests check the boundary volume,
-edge pairing, wedge intersections, and coincident face areas. Separate tile
-surfaces remain visible at matching contacts, with transparency and orientation
-dimming; the correction removes unwanted contacts within a single tile.
+Occupancy uses an exact BigInt mask per cube. Rendering uses the same occupied
+chambers and cancels their shared faces, including the internal cavity walls.
+Its 284 triangles merge into **98 connected planar faces**, regardless of color;
+disconnected regions in the same plane count separately. Fold outlines include
+all six original tetrahedron edges, so some are construction lines rather than
+edges of the combined solid. Separate tiles retain their contact surfaces,
+transparency, and orientation dimming.
 
 ## Search contract and scope
 
@@ -108,8 +122,10 @@ audit its complete partition, and select all occupancy-class representatives.
 Use `--check` to replay that audit and check the stored data without writing it.
 `python3 scripts/verify-chair-tetra-geometry.py` independently checks all 496
 wedge pairs and every pair of rendered triangles with rational arithmetic. It
-reproduces the two old coincident contacts and verifies that the adjusted solid
-has neither coincident face areas nor overlapping wedge interiors. Set
+checks the centered lattice apexes, detects the two raw cut contacts, and verifies
+that the actual boundary has no coincident face areas or pinched vertices.
+`python3 scripts/check-chair-centered-folds.py` enumerates the finite reversal
+constraints and checks the alternative that breaks the existing supertile. Set
 `NODE_BINARY` if Node is not on the path.
 `node scripts/test-chair-tetra-relief.mjs` independently evaluates every sample against all wedge positions, verifies
 complete occupancy-class representation, volume and closed oriented boundary,
