@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297" role="img" aria-labelledby="title desc">
+<title id="title">Chair44 edge fold-out prototype, dimensioned drawing</title><desc id="desc">A4 drawing in millimetres of a convex corner body, quarter-cylinder rotor, and axle. Prototype dimensions only; not a certified tiling shape.</desc>
+<defs><marker id="a" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto-start-reverse"><path d="M5 0L0 2.5L5 5" fill="none" stroke="#42564d" stroke-width=".7"/></marker></defs>
+<rect width="210" height="297" fill="white"/><g font-family="sans-serif" fill="#233c32">
+<text x="14" y="16" font-size="3" letter-spacing=".7">CHAIR44 · MECHANISM STUDY 01</text><text x="14" y="27" font-size="7">Red / green edge fold-out</text><text x="14" y="35" font-size="3.2">One convex corner · all dimensions in millimetres · A4 / actual size</text>
+<path d="M14 41H196" stroke="#aabeb1" stroke-width=".3"/>
+<text x="14" y="51" font-size="4">A. Cross-section at the rotor centre</text>
+<g transform="translate(64 102)"><path d="M-40 0H-10.3A10.3 10.3 0 0 0 0 10.3V40H-40Z" fill="#dce6df" stroke="#405a4d" stroke-width=".35"/>
+<path d="M0 0V10A10 10 0 0 0 10 0Z" fill="#d77565" stroke="#a94e43" stroke-width=".35"/>
+<path d="M-10 0A10 10 0 0 0 0 10L0 0Z" fill="none" stroke="#929e93" stroke-width=".35" stroke-dasharray="1.4 1"/>
+<circle r="1.2" fill="white"/><circle r="1" fill="#c2a04d"/>
+<path d="M-44 0V40M-42 0H-47M-42 40H-47" stroke="#42564d" stroke-width=".25" fill="none"/><text x="-48" y="22" font-size="3" text-anchor="end">40</text>
+<path d="M-40 44H0M-40 42V47M0 42V47" stroke="#42564d" stroke-width=".25"/><text x="-20" y="49" text-anchor="middle" font-size="3">40</text>
+<text x="-32" y="-3" font-size="3" fill="#51813c">GREEN FACE</text><text x="3" y="24" font-size="3" fill="#a34c43">RED FACE</text>
+<path d="M-7.4 7.4L-22 16" stroke="#51813c" stroke-width=".25"/><text x="-37" y="21" font-size="2.8">Cavity radius 10.30</text>
+<path d="M7 7L18 15" stroke="#a34c43" stroke-width=".25"/><text x="19" y="17" font-size="2.8">Rotor radius 10.00</text>
+</g>
+<text x="124" y="64" font-size="3.2" font-weight="600">Quarter-turn, seated → folded</text><text x="124" y="71" font-size="3">Dashed outline: starting position.</text><text x="124" y="77" font-size="3">Green: vacated corner recess.</text><text x="124" y="83" font-size="3">Red: the same moved chunk.</text><text x="124" y="93" font-size="3">Nominal radial clearance: 0.30</text><text x="124" y="99" font-size="3">Axle diameter: 2.00</text><text x="124" y="105" font-size="3">Rotor bore diameter: 2.40</text><text x="124" y="111" font-size="3">Housing bore diameter: 2.20</text>
+<text x="14" y="163" font-size="4">B. Axle layout (housing simplified)</text>
+<g transform="translate(28 186)">
+<path d="M0-3.5H3V-1.1H11.7V-10.3H28.3V-1.1H37V-3.5H40V3.5H37V1.1H28.3V10.3H11.7V1.1H3V3.5H0Z" fill="none" stroke="#788d7f" stroke-width=".3"/>
+<rect x="12" y="-10" width="16" height="10" fill="#d77565" stroke="#a94e43" stroke-width=".3"/><rect x="12" y="-2.5" width="2" height="5" fill="#d77565"/><rect x="26" y="-2.5" width="2" height="5" fill="#d77565"/>
+<rect x="-2" y="-1" width="44" height="2" fill="#c2a04d" stroke="#92702d" stroke-width=".25"/>
+<path d="M0 16H40M0 13V18M40 13V18M12-15H28M12-12V-18M28-12V-18" stroke="#42564d" stroke-width=".25"/><text x="20" y="21" font-size="3" text-anchor="middle">Housing length 40</text><text x="20" y="-18" font-size="3" text-anchor="middle">Rotor width 16</text>
+</g>
+<text x="90" y="178" font-size="3">Cavity spans 11.70 to 28.30 along the axle.</text><text x="90" y="185" font-size="3">Rotor spans 12.00 to 28.00; end clearance 0.30.</text><text x="90" y="192" font-size="3">Rotor hubs: radius 2.50, length 2.00 at each end.</text><text x="90" y="199" font-size="3">Housing bearings: radius 3.50, length 3.00.</text><text x="90" y="206" font-size="3">Straight axle: diameter 2.00, length 44.00.</text>
+<path d="M14 216H196" stroke="#aabeb1" stroke-width=".3"/>
+<text x="14" y="226" font-size="3.4" font-weight="600">Assembly</text><text x="14" y="233" font-size="3">Seat the rotor in the open corner bay; align hubs and insert the axle.</text><text x="14" y="239" font-size="3">Check motion before fixing the axle or locking the folded position.</text><text x="14" y="245" font-size="3">Printer fit is untested. Adjust the editable CAD clearances to your process.</text>
+<text x="14" y="258" font-size="3.1" font-weight="600">This is a mechanism coupon, not a verified monotile.</text><text x="14" y="264" font-size="2.9">Curved relief, hinge hardware, gaps, and concave-corner adaptation need separate tiling checks.</text>
+<path d="M14 277H114M14 274V280M114 274V280" stroke="#42564d" stroke-width=".3"/><text x="64" y="284" text-anchor="middle" font-size="3">100 mm scale check · print at 100%</text><text x="196" y="284" text-anchor="end" font-size="2.6">REV 01 · 2026-09-23</text>
+</g></svg>

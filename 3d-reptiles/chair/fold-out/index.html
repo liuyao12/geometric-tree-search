@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chair44 · Edge fold-out prototype</title>
+<link rel="icon" href="data:,">
+<script type="importmap">{"imports":{"three":"../../vendor/three.module.min.js","three/addons/controls/OrbitControls.js":"../../vendor/OrbitControls.js"}}</script>
+<link rel="stylesheet" href="style.css?v=1">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head><body><main>
+<header><a href="../../">← Chair44 tiler</a><span class="eyebrow">PHYSICAL STUDY · 01</span><h1>A corner that folds out.</h1><p class="lede">Turn the green-side chunk around the shared edge. It becomes the red bump, leaving its matching dent behind.</p></header>
+<section class="workbench" aria-label="Interactive fold-out mechanism">
+<div class="stage"><div id="scene" aria-label="Three-dimensional corner housing and hinged rotor. Drag to orbit."></div><canvas id="section" hidden aria-label="Cross-section through the middle of the rotor"></canvas><div class="stage-label"><span id="view-caption">Drag to orbit · scroll to zoom</span><span class="pill">ONE OUTSIDE CORNER</span></div></div>
+<aside><div class="switch" role="group" aria-label="View"><button data-view="model" aria-pressed="true">3D model</button><button data-view="section" aria-pressed="false">Section</button></div>
+<p class="kicker">FOLD THE CHUNK</p><output id="pose-name">Halfway</output>
+<input id="fold" type="range" min="0" max="90" value="45" step="0.1" aria-label="Fold angle" aria-valuetext="45 degrees">
+<div class="range-labels"><span>Seated</span><span>Folded</span></div>
+<div class="presets"><button data-angle="0">Start</button><button id="play">Play fold</button><button data-angle="90">Finish</button></div>
+<label class="check"><input type="checkbox" id="transparent" checked> See through housing</label>
+<div class="legend"><span><i class="green"></i> Stationary curved dent</span><span><i class="red"></i> Moving chunk / bump</span><span><i class="gold"></i> Shared-edge axle</span></div>
+<p class="hint">The circular profile follows its own clearance cavity, so it can turn without cutting through the housing.</p>
+<dl><div><dt>Turn</dt><dd>\(90^\circ\)</dd></div><div><dt>Rotor radius</dt><dd>\(10\,\mathrm{mm}\)</dd></div><div><dt>Rotor width</dt><dd>\(16\,\mathrm{mm}\)</dd></div><div><dt>Axle diameter</dt><dd>\(2\,\mathrm{mm}\)</dd></div></dl>
+</aside></section>
+<section class="details"><article><p class="eyebrow">THE BUILD</p><h2>Two printed pieces. One axle.</h2><ol><li>Print the housing and rotor. The STL files are in millimetres, with the axle axis vertical for slicing. Check supports at the upper housing shoulder and bearing ears.</li><li>Place the rotor in the open corner bay. Align its hubs with the housing bearings.</li><li>Slide a straight \(2\,\mathrm{mm}\) axle through the bearings and both rotor hubs. The nominal length is \(44\,\mathrm{mm}\). A printable pin is included for a fit trial.</li><li>Turn from seated to folded. After checking the motion, a small amount of adhesive at the axle joints can lock the final position. Keep adhesive away from the rotating hubs until then.</li></ol>
+<p>The nominal radial body clearance is \(0.30\,\mathrm{mm}\), with \(0.30\,\mathrm{mm}\) at each end of the rotor. Printer fit has not been tested; try this coupon before making a whole chair.</p></article>
+<article><p class="eyebrow">FILES &amp; SCOPE</p><h2>Take it to the workbench.</h2><div class="downloads"><a href="prototype.zip" download>Download design pack <span>ZIP ↗</span></a><a href="drawing.svg" target="_blank">Dimensioned drawing <span>SVG ↗</span></a><a href="body.stl" download>Housing <span>STL ↗</span></a><a href="rotor.stl" download>Moving rotor <span>STL ↗</span></a><a href="prototype.scad" download>Editable dimensions <span>SCAD ↗</span></a></div>
+<p class="scope"><strong>A mechanism coupon, not a verified monotile.</strong> The rounded, edge-reaching relief differs from the centered pyramids. The prototype also has bearing ears, a pin and manufacturing gaps. Its fit in complete tilings—and a version for the chair’s concave socket—remain separate design checks.</p><p><a href="verification.json">Mesh and motion checks</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-fold-out-design.md">Design notes</a></p></article></section>
+</main><script type="module" src="app.js?v=1"></script></body></html>

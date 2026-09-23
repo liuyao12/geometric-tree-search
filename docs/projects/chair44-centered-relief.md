@@ -15,6 +15,10 @@ The experiments below use the same relief occupancy model.
 
 ## A physical flip-out construction
 
+A [rounded edge-hinge prototype](chair44-fold-out-design.md) is now available
+with an interactive motion model and printable parts. It uses a different curved
+relief; the tiling certificates below still apply only to the pyramid profiles.
+
 ![Conceptual cross-sections of movable pyramid pieces](../data/chair44-centered-relief/flip-out-concept.svg)
 
 For **blue**, cut a small square pyramid from beneath the face, with one base

@@ -1,0 +1,13 @@
+const {chromium}=require('playwright');const assert=require('node:assert/strict');
+(async()=>{const b=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
+try{const p=await b.newPage({viewport:{width:1440,height:1200}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
+await p.goto(process.env.CHAIR_FOLD_URL??'http://127.0.0.1:8765/3d-reptiles/chair/fold-out/');await p.waitForFunction(()=>document.querySelector('#scene').dataset.angle==='45');await p.waitForTimeout(1200);
+await p.screenshot({path:'/tmp/chair-fold-model.png',fullPage:true});await p.locator('.workbench').screenshot({path:'/tmp/chair-fold-prototype.png'});
+await p.getByRole('button',{name:'Finish',exact:true}).click();assert.equal(await p.locator('#scene').getAttribute('data-angle'),'90');await p.screenshot({path:'/tmp/chair-fold-finished.png'});
+await p.getByRole('button',{name:'Section',exact:true}).click();await p.screenshot({path:'/tmp/chair-fold-section.png'});
+await p.getByRole('button',{name:'Start',exact:true}).click();await p.getByRole('button',{name:'Play fold',exact:true}).click();await p.waitForFunction(()=>Number(document.querySelector('#scene').dataset.angle)>10);await p.getByRole('button',{name:'Pause',exact:true}).click();const a=await p.locator('#scene').getAttribute('data-angle');await p.waitForTimeout(150);assert.equal(await p.locator('#scene').getAttribute('data-angle'),a);
+await p.getByRole('button',{name:'Play fold',exact:true}).click();await p.waitForFunction(()=>document.querySelector('#scene').dataset.angle==='90');
+await p.setViewportSize({width:390,height:844});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await p.screenshot({path:'/tmp/chair-fold-mobile.png',fullPage:true});assert.deepEqual(errors,[]);
+const drawing=await b.newPage({viewport:{width:840,height:1188}});await drawing.goto(new URL('drawing.svg',process.env.CHAIR_FOLD_URL??'http://127.0.0.1:8765/3d-reptiles/chair/fold-out/').href);await drawing.screenshot({path:'/tmp/chair-fold-drawing.png'});await drawing.close();
+for(const file of ['body.stl','rotor.stl','pin.stl','prototype.scad','prototype.zip','verification.json']) {const response=await p.request.get(new URL(file,process.env.CHAIR_FOLD_URL??'http://127.0.0.1:8765/3d-reptiles/chair/fold-out/').href);assert.equal(response.status(),200,file);assert.ok((await response.body()).length>100,file);}
+console.log('Passed fold controls, section view, pause/resume, mobile layout, and browser console.');}finally{await b.close();}})().catch(e=>{console.error(e);process.exit(1)});

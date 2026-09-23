@@ -1,0 +1,51 @@
+{
+  "scope": "Single convex-corner mechanical prototype; not a tiling certificate",
+  "dimensions": {
+    "side": 40,
+    "radius": 10,
+    "cavityRadius": 10.3,
+    "rotorStart": 12,
+    "rotorEnd": 28,
+    "cavityStart": 11.7,
+    "cavityEnd": 28.3,
+    "pinRadius": 1,
+    "bodyBore": 1.1,
+    "rotorBore": 1.2,
+    "rotorHubRadius": 2.5,
+    "bodyHubRadius": 3.5,
+    "hubLength": 2,
+    "bearingLength": 3,
+    "pinStart": -2,
+    "pinEnd": 42,
+    "angularSegments": 128
+  },
+  "meshes": [
+    {
+      "name": "body",
+      "triangles": 2860,
+      "volumeMM3": 62751.17822815165
+    },
+    {
+      "name": "rotor",
+      "triangles": 2192,
+      "volumeMM3": 1283.359133912707
+    },
+    {
+      "name": "pin",
+      "triangles": 256,
+      "volumeMM3": 138.0081335840215
+    }
+  ],
+  "motion": {
+    "degrees": [
+      0,
+      90
+    ],
+    "samples": 2373936,
+    "allAnglesBound": true,
+    "minimumBodyRadialClearance": 0.2968978325709042,
+    "axialClearance": 0.3000000000000007,
+    "minimumBodyPinRadialClearance": 0.09966870056582477,
+    "minimumRotorPinRadialClearance": 0.19963858243544497
+  }
+}
