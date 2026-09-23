@@ -7,11 +7,14 @@ import {
   exposedMarks,
   growOne,
   shrinkOne
-} from "./chair-gcts.js";
+} from "./chair-gcts.js?v=20260923-chair44";
+import { VARIANTS, ROTATIONS, IDENTITY, COLORS, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 const viewport = document.getElementById("viewport");
 const sceneShell = document.querySelector(".scene-shell");
 const inflateButton = document.getElementById("inflate-button");
+const applyOneButton = document.getElementById("apply-one-button");
+const searchStatus = document.getElementById("search-status");
 const backButton = document.getElementById("back-button");
 const runButton = document.getElementById("run-button");
 const generationValue = document.getElementById("generation-value");
@@ -43,10 +46,11 @@ tileSelect.addEventListener("change", () => {
 
 const MAX_GENERATION = 4;
 const RETAINED_CHILD_INDICES = [0, 1, 2, 3, 5, 6, 7];
-const ORIENTATION_COLORS = [
+const CORNER_COLORS = [
   0x4776a8, 0x7a68a6, 0x3d8e84, 0x5aa36f,
   0xd66f57, 0xca6f94, 0xdfb65b, 0xb9944e
 ];
+const ORIENTATION_COLORS = VARIANTS.map(v => CORNER_COLORS[v.missingCorner[0] + 2*v.missingCorner[1] + 4*v.missingCorner[2]]);
 const CUBE_FACES = [
   [0, 2, 3, 1], [4, 5, 7, 6],
   [0, 1, 5, 4], [2, 6, 7, 3],
@@ -128,59 +132,12 @@ function updateOrientationBoundary() {
   orientationBoundary.scale.setScalar(Math.sqrt(1 - planeOffset * planeOffset));
 }
 
-function determinant3(rows) {
-  return rows[0][0] * (rows[1][1] * rows[2][2] - rows[1][2] * rows[2][1])
-    - rows[0][1] * (rows[1][0] * rows[2][2] - rows[1][2] * rows[2][0])
-    + rows[0][2] * (rows[1][0] * rows[2][1] - rows[1][1] * rows[2][0]);
-}
-
-function chairRotationRepresentatives() {
-  const permutations = [
-    [0, 1, 2], [0, 2, 1], [1, 0, 2],
-    [1, 2, 0], [2, 0, 1], [2, 1, 0]
-  ];
-  const candidates = [];
-  for (const permutation of permutations) {
-    for (let mask = 0; mask < 8; mask += 1) {
-      const rows = Array.from({ length: 3 }, (_, row) => {
-        const values = [0, 0, 0];
-        values[permutation[row]] = (mask >> row) & 1 ? -1 : 1;
-        return values;
-      });
-      if (determinant3(rows) !== 1) continue;
-      const key = rows.reduce((value, row, axis) => (
-        value + (row.reduce((sum, entry) => sum + entry, 0) > 0 ? 1 << axis : 0)
-      ), 0);
-      const matrix = new THREE.Matrix4().set(
-        rows[0][0], rows[0][1], rows[0][2], 0,
-        rows[1][0], rows[1][1], rows[1][2], 0,
-        rows[2][0], rows[2][1], rows[2][2], 0,
-        0, 0, 0, 1
-      );
-      const quaternion = new THREE.Quaternion().setFromRotationMatrix(matrix).normalize();
-      if (quaternion.w < 0) quaternion.set(
-        -quaternion.x,
-        -quaternion.y,
-        -quaternion.z,
-        -quaternion.w
-      );
-      candidates.push({ key, rows, quaternion, angle: 2 * Math.acos(THREE.MathUtils.clamp(quaternion.w, -1, 1)) });
-    }
-  }
-  const representatives = new Map();
-  for (const candidate of candidates) {
-    const previous = representatives.get(candidate.key);
-    const signature = candidate.rows.flat().join(",");
-    const previousSignature = previous?.rows.flat().join(",") ?? "";
-    if (!previous || candidate.angle < previous.angle - 1e-9
-      || (Math.abs(candidate.angle - previous.angle) < 1e-9 && signature < previousSignature)) {
-      representatives.set(candidate.key, candidate);
-    }
-  }
-  return representatives;
-}
-
-const CHAIR_ROTATIONS = chairRotationRepresentatives();
+const CHAIR_ROTATIONS = new Map(ROTATIONS.map((rows, key) => {
+  const matrix = new THREE.Matrix4().set(...rows[0], 0, ...rows[1], 0, ...rows[2], 0, 0, 0, 0, 1);
+  const quaternion = new THREE.Quaternion().setFromRotationMatrix(matrix).normalize();
+  if (quaternion.w < 0) quaternion.set(-quaternion.x, -quaternion.y, -quaternion.z, -quaternion.w);
+  return [key, { key, rows, quaternion, angle: 2 * Math.acos(THREE.MathUtils.clamp(quaternion.w, -1, 1)) }];
+}));
 
 function rotationBallPoint(rotation) {
   const { quaternion, angle } = rotation;
@@ -265,7 +222,7 @@ const orientationPointSizes = new Map();
 function orientationCounts(leaves) {
   const counts = new Map();
   for (const leaf of leaves) {
-    const key = orientationIndex(leaf.missingCorner);
+    const key = leaf.variantId;
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
   return counts;
@@ -293,11 +250,8 @@ function updateSelectedOrientation(key) {
     orientationSelectionMarker.material.uniforms.dotSize.value = dotSize;
     orientationSelectionMarker.material.uniforms.haloSize.value = dotSize + 8;
     orientationSelectionMarker.geometry.setFromPoints([rotationBallPoint(rotation)]);
-    matrixValues.replaceChildren(...rotation.rows.flat().map((value) => {
-      const cell = document.createElement("span");
-      cell.textContent = String(value).replace("-", "−");
-      return cell;
-    }));
+    matrixValues.textContent = '\\(\\begin{pmatrix}' + rotation.rows.map(row => row.join('&')).join('\\\\') + '\\end{pmatrix}\\)';
+    window.MathJax?.typesetPromise?.([matrixValues]);
   }
 }
 
@@ -382,92 +336,20 @@ function add(left, right) {
   return [left[0] + right[0], left[1] + right[1], left[2] + right[2]];
 }
 
-function transformedChild(origin4, missing, parentMissing, childSize, parentSize) {
-  const factor = childSize / 2;
-  const childOrigin = origin4.map((coordinate) => coordinate * factor);
-  const childMissing = [...missing];
-  for (let axis = 0; axis < 3; axis += 1) {
-    if (parentMissing[axis] === 0) {
-      childOrigin[axis] = parentSize - childSize - childOrigin[axis];
-      childMissing[axis] = 1 - childMissing[axis];
-    }
-  }
-  return [childOrigin, childMissing];
-}
-
-function chairLeaves(level, origin = [0, 0, 0], missingCorner = [1, 1, 1], path = []) {
-  if (level === 0) return [{ origin, missingCorner, path }];
-  const parentSize = 2 ** (level + 1);
-  const childSize = parentSize / 2;
-  const leaves = [];
-  CANONICAL_CHILDREN.forEach(([canonicalOrigin, canonicalMissing], childIndex) => {
-    const [relativeOrigin, childMissing] = transformedChild(
-      canonicalOrigin,
-      canonicalMissing,
-      missingCorner,
-      childSize,
-      parentSize
-    );
-    leaves.push(...chairLeaves(
-      level - 1,
-      add(origin, relativeOrigin),
-      childMissing,
-      [...path, childIndex]
-    ));
-  });
-  return leaves;
-}
-
 function randomRetainedChildIndex() {
   return RETAINED_CHILD_INDICES[
     Math.floor(Math.random() * RETAINED_CHILD_INDICES.length)
   ];
 }
 
-function childSupertile(parent, childIndex) {
-  const [canonicalOrigin, canonicalMissing] = CANONICAL_CHILDREN[childIndex];
-  const childSize = parent.size / 2;
-  const [relativeOrigin, missingCorner] = transformedChild(
-    canonicalOrigin,
-    canonicalMissing,
-    parent.missingCorner,
-    childSize,
-    parent.size
-  );
-  return {
-    origin: add(parent.origin, relativeOrigin),
-    missingCorner,
-    size: childSize
-  };
-}
-
-function parentContainingChild(current, retainedChildIndex) {
-  const [canonicalOrigin, canonicalMissing] = CANONICAL_CHILDREN[retainedChildIndex];
-  const parentMissing = canonicalMissing.map((value, axis) => (
-    value === current.missingCorner[axis] ? 1 : 0
-  ));
-  const parentSize = current.size * 2;
-  const [relativeOrigin] = transformedChild(
-    canonicalOrigin,
-    canonicalMissing,
-    parentMissing,
-    current.size,
-    parentSize
-  );
-  return {
-    origin: current.origin.map((value, axis) => value - relativeOrigin[axis]),
-    missingCorner: parentMissing,
-    size: parentSize
-  };
-}
-
 function initialInflationState() {
   return {
     generation: 0,
+    rotation: IDENTITY,
     origin: [0, 0, 0],
     missingCorner: [1, 1, 1],
     size: 2,
-    leaves: [{ origin: [0, 0, 0], missingCorner: [1, 1, 1], path: [] }],
+    leaves: chairLeaves(0),
     retainedChildIndex: null
   };
 }
@@ -484,7 +366,7 @@ function expandInflationState(current, retainedChildIndex) {
     leaves.push(...chairLeaves(
       current.generation,
       child.origin,
-      child.missingCorner,
+      child.rotation,
       [childIndex]
     ));
   }
@@ -500,7 +382,7 @@ function orientationIndex(missingCorner) {
   return missingCorner[0] + 2 * missingCorner[1] + 4 * missingCorner[2];
 }
 
-const chairOrientationKeys = Array.from({ length: 8 }, (_, index) => index);
+const chairOrientationKeys = Array.from({ length: 24 }, (_, index) => index);
 let selectedChairOrientation = null;
 
 function updateChairColorButtons() {
@@ -514,13 +396,13 @@ function updateChairColorButtons() {
 
 for (const key of chairOrientationKeys) {
   const button = document.createElement("button");
-  const bits = [key & 1, (key >> 1) & 1, (key >> 2) & 1].join("");
+  const bits = VARIANTS[key].missingCorner.join("");
   button.type = "button";
   button.dataset.orientation = String(key);
   button.style.setProperty("--swatch", `#${ORIENTATION_COLORS[key].toString(16).padStart(6, "0")}`);
-  button.setAttribute("aria-label", `Highlight chairs missing corner ${bits}`);
+  button.setAttribute("aria-label", `Highlight decorated rotation ${key + 1}, missing corner ${bits}`);
   button.setAttribute("aria-pressed", "false");
-  button.title = `Missing corner ${bits}`;
+  button.title = `Rotation ${key + 1} · corner ${bits}`;
   button.addEventListener("click", () => {
     updateSelectedOrientation(key);
   });
@@ -589,11 +471,11 @@ function makeVisual(state) {
   const geometries = [];
   const chairs = [];
   const orientationBuckets = new Map();
-  const faceOpacity = Math.max(0.035, 0.2 / (2 ** level));
-  const edgeOpacity = Math.max(0.11, 0.58 / (2 ** level));
+  const faceOpacity = 0.94;
+  const edgeOpacity = 0.48;
 
   for (const leaf of leaves) {
-    const orientation = orientationIndex(leaf.missingCorner);
+    const orientation = leaf.variantId;
     const geometry = makeChairGeometry(leaf);
     const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
     if (!orientationBuckets.has(orientation)) {
@@ -607,7 +489,7 @@ function makeVisual(state) {
   }
 
   for (const [orientation, bucket] of orientationBuckets) {
-    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
+    const color = new THREE.Color(0xf0f1e9);
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute("position", new THREE.Float32BufferAttribute(bucket.facePositions, 3));
     geometry.computeVertexNormals();
@@ -615,7 +497,7 @@ function makeVisual(state) {
       color,
       transparent: true,
       opacity: faceOpacity,
-      depthWrite: false,
+      depthWrite: true,
       depthTest: true,
       side: THREE.DoubleSide
     });
@@ -627,7 +509,7 @@ function makeVisual(state) {
     const edgeGeometry = new THREE.BufferGeometry();
     edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(bucket.edgePositions, 3));
     const edgeMaterial = new THREE.LineBasicMaterial({
-      color: color.clone().multiplyScalar(0.68),
+      color: 0x394845,
       transparent: true,
       opacity: edgeOpacity,
       depthWrite: false,
@@ -641,6 +523,7 @@ function makeVisual(state) {
     materials.push(faceMaterial, edgeMaterial);
     chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
+  addArrowVisual(group, exposedMarks({ placements: leaves }), materials, geometries);
   const parent = makeParentOutline(size, state.missingCorner, state.origin);
   // Keep the original chair fixed in world space; new copies grow around it.
   group.position.set(-1, -1, -1);
@@ -660,15 +543,37 @@ function makeVisual(state) {
   };
 }
 
-const SOCKET_COLORS = [0xe25543, 0xf0a51f, 0x18a98b, 0x477dcc, 0x9a66c7, 0xd66f94];
+function channelColor(color) { return COLORS[color]; }
 
-function channelColor(channel) {
-  let hash = 2166136261;
-  for (let index = 0; index < channel.length; index += 1) {
-    hash ^= channel.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
+function addArrowVisual(group, marks, materials, geometries) {
+  const buckets = new Map(Object.keys(COLORS).map(color => [color, []]));
+  const triangles = [
+    [[-.065,-.36],[.065,-.36],[.065,.12]],
+    [[-.065,-.36],[.065,.12],[-.065,.12]],
+    [[-.17,.10],[.17,.10],[0,.42]]
+  ];
+  for (const mark of marks) {
+    const normal = new THREE.Vector3(...mark.direction);
+    const forward = new THREE.Vector3(...mark.arrow).normalize();
+    const side = forward.clone().cross(normal);
+    const center = new THREE.Vector3(...mark.cell).addScalar(.5).addScaledVector(normal,.509);
+    for (const triangle of triangles) for (const [x,y] of triangle) {
+      const p = center.clone().addScaledVector(side,x).addScaledVector(forward,y);
+      buckets.get(mark.color).push(p.x,p.y,p.z);
+    }
   }
-  return SOCKET_COLORS[Math.abs(hash) % SOCKET_COLORS.length];
+  const arrows = new THREE.Group();
+  arrows.name = 'chair44-arrows';
+  arrows.visible = document.getElementById('show-markings').checked;
+  for (const [color,positions] of buckets) {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
+    const material = new THREE.MeshBasicMaterial({color:COLORS[color],side:THREE.FrontSide,transparent:true,opacity:1,depthWrite:false});
+    material.userData.baseOpacity = 1;
+    const mesh = new THREE.Mesh(geometry,material); mesh.renderOrder = 4;
+    arrows.add(mesh); materials.push(material); geometries.push(geometry);
+  }
+  group.add(arrows);
 }
 
 function makeSearchVisual(state) {
@@ -681,25 +586,25 @@ function makeSearchVisual(state) {
   for (const placement of state.placements) {
     const variant = state.catalog.variants[placement.variantId];
     const leaf = { origin: placement.origin, missingCorner: variant.missingCorner };
-    const orientation = orientationIndex(variant.missingCorner);
-    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
+    const orientation = variant.id;
+    const color = new THREE.Color(0xf0f1e9);
     const geometry = makeChairGeometry(leaf);
     const faceMaterial = new THREE.MeshBasicMaterial({
       color,
       transparent: true,
-      opacity: 0.15,
-      depthWrite: false,
+      opacity: 0.94,
+      depthWrite: true,
       depthTest: true,
       side: THREE.DoubleSide
     });
-    faceMaterial.userData.baseOpacity = 0.15;
+    faceMaterial.userData.baseOpacity = 0.94;
     const mesh = new THREE.Mesh(geometry, faceMaterial);
     mesh.renderOrder = 1;
     group.add(mesh);
 
     const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
     const edgeMaterial = new THREE.LineBasicMaterial({
-      color: color.clone().multiplyScalar(0.72),
+      color: 0x394845,
       transparent: true,
       opacity: 0.62,
       depthWrite: false,
@@ -715,33 +620,7 @@ function makeSearchVisual(state) {
     variant.cells.forEach(cell => allCells.push(add(placement.origin, cell)));
   }
 
-  const outward = new THREE.Vector3(0, 0, 1);
-  for (const mark of exposedMarks(state)) {
-    const direction = new THREE.Vector3(...mark.direction);
-    const geometry = mark.polarity > 0
-      ? new THREE.CircleGeometry(0.145, 16)
-      : new THREE.RingGeometry(0.075, 0.155, 16);
-    const material = new THREE.MeshBasicMaterial({
-      color: channelColor(mark.channel),
-      transparent: true,
-      opacity: 0.9,
-      depthWrite: false,
-      depthTest: false,
-      side: THREE.DoubleSide
-    });
-    material.userData.baseOpacity = 0.9;
-    const socket = new THREE.Mesh(geometry, material);
-    socket.position.set(
-      mark.cell[0] + 0.5 + mark.direction[0] * 0.506,
-      mark.cell[1] + 0.5 + mark.direction[1] * 0.506,
-      mark.cell[2] + 0.5 + mark.direction[2] * 0.506
-    );
-    socket.quaternion.setFromUnitVectors(outward, direction);
-    socket.renderOrder = 5;
-    group.add(socket);
-    geometries.push(geometry);
-    materials.push(material);
-  }
+  addArrowVisual(group, exposedMarks(state), materials, geometries);
 
   const minima = [0, 1, 2].map(axis => Math.min(...allCells.map(cell => cell[axis])));
   const maxima = [0, 1, 2].map(axis => Math.max(...allCells.map(cell => cell[axis])) + 1);
@@ -785,10 +664,15 @@ function updateReadout() {
   if (mode === "search") {
     generationLabel.textContent = "placed";
     generationValue.textContent = String(growthState.placements.length);
-    tileLabel.textContent = "catalogue";
-    tileValue.textContent = String(growthState.catalog.variants.length);
+    tileLabel.textContent = "prototile";
+    tileValue.textContent = "1";
     frontierValue.textContent = String(exposedMarks(growthState).length);
     backtrackValue.textContent = String(growthState.solverBacktracks);
+    searchStatus.textContent = growthState.status === 'consistent finite patch'
+      ? 'Finite patch verified. Apply one to continue.'
+      : growthState.status === 'exhausted' ? 'Local search exhausted.'
+      : growthState.status.includes('budget') ? 'Backtracking; apply one to continue.'
+      : `${growthState.forcedPlacements} forced · ${growthState.branchDecisions} choices`;
   } else {
     generationLabel.textContent = "inflations";
     generationValue.textContent = String(generation);
@@ -799,38 +683,30 @@ function updateReadout() {
 
 function updateActionButtons() {
   const busy = Boolean(transition);
-  if (mode === "search") {
-    const complete = growthState.placements.length >= growthState.catalog.targetCount;
-    backButton.disabled = busy || growthState.placements.length === 1;
-    inflateButton.disabled = busy || complete;
-    inflateButton.querySelector("span").textContent = complete ? "Patch complete" : "Place next chair";
-    backButton.querySelector("span").textContent = "Remove last";
-    runButton.disabled = complete && !autoRun;
-    runButton.querySelector("span").textContent = autoRun ? "Pause" : "Run";
-    runButton.querySelector("b").textContent = autoRun ? "Ⅱ" : "▶";
-  } else {
-    backButton.disabled = busy || generation === 0;
-    inflateButton.disabled = busy || generation === MAX_GENERATION;
-    inflateButton.querySelector("span").textContent = generation === MAX_GENERATION
-      ? "Maximum inflation reached"
-      : "Apply one more inflation";
-    backButton.querySelector("span").textContent = "Go back";
-  }
+  chairModeSelect.disabled = busy;
+  inflateButton.disabled = busy || generation === MAX_GENERATION;
+  applyOneButton.disabled = busy || (growthState.complete && growthState.status !== 'consistent finite patch');
+  backButton.disabled = busy || (mode === 'search' ? growthState.history.length === 0 : generation === 0);
+  backButton.querySelector('span').textContent = 'Undo';
+  runButton.disabled = busy || (growthState.complete && !autoRun);
+  runButton.querySelector('span').textContent = autoRun ? 'Pause' : 'Run';
+  runButton.querySelector('b').textContent = autoRun ? 'Ⅱ' : '▶';
 }
 
 const inflationStates = [initialInflationState()];
-inflationStates.push(expandInflationState(inflationStates[0], randomRetainedChildIndex()));
-let generation = 1;
+let generation = 0;
 let currentInflationState = inflationStates[generation];
 let mode = "inflation";
 let growthState = createGrowthState(2);
 let autoRun = false;
 let currentVisual = makeVisual(currentInflationState);
 root.add(currentVisual.group);
-camera.position.copy(cameraDestinationForSize(currentVisual.size));
+camera.position.copy(cameraDestinationForVisual(currentVisual));
 let transition = null;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-viewport.dataset.retainedChildren = String(currentInflationState.retainedChildIndex + 1);
+viewport.dataset.retainedChildren = "";
+viewport.dataset.tile = "Chair44";
+viewport.dataset.markings = "24";
 
 function updateModePanel() {
   const searching = mode === "search";
@@ -840,24 +716,24 @@ function updateModePanel() {
   if (searching) orientationMatrix.hidden = true;
   else if (selectedChairOrientation !== null) orientationMatrix.hidden = false;
   if (searching) {
-    panelKicker.textContent = "GCTS marking";
-    hierarchyTitle.textContent = "depth 2";
+    panelKicker.textContent = "Chair44 local matching";
+    hierarchyTitle.textContent = "One tile";
     panelCount.textContent = String(growthState.catalog.variants.length);
-    panelCountLabel.textContent = "tile states";
+    panelCountLabel.textContent = "rotations";
     scaleLeft.textContent = "seed";
     scaleRight.textContent = "matched frontier";
-    panelDescription.textContent = "The search aligns complementary face sockets, checks every new contact, and rejects overlaps. No enclosing superchair is given to it.";
-    sceneInstruction.textContent = "Drag to orbit · colored tabs are exposed local sockets";
-    hierarchyPlot.setAttribute("aria-label", "Live diagram of exposed local matching sockets in the chair search");
+    panelDescription.textContent = "Blue matches blue; red matches green, with arrows aligned. Apply one places a tile or backtracks to a viable branch. Run pauses at each finite checkpoint.";
+    sceneInstruction.textContent = "Drag to orbit · blue meets blue · red meets green";
+    hierarchyPlot.setAttribute("aria-label", "Colors of exposed Chair44 arrows in the local search");
   } else {
     panelKicker.textContent = "orientation ball";
-    hierarchyTitle.innerHTML = 'SO<sub>3</sub>(<span class="number-field">R</span>)';
+    hierarchyTitle.textContent = 'Rotations';
     panelCount.textContent = String(orientationCounts(currentInflationState.leaves).size);
     panelCountLabel.textContent = "present";
     scaleLeft.textContent = "identity";
-    scaleRight.textContent = "π boundary";
+    scaleRight.textContent = "half-turn boundary";
     panelDescription.textContent = "Rotate the ball or select a dot to highlight that orientation in the nested patch. Dot area records the number of chairs present.";
-    sceneInstruction.textContent = "Drag to orbit · scroll through transparent walls";
+    sceneInstruction.textContent = "Drag to orbit · markings rotate with each chair";
     orientationPlot.setAttribute("aria-label", "Rotatable solid axis-angle ball containing the chair orientations");
   }
   updateReadout();
@@ -866,9 +742,14 @@ function updateModePanel() {
   updateOrientationBall();
 }
 
-function cameraDestinationForSize(size) {
-  const offset = camera.position.clone().sub(controls.target).normalize();
-  return controls.target.clone().add(offset.multiplyScalar(8 + size * 2.05));
+function cameraDestinationForVisual(visual) {
+  const direction = camera.position.clone().sub(controls.target).normalize();
+  const sphere = new THREE.Box3().setFromObject(visual.group).getBoundingSphere(new THREE.Sphere());
+  const vertical = THREE.MathUtils.degToRad(camera.fov);
+  const horizontal = 2 * Math.atan(Math.tan(vertical / 2) * camera.aspect);
+  const distance = sphere.radius / Math.sin(Math.min(vertical, horizontal) / 2) * 1.20;
+  controls.target.copy(sphere.center);
+  return sphere.center.clone().addScaledVector(direction, distance);
 }
 
 function swapVisual(nextVisual, duration, cameraDestination) {
@@ -918,25 +799,24 @@ function showGeneration(targetGeneration) {
   updateReadout();
   updateOrientationBall();
 
-  const cameraOffset = camera.position.clone().sub(controls.target);
-  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
+  const cameraDestination = cameraDestinationForVisual(nextVisual);
   swapVisual(nextVisual, 720, cameraDestination);
 }
 
 function showGrowthStep(direction) {
   if (transition || mode !== "search") return;
   const nextState = direction > 0 ? growOne(growthState) : shrinkOne(growthState);
-  if (nextState.placements.length === growthState.placements.length) return;
+  if (nextState === growthState) return;
   growthState = nextState;
   const nextVisual = makeSearchVisual(growthState);
   updateReadout();
   drawHierarchyPlot();
-  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForSize(nextVisual.size));
+  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForVisual(nextVisual));
 }
 
 function runNextSearchStep() {
   if (!autoRun || transition || mode !== "search") return;
-  if (growthState.placements.length >= growthState.catalog.targetCount) {
+  if (growthState.complete) {
     autoRun = false;
     updateActionButtons();
     return;
@@ -945,8 +825,14 @@ function runNextSearchStep() {
 }
 
 inflateButton.addEventListener("click", () => {
-  if (mode === "search") showGrowthStep(1);
-  else showGeneration(generation + 1);
+  if (transition) return;
+  switchMode('inflation');
+  showGeneration(generation + 1);
+});
+applyOneButton.addEventListener('click', () => {
+  if (transition) return;
+  switchMode('search');
+  showGrowthStep(1);
 });
 backButton.addEventListener("click", () => {
   autoRun = false;
@@ -958,15 +844,24 @@ runButton.addEventListener("click", () => {
   updateActionButtons();
   if (autoRun) runNextSearchStep();
 });
-chairModeSelect.addEventListener("change", () => {
+document.getElementById('show-markings').addEventListener('change', event => {
+  for (const visual of [currentVisual, transition?.from, transition?.to]) {
+    const arrows = visual?.group.getObjectByName('chair44-arrows');
+    if (arrows) arrows.visible = event.target.checked;
+  }
+});
+function switchMode(nextMode) {
   autoRun = false;
-  mode = chairModeSelect.value;
+  if (mode === nextMode) return;
+  mode = nextMode;
+  chairModeSelect.value = mode;
   disposeVisual(currentVisual);
   currentVisual = mode === "search" ? makeSearchVisual(growthState) : makeVisual(currentInflationState);
   root.add(currentVisual.group);
-  camera.position.copy(cameraDestinationForSize(currentVisual.size));
+  camera.position.copy(cameraDestinationForVisual(currentVisual));
   updateModePanel();
-});
+}
+chairModeSelect.addEventListener("change", () => switchMode(chairModeSelect.value));
 
 function drawHierarchyPlot() {
   const rect = hierarchyPlot.getBoundingClientRect();
@@ -1019,10 +914,10 @@ function drawHierarchyPlot() {
       context.lineTo(x, y);
       context.stroke();
       context.beginPath();
-      context.arc(x, y, mark.polarity > 0 ? 4.5 : 5.5, 0, Math.PI * 2);
-      const color = new THREE.Color(channelColor(mark.channel));
+      context.arc(x, y, 5.5, 0, Math.PI * 2);
+      const color = new THREE.Color(channelColor(mark.color));
       context.fillStyle = `rgb(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)})`;
-      if (mark.polarity > 0) context.fill();
+      if (mark.color !== "green") context.fill();
       else {
         context.lineWidth = 2;
         context.strokeStyle = context.fillStyle;
@@ -1062,7 +957,7 @@ function drawHierarchyPlot() {
       const radius = Math.max(8, cssWidth * 0.055);
       context.beginPath();
       context.arc(x, y, radius, 0, Math.PI * 2);
-      const color = new THREE.Color(ORIENTATION_COLORS[orientationIndex(missing)]);
+      const color = new THREE.Color(CORNER_COLORS[orientationIndex(missing)]);
       context.fillStyle = `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, .72)`;
       context.fill();
       context.strokeStyle = "rgba(23, 32, 30, .55)";
@@ -1082,6 +977,7 @@ function resize() {
   renderer.setSize(width, height, false);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
+  if (currentVisual && !transition) camera.position.copy(cameraDestinationForVisual(currentVisual));
 }
 
 function resizeOrientationBall() {

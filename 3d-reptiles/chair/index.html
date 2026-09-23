@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f2f3ee">
-  <title>3D Chair — Inflation and Local Forcing</title>
+  <title>Chair44 — Goodman–Strauss’s Arrow Markings</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 7h18v9h-9v9H5z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27M14 7v9H5m9 0h9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
   <script type="importmap">
     {
@@ -14,7 +14,9 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260923-chair44">
+  <script>window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -25,16 +27,16 @@
           <span>3D reptiles</span>
         </div>
         <div class="title-block">
-          <p class="kicker">Example 02 · chair heptacube</p>
-          <h1 id="page-title">Chair growth</h1>
-          <p class="lede">Grow a randomly nested superchair, or assemble the marked tiling one legal local match at a time.</p>
+          <p class="kicker">Example 02 · Chair44 · 2026</p>
+          <h1 id="page-title">Chair44</h1>
+          <p class="lede">One chair, three arrow colors. Explore the aperiodic monotile through Goodman–Strauss’s markings.</p>
         </div>
         <div class="tile-picker">
           <label for="tile-select">Choose tile</label>
           <div class="select-shell">
             <select id="tile-select">
               <option value="../">Quaquaversal prism</option>
-              <option value="./" selected>Chair heptacube</option>
+              <option value="./" selected>Chair44 · marked heptacube</option>
             </select>
             <span aria-hidden="true">↕</span>
           </div>
@@ -43,7 +45,7 @@
       </header>
 
       <div class="scene-shell">
-        <div id="viewport" class="viewport" role="img" aria-label="Interactive local-matching growth and scale-two inflation of the three-dimensional chair heptacube. Drag to rotate and scroll through its transparent faces."></div>
+        <div id="viewport" class="viewport" role="img" aria-label="Interactive Chair44 with 24 red, green, and blue arrow markings. Drag to inspect its outer corners and concave socket."></div>
         <div class="scene-vignette" aria-hidden="true"></div>
 
         <div class="scene-readout" aria-live="polite">
@@ -59,13 +61,13 @@
             <span>Construction</span>
             <select id="chair-mode-select">
               <option value="inflation" selected>Nested inflation</option>
-              <option value="search">Tiling with markings</option>
+              <option value="search">Local arrow matching</option>
             </select>
           </label>
           <div class="orientation-heading">
             <div>
               <span id="panel-kicker">orientation ball</span>
-              <strong id="hierarchy-title" aria-label="SO 3 over the real numbers">SO<sub>3</sub>(<span class="number-field">R</span>)</strong>
+              <strong id="hierarchy-title">Rotations</strong>
             </div>
             <div class="orientation-count">
               <b id="panel-count">7</b>
@@ -76,31 +78,41 @@
           <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Diagram of the active chair construction" hidden></canvas>
           <div class="orientation-scale" aria-hidden="true">
             <span id="scale-left">identity</span>
-            <span id="scale-right">π boundary</span>
+            <span id="scale-right">half-turn boundary</span>
           </div>
-          <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight chairs by missing-corner color"></div>
+          <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight decorated chair rotations"></div>
           <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
             <div class="matrix-heading">
               <span>selected element</span>
-              <strong id="matrix-title"><i>SO</i><sub>3</sub>(<span class="number-field">R</span>)</strong>
+              <strong id="matrix-title">\(R\in\mathrm{SO}(3)\)</strong>
             </div>
             <div id="matrix-values" class="matrix-values" aria-label="Three by three rotation matrix"></div>
           </section>
           <p id="panel-description">Rotate the ball or select a dot to highlight that orientation in the nested patch. Dot area records the number of chairs present.</p>
+          <div class="marking-key" aria-label="Chair44 matching rules">
+            <label><input id="show-markings" type="checkbox" checked> Show arrows</label>
+            <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
+            <span><i class="red-arrow" aria-hidden="true">↗</i><i class="green-arrow" aria-hidden="true">↗</i> Red meets green</span>
+            <small>Arrow directions coincide at each contact.</small>
+          </div>
+          <p id="search-status" class="search-status" aria-live="polite"></p>
           <dl id="search-stats" class="search-stats" aria-live="polite">
             <div><dt>frontier</dt><dd id="frontier-value">0</dd></div>
             <div><dt>backtracks</dt><dd id="backtrack-value">0</dd></div>
           </dl>
         </aside>
 
-        <p id="scene-instruction" class="scene-instruction">Drag to orbit · colored tabs are exposed local sockets</p>
+        <p id="scene-instruction" class="scene-instruction">Drag to orbit · inspect the arrows and inner socket</p>
         <div class="scene-actions">
           <button id="back-button" class="scene-button back-button" type="button">
             <b aria-hidden="true">↙</b>
             <span>Go back</span>
           </button>
+          <button id="apply-one-button" class="scene-button apply-one-button" type="button" title="Try one locally matched tile; backtrack if a frontier point becomes impossible">
+            <span>Apply one</span><b aria-hidden="true">+</b>
+          </button>
           <button id="inflate-button" class="scene-button substitute-button" type="button" title="Choose one of seven outer child addresses and expand">
-            <span>Apply one more inflation</span>
+            <span>Apply inflation</span>
             <b aria-hidden="true">↗</b>
           </button>
           <button id="run-button" class="scene-button run-button" type="button">
@@ -117,7 +129,7 @@
         <p class="kicker">The rule</p>
         <h2 id="rule-title">One concave solid.<br>Eight smaller chairs.</h2>
         <p class="body-large">
-          Remove one corner from a <span class="math">2 × 2 × 2</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs: one translated central child and seven outer children. At every step, one of the seven outer child addresses is chosen at random for the existing superchair; seven congruent copies then grow around it. Going back and inflating again can therefore choose a different continuation.
+          Remove one corner from a <span class="math">\(2\times2\times2\)</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs: one translated central child and seven outer children. At every step, one of the seven outer child addresses is chosen at random for the existing superchair; seven congruent copies then grow around it. Going back and inflating again can therefore choose a different continuation.
         </p>
         <div class="turn-diagram chair-facts" aria-label="Chair inflation facts">
           <div class="turn-card">
@@ -142,42 +154,39 @@
     <section class="essay-section matching-section" aria-labelledby="forcing-title">
       <div class="section-number">02</div>
       <div class="essay-copy">
-        <p class="kicker">Hierarchy versus shape</p>
-        <h2 id="forcing-title">The inflation is nonperiodic.<br>The bare tile is not.</h2>
+        <p class="kicker">The Chair44 matching rule</p>
+        <h2 id="forcing-title">Three colors.<br>One forced hierarchy.</h2>
         <p class="body-large">
-          The unmarked heptacube can also assemble periodically, so its geometry alone does not force this hierarchy. The search above replaces it by a finite set of two-level collared chairs. Each exposed unit face carries a socket; a move is legal only when all touching sockets are complementary and the new chair does not overlap the patch.
+          The bare heptacube admits periodic tilings. Chair44 adds arrows: blue meets blue,
+          and red meets green, with their directions aligned. The same decorated tile occurs
+          everywhere. Its 24 exposed unit panels reproduce Goodman–Strauss’s Figures 2 and 5,
+          including the three arrows inside the concave socket.
         </p>
-        <div class="search-flow" aria-label="How a marked chair hierarchy can be recognized">
-          <div>
-            <span>1</span>
-            <strong>Match marked faces</strong>
-            <small>Geometry proposes placements; markings reject the wrong local phase.</small>
-          </div>
+        <div class="search-flow" aria-label="From local arrows to the Chair44 hierarchy">
+          <div><span>1</span><strong>Match the arrows</strong><small>Every shared panel agrees in direction and complementary color.</small></div>
           <i aria-hidden="true">→</i>
-          <div>
-            <span>2</span>
-            <strong>Recover eight-child groups</strong>
-            <small>Every legal neighborhood identifies its parent chair and address.</small>
-          </div>
+          <div><span>2</span><strong>Assemble eight chairs</strong><small>One central chair and seven outer chairs form a supertile.</small></div>
           <i aria-hidden="true">→</i>
-          <div>
-            <span>3</span>
-            <strong>Audit composition</strong>
-            <small>Verify that completed patches recover parents uniquely before claiming infinite forcing.</small>
-          </div>
+          <div><span>3</span><strong>Repeat at every scale</strong><small>The supertile inherits the same corner markings.</small></div>
         </div>
         <aside class="key-idea">
-          <p class="kicker">What is proved here—and what is not</p>
-          <p>The executable catalogue reconstructs a 64-chair, depth-two supertile without being handed its boundary. It demonstrates the GCTS encoding, but it is not yet a proof that this compact catalogue forces the infinite hierarchy. Goodman–Strauss guarantees that a finite forcing decoration can be constructed under the theorem’s hypotheses; establishing that our decoration is one requires a unique-composition audit at every scale. The well-known explicit chair rules are for the planar L-chair; these generated collars belong to its 3D heptacube analogue.</p>
+          <p class="kicker">The paper and the demonstration</p>
+          <p>Goodman–Strauss proves that these markings force a unique infinite hierarchy and strong aperiodicity.
+          This page renders the marked version, using proper rotations of one handedness. Nested inflation
+          illustrates the construction; local matching independently grows a finite patch from the arrow rules.
+          Apply one tries the next local placement and backtracks when necessary; Apply inflation expands the nested supertile. Each construction keeps its own undo history. The finite search is a demonstration, not a new proof of infinite extension.</p>
         </aside>
       </div>
     </section>
 
     <footer>
-      <p>Local-forcing context: <a href="https://annals.math.princeton.edu/articles/12903">Goodman–Strauss, Matching rules and substitution tilings</a>.</p>
+      <p>Arrow design adapted from <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss,
+      <em>Notes on a strongly aperiodic monotile in \(E^3\)</em></a>, September 21, 2026, Figures 2 and 5
+      (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).
+      Chair44 introduced by <a href="https://arxiv.org/abs/2609.19214">Ioannis Tsiokos</a>.</p>
       <a href="../">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=20260923-chair44"></script>
 </body>
 </html>
