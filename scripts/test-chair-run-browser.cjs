@@ -18,10 +18,16 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
         const response = await route.fetch();
         await route.fulfill({ response, body: (await response.text()) + `
           window.runCheck = {
-            frames: 0, violations: [],
+            frames: 0, violations: [], saved: new Map(),
+            save(name) { this.saved.set(name, growthState); },
+            restored(name) { return this.saved.get(name) === growthState; },
+            savedInflation: null,
+            saveInflation() { this.savedInflation = currentInflationState; },
+            sameInflation() { return this.savedInflation === currentInflationState; },
             read: () => ({ count: growthState.placements.length, running: autoRun,
               transitioning: Boolean(transition), queued: runTimer !== null,
-              complete: growthState.complete, status: growthState.status })
+              complete: growthState.complete, status: growthState.status,
+              mode, inflationGeneration: generation })
           };
           function inspectRunFrame() {
             if (mode === 'search') {
@@ -43,10 +49,14 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       });
       await page.goto(base);
       await page.waitForFunction(() => window.runCheck);
+      await page.locator('#inflate-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      await page.evaluate(() => runCheck.saveInflation());
       await page.locator('#apply-one-button').click();
       await page.waitForFunction(() => !runCheck.read().transitioning);
 
       const pauseAt = async phase => {
+        await page.evaluate(() => runCheck.save('pauseStart'));
         await page.locator('#run-button').click();
         const paused = await page.evaluate(phase => new Promise((resolve, reject) => {
           const deadline = performance.now() + 5000;
@@ -69,6 +79,9 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
         await page.waitForTimeout(650);
         assert.equal((await page.evaluate(() => runCheck.read())).count, paused.after.count);
         assert.equal(await page.locator('#run-button span').textContent(), 'Run');
+        await page.locator('#back-button').click();
+        await page.waitForFunction(() => !runCheck.read().transitioning);
+        assert.equal(await page.evaluate(() => runCheck.restored('pauseStart')), true, 'Undo restores the exact pre-Run state');
       };
 
       if (reducedMotion === 'no-preference') await pauseAt('transition');
@@ -85,6 +98,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
         await page.waitForTimeout(400);
         assert.equal((await page.evaluate(() => runCheck.read())).count, stoppedCount);
       }
+      await page.evaluate(() => runCheck.save('checkpointStart'));
       await page.locator('#run-button').click();
       await page.waitForFunction(() => {
         const state = runCheck.read();
@@ -94,10 +108,58 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
       assert.equal(checkpoint.count, 64);
       assert.equal(checkpoint.status, 'consistent finite patch');
       assert.equal(checkpoint.queued, false);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal(await page.evaluate(() => runCheck.restored('checkpointStart')), true);
+
+      // A manual step after a Run remains a separate undoable action.
+      await page.evaluate(() => runCheck.save('manualStart'));
+      await page.locator('#apply-one-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal(await page.evaluate(() => runCheck.restored('manualStart')), true);
+
+      // Undo must also interrupt a running animation and discard its timer.
+      await page.evaluate(() => runCheck.save('activeStart'));
+      const activeCount = (await page.evaluate(() => runCheck.read())).count;
+      await page.locator('#run-button').click();
+      await page.waitForFunction(count => runCheck.read().count >= count + 3, activeCount);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal(await page.evaluate(() => runCheck.restored('activeStart')), true);
+      await page.waitForTimeout(400);
+      assert.equal((await page.evaluate(() => runCheck.read())).count, activeCount);
+
+      await page.locator('#run-button').click();
+      await page.waitForFunction(count => runCheck.read().count >= count + 2, activeCount);
+      await page.locator('#inflate-button').click();
+      assert.equal((await page.evaluate(() => runCheck.read())).mode, 'inflation');
+      assert.equal((await page.evaluate(() => runCheck.read())).inflationGeneration, 1);
+      assert.equal(await page.evaluate(() => runCheck.sameInflation()), true);
+      assert.equal((await page.evaluate(() => runCheck.read())).running, false);
+      assert.equal((await page.evaluate(() => runCheck.read())).queued, false);
+      await page.locator('#inflate-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).inflationGeneration, 2);
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal((await page.evaluate(() => runCheck.read())).inflationGeneration, 1);
+      await page.locator('#chair-mode-select').selectOption('search');
+      await page.locator('#back-button').click();
+      await page.waitForFunction(() => !runCheck.read().transitioning);
+      assert.equal(await page.evaluate(() => runCheck.restored('activeStart')), true);
+
+      await page.waitForSelector('#lattice-title');
+      await page.locator('summary').filter({ hasText: 'The point model and its verification' }).click();
+      await page.waitForSelector('#lattice-title ~ details mjx-container');
+      const model = await (await page.request.get(base + 'chair/chair44-lattice.json')).json();
+      assert.equal(model.t.length, 7);
+      assert.equal(model.m.length, 288);
       assert.ok(await page.evaluate(() => runCheck.frames > 10));
       assert.deepEqual(await page.evaluate(() => runCheck.violations), []);
       assert.deepEqual(errors, []);
-      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint (' + reducedMotion + ').');
+      console.log('Passed Chair44 Run: steady opacity, enabled Pause, cancellation, resume, 64-tile checkpoint, grouped Undo, inflation return, scalar model (' + reducedMotion + ').');
       await page.close();
     }
   } finally {

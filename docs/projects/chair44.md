@@ -123,3 +123,64 @@ its existing cross-fade. Pause stays enabled during automatic steps and cancels
 the single pending step timer. Browser regression checks cover pause during a
 camera transition, pause between steps, rapid resume, checkpoint stopping, and
 reduced-motion mode. The solver and its decision/rollback semantics are unchanged.
+
+
+## Scalar lattice realization
+
+The compact panel value already used by the local search is \(m=(a,b)\),
+where \(a\) is the tangent arrow vector and \(b=\sigma n\), with
+\(\sigma=1,-1,0\) for red, green, blue. On a shared panel, the outward normals
+are opposite. Equality of \(b\) is therefore equivalent to blue/blue or
+red/green, and equality of \(a\) imposes the arrow direction.
+
+`chair-lattice.js` expands this into a scalar, pure-pullback point marking.
+Use the ambient lattice \(\mathbb Z^3\), with physical unit length \(12\),
+occupancy obligations on \((6,6,6)+12\mathbb Z^3\), and translations by
+\(12\mathbb Z^3\). Each occupied cube indexed by \(c\) has
+\(t(12c+6\mathbf1)=1\); all other values of \(t\) vanish.
+At each boundary panel center \(P=12c+6\mathbf1+6n\), set
+\[
+ m(P+d)=a\cdot d,\qquad m(P+2d)=b\cdot d,
+ \quad d\in\{\pm e_1,\pm e_2,\pm e_3\}.
+\]
+This gives 288 scalar assignments per tile, with alphabet \(\{-1,0,1\}\).
+Zero is assigned and constraining; all unlisted marking values are absent.
+Distinct panel centers differ by at least six in some coordinate, while each
+stencil lies within two steps of its center. Thus stencils at distinct panels
+are disjoint for every allowed placement, including edge-only and corner-only
+contacts. At a common panel the stencil equality recovers exactly both vectors.
+This proves equivalence of scalar matching and the original arrow test on every
+capacity-legal partial patch, not only on the tested examples.
+
+A proper rotation \(R\) acts on prototype points by
+\(p\mapsto R(p-12\mathbf1)+12\mathbf1\), followed by an allowed translation.
+It permutes the signed coordinate directions. Since
+\((Ra)\cdot(Rd)=a\cdot d\), scalar values need no sign change or channel action:
+only their locations move. The downloadable `chair44-lattice.json` contains the
+7 occupancy values, 288 marking values, transformation matrices, required
+occupancy sublattice, and explicit missing/zero semantics.
+
+`node scripts/test-chair-lattice.mjs` verifies every proper rotation by scalar
+pullback, all 864 facing-panel direction/color combinations, all 3000 relative
+orientation/translation cases in the radius-two cube, the same 44 adjacent
+neighbors, and inflation patches through 512 tiles. The point verifier does not
+call the production compact matching encoder. The search keeps its equivalent
+compact panel representation, avoiding a twelvefold expansion of the marking
+support. No search policy or geometric pruning is added. This is an exact known
+encoding of the supplied arrow problem, not evidence of learned discovery or
+of redundancy for the unmarked chair. It can serve as an independent control
+when testing marking synthesis.
+
+## Undo actions and returning to inflation
+
+A Run click records its complete starting growth state. All steps until Pause,
+completion, or another action share one UI undo entry, restoring placements,
+branch stack, counters, generations, checkpoint target, and prior history.
+Resuming starts a new undoable Run action. Apply one keeps its own single-action
+undo entry; solver branch rollback remains separate from these UI groups.
+Undo may interrupt an active Run, cancelling its queued step and camera motion.
+
+From local matching, Apply inflation cancels Run and displays the existing saved
+inflation state without expanding it. A subsequent click advances inflation.
+Returning is permitted even at the maximum inflation level. Local and inflation
+states retain their separate histories.

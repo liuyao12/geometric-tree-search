@@ -647,9 +647,9 @@ function updateReadout() {
 function updateActionButtons() {
   const busy = Boolean(transition);
   chairModeSelect.disabled = busy;
-  inflateButton.disabled = busy || generation === MAX_GENERATION;
+  inflateButton.disabled = (busy && !autoRun) || (mode === 'inflation' && generation === MAX_GENERATION);
   applyOneButton.disabled = busy || (growthState.complete && growthState.status !== 'consistent finite patch');
-  backButton.disabled = busy || (mode === 'search' ? growthState.history.length === 0 : generation === 0);
+  backButton.disabled = (busy && !autoRun) || (mode === 'search' ? growthState.history.length === 0 : generation === 0);
   backButton.querySelector('span').textContent = 'Undo';
   runButton.disabled = !autoRun && (busy || growthState.complete);
   runButton.querySelector('span').textContent = autoRun ? 'Pause' : 'Run';
@@ -663,6 +663,7 @@ let mode = "inflation";
 let growthState = createGrowthState(2);
 let autoRun = false;
 let runTimer = null;
+let runStartState = null;
 let currentVisual = makeVisual(currentInflationState);
 root.add(currentVisual.group);
 camera.position.copy(cameraDestinationForVisual(currentVisual));
@@ -741,8 +742,15 @@ function cameraDestinationForGrowth(visual) {
 
 function stopAutoRun() {
   autoRun = false;
+  runStartState = null;
   window.clearTimeout(runTimer);
   runTimer = null;
+}
+
+function finishActiveGrowthTransition() {
+  // Local growth has already replaced its geometry; only the camera is moving.
+  // Undo and returning to inflation may interrupt that motion immediately.
+  if (mode === 'search' && transition && !transition.from) transition = null;
 }
 
 function scheduleSearchStep() {
@@ -822,7 +830,11 @@ function showGrowthStep(direction) {
   if (transition || mode !== "search") return;
   const nextState = direction > 0 ? growOne(growthState) : shrinkOne(growthState);
   if (nextState === growthState) return;
-  growthState = nextState;
+  // One Run click is one undoable action, including its solver stack/counters.
+  // Keep the solver's internal branch rollback independent from UI history.
+  growthState = autoRun && runStartState && direction > 0
+    ? { ...nextState, history: [...runStartState.history, runStartState] }
+    : nextState;
   const nextVisual = makeSearchVisual(growthState);
   updateReadout();
   drawHierarchyPlot();
@@ -842,8 +854,13 @@ function runNextSearchStep() {
 }
 
 inflateButton.addEventListener("click", () => {
-  if (transition) return;
-  switchMode('inflation');
+  if (transition && !autoRun) return;
+  stopAutoRun();
+  finishActiveGrowthTransition();
+  if (mode !== 'inflation') {
+    switchMode('inflation');
+    return;
+  }
   showGeneration(generation + 1);
 });
 applyOneButton.addEventListener('click', () => {
@@ -853,12 +870,16 @@ applyOneButton.addEventListener('click', () => {
 });
 backButton.addEventListener("click", () => {
   stopAutoRun();
+  finishActiveGrowthTransition();
   if (mode === "search") showGrowthStep(-1);
   else showGeneration(generation - 1);
 });
 runButton.addEventListener("click", () => {
   if (autoRun) stopAutoRun();
-  else autoRun = true;
+  else {
+    runStartState = growthState;
+    autoRun = true;
+  }
   updateActionButtons();
   if (autoRun) runNextSearchStep();
 });

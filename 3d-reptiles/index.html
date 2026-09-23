@@ -96,7 +96,7 @@
           <button id="apply-one-button" class="scene-button apply-one-button" type="button" title="Try one locally matched tile; backtrack if a frontier point becomes impossible">
             <span>Apply one</span><b aria-hidden="true">+</b>
           </button>
-          <button id="inflate-button" class="scene-button substitute-button" type="button" title="Choose one of seven outer child addresses and expand">
+          <button id="inflate-button" class="scene-button substitute-button" type="button" title="Return to the saved inflation stage; click again to expand it">
             <span>Apply inflation</span>
             <b aria-hidden="true">↗</b>
           </button>
@@ -159,8 +159,47 @@
           <p>Goodman–Strauss proves that these markings force a unique infinite hierarchy and strong aperiodicity.
           This page renders the marked version, using proper rotations of one handedness. Nested inflation
           illustrates the construction; local matching independently grows a finite patch from the arrow rules.
-          Apply one tries the next local placement and backtracks when necessary; Apply inflation expands the nested supertile. Each construction keeps its own undo history. The finite search is a demonstration, not a new proof of infinite extension.</p>
+          Apply one tries the next local placement and backtracks when necessary. Undo reverses one Apply one action or the entire most recent Run. From local matching, Apply inflation first returns to the saved inflation stage; the next click expands it. Each construction keeps its own history. The finite search is a demonstration, not a new proof of infinite extension.</p>
         </aside>
+      </div>
+    </section>
+
+
+    <section class="essay-section" aria-labelledby="lattice-title">
+      <div class="section-number">03</div>
+      <div class="essay-copy">
+        <p class="kicker">The GCTS connection</p>
+        <h2 id="lattice-title">Arrows as<br>lattice values.</h2>
+        <p class="body-large">The arrow rules have an exact realization as a scalar marking on
+          \(\mathbb Z^3\), with values in \(\{-1,0,1\}\). At a touching pair of faces,
+          equal point values mean exactly the permitted color pairing and equal arrow directions.</p>
+        <p>Let \(a\) encode the diagonal arrow direction with components in \(\{-1,0,1\}\), and let \(n\) be the outward unit normal. Set
+          \(b=\sigma n\), where \(\sigma\) is \(1\) for red, \(-1\) for green,
+          and \(0\) for blue. Opposite normals make red and green give the same \(b\);
+          blue matches blue with \(b=0\).</p>
+        <p>Scale a physical unit to \(12\) lattice steps. Around each panel center \(P\),
+          assign, for each signed coordinate unit vector \(d\),</p>
+        <div class="math">\[
+          \begin{aligned}m(P+d)&=a\cdot d,\\m(P+2d)&=b\cdot d.\end{aligned}
+        \]</div>
+        <p>These small groups of marked points never overlap unless the panels themselves meet.
+          Rotations move the points and leave their scalar values unchanged. Zero is an assigned value;
+          all unlisted points are unmarked.</p>
+        <details>
+          <summary>The point model and its verification</summary>
+          <p>Write \(\mathbf1=(1,1,1)\). For an occupied unit cube with lower corner \(c\), assign
+            \(t(12c+6\mathbf 1)=1\), and place its boundary-panel center at
+            \(P=12c+6\mathbf 1+6n\). Occupancy is required on
+            \((6,6,6)+12\mathbb Z^3\); the other lattice points carry only marking constraints.
+            One tile has \(7\) occupied points and \(288\) assigned scalar marking points.</p>
+          <p>The scalar model agrees with the independent arrow test on all \(864\) facing-panel
+            combinations and \(3000\) nearby tile pairs, giving the same \(44\) neighbors.
+            All \(24\) proper rotations preserve this encoding. The local search stores the equivalent
+            compact value \((a,b)\) at each panel center; it does not use inflation.</p>
+          <p>This realizes the given marking. Discovering a marking from unmarked extension tests
+            is a separate learning problem; this model is a known control for that work.</p>
+        </details>
+        <p><a href="./chair/chair44-lattice.json" download="chair44-lattice.json">Download the scalar lattice prototype</a></p>
       </div>
     </section>
 
@@ -172,6 +211,6 @@
       <a href="./quaquaversal/">Compare quaquaversal tiling</a>
     </footer>
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-simple-graph"></script>
+  <script type="module" src="./chair/app.js?v=20260923-run-history-lattice"></script>
 </body>
 </html>
