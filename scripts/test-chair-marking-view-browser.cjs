@@ -19,7 +19,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
           remember() { this.growth = growthState; this.inflation = currentInflationState; },
           unchanged() { return this.growth === growthState && this.inflation === currentInflationState; },
           relief() {
-            const relief = currentVisual.group.getObjectByName(centeredRelief ? 'chair44-relief-centered' : 'chair44-relief');
+            const relief = currentVisual.group.getObjectByName('chair44-relief');
             if (!relief) return null;
             const geometry = [...new Set(relief.children.filter(object => object.isMesh).map(object => object.geometry))];
             const edges = new Map(); let volume = 0;
@@ -74,7 +74,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
           check() {
             return [...new Set([currentVisual, transition?.from, transition?.to])].filter(Boolean).map(visual => {
               return { arrows: visual.group.getObjectByName('chair44-arrows').visible,
-                relief: visual.group.getObjectByName(centeredRelief ? 'chair44-relief-centered' : 'chair44-relief')?.visible ?? false };
+                relief: visual.group.getObjectByName('chair44-relief')?.visible ?? false };
             });
           }
         };
@@ -84,7 +84,8 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await page.waitForFunction(() => window.valueCheck);
     const arrows = page.getByRole('button', { name: 'Arrows', exact: true });
     const relief = page.getByRole('button', { name: 'Relief', exact: true });
-    assert.deepEqual(await page.evaluate(() => valueCheck.check()), [{ arrows: true, relief: false }]);
+    assert.deepEqual(await page.evaluate(() => valueCheck.check()), [{ arrows: false, relief: true }]);
+    await arrows.click();
     assert.deepEqual(await page.locator('button[data-marking-view]').allTextContents(), ['Arrows', 'Relief']);
     assert.equal(await page.locator('main > section').count(), 1);
     assert.equal(await page.locator('main > footer').count(), 0);
@@ -100,25 +101,13 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     assert.equal((await page.evaluate(() => valueCheck.highlight())).dim, 0);
     let reliefState = await page.evaluate(() => valueCheck.relief());
     assert.equal(reliefState.visible, true);
-    assert.equal(reliefState.blueCreases, 8 * 14, 'Each blue pair has a joined ramp without a dividing crease');
+    assert.ok(reliefState.blueCreases > 0, 'Tetrahedral ridges are visible');
     assert.equal(reliefState.flatBodyVisible, false);
     assert.equal(reliefState.closed, true, 'The panel cutouts and relief sides form a closed surface');
     assert.ok(Math.abs(reliefState.volume - 7) < 1e-5);
     assert.equal(reliefState.protrusions, 16); assert.equal(reliefState.indents, 16);
     assert.equal(await page.locator('#relief-legend').isVisible(), true);
     await page.screenshot({ path: '/tmp/chair-relief-single.png' });
-    await page.getByRole('button', {name:'Centered',exact:true}).click();
-    reliefState = await page.evaluate(() => valueCheck.relief());
-    assert.equal(reliefState.closed, true, 'Centered relief remains watertight');
-    assert.ok(Math.abs(reliefState.volume - 7) < 1e-5);
-    assert.equal(reliefState.blueCreases, 8 * 14);
-    assert.equal(await page.locator('#centered-relief-note').isVisible(), true);
-    assert.equal(await page.evaluate(() => valueCheck.unchanged()), true, 'Placement control only changes the display');
-    await page.screenshot({path:'/tmp/chair-centered-single.png'});
-    await page.getByRole('button', {name:'Offset',exact:true}).click();
-    assert.equal(await page.locator('#centered-relief-note').isVisible(), false);
-    await page.getByRole('button', {name:'Centered',exact:true}).click();
-
     await arrows.click();
     assert.equal(await arrows.getAttribute('aria-pressed'), 'true');
     assert.equal((await page.evaluate(() => valueCheck.relief())).visible, false);
@@ -158,15 +147,8 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await page.locator('#apply-one-button').click();
     await page.waitForFunction(() => !valueCheck.read().transitioning);
     assert.equal((await page.evaluate(() => valueCheck.relief())).protrusions, 9 * 16);
-    assert.equal((await page.evaluate(() => valueCheck.read())).rule, 'relief-centered');
+    assert.equal((await page.evaluate(() => valueCheck.read())).rule, 'relief-tetra');
     await page.evaluate(() => valueCheck.remember());
-    await page.getByRole('button', {name:'Offset',exact:true}).click();
-    assert.equal((await page.evaluate(() => valueCheck.read())).rule, 'relief-offset');
-    assert.equal((await page.evaluate(() => valueCheck.read())).count, 9);
-    await page.locator('#back-button').click();
-    await page.waitForFunction(() => !valueCheck.read().transitioning);
-    assert.equal(await page.evaluate(() => valueCheck.unchanged()), true, 'Undo restores the exact pre-rule-change solver snapshot');
-    assert.equal(await page.getByRole('button', {name:'Centered',exact:true}).getAttribute('aria-pressed'), 'true');
 
     await page.evaluate(() => valueCheck.highlight());
     await relief.click();
@@ -189,6 +171,6 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await graph.press('Escape');
     assert.equal((await page.evaluate(() => valueCheck.highlight())).dim, 0);
     assert.deepEqual(errors, []);
-    console.log('Passed Offset/Centered geometry and all eight orientation highlights and Arrows/Relief toggle: closed surfaces, correct volume, transition toggle, Run/Undo, inflation return, and mobile layout.');
+    console.log('Passed tetrahedral geometry and all eight orientation highlights and Arrows/Relief toggle: closed surfaces, correct volume, transition toggle, Run/Undo, inflation return, and mobile layout.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });

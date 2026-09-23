@@ -1,5 +1,7 @@
 # Chair44: centered relief and a movable physical model
 
+Historical geometry: the live viewer now uses the [tetrahedral relief](chair44-tetra-relief.md). The results and prototype below refer to the earlier geometry.
+
 Centering the relief allows more local packing contacts, but the complete local
 catalogue gives a stronger result than finite-patch evidence: **every full tiling
 by the centered shape, using integer translations and proper cubic rotations,

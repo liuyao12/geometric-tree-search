@@ -1,5 +1,7 @@
 # Chair44: testing the relief as occupancy only
 
+Historical geometry: the live viewer now uses the [tetrahedral relief](chair44-tetra-relief.md). The results and prototype below refer to the earlier geometry.
+
 This experiment tests the **offset relief**, without an arrow-matching or
 color-matching predicate. It asks whether additional nonoverlapping pairs can
 extend, and whether the resulting patches exhibit the eight-chair reptile

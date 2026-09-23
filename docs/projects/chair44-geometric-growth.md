@@ -1,5 +1,7 @@
 # Chair44: geometric matching in the live tiler
 
+Historical geometry: the live viewer now uses the [tetrahedral relief](chair44-tetra-relief.md). The results and prototype below refer to the earlier geometry.
+
 Apply one and Run now use the actual selected bump/dent profile through its
 exact occupancy model. They do not check arrow direction or color agreement.
 The Arrows/Relief buttons change the display; Offset/Centered changes the

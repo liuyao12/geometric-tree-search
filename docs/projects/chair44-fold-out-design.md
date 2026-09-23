@@ -1,5 +1,7 @@
 # Chair44 red/green edge fold-out: prototype 01
 
+Historical geometry: the live viewer now uses the [tetrahedral relief](chair44-tetra-relief.md). The results and prototype below refer to the earlier geometry.
+
 [Open the interactive design](https://liuyao12.github.io/geometric-tree-search/3d-reptiles/chair/fold-out/).
 It includes a motion slider, a cross-section, a dimensioned drawing, and
 [downloadable parts](https://liuyao12.github.io/geometric-tree-search/3d-reptiles/chair/fold-out/prototype.zip).

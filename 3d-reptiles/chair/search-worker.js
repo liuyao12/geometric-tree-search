@@ -1,4 +1,4 @@
-import { growOne } from './chair-gcts.js?v=20260923-geometric-growth';
+import { growOne } from './chair-gcts.js?v=20260923-tetra-relief';
 // UI history stays on the main thread. Only the solver snapshot and branch
 // stack cross this boundary; terminating this worker cancels pending work.
 self.onmessage = ({data:{state}}) => {

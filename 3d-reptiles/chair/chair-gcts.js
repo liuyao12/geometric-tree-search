@@ -1,11 +1,13 @@
 import { selectFrontier } from './frontier-order.js';
 export { selectFrontier } from './frontier-order.js';
+import {createTetraPointModel} from './tetra-points.js';
 import { createReliefPointModel } from './relief-points.js';
 import { VARIANTS, FACE_DIRECTIONS, add, sub, key, markPoint, markValue, worldMarks, verifyPatch } from './chair44.js';
 export { CANONICAL_CHILDREN, FACE_DIRECTIONS, chairLeaves, localCells } from './chair44.js';
 
 // Arrow control: integer cell-center t=1 and panel-center equality m-values.
-// Relief modes: exact cell and panel-probe t-occupancy, without m-values.
+// Tetrahedral relief: exact chamber t-occupancy, without m-values.
+// Legacy offset/centered controls retain their historical panel-probe models.
 // Rebuild the complete point/candidate graph on each step. No collared inventory,
 // substitution witness, target boundary, or precomputed growth plan is supplied.
 const compiled = new Map();
@@ -35,6 +37,7 @@ function indexState(state) {
   return {occupied,marks,frontier};
 }
 const reliefModels = {
+  'relief-tetra': createTetraPointModel(),
   'relief-offset': createReliefPointModel(),
   'relief-centered': createReliefPointModel({centered:true})
 };

@@ -7,15 +7,14 @@ import {
   createGrowthStateFromPatch,
   exposedMarks,
   shrinkOne
-} from "./chair-gcts.js?v=20260923-geometric-growth";
+} from "./chair-gcts.js?v=20260923-tetra-relief";
 import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, parentContainingChild } from "./chair44.js?v=20260923-chair44";
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
-import { makeReliefVisual } from './relief-visual.js?v=20260923-centered-relief';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-tetra-relief';
 
-let markingView = 'arrows';
-let centeredRelief = false;
+let markingView = 'relief';
 const viewport = document.getElementById("viewport");
 const sceneShell = document.querySelector(".scene-shell");
 const inflateButton = document.getElementById("inflate-button");
@@ -41,7 +40,7 @@ const frontierValue = document.getElementById("frontier-value");
 const backtrackValue = document.getElementById("backtrack-value");
 const branchValue = document.getElementById("branch-value");
 const matchingDescription = document.getElementById("matching-description");
-const activeRule = () => centeredRelief ? "relief-centered" : "relief-offset";
+const activeRule = () => "relief-tetra";
 const sceneInstruction = document.getElementById("scene-instruction");
 
 const MAX_GENERATION = 4;
@@ -695,9 +694,9 @@ function makeSearchVisual(state) {
 
 function applyMarkingView(visual) {
   if (!visual) return;
-  const reliefName = centeredRelief ? 'chair44-relief-centered' : 'chair44-relief';
+  const reliefName = 'chair44-relief';
   if (markingView === 'relief' && !visual.group.getObjectByName(reliefName)) {
-    const marks = makeOrientedMarkVisual(visual.leaves, placements => makeReliefVisual(placements, centeredRelief), reliefName);
+    const marks = makeOrientedMarkVisual(visual.leaves, placements => makeReliefVisual(placements), reliefName);
     const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
     for (const material of marks.materials) {
       material.userData.transitionAmount = amount;
@@ -708,7 +707,7 @@ function applyMarkingView(visual) {
     visual.geometries.push(...marks.geometries);
   }
   visual.group.getObjectByName('chair44-arrows').visible = markingView === 'arrows';
-  for (const name of ['chair44-relief', 'chair44-relief-centered']) {
+  for (const name of ['chair44-relief']) {
     const relief = visual.group.getObjectByName(name);
     if (relief) relief.visible = markingView === 'relief' && name === reliefName;
   }
@@ -804,7 +803,7 @@ viewport.dataset.retainedChildren = "";
 viewport.dataset.tile = "Chair44";
 viewport.dataset.markings = "24";
 viewport.dataset.markingView = markingView;
-viewport.dataset.reliefPlacement = "offset";
+viewport.dataset.reliefPlacement = "tetrahedral";
 
 function updateModePanel() {
   const searching = mode === "search";
@@ -970,7 +969,6 @@ function acceptGrowthState(nextState, direction) {
   growthState = autoRun && runStartState && direction > 0
     ? { ...nextState, history: [...runStartState.history, runStartState] }
     : nextState;
-  centeredRelief = growthState.rule === 'relief-centered';
   syncReliefControls();
   const nextVisual = makeSearchVisual(growthState);
   updateReadout();
@@ -991,7 +989,7 @@ function showGrowthStep(direction) {
   viewport.dataset.searchPending = 'true';
   updateActionButtons();
   searchStatus.textContent = 'Searching geometric fits…';
-  if (!searchWorker) searchWorker = new Worker(new URL('./search-worker.js?v=20260923-geometric-growth', import.meta.url), {type:'module'});
+  if (!searchWorker) searchWorker = new Worker(new URL('./search-worker.js?v=20260923-tetra-relief', import.meta.url), {type:'module'});
   const worker = searchWorker;
   const failed = message => {
     if (searchWorker !== worker) return;
@@ -1066,38 +1064,10 @@ document.querySelectorAll('button[data-marking-view]').forEach(button => {
   });
 });
 function syncReliefControls() {
-  viewport.dataset.reliefPlacement = centeredRelief ? 'centered' : 'offset';
+  viewport.dataset.reliefPlacement = 'tetrahedral';
   viewport.dataset.matchingRule = activeRule();
-  document.querySelectorAll('button[data-relief-placement]').forEach(option => {
-    option.setAttribute('aria-pressed', String((option.dataset.reliefPlacement === 'centered') === centeredRelief));
-  });
-  document.getElementById('centered-relief-note').hidden = !centeredRelief;
-  matchingDescription.textContent = `Matching: ${centeredRelief ? 'centered' : 'offset'} relief geometry`;
+  matchingDescription.textContent = 'Matching: exact tetrahedral geometry';
 }
-document.querySelectorAll('button[data-relief-placement]').forEach(button => {
-  button.addEventListener('click', () => {
-    const nextCentered = button.dataset.reliefPlacement === 'centered';
-    if (nextCentered === centeredRelief) return;
-    stopAutoRun();
-    finishActiveGrowthTransition();
-    if (mode === 'search') {
-      try {
-        const next = createGrowthStateFromPatch(growthState.placements, nextCentered ? 'relief-centered' : 'relief-offset');
-        growthState = {...next,history:[...growthState.history,growthState]};
-      } catch {
-        searchStatus.textContent = 'This patch overlaps with that relief. Undo growth or return to inflation before changing it.';
-        updateActionButtons();
-        return;
-      }
-    }
-    centeredRelief = nextCentered;
-    syncReliefControls();
-    for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
-    updateReadout();
-    updateActionButtons();
-    if (mode === 'search') searchStatus.textContent = 'Geometry changed. Current tiles are the fixed starting patch.';
-  });
-});
 syncReliefControls();
 function switchMode(nextMode) {
   stopAutoRun();

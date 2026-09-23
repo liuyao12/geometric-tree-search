@@ -14,7 +14,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./chair/style.css?v=20260923-geometric-growth">
+  <link rel="stylesheet" href="./chair/style.css?v=20260923-tetra-relief">
 </head>
 <body>
   <main>
@@ -74,27 +74,22 @@
           <p id="panel-description">Three marked rotations per node. No reflections.</p>
           <div class="marking-key" aria-label="Chair44 marking display">
             <div class="marking-toggle" role="group" aria-label="Marking representation">
-              <button type="button" data-marking-view="arrows" aria-pressed="true">Arrows</button>
-              <button type="button" data-marking-view="relief" aria-pressed="false">Relief</button>
+              <button type="button" data-marking-view="arrows" aria-pressed="false">Arrows</button>
+              <button type="button" data-marking-view="relief" aria-pressed="true">Relief</button>
             </div>
-            <div id="arrow-legend" class="marking-legend">
+            <div id="arrow-legend" class="marking-legend" hidden>
               <span><i class="blue-arrow" aria-hidden="true">↗</i> Blue meets blue</span>
               <span><svg class="legend-arrow red-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 10h4v12h4z"/></svg><svg class="legend-arrow green-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 20 10h-4v12h-4z"/></svg> Red meets green</span>
               <small>Arrow directions coincide at each contact.</small>
             </div>
-            <div id="relief-legend" class="marking-legend" hidden>
+            <div id="relief-legend" class="marking-legend">
               <span><i class="relief-swatch red" aria-hidden="true"></i> Red protrudes</span>
               <span><i class="relief-swatch green" aria-hidden="true"></i> Green recedes</span>
               <span><i class="relief-swatch blue" aria-hidden="true"></i> Blue joins both</span>
-              <div class="marking-toggle" role="group" aria-label="Relief placement">
-                <button type="button" data-relief-placement="offset" aria-pressed="true">Offset</button>
-                <button type="button" data-relief-placement="centered" aria-pressed="false">Centered</button>
-              </div>
-              <small>The translucent surface lets you see the back. <a href="./chair/fold-out/">Fold-out prototype ↗</a></small>
-              <small id="centered-relief-note" hidden>The blue pair and red/green features are centered on each small square. <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-centered-relief.md">Geometry tests &amp; physical model ideas</a>.</small>
+              <small>Tetrahedral folds from half-square bases. <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-tetra-relief.md">Geometry &amp; matching</a>.</small>
             </div>
           </div>
-          <p id="matching-description" class="matching-description">Matching: offset relief geometry</p>
+          <p id="matching-description" class="matching-description">Matching: exact tetrahedral geometry</p>
           <div class="scene-citation">
             Markings after <a href="https://arxiv.org/abs/2609.24779">Chaim Goodman–Strauss (2026), Figures 2 &amp; 5</a>.
             <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
@@ -129,6 +124,6 @@
     </section>
 
   </main>
-  <script type="module" src="./chair/app.js?v=20260923-geometric-growth"></script>
+  <script type="module" src="./chair/app.js?v=20260923-tetra-relief"></script>
 </body>
 </html>
