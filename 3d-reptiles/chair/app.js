@@ -13,7 +13,7 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
 import { makeLatticeMarkVisual } from './lattice-visual.js?v=20260923-marking-view';
-import { makeReliefVisual } from './relief-visual.js?v=20260923-relief';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-connected-blue';
 
 let markingView = 'arrows';
 const viewport = document.getElementById("viewport");

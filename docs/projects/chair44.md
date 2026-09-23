@@ -218,7 +218,8 @@ The Relief display implements a concrete version of the bumps/nicks recipe in
 It is not a reproduction of Tsiokos's numbered microscopic pyramids.
 Each red panel has a shallow square pyramid, each green panel its recessed
 counterpart, and each blue panel a pair with opposite heights on opposite sides
-of the arrow diagonal. The colored faces are the actual sides of those bumps
+of the arrow diagonal. The two blue bases share an edge, so their inward
+slopes meet as one coplanar face without a gap or dividing crease. The colored faces are the actual sides of those bumps
 and recesses. Their footprints are cut out of the neutral tile surface; the
 original flat body is hidden only while Relief is selected. Translucent bodies
 and lower-opacity reverse faces retain the view of back and shared markings.
@@ -237,8 +238,9 @@ all \(864\) facing-panel combinations, checks all \(24\) proper rotations,
 and verifies the signed-volume balance. The browser test checks that the mesh
 is closed with consistently oriented edges and volume \(7\), and checks a
 supertile's volume, display toggles, growth, grouped undo, and mobile layout.
-Collinear triangulation edges between the two blue cutouts are subdivided so
-there are no mesh T-junctions.
+The connected blue footprint is cut as one hole. Collinear perimeter edges
+are subdivided so there are no mesh T-junctions. Tests also check the continuous
+apex-to-apex slope and the absence of a rendered crease at its join.
 
 The equality test remains the search's rule; this display does not introduce
 mesh-intersection pruning. Its checked equivalence concerns the allowed

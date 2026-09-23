@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { worldMarks, COLORS } from './chair44.js';
-import { reliefFeatures, reliefFrame, reliefPoint } from './relief-profile.js';
+import { reliefFeatures, reliefFrame, reliefPoint } from './relief-profile.js?v=20260923-connected-blue';
 
 export function makeReliefVisual(placements) {
   const group = new THREE.Group(), materials = [], geometries = [];
@@ -19,13 +19,19 @@ export function makeReliefVisual(placements) {
       new THREE.Vector2(feature.u + x * feature.radius, feature.v + y * feature.radius)));
     // Cut actual holes in each flat panel; pyramid sides close them, upwards
     // for a bump and downwards for a recess. No flat face covers an indent.
-    const holes = bases.map(base => [...base].reverse());
+    // The blue bases share an edge. Cut their union as one hole; separate
+    // touching holes would leave an invalid triangulation at the shared edge.
+    // Keep its two endpoints on the perimeter for watertight subdivisions.
+    const footprints = mark.color === 'blue'
+      ? [[bases[1][0], bases[0][0], bases[0][1], bases[0][2], bases[0][3], bases[1][3]]]
+      : bases;
+    const holes = footprints.map(base => [...base].reverse());
     const points = [...contour, ...holes.flat()];
     for (const face of THREE.ShapeUtils.triangulateShape(contour, holes)) {
       const [a, b, c] = face.map(index => points[index]);
       if ((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x) < 0) face.reverse();
-      // Earcut may bridge collinear corners of the two blue holes with one
-      // long edge. Split it at every corner so the relief is watertight.
+      // Earcut may skip collinear perimeter vertices. Split long edges at
+      // every corner so the flat panels meet the relief without T-junctions.
       const boundary = [];
       for (let edge = 0; edge < 3; edge++) {
         const start = points[face[edge]], end = points[face[(edge + 1) % 3]];
@@ -76,7 +82,9 @@ export function makeReliefVisual(placements) {
     const edges = new THREE.EdgesGeometry(geometry, 1); geometries.push(edges);
     const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x354842, transparent: true, opacity: .38, depthWrite: false });
     edgeMaterial.userData.baseOpacity = .38; materials.push(edgeMaterial);
-    const lines = new THREE.LineSegments(edges, edgeMaterial); lines.renderOrder = 5; group.add(lines);
+    const lines = new THREE.LineSegments(edges, edgeMaterial);
+    lines.name = `chair44-relief-${color}-creases`;
+    lines.renderOrder = 5; group.add(lines);
   }
   group.userData.protrusions = protrusions;
   group.userData.indents = indents;

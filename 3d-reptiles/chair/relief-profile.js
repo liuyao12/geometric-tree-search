@@ -1,9 +1,10 @@
 // A concrete colored-relief realization of Goodman–Strauss's bumps/nicks
 // recipe (Section 2), not a reconstruction of Tsiokos's numbered pyramids.
 export function reliefFeatures(color) {
+  // Touching bases join the inward slopes into one coplanar blue face.
   if (color === 'blue') return [
-    { u: .17, v: .08, radius: .16, height: .12 },
-    { u: -.17, v: .08, radius: .16, height: -.12 },
+    { u: .16, v: .08, radius: .16, height: .12 },
+    { u: -.16, v: .08, radius: .16, height: -.12 },
   ];
   return [{ u: 0, v: .10, radius: .24, height: color === 'red' ? .12 : -.12 }];
 }

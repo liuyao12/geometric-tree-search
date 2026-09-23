@@ -37,6 +37,19 @@ for (const variant of VARIANTS) for (let i = 0; i < BASE_MARKS.length; i++) {
     apply(variant.rotation, point.map(v => v - 1)).map(v => v + 1)));
   assert.equal(signature(transformed), signature(surfaces(variant.marks[i])));
 }
+// The blue pair touches along a whole base edge, with no gap or crease.
+const [raised, recessed] = reliefFeatures('blue');
+assert.equal(raised.u - raised.radius, recessed.u + recessed.radius);
+assert.equal(raised.v, recessed.v);
+assert.equal(raised.radius, recessed.radius);
+const blue = { cell: [0, 0, 0], direction: [0, 0, 1], arrow: [1, 1, 0], color: 'blue' };
+const blueFrame = reliefFrame(blue);
+for (let step = -16; step <= 16; step++) {
+  const u = step / 100;
+  const height = reliefHeight(blue, reliefPoint(blueFrame, u, raised.v));
+  assert.ok(Math.abs(height - raised.height * u / raised.u) < 1e-12,
+    'The entire apex-to-apex slope is one continuous plane');
+}
 let protrusions = 0, indents = 0, volumeDelta = 0;
 for (const mark of BASE_MARKS) for (const feature of reliefFeatures(mark.color)) {
   if (feature.height > 0) protrusions++; else indents++;

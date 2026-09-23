@@ -37,7 +37,8 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
                 }
               }
             }
-            return {visible:relief.visible,protrusions:relief.userData.protrusions,indents:relief.userData.indents,volume,
+            return {blueCreases:relief.getObjectByName('chair44-relief-blue-creases').geometry.getAttribute('position').count/2,
+              visible:relief.visible,protrusions:relief.userData.protrusions,indents:relief.userData.indents,volume,
               badEdges:[...edges.entries()].filter(([,edge])=>edge.count!==2||edge.balance!==0).slice(0,12),
               closed:[...edges.values()].every(edge=>edge.count===2&&edge.balance===0),
               flatBodyVisible:currentVisual.group.children.some(object=>object.userData.flatChairBody&&object.visible)};
@@ -82,6 +83,7 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await relief.click();
     let reliefState = await page.evaluate(() => valueCheck.relief());
     assert.equal(reliefState.visible, true);
+    assert.equal(reliefState.blueCreases, 8 * 14, 'Each blue pair has a joined ramp without a dividing crease');
     assert.equal(reliefState.flatBodyVisible, false);
     assert.equal(reliefState.closed, true, 'The panel cutouts and relief sides form a closed surface');
     assert.ok(Math.abs(reliefState.volume - 7) < 1e-5);
