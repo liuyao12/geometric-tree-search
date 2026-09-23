@@ -12,7 +12,6 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
-import { makeLatticeMarkVisual } from './lattice-visual.js?v=20260923-marking-view';
 import { makeReliefVisual } from './relief-visual.js?v=20260923-connected-blue';
 
 let markingView = 'arrows';
@@ -610,9 +609,8 @@ function makeSearchVisual(state) {
 
 function applyMarkingView(visual) {
   if (!visual) return;
-  const name = markingView === 'values' ? 'chair44-lattice' : 'chair44-relief';
-  if (markingView !== 'arrows' && !visual.group.getObjectByName(name)) {
-    const marks = markingView === 'values' ? makeLatticeMarkVisual(visual.leaves) : makeReliefVisual(visual.leaves);
+  if (markingView === 'relief' && !visual.group.getObjectByName('chair44-relief')) {
+    const marks = makeReliefVisual(visual.leaves);
     const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
     for (const material of marks.materials) {
       material.userData.transitionAmount = amount;
@@ -623,9 +621,7 @@ function applyMarkingView(visual) {
     visual.geometries.push(...marks.geometries);
   }
   visual.group.getObjectByName('chair44-arrows').visible = markingView === 'arrows';
-  const lattice = visual.group.getObjectByName('chair44-lattice');
   const relief = visual.group.getObjectByName('chair44-relief');
-  if (lattice) lattice.visible = markingView === 'values';
   if (relief) relief.visible = markingView === 'relief';
   for (const object of visual.group.children) {
     if (object.userData.flatChairBody) object.visible = markingView !== 'relief';
@@ -930,7 +926,6 @@ document.querySelectorAll('[data-marking-view]').forEach(button => {
       option.setAttribute('aria-pressed', String(option.dataset.markingView === markingView));
     });
     document.getElementById('arrow-legend').hidden = markingView !== 'arrows';
-    document.getElementById('value-legend').hidden = markingView !== 'values';
     document.getElementById('relief-legend').hidden = markingView !== 'relief';
     for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
   });

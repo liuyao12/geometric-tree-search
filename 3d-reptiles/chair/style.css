@@ -673,12 +673,6 @@ footer p { margin: 0; }
 .marking-toggle button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .marking-legend { display: grid; gap: 4px; }
 .marking-legend[hidden] { display: none; }
-.value-swatches { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
-.value-swatches span { display: inline-flex; align-items: center; gap: 5px; }
-.marking-key .value-symbol { display: inline-block; width: 10px; height: 10px; margin: 0; flex: none; }
-.value-symbol.negative { background: #7054ba; transform: rotate(45deg); }
-.value-symbol.zero { border: 2px solid #63736d; border-radius: 50%; }
-.value-symbol.positive { background: #008781; border-radius: 50%; }
 .marking-legend a { font-size: 11px; line-height: 1.4; margin-top: 3px; }
 
 .marking-key .relief-swatch { display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
