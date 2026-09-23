@@ -3,8 +3,10 @@ import { resolve } from 'node:path';
 import {createHash} from 'node:crypto';
 import { verifyPatch } from '../3d-reptiles/chair/chair44.js';
 import {createGrowthState,enumerateGrowthCandidates} from '../3d-reptiles/chair/chair-gcts.js';
-import { graphFor, clearCache, extend } from './lib/chair-relief-points.mjs';
-const out=resolve(process.env.CHAIR_RELIEF_OUT??'output/chair44-relief-search');mkdirSync(out,{recursive:true});
+import { createReliefPointModel } from './lib/chair-relief-points.mjs';
+const centered=process.env.CHAIR_RELIEF_CENTERED==='1';
+const {graphFor,clearCache,extend}=createReliefPointModel({centered});
+const out=resolve(process.env.CHAIR_RELIEF_OUT??`output/chair44-${centered?'centered-':''}relief-search`);mkdirSync(out,{recursive:true});
 const maxNodes=Number(process.env.CHAIR_RELIEF_NODES??500),maxRadius=Number(process.env.CHAIR_RELIEF_RADIUS??1);
 const minRadius=Number(process.env.CHAIR_RELIEF_MIN_RADIUS??1);
 const maxTiles=Number(process.env.CHAIR_RELIEF_TILES??256),retryUnknown=process.env.CHAIR_RELIEF_RETRY_UNKNOWN==='1';
@@ -12,10 +14,10 @@ const seed={variantId:0,origin:[0,0,0],generation:0};
 const full=enumerateGrowthCandidates(createGrowthState()).candidateNodes;
 const raw=[...graphFor([seed]).candidates.values()].map(({variantId,origin,id})=>({variantId,origin,id}));
 const sourceHash=file=>createHash('sha256').update(readFileSync(new URL(file,import.meta.url))).digest('hex');
-let report={schemaVersion:1,source:{date:new Date().toISOString().slice(0,10),reliefProfileSHA256:sourceHash('../3d-reptiles/chair/relief-profile.js'),tileSHA256:sourceHash('../3d-reptiles/chair/chair44.js')},model:'displayed relief; t-occupancy only; integer translations and 24 proper cubic rotations',
+let report={schemaVersion:2,centered,source:{date:new Date().toISOString().slice(0,10),reliefProfileSHA256:sourceHash('../3d-reptiles/chair/relief-profile.js'),tileSHA256:sourceHash('../3d-reptiles/chair/chair44.js')},model:`${centered?'centered':'displayed offset'} relief; t-occupancy only; integer translations and 24 proper cubic rotations`,
   noMarkingChecks:true,parameters:{maxNodes,maxTiles,maxRadius},rootCandidates:raw.length,fullArrowCandidates:full.size,pairs:[],summary:{},witnesses:[]};
 function save(){writeFileSync(resolve(out,'results.json'),JSON.stringify(report,null,2)+'\n');}
-if(minRadius>1){report=JSON.parse(readFileSync(resolve(out,'results.json'),'utf8'));report.parameters={maxNodes,maxTiles,maxRadius};}
+if(minRadius>1){report=JSON.parse(readFileSync(resolve(out,'results.json'),'utf8'));if(Boolean(report.centered)!==centered)throw Error("Saved model differs from requested model");report.parameters={maxNodes,maxTiles,maxRadius};}
 else for(const p of raw) {
  const roots=[seed,{variantId:p.variantId,origin:p.origin,generation:0}];
  const graph=graphFor(roots);

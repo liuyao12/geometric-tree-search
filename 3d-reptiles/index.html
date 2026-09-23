@@ -86,7 +86,12 @@
               <span><i class="relief-swatch red" aria-hidden="true"></i> Red protrudes</span>
               <span><i class="relief-swatch green" aria-hidden="true"></i> Green recedes</span>
               <span><i class="relief-swatch blue" aria-hidden="true"></i> Blue joins both</span>
-              <small>Colored bumps and indents fit together by the same matching rule. The translucent surface lets you see the back.</small>
+              <div class="marking-toggle" role="group" aria-label="Relief placement">
+                <button type="button" data-relief-placement="offset" aria-pressed="true">Offset</button>
+                <button type="button" data-relief-placement="centered" aria-pressed="false">Centered</button>
+              </div>
+              <small>The translucent surface lets you see the back.</small>
+              <small id="centered-relief-note" hidden>Centered is experimental. Apply one and Run still use the original arrow rules. <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-centered-relief.md">Relief-only tests &amp; physical model ideas</a>.</small>
             </div>
           </div>
           <div class="scene-citation">
@@ -122,6 +127,6 @@
     </section>
 
   </main>
-  <script type="module" src="./chair/app.js?v=20260924-orbit-drift"></script>
+  <script type="module" src="./chair/app.js?v=20260923-centered-relief"></script>
 </body>
 </html>

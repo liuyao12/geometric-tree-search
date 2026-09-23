@@ -1,14 +1,14 @@
 import * as THREE from 'three';
 import { worldMarks, COLORS } from './chair44.js';
-import { reliefFeatures, reliefFrame, reliefPoint } from './relief-profile.js?v=20260923-connected-blue';
+import { reliefFeatures, reliefFrame, reliefPoint } from './relief-profile.js?v=20260923-centered-relief';
 
-export function makeReliefVisual(placements) {
+export function makeReliefVisual(placements, centered = false) {
   const group = new THREE.Group(), materials = [], geometries = [];
   group.name = 'chair44-relief';
   const flat = [], colored = new Map(Object.keys(COLORS).map(color => [color, []]));
   let protrusions = 0, indents = 0;
   for (const placement of placements) for (const mark of worldMarks(placement)) {
-    const frame = reliefFrame(mark), features = reliefFeatures(mark.color);
+    const frame = reliefFrame(mark), features = reliefFeatures(mark.color, centered);
     const tangents = [0, 1, 2].filter(i => mark.direction[i] === 0);
     const contour = [[-.5, -.5], [.5, -.5], [.5, .5], [-.5, .5]].map(pair => {
       const delta = [0, 0, 0]; tangents.forEach((axis, i) => { delta[axis] = pair[i]; });

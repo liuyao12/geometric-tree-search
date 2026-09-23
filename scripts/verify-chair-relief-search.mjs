@@ -3,9 +3,11 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {VARIANTS,worldMarks,markPoint,verifyPatch,parentContainingChild,chairLeaves,key} from '../3d-reptiles/chair/chair44.js';
 import {reliefFrame,reliefHeight} from '../3d-reptiles/chair/relief-profile.js';
-import {PROBES,FULL,indexState,graphFor,shellTarget,clearCache} from './lib/chair-relief-points.mjs';
+import {createReliefPointModel} from './lib/chair-relief-points.mjs';
 const out=resolve(process.env.CHAIR_RELIEF_OUT??'output/chair44-relief-search');
 const report=JSON.parse(readFileSync(resolve(out,'results.json'),'utf8'));
+const centered=Boolean(report.centered);
+const {PROBES,FULL,indexState,graphFor,shellTarget,clearCache}=createReliefPointModel({centered});
 for(const pair of report.pairs)for(const result of pair.extensions){result.limits??={maxNodes:500,maxTiles:256};for(const attempt of result.priorAttempts??[])attempt.limits??={maxNodes:500,maxTiles:256};}
 const summary={witnesses:0,independentGeometryChecks:0,seedHierarchy:{}};
 const id=p=>`${p.variantId}@${key(p.origin)}`;
@@ -23,7 +25,8 @@ for(const pair of report.pairs.filter(p=>p.extra)) {
    certificate={face,probe,position:PROBES[probe],adjacentOccupiedCells:[a,b]};break;
   }
  }
- assert.ok(certificate,'Every additional pair has a sealed gap');pair.gapCertificate=certificate;
+ if(!centered)assert.ok(certificate,'Every additional offset pair has a sealed gap');
+ if(certificate)pair.gapCertificate=certificate;
 }
 for(const entry of report.witnesses) {
  clearCache();
@@ -40,7 +43,7 @@ for(const entry of report.witnesses) {
     const frame=reliefFrame(mark),axis=mark.direction.findIndex(v=>v!==0),tangents=[0,1,2].filter(i=>i!==axis);
     for(const {x,y} of PROBES) {
      const point=[...frame.center];point[tangents[0]]+=Math.SQRT2*x/100;point[tangents[1]]+=Math.SQRT2*y/100;
-     assert.ok(Math.abs(reliefHeight(mark,point)+reliefHeight(other,point))<1e-10,'Actual geometry agrees at every shared face');
+     assert.ok(Math.abs(reliefHeight(mark,point,centered)+reliefHeight(other,point,centered))<1e-10,'Actual geometry agrees at every shared face');
      summary.independentGeometryChecks++;
     }
    }
@@ -50,7 +53,9 @@ for(const entry of report.witnesses) {
  assert.ok([...shellTarget(seed,radius)].every(cell=>occupied.has(cell)),'Every requested surrounding cell is covered');
  assert.equal(graphFor(placements).dead,null,'No known frontier dead point');
  assert.deepEqual(placements.slice(0,2).map(id),seed.map(id),'Both roots remain fixed');
- assert.equal(verifyPatch(placements).valid,true,'Post-search arrow-rule comparison');
+ const arrowCheck=verifyPatch(placements);
+ if(!centered)assert.equal(arrowCheck.valid,true,'Post-search arrow-rule comparison');
+ entry.arrowCheck=arrowCheck;
  const present=new Set(placements.map(id));
  entry.seedParents=seed.map(tile=>{
   const compatible=[],complete=[];

@@ -1,17 +1,24 @@
 import assert from 'node:assert/strict';
 import { FACE_DIRECTIONS, VARIANTS, key, apply, chairLeaves } from '../3d-reptiles/chair/chair44.js';
 import { reliefFeatures, reliefFrame, reliefHeight } from '../3d-reptiles/chair/relief-profile.js';
-import { PROBES, FULL, height400, faceMask, compile, indexState, graphFor, clearCache, isLegal, extend } from './lib/chair-relief-points.mjs';
+import { createReliefPointModel } from './lib/chair-relief-points.mjs';
 
 assert.deepEqual(reliefFeatures('blue'), [{u:.16,v:.08,radius:.16,height:.12},{u:-.16,v:.08,radius:.16,height:-.12}]);
 assert.deepEqual(reliefFeatures('red'), [{u:0,v:.10,radius:.24,height:.12}]);
 assert.deepEqual(reliefFeatures('green'), [{u:0,v:.10,radius:.24,height:-.12}]);
 
+for(const centered of [false,true]) {
+const { PROBES, FULL, height400, faceMask, compile, indexState, graphFor, clearCache, isLegal, extend }=createReliefPointModel({centered});
+const [bump,dent]=reliefFeatures('blue',centered);
+assert.deepEqual({...dent,u:-dent.u,height:-dent.height},bump,
+  'A half-turn around the shared base edge moves the removed pyramid onto the blue bump');
+const red=reliefFeatures('red',centered)[0],green=reliefFeatures('green',centered)[0];
+assert.deepEqual({...green,height:-green.height},red,'Green plug and red bump are congruent');
 // All extrema of the sum of two profiles occur at intersections of these
 // exact ridge/base lines. Their intersections have integer (x,y) coordinates.
 const lines=new Map();
 const put=(a,b,c)=>lines.set(`${a},${b},${c}`,[a,b,c]);
-for(const a of [-1,1])for(const b of [-1,1])for(const [u,v,r] of [[0,10,24],[16,8,16],[-16,8,16]]) {
+for(const a of [-1,1])for(const b of [-1,1])for(const [u,v,r] of [[0,centered?0:10,24],[16,centered?0:8,16],[-16,centered?0:8,16]]) {
   for(const d of [-r,0,r]){put(b,-a,u+d);put(a,b,v+d);}
   put(b-a,-a-b,u-v);put(b+a,-a+b,u+v);
 }
@@ -40,17 +47,17 @@ for(const n of FACE_DIRECTIONS) {
   const maskA=faceMask(a),maskB=faceMask(b);
   assert.equal(Boolean(maskA&maskB),overlap,'Probes detect every geometric overlap');
   assert.equal((maskA|maskB)!==FULL,gap,'Probes detect every geometric gap');
-  const expected=key(a.arrow)===key(b.arrow)&&((a.color==='blue'&&b.color==='blue')||(a.color==='red'&&b.color==='green')||(a.color==='green'&&b.color==='red'));
+  const expected=(key(a.arrow)===key(b.arrow)||(centered&&a.color!=='blue'&&b.color!=='blue'))&&((a.color==='blue'&&b.color==='blue')||(a.color==='red'&&b.color==='green')||(a.color==='green'&&b.color==='red'));
   assert.equal(!overlap&&!gap,expected);cases++;
  }
  for(const mark of marks)for(const {x,y} of PROBES) {
   const frame=reliefFrame(mark),point=[...frame.center];point[tangent[0]]+=Math.SQRT2*x/100;point[tangent[1]]+=Math.SQRT2*y/100;
-  assert.ok(Math.abs(reliefHeight(mark,point)*400-height400(mark,x,y))<1e-10,'Point model agrees with rendered geometry');
+  assert.ok(Math.abs(reliefHeight(mark,point,centered)*400-height400(mark,x,y))<1e-10,'Point model agrees with rendered geometry');
  }
 }
 // Each modification and probe lies strictly inside an L1 ball of radius 1/2
 // around its panel center. These balls have disjoint interiors on the grid.
-for(const color of ['red','green','blue'])for(const feature of reliefFeatures(color)) {
+for(const color of ['red','green','blue'])for(const feature of reliefFeatures(color,centered)) {
  for(const [u,v,h] of [[feature.u,feature.v,feature.height],...[-1,1].flatMap(a=>[-1,1].map(b=>[feature.u+a*feature.radius,feature.v+b*feature.radius,0]))]) {
   const maxUV=Math.round(100*Math.max(Math.abs(u),Math.abs(v))),height=Math.round(100*Math.abs(h));
   assert.ok(height<50&&2*maxUV*maxUV<(50-height)**2, 'Exact squared L1 bound');
@@ -110,9 +117,11 @@ assert.equal(extend([root,extra],{maxNodes:10}).status,'exhausted');
 const seed=[root,{variantId:6,origin:[0,0,-2],generation:0}],before=JSON.stringify(seed);
 assert.equal(extend(seed,{maxNodes:1}).status,'unknown');
 const result=extend(seed,{maxNodes:100});
-assert.equal(result.status,'consistent finite patch');assert.ok(result.backtracks>0);
+assert.equal(result.status,'consistent finite patch');if(!centered)assert.ok(result.backtracks>0);
 assert.equal(JSON.stringify(seed),before,'Search rollback must preserve its fixed roots');
 assert.deepEqual(result.witness.slice(0,2),seed);
 assert.equal(graphFor(result.witness).dead,null);
-console.log(JSON.stringify({facingCases:cases,exactProfileVertices:vertices.size,probesPerFace:PROBES.length,rootCandidates:graph.candidates.size,frontierPoints:graph.frontier.size}));
+console.log(JSON.stringify({centered,facingCases:cases,exactProfileVertices:vertices.size,probesPerFace:PROBES.length,rootCandidates:graph.candidates.size,frontierPoints:graph.frontier.size}));
 clearCache();
+
+}

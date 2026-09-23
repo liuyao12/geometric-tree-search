@@ -1,0 +1,7926 @@
+{
+  "schemaVersion": 1,
+  "scope": "integer translations and 24 proper cubic rotations; fixed centered relief",
+  "conclusion": "Every full tiling in this placement domain satisfies the original arrow rules.",
+  "verification": {
+    "neighbors": 316,
+    "excludedNonArrowPairs": 272,
+    "forcedSteps": 2,
+    "deadSteps": 272,
+    "exactProfileVertices": 117
+  },
+  "certificates": [
+    {
+      "pair": "0@0,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@0,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            0,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "p:2:0,0,-1:0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@0,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            0,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@0,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            0,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@0,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            0,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@-1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            -1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@0,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            0,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@-1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            -1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@0,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            0,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@0,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            0,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@0,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            0,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-1,-2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -1,
+            -2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@-2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            -2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@-2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            -2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@-2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            -2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@-2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            -2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@-2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            -2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@-2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            -2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@0,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            0,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@0,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            0,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@-1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            -1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@0,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            0,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-1,1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -1,
+            1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@-2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            -2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@-2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            -2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@-2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            -2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:-1,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@-1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            -1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@-1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            -1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@-1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            -1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@0,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            0,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-1,1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -1,
+            1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@-1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            -1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@-1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            -1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@-1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            -1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@0,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            0,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@-1,2,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            -1,
+            2,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@1,0,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            1,
+            0,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@1,-1,-2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            1,
+            -1,
+            -2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@0,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            0,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@0,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            0,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@1,-2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            1,
+            -2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@0,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            0,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,-1,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@1,-2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            1,
+            -2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,0,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@0,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            0,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@0,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            0,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@0,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            0,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@1,0,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            1,
+            0,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@1,-1,2",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            1,
+            -1,
+            2
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,0,2",
+          "candidate": {
+            "variantId": 22,
+            "origin": [
+              -1,
+              -1,
+              1
+            ],
+            "generation": 1
+          }
+        },
+        {
+          "point": "c:1,0,2",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,-1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@2,-1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            2,
+            -1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@2,0,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            2,
+            0,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@2,-1,1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            2,
+            -1,
+            1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,-1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@0,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            0,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "3@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 3,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "4@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 4,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "6@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 6,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "8@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 8,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "10@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 10,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@0,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            0,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "15@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 15,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@0,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            0,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "19@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 19,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "20@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 20,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@1,2,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            1,
+            2,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@1,2,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            1,
+            2,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "0@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 0,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "1@2,0,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 1,
+          "origin": [
+            2,
+            0,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "2@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 2,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "5@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 5,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "7@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 7,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:0,2,0",
+          "candidate": {
+            "variantId": 9,
+            "origin": [
+              -1,
+              1,
+              -1
+            ],
+            "generation": 1
+          }
+        },
+        {
+          "point": "c:1,1,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "9@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 9,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "11@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 11,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,1,-1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "12@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 12,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "13@2,0,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 13,
+          "origin": [
+            2,
+            0,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "14@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 14,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "16@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 16,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "17@2,0,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 17,
+          "origin": [
+            2,
+            0,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,0,0",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "18@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 18,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "21@2,1,0",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 21,
+          "origin": [
+            2,
+            1,
+            0
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "22@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 22,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:1,1,1",
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "pair": "23@2,1,-1",
+      "seed": [
+        {
+          "variantId": 0,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "generation": 0
+        },
+        {
+          "variantId": 23,
+          "origin": [
+            2,
+            1,
+            -1
+          ],
+          "generation": 0
+        }
+      ],
+      "steps": [
+        {
+          "point": "c:2,1,-1",
+          "candidate": null
+        }
+      ]
+    }
+  ]
+}

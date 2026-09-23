@@ -3,26 +3,32 @@
 import { VARIANTS, FACE_DIRECTIONS, key, add } from '../../3d-reptiles/chair/chair44.js';
 import { selectFrontier } from '../../3d-reptiles/chair/chair-gcts.js';
 
+export function createReliefPointModel({centered=false}={}) {
 // Tangential positions are sqrt(2)/100 times (x,y); normal depth is h/400.
 // These are the apex projections of all rotated reliefs, sampled near both tips.
 const tangentPoints = new Map();
+if(centered) {
+  tangentPoints.set('0,0',[0,0]);
+  for(const x of [-8,8])for(const y of [-8,8])tangentPoints.set(`${x},${y}`,[x,y]);
+} else {
 for (const x of [-5,5]) for (const y of [-5,5]) tangentPoints.set(`${x},${y}`, [x,y]);
 for (const a of [-1,1]) for (const b of [-1,1]) for (const swap of [false,true]) {
   const xy = swap ? [a*4,b*12] : [a*12,b*4]; tangentPoints.set(xy.join(','),xy);
 }
-export const PROBES = [...tangentPoints.values()].flatMap(([x,y])=>[-47,47].map(h=>({x,y,h})));
-export const FULL = (1 << PROBES.length) - 1;
-export function height400(mark, x, y) {
+}
+const PROBES = [...tangentPoints.values()].flatMap(([x,y])=>[-47,47].map(h=>({x,y,h})));
+const FULL = (1 << PROBES.length) - 1;
+function height400(mark, x, y) {
   const axis = mark.direction.findIndex(v=>v!==0), tangents=[0,1,2].filter(i=>i!==axis);
   const a=mark.arrow,n=mark.direction;
   const side=[a[1]*n[2]-a[2]*n[1],a[2]*n[0]-a[0]*n[2],a[0]*n[1]-a[1]*n[0]];
   const u=side[tangents[0]]*x+side[tangents[1]]*y;
   const v=a[tangents[0]]*x+a[tangents[1]]*y;
-  if(mark.color==='blue') return 3*Math.max(0,16-Math.max(Math.abs(u-16),Math.abs(v-8)))
-    -3*Math.max(0,16-Math.max(Math.abs(u+16),Math.abs(v-8)));
-  return (mark.color==='red'?2:-2)*Math.max(0,24-Math.max(Math.abs(u),Math.abs(v-10)));
+  if(mark.color==='blue') return 3*Math.max(0,16-Math.max(Math.abs(u-16),Math.abs(v-(centered?0:8))))
+    -3*Math.max(0,16-Math.max(Math.abs(u+16),Math.abs(v-(centered?0:8))));
+  return (mark.color==='red'?2:-2)*Math.max(0,24-Math.max(Math.abs(u),Math.abs(v-(centered?0:10))));
 }
-export function faceMask(mark) {
+function faceMask(mark) {
   const sign=mark.direction.find(v=>v!==0);
   let mask=0;
   PROBES.forEach(({x,y,h},i)=>{
@@ -47,8 +53,8 @@ const templates=VARIANTS.map(variant=>{
   return {cells:variant.cells,faces:[...faces.values()]};
 });
 const cache=new Map();
-export function clearCache(){cache.clear();}
-export function compile(placement) {
+function clearCache(){cache.clear();}
+function compile(placement) {
   const {variantId,origin}=placement,id=`${variantId}@${key(origin)}`;
   if(!cache.has(id)) {
     const template=templates[variantId];
@@ -58,7 +64,7 @@ export function compile(placement) {
   }
   return cache.get(id);
 }
-export function indexState(placements) {
+function indexState(placements) {
   const occupied=new Map(),faceOccupancy=new Map();
   for(const placement of placements) {
     const tile=compile(placement);
@@ -74,11 +80,11 @@ export function indexState(placements) {
   }
   return {occupied,faceOccupancy};
 }
-export function isLegal(tile,index) {
+function isLegal(tile,index) {
   return !tile.cells.some(cell=>index.occupied.has(cell))
     && !tile.faces.some(({id,mask})=>(index.faceOccupancy.get(id)??0)&mask);
 }
-export function graphFor(placements) {
+function graphFor(placements) {
   const index=indexState(placements),frontier=new Map(),cells=new Map();
   for(const [id,generation] of index.occupied) for(const d of FACE_DIRECTIONS) {
     const p=add(id.split(',').map(Number),d),cell=key(p);
@@ -119,7 +125,7 @@ export function graphFor(placements) {
   choices.sort((a,b)=>a.origin.reduce((s,v)=>s+v*v,0)-b.origin.reduce((s,v)=>s+v*v,0)||a.id.localeCompare(b.id));
   return {index,frontier,candidates,choices,dead:dead?.id??null,forced:Boolean(forced),tested,rejected};
 }
-export function shellTarget(seed,radius) {
+function shellTarget(seed,radius) {
   const target=new Set(seed.flatMap(p=>compile(p).cells));let layer=[...target];
   for(let i=0;i<radius;i++) {
     const next=[];
@@ -128,7 +134,7 @@ export function shellTarget(seed,radius) {
   }
   return target;
 }
-export function extend(seed,{radius=1,maxNodes=2000,maxTiles=256}={}) {
+function extend(seed,{radius=1,maxNodes=2000,maxTiles=256}={}) {
   const target=shellTarget(seed,radius),stats={nodes:0,forced:0,branches:0,backtracks:0,maxTiles:seed.length};
   const start=performance.now();let witness=null,reason=null;
   function visit(placements) {
@@ -148,3 +154,7 @@ export function extend(seed,{radius=1,maxNodes=2000,maxTiles=256}={}) {
   const status=visit(seed.map(p=>({...p,origin:[...p.origin],generation:p.generation??0})));
   return {status,reason,radius,targetCells:target.size,...stats,milliseconds:Math.round(performance.now()-start),witness};
 }
+
+return {PROBES,FULL,height400,faceMask,compile,indexState,isLegal,graphFor,clearCache,shellTarget,extend};
+}
+export const {PROBES,FULL,height400,faceMask,compile,indexState,isLegal,graphFor,clearCache,shellTarget,extend}=createReliefPointModel();

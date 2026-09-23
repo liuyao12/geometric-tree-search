@@ -13,9 +13,10 @@ import { VARIANTS, IDENTITY, COLORS, worldMarks, chairLeaves, childSupertile, pa
 
 import { DIRECTION_NODES, DIRECTION_EDGES, directionKey } from "./orientation-graph.js?v=20260923-eight-directions";
 
-import { makeReliefVisual } from './relief-visual.js?v=20260923-connected-blue';
+import { makeReliefVisual } from './relief-visual.js?v=20260923-centered-relief';
 
 let markingView = 'arrows';
+let centeredRelief = false;
 const viewport = document.getElementById("viewport");
 const sceneShell = document.querySelector(".scene-shell");
 const inflateButton = document.getElementById("inflate-button");
@@ -692,8 +693,9 @@ function makeSearchVisual(state) {
 
 function applyMarkingView(visual) {
   if (!visual) return;
-  if (markingView === 'relief' && !visual.group.getObjectByName('chair44-relief')) {
-    const marks = makeOrientedMarkVisual(visual.leaves, makeReliefVisual, 'chair44-relief');
+  const reliefName = centeredRelief ? 'chair44-relief-centered' : 'chair44-relief';
+  if (markingView === 'relief' && !visual.group.getObjectByName(reliefName)) {
+    const marks = makeOrientedMarkVisual(visual.leaves, placements => makeReliefVisual(placements, centeredRelief), reliefName);
     const amount = visual.materials[0]?.userData.transitionAmount ?? 1;
     for (const material of marks.materials) {
       material.userData.transitionAmount = amount;
@@ -704,8 +706,10 @@ function applyMarkingView(visual) {
     visual.geometries.push(...marks.geometries);
   }
   visual.group.getObjectByName('chair44-arrows').visible = markingView === 'arrows';
-  const relief = visual.group.getObjectByName('chair44-relief');
-  if (relief) relief.visible = markingView === 'relief';
+  for (const name of ['chair44-relief', 'chair44-relief-centered']) {
+    const relief = visual.group.getObjectByName(name);
+    if (relief) relief.visible = markingView === 'relief' && name === reliefName;
+  }
   for (const object of visual.group.children) {
     if (object.userData.flatChairBody) object.visible = markingView !== 'relief';
   }
@@ -795,6 +799,7 @@ viewport.dataset.retainedChildren = "";
 viewport.dataset.tile = "Chair44";
 viewport.dataset.markings = "24";
 viewport.dataset.markingView = markingView;
+viewport.dataset.reliefPlacement = "offset";
 
 function updateModePanel() {
   const searching = mode === "search";
@@ -1015,6 +1020,17 @@ document.querySelectorAll('[data-marking-view]').forEach(button => {
     });
     document.getElementById('arrow-legend').hidden = markingView !== 'arrows';
     document.getElementById('relief-legend').hidden = markingView !== 'relief';
+    for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
+  });
+});
+document.querySelectorAll('button[data-relief-placement]').forEach(button => {
+  button.addEventListener('click', () => {
+    centeredRelief = button.dataset.reliefPlacement === 'centered';
+    viewport.dataset.reliefPlacement = centeredRelief ? 'centered' : 'offset';
+    document.querySelectorAll('button[data-relief-placement]').forEach(option => {
+      option.setAttribute('aria-pressed', String((option.dataset.reliefPlacement === 'centered') === centeredRelief));
+    });
+    document.getElementById('centered-relief-note').hidden = !centeredRelief;
     for (const visual of new Set([currentVisual, transition?.from, transition?.to])) applyMarkingView(visual);
   });
 });
