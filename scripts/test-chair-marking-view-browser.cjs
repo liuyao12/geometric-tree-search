@@ -13,7 +13,27 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     await page.route('**/chair/app.js?*', async route => {
       const response = await route.fetch();
       await route.fulfill({ response, body: (await response.text()) + `
+        import {TETRA_FEATURES as checkFeatures} from './tetra-relief.js';
         window.valueCheck = {
+          pyramidEdges() {
+            const relief=currentVisual.group.getObjectByName('chair44-relief');
+            const key=p=>p.map(v=>Math.round(v*1e6)).join(',');
+            const edgeKey=(a,b)=>[key(a),key(b)].sort().join('|');
+            const actual=[];
+            relief.traverse(object=>{
+              if(!object.isLineSegments)return;
+              const p=object.geometry.getAttribute('position');
+              for(let i=0;i<p.count;i+=2)actual.push(edgeKey(
+                [p.getX(i),p.getY(i),p.getZ(i)],
+                [p.getX(i+1),p.getY(i+1),p.getZ(i+1)]));
+            });
+            const expected=new Set();
+            for(const {vertices} of checkFeatures)for(let i=0;i<4;i++)for(let j=i+1;j<4;j++)
+              expected.add(edgeKey(vertices[i].map(v=>v/6),vertices[j].map(v=>v/6)));
+            const edges=new Set(actual);
+            return {complete:[...expected].every(edge=>edges.has(edge)),
+              unique:edges.size===actual.length,expected:expected.size,actual:edges.size};
+          },
           read: () => ({ markingView, mode, generation, rule:growthState.rule, count: growthState.placements.length,
             running: autoRun, transitioning: Boolean(transition) || searchPending, pending: searchPending }),
           remember() { this.growth = growthState; this.inflation = currentInflationState; },
@@ -102,6 +122,10 @@ const base = process.env.CHAIR_TEST_URL ?? 'http://127.0.0.1:8765/3d-reptiles/';
     let reliefState = await page.evaluate(() => valueCheck.relief());
     assert.equal(reliefState.visible, true);
     assert.ok(reliefState.blueCreases > 0, 'Tetrahedral ridges are visible');
+    const pyramidEdges=await page.evaluate(()=>valueCheck.pyramidEdges());
+    assert.equal(pyramidEdges.complete,true,'Every pyramid base and apex edge is outlined');
+    assert.equal(pyramidEdges.unique,true,'Shared outlines are not drawn twice');
+    assert.equal(pyramidEdges.actual,pyramidEdges.expected);
     assert.equal(reliefState.flatBodyVisible, false);
     assert.equal(reliefState.closed, true, 'The panel cutouts and relief sides form a closed surface');
     assert.ok(Math.abs(reliefState.volume - 7) < 1e-5);

@@ -1,6 +1,7 @@
 """Independent rational SAT and coplanar-area audit of all relief wedges."""
 from fractions import Fraction as Q
 from itertools import combinations
+from collections import defaultdict, Counter
 from pathlib import Path
 import json,subprocess,os
 root=Path(__file__).resolve().parents[1]
@@ -62,4 +63,24 @@ triangles=[[tuple(Q(x,6) for x in p) for p in f['vertices']] for f in D['boundar
 assert all(not triangle_contact(a,b) for a,b in combinations(triangles,2))
 volume=sum(dot(a,cross(b,c))/6 for a,b,c in triangles)
 assert volume==7
-print(json.dumps(dict(old_coincident_mark_pairs=[[9,12],[18,19]],new_interior_overlaps=0,new_coincident_faces=0,volume=str(volume),wedge_pairs=496,boundary_triangles=len(triangles))))
+# Count connected planar faces using exact rational planes and shared edges.
+planes=[];edges=defaultdict(list);parent=list(range(len(triangles)))
+for i,triangle in enumerate(triangles):
+ a,b,c=triangle;n=cross(sub(b,a),sub(c,a));pivot=next(x for x in n if x)
+ planes.append(tuple(x/pivot for x in (*n,dot(n,a))))
+ for a,b in zip(triangle,triangle[1:]+triangle[:1]):edges[tuple(sorted((a,b)))].append(i)
+def root(i):
+ while parent[i]!=i:i=parent[i]
+ return i
+for pair in edges.values():
+ assert len(pair)==2, 'Boundary must be a closed triangular manifold'
+ a,b=pair
+ if planes[a]==planes[b]:parent[root(b)]=root(a)
+face_sizes=Counter(Counter(root(i) for i in range(len(triangles))).values())
+assert face_sizes=={1:88,2:12}
+planar_faces=sum(face_sizes.values())
+vertices={p for triangle in triangles for p in triangle}
+assert len(vertices)-len(edges)+len(triangles)==2
+# Removing the twelve coplanar diagonals preserves the Euler characteristic.
+assert len(vertices)-(len(edges)-12)+planar_faces==2
+print(json.dumps(dict(planar_faces=planar_faces,old_coincident_mark_pairs=[[9,12],[18,19]],new_interior_overlaps=0,new_coincident_faces=0,volume=str(volume),wedge_pairs=496,boundary_triangles=len(triangles))))

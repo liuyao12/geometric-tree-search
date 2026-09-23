@@ -64,7 +64,12 @@ not an approximate sampling test.
 
 Occupancy is stored as an exact BigInt mask per cube. The renderer uses the
 same wedge vertices to build 112 outward-oriented triangles, with integer
-coordinates in sixths. Independent rational tests check the boundary volume,
+coordinates in sixths. Merging adjacent coplanar triangles gives **100 planar
+faces**: twelve pairs merge, and eighty-eight triangles remain separate. This
+counts connected planar surface regions, regardless of color; disconnected
+regions in the same plane are different faces. The outlines show all six edges
+of each tetrahedral fold, including coplanar base hinges, so not every drawn line
+separates geometric faces. Independent rational tests check the boundary volume,
 edge pairing, wedge intersections, and coincident face areas. Separate tile
 surfaces remain visible at matching contacts, with transparency and orientation
 dimming; the correction removes unwanted contacts within a single tile.
