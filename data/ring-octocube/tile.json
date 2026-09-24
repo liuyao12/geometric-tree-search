@@ -1,0 +1,48 @@
+{
+  "id": "ring_octocube",
+  "name": "Ring octocube",
+  "voxels": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      2,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      0
+    ],
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      2,
+      2,
+      0
+    ]
+  ],
+  "sourceIndex": 834,
+  "source": "https://github.com/gepa71/whuts-solver/blob/81eea57137d46dffb8fdc8c74e3c500845d3276b/inputs/all_octocubes.json"
+}

@@ -1,0 +1,22 @@
+{
+  "result": "H=1",
+  "scope": "Integer translations and cubic-lattice rotations; full face/edge/vertex touching coronas. No claim for arbitrary rigid motions.",
+  "firstCoronaTiles": 27,
+  "firstCoronaGeometryVerified": true,
+  "rootNeighborPlacements": 386,
+  "twoCoronaPlacements": 4364,
+  "independentRectangularCandidateScan": true,
+  "sameClausesAsOriginalNonacubeEncoder": true,
+  "formulaSHA256": "af39d4d9827a8119d552a0e792b8c7ef5deefcc968c7a14f403cdea7ed5f380d",
+  "proofSHA256": "85075e8d070a8e2b8ceb28bc8b7f47cd0ec7b654a212cfbc50b8a0fa49b6e05c",
+  "proofChecker": "DRAT-trim",
+  "proofCheckerCommit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+  "proofVerified": true,
+  "proofCheckSeconds": 0.948709917254746,
+  "sourceSHA256": {
+    "scripts/heesch-catalog/verify_ring.py": "0082f627af1d9e206a8f711de21af5bb12968b875c76e0652bad49bbb4f96bf5",
+    "scripts/heesch-catalog/corona.py": "e070cbc458120cebe7e9e0b99700900f5c5435b31563437273ad976627ff9022",
+    "scripts/heesch-catalog/positive_control_witnesses.py": "417e54bb6381f4741db502eb15ea9a1542b29e6091669c525b1f32a16e9e0169",
+    "scripts/search-nonacube-two-corona.py": "fd9a1f4984958fb8e792f35bff43337b9409a25e69d89ba6c71fbfe80c618540"
+  }
+}
