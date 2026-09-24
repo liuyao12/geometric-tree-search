@@ -1,15 +1,20 @@
-import {grow} from './growth-search.js?v=20260921-growth';
+import {learnCertifiedMarking,reuseCertifiedMarking,CERTIFIED_METHOD} from './certified-marking.js?v=20260924-certified';
+import {grow} from './growth-search.js?v=20260924-certified';
 import {learnMarking,reuseMarking} from './marking-learning.js?v=20260921-search-inset';
 import {verifyVoxelPatch} from './voxel-point-model.js';
-// Both UIs use this protocol. Training is unmarked; only a fully validated
-// browser-local field decorates the subsequent growth model.
+// Both UIs use this protocol. Unmarked training either validates a complete
+// learned restriction or certifies a partial set of redundant exclusions.
 export async function* runGrowthExperiment(initial,data){
  const started=performance.now();let model={...initial,required:[]},marking=null;
  yield {type:'model',model};
  if(data.action==='preview')return;
  if(['gcts','both'].includes(data.mode)){
   const options={timeMs:Math.max(0,(data.timeMs??120000)-(performance.now()-started)),pairNodes:data.pairNodes??500,extent:data.markingExtent??0,checkpoint:data.learningCheckpoint,stop:data.stop};
-  for await(const e of (data.savedMarking?reuseMarking(model,data.savedMarking,options):learnMarking(model,options))){
+  const certified=(data.savedMarking?.marking.method??data.markingMethod)===CERTIFIED_METHOD;
+  // Reserve time for the requested search even when local checks time out.
+  if(certified)options.timeMs=Math.min(30000,options.timeMs*0.4);
+  const learner=data.savedMarking?(certified?reuseCertifiedMarking:reuseMarking):(certified?learnCertifiedMarking:learnMarking);
+  for await(const e of learner(model,data.savedMarking??options,data.savedMarking?options:undefined)){
    if(e.type==='marking-learned'){marking=e.marking;if(e.model)model=e.model;}
    yield {...e,mode:data.mode,elapsedMs:performance.now()-started};
   }
@@ -19,7 +24,7 @@ export async function* runGrowthExperiment(initial,data){
   yield {type:'model',model};
  }
  const preparationMs=performance.now()-started;
- for await(const e of grow(model,{...data,learnedRestriction:!!marking?.accepted,timeMs:Math.max(0,(data.timeMs??120000)-preparationMs)})){
+ for await(const e of grow(model,{...data,learnedRestriction:!!marking?.accepted&&!marking?.fallback,timeMs:Math.max(0,(data.timeMs??120000)-preparationMs)})){
   e.stats.preparationMs=preparationMs;e.stats.totalMs=e.stats.elapsedMs+preparationMs;e.marking=marking;e.config={...data,stop:undefined};
   if(e.type==='result'&&model.requiredVoxels){e.voxelVerification=verifyVoxelPatch(model,e.placements,{requireTarget:false});if(!e.voxelVerification.ok)throw Error('Independent voxel growth replay failed');e.stats.totalMs=performance.now()-started;}
   yield e;

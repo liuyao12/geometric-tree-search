@@ -82,7 +82,7 @@ export async function* grow(model,config={}){
  let rng=(config.seed??10)|0,reason=null,best=[],lastEmit=-Infinity;const random=()=>((rng=Math.imul(rng,1664525)+1013904223|0)>>>0)/4294967296;
  const library=new Map(),rl=['rl','both'].includes(mode);
  const expired=()=>{if(config.stop?.())reason='cancelled';else if(performance.now()-started>=limit)reason='time budget';else if(stats.attempts>=(config.nodes??1000000))reason='attempt budget';return !!reason;};
- const metric=()=>({...stats,elapsedMs:performance.now()-started,markingCuts:graph.markingCuts,candidates:graph.candidates.size,edges:[...graph.points.values()].reduce((n,p)=>n+p.incident.size,0),points:graph.totals.size,frontierPoints:graph.active.size,memoryEstimateBytes:graph.dependencyEntries*48+graph.candidates.size*200,searchProtocol:'seed-growth'});
+ const metric=()=>({...stats,elapsedMs:performance.now()-started,markingCuts:graph.markingCuts,candidates:graph.candidates.size,edges:[...graph.points.values()].reduce((n,p)=>n+p.incident.size,0),points:graph.totals.size,frontierPoints:graph.active.size,memoryEstimateBytes:graph.dependencyEntries*48+graph.candidates.size*200+[...graph.candidates.values()].reduce((n,c)=>n+(c.marks?.length??0)*48,0)+graph.section.size*48,searchProtocol:'seed-growth'});
  const frame=(type='progress',action='place',point=null)=>({type,action,point,mode,placements:graph.descriptors(),covered:graph.selected.length,frontier:[...graph.active].map(k=>({pos:graph.points.get(k).pos,generation:Math.min(...graph.generations.get(k).keys()),degree:graph.points.get(k).degree})),stats:metric()});
  function proposal(moves){
   const begun=performance.now(),ranked=[];

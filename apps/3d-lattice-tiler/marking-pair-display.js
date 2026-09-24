@@ -30,7 +30,7 @@ export function pairInspectionText(row, inspection) {
   const oracle = row.status === 'valid'
     ? 'Valid: complete 1-corona with viable frontier.'
     : row.status === 'invalid'
-      ? 'Invalid: unmarked 1-corona search exhausted.'
+      ? row.certificate?.kind==='dead_point'?'Invalid: a point has no legal completing placement.':'Invalid: unmarked 1-corona search exhausted.'
       : `Unresolved: ${row.reason ?? 'search budget reached'}.`;
   const marking = inspection.compatible ? 'accepts' : 'rejects';
   const score = row.status === 'unresolved' ? 'not a validity label'

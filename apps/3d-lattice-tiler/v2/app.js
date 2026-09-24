@@ -3,12 +3,12 @@ import {learningSearchView} from '../learning-search-view.js?v=20260921-search-i
 import {HISTORICAL_CASE_IDS} from '../research-catalog.js?v=20260921-search-inset';
 import {MarkingOverlay} from '../marking-overlay.js?v=20260921-search-inset';
 import {placedMarkingPoints} from '../marking-display.js?v=20260921-search-inset';
-import {MarkingLibrary} from '../marking-library.js?v=20260921-search-inset';
-import {remember3DMarking} from '../marking-storage.js?v=20260921-search-inset';
-import {MarkingPreview} from '../marking-preview.js?v=20260921-search-inset';
+import {MarkingLibrary} from '../marking-library.js?v=20260924-certified';
+import {remember3DMarking} from '../marking-storage.js?v=20260924-certified';
+import {MarkingPreview} from '../marking-preview.js?v=20260924-certified';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {catalog,MODES,VERSION} from './model.js?v=20260923-nonacube';
+import {catalog,MODES,VERSION} from './model.js?v=20260924-certified';
 const $=id=>document.getElementById(id),cases=catalog();
 let results={},series={},archive=[],models={},active='free',worker=null,busy=false,cancelled=false,custom=null,previewSequence=0,runConfig=null;
 let markingOpen=true,sampleInspection=null;
@@ -99,14 +99,14 @@ function renderPatch(fit=false){
   const occupied=new Map();if(growthMode)for(const p of placements)for(const q of model.orientations[p.oi].cells){const pos=q.pos.map((v,i)=>v+p.translation[i]);occupied.set(pos.join(','),{pos});}
   const growthFit=growthMode&&placements.length>(model.lastFitCount??0)*1.4;
   draw(growthMode?{...model,required:[...occupied.values()]}:model,placements,fit||growthFit);if(growthFit)model.lastFitCount=placements.length;
-  $('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${r.marking?.accepted?'tiling with learned marking · ':''}${labels[r.result]??'searching'}`:'Tile geometry';
+  $('viewTitle').textContent=r?`${MODES.find(m=>m.id===active).name} · ${r.marking?.fallback?'unmarked fallback · ':r.marking?.redundant?'certified exclusions · ':r.marking?.accepted?'tiling with learned marking · ':''}${labels[r.result]??'searching'}`:'Tile geometry';
   $('coverage').textContent=growthMode?`${placements.length} / ${$('targetTiles').value} tiles · ${r?.verification?.frontierPoints??r?.stats?.frontierPoints??0} frontier points${r?.verification?.frontierViable?' · frontier verified viable':''}`:r?`${r.verification?.covered??r.covered??0} / ${model.required.length} required points complete`:'Amber points = required window';
  }
  const viewer=document.querySelector('.viewer');viewer.dataset.searchPhase=phase;viewer.dataset.placements=String(frame?.placements.length??r?.placements?.length??1);
 }
-function config(){return {searchProtocol:growthMode?'seed-growth':'fixed-window',targetTiles:Math.max(1,Math.min(5000,Math.floor(+$('targetTiles').value||1000))),tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(600,Number($('seconds').value)||120))*1000,nodes:1000000,markingExtent:Number($('markingExtent').value),pairNodes:Math.max(1,Math.min(1000000,Math.floor(+$('pairBudget').value||500))),custom};}
+function config(){return {searchProtocol:growthMode?'seed-growth':'fixed-window',targetTiles:Math.max(1,Math.min(5000,Math.floor(+$('targetTiles').value||1000))),tile:$('tile').value,radius:Number($('radius').value),seed:Math.max(1,Math.floor(Number($('seed').value)||1)),mirrors:$('mirrors').checked,timeMs:Math.max(1,Math.min(600,Number($('seconds').value)||120))*1000,nodes:1000000,markingMethod:$('markingMethod').value,markingExtent:Number($('markingExtent').value),pairNodes:Math.max(1,Math.min(1000000,Math.floor(+$('pairBudget').value||500))),custom};}
 const properOnly=()=>$('tile').value==='chair44_relief'||custom?.point_model?.allowReflections===false;
-function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','targetTiles','radius','seconds','seed','pairBudget','markingExtent','useDemonstration','mirrors','import','customFile'])$(id).disabled=value||(id==='mirrors'&&properOnly());$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels||!!models.preview?.exactPointImport;}
+function lock(value){busy=value;markingLibrary.lock(value);for(const id of ['run','suite','probe','tile','targetTiles','radius','seconds','seed','pairBudget','markingMethod','markingExtent','useDemonstration','mirrors','import','customFile'])$(id).disabled=value||(id==='mirrors'&&properOnly())||(id==='markingExtent'&&$('markingMethod').value==='certified-exclusions');$('stop').disabled=!value;$('probe').disabled=value||!!models.preview?.slab||!!models.preview?.requiredVoxels||!!models.preview?.exactPointImport;}
 function syncModelUI(model){
   markingLibrary.refresh(model);
   const slab=!!model.slab,voxel=!!model.requiredVoxels,exact=!!model.exactPointImport;
@@ -131,6 +131,7 @@ function inspect(){
   if(!s){$('inspection').textContent=r.message??r.reason??'No completed measurement.';$('clusterList').textContent='No clusters retained.';return;}
   if(r.result==='learning'&&!r.marking){$('inspection').textContent='Classifying the first neighboring pair with unmarked one-corona search…';$('clusterList').textContent='No clusters yet.';return;}
   const marking=r.marking;
+  if(marking?.redundant){$('inspection').textContent=`${marking.negativeBlocked} certified pair orbits encoded; ${marking.counts?.unresolved??0} unresolved orbits remain unrestricted. ${marking.componentCount} sparse components, ${marking.values} assigned values. ${marking.reused?'Proof replay':'Preparation'} ${time(marking.elapsedMs)}. ${fmt(s.markingCuts)} marking-based eliminations. ${marking.fallback?'No exclusions certified: continued with unmarked search.':'Every mismatch is a proved local obstruction; rotations permute components.'} These exclusions preserve infinite exact tilings, but may remove finite patches that cannot extend indefinitely.`;$('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2):'No clusters retained.';return;}
   if(marking){$('inspection').textContent=`${marking.pairs??0} one-corona pairs; accepts ${marking.positivePassed??0}/${marking.counts?.valid??0} valid and blocks ${marking.negativeBlocked??0}/${marking.counts?.invalid??0} invalid. ${marking.values??0} assigned point values across orientations. ${marking.reused?'Validation':'Learning'} ${time(marking.elapsedMs)}.${marking.continued?' Continued run; cumulative training '+time(marking.trainingMs)+'. ':''} ${fmt(s.markingCuts)} marking-based eliminations. ${marking.reused?'Reused browser marking; validation charged to this run. Original training '+time(marking.trainingMs)+'. ':''}${marking.accepted?'Validated marking used in this search.':'Learning incomplete or below the acceptance threshold.'} A learned restriction is not an unmarked impossibility proof.`;$('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2):'No clusters retained.';return;}
   $('inspection').textContent=`${r.reason?`Stopped: ${r.reason}. `:''}${fmt(s.attempts)} attempted base placements; ${fmt(s.candidates)} candidate nodes and ${fmt(s.edges)} incidence edges. Preparation ${time(s.preparationMs)}, graph construction ${time(s.graphMs)}, cluster proposal / learning ${time(s.learningMs)}. Estimated graph and trail footprint ${(s.memoryEstimateBytes/1048576).toFixed(1)} MiB (not process memory). ${fmt(s.capacityCuts)} residual-capacity contradictions; ${fmt(s.lookaheadCuts)} context-local failed-move eliminations from ${fmt(s.probes)} probes. ${marking?.rank?`Vector marking rank ${marking.rank}${marking.constantFallback?' (constant resource fallback)':''}; no boundary-specific pair rules are generalized. `:''}${fmt(s.clusterProposals)} sampled clusters, ${fmt(s.clusterValidated)} validated, ${fmt(s.clusterUses)} used for ordering. These proposals never remove base alternatives.`;
   $('clusterList').textContent=r.clusters?.length?JSON.stringify(r.clusters.slice(0,5),null,2)+`\nShowing ${Math.min(5,r.clusters.length)} of ${r.clusters.length}. Export contains the full library.`:'No cluster library in this lane. Live proposals are exported at completion.';
@@ -141,7 +142,17 @@ function drawChart(){
   for(const m of MODES){const pts=series[m.id]??[];if(pts.length)s+=`<polyline points="${pts.map(([t,c])=>`${left+t/maxT*750},${bottom-c/target*90}`).join(' ')}" fill="none" stroke="${m.color}" stroke-width="2"/>`;}
   $('chart').innerHTML=s+'</svg>';
 }
+function syncMarkingMethod(){
+ const certified=$('markingMethod').value==='certified-exclusions';
+ $('markingExtent').disabled=busy||certified;
+ if(certified)$('markingExtent').value='0';
+ $('markingMethodNote').textContent=certified?'Prove local failures, encode only those exclusions, then search. Unresolved connections stay allowed. No positive examples required. Preparation uses up to 40% of the time budget, capped at 30 seconds.':'Classify neighboring pairs before activating a learned restriction. Requires a complete resolved catalogue and positive witnesses.';
+}
+$('markingMethod').onchange=syncMarkingMethod;
+let markingMethodTile=null;
 function describeTile(selected){
+ if(markingMethodTile!==selected?.id){markingMethodTile=selected?.id;$('markingMethod').value=selected?.id==='nonacube_cross'?'certified-exclusions':'pair-corona';}
+ syncMarkingMethod();
  if(properOnly())$('mirrors').checked=false;$('mirrors').disabled=properOnly();
  $('tileName').textContent=custom?.name??selected?.name??'Custom system';
  $('tileNote').textContent=custom?'Imported custom point model; exactness is checked before comparison.':selected.note;
@@ -152,12 +163,12 @@ async function preview(){
   sampleInspection=null;markingOpen=true;
   markingLibrary.refresh(null);markingOverlay.set([]);document.querySelector('.viewer').hidden=false;document.querySelector('.viewer-foot').hidden=false;learningPreview.host.hidden=true;for(const k of Object.keys(learningStates))delete learningStates[k];const sequence=++previewSequence;worker?.terminate();worker=null;results={};series={};models={};custom=$('tile').value==='custom'?custom:null;
   const selected=cases.find(c=>c.id===$('tile').value);describeTile(selected);const demo=DEMONSTRATIONS.find(c=>c.tile===selected?.id);$('useDemonstration').hidden=growthMode||!demo;$('demonstrationNote').textContent=growthMode?'':demo?.summary??'Research case: no measured GCTS advantage is established.';$('probeResults').textContent='Not screened in this session. No aperiodicity claim.';$('status').textContent='Preparing tile geometry…';
-  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=20260923-nonacube',import.meta.url),{type:'module'});worker=w;
+  [geometryGroup,pointGroup,edgeGroup,diagnosticGroup].forEach(clear);$('viewMeta').textContent='Preparing exact point data';$('coverage').textContent='No run yet';$('viewTitle').textContent='Tile geometry';refresh();const w=new Worker(new URL('./worker.js?v=20260924-certified',import.meta.url),{type:'module'});worker=w;
   w.onmessage=({data})=>{if(sequence!==previewSequence)return;if(data.type==='model'){models.preview=data.model;syncModelUI(data.model);refresh();renderPatch(true);$('status').textContent='Ready. Run all four methods with the same search settings.';w.terminate();worker=null;}if(data.type==='error'){$('status').textContent=data.message;w.terminate();worker=null;}};w.onerror=e=>{$('status').textContent=e.message;w.terminate();worker=null;};w.postMessage({...config(),action:'preview'});
 }
 function runWorker(c,action='search',strategy=null){
   return new Promise(resolve=>{
-    const w=new Worker(new URL('./worker.js?v=20260923-nonacube',import.meta.url),{type:'module'});worker=w;let done=false;
+    const w=new Worker(new URL('./worker.js?v=20260924-certified',import.meta.url),{type:'module'});worker=w;let done=false;
     const finish=r=>{if(done)return;done=true;clearTimeout(timer);w.terminate();if(worker===w)worker=null;resolve(r);};
     // A hard watchdog includes synchronous graph construction and module startup.
     const timer=setTimeout(()=>finish({...results[c.mode],type:'result',mode:c.mode,result:'unknown',reason:'worker wall-time safety limit',config:c}),c.timeMs+15000);
@@ -183,6 +194,7 @@ function runWorker(c,action='search',strategy=null){
   });
 }
 function verdict(){
+  if(Object.values(results).some(r=>r.marking?.redundant&&!r.marking?.fallback)){$('verdict').textContent='Certified exclusions preserve infinite exact tilings, but can remove finite patches that cannot extend indefinitely. Search costs include proof preparation and replay; these finite checkpoints alone are not a speedup certificate for the same finite problem.';return;}
   const success=growthMode?'growth_checkpoint':'finite_exact',goal=growthMode?'growth checkpoint':'verified window';
   const base=results.free;const wins=MODES.slice(1).filter(m=>results[m.id]?.result===success&&base?.result===success&&results[m.id].stats.totalMs<base.stats.totalMs);
   if(wins.length)$('verdict').textContent=`This run: ${wins.map(m=>`${m.name} used ${(base.stats.totalMs/results[m.id].stats.totalMs).toFixed(2)}× less total time`).join('; ')} than free-range for the same ${goal}. Repeat across seeds and larger targets before claiming a general advantage.`;
@@ -202,9 +214,9 @@ async function compare(c){
 }
 async function runGcts(savedMarking=null,learningCheckpoint=null){
  if(busy)return;if(learningCheckpoint)$('markingExtent').value=learningCheckpoint.marking.extent;sampleInspection=null;markingOpen=true;previewSequence++;worker?.terminate();cancelled=false;lock(true);
- const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{}),...(learningCheckpoint?{learningCheckpoint}:{})};if(learningCheckpoint){c.pairNodes=Math.max(c.pairNodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));$('pairBudget').value=c.pairNodes;}runConfig=c;active='gcts';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
- $('status').textContent=savedMarking?'Validating the selected browser marking…':learningCheckpoint?'Continuing unresolved corona checks…':'Learning a new marking from unmarked corona checks…';
- try{const r=await runWorker(c);results.gcts=r.type==='error'?{result:'error',message:r.message}:r;archive.push({config:c,results:structuredClone(results)});refresh();showLearning();renderPatch(true);$('status').textContent=r.type==='error'?r.message:cancelled?'Stopped.':r.result==='growth_checkpoint'?'Marked growth checkpoint verified.':r.result==='closed_patch'?'Closed finite patch verified.':r.result==='finite_exact'?'Marked window verified.':r.reason??'Marked search finished.';$('verdict').textContent=savedMarking?'Explicit reuse run: validation and tiling are timed; original training is reported separately. Run comparison for cold measurements.':'Standalone GCTS run. Run comparison to measure against free-range.';}finally{lock(false);}
+ const c={...config(),mode:'gcts',...(savedMarking?{savedMarking}:{}),...(learningCheckpoint?{learningCheckpoint}:{})};if(learningCheckpoint){c.markingMethod='pair-corona';c.pairNodes=Math.max(c.pairNodes,Math.min(1000000,Math.max(1,(learningCheckpoint.marking.pairNodes??0)*2)));$('pairBudget').value=c.pairNodes;}runConfig=c;active='gcts';results={};series={};for(const k of Object.keys(learningStates))delete learningStates[k];refresh();
+ $('status').textContent=savedMarking?'Validating the selected browser marking…':learningCheckpoint?'Continuing unresolved corona checks…':c.markingMethod==='certified-exclusions'?'Certifying local exclusions before search…':'Learning a new marking from unmarked corona checks…';
+ try{const r=await runWorker(c);results.gcts=r.type==='error'?{result:'error',message:r.message}:r;archive.push({config:c,results:structuredClone(results)});refresh();showLearning();renderPatch(true);$('status').textContent=r.type==='error'?r.message:cancelled?'Stopped.':r.result==='growth_checkpoint'?(r.marking?.fallback?'Unmarked growth checkpoint verified; no exclusions certified.':'Marked growth checkpoint verified.'):r.result==='closed_patch'?'Closed finite patch verified.':r.result==='finite_exact'?'Marked window verified.':r.reason??'Marked search finished.';$('verdict').textContent=savedMarking?'Explicit reuse run: validation and tiling are timed; original training is reported separately. Run comparison for cold measurements.':'Standalone GCTS run. Run comparison to measure against free-range.';}finally{lock(false);}
 }
 $('run').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);try{await compare(config());$('status').textContent=cancelled?'Stopped. Partial evidence is available to export.':'Comparison complete. Select a method to inspect its patch.';}finally{lock(false);}};
 $('suite').onclick=async()=>{previewSequence++;worker?.terminate();cancelled=false;lock(true);try{for(const preset of DEMONSTRATIONS){if(cancelled)break;const test=cases.find(c=>c.id===preset.tile);custom=null;$('tile').value=test.id;applyDemonstration();describeTile(test);await compare({...config(),tile:test.id,custom:null});}$('status').textContent=cancelled?'Suite stopped. Completed runs are retained.':`Demonstration suite complete. Export contains ${archive.length} experiment(s).`;}finally{lock(false);}};

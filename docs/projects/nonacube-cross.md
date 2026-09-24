@@ -50,3 +50,7 @@ changed. The checked witness is evidence only for a finite geometric corona;
 it does not train the browser learner or seed its growth search. The existing
 point-model and geometric-scope limitations remain in force. Neither a finite
 growth checkpoint nor a bounded periodic miss determines the Heesch number.
+
+## Certified exclusions first
+
+The app now defaults this tile to the [certified negative-only marking method](3d-certified-exclusion-markings.md). The initial short checks certified no invalid pair orbits, so the lane explicitly falls back to unmarked search. This does not change the Heesch-number evidence above.

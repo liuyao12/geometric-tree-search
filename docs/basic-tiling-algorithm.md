@@ -361,6 +361,22 @@ failure modes and the absence of a speedup for its strict direct-conflict
 configuration. Its exclusion of the known Turtle solution prevents using that
 result as evidence against operational online GCTS learning.
 
+### 6a. Certified negative-only alternative
+
+A separately labeled certified-exclusion experiment may activate a partial set
+of proved local impossibilities without positive witnesses or a fully resolved
+pair catalogue. Every marking disagreement must imply a certified excluded
+configuration, including all allowed transforms, pair reversals, and mark-only
+contacts. Unknown or untested configurations must remain unrestricted. State
+and verify the point-group action on marking components and values. Re-prove
+saved negatives before reuse; do not trust persisted labels as certificates.
+
+This alternative does not relax the learned-restriction gate in section 6.
+It preserves infinite exact tilings of the stated point model, but may remove
+finite patches that cannot extend. Preserve that distinction in checkpoint and
+benchmark reporting. With no certified exclusions, report an unmarked fallback.
+See [the implementation and conformance report](projects/3d-certified-exclusion-markings.md).
+
 ## 7. RL proposes clusters
 
 The primary RL role is proposing, composing, and selecting clusters: finite

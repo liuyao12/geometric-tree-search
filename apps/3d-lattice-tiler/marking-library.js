@@ -9,7 +9,7 @@ export class MarkingLibrary{
  }
  refresh(model=this.model,marking=null){
   this.model=model;
-  if(model&&marking){const key=JSON.stringify(markingSystem(model));if(marking.accepted)this.checkpoints.delete(key);else if(marking.evidence?.length&&(marking.counts?.unresolved||!marking.complete))this.checkpoints.set(key,{domain:markingSystem(model),marking});}
+  if(model&&marking){const key=JSON.stringify(markingSystem(model));if(marking.accepted)this.checkpoints.delete(key);else if(!marking.redundant&&marking.evidence?.length&&(marking.counts?.unresolved||!marking.complete))this.checkpoints.set(key,{domain:markingSystem(model),marking});}
   if(model&&marking?.accepted&&marking.saved){const entry={domain:{...markingSystem(model),extent:marking.extent},marking};this.visit=this.visit.filter(e=>e.marking.saved.id!==marking.saved.id);this.visit.push(entry);}
   const selected=marking?.saved?.id??this.select.value;
   const system=model&&JSON.stringify(markingSystem(model));

@@ -1,6 +1,6 @@
 import {markingVectors} from './marking-display.js?v=20260921-vector-learning';
 import {markingDomain} from './marking-learning.js?v=20260921-vector-learning';
-import {inspectPairMarking,pairInspectionText} from './marking-pair-display.js?v=20260921-vector-learning';
+import {inspectPairMarking,pairInspectionText} from './marking-pair-display.js?v=20260924-certified';
 
 // Shared view for both engines. Values and witnesses come from the worker.
 export class MarkingPreview {
@@ -16,6 +16,7 @@ export class MarkingPreview {
    </div>
    <p class="marking-pair-detail" role="status" hidden></p>
    <label>Marking orientation <select class="marking-orientation" aria-label="Marking orientation"></select></label>
+   <label class="marking-component-label" hidden>Marking component <select class="marking-component" aria-label="Marking component"></select></label>
    <canvas width="800" height="300" aria-label="Pair corona and learned point marking"></canvas>
    <p class="marking-detail"></p>`;
   if(compact){
@@ -27,6 +28,7 @@ export class MarkingPreview {
   }
   this.canvas=host.querySelector('canvas');this.ctx=this.canvas.getContext('2d');
   this.status=host.querySelector('.marking-progress');this.detail=host.querySelector('.marking-detail');
+  this.componentSelect=host.querySelector('.marking-component');this.componentSelect.onchange=()=>this.draw();this.componentTotal=0;
   this.select=host.querySelector('.marking-orientation');this.select.onchange=()=>this.draw();
   this.pairControls=host.querySelector('.marking-pair-controls');this.pairSelect=host.querySelector('.marking-pair');
   this.pairDetail=host.querySelector('.marking-pair-detail');this.witness=host.querySelector('.marking-witness');
@@ -65,7 +67,7 @@ export class MarkingPreview {
   if(!this.model||this.lastEvent===event)return;this.lastEvent=event;
   if(event.type==='marking-learned') {
    this.snapshot=event.marking;this.changed.clear();this.deadPoint=null;
-   this.status.textContent=event.marking.accepted?`${event.marking.saved?.persisted?'Saved':'Validated this visit'} · ${event.marking.saved?.name??'marking'} · ${event.marking.totalPairs??event.marking.evidence?.length??0} pairs`:`Marking not activated · ${event.marking.reason}`;
+   this.status.textContent=event.marking.fallback?'No exclusions certified · continuing unmarked':event.marking.accepted?`${event.marking.saved?.persisted?'Saved':'Validated this visit'} · ${event.marking.saved?.name??'marking'} · ${event.marking.totalPairs??event.marking.evidence?.length??0} pairs`:`Marking not activated · ${event.marking.reason}`;
    this.evidence=event.marking.evidence??[];
    this.pairSelect.replaceChildren(...this.evidence.map((row,i)=>{
     const option=document.createElement('option');option.value=i;
@@ -87,12 +89,20 @@ export class MarkingPreview {
    const c=event.counts??{};
    const action=event.phase==='resume'?`continuing · ${event.retained} resolved labels retained · ${event.pairNodes} attempts per pair`
     :event.phase==='replay'?'checking saved pair evidence':event.phase==='pair'?'trying the next pair'
-    :event.phase==='refine'?'refining free values':event.phase==='update'?event.status:event.action??'filling the 1-corona';
+    :event.phase==='certify'?'checked immediate dead points':event.phase==='refine'?'refining free values':event.phase==='update'?event.status:event.action??'filling the 1-corona';
    this.status.textContent=`${event.totalPairs??event.pairs??0} pairs · ${c.valid??0} valid · ${c.invalid??0} invalid · ${c.unresolved??0} unresolved · ${action}`;
   }
   const s=this.snapshot;
+  const count=s?.componentCount??0;
+  if(count!==this.componentTotal){
+   const previous=this.componentSelect.value;this.componentTotal=count;this.componentSelect.replaceChildren();
+   const all=document.createElement('option');all.value='all';all.textContent='All components';this.componentSelect.append(all);
+   if(count>8)for(let i=0;i<count;i++){const option=document.createElement('option');option.value=String(i);option.textContent=`Component ${i}`;this.componentSelect.append(option);}
+   this.componentSelect.value=count>8?(previous&&previous!=='all'&&+previous<count?previous:'0'):'all';
+   this.componentSelect.parentElement.hidden=count<=8;
+  }
   if(s&&s.extent!==this.domainExtent){this.domainExtent=s.extent;this.domains=markingDomain(this.model,s.extent);}
-  this.detail.textContent=s?`${s.accepted?'Validated':'Provisional'} · accepts ${s.positivePassed??0}/${s.counts?.valid??0} valid · blocks ${s.negativeBlocked??0}/${s.counts?.invalid??0} invalid · ${s.points??0} points / ${s.values??0} values across orientations · ${s.componentCount??1} component${s.componentCount>1?'s':''}. Pair marks: blue rings agree, red rings conflict. Hover for values; * is free. Orange: changed values.`:'Awaiting the first label.';
+  this.detail.textContent=s?.redundant?`${s.negativeBlocked} proved pair orbits encoded · ${s.counts?.unresolved??0} unresolved orbits allowed · ${s.points} points / ${s.values} values · ${s.componentCount} components. Every mismatch encodes a proved impossible pose. Rotations permute components; missing values remain free.`:s?`${s.accepted?'Validated':'Provisional'} · accepts ${s.positivePassed??0}/${s.counts?.valid??0} valid · blocks ${s.negativeBlocked??0}/${s.counts?.invalid??0} invalid · ${s.points??0} points / ${s.values??0} values across orientations · ${s.componentCount??1} component${s.componentCount>1?'s':''}. Pair marks: blue rings agree, red rings conflict. Hover for values; * is free. Orange: changed values.`:'Awaiting the first label.';
   if(this.meta)this.meta.textContent=s?`${s.accepted?'Validated':'Provisional'} · ${s.points??0} points · ${s.values??0} values`:'Awaiting labels';
   this.updatePairDetail();this.draw();
  }
@@ -138,7 +148,7 @@ export class MarkingPreview {
   const oi=+this.select.value,o=this.model.orientations[oi],domain=this.domains[oi];
   const right=this.map(domain.map(m=>m.pos),this.compact?10:410,this.compact?380:375),componentCount=this.snapshot?.componentCount??1,field=markingVectors(this.snapshot?.fields?.[oi]??[],componentCount);
   this.geometry(o,[0,0,0],right,true);
-  for(const m of domain){const [x,y]=right(m.pos),values=field.get(m.pos.join())??Array(componentCount).fill('*'),value=values.find(v=>v!=='*')??'*',changed=values.some((_,c)=>this.changed.has(`${oi}:${m.pos}|${c}`));ctx.beginPath();ctx.arc(x,y,changed?5:value==='*'?2:3.5,0,2*Math.PI);ctx.fillStyle=changed?'#e39931':value==='*'?'#9cafaa':`hsl(${value*137.5%360} 60% 40%)`;ctx.fill();this.hits.push({x,y,pos:m.pos,value,values,side:'marking',text:`(${m.pos})  m=(${values.join(', ')})`});}
+  for(const m of domain){const [x,y]=right(m.pos),values=field.get(m.pos.join())??Array(componentCount).fill('*'),selected=this.componentSelect.value!=='all'&&this.componentSelect.value!==''?+this.componentSelect.value:null,value=selected===null?values.find(v=>v!=='*')??'*':values[selected]??'*',changed=selected===null?values.some((_,c)=>this.changed.has(`${oi}:${m.pos}|${c}`)):this.changed.has(`${oi}:${m.pos}|${selected}`);ctx.beginPath();ctx.arc(x,y,changed?5:value==='*'?2:3.5,0,2*Math.PI);ctx.fillStyle=changed?'#e39931':value==='*'?'#9cafaa':`hsl(${value*137.5%360} 60% 40%)`;ctx.fill();this.hits.push({x,y,pos:m.pos,value,values,side:'marking',text:selected!==null?`(${m.pos}) component ${selected}: ${value}`:componentCount>8?`(${m.pos}) ${values.filter(v=>v!=='*').length} assigned components; choose one to inspect`:`(${m.pos})  m=(${values.join(', ')})`});}
   if(!this.compact){ctx.strokeStyle='#d5e1d9';ctx.beginPath();ctx.moveTo(400,35);ctx.lineTo(400,286);ctx.stroke();}
   if(this.hover) {
    const hit=this.hits.filter(h=>Math.hypot(h.x-this.hover.x,h.y-this.hover.y)<9).sort((a,b)=>Number(b.conflict??false)-Number(a.conflict??false)||Math.hypot(a.x-this.hover.x,a.y-this.hover.y)-Math.hypot(b.x-this.hover.x,b.y-this.hover.y))[0];

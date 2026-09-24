@@ -9,7 +9,7 @@ export function matching3DMarkings(model,storage){
  }catch{return [];}
 }
 export function remember3DMarking(model,marking,storage){
- if(!marking?.accepted)return marking;
+ if(!marking?.accepted||marking.fallback)return marking;
  if(marking.saved)return marking;
  const now=new Date(),pad=n=>String(n).padStart(2,'0'),name=`${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())} · ${marking.points} points · ${marking.values} values`;
  const saved={...marking,saved:{id:globalThis.crypto.randomUUID(),name,createdAt:now.toISOString(),persisted:false}};
