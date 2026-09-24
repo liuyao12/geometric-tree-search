@@ -1,0 +1,1349 @@
+{
+  "target": "Fixed XY root, integer translations, three planar orientations; full face/edge/vertex two-corona. Outer tiles acquire no extra surround.",
+  "ordinaryGlucose": {
+    "seconds": 26.263628005981445,
+    "restarts": 1788,
+    "conflicts": 428651,
+    "decisions": 737896,
+    "propagations": 80102774,
+    "status": "UNSAT"
+  },
+  "placementOnlyLearning": {
+    "status": "UNSAT",
+    "conflicts": 2208953,
+    "decisions": 2782305,
+    "learnedPatterns": 2208952,
+    "atoms": 26667873,
+    "seconds": 54.3502
+  },
+  "geometricPropagation": {
+    "status": "UNSAT",
+    "conflicts": 3177278,
+    "decisions": 3998897,
+    "learnedPatterns": 3177277,
+    "atoms": 34893205,
+    "geometricUnits": 1423533,
+    "geometricConflicts": 13726,
+    "geometricTouches": 15893924208,
+    "seconds": 113.667
+  },
+  "portableReproduction": {
+    "status": "UNSAT",
+    "conflicts": 3177278,
+    "decisions": 3998897,
+    "learnedPatterns": 3177277,
+    "atoms": 34893205,
+    "geometricUnits": 1423533,
+    "geometricConflicts": 13726,
+    "geometricTouches": 15893924208,
+    "geometricOrbitPatterns": 0,
+    "seconds": 107.129,
+    "selected": []
+  },
+  "reproductionProofByteIdentical": true,
+  "symmetryExpansion": {
+    "conflicts": 1600000,
+    "learnedPatterns": 25599264,
+    "seconds": 385.773,
+    "status": "unknown",
+    "reason": "Stopped after the requested 300-second budget overran; native Glucose interruption was only polled between search phases.",
+    "proofComplete": false
+  },
+  "rankTrials": [
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 3,
+      "action": "trivial",
+      "alphabetSize": 5,
+      "prototypeSlots": 192,
+      "independentMemberships": 30,
+      "variables": 200,
+      "clauses": 430,
+      "buildSeconds": 0.0025310516357421875,
+      "seconds": 0.0034732818603515625,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 0,
+        "conflicts": 0,
+        "decisions": 0,
+        "propagations": 0
+      }
+    },
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 5,
+      "action": "trivial",
+      "alphabetSize": 5,
+      "prototypeSlots": 648,
+      "independentMemberships": 90,
+      "variables": 2094,
+      "clauses": 6162,
+      "buildSeconds": 0.00814199447631836,
+      "seconds": 0.009620189666748047,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 0,
+        "decisions": 1589,
+        "propagations": 2095
+      },
+      "nonwildcardSlots": 648,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 7,
+      "action": "trivial",
+      "alphabetSize": 5,
+      "prototypeSlots": 1536,
+      "independentMemberships": 200,
+      "variables": 8085,
+      "clauses": 25944,
+      "buildSeconds": 0.02065300941467285,
+      "seconds": 0.026448965072631836,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 0,
+        "decisions": 6392,
+        "propagations": 8086
+      },
+      "nonwildcardSlots": 1536,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 3,
+      "action": "sign",
+      "alphabetSize": 5,
+      "prototypeSlots": 192,
+      "independentMemberships": 22,
+      "variables": 292,
+      "clauses": 670,
+      "buildSeconds": 0.0023360252380371094,
+      "seconds": 0.0025930404663085938,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 0,
+        "conflicts": 0,
+        "decisions": 0,
+        "propagations": 0
+      }
+    },
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 5,
+      "action": "sign",
+      "alphabetSize": 5,
+      "prototypeSlots": 648,
+      "independentMemberships": 72,
+      "variables": 2971,
+      "clauses": 8826,
+      "buildSeconds": 0.00865626335144043,
+      "seconds": 0.01098322868347168,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 37,
+        "decisions": 3860,
+        "propagations": 10967
+      },
+      "nonwildcardSlots": 360,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "free",
+      "rank": 1,
+      "extentHalfUnits": 7,
+      "action": "sign",
+      "alphabetSize": 5,
+      "prototypeSlots": 1536,
+      "independentMemberships": 168,
+      "variables": 9703,
+      "clauses": 31024,
+      "buildSeconds": 0.02250504493713379,
+      "seconds": 0.03051614761352539,
+      "status": "SAT",
+      "stats": {
+        "restarts": 2,
+        "conflicts": 114,
+        "decisions": 18686,
+        "propagations": 59341
+      },
+      "nonwildcardSlots": 888,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "free",
+      "rank": 3,
+      "extentHalfUnits": 3,
+      "action": "standard",
+      "alphabetSize": 27,
+      "prototypeSlots": 192,
+      "independentMemberships": 126,
+      "variables": 9009,
+      "clauses": 15423,
+      "buildSeconds": 0.009829044342041016,
+      "seconds": 0.01317906379699707,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 0,
+        "conflicts": 0,
+        "decisions": 0,
+        "propagations": 0
+      }
+    },
+    {
+      "anchorMode": "free",
+      "rank": 3,
+      "extentHalfUnits": 5,
+      "action": "standard",
+      "alphabetSize": 27,
+      "prototypeSlots": 648,
+      "independentMemberships": 405,
+      "variables": 33693,
+      "clauses": 74349,
+      "buildSeconds": 0.03768515586853027,
+      "seconds": 0.05424904823303223,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 2,
+        "decisions": 31920,
+        "propagations": 34095
+      },
+      "nonwildcardSlots": 648,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "free",
+      "rank": 3,
+      "extentHalfUnits": 7,
+      "action": "standard",
+      "alphabetSize": 27,
+      "prototypeSlots": 1536,
+      "independentMemberships": 936,
+      "variables": 80544,
+      "clauses": 204095,
+      "buildSeconds": 0.09517621994018555,
+      "seconds": 0.14061999320983887,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 1,
+        "decisions": 76821,
+        "propagations": 80838
+      },
+      "nonwildcardSlots": 1536,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 1,
+      "extentHalfUnits": 5,
+      "action": "trivial",
+      "alphabetSize": 5,
+      "prototypeSlots": 648,
+      "independentMemberships": 90,
+      "variables": 2071,
+      "clauses": 6047,
+      "buildSeconds": 0.008162975311279297,
+      "seconds": 0.00963282585144043,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 14,
+        "decisions": 943,
+        "propagations": 3079
+      }
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 1,
+      "extentHalfUnits": 7,
+      "action": "trivial",
+      "alphabetSize": 5,
+      "prototypeSlots": 1536,
+      "independentMemberships": 200,
+      "variables": 7966,
+      "clauses": 25349,
+      "buildSeconds": 0.022142887115478516,
+      "seconds": 0.02754497528076172,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 12,
+        "decisions": 854,
+        "propagations": 4195
+      }
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 1,
+      "extentHalfUnits": 5,
+      "action": "sign",
+      "alphabetSize": 5,
+      "prototypeSlots": 648,
+      "independentMemberships": 72,
+      "variables": 2948,
+      "clauses": 8711,
+      "buildSeconds": 0.008432149887084961,
+      "seconds": 0.01041412353515625,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 18,
+        "decisions": 403,
+        "propagations": 3226
+      }
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 1,
+      "extentHalfUnits": 7,
+      "action": "sign",
+      "alphabetSize": 5,
+      "prototypeSlots": 1536,
+      "independentMemberships": 168,
+      "variables": 9584,
+      "clauses": 30429,
+      "buildSeconds": 0.0212552547454834,
+      "seconds": 0.027570247650146484,
+      "status": "UNSAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 12,
+        "decisions": 326,
+        "propagations": 4889
+      }
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 3,
+      "extentHalfUnits": 5,
+      "action": "standard",
+      "alphabetSize": 27,
+      "prototypeSlots": 648,
+      "independentMemberships": 405,
+      "variables": 33670,
+      "clauses": 73728,
+      "buildSeconds": 0.03755784034729004,
+      "seconds": 0.054567813873291016,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 6,
+        "decisions": 83635,
+        "propagations": 107684
+      },
+      "nonwildcardSlots": 648,
+      "emptySlots": 0
+    },
+    {
+      "anchorMode": "gap",
+      "rank": 3,
+      "extentHalfUnits": 7,
+      "action": "standard",
+      "alphabetSize": 27,
+      "prototypeSlots": 1536,
+      "independentMemberships": 936,
+      "variables": 80425,
+      "clauses": 200882,
+      "buildSeconds": 0.09486603736877441,
+      "seconds": 0.13989686965942383,
+      "status": "SAT",
+      "stats": {
+        "restarts": 1,
+        "conflicts": 8,
+        "decisions": 103173,
+        "propagations": 135812
+      },
+      "nonwildcardSlots": 1536,
+      "emptySlots": 0
+    }
+  ],
+  "rankPairTests": [
+    {
+      "source": "free-1-sign-5.json",
+      "rank": 1,
+      "action": "sign",
+      "extent": 5,
+      "examinedPairs": 686,
+      "rejectedPairs": 0,
+      "examples": []
+    },
+    {
+      "source": "free-1-sign-7.json",
+      "rank": 1,
+      "action": "sign",
+      "extent": 7,
+      "examinedPairs": 686,
+      "rejectedPairs": 0,
+      "examples": []
+    },
+    {
+      "source": "free-1-trivial-5.json",
+      "rank": 1,
+      "action": "trivial",
+      "extent": 5,
+      "examinedPairs": 686,
+      "rejectedPairs": 288,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            0
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            -2
+          ],
+          "at": [
+            -5,
+            -3,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            0
+          ],
+          "at": [
+            -5,
+            -3,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            2
+          ],
+          "at": [
+            -5,
+            -3,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "source": "free-1-trivial-7.json",
+      "rank": 1,
+      "action": "trivial",
+      "extent": 7,
+      "examinedPairs": 686,
+      "rejectedPairs": 456,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            0
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            -2
+          ],
+          "at": [
+            -7,
+            7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            2
+          ],
+          "at": [
+            -7,
+            7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        }
+      ]
+    },
+    {
+      "source": "free-3-standard-5.json",
+      "rank": 3,
+      "action": "standard",
+      "extent": 5,
+      "examinedPairs": 686,
+      "rejectedPairs": 288,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            0
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            -2
+          ],
+          "at": [
+            -5,
+            -3,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            0
+          ],
+          "at": [
+            -5,
+            -3,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            2
+          ],
+          "at": [
+            -5,
+            -3,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "source": "free-3-standard-7.json",
+      "rank": 3,
+      "action": "standard",
+      "extent": 7,
+      "examinedPairs": 686,
+      "rejectedPairs": 456,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            -2,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            0
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            0,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            -2
+          ],
+          "at": [
+            -7,
+            7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -10,
+            2,
+            2
+          ],
+          "at": [
+            -7,
+            7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -8,
+            0,
+            2
+          ],
+          "at": [
+            -7,
+            -7,
+            3
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            -6,
+            -2
+          ],
+          "at": [
+            -7,
+            -7,
+            -3
+          ]
+        }
+      ]
+    },
+    {
+      "source": "gap-3-standard-5.json",
+      "rank": 3,
+      "action": "standard",
+      "extent": 5,
+      "examinedPairs": 686,
+      "rejectedPairs": 40,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -4,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -4,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -6,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -6,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -4,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -4,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            4,
+            -2
+          ],
+          "at": [
+            -5,
+            -1,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            4,
+            2
+          ],
+          "at": [
+            -5,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "source": "gap-3-standard-7.json",
+      "rank": 3,
+      "action": "standard",
+      "extent": 7,
+      "examinedPairs": 686,
+      "rejectedPairs": 168,
+      "examples": [
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -6,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -4,
+            0,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            -4,
+            0,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -6,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -6,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -4,
+            -2
+          ],
+          "at": [
+            -5,
+            -5,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            -4,
+            2
+          ],
+          "at": [
+            -5,
+            -5,
+            1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            4,
+            -2
+          ],
+          "at": [
+            -5,
+            -1,
+            -1
+          ]
+        },
+        {
+          "oi": 0,
+          "translation": [
+            0,
+            4,
+            2
+          ],
+          "at": [
+            -5,
+            -1,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "rankPairFrontierTests": [
+    {
+      "source": "free-1-trivial-5.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -10,
+          -2,
+          -2
+        ],
+        "at": [
+          -5,
+          -5,
+          -1
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 41
+    },
+    {
+      "source": "free-1-trivial-7.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -10,
+          -2,
+          -2
+        ],
+        "at": [
+          -7,
+          -7,
+          -3
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 41
+    },
+    {
+      "source": "free-3-standard-5.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -10,
+          -2,
+          -2
+        ],
+        "at": [
+          -5,
+          -5,
+          -1
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 41
+    },
+    {
+      "source": "free-3-standard-7.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -10,
+          -2,
+          -2
+        ],
+        "at": [
+          -7,
+          -7,
+          -3
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 41
+    },
+    {
+      "source": "gap-3-standard-5.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -6,
+          0,
+          -2
+        ],
+        "at": [
+          -5,
+          -5,
+          -1
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 28
+    },
+    {
+      "source": "gap-3-standard-7.json",
+      "example": {
+        "oi": 0,
+        "translation": [
+          -6,
+          0,
+          -2
+        ],
+        "at": [
+          -5,
+          -5,
+          -1
+        ]
+      },
+      "unmarkedStatus": "branch",
+      "forced": 0,
+      "minimumDegree": 28
+    }
+  ],
+  "host": "arm64",
+  "timingNote": "Single exploratory runs on the same host. Solver policies and propagation orders differ; these are not isolated rank or geometry speedup measurements.",
+  "scope": "Specialized CDCL hybrid. Learned nonunit constraints compile to rooted affine-anchor counters; base clauses and proof reasons remain. No low-rank or standalone reference-GCTS claim."
+}

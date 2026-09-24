@@ -1,0 +1,3 @@
+import fs from 'node:fs';import {coldNonacubeModel,forcedClosure} from '../../apps/3d-lattice-tiler/nonacube-cold-search.js';
+const rows=fs.readFileSync(process.argv[2],'utf8').trim().split('\n').map(JSON.parse),out=[];
+for(const row of rows){if(!row.examples.length)continue;const example=row.examples[0],r=forcedClosure(coldNonacubeModel(),[{oi:0,translation:[0,0,0]},{oi:example.oi,translation:example.translation}]);out.push({source:row.source,example,unmarkedStatus:r.status,forced:r.forced.length,minimumDegree:Math.min(...r.summary.points.map(p=>p.degree))});}console.log(JSON.stringify(out));

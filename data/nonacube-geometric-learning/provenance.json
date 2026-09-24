@@ -1,0 +1,26 @@
+{
+  "pysatCommit": "152884a6d1889f56a61049aaa773be23f0a8d8c1",
+  "dratTrimCommit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+  "proofReproduction": "Byte-for-byte equality between original geometric run and portable patched-source run.",
+  "sha256": {
+    "scripts/geometric-nonacube/build.py": "35320fc0b014dba039707940f65979c69fdfc62f16ad7f058c872ce169d70940",
+    "scripts/geometric-nonacube/solve.cc": "1ad98430a061b918f1e02ce8446645f955c6549e05bb95953db58978409576c8",
+    "scripts/geometric-nonacube/baseline.py": "dbd1bbc627a81f63e68d1f755e084055e3e9fce9d717774cd893cb83b17cf0d9",
+    "scripts/geometric-nonacube/rank-pairs.py": "89ad1cedbf404071f7025856dddfe199ab771f5309587299478fca59c997f9ff",
+    "scripts/geometric-nonacube/rank-pair-viability.mjs": "255c7983191b884335fc728680d03cc557106580a4a137ceb5a461c636d33b0b",
+    "scripts/geometric-nonacube/test.py": "55df14610cb0465e7d185404c340ae08e97f3e2efc255c1e95f0fe39eb12b9ce",
+    "scripts/geometric-nonacube/rank-trials.py": "756fe76162bd532b231b8209c6c0618fcdfd1f9fe270e3b65202e683a023202f",
+    "scripts/geometric-nonacube/README.md": "bcf8417148cb6c98bec9f3a142ed3cd5c2f4dd6899ad5b6a78c3e6779d8bde03",
+    "scripts/geometric-nonacube/verify.py": "456d936065f64cd92da458d94826661196577f399fa156bb7bb1617bc84150c1",
+    "scripts/geometric-nonacube/glucose-anchor.patch": "ae4a1f81b83aef8fa100269de7d3fa456b91941aaca14c82fad1c8526b00609d",
+    "data/nonacube-geometric-learning/problem.cnf.gz": "71611f022d7d40594ca17024d9c1b4e2ec78fe5a0175549a3c72fb7ef69c6e23",
+    "data/nonacube-geometric-learning/anchor-proof.drup.gz": "7ed29e1e4e93cc9185bd992722d2106b806cd0ebd1741f1feba940450a4cd3cf"
+  },
+  "checks": {
+    "patchRecreatesTestedSourcesExactly": true,
+    "budgetPollingReturnsUnknown": true,
+    "desktopAndMobileBrowserErrors": 0,
+    "viewerPatternCount": 11,
+    "viewerSubsetChecks": 32
+  }
+}
