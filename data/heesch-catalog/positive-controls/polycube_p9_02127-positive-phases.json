@@ -1,0 +1,15 @@
+{
+  "id": "polycube_p9_02127",
+  "k": 2,
+  "solver": "Glucose3",
+  "variant": "All placement phases prefer selected; no motif or constraints supplied",
+  "budgetSeconds": 60,
+  "status": "unknown",
+  "seconds": 60.056768333073705,
+  "stats": {
+    "restarts": 1504,
+    "conflicts": 355520,
+    "decisions": 4222207,
+    "propagations": 702728821
+  }
+}

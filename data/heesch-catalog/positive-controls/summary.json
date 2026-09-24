@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-24",
+  "expected": "Both known periodic tilers have infinite lattice Heesch number and must admit two coronas.",
+  "completePatchesAccepted": 24,
+  "incompleteFixedPatchesRejected": 48,
+  "blindRuns": [
+    {
+      "file": "data/heesch-catalog/positive-controls/polycube_p9_02127-blind.json",
+      "id": "polycube_p9_02127",
+      "status": "unknown",
+      "budgetSeconds": 180
+    },
+    {
+      "file": "data/heesch-catalog/positive-controls/polycube_p9_02127-cadical-blind.json",
+      "id": "polycube_p9_02127",
+      "status": "unknown",
+      "budgetSeconds": 120
+    },
+    {
+      "file": "data/heesch-catalog/positive-controls/polycube_p9_02127-positive-phases.json",
+      "id": "polycube_p9_02127",
+      "status": "unknown",
+      "budgetSeconds": 60
+    },
+    {
+      "file": "data/heesch-catalog/positive-controls/polycube_p9_24025-blind.json",
+      "id": "polycube_p9_24025",
+      "status": "unknown",
+      "budgetSeconds": 180
+    },
+    {
+      "file": "data/heesch-catalog/positive-controls/polycube_p9_24025-cadical-blind.json",
+      "id": "polycube_p9_24025",
+      "status": "unknown",
+      "budgetSeconds": 120
+    }
+  ],
+  "blindSAT": 0,
+  "blindUNSAT": 0,
+  "blindUnknown": 5,
+  "conclusion": "Known-witness model checks pass; no blind search found a two-corona patch within these budgets. This does not independently certify the nonacube encoding for all configurations.",
+  "originalEncoderSHA256": "fd9a1f4984958fb8e792f35bff43337b9409a25e69d89ba6c71fbfe80c618540",
+  "python": "3.12.14",
+  "pythonSAT": "1.9.dev5"
+}

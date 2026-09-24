@@ -312,3 +312,73 @@ source paths, commit, hashes, catalog mappings, and checks are recorded in
 ```sh
 python3 scripts/heesch-catalog/verify_papoutsis.py
 ```
+
+
+## Positive controls for the corona encoding
+
+The user's concern is whether the reduction tests the intended geometric
+problem. Two published twelve-copy periodic tilers, p9-02127 and p9-24025,
+therefore serve as positive controls. Their true lattice Heesch numbers are
+\(H=\infty\). They are deliberately tested despite exclusion from the
+potential-non-tiler classification table.
+
+`positive_control_search.py` imports the original
+`search-nonacube-two-corona.py`, replaces only its `SHAPES` table, and runs a
+blind two-corona Glucose search. It supplies no periodic motif, preselected
+tiles, or learned constraints. Geometry is normalized with all proper cubic
+rotations. A three-minute cutoff remains unknown, never non-tiling.
+`positive_control_cadical.py` runs a second blind engine on the same original
+encoder with a two-minute budget and bounded conflict batches. It also
+supplies no periodic motif.
+
+`positive_control_witnesses.py` performs a separate constructive test. For each
+of the twelve possible motif root roles, it transforms the entire periodic
+tiling so that the root matches the encoder's canonical prototype. Exact
+residue lookup identifies the tile covering any integer voxel without using
+a guessed finite translation box. It forms the first and second touching
+layers using unit-cube vertices and all incident voxel sectors, independently
+of the encoder's halo function. It verifies shape congruence, nonoverlap,
+root surround, and surround of every first-layer tile directly.
+
+Every extracted placement must occur in the encoder's candidate universe.
+All placement variables, selected and unselected, are fixed to that patch;
+only cardinality auxiliaries remain free. The returned assignment must satisfy
+every clause. Thus this test confirms that actual geometric coronas are
+representable in the SAT formula. It is not counted as a blind search success.
+For each root, two negative controls fix the same patch after deleting a
+first-layer tile or a second-layer tile. Both must be rejected. The second
+case specifically checks that first-layer boundary coverage is required.
+
+The original nonacube and later catalog encoders produce byte-identical clause
+lists for these controls. Formula hashes also connect the blind search to the
+witness tests. Source hashes and complete receipts are archived. Control runs
+may overlap with verification work, so their elapsed times are not performance
+comparisons with the earlier sequential benchmarks.
+
+```sh
+python scripts/heesch-catalog/positive_control_search.py --seconds 180
+python scripts/heesch-catalog/positive_control_cadical.py --seconds 120
+python scripts/heesch-catalog/positive_control_phases.py
+python scripts/heesch-catalog/positive_control_witnesses.py
+```
+
+Passing finite positive controls strengthens confidence in the reduction; it
+does not independently prove completeness for the nonacube. In particular,
+we distinguish a search that finds its own witness, acceptance of a supplied
+known witness, and an undecided search.
+
+An additional sixty-second Glucose run on p9-02127 prefers the positive phase
+for every placement variable. This changes search order only; it supplies no
+motif and adds no restrictions. Its separate result is retained regardless of
+outcome.
+
+### Recorded outcome
+
+All 24 complete extracted patches are accepted, and all 48 incomplete fixed
+patches are rejected. The blind Glucose searches both remain unknown after
+180 seconds; the blind CaDiCaL searches both remain unknown after 120 seconds;
+the additional positive-phase Glucose attempt remains unknown after 60 seconds.
+No blind attempt returned SAT or UNSAT. Therefore the tests pass known-witness
+acceptance and boundary enforcement, but do not report successful blind
+reproduction of the hard positive controls. No Heesch classification changes
+on the basis of these cutoffs.

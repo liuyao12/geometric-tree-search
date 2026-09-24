@@ -1,0 +1,24 @@
+{
+  "id": "polycube_p9_02127",
+  "k": 2,
+  "engine": "Original nonacube two-corona encoder, with only SHAPES replaced",
+  "motifSuppliedToSearch": false,
+  "budgetSeconds": 180,
+  "status": "unknown",
+  "buildSeconds": 0.8562790830619633,
+  "searchSeconds": 180.03759612469003,
+  "stats": {
+    "restarts": 4552,
+    "conflicts": 989770,
+    "decisions": 11698346,
+    "propagations": 2016275118
+  },
+  "problem": {
+    "firstCandidates": 2198,
+    "totalCandidates": 33252,
+    "variables": 326708,
+    "clauses": 1046464,
+    "preparationMs": 852.8789998963475
+  },
+  "formulaSHA256": "3b0021eca4a6dff8afd89ae85add2f06f803ee569040c30a01c9a3a7fb7210a2"
+}

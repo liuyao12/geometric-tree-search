@@ -43,5 +43,15 @@ for d in ['benchmarks','benchmarks-k2']:
  p=F/d/'summary.json'
  if p.exists():benchmarks.extend(read(p)['results'])
 rows.sort(key=lambda r:(r['exact'] is None,r['exact'] if r['exact'] is not None else -r['lower'],r['name']))
-result={'date':'2026-09-24','externalSourceAudit':'data/heesch-catalog/papoutsis/audit.json','scope':'Potential non-tilers only. Known space-fillers and periodic controls excluded; aliases consolidated.','newlyCertifiedPeriodic':[read(p) for p in sorted((F/'periodic').glob('*.json')) if read(p).get('verified')],'rows':rows,'benchmarks':benchmarks,'counts':{'candidates':len(rows),'finite':sum(r['exact'] is not None for r in rows),'zero':sum(r['exact']==0 for r in rows),'one':sum(r['exact']==1 for r in rows),'unresolved':sum(r['exact'] is None for r in rows)}}
+controls=[]
+cp=F/'positive-controls/periodic-witness-checks.json'
+if cp.exists():
+ for r in read(cp):
+  control=dict(r)
+  for lane,suffix in [('blindGlucose','-blind.json'),('blindCadical','-cadical-blind.json'),('positivePhases','-positive-phases.json')]:
+   p=cp.parent/(r['id']+suffix)
+   if p.exists():control[lane]={key:v for key,v in read(p).items() if key!='witness'}
+  control['witnessFile']='data/heesch-catalog/positive-controls/'+r['id']+'-periodic-coronas.json'
+  controls.append(control)
+result={'date':'2026-09-24','externalSourceAudit':'data/heesch-catalog/papoutsis/audit.json','scope':'Potential non-tilers only. Known space-fillers and periodic controls excluded; aliases consolidated.','newlyCertifiedPeriodic':[read(p) for p in sorted((F/'periodic').glob('*.json')) if read(p).get('verified')],'rows':rows,'positiveControls':controls,'benchmarks':benchmarks,'counts':{'candidates':len(rows),'finite':sum(r['exact'] is not None for r in rows),'zero':sum(r['exact']==0 for r in rows),'one':sum(r['exact']==1 for r in rows),'unresolved':sum(r['exact'] is None for r in rows)}}
 (F/'study.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result['counts']))

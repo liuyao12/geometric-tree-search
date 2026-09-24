@@ -2715,6 +2715,387 @@
       "runs": []
     }
   ],
+  "positiveControls": [
+    {
+      "id": "polycube_p9_02127",
+      "motifCopies": 12,
+      "sourceCertificate": "data/heesch-catalog/papoutsis/solution_01345.json",
+      "allRootRolesChecked": 12,
+      "sameClausesInOriginalAndGenericEncoder": true,
+      "formulaSHA256": "3b0021eca4a6dff8afd89ae85add2f06f803ee569040c30a01c9a3a7fb7210a2",
+      "results": [
+        {
+          "rootMotifRole": 0,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 27,
+          "secondLayerTiles": 158,
+          "totalTiles": 186,
+          "coveredVoxels": 1674
+        },
+        {
+          "rootMotifRole": 1,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 27,
+          "secondLayerTiles": 158,
+          "totalTiles": 186,
+          "coveredVoxels": 1674
+        },
+        {
+          "rootMotifRole": 2,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 152,
+          "totalTiles": 177,
+          "coveredVoxels": 1593
+        },
+        {
+          "rootMotifRole": 3,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 154,
+          "totalTiles": 179,
+          "coveredVoxels": 1611
+        },
+        {
+          "rootMotifRole": 4,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 154,
+          "totalTiles": 179,
+          "coveredVoxels": 1611
+        },
+        {
+          "rootMotifRole": 5,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 152,
+          "totalTiles": 177,
+          "coveredVoxels": 1593
+        },
+        {
+          "rootMotifRole": 6,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 154,
+          "totalTiles": 179,
+          "coveredVoxels": 1611
+        },
+        {
+          "rootMotifRole": 7,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 154,
+          "totalTiles": 179,
+          "coveredVoxels": 1611
+        },
+        {
+          "rootMotifRole": 8,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 27,
+          "secondLayerTiles": 158,
+          "totalTiles": 186,
+          "coveredVoxels": 1674
+        },
+        {
+          "rootMotifRole": 9,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 27,
+          "secondLayerTiles": 158,
+          "totalTiles": 186,
+          "coveredVoxels": 1674
+        },
+        {
+          "rootMotifRole": 10,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 152,
+          "totalTiles": 177,
+          "coveredVoxels": 1593
+        },
+        {
+          "rootMotifRole": 11,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 152,
+          "totalTiles": 177,
+          "coveredVoxels": 1593
+        }
+      ],
+      "blindGlucose": {
+        "id": "polycube_p9_02127",
+        "k": 2,
+        "engine": "Original nonacube two-corona encoder, with only SHAPES replaced",
+        "motifSuppliedToSearch": false,
+        "budgetSeconds": 180,
+        "status": "unknown",
+        "buildSeconds": 0.8562790830619633,
+        "searchSeconds": 180.03759612469003,
+        "stats": {
+          "restarts": 4552,
+          "conflicts": 989770,
+          "decisions": 11698346,
+          "propagations": 2016275118
+        },
+        "problem": {
+          "firstCandidates": 2198,
+          "totalCandidates": 33252,
+          "variables": 326708,
+          "clauses": 1046464,
+          "preparationMs": 852.8789998963475
+        },
+        "formulaSHA256": "3b0021eca4a6dff8afd89ae85add2f06f803ee569040c30a01c9a3a7fb7210a2"
+      },
+      "blindCadical": {
+        "id": "polycube_p9_02127",
+        "k": 2,
+        "solver": "Cadical195",
+        "budgetSeconds": 120,
+        "motifSuppliedToSearch": false,
+        "status": "unknown",
+        "searchAndSetupSeconds": 120.02244679071009,
+        "stats": {
+          "restarts": 10667,
+          "conflicts": 576267,
+          "decisions": 3568861,
+          "propagations": 1083344116
+        }
+      },
+      "positivePhases": {
+        "id": "polycube_p9_02127",
+        "k": 2,
+        "solver": "Glucose3",
+        "variant": "All placement phases prefer selected; no motif or constraints supplied",
+        "budgetSeconds": 60,
+        "status": "unknown",
+        "seconds": 60.056768333073705,
+        "stats": {
+          "restarts": 1504,
+          "conflicts": 355520,
+          "decisions": 4222207,
+          "propagations": 702728821
+        }
+      },
+      "witnessFile": "data/heesch-catalog/positive-controls/polycube_p9_02127-periodic-coronas.json"
+    },
+    {
+      "id": "polycube_p9_24025",
+      "motifCopies": 12,
+      "sourceCertificate": "data/heesch-catalog/papoutsis/solution_12982.json",
+      "allRootRolesChecked": 12,
+      "sameClausesInOriginalAndGenericEncoder": true,
+      "formulaSHA256": "f8558c2843d626597190d7b86d3f9a8dd79c436f769780bf43b2c76f793b6aa8",
+      "results": [
+        {
+          "rootMotifRole": 0,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 25,
+          "secondLayerTiles": 105,
+          "totalTiles": 131,
+          "coveredVoxels": 1179
+        },
+        {
+          "rootMotifRole": 1,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 26,
+          "secondLayerTiles": 112,
+          "totalTiles": 139,
+          "coveredVoxels": 1251
+        },
+        {
+          "rootMotifRole": 2,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 103,
+          "totalTiles": 128,
+          "coveredVoxels": 1152
+        },
+        {
+          "rootMotifRole": 3,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 23,
+          "secondLayerTiles": 103,
+          "totalTiles": 127,
+          "coveredVoxels": 1143
+        },
+        {
+          "rootMotifRole": 4,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 23,
+          "secondLayerTiles": 102,
+          "totalTiles": 126,
+          "coveredVoxels": 1134
+        },
+        {
+          "rootMotifRole": 5,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 25,
+          "secondLayerTiles": 109,
+          "totalTiles": 135,
+          "coveredVoxels": 1215
+        },
+        {
+          "rootMotifRole": 6,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 25,
+          "secondLayerTiles": 109,
+          "totalTiles": 135,
+          "coveredVoxels": 1215
+        },
+        {
+          "rootMotifRole": 7,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 23,
+          "secondLayerTiles": 102,
+          "totalTiles": 126,
+          "coveredVoxels": 1134
+        },
+        {
+          "rootMotifRole": 8,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 24,
+          "secondLayerTiles": 103,
+          "totalTiles": 128,
+          "coveredVoxels": 1152
+        },
+        {
+          "rootMotifRole": 9,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 23,
+          "secondLayerTiles": 103,
+          "totalTiles": 127,
+          "coveredVoxels": 1143
+        },
+        {
+          "rootMotifRole": 10,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 26,
+          "secondLayerTiles": 112,
+          "totalTiles": 139,
+          "coveredVoxels": 1251
+        },
+        {
+          "rootMotifRole": 11,
+          "formulaAccepts": true,
+          "allClausesChecked": true,
+          "missingFirstLayerTileRejected": true,
+          "missingSecondLayerTileRejected": true,
+          "firstLayerTiles": 25,
+          "secondLayerTiles": 105,
+          "totalTiles": 131,
+          "coveredVoxels": 1179
+        }
+      ],
+      "blindGlucose": {
+        "id": "polycube_p9_24025",
+        "k": 2,
+        "engine": "Original nonacube two-corona encoder, with only SHAPES replaced",
+        "motifSuppliedToSearch": false,
+        "budgetSeconds": 180,
+        "status": "unknown",
+        "buildSeconds": 2.2928043748252094,
+        "searchSeconds": 180.04168591601774,
+        "stats": {
+          "restarts": 2184,
+          "conflicts": 430446,
+          "decisions": 5094344,
+          "propagations": 880396998
+        },
+        "problem": {
+          "firstCandidates": 4400,
+          "totalCandidates": 58424,
+          "variables": 579510,
+          "clauses": 1908100,
+          "preparationMs": 2274.4647921063006
+        },
+        "formulaSHA256": "f8558c2843d626597190d7b86d3f9a8dd79c436f769780bf43b2c76f793b6aa8"
+      },
+      "blindCadical": {
+        "id": "polycube_p9_24025",
+        "k": 2,
+        "solver": "Cadical195",
+        "budgetSeconds": 120,
+        "motifSuppliedToSearch": false,
+        "status": "unknown",
+        "searchAndSetupSeconds": 120.09313666587695,
+        "stats": {
+          "restarts": 4884,
+          "conflicts": 294241,
+          "decisions": 1729805,
+          "propagations": 760883092
+        }
+      },
+      "witnessFile": "data/heesch-catalog/positive-controls/polycube_p9_24025-periodic-coronas.json"
+    }
+  ],
   "benchmarks": [
     {
       "id": "polycube_p10_052670",

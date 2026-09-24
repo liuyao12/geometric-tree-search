@@ -1,0 +1,15 @@
+{
+  "id": "polycube_p9_02127",
+  "k": 2,
+  "solver": "Cadical195",
+  "budgetSeconds": 120,
+  "motifSuppliedToSearch": false,
+  "status": "unknown",
+  "searchAndSetupSeconds": 120.02244679071009,
+  "stats": {
+    "restarts": 10667,
+    "conflicts": 576267,
+    "decisions": 3568861,
+    "propagations": 1083344116
+  }
+}

@@ -17,3 +17,17 @@ const seconds=x=>x<.001?'< 0.001 s':x.toFixed(x<1?3:2)+' s';
 function benchmark(){const by=new Map();for(const r of data.benchmarks){if(!by.has(r.id))by.set(r.id,{});by.get(r.id)[r.lane]=r;}$('benchmarks').replaceChildren();for(const [id,row] of by){if(!row['Glucose3']||!row['affine-GCTS']||!row['unmarked-graph'])continue;const r=data.rows.find(r=>r.id===id),free=row['unmarked-graph'],learned=row['affine-GCTS'],sat=row['Glucose3'],timing=$('timing').value==='total'?'medianTotalSeconds':'medianSearchSeconds',tr=document.createElement('tr'),values=[`${r?.name??id} · corona ${free.runs[0].k}`,seconds(free[timing]),seconds(learned[timing]),seconds(sat[timing]),`${free.runs[0].terminalLeavesVisited.toLocaleString()} to ${learned.runs[0].terminalLeavesVisited.toLocaleString()}`,`${sat.runs[0].stats.conflicts.toLocaleString()} / ${sat.runs[0].stats.decisions.toLocaleString()}`];for(const text of values){const td=document.createElement('td');td.textContent=text;tr.append(td);}$('benchmarks').append(tr);}
  const r=by.get('polycube_p10_052588');if(r?.['Glucose3'])$('benchmark-takeaway').textContent=`For p10-052588, the marked graph visited ${r['affine-GCTS'].runs[0].terminalLeavesVisited.toLocaleString()} dead leaves, versus ${r['unmarked-graph'].runs[0].terminalLeavesVisited.toLocaleString()} unmarked. All three lanes exhausted the full second-corona target.`;}
 $('timing').onchange=benchmark;new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();}).observe(host);function animate(){controls.update();renderer.render(scene,camera);requestAnimationFrame(animate);}catalog();draw();benchmark();animate();window.heeschCatalogStudy=data;
+
+function positiveControls(){
+ const status=r=>!r?'Not run':r.status==='unknown'?`Undecided (${r.budgetSeconds} s limit)`:r.status==='SAT'?'SAT: two coronas found':'UNSAT: CONTROL FAILURE';
+ for(const r of data.positiveControls??[]){
+  const tr=document.createElement('tr'),counts=r.results.map(x=>x.totalTiles),values=[r.id.replace('polycube_','').replaceAll('_','-'),status(r.blindGlucose)+(r.positivePhases?' · positive phases: '+status(r.positivePhases):''),status(r.blindCadical),`${r.results.filter(x=>x.formulaAccepts&&x.allClausesChecked).length} of ${r.allRootRolesChecked}`,`${Math.min(...counts)} to ${Math.max(...counts)}`];
+  for(const value of values){const td=document.createElement('td');td.textContent=value;tr.append(td);}
+  const evidence=document.createElement('td');evidence.append(link(r.witnessFile,'Extracted patch'),' · ',link(r.sourceCertificate,'Published motif'));
+  if(r.blindGlucose)evidence.append(' · ',link('data/heesch-catalog/positive-controls/'+r.id+'-blind.json','Glucose run'));
+  if(r.positivePhases)evidence.append(' · ',link('data/heesch-catalog/positive-controls/'+r.id+'-positive-phases.json','Phase variant'));
+  if(r.blindCadical)evidence.append(' · ',link('data/heesch-catalog/positive-controls/'+r.id+'-cadical-blind.json','CaDiCaL run'));
+  tr.append(evidence);$('controls-results').append(tr);
+ }
+}
+positiveControls();
