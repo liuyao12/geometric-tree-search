@@ -1,0 +1,8655 @@
+{
+  "version": 1,
+  "scope": "First-dead-branch mining from an unmarked center-and-corner point model. Proper subsets pass forced propagation, not a complete-corona or infinite-extension test.",
+  "scheduler": "Global zero, then global singleton, then oldest chronological frontier birth. Stable point-order ties, seeded uniform candidate choice. Chronological-birth variant requested by user; distinct from reference growth-layer generations.",
+  "coordinates": "Half-unit integer coordinates: voxel centers even, corner points odd; capacity 8.",
+  "walk": {
+    "seed": 2,
+    "status": "dead",
+    "fixed": [
+      {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          -2
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          -6,
+          -2,
+          0
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          -6,
+          -2,
+          -2
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          6
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          -6,
+          -2,
+          2
+        ]
+      },
+      {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          6
+        ]
+      },
+      {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          -4
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          2,
+          -6,
+          -2
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          2,
+          -6,
+          0
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          2,
+          -4,
+          2
+        ]
+      },
+      {
+        "oi": 2,
+        "translation": [
+          2,
+          6,
+          -2
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          6,
+          2,
+          0
+        ]
+      },
+      {
+        "oi": 2,
+        "translation": [
+          -4,
+          6,
+          0
+        ]
+      }
+    ],
+    "deadPoint": [
+      -5,
+      1,
+      -1
+    ],
+    "trace": [
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 50,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 16,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            0
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 5,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            -2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          1
+        ],
+        "birth": 0,
+        "degree": 35,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          1
+        ],
+        "birth": 0,
+        "degree": 10,
+        "placement": {
+          "oi": 2,
+          "translation": [
+            -2,
+            0,
+            6
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          -1,
+          1
+        ],
+        "birth": 0,
+        "degree": 3,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            2
+          ]
+        }
+      },
+      {
+        "kind": "forced",
+        "point": [
+          -5,
+          -1,
+          1
+        ],
+        "birth": 0,
+        "degree": 1,
+        "placement": {
+          "oi": 2,
+          "translation": [
+            -4,
+            0,
+            6
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -1,
+          1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 8,
+        "placement": {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            -4
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          1,
+          -1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 13,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            2,
+            -6,
+            -2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          1,
+          -1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 5,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            2,
+            -6,
+            0
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          1,
+          -1,
+          1
+        ],
+        "birth": 0,
+        "degree": 8,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            2,
+            -4,
+            2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          1,
+          1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 8,
+        "placement": {
+          "oi": 2,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          1,
+          1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 2,
+        "placement": {
+          "oi": 0,
+          "translation": [
+            6,
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "kind": "branch",
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "birth": 0,
+        "degree": 4,
+        "placement": {
+          "oi": 2,
+          "translation": [
+            -4,
+            6,
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "minimal": {
+    "fixed": [
+      {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          -2
+        ]
+      },
+      {
+        "oi": 0,
+        "translation": [
+          -6,
+          -2,
+          -2
+        ]
+      },
+      {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          -4
+        ]
+      },
+      {
+        "oi": 2,
+        "translation": [
+          -4,
+          6,
+          0
+        ]
+      }
+    ],
+    "deadPoint": [
+      -3,
+      1,
+      -1
+    ],
+    "forced": [],
+    "tests": [
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            6,
+            2,
+            0
+          ]
+        },
+        "remainingBefore": 15,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 2,
+          "translation": [
+            -2,
+            0,
+            6
+          ]
+        },
+        "remainingBefore": 14,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 2,
+          "translation": [
+            -4,
+            0,
+            6
+          ]
+        },
+        "remainingBefore": 13,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            2,
+            -6,
+            -2
+          ]
+        },
+        "remainingBefore": 12,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            2,
+            -6,
+            0
+          ]
+        },
+        "remainingBefore": 11,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            2,
+            -4,
+            2
+          ]
+        },
+        "remainingBefore": 10,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 2,
+          "translation": [
+            2,
+            6,
+            -2
+          ]
+        },
+        "remainingBefore": 9,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "remainingBefore": 8,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -5,
+          -1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        },
+        "remainingBefore": 8,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -1,
+          -1,
+          1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        },
+        "remainingBefore": 8,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -5,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 2,
+          "translation": [
+            -4,
+            6,
+            0
+          ]
+        },
+        "remainingBefore": 7,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -5,
+          -1,
+          1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            0
+          ]
+        },
+        "remainingBefore": 7,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -3,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            -2
+          ]
+        },
+        "remainingBefore": 6,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -3,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            2
+          ]
+        },
+        "remainingBefore": 6,
+        "status": "dead",
+        "removed": true,
+        "point": [
+          -3,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            -4
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -1,
+          1,
+          -3
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -3,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 2,
+          "translation": [
+            -4,
+            6,
+            0
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 0,
+          "translation": [
+            -6,
+            -2,
+            -2
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -3,
+          1,
+          -1
+        ],
+        "forced": []
+      },
+      {
+        "tile": {
+          "oi": 1,
+          "translation": [
+            -2,
+            2,
+            -4
+          ]
+        },
+        "remainingBefore": 5,
+        "status": "branch",
+        "removed": false,
+        "point": [
+          -1,
+          -1,
+          -1
+        ],
+        "forced": []
+      }
+    ]
+  },
+  "subsets": [
+    {
+      "mask": 0,
+      "status": "closed",
+      "forced": [],
+      "point": null,
+      "frontierPoints": 0,
+      "minimumDegree": null
+    },
+    {
+      "mask": 1,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -1
+      ],
+      "frontierPoints": 40,
+      "minimumDegree": 50
+    },
+    {
+      "mask": 2,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -3
+      ],
+      "frontierPoints": 40,
+      "minimumDegree": 50
+    },
+    {
+      "mask": 3,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -1
+      ],
+      "frontierPoints": 60,
+      "minimumDegree": 16
+    },
+    {
+      "mask": 4,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -7,
+        -3,
+        -3
+      ],
+      "frontierPoints": 40,
+      "minimumDegree": 50
+    },
+    {
+      "mask": 5,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        -1,
+        -1
+      ],
+      "frontierPoints": 75,
+      "minimumDegree": 20
+    },
+    {
+      "mask": 6,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -3
+      ],
+      "frontierPoints": 70,
+      "minimumDegree": 35
+    },
+    {
+      "mask": 7,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -1
+      ],
+      "frontierPoints": 90,
+      "minimumDegree": 5
+    },
+    {
+      "mask": 8,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        1,
+        -5
+      ],
+      "frontierPoints": 40,
+      "minimumDegree": 50
+    },
+    {
+      "mask": 9,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -1
+      ],
+      "frontierPoints": 74,
+      "minimumDegree": 18
+    },
+    {
+      "mask": 10,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -3
+      ],
+      "frontierPoints": 70,
+      "minimumDegree": 8
+    },
+    {
+      "mask": 11,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -3
+      ],
+      "frontierPoints": 86,
+      "minimumDegree": 8
+    },
+    {
+      "mask": 12,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        1,
+        -3
+      ],
+      "frontierPoints": 76,
+      "minimumDegree": 28
+    },
+    {
+      "mask": 13,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -1
+      ],
+      "frontierPoints": 105,
+      "minimumDegree": 12
+    },
+    {
+      "mask": 14,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -3
+      ],
+      "frontierPoints": 97,
+      "minimumDegree": 7
+    },
+    {
+      "mask": 15,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -1
+      ],
+      "frontierPoints": 113,
+      "minimumDegree": 5
+    },
+    {
+      "mask": 16,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        5,
+        -1
+      ],
+      "frontierPoints": 40,
+      "minimumDegree": 50
+    },
+    {
+      "mask": 17,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        5,
+        -1
+      ],
+      "frontierPoints": 76,
+      "minimumDegree": 41
+    },
+    {
+      "mask": 18,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        5,
+        -1
+      ],
+      "frontierPoints": 78,
+      "minimumDegree": 36
+    },
+    {
+      "mask": 19,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -1
+      ],
+      "frontierPoints": 96,
+      "minimumDegree": 12
+    },
+    {
+      "mask": 20,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        1,
+        -1
+      ],
+      "frontierPoints": 78,
+      "minimumDegree": 36
+    },
+    {
+      "mask": 21,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        1,
+        -1
+      ],
+      "frontierPoints": 110,
+      "minimumDegree": 18
+    },
+    {
+      "mask": 22,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        1,
+        -1
+      ],
+      "frontierPoints": 107,
+      "minimumDegree": 23
+    },
+    {
+      "mask": 23,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        -1,
+        -1
+      ],
+      "frontierPoints": 125,
+      "minimumDegree": 5
+    },
+    {
+      "mask": 24,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        3,
+        -1
+      ],
+      "frontierPoints": 76,
+      "minimumDegree": 28
+    },
+    {
+      "mask": 25,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -1
+      ],
+      "frontierPoints": 108,
+      "minimumDegree": 17
+    },
+    {
+      "mask": 26,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -3
+      ],
+      "frontierPoints": 105,
+      "minimumDegree": 8
+    },
+    {
+      "mask": 27,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        1,
+        -1
+      ],
+      "frontierPoints": 120,
+      "minimumDegree": 2
+    },
+    {
+      "mask": 28,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -5,
+        1,
+        -3
+      ],
+      "frontierPoints": 110,
+      "minimumDegree": 21
+    },
+    {
+      "mask": 29,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -3,
+        1,
+        -1
+      ],
+      "frontierPoints": 138,
+      "minimumDegree": 5
+    },
+    {
+      "mask": 30,
+      "status": "branch",
+      "forced": [],
+      "point": [
+        -1,
+        1,
+        -3
+      ],
+      "frontierPoints": 131,
+      "minimumDegree": 7
+    },
+    {
+      "mask": 31,
+      "status": "dead",
+      "forced": [],
+      "point": [
+        -3,
+        1,
+        -1
+      ],
+      "frontierPoints": 146,
+      "minimumDegree": 0
+    }
+  ],
+  "coverCertificate": [
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          2,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          2,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          2,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          2,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          0,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          0,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          0,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -6,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -6,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        },
+        {
+          "point": [
+            -6,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -6,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -6,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        },
+        {
+          "point": [
+            -6,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -8,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -8,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -8,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -8,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -8,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          6,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          6,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            0,
+            4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          6,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            8,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            10,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          6,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            8,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          -2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            0,
+            -2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          -2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          -2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            -2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          -2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -8,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          -4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            -4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -2,
+          -4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          -4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            -4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 0,
+        "translation": [
+          -4,
+          -4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            -4,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          2,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          2,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          2,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          2,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          0,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          0,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          0,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            0,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            1,
+            1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -6,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -6,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -6,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        },
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -6,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -8,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -8,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -8,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -6,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -8
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -6,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            0,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          2,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -8
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -2,
+          0,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          2,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 1,
+        "translation": [
+          -4,
+          0,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          6,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          6,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            3,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          6,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            8,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            10,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          6,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            8,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            4,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          -2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          -2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          -2,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          -2,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            -1,
+            -1
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          -4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          -4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          -4,
+          0
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          -4,
+          -2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            -2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            6,
+            2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          2
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -8
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -1,
+            1,
+            -3
+          ],
+          "total": 6,
+          "contribution": 3
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            -1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -2,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            6,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            2,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          -4
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -3,
+            1,
+            -1
+          ],
+          "total": 7,
+          "contribution": 2
+        },
+        {
+          "point": [
+            -4,
+            0,
+            0
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          2,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -8
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            2,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -2,
+          0,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -2,
+            2,
+            -6
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -2,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        },
+        {
+          "point": [
+            -1,
+            1,
+            -1
+          ],
+          "total": 8,
+          "contribution": 1
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          2,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            2,
+            -4
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    },
+    {
+      "placement": {
+        "oi": 2,
+        "translation": [
+          -4,
+          0,
+          -6
+        ]
+      },
+      "blockers": [
+        {
+          "point": [
+            -4,
+            0,
+            -2
+          ],
+          "total": 8,
+          "contribution": 8
+        }
+      ]
+    }
+  ],
+  "marking": {
+    "kind": "normalized-affine-section",
+    "dimension": 5,
+    "normalization": "sum(z_i)=1",
+    "roleEquation": "z_i=0",
+    "wildcard": "no equation",
+    "channels": 48
+  },
+  "limitations": [
+    "One witnessed branch and one learned core; not an exhausted search or a catalogue.",
+    "No one/two-corona viability claim.",
+    "No production search activation or measured speedup.",
+    "Minimality is inclusion minimality under the reported propagation test."
+  ]
+}
