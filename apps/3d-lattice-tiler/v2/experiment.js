@@ -1,6 +1,6 @@
 import {runGrowthExperiment} from '../growth-experiment.js?v=20260921-growth';
 import {verifyVoxelPatch} from '../voxel-point-model.js';
-import {prepareModel} from './model.js?v=20260923-chair-export';
+import {prepareModel} from './model.js?v=20260923-nonacube';
 import {search} from './search.js?v=2.5.0';
 import {learnMarking,reuseMarking} from '../marking-learning.js?v=20260921-search-inset';
 import {preprocessTilingSystem,tileSpecs} from '../engine.js?v=20260921-growth';

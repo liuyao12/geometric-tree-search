@@ -1,3 +1,4 @@
+import {NONACUBE_CROSS} from './nonacube-cross.js';
 import {prepareSlab,SLAB_TILES} from './v2/slab.js?v=2.5.0';
 import {legacyGrowthStream} from './legacy-growth.js?v=20260921-growth';
 import {RESEARCH_TILES} from './research-catalog.js?v=20260921-search-inset';
@@ -8617,6 +8618,7 @@ export const tileSpecs = (() => {
         [3,4,2], [13,4,2], [5,0,-2], [11,8,-2]
       ], [], true))]
     },
+    "nonacube_cross": { name:NONACUBE_CROSS.name, category:["Polycubes"], description:NONACUBE_CROSS.note, build: () => [make_tile(NONACUBE_CROSS.name, generatePolycubeData(NONACUBE_CROSS.voxels))] },
     "1_cross": { name:"1-Cross (Heptacube)", category:["Polycubes"], build: () => [make_tile("1-Cross", gen_n_cross_data(1))] },
     "2_cross": { name:"2-Cross (Tridecacube)", category:["Polycubes"], build: () => [make_tile("2-Cross", gen_n_cross_data(2))] },
     "3_cross": { name:"3-Cross (Nonadecacube)", category:["Polycubes"], build: () => [make_tile("3-Cross", gen_n_cross_data(3))] },
