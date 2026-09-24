@@ -19,19 +19,16 @@ export function direction(i) {
 }
 export const xy = p => p.reduce((q, n, i) => ({x:q.x + n * Math.cos(2 * Math.PI * i / 7), y:q.y + n * Math.sin(2 * Math.PI * i / 7)}), {x:0, y:0});
 
-function placement(template, origin) {
+export function placement(template, origin) {
   const points = template.points.map(p => add(p, origin)), vertices = points.map(key), loop = points.map(xy);
-  // Midpoint coordinates are stored doubled. Shape and unoriented edge axis
-  // are channels; direction reversal swaps 0 and 1. Different shapes are free.
-  const marks = points.map((p, i) => {
-    const q = points[(i + 1) % 4], d = sub(q, p), forward = compare(p, q) < 0;
-    return {point:add(p, q), channel:template.kind + ':' + key(forward ? d : neg(d)), value:forward ? 0 : 1};
-  });
+  const edgeCodes=template.edgeCodes||[];
+  const marks=edgeCodes.map((code,i)=>{const point=add(points[i],points[(i+1)%4]);return {...code,point,address:key(point)+'/'+code.channel};});
   return {kind:template.kind, type:template.type, origin, points, vertices, loop, weights:template.weights,
-    id:template.type + '@' + key(origin), marks,
+    id:template.type + '@' + key(origin), geometryId:template.type.split('~s')[0]+'@'+key(origin), marks,edgeCodes,
     bounds:{x0:Math.min(...loop.map(p => p.x)), x1:Math.max(...loop.map(p => p.x)), y0:Math.min(...loop.map(p => p.y)), y1:Math.max(...loop.map(p => p.y))}};
 }
-export function catalog(kinds = [1, 2, 3]) {
+export function catalog(kinds = [1, 2, 3], rule='none') {
+  if(!['none','socolar'].includes(rule))throw Error('Unknown sevenfold matching rule');
   if (!kinds.length || kinds.some(k => ![1,2,3].includes(k))) throw Error('Select at least one rhomb');
   const unique = new Map();
   for (const kind of new Set(kinds)) for (let i = 0; i < 14; i++) {
@@ -41,12 +38,41 @@ export function catalog(kinds = [1, 2, 3]) {
     const type = kind + ':' + points.map((p,j) => key(p) + '~' + weights[j]).sort().join('|');
     unique.set(type, {kind, type, points, weights});
   }
-  return [...unique.values()];
+  return rule==='socolar'?[...unique.values()].flatMap(socolarDecorations):[...unique.values()];
 }
-export const translated = (tile, delta) => placement({kind:tile.kind,type:tile.type,points:tile.points.map(p=>sub(p,tile.origin)),weights:tile.weights},add(tile.origin,delta));
+// Socolar (1990), section 5: one bit for each of the three rhomb shapes.
+// Bit k means that a tile on the LEFT of e_m must use axis m+k (1) or
+// m-k (0). A tile on the right uses the opposite choice. Across a rhomb,
+// only the bit for that rhomb's shape flips; the other two are transported.
+// These are 4 arrow types x 2 directions, not a ban on equal-shaped tiles.
+export function edgeAxis(vector){
+  for(let m=0;m<7;m++){
+    const e=direction(2*m);
+    if(compare(vector,e)===0)return {axis:m,sign:1};
+    if(compare(vector,neg(e))===0)return {axis:m,sign:-1};
+  }
+  throw Error('Not a unit sevenfold edge');
+}
+export function socolarDecorations(template){
+  const edges=template.points.map((p,i)=>edgeAxis(sub(template.points[(i+1)%4],p)));
+  const codes=[];
+  for(let free=0;free<16;free++){
+    const edgeCodes=edges.map((edge,i)=>{
+      const other=edges[(i+1)%4].axis,delta=(other-edge.axis+7)%7;
+      const k=Math.min(delta,7-delta), own=edge.sign*(delta<=3?1:-1)>0?1:0;
+      let value=own<<(k-1),cursor=0;
+      for(let bit=0;bit<3;bit++)if(bit!==k-1){value|=((free>>((i%2)*2+cursor))&1)<<bit;cursor++;}
+      return {channel:edge.axis,value};
+    });
+    // All 16 states of a FIXED oriented rhomb; rotation by pi pairs them,
+    // giving eight decorated prototiles per shape (24 altogether).
+    codes.push({...template,type:template.type+'~s'+edgeCodes.map(e=>e.value).join('.'),edgeCodes});
+  }
+  return codes;
+}
+export const translated = (tile, delta) => placement({kind:tile.kind,type:tile.type,points:tile.points.map(p=>sub(p,tile.origin)),weights:tile.weights,edgeCodes:tile.edgeCodes},add(tile.origin,delta));
 export function markingsAgree(a,b) {
-  const values = new Map(a.marks.map(m => [key(m.point)+'/'+m.channel, m.value]));
-  return b.marks.every(m => !values.has(key(m.point)+'/'+m.channel) || values.get(key(m.point)+'/'+m.channel) === m.value);
+  return a.marks.every(x=>b.marks.every(y=>x.address!==y.address||x.value===y.value));
 }
 export function geometryAllowed(a,b) {
   const eps = 1e-9, A = a.bounds, B = b.bounds;
@@ -71,8 +97,8 @@ export function chooseSevenfoldPoint(points) {
   return points.slice().sort((a,b)=>(a.candidates.length===0?0:a.candidates.length===1?1:2)-(b.candidates.length===0?0:b.candidates.length===1?1:2)||a.depth-b.depth||a.candidates.length-b.candidates.length||a.key.localeCompare(b.key))[0];
 }
 
-export function createSevenfoldSearch({kinds=[1,2,3],forbidden=false,seed=1,nodeLimit=12000}={}) {
-  const templates=catalog(kinds), anchored=new Map();
+export function createSevenfoldSearch({kinds=[1,2,3],rule='none',seed=1,nodeLimit=12000}={}) {
+  const templates=catalog(kinds,rule), anchored=new Map();
   for (const t of templates) for (const p of t.points) {
     const tile=placement(t,neg(p));anchored.set(tile.id,tile);
   }
@@ -80,7 +106,15 @@ export function createSevenfoldSearch({kinds=[1,2,3],forbidden=false,seed=1,node
   const tiles=[],ids=new Set(),totals=new Map(),positions=new Map(),generations=new Map(),frames=[],excluded=[new Set()];
   const stats={proposals:0,backtracks:0,forcedMoves:0,branches:0,deadEnds:0};
   let status='searching',stopped=false;
-  const pair=(a,b)=>geometryAllowed(a,b)&&(!forbidden||markingsAgree(a,b));
+  const geometryCache=new Map();
+  const pair=(a,b)=>{
+    const A=a.bounds,B=b.bounds,eps=1e-9;
+    if(A.x1<B.x0-eps||B.x1<A.x0-eps||A.y1<B.y0-eps||B.y1<A.y0-eps)return true;
+    if(rule==='socolar'&&!markingsAgree(a,b))return false;
+    const cacheKey=a.geometryId<b.geometryId?a.geometryId+'#'+b.geometryId:b.geometryId+'#'+a.geometryId;
+    if(geometryCache.has(cacheKey))return geometryCache.get(cacheKey);
+    const allowed=geometryAllowed(a,b);if(geometryCache.size>=8192)geometryCache.delete(geometryCache.keys().next().value);geometryCache.set(cacheKey,allowed);return allowed;
+  };
   const capacity=t=>!ids.has(t.id)&&t.vertices.every((v,i)=>(totals.get(v)||0)+t.weights[i]<=14);
   const legal=t=>capacity(t)&&tiles.every(a=>pair(a,t));
   const frontier=()=>[...totals].filter(([,n])=>n<14).map(([key,total])=>({key,total,exact:positions.get(key),depth:Math.min(...generations.get(key))}));
@@ -109,7 +143,10 @@ export function createSevenfoldSearch({kinds=[1,2,3],forbidden=false,seed=1,node
       if(choice?.dead){stats.deadEnds++;yield {type:'dead',point:choice.point.key};return;}
       if(stats.proposals>=nodeLimit){status='Budget reached · unknown';stopped=true;return;}
       if(!choice){status='Finite closed frontier';return;}
-      const options=choice.candidates.sort((a,b)=>priority(a.id)-priority(b.id)||a.id.localeCompare(b.id));
+      // Within the selected point's complete domain, prefer closing existing
+      // corners. This only orders alternatives; no candidate is excluded.
+      const score=t=>t.vertices.reduce((s,v,i)=>s+(totals.has(v)?2*totals.get(v)*t.weights[i]+t.weights[i]**2:0),0);
+      const options=choice.candidates.sort((a,b)=>(rule==='socolar'?score(b)-score(a):0)||priority(a.id)-priority(b.id)||a.id.localeCompare(b.id));
       const tile=put(options[0]);stats.proposals++;stats[choice.forced?'forcedMoves':'branches']++;
       frames.push(graph.push(tile,frontier()));excluded.push(new Set());yield {type:'add',forced:choice.forced};
       yield*dfs();if(stopped)return;
@@ -118,9 +155,9 @@ export function createSevenfoldSearch({kinds=[1,2,3],forbidden=false,seed=1,node
       yield {type:'remove'};
     }
   }
-  function* run(){put(placement(templates[0],ZERO));graph.build(frontier());yield {type:'seed'};yield*dfs();if(!stopped)status=forbidden?'Restricted search exhausted':'Seeded search exhausted';}
+  function* run(){put(placement(templates[0],ZERO));graph.build(frontier());yield {type:'seed'};yield*dfs();if(!stopped)status='Seeded search exhausted';}
   const iterator=run();
-  return {next:()=>iterator.next(),snapshot:()=>({tiles:tiles.slice(),stats:{...stats},status,graph:graph.summary(),frontier:frontier(),forbidden}),
+  return {next:()=>iterator.next(),snapshot:()=>({tiles:tiles.slice(),stats:{...stats},status,graph:graph.summary(),frontier:frontier(),rule}),
     // Independent enumeration checks completeness as well as absence of stale
     // links. Failed-child exclusions in the current parent are explicitly known.
     audit(){const forbiddenIds=new Set(excluded.flatMap(s=>[...s]));for(const p of graph.inspect()) {

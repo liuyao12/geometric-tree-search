@@ -1,4 +1,4 @@
-import {createSevenfoldSearch} from '../../assets/sevenfold-rhombs.js?v=20260924-sevenfold';
+import {createSevenfoldSearch} from '../../assets/sevenfold-rhombs.js?v=20260924-socolar';
 let search,done=false,computeMs=0;
 self.onmessage=({data})=>{try{
   const start=performance.now();let event=null,paused=false;

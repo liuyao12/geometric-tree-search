@@ -27,29 +27,52 @@ Identity includes the shape, exact support and its weights, and translation.
 Templates are deduplicated only with the same point data. Selected shapes are
 permitted, not required, and each placement can be used at most once.
 
-## Optional problem-defining marking
+## Published Socolar marking
 
-The unmarked problem permits periodic tilings. The optional experimental rule
-forbids two equal-shaped rhombs from sharing an edge. At each edge midpoint in
-\(\tfrac12\mathbb{Z}[\zeta_7]\), a shape-and-unoriented-direction channel gets
-value \(0\) or \(1\) according to lexicographic order of the directed boundary
-edge's endpoints. Opposite boundary directions disagree. Different shapes
-have undefined values in each other's channels. Missing is never zero.
-Midpoints are represented by doubled integer coordinates.
+The current default is the nearest-neighbor arrow construction of Socolar
+(1990), Section 5, Figure 4, pp. 610–611. It replaces the unsupported
+experimental equal-neighbor ban originally added to this page. The unmarked
+comparison remains available. Equal-shaped neighbors are allowed when their
+particular orientations and edge decorations match.
 
-Rotations permute direction channels and swap the two values when the
-canonical direction reverses. Reflection additionally reverses the
-counterclockwise boundary order. Markings are reconstructed from the oriented
-boundary after transformation. Translations leave channel and value unchanged.
-Marking supports lie inside each tile bounding box, so the shared spatial
-dependency index covers both corner and marking contacts. Pairwise equality
-checks implement agreement of the active global marking section; this is
-fixed input, not learned data or an obstruction classifier.
+Let \(e_m=\zeta_7^m\), with indices modulo \(7\). An edge parallel to \(e_m\)
+carries three bits. For \(k\in\{1,2,3\}\), bit \(k\) specifies whether the
+next tile of that shape on the left of \(e_m\) uses the other edge axis
+\(m+k\) or \(m-k\). On the right the specified choice is reversed.
+Socolar’s shape index refers to an angle \(2k\pi/7\); its correspondence to
+our acute-angle indices is \(1\mapsto2,2\mapsto3,3\mapsto1\).
 
-The restriction is experimental: no claim of redundancy, infinite extension,
-or aperiodicity. Exhaustion means failure of the selected restricted seeded
-problem only. Budgets mean unknown. Reset discards the search; Continue keeps
-its stack. Changing the selected shapes or rule resets the search.
+For a counterclockwise boundary edge directed as \(s e_m\), let \(n\) be
+the other edge axis and \(k=\min((n-m)\bmod7,(m-n)\bmod7)\). Its own-shape
+bit is fixed by \(s\operatorname{sgn}(n-m)\), using the representative of
+\(n-m\) in \(\{-3,-2,-1,1,2,3\}\). Opposite edges flip this bit and
+preserve the other two bits. Each of the two edge families has two free bits,
+giving \(16\) states of a fixed oriented rhomb. Half-turn rotation pairs
+these states: there are \(8\) decorated prototiles per shape, counting
+reflected variants separately, hence \(24\) altogether. The complete
+orientation catalog has \(336\) templates and \(1344\) anchored moves.
+
+Bits are stored as an integer from \(0\) to \(7\) at the exact doubled
+midpoint in an axis channel. Matching compares assigned values for equality.
+For display, the first bit chooses the arrow direction along \(e_m\); after
+complementing all bits for a reversed arrow, the other two bits choose one
+of four arrow types. One to four arrowheads distinguish those types. This
+is an equivalent relabeling of the arrows, not a transcription of the
+particular graphical glyphs in Socolar’s Figure 4.
+
+Rotation permutes the axis channels and complements all bits when the
+canonical star direction reverses. Reflection permutes axes; its reversals
+of left/right and of axis-index differences cancel, preserving the bit
+vector relative to the reflected star direction. Translation preserves
+labels. The full set is used: no phase-specific deletion from Section 6 is
+imposed. These are published problem-defining labels, not learned data.
+
+The induced row alternation condition has Socolar’s proved weak matching
+property for the prime order \(7\). It bounds internal-space displacement,
+excludes nonzero translational periods, and permits local flips. It does not
+force every tiling to be locally isomorphic to a single canonical projection.
+The theorem concerns infinite plane tilings, not arbitrary finite partial
+patches or the floating-point implementation’s certification status.
 
 ## Contract evidence and gaps
 
@@ -70,29 +93,37 @@ its stack. Changing the selected shapes or rule resets the search.
   frontier point. It is a finite consistent patch, not an exact finite target
   solution or a proof of infinite extension. Untouched points are not fairly
   activated across the entire infinite module.
-- No RL, GCTS training, local impossibility certificates, published sevenfold
-  decoration, or substitution oracle is implemented in this control.
+- No RL, GCTS training, local impossibility certificates, or substitution
+  oracle is implemented. The Socolar arrows are a known-rule control.
+- Candidate ordering within the selected point favors filling existing
+  corners, then a seeded deterministic hash. It does not exclude candidates.
+  A bounded geometry cache shares results across decoration variants.
 - Geometry tolerances remain a certification gap; reported patches are
   numerical geometric controls. The tests independently clip polygons to
   check intersection area, but that verifier is also numerical.
 
-`tests/test_sevenfold_rhombs.mjs` verifies directions, the cyclotomic relation,
-unit edges, angles, catalog size, marking conflicts and translation,
-global scheduling, complete domains, coordinate/capacity replay, independent
-polygon overlap checks, selected inventories, budget status, and exact
-restoration of placements, totals and generations across 269 backtracks.
-It checks both modes at 30 tiles. Browser verification additionally reached
-80 unmarked tiles and 40 restricted tiles with seed 1; the latter required
-1883 proposals and 1844 backtracks. These are observed finite results, not
-performance or extendibility theorems. Browser checks cover both tabs,
-Continue, Step, reset through rule changes, and mobile layout.
+`tests/test_sevenfold_rhombs.mjs` checks coordinates, angles, inventories,
+global scheduling, domain completeness, budget status, and exact restoration
+of active placements, capacities and generations over backtracking. It also
+checks the 336-template / 1344-move marked catalog, opposite-edge bit
+transport, both acceptance and rejection of same-shaped neighbors, exact closure under
+rotation/reflection, and all 24 decorated rotation classes.
+
+`tests/socolar-multigrid.mjs` independently constructs a 446-tile dual of a
+periodic seven-grid. It derives labels by union-find transport along rows,
+rather than asking the production decorator for its labels. Every resulting
+label tuple must occur in the production catalog. Independent polygon
+clipping checks nonoverlap; replay checks capacities and matching. Direct
+reading of 685 row chains checks alternation of the two other-axis choices.
+These are finite implementation checks, not a new proof of Socolar’s theorem.
+The original equal-neighbor benchmark numbers are obsolete for this rule.
 
 ## Literature
 
 - Joshua E. Socolar, [Weak matching rules for quasicrystals](https://scholars.duke.edu/publication/656337),
   *Communications in Mathematical Physics* 129 (1990), 599–619.
-  Weak rules exist for rotational orders not divisible by four. This result
-  does not establish the experimental equal-neighbor restriction above.
+  Sections 4–6 establish the theorem, construct nearest-neighbor arrows,
+  and discuss the sevenfold example and local flips.
 - Theo P. Schaad, [A Challenging 7-Fold Tiling Puzzle](https://arxiv.org/abs/2112.00625)
   (2021), a sevenfold rhomb substitution construction with three base shapes.
 - Nicolas Bédaride and Thomas Fernique,
