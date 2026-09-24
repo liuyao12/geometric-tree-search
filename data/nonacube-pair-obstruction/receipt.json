@@ -1,0 +1,26 @@
+{
+  "scope": "Integer translations, all three cubic orientations; fixed pair with physical center displacement (0,3,-2).",
+  "targetVoxels": 480,
+  "candidatePlacements": 3008,
+  "variables": 25648,
+  "clauses": 71076,
+  "status": "UNSAT",
+  "cnfSha256": "dd44e737d210fa4d14fe4a09393c83e2b2f2d74e0fa05aa6a783ad177c8e507b",
+  "proofSha256": "f3f0febac1b70d4422c075fd200ffe15539eb896abc191116c0c088e749b646d",
+  "dratTrim": {
+    "verified": true,
+    "ratLemmas": 0,
+    "resolutionSteps": 8807692,
+    "commit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"
+  },
+  "positiveOneCorona": {
+    "placements": 44,
+    "independentPointReplay": true
+  },
+  "markingCompilation": {
+    "components": 24,
+    "assignedValues": 48,
+    "scope": "Symmetry-closed sparse exclusion; audited, not installed in cold browser learner."
+  },
+  "verificationScope": "DRAT-trim verified the trace. The optional pure-Python RUP replay was not completed in this run."
+}

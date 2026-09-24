@@ -54,3 +54,12 @@ growth checkpoint nor a bounded periodic miss determines the Heesch number.
 ## Certified exclusions first
 
 The app now defaults this tile to the [certified negative-only marking method](3d-certified-exclusion-markings.md). The initial short checks certified no invalid pair orbits, so the lane explicitly falls back to unmarked search. This does not change the Heesch-number evidence above.
+
+## A certified forbidden pair
+
+A stronger finite-region test now proves that two coplanar crosses with center
+displacement \( (3,-2,0) \) cannot occur together in an infinite integer-grid
+tiling. The pair nevertheless has a verified one-corona with viable frontier.
+See the [illustrated pair and replayable proof](nonacube-forbidden-pair.html).
+This establishes one exclusion, not a non-tiling or exact Heesch-number result.
+The current cold browser learner does not yet run this stronger region oracle.

@@ -96,3 +96,14 @@ first pass has not yet found a useful marking for it. Stronger finite-obstructio
 checks can be added as additional certified proof kinds. Triple obstructions
 must not be silently projected into pair exclusions: every excluded relation
 needs its own valid proof and a marking with a checked implication.
+
+## Stronger finite-region evidence
+
+The [nonacube pair obstruction](nonacube-forbidden-pair.html) supplies a checked
+negative under a stronger criterion: a finite target surrounding the pair cannot
+be filled. The same pair has a verified one-corona with viable frontier, so its
+first-corona positive label must remain distinct from its proved infinite-extension
+exclusion. The research check compiles this exclusion into symmetry-closed point
+markings and audits every disagreement; it does not feed recorded labels or fields
+into the cold browser learner. The specialized SAT proof is separate from the
+reference scheduler, and makes no benchmark speedup claim.
