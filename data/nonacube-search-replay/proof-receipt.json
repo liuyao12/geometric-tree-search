@@ -1,0 +1,49 @@
+{
+  "status": "UNSAT",
+  "solver": "glucose3",
+  "seconds": 63.047654582999996,
+  "stats": {
+    "restarts": 2556,
+    "conflicts": 529855,
+    "decisions": 900768,
+    "propagations": 231825371
+  },
+  "problem": {
+    "firstCandidates": 686,
+    "totalCandidates": 8140,
+    "variables": 76614,
+    "clauses": 261282,
+    "preparationMs": 247.34916700000002
+  },
+  "independentCheck": {
+    "checker": "DRAT-trim",
+    "verified": true,
+    "verificationSeconds": 48.604,
+    "ratLemmas": 0
+  },
+  "candidateAudit": {
+    "method": "independent bounded translation enumeration",
+    "firstCandidates": 686,
+    "totalCandidates": 8140
+  },
+  "scope": "Integer translations, cubic rotations, complete face/edge/vertex coronas. One corona verified; two impossible. No topological-ball requirement.",
+  "hashes": {
+    "cnf": "d5b60a0a7257daebd8bc07b264b00b0af51a1313963874f1e084f13843a65185",
+    "drup": "5f96de32a53f381a96af9d9959bca1cce0fff080976586a6b2c809eabfa93f03"
+  },
+  "recordedRun": {
+    "status": "UNSAT",
+    "decisions": 900768,
+    "conflicts": 529855,
+    "searchStarts": 2556,
+    "propagations": 231825371,
+    "seconds": 43.7797,
+    "proofByteIdentical": true,
+    "proofSHA256": "5f96de32a53f381a96af9d9959bca1cce0fff080976586a6b2c809eabfa93f03"
+  },
+  "source": {
+    "pysatCommit": "152884a6d1889f56a61049aaa773be23f0a8d8c1",
+    "glucoseURL": "https://www.labri.fr/perso/lsimon/downloads/softwares/glucose-3.0.tgz",
+    "glucoseArchiveSHA256": "e721005535f8ca96d58c0c7e3923924e948a231fb305960b1bf4af49cbc936a6"
+  }
+}

@@ -18,6 +18,13 @@ replayed all three remaining branches of the marked root search. Every marking
 exclusion is necessary in an infinite tiling, so the exhausted marked root rules
 out the unmarked infinite lattice tiling too.
 
+An independent unmarked two-corona calculation now establishes \(H=1\) for
+integer translations and cubic rotations, using complete face/edge/vertex
+surrounds with no topological-ball requirement. Its exhaustive formula is
+unsatisfiable, with a separately checked proof. [Watch the complete recorded
+search](nonacube-search-replay.html), including all decisions and backtracks,
+or inspect its largest connected patch of 39 crosses, including the root.
+
 This does not settle arbitrary Euclidean placements or the unrestricted
 three-dimensional Heesch number. The previously located catalogue has no tiling
 certificate; that historical absence alone was not a non-tiling proof.
@@ -30,7 +37,7 @@ explicitly says that failing to find a periodic tiling does not prove non-tiling
 
 We computed one complete surrounding corona and independently verified it by
 integer voxel replay. Thus the three-dimensional Heesch number satisfies
-\(H\geq1\); its exact value is not established here. The certificate has 34
+\(H\geq1\); the separate two-corona proof supplies the lattice upper bound. The certificate has 34
 copies around the central tile. Every one touches the central tile, the copies
 are pairwise nonoverlapping, and all 90 exterior voxels meeting the central tile
 at a face, edge, or vertex are filled. Consequently the entire central tile is

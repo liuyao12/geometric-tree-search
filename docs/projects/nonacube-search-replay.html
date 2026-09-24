@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watch the nonacube proof · GCTS</title>
+<script type="importmap">{"imports":{"three":"../../apps/3d-lattice-tiler/vendor/three.module.min.js"}}</script>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101821;color:#dce5ec}*{box-sizing:border-box}body{margin:0}main{max-width:1320px;margin:auto;padding:24px}a{color:#68d9c7}h1{font-size:clamp(1.8rem,4vw,2.8rem);margin:15px 0 8px;letter-spacing:-.04em}p{line-height:1.6;max-width:960px}.muted{color:#aabccc}.stage{display:grid;grid-template-columns:minmax(0,1fr) 280px;border:1px solid #344653;border-radius:14px;overflow:hidden;margin-top:24px}#scene{height:570px;position:relative;background:#101821;min-width:0}#scene canvas{display:block;width:100%;height:100%;touch-action:none}.legend{position:absolute;left:16px;top:14px;font-size:13px;pointer-events:none;display:flex;gap:15px;flex-wrap:wrap}.legend span:before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:6px}.orbit{position:absolute;bottom:12px;left:16px;font-size:12px;color:#9aacba;pointer-events:none}aside{padding:22px;background:#15222c;border-left:1px solid #344653}aside h2{font-size:1.1rem;margin:0 0 20px}dl{margin:0}dt{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#9aacba;margin-top:17px}dd{margin:3px 0;font-size:23px;font-variant-numeric:tabular-nums}dd.small{font-size:14px;line-height:1.45}#event{color:#68d9c7}#notice{font-size:13px;min-height:3em;line-height:1.5}.controls{padding:18px 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}button,select{background:#1d303d;color:#e5eef5;border:1px solid #40586a;border-radius:7px;padding:10px 14px;font:inherit;font-size:14px;cursor:pointer}button:hover{background:#284455}button:disabled{opacity:.5;cursor:wait}#play{background:#65d7c4;color:#102623;border-color:#65d7c4;font-weight:650}label{font-size:13px;color:#b5c4cf}input[type=checkbox]{accent-color:#65d7c4}#scrub{width:100%;accent-color:#65d7c4}#position{display:flex;justify-content:space-between;font-size:12px;color:#aabccc;margin:8px 0;gap:10px}.explanation{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.explanation h2{font-size:1.2rem}.explanation p{font-size:15px}#depth{height:75px;width:100%;display:block;border-radius:6px;background:#15222c}.depthlabel{font-size:12px;color:#aabccc;margin:6px 0}footer{margin-top:30px;border-top:1px solid #344653;padding:20px 0;font-size:13px;line-height:1.6}code{overflow-wrap:anywhere}#error{color:#ffaaa6;white-space:pre-wrap}#largest-summary{color:#dce5ec}@media(max-width:750px){main{padding:16px}.stage{grid-template-columns:1fr}#scene{height:420px}aside{border-left:0;border-top:1px solid #344653;padding:16px}aside h2{margin-bottom:10px}dl{display:grid;grid-template-columns:1fr 1fr;gap:5px 15px}dt{margin-top:6px}dd{font-size:19px}.explanation{grid-template-columns:1fr;gap:5px}.controls{gap:7px}button,select{padding:10px;font-size:13px}}
+</style></head><body><main>
+<a href="../../3d-lattice-tiler/?tile=nonacube_cross">← 3D lattice tiler</a>
+<h1>Watch the nonacube proof</h1>
+<p class="muted">An exact recording of the SAT search that rules out a second lattice corona. Follow every decision, conflict, backjump and restart, or jump to its largest connected patch.</p>
+<div class="stage"><div id="scene" aria-label="Interactive three-dimensional search patch">
+<div class="legend"><span style="--c:#f2e8cc">Root</span><span style="--c:#64d6c3">Touches root</span><span style="--c:#e8a868">Outer pieces</span><span style="--c:#ec7276">Overlap at conflict</span></div>
+<div class="orbit">Drag to rotate · scroll to zoom · right-drag to pan</div></div>
+<aside><h2 id="event">Loading recording…</h2><dl>
+<div><dt>Selected tiles, including root</dt><dd id="tiles">—</dd></div>
+<div><dt>Connected to root</dt><dd id="connected">—</dd></div>
+<div><dt>Root surround covered</dt><dd id="coverage">—</dd></div>
+<div><dt>Decisions visited</dt><dd id="decisions">—</dd></div>
+<div><dt>Conflicts encountered</dt><dd id="conflicts">—</dd></div>
+<div><dt>Decision depth</dt><dd id="level">—</dd></div>
+<div><dt>Current action</dt><dd class="small" id="action">Loading…</dd></div></dl><p id="notice"></p>
+</aside></div>
+<div class="controls"><button id="play" disabled>Play</button><button id="prev" disabled aria-label="Previous event">← Step</button><button id="next" disabled>Step →</button><button id="conflict" disabled>Next conflict</button><button id="largest" disabled>Largest connected patch</button><button id="finish" disabled>Final contradiction</button>
+<label>Speed <select id="speed"><option value="1">1 event / sec</option><option value="10" selected>10 / sec</option><option value="100">100 / sec</option><option value="1000">1,000 / sec</option><option value="10000">10,000 / sec</option></select></label>
+<label><input type="checkbox" id="connected-only"> Hide detached pieces</label></div>
+<input id="scrub" type="range" min="0" max="1" value="0" disabled aria-label="Search event">
+<div id="position"><span id="frame">Event —</span><span id="total">Loading trace index…</span></div>
+<canvas id="depth" aria-label="Decision depth near the current event"></canvas><p class="depthlabel">Decision depth in the current recording segment. Pink marks conflicts. The white line is the current event.</p>
+<p id="error" role="alert"></p>
+<section class="explanation"><div><h2>Does it visit every branch?</h2>
+<p>Glucose uses conflict-driven clause learning (CDCL). It makes Boolean decisions, propagates consequences, learns a clause when it reaches a contradiction, and backjumps. Learned clauses rule out whole families of branches. The checked proof establishes exhaustive exclusion, without literally visiting every leaf of an unpruned tree.</p>
+<p>This recording retains every decision, including auxiliary Boolean decisions that do not change the picture. Tile assignments forced between events are applied exactly. At high speed all events are processed, while the screen shows the latest state each animation frame. Use single-step or slow playback to see each event.</p>
+<p>Conflicting states can temporarily contain overlapping selected tiles before propagation reports the contradiction; those cubes turn pink. Such states do not count toward the largest legal patch.</p></div>
+<div><h2>What does “largest” mean?</h2><p id="largest-summary">Measuring the recorded run…</p>
+<p>Both maxima count tiles, including the root, at propagation-complete states just before a decision. They are maxima of this run, not optima over all finite packings. A large patch can leave holes and fail to complete even the first surround. Coverage and tile count measure different things.</p>
+<p>The instrumented run reproduced the original proof byte for byte. Its <span id="proof-size">proof</span> was independently checked by DRAT-trim. Under integer translations, cubic rotations and complete face/edge/vertex surrounds, a verified first corona and the absence of any second corona establish \(H=1\). No topological-ball condition is imposed.</p></div></section>
+<footer><a href="../../data/nonacube-search-replay/manifest.json">Recording index and exact placements</a> · <a href="../../data/nonacube-search-replay/largest-connected.json">Largest connected patch</a> · <a href="../../data/nonacube-search-replay/proof-receipt.json">Proof receipt</a> · <a href="../../data/nonacube-search-replay/proof.cnf.gz">Formula</a> · <a href="../../data/nonacube-search-replay/proof.drup.gz">Proof</a> · <a href="../../scripts/README-nonacube-replay.md">Reproduce and audit</a>
+<p>Specialized SAT control, separate from the reference GCTS scheduler. No learned geometric markings or infinite-extension exclusions are used.</p></footer>
+</main><script type="module" src="nonacube-search-replay.js"></script></body></html>
