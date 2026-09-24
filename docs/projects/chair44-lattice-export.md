@@ -109,3 +109,41 @@ speedup or successful completed marking-learning run is claimed by this export.
   download/open links, preset preview, actual worker growth, cancellation, JSON
   file import, guarded probes/reflections, another catalog tile, and mobile
   layout. Set `GCTS_TEST_URL` to the site root to repeat it on the live deployment.
+
+
+## Rigid assembly of the canonical supertile
+
+Static nonoverlap and physical assembly are different questions. The point
+solver checks final placements, not collision-free insertion paths. This audit
+is a separate geometric validation and does not prune its search candidates.
+
+For the canonical eight-tile supertile, write the small-cube-unit origins as
+$\mathbf{o}_i$ and keep all orientations fixed. The continuous motion
+
+$$
+\mathbf{o}_i(\lambda)=\mathbf{o}_i+
+\lambda\bigl(\mathbf{o}_i-(1,1,1)\bigr),\qquad \lambda\geq 0
+$$
+
+has no positive-volume collisions. The central tile has origin $(1,1,1)$ and
+stays fixed; the other seven move out together. For sufficiently large
+$\lambda$ all copies are separated. Reversing this path assembles the supertile
+from eight separated rigid copies, with the central copy fixed.
+
+By contrast, moving any one of the seven outer tiles along its same diagonal
+while holding all the other tiles fixed causes an immediate collision. This
+rules out those seven individual paths, not every sequential assembly route.
+
+`node scripts/check-chair44-assembly.mjs` reproduces both results. It uses the
+actual centered relief with merged cavities, decomposed into 672 occupied
+convex chambers per copy. For all twenty-eight tile pairs it tests the full
+half-line of relative translations using separating axes: face normals and
+edge cross-products. Projection-overlap intervals have rational endpoints;
+comparisons use exact integer products with safe-integer assertions. Boundary
+contact is allowed, but positive-volume intersection is forbidden. Elementary
+box motions also check interval signs, tangency, and delayed collisions.
+
+This certifies an ideal rigid assembly path for this particular supertile.
+It does not establish sequential insertion for arbitrary solver patches,
+assembly at every inflation level, frictional feasibility, manufacturing
+clearance, or aperiodicity of the unmarked solid. No geometry was changed.

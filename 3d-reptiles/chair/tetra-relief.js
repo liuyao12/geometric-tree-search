@@ -53,8 +53,8 @@ export const ATOMIC_TEMPLATES=VARIANTS.map(v=>{
  }
  return [...cells.values()];
 });
-// Direct, outward-oriented boundary. The exact geometry audit certifies that
-// the distinct wedges have disjoint interiors and no coincident face areas.
+// Outward boundary of the occupied union. Two pairs of raw cut walls coincide;
+// they are internal to the merged cavities and cancel from this boundary.
 export const BOUNDARY_SCALE=12;
 export function tetraBoundary() {
  const faces=new Map();
