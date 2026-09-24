@@ -107,3 +107,22 @@ exclusion. The research check compiles this exclusion into symmetry-closed point
 markings and audits every disagreement; it does not feed recorded labels or fields
 into the cold browser learner. The specialized SAT proof is separate from the
 reference scheduler, and makes no benchmark speedup claim.
+
+## Full nonacube region catalogue
+
+The [full region study](nonacube-region-markings.html) now certifies 58 of the
+60 pair orbits, covering 676 of 686 placements. It uses the separately labeled
+finite SAT control, fresh unmarked formulas, five-second solver budgets and
+independent DRAT checks. Two timeouts remain unrestricted. No one-corona positive
+label is reused as an infinite-extension label. Saved exclusions are re-proved
+by regenerating their formulas before the headless benchmark accepts them.
+
+The compiler produces 1,392 components and 2,784 assigned values, with a complete
+catalogue disagreement audit and the existing component covariance check. The
+unchanged reference growth engine then exhausts in three placement attempts on
+all three tested seeds. An independent root-domain and dead-frontier replay
+checks those branches without relying on DFS caches. This proves integer-grid
+non-tiling, conditional on the separately checked local exclusions; all premises
+are included in the published certificate directory. No unrestricted Euclidean
+or exact Heesch-number conclusion is drawn. Preparation and replay costs are
+reported separately, and no end-to-end speedup is claimed.

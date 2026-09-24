@@ -11,10 +11,16 @@ Proper cubic rotations give three distinct orientations. Reflections add none.
 
 ## What is established
 
-As checked on 2026-09-23, we have not located a space-tiling certificate or a
-published exact three-dimensional Heesch number for this shape. This is a
-statement of the evidence found, not a claim that the question is an established
-open problem in the literature.
+On 2026-09-24, a [catalogue-wide exclusion study](nonacube-region-markings.html)
+proved that this shape cannot tile the integer cubic lattice under cubic
+rotations. It independently checked 58 finite-region pair obstructions and
+replayed all three remaining branches of the marked root search. Every marking
+exclusion is necessary in an infinite tiling, so the exhausted marked root rules
+out the unmarked infinite lattice tiling too.
+
+This does not settle arbitrary Euclidean placements or the unrestricted
+three-dimensional Heesch number. The previously located catalogue has no tiling
+certificate; that historical absence alone was not a non-tiling proof.
 
 The shape is entry 25373 (zero-based) in Georgios Papoutsis's
 [nonocube input catalogue](https://github.com/gepa71/whuts-solver/blob/main/inputs/all_nonocubes.json).
@@ -63,3 +69,16 @@ tiling. The pair nevertheless has a verified one-corona with viable frontier.
 See the [illustrated pair and replayable proof](nonacube-forbidden-pair.html).
 This establishes one exclusion, not a non-tiling or exact Heesch-number result.
 The current cold browser learner does not yet run this stronger region oracle.
+
+## Catalogue-wide pruning
+
+The [full study](nonacube-region-markings.html) strengthens the earlier single-pair
+result: 58 of 60 pair orbits are independently excluded, representing 676 of the
+686 neighboring placements. The remaining two are budget-unknown and impose no
+constraints. The compiled point fields exhaust the reference growth tree in
+three placement attempts for each of three seeds. A separate verifier enumerates
+the root domain and checks an immediate dead frontier for all three candidates.
+The 58 proof traces, complete input, timings and replay scripts are published.
+Fresh preparation took about 209 seconds; marked search took about one second.
+These are different finite checkpoint problems, not a same-problem speedup.
+The browser links the evidence; its cold learner does not load the recorded data.
