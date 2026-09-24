@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "studySHA256": "a5ade26c2e3a5f05f8c1f58e92facaeea42dc9e89e32979f399c972733194fb7",
+  "blockedCoverPlacements": 27,
+  "verifiedPairSurrounds": 3,
+  "guardedPairSurroundsAccepted": true,
+  "subsetSymmetryTranslationChecks": 1152,
+  "groupSize": 48,
+  "prototypeAssignments": 144,
+  "exactRollback": true,
+  "equivariant": true,
+  "noRejectionOutsideCertifiedPatternOrbit": true,
+  "finiteBoundaryGuard": true,
+  "semantics": "Proposed constraint-valued section; existing fixed-value markings unchanged.",
+  "limitations": [
+    "Only one minimal triple, not a complete catalogue.",
+    "Not integrated into the production GCTS learner.",
+    "No search-speedup claim.",
+    "Finite-corona use requires the transformed dead cell to be required."
+  ]
+}
