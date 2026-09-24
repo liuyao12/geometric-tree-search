@@ -32,7 +32,7 @@ function intersectionArea(a,b){let out=a.slice();for(let i=0;i<b.length;i++){
  }return Math.abs(out.reduce((sum,p,i)=>{const q=out[(i+1)%out.length];return sum+p.x*q.y-p.y*q.x;},0))/2;}
 function replay(s){
  const totals=new Map();assert.equal(new Set(s.tiles.map(t=>t.id)).size,s.tiles.length);
- for(const t of s.tiles)t.vertices.forEach((v,i)=>totals.set(v,(totals.get(v)||0)+t.weights[i]));
+ for(const t of s.tiles)t.support.forEach(p=>totals.set(p.key,(totals.get(p.key)||0)+p.weight));
  for(const n of totals.values())assert.ok(n<=14);
  assert.deepEqual(s.frontier.map(p=>[p.key,p.total]).sort(),[...totals].filter(([,n])=>n<14).sort());
  for(let i=0;i<s.tiles.length;i++)for(let j=0;j<i;j++){
@@ -40,19 +40,19 @@ function replay(s){
   assert.ok(markingsAgree(a,b),'edge label conflict');
  }
 }
-const identity=s=>({tiles:s.tiles.map(t=>[t.id,t.generation]),frontier:s.frontier.map(p=>[p.key,p.total,p.depth]).sort()});
+const identity=(s,search)=>({tiles:s.tiles.map(t=>[t.id,t.generation]),frontier:s.frontier.map(p=>[p.key,p.total,p.depth]).sort(),marking:search.inspectMarking()});
 let rollbackChecks=0;
 for(const rule of ['none','socolar']){
- const search=createSevenfoldSearch({rule,nodeLimit:1200}),stack=[];let reached=false;
+ const search=createSevenfoldSearch({rule,nodeLimit:1200,trace:true}),stack=[];let reached=false;
  search.next();search.audit();
  for(let i=0;i<(rule==='socolar'?120:4000);i++){
-  const before=search.snapshot(),result=search.next(),after=search.snapshot();
-  if(result.value?.type==='add')stack.push(identity(before));
-  if(result.value?.type==='remove'){assert.deepEqual(identity(after),stack.pop());rollbackChecks++;}
+  const before=search.snapshot(),beforeIdentity=identity(before,search),result=search.next(),after=search.snapshot();
+  if(result.value?.type==='add')stack.push(beforeIdentity);
+  if(result.value?.type==='remove'){assert.deepEqual(identity(after,search),stack.pop());rollbackChecks++;}
   if(i%60===0)search.audit();
   if(after.tiles.length>=30&&!after.graph.deadPoints){reached=true;break;}if(result.done)break;
  }
- if(rule==='none')assert.ok(reached);search.audit();replay(search.snapshot());
+ assert.ok(reached);assert.equal(search.snapshot().stats.repeatedAttempts,0);search.audit();replay(search.snapshot());
  console.log(JSON.stringify({rule,tiles:search.snapshot().tiles.length,stats:search.snapshot().stats}));
 }
 assert.ok(rollbackChecks>0);
@@ -83,7 +83,7 @@ assert.ok(neighbors.some(t=>markingsAgree(mr,t)),'must allow some same-shaped ne
 assert.ok(neighbors.some(t=>!markingsAgree(mr,t)),'must reject wrong same-shaped sides/arrows');
 const {socolarWitness}=await import('./socolar-multigrid.mjs');
 const witness=await socolarWitness();assert.ok(witness.length>400);
-replay({tiles:witness,frontier:(()=>{const totals=new Map();for(const t of witness)t.vertices.forEach((v,i)=>totals.set(v,(totals.get(v)||0)+t.weights[i]));return [...totals].filter(([,n])=>n<14).map(([key,total])=>({key,total}));})()});
+replay({tiles:witness,frontier:(()=>{const totals=new Map();for(const t of witness)t.support.forEach(p=>totals.set(p.key,(totals.get(p.key)||0)+p.weight));return [...totals].filter(([,n])=>n<14).map(([key,total])=>({key,total}));})()});
 // Independently read row chains: equal shapes must alternate the OTHER axis.
 const edges=new Map();for(const t of witness)for(let i=0;i<4;i++){
  const m=t.marks[i],address=m.address;if(!edges.has(address))edges.set(address,[]);edges.get(address).push({t,i});

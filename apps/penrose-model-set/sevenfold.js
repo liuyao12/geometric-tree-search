@@ -1,4 +1,4 @@
-import {xy,direction} from '../../assets/sevenfold-rhombs.js?v=20260924-socolar';
+import {xy,direction} from '../../assets/sevenfold-rhombs.js?v=20260924-gcts';
 const $=id=>document.getElementById(id),canvas=$('sevenCanvas'),ctx=canvas.getContext('2d');
 const colors={1:'#e7bb78',2:'#91c7b3',3:'#aaa6d8'};
 let worker,state,running=false,busy=false,target=20,hits=[],view=null,initialized=false;
@@ -8,23 +8,28 @@ function status(){
   $('sevenRun').disabled=!!state?.done||![1,2,3].some(k=>$('sevenTile'+k).checked);
   $('sevenStep').disabled=$('sevenRun').disabled;
   $('sevenStatus').textContent=state?.error||(!state?'Initializing':state.done?state.status:state.paused?'Consistent finite patch · target reached':running?'Searching':'Paused');
-  if(!state?.tiles)return;
+  if(!state?.tiles){$('sevenMarkingInfo').textContent='';$('sevenEvent').textContent='';return;}
   const s=state.stats,g=state.graph,counts=[1,2,3].map(k=>state.tiles.filter(t=>t.kind===k).length);
-  $('sevenStats').textContent=`${state.tiles.length} tiles (${counts.join(' / ')}) · ${s.proposals} proposals · ${s.backtracks} backtracks · ${s.forcedMoves} forced moves · ${s.branches} branches · ${(state.computeMs/1000).toFixed(2)} s compute`;
+  $('sevenStats').textContent=`${state.tiles.length} tiles (${counts.join(' / ')}) · peak ${s.peak} tiles · ${s.proposals} proposals · ${s.backtracks} backtracks · ${s.forcedMoves} forced moves · ${s.branches} branches · ${(state.computeMs/1000).toFixed(2)} s compute`;
   $('sevenGraph').textContent=`${g.points} frontier points · ${g.candidates} legal candidates · ${g.incidences} links · ${g.deadPoints} dead points · corona ${state.frontier.length?Math.min(...state.frontier.map(p=>p.depth)):'closed'}`;
+  const m=state.marking,c=state.completion;
+  $('sevenMarkingInfo').textContent=state.method==='gcts'?`Point marking: ${m.points} active points · ${m.values} assigned values · ${m.references} tile references. ${m.prunes.toLocaleString()} marking rejections.\nCorner propagation: ${c.prunes.toLocaleString()} rejections · ${c.cached.toLocaleString()} cached states (${c.negativeCached.toLocaleString()} impossible) · ${c.hits.toLocaleString()} cache hits.\nMarking source: ${state.rule==='socolar'?'published Socolar labels':'none (unmarked comparison)'}. No new marking is being trained.`:'Baseline: pairwise geometry and edge-arrow checks. No corner-completion propagation or trained marking.';
+  const event=state.event;
+  $('sevenEvent').textContent=event?.type==='dead'?'Dead frontier detected; the next step backtracks.':event?.type==='remove'?'Backtracked: this decorated candidate is excluded in this parent state.':event?.type==='add'?`${event.forced?'Forced placement':'Branch placement'} · ${event.choices} decorated alternatives at the selected point.`:'Ready. Geometrically identical candidates can carry different arrow assignments.';
+
 }
 function pump(step=false){if(busy||!worker||state?.done||(!running&&!step))return;busy=true;worker.postMessage({type:'advance',target,step});}
 function reset(){
   running=false;worker?.terminate();worker=null;state=null;view=null;target=$('sevenRule').value==='socolar'?20:40;busy=false;
   const kinds=[1,2,3].filter(k=>$('sevenTile'+k).checked);
-  $('sevenInfo').textContent='Click a vertex to inspect its exact coordinate and corner total.';
-  const rule=$('sevenRule').value;
+  $('sevenInfo').textContent='Click a vertex or edge midpoint to inspect its coordinate, total and marking.';
+  const rule=$('sevenRule').value,method=$('sevenMethod').value;
   $('sevenRuleInfo').textContent=rule==='socolar'?'Socolar’s published edge rule: shared arrows must have the same type and direction. Eight decorated variants per shape; same-shaped neighbors can be allowed.':'Unmarked rhombs: all geometrically legal edge-to-edge contacts are allowed. Periodic tilings are possible.';
   if(!kinds.length){status();$('sevenStatus').textContent='Choose at least one rhomb.';draw();return;}
-  worker=new Worker(new URL('./sevenfold-worker.js?v=20260924-socolar',import.meta.url),{type:'module'});const current=worker;busy=true;
+  worker=new Worker(new URL('./sevenfold-worker.js?v=20260924-gcts',import.meta.url),{type:'module'});const current=worker;busy=true;
   worker.onmessage=({data})=>{if(worker!==current)return;busy=false;state=data;if(data.done||data.paused)running=false;status();draw();if(running)setTimeout(()=>pump(),0);};
   worker.onerror=e=>{if(worker!==current)return;busy=false;running=false;state={error:e.message,done:true};status();};
-  worker.postMessage({type:'init',options:{kinds,rule,seed:Number($('sevenSeed').value)||1}});status();draw();
+  worker.postMessage({type:'init',options:{kinds,rule,method,seed:Number($('sevenSeed').value)||1}});status();draw();
 }
 function draw(){
   const rect=canvas.getBoundingClientRect();if(!rect.width)return;
@@ -36,7 +41,8 @@ function draw(){
   const unique=new Map();
   for(const tile of state.tiles){
     ctx.beginPath();tile.loop.map(screen).forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=colors[tile.kind];ctx.fill();ctx.strokeStyle='#3f5653';ctx.lineWidth=1;ctx.stroke();
-    tile.vertices.forEach((v,i)=>{if(!unique.has(v))unique.set(v,{point:tile.points[i],total:0});unique.get(v).total+=tile.weights[i];});
+    tile.support.forEach((p,i)=>{if(!unique.has(p.key))unique.set(p.key,{point:p.exact,total:0,midpoint:i>=4,marks:new Map()});unique.get(p.key).total+=p.weight;});
+    for(const m of tile.marks)unique.get(m.point.join(',')).marks.set(m.channel,m.value);
     if(state.rule==='socolar'&&$('sevenMarks').checked)for(const m of tile.marks){
       const p=screen(xy(m.point.map(n=>n/2))),v=xy(direction(2*m.channel)),sign=m.value&1?1:-1;
       const normalized=sign===1?m.value:m.value^7,type=normalized>>1,ux=v.x*sign,uy=-v.y*sign;
@@ -48,7 +54,7 @@ function draw(){
       ctx.stroke();
     }
   }
-  for(const p of unique.values()){const q=screen(xy(p.point));hits.push({...p,...q});ctx.beginPath();ctx.arc(q.x,q.y,p.total===14?1.5:2.5,0,2*Math.PI);ctx.fillStyle=p.total===14?'#486052':'#a44832';ctx.fill();}
+  for(const p of unique.values()){const q=screen(xy(p.point.map(n=>n/2)));hits.push({...p,...q});ctx.fillStyle=p.total===14?'#486052':'#a44832';if(p.midpoint){if(p.total<14)ctx.fillRect(q.x-1.5,q.y-1.5,3,3);}else{ctx.beginPath();ctx.arc(q.x,q.y,p.total===14?1.5:2.5,0,2*Math.PI);ctx.fill();}}
 }
 function setSystem(seven){
   if(seven&&$('runLearning').textContent==='Pause')$('runLearning').click();
@@ -61,13 +67,15 @@ function setSystem(seven){
 $('systemFive').onclick=()=>setSystem(false);$('systemSeven').onclick=()=>setSystem(true);
 $('sevenRun').onclick=()=>{if(state?.paused)target+=state.rule==='socolar'?20:40;running=!running;status();pump();};
 $('sevenStep').onclick=()=>{running=false;if(state?.paused)target+=state.rule==='socolar'?20:40;status();pump(true);};
-$('sevenReset').onclick=reset;$('sevenRule').onchange=reset;$('sevenSeed').onchange=reset;
+$('sevenReset').onclick=reset;$('sevenMethod').onchange=reset;$('sevenRule').onchange=reset;$('sevenSeed').onchange=reset;
 for(const k of [1,2,3])$('sevenTile'+k).onchange=reset;
 $('sevenMarks').onchange=draw;
 canvas.onclick=e=>{
   const rect=canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
   const p=hits.reduce((a,b)=>Math.hypot(b.x-x,b.y-y)<Math.min(12,a?Math.hypot(a.x-x,a.y-y):Infinity)?b:a,null);if(!p)return;
-  const terms=p.point.map((n,i)=>!n?'':i===0?String(n):`${n===1?'':n===-1?'-':n}\\zeta_7${i===1?'':`^{${i}}`}`).filter(Boolean).join('+').replaceAll('+-','-')||'0';
-  window.MathJax?.typesetClear?.([$('sevenInfo')]);$('sevenInfo').textContent=`\\(${terms}\\), \\(T(p)=\\frac{${p.total}}{14}\\). ${p.total===14?'Full corner.':'Frontier obligation.'}`;typeset($('sevenInfo'));
+  const integral=p.point.every(n=>n%2===0),coordinates=integral?p.point.map(n=>n/2):p.point;
+  const terms=coordinates.map((n,i)=>!n?'':i===0?String(n):`${n===1?'':n===-1?'-':n}\\zeta_7${i===1?'':`^{${i}}`}`).filter(Boolean).join('+').replaceAll('+-','-')||'0';
+  const coordinate=integral?terms:`\\frac{${terms}}{2}`,markText=[...p.marks].map(([channel,value])=>`\\(m_{${channel}}(p)=${value}\\)`).join(', ');
+  window.MathJax?.typesetClear?.([$('sevenInfo')]);$('sevenInfo').textContent=`${p.midpoint?'Edge midpoint':'Vertex'} \\(${coordinate}\\), \\(T(p)=\\frac{${p.total}}{14}\\). ${p.total===14?'Complete.':'Frontier obligation.'} ${markText||'No marking assigned here.'}`;typeset($('sevenInfo'));
 };
 new ResizeObserver(draw).observe(canvas);setSystem(new URL(location.href).searchParams.get('ring')==='7');

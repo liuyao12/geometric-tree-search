@@ -1,4 +1,4 @@
-import {createSevenfoldSearch} from '../../assets/sevenfold-rhombs.js?v=20260924-socolar';
+import {createSevenfoldSearch} from '../../assets/sevenfold-rhombs.js?v=20260924-gcts';
 let search,done=false,computeMs=0;
 self.onmessage=({data})=>{try{
   const start=performance.now();let event=null,paused=false;
@@ -6,8 +6,8 @@ self.onmessage=({data})=>{try{
   else if(search&&!done){
     do {
       const result=search.next();done=result.done;event=result.value;
-      const s=search.snapshot();
-      paused=s.tiles.length>=data.target&&s.graph.deadPoints===0;
+      const s=search.progress();
+      paused=s.tiles>=data.target&&s.deadPoints===0;
       if(done||paused||data.step)break;
     }while(performance.now()-start<35);
   }

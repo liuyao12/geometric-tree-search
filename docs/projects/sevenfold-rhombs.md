@@ -12,9 +12,16 @@ Coordinates are exact safe integers in the independent basis
 Directions are \((-\zeta_7^4)^j=e^{j\pi i/7}\).
 Overflow throws rather than rounding. The point domain is the algebraic
 module, which is dense in its physical embedding, not a discrete planar lattice.
-The search activates only the finitely many exposed vertex obligations.
+The point domain is \(\tfrac12\mathbb Z[\zeta_7]\), stored as doubled
+integer coordinates; translations remain in \(\mathbb Z[\zeta_7]\).
+The search activates the finitely many exposed vertex and edge-midpoint
+obligations. Midpoint alignment tests exact coordinate parity so no
+half-integral tile translation enters the catalog.
 
 The corner support has integer weights \(k,7-k,k,7-k\), with capacity \(14\).
+Each of the four edge midpoints also carries weight \(7\), requiring
+its other half. Omitting these obligations in the previous implementation
+allowed corner filling to postpone exposed edges and caused deep backtracking.
 This is not a faithful polygon model by itself. The explicitly labeled
 **geometric control** also checks convex polygon separation and rejects
 vertex-on-edge-interior contacts. These predicates use floating point with
@@ -76,8 +83,10 @@ patches or the floating-point implementation’s certification status.
 
 ## Contract evidence and gaps
 
-- Uses the complete shared point–candidate graph. Every new frontier vertex
+- Uses the complete shared point–candidate graph. Every new frontier point
   enumerates every selected orientation and positive-support alignment.
+  Candidate records retain their exact support weights. Tests independently
+  enumerate all vertex and midpoint alignments, including parity restrictions.
 - Selects from the graph using global dead ends, global forced moves, then
   earliest generation. Minimum degree only breaks generation ties. This
   adapter reads the graph directly and does not change existing Penrose
@@ -93,10 +102,24 @@ patches or the floating-point implementation’s certification status.
   frontier point. It is a finite consistent patch, not an exact finite target
   solution or a proof of infinite extension. Untouched points are not fairly
   activated across the entire infinite module.
-- No RL, GCTS training, local impossibility certificates, or substitution
-  oracle is implemented. The Socolar arrows are a known-rule control.
+- GCTS maintains the published marking as a global field, with exact value
+  equality and reference counts. A conflict removes the candidate at every
+  incident frontier point. Missing and assigned zero are distinct. Marking
+  points are inside the tile footprint, making this adapter's spatial
+  dependency index sufficient; no extended marking domain is assumed.
+- A supplemental, proved local constraint checks whether the remaining
+  angular sectors at each affected vertex can be filled with selected
+  decorated corners. It exhausts a finite transition system on \(14\)
+  sectors and \(8\) edge labels. Failure proves a local obstruction;
+  success does not prove global extendibility. This filter removes candidates
+  through the same graph and never changes the scheduler.
+- The bounded corner cache holds exact feasibility results for the fixed
+  catalog. It survives branch rollback, resets on catalog/rule changes, and
+  stores no learned marking. No RL, marking training or substitution oracle
+  is implemented. The supplied Socolar labels are problem-defining markings;
+  the corner test is a redundant constraint for that marked geometric problem.
 - Candidate ordering within the selected point favors filling existing
-  corners, then a seeded deterministic hash. It does not exclude candidates.
+  point deficits, then a seeded deterministic hash. It does not exclude candidates.
   A bounded geometry cache shares results across decoration variants.
 - Geometry tolerances remain a certification gap; reported patches are
   numerical geometric controls. The tests independently clip polygons to
@@ -117,6 +140,28 @@ clipping checks nonoverlap; replay checks capacities and matching. Direct
 reading of 685 row chains checks alternation of the two other-axis choices.
 These are finite implementation checks, not a new proof of Socolar’s theorem.
 The original equal-neighbor benchmark numbers are obsolete for this rule.
+
+`tests/test_sevenfold_point_marking.mjs` checks assigned-zero semantics and
+reference rollback, full positive-support alignment enumeration, and the
+corner filter against an independent sector-mask exact-cover backtracker.
+It replays full and partial vertex stars from the independent seven-grid
+witness, checks bounded-cache reuse, and grows an \(80\)-tile patch without
+any repeated decorated attempt in the same parent state. The main regression
+also checks exact restoration of the active marking field on backtracking.
+
+## Reproducible growth comparison
+
+With all shapes selected, Socolar labels, seed \(1\), and the same complete
+vertex/midpoint support model, the default GCTS mode reaches \(80\) tiles
+after \(119\) proposals, \(40\) backtracks and \(68\) forced moves.
+The pairwise-check baseline reaches a peak of \(38\) tiles within a budget
+of \(400\) proposals; it stops at \(19\) tiles with status unknown.
+Both use the same scheduler, ordering and geometric controls. This is one
+deterministic instance, not a claim of general speedup or guaranteed growth.
+The baseline still enforces the supplied arrows; it omits the global-field
+implementation and corner-completion propagation. Neither mode trains new
+markings. The UI exposes the actual marking rejections, completion cache,
+forced moves and backtracking, and allows inspection of midpoint values.
 
 ## Literature
 
