@@ -24,6 +24,8 @@ surrounds with no topological-ball requirement. Its exhaustive formula is
 unsatisfiable, with a separately checked proof. [Watch the complete recorded
 search](nonacube-search-replay.html), including all decisions and backtracks,
 or inspect its largest connected patch of 39 crosses, including the root.
+The [collapsible search directory](nonacube-search-tree.html) provides direct
+access to every recorded conflict leaf and its exact three-dimensional state.
 
 This does not settle arbitrary Euclidean placements or the unrestricted
 three-dimensional Heesch number. The previously located catalogue has no tiling

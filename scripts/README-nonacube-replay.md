@@ -2,6 +2,32 @@
 
 [Open the player](../docs/projects/nonacube-search-replay.html).
 
+[Browse the collapsible directory](../docs/projects/nonacube-search-tree.html).
+Every recorded decision visit is a folder, every conflict is a numbered leaf,
+and backjumps and the terminal result are selectable entries. Search phases
+group restarts. Long single-child decision paths are compacted visually; their
+Choices dialog exposes every individual decision. Numbered conflicts can be
+opened directly with a URL fragment such as `#conflict=265000`; arbitrary events
+use one-based fragments such as `#event=1452067`. The full replay's `frame`
+query parameter is zero-based for compatibility with the recording.
+
+The directory is an index of the existing trace, not a new solver. Generate and
+verify it with:
+
+```sh
+python3 scripts/export-nonacube-search-tree.py
+python3 scripts/verify-nonacube-search-tree.py
+```
+
+The tree verifier checks every event and its decision-stack parent against the
+source recording, traverses all first-child/next-sibling links to verify unique
+reachability and chronological order, and checks every leaf ordinal and subtree
+count. All 1,965,589 events and 529,855 conflict leaves are reachable. Folder
+counts are conflict counts; return entries are not additional contradictions.
+The browser loads phases on demand and renders only the visible directory rows.
+This display does not change the search algorithm or expand learned pruning
+into invented visits to unvisited branches.
+
 The recorded Glucose 3.0 run has 900,768 Boolean decisions, 529,855 conflicts,
 532,409 backjumps and 2,556 search starts, including the initial start. Every
 one is retained in 1,965,589 playback events. Positive tile enqueues and removals

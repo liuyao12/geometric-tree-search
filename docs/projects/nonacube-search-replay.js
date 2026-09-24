@@ -6,6 +6,15 @@ for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++)offsets.push([
 const add=(a,b)=>a.map((v,i)=>v+b[i]);
 let manifest,chunk,chunkIndex=-1,index=-1,selected=new Set(),count,playing=false,busy=false,token=0,clock=0,last=0;
 const cache=new Map(),cellCache=new Map();
+let requestedFrame=Number(new URLSearchParams(location.search).get('frame')??0);
+if(!Number.isSafeInteger(requestedFrame)||requestedFrame<0)requestedFrame=0;
+window.addEventListener('message',e=>{
+  if(e.source!==parent||e.origin!==location.origin||e.data?.type!=='nonacube-seek')return;
+  const frame=e.data.frame;if(!Number.isSafeInteger(frame)||frame<0)return;
+  requestedFrame=frame;if(manifest)manual(()=>seek(frame));
+});
+function tellParent(type,extra={}){if(parent!==window)parent.postMessage({type,...extra},location.origin);}
+new ResizeObserver(()=>tellParent('nonacube-height',{height:document.querySelector('main').scrollHeight})).observe(document.querySelector('main'));
 function cells(id){
   if(id===0)return manifest.root;
   if(!cellCache.has(id)){
@@ -63,6 +72,7 @@ function renderPatch(){
   drawDepth();
   // Read-only audit surface for browser smoke tests and exact frame inspection.
   window.nonacubeReplay={index,event:op,selected:[...selected],tileCount,connected:component.size,covered,overlaps,counts:{...count},playing};
+  tellParent('nonacube-state',{index,event:op,tileCount,overlaps});
 }
 function drawDepth(){
   if(!chunk)return;const canvas=$('depth'),w=canvas.clientWidth,h=75;canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
@@ -122,6 +132,7 @@ try{
   $('total').textContent=`${fmt(manifest.counts.decisions)} decisions · ${fmt(manifest.counts.conflicts)} conflicts`;
   const best=manifest.largestConnected;
   $('largest-summary').textContent=`The largest root-connected patch has ${best.tileCount} tiles (${best.tileCount*9} unit cubes), including the root. At that event it covers ${best.rootHaloCovered} of ${best.rootHaloRequired} root-surround cells. The largest total nonoverlapping selection has ${manifest.largest.tileCount} tiles, counting detached pieces.`;
-  $('scrub').max=manifest.frames-1;await seek(0);
+  $('scrub').max=manifest.frames-1;await seek(requestedFrame);
+  tellParent('nonacube-ready',{index});
   for(const el of document.querySelectorAll('button,input[type=range]'))el.disabled=false;
 }catch(e){fail(e);}
