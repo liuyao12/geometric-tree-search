@@ -13,12 +13,18 @@
     "knuckle",
     "2_semicross",
     "letter_o",
-    "tuning_fork"
+    "tuning_fork",
+    "polycube_p9_02127",
+    "polycube_p9_24025"
   ],
-  "note": "Known periodic polycubes are excluded from further corona searches and benchmarks. Three additional candidates were resolved by two-copy cyclic-quotient certificates during this audit; earlier bounded corona runs are retained as historical discovery data.",
+  "note": "Known periodic polycubes are excluded from further corona searches and benchmarks. Three additional candidates were resolved by two-copy cyclic-quotient certificates during this audit; earlier bounded corona runs are retained as historical discovery data. Source audit corrected two additional unresolved labels using Papoutsis\u2019s published twelve-copy witnesses; see papoutsis/audit.json.",
   "newlyCertifiedPeriodic": [
     "2_semicross",
     "letter_o",
     "tuning_fork"
+  ],
+  "externallyCertifiedPeriodic": [
+    "polycube_p9_02127",
+    "polycube_p9_24025"
   ]
 }

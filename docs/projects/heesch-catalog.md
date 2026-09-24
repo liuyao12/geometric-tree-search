@@ -238,3 +238,77 @@ python scripts/heesch-catalog/benchmark.py --ids polycube_p10_052588 \
 
 Proof recording is a separate run from the timing benchmark. Complete graph
 proofs, formula archives, and checker receipts are linked from the study data.
+
+
+## External source audit and corrections
+
+On 2026-09-24 we audited Georgios Papoutsis's
+[whuts-solver repository](https://github.com/gepa71/whuts-solver/tree/81eea57137d46dffb8fdc8c74e3c500845d3276b),
+pinned to its 2021-06-02 commit. His [2021 account](https://math.stackexchange.com/questions/4142544/smallest-non-space-filling-polycube/4150301#4150301)
+reports constructive periodic searches, later using Knuth's Algorithm X.
+An unsuccessful search is explicitly not a non-tiling proof.
+
+**Correction to this audit:** p9-02127 and p9-24025 were incorrectly retained as
+unresolved despite published twelve-copy periodic witnesses. Their lattice
+Heesch numbers are \(H=\infty\). Our historical bounded searches remain valid
+records of those searches; they did not establish the literature status.
+The interactive table and tiler catalog now classify both as periodic controls.
+
+| Papoutsis index | Our catalog entry | Published witness / our result |
+| --- | --- | --- |
+| 1345 | p9-02127 | Twelve-copy periodic witness, independently checked |
+| 12982 | p9-24025 | Twelve-copy periodic witness, independently checked |
+| 22933 | p9-43172 | Eight-copy periodic witness, independently checked |
+| 4921 | p9-08203 | Empty source result; our exact Heesch value remains unresolved |
+| 4931 | p9-08219 | Empty source result; our exact Heesch value remains unresolved |
+| 10958 | p9-20656 | Empty source result; our exact Heesch value remains unresolved |
+| 22768 | p9-42947 | Empty source result; our exact Heesch value remains unresolved |
+| 25373 | p9-48258 / nonacube cross | Empty source result; our checked lattice result is \(H=1\) |
+
+The source's three-dimensional input and result file counts agree: 607
+heptacubes with no empty result files, 3811 octacubes with only entry 834 empty
+(the planar eight-cube ring), and 25413 nonacubes with the five empty files
+listed above. **These inventory counts are not an independent verification of
+every tiling in that repository.** The audit independently replays ten selected
+positive certificates: all seven positive matches to our catalog and the three
+heptacube examples 144, 272, and 556 that corrected older non-tiling claims.
+All ten pass. Every source-to-catalog correspondence is checked geometrically;
+source numbering is not assumed to match ours.
+
+The separate non-tiling claim for the eight-cube ring comes from other work
+mentioned in the Stack Exchange discussion, not from Papoutsis's empty file.
+We have not reconstructed that separate proof in this source audit.
+
+A witness gives a motif size, not by itself a proof that this is the smallest
+possible motif. The author's minimality claim for entry 1345 depends on his
+exhaustive smaller-period search, which this replay does not independently
+certify. The repository also describes an earlier incomplete period-lattice
+enumeration and its subsequent correction; positive witnesses can be checked
+without relying on either search implementation.
+
+His [four-dimensional report](https://math.stackexchange.com/questions/4156024/smallest-non-4-space-filling-polytesseract)
+claims tilings through ten cells. A later 2022 comment leaves three eleven-cell
+candidates without tilings after a bounded search, and says the search was
+stopped. Those are unresolved candidates in that report, not proved non-tilers.
+We did not replay the four-dimensional census here.
+
+### Independent periodic certificate check
+
+Let the rows of the nonsingular integer matrix \(B\) be the three period
+vectors. For every voxel coordinate \(x\), compute exactly
+\[
+x\operatorname{adj}(B)\pmod{|\det B|}.
+\]
+Equal keys are equivalent precisely modulo the period lattice. We check that
+every motif tile is a proper rotation and integer translation of the prototype,
+and that the motif contains exactly \(|\det B|\) voxels with distinct keys.
+This proves the translates cover the entire lattice without overlaps.
+No floating-point geometry or SAT solver is used by this verifier.
+
+Archived witnesses retain their source coordinates and attribution. Their
+source paths, commit, hashes, catalog mappings, and checks are recorded in
+[`papoutsis/audit.json`](../../data/heesch-catalog/papoutsis/audit.json).
+
+```sh
+python3 scripts/heesch-catalog/verify_papoutsis.py
+```

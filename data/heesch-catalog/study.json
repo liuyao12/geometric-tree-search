@@ -1,5 +1,6 @@
 {
   "date": "2026-09-24",
+  "externalSourceAudit": "data/heesch-catalog/papoutsis/audit.json",
   "scope": "Potential non-tilers only. Known space-fillers and periodic controls excluded; aliases consolidated.",
   "newlyCertifiedPeriodic": [
     {
@@ -2138,115 +2139,6 @@
       "note": "Verified corona witness; deeper cutoffs remain unresolved."
     },
     {
-      "id": "polycube_p9_02127",
-      "name": "p9-02127 \u00b7 9 cubes",
-      "voxels": [
-        [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          0,
-          2
-        ],
-        [
-          0,
-          0,
-          3
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          0,
-          1,
-          2
-        ],
-        [
-          0,
-          2,
-          0
-        ],
-        [
-          0,
-          2,
-          1
-        ],
-        [
-          0,
-          3,
-          0
-        ]
-      ],
-      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
-      "evidence": [
-        "data/heesch-catalog/runs/polycube_p9_02127-k1.json"
-      ],
-      "runs": [
-        {
-          "id": "polycube_p9_02127",
-          "k": 1,
-          "buildSeconds": 0.02917804200000007,
-          "placements": 2198,
-          "variables": 20934,
-          "clauses": 55438,
-          "status": "SAT",
-          "solveSeconds": 0.0013995420000001424,
-          "stats": {
-            "restarts": 1,
-            "conflicts": 22,
-            "decisions": 1670,
-            "propagations": 32653
-          }
-        },
-        {
-          "id": "polycube_p9_02127",
-          "k": 2,
-          "buildSeconds": 0.893267791999989,
-          "placements": 33252,
-          "variables": 326708,
-          "clauses": 1046464,
-          "status": "unknown",
-          "solveSeconds": 15.019268999999994,
-          "stats": {
-            "restarts": 282,
-            "conflicts": 90452,
-            "decisions": 1033284,
-            "propagations": 165808832
-          }
-        },
-        {
-          "status": "unknown",
-          "seconds": 15.093002832960337,
-          "nodes": 19969,
-          "terminalLeavesVisited": 12332,
-          "branchPoints": 7636,
-          "forcedMoves": 17026,
-          "learnedPatterns": 349,
-          "roleAtoms": 1350,
-          "markUnitEvents": 32035,
-          "id": "polycube_p9_02127",
-          "k": 2,
-          "lane": "affine-GCTS",
-          "preparationSeconds": 1.767179625108838,
-          "partialRulesArchivedLocally": true
-        }
-      ],
-      "lower": 1,
-      "exact": null,
-      "witnessFile": "data/heesch-catalog/runs/polycube_p9_02127-k1.json",
-      "note": "Verified corona witness; deeper cutoffs remain unresolved."
-    },
-    {
       "id": "polycube_p9_08203",
       "name": "p9-08203 \u00b7 9 cubes",
       "voxels": [
@@ -2571,115 +2463,6 @@
       "lower": 1,
       "exact": null,
       "witnessFile": "data/heesch-catalog/runs/polycube_p9_20656-k1.json",
-      "note": "Verified corona witness; deeper cutoffs remain unresolved."
-    },
-    {
-      "id": "polycube_p9_24025",
-      "name": "p9-24025 \u00b7 9 cubes",
-      "voxels": [
-        [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          1,
-          0,
-          1
-        ],
-        [
-          1,
-          1,
-          1
-        ],
-        [
-          1,
-          1,
-          2
-        ],
-        [
-          2,
-          0,
-          1
-        ],
-        [
-          2,
-          0,
-          2
-        ],
-        [
-          3,
-          0,
-          1
-        ]
-      ],
-      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
-      "evidence": [
-        "data/heesch-catalog/runs/polycube_p9_24025-k1.json"
-      ],
-      "runs": [
-        {
-          "id": "polycube_p9_24025",
-          "k": 1,
-          "buildSeconds": 0.06448004200000002,
-          "placements": 4400,
-          "variables": 43070,
-          "clauses": 115354,
-          "status": "SAT",
-          "solveSeconds": 0.008705415999999966,
-          "stats": {
-            "restarts": 1,
-            "conflicts": 72,
-            "decisions": 3739,
-            "propagations": 83154
-          }
-        },
-        {
-          "id": "polycube_p9_24025",
-          "k": 2,
-          "buildSeconds": 2.298142459000019,
-          "placements": 58424,
-          "variables": 579510,
-          "clauses": 1908100,
-          "status": "unknown",
-          "solveSeconds": 15.069551207999979,
-          "stats": {
-            "restarts": 100,
-            "conflicts": 39221,
-            "decisions": 398724,
-            "propagations": 66264189
-          }
-        },
-        {
-          "status": "unknown",
-          "seconds": 15.22046829201281,
-          "nodes": 20225,
-          "terminalLeavesVisited": 11629,
-          "branchPoints": 8595,
-          "forcedMoves": 12786,
-          "learnedPatterns": 775,
-          "roleAtoms": 3399,
-          "markUnitEvents": 65953,
-          "id": "polycube_p9_24025",
-          "k": 2,
-          "lane": "affine-GCTS",
-          "preparationSeconds": 3.8325861669145525,
-          "partialRulesArchivedLocally": true
-        }
-      ],
-      "lower": 1,
-      "exact": null,
-      "witnessFile": "data/heesch-catalog/runs/polycube_p9_24025-k1.json",
       "note": "Verified corona witness; deeper cutoffs remain unresolved."
     },
     {
@@ -3850,10 +3633,10 @@
     }
   ],
   "counts": {
-    "candidates": 21,
+    "candidates": 19,
     "finite": 9,
     "zero": 7,
     "one": 2,
-    "unresolved": 12
+    "unresolved": 10
   }
 }

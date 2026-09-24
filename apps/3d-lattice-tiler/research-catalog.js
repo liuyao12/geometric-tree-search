@@ -3,6 +3,8 @@ import {POLYCUBE_GCTS_CANDIDATES} from '../../assets/polycube-census-candidates.
 // Catalogue metadata and geometry only. No labels or learned assignments enter
 // the live learner; evidence links describe separately recorded experiments.
 const updates={
+ 'p9-02127':{periodic:true,note:'Periodic tiler: Georgios Papoutsis published a twelve-copy motif in 2021 (entry 1345). Independently replayed by exact lattice-quotient coverage; earlier bounded searches did not settle this tile.',evidence:'docs/projects/heesch-catalog.html#source-audit'},
+ 'p9-24025':{periodic:true,note:'Periodic tiler: Georgios Papoutsis published a twelve-copy motif in 2021 (entry 12982). Independently replayed by exact lattice-quotient coverage; earlier bounded searches did not settle this tile.',evidence:'docs/projects/heesch-catalog.html#source-audit'},
  'p10-346304':{priority:0,note:'Threefold-symmetric ten-cube candidate. Recorded pair-corona work resolves 54 positive and 24 negative pairs; 1,846 remain unresolved. A viable-frontier finite patch is known. Infinite tiling remains unresolved.',evidence:'docs/projects/3d-viable-frontier-search.md'},
  'p9-42947':{priority:1,note:'Nine-cube candidate with a completed 1,408-pair research catalogue (1,405 positive, 3 negative) and verified viable-frontier patches. Infinite tiling remains unresolved; fitting every local pair did not resolve larger growth.',evidence:'docs/projects/3d-point-corona-sat.md#p9-42947-complete-classification-and-limits-of-the-pair-marking'},
  'p10-054782':{priority:2},'p10-055695':{priority:3},'p10-290795':{priority:4},
@@ -13,7 +15,7 @@ const updates={
 };
 export const RESEARCH_TILES=POLYCUBE_GCTS_CANDIDATES.map((candidate,index)=>{
  const s=candidate.screening,u=updates[candidate.id]??{};
- const periodic=['translational','isohedral_periodic_quotient'].includes(s.certificate),unresolved=s.status==='inconclusive';
+ const periodic=u.periodic===true||['translational','isohedral_periodic_quotient'].includes(s.certificate),unresolved=!periodic&&s.status==='inconclusive';
  const group=unresolved?'Unresolved polycube research':periodic?'Periodic polycube controls':'Grid non-tiling controls';
  const category=unresolved?'Unresolved Polycube Candidates':periodic?'GCTS Periodic Controls':'GCTS Non-Tiler Controls';
  const through=s.periodic_exact_through??s.periodic_hnf_max_motif_tiles;

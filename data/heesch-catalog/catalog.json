@@ -2621,11 +2621,11 @@
     {
       "id": "polycube_p9_02127",
       "name": "p9-02127 · 9 cubes",
-      "group": "Unresolved polycube research",
-      "note": "9-cube candidate. Recorded periodic screening found no motif through 11 copies; a radius-2 corona was verified. Larger extension remains unresolved.",
-      "evidence": "data/polycube-volume9-fresh-census-2026-08-25.json",
+      "group": "Periodic polycube controls",
+      "note": "Periodic tiler: Georgios Papoutsis published a twelve-copy motif in 2021 (entry 1345). Independently replayed by exact lattice-quotient coverage; earlier bounded searches did not settle this tile.",
+      "evidence": "docs/projects/heesch-catalog.html#source-audit",
       "categories": [
-        "Unresolved Polycube Candidates",
+        "GCTS Periodic Controls",
         "Polycubes"
       ],
       "components": [
@@ -4575,11 +4575,11 @@
     {
       "id": "polycube_p9_24025",
       "name": "p9-24025 · 9 cubes",
-      "group": "Unresolved polycube research",
-      "note": "9-cube candidate. Recorded periodic screening found no motif through 9 copies; a radius-2 corona was verified. Larger extension remains unresolved.",
-      "evidence": "data/polycube-volume9-fresh-census-2026-08-25.json",
+      "group": "Periodic polycube controls",
+      "note": "Periodic tiler: Georgios Papoutsis published a twelve-copy motif in 2021 (entry 12982). Independently replayed by exact lattice-quotient coverage; earlier bounded searches did not settle this tile.",
+      "evidence": "docs/projects/heesch-catalog.html#source-audit",
       "categories": [
-        "Unresolved Polycube Candidates",
+        "GCTS Periodic Controls",
         "Polycubes"
       ],
       "components": [

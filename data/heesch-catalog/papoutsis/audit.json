@@ -1,0 +1,803 @@
+{
+  "sourceRepository": "https://github.com/gepa71/whuts-solver",
+  "sourceCommit": "81eea57137d46dffb8fdc8c74e3c500845d3276b",
+  "sourceCommitDate": "2021-06-02",
+  "auditDate": "2026-09-24",
+  "inventoryByFilePresence": {
+    "heptacube": {
+      "inputCount": 607,
+      "resultFiles": 607,
+      "emptyFiles": [],
+      "inputSHA256": "dd8afa0659eef31963a9e9fe8754934793f23173c66d3b5b86af0952e3888e41"
+    },
+    "octocube": {
+      "inputCount": 3811,
+      "resultFiles": 3811,
+      "emptyFiles": [
+        834
+      ],
+      "inputSHA256": "f101ab961b605217e5fdc202e244e863e711c562a51c8463edc648b8bf922cf5"
+    },
+    "nonocube": {
+      "inputCount": 25413,
+      "resultFiles": 25413,
+      "emptyFiles": [
+        4921,
+        4931,
+        10958,
+        22768,
+        25373
+      ],
+      "inputSHA256": "2001c83b9504be3d34e0a21228a8a73a6ea86374424cd6f7f2569934629749c7"
+    }
+  },
+  "matches": [
+    {
+      "id": "polycube_p9_42947",
+      "index": 22768,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_22768.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_02127",
+      "index": 1345,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_01345.json",
+      "hasCertificate": true,
+      "copies": 12,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_08203",
+      "index": 4921,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_04921.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_08219",
+      "index": 4931,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_04931.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_20656",
+      "index": 10958,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_10958.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          6
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_24025",
+      "index": 12982,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_12982.json",
+      "hasCertificate": true,
+      "copies": 12,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_48258",
+      "index": 25373,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_25373.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "polycube_p9_43172",
+      "index": 22933,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_22933.json",
+      "hasCertificate": true,
+      "copies": 8,
+      "inputEntry": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "nonacube_cross",
+      "index": 25373,
+      "reflectionUsedForMatch": false,
+      "path": "results/nonocube_solutions/solution_25373.json",
+      "hasCertificate": false,
+      "copies": 0,
+      "inputEntry": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "twisted_h",
+      "index": 597,
+      "reflectionUsedForMatch": false,
+      "path": "results/heptacube_solutions/solution_0597.json",
+      "hasCertificate": true,
+      "copies": 1,
+      "inputEntry": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "1_cross",
+      "index": 606,
+      "reflectionUsedForMatch": false,
+      "path": "results/heptacube_solutions/solution_0606.json",
+      "hasCertificate": true,
+      "copies": 1,
+      "inputEntry": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "2_semicross",
+      "index": 166,
+      "reflectionUsedForMatch": false,
+      "path": "results/heptacube_solutions/solution_0166.json",
+      "hasCertificate": true,
+      "copies": 2,
+      "inputEntry": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "1_cross_plus",
+      "index": 3807,
+      "reflectionUsedForMatch": false,
+      "path": "results/octocube_solutions/solution_3807.json",
+      "hasCertificate": true,
+      "copies": 1,
+      "inputEntry": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "path": "results/heptacube_solutions/solution_0144.json",
+      "copies": 4,
+      "volume": 28,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0144.json",
+      "sha256": "29bbbcb420f52c6882f8cad16070abaed3a182c6c69a8235da6bef1414b65333"
+    },
+    {
+      "path": "results/heptacube_solutions/solution_0166.json",
+      "copies": 2,
+      "volume": 14,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0166.json",
+      "sha256": "f29daff391ceafcf9aed31a8d0f51aac8cb5e32ea1f7316be98da653cef0c8be"
+    },
+    {
+      "path": "results/heptacube_solutions/solution_0272.json",
+      "copies": 2,
+      "volume": 14,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0272.json",
+      "sha256": "dd3f8f66090a9b0755aa046ac22cfc70f0d98b0f2de9eb9c280961f7bddac731"
+    },
+    {
+      "path": "results/heptacube_solutions/solution_0556.json",
+      "copies": 4,
+      "volume": 28,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0556.json",
+      "sha256": "6558e523e2a20a4e44fa37fd4e2238f174ea3fc1fab0228ad3aec761a89dd421"
+    },
+    {
+      "path": "results/heptacube_solutions/solution_0597.json",
+      "copies": 1,
+      "volume": 7,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0597.json",
+      "sha256": "18f09b477381d00ffe67449074f7d4b23930ff3ac9908a05d3ffb19db4bad5e6"
+    },
+    {
+      "path": "results/heptacube_solutions/solution_0606.json",
+      "copies": 1,
+      "volume": 7,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_0606.json",
+      "sha256": "b879409b5ff6695b0ecdda8dd1590a0f65d900622cd078fc3ed16197ce8f43d5"
+    },
+    {
+      "path": "results/nonocube_solutions/solution_01345.json",
+      "copies": 12,
+      "volume": 108,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_01345.json",
+      "sha256": "af922e293d959ffbe1077fcc65a05e5ff904909ec746f655682178253e4d2a2c"
+    },
+    {
+      "path": "results/nonocube_solutions/solution_12982.json",
+      "copies": 12,
+      "volume": 108,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_12982.json",
+      "sha256": "5ff3c001a7d99bee21bada811537b8c0d7c1fa39bd69831bb63ac2c05ebe7497"
+    },
+    {
+      "path": "results/nonocube_solutions/solution_22933.json",
+      "copies": 8,
+      "volume": 72,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_22933.json",
+      "sha256": "a1170c062ec1ee67e37070e09d9ccfcf0e61069c98ab1a6d8e31d18aab47c6e9"
+    },
+    {
+      "path": "results/octocube_solutions/solution_3807.json",
+      "copies": 1,
+      "volume": 8,
+      "verified": true,
+      "localFile": "data/heesch-catalog/papoutsis/solution_3807.json",
+      "sha256": "0e12be6620d17a5dfd7795eb7a3596500e9ed17fd3210ceb353a94d551fab308"
+    }
+  ],
+  "scope": "Ten selected positive certificates independently replayed; inventory counts are file-presence checks, not verification of every positive file. No minimum-period claim is verified.",
+  "corrections": [
+    "polycube_p9_02127",
+    "polycube_p9_24025"
+  ]
+}
