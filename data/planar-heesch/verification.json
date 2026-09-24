@@ -1,0 +1,24 @@
+{
+  "tinyChecks": [
+    {
+      "family": "omino",
+      "tinyCandidateUniverses": true,
+      "deletedTileRejected": true
+    },
+    {
+      "family": "hex",
+      "tinyCandidateUniverses": true,
+      "deletedTileRejected": true
+    },
+    {
+      "family": "iamond",
+      "tinyCandidateUniverses": true,
+      "deletedTileRejected": true
+    }
+  ],
+  "witnessesReplayed": 813,
+  "formulasRegenerated": 349,
+  "periodicCertificatesReplayed": 1747,
+  "publishedFiniteValuesMatched": 345,
+  "engineSHA256": "4e2624b8e4a79de7a203a419263c5e910d9af637db3c94268727869d26300c93"
+}
