@@ -7,8 +7,8 @@ const updates={
  'p9-42947':{priority:1,note:'Nine-cube candidate with a completed 1,408-pair research catalogue (1,405 positive, 3 negative) and verified viable-frontier patches. Infinite tiling remains unresolved; fitting every local pair did not resolve larger growth.',evidence:'docs/projects/3d-point-corona-sat.md#p9-42947-complete-classification-and-limits-of-the-pair-marking'},
  'p10-054782':{priority:2},'p10-055695':{priority:3},'p10-290795':{priority:4},
  'p9-48258':{note:'Nine-cube cross with an independently checked integer-grid non-tiling proof. Useful as a delayed-obstruction control, not an unresolved aperiodic candidate. The proof does not cover unrestricted Euclidean placements.',evidence:'docs/projects/p9-48258-grid-obstruction.md'},
- 'p10-052588':{note:'Ten-cube delayed-obstruction control. Recorded complete radius-three-to-four exhaustion excludes extension in the original voxel-corona model.',evidence:'data/polycube-p10-052588-complete-radius3-exhaustion-2026-08-23.json'},
- 'p10-052670':{note:'Ten-cube obstruction control with a verified first corona and a recorded exhausted radius-two check.'},
+ 'p10-052588':{note:'Lattice Heesch number: one; a full touching-tile first corona exists, and a complete second-corona exclusion is independently checked. The historical voxel-distance radii used a different convention.',evidence:'docs/projects/heesch-catalog.html'},
+ 'p10-052670':{note:'Lattice Heesch number: zero; no full face/edge/vertex first corona. The old radius-one witness covered a voxel-distance window, not a touching-tile corona.',evidence:'docs/projects/heesch-catalog.html'},
  'p9-43172':{note:'Nine-cube periodic control with a verified eight-copy quotient construction. Eight is the size of a found motif, not a claimed minimum period.'}
 };
 export const RESEARCH_TILES=POLYCUBE_GCTS_CANDIDATES.map((candidate,index)=>{

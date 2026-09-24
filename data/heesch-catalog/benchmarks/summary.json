@@ -1,0 +1,741 @@
+{
+  "python": "3.12.14",
+  "host": "arm64",
+  "repetitions": 3,
+  "sequential": true,
+  "proofRecordingInTimedRuns": false,
+  "results": [
+    {
+      "id": "polycube_p10_052670",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 4.979083314538002e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.04996866686269641,
+          "engineSetupSeconds": 0.020275041926652193,
+          "totalSeconds": 0.07029349962249398
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 4.879198968410492e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.055300832726061344,
+          "engineSetupSeconds": 0.017091292422264814,
+          "totalSeconds": 0.07244091713801026
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 4.679197445511818e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.06321137491613626,
+          "engineSetupSeconds": 0.01653420925140381,
+          "totalSeconds": 0.07979237614199519
+        }
+      ],
+      "medianSearchSeconds": 4.879198968410492e-05,
+      "medianTotalSeconds": 0.07244091713801026
+    },
+    {
+      "id": "polycube_p10_052670",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 6.874976679682732e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.06458975002169609,
+          "engineSetupSeconds": 0.016797374933958054,
+          "totalSeconds": 0.08145587472245097
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.504077464342117e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.05536712473258376,
+          "engineSetupSeconds": 0.0166849996894598,
+          "totalSeconds": 0.07211716519668698
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.287498399615288e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.0630520423874259,
+          "engineSetupSeconds": 0.01646545808762312,
+          "totalSeconds": 0.07958037545904517
+        }
+      ],
+      "medianSearchSeconds": 6.504077464342117e-05,
+      "medianTotalSeconds": 0.07958037545904517
+    },
+    {
+      "id": "3_cross",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.005364167038351297,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.015022875275462866,
+          "engineSetupSeconds": 0.005856374744325876,
+          "totalSeconds": 0.02624341705814004
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.005382374860346317,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.015406999737024307,
+          "engineSetupSeconds": 0.00292599992826581,
+          "totalSeconds": 0.023715374525636435
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.00570145808160305,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012610959354788065,
+          "engineSetupSeconds": 0.0030407090671360493,
+          "totalSeconds": 0.021353126503527164
+        }
+      ],
+      "medianSearchSeconds": 0.005382374860346317,
+      "medianTotalSeconds": 0.023715374525636435
+    },
+    {
+      "id": "3_cross",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.005873417016118765,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.011781665962189436,
+          "engineSetupSeconds": 0.0033134170807898045,
+          "totalSeconds": 0.020968500059098005
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.005944333970546722,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.01462850021198392,
+          "engineSetupSeconds": 0.002985042054206133,
+          "totalSeconds": 0.023557876236736774
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.006029457785189152,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012277791742235422,
+          "engineSetupSeconds": 0.0030828751623630524,
+          "totalSeconds": 0.021390124689787626
+        }
+      ],
+      "medianSearchSeconds": 0.005944333970546722,
+      "medianTotalSeconds": 0.021390124689787626
+    },
+    {
+      "id": "t_cross",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 8.9300955417566,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.27155820885673165,
+          "engineSetupSeconds": 0.060206624679267406,
+          "totalSeconds": 9.2618603752926
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 8.80503020901233,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.29222983308136463,
+          "engineSetupSeconds": 0.07151166722178459,
+          "totalSeconds": 9.168771709315479
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 8.847810707986355,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.2664281246252358,
+          "engineSetupSeconds": 0.07569750025868416,
+          "totalSeconds": 9.189936332870275
+        }
+      ],
+      "medianSearchSeconds": 8.847810707986355,
+      "medianTotalSeconds": 9.189936332870275
+    },
+    {
+      "id": "t_cross",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 1.311326791997999,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.29472108371555805,
+          "engineSetupSeconds": 0.07241316698491573,
+          "totalSeconds": 1.6784610426984727
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.3148170001804829,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.310163666959852,
+          "engineSetupSeconds": 0.07339583290740848,
+          "totalSeconds": 1.6983765000477433
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.3554844576865435,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.2739954167045653,
+          "engineSetupSeconds": 0.07395791681483388,
+          "totalSeconds": 1.7034377912059426
+        }
+      ],
+      "medianSearchSeconds": 1.3148170001804829,
+      "medianTotalSeconds": 1.6983765000477433
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.14818083308637142,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.026635624933987856,
+          "engineSetupSeconds": 0.020833249669522047,
+          "totalSeconds": 0.19564970768988132
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.14700579177588224,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.012528165709227324,
+          "engineSetupSeconds": 0.00376270804554224,
+          "totalSeconds": 0.1632966655306518
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.14349304186180234,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.01236795773729682,
+          "engineSetupSeconds": 0.0035013328306376934,
+          "totalSeconds": 0.15936233242973685
+        }
+      ],
+      "medianSearchSeconds": 0.14700579177588224,
+      "medianTotalSeconds": 0.1632966655306518
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.05082050012424588,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.012561459094285965,
+          "engineSetupSeconds": 0.0035491250455379486,
+          "totalSeconds": 0.0669310842640698
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.05257391696795821,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.012955666054040194,
+          "engineSetupSeconds": 0.0036942502483725548,
+          "totalSeconds": 0.06922383327037096
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.05098824994638562,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012857958674430847,
+          "engineSetupSeconds": 0.003511583898216486,
+          "totalSeconds": 0.06735779251903296
+        }
+      ],
+      "medianSearchSeconds": 0.05098824994638562,
+      "medianTotalSeconds": 0.06735779251903296
+    },
+    {
+      "id": "polycube_p10_052670",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 8.624978363513947e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.047951874788850546,
+          "engineSetupSeconds": 0.015875500161200762,
+          "totalSeconds": 0.06383599992841482
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.707850843667984e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.0652488749474287,
+          "engineSetupSeconds": 0.015486582648009062,
+          "totalSeconds": 0.08074216544628143
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 5.499925464391708e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.06438895780593157,
+          "engineSetupSeconds": 0.015370749868452549,
+          "totalSeconds": 0.07976520759984851
+        }
+      ],
+      "medianSearchSeconds": 6.707850843667984e-06,
+      "medianTotalSeconds": 0.07976520759984851
+    },
+    {
+      "id": "3_cross",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.003280624747276306,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.014672833029180765,
+          "engineSetupSeconds": 0.0031732916831970215,
+          "totalSeconds": 0.021126749459654093
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.0037474590353667736,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.015071500092744827,
+          "engineSetupSeconds": 0.003215583972632885,
+          "totalSeconds": 0.022034543100744486
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.003072124905884266,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012596874963492155,
+          "engineSetupSeconds": 0.0033389576710760593,
+          "totalSeconds": 0.01900795754045248
+        }
+      ],
+      "medianSearchSeconds": 0.003280624747276306,
+      "medianTotalSeconds": 0.021126749459654093
+    },
+    {
+      "id": "t_cross",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 1.011644042097032,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.2522194581106305,
+          "engineSetupSeconds": 0.06356304092332721,
+          "totalSeconds": 1.3274265411309898
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.013133583124727,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.2967572077177465,
+          "engineSetupSeconds": 0.06371233379468322,
+          "totalSeconds": 1.3736031246371567
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.0282650827430189,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.26299912482500076,
+          "engineSetupSeconds": 0.0630058329552412,
+          "totalSeconds": 1.3542700405232608
+        }
+      ],
+      "medianSearchSeconds": 1.013133583124727,
+      "medianTotalSeconds": 1.3542700405232608
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.02464879071339965,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.02479358296841383,
+          "engineSetupSeconds": 0.004368875175714493,
+          "totalSeconds": 0.05381124885752797
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.024259415920823812,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.017303790897130966,
+          "engineSetupSeconds": 0.004033500328660011,
+          "totalSeconds": 0.04559670714661479
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.023066958878189325,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012571333907544613,
+          "engineSetupSeconds": 0.004365125205367804,
+          "totalSeconds": 0.04000341799110174
+        }
+      ],
+      "medianSearchSeconds": 0.024259415920823812,
+      "medianTotalSeconds": 0.04559670714661479
+    }
+  ]
+}

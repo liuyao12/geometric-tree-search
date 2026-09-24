@@ -1,0 +1,3859 @@
+{
+  "date": "2026-09-24",
+  "scope": "Potential non-tilers only. Known space-fillers and periodic controls excluded; aliases consolidated.",
+  "newlyCertifiedPeriodic": [
+    {
+      "id": "2_semicross",
+      "coefficients": [
+        1,
+        3,
+        4
+      ],
+      "modulus": 14,
+      "placements": [
+        {
+          "cells": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "cells": [
+            [
+              11,
+              2,
+              2
+            ],
+            [
+              12,
+              2,
+              2
+            ],
+            [
+              13,
+              0,
+              2
+            ],
+            [
+              13,
+              1,
+              2
+            ],
+            [
+              13,
+              2,
+              0
+            ],
+            [
+              13,
+              2,
+              1
+            ],
+            [
+              13,
+              2,
+              2
+            ]
+          ]
+        }
+      ],
+      "periodVectors": [
+        [
+          14,
+          0,
+          0
+        ],
+        [
+          -3,
+          1,
+          0
+        ],
+        [
+          -4,
+          0,
+          1
+        ]
+      ],
+      "residues": [
+        0,
+        4,
+        8,
+        3,
+        6,
+        1,
+        2,
+        11,
+        12,
+        7,
+        10,
+        5,
+        9,
+        13
+      ],
+      "verified": true,
+      "heesch": "infinite",
+      "kind": "two-copy-cyclic-quotient"
+    },
+    {
+      "id": "letter_o",
+      "coefficients": [
+        1,
+        3,
+        8
+      ],
+      "modulus": 20,
+      "placements": [
+        {
+          "cells": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              3,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              2,
+              2,
+              0
+            ],
+            [
+              2,
+              3,
+              0
+            ]
+          ]
+        },
+        {
+          "cells": [
+            [
+              16,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              1
+            ],
+            [
+              16,
+              0,
+              2
+            ],
+            [
+              17,
+              0,
+              0
+            ],
+            [
+              17,
+              0,
+              2
+            ],
+            [
+              18,
+              0,
+              0
+            ],
+            [
+              18,
+              0,
+              2
+            ],
+            [
+              19,
+              0,
+              0
+            ],
+            [
+              19,
+              0,
+              1
+            ],
+            [
+              19,
+              0,
+              2
+            ]
+          ]
+        }
+      ],
+      "periodVectors": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          -3,
+          1,
+          0
+        ],
+        [
+          -8,
+          0,
+          1
+        ]
+      ],
+      "residues": [
+        0,
+        3,
+        6,
+        9,
+        1,
+        10,
+        2,
+        5,
+        8,
+        11,
+        16,
+        4,
+        12,
+        17,
+        13,
+        18,
+        14,
+        19,
+        7,
+        15
+      ],
+      "verified": true,
+      "heesch": "infinite",
+      "kind": "two-copy-cyclic-quotient"
+    },
+    {
+      "id": "tuning_fork",
+      "coefficients": [
+        1,
+        5,
+        2
+      ],
+      "modulus": 60,
+      "placements": [
+        {
+          "cells": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              3,
+              0
+            ],
+            [
+              0,
+              4,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              6,
+              0
+            ],
+            [
+              0,
+              7,
+              0
+            ],
+            [
+              0,
+              8,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              10,
+              0
+            ],
+            [
+              0,
+              11,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              1,
+              4,
+              0
+            ],
+            [
+              1,
+              5,
+              0
+            ],
+            [
+              1,
+              9,
+              0
+            ],
+            [
+              1,
+              10,
+              0
+            ],
+            [
+              1,
+              11,
+              0
+            ],
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              2,
+              2,
+              0
+            ],
+            [
+              2,
+              3,
+              0
+            ],
+            [
+              2,
+              4,
+              0
+            ],
+            [
+              2,
+              5,
+              0
+            ],
+            [
+              2,
+              6,
+              0
+            ],
+            [
+              2,
+              7,
+              0
+            ],
+            [
+              2,
+              8,
+              0
+            ],
+            [
+              2,
+              9,
+              0
+            ],
+            [
+              2,
+              10,
+              0
+            ],
+            [
+              2,
+              11,
+              0
+            ]
+          ]
+        },
+        {
+          "cells": [
+            [
+              29,
+              0,
+              0
+            ],
+            [
+              29,
+              0,
+              1
+            ],
+            [
+              29,
+              0,
+              2
+            ],
+            [
+              29,
+              1,
+              0
+            ],
+            [
+              29,
+              1,
+              1
+            ],
+            [
+              29,
+              1,
+              2
+            ],
+            [
+              29,
+              2,
+              0
+            ],
+            [
+              29,
+              2,
+              1
+            ],
+            [
+              29,
+              2,
+              2
+            ],
+            [
+              29,
+              3,
+              0
+            ],
+            [
+              29,
+              3,
+              2
+            ],
+            [
+              29,
+              4,
+              0
+            ],
+            [
+              29,
+              4,
+              2
+            ],
+            [
+              29,
+              5,
+              0
+            ],
+            [
+              29,
+              5,
+              2
+            ],
+            [
+              29,
+              6,
+              0
+            ],
+            [
+              29,
+              6,
+              1
+            ],
+            [
+              29,
+              6,
+              2
+            ],
+            [
+              29,
+              7,
+              0
+            ],
+            [
+              29,
+              7,
+              1
+            ],
+            [
+              29,
+              7,
+              2
+            ],
+            [
+              29,
+              8,
+              0
+            ],
+            [
+              29,
+              8,
+              1
+            ],
+            [
+              29,
+              8,
+              2
+            ],
+            [
+              29,
+              9,
+              0
+            ],
+            [
+              29,
+              9,
+              2
+            ],
+            [
+              29,
+              10,
+              0
+            ],
+            [
+              29,
+              10,
+              2
+            ],
+            [
+              29,
+              11,
+              0
+            ],
+            [
+              29,
+              11,
+              2
+            ]
+          ]
+        }
+      ],
+      "periodVectors": [
+        [
+          60,
+          0,
+          0
+        ],
+        [
+          -5,
+          1,
+          0
+        ],
+        [
+          -2,
+          0,
+          1
+        ]
+      ],
+      "residues": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        16,
+        21,
+        26,
+        46,
+        51,
+        56,
+        2,
+        7,
+        12,
+        17,
+        22,
+        27,
+        32,
+        37,
+        42,
+        47,
+        52,
+        57,
+        29,
+        31,
+        33,
+        34,
+        36,
+        38,
+        39,
+        41,
+        43,
+        44,
+        48,
+        49,
+        53,
+        54,
+        58,
+        59,
+        1,
+        3,
+        4,
+        6,
+        8,
+        9,
+        11,
+        13,
+        14,
+        18,
+        19,
+        23,
+        24,
+        28
+      ],
+      "verified": true,
+      "heesch": "infinite",
+      "kind": "two-copy-cyclic-quotient"
+    }
+  ],
+  "rows": [
+    {
+      "id": "3_cross",
+      "name": "3-Cross (Nonadecacube)",
+      "voxels": [
+        [
+          -3,
+          0,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -3,
+          0
+        ],
+        [
+          0,
+          -2,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -3
+        ],
+        [
+          0,
+          0,
+          -2
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/3_cross-k1.json",
+        "data/heesch-catalog/runs/3_cross-k1.cnf.gz",
+        "data/heesch-catalog/graph-proofs/3_cross-k1.drup.gz",
+        "data/heesch-catalog/graph-proofs/3_cross-k1.checker.log"
+      ],
+      "runs": [
+        {
+          "id": "3_cross",
+          "k": 1,
+          "buildSeconds": 0.015393208000000325,
+          "placements": 530,
+          "variables": 8750,
+          "clauses": 23550,
+          "status": "UNSAT",
+          "solveSeconds": 0.004401499999999725,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "formulaSHA256": "7134455965671cc756b324edc8b784b152fc9d768c4a1e1f385752884941d8e6",
+          "proofSHA256": "426dbe8b52fdb7e0ddfbe02c1a310580f84a54e0564633abaf7fe8517ce1a250"
+        }
+      ],
+      "lower": 0,
+      "exact": 0,
+      "note": "Complete corona exclusion, with an independently checked certificate."
+    },
+    {
+      "id": "perovskite::Cuboctahedron",
+      "name": "Cuboctahedron",
+      "vertices": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          0,
+          1,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "faces": [
+        [
+          4,
+          0,
+          5,
+          1
+        ],
+        [
+          9,
+          0,
+          8,
+          2
+        ],
+        [
+          8,
+          0,
+          4
+        ],
+        [
+          5,
+          0,
+          9
+        ],
+        [
+          10,
+          1,
+          11,
+          3
+        ],
+        [
+          4,
+          1,
+          10
+        ],
+        [
+          11,
+          1,
+          5
+        ],
+        [
+          3,
+          7,
+          2,
+          6
+        ],
+        [
+          6,
+          2,
+          8
+        ],
+        [
+          9,
+          2,
+          7
+        ],
+        [
+          10,
+          3,
+          6
+        ],
+        [
+          7,
+          3,
+          11
+        ],
+        [
+          8,
+          4,
+          10,
+          6
+        ],
+        [
+          7,
+          11,
+          5,
+          9
+        ]
+      ],
+      "exact": 0,
+      "lower": 0,
+      "scope": "Individual solid, not its mixed-tile catalog system.",
+      "note": "Exact uniform-edge-angle obstruction; arbitrary rigid motions allowed.",
+      "evidence": [
+        "data/heesch-catalog/edge-obstructions.json"
+      ],
+      "runs": []
+    },
+    {
+      "id": "large_buckled_ring",
+      "name": "Large Buckled Ring",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/large_buckled_ring-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "large_buckled_ring",
+          "k": 1,
+          "buildSeconds": 0.01557812500000022,
+          "placements": 890,
+          "variables": 10869,
+          "clauses": 29333,
+          "status": "UNSAT",
+          "solveSeconds": 0.026795083999999747,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "formulaSHA256": "26a3253be55326d58c93eb7232e768701e2fdbe807d06ec0fb271c8a95a014fa",
+          "proofSHA256": "c77f0866b40d70fcff368f9af7accc324ded42c60a5eeb02e963096c8369fb45"
+        }
+      ],
+      "lower": 0,
+      "exact": 0,
+      "note": "Complete corona exclusion, with an independently checked certificate."
+    },
+    {
+      "id": "tet_oct::Octahedron",
+      "name": "Octahedron",
+      "vertices": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          2,
+          1,
+          4
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          0,
+          4
+        ],
+        [
+          0,
+          5,
+          2
+        ],
+        [
+          2,
+          5,
+          1
+        ],
+        [
+          1,
+          5,
+          3
+        ],
+        [
+          3,
+          5,
+          0
+        ]
+      ],
+      "exact": 0,
+      "lower": 0,
+      "scope": "Individual solid, not its mixed-tile catalog system.",
+      "note": "Exact uniform-edge-angle obstruction; arbitrary rigid motions allowed.",
+      "evidence": [
+        "data/heesch-catalog/edge-obstructions.json"
+      ],
+      "runs": []
+    },
+    {
+      "id": "t_cross",
+      "name": "T-Cross",
+      "voxels": [
+        [
+          -3,
+          -1,
+          0
+        ],
+        [
+          -3,
+          0,
+          0
+        ],
+        [
+          -3,
+          1,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -3,
+          -1
+        ],
+        [
+          0,
+          -3,
+          0
+        ],
+        [
+          0,
+          -3,
+          1
+        ],
+        [
+          0,
+          -2,
+          0
+        ],
+        [
+          0,
+          -1,
+          -3
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          -1,
+          3
+        ],
+        [
+          0,
+          0,
+          -3
+        ],
+        [
+          0,
+          0,
+          -2
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          -3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          -1
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          -1,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/t_cross-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "t_cross",
+          "k": 1,
+          "buildSeconds": 0.27956974999999984,
+          "placements": 5452,
+          "variables": 170354,
+          "clauses": 491162,
+          "status": "UNSAT",
+          "solveSeconds": 1.1157123330000003,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "formulaSHA256": "65462f1f83359ae0b6be46e0c20a2fe89d50e82cfab2fb3b2fa235e1b46ae346",
+          "proofSHA256": "6f4b2c8bfe6b6cb9a7601583a086fe6b9dbebb5752b1138af18cbd7d751a9a5a"
+        }
+      ],
+      "lower": 0,
+      "exact": 0,
+      "note": "Complete corona exclusion, with an independently checked certificate."
+    },
+    {
+      "id": "tet_oct::Tetrahedron",
+      "name": "Tetrahedron",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          2
+        ]
+      ],
+      "exact": 0,
+      "lower": 0,
+      "scope": "Individual solid, not its mixed-tile catalog system.",
+      "note": "Exact uniform-edge-angle obstruction; arbitrary rigid motions allowed.",
+      "evidence": [
+        "data/heesch-catalog/edge-obstructions.json"
+      ],
+      "runs": []
+    },
+    {
+      "id": "polycube_p10_052670",
+      "name": "p10-052670 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_052670-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "buildSeconds": 0.06444500000000009,
+          "placements": 3908,
+          "variables": 42354,
+          "clauses": 114871,
+          "status": "UNSAT",
+          "solveSeconds": 9.312500000002721e-05,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "formulaSHA256": "6005505753b4a302eb163205ed7d29b496d623807a637bb0ed0a13a3a8b9d279",
+          "proofSHA256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        }
+      ],
+      "lower": 0,
+      "exact": 0,
+      "note": "Complete corona exclusion, with an independently checked certificate."
+    },
+    {
+      "id": "nonacube_cross",
+      "name": "Nonacube cross \u00b7 two-unit arms",
+      "voxels": [
+        [
+          -2,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -2,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/nonacube_cross-k1.json",
+        "docs/projects/nonacube-geometric-learning.html"
+      ],
+      "runs": [
+        {
+          "id": "nonacube_cross",
+          "k": 1,
+          "buildSeconds": 0.009528749999999864,
+          "placements": 686,
+          "variables": 5900,
+          "clauses": 15246,
+          "status": "SAT",
+          "solveSeconds": 0.0027174589999998666,
+          "stats": {
+            "restarts": 2,
+            "conflicts": 158,
+            "decisions": 2047,
+            "propagations": 46305
+          }
+        }
+      ],
+      "lower": 1,
+      "exact": 1,
+      "aliases": [
+        "polycube_p9_48258"
+      ],
+      "note": "Same shape as p9-48258; existing complete two-corona certificate.",
+      "witnessFile": "data/heesch-catalog/runs/nonacube_cross-k1.json"
+    },
+    {
+      "id": "polycube_p10_052588",
+      "name": "p10-052588 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_052588-k1.json",
+        "data/heesch-catalog/deeper/polycube_p10_052588-k2.json",
+        "data/heesch-catalog/deeper/polycube_p10_052588-k2.cnf.xz",
+        "data/heesch-catalog/graph-proofs/polycube_p10_052588-k2.drup.gz",
+        "data/heesch-catalog/graph-proofs/polycube_p10_052588-k2.checker.log"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_052588",
+          "k": 1,
+          "buildSeconds": 0.061776207999999944,
+          "placements": 3789,
+          "variables": 41113,
+          "clauses": 111484,
+          "status": "SAT",
+          "solveSeconds": 0.04393775,
+          "stats": {
+            "restarts": 3,
+            "conflicts": 381,
+            "decisions": 6220,
+            "propagations": 206991
+          }
+        },
+        {
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "buildSeconds": 1.759351707999997,
+          "placements": 40081,
+          "variables": 438004,
+          "clauses": 1471762,
+          "status": "unknown",
+          "solveSeconds": 15.264548832999992,
+          "stats": {
+            "restarts": 274,
+            "conflicts": 51975,
+            "decisions": 319073,
+            "propagations": 42114030
+          }
+        },
+        {
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "buildSeconds": 1.795910958,
+          "placements": 40081,
+          "variables": 438004,
+          "clauses": 1471762,
+          "status": "UNSAT",
+          "solveSeconds": 75.35251233299999,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "formulaSHA256": "3e98939392ea1731b55e21550ada6d4eb282c57984ab05d6d29767384ef153b5",
+          "proofSHA256": "a3ebabc4e64b2d35107162ec2ba59180f34d756324601cac0f83a09d85a40320"
+        }
+      ],
+      "lower": 1,
+      "exact": 1,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p10_052588-k1.json",
+      "note": "Complete corona exclusion, with an independently checked certificate."
+    },
+    {
+      "id": "polycube_p10_054782",
+      "name": "p10-054782 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_054782-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_054782",
+          "k": 1,
+          "buildSeconds": 0.06299666600000009,
+          "placements": 3949,
+          "variables": 42802,
+          "clauses": 116092,
+          "status": "SAT",
+          "solveSeconds": 0.005323625000000054,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 62,
+            "decisions": 3128,
+            "propagations": 83837
+          }
+        },
+        {
+          "id": "polycube_p10_054782",
+          "k": 2,
+          "buildSeconds": 2.033904749999998,
+          "placements": 41705,
+          "variables": 455660,
+          "clauses": 1543474,
+          "status": "unknown",
+          "solveSeconds": 15.109537875000001,
+          "stats": {
+            "restarts": 202,
+            "conflicts": 43133,
+            "decisions": 308154,
+            "propagations": 40059821
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.02823858289048,
+          "nodes": 37889,
+          "terminalLeavesVisited": 29945,
+          "branchPoints": 7943,
+          "forcedMoves": 11526,
+          "learnedPatterns": 7135,
+          "roleAtoms": 19417,
+          "markUnitEvents": 268417,
+          "id": "polycube_p10_054782",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 2.4608057918958366,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p10_054782-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p10_055695",
+      "name": "p10-055695 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_055695-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_055695",
+          "k": 1,
+          "buildSeconds": 0.029739375000000012,
+          "placements": 1930,
+          "variables": 20600,
+          "clauses": 55542,
+          "status": "SAT",
+          "solveSeconds": 0.00896687500000004,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 173,
+            "decisions": 2392,
+            "propagations": 81351
+          }
+        },
+        {
+          "id": "polycube_p10_055695",
+          "k": 2,
+          "buildSeconds": 0.718917458,
+          "placements": 20682,
+          "variables": 224420,
+          "clauses": 753262,
+          "status": "unknown",
+          "solveSeconds": 15.002621042000001,
+          "stats": {
+            "restarts": 626,
+            "conflicts": 101890,
+            "decisions": 559910,
+            "propagations": 79936589
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.037666833028197,
+          "nodes": 43009,
+          "terminalLeavesVisited": 29677,
+          "branchPoints": 13331,
+          "forcedMoves": 21239,
+          "learnedPatterns": 8177,
+          "roleAtoms": 23523,
+          "markUnitEvents": 433688,
+          "id": "polycube_p10_055695",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 1.296716791111976,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p10_055695-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p10_290795",
+      "name": "p10-290795 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_290795-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_290795",
+          "k": 1,
+          "buildSeconds": 0.09486379200000006,
+          "placements": 6140,
+          "variables": 66527,
+          "clauses": 180246,
+          "status": "SAT",
+          "solveSeconds": 0.12475762499999998,
+          "stats": {
+            "restarts": 10,
+            "conflicts": 1235,
+            "decisions": 22549,
+            "propagations": 817943
+          }
+        },
+        {
+          "id": "polycube_p10_290795",
+          "k": 2,
+          "buildSeconds": 3.844282750000005,
+          "placements": 76102,
+          "variables": 831459,
+          "clauses": 2845402,
+          "status": "unknown",
+          "solveSeconds": 15.254255125,
+          "stats": {
+            "restarts": 172,
+            "conflicts": 38179,
+            "decisions": 323348,
+            "propagations": 41382752
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.109452709089965,
+          "nodes": 22529,
+          "terminalLeavesVisited": 16425,
+          "branchPoints": 6103,
+          "forcedMoves": 528,
+          "learnedPatterns": 330,
+          "roleAtoms": 1270,
+          "markUnitEvents": 17376,
+          "id": "polycube_p10_290795",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 5.5177452908828855,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p10_290795-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p10_346304",
+      "name": "p10-346304 \u00b7 10 cubes",
+      "voxels": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p10_346304-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p10_346304",
+          "k": 1,
+          "buildSeconds": 0.027958958000000003,
+          "placements": 1924,
+          "variables": 20481,
+          "clauses": 55086,
+          "status": "SAT",
+          "solveSeconds": 0.537105583,
+          "stats": {
+            "restarts": 105,
+            "conflicts": 15093,
+            "decisions": 83921,
+            "propagations": 4457538
+          }
+        },
+        {
+          "id": "polycube_p10_346304",
+          "k": 2,
+          "buildSeconds": 0.706441542,
+          "placements": 18685,
+          "variables": 201786,
+          "clauses": 728692,
+          "status": "unknown",
+          "solveSeconds": 15.006609708,
+          "stats": {
+            "restarts": 853,
+            "conflicts": 155939,
+            "decisions": 661552,
+            "propagations": 76157996
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.067395582795143,
+          "nodes": 60161,
+          "terminalLeavesVisited": 40180,
+          "branchPoints": 19980,
+          "forcedMoves": 3956,
+          "learnedPatterns": 4333,
+          "roleAtoms": 16787,
+          "markUnitEvents": 290946,
+          "id": "polycube_p10_346304",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 0.8412381247617304,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p10_346304-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_02127",
+      "name": "p9-02127 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          0
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_02127-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_02127",
+          "k": 1,
+          "buildSeconds": 0.02917804200000007,
+          "placements": 2198,
+          "variables": 20934,
+          "clauses": 55438,
+          "status": "SAT",
+          "solveSeconds": 0.0013995420000001424,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 22,
+            "decisions": 1670,
+            "propagations": 32653
+          }
+        },
+        {
+          "id": "polycube_p9_02127",
+          "k": 2,
+          "buildSeconds": 0.893267791999989,
+          "placements": 33252,
+          "variables": 326708,
+          "clauses": 1046464,
+          "status": "unknown",
+          "solveSeconds": 15.019268999999994,
+          "stats": {
+            "restarts": 282,
+            "conflicts": 90452,
+            "decisions": 1033284,
+            "propagations": 165808832
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.093002832960337,
+          "nodes": 19969,
+          "terminalLeavesVisited": 12332,
+          "branchPoints": 7636,
+          "forcedMoves": 17026,
+          "learnedPatterns": 349,
+          "roleAtoms": 1350,
+          "markUnitEvents": 32035,
+          "id": "polycube_p9_02127",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 1.767179625108838,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_02127-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_08203",
+      "name": "p9-08203 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_08203-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_08203",
+          "k": 1,
+          "buildSeconds": 0.05393033399999991,
+          "placements": 3666,
+          "variables": 36080,
+          "clauses": 96806,
+          "status": "SAT",
+          "solveSeconds": 0.00398199999999993,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 38,
+            "decisions": 3383,
+            "propagations": 64068
+          }
+        },
+        {
+          "id": "polycube_p9_08203",
+          "k": 2,
+          "buildSeconds": 1.594704667000002,
+          "placements": 39432,
+          "variables": 391454,
+          "clauses": 1318183,
+          "status": "unknown",
+          "solveSeconds": 15.012007707999999,
+          "stats": {
+            "restarts": 244,
+            "conflicts": 51984,
+            "decisions": 379201,
+            "propagations": 47492828
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.07849849993363,
+          "nodes": 35073,
+          "terminalLeavesVisited": 23439,
+          "branchPoints": 11633,
+          "forcedMoves": 17681,
+          "learnedPatterns": 2467,
+          "roleAtoms": 6726,
+          "markUnitEvents": 137171,
+          "id": "polycube_p9_08203",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 2.1645442079752684,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_08203-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_08219",
+      "name": "p9-08219 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_08219-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_08219",
+          "k": 1,
+          "buildSeconds": 0.05471158300000001,
+          "placements": 3665,
+          "variables": 36090,
+          "clauses": 96791,
+          "status": "SAT",
+          "solveSeconds": 0.029763583000000038,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 242,
+            "decisions": 3527,
+            "propagations": 114745
+          }
+        },
+        {
+          "id": "polycube_p9_08219",
+          "k": 2,
+          "buildSeconds": 1.551237584000006,
+          "placements": 39625,
+          "variables": 393375,
+          "clauses": 1323198,
+          "status": "unknown",
+          "solveSeconds": 15.011529290999988,
+          "stats": {
+            "restarts": 316,
+            "conflicts": 57179,
+            "decisions": 386856,
+            "propagations": 46140173
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.052655125036836,
+          "nodes": 32001,
+          "terminalLeavesVisited": 24602,
+          "branchPoints": 7398,
+          "forcedMoves": 18027,
+          "learnedPatterns": 3967,
+          "roleAtoms": 10871,
+          "markUnitEvents": 212953,
+          "id": "polycube_p9_08219",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 2.3639159160666168,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_08219-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_20656",
+      "name": "p9-20656 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          6
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          5
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_20656-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_20656",
+          "k": 1,
+          "buildSeconds": 0.03923024999999991,
+          "placements": 2756,
+          "variables": 25950,
+          "clauses": 68416,
+          "status": "SAT",
+          "solveSeconds": 0.0016185420000001116,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 23,
+            "decisions": 1661,
+            "propagations": 34651
+          }
+        },
+        {
+          "id": "polycube_p9_20656",
+          "k": 2,
+          "buildSeconds": 1.6641390409999985,
+          "placements": 55380,
+          "variables": 543593,
+          "clauses": 1695391,
+          "status": "unknown",
+          "solveSeconds": 15.012504792000016,
+          "stats": {
+            "restarts": 214,
+            "conflicts": 66472,
+            "decisions": 1576339,
+            "propagations": 207546404
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.096788666211069,
+          "nodes": 30465,
+          "terminalLeavesVisited": 17522,
+          "branchPoints": 12942,
+          "forcedMoves": 30664,
+          "learnedPatterns": 274,
+          "roleAtoms": 1781,
+          "markUnitEvents": 94367,
+          "id": "polycube_p9_20656",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 3.347589374985546,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_20656-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_24025",
+      "name": "p9-24025 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_24025-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_24025",
+          "k": 1,
+          "buildSeconds": 0.06448004200000002,
+          "placements": 4400,
+          "variables": 43070,
+          "clauses": 115354,
+          "status": "SAT",
+          "solveSeconds": 0.008705415999999966,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 72,
+            "decisions": 3739,
+            "propagations": 83154
+          }
+        },
+        {
+          "id": "polycube_p9_24025",
+          "k": 2,
+          "buildSeconds": 2.298142459000019,
+          "placements": 58424,
+          "variables": 579510,
+          "clauses": 1908100,
+          "status": "unknown",
+          "solveSeconds": 15.069551207999979,
+          "stats": {
+            "restarts": 100,
+            "conflicts": 39221,
+            "decisions": 398724,
+            "propagations": 66264189
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.22046829201281,
+          "nodes": 20225,
+          "terminalLeavesVisited": 11629,
+          "branchPoints": 8595,
+          "forcedMoves": 12786,
+          "learnedPatterns": 775,
+          "roleAtoms": 3399,
+          "markUnitEvents": 65953,
+          "id": "polycube_p9_24025",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 3.8325861669145525,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_24025-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "polycube_p9_42947",
+      "name": "p9-42947 \u00b7 9 cubes",
+      "voxels": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "scope": "Integer translations and proper cubic rotations; full touching-tile coronas.",
+      "evidence": [
+        "data/heesch-catalog/runs/polycube_p9_42947-k1.json"
+      ],
+      "runs": [
+        {
+          "id": "polycube_p9_42947",
+          "k": 1,
+          "buildSeconds": 0.01831120900000005,
+          "placements": 1408,
+          "variables": 13555,
+          "clauses": 35996,
+          "status": "SAT",
+          "solveSeconds": 0.005233290999999918,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 139,
+            "decisions": 1735,
+            "propagations": 50728
+          }
+        },
+        {
+          "id": "polycube_p9_42947",
+          "k": 2,
+          "buildSeconds": 0.43656029199999935,
+          "placements": 13262,
+          "variables": 129961,
+          "clauses": 456477,
+          "status": "unknown",
+          "solveSeconds": 15.018927625,
+          "stats": {
+            "restarts": 796,
+            "conflicts": 158182,
+            "decisions": 716460,
+            "propagations": 110887055
+          }
+        },
+        {
+          "status": "unknown",
+          "seconds": 15.10170029103756,
+          "nodes": 40705,
+          "terminalLeavesVisited": 26793,
+          "branchPoints": 13911,
+          "forcedMoves": 29933,
+          "learnedPatterns": 4921,
+          "roleAtoms": 18081,
+          "markUnitEvents": 301736,
+          "id": "polycube_p9_42947",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "preparationSeconds": 0.5919765001162887,
+          "partialRulesArchivedLocally": true
+        }
+      ],
+      "lower": 1,
+      "exact": null,
+      "witnessFile": "data/heesch-catalog/runs/polycube_p9_42947-k1.json",
+      "note": "Verified corona witness; deeper cutoffs remain unresolved."
+    },
+    {
+      "id": "chair44_relief",
+      "name": "Chair44 centered relief",
+      "exact": null,
+      "lower": 0,
+      "scope": "Geometric relief tile; chamber-point export is not yet a Heesch-corona reduction.",
+      "note": "Deferred: needs a faithful full-boundary corona model; no inference from finite point windows.",
+      "evidence": [
+        "docs/projects/chair44-lattice-export.md"
+      ],
+      "runs": []
+    },
+    {
+      "id": "laves_c15::TruncTetra",
+      "name": "Truncated tetrahedron",
+      "vertices": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "faces": [
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          6,
+          1,
+          0,
+          3,
+          4,
+          7
+        ],
+        [
+          5,
+          3,
+          0,
+          2,
+          9,
+          10
+        ],
+        [
+          9,
+          2,
+          1,
+          6,
+          8,
+          11
+        ],
+        [
+          4,
+          3,
+          5
+        ],
+        [
+          8,
+          7,
+          4,
+          5,
+          10,
+          11
+        ],
+        [
+          8,
+          6,
+          7
+        ],
+        [
+          10,
+          9,
+          11
+        ]
+      ],
+      "exact": null,
+      "lower": 0,
+      "scope": "Individual solid, not its mixed-tile catalog system.",
+      "note": "Mixed dihedral angles: this angle test is inconclusive. A full corona reduction is still needed.",
+      "evidence": [
+        "data/heesch-catalog/edge-obstructions.json"
+      ],
+      "runs": []
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "polycube_p10_052670",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 4.979083314538002e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.04996866686269641,
+          "engineSetupSeconds": 0.020275041926652193,
+          "totalSeconds": 0.07029349962249398
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 4.879198968410492e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.055300832726061344,
+          "engineSetupSeconds": 0.017091292422264814,
+          "totalSeconds": 0.07244091713801026
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 4.679197445511818e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.06321137491613626,
+          "engineSetupSeconds": 0.01653420925140381,
+          "totalSeconds": 0.07979237614199519
+        }
+      ],
+      "medianSearchSeconds": 4.879198968410492e-05,
+      "medianTotalSeconds": 0.07244091713801026
+    },
+    {
+      "id": "polycube_p10_052670",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 6.874976679682732e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.06458975002169609,
+          "engineSetupSeconds": 0.016797374933958054,
+          "totalSeconds": 0.08145587472245097
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.504077464342117e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.05536712473258376,
+          "engineSetupSeconds": 0.0166849996894598,
+          "totalSeconds": 0.07211716519668698
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.287498399615288e-05,
+          "nodes": 1,
+          "terminalLeavesVisited": 1,
+          "branchPoints": 0,
+          "forcedMoves": 1,
+          "learnedPatterns": 1,
+          "roleAtoms": 1,
+          "markUnitEvents": 1,
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.0630520423874259,
+          "engineSetupSeconds": 0.01646545808762312,
+          "totalSeconds": 0.07958037545904517
+        }
+      ],
+      "medianSearchSeconds": 6.504077464342117e-05,
+      "medianTotalSeconds": 0.07958037545904517
+    },
+    {
+      "id": "3_cross",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.005364167038351297,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.015022875275462866,
+          "engineSetupSeconds": 0.005856374744325876,
+          "totalSeconds": 0.02624341705814004
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.005382374860346317,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.015406999737024307,
+          "engineSetupSeconds": 0.00292599992826581,
+          "totalSeconds": 0.023715374525636435
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.00570145808160305,
+          "nodes": 186,
+          "terminalLeavesVisited": 114,
+          "branchPoints": 72,
+          "forcedMoves": 159,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012610959354788065,
+          "engineSetupSeconds": 0.0030407090671360493,
+          "totalSeconds": 0.021353126503527164
+        }
+      ],
+      "medianSearchSeconds": 0.005382374860346317,
+      "medianTotalSeconds": 0.023715374525636435
+    },
+    {
+      "id": "3_cross",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.005873417016118765,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.011781665962189436,
+          "engineSetupSeconds": 0.0033134170807898045,
+          "totalSeconds": 0.020968500059098005
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.005944333970546722,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.01462850021198392,
+          "engineSetupSeconds": 0.002985042054206133,
+          "totalSeconds": 0.023557876236736774
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.006029457785189152,
+          "nodes": 182,
+          "terminalLeavesVisited": 112,
+          "branchPoints": 70,
+          "forcedMoves": 138,
+          "learnedPatterns": 83,
+          "roleAtoms": 274,
+          "markUnitEvents": 186,
+          "id": "3_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012277791742235422,
+          "engineSetupSeconds": 0.0030828751623630524,
+          "totalSeconds": 0.021390124689787626
+        }
+      ],
+      "medianSearchSeconds": 0.005944333970546722,
+      "medianTotalSeconds": 0.021390124689787626
+    },
+    {
+      "id": "t_cross",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 8.9300955417566,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.27155820885673165,
+          "engineSetupSeconds": 0.060206624679267406,
+          "totalSeconds": 9.2618603752926
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 8.80503020901233,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.29222983308136463,
+          "engineSetupSeconds": 0.07151166722178459,
+          "totalSeconds": 9.168771709315479
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 8.847810707986355,
+          "nodes": 266447,
+          "terminalLeavesVisited": 189204,
+          "branchPoints": 77243,
+          "forcedMoves": 22512,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.2664281246252358,
+          "engineSetupSeconds": 0.07569750025868416,
+          "totalSeconds": 9.189936332870275
+        }
+      ],
+      "medianSearchSeconds": 8.847810707986355,
+      "medianTotalSeconds": 9.189936332870275
+    },
+    {
+      "id": "t_cross",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 1.311326791997999,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.29472108371555805,
+          "engineSetupSeconds": 0.07241316698491573,
+          "totalSeconds": 1.6784610426984727
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.3148170001804829,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.310163666959852,
+          "engineSetupSeconds": 0.07339583290740848,
+          "totalSeconds": 1.6983765000477433
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.3554844576865435,
+          "nodes": 20394,
+          "terminalLeavesVisited": 14604,
+          "branchPoints": 5790,
+          "forcedMoves": 2945,
+          "learnedPatterns": 7919,
+          "roleAtoms": 24297,
+          "markUnitEvents": 101593,
+          "id": "t_cross",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.2739954167045653,
+          "engineSetupSeconds": 0.07395791681483388,
+          "totalSeconds": 1.7034377912059426
+        }
+      ],
+      "medianSearchSeconds": 1.3148170001804829,
+      "medianTotalSeconds": 1.6983765000477433
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.14818083308637142,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.026635624933987856,
+          "engineSetupSeconds": 0.020833249669522047,
+          "totalSeconds": 0.19564970768988132
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.14700579177588224,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.012528165709227324,
+          "engineSetupSeconds": 0.00376270804554224,
+          "totalSeconds": 0.1632966655306518
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.14349304186180234,
+          "nodes": 16485,
+          "terminalLeavesVisited": 10594,
+          "branchPoints": 5891,
+          "forcedMoves": 6886,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.01236795773729682,
+          "engineSetupSeconds": 0.0035013328306376934,
+          "totalSeconds": 0.15936233242973685
+        }
+      ],
+      "medianSearchSeconds": 0.14700579177588224,
+      "medianTotalSeconds": 0.1632966655306518
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.05082050012424588,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.012561459094285965,
+          "engineSetupSeconds": 0.0035491250455379486,
+          "totalSeconds": 0.0669310842640698
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.05257391696795821,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.012955666054040194,
+          "engineSetupSeconds": 0.0036942502483725548,
+          "totalSeconds": 0.06922383327037096
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.05098824994638562,
+          "nodes": 2676,
+          "terminalLeavesVisited": 1666,
+          "branchPoints": 1010,
+          "forcedMoves": 1527,
+          "learnedPatterns": 618,
+          "roleAtoms": 1701,
+          "markUnitEvents": 8763,
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012857958674430847,
+          "engineSetupSeconds": 0.003511583898216486,
+          "totalSeconds": 0.06735779251903296
+        }
+      ],
+      "medianSearchSeconds": 0.05098824994638562,
+      "medianTotalSeconds": 0.06735779251903296
+    },
+    {
+      "id": "polycube_p10_052670",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 8.624978363513947e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.047951874788850546,
+          "engineSetupSeconds": 0.015875500161200762,
+          "totalSeconds": 0.06383599992841482
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 6.707850843667984e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.0652488749474287,
+          "engineSetupSeconds": 0.015486582648009062,
+          "totalSeconds": 0.08074216544628143
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 5.499925464391708e-06,
+          "stats": {
+            "restarts": 0,
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 0
+          },
+          "id": "polycube_p10_052670",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.06438895780593157,
+          "engineSetupSeconds": 0.015370749868452549,
+          "totalSeconds": 0.07976520759984851
+        }
+      ],
+      "medianSearchSeconds": 6.707850843667984e-06,
+      "medianTotalSeconds": 0.07976520759984851
+    },
+    {
+      "id": "3_cross",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.003280624747276306,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.014672833029180765,
+          "engineSetupSeconds": 0.0031732916831970215,
+          "totalSeconds": 0.021126749459654093
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.0037474590353667736,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.015071500092744827,
+          "engineSetupSeconds": 0.003215583972632885,
+          "totalSeconds": 0.022034543100744486
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.003072124905884266,
+          "stats": {
+            "restarts": 1,
+            "conflicts": 436,
+            "decisions": 754,
+            "propagations": 66004
+          },
+          "id": "3_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012596874963492155,
+          "engineSetupSeconds": 0.0033389576710760593,
+          "totalSeconds": 0.01900795754045248
+        }
+      ],
+      "medianSearchSeconds": 0.003280624747276306,
+      "medianTotalSeconds": 0.021126749459654093
+    },
+    {
+      "id": "t_cross",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 1.011644042097032,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.2522194581106305,
+          "engineSetupSeconds": 0.06356304092332721,
+          "totalSeconds": 1.3274265411309898
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.013133583124727,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.2967572077177465,
+          "engineSetupSeconds": 0.06371233379468322,
+          "totalSeconds": 1.3736031246371567
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 1.0282650827430189,
+          "stats": {
+            "restarts": 79,
+            "conflicts": 11724,
+            "decisions": 65311,
+            "propagations": 11417038
+          },
+          "id": "t_cross",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.26299912482500076,
+          "engineSetupSeconds": 0.0630058329552412,
+          "totalSeconds": 1.3542700405232608
+        }
+      ],
+      "medianSearchSeconds": 1.013133583124727,
+      "medianTotalSeconds": 1.3542700405232608
+    },
+    {
+      "id": "large_buckled_ring",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 0.02464879071339965,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 0.02479358296841383,
+          "engineSetupSeconds": 0.004368875175714493,
+          "totalSeconds": 0.05381124885752797
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.024259415920823812,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 0.017303790897130966,
+          "engineSetupSeconds": 0.004033500328660011,
+          "totalSeconds": 0.04559670714661479
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 0.023066958878189325,
+          "stats": {
+            "restarts": 8,
+            "conflicts": 1298,
+            "decisions": 5418,
+            "propagations": 404966
+          },
+          "id": "large_buckled_ring",
+          "k": 1,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 0.012571333907544613,
+          "engineSetupSeconds": 0.004365125205367804,
+          "totalSeconds": 0.04000341799110174
+        }
+      ],
+      "medianSearchSeconds": 0.024259415920823812,
+      "medianTotalSeconds": 0.04559670714661479
+    },
+    {
+      "id": "polycube_p10_052588",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 35.17161324992776,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.49570024991408,
+          "engineSetupSeconds": 0.6836741659790277,
+          "totalSeconds": 37.35098766582087
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 34.77188145881519,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.7684477497823536,
+          "engineSetupSeconds": 1.2528420840390027,
+          "totalSeconds": 37.79317129263654
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 34.993642415851355,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.663094166200608,
+          "engineSetupSeconds": 0.7837901669554412,
+          "totalSeconds": 37.440526749007404
+        }
+      ],
+      "medianSearchSeconds": 34.993642415851355,
+      "medianTotalSeconds": 37.440526749007404
+    },
+    {
+      "id": "polycube_p10_052588",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 19.725059499964118,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.6240789159201086,
+          "engineSetupSeconds": 0.7816933752037585,
+          "totalSeconds": 22.130831791087985
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 19.895887916907668,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.80682187480852,
+          "engineSetupSeconds": 0.7952963327988982,
+          "totalSeconds": 22.498006124515086
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 19.74213424976915,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.6116726249456406,
+          "engineSetupSeconds": 0.7963281669653952,
+          "totalSeconds": 22.150135041680187
+        }
+      ],
+      "medianSearchSeconds": 19.74213424976915,
+      "medianTotalSeconds": 22.150135041680187
+    },
+    {
+      "id": "polycube_p10_052588",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 70.32829383388162,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.5503450422547758,
+          "engineSetupSeconds": 1.1580894165672362,
+          "totalSeconds": 73.03672829270363
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 71.44794608280063,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.8749111252836883,
+          "engineSetupSeconds": 1.197706415783614,
+          "totalSeconds": 74.52056362386793
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 71.79748254222795,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.8948289998807013,
+          "engineSetupSeconds": 1.2081644586287439,
+          "totalSeconds": 74.9004760007374
+        }
+      ],
+      "medianSearchSeconds": 71.44794608280063,
+      "medianTotalSeconds": 74.52056362386793
+    }
+  ],
+  "counts": {
+    "candidates": 21,
+    "finite": 9,
+    "zero": 7,
+    "one": 2,
+    "unresolved": 12
+  }
+}

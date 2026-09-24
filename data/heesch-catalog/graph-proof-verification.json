@@ -1,0 +1,24 @@
+[
+  {
+    "id": "3_cross",
+    "k": 1,
+    "verified": true,
+    "formulaSHA256": "7134455965671cc756b324edc8b784b152fc9d768c4a1e1f385752884941d8e6",
+    "proofSHA256": "a1349a2b50d12801d7e5d37c2ceac071d762d5da0b730fe85f5596dfe06904ad",
+    "proofAdditions": 265,
+    "formulaArchive": "data/heesch-catalog/runs/3_cross-k1.cnf.gz",
+    "proofArchive": "data/heesch-catalog/graph-proofs/3_cross-k1.drup.gz",
+    "checkerLog": "data/heesch-catalog/graph-proofs/3_cross-k1.checker.log"
+  },
+  {
+    "id": "polycube_p10_052588",
+    "k": 2,
+    "verified": true,
+    "formulaSHA256": "3e98939392ea1731b55e21550ada6d4eb282c57984ab05d6d29767384ef153b5",
+    "proofSHA256": "968bac61859573bfa797eb369f1662dd5749f2ebab1f69c32492d2a1f86c7c50",
+    "proofAdditions": 54334,
+    "formulaArchive": "data/heesch-catalog/deeper/polycube_p10_052588-k2.cnf.xz",
+    "proofArchive": "data/heesch-catalog/graph-proofs/polycube_p10_052588-k2.drup.gz",
+    "checkerLog": "data/heesch-catalog/graph-proofs/polycube_p10_052588-k2.checker.log"
+  }
+]

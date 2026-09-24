@@ -1,0 +1,192 @@
+[
+  {
+    "id": "2_semicross",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "2_semicross",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "3_cross",
+    "k": 1,
+    "status": "UNSAT",
+    "dratVerified": true,
+    "checkerOutput": "\nc parsing input formula with 8750 variables and 23550 clauses\n\nc finished parsing\n\nc detected empty clause; start verification via backward checking\n\nc 2389 of 23550 clauses in core                            \n\nc 261 of 437 lemmas in core using 10696 resolution steps\n\nc 0 RAT lemmas in core; 102 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.030 seconds\n"
+  },
+  {
+    "id": "large_buckled_ring",
+    "k": 1,
+    "status": "UNSAT",
+    "dratVerified": true,
+    "checkerOutput": "\nc parsing input formula with 10869 variables and 29333 clauses\n\nc finished parsing\n\nc detected empty clause; start verification via backward checking\n\nc 9022 of 29333 clauses in core                            \n\nc 615 of 1299 lemmas in core using 101505 resolution steps\n\nc 0 RAT lemmas in core; 716 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.047 seconds\n"
+  },
+  {
+    "id": "letter_o",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "letter_o",
+    "k": 2,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "nonacube_cross",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_052588",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_052588",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p10_052670",
+    "k": 1,
+    "status": "UNSAT",
+    "dratVerified": true,
+    "checkerOutput": "\nc parsing input formula with 42354 variables and 114871 clauses\n\nc finished parsing\n\nc UNSAT via unit propagation on the input instance\n\nc 1017 of 114871 clauses in core                            \n\nc 1 of 1 lemmas in core using 1017 resolution steps\n\nc 0 RAT lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.054 seconds\n"
+  },
+  {
+    "id": "polycube_p10_054782",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_054782",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p10_055695",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_055695",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p10_290795",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_290795",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p10_346304",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p10_346304",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_02127",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_02127",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_08203",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_08203",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_08219",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_08219",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_20656",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_20656",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_24025",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_24025",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_42947",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "polycube_p9_42947",
+    "k": 2,
+    "status": "unknown"
+  },
+  {
+    "id": "polycube_p9_48258",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  },
+  {
+    "id": "t_cross",
+    "k": 1,
+    "status": "UNSAT",
+    "dratVerified": true,
+    "checkerOutput": "\nc parsing input formula with 170354 variables and 491162 clauses\n\nc finished parsing\n\nc detected empty clause; start verification via backward checking\n\nc 83194 of 491162 clauses in core                            \n\nc 4452 of 11725 lemmas in core using 2892838 resolution steps\n\nc 0 RAT lemmas in core; 35836 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.668 seconds\n"
+  },
+  {
+    "id": "tuning_fork",
+    "k": 1,
+    "status": "SAT",
+    "voxelWitnessVerified": true
+  }
+]

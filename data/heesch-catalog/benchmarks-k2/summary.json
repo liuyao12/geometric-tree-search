@@ -1,0 +1,192 @@
+{
+  "python": "3.12.14",
+  "host": "arm64",
+  "repetitions": 3,
+  "sequential": true,
+  "proofRecordingInTimedRuns": false,
+  "results": [
+    {
+      "id": "polycube_p10_052588",
+      "lane": "unmarked-graph",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 35.17161324992776,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.49570024991408,
+          "engineSetupSeconds": 0.6836741659790277,
+          "totalSeconds": 37.35098766582087
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 34.77188145881519,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.7684477497823536,
+          "engineSetupSeconds": 1.2528420840390027,
+          "totalSeconds": 37.79317129263654
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 34.993642415851355,
+          "nodes": 161065,
+          "terminalLeavesVisited": 140125,
+          "branchPoints": 20940,
+          "forcedMoves": 44070,
+          "learnedPatterns": 0,
+          "roleAtoms": 0,
+          "markUnitEvents": 0,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "unmarked-graph",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.663094166200608,
+          "engineSetupSeconds": 0.7837901669554412,
+          "totalSeconds": 37.440526749007404
+        }
+      ],
+      "medianSearchSeconds": 34.993642415851355,
+      "medianTotalSeconds": 37.440526749007404
+    },
+    {
+      "id": "polycube_p10_052588",
+      "lane": "affine-GCTS",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 19.725059499964118,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.6240789159201086,
+          "engineSetupSeconds": 0.7816933752037585,
+          "totalSeconds": 22.130831791087985
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 19.895887916907668,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.80682187480852,
+          "engineSetupSeconds": 0.7952963327988982,
+          "totalSeconds": 22.498006124515086
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 19.74213424976915,
+          "nodes": 41599,
+          "terminalLeavesVisited": 32882,
+          "branchPoints": 8717,
+          "forcedMoves": 21533,
+          "learnedPatterns": 12735,
+          "roleAtoms": 33083,
+          "markUnitEvents": 519792,
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "affine-GCTS",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.6116726249456406,
+          "engineSetupSeconds": 0.7963281669653952,
+          "totalSeconds": 22.150135041680187
+        }
+      ],
+      "medianSearchSeconds": 19.74213424976915,
+      "medianTotalSeconds": 22.150135041680187
+    },
+    {
+      "id": "polycube_p10_052588",
+      "lane": "Glucose3",
+      "runs": [
+        {
+          "status": "UNSAT",
+          "seconds": 70.32829383388162,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 0,
+          "formulaBuildSeconds": 1.5503450422547758,
+          "engineSetupSeconds": 1.1580894165672362,
+          "totalSeconds": 73.03672829270363
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 71.44794608280063,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 1,
+          "formulaBuildSeconds": 1.8749111252836883,
+          "engineSetupSeconds": 1.197706415783614,
+          "totalSeconds": 74.52056362386793
+        },
+        {
+          "status": "UNSAT",
+          "seconds": 71.79748254222795,
+          "stats": {
+            "restarts": 1533,
+            "conflicts": 244396,
+            "decisions": 1473765,
+            "propagations": 239145877
+          },
+          "id": "polycube_p10_052588",
+          "k": 2,
+          "lane": "Glucose3",
+          "repeat": 2,
+          "formulaBuildSeconds": 1.8948289998807013,
+          "engineSetupSeconds": 1.2081644586287439,
+          "totalSeconds": 74.9004760007374
+        }
+      ],
+      "medianSearchSeconds": 71.44794608280063,
+      "medianTotalSeconds": 74.52056362386793
+    }
+  ]
+}

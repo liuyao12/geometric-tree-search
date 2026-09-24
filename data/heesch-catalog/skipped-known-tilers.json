@@ -1,0 +1,24 @@
+{
+  "skipped": [
+    "polycube_p9_43172",
+    "buckled_ring",
+    "twisted_h",
+    "cube",
+    "1_cross",
+    "2_cross",
+    "1_semicross",
+    "double_ring",
+    "1_cross_plus",
+    "twist",
+    "knuckle",
+    "2_semicross",
+    "letter_o",
+    "tuning_fork"
+  ],
+  "note": "Known periodic polycubes are excluded from further corona searches and benchmarks. Three additional candidates were resolved by two-copy cyclic-quotient certificates during this audit; earlier bounded corona runs are retained as historical discovery data.",
+  "newlyCertifiedPeriodic": [
+    "2_semicross",
+    "letter_o",
+    "tuning_fork"
+  ]
+}

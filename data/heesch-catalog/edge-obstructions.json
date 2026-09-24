@@ -1,0 +1,118 @@
+[
+  {
+    "system": "tet_oct",
+    "component": "Tetrahedron",
+    "edgeCount": 6,
+    "dihedralCosines": [
+      {
+        "sign": 1,
+        "square": "1/9"
+      }
+    ],
+    "heesch": 0,
+    "verified": true,
+    "certificate": "uniform-edge-angle",
+    "maximumEdgeSectors": 5,
+    "checks": [
+      {
+        "edgeSectors": 1,
+        "cosineSquaredOfAngleSum": "1/9"
+      },
+      {
+        "edgeSectors": 2,
+        "cosineSquaredOfAngleSum": "49/81"
+      },
+      {
+        "edgeSectors": 3,
+        "cosineSquaredOfAngleSum": "529/729"
+      },
+      {
+        "edgeSectors": 4,
+        "cosineSquaredOfAngleSum": "289/6561"
+      },
+      {
+        "edgeSectors": 5,
+        "cosineSquaredOfAngleSum": "58081/59049"
+      }
+    ],
+    "scope": "All Euclidean rigid motions; generic root-edge point permits edge sectors and flat-face half-spaces. No face-to-face assumption."
+  },
+  {
+    "system": "tet_oct",
+    "component": "Octahedron",
+    "edgeCount": 12,
+    "dihedralCosines": [
+      {
+        "sign": -1,
+        "square": "1/9"
+      }
+    ],
+    "heesch": 0,
+    "verified": true,
+    "certificate": "uniform-edge-angle",
+    "maximumEdgeSectors": 3,
+    "checks": [
+      {
+        "edgeSectors": 1,
+        "cosineSquaredOfAngleSum": "1/9"
+      },
+      {
+        "edgeSectors": 2,
+        "cosineSquaredOfAngleSum": "49/81"
+      },
+      {
+        "edgeSectors": 3,
+        "cosineSquaredOfAngleSum": "529/729"
+      }
+    ],
+    "scope": "All Euclidean rigid motions; generic root-edge point permits edge sectors and flat-face half-spaces. No face-to-face assumption."
+  },
+  {
+    "system": "perovskite",
+    "component": "Cuboctahedron",
+    "edgeCount": 24,
+    "dihedralCosines": [
+      {
+        "sign": -1,
+        "square": "1/3"
+      }
+    ],
+    "heesch": 0,
+    "verified": true,
+    "certificate": "uniform-edge-angle",
+    "maximumEdgeSectors": 3,
+    "checks": [
+      {
+        "edgeSectors": 1,
+        "cosineSquaredOfAngleSum": "1/3"
+      },
+      {
+        "edgeSectors": 2,
+        "cosineSquaredOfAngleSum": "1/9"
+      },
+      {
+        "edgeSectors": 3,
+        "cosineSquaredOfAngleSum": "25/27"
+      }
+    ],
+    "scope": "All Euclidean rigid motions; generic root-edge point permits edge sectors and flat-face half-spaces. No face-to-face assumption."
+  },
+  {
+    "system": "laves_c15",
+    "component": "TruncTetra",
+    "edgeCount": 18,
+    "dihedralCosines": [
+      {
+        "sign": -1,
+        "square": "1/9"
+      },
+      {
+        "sign": 1,
+        "square": "1/9"
+      }
+    ],
+    "heesch": null,
+    "verified": false,
+    "status": "This angle test does not decide the mixed-dihedral case."
+  }
+]
