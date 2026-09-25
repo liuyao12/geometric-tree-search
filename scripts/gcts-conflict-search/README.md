@@ -6,7 +6,10 @@ an explicit finite point/candidate graph and implements its own conflict-driven
 learning. It is a **finite conditional-target adaptation of GCTS**, not the
 full unbounded growth engine or a learned geometric marking construction.
 
-[Live report](https://liuyao12.github.io/geometric-tree-search/gcts-conflict-search.html).
+Webpage publication is deferred while this experimental work is reviewed and
+validated. Keep new results off the public result pages until confidence is
+established; the general automatic-publication preference does not apply to
+this research during that period.
 
 ## What it takes from CDCL
 
