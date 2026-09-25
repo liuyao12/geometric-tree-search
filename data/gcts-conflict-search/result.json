@@ -1,0 +1,45 @@
+{
+  "status": "UNSAT",
+  "seconds": 108.731,
+  "loadSeconds": 0.261781,
+  "decisions": 689259,
+  "conflicts": 536163,
+  "propagations": 106544356,
+  "forcedPlacements": 1932937,
+  "backjumps": 95802,
+  "restarts": 99,
+  "learnedConstraints": 536162,
+  "deletedConstraints": 531625,
+  "graphUpdates": 2050183758,
+  "selected": [],
+  "formulaSha256": "102e050db3761b588d87e866168917802f9ad23e53fa40bf7000a476bd469b1d",
+  "pointModelSha256": "f8060f18aa0b5512bab2e1ff6f932ab546e446d4634bfc775ac396c79debea0b",
+  "budgetSeconds": 300,
+  "scope": "Standalone finite conditional-target GCTS/CDCL prototype; all target generations zero; CDCL propagation order; no geometric markings.",
+  "proofVerified": true,
+  "cakeLprVerified": true,
+  "originalProofSha256": "559c7dc0d0eff7d05d5d703e085fecffbd3c29ba88d1048748d9d1a7e647537e",
+  "publishedProof": {
+    "format": "binary DRAT, trimmed by DRAT-trim from the original DRUP",
+    "path": "nonacube-proof.drat.gz",
+    "sha256": "02f43a93fe85320e7b3e014b50fee92098d239ab7b8c9b6e5cfcb1705eba3f96",
+    "gzipSha256": "eae1aa7d126477865decd36c0cc877d94be9c96e4ca5426dfc20a83b4ab78a7d",
+    "gzipBytes": 37279523,
+    "independentlyRechecked": true
+  },
+  "checker": {
+    "dratTrimCommit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+    "cakeLprCommit": "a36874a8b750b43fe4b385b8ddbf5b033e46a3fa"
+  },
+  "host": "macOS ARM64",
+  "timingNote": "Search and input-loading times only. Historical Glucose timings are separate single runs, not a controlled speed comparison.",
+  "sourceSha256": {
+    "scripts/gcts-conflict-search/README.md": "0bad91b78fea9917ccbc8e8639338fc89e814bd586c8902a07341d3a2a50f7d3",
+    "scripts/gcts-conflict-search/build.py": "c51497f66934d679fbcb3d299fd562bb4dc0a0a912f1be6465a828bba406ed99",
+    "scripts/gcts-conflict-search/encode.py": "e515bbbb1ff311e4f0c6db2fbdf11e871d0744454152f981d228db9c18068852",
+    "scripts/gcts-conflict-search/run.py": "483708104cb9874c34b8328c0532398af08746ee0ca05e7bff6009782d4890e1",
+    "scripts/gcts-conflict-search/solve.cc": "6927acf3ba6dd615d6d9fe73f26706bc0af0d739de00697be4fd1b158341af67",
+    "scripts/gcts-conflict-search/test.py": "28a8474eaa63bba86463be3325a1407eeeab2098f23891c0a9bd1aa9edf648a5",
+    "scripts/gcts-conflict-search/verify.py": "c1d496202543b20fd8ac91279fd8278172fc6f607b6c61657c6dce7743397a80"
+  }
+}
