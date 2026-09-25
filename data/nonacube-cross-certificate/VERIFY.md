@@ -4,6 +4,19 @@ This document is an entry point for a human or AI independently checking the
 result. Download the proof package and run its checker locally; the website's
 claim and archived logs are not substitutes for verification.
 
+## Solver attribution
+
+The published DRUP refutation was produced by a **modified Glucose 3.0 SAT
+solver**, using Glucose's search machinery with modifications to learned
+constraints and their geometric propagation. [Glucose](https://www.labri.fr/perso/lsimon/research/glucose/)
+was developed by Gilles Audemard and Laurent Simon; version 3.0 is based on
+MiniSat 2.2. The [solver modifications and reproduction instructions](https://github.com/liuyao12/geometric-tree-search/tree/4f8d70c1c8c4375fec42d222eb90198cb4451b04/scripts/geometric-nonacube)
+are public. The first-corona packing was found using Z3 and is checked
+independently using integer geometry.
+
+DRAT-trim and `cake_lpr` verify the existing UNSAT certificate independently.
+This verification does not require rerunning or installing Glucose.
+
 ## Exact claim
 
 For the nine-cube planar cross
