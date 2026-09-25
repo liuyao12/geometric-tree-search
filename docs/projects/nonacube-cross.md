@@ -1,6 +1,6 @@
 # Nonacube cross with two-unit arms
 
-[Explore the complete first corona and download the checked proof package](nonacube-cross.html).
+[Explore the complete first corona and download the checked proof package](../../nonacube-cross.html).
 For independent local verification, give an AI the [verification instructions](../../data/nonacube-cross-certificate/VERIFY.md).
 
 The tile consists of nine unit cubes, with lower-corner coordinates

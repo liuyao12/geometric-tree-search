@@ -30,7 +30,7 @@ function fail(error) {
 }
 
 async function main() {
-  const response = await fetch('../../data/nonacube-cross-certificate/release.json');
+  const response = await fetch(new URL('../../data/nonacube-cross-certificate/release.json', import.meta.url));
   if (!response.ok) throw new Error(`Witness request failed (${response.status})`);
   const data = await response.json();
   if (data.root.length !== 9 || data.corona.length !== 34) throw new Error('Unexpected witness inventory');

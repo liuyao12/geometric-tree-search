@@ -4,7 +4,7 @@
 
 A voxel with coordinate $v\in\mathbb Z^3$ denotes $v+[0,1]^3$.
 Distinct voxel interiors are disjoint. Tiles have the nine-voxel support $P$
-given on the [result page](nonacube-cross.html). Allowed copies use integer translations and the proper
+given on the [result page](../../nonacube-cross.html). Allowed copies use integer translations and the proper
 cubic rotation group. Its action gives exactly three distinct centered
 supports, in the coordinate planes. Reflections add no supports for this
 particular tile.

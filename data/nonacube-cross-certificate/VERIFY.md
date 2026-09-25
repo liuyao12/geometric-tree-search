@@ -112,7 +112,7 @@ voxels meeting the root. No minimum surround-size claim is made.
 
 ## Links and attribution
 
-- [Illustrated result](https://liuyao12.github.io/geometric-tree-search/docs/projects/nonacube-cross.html)
+- [Illustrated result](https://liuyao12.github.io/geometric-tree-search/nonacube-cross.html)
 - [Package download](https://liuyao12.github.io/geometric-tree-search/data/nonacube-cross-certificate/certificate-v1.tar.gz)
 - [Machine-readable release and witness](https://liuyao12.github.io/geometric-tree-search/data/nonacube-cross-certificate/release.json)
 - [Original Math Stack Exchange answer](https://math.stackexchange.com/a/4150301)
