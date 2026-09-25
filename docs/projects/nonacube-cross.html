@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A checked proof that the nine-cube planar cross has exactly one complete lattice corona. Explore the surround in 3D and download an independently verifiable UNSAT certificate.">
+  <title>The nine-cube cross · A checked lattice non-tiler</title>
+  <link rel="stylesheet" href="nonacube-cross.css">
+  <script type="importmap">{"imports":{"three":"../../apps/3d-lattice-tiler/vendor/three.module.min.js"}}</script>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<main>
+  <nav><a href="../../index.html">GCTS</a><span>/</span><span>Polycube certificates</span><a class="nav-end" href="#verify">Verify locally ↗</a></nav>
+  <header>
+    <p class="eyebrow"><span class="status-dot"></span> VERIFIED LATTICE RESULT <span class="date">24 SEPTEMBER 2026</span></p>
+    <h1>Nine cubes.<br>Exactly one corona.</h1>
+    <p class="lede">The planar cross can be completely surrounded once. A checked impossibility proof rules out every second corona—and therefore every tiling of the integer cubic lattice.</p>
+    <div class="claim"><strong>\(H_{\mathrm{lat},26}(P)=1\)</strong><span>Integer translations · cubic rotations · face, edge and vertex contacts</span></div>
+  </header>
+
+  <section class="illustration" aria-labelledby="surround-title">
+    <div class="viewer-column">
+      <div class="viewer-top"><h2 id="surround-title">The complete first corona</h2><span class="live-tag">EXACT WITNESS</span></div>
+      <div id="scene" role="img" aria-label="Interactive three-dimensional first corona: the orange nine-cube root surrounded by 34 colored copies"><p id="loading">Loading the verified surround…</p><div class="scene-legend"><span class="root-swatch"></span> Central cross <span class="tile-swatch"></span> Surrounding copies</div><div class="scene-hint">Drag to rotate · scroll to zoom · click a tile to inspect</div></div>
+      <div class="viewer-controls">
+        <label>View <select id="view"><option value="corona">Complete corona</option><option value="exploded">Exploded illustration</option><option value="root">Central tile only</option></select></label>
+        <label class="check"><input type="checkbox" id="solid"> Solid surrounding tiles</label>
+        <button id="reset" type="button">Reset view</button>
+      </div>
+      <p id="view-note" class="caption">Transparent colors reveal the central tile. Coordinates are the verified packing; the outer tiles need not be surrounded.</p>
+    </div>
+    <aside>
+      <p class="eyebrow">A CONSTRUCTIVE LOWER BOUND</p>
+      <div class="metric"><strong>34</strong><span>surrounding copies</span></div>
+      <div class="metric"><strong>90</strong><span>exterior voxels filled around the root</span></div>
+      <p>Every surrounding tile touches the root. All tile interiors are disjoint. Every face, edge and vertex of the root is surrounded.</p>
+      <div id="selection" aria-live="polite"><strong>Explore the witness</strong><p>Select a tile to see its nine exact voxel coordinates.</p></div>
+      <a href="../../data/nonacube-cross-certificate/release.json">Download the witness coordinates ↗</a>
+    </aside>
+  </section>
+
+  <section class="proof-section" aria-labelledby="proof-title">
+    <div class="section-heading"><p class="eyebrow">TWO COMPLEMENTARY CERTIFICATES</p><h2 id="proof-title">Why the answer is exactly one</h2></div>
+    <div class="proof-grid">
+      <article><span class="step">01</span><h3>A first corona exists.</h3><p>The coordinates above are replayed with integer arithmetic. The verifier checks the shape of every copy, all overlaps, and the complete boundary surround. This establishes \(H_{\mathrm{lat},26}\geq1\).</p></article>
+      <article><span class="step">02</span><h3>No second corona exists.</h3><p>A finite formula covers <em>all possible</em> first coronas and their possible surrounds. Its UNSAT proof is checked independently. A larger corona or infinite lattice tiling would supply a second corona, so both are excluded.</p></article>
+    </div>
+    <div class="formula-strip"><div><strong>8,140</strong><span>placement variables</span></div><div><strong>569,020</strong><span>exact constraints</span></div><div><strong>2</strong><span>proof-checking stages</span></div><div><strong>0</strong><span>extra geometric exclusions</span></div></div>
+    <p class="scope"><strong>The exact scope.</strong> Copies use integer translations and proper cubic rotations; reflections add no orientations for this tile. A corona includes face, edge and vertex contacts, with no topological-ball condition. This result does not decide tilings using arbitrary off-grid Euclidean placements.</p>
+    <p><a href="nonacube-cross-certificate.md">Read the geometric reduction ↗</a></p>
+  </section>
+
+  <section id="verify" class="verify-section" aria-labelledby="verify-title">
+    <div><p class="eyebrow">REPRODUCE IT ON YOUR MACHINE</p><h2 id="verify-title">The proof travels with the result.</h2><p>Download the self-contained package, or give its verification instructions to your AI. No SAT solver or research app is needed.</p><div class="actions"><a class="primary" href="../../data/nonacube-cross-certificate/certificate-v1.tar.gz" download>Download certificate <span>53 MB ↓</span></a><button id="copy-ai" type="button">Copy instructions for an AI</button></div><p id="copy-status" class="caption" role="status"></p><a href="../../data/nonacube-cross-certificate/VERIFY.md">Open the AI-readable verification instructions ↗</a></div>
+    <div class="command-card"><span>AFTER EXTRACTING THE ARCHIVE</span><pre><code>cd polycube-certificates
+python3 verify.py</code></pre><p>The command regenerates the formula, audits the candidate universe, replays the first corona, checks the DRUP proof with DRAT-trim, then checks the generated LRAT proof with the formally verified <code>cake_lpr</code> checker.</p><p class="requirements">Python 3.9+ and a C99 compiler · x86-64 or ARM64 · about 3 GB free disk and several GB available RAM. Offline after download.</p></div>
+    <div class="verification-result"><span class="status-dot"></span><div><strong>Complete local verification passed</strong><span>Approximately two minutes on macOS ARM64 · all eight regression tests passed. Linux CI is configured in the package but has not run.</span></div></div>
+    <details><summary>Checksums and raw artifacts</summary><p>The archive SHA-256 is:</p><code class="hash">c1d36e7bad4d2f20194e83c6eb61c061ad81c0f0a009ee9ab7b26cf90b865fa4</code><p>The archive includes pinned checker sources, the deterministic encoder, geometric audit, formula, proof, positive witness, and recorded logs. The mathematical reduction is documented; it is not itself formalized in a proof assistant.</p><div class="artifact-links"><a href="../../data/nonacube-geometric-learning/problem.cnf.gz">DIMACS formula</a><a href="../../data/nonacube-geometric-learning/anchor-proof.drup.gz">DRUP proof</a><a href="../../data/nonacube-cross-certificate/release.json">Machine-readable receipt</a></div></details>
+  </section>
+
+  <section class="context"><div><p class="eyebrow">CONNECTION TO THE ORIGINAL QUESTION</p><h2>One catalogue candidate, now certified.</h2></div><div><p>This is entry <strong>25373</strong> in Georgios Papoutsis’s nonacube catalogue. His 2021 Stack Exchange answer carefully distinguished a search that found no tiling from a proof of impossibility. This certificate supplies the latter for this particular tile under the stated lattice model.</p><p>It does not certify the entire catalogue or establish a smallest non-space-filling polycube theorem. A broader catalogue will follow separately.</p><p><a href="https://math.stackexchange.com/a/4150301">Stack Exchange answer ↗</a> <a href="https://github.com/gepa71/whuts-solver/blob/81eea57137d46dffb8fdc8c74e3c500845d3276b/inputs/all_nonocubes.json">Pinned source catalogue ↗</a></p></div></section>
+  <footer><span>GCTS · Reproducible geometry</span><a href="nonacube-cross.md">Research history</a><a href="nonacube-geometric-learning.html">Proof-producing search</a><a href="https://github.com/liuyao12/geometric-tree-search">Source repository ↗</a></footer>
+  <p id="error" role="alert"></p>
+</main>
+<script type="module" src="nonacube-cross.js"></script>
+</body>
+</html>
