@@ -1,3 +1,4 @@
+import {circularArcs,drawCircularArcs} from '../../assets/penrose-circular-arcs.js?v=20260928-arcs';
 import {createDisplayCache} from './learning-display.js?v=20260908-lines';
 import {TILE_KINDS,TILE_PRESETS} from '../../assets/penrose-selection-problem.js?v=20260908-speed';
 import {createLaneRunner,LANE_IDS} from './lanes.js?v=20260908-solo';
@@ -39,17 +40,21 @@ function draw(){const bounds=canvas.getBoundingClientRect(),dpr=devicePixelRatio
  const frame=display.frame(input,state.learning?.tables,$('showPoints').checked,showBars),points=frame.points,all=points.map(p=>p.xy);if(!view){const xs=all.map(p=>p.x),ys=all.map(p=>p.y),loX=Math.min(...xs),hiX=Math.max(...xs),loY=Math.min(...ys),hiY=Math.max(...ys);view={x:(loX+hiX)/2,y:(loY+hiY)/2,scale:Math.min((bounds.width-70)/Math.max(1,hiX-loX),(bounds.height-70)/Math.max(1,hiY-loY))};}
  const screen=p=>({x:bounds.width/2+(p.x-view.x)*view.scale,y:bounds.height/2-(p.y-view.y)*view.scale});
  for(const tile of frame.tiles){const loop=tile.loop.map(screen);ctx.beginPath();loop.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=({thick:'#b7d8c8',thin:'#ecc888',kite:'#b8dce8',dart:'#e8b5c4',p5:'#c8c2e5',p3:'#ddcae9',p2:'#e8bad5',diamond:'#efcf92',boat:'#9fcdb5',star:'#e6b194'})[tile.kind];ctx.fill();ctx.strokeStyle='#3f5653';ctx.lineWidth=1;ctx.stroke();}
+ if($('showCircularArcs')?.checked)for(const tile of frame.tiles)drawCircularArcs(ctx,circularArcs(tile.kind,tile.loop),screen,view.scale,Math.min(3,Math.max(1.4,view.scale*.025)));
  if(showBars)for(const tile of frame.tiles)for(const bar of tile.bars){const a=screen(bar.from),b=screen(bar.to),dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy);if(!len)continue;const reach=2*(Math.hypot(bounds.width,bounds.height)+Math.hypot(a.x,a.y)),ux=dx/len*reach,uy=dy/len*reach;ctx.beginPath();ctx.moveTo(a.x-ux,a.y-uy);ctx.lineTo(a.x+ux,a.y+uy);ctx.strokeStyle='#733bd266';ctx.lineWidth=1;ctx.stroke();}
  hits=points.map(p=>({...p,...screen(p.xy)}));for(const p of hits){ctx.beginPath();ctx.arc(p.x,p.y,p.marked?3:1.5,0,Math.PI*2);ctx.fillStyle=p.marked?'#733bd2':'#51645d';ctx.fill();}}
 runner=createLaneRunner({makeWorker:()=>new Worker(new URL('./learning-worker.js?v=20260908-lines',import.meta.url),{type:'module'}),notify:render,options:()=>({tileKinds:[...tileKinds],compact:true})});
 $('runLearning').onclick=()=>runner.toggle();$('stepLearning').onclick=()=>runner.step();$('resetLearning').onclick=()=>{delete displays[selected];runner.resetCurrent();};
 for(const id of LANE_IDS)$('lane_'+id).onclick=()=>{selected=id;runner.select(id);render(latest);};
 $('fitLearning').onclick=()=>{view=null;queueDraw();};$('showPoints').onchange=queueDraw;
+if($('showCircularArcs'))$('showCircularArcs').onchange=queueDraw;
 canvas.onpointermove=e=>{const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const p=hits.reduce((best,p)=>Math.hypot(p.x-x,p.y-y)<Math.min(9,best?Math.hypot(best.x-x,best.y-y):Infinity)?p:best,null);$('pointInfo').textContent=p?`${coordinate(p.point)}\n t = ${p.total}/10; m = ${p.values.size?[...p.values].sort((a,b)=>a[0]-b[0]).map(([c,v])=>`${c}:${v}`).join(', '):'undefined'}${p.values.size?' (unlisted channels undefined)':''}`:'';};
 function resetSelection(){
  displays={};
  tileKinds=TILE_KINDS.filter(k=>$('tile_'+k).checked);
  const preset=Object.entries(TILE_PRESETS).find(([,ks])=>ks.length===tileKinds.length&&ks.every(k=>tileKinds.includes(k)));$('tileSet').value=preset?.[0]||'custom';
+ const hasP2=tileKinds.some(k=>k==='kite'||k==='dart');
+ if($('showCircularArcs')){$('showCircularArcs').disabled=!hasP2;$('circularArcHint').textContent=hasP2?'Two-colour arcs on kite and dart tiles. Illustration only; the search uses its existing rules.':'Choose P2 · kite & dart to see arcs on the tiling. Illustration only.';}
  const p3=tileKinds.length&&tileKinds.every(k=>['thick','thin'].includes(k));
  $('lane_plain').querySelector('strong').textContent=p3?'Edge arrows':'Local matching';names.plain=p3?'Edge arrows':'Local matching';
  $('selectionInfo').textContent=p3?'Learned/local methods use edge arrows; Ammann uses infinite lines.':'Learned/local methods use boundary ports; Ammann uses infinite lines.';

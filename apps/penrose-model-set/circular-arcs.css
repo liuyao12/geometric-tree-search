@@ -1,0 +1,10 @@
+.curve-explainer{margin:20px 0;max-width:960px;line-height:1.65}
+.curve-explainer>summary{font-size:1.05rem;font-weight:650;cursor:pointer}
+.curve-examples{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0}
+.curve-examples figure{margin:0;padding:8px 12px 10px;border:1px solid var(--line,#d2ded8);border-radius:10px;background:#fff;text-align:center;flex:0 1 280px}
+.curve-examples canvas{display:block;width:100%;height:180px}
+.curve-examples figcaption{font-weight:600}
+.curve-learning{margin:14px 0;padding:12px 16px;border-left:3px solid #277564;background:#eef4f0}
+.curve-learning summary{cursor:pointer;font-weight:600}
+#circularArcHint{line-height:1.5}
+@media(max-width:620px){.curve-examples{gap:10px}.curve-examples figure{flex:1 1 130px;min-width:0;padding:6px}.curve-examples canvas{height:150px}}

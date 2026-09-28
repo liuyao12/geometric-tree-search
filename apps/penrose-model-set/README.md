@@ -152,3 +152,26 @@ points without recovering the old pruning. Its certificate concerns that
 weaker pair classification; it does not certify equivalence to the live rule.
 A replacement should seek a small stencil reproducing the working bar rule
 and test it against actual compatible patches.
+
+## Circular arc illustration (September 2026)
+
+The main Penrose page and its public alias offer an independent circular-arc
+switch for P2 kite/dart tiles, plus a two-prototype illustration. These known
+curves are display data only; no solver, worker, or learner imports the arc
+module. Existing matching predicates and the frontier scheduler are unchanged.
+The toggle only queues a redraw and preserves the running search.
+
+`assets/penrose-circular-arcs.js` constructs arcs from the geometric outline,
+including reflected/reversed polygons and the dart's reflex sector. At the
+existing scale (short edge \(1\), long edge \(\varphi\)), radii at the vertex
+joining long edges are \(1\) for the kite and \(1/\varphi\) for the dart;
+radii at the opposite vertex are \(1/\varphi\) and \(1/\varphi^2\).
+`test-penrose-circular-arcs.mjs` checks every rigid P2 orientation, both polygon
+orders, lack of mutation, and agreement with the existing whole-edge rule on
+\(140\) accepted and \(140\) rejected contacts. This numerical display check
+is not a new exact search predicate or infinite-tiling proof.
+
+The on-page research note distinguishes the desired inference of curves from
+bare tilings from the current supplied-rule point learner. It also records
+sevenfold rhombs as an open extension, without introducing conjectural
+markings into that solver. No learning of circular arcs is claimed.
