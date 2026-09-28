@@ -1,0 +1,585 @@
+{
+  "solver": "minicard",
+  "secondsPerShape": 20.0,
+  "reverseOrder": true,
+  "results": [
+    {
+      "id": "bend_071",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.07168520800769329,
+      "setupSeconds": 0.003045708406716585,
+      "searchSeconds": 0.013041249942034483,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 7,
+        "conflicts": 850,
+        "decisions": 3417,
+        "propagations": 186580
+      }
+    },
+    {
+      "id": "bend_070",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.19518795888870955,
+      "setupSeconds": 0.003934249747544527,
+      "searchSeconds": 3.496017416007817,
+      "placements": 4411,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 272,
+        "conflicts": 106057,
+        "decisions": 580999,
+        "propagations": 32914063
+      }
+    },
+    {
+      "id": "bend_069",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7186636668629944,
+      "setupSeconds": 0.009939459152519703,
+      "searchSeconds": 20.0053123338148,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 511,
+        "conflicts": 207526,
+        "decisions": 3989683,
+        "propagations": 104458835
+      }
+    },
+    {
+      "id": "bend_068",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.29997600009664893,
+      "setupSeconds": 0.0056465002708137035,
+      "searchSeconds": 20.003405707888305,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1020,
+        "conflicts": 421769,
+        "decisions": 3978575,
+        "propagations": 150036248
+      }
+    },
+    {
+      "id": "bend_067",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6842756667174399,
+      "setupSeconds": 0.010270874947309494,
+      "searchSeconds": 20.00540674990043,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 197312,
+        "decisions": 3574741,
+        "propagations": 94935048
+      }
+    },
+    {
+      "id": "bend_066",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.3014619587920606,
+      "setupSeconds": 0.005901084281504154,
+      "searchSeconds": 20.005553458351642,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 977,
+        "conflicts": 401700,
+        "decisions": 3550327,
+        "propagations": 147034746
+      }
+    },
+    {
+      "id": "bend_065",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.712888749781996,
+      "setupSeconds": 0.010594666004180908,
+      "searchSeconds": 20.005404208786786,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 194268,
+        "decisions": 3515161,
+        "propagations": 91769795
+      }
+    },
+    {
+      "id": "bend_064",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.724457792006433,
+      "setupSeconds": 0.010801124852150679,
+      "searchSeconds": 20.005425000097603,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 511,
+        "conflicts": 208618,
+        "decisions": 3666507,
+        "propagations": 97737962
+      }
+    },
+    {
+      "id": "bend_063",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7423567082732916,
+      "setupSeconds": 0.010237374808639288,
+      "searchSeconds": 20.005555875133723,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 200221,
+        "decisions": 3703212,
+        "propagations": 102024030
+      }
+    },
+    {
+      "id": "bend_062",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.3165174168534577,
+      "setupSeconds": 0.005823667161166668,
+      "searchSeconds": 20.00443987501785,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1021,
+        "conflicts": 425759,
+        "decisions": 4235855,
+        "propagations": 153670818
+      }
+    },
+    {
+      "id": "bend_061",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.656923457980156,
+      "setupSeconds": 0.010023042093962431,
+      "searchSeconds": 20.005436665844172,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 199965,
+        "decisions": 3571197,
+        "propagations": 96600119
+      }
+    },
+    {
+      "id": "bend_060",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7162365829572082,
+      "setupSeconds": 0.010570458136498928,
+      "searchSeconds": 20.005834000185132,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 204645,
+        "decisions": 4015987,
+        "propagations": 96192790
+      }
+    },
+    {
+      "id": "bend_059",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7442213748581707,
+      "setupSeconds": 0.010844958014786243,
+      "searchSeconds": 20.005566916894168,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 202380,
+        "decisions": 3442818,
+        "propagations": 105302718
+      }
+    },
+    {
+      "id": "bend_058",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6710373749956489,
+      "setupSeconds": 0.010182042140513659,
+      "searchSeconds": 20.005445207934827,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 195069,
+        "decisions": 3199368,
+        "propagations": 96185903
+      }
+    },
+    {
+      "id": "bend_057",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6350904586724937,
+      "setupSeconds": 0.010048165917396545,
+      "searchSeconds": 20.00594204198569,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 511,
+        "conflicts": 212929,
+        "decisions": 3618167,
+        "propagations": 108695004
+      }
+    },
+    {
+      "id": "bend_056",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7012217501178384,
+      "setupSeconds": 0.009682625066488981,
+      "searchSeconds": 20.005410541780293,
+      "placements": 13342,
+      "status": "unknown",
+      "stats": {
+        "restarts": 509,
+        "conflicts": 190709,
+        "decisions": 3470210,
+        "propagations": 96652165
+      }
+    },
+    {
+      "id": "bend_055",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7502562920562923,
+      "setupSeconds": 0.010828749742358923,
+      "searchSeconds": 20.00549779087305,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 196771,
+        "decisions": 3624144,
+        "propagations": 97571144
+      }
+    },
+    {
+      "id": "bend_054",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.3056291248649359,
+      "setupSeconds": 0.005560125224292278,
+      "searchSeconds": 20.01028333278373,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 955,
+        "conflicts": 394104,
+        "decisions": 3300612,
+        "propagations": 143142071
+      }
+    },
+    {
+      "id": "bend_053",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7250358331948519,
+      "setupSeconds": 0.010007333010435104,
+      "searchSeconds": 20.010606958065182,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 193106,
+        "decisions": 3889476,
+        "propagations": 93356546
+      }
+    },
+    {
+      "id": "bend_052",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.3735148338600993,
+      "setupSeconds": 0.005528416950255632,
+      "searchSeconds": 20.010309832636267,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 971,
+        "conflicts": 400366,
+        "decisions": 3728958,
+        "propagations": 146073550
+      }
+    },
+    {
+      "id": "bend_051",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6534585421904922,
+      "setupSeconds": 0.010348792187869549,
+      "searchSeconds": 20.026575666852295,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 201998,
+        "decisions": 3998543,
+        "propagations": 104298489
+      }
+    },
+    {
+      "id": "bend_050",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7268764162436128,
+      "setupSeconds": 0.010387541726231575,
+      "searchSeconds": 20.010509958025068,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 511,
+        "conflicts": 210401,
+        "decisions": 4023575,
+        "propagations": 100804102
+      }
+    },
+    {
+      "id": "bend_049",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.38534170808270574,
+      "setupSeconds": 0.0058489590883255005,
+      "searchSeconds": 20.008180040866137,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 805,
+        "conflicts": 342769,
+        "decisions": 3230860,
+        "propagations": 129881647
+      }
+    },
+    {
+      "id": "bend_048",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7045268337242305,
+      "setupSeconds": 0.011621541809290648,
+      "searchSeconds": 20.005527082830667,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 491,
+        "conflicts": 177326,
+        "decisions": 3119107,
+        "propagations": 88949065
+      }
+    },
+    {
+      "id": "bend_047",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7518933331593871,
+      "setupSeconds": 0.011262999847531319,
+      "searchSeconds": 20.00560491718352,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 491,
+        "conflicts": 177285,
+        "decisions": 3151697,
+        "propagations": 89346132
+      }
+    },
+    {
+      "id": "bend_046",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.8536871252581477,
+      "setupSeconds": 0.03967870818451047,
+      "searchSeconds": 20.009904666338116,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 499,
+        "conflicts": 179226,
+        "decisions": 3270638,
+        "propagations": 87668830
+      }
+    },
+    {
+      "id": "bend_045",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.39493216620758176,
+      "setupSeconds": 0.006363292224705219,
+      "searchSeconds": 20.005320916883647,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 892,
+        "conflicts": 370666,
+        "decisions": 3201854,
+        "propagations": 135717875
+      }
+    },
+    {
+      "id": "bend_044",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7531288750469685,
+      "setupSeconds": 0.011288499925285578,
+      "searchSeconds": 20.005517583340406,
+      "placements": 13289,
+      "status": "unknown",
+      "stats": {
+        "restarts": 459,
+        "conflicts": 168846,
+        "decisions": 2983200,
+        "propagations": 86195220
+      }
+    },
+    {
+      "id": "bend_043",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.8522116672247648,
+      "setupSeconds": 0.012822125107049942,
+      "searchSeconds": 20.00256162509322,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 510,
+        "conflicts": 196696,
+        "decisions": 3720083,
+        "propagations": 97055135
+      }
+    },
+    {
+      "id": "bend_042",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7655480829998851,
+      "setupSeconds": 0.010091666132211685,
+      "searchSeconds": 20.00532095786184,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 509,
+        "conflicts": 187883,
+        "decisions": 3391699,
+        "propagations": 93555627
+      }
+    },
+    {
+      "id": "bend_041",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6849549999460578,
+      "setupSeconds": 0.01000749971717596,
+      "searchSeconds": 20.002137375064194,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 491,
+        "conflicts": 177417,
+        "decisions": 3214875,
+        "propagations": 89388724
+      }
+    },
+    {
+      "id": "bend_040",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.39669154211878777,
+      "setupSeconds": 0.006845874711871147,
+      "searchSeconds": 20.001328457612544,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 899,
+        "conflicts": 379148,
+        "decisions": 3351433,
+        "propagations": 133216042
+      }
+    }
+  ],
+  "stoppedAfterWitness": false,
+  "stopReason": "Portfolio stopped once every uncertified variant had at least one native-cardinality probe with a 20-second budget; only completed probes are recorded."
+}

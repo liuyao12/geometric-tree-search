@@ -1,0 +1,24 @@
+{
+  "solver": "kissat",
+  "secondsPerShape": null,
+  "conflictsPerShape": 200000,
+  "reverseOrder": false,
+  "results": [
+    {
+      "id": "bend_064",
+      "solver": "kissat",
+      "positivePlacementPhases": false,
+      "encoding": "sequential-counter",
+      "incrementalCoverage": false,
+      "budgetSeconds": null,
+      "conflictBudget": 200000,
+      "buildSeconds": 0.7104645832441747,
+      "setupSeconds": 0.11921124998480082,
+      "searchSeconds": 37.815562250092626,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": null
+    }
+  ],
+  "stoppedAfterWitness": false
+}

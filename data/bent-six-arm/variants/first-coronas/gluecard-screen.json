@@ -1,0 +1,621 @@
+{
+  "solver": "gluecard",
+  "secondsPerShape": 20.0,
+  "reverseOrder": false,
+  "results": [
+    {
+      "id": "bend_000",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6217468753457069,
+      "setupSeconds": 0.010339875239878893,
+      "searchSeconds": 20.01989437500015,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1121,
+        "conflicts": 165898,
+        "decisions": 2550320,
+        "propagations": 77965919
+      }
+    },
+    {
+      "id": "bend_001",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6797350002452731,
+      "setupSeconds": 0.01045766705647111,
+      "searchSeconds": 20.00930841686204,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1110,
+        "conflicts": 168791,
+        "decisions": 2628539,
+        "propagations": 74728622
+      }
+    },
+    {
+      "id": "bend_002",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6905798749066889,
+      "setupSeconds": 0.010046917013823986,
+      "searchSeconds": 20.0060927500017,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1204,
+        "conflicts": 158912,
+        "decisions": 2626376,
+        "propagations": 77484456
+      }
+    },
+    {
+      "id": "bend_003",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.627245457842946,
+      "setupSeconds": 0.010117707774043083,
+      "searchSeconds": 20.039730416145176,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1144,
+        "conflicts": 160734,
+        "decisions": 2667851,
+        "propagations": 76836807
+      }
+    },
+    {
+      "id": "bend_004",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.22652600007131696,
+      "setupSeconds": 0.004397958051413298,
+      "searchSeconds": 2.005385708063841,
+      "placements": 4411,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 233,
+        "conflicts": 44854,
+        "decisions": 258579,
+        "propagations": 13540555
+      }
+    },
+    {
+      "id": "bend_005",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6766984998248518,
+      "setupSeconds": 0.010476124938577414,
+      "searchSeconds": 20.006269834004343,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1128,
+        "conflicts": 155377,
+        "decisions": 2628717,
+        "propagations": 74772434
+      }
+    },
+    {
+      "id": "bend_006",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7944788751192391,
+      "setupSeconds": 0.01167524978518486,
+      "searchSeconds": 20.016883791889995,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1215,
+        "conflicts": 151239,
+        "decisions": 2813483,
+        "propagations": 72524595
+      }
+    },
+    {
+      "id": "bend_007",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7442532917484641,
+      "setupSeconds": 0.010064291767776012,
+      "searchSeconds": 20.08025037497282,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 998,
+        "conflicts": 153691,
+        "decisions": 2426508,
+        "propagations": 71101799
+      }
+    },
+    {
+      "id": "bend_008",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6604156251996756,
+      "setupSeconds": 0.01042575016617775,
+      "searchSeconds": 20.065881667193025,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1104,
+        "conflicts": 155759,
+        "decisions": 2529746,
+        "propagations": 73280035
+      }
+    },
+    {
+      "id": "bend_009",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6335504590533674,
+      "setupSeconds": 0.010420665610581636,
+      "searchSeconds": 20.00633474998176,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1105,
+        "conflicts": 165363,
+        "decisions": 2747328,
+        "propagations": 78828005
+      }
+    },
+    {
+      "id": "bend_010",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6897847908549011,
+      "setupSeconds": 0.01033358322456479,
+      "searchSeconds": 20.008341083303094,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1076,
+        "conflicts": 154927,
+        "decisions": 2493301,
+        "propagations": 73306180
+      }
+    },
+    {
+      "id": "bend_011",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.705599042121321,
+      "setupSeconds": 0.009893584065139294,
+      "searchSeconds": 20.047074041794986,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1048,
+        "conflicts": 165071,
+        "decisions": 2575365,
+        "propagations": 75126035
+      }
+    },
+    {
+      "id": "bend_012",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.22470933385193348,
+      "setupSeconds": 0.003950667101889849,
+      "searchSeconds": 2.3052675840444863,
+      "placements": 4411,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 260,
+        "conflicts": 49288,
+        "decisions": 275054,
+        "propagations": 14248387
+      }
+    },
+    {
+      "id": "bend_013",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6929010418243706,
+      "setupSeconds": 0.010071250144392252,
+      "searchSeconds": 20.02662879228592,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1255,
+        "conflicts": 164250,
+        "decisions": 3068764,
+        "propagations": 72503215
+      }
+    },
+    {
+      "id": "bend_014",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7117327908053994,
+      "setupSeconds": 0.009977042209357023,
+      "searchSeconds": 20.03945625014603,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1080,
+        "conflicts": 155992,
+        "decisions": 2564967,
+        "propagations": 71291565
+      }
+    },
+    {
+      "id": "bend_015",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6363635002635419,
+      "setupSeconds": 0.010188333224505186,
+      "searchSeconds": 20.010291582904756,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1079,
+        "conflicts": 160077,
+        "decisions": 2664477,
+        "propagations": 71781666
+      }
+    },
+    {
+      "id": "bend_016",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.736196749843657,
+      "setupSeconds": 0.010282499715685844,
+      "searchSeconds": 20.086862666066736,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1048,
+        "conflicts": 153016,
+        "decisions": 2520437,
+        "propagations": 69451631
+      }
+    },
+    {
+      "id": "bend_017",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6606506248936057,
+      "setupSeconds": 0.010208457708358765,
+      "searchSeconds": 20.265228833071887,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1141,
+        "conflicts": 145483,
+        "decisions": 2575930,
+        "propagations": 64238763
+      }
+    },
+    {
+      "id": "bend_019",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.09026804100722075,
+      "setupSeconds": 0.0026931660249829292,
+      "searchSeconds": 0.03334995824843645,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 10,
+        "conflicts": 1900,
+        "decisions": 9257,
+        "propagations": 352339
+      }
+    },
+    {
+      "id": "bend_020",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7007157918997109,
+      "setupSeconds": 0.010195084381848574,
+      "searchSeconds": 20.011575625278056,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1132,
+        "conflicts": 159041,
+        "decisions": 2567485,
+        "propagations": 74360860
+      }
+    },
+    {
+      "id": "bend_021",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7269958751276135,
+      "setupSeconds": 0.010483333375304937,
+      "searchSeconds": 20.025849957950413,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1083,
+        "conflicts": 154834,
+        "decisions": 2539949,
+        "propagations": 72059979
+      }
+    },
+    {
+      "id": "bend_022",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6383404997177422,
+      "setupSeconds": 0.010366375092417002,
+      "searchSeconds": 20.011843875050545,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 978,
+        "conflicts": 146673,
+        "decisions": 2397012,
+        "propagations": 68325213
+      }
+    },
+    {
+      "id": "bend_023",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6999682080931962,
+      "setupSeconds": 0.010714167263358831,
+      "searchSeconds": 20.020962999667972,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 994,
+        "conflicts": 155270,
+        "decisions": 2544385,
+        "propagations": 73464085
+      }
+    },
+    {
+      "id": "bend_024",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7820305838249624,
+      "setupSeconds": 0.010435292031615973,
+      "searchSeconds": 20.020861207973212,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1102,
+        "conflicts": 145904,
+        "decisions": 2538030,
+        "propagations": 66105918
+      }
+    },
+    {
+      "id": "bend_025",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7960543748922646,
+      "setupSeconds": 0.01417158404365182,
+      "searchSeconds": 20.01613362506032,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 952,
+        "conflicts": 135194,
+        "decisions": 2242914,
+        "propagations": 64207702
+      }
+    },
+    {
+      "id": "bend_026",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.20337308291345835,
+      "setupSeconds": 0.006151583977043629,
+      "searchSeconds": 2.91978716570884,
+      "placements": 4411,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 296,
+        "conflicts": 47134,
+        "decisions": 265529,
+        "propagations": 14716989
+      }
+    },
+    {
+      "id": "bend_027",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.8956324579194188,
+      "setupSeconds": 0.011784666683524847,
+      "searchSeconds": 20.16327091678977,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1017,
+        "conflicts": 136349,
+        "decisions": 2217239,
+        "propagations": 65957147
+      }
+    },
+    {
+      "id": "bend_028",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.8022920410148799,
+      "setupSeconds": 0.01069112541154027,
+      "searchSeconds": 20.00750350020826,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1005,
+        "conflicts": 135782,
+        "decisions": 2200525,
+        "propagations": 60509757
+      }
+    },
+    {
+      "id": "bend_029",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.9126784163527191,
+      "setupSeconds": 0.011432875413447618,
+      "searchSeconds": 20.029318375047296,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1012,
+        "conflicts": 141694,
+        "decisions": 2324487,
+        "propagations": 67430231
+      }
+    },
+    {
+      "id": "bend_030",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6860042498447001,
+      "setupSeconds": 0.011784832924604416,
+      "searchSeconds": 20.007536500226706,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1036,
+        "conflicts": 141434,
+        "decisions": 2348878,
+        "propagations": 63918044
+      }
+    },
+    {
+      "id": "bend_031",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.822956208139658,
+      "setupSeconds": 0.010364541318267584,
+      "searchSeconds": 20.014568875078112,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 943,
+        "conflicts": 142597,
+        "decisions": 2340898,
+        "propagations": 64875199
+      }
+    },
+    {
+      "id": "bend_032",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.6813626671209931,
+      "setupSeconds": 0.011354750022292137,
+      "searchSeconds": 20.09350512502715,
+      "placements": 13286,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1069,
+        "conflicts": 140956,
+        "decisions": 2332478,
+        "propagations": 64723839
+      }
+    },
+    {
+      "id": "bend_033",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7631703331135213,
+      "setupSeconds": 0.010706833098083735,
+      "searchSeconds": 20.011921000201255,
+      "placements": 13345,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1050,
+        "conflicts": 139181,
+        "decisions": 2440838,
+        "propagations": 62293304
+      }
+    },
+    {
+      "id": "bend_034",
+      "solver": "gluecard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 20.0,
+      "buildSeconds": 0.7800303748808801,
+      "setupSeconds": 0.010762416291981936,
+      "searchSeconds": 20.017340040765703,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 919,
+        "conflicts": 143108,
+        "decisions": 2273252,
+        "propagations": 61834554
+      }
+    }
+  ],
+  "stoppedAfterWitness": false,
+  "stopReason": "Portfolio stopped once every uncertified variant had at least one native-cardinality probe with a 20-second budget; only completed probes are recorded."
+}

@@ -1,12 +1,1675 @@
 {
   "date": "2026-09-27",
-  "scope": "Two outward and two sideways steps; 25 nonoverlapping cubes; proper rotations and integer translations. Only the three centrally symmetric classes searched.",
+  "scope": "Two outward and two sideways steps; 25 nonoverlapping cubes; proper rotations and integer translations; full face/edge/vertex touching first coronas. Time limits are not exclusions.",
   "rawAssignments": 4096,
   "nonoverlappingAssignments": 1496,
   "classes": 72,
   "centrallySymmetricClasses": 3,
-  "notSearchedClasses": 69,
+  "notSearchedClasses": 0,
+  "verifiedFirstCoronas": 0,
+  "certifiedH0": 8,
+  "unresolvedClasses": 64,
   "rows": [
+    {
+      "id": "bend_000",
+      "name": "bend_000",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/long/glucose-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_000",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7169045000337064,
+          "setupSeconds": 0.2133414577692747,
+          "searchSeconds": 4.0480882921256125,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 102,
+            "conflicts": 11628,
+            "decisions": 91230,
+            "propagations": 52985080
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_000",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7965895002707839,
+          "setupSeconds": 0.14536450011655688,
+          "searchSeconds": 4.027107208035886,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 45,
+            "conflicts": 8945,
+            "decisions": 104140,
+            "propagations": 15435442
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_000",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6217468753457069,
+          "setupSeconds": 0.010339875239878893,
+          "searchSeconds": 20.01989437500015,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1121,
+            "conflicts": 165898,
+            "decisions": 2550320,
+            "propagations": 77965919
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_000",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.7671200828626752,
+          "setupSeconds": 0.009539208840578794,
+          "searchSeconds": 30.0054264171049,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 870,
+            "conflicts": 339932,
+            "decisions": 5353733,
+            "propagations": 223107033
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 98
+            },
+            {
+              "required": 8,
+              "uncovered": 88
+            },
+            {
+              "required": 16,
+              "uncovered": 84
+            },
+            {
+              "required": 24,
+              "uncovered": 68
+            },
+            {
+              "required": 32,
+              "uncovered": 60
+            },
+            {
+              "required": 40,
+              "uncovered": 42
+            },
+            {
+              "required": 48,
+              "uncovered": 49
+            },
+            {
+              "required": 56,
+              "uncovered": 41
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        },
+        {
+          "id": "bend_000",
+          "solver": "glucose",
+          "positivePlacementPhases": false,
+          "encoding": "sequential-counter",
+          "incrementalCoverage": false,
+          "budgetSeconds": 120.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.8432896658778191,
+          "setupSeconds": 0.16704820794984698,
+          "searchSeconds": 120.49276683386415,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1511,
+            "conflicts": 225216,
+            "decisions": 2604859,
+            "propagations": 423915168
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/long/glucose-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_001",
+      "name": "bend_001",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_001",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6793864169158041,
+          "setupSeconds": 0.20099249994382262,
+          "searchSeconds": 4.307018083985895,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 37,
+            "conflicts": 13084,
+            "decisions": 107473,
+            "propagations": 60060013
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_001",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7397711672820151,
+          "setupSeconds": 0.14658391661942005,
+          "searchSeconds": 4.06762779224664,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 46,
+            "conflicts": 9721,
+            "decisions": 103686,
+            "propagations": 15635528
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_001",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6797350002452731,
+          "setupSeconds": 0.01045766705647111,
+          "searchSeconds": 20.00930841686204,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1110,
+            "conflicts": 168791,
+            "decisions": 2628539,
+            "propagations": 74728622
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_001",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.7159265419468284,
+          "setupSeconds": 0.009166416712105274,
+          "searchSeconds": 30.00583979068324,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 937,
+            "conflicts": 361325,
+            "decisions": 5879505,
+            "propagations": 239319935
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 84
+            },
+            {
+              "required": 8,
+              "uncovered": 106
+            },
+            {
+              "required": 16,
+              "uncovered": 75
+            },
+            {
+              "required": 24,
+              "uncovered": 57
+            },
+            {
+              "required": 32,
+              "uncovered": 56
+            },
+            {
+              "required": 40,
+              "uncovered": 57
+            },
+            {
+              "required": 48,
+              "uncovered": 50
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_002",
+      "name": "bend_002",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_002",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6376545829698443,
+          "setupSeconds": 0.20684483414515853,
+          "searchSeconds": 4.046208791900426,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 44,
+            "conflicts": 12049,
+            "decisions": 100053,
+            "propagations": 60022952
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_002",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7637473330833018,
+          "setupSeconds": 0.1491810828447342,
+          "searchSeconds": 4.128307540901005,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 22,
+            "conflicts": 7394,
+            "decisions": 73313,
+            "propagations": 11294274
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_002",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6905798749066889,
+          "setupSeconds": 0.010046917013823986,
+          "searchSeconds": 20.0060927500017,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1204,
+            "conflicts": 158912,
+            "decisions": 2626376,
+            "propagations": 77484456
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_002",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.7076706662774086,
+          "setupSeconds": 0.009030624758452177,
+          "searchSeconds": 30.005606290884316,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 947,
+            "conflicts": 355205,
+            "decisions": 5713853,
+            "propagations": 226207272
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 95
+            },
+            {
+              "required": 8,
+              "uncovered": 116
+            },
+            {
+              "required": 16,
+              "uncovered": 82
+            },
+            {
+              "required": 24,
+              "uncovered": 68
+            },
+            {
+              "required": 32,
+              "uncovered": 51
+            },
+            {
+              "required": 40,
+              "uncovered": 59
+            },
+            {
+              "required": 48,
+              "uncovered": 51
+            },
+            {
+              "required": 56,
+              "uncovered": 50
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_003",
+      "name": "bend_003",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_003",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7048738752491772,
+          "setupSeconds": 0.2011767909862101,
+          "searchSeconds": 4.315735875163227,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 83,
+            "conflicts": 13089,
+            "decisions": 111021,
+            "propagations": 61892541
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_003",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.656128958798945,
+          "setupSeconds": 0.14635920897126198,
+          "searchSeconds": 4.623559749685228,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 22,
+            "conflicts": 10612,
+            "decisions": 103099,
+            "propagations": 18953822
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_003",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.627245457842946,
+          "setupSeconds": 0.010117707774043083,
+          "searchSeconds": 20.039730416145176,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1144,
+            "conflicts": 160734,
+            "decisions": 2667851,
+            "propagations": 76836807
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_003",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.6694248337298632,
+          "setupSeconds": 0.009495458099991083,
+          "searchSeconds": 30.00260308291763,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 949,
+            "conflicts": 348660,
+            "decisions": 5998630,
+            "propagations": 231706015
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 97
+            },
+            {
+              "required": 8,
+              "uncovered": 108
+            },
+            {
+              "required": 16,
+              "uncovered": 71
+            },
+            {
+              "required": 24,
+              "uncovered": 73
+            },
+            {
+              "required": 32,
+              "uncovered": 56
+            },
+            {
+              "required": 40,
+              "uncovered": 39
+            },
+            {
+              "required": 48,
+              "uncovered": 40
+            },
+            {
+              "required": 56,
+              "uncovered": 35
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_004",
+      "name": "bend_004",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_004-verification.json",
+        "data/bent-six-arm/variants/bend_004-k1.json",
+        "data/bent-six-arm/variants/bend_004-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_004-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_004",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.29251770908012986,
+          "setupSeconds": 0.06645366689190269,
+          "searchSeconds": 4.106046749744564,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 489,
+            "conflicts": 30112,
+            "decisions": 104973,
+            "propagations": 61328719
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_004",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.22827866626903415,
+          "setupSeconds": 0.04665329214185476,
+          "searchSeconds": 4.046610125340521,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 162,
+            "conflicts": 33014,
+            "decisions": 149510,
+            "propagations": 32898508
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_004",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.22652600007131696,
+          "setupSeconds": 0.004397958051413298,
+          "searchSeconds": 2.005385708063841,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 233,
+            "conflicts": 44854,
+            "decisions": 258579,
+            "propagations": 13540555
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_004",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.23144750017672777,
+          "setupSeconds": 0.0037525841034948826,
+          "searchSeconds": 16.904298124834895,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 1297,
+            "conflicts": 488965,
+            "decisions": 2358276,
+            "propagations": 219527857
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 90
+            },
+            {
+              "required": 8,
+              "uncovered": 105
+            },
+            {
+              "required": 16,
+              "uncovered": 75
+            },
+            {
+              "required": 24,
+              "uncovered": 65
+            },
+            {
+              "required": 32,
+              "uncovered": 57
+            },
+            {
+              "required": 40,
+              "uncovered": 46
+            },
+            {
+              "required": 48,
+              "uncovered": 54
+            },
+            {
+              "required": 56,
+              "uncovered": 45
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_005",
+      "name": "bend_005",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_005",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.671409625094384,
+          "setupSeconds": 0.20879449974745512,
+          "searchSeconds": 4.4981016661040485,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 54,
+            "conflicts": 13087,
+            "decisions": 97813,
+            "propagations": 62390262
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_005",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7061535422690213,
+          "setupSeconds": 0.14514912478625774,
+          "searchSeconds": 4.059388499706984,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 29,
+            "conflicts": 9462,
+            "decisions": 89614,
+            "propagations": 15107566
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_005",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6766984998248518,
+          "setupSeconds": 0.010476124938577414,
+          "searchSeconds": 20.006269834004343,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1128,
+            "conflicts": 155377,
+            "decisions": 2628717,
+            "propagations": 74772434
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_005",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.7003175830468535,
+          "setupSeconds": 0.00910708261653781,
+          "searchSeconds": 30.00148979201913,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 898,
+            "conflicts": 356918,
+            "decisions": 5936104,
+            "propagations": 236341242
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 81
+            },
+            {
+              "required": 8,
+              "uncovered": 120
+            },
+            {
+              "required": 16,
+              "uncovered": 98
+            },
+            {
+              "required": 24,
+              "uncovered": 68
+            },
+            {
+              "required": 32,
+              "uncovered": 53
+            },
+            {
+              "required": 40,
+              "uncovered": 48
+            },
+            {
+              "required": 48,
+              "uncovered": 40
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_006",
+      "name": "bend_006",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_006",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.675502167083323,
+          "setupSeconds": 0.20851937495172024,
+          "searchSeconds": 4.129292374942452,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 188,
+            "conflicts": 12542,
+            "decisions": 131230,
+            "propagations": 54712918
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_006",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7406598329544067,
+          "setupSeconds": 0.1471379161812365,
+          "searchSeconds": 4.010039790999144,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 33,
+            "conflicts": 9156,
+            "decisions": 96272,
+            "propagations": 17160969
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_006",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7944788751192391,
+          "setupSeconds": 0.01167524978518486,
+          "searchSeconds": 20.016883791889995,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1215,
+            "conflicts": 151239,
+            "decisions": 2813483,
+            "propagations": 72524595
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_006",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": true,
+          "budgetSeconds": 30.0,
+          "buildSeconds": 0.7015801249071956,
+          "setupSeconds": 0.00909216608852148,
+          "searchSeconds": 30.00546658365056,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 857,
+            "conflicts": 332447,
+            "decisions": 5522471,
+            "propagations": 217707125
+          },
+          "stages": [
+            {
+              "required": 0,
+              "uncovered": 88
+            },
+            {
+              "required": 8,
+              "uncovered": 93
+            },
+            {
+              "required": 16,
+              "uncovered": 89
+            },
+            {
+              "required": 24,
+              "uncovered": 74
+            },
+            {
+              "required": 32,
+              "uncovered": 54
+            },
+            {
+              "required": 40,
+              "uncovered": 46
+            },
+            {
+              "required": 48,
+              "uncovered": 45
+            },
+            {
+              "required": 56,
+              "uncovered": 45
+            }
+          ],
+          "record": "data/bent-six-arm/variants/first-coronas/incremental/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_007",
+      "name": "bend_007",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_007",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.755995917133987,
+          "setupSeconds": 0.2069303751923144,
+          "searchSeconds": 4.0997658749111,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 81,
+            "conflicts": 11041,
+            "decisions": 122488,
+            "propagations": 55405138
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_007",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7360492087900639,
+          "setupSeconds": 0.15157758304849267,
+          "searchSeconds": 4.005667916033417,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 31,
+            "conflicts": 8824,
+            "decisions": 96426,
+            "propagations": 14510533
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_007",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7442532917484641,
+          "setupSeconds": 0.010064291767776012,
+          "searchSeconds": 20.08025037497282,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 998,
+            "conflicts": 153691,
+            "decisions": 2426508,
+            "propagations": 71101799
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_008",
+      "name": "bend_008",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_008",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6587372082285583,
+          "setupSeconds": 0.20183362532407045,
+          "searchSeconds": 4.033029291778803,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 66,
+            "conflicts": 10526,
+            "decisions": 105669,
+            "propagations": 53406763
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_008",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6675512921065092,
+          "setupSeconds": 0.1489362921565771,
+          "searchSeconds": 4.347110250033438,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 66,
+            "conflicts": 9750,
+            "decisions": 111287,
+            "propagations": 17219150
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_008",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6604156251996756,
+          "setupSeconds": 0.01042575016617775,
+          "searchSeconds": 20.065881667193025,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1104,
+            "conflicts": 155759,
+            "decisions": 2529746,
+            "propagations": 73280035
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_009",
+      "name": "bend_009",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_009",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7516933339647949,
+          "setupSeconds": 0.2054279581643641,
+          "searchSeconds": 4.3835140420123935,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 16,
+            "conflicts": 12612,
+            "decisions": 112410,
+            "propagations": 50499857
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_009",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6611508750356734,
+          "setupSeconds": 0.1498210420832038,
+          "searchSeconds": 4.017069624736905,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 30,
+            "conflicts": 8081,
+            "decisions": 89168,
+            "propagations": 14211577
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_009",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6335504590533674,
+          "setupSeconds": 0.010420665610581636,
+          "searchSeconds": 20.00633474998176,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1105,
+            "conflicts": 165363,
+            "decisions": 2747328,
+            "propagations": 78828005
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_010",
+      "name": "bend_010",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_010",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7290124581195414,
+          "setupSeconds": 0.20880195870995522,
+          "searchSeconds": 4.476563250180334,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 31,
+            "conflicts": 13056,
+            "decisions": 126587,
+            "propagations": 58376025
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_010",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7222790406085551,
+          "setupSeconds": 0.1526283328421414,
+          "searchSeconds": 4.031429957598448,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 29,
+            "conflicts": 8349,
+            "decisions": 92972,
+            "propagations": 13756162
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_010",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6897847908549011,
+          "setupSeconds": 0.01033358322456479,
+          "searchSeconds": 20.008341083303094,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1076,
+            "conflicts": 154927,
+            "decisions": 2493301,
+            "propagations": 73306180
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_011",
+      "name": "bend_011",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_011",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7050247909501195,
+          "setupSeconds": 0.2064914582297206,
+          "searchSeconds": 4.470555665902793,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 91,
+            "conflicts": 13029,
+            "decisions": 115896,
+            "propagations": 62385709
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_011",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7370702908374369,
+          "setupSeconds": 0.15386766707524657,
+          "searchSeconds": 4.755628832615912,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 48,
+            "conflicts": 10489,
+            "decisions": 114844,
+            "propagations": 18073074
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_011",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.705599042121321,
+          "setupSeconds": 0.009893584065139294,
+          "searchSeconds": 20.047074041794986,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1048,
+            "conflicts": 165071,
+            "decisions": 2575365,
+            "propagations": 75126035
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_012",
+      "name": "bend_012",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_012-verification.json",
+        "data/bent-six-arm/variants/bend_012-k1.json",
+        "data/bent-six-arm/variants/bend_012-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_012-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_012",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.229030332993716,
+          "setupSeconds": 0.06533779203891754,
+          "searchSeconds": 4.013922792393714,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 210,
+            "conflicts": 31611,
+            "decisions": 108636,
+            "propagations": 61316863
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_012",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.2289906251244247,
+          "setupSeconds": 0.04623099975287914,
+          "searchSeconds": 4.015087750274688,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 188,
+            "conflicts": 35113,
+            "decisions": 167265,
+            "propagations": 33260955
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_012",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.22470933385193348,
+          "setupSeconds": 0.003950667101889849,
+          "searchSeconds": 2.3052675840444863,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 260,
+            "conflicts": 49288,
+            "decisions": 275054,
+            "propagations": 14248387
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_013",
+      "name": "bend_013",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_013",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7227395409718156,
+          "setupSeconds": 0.20653220871463418,
+          "searchSeconds": 4.06802345905453,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 30,
+            "conflicts": 12558,
+            "decisions": 102120,
+            "propagations": 56133291
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_013",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7004944160580635,
+          "setupSeconds": 0.143134375102818,
+          "searchSeconds": 4.010448624845594,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 44,
+            "conflicts": 9684,
+            "decisions": 111570,
+            "propagations": 15496201
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_013",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6929010418243706,
+          "setupSeconds": 0.010071250144392252,
+          "searchSeconds": 20.02662879228592,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1255,
+            "conflicts": 164250,
+            "decisions": 3068764,
+            "propagations": 72503215
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_014",
+      "name": "bend_014",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_014",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.726869999896735,
+          "setupSeconds": 0.2073419587686658,
+          "searchSeconds": 4.015027166809887,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 20,
+            "conflicts": 12519,
+            "decisions": 114728,
+            "propagations": 54418194
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_014",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7144346251152456,
+          "setupSeconds": 0.14253600034862757,
+          "searchSeconds": 4.301135958172381,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 9,
+            "conflicts": 8220,
+            "decisions": 62921,
+            "propagations": 11960430
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_014",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7117327908053994,
+          "setupSeconds": 0.009977042209357023,
+          "searchSeconds": 20.03945625014603,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1080,
+            "conflicts": 155992,
+            "decisions": 2564967,
+            "propagations": 71291565
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_015",
+      "name": "bend_015",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_015",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7196462922729552,
+          "setupSeconds": 0.20683000003919005,
+          "searchSeconds": 4.118659124709666,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 43,
+            "conflicts": 12554,
+            "decisions": 102601,
+            "propagations": 57967396
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_015",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6431097500026226,
+          "setupSeconds": 0.14462470775470138,
+          "searchSeconds": 4.35544016584754,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 31,
+            "conflicts": 9289,
+            "decisions": 92804,
+            "propagations": 15511244
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_015",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6363635002635419,
+          "setupSeconds": 0.010188333224505186,
+          "searchSeconds": 20.010291582904756,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1079,
+            "conflicts": 160077,
+            "decisions": 2664477,
+            "propagations": 71781666
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_016",
+      "name": "bend_016",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_016",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7194947502575815,
+          "setupSeconds": 0.20975237479433417,
+          "searchSeconds": 4.526320375036448,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 24,
+            "conflicts": 12703,
+            "decisions": 108172,
+            "propagations": 62116383
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_016",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7193248327821493,
+          "setupSeconds": 0.14244074979797006,
+          "searchSeconds": 4.096525541041046,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 56,
+            "conflicts": 9629,
+            "decisions": 113191,
+            "propagations": 14281331
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_016",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.736196749843657,
+          "setupSeconds": 0.010282499715685844,
+          "searchSeconds": 20.086862666066736,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1048,
+            "conflicts": 153016,
+            "decisions": 2520437,
+            "propagations": 69451631
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_017",
+      "name": "bend_017",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_017",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6696741250343621,
+          "setupSeconds": 0.212268624920398,
+          "searchSeconds": 4.048240709118545,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 105,
+            "conflicts": 12566,
+            "decisions": 93955,
+            "propagations": 56297947
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_017",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6433067079633474,
+          "setupSeconds": 0.14802033314481378,
+          "searchSeconds": 4.490675458218902,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 31,
+            "conflicts": 10060,
+            "decisions": 97442,
+            "propagations": 16156675
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_017",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6606506248936057,
+          "setupSeconds": 0.010208457708358765,
+          "searchSeconds": 20.265228833071887,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1141,
+            "conflicts": 145483,
+            "decisions": 2575930,
+            "propagations": 64238763
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
     {
       "id": "bend_018",
       "name": "Two three-cycles",
@@ -18,6 +1681,1399 @@
         "data/bent-six-arm/variants/bend_018-k1.json",
         "data/bent-six-arm/variants/bend_018-k1.cnf.gz",
         "data/bent-six-arm/variants/bend_018-k1.drup.gz"
+      ],
+      "antipodal": true,
+      "runs": []
+    },
+    {
+      "id": "bend_019",
+      "name": "bend_019",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_019-verification.json",
+        "data/bent-six-arm/variants/bend_019-k1.json",
+        "data/bent-six-arm/variants/bend_019-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_019-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_019",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.16181554226204753,
+          "setupSeconds": 0.031907124910503626,
+          "searchSeconds": 0.089156333822757,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 2,
+            "conflicts": 1395,
+            "decisions": 8848,
+            "propagations": 2212662
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_019",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.08987283427268267,
+          "setupSeconds": 0.021205666940659285,
+          "searchSeconds": 0.06957358308136463,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 2,
+            "conflicts": 1746,
+            "decisions": 6680,
+            "propagations": 804896
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_019",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.09026804100722075,
+          "setupSeconds": 0.0026931660249829292,
+          "searchSeconds": 0.03334995824843645,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 10,
+            "conflicts": 1900,
+            "decisions": 9257,
+            "propagations": 352339
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_020",
+      "name": "bend_020",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_020",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7306513339281082,
+          "setupSeconds": 0.2078340002335608,
+          "searchSeconds": 4.053636041004211,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 6,
+            "conflicts": 10558,
+            "decisions": 98841,
+            "propagations": 55890233
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_020",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6839420408941805,
+          "setupSeconds": 0.1429466251283884,
+          "searchSeconds": 4.263463540934026,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 46,
+            "conflicts": 10406,
+            "decisions": 119273,
+            "propagations": 17585170
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_020",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7007157918997109,
+          "setupSeconds": 0.010195084381848574,
+          "searchSeconds": 20.011575625278056,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1132,
+            "conflicts": 159041,
+            "decisions": 2567485,
+            "propagations": 74360860
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_021",
+      "name": "bend_021",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_021",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7239977922290564,
+          "setupSeconds": 0.20417800033465028,
+          "searchSeconds": 4.082314750179648,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 48,
+            "conflicts": 12525,
+            "decisions": 117864,
+            "propagations": 56572910
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_021",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7206959170289338,
+          "setupSeconds": 0.14535016706213355,
+          "searchSeconds": 4.017258916981518,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 56,
+            "conflicts": 9493,
+            "decisions": 116906,
+            "propagations": 17227256
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_021",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7269958751276135,
+          "setupSeconds": 0.010483333375304937,
+          "searchSeconds": 20.025849957950413,
+          "placements": 13239,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1083,
+            "conflicts": 154834,
+            "decisions": 2539949,
+            "propagations": 72059979
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_022",
+      "name": "bend_022",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_022",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6657815002836287,
+          "setupSeconds": 0.20984787493944168,
+          "searchSeconds": 4.042854332830757,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 112,
+            "conflicts": 12568,
+            "decisions": 107370,
+            "propagations": 53918787
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_022",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6315317498520017,
+          "setupSeconds": 0.146011833101511,
+          "searchSeconds": 4.171972665935755,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 13,
+            "conflicts": 8389,
+            "decisions": 73621,
+            "propagations": 13228344
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_022",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6383404997177422,
+          "setupSeconds": 0.010366375092417002,
+          "searchSeconds": 20.011843875050545,
+          "placements": 13292,
+          "status": "unknown",
+          "stats": {
+            "restarts": 978,
+            "conflicts": 146673,
+            "decisions": 2397012,
+            "propagations": 68325213
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_023",
+      "name": "bend_023",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_023",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6737042916938663,
+          "setupSeconds": 0.21144841704517603,
+          "searchSeconds": 4.1196092502214015,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 6,
+            "conflicts": 12571,
+            "decisions": 101631,
+            "propagations": 56769684
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_023",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6737671252340078,
+          "setupSeconds": 0.14740741718560457,
+          "searchSeconds": 4.011979540809989,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 46,
+            "conflicts": 9833,
+            "decisions": 110557,
+            "propagations": 16252929
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_023",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6999682080931962,
+          "setupSeconds": 0.010714167263358831,
+          "searchSeconds": 20.020962999667972,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 994,
+            "conflicts": 155270,
+            "decisions": 2544385,
+            "propagations": 73464085
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_024",
+      "name": "bend_024",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_024",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7545405831187963,
+          "setupSeconds": 0.20606787502765656,
+          "searchSeconds": 4.4535178751684725,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 98,
+            "conflicts": 13054,
+            "decisions": 109479,
+            "propagations": 61306799
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_024",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7717752917669713,
+          "setupSeconds": 0.14165725000202656,
+          "searchSeconds": 4.03186475019902,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 50,
+            "conflicts": 9433,
+            "decisions": 102786,
+            "propagations": 14880320
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_024",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7820305838249624,
+          "setupSeconds": 0.010435292031615973,
+          "searchSeconds": 20.020861207973212,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1102,
+            "conflicts": 145904,
+            "decisions": 2538030,
+            "propagations": 66105918
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_025",
+      "name": "bend_025",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_025",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.74629499996081,
+          "setupSeconds": 0.2118619168177247,
+          "searchSeconds": 4.024552207905799,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 66,
+            "conflicts": 11578,
+            "decisions": 90233,
+            "propagations": 51442523
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_025",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6863830829970539,
+          "setupSeconds": 0.15546445781365037,
+          "searchSeconds": 4.374093041755259,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 50,
+            "conflicts": 10626,
+            "decisions": 104041,
+            "propagations": 19482535
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_025",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7960543748922646,
+          "setupSeconds": 0.01417158404365182,
+          "searchSeconds": 20.01613362506032,
+          "placements": 13134,
+          "status": "unknown",
+          "stats": {
+            "restarts": 952,
+            "conflicts": 135194,
+            "decisions": 2242914,
+            "propagations": 64207702
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_026",
+      "name": "bend_026",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_026-verification.json",
+        "data/bent-six-arm/variants/bend_026-k1.json",
+        "data/bent-six-arm/variants/bend_026-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_026-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_026",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3167001251131296,
+          "setupSeconds": 0.06599920894950628,
+          "searchSeconds": 4.014528667088598,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 885,
+            "conflicts": 27590,
+            "decisions": 103453,
+            "propagations": 58050484
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_026",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.16211166698485613,
+          "setupSeconds": 0.047403584234416485,
+          "searchSeconds": 4.010409999638796,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 168,
+            "conflicts": 31192,
+            "decisions": 147754,
+            "propagations": 30881570
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_026",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.20337308291345835,
+          "setupSeconds": 0.006151583977043629,
+          "searchSeconds": 2.91978716570884,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 296,
+            "conflicts": 47134,
+            "decisions": 265529,
+            "propagations": 14716989
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_026",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.17909391690045595,
+          "setupSeconds": 0.0051318746991455555,
+          "searchSeconds": 5.780967500060797,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 412,
+            "conflicts": 153614,
+            "decisions": 829066,
+            "propagations": 49496665
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_027",
+      "name": "bend_027",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_027",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7009119587019086,
+          "setupSeconds": 0.21370824985206127,
+          "searchSeconds": 4.100085875019431,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 103,
+            "conflicts": 10554,
+            "decisions": 104687,
+            "propagations": 51223103
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_027",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7991840844042599,
+          "setupSeconds": 0.15064637502655387,
+          "searchSeconds": 4.155783207621425,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 24,
+            "conflicts": 10249,
+            "decisions": 95578,
+            "propagations": 15029026
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_027",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.8956324579194188,
+          "setupSeconds": 0.011784666683524847,
+          "searchSeconds": 20.16327091678977,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1017,
+            "conflicts": 136349,
+            "decisions": 2217239,
+            "propagations": 65957147
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_027",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7043783329427242,
+          "setupSeconds": 0.010568208061158657,
+          "searchSeconds": 20.004432208370417,
+          "placements": 13219,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 202617,
+            "decisions": 3487696,
+            "propagations": 105971039
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_028",
+      "name": "bend_028",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_028",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7602207497693598,
+          "setupSeconds": 0.20986833423376083,
+          "searchSeconds": 4.018903374671936,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 42,
+            "conflicts": 12078,
+            "decisions": 110745,
+            "propagations": 52304015
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_028",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.718554750084877,
+          "setupSeconds": 0.14813895896077156,
+          "searchSeconds": 4.049361040815711,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 54,
+            "conflicts": 11169,
+            "decisions": 131978,
+            "propagations": 18088392
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_028",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.8022920410148799,
+          "setupSeconds": 0.01069112541154027,
+          "searchSeconds": 20.00750350020826,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1005,
+            "conflicts": 135782,
+            "decisions": 2200525,
+            "propagations": 60509757
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_028",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7052097502164543,
+          "setupSeconds": 0.010192875284701586,
+          "searchSeconds": 20.01917574973777,
+          "placements": 13136,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 197813,
+            "decisions": 3656999,
+            "propagations": 96194215
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_029",
+      "name": "bend_029",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_029",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7648867918178439,
+          "setupSeconds": 0.2064027921296656,
+          "searchSeconds": 4.012428667396307,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 32,
+            "conflicts": 12079,
+            "decisions": 109495,
+            "propagations": 51541323
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_029",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6540080406703055,
+          "setupSeconds": 0.14391491608694196,
+          "searchSeconds": 4.137265833094716,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 19,
+            "conflicts": 7624,
+            "decisions": 70168,
+            "propagations": 11515503
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_029",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.9126784163527191,
+          "setupSeconds": 0.011432875413447618,
+          "searchSeconds": 20.029318375047296,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1012,
+            "conflicts": 141694,
+            "decisions": 2324487,
+            "propagations": 67430231
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_029",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7639731671661139,
+          "setupSeconds": 0.0105062504298985,
+          "searchSeconds": 20.01113058300689,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 195086,
+            "decisions": 3730344,
+            "propagations": 103976470
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_030",
+      "name": "bend_030",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_030",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6721844170242548,
+          "setupSeconds": 0.21528525045141578,
+          "searchSeconds": 4.045906917192042,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 102,
+            "conflicts": 11668,
+            "decisions": 114092,
+            "propagations": 51732908
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_030",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6324836662970483,
+          "setupSeconds": 0.14405349968001246,
+          "searchSeconds": 4.234644459094852,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 58,
+            "conflicts": 11574,
+            "decisions": 138059,
+            "propagations": 19043396
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_030",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6860042498447001,
+          "setupSeconds": 0.011784832924604416,
+          "searchSeconds": 20.007536500226706,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1036,
+            "conflicts": 141434,
+            "decisions": 2348878,
+            "propagations": 63918044
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_030",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.6492426251061261,
+          "setupSeconds": 0.009979667142033577,
+          "searchSeconds": 20.009495582897216,
+          "placements": 13227,
+          "status": "unknown",
+          "stats": {
+            "restarts": 511,
+            "conflicts": 209799,
+            "decisions": 3919874,
+            "propagations": 110622368
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_031",
+      "name": "bend_031",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_031",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.8045512088574469,
+          "setupSeconds": 0.21138375019654632,
+          "searchSeconds": 4.041327875107527,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 136,
+            "conflicts": 10073,
+            "decisions": 103182,
+            "propagations": 50877381
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_031",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7097024158574641,
+          "setupSeconds": 0.1433722502551973,
+          "searchSeconds": 4.017324916087091,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 36,
+            "conflicts": 7399,
+            "decisions": 89814,
+            "propagations": 12867557
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_031",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.822956208139658,
+          "setupSeconds": 0.010364541318267584,
+          "searchSeconds": 20.014568875078112,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 943,
+            "conflicts": 142597,
+            "decisions": 2340898,
+            "propagations": 64875199
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_031",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7129843751899898,
+          "setupSeconds": 0.010076624806970358,
+          "searchSeconds": 20.008588291238993,
+          "placements": 13235,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 187101,
+            "decisions": 3304069,
+            "propagations": 98753929
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_032",
+      "name": "bend_032",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_032",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7614395832642913,
+          "setupSeconds": 0.20982033340260386,
+          "searchSeconds": 4.092538540717214,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 13,
+            "conflicts": 11091,
+            "decisions": 94344,
+            "propagations": 50775228
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_032",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6614958336576819,
+          "setupSeconds": 0.14809041703119874,
+          "searchSeconds": 4.009383541997522,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 22,
+            "conflicts": 7636,
+            "decisions": 74008,
+            "propagations": 13312680
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_032",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6813626671209931,
+          "setupSeconds": 0.011354750022292137,
+          "searchSeconds": 20.09350512502715,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1069,
+            "conflicts": 140956,
+            "decisions": 2332478,
+            "propagations": 64723839
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_032",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.9015378751792014,
+          "setupSeconds": 0.010513999965041876,
+          "searchSeconds": 20.006073541007936,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 188937,
+            "decisions": 3480977,
+            "propagations": 97749649
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_033",
+      "name": "bend_033",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_033",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7580272499471903,
+          "setupSeconds": 0.21199120907112956,
+          "searchSeconds": 4.038608958013356,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 50,
+            "conflicts": 10079,
+            "decisions": 112916,
+            "propagations": 47684658
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_033",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7348202080465853,
+          "setupSeconds": 0.1490252078510821,
+          "searchSeconds": 4.011139917187393,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 28,
+            "conflicts": 8689,
+            "decisions": 88143,
+            "propagations": 13926100
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_033",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7631703331135213,
+          "setupSeconds": 0.010706833098083735,
+          "searchSeconds": 20.011921000201255,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1050,
+            "conflicts": 139181,
+            "decisions": 2440838,
+            "propagations": 62293304
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_033",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.8797161667607725,
+          "setupSeconds": 0.010104999877512455,
+          "searchSeconds": 20.00117954192683,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 508,
+            "conflicts": 183412,
+            "decisions": 3329586,
+            "propagations": 90996268
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_034",
+      "name": "bend_034",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/gluecard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_034",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6851415843702853,
+          "setupSeconds": 0.2159115825779736,
+          "searchSeconds": 4.034854874946177,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 17,
+            "conflicts": 10093,
+            "decisions": 95702,
+            "propagations": 51618642
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_034",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7500120839104056,
+          "setupSeconds": 0.1433348343707621,
+          "searchSeconds": 4.204806583933532,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 34,
+            "conflicts": 8314,
+            "decisions": 87158,
+            "propagations": 14890919
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_034",
+          "solver": "gluecard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7800303748808801,
+          "setupSeconds": 0.010762416291981936,
+          "searchSeconds": 20.017340040765703,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 919,
+            "conflicts": 143108,
+            "decisions": 2273252,
+            "propagations": 61834554
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/gluecard-screen.json"
+        },
+        {
+          "id": "bend_034",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.771595333237201,
+          "setupSeconds": 0.011052291840314865,
+          "searchSeconds": 20.005985125433654,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 506,
+            "conflicts": 181026,
+            "decisions": 3232252,
+            "propagations": 90008385
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_035",
+      "name": "bend_035",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_035",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7410040418617427,
+          "setupSeconds": 0.21886262483894825,
+          "searchSeconds": 4.01494958344847,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 24,
+            "conflicts": 11085,
+            "decisions": 106131,
+            "propagations": 50822349
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_035",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6697602500207722,
+          "setupSeconds": 0.14482320798560977,
+          "searchSeconds": 4.5707987090572715,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 40,
+            "conflicts": 10186,
+            "decisions": 107332,
+            "propagations": 17424734
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_035",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7676912918686867,
+          "setupSeconds": 0.013930583838373423,
+          "searchSeconds": 20.003889875020832,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 507,
+            "conflicts": 181542,
+            "decisions": 3402081,
+            "propagations": 95249653
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
       ]
     },
     {
@@ -31,6 +3087,1948 @@
         "data/bent-six-arm/bent_six_arm_25-k1.json",
         "data/bent-six-arm/bent_six_arm_25-k1.cnf.gz",
         "data/bent-six-arm/bent_six_arm_25-k1.drup.gz"
+      ],
+      "antipodal": true,
+      "runs": []
+    },
+    {
+      "id": "bend_037",
+      "name": "bend_037",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_037",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7318274173885584,
+          "setupSeconds": 0.21110324980691075,
+          "searchSeconds": 4.4345006248913705,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 117,
+            "conflicts": 13047,
+            "decisions": 125152,
+            "propagations": 57704978
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_037",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7552424580790102,
+          "setupSeconds": 0.14791804179549217,
+          "searchSeconds": 4.417772250249982,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 43,
+            "conflicts": 8163,
+            "decisions": 88325,
+            "propagations": 14965707
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_037",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7769632921554148,
+          "setupSeconds": 0.011464333161711693,
+          "searchSeconds": 20.001551209017634,
+          "placements": 13286,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 188873,
+            "decisions": 3642130,
+            "propagations": 99583550
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_038",
+      "name": "bend_038",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_038",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7317290413193405,
+          "setupSeconds": 0.2135366671718657,
+          "searchSeconds": 4.062123791780323,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 92,
+            "conflicts": 11541,
+            "decisions": 112621,
+            "propagations": 53854261
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_038",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6918460410088301,
+          "setupSeconds": 0.14984983298927546,
+          "searchSeconds": 4.560744667425752,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 28,
+            "conflicts": 8937,
+            "decisions": 77311,
+            "propagations": 14693717
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_038",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7326330416835845,
+          "setupSeconds": 0.010269458871334791,
+          "searchSeconds": 20.002768125385046,
+          "placements": 13345,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 187466,
+            "decisions": 3391649,
+            "propagations": 88160861
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_039",
+      "name": "bend_039",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_039",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6607489581219852,
+          "setupSeconds": 0.2080972082912922,
+          "searchSeconds": 4.50910508306697,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 62,
+            "conflicts": 13068,
+            "decisions": 118356,
+            "propagations": 56406420
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_039",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7950387909077108,
+          "setupSeconds": 0.14967095805332065,
+          "searchSeconds": 4.887072124984115,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 49,
+            "conflicts": 10516,
+            "decisions": 129889,
+            "propagations": 16739175
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_039",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.6952775409445167,
+          "setupSeconds": 0.011455249972641468,
+          "searchSeconds": 20.005674042273313,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 189532,
+            "decisions": 3525532,
+            "propagations": 93953166
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_040",
+      "name": "bend_040",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_040",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.38162633311003447,
+          "setupSeconds": 0.10616416716948152,
+          "searchSeconds": 4.047608875203878,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 370,
+            "conflicts": 24573,
+            "decisions": 120160,
+            "propagations": 61852503
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_040",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3314974159002304,
+          "setupSeconds": 0.07253029197454453,
+          "searchSeconds": 4.056241542100906,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 98,
+            "conflicts": 20883,
+            "decisions": 138022,
+            "propagations": 24083142
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_040",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.39669154211878777,
+          "setupSeconds": 0.006845874711871147,
+          "searchSeconds": 20.001328457612544,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 899,
+            "conflicts": 379148,
+            "decisions": 3351433,
+            "propagations": 133216042
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        },
+        {
+          "id": "bend_040",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.4938635411672294,
+          "setupSeconds": 0.007449958939105272,
+          "searchSeconds": 20.005532125011086,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 882,
+            "conflicts": 365161,
+            "decisions": 3279715,
+            "propagations": 136028450
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_041",
+      "name": "bend_041",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_041",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6376198343932629,
+          "setupSeconds": 0.20437295828014612,
+          "searchSeconds": 4.121824165806174,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 79,
+            "conflicts": 12541,
+            "decisions": 110145,
+            "propagations": 51517783
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_041",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7335050408728421,
+          "setupSeconds": 0.14967774972319603,
+          "searchSeconds": 4.057997582945973,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 24,
+            "conflicts": 6824,
+            "decisions": 63886,
+            "propagations": 11551384
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_041",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6849549999460578,
+          "setupSeconds": 0.01000749971717596,
+          "searchSeconds": 20.002137375064194,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 491,
+            "conflicts": 177417,
+            "decisions": 3214875,
+            "propagations": 89388724
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        },
+        {
+          "id": "bend_041",
+          "solver": "minicard",
+          "positivePlacementPhases": false,
+          "encoding": "native-cardinality",
+          "incrementalCoverage": false,
+          "budgetSeconds": 20.0,
+          "conflictBudget": null,
+          "buildSeconds": 0.7403101250529289,
+          "setupSeconds": 0.01096274983137846,
+          "searchSeconds": 20.005506083834916,
+          "placements": 13332,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 193283,
+            "decisions": 3438668,
+            "propagations": 98340075
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/negative/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_042",
+      "name": "bend_042",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_042",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7164464998058975,
+          "setupSeconds": 0.20005287509411573,
+          "searchSeconds": 4.363054290879518,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 34,
+            "conflicts": 13062,
+            "decisions": 107200,
+            "propagations": 63248438
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_042",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7902472498826683,
+          "setupSeconds": 0.1603032909333706,
+          "searchSeconds": 4.183765084017068,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 18,
+            "conflicts": 6575,
+            "decisions": 58153,
+            "propagations": 10256152
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_042",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7655480829998851,
+          "setupSeconds": 0.010091666132211685,
+          "searchSeconds": 20.00532095786184,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 187883,
+            "decisions": 3391699,
+            "propagations": 93555627
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_043",
+      "name": "bend_043",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_043",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7055335412733257,
+          "setupSeconds": 0.2084890827536583,
+          "searchSeconds": 4.153145958203822,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 108,
+            "conflicts": 13030,
+            "decisions": 106677,
+            "propagations": 55721285
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_043",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7671398334205151,
+          "setupSeconds": 0.15133937494829297,
+          "searchSeconds": 4.324342291802168,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 33,
+            "conflicts": 9431,
+            "decisions": 95181,
+            "propagations": 14709885
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_043",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.8522116672247648,
+          "setupSeconds": 0.012822125107049942,
+          "searchSeconds": 20.00256162509322,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 196696,
+            "decisions": 3720083,
+            "propagations": 97055135
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_044",
+      "name": "bend_044",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_044",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6777552501298487,
+          "setupSeconds": 0.2019975003786385,
+          "searchSeconds": 4.334274665918201,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 74,
+            "conflicts": 12635,
+            "decisions": 128609,
+            "propagations": 60574676
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_044",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7897138330154121,
+          "setupSeconds": 0.14453995833173394,
+          "searchSeconds": 4.165792459156364,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 38,
+            "conflicts": 7882,
+            "decisions": 90520,
+            "propagations": 14924115
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_044",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7531288750469685,
+          "setupSeconds": 0.011288499925285578,
+          "searchSeconds": 20.005517583340406,
+          "placements": 13289,
+          "status": "unknown",
+          "stats": {
+            "restarts": 459,
+            "conflicts": 168846,
+            "decisions": 2983200,
+            "propagations": 86195220
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_045",
+      "name": "bend_045",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_045",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3859747080132365,
+          "setupSeconds": 0.10429674992337823,
+          "searchSeconds": 4.052234583068639,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 231,
+            "conflicts": 23572,
+            "decisions": 118646,
+            "propagations": 62138588
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_045",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.33339312486350536,
+          "setupSeconds": 0.07161929225549102,
+          "searchSeconds": 4.358829999808222,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 116,
+            "conflicts": 21837,
+            "decisions": 153308,
+            "propagations": 25302682
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_045",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.39493216620758176,
+          "setupSeconds": 0.006363292224705219,
+          "searchSeconds": 20.005320916883647,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 892,
+            "conflicts": 370666,
+            "decisions": 3201854,
+            "propagations": 135717875
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_046",
+      "name": "bend_046",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_046",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7256702920421958,
+          "setupSeconds": 0.21562458341941237,
+          "searchSeconds": 4.570957208052278,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 122,
+            "conflicts": 12596,
+            "decisions": 111717,
+            "propagations": 57030562
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_046",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7090616673231125,
+          "setupSeconds": 0.14629350043833256,
+          "searchSeconds": 4.389055583160371,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 31,
+            "conflicts": 9647,
+            "decisions": 88061,
+            "propagations": 16184458
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_046",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.8536871252581477,
+          "setupSeconds": 0.03967870818451047,
+          "searchSeconds": 20.009904666338116,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 499,
+            "conflicts": 179226,
+            "decisions": 3270638,
+            "propagations": 87668830
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_047",
+      "name": "bend_047",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_047",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6897067497484386,
+          "setupSeconds": 0.20714312512427568,
+          "searchSeconds": 4.435843083076179,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 82,
+            "conflicts": 13089,
+            "decisions": 112866,
+            "propagations": 60953793
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_047",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7630985002033412,
+          "setupSeconds": 0.14440520899370313,
+          "searchSeconds": 4.206341833341867,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 36,
+            "conflicts": 8636,
+            "decisions": 89679,
+            "propagations": 14636294
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_047",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7518933331593871,
+          "setupSeconds": 0.011262999847531319,
+          "searchSeconds": 20.00560491718352,
+          "placements": 13288,
+          "status": "unknown",
+          "stats": {
+            "restarts": 491,
+            "conflicts": 177285,
+            "decisions": 3151697,
+            "propagations": 89346132
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_048",
+      "name": "bend_048",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_048",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6305220825597644,
+          "setupSeconds": 0.20655429223552346,
+          "searchSeconds": 4.243789874948561,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 29,
+            "conflicts": 12599,
+            "decisions": 111372,
+            "propagations": 62724469
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_048",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6912609999999404,
+          "setupSeconds": 0.1447622082196176,
+          "searchSeconds": 4.845789833925664,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 44,
+            "conflicts": 9820,
+            "decisions": 108610,
+            "propagations": 15652111
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_048",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7045268337242305,
+          "setupSeconds": 0.011621541809290648,
+          "searchSeconds": 20.005527082830667,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 491,
+            "conflicts": 177326,
+            "decisions": 3119107,
+            "propagations": 88949065
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_049",
+      "name": "bend_049",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_049",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3615016252733767,
+          "setupSeconds": 0.1007429170422256,
+          "searchSeconds": 4.083007500041276,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 939,
+            "conflicts": 27089,
+            "decisions": 143380,
+            "propagations": 72605409
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_049",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3406522497534752,
+          "setupSeconds": 0.07115720771253109,
+          "searchSeconds": 4.026678249705583,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 90,
+            "conflicts": 22630,
+            "decisions": 142044,
+            "propagations": 28211436
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_049",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.38534170808270574,
+          "setupSeconds": 0.0058489590883255005,
+          "searchSeconds": 20.008180040866137,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 805,
+            "conflicts": 342769,
+            "decisions": 3230860,
+            "propagations": 129881647
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_050",
+      "name": "bend_050",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_050",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6942467922344804,
+          "setupSeconds": 0.2015051250346005,
+          "searchSeconds": 4.052670000120997,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 11,
+            "conflicts": 14182,
+            "decisions": 119834,
+            "propagations": 61532620
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_050",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7345527498982847,
+          "setupSeconds": 0.14433637540787458,
+          "searchSeconds": 4.013946250081062,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 25,
+            "conflicts": 7603,
+            "decisions": 83467,
+            "propagations": 11981199
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_050",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7268764162436128,
+          "setupSeconds": 0.010387541726231575,
+          "searchSeconds": 20.010509958025068,
+          "placements": 13337,
+          "status": "unknown",
+          "stats": {
+            "restarts": 511,
+            "conflicts": 210401,
+            "decisions": 4023575,
+            "propagations": 100804102
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_051",
+      "name": "bend_051",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_051",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6281135841272771,
+          "setupSeconds": 0.20225074980407953,
+          "searchSeconds": 4.341889250092208,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 80,
+            "conflicts": 13048,
+            "decisions": 139572,
+            "propagations": 62681734
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_051",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7286492921411991,
+          "setupSeconds": 0.1465988326817751,
+          "searchSeconds": 4.205483833793551,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 47,
+            "conflicts": 8860,
+            "decisions": 95932,
+            "propagations": 15188396
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_051",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6534585421904922,
+          "setupSeconds": 0.010348792187869549,
+          "searchSeconds": 20.026575666852295,
+          "placements": 13300,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 201998,
+            "decisions": 3998543,
+            "propagations": 104298489
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_052",
+      "name": "bend_052",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_052",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.358519374858588,
+          "setupSeconds": 0.0975127094425261,
+          "searchSeconds": 4.177101457957178,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 338,
+            "conflicts": 27102,
+            "decisions": 123835,
+            "propagations": 70911093
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_052",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.37740416591987014,
+          "setupSeconds": 0.071536083240062,
+          "searchSeconds": 4.058420957997441,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 82,
+            "conflicts": 20203,
+            "decisions": 131890,
+            "propagations": 24799830
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_052",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.3735148338600993,
+          "setupSeconds": 0.005528416950255632,
+          "searchSeconds": 20.010309832636267,
+          "placements": 6680,
+          "status": "unknown",
+          "stats": {
+            "restarts": 971,
+            "conflicts": 400366,
+            "decisions": 3728958,
+            "propagations": 146073550
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_053",
+      "name": "bend_053",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_053",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7019042922183871,
+          "setupSeconds": 0.20165175013244152,
+          "searchSeconds": 4.13368208380416,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 70,
+            "conflicts": 13053,
+            "decisions": 129851,
+            "propagations": 55358616
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_053",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7244144580326974,
+          "setupSeconds": 0.143844542093575,
+          "searchSeconds": 4.068184124771506,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 39,
+            "conflicts": 9816,
+            "decisions": 106086,
+            "propagations": 15216979
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_053",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7250358331948519,
+          "setupSeconds": 0.010007333010435104,
+          "searchSeconds": 20.010606958065182,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 193106,
+            "decisions": 3889476,
+            "propagations": 93356546
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_054",
+      "name": "bend_054",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_054",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.2923384578898549,
+          "setupSeconds": 0.09962483309209347,
+          "searchSeconds": 4.156745083164424,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 346,
+            "conflicts": 27124,
+            "decisions": 129710,
+            "propagations": 72850750
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_054",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3116285828873515,
+          "setupSeconds": 0.0694646667689085,
+          "searchSeconds": 4.174088750034571,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 56,
+            "conflicts": 22733,
+            "decisions": 137741,
+            "propagations": 25029696
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_054",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.3056291248649359,
+          "setupSeconds": 0.005560125224292278,
+          "searchSeconds": 20.01028333278373,
+          "placements": 6598,
+          "status": "unknown",
+          "stats": {
+            "restarts": 955,
+            "conflicts": 394104,
+            "decisions": 3300612,
+            "propagations": 143142071
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_055",
+      "name": "bend_055",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_055",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6946415840648115,
+          "setupSeconds": 0.20608995901420712,
+          "searchSeconds": 4.0856031673029065,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 42,
+            "conflicts": 13053,
+            "decisions": 106556,
+            "propagations": 58629565
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_055",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7693063751794398,
+          "setupSeconds": 0.14083316689357162,
+          "searchSeconds": 4.596368708182126,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 17,
+            "conflicts": 9531,
+            "decisions": 75013,
+            "propagations": 15359654
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_055",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7502562920562923,
+          "setupSeconds": 0.010828749742358923,
+          "searchSeconds": 20.00549779087305,
+          "placements": 13291,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 196771,
+            "decisions": 3624144,
+            "propagations": 97571144
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_056",
+      "name": "bend_056",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_056",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6946330843493342,
+          "setupSeconds": 0.20656762504950166,
+          "searchSeconds": 4.161635708063841,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 231,
+            "conflicts": 13050,
+            "decisions": 129421,
+            "propagations": 55454585
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_056",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7621176666580141,
+          "setupSeconds": 0.14425708400085568,
+          "searchSeconds": 4.007505374960601,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 56,
+            "conflicts": 9454,
+            "decisions": 115344,
+            "propagations": 15458235
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_056",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7012217501178384,
+          "setupSeconds": 0.009682625066488981,
+          "searchSeconds": 20.005410541780293,
+          "placements": 13342,
+          "status": "unknown",
+          "stats": {
+            "restarts": 509,
+            "conflicts": 190709,
+            "decisions": 3470210,
+            "propagations": 96652165
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_057",
+      "name": "bend_057",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_057",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6306790420785546,
+          "setupSeconds": 0.2048661671578884,
+          "searchSeconds": 4.360952792223543,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 119,
+            "conflicts": 13095,
+            "decisions": 114285,
+            "propagations": 63317414
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_057",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6655817092396319,
+          "setupSeconds": 0.1409583748318255,
+          "searchSeconds": 4.021177832968533,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 43,
+            "conflicts": 9111,
+            "decisions": 105718,
+            "propagations": 14721870
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_057",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6350904586724937,
+          "setupSeconds": 0.010048165917396545,
+          "searchSeconds": 20.00594204198569,
+          "placements": 13238,
+          "status": "unknown",
+          "stats": {
+            "restarts": 511,
+            "conflicts": 212929,
+            "decisions": 3618167,
+            "propagations": 108695004
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_058",
+      "name": "bend_058",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_058",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6566852503456175,
+          "setupSeconds": 0.21393279172480106,
+          "searchSeconds": 4.006898041814566,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 2,
+            "conflicts": 11049,
+            "decisions": 108609,
+            "propagations": 58902625
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_058",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.654490833170712,
+          "setupSeconds": 0.14218829199671745,
+          "searchSeconds": 4.693214333150536,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 20,
+            "conflicts": 7266,
+            "decisions": 76802,
+            "propagations": 11230404
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_058",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6710373749956489,
+          "setupSeconds": 0.010182042140513659,
+          "searchSeconds": 20.005445207934827,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 195069,
+            "decisions": 3199368,
+            "propagations": 96185903
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_059",
+      "name": "bend_059",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_059",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7525523751974106,
+          "setupSeconds": 0.21455899998545647,
+          "searchSeconds": 4.051159875001758,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 66,
+            "conflicts": 10643,
+            "decisions": 97701,
+            "propagations": 52801623
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_059",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7343959999270737,
+          "setupSeconds": 0.14315566699951887,
+          "searchSeconds": 4.2248930423520505,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 40,
+            "conflicts": 8789,
+            "decisions": 102938,
+            "propagations": 14195116
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_059",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7442213748581707,
+          "setupSeconds": 0.010844958014786243,
+          "searchSeconds": 20.005566916894168,
+          "placements": 13240,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 202380,
+            "decisions": 3442818,
+            "propagations": 105302718
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_060",
+      "name": "bend_060",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_060",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7303259582258761,
+          "setupSeconds": 0.2132185841910541,
+          "searchSeconds": 4.139306417200714,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 46,
+            "conflicts": 12551,
+            "decisions": 126752,
+            "propagations": 49555604
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_060",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7409827504307032,
+          "setupSeconds": 0.1438284171745181,
+          "searchSeconds": 4.015406291000545,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 42,
+            "conflicts": 9180,
+            "decisions": 105402,
+            "propagations": 14435680
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_060",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7162365829572082,
+          "setupSeconds": 0.010570458136498928,
+          "searchSeconds": 20.005834000185132,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 204645,
+            "decisions": 4015987,
+            "propagations": 96192790
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_061",
+      "name": "bend_061",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_061",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6627957909367979,
+          "setupSeconds": 0.21047016698867083,
+          "searchSeconds": 4.041554791852832,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 9,
+            "conflicts": 12064,
+            "decisions": 127278,
+            "propagations": 54921159
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_061",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7409875001758337,
+          "setupSeconds": 0.14232445834204555,
+          "searchSeconds": 4.222656374797225,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 25,
+            "conflicts": 8438,
+            "decisions": 77050,
+            "propagations": 13921093
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_061",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.656923457980156,
+          "setupSeconds": 0.010023042093962431,
+          "searchSeconds": 20.005436665844172,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 199965,
+            "decisions": 3571197,
+            "propagations": 96600119
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_062",
+      "name": "bend_062",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_062",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3152353339828551,
+          "setupSeconds": 0.10422449978068471,
+          "searchSeconds": 4.044484457932413,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 73,
+            "conflicts": 24578,
+            "decisions": 120515,
+            "propagations": 62218768
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_062",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.38727295910939574,
+          "setupSeconds": 0.07097966689616442,
+          "searchSeconds": 4.004971583839506,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 100,
+            "conflicts": 22741,
+            "decisions": 157737,
+            "propagations": 25334515
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_062",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.3165174168534577,
+          "setupSeconds": 0.005823667161166668,
+          "searchSeconds": 20.00443987501785,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1021,
+            "conflicts": 425759,
+            "decisions": 4235855,
+            "propagations": 153670818
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_063",
+      "name": "bend_063",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_063",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7332771252840757,
+          "setupSeconds": 0.20771145774051547,
+          "searchSeconds": 4.12164520798251,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 65,
+            "conflicts": 12538,
+            "decisions": 118410,
+            "propagations": 55060931
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_063",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6861500828526914,
+          "setupSeconds": 0.1435148329474032,
+          "searchSeconds": 4.80587395792827,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 35,
+            "conflicts": 9688,
+            "decisions": 99790,
+            "propagations": 17584828
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_063",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7423567082732916,
+          "setupSeconds": 0.010237374808639288,
+          "searchSeconds": 20.005555875133723,
+          "placements": 13343,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 200221,
+            "decisions": 3703212,
+            "propagations": 102024030
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
       ]
     },
     {
@@ -41,16 +5039,608 @@
       "note": "Glucose remained undecided at 120 seconds. CaDiCaL also remained undecided at its 120-second budget (checked between conflict chunks).",
       "evidence": [
         "data/bent-six-arm/variants/bend_064-k1-glucose.json",
-        "data/bent-six-arm/variants/bend_064-k1.json"
+        "data/bent-six-arm/variants/bend_064-k1.json",
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/long/kissat-screen.json",
+        "data/bent-six-arm/variants/first-coronas/long/minicard-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": true,
+      "runs": [
+        {
+          "id": "bend_064",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7239456251263618,
+          "setupSeconds": 0.20527458284050226,
+          "searchSeconds": 4.324155041016638,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 77,
+            "conflicts": 12582,
+            "decisions": 101075,
+            "propagations": 54181510
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_064",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7564277499914169,
+          "setupSeconds": 0.14039733400568366,
+          "searchSeconds": 4.146842542104423,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 42,
+            "conflicts": 9867,
+            "decisions": 113366,
+            "propagations": 15554558
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_064",
+          "solver": "kissat",
+          "positivePlacementPhases": false,
+          "encoding": "sequential-counter",
+          "incrementalCoverage": false,
+          "budgetSeconds": null,
+          "conflictBudget": 200000,
+          "buildSeconds": 0.7104645832441747,
+          "setupSeconds": 0.11921124998480082,
+          "searchSeconds": 37.815562250092626,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": null,
+          "record": "data/bent-six-arm/variants/first-coronas/long/kissat-screen.json"
+        },
+        {
+          "id": "bend_064",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 120.0,
+          "buildSeconds": 0.6823623329401016,
+          "setupSeconds": 0.010219875257462263,
+          "searchSeconds": 120.0057136672549,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 2047,
+            "conflicts": 1108133,
+            "decisions": 18280724,
+            "propagations": 524973976
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/long/minicard-screen.json"
+        },
+        {
+          "id": "bend_064",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.724457792006433,
+          "setupSeconds": 0.010801124852150679,
+          "searchSeconds": 20.005425000097603,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 511,
+            "conflicts": 208618,
+            "decisions": 3666507,
+            "propagations": 97737962
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_065",
+      "name": "bend_065",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_065",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7309028753079474,
+          "setupSeconds": 0.20822462486103177,
+          "searchSeconds": 4.051883041858673,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 52,
+            "conflicts": 12565,
+            "decisions": 123319,
+            "propagations": 55354071
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_065",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6717125419527292,
+          "setupSeconds": 0.1433907081373036,
+          "searchSeconds": 4.699083750136197,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 42,
+            "conflicts": 9548,
+            "decisions": 98592,
+            "propagations": 15097847
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_065",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.712888749781996,
+          "setupSeconds": 0.010594666004180908,
+          "searchSeconds": 20.005404208786786,
+          "placements": 13293,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 194268,
+            "decisions": 3515161,
+            "propagations": 91769795
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_066",
+      "name": "bend_066",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_066",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3016985417343676,
+          "setupSeconds": 0.10148562490940094,
+          "searchSeconds": 4.026446583215147,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 342,
+            "conflicts": 25574,
+            "decisions": 138210,
+            "propagations": 61169984
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_066",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3864534171298146,
+          "setupSeconds": 0.07282620901241899,
+          "searchSeconds": 4.009834374766797,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 119,
+            "conflicts": 23560,
+            "decisions": 160281,
+            "propagations": 27639276
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_066",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.3014619587920606,
+          "setupSeconds": 0.005901084281504154,
+          "searchSeconds": 20.005553458351642,
+          "placements": 6672,
+          "status": "unknown",
+          "stats": {
+            "restarts": 977,
+            "conflicts": 401700,
+            "decisions": 3550327,
+            "propagations": 147034746
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_067",
+      "name": "bend_067",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_067",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.706109541002661,
+          "setupSeconds": 0.2095329170115292,
+          "searchSeconds": 4.300893750041723,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 48,
+            "conflicts": 12601,
+            "decisions": 112868,
+            "propagations": 55966382
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_067",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7030212921090424,
+          "setupSeconds": 0.14138891594484448,
+          "searchSeconds": 4.013641834259033,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 67,
+            "conflicts": 9577,
+            "decisions": 119711,
+            "propagations": 16330577
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_067",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.6842756667174399,
+          "setupSeconds": 0.010270874947309494,
+          "searchSeconds": 20.00540674990043,
+          "placements": 13366,
+          "status": "unknown",
+          "stats": {
+            "restarts": 510,
+            "conflicts": 197312,
+            "decisions": 3574741,
+            "propagations": 94935048
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_068",
+      "name": "bend_068",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_068",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3281504581682384,
+          "setupSeconds": 0.105381874833256,
+          "searchSeconds": 4.000416500028223,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 121,
+            "conflicts": 24080,
+            "decisions": 107996,
+            "propagations": 61187996
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_068",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.3663066662847996,
+          "setupSeconds": 0.06878208415582776,
+          "searchSeconds": 4.053561792243272,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 104,
+            "conflicts": 22450,
+            "decisions": 159084,
+            "propagations": 25322639
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_068",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.29997600009664893,
+          "setupSeconds": 0.0056465002708137035,
+          "searchSeconds": 20.003405707888305,
+          "placements": 6678,
+          "status": "unknown",
+          "stats": {
+            "restarts": 1020,
+            "conflicts": 421769,
+            "decisions": 3978575,
+            "propagations": 150036248
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_069",
+      "name": "bend_069",
+      "exact": null,
+      "lower": 0,
+      "note": "No verified first corona found. Time-limited searches give no upper bound.",
+      "evidence": [
+        "data/bent-six-arm/variants/first-coronas/cadical-screen.json",
+        "data/bent-six-arm/variants/first-coronas/glucose-screen.json",
+        "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_069",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.7702242499217391,
+          "setupSeconds": 0.2184895002283156,
+          "searchSeconds": 4.001470500137657,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 77,
+            "conflicts": 12029,
+            "decisions": 100190,
+            "propagations": 51832091
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_069",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.6952763330191374,
+          "setupSeconds": 0.1397443749010563,
+          "searchSeconds": 4.544294584076852,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 12,
+            "conflicts": 9282,
+            "decisions": 81391,
+            "propagations": 13594033
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_069",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.7186636668629944,
+          "setupSeconds": 0.009939459152519703,
+          "searchSeconds": 20.0053123338148,
+          "placements": 13296,
+          "status": "unknown",
+          "stats": {
+            "restarts": 511,
+            "conflicts": 207526,
+            "decisions": 3989683,
+            "propagations": 104458835
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_070",
+      "name": "bend_070",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_070-verification.json",
+        "data/bent-six-arm/variants/bend_070-k1.json",
+        "data/bent-six-arm/variants/bend_070-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_070-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_070",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.21973112504929304,
+          "setupSeconds": 0.06868224963545799,
+          "searchSeconds": 4.000659334007651,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 331,
+            "conflicts": 29212,
+            "decisions": 107171,
+            "propagations": 57225706
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_070",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.24528612522408366,
+          "setupSeconds": 0.04477045824751258,
+          "searchSeconds": 4.066625291015953,
+          "placements": 4411,
+          "status": "unknown",
+          "stats": {
+            "restarts": 158,
+            "conflicts": 32425,
+            "decisions": 149781,
+            "propagations": 30977564
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_070",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.19518795888870955,
+          "setupSeconds": 0.003934249747544527,
+          "searchSeconds": 3.496017416007817,
+          "placements": 4411,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 272,
+            "conflicts": 106057,
+            "decisions": 580999,
+            "propagations": 32914063
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
+      ]
+    },
+    {
+      "id": "bend_071",
+      "name": "bend_071",
+      "exact": 0,
+      "lower": 0,
+      "note": "No first corona: independent placement audit and DRAT-trim proof check passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_071-verification.json",
+        "data/bent-six-arm/variants/bend_071-k1.json",
+        "data/bent-six-arm/variants/bend_071-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_071-k1.drup.gz"
+      ],
+      "antipodal": false,
+      "runs": [
+        {
+          "id": "bend_071",
+          "solver": "cadical",
+          "positivePlacementPhases": false,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.07871199958026409,
+          "setupSeconds": 0.03152354201301932,
+          "searchSeconds": 0.21089804219081998,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 5,
+            "conflicts": 1697,
+            "decisions": 9264,
+            "propagations": 2686820
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/cadical-screen.json"
+        },
+        {
+          "id": "bend_071",
+          "solver": "glucose",
+          "positivePlacementPhases": true,
+          "budgetSeconds": 4.0,
+          "buildSeconds": 0.07097087521106005,
+          "setupSeconds": 0.020451792050153017,
+          "searchSeconds": 0.04587395768612623,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 2,
+            "conflicts": 1277,
+            "decisions": 4032,
+            "propagations": 635547
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/glucose-screen.json"
+        },
+        {
+          "id": "bend_071",
+          "solver": "minicard",
+          "positivePlacementPhases": true,
+          "encoding": "native-cardinality",
+          "budgetSeconds": 20.0,
+          "buildSeconds": 0.07168520800769329,
+          "setupSeconds": 0.003045708406716585,
+          "searchSeconds": 0.013041249942034483,
+          "placements": 2206,
+          "status": "UNSAT-unchecked",
+          "stats": {
+            "restarts": 7,
+            "conflicts": 850,
+            "decisions": 3417,
+            "propagations": 186580
+          },
+          "record": "data/bent-six-arm/variants/first-coronas/minicard-screen.json"
+        }
       ]
     }
   ],
   "sourceSHA256": {
     "scripts/heesch-catalog/bent_arm_variants.py": "97b8d111447d885d112fca789ca31a94bbd5cb7667f1a616c1556ae6de014181",
     "scripts/heesch-catalog/bent_arm_cadical.py": "8e990a8b4a321cbc76129e2a2d894ea7938e689085d3722cd5a96f62a3690e89",
-    "scripts/heesch-catalog/report_bent_arm_variants.py": "482e27ac59541ffe02f314fe9932186310000cec7f6cb8fec3bab0d07aa08422",
+    "scripts/heesch-catalog/report_bent_arm_variants.py": "a27072f9d05db31668673c396ca2cadd6b45592fa47d7222b4e4685cfeebbcaa",
+    "scripts/heesch-catalog/search_bent_arm_coronas.py": "dbb13c28a7340bbce4aaf5c860072bbf8d3b09bed6bee3599e766e72df328be9",
     "scripts/heesch-catalog/corona.py": "e070cbc458120cebe7e9e0b99700900f5c5435b31563437273ad976627ff9022",
     "scripts/heesch-catalog/verify_bent_six_arm.py": "642fafc871fe82c5d5a0363ac94ead2d74089f0bf8279127d90a00f2a4d9b082",
-    "data/bent-six-arm/variants/catalog.json": "59c7ff80dc0396b874813d38d39b63c2949e8e50ffb9f87ef482151b4d6c5dd2"
+    "data/bent-six-arm/variants/catalog.json": "59c7ff80dc0396b874813d38d39b63c2949e8e50ffb9f87ef482151b4d6c5dd2",
+    "docs/projects/bent-arm-corona-search.md": "4b77dc69a5707a473119f344c8b4e9279596a973ced1ea27edc8e447d85c1280"
   }
 }

@@ -1,0 +1,26 @@
+{
+  "solver": "minicard",
+  "secondsPerShape": 120.0,
+  "reverseOrder": false,
+  "results": [
+    {
+      "id": "bend_064",
+      "solver": "minicard",
+      "positivePlacementPhases": true,
+      "encoding": "native-cardinality",
+      "budgetSeconds": 120.0,
+      "buildSeconds": 0.6823623329401016,
+      "setupSeconds": 0.010219875257462263,
+      "searchSeconds": 120.0057136672549,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 2047,
+        "conflicts": 1108133,
+        "decisions": 18280724,
+        "propagations": 524973976
+      }
+    }
+  ],
+  "stoppedAfterWitness": false
+}

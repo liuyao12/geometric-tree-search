@@ -1,0 +1,1198 @@
+{
+  "solver": "glucose",
+  "secondsPerShape": 4.0,
+  "reverseOrder": false,
+  "results": [
+    {
+      "id": "bend_000",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7965895002707839,
+      "setupSeconds": 0.14536450011655688,
+      "searchSeconds": 4.027107208035886,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 45,
+        "conflicts": 8945,
+        "decisions": 104140,
+        "propagations": 15435442
+      }
+    },
+    {
+      "id": "bend_001",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7397711672820151,
+      "setupSeconds": 0.14658391661942005,
+      "searchSeconds": 4.06762779224664,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 46,
+        "conflicts": 9721,
+        "decisions": 103686,
+        "propagations": 15635528
+      }
+    },
+    {
+      "id": "bend_002",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7637473330833018,
+      "setupSeconds": 0.1491810828447342,
+      "searchSeconds": 4.128307540901005,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 22,
+        "conflicts": 7394,
+        "decisions": 73313,
+        "propagations": 11294274
+      }
+    },
+    {
+      "id": "bend_003",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.656128958798945,
+      "setupSeconds": 0.14635920897126198,
+      "searchSeconds": 4.623559749685228,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 22,
+        "conflicts": 10612,
+        "decisions": 103099,
+        "propagations": 18953822
+      }
+    },
+    {
+      "id": "bend_004",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.22827866626903415,
+      "setupSeconds": 0.04665329214185476,
+      "searchSeconds": 4.046610125340521,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 162,
+        "conflicts": 33014,
+        "decisions": 149510,
+        "propagations": 32898508
+      }
+    },
+    {
+      "id": "bend_005",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7061535422690213,
+      "setupSeconds": 0.14514912478625774,
+      "searchSeconds": 4.059388499706984,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 29,
+        "conflicts": 9462,
+        "decisions": 89614,
+        "propagations": 15107566
+      }
+    },
+    {
+      "id": "bend_006",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7406598329544067,
+      "setupSeconds": 0.1471379161812365,
+      "searchSeconds": 4.010039790999144,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 33,
+        "conflicts": 9156,
+        "decisions": 96272,
+        "propagations": 17160969
+      }
+    },
+    {
+      "id": "bend_007",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7360492087900639,
+      "setupSeconds": 0.15157758304849267,
+      "searchSeconds": 4.005667916033417,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 31,
+        "conflicts": 8824,
+        "decisions": 96426,
+        "propagations": 14510533
+      }
+    },
+    {
+      "id": "bend_008",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6675512921065092,
+      "setupSeconds": 0.1489362921565771,
+      "searchSeconds": 4.347110250033438,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 66,
+        "conflicts": 9750,
+        "decisions": 111287,
+        "propagations": 17219150
+      }
+    },
+    {
+      "id": "bend_009",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6611508750356734,
+      "setupSeconds": 0.1498210420832038,
+      "searchSeconds": 4.017069624736905,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 30,
+        "conflicts": 8081,
+        "decisions": 89168,
+        "propagations": 14211577
+      }
+    },
+    {
+      "id": "bend_010",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7222790406085551,
+      "setupSeconds": 0.1526283328421414,
+      "searchSeconds": 4.031429957598448,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 29,
+        "conflicts": 8349,
+        "decisions": 92972,
+        "propagations": 13756162
+      }
+    },
+    {
+      "id": "bend_011",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7370702908374369,
+      "setupSeconds": 0.15386766707524657,
+      "searchSeconds": 4.755628832615912,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 48,
+        "conflicts": 10489,
+        "decisions": 114844,
+        "propagations": 18073074
+      }
+    },
+    {
+      "id": "bend_012",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.2289906251244247,
+      "setupSeconds": 0.04623099975287914,
+      "searchSeconds": 4.015087750274688,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 188,
+        "conflicts": 35113,
+        "decisions": 167265,
+        "propagations": 33260955
+      }
+    },
+    {
+      "id": "bend_013",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7004944160580635,
+      "setupSeconds": 0.143134375102818,
+      "searchSeconds": 4.010448624845594,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 44,
+        "conflicts": 9684,
+        "decisions": 111570,
+        "propagations": 15496201
+      }
+    },
+    {
+      "id": "bend_014",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7144346251152456,
+      "setupSeconds": 0.14253600034862757,
+      "searchSeconds": 4.301135958172381,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 9,
+        "conflicts": 8220,
+        "decisions": 62921,
+        "propagations": 11960430
+      }
+    },
+    {
+      "id": "bend_015",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6431097500026226,
+      "setupSeconds": 0.14462470775470138,
+      "searchSeconds": 4.35544016584754,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 31,
+        "conflicts": 9289,
+        "decisions": 92804,
+        "propagations": 15511244
+      }
+    },
+    {
+      "id": "bend_016",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7193248327821493,
+      "setupSeconds": 0.14244074979797006,
+      "searchSeconds": 4.096525541041046,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 56,
+        "conflicts": 9629,
+        "decisions": 113191,
+        "propagations": 14281331
+      }
+    },
+    {
+      "id": "bend_017",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6433067079633474,
+      "setupSeconds": 0.14802033314481378,
+      "searchSeconds": 4.490675458218902,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 31,
+        "conflicts": 10060,
+        "decisions": 97442,
+        "propagations": 16156675
+      }
+    },
+    {
+      "id": "bend_019",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.08987283427268267,
+      "setupSeconds": 0.021205666940659285,
+      "searchSeconds": 0.06957358308136463,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 2,
+        "conflicts": 1746,
+        "decisions": 6680,
+        "propagations": 804896
+      }
+    },
+    {
+      "id": "bend_020",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6839420408941805,
+      "setupSeconds": 0.1429466251283884,
+      "searchSeconds": 4.263463540934026,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 46,
+        "conflicts": 10406,
+        "decisions": 119273,
+        "propagations": 17585170
+      }
+    },
+    {
+      "id": "bend_021",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7206959170289338,
+      "setupSeconds": 0.14535016706213355,
+      "searchSeconds": 4.017258916981518,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 56,
+        "conflicts": 9493,
+        "decisions": 116906,
+        "propagations": 17227256
+      }
+    },
+    {
+      "id": "bend_022",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6315317498520017,
+      "setupSeconds": 0.146011833101511,
+      "searchSeconds": 4.171972665935755,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 13,
+        "conflicts": 8389,
+        "decisions": 73621,
+        "propagations": 13228344
+      }
+    },
+    {
+      "id": "bend_023",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6737671252340078,
+      "setupSeconds": 0.14740741718560457,
+      "searchSeconds": 4.011979540809989,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 46,
+        "conflicts": 9833,
+        "decisions": 110557,
+        "propagations": 16252929
+      }
+    },
+    {
+      "id": "bend_024",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7717752917669713,
+      "setupSeconds": 0.14165725000202656,
+      "searchSeconds": 4.03186475019902,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 50,
+        "conflicts": 9433,
+        "decisions": 102786,
+        "propagations": 14880320
+      }
+    },
+    {
+      "id": "bend_025",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6863830829970539,
+      "setupSeconds": 0.15546445781365037,
+      "searchSeconds": 4.374093041755259,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 50,
+        "conflicts": 10626,
+        "decisions": 104041,
+        "propagations": 19482535
+      }
+    },
+    {
+      "id": "bend_026",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.16211166698485613,
+      "setupSeconds": 0.047403584234416485,
+      "searchSeconds": 4.010409999638796,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 168,
+        "conflicts": 31192,
+        "decisions": 147754,
+        "propagations": 30881570
+      }
+    },
+    {
+      "id": "bend_027",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7991840844042599,
+      "setupSeconds": 0.15064637502655387,
+      "searchSeconds": 4.155783207621425,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 24,
+        "conflicts": 10249,
+        "decisions": 95578,
+        "propagations": 15029026
+      }
+    },
+    {
+      "id": "bend_028",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.718554750084877,
+      "setupSeconds": 0.14813895896077156,
+      "searchSeconds": 4.049361040815711,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 54,
+        "conflicts": 11169,
+        "decisions": 131978,
+        "propagations": 18088392
+      }
+    },
+    {
+      "id": "bend_029",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6540080406703055,
+      "setupSeconds": 0.14391491608694196,
+      "searchSeconds": 4.137265833094716,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 19,
+        "conflicts": 7624,
+        "decisions": 70168,
+        "propagations": 11515503
+      }
+    },
+    {
+      "id": "bend_030",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6324836662970483,
+      "setupSeconds": 0.14405349968001246,
+      "searchSeconds": 4.234644459094852,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 58,
+        "conflicts": 11574,
+        "decisions": 138059,
+        "propagations": 19043396
+      }
+    },
+    {
+      "id": "bend_031",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7097024158574641,
+      "setupSeconds": 0.1433722502551973,
+      "searchSeconds": 4.017324916087091,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 36,
+        "conflicts": 7399,
+        "decisions": 89814,
+        "propagations": 12867557
+      }
+    },
+    {
+      "id": "bend_032",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6614958336576819,
+      "setupSeconds": 0.14809041703119874,
+      "searchSeconds": 4.009383541997522,
+      "placements": 13286,
+      "status": "unknown",
+      "stats": {
+        "restarts": 22,
+        "conflicts": 7636,
+        "decisions": 74008,
+        "propagations": 13312680
+      }
+    },
+    {
+      "id": "bend_033",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7348202080465853,
+      "setupSeconds": 0.1490252078510821,
+      "searchSeconds": 4.011139917187393,
+      "placements": 13345,
+      "status": "unknown",
+      "stats": {
+        "restarts": 28,
+        "conflicts": 8689,
+        "decisions": 88143,
+        "propagations": 13926100
+      }
+    },
+    {
+      "id": "bend_034",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7500120839104056,
+      "setupSeconds": 0.1433348343707621,
+      "searchSeconds": 4.204806583933532,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 34,
+        "conflicts": 8314,
+        "decisions": 87158,
+        "propagations": 14890919
+      }
+    },
+    {
+      "id": "bend_035",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6697602500207722,
+      "setupSeconds": 0.14482320798560977,
+      "searchSeconds": 4.5707987090572715,
+      "placements": 13289,
+      "status": "unknown",
+      "stats": {
+        "restarts": 40,
+        "conflicts": 10186,
+        "decisions": 107332,
+        "propagations": 17424734
+      }
+    },
+    {
+      "id": "bend_037",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7552424580790102,
+      "setupSeconds": 0.14791804179549217,
+      "searchSeconds": 4.417772250249982,
+      "placements": 13286,
+      "status": "unknown",
+      "stats": {
+        "restarts": 43,
+        "conflicts": 8163,
+        "decisions": 88325,
+        "propagations": 14965707
+      }
+    },
+    {
+      "id": "bend_038",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6918460410088301,
+      "setupSeconds": 0.14984983298927546,
+      "searchSeconds": 4.560744667425752,
+      "placements": 13345,
+      "status": "unknown",
+      "stats": {
+        "restarts": 28,
+        "conflicts": 8937,
+        "decisions": 77311,
+        "propagations": 14693717
+      }
+    },
+    {
+      "id": "bend_039",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7950387909077108,
+      "setupSeconds": 0.14967095805332065,
+      "searchSeconds": 4.887072124984115,
+      "placements": 13342,
+      "status": "unknown",
+      "stats": {
+        "restarts": 49,
+        "conflicts": 10516,
+        "decisions": 129889,
+        "propagations": 16739175
+      }
+    },
+    {
+      "id": "bend_040",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3314974159002304,
+      "setupSeconds": 0.07253029197454453,
+      "searchSeconds": 4.056241542100906,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 98,
+        "conflicts": 20883,
+        "decisions": 138022,
+        "propagations": 24083142
+      }
+    },
+    {
+      "id": "bend_041",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7335050408728421,
+      "setupSeconds": 0.14967774972319603,
+      "searchSeconds": 4.057997582945973,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 24,
+        "conflicts": 6824,
+        "decisions": 63886,
+        "propagations": 11551384
+      }
+    },
+    {
+      "id": "bend_042",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7902472498826683,
+      "setupSeconds": 0.1603032909333706,
+      "searchSeconds": 4.183765084017068,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 18,
+        "conflicts": 6575,
+        "decisions": 58153,
+        "propagations": 10256152
+      }
+    },
+    {
+      "id": "bend_043",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7671398334205151,
+      "setupSeconds": 0.15133937494829297,
+      "searchSeconds": 4.324342291802168,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 33,
+        "conflicts": 9431,
+        "decisions": 95181,
+        "propagations": 14709885
+      }
+    },
+    {
+      "id": "bend_044",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7897138330154121,
+      "setupSeconds": 0.14453995833173394,
+      "searchSeconds": 4.165792459156364,
+      "placements": 13289,
+      "status": "unknown",
+      "stats": {
+        "restarts": 38,
+        "conflicts": 7882,
+        "decisions": 90520,
+        "propagations": 14924115
+      }
+    },
+    {
+      "id": "bend_045",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.33339312486350536,
+      "setupSeconds": 0.07161929225549102,
+      "searchSeconds": 4.358829999808222,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 116,
+        "conflicts": 21837,
+        "decisions": 153308,
+        "propagations": 25302682
+      }
+    },
+    {
+      "id": "bend_046",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7090616673231125,
+      "setupSeconds": 0.14629350043833256,
+      "searchSeconds": 4.389055583160371,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 31,
+        "conflicts": 9647,
+        "decisions": 88061,
+        "propagations": 16184458
+      }
+    },
+    {
+      "id": "bend_047",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7630985002033412,
+      "setupSeconds": 0.14440520899370313,
+      "searchSeconds": 4.206341833341867,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 36,
+        "conflicts": 8636,
+        "decisions": 89679,
+        "propagations": 14636294
+      }
+    },
+    {
+      "id": "bend_048",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6912609999999404,
+      "setupSeconds": 0.1447622082196176,
+      "searchSeconds": 4.845789833925664,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 44,
+        "conflicts": 9820,
+        "decisions": 108610,
+        "propagations": 15652111
+      }
+    },
+    {
+      "id": "bend_049",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3406522497534752,
+      "setupSeconds": 0.07115720771253109,
+      "searchSeconds": 4.026678249705583,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 90,
+        "conflicts": 22630,
+        "decisions": 142044,
+        "propagations": 28211436
+      }
+    },
+    {
+      "id": "bend_050",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7345527498982847,
+      "setupSeconds": 0.14433637540787458,
+      "searchSeconds": 4.013946250081062,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 25,
+        "conflicts": 7603,
+        "decisions": 83467,
+        "propagations": 11981199
+      }
+    },
+    {
+      "id": "bend_051",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7286492921411991,
+      "setupSeconds": 0.1465988326817751,
+      "searchSeconds": 4.205483833793551,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 47,
+        "conflicts": 8860,
+        "decisions": 95932,
+        "propagations": 15188396
+      }
+    },
+    {
+      "id": "bend_052",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.37740416591987014,
+      "setupSeconds": 0.071536083240062,
+      "searchSeconds": 4.058420957997441,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 82,
+        "conflicts": 20203,
+        "decisions": 131890,
+        "propagations": 24799830
+      }
+    },
+    {
+      "id": "bend_053",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7244144580326974,
+      "setupSeconds": 0.143844542093575,
+      "searchSeconds": 4.068184124771506,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 39,
+        "conflicts": 9816,
+        "decisions": 106086,
+        "propagations": 15216979
+      }
+    },
+    {
+      "id": "bend_054",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3116285828873515,
+      "setupSeconds": 0.0694646667689085,
+      "searchSeconds": 4.174088750034571,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 56,
+        "conflicts": 22733,
+        "decisions": 137741,
+        "propagations": 25029696
+      }
+    },
+    {
+      "id": "bend_055",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7693063751794398,
+      "setupSeconds": 0.14083316689357162,
+      "searchSeconds": 4.596368708182126,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 17,
+        "conflicts": 9531,
+        "decisions": 75013,
+        "propagations": 15359654
+      }
+    },
+    {
+      "id": "bend_056",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7621176666580141,
+      "setupSeconds": 0.14425708400085568,
+      "searchSeconds": 4.007505374960601,
+      "placements": 13342,
+      "status": "unknown",
+      "stats": {
+        "restarts": 56,
+        "conflicts": 9454,
+        "decisions": 115344,
+        "propagations": 15458235
+      }
+    },
+    {
+      "id": "bend_057",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6655817092396319,
+      "setupSeconds": 0.1409583748318255,
+      "searchSeconds": 4.021177832968533,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 43,
+        "conflicts": 9111,
+        "decisions": 105718,
+        "propagations": 14721870
+      }
+    },
+    {
+      "id": "bend_058",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.654490833170712,
+      "setupSeconds": 0.14218829199671745,
+      "searchSeconds": 4.693214333150536,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 20,
+        "conflicts": 7266,
+        "decisions": 76802,
+        "propagations": 11230404
+      }
+    },
+    {
+      "id": "bend_059",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7343959999270737,
+      "setupSeconds": 0.14315566699951887,
+      "searchSeconds": 4.2248930423520505,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 40,
+        "conflicts": 8789,
+        "decisions": 102938,
+        "propagations": 14195116
+      }
+    },
+    {
+      "id": "bend_060",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7409827504307032,
+      "setupSeconds": 0.1438284171745181,
+      "searchSeconds": 4.015406291000545,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 42,
+        "conflicts": 9180,
+        "decisions": 105402,
+        "propagations": 14435680
+      }
+    },
+    {
+      "id": "bend_061",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7409875001758337,
+      "setupSeconds": 0.14232445834204555,
+      "searchSeconds": 4.222656374797225,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 25,
+        "conflicts": 8438,
+        "decisions": 77050,
+        "propagations": 13921093
+      }
+    },
+    {
+      "id": "bend_062",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.38727295910939574,
+      "setupSeconds": 0.07097966689616442,
+      "searchSeconds": 4.004971583839506,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 100,
+        "conflicts": 22741,
+        "decisions": 157737,
+        "propagations": 25334515
+      }
+    },
+    {
+      "id": "bend_063",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6861500828526914,
+      "setupSeconds": 0.1435148329474032,
+      "searchSeconds": 4.80587395792827,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 35,
+        "conflicts": 9688,
+        "decisions": 99790,
+        "propagations": 17584828
+      }
+    },
+    {
+      "id": "bend_064",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7564277499914169,
+      "setupSeconds": 0.14039733400568366,
+      "searchSeconds": 4.146842542104423,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 42,
+        "conflicts": 9867,
+        "decisions": 113366,
+        "propagations": 15554558
+      }
+    },
+    {
+      "id": "bend_065",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6717125419527292,
+      "setupSeconds": 0.1433907081373036,
+      "searchSeconds": 4.699083750136197,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 42,
+        "conflicts": 9548,
+        "decisions": 98592,
+        "propagations": 15097847
+      }
+    },
+    {
+      "id": "bend_066",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3864534171298146,
+      "setupSeconds": 0.07282620901241899,
+      "searchSeconds": 4.009834374766797,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 119,
+        "conflicts": 23560,
+        "decisions": 160281,
+        "propagations": 27639276
+      }
+    },
+    {
+      "id": "bend_067",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7030212921090424,
+      "setupSeconds": 0.14138891594484448,
+      "searchSeconds": 4.013641834259033,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 67,
+        "conflicts": 9577,
+        "decisions": 119711,
+        "propagations": 16330577
+      }
+    },
+    {
+      "id": "bend_068",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3663066662847996,
+      "setupSeconds": 0.06878208415582776,
+      "searchSeconds": 4.053561792243272,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 104,
+        "conflicts": 22450,
+        "decisions": 159084,
+        "propagations": 25322639
+      }
+    },
+    {
+      "id": "bend_069",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6952763330191374,
+      "setupSeconds": 0.1397443749010563,
+      "searchSeconds": 4.544294584076852,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 12,
+        "conflicts": 9282,
+        "decisions": 81391,
+        "propagations": 13594033
+      }
+    },
+    {
+      "id": "bend_070",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.24528612522408366,
+      "setupSeconds": 0.04477045824751258,
+      "searchSeconds": 4.066625291015953,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 158,
+        "conflicts": 32425,
+        "decisions": 149781,
+        "propagations": 30977564
+      }
+    },
+    {
+      "id": "bend_071",
+      "solver": "glucose",
+      "positivePlacementPhases": true,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.07097087521106005,
+      "setupSeconds": 0.020451792050153017,
+      "searchSeconds": 0.04587395768612623,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 2,
+        "conflicts": 1277,
+        "decisions": 4032,
+        "propagations": 635547
+      }
+    }
+  ],
+  "stoppedAfterWitness": false
+}

@@ -23,7 +23,31 @@ if r:
   row.update(lower=1,note=f"CaDiCaL found a verified first corona in {r['searchAndSetupSeconds']:.2f} s including setup. No upper bound yet.")
  else:row['note']+=' CaDiCaL also remained undecided at its 120-second budget (checked between conflict chunks).'
 rows.append(row)
-summary={'date':'2026-09-27','scope':'Two outward and two sideways steps; 25 nonoverlapping cubes; proper rotations and integer translations. Only the three centrally symmetric classes searched.','rawAssignments':4096,'nonoverlappingAssignments':1496,'classes':72,'centrallySymmetricClasses':3,'notSearchedClasses':69,'rows':rows}
-files=['scripts/heesch-catalog/bent_arm_variants.py','scripts/heesch-catalog/bent_arm_cadical.py','scripts/heesch-catalog/report_bent_arm_variants.py','scripts/heesch-catalog/corona.py','scripts/heesch-catalog/verify_bent_six_arm.py',prefix+'catalog.json']
+catalog=read(prefix+'catalog.json')['rows'];known={r['id']:r for r in rows};runs={}
+for path in sorted((OUT/'first-coronas').rglob('*-screen.json')):
+ for run in json.loads(path.read_text())['results']:
+  runs.setdefault(run['id'],[]).append({**run,'record':str(path.relative_to(ROOT))})
+for tile in catalog:
+ id=tile['id']
+ if id not in known and id in runs:
+  known[id]={'id':id,'name':id,'exact':None,'lower':0,'note':'No verified first corona found. Time-limited searches give no upper bound.','evidence':sorted({r['record'] for r in runs[id]})}
+ if id not in known:continue
+ row=known[id];row['antipodal']=tile['antipodal'];row['runs']=runs.get(id,[])
+ row['evidence']=list(dict.fromkeys(row['evidence']+[r['record'] for r in row['runs']]))
+ vpath=prefix+id+'-verification.json'
+ if id not in ['bend_018','bend_036'] and (ROOT/vpath).exists():
+  v=read(vpath);assert v['proofVerified'] and v['independentRectangularScan'];stem=prefix+id+'-k1.json'
+  row.update(exact=0,lower=0,note='No first corona: independent placement audit and DRAT-trim proof check passed.',evidence=[vpath,stem,stem.replace('.json','.cnf.gz'),stem.replace('.json','.drup.gz')])
+ for path in sorted((OUT/'first-coronas').rglob(id+'-*-witness.json')):
+  from search_bent_arm_coronas import check
+  w=json.loads(path.read_text());v=check(tile,w);assert v['verified'] and row['exact']!=0
+  row.update(lower=1,witnessFile=str(path.relative_to(ROOT)),note=f"Verified first corona with {v['surroundingTiles']} surrounding tiles. Exact Heesch number unresolved.")
+  row['evidence'].insert(0,str(path.relative_to(ROOT)))
+ if row['exact'] is None and not row['lower'] and any(r['status']=='UNSAT-unchecked' for r in row['runs']):
+  row['note']='A solver reported no first corona, but its proof has not been independently checked; no certified upper bound is assigned.'
+rows=sorted(known.values(),key=lambda r:r['id'])
+summary={'date':'2026-09-27','scope':'Two outward and two sideways steps; 25 nonoverlapping cubes; proper rotations and integer translations; full face/edge/vertex touching first coronas. Time limits are not exclusions.','rawAssignments':4096,'nonoverlappingAssignments':1496,'classes':72,'centrallySymmetricClasses':3,'notSearchedClasses':72-len(rows),'verifiedFirstCoronas':sum(r['lower']>=1 for r in rows),'certifiedH0':sum(r['exact']==0 for r in rows),'unresolvedClasses':sum(r['exact'] is None and r['lower']==0 for r in rows),'rows':rows}
+files=['scripts/heesch-catalog/bent_arm_variants.py','scripts/heesch-catalog/bent_arm_cadical.py','scripts/heesch-catalog/report_bent_arm_variants.py','scripts/heesch-catalog/search_bent_arm_coronas.py','scripts/heesch-catalog/corona.py','scripts/heesch-catalog/verify_bent_six_arm.py',prefix+'catalog.json']
+files+=['docs/projects/bent-arm-corona-search.md']
 summary['sourceSHA256']={s:hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in files}
-(OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(rows,indent=2))
+(OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps({k:v for k,v in summary.items() if k not in ['rows','sourceSHA256']}))

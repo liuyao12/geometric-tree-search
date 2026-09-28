@@ -1,0 +1,14 @@
+{
+  "id": "bend_004",
+  "result": "H=0",
+  "scope": "Integer translations, proper cubic rotations, full face/edge/vertex corona",
+  "placements": 4411,
+  "independentRectangularScan": true,
+  "independentQuarterTurnOrientations": true,
+  "cnfRegenerated": true,
+  "proofVerified": true,
+  "proofCheckSeconds": 3.3952902499586344,
+  "formulaSHA256": "3a59f6fc39c5563809d36e811ec5ad690e4234a0fe90934143c3b8f410311138",
+  "proofSHA256": "95550c0529e6e97d9d0a534fb6ccc5c1283a2d5c89e7163c9f060bbaf6640cc8",
+  "checkerCommit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"
+}

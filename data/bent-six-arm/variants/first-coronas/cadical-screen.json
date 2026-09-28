@@ -1,0 +1,1198 @@
+{
+  "solver": "cadical",
+  "secondsPerShape": 4.0,
+  "reverseOrder": true,
+  "results": [
+    {
+      "id": "bend_071",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.07871199958026409,
+      "setupSeconds": 0.03152354201301932,
+      "searchSeconds": 0.21089804219081998,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 5,
+        "conflicts": 1697,
+        "decisions": 9264,
+        "propagations": 2686820
+      }
+    },
+    {
+      "id": "bend_070",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.21973112504929304,
+      "setupSeconds": 0.06868224963545799,
+      "searchSeconds": 4.000659334007651,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 331,
+        "conflicts": 29212,
+        "decisions": 107171,
+        "propagations": 57225706
+      }
+    },
+    {
+      "id": "bend_069",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7702242499217391,
+      "setupSeconds": 0.2184895002283156,
+      "searchSeconds": 4.001470500137657,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 77,
+        "conflicts": 12029,
+        "decisions": 100190,
+        "propagations": 51832091
+      }
+    },
+    {
+      "id": "bend_068",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3281504581682384,
+      "setupSeconds": 0.105381874833256,
+      "searchSeconds": 4.000416500028223,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 121,
+        "conflicts": 24080,
+        "decisions": 107996,
+        "propagations": 61187996
+      }
+    },
+    {
+      "id": "bend_067",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.706109541002661,
+      "setupSeconds": 0.2095329170115292,
+      "searchSeconds": 4.300893750041723,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 48,
+        "conflicts": 12601,
+        "decisions": 112868,
+        "propagations": 55966382
+      }
+    },
+    {
+      "id": "bend_066",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3016985417343676,
+      "setupSeconds": 0.10148562490940094,
+      "searchSeconds": 4.026446583215147,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 342,
+        "conflicts": 25574,
+        "decisions": 138210,
+        "propagations": 61169984
+      }
+    },
+    {
+      "id": "bend_065",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7309028753079474,
+      "setupSeconds": 0.20822462486103177,
+      "searchSeconds": 4.051883041858673,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 52,
+        "conflicts": 12565,
+        "decisions": 123319,
+        "propagations": 55354071
+      }
+    },
+    {
+      "id": "bend_064",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7239456251263618,
+      "setupSeconds": 0.20527458284050226,
+      "searchSeconds": 4.324155041016638,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 77,
+        "conflicts": 12582,
+        "decisions": 101075,
+        "propagations": 54181510
+      }
+    },
+    {
+      "id": "bend_063",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7332771252840757,
+      "setupSeconds": 0.20771145774051547,
+      "searchSeconds": 4.12164520798251,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 65,
+        "conflicts": 12538,
+        "decisions": 118410,
+        "propagations": 55060931
+      }
+    },
+    {
+      "id": "bend_062",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3152353339828551,
+      "setupSeconds": 0.10422449978068471,
+      "searchSeconds": 4.044484457932413,
+      "placements": 6678,
+      "status": "unknown",
+      "stats": {
+        "restarts": 73,
+        "conflicts": 24578,
+        "decisions": 120515,
+        "propagations": 62218768
+      }
+    },
+    {
+      "id": "bend_061",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6627957909367979,
+      "setupSeconds": 0.21047016698867083,
+      "searchSeconds": 4.041554791852832,
+      "placements": 13343,
+      "status": "unknown",
+      "stats": {
+        "restarts": 9,
+        "conflicts": 12064,
+        "decisions": 127278,
+        "propagations": 54921159
+      }
+    },
+    {
+      "id": "bend_060",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7303259582258761,
+      "setupSeconds": 0.2132185841910541,
+      "searchSeconds": 4.139306417200714,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 46,
+        "conflicts": 12551,
+        "decisions": 126752,
+        "propagations": 49555604
+      }
+    },
+    {
+      "id": "bend_059",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7525523751974106,
+      "setupSeconds": 0.21455899998545647,
+      "searchSeconds": 4.051159875001758,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 66,
+        "conflicts": 10643,
+        "decisions": 97701,
+        "propagations": 52801623
+      }
+    },
+    {
+      "id": "bend_058",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6566852503456175,
+      "setupSeconds": 0.21393279172480106,
+      "searchSeconds": 4.006898041814566,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 2,
+        "conflicts": 11049,
+        "decisions": 108609,
+        "propagations": 58902625
+      }
+    },
+    {
+      "id": "bend_057",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6306790420785546,
+      "setupSeconds": 0.2048661671578884,
+      "searchSeconds": 4.360952792223543,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 119,
+        "conflicts": 13095,
+        "decisions": 114285,
+        "propagations": 63317414
+      }
+    },
+    {
+      "id": "bend_056",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6946330843493342,
+      "setupSeconds": 0.20656762504950166,
+      "searchSeconds": 4.161635708063841,
+      "placements": 13342,
+      "status": "unknown",
+      "stats": {
+        "restarts": 231,
+        "conflicts": 13050,
+        "decisions": 129421,
+        "propagations": 55454585
+      }
+    },
+    {
+      "id": "bend_055",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6946415840648115,
+      "setupSeconds": 0.20608995901420712,
+      "searchSeconds": 4.0856031673029065,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 42,
+        "conflicts": 13053,
+        "decisions": 106556,
+        "propagations": 58629565
+      }
+    },
+    {
+      "id": "bend_054",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.2923384578898549,
+      "setupSeconds": 0.09962483309209347,
+      "searchSeconds": 4.156745083164424,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 346,
+        "conflicts": 27124,
+        "decisions": 129710,
+        "propagations": 72850750
+      }
+    },
+    {
+      "id": "bend_053",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7019042922183871,
+      "setupSeconds": 0.20165175013244152,
+      "searchSeconds": 4.13368208380416,
+      "placements": 13366,
+      "status": "unknown",
+      "stats": {
+        "restarts": 70,
+        "conflicts": 13053,
+        "decisions": 129851,
+        "propagations": 55358616
+      }
+    },
+    {
+      "id": "bend_052",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.358519374858588,
+      "setupSeconds": 0.0975127094425261,
+      "searchSeconds": 4.177101457957178,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 338,
+        "conflicts": 27102,
+        "decisions": 123835,
+        "propagations": 70911093
+      }
+    },
+    {
+      "id": "bend_051",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6281135841272771,
+      "setupSeconds": 0.20225074980407953,
+      "searchSeconds": 4.341889250092208,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 80,
+        "conflicts": 13048,
+        "decisions": 139572,
+        "propagations": 62681734
+      }
+    },
+    {
+      "id": "bend_050",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6942467922344804,
+      "setupSeconds": 0.2015051250346005,
+      "searchSeconds": 4.052670000120997,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 11,
+        "conflicts": 14182,
+        "decisions": 119834,
+        "propagations": 61532620
+      }
+    },
+    {
+      "id": "bend_049",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3615016252733767,
+      "setupSeconds": 0.1007429170422256,
+      "searchSeconds": 4.083007500041276,
+      "placements": 6680,
+      "status": "unknown",
+      "stats": {
+        "restarts": 939,
+        "conflicts": 27089,
+        "decisions": 143380,
+        "propagations": 72605409
+      }
+    },
+    {
+      "id": "bend_048",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6305220825597644,
+      "setupSeconds": 0.20655429223552346,
+      "searchSeconds": 4.243789874948561,
+      "placements": 13300,
+      "status": "unknown",
+      "stats": {
+        "restarts": 29,
+        "conflicts": 12599,
+        "decisions": 111372,
+        "propagations": 62724469
+      }
+    },
+    {
+      "id": "bend_047",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6897067497484386,
+      "setupSeconds": 0.20714312512427568,
+      "searchSeconds": 4.435843083076179,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 82,
+        "conflicts": 13089,
+        "decisions": 112866,
+        "propagations": 60953793
+      }
+    },
+    {
+      "id": "bend_046",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7256702920421958,
+      "setupSeconds": 0.21562458341941237,
+      "searchSeconds": 4.570957208052278,
+      "placements": 13291,
+      "status": "unknown",
+      "stats": {
+        "restarts": 122,
+        "conflicts": 12596,
+        "decisions": 111717,
+        "propagations": 57030562
+      }
+    },
+    {
+      "id": "bend_045",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3859747080132365,
+      "setupSeconds": 0.10429674992337823,
+      "searchSeconds": 4.052234583068639,
+      "placements": 6598,
+      "status": "unknown",
+      "stats": {
+        "restarts": 231,
+        "conflicts": 23572,
+        "decisions": 118646,
+        "propagations": 62138588
+      }
+    },
+    {
+      "id": "bend_044",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6777552501298487,
+      "setupSeconds": 0.2019975003786385,
+      "searchSeconds": 4.334274665918201,
+      "placements": 13289,
+      "status": "unknown",
+      "stats": {
+        "restarts": 74,
+        "conflicts": 12635,
+        "decisions": 128609,
+        "propagations": 60574676
+      }
+    },
+    {
+      "id": "bend_043",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7055335412733257,
+      "setupSeconds": 0.2084890827536583,
+      "searchSeconds": 4.153145958203822,
+      "placements": 13337,
+      "status": "unknown",
+      "stats": {
+        "restarts": 108,
+        "conflicts": 13030,
+        "decisions": 106677,
+        "propagations": 55721285
+      }
+    },
+    {
+      "id": "bend_042",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7164464998058975,
+      "setupSeconds": 0.20005287509411573,
+      "searchSeconds": 4.363054290879518,
+      "placements": 13288,
+      "status": "unknown",
+      "stats": {
+        "restarts": 34,
+        "conflicts": 13062,
+        "decisions": 107200,
+        "propagations": 63248438
+      }
+    },
+    {
+      "id": "bend_041",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6376198343932629,
+      "setupSeconds": 0.20437295828014612,
+      "searchSeconds": 4.121824165806174,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 79,
+        "conflicts": 12541,
+        "decisions": 110145,
+        "propagations": 51517783
+      }
+    },
+    {
+      "id": "bend_040",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.38162633311003447,
+      "setupSeconds": 0.10616416716948152,
+      "searchSeconds": 4.047608875203878,
+      "placements": 6672,
+      "status": "unknown",
+      "stats": {
+        "restarts": 370,
+        "conflicts": 24573,
+        "decisions": 120160,
+        "propagations": 61852503
+      }
+    },
+    {
+      "id": "bend_039",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6607489581219852,
+      "setupSeconds": 0.2080972082912922,
+      "searchSeconds": 4.50910508306697,
+      "placements": 13342,
+      "status": "unknown",
+      "stats": {
+        "restarts": 62,
+        "conflicts": 13068,
+        "decisions": 118356,
+        "propagations": 56406420
+      }
+    },
+    {
+      "id": "bend_038",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7317290413193405,
+      "setupSeconds": 0.2135366671718657,
+      "searchSeconds": 4.062123791780323,
+      "placements": 13345,
+      "status": "unknown",
+      "stats": {
+        "restarts": 92,
+        "conflicts": 11541,
+        "decisions": 112621,
+        "propagations": 53854261
+      }
+    },
+    {
+      "id": "bend_037",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7318274173885584,
+      "setupSeconds": 0.21110324980691075,
+      "searchSeconds": 4.4345006248913705,
+      "placements": 13286,
+      "status": "unknown",
+      "stats": {
+        "restarts": 117,
+        "conflicts": 13047,
+        "decisions": 125152,
+        "propagations": 57704978
+      }
+    },
+    {
+      "id": "bend_035",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7410040418617427,
+      "setupSeconds": 0.21886262483894825,
+      "searchSeconds": 4.01494958344847,
+      "placements": 13289,
+      "status": "unknown",
+      "stats": {
+        "restarts": 24,
+        "conflicts": 11085,
+        "decisions": 106131,
+        "propagations": 50822349
+      }
+    },
+    {
+      "id": "bend_034",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6851415843702853,
+      "setupSeconds": 0.2159115825779736,
+      "searchSeconds": 4.034854874946177,
+      "placements": 13332,
+      "status": "unknown",
+      "stats": {
+        "restarts": 17,
+        "conflicts": 10093,
+        "decisions": 95702,
+        "propagations": 51618642
+      }
+    },
+    {
+      "id": "bend_033",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7580272499471903,
+      "setupSeconds": 0.21199120907112956,
+      "searchSeconds": 4.038608958013356,
+      "placements": 13345,
+      "status": "unknown",
+      "stats": {
+        "restarts": 50,
+        "conflicts": 10079,
+        "decisions": 112916,
+        "propagations": 47684658
+      }
+    },
+    {
+      "id": "bend_032",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7614395832642913,
+      "setupSeconds": 0.20982033340260386,
+      "searchSeconds": 4.092538540717214,
+      "placements": 13286,
+      "status": "unknown",
+      "stats": {
+        "restarts": 13,
+        "conflicts": 11091,
+        "decisions": 94344,
+        "propagations": 50775228
+      }
+    },
+    {
+      "id": "bend_031",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.8045512088574469,
+      "setupSeconds": 0.21138375019654632,
+      "searchSeconds": 4.041327875107527,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 136,
+        "conflicts": 10073,
+        "decisions": 103182,
+        "propagations": 50877381
+      }
+    },
+    {
+      "id": "bend_030",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6721844170242548,
+      "setupSeconds": 0.21528525045141578,
+      "searchSeconds": 4.045906917192042,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 102,
+        "conflicts": 11668,
+        "decisions": 114092,
+        "propagations": 51732908
+      }
+    },
+    {
+      "id": "bend_029",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7648867918178439,
+      "setupSeconds": 0.2064027921296656,
+      "searchSeconds": 4.012428667396307,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 32,
+        "conflicts": 12079,
+        "decisions": 109495,
+        "propagations": 51541323
+      }
+    },
+    {
+      "id": "bend_028",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7602207497693598,
+      "setupSeconds": 0.20986833423376083,
+      "searchSeconds": 4.018903374671936,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 42,
+        "conflicts": 12078,
+        "decisions": 110745,
+        "propagations": 52304015
+      }
+    },
+    {
+      "id": "bend_027",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7009119587019086,
+      "setupSeconds": 0.21370824985206127,
+      "searchSeconds": 4.100085875019431,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 103,
+        "conflicts": 10554,
+        "decisions": 104687,
+        "propagations": 51223103
+      }
+    },
+    {
+      "id": "bend_026",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.3167001251131296,
+      "setupSeconds": 0.06599920894950628,
+      "searchSeconds": 4.014528667088598,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 885,
+        "conflicts": 27590,
+        "decisions": 103453,
+        "propagations": 58050484
+      }
+    },
+    {
+      "id": "bend_025",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.74629499996081,
+      "setupSeconds": 0.2118619168177247,
+      "searchSeconds": 4.024552207905799,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 66,
+        "conflicts": 11578,
+        "decisions": 90233,
+        "propagations": 51442523
+      }
+    },
+    {
+      "id": "bend_024",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7545405831187963,
+      "setupSeconds": 0.20606787502765656,
+      "searchSeconds": 4.4535178751684725,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 98,
+        "conflicts": 13054,
+        "decisions": 109479,
+        "propagations": 61306799
+      }
+    },
+    {
+      "id": "bend_023",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6737042916938663,
+      "setupSeconds": 0.21144841704517603,
+      "searchSeconds": 4.1196092502214015,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 6,
+        "conflicts": 12571,
+        "decisions": 101631,
+        "propagations": 56769684
+      }
+    },
+    {
+      "id": "bend_022",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6657815002836287,
+      "setupSeconds": 0.20984787493944168,
+      "searchSeconds": 4.042854332830757,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 112,
+        "conflicts": 12568,
+        "decisions": 107370,
+        "propagations": 53918787
+      }
+    },
+    {
+      "id": "bend_021",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7239977922290564,
+      "setupSeconds": 0.20417800033465028,
+      "searchSeconds": 4.082314750179648,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 48,
+        "conflicts": 12525,
+        "decisions": 117864,
+        "propagations": 56572910
+      }
+    },
+    {
+      "id": "bend_020",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7306513339281082,
+      "setupSeconds": 0.2078340002335608,
+      "searchSeconds": 4.053636041004211,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 6,
+        "conflicts": 10558,
+        "decisions": 98841,
+        "propagations": 55890233
+      }
+    },
+    {
+      "id": "bend_019",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.16181554226204753,
+      "setupSeconds": 0.031907124910503626,
+      "searchSeconds": 0.089156333822757,
+      "placements": 2206,
+      "status": "UNSAT-unchecked",
+      "stats": {
+        "restarts": 2,
+        "conflicts": 1395,
+        "decisions": 8848,
+        "propagations": 2212662
+      }
+    },
+    {
+      "id": "bend_017",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6696741250343621,
+      "setupSeconds": 0.212268624920398,
+      "searchSeconds": 4.048240709118545,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 105,
+        "conflicts": 12566,
+        "decisions": 93955,
+        "propagations": 56297947
+      }
+    },
+    {
+      "id": "bend_016",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7194947502575815,
+      "setupSeconds": 0.20975237479433417,
+      "searchSeconds": 4.526320375036448,
+      "placements": 13238,
+      "status": "unknown",
+      "stats": {
+        "restarts": 24,
+        "conflicts": 12703,
+        "decisions": 108172,
+        "propagations": 62116383
+      }
+    },
+    {
+      "id": "bend_015",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7196462922729552,
+      "setupSeconds": 0.20683000003919005,
+      "searchSeconds": 4.118659124709666,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 43,
+        "conflicts": 12554,
+        "decisions": 102601,
+        "propagations": 57967396
+      }
+    },
+    {
+      "id": "bend_014",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.726869999896735,
+      "setupSeconds": 0.2073419587686658,
+      "searchSeconds": 4.015027166809887,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 20,
+        "conflicts": 12519,
+        "decisions": 114728,
+        "propagations": 54418194
+      }
+    },
+    {
+      "id": "bend_013",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7227395409718156,
+      "setupSeconds": 0.20653220871463418,
+      "searchSeconds": 4.06802345905453,
+      "placements": 13296,
+      "status": "unknown",
+      "stats": {
+        "restarts": 30,
+        "conflicts": 12558,
+        "decisions": 102120,
+        "propagations": 56133291
+      }
+    },
+    {
+      "id": "bend_012",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.229030332993716,
+      "setupSeconds": 0.06533779203891754,
+      "searchSeconds": 4.013922792393714,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 210,
+        "conflicts": 31611,
+        "decisions": 108636,
+        "propagations": 61316863
+      }
+    },
+    {
+      "id": "bend_011",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7050247909501195,
+      "setupSeconds": 0.2064914582297206,
+      "searchSeconds": 4.470555665902793,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 91,
+        "conflicts": 13029,
+        "decisions": 115896,
+        "propagations": 62385709
+      }
+    },
+    {
+      "id": "bend_010",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7290124581195414,
+      "setupSeconds": 0.20880195870995522,
+      "searchSeconds": 4.476563250180334,
+      "placements": 13235,
+      "status": "unknown",
+      "stats": {
+        "restarts": 31,
+        "conflicts": 13056,
+        "decisions": 126587,
+        "propagations": 58376025
+      }
+    },
+    {
+      "id": "bend_009",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7516933339647949,
+      "setupSeconds": 0.2054279581643641,
+      "searchSeconds": 4.3835140420123935,
+      "placements": 13293,
+      "status": "unknown",
+      "stats": {
+        "restarts": 16,
+        "conflicts": 12612,
+        "decisions": 112410,
+        "propagations": 50499857
+      }
+    },
+    {
+      "id": "bend_008",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6587372082285583,
+      "setupSeconds": 0.20183362532407045,
+      "searchSeconds": 4.033029291778803,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 66,
+        "conflicts": 10526,
+        "decisions": 105669,
+        "propagations": 53406763
+      }
+    },
+    {
+      "id": "bend_007",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.755995917133987,
+      "setupSeconds": 0.2069303751923144,
+      "searchSeconds": 4.0997658749111,
+      "placements": 13239,
+      "status": "unknown",
+      "stats": {
+        "restarts": 81,
+        "conflicts": 11041,
+        "decisions": 122488,
+        "propagations": 55405138
+      }
+    },
+    {
+      "id": "bend_006",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.675502167083323,
+      "setupSeconds": 0.20851937495172024,
+      "searchSeconds": 4.129292374942452,
+      "placements": 13292,
+      "status": "unknown",
+      "stats": {
+        "restarts": 188,
+        "conflicts": 12542,
+        "decisions": 131230,
+        "propagations": 54712918
+      }
+    },
+    {
+      "id": "bend_005",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.671409625094384,
+      "setupSeconds": 0.20879449974745512,
+      "searchSeconds": 4.4981016661040485,
+      "placements": 13227,
+      "status": "unknown",
+      "stats": {
+        "restarts": 54,
+        "conflicts": 13087,
+        "decisions": 97813,
+        "propagations": 62390262
+      }
+    },
+    {
+      "id": "bend_004",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.29251770908012986,
+      "setupSeconds": 0.06645366689190269,
+      "searchSeconds": 4.106046749744564,
+      "placements": 4411,
+      "status": "unknown",
+      "stats": {
+        "restarts": 489,
+        "conflicts": 30112,
+        "decisions": 104973,
+        "propagations": 61328719
+      }
+    },
+    {
+      "id": "bend_003",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7048738752491772,
+      "setupSeconds": 0.2011767909862101,
+      "searchSeconds": 4.315735875163227,
+      "placements": 13240,
+      "status": "unknown",
+      "stats": {
+        "restarts": 83,
+        "conflicts": 13089,
+        "decisions": 111021,
+        "propagations": 61892541
+      }
+    },
+    {
+      "id": "bend_002",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6376545829698443,
+      "setupSeconds": 0.20684483414515853,
+      "searchSeconds": 4.046208791900426,
+      "placements": 13219,
+      "status": "unknown",
+      "stats": {
+        "restarts": 44,
+        "conflicts": 12049,
+        "decisions": 100053,
+        "propagations": 60022952
+      }
+    },
+    {
+      "id": "bend_001",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.6793864169158041,
+      "setupSeconds": 0.20099249994382262,
+      "searchSeconds": 4.307018083985895,
+      "placements": 13136,
+      "status": "unknown",
+      "stats": {
+        "restarts": 37,
+        "conflicts": 13084,
+        "decisions": 107473,
+        "propagations": 60060013
+      }
+    },
+    {
+      "id": "bend_000",
+      "solver": "cadical",
+      "positivePlacementPhases": false,
+      "budgetSeconds": 4.0,
+      "buildSeconds": 0.7169045000337064,
+      "setupSeconds": 0.2133414577692747,
+      "searchSeconds": 4.0480882921256125,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 102,
+        "conflicts": 11628,
+        "decisions": 91230,
+        "propagations": 52985080
+      }
+    }
+  ],
+  "stoppedAfterWitness": false
+}

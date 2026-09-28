@@ -1,0 +1,29 @@
+{
+  "solver": "glucose",
+  "secondsPerShape": 120.0,
+  "conflictsPerShape": null,
+  "reverseOrder": false,
+  "results": [
+    {
+      "id": "bend_000",
+      "solver": "glucose",
+      "positivePlacementPhases": false,
+      "encoding": "sequential-counter",
+      "incrementalCoverage": false,
+      "budgetSeconds": 120.0,
+      "conflictBudget": null,
+      "buildSeconds": 0.8432896658778191,
+      "setupSeconds": 0.16704820794984698,
+      "searchSeconds": 120.49276683386415,
+      "placements": 13134,
+      "status": "unknown",
+      "stats": {
+        "restarts": 1511,
+        "conflicts": 225216,
+        "decisions": 2604859,
+        "propagations": 423915168
+      }
+    }
+  ],
+  "stoppedAfterWitness": false
+}
