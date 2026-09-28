@@ -1,0 +1,25 @@
+{
+  "mesh_vertices": 144,
+  "mesh_edges": 426,
+  "triangles": 284,
+  "planar_faces": 98,
+  "volume": "40824",
+  "overall_dimensions_mm": [
+    "48",
+    "48",
+    "48"
+  ],
+  "small_cube_side_mm": "18",
+  "volume_mm3": "40824",
+  "apex_original_units": [
+    2,
+    1,
+    1
+  ],
+  "watertight": true,
+  "oriented": true,
+  "vertex_links_manifold": true,
+  "geometry": "centered apex; touching cavities merged; no clearance offset",
+  "stl_roundtrip_verified": true,
+  "three_mf_roundtrip_verified": true
+}
