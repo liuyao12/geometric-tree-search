@@ -1,6 +1,6 @@
 // Base tiling bookkeeping. Geometry, markings and branch policies are adapters;
 // none of them may bypass zero-degree detection or forced-point propagation.
-export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, footprint }) {
+export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, footprint, generationFirst = false }) {
   const points = new Map(), candidates = new Map(), buckets = new Map(), incidence = new Map();
   let trail = null;
   const counters = { fullBuilds: 0, updates: 0, rollbacks: 0, candidateChecks: 0 };
@@ -79,7 +79,7 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     const dead = frontier.find(p => p.legal.size === 0);
     if (dead) return { point: dead, candidates: [], forced: false, dead: true };
     const forced = frontier.filter(p => p.legal.size === 1).sort(compare);
-    const selected = forced[0] || frontier.sort((a, b) => a.legal.size - b.legal.size || compare(a, b))[0];
+    const selected = forced[0] || frontier.sort((a, b) => (generationFirst ? a.depth - b.depth : 0) || a.legal.size - b.legal.size || compare(a, b))[0];
     return selected ? { point: selected, candidates: [...selected.legal].map(id => candidates.get(id).tile), forced: selected.legal.size === 1, dead: false } : null;
   }
   function summary() {

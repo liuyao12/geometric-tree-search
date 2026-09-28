@@ -3,11 +3,12 @@ import {makeCyclotomicProblem} from './cyclotomic-tile-catalog.js?v=20260908-spe
 import {LOCAL_TEMPLATES} from './penrose-local-templates.js?v=20260908-speed';
 export const TILE_KINDS=['thick','thin','kite','dart','p5','p3','p2','diamond','boat','star'];
 export const TILE_PRESETS={P3:['thick','thin'],P2:['kite','dart'],P1:['p5','p3','p2','diamond','boat','star'],all:TILE_KINDS};
-export function selectedPenroseProblem(kinds=TILE_PRESETS.P3){
+export function selectedPenroseProblem(kinds=TILE_PRESETS.P3,{boundaryRule='supplied'}={}){
+ if(!['supplied','none'].includes(boundaryRule))throw Error('Unknown boundary rule');
  if(!Array.isArray(kinds)||!kinds.length||kinds.some(k=>!TILE_KINDS.includes(k)))throw Error('Choose at least one tile');
  const selected=[...new Set(kinds)];
- if(selected.every(k=>k==='thick'||k==='thin'))return blindPenroseProblem({kinds:selected});
+ if(selected.every(k=>k==='thick'||k==='thin'))return blindPenroseProblem({kinds:selected,arrows:boundaryRule==='supplied'});
  // Use the same colored boundary-port convention on both sides of mixed edges.
- const templates=TILE_KINDS.filter(k=>selected.includes(k)).map(k=>LOCAL_TEMPLATES.find(t=>t.kind===k));
+ const templates=TILE_KINDS.filter(k=>selected.includes(k)).map(k=>LOCAL_TEMPLATES.find(t=>t.kind===k)).map(t=>boundaryRule==='none'?{...t,labels:[]}:t);
  return makeCyclotomicProblem(templates,{fullWeight:10});
 }

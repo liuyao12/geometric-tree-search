@@ -1,15 +1,15 @@
 import {latticeKey} from '../../assets/cyclotomic-five.js?v=20260908-speed';
-import {selectedPenroseProblem} from '../../assets/penrose-selection-problem.js?v=20260908-speed';
+import {selectedPenroseProblem} from '../../assets/penrose-selection-problem.js?v=20260928-space';
 import {knownPenroseBenchmark} from '../../assets/penrose-known-benchmark.js?v=20260908-lines';
-import {createObstructionSearch} from '../../assets/cyclotomic-obstruction-search.js?v=20260908-speed';
+import {createObstructionSearch} from '../../assets/cyclotomic-obstruction-search.js?v=20260928-space';
 import {createSearchStatus} from './search-status.js?v=20260908-speed';
 let search,activity,benchmark,done=false,computeMs=0,compact=false,lastRevision=-1,typeIds,wireCache;
 self.onmessage=({data})=>{try{
  let pausedCorona=null;
  if(data.type==='init'){
   compact=!!data.compact;lastRevision=-1;typeIds=new Map();wireCache=new WeakMap();
-  const start=performance.now(),problem=selectedPenroseProblem(data.tileKinds),adapter=data.mode==='known'?knownPenroseBenchmark(problem):{problem};benchmark=data.mode==='known'?adapter:null;
-  search=createObstructionSearch({...adapter,learn:data.mode==='learned',targetCount:Infinity,nodeLimit:100000,seed:data.seed||1});
+  const start=performance.now(),problem=selectedPenroseProblem(data.tileKinds,{boundaryRule:data.mode==='known'?'supplied':data.boundaryRule||'supplied'}),adapter=data.mode==='known'?knownPenroseBenchmark(problem):{problem};benchmark=data.mode==='known'?adapter:null;
+  search=createObstructionSearch({...adapter,learn:data.mode==='learned',markingKind:'space',generationFirst:true,targetCount:Infinity,nodeLimit:100000,seed:data.seed||1});
   activity=createSearchStatus();activity.accept(search.next().value);done=false;computeMs=performance.now()-start;
  }else if(data.type==='advance'&&search&&!done){
   const start=performance.now();for(let i=0;i<(data.step?1:2000);i++){
