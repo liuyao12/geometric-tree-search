@@ -1,0 +1,17 @@
+{
+  "id": "bend_064",
+  "k": 1,
+  "solver": "Cadical195",
+  "budgetSeconds": 120,
+  "status": "unknown",
+  "searchAndSetupSeconds": 120.30762545904145,
+  "placements": 13366,
+  "variables": 344942,
+  "clauses": 992336,
+  "stats": {
+    "restarts": 13517,
+    "conflicts": 582458,
+    "decisions": 3930751,
+    "propagations": 2137285440
+  }
+}

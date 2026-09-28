@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-27",
+  "scope": "Two outward and two sideways steps; 25 nonoverlapping cubes; proper rotations and integer translations. Only the three centrally symmetric classes searched.",
+  "rawAssignments": 4096,
+  "nonoverlappingAssignments": 1496,
+  "classes": 72,
+  "centrallySymmetricClasses": 3,
+  "notSearchedClasses": 69,
+  "rows": [
+    {
+      "id": "bend_018",
+      "name": "Two three-cycles",
+      "exact": 0,
+      "lower": 0,
+      "note": "Glucose: 9.31 s. Independent proof and placement checks passed.",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_018-verification.json",
+        "data/bent-six-arm/variants/bend_018-k1.json",
+        "data/bent-six-arm/variants/bend_018-k1.cnf.gz",
+        "data/bent-six-arm/variants/bend_018-k1.drup.gz"
+      ]
+    },
+    {
+      "id": "bend_036",
+      "name": "One six-cycle (original)",
+      "exact": 0,
+      "lower": 0,
+      "note": "Glucose: 17.34 s. Independent proof and placement checks passed.",
+      "evidence": [
+        "data/bent-six-arm/verification.json",
+        "data/bent-six-arm/bent_six_arm_25-k1.json",
+        "data/bent-six-arm/bent_six_arm_25-k1.cnf.gz",
+        "data/bent-six-arm/bent_six_arm_25-k1.drup.gz"
+      ]
+    },
+    {
+      "id": "bend_064",
+      "name": "Opposite pairs; repeated bend directions",
+      "exact": null,
+      "lower": 0,
+      "note": "Glucose remained undecided at 120 seconds. CaDiCaL also remained undecided at its 120-second budget (checked between conflict chunks).",
+      "evidence": [
+        "data/bent-six-arm/variants/bend_064-k1-glucose.json",
+        "data/bent-six-arm/variants/bend_064-k1.json"
+      ]
+    }
+  ],
+  "sourceSHA256": {
+    "scripts/heesch-catalog/bent_arm_variants.py": "97b8d111447d885d112fca789ca31a94bbd5cb7667f1a616c1556ae6de014181",
+    "scripts/heesch-catalog/bent_arm_cadical.py": "8e990a8b4a321cbc76129e2a2d894ea7938e689085d3722cd5a96f62a3690e89",
+    "scripts/heesch-catalog/report_bent_arm_variants.py": "482e27ac59541ffe02f314fe9932186310000cec7f6cb8fec3bab0d07aa08422",
+    "scripts/heesch-catalog/corona.py": "e070cbc458120cebe7e9e0b99700900f5c5435b31563437273ad976627ff9022",
+    "scripts/heesch-catalog/verify_bent_six_arm.py": "642fafc871fe82c5d5a0363ac94ead2d74089f0bf8279127d90a00f2a4d9b082",
+    "data/bent-six-arm/variants/catalog.json": "59c7ff80dc0396b874813d38d39b63c2949e8e50ffb9f87ef482151b4d6c5dd2"
+  }
+}
