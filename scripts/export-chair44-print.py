@@ -180,7 +180,11 @@ However, in the completed supertile every copy is locked against translation
 when the other seven are fixed. One-at-a-time straight sliding cannot complete
 that arrangement. Coordinated motion of all seven outer copies around the
 fixed center has a verified geometric path; rotation-assisted insertion was
-not tested. These checks do not establish assembly for arbitrary solver patches.
+not tested. At the next level, eight rigid eight-tile supertiles are obstructed:
+each outer cluster is translation-locked to the central cluster even as a pair,
+so coordinated translation cannot assemble that level. This concerns assembled
+clusters, not uniformly enlarged copies of this STL. These checks do not
+establish assembly for arbitrary solver patches.
 
 See the [assembly verification and reproducible tests](https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-print-assembly.md).
 These are ideal geometric checks; try two printed copies before ordering a set.

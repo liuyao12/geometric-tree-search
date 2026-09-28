@@ -71,6 +71,52 @@ possible: the earlier continuous test certifies that all seven outer copies
 can move outward together, with the center fixed. Reversing that motion gives
 an ideal assembly route for this supertile.
 
+## Eight rigid supertiles: the next level is obstructed
+
+This follow-up tests eight **assembled eight-tile clusters**, totaling sixty-four
+small tiles, in the canonical next-level arrangement. It is not a test of eight
+uniformly enlarged versions of the original print model. The relief features
+on an assembled cluster remain small, so the previous assembly path cannot be
+assumed to scale up.
+
+All eight clusters are verified congruent under their assigned rigid motions.
+The final arrangement has no positive-volume overlap. Each cluster's actual
+union boundary is constructed by cancelling internal occupied-chamber faces;
+it has 1,152 boundary triangles and volume \(56\) in small-cube units.
+
+The seven center-to-outer cluster pairs are each translation-locked **even with
+only that pair present**. Each has three independent pairs of opposing contact
+normals, giving the same exact zero-translation certificate described above.
+Thus every outer cluster must have zero relative translation to the center.
+Coordinated translation of the clusters cannot assemble this level either.
+This is stronger than the locking found only after all eight individual tiles
+were seated at the first level.
+
+A separate continuous separating-axis test confirms a concrete obstruction:
+for outer cluster zero moving diagonally away from central cluster four,
+a chamber in the tile at path \((0,3)\) overlaps a chamber in the tile at path
+\((4,0)\) throughout \(0<t<1/10\), for the attempted motion
+\(\mathbf{o}_0(t)=\mathbf{o}_0+t(-2,-2,-2)\) in small-cube units.
+The witness is independently checked with rational arithmetic at \(t=1/20\).
+The final state at \(t=0\) has no interior overlap.
+
+This rules out sliding these rigid clusters together by translation. It does
+not rule out rotation-assisted assembly, temporarily opening the clusters, or
+an alternative assembly process using smaller pieces. Those are untested.
+The nine outer-to-outer contact pairs have no immediate obstruction along the
+tested radial direction in the face-normal test; their full insertion paths
+are not certified by this follow-up.
+
+Reproduce with:
+
+- `node scripts/check-chair44-supertile-collision.mjs` for the independent
+  continuous collision witness.
+- `NODE_BINARY=/path/to/node python3 scripts/check-chair44-supertile-assembly.py`
+  for congruence, static nonoverlap, actual union boundaries, seven pair-locking
+  certificates, and rational replay of the collision witness.
+- [Cluster contact certificates](chair44-supertile-assembly.json) and
+  [collision witness](chair44-supertile-collision.json).
+
 ## What this means before printing
 
 The concavities do not obstruct the tested individual mating pairs. They do

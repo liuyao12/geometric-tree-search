@@ -1,0 +1,2514 @@
+{
+  "smallTiles": 64,
+  "rigidSupertiles": 8,
+  "tilesPerSupertile": 8,
+  "staticNonoverlap": true,
+  "rigidCongruenceVerified": true,
+  "unionVolumePerSupertile": 56,
+  "coordinateScale": 12,
+  "boundaryTrianglesPerSupertile": [
+    1152,
+    1152,
+    1152,
+    1152,
+    1152,
+    1152,
+    1152,
+    1152
+  ],
+  "supertiles": [
+    {
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "variantId": 0,
+      "missingCorner": [
+        1,
+        1,
+        1
+      ],
+      "path": [
+        0
+      ]
+    },
+    {
+      "origin": [
+        0,
+        0,
+        4
+      ],
+      "rotation": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "variantId": 22,
+      "missingCorner": [
+        1,
+        1,
+        0
+      ],
+      "path": [
+        1
+      ]
+    },
+    {
+      "origin": [
+        0,
+        4,
+        0
+      ],
+      "rotation": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "variantId": 9,
+      "missingCorner": [
+        1,
+        0,
+        1
+      ],
+      "path": [
+        2
+      ]
+    },
+    {
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "rotation": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "variantId": 3,
+      "missingCorner": [
+        1,
+        0,
+        0
+      ],
+      "path": [
+        3
+      ]
+    },
+    {
+      "origin": [
+        2,
+        2,
+        2
+      ],
+      "rotation": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "variantId": 0,
+      "missingCorner": [
+        1,
+        1,
+        1
+      ],
+      "path": [
+        4
+      ]
+    },
+    {
+      "origin": [
+        4,
+        0,
+        0
+      ],
+      "rotation": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "variantId": 4,
+      "missingCorner": [
+        0,
+        1,
+        1
+      ],
+      "path": [
+        5
+      ]
+    },
+    {
+      "origin": [
+        4,
+        0,
+        4
+      ],
+      "rotation": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "variantId": 18,
+      "missingCorner": [
+        0,
+        1,
+        0
+      ],
+      "path": [
+        6
+      ]
+    },
+    {
+      "origin": [
+        4,
+        4,
+        0
+      ],
+      "rotation": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "variantId": 13,
+      "missingCorner": [
+        0,
+        0,
+        1
+      ],
+      "path": [
+        7
+      ]
+    }
+  ],
+  "contactPairs": [
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        0,
+        -4
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        -4,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        -2,
+        -2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": 2,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              1
+            ],
+            "movingTriangle": 751,
+            "fixedTriangle": 133,
+            "movingVertices": [
+              [
+                48,
+                24,
+                24
+              ],
+              [
+                42,
+                30,
+                24
+              ],
+              [
+                42,
+                27,
+                21
+              ]
+            ],
+            "fixedVertices": [
+              [
+                42,
+                30,
+                24
+              ],
+              [
+                48,
+                24,
+                24
+              ],
+              [
+                42,
+                27,
+                21
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              -1
+            ],
+            "movingTriangle": 612,
+            "fixedTriangle": 17,
+            "movingVertices": [
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                24,
+                42,
+                42
+              ],
+              [
+                21,
+                45,
+                42
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                42,
+                42
+              ],
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                21,
+                45,
+                42
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              1
+            ],
+            "movingTriangle": 1148,
+            "fixedTriangle": 89,
+            "movingVertices": [
+              [
+                27,
+                42,
+                27
+              ],
+              [
+                24,
+                36,
+                24
+              ],
+              [
+                28,
+                40,
+                28
+              ]
+            ],
+            "fixedVertices": [
+              [
+                28,
+                40,
+                28
+              ],
+              [
+                24,
+                36,
+                24
+              ],
+              [
+                27,
+                42,
+                27
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              -1
+            ],
+            "movingTriangle": 658,
+            "fixedTriangle": 1,
+            "movingVertices": [
+              [
+                24,
+                36,
+                36
+              ],
+              [
+                24,
+                24,
+                36
+              ],
+              [
+                21,
+                30,
+                33
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                24,
+                36
+              ],
+              [
+                24,
+                36,
+                36
+              ],
+              [
+                21,
+                30,
+                33
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              1,
+              -1
+            ],
+            "movingTriangle": 693,
+            "fixedTriangle": 33,
+            "movingVertices": [
+              [
+                30,
+                21,
+                39
+              ],
+              [
+                30,
+                24,
+                42
+              ],
+              [
+                36,
+                24,
+                36
+              ]
+            ],
+            "fixedVertices": [
+              [
+                30,
+                21,
+                39
+              ],
+              [
+                36,
+                24,
+                36
+              ],
+              [
+                30,
+                24,
+                42
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              -1,
+              1
+            ],
+            "movingTriangle": 660,
+            "fixedTriangle": 0,
+            "movingVertices": [
+              [
+                24,
+                30,
+                30
+              ],
+              [
+                24,
+                36,
+                36
+              ],
+              [
+                21,
+                30,
+                33
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                36,
+                36
+              ],
+              [
+                24,
+                30,
+                30
+              ],
+              [
+                21,
+                30,
+                33
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        0,
+        5
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        -4,
+        0,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        -4,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        -2,
+        2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": -1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 639,
+            "fixedTriangle": 213,
+            "movingVertices": [
+              [
+                36,
+                36,
+                72
+              ],
+              [
+                30,
+                39,
+                75
+              ],
+              [
+                30,
+                42,
+                72
+              ]
+            ],
+            "fixedVertices": [
+              [
+                30,
+                39,
+                75
+              ],
+              [
+                36,
+                36,
+                72
+              ],
+              [
+                30,
+                42,
+                72
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 721,
+            "fixedTriangle": 248,
+            "movingVertices": [
+              [
+                24,
+                30,
+                66
+              ],
+              [
+                28,
+                28,
+                64
+              ],
+              [
+                27,
+                30,
+                63
+              ]
+            ],
+            "fixedVertices": [
+              [
+                28,
+                28,
+                64
+              ],
+              [
+                24,
+                30,
+                66
+              ],
+              [
+                27,
+                30,
+                63
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              -1
+            ],
+            "movingTriangle": 729,
+            "fixedTriangle": 255,
+            "movingVertices": [
+              [
+                24,
+                36,
+                72
+              ],
+              [
+                28,
+                32,
+                68
+              ],
+              [
+                27,
+                30,
+                69
+              ]
+            ],
+            "fixedVertices": [
+              [
+                27,
+                30,
+                69
+              ],
+              [
+                28,
+                32,
+                68
+              ],
+              [
+                24,
+                36,
+                72
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              1
+            ],
+            "movingTriangle": 1113,
+            "fixedTriangle": 355,
+            "movingVertices": [
+              [
+                21,
+                42,
+                51
+              ],
+              [
+                24,
+                36,
+                48
+              ],
+              [
+                24,
+                48,
+                48
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                24,
+                36,
+                48
+              ],
+              [
+                21,
+                42,
+                51
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              1,
+              0
+            ],
+            "movingTriangle": 1028,
+            "fixedTriangle": 82,
+            "movingVertices": [
+              [
+                24,
+                24,
+                60
+              ],
+              [
+                28,
+                28,
+                56
+              ],
+              [
+                27,
+                27,
+                54
+              ]
+            ],
+            "fixedVertices": [
+              [
+                27,
+                27,
+                54
+              ],
+              [
+                28,
+                28,
+                56
+              ],
+              [
+                24,
+                24,
+                60
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              -1,
+              0
+            ],
+            "movingTriangle": 1148,
+            "fixedTriangle": 296,
+            "movingVertices": [
+              [
+                27,
+                39,
+                66
+              ],
+              [
+                28,
+                40,
+                68
+              ],
+              [
+                24,
+                36,
+                72
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                36,
+                72
+              ],
+              [
+                28,
+                40,
+                68
+              ],
+              [
+                27,
+                39,
+                66
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        1,
+        6
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        -4,
+        0,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        0,
+        -4
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        2,
+        -2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": 1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 641,
+            "fixedTriangle": 379,
+            "movingVertices": [
+              [
+                42,
+                75,
+                27
+              ],
+              [
+                48,
+                72,
+                24
+              ],
+              [
+                42,
+                72,
+                30
+              ]
+            ],
+            "fixedVertices": [
+              [
+                42,
+                72,
+                30
+              ],
+              [
+                48,
+                72,
+                24
+              ],
+              [
+                42,
+                75,
+                27
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 729,
+            "fixedTriangle": 418,
+            "movingVertices": [
+              [
+                30,
+                63,
+                27
+              ],
+              [
+                36,
+                60,
+                24
+              ],
+              [
+                30,
+                66,
+                24
+              ]
+            ],
+            "fixedVertices": [
+              [
+                36,
+                60,
+                24
+              ],
+              [
+                30,
+                63,
+                27
+              ],
+              [
+                30,
+                66,
+                24
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              0
+            ],
+            "movingTriangle": 679,
+            "fixedTriangle": 434,
+            "movingVertices": [
+              [
+                27,
+                69,
+                42
+              ],
+              [
+                24,
+                72,
+                36
+              ],
+              [
+                28,
+                68,
+                40
+              ]
+            ],
+            "fixedVertices": [
+              [
+                28,
+                68,
+                40
+              ],
+              [
+                24,
+                72,
+                36
+              ],
+              [
+                27,
+                69,
+                42
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              0
+            ],
+            "movingTriangle": 688,
+            "fixedTriangle": 399,
+            "movingVertices": [
+              [
+                24,
+                60,
+                36
+              ],
+              [
+                24,
+                60,
+                24
+              ],
+              [
+                21,
+                63,
+                30
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                60,
+                24
+              ],
+              [
+                24,
+                60,
+                36
+              ],
+              [
+                21,
+                63,
+                30
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              1
+            ],
+            "movingTriangle": 732,
+            "fixedTriangle": 422,
+            "movingVertices": [
+              [
+                27,
+                66,
+                27
+              ],
+              [
+                24,
+                60,
+                24
+              ],
+              [
+                28,
+                64,
+                28
+              ]
+            ],
+            "fixedVertices": [
+              [
+                28,
+                64,
+                28
+              ],
+              [
+                24,
+                60,
+                24
+              ],
+              [
+                27,
+                66,
+                27
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              -1
+            ],
+            "movingTriangle": 994,
+            "fixedTriangle": 500,
+            "movingVertices": [
+              [
+                24,
+                60,
+                48
+              ],
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                21,
+                54,
+                45
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                24,
+                60,
+                48
+              ],
+              [
+                21,
+                54,
+                45
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        2,
+        7
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        -4,
+        0,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        2,
+        2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": 1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 721,
+            "fixedTriangle": 581,
+            "movingVertices": [
+              [
+                36,
+                60,
+                72
+              ],
+              [
+                30,
+                66,
+                72
+              ],
+              [
+                33,
+                66,
+                69
+              ]
+            ],
+            "fixedVertices": [
+              [
+                36,
+                60,
+                72
+              ],
+              [
+                33,
+                66,
+                69
+              ],
+              [
+                30,
+                66,
+                72
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 632,
+            "fixedTriangle": 545,
+            "movingVertices": [
+              [
+                24,
+                54,
+                66
+              ],
+              [
+                24,
+                60,
+                60
+              ],
+              [
+                21,
+                57,
+                66
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                60,
+                60
+              ],
+              [
+                24,
+                54,
+                66
+              ],
+              [
+                21,
+                57,
+                66
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              0
+            ],
+            "movingTriangle": 684,
+            "fixedTriangle": 561,
+            "movingVertices": [
+              [
+                36,
+                72,
+                60
+              ],
+              [
+                36,
+                72,
+                72
+              ],
+              [
+                33,
+                75,
+                66
+              ]
+            ],
+            "fixedVertices": [
+              [
+                36,
+                72,
+                72
+              ],
+              [
+                36,
+                72,
+                60
+              ],
+              [
+                33,
+                75,
+                66
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              0
+            ],
+            "movingTriangle": 621,
+            "fixedTriangle": 557,
+            "movingVertices": [
+              [
+                24,
+                48,
+                60
+              ],
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                21,
+                51,
+                54
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                48,
+                48
+              ],
+              [
+                24,
+                48,
+                60
+              ],
+              [
+                21,
+                51,
+                54
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              -1
+            ],
+            "movingTriangle": 1149,
+            "fixedTriangle": 317,
+            "movingVertices": [
+              [
+                24,
+                60,
+                72
+              ],
+              [
+                28,
+                56,
+                68
+              ],
+              [
+                27,
+                54,
+                69
+              ]
+            ],
+            "fixedVertices": [
+              [
+                27,
+                54,
+                69
+              ],
+              [
+                28,
+                56,
+                68
+              ],
+              [
+                24,
+                60,
+                72
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              1
+            ],
+            "movingTriangle": 663,
+            "fixedTriangle": 540,
+            "movingVertices": [
+              [
+                21,
+                66,
+                63
+              ],
+              [
+                24,
+                60,
+                60
+              ],
+              [
+                24,
+                72,
+                60
+              ]
+            ],
+            "fixedVertices": [
+              [
+                24,
+                72,
+                60
+              ],
+              [
+                24,
+                60,
+                60
+              ],
+              [
+                21,
+                66,
+                63
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        4,
+        5
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        2,
+        2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": 1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 196,
+            "fixedTriangle": 1017,
+            "movingVertices": [
+              [
+                60,
+                36,
+                24
+              ],
+              [
+                54,
+                39,
+                27
+              ],
+              [
+                54,
+                42,
+                24
+              ]
+            ],
+            "fixedVertices": [
+              [
+                54,
+                39,
+                27
+              ],
+              [
+                60,
+                36,
+                24
+              ],
+              [
+                54,
+                42,
+                24
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 771,
+            "fixedTriangle": 636,
+            "movingVertices": [
+              [
+                72,
+                30,
+                42
+              ],
+              [
+                76,
+                28,
+                40
+              ],
+              [
+                75,
+                30,
+                39
+              ]
+            ],
+            "fixedVertices": [
+              [
+                76,
+                28,
+                40
+              ],
+              [
+                72,
+                30,
+                42
+              ],
+              [
+                75,
+                30,
+                39
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              0
+            ],
+            "movingTriangle": 901,
+            "fixedTriangle": 1111,
+            "movingVertices": [
+              [
+                51,
+                21,
+                42
+              ],
+              [
+                48,
+                24,
+                36
+              ],
+              [
+                52,
+                20,
+                40
+              ]
+            ],
+            "fixedVertices": [
+              [
+                52,
+                20,
+                40
+              ],
+              [
+                48,
+                24,
+                36
+              ],
+              [
+                51,
+                21,
+                42
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              0
+            ],
+            "movingTriangle": 811,
+            "fixedTriangle": 725,
+            "movingVertices": [
+              [
+                72,
+                24,
+                36
+              ],
+              [
+                72,
+                24,
+                24
+              ],
+              [
+                69,
+                27,
+                30
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                24,
+                24
+              ],
+              [
+                72,
+                24,
+                36
+              ],
+              [
+                69,
+                27,
+                30
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              -1
+            ],
+            "movingTriangle": 184,
+            "fixedTriangle": 1025,
+            "movingVertices": [
+              [
+                60,
+                36,
+                24
+              ],
+              [
+                60,
+                24,
+                24
+              ],
+              [
+                57,
+                30,
+                27
+              ]
+            ],
+            "fixedVertices": [
+              [
+                57,
+                30,
+                27
+              ],
+              [
+                60,
+                24,
+                24
+              ],
+              [
+                60,
+                36,
+                24
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              1
+            ],
+            "movingTriangle": 823,
+            "fixedTriangle": 675,
+            "movingVertices": [
+              [
+                69,
+                42,
+                27
+              ],
+              [
+                72,
+                36,
+                24
+              ],
+              [
+                72,
+                48,
+                24
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                48,
+                24
+              ],
+              [
+                72,
+                36,
+                24
+              ],
+              [
+                69,
+                42,
+                27
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        4,
+        6
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        2,
+        -2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": 1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 921,
+            "fixedTriangle": 634,
+            "movingVertices": [
+              [
+                69,
+                21,
+                54
+              ],
+              [
+                66,
+                24,
+                54
+              ],
+              [
+                72,
+                24,
+                48
+              ]
+            ],
+            "fixedVertices": [
+              [
+                69,
+                21,
+                54
+              ],
+              [
+                72,
+                24,
+                48
+              ],
+              [
+                66,
+                24,
+                54
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 705,
+            "fixedTriangle": 1017,
+            "movingVertices": [
+              [
+                60,
+                36,
+                72
+              ],
+              [
+                57,
+                42,
+                69
+              ],
+              [
+                54,
+                42,
+                72
+              ]
+            ],
+            "fixedVertices": [
+              [
+                60,
+                36,
+                72
+              ],
+              [
+                54,
+                42,
+                72
+              ],
+              [
+                57,
+                42,
+                69
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              0
+            ],
+            "movingTriangle": 280,
+            "fixedTriangle": 675,
+            "movingVertices": [
+              [
+                60,
+                24,
+                60
+              ],
+              [
+                60,
+                24,
+                72
+              ],
+              [
+                57,
+                27,
+                66
+              ]
+            ],
+            "fixedVertices": [
+              [
+                60,
+                24,
+                72
+              ],
+              [
+                60,
+                24,
+                60
+              ],
+              [
+                57,
+                27,
+                66
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              0
+            ],
+            "movingTriangle": 864,
+            "fixedTriangle": 1149,
+            "movingVertices": [
+              [
+                72,
+                24,
+                60
+              ],
+              [
+                72,
+                24,
+                48
+              ],
+              [
+                69,
+                27,
+                54
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                24,
+                48
+              ],
+              [
+                72,
+                24,
+                60
+              ],
+              [
+                69,
+                27,
+                54
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              1
+            ],
+            "movingTriangle": 976,
+            "fixedTriangle": 997,
+            "movingVertices": [
+              [
+                51,
+                42,
+                75
+              ],
+              [
+                48,
+                36,
+                72
+              ],
+              [
+                52,
+                40,
+                76
+              ]
+            ],
+            "fixedVertices": [
+              [
+                52,
+                40,
+                76
+              ],
+              [
+                48,
+                36,
+                72
+              ],
+              [
+                51,
+                42,
+                75
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              -1
+            ],
+            "movingTriangle": 960,
+            "fixedTriangle": 724,
+            "movingVertices": [
+              [
+                72,
+                36,
+                72
+              ],
+              [
+                72,
+                24,
+                72
+              ],
+              [
+                69,
+                30,
+                69
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                24,
+                72
+              ],
+              [
+                72,
+                36,
+                72
+              ],
+              [
+                69,
+                30,
+                69
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        4,
+        7
+      ],
+      "contactNormalCount": 19,
+      "radialDirection": [
+        -2,
+        -2,
+        2
+      ],
+      "radialBlockedBy": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "translationLocked": true,
+      "basisDeterminant": -1,
+      "certificate": [
+        [
+          {
+            "normal": [
+              -1,
+              -1,
+              -1
+            ],
+            "movingTriangle": 1041,
+            "fixedTriangle": 635,
+            "movingVertices": [
+              [
+                60,
+                60,
+                24
+              ],
+              [
+                54,
+                66,
+                24
+              ],
+              [
+                57,
+                66,
+                21
+              ]
+            ],
+            "fixedVertices": [
+              [
+                60,
+                60,
+                24
+              ],
+              [
+                57,
+                66,
+                21
+              ],
+              [
+                54,
+                66,
+                24
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              1,
+              1
+            ],
+            "movingTriangle": 744,
+            "fixedTriangle": 1017,
+            "movingVertices": [
+              [
+                72,
+                54,
+                42
+              ],
+              [
+                72,
+                60,
+                36
+              ],
+              [
+                69,
+                57,
+                42
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                60,
+                36
+              ],
+              [
+                72,
+                54,
+                42
+              ],
+              [
+                69,
+                57,
+                42
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              0,
+              -1
+            ],
+            "movingTriangle": 1053,
+            "fixedTriangle": 623,
+            "movingVertices": [
+              [
+                48,
+                60,
+                24
+              ],
+              [
+                52,
+                56,
+                20
+              ],
+              [
+                51,
+                54,
+                21
+              ]
+            ],
+            "fixedVertices": [
+              [
+                51,
+                54,
+                21
+              ],
+              [
+                52,
+                56,
+                20
+              ],
+              [
+                48,
+                60,
+                24
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              0,
+              1
+            ],
+            "movingTriangle": 1061,
+            "fixedTriangle": 689,
+            "movingVertices": [
+              [
+                75,
+                66,
+                33
+              ],
+              [
+                76,
+                68,
+                32
+              ],
+              [
+                72,
+                72,
+                36
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                72,
+                36
+              ],
+              [
+                76,
+                68,
+                32
+              ],
+              [
+                75,
+                66,
+                33
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "normal": [
+              -1,
+              1,
+              0
+            ],
+            "movingTriangle": 474,
+            "fixedTriangle": 1144,
+            "movingVertices": [
+              [
+                60,
+                72,
+                36
+              ],
+              [
+                60,
+                72,
+                24
+              ],
+              [
+                57,
+                69,
+                30
+              ]
+            ],
+            "fixedVertices": [
+              [
+                57,
+                69,
+                30
+              ],
+              [
+                60,
+                72,
+                24
+              ],
+              [
+                60,
+                72,
+                36
+              ]
+            ]
+          },
+          {
+            "normal": [
+              1,
+              -1,
+              0
+            ],
+            "movingTriangle": 1110,
+            "fixedTriangle": 1024,
+            "movingVertices": [
+              [
+                69,
+                69,
+                42
+              ],
+              [
+                72,
+                72,
+                36
+              ],
+              [
+                72,
+                72,
+                48
+              ]
+            ],
+            "fixedVertices": [
+              [
+                72,
+                72,
+                48
+              ],
+              [
+                72,
+                72,
+                36
+              ],
+              [
+                69,
+                69,
+                42
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "pair": [
+        5,
+        6
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        0,
+        -4
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    },
+    {
+      "pair": [
+        5,
+        7
+      ],
+      "contactNormalCount": 9,
+      "radialDirection": [
+        0,
+        -4,
+        0
+      ],
+      "radialBlockedBy": [],
+      "translationLocked": false,
+      "basisDeterminant": null,
+      "certificate": null
+    }
+  ],
+  "pureTranslationAssemblyBlocked": true,
+  "reason": "Each outer supertile is translation-locked to the center even in isolation; their relative velocities must all be zero.",
+  "independentCollisionWitnessTime": "1/20",
+  "scope": "Rigid unions of eight current centered-relief tiles, canonical level-two placement. Rotations, deformation and motion within each supertile are not tested."
+}
