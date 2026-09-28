@@ -1,0 +1,23 @@
+{
+  "result": "H=0",
+  "scope": "Integer translations and proper cubic rotations; complete face/edge/vertex touching corona. No claim about arbitrary Euclidean placements.",
+  "prototypeVoxels": 25,
+  "properOrientations": 8,
+  "centralInversionVerified": true,
+  "rootBoundaryVoxels": 182,
+  "rootNeighborPlacements": 4396,
+  "independentQuarterTurnOrientations": true,
+  "independentRectangularCandidateScan": true,
+  "formulaRegeneratedByteForByte": true,
+  "proofVerified": true,
+  "formulaSHA256": "5712f60ebad31a77202c66519d4be208491de0e3b025d1f877f4c674f65e0592",
+  "proofSHA256": "a20ede75d2625c5dd4df8ab5025d0d5e115dfdd81923564100e0fd581a86fde6",
+  "proofCheckSeconds": 5.168772500008345,
+  "proofChecker": "DRAT-trim",
+  "proofCheckerCommit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+  "sourceSHA256": {
+    "scripts/heesch-catalog/verify_bent_six_arm.py": "642fafc871fe82c5d5a0363ac94ead2d74089f0bf8279127d90a00f2a4d9b082",
+    "scripts/heesch-catalog/corona.py": "e070cbc458120cebe7e9e0b99700900f5c5435b31563437273ad976627ff9022",
+    "data/bent-six-arm/tile.json": "3e7bc7285c7d1cafa789f52e379bc5c9938f619b1fd723e54c7279a0938a0e19"
+  }
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "permutation": [
+      0,
+      1,
+      2
+    ],
+    "signs": [
+      -1,
+      -1,
+      -1
+    ],
+    "determinant": -1
+  },
+  {
+    "permutation": [
+      0,
+      1,
+      2
+    ],
+    "signs": [
+      1,
+      1,
+      1
+    ],
+    "determinant": 1
+  },
+  {
+    "permutation": [
+      1,
+      2,
+      0
+    ],
+    "signs": [
+      -1,
+      -1,
+      1
+    ],
+    "determinant": 1
+  },
+  {
+    "permutation": [
+      1,
+      2,
+      0
+    ],
+    "signs": [
+      1,
+      1,
+      -1
+    ],
+    "determinant": -1
+  },
+  {
+    "permutation": [
+      2,
+      0,
+      1
+    ],
+    "signs": [
+      -1,
+      1,
+      1
+    ],
+    "determinant": -1
+  },
+  {
+    "permutation": [
+      2,
+      0,
+      1
+    ],
+    "signs": [
+      1,
+      -1,
+      -1
+    ],
+    "determinant": 1
+  }
+]
