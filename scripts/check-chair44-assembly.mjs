@@ -71,6 +71,7 @@ for(let i=0;i<8;i++)if(i!==4){
  assert(result,'Expected this individual diagonal extraction to be blocked');
  blockedIndividualPaths.push({tile:i,direction:d.map(x=>x/12),...result});
 }
+const pairwisePaths=[];
 for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){
  const d=leaves[i].origin.map((x,k)=>12*(x-leaves[j].origin[k]));
  let result=null;
@@ -79,12 +80,15 @@ for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){
   if(interval){result={pieces:[a,b],interval};break outer;}
  }
  assert.equal(result,null,`Simultaneous radial extraction collides for tiles ${i},${j}`);
+ // Relative motion is the same with j fixed and only i translated by d.
+ pairwisePaths.push({movingTile:i,fixedTile:j,direction:d.map(x=>x/12),collisionFree:true});
 }
 
 console.log(JSON.stringify({
  geometry:'Chair44 centered merged-cavity relief', piecesPerTile:tiles[0].length,
  coordinateScale:12, placements:leaves.map(p=>({origin:p.origin,variantId:p.variantId})),
  blockedIndividualPaths,
+ pairwiseInsertion:{otherTilesAbsent:true,paths:pairwisePaths},
  simultaneousExtraction:{fixedCenter:4,pairsChecked:28,collisionFree:true,
  parameter:'origin(lambda) = origin + lambda * (origin - [1,1,1]), lambda >= 0',
  orientationsFixed:true,boundaryContactAllowed:true},

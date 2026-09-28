@@ -171,6 +171,20 @@ print a small mating trial before ordering many copies. The CAD source changes
 size only; it does not silently alter the apex or relief shape. Surface colors
 from the web visualization are not included in these single-material files.
 
+## Sliding and assembly
+
+The exact exported geometry passes continuous straight-insertion checks for
+all sixteen mating pairs in the canonical eight-tile supertile, with only two
+copies present. Seven pairs have nonparallel faces that guide the final slide.
+However, in the completed supertile every copy is locked against translation
+when the other seven are fixed. One-at-a-time straight sliding cannot complete
+that arrangement. Coordinated motion of all seven outer copies around the
+fixed center has a verified geometric path; rotation-assisted insertion was
+not tested. These checks do not establish assembly for arbitrary solver patches.
+
+See the [assembly verification and reproducible tests](https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/chair44-print-assembly.md).
+These are ideal geometric checks; try two printed copies before ordering a set.
+
 ## Reproduction and verification
 
 Run `NODE_BINARY=/path/to/node python3 scripts/export-chair44-print.py` from the

@@ -1,0 +1,889 @@
+{
+  "printedSTLMatchesExactGeometry": true,
+  "geometry": "Centered apex (2,1,1), merged cavities, 48 mm STL",
+  "contactPairs": [
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "extractionDirection": [
+        0,
+        0,
+        -1
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "extractionDirection": [
+        0,
+        -1,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "extractionDirection": [
+        -1,
+        -1,
+        -1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        0,
+        5
+      ],
+      "extractionDirection": [
+        -1,
+        0,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "extractionDirection": [
+        0,
+        -1,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "extractionDirection": [
+        -1,
+        -1,
+        1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        1,
+        6
+      ],
+      "extractionDirection": [
+        -1,
+        0,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "extractionDirection": [
+        0,
+        0,
+        -1
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "extractionDirection": [
+        -1,
+        1,
+        -1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        2,
+        7
+      ],
+      "extractionDirection": [
+        -1,
+        0,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "extractionDirection": [
+        -1,
+        1,
+        1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          0,
+          1,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        4,
+        5
+      ],
+      "extractionDirection": [
+        -1,
+        1,
+        1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        4,
+        6
+      ],
+      "extractionDirection": [
+        -1,
+        1,
+        -1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        4,
+        7
+      ],
+      "extractionDirection": [
+        -1,
+        -1,
+        1
+      ],
+      "contactNormalCount": 11,
+      "tangentGuideNormals": [
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "twoIndependentGuidePlanes": true
+    },
+    {
+      "pair": [
+        5,
+        6
+      ],
+      "extractionDirection": [
+        0,
+        0,
+        -1
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    },
+    {
+      "pair": [
+        5,
+        7
+      ],
+      "extractionDirection": [
+        0,
+        -1,
+        0
+      ],
+      "contactNormalCount": 8,
+      "tangentGuideNormals": [],
+      "twoIndependentGuidePlanes": false
+    }
+  ],
+  "individuallyTranslationLockedTiles": [
+    {
+      "tile": 0,
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "normalCount": 19,
+      "basisDeterminant": 2,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 215,
+            "fixedTriangle": 201
+          },
+          "negativeContact": {
+            "neighbor": 2,
+            "movingTriangle": 90,
+            "fixedTriangle": 270
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 116,
+            "fixedTriangle": 281
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 112,
+            "fixedTriangle": 3
+          }
+        },
+        {
+          "normal": [
+            -1,
+            1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 2,
+            "movingTriangle": 142,
+            "fixedTriangle": 187
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 115,
+            "fixedTriangle": 0
+          }
+        }
+      ]
+    },
+    {
+      "tile": 1,
+      "origin": [
+        0,
+        0,
+        2
+      ],
+      "normalCount": 19,
+      "basisDeterminant": -1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 282,
+            "fixedTriangle": 113
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 256,
+            "fixedTriangle": 66
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 273,
+            "fixedTriangle": 71
+          },
+          "negativeContact": {
+            "neighbor": 6,
+            "movingTriangle": 116,
+            "fixedTriangle": 218
+          }
+        },
+        {
+          "normal": [
+            -1,
+            1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 3,
+            "movingTriangle": 247,
+            "fixedTriangle": 145
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 260,
+            "fixedTriangle": 76
+          }
+        }
+      ]
+    },
+    {
+      "tile": 2,
+      "origin": [
+        0,
+        2,
+        0
+      ],
+      "normalCount": 19,
+      "basisDeterminant": 1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 278,
+            "fixedTriangle": 232
+          },
+          "negativeContact": {
+            "neighbor": 3,
+            "movingTriangle": 67,
+            "fixedTriangle": 80
+          }
+        },
+        {
+          "normal": [
+            -1,
+            -1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 189,
+            "fixedTriangle": 145
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 186,
+            "fixedTriangle": 15
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 3,
+            "movingTriangle": 84,
+            "fixedTriangle": 71
+          },
+          "negativeContact": {
+            "neighbor": 7,
+            "movingTriangle": 247,
+            "fixedTriangle": 145
+          }
+        }
+      ]
+    },
+    {
+      "tile": 3,
+      "origin": [
+        0,
+        2,
+        2
+      ],
+      "normalCount": 16,
+      "basisDeterminant": -2,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 149,
+            "fixedTriangle": 232
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 115,
+            "fixedTriangle": 21
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 2,
+            "movingTriangle": 116,
+            "fixedTriangle": 218
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 112,
+            "fixedTriangle": 22
+          }
+        },
+        {
+          "normal": [
+            -1,
+            1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 2,
+            "movingTriangle": 221,
+            "fixedTriangle": 113
+          },
+          "negativeContact": {
+            "neighbor": 1,
+            "movingTriangle": 135,
+            "fixedTriangle": 90
+          }
+        }
+      ]
+    },
+    {
+      "tile": 4,
+      "origin": [
+        1,
+        1,
+        1
+      ],
+      "normalCount": 26,
+      "basisDeterminant": 1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 66,
+            "fixedTriangle": 256
+          },
+          "negativeContact": {
+            "neighbor": 3,
+            "movingTriangle": 113,
+            "fixedTriangle": 256
+          }
+        },
+        {
+          "normal": [
+            -1,
+            -1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 5,
+            "fixedTriangle": 126
+          },
+          "negativeContact": {
+            "neighbor": 3,
+            "movingTriangle": 145,
+            "fixedTriangle": 186
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 44,
+            "fixedTriangle": 257
+          },
+          "negativeContact": {
+            "neighbor": 1,
+            "movingTriangle": 71,
+            "fixedTriangle": 265
+          }
+        }
+      ]
+    },
+    {
+      "tile": 5,
+      "origin": [
+        2,
+        0,
+        0
+      ],
+      "normalCount": 19,
+      "basisDeterminant": 1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 282,
+            "fixedTriangle": 187
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 263,
+            "fixedTriangle": 177
+          }
+        },
+        {
+          "normal": [
+            -1,
+            -1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 275,
+            "fixedTriangle": 175
+          },
+          "negativeContact": {
+            "neighbor": 7,
+            "movingTriangle": 116,
+            "fixedTriangle": 218
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 0,
+            "movingTriangle": 189,
+            "fixedTriangle": 281
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 186,
+            "fixedTriangle": 162
+          }
+        }
+      ]
+    },
+    {
+      "tile": 6,
+      "origin": [
+        2,
+        0,
+        2
+      ],
+      "normalCount": 16,
+      "basisDeterminant": 1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            -1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 116,
+            "fixedTriangle": 218
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 112,
+            "fixedTriangle": 155
+          }
+        },
+        {
+          "normal": [
+            -1,
+            -1,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 221,
+            "fixedTriangle": 113
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 193,
+            "fixedTriangle": 215
+          }
+        },
+        {
+          "normal": [
+            -1,
+            0,
+            1
+          ],
+          "positiveContact": {
+            "neighbor": 1,
+            "movingTriangle": 84,
+            "fixedTriangle": 71
+          },
+          "negativeContact": {
+            "neighbor": 5,
+            "movingTriangle": 249,
+            "fixedTriangle": 143
+          }
+        }
+      ]
+    },
+    {
+      "tile": 7,
+      "origin": [
+        2,
+        2,
+        0
+      ],
+      "normalCount": 16,
+      "basisDeterminant": -1,
+      "onlyAllowedTranslation": [
+        0,
+        0,
+        0
+      ],
+      "certificate": [
+        {
+          "normal": [
+            -1,
+            1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 2,
+            "movingTriangle": 149,
+            "fixedTriangle": 232
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 127,
+            "fixedTriangle": 222
+          }
+        },
+        {
+          "normal": [
+            -1,
+            1,
+            0
+          ],
+          "positiveContact": {
+            "neighbor": 2,
+            "movingTriangle": 249,
+            "fixedTriangle": 143
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 262,
+            "fixedTriangle": 230
+          }
+        },
+        {
+          "normal": [
+            0,
+            -1,
+            -1
+          ],
+          "positiveContact": {
+            "neighbor": 5,
+            "movingTriangle": 116,
+            "fixedTriangle": 218
+          },
+          "negativeContact": {
+            "neighbor": 4,
+            "movingTriangle": 112,
+            "fixedTriangle": 226
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Exact face-contact constraints, all other tiles fixed, no rotation. Full pairwise paths are separately checked by check-chair44-assembly.mjs."
+}
