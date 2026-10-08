@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "date": "2026-10-08",
+  "checks": [
+    "Executed script and shared solver hashes match",
+    "Hat and Turtle lattice areas checked independently",
+    "Regular orbit norm checked; sample Dirichlet traces and Neumann fluxes vanish",
+    "Every constructed L-triomino multiplicity and endpoint projection rank checked",
+    "Gap counts, estimates and refinement movements agree with ordered spectra",
+    "Eleven numerical estimates and two pending intervals rendered consistently",
+    "HTML anchors are unique and every local reference exists"
+  ],
+  "maximum_sample_boundary_trace": 8.72635297355373e-14,
+  "maximum_sample_boundary_normal_derivative": 1.121103210266483e-12,
+  "limitations": "Sample evaluations are numerical checks of the analytic proof. Continuum gap counts, unknown extra endpoint multiplicities and algebraicity outside the constructed families remain uncertified."
+}

@@ -1,9 +1,10 @@
-# Spectral geometry and planar tiling
+# Notes on spectra, markings and tilings
 
-This study asks how tile Laplacian spectra, billiard data, Fourier spectrality,
-diffraction and dynamical spectra relate to tiling and forced aperiodicity.
-The canonical report is [the web article](../../docs/projects/spectral-tiling-study.html).
-A printable version is [the PDF](../../output/pdf/spectral-tiling-study.pdf).
+The [web notebook](../../docs/projects/spectral-tiling-study.html) is the current
+document. It collects exact eigenfunction families, numerical spectral
+descriptions, boundary models, and connections with nonperiodic tilings.
+The earlier PDF and LaTeX files are archived snapshots; they are no longer
+updated alongside the webpage.
 
 The computation estimates the first twelve Dirichlet modes of ten members of
 the Hat–Turtle family. Tiling labels come from the cited published family
@@ -15,14 +16,37 @@ Install `requirements.txt` into a temporary environment, then run:
 python compute.py
 python verify.py
 python chair_control.py
-python build_report.py
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../output/pdf report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../output/pdf report.tex
+python arithmetic_spectra.py
+python build_page.py
+python verify_notes.py
 ```
 
-The compiler writes `report.pdf`; copy it to the stable delivery filename
-`../../output/pdf/spectral-tiling-study.pdf`. The figure PDFs are local assets
-used by the LaTeX source. The web report uses the corresponding PNGs.
+Run these commands from this directory. The original family and chair scripts
+only need to be rerun when their inputs change. For a prose edit, update the
+HTML directly; `build_page.py` refreshes only its data tables and explorer
+payload. It never creates a PDF. The existing `build_report.py` belongs to the
+older PDF workflow and is not part of the current reproduction commands.
+
+`arithmetic_spectra.py` adds exact integer checks of triangular-lattice
+reflections for the natural Hat and Turtle, four nested meshes with ninety
+L-triomino Dirichlet modes each, and twelve Turtle low modes. Its
+`arithmetic-spectra.json` receipt includes eigenfunction-subspace projection
+scores used to identify the known arithmetic modes. `exact-modes.png` shows
+explicit functions evaluated from their formulas. The gap explorer is
+`gap-explorer.js`; its data are embedded by `build_page.py`, so the page
+does not depend on a second data request to initialize.
+
+Eleven intervals through the normalized endpoint \(32\) have numerical counts
+that pass the stated refinement and endpoint-distance checks. Two intervals
+near \(34\) remain pending. All counts include multiplicity and exclude exact
+ladder endpoints. Other normalized eigenvalues are not proved non-algebraic.
+Even stable counts need rigorous continuum enclosures for certification.
+
+`verify_notes.py` independently checks the new receipt's hashes, lattice
+areas, sample boundary traces and fluxes, multiplicities, projection ranks,
+counts, refinement movements, and local HTML references. It writes
+`notes-verification.json`; sample evaluations support, rather than replace,
+the analytic reflection proof in the notes.
 
 `results.json` contains all eigenvalues, meshes, geometry, residuals, square
 controls, versions and the SHA-256 hash of the executed computation.
@@ -46,4 +70,4 @@ centered tetrahedral relief has no inherited aperiodicity label.
 
 No tiling/search engine is created or modified. This is a specialized
 continuum spectral experiment, not the GCTS point-value reference baseline.
-The report discusses the requirements for any later sound integration.
+The notes describe the requirements for any later sound integration.
