@@ -14,6 +14,7 @@ Install `requirements.txt` into a temporary environment, then run:
 ```sh
 python compute.py
 python verify.py
+python chair_control.py
 python build_report.py
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../output/pdf report.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../output/pdf report.tex
@@ -32,6 +33,16 @@ The continuum mesh model uses floating arithmetic. Its eigenvalues are
 numerical estimates, without certified continuum error bounds. The exact
 heat-coefficient equality uses rational arithmetic with the square root of
 three. It does not establish full isospectrality.
+
+The L-triomino follow-up adds `chair_control.py` and `chair-control.json`.
+They check an explicit periodic translation lattice for the planar triomino
+and the spatial seven-cube chair, the exact planar corner heat coefficient,
+and the sufficient height-scaling conditions stated in Tsiokos's Chair44
+preprint. They also estimate twelve planar Dirichlet modes and the unit-height
+prism modes using separation of variables. No numerical spectrum is computed
+for the geometric Chair44. Its tiling label comes from the cited theorem,
+whose full proof is not independently verified by this study. The project's
+centered tetrahedral relief has no inherited aperiodicity label.
 
 No tiling/search engine is created or modified. This is a specialized
 continuum spectral experiment, not the GCTS point-value reference baseline.

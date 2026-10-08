@@ -112,6 +112,22 @@ def main():
           'The finest square control differs from its exact first twelve modes by at most \\('+format(verification['square_max_fine_relative_error']*100,'.3f')+r'\%\). '
           'The largest reported relative eigensolver residual is \\('+format(verification['max_eigensolver_relative_residual'],'.2e').replace('e',r'\times10^{')+'}\\).')
     source=re.sub(r'(<p id="numerical-validation">).*?(</p>)',lambda m:m[1]+info+m[2],source,flags=re.S)
+    chair_path=ROOT/'chair-control.json'
+    if chair_path.exists():
+        chair=json.loads(chair_path.read_text())['L_triomino']
+        finest=chair['meshes']['3']
+        chair_info=(r'The L-triomino control estimates \(\lambda_1='
+                    +format(finest['eigenvalues'][0],'.8f')
+                    +r'\) on a finest mesh of \('+str(finest['nodes'])
+                    +r'\) nodes and \('+str(finest['triangles'])
+                    +r'\) triangles. The largest last-refinement change among twelve modes is \('
+                    +format(chair['last_refinement_relative_change']*100,'.3f')
+                    +r'\%\). These are conforming FEM estimates without certified continuum error bounds. '
+                    'The prism estimates use the exact product identity with numerical planar inputs. '
+                    'The <a href="../../research/spectral-tiling/chair-control.json">chair control receipt</a> '
+                    'also records exact lattice and parameter checks; the '
+                    '<a href="../../research/spectral-tiling/chair_control.py">control script</a> reproduces them.')
+        source=re.sub(r'(<p id="chair-validation">).*?(</p>)',lambda m:m[1]+chair_info+m[2],source,flags=re.S)
     PAGE.write_text(source)
     parser=Parser();parser.feed(source)
     report=find(parser.root,lambda n:n.tag=='article' and n.attrs.get('id')=='report')
