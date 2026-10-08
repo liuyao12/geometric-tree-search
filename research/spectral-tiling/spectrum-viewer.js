@@ -26,18 +26,24 @@
   const scaleLabel = () => ({pi:'\\lambda/\\pi^2', area:'A\\lambda', raw:'\\lambda'})[get('spectrum-scale').value];
   const spectrum = () => domain.spectra.find(s => s.bc === selectedBC);
   const visible = () => domain.spectra.filter(s => get('show-'+s.bc).checked);
+  const identified = (s,m) => Boolean(m.exact_family) || (s.bc === 'N' && m.mode === 0);
+  const displayed = s => s.modes.filter(m => get('spectrum-subset').value === 'all' || !identified(s,m));
   function fullRange() {
-    const maximum = Math.max(...visible().flatMap(s => s.modes.map(m => m.value*factor())));
+    const maximum = Math.max(...visible().flatMap(s => displayed(s).map(m => m.value*factor())));
     return [0, maximum*1.03 || 1];
   }
   function lowRange() {
-    const maximum = Math.max(...visible().map(s => s.modes[Math.min(11,s.modes.length-1)].value*factor()));
+    const maximum = Math.max(...visible().map(s => displayed(s)).filter(ms=>ms.length).map(ms => ms[Math.min(11,ms.length-1)].value*factor()));
     return [0,maximum*1.07 || 1];
   }
   function fillModes() {
     const picker = get('spectrum-mode');
     picker.replaceChildren();
-    for (const s of visible()) for (const m of s.modes) {
+    if (!displayed(spectrum()).some(m=>m.index === selectedIndex)) {
+      const available = displayed(spectrum()).length ? spectrum() : visible().find(s=>displayed(s).length);
+      if (available) { selectedBC = available.bc; selectedIndex = displayed(available)[0].index; }
+    }
+    for (const s of visible()) for (const m of displayed(s)) {
       const option = new Option(`${s.label} mode ${m.mode} · ${number(m.value*factor())}`, `${s.bc}:${m.index}`);
       picker.add(option);
     }
@@ -58,7 +64,7 @@
       label.className = 'spectrum-band-label'; label.textContent = s.label;
       band.append(label);
       const lanes = [];
-      for (const m of s.modes) {
+      for (const m of displayed(s)) {
         const value = m.value*factor();
         if (value < view[0] || value > view[1]) continue;
         const fraction = (value-view[0])/(view[1]-view[0]);
@@ -66,12 +72,12 @@
         if (lane < 0) lane = lanes.length;
         lanes[lane] = fraction*width;
         const node = document.createElement('button');
-        node.className = 'spectrum-node'+(m.exact_family ? ' family' : m.candidate_families ? ' candidate-family' : '')+(selectedBC === s.bc && selectedIndex === m.index ? ' selected' : '');
+        node.className = 'spectrum-node'+(identified(s,m) ? ' family' : m.candidate_families ? ' candidate-family' : '')+(selectedBC === s.bc && selectedIndex === m.index ? ' selected' : '');
         node.type = 'button'; node.style.left = `${fraction*100}%`; node.style.top = `${37+lane*20}px`;
         node.dataset.value = m.value; node.dataset.index = m.index; node.dataset.bc = s.bc;
         node.setAttribute('aria-label', `${s.label} mode ${m.mode}`);
         node.setAttribute('aria-pressed', String(selectedBC === s.bc && selectedIndex === m.index));
-        node.title = `${s.label} mode ${m.mode}: ${number(value)}${m.exact_family ? ' · constructed family' : m.candidate_families ? ' · unresolved subspace candidate' : ''}`;
+        node.title = `${s.label} mode ${m.mode}: ${number(value)}${identified(s,m) ? ' · constructed family' : m.candidate_families ? ' · unresolved subspace candidate' : ''}`;
         node.addEventListener('click', () => select(s.bc, m.index));
         const stem = document.createElement('span');
         stem.className = 'spectrum-stem'; stem.style.left = `${fraction*100}%`; stem.style.top = node.style.top;
@@ -148,7 +154,9 @@
       const level = exact.family === 'mixed_reflection' ? (exact.q % 3 === 0 ? `${16*exact.q/3}\\pi^2` : `\\frac{${16*exact.q}}{3}\\pi^2`) : `${exact.q}\\pi^2`;
       html += `<div class="spectrum-family"><p><strong>Known constructed family.</strong> Exact level ${math(level)}; at least ${math(exact.constructed_multiplicity)} independent constructed mode${exact.constructed_multiplicity === 1 ? '' : 's'}. Numerical subspace projection ${math(number(exact.projection))}.</p>${exact.family === 'mixed_reflection' ? '<p>Mixed reflection-character orbit. Coherent gluing is proved for placements in the specified triangular lattice and its dihedral group.</p>' : ''}</div>`;
     }
-    else if (m.candidate_families) {
+    else if (s.bc === 'N' && m.mode === 0) {
+      html += `<div class="spectrum-family"><p><strong>Known constant family.</strong> Exact level ${math(0)}. The connected tile has one independent constant Neumann mode, checked separately in the numerical receipt.</p></div>`;
+    } else if (m.candidate_families) {
       for (const candidate of m.candidate_families) {
         const level = candidate.q % 3 === 0 ? `${16*candidate.q/3}\\pi^2` : `\\frac{${16*candidate.q}}{3}\\pi^2`;
         html += `<div class="spectrum-family"><p><strong>Unresolved subspace candidate.</strong> The exact family level is ${math(level)}. This mode has projection ${math(number(candidate.projection))}; appreciable projection is spread across candidate modes ${math(candidate.candidate_ranks.join(',\\;'))}. The numerical mode is not assigned the exact value.</p></div>`;
@@ -162,14 +170,16 @@
     if (domain.edge_kinds) html += `<p>${math(s.modes.length)} modes computed for this assignment. Generic mixed modes are not asserted to glue; the exact character families are checked separately.</p>`;
     replace(get('spectrum-mode-detail'), html);
     get('spectrum-mode').value = `${s.bc}:${m.index}`;
-    get('spectrum-previous').disabled = selectedIndex === 0;
-    get('spectrum-next').disabled = selectedIndex === s.modes.length-1;
+    const shown = displayed(s);
+    get('spectrum-previous').disabled = selectedIndex === shown[0]?.index;
+    get('spectrum-next').disabled = selectedIndex === shown.at(-1)?.index;
     get('spectrum-field-status').classList.remove('spectrum-error');
     typeset([get('spectrum-mode-detail')]);
     drawField(s,m,token);
   }
   function select(bc, index) {
     selectedBC = bc; selectedIndex = index;
+    if (!displayed(spectrum()).some(m=>m.index === index)) { get('spectrum-subset').value = 'all'; fillModes(); }
     const x = spectrum().modes[index].value*factor();
     if (x < view[0] || x > view[1]) {
       const span = view[1]-view[0]; view = [Math.max(0,x-span/2), Math.max(0,x-span/2)+span];
@@ -187,6 +197,7 @@
   for (const d of data.domains) get('spectrum-domain').add(new Option(d.label,d.id));
   get('spectrum-domain').value = 'hat';
   get('spectrum-domain').addEventListener('change', resetDomain);
+  get('spectrum-subset').addEventListener('change',() => {fillModes();select(selectedBC,selectedIndex);});
   get('spectrum-scale').addEventListener('change', event => {
     const previousFactor = Number(get('spectrum-chart').dataset.factor);
     view = view.map(x => x*factor()/previousFactor); fillModes(); drawChart();
@@ -197,8 +208,12 @@
     fillModes(); drawChart(); drawDetail();
   });
   get('spectrum-mode').addEventListener('change', event => { const [bc,index] = event.target.value.split(':'); select(bc,Number(index)); });
-  get('spectrum-previous').addEventListener('click', () => select(selectedBC,selectedIndex-1));
-  get('spectrum-next').addEventListener('click', () => select(selectedBC,selectedIndex+1));
+  get('spectrum-previous').addEventListener('click', () => {const shown=displayed(spectrum());select(selectedBC,shown[shown.findIndex(m=>m.index === selectedIndex)-1].index);});
+  get('spectrum-next').addEventListener('click', () => {const shown=displayed(spectrum());select(selectedBC,shown[shown.findIndex(m=>m.index === selectedIndex)+1].index);});
+  document.addEventListener('inspect-spectrum',event => {
+    get('spectrum-domain').value = event.detail.domain; resetDomain();
+    select(event.detail.bc,event.detail.index); fillModes();
+  });
   function zoom(ratio) {
     const x = spectrum().modes[selectedIndex].value*factor();
     const span = (view[1]-view[0])*ratio;
@@ -209,7 +224,7 @@
   get('spectrum-full').addEventListener('click', () => {view = fullRange(); drawChart();});
   get('spectrum-low').addEventListener('click', () => {
     view = lowRange();
-    if (spectrum().modes[selectedIndex].value*factor() > view[1]) selectedIndex = 0;
+    if (spectrum().modes[selectedIndex].value*factor() > view[1]) selectedIndex = displayed(spectrum())[0].index;
     drawChart(); drawDetail();
   });
   let lastWidth = 0;

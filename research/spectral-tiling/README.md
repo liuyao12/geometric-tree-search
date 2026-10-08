@@ -19,7 +19,9 @@ python chair_control.py
 python arithmetic_spectra.py
 python mixed_reflections.py
 python compute_modes.py
+python elementary_modes.py
 python build_page.py
+python verify_elementary.py
 python verify_notes.py
 python verify_modes.py
 ```
@@ -29,6 +31,31 @@ only need to be rerun when their inputs change. For a prose edit, update the
 HTML directly; `build_page.py` refreshes only its data tables and explorer
 payload. It never creates a PDF. The existing `build_report.py` belongs to the
 older PDF workflow and is not part of the current reproduction commands.
+
+The current reading order starts with an elementary cell. `elementary_modes.py`
+generates 289 explicit functions independently of numerical eigenvalues:
+separated unit-square functions and the compatible lattice-periodic scalar
+reflection sectors of a unit equilateral triangle. Sine/cosine or odd/even
+median parity determines the tile's boundary assignment before comparison
+with FEM. The triangle catalogue is a subset of its full homogeneous spectrum.
+`elementary-modes.json` retains all exact integer frequencies and coefficients;
+`verify_elementary.py` independently checks source geometry, source and tile
+boundary conditions, median symmetry and frequency covariance. The receipt is
+`elementary-verification.json`. After changing only the catalogue, rerun its
+generator, `build_page.py`, and its verifier; the FEM fields need no new solve.
+
+`elementary-viewer.js` displays the exact levels with proportional spacing and
+evaluates the same formula on both the elementary cell and the selected tile.
+The two plots share a color normalization. These are formula evaluations,
+clearly distinguished from the computed FEM eigenfunctions below. A link
+opens a recorded numerical family match, an unresolved candidate, or the
+computed spectrum when the exact level lies above its truncation.
+The numerical viewer initially hides recorded family matches and the known
+Neumann constant. This
+display filter retains unknown modes and unresolved candidates and preserves
+their original ranks; it is not a certified continuum deflation or a
+classification of all remaining eigenvalues as non-algebraic. All 1290
+computed fields and complete unfiltered lists remain available.
 
 `arithmetic_spectra.py` adds exact integer checks of triangular-lattice
 reflections for the natural Hat and Turtle, four nested meshes with ninety

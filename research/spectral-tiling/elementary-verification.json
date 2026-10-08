@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "date": "2026-10-08",
+  "elementary_functions_checked": 289,
+  "checks": [
+    "Source and input hashes; webpage payload equals exact catalogue",
+    "Unit square and equilateral source geometry; source traces and fluxes",
+    "Triangle median parity, exact frequency norms and integer covariance",
+    "Every induced tile edge condition agrees with the numerical operator",
+    "Mixed orbit subsets agree with the preceding exact receipt"
+  ],
+  "maximum_sample_D_trace": 3.827493877395227e-13,
+  "maximum_sample_N_flux": 1.548215718061135e-11,
+  "limitations": "Sample evaluations are floating diagnostics. The reflection identities establish the exact functions; neither the catalogue nor the numerical remainder is claimed to exhaust the tile spectrum."
+}

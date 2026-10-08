@@ -102,6 +102,11 @@ def main():
     source, count = re.subn(r'(<script id="mode-data" type="application/json">).*?(</script>)',
                             lambda m: m[1]+encoded_modes+m[2], source, flags=re.S)
     assert count == 1
+    elementary = json.loads((ROOT/'elementary-modes.json').read_text())
+    encoded_elementary = json.dumps(elementary,separators=(',',':')).replace('<',r'\u003c')
+    source,count = re.subn(r'(<script id="elementary-data" type="application/json">).*?(</script>)',
+                          lambda m:m[1]+encoded_elementary+m[2],source,flags=re.S)
+    assert count == 1
     PAGE.write_text(source)
     print(json.dumps({'gap_rows': len(gaps), 'refinement_stable_rows': sum(g['status'] == 'refinement-stable estimate' for g in gaps),
                       'pending_rows': sum(g['status'] != 'refinement-stable estimate' for g in gaps),
