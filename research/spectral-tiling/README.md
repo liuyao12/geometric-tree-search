@@ -17,8 +17,10 @@ python compute.py
 python verify.py
 python chair_control.py
 python arithmetic_spectra.py
+python compute_modes.py
 python build_page.py
 python verify_notes.py
+python verify_modes.py
 ```
 
 Run these commands from this directory. The original family and chair scripts
@@ -35,6 +37,29 @@ scores used to identify the known arithmetic modes. `exact-modes.png` shows
 explicit functions evaluated from their formulas. The gap explorer is
 `gap-explorer.js`; its data are embedded by `build_page.py`, so the page
 does not depend on a second data request to initialize.
+
+`compute_modes.py` retains and renders 306 numerical eigenfunctions: ninety
+Dirichlet, ninety Neumann (including the constant), and ninety mixed modes on
+the L-triomino, plus twelve Dirichlet modes each on Hat, Turtle and the
+equilateral polygon. It reproduces the previously recorded Dirichlet values.
+The six `modes-*.png` files are image atlases of the computed P1 fields, not
+evaluations of analytic formulas. Pixel sampling preserves aspect ratio;
+each field is divided by its maximum absolute nodal value. The matrix
+residuals, mass orthogonality, mesh refinement, analytic-subspace projections
+and image checksums are in `mode-data.json`. `verify_modes.py` checks
+provenance, every image cell, ordered spectra and the explicit gluing control.
+
+The mixed control assigns Dirichlet to vertical edges and Neumann to horizontal
+edges, constraining junction vertices belonging to the Dirichlet trace. Its
+explicit sine–cosine family glues with translation phases on the known
+periodic chair lattice. This claim covers that subset, not every mixed mode,
+and is not a model of Chair44 markings. The webpage explains the construction
+and the distinction between comparing spectra, taking a direct sum, and
+coupling interfaces. `spectrum-viewer.js` positions numerical estimates
+proportionally on a shared axis with separate operator rows. Its mode selector
+and zoom controls distinguish nearly coincident modes. The gold rings indicate
+projection matches to constructed families; other values have unknown
+normalized algebraicity. All data are embedded by `build_page.py`.
 
 Eleven intervals through the normalized endpoint \(32\) have numerical counts
 that pass the stated refinement and endpoint-distance checks. Two intervals
