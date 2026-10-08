@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "date": "2026-10-07",
+  "checks": [
+    "Source hash matches the executed experiment",
+    "Independent polygon area, perimeter and corner calculations match every case",
+    "Mesh areas and scale-normalized eigenvalues agree with polygon areas",
+    "Nested refinements decrease every reported eigenvalue",
+    "Residuals below threshold; square control agrees with exact low modes",
+    "Area and perimeter equality proved exactly in Q(sqrt(3)) for heat-matched pair",
+    "Heat corner constant proved exactly from rational angle multiples"
+  ],
+  "max_fine_vs_previous_relative_change": 0.012311702949975523,
+  "max_eigensolver_relative_residual": 2.8640234965725048e-11,
+  "square_max_fine_relative_error": 0.0010599419630397122,
+  "heat_matched_pair": {
+    "rstar": {
+      "rational": "668/241",
+      "sqrt3_coefficient": "98/241",
+      "approx": 3.4761036478910787
+    },
+    "scale": {
+      "rational": "106/181",
+      "sqrt3_coefficient": "-21/362",
+      "approx": 0.4851572735940706
+    },
+    "common_area": {
+      "rational": "3",
+      "sqrt3_coefficient": "3",
+      "approx": 8.196152422706632
+    },
+    "common_perimeter": 14,
+    "common_corner_constant": "11/36"
+  },
+  "limitations": "No rigorous continuum FEM error bounds. Known tiling labels rely on cited theorems. No full isospectrality or new aperiodicity proof is claimed."
+}
