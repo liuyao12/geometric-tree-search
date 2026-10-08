@@ -73,3 +73,19 @@ export function anchoredPatch(cell,stage,assembly=cell.particles.length) {
   }
   return {particles:out,inverse,anchorCenter:first.center};
 }
+
+// A bounded periodic display, not an inflation hierarchy or packing path.
+export function periodicDisplay(cell, explosion=0, copies=0) {
+  const inverse=cell.particles[0].quaternion.clone().invert();
+  const center=cell.particles.reduce((v,p)=>v.add(p.center),new THREE.Vector3()).multiplyScalar(1/cell.particles.length);
+  const offsets=[[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[1,1,1]];
+  const particles=[];
+  for(let n=0;n<offsets.length;n++) {
+    if(n>0 && copies<=n-1)continue;
+    const t=n===0?1:Math.min(1,copies-(n-1));
+    const offset=new THREE.Vector3();offsets[n].forEach((k,i)=>offset.addScaledVector(cell.basis[i],k));
+    offset.multiplyScalar(1+1.3*(1-t));
+    cell.particles.forEach((p,index)=>particles.push({center:p.center.clone().sub(center).multiplyScalar(1+explosion).add(offset).applyQuaternion(inverse),quaternion:inverse.clone().multiply(p.quaternion).normalize(),prototype:index,cell:offsets[n],shell:n,copyOffset:offset.clone(),anchor:n===0&&index===0}));
+  }
+  return {particles,inverse,anchorCenter:center};
+}

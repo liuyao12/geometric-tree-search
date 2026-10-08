@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.min.js';
 import {OrbitControls} from './vendor/OrbitControls.js';
-import {vertices,maxStage,stageWidth,canonicalQuaternion,orientationRepresentative,orientationDistance,axisAnglePoint,compressionState,anchoredPatch} from './model.js';
+import {vertices,canonicalQuaternion,orientationRepresentative,orientationDistance,axisAnglePoint,compressionState,periodicDisplay} from './model.js?v=3';
 
 const $=id=>document.getElementById(id);
 const colours=[0x68dac4,0x6ba7de,0xd7b575,0xa990d4,0xe1927f,0x87ba93];
@@ -11,7 +11,7 @@ export function createPackingViewer(data,getMode) {
   const light=new THREE.DirectionalLight(0xffffff,2.0);light.position.set(8,15,12);scene.add(light);
   const camera=new THREE.PerspectiveCamera(38,1,.002,4000);
   const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.localClippingEnabled=true;
-  renderer.domElement.setAttribute('aria-label','Packing growing around a fixed tetrahedron. Camera controls are below the scene.');host.appendChild(renderer.domElement);
+  renderer.domElement.setAttribute('aria-label','Periodic unit cell and translated copies. Camera controls are below the scene.');host.appendChild(renderer.domElement);
   const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=.1;controls.maxDistance=2000;
   const orientationScene=new THREE.Scene(),orientationCamera=new THREE.PerspectiveCamera(34,1,.01,20);
   orientationCamera.position.set(2.7,1.9,2.5);
@@ -30,7 +30,7 @@ export function createPackingViewer(data,getMode) {
   const patchGroup=new THREE.Group();scene.add(patchGroup);
   const cellOutline=new THREE.LineSegments(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0xf0d093,transparent:true,opacity:.55}));scene.add(cellOutline);
   const clip=[new THREE.Plane(new THREE.Vector3(0,1,0),1000),new THREE.Plane(new THREE.Vector3(0,-1,0),1000)];
-  let active=false,mode,stage=1,assembly=82,progress=1,patch,cell,meshes=[],classes=[],prototypeClasses=[],hidden=new Set(),selected=null,pointKeys=[],counts=[],animation=null,paused=false,cameraAnimation=null,lastTick=0,radius=10;
+  let active=false,mode,progress=1,explosion=0,copies=0,patch,cell,meshes=[],classes=[],prototypeClasses=[],hidden=new Set(),selected=null,pointKeys=[],counts=[],animation=null,paused=false,cameraAnimation=null,lastTick=0,radius=10;
   const matrix=new THREE.Matrix4(),pos=new THREE.Vector3(),scale=new THREE.Vector3(),tempColour=new THREE.Color();
   const quotient=()=>$('orientation-convention').value==='tetra';
   const degreeRadius=()=>Number($('angular-radius').value)*Math.PI/180;
@@ -58,65 +58,54 @@ export function createPackingViewer(data,getMode) {
   }
   function disposePatch(){for(const mesh of meshes){patchGroup.remove(mesh);mesh.material.dispose();mesh.dispose();}meshes=[];}
   function rebuild(){
-    cell=compressionState(mode,progress,data);patch=anchoredPatch(cell,stage,assembly);disposePatch();
+    cell=compressionState(mode,progress,data);patch=periodicDisplay(cell,explosion,copies);disposePatch();
     const byShell=new Map();for(const p of patch.particles){if(!byShell.has(p.shell))byShell.set(p.shell,[]);byShell.get(p.shell).push(p);}
     for(const [shell,particles] of byShell){const transparent=$('transparent').checked;const material=new THREE.MeshStandardMaterial({roughness:.6,metalness:.03,side:THREE.DoubleSide,clippingPlanes:clip,transparent,opacity:transparent?.16:1,depthWrite:!transparent});const mesh=new THREE.InstancedMesh(geometry,material,particles.length);mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);mesh.userData.particles=particles;mesh.userData.shell=shell;mesh.frustumCulled=false;patchGroup.add(mesh);meshes.push(mesh);}
     updateMatrices();updateOrientationPlot();updateReadouts();resize();
   }
   function updateMatrices(){
-    cell=compressionState(mode,progress,data);const inverse=cell.particles[0].quaternion.clone().invert(),first=cell.particles[0].center;
+    cell=compressionState(mode,1,data);patch=periodicDisplay(cell,explosion,copies);
+    const inverse=patch.inverse,first=patch.anchorCenter;
     const stackAxis=cell.basis[1].clone().applyQuaternion(inverse).normalize();clip[0].normal.copy(stackAxis);clip[1].normal.copy(stackAxis).negate();
     const uniform=Number($('shrink').value),selectedIds=selectedSet();radius=Math.sqrt(3);
     let minY=Infinity,maxY=-Infinity;
-    for(const mesh of meshes){let index=0;for(const p of mesh.userData.particles){const proto=cell.particles[p.prototype];pos.copy(proto.center).addScaledVector(cell.basis[0],p.cell[0]).addScaledVector(cell.basis[1],p.cell[1]).addScaledVector(cell.basis[2],p.cell[2]).sub(first).multiplyScalar(cell.dilation).applyQuaternion(inverse);radius=Math.max(radius,pos.length()+Math.sqrt(3));const height=pos.dot(stackAxis);minY=Math.min(minY,height-Math.sqrt(3));maxY=Math.max(maxY,height+Math.sqrt(3));
+    for(const mesh of meshes){let index=0;for(const old of mesh.userData.particles){const p=patch.particles.find(p=>p.prototype===old.prototype&&p.shell===old.shell);pos.copy(p.center);radius=Math.max(radius,pos.length()+Math.sqrt(3));const height=pos.dot(stackAxis);minY=Math.min(minY,height-Math.sqrt(3));maxY=Math.max(maxY,height+Math.sqrt(3));
       const cls=prototypeClasses[p.prototype],size=hidden.has(cls)?0:uniform;scale.setScalar(size);matrix.compose(pos,p.quaternion,scale);mesh.setMatrixAt(index,matrix);
-      if($('colour').value==='shell')tempColour.setHex(colours[p.shell%colours.length]);else if($('colour').value==='height')tempColour.setHSL((.5+height/(stageWidth(stage)*cell.basis[1].length()*cell.dilation)*.3+1)%1,.55,.62);else tempColour.copy(classes[cls].colour);
+      if($('colour').value==='shell')tempColour.setHex(colours[p.shell%colours.length]);else if($('colour').value==='height')tempColour.setHSL((.5+height/(2*cell.basis[1].length())*.3+1)%1,.55,.62);else tempColour.copy(classes[cls].colour);
       if(selectedIds.has(cls))tempColour.lerp(new THREE.Color('#fff2cc'),.5);mesh.setColorAt(index++,tempColour);
     }mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;}
+    anchorOutline.position.copy(patch.particles[0].center);
     const half=Math.max(Math.abs(minY),Math.abs(maxY))*Number($('slice').value);clip[0].constant=half;clip[1].constant=half;
-    anchorOutline.scale.setScalar(uniform);updateCellOutline(inverse,first);updateCompressionReadout();
+    anchorOutline.scale.setScalar(uniform);updateCellOutline(inverse,first);updateReadouts();
   }
   function updateCellOutline(inverse,first){
-    cellOutline.visible=$('cell').checked && stage>0;const corners=[];
+    cellOutline.visible=$('cell').checked;const corners=[];
     for(let z=0;z<8;z++){const p=new THREE.Vector3();for(let bit=0;bit<3;bit++)p.addScaledVector(cell.basis[bit],(z&(1<<bit))?.5:-.5);corners.push(p.sub(first).multiplyScalar(cell.dilation).applyQuaternion(inverse));}
-    const arr=[];for(let x=0;x<8;x++)for(const bit of [1,2,4])if(!(x&bit))arr.push(...corners[x].toArray(),...corners[x|bit].toArray());cellOutline.geometry.dispose();cellOutline.geometry=new THREE.BufferGeometry();cellOutline.geometry.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));
-  }
-  function updateCompressionReadout(){
-    $('compression').value=(progress*100).toFixed(1);$('compression-value').textContent=`${(progress*100).toFixed(1)}%`;
-    $('path-density').textContent=`${(cell.density*100).toFixed(4)}% full periodic packing fraction`;
-    $('density').textContent=mode==='approx'?`${(cell.density*100).toFixed(4)}% along displayed path`:`${(cell.density*100).toFixed(4)}% along displayed path`;
+    const arr=[],offsets=new Map(patch.particles.map(p=>[p.shell,p.copyOffset]));for(const offset of offsets.values()){const translation=offset.clone().applyQuaternion(inverse);for(let x=0;x<8;x++)for(const bit of [1,2,4])if(!(x&bit))arr.push(...corners[x].clone().add(translation).toArray(),...corners[x|bit].clone().add(translation).toArray());}cellOutline.geometry.dispose();cellOutline.geometry=new THREE.BufferGeometry();cellOutline.geometry.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));
   }
   function updateReadouts(){
-    $('stage-number').textContent=String(stage);$('patch-count').textContent=`${patch.particles.length.toLocaleString()} ${patch.particles.length===1?'tetrahedron':'tetrahedra'}`;
-    const n=stageWidth(stage),full=mode==='approx'?82:4;
-    $('count').textContent=stage===0?'One fixed reference tetrahedron':`${patch.particles.length.toLocaleString()} tetrahedra · ${n**3} ${n===1?'cell':'cells'}`;
-    $('assembly').max=String(full);$('assembly').value=String(assembly);$('assembly').disabled=stage!==1;$('assembly-value').textContent=`${stage===0?1:assembly} / ${full}`;
-    $('build-back').disabled=stage===0;$('build-next').disabled=stage===maxStage;
-    $('build-next').textContent=stage===0?'Build the primitive cell ↗':stage===maxStage?'Largest patch shown':stage===1 && assembly<full?'Complete primitive cell ↗':'Expand one shell ↗';
-    $('growth-description').textContent=stage===0?'A single tetrahedron, pinned at the origin. Build its primitive cell next.':stage===1?'Reveal the primitive cell particle by particle. Source row order is an assembly illustration, not a physical growth sequence.':`Cell shell ${stage-1}: ${n} cells along each basis direction. The reference tetrahedron keeps its position, size and orientation.`;
+    $('stage-number').textContent=copies===0?'UNIT CELL':'CELL COPIES';
+    $('patch-count').textContent=`${patch.particles.length.toLocaleString()} tetrahedra`;
+    $('count').textContent=`${patch.particles.length.toLocaleString()} tetrahedra · ${Math.ceil(copies)+1} ${copies===0?"cell":"cells"} displayed`;
+    $('explode-value').textContent=`${Math.round(explosion*100)}%`;
+    $('copies').value=String(copies);$('copies-value').textContent=`${copies.toFixed(copies%1?2:0)} / 7`;
+    $('density').textContent=`${(cell.density*100).toFixed(4)}% published packed endpoint`;
   }
   function cameraDistance(){const angle=THREE.MathUtils.degToRad(camera.fov/2);return radius/Math.sin(angle)*1.08/Math.min(1,camera.aspect);}
   function fit(animated=false){const distance=cameraDistance();const dir=camera.position.clone().sub(controls.target).normalize();if(!dir.lengthSq())dir.set(.65,.6,.8).normalize();const target=dir.multiplyScalar(distance);controls.target.set(0,0,0);if(animated&&!matchMedia('(prefers-reduced-motion: reduce)').matches)cameraAnimation={from:camera.position.clone(),to:target,start:performance.now()};else {camera.position.copy(target);cameraAnimation=null;}controls.update();}
   function view(name){camera.up.set(0,1,0);const distance=cameraDistance();controls.target.set(0,0,0);if(name==='top'){const axis=cell.basis[1].clone().applyQuaternion(cell.particles[0].quaternion.clone().invert()).normalize();camera.up.set(0,0,-1);camera.position.copy(axis.multiplyScalar(distance));}else if(name==='side')camera.position.set(distance,0,0);else camera.position.set(.65,.6,.8).normalize().multiplyScalar(distance);cameraAnimation=null;controls.update();}
-  function stopAnimation(){animation=null;paused=false;$('play-compression').textContent='▶ Animate compression';}
+  function stopAnimation(){animation=null;paused=false;$('play-copies').textContent='▶ Assemble cell copies';}
   function pause(){active=false;stopAnimation();cameraAnimation=null;}
   function activate(){
-    const next=getMode();if(mode!==next){mode=next;stage=1;assembly=mode==='approx'?82:4;progress=1;stopAnimation();createClasses();}
+    const next=getMode();if(mode!==next){mode=next;progress=1;explosion=0;copies=0;$('explode').value='0';stopAnimation();createClasses();}
     active=true;rebuild();view('oblique');
-    $('family-start').hidden=mode!=='dimer';$('top').textContent=mode==='approx'?'Along stack':'Along cell axis';$('colour').options[2].textContent=mode==='approx'?'Height along stack':'Height along cell axis';
-    $('path-name').textContent=mode==='approx'?'Expanded reference → published endpoint':'Expanded reference → earlier dimer → record';
-    $('compression-note').textContent=mode==='approx'?'Illustrative uniform motion of particle centres; tetrahedra keep their size and orientation. This is not the original ideal construction or a Monte Carlo replay. Endpoint: published 82-particle coordinates.':'First half: close added spacing around the earlier dimer packing. Second half: continuous deformation inside the paper’s proved packing family, from 85.4701% to 85.6348%. Particle orientations stay fixed; no recorded simulation is implied.';
+    $('top').textContent=mode==='approx'?'Along stack':'Along cell axis';$('colour').options[2].textContent=mode==='approx'?'Height along stack':'Height along cell axis';
     if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise().catch(()=>{});
   }
-  function setStage(next){stopAnimation();if(next<0||next>maxStage)return;stage=next;assembly=mode==='approx'?82:4;rebuild();fit(true);}
-  $('build-back').onclick=()=>setStage(stage-1);
-  $('build-next').onclick=()=>{if(stage===1 && assembly<cell.particles.length){assembly=cell.particles.length;rebuild();return;}setStage(stage+1);};
-  $('seed').onclick=()=>setStage(0);
-  $('assembly').oninput=()=>{stopAnimation();assembly=Number($('assembly').value);rebuild();};
-  $('compression').oninput=()=>{stopAnimation();progress=Number($('compression').value)/100;updateMatrices();};
-  $('play-compression').onclick=()=>{if(animation){animation=null;paused=true;$('play-compression').textContent='▶ Resume compression';return;}if(!paused){progress=0;updateMatrices();fit();}paused=false;animation={start:performance.now(),from:progress};$('play-compression').textContent='Ⅱ Pause compression';};
-  $('family-start').onclick=()=>{stopAnimation();progress=.5;updateMatrices();fit(true);};
-  $('raw').onclick=()=>{stopAnimation();progress=0;updateMatrices();fit(true);};$('packed').onclick=()=>{stopAnimation();progress=1;updateMatrices();fit(true);};
+  $('explode').oninput=()=>{explosion=Number($('explode').value)/100;updateMatrices();fit();};
+  $('unit-cell').onclick=()=>{stopAnimation();copies=0;rebuild();fit(true);};
+  $('copies').oninput=()=>{stopAnimation();copies=Number($('copies').value);rebuild();fit();};
+  $('play-copies').onclick=()=>{if(animation){stopAnimation();return;}copies=0;explosion=0;$('explode').value='0';rebuild();const final=periodicDisplay(cell,0,7);radius=Math.max(...final.particles.map(p=>p.center.length()+Math.sqrt(3)));fit();animation={start:performance.now()};$('play-copies').textContent='Ⅱ Pause assembly';};
   $('orientation-convention').onchange=()=>{createClasses();rebuild();};
   function selectClass(index){selected=index;$('orientation-select').value=index===null?'':String(index);updateOrientationPlot();updateMatrices();}
   $('orientation-select').onchange=()=>selectClass($('orientation-select').value===''?null:Number($('orientation-select').value));
@@ -134,7 +123,7 @@ export function createPackingViewer(data,getMode) {
   new ResizeObserver(resize).observe(host);new ResizeObserver(resize).observe(plot);
   renderer.setAnimationLoop(time=>{
     if(!active)return;
-    if(animation && time-lastTick>30){lastTick=time;progress=Math.min(1,animation.from+(performance.now()-animation.start)/6500);updateMatrices();if(progress===1)stopAnimation();}
+    if(animation && time-lastTick>30){lastTick=time;copies=Math.min(7,(performance.now()-animation.start)/900);rebuild();if(copies===7)stopAnimation();}
     if(cameraAnimation){const t=Math.min(1,(performance.now()-cameraAnimation.start)/750),s=t*t*(3-2*t);camera.position.lerpVectors(cameraAnimation.from,cameraAnimation.to,s);if(t===1)cameraAnimation=null;}
     controls.update();orientationControls.update();renderer.render(scene,camera);orientationRenderer.render(orientationScene,orientationCamera);
   });

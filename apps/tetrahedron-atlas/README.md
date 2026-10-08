@@ -10,25 +10,21 @@ Static educational exhibit for the established GitHub Pages site. Serve `index.h
 
 The double dimer follows Definitions 1–2, Equations (6)–(7), (11), (13), and Theorem 1 of https://arxiv.org/abs/1001.0586. Basis vectors are \(a+b,b+c,c+a\), with negative-dimer offset \(d+a\). The construction is uniformly rescaled by \(2/3\) so its edge length matches the approximant.
 
-## Construction and compression
+## Unit cell and periodic assembly
 
-The progressive viewer follows the fixed-tile presentation in `apps/quaquaversal-tiling`: invert the first particle's pose, then grow around that unchanged reference. Stage zero displays one tetrahedron. Stage one reveals the primitive cell in source-record order. Further stages add full surrounding cell shells with widths \(3,5,7\). This is periodic replication and an illustrative reveal order, not a substitution, self-assembly algorithm, or reconstruction of physical growth.
+The current UI starts with the published packed unit cell. The separation slider is an exploded view: particle centres move away from the cell centroid while particle sizes and orientations stay fixed. The periodic assembly slider moves up to seven translated copies into a bounded block, with two cells along each lattice basis direction. It is neither an inflation hierarchy nor a physical compression trajectory. The older compression helpers remain geometry utilities but are not exposed in this UI. Aperiodic hierarchy controls require a documented substitution or inflation rule; none is claimed for the source-figure quasicrystal view.
 
-The approximant animation dilates centre displacements and box vectors by \(s=1+0.35(1-t)\), preserving rigid particle size/orientation. Density is \(\phi(t)=\phi_{\mathrm{endpoint}}/s^3\). The available source has no original ideal starting cell or time history. The starting frame is explicitly an expanded reference reconstructed from the endpoint, not the original raw ideal construction.
-
-The dimer animation first closes added spacing around the earlier dimer packing. Its second half follows the straight segment \((u,v,w)=\lambda(3/160,3/64,0)\), for \(0\leq\lambda\leq1\), in the paper's convex proved packing region. This changes the lattice and offset while keeping rotations fixed, raising density from \(100/117\) to \(4000/4671\). It is an analytical path, not a recorded Monte Carlo run. The earlier-construction button jumps to the undilated start of this family.
-
-Particle shrinking, slicing, transparency and orientation filtering affect only rendering. Density labels refer to the full underlying periodic packing, even when individual orientations are hidden or only one tile is shown.
+Particle shrinking, slicing, transparency and orientation filtering affect only rendering. Density labels refer to the published packed endpoint, not the exploded view or incomplete assembly.
 
 ## Orientations
 
-The rotatable ball uses axis–angle representatives of \(\mathrm{SO}(3)\), with antipodal boundary points identified. Rotations are relative to the pinned reference tile. Labelled-frame mode retains source vertex labels. The default identifies the 12 proper tetrahedral symmetries, so geometry-equivalent vertex permutations are identified. It chooses the closest-to-identity quaternion representative from \(qT\), not from improper reflections. Frame orientations are merged only within a numerical angular tolerance of \(10^{-7}\) radians. Small differences in the 82 source poses remain visible.
+The rotatable ball uses axis–angle representatives of \(\mathrm{SO}(3)\), with antipodal boundary points identified. Rotations are relative to the reference tile. Labelled-frame mode retains source vertex labels. The default identifies the 12 proper tetrahedral symmetries, so geometry-equivalent vertex permutations are identified. It chooses the closest-to-identity quaternion representative from \(qT\), not from improper reflections. Frame orientations are merged only within a numerical angular tolerance of \(10^{-7}\) radians. Small differences in the 82 source poses remain visible.
 
-The selected-neighborhood slider measures geodesic angular distance (minimum over the 12 symmetries in quotient mode). Dot selection and a labelled menu support isolation, hiding, restoration and optional angular neighborhoods. Filter state persists through patch expansion and compression. Changing orientation convention resets filters. Counts refer to the patch before slicing; the reference outline remains as a frame marker when its orientation is hidden.
+The selected-neighborhood slider measures geodesic angular distance (minimum over the 12 symmetries in quotient mode). Dot selection and a labelled menu support isolation, hiding, restoration and optional angular neighborhoods. Filter state persists through periodic copy assembly and separation. Changing orientation convention resets filters. Counts refer to the patch before slicing; the reference outline remains as a frame marker when its orientation is hidden.
 
 ## Algorithm contract / conformance scope
 
-Read `docs/basic-tiling-algorithm.md` before implementation. This is a geometric visualization, not a tiling/search engine. It performs no frontier search, point-value legality checking, learned pruning or RL proposals. Candidate incidence, generation scheduling and rollback therefore do not apply. Decimal coordinates and rendering are floating-point approximations, not exact certificates. Stage numbers are display stages, not GCTS generations.
+Read `docs/basic-tiling-algorithm.md` before implementation. This is a geometric visualization, not a tiling/search engine. It performs no frontier search, point-value legality checking, learned pruning or RL proposals. Candidate incidence, generation scheduling and rollback therefore do not apply. Decimal coordinates and rendering are floating-point approximations, not exact certificates. The periodic display is not a GCTS generation sequence.
 
 ## Validation
 
@@ -36,4 +32,4 @@ Original transcription checks reproduced the published approximant density withi
 
 Model checks verified all 12 proper symmetries preserve the vertex set, symmetry-equivalent quaternion representatives/distances agree, analytical density endpoints match, all growth counts agree, and the reference pose remains unchanged at every stage and sampled compression position.
 
-Browser QA covered seed/cell/shell progression through 28,126 particles, isolation/hiding/restoration, orientation conventions, compression playback/endpoints, frame rendering, and console errors. These approximate checks support the visualization; they are not exact packing certificates.
+Earlier browser QA covered the superseded shell/compression controls. Current QA checks the unit cell, separation, bounded periodic assembly and orientation filters. These approximate checks support the visualization; they are not exact packing certificates.
