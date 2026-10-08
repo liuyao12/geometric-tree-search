@@ -1,0 +1,39 @@
+Turtle & Trefoil Tiling Set — Tiles, Connectors and Hexagonal Board
+
+A hands-on tiling set with four free printable parts: a Turtle tile, a Trefoil tile, a straight connector and an optional hexagonal board.
+
+Rotate, flip and arrange the tiles, and follow the stripes as they line up. What patterns can you discover?
+
+Explore the interactive 3D preview, including both sides of each piece and sample tilings:
+https://liuyao12.github.io/geometric-tree-search/turtle-trefoil-printables/
+
+The Turtle has one raised stripe on one face and three on the other. The Trefoil has three on one face and none on the reverse. Smooth stripes pass beneath one another at crossings. Separate connectors bridge neighboring stripe ends; the same number of connectors as tiles is sufficient for a patch.
+
+The optional board has large kagome hexagons and interleaving edges for placing modules together. The transparent preview shows a checked local fit. The larger tiling examples are board-free: not all their placements fit this board layout.
+
+Files
+• turtle-tile: one complete two-sided Turtle.
+• trefoil-tile: one complete two-sided Trefoil.
+• tile-connector: the shared straight connector.
+• large-kagome-board: one complete board module.
+
+Each part comes in STL and 3MF. These are alternative formats of the same part, not separate halves. Units are millimeters; 3MF files contain geometry only, with no printer profile or assigned colors. Render colors are illustrative.
+
+The tile bodies are 4 mm thick, with an overall height of 5.8 mm. Connectors are 14.8 mm long and 2.2 mm in diameter. The board is approximately 294 × 330 × 5 mm; check your printer's build area before printing it.
+
+These are digitally checked prototypes, not yet physically test-printed. Start with a few tiles and connectors to check fit. The small receiver features and two-sided relief need attention to printer resolution and supports. The physical features represent only part of the mathematical marking rules.
+
+Credits
+Turtle tile shape: David Smith, Joseph Samuel Myers, Craig S. Kaplan and Chaim Goodman-Strauss, “An aperiodic monotile” (2023).
+https://cs.uwaterloo.ca/~csk/hat/
+
+Straight-line markings, as credited in my Geometric Tree Search article:
+• Shigeki Akiyama and Yoshiaki Araki, “An alternative proof for an aperiodic monotile.”
+https://arxiv.org/abs/2307.12322
+• mathblock8128, The mathBlock shed, “Turtle tiles part 1: Forcing non-periodicity.”
+https://mathblock8128.wordpress.com/2024/03/20/turtle-tiles-part-1-forcing-non-periodicity/
+
+Physical connector concept and printable adaptation: Yao Liu.
+Design and modeling assistance: GPT Astra.
+Project and marking credits:
+https://liuyao12.github.io/geometric-tree-search/GCTS-I.html
