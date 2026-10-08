@@ -13,7 +13,7 @@ def math(value):
 
 
 def replace_body(source, identifier, body, tag='tbody'):
-    pattern = r'(<'+tag+' id="'+identifier+r'">).*?(</'+tag+'>)'
+    pattern = r'(<'+tag+' id="'+identifier+r'"(?:\s[^>]*)?>).*?(</'+tag+'>)'
     source, count = re.subn(pattern, lambda m: m[1]+body+m[2], source, flags=re.S)
     assert count == 1, identifier
     return source
@@ -22,6 +22,7 @@ def replace_body(source, identifier, body, tag='tbody'):
 def main():
     data = json.loads((ROOT/'arithmetic-spectra.json').read_text())
     original = json.loads((ROOT/'results.json').read_text())
+    modes = json.loads((ROOT/'mode-data.json').read_text())
     source = PAGE.read_text()
     control = data['L_triomino']
     anchors = {a['q']: a for a in control['anchors']}
@@ -62,20 +63,41 @@ def main():
     equilateral = min(original['cases'], key=lambda c: abs(c['r']-1))
     turtle = data['Turtle_low_modes']
     atlas = []
-    for name, values, prior in [
-        ('L-triomino', [3*x for x in fine['eigenvalues']], [3*x for x in previous['eigenvalues']]),
-        ('Hat', hat['meshes']['3']['area_eigenvalues'], hat['meshes']['2']['area_eigenvalues']),
-        ('Turtle', turtle['meshes']['3']['area_eigenvalues'], turtle['meshes']['2']['area_eigenvalues']),
-        ('Equilateral polygon', equilateral['meshes']['3']['area_eigenvalues'], equilateral['meshes']['2']['area_eigenvalues'])]:
+    for domain in modes['domains']:
+        d = next(s for s in domain['spectra'] if s['bc'] == 'D')
+        name = domain['label']
+        values = [domain['area']*m['value'] for m in d['modes']]
+        prior = [domain['area']*m['previous_value'] for m in d['modes']]
         change = max(abs(a/b-1) for a, b in zip(prior[:12], values[:12]))*100
         atlas.append('<tr><td>'+name+'</td><td>'+math(r',\;'.join(f'{v:.5f}' for v in values[:4]))+
                      '</td><td>'+math(f'{change:.3f}'+r'\%')+'</td></tr>')
     source = replace_body(source, 'atlas-table', ''.join(atlas))
+    mixed_rows = []
+    for domain in modes['domains']:
+        if not domain.get('edge_kinds'): continue
+        for s in domain['spectra']:
+            if s['bc'] not in ['shortD','longD']: continue
+            m = s['modes'][0]
+            first = s['exact_family_checks'][0]
+            if first['identified']:
+                status = 'Mode '+math(first['selected_indices'][0]+1)+'; projection '+math(f"{first['minimum_projection']:.4f}")
+            else:
+                ranks = [c['rank'] for c in first['nearby_candidates'] if c['projection'] > .05]
+                status = 'Pending; candidate modes '+math(r',\;'.join(map(str,ranks)))+'; largest projection '+math(f"{first['minimum_projection']:.4f}")
+            mixed_rows.append('<tr><td>'+domain['label']+' — '+s['label']+'</td><td>'+math(f"{m['value']:.8f}")+
+                              '</td><td>'+math(f"{m['last_change']:.3e}".replace('e',r'\times10^{')+'}')+
+                              '</td><td>'+status+'</td></tr>')
+    source = replace_body(source,'mixed-atlas-table',''.join(mixed_rows))
+    validation = ('Hat uses '+math(4)+' nested refinements and Turtle uses '+math(3)+'. '+
+                  'Each mixed list contains '+math(240)+' modes. Three first-level subspace matches pass the '+math('.95')+
+                  ' projection threshold; Hat with short Neumann and long Dirichlet remains unresolved because its projection is spread across nearby modes. '+
+                  'These are numerical identifications, without certified continuum error bounds. '+
+                  '<a href="../../research/spectral-tiling/mode-data.json">All candidates, projection scores and preceding-mesh checks</a> are retained.')
+    source = replace_body(source,'mixed-validation',validation,'p')
     payload = {'normalization': 'lambda/pi^2', 'gaps': gaps}
     encoded = json.dumps(payload, separators=(',', ':')).replace('<', r'\u003c')
     source = replace_body(source, 'gap-data', encoded, 'script') if '<script id="gap-data">' in source else re.sub(
         r'(<script id="gap-data" type="application/json">).*?(</script>)', lambda m: m[1]+encoded+m[2], source, flags=re.S)
-    modes = json.loads((ROOT/'mode-data.json').read_text())
     encoded_modes = json.dumps(modes, separators=(',', ':')).replace('<', r'\u003c')
     source, count = re.subn(r'(<script id="mode-data" type="application/json">).*?(</script>)',
                             lambda m: m[1]+encoded_modes+m[2], source, flags=re.S)

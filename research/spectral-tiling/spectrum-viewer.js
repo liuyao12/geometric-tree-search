@@ -9,6 +9,7 @@
   const number = value => Math.abs(value) < 1e-11 ? '0' : Number(value.toPrecision(8)).toString();
   const scientific = value => value === 0 ? '0' : value.toExponential(2).replace(/e([+-]?\d+)/, '\\times10^{$1}');
   const images = new Map();
+  const boundaryKeys = ['D','N','mixed','shortD','longD'];
   let domain = data.domains[0], selectedBC = 'D', selectedIndex = 0;
   let view = [0, 1], renderToken = 0, mathQueue = Promise.resolve();
   function typeset(elements) {
@@ -65,12 +66,12 @@
         if (lane < 0) lane = lanes.length;
         lanes[lane] = fraction*width;
         const node = document.createElement('button');
-        node.className = 'spectrum-node'+(m.exact_family ? ' family' : '')+(selectedBC === s.bc && selectedIndex === m.index ? ' selected' : '');
+        node.className = 'spectrum-node'+(m.exact_family ? ' family' : m.candidate_families ? ' candidate-family' : '')+(selectedBC === s.bc && selectedIndex === m.index ? ' selected' : '');
         node.type = 'button'; node.style.left = `${fraction*100}%`; node.style.top = `${37+lane*20}px`;
         node.dataset.value = m.value; node.dataset.index = m.index; node.dataset.bc = s.bc;
         node.setAttribute('aria-label', `${s.label} mode ${m.mode}`);
         node.setAttribute('aria-pressed', String(selectedBC === s.bc && selectedIndex === m.index));
-        node.title = `${s.label} mode ${m.mode}: ${number(value)}${m.exact_family ? ' · constructed family' : ''}`;
+        node.title = `${s.label} mode ${m.mode}: ${number(value)}${m.exact_family ? ' · constructed family' : m.candidate_families ? ' · unresolved subspace candidate' : ''}`;
         node.addEventListener('click', () => select(s.bc, m.index));
         const stem = document.createElement('span');
         stem.className = 'spectrum-stem'; stem.style.left = `${fraction*100}%`; stem.style.top = node.style.top;
@@ -96,7 +97,7 @@
     if (!images.has(atlas.file)) images.set(atlas.file, new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => resolve(img); img.onerror = () => reject(new Error('Numerical field image could not be loaded.'));
-      img.src = '../../research/spectral-tiling/'+atlas.file;
+      img.src = '../../research/spectral-tiling/'+atlas.file+'?sha='+atlas.sha256;
     }));
     return images.get(atlas.file);
   }
@@ -105,10 +106,12 @@
     ctx.clearRect(0,0,canvas.width,canvas.height);
     get('spectrum-field-status').textContent = 'Loading numerical eigenfunction…';
     try {
-      const img = await loadImage(s.atlas);
+      const page = s.atlas.pages?.find(p => m.index >= p.start_index && m.index < p.start_index+p.mode_count) || s.atlas;
+      const img = await loadImage(page);
       if (token !== renderToken) return;
       const {cell_size:cell, columns:cols, bbox} = s.atlas;
-      ctx.drawImage(img, (m.index%cols)*cell, Math.floor(m.index/cols)*cell, cell, cell, 0,0,canvas.width,canvas.height);
+      const local = m.index-(page.start_index || 0);
+      ctx.drawImage(img, (local%cols)*cell, Math.floor(local/cols)*cell, cell, cell, 0,0,canvas.width,canvas.height);
       const xy = p => [(p[0]-bbox[0])/(bbox[2]-bbox[0])*(canvas.width-1), (bbox[3]-p[1])/(bbox[3]-bbox[1])*(canvas.height-1)];
       domain.polygon.forEach((p, i) => {
         const a = xy(p), b = xy(domain.polygon[(i+1)%domain.polygon.length]);
@@ -130,7 +133,7 @@
     const s = spectrum(), m = s.modes[selectedIndex];
     const token = ++renderToken;
     const exact = m.exact_family;
-    const symbol = s.bc === 'N' ? '\\mu' : s.bc === 'mixed' ? '\\nu' : '\\lambda';
+    const symbol = s.bc === 'N' ? '\\mu' : s.bc === 'D' ? '\\lambda' : '\\nu';
     let html = `<h4>${domain.label} · ${s.label} · ${math(`${symbol}_{${m.mode}}`)}</h4><dl class="spectrum-metrics">`;
     for (const [label, value] of [
       ['Eigenvalue estimate', math(`${symbol}_{${m.mode}}\\approx ${number(m.value)}`)],
@@ -141,9 +144,22 @@
       ['Relative matrix residual', m.mode === 0 && s.bc === 'N' ? 'Constant mode checked separately' : math(scientific(m.relative_residual))]
     ]) html += `<div><dt>${label}</dt><dd>${value}</dd></div>`;
     html += '</dl>';
-    if (exact) html += `<div class="spectrum-family"><p><strong>Known constructed family.</strong> Exact level ${math(`${exact.q}\\pi^2`)}; at least ${math(exact.constructed_multiplicity)} independent constructed mode${exact.constructed_multiplicity === 1 ? '' : 's'}. Numerical subspace projection ${math(number(exact.projection))}.</p></div>`;
-    else html += '<p>No match to a constructed family is recorded for this mode. Its normalized algebraicity is unknown.</p>';
-    html += `<p>${s.bc === 'mixed' ? 'Vertical edges: Dirichlet. Horizontal edges: Neumann. The constructed sine–cosine subset has coherent gluing on the translation tiling; this claim does not cover every mixed mode.' : s.bc === 'D' ? 'Dirichlet on the entire boundary: zero trace.' : 'Neumann on the entire boundary: zero normal derivative in the weak formulation. The zero mode is constant.'}</p>`;
+    if (exact) {
+      const level = exact.family === 'mixed_reflection' ? (exact.q % 3 === 0 ? `${16*exact.q/3}\\pi^2` : `\\frac{${16*exact.q}}{3}\\pi^2`) : `${exact.q}\\pi^2`;
+      html += `<div class="spectrum-family"><p><strong>Known constructed family.</strong> Exact level ${math(level)}; at least ${math(exact.constructed_multiplicity)} independent constructed mode${exact.constructed_multiplicity === 1 ? '' : 's'}. Numerical subspace projection ${math(number(exact.projection))}.</p>${exact.family === 'mixed_reflection' ? '<p>Mixed reflection-character orbit. Coherent gluing is proved for placements in the specified triangular lattice and its dihedral group.</p>' : ''}</div>`;
+    }
+    else if (m.candidate_families) {
+      for (const candidate of m.candidate_families) {
+        const level = candidate.q % 3 === 0 ? `${16*candidate.q/3}\\pi^2` : `\\frac{${16*candidate.q}}{3}\\pi^2`;
+        html += `<div class="spectrum-family"><p><strong>Unresolved subspace candidate.</strong> The exact family level is ${math(level)}. This mode has projection ${math(number(candidate.projection))}; appreciable projection is spread across candidate modes ${math(candidate.candidate_ranks.join(',\\;'))}. The numerical mode is not assigned the exact value.</p></div>`;
+      }
+    } else html += '<p>No match to a constructed family is recorded for this mode. Its normalized algebraicity is unknown.</p>';
+    const boundaryText = s.bc === 'shortD' ? `Short primitive edges ${math('1')}: Dirichlet. Long primitive edges ${math('\\sqrt3')}: Neumann.` :
+      s.bc === 'longD' ? `Short primitive edges ${math('1')}: Neumann. Long primitive edges ${math('\\sqrt3')}: Dirichlet.` :
+      s.bc === 'mixed' ? 'Vertical edges: Dirichlet. Horizontal edges: Neumann. The constructed sine–cosine subset has coherent gluing on the translation tiling; this claim does not cover every mixed mode.' :
+      s.bc === 'D' ? 'Dirichlet on the entire boundary: zero trace.' : 'Neumann on the entire boundary: zero normal derivative in the weak formulation. The zero mode is constant.';
+    html += `<p>${boundaryText}</p>`;
+    if (domain.edge_kinds) html += `<p>${math(s.modes.length)} modes computed for this assignment. Generic mixed modes are not asserted to glue; the exact character families are checked separately.</p>`;
     replace(get('spectrum-mode-detail'), html);
     get('spectrum-mode').value = `${s.bc}:${m.index}`;
     get('spectrum-previous').disabled = selectedIndex === 0;
@@ -162,19 +178,20 @@
   }
   function resetDomain() {
     domain = data.domains.find(d => d.id === get('spectrum-domain').value);
-    for (const bc of ['D','N','mixed']) {
+    for (const bc of boundaryKeys) {
       const input = get('show-'+bc); input.disabled = !domain.spectra.some(s => s.bc === bc);
       input.checked = !input.disabled; input.parentElement.hidden = input.disabled;
     }
-    selectedBC = 'D'; selectedIndex = 0; view = lowRange(); fillModes(); drawChart(); drawDetail();
+    selectedBC = domain.spectra.some(s => s.bc === 'shortD') ? 'shortD' : 'D'; selectedIndex = 0; view = lowRange(); fillModes(); drawChart(); drawDetail();
   }
   for (const d of data.domains) get('spectrum-domain').add(new Option(d.label,d.id));
+  get('spectrum-domain').value = 'hat';
   get('spectrum-domain').addEventListener('change', resetDomain);
   get('spectrum-scale').addEventListener('change', event => {
     const previousFactor = Number(get('spectrum-chart').dataset.factor);
     view = view.map(x => x*factor()/previousFactor); fillModes(); drawChart();
   });
-  for (const bc of ['D','N','mixed']) get('show-'+bc).addEventListener('change', () => {
+  for (const bc of boundaryKeys) get('show-'+bc).addEventListener('change', () => {
     if (!visible().length) get('show-'+bc).checked = true;
     if (!visible().some(s => s.bc === selectedBC)) { selectedBC = visible()[0].bc; selectedIndex = 0; }
     fillModes(); drawChart(); drawDetail();

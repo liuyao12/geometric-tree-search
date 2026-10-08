@@ -98,7 +98,7 @@ def main():
     for target in links.targets:
         if target.startswith('#'): assert target[1:] in links.ids, target
         elif not target.startswith(('https:', 'http:', 'data:')):
-            assert (PAGE.parent/target.split('#')[0]).exists(), target
+            assert (PAGE.parent/target.split('#')[0].split('?')[0]).exists(), target
     output = {'status': 'passed', 'date': '2026-10-08',
               'checks': ['Executed script and shared solver hashes match',
                          'Hat and Turtle lattice areas checked independently',

@@ -17,6 +17,7 @@ python compute.py
 python verify.py
 python chair_control.py
 python arithmetic_spectra.py
+python mixed_reflections.py
 python compute_modes.py
 python build_page.py
 python verify_notes.py
@@ -38,16 +39,21 @@ explicit functions evaluated from their formulas. The gap explorer is
 `gap-explorer.js`; its data are embedded by `build_page.py`, so the page
 does not depend on a second data request to initialize.
 
-`compute_modes.py` retains and renders 306 numerical eigenfunctions: ninety
+`compute_modes.py` retains and renders 1290 numerical eigenfunctions: ninety
 Dirichlet, ninety Neumann (including the constant), and ninety mixed modes on
-the L-triomino, plus twelve Dirichlet modes each on Hat, Turtle and the
-equilateral polygon. It reproduces the previously recorded Dirichlet values.
-The six `modes-*.png` files are image atlases of the computed P1 fields, not
+the L-triomino; twelve Dirichlet and twelve Neumann controls plus 240 modes
+for each complementary short/long mixed assignment on each of Hat and Turtle;
+and twelve Dirichlet modes on the equilateral polygon. Hat now uses level four:
+the preceding mesh reproduces its original level-three Dirichlet values.
+The `modes-*.png` files are image atlases of the computed P1 fields, not
 evaluations of analytic formulas. Pixel sampling preserves aspect ratio;
 each field is divided by its maximum absolute nodal value. The matrix
 residuals, mass orthogonality, mesh refinement, analytic-subspace projections
 and image checksums are in `mode-data.json`. `verify_modes.py` checks
 provenance, every image cell, ordered spectra and the explicit gluing control.
+New atlases use 255 color levels and lossless palette PNG encoding, with up
+to sixty fields per image page to limit download and image memory. Every
+page and decoded cell has a checksum. The viewer loads the selected page.
 
 The mixed control assigns Dirichlet to vertical edges and Neumann to horizontal
 edges, constraining junction vertices belonging to the Dirichlet trace. Its
@@ -60,6 +66,25 @@ proportionally on a shared axis with separate operator rows. Its mode selector
 and zoom controls distinguish nearly coincident modes. The gold rings indicate
 projection matches to constructed families; other values have unknown
 normalized algebraicity. All data are embedded by `build_page.py`.
+
+The primary mixed experiments are Hat and Turtle with Dirichlet on short
+primitive edges and Neumann on long edges, and the complementary assignment.
+`mixed_reflections.py` and `mixed-reflections.json` record the two real
+characters of the dihedral group that alternate sign between its reflection
+classes. Their nonzero sine orbit sums are exact mixed eigenfunctions with
+normalized levels \(16Q/3\). The first shell is \(Q=1\) for short Dirichlet
+and \(Q=3\) for long Dirichlet. The exact construction includes singular
+orbits when their stabilizer character is positive. All fourteen primitive
+segments are retained, so merging two short segments never changes their
+boundary assignment. The characters give coherent value and gradient
+transport for placements in the specified lattice semidirect dihedral group;
+this compatibility calculation does not reconstruct or verify an entire tiling.
+
+The first Turtle levels and Hat's short-Dirichlet level pass the numerical
+projection checks. Hat's long-Dirichlet level remains unresolved, with its
+analytic projection spread across nearby eigenvectors. Dashed candidate nodes
+retain this information without assigning them the exact continuum value.
+The receipts also retain preceding-mesh identification and candidate scores.
 
 Eleven intervals through the normalized endpoint \(32\) have numerical counts
 that pass the stated refinement and endpoint-distance checks. Two intervals
