@@ -33,3 +33,7 @@ Original transcription checks reproduced the published approximant density withi
 Model checks verified all 12 proper symmetries preserve the vertex set, symmetry-equivalent quaternion representatives/distances agree, analytical density endpoints match, all growth counts agree, and the reference pose remains unchanged at every stage and sampled compression position.
 
 Earlier browser QA covered the superseded shell/compression controls. Current QA checks the unit cell, separation, bounded periodic assembly and orientation filters. These approximate checks support the visualization; they are not exact packing certificates.
+
+## Quasicrystal comparison
+
+The comparison toggle opens published Figure 3 beside the interactive approximant on wide screens. Source panels are identified in the caption, with a local/long-range comparison table and the existing source diffraction figure below. It makes no coordinate-matched overlay claim. `?compare=1#approx` opens this comparison directly.

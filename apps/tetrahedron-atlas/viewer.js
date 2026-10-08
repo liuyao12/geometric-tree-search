@@ -34,7 +34,7 @@ export function createPackingViewer(data,getMode) {
   const matrix=new THREE.Matrix4(),pos=new THREE.Vector3(),scale=new THREE.Vector3(),tempColour=new THREE.Color();
   const quotient=()=>$('orientation-convention').value==='tetra';
   const degreeRadius=()=>Number($('angular-radius').value)*Math.PI/180;
-  const api={activate,pause};
+  const api={activate,pause,alongStack:()=>view("top")};
 
   function createClasses(){
     const endpoint=compressionState(mode,1,data),inverse=endpoint.particles[0].quaternion.clone().invert();classes=[];prototypeClasses=[];hidden.clear();selected=null;
