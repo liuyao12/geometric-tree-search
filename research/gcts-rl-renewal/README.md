@@ -1287,3 +1287,117 @@ Earlier source-hashed engines and snapshots are unchanged. Representation reuse
 is now measured; practical region acceleration still needs better decisions or
 certified geometric failure markings. Collars, higher-level interfaces, compatible
 plane continuation, Penrose hierarchy and general proof search remain active.
+
+## Failure interfaces from variable local solutions
+
+The next cold milestone, `failure-interfaces-001.json`, separates two mechanisms:
+verified scalar GCTS markings on promoted cluster tiles, and an analytic filter
+on regional macro endpoints. Neither imports prior shapes, weights, markings or
+completion witnesses. Eight fresh donor runs use seeds \(100000\) through
+\(100007\); the miner selects twenty connected windows of two through six base
+tiles. The most recurrent two- and three-turtle shapes pass fresh unmarked
+one-corona probes. They are `local-2` and `local-3`, both level one.
+
+The full shared contact catalog contains \(2056\) contacts: \(65\) positive,
+\(1991\) negative and no unknowns. The online learner begins with free values,
+unites tagged point classes from positive contacts and selects sparse witnesses
+for negative inequalities. Its final `cluster:1` channel has \(39\) assigned
+values, \(86\) free entries and three colors. All \(1341\) actual scalar
+exclusions have independently checked unmarked base-corona failure trees.
+Every positive contact is accepted. Provisional values never filter that oracle.
+
+A newly searched positive cross-type contact supplies `local-parent-5`: two
+descending child maps and five distinct base constituents. It inherits the child
+channel, then learns a separate `cluster:2` channel from unmarked base searches.
+The parent's full self-contact catalog has \(882\) contacts: seven positive,
+\(875\) negative and no unknowns. Its own palette assigns \(37\) values, leaves
+\(85\) free and uses \(24\) colors. It excludes \(839\) certified negatives;
+\(573\) are already excluded by inherited values, so \(266\) are new. Counts
+overlap. The positive self-contacts supply finite continuation evidence that
+the earlier all-negative four-turtle parent lacked. They do not establish a
+continuing parent-only library, substitution or plane construction.
+
+Under a complete unmarked base point tiling, disjoint occurrences of these
+shapes cannot have an impossible base contact. The verified scalar constraints
+are redundant under that premise. Finite required regions may leave exterior
+support incomplete, so these same values can restrict an otherwise valid finite
+grouping. Whole-plane redundancy and finite-region grouping preservation are
+different claims. Both aggregate inventories retain the base singleton.
+
+`ViableProposer` wraps the unchanged compiled proposer. Each multi-move option
+is replayed with immutable shared prefix snapshots and the complete singleton
+graph. It removes the option only if the endpoint has a required point with an
+empty domain. Every singleton alternative remains, including ones belonging to
+the rejected sequence. Execution still checks the ordinary global dead/forced/
+earliest-generation scheduler before each base constituent. A nondead endpoint
+is an unresolved continuation, not a full solution.
+
+The empty-domain leaf is valid only under its exact prefix, required set and
+positive-support envelope. It is an analytic proposal filter, not GCTS learning
+or a base-candidate exclusion. A fixed-region leaf cannot become a universal
+point marking without a further proof. Whole-state keys include assigned zero,
+point totals, ownership, selected poses, roots, generations and the scheduled
+domain; the frozen compiler enforces inventory and envelope compatibility.
+Exact copies protect rollback. Interrupted validation cannot install a partial
+endpoint cache entry.
+
+A new zero-start policy trains for \(24\) rollouts using the filtered proposer;
+eight complete. Evaluation seeds start at \(102000\) and are disjoint from
+donor/training seeds. Both RL lanes share the same frozen policy. Five matched
+lanes solve the same four authored boundaries with two replicas, \(8000\)
+explored base placements and six cooperative seconds per request. Base search
+completes all eight, compiled and filtered proposals seven each, and both RL
+lanes six. Mean request times, including unknowns, are respectively
+\(0.425\), \(1.557\), \(1.683\), \(2.430\) and \(2.466\) seconds. Filtered
+untrained/RL lanes reject \(17/76\) dead multi-move offers, including cached
+repeats; these are not counts of unique failure certificates.
+
+The seven matched completed compiled/filtered pairs take \(6.453/7.462\)
+seconds and \(504/484\) base attempts. The six matched completed RL pairs take
+\(7.431/7.719\) seconds and \(622/550\) attempts. The filter reduces attempts
+but increases total time in this batch. Unknown cases have no negative proof.
+Earlier pilots use different libraries and seeds and are not timing controls.
+
+A separate atomic-tile control uses the singleton, both children and the parent
+as candidates, with exactly the same geometries in free/marked versions. It has
+aggregate steps rather than the singleton macro scheduler, with \(4000\) nodes
+and six seconds. Each version completes three of four targets. Mean request
+times are \(2.411/2.700\) seconds, with \(209/239\) nodes and \(93/118\)
+backtracks. Separate inventory construction costs \(1.381/2.204\) seconds.
+The learned marking produces no speed or backtrack advantage here.
+
+Cold costs include \(0.215\) seconds for the singleton inventory, \(1.256\)
+for donors, \(0.057\) for mining and \(0.398\) for proposal compilation.
+Child/parent complete catalog, label/synthesis and first independent proof
+replay stages take \(313.473/97.252\) seconds. Policy training costs \(7.809\)
+seconds. The complete sequential process takes \(515.244\) seconds and peaks
+at \(884.89\) MiB; this is process peak, not per-lane allocation.
+
+`audit_failure_interfaces.py` independently re-enumerates both literal contact
+catalogs and replays their online histories, all \(17134\) negative proof nodes,
+\(72\) positive witnesses and \(35256\) scalar symmetry contacts. It checks
+\(80\) saved states, \(690\) scheduled base moves, \(30\) sampled fixed-boundary
+failure leaves and \(96\) transformed aggregate expansions. \(56\) states
+complete their targets. All \(40\) displayed complete evaluation patches pass
+exact polygon non-overlap. The saved-data audit takes an additional \(259.375\)
+seconds and rejects \(102\) altered prefix schedules/leaves, plus four altered
+stage proofs. Source, helper, test and full stage-artifact hashes are recorded.
+The report copies two checked positive samples directly from their hashed stage
+files for initial display; full contact histories load only on inspection.
+
+```sh
+python3 research/gcts-rl-renewal/run_failure_interfaces.py
+python3 research/gcts-rl-renewal/audit_failure_interfaces.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+```
+
+All \(131\) semantic tests pass. Eight new controls exercise known-dead macro
+removal with all singleton fallback, literal contextual proof checking, tampered
+point/pose/envelope rejection, boundary scope, exact rollback, assigned-zero
+cache versions, cancellation and unknown budgets. The known-dead regression
+fixture uses the preceding published run only in tests; cold discovery/training
+never loads it. Earlier source-hashed modules and artifacts are unchanged.
+The next research gate is joint continuation of the positive variable-size
+assemblies and useful boundary-conditioned responses, measured by total solve
+cost. Practical acceleration, compatible plane growth, Penrose hierarchies and
+general proof search remain open.

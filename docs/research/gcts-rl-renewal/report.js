@@ -10,9 +10,68 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const failureStageCache=new Map();let failureRequest=0;
+function failureTypes(){return failureData.inventories['aggregate GCTS'].filter(t=>t.level===Number($('failure-stage').value)+1);}
+function failureValuesView(){
+  const index=Number($('failure-stage').value),t=failureTypes().find(t=>t.identity===$('failure-type').value),mode=$('failure-values').value,stage=failureStageCache.get(index),channel=mode==='inherited'?'cluster:1':`cluster:${index+1}`;
+  if(!t)return;
+  const n=Number($('failure-step').value),h=stage?.history[n-1];
+  const values=mode==='online'&&h?h.values.filter(([name])=>name===t.identity).map(([,p,v])=>[p,v]):t.marks.filter(([[p,ch]])=>ch===channel).map(([[p],v])=>[p,v]);
+  drawClusterValues($('failure-values-drawing'),t,values);$('failure-step').disabled=mode!=='online'||!stage;
+  $('failure-step-value').textContent=stage?n:'—';
+  $('failure-values-caption').textContent=mode==='online'&&h?`After ${n} labels: ${h.counts.positive??0} positive, ${h.counts.negative??0} negative; ${h.classes} equality classes. ${values.length} actual provisional values on ${t.identity}; the label oracle ignores them.`:`${t.identity}: ${t.expansion.length} distinct base turtles; ${values.length} ${mode==='inherited'?'inherited child':'verified own-channel'} values and ${t.occupancy.length-values.length} free support entries. Filled circles are assigned, hollow circles are free; color 0 is assigned. Channel ${channel} is separate from other levels.`;
+}
+function failureContactView(){
+  const index=Number($('failure-stage').value),stage=failureStageCache.get(index),s=stage?stage.samples[Number($('failure-contact').value)]:failureData.visual_contacts[index].sample;
+  let placements=s.witness??s.seed_expansion,dead=null;
+  if(s.status==='negative'){placements=[...s.seed_expansion];let node=s.certificate;while(node.children?.length){const c=node.children[0];placements.push(c.placement);node=c.proof;}dead=node.dead;}
+  drawPatch($('failure-contact-drawing'),placements,{dead,width:560,height:400});
+  const [a,b,o,tr]=s.contact,ts=failureData.inventories['aggregate GCTS'],left=ts.find(t=>t.identity===a),right=ts.find(t=>t.identity===b),g=syms[o];
+  const disagrees=channel=>{const values=new Map(left.marks.filter(([[p,ch]])=>ch===channel).map(([[p],v])=>[JSON.stringify(p),v]));return right.marks.filter(([[p,ch]])=>ch===channel).some(([[p],v])=>{const q=g.p.map((j,i)=>g.s*p[j]+tr[i]),k=JSON.stringify(q);return values.has(k)&&values.get(k)!==v;});};
+  $('failure-contact-caption').textContent=`${a} + ${b}: ${s.status}, ${s.nodes} unmarked base-search nodes. ${s.status==='positive'?'This checked finite witness fills the seed support and has viable exposed obligations.':s.status==='negative'?'The full exhausted tree is checked; the red ring marks its first dead leaf.':'This cutoff has no failure proof.'} Own-channel values ${disagrees(`cluster:${index+1}`)?'exclude':'accept'} the contact.${index===1?` Inherited values ${disagrees('cluster:1')?'exclude':'accept'} it.`:''} Base completion is a finite point statement, not a plane construction.`;
+}
+function failureStageView(){
+  ++failureRequest;const index=Number($('failure-stage').value),stage=failureStageCache.get(index);
+  $('failure-type').replaceChildren(...failureTypes().map(t=>choice(t.identity,t.identity)));
+  $('failure-values').querySelector('[value="inherited"]').disabled=index===0;
+  if(index===0&&$('failure-values').value==='inherited'||!stage&&$('failure-values').value==='online')$('failure-values').value='final';
+  $('failure-step').max=stage?.catalog_count??1;$('failure-step').value=stage?.catalog_count??1;
+  $('failure-contact').replaceChildren(...(stage?stage.samples.map((s,i)=>choice(i,`${i+1} · ${s.contact[0]} + ${s.contact[1]} · ${s.status}`)):[choice('', 'Shown: checked positive contact; load for all contacts')]));
+  if(stage)$('failure-contact').value=failureData.visual_contacts[index].index;
+  $('failure-contact').disabled=!stage;$('failure-load-stage').disabled=Boolean(stage);
+  $('failure-load-stage').textContent=stage?'Full labels loaded':'Inspect full labels and history';failureValuesView();failureContactView();
+}
+async function loadFailureStage(){
+  const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
+  try{
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r13.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(ticket===failureRequest)failureStageView();
+  }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
+}
+function failureEndpointView(){
+  const samples=failureData.training.endpoint_samples.concat(...Object.values(failureData.endpoint_samples)),s=samples[Number($('failure-endpoint').value)],context=s.context.base_expansion,proposed=s.action.map(k=>[k[1],k[2]]);
+  drawPatch($('failure-endpoint-drawing'),context.concat(proposed),{points:s.boundary.required,dead:s.certificate.dead,width:850,height:430,fills:context.map(()=> '#adb7ad').concat(proposed.map(()=> '#c76b3d'))});
+  $('failure-endpoint-caption').textContent=`${s.boundary.identity}: ${context.length} fixed prefix turtles (grey) and ${proposed.length} rejected proposed moves (orange). The red ring is a required point whose complete literal singleton domain is empty. All intermediate scheduled moves are independently checked. The leaf proves failure under this prefix and boundary only; other placements and boundaries remain available.`;
+}
+function failureResults(){
+  const d=failureData,a=d.independent_audit,stats=d.stages.map(s=>s.statistics);
+  $('failure-finding').textContent=`A fresh two-/three-turtle assembly produces a five-turtle parent with seven positive self-contacts. Both learned scalar channels pass their complete exclusion audits: ${stats[0].negative_rejected.toLocaleString()} child-level and ${stats[1].negative_rejected} own-parent exclusions. Base search completes eight fixed runs, compiled/filtered proposals seven each, and both RL lanes six. This batch establishes new finite interfaces, without a practical speed advantage or an infinite hierarchy.`;
+  $('failure-marking-summary').innerHTML=d.stages.map((s,i)=>`<tr><td>${i+1} · ${i?'parent':'children'}</td><td>${s.catalog_count.toLocaleString()}</td><td>${s.statistics.counts.positive} / ${s.statistics.counts.negative} / ${s.statistics.counts.unresolved??0}</td><td>${s.statistics.assigned} / ${s.statistics.free}</td><td>${s.statistics.colors}</td><td>${s.statistics.negative_rejected.toLocaleString()}</td><td>${fmt(s.seconds)}</td></tr>`).join('');
+  $('failure-inheritance').textContent=`Parent self-contact catalog: ${a.parent_inherited_exclusions} contacts excluded by inherited child values; ${a.parent_own_exclusions} by the new own channel; ${a.parent_new_own_exclusions} own-channel exclusions add to the inherited set. Counts overlap and are not additive. Positive base witnesses are finite; sparse free values are not a sufficient continuation test.`;
+  $('failure-benchmark').innerHTML=d.configuration.lanes.map(lane=>{const rs=d.evaluation.filter(r=>r.lane===lane);return `<tr><td>${lane}</td><td>${rs.filter(r=>r.status==='finite_exact_region').length} / ${rs.length}</td><td>${fmt(mean(rs.map(r=>r.seconds)))}</td><td>${rs.reduce((n,r)=>n+r.attempted_base_placements,0)}</td><td>${rs.reduce((n,r)=>n+r.backtracks,0)}</td><td>${fmt(rs.reduce((n,r)=>n+(r.metrics.proposal_seconds??0),0))}</td><td>${rs.reduce((n,r)=>n+(r.metrics.dead_macro_endpoints_rejected??0),0)}</td></tr>`;}).join('');
+  const paired=(x,y)=>d.evaluation.filter(r=>r.lane===x).map(r=>[r,d.evaluation.find(s=>s.lane===y&&s.problem===r.problem&&s.replica===r.replica)]).filter(([r,s])=>r.status===s.status&&r.status==='finite_exact_region'),pairs=paired('compiled','viable'),rl=paired('compiled+RL','viable+RL'),sum=(ps,index,key)=>ps.reduce((n,p)=>n+p[index][key],0);
+  $('failure-comparison').textContent=`Seven matched completed compiled/filtered pairs take ${fmt(sum(pairs,0,'seconds'))} / ${fmt(sum(pairs,1,'seconds'))} s, with ${sum(pairs,0,'attempted_base_placements')} / ${sum(pairs,1,'attempted_base_placements')} base attempts. The six matched RL pairs take ${fmt(sum(rl,0,'seconds'))} / ${fmt(sum(rl,1,'seconds'))} s, with ${sum(rl,0,'attempted_base_placements')} / ${sum(rl,1,'attempted_base_placements')} attempts. Filtering saves some attempts but its replay cost increases total time here. Unresolved cases remain unknown; table means are not equal-success speed ratios.`;
+  $('failure-cost').textContent=`Cold singleton inventory ${fmt(d.inventory.seconds)} s; donors ${fmt(d.donor_seconds)} s; mining ${fmt(d.mining.seconds)} s; proposal compilation ${fmt(d.compilation.seconds)} s for ${d.compilation.patches.toLocaleString()} patches. The two complete label/synthesis/first-audit stages cost ${d.stages.map(s=>fmt(s.seconds)).join(' / ')} s. New zero-start policy: 24 episodes, ${d.training.episodes.filter(r=>r.status==='finite_exact_region').length} complete, ${fmt(d.training.seconds)} s. Each held-out request has 8,000 base attempts and six cooperative seconds. Full sequential process ${fmt(d.total_seconds)} s; peak process memory ${fmt(d.peak_process_memory_bytes/1048576)} MiB, not per-lane memory. Independent saved-data replay is additional.`;
+  $('failure-atomic-benchmark').innerHTML=d.atomic_construction.map(c=>{const rs=d.atomic_evaluation.filter(r=>r.lane===c.lane);return `<tr><td>${c.lane}</td><td>${rs.filter(r=>r.status==='finite_exact_region').length} / ${rs.length}</td><td>${fmt(mean(rs.map(r=>r.seconds)))}</td><td>${rs.reduce((n,r)=>n+r.nodes,0)}</td><td>${rs.reduce((n,r)=>n+r.backtracks,0)}</td><td>${fmt(c.seconds)}</td></tr>`;}).join('');
+  $('failure-audit').textContent=`Independent literal contact enumeration, online palette replay and all ${a.stages.reduce((n,s)=>n+s.negative_nodes,0).toLocaleString()} negative proof nodes pass. ${a.stages.reduce((n,s)=>n+s.positive,0)} positive witnesses and ${a.stages.reduce((n,s)=>n+s.scalar_symmetry_checks,0).toLocaleString()} scalar symmetry contacts pass. ${a.states_replayed} saved states, ${a.scheduled_macro_base_moves} scheduled base moves, ${a.contextual_dead_prefixes_checked} fixed-boundary failure leaves and ${a.transformed_expansions} transformed expansions replay; ${a.tampered_certificates_rejected} altered certificates reject. All ${a.geometry.evaluation_runs.length} completed evaluation patches pass exact polygon non-overlap. Audit ${fmt(a.seconds)} s; ${suiteTests()} semantic tests pass. Both aggregate lanes complete three of four targets; learned marking does not improve this control’s time or backtracks.`;
+  const samples=d.training.endpoint_samples.concat(...Object.values(d.endpoint_samples));$('failure-endpoint').replaceChildren(...samples.map((s,i)=>choice(i,`${i+1} · ${s.boundary.identity} · ${s.action.length} proposed moves`)));
+  $('failure-stage').addEventListener('change',failureStageView);$('failure-type').addEventListener('change',failureValuesView);
+  $('failure-values').addEventListener('change',async()=>{const index=Number($('failure-stage').value);if($('failure-values').value==='online'&&!failureStageCache.has(index)){await loadFailureStage();if(index!==Number($('failure-stage').value)||!failureStageCache.has(index))return;$('failure-values').value='online';}failureValuesView();});
+  $('failure-load-stage').addEventListener('click',loadFailureStage);$('failure-step').addEventListener('input',failureValuesView);$('failure-contact').addEventListener('change',failureContactView);$('failure-endpoint').addEventListener('change',failureEndpointView);failureStageView();failureEndpointView();
+}
 
 function compiledExample(reset=false){
   const d=compiledData,e=d.proposal_pool_examples[Number($('compiled-example').value)],b=d.problems.find(b=>b.identity===e.problem);
@@ -144,7 +203,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r12.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r13.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -702,25 +761,30 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
+    failureData=await failureResponse.json();
+    if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
+    failureResults();
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -733,46 +797,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r12.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r12.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r12.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r12.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r13.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r12.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r13.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Compiled boundary proposals and exact work controls, matched local clusters, joint coarse-library obstruction, two marking levels and first-order kernel bridge recorded · ${suiteTests()} semantic tests pass · finite evidence independently replayed.`;
+    $("load-status").textContent=`Variable-size failure interfaces, a five-turtle parent with positive contacts, matched endpoint filtering, exact work controls and computational proof bridge recorded · ${suiteTests()} semantic tests pass · finite evidence independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

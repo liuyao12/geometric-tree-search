@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r12.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r13.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r12.1"></script>
+  <script defer src="report.js?v=20261009-r13.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 12</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 13</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,38 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="failure-interface-research">
+    <p class="eyebrow">FAILURE INTERFACES · VARIABLE CLUSTERS AT TWO SCALES</p><h2>Learn the interface. Check the continuation.</h2>
+    <p>Fresh local boundary solutions supply a two-turtle and a three-turtle tile. Their complete contact study learns a shared point palette. A searched cross-type contact supplies a five-turtle parent, which inherits those values and learns its own channel. Alongside that geometric learning, a separate complete-graph filter rejects regional macro proposals that already end at a dead required point. Each mechanism has a different proof scope.</p>
+    <div class="callout" id="failure-finding">Loading the independently checked failure interfaces…</div>
+    <div class="table-scroll"><table><thead><tr><th>Marking level</th><th>Complete contact catalog</th><th>Positive / negative / unknown</th><th>Assigned / free</th><th>Colors</th><th>Own-channel exclusions</th><th>Learning and first replay seconds</th></tr></thead><tbody id="failure-marking-summary"></tbody></table></div>
+    <p id="failure-inheritance" class="caption"></p>
+    <div class="controls"><label>Learning scale <select id="failure-stage"><option value="0">1 · two- and three-turtle tiles</option><option value="1" selected>2 · five-turtle parent</option></select></label><label>Prototype <select id="failure-type"></select></label><label>Point values <select id="failure-values"><option value="final">Verified own channel</option><option value="inherited">Inherited child channel</option><option value="online">Actual learning history</option></select></label><button id="failure-load-stage" type="button">Inspect full labels and history</button></div>
+    <div class="slider-row"><label for="failure-step">Labels observed</label><input id="failure-step" type="range" min="1" max="1" value="1" disabled><output id="failure-step-value">—</output></div>
+    <div class="evidence-grid"><div><svg id="failure-values-drawing" viewBox="0 0 500 400" role="img" aria-label="The actual promoted cluster, its assigned own-level scalar values and free point entries"></svg><p id="failure-values-caption" class="caption"></p></div><div><label>Certified contact <select id="failure-contact" disabled><option>Load this scale’s full contact catalog</option></select></label><svg id="failure-contact-drawing" viewBox="0 0 560 400" role="img" aria-label="A base-expanded certified contact and its unmarked finite completion or first checked dead leaf"></svg><p id="failure-contact-caption" class="caption"></p></div></div>
+    <details open><summary>What the geometric marking proves</summary>
+      <p>Every capacity-legal positive contact is an independently checked unmarked base completion. Every negative contact has a complete unmarked base failure tree. Positive contacts impose equalities on tagged prototype points; negative contacts supply alternatives for unequal values. After all labels, retain sparse assigned values and check every actual disagreement against a negative proof. Provisional values never constrain the oracle. The new channels are ordinary point values:</p>\[m_C^{(1)}(p),\qquad m_H^{(2)}(p),\qquad H=C_2\cup(gC_3+a).\]
+      <p>The parent has two descending child maps and five distinct base constituents. Its inherited channel and own channel stay separate. Under a complete unmarked base point tiling, disjoint occurrences of these shapes cannot have a certified impossible contact, so the verified scalar constraints are redundant under that premise. In a finite required region, incomplete exterior points need no continuation; the same markings can restrict an otherwise valid grouping. Singleton refinement remains available.</p>
+      <p>Seven parent self-contacts have positive finite completions. This is a useful continuation signal, but a positive pair does not establish a continuing coarse library, a substitution or a plane tiling. The witness shown here is expanded into base turtles; the oracle strips all inherited and provisional values.</p>
+    </details>
+    <h3 class="spaced-title">Matched regional proposal experiment</h3>
+    <div class="table-scroll"><table><thead><tr><th>Singleton-scheduler lane</th><th>Exact targets</th><th>Mean request seconds</th><th>Base attempts</th><th>Backtracks</th><th>Proposal seconds</th><th>Dead macro endpoints rejected</th></tr></thead><tbody id="failure-benchmark"></tbody></table></div>
+    <p id="failure-comparison"></p><p id="failure-cost" class="caption"></p>
+    <div class="controls"><label>Checked contextual failure <select id="failure-endpoint"></select></label></div>
+    <svg id="failure-endpoint-drawing" viewBox="0 0 850 430" role="img" aria-label="A fixed boundary prefix, rejected new macro constituents and their certified dead required point"></svg><p id="failure-endpoint-caption" class="caption"></p>
+    <details><summary>Why the endpoint filter preserves fine search, and its limited scope</summary>
+      <p>Replay each proposed sequence with exact copies of the actual singleton state and complete candidate graph. Keep all singleton alternatives. At the endpoint, recompute the global decision and remove only a multi-move option already at a required point with an empty domain:</p>\[\operatorname{RejectMacro}(s,A;D,P)\iff\exists p\in D:\ t_{s\cdot A}(p)<1\ \land\ \operatorname{Cand}_{s\cdot A}(p;D,P)=\varnothing.\]
+      <p>This is an analytic filter on proposals, not a learned marking or a base-candidate exclusion. The certificate depends on the fixed prefix, required set and positive-support envelope. It cannot refute the same shape at another boundary or become a universal geometric rule without a further proof. Complete singleton fallback retains every fine search path. Nondead endpoints remain unresolved until a complete region is checked. Immutable prefix sharing, exact rollback and whole-state cache keys include assigned zero and all semantic dependencies.</p>
+      <p>All five lanes use the same singleton inventory and fine scheduler. A new zero-start policy trains with the filtered proposer on small local problems; both evaluation RL lanes share its frozen weights. Budgets charge all explored base constituents and proposal validation. Rejected counts include repeat cached offers. Timings include unknowns; matched completed comparisons are given separately. Fresh seeds and library definitions make earlier pilots unsuitable as timing controls.</p>
+    </details>
+    <h3 class="spaced-title">Separate aggregate-tile control</h3>
+    <p>The four-type inventory contains the singleton, both children and their parent. Compare those exact geometries with free values and with the verified inherited/own palettes. The scheduler branches on aggregate candidates here; its step size differs from the proposal experiment.</p>
+    <div class="table-scroll"><table><thead><tr><th>Aggregate inventory</th><th>Exact targets</th><th>Mean request seconds</th><th>Nodes</th><th>Backtracks</th><th>Separate construction seconds</th></tr></thead><tbody id="failure-atomic-benchmark"></tbody></table></div>
+    <p id="failure-audit" class="caption"></p>
+    <p>Next: test joint continuation of the positive five-turtle assemblies and learn interfaces that distinguish useful boundary responses. The multiscale target is reusable local solutions that reach the far boundary with lower total cost. Practical acceleration, compatible plane growth, Penrose hierarchies and a general computational proof system remain active goals.</p>
+    <p class="small"><a href="failure-interfaces-001.json">Inspect the cold library, both palettes, child maps, costs, fixed-boundary failures and regional schedules ↗</a></p>
+  </section>
 
   <section class="panel" id="compiled-boundary-research">
     <p class="eyebrow">BOUNDARY REUSE · EXACT REPRESENTATION ABLATIONS</p><h2>Reuse the same verified search.</h2>
