@@ -10,7 +10,7 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,timer=null,currentRun;
+let data,secondData,haloData,thirdData,penroseData,timer=null,currentRun;
 
 function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,groups=null}={}){
   svg.replaceChildren();
@@ -111,6 +111,93 @@ function haloResults(){
   $("halo-validation").textContent=a?`Independent verification checked ${a.negative_proof_nodes.toLocaleString()} failure-tree nodes for all ${a.canonical_rejected_contacts.toLocaleString()} excluded contacts, plus ${a.transformed_exclusion_checks.toLocaleString()} transformed exclusions. Label probe ${fmt(d.seconds)} s; separate validation ${fmt(a.seconds)} s. The radius-one marking is now certified redundant for complete unmarked point-model tilings. It was not used in the iteration-02 benchmarks.`:"Independent negative-proof replay is still pending. This hypothesis remains inactive and is not yet certified redundant.";
 }
 
+function tableRow(body,values){
+  const row=document.createElement("tr");
+  values.forEach(value=>{const td=document.createElement("td");td.textContent=String(value);row.append(td);});
+  $(body).append(row);
+}
+function coreSeeds(){
+  const runs=thirdData.core_coverage.filter(r=>r.lane===$("core-lane").value),old=$("core-seed").value;
+  $("core-seed").replaceChildren(...runs.map(r=>{const o=document.createElement("option");o.value=r.seed;o.textContent=String(r.seed);return o;}));
+  if(runs.some(r=>String(r.seed)===old))$("core-seed").value=old;
+  coreRadii();
+}
+function coreRadii(){
+  const run=thirdData.core_coverage.find(r=>r.lane===$("core-lane").value&&String(r.seed)===$("core-seed").value),old=$("core-radius").value;
+  $("core-radius").replaceChildren(...run.checkpoints.map((c,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`Radius ${c.radius} · ${c.required_core_points} points`;return o;}));
+  $("core-radius").value=run.checkpoints.some((_,i)=>String(i)===old)?old:String(run.checkpoints.length-1);
+  coreView();
+}
+function coreView(){
+  const run=thirdData.core_coverage.find(r=>r.lane===$("core-lane").value&&String(r.seed)===$("core-seed").value),c=run.checkpoints[Number($("core-radius").value)];
+  if(!c){$("core-caption").textContent="No complete checkpoint was reached within this run's budget.";return;}
+  const points=[];
+  for(let x=-c.radius;x<=c.radius;x++)for(let y=-c.radius;y<=c.radius;y++)if(Math.max(Math.abs(x),Math.abs(y),Math.abs(x+y))<=c.radius)points.push([x,y,-x-y]);
+  drawPatch($("core-view"),c.placements,{width:760,height:460,points});
+  $("core-caption").textContent=`${run.lane} · seed ${run.seed} · ${c.tiles} base tiles fill all ${c.required_core_points} required points at radius ${c.radius}. ${c.frontier_points} exposed obligations remain; their full candidate domains pass independent replay. The complete run made ${run.core_activations} core activations, including retried transactions, and ${run.backtracks} backtracks.`;
+}
+function grammarSeeds(){
+  const samples=thirdData.grammar_inspection[$("grammar-library").value].samples,old=$("grammar-seed").value;
+  $("grammar-seed").replaceChildren(...samples.map(s=>{const o=document.createElement("option");o.value=s.seed;o.textContent=String(s.seed);return o;}));
+  if(samples.some(s=>String(s.seed)===old))$("grammar-seed").value=old;
+  grammarView();
+}
+function grammarView(){
+  const name=$("grammar-library").value,g=thirdData.grammar_inspection[name],h=g.samples.find(h=>String(h.seed)===$("grammar-seed").value),level=h?.levels[Number($("grammar-level").value)];
+  if(!level)return;
+  const groups=[];level.groups.forEach((group,i)=>group.base_ids.forEach(k=>groups[k]=i));
+  drawPatch($("grammar-view"),h.placements,{width:760,height:430,groups});
+  $("grammar-caption").textContent=`Seed ${h.seed}: ${h.placements.length} base placements partition into ${level.groups.length} groups at level ${level.level}. Each base identity occurs once; summed point interfaces and child relations pass a separate checker. Colors distinguish groups.`;
+  const boundary=g.classifiers.boundary,hull=g.classifiers.hull;
+  $("grammar-finding").textContent=`${name==="frequency"?"Frequency control":"Diversity and rarity grouping"}: ${boundary.type_count} abstract boundary types and ${hull.type_count} hull types. ${boundary.types_with_growing_instances} boundary types and ${hull.types_with_growing_instances} hull types occur at three distinct base-tile counts. ${hull.parent_types_with_multiple_child_patterns} hull parent types have multiple observed child patterns. No stationary recursive rule was inferred.`;
+}
+function continuationResults(){
+  const d=thirdData,lanes=[...new Set(d.core_coverage.map(r=>r.lane))];
+  lanes.forEach(lane=>{const o=document.createElement("option");o.value=lane;o.textContent=lane;$("core-lane").append(o);const rs=d.core_coverage.filter(r=>r.lane===lane);tableRow("core-benchmark",[lane,`${rs.filter(r=>r.status==="consistent_finite_patch_with_core_coverage").length} / ${rs.length}`,fmt(mean(rs.map(r=>r.tiles))),fmt(mean(rs.map(r=>r.branches))),fmt(mean(rs.map(r=>r.seconds)))]);});
+  $("core-lane").value="exterior GCTS";coreSeeds();grammarSeeds();
+  const complete=d.core_coverage.filter(r=>r.status==="consistent_finite_patch_with_core_coverage").length;
+  $("core-finding").textContent=`All ${complete} of ${d.core_coverage.length} matched starts completed four nested cores through radius 12, which has 469 lattice points. These patches contain ${Math.min(...d.core_coverage.map(r=>r.tiles))}–${Math.max(...d.core_coverage.map(r=>r.tiles))} base tiles. This target asks for covered obligations, so its results differ from a tile-count growth milestone.`;
+  const library=d.spatial_libraries,ds=library.diversity.statistics;
+  const successful=library.donors.filter(r=>r.status==="consistent_finite_patch").length,extra=d.training.episodes.reduce((sum,r)=>sum+r.sequence_extra_moves,0);
+  $("diversity-finding").textContent=`${successful} of ${library.donors.length} fresh donor searches reached 96 tiles. The frequency control chose ${library.frequency.motifs.length} motifs. The invariant size/handedness-balance bins chose ${ds.selected_types}, including ${ds.mixed_handed_types} mixed-handed types. Their source patches were searched, never supplied as known tilings. ${d.training.updates} policy updates executed ${extra} extra sequence moves.`;
+  const mixed=library.diversity.motifs.find(m=>m.category[1]>0);
+  if(mixed)drawPatch($("diversity-motif"),mixed.expansion,{width:350,height:270,points:mixed.interface.frontier.map(p=>p[0])});
+  const summaries=[...new Set(d.evaluation.map(r=>r.lane))].map(lane=>{const rs=d.evaluation.filter(r=>r.lane===lane),success=rs.filter(r=>r.status==="consistent_finite_patch").length;tableRow("continuation-benchmark",[lane,`${success} / ${rs.length}`,fmt(mean(rs.map(r=>r.tiles))),fmt(mean(rs.map(r=>r.branches))),fmt(mean(rs.map(r=>r.seconds))),rs.reduce((sum,r)=>sum+(r.metrics.cluster_validation_attempts||0),0).toLocaleString()]);return {lane,success,time:mean(rs.map(r=>r.seconds))};});
+  const gcts=summaries.find(s=>s.lane==="exterior GCTS"),both=summaries.find(s=>s.lane==="exterior GCTS+RL");
+  $("continuation-finding").textContent=`The exterior marking reaches ${gcts.success} of three 128-tile targets; the combined policy reaches ${both.success}. RL macro validation and ordering remain costly, and this study has not demonstrated an acceleration. Budget-limited prefixes are unknown, never non-tiling results. The no-RL lanes also keep complete base-placement search.`;
+  const historical=d.reuse.compact_learning_seconds+d.reuse.exterior_additional_probe_seconds+d.reuse.exterior_independent_validation_seconds,a=d.independent_audit;
+  $("continuation-cost").textContent=`Historical reused marking construction and replay: ${fmt(historical)} s. Fresh donors: ${fmt(library.donors.reduce((sum,r)=>sum+r.seconds,0))} s; library extraction: ${fmt(library.seconds)} s; grouping inspection: ${fmt(d.grammar_inspection.seconds)} s; RL training: ${fmt(d.training.seconds)} s. New pipeline including the timing repeat: ${fmt(d.total_seconds)} s; separate audit ${fmt(a?.seconds||0)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. The original tile-count pass overlapped another research job and was replaced by sequential searches; both passes and their costs remain in the JSON. ${a?`The independent audit checked ${a.interfaces} interfaces, ${a.hierarchy_levels} partition levels, successful checkpoint coverage and exposed frontiers; all ${a.geometry.evaluation_runs.length} final/donor patches passed exact polygon non-overlap checks.`:"Final audit pending."}`;
+  $("serialized-proof-caption").textContent="Both exported proof formats now replay from JSON. The logic replay uses an externally declared theory; the proof cannot nominate new axioms. Changed targets, a forged axiom, and a changed Wang input are rejected. This closes serialization replay, while the kernel-to-machine compiler remains open.";
+  $("core-lane").addEventListener("change",coreSeeds);$("core-seed").addEventListener("change",coreRadii);$("core-radius").addEventListener("change",coreView);
+  $("grammar-library").addEventListener("change",grammarSeeds);["grammar-seed","grammar-level"].forEach(id=>$(id).addEventListener("change",grammarView));
+}
+
+const ringEmbed=p=>p.reduce((sum,c,i)=>[sum[0]+c*Math.cos(2*i*Math.PI/5),sum[1]+c*Math.sin(2*i*Math.PI/5)],[0,0]);
+function drawRhombs(svg,placements,{width=740,height=430,required=[],obstruction=false}={}){
+  svg.replaceChildren();
+  const loops=placements.map(([kind,r,tr])=>penroseData.point_model.vertices[kind].map(v=>{const [x,y]=ringEmbed(v),[a,b]=ringEmbed(tr),theta=r*Math.PI/5;return [x*Math.cos(theta)-y*Math.sin(theta)+a,-(x*Math.sin(theta)+y*Math.cos(theta)+b)];}));
+  const points=required.map(([v])=>ringEmbed(v)).map(([x,y])=>[x,-y]),all=loops.flat().concat(points);
+  if(!all.length)return;
+  const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),scale=Math.min((width-60)/Math.max(.1,maxX-minX),(height-50)/Math.max(.1,maxY-minY));
+  const map=([x,y])=>[(x-(minX+maxX)/2)*scale+width/2,(y-(minY+maxY)/2)*scale+height/2];
+  loops.forEach((loop,i)=>{const [kind,r,tr]=placements[i],poly=el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill:obstruction?(i?"#c76b3d":"#347999"):kind==="thick"?"#6d9c83":"#d19163","fill-opacity":.64,stroke:obstruction?"#9e424a":i<2?"#23332f":"#476651","stroke-width":i<2?2:1.2});poly.append(el("title",{},`${kind}; rotation ${r}; translation ${tr.join(",")}`));svg.append(poly);});
+  const seen=new Set();points.forEach(p=>{const id=p.join(",");if(seen.has(id))return;seen.add(id);const [x,y]=map(p);svg.append(el("circle",{cx:x,cy:y,r:4,fill:"#ce9b3f",stroke:"#fffdf8","stroke-width":1.2}));});
+}
+function rhombView(){
+  const s=penroseData.pair_labels.samples[Number($("rhomb-contact").value)];
+  drawRhombs($("rhomb-star"),s.placements,{required:s.required_points});
+  $("rhomb-caption").textContent=`${s.root_kind} root · contact ${Number($("rhomb-contact").value)+1} · ${s.tiles} rhombs · ${s.nodes} search nodes. All ${s.required_points.length} initial sector slots are filled; ${s.frontier_points} exposed slots remain viable under independent complete re-enumeration. Gold dots mark initial vertices; darker outlines identify the fixed pair. Exact polygon audit found ${s.independent_polygon_overlaps?.length||0} overlapping pairs.`;
+}
+function penroseResults(){
+  const d=penroseData,m=d.marking,a=d.independent_audit;
+  d.pair_labels.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.root_kind} + ${s.second[0]} · ${s.status}`;$("rhomb-contact").append(o);});
+  rhombView();drawRhombs($("dense-obstruction"),d.dense_support_obstruction.placements,{width:430,height:300,obstruction:true});
+  $("penrose-finding").textContent=`160 capacity-legal transformed contacts for each root prototype: ${d.pair_labels.counts.positive||0} positive, ${d.pair_labels.counts.negative||0} negative, ${d.pair_labels.counts.unresolved||0} unresolved. Every resolved label enters equality synthesis. The final equality state has ${m.history.at(-1).components} class; ${m.assigned} of ${m.support_slots} slots are assigned and ${m.free} remain free. The resulting GCTS lane is therefore identical to the unmarked lane.`;
+  $("penrose-audit").textContent=`All ${a.positive_witnesses} pair completions pass independent occupancy, initial-star coverage, and exposed-frontier checks. Exact algebraic polygon tests checked ${a.polygon_pairs_checked.toLocaleString()} pairs and found overlap in ${a.patches_with_polygon_overlap} patches. Cold search ${fmt(d.pair_labels.seconds)} s; independent audit ${fmt(a.seconds)} s; total ${fmt(d.total_seconds)} s; peak memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Alias placements are retained as distinct inventory identities; this count is not a count of geometric orbits.`;
+  $("ring-caption").textContent=`${data.penrose.exact_pair_checks.toLocaleString()} exact multiplication/conjugation checks passed. The new pilot below adds unmarked vertex-sector contact search; a faithful plane model and Penrose hierarchy remain open.`;
+  $("rhomb-contact").addEventListener("change",rhombView);
+}
+
 function selectRun(){
   const lane=$("lane").value;
   const runs=data.evaluation.filter(r=>r.lane===lane);
@@ -189,7 +276,7 @@ function penrose(){
     svg.append(el("polygon",{points:loop.map(([x,y])=>`${cx+(x-mx)*scale},${cy-(y-my)*scale}`).join(" "),fill:colors[i],"fill-opacity":.75,stroke:"#476651","stroke-width":1.5}));
     svgText(svg,cx,172,`${name} · unmarked`,{"text-anchor":"middle","font-size":12});
   });
-  $("ring-caption").textContent=`${data.penrose.exact_pair_checks.toLocaleString()} exact multiplication/conjugation pair checks passed. Both unmarked rhomb prototypes are transcribed. Penrose tiling search has not started.`;
+  $("ring-caption").textContent=`${data.penrose.exact_pair_checks.toLocaleString()} exact multiplication/conjugation checks passed. Unmarked rhomb contact search is recorded in the separate pilot below.`;
 }
 function computation(){
   const svg=$("computation"),rows=data.wang.rows,cell=66,left=120;
@@ -208,7 +295,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r2.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r3.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -219,22 +306,30 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r2.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r3.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r2.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r3.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    $("load-status").textContent="Two cold iterations recorded · 22 semantic tests pass · spatial interfaces and radius-one exclusions independently verified.";
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r3.1",{cache:"no-cache"});
+    if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
+    thirdData=await thirdResponse.json();
+    if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
+    continuationResults();
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r3.1",{cache:"no-cache"});
+    if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
+    penroseData=await penroseResponse.json();penroseResults();
+    $("load-status").textContent=`Three turtle studies and one cold rhomb pilot recorded · ${thirdData.semantic_tests?.passed||"pending"} semantic tests pass · nested cores and finite interfaces independently verified.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});
     $("step").addEventListener("input",updatePatch);
     $("pair").addEventListener("change",pairView);
     $("play").addEventListener("click",()=>{if(timer){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=1;updatePatch();$("play").textContent="Pause";timer=setInterval(()=>{const n=Number($("step").value)+1;if(n>currentRun.placements.length){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=n;updatePatch();},300);});
-    $("provenance").textContent=`First run recorded ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; second run ${new Date(secondData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, label proofs, and training traces are included in the JSON. No substitution or plane-tiling proof has been produced.`;
+    $("provenance").textContent=`Started ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; third turtle study ${new Date(thirdData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, proofs, training traces, explicit marking reuse, and the timing correction are in the JSON. No substitution or plane-tiling proof has been produced.`;
   }catch(error){$("load-status").textContent=`Experiment data could not be loaded: ${error.message}`;$("load-status").style.color="#a5343f";}
 }
 main();

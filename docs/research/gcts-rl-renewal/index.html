@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r2.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r3.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r2.1"></script>
+  <script defer src="report.js?v=20261009-r3.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 02</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 03</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,22 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="continuation-research">
+    <p class="eyebrow">ITERATION 03 · COVERAGE AND STRUCTURAL HYPOTHESES</p><h2>Fill growing cores. Keep the earlier choices.</h2>
+    <p>This experiment explicitly reuses the two certified markings from the cold runs, then searches fresh donor patches and trains a new policy from zero. New cluster proposals can recognize already placed constituents as context. Their occupancy counts only new tiles; all legal base moves remain available.</p>
+    <div class="controls"><label>Coverage lane <select id="core-lane"></select></label><label>Seed <select id="core-seed"></select></label><label>Filled core <select id="core-radius"></select></label></div>
+    <div class="evidence-grid"><div><svg id="core-view" viewBox="0 0 760 460" role="img" aria-label="Turtle patch covering a selected finite lattice core"></svg><p id="core-caption" class="caption"></p></div><div><p id="core-finding"></p><p>The target is the point set</p>\[Q_r=\{(x,y,z)\in A_2:\max(|x|,|y|,|z|)\le r\}.\]<p>All points in the core are activated, including untouched zero-valued points. Completing one core activates the next in a child transaction. A later failure can still backtrack into the earlier core's choices. Gold dots identify the current filled core.</p><div class="callout">Every displayed core is finite. Exterior frontier obligations remain incomplete; a finite prefix of a fair exhaustion does not prove an infinite continuation.</div></div></div>
+    <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Core targets reached</th><th>Mean base tiles</th><th>Mean branches</th><th>Mean seconds</th></tr></thead><tbody id="core-benchmark"></tbody></table></div>
+    <h3 class="spaced-title">A broader library, still no substitution</h3>
+    <p id="diversity-finding"></p>
+    <div class="controls"><label>Grouping rule <select id="grammar-library"><option value="frequency">Frequency control</option><option value="diversity">Diversity + rarity</option></select></label><label>Donor <select id="grammar-seed"></select></label><label>Hierarchy level <select id="grammar-level"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option></select></label></div>
+    <div class="evidence-grid"><div><svg id="grammar-view" viewBox="0 0 760 430" role="img" aria-label="Fresh turtle donor partitioned into abstract structural hypotheses"></svg><p id="grammar-caption" class="caption"></p></div><div><svg id="diversity-motif" viewBox="0 0 350 270" role="img" aria-label="A mixed-handed spatial motif from the fresh donor patches"></svg><p id="grammar-finding"></p><p class="small">Boundary words and convex hulls describe already checked clusters. They never decide placement legality. Dropping edge lengths creates an abstract classifier, which can group different geometries. No exact recursive expansion map follows from a shared word.</p></div></div>
+    <h3 class="spaced-title">Matched growth target: 128 base tiles</h3>
+    <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Targets reached</th><th>Mean base tiles</th><th>Mean branches</th><th>Mean seconds</th><th>Macro validations</th></tr></thead><tbody id="continuation-benchmark"></tbody></table></div>
+    <p id="continuation-finding"></p><p id="continuation-cost" class="caption"></p>
+    <p class="small">Marking redundancy concerns complete point-model tilings. It can still reject finite prefixes that have no complete continuation, so the finite growth solution sets differ. These starts and targets differ from iterations 01 and 02; timing comparisons apply within this experiment. <a href="iteration-003.json">Inspect the reused-model study, original timing pass, repeat, and audits ↗</a>.</p>
+  </section>
 
   <section class="panel" id="spatial-research">
     <p class="eyebrow">ITERATION 02 · SPATIAL STRUCTURE</p><h2>Clusters with exact interfaces</h2>
@@ -94,13 +110,22 @@
       <p class="small">The dilation controls impose a fixed exterior contribution at boundary points. They only test an integer enlargement of one turtle outline. Multi-type, algebraic, and combinatorial substitutions remain open.</p>
     </article>
     <article class="panel">
-      <p class="eyebrow">PENROSE · PREPARING THE DOMAIN</p><h2>Exact arithmetic first.</h2>
+      <p class="eyebrow">PENROSE · EXACT COORDINATES</p><h2>Exact arithmetic first.</h2>
       <div class="rhombs"><svg id="rhombs" viewBox="0 0 480 190" role="img" aria-label="Unmarked thick and thin rhomb prototypes"></svg></div>
       <p>Coordinates use \(\mathbb Z[\zeta_5]\), represented by four integer coefficients modulo \(1+z+z^2+z^3+z^4\). Multiplication, conjugation, and \(\varphi^2=\varphi+1\) are checked exactly.</p>
       <p id="ring-caption" class="caption"></p>
       <p>The physical module is dense: \(\varphi^{-1}=\varphi-1\) belongs to it and its positive powers approach zero. A finite set of vertex angles cannot silently stand in for a rhomb's whole interior. A faithful point encoding or explicitly specialized control must be declared before the learner transfers.</p>
       <p>Unmarked rhombs also admit periodic arrangements. Learning a Penrose-compatible subsystem would restrict that problem; it cannot automatically be called redundant pruning of all unmarked rhomb tilings.</p>
     </article>
+  </section>
+
+  <section class="panel" id="penrose-research">
+    <p class="eyebrow">PENROSE PILOT 01 · COLD UNMARKED VERTEX STARS</p><h2>Declare the point model. Test every contact.</h2>
+    <p>The new connected-star model uses \(L=\mathbb Z[\zeta_5]\times\{0,\ldots,9\}\). At each rhomb vertex, \(t=1\) on the occupied angular sectors. Placing a rhomb activates all ten sectors at every vertex, including zeros. Every generated slot is explicitly a generation-zero root. Ten rotations act on coordinates and sector labels together. This pilot supplies no arrows, marking, known patch, or substitution.</p>
+    <div class="controls"><label>Rooted two-rhomb contact <select id="rhomb-contact"></select></label></div>
+    <div class="evidence-grid"><div><svg id="rhomb-star" viewBox="0 0 740 430" role="img" aria-label="A checked unmarked rhomb pair completion with filled initial vertex stars"></svg><p id="rhomb-caption" class="caption"></p></div><div><p id="penrose-finding"></p><p id="penrose-audit" class="caption"></p><div class="callout">The contact learner found no failures. It therefore learned no nontrivial exclusion marking. A Penrose-compatible hierarchical subsystem remains to be discovered; unmarked rhomb tilings also include periodic arrangements.</div></div></div>
+    <details><summary>A dense-module counterexample and the remaining faithfulness gap</summary><div class="evidence-grid"><svg id="dense-obstruction" viewBox="0 0 430 300" role="img" aria-label="Overlapping translated rhombs with disjoint vertex support"></svg><div><p>Translate a thick rhomb by \(\varphi^{-1}=\varphi-1\). The two vertex supports are disjoint, while an exact algebraic separation test certifies positive-area polygon overlap. Point capacity therefore accepts this disconnected control.</p><p>More generally, positive powers of \(\varphi^{-1}\) form infinitely many distinct translations approaching zero. Only finitely many can belong to the difference set of any finite support. Sufficiently small remaining translations produce the same obstruction for unrestricted placements.</p></div></div><p>Search grows a connected component through shared vertex sectors, so it does not simply insert this disconnected pair. Complete vertex stars may support a faithful developed rhomb complex, but the equivalence to covering the plane has not been proved. Activating every point of the dense module would be a different problem. The finite audit below checks the actual searched polygons independently.</p></details>
+    <p class="small"><a href="penrose-001.json">Inspect all 320 contact completions, equality history, exact overlap control, and source hashes ↗</a>.</p>
   </section>
 
   <section class="proof-panel" id="proofs">
@@ -115,6 +140,7 @@
     <p>For a chosen recursively axiomatized theory \(\mathcal T\), a machine may accept exactly the certificates that its proof checker validates for \(\phi\). Leave the certificate portion of the initial tape unspecified; Wang search then chooses its symbols. A finite accepting rectangle would certify \(\mathcal T\vdash\phi\). Fair enumeration of certificate lengths, tape widths, and run lengths would be needed for a complete search. Computational expressiveness does not decide every mathematical truth.</p>
     <div class="proof-grid"><div><p class="eyebrow">AN UNKNOWN CERTIFICATE INPUT</p><svg id="certificate-tape" viewBox="0 0 620 220" role="img" aria-label="Wang search fills unknown bottom tape symbols and verifies unary addition"></svg><p id="certificate-caption" class="caption"></p></div><div><h3>A real logic kernel</h3><p>The new kernel checks classical first-order derivations with equality, capture-avoiding substitution, closed theory axioms, and backward-only proof references. A bounded rewrite proposer discovers this theorem from the two addition axioms:</p><div id="logic-statement"></div><p id="logic-caption" class="caption"></p></div></div>
     <details><summary>Inspect the kernel-checked derivation</summary><div id="logic-proof"></div></details>
+    <p id="serialized-proof-caption" class="caption"></p>
     <p>The arithmetic Wang verifier and the first-order kernel are separate implementations. The missing bridge is an explicit machine that verifies serialized kernel proofs, with a checked compiler and fair rectangle search. The kernel currently registers a finite list of closed axioms; an infinite theory needs checked axiom schemas or enumeration witnesses. The bounded rewrite proposer is not a complete first-order proof search.</p>
     <p class="small">The kernel follows the Hilbert approach described in <a href="https://cs.uwaterloo.ca/~david/cs245/cs-firstorder.pdf">these first-order logic notes</a>. The <a href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol239-types2021/LIPIcs.TYPES.2021.8/LIPIcs.TYPES.2021.8.pdf">formalized completeness result</a> is background; our Python implementation has semantic tests and finite certificates, not a machine-checked soundness/completeness proof.</p>
     <p class="small">The finite accepting-computation direction differs from classical constructions where a plane tiling encodes non-halting. The latter's undecidability is background, not a certificate produced by this experiment. See <a href="https://siamak.isoperimetric.info/articles/tilings06.pdf">the Wang computation construction</a> and <a href="https://doi.org/10.1090/memo/0066">Berger's original domino result</a>.</p>
@@ -124,11 +150,11 @@
     <p class="eyebrow">THE RESEARCH PROGRAM</p><h2>Goals with concrete gates</h2>
     <ol>
       <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
-      <li><span class="goal-state done">Extended audit</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. The original compact marking and the separate radius-one control have complete exclusion audits; stronger encodings and their growth benefit remain to be tested.</p></div></li>
-      <li><span class="goal-state active">Spatial pilot</span><div><h3>RL proposes clusters and sequences</h3><p>Validated spatial clusters now use all lattice symmetries, exact interfaces, and scheduler-checked continuations. Next: grammar-directed hierarchical proposals, stronger evaluation, and measurable benefit after training costs.</p></div></li>
+      <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
+      <li><span class="goal-state active">Context proposals</span><div><h3>RL proposes clusters and sequences</h3><p>Shared placements count once; diverse motifs and scheduler-checked continuations retain all base moves. The measured policy has not demonstrated an acceleration. Next: learn hierarchical productions and improve the cost of proposing them.</p></div></li>
       <li><span class="goal-state open">Open</span><div><h3>Discover a substitution</h3><p>Infer multiple metatile types and exact expansion maps. Require validated interfaces and at least three recursion levels; do not promote motif frequencies into a rule.</p></div></li>
-      <li><span class="goal-state open">Open</span><div><h3>Certify a plane construction</h3><p>Prove compatible collars and expanding coverage, or an equivalent invariant. Aperiodicity is an additional theorem. Fair activation of untouched points is still missing from growth experiments.</p></div></li>
-      <li><span class="goal-state active">Arithmetic checked</span><div><h3>Transfer to Penrose</h3><p>Close the point-model gap over \(\mathbb Z[\zeta_5]\), then run an unmarked discovery lane with declared translation and reflection rules.</p></div></li>
+      <li><span class="goal-state active">Finite core coverage</span><div><h3>Certify a plane construction</h3><p>Nested cores now activate untouched lattice points with backtracking across checkpoints. Prove a compatible unbounded continuation or recursive coverage invariant. Aperiodicity is an additional theorem.</p></div></li>
+      <li><span class="goal-state active">Unmarked contacts</span><div><h3>Transfer to Penrose</h3><p>All contacts in the declared vertex-sector model have checked finite completions. No useful marking was learned. Close the developed-complex faithfulness gap and search a hierarchical Penrose-compatible subsystem.</p></div></li>
       <li><span class="goal-state active">Kernel & search</span><div><h3>Build checkable proof search</h3><p>A first-order kernel and a separate Wang search for unknown arithmetic certificates work. Connect serialized kernel proofs to a verifier machine, add theory schemas and fair enumeration, then evaluate learned proposals without changing proof validity.</p></div></li>
     </ol>
   </section>
@@ -136,12 +162,14 @@
   <section class="panel reproducibility">
     <p class="eyebrow">REPRODUCIBILITY & LIMITS</p><h2>Every claim has a scope.</h2>
     <p>The solver imports only the turtle's vertices and angle units from the article. Occupancy uses integer capacity \(12\); missing marking values are unconstrained, and zero is assigned. Conformance checks cover independent complete re-enumeration, shared fractional candidates, zero obligations, distant marking-only dependencies, scheduler precedence, symmetry composition, exact rollback, and rejected tampered proofs.</p>
-    <p>Growth activates newly occupied support and has no fair exhaustion of untouched \(A_2\) points yet. All growth results are finite. Learned models are frozen for each run and start anew on every cold iteration. Peak memory is measured for the whole process. Marking synthesis is an equality encoder with free values, not a neural prediction of unseen labels.</p>
+    <p>The first two growth studies activate newly occupied support. Iteration 03 also runs finite prefixes of a fair nested-core activation rule. All results remain finite. Learned models are frozen per run and start anew on every cold iteration; the third study explicitly reuses certified assignments. Peak memory is measured for each process. Marking synthesis is an equality encoder with free values.</p>
     <pre><code>python3 research/gcts-rl-renewal/run.py
 python3 research/gcts-rl-renewal/run_spatial.py
+python3 research/gcts-rl-renewal/run_continuations.py
+python3 research/gcts-rl-renewal/run_penrose.py
 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v</code></pre>
-    <p class="small">The separate audits use <code>audit_geometry.py</code> and <code>audit_spatial.py</code> in the research directory. The reused-data halo control uses <code>probe_halo.py --deepen-unresolved</code>, then <code>validate_halo.py</code>. Audits inspect completed artifacts and never supply search legality or learner labels. All 22 semantic tests pass.</p>
-    <p><a href="iteration-001.json">Iteration 01 data</a> · <a href="iteration-002.json">Iteration 02 data</a> · <a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/gcts-rl-renewal">Research code and conformance notes</a> · <a href="../../basic-tiling-algorithm.md">Shared algorithm contract</a> · <a href="../../../GCTS-I.html">Turtle article</a></p>
+    <p class="small">The separate audits use <code>audit_geometry.py</code>, <code>audit_spatial.py</code>, <code>audit_continuations.py</code>, and <code>replay_proofs.py</code>. The reused-data halo control uses <code>probe_halo.py --deepen-unresolved</code>, then <code>validate_halo.py</code>. Audits inspect completed artifacts and never supply search legality or learner labels. The third study's original timing pass and sequential repeat are both retained.</p>
+    <p><a href="iteration-001.json">Iteration 01 data</a> · <a href="iteration-002.json">Iteration 02 data</a> · <a href="iteration-003.json">Iteration 03 data</a> · <a href="penrose-001.json">Penrose pilot data</a> · <a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/gcts-rl-renewal">Research code and conformance notes</a> · <a href="../../basic-tiling-algorithm.md">Shared algorithm contract</a> · <a href="../../../GCTS-I.html">Turtle article</a></p>
     <p class="small">The first experiment used <a href="https://github.com/liuyao12/geometric-tree-search/tree/e0eedf2bf415e9762a094ecd66abf74df80eba62/research/gcts-rl-renewal">this archived source version</a>; current code adds a spatial proposal adapter without altering the original default search path. Source hashes in each snapshot identify the experiment implementation.</p>
     <p class="small">Known substitutions and human markings are withheld from the discovery lane. Background comparisons: <a href="https://arxiv.org/abs/2303.10798">Smith, Myers, Kaplan & Goodman-Strauss, An aperiodic monotile</a> establishes substitution structure for the hat family; <a href="https://arxiv.org/abs/2307.12322">Akiyama & Araki, An alternative proof</a> gives another aperiodicity proof. Those theorems are literature results, not discoveries of this learner.</p>
     <p id="provenance" class="small"></p>

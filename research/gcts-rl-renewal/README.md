@@ -20,12 +20,12 @@ python3 research/gcts-rl-renewal/validate_halo.py
 ```
 
 The runner is standard-library only, with Python 3.10 or newer recommended.
-Each run recomputes the complete pair catalog, verifies failure certificates,
+Each cold turtle runner recomputes the complete pair catalog, verifies failure certificates,
 synthesizes a marking, trains policies, mines inspectable sequences from its own
 searched patches, evaluates on disjoint seeds, and runs two limited inflation
 controls. Checkpoints are written after completed stages. Training and solver
 construction costs are included in the report. Saved JSON is inspection evidence;
-the runner never reads it as a starting model or as a tiling witness.
+the cold runners never read it as a starting model or as a tiling witness.
 
 Evaluation uses several fixed pair starts, with identical starts in all lanes.
 Policy training and donor search start from one tile; their random seeds are
@@ -189,6 +189,129 @@ at unrelated points in a dead leaf. Additional tests compare its domains and
 checked trees with the original exhaustive checker, and reject omitted branches
 or fabricated dead points. The original runner's verification path is unchanged.
 
+## Third iteration: context, structural descriptors, and core coverage
+
+`run_continuations.py` explicitly reuses the compact marking from iteration 02
+and the independently certified radius-one marking. It checks artifact and
+engine provenance and records historical construction/replay costs. It imports
+no saved policy, motif, patch witness, human marking or substitution. New donor
+and policy seeds are disjoint from evaluation seeds. This is a reused-model
+study; it must never be presented as a third cold start.
+
+`spatial_context.py` treats already selected placement identities as context.
+It validates the summed occupancy and marking union of NEW constituents, then
+checks the actual global scheduler at each executed constituent. A declared
+validation budget bounds only the macro proposal pool; all legal singleton
+candidates remain. Structural checks are cached per exact relative expansion
+and marking version. Proposal and validation costs are reported.
+
+`diverse_motifs.py` bins candidate motifs by size and handedness balance,
+invariant under the complete declared lattice group. Every bin is eligible;
+no named metatile family is supplied. The fresh donors yield fourteen selected
+types, including eight mixed-handed types. The frequency control has eight.
+`boundary_grammar.py` derives exact boundary direction cycles and convex hull
+words from already checked finite clusters. Polygon descriptors never decide
+base legality. Removing lengths defines an abstract class, not an exact shape.
+Greedy finite grouping under both rules found no class with three distinct
+growing base-tile counts. This is a failed structural hypothesis, not a
+substitution discovery or an impossibility theorem about substitutions.
+
+`coverage.py` activates the complete nested cores
+\(Q_r=\{(x,y,z)\in A_2:\max(|x|,|y|,|z|)\le r\}\), including untouched
+zeros as generation-zero roots. Later cores activate in child transactions,
+with the earlier search stack retained. Later failure can restore and change
+earlier checkpoint placements. All twelve matched runs through radii
+\(0,4,8,12\) filled the final core's 469 points. Exposed exterior obligations
+are still incomplete. This is a finite prefix of a fair activation scheme;
+there is no certified infinite continuation or continuous plane coverage.
+
+The tile-count evaluation asks for 128 tiles, with three single-root starts,
+10,000 nodes and 15 seconds. `repeat_evaluation.py` replaces its original timing
+pass because that pass overlapped other research processes. Both measurements
+and the added cost remain in the artifact. Repeated searches reset models,
+caches and seeded proposers while retaining the same frozen trained policy.
+They run sequentially. No stable GCTS or RL acceleration is established here.
+These targets differ from iterations 01 and 02 and cannot support a direct
+cross-iteration timing claim.
+
+`audit_continuations.py` independently sums all motif and hierarchy interfaces,
+checks unique base partitions and child relations, verifies each successful
+core point, re-enumerates all exposed checkpoint domains, and checks the final
+and donor polygons by exact rational clipping. `replay_proofs.py` replays the
+exported logic and Wang certificates from JSON. The theory is declared outside
+the proof, so a certificate cannot nominate a new trusted axiom. The actual
+first-order-kernel-to-machine compiler remains open.
+
+```sh
+python3 research/gcts-rl-renewal/run_continuations.py
+python3 research/gcts-rl-renewal/repeat_evaluation.py
+python3 research/gcts-rl-renewal/audit_continuations.py
+python3 research/gcts-rl-renewal/replay_proofs.py
+```
+
+The repeat is only needed to reproduce the recorded correction; an ordinary
+rerun of the complete pipeline should run without simultaneous research jobs.
+
+## Penrose pilot: a declared connected vertex-star point problem
+
+`penrose_sectors.py` uses
+\(L=\mathbb Z[\zeta_5]\times\{0,\ldots,9\}\). Each rhomb occupies its
+angular sectors at its four vertices with \(t=1\), ten positive slots total.
+Each placed vertex activates all ten slots, including zeros. Every generated
+slot is explicitly a generation-zero root; after the seed, connected tile
+generations are therefore one. This convention is explicit and follows the
+root rule, although it does not measure expanding spatial layers.
+
+The ten allowed rotations use \(\eta=-\zeta_5^3\), with the action
+\((v,s)\mapsto(\eta^r v+a,s+r\bmod 10)\). Markings are scalar values under
+that action. A transformed placement identity is `(kind, rotation, translation)`
+and can be selected once. Geometrically identical orientation aliases remain
+distinct inventory identities. Their positive supports prevent simultaneous
+selection. Reflected unmarked rhomb outlines are represented by rotations;
+there is no additional reflection action on future decorations in this pilot.
+
+Candidate domains enumerate both tile kinds, every rotation, and every positive
+support alignment. The graph stores forward/reverse incidence and complete
+occupancy/mark dependencies. Global dead ends precede global forced moves;
+earliest-generation branching uses initial-core priority only to break a
+generation tie, then degree and exact keys. Child snapshots restore active
+zero obligations, roots, generations, inventory, values and the full graph.
+Polygon tests never participate in candidate generation or legality.
+
+`run_penrose.py` starts unmarked and tests all 160 capacity-legal contacts for
+each root kind. All 320 complete their initial vertex stars with a viable
+exposed frontier; all pass independent point replay. Exact algebraic polygon
+tests found no overlaps among 39,467 tile pairs in those finite witnesses.
+The learner uses every resolved label and permits markings at all eighty
+prototype slots, including zero occupancy. With no negative labels, the
+positive equalities merge all slots into one class, and sparsification leaves
+all slots free. No nontrivial failure marking is discovered. Identical baseline
+and empty-marking growth controls confirm this; they are not evidence of a
+GCTS acceleration or of Penrose aperiodicity.
+
+The physical module is dense. A disconnected control with displacement
+\(\varphi^{-1}\) has disjoint vertex supports and positive-area polygon overlap,
+certified by integer comparisons in \(\mathbb Q(\sqrt5)\). For any finite
+support, infinitely many distinct small translations eventually avoid its
+finite difference set; thus unrestricted finite-support capacity cannot equal
+geometric non-overlap. Search instead grows a vertex-connected component and
+completes generated stars. A complete developed-complex to plane-tiling
+equivalence still needs proof. It does not activate every point of the dense
+module. It also does not characterize the hierarchical Penrose subset of
+unmarked rhomb tilings. These are explicit remaining model and discovery gaps.
+
+```sh
+python3 research/gcts-rl-renewal/run_penrose.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+Semantic checks cover all rotations, zero activation, exact algebraic signs,
+shared candidate incidence, incremental/exhaustive equality, rollback, global
+scheduler precedence, marking-only dependencies including assigned zero,
+independent positive and negative certificates, and fabricated dead-leaf
+rejection. The deliberately restrictive test marking is a control only and
+never enters discovery.
+
 ## Next research iteration
 
 Fit the spatial types into a multi-type grammar with exact coordinate transforms,
@@ -196,6 +319,7 @@ stationary productions and repeatable interfaces. Penalize boundary mismatch and
 uncovered obligations. Search
 inflation matrices without providing a known scalar, and try hierarchical
 composition; preserve single-tile fallback. Certify exclusions of larger motifs
-before adding further marking channels. Transfer to Penrose only after closing
-its point-model gap. For logic, compile an actual proof checker before comparing
+before adding further marking channels. For Penrose, close the developed-complex
+gap and learn hierarchical proposals beyond pair-star samples. For logic,
+compile an actual proof checker before comparing
 learned policies with conventional proof enumeration.
