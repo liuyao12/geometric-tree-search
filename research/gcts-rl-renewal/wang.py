@@ -5,6 +5,7 @@ The demo machine writes two ones and halts. The checker is independent of the
 tiling search and rejects every invalid transition or mismatched point marking.
 """
 from itertools import product
+import time
 
 def head(q,a): return ("head",q,a)
 
@@ -136,4 +137,118 @@ def demo():
     altered[-1] = tuple(0 for _ in initial)
     result["tampered_certificate_rejected"] = not certificate_check(compiler,initial,altered,result["placements"])
     result["scope"] = "two-step toy Turing machine; general compiler, no universal-machine or theorem-prover certification"
+    return result
+
+def search_certificate_rectangle(compiler,pattern,height,blank="B",node_limit=100000,seconds=20):
+    """Search an unknown certificate on the bottom boundary of a Wang rectangle.
+
+    Each pattern entry is a finite set of allowed symbols, part of the declared
+    boundary problem. Only one designated entry permits a head. Every cell is
+    a generation-zero required point. Bitsets represent complete cell/candidate
+    incidence; edge-mark dependencies are exactly the four adjacent cells.
+    Domains shrink only from placed point markings. Snapshots restore all
+    semantic data. No inference from a resource limit is made.
+    """
+    width=len(pattern); inventory=compiler.tiles(); full=(1<<len(inventory))-1
+    masks={f:{} for f in ("N","S","E","W")}
+    for i,tile in enumerate(inventory):
+        for f in masks: masks[f][tile[f]]=masks[f].get(tile[f],0)|(1<<i)
+    domains={}; start=time.monotonic(); nodes=forced=branches=backtracks=0; found=None
+    for y in range(height):
+        for x in range(width):
+            bits=full
+            if y==0:
+                allowed=0
+                for v in pattern[x]: allowed|=masks["S"].get(v,0)
+                bits&=allowed
+            if x==0: bits&=masks["W"].get((blank,blank),0)
+            if x==width-1: bits&=masks["E"].get((blank,blank),0)
+            domains[x,y]=bits
+    # Python 3.9 compatibility; bit_count is available on newer Python.
+    count_bits=lambda n: n.bit_count() if hasattr(n,"bit_count") else bin(n).count("1")
+    neighbors=((0,1,"N","S"),(0,-1,"S","N"),(1,0,"E","W"),(-1,0,"W","E"))
+    class Budget(Exception): pass
+    def visit(ds,selected):
+        nonlocal nodes,forced,branches,backtracks,found
+        nodes+=1
+        if nodes>node_limit or time.monotonic()-start>seconds: raise Budget()
+        if any(bits==0 for bits in ds.values()): return False
+        if not ds:
+            top=[inventory[selected[x,height-1]]["N"] for x in range(width)]
+            if sum(isinstance(s,tuple) and s[1]==compiler.halt for s in top)!=1: return False
+            found=selected; return True
+        singleton=sorted(p for p,bits in ds.items() if bits&(bits-1)==0)
+        p=singleton[0] if singleton else min(ds,key=lambda p:(count_bits(ds[p]),p[1],p[0]))
+        if singleton: forced+=1
+        else: branches+=1
+        options=ds[p]
+        while options:
+            bit=options&-options; options-=bit; i=bit.bit_length()-1
+            tile=inventory[i]; child=ds.copy(); del child[p]
+            selected2=selected.copy(); selected2[p]=i; consistent=True
+            for dx,dy,f,opposite in neighbors:
+                q=(p[0]+dx,p[1]+dy)
+                if q in child: child[q]&=masks[opposite].get(tile[f],0)
+                elif q in selected2 and inventory[selected2[q]][opposite]!=tile[f]: consistent=False
+            if consistent and visit(child,selected2): return True
+            backtracks+=1
+        return False
+    try:
+        success=visit(domains,{})
+        status="finite_accepting_certificate" if success else "exhausted_finite_rectangle"
+    except (Budget,RecursionError): status="unknown_budget"
+    result={"status":status,"tile_types":len(inventory),"width":width,"height":height,
+            "nodes":nodes,"forced":forced,"branches":branches,"backtracks":backtracks,
+            "seconds":time.monotonic()-start,"budget":{"nodes":node_limit,"seconds":seconds},
+            "candidate_representation":"complete bitsets per required center; all root generations zero"}
+    if found is not None:
+        placements=[(x,y,inventory[i]) for (x,y),i in sorted(found.items(),key=lambda t:(t[0][1],t[0][0]))]
+        initial=tuple(inventory[found[x,0]]["S"] for x in range(width))
+        rows=[initial]+[tuple(inventory[found[x,y]]["N"] for x in range(width)) for y in range(height)]
+        assert all(s in allowed for s,allowed in zip(initial,pattern))
+        assert sum(isinstance(s,tuple) for s in initial)==1
+        assert certificate_check(compiler,initial,rows,placements)
+        result.update({"initial":initial,"rows":rows,"placements":placements,"verified":True})
+    return result
+
+def addition_machine():
+    """Unary arithmetic certificate verifier, not a general proof-kernel compiler.
+
+    Input is 1^a + 1^b = certificate $, surrounded by blank tape. Match every
+    input 1 with a certificate 1, reject extra/missing symbols, then accept.
+    The machine works for arbitrary finite a,b and certificate lengths.
+    """
+    transitions={}
+    for s in ("X","+"): transitions["take",s]=("take",s,1)
+    transitions["take","1"]=("seek", "X",1)
+    transitions["take","="]=("finish","=",1)
+    for s in ("1","X","+"): transitions["seek",s]=("seek",s,1)
+    transitions["seek","="]=("consume","=",1)
+    transitions["consume","Y"]=("consume","Y",1)
+    transitions["consume","1"]=("return","Y",-1)
+    for s in ("1","X","Y","+","="): transitions["return",s]=("return",s,-1)
+    transitions["return","B"]=("take","B",1)
+    transitions["finish","Y"]=("finish","Y",1)
+    transitions["finish","$"]=("halt","$",0)
+    return Compiler(("B","1","X","Y","+","=","$"),
+                    ("take","seek","consume","return","finish","halt"),transitions,"halt")
+
+def addition_pattern(a,b,certificate_length):
+    tape=["B","B"]+["1"]*a+["+"]+["1"]*b+["="]
+    pattern=[(s,) for s in tape]+[("B","1")]*certificate_length+[("$",),("B",),("B",)]
+    s=pattern[2][0]; pattern[2]=(head("take",s),)
+    return pattern
+
+def certificate_demo():
+    compiler=addition_machine(); pattern=addition_pattern(1,1,2)
+    result=search_certificate_rectangle(compiler,pattern,32,node_limit=100000,seconds=30)
+    if "initial" in result:
+        tape=result["initial"]; i=tape.index("=")+1; j=tape.index("$")
+        result["certificate"]="".join(tape[i:j])
+        result["arithmetic_verified_independently"]=sum(s=="1" or (isinstance(s,tuple) and s[2]=="1") for s in tape[:i])==len(result["certificate"]) and set(result["certificate"])=={"1"}
+        altered=list(tape); altered[i]="B"
+        result["tampered_input_rejected"]=not certificate_check(compiler,altered,result["rows"],result["placements"])
+    result["statement"]="1+1=2"
+    result["unknown_bottom_cells"]=2
+    result["scope"]="Wang search chooses an unknown unary certificate; independent TM and arithmetic verification; general first-order kernel not yet compiled"
     return result

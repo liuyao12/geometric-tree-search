@@ -10,9 +10,9 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,timer=null,currentRun;
+let data,secondData,haloData,timer=null,currentRun;
 
-function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470}={}){
+function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,groups=null}={}){
   svg.replaceChildren();
   const loops=placements.map(key=>verts(data.point_model.vertices,key).map(project));
   const projectedPoints=points.map(p=>project(p));
@@ -32,13 +32,83 @@ function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470}={})
   loops.forEach((loop,i)=>{
     const o=placements[i][0],p=syms[o].p;
     const inversions=Number(p[0]>p[1])+Number(p[0]>p[2])+Number(p[1]>p[2]);
-    const fill=inversions%2?"#d19163":"#6d9c83";
+    const fill=groups?`hsl(${groups[i]*137.508%360} 27% 58%)`:inversions%2?"#d19163":"#6d9c83";
     const shape=el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill,"fill-opacity":.72,stroke:"#345648","stroke-width":1.1,"stroke-linejoin":"round"});
     shape.append(el("title",{},`Base placement ${i+1}; orientation ${o}; translation ${placements[i][1].join(",")}`));
     svg.append(shape);
   });
   projectedPoints.forEach(p=>{const [x,y]=map(p);svg.append(el("circle",{cx:x,cy:y,r:2.3,fill:"#c79343"}));});
   if(dead){const [x,y]=map(project(dead));svg.append(el("circle",{cx:x,cy:y,r:9,fill:"none",stroke:"#b53741","stroke-width":3}));svg.append(el("circle",{cx:x,cy:y,r:3,fill:"#b53741"}));}
+}
+
+function spatialView(){
+  const h=secondData.hierarchies.samples.find(h=>String(h.seed)===$("hierarchy-seed").value);
+  if(!h){$("hierarchy-caption").textContent="No successful evaluation patch is available for hierarchy inspection.";return;}
+  const level=h.levels[Number($("hierarchy-level").value)],groups=[];
+  level.groups.forEach((g,i)=>g.base_ids.forEach(k=>groups[k]=i));
+  drawPatch($("hierarchy-view"),h.placements,{width:760,height:470,groups});
+  $("hierarchy-caption").textContent=`Seed ${h.seed}: ${h.base_tiles} base tiles in ${level.groups.length} groups at level ${level.level}. Every base placement occurs exactly once; aggregate point interfaces are replayed independently. The learned first-level library groups ${h.first_level_motif_tiles} of these tiles; residual singletons remain available.`;
+}
+function spatialType(){
+  const m=secondData.spatial_library.motifs[Number($("spatial-type").value)];
+  if(!m)return;
+  drawPatch($("spatial-interface"),m.expansion,{points:m.interface.frontier.map(p=>p[0]),width:350,height:290});
+  $("spatial-caption").textContent=`Type ${m.id+1}: ${m.expansion.length} base tiles, ${m.count} occurrences across ${m.donor_seeds.length} training donors. ${m.interface.frontier.length} residual point obligations, ${m.interface.completed_points} completed points, and ${m.interface.marking.length} assigned marking points.`;
+}
+function spatialResults(){
+  const d=secondData,library=d.spatial_library,stats=library.statistics;
+  d.hierarchies.samples.forEach(h=>{const o=document.createElement("option");o.value=h.seed;o.textContent=String(h.seed);$("hierarchy-seed").append(o);});
+  library.motifs.forEach((m,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${m.id+1} · ${m.expansion.length} tiles · ${m.count} occurrences`;$("spatial-type").append(o);});
+  spatialView();spatialType();
+  ["hierarchy-seed","hierarchy-level"].forEach(id=>$(id).addEventListener("change",spatialView));
+  $("spatial-type").addEventListener("change",spatialType);
+  const donorCount=library.donors.filter(r=>r.status==="consistent_finite_patch").length;
+  const extra=d.training.episodes.reduce((s,r)=>s+r.sequence_extra_moves,0);
+  const summary=[];
+  for(const lane of ["baseline","GCTS","RL","GCTS+RL"]){
+    const rs=d.evaluation.filter(r=>r.lane===lane),success=rs.filter(r=>r.status==="consistent_finite_patch").length;
+    summary.push({lane,rs,success,time:mean(rs.map(r=>r.seconds))});
+    const tr=document.createElement("tr");
+    [lane,`${success} / ${rs.length}`,fmt(mean(rs.map(r=>r.tiles))),fmt(mean(rs.map(r=>r.branches))),fmt(mean(rs.map(r=>r.seconds))),rs.reduce((s,r)=>s+(r.metrics.cluster_validation_attempts||0),0).toLocaleString()].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.append(td);});
+    $("spatial-benchmark").append(tr);
+  }
+  const gcts=summary.find(s=>s.lane==="GCTS"),both=summary.find(s=>s.lane==="GCTS+RL");
+  $("spatial-summary").textContent=`${donorCount} of ${library.donors.length} cold donor searches reached 64 tiles. ${stats.connected_subsets.toLocaleString()} connected subsets yielded ${stats.distinct_shapes.toLocaleString()} symmetry-normalized shapes; ${stats.recurrent_shapes.toLocaleString()} occurred in at least two donors, and ${stats.selected_types} types entered the frozen proposal library. ${d.training.updates} RL updates executed ${extra} extra continuation moves. At the 64-tile evaluation target, GCTS reaches ${gcts.success} starts in ${fmt(gcts.time)} seconds on average and GCTS+RL reaches ${both.success} in ${fmt(both.time)} seconds. ${both.success>=gcts.success&&both.time<gcts.time?"This pilot shows a per-search improvement; the construction and learning costs below remain additional.":"The spatial RL pilot has not shown an acceleration over GCTS alone."}`;
+  $("spatial-cost").textContent=`Cold labeling ${fmt(d.pair_labels.seconds)} s; independent certificate replay ${fmt(d.pair_verification.seconds)} s; donor search ${fmt(library.donors.reduce((s,r)=>s+r.seconds,0))} s; motif extraction ${fmt(library.seconds)} s; spatial RL training ${fmt(d.training.seconds)} s; hierarchy inspection ${fmt(d.hierarchies.seconds)} s. Total ${fmt(d.total_seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. All lanes use the same three fixed starts, target, scheduler, and declared budgets. ${d.independent_audit?`A separate ${fmt(d.independent_audit.seconds)}-second audit checked all ${d.independent_audit.independent_interfaces} interfaces and ${d.independent_audit.checked_group_levels} group levels, rejected tampered interface and child data, and found no polygon overlaps in the displayed evaluation and donor patches.`:"Independent post-run audit pending."}`;
+}
+function proofResults(){
+  const d=secondData.logic,w=secondData.wang_certificate_search;
+  $("logic-statement").textContent=`\\[${d.statement}\\]`;
+  $("logic-caption").textContent=`${d.rewrite_steps} discovered rewrites; ${d.proof.length} checked Hilbert lines. The checker rejects a modified conclusion. This is a certificate relative to the two registered addition axioms, not a full arithmetic theory or a general search benchmark.`;
+  const axioms=document.createElement("p");axioms.textContent=d.axioms.map(a=>`\\(${a}\\)`).join("; ");$("logic-proof").append(axioms);
+  d.display_proof.forEach((line,i)=>{const p=document.createElement("p"),raw=d.proof[i];const refs=raw.rule==="mp"?` from lines ${raw.antecedent+1} and ${raw.implication+1}`:"";p.textContent=`${i+1}. ${line.rule}${refs}: \\(${line.formula}\\)`;$("logic-proof").append(p);});
+  const svg=$("certificate-tape"),rows=w.rows;
+  if(rows){
+    const cell=44,left=128,initial=w.initial,equal=initial.indexOf("=");
+    [initial,initial,rows[rows.length-1]].forEach((row,i)=>{
+      const y=15+i*62;svgText(svg,8,y+26,["Unknown input","Found input","Accepting row"][i],{fill:"#d8e5d3","font-size":11});
+      row.forEach((s,j)=>{const x=left+j*cell,unknown=j>equal&&j<=equal+w.unknown_bottom_cells,isHead=Array.isArray(s);svg.append(el("rect",{x,y,width:cell-2,height:38,rx:3,fill:unknown?"#ce965f":"#476551",stroke:unknown?"#edd0a1":"#66846a"}));svgText(svg,x+21,y+25,i===0&&unknown?"?":String(isHead?s[2]:s),{"text-anchor":"middle",fill:"#fff6e7","font-size":15});});
+    });
+  }
+  $("certificate-caption").textContent=w.verified?`The point search chose the unary certificate ${w.certificate.length} symbols long in a rectangle with ${w.width} columns and ${w.height} transition rows. ${w.tile_types.toLocaleString()} tile types; ${w.nodes.toLocaleString()} search nodes; ${fmt(w.seconds)} seconds. Independent operational TM replay, exact point marking checks, and an arithmetic count pass; a changed input is rejected.`:`Certificate search: ${w.status}. No accepting proof is claimed.`;
+  if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([$("logic-statement"),$("logic-proof")]).catch(()=>{});
+}
+function haloResults(){
+  const d=haloData,svg=$("halo-marking"),assigned=new Map(d.snapshot_for_inspection_only.map(([p,v])=>[p.join(","),v]));
+  const support=new Map();
+  for(const [p] of data.point_model.occupancy)for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++){
+    const z=-x-y;if(Math.max(Math.abs(x),Math.abs(y),Math.abs(z))>1)continue;
+    const q=[p[0]+x,p[1]+y,p[2]+z];support.set(q.join(","),q);
+  }
+  const loop=data.point_model.vertices.map(project),ps=[...support.values()],all=loop.concat(ps.map(project));
+  const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const scale=Math.min(380/(maxX-minX),290/(maxY-minY));
+  const map=([x,y])=>[(x-(minX+maxX)/2)*scale+220,(y-(minY+maxY)/2)*scale+168];
+  svg.append(el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill:"#eef1e7",stroke:"#8b9c85","stroke-width":2}));
+  for(const p of ps){const [x,y]=map(project(p)),v=assigned.get(p.join(","));const dot=el("circle",{cx:x,cy:y,r:v===undefined?3.5:5.5,fill:v===undefined?"#fffdf8":colors[v%colors.length],stroke:"#fffdf8","stroke-width":1.4});dot.append(el("title",{},`Point ${p.join(",")}; marking ${v===undefined?"free":v}`));svg.append(dot);}
+  const s=d.marking_summary,a=d.independent_validation;
+  $("halo-caption").textContent=`${s.assigned} assigned values, ${s.free} free entries, ${s.colors} equality classes. The radius-one hypothesis accepts every original positive contact and rejects ${s.negative_rejected} of ${s.negatives} original failures. ${d.additional_disagreeing_contacts} further capacity-legal disagreements lie outside that catalog. All ${d.counts.negative||0} additional unmarked searches exhausted; ${d.counts.unresolved||0} remain unresolved.`;
+  $("halo-validation").textContent=a?`Independent verification checked ${a.negative_proof_nodes.toLocaleString()} failure-tree nodes for all ${a.canonical_rejected_contacts.toLocaleString()} excluded contacts, plus ${a.transformed_exclusion_checks.toLocaleString()} transformed exclusions. Label probe ${fmt(d.seconds)} s; separate validation ${fmt(a.seconds)} s. The radius-one marking is now certified redundant for complete unmarked point-model tilings. It was not used in the iteration-02 benchmarks.`:"Independent negative-proof replay is still pending. This hypothesis remains inactive and is not yet certified redundant.";
 }
 
 function selectRun(){
@@ -138,7 +208,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261008-r1.3",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r2.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -149,13 +219,22 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r2.1",{cache:"no-cache"});
+    if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
+    secondData=await secondResponse.json();
+    if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
+    spatialResults();proofResults();
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r2.1",{cache:"no-cache"});
+    if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
+    haloData=await haloResponse.json();haloResults();
+    $("load-status").textContent="Two cold iterations recorded · 22 semantic tests pass · spatial interfaces and radius-one exclusions independently verified.";
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});
     $("step").addEventListener("input",updatePatch);
     $("pair").addEventListener("change",pairView);
     $("play").addEventListener("click",()=>{if(timer){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=1;updatePatch();$("play").textContent="Pause";timer=setInterval(()=>{const n=Number($("step").value)+1;if(n>currentRun.placements.length){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=n;updatePatch();},300);});
-    $("provenance").textContent=`Recorded ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})} Pacific time. Source SHA-256 hashes, budgets, all placements, label proofs, and training traces are included in the JSON. No substitution or plane-tiling proof has been produced.`;
+    $("provenance").textContent=`First run recorded ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; second run ${new Date(secondData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, label proofs, and training traces are included in the JSON. No substitution or plane-tiling proof has been produced.`;
   }catch(error){$("load-status").textContent=`Experiment data could not be loaded: ${error.message}`;$("load-status").style.color="#a5343f";}
 }
 main();

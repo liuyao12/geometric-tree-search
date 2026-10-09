@@ -11,8 +11,12 @@ Run a cold iteration and the semantic conformance checks:
 
 ```sh
 python3 research/gcts-rl-renewal/run.py
-python3 -m unittest discover -s research/gcts-rl-renewal -p test_research.py -v
+python3 research/gcts-rl-renewal/run_spatial.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 python3 research/gcts-rl-renewal/audit_geometry.py
+python3 research/gcts-rl-renewal/audit_spatial.py
+python3 research/gcts-rl-renewal/probe_halo.py --deepen-unresolved
+python3 research/gcts-rl-renewal/validate_halo.py
 ```
 
 The runner is standard-library only, with Python 3.10 or newer recommended.
@@ -90,8 +94,13 @@ integer replay and frontier viability check.
 
 Growth activates newly occupied support, but does not yet activate a fair
 exhaustion of all untouched points. Results are consistent finite point patches,
-never plane tilings. Sequence proposals have bounded lengths, with base fallback
-preserving the complete search universe; hierarchical composition remains open.
+never plane tilings. Sequence and spatial proposals have bounded lengths, with
+base fallback preserving the complete search universe. Spatial proposals may
+rotate and reflect; their schedulable prefixes are planned on graph snapshots.
+The original sequence runner retains its unchanged default proposal path.
+Hierarchical grouping now exports three disjoint finite partition levels with
+exact interfaces, but higher-level types are only observed parent shapes.
+Stationary recursive productions and expanding coverage remain open.
 Finite inflation controls declare fixed exterior point contributions and a
 single-shape integer dilation, so their failures do not rule out a metatile
 substitution. Memory is process peak resident memory, not per-lane allocation.
@@ -113,11 +122,78 @@ frontier decision, contradicting a dead leaf. Thus every complete unmarked
 point-model tiling satisfies the smallest marking. This is a redundancy lemma,
 not an existence proof and not a claim that every legal finite prefix survives.
 
+## Second iteration: spatial proposals and proof certificates
+
+The second runner recomputes and independently checks all original contact
+labels; it never loads the first snapshot. Six new donor searches reach 64 tiles.
+Enumerating connected subsets of size two through four gives 18,752 occurrences,
+1,680 exact shape types after symmetry and translation, and 1,422 types occurring
+in at least two donors. Eight recurrent types enter the frozen proposal library.
+Twenty-four REINFORCE episodes execute 25 extra continuation moves. Training and
+donor trajectories do not include evaluation trajectories, although local shapes
+can overlap. Every legal base candidate is retained.
+
+At a target of 64 tiles, with three fixed evaluation pairs, 2,000 nodes and
+12 seconds per lane, GCTS reaches one start and the other lanes reach none.
+Two GCTS starts exhaust below the target; positive one-corona labels did not
+promise longer extension. RL often returns unknown at the budget. Spatial RL
+has not demonstrated an acceleration. Do not compare this target directly with
+the first experiment's 32-tile target as a change in performance.
+
+The successful GCTS patch partitions into 42, 24, and 14 groups at the three
+inspection levels. `audit_spatial.py` independently reconstructs every aggregate
+from base point values, checks all child maps and disjoint expansions, rejects
+tampered interfaces and repeated children, and runs the separate rational
+polygon audit. This is finite evidence, not a discovered substitution.
+
+`logic.py` is a certificate kernel for classical first-order logic with equality.
+It validates immutable syntax, closed registered theory axioms, propositional
+tautologies, hygienic universal instantiation, quantifier distribution with its
+free-variable condition, equality substitution, modus ponens, and generalization.
+No open theory assumptions are accepted. Existential quantification may be
+defined through negation and universal quantification. The example discovers
+\(S(0)+S(0)=S(S(0))\) with two rewrites and emits 15 checked Hilbert lines. The
+search proposer is bounded forward ground-equation rewriting, not a complete
+first-order proof search. Infinite theories need checked axiom schemas or
+enumeration witnesses; the implementation is not a formally verified kernel.
+
+The separate Wang experiment leaves two input symbols unknown and finds the
+unary certificate for \(1+1=2\). Its verifier works for arbitrary finite unary
+addition inputs. Complete cell domains use exact bitsets of all 5,684 tile types,
+with global dead/forced scheduling and all root generations zero. Only placed
+edge markings shrink adjacent domains; snapshots restore domains and selections.
+The found rectangle has 11 columns and 32 transition rows. Operational TM replay,
+independent point checking, arithmetic counting, and input tamper rejection pass.
+This machine is not yet a compiler for `logic.py` proofs. A universal proof
+search still needs that explicit bridge and fair unbounded certificate/rectangle
+enumeration. No claim of a general theorem-prover implementation is made.
+
+`probe_halo.py` is a separately labeled reused-data control. It resynthesizes
+the radius-one hypothesis from the second run's labels and enumerates additional
+mark-only disagreements, then labels those pairs by unmarked search. It never
+activates the hypothesis. All 976 additional disagreeing contacts exhaust; one
+needs the declared larger node/time budget. `validate_halo.py` independently
+checks every canonical excluded contact, including the 236 excluded original
+contacts. Every possible disagreement is an alignment of two assigned marking
+points; this finite alignment enumeration covers exterior-only interactions.
+Scalar equivariance checks transfer the exclusions through all twelve symmetries.
+Together with the complete negative proof trees, this establishes the same
+conditional redundancy lemma for the radius-one marking: every complete
+unmarked point-model tiling satisfies it. It is not an existence proof, and the
+larger marking was not used in the second iteration's benchmarks.
+
+Dead leaves of this validator re-enumerate the stated empty frontier point;
+internal nodes re-enumerate the entire frontier, certify global scheduler order,
+and check every alternative. This preserves the inference while avoiding work
+at unrelated points in a dead leaf. Additional tests compare its domains and
+checked trees with the original exhaustive checker, and reject omitted branches
+or fabricated dead points. The original runner's verification path is unchanged.
+
 ## Next research iteration
 
-Mine spatial connected clusters and their point interfaces, rather than just
-chronological sequences. Fit a multi-type grammar with exact coordinate
-transforms. Penalize boundary mismatch and uncovered obligations. Search
+Fit the spatial types into a multi-type grammar with exact coordinate transforms,
+stationary productions and repeatable interfaces. Penalize boundary mismatch and
+uncovered obligations. Search
 inflation matrices without providing a known scalar, and try hierarchical
 composition; preserve single-tile fallback. Certify exclusions of larger motifs
 before adding further marking channels. Transfer to Penrose only after closing

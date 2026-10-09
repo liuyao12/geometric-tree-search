@@ -345,7 +345,7 @@ def action_features(model,state,graph,seq):
     f["sequence:"+str(tuple(o for o,_ in seq))] = 1.
     return f
 
-def growth_search(model,seed,target=24,node_limit=600,seconds=10,policy=None,library=(),second=None):
+def growth_search(model,seed,target=24,node_limit=600,seconds=10,policy=None,library=(),second=None,proposal_provider=None):
     """Complete DFS with bounded execution; policy changes branch order only."""
     start = time.monotonic()
     rng = random.Random(seed)
@@ -368,7 +368,7 @@ def growth_search(model,seed,target=24,node_limit=600,seconds=10,policy=None,lib
             actions = [(keys[0],)]
         else:
             branches += 1
-            actions = sequence_actions(model,state,graph,keys,library,target-len(state.order))
+            actions = (proposal_provider or sequence_actions)(model,state,graph,keys,library,target-len(state.order))
             rng.shuffle(actions)
             if policy:
                 actions.sort(key=lambda seq:sum(policy.weights[q]*v for q,v in action_features(model,state,graph,seq).items()),reverse=True)
@@ -415,7 +415,7 @@ def mine_clusters(model,episodes,max_length=5):
                 if verify_patch(model,normalized): counts[normalized] += 1
     return [{"id":i,"count":count,"expansion":seq} for i,(seq,count) in enumerate(counts.most_common(80))]
 
-def cluster_rollout(model,seed,library,target=24,policy=None,learn=False):
+def cluster_rollout(model,seed,library,target=24,policy=None,learn=False,proposal_provider=None):
     """RL chooses sequence proposals; execution rechecks every scheduler step.
 
     Every legal base candidate is retained as a singleton fallback. A cluster
@@ -440,7 +440,7 @@ def cluster_rollout(model,seed,library,target=24,policy=None,learn=False):
             continue
         # Finite sequence pool does not alter the graph or the base domains.
         before_validations = model.metrics["cluster_validation_attempts"]
-        actions = sequence_actions(model,state,graph,keys,library,target-len(state.order))
+        actions = (proposal_provider or sequence_actions)(model,state,graph,keys,library,target-len(state.order))
         validations += model.metrics["cluster_validation_attempts"]-before_validations
         fs = [action_features(model,state,graph,seq) for seq in actions]
         proposals += len(actions)

@@ -4,6 +4,10 @@ from turtle import *
 from cyclotomic import audit
 from wang import demo
 from inflation import probe
+import logic
+import spatial
+import wang
+from itertools import combinations,product
 
 class Conformance(unittest.TestCase):
     def test_reference_point_data(self):
@@ -99,5 +103,81 @@ class Conformance(unittest.TestCase):
         actions = sequence_actions(model,state,graph,keys,[],10)
         self.assertEqual({seq[0] for seq in actions},set(keys))
         self.assertEqual((state.totals,graph.fingerprint()),before)
+
+    def test_spatial_interface_symmetry_and_duplicate_rejection(self):
+        model=Model({(3,-2,-1):0})
+        state=rooted(model); key=Graph(model,state).decision(state)[2][0]
+        keys=state.order+[key]
+        self.assertTrue(verify_patch(model,keys))
+        sig=spatial.canonical(keys)
+        for g in SYMMETRIES:
+            self.assertEqual(spatial.canonical(spatial.moved(keys,g,(9,-2,-7))),sig)
+        self.assertEqual(spatial.interface(model,keys)["units"],480)
+        with self.assertRaises(ValueError): spatial.interface(model,keys+[key])
+
+    def test_connected_subsets_against_independent_enumeration(self):
+        graph={0:{1},1:{0,2,3},2:{1,3},3:{1,2}}
+        expected=set()
+        for n in (2,3,4):
+            for ids in combinations(graph,n):
+                seen={ids[0]}; pending=[ids[0]]
+                while pending:
+                    for j in graph[pending.pop()]&set(ids)-seen: seen.add(j); pending.append(j)
+                if seen==set(ids): expected.add(frozenset(ids))
+        self.assertEqual(set(spatial.connected_sets(graph,4)),expected)
+
+    def test_spatial_proposals_preserve_complete_domains_and_transaction(self):
+        model=Model(); state=rooted(model); graph=Graph(model,state)
+        keys=graph.decision(state)[2]
+        library=[{"expansion":spatial.canonical(state.order+[keys[0]])}]
+        before=(state.totals.copy(),state.marks.copy(),state.order.copy(),graph.fingerprint())
+        actions=spatial.Proposer(library)(model,state,graph,keys,library,5)
+        self.assertTrue({(k,) for k in keys}<=set(actions))
+        for seq in actions:
+            trial,g=state.copy(),graph.copy()
+            for k in seq:
+                self.assertIn(k,g.decision(trial)[2])
+                g.update(model,trial,trial.place(model.placement(k)))
+        self.assertEqual((state.totals,state.marks,state.order,graph.fingerprint()),before)
+
+    def test_logic_capture_avoiding_substitution(self):
+        x,y=logic.V("x"),logic.V("y")
+        a=logic.All("y",logic.Eq(x,y))
+        result=logic.substitute(a,"x",y)
+        self.assertEqual(logic.free(result),{"y"})
+        self.assertNotEqual(result[1],"y")
+        self.assertEqual(logic.substitute(logic.All("x",a),"x",y),logic.All("x",a))
+
+    def test_logic_side_conditions_and_arithmetic_certificate(self):
+        r=logic.demo(); self.assertTrue(r["verified"]); self.assertTrue(r["tampered_proof_rejected"])
+        k=logic.Kernel({"zero":0},{},{})
+        x=logic.V("x"); z=logic.F("zero"); p=logic.Eq(x,z); q=logic.Eq(z,z)
+        a=logic.Imp(logic.All("x",logic.Imp(p,q)),logic.Imp(p,logic.All("x",q)))
+        self.assertFalse(k.check([{"rule":"distribute","formula":a,"variable":"x","antecedent":p,"consequent":q}],a))
+        with self.assertRaises(ValueError): logic.Kernel({"zero":0},{},{"unsound_open_assumption":p})
+        self.assertFalse(k.check([{"rule":"mp","formula":q,"antecedent":0,"implication":0}],q))
+        self.assertTrue(k.check([{"rule":"tautology","formula":logic.Imp(p,p)}],logic.Imp(p,p)))
+
+    def test_wang_local_rules_against_operational_tm(self):
+        c=wang.addition_machine()
+        for state in c.states:
+            for symbol in c.alphabet:
+                if state!=c.halt and (state,symbol) not in c.transitions: continue
+                for left,right in product(c.alphabet,repeat=2):
+                    row=("B",left,wang.head(state,symbol),right,"B")
+                    after=wang.direct_step(c,row)
+                    local=tuple(c.rule(row[i-1] if i else "B",row[i],row[i+1] if i+1<len(row) else "B") for i in range(len(row)))
+                    self.assertEqual(local,after)
+
+    def test_wang_unknown_certificate_and_finite_failure(self):
+        r=wang.certificate_demo()
+        self.assertEqual(r["certificate"],"11")
+        self.assertTrue(r["arithmetic_verified_independently"])
+        self.assertTrue(r["tampered_input_rejected"])
+        c=wang.addition_machine()
+        bad=wang.search_certificate_rectangle(c,wang.addition_pattern(1,1,1),32)
+        self.assertEqual(bad["status"],"exhausted_finite_rectangle")
+        capped=wang.search_certificate_rectangle(c,wang.addition_pattern(1,1,2),32,node_limit=0)
+        self.assertEqual(capped["status"],"unknown_budget")
 
 if __name__=="__main__": unittest.main()
