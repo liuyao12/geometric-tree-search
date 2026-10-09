@@ -10,7 +10,54 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,timer=null,currentRun,currentProof,currentProofRows;
+const suiteTests=()=>regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function regionCases(){
+  const movable=$('region-mode').value==='movable',select=$('region-problem');select.replaceChildren();
+  const cases=movable?regionData.movable_families.map((f,i)=>({value:i,label:`Family ${i+1} · donor ${i?85002:85001}`})):regionData.problems.map(p=>({value:p.boundary.identity,label:p.boundary.identity}));
+  cases.forEach(c=>{const o=document.createElement('option');o.value=c.value;o.textContent=c.label;select.append(o);});
+  if(!movable)select.value='free-notch-pocket';regionUpdate();
+}
+function regionUpdate(){
+  const movable=$('region-mode').value==='movable',lane=$('region-lane').value,select=$('region-attempt');
+  $('region-attempt-label').hidden=!movable;select.replaceChildren();
+  if(movable){
+    const r=regionData.movable_evaluation.find(r=>String(r.family)===$('region-problem').value&&r.lane===lane);
+    r.attempts.forEach((a,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${a.result.status==='finite_exact_region'?'completed':'checked failure'}`;select.append(o);});select.value=r.attempts.length-1;
+  }
+  regionView();
+}
+function movedBase(key,o,tr){
+  const g=syms[o],h=syms[key[0]],perm=g.p.map(i=>h.p[i]);
+  return [syms.findIndex(s=>s.s===g.s*h.s&&s.p.every((v,i)=>v===perm[i])),g.p.map((j,i)=>g.s*key[1][j]+tr[i])];
+}
+function regionView(){
+  const movable=$('region-mode').value==='movable',lane=$('region-lane').value,id=$('region-problem').value;
+  let r,boundary,runs;
+  if(movable){
+    const family=regionData.movable_evaluation.find(r=>String(r.family)===id&&r.lane===lane),a=family.attempts[Number($('region-attempt').value)];r=a.result;
+    boundary=regionData.movable_families[Number(id)].find(b=>b.identity===a.boundary);runs=regionData.movable_evaluation.filter(r=>String(r.family)===id);
+  }else{r=regionData.evaluation.find(r=>r.problem===id&&r.lane===lane);boundary=regionData.problems.find(p=>p.boundary.identity===id).boundary;runs=regionData.evaluation.filter(r=>r.problem===id);}
+  const fixed=new Set(boundary.owned.map(k=>JSON.stringify(k))),owners=new Map();
+  r.state.placements.forEach(([name,o,tr],i)=>clusterData.types.find(t=>t.identity===name).expansion.forEach(k=>owners.set(JSON.stringify(movedBase(k,o,tr)),i)));
+  const fills=r.state.base_expansion.map(k=>fixed.has(JSON.stringify(k))?'#d8dfd5':`hsl(${(owners.get(JSON.stringify(k))??0)*137.508%360} 32% 56%)`);
+  drawPatch($('region-drawing'),r.state.base_expansion,{points:boundary.required,width:720,height:430,fills});
+  $('region-caption').textContent=`${boundary.identity} · ${boundary.required.length} required points; ${boundary.allowed.length} envelope points; ${boundary.owned.length} fixed exterior tiles. ${r.accepted_base_tiles} new base constituents in ${r.accepted_cluster_tiles} atomic tiles. ${r.status==='finite_exact_region'?'Every required point is independently checked at full capacity.':'This boundary branch exhausts its complete finite inventory; the dead-domain certificate is independently checked.'} Drawing geometry never decides legality.`;
+  const svg=$('region-timing');svg.replaceChildren();const max=Math.max(...runs.map(r=>r.seconds)),labels=['Singleton','Aggregate','Aggregate + RL'];
+  runs.forEach((row,i)=>{const y=44+i*61,w=210*row.seconds/max,compiled=movable?row.attempts.reduce((s,a)=>s+a.result.compilation_seconds,0):row.compilation_seconds;
+    svgText(svg,8,y-3,labels[i],{'font-size':11});svg.append(el('rect',{x:111,y:y-20,width:w,height:24,fill:'#6d9c83',rx:2}));svg.append(el('rect',{x:111,y:y-20,width:210*compiled/max,height:24,fill:'#d8dfd5',rx:2}));
+    svgText(svg,111,y+20,`${fmt(row.seconds)} s total · ${fmt(compiled)} s inventory`,{'font-size':10});
+  });
+  $('region-state').textContent=`Selected branch: ${r.branches} branch decisions, ${r.forced} forced decisions, ${r.backtracks} backtracks, ${r.attempted_base_placements} actual base-placement attempts. The largest graph has ${r.peak_candidate_nodes.toLocaleString()} candidate nodes and ${r.peak_incidences.toLocaleString()} incidences. ${r.admissible_placements.toLocaleString()} admissible placements are retained in the complete frozen-boundary inventory.`;
+  $('region-cost').textContent=`Gray is inventory compilation; green is the remaining search and replay cost. Cold policy training ${fmt(regionData.training.seconds)} s; full pilot ${fmt(regionData.total_seconds)} s; peak process memory ${(regionData.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Budgets: 10,000 nodes and ten seconds per boundary member, including compilation. All timings are one run per problem and lane.`;
+}
+function regionResults(){
+  $('region-finding').textContent='All six fixed targets and both movable families complete in all three lanes. The singleton reference is fastest on every case. RL removes backtracking on the two witness-free targets, but aggregate compilation and bookkeeping outweigh that gain. Useful cluster markings and a practical multiscale speedup remain open.';
+  const a=regionData.independent_audit,training=regionData.training.episodes.filter(r=>r.status==='finite_exact_region').length;
+  $('region-audit').textContent=`${a.states_replayed} exported states replay; ${a.completed_states} complete their declared targets. ${a.new_base_placements_replayed} new base placements checked; ${a.negative_tree_nodes_checked} complete failure-tree nodes replay; ${a.tampered_certificates_rejected} altered certificates reject. Six new local solution types pass ${a.transformed_expansions_checked} transformed expansion checks. The polygon audit finds no positive-area overlap in ${a.geometry.evaluation_runs.length} displayed finite patches. Separate audit ${fmt(a.seconds)} s; ${suiteTests()} semantic tests pass. Training completes ${training} of 24 rollouts.`;
+  $('region-mode').addEventListener('change',regionCases);['region-problem','region-lane'].forEach(id=>$(id).addEventListener('change',regionUpdate));$('region-attempt').addEventListener('change',regionView);regionCases();
+}
 
 function clusterTileView(){
   const t=clusterData.types.find(t=>t.identity===$("cluster-tile-view").value),children=clusterData.child_expansions[t.identity];
@@ -22,7 +69,7 @@ function clusterTileView(){
 function clusterTileResults(){
   clusterData.types.forEach(t=>{const o=document.createElement("option");o.value=t.identity;o.textContent=`Level ${t.level} · ${t.identity} · ${t.expansion.length} base tiles`;$("cluster-tile-view").append(o);});
   $("cluster-tile-view").value='observed-parent';$("cluster-tile-view").addEventListener('change',clusterTileView);clusterTileView();
-  $("cluster-tile-evidence").textContent=`${clusterData.prototype_count} types include the base singleton, 14 searched clusters and one observed parent. All ${clusterData.transformed_expansions_checked} transformed expansions replay to exact base values. Five new semantic tests cover inherited level channels, zero-valued distant dependencies, complete aggregate incidence, exact snapshots, base fallback and rejected malformed hierarchies. The complete research suite now passes ${proofData.semantic_tests.passed} tests.`;
+  $("cluster-tile-evidence").textContent=`${clusterData.prototype_count} types include the base singleton, 14 searched clusters and one observed parent. All ${clusterData.transformed_expansions_checked} transformed expansions replay to exact base values. Five semantic tests cover inherited level channels, zero-valued distant dependencies, complete aggregate incidence, exact snapshots, base fallback and rejected malformed hierarchies. The complete research suite now passes ${suiteTests()} tests; the boundary pilot below constructs six further parent types from searched local completions.`;
 }
 
 const proofSymbolColor=s=>Array.isArray(s)?"#c97940":String(s).startsWith("w:")||String(s).startsWith("c:")?"#4b8068":String(s).startsWith("r:")||["p",";","X","_"].includes(s)?"#99bac1":["L","#","$","c#"].includes(s)?"#8a728b":"#e7e9de";
@@ -78,10 +125,10 @@ function genericProofResults(){
   const standard=summary.find(s=>s.lane==="standard Wang"),analytic=summary.find(s=>s.lane==="analytic GCTS"),rl=summary.find(s=>s.lane==="RL + standard Wang");
   $("proof-search-finding").textContent=`Cold training checked ${d.training.success} of ${d.training.episodes.length} proposals. On the three shorter held-out sources, learned proposals found ${rl.success} checked proofs; standard Wang found ${standard.success} and the analytic marking alone found ${analytic.success}. Each rectangle has the same 100,000-placement and five-second bounds in every lane. The analytic marking adds propagation work and does not improve the learned lane here. These tiny same-theory examples establish an executable path, not a general theorem-proving speedup.`;
   const a=d.independent_audit;
-  $("proof-search-cost").textContent=`Cold training ${fmt(d.training.seconds)} s; generated programs ${fmt(d.problems.reduce((sum,p)=>sum+p.compile_seconds,0))} s; complete experiment ${fmt(d.total_seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Separate replay ${fmt(a.seconds)} s checked ${a.checked_rectangles.length} rectangles and ${a.point_placements_checked.toLocaleString()} base placements, and rejected ${a.tampered_certificates_rejected} altered certificates/statements. Search timings include domain construction; lane totals also include proposal compilation and successful search replay. The bounded fair-driver control returns unknown after ${d.fair_bound_control.attempts} attempts. All ${d.semantic_tests.passed} semantic tests pass.`;
+  $("proof-search-cost").textContent=`Cold training ${fmt(d.training.seconds)} s; generated programs ${fmt(d.problems.reduce((sum,p)=>sum+p.compile_seconds,0))} s; complete experiment ${fmt(d.total_seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Separate replay ${fmt(a.seconds)} s checked ${a.checked_rectangles.length} rectangles and ${a.point_placements_checked.toLocaleString()} base placements, and rejected ${a.tampered_certificates_rejected} altered certificates/statements. Search timings include domain construction; lane totals also include proposal compilation and successful search replay. The bounded fair-driver control returns unknown after ${d.fair_bound_control.attempts} attempts. All ${suiteTests()} semantic tests pass.`;
 }
 
-function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,groups=null}={}){
+function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,groups=null,fills=null}={}){
   svg.replaceChildren();
   const loops=placements.map(key=>verts(data.point_model.vertices,key).map(project));
   const projectedPoints=points.map(p=>project(p));
@@ -101,7 +148,7 @@ function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,grou
   loops.forEach((loop,i)=>{
     const o=placements[i][0],p=syms[o].p;
     const inversions=Number(p[0]>p[1])+Number(p[0]>p[2])+Number(p[1]>p[2]);
-    const fill=groups?`hsl(${groups[i]*137.508%360} 27% 58%)`:inversions%2?"#d19163":"#6d9c83";
+    const fill=fills?fills[i]:groups?`hsl(${groups[i]*137.508%360} 27% 58%)`:inversions%2?"#d19163":"#6d9c83";
     const shape=el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill,"fill-opacity":.72,stroke:"#345648","stroke-width":1.1,"stroke-linejoin":"round"});
     shape.append(el("title",{},`Base placement ${i+1}; orientation ${o}; translation ${placements[i][1].join(",")}`));
     svg.append(shape);
@@ -364,7 +411,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r4.3",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -375,31 +422,34 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r4.3",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r4.3",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r4.3",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r4.3",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r4.3",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
+    const regionResponse=await fetch('regions-001.json?v=20261009-r5.1',{cache:'no-cache'});
+    if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
+    regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
     genericProofResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r4.3",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r5.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
-    clusterData=await clusterResponse.json();clusterTileResults();
-    $("load-status").textContent=`Three turtle studies, a cold rhomb pilot, and generic word-proof search recorded · ${proofData.semantic_tests.passed} semantic tests pass · finite certificates independently replayed.`;
+    clusterData=await clusterResponse.json();clusterTileResults();regionResults();
+    $("load-status").textContent=`Fixed/movable boundary pilot, three turtle studies, a cold rhomb pilot and generic word-proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

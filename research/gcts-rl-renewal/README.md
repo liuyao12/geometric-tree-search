@@ -493,3 +493,82 @@ memory, boundary robustness and expansion checking across tile systems.
 python3 research/gcts-rl-renewal/export_cluster_types.py
 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 ```
+
+## Finite boundary pilot and searched solution tiles
+
+`region_tiles.py` declares immutable required points \(D\), a finite admissible
+support envelope \(P\), fixed exterior occupancy and marking components, and
+fixed exterior base ownership. Only \(D\) is a completion obligation; all
+occupancy remains capacity-legal everywhere, including outside \(D\). Every
+required zero is active from the start. Mark-only points are not restricted to
+\(P\). Exterior support and required roots have generation zero, so every
+placed candidate touching a required root has tile generation one. This is a
+finite boundary convention, not a measurement of spatial growth layers.
+
+The compiler enumerates every type, all twelve symmetries and all translations
+anchoring a positive point inside \(P\). It retains every initially legal
+placement. Immutable exterior conditions allow an exact initial filter;
+subsequent graph updates handle every mutable occupancy, component and base
+ownership dependency. Independent domains enumerate all support alignments
+without the compiler index. Search uses the reference global scheduler and
+full snapshots. Exhaustion exports a complete tree; the independent checker
+re-enumerates all domains and alternatives. A cutoff returns unknown. The
+cooperative ten-second limit includes compilation but can only interrupt at
+search checkpoints. No marking learner is hidden inside this compiler.
+
+`run_regions.py` explicitly reuses sixteen unmarked types and earlier unmarked
+core patches. Four evaluation holes use two patches as fixed exterior contexts;
+six training holes use a third patch. Removed placements appear only in the
+problem-authoring feasibility controls, never in search or policy features.
+Two extra targets, a hexagonal core and a notched core with a disconnected
+pocket, have no donor/exterior/feasibility witness. REINFORCE starts at zero,
+trains for 24 episodes, and charges actual base-placement attempts and nodes.
+Ten rollouts complete. Frozen evaluation has all singleton fallbacks and full
+DFS alternatives. One seed per case is an implementation pilot, not a reliable
+speed estimate.
+
+All six targets complete in all three lanes. Both declared movable families
+also complete in every lane: their remote member exhausts with a checked dead
+domain; their translated member succeeds. Each family shares a fixed exterior
+and envelope across three explicit required sets. Each member receives its own
+budget and fresh state. This is finite existential shape/position selection,
+not continuous boundary optimization. Unknown members remain unknown even if
+another member succeeds.
+
+The singleton reference is faster on every case. On the witness-free targets,
+RL reduces aggregate backtracking to zero, but aggregate inventory construction
+and bookkeeping outweigh that gain. Atomic aggregate inventory and singleton
+scheduling differ, so their comparison is not a matched GCTS-marking benchmark.
+Peak process memory is about 604 MiB; construction, training and auditing costs
+are explicit. Graph metrics inherited from `Graph` classify ownership-only
+removals in its generic `completed_frontier` category; they do not identify a
+learned marking effect or a separately measured ownership elimination rate.
+
+Six searched completions become new parent types with descending child maps;
+all 72 transformed expansions independently flatten. Their completion guarantee
+is boundary-context-specific. The types are legal partial tiles elsewhere,
+where their interfaces must still match. All own-level channels remain free.
+This implements local-solution extraction, not learned multiscale failure
+markings or a recurrent substitution.
+
+`audit_regions.py` reconstructs problem declarations externally, checks 55
+serialized states (34 complete), replays 268 new base constituents and eleven
+negative-tree nodes, and rejects 137 altered certificates. Exact rational
+polygon clipping finds no positive-area overlaps in the 24 displayed finite
+patches. That independent audit does not prove general geometric faithfulness,
+continuous region coverage or infinite extension. Six new conformance tests
+cover required zeros, unrequired exterior points, full boundary domains,
+snapshot rollback, distant assigned-zero components, finite-family state
+reset, complete negative trees and export tampering. The full suite passes 57.
+
+```sh
+python3 research/gcts-rl-renewal/run_regions.py
+python3 research/gcts-rl-renewal/audit_regions.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+Next: compress/reuse exact boundary interfaces, learn own-level cluster marking
+channels from independently certified failures, and search coarse assemblies
+with checked refinement. Larger regions, other tile systems, plane continuation
+and the first-order kernel-to-machine bridge remain open. Turtle substitution
+remains an optional route to a plane proof.
