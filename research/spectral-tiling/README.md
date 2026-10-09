@@ -20,8 +20,11 @@ python arithmetic_spectra.py
 python mixed_reflections.py
 python compute_modes.py
 python elementary_modes.py
+python additional_tiles.py
+python compute_additional_modes.py
 python build_page.py
 python verify_elementary.py
+python verify_additional.py
 python verify_notes.py
 python verify_modes.py
 ```
@@ -54,8 +57,30 @@ The numerical viewer initially hides recorded family matches and the known
 Neumann constant. This
 display filter retains unknown modes and unresolved candidates and preserves
 their original ranks; it is not a certified continuum deflation or a
-classification of all remaining eigenvalues as non-algebraic. All 1290
+classification of all remaining eigenvalues as non-algebraic. All 2010
 computed fields and complete unfiltered lists remain available.
+
+The additional atlas contains the Sphinx hexiamond, the bare regular hexagon
+underlying Socolar–Taylor, the pinwheel triangle, both Penrose rhombi, and
+the Ammann–Beenker rhombus. Each has 60 Dirichlet and 60 Neumann fields on two
+nested meshes. `additional-tiles.json` records the geometries, primary sources,
+tiling status and 120 further exact elementary functions. Matching rules and
+substitutions remain separate from the bare-polygon boundary operators.
+`additional-mode-data.json` retains numerical diagnostics, projection matches
+and image checksums; `additional-verification.json` checks every field and
+boundary certificate. These datasets are embedded separately in the HTML,
+preserving the preceding numerical receipt and its input hashes.
+
+Every nonconstant exact family now has an exact certificate for each tile
+edge, source edge and triangle median: the affine reflection, integer phase
+and odd/even parity imply Dirichlet/Neumann conditions. Square products use
+integer coordinate lines. The universal Neumann constant has zero gradient
+on any polygon. The sampled traces and fluxes supplement these identities.
+The FEM Dirichlet trace is imposed strongly and remains zero on interpolated
+boundary edges. FEM Neumann conditions are natural weak conditions; the
+normal derivative of a displayed P1 field need not vanish pointwise.
+Corners and mixed junctions use the weak trace formulation. Numerical
+residuals and refinement movements do not certify continuum error bounds.
 
 `arithmetic_spectra.py` adds exact integer checks of triangular-lattice
 reflections for the natural Hat and Turtle, four nested meshes with ninety

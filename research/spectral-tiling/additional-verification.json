@@ -1,0 +1,570 @@
+{
+  "status": "passed",
+  "date": "2026-10-08",
+  "exact_functions_checked": 120,
+  "numerical_fields_checked": 720,
+  "boundary_certificates": {
+    "sphinx:D": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 10,
+        "affine_translation": [
+          2,
+          2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "sphinx:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 10,
+        "affine_translation": [
+          2,
+          2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "st-hexagon:D": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 10,
+        "affine_translation": [
+          -1,
+          -1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "st-hexagon:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 10,
+        "affine_translation": [
+          -1,
+          -1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "pinwheel:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "proof": "constant gradient is zero"
+      }
+    ],
+    "penrose-thick:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "proof": "constant gradient is zero"
+      }
+    ],
+    "penrose-thin:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "proof": "constant gradient is zero"
+      }
+    ],
+    "ammann-beenker:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "proof": "constant gradient is zero"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "proof": "constant gradient is zero"
+      }
+    ]
+  },
+  "maximum_sample_D_trace": 9.348077867343818e-14,
+  "maximum_sample_N_flux": 6.224354365258478e-12,
+  "checks": [
+    "Input hashes and both webpage payloads",
+    "Polygon areas and unit-edge rhombi",
+    "Exact affine reflection/parity certificates; integer frequency covariance; sampled boundary diagnostics",
+    "Strong zero Dirichlet trace, natural Neumann operator, constant mode, matrix residual and mass orthogonality",
+    "Nested refinement monotonicity and Neumann/Dirichlet minmax order",
+    "Every field image cell checksum"
+  ],
+  "limitations": "No certified continuum error bounds. Neumann is imposed weakly; pointwise derivatives of P1 fields are not zero-flux certificates. Only the stated exact families are classified. Markings are not encoded in the new operators."
+}

@@ -3,6 +3,8 @@
   const dataElement = document.getElementById('mode-data');
   if (!dataElement) return;
   const data = JSON.parse(dataElement.textContent);
+  const additional = document.getElementById('additional-mode-data');
+  if (additional) data.domains.push(...JSON.parse(additional.textContent).domains);
   const root = document.getElementById('spectrum-viewer');
   const get = id => document.getElementById(id);
   const math = value => '\\(' + value + '\\)';
@@ -151,7 +153,7 @@
     ]) html += `<div><dt>${label}</dt><dd>${value}</dd></div>`;
     html += '</dl>';
     if (exact) {
-      const level = exact.family === 'mixed_reflection' ? (exact.q % 3 === 0 ? `${16*exact.q/3}\\pi^2` : `\\frac{${16*exact.q}}{3}\\pi^2`) : `${exact.q}\\pi^2`;
+      const level = ['mixed_reflection','triangle_reflection'].includes(exact.family) ? (exact.q % 3 === 0 ? `${16*exact.q/3}\\pi^2` : `\\frac{${16*exact.q}}{3}\\pi^2`) : `${exact.q}\\pi^2`;
       html += `<div class="spectrum-family"><p><strong>Known constructed family.</strong> Exact level ${math(level)}; at least ${math(exact.constructed_multiplicity)} independent constructed mode${exact.constructed_multiplicity === 1 ? '' : 's'}. Numerical subspace projection ${math(number(exact.projection))}.</p>${exact.family === 'mixed_reflection' ? '<p>Mixed reflection-character orbit. Coherent gluing is proved for placements in the specified triangular lattice and its dihedral group.</p>' : ''}</div>`;
     }
     else if (s.bc === 'N' && m.mode === 0) {
@@ -167,6 +169,8 @@
       s.bc === 'mixed' ? 'Vertical edges: Dirichlet. Horizontal edges: Neumann. The constructed sine–cosine subset has coherent gluing on the translation tiling; this claim does not cover every mixed mode.' :
       s.bc === 'D' ? 'Dirichlet on the entire boundary: zero trace.' : 'Neumann on the entire boundary: zero normal derivative in the weak formulation. The zero mode is constant.';
     html += `<p>${boundaryText}</p>`;
+    html += '<p class="spectrum-note">Dirichlet values are imposed exactly on the FEM trace. Neumann edges use the natural weak condition; the plotted piecewise-linear normal derivative need not vanish pointwise. Matrix residuals measure the discrete equation.</p>';
+    if (domain.tiling_status) html += `<p>${domain.tiling_status} <a href="${domain.source_url}" target="_blank" rel="noopener">Primary source</a>.</p>`;
     if (domain.edge_kinds) html += `<p>${math(s.modes.length)} modes computed for this assignment. Generic mixed modes are not asserted to glue; the exact character families are checked separately.</p>`;
     replace(get('spectrum-mode-detail'), html);
     get('spectrum-mode').value = `${s.bc}:${m.index}`;
@@ -195,7 +199,7 @@
     selectedBC = domain.spectra.some(s => s.bc === 'shortD') ? 'shortD' : 'D'; selectedIndex = 0; view = lowRange(); fillModes(); drawChart(); drawDetail();
   }
   for (const d of data.domains) get('spectrum-domain').add(new Option(d.label,d.id));
-  get('spectrum-domain').value = 'hat';
+  get('spectrum-domain').value = 'sphinx';
   get('spectrum-domain').addEventListener('change', resetDomain);
   get('spectrum-subset').addEventListener('change',() => {fillModes();select(selectedBC,selectedIndex);});
   get('spectrum-scale').addEventListener('change', event => {

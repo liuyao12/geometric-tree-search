@@ -13,6 +13,51 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def boundary_certificates(domain,family,group,lattice_vertices=None):
+    """Exact affine reflection proof, independent of sampled trace/flux values."""
+    if family.get('constant_only'):
+        assert all(c == 'N' for c in family['boundary_edges'])
+        assert all(m['m'] == m['n'] == 0 for m in family['modes'])
+        return [{'domain':'tile','edge_index':i,'proof':'constant gradient is zero'} for i in range(len(domain['polygon']))]
+    if family['source_kind'] == 'square':
+        certificates = []
+        for name,polygon,conditions in [('source',domain['source_polygon'],family['source_boundary']),('tile',domain['polygon'],family['boundary_edges'])]:
+            for i,p in enumerate(polygon):
+                q = polygon[(i+1)%len(polygon)]
+                axis = 0 if p[0] == q[0] else 1
+                assert p[axis] == q[axis] and int(p[axis]) == p[axis]
+                key = 'x_kind' if axis == 0 else 'y_kind'
+                assert all(conditions[i] == ('D' if m[key] == 'sin' else 'N') for m in family['modes'])
+                certificates.append({'domain':name,'edge_index':i,'axis':axis,'integer_coordinate':int(p[axis]),'condition':conditions[i]})
+        return certificates
+    def multiply(a,b):
+        return [[sum(a[i][k]*b[k][j] for k in range(2)) for j in range(2)] for i in range(2)]
+    def apply(w,p):
+        return [sum(w[i][j]*p[j] for j in range(2)) for i in range(2)]
+    signs = family['group_character']
+    for i,a in enumerate(group):
+        for j,b in enumerate(group):
+            assert signs[group.index(multiply(a,b))] == signs[i]*signs[j]
+    certificates = []
+    assert lattice_vertices is not None
+    B = domain['lattice_basis']
+    reconstructed = [[sum(B[i][j]*p[j] for j in range(2)) for i in range(2)] for p in lattice_vertices]
+    assert all(math.dist(a,b) < 1e-12 for a,b in zip(reconstructed,domain['polygon']))
+    source = [[0,0],[1,0],[0,1]]
+    for name,vertices,conditions in [('tile',lattice_vertices,family['boundary_edges']),('source',source,family['source_boundary']),('median',source,[family['median_boundary']]*3)]:
+        for i,p in enumerate(vertices):
+            # Median directions are doubled to avoid fractional arithmetic.
+            edge = [vertices[(i+1)%3][j]+vertices[(i+2)%3][j]-2*p[j] for j in range(2)] if name == 'median' else [vertices[(i+1)%len(vertices)][j]-p[j] for j in range(2)]
+            candidates = [k for k in range(6,12) if apply(group[k],edge) == edge]
+            assert len(candidates) == 1
+            k = candidates[0]
+            offset = [p[j]-apply(group[k],p)[j] for j in range(2)]
+            assert all(isinstance(t,int) for t in offset)
+            assert signs[k] == (-1 if conditions[i] == 'D' else 1)
+            certificates.append({'domain':name,'edge_index':i,'group_index':k,'affine_translation':offset,'condition':conditions[i]})
+    return certificates
+
+
 def evaluate(domain,mode,x,y):
     if 'm' in mode:
         values,derivatives = [],[]
@@ -43,6 +88,8 @@ def main():
     numeric = json.loads((ROOT/'mode-data.json').read_text())
     mixed = json.loads((ROOT/'mixed-reflections.json').read_text())
     group = data['group_axial_matrices']
+    axial = json.loads((ROOT/'arithmetic-spectra.json').read_text())['exact_mirror_checks']['domains']
+    certificates = {}
     maximum_trace,maximum_flux,nonzero_count = 0.,0.,0
     for domain in data['domains']:
         reference = next(d for d in numeric['domains'] if d['id'] == domain['id'])
@@ -51,6 +98,8 @@ def main():
         lengths = [math.dist(p,source[(i+1)%len(source)]) for i,p in enumerate(source)]
         assert all(abs(length-1) < 1e-12 for length in lengths)
         for family in domain['families']:
+            vertices = axial[domain['label']]['lattice_vertices'] if domain['id'] != 'L' else None
+            certificates[domain['id']+':'+family['bc']] = boundary_certificates(domain,family,group,vertices)
             expected = next(s for s in reference['spectra'] if s['bc'] == family['bc'])
             assert family['boundary_edges'] == expected['boundary_edges']
             assert [m['normalized_value'] for m in family['modes']] == sorted(m['normalized_value'] for m in family['modes'])
@@ -103,10 +152,12 @@ def main():
     assert payload and json.loads(payload[1]) == data
     result = {'status':'passed','date':data['date'],'elementary_functions_checked':nonzero_count,
         'checks':['Source and input hashes; webpage payload equals exact catalogue',
+                  'Exact affine mirror, integer phase and D/N parity certificate for every source edge, tile edge and triangle median',
                   'Unit square and equilateral source geometry; source traces and fluxes',
                   'Triangle median parity, exact frequency norms and integer covariance',
                   'Every induced tile edge condition agrees with the numerical operator',
                   'Mixed orbit subsets agree with the preceding exact receipt'],
+        'boundary_certificates':certificates,
         'maximum_sample_D_trace':maximum_trace,'maximum_sample_N_flux':maximum_flux,
         'limitations':'Sample evaluations are floating diagnostics. The reflection identities establish the exact functions; neither the catalogue nor the numerical remainder is claimed to exhaust the tile spectrum.'}
     (ROOT/'elementary-verification.json').write_text(json.dumps(result,indent=2)+'\n')

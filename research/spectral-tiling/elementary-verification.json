@@ -4,11 +4,1846 @@
   "elementary_functions_checked": 289,
   "checks": [
     "Source and input hashes; webpage payload equals exact catalogue",
+    "Exact affine mirror, integer phase and D/N parity certificate for every source edge, tile edge and triangle median",
     "Unit square and equilateral source geometry; source traces and fluxes",
     "Triangle median parity, exact frequency norms and integer covariance",
     "Every induced tile edge condition agrees with the numerical operator",
     "Mixed orbit subsets agree with the preceding exact receipt"
   ],
+  "boundary_certificates": {
+    "L:D": [
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 2,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "axis": 1,
+        "integer_coordinate": 2,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "D"
+      }
+    ],
+    "L:mixed": [
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 2,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "axis": 1,
+        "integer_coordinate": 2,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "D"
+      }
+    ],
+    "L:N": [
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "axis": 1,
+        "integer_coordinate": 0,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "axis": 0,
+        "integer_coordinate": 2,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "axis": 1,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "axis": 0,
+        "integer_coordinate": 1,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "axis": 1,
+        "integer_coordinate": 2,
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "axis": 0,
+        "integer_coordinate": 0,
+        "condition": "N"
+      }
+    ],
+    "hat:shortD": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 10,
+        "affine_translation": [
+          5,
+          5
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          6,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          9
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 9,
+        "affine_translation": [
+          6,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 6,
+        "affine_translation": [
+          -6,
+          12
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 9,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "hat:longD": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 10,
+        "affine_translation": [
+          5,
+          5
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          6,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          9
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 9,
+        "affine_translation": [
+          6,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 6,
+        "affine_translation": [
+          -6,
+          12
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 9,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "D"
+      }
+    ],
+    "hat:D": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 10,
+        "affine_translation": [
+          5,
+          5
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          6,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          9
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 9,
+        "affine_translation": [
+          6,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 6,
+        "affine_translation": [
+          -6,
+          12
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 9,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "D"
+      }
+    ],
+    "hat:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 8,
+        "affine_translation": [
+          2,
+          -1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 10,
+        "affine_translation": [
+          5,
+          5
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 8,
+        "affine_translation": [
+          6,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          9
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 9,
+        "affine_translation": [
+          6,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 6,
+        "affine_translation": [
+          -6,
+          12
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 8,
+        "affine_translation": [
+          -2,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 9,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "turtle:shortD": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 9,
+        "affine_translation": [
+          9,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 10,
+        "affine_translation": [
+          7,
+          7
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 8,
+        "affine_translation": [
+          8,
+          -4
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          12
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 9,
+        "affine_translation": [
+          3,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ],
+    "turtle:longD": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 9,
+        "affine_translation": [
+          9,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 10,
+        "affine_translation": [
+          7,
+          7
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 8,
+        "affine_translation": [
+          8,
+          -4
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          12
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 9,
+        "affine_translation": [
+          3,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "D"
+      }
+    ],
+    "turtle:D": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 9,
+        "affine_translation": [
+          9,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 10,
+        "affine_translation": [
+          7,
+          7
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 8,
+        "affine_translation": [
+          8,
+          -4
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          12
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 9,
+        "affine_translation": [
+          3,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "D"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "D"
+      }
+    ],
+    "turtle:N": [
+      {
+        "domain": "tile",
+        "edge_index": 0,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 1,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 2,
+        "group_index": 10,
+        "affine_translation": [
+          3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 3,
+        "group_index": 6,
+        "affine_translation": [
+          1,
+          -2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 4,
+        "group_index": 9,
+        "affine_translation": [
+          9,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 5,
+        "group_index": 7,
+        "affine_translation": [
+          3,
+          -3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 6,
+        "group_index": 10,
+        "affine_translation": [
+          7,
+          7
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 7,
+        "group_index": 8,
+        "affine_translation": [
+          8,
+          -4
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 8,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          12
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 9,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 10,
+        "group_index": 7,
+        "affine_translation": [
+          -3,
+          3
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 11,
+        "group_index": 9,
+        "affine_translation": [
+          3,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 12,
+        "group_index": 6,
+        "affine_translation": [
+          -1,
+          2
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "tile",
+        "edge_index": 13,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 0,
+        "group_index": 6,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 1,
+        "group_index": 10,
+        "affine_translation": [
+          1,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "source",
+        "edge_index": 2,
+        "group_index": 8,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 0,
+        "group_index": 7,
+        "affine_translation": [
+          0,
+          0
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 1,
+        "group_index": 11,
+        "affine_translation": [
+          0,
+          1
+        ],
+        "condition": "N"
+      },
+      {
+        "domain": "median",
+        "edge_index": 2,
+        "group_index": 9,
+        "affine_translation": [
+          1,
+          0
+        ],
+        "condition": "N"
+      }
+    ]
+  },
   "maximum_sample_D_trace": 3.827493877395227e-13,
   "maximum_sample_N_flux": 1.548215718061135e-11,
   "limitations": "Sample evaluations are floating diagnostics. The reflection identities establish the exact functions; neither the catalogue nor the numerical remainder is claimed to exhaust the tile spectrum."

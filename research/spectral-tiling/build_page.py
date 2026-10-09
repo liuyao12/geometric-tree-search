@@ -107,6 +107,21 @@ def main():
     source,count = re.subn(r'(<script id="elementary-data" type="application/json">).*?(</script>)',
                           lambda m:m[1]+encoded_elementary+m[2],source,flags=re.S)
     assert count == 1
+    for identifier,name in [('additional-mode-data','additional-mode-data.json'),('additional-elementary-data','additional-tiles.json')]:
+        payload = json.loads((ROOT/name).read_text())
+        encoded = json.dumps(payload,separators=(',',':')).replace('<',r'\u003c')
+        source,count = re.subn(r'(<script id="'+identifier+r'" type="application/json">).*?(</script>)',
+            lambda m:m[1]+encoded+m[2],source,flags=re.S)
+        assert count == 1,identifier
+    additional = json.loads((ROOT/'additional-mode-data.json').read_text())
+    rows = []
+    for domain in additional['domains']:
+        D,N = domain['spectra']
+        values = [m['value'] for m in D['modes'][:3]]
+        change = max(m['last_change']/m['value'] for s in [D,N] for m in s['modes'][:12] if m['value'])*100
+        rows.append('<tr><td>'+domain['label']+'</td><td>'+math(r',\;'.join(f'{v:.6f}' for v in values))+
+            '</td><td>'+math(f'{change:.3f}'+r'\%')+'</td><td>'+math(D['checks']['nodes'])+'</td></tr>')
+    source = replace_body(source,'additional-atlas-table',''.join(rows))
     PAGE.write_text(source)
     print(json.dumps({'gap_rows': len(gaps), 'refinement_stable_rows': sum(g['status'] == 'refinement-stable estimate' for g in gaps),
                       'pending_rows': sum(g['status'] != 'refinement-stable estimate' for g in gaps),
