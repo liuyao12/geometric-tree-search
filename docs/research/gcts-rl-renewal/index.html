@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r8.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r9.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r8.1"></script>
+  <script defer src="report.js?v=20261009-r9.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 08</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 09</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,37 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="multiscale-experiment">
+    <p class="eyebrow">MULTISCALE PILOT 02 · TWO CHILD TYPES AND A NEW PARENT CHANNEL</p><h2>Learn an interface. Test the next scale.</h2>
+    <p>Two previously searched, unmarked two-turtle shapes start with free values in a shared level-one channel. Fresh unmarked base searches label every capacity-legal contact between them. A newly completed cross-type assembly becomes a four-turtle parent, inherits the child values, and learns a separate level-two channel from another complete contact study. No old marking, policy, completion witness or boundary is imported.</p>
+    <div class="callout" id="multiscale-finding">Loading the two-level contact audit…</div>
+    <div class="controls"><label>Learning level <select id="multiscale-stage"><option value="0">1 · shared child palette</option><option value="1">2 · parent’s own palette</option></select></label><label>Prototype <select id="multiscale-type"></select></label><label>Values <select id="multiscale-values"><option value="final">Final sparse marking</option><option value="online">Online equality state</option><option value="inherited">Inherited child channel</option></select></label><label>Unmarked base contact <select id="multiscale-contact"></select></label></div>
+    <div class="slider-row"><label for="multiscale-step">Labels processed</label><input id="multiscale-step" type="range" min="1" max="1818" value="1818"><output id="multiscale-step-value">1818</output></div>
+    <div class="evidence-grid"><div><svg id="multiscale-values-drawing" viewBox="0 0 500 400" role="img" aria-label="Own or inherited scalar marking values on the selected cluster prototype"></svg><p id="multiscale-values-caption" class="caption"></p></div><div><svg id="multiscale-contact-drawing" viewBox="0 0 560 400" role="img" aria-label="A checked finite contact completion or the first exhausted-search dead leaf"></svg><p id="multiscale-contact-caption" class="caption"></p></div></div>
+    <div class="table-scroll"><table><thead><tr><th>Level</th><th>Contacts</th><th>Positive / negative / unknown</th><th>Assigned / free values</th><th>Failures encoded</th></tr></thead><tbody id="multiscale-labels"></tbody></table></div>
+    <details open><summary>A parent that cannot tile alone</summary>
+      <p id="multiscale-obstruction"></p>
+      <p>The argument lifts finite machine-checked trees to a parent-only point-tiling obstruction: the parent contributes \(t(p)=\tfrac13\) at \(p=(-4,-6,10)\). A complete tiling must put another parent there. Normalize the first pose by a lattice symmetry and translation. The pair belongs to the exhaustive capacity-legal contact catalog, and its base failure tree contradicts any complete continuation. All \(4{,}032\) base support/group-composition checks replay.</p>
+      <p>This analytic lifting is not a formally encoded first-order proof. It concerns this parent as the sole tile type, with disjoint base ownership. The mixed hierarchy retains all unmarked singletons and still completes finite regions. A finite local solution can make a useful partial tile while failing as a recurrent metatile.</p>
+    </details>
+    <h3 class="spaced-title">Authored boundaries, with complete singleton refinement</h3>
+    <p>Required cores have radii \(4,6,8\); a fourth target has a notch and a disconnected pocket. All use the same radius-\(14\) support envelope, zero exterior and no supplied feasibility witness. Every required point must reach full capacity. Contributions elsewhere remain capacity-legal. These are exact finite point problems; the pictures and separate non-overlap checks do not certify coverage of a continuous region or of the plane.</p>
+    <div class="controls"><label>Boundary request <select id="multiscale-region"></select></label><label>Search lane <select id="multiscale-lane"></select></label><label>Replicate <select id="multiscale-replicate"><option value="0">1</option><option value="1">2</option></select></label></div>
+    <div class="evidence-grid"><div><svg id="multiscale-region-drawing" viewBox="0 0 720 430" role="img" aria-label="A finite regional solution colored by atomic cluster membership, with required points in gold"></svg><p id="multiscale-region-caption" class="caption"></p></div><div><h3>What the hierarchy helps—and costs</h3><p id="multiscale-region-state"></p><p id="multiscale-performance"></p><p class="small">All four-type marking and RL lanes have the same atomic shapes and scheduler. Markings may restrict finite groupings; all singleton paths remain. The singleton-only reference changes the inventory and scheduling granularity. A cutoff means unknown. Two seeds per target provide a pilot, not a general speed guarantee.</p></div></div>
+    <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Exact targets</th><th>Mean request seconds</th><th>Total backtracks</th><th>Parent placements</th></tr></thead><tbody id="multiscale-benchmark"></tbody></table></div>
+    <h3 class="spaced-title">Reuse the full inventory across boundary requests</h3>
+    <p id="multiscale-resident"></p>
+    <p class="small">This optimization freezes every placement for a declared envelope and tile/marking version. Each request filters only immutable boundary incompatibilities and creates a fresh complete incidence graph. It reuses geometry; it does not reuse branch states, learned pruning or a solved region.</p>
+    <p id="multiscale-cost" class="caption"></p><p id="multiscale-audit" class="caption"></p>
+    <details><summary>Conformance, interpretation and next experiments</summary>
+      <p>Every label search strips inherited and own markings and uses the complete base turtle inventory. Positive labels merge overlapping type-tagged point slots; negatives offer inequality alternatives; unknowns impose no constraints. Evolving values never filter the label oracle. Sparse values are activated only after independently replaying every label and checking every possible scalar disagreement. Hollow circles are individual free entries; zero is an assigned color identifier.</p>
+      <p>A parent keeps descending child maps and every inherited component. Its own channel excludes \(70\) additional contacts beyond the \(577\) already excluded by inheritance, for \(647\) in total. The remaining \(30\) failures are certified but not expressed by this sparse scalar palette. The new channel adds almost no benefit on these regional trials. Positive finite assemblies and recurrent coarse inventories need separate selection criteria.</p>
+      <p>Global dead ends, global forced moves, then earliest generation govern every trial. Complete point/candidate incidence includes extended marking dependencies. Exact snapshots restore roots, generations, ownership, values and graph state. RL starts at zero, trains on four smaller translated targets, and orders validated atomic cluster placements; full evaluation retains all alternatives. Atomic aggregate search differs from macro execution in the base scheduler.</p>
+      <p>The PDE analogy now suggests a concrete next gate: require useful cross-type coarse continuation before promoting more parents, solve local requests with collars, and test repeated boundary families with cache cost amortized explicitly. Then compare adaptive lower-level refinement with one stationary mixed coarse inventory. No multigrid convergence theorem is transferred to tiling. Fixed and movable boundary studies, Penrose hierarchy and proof-fragment abstractions remain active goals.</p>
+    </details>
+    <p class="small"><a href="multiscale-regions-001.json">Boundaries, policy, all 68 exported states, costs, source hashes and saved-data audit ↗</a> · <a href="multiscale-level1-001.json">Every level-one label and equality update ↗</a> · <a href="multiscale-level2-001.json">Every parent failure tree and new value ↗</a></p>
+  </section>
 
   <section class="panel" id="kernel-machine-research">
     <p class="eyebrow">FIRST-ORDER BRIDGE · COMPILED FACTS AND PROOF COMMANDS</p><h2>A mathematical proof problem becomes a Wang search.</h2>
@@ -261,8 +292,8 @@
       <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
       <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
       <li><span class="goal-state active">Context proposals</span><div><h3>RL proposes clusters and sequences</h3><p>Shared placements count once; diverse motifs and scheduler-checked continuations retain all base moves. The measured turtle policies have not demonstrated an acceleration. Next: learn hierarchical productions and improve the cost of proposing them.</p></div></li>
-      <li><span class="goal-state active">First channel learned</span><div><h3>Learn marked tiles at multiple scales</h3><p>A two-turtle cluster learns its own scalar channel from checked base failures; a parent inherits it. Extend the marking learner to multiple types and higher-level failure contexts, then search coarse assemblies with refinement. A stationary substitution is optional.</p></div></li>
-      <li><span class="goal-state active">Region pilot 01</span><div><h3>Practical boundary solving and plane coverage</h3><p>Six finite targets and two movable families complete, with checked local solutions exported as parent tiles. The singleton baseline is faster than the aggregate lanes in this pilot. Interface compression, learned cluster markings, larger targets and other tile systems remain open; an unbounded continuation still needs a coverage argument.</p></div></li>
+      <li><span class="goal-state active">Two levels learned</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; a newly searched parent inherits it and learns its own. Exhaustive parent contacts reveal a parent-only obstruction. Next: select compatible mixed parent types, then test coarse assembly with adaptive refinement. A stationary substitution is optional.</p></div></li>
+      <li><span class="goal-state active">Region pilot 02</span><div><h3>Practical boundary solving and plane coverage</h3><p>Authored larger cores and a disconnected target complete with singleton fallback; RL improves this hierarchy’s completion rate, while singletons remain faster. Resident inventory reuse reduces a matched batch’s cost. Learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
       <li><span class="goal-state active">Kernel bridge</span><div><h3>Build checkable proof search</h3><p>Generic word proofs and finite first-order kernel catalogs now compile to accepting Wang rectangles. Cold RL and fair bound drivers retain complete base search; arbitrary-TM expressiveness has an explicit reduction. Next: checked infinite theory schemas, a fixed serialized-syntax checker, hierarchical proof fragments and harder mathematical statements.</p></div></li>
     </ol>
@@ -278,6 +309,8 @@ python3 research/gcts-rl-renewal/run_continuations.py
 python3 research/gcts-rl-renewal/run_penrose.py
 python3 research/gcts-rl-renewal/run_proof_search.py
 python3 research/gcts-rl-renewal/audit_proof_search.py
+python3 research/gcts-rl-renewal/run_multiscale_regions.py
+python3 research/gcts-rl-renewal/audit_multiscale_regions.py
 python3 research/gcts-rl-renewal/run_kernel_machine.py
 python3 research/gcts-rl-renewal/audit_kernel_machine.py
 python3 research/gcts-rl-renewal/run_regions.py

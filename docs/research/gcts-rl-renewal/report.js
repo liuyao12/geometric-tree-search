@@ -10,8 +10,79 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,timer=null,currentRun,currentProof,currentProofRows;
-const suiteTests=()=>kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+const multiScaleCache=new Map();let multiScaleRequest=0;
+const suiteTests=()=>multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+const choice=(value,label)=>{const o=document.createElement('option');o.value=value;o.textContent=label;return o;};
+async function loadMultiScaleStage(){
+  const index=Number($('multiscale-stage').value),ticket=++multiScaleRequest,decl=multiScaleData.stages[index];
+  $('multiscale-values-caption').textContent='Loading this level’s full labels and actual value history…';
+  ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
+  try{
+    if(!multiScaleCache.has(index)){
+      const response=await fetch(`${decl.artifact}?v=20261009-r9.1`,{cache:'no-cache'});
+      if(!response.ok)throw new Error(`Level data returned ${response.status}`);
+      multiScaleCache.set(index,await response.json());
+    }
+    if(ticket!==multiScaleRequest)return;
+    multiScaleStage=multiScaleCache.get(index);
+    $('multiscale-type').replaceChildren(...multiScaleStage.prototypes.map(t=>choice(t.identity,t.identity)));
+    $('multiscale-values').querySelector('[value="inherited"]').disabled=index===0;
+    if(index===0&&$('multiscale-values').value==='inherited')$('multiscale-values').value='final';
+    $('multiscale-step').max=multiScaleStage.catalog_count;$('multiscale-step').value=multiScaleStage.catalog_count;
+    $('multiscale-contact').replaceChildren(...multiScaleStage.samples.map((s,i)=>choice(i,`${i+1} · ${s.contact[0]} + ${s.contact[1]} · ${s.status}`)));
+    const positive=multiScaleStage.samples.findIndex(s=>s.status==='positive'&&s.contact[0]!==s.contact[1]);
+    $('multiscale-contact').value=positive<0?0:positive;
+    ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=false);
+    multiScaleValuesView();multiScaleContactView();
+  }catch(error){if(ticket===multiScaleRequest)$('multiscale-values-caption').textContent=`Level could not be loaded: ${error.message}`;}
+}
+function multiScaleValuesView(){
+  const d=multiScaleStage,t=d.prototypes.find(t=>t.identity===$('multiscale-type').value),mode=$('multiscale-values').value,n=Number($('multiscale-step').value),h=d.history[n-1];
+  const own=d.markings[t.identity],inherited=t.marks.filter(([[p,ch]])=>ch==='cluster:1').map(([[p],v])=>[p,v]);
+  const values=mode==='online'?h.values.filter(([name])=>name===t.identity).map(([,p,v])=>[p,v]):mode==='inherited'?inherited:own;
+  drawClusterValues($('multiscale-values-drawing'),t,values);$('multiscale-step-value').textContent=n;
+  $('multiscale-step').disabled=mode!=='online';
+  $('multiscale-values-caption').textContent=mode==='online'?`After ${n} labels across this level: ${h.counts.positive||0} positive, ${h.counts.negative||0} negative, ${h.counts.unresolved||0} unknown; ${h.classes} equality classes. This prototype shows ${values.length} actual provisional values. They never filter the label oracle.`:mode==='inherited'?`${values.length} inherited level-one components from the two child maps. These colors share the child palette and stay distinct from the parent’s new channel.`:`${t.identity}: ${own.length} own-level assigned values and ${t.occupancy.length-own.length} free entries. Across this level: ${d.statistics.colors} scalar colors. Hollow points are free; zero is assigned. Polygon outlines show base constituents.`;
+}
+function multiScaleContactView(){
+  const d=multiScaleStage,s=d.samples[Number($('multiscale-contact').value)];let placements=s.witness??s.seed_expansion,dead=null;
+  if(s.status==='negative'){placements=[...s.seed_expansion];let node=s.certificate;while(node.children?.length){const c=node.children[0];placements.push(c.placement);node=c.proof;}dead=node.dead;}
+  drawPatch($('multiscale-contact-drawing'),placements,{dead,width:560,height:400});
+  const [a,b,o,tr]=s.contact,g=syms[o],left=new Map(d.markings[a].map(([p,v])=>[JSON.stringify(p),v]));
+  const rejects=d.markings[b].some(([p,v])=>{const q=g.p.map((j,i)=>g.s*p[j]+tr[i]),k=JSON.stringify(q);return left.has(k)&&left.get(k)!==v;});
+  $('multiscale-contact-caption').textContent=`${a} + ${b} · ${s.nodes} unmarked base-search nodes, ${s.branches} branches, ${s.forced} forced moves. ${s.status==='positive'?'A checked finite completion fills the original support and leaves viable exposed obligations.':s.status==='negative'?'The complete search tree fails; the red ring shows its first checked dead leaf.':'A finite cutoff leaves this contact unknown.'} The final own-level scalar values ${rejects?'exclude':'accept'} this contact. Finite viability does not imply plane continuation.`;
+  if($('multiscale-values').value==='online'){$('multiscale-step').value=Number($('multiscale-contact').value)+1;multiScaleValuesView();}
+}
+function multiScaleRegionView(){
+  const d=multiScaleData,lane=$('multiscale-lane').value,b=d.problems.find(b=>b.identity===$('multiscale-region').value),r=d.evaluation.find(r=>r.lane===lane&&r.problem===b.identity&&r.replicate===Number($('multiscale-replicate').value));
+  const types=new Map(d.inventories[lane].map(t=>[t.identity,t])),owners=new Map();
+  r.state.placements.forEach(([name,o,tr],i)=>types.get(name).expansion.forEach(k=>owners.set(JSON.stringify(movedBase(k,o,tr)),[i,types.get(name).level])));
+  const fills=r.state.base_expansion.map(k=>{const [i,level]=owners.get(JSON.stringify(k));return level===2?'#925e82':`hsl(${i*137.508%360} 32% 56%)`;});
+  drawPatch($('multiscale-region-drawing'),r.state.base_expansion,{points:b.required,width:720,height:430,fills});
+  const parents=r.state.placements.filter(k=>types.get(k[0]).level===2).length;
+  $('multiscale-region-caption').textContent=`${b.identity} · ${b.required.length} required points · ${r.accepted_base_tiles} base constituents in ${r.accepted_cluster_tiles} atomic tiles, including ${parents} parents (purple). Gold dots are required points. ${r.status==='finite_exact_region'?'Every required point is checked at full capacity.':`Budget-limited, ${(100*r.coverage_fraction).toFixed(1)}% of required points full; this is unknown.`} Group colors identify ownership; drawings never decide legality.`;
+  $('multiscale-region-state').textContent=`${fmt(r.seconds)} s for this request, including ${fmt(r.compilation_seconds)} s of boundary filtering and inventory indexing; the total also includes fresh graph construction. ${r.nodes.toLocaleString()} nodes, ${r.branches} branches, ${r.forced} forced moves and ${r.backtracks} backtracks; ${r.attempted_base_placements} actual base-placement attempts. The peak graph has ${r.peak_candidate_nodes.toLocaleString()} candidate nodes and ${r.peak_incidences.toLocaleString()} incidences. Up-front frozen inventory and learning costs are reported below.`;
+}
+async function multiScaleResults(){
+  const d=multiScaleData,a=d.independent_audit,[first,second]=d.stages;
+  $('multiscale-finding').textContent=`Level one: ${first.catalog_count.toLocaleString()} contacts, ${first.statistics.counts.positive} finite positives and ${first.statistics.counts.negative.toLocaleString()} certified failures; shared values encode ${first.statistics.negative_rejected.toLocaleString()} failures. The new parent’s ${second.catalog_count} contacts all fail. Its own channel adds ${a.parent_new_own_exclusions} exclusions beyond inheritance. Learning a second scale exposes an unsuitable recurrent parent.`;
+  d.stages.forEach((s,i)=>{const m=s.statistics;tableRow('multiscale-labels',[i+1,s.catalog_count.toLocaleString(),`${m.counts.positive||0} / ${m.counts.negative||0} / ${m.counts.unresolved||0}`,`${m.assigned} / ${m.free}`,m.negative_rejected.toLocaleString()]);});
+  $('multiscale-obstruction').textContent=`All ${a.parent_only_obstruction.exhausted_contact_contexts} possible parent–parent contacts have independently checked unmarked base failure trees (${a.parent_only_obstruction.checked_base_failure_nodes} tree nodes). No complete point tiling by disjoint occurrences of this parent alone exists. This does not decide the base turtle plane problem or rule out the mixed hierarchy.`;
+  $('multiscale-region').replaceChildren(...d.problems.map(b=>choice(b.identity,b.identity)));
+  $('multiscale-lane').replaceChildren(...d.configuration.lanes.map(l=>choice(l,l)));$('multiscale-lane').value='GCTS+RL hierarchy';$('multiscale-region').value='core-8';
+  ['multiscale-region','multiscale-lane','multiscale-replicate'].forEach(id=>$(id).addEventListener('change',multiScaleRegionView));multiScaleRegionView();
+  d.configuration.lanes.forEach(l=>{const rs=d.evaluation.filter(r=>r.lane===l);tableRow('multiscale-benchmark',[l,`${rs.filter(r=>r.status==='finite_exact_region').length} / ${rs.length}`,fmt(mean(rs.map(r=>r.seconds))),rs.reduce((n,r)=>n+r.backtracks,0),rs.reduce((n,r)=>n+r.state.placements.filter(k=>k[0]==='searched-multiscale-parent').length,0)]);});
+  $('multiscale-performance').textContent='RL completes all eight requests, compared with six for the unmarked hierarchy. Singleton search also completes all eight and is fastest: 1.03 s per request, versus 1.53 s with RL and 1.62 s with GCTS+RL. Inherited markings reduce this hierarchy’s backtracking; adding the parent’s new channel makes almost no further difference. Learning has not produced a practical multiscale speedup here.';
+  const cold=d.representation_controls,resident=d.evaluation.filter(r=>r.lane==='unmarked hierarchy'),build=d.resident_construction.find(c=>c.first_lane==='unmarked hierarchy').seconds,total=rs=>rs.reduce((s,r)=>s+r.seconds,0),paired=cold.filter(c=>c.status==='finite_exact_region'),pairedResident=resident.filter(r=>paired.some(c=>c.problem===r.problem&&c.seed===r.seed));
+  $('multiscale-resident').textContent=`The eight cold unmarked requests take ${fmt(total(cold))} s; the resident version takes ${fmt(total(resident)+build)} s including its one-time ${fmt(build)} s construction. Both finish the same six requests and leave two unknown. All ${a.identical_completed_resident_traces} completed pairs have identical states, nodes, branches, forced moves, backtracks and base attempts: ${fmt(total(paired))} s cold versus ${fmt(total(pairedResident)+build)} s resident including the full build charge. This is a representation optimization on a small batch; budget-limited traces and wall times need not match.`;
+  $('multiscale-cost').textContent=`Fresh level-one labels and synthesis ${fmt(first.label_and_synthesis_seconds)} s, then ${fmt(first.independent_audit.seconds)} s pre-activation replay; level two ${fmt(second.label_and_synthesis_seconds)} s plus ${fmt(second.independent_audit.seconds)} s replay. Total two-stage learner cost ${fmt(first.seconds+second.seconds)} s. Zero-start RL training: ${d.training.episodes.filter(r=>r.status==='finite_exact_region').length} of ${d.training.episodes.length} rollouts complete, ${fmt(d.training.seconds)} s. Complete official pipeline ${fmt(d.total_seconds)} s; separate saved-data audit ${fmt(a.seconds)} s. Peak memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Frozen inventory builds: ${d.resident_construction.map(c=>`${c.first_lane} ${fmt(c.seconds)} s`).join('; ')}. Per-request means include unknown attempts and omit these separately reported up-front costs. The cold learning cost exceeds the observed batch saving.`;
+  $('multiscale-audit').textContent=`Saved-data audit checks every contact, all ${a.stages.reduce((n,s)=>n+s.negative_nodes,0).toLocaleString()} failure-tree nodes, ${a.stages.reduce((n,s)=>n+s.positive,0)} positive witnesses and ${a.stages.reduce((n,s)=>n+s.scalar_symmetry_checks,0).toLocaleString()} scalar symmetry contacts. It replays all ${a.states_replayed} exported states and ${a.base_placements_replayed} base placements; ${a.complete_states} states complete their declared targets. All ${a.geometry.evaluation_runs.length} completed patches pass exact polygon non-overlap. Omitted branches, altered poses and omitted expansions reject. ${suiteTests()} semantic tests pass, including 14 new multiscale/resident tests.`;
+  $('multiscale-stage').addEventListener('change',loadMultiScaleStage);
+  ['multiscale-type','multiscale-values'].forEach(id=>$(id).addEventListener('change',multiScaleValuesView));$('multiscale-step').addEventListener('input',multiScaleValuesView);$('multiscale-contact').addEventListener('change',multiScaleContactView);
+  await loadMultiScaleStage();
+}
 
 function kernelView(){
   const p=kernelData.problems.find(p=>p.id===$('kernel-problem').value),r=p.runs.find(r=>r.lane===$('kernel-lane').value),svg=$('kernel-facts');svg.replaceChildren();
@@ -508,9 +579,13 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r8.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
+    multiScaleData=await multiResponse.json();
+    if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
     $("pair-count").textContent=data.pair_catalog.count;
     $("negative-count").textContent=data.pair_catalog.counts.negative;
@@ -519,46 +594,47 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r8.1",{cache:"no-cache"});
+    await multiScaleResults();
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r8.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r8.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r8.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r8.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r9.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r9.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r9.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r9.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r9.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r8.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r9.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`First-order kernel bridge, conditional rhomb plane-faithfulness, fresh full-star search, cluster markings and boundary tiling recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    $("load-status").textContent=`Two-level markings and parent-only obstruction, authored boundary trials, first-order kernel bridge and conditional rhomb plane-faithfulness recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

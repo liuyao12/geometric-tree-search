@@ -10,3 +10,5 @@
 #complex-star-drawing,#star-pilot-drawing{background:#f1f4ec;border-radius:5px}.equation{padding:10px 0;overflow-x:auto}
 
 #kernel-facts{background:#f1f4ec;border-radius:5px}.kernel-formulas{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;font-size:11px}.kernel-formulas p{margin:4px 0;overflow-x:auto}#kernel-derivation p{font-size:12px;margin:8px 0}#kernel-machine-research .evidence-grid{align-items:start}@media(max-width:600px){.kernel-formulas{grid-template-columns:1fr}}
+
+#multiscale-values-drawing,#multiscale-contact-drawing,#multiscale-region-drawing{background:#f1f4ec;border-radius:5px}#multiscale-contact{max-width:360px}#multiscale-experiment .evidence-grid{grid-template-columns:1fr 1.12fr;align-items:start}#multiscale-experiment details[open]{border-color:#c4d5c3}@media(max-width:850px){#multiscale-experiment .evidence-grid{grid-template-columns:1fr}}

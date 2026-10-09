@@ -850,7 +850,7 @@ python3 research/gcts-rl-renewal/audit_kernel_machine.py
 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 ```
 
-The current suite passes 84 tests. The eight new tests cover independent rule
+At that milestone the suite passed 84 tests. The eight new tests cover independent rule
 enumeration, literal-machine versus kernel acceptance, captured variables,
 invalid distribution, proof translation, nonfinal targets, empty/forged
 certificates, Unicode grammar fairness, budget labels, unseeded Wang proof
@@ -858,3 +858,133 @@ search and redundant-marking controls. Existing graph completeness and rollback
 tests still apply to the unchanged engine. Harder proofs, hierarchical proof
 clusters, practical multiscale tiling acceleration and certified turtle or
 search-produced Penrose plane continuation remain open.
+
+## Two-level learning and repeated authored boundary requests
+
+`run_multiscale_regions.py` imports only the unmarked singleton and the two
+searched mixed-handed two-turtle shapes `cluster-2` and `cluster-3` from the
+declared, hashed `cluster-types-001.json`. Every palette starts free; the policy
+starts at zero. No earlier marking, policy, donor, boundary or completion witness
+enters this experiment. A separate development repeat of level-one learning and
+one preliminary resident-inventory control are explicitly recorded as preliminary
+work, not inputs to the official run. Targeted tests overlapped a few seconds of
+second-level labeling; no learning-throughput claim is made. Regional evaluation
+was sequential without another research job running.
+
+`multiscale_learning.py` shares one scalar channel among distinct prototypes at
+the same level. Its equality slots are tagged by type and point. The complete
+rooted catalog includes all twelve orientations, every positive-support alignment,
+disjoint base ownership and capacity legality. Every label oracle strips **all**
+own and inherited markings, fixes the flattened base constituents, and searches
+the full unmarked base inventory. A positive fills the initial support and checks
+viable exposed frontier domains. A negative requires an independently checked
+complete base failure tree. A cutoff remains unknown and constrains no values.
+Positive contacts merge overlap slots; negatives supply inequality alternatives.
+The snapshot contains the actual provisional assignment after every label.
+Sparsification retains differing overlap witnesses; assigned zero remains a value.
+
+The first stage has \(1{,}818\) contacts: \(22\) positive and \(1{,}796\) negative,
+with no unknowns. Its \(41\) assignments across \(104\) slots use \(16\) colors and
+exclude \(1{,}442\) negatives, accepting all positives. Every possible sparse
+scalar exclusion is enumerated independently before activation; each has a base
+failure certificate. Normalizing a pair by a lattice symmetry transfers that
+certificate, so every complete unmarked base point tiling decorated by disjoint
+occurrences of these shapes satisfies their shared marking. This conditional
+redundancy neither proves existence nor preserves all finite coarse groupings.
+All unmarked singleton paths remain available in regional search.
+
+A newly searched positive cross-type assembly supplies the four-turtle
+`searched-multiscale-parent`. Its two descending child maps preserve every
+level-one component. The next label study uses its unmarked flattened shape,
+then decorates it with a new `cluster:2` channel alongside inherited `cluster:1`.
+All \(677\) parent self-contact contexts are negative. The new palette assigns
+\(30\) values in \(100\) slots and excludes \(647\) contacts; inheritance alone
+excludes \(577\), so the new channel adds \(70\). The remaining \(30\) certified
+failures are not represented by this sparse scalar palette.
+
+There is also a parent-only obstruction. At \(p=(-4,-6,10)\) the root parent
+contributes \(t(p)=\tfrac13\). Any complete point tiling by this parent alone
+requires another parent at that point. Normalize the root's pose. The disjoint,
+capacity-legal pair lies in the exhaustive contact catalog, but its complete
+unmarked base failure tree contradicts a complete continuation. The saved audit
+checks all \(796\) parent failure-tree nodes and \(4{,}032\) support/group
+compositions. This is an analytic lifting of checked finite trees, not a formally
+encoded Hilbert proof. It rules out only the declared parent-only point inventory;
+the mixed hierarchy and base turtle plane problem remain open. A locally completed
+assembly need not be a recurrent metatile. Next parent selection should test
+cross-type coarse continuation, rather than insist that this one parent recur.
+
+The four evaluation targets are authored without a donor or feasibility witness:
+cores of radii \(4,6,8\), and a notch with a disconnected pocket. Their common
+support envelope has radius \(14\), with zero exterior. Every required point is
+activated at generation zero and must reach full capacity; elsewhere contributions
+remain capacity-legal. These are independent finite requests, not a nested
+continuation or a geometric coverage certificate. Training has four smaller
+translated targets and twelve zero-start episodes, of which three rollouts
+complete. Evaluation has two seeds per target, six lanes and the same
+\(4{,}000\)-node, five-second cooperative limits including request construction.
+Unknown attempts are included in timing means.
+
+RL and GCTS+RL finish all eight requests, while the unmarked hierarchy and both
+marking-only hierarchies finish six. The singleton reference also finishes eight
+and is fastest: mean request times are \(1.03\) seconds for singletons,
+\(1.53\) for RL and \(1.62\) for GCTS+RL. The parent’s own channel makes almost
+no additional regional difference beyond inheritance. These data do not show a
+practical multiscale acceleration. The singleton comparison changes the atomic
+inventory; the four-type marking/RL lanes have matched shapes and scheduler.
+
+`resident_regions.py` freezes the complete placement universe for an immutable
+envelope and type/marking version. Each boundary request rejects only placements
+incompatible with that request’s immutable exterior and creates a fresh state and
+complete point/candidate graph. All occupancy, marking and ownership dependencies,
+including extended mark-only points, remain indexed. No previous roots, exclusions,
+marks, ownership or branch states leak between requests. The reference scheduler
+is unchanged: global dead, global forced, then earliest generation, with minimum
+domain only breaking generation ties. Snapshots restore all mutable state exactly.
+RL preferences order validated atomic cluster placements; full evaluation retains
+every alternative. Aggregate scheduling is distinct from base macro execution.
+
+The matched representation control repeats all eight unmarked requests cold.
+Both versions complete the same six and leave two unknown; all six completed
+states and search counters match exactly. Cold requests total \(31.44\) seconds;
+resident requests plus the full one-time \(1.46\)-second build cost total
+\(26.99\) seconds. Restricting to the six identical completed traces gives
+\(21.38\) seconds cold versus \(16.90\) seconds resident including the full
+build charge. This is an exact representation optimization, not a learned
+marking result or an equal-success comparison of all budget-limited traces.
+
+Up-front costs are material: both cold learners plus their activation audits
+take \(184.37\) seconds, RL training \(11.67\), the complete official pipeline
+\(342.58\), and the separate saved-data audit \(102.45\). Peak process memory
+is \(1{,}220.47\) MiB. Each frozen inventory’s construction cost is reported;
+the raw and RL lanes share one version, and the fully marked/RL lanes share
+another. The learning cost exceeds this batch’s observed saving. Broader boundary
+families, cache amortization, collars, compatible mixed coarse inventories and
+adaptive refinement are the next practical gates.
+
+`audit_multiscale_regions.py` reconstructs shapes, parent maps, all external
+boundaries and inventories; independently enumerates contacts; replays every
+base failure tree and positive witness; recomputes provisional and sparse values;
+and checks all actual scalar disagreements in all root orientations. It checks
+\(8{,}820\) failure-tree nodes, \(22\) positives, \(29{,}940\) scalar contacts,
+all \(68\) exported states and \(892\) base placements. There are \(51\) completed
+states including training and cold controls. All displayed completed patches pass
+separate exact polygon non-overlap. Changed poses, omitted failure branches and
+omitted base expansions reject. No general turtle geometric faithfulness theorem
+or plane construction follows.
+
+```sh
+python3 research/gcts-rl-renewal/run_multiscale_regions.py
+python3 research/gcts-rl-renewal/audit_multiscale_regions.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+The current suite passes 98 tests. Fourteen new controls exercise shared
+type-tagged palettes, unmarked catalog independence, unknown labels, actual scalar
+exclusions, child-mark preservation and symmetry, resident domain completeness,
+extended zero-valued dependencies, exact rollback, fresh request state, immutable
+version/envelope guards, and reference trace equivalence. The original engine and
+prior source-hashed snapshots are unchanged. The HTML report loads each level’s
+large history only when selected and exposes both palettes, inherited values,
+individual failure trees and every regional lane/seed. The research goal remains
+active, with substitution optional under the user’s revised objective.
