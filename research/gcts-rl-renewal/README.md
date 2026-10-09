@@ -1186,3 +1186,104 @@ The HTML report exposes the matched results, all saved patches, their proposal
 groupings and each exact residual interface. Next: compile boundary compatibility
 to reduce proposal cost, broaden collar/boundary families, and learn a policy
 that improves total time at useful scales. The full research goal remains active.
+
+## Exact compilation, shared prefixes and whole-state proposal reuse
+
+`compiled_macros.py` optimizes the preceding proposal relation without changing
+the singleton candidate graph or offered actions. A new cold experiment uses
+eight fresh donors, \(86\) connected windows and \(67\) distinct shapes, retaining
+\(20\) clusters of sizes \(2\) through \(6\). No saved artifact, marking or policy
+enters this run. The new library differs from the preceding experiment; timings
+across those two pilots are not equal-problem speed comparisons.
+
+The compiler enumerates every allowed placement of those shapes inside the
+fixed positive-support envelope. It stores \(42{,}150\) patches and \(149{,}964\)
+constituent incidences across all \(4{,}596\) singleton poses. For every patch,
+every member is an index key. Already-owned context is removed once. Individual
+legality, proposal ranking and full-patch validation remain the reference rules.
+A fixed owned exterior pose outside the compiled envelope invokes the original
+procedure; changed envelopes or tile/marking versions reject. The present
+compiler supports the declared unmarked identity singleton only.
+
+Graph-prefix snapshots are immutable during planning. A new prefix gets fresh
+copies and the normal update; identical prefixes share the same result. The
+bounded memoization key contains the entire required set, point totals, assigned
+marking data, ownership, selected poses, roots, generations and scheduled domain.
+This is a conservative whole-state cache, not a locality theorem for global
+forcing. Executed constituents still pass the real singleton scheduler. No
+cache or proposal supplies degrees, forced moves or base-candidate exclusions.
+
+The analytic equivalence argument separates the three optimizations. Every raw
+individually legal proposal with all owned context inside the envelope appears
+in the complete compiled incidence. Both procedures remove the same context,
+rank identical pending sets and plan through identical point graphs. Identical
+prefixes have identical semantic snapshots by induction over their base moves.
+The complete state key fixes the frozen graph semantics and offered list. The
+outside-context fallback preserves the reference relation. This is scoped
+reasoning supported by independent finite enumeration and controls, without a
+formally encoded first-order proof or an exhaustive mutable-state test.
+
+Seven lanes separate base, raw proposals, compilation, prefix sharing, whole-state
+caching, raw proposals with RL and cached proposals with RL. Each uses the same
+four authored targets, two seeds, \(8{,}000\) base attempts and six cooperative
+seconds. Lane order rotates. A fresh policy trains for \(24\) episodes on the
+small local problems; seven complete. Both RL lanes share its frozen weights.
+Learning cost is \(30.415\) seconds, donors \(1.102\), mining \(0.052\), raw
+alignment construction \(0.003\), cold compilation \(0.331\), and common
+resident inventory \(0.213\). The full sequential process, including finite-work
+controls and movable cases, takes \(186.041\) seconds and peaks at
+\(251.05\) MiB. Process peak is not per-lane allocation.
+
+Base search completes all eight fixed runs, with mean request time \(0.407\)
+seconds. Every proposal lane completes six. Mean request times, including
+unknowns, are \(3.329\), \(2.819\), \(2.465\), \(2.404\), \(2.520\) and
+\(1.787\) seconds respectively. They are not equal-success speed ratios. The
+six matched completed raw/cached cases have identical search traces and take
+\(14.621\) versus \(7.218\) total seconds, with compilation separately charged.
+Faster unresolved lanes explore more of the same difficult search; that does
+not establish a better policy or overall advantage over base search.
+
+Eight warm finite-work controls remove the wall cutoff and cap exploration at
+\(200\) base placements. Seven targets complete; one remains unknown in both
+representations. Every pair agrees in state, scheduled moves, nodes, branches,
+forced moves, backtracks and macro constituents. Raw requests total \(13.869\)
+seconds; cached requests \(5.806\), plus \(0.331\) cold compilation. These controls
+run after the held-out batch, with common placement data warm; they prove an
+observed bounded-work latency improvement, not eight solved targets.
+
+All five movable-family lanes exactly select the shifted core, with fresh state
+for each member. Base takes \(0.737\) seconds; raw/cached \(3.004/1.476\), and
+raw/cached with RL \(1.644/0.680\). This is one finite-family control, without
+a general practical speed claim.
+
+`audit_compiled_macros.py` independently rebuilds every literal singleton pose,
+the transformed patch set and every constituent incidence. It checks \(114\)
+saved states, \(1{,}195\) scheduled moves, \(78\) completed targets, eight exact
+finite-work pairs and \(24\) equal completed representation pairs. It compares
+\(11\) full offered lists and repeated cache hits. Six additionally inspected
+offered continuations contain \(15\) new moves, all independently replayed; one
+ends at a known dead point. Such a sequence has legal capacities and scheduled
+constituents, but search must detect its endpoint and roll back. This exposes
+a useful failure signal for the next policy/marking experiment.
+
+All \(49\) displayed complete evaluation/movable patches pass separate exact
+polygon non-overlap. The final saved-data audit takes \(24.927\) seconds, rejects
+\(109\) changed schedules and preserves its source/helper hashes. It exports
+actual offered sequences for the report's prefix tree and expanded boundary
+view, including the dead endpoint. Saved partial prefixes are finite point data,
+without a complete solution, plane guarantee or geometric faithfulness theorem.
+
+```sh
+python3 research/gcts-rl-renewal/run_compiled_macros.py
+python3 research/gcts-rl-renewal/audit_compiled_macros.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+All \(123\) semantic tests pass. Nine new controls cover complete patch incidence,
+reference/shared/cached action equivalence at every donor prefix, exact rollback,
+generation and assigned-zero cache keys, envelope/marking guards, isolated lane
+caches, exact base-attempt traces, cancelled validation and owned-exterior fallback.
+Earlier source-hashed engines and snapshots are unchanged. Representation reuse
+is now measured; practical region acceleration still needs better decisions or
+certified geometric failure markings. Collars, higher-level interfaces, compatible
+plane continuation, Penrose hierarchy and general proof search remain active.

@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r11.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r12.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r11.1"></script>
+  <script defer src="report.js?v=20261009-r12.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 11</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 12</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,29 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="compiled-boundary-research">
+    <p class="eyebrow">BOUNDARY REUSE · EXACT REPRESENTATION ABLATIONS</p><h2>Reuse the same verified search.</h2>
+    <p>A new cold local-learning run supplies twenty variable-size clusters. Compile their allowed placements once, share graph snapshots for identical proposed prefixes, and memoize the complete proposal list at an exact boundary state. The comparison keeps the same singleton graph, proposal pool, ranking, base fallback and execution scheduler. These mechanisms reuse work; they do not learn a new marking or eliminate a base candidate.</p>
+    <div class="callout" id="compiled-finding">Loading the independently checked compilation and traces…</div>
+    <div class="table-scroll"><table><thead><tr><th>Representation</th><th>Exact targets</th><th>Mean request seconds</th><th>Base attempts</th><th>Proposal seconds</th><th>Validation graph updates</th><th>Cache hits</th></tr></thead><tbody id="compiled-benchmark"></tbody></table></div>
+    <p id="compiled-cost" class="caption"></p>
+    <h3 class="spaced-title">Exact finite-work controls</h3><p id="compiled-controls"></p>
+    <div class="controls"><label>Checked boundary trace <select id="compiled-example"></select></label><label>Offered continuation <select id="compiled-action"></select></label></div>
+    <svg id="compiled-prefix-tree" viewBox="0 0 1000 330" role="img" aria-label="Actual validation traces sharing identical base-move prefixes at a checked boundary state"></svg><p id="compiled-prefix-caption" class="caption"></p>
+    <svg id="compiled-patch" viewBox="0 0 850 430" role="img" aria-label="The checked existing boundary patch and a selected scheduler-valid proposed continuation"></svg><p id="compiled-patch-caption" class="caption"></p>
+    <details open><summary>Why this preserves the proposal relation</summary>
+      <p>For the fixed positive-support envelope \(P\), retain every transformed learned patch whose distinct base constituents fit inside it. Index each patch at every constituent, rather than sampling alignments:</p>\[\mathcal C_P=\{gC+a:\operatorname{supp}t_{gC+a}\subseteq P\},\qquad \mathcal I(c)=\{C'\in\mathcal C_P:c\in C'\}.\]
+      <p>At a scheduled base candidate, the index recovers the same possible patches as the reference alignment procedure. Remove already-owned context once, test the same individual capacities, apply the same ranking and validate the same full patch. Only new constituents contribute to the proposed continuation. A fixed owned exterior constituent outside the compiled envelope invokes the original relation. A different tile/marking version or envelope rejects the compiler.</p>
+      <p>Identical prefixes start from identical state and graph snapshots. Extending a new prefix makes fresh copies and performs the normal update; a shared prefix reuses that exact result. The memoization key records the whole required set, point totals, assigned marking values, ownership, selected poses, roots, generations and scheduled domain. It is a conservative whole-state cache, not a theorem that a small local trace determines global forcing. Execution still checks every constituent against the real graph.</p>
+      <p>This is an analytic equivalence argument for the declared unmarked singleton model and frozen compiled library. Independent literal enumeration verifies the complete finite envelope index; saved schedules and finite-work pairs test the implementation. Sampled full-list comparisons do not exhaust every possible boundary state. No learned GCTS pruning, generalized local interface rule or infinite construction follows.</p>
+    </details>
+    <details><summary>Practical outcome and the next research gate</summary>
+      <p id="compiled-movable"></p><p>The representation reuses work successfully, but base search remains faster and completes more fixed targets in this batch. Cutoff prefixes are unresolved. More attempted moves within a time limit can mean faster exploration of the same difficult search, rather than a better policy. The fresh library and seeds differ from the preceding pilot, so cross-pilot timing changes are not speed comparisons.</p>
+      <p>The next practical gate needs better boundary-conditioned decisions or certified geometric failure markings, alongside this reusable representation. Test whether collars and learned coarse interfaces remove the far-boundary bottleneck while preserving exact fine-scale fallback. Higher-level proof constructions, compatible plane growth and Penrose hierarchy remain active goals.</p>
+    </details>
+    <p id="compiled-audit" class="caption"></p><p class="small"><a href="compiled-macros-001.json">Inspect the new cold library, complete compilation hashes, ablations, work controls and actual offered continuations ↗</a></p>
+  </section>
 
   <section class="panel" id="boundary-macro-research">
     <p class="eyebrow">LOCAL SOLUTION REUSE · THE SAME FINE-SCALE SCHEDULER</p><h2>Fewer attempts. More time.</h2>
