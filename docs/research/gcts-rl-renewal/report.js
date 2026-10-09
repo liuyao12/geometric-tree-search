@@ -10,9 +10,58 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+function bridgeCaseView(){
+  const d=bridgeData,c=d.point_lemma.cases[Number($('bridge-case').value)],s=d.visual_cases[Number($('bridge-case').value)],root=d.inventories.free.find(t=>t.identity==='local-parent-5');
+  const rootKeys=new Set(root.expansion.map(k=>JSON.stringify(k))),seedKeys=new Set(s.seed_expansion.map(k=>JSON.stringify(k)));let placements=[...s.seed_expansion],point=d.point_lemma.point;
+  if($('bridge-case-mode').value==='leaf'){let node=s.certificate;while(node.children?.length){const child=node.children[0];placements.push(child.placement);node=child.proof;}point=node.dead;}
+  const fills=placements.map(k=>rootKeys.has(JSON.stringify(k))?'#adb7ad':seedKeys.has(JSON.stringify(k))?'#c76b3d':'#6d9c83');
+  drawPatch($('bridge-case-drawing'),placements,{dead:point,width:560,height:400,fills});
+  $('bridge-case-caption').textContent=`Case ${Number($('bridge-case').value)+1} of ${d.point_lemma.cases.length}: ${c.base_failure_nodes} independently checked base failure nodes. Grey turtles form the fixed parent; orange turtles form this possible next parent; green turtles are searched base moves. ${$('bridge-case-mode').value==='leaf'?'The red ring marks the first checked dead leaf; the entire tree, not only this leaf, is verified.':'The red ring highlights the coarse cover point. This pair is unmarked capacity-legal; no unmarked dead-point claim is made by this view.'} Actual assigned values disagree in ${c.disagreements.length} components.`;
+}
+function bridgeRefinementView(reset=false){
+  const d=bridgeData,r=d.fine_only_refinement.rows.find(r=>r.root===$('bridge-refinement-root').value),t=d.inventories.free.find(t=>t.identity===r.root);
+  if(reset){$('bridge-refinement-step').min=t.expansion.length;$('bridge-refinement-step').max=r.witness.length;$('bridge-refinement-step').value=r.witness.length;}
+  const n=Number($('bridge-refinement-step').value);
+  drawPatch($('bridge-refinement-drawing'),r.witness.slice(0,n),{points:t.occupancy.map(([p])=>p),width:850,height:440,fills:r.witness.slice(0,n).map((k,i)=>i<t.expansion.length?'#c76b3d':'#6d9c83')});
+  $('bridge-refinement-step-value').textContent=n;
+  $('bridge-refinement-caption').textContent=`${r.root}: ${t.expansion.length} fixed root constituents (orange), ${r.witness.length-t.expansion.length} new base turtles in the checked response (green). Showing ${n} of ${r.witness.length} accepted tiles. Amber dots are the fixed required support. The complete saved response took ${fmt(r.seconds)} s and ${r.nodes} nodes. Every required point is full and exposed obligations are viable at its final step. This is a finite local response, not a continuing coarse or plane tiling.`;
+}
+const bridgeFormula=a=>a[0]==='pred'?`\\operatorname{${a[1]}}`:a[0]==='not'?`\\neg(${bridgeFormula(a[1])})`:a[0]==='imp'?`(${bridgeFormula(a[1])}\\Rightarrow ${bridgeFormula(a[2])})`:'\\bot';
+function bridgeLogicalView(){
+  const d=bridgeData,name=$('bridge-logical-target').value,lane=$('bridge-logical-lane').value,r=(lane==='zero-weight proposal + Wang'?bridgeControlData.runs:d.logical_runs).find(r=>r.target===name&&r.lane===lane),proof=r.kernel_proof??[],formulas=d.logical_declaration.formulas;
+  const target=['not',['pred',name==='five'?'Plane5':'Plane10',[]]],targetIndex=formulas.findIndex(a=>JSON.stringify(a)===JSON.stringify(target)),svg=$('bridge-logical-facts');svg.replaceChildren();
+  const facts=formulas.map(()=>false),frames=[{facts:[...facts],rule:'initial'}];
+  for(const line of proof){const index=formulas.findIndex(a=>JSON.stringify(a)===JSON.stringify(line.formula));facts[index]=true;frames.push({facts:[...facts],rule:line.rule,changed:index});}
+  const left=145,cw=49,rh=26,top=40;
+  formulas.forEach((a,i)=>svgText(svg,left+(i+.5)*cw,24,`slot ${i}`,{'font-size':10,'text-anchor':'middle'}));
+  frames.forEach((f,j)=>{svgText(svg,12,top+(j+.67)*rh,`${j} · ${f.rule}`,{'font-size':11});f.facts.forEach((v,i)=>{svg.append(el('rect',{x:left+i*cw+2,y:top+j*rh,width:cw-4,height:rh-4,rx:2,fill:v?(i===targetIndex?'#c76b3d':'#6d9c83'):'#e3e8dd',stroke:f.changed===i?'#263d31':'none'}));svgText(svg,left+(i+.5)*cw,top+j*rh+16,v?'1':'0',{'font-size':12,'text-anchor':'middle',fill:v?'#fffdf8':'#778478'});});});
+  if(!r.verified)svgText(svg,145,112,'No checked accepting rectangle in this bounded run.',{'font-size':15,fill:'#834853'});
+  $('bridge-logical-statement').textContent=`Kernel target: \\(${bridgeFormula(target)}\\), under the externally checked refinement, cover and case-failure lemmas.`;
+  $('bridge-logical-caption').textContent=r.verified?`${proof.length} decoded logical lines; ${r.commands.length} certificate commands. Green slots are proved formulas and orange marks the target. The view summarizes the checked literal fact tape. The full ${r.certificate.width}-column, ${r.certificate.height}-row Wang rectangle has ${r.nodes.toLocaleString()} attempted cells and is independently replayed. Tape 0 and 1 are literal symbols.`:`${r.status}: ${r.nodes.toLocaleString()} attempted cells. No proof or non-provability claim follows from this finite cutoff.`;
+  $('bridge-logical-derivation').replaceChildren(...proof.map((line,i)=>{const p=document.createElement('p'),refs=line.rule==='mp'?` from ${line.antecedent+1}, ${line.implication+1}`:'';p.textContent=`${i+1}. ${line.rule}${refs}: \\(${bridgeFormula(line.formula)}\\)`;return p;}));
+  window.MathJax?.typesetPromise?.([$('bridge-logical-statement'),$('bridge-logical-derivation')]).catch(()=>{});
+}
+function bridgeResults(){
+  const d=bridgeData,a=d.independent_audit,svg=$('bridge-proof-chain');svg.replaceChildren();
+  const boxes=[['Four ten-turtle types','Two descending parent owners'],['One five-turtle root','A point has 8 of 12 units'],[`${a.point_cases} exhaustive cases`,'Each has an unmarked base failure'],[`${a.base_case_failure_nodes} checked proof nodes`,'Neither coarse inventory tiles the plane']];
+  boxes.forEach(([title,caption],i)=>{const x=18+i*278;svg.append(el('rect',{x,y:45,width:252,height:115,rx:9,fill:i===3?'#f3dfd1':'#e8eee4',stroke:'#9bae97'}));svgText(svg,x+126,84,title,{'font-size':16,fill:'#263d31','text-anchor':'middle'});svgText(svg,x+126,119,caption,{'font-size':11,'text-anchor':'middle'});if(i<3)svg.append(el('path',{d:`M${x+252},102 L${x+272},102 M${x+266},96 L${x+272},102 L${x+266},108`,stroke:'#6d9c83','stroke-width':2,fill:'none'}));});
+  $('bridge-finding').textContent=`The marked five-turtle root exposes one dead coarse point. Independent unmarked enumeration finds ${a.point_cases} covering poses, all excluded by ${a.base_case_failure_nodes} checked base proof nodes. This proves an obstruction for that parent-only point system and, by refinement, all ${a.refinement_types} promoted ten-turtle types together. Fine-only search completes all five fixed local boundaries. The proof refutes these coarse abstractions; it does not refute the base turtle.`;
+  const parent=d.inventories.marked.find(t=>t.identity==='local-parent-5');drawClusterValues($('bridge-parent-values'),parent,parent.marks.filter(([[p,ch]])=>ch==='cluster:2').map(([[p],v])=>[p,v]));
+  $('bridge-parent-caption').textContent=`The reused parent has ${parent.expansion.length} distinct base constituents and two descending child maps. Its own learned values suggested the critical obligation. The seventeen-case proof then checks unmarked base certificates directly, independently of any universal claim about this marking.`;
+  $('bridge-case').replaceChildren(...d.point_lemma.cases.map((c,i)=>choice(i,`${i+1} · ${c.base_failure_nodes} base proof nodes`)));['bridge-case','bridge-case-mode'].forEach(id=>$(id).addEventListener('change',bridgeCaseView));bridgeCaseView();
+  const roots=d.fine_only_refinement.rows,summary=r=>`${r.status} · ${fmt(r.seconds)} s`;
+  $('bridge-refinement-table').innerHTML=roots.map(f=>{const rs=d.coarse_runs.filter(r=>r.root===f.root);return `<tr><td>${f.root}</td>${rs.map(r=>`<td>${summary(r)}</td>`).join('')}<td>positive · ${fmt(f.seconds)} s</td></tr>`;}).join('');
+  $('bridge-refinement-cost').textContent=`All aggregate gates use 4,000 nodes and 15 cooperative seconds, including construction. Complete updates can overrun that limit. Free coarse gates prove two ten-type root failures; other free gates are unknown. Marked coarse gates fail at every root. Aggregate + base fallback completes the five-turtle boundary, while all four ten-turtle boundaries remain unknown. A separate fresh base-only process completes every same root support in ${roots.map(r=>fmt(r.seconds)).join(' / ')} s. Its total ${fmt(d.fine_only_refinement.seconds)} s includes replay; candidate inventories differ. Main sequential pipeline ${fmt(d.total_seconds)} s; peak ${fmt(d.peak_process_memory_bytes/1048576)} MiB. Historical learning ${fmt(d.reuse.historical_source_pipeline_seconds)} s and saved audit ${fmt(d.reuse.historical_saved_audit_seconds)} s are explicit reused costs.`;
+  $('bridge-refinement-root').replaceChildren(...roots.map(r=>choice(r.root,r.root)));$('bridge-refinement-root').value=d.ten_types[0];$('bridge-refinement-root').addEventListener('change',()=>bridgeRefinementView(true));$('bridge-refinement-step').addEventListener('input',()=>bridgeRefinementView());bridgeRefinementView(true);
+  const lanes=['Wang','analytic neighbor values','RL + Wang','RL + analytic neighbor values','zero-weight proposal + Wang'];
+  $('bridge-logical-table').innerHTML=lanes.map(lane=>{const rs=(lane==='zero-weight proposal + Wang'?bridgeControlData.runs:d.logical_runs).filter(r=>r.lane===lane);return `<tr><td>${lane}</td><td>${rs.filter(r=>r.verified).length} / ${rs.length}</td><td>${fmt(mean(rs.map(r=>r.total_request_seconds??r.seconds_with_proposal)))}</td><td>${Math.round(mean(rs.map(r=>r.nodes))).toLocaleString()}</td></tr>`;}).join('');
+  $('bridge-logical-control').textContent=`The fresh policy succeeds in all ${d.logical_training.episodes.length} practice episodes on these same two assertions. Learned proposals complete four accepting rectangles; no-proposal lanes find none within 100,000 attempts and three cooperative seconds. Zero-weight proposals also complete both targets, so this batch shows no learned-policy advantage. That supplementary process ran alongside the expensive research audit; its timings are not matched latency comparisons. Analytic neighbor values are redundant Wang constraints, not learned geometric markings. Every rectangle has 12 unknown command slots and 1,536 transition rows.`;
+  ['bridge-logical-target','bridge-logical-lane'].forEach(id=>$(id).addEventListener('change',bridgeLogicalView));bridgeLogicalView();
+  $('bridge-audit').textContent=`Independent checks replay all ${a.point_cases} base cases (${a.base_case_failure_nodes} proof nodes), all ${a.positive_source_contacts} positive promotion contacts, ${a.case_cover_symmetries} transformed/translated case covers and ${a.transformed_expansions} transformed expansions. ${a.coarse_states} aggregate states and ${a.scheduled_coarse_moves} scheduled coarse moves replay; all ${a.fine_only_states} fine responses re-apply with the original marked root (${a.fine_only_scheduled_new_moves} new moves). ${a.checked_rectangles} main rectangles contain ${a.checked_wang_cells.toLocaleString()} exact point cells; the zero-weight control checks ${bridgeControlData.independent_checks.checked_rectangles} further rectangles. Altered cases, source premises, schedules, logical conclusions and fact boundaries reject. All ${a.geometry.evaluation_runs.length} completed response patches pass polygon non-overlap. Audit ${fmt(a.seconds)} s, peak ${fmt(a.peak_process_memory_bytes/1048576)} MiB; ${suiteTests()} semantic tests pass. A general fixed serialized-AST proof checker remains open.`;
+}
 const failureStageCache=new Map();let failureRequest=0;
 function failureTypes(){return failureData.inventories['aggregate GCTS'].filter(t=>t.level===Number($('failure-stage').value)+1);}
 function failureValuesView(){
@@ -47,7 +96,7 @@ function failureStageView(){
 async function loadFailureStage(){
   const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
   try{
-    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r13.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r14.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
     if(ticket===failureRequest)failureStageView();
   }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
 }
@@ -203,7 +252,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r13.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r14.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -761,30 +810,35 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r14.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r14.1',{cache:'no-cache'})]);
+    if(bridgeResponses.some(r=>!r.ok))throw new Error('Hierarchy proof snapshots could not be loaded.');
+    [bridgeData,bridgeControlData]=await Promise.all(bridgeResponses.map(r=>r.json()));
+    if(!bridgeData.independent_audit||!bridgeData.semantic_tests)throw new Error('Hierarchy proof replay or tests are pending.');
+    bridgeResults();
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
     failureData=await failureResponse.json();
     if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
     failureResults();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -797,46 +851,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r13.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r13.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r13.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r13.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r14.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r13.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r14.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Variable-size failure interfaces, a five-turtle parent with positive contacts, matched endpoint filtering, exact work controls and computational proof bridge recorded · ${suiteTests()} semantic tests pass · finite evidence independently replayed.`;
+    $("load-status").textContent=`Coarse case proof and refinement lifting, fresh fine boundary responses, logical/Wang lemma assembly and zero-weight controls recorded · ${suiteTests()} semantic tests pass · evidence independently replayed; base plane coverage and a general fixed proof checker remain open.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

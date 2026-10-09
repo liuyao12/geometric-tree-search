@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r13.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r14.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r13.1"></script>
+  <script defer src="report.js?v=20261009-r14.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 13</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 14</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,43 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="hierarchy-proof-research">
+    <p class="eyebrow">A CASE PROOF · DESCENDING REFINEMENT · CHECKED LOGICAL ASSEMBLY</p><h2>A coarse obstruction becomes a proof.</h2>
+    <p>Explicitly reuse the preceding searched five-turtle parent and its verified point palettes. All seven positive self-contacts promote to four distinct ten-turtle types. A dead point in the marked parent graph suggests a short proof: independently enumerate every unmarked parent that can contribute there, then check the base failure certificate for every case. The whole-plane conclusion uses those unmarked proofs and an explicit refinement argument.</p>
+    <div class="callout" id="bridge-finding">Loading the checked case proof and refinement controls…</div>
+    <svg id="bridge-proof-chain" viewBox="0 0 1120 220" role="img" aria-label="The proof dependencies: ten-turtle types refine to five-turtle parents; a partial root point has seventeen exhaustive cases, all ruled out by checked base proofs"></svg>
+    <p>The normalized root has \(p=(-10,2,8)\) and \(t_C(p)=2/3\). In any complete parent-only point tiling, another parent must contribute at that point. Its pose belongs to a complete finite domain:</p>\[\mathcal D_C(p)=\{c_1,\ldots,c_{17}\},\qquad \forall i\;\text{no complete base extension contains }C\cup c_i.\]
+    <p>Each exclusion follows from a complete unmarked base-corona tree. Consequently this one-parent system cannot tile the entire point domain. Every ten-turtle type expands into two distinct copies of that parent, so a complete tiling by the full ten-turtle library would refine to the impossible parent-only tiling. This refutes these coarse inventories, while base turtle plane coverage remains open.</p>
+    <div class="controls"><label>Exhaustive cover case <select id="bridge-case"></select></label><label>Evidence view <select id="bridge-case-mode"><option value="pair">Capacity-legal parent pair</option><option value="leaf">First checked base dead leaf</option></select></label></div>
+    <div class="evidence-grid"><div><svg id="bridge-parent-values" viewBox="0 0 500 400" role="img" aria-label="The five-turtle parent’s verified own-level point values that suggested the obstruction"></svg><p id="bridge-parent-caption" class="caption"></p></div><div><svg id="bridge-case-drawing" viewBox="0 0 560 400" role="img" aria-label="The selected exhaustive parent contact or its independently checked first base failure leaf"></svg><p id="bridge-case-caption" class="caption"></p></div></div>
+    <details open><summary>The proof’s scope and its geometric hypotheses</summary>
+      <p>The candidate scan includes every allowed orientation and every positive-support alignment at the partial point, with full capacity and base-ownership checks. It does not use the marking to define the unmarked case domain. Every case is tied to the exact seeded base expansion of a separately replayed exhausted tree. The complete-extension contradiction holds because an infinite completion would follow some branch of each complete finite tree; it cannot reach an empty domain.</p>
+      <p>All twelve transformed and translated root domains have the same exhaustive cover. The higher-layer child maps preserve point sums and disjoint base ownership. These are explicit analytic lifting arguments supported by executable checks. The selected critical point came from learned values, but the resulting parent-only obstruction does not depend on trusting those values as universal rules. It is not a turtle non-tiling theorem, a geometric faithfulness theorem, or a formally internalized theorem about infinite sets.</p>
+    </details>
+    <h3 class="spaced-title">Refine the boundary when the coarse scale stalls</h3>
+    <div class="table-scroll"><table><thead><tr><th>Fixed root</th><th>Free coarse gate</th><th>Marked coarse gate</th><th>Aggregate + singleton fallback</th><th>Base-only response</th></tr></thead><tbody id="bridge-refinement-table"></tbody></table></div>
+    <p id="bridge-refinement-cost" class="caption"></p>
+    <div class="controls"><label>Fixed root and its fresh fine response <select id="bridge-refinement-root"></select></label></div>
+    <div class="slider-row"><label for="bridge-refinement-step">Accepted base tiles</label><input id="bridge-refinement-step" type="range" min="10" max="40" value="40"><output id="bridge-refinement-step-value">—</output></div>
+    <svg id="bridge-refinement-drawing" viewBox="0 0 850 440" role="img" aria-label="A fixed promoted root expanded into base turtles and its newly searched fine-scale boundary completion"></svg><p id="bridge-refinement-caption" class="caption"></p>
+    <details><summary>What this says about practical multiscale solving</summary>
+      <p>The fine control preserves the fixed root’s exact point contribution and seeds all its base constituents at generation zero. Future unmarked base tiles have no cluster channels, so they cannot disagree with its frozen cluster values. Every new move is independently re-applied with the original marked aggregate root. The same required support becomes complete, with viable exposed obligations.</p>
+      <p>Both aggregate and fine controls retain complete base alternatives, but their candidate inventories and atomic step sizes differ. The fine control starts a fresh process after the aggregate batch and imports shapes only. The cooperative wall limit includes complete graph construction; a single update may overrun that limit. The comparison is an observed response-cost result for these fixed local boundaries, not identical search traces, a broad speed ratio, or a plane extension.</p>
+      <p>A useful next policy should choose boundary responses and resolution changes, including abandoning an expensive coarse inventory. Coarse failure here is an abstraction-level statement; a fixed coarse fragment can still occur in a valid finite fine-scale region. A practical solver must keep that distinction and charge the cost of constructing and validating each abstraction.</p>
+    </details>
+    <h3 class="spaced-title">The same lemmas inside the logical/Wang checker</h3>
+    <p>Bind three external geometry lemmas: refinement, the complete root case cover, and the checked failures of all cases. The existing kernel checks the propositional assembly of the two coarse conclusions. Its literal machine and Wang rectangle check the encoded inference sequence. Geometry certificates are checked externally; they are not executed inside this finite fact-tape machine.</p>
+    <div class="table-scroll"><table><thead><tr><th>Certificate-search lane</th><th>Checked targets</th><th>Mean request seconds</th><th>Mean attempted cells</th></tr></thead><tbody id="bridge-logical-table"></tbody></table></div>
+    <p id="bridge-logical-control" class="caption"></p>
+    <div class="controls"><label>Coarse assertion <select id="bridge-logical-target"><option value="five">Five-turtle parent</option><option value="ten" selected>Ten-turtle library</option></select></label><label>Certificate lane <select id="bridge-logical-lane"><option value="RL + Wang">Learned proposal + Wang</option><option value="zero-weight proposal + Wang">Zero-weight proposal + Wang</option><option value="Wang">Wang without a proposal</option></select></label></div>
+    <p id="bridge-logical-statement"></p><svg id="bridge-logical-facts" viewBox="0 0 1000 410" role="img" aria-label="The fact tape after each independently decoded logical inference, with the target slot highlighted"></svg><p id="bridge-logical-caption" class="caption"></p>
+    <details><summary>Inspect the decoded derivation and remaining proof-system gap</summary><div id="bridge-logical-derivation"></div>
+      <p>The external predicates name existence of complete point tilings in the declared inventories and the normalized root-extension case. Unused facts are logical distractors. The finite syntax envelope includes all supported inference instances in that envelope, independently of a proof witness. A fresh policy practices on these same two assertions; a separate zero-weight proposal control also succeeds. This establishes a proposal effect, without evidence that learned weights improve proof search.</p>
+      <p>This bridge assembles a concrete multiscale tiling argument from checked lemmas. It still does not provide a single fixed checker for unbounded serialized first-order syntax, checked infinite theory schemas, or a fully internal formalization of geometry and infinite tilings. The broad computational proof-search objective remains active.</p>
+    </details>
+    <p id="bridge-audit" class="caption"></p><p class="small"><a href="hierarchy-bridge-001.json">Inspect all cases, promotions, fixed boundaries, fine responses, costs and logical certificates ↗</a> · <a href="hierarchy-proposal-control-001.json">Inspect the zero-weight proposal control ↗</a></p>
+  </section>
 
   <section class="panel" id="failure-interface-research">
     <p class="eyebrow">FAILURE INTERFACES · VARIABLE CLUSTERS AT TWO SCALES</p><h2>Learn the interface. Check the continuation.</h2>

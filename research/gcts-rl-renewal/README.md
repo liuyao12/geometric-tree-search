@@ -1401,3 +1401,139 @@ The next research gate is joint continuation of the positive variable-size
 assemblies and useful boundary-conditioned responses, measured by total solve
 cost. Practical acceleration, compatible plane growth, Penrose hierarchies and
 general proof search remain open.
+
+## A marking-guided case proof and a logical hierarchy bridge
+
+`hierarchy-bridge-001.json` explicitly reuses the preceding five-turtle shape,
+its verified palettes and all seven positive self-contacts. Acquisition and
+prior proof costs remain recorded; no earlier policy or completion enters a
+new search. Those contacts produce four distinct ten-turtle types. Each has
+two descending child maps to disjoint five-turtle parents, inherits their
+channels and has a free level-three channel.
+
+The marked five-parent root graph has an empty domain at
+\(p=(-10,2,8)\), where its occupancy is \(8/12\). That is a proof suggestion,
+not an unmarked conclusion. An independent unmarked parent-only scan at this
+point includes all orientations and positive-support alignments and finds
+\(17\) capacity-legal, ownership-disjoint covering placements. Every pose
+matches a previously searched negative parent contact. Replaying their full
+unmarked base-corona trees checks \(153\) proof nodes.
+
+Assume a complete point tiling using only the five-turtle parent and its
+allowed transforms. A used parent normalizes to the root. Its partial point
+needs a further parent from that exhaustive domain. Each possible root pair
+has a complete unmarked base failure tree, so no complete base extension can
+contain it. This contradicts the assumed complete tiling. The contradiction
+uses directly checked unmarked certificates; it does not rely on treating
+learned markings as universal rules. All twelve transformed/translated case
+domains agree exactly with the normalized cover.
+
+Every complete point tiling by the four ten-turtle types would refine into
+a complete tiling by the five-turtle parent. Point contributions sum exactly,
+allowed transforms compose, and the two child owners are disjoint within
+and across the declared aggregate placements. The parent-only obstruction
+therefore rules out that entire ten-turtle library too. These are explicit
+analytic lifting arguments over executable finite checks. They do not refute
+the base turtle, a finite region with singleton refinement, or a different
+coarse library. They are not an internal formalization of infinite sets or
+a geometric faithfulness theorem.
+
+Fifteen coarse controls use each root in free coarse, marked coarse and marked
+coarse-plus-singleton inventories. Every active type is explicitly declared;
+auxiliary child definitions never enter candidate domains. Root compilation
+removes only placements already incompatible with the immutable root. The
+complete graph implements global dead/forced/earliest-generation decisions.
+Every branch copies exact state and incidence; new source exports actual
+scheduled steps, attempted base constituents, graph peaks, removal reasons,
+construction cost and complete failures. The independent oracle rebuilds all
+domains before every exported move. All limits yield unknown, never a proof.
+
+With \(4000\) nodes and \(15\) cooperative seconds, the free five-parent gate
+remains unknown at \(16.304\) seconds, while the marked gate has a one-node
+failure in \(0.247\) seconds. A complete update can overrun the wall limit.
+This is not a finite-search equivalence or equal-success speed ratio: learned
+constraints can strengthen finite coarse-corona requirements, while the case
+proof separately establishes the complete-point obstruction. The free joint
+ten-type gates prove two root failures and leave two unknown; every marked
+ten-type root fails immediately. The short marked trees total five nodes;
+free negative trees add three. Saved unknown prefixes are not plane witnesses.
+
+Aggregate singleton fallback completes the five-turtle root support in
+\(5.172\) seconds but leaves all four ten-turtle root supports unknown.
+A separate fresh fine-only process expands the same fixed roots into base
+seeds at generation zero, imports no completion, and uses every base candidate.
+All five supports complete with viable exposed obligations in
+\(0.522,0.734,0.741,1.288,1.320\) seconds respectively. Total fine response
+and first replay cost is \(5.645\) seconds. The root's cluster channels cannot
+restrict future unmarked base tiles, which assign no such values. All
+\(107\) new moves are independently re-applied with the original marked
+aggregate root and literal fine scheduler. These are response-cost controls
+for identical fixed point boundaries, with different inventories and step
+sizes, rather than identical traces or a general speed claim. Learning when
+to change resolution is now a concrete practical target.
+
+The logical bridge binds three externally checked geometric lemmas:
+\(\operatorname{Plane10}\Rightarrow\operatorname{Plane5}\),
+\(\operatorname{Plane5}\Rightarrow\operatorname{CoveredRoot5}\), and
+\(\neg\operatorname{CoveredRoot5}\). These predicates describe existence in
+the explicit coarse systems and the normalized extension case; their semantic
+binding is checked by the case-cover/refinement code and analytic lifting.
+The existing kernel checks the propositional assembly of
+\(\neg\operatorname{Plane5}\) and \(\neg\operatorname{Plane10}\).
+The geometry proofs remain external to the literal finite fact-tape machine.
+
+The externally fixed envelope has \(15\) formulas and \(14\) independently
+enumerated inference relations, with three irrelevant control facts. Two
+literal machines use \(236/237\) states and \(1052/1054\) transitions.
+All proof rectangles have \(12\) unknown command slots, \(34\) columns and
+\(1536\) transition rows. A new policy practices on the same two assertions
+for \(48\) episodes; all succeed. Both learned-proposal lanes find checked
+rectangles for both assertions, while no-proposal lanes remain unknown at
+\(100000\) attempts and three cooperative seconds. This is same-assertion
+practice, not held-out mathematical generalization.
+
+The supplementary `hierarchy-proposal-control-001.json` uses a new zero-weight
+process, no training and the same evaluation seeds. It also finds both
+accepting rectangles. Thus proposal preferences help this bounded certificate
+search, but the batch supplies no learned-policy advantage. That control ran
+alongside the expensive research audit, so its times are not matched latency
+comparisons. Analytic neighbor values are separately labeled redundant Wang
+constraints; they are not geometric marking learning.
+
+The main sequential search/training/first-replay process costs \(231.984\)
+seconds and peaks at \(2274.31\) MiB. The supplementary zero-weight process,
+including its own two rectangle checks, costs \(4.492\) seconds and peaks at
+\(185.59\) MiB. The full independent hierarchy audit costs an additional
+\(773.207\) seconds and peaks at \(4149.72\) MiB. All are process peaks,
+not per-lane allocation. Complete literal coarse domains are expensive to
+construct and verify; this implementation is not a practical broad solver.
+
+The audit checks \(17\) base cases, seven positive promotion contacts, four
+refinement types, \(12\) case-cover symmetries and \(192\) transformed
+expansions. All \(15\) aggregate states and \(39\) scheduled coarse moves
+replay, as do the five fine-only responses. The logical rule catalog and all
+\(48\) training sequences reconstruct. Four main Wang rectangles contain
+\(208896\) independently checked cells; the zero-weight process checks two
+more rectangles. \(18\) altered cases, source premises, schedules, targets
+and fact boundaries reject. All six completed response patches pass exact
+polygon non-overlap. Displayed case certificates are exact copies from their
+hashed source contacts.
+
+```sh
+python3 research/gcts-rl-renewal/run_hierarchy_bridge.py
+python3 research/gcts-rl-renewal/run_fine_refinement.py
+python3 research/gcts-rl-renewal/audit_hierarchy_bridge.py
+python3 research/gcts-rl-renewal/run_hierarchy_proposal_control.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+```
+
+All \(139\) semantic tests pass. Eight new controls cover complete case
+coverage, omitted/duplicate cases, strict pose data, corrupted lower proofs,
+positive/wrong-point premises, disjoint refinement maps, literal marked
+domains and rollback, unknown budgets and logical fact binding. Earlier
+source-hashed modules and published artifacts are unchanged.
+The next practical gate is boundary-response and resolution selection under
+the fine scheduler. The broad proof program still needs a fixed unbounded
+serialized-syntax checker, checked infinite theory schemas and internal
+geometry definitions. Base plane coverage, Penrose hierarchy and general
+computational proof search remain active.
