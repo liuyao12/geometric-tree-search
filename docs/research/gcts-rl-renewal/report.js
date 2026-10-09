@@ -10,8 +10,47 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,timer=null,currentRun,currentProof,currentProofRows;
-const suiteTests=()=>regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,timer=null,currentRun,currentProof,currentProofRows;
+const suiteTests=()=>clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function drawClusterValues(svg,t,values,width=500,height=400){
+  svg.replaceChildren();const loops=t.expansion.map(k=>verts(data.point_model.vertices,k).map(project)),points=t.occupancy.map(([p])=>project(p)),all=loops.flat().concat(points);
+  const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const scale=Math.min((width-65)/(maxX-minX),(height-65)/(maxY-minY)),map=p=>[(p[0]-(minX+maxX)/2)*scale+width/2,(p[1]-(minY+maxY)/2)*scale+height/2],assigned=new Map(values.map(([p,v])=>[JSON.stringify(p),v]));
+  loops.forEach((loop,i)=>svg.append(el('polygon',{points:loop.map(p=>map(p).join(',')).join(' '),fill:i%2?'#d19163':'#6d9c83','fill-opacity':.13,stroke:'#849a89','stroke-width':1.1})));
+  t.occupancy.forEach(([p,v])=>{const [x,y]=map(project(p)),key=JSON.stringify(p),has=assigned.has(key),color=assigned.get(key);
+    const circle=el('circle',{cx:x,cy:y,r:has?6.2:3.2,fill:has?`hsl(${color*137.508%360} 45% 49%)`:'#fffdf8',stroke:has?'#45604c':'#a4b39e','stroke-width':.7});
+    circle.append(el('title',{},`Prototype point ${p.join(',')}; occupancy ${v}/12; ${has?`assigned scalar color ${color}`:'free entry (*)'}`));svg.append(circle);
+    if(has)svgText(svg,x,y+2.6,String(color),{'font-size':7.5,fill:'#fff','text-anchor':'middle'});
+  });
+}
+function clusterLearningView(){
+  const d=clusterMarkData,final=$('cluster-learning-state').value==='final',n=Number($('cluster-learning-step').value),h=d.marking.history[n-1],s=d.labels.samples[Number($('cluster-learning-contact').value)];
+  const values=final?d.marking_for_inspection_only:h.values;drawClusterValues($('cluster-learning-marking'),d.configuration.prototype,values);
+  $('cluster-learning-step-value').textContent=n;
+  $('cluster-learning-mark-caption').textContent=final?`Final own-level channel: ${d.marking.assigned} assigned values, ${d.marking.free} individual free entries and ${d.marking.colors} scalar colors on ${d.marking.support_points} prototype points. Hollow circles are free. Color zero is assigned. Counts refer to one prototype.`:`After ${n} labels: ${h.counts.positive||0} positive, ${h.counts.negative||0} negative, ${h.counts.unresolved||0} unresolved. All ${h.values.length} provisional values represent ${h.components} equality classes; ${h.provisional_negative_rejected} resolved negatives currently have a differing overlap. Provisional values do not filter the label oracle.`;
+  let placements=s.witness||s.seed_expansion,dead=null;
+  if(s.status==='negative'){placements=[...s.seed_expansion];let node=s.certificate;while(node.children?.length){const c=node.children[0];placements.push(c.placement);node=c.proof;}dead=node.dead;}
+  drawPatch($('cluster-learning-corona'),placements,{dead,width:560,height:400});
+  const marking=new Map(d.marking_for_inspection_only.map(([p,v])=>[JSON.stringify(p),v])),[name,o,tr]=s.second,g=syms[o];
+  const conflict=d.marking_for_inspection_only.some(([p,v])=>{const q=g.p.map((j,i)=>g.s*p[j]+tr[i]),key=JSON.stringify(q);return marking.has(key)&&marking.get(key)!==v;});
+  $('cluster-learning-corona-caption').textContent=`Contact ${Number($('cluster-learning-contact').value)+1} of ${d.labels.samples.length} · ${s.status==='negative'?'complete exhausted base search':'finite completion with viable exposed frontier'} · ${s.nodes} search nodes; ${s.branches} branches; ${s.forced} forced moves. ${dead?'The red ring is the first checked dead leaf.':'All original pair points are full; exposed obligations remain incomplete and viable.'} The final cluster marking ${conflict?'rejects':'accepts'} this contact.`;
+}
+function clusterLearningResults(){
+  const d=clusterMarkData,m=d.marking,a=d.independent_audit;
+  d.labels.samples.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[1]}`;$('cluster-learning-contact').append(o);});
+  $('cluster-learning-contact').value=10;
+  $('cluster-learning-contact').addEventListener('change',()=>{if($('cluster-learning-state').value==='online')$('cluster-learning-step').value=Number($('cluster-learning-contact').value)+1;clusterLearningView();});
+  $('cluster-learning-state').addEventListener('change',()=>{$('cluster-learning-step').value=$('cluster-learning-state').value==='final'?d.labels.samples.length:Number($('cluster-learning-contact').value)+1;clusterLearningView();});
+  $('cluster-learning-step').addEventListener('input',()=>{$('cluster-learning-state').value='online';$('cluster-learning-contact').value=Number($('cluster-learning-step').value)-1;clusterLearningView();});
+  $('cluster-learning-finding').textContent=`All ${d.labels.samples.length} contacts resolve: ${m.counts.positive} positive and ${m.counts.negative} negative. ${m.assigned} assigned point values reject ${m.negative_rejected} failures and accept every positive. All ${a.canonical_exclusions_checked} possible marking disagreements have independently checked base failure certificates. The marking is redundant for disjoint cluster decorations of complete unmarked point tilings; existence and plane coverage remain open.`;
+  ['unmarked','GCTS','RL','GCTS+RL'].forEach(lane=>{const rows=d.evaluation.filter(r=>r.lane===lane);tableRow('cluster-learning-benchmark',[lane,`${rows.filter(r=>r.status==='finite_exact_region').length} / ${rows.length}`,fmt(mean(rows.map(r=>r.attempted_base_placements))),fmt(mean(rows.map(r=>r.backtracks))),fmt(mean(rows.map(r=>r.seconds)))]);});
+  const base=d.evaluation.find(r=>r.problem==='free-notch-pocket'&&r.lane==='unmarked'),marked=d.evaluation.find(r=>r.problem==='free-notch-pocket'&&r.lane==='GCTS');
+  $('cluster-learning-performance').textContent=`All 24 lane/target runs complete. On the notched-core/pocket target, GCTS reduces backtracks from ${base.backtracks} to ${marked.backtracks} and total time from ${fmt(base.seconds)} to ${fmt(marked.seconds)} seconds. It does not improve every target. RL is slower on both witness-free targets; many marking eliminations do not make that policy faster. One seed per target is insufficient for a stable speedup claim.`;
+  $('cluster-learning-cost').textContent=`Fresh contact labels and equality synthesis ${fmt(d.labels.seconds)} s; zero-start RL training ${fmt(d.training.seconds)} s; complete pipeline ${fmt(d.total_seconds)} s; separate independent audit ${fmt(a.seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. All ${a.negative_proof_nodes_checked.toLocaleString()} negative-tree nodes, ${a.scalar_symmetry_contact_checks.toLocaleString()} symmetry contacts and ${a.finite_states_replayed} finite states replay. ${a.tampered_certificates_rejected} altered proofs reject. All ${a.geometry.evaluation_runs.length} displayed region patches pass exact polygon non-overlap; ${suiteTests()} semantic tests pass.`;
+  const p=d.parent;drawClusterValues($('cluster-learning-parent'),p,p.marks.filter(([[point,ch]])=>ch==='cluster:1').map(([[point,ch],v])=>[point,v]),780,400);
+  clusterLearningView();
+}
 
 function regionCases(){
   const movable=$('region-mode').value==='movable',select=$('region-problem');select.replaceChildren();
@@ -411,7 +450,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r5.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -422,34 +461,37 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r5.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r5.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r5.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r5.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r5.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r5.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r6.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r6.1',{cache:'no-cache'});
+    if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
+    clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
     genericProofResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r5.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r6.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
-    clusterData=await clusterResponse.json();clusterTileResults();regionResults();
-    $("load-status").textContent=`Fixed/movable boundary pilot, three turtle studies, a cold rhomb pilot and generic word-proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
+    $("load-status").textContent=`Own-level cluster markings, fixed/movable boundary tiling, turtle/rhomb studies and generic proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

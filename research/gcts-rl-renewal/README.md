@@ -319,7 +319,7 @@ independent positive and negative certificates, and fabricated dead-leaf
 rejection. The deliberately restrictive test marking is a control only and
 never enters discovery.
 
-## Next research iteration
+## Continuing research
 
 Fit the spatial types into a multi-type grammar with exact coordinate transforms,
 stationary productions and repeatable interfaces. Penalize boundary mismatch and
@@ -559,7 +559,8 @@ patches. That independent audit does not prove general geometric faithfulness,
 continuous region coverage or infinite extension. Six new conformance tests
 cover required zeros, unrequired exterior points, full boundary domains,
 snapshot rollback, distant assigned-zero components, finite-family state
-reset, complete negative trees and export tampering. The full suite passes 57.
+reset, complete negative trees and export tampering. That milestone passed 57
+tests; the cluster marking pilot below brings the suite to 63.
 
 ```sh
 python3 research/gcts-rl-renewal/run_regions.py
@@ -572,3 +573,79 @@ channels from independently certified failures, and search coarse assemblies
 with checked refinement. Larger regions, other tile systems, plane continuation
 and the first-order kernel-to-machine bridge remain open. Turtle substitution
 remains an optional route to a plane proof.
+
+## Own-level cluster markings from complete base failures
+
+`run_cluster_marking.py` selects the smallest previously searched level-one
+cluster with both turtle handednesses, breaking ties by identity. It imports
+only its unmarked shape and the singleton type. All prior markings, policies,
+substitutions and known tiling witnesses are excluded. The prototype contains
+two base turtles. Its 420 capacity-legal self-contacts have disjoint base
+ownership; orientation aliases remain distinct inventory identities.
+
+`cluster_learning.py` fixes each pair's four base constituents and labels it
+with the complete **unmarked base** inventory. It uses global dead/forced checks
+and earliest-generation branching, copying the complete state and graph on
+rollback. Positives fill the initial support and retain a viable exposed
+frontier. Negatives export complete trees; limits return unresolved. All labels
+resolve at the initial 2,000-node/five-second bounds: eight positive and 412
+negative. The cold base caches reset every 70 contacts, explicitly recorded.
+
+The online encoder starts with every own-level component free. After each
+positive it merges every overlapping prototype position. Negatives supply
+inequality alternatives, and unknown samples would impose nothing. Full
+provisional assignments are inspection records, never oracle input. Final
+sparsification retains 18 values on 51 prototype support points, leaves 33 free,
+and uses twelve scalar equality colors. Missing is free; color zero is assigned.
+The new `cluster:1` marking accepts all eight positives and rejects 380 of the
+412 negatives. Assignments exist only in the fresh experiment and its exported
+inspection snapshot; subsequent runs must freshly learn or declare reuse.
+
+`audit_cluster_marking.py` checks all 3,146 negative-tree nodes and every positive
+through a separate literal-support enumerator. Its cache stores transformed
+values only, never search domains or branch legality. It independently enumerates
+every possible scalar disagreement, including contacts found by marking support
+alignment rather than the occupancy catalog. All 380 are checked base failures;
+5,040 transformed catalog contacts verify the scalar action. Thus every complete
+unmarked base **point-model** tiling decorated by disjoint occurrences of this
+cluster satisfies the marking. This is conditional redundancy, not existence,
+plane coverage, preservation of finite groupings, or a claim about overlapping
+cluster descriptions. Shared-context composition still requires compatible
+inherited values and its own scope.
+
+The first positive two-cluster assembly becomes a level-two parent with four
+distinct base constituents, two descending child maps and 35 inherited assigned
+components. Its own channel remains free. Twelve transformed parent expansions
+replay. This is the first checked example of failure markings propagating into
+the next cluster layer, not a recurrent substitution.
+
+The six boundary targets from `run_regions.py` receive matched four-lane tests
+with the same two-type inventory, point conditions, atomic scheduler and bounds.
+All base singletons remain available. A new zero-start policy trains on unmarked
+holes; both RL lanes use those same frozen weights. All 24 evaluation runs
+complete. On the notched-core/pocket case, GCTS reduces backtracks from 31 to 13
+and total time from 1.21 to 0.98 seconds, but it does not improve every case. RL
+is slower on both witness-free targets. One seed per target cannot establish a
+stable speedup. This two-type study differs from the prior sixteen-type study;
+its timings are not a direct cross-study acceleration comparison.
+
+Learning/synthesis costs 17.19 seconds, RL training 1.10 seconds, the pipeline
+30.35 seconds, and separate audit 34.94 seconds. Peak process memory is about
+277 MiB. Independent replay checks 48 finite states (35 complete), 290 new base
+placements and 107 rejected alterations. All 24 displayed finite region patches
+pass rational polygon non-overlap checks. Six new tests cover complete contact
+enumeration, independent cached-value domains, negative-tree alternatives,
+online equality/unknown/free semantics, inherited scalar channels and typed
+certificates. The entire suite passes 63 tests.
+
+```sh
+python3 research/gcts-rl-renewal/run_cluster_marking.py
+python3 research/gcts-rl-renewal/audit_cluster_marking.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+Next: learn compatibility across multiple cluster types, use higher-level
+failure contexts for new channels, and compress exact interfaces for coarse
+assembly/refinement. Practical large-region performance, unbounded plane
+continuation, Penrose hierarchy/faithfulness and the logic-kernel compiler
+remain open. Substitution is an optional route to a plane construction.
