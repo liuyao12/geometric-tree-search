@@ -757,5 +757,104 @@ control. That restrictive control is test-only; discovery always starts unmarked
 Compatible unbounded saturation, a Penrose hierarchy, practical multiscale
 acceleration and the first-order-kernel compiler remain open.
 
-The complete current research suite passes 76 tests, including 13 new complex
+The complete suite at this milestone passed 76 tests, including 13 new complex
 and full-star checks. Earlier snapshots retain their milestone test counts.
+
+## First-order kernel to Wang bridge: finite catalogs and a fair union
+
+Earlier sections retain the open/closed status of their respective milestones.
+
+`kernel_machine.py` compiles all supported `logic.Kernel` inference relations
+inside an externally fixed finite syntax catalog. The catalog is constructed
+from declared formulas, instantiation terms, variables and substitution
+templates before any proof search. The resulting literal deterministic machine
+has one Boolean tape cell per formula. Unknown certificate symbols select
+inference commands; each command checks all its premises and sets the conclusion
+cell. Every cell starts false. Acceptance checks the externally declared target,
+erases the workspace and returns to a unique absorbing accepting configuration.
+No host-language checker callback occurs in the machine transition loop.
+Alternative instantiation terms or equality templates yielding the same
+formula/rule relation share one canonical checked witness; derivability, not
+certificate multiplicity or the exact spelling of an input proof, is preserved.
+
+All eight kernel kinds are represented: registered closed axioms, propositional
+tautologies, reflexivity, capture-avoiding universal instantiation, universal
+distribution with its free-variable side condition, equality substitution,
+modus ponens and generalization. The machine supports repeated commands and
+arbitrarily long finite certificates, without storing chronological line
+references. `Catalog.proof` independently reconstructs those references and
+checks the result against the external kernel. If the target was proved before
+the end, it retains the valid prefix ending at the last target line.
+
+The finite correctness argument is an induction on commands: every set cell
+has a valid kernel derivation, and each inference adds another valid derivation.
+Conversely, a kernel proof whose formulas and schema parameters occur in the
+catalog translates line by line to commands. This gives exact provability in
+the finite compiled inference closure. It does not prove that failure in that
+closure means failure in the full first-order theory.
+
+`language_stage` enumerates all terms and formulas up to a declared AST-node
+bound over the finite signature. Its variable set includes names from the
+problem and an increasing shortlex enumeration of all Python Unicode strings.
+Every finite literal kernel proof, including substitution templates and terms,
+eventually lies inside one catalog. `kernel_search.fair_search` dovetails syntax
+bounds, powers-of-two certificate lengths and rectangle heights, revisiting
+each rectangle with an unbounded node allowance. Padding and absorbing
+acceptance preserve shorter witnesses. Thus, with unlimited resources, every
+proof accepted by this kernel is eventually represented and found. This is
+relative computational completeness, not a formally verified semantic
+completeness theorem. The unrestricted syntax enumerator is extremely expensive;
+only bounded semantic controls have run. A single fixed serialized-AST checker,
+checked infinite axiom schemas and a formal compiler proof remain open.
+
+The existing `lazy_wang` engine retains the exact doubled-grid point model,
+complete symbolic candidate incidence, global dead/forced/earliest-generation
+scheduler and exact rollback. All finite centers are zero-generation roots;
+every placement has generation one. Each candidate has one positive occupancy
+center; its edge and optional extended marking dependencies remain global.
+The optional neighbor-value marking is the earlier analytic redundant control,
+not a learned failure marking. Learned kernel inference sequences are proposals
+only: their literal computation becomes a preferred rectangle, every constituent
+uses the graph scheduler, and every base alternative remains available.
+
+`run_kernel_machine.py` trains 128 zero-weight REINFORCE episodes on six assertion
+controls with two unused theory axioms. Evaluation uses the same assertions
+with three unused axioms, one seed, eight unknown certificate slots and 384
+transition rows. This is a same-assertion distractor control, not mathematical
+generalization. Every lane has the same 100,000-attempt and cooperative
+three-second search budgets, including domain construction. Proposals have a
+five-command horizon. Mean lane time includes failed budget-limited attempts;
+it is not an equal-success speed ratio. Training, compilation, preference
+construction, successful search replay and independent audit costs are reported.
+
+The saved pilot has 66 checked training proposals. Standard Wang completes
+one of six controls, the analytic marking completes three, and both RL lanes
+complete five. Distribution remains unresolved in all lanes in this distractor
+configuration. Fourteen accepting rectangles replay as external kernel proofs,
+with 111,744 base point placements and 56 rejected changes to targets, rows,
+proofs and fact boundaries. The cold proposal learned no new failure marking.
+
+`audit_kernel_machine.py` constructs schemas independently and intersects their
+conclusions with the catalog, checks the exact inference inventory, reconstructs
+the externally defined evaluation problems, replays every training command
+sequence, checks the direct TM computations and all point sums/marks, and
+decodes saved proofs without allowing certificate-selected axioms. The separate
+arithmetic control supplies the earlier 15-line addition proof only to test the
+compiler: it becomes 15 commands, 267 states, 1,260 literal transitions and
+1,052 machine steps. Its witness-derived catalog and proof never enter training
+or discovery. It is a compiler round trip, not a new arithmetic discovery.
+
+```sh
+python3 research/gcts-rl-renewal/run_kernel_machine.py
+python3 research/gcts-rl-renewal/audit_kernel_machine.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+The current suite passes 84 tests. The eight new tests cover independent rule
+enumeration, literal-machine versus kernel acceptance, captured variables,
+invalid distribution, proof translation, nonfinal targets, empty/forged
+certificates, Unicode grammar fairness, budget labels, unseeded Wang proof
+search and redundant-marking controls. Existing graph completeness and rollback
+tests still apply to the unchanged engine. Harder proofs, hierarchical proof
+clusters, practical multiscale tiling acceleration and certified turtle or
+search-produced Penrose plane continuation remain open.

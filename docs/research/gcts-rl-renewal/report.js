@@ -10,8 +10,35 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,timer=null,currentRun,currentProof,currentProofRows;
-const suiteTests=()=>complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,timer=null,currentRun,currentProof,currentProofRows;
+const suiteTests=()=>kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function kernelView(){
+  const p=kernelData.problems.find(p=>p.id===$('kernel-problem').value),r=p.runs.find(r=>r.lane===$('kernel-lane').value),svg=$('kernel-facts');svg.replaceChildren();
+  const commands=r.commands??[],facts=p.declaration.formulas.map(()=>false),frames=[{facts:[...facts],rule:'initial'}],target=p.declaration.formulas.findIndex(a=>JSON.stringify(a)===JSON.stringify(p.target));
+  commands.forEach(id=>{const item=p.inferences[id];facts[item.conclusion]=true;frames.push({facts:[...facts],rule:item.rule,changed:item.conclusion});});
+  const cw=Math.min(54,510/facts.length),left=120,top=37,rh=29;
+  facts.forEach((_,i)=>svgText(svg,left+(i+.5)*cw,20,`slot ${i}`,{'font-size':10,'text-anchor':'middle'}));
+  frames.forEach((f,j)=>{svgText(svg,10,top+(j+.6)*rh,`${j} · ${f.rule}`,{'font-size':10});f.facts.forEach((v,i)=>{svg.append(el('rect',{x:left+i*cw+2,y:top+j*rh,width:cw-4,height:rh-5,rx:3,fill:v?(i===target?'#c66c3b':'#6d9c83'):'#e3e8dd',stroke:f.changed===i?'#23332f':'none','stroke-width':1.4}));svgText(svg,left+(i+.5)*cw,top+j*rh+17,v?'1':'0',{'text-anchor':'middle','font-size':12,fill:v?'#fffdf8':'#778478'});});});
+  if(!r.verified)svgText(svg,120,100,'No accepting certificate within this run’s bounds.',{'font-size':13,fill:'#834853'});
+  $('kernel-fact-caption').textContent=r.verified?`${commands.length} certificate commands. Each row shows the literal fact tape after a command; green slots are proved and orange marks the target. The tape symbols 0 and 1 are machine data. This view summarizes the checked computation, rather than drawing every Wang cell.`:'The search reached a finite limit. No proof or non-provability conclusion is shown; the initial fact tape remains empty in this view.';
+  $('kernel-formulas').replaceChildren(...p.formulas_latex.map((a,i)=>{const e=document.createElement('p');e.textContent=`Slot ${i}: \\(${a}\\)`;return e;}));
+  $('kernel-statement').textContent=`Target: \\(${p.statement}\\)`;
+  $('kernel-run-caption').textContent=`${r.verified?'Checked accepting rectangle':r.status} · ${r.width} columns, ${r.height} transition rows · ${r.nodes.toLocaleString()} attempts, ${r.branches.toLocaleString()} branches, ${r.backtracks.toLocaleString()} backtracks · ${fmt(r.lane_seconds)} s including proposal construction and successful search replay. ${p.machine.states} machine states; ${p.machine.transitions} literal transitions. ${r.preferred_rectangle?'A validated learned sequence supplied preferences.':'No complete proposal was supplied.'}`;
+  $('kernel-derivation').replaceChildren(...(r.display_proof??[]).map((l,i)=>{const e=document.createElement('p'),raw=r.kernel_proof[i],refs=l.rule==='mp'?` from ${raw.antecedent+1}, ${raw.implication+1}`:l.rule==='generalize'?` from ${raw.source+1}`:'';e.textContent=`${i+1}. ${l.rule}${refs}: \\(${l.formula}\\)`;return e;}));
+  window.MathJax?.typesetPromise?.([$('kernel-formulas'),$('kernel-statement'),$('kernel-derivation')]).catch(()=>{});
+}
+function kernelResults(){
+  kernelData.problems.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.id.replaceAll('_',' ');$('kernel-problem').append(o);});
+  kernelData.configuration.lanes.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l;$('kernel-lane').append(o);});$('kernel-lane').value='RL + standard Wang';
+  ['kernel-problem','kernel-lane'].forEach(id=>$(id).addEventListener('change',kernelView));kernelView();
+  const d=kernelData,a=d.independent_audit;
+  $('kernel-finding').textContent=`${a.checked_rectangles} accepting rectangles replay as first-order proofs, covering ${a.point_placements_checked.toLocaleString()} exact base cells. All eight kernel rule kinds are exercised by the independently enumerated catalogs. Cold RL completes five of six assertion controls; standard Wang completes one, and the analytic marking alone completes three within matched bounds. Distribution remains budget-limited in all four lanes. These are small same-assertion controls, not a general theorem-proving speedup.`;
+  d.configuration.lanes.forEach(l=>{const rs=d.problems.flatMap(p=>p.runs.filter(r=>r.lane===l));tableRow('kernel-benchmark',[l,`${rs.filter(r=>r.verified).length} / ${rs.length}`,Math.round(mean(rs.map(r=>r.nodes))).toLocaleString(),fmt(mean(rs.map(r=>r.lane_seconds)))]);});
+  $('kernel-cost').textContent=`128 cold training episodes: ${d.training.success} checked proposals in ${fmt(d.training.seconds)} s. Complete pipeline ${fmt(d.total_seconds)} s; independent audit ${fmt(a.seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. The audit rejects ${a.tampered_certificates_rejected} altered proofs, rows and input boundaries and replays every training sequence. Table means include budget-limited attempts; they are not equal-success speed ratios. Each run has 100,000 attempts and a cooperative three-second search limit including graph construction; every rectangle has eight unknown certificate slots and 384 transition rows. All ${suiteTests()} tests pass.`;
+  const c=d.arithmetic_control;$('kernel-arithmetic-control').textContent=`Separate compiler control: the previously kernel-checked \\(${c.statement}\\) derivation translates to ${c.commands.length} inference commands, ${c.machine_states} states, ${c.transitions.toLocaleString()} literal transitions and ${c.machine_steps.toLocaleString()} machine steps. Its supplied proof and witness-derived catalog are excluded from discovery and training. This verifies a round trip; it is not a new arithmetic discovery.`;
+  window.MathJax?.typesetPromise?.([$('kernel-arithmetic-control')]).catch(()=>{});
+}
 
 function certifiedStarView(){
   const star=complexData.stars[Number($('complex-star').value)];
@@ -353,7 +380,7 @@ function continuationResults(){
   $("continuation-finding").textContent=`The exterior marking reaches ${gcts.success} of three 128-tile targets; the combined policy reaches ${both.success}. RL macro validation and ordering remain costly, and this study has not demonstrated an acceleration. Budget-limited prefixes are unknown, never non-tiling results. The no-RL lanes also keep complete base-placement search.`;
   const historical=d.reuse.compact_learning_seconds+d.reuse.exterior_additional_probe_seconds+d.reuse.exterior_independent_validation_seconds,a=d.independent_audit;
   $("continuation-cost").textContent=`Historical reused marking construction and replay: ${fmt(historical)} s. Fresh donors: ${fmt(library.donors.reduce((sum,r)=>sum+r.seconds,0))} s; library extraction: ${fmt(library.seconds)} s; grouping inspection: ${fmt(d.grammar_inspection.seconds)} s; RL training: ${fmt(d.training.seconds)} s. New pipeline including the timing repeat: ${fmt(d.total_seconds)} s; separate audit ${fmt(a?.seconds||0)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. The original tile-count pass overlapped another research job and was replaced by sequential searches; both passes and their costs remain in the JSON. ${a?`The independent audit checked ${a.interfaces} interfaces, ${a.hierarchy_levels} partition levels, successful checkpoint coverage and exposed frontiers; all ${a.geometry.evaluation_runs.length} final/donor patches passed exact polygon non-overlap checks.`:"Final audit pending."}`;
-  $("serialized-proof-caption").textContent="Both exported proof formats now replay from JSON. The logic replay uses an externally declared theory; the proof cannot nominate new axioms. Changed targets, a forged axiom, and a changed Wang input are rejected. This closes serialization replay, while the kernel-to-machine compiler remains open.";
+  $("serialized-proof-caption").textContent="Both exported proof formats now replay from JSON. The logic replay uses an externally declared theory; the proof cannot nominate new axioms. Changed targets, a forged axiom, and a changed Wang input are rejected. This historical snapshot closes serialization replay. The new finite-catalog bridge also supplies an executable first-order checker; a single fixed serialized-syntax checker remains open.";
   $("core-lane").addEventListener("change",coreSeeds);$("core-seed").addEventListener("change",coreRadii);$("core-radius").addEventListener("change",coreView);
   $("grammar-library").addEventListener("change",grammarSeeds);["grammar-seed","grammar-level"].forEach(id=>$(id).addEventListener("change",grammarView));
 }
@@ -481,7 +508,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r7.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -492,43 +519,46 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r7.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r7.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r7.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r7.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r7.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r8.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r8.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r8.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r8.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    genericProofResults();penroseComplexResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r7.1",{cache:"no-cache"});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r8.1',{cache:'no-cache'});
+    if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
+    kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
+    genericProofResults();penroseComplexResults();kernelResults();
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r8.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Conditional rhomb plane-faithfulness proof, fresh full-star search, own-level cluster markings, boundary tiling and generic proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    $("load-status").textContent=`First-order kernel bridge, conditional rhomb plane-faithfulness, fresh full-star search, cluster markings and boundary tiling recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

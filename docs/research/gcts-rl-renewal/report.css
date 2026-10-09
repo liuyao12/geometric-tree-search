@@ -8,3 +8,5 @@
 #cluster-learning-marking,#cluster-learning-corona{background:#f1f4ec;border-radius:5px}#cluster-learning-contact{max-width:340px}#cluster-marking-research .evidence-grid{grid-template-columns:1fr 1.15fr}@media(max-width:850px){#cluster-marking-research .evidence-grid{grid-template-columns:1fr}}
 
 #complex-star-drawing,#star-pilot-drawing{background:#f1f4ec;border-radius:5px}.equation{padding:10px 0;overflow-x:auto}
+
+#kernel-facts{background:#f1f4ec;border-radius:5px}.kernel-formulas{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;font-size:11px}.kernel-formulas p{margin:4px 0;overflow-x:auto}#kernel-derivation p{font-size:12px;margin:8px 0}#kernel-machine-research .evidence-grid{align-items:start}@media(max-width:600px){.kernel-formulas{grid-template-columns:1fr}}
