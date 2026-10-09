@@ -302,10 +302,12 @@ certified by integer comparisons in \(\mathbb Q(\sqrt5)\). For any finite
 support, infinitely many distinct small translations eventually avoid its
 finite difference set; thus unrestricted finite-support capacity cannot equal
 geometric non-overlap. Search instead grows a vertex-connected component and
-completes generated stars. A complete developed-complex to plane-tiling
-equivalence still needs proof. It does not activate every point of the dense
-module. It also does not characterize the hierarchical Penrose subset of
-unmarked rhomb tilings. These are explicit remaining model and discovery gaps.
+completes generated stars. At this pilot's publication, a developed-complex
+to plane-tiling equivalence was still open. The analytic theorem below now
+addresses it for a connected assignment with every generated star saturated.
+This does not activate every point of the dense module or characterize the
+hierarchical Penrose subset. The historical finite witnesses do not satisfy
+full saturation; compatible infinite continuation remains open.
 
 ```sh
 python3 research/gcts-rl-renewal/run_penrose.py
@@ -326,8 +328,8 @@ stationary productions and repeatable interfaces. Penalize boundary mismatch and
 uncovered obligations. Search
 inflation matrices without providing a known scalar, and try hierarchical
 composition; preserve single-tile fallback. Certify exclusions of larger motifs
-before adding further marking channels. For Penrose, close the developed-complex
-gap and learn hierarchical proposals beyond pair-star samples. The computational
+before adding further marking channels. For Penrose, construct compatible
+unbounded saturation and learn hierarchical proposals beyond local star samples. The computational
 proof pilot below implements a generic checker. For mathematical logic, the
 remaining bridge is an explicit translation of the first-order kernel and
 checked theory schemas, followed by harder benchmarks.
@@ -434,7 +436,7 @@ python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 ```
 
 The program remains active: practical boundary-conditioned tiling, learned
-cluster markings, plane coverage, Penrose hierarchy/faithfulness, the first-order
+cluster markings, plane coverage, Penrose hierarchy and compatible infinite continuation, the first-order
 kernel compiler and substantial mathematical proof benchmarks remain open.
 
 ## Boundary solutions and first-class cluster tiles
@@ -647,5 +649,113 @@ python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 Next: learn compatibility across multiple cluster types, use higher-level
 failure contexts for new channels, and compress exact interfaces for coarse
 assembly/refinement. Practical large-region performance, unbounded plane
-continuation, Penrose hierarchy/faithfulness and the logic-kernel compiler
+continuation, Penrose hierarchy and compatible infinite continuation and the logic-kernel compiler
 remain open. Substitution is an optional route to a plane construction.
+
+
+## Conditional analytic rhomb faithfulness and full-star extension
+
+The new result is a theorem about the declared sector model, with a written
+analytic proof in `docs/research/gcts-rl-renewal/penrose-faithfulness.html`.
+A nonempty vertex-connected, capacity-legal assignment with all ten sectors
+full at every generated vertex develops bijectively into an edge-to-edge plane
+tiling. It does not require all points of the dense module to be vertices.
+The converse holds for edge-to-edge tilings by the declared unit placements.
+This theorem is not a discovered infinite continuation, a Penrose arrow
+characterization or a machine-checked Hilbert proof.
+
+The proof has four steps. Directional sector partitions force exactly two
+opposite partners on each whole unit edge. The glued abstract faces form a
+connected flat surface without boundary, with their given coordinates providing
+a local isometry to the plane. Barycentric graph distance extends affinely to a
+continuous function with gradient norm at most \(12\): all template triangles
+have half-edge length \(1/2\), corner-to-centre length at most \(1\), and
+absolute determinant at least \(1/8\). Every intrinsic ball of radius
+\(R\) consequently lies in a finite subcomplex whose vertices have graph
+distance at most \(\lceil12R+1\rceil\). Closed balls are compact, proving
+metric completeness. The complete-local-isometry covering theorem, followed
+by simple connectivity of \(\mathbb R^2\), makes development a bijection.
+The covering theorem is Proposition 4.9 of Urs Lang's primary ETH lecture
+notes, linked from the proof. The surface and completeness arguments are ours.
+
+`penrose_complex.py` independently declares both outlines and reconstructs
+sector support. `audit_penrose_complex.py` checks equality with the actual
+unmodified search model: all 80 corner identities, 40 physical corners and
+708 complete stars. An independent cyclic-composition enumeration proves the
+finite catalog complete. All 4,010 radial seams have opposite unit partners;
+all 7,080 rotated stars agree with the exact geometric action. Exact rational
+cyclotomic arithmetic checks 160 barycentric triangles and all corner-chart
+altitudes. A separate polygon audit checks 9,925 local face pairs without
+overlap. The infinite topological inference remains the explicit written proof,
+not something those finite counts alone establish.
+
+The same audit replays the unchanged 320 historical point patches. Their 2,210
+complete vertices match the star catalog, realizing 432 distinct stars. Their
+6,544 exposed vertices are incomplete. These patches therefore do not meet
+the theorem's full-saturation assumption. Source and historical-artifact hashes,
+and the exact proof-document hash, are saved in `penrose-complex-001.json`.
+The older artifact's open-faithfulness label records its original state.
+
+Connectivity is essential. An explicitly analytic comparison control uses
+two entire periodic thick-rhomb grids on the disjoint vertex cosets
+\(\Lambda=\mathbb Z+\mathbb Z\zeta_5\) and
+\(\varphi^{-1}+\Lambda\). Both components saturate their stars and each
+covers the plane; their overlaid union is point-legal yet geometrically overlaps.
+These known grids are controls only and never seed discovery or policy training.
+Finite partial point patches continue to require their separate geometry audit.
+The turtle's scalar angle weights do not provide the directional partition
+needed for this theorem.
+
+`penrose_star_search.py` is a fresh unmarked higher-context pilot. It recomputes
+the full-star catalog from prototypes and covers all 708 stars using 75 verified
+rotation orbits. Each fixed star has three through ten distinct rhombs. The
+required target is every sector at every vertex of the entire fixed cluster,
+not just its already full central vertex. Search retains both kinds, all ten
+rotations and every point-support alignment in the original complete graph.
+No old patch, marking, arrows, policy or substitution is imported. Immutable
+geometry is diagnostic only; polygons do not decide candidate legality.
+Caches reset after ten orbits. Every generated star slot is an explicit
+zero-generation root; later tile generations follow the existing point rule.
+Snapshots restore the complete state and graph. Global dead/forced checks
+precede earliest-generation branching, with initial-core, degree and exact-key
+ties. A 2,000-node or three-second cooperative cutoff means unresolved.
+
+All 75 representatives complete, with no negatives or unresolved results.
+Independent representative domains check every exposed slot. The transferred
+708 completions replay exact point coverage and one legal candidate per exposed
+slot, totaling 100,090 frontier witnesses. Seed aliases are canonicalized only
+in the diagnostic context catalog; the search inventory keeps every alias.
+The transformation audit checks the exact rotation action and identical
+unmarked support of replaced seed aliases. This is a symmetry transfer of
+finite existence and viability certificates, not 708 separate searches or a
+claim of identical lexicographic branch order after rotation.
+
+`audit_penrose_stars.py` reconstructs the declared contexts externally, replays
+saved placements, targets, generations and every frontier witness, audits all
+75 representative polygons, and rejects altered targets and omitted frontier
+witnesses. It checks 1,886 representative base placements and 17,689 transformed
+placements. The pilot finds no failed context from which to synthesize a new
+marking. No marking or RL policy is activated; no acceleration comparison is
+claimed. One-corona existence still does not imply infinite extension.
+Search, first audit, separate saved-data replay, peak memory and source hashes
+are reported separately in `penrose-stars-001.json`.
+
+```sh
+python3 research/gcts-rl-renewal/audit_penrose_complex.py
+python3 research/gcts-rl-renewal/audit_penrose_complex.py --check docs/research/gcts-rl-renewal/penrose-complex-001.json
+python3 research/gcts-rl-renewal/penrose_star_search.py
+python3 research/gcts-rl-renewal/audit_penrose_stars.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+Semantic checks now include independent star completeness, rejected omitted
+stars and altered edge partners, exact metric bounds and degenerate templates,
+partial-star versus whole-patch completion, declared integer transforms,
+rotation-orbit coverage, zero-root generations, exact transformed viability,
+changed targets, cutoffs-as-unknown and an independently exhausted marked
+control. That restrictive control is test-only; discovery always starts unmarked.
+Compatible unbounded saturation, a Penrose hierarchy, practical multiscale
+acceleration and the first-order-kernel compiler remain open.
+
+The complete current research suite passes 76 tests, including 13 new complex
+and full-star checks. Earlier snapshots retain their milestone test counts.

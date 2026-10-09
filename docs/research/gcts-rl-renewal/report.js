@@ -10,8 +10,39 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,timer=null,currentRun,currentProof,currentProofRows;
-const suiteTests=()=>clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,timer=null,currentRun,currentProof,currentProofRows;
+const suiteTests=()=>complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function certifiedStarView(){
+  const star=complexData.stars[Number($('complex-star').value)];
+  const old=$('complex-ray').value;$('complex-ray').replaceChildren(...star.seams.map(s=>{const o=document.createElement('option');o.value=s.direction;o.textContent=`Direction ${s.direction}`;return o;}));
+  if(star.seams.some(s=>String(s.direction)===old))$('complex-ray').value=old;
+  drawCertifiedStar();
+}
+function drawCertifiedStar(){
+  const star=complexData.stars[Number($('complex-star').value)],seam=star.seams.find(s=>s.direction===Number($('complex-ray').value)),svg=$('complex-star-drawing');svg.replaceChildren();
+  const loops=star.corners.map(i=>complexData.corners[i].vertices.map(ringEmbed).map(([x,y])=>[x,-y])),all=loops.flat(),xs=all.map(p=>p[0]),ys=all.map(p=>p[1]);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),scale=Math.min(575/(maxX-minX),345/(maxY-minY)),map=([x,y])=>[(x-(minX+maxX)/2)*scale+325,(y-(minY+maxY)/2)*scale+210];
+  loops.forEach((loop,j)=>{const i=star.corners[j],selected=seam.faces.includes(i),kind=complexData.corners[i].key[0];svg.append(el('polygon',{points:loop.map(p=>map(p).join(',')).join(' '),fill:selected?'#d19163':kind==='thick'?'#6d9c83':'#91b5bd','fill-opacity':selected?.82:.48,stroke:'#476651','stroke-width':1.2}));});
+  const [cx,cy]=map([0,0]);svg.append(el('circle',{cx,cy,r:scale/2,fill:'#fffdf8','fill-opacity':.2,stroke:'#347999','stroke-width':1.3,'stroke-dasharray':'4 4'}));
+  for(let s=0;s<10;s++){const theta=s*Math.PI/5,[x,y]=map([.5*Math.cos(theta),-.5*Math.sin(theta)]);svg.append(el('line',{x1:cx,y1:cy,x2:x,y2:y,stroke:'#6d868d','stroke-width':.7,'stroke-dasharray':'2 3'}));const [lx,ly]=map([.31*Math.cos(theta+Math.PI/10),-.31*Math.sin(theta+Math.PI/10)]);svgText(svg,lx,ly+3,String(s),{'font-size':10,'text-anchor':'middle',fill:'#304e56'});}
+  const [ex,ey]=ringEmbed(seam.endpoint),[x,y]=map([ex,-ey]);svg.append(el('line',{x1:cx,y1:cy,x2:x,y2:y,stroke:'#a3444c','stroke-width':4}));svg.append(el('circle',{cx,cy,r:3,fill:'#23332f'}));svg.append(el('circle',{cx:x,cy:y,r:4,fill:'#a3444c'}));
+  $('complex-star-caption').textContent=`Star ${Number($('complex-star').value)+1} of ${complexData.stars.length} · ${star.faces} rhombs fill all ten root sectors. Numbers identify the fixed sector slots. The two orange faces share the highlighted unit edge. The dashed circle lies inside the flat root chart. Other vertices remain incomplete in this finite local example.`;
+}
+function fullStarPilotView(){
+  const s=starPilotData.samples[Number($('star-pilot-orbit').value)];drawRhombs($('star-pilot-drawing'),s.placements,{required:s.required,fixed:s.initial.length});
+  $('star-pilot-caption').textContent=`Orbit ${Number($('star-pilot-orbit').value)+1} of ${starPilotData.samples.length} · ${s.initial.length} fixed rhombs; ${s.placements.length} total · ${s.status} · ${s.counts.nodes} search nodes, ${s.counts.branches||0} branches and ${s.counts.backtracks||0} backtracks. All ${s.required.length} initial slots are full; ${s.frontier_witnesses?.length||0} exposed slots have checked candidates. Dark outlines identify the fixed star; gold dots mark its target vertices.`;
+}
+function penroseComplexResults(){
+  const d=complexData,a=d.independent_audit,st=starPilotData,sa=st.serialization_audit;
+  d.stars.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${s.faces} rhombs`;$('complex-star').append(o);});$('complex-star').value=80;
+  $('complex-star').addEventListener('change',certifiedStarView);$('complex-ray').addEventListener('change',drawCertifiedStar);certifiedStarView();
+  $('complex-audit').textContent=`${a.raw_corner_aliases_checked} corner identities, ${a.full_stars_checked} full stars, ${a.radial_unit_seams_checked.toLocaleString()} unit seams and ${d.template_bounds.barycentric_triangles_checked} barycentric triangles pass exact checks. All ${a.rotation_contacts_checked.toLocaleString()} rotations replay. ${a.complete_vertices_replayed.toLocaleString()} complete vertices in 320 historical patches match the catalog; ${a.incomplete_exposed_vertices.toLocaleString()} exposed vertices remain incomplete. Finite audit ${fmt(d.audit_seconds)} s.`;
+  const allPositive=(st.counts.positive||0)===st.catalog.rotation_orbits;
+  $('star-pilot-finding').textContent=`Fresh higher-context pilot: ${st.catalog.rotation_orbits} rotation orbits cover all ${st.catalog.full_stars} complete root stars. ${st.counts.positive||0} positive, ${st.counts.negative||0} negative, ${st.counts.unresolved||0} unresolved. ${allPositive?'All represented stars have verified finite one-coronas. This found no failing context to encode as a new marking.':'Resolved labels refer only to the declared finite completion target.'} No marking or policy was activated.`;
+  st.samples.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1} · ${s.initial.length} fixed rhombs · ${s.status}`;$('star-pilot-orbit').append(o);});$('star-pilot-orbit').addEventListener('change',fullStarPilotView);fullStarPilotView();
+  $('star-pilot-audit').textContent=`Search plus fresh catalog ${fmt(st.search_and_catalog_seconds)} s; first independent audit ${fmt(st.independent_audit.seconds)} s; complete pipeline ${fmt(st.total_seconds)} s; peak memory ${(st.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Separate saved-data replay ${fmt(sa.seconds)} s checks ${sa.representative_completions_checked} representatives, ${sa.transformed_completions_checked} transformed completions and ${sa.transformed_frontier_witnesses_checked.toLocaleString()} frontier witnesses. Altered targets and omitted frontier witnesses reject. All displayed representative polygons are nonoverlapping. ${suiteTests()} semantic tests pass.`;
+}
 
 function drawClusterValues(svg,t,values,width=500,height=400){
   svg.replaceChildren();const loops=t.expansion.map(k=>verts(data.point_model.vertices,k).map(project)),points=t.occupancy.map(([p])=>project(p)),all=loops.flat().concat(points);
@@ -328,14 +359,14 @@ function continuationResults(){
 }
 
 const ringEmbed=p=>p.reduce((sum,c,i)=>[sum[0]+c*Math.cos(2*i*Math.PI/5),sum[1]+c*Math.sin(2*i*Math.PI/5)],[0,0]);
-function drawRhombs(svg,placements,{width=740,height=430,required=[],obstruction=false}={}){
+function drawRhombs(svg,placements,{width=740,height=430,required=[],obstruction=false,fixed=2}={}){
   svg.replaceChildren();
   const loops=placements.map(([kind,r,tr])=>penroseData.point_model.vertices[kind].map(v=>{const [x,y]=ringEmbed(v),[a,b]=ringEmbed(tr),theta=r*Math.PI/5;return [x*Math.cos(theta)-y*Math.sin(theta)+a,-(x*Math.sin(theta)+y*Math.cos(theta)+b)];}));
   const points=required.map(([v])=>ringEmbed(v)).map(([x,y])=>[x,-y]),all=loops.flat().concat(points);
   if(!all.length)return;
   const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),scale=Math.min((width-60)/Math.max(.1,maxX-minX),(height-50)/Math.max(.1,maxY-minY));
   const map=([x,y])=>[(x-(minX+maxX)/2)*scale+width/2,(y-(minY+maxY)/2)*scale+height/2];
-  loops.forEach((loop,i)=>{const [kind,r,tr]=placements[i],poly=el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill:obstruction?(i?"#c76b3d":"#347999"):kind==="thick"?"#6d9c83":"#d19163","fill-opacity":.64,stroke:obstruction?"#9e424a":i<2?"#23332f":"#476651","stroke-width":i<2?2:1.2});poly.append(el("title",{},`${kind}; rotation ${r}; translation ${tr.join(",")}`));svg.append(poly);});
+  loops.forEach((loop,i)=>{const [kind,r,tr]=placements[i],poly=el("polygon",{points:loop.map(p=>map(p).join(",")).join(" "),fill:obstruction?(i?"#c76b3d":"#347999"):kind==="thick"?"#6d9c83":"#d19163","fill-opacity":.64,stroke:obstruction?"#9e424a":i<fixed?"#23332f":"#476651","stroke-width":i<fixed?2:1.2});poly.append(el("title",{},`${kind}; rotation ${r}; translation ${tr.join(",")}`));svg.append(poly);});
   const seen=new Set();points.forEach(p=>{const id=p.join(",");if(seen.has(id))return;seen.add(id);const [x,y]=map(p);svg.append(el("circle",{cx:x,cy:y,r:4,fill:"#ce9b3f",stroke:"#fffdf8","stroke-width":1.2}));});
 }
 function rhombView(){
@@ -349,7 +380,7 @@ function penroseResults(){
   rhombView();drawRhombs($("dense-obstruction"),d.dense_support_obstruction.placements,{width:430,height:300,obstruction:true});
   $("penrose-finding").textContent=`160 capacity-legal transformed contacts for each root prototype: ${d.pair_labels.counts.positive||0} positive, ${d.pair_labels.counts.negative||0} negative, ${d.pair_labels.counts.unresolved||0} unresolved. Every resolved label enters equality synthesis. The final equality state has ${m.history.at(-1).components} class; ${m.assigned} of ${m.support_slots} slots are assigned and ${m.free} remain free. The resulting GCTS lane is therefore identical to the unmarked lane.`;
   $("penrose-audit").textContent=`All ${a.positive_witnesses} pair completions pass independent occupancy, initial-star coverage, and exposed-frontier checks. Exact algebraic polygon tests checked ${a.polygon_pairs_checked.toLocaleString()} pairs and found overlap in ${a.patches_with_polygon_overlap} patches. Cold search ${fmt(d.pair_labels.seconds)} s; independent audit ${fmt(a.seconds)} s; total ${fmt(d.total_seconds)} s; peak memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Alias placements are retained as distinct inventory identities; this count is not a count of geometric orbits.`;
-  $("ring-caption").textContent=`${data.penrose.exact_pair_checks.toLocaleString()} exact multiplication/conjugation checks passed. The new pilot below adds unmarked vertex-sector contact search; a faithful plane model and Penrose hierarchy remain open.`;
+  $("ring-caption").textContent=`${data.penrose.exact_pair_checks.toLocaleString()} exact multiplication/conjugation checks passed. The sector model now has a conditional analytic plane-faithfulness proof. A compatible infinite continuation and Penrose hierarchy remain open.`;
   $("rhomb-contact").addEventListener("change",rhombView);
 }
 
@@ -450,7 +481,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r6.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -461,44 +492,50 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r6.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r6.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r6.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r6.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r6.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r6.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r7.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r6.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r7.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    genericProofResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r6.1",{cache:"no-cache"});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
+    complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r7.1',{cache:'no-cache'});
+    if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
+    starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
+    genericProofResults();penroseComplexResults();
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r7.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Own-level cluster markings, fixed/movable boundary tiling, turtle/rhomb studies and generic proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    $("load-status").textContent=`Conditional rhomb plane-faithfulness proof, fresh full-star search, own-level cluster markings, boundary tiling and generic proof search recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});
     $("step").addEventListener("input",updatePatch);
     $("pair").addEventListener("change",pairView);
     $("play").addEventListener("click",()=>{if(timer){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=1;updatePatch();$("play").textContent="Pause";timer=setInterval(()=>{const n=Number($("step").value)+1;if(n>currentRun.placements.length){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=n;updatePatch();},300);});
-    $("provenance").textContent=`Started ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; third turtle study ${new Date(thirdData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; generic proof pilot ${new Date(proofData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, proofs, training traces, explicit marking reuse, and the timing correction are in the JSON. No substitution or plane-tiling proof has been produced.`;
+    $("provenance").textContent=`Started ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; third turtle study ${new Date(thirdData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; generic proof pilot ${new Date(proofData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, proofs, training traces, explicit reuse and timing corrections are in the JSON. The rhomb faithfulness result is an analytic conditional theorem. No substitution, learned infinite continuation or Penrose hierarchy has been certified.`;
   }catch(error){$("load-status").textContent=`Experiment data could not be loaded: ${error.message}`;$("load-status").style.color="#a5343f";}
 }
 main();
