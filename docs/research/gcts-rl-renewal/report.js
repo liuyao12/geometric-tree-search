@@ -10,9 +10,47 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function macroPatch(reset=false){
+  const d=macroData,b=d.problems.find(b=>b.identity===$('macro-problem').value);
+  const r=d.evaluation.find(r=>r.problem===b.identity&&r.lane===$('macro-lane').value&&String(r.replica)===$('macro-replica').value);
+  const steps=r.execution;if(reset){$('macro-step').max=steps.length;$('macro-step').value=steps.length;}
+  const n=Number($('macro-step').value),placements=steps.slice(0,n).map(s=>[s.placement[1],s.placement[2]]),fills=[];
+  let group=0,color='#6d9c83';
+  for(const s of steps.slice(0,n)){
+    if(s.macro_offset===0){color=s.macro_length>1?colors[group++%colors.length]:'#6d9c83';}
+    fills.push(color);
+  }
+  drawPatch($('macro-patch'),placements,{points:b.required,width:850,height:450,fills});
+  $('macro-step-value').value=n;
+  const accepted=steps.filter(s=>s.macro_length>1).length;
+  $('macro-patch-caption').textContent=`${b.identity}, ${r.lane}, seed ${r.seed}: ${r.status.replaceAll('_',' ')}; ${fmt(r.coverage_fraction*100)}% required points complete. Showing ${n} of ${steps.length} saved base moves. Amber dots are required points; each executed multi-move proposal has one color, and other moves are green. ${accepted} saved moves belong to proposals. Total ${fmt(r.seconds)} s, ${r.attempted_base_placements} explored base attempts; ${fmt(r.metrics.proposal_seconds??0)} s spent proposing and validating.`;
+}
+function macroShape(){
+  const m=macroData.library[Number($('macro-type').value)];
+  drawPatch($('macro-shape'),m.expansion,{points:m.interface.frontier.map(p=>p[0]),width:500,height:360});
+  $('macro-shape-caption').textContent=`Shape ${m.id+1}: ${m.expansion.length} distinct base tiles, ${m.count} training-window occurrences across ${m.donor_seeds.length} new donors. ${m.interface.completed_points} complete points; ${m.interface.frontier.length} residual interface points (amber). All own-level marking values are free.`;
+}
+function macroResults(){
+  const d=macroData,a=d.independent_audit,rows=d.configuration.lanes.map(lane=>{
+    const rs=d.evaluation.filter(r=>r.lane===lane);
+    return {lane,rs,complete:rs.filter(r=>r.status==='finite_exact_region').length,time:mean(rs.map(r=>r.seconds)),attempts:rs.reduce((n,r)=>n+r.attempted_base_placements,0),backs:rs.reduce((n,r)=>n+r.backtracks,0),proposal:rs.reduce((n,r)=>n+(r.metrics.proposal_seconds??0),0)};
+  });
+  const base=rows[0],macro=rows[2],cold=d.donor_seconds+d.mining.seconds+d.proposer_build_seconds+d.training.seconds;
+  $('macro-finding').textContent=`Twenty fresh clusters contain two through six turtle tiles. Base and untrained local-cluster search both complete all eight fixed runs. Clusters use ${fmt(100*(1-macro.attempts/base.attempts))}% fewer base attempts and ${fmt(100*(1-macro.backs/base.backs))}% fewer backtracks, but take ${fmt(macro.time/base.time)} times the request time. Both RL lanes complete six runs; two larger-boundary runs remain unknown.`;
+  $('macro-benchmark').innerHTML=rows.map(r=>`<tr><td>${r.lane}</td><td>${r.complete} / ${r.rs.length}</td><td>${fmt(r.time)}</td><td>${r.attempts}</td><td>${r.backs}</td><td>${fmt(r.proposal)}</td></tr>`).join('');
+  $('macro-cost').textContent=`Cold complete singleton inventory: ${fmt(d.inventory.seconds)} s for ${d.inventory.placements.toLocaleString()} poses. Eight fresh donor completions: ${fmt(d.donor_seconds)} s; mining ${fmt(d.mining.seconds)} s; proposal-index build ${fmt(d.proposer_build_seconds)} s; 24 zero-start training episodes ${fmt(d.training.seconds)} s (${d.training.episodes.filter(r=>r.status==='finite_exact_region').length} complete). Total reusable learning cost ${fmt(cold)} s. Official sequential pipeline ${fmt(d.total_seconds)} s; peak process memory ${fmt(d.peak_process_memory_bytes/1048576)} MiB. Construction, learning and failed/cutoff runs are charged.`;
+  $('macro-movable').textContent=`One explicit three-member movable family keeps the envelope fixed and varies the required set. Every lane first encounters an uncompleted edge target, then selects and exactly fills the shifted core. Base and base + RL take ${d.movable_evaluation.slice(0,2).map(r=>fmt(r.seconds)).join(' / ')} s; local clusters and local clusters + RL take ${d.movable_evaluation.slice(2).map(r=>fmt(r.seconds)).join(' / ')} s. Each member has fresh roots, state and graph. The edge result is an uncertified finite exhaustion; no negative proof is exported or needed for the later existential completion.`;
+  $('macro-audit').textContent=`Independent literal enumeration reconstructs all ${a.literal_inventory_placements.toLocaleString()} singleton poses and checks the complete scheduler domains before all ${a.scheduled_base_moves_checked} saved moves, including cluster constituents. ${a.states_replayed} states replay; ${a.complete_states} complete their declared targets; all ${a.clusters_reconstructed} mined shapes reconstruct from fresh donors. ${a.tampered_schedules_rejected} changed schedules reject. All ${a.geometry.evaluation_runs.length} displayed complete patches pass exact polygon non-overlap. Saved-data audit ${fmt(a.seconds)} s; ${suiteTests()} semantic tests pass. These are finite point-model completions.`;
+  $('macro-problem').replaceChildren(...d.problems.map(b=>{const o=document.createElement('option');o.value=b.identity;o.textContent=b.identity;return o;}));
+  $('macro-type').replaceChildren(...d.library.map(m=>{const o=document.createElement('option');o.value=m.id;o.textContent=`Shape ${m.id+1} · ${m.expansion.length} tiles`;return o;}));
+  for(const id of ['macro-problem','macro-lane','macro-replica'])$(id).addEventListener('change',()=>macroPatch(true));
+  $('macro-step').addEventListener('input',()=>macroPatch());$('macro-type').addEventListener('change',macroShape);
+  macroPatch(true);macroShape();
+}
 
 function coarseElimination(){
   const d=coarseData.elimination,svg=$('coarse-elimination');svg.replaceChildren();
@@ -60,7 +98,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r10.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r11.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -618,15 +656,20 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r11.1',{cache:'no-cache'});
+    if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
+    macroData=await macroResponse.json();
+    if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
+    macroResults();
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -639,46 +682,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r10.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r10.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r10.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r10.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r11.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r10.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r11.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r10.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r11.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r10.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r11.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r10.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r11.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r11.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Joint coarse-library obstruction, two marking levels, authored boundary trials, first-order kernel bridge and conditional rhomb plane-faithfulness recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    $("load-status").textContent=`Matched local-cluster boundary experiment, joint coarse-library obstruction, two marking levels, first-order kernel bridge and conditional rhomb plane-faithfulness recorded · ${suiteTests()} semantic tests pass · finite evidence independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

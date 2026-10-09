@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r10.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r11.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r10.1"></script>
+  <script defer src="report.js?v=20261009-r11.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 10</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 11</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,28 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="boundary-macro-research">
+    <p class="eyebrow">LOCAL SOLUTION REUSE · THE SAME FINE-SCALE SCHEDULER</p><h2>Fewer attempts. More time.</h2>
+    <p>Fresh local boundary completions supply variable-size clusters. Every lane solves the same authored targets with the complete unmarked singleton inventory. A cluster proposes several moves; each constituent passes the actual global dead-end, forced-move and earliest-generation decision. All singleton alternatives remain available. This separates the benefit of a local solution proposal from a change in the tile inventory or scheduler.</p>
+    <div class="callout" id="macro-finding">Loading the matched regional experiment…</div>
+    <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Exact targets</th><th>Mean total seconds</th><th>Total base attempts</th><th>Total backtracks</th><th>Proposal seconds</th></tr></thead><tbody id="macro-benchmark"></tbody></table></div>
+    <p id="macro-cost" class="caption"></p>
+    <div class="controls"><label>Required region <select id="macro-problem"></select></label><label>Search lane <select id="macro-lane"><option value="base">Base</option><option value="base+RL">Base + RL</option><option value="macro" selected>Local clusters</option><option value="macro+RL">Local clusters + RL</option></select></label><label>Replica <select id="macro-replica"><option value="0">First</option><option value="1">Second</option></select></label></div>
+    <div class="slider-row"><label for="macro-step">Accepted base moves</label><input id="macro-step" type="range" min="0" max="40" value="40"><output id="macro-step-value">40</output></div>
+    <svg id="macro-patch" viewBox="0 0 850 450" role="img" aria-label="Required boundary points and the saved local solution, with each executed cluster shown in one color"></svg><p id="macro-patch-caption" class="caption"></p>
+    <details open><summary>Inspect a reusable local solution and its exact trace</summary>
+      <div class="controls"><label>Learned shape <select id="macro-type"></select></label></div>
+      <div class="evidence-grid"><div><svg id="macro-shape" viewBox="0 0 500 360" role="img" aria-label="A freshly mined cluster and its residual boundary points"></svg><p id="macro-shape-caption" class="caption"></p></div><div><p>A local patch carries the exact residual trace</p>\[r_C(p)=1-\sum_{c\in C}t_c(p).\]<p>Completed points and incomplete interface points are recorded separately. Already-owned context is counted once; new constituents must satisfy every point capacity and the fixed support envelope. Point adjacency defines the mined connected windows. Polygon overlap is audited separately after search.</p><p>Candidate boundary features count residual capacities, required and optional contributions, filled obligations and proposed size. A new zero-start REINFORCE policy trains only on these local problems. Its frozen weights rank both singleton-only and cluster-proposal lanes. Training and evaluation seeds are distinct; local shapes may recur across targets.</p></div></div>
+    </details>
+    <details><summary>Costs, movable boundaries and what the experiment establishes</summary>
+      <p id="macro-movable"></p>
+      <p>Each held-out run has the same base-placement budget and cooperative wall limit. A sequence charges every explored constituent; proposal enumeration and its graph-based validation consume wall time. Only a bounded heuristic proposal pool is retained, while the complete graph keeps every legal singleton. A failed proposal restores the exact state and graph. Request times include inventory binding, graph construction, proposals and successful value replay; the cold reusable inventory and learning costs are reported separately.</p>
+      <p>These clusters are useful local solutions, with free own-level markings. No earlier cluster, failure marking, saved policy or completion witness enters this pilot. It does not learn a new GCTS marking or establish a recurrent hierarchy. The reference and untrained cluster lanes both complete every fixed case, making their measured time comparison meaningful for this small batch. RL lanes leave some cases unknown; their averages are not equal-success speed comparisons.</p>
+      <p>Next: reduce proposal cost by compiling boundary compatibility, test larger collars and more boundary families, and train a policy that values total solve time. Higher-level marking learning must retain its declared continuation and finite-region scope. Practical speed, compatible plane growth, Penrose hierarchy and a general proof system remain open.</p>
+    </details>
+    <p id="macro-audit" class="caption"></p><p class="small"><a href="boundary-macros-001.json">Inspect all fresh donors, clusters, weights, saved move schedules, boundaries and timing ↗</a></p>
+  </section>
 
   <section class="panel" id="coarse-continuation-research">
     <p class="eyebrow">COARSE CONTINUATION GATE · A PROOF BY TYPE ELIMINATION</p><h2>A local solution needs a continuing library.</h2>

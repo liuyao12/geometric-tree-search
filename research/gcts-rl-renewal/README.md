@@ -1108,3 +1108,81 @@ and the separate analytic control. Next: generate broader variable-size parent
 families, choose them for useful cross-type continuation and boundary reuse,
 and retain singleton refinement for practical regional tasks. Plane construction,
 Penrose hierarchy and general hierarchical proof search remain open.
+
+## Variable-size local proposals in the same singleton graph
+
+`boundary_macros.py` returns to practical boundary solving with an unchanged
+singleton inventory and scheduler in every comparison lane. Eight fresh local
+completions supply connected temporal windows. Mining finds \(59\) distinct
+shapes from \(75\) windows and retains \(20\) clusters, four each of sizes
+\(2\) through \(6\). No prior marking, cluster artifact, policy or completion
+witness is imported. The local shapes have exact occupancy/residual traces and
+free own-level markings; this pilot does not learn a new GCTS channel.
+
+The proposer aligns transformed shapes at scheduled base candidates, counts
+already-owned context once, and validates every new constituent against the
+complete point graph. It returns a schedulable prefix when the next obligation
+leaves the patch. Every singleton action remains available. Proposals never
+supply degrees, forced moves or pruning premises. State and graph copies restore
+all point values, ownership and generations. Search budgets charge actual base
+placements, including every explored macro constituent; enumeration and proposal
+validation consume the cooperative wall budget. No negative certificate is
+exported by this heuristic search.
+
+A zero-start linear REINFORCE policy trains for \(24\) episodes on four small
+local boundary problems. Seven rollouts complete. The policy sees residual
+capacity counts, required and optional contributions, filled obligations and
+proposed size. Both RL evaluation lanes use the same frozen policy. Training,
+donor and evaluation seeds are distinct, although local shapes may recur.
+All lanes use the same \(4{,}596\)-pose resident singleton inventory, four
+authored held-out targets, two seeds, \(8{,}000\) explored base placements and
+six cooperative seconds per request. Lane order rotates by target and replica.
+
+Base and untrained cluster proposals both complete all eight fixed runs. Mean
+request times are \(0.508\) and \(1.845\) seconds. Clusters reduce base attempts
+from \(576\) to \(475\), and backtracks from \(463\) to \(335\), but cost
+\(3.63\) times the request time. Proposal work alone takes \(11.44\) seconds
+over the eight macro runs. Both RL lanes complete six cases, with two cutoffs;
+their means \(1.685\) and \(2.488\) seconds are not equal-success comparisons.
+No practical speedup is demonstrated.
+
+An explicit three-member movable boundary family keeps the envelope fixed. Each
+lane starts with an uncompleted edge target, then exactly fills the shifted core
+using fresh state and roots. Base lanes take about \(0.324\) seconds, while
+cluster lanes take \(1.716\) and \(1.554\). The first member's exhaustion is
+uncertified; the later existential witness needs no negative premise.
+
+Cold resident construction takes \(0.222\) seconds; new donors \(1.101\),
+mining \(0.012\), proposal-index build \(0.042\), and policy training
+\(29.584\). The complete sequential official process takes \(87.527\)
+seconds and peaks at \(235.16\) MiB. Reusable learning costs total \(30.740\)
+seconds; lower base-attempt counts cannot pay for them in this batch. Request
+times include graph construction and proposal validation. Process peak memory
+is not per-lane allocation; cooperative bounds can overshoot at a checkpoint.
+
+`audit_boundary_macros.py` independently constructs every literal transformed
+singleton pose inside the external envelope. It scans that complete inventory
+before every exported move, checking global dead/forced/earliest scheduling,
+values, ownership, generations and required coverage. All \(72\) saved states
+and \(601\) moves replay; \(47\) states complete their targets. Every mined
+shape reconstructs solely from new donors, and \(68\) changed schedules reject.
+All \(32\) displayed complete evaluation/movable patches pass the separate
+exact polygon non-overlap audit. The final saved-data replay takes \(7.881\)
+seconds. These are finite point-model completions, without a general geometric
+faithfulness or plane theorem.
+
+```sh
+python3 research/gcts-rl-renewal/run_boundary_macros.py
+python3 research/gcts-rl-renewal/audit_boundary_macros.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+All \(114\) semantic tests pass, including nine new controls for literal full
+inventory equality, variable-size mining provenance, singleton retention,
+scheduled cluster constituents, exact snapshots, context ownership, base-move
+budget accounting, fresh boundaries and rejection of altered schedules or
+Boolean integer data. Earlier source-hashed engines and snapshots are unchanged.
+The HTML report exposes the matched results, all saved patches, their proposal
+groupings and each exact residual interface. Next: compile boundary compatibility
+to reduce proposal cost, broaden collar/boundary families, and learn a policy
+that improves total time at useful scales. The full research goal remains active.
