@@ -2700,3 +2700,97 @@ active alongside the proof-system track.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_tape_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_tape_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+
+## 25. Free proof input constructed by the tape machine
+
+`proof_boundary.py` adds a literal input constructor to the complete checker;
+`boundary_syntax.tree` adds a tagged-tree syntax wrapper. The fixed problem
+band holds protocol, theory and target. The free band holds blocks and proof.
+An atom command is `0` followed by nine little-endian bits for a value in
+\(\{0,\ldots,256\}\), where \(256\) is nil. A `1` constructs an ordered pair;
+`;` ends a stream and permits only blank padding before a fixed `:` frame end.
+No free command supplies a node ID, heap record or executable instruction.
+Canonical-cons microcode constructs every pair from already-existing values.
+
+The fixed stream first produces exactly three values, which are popped into
+reserved bands. Its constructor stack must be empty before free commands run.
+The free stream starts from that empty stack and must produce exactly two
+values. The final request has fixed field names. Independent snapshots inspect
+its actual root and entire canonical heap before semantic checking begins.
+This closes the proof-dependent host heap-construction adapter at the
+operational level. Host code encodes authored control proposals and declares
+the fixed external problem; runtime acceptance depends on the finite table.
+
+The input language is explicitly **tagged byte trees**, not JSON text.
+The fixed wrapper checks objects, arrays, exact byte strings, natural and
+negative integers, Booleans and null; it rejects duplicate keys, improper
+lists, invalid tags and negative zero. UTF-8 JSON encodings used in the controls
+are a subset of this byte-string language. No finite formula catalog narrows
+the complete checker. All eleven logical rules, checked blocks and registered
+induction remain in the program.
+
+The published table has \(92457\) selected-symbol states, \(462276\) literal
+states, \(60\) symbols and \(43\) bands. Its binary table is \(52901688\) bytes
+before compression. The syntax wrapper and complete semantic checker comprise
+\(69\) functions; the program SHA-256 is
+`877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673`.
+The report records whole-checker execution, constructor costs, native timings,
+unknown resource controls and source/artifact bindings without a speed claim.
+
+Two preliminary trials are retained in the exported provenance. The first
+terminated after main computations because a resource control declared an
+invalid initial heap capacity. The second completed its finite controls, but
+adversarial review found that free pair commands could consume fixed stack
+values. The corrected constructor freezes the assertion values and resets its
+stack before free commands; a regression control rejects cross-boundary
+consumption even when later commands would restore the old total stack size.
+Only the corrected machine is published. Preliminary work is additional; the first trial records a log-observation span rather than a certified benchmark time.
+
+`audit_proof_boundary.py` imports no producer, lowering, input encoder,
+serializer, runtime proof logic or native literal runner. It independently
+parses the wire, reconstructs the expected canonical request heap, stops its
+separate symbol interpreter at the actual constructor handoff and compares
+allocation order and request root. It then executes the complete program,
+checks all literal lowering rows and CFG liveness equations, replays malformed
+and resource controls, and rejects changed trust bindings. Externally fixed
+program, microcode and literal-table fingerprints cannot be replaced by
+certificate-side declarations. The audit exports exact free-cell ranges,
+allowed symbols, fixed frame and cursor positions, and fixed assertion hashes.
+
+[The written boundary law](../../docs/research/gcts-rl-renewal/proof-boundary-law.html)
+derives the two directions between an accepting run of this table and a
+compatible Wang rectangle with a free certificate bottom. It explicitly binds
+all other initial data and the single physical head. It is an analytic
+construction, supported by finite implementation checks. It does not export
+an accepting full-checker rectangle or prove upstream compiler and logical
+soundness in a formal system. The table's local Wang reduction is a
+proof-system adaptation; no tiling engine, frontier, generation, scheduler,
+rollback, marking or RL policy changes here.
+
+The corrected induction control accepts after \(2181777376\) selected-symbol
+operations and \(30060767529466\) literal transitions. The constructor itself
+uses \(249464824\) symbol operations and assembles \(832\) canonical nodes.
+The literal runner takes \(146.487\) seconds, compared with the earlier
+host-built-input lane's \(94.311\) seconds. The new lane also includes the syntax
+wrapper. Corrected production costs \(216.139\) seconds, peak \(971.95\) MiB;
+native compilation costs \(1.188\) seconds and lowering \(1.718\) seconds.
+All \(13\) logical controls agree with the earlier checker, with \(9\) accepts
+and \(4\) rejects. Three have literal runs; all have complete selected-symbol
+runs. All \(16\) malformed, changed-target and resource controls replay.
+The independent table audit checks \(17899987\) defined transitions and
+\(2158\) liveness equations, and independently re-executes \(6433672369\)
+whole-program symbol operations. The final independent audit costs \(56.628\) seconds, peak \(715.25\) MiB. An earlier \(57.808\)-second replay before stricter Boolean/integer external binding is additionally recorded. These finite results do not establish
+universal compiler equivalence or a practical proof-search speedup.
+
+The next step is a compact accepting response certificate for the full checker,
+with derived cluster interfaces and inspectable expansions into the same local
+Wang tiles. Useful learned proof abstractions and proof search remain open,
+alongside practical region tiling, Penrose continuation and compatible infinite
+turtle growth. Resource exhaustion remains unknown.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_boundary.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_proof_boundary.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+All \(285\) research tests pass in \(90.177\) seconds. The \(30\) test-source files and complete test log are SHA-256-bound in the new artifact. New tests cover free/fixed stack isolation, exact field counts, malformed commands, padding, all finite atom encodings, canonical sharing, syntax types and duplicate keys, literal unknowns, and strict external Boolean/integer bindings.

@@ -1,0 +1,59 @@
+# Prefix wrapper for the complete checker. Names are exact byte strings.
+# This is a tagged-tree wire language, not a JSON text parser.
+def main(request):
+    return wire_value(request) and semantic_main(request)
+
+def wire_word(x):
+    while not nil(x):
+        if not is_pair(x) or is_pair(head(x)) or atom_eq(head(x), None):
+            return False
+        x = tail(x)
+    return True
+
+def wire_ones(x):
+    while not nil(x):
+        if not is_pair(x) or not atom_eq(head(x), 1):
+            return False
+        x = tail(x)
+    return True
+
+def wire_key_seen(key, rows):
+    while not nil(rows):
+        if same(key, head(head(rows))):
+            return True
+        rows = tail(rows)
+    return False
+
+def wire_value(x):
+    if not is_pair(x):
+        return False
+    tag = head(x)
+    body = tail(x)
+    if atom_eq(tag, 0):
+        seen = None
+        while not nil(body):
+            if not is_pair(body) or not is_pair(head(body)):
+                return False
+            row = head(body)
+            if not wire_word(head(row)) or wire_key_seen(head(row), seen) or not wire_value(tail(row)):
+                return False
+            seen = cons(row, seen)
+            body = tail(body)
+        return True
+    if atom_eq(tag, 1):
+        while not nil(body):
+            if not is_pair(body) or not wire_value(head(body)):
+                return False
+            body = tail(body)
+        return True
+    if atom_eq(tag, 2):
+        return wire_word(body)
+    if atom_eq(tag, 3):
+        return wire_ones(body)
+    if atom_eq(tag, 4):
+        return not nil(body) and wire_ones(body)
+    if atom_eq(tag, 5):
+        return atom_eq(body, 0) or atom_eq(body, 1)
+    if atom_eq(tag, 6):
+        return nil(body)
+    return False
