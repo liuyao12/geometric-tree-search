@@ -28,6 +28,7 @@ python verify_additional.py
 python verify_notes.py
 python verify_modes.py
 python analyze_patterns.py
+python boundary_mode_palette.py
 ```
 
 Run these commands from this directory. The original family and chair scripts
@@ -71,6 +72,23 @@ substitutions remain separate from the bare-polygon boundary operators.
 and image checksums; `additional-verification.json` checks every field and
 boundary certificate. These datasets are embedded separately in the HTML,
 preserving the preceding numerical receipt and its input hashes.
+
+The webpage's small boundary-matching construction is reproduced by
+`boundary_mode_palette.py`. Four edge carriers are superpositions of seven
+ordinary Neumann square eigenfunctions at normalized levels \(0,1,4,5\).
+A finite eleven-state coefficient palette exactly encodes Jeandel–Rao's
+Figure 4 Wang set. Every total static field has zero normal derivative;
+value matching also gives flux cancellation. The total field combines
+several eigenvalues, and its components generally do not match separately.
+The receipt `boundary-mode-palette.json` retains the source tuples, rational
+cosine coefficients, both adjacency matrices and analytic-projection checks.
+`boundary-mode-palette.png` samples the formulas on a shared absolute scale.
+Infinite existence and aperiodicity follow from the cited theorem, not from
+finite adjacency checks. Translations only and fixed amplitudes are essential.
+The Notes also derive a common nonlocal self-adjoint boundary operator with
+one four-dimensional ground eigenspace encoding the same palette; that
+single-frequency alternative fails flux matching. No standard homogeneous
+Dirichlet/Neumann single-eigenvalue aperiodicity claim is made.
 
 The cross-example synthesis is the webpage's “Patterns across the examples”
 section. `analyze_patterns.py` writes `pattern-analysis.json`: integer lattice

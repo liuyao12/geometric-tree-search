@@ -13,7 +13,7 @@
 <p class="eyebrow">Exploratory notes · updated 9 October 2026</p>
 <h1>Notes on spectra, markings and tilings</h1>
 <p class="lead">A working notebook on the parts of a tile’s spectrum that we can describe: exact arithmetic families, the levels between them, boundary markings, and the spectra of nonperiodic arrangements.</p>
-<div class="tools"><a href="#patterns">Patterns across examples</a><a href="#elementary">Start with elementary modes</a><a href="#spectrum">Numerical spectrum</a><a href="#gaps">Explore the gap counts</a><a href="../../research/spectral-tiling/mode-data.json">Latest mode data</a><a href="../../research/spectral-tiling/README.md">Methods and sources</a></div>
+<div class="tools"><a href="#boundary-mode-tiles">Modes as matching rules</a><a href="#patterns">Patterns across examples</a><a href="#elementary">Start with elementary modes</a><a href="#spectrum">Numerical spectrum</a><a href="#gaps">Explore the gap counts</a><a href="../../research/spectral-tiling/mode-data.json">Latest mode data</a><a href="../../research/spectral-tiling/README.md">Methods and sources</a></div>
 <article id="report">
 
 <div class="callout"><p><strong>What these notes collect.</strong> Explicit eigenfunctions and even a small regular part of the spectrum are useful observations in their own right. We follow connections as they appear, rather than organize the notebook around resolving an aperiodicity test. Exact constructions, numerical evidence and open possibilities are labeled separately.</p></div>
@@ -23,11 +23,91 @@
 <div><span class="badge">More tiling constructions</span><p>Sphinx, Socolar–Taylor, pinwheel, Penrose and Ammann–Beenker geometries join the spectrum viewer.</p></div>
 <div><span class="badge">Numerical remainder</span><p>Computed modes remain available, with identified family matches optionally removed from the display.</p></div>
 </div>
-<p>The latest experiment counts modes between consecutive distinct members of the known L-triomino ladder. The first counts are \(4,4,3,3,8,0,2,8,2,4,6\). These are refinement-stable numerical estimates, not certified continuum counts. Two later intervals remain unresolved because another mode lies very close to the endpoint \(34\pi^2\).</p>
+<p>The latest construction realizes an aperiodic eleven-state Wang palette through superpositions of seven ordinary Neumann square modes. Every total field has the prescribed four edge traces and zero normal flux. <a href="#boundary-mode-tiles">The construction and its limitations</a> are recorded below.</p>
+<p>The gap-count experiment counts modes between consecutive distinct members of the known L-triomino ladder. The first counts are \(4,4,3,3,8,0,2,8,2,4,6\). These are refinement-stable numerical estimates, not certified continuum counts. Two later intervals remain unresolved because another mode lies very close to the endpoint \(34\pi^2\).</p>
 <p>“Arithmetic” here refers to a specified normalization. A level \(q\pi^2\) with nonzero rational \(q\) is itself transcendental; the normalized number \(\lambda/\pi^2=q\) is algebraic. We have not proved that the eigenvalues outside the constructed family have non-algebraic normalized values. Consequently we count <strong>intervening modes outside the known ladder</strong>, rather than call them non-algebraic.</p>
 <p>The expanded atlas now contains \(2010\) computed fields on \(10\) geometries. Six new polygons have \(60\) Dirichlet and \(60\) Neumann modes each. The exact catalogue adds Sphinx and regular-hexagon families; every listed exact function has an edge-by-edge boundary certificate. <a href="#boundary-audit">Boundary audit</a> · <a href="#more-tiles">Known nonperiodic examples</a>.</p>
 <details><summary>Notebook history and current gaps</summary><p>The initial literature survey and the Chair44 comparison remain below. The arithmetic revision added exact subsets and L-triomino gap counts. The viewer first added three L-triomino boundary problems. The short/long revision added mixed Hat and Turtle spectra. The current revision starts from elementary square and triangle eigenfunctions, derives the fitting tile boundary conditions, and separates their exact catalogue from the numerical remainder. The boundary audit now checks affine mirrors edge by edge, and six more geometries broaden the known nonperiodic examples. The L-triomino remains a periodic control. Gap counts between the Hat–Turtle ladders remain open. No spectrum of the geometric Chair44, curved Spectre, or a Chair44-specific boundary-condition model is computed here.</p></details>
-<ol class="toc"><li><a href="#patterns">Patterns across the examples</a></li><li><a href="#definitions">Spectral objects and tiling rules</a></li><li><a href="#structured">Exact arithmetic subsets</a></li><li><a href="#gaps">Counts and interactive spectrum explorer</a></li><li><a href="#boundary">Markings as boundary constraints</a></li><li><a href="#fourier">Fourier spectra and translations</a></li><li><a href="#drums">Drums and heat traces</a></li><li><a href="#billiards">Geodesics and billiards</a></li><li><a href="#experiment">Numerical family profiles</a></li><li><a href="#chair">The L-triomino and Chair44</a></li><li><a href="#global">Spectra of completed tilings</a></li></ol>
+<ol class="toc"><li><a href="#boundary-mode-tiles">A square carrying several modes</a></li><li><a href="#patterns">Patterns across the examples</a></li><li><a href="#definitions">Spectral objects and tiling rules</a></li><li><a href="#structured">Exact arithmetic subsets</a></li><li><a href="#gaps">Counts and interactive spectrum explorer</a></li><li><a href="#boundary">Markings as boundary constraints</a></li><li><a href="#fourier">Fourier spectra and translations</a></li><li><a href="#drums">Drums and heat traces</a></li><li><a href="#billiards">Geodesics and billiards</a></li><li><a href="#experiment">Numerical family profiles</a></li><li><a href="#chair">The L-triomino and Chair44</a></li><li><a href="#global">Spectra of completed tilings</a></li></ol>
+
+
+<h2 id="boundary-mode-tiles">A small construction: a square carrying several modes</h2>
+<div class="callout"><p><strong>Yes: matching boundary values can force aperiodicity.</strong> One square can host a superposition of seven ordinary Neumann eigenfunctions. Restrict its coefficients to eleven specified states, and equality of the total boundary trace reproduces an established aperiodic Wang tile set. The decisive data are the allowed coefficient vectors and their traces; the eigenvalues alone do not enforce the rule.</p></div>
+<p>This is a modal expansion of a static field, as in Fourier analysis. For \(m,n\in\mathbb Z_{\ge0}\), write the elementary square eigenfunctions as</p>
+\[ \phi_{mn}(x,y)=\cos(m\pi x)\cos(n\pi y),\qquad
+-\Delta\phi_{mn}=\pi^2(m^2+n^2)\phi_{mn},\qquad
+\partial_\nu\phi_{mn}=0. \]
+<p>Every summand satisfies the same homogeneous Neumann boundary condition. A superposition across different eigenvalues also satisfies that boundary condition, although it is generally not a single Helmholtz eigenfunction. This differs from Fuglede Fourier spectrality, discussed <a href="#fourier">below</a>.</p>
+<h3>Four edge amplitudes, seven cosine modes</h3>
+<p>On the unit square, set</p>
+\[ A(t)=\frac{1+\cos(\pi t)}2,\qquad
+G(t)=\frac{1-\cos(2\pi t)}2=\sin^2(\pi t),\qquad a=(W,E,S,N). \]
+\[ v_a(x,y)=\bigl[WA(x)+E(1-A(x))\bigr]G(y)
++\bigl[SA(y)+N(1-A(y))\bigr]G(x). \]
+<p>The endpoint identities for these two functions give exact traces and zero normal derivatives:</p>
+\[ v_a(0,t)=WG(t),\quad v_a(1,t)=EG(t),\quad
+v_a(t,0)=SG(t),\quad v_a(t,1)=NG(t),\qquad
+\partial_\nu v_a=0\text{ on every side}. \]
+<p>Expanding the products gives only the following seven modes. The four eigenvalues used are \(0,\pi^2,4\pi^2,5\pi^2\); they are a selected subset of the square spectrum.</p>
+<div class="scroll"><table><thead><tr><th>Mode</th><th>Normalized eigenvalue</th><th>Coefficient in the total field</th></tr></thead><tbody>
+<tr><td>\(\phi_{00}\)</td><td>\(0\)</td><td>\((W+E+S+N)/4\)</td></tr>
+<tr><td>\(\phi_{10}\)</td><td>\(1\)</td><td>\((W-E)/4\)</td></tr>
+<tr><td>\(\phi_{01}\)</td><td>\(1\)</td><td>\((S-N)/4\)</td></tr>
+<tr><td>\(\phi_{02}\)</td><td>\(4\)</td><td>\(-(W+E)/4\)</td></tr>
+<tr><td>\(\phi_{20}\)</td><td>\(4\)</td><td>\(-(S+N)/4\)</td></tr>
+<tr><td>\(\phi_{12}\)</td><td>\(5\)</td><td>\((E-W)/4\)</td></tr>
+<tr><td>\(\phi_{21}\)</td><td>\(5\)</td><td>\((N-S)/4\)</td></tr>
+</tbody></table></div>
+<h3>An eleven-state palette with a theorem behind it</h3>
+<p>Encode the four Wang colors \(c\in\{0,1,2,3\}\) by the amplitudes \(c+1\). The following states are transcribed from Jeandel–Rao's Figure 4, with coordinates explicitly ordered west, east, south, north. Their Theorem 3 establishes an infinite tiling and excludes every nonzero integer translation period. <a href="#ref33">[33]</a></p>
+<div class="scroll"><table><thead><tr><th>Allowed state</th><th>\(W\)</th><th>\(E\)</th><th>\(S\)</th><th>\(N\)</th></tr></thead><tbody>
+<tr><td>\(v_{1}\)</td><td>\(1\)</td><td>\(1\)</td><td>\(2\)</td><td>\(1\)</td></tr>
+<tr><td>\(v_{2}\)</td><td>\(1\)</td><td>\(4\)</td><td>\(3\)</td><td>\(2\)</td></tr>
+<tr><td>\(v_{3}\)</td><td>\(2\)</td><td>\(1\)</td><td>\(3\)</td><td>\(3\)</td></tr>
+<tr><td>\(v_{4}\)</td><td>\(2\)</td><td>\(2\)</td><td>\(1\)</td><td>\(3\)</td></tr>
+<tr><td>\(v_{5}\)</td><td>\(2\)</td><td>\(4\)</td><td>\(3\)</td><td>\(4\)</td></tr>
+<tr><td>\(v_{6}\)</td><td>\(4\)</td><td>\(1\)</td><td>\(2\)</td><td>\(2\)</td></tr>
+<tr><td>\(v_{7}\)</td><td>\(4\)</td><td>\(2\)</td><td>\(2\)</td><td>\(2\)</td></tr>
+<tr><td>\(v_{8}\)</td><td>\(4\)</td><td>\(2\)</td><td>\(3\)</td><td>\(3\)</td></tr>
+<tr><td>\(v_{9}\)</td><td>\(4\)</td><td>\(4\)</td><td>\(4\)</td><td>\(2\)</td></tr>
+<tr><td>\(v_{10}\)</td><td>\(3\)</td><td>\(3\)</td><td>\(2\)</td><td>\(1\)</td></tr>
+<tr><td>\(v_{11}\)</td><td>\(3\)</td><td>\(3\)</td><td>\(1\)</td><td>\(3\)</td></tr>
+</tbody></table></div>
+<figure><img src="../../research/spectral-tiling/boundary-mode-palette.png" loading="lazy" alt="Eleven square fields on a shared color scale, with fixed edge amplitudes labeled on each side."><figcaption>Samples of the exact seven-mode formula, rather than a numerical eigenproblem. Edge labels are amplitudes multiplying the common profile \(G\). All fields share one color scale; independently rescaling states would change the matching rules.</figcaption></figure>
+<p>Place one square in each cell of the integer grid, allowing translations only and choosing exactly one of these fixed-amplitude states in each cell. Since \(G(1/2)=1\), equality of entire traces is equivalent to equality of the corresponding amplitudes:</p>
+\[ v_a(1,t)=v_b(0,t)\ \text{for all }t\quad\Longleftrightarrow\quad E_a=W_b,
+\qquad
+v_a(t,1)=v_b(t,0)\ \text{for all }t\quad\Longleftrightarrow\quad N_a=S_b. \]
+<p>Consequently legal field-decorated tilings and legal Wang tilings correspond exactly, preserving their periods. The cited theorem therefore forces aperiodicity of the decoration on a periodic square grid. The globally matched scalar field is itself aperiodic: all amplitudes are positive, so its zero set is exactly the integer grid vertices. Any translation period would preserve this zero set and hence be an integer vector, already excluded by the Wang theorem.</p>
+<p>Each square has zero normal flux, so the total static field also satisfies flux cancellation across every legal seam. Tangential derivatives agree because the traces agree; all first derivatives vanish at grid vertices. Thus the matched field is continuously differentiable. It contains several eigenvalues and is not asserted to solve one source-free Helmholtz equation on the plane.</p>
+<div class="callout caution"><p><strong>The restrictions carry the aperiodicity.</strong> Allowing arbitrary coefficient vectors includes a repeated state with \(W=E=S=N\), which is periodic. Allowing reflected copies likewise permits periodic folding of a state across the grid. The eleven-state palette, fixed amplitudes and translation-only placement rule are essential assumptions. No infinite tiling is inferred from a finite patch computation.</p></div>
+<details><summary>What changes if every frequency must match separately?</summary>
+<p>Our rule matches the total static field. Separate spectral components generally have incompatible traces. If the matching must persist under independent wave or heat evolution, distinct eigenvalues separate in time, and the interface rule must be imposed on each eigenvalue component.</p>
+<p>For the ordinary Neumann square, this stronger requirement forces a periodic continuation. At one fixed eigenvalue, every mode is a finite sum of the cosine products above. Its trace on a vertical side determines all its coefficients, since each tangential frequency determines the remaining normal frequency. The matching neighbor is therefore its even reflection. The same applies horizontally. Repeated reflections give periods \((2,0)\) and \((0,2)\). Matching every component separately makes their sum periodic too. This is a proved limitation of this square model, not an obstruction for every possible tile or boundary operator.</p>
+<p>With homogeneous Dirichlet modes, matching values alone gives no rule at all: every trace is zero. Thus specifying which trace, which spectral components, and whether time evolution is involved changes the question substantially.</p>
+</details>
+<details><summary>A single-eigenvalue alternative with a common nonlocal boundary operator</summary>
+<p>There is also a four-dimensional Helmholtz construction:</p>
+\[ u_a(x,y)=\bigl[(1-x)W+xE\bigr]\sin(\pi y)
++\bigl[(1-y)S+yN\bigr]\sin(\pi x),\qquad -\Delta u_a=\pi^2u_a. \]
+<p>Its four traces are \(W\sin(\pi t),E\sin(\pi t),S\sin(\pi t),N\sin(\pi t)\). The same amplitude palette therefore encodes the same Wang set. These functions have nonzero prescribed boundary values and are not standard homogeneous Dirichlet or Neumann eigenfunctions.</p>
+<p>To make them eigenfunctions of one fixed self-adjoint operator, let \(F\) be the boundary space spanned by the four profiles \(\sin(\pi t)\), each supported on one edge. Require the trace to belong to \(F\), and impose a projected flux condition:</p>
+\[ \gamma u\in F,\qquad P_F\partial_\nu u=B\gamma u,\qquad
+B=\begin{pmatrix}1&-1&-2&-2\\-1&1&-2&-2\\-2&-2&1&-1\\-2&-2&-1&1\end{pmatrix}. \]
+<p>The matrix is expressed in the edge-profile basis, ordered west, east, south, north. Projection is essential: this is a nonlocal condition coupling different edges, not pointwise Robin data. Each profile has squared boundary norm \(1/2\). The two identities \(\int_0^1\sin^2(\pi t)\,dt=1/2\) and \(\pi\int_0^1 t\sin(\pi t)\,dt=\pi\int_0^1(1-t)\sin(\pi t)\,dt=1\) give the displayed symmetric matrix from the explicit normal derivatives.</p>
+<p>For real fields, the associated form is</p>
+\[ V=\{u\in H^1(\Omega):\gamma u\in F\},\qquad
+q[u]=\int_\Omega|\nabla u|^2-\tfrac12 a(u)^TB a(u). \]
+<p>The finite boundary term is form-bounded by the Lipschitz trace inequality; the closed, semibounded form defines a self-adjoint operator with compact resolvent. This is within the general boundary-extension framework. <a href="#ref22">[22]</a> The special ground eigenspace can also be checked directly. Decompose \(u=u_{a(u)}+h\), with \(h\in H_0^1(\Omega)\). Integration by parts and the projected flux identity give</p>
+\[ q[u]-\pi^2\|u\|^2=\int_\Omega|\nabla h|^2-\pi^2\|h\|^2
+\ge\pi^2\|h\|^2. \]
+<p>The inequality uses the square's first Dirichlet eigenvalue \(2\pi^2\). Equality holds exactly when \(h=0\). Thus \(\pi^2\) is the lowest eigenvalue, of multiplicity four, and all eleven palette states belong to this one eigenspace. Their finite selection remains an extra rule; the linear operator itself permits all linear combinations.</p>
+<p>This alternative only matches values. For example, the sum of outward fluxes at a vertical seam with \(E_a=W_b\) is</p>
+\[ (2E_a-W_a-E_b)\sin(\pi t)
+-\pi\bigl[(1-t)(S_a+S_b)+t(N_a+N_b)\bigr]. \]
+<p>Its sine and linear parts are independent; the strictly positive amplitudes prevent it from vanishing identically. Hence this single-frequency construction has interface sources and gives no global source-free eigenfunction. The Neumann superposition above avoids that flux defect by giving up the single-frequency requirement.</p>
+</details>
+<p class="small"><a href="../../research/spectral-tiling/boundary_mode_palette.py">Reproduce the formula atlas</a> · <a href="../../research/spectral-tiling/boundary-mode-palette.json">Palette, exact trace checks and adjacency receipt</a>. The receipt checks all \(121\) ordered pairs in each direction, exact rational cosine traces and the symmetric flux matrix. Sampling supplements the formulas; the infinite aperiodicity proof is the cited theorem. This is a continuum field decoration, with no tiling/search engine created or modified.</p>
 
 <h2 id="patterns">Patterns across the examples</h2>
 <div class="callout"><p><strong>The strongest pattern:</strong> the explicit arithmetic subspaces record compatible affine reflections of the boundary. Such regularity can coexist with aperiodic legal tilings. The geometry of an eigenfunction’s continuation and the rules governing tile placements are different pieces of data.</p></div>
@@ -250,7 +330,7 @@
 <h3>Matching two tiles is an interface condition</h3>
 <p>For a legal face identification, after transporting boundary coordinates and channels by \(U\), transparent attachment uses continuity and cancellation of outward flux:</p>
 \[ u_i=Uu_j,\qquad \partial_{\nu_i}u_i=-U\partial_{\nu_j}u_j. \]
-<p>These replace the isolated face conditions. Imposing unrelated Robin conditions in addition can overconstrain the field. The marking table specifies which joins are legal; equality of one solution’s boundary values alone cannot do this, because a zero trace can conceal an incompatible join. Physical dents and bumps provide another realization, with geometric boundary conditions on the changed domain.</p>
+<p>These replace the isolated face conditions. Imposing unrelated Robin conditions in addition can overconstrain the field. The marking table specifies which joins are legal; unrestricted equality of boundary values does not by itself encode a marking table, because zero traces can conceal incompatible joins. A deliberately restricted, injectively encoded palette can recover such a table exactly, as in the <a href="#boundary-mode-tiles">square construction above</a>. Physical dents and bumps provide another realization, with geometric boundary conditions on the changed domain.</p>
 <h3>Boundary response keeps more than a list of eigenvalues</h3>
 <p>For \(z\) away from the Dirichlet spectrum, solve \((-\Delta-z)u=0\) with trace \(f\), and retain the Dirichlet-to-Neumann map</p>
 \[ \Lambda_\Omega(z)f=\partial_\nu u. \]
@@ -396,7 +476,7 @@ C=\frac{5}{16}-\frac{5}{144}=\frac{5}{18}. \]
 <p>The base tiling model must still specify the exact point domain, values, markings and allowed transforms; maintain complete point–candidate incidence; check global dead ends and forced moves before earliest-generation branching; preserve exact rollback; and independently verify all occupancy and matching claims. The continuum-to-point reduction itself needs justification. A spectral score does not replace those obligations.</p>
 
 <h2 id="references">Primary sources and audit trail</h2>
-<p class="small">Sources checked on 7–8 October 2026. Established theorems, a recent preprint claim, deductions in these notes and numerical observations are distinguished in the text. The references follow the topics explored so far: Fourier tiling, inverse spectra, billiards, tiling dynamics, Chair44 and boundary operators. The arithmetic-mode constructions are derived explicitly above; the numerical receipts document observations rather than proving algebraicity.</p>
+<p class="small">Sources checked on 7–9 October 2026. Established theorems, a recent preprint claim, deductions in these notes and numerical observations are distinguished in the text. The references follow the topics explored so far: Fourier tiling, inverse spectra, billiards, tiling dynamics, Chair44 and boundary operators. The arithmetic-mode constructions are derived explicitly above; the numerical receipts document observations rather than proving algebraicity.</p>
 <ol class="refs">
 <li id="ref1">Iosevich, Katz and Tao. <a href="https://arxiv.org/abs/math/0104087">Fuglede conjecture holds for convex planar domains</a>. Mathematical Research Letters, 2003. Planar convex equivalence and classification.</li>
 <li id="ref2">Lev and Matolcsi. <a href="https://arxiv.org/abs/1904.12262">The Fuglede conjecture for convex domains is true in all dimensions</a>. Convex-body theorem.</li>
@@ -431,6 +511,7 @@ C=\frac{5}{16}-\frac{5}{144}=\frac{5}{18}. \]
 <li id="ref30">Beenker. <a href="https://pure.tue.nl/ws/files/4269555/253166.pdf">Algebraic theory of non-periodic tilings of the plane by two simple building blocks: a square and a rhombus</a>. EUT Report 82-WSK-04 (1982). Nonperiodic tetragrid constructions; limitations of the simple joining conditions.</li>
 <li id="ref31">McCartin. <a href="https://www.m-hikari.com/ams/ams-password-2008/ams-password57-60-2008/mccartinAMS57-60-2008.pdf">On Polygonal Domains with Trigonometric Eigenfunctions of the Laplacian under Dirichlet or Neumann Boundary Conditions</a>. Applied Mathematical Sciences 2, 2891–2901 (2008). Theorems 2–4: complete and partial trigonometric eigenfunction classifications, including mixed problems.</li>
 <li id="ref32">Rowlett, Blom, Nordell, Thim and Vahnberg. <a href="https://arxiv.org/abs/2012.03288">Crystallographic groups, strictly tessellating polytopes, and analytic eigenfunctions</a>. The American Mathematical Monthly 128, 387–406 (2021). Theorem 2 concerns extension of the first Dirichlet eigenfunction to a real analytic function on the whole ambient space.</li>
+<li id="ref33">Jeandel and Rao. <a href="https://arxiv.org/abs/1506.06492">An aperiodic set of 11 Wang tiles</a>. Advances in Combinatorics 2021:1. Figure 4 and Theorem 3 give the four-color palette used here; tuples allow translations on the integer grid.</li>
 </ol>
 <p class="small">Additional verified context: <a href="https://arxiv.org/abs/1602.05738">Bhattacharya's planar lattice translational periodicity theorem</a> says a finite subset of the integer plane that tiles by translations has a fully periodic tiling. It concerns that lattice model, not arbitrary rotations of a Euclidean monotile.</p>
 </article>

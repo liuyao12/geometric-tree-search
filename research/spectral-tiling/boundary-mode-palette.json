@@ -1,0 +1,698 @@
+{
+  "date": "2026-10-09",
+  "status": "passed",
+  "script_sha256": "7bfae84d552e136ed36b24fa52203f8c56f7720fa9d169ded7f5e79304739e9f",
+  "source": {
+    "authors": "Emmanuel Jeandel and Michael Rao",
+    "title": "An aperiodic set of 11 Wang tiles",
+    "url": "https://arxiv.org/html/1506.06492v4#S4.F4",
+    "figure": 4,
+    "theorem": 3,
+    "extraction": "Math labels and their positions in the authors' Figure 4 SVG; left-to-right order."
+  },
+  "tuple_order": [
+    "west",
+    "east",
+    "south",
+    "north"
+  ],
+  "color_amplitude_map": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "palette": [
+    {
+      "id": 1,
+      "colors": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge_amplitudes": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "cosine_coefficients": [
+        "5/4",
+        "0",
+        "1/4",
+        "-1/2",
+        "-3/4",
+        "0",
+        "-1/4"
+      ]
+    },
+    {
+      "id": 2,
+      "colors": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "edge_amplitudes": [
+        1,
+        4,
+        3,
+        2
+      ],
+      "cosine_coefficients": [
+        "5/2",
+        "-3/4",
+        "1/4",
+        "-5/4",
+        "-5/4",
+        "3/4",
+        "-1/4"
+      ]
+    },
+    {
+      "id": 3,
+      "colors": [
+        1,
+        0,
+        2,
+        2
+      ],
+      "edge_amplitudes": [
+        2,
+        1,
+        3,
+        3
+      ],
+      "cosine_coefficients": [
+        "9/4",
+        "1/4",
+        "0",
+        "-3/4",
+        "-3/2",
+        "-1/4",
+        "0"
+      ]
+    },
+    {
+      "id": 4,
+      "colors": [
+        1,
+        1,
+        0,
+        2
+      ],
+      "edge_amplitudes": [
+        2,
+        2,
+        1,
+        3
+      ],
+      "cosine_coefficients": [
+        "2",
+        "0",
+        "-1/2",
+        "-1",
+        "-1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "id": 5,
+      "colors": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "edge_amplitudes": [
+        2,
+        4,
+        3,
+        4
+      ],
+      "cosine_coefficients": [
+        "13/4",
+        "-1/2",
+        "-1/4",
+        "-3/2",
+        "-7/4",
+        "1/2",
+        "1/4"
+      ]
+    },
+    {
+      "id": 6,
+      "colors": [
+        3,
+        0,
+        1,
+        1
+      ],
+      "edge_amplitudes": [
+        4,
+        1,
+        2,
+        2
+      ],
+      "cosine_coefficients": [
+        "9/4",
+        "3/4",
+        "0",
+        "-5/4",
+        "-1",
+        "-3/4",
+        "0"
+      ]
+    },
+    {
+      "id": 7,
+      "colors": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "edge_amplitudes": [
+        4,
+        2,
+        2,
+        2
+      ],
+      "cosine_coefficients": [
+        "5/2",
+        "1/2",
+        "0",
+        "-3/2",
+        "-1",
+        "-1/2",
+        "0"
+      ]
+    },
+    {
+      "id": 8,
+      "colors": [
+        3,
+        1,
+        2,
+        2
+      ],
+      "edge_amplitudes": [
+        4,
+        2,
+        3,
+        3
+      ],
+      "cosine_coefficients": [
+        "3",
+        "1/2",
+        "0",
+        "-3/2",
+        "-3/2",
+        "-1/2",
+        "0"
+      ]
+    },
+    {
+      "id": 9,
+      "colors": [
+        3,
+        3,
+        3,
+        1
+      ],
+      "edge_amplitudes": [
+        4,
+        4,
+        4,
+        2
+      ],
+      "cosine_coefficients": [
+        "7/2",
+        "0",
+        "1/2",
+        "-2",
+        "-3/2",
+        "0",
+        "-1/2"
+      ]
+    },
+    {
+      "id": 10,
+      "colors": [
+        2,
+        2,
+        1,
+        0
+      ],
+      "edge_amplitudes": [
+        3,
+        3,
+        2,
+        1
+      ],
+      "cosine_coefficients": [
+        "9/4",
+        "0",
+        "1/4",
+        "-3/2",
+        "-3/4",
+        "0",
+        "-1/4"
+      ]
+    },
+    {
+      "id": 11,
+      "colors": [
+        2,
+        2,
+        0,
+        2
+      ],
+      "edge_amplitudes": [
+        3,
+        3,
+        1,
+        3
+      ],
+      "cosine_coefficients": [
+        "5/2",
+        "0",
+        "-1/2",
+        "-3/2",
+        "-1",
+        "0",
+        "1/2"
+      ]
+    }
+  ],
+  "Neumann_cosine_modes": [
+    {
+      "indices": [
+        0,
+        0
+      ],
+      "normalized_eigenvalue": 0
+    },
+    {
+      "indices": [
+        1,
+        0
+      ],
+      "normalized_eigenvalue": 1
+    },
+    {
+      "indices": [
+        0,
+        1
+      ],
+      "normalized_eigenvalue": 1
+    },
+    {
+      "indices": [
+        0,
+        2
+      ],
+      "normalized_eigenvalue": 4
+    },
+    {
+      "indices": [
+        2,
+        0
+      ],
+      "normalized_eigenvalue": 4
+    },
+    {
+      "indices": [
+        1,
+        2
+      ],
+      "normalized_eigenvalue": 5
+    },
+    {
+      "indices": [
+        2,
+        1
+      ],
+      "normalized_eigenvalue": 5
+    }
+  ],
+  "number_of_Neumann_modes": 7,
+  "normalized_eigenvalues_used": [
+    0,
+    1,
+    4,
+    5
+  ],
+  "edge_carrier_space_dimension": 4,
+  "horizontal_adjacency": [
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  ],
+  "vertical_adjacency": [
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  ],
+  "directed_value_compatible_pairs": {
+    "horizontal": 31,
+    "vertical": 37
+  },
+  "projected_outward_flux_matrix": [
+    [
+      1,
+      -1,
+      -2,
+      -2
+    ],
+    [
+      -1,
+      1,
+      -2,
+      -2
+    ],
+    [
+      -2,
+      -2,
+      1,
+      -1
+    ],
+    [
+      -2,
+      -2,
+      -1,
+      1
+    ]
+  ],
+  "boundary_basis_norm_squared": "1/2",
+  "maximum_sample_trace_error": 2.220446049250313e-16,
+  "maximum_sample_cosine_expansion_error": 8.881784197001252e-16,
+  "maximum_sample_Neumann_normal_derivative": 3.4626072486992214e-15,
+  "single_frequency_alternative": {
+    "normalized_Helmholtz_value": 1,
+    "basis_dimension": 4,
+    "maximum_sample_trace_error": 4.898587196589413e-16,
+    "fixed_operator": "Trace in F and P_F outward_flux = B trace; common self-adjoint nonlocal operator. Lowest eigenvalue pi^2 has multiplicity four by the boundary-form proof in the Notes.",
+    "flux_matching": "Impossible for the strictly positive palette; this alternative has interface sources."
+  },
+  "placement_model": "One unit square per integer grid cell; translations only; fixed amplitude palette; equality of scalar traces.",
+  "aperiodicity": "Exact bijection to the cited Wang set. Infinite existence and absence of nonzero grid periods use Jeandel--Rao's theorem, not these finite pair checks.",
+  "flux_matching": "The total static field is continuously matched and every square has exactly zero outward normal derivative. Each summand is a homogeneous Neumann eigenfunction.",
+  "limitations": "The total static field combines four eigenvalues; it is not a single Helmholtz eigenfunction, and separate frequencies generally do not match. The finite coefficient palette is essential. Reflections of states are excluded. No tiling/search engine or wave evolution is constructed.",
+  "atlas": {
+    "file": "boundary-mode-palette.png",
+    "sha256": "77f8e4cc1f167597495844653909dd2af7e6bc5217815b435336f871c278bd58",
+    "sample_grid_per_field": [
+      181,
+      181
+    ],
+    "shared_range": [
+      0,
+      7.06246079595714
+    ],
+    "meaning": "Sampled exact formulas. No independent normalization or FEM solve."
+  }
+}
