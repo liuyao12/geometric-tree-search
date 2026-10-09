@@ -1537,3 +1537,125 @@ the fine scheduler. The broad proof program still needs a fixed unbounded
 serialized-syntax checker, checked infinite theory schemas and internal
 geometry definitions. Base plane coverage, Penrose hierarchy and general
 computational proof search remain active.
+
+## Iteration 15: exact local responses and a resolution policy control
+
+<code>boundary_responses.py</code> introduces sampled local operations with exact
+incoming and outgoing occupancy. A response records every point of
+\(U_C=\operatorname{supp}t_C\), including explicit incoming zero, an ordered
+distinct base expansion, its aggregate contribution and descending child maps.
+This implementation is explicitly unmarked. Occupancy traces are not learned
+GCTS equality markings, and the sampled atlas is not a complete solution relation.
+
+The finite composition law is
+\[
+R_C:b_C\mapsto b_C+t_C,\qquad
+b_B=b_A+t_A\text{ on }U_A\cap U_B,\qquad
+t_{A;B}=t_A+t_B.
+\]
+The combined input uses \(b_A\) on \(U_A\) and \(b_B\) elsewhere in \(U_B\).
+Children must have disjoint base owners. Positivity and the checked final
+capacity bound imply capacity legality of every ordered prefix. Direct point
+expansion and the two parenthesizations of compatible operations agree.
+These are analytic finite-operation arguments with executable checks; they
+do not establish extension to a far boundary or a universal geometric theorem.
+Retaining only a geometric outline would omit possible interior conflicts.
+
+Sixteen fresh local completions, with no imported marking, donor, completion
+or policy, provide \(40\) connected responses of \(2,3,4,6,8\) turtles.
+Mining considered windows up to \(12\), but no such large selected response
+occurred. Their closure has \(187\) nodes and \(228\) child maps. The complete
+resident envelope contains \(8436\) base poses. Template lookup first uses
+the exact first-tile input trace, then checks all remaining support and owners.
+It can reuse an operation when unrelated remote data change; that does not
+authorize a globally unscheduled move.
+
+Each search starts with every required point, including untouched zero.
+All lanes use the same complete singleton incidence graph, generation-zero
+root obligations, global dead/forced/earliest-generation scheduler, copied
+exact state and graph rollback, \(4000\) explored base moves and six cooperative
+seconds. Response proposals never supply degrees or remove singleton choices.
+Internal local capacity is validated when the atlas is built. At execution,
+every constituent passes the current global scheduler; a mismatch closes
+the proposal at its legal prefix. Unlike the older compiler, it does not
+construct another complete graph to prevalidate each whole response.
+That changes the proposal/exploration relation, so it is not an equivalence
+optimization of the earlier macro benchmark.
+
+The main two-replica, six-target batch reports:
+
+| Lane | Checked exact requests | Total request seconds | Explored base moves |
+| --- | --- | --- | --- |
+| Base | 9 / 12 | 22.304 | 3274 |
+| Same response shapes, aggregate capacity only | 5 / 12 | 49.431 | 7520 |
+| Trace-matched responses up to four tiles | 10 / 12 | 20.272 | 2190 |
+| Full hierarchy, zero-weight policy | 7 / 12 | 39.505 | 5503 |
+| Full hierarchy, move-ranking RL | 6 / 12 | 39.838 | 4406 |
+
+Compact responses solve two base-unknown requests and miss one base success.
+On the eight shared completed requests, base costs \(3.634\) seconds and
+compact responses \(6.019\). Thus the mixed overall outcomes are not an
+equal-success speed ratio. Capacity-only proposals interrupt \(4193\) times;
+many execute only one constituent. A valid local operation can be a poor
+global search action, and duplicate stopped prefixes need further work.
+The fresh move-ranking policy completes \(14/48\) local rollouts. It supplies
+no improvement over its zero-weight control. Shapes may recur; distinct seeds
+and changed target placements are not unseen-shape generalization.
+
+Main sequential cost is \(241.318\) seconds, peak \(362.95\) MiB. Donors cost
+\(4.074\) seconds, mining \(0.390\), and policy training \(26.829\); each atlas
+build and the cold \(0.407\)-second universe are separately exported. These
+are process costs and peaks, not per-lane allocation. Unknown cutoffs carry
+no negative certificate. Heuristic exhaustion is explicitly uncertified.
+The movable-boundary control remains an existential finite family of three
+authored targets, with every earlier attempt preserved.
+
+<code>response_resolution.py</code> is an adaptive follow-up designed after
+observing the main failures. It reuses only the explicitly hashed atlas and
+starts a new policy. One REINFORCE decision selects base, compact or hierarchical
+proposals before each full request. Problem features use only the externally
+declared required set and exterior. Choosing base avoids response lookup;
+the upfront library and learning costs are still charged. It does not adapt
+a stalled prefix or refine an aggregate candidate inventory.
+
+Forty-two fresh full-search training runs on seven declared boundaries cost
+\(36.241\) seconds. Evaluation uses new seeds, three rotated paired lanes and
+the same six target definitions. Base and the learned controller both finish
+\(11/12\); the learned controller chooses base for every request. Their
+completed semantic paths match. Uniform zero-weight ties choose base three
+times, compact six and hierarchy three, finishing \(12/12\). The controller
+misses the difficult notched replica where a compact zero-weight choice
+succeeds. This experiment establishes no learned-policy superiority.
+The follow-up process costs \(103.751\) seconds, peak \(333.61\) MiB, plus the
+explicit reused donor/mining cost. Audits did not run beside either search
+process. This adaptive design is not an independent validation of the earlier
+hypothesis, and elapsed cutoff paths can differ between equivalent base runs.
+
+The independent main audit reconstructs \(187\) local operations, \(42\)
+donor occurrences, \(480\) transformed expansions, \(148\) saved states and
+\(1638\) scheduled moves. Sixteen full literal domains equal the incremental
+graph. Missing input, boolean capacity, altered output, duplicate ownership,
+wrong child maps, generations and schedules reject. The supplementary audit
+also reconstructs the entire on-policy weight update history independently
+from recorded rewards, declared features and seeded choices, and checks
+every saved controller schedule against the literal full inventory.
+Geometry remains an illustration of point data; this batch does not add a
+new polygon faithfulness theorem. These finite laws are possible proof-block
+interfaces, not an internal formalization of infinite tilings.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_boundary_responses.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_response_resolution.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_boundary_responses.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_response_resolution.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+
+Eleven new response tests cover composition, associativity, all symmetries,
+strict input/output data, owner maps, complete domains and fallback, exact
+transactions, local reuse versus remote dead obligations, unknown budgets
+and zero-policy semantic equivalence. Three new controller tests cover
+externally declared features, independently reconstructed resolution choices
+and fresh initial policy state. Earlier source-hashed modules and artifacts
+are preserved. The next practical gate is avoiding identical stopped-prefix
+work and selecting resolution from the current boundary rather than a whole
+request alone. The broad proof checker, Penrose hierarchy and plane coverage
+remain open.

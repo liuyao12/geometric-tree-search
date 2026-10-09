@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r14.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r15.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r14.1"></script>
+  <script defer src="report.js?v=20261009-r15.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 14</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 15</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,42 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="boundary-response-research">
+    <p class="eyebrow">LOCAL RESPONSE MAPS · EXACT COMPOSITION · RESOLUTION CONTROLS</p><h2>Compose local solutions. Check their interfaces.</h2>
+    <p>The PDE analogy suggests retaining local input and output traces, rather than caching an entire global search state. A fresh unmarked run supplies connected turtle patches. Each response records all incoming point contributions on its support, including zero, its distinct ordered base constituents and its outgoing contributions. Compatible children compose into a larger response with an inspectable descending hierarchy.</p>
+    <div class="callout" id="response-finding">Loading the response laws and fresh resolution comparison…</div>
+    <div class="controls"><label>Fresh local response <select id="response-type"></select></label></div>
+    <div class="evidence-grid"><div><h3>Incoming point trace</h3><svg id="response-incoming" viewBox="0 0 520 420" role="img" aria-label="Every incoming point contribution on the selected response support, including zero"></svg><p id="response-incoming-caption" class="caption"></p></div><div><h3>Outgoing point trace</h3><svg id="response-outgoing" viewBox="0 0 520 420" role="img" aria-label="The exact outgoing point contributions after adding the selected response patch"></svg><p id="response-outgoing-caption" class="caption"></p></div></div>
+    <svg id="response-tree" viewBox="0 0 1100 330" role="img" aria-label="The selected response's actual binary composition tree with distinct base leaves"></svg><p id="response-tree-caption" class="caption"></p>
+    <details open><summary>The local composition law and its limits</summary>
+      <p>For a response patch \(C\), its full positive support is \(U_C=\operatorname{supp}t_C\). Its observed local operation is</p>
+      \[R_C:b_C\longmapsto b_C+t_C,\qquad 0\leq b_C(p)+t_C(p)\leq1\quad(p\in U_C).\]
+      <p>Two ordered children with disjoint base owners compose when the second input agrees with the first output at every shared point:</p>
+      \[b_B(p)=b_A(p)+t_A(p)\quad(p\in U_A\cap U_B),\qquad t_{A;B}=t_A+t_B.\]
+      <p>The parent's input equals \(b_A\) on \(U_A\) and \(b_B\) on \(U_B\setminus U_A\). Direct expansion and both parenthesizations of compatible operations have identical point values. Every child map descends in level; all twelve symmetries preserve these finite laws. The implementation uses exact integer twelfths and unmarked singleton tiles.</p>
+      <p>This input includes interior points of the patch. Retaining only its geometric outline would miss capacity conflicts. The atlas contains sampled local operations, not the complete relation of all possible boundary solutions. It may offer nothing for a new trace. All base candidates remain available. Incoming and outgoing totals are occupancy data, not learned equality markings.</p>
+      <p>Local agreement also does not determine the global scheduler. A remote dead point, forced move or earlier-generation obligation can interrupt a response. Before every constituent, the complete base graph checks global dead ends, forced moves and earliest generation. A mismatch closes the proposal at its legal prefix; failed children discard exact state and graph copies. Neither an atlas miss nor a stopped response prunes a singleton.</p>
+    </details>
+    <h3 class="spaced-title">Fresh same-model region experiment</h3>
+    <div class="table-scroll"><table><thead><tr><th>Continuation lane</th><th>Exact requests</th><th>Mean seconds</th><th>Base attempts</th><th>Response constituents explored</th><th>Interrupted responses</th><th>Proposal seconds</th></tr></thead><tbody id="response-benchmark"></tbody></table></div>
+    <p id="response-comparison"></p><p id="response-cost" class="caption"></p>
+    <div class="controls"><label>Fixed point boundary <select id="response-problem"></select></label><label>Lane <select id="response-lane"></select></label><label>Replica <select id="response-replica"><option value="0">First</option><option value="1">Second</option></select></label></div>
+    <div class="slider-row"><label for="response-step">Accepted base moves</label><input id="response-step" type="range" min="0" max="40" value="40"><output id="response-step-value">—</output></div>
+    <svg id="response-region" viewBox="0 0 850 460" role="img" aria-label="The authored required points, fixed exterior and actually scheduled response prefixes"></svg><p id="response-region-caption" class="caption"></p>
+    <details><summary>How the experiment differs from the earlier macro compiler</summary>
+      <p>The new atlas indexes transformed responses by the exact incoming trace of their first tile, then checks all remaining support and ownership. The geometry control uses the same response shapes and only checks aggregate capacity. Compact and hierarchical lanes offer different maximum response sizes. The atlas prevalidates local capacity and composition; it does not construct a second graph to prevalidate the whole sequence. Execution checks the actual scheduler and can interrupt.</p>
+      <p>All lanes use the same complete singleton inventory, authored point targets, scheduler, base-move budget and cooperative wall limit. Root obligations include untouched zero points. Timings include inventory binding, graph updates, response lookup, policy features and final value verification. Cold inventory, donors, mining, atlas construction and policy training are separate costs. Reused previous completions, markings and policies do not enter this main experiment.</p>
+      <p>The training shapes may recur in larger requests; distinct seeds and changed boundaries are not a guarantee of unseen-shape generalization. The move-ranking RL policy trains on local rollouts. Its zero-weight control has the same features and evaluation seeds. Unknown requests and unproved heuristic exhaustion remain separate from checked exact regions. This response atlas adds no GCTS marking or plane proof.</p>
+    </details>
+    <h3 class="spaced-title">A separate controller can choose base search</h3>
+    <p>After observing the move-ranking failures, a fresh request-level policy learns from complete search attempts on seven externally declared training boundaries. It chooses base, compact responses or the full hierarchy before binding the request. Choosing base avoids per-decision response lookup, although the reused library and new training still cost time. This is an adaptive follow-up, not an independent test of the earlier research hypothesis.</p>
+    <div class="table-scroll"><table><thead><tr><th>Request controller</th><th>Exact requests</th><th>Mean total seconds</th><th>Chosen base / compact / hierarchy</th><th>Base attempts</th></tr></thead><tbody id="resolution-benchmark"></tbody></table></div>
+    <p id="resolution-comparison"></p><p id="resolution-cost" class="caption"></p>
+    <p>The multiscale lesson is that a valid coarse response can still be a poor search action. In these controls, longer proposals often stop after one move; learned request selection can collapse onto base search and miss a useful compact response. The next policy needs feedback at the current boundary and must avoid repeating an identical stopped prefix. Checked local composition supplies a possible proof-block interface, while general geometry formalization and the fixed serialized-syntax proof checker remain open.</p>
+    <p>Subdomain interface maps and harmonic coarse extensions are established tools in domain decomposition. Their use here is an analogy: discrete tiling responses form a constrained, potentially multivalued relation, with no linear superposition or inherited PDE convergence theorem. See <a href="https://arxiv.org/abs/1608.00034">Schur-complement domain decomposition with subdomain interface maps</a> and <a href="https://epubs.siam.org/doi/10.1137/110838868">local harmonic extensions in a two-level Schwarz method</a>.</p>
+    <p id="response-audit" class="caption"></p><p class="small"><a href="boundary-responses-001.json">Inspect every response, child map, fresh donor, region schedule and cost ↗</a> · <a href="response-resolution-001.json">Inspect the separate fresh controller and paired controls ↗</a></p>
+  </section>
 
   <section class="panel" id="hierarchy-proof-research">
     <p class="eyebrow">A CASE PROOF · DESCENDING REFINEMENT · CHECKED LOGICAL ASSEMBLY</p><h2>A coarse obstruction becomes a proof.</h2>
@@ -431,8 +467,8 @@
       <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
       <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
       <li><span class="goal-state active">Context proposals</span><div><h3>RL proposes clusters and sequences</h3><p>Shared placements count once; diverse motifs and scheduler-checked continuations retain all base moves. The measured turtle policies have not demonstrated an acceleration. Next: learn hierarchical productions and improve the cost of proposing them.</p></div></li>
-      <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. A checked three-round argument now rules out the joint library of thirteen four-turtle parents. Next: variable-size parent families and boundary reuse with fine-scale refinement. A stationary substitution is optional.</p></div></li>
-      <li><span class="goal-state active">Region pilot 02</span><div><h3>Practical boundary solving and plane coverage</h3><p>Authored larger cores and a disconnected target complete with singleton fallback; RL improves this hierarchy’s completion rate, while singletons remain faster. Resident inventory reuse reduces a matched batch’s cost. Learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
+      <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Fresh boundary response operations now have exact descending composition maps. Next: learn useful current-boundary decisions and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
+      <li><span class="goal-state active">Response atlas</span><div><h3>Practical boundary solving and plane coverage</h3><p>Exact local input/output responses compose and retain complete singleton fallback. Compact proposals solve some additional fixed targets; their overhead and both new RL controls show no reliable advantage. Current-boundary resolution, learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
       <li><span class="goal-state active">Kernel bridge</span><div><h3>Build checkable proof search</h3><p>Generic word proofs and finite first-order kernel catalogs now compile to accepting Wang rectangles. Cold RL and fair bound drivers retain complete base search; arbitrary-TM expressiveness has an explicit reduction. Next: checked infinite theory schemas, a fixed serialized-syntax checker, hierarchical proof fragments and harder mathematical statements.</p></div></li>
     </ol>
