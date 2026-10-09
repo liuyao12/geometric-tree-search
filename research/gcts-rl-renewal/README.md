@@ -2794,3 +2794,84 @@ turtle growth. Resource exhaustion remains unknown.
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
 
 All \(285\) research tests pass in \(90.177\) seconds. The \(30\) test-source files and complete test log are SHA-256-bound in the new artifact. New tests cover free/fixed stack isolation, exact field counts, malformed commands, padding, all finite atom encodings, canonical sharing, syntax types and duplicate keys, literal unknowns, and strict external Boolean/integer bindings.
+
+## Notebook 26: accepting responses for the complete tape checker
+
+`run_micro_cert.py` records three composed computation certificates for the
+unchanged notebook 25 program, microcode, finite literal table and actual input
+streams. The independent native verifier `micro_response_check.cpp` derives every
+node interface from primitive actions, exact copy sweeps and descending binary
+composition. No supplied interface or expanded root replay determines acceptance.
+The root checks all input requirements, band extents, unchanged frame, final
+cursors and exact literal-transition count; its complete derived output agrees
+with the earlier independent tape execution.
+
+The full addition-by-induction case accepts with \(4{,}483{,}731\) distinct
+nodes, depth \(57\), \(483{,}826{,}358\) expanded primitive/sweep leaves,
+\(2{,}181{,}777{,}376\) selected-symbol operations and
+\(30{,}060{,}767{,}529{,}466\) literal transitions. Reflexivity accepts;
+the captured-instantiation input rejects. Rejection certifies that supplied
+proof's run, without an unprovability claim about its target.
+
+Each band's response contains symbol-set preconditions, exact final writes,
+cursor displacement and a visited extent relative to its incoming cursor. It also
+derives an affine literal-cost law. These sets describe boundary families, not
+set-valued GCTS markings. For a self-copy sweep of length \(n\) in direction
+\(d\in\{-1,1\}\), the literal constant is
+\(\kappa=d\,n(n-1)+3n\). Composition substitutes the earlier final cursor
+and physical head into the later law. Descending references give structural
+induction; repeated nodes instantiate their complete expansion at newly derived
+positions. Every represented finite symbol run can instead use primitive leaves
+alone. The written [response law](../../docs/research/gcts-rl-renewal/micro-response-law.html)
+connects these interfaces and the independently audited literal selection law to
+the accepting Wang expansion. The dense rectangle is not exported. Native
+toolchain and algorithms remain trusted; universal compiler equivalence and
+intended first-order logical soundness are still formalization goals.
+
+The builder uses authored instruction, parser-token and heap-record grouping
+states plus structural interning. This is a compression control, with no learned
+block discovery, RL training, proof search or candidate pruning. The complete
+tiling graph, global dead/forced precedence, generations, exact rollback and
+scalar marking semantics are unchanged. Node, expansion, interface-work and
+memory cutoffs remain unknown.
+
+The full builder takes \(17.359\) wall seconds, peaks at \(515.47\) MiB,
+and produces \(20{,}084{,}694\) compressed bytes
+(\(71{,}739{,}740\) raw). The verifier takes \(24.584\) wall seconds,
+peaks at \(1252.70\) MiB and derives \(702{,}373{,}961\) intervals,
+with \(26{,}871{,}923\) live at peak. The full case including compression
+takes \(51.760\) seconds. Earlier selected replay takes \(14.481\)
+seconds; the literal runner takes \(146.487\). This gives a checked compact
+representation of the huge expansion, without an advantage over selected replay.
+Cold native compilation takes \(1.382\) seconds; the entire sequential producer
+takes \(59.105\) seconds.
+
+`audit_micro_cert.py` derives all three certificates afresh, independently
+applies each root to its saved input, checks the fixed theory/target binding and
+whole outputs, audits the complete literal table law and rejects altered roots,
+start states, leaf states and external program/table pins. It takes \(31.062\)
+seconds, with a \(729.00\)-MiB driver peak including the finite-table audit.
+Its verifier has a separately reported native peak. Four official resource
+controls return unknown. Pilot history records three insufficient grammar budgets,
+an interface-work limit, a preliminary wrong sweep-count formula corrected before
+certification, and a successful pilot whose time wrapper failed after completion.
+The corrected official runs include native peak-memory measurements.
+
+All \(299\) research tests pass in \(97.742\) seconds. The \(31\) source
+files and complete test log are SHA-256-bound in `micro-responses-001.json`.
+New tests compare all \(147\) finite symbol actions and both copy-sweep
+directions against literal execution; compare \(30\) seeded mixed-band traces;
+check read-after-write, restored writes, masks as sets and affine cost composition;
+reject cycles, unused invalid nodes, fake supplied interfaces, changed declarations
+and wrong input/frame bindings; and preserve unknown resource cutoffs. The
+published full induction response is included.
+
+The next gate is useful learned mathematical blocks and RL proposals evaluated
+against total proof-search cost. Repeated exact block boundaries offer the PDE
+analogy a concrete finite solution operator, but no multigrid convergence theorem.
+Practical region tiling, movable boundaries, Penrose continuation and compatible
+infinite turtle growth remain active alongside this proof-system work.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_micro_cert.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_micro_cert.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
