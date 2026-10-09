@@ -27,6 +27,7 @@ python verify_elementary.py
 python verify_additional.py
 python verify_notes.py
 python verify_modes.py
+python analyze_patterns.py
 ```
 
 Run these commands from this directory. The original family and chair scripts
@@ -70,6 +71,21 @@ substitutions remain separate from the bare-polygon boundary operators.
 and image checksums; `additional-verification.json` checks every field and
 boundary certificate. These datasets are embedded separately in the HTML,
 preserving the preceding numerical receipt and its input hashes.
+
+The cross-example synthesis is the webpage's “Patterns across the examples”
+section. `analyze_patterns.py` writes `pattern-analysis.json`: integer lattice
+areas give the constructed-mode densities; root-lattice affine certificates
+show that the full triangle basis extends to Sphinx and the bare regular
+hexagon; quadratic-field identities and reflection-generated periods support
+the Penrose and Ammann–Beenker finite-plane-wave obstructions. The larger
+triangle-derived families are not yet implemented in the interactive viewer
+or used for numerical projection matches. Their asymptotic fraction is
+\(1/6\), compared with \(1/36\) for each currently displayed sector.
+This is a derived subspace size, not a classification of all algebraic values.
+The Notes now cite McCartin's partial/mixed trigonometric classification and
+Rowlett and collaborators' theorem on whole-space analytic continuation of
+the Dirichlet ground state. These distinguish reflection mechanisms from
+placement rules and from forced aperiodicity.
 
 Every nonconstant exact family now has an exact certificate for each tile
 edge, source edge and triangle median: the affine reflection, integer phase

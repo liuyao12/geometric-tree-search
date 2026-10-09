@@ -1,0 +1,255 @@
+{
+  "date": "2026-10-09",
+  "status": "passed",
+  "script_sha256": "1a13512e213f3c6d6d8fbb3ef484497142a1038ae5aaebb347576d08c5a15182",
+  "input_sha256": {
+    "elementary-modes.json": "f335d54d0d99c21992564b9142df8d19e1e86c6bc87e4da719ea299acc04bc56",
+    "additional-tiles.json": "820b62ff155e3e81f2b628ec813ecb903b5aea50644bbddbaa32e8b358139ffc",
+    "additional-mode-data.json": "d0e611703300bbbfa36fbc4f079c414d82ed4511896592fd83f6814c3c44c32f",
+    "arithmetic-spectra.json": "44af8ce9563be29194d94acdfbf883e8392463acafe5a9d1be3fd4fad61027bb"
+  },
+  "catalogue_asymptotic_mode_fractions": {
+    "hat": "1/192",
+    "turtle": "1/240",
+    "sphinx": "1/36",
+    "st-hexagon": "1/36",
+    "L": "1/3"
+  },
+  "expanded_triangle_families": {
+    "sphinx": {
+      "available_full_triangle_fraction": "1/6",
+      "edge_certificates": [
+        {
+          "group_index": 6,
+          "root_lattice_translation": [
+            0,
+            0
+          ]
+        },
+        {
+          "group_index": 10,
+          "root_lattice_translation": [
+            3,
+            3
+          ]
+        },
+        {
+          "group_index": 6,
+          "root_lattice_translation": [
+            0,
+            1
+          ]
+        },
+        {
+          "group_index": 10,
+          "root_lattice_translation": [
+            2,
+            2
+          ]
+        },
+        {
+          "group_index": 8,
+          "root_lattice_translation": [
+            0,
+            0
+          ]
+        }
+      ],
+      "additional_exact_examples": [
+        {
+          "bc": "D",
+          "normalized_value": "112/9",
+          "independent_real_functions": 2,
+          "frequency_orbit": [
+            [
+              2,
+              1
+            ],
+            [
+              -3,
+              2
+            ],
+            [
+              1,
+              -3
+            ],
+            [
+              3,
+              -1
+            ],
+            [
+              -2,
+              3
+            ],
+            [
+              -1,
+              -2
+            ]
+          ]
+        },
+        {
+          "bc": "N",
+          "normalized_value": "16/9",
+          "independent_real_functions": 2,
+          "frequency_orbit": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              1
+            ],
+            [
+              0,
+              -1
+            ]
+          ]
+        }
+      ],
+      "viewer_status": "Not yet added to the interactive catalogue or numerically projected."
+    },
+    "st-hexagon": {
+      "available_full_triangle_fraction": "1/6",
+      "edge_certificates": [
+        {
+          "group_index": 10,
+          "root_lattice_translation": [
+            1,
+            1
+          ]
+        },
+        {
+          "group_index": 6,
+          "root_lattice_translation": [
+            0,
+            1
+          ]
+        },
+        {
+          "group_index": 8,
+          "root_lattice_translation": [
+            -1,
+            0
+          ]
+        },
+        {
+          "group_index": 10,
+          "root_lattice_translation": [
+            -1,
+            -1
+          ]
+        },
+        {
+          "group_index": 6,
+          "root_lattice_translation": [
+            0,
+            -1
+          ]
+        },
+        {
+          "group_index": 8,
+          "root_lattice_translation": [
+            1,
+            0
+          ]
+        }
+      ],
+      "additional_exact_examples": [
+        {
+          "bc": "D",
+          "normalized_value": "112/9",
+          "independent_real_functions": 2,
+          "frequency_orbit": [
+            [
+              2,
+              1
+            ],
+            [
+              -3,
+              2
+            ],
+            [
+              1,
+              -3
+            ],
+            [
+              3,
+              -1
+            ],
+            [
+              -2,
+              3
+            ],
+            [
+              -1,
+              -2
+            ]
+          ]
+        },
+        {
+          "bc": "N",
+          "normalized_value": "16/9",
+          "independent_real_functions": 2,
+          "frequency_orbit": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              1
+            ],
+            [
+              0,
+              -1
+            ]
+          ]
+        }
+      ],
+      "viewer_status": "Not yet added to the interactive catalogue or numerically projected."
+    }
+  },
+  "penrose_affine_obstructions": {
+    "penrose-thin": {
+      "rotation_trace_in_Q_sqrt5": [
+        "-1/2",
+        "1/2"
+      ],
+      "trace_minimal_polynomial": "c^2+c-1",
+      "proof": "Doubled parallel-mirror translation T is a period. Rotated periods R^j T give integer a_j=k dot R^j T. The recurrence a_(j+2)+a_j=c a_(j+1) with irrational c forces all a_j=0, hence k=0."
+    },
+    "penrose-thick": {
+      "rotation_trace_in_Q_sqrt5": [
+        "-1/2",
+        "-1/2"
+      ],
+      "trace_minimal_polynomial": "c^2+c-1",
+      "proof": "Doubled parallel-mirror translation T is a period. Rotated periods R^j T give integer a_j=k dot R^j T. The recurrence a_(j+2)+a_j=c a_(j+1) with irrational c forces all a_j=0, hence k=0."
+    }
+  },
+  "ammann_beenker_affine_obstruction": {
+    "periods": [
+      "(4,0)",
+      "(0,4)",
+      "(2 sqrt2,0)",
+      "(0,2 sqrt2)"
+    ],
+    "proof": "Doubled parallel-mirror translations and their quarter-turn conjugates yield these periods. Incommensurate periods on each axis force a continuous global field to be constant."
+  },
+  "equal_area_comparison": [
+    {
+      "id": "sphinx",
+      "area": 2.598076211353316,
+      "first_D_estimate": 11.742370993943673,
+      "first_positive_N_estimate": 1.4596619063912264
+    },
+    {
+      "id": "st-hexagon",
+      "area": 2.598076211353316,
+      "first_D_estimate": 7.156328307685518,
+      "first_positive_N_estimate": 4.043537549775849
+    }
+  ],
+  "limitations": "The reflection proofs concern finite plane-wave Helmholtz functions with a fixed D/N type on each whole side. They do not classify eigenvalue algebraicity, encode matching rules, or prove an aperiodicity test. Mode fractions count constructed independent functions, not distinct values. Expanded triangle families are derived but not implemented in the viewer."
+}
