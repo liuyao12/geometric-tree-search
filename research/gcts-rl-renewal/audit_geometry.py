@@ -5,6 +5,7 @@ area. The audit replays completed run artifacts; it cannot influence learning.
 """
 import hashlib
 import json
+import time
 from fractions import Fraction
 from itertools import permutations
 from pathlib import Path
@@ -49,6 +50,7 @@ def positive_intersection(a,b):
     return bool(out) and area(out)!=0
 
 def audit(data):
+    start = time.monotonic()
     # Sanity checks exercise touching, overlapping, nested, and separate triangles.
     tri = [(0,0),(2,0),(0,2)]
     assert positive_intersection(tri,tri)
@@ -88,6 +90,7 @@ def audit(data):
     return {"method":"exact ear triangulation and rational triangle clipping; inspection only",
             "prototype_triangles":len(triangles),"catalog_overlap_contacts":contacts,
             "evaluation_runs":runs,"all_reported_patches_nonoverlapping":all(not r["overlapping_pairs"] for r in runs),
+            "seconds":time.monotonic()-start,
             "scope":"finite polygon interiors only; does not prove coverage or faithfulness of all point-model solutions",
             "audit_source_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 
