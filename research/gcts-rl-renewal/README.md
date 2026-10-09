@@ -2242,3 +2242,158 @@ continuation, plane coverage and useful learned proof blocks remain active.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_frontier_responses.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_frontier_responses.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+## 21. Parametric cluster inputs and scheduler-adaptive constituent orders
+
+`conditional_clusters.py` derives a family of local solutions from each
+unmarked response in the explicitly reused, SHA-bound notebook 15 atlas.
+For a cluster with distinct owners and nonnegative integer-twelfth occupancies,
+
+\[
+ \hat\Delta_C(p)=\sum_{c\in C}\hat t_c(p),\qquad
+ u_C(p)=12-\hat\Delta_C(p),\qquad
+ 0\le\hat I(p)\le u_C(p).
+\]
+
+Every subset \(U\subseteq C\), hence every prefix of every permutation, obeys
+
+\[
+ \hat I(p)+\sum_{c\in U}\hat t_c(p)
+ \le\hat I(p)+\hat\Delta_C(p)\le12.
+\]
+
+This elementary monotonicity argument proves local capacity legality under
+the derived bounds. It does not prove future completion. Bounds cover the
+whole positive support, including interior points and explicit zero bounds.
+Outside that support the response preserves occupancy. Compatible distinct
+children add increments; their sequential translated input requirements
+intersect, giving the same aggregate upper bounds. The audit checks every
+derived interface and child law. There is no machine-checked implementation
+soundness theorem. Marked clusters would additionally require agreement of
+all assigned point values. This pilot has no learned markings or exclusions;
+the bounds are parametric proposal interfaces, not equality m-values.
+
+The previous atlas offered continuations from the first recorded member.
+The new representation compiles every admissible pose of the sampled library
+and indexes it by every constituent. A proposal may begin at any member in
+the actual selected base domain. Fixed-order controls then follow the
+remaining original list; adaptive controls prefer every remaining member in
+the actual globally selected domain. A mismatch interrupts the proposal.
+Global dead/forced precedence, earliest-generation branching and complete
+singleton fallback remain unchanged. Each base key has one child. Branches
+copy all state and graph fields and discard failed copies for exact rollback.
+
+The index contains \(480\) transformed templates, \(180240\) sampled-library
+poses and \(711924\) member incidences over all \(8436\) base keys. Its
+completeness is about this sampled atlas, not all possible clusters. The
+selected library's realized cluster sizes are \(2,3,4,6,8\); the declared
+full-resolution cap remains \(12\). The two representations of a matching
+cluster are deduplicated by exact owners and starting key before offering.
+Each query scans at most \(256\) schema instances, round-robin across the
+selected base keys and interleaved cluster sizes, and offers at most eight
+responses. These proposal quotas never supply base degree counts or pruning.
+Trace/fixed, trace/adaptive, interval/fixed and interval/adaptive controls use
+the same complete compiled pose index and quota. Fixed/adaptive controls have
+identical initial proposal pools at the same state; later paths diverge.
+Input broadening changes which poses match, as intended by that comparison.
+
+New fixed targets are a long strip, annular obligations, two lobes, and a
+fixed exterior with a distant pocket, requiring respectively
+\(149,210,177,129\) points. Seven training boundaries use different strip
+widths, ring radii, lobe placements and exterior data. The declarations were
+frozen before the official run, after observing r20's interruption evidence.
+They are new authored shapes in this research pilot, not a standard independent
+benchmark suite or proof of broad generalization. The earlier donor geometry
+and finite hierarchy are explicitly reused; no earlier policy or markings enter.
+
+These remain exact point problems. Every required point must reach unit
+occupancy, and every positive tile support must lie within the same declared
+envelope. The annulus interior has no obligations and permits placements;
+it is not a forbidden physical hole. Exterior values and owners are externally
+declared. A general continuous-boundary faithfulness theorem remains open.
+All required obligations are roots of generation zero; new support and tile
+generations follow the unchanged reference rule. The candidate graph includes
+every legal base placement and all t/m dependencies, independently of this
+atlas. No geometric containment or polygon predicate runs inside search.
+
+Fresh REINFORCE learns both current resolution and validated cluster ordering
+from \(48\) single-path rollouts, with verified coverage/completion minus
+actual base attempts and elapsed cost. Training costs \(13.286\) seconds;
+\(5\) rollouts complete. A sampled dead rollout does not refute its boundary.
+Full evaluation retains every base alternative. Two replicas rotate seven
+lanes sequentially on the four new fixed targets, each with \(4000\) actual
+base attempts and five cooperative seconds, including binding, complete graph
+construction and lookup. No audit or tests run beside this timed process.
+
+| Input and execution control | Completed | Total request seconds | Base attempts | Response constituents | Reordered constituents |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Base | 8 / 8 | 7.563 | 883 | 0 | 0 |
+| Exact trace, fixed order | 8 / 8 | 4.107 | 284 | 15 | 0 |
+| Exact trace, adaptive order | 8 / 8 | 3.788 | 243 | 16 | 2 |
+| Capacity bounds, fixed order | 8 / 8 | 6.660 | 454 | 214 | 0 |
+| Capacity bounds, adaptive order | 8 / 8 | 6.417 | 453 | 213 | 3 |
+| Capacity bounds, uniform gate | 8 / 8 | 8.039 | 954 | 318 | 7 |
+| Capacity bounds, learned gate and ranking | 8 / 8 | 7.376 | 752 | 288 | 24 |
+
+These constituent and reorder counts cover all explored branches, not just
+the saved path. The fresh learned gate chooses the full hierarchy at all
+\(204\) fresh fixed-evaluation resolutions; it now executes actual clusters.
+It closes \(204\) response continuations, of which \(16\) use the complete
+cluster. The interval/adaptive control closes \(196\), with \(10\) complete.
+Most broadened responses still interrupt. Both adaptive controls have slightly
+lower aggregate request cost than their corresponding fixed-order controls,
+but these small engineering measurements do not establish a general speedup.
+Exact-trace controls lead on this new set. RL is close to base before adding
+its training and pose-compilation costs; no end-to-end learned advantage is
+established. Learning a capacity-legal region is distinct from learning a
+useful globally scheduled continuation.
+
+Two finite movable families each allow three authored strip positions. All
+seven lanes solve both families on their first member. Each member would have
+its own three-second budget, and every attempted outcome would be exported.
+The controls verify finite-family selection and exact replay but do not test
+moving an initially stalled boundary or continuous shape optimization.
+Base's two family requests cost \(0.882\) seconds, trace/adaptive
+\(0.821\), interval/adaptive \(1.712\), uniform \(0.800\) and RL
+\(0.770\), without an inference from these two small requests.
+
+The sequential process costs \(78.561\) seconds, peak \(953.34\) MiB.
+Complete sampled-library pose compilation costs \(2.434\) seconds separately
+from request totals. The envelope inventory is also charged separately in the
+artifact. Earlier donor/mining costs remain reported in notebook 15, rather
+than being treated as free fresh discovery. The process peak is not a
+per-lane memory comparison; its near-gigabyte cost makes practical memory
+reduction a necessary next gate. Independent audit costs another
+\(75.761\) seconds, peak \(182.09\) MiB.
+
+`audit_conditional_clusters.py` imports none of the new producer, search,
+feature routines or driver. It independently authors the declared boundaries
+from literal integer sets, derives all \(187\) capacity interfaces and
+\(114\) composition laws, checks \(228\) source child maps and brute
+anchor-and-membership enumerates the entire \(180240\)-pose index. Its
+fingerprint and \(711924\) incidences agree with the producer's set-intersection
+compilation. Literal replay checks \(122\) saved states, \(1421\) scheduled
+moves and \(27\) saved reorders; \(630\) sampled complete parent domains
+and mode features agree. All \(48\) updates and \(384\) choices reconstruct
+algebraically through an explicitly frozen, source-hashed audit helper.
+Two finite-work base-path controls agree with r20. Nine changed records reject;
+all \(70\) completed fixed/movable patches pass polygon non-overlap.
+Random sampling and every abandoned branch are not independently replayed.
+No exhaustive negative tree or plane certificate is exported.
+
+All \(228\) research tests pass in \(78.320\) seconds. Eleven new controls
+cover the exhaustive single-point interval law, every permutation of a small
+cluster under several admissible inputs, all member incidences, forced-member
+ordering, complete domains at every visited test branch, exact parent
+preservation, global dead precedence, unknown cutoffs, seeded zero-policy
+equivalence, preference-only learning and distinct authored families. The
+artifact binds every test source and the full suite log. The visual report
+compares one observed trace with its parametric bounds and highlights actual
+reordered members in saved patches. Harder targets, useful learned productions
+and failure markings, cheaper indices, boundary faithfulness, Penrose
+continuation, compatible infinite coverage and the full proof-checker port
+remain active. A stationary substitution remains optional.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_conditional_clusters.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_conditional_clusters.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'

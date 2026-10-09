@@ -10,13 +10,61 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,uniformData,binaryData,computationData,frontierData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,uniformData,binaryData,computationData,frontierData,conditionalData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>frontierData?.semantic_tests?.passed??computationData?.semantic_tests?.passed??binaryData?.semantic_tests?.passed??uniformData?.semantic_tests?.passed??fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>conditionalData?.semantic_tests?.passed??frontierData?.semantic_tests?.passed??computationData?.semantic_tests?.passed??binaryData?.semantic_tests?.passed??uniformData?.semantic_tests?.passed??fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
 const uniformPrograms=()=>uniformData.source_controls.concat(uniformData.serialized_components,uniformData.operation_cases);
 const uniformCellColor=s=>Array.isArray(s)?'#c76b3d':s==='B'?'#f4f1e9':s==='0'?'#91b8a1':s==='1'?'#557c92':s==='p'?'#dfd2a0':['L','#','|','$','P'].includes(s)?'#a4b3a2':['a','b','c','d','e','f','g','H','R',',',';'].includes(s)?'#bccbd1':'#a889b0';
 function uniformTableRow(id,values){
   const row=document.createElement('tr');for(const v of values){const td=document.createElement('td');td.textContent=v;row.append(td);}$(id).append(row);
+}
+const conditionalLabels={'base':'Base','trace-fixed':'Exact trace · fixed order','trace-adaptive':'Exact trace · adaptive order','interval-fixed':'Capacity bounds · fixed order','interval-adaptive':'Capacity bounds · adaptive order','interval-uniform':'Capacity bounds · uniform controller','interval-RL':'Capacity bounds · learned controller'};
+function conditionalInterfaceView(){
+  const name=$('conditional-interface').value,r=responseData.library.nodes.find(r=>r.identity===name),i=conditionalData.interfaces.find(i=>i.identity===name);
+  drawResponseTrace($('conditional-trace'),r,'incoming');drawResponseTrace($('conditional-upper'),{...r,upper:i.upper},'upper');
+  $('conditional-upper').querySelectorAll('circle title').forEach((title,j)=>{title.textContent='Support point '+(j+1)+'; maximum incoming occupancy '+i.upper[j][1]+' integer units out of twelve.';});
+  $('conditional-interface-caption').textContent='The same '+r.sequence.length+'-turtle response, level '+r.level+', has '+r.incoming.length+' positive-support points. Left: one exact donor input. Right: each number is the maximum incoming occupancy, in integer twelfths; every integer from zero through that bound is allowed. White zero bounds require zero input. These are capacity preconditions, not learned marking values. All constituent permutations are locally capacity-legal under the bounds; the global scheduler may still interrupt.';
+}
+function conditionalPosedMember(member,pose){
+  const [o,p]=member,[g,tr]=pose,a=syms[g],b=syms[o],perm=a.p.map(i=>b.p[i]);
+  const q=syms.findIndex(s=>s.s===a.s*b.s&&s.p.every((x,i)=>x===perm[i]));
+  return ['base',q,a.p.map((i,j)=>a.s*p[i]+tr[j])];
+}
+function conditionalPath(r){
+  let remaining=[],name='',reordered=0;const flags=[];
+  for(const s of r.execution){
+    if(s.response==='singleton'){remaining=[];name='';flags.push(false);continue;}
+    const key=JSON.stringify(s.placement);
+    if(s.proposal_offset===0){
+      const template=responseData.library.nodes.find(t=>t.identity===s.response),members=template.sequence.map(k=>JSON.stringify(conditionalPosedMember(k,s.proposal_pose)));
+      remaining=[key,...members.filter(k=>k!==key)];name=s.response;
+    }
+    const changed=name===s.response&&remaining[0]!==key;flags.push(changed);reordered+=Number(changed);remaining=remaining.filter(k=>k!==key);
+  }
+  return {flags,reordered};
+}
+function conditionalPatch(reset=false){
+  const d=conditionalData,b=d.problems.find(b=>b.identity===$('conditional-problem').value),r=d.evaluation.find(r=>r.problem===b.identity&&r.lane===$('conditional-lane').value&&r.replica===Number($('conditional-replica').value));
+  if(reset){$('conditional-step').max=r.execution.length;$('conditional-step').value=r.execution.length;}
+  const n=Number($('conditional-step').value),path=conditionalPath(r),steps=r.execution.slice(0,n),fills=steps.map((s,i)=>path.flags[i]?'#925e82':s.response==='singleton'?'#6d9c83':s.proposal_size<=4?'#c76b3d':'#347999');
+  drawPatch($('conditional-patch'),b.owned.concat(r.state.placements.slice(0,n).map(([,o,tr])=>[o,tr])),{points:b.required,width:850,height:460,fills:b.owned.map(()=> '#adb7ad').concat(fills)});$('conditional-step-value').textContent=n;
+  $('conditional-patch-caption').textContent=b.identity+' · '+conditionalLabels[r.lane]+' · replica '+(r.replica+1)+': '+r.status+'. '+n+' / '+r.execution.length+' saved scheduled moves. Green is singleton; orange/blue are compact/larger response constituents; purple marks '+path.flags.slice(0,n).filter(Boolean).length+' moves taken ahead of the pending fixed list. Amber dots are required points and grey turtles are fixed exterior. Request '+r.seconds.toFixed(3)+' s, '+r.attempted_base_placements+' explored base moves, '+(r.stats.reordered_constituents??0)+' explored reorders.'+(b.identity==='conditional-annulus'?' The annulus interior permits placements because it has no obligations.':'');
+}
+function conditionalResults(){
+  const d=conditionalData,a=d.independent_audit,lanes=d.configuration.lanes,rows=l=>d.evaluation.filter(r=>r.lane===l),total=l=>rows(l).reduce((s,r)=>s+r.seconds,0),count=l=>rows(l).filter(r=>r.status==='finite_exact_region').length;
+  $('conditional-finding').textContent='All seven lanes complete all eight new fixed requests. Exact-trace adaptive ordering takes '+total('trace-adaptive').toFixed(3)+' s total; capacity-bound adaptive '+total('interval-adaptive').toFixed(3)+' s; learned capacity-bound control '+total('interval-RL').toFixed(3)+' s; base '+total('base').toFixed(3)+' s. The learned policy now executes clusters and reorders constituents, but broader interfaces do not establish a general speed advantage.';
+  for(const l of lanes){const rs=rows(l),events=rs.flatMap(r=>r.response_events);uniformTableRow('conditional-benchmark',[conditionalLabels[l],count(l)+' / '+rs.length,total(l).toFixed(3),rs.reduce((s,r)=>s+r.attempted_base_placements,0).toLocaleString(),rs.reduce((s,r)=>s+(r.stats.explored_response_constituents??0),0),rs.reduce((s,r)=>s+(r.stats.reordered_constituents??0),0),events.length+' / '+events.filter(e=>e.stop==='complete').length]);}
+  $('conditional-comparison').textContent='Adaptive versus fixed order: exact traces '+total('trace-adaptive').toFixed(3)+' versus '+total('trace-fixed').toFixed(3)+' s; capacity bounds '+total('interval-adaptive').toFixed(3)+' versus '+total('interval-fixed').toFixed(3)+' s. The local permutation law is exact, while these small timing differences are engineering observations on eight requests. Input broadening offers many more clusters, mostly interrupted after a short prefix. All request sets complete equally here; times exclude separately charged pose compilation and training.';
+  const learned=rows('interval-RL'),modes=['base','small','hierarchy'].map(m=>learned.reduce((s,r)=>s+(r.stats['mode:'+m]??0),0));
+  $('conditional-policy').textContent='The fresh learned controller chooses base / compact / hierarchy '+modes.join(' / ')+' times. It explores '+learned.reduce((s,r)=>s+(r.stats.explored_response_constituents??0),0)+' response constituents, including '+learned.reduce((s,r)=>s+(r.stats.reordered_constituents??0),0)+' reorders. Its '+total('interval-RL').toFixed(3)+' s is close to base and slower than the exact-trace controls. Training costs '+d.training.seconds.toFixed(3)+' s separately; this does not establish an end-to-end RL benefit.';
+  const records=new Map(responseData.library.nodes.map(r=>[r.identity,r]));$('conditional-interface').replaceChildren(...responseData.library.selected.map((name,j)=>choice(name,'Response '+(j+1)+' · '+records.get(name).sequence.length+' turtles · level '+records.get(name).level)));
+  $('conditional-interface').value=[...responseData.library.selected].sort((x,y)=>records.get(y).sequence.length-records.get(x).sequence.length||x.localeCompare(y))[0];$('conditional-interface').addEventListener('change',conditionalInterfaceView);conditionalInterfaceView();
+  $('conditional-problem').replaceChildren(...d.problems.map(b=>choice(b.identity,b.identity)));$('conditional-lane').replaceChildren(...lanes.map(l=>choice(l,conditionalLabels[l])));
+  const view=d.evaluation.filter(r=>r.lane==='interval-RL').sort((x,y)=>conditionalPath(y).reordered-conditionalPath(x).reordered)[0];$('conditional-problem').value=view.problem;$('conditional-lane').value=view.lane;$('conditional-replica').value=view.replica;
+  ['conditional-problem','conditional-lane','conditional-replica'].forEach(id=>$(id).addEventListener('change',()=>conditionalPatch(true)));$('conditional-step').addEventListener('input',()=>conditionalPatch());conditionalPatch(true);
+  for(const l of lanes){const rs=d.movable_evaluation.filter(r=>r.lane===l);uniformTableRow('conditional-moving',[conditionalLabels[l],rs.filter(r=>r.status==='finite_exact_movable_region').length+' / '+rs.length,rs.reduce((s,r)=>s+r.attempts.length,0),rs.reduce((s,r)=>s+r.seconds,0).toFixed(3)]);}
+  $('conditional-cost').textContent='Sequential process '+d.total_seconds.toFixed(3)+' s, peak '+(d.peak_process_memory_bytes/1048576).toFixed(2)+' MiB. Envelope inventory '+d.inventory.seconds.toFixed(3)+' s; complete sampled-library pose compilation '+d.atlas.seconds.toFixed(3)+' s for '+d.atlas.placements.toLocaleString()+' poses and '+d.atlas.member_incidences.toLocaleString()+' member incidences. Fresh training '+d.training.seconds.toFixed(3)+' s, '+d.training.episodes.filter(r=>r.status==='finite_exact_region').length+' / '+d.training.episodes.length+' completed rollouts. Earlier donor/mining work is explicitly reused. The near-gigabyte process peak makes memory cost material. Independent audit '+a.seconds.toFixed(3)+' s separately; no audit or tests run beside the timed stage.';
+  $('conditional-audit').textContent='Independent audit checks '+a.conditional_interfaces+' interval interfaces, '+a.composition_laws+' composition laws, all '+a.compiled_cluster_poses.toLocaleString()+' compiled poses and '+a.compiled_member_incidences.toLocaleString()+' incidences. '+a.states+' saved states and '+a.scheduled_moves.toLocaleString()+' scheduled moves replay, with '+a.saved_reordered_constituents+' saved reorders; '+a.sampled_complete_domains+' sampled complete parent domains agree. All '+a.policy_updates+' policy updates and '+a.policy_choices+' choices reconstruct algebraically; '+a.tampered_records_rejected+' changed records reject. '+a.geometry.evaluation_runs.length+' complete evaluation/movable patches pass polygon non-overlap. '+suiteTests()+' semantic tests pass. No learned marking, exhaustive negative tree or plane certificate is exported.';
 }
 const frontierLabels={'legacy-base':'Earlier base','legacy-hierarchy':'Earlier hierarchy','unique-base':'Unique base','unique-small':'Unique compact responses','unique-hierarchy':'Unique full hierarchy','frontier-zero':'Uniform frontier controller','frontier-RL':'Learned frontier + ordering'};
 function frontierView(reset=false){
@@ -387,7 +435,7 @@ function failureStageView(){
 async function loadFailureStage(){
   const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
   try{
-    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r20.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r21.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
     if(ticket===failureRequest)failureStageView();
   }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
 }
@@ -543,7 +591,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r20.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r21.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -1101,64 +1149,68 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const frontierResponse=await fetch('frontier-responses-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const conditionalResponse=await fetch('conditional-clusters-001.json?v=20261009-r21.1',{cache:'no-cache'});
+    if(!conditionalResponse.ok)throw new Error('Conditional cluster snapshot returned '+conditionalResponse.status);
+    conditionalData=await conditionalResponse.json();
+    if(!conditionalData.independent_audit||!conditionalData.semantic_tests)throw new Error('Conditional cluster replay or tests are pending.');
+    const frontierResponse=await fetch('frontier-responses-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!frontierResponse.ok)throw new Error('Current-frontier snapshot returned '+frontierResponse.status);
     frontierData=await frontierResponse.json();
     if(!frontierData.independent_audit||!frontierData.semantic_tests)throw new Error('Current-frontier replay or tests are pending.');
     frontierResults();
-    const computationResponse=await fetch('computation-blocks-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const computationResponse=await fetch('computation-blocks-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!computationResponse.ok)throw new Error('Computation response data is missing.');
     computationData=await computationResponse.json();
     if(!computationData.independent_audit||!computationData.semantic_tests)throw new Error('Computation response replay or tests are pending.');
-    const binaryResponse=await fetch('binary-machine-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const binaryResponse=await fetch('binary-machine-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!binaryResponse.ok)throw new Error('Compact interpreter snapshot unavailable.');
     binaryData=await binaryResponse.json();
     if(!binaryData.independent_audit||!binaryData.semantic_tests)throw new Error('Compact interpreter replay or tests are pending.');
     binaryResults();computationResults();
-    const uniformResponse=await fetch('uniform-machine-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const uniformResponse=await fetch('uniform-machine-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!uniformResponse.ok)throw new Error('Literal interpreter snapshot unavailable.');
     uniformData=await uniformResponse.json();
     if(!uniformData.independent_audit||!uniformData.semantic_tests)throw new Error('Literal interpreter replay or tests are pending.');
     uniformResults();
-    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!fixedResponse.ok)throw new Error('Fixed checker snapshot could not be loaded.');
     fixedKernelData=await fixedResponse.json();
     if(!fixedKernelData.independent_audit||!fixedKernelData.semantic_tests)throw new Error('Fixed checker replay or tests are pending.');
     fixedKernelResults();
-    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r20.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r20.1',{cache:'no-cache'})]);
+    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r21.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r21.1',{cache:'no-cache'})]);
     if(responseSnapshots.some(r=>!r.ok))throw new Error('Boundary response snapshots could not be loaded.');
     [responseData,resolutionData]=await Promise.all(responseSnapshots.map(r=>r.json()));
     if(!responseData.independent_audit||!resolutionData.independent_audit||!responseData.semantic_tests)throw new Error('Boundary response replay or tests are pending.');
-    responseResults();
-    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r20.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r20.1',{cache:'no-cache'})]);
+    responseResults();conditionalResults();
+    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r21.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r21.1',{cache:'no-cache'})]);
     if(bridgeResponses.some(r=>!r.ok))throw new Error('Hierarchy proof snapshots could not be loaded.');
     [bridgeData,bridgeControlData]=await Promise.all(bridgeResponses.map(r=>r.json()));
     if(!bridgeData.independent_audit||!bridgeData.semantic_tests)throw new Error('Hierarchy proof replay or tests are pending.');
     bridgeResults();
-    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
     failureData=await failureResponse.json();
     if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
     failureResults();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -1171,46 +1223,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r20.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r20.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r20.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r20.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r21.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r20.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r21.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Current-frontier controls and computation responses checked · ${suiteTests()} semantic tests pass · uniform control beats the learned policy on this batch; general acceleration, the logical checker port and plane coverage remain open.`;
+    $("load-status").textContent=`Conditional cluster interfaces and scheduler-adaptive orders checked · ${suiteTests()} semantic tests pass · exact-trace control leads on new shapes; general acceleration, useful markings, the logical checker port and plane coverage remain open.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});
