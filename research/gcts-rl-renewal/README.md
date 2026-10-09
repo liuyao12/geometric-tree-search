@@ -1752,3 +1752,126 @@ not yet geometric tiles or a new GCTS elimination channel.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_serialized_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_serialized_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+
+## 17. One literal interpreter, programs as data and source-machine simulation
+
+`uniform_stack_machine.py` constructs one literal tape machine without any
+program or input argument. Its exported table has \(69\) states, \(40\)
+tape symbols and \(1208\) transitions. All saved controls have the same
+table hash. Program records, unary addresses and two binary stacks are tape
+data. The runner executes literal table lookups, writes and head moves;
+decoding instruction checkpoints is observation and does not select a
+transition. The existing Wang compiler represents the complete fixed
+inventory of \(10892800\) local triple types symbolically.
+
+`stack_program.py` supplies a separate operational reference and general
+finite-Turing-machine translation. Instructions are four bit pushes, two
+pops with empty/zero/one branches, a jump and two terminal commands. Addresses
+are natural numbers. Executing an address outside the program rejects;
+unreachable dangling addresses are legal. Every record must have valid
+grammar, including unused records. Invalid syntax rejects; valid execution
+that exhausts stack capacity or steps returns unknown.
+
+The literal tape begins with two blanks, the start head on `L`, program
+records, `#`, left bits and padding, `|`, right bits and padding, `$` and
+two blanks. Each stack has a contiguous bit prefix followed only by `P`.
+At every fetch, the program and all temporary address marks are restored.
+An active opcode selects a stack action and branch; its address cursor marks
+one unary unit while a target marker advances one complete record. Restoring
+the cursor and target yields precisely the next instruction boundary. A
+successful terminal erases the workspace and returns an accepting head on
+`L`, giving a fixed accepting row for the declared tape width. The saved
+checkpoint immediately before cleanup retains the final stack configuration.
+
+For a source alphabet \(\Gamma\), the translation uses
+\(w=\max(1,\lceil\log_2|\Gamma|\rceil)\) bits per symbol; blank is zero.
+At each source-state entry, both stack lengths are divisible by \(w\).
+The left top encodes the nearest symbol left of the head; the right top
+encodes the current symbol. Codes pop most significant first. Empty whole
+blocks read as blank, and unused codes reject. After reading the current
+symbol, a right move pushes the written symbol left; a stationary move
+pushes it right; a left move pushes it right, reads the left top and pushes
+that as the new right top. These cases preserve the entire relative source
+tape, with implicit blank tails. Intermediate bit prefixes are not source
+configurations. Induction on source steps gives an analytic correspondence
+argument. Each finite accepting source execution fits sufficiently large
+finite stack capacities and time. The fixed inventory thus has general
+computational expressiveness over the family of such finite boundaries;
+this is not a formally verified compiler theorem or an unrestricted
+checker port. A fixed capacity alone cannot simulate arbitrary executions.
+
+The sequential batch checks all \(225\) pairs of binary words through
+length three, \(21\) operation controls and \(8\) serialized-term byte
+comparisons. The latter perform equality only: they do not validate ASTs,
+signatures, substitution, schemas or inference. Five source tables cover
+right/left/stationary moves, extending blank tape, nonbinary symbol alphabets,
+undefined transitions and the earlier unary addition machine. Five malformed
+inputs include unused bad records and a padding hole. These are authored
+implementation controls, with no learned policy or theorem discovery.
+
+The addition translation has \(286\) instructions and \(56219\) program
+bytes. Its source execution and the full operational stack reference agree,
+but the literal interpreter remains unknown at \(5000000\) steps. Three
+smaller positive source controls complete; the undefined-transition control
+rejects. Unary address operands can make program size quadratic in the
+instruction count and repeated lookup expensive. Compact addressing and
+measured reusable operations are a practical gate before porting the full
+first-order checker. This batch is computational infrastructure, not a
+practical proof-search acceleration.
+
+Three authored Wang component problems use a clamped program, declared
+stack layout and accepting top; two permit one unknown bottom bit. Rotated
+lanes compare standard colors, analytic redundant neighbor point values,
+and an authored trajectory preference retaining all alternatives. Each lane
+has \(20000\) attempted placements and a cooperative \(4\)-second bound.
+Base search finishes none of the three within this budget. The other lanes
+each finish all three, giving six checked rectangles and \(34794\) point
+cells. Analytic neighbor values are not learned GCTS markings. Supplied
+trajectories are calibration controls, not learned proposals or evidence of
+RL superiority. Unknown searches have no negative proof.
+
+The unchanged symbolic engine maintains the complete center/candidate graph
+with implicit one-center reverse incidence, all color dependencies, global
+dead/forced precedence and exact trail rollback. All centers are initial
+generation-zero roots, so generation priority ties throughout; its spatial
+tie order is preserved. Tests check full domain restrictions and transaction
+fingerprints against this table. These specialized deterministic-computation
+rectangles preserve the earlier engine semantics; no turtle or Penrose
+engine, policy, markings or source-hashed earlier module is changed.
+
+`audit_uniform_machine.py` does not import the new instruction reference,
+translator, interpreter or generator. It independently parses records,
+executes the exported literal table, decodes each fetch and compares source
+configurations. It checks \(259\) runs and \(3093\) fetch boundaries, five
+raw grammar controls and twelve exhaustive finite symbol-domain restrictions.
+The full inventory count is derived analytically from disjoint head-position
+cases. Each accepting rectangle is independently bound to its external
+program, stack layout, bottom pattern and top before the frozen point checker
+and a separately implemented local transition check. Program, top, pattern,
+grid and instruction-checkpoint mutations reject. All six rectangles replay.
+The new audit and reused helpers are source-hashed; the main experiment also
+binds the source-checkpoint helpers it invokes as control assertions.
+
+The complete sequential process costs \(9.467\) seconds, peak \(83.89\)
+MiB, including the limited addition execution and all rectangle requests.
+Table construction costs \(0.485\) milliseconds. Independent replay costs
+\(5.267\) seconds separately and did not run beside the timed batch. All
+\(178\) research tests pass in \(58.869\) seconds, including twelve new
+tests for strict data, complete symbol domains, literal row correspondence,
+source configuration simulation, all instruction branches, immutable tables,
+cutoff semantics and rollback. Counts, raw timings, limits, traces, source
+tables and hashes are exported in `uniform-machine-001.json`.
+
+The visual report shows actual saved instruction boundaries and their stacks,
+decoded source configurations only at source-state entry addresses, and the
+literal tape rows recovered from checked Wang point certificates. A finite
+accepting computation rectangle is not a plane-tiling theorem. The complete
+serialized logical checker remains in Python; its instruction-language port,
+schema implementation, internal geometric theories, formally checked
+soundness/simulation, and learned proof blocks remain open. Practical tiling
+research also still needs current-boundary resolution and avoidance of
+repeated stopped prefixes. Substitution remains optional.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_uniform_machine.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_uniform_machine.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'

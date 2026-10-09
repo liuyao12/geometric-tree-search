@@ -10,9 +10,84 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,uniformData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>uniformData?.semantic_tests?.passed??fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const uniformPrograms=()=>uniformData.source_controls.concat(uniformData.serialized_components,uniformData.operation_cases);
+const uniformCellColor=s=>Array.isArray(s)?'#c76b3d':s==='B'?'#f4f1e9':s==='0'?'#91b8a1':s==='1'?'#557c92':s==='p'?'#dfd2a0':['L','#','|','$','P'].includes(s)?'#a4b3a2':['a','b','c','d','e','f','g','H','R',',',';'].includes(s)?'#bccbd1':'#a889b0';
+function uniformTableRow(id,values){
+  const row=document.createElement('tr');for(const v of values){const td=document.createElement('td');td.textContent=v;row.append(td);}$(id).append(row);
+}
+function uniformStackView(){
+  const item=uniformPrograms()[Number($('uniform-program').value)],index=Number($('uniform-step').value),b=item.result.boundaries[index],svg=$('uniform-stacks');
+  svg.replaceChildren();$('uniform-step-value').textContent=(index+1)+' / '+item.result.boundaries.length;
+  const records=item.code.split(';').slice(0,-1),record=records[b.pc]===undefined?'outside program':records[b.pc]+';';
+  svgText(svg,30,32,'FETCH '+index+'   |   pc '+b.pc+'   |   literal step '+b.tm_step.toLocaleString(),{'font-size':18,fill:'#263d31'});
+  svgText(svg,30,57,'Program bytes are restored at every displayed boundary. The transition-table hash is constant.',{'font-size':13});
+  if(item.translation){
+    const t=item.translation,source=Object.entries(t.entries).find(([,pc])=>pc===b.pc),aligned=b.left.length%t.width===0&&b.right.length%t.width===0;
+    if(source&&aligned){
+      const decode=bits=>{const top=bits.slice().reverse(),out=[];for(let i=0;i<top.length;i+=t.width)out.push(parseInt(top.slice(i,i+t.width).join(''),2));return out;};
+      const l=decode(b.left),r=decode(b.right),values=new Map([[0,t.alphabet[r[0]??0]]]);
+      l.forEach((a,i)=>{if(a)values.set(-i-1,t.alphabet[a]);});r.forEach((a,i)=>{if(a)values.set(i,t.alphabet[a]);});
+      const positions=[...values.keys()],minimum=Math.min(-2,...positions),maximum=Math.max(2,...positions),size=Math.min(60,900/(maximum-minimum+1)),start=(1100-size*(maximum-minimum+1))/2;
+      svgText(svg,30,83,'SOURCE STATE '+source[0]+'   |   decoded symbols at source entry (positions relative to head)',{'font-size':13,fill:'#347999'});
+      for(let p=minimum;p<=maximum;p++){
+        const x=start+(p-minimum)*size;svg.append(el('rect',{x,y:99,width:size-2,height:42,rx:3,fill:p===0?'#f1dccb':'#e8eee4',stroke:'#93a78c'}));
+        svgText(svg,x+(size-2)/2,125,values.get(p)??t.alphabet[0],{'font-size':16,'text-anchor':'middle',fill:'#263d31'});
+        svgText(svg,x+(size-2)/2,157,String(p),{'text-anchor':'middle','font-size':11});
+      }
+    }else svgText(svg,30,112,'Inside the source-symbol bit operations. This boundary is not a source configuration.',{'font-size':15,fill:'#925e82'});
+  }else svgText(svg,30,112,item.serialized_left_term?'Byte-equality component; no term parser or inference runs here.':'An authored instruction control; no source-machine state is attached.',{'font-size':15,fill:'#347999'});
+  [['left',205],['right',280]].forEach(([name,y])=>{
+    const bits=b[name],visible=bits.slice(-48),size=17,start=220;
+    svgText(svg,30,y+23,name.toUpperCase()+' STACK',{'font-size':15,fill:'#263d31'});
+    svgText(svg,30,y+44,bits.length+' bits; top at right',{'font-size':12});
+    if(!bits.length)svgText(svg,start,y+24,'empty',{'font-size':16});
+    visible.forEach((bit,i)=>{svg.append(el('rect',{x:start+i*size,y,width:15,height:35,rx:2,fill:bit?'#557c92':'#91b8a1'}));svgText(svg,start+i*size+7.5,y+23,String(bit),{'text-anchor':'middle','font-size':13,fill:'#fff'});});
+    if(bits.length>visible.length)svgText(svg,start,y+52,(bits.length-visible.length)+' lower bits omitted; showing the actual top suffix.',{'font-size':12});
+  });
+  $('uniform-instruction').textContent='Current encoded record: '+record.slice(0,160)+(record.length>160?' … (record excerpt)':'')+'\nWhole program: '+records.length+' records, '+item.code.length.toLocaleString()+' bytes. Table SHA-256: '+uniformData.machine_sha256;
+  $('uniform-stack-caption').textContent=item.name+': literal '+item.result.status+' after '+item.result.steps.toLocaleString()+' steps. '+item.result.boundaries.length+' observed instruction boundaries. '+(item.source?'The full stack reference matches every source-state configuration; the literal run matches the recorded prefix.':'Every displayed boundary independently matches instruction semantics.')+(item.result.status.startsWith('unknown')?' This resource cutoff carries no rejection certificate.':'');
+}
+function uniformProgramChoice(){
+  const item=uniformPrograms()[Number($('uniform-program').value)];$('uniform-step').max=item.result.boundaries.length-1;$('uniform-step').value=0;uniformStackView();
+}
+let uniformSelectedRectangle,uniformSelectedRows;
+function uniformRectangleChoice(){
+  uniformSelectedRectangle=uniformData.wang_runs.filter(r=>r.verified)[Number($('uniform-rectangle').value)];
+  const c=uniformSelectedRectangle.certificate;
+  uniformSelectedRows=[c.initial.map(i=>c.symbols[i])].concat(c.grid.map(row=>row.map(i=>c.symbols[c.tile_types_used[i][3]])));
+  $('uniform-row').max=uniformSelectedRectangle.height;$('uniform-row').value=0;uniformRectangleView();
+}
+function uniformRectangleView(){
+  const r=uniformSelectedRectangle,rows=uniformSelectedRows,index=Number($('uniform-row').value),svg=$('uniform-wang'),sx=1040/r.width,sy=365/rows.length;
+  svg.replaceChildren();$('uniform-row-value').textContent=index+' / '+r.height;
+  svgText(svg,30,21,'Literal time descends. Each strip is a decoded tape row of the checked point certificate.',{'font-size':13});
+  rows.forEach((row,y)=>{
+    let x=0;while(x<row.length){const color=uniformCellColor(row[x]);let end=x+1;while(end<row.length&&uniformCellColor(row[end])===color)end++;
+      const rect=el('rect',{x:30+x*sx,y:35+y*sy,width:(end-x)*sx,height:sy+.1,fill:color});rect.append(el('title',{},'Literal row '+y+', tape cells '+x+' through '+(end-1)));svg.append(rect);x=end;
+    }
+  });
+  const selected=35+index*sy;svg.append(el('rect',{x:28,y:selected-.7,width:1044,height:Math.max(2,sy+1.4),fill:'none',stroke:'#263d31','stroke-width':1.5}));
+  const legend=[['Blank','#f4f1e9'],['Bits','#91b8a1'],['Program','#bccbd1'],['Unary address','#dfd2a0'],['Temporary mark','#a889b0'],['Head','#c76b3d']];
+  legend.forEach(([name,color],i)=>{const x=30+i*175;svg.append(el('rect',{x,y:420,width:13,height:13,fill:color,stroke:'#bbb'}));svgText(svg,x+20,431,name,{'font-size':12});});
+  const row=rows[index],head=row.findIndex(Array.isArray),headValue=row[head];
+  $('uniform-tape-row').textContent=row.map(s=>Array.isArray(s)?'['+s[1]+' / '+s[2]+']':s).join(' ');
+  $('uniform-rectangle-caption').textContent=r.problem+', '+r.lane+': '+r.width+' columns and '+r.height+' point-tile rows; '+(r.width*r.height).toLocaleString()+' checked cells. '+r.unknown_input_bits+' unknown bottom bits; program and accepting top externally clamped. Selected literal row '+index+(head>=0?' has head at cell '+head+' in state '+headValue[1]+'.':'.')+' The diagram shows tape values decoded from the certificate; each underlying tile also carries the equality colors checked by the audit.';
+}
+function uniformResults(){
+  const d=uniformData,a=d.independent_audit;
+  $('uniform-finding').textContent='The same '+d.machine.states.length+' states, '+d.machine.alphabet.length+' tape symbols and '+d.machine.transitions.length.toLocaleString()+' literal transitions serve every program. The complete symbolic inventory has '+d.inventory_count.toLocaleString()+' Wang types. Independent replay checks '+a.literal_runs+' runs and '+a.fetch_boundaries.toLocaleString()+' instruction boundaries. The full first-order checker has not yet been ported.';
+  uniformPrograms().forEach((r,i)=>{const option=document.createElement('option');option.value=i;option.textContent=r.name+' · '+r.result.status;$('uniform-program').append(option);});
+  $('uniform-program').value=1;uniformProgramChoice();$('uniform-program').addEventListener('change',uniformProgramChoice);$('uniform-step').addEventListener('input',uniformStackView);
+  d.source_controls.forEach(r=>uniformTableRow('uniform-source-table',[r.name,r.translation.program.length,r.code.length.toLocaleString(),r.result.steps.toLocaleString(),r.result.status]));
+  d.wang_runs.forEach(r=>uniformTableRow('uniform-wang-table',[r.problem,r.lane,r.verified?'Verified':'—',r.nodes.toLocaleString(),r.seconds.toFixed(3),r.status]));
+  d.wang_runs.filter(r=>r.verified).forEach((r,i)=>{const option=document.createElement('option');option.value=i;option.textContent=r.problem+' · '+r.lane;$('uniform-rectangle').append(option);});
+  $('uniform-rectangle').value=2;uniformRectangleChoice();$('uniform-rectangle').addEventListener('change',uniformRectangleChoice);$('uniform-row').addEventListener('input',uniformRectangleView);
+  $('uniform-cost').textContent='Complete sequential batch '+d.total_seconds.toFixed(3)+' s; table construction '+(d.build_seconds*1000).toFixed(3)+' ms; process peak '+(d.peak_process_memory_bytes/1048576).toFixed(2)+' MiB. Independent replay is a separate '+a.seconds.toFixed(3)+'-second cost. Base search completes none of the three component rectangles within 20,000 attempts; analytic neighbor values and supplied trajectories each complete all three. This is an authored calibration, with no learned-policy comparison.';
+  $('uniform-audit').textContent='Audit passed: '+d.equality_cases.length+' short-word equality cases, '+d.operation_cases.length+' operation controls, '+d.serialized_components.length+' byte components, '+a.source_controls+' source translations, '+a.raw_grammar_controls+' malformed inputs and '+a.symbolic_domain_checks+' exhaustive domain restrictions. '+a.checked_rectangles+' certificates contain '+a.point_cells.toLocaleString()+' independently checked point cells; '+a.tampered_certificates_rejected+' mutations reject. '+suiteTests()+' full research tests pass. Source, helper, table and test hashes are exported. No earlier source-hashed engine is changed.';
+}
 function fixedKernelCase(){
   const item=fixedKernelData.positive_cases[Number($('fixed-kernel-case').value)],d=JSON.parse(item.certificate);
   const svg=$('fixed-kernel-hierarchy');svg.replaceChildren();$('fixed-kernel-fragments').replaceChildren();
@@ -187,7 +262,7 @@ function failureStageView(){
 async function loadFailureStage(){
   const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
   try{
-    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r16.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r17.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
     if(ticket===failureRequest)failureStageView();
   }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
 }
@@ -343,7 +418,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r16.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r17.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -901,45 +976,50 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const uniformResponse=await fetch('uniform-machine-001.json?v=20261009-r17.1',{cache:'no-cache'});
+    if(!uniformResponse.ok)throw new Error('Literal interpreter snapshot unavailable.');
+    uniformData=await uniformResponse.json();
+    if(!uniformData.independent_audit||!uniformData.semantic_tests)throw new Error('Literal interpreter replay or tests are pending.');
+    uniformResults();
+    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!fixedResponse.ok)throw new Error('Fixed checker snapshot could not be loaded.');
     fixedKernelData=await fixedResponse.json();
     if(!fixedKernelData.independent_audit||!fixedKernelData.semantic_tests)throw new Error('Fixed checker replay or tests are pending.');
     fixedKernelResults();
-    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r16.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r16.1',{cache:'no-cache'})]);
+    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r17.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r17.1',{cache:'no-cache'})]);
     if(responseSnapshots.some(r=>!r.ok))throw new Error('Boundary response snapshots could not be loaded.');
     [responseData,resolutionData]=await Promise.all(responseSnapshots.map(r=>r.json()));
     if(!responseData.independent_audit||!resolutionData.independent_audit||!responseData.semantic_tests)throw new Error('Boundary response replay or tests are pending.');
     responseResults();
-    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r16.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r16.1',{cache:'no-cache'})]);
+    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r17.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r17.1',{cache:'no-cache'})]);
     if(bridgeResponses.some(r=>!r.ok))throw new Error('Hierarchy proof snapshots could not be loaded.');
     [bridgeData,bridgeControlData]=await Promise.all(bridgeResponses.map(r=>r.json()));
     if(!bridgeData.independent_audit||!bridgeData.semantic_tests)throw new Error('Hierarchy proof replay or tests are pending.');
     bridgeResults();
-    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
     failureData=await failureResponse.json();
     if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
     failureResults();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -952,46 +1032,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r16.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r16.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r16.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r16.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r17.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r16.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r17.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Fixed serialized proof checker, induction and proof blocks recorded · ${suiteTests()} semantic tests pass · evidence independently replayed; literal machine translation, learned proof discovery and base plane coverage remain open.`;
+    $("load-status").textContent=`One fixed literal interpreter and general source-machine translation recorded · ${suiteTests()} semantic tests pass · evidence independently replayed; the full logical checker port, practical learned search and base plane coverage remain open.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

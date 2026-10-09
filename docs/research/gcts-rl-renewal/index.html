@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r16.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r17.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r16.1"></script>
+  <script defer src="report.js?v=20261009-r17.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 16</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 17</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,41 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="uniform-machine-research">
+    <p class="eyebrow">ONE LITERAL INTERPRETER · PROGRAMS AS DATA · A COMPUTATIONAL BRIDGE</p><h2>Change the program. Keep the tiles.</h2>
+    <p>A new literal machine reads instructions and two binary stacks from its tape. Its alphabet and transition table are built once, without a problem, program, formula catalog or input. A general compiler translates a finite source Turing machine into instructions on that tape. Thus different computations use the same symbolic Wang tile inventory. This supplies a computational substrate for the proof system; the full serialized first-order checker below still needs porting.</p>
+    <div class="callout" id="uniform-finding">Loading the literal interpreter and independent replay…</div>
+    <div class="controls"><label>Saved literal run <select id="uniform-program"></select></label></div>
+    <div class="slider-row"><label for="uniform-step">Instruction boundary</label><input id="uniform-step" type="range" min="0" max="0" value="0"><output id="uniform-step-value">—</output></div>
+    <svg id="uniform-stacks" viewBox="0 0 1100 360" role="img" aria-label="Actual instruction boundary, binary stacks and decoded source tape when a source-state entry is reached"></svg>
+    <p id="uniform-stack-caption" class="caption"></p><pre><code id="uniform-instruction"></code></pre>
+    <details open><summary>The correspondence argument and its scope</summary>
+      <p>The instruction language has four bit pushes, two pops with empty/zero/one branches, an unconditional jump, accept and reject. Addresses are unary data. The literal interpreter first validates every instruction, including unreachable ones, and both stacks' bit-prefix/padding-suffix layout. At each fetch it has restored the program and all temporary address marks. A push or pop changes only its designated stack; the address cursor advances one instruction for each unary unit and restores the operand before the next fetch. An executed address outside the program rejects. A legal unused dangling address is permitted.</p>
+      <p>For a source alphabet \(\Gamma\), symbols use \(w=\max(1,\lceil\log_2|\Gamma|\rceil)\) bits, with blank encoded by zeros. At source-state entry addresses, both stack lengths are multiples of \(w\). The left stack's top is the nearest symbol left of the head; the right stack's top is the currently scanned symbol. Bit pops read most significant first. Reading an empty whole block yields blank, and an unused symbol code rejects.</p>
+      <p>After reading the current symbol, a right move pushes the written symbol onto the left stack. A stationary move pushes it back onto the right. A left move pushes the written symbol onto the right, reads the nearest left symbol and pushes that as the new scanned symbol. These cases preserve the decoded source configuration, including implicit blank tails. Induction on source steps gives an analytic simulation argument. Every finite accepting source run has finite stack usage and can fit sufficiently large declared capacities and time. This is a constructive universality argument with finite executable controls; the compiler and interpreter do not have a machine-checked correctness theorem.</p>
+      <p>The independent auditor reads the exported transition table directly, implements the instruction semantics separately, and compares every saved fetch. At source-state entries it compares the entire nonblank tape relative to the head and the state, rather than checking the final answer alone. Intermediate bit operations are not source configurations. Stack or time limits return unknown; rejection concerns the submitted computation and does not show a mathematical statement unprovable.</p>
+      <p>The two-stack simulation is established background; see the <a href="https://www.cse.iitb.ac.in/~supratik/courses/cs208/spr24/Lectures_1_to_38.pdf#page=128">IIT Bombay CS208 lecture manuscript, sections 9.7.2 and 9.8.1</a>. The source translation, fixed interpreter and evidence here are this repository's implementation.</p>
+    </details>
+    <h3 class="spaced-title">A practical cost gate appears immediately</h3>
+    <div class="table-scroll"><table><thead><tr><th>Source-machine control</th><th>Stack instructions</th><th>Program bytes</th><th>Literal steps</th><th>Literal result</th></tr></thead><tbody id="uniform-source-table"></tbody></table></div>
+    <p>The authored addition control has a complete source/stack simulation, but its literal run remains unknown at the step limit. Unary addresses expand its program substantially and repeatedly scan that representation. Abstract computational expressiveness is therefore insufficient for useful proof search. Compact addressing and measured reusable instruction or proof blocks are practical gates before porting the entire logical checker.</p>
+    <p>The byte-equality component also accepts equal serialized terms and rejects changed bytes. It does not parse their syntax, check the declared signature, substitute terms, recognize induction or validate an inference. These controls establish a data-processing component, not a literal first-order proof checker. No new policy is trained in this batch.</p>
+    <h3 class="spaced-title">The same inventory makes finite computation rectangles</h3>
+    <p>Three authored component problems clamp the tape program, stack layout and accepting top. Two allow one unknown bottom bit. All lanes use the same complete symbolic inventory and finite limits. The extra neighbor values are analytically redundant point markings already implied by Wang colors. The supplied-trace lane prefers an authored accepting trajectory, while retaining all base alternatives. It calibrates a possible proposal interface; it is not learned proof discovery.</p>
+    <div class="table-scroll"><table><thead><tr><th>Component</th><th>Lane</th><th>Checked rectangle</th><th>Attempts</th><th>Seconds</th><th>Result</th></tr></thead><tbody id="uniform-wang-table"></tbody></table></div>
+    <div class="controls"><label>Checked point certificate <select id="uniform-rectangle"></select></label></div>
+    <div class="slider-row"><label for="uniform-row">Literal tape row</label><input id="uniform-row" type="range" min="0" max="0" value="0"><output id="uniform-row-value">—</output></div>
+    <svg id="uniform-wang" viewBox="0 0 1100 480" role="img" aria-label="Actual symbols in a checked Wang computation, with time descending and the selected tape row highlighted"></svg>
+    <p id="uniform-rectangle-caption" class="caption"></p><pre><code id="uniform-tape-row"></code></pre>
+    <details><summary>Algorithm conformance and the proof-search gap</summary>
+      <p>The existing Wang point engine is unchanged. Every placement has unit occupancy at its required center; equality marks carry edge colors. Candidate domains are complete symbolic Cartesian products, not a sample of tile types. All centers start at root generation zero. Global dead ends precede forced moves, then branching; reverse incidence and marking dependencies update the entire affected graph. Transactions restore selections, marks, domains and generations exactly. Finite independent domain enumeration and transaction tests check these properties for the new table.</p>
+      <p>Each checked rectangle enforces the literal local transition at every cell, the external program/input pattern, blank side boundaries and accepting top. The auditor reconstructs those bindings and rejects altered programs, boundaries, cells and instruction checkpoints. A finite accepting rectangle is a computation certificate. It is not a plane-tiling theorem. Unknown searches carry no negative certificate. The complete inventory is symbolic; it is not materialized in memory.</p>
+      <p>The fixed host checker remains the implementation of formulas, inference, induction and exact logical blocks. Its translation into this instruction language, a formally checked simulation theorem, internal geometry theories and learned proof-block proposals remain open. In parallel, the practical tiling lane still needs current-boundary resolution and elimination of repeated stopped prefixes. Neither universal computation nor these component controls establish a useful GCTS or RL speed advantage.</p>
+    </details>
+    <p id="uniform-cost" class="caption"></p><p id="uniform-audit" class="caption"></p>
+    <p class="small"><a href="uniform-machine-001.json">Inspect the fixed table, every stack trace, source translation and point certificate ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/uniform_stack_machine.py">Read the literal interpreter ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/stack_program.py">Read the general source translation ↗</a></p>
+  </section>
 
   <section class="panel" id="serialized-kernel-research">
     <p class="eyebrow">FIXED CERTIFICATE CHECKER · INFINITE SCHEMA · PROOF BLOCKS</p><h2>A fixed checker can read the proof.</h2>
@@ -502,7 +537,7 @@
       <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Fresh boundary response operations now have exact descending composition maps. Next: learn useful current-boundary decisions and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Response atlas</span><div><h3>Practical boundary solving and plane coverage</h3><p>Exact local input/output responses compose and retain complete singleton fallback. Compact proposals solve some additional fixed targets; their overhead and both new RL controls show no reliable advantage. Current-boundary resolution, learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Fixed host checker</span><div><h3>Build checkable proof search</h3><p>Generic word proofs and finite first-order catalogs compile to accepting Wang rectangles. A fixed serialized host checker now checks an infinite induction schema and hierarchical proof blocks with pinned theory and target. Next: translate this checker into a literal machine, internalize geometry, learn useful proof blocks and search harder statements.</p></div></li>
+      <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Its unary addressing is too costly in the addition control. Next: compact addressing, port the full checker, internalize geometry, learn useful proof blocks and search harder statements.</p></div></li>
     </ol>
   </section>
 
@@ -526,6 +561,8 @@ python3 research/gcts-rl-renewal/run_kernel_machine.py
 python3 research/gcts-rl-renewal/audit_kernel_machine.py
 python3 research/gcts-rl-renewal/run_serialized_kernel.py
 python3 research/gcts-rl-renewal/audit_serialized_kernel.py
+python3 research/gcts-rl-renewal/run_uniform_machine.py
+python3 research/gcts-rl-renewal/audit_uniform_machine.py
 python3 research/gcts-rl-renewal/run_regions.py
 python3 research/gcts-rl-renewal/audit_regions.py
 python3 research/gcts-rl-renewal/run_cluster_marking.py
