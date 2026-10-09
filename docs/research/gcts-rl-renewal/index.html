@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r18.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r19.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r18.1"></script>
+  <script defer src="report.js?v=20261009-r19.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 18</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 19</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,36 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="computation-block-research">
+    <p class="eyebrow">COMPUTATION RESPONSES · CHECKED COMPOSITION · IMPLICIT IDENTITY REGIONS</p><h2>Verify the active part. Preserve the frame.</h2>
+    <p>A computation block is a local discrete response: it declares the incoming state and read constraints, its writes, the head displacement and the outgoing state. Exact children compose into a larger response. Unchanged tape regions stay implicit. This implements a finite certificate calculus on the preceding fixed interpreter, while practical learned proof search and the full logical checker port remain open.</p>
+    <div class="callout" id="computation-finding">Loading compressed certificates and the independent frame checks…</div>
+    <div class="controls"><label>Computation response <select id="computation-case"></select></label><label>Observed proof block <select id="computation-node"></select></label></div>
+    <svg id="computation-tree" viewBox="0 0 1100 345" role="img" aria-label="Actual descending dependencies of the selected computation proof block"></svg>
+    <svg id="computation-interface" viewBox="0 0 1100 180" role="img" aria-label="Actual symbolic input constraints and constant writes on the selected local tape response"></svg>
+    <p id="computation-caption" class="caption"></p><pre><code id="computation-binding"></code></pre>
+    <details open><summary>What the interface proves</summary>
+      <p>Let \(a_p\) be the bare tape symbol at the relative cell \(p\). Each block has an entry state, exit state, head displacement, literal duration, input sets and constant writes:</p>
+      \[B:\quad (q,h;\ a_p\in P_B(p))\longmapsto(q',h+\delta_B;\ a'_p),\qquad a'_p=\begin{cases}W_B(p)&p\in\operatorname{dom}W_B,\\a_p&\text{otherwise}.\end{cases}\]
+      <p>Missing input conditions leave that cell unrestricted; a symbol whose index is zero remains a real write. A parent requires the first exit state to equal the next entry state and translates the next interface by the first displacement. Where an earlier write determines a later read, its symbol must belong to the later input set. Elsewhere, input sets intersect. Empty intersections reject the composition. The entire head excursion is retained, so a child cannot leave the declared finite frame and return unnoticed. All declarations are checked, including unused ones; references descend and cycles reject.</p>
+      <p>Primitive leaves cite one literal transition. A copy-sweep leaf uses the table consequence</p>
+      \[\delta(q,a)=(q,a,d)\quad(a\in S),\qquad d\in\{-1,1\},\]
+      <p>and requires every visited symbol to belong to \(S\). It preserves those symbols and ends at \(h+nd\) after \(n\) steps. These are analytically proved table laws, not learned markings. The input sets are disjunctive symbolic preconditions. An instantiated boundary still has exact tape symbols and Wang point equality values.</p>
+      <p>The headless radius-one law is \(F(a,b,c)=b\). A single-head step changes only its local neighborhood; the checked operational transition supplies the three affected Wang cells. Thus every accepted block has an implicit expansion into the unchanged base Wang inventory, with unit occupancy at every required center and equality on every shared mark. Horizontal and vertical agreement follow from the reconstructed rows. The two outer columns remain blank, and the head stays inside them. This is an analytic composition argument with independent finite checks; the implementation has no machine-checked soundness theorem.</p>
+    </details>
+    <h3 class="spaced-title">Fresh parsing and checking of the same supplied computations</h3>
+    <p>Three replicas rotate literal replay, a flat list of proved copy sweeps and transitions, and a descending block DAG. All bind the same fixed table, complete initial and final tapes, literal duration, terminal status and resource limit. Times include parsing each serialized request and checking it afresh. The short literal request carries no expanded tiling witness and pays for literal execution. This is certificate verification, without a new search policy, learned marking or theorem discovery.</p>
+    <div class="table-scroll"><table><thead><tr><th>Source control</th><th>Checker</th><th>Request bytes</th><th>Represented steps</th><th>Median seconds</th></tr></thead><tbody id="computation-benchmark"></tbody></table></div>
+    <p id="computation-comparison"></p>
+    <p>The authored addition control's implicit rectangle has \(1850\times7223231=13362977350\) required centers. That dense expansion is not materialized. Its compressed accepting certificate is checked through the response calculus and the finite Wang row laws. Three smaller responses are also fully expanded and checked as ordinary point certificates. A checked prefix ending at a time, workspace, stack or frame limit remains unknown and supplies no accepting computation proof.</p>
+    <details><summary>Scope, trust and the next research gate</summary>
+      <p>The preceding artifact supplies every input and source table explicitly, with byte and source bindings. The checker derives interfaces from proof bodies; it does not accept an asserted interface as an axiom. A separately implemented auditor uses cellwise symbolic substitution, checks the same full input/output boundaries, replays each literal computation, expands the small certificates into points and rejects altered bodies, interfaces, inputs, outputs, durations, tables and unused declarations. The audit's own source and frozen helpers are exported.</p>
+      <p>This is a specialized computation-certificate format. It changes neither the complete candidate graph, its global dead/forced precedence, root generations nor rollback. No GCTS search runs on the compressed DAG in this batch. The demonstrated checking benefit of scan laws does not establish tiling-search or RL acceleration. Shared proof interfaces provide a concrete place for future cluster proposals and failure constraints, but their useful discovery remains to be learned. The next gates are selective block reuse, the serialized logical checker port and current-boundary resolution for turtle tiling. Penrose continuation and plane constructions remain active.</p>
+    </details>
+    <p id="computation-cost" class="caption"></p><p id="computation-audit" class="caption"></p>
+    <p class="small"><a href="computation-blocks-001.json">Inspect every response, proof body, frame bound, timing and source binding ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/computation_blocks.py">Read the response calculus ↗</a></p>
+  </section>
 
   <section class="panel" id="compact-machine-research">
     <p class="eyebrow">COMPACT PROGRAMS · LOCAL JUMPS · A MEASURED COMPUTATIONAL GATE</p><h2>Reach the next instruction locally.</h2>
@@ -51,7 +81,7 @@
     <h3 class="spaced-title">Checked point rectangles for the new table</h3>
     <div class="table-scroll"><table><thead><tr><th>Component</th><th>Lane</th><th>Point cells required</th><th>Attempts</th><th>Seconds</th><th>Result</th></tr></thead><tbody id="binary-wang-table"></tbody></table></div>
     <p>Programs and accepting tops are externally clamped; two component problems leave one input bit unknown. Analytic redundant neighbor values and supplied authored trajectories are comparison controls. All base alternatives remain in the unchanged symbolic Wang graph, with global dead/forced precedence, root generations and exact rollback. Different interpreter tables and tape lengths change these rectangle problems; their times do not establish a GCTS or RL speed comparison across representations.</p>
-    <p>The authored arithmetic control verifies the supplied unary certificate for \(1+1=2\). It is not a discovered theorem or the first-order checker. A dense encoding of its completed compact computation would require \(1850\times7223231=13362977350\) point cells. This is a calculated size, not a constructed point certificate. The practical next gate is compressed computation certificates and validated blocks with exact input/output interfaces, so identity regions need not be expanded cell by cell. Those block certificates are not implemented in this batch. Practical turtle boundary resolution, learned hierarchies, Penrose continuation and the full logical checker port remain active.</p>
+    <p>The authored arithmetic control verifies the supplied unary certificate for \(1+1=2\). It is not a discovered theorem or the first-order checker. A dense encoding of its completed compact computation would require \(1850\times7223231=13362977350\) point cells. This is a calculated size, not a constructed point certificate. The practical next gate is compressed computation certificates and validated blocks with exact input/output interfaces, so identity regions need not be expanded cell by cell. Those block certificates are not implemented in this batch; the following milestone above implements the response calculus. Practical turtle boundary resolution, learned hierarchies, Penrose continuation and the full logical checker port remain active.</p>
     <p id="binary-cost" class="caption"></p><p id="binary-audit" class="caption"></p>
     <p class="small"><a href="binary-machine-001.json">Inspect every paired run, source binding, cutoff, scratch control and point certificate ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/binary_stack_machine.py">Read the fixed compact interpreter ↗</a></p>
   </section>
@@ -565,7 +595,7 @@
       <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Fresh boundary response operations now have exact descending composition maps. Next: learn useful current-boundary decisions and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Response atlas</span><div><h3>Practical boundary solving and plane coverage</h3><p>Exact local input/output responses compose and retain complete singleton fallback. Compact proposals solve some additional fixed targets; their overhead and both new RL controls show no reliable advantage. Current-boundary resolution, learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Compact relative addresses now complete the addition control. Next: checked computation blocks, port the full checker, internalize geometry, learn useful proof blocks and search harder statements.</p></div></li>
+      <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Compact relative addresses now complete the addition control. Checked computation responses now compose and preserve an implicit headless frame. Next: useful block discovery and reuse, port the full checker, internalize geometry and search harder statements.</p></div></li>
     </ol>
   </section>
 
@@ -593,6 +623,8 @@ python3 research/gcts-rl-renewal/run_uniform_machine.py
 python3 research/gcts-rl-renewal/audit_uniform_machine.py
 python3 research/gcts-rl-renewal/run_binary_machine.py
 python3 research/gcts-rl-renewal/audit_binary_machine.py
+python3 research/gcts-rl-renewal/run_computation_blocks.py
+python3 research/gcts-rl-renewal/audit_computation_blocks.py
 python3 research/gcts-rl-renewal/run_regions.py
 python3 research/gcts-rl-renewal/audit_regions.py
 python3 research/gcts-rl-renewal/run_cluster_marking.py

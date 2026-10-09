@@ -2005,3 +2005,116 @@ and Penrose hierarchy objectives continue. Substitution is optional.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_binary_machine.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_binary_machine.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+
+
+## 19. Checked computation responses and an implicit headless frame
+
+`computation_blocks.py` is a specialized certificate calculus for the unchanged
+fixed literal interpreter. It is not a replacement for the GCTS candidate
+engine or an RL proposer. Every input, table and authored source control is
+explicitly reused from the SHA-bound `binary-machine-001.json` artifact.
+No frozen earlier source, table, marking, search algorithm or artifact changes.
+
+A local block declares an entry/exit state, head displacement, literal duration,
+input allowed-symbol sets, constant writes and the full head excursion. Its
+semantic interface is
+
+\[
+ B:(q,h;\ a_p\in P_B(p))\longmapsto(q',h+\delta_B;\ a'_p),\qquad
+ a'_p=\begin{cases}W_B(p)&p\in\operatorname{dom}W_B,\\a_p&\text{otherwise}.\end{cases}
+\]
+
+Missing conditions are unrestricted, whereas an explicit symbol index zero is
+an assigned write. Primitive leaves cite a literal transition. Copy-sweep
+leaves collect all symbols for which the table proves
+\(\delta(q,a)=(q,a,d)\), with \(d\in\{-1,1\}\). Every visited cell must
+have an eligible symbol. The tape is preserved and the head ends at
+\(h+nd\) after exactly \(n\) steps. These are proved table consequences,
+not learned point markings. Symbolic input sets express disjunctions; their
+concrete instantiations still use the exact original Wang equality values.
+
+A parent checks state equality, translates its next child's requirements by
+its current head displacement and substitutes earlier constant writes. A
+later read of a written cell must admit that symbol; otherwise input sets
+intersect. Empty intersections reject. Constant writes equal to a singleton
+input condition can be removed. Intersections and substitution compose exact
+local responses, with the entire head excursion retained. Every declaration,
+including an unused one, is checked. Backward-only references exclude cycles.
+Interfaces are derived from bodies, and exported observations are compared
+with those derivations. The root binds the full initial/final tapes, table,
+step count, terminal status and limit. A caller can pin that external problem
+hash. Without a pin the API checks the submitted declared problem.
+
+The headless radius-one law \(F(a,b,c)=b\) supplies the implicit frame.
+At each operational step, at most three neighborhoods contain the unique
+head. Their Wang cells match the literal transition; every other north symbol
+is its unchanged south symbol. The head remains strictly inside the two blank
+outer columns. Thus a checked response has an implicit finite expansion into
+all the ordinary Wang cells, with unit center occupancy and agreement of
+horizontal/vertical marks. Composition is an analytic proof by induction on
+this finite DAG. The Python checker has no machine-checked soundness theorem.
+The large expansion is not materialized; three small responses are explicitly
+expanded and independently checked as ordinary point certificates.
+
+The official batch checks all \(287\) earlier compact component controls,
+five earlier source computations using the next-link representation, three
+point-certificate controls and three addition prefixes at limits
+\(0,100,5000\), yielding \(298\) responses. Time, stack, workspace and
+blank-frame cutoffs remain unknown; they supply no accepting proof. The source
+programs and all their full input/output bindings are checked against the
+preceding artifact. The arithmetic control still checks an authored unary
+certificate for \(1+1=2\), rather than discovering a theorem or executing the
+serialized first-order kernel.
+
+The completed addition response represents \(7223231\) literal steps with
+\(24631\) distinct declarations and \(47714\) sequential tokens. The DAG
+request has \(918515\) bytes, including tape boundaries and observed
+interfaces. The flat copy-sweep request has \(1231459\) bytes; the literal
+replay request has \(15082\) bytes and pays for executing the table.
+The implicit dense rectangle has
+\(1850\times7223231=13362977350\) required point centers. Its compressed
+accepting certificate now checks through the response calculus and the Wang
+row laws; this is distinct from constructing those billions of point objects.
+
+Five source controls each have three replicas rotating literal replay, flat
+sweep checking and fresh DAG interface checking. Every timed call parses a
+fresh serialized request and binds the same complete computation. Addition's
+median check times are \(0.0725\) seconds for flat sweeps, \(0.6971\) for
+the DAG and \(1.6111\) for literal replay. The smaller DAG is slower
+than the flat certificate in this control. DAG construction costs
+\(2.167\) seconds separately, so a checking benefit does not establish an
+end-to-end benefit for one use. The generation/benchmark stage takes
+\(20.494\) seconds, peak \(207.80\) MiB; artifact writing and independent
+verification are separate. No audit or tests ran alongside the final timed
+stage. Development probes adjusted interval composition and resource handling
+before this final run; these reused authored cases are not an independent
+learning/generalization test.
+
+`audit_computation_blocks.py` imports none of the new producer, verifier or
+flat control. It derives each interface by cellwise symbolic substitution,
+rather than the production interval algorithm. It binds every earlier input,
+output, limit, table and component catalog; replays all literal computations;
+checks all declarations and observed interfaces; expands the small point
+certificates; and rejects changed bodies, cycles, boundaries, durations,
+sequential traces, tables, interfaces and unused declarations. The frozen
+literal and Wang helpers are explicit source-hashed dependencies. Exhaustive
+headless, transition-neighbor and accepting-neighbor checks connect the
+certificate semantics to the actual unchanged radius-one implementation.
+
+The final independent audit passes \(298\) controls and \(219269\) declarations, representing \(14395227\) literal steps and \(529392\) sequential tokens. All literal replays agree. The three dense controls contain \(13140\) checked cells. Wang row laws exhaust \(103823\) headless triples, \(4194891\) transition/neighbor pairs and \(103823\) accepting triples. Ten changed certificates reject. Independent audit time is \(39.714\) seconds, including the row-law checks.
+
+All \(208\) research tests pass in \(64.387\) seconds, including sixteen new tests for symbolic substitution, all small copy-schema concretizations, translated frames, actual dense point expansion, associativity, zero-valued writes, input conflicts, invalid/unused declarations and resource limits. The artifact binds every test file and the successful suite log.
+
+This milestone provides an inspectable local response and composition system
+for finite computations. It does not change any search candidate set, markings,
+generations, dead/forced precedence or rollback, and runs no compressed GCTS
+search. Its measured verification benefits are separate from proof-search or
+practical region-tiling acceleration. Exact symbolic paths can overspecialize
+an input, and repeated interface derivation can cost more than an efficient
+flat check. Useful learned block discovery, selective reuse, the full logical
+checker port, internal geometry, current-boundary turtle decisions and Penrose
+continuation remain open. Substitution remains optional.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_computation_blocks.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_computation_blocks.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
