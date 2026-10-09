@@ -2591,3 +2591,112 @@ Penrose continuation and an infinite turtle construction remain active.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_tree_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_tree_kernel.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+## 24. The complete checker executes on a literal single tape
+
+The complete fixed logical program now compiles into finite single-tape
+read/write/head transitions. Every tree instruction is lowered: constants,
+moves, canonical pair allocation, projections, node-range and atom tests,
+byte successor, Boolean operations, branches, calls and returns. There is no
+runtime host heap, register or inference callback. The upstream program pin
+remains
+`5f3aaf81e325654d30cc116a8f412c3152e75ccb4e0d781882180e8d0ec1fa31`.
+Native serialized-syntax parsing and external theorem binding remain explicit
+input adapters. A free-certificate Wang proof-search boundary is still open.
+
+`tape_tree_machine.py` derives control-flow liveness and colors simultaneous
+values into physical register bands. The largest function declares \(298\)
+logical registers; the entire checker uses \(14\) physical registers.
+Registers hold canonical little-endian binary node IDs. One tape band stores
+records of the form `ID:left,right;`; equality scans preserve canonical
+cons sharing. A next-ID band allocates new records. Calls save only live
+caller values in reversed binary words, followed by a fixed-width return
+address. Returns restore those values and copy the result. Callee live inputs
+and any live uninitialized registers receive their specified initial values.
+The full system has \(29\) bands, including arguments, scratch, heap, next ID
+and recursive frames.
+
+The intermediate selected-tape microcode has \(80096\) states. Each action
+reads one symbol, writes one symbol and moves one selected cursor.
+The physical lowering encodes those cursors as ordinary marks in one tape.
+Literal states scan to the tape start, selected band header and cursor, then
+perform the specified action and mark the new cursor. There are \(400471\)
+literal states and \(46\) symbols, fixed independently of the request.
+Same-symbol default rows are a compact finite-table representation; expanding
+the alphabet gives only ordinary literal transitions. The uncompressed binary
+table costs \(46063808\) bytes; the published compressed table costs
+\(6330629\) bytes, and compressed microcode costs \(990401\) bytes.
+
+`tape_runner.cpp` interprets only that finite table. For an unchanged-symbol
+self-loop scan, it uses exact occurrence indices to find the first stop symbol.
+The intervening state and symbols stay unchanged, and the complete number of
+literal transitions is retained. Index updates follow every write. This is a
+generic copy-sweep acceleration, independent of mathematical or heap meaning.
+It does not choose a logical inference or prune a proof candidate. The FNV
+microevent checksum is diagnostic, not a cryptographic proof; independent
+execution and checked finite lowering laws supply the implementation evidence.
+
+All \(13\) recorded requests agree with the reference tree checker: \(9\)
+accept and \(4\) reject. They include the first eight primitive controls,
+the full addition-by-induction certificate with checked proof blocks, missing
+induction authorization, a wrong final target, forbidden generalization and
+captured instantiation. All eleven inference rules participate across these
+requests. The compiler does not restrict requests to these examples or to a
+finite syntax catalog. This experiment does not repeat all \(834\) earlier
+semantic controls on the tape.
+
+The full induction proof accepts after \(1545494015\) selected symbol
+operations, representing \(21932859109252\) literal transitions.
+Its observed literal-run wall time is \(94.311\) seconds; independent selected
+symbol execution takes \(10.443\) seconds. The earlier tree interpreter takes
+\(1.143\) seconds. This is a completed operational lowering, without a
+practical solver or proof-search speed claim. Cold native compilation costs
+\(1.298\) seconds and source lowering \(1.742\) seconds. Sequential production
+costs \(394.603\) seconds, peak \(885.13\) MiB. Table size, cold memory and
+the underlying transition volume are substantial limits.
+
+The first full-induction attempt exhausted its heap band; no logical rejection
+was inferred. The successful lane uses a declared additional \(65536\) heap
+cells. A recorded smaller-band control with \(4096\) additional cells still
+returns `unknown_space_budget` after \(1239272267\) symbol operations.
+Partial literal-step budgets of \(0\), \(1\) and \(10000\) return unknown.
+Those outcomes cannot justify a failure marking, an impossibility statement
+or candidate elimination.
+
+`audit_tape_kernel.py` imports neither the lowering nor its serializer or
+runner. It derives every finite physical row independently, checks all
+\(12154622\) defined transitions after default expansion, and checks all
+\(1958\) liveness equations and simultaneous-value color constraints.
+It decodes and binds every request heap to the external serialized theorem,
+checks the fixed program and source/artifact pins, then rebuilds and reruns
+`audit_tape_micro.cpp`, a separate interpreter with no copy-sweep acceleration.
+Across the \(13\) main cases it reconstructs \(4300810222\) symbol operations
+and \(58761262127724\) literal transitions. Complete tape outputs agree.
+The smaller space control also re-executes as unknown. The sequential
+independent audit costs \(43.121\) seconds, peak \(703.08\) MiB. Its source
+and the test sources are hash-bound in the new report artifact. A terminal
+JSON-newline repair after production is explicitly recorded with both
+executed and published driver hashes; it changes no computation.
+
+All \(268\) research tests pass in \(82.808\) seconds. Fourteen new tests
+exercise recursive/live frames, argument aliasing, loop liveness, entry defaults,
+node boundaries, canonical heap sharing, partial operations, short circuiting,
+explicit space exhaustion, finite table laws and changed register colors.
+The full test log fingerprint and all \(29\) test-source hashes are exported.
+
+This is implementation evidence, with the native toolchain and upstream
+compiler as part of the trust boundary. It is not a formal proof that the
+whole compiler preserves every possible certificate. The existing Wang local
+rule can describe accepting computations, but this large checker has no
+exported accepting Wang rectangle or sound hierarchical certificate yet.
+Its proof-search boundary still must leave certificate data free while
+enforcing syntax, initial-state protocol and external theorem binding.
+Useful proof search, discovered proof abstractions and internal geometric
+lemmas remain active. No tiling graph, scheduling, markings, policy, historical
+certificate or other research engine is changed. Practical region tiling,
+Penrose continuation and a compatible infinite turtle construction remain
+active alongside the proof-system track.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_tape_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_tape_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'

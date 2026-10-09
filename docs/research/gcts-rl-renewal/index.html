@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r23.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r24.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r23.1"></script>
+  <script defer src="report.js?v=20261009-r24.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 23</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 24</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,32 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="tape-kernel-research">
+    <p class="eyebrow">THE FULL LOGICAL CHECKER · LITERAL TAPE OPERATIONS · EXACT COPY SWEEPS</p><h2>Induction now runs on a tape machine.</h2>
+    <p>The whole tree checker has been lowered to a finite, single-tape transition table. Registers, the canonical cons heap and recursive call frames are binary tape data. Every executed decision is a symbol read, write or head move. A generic runner accelerates only unchanged-symbol self loops, using exact symbol-occurrence indices and retaining the complete literal transition count. Its runtime has no formula, heap or inference callback.</p>
+    <div id="tape-kernel-finding" class="callout">Loading the literal computation and independent lowering checks…</div>
+    <svg id="tape-kernel-path" viewBox="0 0 1000 220" role="img" aria-label="The complete semantic checker is compiled into tape data and a literal finite table; a free-certificate Wang proof-search boundary remains open"></svg>
+    <p class="caption">The solid stages are implemented. The dashed stage remains open. Native JSON syntax and external theorem pinning are still explicit input adapters. This is a computation validation experiment; no Wang candidate search or RL proof search is added.</p>
+    <h3 class="spaced-title">Keep only the values needed across a call.</h3>
+    <p>Control-flow liveness lets temporary values share physical registers. Calls preserve the caller's live values on a tape stack, then initialize the callee's live inputs. Recursion uses binary return addresses and explicit saved words. The largest source function declares \(298\) logical registers; the complete checker uses \(14\) physical register bands.</p>
+    <svg id="tape-kernel-registers" viewBox="0 0 1000 230" role="img" aria-label="Logical register counts and physical register counts for the largest checker functions"></svg>
+    <div class="table-scroll"><table><thead><tr><th>Actual certificate</th><th>Result</th><th>Symbol operations</th><th>Literal transitions</th><th>Literal runner seconds</th><th>Independent seconds</th></tr></thead><tbody id="tape-kernel-table"></tbody></table></div>
+    <p id="tape-kernel-cost" class="caption"></p>
+    <div class="controls"><label>Inspect actual tape output <select id="tape-kernel-case"></select></label></div>
+    <svg id="tape-kernel-bands" viewBox="0 0 1000 530" role="img" aria-label="The real physical tape's register, argument, work, heap and frame bands, with output words and declared capacities"></svg>
+    <p id="tape-kernel-bands-caption" class="caption"></p>
+    <details open><summary>Why skipping a copy sweep preserves the computation</summary>
+      <p>A scanning state has only same-symbol self loops until it reaches a declared stop symbol. If \(\delta(q,a)=(q,a,d)\) for every symbol in a span, traversing that span changes only the head position, by its exact length. The occurrence index identifies the first stop symbol and is updated after every write. No formula meaning or proof pattern selects the stopping point.</p>
+      <p>The independent table audit derives every register-selection scan, symbol action and head-marker update from the microcode, then checks every finite row in the executable table. A separate interpreter executes all selected symbol operations without copy-sweep acceleration; its complete tape outputs, diagnostic event checksums and reconstructed literal counts agree. These are implementation checks, with a trusted compiler and native executable toolchain; they are not a formal proof of universal compiler equivalence.</p>
+    </details>
+    <details><summary>Scope, resource controls and the remaining Wang boundary</summary>
+      <p>The compiler handles the complete checker and all its bytecode operations. The recorded requests test primitive rules, the full addition-by-induction proof with checked blocks, and adversarial mutations. This finite experiment does not repeat all earlier semantic cases on tape. Increasing grammar depth, proof length or space does not require a new inference grammar.</p>
+      <p>The smaller heap band exhausts on a valid induction certificate and returns <code>unknown_space_budget</code>. A larger declared band lets the same transition table accept. Partial literal-step budgets also remain unknown. Neither resource result supplies a failure marking, a false theorem claim or pruning.</p>
+      <p>A computationally expressive proof-search tiling still needs a checkable boundary that leaves certificate data free, enforces its syntax and external theorem binding, and validates accepting rectangles or sound hierarchical response certificates. Literal single-tape execution now exists; useful search, reusable learned proof abstractions and internal geometric lemmas remain open. The tiling engines and their complete frontier scheduling are unchanged.</p>
+    </details>
+    <p id="tape-kernel-audit" class="caption"></p><p class="small"><a href="tape-kernel-001.json">Inspect all requests, tape outputs, bounds, costs and independent checks ↗</a> · <a href="tape-microcode-001.json.gz">Download the fixed microcode ↗</a> · <a href="tape-machine-001.bin.gz">Download the finite literal table ↗</a></p>
+  </section>
 
   <section class="panel" id="tree-kernel-research">
     <p class="eyebrow">THE COMPLETE CHECKER · GENERIC TREE INSTRUCTIONS · INDEPENDENT REPLAY</p><h2>Proof rules are now a fixed program.</h2>
@@ -719,7 +745,7 @@
       <li><span class="goal-state active">Parametric interfaces</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several coarse inventories. Local responses now have exact capacity intervals and descending composition laws; their constituents can follow the global scheduler in different orders. Broader legality alone is insufficient for useful continuation. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Cell regions certified</span><div><h3>Practical boundary solving and plane coverage</h3><p>The turtle point model now has a written polygon and cell-region faithfulness theorem with independent finite checks. All completed new-shape requests cover their continuous required cells. Exact-trace adaptive order leads; general acceleration, harder boundary shapes, lower memory cost, actual motion after a stall, other tile systems and an infinite construction remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Semantic program</span><div><h3>Build checkable proof search</h3><p>The complete first-order checker now executes as a fixed generic tree program, including induction and exact proof blocks, with independent instruction replay. The existing literal interpreter and checked component Wang rectangles still need its heap and frame implementation. Next: complete that literal lowering, discover useful proof blocks, internalize geometry and search harder statements.</p></div></li>
+      <li><span class="goal-state active">Literal checker tested</span><div><h3>Build checkable proof search</h3><p>The complete first-order checker now compiles to literal single-tape transitions, including its heap, register files and recursive frames. The full induction control executes with independent symbol replay. Next: a free-certificate Wang boundary, checked accepting rectangles or hierarchical responses, useful proof-block discovery, internal geometric lemmas and harder proof search.</p></div></li>
     </ol>
   </section>
 
