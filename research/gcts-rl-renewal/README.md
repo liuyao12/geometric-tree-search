@@ -1659,3 +1659,96 @@ are preserved. The next practical gate is avoiding identical stopped-prefix
 work and selecting resolution from the current boundary rather than a whole
 request alone. The broad proof checker, Penrose hierarchy and plane coverage
 remain open.
+
+## 16. Fixed serialized checker, induction and exact logical blocks
+
+The fixed program in `serialized_kernel.py` reads UTF-8 JSON bytes under
+`gcts-fol-1`. The protocol contains a signature, closed finite theory axioms,
+registered schema names, ordered block declarations, a root proof and its
+target. It has no compiled formula catalog, variable-name envelope, prescribed
+arity or semantic term-size bound. The host parser and checker still have
+native resource limits; explicit byte/work limits and native recursion or
+memory exhaustion return `unknown_resource_budget`. A rejected certificate
+is not evidence that its target is unprovable.
+
+The primitive logical rules independently implement those of `logic.Kernel`:
+closed axiom membership, propositional tautology, reflexivity, universal
+instantiation, universal distribution, equality substitution, modus ponens
+and generalization. Substitution renames bound variables using the same
+deterministic fresh-name convention, separately implemented. Unknown fields,
+duplicate JSON keys, floats, nonfinite numbers, booleans in integer positions,
+malformed syntax and nonprior proof references reject. Proof data is never
+executed. Source-hashed earlier modules are unchanged.
+
+The explicitly enabled `nat-induction` schema requires the declared zero and
+successor signature. Each formula instance is constructed from its submitted
+template, with capture-avoiding substitution and universal closure of all
+other free variables. This is an axiom assumption of the declared theory,
+not a theorem about arbitrary interpretations. The authored example checks
+\(\forall n\;(0+n=n)\) from the two recursive addition axioms and induction.
+It does not discover that theorem. One registered infinite schema is now
+implemented; arbitrary effective theory-schema interpreters remain open.
+
+A block is an exact interface \(\Gamma\vdash\varphi\), with an explicit proof.
+It may assume only its declared premises and call previously checked blocks.
+Call arguments must be equal to those premises, and its conclusion must match.
+All declarations are checked, including unused ones. Generalization is
+permitted only for a variable absent from the premises' free variables.
+The arithmetic response receives the closed recursion axiom, then derives
+its open successor case internally; declaring that open case as an input
+would permit an invalid generalization and is rejected. Blocks currently
+have exact formulas, not schematic instantiation for arbitrary new inputs.
+
+Callers may pin `problem_hash(request)` via `expected_problem_sha256` to bind
+the protocol, theory and target while allowing changes to the proof and
+blocks. Five binding controls include three proposals that accept relative
+to their changed problem but reject against the original pin. Unpinned checks
+are relative to the supplied declaration and do not authenticate user intent.
+
+The saved batch has \(25\) positive certificates, \(24\) adversarial
+rejections, and all \(771\) formulas in the declared two-atom grammar with at
+most five AST nodes: \(184\) tautologies and \(587\) nontautologies. Names,
+arities, capture avoidance, induction parameter closure and generalization
+side conditions have separate probes. Two valid proofs return unknown under
+explicit limits. The five problem-binding controls and eight repeated-use
+certificates bring the independent replay total to \(835\), with \(5099\)
+expanded primitive lines. A separate test forces native JSON-depth exhaustion
+and checks that it remains unknown. The full research suite passes \(166\)
+tests, including thirteen new tests.
+
+`audit_serialized_kernel.py` does not import the new checker or certificate
+generator. It independently decodes the data, checks all interfaces and
+schemas, then expands each block and root into the frozen earlier kernel.
+To check an open-premise block in that closed-axiom oracle, it temporarily
+universally closes and instantiates its premises, while separately enforcing
+the eigenvariable restriction against the original open premises. Such
+temporary local axioms do not enter the root expansion. The two reused
+coarse-obstruction assemblies are hash-bound to `hierarchy-bridge-001.json`;
+their geometric lemmas remain external axioms with the earlier case proofs
+as provenance. This turn does not reprove those geometry certificates.
+
+The representation control deliberately repeats the same authored lemma.
+Five sequential cold checks alternate encoding order and include parsing,
+theory and block validation. A single call is slower and larger with blocks:
+\(0.723\) versus \(0.547\) milliseconds, \(9201\) versus \(6723\) bytes.
+At \(128\) identical uses, blocks check \(153\) stored lines in \(1.878\)
+milliseconds and store \(27870\) bytes. The same primitive expansion checks
+\(1796\) lines in \(66.514\) milliseconds and stores \(705377\) bytes.
+These measurements establish a representation benefit on identical reuse,
+not search acceleration, new-theorem generalization or learned abstraction.
+The sequential control process costs \(0.654\) seconds, peak \(39.94\) MiB;
+full independent expansion is a separate \(0.200\)-second cost.
+
+The fixed effective inference algorithm suggests an abstract semidecision
+procedure by dovetailing finite certificates and resources. This enumeration
+argument is not a practical search result or a semantic completeness proof.
+The checker remains a Python host implementation. Its literal Turing-machine
+translation, compiler correspondence with the Wang point model, machine-checked
+kernel soundness, internal geometric theories, and learned proof-block search
+remain open. No point-search engine or marking is changed in this batch.
+Proof blocks are possible logical counterparts of tiling response interfaces,
+not yet geometric tiles or a new GCTS elimination channel.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_serialized_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_serialized_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
