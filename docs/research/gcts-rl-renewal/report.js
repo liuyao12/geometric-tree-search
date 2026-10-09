@@ -138,7 +138,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261008-r1.3",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
