@@ -4,20 +4,20 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r27.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r28.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r27.1"></script>
+  <script defer src="report.js?v=20261009-r28.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 27</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 28</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
     <h1>Learn the failures.<br>Search for structure.</h1>
-    <p class="deck">Learn local tiling solutions and how their boundaries fit. Start with the unmarked turtle on \(A_2\), promote clusters into marked tiles at successive scales, and aim for practical region solving and plane coverage. Transfer the method to Penrose tiles and to checkable proof search.</p>
-    <div class="statusline"><span class="dot"></span><strong>Boundary solving at multiple scales.</strong><span>Substitutions are an optional route; practical region tiling and proof abstractions are the goals.</span></div>
-    <p class="small">No human stripe marking, saved policy, known tiling, or substitution rule enters this discovery lane. Literature is background and later comparison, not training data.</p>
+    <p class="deck">The primary track is now automatic proof search with succinct Wang-style tiles and distant GCTS markings. Learn checked lemma constituents and how their interfaces fit. Turtle and Penrose remain regression and occasional geometric controls.</p>
+    <div class="statusline"><span class="dot"></span><strong>Search for the derivation.</strong><span>Statements and axioms are inputs; human-written proof sequences must be withheld.</span></div>
+    <p class="small">In the original turtle discovery lane, no human stripe marking, saved policy, known tiling or substitution rule is supplied. The proof examples below explicitly declare their axioms and authored tactics.</p>
   </section>
 
   <section class="metrics" aria-label="First experiment findings">
@@ -27,6 +27,16 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="proof-priority">
+    <p class="eyebrow">NOTEBOOK 28 · PEANO ARITHMETIC · EUCLID · AN ASSESSMENT OF GCTS</p><h2>Proof discovery is the primary research track.</h2>
+    <p>Starting from empty libraries, symbolic search finds twelve Peano arithmetic derivations, including addition and multiplication commutativity, associativity and distributivity, and four Euclid-style geometry arguments. Every found certificate is independently expanded into primitive rules. Fifteen complete fixed-machine checks accept; the supplied-bisector midpoint verification reaches its instruction limit and remains unknown at that machine layer.</p>
+    <div class="callout"><strong>Automatic proofs within authored tactics: demonstrated.</strong><br>GCTS discovering these arithmetic and geometry proofs: still to be demonstrated. Earlier tiny Wang controls show a limited contribution from distant analytic markings. The new mathematical proofs are found by rewriting and Horn search.</div>
+    <p><a href="proof-gallery.html?v=20261009-r28.1#theorems">Explore the actual theorem certificates, lemma graphs and geometry diagrams ↗</a> · <a href="proof-gallery.html?v=20261009-r28.1#assessment">Read the assessment ↗</a></p>
+    <p>The next central experiment searches over semantic proof tiles: statement and inference constituents whose exact scalar markings connect to earlier premises beyond immediate neighbors. A found lemma must expand into checked lower-level derivations. Compare adjacency-only and distant-marking encodings under matched proof grammars, then test RL and learned interfaces while charging all construction, search and verification costs.</p>
+    <p>Exact dependency compaction preserves all sixty-six earlier theorem interfaces and reduces complete checker instructions by \(19.7\%\). The old large left-zero block shrinks from \(50\) lines to \(28\), but its large tape-response certificate has not been rebuilt. Geometry prototypes also show how verbose interfaces cause expensive machine checks. These representation results are separate from a GCTS search contribution.</p>
+    <p class="small">All \(347\) research tests pass. Geometry assumes circle-intersection existence and SAS; its candidate construction is supplied, and the midpoint result is conditional. No drawing measurement enters verification. <a href="proof-gallery.html?v=20261009-r28.1#next-experiment">Exact next gates and conformance requirements ↗</a> · <a href="peano-theorems-001.json">Peano evidence</a> · <a href="euclid-theorems-001.json">Euclid evidence</a> · <a href="proof-compaction-001.json">Matched compaction evidence</a> · <a href="theorem-tests-001.json">Test ledger</a></p>
+  </section>
 
   <section class="panel" id="learned-proof-research">
     <p class="eyebrow">NOTEBOOK 27 · SEARCHED LEMMAS · REUSABLE INTERFACES · ZERO-START RL</p><h2>Search can build its own proof blocks.</h2>
@@ -821,15 +831,17 @@
   </section>
 
   <section id="goals" class="goals">
-    <p class="eyebrow">THE RESEARCH PROGRAM</p><h2>Goals with concrete gates</h2>
+    <p class="eyebrow">THE RESEARCH PROGRAM · PRIORITY REVISED OCTOBER 9</p><h2>Goals with concrete gates</h2>
+    <p>Concentrate on Wang-style mathematical proof search with finite distant GCTS markings and learned lemma tiles. Turtle and Penrose supply regression and occasional geometric controls; their unfinished infinite-tiling goals remain open. Substitution remains optional.</p>
     <ol>
+      <li><span class="goal-state active">PRIMARY · direct search</span><div><h3>GCTS must choose the mathematical derivation</h3><p>Sixteen new symbolic derivations check, with explicit axioms and tactics. Next: succinct semantic proof tiles with distant premise markings, complete candidate incidence, exact rollback and independently checked expansion. Withhold supplied proofs and theorem-specific skeletons; compare matched grammars and total costs. RL advantage and universal logical/compiler soundness remain open.</p></div></li>
       <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
       <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
       <li><span class="goal-state active">Cluster policy tested</span><div><h3>RL proposes clusters and sequences</h3><p>A fresh policy now chooses the hierarchy on new boundary shapes and executes validated clusters with adaptive constituent orders, retaining every base alternative. Its costs do not establish an end-to-end advantage. Next: useful learned productions, tighter interfaces and geometric failure markings.</p></div></li>
       <li><span class="goal-state active">Parametric interfaces</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several coarse inventories. Local responses now have exact capacity intervals and descending composition laws; their constituents can follow the global scheduler in different orders. Broader legality alone is insufficient for useful continuation. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Cell regions certified</span><div><h3>Practical boundary solving and plane coverage</h3><p>The turtle point model now has a written polygon and cell-region faithfulness theorem with independent finite checks. All completed new-shape requests cover their continuous required cells. Exact-trace adaptive order leads; general acceleration, harder boundary shapes, lower memory cost, actual motion after a stall, other tile systems and an infinite construction remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Learned blocks tested</span><div><h3>Build checkable proof search</h3><p>Six searched lemma interfaces transfer to new statements. A smaller two-level learned proof has an accepting composed tape response; a larger one exhausts its certificate budget. RL explores fewer nodes but shows no practical advantage. Next: total-cost learning, cheaper interfaces, broader proof discovery, internal geometric lemmas, and universal correctness and logical soundness formalization.</p></div></li>
+
     </ol>
   </section>
 
@@ -837,7 +849,13 @@
     <p class="eyebrow">REPRODUCIBILITY & LIMITS</p><h2>Every claim has a scope.</h2>
     <p>The solver imports only the turtle's vertices and angle units from the article. Occupancy uses integer capacity \(12\); missing marking values are unconstrained, and zero is assigned. Conformance checks cover independent complete re-enumeration, shared fractional candidates, zero obligations, distant marking-only dependencies, scheduler precedence, symmetry composition, exact rollback, and rejected tampered proofs.</p>
     <p>The first two growth studies activate newly occupied support. Iteration 03 also runs finite prefixes of a fair nested-core activation rule. All results remain finite. Learned models are frozen per run and start anew on every cold iteration; the third study explicitly reuses certified assignments. Peak memory is measured for each process. Marking synthesis is an equality encoder with free values.</p>
-    <pre><code>python3 research/gcts-rl-renewal/run_micro_cert.py
+    <pre><code>python3 research/gcts-rl-renewal/run_peano.py
+python3 research/gcts-rl-renewal/run_euclid.py
+python3 research/gcts-rl-renewal/audit_theorem_examples.py
+python3 research/gcts-rl-renewal/run_proof_compaction.py
+python3 research/gcts-rl-renewal/audit_proof_compaction.py
+python3 research/gcts-rl-renewal/run_theorem_tests.py
+python3 research/gcts-rl-renewal/run_micro_cert.py
 python3 research/gcts-rl-renewal/audit_micro_cert.py
 python3 research/gcts-rl-renewal/run.py
 python3 research/gcts-rl-renewal/run_spatial.py

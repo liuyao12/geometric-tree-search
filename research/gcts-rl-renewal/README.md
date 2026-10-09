@@ -3017,3 +3017,176 @@ and full log are SHA-256-bound in `learned-proof-blocks-001.json`. The new
 closure, reverse equations, fresh context holes, capture avoidance, recursive
 base cases, rigid matching, policy/fallback separation, unknown fragments,
 external pins and complete generic native execution controls.
+
+## Notebook 28: sample mathematics, an assessment, and the new priority
+
+The primary research track is now **Wang-style automatic proof search with
+succinct semantic constituents and finite distant GCTS markings**. Turtle and
+Penrose remain regression and occasional geometric controls. Their infinite
+tiling goals remain open; no goal is declared complete. This priority follows
+the user's latest direction, superseding the original emphasis on mandatory
+substitution discovery. The live interactive certificate gallery is
+`docs/research/gcts-rl-renewal/proof-gallery.html`.
+
+The success criterion is a derivation found from a statement and formal theory,
+without a human supplying its inference sequence or a theorem-specific proof
+skeleton. An authored general tactic is a declared search prior. The current
+PA and Euclid witnesses are found automatically within such priors, but their
+discovery uses ordinary symbolic rewriting and Horn saturation. **These new
+examples do not establish a contribution from GCTS to their discovery.**
+The fixed checker and tape/Wang encoding validate computations; that role must
+not be relabeled proof search. Earlier tiny direct Wang controls have some
+actual search evidence: analytic distant markings accept one of three word
+problems where plain Wang accepts none, and three of six finite first-order
+controls where plain Wang accepts one. These unchanged historical data are
+specialized envelopes, not practical general mathematical performance.
+Notebook 27's RL lane shows no practical gain over plain learned-block reuse.
+
+`peano_problems.py` declares six usual first-order PA axioms for successor,
+addition and multiplication, plus the registered induction schema. Its twelve
+statements include left-zero and left-successor addition, addition by one,
+addition commutativity/associativity, both multiplication unit laws, left-zero
+multiplication, distributivity, multiplication by a successor in the first
+factor, and multiplication commutativity/associativity. In particular:
+
+\[
+\forall a,b\;(a+b=b+a),\qquad
+\forall a,b\;(a\cdot b=b\cdot a),\qquad
+\forall a,b,c\;(a\cdot(b+c)=a\cdot b+a\cdot c).
+\]
+
+`run_peano.py` starts from an empty lemma library. The unchanged equational
+proposer uses bidirectional contextual rewriting with a \(5000\)-node
+budget per attempt and term slack \(3\). Its authored induction tactic
+uses the innermost quantified variable and at most \(3\) nested induction
+levels. No old witness library or policy is imported. Every found proof is
+checked, compacted, fully checked on the fixed native tree program, and only
+then promoted. All \(12\) proofs accept. Proposal time is \(0.744944\)
+seconds; complete native checking \(17.369402\) wall seconds; full cold
+family production \(20.523299\) seconds. These are sequential single-run
+measurements, not benchmark rankings. This batch adds no RL training.
+
+`euclid_problems.py` declares a guarded first-order construction/congruence
+fragment, with point, circle incidence, noncollinearity, betweenness, segment
+and triangle interfaces. Triangle/segment guard definitions are explicit in
+both directions. Equal-radius circle intersection existence and SAS are
+axioms. The circle intersection operator and I.1's candidate witness are
+supplied in the statement; the search verifies its properties rather than
+discovering the construction operator. No coordinate values or image
+measurements enter proof search or checking. This is inspired by Euclid's
+style and by the formal system \(E\), but does not implement all of \(E\),
+Euclid's postulates, continuity or the parallel postulate.
+
+`horn_proof_search.py` is a generic bounded Horn/equality saturation proposer.
+Facts have derivation DAGs; only the solved goal's dependency closure is
+materialized as a Hilbert proof. It handles conjunctions, conditional facts,
+universal instances, equality symmetry/transitivity and checked earlier
+blocks. A deduction transformation closes the conditional proof. The
+author supplies no target-specific derivation. The measured search envelope
+has \(12\) rounds, \(1500\) facts and \(200000\) match attempts; cutoffs
+remain unknown. Its four examples are:
+
+| Example | Independent primitive proof | Fixed native program |
+| --- | --- | --- |
+| I.1 equilateral triangle properties | accepted | accepted |
+| I.5 main equal-base-angle conclusion | accepted | accepted |
+| Constructed triangle's equal base angles, using both searched blocks | accepted | accepted |
+| I.10 midpoint verification with a supplied bisector and betweenness | accepted | unknown instruction budget |
+
+I.5's exterior-angle clause is not proved. I.10's angle bisector construction
+and existence are not proved. The host and independent primitive replay
+check its conditional derivation; the fixed program reaches \(100000000\)
+instructions, and no completed machine certificate is claimed for it.
+Final geometry proposal time is \(0.371606\) seconds, full native checking
+including the cutoff \(28.459682\) seconds, and complete cold production
+\(30.354846\) seconds.
+
+Two geometry prototypes are preserved with their original full source bytes
+in `euclid-pilot-source-001.json` and `euclid-interface-pilot-source-001.json`.
+They retain respectively all primitive guards, then named statement guards
+with primitive SAS premises. Each accepts I.1 on the machine and reaches
+three cutoffs, taking \(38.293928\) and \(38.122444\) seconds overall.
+The final representation uses two defined triangle interfaces in SAS instead
+of eleven repeated primitive premises. The mathematical guard conditions
+are equivalent under their explicit definitions, but the pinned theory and
+statement representations differ. This is representation exploration, not a
+matched speed comparison of an unchanged formal problem. Archived source
+pins, exact original requests and unknown outcomes are independently audited.
+
+`proof_compaction.py` first checks **every** input line and declared block,
+including unused material. In an unchanged assumptions context it aliases
+only exact identical formulas to earlier occurrences, keeps the final
+formula's dependency closure, renumbers actual references, and removes only
+unreachable already-checked definitions. Every declared premise remains,
+including unused premises that restrict eigenvariables. It then checks the
+whole output against the same external theory/target pin. No alpha conversion,
+new inference rule or altered semantic boundary is introduced.
+
+`run_proof_compaction.py` reuses the exact \(66\) actual Notebook 27
+requests; it performs no new search. It runs original and compact requests
+on the unchanged complete native program in alternating order. All accept.
+Instructions decrease from \(398061855\) to \(319557779\), or
+\(19.7\%\). Original/compact full native wall totals are \(46.542426\)
+and \(36.793891\) seconds; whole-input checking and compaction add
+\(3.609566\) seconds. The complete producer costs \(111.466613\)
+seconds including fresh Python reference controls and serialization.
+The earlier large cutoff case's left-zero block shrinks from \(50\) to
+\(28\) lines, with \(2309467\) to \(1223779\) tree instructions and
+the identical target and external pin. **Its accepting tape-response
+certificate has not been rebuilt.** The earlier cutoff remains unknown.
+
+`audit_proof_compaction.py` independently reconstructs all alias/dependency
+maps, interfaces, removed definitions and native input heaps, expands every
+original and compact root/definition into the frozen primitive kernel, and
+independently replays all tree instructions on two optimized controls. It
+takes \(27.724240\) seconds. This is not an independent instruction replay
+of all \(66\) native runs. `audit_theorem_examples.py` binds externally
+pinned theories/statements, checks all earlier-only library provenance,
+normalization graphs and native input heaps, and independently expands every
+PA/geometry proof and promoted block. PA searched edges are independently
+reconstructed, including sound inversions of actual backward-tree edges:
+variable-erasing equations such as \(x\cdot0=0\) can be inverted using
+the recorded instance even when the variable cannot be inferred locally.
+The audit never calls the producer or proposer. Full geometry saturation and
+the new examples' entire native instruction traces are not independently
+reconstructed. The PA and geometry audits cost \(3.060434\) and
+\(5.974678\) seconds. Changed statements, axioms, last formulas, reference
+order, signatures and dependency maps reject. Universal logical soundness,
+compiler equivalence and the native toolchain remain trusted/open.
+
+The next decisive experiment uses **semantic proof tiles**. An inference
+constituent occupies a proof cell with \(t=1\); scalar \(m\)-values bind
+exact syntax IDs at its conclusion and at earlier premise points. Distant
+support can encode non-adjacent proof references directly. Each finite
+envelope enumerates valid syntax/rule instances and offsets; scope and
+substitution interfaces must be explicit. Learned lemma tiles expand to
+checked lower-level proofs. Compare the same grammar in ordinary symbolic
+search, adjacency-only encoding, distant GCTS markings, and then RL/learned
+clusters. Withhold all derivations and theorem-specific skeletons. Charge
+catalog/graph construction, search, learning, interface expansion, verification
+and memory. The design is not yet a completed semantic GCTS proof engine.
+Finite envelopes must grow fairly for expressive coverage; no fixed tile
+with unbounded reach or truth oracle is assumed.
+
+Conformance is unchanged in this batch: semantic proposers and proof-data
+representations are adaptations, not tiling-engine mutations. No new GCTS
+pruning or learned failure marking is claimed. The proposed semantic engine
+must retain complete frontier/candidate bipartite bookkeeping for distant
+marks, global dead/forced precedence, earliest-generation branching, exact
+rollback and proved-vs-learned pruning separation before supporting a GCTS
+performance claim.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_peano.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_euclid.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_theorem_examples.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_compaction.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_proof_compaction.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_theorem_tests.py
+
+All \(347\) research tests pass in \(98.687733\) wall seconds
+(\(97.854\) seconds reported by unittest). The \(35\) test files and
+complete log are SHA-256-bound in `theorem-tests-001.json`; historical
+artifacts remain unchanged. The \(25\) new tests cover whole-input-safe
+normalization, eigenvariable contexts, exact interface pins, all cold PA
+proofs, searched geometry composition, missing intersection/congruence
+assumptions, unknown search budgets and rejected false constructions.
