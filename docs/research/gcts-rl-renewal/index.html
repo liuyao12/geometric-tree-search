@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r26.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r27.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r26.1"></script>
+  <script defer src="report.js?v=20261009-r27.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 26</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 27</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -28,8 +28,40 @@
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
 
+  <section class="panel" id="learned-proof-research">
+    <p class="eyebrow">NOTEBOOK 27 · SEARCHED LEMMAS · REUSABLE INTERFACES · ZERO-START RL</p><h2>Search can build its own proof blocks.</h2>
+    <p>Starting with two addition axioms, a registered induction schema and an empty block library, an equational proposer finds six closed lemmas. It promotes their checked premises and conclusions into reusable interfaces. Later lemmas call earlier ones, and new statements reuse the hierarchy under fresh variables and deeper contexts.</p>
+    <div id="learned-proof-finding" class="callout">Loading searched proofs, policy audit and complete checker runs…</div>
+    <svg id="learned-proof-comparison" viewBox="0 0 1000 285" role="img" aria-label="Actual accepted and unknown counts in four bounded proof proposal lanes"></svg>
+    <p class="caption">Green bars are accepted proposals; grey bars are unknown attempts. All lanes share the theory and targets. Proved lemma actions extend the bounded proposal fragment, so this is a semantic proposal comparison. It is not a comparison of identical GCTS paths or a complete first-order proof search.</p>
+    <div class="table-scroll"><table><thead><tr><th>Proposal lane</th><th>Accepted / unknown</th><th>Fallback nodes</th><th>Propose seconds</th><th>Native check seconds</th><th>Checked instructions</th></tr></thead><tbody id="learned-proof-table"></tbody></table></div>
+    <p id="learned-proof-cost" class="caption"></p>
+    <h3 class="spaced-title">A lemma becomes a higher-level constituent.</h3>
+    <p>The library includes \(\forall a:\operatorname{add}(\operatorname{zero},a)=a\) and associativity, with searched induction base and step derivations. The induction tactic, problem families and policy features are authored. The witnesses and block dependency hierarchy are found by search; no authored proof library is imported. A fourth-leaf bracketing proof reuses the discovered associativity interface.</p>
+    <div class="controls"><label>Learned lemma <select id="learned-proof-lemma"></select></label><label>Actual proof line <select id="learned-proof-line"></select></label></div>
+    <div id="learned-proof-statement" class="word-proof"></div>
+    <svg id="learned-proof-dag" viewBox="0 0 1000 310" role="img" aria-label="The complete dependency graph of six actual learned lemma definitions"></svg>
+    <p id="learned-proof-lemma-caption" class="caption"></p>
+    <div id="learned-proof-formula" class="word-proof"></div><p id="learned-proof-line-caption" class="caption"></p>
+    <h3 class="spaced-title">The geometric representation still has a cost.</h3>
+    <p id="learned-proof-tape-finding" class="callout">Loading the smaller composed response and larger certificate cutoff…</p>
+    <p id="learned-proof-tape-cost" class="caption"></p>
+    <p>A closed lemma's universally quantified boundary represents a family of compatible substitutions. Equality substitution lets a solved inner expression fit a larger context. This gives the PDE analogy a precise local solution relation and a way to eliminate internal proof work. The tape response adds symbol requirements, writes and an unchanged frame. Useful coarse interfaces still have to justify their construction cost; no multigrid convergence theorem is claimed.</p>
+    <details open><summary>What the learner and checker actually do</summary>
+      <p>The proposer enumerates both directions of every matching equation at every eligible subtree within a declared term envelope. Two optional RL rollouts precede a bounded bidirectional fallback. Rollout cycle avoidance does not remove fallback alternatives. Failed or exhausted proposals remain unknown. Each fallback attempt has a \(1200\)-node limit and a term-size envelope enlarged by \(3\); the authored induction tactic can trigger further attempts. Hypothesis variables remain rigid. Only a checked closed proof can become a new block.</p>
+      <p>REINFORCE starts with zero weights and learns from a charged work proxy: proposal enumeration plus expanded-rule cost. The reward does not use measured end-to-end wall time. Frozen evaluation uses unseen statements, new variable names, deeper contexts and longer bracketings. The independent audit reconstructs complete choice domains, gradients, rewards and updates; it does not independently reconstruct the RNG stream.</p>
+      <p>Every found root is checked by the unchanged complete semantic program. The faster generic interpreter reproduces every reference instruction digest, count, call profile, heap size and final value. Native execution controls compare complete traces and output heaps with two distinct interpreters, including partial operations and resource limits. The native syntax adapter and executable toolchain remain trusted.</p>
+    </details>
+    <details><summary>Conformance and the next research gate</summary>
+      <p>This changes the semantic proposer and its implementation cost. It adds no GCTS failure marking or pruning, and leaves the complete frontier graph, global dead/forced precedence, generations, exact rollback and scalar point semantics unchanged. The induction strategy and finite rewrite envelope specialize this proposer. Resource cutoffs prove neither an impossible tiling nor an unprovable theorem.</p>
+      <p>Next: select and learn abstractions against total search, proof and boundary-construction cost; make the large learned proof's response feasible; extend beyond the authored statement families. Formal logical soundness and universal compiler equivalence remain open. Practical arbitrary-region tiling, movable boundaries, Penrose continuation and compatible infinite turtle growth remain active. Substitution is an optional route.</p>
+    </details>
+    <p id="learned-proof-audit" class="caption"></p>
+    <p class="small"><a href="learned-proof-blocks-001.json">All searched witnesses, training choices and complete checker traces ↗</a> · <a href="learned-proof-tape-001.json">Smaller learned proof on the fixed tape ↗</a> · <a href="learned-proof-response-001.bin.gz">Its response DAG ↗</a> · <a href="learned-proof-tape-cutoff-001.json">Larger proof and resource cutoff ↗</a></p>
+  </section>
+
   <section class="panel" id="micro-response-research">
-    <p class="eyebrow">DERIVED BOUNDARIES · SHARED PRODUCTIONS · ACCEPTING EXPANSION</p><h2>Acceptance now has a composed certificate.</h2>
+    <p class="eyebrow">DERIVED BOUNDARIES · SHARED PRODUCTIONS · ACCEPTING EXPANSION</p><h2>Notebook 26: acceptance has a composed certificate.</h2>
     <p>The complete proof checker, including its free-input constructor, now has an accepting response DAG. A separate verifier derives each block's input requirements, writes, cursor motion and unchanged frame from primitive symbol actions, exact copy sweeps and earlier children. It checks the root on the fixed assertion and chosen proof payload without replaying the expanded computation.</p>
     <div id="micro-response-finding" class="callout">Loading the composed certificates and independent derivation…</div>
     <svg id="micro-response-path" viewBox="0 0 1000 200" role="img" aria-label="Fixed input and finite actions feed derived block responses and an accepting Wang expansion; learned proof search remains open"></svg>
@@ -797,7 +829,7 @@
       <li><span class="goal-state active">Parametric interfaces</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several coarse inventories. Local responses now have exact capacity intervals and descending composition laws; their constituents can follow the global scheduler in different orders. Broader legality alone is insufficient for useful continuation. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Cell regions certified</span><div><h3>Practical boundary solving and plane coverage</h3><p>The turtle point model now has a written polygon and cell-region faithfulness theorem with independent finite checks. All completed new-shape requests cover their continuous required cells. Exact-trace adaptive order leads; general acceleration, harder boundary shapes, lower memory cost, actual motion after a stall, other tile systems and an infinite construction remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Accepting response tested</span><div><h3>Build checkable proof search</h3><p>The full checker and its free-input constructor now have independently derived accepting DAG responses, with a Wang expansion law and complete tape-output agreement. The current inputs and compression boundaries are authored. Next: useful learned proof blocks, RL search, internal geometric lemmas, cheaper interfaces and universal correctness and logical soundness formalization.</p></div></li>
+      <li><span class="goal-state active">Learned blocks tested</span><div><h3>Build checkable proof search</h3><p>Six searched lemma interfaces transfer to new statements. A smaller two-level learned proof has an accepting composed tape response; a larger one exhausts its certificate budget. RL explores fewer nodes but shows no practical advantage. Next: total-cost learning, cheaper interfaces, broader proof discovery, internal geometric lemmas, and universal correctness and logical soundness formalization.</p></div></li>
     </ol>
   </section>
 

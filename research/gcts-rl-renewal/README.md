@@ -2875,3 +2875,145 @@ infinite turtle growth remain active alongside this proof-system work.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_micro_cert.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_micro_cert.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+
+## Notebook 27: searched mathematical block interfaces and RL proposals
+
+The block library and policy start empty. `proof_block_problems.py` supplies two
+right-recursive addition axioms, the registered natural-induction schema, and
+statement families; it supplies no witness. The new semantic proposer
+`proof_block_search.py` enumerates both directions of equations at matching
+subtrees in a finite term envelope, uses bounded bidirectional search, and emits
+actual primitive proof lines. An authored innermost-variable induction tactic
+searches base and step derivations, uses a checked deduction construction, and
+supports recursively proved base cases. This is a specialized equational
+proposal fragment, not complete first-order search or a GCTS path benchmark.
+
+The six discovered closed lemmas prove additions by one, two and three
+successors, left-zero addition, associativity and four-leaf reassociation. The
+unit-two definition calls unit one; unit three depends on the earlier unit
+blocks; the four-leaf proof calls associativity. Left zero has \(50\) stored
+primitive lines, associativity \(138\); the four-leaf definition stores
+\(25\) lines and expands to \(299\). Every promoted definition is checked
+before use. Quantifiers supply variable substitutions, while equality
+substitution fits a solved expression into a larger context. This is a concrete
+proof analogue of learning a local boundary response and composing it into a
+coarser constituent. There is no multigrid convergence theorem or automatically
+learned tape segmentation.
+
+The official producer `run_proof_blocks.py` spends \(0.066542\) seconds on
+cold discovery and promotion and \(2.382526\) seconds training a zero-start
+REINFORCE policy for \(192\) episodes on \(24\) distinct statements,
+with \(279\) updates and \(1831\) audited decisions. Features, induction
+tactic and statement families are authored. Reward charges a work proxy
+(proposal enumeration plus expanded primitive-rule cost), not wall time.
+Evaluation freezes the policy and uses \(18\) distinct statements with new
+variables, deeper contexts, longer bracketings and larger successor counts.
+The split tests transfer within these authored families, not general new
+mathematical theories.
+
+| Proposal lane | Accepted / unknown | Fallback nodes | Propose seconds | Native full-check seconds |
+| --- | --- | --- | --- | --- |
+| Primitive equations | 6 / 12 | 68306 | 11.752403 | 1.191548 |
+| Learned blocks | 18 / 0 | 843 | 0.535162 | 12.451351 |
+| Blocks + random rollouts | 18 / 0 | 843 | 0.799038 | 11.604349 |
+| Blocks + RL rollouts | 18 / 0 | 503 | 0.702406 | 18.537795 |
+
+Each fallback attempt has a \(1200\)-node limit and term-size slack \(3\);
+the authored induction tactic can trigger additional attempts. Free hypothesis
+variables are rigid; only explicitly quantified variables are match parameters.
+Both rollout lanes retain the bounded fallback. Proved lemma actions extend
+that bounded fragment; these lanes do not have identical reachable paths.
+Unknown results prove neither impossibility nor unprovability. RL reduces
+fallback exploration, but plain block reuse proposes proofs faster. Including
+full checking reveals some longer RL-generated proofs. Single sequential wall
+measurements do not establish stable timing rankings, and no practical RL
+advantage is claimed. Learning and interface costs remain additional.
+
+All \(66\) accepted discovery/evaluation roots passed the unchanged complete
+tree checker. The original production completed normally in \(828.410049\)
+seconds, including \(812.164846\) seconds of full Python tree execution.
+`tree_runner.cpp` interprets the same thirteen generic byte/pair/register
+operations with explicit call frames and no mathematical callback. This native runner uses the macOS system SDK for CommonCrypto SHA-256; its
+transport and interpreter are new source files, with no checker-grammar change.
+Native replay of every actual input takes \(48.172716\) seconds including
+\(0.535797\) seconds cold compilation. Every complete event SHA-256,
+instruction count, call profile, heap size and final value agrees with the
+completed original run. The original proof program, grammar, literal table and
+microcode are unchanged. The native adapter and toolchain remain trusted.
+
+`audit_proof_blocks.py` independently expands every accepted proof and all
+block definitions into the frozen primitive kernel, checks each saved searched
+move, reconstructs full RL choice domains, gradients, charged rewards and
+updates, and independently constructs all native input heaps. It does not
+independently reconstruct the RNG stream. Target, theory, block-body and block
+order mutations reject. The audit takes \(4.078541\) seconds with a
+\(197.828\)-MiB driver peak. Separate native tests compare full instruction
+digests, output heaps and frame/profile behavior with two distinct interpreters,
+including all opcodes, recursive calls, canonical sharing, partial operations,
+short circuiting, strict input/pin guards, and unknown step/heap cutoffs.
+
+The two-level searched unit-two proof also accepts through the unchanged
+free-input tape constructor and response checker. It has \(5{,}009{,}167\)
+distinct response nodes, depth \(52\), \(575{,}346{,}389\) expanded leaves,
+\(2{,}499{,}026{,}663\) symbol operations, and
+\(39{,}320{,}289{,}926{,}752\) literal transitions. Selected execution costs
+\(17.735528\) wall seconds; construction \(22.396415\); verification
+\(30.198640\), with a \(1376.750\)-MiB checker peak. Full cold production
+including fresh discovery, native compilation and compression takes
+\(85.058370\) seconds. The compressed grammar is \(22{,}634{,}288\)
+bytes, with \(80{,}146{,}716\) raw bytes. This is a checked response and its
+unchanged Wang expansion law, without an exported dense rectangle. Routine
+cuts remain authored; the mathematical constituent is searched proof data.
+
+The larger left-zero block reused in evaluation's first new context accepts in
+\(75.699823\) seconds, with \(11{,}311{,}733{,}838\) symbol operations
+and \(266{,}800{,}362{,}886{,}152\) literal transitions. Its builder reaches
+the declared \(9{,}000{,}000\)-node limit after \(54.970128\) seconds,
+so it has **no accepting composed certificate**. The resource result is
+unknown. At least \(130.669951\) seconds were measured; compilation, cold
+search and complete wrapper times were not retained. Its exact input was
+recovered and byte-compared against the retained original input after the driver
+stopped at the reported cutoff. The unchanged trial source is archived as
+`run_learned_proof_tape_trial.py`; the recovery and scope are explicit in
+`learned-proof-tape-cutoff-001.json`. The smaller control's initial selection
+was corrected before tape execution to reuse the original discovery witness,
+rather than rediscovering its already-promoted target through a different block.
+
+`audit_learned_proof_tape.py` freshly derives every smaller response, independently
+checks the constructor's actual heap, applies all root requirements and writes,
+checks whole outputs and the complete finite literal table law, and rejects
+altered bindings and grammar declarations. It re-executes the full larger
+accepted symbol computation. That does not certify its exhausted response
+builder. The audit takes \(124.339904\) seconds, including a
+\(81.674350\)-second fresh replay of the larger accepted run, and peaks at
+\(744.891\) MiB in its driver. That driver peak includes the finite-table
+audit; the native response verifier has its own separately measured peak.
+Seven changed binding/grammar controls reject and an interface limit remains
+unknown. The native toolchain and intended logical/compiler soundness remain
+trusted/open. Resource controls remain unknown.
+
+The tiling/search algorithm contract is preserved: no new failure marking,
+pruning or tiling-engine mutation is added; complete frontier bookkeeping,
+global dead/forced precedence, earliest generation, exact rollback and scalar
+point values are unchanged. New work adapts the semantic proposal layer and
+records its specialized envelope separately. Next: abstractions selected by
+total proof/search/interface cost, feasible large responses, broader mathematical
+families, and practical region tiling with compatible movable boundaries.
+Penrose continuation and compatible infinite turtle growth remain active;
+substitution is an optional route.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_blocks.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_block_native.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_proof_blocks.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_learned_proof_tape.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_learned_proof_tape.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+All \(322\) research tests pass in \(100.019554\) wall seconds
+(\(99.248\) seconds reported by unittest). The \(33\) test-source files
+and full log are SHA-256-bound in `learned-proof-blocks-001.json`. The new
+\(23\) tests cover searched proof expansion and promotion, dependency
+closure, reverse equations, fresh context holes, capture avoidance, recursive
+base cases, rigid matching, policy/fallback separation, unknown fragments,
+external pins and complete generic native execution controls.
