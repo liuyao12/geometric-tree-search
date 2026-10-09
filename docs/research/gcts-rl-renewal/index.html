@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
+  <title>GCTS + RL · A fresh tiling research notebook</title>
+  <link rel="stylesheet" href="report.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="report.js"></script>
+</head>
+<body>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 01</span><a href="#goals">Research goals</a></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
+    <h1>Learn the failures.<br>Search for structure.</h1>
+    <p class="deck">A fresh exploration of the unmarked turtle on \(A_2\): learn geometric constraints from certified failures, let reinforcement learning propose clusters, and seek a substitution. Then transfer the method to Penrose tiles and to checkable proof search.</p>
+    <div class="statusline"><span class="dot"></span><strong>First iteration complete.</strong><span>Substitution discovery and a general theorem prover remain open.</span></div>
+    <p class="small">No human stripe marking, saved policy, known tiling, or substitution rule enters this discovery lane. Literature is background and later comparison, not training data.</p>
+  </section>
+
+  <section class="metrics" aria-label="First experiment findings">
+    <div><b id="pair-count">—</b><span>rooted legal pairs</span></div>
+    <div><b id="negative-count">—</b><span>certified failures</span></div>
+    <div><b id="mark-reject-count">—</b><span>failures encoded</span></div>
+    <div><b id="assigned-count">—</b><span>learned point values</span></div>
+  </section>
+  <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="split" id="turtle">
+    <div class="panel wide">
+      <div class="panel-head"><div><p class="eyebrow">THE TURTLE · FINITE POINT PATCHES</p><h2>Watch the search grow</h2></div><span class="badge" id="patch-status">Verified point data</span></div>
+      <div class="controls"><label>Experiment <select id="lane"><option>baseline</option><option>GCTS</option><option>RL</option><option>GCTS+RL</option></select></label><label>Evaluation seed <select id="seed"></select></label><button id="play" type="button">Play growth</button></div>
+      <svg id="patch" viewBox="0 0 800 470" role="img" aria-label="Turtle patch from an independently verified search run"></svg>
+      <div class="slider-row"><label for="step">Base placements</label><input id="step" type="range" min="1" max="32" value="32"><output id="step-count">—</output></div>
+      <p id="patch-caption" class="caption"></p>
+      <p class="small">Polygons draw the point model. Search checks exact point occupancy and marking agreement. Independent geometric faithfulness has not yet been established; these pictures are not plane-tiling certificates.</p>
+      <p id="geometry-caption" class="small"></p>
+    </div>
+    <div class="panel narrow">
+      <p class="eyebrow">FAILURES BECOME GEOMETRY</p><h2>A marking from zero</h2>
+      <svg id="marking" viewBox="0 0 390 370" role="img" aria-label="Learned marking values on the turtle prototype; empty points are unconstrained"></svg>
+      <p id="marking-caption" class="caption"></p>
+      <p>All resolved positive contacts impose equality. Negative certificates provide places where values may disagree. The sparse scalar model keeps only enough assigned points to reject the represented failures.</p>
+      <p class="small">Color classes are arbitrary equality values. Empty circles mean free entries; an assigned zero is a real value. This picture is an inspection snapshot, never an input to a later cold run.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="evidence">
+    <div class="panel-head"><div><p class="eyebrow">AUDITABLE EVIDENCE</p><h2>Inspect a contact and its certificate</h2></div><label>Rooted pair <select id="pair"></select></label></div>
+    <div class="evidence-grid"><svg id="pair-view" viewBox="0 0 640 350" role="img" aria-label="Pair completion witness or first leaf of a fully exhausted failure tree"></svg><div><p id="pair-outcome" class="result-title"></p><p id="pair-detail"></p><p class="small">A negative certificate contains every branch alternative, with an independently re-enumerated empty frontier domain at every leaf. The figure shows its first leaf. A positive witness completes the pair's initial support and leaves every exposed frontier point with a legal continuation.</p><a href="iteration-001.json">Inspect all placements and proof trees ↗</a></div></div>
+    <details><summary>Why the smallest marking is sound for complete point-model tilings</summary>
+      <p>The learned scalar marking has assigned support inside the tile's positive occupancy support. Therefore every disagreement occurs between a pair represented in the complete contact catalog. The checks cover all twelve symmetry transforms and establish that every rejected contact is certified negative.</p>
+      <p>If a complete unmarked tiling contained such a pair, it would supply a legal continuation at every decision in that pair's exhaustive proof tree. Each leaf instead has a frontier point with no legal candidate. This contradiction rules out the pair. Consequently every complete unmarked point-model tiling satisfies the smallest marking.</p>
+      <p>This is a redundancy result for the stated point model, not a proof that a tiling exists. Larger marking supports can interact outside the contact catalog and remain learned restrictions until those interactions are certified.</p>
+    </details>
+  </section>
+
+  <section class="panel" id="benchmark">
+    <p class="eyebrow">A CONTROLLED FIRST COMPARISON</p><h2>Propagation helps. RL still has to earn its cost.</h2>
+    <p>The lanes share the point model, seed set, global scheduler, growth target, node limit, and time limit. Markings are frozen. RL selects validated sequences with single-placement fallback and rechecks the scheduler during execution. Training, donor search, verification, and proposal validation are additional costs.</p>
+    <svg id="benchmark-chart" viewBox="0 0 1040 300" role="img" aria-label="Success count and mean search time by experiment lane"></svg>
+    <p id="benchmark-finding"></p>
+    <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Verified target patches</th><th>Mean base tiles</th><th>Mean search nodes</th><th>Mean branches</th><th>Mean backtracks</th><th>Mean seconds</th></tr></thead><tbody id="benchmark-body"></tbody></table></div>
+    <p id="cost-caption" class="caption"></p>
+    <p class="small">A node is a recursive search call; a validated sequence can place several base tiles per call. Compare verified outcomes and total time, not node counts alone. Evaluation starts from five fixed pairs; training and donor search start from one tile. All contact labels participate in marking synthesis. Evaluation pairs may occur as subpatches during training, so this is not a strict patch-disjoint generalization test. This small pilot is not a statistically established acceleration claim.</p>
+  </section>
+
+  <section class="split">
+    <article class="panel">
+      <p class="eyebrow">SUBSTITUTION DISCOVERY</p><h2>Motifs are a beginning.</h2>
+      <p id="cluster-caption"></p><div id="motif-strip" class="motif-strip"></div>
+      <p>The current library contains translation-normalized irregular sequences, proposed and selected by a policy-gradient learner. A repeated sequence is not a substitution. The missing object is a finite family of metatiles with exact expansion maps, compatible interfaces, and repeatable recursive coverage.</p>
+      <div id="inflation-results" class="callout"></div>
+      <p class="small">The dilation controls impose a fixed exterior contribution at boundary points. They only test an integer enlargement of one turtle outline. Multi-type, algebraic, and combinatorial substitutions remain open.</p>
+    </article>
+    <article class="panel">
+      <p class="eyebrow">PENROSE · PREPARING THE DOMAIN</p><h2>Exact arithmetic first.</h2>
+      <div class="rhombs"><svg id="rhombs" viewBox="0 0 480 190" role="img" aria-label="Unmarked thick and thin rhomb prototypes"></svg></div>
+      <p>Coordinates use \(\mathbb Z[\zeta_5]\), represented by four integer coefficients modulo \(1+z+z^2+z^3+z^4\). Multiplication, conjugation, and \(\varphi^2=\varphi+1\) are checked exactly.</p>
+      <p id="ring-caption" class="caption"></p>
+      <p>The physical module is dense: \(\varphi^{-1}=\varphi-1\) belongs to it and its positive powers approach zero. A finite set of vertex angles cannot silently stand in for a rhomb's whole interior. A faithful point encoding or explicitly specialized control must be declared before the learner transfers.</p>
+      <p>Unmarked rhombs also admit periodic arrangements. Learning a Penrose-compatible subsystem would restrict that problem; it cannot automatically be called redundant pruning of all unmarked rhomb tilings.</p>
+    </article>
+  </section>
+
+  <section class="proof-panel" id="proofs">
+    <p class="eyebrow">TOWARD GEOMETRIC PROOF SEARCH</p><h2>A computation is a tiling with a certificate.</h2>
+    <p>Wang edge colors fit the shared model directly. Put \(t=1\) at a cell center and assign the four colors as \(m\)-values at edge midpoints. Admissible translations place one tile at each required center. Point agreement is exactly Wang adjacency, with no corner constraint added.</p>
+    <div class="proof-grid"><div><svg id="computation" viewBox="0 0 620 290" role="img" aria-label="Verified two-step Turing computation represented as a Wang rectangle"></svg><p id="wang-caption" class="caption"></p></div><div>
+      <p>A radius-one transition rule \(f(a,b,c)\) becomes the tile</p>
+      \[S=b,\qquad N=f(a,b,c),\qquad W=(a,b),\qquad E=(b,c).\]
+      <p>Horizontal agreement reconstructs each neighborhood; vertical agreement checks the next configuration. The current compiler handles general finite Turing transition data, but its executable demonstration is a two-step toy machine. A separate checker verifies the computation and rejects a tampered accepting row.</p>
+    </div></div>
+    <div class="proof-path"><span>Statement + formal theory</span><b>→</b><span>Proof enumerator + trusted checker</span><b>→</b><span>Accepting computation tiles</span><b>→</b><span>Verified proof</span></div>
+    <p>For a chosen recursively axiomatized theory \(\mathcal T\), compile a machine that enumerates proofs and accepts exactly when it finds a checked derivation of \(\phi\). A finite accepting rectangle would certify \(\mathcal T\vdash\phi\). This accepts provable inputs; it need not terminate on unprovable ones. A general proof checker and its compiler correctness proof are still to be implemented. Computational expressiveness does not decide every mathematical truth.</p>
+    <p class="small">The finite accepting-computation direction differs from classical constructions where a plane tiling encodes non-halting. The latter's undecidability is background, not a certificate produced by this experiment. See <a href="https://siamak.isoperimetric.info/articles/tilings06.pdf">the Wang computation construction</a> and <a href="https://doi.org/10.1090/memo/0066">Berger's original domino result</a>.</p>
+  </section>
+
+  <section id="goals" class="goals">
+    <p class="eyebrow">THE RESEARCH PROGRAM</p><h2>Goals with concrete gates</h2>
+    <ol>
+      <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
+      <li><span class="goal-state done">First result</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. The smallest marking has a checked pair-exclusion soundness argument; longer-range encodings need further certificates.</p></div></li>
+      <li><span class="goal-state active">Pilot running</span><div><h3>RL proposes clusters and sequences</h3><p>Validated irregular sequences and a REINFORCE policy are implemented. Next: spatial clusters, hierarchical composition, stronger held-out evaluation, and measurable benefit after training costs.</p></div></li>
+      <li><span class="goal-state open">Open</span><div><h3>Discover a substitution</h3><p>Infer multiple metatile types and exact expansion maps. Require validated interfaces and at least three recursion levels; do not promote motif frequencies into a rule.</p></div></li>
+      <li><span class="goal-state open">Open</span><div><h3>Certify a plane construction</h3><p>Prove compatible collars and expanding coverage, or an equivalent invariant. Aperiodicity is an additional theorem. Fair activation of untouched points is still missing from growth experiments.</p></div></li>
+      <li><span class="goal-state active">Arithmetic checked</span><div><h3>Transfer to Penrose</h3><p>Close the point-model gap over \(\mathbb Z[\zeta_5]\), then run an unmarked discovery lane with declared translation and reflection rules.</p></div></li>
+      <li><span class="goal-state active">Compiler prototype</span><div><h3>Build checkable proof search</h3><p>Connect a real proof kernel to the computation compiler. Establish a computable statement-to-tiling reduction relative to a specified theory; evaluate search without changing proof validity.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="panel reproducibility">
+    <p class="eyebrow">REPRODUCIBILITY & LIMITS</p><h2>Every claim has a scope.</h2>
+    <p>The solver imports only the turtle's vertices and angle units from the article. Occupancy uses integer capacity \(12\); missing marking values are unconstrained, and zero is assigned. Conformance checks cover independent complete re-enumeration, shared fractional candidates, zero obligations, distant marking-only dependencies, scheduler precedence, symmetry composition, exact rollback, and rejected tampered proofs.</p>
+    <p>Growth activates newly occupied support and has no fair exhaustion of untouched \(A_2\) points yet. All growth results are finite. Learned models are frozen for each run and start anew on every cold iteration. Peak memory is measured for the whole process. Marking synthesis is an equality encoder with free values, not a neural prediction of unseen labels.</p>
+    <pre><code>python3 research/gcts-rl-renewal/run.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p test_research.py -v</code></pre>
+    <p><a href="iteration-001.json">Full run data</a> · <a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/gcts-rl-renewal">Research code and conformance notes</a> · <a href="../../basic-tiling-algorithm.md">Shared algorithm contract</a> · <a href="../../../GCTS-I.html">Turtle article</a></p>
+    <p class="small">Known substitutions and human markings are withheld from the discovery lane. Background comparisons: <a href="https://arxiv.org/abs/2303.10798">Smith, Myers, Kaplan & Goodman-Strauss, An aperiodic monotile</a> establishes substitution structure for the hat family; <a href="https://arxiv.org/abs/2307.12322">Akiyama & Araki, An alternative proof</a> gives another aperiodicity proof. Those theorems are literature results, not discoveries of this learner.</p>
+    <p id="provenance" class="small"></p>
+  </section>
+</main>
+<footer><span>GCTS + RL · Research renewal</span><span>Evidence first. The open goals remain open.</span></footer>
+</body></html>
