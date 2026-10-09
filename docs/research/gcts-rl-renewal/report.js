@@ -10,13 +10,43 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,uniformData,binaryData,computationData,frontierData,conditionalData,turtleCellData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,macroData,compiledData,failureData,bridgeData,bridgeControlData,responseData,resolutionData,fixedKernelData,uniformData,binaryData,computationData,frontierData,conditionalData,turtleCellData,treeKernelData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>turtleCellData?.semantic_tests?.passed??conditionalData?.semantic_tests?.passed??frontierData?.semantic_tests?.passed??computationData?.semantic_tests?.passed??binaryData?.semantic_tests?.passed??uniformData?.semantic_tests?.passed??fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>treeKernelData?.semantic_tests?.passed??turtleCellData?.semantic_tests?.passed??conditionalData?.semantic_tests?.passed??frontierData?.semantic_tests?.passed??computationData?.semantic_tests?.passed??binaryData?.semantic_tests?.passed??uniformData?.semantic_tests?.passed??fixedKernelData?.semantic_tests?.passed??responseData?.semantic_tests?.passed??bridgeData?.semantic_tests?.passed??failureData?.semantic_tests?.passed??compiledData?.semantic_tests?.passed??macroData?.semantic_tests?.passed??coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
 const uniformPrograms=()=>uniformData.source_controls.concat(uniformData.serialized_components,uniformData.operation_cases);
 const uniformCellColor=s=>Array.isArray(s)?'#c76b3d':s==='B'?'#f4f1e9':s==='0'?'#91b8a1':s==='1'?'#557c92':s==='p'?'#dfd2a0':['L','#','|','$','P'].includes(s)?'#a4b3a2':['a','b','c','d','e','f','g','H','R',',',';'].includes(s)?'#bccbd1':'#a889b0';
 function uniformTableRow(id,values){
   const row=document.createElement('tr');for(const v of values){const td=document.createElement('td');td.textContent=v;row.append(td);}$(id).append(row);
+}
+function treeKernelRunView(){
+  const d=treeKernelData,row=d.cases.concat(d.machine_controls).find(r=>r.name===$('tree-kernel-case').value),r=row.check.result,svg=$('tree-kernel-profile');svg.replaceChildren();
+  $('tree-kernel-case-caption').textContent=row.name+' · '+r.status+' · '+r.steps.toLocaleString()+' instructions · '+r.heap_nodes.toLocaleString()+' heap nodes · peak '+r.peak_frames+' call frames · '+row.check.seconds.toFixed(3)+' s. Initial typed input contains '+row.check.initial.nodes.length.toLocaleString()+' cons cells.';
+  const calls=Object.entries(r.profile).sort((a,b)=>b[1]-a[1]).slice(0,10),largest=calls[0]?.[1]||1;
+  svgText(svg,25,24,'Static function calls in this complete run',{'font-size':13,fill:'#23332f'});
+  calls.forEach(([name,n],i)=>{const y=43+i*26;svgText(svg,25,y+14,name,{'font-size':11});svg.append(el('rect',{x:200,y,width:620*n/largest,height:17,rx:3,fill:'#618d74','data-tree-function':name}));svgText(svg,830,y+14,n.toLocaleString(),{'font-size':11});});
+  if(!calls.length)svgText(svg,25,75,'The step budget ended before a function call.');
+  $('tree-kernel-trace').replaceChildren();r.trace.forEach((event,i)=>{const [f,pc,op,...values]=event;uniformTableRow('tree-kernel-trace',[i+1,d.program.functions[f].name+' / '+pc,op,JSON.stringify(values.length===1?values[0]:values)]);});
+}
+function treeKernelResults(){
+  const d=treeKernelData,a=d.independent_audit,p=d.program;
+  $('tree-kernel-finding').textContent=d.cases.length+' semantic cases agree with the frozen checker. One fixed program has '+p.functions.length+' functions and '+p.functions.reduce((n,f)=>n+f.code.length,0).toLocaleString()+' instructions. Independent replay reconstructs '+a.steps.toLocaleString()+' executed instructions, including resource controls.';
+  const pipeline=$('tree-kernel-pipeline');pipeline.replaceChildren();
+  const stages=[{x:10,w:210,title:'External theorem + proof',lines:['Pinned theory and target','Arbitrary serialized syntax'],color:'#ecefe4'},
+    {x:245,w:215,title:'Native syntax adapter',lines:['Strict JSON and byte bounds','Tagged byte / cons input'],color:'#f4e4cb'},
+    {x:485,w:245,title:'Fixed semantic program',lines:['All rules and side conditions','Generic operations; replayed'],color:'#dceade'},
+    {x:755,w:235,title:'Literal tape + Wang',lines:['Encode heap and call frames','Remaining implementation'],color:'#fffdf8',open:true}];
+  stages.forEach((s,i)=>{pipeline.append(el('rect',{x:s.x,y:35,width:s.w,height:140,rx:5,fill:s.color,stroke:s.open?'#a38667':'#bbcbb9','stroke-width':1.3,'stroke-dasharray':s.open?'6 4':'none','data-tree-stage':s.open?'open':'implemented'}));svgText(pipeline,s.x+12,64,s.title,{'font-size':13,fill:'#23332f'});s.lines.forEach((line,j)=>svgText(pipeline,s.x+12,95+22*j,line,{'font-size':11}));if(i)svgText(pipeline,s.x-18,116,'›',{'font-size':24,fill:'#276a53'});});
+  svgText(pipeline,12,205,'The machine interprets a fixed checker. Request data does not define inference rules.',{'font-size':12});
+  $('tree-kernel-table').replaceChildren();for(const [group,r] of Object.entries(d.groups))uniformTableRow('tree-kernel-table',[group,r.accepted+' / '+r.rejected,r.steps.toLocaleString(),r.seconds.toFixed(3),r.reference_seconds.toFixed(3)]);
+  const svg=$('tree-kernel-scaling');svg.replaceChildren();const counts=[1,4,16],records=counts.map(n=>[n,d.cases.find(r=>r.name==='modular-induction-'+n),d.cases.find(r=>r.name==='flat-induction-'+n)]),largest=Math.max(...records.map(r=>r[2].check.result.steps));
+  svgText(svg,25,25,'Measured instruction count (same pinned theorem)',{'font-size':13,fill:'#23332f'});
+  records.forEach(([n,mod,flat],i)=>{const y=58+i*68;svgText(svg,25,y+15,n+' calls',{'font-size':12});[mod,flat].forEach((row,j)=>{const r=row.check.result;svg.append(el('rect',{x:130,y:y+j*24,width:680*r.steps/largest,height:17,rx:3,fill:j?'#c79343':'#618d74','data-tree-scaling':row.name}));svgText(svg,825,y+j*24+14,r.steps.toLocaleString(),{'font-size':11});});});
+  svgText(svg,130,279,'Green: checked blocks. Gold: complete expansion.',{'font-size':11});
+  const [n,mod,flat]=records[2],ratio=flat.check.result.steps/mod.check.result.steps;
+  $('tree-kernel-scaling-caption').textContent='At '+n+' calls, checked blocks use '+ratio.toFixed(2)+' times fewer tree instructions: '+mod.check.seconds.toFixed(3)+' s versus '+flat.check.seconds.toFixed(3)+' s. One call has setup overhead. Across all semantic controls, this tree implementation costs '+(d.cases.reduce((n,r)=>n+r.check.seconds,0)/d.cases.reduce((n,r)=>n+r.reference.seconds,0)).toFixed(0)+' times the host reference time; this is a port experiment, without a practical solver speed claim.';
+  const names=['induction','modular-induction-16','flat-induction-16','capture-fresh12','unicode-induction-order','reflexivity','missing-induction-authorization','zero-step-bound','inside-inference-step-bound','heap-allocation-bound'];
+  $('tree-kernel-case').replaceChildren(...names.map(n=>choice(n,n)));$('tree-kernel-case').value='modular-induction-16';$('tree-kernel-case').addEventListener('change',treeKernelRunView);treeKernelRunView();
+  $('tree-kernel-audit').textContent='Every '+a.cases+' saved machine run and '+a.adapter_controls+' native adapter controls are independently checked. '+a.mutations_rejected.length+' changed bindings, heap declarations, events, results, limits or instruction pins reject. Producer '+d.total_seconds.toFixed(3)+' s, peak '+fmt(d.peak_process_memory_bytes/1048576)+' MiB; sequential independent replay '+a.seconds.toFixed(3)+' s, peak '+fmt(a.peak_process_memory_bytes/1048576)+' MiB. '+suiteTests()+' research tests pass. Program SHA-256: '+d.program_sha256+'. Literal tape/Wang lowering and a universal equivalence proof remain open.';
 }
 const cellDirections=[[1,0],[0,1],[-1,1],[-1,0],[0,-1],[1,-1]];
 function cellFlag([x,y,i,s]){
@@ -487,7 +517,7 @@ function failureStageView(){
 async function loadFailureStage(){
   const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
   try{
-    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r22.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r23.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
     if(ticket===failureRequest)failureStageView();
   }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
 }
@@ -643,7 +673,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r22.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r23.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -1201,73 +1231,78 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const conditionalResponse=await fetch('conditional-clusters-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const treeKernelResponse=await fetch('tree-kernel-001.json?v=20261009-r23.1',{cache:'no-cache'});
+    if(!treeKernelResponse.ok)throw new Error('Tree checker snapshot unavailable.');
+    treeKernelData=await treeKernelResponse.json();
+    if(!treeKernelData.independent_audit||!treeKernelData.semantic_tests)throw new Error('Tree checker replay or tests are pending.');
+    treeKernelResults();
+    const conditionalResponse=await fetch('conditional-clusters-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!conditionalResponse.ok)throw new Error('Conditional cluster snapshot returned '+conditionalResponse.status);
     conditionalData=await conditionalResponse.json();
     if(!conditionalData.independent_audit||!conditionalData.semantic_tests)throw new Error('Conditional cluster replay or tests are pending.');
-    const turtleCellResponse=await fetch('turtle-cells-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const turtleCellResponse=await fetch('turtle-cells-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!turtleCellResponse.ok)throw new Error('Turtle cell snapshot returned '+turtleCellResponse.status);
     turtleCellData=await turtleCellResponse.json();
     if(!turtleCellData.independent_audit||!turtleCellData.semantic_tests)throw new Error('Turtle geometric hypotheses or tests are pending.');
     turtleCellResults();
-    const frontierResponse=await fetch('frontier-responses-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const frontierResponse=await fetch('frontier-responses-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!frontierResponse.ok)throw new Error('Current-frontier snapshot returned '+frontierResponse.status);
     frontierData=await frontierResponse.json();
     if(!frontierData.independent_audit||!frontierData.semantic_tests)throw new Error('Current-frontier replay or tests are pending.');
     frontierResults();
-    const computationResponse=await fetch('computation-blocks-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const computationResponse=await fetch('computation-blocks-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!computationResponse.ok)throw new Error('Computation response data is missing.');
     computationData=await computationResponse.json();
     if(!computationData.independent_audit||!computationData.semantic_tests)throw new Error('Computation response replay or tests are pending.');
-    const binaryResponse=await fetch('binary-machine-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const binaryResponse=await fetch('binary-machine-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!binaryResponse.ok)throw new Error('Compact interpreter snapshot unavailable.');
     binaryData=await binaryResponse.json();
     if(!binaryData.independent_audit||!binaryData.semantic_tests)throw new Error('Compact interpreter replay or tests are pending.');
     binaryResults();computationResults();
-    const uniformResponse=await fetch('uniform-machine-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const uniformResponse=await fetch('uniform-machine-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!uniformResponse.ok)throw new Error('Literal interpreter snapshot unavailable.');
     uniformData=await uniformResponse.json();
     if(!uniformData.independent_audit||!uniformData.semantic_tests)throw new Error('Literal interpreter replay or tests are pending.');
     uniformResults();
-    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const fixedResponse=await fetch('serialized-kernel-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!fixedResponse.ok)throw new Error('Fixed checker snapshot could not be loaded.');
     fixedKernelData=await fixedResponse.json();
     if(!fixedKernelData.independent_audit||!fixedKernelData.semantic_tests)throw new Error('Fixed checker replay or tests are pending.');
     fixedKernelResults();
-    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r22.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r22.1',{cache:'no-cache'})]);
+    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r23.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r23.1',{cache:'no-cache'})]);
     if(responseSnapshots.some(r=>!r.ok))throw new Error('Boundary response snapshots could not be loaded.');
     [responseData,resolutionData]=await Promise.all(responseSnapshots.map(r=>r.json()));
     if(!responseData.independent_audit||!resolutionData.independent_audit||!responseData.semantic_tests)throw new Error('Boundary response replay or tests are pending.');
     responseResults();conditionalResults();
-    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r22.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r22.1',{cache:'no-cache'})]);
+    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r23.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r23.1',{cache:'no-cache'})]);
     if(bridgeResponses.some(r=>!r.ok))throw new Error('Hierarchy proof snapshots could not be loaded.');
     [bridgeData,bridgeControlData]=await Promise.all(bridgeResponses.map(r=>r.json()));
     if(!bridgeData.independent_audit||!bridgeData.semantic_tests)throw new Error('Hierarchy proof replay or tests are pending.');
     bridgeResults();
-    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
     failureData=await failureResponse.json();
     if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
     failureResults();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -1280,46 +1315,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r22.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r22.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r22.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r22.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r23.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r22.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r23.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Turtle polygon and cell-region theorem: finite hypotheses independently checked · ${suiteTests()} semantic tests pass · practical acceleration, arbitrary boundary shapes, learned markings, the logical checker port and infinite constructions remain open.`;
+    $("load-status").textContent=`Complete logical semantics run in a fixed tree program with independent instruction replay · ${suiteTests()} semantic tests pass · literal tape/Wang lowering, practical tiling acceleration and infinite constructions remain open.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

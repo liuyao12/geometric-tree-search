@@ -1,0 +1,466 @@
+# Fixed program. Only finite atoms, cons/head/tail, tests, branches and calls.
+# JSON decoding and external problem pinning are separate syntax/binding layers.
+def main(request):
+    if not fields(request, l5("protocol", "theory", "blocks", "proof", "target")):
+        return False
+    if not text_is(get(request, "protocol"), "gcts-fol-1"):
+        return False
+    theory = get(request, "theory")
+    if not fields(theory, l4("functions", "predicates", "axioms", "schemas")):
+        return False
+    functions = get(theory, "functions")
+    predicates = get(theory, "predicates")
+    axioms = get(theory, "axioms")
+    schemas = get(theory, "schemas")
+    if not signature_ok(functions) or not signature_ok(predicates) or not is_type(axioms, 0) or not is_type(schemas, 1):
+        return False
+    if not nil(tail(schemas)):
+        if not size1(tail(schemas)) or not text_is(head(tail(schemas)), "nat-induction"):
+            return False
+    rows = tail(axioms)
+    while not nil(rows):
+        formula = tail(head(rows))
+        if not formula_ok(formula, functions, predicates) or not nil(free(formula, False)):
+            return False
+        rows = tail(rows)
+    blocks = get(request, "blocks")
+    target = get(request, "target")
+    if not is_type(blocks, 1) or not formula_ok(target, functions, predicates):
+        return False
+    registry = check_blocks(tail(blocks), None, theory)
+    if not nil(registry) and not is_pair(registry):
+        return False
+    return proof(get(request, "proof"), target, None, registry, theory)
+
+def nil(x):
+    return atom_eq(x, None)
+def same(a, b):
+    if not is_pair(a) or not is_pair(b):
+        return atom_eq(a, b)
+    return same(head(a), head(b)) and same(tail(a), tail(b))
+def l1(a):
+    return cons(a, None)
+def l2(a, b):
+    return cons(a, l1(b))
+def l3(a, b, c):
+    return cons(a, l2(b, c))
+def l4(a, b, c, d):
+    return cons(a, l3(b, c, d))
+def l5(a, b, c, d, e):
+    return cons(a, l4(b, c, d, e))
+def l6(a, b, c, d, e, f):
+    return cons(a, l5(b, c, d, e, f))
+def size1(a):
+    return is_pair(a) and nil(tail(a))
+def size2(a):
+    return is_pair(a) and size1(tail(a))
+def size3(a):
+    return is_pair(a) and size2(tail(a))
+def second(a):
+    return head(tail(a))
+def third(a):
+    return head(tail(tail(a)))
+def append(a, b):
+    if nil(a):
+        return b
+    return cons(head(a), append(tail(a), b))
+def reverse(a):
+    out = None
+    while not nil(a):
+        out = cons(head(a), out)
+        a = tail(a)
+    return out
+def length(a):
+    out = None
+    while not nil(a):
+        out = cons(1, out)
+        a = tail(a)
+    return out
+def nth(a, n):
+    while not nil(n):
+        if nil(a):
+            return False
+        a = tail(a)
+        n = tail(n)
+    if nil(a):
+        return False
+    return head(a)
+def member(x, a):
+    while not nil(a):
+        if same(x, head(a)):
+            return True
+        a = tail(a)
+    return False
+def is_type(a, tag):
+    return is_pair(a) and atom_eq(head(a), tag)
+def text_is(a, name):
+    return is_type(a, 2) and same(tail(a), name)
+def get(a, name):
+    if not is_type(a, 0):
+        return False
+    rows = tail(a)
+    while not nil(rows):
+        row = head(rows)
+        if same(head(row), name):
+            return tail(row)
+        rows = tail(rows)
+    return False
+def fields(a, expected):
+    if not is_type(a, 0) or not same(length(tail(a)), length(expected)):
+        return False
+    rows = tail(a)
+    while not nil(rows):
+        if not member(head(head(rows)), expected):
+            return False
+        rows = tail(rows)
+    return True
+def signature_ok(a):
+    if not is_type(a, 0):
+        return False
+    rows = tail(a)
+    while not nil(rows):
+        if not is_type(tail(head(rows)), 3):
+            return False
+        rows = tail(rows)
+    return True
+def tag(a):
+    return tail(head(tail(a)))
+def arg1(a):
+    return second(tail(a))
+def arg2(a):
+    return third(tail(a))
+def jstr(a):
+    return cons(2, a)
+def arr(a):
+    return cons(1, a)
+def make1(t):
+    return arr(l1(jstr(t)))
+def make2(t, a):
+    return arr(l2(jstr(t), a))
+def make3(t, a, b):
+    return arr(l3(jstr(t), a, b))
+def var(x):
+    return make2("var", jstr(x))
+def fun(x, args):
+    return make3("fun", jstr(x), arr(args))
+def all(x, a):
+    return make3("all", jstr(x), a)
+def imp(a, b):
+    return make3("imp", a, b)
+def eq(a, b):
+    return make3("eq", a, b)
+def term_ok(a, functions):
+    if not is_type(a, 1):
+        return False
+    body = tail(a)
+    if size2(body) and text_is(head(body), "var"):
+        return is_type(second(body), 2)
+    if not size3(body) or not text_is(head(body), "fun") or not is_type(second(body), 2) or not is_type(third(body), 1):
+        return False
+    arity = get(functions, tail(second(body)))
+    args = tail(third(body))
+    if not is_type(arity, 3) or not same(tail(arity), length(args)):
+        return False
+    while not nil(args):
+        if not term_ok(head(args), functions):
+            return False
+        args = tail(args)
+    return True
+def formula_ok(a, functions, predicates):
+    if not is_type(a, 1):
+        return False
+    body = tail(a)
+    if size1(body) and text_is(head(body), "bot"):
+        return True
+    if size2(body) and text_is(head(body), "not"):
+        return formula_ok(second(body), functions, predicates)
+    if not size3(body):
+        return False
+    if text_is(head(body), "eq"):
+        return term_ok(second(body), functions) and term_ok(third(body), functions)
+    if text_is(head(body), "pred"):
+        if not is_type(second(body), 2) or not is_type(third(body), 1):
+            return False
+        arity = get(predicates, tail(second(body)))
+        args = tail(third(body))
+        if not is_type(arity, 3) or not same(tail(arity), length(args)):
+            return False
+        while not nil(args):
+            if not term_ok(head(args), functions):
+                return False
+            args = tail(args)
+        return True
+    if text_is(head(body), "all"):
+        return is_type(second(body), 2) and formula_ok(third(body), functions, predicates)
+    if text_is(head(body), "imp") or text_is(head(body), "and") or text_is(head(body), "or"):
+        return formula_ok(second(body), functions, predicates) and formula_ok(third(body), functions, predicates)
+    return False
+def byte_less(a, b):
+    # Byte order by a finite unary table generated through byte successor.
+    n = 0
+    while not atom_eq(n, a) and not atom_eq(n, b):
+        n = next_byte(n)
+    return atom_eq(n, a) and not atom_eq(a, b)
+def next_byte(n):
+    return byte_succ(n)
+def text_less(a, b):
+    if nil(a):
+        return not nil(b)
+    if nil(b):
+        return False
+    if atom_eq(head(a), head(b)):
+        return text_less(tail(a), tail(b))
+    return byte_less(head(a), head(b))
+def insert(x, a):
+    if nil(a):
+        return l1(x)
+    if same(x, head(a)):
+        return a
+    if text_less(x, head(a)):
+        return cons(x, a)
+    return cons(head(a), insert(x, tail(a)))
+def union(a, b):
+    while not nil(a):
+        b = insert(head(a), b)
+        a = tail(a)
+    return b
+def remove(x, a):
+    if nil(a):
+        return None
+    if same(x, head(a)):
+        return tail(a)
+    return cons(head(a), remove(x, tail(a)))
+def term_free(t):
+    if same(tag(t), "var"):
+        return l1(tail(arg1(t)))
+    args = tail(arg2(t))
+    out = None
+    while not nil(args):
+        out = union(term_free(head(args)), out)
+        args = tail(args)
+    return out
+def free(a, bound):
+    t = tag(a)
+    if same(t, "all"):
+        names = free(arg2(a), bound)
+        if bound:
+            return insert(tail(arg1(a)), names)
+        return remove(tail(arg1(a)), names)
+    if same(t, "eq"):
+        return union(term_free(arg1(a)), term_free(arg2(a)))
+    if same(t, "pred"):
+        args = tail(arg2(a))
+        out = None
+        while not nil(args):
+            out = union(term_free(head(args)), out)
+            args = tail(args)
+        return out
+    if same(t, "bot"):
+        return None
+    if same(t, "not"):
+        return free(arg1(a), bound)
+    return union(free(arg1(a), bound), free(arg2(a), bound))
+def subst_args(args, x, replacement):
+    if nil(args):
+        return None
+    return cons(subst_term(head(args), x, replacement), subst_args(tail(args), x, replacement))
+def subst_term(t, x, replacement):
+    if same(tag(t), "var"):
+        if same(tail(arg1(t)), x):
+            return replacement
+        return t
+    return fun(tail(arg1(t)), subst_args(tail(arg2(t)), x, replacement))
+def increment_digits(d):
+    if nil(d):
+        return l1(49)
+    if atom_eq(head(d), 57):
+        return cons(48, increment_digits(tail(d)))
+    return cons(next_byte(head(d)), tail(d))
+def decimal(n):
+    digits = l1(48)
+    while not nil(n):
+        digits = increment_digits(digits)
+        n = tail(n)
+    return reverse(digits)
+def subst(a, x, replacement):
+    t = tag(a)
+    if same(t, "all"):
+        y = tail(arg1(a))
+        body = arg2(a)
+        if same(x, y) or not member(x, free(body, False)):
+            return a
+        if member(y, term_free(replacement)):
+            occupied = union(free(body, True), union(term_free(replacement), l2(x, y)))
+            n = None
+            name = append("fresh", decimal(n))
+            while member(name, occupied):
+                n = cons(1, n)
+                name = append("fresh", decimal(n))
+            body = subst(body, y, var(name))
+            y = name
+        return all(y, subst(body, x, replacement))
+    if same(t, "eq"):
+        return eq(subst_term(arg1(a), x, replacement), subst_term(arg2(a), x, replacement))
+    if same(t, "pred"):
+        return make3("pred", arg1(a), arr(subst_args(tail(arg2(a)), x, replacement)))
+    if same(t, "bot"):
+        return a
+    if same(t, "not"):
+        return make2("not", subst(arg1(a), x, replacement))
+    return make3(t, subst(arg1(a), x, replacement), subst(arg2(a), x, replacement))
+def collect_atoms(a, found):
+    t = tag(a)
+    if same(t, "not"):
+        return collect_atoms(arg1(a), found)
+    if same(t, "imp") or same(t, "and") or same(t, "or"):
+        return collect_atoms(arg2(a), collect_atoms(arg1(a), found))
+    if same(t, "bot") or member(a, found):
+        return found
+    return cons(a, found)
+def truth(a, env):
+    t = tag(a)
+    if same(t, "bot"):
+        return False
+    if same(t, "not"):
+        return not truth(arg1(a), env)
+    if same(t, "imp"):
+        return not truth(arg1(a), env) or truth(arg2(a), env)
+    if same(t, "and"):
+        return truth(arg1(a), env) and truth(arg2(a), env)
+    if same(t, "or"):
+        return truth(arg1(a), env) or truth(arg2(a), env)
+    while not nil(env):
+        if same(a, head(head(env))):
+            return tail(head(env))
+        env = tail(env)
+    return False
+def valuations(atoms, env, a):
+    if nil(atoms):
+        return truth(a, env)
+    rest = tail(atoms)
+    return valuations(rest, cons(cons(head(atoms), False), env), a) and valuations(rest, cons(cons(head(atoms), True), env), a)
+def tautology(a):
+    return valuations(collect_atoms(a, None), None, a)
+def induction(x, p):
+    base = subst(p, x, fun("zero", None))
+    step = all(x, imp(p, subst(p, x, fun("succ", l1(var(x))))))
+    result = imp(make3("and", base, step), all(x, p))
+    names = reverse(remove(x, free(p, False)))
+    while not nil(names):
+        result = all(head(names), result)
+        names = tail(names)
+    return result
+def formulas_ok(a, functions, predicates):
+    while not nil(a):
+        if not formula_ok(head(a), functions, predicates):
+            return False
+        a = tail(a)
+    return True
+def lookup(registry, name):
+    while not nil(registry):
+        if same(head(head(registry)), name):
+            return tail(head(registry))
+        registry = tail(registry)
+    return False
+def check_blocks(blocks, registry, theory):
+    while not nil(blocks):
+        b = head(blocks)
+        if not fields(b, l4("name", "premises", "conclusion", "proof")) or not is_type(get(b, "name"), 2):
+            return False
+        name = tail(get(b, "name"))
+        if is_pair(lookup(registry, name)):
+            return False
+        premises = get(b, "premises")
+        conclusion = get(b, "conclusion")
+        if not is_type(premises, 1) or not formulas_ok(tail(premises), get(theory, "functions"), get(theory, "predicates")) or not formula_ok(conclusion, get(theory, "functions"), get(theory, "predicates")):
+            return False
+        if not proof(get(b, "proof"), conclusion, tail(premises), registry, theory):
+            return False
+        registry = cons(cons(name, cons(tail(premises), conclusion)), registry)
+        blocks = tail(blocks)
+    return registry
+def references(indices, proved, premises):
+    while not nil(indices) and not nil(premises):
+        index = head(indices)
+        if not is_type(index, 3) or not same(nth(proved, tail(index)), head(premises)):
+            return False
+        indices = tail(indices)
+        premises = tail(premises)
+    return nil(indices) and nil(premises)
+def proof(lines, target, assumptions, registry, theory):
+    if not is_type(lines, 1) or nil(tail(lines)):
+        return False
+    functions = get(theory, "functions")
+    predicates = get(theory, "predicates")
+    forbidden = None
+    pending = assumptions
+    while not nil(pending):
+        forbidden = union(free(head(pending), False), forbidden)
+        pending = tail(pending)
+    proved = None
+    pending = tail(lines)
+    while not nil(pending):
+        line = head(pending)
+        a = get(line, "formula")
+        rule = get(line, "rule")
+        if not formula_ok(a, functions, predicates) or not is_type(rule, 2):
+            return False
+        if not rule_ok(line, a, tail(rule), proved, assumptions, forbidden, registry, theory):
+            return False
+        proved = append(proved, l1(a))
+        pending = tail(pending)
+    return same(a, target)
+def prior(line, field, proved):
+    index = get(line, field)
+    if not is_type(index, 3):
+        return False
+    return nth(proved, tail(index))
+def rule_ok(line, a, rule, proved, assumptions, forbidden, registry, theory):
+    if same(rule, "axiom"):
+        name = get(line, "name")
+        return fields(line, l3("rule", "formula", "name")) and is_type(name, 2) and same(a, get(get(theory, "axioms"), tail(name)))
+    if same(rule, "tautology"):
+        return fields(line, l2("rule", "formula")) and tautology(a)
+    if same(rule, "refl"):
+        return fields(line, l2("rule", "formula")) and same(tag(a), "eq") and same(arg1(a), arg2(a))
+    if same(rule, "instantiate"):
+        u = get(line, "universal")
+        t = get(line, "term")
+        return fields(line, l4("rule", "formula", "universal", "term")) and formula_ok(u, get(theory, "functions"), get(theory, "predicates")) and term_ok(t, get(theory, "functions")) and same(tag(u), "all") and same(a, imp(u, subst(arg2(u), tail(arg1(u)), t)))
+    if same(rule, "distribute"):
+        x = get(line, "variable")
+        p = get(line, "antecedent")
+        q = get(line, "consequent")
+        return fields(line, l5("rule", "formula", "variable", "antecedent", "consequent")) and is_type(x, 2) and formula_ok(p, get(theory, "functions"), get(theory, "predicates")) and formula_ok(q, get(theory, "functions"), get(theory, "predicates")) and not member(tail(x), free(p, False)) and same(a, imp(all(tail(x), imp(p, q)), imp(p, all(tail(x), q))))
+    if same(rule, "eq_subst"):
+        x = get(line, "variable")
+        p = get(line, "template")
+        s = get(line, "left")
+        t = get(line, "right")
+        return fields(line, l6("rule", "formula", "variable", "template", "left", "right")) and is_type(x, 2) and formula_ok(p, get(theory, "functions"), get(theory, "predicates")) and term_ok(s, get(theory, "functions")) and term_ok(t, get(theory, "functions")) and same(a, imp(eq(s, t), imp(subst(p, tail(x), s), subst(p, tail(x), t))))
+    if same(rule, "mp"):
+        p = prior(line, "antecedent", proved)
+        q = prior(line, "implication", proved)
+        return fields(line, l4("rule", "formula", "antecedent", "implication")) and is_pair(p) and is_pair(q) and same(q, imp(p, a))
+    if same(rule, "generalize"):
+        x = get(line, "variable")
+        p = prior(line, "source", proved)
+        return fields(line, l4("rule", "formula", "variable", "source")) and is_type(x, 2) and is_pair(p) and not member(tail(x), forbidden) and same(a, all(tail(x), p))
+    if same(rule, "induction"):
+        x = get(line, "variable")
+        p = get(line, "template")
+        schemas = get(theory, "schemas")
+        z = get(get(theory, "functions"), "zero")
+        s = get(get(theory, "functions"), "succ")
+        return fields(line, l4("rule", "formula", "variable", "template")) and is_type(x, 2) and formula_ok(p, get(theory, "functions"), get(theory, "predicates")) and is_pair(tail(schemas)) and is_type(z, 3) and nil(tail(z)) and is_type(s, 3) and size1(tail(s)) and same(a, induction(tail(x), p))
+    if same(rule, "assumption"):
+        index = get(line, "index")
+        return fields(line, l3("rule", "formula", "index")) and is_type(index, 3) and same(a, nth(assumptions, tail(index)))
+    if same(rule, "block"):
+        name = get(line, "name")
+        indices = get(line, "inputs")
+        if not fields(line, l4("rule", "formula", "name", "inputs")) or not is_type(name, 2) or not is_type(indices, 1):
+            return False
+        interface = lookup(registry, tail(name))
+        return is_pair(interface) and same(a, tail(interface)) and references(tail(indices), proved, head(interface))
+    return False

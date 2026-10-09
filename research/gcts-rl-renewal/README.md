@@ -2498,3 +2498,96 @@ the logical checker port and an infinite turtle construction remain active.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_turtle_cells.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_turtle_cells.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+## 23. Complete logical semantics as a fixed tree program
+
+The proof-system track now has a complete semantic port of `gcts-fol-1`,
+including signature and syntax checking, every inference rule, free-variable
+conditions, capture-avoiding substitution, registered natural-number induction
+and exact checked-block interfaces. This removes the host inference callbacks
+from the execution path. It is an intermediate operational port; literal
+tape/Wang lowering remains open.
+
+`fol_checker.tree` is fixed source in a small Python-shaped language. It has no
+imports, dynamic calls, host data-structure operations, exceptions or access to
+the proof as executable code. `tree_machine.py` compiles it into \(64\) static
+functions and \(1958\) instructions. The generic operations are constants,
+register moves, pair allocation and projections, pair and atom tests, byte
+successor, Boolean negation, branches, jumps, static calls and returns. Atoms
+are bytes plus nil; immutable pairs form an acyclic hash-consed heap. Explicit
+frames implement recursive calls without native function recursion. Neither
+the generic interpreter nor any primitive knows terms, formulas or inference
+rules. The fixed declaration's SHA-256 is
+`5f3aaf81e325654d30cc116a8f412c3152e75ccb4e0d781882180e8d0ec1fa31`.
+
+The native adapter strictly parses serialized JSON, rejects duplicate keys
+and noninteger numbers, and pins the external theory and target. It encodes
+only syntax: distinct tags for objects, arrays, strings, naturals, negatives,
+Booleans and null. Text is a UTF-8 byte list using surrogate-pass encoding;
+naturals are unary lists. The program checks all semantics over those trees,
+including decimal fresh names and ordered Unicode free-variable closure.
+Unary numbers and whole-tree comparison are intentionally simple and costly.
+Native parser, allocation and hashing limits remain declared adapters.
+Every byte, heap or step exhaustion is an explicit unknown result, never a
+failed theorem, learned failure label or pruning certificate.
+
+All \(834\) semantic cases agree with the frozen serialized host checker:
+\(217\) accept and \(617\) reject. This includes the \(816\) earlier controls,
+with exhaustive two-atom propositional syntax through five nodes, plus
+\(18\) port controls. New controls force freshness past twelve occupied names,
+shadowed binders, Unicode/surrogate ordering, forbidden distribution variables,
+unused invalid blocks, malformed signatures and repeated arithmetic blocks.
+No finite syntax catalog restricts the request grammar. Finite comparisons do
+not establish universal semantic equivalence or kernel soundness.
+
+The authored addition control proves
+\(\forall n:\operatorname{add}(\operatorname{zero},n)=n\) from right-recursive
+addition axioms and the registered induction schema. The same checked response
+is called \(1\), \(4\) and \(16\) times; the matched control expands every
+primitive line while preserving the same external theorem. At \(1\) call,
+blocks cost \(576825\) instructions against \(450585\) for expansion.
+At \(4\), the counts are \(610281\) and \(1652010\). At \(16\), they are
+\(745005\) and \(6896190\), with \(1.508\) versus \(13.909\) seconds:
+checked interfaces use \(9.26\) times fewer instructions. Blocks themselves
+are verified once per request. These are authored proof abstractions, without
+block discovery, RL training or GCTS proof search. Across all controls,
+the tree checker costs about \(969\) times the host reference time; this does
+not establish practical acceleration.
+
+`audit_tree_kernel.py` imports none of the compiler, producer, host logical
+kernel or request generators. It independently validates acyclic exact heaps,
+decodes the syntax input back to the external request, checks theorem and
+program pins, and executes the small-step instruction semantics with a
+separate frame implementation. All \(837\) machine runs replay, including
+three valid proofs stopped by machine budgets. It reconstructs
+\(31922347\) instructions, terminal statuses, profiles, node counts, frame
+peaks, event prefixes and complete event digests. Eight independent pre-machine
+parse/resource/binding controls agree. Fifteen mutations reject, covering
+altered requests and pins, bad heaps, altered events/results, limits and
+changed program instructions.
+
+All \(254\) research tests pass in \(82.075\) seconds. Fourteen new tests
+exercise generic control flow, strict heaps and input types, capture avoidance,
+Unicode ordering, logical side conditions, external pins, resource outcomes
+and replay mutations. The full-suite log and all test-source hashes are bound
+in the new artifact.
+
+The sequential producer costs \(66.555\) seconds, peak \(54.16\) MiB;
+independent replay costs \(68.412\) seconds, peak \(80.77\) MiB. The producer
+exports the fixed declaration, every encoded initial heap, raw certificate
+bytes, outcomes, costs, explicit limits and source bindings in
+`tree-kernel-001.json`. The report exposes the trust boundary, measured
+block reuse, actual function-call profiles and saved event prefixes.
+
+No tiling graph, candidate legality, scheduler, policy, marking or historical
+certificate is changed. The next literal stage must represent the heap,
+registers and frames on finite tape, implement their generic operations with
+the existing fixed interpreter, bind the external request, and independently
+verify accepting Wang rectangles. A universal equivalence proof, useful
+proof-block discovery, internalized geometric lemmas and harder proof search
+remain open. Practical region acceleration, richer boundary interfaces,
+Penrose continuation and an infinite turtle construction remain active.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_tree_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_tree_kernel.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
