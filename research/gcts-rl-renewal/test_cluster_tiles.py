@@ -25,6 +25,9 @@ class ClusterTests(unittest.TestCase):
         with self.assertRaises(ValueError):c.ClusterModel([self.single,self.pair,altered])
         altered=dataclasses.replace(parent,children=(('parent',0,(0,0,0)),))
         with self.assertRaises(ValueError):c.ClusterModel([self.single,self.pair,altered])
+        altered=dataclasses.replace(parent,expansion=(),occupancy=(),marks=(),children=())
+        with self.assertRaises(ValueError):c.ClusterModel([altered])
+        with self.assertRaises(ValueError):c.ClusterModel([dataclasses.replace(self.single,level=-1)])
 
     def test_scalar_channel_action_all_symmetries_and_expansion_replay(self):
         model=c.ClusterModel([self.single,self.pair])

@@ -121,6 +121,7 @@ def compose_type(model,identity,children,own_marking=None):
     return make_type(model.base,identity,level,expansion,marks.items(),own_marking,children)
 
 def verify_expansion(base,t):
+    if not isinstance(t.identity,str) or not t.identity or type(t.level) is not int or t.level<0 or not t.expansion:return False
     if len(t.expansion)!=len(set(t.expansion)) or not verify_patch(base,t.expansion):return False
     totals=Counter();base_marks={}
     for key in t.expansion:
