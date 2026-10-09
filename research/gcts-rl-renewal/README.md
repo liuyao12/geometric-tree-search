@@ -2118,3 +2118,127 @@ continuation remain open. Substitution remains optional.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_computation_blocks.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_computation_blocks.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+## 20. Resolve responses at the current frontier; visit each base child once
+
+`frontier_responses.py` returns to practical turtle region solving. It explicitly
+reuses notebook 15's SHA-bound unmarked response atlas, without importing any
+earlier policy or markings. No frozen engine, geometry, atlas or artifact changes.
+This is an adaptive engineering follow-up on the six earlier declared targets;
+new seeds do not make these independent boundary-generalization controls.
+
+The previous traversal treats every response and singleton as a separate DFS
+action. Several actions can share the first key, execute only that first move
+and then explore the same child again. The new traversal groups proposals by
+their first base key, selects a preferred suffix for each and visits each base
+child once. At later states, a pending suffix orders the actual selected base
+domain, retaining every other alternative. This is an analytic reorganization
+of complete base search, not learned pruning. It changes macro branching
+granularity and order, so it is not a same-path caching ablation.
+
+All mutable graph obligations remain base tiles. Global dead checks precede
+forced moves and earliest-generation branching; candidate count only breaks
+generation ties. Every response constituent is revalidated against that full
+graph. A mismatching forced or branch domain closes the suffix. Exact state
+and graph copies implement rollback. Atlas proposals never alter domains,
+marks, generations, the required set or the admissible support envelope.
+All singleton alternatives survive full evaluation. A cutoff is unknown;
+finite exhaustion without an independently checked tree is uncertified.
+
+At each fresh branch, the controller chooses base, compact responses of at
+most \(4\) constituents, or the full sampled hierarchy of at most \(12\).
+It sees actual remaining obligations, domain degrees, contact with already
+placed support, accepted tiles and recent per-mode interruptions. The learned
+policy also ranks proposals. Interruption records bind the complete ordered
+prefix and the declared boundary, rather than only a local trace. These exact
+context hashes are diagnostics and never become exclusions or a cache of
+negative facts. The controller is not restricted to a supplied tiling strategy,
+but this batch's available multiscale responses are the previously mined atlas.
+
+The discrete boundary-solution analogy separates local solving, interface
+compatibility and scale selection. For occupancy scaled from twelfths,
+
+\[
+ O_C(p)=I_C(p)+\Delta_C(p)\leq1.
+\]
+
+Every positive-support point has an incoming value, including explicit zeros
+and interior points. Children require shared input/output agreement and
+disjoint base ownership. Thus each atlas entry is an exact local operation
+for one incoming trace. It is not the complete relation for every possible
+boundary condition. Coarser sufficient interfaces, useful failure markings at
+each level, adaptive refinement and compatible coarse continuation remain open.
+A stationary substitution is optional.
+
+Fresh REINFORCE starts at empty weights and uses \(48\) single-path rollouts
+on seven separate declared boundaries. Training costs \(14.672\) seconds;
+\(5\) rollouts complete. Reward is verified required-point coverage plus
+completion, minus real base attempts and elapsed cost. A sampled dead path
+does not refute its boundary. Full evaluation keeps all alternatives. Two
+replicas rotate seven lanes, sequentially, on each of six earlier targets.
+Each gets \(4000\) actual base attempts and five cooperative seconds,
+including boundary binding, graph construction and proposal lookup.
+
+| Lane | Completed | Total request seconds | Base attempts | Duplicate action children avoided |
+| --- | ---: | ---: | ---: | ---: |
+| Earlier base | 10 / 12 | 20.514 | 2041 | — |
+| Earlier hierarchy | 7 / 12 | 36.124 | 4573 | — |
+| Unique base | 10 / 12 | 20.323 | 2082 | 0 |
+| Unique compact | 10 / 12 | 27.890 | 3263 | 344 |
+| Unique hierarchy | 7 / 12 | 30.257 | 3395 | 433 |
+| Uniform current-frontier controller | 12 / 12 | 7.853 | 632 | 149 |
+| Learned frontier and ordering | 12 / 12 | 12.871 | 1875 | 0 |
+
+The learned gate chooses base at all \(582\) fresh evaluation branches and
+executes no response; its move ranking changes the base order. The uniform
+gate chooses base/compact/hierarchy \(76/84/69\) times. Both complete all
+twelve requests, and the uniform control is faster on this small reused target
+set. On the ten requests completed by both earlier base and uniform control,
+base takes \(10.459\) seconds and uniform \(5.797\). This is a useful
+ordering observation, not established general acceleration or RL superiority.
+Different completion sets in the other lanes preclude an overall
+equal-success speed ratio.
+
+Unique hierarchy still completes \(7\) requests. It avoids \(433\) duplicate
+action children and explores \(3395\) base moves versus the earlier
+hierarchy's \(4573\); these paths and ordering differ. Its \(133\) closed
+response attempts include \(116\) interruptions, \(95\) after just one
+move. Compact response attempts likewise mostly interrupt after one move.
+Grouping fixes duplicate children but does not make those suffixes suitable
+for the globally scheduled boundary. No learned marking is synthesized here.
+
+The complete sequential process costs \(187.150\) seconds, peak
+\(786.28\) MiB. The full \(8436\)-pose envelope inventory costs
+\(0.374\) seconds; the two validated atlas builds cost \(0.364\).
+Reused donor/mining costs are explicitly reported in notebook 15. This is
+not fresh atlas discovery. No audit or tests run beside the timed process.
+Independent saved-data audit costs another \(60.633\) seconds separately,
+peak \(204.59\) MiB. Peak memory covers the whole process, not a per-lane
+memory comparison; practical memory cost remains material.
+
+`audit_frontier_responses.py` imports neither the new solver, its feature
+routines nor its driver. Literal enumeration checks \(144\) saved states
+and \(1874\) scheduled moves. All response preconditions and offsets replay;
+\(773\) sampled complete parent domains and current-state feature vectors
+agree. Six finite-work controls reproduce the full base-only and zero-policy
+paths under equal attempt limits, rather than a wall-clock cutoff. Independent
+algebra reconstructs all \(48\) updates and \(468\) choices. Random sampling
+and all abandoned branches are not independently replayed. The atlas's
+\(187\) nodes and \(228\) child maps check; eleven changed schedules,
+states, samples, features or weights reject. All \(68\) completed evaluation
+patches pass exact polygon non-overlap. No exhaustive negative tree or plane
+certificate is exported.
+
+The new semantic controls check unique grouping with every fallback retained,
+rejected missing or foreign keys, finite-work path equality, actual complete
+domains at every visited test branch, exact parent preservation, unknown
+cutoffs, global dead precedence, mutable frontier features and preference-only
+learning. All \(217\) research tests pass in \(69.596\) seconds, with every test source and the suite log bound into the new artifact.
+The visual report lets readers inspect the actual saved region patch and the
+singleton/response constituents at each scheduled step. General region
+faithfulness, independent target families, movable shape optimization, Penrose
+continuation, plane coverage and useful learned proof blocks remain active.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_frontier_responses.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_frontier_responses.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'

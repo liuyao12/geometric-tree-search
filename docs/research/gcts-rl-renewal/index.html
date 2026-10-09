@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r19.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r20.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r19.1"></script>
+  <script defer src="report.js?v=20261009-r20.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 19</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 20</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,37 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="frontier-response-research">
+    <p class="eyebrow">CURRENT FRONTIER · LOCAL RESPONSES · UNIQUE BASE CHILDREN</p><h2>Choose the scale where the boundary has reached.</h2>
+    <p>The discrete boundary-response analogy now has a controller at the actual search frontier. It chooses base moves, compact responses or the full sampled hierarchy from the remaining obligations, candidate degrees, existing contact and recent interruptions. The atlas reuses the independently checked local operations from notebook 15; this batch starts a fresh policy without importing its earlier weights or markings.</p>
+    <div class="callout" id="frontier-finding">Loading the paired current-frontier controls…</div>
+    <h3 class="spaced-title">Each base move has one child</h3>
+    <p>The earlier response search could enter the same child through several proposals sharing a first move, then enter it again as a singleton. The new traversal groups proposals by that first move and keeps one preferred suffix. Every base key still gets its own alternative. A suffix orders later moves only while they belong to the actual globally selected domain. A dead point, forced move or generation-selected domain can interrupt it; the ordinary base alternatives remain available.</p>
+    <details><summary>Local response composition and the multiscale analogy</summary>
+      <p>With occupancy scaled back from integer twelfths, a sampled cluster response has a finite input trace and increment:</p>
+      \[O_C(p)=I_C(p)+\Delta_C(p)\leq1.\]
+      <p>The input includes every positive-support point, including explicit zero values and interior points. Children compose when their shared output and input agree and their base owners are disjoint. This is a checked local solution for one incoming trace. The sampled atlas does not represent every possible local boundary condition or a single-valued global solution operator.</p>
+      <p>Your multiscale analogy suggests separating local solving, interface compatibility and scale selection. Here the first two are exact checked operations; the third is learned ordering. Response traces are more detailed than a geometric outer boundary. Learning coarser sufficient interfaces, useful failure markings at each level, adaptive refinement and compatible coarse continuations remain research questions. No stationary substitution is required by this experiment.</p>
+      <p>Two responses with a shared first key produce the same immediately placed base state. Grouping them is an analytic reorganization of the complete base search: at the next state, the selected domain still offers every legal base alternative. It changes the earlier macro traversal's branching granularity and order, so the hierarchy comparison is not a same-path cache optimization. Exact-context identifiers in the interruption log bind the complete ordered prefix and declared boundary. They are diagnostics and never exclude a candidate or become a failure certificate.</p>
+    </details>
+    <h3 class="spaced-title">Seven lanes on the same declared regions</h3>
+    <p>Two replicas rotate seven lanes on the six earlier fixed targets, including an irregular region with a distant pocket and a fixed exterior. Each full evaluation keeps all singleton alternatives and receives the same budget of \(4000\) actual base placements and five cooperative seconds. The zero controller makes seeded uniform choices at each fresh frontier. The learned controller also ranks response proposals. Targets were seen in earlier engineering studies; fresh seeds do not establish independent boundary generalization.</p>
+    <div class="table-scroll"><table><thead><tr><th>Traversal / resolution</th><th>Completed</th><th>Mean request seconds</th><th>Base attempts</th><th>Duplicate action children avoided</th><th>Interrupted responses</th><th>Lookup seconds</th></tr></thead><tbody id="frontier-benchmark"></tbody></table></div>
+    <p id="frontier-comparison"></p><p id="frontier-modes"></p>
+    <div class="controls"><label>Region <select id="frontier-problem"></select></label><label>Search lane <select id="frontier-lane"></select></label><label>Replica <select id="frontier-replica"><option value="0">1</option><option value="1">2</option></select></label></div>
+    <div class="slider-row"><label for="frontier-step">Saved scheduled move</label><input id="frontier-step" type="range" min="0" max="0" value="0"><output id="frontier-step-value">—</output></div>
+    <svg id="frontier-region" viewBox="0 0 850 460" role="img" aria-label="Actual turtle patch with required point boundary and executed response prefixes"></svg>
+    <svg id="frontier-timeline" viewBox="0 0 1100 115" role="img" aria-label="Actual singleton and response constituents along the saved scheduler path"></svg>
+    <p id="frontier-caption" class="caption"></p>
+    <details><summary>Conformance, learning and the limits of this batch</summary>
+      <p>The complete frontier/candidate bipartite graph still counts only base tiles. Global dead checks precede forced propagation; branching selects the earliest generation, with candidate count breaking generation ties. Each move is revalidated, and failed children discard exact copies of all state and graph fields. Proposals never change domains, markings, degrees, generations, targets or the admissible envelope.</p>
+      <p>Fresh REINFORCE training uses \(48\) single-path rollouts on seven separately declared boundaries. It updates mode and move preferences from independently verified coverage, completion, actual base attempts and elapsed cost. A failed sampled path supplies no impossibility claim. Evaluation uses full alternatives. Construction, reused donor/mining work, fresh training and independent audit are reported separately; no audit or tests run beside the timed stage.</p>
+      <p>Independent replay checks every exported successful or best path, response preconditions and offsets, sampled complete parent domains and the policy-update algebra. Unit controls also compare every visited domain with literal enumeration on a bounded search. Abandoned branches are not all serialized and replayed independently, and no exhaustive negative tree is exported. Cutoffs remain unknown. These are finite point-model completions; a continuous region-faithfulness theorem, useful general acceleration, movable shape optimization, Penrose continuation and plane coverage remain open.</p>
+    </details>
+    <p id="frontier-cost" class="caption"></p><p id="frontier-audit" class="caption"></p>
+    <p class="small"><a href="frontier-responses-001.json">Inspect each request, response interruption, frontier sample, learned update and source binding ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/frontier_responses.py">Read the unique base-child solver ↗</a></p>
+  </section>
 
   <section class="panel" id="computation-block-research">
     <p class="eyebrow">COMPUTATION RESPONSES · CHECKED COMPOSITION · IMPLICIT IDENTITY REGIONS</p><h2>Verify the active part. Preserve the frame.</h2>
@@ -591,9 +622,9 @@
     <ol>
       <li><span class="goal-state done">Implemented & checked</span><div><h3>Exact turtle baseline</h3><p>Complete incidence, exact rollback, global propagation, and generation-first branching. Finite patches and certificates are independently replayed.</p></div></li>
       <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
-      <li><span class="goal-state active">Context proposals</span><div><h3>RL proposes clusters and sequences</h3><p>Shared placements count once; diverse motifs and scheduler-checked continuations retain all base moves. The measured turtle policies have not demonstrated an acceleration. Next: learn hierarchical productions and improve the cost of proposing them.</p></div></li>
-      <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Fresh boundary response operations now have exact descending composition maps. Next: learn useful current-boundary decisions and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
-      <li><span class="goal-state active">Response atlas</span><div><h3>Practical boundary solving and plane coverage</h3><p>Exact local input/output responses compose and retain complete singleton fallback. Compact proposals solve some additional fixed targets; their overhead and both new RL controls show no reliable advantage. Current-boundary resolution, learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
+      <li><span class="goal-state active">Current frontier tested</span><div><h3>RL proposes clusters and sequences</h3><p>Shared first moves now have one base child; scheduled suffixes retain all alternatives. Fresh mode and move learning completes the new requests but chooses base throughout, and its uniform control is faster. Next: useful learned hierarchy proposals, richer input traces and independent target families.</p></div></li>
+      <li><span class="goal-state active">Response composition</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Exact local responses have descending composition maps and a current-frontier resolution controller. Next: coarser sufficient interfaces, useful failure markings and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
+      <li><span class="goal-state active">Uniform control leads</span><div><h3>Practical boundary solving and plane coverage</h3><p>The new uniform frontier controller finishes every request on the small reused target set; its learned counterpart also finishes but costs more and uses no response. General acceleration, learning amortization, richer fixed and movable boundaries, other tile systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
       <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Compact relative addresses now complete the addition control. Checked computation responses now compose and preserve an implicit headless frame. Next: useful block discovery and reuse, port the full checker, internalize geometry and search harder statements.</p></div></li>
     </ol>
@@ -625,6 +656,8 @@ python3 research/gcts-rl-renewal/run_binary_machine.py
 python3 research/gcts-rl-renewal/audit_binary_machine.py
 python3 research/gcts-rl-renewal/run_computation_blocks.py
 python3 research/gcts-rl-renewal/audit_computation_blocks.py
+python3 research/gcts-rl-renewal/run_frontier_responses.py
+python3 research/gcts-rl-renewal/audit_frontier_responses.py
 python3 research/gcts-rl-renewal/run_regions.py
 python3 research/gcts-rl-renewal/audit_regions.py
 python3 research/gcts-rl-renewal/run_cluster_marking.py
