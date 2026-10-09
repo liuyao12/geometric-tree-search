@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r17.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r18.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r17.1"></script>
+  <script defer src="report.js?v=20261009-r18.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 17</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 18</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,34 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="compact-machine-research">
+    <p class="eyebrow">COMPACT PROGRAMS · LOCAL JUMPS · A MEASURED COMPUTATIONAL GATE</p><h2>Reach the next instruction locally.</h2>
+    <p>The previous interpreter stores unary absolute addresses and repeatedly counts from the program's beginning. The new fixed interpreter accepts signed binary displacements and an explicit next-instruction operand. Its table stays unchanged across programs and both compact encodings. The addition certificate control now completes; the full first-order checker still needs porting.</p>
+    <div class="callout" id="binary-finding">Loading the independently replayed compact-machine comparison…</div>
+    <div class="controls"><label>Paired source computation <select id="binary-program"></select></label></div>
+    <div class="slider-row"><label for="binary-step">Instruction boundary</label><input id="binary-step" type="range" min="0" max="0" value="0"><output id="binary-step-value">—</output></div>
+    <svg id="binary-stacks" viewBox="0 0 1100 360" role="img" aria-label="Actual instruction checkpoints and source configurations in the paired compact and historical machine runs"></svg>
+    <p id="binary-stack-caption" class="caption"></p><pre><code id="binary-instruction"></code></pre>
+    <h3 class="spaced-title">Same source computations, fresh tapes, equal step limits</h3>
+    <p>Three replicas rotate the order of the historical unary machine and the two compact encodings. All receive the same five source tables, inputs and stack capacities, explicitly bound to the preceding artifact. Each call has the same literal step budget. Table construction is charged separately. Terminal controls include the correctly rejected undefined transition. A cutoff is unknown, so it cannot supply a complete-time speed ratio.</p>
+    <div class="table-scroll"><table><thead><tr><th>Source control</th><th>Representation</th><th>Program bytes</th><th>Literal steps</th><th>Terminal replicas</th><th>Median seconds</th></tr></thead><tbody id="binary-comparison"></tbody></table></div>
+    <p id="binary-comparison-caption"></p>
+    <details open><summary>What the compact representation guarantees</summary>
+      <p>The original instruction tuples retain their absolute natural targets. Their data encoding uses a signed displacement from the current record:</p>
+      \[j=i+\delta,\qquad \delta=\operatorname{sgn}\cdot\operatorname{value}_2(b).\]
+      <p>The literal operands <code>&gt;</code> and <code>&lt;</code> introduce nonnegative and negative binary distances. Canonical binary digits forbid leading zeros; negative zero is invalid. The alternative <code>n</code> means \(j=i+1\). Both representations are accepted by the same transition table. Unused jumps past either end are legal data; executing one rejects when enough resources are available.</p>
+      <p>For a signed jump, the machine copies the magnitude to a bounded scratch counter, marks the current opcode as its target, decrements the counter and advances or retreats one whole record each time. It restores the program, direction delimiter and scratch padding before fetching. A next link scans to the following opcode directly and uses no scratch. These cases preserve the unchanged stack instruction semantics. The separately implemented auditor compares every fetch and each full decoded source-state configuration. The simulation argument is analytic, with executable controls; it is not a formally verified compiler theorem.</p>
+      <p>Turning next links off changes only the data encoder and its declared scratch requirement, preserving the new table and source instruction sequence. Comparing either compact encoding with the historical interpreter also changes marker scans, counter placement and the table itself. That broader comparison cannot identify binary encoding as the sole cause. The study was designed after the preceding cutoff and development probes, and reuses the same authored source controls. It is not an independent generalization test.</p>
+      <p>All records, including unused ones, are validated. Scratch starts empty, and stack bits precede padding with no holes. Insufficient scratch or stack space returns unknown. A jump may therefore stop for resources before resolving an invalid target. The matched source controls allocate sufficient scratch; separate controls cover both the cutoff and rejection with enough space.</p>
+    </details>
+    <h3 class="spaced-title">Checked point rectangles for the new table</h3>
+    <div class="table-scroll"><table><thead><tr><th>Component</th><th>Lane</th><th>Point cells required</th><th>Attempts</th><th>Seconds</th><th>Result</th></tr></thead><tbody id="binary-wang-table"></tbody></table></div>
+    <p>Programs and accepting tops are externally clamped; two component problems leave one input bit unknown. Analytic redundant neighbor values and supplied authored trajectories are comparison controls. All base alternatives remain in the unchanged symbolic Wang graph, with global dead/forced precedence, root generations and exact rollback. Different interpreter tables and tape lengths change these rectangle problems; their times do not establish a GCTS or RL speed comparison across representations.</p>
+    <p>The authored arithmetic control verifies the supplied unary certificate for \(1+1=2\). It is not a discovered theorem or the first-order checker. A dense encoding of its completed compact computation would require \(1850\times7223231=13362977350\) point cells. This is a calculated size, not a constructed point certificate. The practical next gate is compressed computation certificates and validated blocks with exact input/output interfaces, so identity regions need not be expanded cell by cell. Those block certificates are not implemented in this batch. Practical turtle boundary resolution, learned hierarchies, Penrose continuation and the full logical checker port remain active.</p>
+    <p id="binary-cost" class="caption"></p><p id="binary-audit" class="caption"></p>
+    <p class="small"><a href="binary-machine-001.json">Inspect every paired run, source binding, cutoff, scratch control and point certificate ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/binary_stack_machine.py">Read the fixed compact interpreter ↗</a></p>
+  </section>
 
   <section class="panel" id="uniform-machine-research">
     <p class="eyebrow">ONE LITERAL INTERPRETER · PROGRAMS AS DATA · A COMPUTATIONAL BRIDGE</p><h2>Change the program. Keep the tiles.</h2>
@@ -537,7 +565,7 @@
       <li><span class="goal-state active">Library obstruction</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several selected coarse inventories. Fresh boundary response operations now have exact descending composition maps. Next: learn useful current-boundary decisions and compatible coarse continuations. A stationary substitution is optional.</p></div></li>
       <li><span class="goal-state active">Response atlas</span><div><h3>Practical boundary solving and plane coverage</h3><p>Exact local input/output responses compose and retain complete singleton fallback. Compact proposals solve some additional fixed targets; their overhead and both new RL controls show no reliable advantage. Current-boundary resolution, learning amortization, richer boundaries, other systems and unbounded coverage remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
-      <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Its unary addressing is too costly in the addition control. Next: compact addressing, port the full checker, internalize geometry, learn useful proof blocks and search harder statements.</p></div></li>
+      <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Compact relative addresses now complete the addition control. Next: checked computation blocks, port the full checker, internalize geometry, learn useful proof blocks and search harder statements.</p></div></li>
     </ol>
   </section>
 
@@ -563,6 +591,8 @@ python3 research/gcts-rl-renewal/run_serialized_kernel.py
 python3 research/gcts-rl-renewal/audit_serialized_kernel.py
 python3 research/gcts-rl-renewal/run_uniform_machine.py
 python3 research/gcts-rl-renewal/audit_uniform_machine.py
+python3 research/gcts-rl-renewal/run_binary_machine.py
+python3 research/gcts-rl-renewal/audit_binary_machine.py
 python3 research/gcts-rl-renewal/run_regions.py
 python3 research/gcts-rl-renewal/audit_regions.py
 python3 research/gcts-rl-renewal/run_cluster_marking.py

@@ -1875,3 +1875,133 @@ repeated stopped prefixes. Substitution remains optional.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_uniform_machine.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_uniform_machine.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
+
+## 18. Relative binary operands, next links and the completed addition control
+
+`binary_stack_machine.py` constructs another fixed literal interpreter, with
+\(119\) states, \(47\) symbols and \(1899\) transitions. No program or input
+enters construction. Both compact encodings use this same table and its
+\(29112411\) symbolic Wang types. Earlier source-hashed modules, inventories,
+artifacts and semantics are preserved.
+
+The instruction tuples still use absolute natural targets. `binary_program.py`
+encodes each operand as a signed binary displacement from its instruction
+index. At record \(i\), the resolved target is
+\(j=i+\operatorname{sgn}\cdot\operatorname{value}_2(b)\). Literal `>` and `<`
+introduce nonnegative and negative distances. Digits have no leading zeros;
+negative zero is rejected. An optional literal `n` denotes \(j=i+1\).
+The parser also gives operational semantics to signed targets past the first
+record; unused ones are legal, while executing an out-of-range target rejects
+when enough resources are available. The host encoder still accepts only the
+original absolute-natural instruction tuples. All generated source-machine
+programs have that original semantics.
+
+The tape adds an `A` delimiter and empty scratch padding between program and
+the unchanged `#`/left-stack/`|`/right-stack/`$` layout. A signed jump copies
+its magnitude into scratch, records the direction in the delimiter, marks
+the current opcode as its initial target, then decrements and moves one whole
+record in that direction. It erases scratch and restores the direction,
+operand and target marks before each fetch. A next link restores the active
+opcode and scans straight to the next record, without scratch. These cases
+preserve the two-stack semantics and the earlier general source-TM simulation
+at its state-entry addresses. This is an analytic correspondence argument
+with independent executable evidence, not a formally verified compiler.
+
+Scratch is a declared resource. Its initial contents must all be padding,
+and stack bits must precede padding with no holes. Grammar validation includes
+unused records. Insufficient scratch or stack capacity returns unknown. In
+particular, a jump may run out of scratch before its out-of-range target can
+be resolved. Separate controls check both that unknown and rejection with
+enough scratch. Unknown never supplies a negative proof.
+
+This is adaptive engineering following r17's addition cutoff. A development
+probe found that changing only to a compact absolute counter still repeated
+large prefix scans. The final design uses local signed displacements and
+explicit next links. Of the authored addition control's \(240\) instruction
+transitions, \(162\) go to the next instruction. Those observations guided
+the design; these are not fresh independent generalization controls.
+
+The official batch has \(287\) compact component runs: \(225\) short-word
+equalities, \(42\) instruction controls, \(16\) serialized-term byte
+comparisons and four scratch/next-link controls. Byte equality still performs
+no syntax, signature, substitution, induction or inference checking. Five
+source computations are explicitly reused from hash-bound
+`uniform-machine-001.json`. Three replicas rotate three lanes: historical
+unary, relative binary, and relative binary with next links. Every request
+has \(20000000\) literal steps and the same source table, input and stack
+capacities. Tables are constructed once; each request starts with a fresh
+tape, and per-request time includes layout and encoding. Table construction
+is reported separately. All \(45\) requests, including unknowns, are saved.
+
+Both compact encodings accept the addition certificate control, preserving
+all \(241\) stack instruction boundaries and \(30\) source configurations
+including the terminal state. Relative binary needs \(2017\) program bytes
+and \(10838203\) literal steps, median \(2.1691\) seconds. Next links need
+\(1737\) bytes and \(7223231\) steps, median \(1.4628\) seconds. The same
+new table accepts both data representations. The historical \(56219\)-byte
+program remains unknown at \(20000000\) steps, with \(37\) observed
+instruction boundaries; its median cutoff time is \(3.8677\) seconds.
+There is no complete-runtime ratio against this cutoff. The other four source
+controls terminate correctly in every lane, including the expected rejection
+of an undefined transition. No learned policy, new theorem or inference is
+discovered here. The arithmetic machine checks a supplied unary result for
+\(1+1=2\); it remains distinct from the first-order kernel.
+
+Comparing unary with compact also changes the counter location, marker seeks
+and interpreter table, so it is not an address-only causal ablation. The
+two compact lanes keep the same table and original instruction sequence;
+their data encoding and declared scratch need differ. Three small authored
+replicas are local engineering measurements, not statistical evidence of
+general acceleration, practical proof search or region solving.
+
+The unchanged Wang engine checks the new table on three authored component
+problems, with externally clamped programs and accepting tops. Two have one
+unknown input bit. Base search finishes none within \(20000\) attempts and
+a cooperative \(4\)-second bound. Analytic redundant neighbor values and
+supplied authored trajectories each finish all three, yielding six rectangles
+with \(26280\) checked point cells. These markings and preferences are
+controls, not learned GCTS or RL. New tape widths, heights and table sizes
+change the point problems relative to r17; cross-representation rectangle
+timings are not a matched search-speed claim.
+
+All required centers have root generation zero and unit occupancy. Complete
+symbolic domains retain every permitted base type and all color dependencies.
+Global dead/forced checks, spatial generation-tie order and trail rollback are
+unchanged. Tests compare full symbolic domain representations on rollback,
+without expanding the complete inventory. Tiny exhaustive restrictions agree
+with separately computed local rules. Accepting point certificates bind the
+program, scratch width, stack layout, input pattern and top externally before
+independent checking. They are finite computation proofs, not plane tilings.
+
+`audit_binary_machine.py` imports none of the compact encoder, interpreter,
+VM or generator. It independently parses signed operands, reconstructs the
+initial layout, executes the literal table, implements stack semantics and
+checks source configurations through the frozen earlier sparse-source helper.
+It verifies the reused source artifact and all paired inputs. The audit checks
+\(317\) compact runs and \(15\) historical runs, \(6920\) total fetches,
+\(246\) compact source-state entries, nine raw syntax/layout controls and
+twelve exhaustive finite domain restrictions. All six rectangles replay.
+Changed scratch width, program, input pattern, top, cell and checkpoint reject.
+The main process costs \(38.728\) seconds, peak \(96.08\) MiB; construction
+is \(1.053\) milliseconds for compact and \(0.549\) for historical. Independent
+replay costs \(33.950\) seconds separately. No audit or tests ran beside the
+official timed process. Source, helper, table and reused-artifact hashes are
+exported; the full suite record binds the test sources and output log.
+
+All \(192\) research tests pass in \(61.470\) seconds, including fourteen
+new tests for relative jumps, canonical syntax, next links, scratch cutoffs,
+full source configurations, literal row laws, symbolic domains and rollback.
+
+The direct dense rectangle for the completed addition run would have
+\(1850\times7223231=13362977350\) required point centers. That is a calculated
+size, not a built or checked dense certificate. A practical next gate is
+compressed computation certificates and verified blocks carrying exact input
+and output interfaces, with identity regions represented implicitly. Such
+certificates and learned computational blocks are not implemented here.
+The serialized first-order checker still needs porting, internal geometry
+theories and learned proof-block search remain open, and the practical turtle
+and Penrose hierarchy objectives continue. Substitution is optional.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_binary_machine.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_binary_machine.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test_*.py'
