@@ -3190,3 +3190,134 @@ artifacts remain unchanged. The \(25\) new tests cover whole-input-safe
 normalization, eigenvariable contexts, exact interface pins, all cold PA
 proofs, searched geometry composition, missing intersection/congruence
 assumptions, unknown search budgets and rejected false constructions.
+
+## Notebook 29: direct semantic GCTS proof search
+
+The primary track is Wang-style proof search; Turtle and Penrose remain
+regression and occasional geometric controls. The new live report is
+`docs/research/gcts-rl-renewal/semantic-proofs.html`. Notebook 28's larger
+PA and Euclid examples remain symbolic-tactic results. This batch supplies
+actual direct GCTS proof discovery on smaller logical/arithmetic statements.
+No proof sequence, theorem-specific skeleton, old policy or searched lemma
+library enters either lane. The general rule compilers are authored priors.
+
+`semantic_proof_tiles.py` adapts the unchanged `turtle.State` and `Graph`.
+For proof slot \(i\), occupancy is \(t(2i,0)=1\), represented by
+integer capacity \(12\). A tile assigns its conclusion syntax ID at
+\((2i,1)\), and each premise ID at \((2j,1)\) with \(j<i\).
+The target fixes the final output marker. Syntax ID zero is assigned,
+not absent. Repeated premise references are permitted if their required
+values agree. Every rule/slot/earlier-reference instance is eagerly enumerated;
+all occupancy and marking-only incidences are indexed before search. The
+finite allowed support consists of all proof cells, with generation-zero
+roots. Scalar disagreement eliminates candidates through the complete graph.
+No semantic oracle callback runs during GCTS placement legality.
+
+The direct finite encoding has an elementary correspondence: a complete
+point tiling contains one tile per proof cell; its agreeing formula ports
+and strict earlier offsets reconstruct a command derivation in slot order.
+Conversely, each valid command sequence of the declared grammar yields a
+complete point tiling. Rule instances retain their witnesses, so two choices
+can prove the same formula differently. Copies and unused commands are
+allowed. Geometric placement order may differ from logical dependency order.
+These are **positional finite types with identity transforms**, not a uniform,
+translation-invariant adjacency-only Wang inventory. Grammar and reach grow
+with the finite envelope. Current markings are **problem-defining**, not newly
+learned redundant exclusions. The checker/compiler's general semantic
+soundness remains trusted/open rather than newly formalized.
+
+`semantic_proof_catalogs.py` has two declared priors. The FOL generator uses
+a bounded subformula and schema closure of theory/target syntax, compiling
+all primitive relations inside that declared inventory. It is not the earlier
+fair grammar ladder. The arithmetic generator enumerates every term within
+a node bound, every quantified-variable substitution from that grammar,
+both directions of each equational axiom, and every term position with
+nonidentity endpoints inside the grammar. Missing variables in a reverse
+variable-erasing equation are enumerated explicitly. Each rewrite is a
+compiled derived inference from the fixed primitive equality kernel and is
+checked before search; it is not an input proof path. Universal arithmetic
+parameters are closed after decoding. No induction rule is generated.
+
+`semantic_proof_problems.py` contains only external theories, statements and
+finite bounds. `run_semantic_proofs.py` rebuilds fresh catalogs for both lanes
+and checks their declaration hashes agree. The specialized chronological
+symbolic DFS enumerates the same valid logical certificates; its scheduler
+and representation differ from GCTS. It is **not an unmarked run of the same
+point graph**, nor an adjacency-only/distant-marking ablation. Run order is
+counterbalanced by case. The node and search-time limits are \(50000\) and
+\(5\) seconds; candidate construction and graph initialization consume the
+GCTS time limit. Catalog construction, validation, decoding, complete native
+verification and shared compilation are additionally charged. Budget cutoffs
+are unknown, not failed theorem proofs.
+
+Both lanes find \(11\) of the \(13\) cases: two implication steps, a
+premise join, equality generalization, universal instantiation, function
+congruence, \(1+1=2\), \(2+1=3\), \(1+2=3\), \(2+2=4\),
+\(\forall a\;(a+1=\operatorname{S}(a))\), and \(1\cdot1=1\).
+Both exhaust the deliberately shorter implication envelope and absent-fact
+control. Every one of the \(22\) decoded certificates is accepted by the
+unchanged fixed native checker program, whose SHA-256 is
+`5f3aaf81e325654d30cc116a8f412c3152e75ccb4e0d781882180e8d0ec1fa31`.
+GCTS visits \(644\) states versus \(12375\) for the symbolic control,
+but search costs \(4.511720\) versus \(0.121492\) seconds. Equality
+congruence favors GCTS, with \(10\) versus \(11426\) nodes and
+\(0.012550\) versus \(0.069771\) search seconds. Multiplication favors
+the symbolic control: GCTS takes \(4.444571\) search seconds, versus
+\(0.049931\). This is real automatic proof assembly with GCTS, but no
+general speed advantage or useful RL contribution is established.
+
+Whole cold-run totals are \(7.586207\) and \(2.277170\) seconds.
+The first native launch in the GCTS lane costs \(1.003277\) seconds,
+versus about \(0.01\) for subsequent tiny checks; this is retained. Shared
+native compilation costs \(1.054998\) seconds. Full producer time is
+\(11.129331\) seconds and peak driver memory \(144818176\) bytes.
+These are single sequential measurements, not benchmark rankings. All
+catalogs, actual placement traces, decoded requests, complete GCTS trees,
+resource results and source hashes are in `semantic-proofs-001.json`.
+
+`audit_semantic_proofs.py` imports no generator, proposer or point graph.
+It independently reconstructs every external statement/theory, enumerates
+every positional candidate, recomputes all saved frontier domains and replays
+all complete GCTS trees with global dead/forced precedence, branch choice,
+every failed alternative and exact work counters. It independently enumerates
+all bounded arithmetic terms and \(1232\) contextual rewrite edges,
+including variable-erasing reversals, and checks the complete primitive FOL
+inventory inside its declared language. Every compiled arithmetic rule and
+every decoded proof is expanded independently into the frozen primitive
+kernel. Audit-only tautology/MP suffixes force checking every emitted primitive
+prefix even if the original final command aliases an earlier assumption or
+block input. Historical auditors and measured sources stay byte-identical.
+Native program and exact input-heap hashes bind every complete native run;
+independent instruction replay of all native runs is not claimed. Symbolic
+abandoned prefixes are not exported or independently tree-replayed. The
+audit costs \(6.186143\) seconds.
+
+The unchanged engine preserves complete candidate incidence, distant
+mark-only updates, global dead ends before global forced moves, then earliest
+generation with degree breaking ties, and exact snapshot rollback. These
+proof cells have single-point full occupancy; inherited fractional-occupancy
+semantics are tested by the earlier suite, not newly exercised by this grammar.
+All \(368\) research tests pass in \(103.625896\) wall seconds
+(\(102.887\) reported by unittest). The new \(21\) tests cover exact
+incremental-domain/rollback agreement, scheduler precedence, zero and missing
+marking distinctions, distant dependencies, repeated reference compatibility,
+independent inventories, variable-erasing reversals, a tiny exhaustive
+logical/point certificate-set comparison, unknown budgets and rejected
+altered trees, ports, proofs and unused invalid prefixes. The fresh ledger
+`semantic-proof-tests-001.json` leaves historical experiment artifacts intact.
+`run_semantic_view.py` produces a small browser projection bound to its full
+parent artifact by SHA-256; the visual controls show actual placement order,
+logical commands, decoded formulas and all costs.
+
+Next gates: matched semantic encoding ablations; automatic promotion and
+reuse of searched subproofs as multi-level tiles; RL proposals with complete
+fallback and total-cost evaluation; a fair semantic grammar with induction
+and fresh binding. A failed bounded envelope must never become an unsound
+logical exclusion. Larger geometry and PA proof discovery through GCTS,
+uniform Wang expressivity, useful hierarchy/RL, broad speed comparisons and
+formal soundness remain open. The research goal remains active.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_semantic_proofs.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_semantic_proofs.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_semantic_tests.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_semantic_view.py
