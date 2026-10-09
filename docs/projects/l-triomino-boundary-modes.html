@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L-triomino Notes: boundary matching and modes</title>
+<meta name="description" content="An L-triomino-only construction of an aperiodic boundary-field palette, with exact Neumann conditions, infinite modal expansions and numerical truncation checks.">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+:root{font-family:Georgia,'Times New Roman',serif;color:#25353a;background:#f7f6f1;--accent:#147b7b;--muted:#5d7075}*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:44px 30px 85px}nav,.eyebrow,.tools,figcaption,th,.badge{font-family:system-ui,sans-serif}nav{font-size:13px}a{color:var(--accent);text-underline-offset:3px}h1{font-size:clamp(35px,6vw,62px);line-height:1.04;letter-spacing:-.035em;max-width:850px;margin:25px 0}h2{font-size:29px;line-height:1.22;margin:50px 0 18px;scroll-margin-top:20px}h3{font-size:21px;margin-top:28px}p,li{font-size:18px;line-height:1.7}p{margin:16px 0}.lead{font-size:23px;line-height:1.5;color:#466068}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-top:34px;color:var(--muted)}.tools{display:flex;flex-wrap:wrap;gap:12px;font-size:14px;margin:25px 0}.tools a{border:1px solid #b2c9c4;border-radius:6px;padding:8px 12px;text-decoration:none}.callout{background:#e8f0eb;border-left:4px solid var(--accent);padding:9px 24px;margin:28px 0}.callout p{font-size:18px}.caution{background:#f5ecd9;border-color:#b58442}.badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;margin:20px 0}th,td{padding:12px 14px;border-bottom:1px solid #d5ddd7;text-align:left;vertical-align:top}th{font-size:12px;background:#e8eee8}td:first-child{font-weight:bold}figure{margin:30px 0}figure img{display:block;width:100%;background:white;border:1px solid #dce3db}figcaption{font-size:13px;line-height:1.55;color:var(--muted);margin-top:12px}mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:5px 0}code,pre{font-family:ui-monospace,monospace;font-size:14px}pre{background:#e9eee7;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere}li{margin:9px 0}.toc{columns:2;padding-left:22px}.toc li{font-size:15px}.refs li{font-size:15px;line-height:1.6}.small{font-size:14px;color:var(--muted)}footer{border-top:1px solid #d5ddd7;margin-top:40px;padding-top:15px;font-size:14px;color:var(--muted)}@media(max-width:640px){main{padding:25px 18px 60px}p,li{font-size:17px}h2{font-size:25px}.lead{font-size:20px}.toc{columns:1}th,td{padding:9px;font-size:13px}}@media print{nav,.tools,.toc{display:none}main{max-width:none;padding:0}body{background:white}h2{break-after:avoid}table,figure,.callout{break-inside:avoid}a{color:inherit}}
+
+.progress-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.progress-grid>div{background:#edf1e9;border:1px solid #d5ddd0;padding:18px;border-radius:8px}.progress-grid p{font-size:16px;line-height:1.5;margin-bottom:0}details{border-bottom:1px solid #d5ddd7;padding:16px 0}summary{font-family:system-ui,sans-serif;cursor:pointer;font-size:15px}.explorer{background:#fff;border:1px solid #b4c9c2;border-radius:10px;padding:22px;margin:25px 0}.explorer label{display:block;font:600 14px system-ui,sans-serif;margin-bottom:10px}.explorer select{max-width:100%;width:100%;font:16px system-ui,sans-serif;color:#25353a;background:#f1f5ef;border:1px solid #a0b5ad;border-radius:5px;padding:12px}.gap-track{height:45px;margin:30px 18px 5px;position:relative;border-top:2px solid #afc4bf}.gap-point{position:absolute;top:-7px;height:12px;width:12px;border-radius:50%;background:#147b7b;transform:translateX(-50%)}.gap-point.anchor{background:#b36642;border-radius:2px;height:16px;top:-9px}.gap-point:focus{outline:3px solid #e5ba69;outline-offset:4px}.gap-labels{display:flex;justify-content:space-between;font-size:16px}.pending{color:#896123}.explorer table{margin-top:12px}.explorer td,.explorer th{padding:8px}.gap-legend{font:13px system-ui,sans-serif;color:var(--muted)}@media(max-width:640px){.progress-grid{grid-template-columns:1fr}.explorer{padding:16px}.explorer table{font-size:12px}}
+</style>
+</head><body><main>
+<nav><a href="spectral-tiling-study.html">Spectral tiling Notes</a> / Current L-triomino study</nav>
+<p class="eyebrow">L-triomino only · updated 9 October 2026</p>
+<h1>The L-triomino: boundary matching and modes</h1>
+<p class="lead">A construction works with twenty-two allowed smooth field states on the same L-triomino. Every state satisfies Neumann conditions and has an infinite expansion in its ordinary eigenmodes. An exact construction using finitely many eigenmodes remains unresolved here.</p>
+<div class="tools"><a href="#result">Precise result</a><a href="#fields">Fields and boundary audit</a><a href="#proof">Why aperiodicity is forced</a><a href="#modal">Modal truncations</a><a href="../../research/spectral-tiling/l-boundary-palette.json">Exact construction receipt</a></div>
+<h2 id="result">What has been obtained</h2>
+<div class="callout"><p><strong>A result for the L-triomino itself.</strong> Take copies of the unit L-triomino on the integer grid, with quarter-turn rotations allowed and reflections excluded. Require each copy to carry one of twenty-two specified fields, with fixed amplitudes, and require equality of scalar values on every touching boundary. Legal infinite tilings exist, and every legal decorated tiling has no nonzero translation period.</p></div>
+<p>Aperiodicity here includes the field states. Erasing the fields leaves a periodic arrangement of L-triomino pairs, with periods \((3,0)\) and \((0,2)\) in the canonical orientation. The nonperiodic information is carried by the allowed fields and their modal coefficients.</p>
+<p>The ordinary boundary operator is shared by every state:</p>
+\[ \Omega=\bigl([0,2]\times[0,1]\bigr)\cup\bigl([0,1]\times[1,2]\bigr),
+\qquad A_N=-\Delta,\qquad \partial_\nu u=0\text{ on }\partial\Omega. \]
+<p>The finite palette is an additional constraint on the total field; homogeneous Neumann conditions alone do not force aperiodicity. Each allowed field combines infinitely many eigenvalues. This result does not supply a single-eigenvalue solution, a finite-mode palette, unrestricted reflected placements, or a spectral test from the eigenvalue list alone.</p>
+<div class="scroll"><table><thead><tr><th>Question</th><th>Status in this study</th></tr></thead><tbody>
+<tr><td>L geometry throughout?</td><td>Yes. Every physical tile is the same L-triomino.</td></tr>
+<tr><td>Exact Dirichlet or Neumann conditions?</td><td>Exact homogeneous Neumann conditions for every state.</td></tr>
+<tr><td>Boundary matching forces aperiodicity?</td><td>Yes for the decorated tiling, with the declared finite palette and placement rules.</td></tr>
+<tr><td>Finitely many eigenmodes per state?</td><td>No. The present exact construction requires infinitely many.</td></tr>
+<tr><td>One eigenvalue or matching each frequency separately?</td><td>No result of that kind is established.</td></tr>
+</tbody></table></div>
+<h2 id="fields">Independent traces on the eight unit segments</h2>
+<p>The long sides are divided into unit segments only to specify their traces. The domain and its Neumann operator keep the original L shape. Define an even smooth compact bump and an asymmetric tangential profile:</p>
+\[ K(z)=\begin{cases}\exp\!\left(1-\dfrac1{1-z^2}\right),&|z|&lt;1,\\0,&|z|\ge1,\end{cases}
+\qquad G_\sigma(s)=K\bigl(4(s-\tfrac12)\bigr)e^{2\sigma(s-1/2)},\quad \sigma\in\{-1,1\}. \]
+<p>The profile is supported inside the middle half of a unit segment and has value one at its midpoint. Reversing it changes the sign of the profile parameter:</p>
+\[ G_{-1}(s)=G_1(1-s),\qquad
+\frac{G_1(s)}{G_{-1}(s)}=e^{4(s-1/2)}\quad\left(\tfrac14&lt;s&lt;\tfrac34\right). \]
+<p>Thus two nonzero traces agree exactly when both their amplitudes and their forward/reversed profiles agree. Sampling is not the justification for this equivalence.</p>
+<details><summary>Coordinates of all eight boundary segments</summary>
+<div class="scroll"><table><thead><tr><th>Segment</th><th>Endpoints in increasing coordinate order</th><th>Outward unit normal</th></tr></thead><tbody>
+<tr><td>\(e_0\)</td><td>\((0, 0)\to(1, 0)\)</td><td>\((0, -1)\)</td></tr>
+<tr><td>\(e_1\)</td><td>\((1, 0)\to(2, 0)\)</td><td>\((0, -1)\)</td></tr>
+<tr><td>\(e_2\)</td><td>\((2, 0)\to(2, 1)\)</td><td>\((1, 0)\)</td></tr>
+<tr><td>\(e_3\)</td><td>\((1, 1)\to(2, 1)\)</td><td>\((0, 1)\)</td></tr>
+<tr><td>\(e_4\)</td><td>\((1, 1)\to(1, 2)\)</td><td>\((1, 0)\)</td></tr>
+<tr><td>\(e_5\)</td><td>\((0, 2)\to(1, 2)\)</td><td>\((0, 1)\)</td></tr>
+<tr><td>\(e_6\)</td><td>\((0, 1)\to(0, 2)\)</td><td>\((-1, 0)\)</td></tr>
+<tr><td>\(e_7\)</td><td>\((0, 0)\to(0, 1)\)</td><td>\((-1, 0)\)</td></tr>
+</tbody></table></div>
+</details>
+<p>For segment endpoints \(p_j,q_j\) and outward normal \(\nu_j\), write the tangential coordinate and inward distance as</p>
+\[ s_j(x)=(x-p_j)\cdot(q_j-p_j),\qquad r_j(x)=-(x-p_j)\cdot\nu_j. \]
+<p>Each field state has an eight-component amplitude vector and a profile direction:</p>
+\[ u_{a,\sigma}(x)=\sum_{j=0}^7 a_jG_\sigma\bigl(s_j(x)\bigr)K\bigl(8r_j(x)\bigr). \]
+<p>The collars have width \(1/8\) and avoid all corners and other boundary segments. On the interior of the specified unit segment, the trace is exactly \(a_jG_\sigma\). Its normal derivative is zero because \(K'(0)=0\). Other summands vanish near that segment. Every state is smooth up to the polygon boundary and is zero near the corners, including the reentrant corner. These facts certify the Neumann condition pointwise on open sides and in the ordinary operator domain.</p>
+<p>If two states have equal traces along a seam, their tangential derivatives agree and both outward normal derivatives vanish. Their total fields therefore glue with continuity and flux cancellation. This static gluing does not turn a superposition of different eigenvalues into one Helmholtz solution.</p>
+<h2 id="palette">Twenty-two states, all on the L-triomino</h2>
+<p>Use two field roles for each of eleven color quadruples \(t=(w,e,s,n)\). The quadruples come from Jeandel–Rao's Figure 4; their Theorem 3 supplies infinite existence and aperiodicity for the encoded matching system. <a href="#ref-jr">[1]</a> The L construction and its reduction below are derived here.</p>
+<div class="scroll"><table><thead><tr><th>Index</th><th>\(w\)</th><th>\(e\)</th><th>\(s\)</th><th>\(n\)</th></tr></thead><tbody>
+<tr><td>\(1\)</td><td>\(0\)</td><td>\(0\)</td><td>\(1\)</td><td>\(0\)</td></tr>
+<tr><td>\(2\)</td><td>\(0\)</td><td>\(3\)</td><td>\(2\)</td><td>\(1\)</td></tr>
+<tr><td>\(3\)</td><td>\(1\)</td><td>\(0\)</td><td>\(2\)</td><td>\(2\)</td></tr>
+<tr><td>\(4\)</td><td>\(1\)</td><td>\(1\)</td><td>\(0\)</td><td>\(2\)</td></tr>
+<tr><td>\(5\)</td><td>\(1\)</td><td>\(3\)</td><td>\(2\)</td><td>\(3\)</td></tr>
+<tr><td>\(6\)</td><td>\(3\)</td><td>\(0\)</td><td>\(1\)</td><td>\(1\)</td></tr>
+<tr><td>\(7\)</td><td>\(3\)</td><td>\(1\)</td><td>\(1\)</td><td>\(1\)</td></tr>
+<tr><td>\(8\)</td><td>\(3\)</td><td>\(1\)</td><td>\(2\)</td><td>\(2\)</td></tr>
+<tr><td>\(9\)</td><td>\(3\)</td><td>\(3\)</td><td>\(3\)</td><td>\(1\)</td></tr>
+<tr><td>\(10\)</td><td>\(2\)</td><td>\(2\)</td><td>\(1\)</td><td>\(0\)</td></tr>
+<tr><td>\(11\)</td><td>\(2\)</td><td>\(2\)</td><td>\(0\)</td><td>\(2\)</td></tr>
+</tbody></table></div>
+<p>External vertical and horizontal traces carry both a color and a position within the eventual pair boundary. Internal connectors carry a pair index and a connector index. Their amplitudes occupy disjoint ranges:</p>
+\[ V_r(c)=1+4r+c\quad(r=0,1),\qquad
+H_r(c)=9+4r+c\quad(r=0,1,2),\qquad
+I_j(t)=100+3(t-1)+j\quad(j=0,1,2). \]
+<p>In the boundary-segment order above, the two allowed fields for index \(t\) are</p>
+\[ A_t=u_{a^A_t,1},\qquad
+a^A_t=\bigl(H_0(s),H_1(s),I_0(t),I_1(t),I_2(t),H_0(n),V_1(w),V_0(w)\bigr), \]
+\[ B_t=u_{a^B_t,-1},\qquad
+a^B_t=\bigl(H_2(n),H_1(n),I_2(t),I_1(t),I_0(t),H_2(s),V_0(e),V_1(e)\bigr). \]
+<p>These are fixed physical amplitudes. Independently normalizing fields, changing their signs or permitting arbitrary linear combinations changes the problem.</p>
+<figure><img src="../../research/spectral-tiling/l-boundary-palette.png" loading="lazy" alt="All twenty-two L-triomino field states with each unit-edge amplitude labeled."><figcaption>All states on the canonical L-triomino. The shared color scale uses a power transform to make the smaller external traces visible; the amplitudes themselves retain their exact listed values. The profiles and collars are sampled from their formulas. Each state has an infinite Neumann expansion.</figcaption></figure>
+<h2 id="proof">Why these rules force aperiodicity</h2>
+<figure><img src="../../research/spectral-tiling/l-boundary-forced-pair.png" loading="lazy" alt="A pair of L-triominoes fills a three-by-two rectangle; three unique connector traces force the pair."><figcaption>The pair for the first index. The second L is placed by \(x\mapsto(3,2)-x\). Orange segments carry the unique internal connector amplitudes. Teal segments carry external color and position codes. The rectangle is a forced cluster of two physical L tiles.</figcaption></figure>
+<ol>
+<li><strong>Every L has a forced partner.</strong> Its \(I_0(t)\) trace is nonzero and occurs on exactly one unit segment. Only a state with the same index can match its amplitude. The outward normals require a relative half-turn; the asymmetric profile then requires the opposite field role. Aligning the segments fixes the partner's translation. An \(A_t\) at the origin can only meet \(B_t\) transformed by \(x\mapsto(3,2)-x\) at this connector.</li>
+<li><strong>The pair is legal and unique.</strong> Its three cells and the partner's three cells are disjoint and fill a \(3\times2\) rectangle. The other two internal traces match as well. Every tile has the same uniquely determined partner in reverse, so any legal tiling decomposes into disjoint pairs.</li>
+<li><strong>Pairs align into a lattice.</strong> The disjoint vertical/horizontal amplitude ranges exclude relative quarter-turns. Profile reversal excludes relative half-turns. The position codes on external segments exclude staggered contacts. Consequently every edge-sharing pair of rectangles has the same orientation and relative origin \((\pm3,0)\) or \((0,\pm2)\). The contact graph of a plane tiling is connected, so all pairs lie on one common rectangular lattice, up to a global quarter-turn and grid phase.</li>
+<li><strong>Decoding is exact.</strong> Read the four colors from each pair. External trace matching is precisely east-to-west and north-to-south color equality. Hence every legal L tiling decodes to a tiling by the cited eleven-state system. Conversely every tiling of that system expands into a legal tiling by these L states.</li>
+<li><strong>Periods cannot survive.</strong> A translation period would preserve the locally recognizable forced pairs and their rectangular lattice. It would induce a nonzero integer translation period in the decoded system, contradicting the cited theorem. That theorem also supplies at least one infinite tiling, so the conclusion is forced aperiodicity rather than nonexistence.</li>
+</ol>
+<p>The <a href="../../research/spectral-tiling/l-boundary-palette.json">exact contact receipt</a> checks every role's forced connector partner and all \(12{,}342\) possible integer edge-sharing rectangle contacts, over every pair of indices and all four relative rotations. Exactly \(136\) directed contacts pass, corresponding to the four directions of the known matching table. The analytic reduction establishes the infinite conclusion; this finite audit checks its geometry and labels.</p>
+<div class="callout caution"><p><strong>Placement scope matters.</strong> Reflections are excluded. If reflected copies are added, one legal rectangular pair can be mirrored repeatedly across its outer sides, producing a periodic tiling with periods \((6,0)\) and \((0,4)\). Noninteger or freely rotated placements are also outside the present model. No minimality or enforcement of the chair substitution is claimed.</p></div>
+<h2 id="modal">What the ordinary Neumann spectrum contributes</h2>
+<p>Let \((\mu_k,\phi_k)\) be the real orthonormal Neumann eigenpairs of the L-triomino. The exact fields have expansions</p>
+\[ u_{a,\sigma}=\sum_{k=0}^\infty c_k\phi_k,\qquad
+c_k=\int_\Omega u_{a,\sigma}\phi_k,\qquad
+-\Delta\phi_k=\mu_k\phi_k,\quad\partial_\nu\phi_k=0. \]
+<p>Because the target fields belong to \(H^1(\Omega)\), these sums converge in the Neumann form norm, equivalent to the \(H^1\) norm. The trace theorem therefore preserves their boundary profiles in \(H^{1/2}(\partial\Omega)\). Equality of the continuous target traces is the exact matching rule.</p>
+<p>This particular encoding necessarily uses infinitely many modes. A finite Neumann eigenfunction sum is real analytic along any open straight polygon side, by even reflection of each Helmholtz eigenfunction. Our nonzero trace vanishes on open subintervals of that same side. The identity theorem rules out any finite sum representing it exactly. This is a limitation of the constructed compact-profile encoding; it does not rule out every possible finite-mode L palette.</p>
+<figure><img src="../../research/spectral-tiling/l-modal-truncations.png" loading="lazy" alt="Exact sampled L fields compared with projections onto the first sixty-four and one hundred eighty Neumann FEM modes."><figcaption>Sampled exact fields and truncated FEM projections on the L-triomino, using a common absolute color scale. The approximations disturb the boundary profiles. They are not proved legal matching palettes.</figcaption></figure>
+<p>For the first field, on the finer mesh, the numerical projections give:</p>
+<div class="scroll"><table><thead><tr><th>Retained FEM modes</th><th>Fraction of sampled squared \(L^2\) norm captured</th><th>Largest sampled boundary-value error / target peak</th></tr></thead><tbody>
+<tr><td>\(16\)</td><td>\(17.62\%\)</td><td>\(88.11\%\)</td></tr>
+<tr><td>\(32\)</td><td>\(40.64\%\)</td><td>\(71.39\%\)</td></tr>
+<tr><td>\(64\)</td><td>\(67.60\%\)</td><td>\(46.34\%\)</td></tr>
+<tr><td>\(128\)</td><td>\(87.36\%\)</td><td>\(24.95\%\)</td></tr>
+<tr><td>\(180\)</td><td>\(94.94\%\)</td><td>\(14.68\%\)</td></tr>
+</tbody></table></div>
+<p>The two meshes have \(3343\) and \(13{,}133\) nodes; each solve retains \(180\) Neumann modes. The largest last-refinement relative eigenvalue movement is approximately \(4.94\%\). Positive-mode matrix residuals are below \(1.5\times10^{-12}\). These are FEM diagnostics, without continuum error enclosures. Capturing roughly \(95\%\) of the sampled squared norm still leaves substantial boundary errors, so it does not transfer the exact aperiodicity proof to the truncated fields. The FEM operator imposes Neumann conditions weakly; a plotted piecewise-linear normal derivative need not vanish pointwise.</p>
+<h2 id="remaining">What remains open in this L-only investigation</h2>
+<p>The construction answers the version allowing a finite list of total field states with infinite modal expansions. Finding a palette made from finitely many ordinary L-triomino eigenfunctions remains open here. A single-eigenvalue construction, a more natural coefficient-selection mechanism, and removal of the placement restrictions also require further work. None follows from the numerical truncations.</p>
+<p>The inherited arithmetic functions \(\cos(m\pi x)\cos(n\pi y)\) satisfy Neumann conditions on the L, but their traces have extra reflection and period relations. They cannot provide arbitrary independent unit-segment profiles on its long sides. The full L eigenbasis supplies the flexibility used in the infinite construction. This is a connection between boundary traces and modal coefficients, rather than a classification from eigenvalues alone.</p>
+<h2 id="sources">Sources and reproduction</h2>
+<ol class="refs"><li id="ref-jr">Jeandel and Rao. <a href="https://arxiv.org/html/1506.06492v4#S4.F4">An aperiodic set of 11 Wang tiles</a>. Advances in Combinatorics 2021:1. Figure 4 and Theorem 3 provide the four-color system encoded by the L pairs. The L-triomino construction and proof above are deductions in these Notes.</li></ol>
+<p class="small"><a href="../../research/spectral-tiling/l_boundary_palette.py">Construction and exhaustive contact audit</a> · <a href="../../research/spectral-tiling/l_modal_projection.py">Neumann FEM projections</a> · <a href="../../research/spectral-tiling/l-modal-projection.json">Coefficients, estimates and projection receipt</a>. No tiling/search engine is created or modified; these are a specialized continuum construction and contact verifier, with no claimed GCTS frontier-search conformance.</p>
+<footer>Active scope: the L-triomino only. Earlier broader material remains in the <a href="spectral-tiling-study.html">historical spectral Notes</a>.</footer>
+</main></body></html>

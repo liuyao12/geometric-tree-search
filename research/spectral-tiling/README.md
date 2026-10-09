@@ -6,6 +6,24 @@ descriptions, boundary models, and connections with nonperiodic tilings.
 The earlier PDF and LaTeX files are archived snapshots; they are no longer
 updated alongside the webpage.
 
+The active scope is now exclusively the L-triomino. Its dedicated webpage is
+[L-triomino boundary-mode Notes](../../docs/projects/l-triomino-boundary-modes.html).
+`l_boundary_palette.py` constructs twenty-two smooth Neumann field states on
+that shape, with exact unit-segment traces. An exhaustive contact audit checks
+unique pairing and reduction to Jeandel–Rao's aperiodic palette. Integer
+translations and quarter-turn rotations are allowed; reflections are excluded.
+Every state uses an infinite ordinary Neumann eigenfunction expansion. A
+finite-mode construction is not established. The fields are static, and the
+allowed palette is an extra constraint beyond homogeneous Neumann conditions.
+The aperiodicity includes the field states; erasing the fields leaves a
+periodic arrangement of L-triomino pairs.
+`l_modal_projection.py` projects all twenty-two fields onto the first 180
+Neumann FEM modes on two meshes. Its finite projections disturb the exact
+traces and have no inherited tiling or aperiodicity claim. The construction,
+contact audit, projection coefficients and images are retained in the two
+`l-*.json` receipts. No search engine is modified. The broader datasets below
+are preceding work, not an expansion of the current L-only investigation.
+
 The computation estimates the first twelve Dirichlet modes of ten members of
 the Hat–Turtle family. Tiling labels come from the cited published family
 theorem. They are never inferred from finite growth or a spectral classifier.
@@ -29,6 +47,8 @@ python verify_notes.py
 python verify_modes.py
 python analyze_patterns.py
 python boundary_mode_palette.py
+python l_boundary_palette.py
+python l_modal_projection.py
 ```
 
 Run these commands from this directory. The original family and chair scripts

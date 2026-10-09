@@ -1,0 +1,2091 @@
+{
+  "date": "2026-10-09",
+  "status": "passed",
+  "script_sha256": "0abda5b0bc86d235f481ac906b07faa7eb6bde14331d07b11504c4ff2ce783b8",
+  "geometry": {
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "unit_boundary_edges": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ]
+      ]
+    ],
+    "area": 3
+  },
+  "palette": [
+    {
+      "id": "A1",
+      "wang_id": 1,
+      "role": "A",
+      "amplitudes": [
+        10,
+        14,
+        100,
+        101,
+        102,
+        9,
+        5,
+        1
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B1",
+      "wang_id": 1,
+      "role": "B",
+      "amplitudes": [
+        17,
+        13,
+        102,
+        101,
+        100,
+        18,
+        1,
+        5
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A2",
+      "wang_id": 2,
+      "role": "A",
+      "amplitudes": [
+        11,
+        15,
+        103,
+        104,
+        105,
+        10,
+        5,
+        1
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B2",
+      "wang_id": 2,
+      "role": "B",
+      "amplitudes": [
+        18,
+        14,
+        105,
+        104,
+        103,
+        19,
+        4,
+        8
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A3",
+      "wang_id": 3,
+      "role": "A",
+      "amplitudes": [
+        11,
+        15,
+        106,
+        107,
+        108,
+        11,
+        6,
+        2
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B3",
+      "wang_id": 3,
+      "role": "B",
+      "amplitudes": [
+        19,
+        15,
+        108,
+        107,
+        106,
+        19,
+        1,
+        5
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A4",
+      "wang_id": 4,
+      "role": "A",
+      "amplitudes": [
+        9,
+        13,
+        109,
+        110,
+        111,
+        11,
+        6,
+        2
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B4",
+      "wang_id": 4,
+      "role": "B",
+      "amplitudes": [
+        19,
+        15,
+        111,
+        110,
+        109,
+        17,
+        2,
+        6
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A5",
+      "wang_id": 5,
+      "role": "A",
+      "amplitudes": [
+        11,
+        15,
+        112,
+        113,
+        114,
+        12,
+        6,
+        2
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B5",
+      "wang_id": 5,
+      "role": "B",
+      "amplitudes": [
+        20,
+        16,
+        114,
+        113,
+        112,
+        19,
+        4,
+        8
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A6",
+      "wang_id": 6,
+      "role": "A",
+      "amplitudes": [
+        10,
+        14,
+        115,
+        116,
+        117,
+        10,
+        8,
+        4
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B6",
+      "wang_id": 6,
+      "role": "B",
+      "amplitudes": [
+        18,
+        14,
+        117,
+        116,
+        115,
+        18,
+        1,
+        5
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A7",
+      "wang_id": 7,
+      "role": "A",
+      "amplitudes": [
+        10,
+        14,
+        118,
+        119,
+        120,
+        10,
+        8,
+        4
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B7",
+      "wang_id": 7,
+      "role": "B",
+      "amplitudes": [
+        18,
+        14,
+        120,
+        119,
+        118,
+        18,
+        2,
+        6
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A8",
+      "wang_id": 8,
+      "role": "A",
+      "amplitudes": [
+        11,
+        15,
+        121,
+        122,
+        123,
+        11,
+        8,
+        4
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B8",
+      "wang_id": 8,
+      "role": "B",
+      "amplitudes": [
+        19,
+        15,
+        123,
+        122,
+        121,
+        19,
+        2,
+        6
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A9",
+      "wang_id": 9,
+      "role": "A",
+      "amplitudes": [
+        12,
+        16,
+        124,
+        125,
+        126,
+        10,
+        8,
+        4
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B9",
+      "wang_id": 9,
+      "role": "B",
+      "amplitudes": [
+        18,
+        14,
+        126,
+        125,
+        124,
+        20,
+        4,
+        8
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A10",
+      "wang_id": 10,
+      "role": "A",
+      "amplitudes": [
+        10,
+        14,
+        127,
+        128,
+        129,
+        9,
+        7,
+        3
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B10",
+      "wang_id": 10,
+      "role": "B",
+      "amplitudes": [
+        17,
+        13,
+        129,
+        128,
+        127,
+        18,
+        3,
+        7
+      ],
+      "profile_direction": -1
+    },
+    {
+      "id": "A11",
+      "wang_id": 11,
+      "role": "A",
+      "amplitudes": [
+        9,
+        13,
+        130,
+        131,
+        132,
+        11,
+        7,
+        3
+      ],
+      "profile_direction": 1
+    },
+    {
+      "id": "B11",
+      "wang_id": 11,
+      "role": "B",
+      "amplitudes": [
+        19,
+        15,
+        132,
+        131,
+        130,
+        17,
+        3,
+        7
+      ],
+      "profile_direction": -1
+    }
+  ],
+  "number_of_field_states": 22,
+  "source_color_tuples_W_E_S_N": [
+    [
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      3,
+      2,
+      1
+    ],
+    [
+      1,
+      0,
+      2,
+      2
+    ],
+    [
+      1,
+      1,
+      0,
+      2
+    ],
+    [
+      1,
+      3,
+      2,
+      3
+    ],
+    [
+      3,
+      0,
+      1,
+      1
+    ],
+    [
+      3,
+      1,
+      1,
+      1
+    ],
+    [
+      3,
+      1,
+      2,
+      2
+    ],
+    [
+      3,
+      3,
+      3,
+      1
+    ],
+    [
+      2,
+      2,
+      1,
+      0
+    ],
+    [
+      2,
+      2,
+      0,
+      2
+    ]
+  ],
+  "source": "https://arxiv.org/html/1506.06492v4#S4.F4; Figure 4, Theorem 3",
+  "allowed_placements": "Integer translations and four quarter-turn rotations; no reflections; fixed amplitudes.",
+  "ordinary_boundary_operator": "Homogeneous Neumann Laplacian on the L-triomino.",
+  "modal_status": "Each smooth field has an infinite Neumann eigenfunction expansion converging in the H1 form norm. This encoding cannot be a finite eigenfunction sum because its traces vanish on open intervals of a straight side and are nonzero elsewhere on that side.",
+  "matching_semantics": "Scalar values agree on every boundary contact. A unit trace is amplitude times the common asymmetric compact profile, forward or reversed. Equality is exactly equality of amplitude and profile direction.",
+  "collar_width": 0.125,
+  "maximum_sample_trace_error": 7.105427357601002e-14,
+  "contact_audit": {
+    "forced_pairs": [
+      {
+        "root": "A1",
+        "sole_connector_neighbor": {
+          "id": "B1",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B1",
+        "sole_connector_neighbor": {
+          "id": "A1",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A2",
+        "sole_connector_neighbor": {
+          "id": "B2",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B2",
+        "sole_connector_neighbor": {
+          "id": "A2",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A3",
+        "sole_connector_neighbor": {
+          "id": "B3",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B3",
+        "sole_connector_neighbor": {
+          "id": "A3",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A4",
+        "sole_connector_neighbor": {
+          "id": "B4",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B4",
+        "sole_connector_neighbor": {
+          "id": "A4",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A5",
+        "sole_connector_neighbor": {
+          "id": "B5",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B5",
+        "sole_connector_neighbor": {
+          "id": "A5",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A6",
+        "sole_connector_neighbor": {
+          "id": "B6",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B6",
+        "sole_connector_neighbor": {
+          "id": "A6",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A7",
+        "sole_connector_neighbor": {
+          "id": "B7",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B7",
+        "sole_connector_neighbor": {
+          "id": "A7",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A8",
+        "sole_connector_neighbor": {
+          "id": "B8",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B8",
+        "sole_connector_neighbor": {
+          "id": "A8",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A9",
+        "sole_connector_neighbor": {
+          "id": "B9",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B9",
+        "sole_connector_neighbor": {
+          "id": "A9",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A10",
+        "sole_connector_neighbor": {
+          "id": "B10",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B10",
+        "sole_connector_neighbor": {
+          "id": "A10",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "A11",
+        "sole_connector_neighbor": {
+          "id": "B11",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "root": "B11",
+        "sole_connector_neighbor": {
+          "id": "A11",
+          "turn": 2,
+          "shift": [
+            3,
+            2
+          ]
+        }
+      }
+    ],
+    "tested_rectangle_contacts": 12342,
+    "legal_rectangle_contacts": [
+      {
+        "left": 1,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 1,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 1,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 1,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 1,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 1,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 1,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 1,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 1,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 1,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 1,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 2,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 2,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 3,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 3,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 3,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 3,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 3,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 3,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 4,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 4,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 5,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 5,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 5,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 5,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 5,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 5,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 6,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 6,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 6,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 6,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 6,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 7,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 7,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 8,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 8,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 9,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 9,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 9,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 9,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 9,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 9,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 4,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 6,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 7,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 9,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 10,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 10,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 10,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 10,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 11,
+        "right": 1,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 2,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 3,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 5,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 8,
+        "turn": 0,
+        "shift": [
+          0,
+          2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 11,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          0,
+          -2
+        ]
+      },
+      {
+        "left": 11,
+        "right": 10,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      },
+      {
+        "left": 11,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          -3,
+          0
+        ]
+      },
+      {
+        "left": 11,
+        "right": 11,
+        "turn": 0,
+        "shift": [
+          3,
+          0
+        ]
+      }
+    ],
+    "legal_contact_count": 136,
+    "rotated_or_staggered_legal_contacts": 0,
+    "conclusion": "Each L state has a unique opposite-role partner. Every pair is a 3-by-2 rectangle. Legal rectangle contacts are exactly aligned Jeandel--Rao neighbors with the same orientation."
+  },
+  "infinite_claim": "Exact forced-pair reduction to the cited aperiodic set: every legal infinite L tiling decodes to an aperiodic Wang tiling. Every Wang tiling expands to a legal L tiling. Infinite existence and no translation periods use the source theorem.",
+  "limitations": [
+    "Boundary conditions alone do not force aperiodicity; the finite allowed field palette is essential.",
+    "The palette has finitely many states, but each state uses infinitely many Neumann modes.",
+    "The total fields are static and not single-eigenvalue Helmholtz solutions.",
+    "No claim of forcing the chair substitution; the hierarchy is inherited from the encoded Wang system.",
+    "Reflections and noninteger placements are excluded. No minimality claim.",
+    "No GCTS search engine or finite-patch aperiodicity inference."
+  ],
+  "figures": [
+    {
+      "file": "l-boundary-palette.png",
+      "sha256": "b70f322bd6cd4e94e41047d15f88077e742405828c47353a67371e7a0372b937"
+    },
+    {
+      "file": "l-boundary-forced-pair.png",
+      "sha256": "31043e409020274acc73a56881b61f75c153a4972fb2f8ea5a00e3e2b3fc6306"
+    }
+  ]
+}
