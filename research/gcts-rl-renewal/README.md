@@ -81,8 +81,10 @@ The domain is \(A_2=\{(x,y,z)\in\mathbb Z^3:x+y+z=0\}\), with twelve signed
 coordinate permutations and integer capacity \(12\). A tile has 28 positive
 point values; the only geometric calculation authors those values by an exact
 rational polygon membership test. Search does not add polygon intersection
-checks. Faithfulness to conventional polygon tilings has not been independently
-proved. Distinct orientations remain distinct inventory identities.
+checks. Faithfulness was open in the initial milestone. Notebook 22 below now
+gives a written polygon/cell-region theorem with independently checked finite
+hypotheses for this declared inventory. Distinct orientations remain distinct
+inventory identities.
 
 `Graph` maintains forward and reverse shared incidence. All positive support
 alignments are enumerated. Dependency changes at occupancy and marking-only
@@ -2396,4 +2398,103 @@ remain active. A stationary substitution remains optional.
 
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_conditional_clusters.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_conditional_clusters.py
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'
+
+## 22. Turtle polygon and cell-region faithfulness
+
+`turtle_cells.py` is an inspection/certificate module, not a new search engine
+or geometry filter. It leaves all frozen point, marking, inventory, frontier,
+generation, rollback and proposal semantics unchanged. The written theorem is
+in `docs/research/gcts-rl-renewal/turtle-faithfulness.html`; its bytes are bound
+by the new `turtle-cells-001.json` artifact. This is an analytic mathematical
+argument with independently checked finite hypotheses, not a formally checked
+implementation theorem or a discovered infinite construction.
+
+Subdivide every elementary lattice triangle into its six vertex/midpoint/
+barycenter flags. Each flag belongs to one original lattice point, and each
+point owns twelve flags. The closed union of a point's flags is its barycentric
+cell \(C_p\). In first-two-component coordinates, a flag has area \(1/12\)
+and a cell has area \(1\). All flag interiors are disjoint, and the cells
+cover the plane. For a point set \(Q\), put
+\(\Omega_Q=\bigcup_{p\in Q}C_p\).
+
+The prototype polygon is exactly the union of \(240\) complete flags; their
+counts at each of its \(28\) positive points agree with the frozen integer
+occupancies. The producer checks all \(1188\) potentially intersecting flags
+by rational convex clipping against an ear triangulation, with \(13068\)
+triangle/flag candidate pairs. Each intersection is empty or a whole flag,
+and their areas equal the polygon area. All twelve signed coordinate
+permutations preserve flags and their point owners. The independent auditor
+instead generates flags face first, uses rational ray membership, cancels
+oriented internal edges, and checks exact polygon-side coverage. It directly
+reconstructs all twelve outlines and checks \(528\) boundary segments.
+
+Every potentially intersecting pair reduces by symmetry and translation to
+one of \(2443\) distinct-owner cases in inclusive bounding rectangles. All
+\(1047\) positive-area overlaps have a point-capacity conflict; all
+\(1396\) non-overlaps have none. The \(304\) capacity-legal pairs sharing
+positive point support agree with the earlier contact count. Outside the
+rectangles, both polygon boxes and positive supports are separated. The
+producer checks shared flag interiors; the independent audit uses
+\(12251\) rational scanline bands, including every polygon-segment
+intersection height. Thus it detects thin overlaps that an arbitrary midpoint
+sample could miss. The pair table's SHA-256 is
+`4d7f18f6b29a638ec5f9c50dd5ac532fc7ebc9f0571ea13bcb614d25d35b9594`.
+
+For any legal set of declared turtle placements, counts at a point are counts
+of distinct occupied flags. This gives the written universal result:
+
+\[
+ \bigl(\forall p:\hat T_S(p)\le12\bigr)
+ \quad\Longleftrightarrow\quad
+ \text{distinct polygon interiors are disjoint},
+\]
+\[
+ \bigl(\forall p\in Q:\hat T_S(p)=12\bigr)
+ \quad\Longleftrightarrow\quad
+ \Omega_Q\subseteq P(S).
+\]
+
+Containment of tile positive supports in \(A\) is equivalent to polygon
+containment in \(\Omega_A\). Therefore the existing required points and
+allowed envelope mean \(\Omega_Q\subseteq P(S)\subseteq\Omega_A\).
+Required and allowed sets need not agree: extra coverage is permitted. An
+annulus's unrequired interior is not a forbidden hole. Arbitrary prescribed
+continuous curves require their own boundary authoring or a declared
+approximation. No polygon predicate is added to candidate legality.
+
+The new artifact explicitly reuses the SHA-bound notebook 21 request artifact.
+All \(70\) completed fixed and movable-family requests are replayed as flag
+unions, with \(129360\) required flags covered, no duplicated occupied flags,
+no flags outside their envelopes, and exterior point sums realized by the
+declared fixed polygons. This is stronger verification of old results, not
+new solving, policy training or a speedup experiment. Arbitrary abstract
+exterior values do not automatically have such a polygon realization.
+Compatible cluster expansions inherit the geometry theorem; the earlier
+capacity-input law has a polygon interpretation when its incoming state is
+also realized by legal declared tiles.
+
+A turtle has coordinate area \(20\), or Euclidean area \(10\sqrt3\).
+For a finite closed cell region with zero exterior, \(|A|=20|S|\) is necessary.
+The radius-five hexagon has \(91\) points, giving an analytic area obstruction
+without search. Divisibility is not sufficient. Legal saturation of the whole
+lattice would tile the plane; this theorem does not produce that assignment
+or compatible infinite continuations of finite patches.
+
+The finite producer costs \(0.703\) seconds, peak \(107.31\) MiB; the
+sequential independent audit costs \(5.043\) seconds, peak \(121.98\) MiB.
+Eleven changed records reject, including omitted flags/pairs, changed geometry,
+recomputed pair fingerprints, forged coverage, and equal-looking floating or
+Boolean coordinates. All \(240\) research tests pass in \(77.672\) seconds.
+Twelve new tests exercise symmetry composition,
+fractional clipping, boundary omissions, thin scanline overlaps, exact cells,
+envelope constraints, ownership, strict integer semantics and old region
+replay. Their full-suite results and source bindings are exported in the new
+artifact. The visual report exposes point-owned flags, real pair controls and
+the actual continuous required regions. Practical acceleration, cheaper
+indices, learned failure interfaces, harder boundaries, Penrose continuation,
+the logical checker port and an infinite turtle construction remain active.
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_turtle_cells.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_turtle_cells.py
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py'

@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r21.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r22.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r21.1"></script>
+  <script defer src="report.js?v=20261009-r22.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 21</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 22</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -27,6 +27,41 @@
     <div><b id="assigned-count">—</b><span>learned point values</span></div>
   </section>
   <div id="load-status" role="status" class="small">Loading the reproducible experiment snapshot…</div>
+
+  <section class="panel" id="turtle-cell-research">
+    <p class="eyebrow">POINTS TO POLYGONS · EXACT CELL COVERAGE · A WRITTEN THEOREM</p><h2>A required point covers a whole cell.</h2>
+    <p>The turtle's point constraints now have an independently checked geometric interpretation. Each polygon is a union of small triangles in the barycentric subdivision of the lattice. Its integer occupancy at a point counts the triangles owned by that point. A complete finite pair check connects capacity conflicts with polygon overlap; this lets us derive continuous coverage from the same scalar sums used by search.</p>
+    <div class="callout" id="turtle-cell-finding">Loading the independent geometric hypotheses…</div>
+    <div class="controls"><label>Inspect a prototype point <select id="turtle-cell-point"></select></label></div>
+    <svg id="turtle-cell-outline" viewBox="0 0 850 460" role="img" aria-label="Actual turtle decomposed into barycentric flag triangles, with one point's complete cell highlighted"></svg>
+    <p id="turtle-cell-point-caption" class="caption"></p>
+    <details open><summary>From local counts to continuous coverage</summary>
+      <p>Let \(C_p\) be the closed union of the twelve flag triangles owned by a lattice point \(p\), and let \(\Omega_Q=\bigcup_{p\in Q}C_p\). For any legal set \(S\) of the declared turtle placements, with polygon union \(P(S)\),</p>
+      \[\left(\forall p\in Q:\sum_{c\in S}\hat t_c(p)=12\right)\quad\Longleftrightarrow\quad\Omega_Q\subseteq P(S).\]
+      <p>Capacity legality is equivalent to polygon interiors being disjoint. Containment of every positive point support in an allowed set \(A\) is equivalent to polygon containment in \(\Omega_A\). Thus our finite required points and envelope specify</p>
+      \[\Omega_Q\subseteq P(S)\subseteq\Omega_A.\]
+      <p>When required and allowed sets agree and the exterior is empty, this becomes exact tiling of that cell region. For fixed exterior point values, their polygon interpretation additionally requires declared exterior placements realizing those values. All completed requests replayed below satisfy that condition.</p>
+      <p>This is a written analytic theorem for the given turtle, twelve symmetries and integer lattice translations, with independently checked finite hypotheses. It introduces no polygon filter, learned marking, new policy or change of scheduler. An assignment saturating the entire lattice would tile the plane; constructing such an assignment and internalizing this argument in the logical proof checker remain open. <a href="turtle-faithfulness.html">Read the full statement and proof ↗</a>.</p>
+    </details>
+    <h3 class="spaced-title">The finite pair law covers every relative pose</h3>
+    <div class="controls"><label>Geometric pair control <select id="turtle-cell-pair"></select></label></div>
+    <svg id="turtle-cell-pair-view" viewBox="0 0 850 460" role="img" aria-label="Actual geometric pair with shared flag interiors and overloaded points highlighted"></svg>
+    <p id="turtle-cell-pair-caption" class="caption"></p>
+    <div class="table-scroll"><table><thead><tr><th>Independent finite check</th><th>Evidence</th></tr></thead><tbody id="turtle-cell-checks"></tbody></table></div>
+    <h3 class="spaced-title">See the actual continuous target</h3>
+    <p>The polygons below are reused notebook 21 solutions. Gold cells are the region that must be covered; green beyond them is allowed extra coverage. The annulus interior has no required points and permits placements. A forbidden hole would require excluding its cells through the allowed envelope. An arbitrary prescribed curve is not automatically a union of these cells.</p>
+    <div class="controls"><label>Replayed fixed region <select id="turtle-cell-region-select"></select></label><label><input id="turtle-cell-show-required" type="checkbox" checked> Show required cells</label></div>
+    <svg id="turtle-cell-region" viewBox="0 0 850 460" role="img" aria-label="Replayed turtle polygons covering the exact required barycentric cells"></svg>
+    <p id="turtle-cell-region-caption" class="caption"></p>
+    <details><summary>Area obstruction, cluster inheritance and remaining work</summary>
+      <p>A cell has coordinate area \(1\), while a turtle has coordinate area \(20\). A closed cell region with zero exterior requires \(|A|=20|S|\). The radius-five hexagon has \(91\) points and fails this necessary condition, giving an analytic obstruction without search. Divisibility alone is not a tiling construction.</p>
+      <p>A legal cluster's aggregate occupancy counts the union of its base flags. Its capacity-input conditions therefore guarantee polygon compatibility when the incoming state is also realized by legal declared tiles. An arbitrary abstract scalar input need not have such a realization. Additional equality markings have their own separate obligations.</p>
+      <p>The audit derives all transformed flag decompositions and checks polygon boundaries with a different method from the producer. Rational scanlines independently check every relative pair, including thin overlaps between intersection heights. It also replays the required cells, allowed envelopes and realized fixed exterior for every completed notebook 21 evaluation and movable-family request. Historical artifacts retain their original faithfulness scope; this theorem strengthens the interpretation of the explicitly replayed requests.</p>
+      <p>No solving benchmark or RL training runs in this batch. Practical acceleration, harder and more varied boundary shapes, useful failure markings, compatible infinite turtle growth, Penrose continuation and the full logical checker port remain active.</p>
+    </details>
+    <p id="turtle-cell-audit" class="caption"></p>
+    <p class="small"><a href="turtle-cells-001.json">Inspect every flag, pair and region replay ↗</a> · <a href="turtle-faithfulness.html">Written theorem ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/audit_turtle_cells.py">Independent auditor ↗</a></p>
+  </section>
 
   <section class="panel" id="conditional-cluster-research">
     <p class="eyebrow">PARAMETRIC LOCAL SOLUTIONS · REORDERABLE CLUSTERS · NEW BOUNDARY FAMILIES</p><h2>Keep the local solution. Let its order adapt.</h2>
@@ -55,7 +90,7 @@
     <div class="table-scroll"><table><thead><tr><th>Lane</th><th>Solved families</th><th>Boundary members tried</th><th>Total seconds</th></tr></thead><tbody id="conditional-moving"></tbody></table></div>
     <p>The two authored families each allow three strip positions. Every lane succeeds on its first member in this batch, so these controls verify the finite-family interface but do not demonstrate moving a stalled boundary or optimizing its shape. Each attempted member has a separate three-second budget; an earlier unknown would remain unknown. The four fixed requests and all training boundaries were frozen before the official run. They are new authored shapes within this pilot, not a standard independent benchmark suite.</p>
     <details><summary>Problem semantics, conformance and the next research gate</summary>
-      <p>Only the required points must reach unit occupancy; every positive tile support must lie in the declared envelope. The annulus's interior has no obligations and permits placements. It is not a physical hole that forbids tiles. Fixed exterior values and owners are explicit problem data. Continuous boundary-faithfulness, freely changing shapes and plane coverage remain separate open requirements.</p>
+      <p>Only the required points must reach unit occupancy; every positive tile support must lie in the declared envelope. The annulus's interior has no obligations and permits placements. It is not a physical hole that forbids tiles. Fixed exterior values and owners are explicit problem data. Notebook 22's <a href="turtle-faithfulness.html">cell-region theorem</a> now supplies a continuous interpretation for the replayed requests. Arbitrary boundary curves, freely changing shapes and plane constructions remain open.</p>
       <p>The new interval law is exact for these nonnegative unmarked occupancies and distinct owners. Marked clusters would additionally need compatibility of all assigned point values. No learned marking, candidate exclusion or negative proof is introduced. The interval/fixed and interval/adaptive lanes start with identical proposal pools at the same state; later paths diverge through ordering. All constraints, candidate degrees, generations and targets remain shared.</p>
       <p>The separately implemented audit derives each capacity interface and child law, brute-enumerates every sampled-library pose, checks every saved scheduler path and sampled complete parent domains, reconstructs policy updates and rejects altered records. Abandoned branches are not all independently replayed, and no exhaustive negative tree is exported. The next gates are harder target families, useful cluster productions and failure markings, tighter sufficient interfaces, cheaper compilation and the proof-system continuation. A stationary substitution remains optional.</p>
     </details>
@@ -88,7 +123,7 @@
     <details><summary>Conformance, learning and the limits of this batch</summary>
       <p>The complete frontier/candidate bipartite graph still counts only base tiles. Global dead checks precede forced propagation; branching selects the earliest generation, with candidate count breaking generation ties. Each move is revalidated, and failed children discard exact copies of all state and graph fields. Proposals never change domains, markings, degrees, generations, targets or the admissible envelope.</p>
       <p>Fresh REINFORCE training uses \(48\) single-path rollouts on seven separately declared boundaries. It updates mode and move preferences from independently verified coverage, completion, actual base attempts and elapsed cost. A failed sampled path supplies no impossibility claim. Evaluation uses full alternatives. Construction, reused donor/mining work, fresh training and independent audit are reported separately; no audit or tests run beside the timed stage.</p>
-      <p>Independent replay checks every exported successful or best path, response preconditions and offsets, sampled complete parent domains and the policy-update algebra. Unit controls also compare every visited domain with literal enumeration on a bounded search. Abandoned branches are not all serialized and replayed independently, and no exhaustive negative tree is exported. Cutoffs remain unknown. These are finite point-model completions; a continuous region-faithfulness theorem, useful general acceleration, movable shape optimization, Penrose continuation and plane coverage remain open.</p>
+      <p>Independent replay checks every exported successful or best path, response preconditions and offsets, sampled complete parent domains and the policy-update algebra. Unit controls also compare every visited domain with literal enumeration on a bounded search. Abandoned branches are not all serialized and replayed independently, and no exhaustive negative tree is exported. Cutoffs remain unknown. These were finite point-model completions at notebook 20. Notebook 22 now supplies a cell-region theorem and replays the notebook 21 requests; useful general acceleration, movable shape optimization, Penrose continuation and a plane construction remain open.</p>
     </details>
     <p id="frontier-cost" class="caption"></p><p id="frontier-audit" class="caption"></p>
     <p class="small"><a href="frontier-responses-001.json">Inspect each request, response interruption, frontier sample, learned update and source binding ↗</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/gcts-rl-renewal/frontier_responses.py">Read the unique base-child solver ↗</a></p>
@@ -569,7 +604,7 @@
       <svg id="patch" viewBox="0 0 800 470" role="img" aria-label="Turtle patch from an independently verified search run"></svg>
       <div class="slider-row"><label for="step">Base placements</label><input id="step" type="range" min="1" max="32" value="32"><output id="step-count">—</output></div>
       <p id="patch-caption" class="caption"></p>
-      <p class="small">Polygons draw the point model. Search checks exact point occupancy and marking agreement. Independent geometric faithfulness has not yet been established; these pictures are not plane-tiling certificates.</p>
+      <p class="small">Polygons draw the point model. Search checks exact point occupancy and marking agreement. Notebook 22 now gives a <a href="turtle-faithfulness.html">polygon and cell-region theorem</a> for this inventory. These finite pictures still do not certify a plane construction.</p>
       <p id="geometry-caption" class="small"></p>
     </div>
     <div class="panel narrow">
@@ -659,7 +694,7 @@
       <li><span class="goal-state done">Growth tested</span><div><h3>Learn geometric failure markings</h3><p>Cold contact labeling and scalar synthesis work. Compact and exterior markings have complete exclusion audits and matched growth tests. A stable acceleration and richer encodings remain open.</p></div></li>
       <li><span class="goal-state active">Cluster policy tested</span><div><h3>RL proposes clusters and sequences</h3><p>A fresh policy now chooses the hierarchy on new boundary shapes and executes validated clusters with adaptive constituent orders, retaining every base alternative. Its costs do not establish an end-to-end advantage. Next: useful learned productions, tighter interfaces and geometric failure markings.</p></div></li>
       <li><span class="goal-state active">Parametric interfaces</span><div><h3>Learn marked tiles at multiple scales</h3><p>Two child types share a learned channel; their parent learns its own. Checked case and refinement arguments rule out several coarse inventories. Local responses now have exact capacity intervals and descending composition laws; their constituents can follow the global scheduler in different orders. Broader legality alone is insufficient for useful continuation. A stationary substitution is optional.</p></div></li>
-      <li><span class="goal-state active">New shapes tested</span><div><h3>Practical boundary solving and plane coverage</h3><p>All seven lanes complete the new fixed point requests; exact-trace adaptive order leads. Finite movable families succeed on their first choice, without testing motion after a stall. Harder targets, lower memory cost, useful acceleration, general boundary faithfulness, other tile systems and unbounded coverage remain open.</p></div></li>
+      <li><span class="goal-state active">Cell regions certified</span><div><h3>Practical boundary solving and plane coverage</h3><p>The turtle point model now has a written polygon and cell-region faithfulness theorem with independent finite checks. All completed new-shape requests cover their continuous required cells. Exact-trace adaptive order leads; general acceleration, harder boundary shapes, lower memory cost, actual motion after a stall, other tile systems and an infinite construction remain open.</p></div></li>
       <li><span class="goal-state active">Conditional theorem</span><div><h3>Transfer to Penrose</h3><p>Complete connected sector assignments now have an analytic plane-faithfulness proof. All pair and full-root-star contexts have finite completions. No useful marking was learned. Search a compatible infinite continuation and a hierarchical Penrose-compatible subsystem.</p></div></li>
       <li><span class="goal-state active">Fixed interpreter</span><div><h3>Build checkable proof search</h3><p>A fixed serialized host checker checks induction and exact proof blocks. One literal interpreter now reads programs as data, with a general finite-Turing-machine translation and checked component Wang rectangles. Compact relative addresses now complete the addition control. Checked computation responses now compose and preserve an implicit headless frame. Next: useful block discovery and reuse, port the full checker, internalize geometry and search harder statements.</p></div></li>
     </ol>
