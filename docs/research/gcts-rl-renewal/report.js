@@ -10,7 +10,76 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,timer=null,currentRun;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,timer=null,currentRun,currentProof,currentProofRows;
+
+function clusterTileView(){
+  const t=clusterData.types.find(t=>t.identity===$("cluster-tile-view").value),children=clusterData.child_expansions[t.identity];
+  const groups=children?t.expansion.map(key=>children.findIndex(child=>child.some(k=>JSON.stringify(k)===JSON.stringify(key)))):null;
+  const frontier=t.occupancy.filter(([p,v])=>v<12).map(([p])=>p);
+  drawPatch($("cluster-tile-drawing"),t.expansion,{points:frontier,width:720,height:380,groups});
+  $("cluster-tile-caption").textContent=`Level ${t.level} · ${t.identity} · ${t.expansion.length} distinct base constituents; ${t.occupancy.length} positive points; ${frontier.length} incomplete interface points. ${children?`${children.length} checked child maps; colors identify child ownership.`:"Base tiles retain their handedness colors."} Gold dots identify residual point obligations.`;
+}
+function clusterTileResults(){
+  clusterData.types.forEach(t=>{const o=document.createElement("option");o.value=t.identity;o.textContent=`Level ${t.level} · ${t.identity} · ${t.expansion.length} base tiles`;$("cluster-tile-view").append(o);});
+  $("cluster-tile-view").value='observed-parent';$("cluster-tile-view").addEventListener('change',clusterTileView);clusterTileView();
+  $("cluster-tile-evidence").textContent=`${clusterData.prototype_count} types include the base singleton, 14 searched clusters and one observed parent. All ${clusterData.transformed_expansions_checked} transformed expansions replay to exact base values. Five new semantic tests cover inherited level channels, zero-valued distant dependencies, complete aggregate incidence, exact snapshots, base fallback and rejected malformed hierarchies. The complete research suite now passes ${proofData.semantic_tests.passed} tests.`;
+}
+
+const proofSymbolColor=s=>Array.isArray(s)?"#c97940":String(s).startsWith("w:")||String(s).startsWith("c:")?"#4b8068":String(s).startsWith("r:")||["p",";","X","_"].includes(s)?"#99bac1":["L","#","$","c#"].includes(s)?"#8a728b":"#e7e9de";
+const wordTex=word=>word.length?`\\mathtt{${word.join("")}}`:"\\varepsilon";
+function proofRowView(){
+  if(!currentProofRows)return;
+  const step=Number($("proof-row").value),row=currentProofRows[step],svg=$("proof-row-tape"),cell=680/row.length;
+  svg.replaceChildren();$("proof-row-value").textContent=step;
+  row.forEach((s,x)=>{const head=Array.isArray(s),name=head?s[2]:s,px=30+x*cell;
+    svg.append(el("rect",{x:px,y:17,width:cell-2,height:43,rx:2,fill:proofSymbolColor(s)}));
+    svgText(svg,px+(cell-2)/2,44,String(name),{"text-anchor":"middle",fill:head?"#fff9e8":"#24362d","font-family":"monospace","font-size":Math.min(14,cell/3)});
+  });
+  const head=row.findIndex(s=>Array.isArray(s));
+  $("proof-row-caption").textContent=`Step ${step} of ${currentProof.height}. ${head>=0?`Head at tape cell ${head}; compiled state ${row[head][1]}.`:"No head."} Labels are literal tape-symbol identifiers.`;
+  const marker=$("proof-row-marker");if(marker){marker.setAttribute("y1",22+step/currentProof.height*365);marker.setAttribute("y2",22+step/currentProof.height*365);}
+}
+function proofPilotView(){
+  const problem=proofData.problems[Number($("proof-problem").value)],lane=$("proof-lane").value;
+  currentProof=proofData.evaluation.find(r=>r.problem_id===problem.id&&r.lane===lane);currentProofRows=null;
+  const svg=$("proof-machine-grid");svg.replaceChildren();$("proof-row-tape").replaceChildren();
+  const math=$("word-proof");window.MathJax?.typesetClear?.([math]);
+  math.textContent=currentProof.word_derivation?`\\[${currentProof.word_derivation.map(wordTex).join("\\;\\Rightarrow\\;")}\\]`:`\\[${wordTex(problem.source)}\\;\\Rightarrow_R^*\\;${wordTex(problem.target)}\\]`;
+  $("proof-problem-caption").textContent=`Declared word capacity ${problem.capacity}; ${problem.certificate_length} unknown proof bytes; rectangle ${problem.width} columns by ${problem.height} rows. The generated checker has ${problem.states} states, ${problem.tape_alphabet} tape symbols, ${problem.transitions.toLocaleString()} transitions, and ${problem.tile_types.toLocaleString()} possible Wang tile types. Their domains are represented exactly by symbolic products.`;
+  $("proof-row").disabled=!currentProof.verified;$("proof-row").max=problem.height;$("proof-row").value=0;$("proof-row-value").textContent="0";
+  if(!currentProof.verified){
+    svgText(svg,370,175,"Unknown within this search budget",{"text-anchor":"middle","font-size":21});
+    svgText(svg,370,215,`${currentProof.nodes.toLocaleString()} attempted placements · ${fmt(currentProof.lane_seconds)} seconds`,{"text-anchor":"middle"});
+    $("proof-grid-caption").textContent="No proof rectangle was found within the declared bounds. This does not refute the assertion.";$("proof-row-caption").textContent="Choose a successful lane to inspect a certificate.";
+  }else{
+    const c=currentProof.certificate,types=c.tile_types_used,symbols=c.symbols,w=660/problem.width,h=365/problem.height;
+    currentProofRows=[c.initial.map(id=>symbols[id]),...c.grid.map(row=>row.map(id=>symbols[types[id][3]]))];
+    c.grid.forEach((row,y)=>row.forEach((id,x)=>{
+      const s=symbols[types[id][3]],rect=el("rect",{x:52+x*w,y:22+y*h,width:w-.45,height:h-.12,fill:proofSymbolColor(s)});
+      svg.append(rect);
+    }));
+    svgText(svg,52,14,"Input at top · machine time runs down",{"font-size":11});
+    svgText(svg,52,412,`Accepting row · ${problem.width*problem.height} checked base tile placements`,{"font-size":11});
+    svg.append(el("line",{id:"proof-row-marker",x1:46,x2:718,y1:22,y2:22,stroke:"#834853","stroke-width":2}));
+    $("proof-grid-caption").textContent=`${lane}: independently replayed word rules, machine transitions, point sums and all marking agreements. ${currentProof.nodes.toLocaleString()} tried placements; ${currentProof.forced.toLocaleString()} forced; ${currentProof.branches.toLocaleString()} branches; ${fmt(currentProof.lane_seconds)} total seconds including proposal construction. The packed certificate uses ${types.length} distinct tile types.`;
+    proofRowView();
+  }
+  if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([math]).catch(()=>{});
+}
+function genericProofResults(){
+  const d=proofData;
+  d.problems.forEach(p=>{const o=document.createElement("option");o.value=p.id;o.textContent=`Problem ${p.id+1} · source length ${p.source.length}`;$("proof-problem").append(o);});
+  d.configuration.lanes.forEach(lane=>{const o=document.createElement("option");o.value=lane;o.textContent=lane;$("proof-lane").append(o);});
+  $("proof-lane").value="RL + standard Wang";
+  ["proof-problem","proof-lane"].forEach(id=>$(id).addEventListener("change",proofPilotView));
+  $("proof-row").addEventListener("input",proofRowView);proofPilotView();
+  const summary=d.configuration.lanes.map(lane=>{const rs=d.evaluation.filter(r=>r.lane===lane),success=rs.filter(r=>r.verified).length;
+    tableRow("proof-search-benchmark",[lane,`${success} / ${rs.length}`,Math.round(mean(rs.map(r=>r.nodes))).toLocaleString(),fmt(mean(rs.map(r=>r.branches))),fmt(mean(rs.map(r=>r.lane_seconds)))]);return {lane,success};});
+  const standard=summary.find(s=>s.lane==="standard Wang"),analytic=summary.find(s=>s.lane==="analytic GCTS"),rl=summary.find(s=>s.lane==="RL + standard Wang");
+  $("proof-search-finding").textContent=`Cold training checked ${d.training.success} of ${d.training.episodes.length} proposals. On the three shorter held-out sources, learned proposals found ${rl.success} checked proofs; standard Wang found ${standard.success} and the analytic marking alone found ${analytic.success}. Each rectangle has the same 100,000-placement and five-second bounds in every lane. The analytic marking adds propagation work and does not improve the learned lane here. These tiny same-theory examples establish an executable path, not a general theorem-proving speedup.`;
+  const a=d.independent_audit;
+  $("proof-search-cost").textContent=`Cold training ${fmt(d.training.seconds)} s; generated programs ${fmt(d.problems.reduce((sum,p)=>sum+p.compile_seconds,0))} s; complete experiment ${fmt(d.total_seconds)} s; peak process memory ${(d.peak_process_memory_bytes/1048576).toFixed(1)} MiB. Separate replay ${fmt(a.seconds)} s checked ${a.checked_rectangles.length} rectangles and ${a.point_placements_checked.toLocaleString()} base placements, and rejected ${a.tampered_certificates_rejected} altered certificates/statements. Search timings include domain construction; lane totals also include proposal compilation and successful search replay. The bounded fair-driver control returns unknown after ${d.fair_bound_control.attempts} attempts. All ${d.semantic_tests.passed} semantic tests pass.`;
+}
 
 function drawPatch(svg,placements,{points=[],dead=null,width=800,height=470,groups=null}={}){
   svg.replaceChildren();
@@ -295,7 +364,7 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r3.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r4.2",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
     if(!data.evaluation||!data.wang)throw new Error("Iteration is still running; the final checkpoint is not ready.");
@@ -306,30 +375,38 @@ async function main(){
     $("load-status").textContent=`Iteration 01 · ${data.pair_verification.negative_proof_nodes} independent failure-tree nodes checked · all ${data.pair_catalog.count} contact labels resolved.`;
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r3.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r4.2",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r3.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r4.2",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r3.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r4.2",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r3.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r4.2",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    $("load-status").textContent=`Three turtle studies and one cold rhomb pilot recorded · ${thirdData.semantic_tests?.passed||"pending"} semantic tests pass · nested cores and finite interfaces independently verified.`;
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r4.2",{cache:"no-cache"});
+    if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
+    proofData=await proofResponse.json();
+    if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
+    genericProofResults();
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r4.2",{cache:"no-cache"});
+    if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
+    clusterData=await clusterResponse.json();clusterTileResults();
+    $("load-status").textContent=`Three turtle studies, a cold rhomb pilot, and generic word-proof search recorded · ${proofData.semantic_tests.passed} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});
     $("step").addEventListener("input",updatePatch);
     $("pair").addEventListener("change",pairView);
     $("play").addEventListener("click",()=>{if(timer){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=1;updatePatch();$("play").textContent="Pause";timer=setInterval(()=>{const n=Number($("step").value)+1;if(n>currentRun.placements.length){clearInterval(timer);timer=null;$("play").textContent="Play growth";return;}$("step").value=n;updatePatch();},300);});
-    $("provenance").textContent=`Started ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; third turtle study ${new Date(thirdData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, proofs, training traces, explicit marking reuse, and the timing correction are in the JSON. No substitution or plane-tiling proof has been produced.`;
+    $("provenance").textContent=`Started ${new Date(data.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; third turtle study ${new Date(thirdData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}; generic proof pilot ${new Date(proofData.date).toLocaleString("en-US",{timeZone:"America/Los_Angeles",dateStyle:"long",timeStyle:"short"})}, Pacific time. Source SHA-256 hashes, budgets, placements, proofs, training traces, explicit marking reuse, and the timing correction are in the JSON. No substitution or plane-tiling proof has been produced.`;
   }catch(error){$("load-status").textContent=`Experiment data could not be loaded: ${error.message}`;$("load-status").style.color="#a5343f";}
 }
 main();

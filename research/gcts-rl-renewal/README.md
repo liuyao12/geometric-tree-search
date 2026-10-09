@@ -5,6 +5,12 @@ vertices and angle units of the article. It starts with no marking, zero policy
 weights, no saved model, no known tiling, and no supplied substitution. Historical
 experiments elsewhere in the repository are comparison context only.
 
+The user revised the program after the first pilots: a turtle substitution is
+optional. The practical goal is exact tiling of regions with fixed or explicitly
+movable boundaries, and compatible growth toward the plane. Clusters become
+tiles with their own markings at successive levels. Local boundary solutions
+and multiscale assembly are the central next experiments.
+
 The report is at [the existing GitHub Pages destination](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/).
 
 Run a cold iteration and the semantic conformance checks:
@@ -46,14 +52,15 @@ resolved pair label, as required by the shared learning contract.
 3. **RL sequences.** Learn irregular cluster proposals, expose all constituent
    placements, validate them, obey the scheduler during execution, retain every
    base move, and evaluate on disjoint seeds with construction costs reported.
-4. **Substitution discovery.** Infer several metatile types from patches, propose
-   exact expansion maps, and export rules as lists of base placements. Repeated
-   motifs alone do not pass. Check coverage, interfaces, and at least three
-   recursion levels before calling a rule an experimental substitution.
-5. **Plane construction, if attainable.** An exact substitution needs compatible
-   collars and an expanding nested construction or an equivalent coverage proof.
-   Finite growth, a visually plausible patch, and a spectral radius alone do not
-   pass. Aperiodicity is a further independent assertion.
+4. **Marked cluster tiles at multiple scales.** Promote local solutions into
+   real aggregate types with exact expansions, inherited interfaces and new
+   level-specific marking channels. Learn how those types assemble at the next
+   level. A stationary substitution is an optional route, not a completion gate.
+5. **Practical region solving and plane coverage.** Benchmark fixed boundaries,
+   explicitly movable boundary variables and growing nested cores, counting
+   learning/reuse cost, memory and independently verified covered obligations.
+   A plane construction needs a compatible unbounded continuation or coverage
+   invariant. Finite growth alone does not pass; aperiodicity is a separate goal.
 6. **Penrose over \(\mathbb Z[\zeta_5]\).** Exact rank-four arithmetic first.
    Declare a faithful point model and admissible translations before transferring
    the learner; the physical module is dense, so polygon interiors cannot simply
@@ -320,6 +327,169 @@ uncovered obligations. Search
 inflation matrices without providing a known scalar, and try hierarchical
 composition; preserve single-tile fallback. Certify exclusions of larger motifs
 before adding further marking channels. For Penrose, close the developed-complex
-gap and learn hierarchical proposals beyond pair-star samples. For logic,
-compile an actual proof checker before comparing
-learned policies with conventional proof enumeration.
+gap and learn hierarchical proposals beyond pair-star samples. The computational
+proof pilot below implements a generic checker. For mathematical logic, the
+remaining bridge is an explicit translation of the first-order kernel and
+checked theory schemas, followed by harder benchmarks.
+
+## Generic computational proof system: word rules, compiled checker, RL
+
+`rewrite_machine.py` defines a formal proof relation over arbitrary finite
+alphabets and directed word rules. An assertion is \(u\Rightarrow_R^*v\);
+its certificate is a sequence of rule indices and substring positions.
+`check_derivation` checks those operations independently of any TM or tiling
+code. The theory and target are supplied externally, never registered by a
+certificate. Empty left or right sides permit insertion and deletion.
+
+`ProofMachine` compiles the declared theory and target into literal finite TM
+transitions. Its fixed-capacity input word buffer is followed by unknown proof
+bytes. Unary positions, rule tokens and terminators are checked; malformed
+proofs and buffer overflow reject. The same generated machine works at every
+capacity. An explicit padding token permits larger proof-length bounds without
+inventing extra proof steps. Successful checking erases the work tape, returns
+to a fixed marker and enters an absorbing accepting state. The independent
+word semantics, operational TM replay and Wang point replay all check found
+certificates. The compiler has semantic tests, not a machine-checked general
+correctness proof.
+
+`tm_theory` makes the computational expressiveness explicit. A well-formed
+configuration is \(L\alpha q a\beta R\), with disjoint symbol namespaces and
+one state marker. A right transition \(\delta(q,a)=(p,b,+1)\) gives
+\(qac\to bpc\) for each tape letter \(c\), and \(qaR\to bpBR\) at the
+border. Left moves give \(cqa\to pcb\) and \(Lqa\to LpBb\); stationary
+moves give \(qa\to pb\). Here \(B\) is the declared blank symbol. Every
+non-halting reachable word remains a configuration, and its sole possible
+rewrite is exactly the machine's transition. Border rules extend blank tape.
+Only the halt state can erase its adjacent tape symbols, then apply
+\(Lq_{\rm halt}R\to\mathtt{ACCEPT}\). Thus target reachability is equivalent
+to arbitrary machine acceptance. This is an implemented version of the
+classical [Post construction](https://wolframscience.com/prizes/tm23/images/Post2.pdf),
+not a new universality theorem. It establishes expressiveness of the formal
+relation; it does not yet compile our separate Hilbert kernel or all mathematical
+theories to word rules.
+
+`lazy_wang.py` avoids materializing millions of types. Every allowed local triple
+has zero heads, a center head, a left head, or a right head. Four disjoint
+Cartesian blocks represent and count the complete inventory exactly. A candidate
+identity consists of its center and triple; its reverse occupancy incidence is
+exactly that center. Domains restrict these blocks only by declared boundary
+conditions and assigned point markings. All rectangle centers are explicit
+generation-zero roots, and all placed tiles have generation one. Global dead
+ends precede global forced moves; branching ties use row then column within the
+common earliest generation. Iterative DFS retains every alternative. Trail
+rollback restores selections, marks, complete domains, order and generations.
+Independent checks use direct operational transitions and exact point values,
+never symbolic domains. Tests compare those domains and counts with a fully
+enumerated inventory and check both marking dependency patterns.
+
+The additional neighbor-value marking is an **analytic control**, not a learned
+failure marking. Standard colors already give \(W=(a,b)\), \(E=(b,c)\), so
+horizontal agreement implies \(a=S_{\rm left}\) and \(c=S_{\rm right}\).
+Assigning those values at the two neighboring bottom-value points is redundant
+for complete rectangles, with blank exterior side pairs. It may reject finite
+prefixes sooner. This is a specialized finite Wang problem; it does not supply
+a marking or substitution to the turtle learner.
+
+`proof_search.py` trains REINFORCE on all applicable word-rule singletons and
+two-step sequences. Each executed constituent is independently valid; rewards
+charge actual word moves and machine steps. A checked proposal compiles to a
+whole rectangle of preferences. Every preferred tile still uses the graph's
+global scheduler; invalid preferences fall back to all base options. Frozen
+policies affect ordering only. A bounded operational check remains unknown if
+its step budget expires; it does not invalidate an independently checked word
+proof, and the full rectangle preference needs its own accepting replay.
+
+`fair_search` dovetails powers-of-two capacities, proof lengths and heights,
+revisiting each fixed triple with increasing node budgets. There is no wall
+cutoff in unlimited execution. A finite derivation fits a finite word capacity
+and proof length; padding and absorbing acceptance place it within larger
+enumerated bounds. For one recurring triple, a sufficient node budget eventually
+exhausts the complete finite DFS. Optional learned preferences preserve this
+argument because no alternatives are removed. This semidecides derivability;
+it need not stop on negative cases. The exported stage-limited control returns
+unknown, not unprovability.
+
+The cold pilot uses a declared four-rule theory with cycles and length changes.
+Training has 64 episodes on source lengths four to six, zero initial weights,
+and no imported certificate. Three held-out sources have lengths one to three
+from the same theory and target family. At identical rectangle bounds and
+100,000 placements/five seconds, standard Wang reaches none, analytic GCTS
+reaches one, and each learned lane reaches all three. This small example tests
+the implementation; it is not evidence of general mathematical proof-search
+performance. Time includes construction and successful replay, with proposal
+costs in the lane total and training reported separately.
+
+Packed JSON proofs store a symbol table, used tile types, the complete grid and
+initial row. `audit_proof_search.py` reconstructs programs from a separate fixed
+problem declaration, checks every certificate through word/TM/point semantics,
+and rejects changed tile outputs, malformed symbol IDs, inputs and targets.
+Semantic tests additionally reject forged theory rules and malformed generations,
+exercise every machine transition shape and both tape borders, and preserve
+singletons, fallback and exact rollback.
+
+```sh
+python3 research/gcts-rl-renewal/run_proof_search.py
+python3 research/gcts-rl-renewal/audit_proof_search.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+The program remains active: practical boundary-conditioned tiling, learned
+cluster markings, plane coverage, Penrose hierarchy/faithfulness, the first-order
+kernel compiler and substantial mathematical proof benchmarks remain open.
+
+## Boundary solutions and first-class cluster tiles
+
+`cluster_tiles.py` implements an explicitly declared aggregate tile system.
+Types carry summed occupancy over distinct base constituents, inherited marking
+components, level-own scalar markings and child maps. Every marking component
+is attached to a physical lattice point and a channel; it does not create a new
+occupancy obligation. Symmetries transform its point, leaving the channel and
+integer color unchanged. Missing is free and assigned zero is meaningful.
+
+Parent construction unions shared constituent identities, so repeated context
+descriptions do not duplicate occupancy. Selected aggregate placements have
+disjoint base ownership. The dependency graph indexes both point components
+and constituent ownership. Independent enumeration checks complete type,
+orientation and positive-support alignments. Snapshots restore ownership,
+roots, generations, point data and complete incidence. Flattening every accepted
+aggregate to base placements verifies exact occupancy and marking semantics.
+Child maps must descend in level and preserve inherited marks; forged child
+expansions, omitted channels and cyclic hierarchies reject.
+
+Atomic placement is exact for this **aggregate inventory**, with the reference
+scheduler applied at that level. It is not a shortcut claiming equivalence to
+the base macro scheduler. Including every unmarked singleton gives every base
+solution an all-singleton representation; new restrictions on cluster channels
+then affect only the use of those higher-level types. With only a sampled
+cluster inventory, exhaustion cannot prove the original base problem impossible.
+Future cluster failure markings must declare whether they are problem-defining,
+restricted hypotheses or independently proved redundant for a stated universe.
+
+`export_cluster_types.py` explicitly reuses fourteen searched motif expansions
+and one observed child assembly from iteration 03. It imports no old marking,
+policy or human substitution. The sixteen-type inventory includes the base
+singleton; all 192 transformed expansions independently replay. New cluster
+marking channels remain free. This is construction evidence, not a speed
+benchmark or completed failure-learning experiment.
+
+For a finite required region \(D\), fixed exterior values define the problem
+\(T_{\rm ext}(p)+\sum_{c\in S}t_c(p)=1\) for \(p\in D\), with exact
+marking agreement and declared admissible placements. A movable boundary adds
+explicit shape/position variables and point conditions that backtrack with the
+state. The useful boundary trace contains residual capacities, all marking
+components including exterior dependencies, and base ownership. Joining local
+solutions is a discrete compatibility relation, not linear superposition.
+
+The next experiments will test larger collars before retaining local cores,
+coarse interface problems for long-range obstructions, and refinement after a
+coarse failure. These are proposed transfers from
+[Hou and Wu's multiscale construction/oversampling](https://authors.library.caltech.edu/records/spv1w-bz590)
+and [Xu and Zikatanov's multigrid framework](https://arxiv.org/abs/1611.01917).
+Their PDE convergence guarantees do not transfer automatically. The benchmark
+must measure verified region completion, wall time, construction/learning cost,
+memory, boundary robustness and expansion checking across tile systems.
+
+```sh
+python3 research/gcts-rl-renewal/export_cluster_types.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
