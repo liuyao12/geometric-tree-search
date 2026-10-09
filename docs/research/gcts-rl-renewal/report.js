@@ -26,7 +26,7 @@ function responseTypeView(){
   const d=responseData,records=new Map(d.library.nodes.map(r=>[r.identity,r])),r=records.get($('response-type').value);
   drawResponseTrace($('response-incoming'),r,'incoming');drawResponseTrace($('response-outgoing'),r,'outgoing');
   const occurrences=d.library.provenance[r.identity],donors=new Set(occurrences.map(p=>p.seed));
-  $('response-incoming-caption').textContent='Incoming occupancy on all '+r.incoming.length+' support points. Hollow white circles are explicit zero; orange and blue show occupied units. Numbers are integer units out of twelve. These are local occupancy traces, not marking colors. This response occurs '+occurrences.length+'; distinct fresh donor runs: '+donors.size+'.';
+  $('response-incoming-caption').textContent='Incoming occupancy on all '+r.incoming.length+' support points. Hollow white circles are explicit zero; orange and blue show occupied units. Numbers are integer units out of twelve. These are local occupancy traces, not marking colors. Donor-window occurrences: '+occurrences.length+'; distinct fresh donor runs: '+donors.size+'.';
   $('response-outgoing-caption').textContent='After adding '+r.sequence.length+' distinct base turtles, '+r.outgoing.filter(([,v])=>v===12).length+' local support points are full. Blue is twelve units; orange points retain a deficit. Full local capacity is required on the declared request, not every point of this response footprint.';
   const svg=$('response-tree');svg.replaceChildren();let leaf=0;const shapes=[],links=[];
   function visit(name,depth,parent){const n=records.get(name),entry={n,depth,parent};if(!n.children.length){entry.left=leaf;entry.right=leaf++;}else{const cs=n.children.map(([child])=>visit(child,depth+1,entry));entry.left=cs[0].left;entry.right=cs.at(-1).right;}shapes.push(entry);if(parent)links.push(entry);return entry;}
@@ -146,7 +146,7 @@ function failureStageView(){
 async function loadFailureStage(){
   const index=Number($('failure-stage').value),ticket=++failureRequest,decl=failureData.stages[index];$('failure-load-stage').disabled=true;$('failure-load-stage').textContent='Loading this scale…';
   try{
-    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r15.1`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
+    if(!failureStageCache.has(index)){const response=await fetch(`${decl.artifact}?v=20261009-r15.2`,{cache:'no-cache'});if(!response.ok)throw new Error(`Contact snapshot returned ${response.status}`);failureStageCache.set(index,await response.json());}
     if(ticket===failureRequest)failureStageView();
   }catch(error){if(ticket===failureRequest){$('failure-load-stage').disabled=false;$('failure-load-stage').textContent='Retry loading';$('failure-contact-caption').textContent=error.message;}}
 }
@@ -302,7 +302,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r15.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r15.2`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -860,40 +860,40 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r15.1',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r15.1',{cache:'no-cache'})]);
+    const responseSnapshots=await Promise.all([fetch('boundary-responses-001.json?v=20261009-r15.2',{cache:'no-cache'}),fetch('response-resolution-001.json?v=20261009-r15.2',{cache:'no-cache'})]);
     if(responseSnapshots.some(r=>!r.ok))throw new Error('Boundary response snapshots could not be loaded.');
     [responseData,resolutionData]=await Promise.all(responseSnapshots.map(r=>r.json()));
     if(!responseData.independent_audit||!resolutionData.independent_audit||!responseData.semantic_tests)throw new Error('Boundary response replay or tests are pending.');
     responseResults();
-    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r15.1',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r15.1',{cache:'no-cache'})]);
+    const bridgeResponses=await Promise.all([fetch('hierarchy-bridge-001.json?v=20261009-r15.2',{cache:'no-cache'}),fetch('hierarchy-proposal-control-001.json?v=20261009-r15.2',{cache:'no-cache'})]);
     if(bridgeResponses.some(r=>!r.ok))throw new Error('Hierarchy proof snapshots could not be loaded.');
     [bridgeData,bridgeControlData]=await Promise.all(bridgeResponses.map(r=>r.json()));
     if(!bridgeData.independent_audit||!bridgeData.semantic_tests)throw new Error('Hierarchy proof replay or tests are pending.');
     bridgeResults();
-    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const failureResponse=await fetch('failure-interfaces-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!failureResponse.ok)throw new Error(`Failure interface snapshot returned ${failureResponse.status}`);
     failureData=await failureResponse.json();
     if(!failureData.independent_audit||!failureData.semantic_tests)throw new Error('Failure interface replay or tests are pending.');
     failureResults();
-    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const compiledResponse=await fetch('compiled-macros-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!compiledResponse.ok)throw new Error(`Compiled proposal snapshot returned ${compiledResponse.status}`);
     compiledData=await compiledResponse.json();
     if(!compiledData.independent_audit||!compiledData.semantic_tests)throw new Error('Compiled proposal replay or tests are pending.');
     compiledResults();
-    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const macroResponse=await fetch('boundary-macros-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!macroResponse.ok)throw new Error(`Boundary macro snapshot returned ${macroResponse.status}`);
     macroData=await macroResponse.json();
     if(!macroData.independent_audit||!macroData.semantic_tests)throw new Error('Boundary macro replay or tests are pending.');
     macroResults();
-    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
     coarseData=await coarseResponse.json();
     if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
     coarseResults();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -906,43 +906,43 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r15.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r15.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r15.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r15.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r15.2',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r15.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r15.2",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
     $("load-status").textContent=`Composable local boundary responses and fresh resolution controls recorded · ${suiteTests()} semantic tests pass · evidence independently replayed; base plane coverage and a general fixed proof checker remain open.`;
