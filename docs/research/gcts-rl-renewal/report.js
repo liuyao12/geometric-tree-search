@@ -10,9 +10,48 @@ const project=p=>[p[0]+p[1]/2,-p[1]*Math.sqrt(3)/2];
 const verts=(base,key)=>{const {s,p}=syms[key[0]],tr=key[1];return base.map(q=>p.map((i,j)=>s*q[i]+tr[j]));};
 const mean=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:0;
 const fmt=x=>Number(x).toFixed(x>=100?0:2);
-let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
+let data,secondData,haloData,thirdData,penroseData,proofData,clusterData,regionData,clusterMarkData,complexData,starPilotData,kernelData,coarseData,multiScaleData,multiScaleStage,timer=null,currentRun,currentProof,currentProofRows;
 const multiScaleCache=new Map();let multiScaleRequest=0;
-const suiteTests=()=>multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+const suiteTests=()=>coarseData?.semantic_tests?.passed??multiScaleData?.semantic_tests?.passed??kernelData?.semantic_tests?.passed??complexData?.semantic_tests?.passed??clusterMarkData?.semantic_tests.passed??regionData?.semantic_tests.passed??proofData.semantic_tests.passed;
+
+function coarseElimination(){
+  const d=coarseData.elimination,svg=$('coarse-elimination');svg.replaceChildren();
+  const selected=$('coarse-parent').value,cw=62,left=286,top=56,rh=95;
+  d.original_types.forEach((n,i)=>svgText(svg,left+i*cw+23,25,n.slice(-2),{'font-size':12,'text-anchor':'middle'}));
+  d.rounds.forEach((r,j)=>{
+    const y=top+j*rh,active=new Set(r.active),excluded=new Set(r.eliminated);
+    svgText(svg,14,y+22,`Step ${r.round} · ${r.active.length} active types`,{'font-size':15,fill:'#23332f'});
+    svgText(svg,14,y+43,`${r.eliminated.length} new checked exclusions`,{'font-size':12});
+    d.original_types.forEach((n,i)=>{const x=left+i*cw,fill=excluded.has(n)?'#c97940':active.has(n)?'#6d9c83':'#e1e4da';
+      const box=el('rect',{x,y,width:46,height:43,rx:5,fill,stroke:n===selected?'#834853':'none','stroke-width':3});box.append(el('title',{},`${n}; ${excluded.has(n)?'excluded in this proof step':active.has(n)?'retained at this step':'excluded earlier'}`));svg.append(box);
+      svgText(svg,x+23,y+27,n.slice(-2),{'text-anchor':'middle',fill:active.has(n)?'#fffdf8':'#7a8376','font-size':13});
+      if(j<d.rounds.length-1)svg.append(el('line',{x1:x+23,y1:y+51,x2:x+23,y2:y+76,stroke:'#b8c8b4','stroke-width':1.2}));
+    });
+  });
+  $('coarse-elimination-caption').textContent='Orange: newly excluded by complete failure trees. Green: retained at that step, including every unknown. Gray: excluded by an earlier proved premise. Type numbers are identifiers. Purple outlines follow the selected shape. The last step leaves no type.';
+}
+function coarseView(){
+  const d=coarseData,name=$('coarse-parent').value,mode=$('coarse-control').value,definitions=d.elimination.definitions,types=new Map(definitions.map(t=>[t.identity,t]));
+  const round=d.elimination.rounds.find(r=>r.eliminated.includes(name)),study=mode==='reference'?d.reference:mode==='capacity'?d.capacity_control:round,r=study.results.find(r=>r.root===name),t=types.get(name),active=study.active??study.active_types;
+  drawClusterValues($('coarse-prototype'),t,[],500,390);
+  $('coarse-prototype-caption').textContent=`${name} · four distinct base turtles; level ${t.level}; ${t.occupancy.length} positive support points. The two child maps descend to level one. Every own and inherited marking slot is free. The earlier base-positive contact declares this shape; its base completion witness is unavailable to coarse search.`;
+  let placements=r.placements,dead=null;
+  if(r.status==='negative'){placements=[[name,0,[0,0,0]]];let node=r.certificate;while(node.children?.length){const c=node.children[0];placements.push(c.placement);node=c.proof;}dead=node.dead;}
+  const bases=[],groups=[];placements.forEach(([n,o,tr],i)=>types.get(n).expansion.forEach(k=>{bases.push(movedBase(k,o,tr));groups.push(i);}));
+  drawPatch($('coarse-proof'),bases,{points:r.required,dead,width:620,height:390,groups});
+  $('coarse-proof-caption').textContent=`${mode==='elimination'?`Proof step ${round.round}`:mode==='capacity'?'Analytic capacity control':'Initial unmarked gate'} · ${active.length} active parent types · ${r.nodes} nodes, ${r.branches} branches, ${r.forced} forced moves · ${fmt(r.seconds)} s including ${fmt(r.construction_seconds)} s initial graph construction. ${r.status==='negative'?`A complete checked failure tree has ${r.independent_failure_audit.nodes} nodes. The first dead leaf is circled in red; group colors identify atomic parents.`:r.status==='unresolved'?'The cooperative budget ends with an unknown. This partial prefix is not a completion or a non-tiling proof.':'A finite root completion has checked viable exposed domains; no infinite continuation follows.'} Gold dots mark the initial parent’s completion target. Polygon drawing never decides legality.`;
+  coarseElimination();
+}
+function coarseResults(){
+  const d=coarseData,a=d.independent_audit,f=d.elimination;
+  $('coarse-parent').replaceChildren(...f.original_types.map(n=>choice(n,`${n} · excluded at step ${f.eliminated_at[n]}`)));$('coarse-parent').value='coarse-parent-00';
+  ['coarse-parent','coarse-control'].forEach(id=>$(id).addEventListener('change',coarseView));coarseView();
+  $('coarse-finding').textContent=`All ${a.eliminated_types} parent types are ruled out from complete tilings by this joint library. The checked exclusion rounds remove four, four and five types. ${a.reference_and_elimination_failure_nodes} unmarked coarse failure-tree nodes support the induction. Every prior local assembly had a base completion, yet their combined parent library cannot tile the whole point domain. The base turtle problem remains open.`;
+  const rows=[['Initial reference / step 0',d.reference],['Analytic capacity control',d.capacity_control],...f.rounds.slice(1).map(r=>[`Elimination step ${r.round}`,r])];
+  rows.forEach(([label,s])=>{const counts=s.results.reduce((c,r)=>(c[r.status]=(c[r.status]||0)+1,c),{});tableRow('coarse-benchmark',[label,(s.active??s.active_types).length,`${counts.negative||0} / ${counts.unresolved||0} / ${counts.positive||0}`,fmt(s.results.reduce((n,r)=>n+r.seconds,0)),fmt(s.results.reduce((n,r)=>n+(r.independent_failure_audit?.seconds||0),0))]);});
+  $('coarse-cost').textContent=`Initial unmarked gate and first audits ${fmt(d.reference.seconds)} s; separate analytic control ${fmt(d.capacity_control.seconds)} s; subsequent elimination rounds and first audits ${fmt(f.seconds)} s. Saved-data audit ${fmt(a.seconds)} s, peak audit memory ${(a.peak_audit_process_memory_bytes/1048576).toFixed(1)} MiB. Search-process peak memory was not instrumented in these initial gates; exact compiled-key counts are retained. Initial controls allow 4,000 nodes and 15 seconds per root; later rounds allow 6,000 nodes and 20 seconds. Limits are cooperative and can overshoot during complete graph updates. Timings are one sequential pass, include unresolved attempts, and compare different proved inventory contexts; they are not equal-success speed ratios. No marking or RL training is charged here because neither runs in this gate.`;
+  $('coarse-audit').textContent=`Independent replay checks ${a.positive_shape_witnesses} reused base-positive shape witnesses, all ${a.states_replayed} exported coarse prefixes, ${a.reference_and_elimination_failure_nodes} reference/elimination tree nodes, ${a.analytic_failure_nodes} separate analytic tree nodes and ${a.transformed_parent_expansions} transformed expansions. It reconstructs every active-inventory premise and rejects ${a.tampered_trees_rejected} altered trees. No finite coarse completion was found. ${suiteTests()} semantic tests pass.`;
+}
 
 const choice=(value,label)=>{const o=document.createElement('option');o.value=value;o.textContent=label;return o;};
 async function loadMultiScaleStage(){
@@ -21,7 +60,7 @@ async function loadMultiScaleStage(){
   ['multiscale-type','multiscale-values','multiscale-contact','multiscale-step'].forEach(id=>$(id).disabled=true);
   try{
     if(!multiScaleCache.has(index)){
-      const response=await fetch(`${decl.artifact}?v=20261009-r9.1`,{cache:'no-cache'});
+      const response=await fetch(`${decl.artifact}?v=20261009-r10.1`,{cache:'no-cache'});
       if(!response.ok)throw new Error(`Level data returned ${response.status}`);
       multiScaleCache.set(index,await response.json());
     }
@@ -579,10 +618,15 @@ function computation(){
 }
 async function main(){
   try{
-    const response=await fetch("iteration-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    const response=await fetch("iteration-001.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!response.ok)throw new Error(`Snapshot returned ${response.status}`);
     data=await response.json();
-    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    const coarseResponse=await fetch("coarse-gate-001.json?v=20261009-r10.1",{cache:"no-cache"});
+    if(!coarseResponse.ok)throw new Error(`Coarse proof returned ${coarseResponse.status}`);
+    coarseData=await coarseResponse.json();
+    if(!coarseData.independent_audit||!coarseData.semantic_tests)throw new Error("Coarse proof replay or tests are pending.");
+    coarseResults();
+    const multiResponse=await fetch("multiscale-regions-001.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!multiResponse.ok)throw new Error(`Multiscale snapshot returned ${multiResponse.status}`);
     multiScaleData=await multiResponse.json();
     if(!multiScaleData.independent_audit||!multiScaleData.semantic_tests)throw new Error("Multiscale replay or tests are pending.");
@@ -595,46 +639,46 @@ async function main(){
     data.pair_catalog.samples.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${i+1} · ${s.status} · orientation ${s.second[0]}`;$("pair").append(o);});
     selectRun();marking();pairView();benchmark();motifs();penrose();computation();
     await multiScaleResults();
-    const secondResponse=await fetch("iteration-002.json?v=20261009-r9.1",{cache:"no-cache"});
+    const secondResponse=await fetch("iteration-002.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!secondResponse.ok)throw new Error(`Second snapshot returned ${secondResponse.status}`);
     secondData=await secondResponse.json();
     if(!secondData.total_seconds)throw new Error("Second cold run is still computing; final evidence is not ready.");
     spatialResults();proofResults();
-    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r9.1",{cache:"no-cache"});
+    const haloResponse=await fetch("halo-probe-002.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!haloResponse.ok)throw new Error(`Halo snapshot returned ${haloResponse.status}`);
     haloData=await haloResponse.json();haloResults();
-    const thirdResponse=await fetch("iteration-003.json?v=20261009-r9.1",{cache:"no-cache"});
+    const thirdResponse=await fetch("iteration-003.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!thirdResponse.ok)throw new Error(`Third snapshot returned ${thirdResponse.status}`);
     thirdData=await thirdResponse.json();
     if(!thirdData.independent_audit||!thirdData.evaluation_repeat)throw new Error("The third study's repeat or final audit is still pending.");
     continuationResults();
-    const penroseResponse=await fetch("penrose-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    const penroseResponse=await fetch("penrose-001.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!penroseResponse.ok)throw new Error(`Penrose snapshot returned ${penroseResponse.status}`);
     penroseData=await penroseResponse.json();penroseResults();
-    const proofResponse=await fetch("proof-search-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    const proofResponse=await fetch("proof-search-001.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!proofResponse.ok)throw new Error(`Proof snapshot returned ${proofResponse.status}`);
     proofData=await proofResponse.json();
     if(!proofData.independent_audit||!proofData.semantic_tests)throw new Error("Generic proof audit is pending.");
-    const regionResponse=await fetch('regions-001.json?v=20261009-r9.1',{cache:'no-cache'});
+    const regionResponse=await fetch('regions-001.json?v=20261009-r10.1',{cache:'no-cache'});
     if(!regionResponse.ok)throw new Error(`Region snapshot returned ${regionResponse.status}`);
     regionData=await regionResponse.json();if(!regionData.independent_audit||!regionData.semantic_tests)throw new Error('Boundary replay or semantic tests are pending.');
-    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r9.1',{cache:'no-cache'});
+    const clusterMarkResponse=await fetch('cluster-marking-001.json?v=20261009-r10.1',{cache:'no-cache'});
     if(!clusterMarkResponse.ok)throw new Error(`Cluster marking snapshot returned ${clusterMarkResponse.status}`);
     clusterMarkData=await clusterMarkResponse.json();if(!clusterMarkData.independent_audit||!clusterMarkData.semantic_tests)throw new Error('Cluster marking replay or tests are pending.');
-    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r9.1',{cache:'no-cache'});
+    const complexResponse=await fetch('penrose-complex-001.json?v=20261009-r10.1',{cache:'no-cache'});
     if(!complexResponse.ok)throw new Error(`Complex audit returned ${complexResponse.status}`);
     complexData=await complexResponse.json();if(!complexData.independent_audit||!complexData.semantic_tests)throw new Error('Complex hypotheses or semantic tests are pending.');
-    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r9.1',{cache:'no-cache'});
+    const starPilotResponse=await fetch('penrose-stars-001.json?v=20261009-r10.1',{cache:'no-cache'});
     if(!starPilotResponse.ok)throw new Error(`Full-star pilot returned ${starPilotResponse.status}`);
     starPilotData=await starPilotResponse.json();if(!starPilotData.serialization_audit)throw new Error('Saved full-star evidence replay is pending.');
-    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r9.1',{cache:'no-cache'});
+    const kernelResponse=await fetch('kernel-machine-001.json?v=20261009-r10.1',{cache:'no-cache'});
     if(!kernelResponse.ok)throw new Error(`Kernel bridge returned ${kernelResponse.status}`);
     kernelData=await kernelResponse.json();if(!kernelData.independent_audit||!kernelData.semantic_tests)throw new Error('Kernel bridge audit or tests are pending.');
     genericProofResults();penroseComplexResults();kernelResults();
-    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r9.1",{cache:"no-cache"});
+    const clusterResponse=await fetch("cluster-types-001.json?v=20261009-r10.1",{cache:"no-cache"});
     if(!clusterResponse.ok)throw new Error(`Cluster type snapshot returned ${clusterResponse.status}`);
     clusterData=await clusterResponse.json();clusterTileResults();regionResults();clusterLearningResults();
-    $("load-status").textContent=`Two-level markings and parent-only obstruction, authored boundary trials, first-order kernel bridge and conditional rhomb plane-faithfulness recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
+    $("load-status").textContent=`Joint coarse-library obstruction, two marking levels, authored boundary trials, first-order kernel bridge and conditional rhomb plane-faithfulness recorded · ${suiteTests()} semantic tests pass · finite certificates independently replayed.`;
     if(data.geometry_audit){const a=data.geometry_audit;$("geometry-caption").textContent=a.all_reported_patches_nonoverlapping?`An independent audit using exact triangulation and rational clipping found no positive-area polygon overlap in any of the ${a.evaluation_runs.length} displayed evaluation patches. This certifies finite non-overlap, not coverage of the plane or faithfulness of the entire point model.`:`The independent polygon audit found overlaps in some point-model patches; inspect the JSON before treating a point patch as a geometric tiling.`;}
     $("lane").addEventListener("change",selectRun);
     $("seed").addEventListener("change",()=>{currentRun=data.evaluation.find(r=>r.lane===$("lane").value&&String(r.seed)===$("seed").value);$("step").max=currentRun.placements.length;$("step").value=currentRun.placements.length;updatePatch();});

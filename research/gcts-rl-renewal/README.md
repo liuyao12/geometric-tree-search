@@ -979,7 +979,7 @@ python3 research/gcts-rl-renewal/audit_multiscale_regions.py
 python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
 ```
 
-The current suite passes 98 tests. Fourteen new controls exercise shared
+At that milestone the suite passed 98 tests. Fourteen new controls exercise shared
 type-tagged palettes, unmarked catalog independence, unknown labels, actual scalar
 exclusions, child-mark preservation and symmetry, resident domain completeness,
 extended zero-valued dependencies, exact rollback, fresh request state, immutable
@@ -988,3 +988,123 @@ prior source-hashed snapshots are unchanged. The HTML report loads each level’
 large history only when selected and exposes both palettes, inherited values,
 individual failure trees and every regional lane/seed. The research goal remains
 active, with substitution optional under the user’s revised objective.
+
+## Joint parent-library gate and a proof by type elimination
+
+`coarse_continuation.py` declares a new coarse-only inventory from **all**
+\(22\) prior positive level-one contacts. These contribute \(13\) distinct
+four-turtle shapes modulo the declared twelve symmetries and translation.
+Both source child definitions are unmarked. Exact transformed child maps
+normalize each parent, descend in level and flatten to distinct base placements.
+The prior positives are reused as shape declarations; their base completion
+witnesses, learned palettes and policy weights never enter coarse search.
+The saved-data audit separately replays all positives and checks every alias by
+a literal group/translation orbit, independently of `spatial.canonical`.
+
+Each gate fixes one normalized parent at generation zero and activates all its
+positive support. Only the \(13\) declared parent types may be placed; auxiliary
+children validate their maps but are excluded from candidate incidence. There
+is no support envelope or singleton fallback. Every exposed point receives all
+parent orientations and positive-support alignments over the entire lattice.
+The initial support must fill and exposed frontier domains must remain viable.
+An exhausted tree refutes a complete coarse continuation. A cutoff remains
+unknown. A finite positive, had one been found, would still be finite evidence.
+
+`RootModel` compiles candidates against the immutable fixed root. Its Boolean
+rejection cache avoids retaining full illegal footprints. Every root-compatible
+candidate retains full point/mark/base-ownership dependencies and dynamic legality.
+Root-incompatible candidates cannot revive below this root; branch snapshots
+retain the root and restore every other value, generation and incidence.
+Constructor caches for hierarchy validation are cleared before graph construction
+so auxiliary child placements cannot leak through reverse dependencies. The
+independent oracle enumerates literal full type/orientation/support alignments
+without root-compilation filters. Global dead, global forced and earliest
+generation remain the scheduler order. Aggregate level and search generation
+are separate quantities.
+
+The initial unmarked gate finds \(4\) complete root failures and leaves \(9\)
+unknown, under \(4{,}000\)-node and fifteen-second cooperative bounds. The four
+failures use \(6\) tree nodes. `coarse_fixed_point.py` imports those checked
+exclusions, retains every unknown and rechecks the remaining inventory. A new
+failure extends an inductive claim about complete tilings by the original
+library; the inventory omission carries that proved context. Each round uses
+\(6{,}000\) nodes and twenty seconds per root. The subsequent nine-type round
+excludes four more types with \(74\) tree nodes. The final five-type round
+excludes all five with \(65\) nodes. No type survives. The complete proof uses
+\(145\) unmarked coarse tree nodes across the three rounds.
+
+The lifting argument is explicit. Assume a complete original-library point
+tiling. Normalize any used parent by a symmetry and translation. Every finite
+prefix has a legal remaining tiling member at each incomplete frontier point.
+A complete finite failure tree lists every branch alternative and ends only
+at an independently re-enumerated empty domain. Following the assumed tiling
+through the tree is therefore impossible. Types excluded in the first round
+cannot occur. A complete original-library tiling consequently uses only the
+remaining inventory. Apply the same argument to each later round, until no
+type remains. This proves that the joint \(13\)-type library has no complete
+point tiling, with disjoint base ownership. It is an analytic induction over
+machine-checked finite trees, not a formally encoded first-order derivation.
+
+This conclusion does not decide the base turtle plane problem, exclude these
+parents from larger inventories, or forbid their use in finite regions alongside
+singletons. The preceding regional study uses them legally in that context.
+These coarse failure trees cannot supply a claim of redundant pruning for a
+different base or mixed inventory. A fixed coarse library is a diagnostic here;
+practical region solving may keep fine-scale refinement and irregular local
+solutions without demanding a stationary parent-only tiling.
+
+`capacity_pruning.py` is a separate analytic control, with no learned GCTS
+marking. Future contributions at a completed point sum to its deficit. The
+declared positive values \(\{3,4,6,8,9,12\}\) generate an additive monoid whose
+unreachable deficits up to capacity \(12\) are \(\{1,2,5\}\). Removing a candidate
+that leaves such a deficit is necessary for complete point tilings. Candidate
+removal uses the same graph and records the analytic reason; exact state copies
+preserve the constraint version. For **finite region** problems, apply this rule
+only to required points: optional exterior points may remain incomplete. The
+unit tests exercise this distinction.
+
+The present analytic gate applies the rule to all activated positive support,
+explicitly strengthening the finite corona semantics to numerical future
+completion. Its initial thirteen-type control finds three failures and leaves
+ten unknown, rather than the reference’s four failures and nine unknown. The
+elimination proof uses none of these analytic premises. Fewer candidates did
+not produce a stronger bounded result. No marking-learning or RL cost is hidden:
+neither mechanism runs in this gate.
+
+Costs include complete graph construction and unresolved attempts. The initial
+reference plus its first independent audits takes \(203.35\) seconds; the
+analytic control \(193.58\); subsequent elimination rounds and first audits
+\(260.62\). Each is one sequential pass; different proved inventory contexts
+and cooperative overshoot prevent an equal-success speed interpretation.
+Search-process peak memory was not instrumented in these initial gates, a
+performance-reporting gap; compiled-key counts are retained. The separate
+saved-data audit reports its own duration and peak process memory. Audit and
+test timing can overlap, and neither is a search-throughput measurement.
+
+`audit_coarse_gate.py` reconstructs the external library, literal positive
+shape aliases, every root and active-inventory premise, base expansion,
+generations, coverage and result scope. It replays \(40\) exported prefixes,
+all \(145\) reference/elimination failure-tree nodes and the three independent
+analytic nodes. It checks \(156\) transformed parent expansions, independently
+enumerates the numerical monoid, and rejects \(16\) altered trees. No finite
+coarse completion was found. The canonical JSON preserves all three studies,
+including every cutoff and proof premise; earlier snapshots and source-hashed
+engines are unchanged.
+
+```sh
+python3 research/gcts-rl-renewal/coarse_continuation.py
+python3 research/gcts-rl-renewal/capacity_pruning.py
+python3 research/gcts-rl-renewal/coarse_fixed_point.py
+python3 research/gcts-rl-renewal/audit_coarse_gate.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p 'test*.py' -v
+```
+
+The current suite passes 105 tests, including seven new controls for complete
+parent normalization and child maps, auxiliary-inventory isolation, immutable
+root domains versus literal enumeration, rollback, the numerical completion
+constraint and its finite boundary scope, unknown budgets and changed leaves.
+The report exposes the three-round proof, every parent and first dead leaf,
+and the separate analytic control. Next: generate broader variable-size parent
+families, choose them for useful cross-type continuation and boundary reuse,
+and retain singleton refinement for practical regional tasks. Plane construction,
+Penrose hierarchy and general hierarchical proof search remain open.
