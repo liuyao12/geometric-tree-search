@@ -5102,3 +5102,125 @@ python3 research/gcts-rl-renewal/audit_quantified_wang.py
 python3 research/gcts-rl-renewal/export_quantified_receptors.py
 python3 research/gcts-rl-renewal/validate_quantified_receptors.py
 ```
+
+## Notebook 46: movable proof boundary and certified failure markings
+
+[The region reader](../../docs/research/gcts-rl-renewal/movable-regions.html)
+uses a finite region of \(B+1\) full-capacity cells with at most \(B\)
+inferences. Point values impose \(\phi_0=1\) and \(\phi_{B+1}=0\).
+An inference assigns its incoming/outgoing values \((1,1)\); an end cell
+assigns \((1,0)\); padding assigns \((0,0)\). Exact agreement forces a
+contiguous inference prefix, one end cell and a padding suffix. The end
+binds the preceding formula to the requested conclusion. When that formula
+is already the last hypothesis, a zero-inference control closes immediately.
+Padding covers required points but supplies no mathematical inference.
+
+The inventory and character/scope semantics are the unchanged bounded
+quantified grammar from Notebook 45, plus end/padding placements. Eleven
+experiments include eight discovered derivation records, two exhausted
+scope/capture controls and one supplied-target control. The statements and
+explicit arithmetic/incidence axioms are unchanged; no new theorem family
+is claimed. The universal inference family is promoted from this run's
+fresh primitive donor proof. Its incidence recipient uses one family cell,
+an end and three padding cells, with six expanded primitive commands.
+The former fixed four-proof-cell region repeated the family four times.
+Candidate ordering tries padding first but guarantees no shortest proof.
+
+The end/padding suffix is also exported as an exact aggregate: its occupancy
+is the sum of its distinct base placements and its marking is their compatible
+union. The footprint varies with the endpoint. Independent verification
+checks every constituent and the complete aggregate. It is an inspectable
+closure cluster; the search executes the complete base inventory and uses
+no cluster shortcut. A capacity-preserving decomposition of semantic lemma
+cells remains open.
+
+The initial learned layer is empty. Every exhausted depth-two branch supplies
+a fixed compatible pair and its complete remaining-region tree. A separate
+explicit verifier establishes exhaustion with exactly those two placements
+fixed in the original system. All fourteen resolved negative pairs are used.
+Each pair receives one remote point: value \(0\) on its first placement,
+\(1\) on its second, and missing on every other placement. Normal point
+agreement removes the incompatible candidate through the complete graph.
+There is no runtime failure-pair callback or clause scanner.
+
+The marking is frozen before the marked run. Its context hash binds the
+catalog, target, hypotheses, bound, exact initial values, capacity and identity
+transformations. These are certified redundant constraints for that finite
+positional system, without a complete corona catalog, prototype translation
+symmetry or another-context transfer theorem. All positive marked tilings
+are also independently accepted after erasing the learned points. Expanded
+mathematical proofs are checked by both host kernels, independently of this
+search layer. The failure history is needed to justify redundancy, not to
+accept a positive mathematical proof.
+
+| Case | Initial states | Marked states | Initial search seconds | Marked search seconds | Training and certification seconds |
+| --- | --- | --- | --- | --- | --- |
+| Universal inference | 52 | 31 | 0.004817 | 0.002637 | 0.009505 |
+| Open ambient variable | 47 | 26 | 0.003868 | 0.002292 | 0.008935 |
+| Arithmetic | 3228 | 2506 | 0.570804 | 0.463379 | 1.086905 |
+| Incidence typing | 148 | 99 | 0.057582 | 0.040846 | 0.099033 |
+| Incidence universal inference | 47 | 26 | 0.012117 | 0.002592 | 0.017173 |
+| Arithmetic family | 414 | 414 | 0.080510 | 0.077512 | 0.080731 |
+| Incidence family | 7 | 7 | 0.000784 | 0.000479 | 0.000840 |
+
+Search times above exclude grammar construction. Training includes the initial
+model/search, independent pair certification and marked-model encoding, but
+excludes shared grammar construction. The reader adds common grammar cost to
+lane figures and initial model binding to the baseline; marked encoding is
+charged once in training. Add training to the marked lane for a first marked
+solve. Shared independent inventory verification, control model creation,
+positive certificate assembly and compilation/checking are outside lane figures
+and included in complete production. No first-solve advantage follows.
+
+Forward DFS uses the same catalog and marked point rules but grows proof
+lines chronologically and stops at the goal; its positive layouts are
+independently checked. It reaches the \(40001\)-state cutoff in arithmetic,
+incidence typing and arithmetic-family tests. Those results are unknown.
+Saturation shares facts and its recovered proofs are checked against the
+same maximum inference bound. It remains much faster. There is no RL lane
+or distinctive overall GCTS advantage. Timings are exploratory single runs.
+Complete search production costs \(21.341038\) seconds, with whole-process
+peak RSS \(57065472\) bytes across all lanes.
+
+The independent audit reconstructs all eleven inventories and every terminal
+initial/marked tree, explicitly enumerates reference products, expands all
+actual positive factor frames, checks full tile data and generations, extracts
+the failed-pair provenance from the initial trees, and independently replays
+every complete exclusion certificate. It checks the exact sparse encoder,
+all positive classical certificates, learned-mark erasure, closure aggregates,
+whole source compilation and discharged theorems. It rejects \(127\)
+altered records in \(11.282067\) seconds.
+
+Four compiled requests match Notebook 45's arithmetic, incidence typing,
+ambient-variable and six-slot arithmetic-family requests exactly. Fresh wire
+serialization reconstructs the same complete machine input bytes and bootstrap.
+The archived operational audit, unchanged sources, palette fingerprint and
+all grammar/checkpoint/response hashes are verified before reuse. This reuses
+the previously executed \(42\) command fragments, with no new native execution.
+Exact-input verification costs \(1.300106\) seconds and rejects sixteen altered
+requests or input frames. Changed-input response transport remains unproved.
+The open case retains its checked sequent declaration and labeled root probe;
+its longer discharged theorem is separately host-checked.
+
+Nine regressions cover the explicit flow boundary, partial graph domains,
+brute point legality, both incidence directions, rollback, scheduling,
+generations, failed-pair marks, scope/capture, cluster sums, zero-line control,
+budget scope and context isolation. The extracted JavaScript quantifier checker
+is byte-for-byte unchanged. Reader validation checks eighteen positive lane
+records and nine erased proofs, rejecting \(13578\) point mutations,
+\(66\) source changes, \(54\) structural changes, \(150\) primitive changes
+and \(18\) projection changes. Browser checks exercise all \(100\) tile views,
+fourteen learned-pair diagrams and an expandable four-line family body.
+
+Complete formula words, full-capacity unit support and identity transformations
+remain the specialization. Arbitrary partial syntax, fractional/shared support,
+dynamic scope, general geometric marking prototypes, adaptable lemma geometry,
+cross-request transports, useful RL, stronger comparisons, universal formal
+compiler/kernel soundness and the original turtle/Penrose objectives remain active.
+
+```sh
+python3 research/gcts-rl-renewal/run_movable_regions.py
+python3 research/gcts-rl-renewal/audit_movable_regions.py
+python3 research/gcts-rl-renewal/export_movable_regions.py
+python3 research/gcts-rl-renewal/validate_movable_regions.py
+```
