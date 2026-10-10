@@ -10,7 +10,7 @@
   <script defer src="report.js?v=20261009-r33.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 33</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 34</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -20,11 +20,20 @@
     <p class="small">In the original turtle discovery lane, no human stripe marking, saved policy, known tiling or substitution rule is supplied. Current direct proof searches receive statements, axioms and finite grammar bounds, with no supplied proof sequences. Historical tactic controls remain explicitly labeled.</p>
   </section>
 
+  <section class="panel" id="induction-proof-research">
+    <p class="eyebrow">NOTEBOOK 34 · SEARCHED INDUCTION · CERTIFIED REMOTE RESOURCE MARKINGS</p><h2>Discover the base case and the successor argument.</h2>
+    <p>Fresh GCTS searches now discover induction proofs of \(\forall n\,(0+n=n)\) and \(\forall n\,(1+n=S(n))\). The input is the external statement, arithmetic axioms and finite bounds. The search receives no proof sequence, chosen induction variable, saved policy or proof library. A classical AC/MRV control also discovers \(\forall n\,(0\cdot n=0)\); the larger statement \(\forall a\forall b\,(S(a)+b=S(a+b))\) remains unknown in every lane.</p>
+    <div class="callout"><strong>Certified proof-resource markings help GCTS; the classical control remains faster.</strong><br>On left-zero addition, ancestral-cell markings reduce GCTS placement attempts from \(4454\) to \(1123\), and cold request time from \(9.8902\) to \(2.6774\) seconds. The classical control reaches the same checked theorem in \(0.5111\) seconds. Marked GCTS also finds the left-one proof within its wall budget, while the plain and depth lanes remain unknown. These are exploratory single runs with rotated order, not a general speedup result.</div>
+    <p>The new proof reader shows the actual square cells and distant formula/resource markings, translates each cell into a readable formula and inference, and opens all primitive lines and local lemma definitions. An actual rejected candidate illustrates how a remote premise's certified resource mark conflicts with the boundary. Both the base case and the conditional successor step are searched, and the induction inference is itself a selected tile.</p>
+    <p><a href="induction-proofs.html?v=20261009-r34.1#tiles">Read the discovered induction tiles ↗</a> · <a href="induction-proofs.html?v=20261009-r34.1#comparison">Compare all fresh requests ↗</a> · <a href="induction-proofs.html?v=20261009-r34.1#markings">Inspect the marking soundness argument ↗</a></p>
+    <p class="small">All \(28\) search requests and every compiled inference definition pass independent audit. Full traces are stored losslessly in SHA-bound compressed case files. The grammar remains bounded contextual equations with goal-derived induction templates. Useful RL, broader proof-language completeness, Euclid-style construction and infinite tiling claims remain open; Wang-style proof search stays primary.</p>
+  </section>
+
   <section class="panel" id="wang-proof-notebook">
     <p class="eyebrow">SEPARATE WANG-STYLE PROOF NOTEBOOK · CONCRETE SEARCHED THEOREMS</p><h2>Examine the discovered proofs, line by line.</h2>
     <p>The dedicated proof notebook collects eight held-out arithmetic statements and two parameterized donor statements whose proofs were found by fresh point-tile searches. Each theorem has its exact axioms, search provenance, complete native acceptance, high-level certificate, expandable lemma definitions and an independently checked full primitive derivation. Every line has an English reading and an explanation of its rule; earlier-line references are clickable. The tile view shows the actual selected square cells, cluster ownership, and distant GCTS formula markings, with exact point values and proof-line links. The row also translates into a readable equation chain and one explanation per cell, or a combined step per cluster.</p>
     <p><a href="wang-proofs.html?v=20261009-r33.4#theorems">Open the Wang-style proof notebook ↗</a> · <a href="wang-proofs.html?v=20261009-r33.4#tiles">See the tiles and GCTS markings ↗</a> · <a href="wang-proofs.html?v=20261009-r33.4#tile-reading">Read the tile row as an argument ↗</a> · <a href="wang-proofs.html?v=20261009-r33.4#reader">Read the proof of \(1+1=2\), line by line ↗</a></p>
-    <p class="small">The present search grammar is bounded contextual arithmetic. It has not yet discovered an induction proof or a Euclid-style theorem. This is a finite positional system with extended markings; a uniform finite Wang inventory and a general mathematical proof-search language remain open.</p>
+    <p class="small">This earlier dataset uses bounded contextual arithmetic. <a href="induction-proofs.html?v=20261009-r34.1#theorems">The separate induction experiment above adds universal arithmetic proofs</a>. Euclid-style theorems, a uniform finite Wang inventory and a general mathematical proof-search language remain open.</p>
   </section>
 
   <p class="small">Original Turtle discovery snapshot · the current representation experiment follows below.</p>

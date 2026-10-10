@@ -35,8 +35,8 @@ Each cell displays the formula encoded by its port and explains the precise
 changed subexpression by matching it to the named equality axiom. Cluster view
 combines internal cells into one readable step. Universal closing inferences
 are shown separately from the occupied cells. Forty-four cells and thirty-four
-rewrites are checked; mutation controls reject altered ports, reasons, axioms
-premise ports and targets. The equation chain introduces no additional arithmetic inference.
+rewrites are checked; mutation controls reject altered ports, reasons, axiom
+instances and targets. The equation chain introduces no additional arithmetic inference.
 
 Notebook 33 adds a complete inventory of searched metatiles and an explicit
 coarse point model. A group of one, two or three slots has capacity twelve;
@@ -3827,3 +3827,153 @@ induction remain necessary for human-style mathematical search. Wang-style proof
 tiles remain primary; Turtle/Penrose controls, learned certified failure markings,
 arbitrary boundary composition, general compiler soundness and infinite-plane
 research remain open. The overall goal remains active.
+
+## Notebook 34: searched induction and certified proof-resource markings
+
+Fresh point searches now discover proofs of \(\forall n\,(0+n=n)\) and
+\(\forall n\,(1+n=S(n))\), relative to the displayed addition equations and
+authorized natural-number induction schema. No derivation path, chosen induction
+variable, previous proof, library or policy is supplied. This is an arithmetic
+fragment with induction, rather than a claim to unrestricted Peano proof search.
+All quantified target variables are offered as induction alternatives.
+
+`induction_proof_catalogs.py` constructs the entire bounded term grammar and all
+axiom instances, both rewrite directions, every contextual occurrence, and every
+fixed-induction-hypothesis occurrence. Direct, base and conditional successor
+equations coexist. The hypothesis is a fixed equality in free variables, never
+an arbitrarily instantiable axiom. Generalization is a root inference with checked
+side conditions. A two-input induction cell receives the closed base and closed
+successor implication and establishes the original target with its original
+quantifier order. Generic compiled inference definitions are supplied rules;
+their selection, premise references and proof sequence are searched. Every
+definition in the complete inventory is independently expanded before claiming
+the inventory audit passed.
+
+The fresh producer compares plain GCTS, dependency-height markings,
+ancestral-cell markings and a classical binary arc-consistency/MRV control on
+\(7\) externally nominated cases, totaling \(28\) requests. Each lane rebuilds
+and validates its own identical catalog. The search wall is \(15\) seconds,
+including representation construction, resource-bound computation and trace
+recording; the attempt cap is \(50000\). Point attempts count placements;
+classical attempts count assignments after propagation. Native acceptance and
+catalog costs are included in cold request time. Lane order rotates across cases;
+there is one timing run per lane/case, so no replicated or general speedup claim.
+
+For \(\forall n\,(0+n=n)\), plain GCTS makes \(4454\) placement attempts and
+takes \(9.890196\) cold seconds; the support-marked lane makes \(1123\)
+attempts and takes \(2.677358\) cold seconds. Both use \(7\) proof cells and
+expand to \(77\) independently checked primitive lines. The weaker depth lane
+uses \(3862\) attempts and \(7.447124\) cold seconds. The classical control
+uses \(12\) explicit assignments and \(0.511066\) cold seconds. Its work unit
+differs from a placement attempt; support-test costs remain separately recorded.
+
+For \(\forall n\,(1+n=S(n))\), support-marked GCTS finds a \(7\)-cell,
+\(77\)-primitive-line proof in \(975\) placement attempts and \(7.037670\)
+cold seconds. Plain and depth-marked GCTS remain unknown at the wall. The
+classical control verifies this theorem in \(1.096803\) cold seconds. It also
+discovers \(\forall n\,(0\cdot n=0)\), using \(8\) cells and \(105\)
+expanded primitive lines in \(1.934710\) cold seconds; all point lanes remain
+unknown for this request. The reader labels that proof as a classical discovery.
+
+The larger target \(\forall a\forall b\,(S(a)+b=S(a+b))\) remains unknown in
+every lane. Its complete grammar retains both induction alternatives \(a\) and
+\(b\), with \(159\) terms, \(803\) formulas, \(1636\) rules and \(822\)
+compiled definitions. We do not infer unprovability from the cutoff. Removing
+induction authorization and shortening the left-zero envelope to \(6\) cells
+exhaust their finite envelopes in all lanes. The shifted target
+\(\forall n\,(0+n=S(n))\) exhausts with both certified markings and the
+classical control; plain GCTS remains unknown. These are scoped finite controls.
+
+### Sound resource bounds as actual point markings
+
+`induction_proof_tiles.py` retains all original candidate types. No resource
+classifier runs during search. The complete formula-rule hypergraph yields a
+least dependency height and a stronger lower bound on distinct ancestral cells.
+For each formula \(F\), its full backward formula cone \(C(F)\) includes every
+syntactic premise edge, including cycles and unreachable alternatives. If a
+rule's premise cones are pairwise disjoint, actual ancestral cell sets cannot
+overlap, so their bounds may be added. Otherwise only their maximum is used.
+Each inference adds one cell. Positive-cost relaxation starts with seeds at
+\(1\); formulas with no finite derivation stay unreachable. The independent
+auditor recomputes cones by per-formula backward traversal and bounds by
+synchronous relaxation, then validates every recorded producer witness pass.
+
+The fixed-point inequalities, followed by induction on an actual proof DAG,
+show that a formula's bound \(b(F)\) is no greater than its distinct ancestral
+cell count. At zero-based slot \(j\), it must satisfy \(b(F)\le j+1\).
+Output and remote premise contacts write \(m=1\) at \((2j,4)\) if their bound
+is unreachable or too large, and \(m=0\) otherwise. Fixed boundary zeros at
+all these marking-only points eliminate impossible contacts through ordinary
+mark agreement and the complete frontier/candidate graph. Every original exact
+proof survives. The weaker depth lane marks outputs at \((2j,3)\). These are
+certified redundant constraints, not learned failures or RL. For left-zero
+addition, the ancestral bound is \(7\) and a \(7\)-cell proof is found; this
+also certifies the minimum cell count in this particular compiled grammar.
+
+The base engine follows the master contract: exact capacity \(12\), scalar
+marking agreement, all required finite roots at generation zero, complete
+incidence, global dead ends before forced moves, then earliest generation with
+degree ties, and exact state/graph copies for rollback. All original point
+solutions remain available. The classical control has separately labeled AC/MRV
+semantics and the same original proof envelope.
+
+### Evidence, reader and remaining gates
+
+The independent auditor passes all \(28\) request traces in \(168.959831\)
+seconds. It reconstructs every complete inventory, compiled definition,
+resource bound, point graph, scheduler decision, classical support removal,
+closed or open branch prefix and decoded proof. All \(7\) positive request
+certificates receive full native acceptance, with program/input bindings audited.
+Native instruction execution and universal compiler soundness remain trusted
+layers. This is not an independent native-instruction replay result.
+
+All \(512\) Python research tests pass in \(121.246\) unittest seconds. The
+\(13\) new engine tests include shared/repeated-premise counterexamples,
+disjoint-premise ancestry, unreachable cycles, independently checked complete
+inventory, fixed hypothesis and schema authorization, preserved tiny solution
+sets, remote-mark graph differential checks, exact rollback, and closed/open
+prefix audits. The separate tile decoder checks \(22\) actual cells in
+\(3\) proof records, validates all \(10\) axiom/hypothesis rewrites and
+\(3\) induction joins, and rejects \(39\) mutations of ports, occupancy,
+references, rewrite metadata, hypothesis scope, authorization and block
+interfaces. Natural-language wording is an explanation of checked formula
+steps, not an additional proof kernel.
+
+The producer takes \(200.577199\) seconds, including \(0.965064\) seconds
+for native compilation, and peaks at \(1196605440\) driver bytes. Full traces
+are losslessly compressed into \(7\) immutable case files totaling
+\(5462703\) bytes, each bound to its compressed and raw SHA-256 and lengths.
+`induction-proofs-001.json` holds the measured source pins, external problems,
+native program pin and full audit; `induction-proofs-view-001.json` is a separate
+read-only projection bound to that final manifest. Historical measured sources
+and evidence artifacts remain unchanged.
+
+Reproduce from the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_proofs.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_induction_proofs.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_induction_proofs.py
+node research/gcts-rl-renewal/test_induction_tile_reading.cjs
+```
+
+`induction-proofs.html` shows the actual searched cells, formula/owner/resource
+markings and remote contacts. Its human reading follows logical premise order,
+separately recording actual search placement order. Each cell opens the exact
+root inference; checked definitions and the full primitive expansion are
+inspectable line by line. The browser checks the manifest and certificate hashes
+and validates each tile's premise/output bindings before showing its reading.
+A real initially eliminated candidate illustrates remote marking conflict.
+
+This makes the requested proof-search idea more concrete: a statement can lead
+to a checked induction argument without a human supplying that argument's
+sequence. The search remains restricted by a goal-derived bounded grammar and
+has no advantage over the classical control on these positive requests. The
+next meaningful gate is fresh discovery and reuse of conditional proof fragments,
+with RL proposing their compositions and the same library offered to classical
+search. The two-variable statement is an open benchmark. Euclid-style geometric
+obligations, unrestricted expressiveness, a uniform finite tile inventory,
+certified learned failure markings, practical fixed/movable boundary composition
+and infinite-plane constructions remain open. Turtle and Penrose stay occasional
+geometric controls. The full research goal remains active.
