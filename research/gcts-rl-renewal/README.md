@@ -3605,3 +3605,156 @@ Wang-style proof search remains primary; Turtle/Penrose geometric controls,
 certified failure markings, arbitrary boundary composition, general proof
 language/compiler soundness and infinite-plane research remain open. The full
 active goal is not declared complete.
+
+## Notebook 32: independently replayed credit from open search prefixes
+
+`partial_proof_policy.py` preserves the actually executed DFS prefix when a
+wall or placement budget is reached. A tri-state recursion retains completed
+children, failed branches, interrupted constituent transactions and exactly
+one open suffix. `search_tree` remains absent for an unknown result; the new
+`partial_tree` holds its executed prefix. No cutoff becomes finite exhaustion
+or a theorem certificate. Historical sources and measurements through notebook
+31 remain byte-for-byte unchanged.
+
+The model, complete candidate graph, global scheduler, proposal compiler and
+transaction logic are reused unchanged. All required finite roots are generation
+zero; each base placement has exact capacity-12 single-cell occupancy and scalar
+distant output/premise markings. Branching follows global dead and forced checks,
+then earliest generation with degree breaking ties. Every primitive alternative
+remains available after a failed proposal. The frozen notebook-31 `Policy` class,
+twelve features, softmax probabilities, capped proposal pool and LCG are shared
+by both return signals. This is still specialized positional equational search
+with identity transforms, not new failure-marking synthesis, induction, a uniform
+four-edge compiler or a genuinely coarse cluster graph.
+
+The complete-tree control retains the previous reward and gives unknown requests
+no update. The local signal uses
+
+\[
+r_{\mathrm{local}}(a)=
+\mathbf{1}\{\text{full native acceptance and successful continuation}\}
++\frac{D(a)}{n}-\frac{\log(1+C(a))}{\log(1+50000)}.
+\]
+
+Here \(n\) is the fixed cell envelope. \(C(a)\) includes every executed base
+attempt in a proposal and its observed continuation, or in base fallback for
+deferral. \(D(a)\) is the largest observed viable filled-cell increase from the
+action's parent. A viable point state has no degree-zero frontier in its complete
+graph. This is a progress proxy, not a theorem or extension guarantee. Returns
+of nested actions overlap and must not be summed as disjoint work or progress.
+Interrupted transactions roll back and earn no committed occupancy gain; their
+actual validation steps still cost work. A zero-step interruption gets no local
+credit. Unreached sampled suffixes are censored, and deferral needs actual base
+fallback execution. All coefficients freeze during each episode; both signals
+use rate \(0.2\), clipping to \([-6,6]^{12}\), and baseline
+\(b'=0.9b+0.1r\). No unbiased-gradient or convergence theorem is claimed.
+
+Before either learner updates, `audit_partial_proof_policy.replay` independently
+reconstructs every visited point domain and selected move, including open prefixes,
+all policy draws and literal attempted work. This online gate is charged to both
+learners. The driver also independently validates each training inventory. It
+freshly searches the two donors, mines the same four checked fragments, and imports
+no saved policy, library or pilot witness. Eight training statements and ten
+external evaluation statements remain disjoint even without cell-bound hashes.
+Signals train separately from zero in seeds \(1\), \(7\) and \(19\), for four
+rotating epochs of \(32\) episodes. Learner order alternates. A seed match does
+not guarantee identical later trajectories: differing updates change choices,
+draw counts and resource-limited prefixes.
+
+All six learners verify \(28\) training proofs and retain four unknown attempts
+on multiplication inside a successor. The complete control updates none of its
+\(12\) unknown requests. Local credit updates all \(12\), with \(165\) total
+reached-choice credits and no theorem bonuses on those unknown requests. Its
+final multiplication coefficients are \(-0.312192\), \(-0.364795\) and
+\(-0.256977\); the control coefficients remain zero.
+
+**Partial credit is obtained; useful RL acceleration is not demonstrated.** All
+local policies verify eight held-out targets and exhaust two finite controls, but
+use \(1196\) base attempts versus plain GCTS's \(1152\) on the same outcomes.
+Local policies defer on the addition cases, then make ten reverse fragment
+proposals on multiplication. Their direction coefficients favor reverse moves;
+the actual saved trees independently verify those choices. This is an observable
+weakness of the occupancy proxy, not a causal ablation or rejection of RL in
+general. This proxy should not be adopted as the main accelerator.
+
+| Seed | Lane | Verified / finite exhausted / unknown | Base attempts | Cold requests seconds | Training including online replay seconds | Separate lifecycle charge seconds |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Plain GCTS | 8 / 2 / 0 | 1152 | 14.561489 | 0 | 15.568617 |
+| 1 | Fixed prior | 7 / 2 / 1 | 646 | 10.831865 | 0 | 13.422732 |
+| 1 | Zero weights | 8 / 2 / 0 | 672 | 10.859066 | 0 | 13.449933 |
+| 1 | Complete control | 8 / 2 / 0 | 669 | 11.368358 | 27.361655 | 65.207097 |
+| 1 | Local progress | 8 / 2 / 0 | 1196 | 15.778886 | 27.338219 | 69.594190 |
+| 7 | Plain GCTS | 8 / 2 / 0 | 1152 | 15.733116 | 0 | 16.740243 |
+| 7 | Fixed prior | 7 / 2 / 1 | 645 | 11.167528 | 0 | 13.758395 |
+| 7 | Zero weights | 8 / 2 / 0 | 672 | 11.232842 | 0 | 13.823709 |
+| 7 | Complete control | 8 / 2 / 0 | 1152 | 15.932457 | 27.304941 | 69.714482 |
+| 7 | Local progress | 8 / 2 / 0 | 1196 | 15.626732 | 27.435967 | 69.539784 |
+| 19 | Plain GCTS | 8 / 2 / 0 | 1152 | 14.755299 | 0 | 15.762427 |
+| 19 | Fixed prior | 8 / 2 / 0 | 669 | 11.229438 | 0 | 13.820305 |
+| 19 | Zero weights | 7 / 2 / 1 | 638 | 11.297888 | 0 | 13.888755 |
+| 19 | Complete control | 8 / 2 / 0 | 669 | 10.910608 | 27.354969 | 64.742662 |
+| 19 | Local progress | 8 / 2 / 0 | 1196 | 15.493817 | 27.378856 | 69.349758 |
+
+The common native compilation costs \(1.007127\) seconds; fresh donor discovery
+and whole-library checking cost \(1.583740\); shared training catalogs including
+independent inventory checks cost \(23.886217\). Online prefix gates cost about
+\(4.2\) seconds per learner, inside the training column. Each lifecycle row charges
+the full common compilation, reuse rows charge the full library, and each trained
+row charges the entire shared catalog setup. Do not sum these rows: they are
+separate per-policy costs with repeatedly charged common setup. No local training
+cost is repaid on this family.
+
+Evaluation uses five frozen lanes with rotating order, identical external problems,
+fresh base catalogs, primitive candidate universes, root generations, scheduler,
+five-second search wall and \(50000\) actual-placement budget. The fixed prior
+is unknown on multiplication in seeds one and seven; the zero policy is unknown
+there in seed nineteen. Those near-wall cutoffs remain unknown, and unequal-outcome
+aggregates are not timing rankings. Three seeds on ten fixed evaluation statements
+do not establish broad theorem generalization or statistical significance.
+
+The producer finishes in \(394.679570\) seconds and has peak driver memory
+\(1205911552\) bytes, including accumulated catalogs and traces. This is not a
+per-lane memory comparison. There are \(168\) training native acceptances,
+\(117\) evaluation acceptances, two donor acceptances and one whole-library
+acceptance. Thirty evaluation requests exhaust finite controls; \(24\) training
+and three evaluation requests remain unknown. The final audit verifies all
+\(342\) executed training/evaluation prefixes, including all \(27\) open ones,
+in addition to the original donor searches and hierarchy checks.
+
+`audit_partial_proof_policy.py` imports no search, graph, policy, miner or catalog
+producer. It independently recomputes all base inventories, every complete and
+open DFS prefix, viable occupancy, cutoff boundaries, actual-choice order and
+counts, policy pools/draws/gradients, both return and update chains, every online
+gate, searched fragment windows, positive primitive proof expansions and native
+program/input bindings. It passes in \(105.068606\) seconds. This is an
+implementation audit, not a universal compiler soundness theorem or independent
+native-instruction replay. The offline audit and full regression suite ran after
+the measured producer completed; their reported durations are wall times, not
+an acceleration comparison.
+
+All \(453\) tests pass in \(116.950608\) wall seconds. The \(28\) new tests cover
+complete-search and complete-return parity with the frozen engine, zero/wall/base
+and inside-transaction cutoffs, rollback, censoring, unknown local updates without
+theorem labels, native bonus gates, literal work recounts and independent replay
+rejecting altered viability, occupancy, transaction steps, counters, final result
+labels, progress returns, theorem bonuses and projected weights.
+
+Reproduce from the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_partial_proof_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_partial_proof_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_partial_policy_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_partial_policy_view.py
+```
+
+`docs/research/gcts-rl-renewal/partial-policy.html` shows the actual executed
+prefix, open boundary, policy choices, rewards and coefficient changes, plus
+all matched evaluation costs and certificates. The projection binds the full
+audited artifact and exporter by SHA-256. The next priority is a genuinely coarse
+checked proof interface, with certified expansion and distant markings, compared
+against the primitive graph and a constraint-solver control. Broader grammar and
+induction remain necessary for human-style mathematical search. Wang-style proof
+tiles remain primary; Turtle/Penrose controls, learned certified failure markings,
+arbitrary boundary composition, general compiler soundness and infinite-plane
+research remain open. The overall goal remains active.

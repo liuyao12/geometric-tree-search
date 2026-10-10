@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r31.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r32.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r31.1"></script>
+  <script defer src="report.js?v=20261009-r32.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 31</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 32</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -29,7 +29,17 @@
   </section>
   <details class="small"><summary>Historical experiment loader status</summary><div id="load-status" role="status">Loading the reproducible experiment snapshot…</div></details>
 
+  <section class="panel" id="partial-credit-research">
+    <p class="eyebrow">NOTEBOOK 32 · COMPLETE AND OPEN PREFIX REPLAY · MATCHED RETURN SIGNALS</p><h2>Keep the open proof-search trace.</h2>
+    <p>Both learners now preserve and independently replay every executed DFS prefix before updating. Six policies start from zero: three retain complete-tree credit, and three also reward observed viable occupancy progress. The same primitive graph, features, proposal pool, scheduler and fallback remain. No cutoff becomes a theorem or finite-impossibility certificate.</p>
+    <div class="callout"><strong>Partial credit is obtained; useful RL acceleration is still not demonstrated.</strong><br>Local credit updates all twelve unknown training requests; the complete-tree control updates none. Every local policy verifies eight evaluation targets and exhausts two finite controls, using \(1196\) base attempts versus plain search's \(1152\). Local policies defer on addition and try reverse fragments on multiplication. This occupancy proxy should not be adopted as the main accelerator.</div>
+    <p><a href="partial-policy.html?v=20261009-r32.1#training">Inspect the actual cutoff, rewards and coefficient update ↗</a> · <a href="partial-policy.html?v=20261009-r32.1#assessment">Read the assessment ↗</a> · <a href="partial-policy.html?v=20261009-r32.1#comparison">Compare all five lanes and full costs ↗</a></p>
+    <p>Local evaluation takes \(15.779\), \(15.627\) and \(15.494\) seconds; training adds about \(27.3\) seconds per seed and \(23.886\) seconds for shared catalogs and independent inventory checks. Fixed-prior and zero-weight multiplication cutoffs remain unknown. The next priority is a genuinely coarse checked proof interface, broader grammar and induction, with constraint-solver controls.</p>
+    <p class="small">All \(453\) tests pass. The independent audit checks all \(342\) executed training/evaluation prefixes, including \(27\) open prefixes, both complete and local returns, all online gates and updates, fresh fragments, positive primitive expansions and native bindings in \(105.069\) seconds. The producer costs \(394.680\) seconds across \(192\) training and \(150\) evaluation requests. <a href="partial-policy-001.json">Full evidence</a> · <a href="partial-policy-tests-001.json">Test ledger</a></p>
+  </section>
+
   <section class="panel" id="proof-policy-research">
+    <p class="small">Notebook 31 records the complete-tree credit baseline. The new open-prefix experiment and current assessment are above.</p>
     <p class="eyebrow">NOTEBOOK 31 · ZERO-START RL · THREE SEEDS · IDENTICAL BASE GRAPH</p><h2>Learn when to use a checked proof fragment.</h2>
     <p>Fresh GCTS searches mine the fragment library again. Three policies start with zero weights and train on eight separate statements, then freeze for ten evaluation statements. The policy can select any compatible bounded fragment instance or defer to ordinary search. Every base candidate and fallback remains; no policy value becomes a pruning rule.</p>
     <div class="callout"><strong>Training is demonstrated; useful RL acceleration is not.</strong><br>All trained policies verify eight targets and exhaust two finite controls. Two seeds mostly match the fixed hierarchy's work; one learns deferral and reproduces plain-search work. Evaluation costs \(10.854\), \(14.658\) and \(10.387\) seconds, while training adds \(23.185\), \(23.253\) and \(28.485\) seconds plus catalog construction. The fixed-prior first multiplication repeat is unknown; unequal outcomes remain explicit.</div>
