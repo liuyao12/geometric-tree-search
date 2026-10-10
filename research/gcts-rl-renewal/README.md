@@ -5720,3 +5720,53 @@ python3 research/gcts-rl-renewal/validate_proposal_gate.py
 ```
 
 Read [the request-gate notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/proposal-gate.html?v=20261010-pg1#reader).
+
+Notebook 54 adds a one-step full-information contextual policy. Twelve training
+statements provide both complete base and fixed-family costs, with four cold
+observations per action. Gaussian centers use initial complete-graph counts and
+syntax sizes, excluding names, formulas and proof paths. Four bandwidth fits
+start from zero and reuse the observed feedback for 256 rotating passes; model
+selection uses training expected return only. This is paired-feedback routing,
+not sampled exploration, branch-level attention or learned member selection.
+
+Four fully order-balanced cold observations across four methods and fourteen
+evaluation statements give $224$ solves. The router requests the ordinary and
+compound chains, reducing medians from about $3.117$ to $2.574$ seconds and
+$96.07$ to $82.79$ milliseconds. It also requests the arithmetic control, which
+costs $924.42$ rather than $633.56$ milliseconds. Most evaluation shapes recur
+in training under fresh names. Three additional compositional probes select
+base, with no demonstrated beneficial family transfer. Training adds about
+$32.49$ seconds; there is no net first-use or general proof-search advantage.
+
+The original producer was interrupted after training. Its exact source-pinned
+feedback checkpoint was recovered without changing the policy or runner.
+Every completed evaluation statement was checkpointed. The final experiment
+stage clock sums donor, training and completed evaluation clocks; serialization,
+loading, audit and discarded incomplete interrupted work are outside that sum.
+The interrupted coarse-bandwidth pilot remains separate in the private work
+ledger and is not a published completed experiment.
+
+Independent replay covers $83$ primary searches, $148166$ original-domain states,
+$764518$ matching queries, $40$ contexts and $12288$ fit updates. All $28$ routed
+and zero-control trees equal their selected original base or fixed controller.
+Both primitive kernels recheck $65$ positive source certificates, including
+training and duplicate lane proofs. Five engine tests and browser mutation
+checks pass. The reader independently reconstructs original positive-leaf
+domains, source inferences, actual marks, family interfaces, complete demanded
+binding tables, routing choices, all compact numeric updates and $320$ cold
+observations. Full repeat trees and clocks are not independently replayed.
+
+```sh
+python3 research/gcts-rl-renewal/run_family_router.py
+python3 research/gcts-rl-renewal/audit_family_router.py
+python3 research/gcts-rl-renewal/export_family_router.py
+python3 research/gcts-rl-renewal/validate_family_router.py
+```
+
+The original full-unit positional point adaptation, theory, scheduler, complete
+fallback and exact scope remain frozen. No failure pruning, new proof axiom or
+native finite Wang-machine execution is added. Conditional routing is now
+observed; robust receptor-aware transfer, branch-level learning, induction,
+full Hilbert geometry and the turtle/Penrose plane-tiling objectives remain open.
+
+Read [the family-routing notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/family-router.html?v=20261010-fr1#reader).
