@@ -5771,3 +5771,63 @@ observed; robust receptor-aware transfer, branch-level learning, induction,
 full Hilbert geometry and the turtle/Penrose plane-tiling objectives remain open.
 
 Read [the family-routing notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/family-router.html?v=20261010-fr1#reader).
+
+Notebook 55 moves sampled learning into branch-local cluster selection. A
+shared zero-start softmax scores validated instances and defer using twelve
+relational features: distant premises, hierarchy, shape, progress, guards and
+relaxed backward goal relevance. This distance follows individual premise
+edges and is not a derivability certificate. The complete original point
+graph, dead/forced/generation scheduler, exact rollback and fallback remain.
+Three fresh donors mine $31$ families at two levels. Six training statements
+and eight rotating passes give $48$ episodes and $23060$ branch draws. Updates
+sum all sampled likelihood gradients and use inclusive observed wall time,
+with per-statement baselines from preceding training observations. Training
+finds $40$ positive proofs, exhausts $8$ finite controls and costs $41.84$ s.
+
+The original evaluation failed its repeat check: semantic digests differed.
+Memory pressure and differing wall cutoffs are plausible causes, but the saved
+failure log does not establish which occurred. Recovery preserves the training,
+streams hash-bound stages and freezes the original policy. Each evaluation
+now uses a fresh process. Eleven goals, five methods and five balanced cold
+observations give $275$ solves. All evaluation lanes share $50000$ attempts
+and $60$ seconds; training retains its original $10$-second limit and rewards.
+The learned policy follows base ordering while paying proposal costs. Its
+ordinary-chain median is about $6.885$ s against $3.268$ s for base. Loading
+full audited inventory provenance dominates short examples. These costs
+include input setup, grammar, model, joins, attention, search and positive
+checks; they do not measure a compact resident inventory. Startup and raw
+serialization are separate from solve clocks and included in case-stage
+clocks. Checkpoint loading, audit and the failed initial evaluation are outside
+completed-stage sums. There is no demonstrated learned speed advantage.
+
+Conservative binary64 intervals prove
+$s_{\mathrm{cluster}}\leq -0.5177<1.0147\leq s_{\mathrm{defer}}$ for every
+valid deterministic family instance from this frozen inventory in any legal
+finite state. Products and sums are bounded upward using exact fractions.
+This diagnoses global deferral; it is not a logical pruning rule. Compiling
+the bound before constructing proposals remains a separate follow-up.
+
+The independent checker reconstructs full primary domains, trees, fallback,
+typed joins, distant interfaces, hierarchy, features, draws and all updates.
+The reader shows exact positive leaves, actual branch choices, colored
+original marking layers and readable proof lines. Full failed branches and
+training decisions remain in hash-bound raw files. Full repeat worker trees
+are retained privately and digest-bound to primary traces; clocks remain
+observations. No new axiom, proof pruning, native universal tile search or
+general first-order completeness is introduced. The broader goals remain
+active, including full Hilbert geometry and turtle/Penrose constructions.
+
+For a fresh checkout, the training-only entry point preserves the exact prefix
+of the measured original producer and pins its own source. Existing observed
+stages should instead be resumed directly with the evaluator.
+
+```sh
+python3 research/gcts-rl-renewal/train_receptor_attention.py
+python3 research/gcts-rl-renewal/resume_receptor_attention.py
+python3 research/gcts-rl-renewal/audit_receptor_attention.py
+python3 research/gcts-rl-renewal/export_receptor_attention.py
+python3 research/gcts-rl-renewal/validate_receptor_attention.py
+```
+
+Read [the branch-attention notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/receptor-attention.html?v=20261010-ra1#reader).
+Read [the branch-attention notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/receptor-attention.html?v=20261010-ra2#reader).
