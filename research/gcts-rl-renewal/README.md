@@ -5516,3 +5516,59 @@ every positive. Arithmetic and incidence use no learned family. This is limited
 evidence for scheduler-compatible family reuse, not a useful speed advantage
 over general proof search. The positional, full-capacity, generation-zero root
 adaptation and broader turtle/Penrose/universal-proof-system gaps remain active.
+
+## Notebook 51: exact lazy indexes for the same family join
+
+`indexed_family_join.py` indexes only demanded syntax nodes, available formula
+receptors, original aggregate values and deterministic ordering digests. Caches
+belong to one immutable model/library snapshot and are empty at every solve.
+`indexed_family_search.py` preserves the complete base graph, retained hint
+semantics and every original fallback. Its fixed-controller tree and entire
+ordered proposal pool equal full enumeration exactly. The engine remains the
+positional full-capacity adaptation; no new marking or native Wang execution is
+introduced. Dynamic marking changes and general cache invalidation are outside
+this immutable-solve experiment.
+
+Fresh donors rebuild seven patterns at two hierarchy levels. Twenty-four fresh
+sampled episodes retain the earlier semantic-scan reward proxy; this is not
+actual CPU or wall time. Eleven evaluation goals include a longer eight-line
+propositional proof and a compound-formula case with irrelevant implications.
+Five point lanes run eight independent cold solves each, cycling the observation
+order. Total costs include grammar/model construction, all index construction,
+search/joins and positive point/source/discharged-kernel checking. Raw trace
+serialization and whole independent audit are separate. Classical controls are
+fresh single observations with their own schedule/budget limitations.
+
+All 81 retained searches, 27,724 explicit states, 52 actual index records and
+30,437 queries pass independent full enumeration. It derives every demanded
+syntax table, every query in tree order, all cache counters and immutable
+bindings. Thirteen existing corruptions and nine new index/cache corruptions
+reject. The five new tests compare all tiny solutions, graph domains and pools,
+exact parent rollback, compound receptors, changed snapshots, bounded negatives
+and unknown partial trees. Every repeated solve is producer-checked and must
+match its retained primary semantic digest. Only primary complete traces are
+independently replayed; repeat summaries and digest bindings are checked.
+
+Reproduce from the repository root:
+
+```sh
+python3 research/gcts-rl-renewal/run_indexed_families.py
+python3 research/gcts-rl-renewal/audit_indexed_families.py
+python3 research/gcts-rl-renewal/export_indexed_families.py
+python3 research/gcts-rl-renewal/validate_indexed_families.py
+```
+
+The reader is `docs/research/gcts-rl-renewal/indexed-families.html`. Compressed raw
+data preserve full primary trees, index tables/queries and all cold observations.
+The exact reader projection includes both the entry review and any replacement
+hint at a step, preserving expire-and-replace lifetimes in the larger examples.
+It renders proof formulas/English, actual selected tile values, demanded lookups
+and all forty timing dots for the selected goal.
+
+Indexing reduces some enumeration overhead while increasing cold costs on other
+cases. Family reuse reduces the larger proof from 759 to 129 attempts. Fixed
+and RL choose identical families and placements, with equal non-time metrics on
+every evaluation. The differing, overlapping bimodal timing samples cannot be
+credited to RL. Saturation's single times are below all positive point-lane
+medians. This is limited evidence about representation cost and exact family
+matching, not a general speed advantage. The full research objective remains active.
