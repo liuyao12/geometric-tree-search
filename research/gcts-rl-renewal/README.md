@@ -4017,8 +4017,8 @@ difference does not provide a time-to-proof speedup ratio. Classical AC/MRV
 also proves the theorem when given the same resource constraints, which the
 Notebook 34 classical control did not receive. Its base lane uses \(2807\)
 states and \(2806\) explicit assignments in both runs. With motifs it uses
-\(6\) states and \(10\) constituent assignments, with three successful
-proposals. Point placement attempts and classical assignments are different
+\(6\) states and \(10\) constituent assignments, with three proposal trials, two on the accepted
+path. Point placement attempts and classical assignments are different
 units.
 
 Mean classical cold query costs are \(15.097563\) seconds without motifs
@@ -4033,7 +4033,8 @@ lifecycle comparison; broader recipient statements are still needed.
 Transfer is mixed. For \(\forall n\,(0\cdot n=0)\), both GCTS lanes
 remain unknown. Both classical lanes find the same accepted proof in \(13\)
 states. Trying motifs raises explicit assignments from \(12\) to \(17\);
-those failed motif trials are absent from the final proposal path. Mean cold
+one of the three motif trials is on the accepted path; failed alternatives
+are absent from it. Mean cold
 cost rises from \(1.986120\) to \(2.074484\) seconds. There are \(16\)
 complete recipient instances for multiplication and \(59\) for successor
 addition. Missing-schema, shortened-envelope and shifted-target controls all
@@ -4102,3 +4103,120 @@ uniform finite computational tile inventory remain open. The bounded positional
 grammar has not established unrestricted expressive reach or completeness.
 Turtle and Penrose remain occasional geometry controls; practical fixed/movable
 boundaries and certified infinite constructions remain in the active program.
+
+
+## Notebook 36: fresh RL ordering of induction clusters
+
+The preceding classical narrative has been corrected from the raw traces:
+successor addition tries \(3\) proposals and retains \(2\) on its accepted
+path; multiplication tries \(3\) and retains \(1\). The immutable proofs,
+traces and reader already contained the correct paths. No measured evidence
+was changed.
+
+The new cold experiment receives only source statements, axioms and grammar
+bounds. Its two bootstrap searches newly discover left-zero and left-one
+addition proofs, then mine every connected two/three-cell fragment. They produce
+\(11\) schemas with \(22\) certificate-bound source occurrences. The newly
+reconstructed library happens to have the same bytes as Notebook 35; no prior
+library or result is an input. The \(20\) subsequent source-only episodes
+start from all-zero parameters and perform seeded sampling without replacement
+of every applicable cluster. All source episodes produce native-accepted proofs.
+
+The policy changes macro ordering only. Every singleton remains in the complete
+fallback, and the same point/candidate graph performs global dead/forced checks,
+earliest-generation branching and exact copied rollback. The underlying atomic
+metatile expansion/equivalence is unchanged. Classical AC/MRV receives the same
+policy/library, necessary resource constraints and ordinary-value fallback.
+Both evaluation lanes use exactly the same feature meanings, applied to their
+actual filled cells; classical propagation can produce a different state.
+
+Features measure size, final-cell contact, relative location/span, internal
+premises, filled external premises, premise distance, conditional/generalization/
+induction families and progress. They do not inspect literal formulas, variables,
+AST locations or teacher paths. Integer features use scale \(1024\), integer
+parameters scale \(10^6\), and greedy evaluation uses exact integer dot
+products with fixed ordering as a tie breaker. Each policy is frozen within an
+episode. Only actually executed macro choices receive score gradients; the
+unused sampled suffix receives none. Native acceptance precedes proof credit.
+
+The episode return is
+\[
+R=\mathbf{1}_{\mathrm{accepted\ proof}}+\frac{1}{10}\frac{k}{n}-
+\min\left(1,\frac{a}{A}\right),
+\]
+where \(k\) counts filled original proof cells, \(n\) is the envelope,
+\(a\) counts constituent attempts and \(A\) is the declared cap. Unknown
+cutoffs are not negative labels. Executed gradients receive the same return and
+are averaged before a rate-\(0.2\) quantized parameter update. This initial
+small experiment uses no learned value baseline; changed coefficients and
+source success do not certify policy improvement.
+
+The practical transfer gate fails. GCTS fixed ordering discovers
+\(\forall a\forall b\,(S(a)+b=S(a+b))\) in both repetitions, at
+\(341\) states / \(349\) expanded attempts. RL ordering remains unknown
+at its \(20\)-second search walls, with \(461\) / \(459\) states and
+\(470\) / \(468\) expanded attempts. No time-to-proof speedup ratio can
+be calculated against those unknowns. Classical fixed ordering uses \(6\)
+states and \(10\) assignments; RL uses \(22\) and \(28\). Both find
+checked \(146\)-primitive-line proofs. Search-time means are nearly equal;
+mean cold query costs are \(4.042239083\) for RL versus
+\(4.151877937\) seconds for fixed ordering. The minor timing
+difference does not repay training. Discovery/mining costs
+\(10.389209917\) seconds and RL learning/native checks/
+storage adds \(11.413561917\), giving first-query costs
+\(25.845076958\) versus
+\(14.541087854\) seconds before common
+compilation. Two repetitions do not establish workload amortization.
+
+On \(\forall n\,(0\cdot n=0)\), both GCTS orders remain unknown;
+both classical orders use \(13\) states / \(17\) explicit assignments.
+Missing-schema, shortened-envelope and shifted-target controls exhaust only
+their nominated finite envelopes. Among \(40\) recipient requests,
+\(10\) are exact, \(6\) unknown and \(24\) finite exhaustions.
+Together with discovery and learning, all \(62\) requests pass independent
+audit, and all \(32\) positives receive complete native acceptance.
+
+The auditor imports no solver, policy, miner or producer. It independently
+rebuilds inventories, connected fragments and complete recipient joins; every
+point graph and AC deletion; every seeded draw, feature binding and executed
+gradient; each reward and integer update; all complete/open prefixes and native
+bindings. Its cost is \(164.661064\) seconds.
+The \(544\)-test full research suite passes in \(118.446\) unittest
+seconds. Fourteen new tests include exact feature parity, finite-difference
+score gradients, zero-policy trace equivalence, adverse ordering with full
+fallback, tri-state cutoffs and adversarial draw/gradient/update rejection.
+
+The reader includes each actual source-episode proof as well as all accepted
+recipient alternatives: \(27\) proof records,
+\(203\) cells, \(51\) actual metatiles
+and \(235\) rejected altered readings. Cells
+retain readable formulas, English statements and inference reasons. Classical
+proposal paths are distinct from atomic point-placement chronology.
+
+The producer costs \(215.822446\) seconds, with an accumulated
+driver peak of \(495730688\) bytes. Lossless source,
+training and evaluation shards total \(1189537\)
+compressed bytes. All \(39\) measured sources are pinned, and historical
+source/evidence bytes remain unchanged. Development included a source-only
+pilot and a stopped run before evaluation while fixing the episode statement
+binding; those are not held-out evaluations or performance evidence. The
+reported experiment restarts with zero policy and empty library.
+
+Reproduce from the repository root in a separate checkout:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_cluster_policy_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_cluster_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_induction_cluster_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_induction_cluster_policy.py
+node research/gcts-rl-renewal/test_induction_cluster_policy_reading.cjs
+```
+
+This is evidence against this initial policy’s practical transfer, not against
+RL or automated proof search in general. The exact marked search and structural
+cluster transfer remain checkable contributions. Next: stronger source-only
+training with variance control, broader statement grammars and hierarchical
+cluster synthesis; retain matched classical access and full lifecycle costs.
+Uniform finite mathematical tile encodings, general proof-search completeness,
+Euclid-style constructions, practical fixed/movable tiling boundaries and
+certified infinite constructions remain open in the active research program.
