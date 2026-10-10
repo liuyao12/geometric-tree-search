@@ -1,0 +1,15 @@
+soundness
+test_all_inventory_types (__main__.Tests) ... ok
+test_finite_models_and_countermodels (__main__.Tests) ... ok
+test_foundation_is_incidence_not_congruence (__main__.Tests) ... ok
+test_missing_axiom_and_changed_proof_rejected (__main__.Tests) ... ok
+test_renaming_preserves_logic (__main__.Tests) ... ok
+test_searched_theorems (__main__.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 15.128s
+
+OK
+
+reader
+{"proofs":2,"cells":6,"mutations_rejected":44,"primitive_lines":53}

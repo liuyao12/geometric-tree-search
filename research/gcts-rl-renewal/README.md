@@ -4327,3 +4327,74 @@ Reproduce the renaming control after the audited Euclidean pilot:
 
 The symbolic pipeline, arbitrary-name formula and explicit Hilbert status table
 are in the [live notebook's foundation section](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/euclidean-proofs.html?v=20261009-e1.1#symbolic-foundation).
+
+## Notebook 37: actual Hilbert planar incidence
+
+The first Hilbert fragment is now implemented in
+[its own proof reader](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/hilbert-proofs.html?v=20261010-h1#reader).
+The planar axioms I.1–I.3 of the source edition are formalized with unary
+point/line sort predicates, uninterpreted incidence and logical equality.
+Existence uses the kernel abbreviation
+\(\exists x\,P(x):=\neg\forall x\,\neg P(x)\).
+Sort coverage, disjointness and incidence typing are displayed as presentation
+declarations, separately from the geometric axioms. “Determine a line” in
+I.1–I.2 is split into existence and uniqueness. Both clauses of I.3 are present.
+This correspondence is explicitly reviewed; source hashes do not prove it.
+
+Two fresh GCTS searches discover the planar part of Hilbert's first theorem
+(two distinct lines have at most one common point) and an incidence-transfer
+lemma (two lines sharing distinct points have the same incident points).
+Their \(2\) and \(4\) selected cells expand into \(21\) and \(32\) ordinary
+primitive lines. All four positive GCTS/classical requests have complete
+native acceptance and independent primitive replay. The theories contain no
+SAS, ASA, arithmetic or induction schema, construction functions, drawing
+or coordinate oracle.
+
+The compiler generates every sorted outer grounding, every orientation of
+its propositional clauses, and every declared atomic equality substitution.
+It retains the complete backward goal cone, including cycles. Collecting a
+conjunction and expanding an instantiated axiom are authored generic logical
+blocks. GCTS selects the proof and earlier references; no theorem-specific
+proof sequence, supplied correspondence, development pickle, earlier proof,
+policy or finite interpretation is an input. The native program is unchanged.
+The finite sorted grammar and positional strip are specialized; inner
+quantified formulas remain opaque, and witness elimination is not searched.
+
+All \(14\) cold trial/control records pass independent complete inventory,
+resource, point/AC prefix, decision and rollback audits. The missing-uniqueness,
+short-strip and wrong-statement controls exhaust their declared finite grammar.
+Separate finite interpretations satisfy the full incidence fragment, falsify
+the deliberately wrong statement, and give countermodels for both conclusions
+when uniqueness alone is removed. These interpretations are not models of
+order or full Hilbert geometry, and never enter proof search. A renaming test
+also checks the proof with table/chair/relation symbols.
+
+GCTS uses \(3\) and \(8\) states; classical arc consistency uses \(1\) and
+\(2\). The longer native check takes about \(25\) seconds and
+\(239{,}592{,}485\) interpreter steps. The initial native step budget proved
+insufficient; the full matrix was rerun with a fixed \(10^9\)-step gate.
+This is one cold trial per control, with no performance advantage or RL claim.
+The reader separates catalog/search, native verification and total cold costs.
+Generic compilation and the full subsequent audit are additional overhead.
+
+Reproduce in this order:
+
+    python3 research/gcts-rl-renewal/run_hilbert_incidence.py
+    python3 research/gcts-rl-renewal/audit_hilbert_incidence.py
+    python3 research/gcts-rl-renewal/export_hilbert_incidence.py
+    python3 research/gcts-rl-renewal/test_hilbert_incidence.py
+    node research/gcts-rl-renewal/test_hilbert_reader.cjs
+
+The browser reader verifies the actual colored point layers and rejects
+\(44\) altered rows across the \(6\) cells. Both complete primitive proofs
+have readable formulas and English. Global dead ends, global forced moves,
+earliest-generation branching and exact rollback retain the master contract;
+all finite strip roots have generation zero. No tile rotation/reflection is
+available. Authored compiled blocks are not learned lemma clusters.
+
+Next: searched witness introduction/elimination, explicit betweenness and
+Pasch, then the literal congruence axioms and derived full SAS/ASA. The native
+truth-assignment cost deserves an independently verified optimization. Full
+Hilbert geometry, useful learned proof clusters, uniform reusable proof tiles,
+practical arbitrary-region tiling, turtle/Penrose continuation and the wider
+substitution/proof-system goals remain active and incomplete.
