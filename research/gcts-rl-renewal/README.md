@@ -4520,3 +4520,83 @@ python3 research/gcts-rl-renewal/audit_hilbert_witness_clusters_v2.py
 python3 research/gcts-rl-renewal/export_hilbert_witness_clusters.py
 python3 research/gcts-rl-renewal/run_hilbert_cluster_validation.py --node /path/to/node
 ```
+
+## Notebook 40: one fixed finite palette, two fresh proof inputs
+
+The chosen architecture is now tested at the **shared-checking** level.
+`shared_wang_inventory.py` binds the unchanged Notebook 25 literal table to a
+single finite Wang palette. It encodes configuration symbols and overlapping
+triples without allocating the entire palette. The four disjoint families
+contain \(216000\) headless copies, \(64440169200\) central-head types and
+\(99851616000\) types for each side-head position, totaling
+\(264143617200\). The \(60\)-symbol, \(462276\)-state machine and inventory
+fingerprint do not depend on the theory, statement or formula names. This
+large infrastructural palette is not a practical everyday proof vocabulary.
+
+`run_shared_wang.py` first discovers both proofs afresh with the unchanged
+complete point engine. The addition fragment proves
+\(\forall a\,(a+S(0)=S(a))\) in \(5\) states and \(4\) attempts using
+\(3\) semantic cells, expanding into \(24\) primitive lines. The full
+planar-incidence input and explicit sort presentation prove
+\(\forall a\forall u\,(\operatorname{Inc}(a,u)\Rightarrow
+\operatorname{Point}(a))\) in \(8\) states and \(7\) attempts using
+\(2\) semantic cells and \(15\) primitive lines. These are deliberately
+small cross-theory infrastructure controls, not new mathematical discoveries.
+No stored proof, learned library, policy, model or coordinate oracle enters
+either search. The logical calculus and compiled rewrite/axiom families are
+authored; search selects their actual sequence and earlier references.
+
+Both resulting certificates execute on the identical frozen literal table.
+Only encoded theory, target and certificate boundary data change. Arithmetic
+accepts after \(1948300359\) selected-symbol operations and
+\(28008765725500\) literal transitions; incidence accepts after
+\(2213744978\) symbol operations and \(46539576605650\) literal transitions.
+Literal wall times are \(126.356398\) and \(155.594288\) seconds. Fresh search
+and decoding cost \(0.044762\) and \(0.040207\) seconds; full production
+costs \(343.147068\) seconds including native compilation, independent
+symbol executions, negative controls and export. No performance benefit is
+claimed. The literal interpreter accelerates exact self-copy sweeps while
+counting every represented transition.
+
+`audit_shared_wang.py` imports neither the producer nor its inventory class.
+It checks all \(17899987\) defined literal transitions, independently
+reconstructs both complete finite grammars and every point-search decision,
+checks exact proof decoding, constructs and inspects both canonical request
+heaps, and reruns both complete symbol computations. The full outputs, counts
+and event digests agree with literal execution. Independently replayed prefixes
+bind the \(130\) pictured local squares to the actual input requests; all
+\(650\) altered tile readings reject. Both wrong fixed-target controls reject,
+and the zero-step control stays unknown. The successful audit costs
+\(70.395781\) seconds. A preliminary audit reached the incidence grammar and
+stopped because canonical JSON sorted binder-map keys. The corrected auditor
+recovers their order from the unchanged axiom syntax and checks exact binder
+membership. No measured producer, proof, search trace or machine changed.
+
+The reader displays actual translation-only squares with colored vertical
+symbol and horizontal pair markings, exact identities and scalar/ordered-pair
+values. Its separate readable row translates each semantic cell into a formula
+and words, and opens every primitive line and local checked block. These
+semantic cells remain query-grounded proof-search objects, distinct from the
+literal four-edge base set. Every displayed line, table row and statistic is
+bound to the audited data. Four inventory tests agree with the older independent
+radius-one compiler; the reader rejects \(1077\) mutations. Browser checks cover
+both inputs, marking layers, cell selection, proof expansion, successful
+typesetting and absence of horizontal page overflow.
+
+**The fixed-inventory proof-search gate remains open.** Next is a common logical
+macro compiler with inspectable expansions into this same palette, preserving
+open assumptions, capture avoidance, scope and complete primitive fallback.
+Readable connective, quantifier, equality and lemma families should be checked
+responses over the core, not new whole-formula colors. Existing compressed
+response infrastructure supports expansions, but a general practical logical
+cluster compiler and search over the uniform core are not implemented. General
+computable axiom-enumeration certificates, formal upstream compiler/kernel
+soundness, adaptable receptor layouts, recursive learned promotion and net RL
+benefit also remain open. The broader research goal stays active.
+
+```sh
+python3 research/gcts-rl-renewal/run_shared_wang.py
+python3 research/gcts-rl-renewal/audit_shared_wang.py
+python3 research/gcts-rl-renewal/export_shared_wang.py
+python3 research/gcts-rl-renewal/validate_shared_wang.py
+```
