@@ -4718,3 +4718,101 @@ capture avoidance and scope interfaces. The proposed direct compiler and
 fresh propositional search have not yet been implemented. Compare identical
 inventories with forward chaining/CSP and measure sparse marking, symbolic
 proof and certified cluster checks separately. Broad goal remains active.
+
+## Notebook 42: direct finite-alphabet propositional receptors
+
+The direct design now has a bounded implementation in
+[the separate reader](../../docs/research/gcts-rl-renewal/propositional-receptors.html).
+The existing `turtle.State`/`Graph` engine is reused unchanged. A positional
+adapter enumerates every inference/reference instance; no theorem proof is
+provided. Its query-independent primitive catalog has \(288\) explicit
+\(H_1,H_2,H_3\) axiom instances and \(708\) modus-ponens instances, generated
+from \(P,Q\) and the four implications between them as schema parameters.
+Every formula is a prefix word in the fixed alphabet `P,Q,i,n,e`, with `e`
+as terminator. Scope is the assigned value \(0\). Formula IDs are not marking
+values. The target and given hypotheses constrain exact boundary ports.
+
+A cold graph search discovers \(\vdash P\Rightarrow P\) in \(5\) primitive
+lines and \(220\) visited states. It actually places slots in the order
+\(5,1,4,2,3\), using distant backward marking constraints. Other fresh
+discoveries include weakening, two successive premise connections and
+classical contraposition. No general tautology oracle supplies these lines.
+The discovered identity certificate becomes a substitution-dependent logical
+family, and fresh search uses that family with weakening to obtain
+\(\vdash P\Rightarrow(Q\Rightarrow Q)\), in \(3\) commands expanding to
+\(7\) primitive lines.
+
+Substitution preserves each axiom schema and modus ponens, hence preserves
+the complete discovered identity proof. Each used concrete expansion is
+also checked independently. However, a family use is currently a derived
+proof-cell rule with a **logical** expansion. A capacity-preserving geometric
+decomposition of that one occupied cell into its primitive cells is not
+established. Compound identity uses instantiated schema parameters outside
+the initial bounded pool; this changes the bounded inventory's expressivity,
+rather than just compressing an existing five-slot certificate. All compared
+methods receive the same family-enabled inventory within that condition.
+Direct lowering of these adaptable families into the previously fixed Wang
+inventory remains open.
+
+REINFORCE trains on \(24\) fresh rollouts of \(Q\Rightarrow Q\), with one
+successful proof. It proposes variable-length continuation clusters of
+\(1\)–\(3\) actual proof-cell placements, validated through the complete
+global scheduler. Every base alternative remains available. The independent
+auditor reproduces the actual seeded choices, rewards, gradients and all
+eight numeric weights. Training plus its candidate compilation costs
+\(2.885\) seconds. The evaluation is a weak atom-renaming transfer test,
+not a demonstration of structural generalization.
+
+For identity, ordinary point search takes \(5.445\) seconds, RL-guided point
+search \(5.848\) seconds, and both visit \(220\) states. Compilation is
+charged separately in the tables. Ordinary saturation finds the same
+five-line proof in about \(0.5\) milliseconds. Chronological DFS is a
+matched exact-length grammar control but reaches its \(6000\)-node budget
+on identity. Saturation shares known formulas and has no exact slot-count
+bound, so its recovered length is displayed explicitly. It finds a seven-line
+compound identity proof while the five-slot ground envelope exhausts; these
+results are consistent. Primitive seven-slot GCTS search for the family
+composition conclusion reaches its \(12\)-second budget, while its
+family-enabled three-slot search succeeds. Saturation also uses that family
+efficiently, and already solves the primitive problem in under a millisecond.
+There is no distinctive GCTS speed advantage or net RL benefit here.
+
+Measured sparse agreement costs roughly \(3\)–\(13\) microseconds on
+\(14\)–\(102\) actual assignments. Median logical expansion checks cost
+roughly \(15\)–\(156\) microseconds. These \(80\)-repeat microbenchmarks
+use already decoded objects and exclude parsing, transport and inventory
+binding; the full independent certificate check is reported separately.
+The production run costs \(72.163\) seconds. Process peak memory is about
+\(1019\) megabytes, across the whole run rather than one lane. Explicit
+ground candidate construction and graph snapshots are the current bottleneck.
+
+The independent audit costs \(7.244\) seconds. It checks all terminal point
+search trees including complete negative envelopes, every used point tile,
+the displayed proof's exact decoding, all primitive and family expansions,
+the independent task registry, graph samples and continuation proposals. It
+rejects \(38\) mutations. Unknown budgets are not negative certificates.
+Fourteen conformance tests cover complete forward/reverse incidence, remote
+mark-only updates, prefix termination, global scheduling, exact rollback,
+shared fractional candidates, and equality of tiny point/logical certificate
+sets. An initial reader-comparison audit mismatch was only list/tuple
+normalization for a family's serialized expansion; the producer and measured
+executions were unchanged. The auditor normalizes both before comparison.
+
+**Conformance:** required point \((2j,0)\), capacity \(12\); scope point
+\((2j,1)\); token \(r\) at \((2j,2+r)\). All required slots are generation
+\(0\) roots; placed tile generations are \(1\). Positive support is one
+slot; finite marking support includes all referenced earlier ports, including
+occupied and mark-only points outside the frontier. Complete ground families
+and all backward references are declared. Transformations are identity,
+not rotations. This is a positional family adaptation, not a claim of a
+new fixed translation-invariant finite inventory. Logical markings define
+validity; no learned redundant marking synthesis is implemented. Quantified
+substitution, capture avoidance, context transitions, family-to-literal
+compilation, net RL value and the broad turtle/Penrose certificates remain
+open. The original goal remains active.
+
+```sh
+python3 research/gcts-rl-renewal/run_propositional_receptors.py
+python3 research/gcts-rl-renewal/audit_propositional_receptors.py
+python3 -m unittest discover -s research/gcts-rl-renewal -p test_propositional_receptors.py
+```

@@ -1,0 +1,83 @@
+{
+  "seconds": 7.243628792,
+  "source_sha256": "0930dee154e51db0943e65ff539052840989a15b49a9d2700d73c130983ff2c0",
+  "producer_sha256": "34b8f4315441f720cdb042b4f1bc610f1bbbb5040dda51b56462ea77ff763b3e",
+  "cases": [
+    {
+      "id": "identity-P",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "saturation"
+      ]
+    },
+    {
+      "id": "identity-composite",
+      "accepted_lanes": [
+        "saturation"
+      ]
+    },
+    {
+      "id": "weakening",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "chronological",
+        "saturation"
+      ]
+    },
+    {
+      "id": "two-premise-links",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "chronological",
+        "saturation"
+      ]
+    },
+    {
+      "id": "contraposition",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "chronological",
+        "saturation"
+      ]
+    },
+    {
+      "id": "family-composite",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "chronological",
+        "saturation"
+      ]
+    },
+    {
+      "id": "family-weakening",
+      "accepted_lanes": [
+        "point",
+        "point-rl",
+        "saturation"
+      ]
+    },
+    {
+      "id": "primitive-weakening",
+      "accepted_lanes": [
+        "saturation"
+      ]
+    },
+    {
+      "id": "closed-P-one-slot",
+      "accepted_lanes": []
+    }
+  ],
+  "rl": {
+    "episodes": 24,
+    "successful": 1,
+    "clusters": 27,
+    "weights_recomputed": true
+  },
+  "mutations_rejected": 38,
+  "scope": "complete terminal point trees; exact certificates; fixed hypotheses; actual word-to-formula decoding; independent on-policy updates; budget cutoffs stay unknown"
+}
