@@ -4398,3 +4398,70 @@ truth-assignment cost deserves an independently verified optimization. Full
 Hilbert geometry, useful learned proof clusters, uniform reusable proof tiles,
 practical arbitrary-region tiling, turtle/Penrose continuation and the wider
 substitution/proof-system goals remain active and incomplete.
+
+## Notebook 38: quantified Hilbert witness proofs
+
+The foundation remains the frozen symbolic planar incidence fragment from
+notebook 37. `quantified_proof_rules.py` compiles generic existential
+introduction/elimination, universal scope and distribution into the unchanged
+FOL kernel. Generalization of a free theorem remains an explicit root tile;
+it cannot be hidden inside a block whose open premise contains that variable.
+Temporary conditions remain inside implication formulas, and escaping
+witnesses are rejected. `hilbert_quantified_tiles.py` hygienically instantiates
+the current outer binder after capture avoidance, including collisions with
+later role names.
+
+The uniform bounded backward grammar includes all declared productions and
+cycles. The target, source syntax and finite bounds generate its inventory;
+no theorem proof, stored policy, finite interpretation or coordinate fact is
+input. Existential introduction is restricted to binder parameters, context
+extension to two layers, and formulas to the declared node bound. Generic
+context transport is enabled for the line/point target and disabled for the
+joining-line target, as calibrated in development. This is an authored
+specialized proof calculus, not a complete first-order prover or a uniform
+four-edge Wang inventory. No RL is used in this experiment.
+
+Fixed cold trials with a 30-second search limit and 10,000-attempt limit:
+
+| Statement | GCTS | Classical AC/MRV | Primitive certificate |
+| --- | --- | --- | --- |
+| Every line contains a point | 10 cells; 229 states; 228 attempts | 5 states; 4 assignments | 46 lines |
+| Two distinct points have a unique joining line | Unknown at the search budget; 83 states | 12 cells; 12 states; 11 assignments | 65 lines |
+
+All three positive requests pass independent primitive replay and complete
+native checking with a fixed one-billion-step gate. All 14 positive/control
+records pass independent complete grammar reconstruction, every block
+expansion, full point/CSP prefix and rollback audit, resource bounds and native
+binding. Relevant axiom omissions and one-cell-shorter strips exhaust these
+finite grammars. Separate abstract incidence models show that an empty line,
+a missing joining line and nonunique lines falsify the relevant statements
+while preserving all the other axioms. Their membership tables never enter
+search. These results show automated proof discovery and no distinctive
+GCTS speed advantage.
+
+The separate HTML reader shows 22 directed cells, four explicit binder cells,
+full formulas and exact English translations, colored point values, and 111
+primitive lines across its two selected proofs. It validates all cells and
+rejects 140 mutations. For the CSP proof, its diagram is the independently
+reconstructed equivalent GCTS point encoding, not the internal CSP data.
+The complete ~96 MB trace is distributed as deterministic gzip; the reader
+records both the archive hash and the uncompressed hash. It does not fetch
+that archive during normal reading.
+
+Reproduce:
+
+```sh
+python3 research/gcts-rl-renewal/test_hilbert_quantified.py
+python3 research/gcts-rl-renewal/run_hilbert_quantified.py
+python3 research/gcts-rl-renewal/audit_hilbert_quantified.py
+python3 research/gcts-rl-renewal/export_hilbert_quantified.py
+python3 research/gcts-rl-renewal/run_hilbert_quantified_validation.py --node /path/to/node
+```
+
+To audit the published trace without rerunning search, decompress
+`docs/research/gcts-rl-renewal/hilbert-quantified-001.json.gz` into the sibling
+`.json` file first. The producer reads no archive or prior proof. The native
+compile/runtime costs and subsequent independent audit are separate from the
+reported cold per-query costs. Full Hilbert geometry, learned quantified
+clusters, uniform translation-reusable tiles and the wider practical/infinite
+tiling objectives remain active.

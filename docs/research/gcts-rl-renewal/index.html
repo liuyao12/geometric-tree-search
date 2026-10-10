@@ -10,7 +10,7 @@
   <script defer src="report.js?v=20261009-r33.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 37</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 38</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -21,6 +21,14 @@
   </section>
 
 
+  <section class="panel" id="hilbert-witnesses">
+    <p class="eyebrow">NOTEBOOK 38 · QUANTIFIED HILBERT INCIDENCE · ACTUAL WITNESS PROOFS</p><h2>Search can now use the existence axioms.</h2>
+    <p>GCTS discovers a \(10\)-cell proof that every line contains a point, expanding into \(46\) primitive lines. Classical arc-consistency search also finds that proof, and discovers a \(12\)-cell proof that two distinct points have a unique joining line, expanding into \(65\) primitive lines. The joining-line GCTS run remains unknown at its \(30\)-second search budget. The statements are symbolic formulas over uninterpreted relations; no geometric oracle or chosen construction witness enters search.</p>
+    <p>The new generic quantifier rules preserve temporary contexts inside complete formulas. Generalization is an explicit directed tile, and a witness-elimination block requires that the witness be absent from the outer context and conclusion. Source instantiation uses capture avoidance. Every tile translates into its full formula and English; all colored marking contacts and primitive expansions are inspectable.</p>
+    <p>The fixed-budget GCTS line/point search uses \(229\) states, versus \(5\) for CSP. CSP uses \(12\) states for the unique joining-line theorem. All \(14\) positive/control records have complete independent grammar and prefix/rollback audits; all \(3\) positive requests pass the unchanged native checker. Separate models demonstrate the dependence on existence and uniqueness. These single trials establish automatic proof discovery within an authored bounded calculus; no distinctive GCTS advantage or RL benefit is claimed.</p>
+    <p><a href="hilbert-quantified.html?v=20261010-q1#reader">Read the witness proofs and colored tiles ↗</a> · <a href="hilbert-quantified.html?v=20261010-q1#comparison">Compare the actual searches ↗</a> · <a href="hilbert-quantified.html?v=20261010-q1#semantic-controls">Inspect the countermodels ↗</a></p>
+    <p class="small">The reader checks \(22\) cells, including \(4\) explicit generalization cells, and rejects \(140\) altered rows. The complete trace is provided as a compressed archive. Betweenness, Pasch, literal congruence, learned witness clusters, a uniform computational tile inventory and the wider tiling goals remain open.</p>
+  </section>
   <section class="panel" id="hilbert-incidence">
     <p class="eyebrow">NOTEBOOK 37 · ACTUAL HILBERT INCIDENCE · SYMBOLIC PROOF SEARCH</p><h2>Two distinct lines, one shared point at most.</h2>
     <p>The planar incidence axioms from Hilbert’s second edition are now formalized with explicit point/line sorts, uninterpreted incidence and logical equality. Existence is encoded by quantified formulas, with no supplied witness or coordinate oracle. GCTS searches a \(2\)-cell proof of the planar part of Hilbert’s first theorem, expanding into \(21\) primitive lines, and a \(4\)-cell incidence-transfer lemma, expanding into \(32\) lines. Both have complete native acceptance.</p>
