@@ -5572,3 +5572,90 @@ every evaluation. The differing, overlapping bimodal timing samples cannot be
 credited to RL. Saturation's single times are below all positive point-lane
 medians. This is limited evidence about representation cost and exact family
 matching, not a general speed advantage. The full research objective remains active.
+
+## Notebook 52: quantified families with capture-avoiding contexts
+
+Fresh statement-only donors produce mixed windows of universal instantiation,
+modus ponens and generalization. The miner reconstructs unary formula contexts,
+typed term/function parameters and exact guard variables. Bound-variable names
+use binder distances inside proposal matching. Free variables retain their
+identities, and inserting a term into a context preserves its free occurrences.
+Actual ground rules, serialized formula words and scope points are unchanged.
+The conservative ambient scope test prohibits generalization over a variable
+free in any supplied hypothesis. The capture-sensitive case explicitly renames
+an inner binder during instantiation, then generalizes the remaining free
+variable. A captured replacement and an open-scope generalization both reject.
+
+Three fresh searched donors yield 31 families. One six-cell parent strictly
+contains an actual completed five-cell child from the compound donor, providing
+two hierarchy levels without counting a same-size copy as a larger family.
+Pending members still assign no occupancy or markings. The original global
+dead-end/forced/earliest-generation scheduler and complete fallback remain in
+force, with exact parent rollback. Lazy indexes belong to an immutable
+model/library snapshot. This experiment adds no learned pruning, failure marking
+or native Wang-machine execution; the earlier literal palette remains frozen.
+
+Sixteen fresh sampled episodes start at zero weights and use the declared work
+proxy, not CPU time. Eleven evaluation statements run four matched point lanes
+and four independent cold observations each, rotating their order. All 176
+solves include fresh grammar/model construction, empty caches, matching and
+positive point/source/kernel checks, with identical placement/time limits.
+All repeats must match the retained primary semantic digest. Classical controls
+are fresh single observations with separate schedules and budget semantics.
+
+The independent implementation reconstructs all 63 retained searches, 120,133
+states and 1,274,240 matching queries. It imports neither the producer's miner
+nor its matcher, index or graph factors. Source windows, typed binding tables,
+ordered proposal pools, scope, full original alternatives, cache counters,
+on-policy draws and all updates pass. Fifteen deliberate corruptions reject.
+Five tests compare all tiny branch domains and exact parent rollback, complete
+enumeration against indexed pools/trees, source abstractions, scope, snapshot
+changes and unknown partial trees. Both primitive kernels check all 35 positive
+reader certificates. Node checks also corrupt point values, each source line,
+contexts, index data, hint lifetimes, timing summaries and strict containment.
+
+Reproduce from the repository root:
+
+```sh
+python3 research/gcts-rl-renewal/run_quantifier_families.py
+python3 research/gcts-rl-renewal/audit_quantifier_families.py
+python3 research/gcts-rl-renewal/export_quantifier_families.py
+python3 research/gcts-rl-renewal/validate_quantifier_families.py
+```
+
+The full producer took about 126.56 seconds, excluding independent replay; the
+independent audit took about 487.82 seconds. The 311,172,934-byte raw JSON is
+stored as a deterministic 6,134,564-byte gzip. The reader projection retains
+positive-leaf hints, distinct actual queries with occurrence counts, all cold
+observations and original source/certificate data. Full failed branches, pools,
+policy events and ordered queries remain in the raw archive. Only primary full
+trees are independently replayed; full repeat and classical negative/unknown
+traces are not. Wall clocks are measured observations.
+
+The reader is `docs/research/gcts-rl-renewal/quantifier-families.html`. It shows
+source formulas and English for every line, concrete formula-context receptor
+bindings, colored original point assignments, the strict child/parent hierarchy
+and all 16 timing dots for the selected goal. Existing arithmetic and incidence
+statements remain separate conditional symbolic controls, with no new arithmetic
+axioms or full Hilbert-geometry development.
+
+Fixed families reduce the eight-inference chain from 29,084 to 12,085 attempts;
+cold medians are about 3.52 and 3.19 seconds. The compound chain goes from 358 to
+104 attempts and about 100 to 93 milliseconds. Fixed guidance increases total
+cost on every other positive case. The trained policy defers on every evaluation,
+matches base placements and attempts, and pays proposal construction costs; it
+is slower on every positive case. Saturation's single observations are faster
+than every positive point-lane median. This is evidence for first-order family
+reuse and a strict larger structure, with no demonstrated RL advantage or
+general proof-search speed advantage. Avoiding proposal costs before a policy
+defers is a possible next experiment, not an implemented result.
+
+Conformance remains a positional, full-capacity, integer-twelfths adaptation,
+with identity transformations, generation-zero root obligations and
+generation-one original placements. Mining accepts supported windows with
+nullary/unary donor predicates; a unary context may itself contain higher-arity
+predicates, functions, equality and nested quantifiers. The finite grammar and
+conservative scope rule do not make this a complete first-order prover.
+Fractional capacity, unrestricted transformations, general quantified family
+discovery, useful RL acceleration and the original turtle/Penrose plane-tiling
+objectives remain open. The full research goal remains active.
