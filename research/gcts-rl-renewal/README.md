@@ -5336,3 +5336,95 @@ The standalone reader is `docs/research/gcts-rl-renewal/transported-markings.htm
 Its data, audit and validation are separate versioned artifacts. The projection
 is reproduced byte-for-structure before validating all displayed point values,
 source lines, primitive commands and transport hypotheses.
+
+## Notebook 48: adaptive propositional clusters with original capacities
+
+`adaptive_receptor_clusters.py` mines primitive MP fragments from fresh
+complete GCTS searches. No supplied proof sequence or derived semantic rule is
+used. A four-line donor produces families of two, three and four original cells;
+a six-line donor uses the four-cell family and produces a six-cell level-two
+family containing that actual child. Atom abstraction yields formula parameters.
+The new family interface joins parameters to compound formulas and external
+receptors that are supplied hypotheses or actually occupied earlier cells.
+Increasing cell embeddings allow gaps. This is a capped hint inventory, never
+a base-domain generator or pruning rule.
+
+All original inference/end/padding placements and their complete factored
+incidence remain in the frozen movable-region model. Clusters do not occupy a
+single replacement cell. Their capacities sum over distinct constituents and
+their markings are the compatible union. Execution is a copy transaction;
+every constituent obeys global dead/forced checks and generation-first branch
+selection. Unrelated forced moves may interleave. A later incompatible branch,
+dead end or budget interruption returns the original state and graph exactly.
+Every base fallback alternative remains, including after a failed macro.
+
+The experiment performs fresh donor discovery, promotion, 24 on-policy RL
+episodes from zero weights, and six evaluations with disjoint names/formulas.
+This is weak structural holdout: most evaluation and training proofs are chains;
+one longer case and compound substitutions extend that family. Features include
+cluster size, target conclusion, progress, compactness and an explicit defer
+action. Frozen evaluation weights only propose sequences. Rewards use verified
+success minus normalized log placement work. They never establish pruning.
+
+All 50 whole searches and 1991 explicit states pass the separate checker, which
+imports neither producer graph masks nor matcher/transaction/controller.
+All 135 actual random draws, feature vectors, gradients, returns and updates
+replay independently. It verifies original capacities/marks, learned source
+windows, actual hierarchy children, every constituent's scheduler decision,
+full fallback exhaustion, exact base inventory and kernel request binding.
+Ten mutated cluster/policy/search records reject. Five unit tests exercise all
+tiny certificate-set equivalence, remote compound supports, gapped scheduler
+interruptions, exact rollback, unknown budget semantics and base fallback.
+
+| Evaluation | Base attempts | Fixed clusters | Zero policy | Trained RL |
+| --- | ---: | ---: | ---: | ---: |
+| Longer held-out chain | 373 | 146 | 373 | 403 |
+| Compound formula receptors | 22 | 20 | 22 | 21 |
+| Distracting implications | 37 | 26 | 37 | 39 |
+| Short compound chain | 9 | 9 | 9 | 9 |
+| Region too small | 3 | 3 | 3 | 3 |
+| Missing link | 4 | 4 | 4 | 4 |
+
+All four positive fixed-proposal totals exceed base totals in this single run.
+For the longer chain the totals are approximately 36 versus 97 milliseconds,
+even before shared donor discovery and audit are charged. Trained RL mostly
+worsens search; zero-weight deterministic policy defers every time and reveals
+proposal-enumeration overhead. Saturation uses fresh grammar/model construction
+and logical checking; when its proof fits, exact region assembly and host-kernel
+checking are charged too. In the too-small region, saturation finds a longer
+proof and is explicitly not a matched bounded-outcome solver. No distinctive
+GCTS/RL speed advantage is established by these chain-shaped examples.
+
+The reader checks 18 point certificates (two donors plus sixteen evaluations),
+six accepted cluster expansions and 128 original occupied cells. It shows
+all selected scalar character/context/continuation values, primitive formulas,
+English reference lines, external bindings, child offsets and scheduler traces.
+The sparse plot is actual point data; cell cards are semantic capacity summaries,
+not literal Wang tile types. Every compiled sequent binds supplied hypotheses
+as named premise axioms. There is no expanded implication-discharge certificate:
+during development the existing repeated-discharge adapter grew the six-line
+seven-hypothesis example to 232,778,007 request bytes and hit its byte limit.
+That aborted probe is outside the final measured run. Compact checked assumption
+handling remains an implementation gap.
+
+Conformance scope is unchanged exact integer twelfths on full positional cells,
+complete formula ports and root generation zero/successor one, with remote
+mark-only dependencies and copy rollback. New tests specifically validate the
+adaptive aggregate and scheduler transaction. Fractional shared support,
+unrestricted family discovery, dynamic scopes, quantified cluster adaptation,
+learned redundant failures, direct literal-palette search and new native Wang
+executions are not implemented here. The broader research goal remains active.
+
+Reproduce from the repository root:
+
+```sh
+python3 research/gcts-rl-renewal/run_adaptive_clusters.py
+python3 research/gcts-rl-renewal/audit_adaptive_clusters.py
+python3 research/gcts-rl-renewal/export_adaptive_clusters.py
+python3 research/gcts-rl-renewal/validate_adaptive_clusters.py
+```
+
+The standalone visual reader is `docs/research/gcts-rl-renewal/adaptive-clusters.html`.
+The full raw experiment retains every training and evaluation trace. The reader
+projection omits repeated trees; validation reproduces it exactly from the
+independently audited raw data and checks all displayed point/cluster values.
