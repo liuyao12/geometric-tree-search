@@ -30,6 +30,13 @@ The isolated view exposes distant formula markings with no occupancy there.
 Compact proof-line links bind exact accepted certificate hashes. This is a
 positional finite generalized Wang encoding, not a uniform four-edge inventory.
 The viewer adds no rules, search results, or new measured engine behavior.
+Its tile-row translation follows actual premise ports in logical cell order.
+Each cell displays the formula encoded by its port and explains the precise
+changed subexpression by matching it to the named equality axiom. Cluster view
+combines internal cells into one readable step. Universal closing inferences
+are shown separately from the occupied cells. Forty-four cells and thirty-four
+rewrites are checked; mutation controls reject altered ports, reasons, axioms
+premise ports and targets. The equation chain introduces no additional arithmetic inference.
 
 Notebook 33 adds a complete inventory of searched metatiles and an explicit
 coarse point model. A group of one, two or three slots has capacity twelve;
