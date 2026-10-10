@@ -5757,6 +5757,7 @@ binding tables, routing choices, all compact numeric updates and $320$ cold
 observations. Full repeat trees and clocks are not independently replayed.
 
 ```sh
+mkdir -p .gcts-active/family-router-20261010
 python3 research/gcts-rl-renewal/run_family_router.py
 python3 research/gcts-rl-renewal/audit_family_router.py
 python3 research/gcts-rl-renewal/export_family_router.py
