@@ -21,7 +21,7 @@ earlier-line references and exact certificate downloads. Each line also has
 a mechanical English reading and a separate inference-rule explanation;
 nested brackets preserve logical scope. The English is a reading aid, not
 an independently checked natural-language proof. Current examples are
-bounded contextual arithmetic; searched induction and Euclid theorems remain open.
+bounded contextual arithmetic. Separate notebooks now contain searched induction proofs and a finite Euclidean congruence experiment.
 
 The tile view reconstructs all 29 selected placements for those ten proofs from
 the independently audited point types. Square bodies draw discrete capacity
@@ -4225,3 +4225,61 @@ cluster synthesis; retain matched classical access and full lifecycle costs.
 Uniform finite mathematical tile encodings, general proof-search completeness,
 Euclid-style constructions, practical fixed/movable tiling boundaries and
 certified infinite constructions remain open in the active research program.
+
+## Euclidean notebook 1: directed proof cells and separate geometry
+
+The [separate Euclidean notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/euclidean-proofs.html?v=20261009-e1#reader)
+uses no arithmetic functions or induction schema. Its declared foundation is
+noncollinearity, equal segment lengths, equal unsigned angles, ordered triangle
+congruence, SAS, ASA, corresponding parts and elementary reversal/symmetry rules.
+It searches proof sequences; no human proof path, earlier witness, saved policy
+or learned library is input.
+
+The classical arc-consistency control discovers the internal base-angle part of
+Euclid I.5 and its converse I.6, each in \(10\) cells, expanding into \(91\) and
+\(90\) primitive lines. GCTS reaches the \(3\)-second pilot budget on both.
+Both solvers discover the elementary vertex-order/noncollinearity lemma;
+GCTS uses \(4\) states and \(3\) cells. This first geometry pilot shows no
+distinctive GCTS advantage. It is a single cold trial per lane, with construction
+and search included, rather than a statistical performance benchmark.
+
+The modern congruence foundation is explicit and differs from Euclid's original
+dependency order. The search does not prove SAS/ASA, reconstruct his auxiliary
+constructions, or include the exterior-angle part of I.5. Diagrams are illustrative;
+coordinates never enter the checker. The fragment grounds every admissible Horn
+rule over three distinct free vertex names and keeps the whole backward goal
+cone, including cycles. Five-premise congruence rules compile into four binary
+cells. Fixed hypotheses are discharged as implications; checked universal
+generalization closes the theorem after the point tiling.
+
+Proof tiles have a fixed premise-to-conclusion direction: translation only,
+with rotation and reflection forbidden. The current finite positional inventory
+fixes each cell and premise offset; a uniform inventory reusable under arbitrary
+translations is still open. Formula, ownership and certified resource markings
+are blue, green and gold. IDs distinguish values within each layer. The earlier
+arithmetic reader now uses the same layer convention for its actual formula and
+ownership points. Color changes only the visualization.
+
+All \(12\) search/control records pass an independent complete inventory and
+full-prefix audit, including frontier/candidate graphs, decisions, exact copied
+rollback, AC revisions, decoded interfaces and primitive expansion. All \(4\)
+accepted requests have complete native acceptance with independently verified
+code/input bindings. Removing SAS or ASA exhausts the respective weakened finite
+fragment; shortening I.5 to \(9\) cells is exhausted by the classical control,
+while GCTS reaches its budget. These controls do not refute the theorem.
+
+Reproduction:
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/test_euclidean_proofs.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_euclidean_proofs.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_euclidean_proofs.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_euclidean_proof_notebook.py
+    node research/gcts-rl-renewal/test_euclidean_reader.cjs
+
+The compiler retains the master point-search contract: exact occupancy and
+agreeing marks, complete bipartite bookkeeping, global dead/forced/earliest
+generation selection, and exact rollback. All finite strip roots have generation
+zero. The specialized finite syntax envelope and goal-cone compilation are
+explicitly labeled. RL and learned geometric clusters remain future experiments.
+The unfinished hierarchical arithmetic development is preserved separately and
+is not part of this published geometry pilot.
