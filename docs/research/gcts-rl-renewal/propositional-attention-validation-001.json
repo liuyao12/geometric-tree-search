@@ -1,0 +1,38 @@
+{
+  "version": "propositional-attention-validation-001",
+  "status": "passed",
+  "artifact_sha256": "34b8f4315441f720cdb042b4f1bc610f1bbbb5040dda51b56462ea77ff763b3e",
+  "original_audit_sha256": "7d64dc8c42fb32e03055d6a96fc6ea137c861dbf7adca154af3b6f69ea86025a",
+  "independent_checker_sha256": "097b70117f4b98f8995f88f8927504b73aefe3b4ef77dd980b478026c8e0611c",
+  "certificate": {
+    "status": "accepted",
+    "commands": 5,
+    "primitive_lines": 5,
+    "assignments": 102,
+    "distinct_mark_points": 51,
+    "scope": "independent full point-data and primitive logical expansion replay"
+  },
+  "reference_trials": 4,
+  "valid_trials": 1,
+  "invalid_references_rejected": 3,
+  "reader": {
+    "status": "passed",
+    "existing_proof_lines": 5,
+    "reference_trials": 4,
+    "valid_trials": 1,
+    "mutations_rejected": 12,
+    "artifact_sha256": "34b8f4315441f720cdb042b4f1bc610f1bbbb5040dda51b56462ea77ff763b3e",
+    "independent_trial_comparison": true
+  },
+  "files": {
+    "docs/research/gcts-rl-renewal/propositional-attention.js": "ae23983f4dbfe689257436e79e82b3b1449182107d6b2c6239b77784c2fdfcfa",
+    "docs/research/gcts-rl-renewal/propositional-receptors.html": "a4ea366d508b417e0ef2a285691e66f11c6a494de95d0a0e72ee55e2a19eb2bb",
+    "docs/research/gcts-rl-renewal/index.html": "e05a24407be303a9d83567c33f7f419ea762066200b4f7de8e7a4637ff0e2889",
+    "research/gcts-rl-renewal/README.md": "c1afd57e45ec2a16a6a169b88e144a13ab8f43c0427745dc8af7371125b60473",
+    "research/gcts-rl-renewal/test_propositional_attention.cjs": "fe05e36e20057c83a9e57ec7c57c235e00b7f1682753105b116996368842e677",
+    "research/gcts-rl-renewal/validate_propositional_attention.py": "4033989c6ecd898ef0520b9ce491059dc508740d8319e26f7b9b3afddc9e3d43"
+  },
+  "new_searches": 0,
+  "new_training_runs": 0,
+  "scope": "Existing five-line primitive certificate and exact original point data independently rechecked. All four reference trials agree with an independent construction; three reject. Browser layout checks are recorded separately; no new speed or trained-attention claim."
+}

@@ -5659,3 +5659,23 @@ conservative scope rule do not make this a complete first-order prover.
 Fractional capacity, unrestricted transformations, general quantified family
 discovery, useful RL acceleration and the original turtle/Penrose plane-tiling
 objectives remain open. The full research goal remains active.
+
+
+The October 10 propositional attention clarification adds an inspectable view of
+Notebook 42's existing searched identity proof. Its last modus-ponens tile has
+remote premise markings and positive occupancy only at its own cell. Changing
+the antecedent reference shows the actual character or internal function
+conflict. The browser pins the unchanged discovery artifact and reconstructs
+all five primitive rules, original point tiles and the requested boundary.
+This view runs no new proof search and trains no attention model. A learned
+policy can propose premise connections, while declared inference rules and
+exact point agreement enforce validity. Arbitrary reach still needs a
+parameterized family or explicit routing in a fixed local inventory.
+
+```sh
+node research/gcts-rl-renewal/test_propositional_attention.cjs
+python3 research/gcts-rl-renewal/validate_propositional_attention.py
+```
+
+The live explanation is at
+[the distant inference view](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/propositional-receptors.html?v=20261010-pa1#attention-panel).
