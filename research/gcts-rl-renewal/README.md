@@ -5224,3 +5224,115 @@ python3 research/gcts-rl-renewal/audit_movable_regions.py
 python3 research/gcts-rl-renewal/export_movable_regions.py
 python3 research/gcts-rl-renewal/validate_movable_regions.py
 ```
+
+
+## Notebook 47 — transporting a closed-prefix failure
+
+The previous goal turn made concrete progress: Notebook 46 was published as
+`fca09a224d288d470c0b274527653ee0e358aa6f`, and all eighteen deployed files were
+verified against their exact hashes. Its authoritative publication record is
+`.gcts-active/movable-regions-20261010/publication-result.json`. The broad goal
+remains active.
+
+This extension uses the unchanged Notebook 46 point engine. Five independently
+replayed donor profiles contribute all fourteen resolved negative pairs. Every
+pair contains a structural end or padding tile. Ten new requests enlarge the
+bound by one (unchanged signature) or four (bijectively renamed signature).
+The later searches are newly executed; old success paths are not replayed as
+recipient discoveries. No source proof path or target failure marking is
+supplied to the initially unlearned recipient lane.
+
+For donor bound $B_0$, end at $j$ gives $e=j$ and padding at $j$ gives $e<j$.
+Every accepted pair therefore forces $e\leq B_0$. A hypothetical recipient
+completion at bound $B\geq B_0$ can be restricted to cells $0,\ldots,B_0$:
+removed cells are padding and the cut still has continuation zero. Backwards
+references remain inside the prefix. Inverting a checked signature bijection
+preserves variables, scope, arities, axioms, hypotheses, complete formula/rule
+catalogs and every inference. Whole syntax words are reserialized; word lengths
+may change. The resulting donor completion contradicts the independently
+exhausted donor-pair tree. This sufficient transfer argument is implemented by
+`check_transported_markings.py`; it is not a universal compiler soundness theorem
+formalized in the arithmetic kernel.
+
+The checker reconstructs both complete inventories independently. It verifies
+all rule-map entries, parameters and scope guards, the mapped target and open
+hypotheses, initial context hashes, every closing bound, and donor certificate
+identities. `certify_donor` freshly exhausts the archived donor trees before
+checks are supplied to `verify` within the same audited process. Persistent
+claims of an accepted label or a matching hash are insufficient on their own.
+The separate auditor additionally exhausts every transported recipient pair
+using explicit reference products, with no producer graph/model imports.
+
+Observed state counts, initially unlearned to transported:
+
+| Recipient | Initial states | Transported states | Fresh depth-two pairs |
+| --- | ---: | ---: | ---: |
+| Universal MP, larger bound | 53 | 32 | 1 |
+| Universal MP, renamed | 56 | 35 | 0 |
+| Ambient open variable, larger bound | 48 | 27 | 1 |
+| Ambient open variable, renamed | 51 | 30 | 0 |
+| Arithmetic, larger bound | 3229 | 2507 | 0 |
+| Arithmetic, renamed | 3232 | 2510 | 0 |
+| Incidence typing, larger bound | 149 | 100 | 0 |
+| Incidence typing, renamed | 152 | 103 | 0 |
+| Incidence universal inference, larger bound | 48 | 27 | 1 |
+| Incidence universal inference, renamed | 51 | 30 | 0 |
+
+Extra padding moves useful failures below depth two. Reuse supplies known
+obstructions that this particular fresh sampling depth misses. Every resolved
+fresh sample is also used; no holdout is reserved from either pair catalog.
+This is a finite positional sampling study, not the complete geometric
+one-corona learner required for prototype markings.
+
+All thirty recipient point proofs pass after learned-value erasure. The reader
+also checks a successful unsafe-transfer counterexample: two instantiation
+seeds fail at bound two but succeed at bound four, with MP and generalization
+found by the search. Because those seeds include no structural closing tile,
+the transfer checker refuses to prune them in the larger region.
+
+Warm transported costs include grammar construction, model binding, proposal
+construction, independent transport checking and search. First reuse separately
+pays fresh donor-pair replay. Cold reuse also includes original donor learning
+and grammar costs, with one donor replay serving the two shown recipients.
+Fresh costs include the initial solve, certification, encoding and second solve.
+Positive tile construction, independent point checking, command compilation and
+kernel checking are recorded separately and included in whole production.
+Verification overhead exceeds the warm state-saving benefit in most of these
+small single runs. Saturation remains substantially faster. There is no RL lane
+and no distinctive overall GCTS speed advantage established by this extension.
+
+Conformance scope: exact integer capacity twelve on unit cells; all required
+points activated; full lazy reference factors and singleton reverse incidence;
+global dead/forced checks before generation-first branching; explicit remote
+values; root generation zero and successor one; immutable marking per search;
+exact state/graph rollback. The engine's prior conformance tests are unchanged.
+New tests compare transported remote domains to independent enumeration,
+exercise actual positive prefix restriction, reject altered metadata/arity/
+guards/contexts/targets/maps and unknown failure certificates, and verify the
+no-closing-seed counterexample. Full recipient trees and positive capacities,
+marking agreement, reference syntax and primitive compiler binding are audited.
+Fractional/shared support, partial syntax, general geometric transport and
+adaptive capacity-preserving semantic lemma macros remain outside this engine.
+
+These cells are semantic point tiles, not literal Wang squares. Changed requests
+are newly checked by the host kernels. No native response is transported to a
+changed request, and no new native execution occurs here. Signature renaming
+preserves theorem shape; it does not constitute a newly discovered mathematical
+theorem family. Incidence geometry is still symbolic typing rather than metric
+Euclidean existence. Dynamic scopes, witness/induction search, useful RL,
+stronger comparisons, universal formal kernel/compiler soundness and the
+original turtle/Penrose objectives remain active.
+
+Reproduce from the repository root:
+
+```sh
+python3 research/gcts-rl-renewal/run_transported_markings.py
+python3 research/gcts-rl-renewal/audit_transported_markings.py
+python3 research/gcts-rl-renewal/export_transported_markings.py
+python3 research/gcts-rl-renewal/validate_transported_markings.py
+```
+
+The standalone reader is `docs/research/gcts-rl-renewal/transported-markings.html`.
+Its data, audit and validation are separate versioned artifacts. The projection
+is reproduced byte-for-structure before validating all displayed point values,
+source lines, primitive commands and transport hypotheses.

@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('fs'),path=require('path'),R=require('../../docs/research/gcts-rl-renewal/transported-markings.js');
+const data=JSON.parse(fs.readFileSync(path.join(__dirname,'../../docs/research/gcts-rl-renewal/transported-markings-reader-001.json'))),checked=R.validate(data);
+const stats={...checked,point_mutations_rejected:0,source_mutations_rejected:0,primitive_mutations_rejected:0,transfer_mutations_rejected:0};
+function rejects(fn,kind){let failed=false;try{fn();}catch(e){failed=true;}if(!failed)throw Error('Mutation accepted: '+kind);stats[kind]++;}
+for(const c of data.cases){const donor=data.donors.find(d=>d.id===c.donor);for(const lane of ['baseline','transported','fresh_learning']){const r=c.runs[lane],pairs=lane==='transported'?c.transport_check.pairs:lane==='fresh_learning'?c.fresh_pairs:[];
+ for(const tile of r.tiles){for(const mark of tile.marks){const value=mark[1];mark[1]=typeof value==='number'?1-value:'!';rejects(()=>R.pointProof(c,r,pairs),'point_mutations_rejected');mark[1]=value;}const old=tile.occupancy[0][1];tile.occupancy[0][1]=11;rejects(()=>R.pointProof(c,r,pairs),'point_mutations_rejected');tile.occupancy[0][1]=old;}
+ for(const row of r.proof){const old=row.formula;row.formula=['bot'];rejects(()=>R.pointProof(c,r,pairs),'source_mutations_rejected');row.formula=old;if(row.refs.length){const oldRef=row.refs[0];row.refs[0]=c.spec.bound+10;rejects(()=>R.pointProof(c,r,pairs),'source_mutations_rejected');row.refs[0]=oldRef;}}
+ const lines=r.compiled_request.blocks.length?r.compiled_request.blocks[0].proof:r.compiled_request.proof;for(const line of lines){const old=line.formula;line.formula=['bot'];rejects(()=>R.pointProof(c,r,pairs),'primitive_mutations_rejected');line.formula=old;}
+ }
+ for(const kind of ['target','arity','closing','permutation','symbol-map','guard','metadata','hypotheses']){const bad=JSON.parse(JSON.stringify(c));if(kind==='target')bad.spec.target=['bot'];else if(kind==='arity'){const s=Object.keys(bad.spec.theory.predicates).length?bad.spec.theory.predicates:bad.spec.theory.functions;s[Object.keys(s)[0]]++;}else if(kind==='closing')bad.transport.certificates[0].maximum_endpoint++;else if(kind==='permutation')bad.transport.rule_map[0]=bad.transport.rule_map[1];else if(kind==='symbol-map'){const m=Object.keys(bad.transport.mapping.predicates).length?bad.transport.mapping.predicates:bad.transport.mapping.functions;m[Object.keys(m)[0]]='missing';}else if(kind==='guard'){const r=bad.catalog.rules[0];r.guards=r.guards.length?[]:['x'];}else if(kind==='metadata')bad.catalog.variables=[];else bad.spec.hypotheses.push(bad.spec.target);rejects(()=>R.transportChecks(donor,bad),'transfer_mutations_rejected');}
+}
+process.stdout.write(JSON.stringify(stats)+'\n');
