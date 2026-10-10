@@ -3977,3 +3977,128 @@ obligations, unrestricted expressiveness, a uniform finite tile inventory,
 certified learned failure markings, practical fixed/movable boundary composition
 and infinite-plane constructions remain open. Turtle and Penrose stay occasional
 geometric controls. The full research goal remains active.
+
+## Notebook 35: fresh induction-fragment transfer with matched controls
+
+Two new source searches discover the left-zero and left-one addition arguments,
+with no supplied proof, library or policy. Every connected fragment of two or
+three source proof cells is mined. Merging identical shapes yields \(11\)
+schemas with \(22\) source occurrences, bound to their exact certificates and
+cell members. Schemas retain inference families, normalized cell positions and
+all premise offsets. Literal formulas, variables, hypothesis bodies and rewrite
+AST paths are not copied as instance restrictions. Complete recipient rule
+types and exact formula-port agreement determine the new instances.
+
+These are proposals for valid recipient metatiles. They assert no new lemma or
+pruning condition. Generalization remains a checked closed-root inference;
+it never becomes an open-premise rule inferring \(\forall n\,P(n)\) from
+an assumption \(P(n)\). The kernel rejects that eigenvariable violation.
+All original singleton placements remain available.
+
+### Results and full cost
+
+All four lanes share the external theory, complete goal-derived grammar,
+cell envelope and certified redundant resource constraints. Both motif lanes
+receive the same fresh library. Two repetitions rotate lane order, with a
+\(20\)-second search wall and \(50000\) expanded-attempt cap. Full failed
+prefixes and open suffixes are retained.
+
+For \(\forall a\forall b\,(S(a)+b=S(a+b))\), with \(11\) cells and
+term bound \(5\), both GCTS motif runs discover the proof in \(341\) states
+and \(349\) expanded placement attempts. Search times are \(15.242630\)
+and \(15.028866\) seconds; cold query times are \(18.905595\) and
+\(18.214289\). Both native executions accept after \(8372957\)
+instructions. The certificate expands independently to \(146\) primitive
+lines. The successful GCTS tiling selects two metatiles, on logical cells
+\((1,2,3)\) and \((4,5)\), plus singleton tiles for the remaining cells.
+
+Matched GCTS without motifs remains unknown in both runs. That discovery
+difference does not provide a time-to-proof speedup ratio. Classical AC/MRV
+also proves the theorem when given the same resource constraints, which the
+Notebook 34 classical control did not receive. Its base lane uses \(2807\)
+states and \(2806\) explicit assignments in both runs. With motifs it uses
+\(6\) states and \(10\) constituent assignments, with three successful
+proposals. Point placement attempts and classical assignments are different
+units.
+
+Mean classical cold query costs are \(15.097563\) seconds without motifs
+and \(3.921776\) with the reused library. Fresh learning costs
+\(13.177962\) seconds, including source searches, catalog validation, native
+checks, mining, merging and source trace storage. A first classical motif query
+therefore costs about \(17.099738\) seconds before common compilation, more
+than the base query. Repeated timing replicas do not themselves demonstrate
+workload amortization. Charge training once to either motif lane as an alternative
+lifecycle comparison; broader recipient statements are still needed.
+
+Transfer is mixed. For \(\forall n\,(0\cdot n=0)\), both GCTS lanes
+remain unknown. Both classical lanes find the same accepted proof in \(13\)
+states. Trying motifs raises explicit assignments from \(12\) to \(17\);
+those failed motif trials are absent from the final proposal path. Mean cold
+cost rises from \(1.986120\) to \(2.074484\) seconds. There are \(16\)
+complete recipient instances for multiplication and \(59\) for successor
+addition. Missing-schema, shortened-envelope and shifted-target controls all
+exhaust their specific envelopes, without a general non-provability claim.
+
+### Encoding, checks and readable proofs
+
+A metatile sums distinct constituent occupancies and unions compatible
+formula/resource markings, with one atomic owner identity. Expansion preserves
+the original formula/capacity problem; conversely, every original proof can
+still use singleton tiles. Renaming private owner values on expansion preserves
+those original constraints. Adding atomic types can change point degrees,
+forced moves and scheduling. The equivalence concerns solution sets, not the
+original primitive trace. Within the enlarged model, full incidence, global
+dead/forced checks, earliest generation and copied rollback follow the master
+contract, with generation-zero finite roots. Tiny exhaustive tests compare
+all expanded solutions and every incremental graph, including remote marks.
+
+Classical motifs reversibly assign their constituent variables, retaining
+ordinary-value fallback. Already fixed variables still pay an explicit-assignment
+cost. Its diagram is a checked point lift of the final assignment; overlapping
+proposal descriptions are not counted as extra occupancy or atomic placements.
+
+All \(530\) Python research tests pass in \(125.300\) unittest seconds.
+The \(18\) new tests cover fresh provenance, complete recipient joins,
+fixed-hypothesis family transfer, all tiny solutions, remote graph updates,
+rollback, fallback, complete/open traces and altered graph/AC/witness events.
+The independent audit passes all \(42\) source/evaluation requests in
+\(202.002082\) seconds. It imports no miner, generator, graph, solver or
+producer. It reconstructs source/recipient grammars, all source fragments and
+recipient instances by exact relational joins, every graph and classical
+support deletion, every executed prefix and open suffix, and proof/native
+bindings. All \(12\) positive requests receive native acceptance. Compiler
+and native instruction execution remain trusted.
+
+The new reader validates \(63\) cells in \(7\) accepted records, actual
+atomic marking unions or classical witness/proposal bindings, and rejects
+\(55\) altered readings. Each cell shows its formula, ordinary English
+statement, inference reason and clickable root line. All local definitions
+and primitive lines can be examined. English explains a checked formula/rule
+pair; it is not another proof kernel.
+
+The producer takes \(230.544979\) seconds and peaks at \(1842970624\)
+accumulated driver bytes. Seven lossless donor/evaluation shards total
+\(8551711\) compressed bytes, binding raw/compressed bytes and lengths.
+Every measured source is pinned; the projection binds the final audited
+manifest. Historical measured source/evidence files remain unchanged.
+
+Reproduce in a separate checkout from the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_cluster_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_induction_clusters.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_induction_clusters.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_induction_clusters.py
+node research/gcts-rl-renewal/test_induction_cluster_reading.cjs
+```
+
+This supports automatic proof discovery and reusable geometric interfaces.
+Classical search also benefits from the interfaces and remains faster, so a
+distinctive GCTS advantage is still unproved. Next: a fresh RL policy for
+composing/selecting validated proposals, with the same library and training
+charge provided to classical controls. Broader grammar transfer, hierarchical
+constructs, Euclid-style constructions, succinct statement boundaries and a
+uniform finite computational tile inventory remain open. The bounded positional
+grammar has not established unrestricted expressive reach or completeness.
+Turtle and Penrose remain occasional geometry controls; practical fixed/movable
+boundaries and certified infinite constructions remain in the active program.
