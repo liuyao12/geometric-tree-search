@@ -4465,3 +4465,58 @@ compile/runtime costs and subsequent independent audit are separate from the
 reported cold per-query costs. Full Hilbert geometry, learned quantified
 clusters, uniform translation-reusable tiles and the wider practical/infinite
 tiling objectives remain active.
+
+## Witness family transfer and one shared inventory (2026-10-10)
+
+`hilbert-clusters.html` is notebook 39. One freshly discovered, completely
+native-accepted line/point proof supplies all connected two/three-cell fragments:
+17 source occurrences merge into 16 family schemas. Exact indexed joins retain
+all compatible recipient rule/formula/contact instances and every base fallback.
+The unique-joining recipient has 7,383 instances. Each of two rotating replicas
+finds its GCTS proof in 19 states and 22 expanded attempts with two actual
+three-cell clusters; base GCTS reaches the 30-second search budget. CSP uses
+12 states without families and 7 with them. On reordered existence, GCTS uses
+901 versus 195 states, and CSP 22 versus 3. Learning costs 9.9459 seconds;
+first-query costs add this once to either cluster lane. No RL is used here.
+
+The 29 source/recipient records receive complete independent grammar, block,
+cluster provenance, whole instance, point/CSP prefix, rollback, resource and
+native-binding audits. All 15 positive requests have complete acceptance by the
+unchanged checker. The manifest binds deterministic compressed case archives;
+normal reading uses a separate projection. Three actual GCTS proofs show 29
+cells, four selected clusters and 148 primitive lines. Reader validation rejects
+390 altered records; four exact join regressions pass.
+
+The original measured auditor expected a nonexistent statement `theory` field.
+The corrected `audit_hilbert_witness_clusters_v2.py` binds the complete catalog
+foundation instead, without changing measured search files or traces. It also
+reconstructs the frozen merger's provenance alias: a duplicate motif appends
+its source to the first occurrence's shared list. Every connected occurrence
+and the resulting whole library are reconstructed, including this storage
+behavior. The corrected audit records its own source hash separately.
+
+The user's chosen architecture is **one shared first-order base inventory**,
+with explicit connectives, equality, quantifiers, substitution and scope, and
+arithmetic/Hilbert axiom declarations encoded as data. Readability and useful
+inferences take precedence over minimum tile count. A fixed finite inventory
+requires syntax strings over a fixed alphabet, rather than a new whole-formula
+color for each query. That uniform encoding is not implemented by the current
+bounded compilers. Current learned families vary formulas and translate fixed
+relative offsets. Receptor-dependent layout, recursive composition, training
+selection and cross-theory use of one unchanged inventory are next gates.
+Aperiodicity alone does not supply a universal interpreter. A computation
+encoding and proof of correspondence with finite accepting patches are needed;
+no universal or aperiodic base set is claimed for the current notebooks.
+
+Existing lemma matching and automated learning-based proof search are covered
+in the notebook's primary-source references. Our evidence supports automatic
+proof selection and learned reuse, not superiority to established theorem
+provers or a practical RL advantage. The CSP control benefits from the same
+families and uses fewer states. The broader research goal remains active.
+
+```sh
+python3 research/gcts-rl-renewal/run_hilbert_witness_clusters.py
+python3 research/gcts-rl-renewal/audit_hilbert_witness_clusters_v2.py
+python3 research/gcts-rl-renewal/export_hilbert_witness_clusters.py
+python3 research/gcts-rl-renewal/run_hilbert_cluster_validation.py --node /path/to/node
+```
