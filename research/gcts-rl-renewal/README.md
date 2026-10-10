@@ -23,6 +23,14 @@ nested brackets preserve logical scope. The English is a reading aid, not
 an independently checked natural-language proof. Current examples are
 bounded contextual arithmetic; searched induction and Euclid theorems remain open.
 
+The tile view reconstructs all 29 selected placements for those ten proofs from
+the independently audited point types. Square bodies draw discrete capacity
+points; formula circles and outer ownership squares draw the actual m-values.
+The isolated view exposes distant formula markings with no occupancy there.
+Compact proof-line links bind exact accepted certificate hashes. This is a
+positional finite generalized Wang encoding, not a uniform four-edge inventory.
+The viewer adds no rules, search results, or new measured engine behavior.
+
 Notebook 33 adds a complete inventory of searched metatiles and an explicit
 coarse point model. A group of one, two or three slots has capacity twelve;
 covering one member contributes twelve divided by group size. Distinct
@@ -53,6 +61,8 @@ PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_coarse_proofs.p
 PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_coarse_proof_tests.py
 PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_coarse_proof_view.py
 PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_wang_proof_notebook.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_wang_tile_view.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/test_wang_tile_view.py
 ```
 
 The producer begins with an empty library and searches both donor statements
