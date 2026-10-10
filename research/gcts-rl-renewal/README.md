@@ -5831,3 +5831,60 @@ python3 research/gcts-rl-renewal/validate_receptor_attention.py
 
 Read [the branch-attention notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/receptor-attention.html?v=20261010-ra1#reader).
 Read [the branch-attention notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/receptor-attention.html?v=20261010-ra2#reader).
+
+## Notebook 56: certified distant dependency-capacity markings
+
+The compiler receives only the original statement, hypotheses and complete
+finite grammar. It computes necessary distinct non-hypothesis output sets
+$D(F)$, using intersections over alternative eligible rules and unions over
+all premises. A descending greatest fixed point handles cyclic alternatives;
+ascending singleton initialization was too weak. Each fixed point satisfies
+$D(\operatorname{out}(r))\subseteq\{\operatorname{out}(r)\}\cup\bigcup_{A\in\operatorname{in}(r)}D(A)$.
+Induction on actual source lines proves every member occurs by the requested
+port. Shared dependencies are counted once. No supplied proof, empirical
+label or saved marking table is used.
+
+A fixed exterior root writes zero at $(-3000,i)$. Any tile requesting $F$ at
+nonnegative source port $i$ also writes $\mathbf{1}_{|D(F)|>i+1}$ there.
+These are literal point assignments. Integer reference-mask filtering is
+checked against independent explicit point comparisons. The original
+inventory, scope, full frontier graph, generation schedule, fallback and
+copy rollback remain. Every original complete solution admits the new layer,
+and erasing it returns the original tiling.
+
+Fourteen goals, two lanes and four balanced fresh-process observations give
+$112$ cold solves. Preparation includes synthesis and an independent
+certificate check. Ordinary three-hop attempts fall from $29084$ to $280$,
+with median about $3.262$ s versus $0.064$ s. Arithmetic falls from $4334$ to
+$64$ attempts and incidence from $279$ to $19$. A four-hop goal obtains a
+checked $10$-line proof in $21742$ attempts while base is unknown at $50000$.
+Its $9$-cell boundary is exhausted in $9$ marked attempts; base remains
+unknown. Both methods still reach the attempt limit on five hops. Separate
+saturation finds a bounded proof and is faster on these designed examples.
+These results support this GCTS compiler, with no learned-RL or general
+proof-search superiority claim.
+
+The independent audit checks all descending rounds, local inductive
+obligations, original grammars, complete domain censuses and all $28$ primary
+trees ($286533$ states), including original alternative order and unknown
+cutoffs. Both primitive kernels accept $17$ positive certificates, including
+duplicate methods. Complete repeat trees are retained privately and bound by
+semantic digests; their full replay and physical-clock certification are not
+claimed. Classical negative closure traces are not fully replayed. The reader
+shows source formulas and English, actual root conflicts, colored original
+and capacity markings, and all measured cold observations.
+
+This is a full-unit, identity-transform positional point adaptation. No new
+axiom, RL update, arbitrary cluster topology, unrestricted FOL completeness,
+full Hilbert system or native universal Wang-machine search is added. The
+broader turtle/Penrose and proof-system objectives remain active. Hierarchical
+cluster proposals over the stronger receptors remain a next step.
+
+```sh
+python3 research/gcts-rl-renewal/run_dependency_budget.py
+python3 research/gcts-rl-renewal/audit_dependency_budget.py
+python3 research/gcts-rl-renewal/export_dependency_budget.py
+python3 research/gcts-rl-renewal/validate_dependency_budget.py
+```
+
+Read [the certified distant-marking notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/dependency-budget.html?v=20261010-db1#reader).
