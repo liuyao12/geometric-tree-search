@@ -3445,3 +3445,163 @@ a fair grammar, and a genuine coarse interface graph with constraint-solver
 comparisons. Learned failure markings and universal compiler soundness are still
 open; bounded failures cannot justify unproved pruning. Turtle and Penrose remain
 occasional geometric controls, and discovering their substitution rules is optional.
+
+## Notebook 31: zero-start RL selects checked proof fragments
+
+`proof_cluster_policy.py` adds a sequential softmax controller that can select
+any compatible bounded learned-fragment instance or defer to ordinary GCTS.
+It uses twelve authored graph/interface features: deferral, deferral with
+multiplication/progress/degree, member count, hierarchy level, final-cell
+membership, direction, context depth, term shrinkage, already-placed input,
+and member degrees. It reads current graph domains and exact term syntax;
+no future proof sequence or expert trajectory is supplied. The policy's
+floating-point scores order proposals only. They do not define point legality
+or prove a theorem.
+
+The historical measured `proof_clusters.py` remains byte-for-byte unchanged.
+The new DFS isolates the policy hook and reuses the same exact model, complete
+primitive graph, proposal compiler, reversible constituent transaction and
+proof compiler. With no policy its paths, domains and counts match the frozen
+notebook-30 search. Every state still checks global dead ends, then forced
+moves, then earliest generation with degree breaking ties. Proposals retain
+all original base alternatives. A sampled pool never supplies degrees.
+All finite roots remain generation zero; base tiles have one capacity-12
+occupancy point and exact scalar distant formula ports. The grammar remains
+specialized positional arithmetic, with identity transforms and no induction,
+uniform adjacency-only compiler, newly learned failure marking or coarse graph.
+
+`run_proof_policy.py` freshly searches the two donors and re-mines the four
+checked fragments; it imports no artifact library or old weights. Eight
+training statements from `proof_policy_problems.py` are separate from the ten
+frozen evaluation statements, even when comparing external problem hashes
+without cell bounds. Three seeds, \(1\), \(7\) and \(19\), start with all twelve
+weights zero. Four epochs rotate the training-statement order, making
+\(32\) episodes per seed. The validated training catalogs are built once and
+shared across seeds; model, graph and index are rebuilt each episode.
+Evaluation never updates weights or promotes fragments.
+
+Sampling is sequential without replacement over a softmax distribution, with
+a deferral action and a cap of eight proposal preferences. All compatible
+instances in the bounded index are eligible, rather than just the fixed
+heuristic's first eight. The fixed prior ranks the same instance universe by
+final-cell membership, length, level and deterministic identity. A declared
+\(32\)-bit LCG exports every uniform variate. Deterministic frozen evaluation
+uses score order and identity ties; zero weights are a separate untrained
+control, not the authored fixed prior.
+
+A reached proposal's delayed return is
+
+\[
+r(a)=\mathbf{1}\{\text{full native acceptance and successful continuation}\}
+ -\frac{\log(1+C(a))}{\log(1+50000)}.
+\]
+
+\(C(a)\) counts all actual validation and continuation base attempts; deferral
+counts all base-fallback attempts. Rejected and exhausted proposal branches
+can receive negative work rewards, but never prune base candidates. The
+complete request is checked before any positive proof credit. Pre-sampled
+suffixes after an earlier successful child receive no credit. Unknown trees
+supply no weight or baseline update; their overall outcomes stay unknown.
+Each episode freezes its weights and applies a projected batch update after
+checking, with rate \(0.2\), clipping to \([-6,6]^{12}\), and baseline update
+\(b'=0.9b+0.1r\). This is a REINFORCE-style experiment inspired by
+[Williams (1992)](https://doi.org/10.1007/BF00992696), not a new convergence or
+unbiased-gradient theorem for this capped pseudo-random DFS. Reward optimizes
+a base-work proxy; full elapsed evaluation cost determines whether it helped.
+
+All three seeds have \(28\) native-accepted training proofs and four unknown
+attempts on multiplication inside a successor. That target's grammar has
+\(3545\) base rules and is cut off at the five-second search budget. The pilot
+also retained unknown outcomes at ten seconds under the fixed prior,
+zero weights and one sampled policy; no pilot witness or policy is imported
+into the measured run. The multiplication-specific coefficient remains zero
+in every measured update chain because these incomplete traces supply no
+credit, and the simpler multiplication case has zero gradient in that feature.
+
+Evaluation has five lanes and one deterministic request per seed, statement
+and lane. Order rotates by case and seed index. All share the exact external
+problem, base declaration SHA, term/cell bounds, complete candidate universe,
+root generations, global scheduler, five-second wall and \(50000\) actual
+base-attempt budget. Catalog and final verification lie outside the search
+wall. The matched evaluation totals are:
+
+| Seed | Lane | Verified / finite exhausted / unknown | Base attempts | Cold request seconds |
+| --- | --- | --- | --- | --- |
+| 1 | Plain GCTS | 8 / 2 / 0 | 1152 | 14.724649 |
+| 1 | Level one | 8 / 2 / 0 | 732 | 10.801033 |
+| 1 | Fixed hierarchy | 7 / 2 / 1 | 660 | 11.065854 |
+| 1 | Zero weights | 8 / 2 / 0 | 672 | 10.933090 |
+| 1 | Trained | 8 / 2 / 0 | 669 | 10.854248 |
+| 7 | Plain GCTS | 8 / 2 / 0 | 1152 | 14.988673 |
+| 7 | Level one | 8 / 2 / 0 | 732 | 11.079584 |
+| 7 | Fixed hierarchy | 8 / 2 / 0 | 669 | 10.647622 |
+| 7 | Zero weights | 8 / 2 / 0 | 672 | 10.682554 |
+| 7 | Trained | 8 / 2 / 0 | 1152 | 14.658055 |
+| 19 | Plain GCTS | 8 / 2 / 0 | 1152 | 15.343842 |
+| 19 | Level one | 8 / 2 / 0 | 732 | 10.677222 |
+| 19 | Fixed hierarchy | 8 / 2 / 0 | 669 | 10.681090 |
+| 19 | Zero weights | 8 / 2 / 0 | 672 | 10.732782 |
+| 19 | Trained | 8 / 2 / 0 | 669 | 10.387478 |
+
+**Useful RL acceleration is not established.** Seed seven learns enough
+deferral to reproduce plain-search work. Seeds one and nineteen mostly match
+the fixed hierarchy's work. Zero weights already obtain nearly that same
+work on this family. Training costs \(23.185003\), \(23.252945\) and
+\(28.484853\) seconds respectively, plus \(8.657584\) seconds for shared
+training-catalog construction. Fresh donor discovery and whole-library checking
+cost \(1.895281\) seconds, and shared native compilation costs
+\(1.020798\) seconds. No measured gain repays those training costs on the
+held-out family. The fixed-prior first multiplication repeat is near the wall
+cutoff and remains unknown; its unequal-outcome aggregate is not an
+acceleration ranking. Three seeds on ten fixed targets are not broad theorem
+generalization or a statistically supported timing ranking.
+
+The measured producer costs \(270.489981\) seconds. Its peak driver memory
+is \(882540544\) bytes, including accumulated catalogs, trees and artifacts;
+it is not a per-lane memory comparison. There are \(119\) complete evaluation
+native acceptances, \(84\) training acceptances, two donor acceptances and one
+whole-library acceptance. Thirty evaluation requests exhaust their finite
+control envelopes, and thirteen total search requests remain unknown.
+
+`audit_proof_policy.py` imports no policy, miner, graph implementation,
+catalog producer or driver. It independently reconstructs external training
+and evaluation declarations, every bounded base inventory and newly mined
+window; enumerates every policy pool and feature vector; recomputes every
+softmax probability, LCG variate, sampled choice and log-probability gradient;
+checks delayed subtree attempt counts, reached-choice credit, baselines and
+projected updates; and replays every complete tree and positive full-prefix
+primitive expansion. All native inputs/programs bind to the original external
+problem. It passes in \(55.568325\) seconds. Unknown saved contexts and draws
+are checked, but their truncated trees are not proved complete. Every native
+instruction and general compiler soundness remain outside this audit's scope.
+
+All \(425\) research tests pass in \(108.028274\) wall seconds. New tests cover
+zero initialization, numerical log-probability derivatives, the declared random
+stream, frozen evaluation, exact base fallback and prior-path equivalence,
+unchanged graph domains, unknown update gates, sampled-suffix censoring,
+full-native credit gates, exact attempt recounts, training/evaluation separation,
+proposal/index caps, malformed weights, clipping, complete proof expansion,
+and independent replay rejecting altered draws, gradients, pools, tree event
+identities, delayed costs and update outputs. Historical sources and artifacts
+through notebook 30 are preserved byte-for-byte.
+
+Reproduce from the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_proof_policy.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_policy_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_policy_view.py
+```
+
+The report is `docs/research/gcts-rl-renewal/proof-policy.html`, with full
+source-pinned data in `proof-policy-001.json`, a parent/exporter SHA-bound
+small browser projection, and a separate full test ledger. The next credit
+experiment should retain verified local transitions and already closed
+subtrees inside a partial search trace, with actual progress/cost rewards and
+an unknown overall result. The subsequent gates remain a broader fair grammar,
+induction, genuinely coarse interface graphs and constraint-solver comparisons.
+Wang-style proof search remains primary; Turtle/Penrose geometric controls,
+certified failure markings, arbitrary boundary composition, general proof
+language/compiler soundness and infinite-plane research remain open. The full
+active goal is not declared complete.

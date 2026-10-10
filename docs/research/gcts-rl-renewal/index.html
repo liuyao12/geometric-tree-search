@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A cold-start research notebook for GCTS, learned geometric failure markings, RL cluster proposals, substitutions, and checkable computational proofs.">
   <title>GCTS + RL · A fresh tiling research notebook</title>
-  <link rel="stylesheet" href="report.css?v=20261009-r30.1">
+  <link rel="stylesheet" href="report.css?v=20261009-r31.1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="report.js?v=20261009-r30.1"></script>
+  <script defer src="report.js?v=20261009-r31.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 30</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 31</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -29,7 +29,17 @@
   </section>
   <details class="small"><summary>Historical experiment loader status</summary><div id="load-status" role="status">Loading the reproducible experiment snapshot…</div></details>
 
+  <section class="panel" id="proof-policy-research">
+    <p class="eyebrow">NOTEBOOK 31 · ZERO-START RL · THREE SEEDS · IDENTICAL BASE GRAPH</p><h2>Learn when to use a checked proof fragment.</h2>
+    <p>Fresh GCTS searches mine the fragment library again. Three policies start with zero weights and train on eight separate statements, then freeze for ten evaluation statements. The policy can select any compatible bounded fragment instance or defer to ordinary search. Every base candidate and fallback remains; no policy value becomes a pruning rule.</p>
+    <div class="callout"><strong>Training is demonstrated; useful RL acceleration is not.</strong><br>All trained policies verify eight targets and exhaust two finite controls. Two seeds mostly match the fixed hierarchy's work; one learns deferral and reproduces plain-search work. Evaluation costs \(10.854\), \(14.658\) and \(10.387\) seconds, while training adds \(23.185\), \(23.253\) and \(28.485\) seconds plus catalog construction. The fixed-prior first multiplication repeat is unknown; unequal outcomes remain explicit.</div>
+    <p><a href="proof-policy.html?v=20261009-r31.1#learning">Inspect the actual coefficient updates ↗</a> · <a href="proof-policy.html?v=20261009-r31.1#explorer">Explore frozen policy decisions and all five lanes ↗</a> · <a href="proof-policy.html?v=20261009-r31.1#assessment">Read the assessment ↗</a></p>
+    <p>Each seed has twenty-eight fully checked training proofs and four unknown attempts on successor-context multiplication. Complete-tree credit gives those cutoffs no update, leaving the multiplication feature zero. The next signal should retain verified local transitions and closed subtrees inside partial traces, while preserving an unknown overall outcome. General proof grammar, induction and a genuinely coarse graph remain open.</p>
+    <p class="small">All \(425\) tests pass. The independent audit checks every policy pool, feature, probability, random draw, reached-choice reward and weight update, all complete search trees, positive primitive expansions and native bindings in \(55.568\) seconds. The measured producer costs \(270.490\) seconds across \(96\) training and \(150\) evaluation requests. <a href="proof-policy-001.json">Full evidence</a> · <a href="proof-policy-tests-001.json">Test ledger</a> · <a href="proof-policy.html?v=20261009-r31.1#comparison">All costs and unknowns</a></p>
+  </section>
+
   <section class="panel" id="proof-cluster-research">
+    <p class="small">Notebook 30 records fragment discovery and fixed sequence reuse. The new RL experiment and current assessment are above.</p>
     <p class="eyebrow">NOTEBOOK 30 · AUTOMATIC SUBPROOF PROMOTION · MATCHED BASE GRAPH</p><h2>Searched proofs now become reusable constituents.</h2>
     <p>Starting from an empty library, GCTS searches two authored parameterized addition statements. Every eligible found dependency-chain window is checked and promoted; four distinct fragments result, including two that retain actual earlier child calls. The proof sequences, fragment endpoints and higher-level structure are not supplied. Ten separate evaluation statements never enter mining.</p>
     <div class="callout"><strong>Fragment reuse makes a measurable contribution on this fixed family.</strong><br>Plain GCTS, level-one sequences and full hierarchy sequences each verify sixteen proofs and exhaust the same four control envelopes across twenty requests. Cold time is \(30.623\), \(21.656\) and \(21.445\) seconds respectively. Charging all \(1.587\) seconds of donor discovery and library checking gives \(23.032\) seconds for the hierarchy. The second level's extra gain is small; multiplication gets slower, and rank-only has two unknowns.</div>
