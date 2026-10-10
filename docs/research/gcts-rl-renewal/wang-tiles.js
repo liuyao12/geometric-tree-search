@@ -3,6 +3,8 @@
 function wangTileSvg(row,selected,isolated){
  const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const colors=['#28745c','#7452a3','#a76022','#246aa2','#a94461','#527b23'];
+ const formulaValues=[...new Set(row.tiles.flatMap(t=>t.marks.filter(([p])=>p[1]===1).map(([,v])=>v)))].sort((a,b)=>a-b);
+ const formulaColor=v=>colors[formulaValues.indexOf(v)%colors.length];
  const n=row.length,size=Math.min(155,860/n),left=(1040-n*size)/2,cy=250;
  const xy=p=>[left+size/2+p[0]*size/2,cy-p[1]*size/2];
  const body=(s,content='')=>`<g>${s}${content}</g>`,text=(x,y,s,cls='')=>`<text x="${x}" y="${y}" text-anchor="middle" class="${cls}">${safe(s)}</text>`;
@@ -29,7 +31,7 @@ function wangTileSvg(row,selected,isolated){
   const [x,y]=xy(p),chosen=writers.includes(selected),remote=chosen&&p[1]===1&&!occupied.has(p[0]/2),stroke=remote?'#7452a3':chosen?'#273e31':'#7e9485';
   if(p[1]===1){
    ports+=`<circle cx="${x}" cy="${y}" r="${remote?17:13}" fill="#fcfdf7" stroke="${stroke}" stroke-width="${chosen?3:1.5}"/>`;
-   ports+=`<circle cx="${x}" cy="${y}" r="6" fill="${colors[v%colors.length]}"/>`+text(x,y+31,`F${v}`,'tile-port-label');
+   ports+=`<circle cx="${x}" cy="${y}" r="6" fill="${formulaColor(v)}"/>`+text(x,y+31,`F${v}`,'tile-port-label');
    if(p[0]===2*(n-1))ports+=text(x,y-27,'Fixed target','tile-small');
    const label=`Formula port (${p.join(', ')}), value F${v}; written by tile ${writers.map(i=>i+1).join(', ')}`;
    ports+=`<title>${safe(label)}</title>`;
