@@ -4816,3 +4816,74 @@ python3 research/gcts-rl-renewal/run_propositional_receptors.py
 python3 research/gcts-rl-renewal/audit_propositional_receptors.py
 python3 -m unittest discover -s research/gcts-rl-renewal -p test_propositional_receptors.py
 ```
+
+
+## Notebook 43: discovered propositional families to the fixed Wang core
+
+[The separate reader](../../docs/research/gcts-rl-renewal/propositional-wang.html)
+connects the bounded direct receptor model to the unchanged common literal core.
+The generic syntax compiler accepts checked source proofs, an atom-to-formula
+mapping and an explicit first-order signature. It preserves every primitive line
+of each concrete family definition, binds backward references, checks the complete
+request and emits only encoded input. Hypotheses become exactly declared closed
+premise axioms; quantified open-premise transport is not implemented.
+
+A fresh three-slot search finds \(Q\Rightarrow(P\Rightarrow P)\) using
+Notebook 42's actually discovered identity family. No proof path is supplied.
+This exchanges the two atoms of the earlier family-weakening theorem; it does not
+establish structural generalization. Both ordinary and frozen-policy searches
+visit \(8\) states. Their search times are \(0.025801\) and
+\(0.028465\) seconds, with candidate construction \(0.072794\) and
+\(0.072229\) seconds. Reused policy training costs \(2.885\) seconds.
+There is no net RL advantage or new classical-method speed comparison.
+
+Five certificates accept: the fresh hierarchy, the earlier primitive identity,
+the earlier compound identity-family instance, and two symbolic formula transports.
+For arithmetic, the new one-slot identity template substitutes
+\(A=\forall x\,(x+0=x)\). For symbolic Hilbert syntax it substitutes
+\(A=\forall x\forall u\,(\operatorname{Inc}(x,u)\Rightarrow
+\operatorname{Point}(x))\). Both prove only \(A\Rightarrow A\), with
+no domain axioms; neither proves \(A\). Two deliberately altered certificates
+reject: an invalid first formula in a family definition and a changed fixed target.
+Rejection is not a non-derivability result.
+
+The program, selected-symbol code, literal transition table and inventory
+fingerprint are exactly the pinned Notebook 40 versions. Fresh native executions
+agree with their full derived responses and all final register bands. Every
+compression node is independently derived again. The audit reconstructs all
+\(51\) contexts and binds \(40\) inference fragments to actual source
+lines, definitions, heap values, cursors, theory, target, checked inventory, prior
+facts and pending commands. It independently replays all fresh terminal point
+search trees and rejects \(70\) source/context/response mutations. Production
+costs \(256.036\) seconds including \(1.534\) seconds native executable
+compilation; independent audit costs \(58.297\) seconds. Per-case syntax,
+builder, response derivation, literal execution and independent audit times are
+reported separately. Exact scan acceleration is used by the actual literal runner.
+
+Nine compiler regressions cover previous discoveries, hypothesis reference shifts,
+full primitive expansions, symbolic signatures, invalid prefixes/parameters,
+future references and definition deduplication. The complete reader is bound to
+its audited projection and frozen bootstrap. It validates \(1080\) actual
+cropped tile instances and rejects \(1155\) reader mutations. All seven cases
+and three marking layers render with no math errors or outer page overflow.
+The displayed entry samples are \(9\)-column, \(3\)-transition crops,
+not whole inference rectangles. Most logical checking occurs later.
+
+**Conformance and remaining scope:** the existing complete point graph, global
+scheduler, exact rollback, finite marking alphabet and validated RL continuation
+proposals are unchanged. This is a generic syntax-to-core compiler, not a new
+search engine. It creates a fresh operational rectangle using the frozen literal
+palette. A capacity-preserving geometric decomposition of one semantic family
+slot into its primitive cells remains open. Concrete response fragments remain
+bound to receiver context and layout; cross-request cache transport is not proved.
+Search operates over semantic families, not directly over literal tiles. Universal
+formal compiler/kernel soundness, adaptive cluster geometry, quantified open
+premises, learned redundant failure markings, substantial domain-theorem discovery
+and the original turtle/Penrose objectives remain active.
+
+```sh
+python3 research/gcts-rl-renewal/run_propositional_wang.py
+python3 research/gcts-rl-renewal/audit_propositional_wang.py
+python3 research/gcts-rl-renewal/export_propositional_wang.py
+python3 research/gcts-rl-renewal/validate_propositional_wang.py
+```
