@@ -57,10 +57,18 @@ function cellReading(step){
  const context=step.change.path.length?' inside the surrounding expression':'',reverse=step.instance.direction===-1?' Use it in reverse.':'';
  return `${arithmeticReadings[step.label]||'Use the displayed equality axiom.'}${reverse} Replace ${termMath(step.change.before)} with ${termMath(step.change.after)}${context}.`;
 }
+function readingEquation(items,clustered){
+ let chain=term(currentReading.starting_expression);
+ for(const s of items){
+  if(clustered?s.start&&s.cells.length===1:s.kind==='start')continue;
+  const after=clustered?s.after:s.formula[2],label=clustered?`tile ${s.tileIndex+1}`:`cell ${s.slot+1}`;
+  chain+=` \\mathrel{\\underset{\\text{${label}}}{=}} ${term(after)}`;
+ }
+ return `\\(${esc(chain)}\\)`;
+}
 function renderTileReading(){
  const clustered=el('translation-detail').value==='clusters',items=clustered?currentReading.groups:currentReading.chain;
- const chain=items.map((s,i)=>{const after=clustered?s.after:s.formula[2],label=clustered?`tile ${s.tileIndex+1}`:`cell ${s.slot+1}`;return `${i?`\\mathrel{\\underset{\\text{${label}}}{=}} `:''}${term(after)}`;}).join(' ');
- el('tile-reading-chain').innerHTML=`\\(${esc(chain)}\\)`;
+ el('tile-reading-chain').innerHTML=readingEquation(items,clustered);
  el('tile-reading-steps').innerHTML=items.map(s=>{
   const first=clustered?currentReading.steps.find(c=>c.slot===s.cells[0]):s,tile=tileRow().tiles[s.tileIndex],label=clustered?`Tile ${s.tileIndex+1}`:`Cell ${s.slot+1}`,port=clustered?`Cells ${s.cells.map(j=>j+1).join(', ')}`:`Formula port F${s.formula_id}`;
   const reading=clustered&&s.kind==='searched cluster'?`Apply this checked cluster: replace ${termMath(s.before)} with ${termMath(s.after)}. Its ${s.cells.length} internal cell steps can be read in the cell view.`:cellReading(first);
@@ -86,7 +94,9 @@ function renderTile(){
 function chooseTiles(){
  const row=tileRow();currentReading=readWangTiles(row,theorem());el('tiles-heading').textContent=`Tiles for ${theorem().label}`;el('tiles-target').innerHTML=math(theorem().target);el('tile-provenance').textContent=`${row.tiles.length} actual selected placements cover ${row.length} cells, drawn from ${row.candidate_universe.toLocaleString()} legal positional candidates. Displayed tiles bind the exact accepted certificate shown below.`;
  el('tile-row-meaning').innerHTML=`This assembled row proves: <strong>${englishSentence(theorem().target)}</strong>`;
- el('tile-select').replaceChildren();row.tiles.forEach((t,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`Tile ${i+1} · ${t.kind} · placement ${t.search_step}`;el('tile-select').append(o);});const first=row.tiles.findIndex(t=>t.kind==='searched cluster');tileIndex=first<0?row.tiles.length-1:first;renderTile();typesetParts(['tiles-target','tile-row-meaning']);
+ el('tile-row-formula').innerHTML=readingEquation(currentReading.chain,false);
+ el('tile-row-argument').innerHTML=currentReading.chain.map(s=>cellReading(s)).join(' ')+` Therefore, ${math(currentReading.conclusion)}.`;
+ el('tile-select').replaceChildren();row.tiles.forEach((t,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`Tile ${i+1} · ${t.kind} · placement ${t.search_step}`;el('tile-select').append(o);});const first=row.tiles.findIndex(t=>t.kind==='searched cluster');tileIndex=first<0?row.tiles.length-1:first;renderTile();typesetParts(['tiles-target','tile-row-meaning','tile-row-formula','tile-row-argument']);
 }
 
 function choose(index,scroll=false){
@@ -98,7 +108,7 @@ function choose(index,scroll=false){
  el('theorem-list').querySelectorAll('.theorem-card').forEach((card,i)=>card.classList.toggle('selected',i===current));setView('root');chooseTiles();typesetParts(['theorem-target','theory']);if(scroll)el('reader').scrollIntoView({behavior:'smooth',block:'start'});
 }
 async function start(){
- const responses=await Promise.all(['wang-proofs-001.json','wang-tiles-001.json'].map(file=>fetch(`${file}?v=20261009-r33.5`)));for(const r of responses)if(!r.ok)throw Error(`HTTP ${r.status}`);const raw=await Promise.all(responses.map(r=>r.text()));data=JSON.parse(raw[0]);tileData=JSON.parse(raw[1]);const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw[0])),pin=Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,'0')).join('');if(pin!==tileData.proof_reader.sha256||tileData.parent.sha256!==data.parent.sha256)throw Error('Tile/proof evidence binding mismatch');if(tileData.theorems.length!==data.theorems.length||data.theorems.some(t=>{const row=tileData.theorems.find(r=>r.id===t.id);return !row||row.certificate_sha256!==t.certificate_sha256||row.problem_sha256!==t.problem_sha256;}))throw Error('Tile/certificate binding mismatch');el('verified-count').textContent=data.held_out_verified;el('donor-count').textContent=data.donors_verified;el('expanded-count').textContent=data.expanded_primitive_lines.toLocaleString();
+ const responses=await Promise.all(['wang-proofs-001.json','wang-tiles-001.json'].map(file=>fetch(`${file}?v=20261009-r33.6`)));for(const r of responses)if(!r.ok)throw Error(`HTTP ${r.status}`);const raw=await Promise.all(responses.map(r=>r.text()));data=JSON.parse(raw[0]);tileData=JSON.parse(raw[1]);const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw[0])),pin=Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,'0')).join('');if(pin!==tileData.proof_reader.sha256||tileData.parent.sha256!==data.parent.sha256)throw Error('Tile/proof evidence binding mismatch');if(tileData.theorems.length!==data.theorems.length||data.theorems.some(t=>{const row=tileData.theorems.find(r=>r.id===t.id);return !row||row.certificate_sha256!==t.certificate_sha256||row.problem_sha256!==t.problem_sha256;}))throw Error('Tile/certificate binding mismatch');el('verified-count').textContent=data.held_out_verified;el('donor-count').textContent=data.donors_verified;el('expanded-count').textContent=data.expanded_primitive_lines.toLocaleString();
  el('theorem-list').innerHTML=data.theorems.map((t,i)=>`<article class="theorem-card" data-theorem="${esc(t.id)}"><div class="equation">${math(t.target)}</div><p class="small">${esc(t.origin)} · ${t.expanded_lines} primitive lines · complete native acceptance</p><button type="button" data-theorem-index="${i}">Read this proof</button><button type="button" data-theorem-index="${i}" data-show-tiles="true">See its tiles</button></article>`).join('');el('theorem-list').querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{choose(Number(button.dataset.theoremIndex),!button.dataset.showTiles);if(button.dataset.showTiles)el('tiles').scrollIntoView({behavior:'smooth',block:'start'});}));
  el('control-list').innerHTML=data.controls.map(control=>`<p>${math(control.problem.target)} · ${esc(control.problem.label)}: all declared finite controls exhaust this particular cell/term envelope. This is not a displayed positive theorem.</p>`).join('')+data.pending.map(control=>`<p>${math(control.problem.target)} · no positive point-search certificate in this fresh run. Unknown requests remain unknown.</p>`).join('');
  el('proof-view').addEventListener('change',()=>setView(el('proof-view').value));el('line-select').addEventListener('change',()=>jump(Number(el('line-select').value)));el('previous').addEventListener('click',()=>jump(line-1));el('next').addEventListener('click',()=>jump(line+1));el('previous-page').addEventListener('click',()=>jump((Math.floor(line/pageSize)-1)*pageSize));el('next-page').addEventListener('click',()=>jump((Math.floor(line/pageSize)+1)*pageSize));

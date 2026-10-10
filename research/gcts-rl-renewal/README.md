@@ -37,6 +37,11 @@ combines internal cells into one readable step. Universal closing inferences
 are shown separately from the occupied cells. Forty-four cells and thirty-four
 rewrites are checked; mutation controls reject altered ports, reasons, axiom
 instances and targets. The equation chain introduces no additional arithmetic inference.
+A complete equation chain and a short mathematical argument now sit directly
+below the tile diagram. The cell labels tie each equality to its actual tile;
+the detail selector also reads an entire searched cluster as one step.
+The cluster chain retains the original starting expression when the first
+cluster contains more than the reflexivity cell.
 
 Notebook 33 adds a complete inventory of searched metatiles and an explicit
 coarse point model. A group of one, two or three slots has capacity twelve;
