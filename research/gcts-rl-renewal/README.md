@@ -4283,3 +4283,47 @@ zero. The specialized finite syntax envelope and goal-cone compilation are
 explicitly labeled. RL and learned geometric clusters remain future experiments.
 The unfinished hierarchical arithmetic development is preserved separately and
 is not part of this published geometry pilot.
+
+## Symbolic object language and the Hilbert foundation
+
+The user's further clarification fixes Hilbert's geometry as the research
+foundation. Statements are symbolic formulas first; proof tiles then encode
+symbolic inferences, formula IDs and dependencies. The object language has no
+coordinate evaluator or geometric oracle. The tile layout uses separate proof
+coordinates, with no connection to coordinates of the objects under discussion.
+An illustrative triangle supplies no inference facts.
+
+A post-search symbol-renaming control replaces every geometric predicate name
+with an arbitrary table/chair/cup/furniture relation name, and replaces all
+axiom names. All three displayed proofs remain accepted by the generic host,
+primitive and native checkers. Every exact candidate and certified resource
+marking is unchanged. A fresh elementary GCTS search has the identical complete
+search tree and placements. Independent audit verifies the name bijection,
+all interfaces, native input/code bindings, complete point inventories and both
+full elementary graph/rollback traces; six altered-signature or missing-axiom
+controls are rejected. This tests representation invariance, not discovery of
+new theorems or arbitrary changes to the axioms.
+
+The source baseline is [Hilbert's second edition, 1903, with the original text
+and parallel translation](https://www.maths.tcd.ie/~dwilkins/Courses/MA232A/MA232A_Mich2017/HilbertAxioms_ParallelText.html).
+Its congruence axiom III.6 gives remaining angle congruences. Full SAS congruence
+and ASA are subsequent theorems. The present pilot assumes full SAS/ASA and must
+remain labeled a comparison fragment; its certificates are not yet proofs
+from Hilbert's complete axiom system.
+
+The next milestone is a source-pinned planar formalization of incidence,
+order and the literal congruence axioms, using point/line sorts represented by
+explicit guards in the existing first-order checker. Rays, segments, angles
+and noncollinearity need visible definitions rather than geometric callbacks.
+Full SAS and ASA must enter as checked derived results. The parallel axiom
+and a documented logical formulation of continuity follow separately; the
+present checker has no continuity or completeness schema. Each result will
+show its exact enabled axiom groups and definition/lemma dependencies.
+
+Reproduce the renaming control after the audited Euclidean pilot:
+
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_symbol_renaming.py
+    PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_symbol_renaming.py
+
+The symbolic pipeline, arbitrary-name formula and explicit Hilbert status table
+are in the [live notebook's foundation section](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/euclidean-proofs.html?v=20261009-e1.1#symbolic-foundation).

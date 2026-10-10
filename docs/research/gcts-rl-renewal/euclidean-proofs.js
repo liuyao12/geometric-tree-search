@@ -29,6 +29,7 @@ function geometryFormula(a){
   if(a[1]==='SegEq')return seg(x.slice(0,2))+'\\equiv '+seg(x.slice(2));
   if(a[1]==='AngleEq')return angle(x.slice(0,3))+'='+angle(x.slice(3));
   if(a[1]==='Congruent')return tri(x.slice(0,3))+'\\cong '+tri(x.slice(3));
+  return '\\operatorname{'+a[1].replace(/[^a-zA-Z]/g,'')+'}('+x.join(',')+')';
  }
  if(k==='imp'||k==='and')return '('+geometryFormula(a[1])+(k==='imp'?'\\Rightarrow ':'\\land ')+geometryFormula(a[2])+')';
  throw Error('Unsupported geometric formula');
@@ -41,7 +42,8 @@ function geometryEnglish(a){
  if(a[1]==='Triangle')return 'points '+x.join(', ')+' are noncollinear';
  if(a[1]==='SegEq')return 'segment '+s(x.slice(0,2))+' has the same length as segment '+s(x.slice(2));
  if(a[1]==='AngleEq')return 'angle '+s(x.slice(0,3))+' equals angle '+s(x.slice(3));
- return 'triangle '+s(x.slice(0,3))+' is congruent to triangle '+s(x.slice(3))+' in that vertex order';
+ if(a[1]==='Congruent')return 'triangle '+s(x.slice(0,3))+' is congruent to triangle '+s(x.slice(3))+' in that vertex order';
+ return 'relation '+a[1]+' holds of '+x.join(', ');
 }
 if(typeof module!=='undefined')module.exports={validateGeometryRow,geometryFormula,geometryEnglish};
 if(typeof document!=='undefined'){
@@ -123,7 +125,7 @@ if(typeof document!=='undefined'){
   selectCell(0);proofLines();typeset([el('target'),el('hypotheses'),el('row-reading'),el('closure'),el('axioms')]);
  }
  async function main(){
-  const response=await fetch('euclidean-reader-001.json?v=20261009-e1');if(!response.ok)throw Error('Dataset HTTP '+response.status);data=await response.json();
+  const response=await fetch('euclidean-reader-001.json?v=20261009-e1.1');if(!response.ok)throw Error('Dataset HTTP '+response.status);data=await response.json();
   if(data.audit.status!=='passed')throw Error('Full audit required');data.proofs.forEach(validateGeometryRow);
   el('load').textContent='Three audited proofs · '+data.proofs.reduce((s,p)=>s+p.length,0)+' actual cells · colored marking layers.';
   el('theorem').innerHTML=data.proofs.map((p,i)=>'<option value="'+i+'">'+esc(p.id)+': '+esc(titles[p.id])+'</option>').join('');
@@ -135,6 +137,11 @@ if(typeof document!=='undefined'){
   el('comparison-table').innerHTML='<table><thead><tr><th>Statement / control</th><th>Solver</th><th>Outcome</th><th>States</th><th>Attempts</th><th>Build + search seconds</th></tr></thead><tbody>'+data.results.map(r=>'<tr><td>'+esc(r.id)+'</td><td>'+esc(r.lane.toUpperCase())+'</td><td>'+status(r.status)+'</td><td>'+r.states+'</td><td>'+r.attempts+'</td><td>'+r.seconds.toFixed(4)+'</td></tr>').join('')+'</tbody></table>';
   el('assessment').textContent='The marked point representation supports sound automatic proof search and readable certificates. GCTS discovers the elementary vertex-order lemma, but reaches its budget on I.5 and I.6; classical search discovers both. This pilot shows no distinctive GCTS advantage. More effective geometry clusters and ordering must earn their cost on further matched tests.';
   choose(0);
+  fetch('symbol-renaming-001.json?v=20261009-e1.1').then(response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json();}).then(control=>{
+   if(control.independent_audit.status!=='passed'||control.source.sha256!==data.source.sha256||control.cases.some(r=>r.native.status!=='accepted'))throw Error('Unverified control');
+   el('renaming-status').textContent='Checked renaming: all three proofs remain accepted after replacing the four geometric predicate names and all axiom names. Every point candidate and resource marking is identical. A fresh GCTS search for the elementary lemma follows exactly the same complete search tree.';
+   el('renaming-formula').innerHTML='The first theorem with arbitrary relation names: '+math(control.cases[0].request.target);typeset([el('renaming-formula')]);
+  }).catch(error=>{el('renaming-status').textContent='Symbol-renaming control unavailable: '+error.message;});
  }
  main().catch(e=>{el('load').textContent='Reader stopped: '+e.message;});
 }
