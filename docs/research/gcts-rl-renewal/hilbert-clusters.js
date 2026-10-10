@@ -106,7 +106,7 @@ if(typeof document!=='undefined'){
   const text=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle">${esc(s)}</text>`;
   let shapes='',paths='',ports='',outlines='';
   p.tiles.forEach((t,j)=>{const [x,y]=xy([2*j,0]);shapes+=`<rect x="${x-50}" y="${y-50}" width="100" height="100" fill="${j===selected?'#e2ecf5':'#f0f4ee'}" stroke="${j===selected?'#246aa2':'#a7b8aa'}" stroke-width="${j===selected?3:1}"/>`+text(x,y+24,'Cell '+(j+1));if(shown.includes(t))shapes+=`<circle cx="${x}" cy="${y}" r="4" fill="#303d38"/>`;});
-  p.groups.filter(g=>g.item).forEach(g=>{const slots=g.members.map(k=>k[0]),x1=xy([2*Math.min(...slots),0])[0]-45,x2=xy([2*Math.max(...slots),0])[0]+45;
+  p.groups.filter(g=>g.item&&(el('view').value==='row'||g.candidate===group.candidate)).forEach(g=>{const slots=g.members.map(k=>k[0]),x1=xy([2*Math.min(...slots),0])[0]-45,x2=xy([2*Math.max(...slots),0])[0]+45;
    outlines+=`<path d="M${x1} 355 H${x2}" stroke="#8450a0" stroke-width="2" stroke-dasharray="5 4"/>`;
    slots.forEach(j=>{const [x,y]=xy([2*j,0]);outlines+=`<rect x="${x-45}" y="${y-45}" width="90" height="90" rx="5" fill="none" stroke="#8450a0" stroke-width="${g.candidate===group.candidate?3:1.5}"/>`;});
   });
@@ -151,7 +151,7 @@ if(typeof document!=='undefined'){
  }
  const status=s=>s==='finite_exact_proof_tiling'?'Checked proof':s==='unknown_search_budget'?'Budget cutoff':'Finite grammar exhausted';
  async function main(){
-  const response=await fetch('hilbert-cluster-reader-001.json?v=20261010-c1');if(!response.ok)throw Error('Dataset HTTP '+response.status);data=await response.json();
+  const response=await fetch('hilbert-cluster-reader-001.json?v=20261010-c1.1');if(!response.ok)throw Error('Dataset HTTP '+response.status);data=await response.json();
   if(data.audit.status!=='passed')throw Error('Complete independent audit required');data.proofs.forEach(p=>validateClusterRow(p,data.library));
   el('load').textContent='Three audited GCTS proofs · '+data.library.length+' learned families · 29 fully audited source/recipient records.';
   el('theorem').innerHTML=data.proofs.map((p,i)=>`<option value="${i}">${esc(titles[p.id])}</option>`).join('');
