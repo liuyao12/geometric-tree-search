@@ -5428,3 +5428,36 @@ The standalone visual reader is `docs/research/gcts-rl-renewal/adaptive-clusters
 The full raw experiment retains every training and evaluation trace. The reader
 projection omits repeated trees; validation reproduces it exactly from the
 independently audited raw data and checks all displayed point/cluster values.
+
+## Notebook 49: compactly discharge searched contexts
+
+The new `compact_contexts.py` adapter lifts a discovered sequent under one
+balanced conjunction, using only existing primitive kernel commands. It
+discharges every hypothesis, preserves the original theory, installs no premise
+axioms or trusted rule, and universally closes the conditional statement.
+Fresh complete point searches include a shared-dependency propositional proof,
+an actual conditional successor/addition fact, symbolic incidence typing, a
+valid quantified context, an invalid eigenvariable control and an empty source
+derivation. Three non-chain windows are mined; both compound transfer proposals
+are scheduler-rejected with complete fallback. This is a limitation, not an
+acceleration claim. No new RL training is included.
+
+Reproduce the independent binding checks and unchanged-core native execution:
+
+```sh
+python3 research/gcts-rl-renewal/run_compact_contexts.py
+python3 research/gcts-rl-renewal/audit_compact_contexts.py
+python3 research/gcts-rl-renewal/run_context_wang.py
+python3 research/gcts-rl-renewal/audit_context_wang.py
+python3 research/gcts-rl-renewal/export_compact_contexts.py
+python3 research/gcts-rl-renewal/validate_compact_contexts.py
+```
+
+The native producer runs a fresh 14-command branched theorem and an invalid
+projection in the frozen common Wang palette. The full literal execution and
+every independently derived operational fragment agree, with explicit empty
+root context. Native production takes several minutes; the compressed grammar
+and full context audit remain downloadable. The visual reader is
+`docs/research/gcts-rl-renewal/compact-contexts.html`. Source discovery, deterministic
+discharge and literal computation are displayed as distinct stages. Command
+compression is not a proof-search speed claim or a universal compiler proof.
