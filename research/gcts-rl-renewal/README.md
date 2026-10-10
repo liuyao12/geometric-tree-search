@@ -4683,3 +4683,38 @@ python3 research/gcts-rl-renewal/audit_logical_wang_clusters.py
 python3 research/gcts-rl-renewal/export_logical_wang_clusters.py
 python3 research/gcts-rl-renewal/validate_logical_wang_clusters.py
 ```
+
+### Checking cost and direct propositional receptors
+
+Checking cost is the priority; the known color-to-notch encoding is not itself
+a new contribution. For \(M\) marking assignments, exact point/channel indexing
+and agreement take expected \(O(M)\) dictionary work plus exact value comparison,
+or deterministic \(O(M\log M)\) sorting. Distant support does not require all-pairs
+comparison. Hashing is only an index; actual keys and values are compared.
+Occupancy and full target coverage are checked separately. Internal certified
+clusters can be reused, with each use bound to its actual definition,
+parameters, scope/context and kernel version. Current low-level response
+checks cost \(27.333\) seconds for arithmetic and \(31.627\) for incidence;
+these are not timings of simple marking agreement.
+
+The next direct design gate is propositional inference through extended
+marking support. A modus-ponens instance at line \(k\) references prior lines
+\(i,j\) and puts \(\phi(A)\), \(\phi(A\Rightarrow B)\), \(\phi(B)\) at their
+formula ports. The source and use assignments must agree exactly. The
+allowed inference family must enforce the implication's structure and
+checked hypothesis/axiom origins; equality of arbitrary labels alone does
+not establish inference. Sparse references avoid copying the entire proof
+history onto every line. RL may propose which lines to connect, as in the
+attention analogy, while proof matching uses exact symbolic values.
+
+Whole-formula IDs are suitable only as a bounded symbolic prototype. To
+realize one fixed finite literal inventory, compile fixed-alphabet formula
+encodings into syntax and routing clusters, preserving full string or
+certified canonical DAG equality. Formula length and reference distance
+change assemblies, not base tile types. Logical rule markings are part of
+validity and must be checked (or replaced by verified symbolic equivalents);
+learned search-only markings may be omitted. Quantifiers later require
+capture avoidance and scope interfaces. The proposed direct compiler and
+fresh propositional search have not yet been implemented. Compare identical
+inventories with forward chaining/CSP and measure sparse marking, symbolic
+proof and certified cluster checks separately. Broad goal remains active.
