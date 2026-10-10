@@ -4887,3 +4887,89 @@ python3 research/gcts-rl-renewal/audit_propositional_wang.py
 python3 research/gcts-rl-renewal/export_propositional_wang.py
 python3 research/gcts-rl-renewal/validate_propositional_wang.py
 ```
+
+
+## Notebook 44: exact factored propositional receptor domains
+
+[The separate reader](../../docs/research/gcts-rl-renewal/factored-receptors.html)
+removes the explicit rule/reference placement product from the bounded point
+search. Rule IDs and their iteration order remain canonical. Schema instances
+are generated lazily. For modus ponens, independently compatible earlier ports
+form two sets, \(X\) and \(Y\), with exact domain size
+\(|X||Y|-|X\cap Y|\). Integer masks store the sets; complete iteration streams
+all distinct reference pairs. The finite implication catalog is still built.
+
+Global dead ends precede forced moves, followed by earliest generation and then
+degree ties. Each candidate's only occupied support is its own full-capacity
+proof point, so the complete reverse incidence is a singleton. New complete
+formula ports update their own unfilled slot and every later slot. Copies restore
+the exact point state and factor domains. This is a specialization to complete
+canonical words and single-slot placements; arbitrary partial character marks,
+fractional/shared occupied support and extra marking channels are unsupported.
+
+Fresh search receives axioms, statements and finite bounds, without proof paths.
+A query-independent pool of \(20\) parameters produces \(33352\) primitive rules.
+It discovers \(P\Rightarrow Q\) from \(\neg\neg P\Rightarrow\neg\neg Q\)
+in four lines, \(\neg P\Rightarrow\neg P\) in five, and
+\(\neg P\Rightarrow(Q\Rightarrow Q)\) with a three-command family composition.
+The identity family is promoted from this run's fresh primitive identity proof;
+its use has the same logical-expansion scope as Notebook 42.
+
+| Case | Factored total seconds | Ground total seconds | Factor search states | Saturation search seconds |
+| --- | --- | --- | --- | --- |
+| Plain identity | 0.049325 | 5.725634 | 220 | 0.000491 |
+| Closed atom, one slot | 0.001681 | 0.003555 | 1 | 0.000952 |
+| Double-negation premise | 2.296796 | Not run | 200 | 0.019120 |
+| Negated identity | 4.221706 | Not run | 1808 | 0.011031 |
+| Negated identity family | 0.080876 | 0.177472 | 2 | 0.011408 |
+| Negated family weakening | 0.119330 | Not run | 18 | 0.018933 |
+
+Factored totals include its catalog construction, model creation and search.
+Ground totals include placement construction and search using the same prepared
+rule catalog; shared independent inventory verification is outside both times.
+All three ground/factor terminal trees match exactly. Identity improves by about
+\(116\) times and materializes \(218\) used placements from a declared
+\(15600\)-candidate universe. Ground cases above the predeclared
+\(50000\)-candidate cap are not run; those omissions are not measured failures.
+Saturation uses the same finite inventory, shares facts and has no exact slot-count
+bound; its displayed search time excludes common catalog construction. Recovered
+proof lengths and whether they fit the slot bound are retained. Classical
+saturation remains faster. Frozen RL changes no state counts; reused prior
+training costs \(2.885\) seconds separately. These are single-run measurements.
+
+The independent audit reconstructs all rule inventories and candidate degrees by
+explicit short-reference-pair enumeration. It replays every terminal search tree,
+checks every positive point certificate and primitive expansion, verifies every
+actual factor frame, and reconstructs all \(46\) recorded greedy policy proposal
+steps from the frozen scores. It rejects \(34\) corrupted records. Search
+production costs \(40.132\) seconds and audit \(33.093\) seconds. Whole-process
+peak memory is \(210829312\) bytes across all lanes, not a per-lane comparison.
+
+The new conditional proof compiles to the unchanged literal Wang core. Its exact
+closed hypothesis is declared as premise axiom, emitted first and referenced with
+the corresponding index shift. All five machine commands accept. Independent
+response derivation reconstructs their complete input/output contexts, target,
+theory, prior facts, pending commands and literal fragment costs. Actual execution
+agrees on all register bands; the fixed inventory fingerprint is unchanged. Exact
+scan acceleration is used. Native production costs \(23.627\) seconds and its
+independent audit \(5.917\) seconds; three altered premise/target/reference
+transports reject.
+
+Ten regressions test inventories, schema unification, every small mask product,
+complete partial-state forward/reverse incidence, remote ports, global scheduling,
+rollback, matched terminal trees, budget scope and family expansion. Reader
+validation checks all five positive proofs and five native commands, rejects
+\(413\) altered projections and binds the complete projection to both audits.
+The colored cells are actual direct-search point markings, not literal Wang
+squares. Quantified receptors, certified cross-request caching, adaptive geometric
+clusters, learned redundant failure markings, useful RL, stronger comparisons and
+the original turtle/Penrose objectives remain active.
+
+```sh
+python3 research/gcts-rl-renewal/run_factored_receptors.py
+python3 research/gcts-rl-renewal/audit_factored_receptors.py
+python3 research/gcts-rl-renewal/run_factored_wang.py
+python3 research/gcts-rl-renewal/audit_factored_wang.py
+python3 research/gcts-rl-renewal/export_factored_receptors.py
+python3 research/gcts-rl-renewal/validate_factored_receptors.py
+```
