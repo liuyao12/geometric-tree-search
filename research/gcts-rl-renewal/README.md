@@ -3321,3 +3321,127 @@ formal soundness remain open. The research goal remains active.
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_semantic_proofs.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_semantic_tests.py
     PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_semantic_view.py
+
+## Notebook 30: mined proof fragments and hierarchical GCTS proposals
+
+The primary track remains Wang-style proof search. This batch starts with
+an empty library and two authored donor statements,
+\(\forall a\;(a+1=\operatorname{S}(a))\) and
+\(\forall a\;(a+2=\operatorname{S}(\operatorname{S}(a)))\).
+No proof path or fragment statement is supplied. `proof_clusters.py` searches
+with the unchanged complete semantic base graph, mines every eligible
+source dependency-chain window of two to four moves, and checks its universally
+closed equation interface. Four distinct templates are promoted. Two have
+level two because their definitions retain an actual level-one child call
+used by the earlier donor search. All child dependencies are earlier-only.
+The level is a proof-program dependency level, not a frontier generation.
+
+Template substitution, both orientations and every surrounding term context
+are compiled into existing bounded base rule instances. All intermediate
+terms must remain inside the same declared grammar. A fragment's member
+cells are a contiguous logical move span; its preceding input may reference
+any earlier cell. The proposer uses a fixed authored priority (goal-containing,
+move count, hierarchy level, deterministic identity); there is **no RL** in
+this batch. Every proposal constituent is an ordinary base candidate.
+
+Conformance is preserved at the complete primitive graph: global dead ends,
+then global forced moves, then earliest generation with candidate count breaking
+ties. Before each transaction step, that global decision is recomputed on an
+exact copied state and copied graph. Forced moves outside a fragment execute
+as well. A proposed branch member must occur at the selected point. Scheduler
+refusal is a proposal rejection, not a proved logical failure. Every base
+alternative remains, and the parent is unchanged after successful, failed or
+cut-off transaction validation. Base placement attempts include all constituent
+and forced steps. An attempt or time cutoff is **unknown**. An index cap only
+truncates the proposal index, never the complete primitive candidate universe.
+
+`proof_cluster_problems.py` supplies only theories, targets and finite bounds.
+Ten evaluation cases (eight mathematical targets and two finite controls) are
+never mined. Two deterministic repeats rotate lane order, retaining a fresh
+identical base catalog, target, term envelope, cell bound and scheduler in all
+four lanes. Plain GCTS has no learned library; level-one and full hierarchy
+lanes propose sequences; rank-only uses the same full hierarchy to reorder the
+next individual base move. This is a **matched base-graph sequence/ranking
+comparison**, not an adjacency-versus-distant encoding ablation. The hierarchy
+is a checked proof representation and proposer; it is not a collapsed coarse
+graph, and it does not shrink the primitive cell envelope.
+
+Measured totals over twenty requests per lane are:
+
+| Lane | Verified / finite exhausted / unknown | States | Base attempts | Search seconds | Cold request seconds |
+| --- | --- | --- | --- | --- | --- |
+| Plain GCTS | 16 / 4 / 0 | 2324 | 2304 | 19.097064 | 30.623473 |
+| Level-one sequences | 16 / 4 / 0 | 1426 | 1464 | 11.371594 | 21.656236 |
+| Full hierarchy sequences | 16 / 4 / 0 | 1304 | 1338 | 11.045820 | 21.444932 |
+| Hierarchy ranks single tiles | 14 / 4 / 2 | 1763 | 1743 | 14.289677 | 24.925233 |
+
+Cold costs include fresh catalog validation, model/graph/index construction,
+proposal enumeration and scheduler validation, decoding, hierarchical compilation,
+full-prefix host checking and the complete fixed native machine. All donor
+search, checking, mining and whole-library native validation costs
+\(1.586897\) seconds. Charging it once to the full hierarchy gives
+\(23.031829\) seconds versus plain search's \(30.623473\), before adding the
+same shared \(1.006123\)-second native compilation to either lane. Full family
+production costs \(103.137680\) seconds. Driver peak memory is
+\(350437376\) bytes, including accumulated artifacts; it is not a per-lane
+memory ranking. Every search has a \(5\)-second wall and \(50000\) actual
+base-attempt limit. Catalog and final verification are outside the search wall.
+
+The nested-right addition example drops from \(391\) plain states to \(4\)
+hierarchy states and uses two actual fragments, one inside an argument followed
+by a level-two fragment. The latter transaction chooses its last cell first.
+Multiplication instead uses \(547\) sequence states versus \(515\) plain states,
+with modest extra cold time. Its rank-only repeats both reach the wall limit
+and remain unknown. The second hierarchy level saves only \(0.211304\) cold
+seconds beyond level one over the whole family before charging discovery.
+These are specific controlled results, not a general performance ranking.
+The unequal-outcome rank-only aggregate is not an equal-success comparison.
+
+`hierarchical_certificate` first validates the entire original decoded request,
+then replaces actual goal-chain transaction spans by checked instantiated block
+calls. It includes all and only reachable definitions in dependency order and
+checks the complete output request under the unchanged external problem hash.
+There are \(62\) complete evaluation native acceptances, two donor acceptances
+and one whole-library acceptance. No mathematical proof is accepted merely
+because a fragment has a shorter root certificate.
+
+`audit_proof_clusters.py` imports no proposer, miner, graph implementation,
+catalog producer or measured driver. It independently reconstructs all external
+theories and targets, bounded base rewrite inventories, all eligible mined windows,
+source member and whole-certificate provenance, actual earlier child spans,
+all instantiated proposal indexes, domain samples, and every complete saved
+search tree/transaction with exhaustive base fallback. It checks the separate
+rank-only order, exact counters, every promoted definition, each decoded proof
+and each hierarchical output by full-prefix primitive expansion. It binds every
+native input/program to the original external problem. The audit passes in
+\(25.463079\) seconds. It does not independently replay every native instruction,
+certify truncated unknown trees, or prove general compiler soundness.
+
+The full suite passes \(392\) tests in \(107.851559\) wall seconds. New meaningful
+tests cover actual two-level discovery, provenance, unchanged base universes,
+complete transaction domains and scheduler roles, exact rollback, duplicates,
+mid-transaction unknown cutoffs, index/pool fallback, finite exhaustion,
+rank-only singleton semantics, full expansions, altered interfaces/roles,
+dropped fallback branches and independently reconstructed external declarations.
+Historical measured sources and artifacts, including notebooks 28 and 29, remain
+byte-for-byte unchanged.
+
+Reproduce (from the repository root; no imported old policy or library):
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_clusters.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_proof_clusters.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_cluster_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_proof_cluster_view.py
+```
+
+The report is `docs/research/gcts-rl-renewal/proof-clusters.html`. Its small
+projection (`proof-cluster-view-001.json`) pins the full audited artifact and
+exporter by SHA-256. The full artifact records every complete tree, unknown
+partial prefix, proposal trace, source, inventory, proof request and native result.
+The tests have a separate source-pinned full log. Next gates are zero-start RL
+selection against these exact controls, a broader statement family, induction and
+a fair grammar, and a genuine coarse interface graph with constraint-solver
+comparisons. Learned failure markings and universal compiler soundness are still
+open; bounded failures cannot justify unproved pruning. Turtle and Penrose remain
+occasional geometric controls, and discovering their substitution rules is optional.
