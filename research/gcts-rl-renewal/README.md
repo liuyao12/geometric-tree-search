@@ -4973,3 +4973,132 @@ python3 research/gcts-rl-renewal/audit_factored_wang.py
 python3 research/gcts-rl-renewal/export_factored_receptors.py
 python3 research/gcts-rl-renewal/validate_factored_receptors.py
 ```
+
+## Notebook 45: quantified receptors, actual scope and predicate families
+
+[The quantified reader](../../docs/research/gcts-rl-renewal/quantified-receptors.html)
+extends the bounded direct point model to first-order formulas. The declared
+signature, closed theory axioms, open hypotheses, terms, variables and finite
+instantiation/wrapping bounds generate the inventory independently of the target.
+No proof path is supplied. Capture-safe universal elimination, generalization,
+modus ponens and conjunction projection have all eligible finite instances.
+Existential notation abbreviates \(\neg\forall\neg\); witness search is absent.
+
+Each line fills one capacity-\(12\) slot. Its canonical ASCII formula word ends
+with a delimiter and assigns one value at each distant syntax point. A fixed
+scope point for each declared variable has value \(1\) exactly when that variable
+is free in any open hypothesis, and \(0\) otherwise. Generalization assigns
+\(0\) at the same point. These values participate in actual overlap checking and
+the exact domains; missing does not mean zero. The local context point on each
+line is explicitly zero. The reader shows all actual scope and character values.
+
+Fresh search discovers a four-line universal-modus-ponens derivation, arithmetic
+\(\forall x\,S(x+0)=S(x)\) from addition by zero and successor congruence, and
+\(\forall u\,\forall x\,(\mathrm{Inc}(x,u)\Rightarrow\mathrm{Point}(x))\)
+from the sole one-sorted incidence typing axiom
+\(\forall x\,\forall u\,(\mathrm{Inc}(x,u)\Rightarrow
+(\mathrm{Point}(x)\land\mathrm{Line}(u)))\).
+The arithmetic axioms are explicit inputs, not discovered facts. This geometry
+example is a logical quantifier/typing consequence in a Hilbert-style symbolic
+language, without a new existence, metric or full Euclidean theorem.
+
+An ambient hypothesis \(S(y)\) permits generalizing \(x\) but not \(y\).
+The one-slot \(P(x)\) to \(\forall x\,P(x)\) request fails at the actual
+scope point. Capture-safe instantiation of
+\(\forall x\,\exists y\,R(x,y)\) at \(y\) renames the bound variable;
+the captured conclusion \(\exists y\,R(y,y)\) is rejected by the finite
+grammar. Independently, the off-diagonal relation on two objects satisfies the
+premise and falsifies that conclusion. Budget cutoffs remain unknown.
+
+The freshly discovered universal-modus-ponens proof is promoted to a predicate
+family. Predicates specialize capture-safely to arithmetic equalities or symbolic
+incidence, with the original primitive proof and ambient scope guard preserved.
+At seven arithmetic slots, GCTS states fall from \(2330\) to \(393\), while
+primitive expansion grows from \(10\) to \(14\) commands. A six-slot family
+proof has \(294\) states and \(13\) primitive commands. Incidence can use one
+family cell with six primitive commands. At four fixed slots it instead repeats
+that family four times, producing \(24\) commands. Filled fixed boundaries do
+not establish minimum proof lengths. Families change the atomic inventory and
+scheduling granularity; logical expansion is not a capacity-preserving geometric
+cluster decomposition. All controls receive the same library.
+
+| Case | Grammar seconds | GCTS search seconds / states | Chronological search seconds / states | Saturation search seconds |
+| --- | --- | --- | --- | --- |
+| Universal modus ponens | 0.000470 | 0.002705 / 35 | 0.004760 / 663 | 0.000033 |
+| Open ambient variable | 0.000518 | 0.002500 / 30 | 0.003213 / 396 | 0.000032 |
+| Arithmetic, seven primitive slots | 0.003216 | 0.410873 / 2330 | Unknown at 0.794830 / 30001 | 0.000354 |
+| Incidence typing | 0.005891 | 0.035026 / 87 | 0.438784 / 7098 | 0.001155 |
+| Arithmetic family, seven slots | 0.003755 | 0.075788 / 393 | Unknown at 0.826552 / 30001 | 0.000368 |
+| Incidence family, one slot | 0.000623 | 0.000202 / 2 | 0.000009 / 2 | 0.000024 |
+| Arithmetic family, six slots | 0.003354 | 0.049686 / 294 | 0.361814 / 12039 | 0.000362 |
+
+These are single-run search times, excluding model binding, certificate assembly,
+independent checking and native execution. Grammar construction is charged
+separately; reader totals add it to each search. Saturation shares facts and has
+no exact slot-count bound; its recovered primitive lengths are retained.
+Whole search production costs \(3.429269\) seconds, with peak process RSS
+\(30474240\) bytes across all lanes, not a per-lane memory comparison.
+Saturation remains much faster. No distinctive GCTS advantage is established,
+and this extension has no RL lane or learned redundant failure constraints.
+
+The graph keeps complete factored domains and forward/reverse incidence.
+Independent input-reference masks yield \(|X||Y|\) candidates, subtracting
+\(|X\cap Y|\) only when two distinct required input formulas prohibit a repeated
+reference; identical inputs allow it. Complete canonical iteration enumerates
+all references. Actual scope values filter the factors. Global dead ends precede
+forced moves, then generation precedes degree ties. Required points start at
+generation zero; placements assign successor generations. Exact rollback copies
+all ports, point state, scope values, domains and ordering. This specializes to
+complete formula words, single-slot occupancy and identity transformations.
+
+The independent audit reconstructs all twelve inventories using a separate
+substitution implementation, explicitly enumerates all reference domains,
+replays every terminal GCTS tree and factor frame, checks every positive point
+certificate and control proof, and checks the entire source-to-primitive
+compilation. An ordinary deduction compiler discharges every open hypothesis;
+both existing host kernels replay all generated lines against the exact theory
+and target. Generalization uses the conservative global open-hypothesis context.
+The audit rejects \(86\) corruptions in \(2.295267\) seconds.
+
+Four compiled certificates accept in the unchanged literal Wang machine:
+arithmetic, incidence typing, the open ambient-variable sequent, and the
+six-slot arithmetic family proof. All \(43\) register bands and exact literal
+counts agree. The native reader binds \(42\) actual command fragments to their
+input/output hypotheses, forbidden variables, prior facts, pending commands,
+lemma inventory and target. The open case is an actual checked sequent
+declaration followed by a root identity probe; its \(217\)-command discharged
+theorem is separately host-checked, not claimed as a native execution.
+Exact scan acceleration is used. Whole native production costs \(215.104221\)
+seconds, including \(2.161264\) seconds of shared executable compilation.
+The independent operational audit costs \(35.348257\) seconds and rejects
+\(12\) altered input/theory/reference transports. The frozen palette fingerprint
+remains `0db5a804c3051683c42e339278c0f02faa948d0815ee3d8a25be039a7b86c455`.
+
+Twelve regressions cover independent inventories, all small mask products,
+repeated inputs, scope-zero versus missing, capture, target independence,
+partial-state complete incidence, scheduling, generations, exact rollback,
+family expansion, discharged proofs, point certificates and cutoff scope.
+The independent browser reader validates ten positive proof records, their
+primitive/discharged proofs, actual points and all \(42\) native command
+contexts. It rejects \(8723\) point-mark mutations, \(44\) source-formula
+mutations, \(115\) primitive-command mutations, \(140\) native-context
+mutations and three tautology/scope regressions. Visual checks exercise all
+\(44\) source lines, \(30\) marking-layer views and four native views.
+
+The direct character ports are problem-defining exact markings, not learned
+attention weights or adjacent literal Wang squares. The fixed core is used for
+checking compiled discoveries; search still operates in the bounded semantic
+front end. Universal formal compiler/kernel soundness, arbitrary partial syntax
+marks, fractional/shared support, changing scope contexts, induction and witness
+search, adaptive geometric clusters, certified cross-request caching, learned
+failure markings, useful RL, stronger comparisons and the original turtle/Penrose
+objectives remain active.
+
+```sh
+python3 research/gcts-rl-renewal/run_quantified_receptors.py
+python3 research/gcts-rl-renewal/audit_quantified_receptors.py
+python3 research/gcts-rl-renewal/run_quantified_wang.py
+python3 research/gcts-rl-renewal/audit_quantified_wang.py
+python3 research/gcts-rl-renewal/export_quantified_receptors.py
+python3 research/gcts-rl-renewal/validate_quantified_receptors.py
+```
