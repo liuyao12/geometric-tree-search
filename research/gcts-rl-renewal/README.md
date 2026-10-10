@@ -13,6 +13,58 @@ and multiscale assembly are the central next experiments.
 
 The report is at [the existing GitHub Pages destination](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/).
 
+The [separate Wang-style proof notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/wang-proofs.html)
+lists concrete proofs discovered by the current direct point-tile searches.
+Its reader supports compact root certificates, every local lemma definition,
+and complete independently checked primitive root expansions, with clickable
+earlier-line references and exact certificate downloads. Each line also has
+a mechanical English reading and a separate inference-rule explanation;
+nested brackets preserve logical scope. The English is a reading aid, not
+an independently checked natural-language proof. Current examples are
+bounded contextual arithmetic; searched induction and Euclid theorems remain open.
+
+Notebook 33 adds a complete inventory of searched metatiles and an explicit
+coarse point model. A group of one, two or three slots has capacity twelve;
+covering one member contributes twelve divided by group size. Distinct
+candidate identities are m-values at each owned primitive slot, preventing
+overlapping expansions. All logical ports, including internal ones, remain.
+Exact capacity plus ownership gives solution equivalence to the original
+finite envelope; every original solution lifts through the complete primitive
+fallback. This does not assert primitive scheduler-path equivalence. It is
+a separately declared positional representation with identity transforms.
+
+The point graph retains complete incidence, global dead/forced precedence,
+earliest generations, fractional residuals and exact rollback. Atomic
+metatiles are justified by the explicit finite solution-equivalence argument,
+not by sampled proposal degrees. The macro inventory must be complete.
+The classical comparison uses binary arc consistency and MRV on the original
+primitive variables, with independently checked unsupported-value deletions.
+Both trial caps are 50000 but count different units: expanded point placements
+versus explicit classical assignments. All propagation, representation and
+trace-instrumentation work lies inside the five-second search wall. Cold
+cost includes catalog checking, proof expansion, hierarchy and native checking;
+reuse lanes additionally owe fresh donor/library discovery.
+
+Reproduce the current fresh experiment and its separate proof reader:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_coarse_proofs.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/audit_coarse_proofs.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_coarse_proof_tests.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/run_coarse_proof_view.py
+PYTHONDONTWRITEBYTECODE=1 python3 research/gcts-rl-renewal/export_wang_proof_notebook.py
+```
+
+The producer begins with an empty library and searches both donor statements
+again. It never imports previous proof/cluster/policy artifacts. Evaluation
+does not enter mining. Sources are SHA-pinned before execution. The independent
+auditor reconstructs every full decided point graph, every classical revision,
+all closed or open tree prefixes, full primitive and hierarchical proofs,
+library provenance and native input/program bindings. It imports no graph,
+search, miner or catalog producer. Universal compiler soundness and independent
+native-instruction replay remain outside its scope. Historical notebooks and
+their measured sources/artifacts remain byte-preserved.
+
 Run a cold iteration and the semantic conformance checks:
 
 ```sh
