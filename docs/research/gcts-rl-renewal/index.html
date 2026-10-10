@@ -10,7 +10,7 @@
   <script defer src="report.js?v=20261009-r33.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 49</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 50</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -18,6 +18,14 @@
     <p class="deck">The primary track is now automatic proof search with succinct Wang-style tiles and distant GCTS markings. Learn checked lemma constituents and how their interfaces fit. Turtle and Penrose remain regression and occasional geometric controls.</p>
     <div class="statusline"><span class="dot"></span><strong>Search, check, promote, reuse.</strong><span>Statements and axioms are inputs; learned proof fragments now compose at two levels.</span></div>
     <p class="small">In the original turtle discovery lane, no human stripe marking, saved policy, known tiling or substitution rule is supplied. Current direct proof searches receive statements, axioms and finite grammar bounds, with no supplied proof sequences. Historical tactic controls remain explicitly labeled.</p>
+  </section>
+
+  <section class="panel" id="resumable-clusters">
+    <p class="eyebrow">NOTEBOOK 50 · RETAINED FAMILIES · FRESH RL · ACTUAL CHILDREN</p><h2>A proposed proof family can wait through other boundary decisions.</h2>
+    <p>The global scheduler still checks complete dead ends and forced moves before branching. A learned family now retains its remaining original cells while the scheduler fills cells outside it, and resumes when its next member becomes eligible. Missing members add no occupancy or markings. Every original candidate remains in the search, and failed children restore the exact parent hint. A completed child from a fresh donor is contained in two larger families; seven formula patterns enter the inventory at levels \(1\) and \(2\).</p>
+    <p>Twenty-four fresh sampled episodes train a softmax proposer from zero weights. On four held-out propositional cases both the fixed and trained resumable controllers reduce attempts; the longer proof falls from \(76\) base attempts to \(21\), compared with \(63\) for an atomic controller using the same fixed preferences. The fixed controller is slower overall on all six positive cases. RL matches its attempt counts and adds no demonstrated benefit. Arithmetic and symbolic incidence use no learned family; saturation is faster on every positive.</p>
+    <p>Independent replay reconstructs all \(71\) searches, every admitted proposal pool, \(23825\) explicit states, actual completed children and all policy updates. Both primitive kernels check the discharged positive proofs. The reader separates logical line order from the actual placement sequence and draws only the selected original tile's real distant values. No new literal Wang execution or failure marking is claimed.</p>
+    <p><a href="resumable-clusters.html?v=20261010-rc1#reader">Inspect waiting, resumption and readable proof lines</a> · <a href="resumable-clusters.html?v=20261010-rc1#families">Read the actual learned hierarchy</a> · <a href="resumable-clusters.html?v=20261010-rc1#performance">Assess full costs and classical controls</a> · <a href="resumable-clusters-audit-001.json">Independent reconstruction</a></p>
   </section>
 
   <section class="panel" id="compact-contexts">

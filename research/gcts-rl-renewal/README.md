@@ -5461,3 +5461,58 @@ and full context audit remain downloadable. The visual reader is
 `docs/research/gcts-rl-renewal/compact-contexts.html`. Source discovery, deterministic
 discharge and literal computation are displayed as distinct stages. Command
 compression is not a proof-search speed claim or a universal compiler proof.
+
+## Notebook 50: retain a family through unrelated scheduler decisions
+
+The new `resumable_clusters.py` controller places one original candidate per
+transition. A branch-local family changes preferences at the selected point,
+waits while other cells are chosen, and resumes when a remaining member becomes
+eligible. Missing constituents contribute no occupancy or markings. Failed
+children restore the parent state, complete graph and active hint. Every original
+alternative remains. An unfinished family is never promoted as a checked lemma.
+
+Two fresh donors create seven formula families, with actual completed child
+provenance in two level-two windows. Twenty-four fresh sampled episodes train
+five softmax weights from zero using a declared work proxy. Nine held-out cases
+compare base, fixed resumable, zero-policy, trained resumable and atomic search;
+the two fixed controls share the same scoring rule and proposal cap. Chronological
+DFS uses a separate entered-node budget and schedule. Saturation is not proof-length
+bounded; its four-line proof for a two-line region is labeled as exceeding that
+region. Positive classical proofs that fit are bound to exact original tilings
+and receive the same discharged primitive checks.
+
+Independent replay reconstructs all 71 search records, 23,825 explicit states,
+complete declared proposal pools and scan counts, pending sets, hint phases,
+fallback alternatives, source children, 67 sampled actions and all updates.
+Thirteen operational corruptions reject. Five tests check every tiny exact
+solution, exact parent rollback, interrupted families, bounded negatives, unknown
+partial trees and corrupt aggregates. The reader replays every positive path,
+original point value, completion and hierarchy; Node checks every primitive
+certificate with additional point, formula, context and lifetime mutations.
+Classical negative and unknown search traces are not independently replayed.
+
+Reproduce from the repository root:
+
+```sh
+python3 research/gcts-rl-renewal/run_resumable_clusters.py
+python3 research/gcts-rl-renewal/audit_resumable_clusters.py
+python3 research/gcts-rl-renewal/export_resumable_clusters.py
+python3 research/gcts-rl-renewal/validate_resumable_clusters.py
+```
+
+The visual reader is `docs/research/gcts-rl-renewal/resumable-clusters.html`.
+Its source lines are in logical order; the separate timeline is the actual
+placement order, including end tiles and forced placements. Dashed cells are
+pending family members. Colored sparse point diagrams show the selected original
+tile only. Square cell cards are semantic capacity summaries, not literal Wang
+types. The shared primitive logic, compact discharge and native palette are
+unchanged; this experiment adds no new native execution or failure marking.
+
+Four propositional cases reduce attempts; the longer proof goes from 76 base
+attempts and 63 atomic attempts to 21 for each resumable controller. Fixed
+resumable total costs are slower than base on all six positive cases; RL matches
+fixed attempts and demonstrates no additional benefit. Saturation is faster on
+every positive. Arithmetic and incidence use no learned family. This is limited
+evidence for scheduler-compatible family reuse, not a useful speed advantage
+over general proof search. The positional, full-capacity, generation-zero root
+adaptation and broader turtle/Penrose/universal-proof-system gaps remain active.
