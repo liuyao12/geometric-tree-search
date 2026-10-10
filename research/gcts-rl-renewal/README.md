@@ -4600,3 +4600,86 @@ python3 research/gcts-rl-renewal/audit_shared_wang.py
 python3 research/gcts-rl-renewal/export_shared_wang.py
 python3 research/gcts-rl-renewal/validate_shared_wang.py
 ```
+
+## Notebook 41: actual per-inference clusters and the polyomino proposal
+
+`logical-wang-clusters.html` connects readable logical commands to concrete
+fragments of the unchanged Notebook 40 fixed checker. The observed compiler
+changes only compression cut points. It runs the same finite selected-symbol
+transition table, with no formula, parser, inference or logical callbacks in
+its native execution. Observation metadata identifies the reviewed non-sweep
+entry to the proof-line loop; it never changes execution or acceptance.
+
+The controls explicitly reuse the two discovered arithmetic/incidence
+certificates and four authored rule/scope certificates. They produce
+\(75\) actual line fragments over \(85\) decoded checkpoints: \(28\) arithmetic,
+\(17\) incidence, one quantifier-distribution, \(26\) addition-induction,
+two open-premise-generalization and one captured-instantiation fragments.
+All eleven command forms have successful instances. Two attempted commands
+reject. Root commands and commands inside lemma definitions are counted here;
+this is different from earlier expanded primitive-line counts.
+
+Production costs \(214.661\) seconds, including native compilation, building,
+deriving and compressed transport. The successful independent audit costs
+\(126.663\) seconds. Every grammar node is derived again from primitive symbol
+actions and exact copy-sweep laws. Every observed response is independently
+applied to the actual incoming tapes, cursors and physical head. Its heap and
+registers are decoded and bound to the theory, target, hypotheses, forbidden
+variables, prior checked lemma registry, prior facts and remaining proof
+commands. Exact affine costs and full final tapes match earlier pinned runs.
+The audit rejects \(46\) changed context/boundary/fragment bindings. Its first
+attempt exposed a test-scope error: a rejected block can stop before the root
+is reached. Binding the complete encoded input before testing a changed root
+corrects that audit; no measured producer or execution was altered.
+
+The reader binds all displayed fields to the audited projection and displays
+\(2025\) actual cropped literal squares, from \(75\) three-transition entry
+samples. These samples are explicitly not whole inference computations.
+Three focused native tests compare new observed fragments with the old
+whole-run builder/checker, including right/left scans, cross-band writes,
+nonzero incoming physical heads, rejection and forged observation IDs.
+The reader rejects \(1384\) mutations. Literal colors remain exact scalar or
+ordered-pair values; response masks are admissible symbol sets and are not
+set-valued GCTS markings. Dense rectangles have full physical tape width and
+blank side guards, with exact heights from the operational transition costs.
+Their huge dense area is not exported. Full compressed grammars, checkpoints
+and derived response artifacts are published for inspection.
+
+**Conformance:** this is an operational cluster compiler/verification adapter,
+not a new GCTS search lane. No candidate universe, scheduler, pruning,
+rollback, marking learner or RL proposal policy is changed. The literal point
+model and fixed inventory remain unchanged. Each instance is grounded in its
+actual context and layout. Parametric inference families, adaptable receptor
+layouts, direct fixed-core proof search and a net RL advantage remain open;
+the broad research goal stays active.
+
+The user's polyomino suggestion is now a separate research gate: compile the
+validity conditions into one uncolored, translation-only polyomino inventory
+and the encoded statement/acceptance boundary. The final checker must ignore
+learned GCTS search markings. Wang-to-polyomino reductions provide direct
+precedent: [Golomb (1970)](https://doi.org/10.1016/S0021-9800(70)80055-2),
+[Ollinger (2009)](https://doi.org/10.1007/978-3-642-00982-2_54), and
+[Yang and Zhang (2024)](https://arxiv.org/abs/2403.13472). These are
+computational/geometric expressivity results, not measurements of practical
+proof search. [HOList/DeepHOL (2019)](https://arxiv.org/abs/1904.03241) supplies
+precedent for RL-guided theorem proving on top of trusted logical checking.
+The particular polyomino/GCTS combination has no established advantage here.
+
+A forward encoding alone is insufficient. Prove reverse decoding for every
+allowed completed finite region, including macro alignment, intended input
+and acceptance framing, and exclusion or decoding of alternate decompositions.
+A variable-tile-set plane undecidability theorem does not by itself establish
+one fixed practical finite proof-certificate system. The input should change
+only the encoded region/boundary, with the base inventory fixed. Ranking by
+markings preserves complete primitive fallback under fair search. Proved
+redundant markings may prune; unproved hypotheses may restrict exploration,
+but failure remains unknown for the unmarked problem. A successful tiling
+that passes the unmarked verifier remains valid regardless of the search
+heuristic. No polyomino proof compiler has yet been implemented.
+
+```sh
+python3 research/gcts-rl-renewal/run_logical_wang_clusters.py
+python3 research/gcts-rl-renewal/audit_logical_wang_clusters.py
+python3 research/gcts-rl-renewal/export_logical_wang_clusters.py
+python3 research/gcts-rl-renewal/validate_logical_wang_clusters.py
+```
