@@ -5679,3 +5679,44 @@ python3 research/gcts-rl-renewal/validate_propositional_attention.py
 
 The live explanation is at
 [the distant inference view](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/propositional-receptors.html?v=20261010-pa1#attention-panel).
+
+
+Notebook 53 moves the request/defer decision before family matching. Eight
+features come directly from the complete original graph. A request enables the
+unchanged fixed member selector; no request can prune a base alternative or
+bypass global dead/forced propagation. A zero gate constructs no family index,
+and an always-on gate reproduces the earlier fixed controller's full trees.
+
+Three fresh donor searches produce 31 quantified families at two levels.
+Sixty-four sampled zero-start episodes use observed inclusive cold-solve time
+with a declared averaged score-gradient update. Eleven evaluation goals have
+five lanes and four rotating cold observations each: 220 solves. The trained
+gate defers everywhere, misses the two useful fixed-family cases, and has no
+demonstrated advantage over a zero gate. Comparing zero gate with eager zero
+isolates matching overhead on the same original placement trees. Saturation's
+single observations remain faster on every positive point case.
+
+The independent audit reconstructs 122 primary searches, 159464 original
+domain states, 818170 matching queries, 11822 request decisions and 1276 sampled
+draws; 15 corruptions reject. It checks all gate features/actions/gradients,
+conditional exact joins, original alternatives, hierarchy, scope and recorded
+clock/update algebra. Eleven complete trained-gate trees equal base after gate
+metadata is erased. Repeated timing summaries are digest-bound to primary
+traces; full repeat trees and clocks are not independently reproduced.
+
+The compact reader preserves positive-leaf decisions, original tiles, hints,
+complete demanded syntax tables, distinct queries with multiplicities, all
+numeric training events, and each cold observation. It independently counts
+original candidate domains before each displayed request. Both primitive
+kernels accept its 43 positive certificates, including duplicate lane proofs.
+No new literal Wang execution, learned failure marking or general speed claim
+is added. The wider program and useful conditional RL remain active.
+
+```sh
+python3 research/gcts-rl-renewal/run_proposal_gate.py
+python3 research/gcts-rl-renewal/audit_proposal_gate.py
+python3 research/gcts-rl-renewal/export_proposal_gate.py
+python3 research/gcts-rl-renewal/validate_proposal_gate.py
+```
+
+Read [the request-gate notebook](https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/proposal-gate.html?v=20261010-pg1#reader).
