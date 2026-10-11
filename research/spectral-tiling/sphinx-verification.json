@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-11",
+  "status": "passed",
+  "states": 22,
+  "forced_mates": 22,
+  "audited_contacts": 13310,
+  "legal_contacts": 136,
+  "verified_eigenfunction_cells": 180,
+  "checks": [
+    "Exact axial polygon area and six fundamental triangles; complementary half-turn pair fills parallelogram",
+    "Rational collar clearance inequalities and fixed state amplitude dictionaries",
+    "Every recorded mate and full legal table compared with independent color adjacency",
+    "Projection source hashes, finite coefficients, norm/error identities and two-mesh diagnostics",
+    "All 180 numerical field pixels and figure hashes; embedded viewer data and local links"
+  ],
+  "input_sha256": {
+    "sphinx-boundary-palette.json": "b3f89327503faccd77808c9be45f8b08c806f1a33958965aa52600ac66c69ab5",
+    "sphinx-modal-projection.json": "f5769dddbc46b579f473f33d7ec99c04633b981af900df0b0b2c25e939b286f9",
+    "sphinx-palette-viewer.js": "f37399dc1c384d440e335820a97b9732a2237e735fdcfb1cbd7484142e3c6878",
+    "sphinx-boundary-modes.html": "eaaa8f3112d1b94b65b7f87ac379fa7ccd22eb3136967deb3a2f29bca05779e6"
+  },
+  "limitations": "Finite encoding and numerical consistency checks. Infinite existence/aperiodicity use the Jeandel--Rao theorem. No computed finite-mode tolerance cutoff, exact finite-mode equality, continuum error-enclosure or sphinx-substitution enforcement certificate."
+}

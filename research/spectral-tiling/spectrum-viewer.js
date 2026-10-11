@@ -196,7 +196,8 @@
       const input = get('show-'+bc); input.disabled = !domain.spectra.some(s => s.bc === bc);
       input.checked = !input.disabled; input.parentElement.hidden = input.disabled;
     }
-    selectedBC = domain.spectra.some(s => s.bc === 'shortD') ? 'shortD' : 'D'; selectedIndex = 0; view = lowRange(); fillModes(); drawChart(); drawDetail();
+    selectedBC = domain.spectra.some(s => s.bc === 'shortD') ? 'shortD' : domain.spectra.some(s => s.bc === 'D') ? 'D' : domain.spectra[0].bc;
+    selectedIndex = 0; view = lowRange(); fillModes(); drawChart(); drawDetail();
   }
   for (const d of data.domains) get('spectrum-domain').add(new Option(d.label,d.id));
   get('spectrum-domain').value = 'sphinx';

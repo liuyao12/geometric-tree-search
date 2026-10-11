@@ -6,7 +6,31 @@ descriptions, boundary models, and connections with nonperiodic tilings.
 The earlier PDF and LaTeX files are archived snapshots; they are no longer
 updated alongside the webpage.
 
-The active scope is now exclusively the L-triomino. Its dedicated webpage is
+The current focus is sphinx boundary matching. The dedicated
+[sphinx Notes](../../docs/projects/sphinx-boundary-modes.html) give an explicit
+twenty-two-state palette of smooth homogeneous-Neumann fields on the exact
+sphinx. `sphinx_boundary_palette.py` verifies forced pairing into parallelograms
+and all 13,310 candidate contacts; the matching system is exactly Jeandel–Rao.
+The resulting decorated tilings are aperiodic; erasing the fields leaves
+periodic sphinx pairs. Triangular-lattice translations and six rotations are
+allowed, with reflections excluded and amplitudes fixed. Each field has an
+infinite Neumann expansion. `sphinx_modal_projection.py` retains 180 modes on
+two meshes, all state coefficients, truncation diagnostics and three numerical
+eigenfunction atlases. The page's field selector and spectrum viewer connect
+those coefficients to clickable numerical eigenfunctions. Finite projections
+disturb the exact matching traces and have no inherited tiling claim.
+Under a separate fixed \(L^2\) seam tolerance, the Notes prove that sufficiently
+large finite continuum eigenmode sums preserve the same contact table and
+force decorated aperiodicity. No numerical cutoff is certified, and this
+changed matching rule does not give continuous gluing.
+`build_sphinx_page.py` builds the page, and `verify_sphinx.py` independently checks
+geometry, the encoded adjacency, coefficients and images. Goodman–Strauss's
+sphinx-substitution system is a separate route using auxiliary edge/vertex
+pieces; its transfer to a verified finite boundary-only palette on exact
+sphinxes has not been completed here. This work is a specialized continuum
+construction and contact audit, not a GCTS search engine.
+
+The preceding L-triomino investigation is retained. Its dedicated webpage is
 [L-triomino boundary-mode Notes](../../docs/projects/l-triomino-boundary-modes.html).
 `l_boundary_palette.py` constructs twenty-two smooth Neumann field states on
 that shape, with exact unit-segment traces. An exhaustive contact audit checks
@@ -22,7 +46,7 @@ Neumann FEM modes on two meshes. Its finite projections disturb the exact
 traces and have no inherited tiling or aperiodicity claim. The construction,
 contact audit, projection coefficients and images are retained in the two
 `l-*.json` receipts. No search engine is modified. The broader datasets below
-are preceding work, not an expansion of the current L-only investigation.
+are preceding work.
 
 The computation estimates the first twelve Dirichlet modes of ten members of
 the Hat–Turtle family. Tiling labels come from the cited published family
@@ -49,6 +73,10 @@ python analyze_patterns.py
 python boundary_mode_palette.py
 python l_boundary_palette.py
 python l_modal_projection.py
+python sphinx_boundary_palette.py
+python sphinx_modal_projection.py
+python build_sphinx_page.py
+python verify_sphinx.py
 ```
 
 Run these commands from this directory. The original family and chair scripts
