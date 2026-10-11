@@ -90,7 +90,7 @@ def main():
     rows=''.join(r'<tr><td>\('+str(t['modes'])+r'\)</td><td>\('+f"{100*t['sampled_squared_mass_fraction']:.2f}"+r'\%\)</td><td>\('+f"{100*t['maximum_sampled_boundary_error_over_target_peak']:.2f}"+r'\%\)</td></tr>' for t in fine['truncations'])
     for key,value in [('NODES0',f"{projection['mesh_runs'][0]['diagnostics']['nodes']:,}"),('NODES1',f"{fine['diagnostics']['nodes']:,}"),('MOVEMENT',f"{100*projection['maximum_last_refinement_relative_eigenvalue_change']:.2f}"),('NUMERIC',rows)]:
         head=head.replace(key,value)
-    page=head+'\n<script id="chair-field-data" type="application/json">'+json.dumps(construction,separators=(',',':'))+'</script>\n<script type="module" src="../../research/spectral-tiling/chair-field-viewer.js?v=1"></script>\n</main></body></html>\n'
+    page=head+'\n<script id="chair-field-data" type="application/json">'+json.dumps(construction,separators=(',',':'))+'</script>\n<script type="module" src="../../research/spectral-tiling/chair-field-viewer.js?v=2"></script>\n</main></body></html>\n'
     path=DOCS/'chair-boundary-modes.html';path.write_text(page)
     print(json.dumps({'page':str(path.relative_to(ROOT.parents[1])),'bytes':len(page.encode()),'prototype_fields':1,'numerical_modes':60}))
 

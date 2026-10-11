@@ -72,7 +72,7 @@ function drawChart(){
   values.forEach((value,index)=>{
     if(value>maximum)return;const x=48+836*value/maximum;
     let lane=0;while(previous.some(p=>p.lane===lane&&Math.abs(p.x-x)<15))lane++;previous.push({x,lane});
-    const y=83-15*lane;svg.append(svgElement('line',{x1:x,y1:y,x2:x,y2:116,stroke:'#d6e0d8'}));
+    const y=83-15*lane;svg.append(svgElement('line',{x1:x,y1:y,x2:x,y2:116,stroke:'#d6e0d8','pointer-events':'none'}));
     const node=svgElement('circle',{cx:x,cy:y,r:index===selected?6:4.8,fill:index===selected?'#bf6544':'#426d63',role:'button',tabindex:0,'aria-label':'Neumann mode '+index,'aria-pressed':String(index===selected)});
     node.append(svgElement('title',{},'Neumann mode '+index+': '+value.toPrecision(8)));node.addEventListener('click',()=>select(index));node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(index);}});svg.append(node);
   });
