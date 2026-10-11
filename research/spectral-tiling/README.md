@@ -6,7 +6,27 @@ descriptions, boundary models, and connections with nonperiodic tilings.
 The earlier PDF and LaTeX files are archived snapshots; they are no longer
 updated alongside the webpage.
 
-The current focus is sphinx boundary matching. The dedicated
+The current focus is the seven-cube 3D chair. The dedicated
+[chair Notes](../../docs/projects/chair-boundary-modes.html) transfer the given
+Chair44 arrow rule to one prescribed scalar homogeneous-Neumann field.
+`chair_boundary_field.mjs` checks the polynomial trace encoding, all 864 facing
+panel cases and 3,000 relative tile placements, recovering the 44 legal face
+neighbors. Integer translations and all 24 proper cubic rotations are allowed;
+reflections and unrestricted placement registration are outside this result.
+The infinite existence and decorated aperiodicity conclusion uses
+Goodman–Strauss's cited Chair44 preprint theorem. No field-erasure theorem is
+claimed. The exact field is an infinite eigenmode expansion, with exactly zero
+constant coefficient. A separate seam-tolerance argument supplies a finite
+continuum cutoff in principle, without a computed or certified value.
+`chair_modal_projection.py` computes 60 modes on two nested P1 tetrahedral
+meshes and projects the sampled target. The low truncation captures little of
+the carrier and does not inherit its exact matching rule. The 3D viewer plots
+surface traces and shows coefficients on a proportional spectral axis.
+`build_chair_page.py` builds the webpage, and `verify_chair_field.py` independently
+checks geometry, contact equivalence, numerical controls and artifacts.
+No search engine or learned marking is modified.
+
+The preceding sphinx investigation is retained. The dedicated
 [sphinx Notes](../../docs/projects/sphinx-boundary-modes.html) give an explicit
 twenty-two-state palette of smooth homogeneous-Neumann fields on the exact
 sphinx. `sphinx_boundary_palette.py` verifies forced pairing into parallelograms
@@ -77,6 +97,10 @@ python sphinx_boundary_palette.py
 python sphinx_modal_projection.py
 python build_sphinx_page.py
 python verify_sphinx.py
+node chair_boundary_field.mjs
+python chair_modal_projection.py
+python build_chair_page.py
+python verify_chair_field.py
 ```
 
 Run these commands from this directory. The original family and chair scripts

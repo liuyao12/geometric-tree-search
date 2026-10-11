@@ -1,0 +1,1591 @@
+{
+  "date": "2026-10-11",
+  "status": "passed",
+  "script_sha256": "a5ab233bf8fdedd650086ab3b118212c8d6304d2da075b6acce90ab28a4d44f1",
+  "input_sha256": {
+    "../../3d-reptiles/chair/chair44.js": "cb9af792a16fcb50c64ef4012740a50e9c73c74fada961b0a0e96bb1a0d97366"
+  },
+  "source": "https://arxiv.org/html/2609.24779v1#S2",
+  "source_role": "Given Chair44 arrow rule and its infinite hierarchy/aperiodicity theorem; our scalar continuum transfer is independently checked.",
+  "geometry": {
+    "cells": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "volume": 7,
+    "panels": 24
+  },
+  "panels": [
+    {
+      "center": [
+        0.5,
+        0.5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "arrow": [
+        -1,
+        -1,
+        0
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        0,
+        1
+      ],
+      "cubic": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        0,
+        0.5
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "arrow": [
+        -1,
+        0,
+        -1
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        -1,
+        0
+      ],
+      "cubic": [
+        1,
+        0,
+        -1
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.5,
+        0.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        -1,
+        -1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        0.5,
+        2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "arrow": [
+        -1,
+        -1,
+        0
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        0,
+        1.5
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "arrow": [
+        -1,
+        0,
+        1
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        -1,
+        0
+      ],
+      "cubic": [
+        -1,
+        0,
+        -1
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.5,
+        1.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        -1,
+        1
+      ],
+      "color": "green",
+      "polar": [
+        1,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        1.5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "arrow": [
+        -1,
+        1,
+        0
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        0,
+        1
+      ],
+      "cubic": [
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        2,
+        0.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "arrow": [
+        -1,
+        0,
+        -1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        0,
+        1.5,
+        0.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        1,
+        -1
+      ],
+      "color": "red",
+      "polar": [
+        -1,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        1.5,
+        2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "arrow": [
+        -1,
+        1,
+        0
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        0,
+        -1
+      ],
+      "cubic": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.5,
+        2,
+        1.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "arrow": [
+        -1,
+        0,
+        1
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        1,
+        0
+      ],
+      "cubic": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "center": [
+        0,
+        1.5,
+        1.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        1,
+        1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        1,
+        1.5,
+        1.5
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        -1,
+        -1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        0.5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "arrow": [
+        1,
+        -1,
+        0
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        0,
+        -1
+      ],
+      "cubic": [
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        0,
+        0.5
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "arrow": [
+        1,
+        0,
+        -1
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        1,
+        0
+      ],
+      "cubic": [
+        -1,
+        0,
+        -1
+      ]
+    },
+    {
+      "center": [
+        2,
+        0.5,
+        0.5
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        -1,
+        -1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        0.5,
+        2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "arrow": [
+        1,
+        -1,
+        0
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        0,
+        1
+      ],
+      "cubic": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        0,
+        1.5
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "arrow": [
+        1,
+        0,
+        1
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        1,
+        1.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "arrow": [
+        -1,
+        0,
+        -1
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        -1,
+        0
+      ],
+      "cubic": [
+        1,
+        0,
+        -1
+      ]
+    },
+    {
+      "center": [
+        2,
+        0.5,
+        1.5
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        -1,
+        1
+      ],
+      "color": "green",
+      "polar": [
+        -1,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        1.5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "arrow": [
+        1,
+        1,
+        0
+      ],
+      "color": "blue",
+      "polar": [
+        0,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        1.5,
+        1
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "arrow": [
+        -1,
+        -1,
+        0
+      ],
+      "color": "red",
+      "polar": [
+        0,
+        0,
+        1
+      ],
+      "cubic": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "center": [
+        1.5,
+        2,
+        0.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "arrow": [
+        1,
+        0,
+        -1
+      ],
+      "color": "green",
+      "polar": [
+        0,
+        -1,
+        0
+      ],
+      "cubic": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "center": [
+        2,
+        1.5,
+        0.5
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "arrow": [
+        0,
+        1,
+        -1
+      ],
+      "color": "red",
+      "polar": [
+        1,
+        0,
+        0
+      ],
+      "cubic": [
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "model": {
+    "prototype_fields": 1,
+    "oriented_fields": 24,
+    "translations": "Z^3",
+    "rotations": [
+      [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ]
+    ],
+    "reflections": false,
+    "amplitude": "Fixed; no arbitrary mode coefficients or rescaling.",
+    "boundary_condition": "Homogeneous Neumann",
+    "modal_expansion": "Infinite"
+  },
+  "carrier_certificate": {
+    "tangential_radius": "1/4",
+    "normal_half_width": "1/4",
+    "support_ball_radius_squared": "1/8",
+    "minimum_distinct_centers_squared": "1/2",
+    "minimum_center_to_other_panel_squared": "1/4",
+    "normal_derivative": "Exactly zero by the even normal bump; all other terms vanish nearby."
+  },
+  "contact_audit": {
+    "facing_panel_cases": 864,
+    "tile_pair_cases": 3000,
+    "capacity_legal_face_pairs": 1194,
+    "legal_face_neighbors": 44,
+    "neighbors": [
+      {
+        "variantId": 0,
+        "origin": [
+          -1,
+          -1,
+          -1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 0,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 1,
+        "origin": [
+          0,
+          0,
+          -2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 1,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 2,
+        "origin": [
+          0,
+          -2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 2,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 3,
+        "origin": [
+          -2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 3,
+        "origin": [
+          -1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 3,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 3,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 4,
+        "origin": [
+          -2,
+          0,
+          0
+        ],
+        "contact_panels": 4
+      },
+      {
+        "variantId": 4,
+        "origin": [
+          1,
+          -1,
+          -1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 4,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 4,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 5,
+        "origin": [
+          0,
+          -2,
+          0
+        ],
+        "contact_panels": 4
+      },
+      {
+        "variantId": 5,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 6,
+        "origin": [
+          0,
+          0,
+          -2
+        ],
+        "contact_panels": 4
+      },
+      {
+        "variantId": 6,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 8,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 8,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 9,
+        "origin": [
+          -1,
+          1,
+          -1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 9,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 10,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 13,
+        "origin": [
+          0,
+          0,
+          -2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 13,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 13,
+        "origin": [
+          1,
+          1,
+          -1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 14,
+        "origin": [
+          0,
+          -2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 14,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 15,
+        "origin": [
+          -2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 15,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 15,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 17,
+        "origin": [
+          0,
+          0,
+          -2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 17,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 18,
+        "origin": [
+          0,
+          -2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 18,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 18,
+        "origin": [
+          1,
+          -1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 19,
+        "origin": [
+          -2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 19,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 19,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 20,
+        "origin": [
+          1,
+          1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 20,
+        "origin": [
+          2,
+          0,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 21,
+        "origin": [
+          0,
+          2,
+          0
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 22,
+        "origin": [
+          -1,
+          -1,
+          1
+        ],
+        "contact_panels": 3
+      },
+      {
+        "variantId": 22,
+        "origin": [
+          0,
+          0,
+          2
+        ],
+        "contact_panels": 3
+      }
+    ],
+    "proper_rotation_panel_checks": 576,
+    "maximum_rotation_trace_sample_error": 0,
+    "patches": [
+      {
+        "level": 0,
+        "tiles": 1,
+        "cubes": 7,
+        "shared_panels": 0
+      },
+      {
+        "level": 1,
+        "tiles": 8,
+        "cubes": 56,
+        "shared_panels": 48
+      },
+      {
+        "level": 2,
+        "tiles": 64,
+        "cubes": 448,
+        "shared_panels": 576
+      },
+      {
+        "level": 3,
+        "tiles": 512,
+        "cubes": 3584,
+        "shared_panels": 5376
+      }
+    ]
+  },
+  "analytic_facts": {
+    "constant_coefficient": 0,
+    "reason": "Every collar is symmetric tangentially, and its profile is odd under y -> -y.",
+    "finite_exact_representation": false,
+    "obstruction": "The nonzero field vanishes on an open interior set; a finite Laplacian eigenmode sum is analytic in the connected interior."
+  },
+  "limitations": "Infinite aperiodicity conclusion relies on the cited Chair44 theorem. No unrestricted placement-registration theorem, reflection transfer, exact finite-mode equality or certified numerical cutoff. Erasing fields is not claimed here to preserve aperiodicity."
+}
