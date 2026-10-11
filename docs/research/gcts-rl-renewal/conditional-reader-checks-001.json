@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "positive_cases": 3,
+  "positive_pairs": 442,
+  "positive_proofs": 29,
+  "corruptions": [
+    {
+      "name": "Unknown teacher relabeled negative",
+      "status": "rejected",
+      "reason": "pair status counts differ"
+    },
+    {
+      "name": "Omitted Cartesian pair",
+      "status": "rejected",
+      "reason": "pair status counts differ"
+    },
+    {
+      "name": "Changed earlier formula boundary",
+      "status": "rejected",
+      "reason": "catalog query omitted or altered"
+    },
+    {
+      "name": "Missing canonical word terminator",
+      "status": "rejected",
+      "reason": "writer word or terminator differs"
+    },
+    {
+      "name": "Wrong conditional value",
+      "status": "rejected",
+      "reason": "missing or changed conditional value"
+    },
+    {
+      "name": "Missing distant writer",
+      "status": "rejected",
+      "reason": "all-writer support differs"
+    },
+    {
+      "name": "Missing single joint writer point",
+      "status": "rejected",
+      "reason": "private point namespace differs"
+    },
+    {
+      "name": "False individually possible claim",
+      "status": "rejected",
+      "reason": "individual word labels differ from checked unary queries"
+    },
+    {
+      "name": "Wrong global native query",
+      "status": "rejected",
+      "reason": "proof has no accepted global native query"
+    },
+    {
+      "name": "Dropped selected input role",
+      "status": "rejected",
+      "reason": "incomplete proof rectangle"
+    },
+    {
+      "name": "Changed lemma attachment",
+      "status": "rejected",
+      "reason": "native query does not bind displayed proof"
+    },
+    {
+      "name": "Wrong selected marking value",
+      "status": "rejected",
+      "reason": "selected marking values disagree"
+    }
+  ],
+  "reader_sha256": "027d6266df320d87ca42d75df0765b452267d6afed184b0479d59eab519989cf",
+  "script_sha256": "1d7cf60c4912d3d44a8e33723aa2d8027a9af56a38b6bb9a56e5505d4220e448",
+  "unit_tests": 12,
+  "provenance_tests": 3,
+  "browser_pairs": 442,
+  "browser_proofs": 29,
+  "browser_summary": {
+    "mathErrors": 0,
+    "overflow": false,
+    "status": "Loaded: complete declared pair catalogs, exact conditional values, representative words and every displayed selected proof checked against the audited projection. Native computations were independently replayed outside the browser."
+  },
+  "unit_log_sha256": "36d45f8af1b0a5b01dbef939502854af7aa2b73e31890089485f4480f7ede8e1",
+  "provenance_log_sha256": "bbbb3e0108b97b93f5919706598d8bdbff4b3ce6aae04fde0dbf374b962a9996",
+  "test_source_sha256": "58e789e0f574285ccf123d7ae32c720ddd5526da88e6f4e73ed6404298d3c313"
+}

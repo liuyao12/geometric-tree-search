@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conditional attachment markings · GCTS research notebook 65</title>
+  <link rel="stylesheet" href="report.css?v=20261011-ca1">
+  <style>
+    .intro{margin-top:42px}h1{font-size:clamp(40px,5vw,64px)}.columns{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:26px}.columns>div{min-width:0}.diagram{background:#f1f4ec;border-radius:5px}.diagram svg{display:block;width:100%}.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin:14px 0}.legend span{border-left:7px solid;padding-left:7px}.left{border-color:#80569e}.right{border-color:#377fa0}.pair{border-color:#b34851}.notice{padding:15px;border-left:4px solid #b34851;background:#f7eae5;margin:18px 0}.notice.positive{border-color:#277452;background:#eaf2e8}.notice.unknown{border-color:#a57f2e;background:#f7f0db}.notice p{margin:5px 0}.statement{font-size:21px}.small,.scope-note{font-size:12px;line-height:1.7}.scroll-table{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:12px 9px;border-bottom:1px solid var(--line);text-align:left}th{font-size:11px;text-transform:uppercase;letter-spacing:.05em}details pre{max-height:450px;overflow:auto;font-size:11px;white-space:pre}.proof-line{display:grid;grid-template-columns:35px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.proof-line .line-number{font-size:12px;color:var(--muted)}.proof-line p{margin:5px 0}.proof-line .formula{font-size:21px}.proof-line .role-tiles{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.role-tile{width:43px;height:43px;display:flex;align-items:center;justify-content:center;border:3px solid;font:12px ui-monospace,monospace;background:#f1f4ec}.role-tile.command{border-color:#80569e}.role-tile.guard{border-color:#b98528}.role-tile.lemma_input,.role-tile.unused_input{border-color:#377fa0}.costs{background:#f1f4ec;padding:15px}.controls select{max-width:100%}#reader-status{font-size:13px}@media(max-width:850px){.columns{grid-template-columns:1fr}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="conditional-attachments.js?v=20261011-ca1"></script>
+</head>
+<body>
+<header class="masthead"><a href="./?v=20261011-ca1#conditional-attachments">GCTS + RL · Research notebook</a><span>NOTEBOOK 65 · CONDITIONAL FAILURES</span></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">TWO POSSIBLE ATTACHMENTS CAN BE IMPOSSIBLE TO COMBINE</p>
+    <h1>Learn which attachments<br>cannot coexist.</h1>
+    <p class="deck">An exhausted original search certifies a forbidden pair of formula words. Opposite values at a shared distant point encode that failure. Selecting one attachment removes the other through the ordinary GCTS graph.</p>
+    <p>The study compares original, unary, conditional and combined marking layers on the same finite proof declarations. A newly declared fork-and-join assertion requires two branches to reuse a premise. The existing semantic lemma families and frozen policy are disclosed reuse from Notebook 63; there is no new RL training.</p>
+    <p id="reader-status" role="status">Loading independently audited evidence…</p>
+  </section>
+  <section class="panel" id="markings">
+    <h2>A failure of the combination becomes a shared point.</h2>
+    <div class="controls"><label>Proof declaration<select id="case-control"></select></label><label>Pair to inspect<select id="probe-control"></select></label></div>
+    <div class="columns">
+      <div>
+        <div id="pair-formulas" class="statement"></div>
+        <div id="label-status" class="notice" aria-live="polite"></div>
+        <p>The teacher fixes both displayed formula words and tiles the original prefix ending at the later row. It retains the whole declaration's vocabulary and checked lemma inventory. Strictly earlier references ensure that any full proof containing this pair would restrict to that prefix.</p>
+        <p class="small">An individual positive means a completed prefix at that row, not extension to the final theorem. A forbidden pair concerns these exact row assignments and finite resources; the formulas need not be logically contradictory.</p>
+        <p>A negative supplies a private marking-only point. Every candidate writing the left word assigns <span>\(0\)</span>; every candidate writing the right word assigns <span>\(1\)</span>. Both values cannot agree at that point. Either value alone is compatible.</p>
+        <p class="small">Some single candidates write both words. They get a separate exclusion point with tile value <span>\(1\)</span> and fixed boundary value <span>\(0\)</span>, so no tile contains internally inconsistent marks. Positive and unknown pairs add no exclusion.</p>
+      </div>
+      <div>
+        <div class="legend"><span class="left">Left attachment</span><span class="right">Right attachment</span><span class="pair">Conditional marking point</span></div>
+        <div class="diagram"><svg id="marking-view" viewBox="0 0 820 460" role="img" aria-label="Actual alternative attachments with opposed values at a shared distant marking point"></svg></div>
+        <p class="scope-note">Squares are actual roles from the positional high-level inventory: command, rule guard or lemma input. Their orientation is fixed. Curves display distant assigned values; they add no geometric constraint. Coordinates are compressed. The native primitive Wang palette is unchanged.</p>
+      </div>
+    </div>
+    <details><summary>Exact point values, candidate identities and original word assignments</summary><pre id="exact-data"></pre></details>
+  </section>
+  <section class="panel" id="results">
+    <h2 id="result-heading">Compare the same search with four marking layers.</h2>
+    <div id="result-assessment"></div>
+    <div class="scroll-table"><table><thead><tr><th>Declaration</th><th>Ordering</th><th>Original</th><th>Unary</th><th>Conditional</th><th>Combined</th></tr></thead><tbody id="results-body"></tbody></table></div>
+    <p class="small">Entries count attempted base placements. Each lane is one observation with limits of <span>\(5000\)</span> placements and <span>\(30\)</span> seconds. Budget exhaustion means unknown. All original candidates, occupancy points, logical markings, fallback alternatives and scheduler rules remain present. The policy uses Notebook 63 weights; fixed ordering is its disclosed heuristic. These are warm paired observations, not a cold timing benchmark.</p>
+    <div id="root-diagnosis" class="costs"></div>
+    <details><summary>All search counters, checking costs and the separate SMT control</summary><pre id="all-results"></pre></details>
+  </section>
+  <section class="panel" id="reader">
+    <h2>Read the proof found by the selected search.</h2>
+    <p class="small">The colored squares show <code>C</code> commands, <code>G</code> rule guards and <code>I</code> premise fields. Unused fields are required filler tiles. Open a row's point data to inspect its exact values and distant references.</p>
+    <div class="controls"><label>Recorded search<select id="proof-control"></select></label></div>
+    <div id="proof-context"></div><div id="proof-lines"></div>
+    <p class="small">Each displayed row translates the actual selected command, guard and input tiles into a formula and an English inference. Lemma interfaces list their exact ordered hypotheses. All successful roots receive fresh whole native checking with the extra search markings erased; an independent interpreter reruns those computations from the true parser start. This page projects the audited data rather than executing the native checker in the browser.</p>
+    <p class="small">The search fills a fixed finite envelope, so a discovered certificate can contain repeated or unused lines. Minimal proof length is not claimed. A later comparison should vary the envelope as well as the ordering and marking layer.</p>
+    <p><a href="semantic-inventory.html?v=20261011-si1#reader">Earlier full native certificates and nested lemma definitions</a> · <a href="theorem-agenda.html?v=20261011-ta1#candidates">Planned arithmetic, Hilbert geometry and external benchmarks</a></p>
+  </section>
+  <section class="panel" id="costs">
+    <h2>Learning cost remains part of the result.</h2>
+    <div id="learning-costs"></div>
+    <p>Individual prefix searches provide the unary control and show which members of a forbidden pair are individually possible. Complete Cartesian catalogs are collected at two declared row pairs. This is not enumeration of every possible pair of rows. Every resolved result is retained; unknown teachers authorize no marking.</p>
+    <p>Any placement saving must be assessed against collection, admission, validation and propagation costs. Benefits from reusing a certified layer across searches are separate from creating it. This small study can motivate a larger benchmark; it cannot establish a general advantage over other proof search methods.</p>
+    <p>Learning forbidden combinations is established constraint-recording research, including <a href="https://cdn.aaai.org/AAAI/1986/AAAI86-029.pdf">Dechter's Learning While Searching in Constraint-Satisfaction-Problems</a>. The question here is whether encoding those constraints as point values, together with adaptable lemma clusters and a learned policy, is useful. A later comparison should include a direct nogood-learning control with the same learned constraints; this study does not demonstrate a new principle of constraint learning.</p>
+  </section>
+  <section class="panel" id="checks">
+    <h2>Independent evidence and reproducible artifacts</h2>
+    <p id="audit-summary"></p>
+    <p>Fifteen conformance, corruption and provenance tests include complete original/conditional and original/combined comparisons of <span>\(2592\)</span> tiny proof words; all <span>\(4\)</span> original regions survive. Tests cover unfinished teachers, truncated exhaustion, omitted pairs, altered earlier words, missing distant consumer marks, shared writers, value corruption, changed theories, exact marked-tree rollback and separately measured component records.</p>
+    <p>The independent audit rebuilds every teacher candidate, two-word boundary, causal lift and unary/conditional/combined overlay. It checks all visited frontier domains, global dead and forced decisions, earliest-generation branching, policy proposals, complete fallback and state restoration. The new assertion's native guard catalog and lemma admission are also fresh and independently replayed. The old fork and chain contexts retain their exactly pinned Notebook 63 admissions.</p>
+    <p>The reader controls were exercised for all <span>\(442\)</span> pairs and <span>\(29\)</span> checked proof projections. It rejects <span>\(12\)</span> corrupted projections, including missing word terminators, changed conditional values, missing distant writers, incorrect lemma attachments and wrong global native identifiers. <a href="conditional-reader-checks-001.json">Reader checks and source bindings</a>.</p>
+    <p>This is a finite unit-occupancy proof-strip specialization with root generation zero. It does not implement the Turtle pair-corona protocol or establish unrestricted first-order compiler completeness, Peano induction, full Hilbert geometry, fractional tiling, symmetry transfer or an infinite tiling.</p>
+    <div id="artifact-links"></div>
+    <p><a href="../../../research/gcts-rl-renewal/conditional_failure_markings.py">Conditional learner and point overlay</a> · <a href="../../../research/gcts-rl-renewal/audit_conditional_pilot.py">Independent paired/native audit</a> · <a href="../../../research/gcts-rl-renewal/test_conditional_failure_markings.py">Conformance tests</a> · <a href="../../../research/gcts-rl-renewal/CONDITIONAL_PILOT.md">Reproduction notes</a> · <a href="../../basic-tiling-algorithm.md">GCTS contract</a></p>
+    <p>The full research program remains active. The next step depends on the measured result: test generalization and total cost before claiming useful acceleration, then expose quantifier instantiation and equality substitution for external first-order targets.</p>
+  </section>
+</main>
+<footer><span>Certified conditional attachments · paired exploratory study</span><a href="./?v=20261011-ca1#goals">Research goals</a></footer>
+</body>
+</html>
