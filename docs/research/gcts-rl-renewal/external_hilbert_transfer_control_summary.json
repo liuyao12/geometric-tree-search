@@ -1,0 +1,120 @@
+{
+  "status": "passed_four_same_assertion_external_proofs",
+  "plan_sha256": "6e3ebac174539b9a97eb3218b4e31d1d3e945565e4e3fadd17a598344787f350",
+  "scope": "Two distinct exact assertions; short/sufficient row variants are the same theorem. Each input contains the original signature, guarded universally quantified I.2 and all three closed hypotheses, plus the unchanged conjecture. No theorem library or target proof path. E uses broader first-order inference/instantiation without a fixed row bound; external certificate checking is separate from native Wang acceptance, so no formal speed ratio.",
+  "proof_census": {
+    "lines": 158,
+    "boundaries": 0,
+    "focused_trees": 30,
+    "propositional_trees": 104
+  },
+  "corruptions": 198,
+  "costs": [
+    [
+      "Frozen source/input preparation",
+      0.155416583
+    ],
+    [
+      "Pre-E independent assertion/native-boundary gate",
+      4.556995208999999
+    ],
+    [
+      "Fresh checker fixture reruns",
+      0.01776054199999999
+    ],
+    [
+      "Repeated pre-run assertion/native-boundary gate within producer",
+      4.613917708000001
+    ],
+    [
+      "Four E binary search processes",
+      0.019091542000000006
+    ],
+    [
+      "Four complete-check workers including startup/serialization",
+      18.079063376
+    ],
+    [
+      "Four serialized full-replay workers",
+      1.057578290999997
+    ],
+    [
+      "Whole capped producer (contains the preceding components)",
+      25.776051583
+    ],
+    [
+      "Independent post-result full replay/source/input audit",
+      5.135322208
+    ],
+    [
+      "Actual-certificate corruption audit",
+      2.231130417
+    ],
+    [
+      "Additional fresh-directory reproduction producer",
+      25.587845291999997
+    ],
+    [
+      "Additional reproduction full replay audit",
+      5.248530083000002
+    ],
+    [
+      "Additional reproduction corruption audit",
+      2.1940247920000004
+    ]
+  ],
+  "preparation_seconds": 0.155416583,
+  "producer_seconds": 25.776051583,
+  "audit_seconds": 5.135322208,
+  "mutation_seconds": 2.231130417,
+  "inputs": 2,
+  "input_entries": [
+    5,
+    5
+  ],
+  "lemma_inputs": 0,
+  "unknowns": 0,
+  "unexecuted": [],
+  "observations": [
+    {
+      "kind": "delayed-common",
+      "repetition": 1,
+      "lines": 38,
+      "e_seconds": 0.005715208000000003,
+      "check_seconds": 4.546524917000001,
+      "replay_seconds": 0.2569899170000003,
+      "output_sha256": "eecd0ce3cbe01cdb20c1f789ee2f46b85d426862b1b1bda9baa06bac1fef7779",
+      "certificate_status": "checked_complete_derivation"
+    },
+    {
+      "kind": "coupled-reverse",
+      "repetition": 1,
+      "lines": 41,
+      "e_seconds": 0.004063750000000001,
+      "check_seconds": 4.434157625000001,
+      "replay_seconds": 0.26413091599999916,
+      "output_sha256": "705d666350a0a514f9e98e26cd78ddc5f2f4b67d2faa519f9bfd9f456c264ef0",
+      "certificate_status": "checked_complete_derivation"
+    },
+    {
+      "kind": "delayed-common",
+      "repetition": 2,
+      "lines": 38,
+      "e_seconds": 0.004405042000000001,
+      "check_seconds": 4.620551917,
+      "replay_seconds": 0.2636819999999993,
+      "output_sha256": "6d1e1c43cfc47585404e10b27731832ca01c11f4c680bccaffd0ea105a976a79",
+      "certificate_status": "checked_complete_derivation"
+    },
+    {
+      "kind": "coupled-reverse",
+      "repetition": 2,
+      "lines": 41,
+      "e_seconds": 0.004907542000000001,
+      "check_seconds": 4.477828917,
+      "replay_seconds": 0.27277545799999814,
+      "output_sha256": "2188bf01277c507a32feb265cfa523e1b79fdf6fb6df0716609c794400fcfff2",
+      "certificate_status": "checked_complete_derivation"
+    }
+  ]
+}

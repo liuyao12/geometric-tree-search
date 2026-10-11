@@ -1,0 +1,15 @@
+{
+  "status": "passed_complete_exact94_native_admission_registry",
+  "definitions": 94,
+  "fresh_native_admissions": 93,
+  "historical_exact_request_reuses": 1,
+  "fresh_micro_steps": 122220025159,
+  "independent_fresh_replay_micro_steps": 122220025159,
+  "target_searches": 0,
+  "commutativity_proof_discovered": false,
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "registry_sha256": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+  "seconds": 0.342360667,
+  "scope": "Complete finite localinterface inventory only. Every exactdefinition/theory/premise/whole request and fresh/prioraccepted native binding reconciled independently; all actual native tapes preservedandhashmatched. No targetproofsequence/search, fullPA completeness, combinedwholecertificate acceptance or RL claim."
+}

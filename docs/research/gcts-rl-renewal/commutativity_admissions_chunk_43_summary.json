@@ -1,0 +1,448 @@
+{
+  "status": "complete_accepted_chunk_pending_independent_replay",
+  "chunk": "chunk-43",
+  "native_queries": 43,
+  "target_searches": 0,
+  "observations": [
+    {
+      "query": 0,
+      "definition_name": "commutativityReceptor01086f44f4a81ab925edc9f8ab3ec05cccdc6b39d6c5283500fd35bd861f1a59",
+      "request_sha256": "86acfefb9c5e272c7f87a860a5294d41e7b1c465aa89fdc6d438536ce9187d2b",
+      "native_status": "accepted",
+      "native_seconds": 1.067982125,
+      "micro_steps": 146280562,
+      "physical_steps": 2073152445922,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 1,
+      "definition_name": "commutativityReceptor09f28498aec66ef1ae55f73f5ff57ec614c3d2700f184c47f7c3c37db78142e7",
+      "request_sha256": "98468eea2a769e6b920d1f19fae84bf6bd9b434ae301fe366be361a81fbda05a",
+      "native_status": "accepted",
+      "native_seconds": 19.192059459,
+      "micro_steps": 2676582048,
+      "physical_steps": 38615199445084,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 2,
+      "definition_name": "commutativityReceptor0a2b9b49efc9438f779756588f9b966986a0b47d893bb59a61fbfefb91dbb0bd",
+      "request_sha256": "0ec2e28bd4ccbb1aa7b10cd365b95386e82caa24a600d73ceb1b8653e83d6722",
+      "native_status": "accepted",
+      "native_seconds": 3.222364416999998,
+      "micro_steps": 428022369,
+      "physical_steps": 6146337565744,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 3,
+      "definition_name": "commutativityReceptor0ae6f8828757b18488fd7c5cdc21a6a8a9693a31b62f17e87806d880aed86ef2",
+      "request_sha256": "3e8c46c7a3010f15ee0e8443068dd6a6d6692fb435300eb95ae93dc0810fadbd",
+      "native_status": "accepted",
+      "native_seconds": 6.106957250000001,
+      "micro_steps": 836255741,
+      "physical_steps": 12456114426608,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 4,
+      "definition_name": "commutativityReceptor0e9d7c1ece36bd71136d58962c570f965fb83ac549fec075fb28270250dfa54b",
+      "request_sha256": "38c7e915afaf38edb449123965daaa59270331bc72325c462e281ab381ed9df2",
+      "native_status": "accepted",
+      "native_seconds": 6.022674166000002,
+      "micro_steps": 827878516,
+      "physical_steps": 12322050443296,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 5,
+      "definition_name": "commutativityReceptor107fe764e3d76567bc61e24bd3d8cfeeddf835c03681882e9a2d6d186cf4b5c0",
+      "request_sha256": "c52f7ae3cfe09f23f3346feb4983608255275cb921535aac7aa2b68c5f626ce6",
+      "native_status": "accepted",
+      "native_seconds": 5.894300250000001,
+      "micro_steps": 812430583,
+      "physical_steps": 11910086118978,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 6,
+      "definition_name": "commutativityReceptor15e46b3f16b6e8eb3a61cc154093be115a9547e81d922be38a3d80c4848520df",
+      "request_sha256": "d730d80ef4ea0998bdaf06158ddd6e8eb947b0ff20331616f6db07eb2a4f15b3",
+      "native_status": "accepted",
+      "native_seconds": 3.6214263749999986,
+      "micro_steps": 499846329,
+      "physical_steps": 6853363979476,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 7,
+      "definition_name": "commutativityReceptor166946605227867b9fba77ba1da2d1796448ed9ecb8105c2dc4ecda20a4dec77",
+      "request_sha256": "fa4c958c564bb5712c9b0b84e58e9741b8312c51e4d08a040f0ee786acfee2f7",
+      "native_status": "accepted",
+      "native_seconds": 5.631854208,
+      "micro_steps": 775633343,
+      "physical_steps": 11096084897788,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 8,
+      "definition_name": "commutativityReceptor173447656a69ad2f95c77fae239c7e4899623bdc462dc817b4d6a326122374ae",
+      "request_sha256": "802d92a82b785af3ba0ffca993bec1feb9bb5c057b8a829e9ab230a9f4a37a75",
+      "native_status": "accepted",
+      "native_seconds": 2.4078336669999985,
+      "micro_steps": 326445828,
+      "physical_steps": 4562548438018,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 9,
+      "definition_name": "commutativityReceptor1779016fa859d343f8b0d845252c57c47a069f608a5b0bf5bda0f0d65465b115",
+      "request_sha256": "37c04b218ca4d07e1d3299b7fdf133fc2f344b11f67cdfa19aa7802b91414411",
+      "native_status": "accepted",
+      "native_seconds": 5.343711874999997,
+      "micro_steps": 731920039,
+      "physical_steps": 10875455588990,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 10,
+      "definition_name": "commutativityReceptor2141972a28e3b9c464db197c5b9407bc3cf1baf03a2678379dfc68cdef05d078",
+      "request_sha256": "b9986ebe0525dce1630317c3017e605b8abb46cc2dddc1b48a9484efce9ca694",
+      "native_status": "accepted",
+      "native_seconds": 3.4892387499999913,
+      "micro_steps": 481287351,
+      "physical_steps": 6720363614894,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 11,
+      "definition_name": "commutativityReceptor220168d6fd86b787ae30f254cd8b482fc4f456de89968a2fcdd2cab621f01ca0",
+      "request_sha256": "c692e98d13da86dbcd8e0f4e765d64899521ebab30c282e03a835b645e546950",
+      "native_status": "accepted",
+      "native_seconds": 6.072684124999995,
+      "micro_steps": 842016435,
+      "physical_steps": 12626128920284,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 12,
+      "definition_name": "commutativityReceptor2232f604a938753ef5fde4950c6c2f65d4d4ef887301dcb7fdb7f371b36d909a",
+      "request_sha256": "8feda456392abca9e04de0318814e25a4ac48026c2f7826e344366428d6a4283",
+      "native_status": "accepted",
+      "native_seconds": 5.668007583999994,
+      "micro_steps": 801399019,
+      "physical_steps": 11634874892882,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 13,
+      "definition_name": "commutativityReceptor2745d77554941659a1cc2038b41958dad2f417d4649f5c1ee674661293505b84",
+      "request_sha256": "cdf4f41052fc0a3b5e28c803861b1fdc57333f79d8ba7f6414e074dd6884eb45",
+      "native_status": "accepted",
+      "native_seconds": 4.285812457999995,
+      "micro_steps": 605499660,
+      "physical_steps": 8146224813930,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 14,
+      "definition_name": "commutativityReceptor28f74e6ac7c426456dbc1d70831fc382f0a009b42bfd3e34fe5a38e4fa7d30cd",
+      "request_sha256": "d091b9a27f16a57f66ad5ac2a5c1652afe2e5b6c198c5dc104cf8fb6bb07f2d1",
+      "native_status": "accepted",
+      "native_seconds": 18.94609754199999,
+      "micro_steps": 2650335624,
+      "physical_steps": 40421021641848,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 15,
+      "definition_name": "commutativityReceptor2c4dd007e0b7f0ca2f7150ba628474f81f1f7638d2412988d939c09612943060",
+      "request_sha256": "beb80c9ed2a938bbc6d806af2c6eb1344d633caa985e3088b71ba7482c5811d7",
+      "native_status": "accepted",
+      "native_seconds": 21.110053167000004,
+      "micro_steps": 2952102315,
+      "physical_steps": 46104585028152,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 16,
+      "definition_name": "commutativityReceptor2f4792cae68eb2dcdaf3081a3577659ac983b5e953eb84cb46bdbe0eb7321b42",
+      "request_sha256": "67b761abfe0063b3091c7226261da6401cf16f7ec9a721e8ebb7513a70ef6c4b",
+      "native_status": "accepted",
+      "native_seconds": 6.128125999999995,
+      "micro_steps": 870534886,
+      "physical_steps": 12781109129840,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 17,
+      "definition_name": "commutativityReceptor333a02db9c68628b950d5d64d38c0e1592be416da3fd94dc8664ad851a95b082",
+      "request_sha256": "f708548b8fd7b8385f0b1b5dcbadcf4e0c6e39ab07dd028597bcb871564b54c8",
+      "native_status": "accepted",
+      "native_seconds": 3.5748735829999987,
+      "micro_steps": 506721696,
+      "physical_steps": 7238415776204,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 18,
+      "definition_name": "commutativityReceptor33ae83de48baa4adcc113672fa07796a350ddd04f8f3f5e7db8d3761e0640f82",
+      "request_sha256": "cefc3b1e9bf96d49043adbe7662e5c04d667620fa4589c2e41238afb3ebe7cdc",
+      "native_status": "accepted",
+      "native_seconds": 4.980690041000003,
+      "micro_steps": 694058446,
+      "physical_steps": 10479237827854,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 19,
+      "definition_name": "commutativityReceptor35523252475816bef34c0a130689f59c43b576feaf46cda0e2cc88c012ae71f3",
+      "request_sha256": "3afff732c20f2185dc0ad2f3038341a8f3282b85f43dab98af224954970b8bff",
+      "native_status": "accepted",
+      "native_seconds": 4.637388041999998,
+      "micro_steps": 642686570,
+      "physical_steps": 9294308219974,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 20,
+      "definition_name": "commutativityReceptor36b70c309562b6bdb42e3c0289945168f68d904c124544ad2414358641082a90",
+      "request_sha256": "09c38d709845575276ddd0186908d070f4ffa49f80ddfc465c70299d9f20139a",
+      "native_status": "accepted",
+      "native_seconds": 20.531453666999994,
+      "micro_steps": 2818530261,
+      "physical_steps": 42582072685054,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 21,
+      "definition_name": "commutativityReceptor3b7316d65dd305028c67638b90f9b65b6c58fd188db5d34e3554d05991885643",
+      "request_sha256": "95cfddd5e725c7789635b7f60ea5b99242d87d1bb62e6368cefd0afa3cd7de36",
+      "native_status": "accepted",
+      "native_seconds": 7.549515833000015,
+      "micro_steps": 977085399,
+      "physical_steps": 14945810066330,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 22,
+      "definition_name": "commutativityReceptor3d785d74a14d04703e5c3fa926dcb5b36e7b71f3b3366dd5a65bb432f02aed01",
+      "request_sha256": "61d4d82056a70ab72a35e6e348e09ed2a1f9a6b5ff2b34a4b61c4a4b55b4685a",
+      "native_status": "accepted",
+      "native_seconds": 1.4938047500000096,
+      "micro_steps": 203176546,
+      "physical_steps": 2738755780206,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 23,
+      "definition_name": "commutativityReceptor3ec32710bfaf6b6088a60cb3de8c811ad0d31b40e27f70c2205b9e517d1f044b",
+      "request_sha256": "15d77b4792c6c2a05e40612844c938d88b85f1a0d55ef3a0bb81550bbcd52aa1",
+      "native_status": "accepted",
+      "native_seconds": 3.898504874999986,
+      "micro_steps": 540490188,
+      "physical_steps": 7402905993704,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 24,
+      "definition_name": "commutativityReceptor427fac7d4b56f66e1c2ae14940bceb9ca2547ebade6ef0715680b06ca5e143eb",
+      "request_sha256": "c8eccdd0b831fe0f41a85b035508b6b5db92c6245520b5ff634c0214d22fb831",
+      "native_status": "accepted",
+      "native_seconds": 3.974910625000007,
+      "micro_steps": 547864566,
+      "physical_steps": 7933918356666,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 25,
+      "definition_name": "commutativityReceptor47f3bd09c782b4425e784002bbb5a8d0b6945e0ddf6f61f723b1aff496c744b8",
+      "request_sha256": "7285c605e75a17daa5f705f5cdd7e055ae5b1a44a50ffa6453a295f0ba6066ea",
+      "native_status": "accepted",
+      "native_seconds": 5.3631047920000015,
+      "micro_steps": 744374079,
+      "physical_steps": 11208230006034,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 26,
+      "definition_name": "commutativityReceptor4e8197be504aed4285e69df406215dbb2e8d1f5da34c6e2643d021cefbeaa739",
+      "request_sha256": "4b95e23bbecbfc97259d0b7adc636b5a30006952efb3266bf8b2fa9362b63da4",
+      "native_status": "accepted",
+      "native_seconds": 4.555335415999991,
+      "micro_steps": 630295264,
+      "physical_steps": 8933743785768,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 27,
+      "definition_name": "commutativityReceptor4ecfa514e9084586a34105ab1acda34eaef551e638098b63e6e56a3be097d173",
+      "request_sha256": "4cf4a1365db1ddacca1f62c9dc141671d18a3d4edbc9760fa4bc0fec0ad992ec",
+      "native_status": "accepted",
+      "native_seconds": 4.890171500000008,
+      "micro_steps": 687341955,
+      "physical_steps": 10283954999492,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 28,
+      "definition_name": "commutativityReceptor508e42b458155bd005ee0f47435b057d7923337e9ba925299cd3587c0ddecc98",
+      "request_sha256": "3ce0d22b677293ca3dfda7462645c77ad0bf437e795ce6a78b0b0d5af061fc4d",
+      "native_status": "accepted",
+      "native_seconds": 3.7088469999999916,
+      "micro_steps": 526445936,
+      "physical_steps": 7399197762332,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 29,
+      "definition_name": "commutativityReceptor5886ce7fe062d802360d0d43cd4efb0f63750ef0b558113f319dc337336d5b99",
+      "request_sha256": "8c7e9ec3eeca9f1847eff883344e8e50540d8bf0d4a995931ec7e984adfc1ec6",
+      "native_status": "accepted",
+      "native_seconds": 4.480285209000016,
+      "micro_steps": 626037068,
+      "physical_steps": 9323345041176,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 30,
+      "definition_name": "commutativityReceptor5a7b0eadd6036bb488232bc25d6cb5495895b7325d3756ba39226c2f83b6daf6",
+      "request_sha256": "d27294db6b43a15af2655d28d7dfad6474fc0b517d3d42938842ee98386a312a",
+      "native_status": "accepted",
+      "native_seconds": 5.784529584000012,
+      "micro_steps": 803436912,
+      "physical_steps": 11825856432150,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 31,
+      "definition_name": "commutativityReceptor5ba648a57ad0f0e924342b5593dd8e5376eba5b295e7a71bbada4c1d47ff0c2e",
+      "request_sha256": "e925c8bf4db3a9b14f800574e2b3c0e2356d288bd12f227dc5cd339b6cdc9dea",
+      "native_status": "accepted",
+      "native_seconds": 18.100654375000005,
+      "micro_steps": 2497183750,
+      "physical_steps": 35577424040240,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 32,
+      "definition_name": "commutativityReceptor5c0efbdfdb406b127eb4e6dcaef4adf597e0b5d8829636610c4b9bbc41d13701",
+      "request_sha256": "6c3029718bbfef1fc6c0d30dbea7d681fb64519643bdd8e40c32fd6452ebb80e",
+      "native_status": "accepted",
+      "native_seconds": 6.079564583999996,
+      "micro_steps": 846256808,
+      "physical_steps": 12336974030054,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 33,
+      "definition_name": "commutativityReceptor5cd0405819252029260ee04a3b9fc8bc98487bf0a2e58daebdd3866ba0d96e93",
+      "request_sha256": "d8db4bf067cbb5996d3dd7fa936afd0981322869b4c2d5214c66609e022e5dc1",
+      "native_status": "accepted",
+      "native_seconds": 21.262275708000004,
+      "micro_steps": 2947143461,
+      "physical_steps": 46063736600282,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 34,
+      "definition_name": "commutativityReceptor5e14de35ef35ea4d9012302733ca8656ac1063db0738bcd92003128fbe4c5e0f",
+      "request_sha256": "d73be846abfa658e4868066626aca84bdb88dd964a5614091762af797d3d5bcb",
+      "native_status": "accepted",
+      "native_seconds": 20.918132583000016,
+      "micro_steps": 2836977671,
+      "physical_steps": 40087324220366,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 35,
+      "definition_name": "commutativityReceptor649f384fb312ec8620d2bed35ad21fe92c5dcf7094ce5893bc4a835fe122af26",
+      "request_sha256": "ae9e1df6f2271f34ef54f7b1eb697ef9fd9de8323b1bcd1a458c2925daff41a8",
+      "native_status": "accepted",
+      "native_seconds": 6.957031874999984,
+      "micro_steps": 953747168,
+      "physical_steps": 14533985841436,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 36,
+      "definition_name": "commutativityReceptor6566f67c5fb10a53487f1a3381549bd84fa794aa6ee795192150c28829151a71",
+      "request_sha256": "e9439c9297b413248feec5552502a1645604df5772ac2750dc97275fb4011889",
+      "native_status": "accepted",
+      "native_seconds": 17.675594042,
+      "micro_steps": 2427663237,
+      "physical_steps": 34377949290910,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 37,
+      "definition_name": "commutativityReceptor65bac46fe2d20ecb8861bc9017732237470e5de14481ae75549c0315f5183063",
+      "request_sha256": "0306d6255b7ba437b4dbd7bd6cf592f9c2942d1972873fd0ef74630dcb63daeb",
+      "native_status": "accepted",
+      "native_seconds": 5.697028375000002,
+      "micro_steps": 782257813,
+      "physical_steps": 11637359182958,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 38,
+      "definition_name": "commutativityReceptor6622260341cb5dd087cd92b533a8c3c5e5a1a418d7e8a9ca8a60184c4fd93eb4",
+      "request_sha256": "01a4b714f3f7fdd311d4276d7165f7339587f85abefd024a22bccf08a6a771cc",
+      "native_status": "accepted",
+      "native_seconds": 3.9941359580000153,
+      "micro_steps": 549959858,
+      "physical_steps": 8000223726092,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 39,
+      "definition_name": "commutativityReceptor665f8a15b164ea4ea37da6b00dffdc3879e0005bceda30876f3236f65feab49b",
+      "request_sha256": "45a491d7020e6b9aefb51469346d70339cba8c41c1972bd950d2de88d0dfec5b",
+      "native_status": "accepted",
+      "native_seconds": 4.302186167000002,
+      "micro_steps": 561335229,
+      "physical_steps": 7920422814238,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 40,
+      "definition_name": "commutativityReceptor681730a3cecc18157c652e622ae751b1912bd2837f012a578077f33c723a57dd",
+      "request_sha256": "c30e0c29e338cd66f27f6c058f1ad16dde4ed3b0c2d1bb32c317d0455fb39301",
+      "native_status": "accepted",
+      "native_seconds": 8.18406695799996,
+      "micro_steps": 1001953714,
+      "physical_steps": 15192559470092,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 41,
+      "definition_name": "commutativityReceptor6aee6eaeaf757a72abc428bd076920a73f30def93f36f259ce7315b9b8ad8f4c",
+      "request_sha256": "6143cfa6f5654401d7bf05e0db4129f5dd2e3e601f248b722a0eb4acfa2b63a5",
+      "native_status": "accepted",
+      "native_seconds": 3.8119701670000268,
+      "micro_steps": 522356202,
+      "physical_steps": 7424629292760,
+      "one_query_overshoot_seconds": 0
+    },
+    {
+      "query": 42,
+      "definition_name": "commutativityReceptor6be8289470eba6b3a9197a9a460433b4d5058c77066fb17cc6c9008b27579a30",
+      "request_sha256": "9c93b8e465455ebd6d9ae4fc6c910385efe78ac3ebfc7b44b31fd48da3a84517",
+      "native_status": "accepted",
+      "native_seconds": 6.057652209000025,
+      "micro_steps": 828161055,
+      "physical_steps": 12354396884596,
+      "one_query_overshoot_seconds": 0
+    }
+  ],
+  "compile_and_oracle_setup_seconds": 2.5957874999999997,
+  "seconds": 333.61182754199996,
+  "cumulative_production_seconds": 333.61182758399997,
+  "peak_rss_bytes": 274563072,
+  "accepted_queries": 43,
+  "unknown_queries": 0,
+  "rejected_queries": 0,
+  "unexecuted_queries": 0,
+  "total_micro_steps": 44968011500,
+  "scope": "Only frozen remaining85localadmissions. Shared900s cumulativeproduction across43+42 excludes separately accounted independentreplay. No targetproof/search. Chunk42 requires completeaccepted/replayed43; all unresolved requests remain unadmitted."
+}

@@ -1,0 +1,82 @@
+{
+  "status": "passed_complete_result_source_input_replay_audit",
+  "binding": {
+    "status": "passed_exact_two_assertion_input_native_binding",
+    "seconds": 4.383765459,
+    "plan_sha256": "6e3ebac174539b9a97eb3218b4e31d1d3e945565e4e3fadd17a598344787f350",
+    "native_audit_sha256": "f87d64db2e695654e1686c893ae65dc77bbb2483e7674d5fd7dee7a11c81b944",
+    "native_bindings": [
+      {
+        "group": "delayed-common",
+        "query": 61,
+        "request_sha256": "2209f670d94c9791936a76b4f01a462ae4878b476365919a61d8c3f7738ffbdb",
+        "input_sha256": "f864fea452f44b770da3031fc2fd8633eebb564804183896b5e05d4e47e20908",
+        "output_sha256": "d5c58d9c57c65cd639bd9d11da66e6346679cf985aaa151026ef8bfaf7ec9add",
+        "micro_steps": 4336652516,
+        "native_seconds": 31.66184129200002
+      },
+      {
+        "group": "delayed-common",
+        "query": 62,
+        "request_sha256": "4412556500dd67e7935c3b620be8fab208f9330897a5a08ab0c8e8971af1c272",
+        "input_sha256": "0eaf08940f2dbb8e32888da3a2e2a2e79900324e82476a88ffc0533ad213a50f",
+        "output_sha256": "4ff3c2b0c30478cfea3768c131431b7cb02740844dfa01145d58f1ee6b74f70f",
+        "micro_steps": 4963189546,
+        "native_seconds": 35.898439499999995
+      },
+      {
+        "group": "coupled-reverse",
+        "query": 63,
+        "request_sha256": "add4f941ad10afecfc84963c100ca18b6f71d544e4115f2b79b9a481f9f614a2",
+        "input_sha256": "2ede1ab7936cc5609680cf73997c01645094ca397aa859f1a63e03e169b69433",
+        "output_sha256": "03ea2699748faaf537b45e66512c46a94b8d6a0cdfa9716fd551a69dbe77b50a",
+        "micro_steps": 5267477896,
+        "native_seconds": 38.17298179099993
+      }
+    ],
+    "source_paths": 106,
+    "data_paths": 238,
+    "inputs": 2,
+    "input_entries": [
+      5,
+      5
+    ],
+    "lemma_inputs": 0,
+    "native_execution_rerun": false
+  },
+  "producer_status": "complete_four_checked_targets_pending_final_audit",
+  "checked_replays": [
+    {
+      "kind": "delayed-common",
+      "repetition": 1,
+      "steps": 38,
+      "output_sha256": "eecd0ce3cbe01cdb20c1f789ee2f46b85d426862b1b1bda9baa06bac1fef7779",
+      "used_lemma_inputs": []
+    },
+    {
+      "kind": "coupled-reverse",
+      "repetition": 1,
+      "steps": 41,
+      "output_sha256": "705d666350a0a514f9e98e26cd78ddc5f2f4b67d2faa519f9bfd9f456c264ef0",
+      "used_lemma_inputs": []
+    },
+    {
+      "kind": "delayed-common",
+      "repetition": 2,
+      "steps": 38,
+      "output_sha256": "6d1e1c43cfc47585404e10b27731832ca01c11f4c680bccaffd0ea105a976a79",
+      "used_lemma_inputs": []
+    },
+    {
+      "kind": "coupled-reverse",
+      "repetition": 2,
+      "steps": 41,
+      "output_sha256": "2188bf01277c507a32feb265cfa523e1b79fdf6fb6df0716609c794400fcfff2",
+      "used_lemma_inputs": []
+    }
+  ],
+  "unknowns": [],
+  "unexecuted": [],
+  "seconds": 5.135322208,
+  "scope": "Every actual returned line independently replayed under the unchanged external first-order adapter. Same native assertions/resources are provenance; no native Wang or GCTS acceptance claim for E outputs."
+}

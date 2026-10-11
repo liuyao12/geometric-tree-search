@@ -1,0 +1,1006 @@
+{
+  "status": "passed_actual_certificate_corruption_audit",
+  "proof_census": {
+    "lines": 158,
+    "boundaries": 0,
+    "focused_trees": 30,
+    "propositional_trees": 104
+  },
+  "corruptions": [
+    {
+      "name": "hilbert-delayed-common-r1:c_0_5:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_6:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_7:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_8:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_8:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_9:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_10:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_11:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_12:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_14:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_14:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_15:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_16:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_17:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_18:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_19:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_20:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_21:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_22:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_22:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_23:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_24:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_25:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_25:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_26:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_27:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_28:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_29:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_30:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_30:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_31:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_32:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_33:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_34:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_35:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_35:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_35:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_36:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_37:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:c_0_37:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:missing final parent bindings",
+      "status": "rejected",
+      "reason": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:wrong original input path",
+      "status": "rejected",
+      "reason": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "hilbert-delayed-common-r1:altered supplied axiom",
+      "status": "rejected",
+      "reason": "ValueError('original input formula/role mismatch')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_5:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_6:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_7:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_8:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_8:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_9:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_10:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_11:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_12:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_14:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_14:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_15:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_16:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_17:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_18:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_19:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_20:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_21:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_22:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_23:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_23:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_24:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_25:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_26:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_26:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_27:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_28:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_29:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_30:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_31:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_32:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_32:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_32:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_33:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_34:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_35:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_36:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_37:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_38:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_38:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_38:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_39:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_39:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_40:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:c_0_40:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:missing final parent bindings",
+      "status": "rejected",
+      "reason": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:wrong original input path",
+      "status": "rejected",
+      "reason": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r1:altered supplied axiom",
+      "status": "rejected",
+      "reason": "ValueError('original input formula/role mismatch')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_5:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_6:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_7:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_8:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_8:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_9:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_10:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_11:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_12:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_14:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_14:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_15:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_16:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_17:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_18:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_19:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_20:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_21:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_22:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_22:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_23:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_24:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_25:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_25:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_26:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_27:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_28:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_29:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_30:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_30:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_31:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_32:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_33:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_34:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_35:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_35:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_35:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_36:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_37:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:c_0_37:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:missing final parent bindings",
+      "status": "rejected",
+      "reason": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:wrong original input path",
+      "status": "rejected",
+      "reason": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "hilbert-delayed-common-r2:altered supplied axiom",
+      "status": "rejected",
+      "reason": "ValueError('original input formula/role mismatch')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_5:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_6:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_7:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_8:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_8:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_9:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_10:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_11:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_12:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_14:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_14:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_15:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_16:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_17:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_18:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_19:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_20:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_21:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_22:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_23:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_23:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_24:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_25:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_26:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_26:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_27:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_28:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_29:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_30:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_31:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_32:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_32:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_32:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_33:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_34:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_35:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_36:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_37:false propositional conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_38:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_38:missing universal substitution",
+      "status": "rejected",
+      "reason": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_38:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_39:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_39:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_40:false EUF conflict",
+      "status": "rejected",
+      "reason": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:c_0_40:changed relation digest",
+      "status": "rejected",
+      "reason": "ValueError('exact logical relation binding')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:missing final parent bindings",
+      "status": "rejected",
+      "reason": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:wrong original input path",
+      "status": "rejected",
+      "reason": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "hilbert-coupled-reverse-r2:altered supplied axiom",
+      "status": "rejected",
+      "reason": "ValueError('original input formula/role mismatch')"
+    },
+    {
+      "name": "unexported theory schema",
+      "status": "rejected",
+      "reason": "ValueError('nonempty theory schemas must be explicitly exported before comparison')"
+    },
+    {
+      "name": "hidden theory feature",
+      "status": "rejected",
+      "reason": "ValueError('unexported theory feature')"
+    }
+  ],
+  "seconds": 2.231130417,
+  "summary_sha256": "ba1644787e0942a9a96297873e47f82d2c11df4850660e7818ee2f3b825b95b8",
+  "complete_audit_sha256": "a218542ad79ef880a88c804e214c8e6a18ff0d5964c50e34e4851918d00d016d",
+  "mutation_plan_sha256": "08bda49520d403bbe92aa10f67f421317a249a4406cdd3658fbae793dc64cc50",
+  "scope": "Every actually used logical tree has an altered-conflict test, every focused relation has exact source binding tested, and every proof has trace/input/parent corruptions. This audit reuses unchanged replay code; it does not claim formal kernel verification."
+}

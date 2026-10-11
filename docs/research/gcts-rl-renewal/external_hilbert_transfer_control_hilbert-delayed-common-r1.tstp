@@ -1,0 +1,156 @@
+% Preprocessing class: FSMSSMSSSSSNFFN.
+% Configuration: G-E--_208_C18_F1_SE_CS_SOS_SP_PS_S5PRR_RG_S04AN
+% (lift_lambdas = 1, lambda_to_forall = 1,unroll_only_formulas = 1, sine = Auto)
+% No SInE strategy applied
+% Search class: FGHSF-FFSF00-SFFFFFNN
+% Configuration: SubtermCWHack
+% Initializing proof state
+% Scanning for AC axioms
+% Preprocessing time       : 0.004 s
+%
+%cnf(i_0_12, plain, (p2(f2))).
+%
+%cnf(i_0_11, plain, (p0(f2,f3))).
+%
+%cnf(i_0_13, negated_conjecture, (~p0(f2,f4))).
+%
+%cnf(i_0_10, plain, (p2(f0))).
+%
+%cnf(i_0_9, plain, (p2(f1))).
+%
+%cnf(i_0_8, plain, (p1(f3))).
+%
+%cnf(i_0_7, plain, (p1(f4))).
+%
+%cnf(i_0_6, plain, (f1!=f0)).
+%
+%cnf(i_0_5, plain, (p0(f0,f3))).
+%
+%cnf(i_0_3, plain, (p0(f0,f4))).
+%
+%cnf(i_0_4, plain, (p0(f1,f3))).
+%
+%cnf(i_0_2, plain, (p0(f1,f4))).
+%
+%cnf(i_0_1, plain, (X1=X2|X3=X4|~p0(X2,X4)|~p0(X2,X3)|~p0(X1,X4)|~p0(X1,X3)|~p1(X4)|~p1(X3)|~p2(X2)|~p2(X1))).
+%
+%cnf(i_0_14, plain, (X2=f4|X1=f1|~p0(f1,X2)|~p0(X1,f4)|~p0(X1,X2)|~p1(X2)|~p2(X1))).
+%
+%cnf(i_0_19, plain, (X1=f4|~p0(f1,X1)|~p0(f0,X1)|~p1(X1))).
+%
+%cnf(i_0_20, plain, (f4=f3)).
+
+% Proof found!
+% SZS status Theorem
+% SZS output start CNFRefutation
+fof(a1, axiom, (p2(f2)=>(p2(f0)&(p2(f1)&(p1(f3)&(p1(f4)&(~(f0=f1)&(p0(f0,f3)&(p0(f1,f3)&(p0(f0,f4)&p0(f1,f4)))))))))), file('/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-20261011/hilbert-delayed-common.p', a1)).
+fof(a0, axiom, ![X1, X2, X3, X4]:(((p2(X1)&(p2(X2)&(p1(X3)&(p1(X4)&(~(X1=X2)&(p0(X1,X3)&(p0(X2,X3)&(p0(X1,X4)&p0(X2,X4)))))))))=>X3=X4)), file('/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-20261011/hilbert-delayed-common.p', a0)).
+fof(a3, axiom, p2(f2), file('/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-20261011/hilbert-delayed-common.p', a3)).
+fof(goal, conjecture, p0(f2,f4), file('/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-20261011/hilbert-delayed-common.p', goal)).
+fof(a2, axiom, p0(f2,f3), file('/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-20261011/hilbert-delayed-common.p', a2)).
+fof(c_0_5, plain, (p2(f2)=>(p2(f0)&(p2(f1)&(p1(f3)&(p1(f4)&(f0!=f1&(p0(f0,f3)&(p0(f1,f3)&(p0(f0,f4)&p0(f1,f4)))))))))), inference(fof_simplification,[status(thm)],[a1])).
+fof(c_0_6, plain, ![X1, X2, X3, X4]:(((p2(X1)&(p2(X2)&(p1(X3)&(p1(X4)&(X1!=X2&(p0(X1,X3)&(p0(X2,X3)&(p0(X1,X4)&p0(X2,X4)))))))))=>X3=X4)), inference(fof_simplification,[status(thm)],[a0])).
+fof(c_0_7, plain, ((p2(f0)|~p2(f2))&((p2(f1)|~p2(f2))&((p1(f3)|~p2(f2))&((p1(f4)|~p2(f2))&((f0!=f1|~p2(f2))&((p0(f0,f3)|~p2(f2))&((p0(f1,f3)|~p2(f2))&((p0(f0,f4)|~p2(f2))&(p0(f1,f4)|~p2(f2)))))))))), inference(distribute,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_5])])])).
+fof(c_0_8, plain, ![X5, X6, X7, X8]:((~p2(X5)|(~p2(X6)|(~p1(X7)|(~p1(X8)|(X5=X6|(~p0(X5,X7)|(~p0(X6,X7)|(~p0(X5,X8)|~p0(X6,X8))))))))|X7=X8)), inference(fof_nnf,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_6])])])).
+cnf(c_0_9, plain, (p0(f1,f4)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_10, plain, (p2(f2)), inference(split_conjunct,[status(thm)],[a3])).
+cnf(c_0_11, plain, (p1(f4)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_12, plain, (p2(f1)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_13, negated_conjecture, ~(p0(f2,f4)), inference(assume_negation,[status(cth)],[goal])).
+cnf(c_0_14, plain, (X1=X2|X3=X4|~p2(X1)|~p2(X2)|~p1(X3)|~p1(X4)|~p0(X1,X3)|~p0(X2,X3)|~p0(X1,X4)|~p0(X2,X4)), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_15, plain, (p0(f1,f4)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_10])])).
+cnf(c_0_16, plain, (p1(f4)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_11, c_0_10])])).
+cnf(c_0_17, plain, (p2(f1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_12, c_0_10])])).
+cnf(c_0_18, plain, (p0(f0,f4)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_19, plain, (p2(f0)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_20, plain, (f0!=f1|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_21, negated_conjecture, ~p0(f2,f4), inference(fof_simplification,[status(thm)],[c_0_13])).
+cnf(c_0_22, plain, (X1=f4|X2=f1|~p0(f1,X1)|~p0(X2,f4)|~p0(X2,X1)|~p1(X1)|~p2(X2)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_14, c_0_15]), c_0_16]), c_0_17])])).
+cnf(c_0_23, plain, (p0(f0,f4)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_18, c_0_10])])).
+cnf(c_0_24, plain, (p2(f0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_19, c_0_10])])).
+cnf(c_0_25, plain, (f1!=f0), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_20, c_0_10])])).
+cnf(c_0_26, plain, (p1(f3)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_27, plain, (p0(f1,f3)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_28, plain, (p0(f0,f3)|~p2(f2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_29, negated_conjecture, ~p0(f2,f4), inference(fof_nnf,[status(thm)],[c_0_21])).
+cnf(c_0_30, plain, (X1=f4|~p0(f1,X1)|~p0(f0,X1)|~p1(X1)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_23]), c_0_24])]), c_0_25])).
+cnf(c_0_31, plain, (p1(f3)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_26, c_0_10])])).
+cnf(c_0_32, plain, (p0(f1,f3)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_27, c_0_10])])).
+cnf(c_0_33, plain, (p0(f0,f3)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_28, c_0_10])])).
+cnf(c_0_34, negated_conjecture, (~p0(f2,f4)), inference(split_conjunct,[status(thm)],[c_0_29])).
+cnf(c_0_35, plain, (f4=f3), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_30, c_0_31]), c_0_32]), c_0_33])])).
+cnf(c_0_36, plain, (p0(f2,f3)), inference(split_conjunct,[status(thm)],[a2])).
+cnf(c_0_37, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_34, c_0_35]), c_0_36])]), ['proof']).
+% SZS output end CNFRefutation
+% Parsed axioms                        : 5
+% Removed by relevancy pruning/SinE    : 0
+% Initial clauses                      : 13
+% Removed in clause preprocessing      : 0
+% Initial clauses in saturation        : 13
+% Processed clauses                    : 16
+% ...of these trivial                  : 0
+% ...subsumed                          : 0
+% ...remaining for further processing  : 16
+% Other redundant clauses eliminated   : 0
+% Clauses deleted for lack of memory   : 0
+% Backward-subsumed                    : 0
+% Backward-rewritten                   : 6
+% Generated clauses                    : 7
+% ...of the previous two non-redundant : 9
+% ...aggressively subsumed             : 0
+% Contextual simplify-reflections      : 0
+% Paramodulations                      : 7
+% Factorizations                       : 0
+% NegExts                              : 0
+% Equation resolutions                 : 0
+% Disequality decompositions           : 0
+% Total rewrite steps                  : 27
+% ...of those cached                   : 18
+% Propositional unsat checks           : 0
+%    Propositional check models        : 0
+%    Propositional check unsatisfiable : 0
+%    Propositional clauses             : 0
+%    Propositional clauses after purity: 0
+%    Propositional unsat core size     : 0
+%    Propositional preprocessing time  : 0.000
+%    Propositional encoding time       : 0.000
+%    Propositional solver time         : 0.000
+%    Success case prop preproc time    : 0.000
+%    Success case prop encoding time   : 0.000
+%    Success case prop solver time     : 0.000
+% Current number of processed clauses  : 10
+%    Positive orientable unit clauses  : 8
+%    Positive unorientable unit clauses: 0
+%    Negative unit clauses             : 1
+%    Non-unit-clauses                  : 1
+% Current number of unprocessed clauses: 4
+% ...number of literals in the above   : 28
+% Current number of archived formulas  : 0
+% Current number of archived clauses   : 6
+% Clause-clause subsumption calls (NU) : 0
+% Rec. Clause-clause subsumption calls : 0
+% Non-unit clause-clause subsumptions  : 0
+% Unit Clause-clause subsumption calls : 0
+% Rewrite failures with RHS unbound    : 0
+% BW rewrite match attempts            : 1
+% BW rewrite match successes           : 1
+% Condensation attempts                : 0
+% Condensation successes               : 0
+% Termbank termtop insertions          : 865
+% Search garbage collected termcells   : 94
+
+% -------------------------------------------------
+% User time                : 0.002 s
+% System time              : 0.002 s
+% Total time               : 0.004 s
+% Maximum resident set size: 4931584 pages
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 106925088 Bytes (210083 requests)
+% Total SizeFree()ed   memory: 106925088 Bytes (210083 requests)
+% New requests:   2996 (  2892 by SecureMalloc(),    104 by SecureRealloc())
+% Total SecureMalloc()ed memory: 764370 Bytes
+% Returned:      2996 (  2996 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    115 (   104 Allocs,      0 Frees,     11 Reallocs)
+% -------------------------------------------------
+
