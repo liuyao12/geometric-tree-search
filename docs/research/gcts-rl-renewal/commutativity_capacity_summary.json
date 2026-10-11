@@ -1,0 +1,142 @@
+{
+  "status": "complete_capacity_pilot_pending_independent_replay",
+  "native_queries": 0,
+  "target_searches": 0,
+  "observations": [
+    {
+      "query": 0,
+      "stratum": [
+        "conditional-reflexivity",
+        "none"
+      ],
+      "definition_name": "commutativityReceptoreed94566a74e4da295f66b7f2e0ed6864d983bc83d0cd22a59074d220dc8f7b7",
+      "request_sha256": "a813bbfefa1a97a4cbb5dfab1f927bdfa1caea5789a086de84caf7ad1b15ff7f",
+      "required_heap_capacity": 18092,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 0.27788745899999995,
+      "tree_status": "accepted",
+      "tree_steps": 124628,
+      "heap_nodes": 620
+    },
+    {
+      "query": 1,
+      "stratum": [
+        "conditional-rewrite",
+        "assumption"
+      ],
+      "definition_name": "commutativityReceptorfb0733fda63792251697334901f0764b4ba5b9e97030e0e8bf5a5a554385c82f",
+      "request_sha256": "13a75d1413ca77f307bc858ab3dc28f4fd6a7d2fa87af08670757135409e7ff9",
+      "required_heap_capacity": 50458,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 3.9451582919999995,
+      "tree_status": "accepted",
+      "tree_steps": 1880886,
+      "heap_nodes": 1584
+    },
+    {
+      "query": 2,
+      "stratum": [
+        "conditional-rewrite",
+        "axiom"
+      ],
+      "definition_name": "commutativityReceptor77152f26a507c116628e0dad7fb948bff44361ade9f0266c9505ebf6e713f154",
+      "request_sha256": "e232aa2ae66358dfd7e8c53b6b40b68c08d210d8b47cc9553400f0a3ccbfd6ec",
+      "required_heap_capacity": 39127,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 2.046193208,
+      "tree_status": "accepted",
+      "tree_steps": 968488,
+      "heap_nodes": 1259
+    },
+    {
+      "query": 3,
+      "stratum": [
+        "conditional-rewrite",
+        "discovered-lemma"
+      ],
+      "definition_name": "commutativityReceptorbf58ee526baae84d3a9856739d9ebb246e6123046433f0270053cbf8a1f59d93",
+      "request_sha256": "35525f8bf80810afcb815a6515043b990cf5b502acca3a8ba52de969039e6a05",
+      "required_heap_capacity": 39041,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 2.0496324159999997,
+      "tree_status": "accepted",
+      "tree_steps": 982618,
+      "heap_nodes": 1256
+    },
+    {
+      "query": 4,
+      "stratum": [
+        "induction",
+        "none"
+      ],
+      "definition_name": "commutativityReceptor7b5130ffe9248d2f5d577b3abbd6d4de28fc0a5ec05b9a1137c48eb7d79ed58b",
+      "request_sha256": "f48aabca40c86328d5b0c95d8c31b1796465af6e1e220c82d622d6f9dde7e2bc",
+      "required_heap_capacity": 32446,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 1.3362652920000002,
+      "tree_status": "accepted",
+      "tree_steps": 635268,
+      "heap_nodes": 1059
+    },
+    {
+      "query": 5,
+      "stratum": [
+        "rewrite",
+        "axiom"
+      ],
+      "definition_name": "commutativityReceptor76fb1013f1e9ab1cbf7009caf1f9ba9e16057834a36ab28cd7f5d2203db407dd",
+      "request_sha256": "4b2d2e27e1eb34e05a68adac7bcf9a89c18865cded83a1244540ac57b3f60b15",
+      "required_heap_capacity": 30568,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 0.7195287499999985,
+      "tree_status": "accepted",
+      "tree_steps": 334122,
+      "heap_nodes": 1003
+    },
+    {
+      "query": 6,
+      "stratum": [
+        "rewrite",
+        "discovered-lemma"
+      ],
+      "definition_name": "commutativityReceptorf195db1c821888afb4f3be86cc4c5a104e166c106f738554a9345d0d0ddd792f",
+      "request_sha256": "83aff2fb7a5b62fe96fe6212034ca81157018b8c1d0ec75596d349852e324d13",
+      "required_heap_capacity": 30792,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 0.7341852920000012,
+      "tree_status": "accepted",
+      "tree_steps": 338112,
+      "heap_nodes": 1010
+    },
+    {
+      "query": 7,
+      "stratum": [
+        "transferred-searched-theorem",
+        "none"
+      ],
+      "definition_name": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "request_sha256": "7a5be2049ad56f450ae8f812ef156d3804cdd7f73a656e9a98f74db325cb3b48",
+      "required_heap_capacity": 146733,
+      "requirement_is_complete": true,
+      "original_heap_capacity": 73178,
+      "seconds": 7.166619708000001,
+      "tree_status": "accepted",
+      "tree_steps": 3443659,
+      "heap_nodes": 4189
+    }
+  ],
+  "seconds": 19.926255209,
+  "peak_rss_bytes": 487948288,
+  "declared_common_heap_capacity": 262144,
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "micro_code_bytes_sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+  "scope": "Eight generic size-stratified exact local-definition requests only, not all93freshrequests. No target proof or native execution; same fixed program/palette and only a proposed external blank heap boundary. Complete canonical heap estimates are not native acceptance and do not estimate unselected requests or all other tape bands."
+}

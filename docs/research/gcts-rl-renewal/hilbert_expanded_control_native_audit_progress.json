@@ -1,0 +1,23 @@
+{
+  "status": "running",
+  "native_queries": 2,
+  "native_micro_steps": 9595090328,
+  "native_replay_seconds": 71.19155512399999,
+  "replayed_bindings": [
+    {
+      "query": 0,
+      "record_sha256": "1d1fa265118ea51a0489566f0206e8b02641847b4ff4d9faf0465bc4d544861b",
+      "request_sha256": "50105e6bf1d1bc3677c2f94dca1f3d96c5c182cc0f6707010ed3c50ae3a9b8a1",
+      "input_sha256": "7326cbe40054041d2e1b94f130554edb15bfb88529a8720925d8595932966fc8",
+      "output_sha256": "77bbdaf2f614a01fd67d1240f3f7d00e0cf4f879d752b46579bdf5d98177bf39"
+    },
+    {
+      "query": 1,
+      "record_sha256": "e31e2a97bbba5b251ef16597072d836f0bfc766eb0392ec57c51b3fae5dd6292",
+      "request_sha256": "28d1e4536e6a42fdb846d3df1a69fddfe67cf434fb2f5ea9672320102645f98a",
+      "input_sha256": "f0a116f7d8942e1ef4f1cf0e0a1d53c09a98a251698245d764504c1ebd1eccea",
+      "output_sha256": "9b985ee853d877f321bc60145fe3c1ba5eb1abafd7ebe844ec842e4c487a0de1"
+    }
+  ],
+  "seconds": 183.06003337500002
+}

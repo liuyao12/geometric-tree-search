@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "observations": 16,
+  "proof_rows": 50,
+  "actual_tiles": 200,
+  "mutations": [
+    {
+      "label": "missing observation",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong fixed weights",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong feature units",
+      "status": "rejected"
+    },
+    {
+      "label": "omitted promoted receptor",
+      "status": "rejected"
+    },
+    {
+      "label": "missing pre-certification artifact",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong native origin",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong actual whole certificate",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong marking assignment",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong occupancy",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong formula translation",
+      "status": "rejected"
+    },
+    {
+      "label": "missing actual proof row",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden historical preparation",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden fresh native bill",
+      "status": "rejected"
+    },
+    {
+      "label": "counterfeit prior replay binding",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden feature work",
+      "status": "rejected"
+    }
+  ],
+  "reader_sha256": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0",
+  "plan_sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+  "audit_sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe"
+}

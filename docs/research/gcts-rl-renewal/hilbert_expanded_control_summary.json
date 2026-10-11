@@ -1,0 +1,63 @@
+{
+  "status": "complete_independently_audited",
+  "observations": 16,
+  "deterministic_pairs": 8,
+  "directions": {
+    "learned_fewer": 8,
+    "equal": 8,
+    "learned_more": 0
+  },
+  "proof_observations": 12,
+  "finite_exhaustions": 4,
+  "search_unknowns": 0,
+  "native_whole_unknowns": 0,
+  "fixed_attempts": 4508,
+  "learned_attempts": 1374,
+  "incremental_costs": {
+    "production_seconds": 185.252416625,
+    "preparation_seconds": 2.902052458,
+    "native_setup_seconds": 2.713810958,
+    "fixed_search_seconds": 23.015567376000003,
+    "fixed_model_setup_seconds": 3.1955025409999998,
+    "fixed_worker_wall_seconds": 39.732398794,
+    "certification_wall_seconds": 132.85406599700005,
+    "fresh_native_production_seconds": 70.280849292,
+    "fresh_native_micro_steps": 9595090328,
+    "fresh_native_queries": 2,
+    "independent_audit_seconds": 256.410989208,
+    "independent_fresh_native_replay_seconds": 71.19155512399999,
+    "independent_prior_input_binding_seconds": 0.5342582910000004,
+    "peak_worker_rss_bytes": 88178688
+  },
+  "frozen_paired_costs": {
+    "search_seconds": 7.9650810409999995,
+    "model_setup_seconds": 3.2051197100000004,
+    "worker_wall_seconds": 22.626257959999933
+  },
+  "historical_shared_costs": {
+    "production_seconds": 2620.4898026250003,
+    "native_production_seconds": 2409.827071827999,
+    "native_micro_steps": 329196372761,
+    "native_replay_seconds": 2411.9622285859996,
+    "full_native_queries": 142
+  },
+  "native_prior_reuse_observations": 8,
+  "native_new_reuse_observations": 2,
+  "feature_cost_accounting": {
+    "fixed_proposal_seconds": 6.096653619000002,
+    "paired_learned_proposal_seconds": 2.5373185850000004,
+    "fixed_feature_vectors": 3750,
+    "paired_learned_feature_vectors": 1600,
+    "fixed_expanded_mark_positions": 1047502,
+    "paired_learned_expanded_mark_positions": 542116,
+    "scope": "Expanded-word feature work is included in search and proposal elapsed times. The unchanged engine has one inclusive proposal timer covering generation, validation, feature construction and scoring; no separate feature-only time is inferred. Position and vector counts cover every scored proposal, including repeated work at different search states."
+  },
+  "audit": {
+    "complete_models": 8,
+    "nodes": 4524,
+    "events": 504,
+    "hints": 504,
+    "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe"
+  },
+  "assessment": "This isolates fixed versus frozen learned ordering weights on exactly equal word-expanded point models. The four recipients are two hypothesis configurations at two finite boundary lengths, not four independent mathematical theorems. Any observed attempt difference is specific to these deterministic recipients; two same-seed timing repetitions are not independent samples. No new RL training, universal superiority, or total-cost speed claim. Prior cold preparation and full replay costs remain visible; new certificate verification costs and overlapping audit wait are charged separately."
+}

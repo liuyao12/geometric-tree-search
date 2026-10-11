@@ -1,0 +1,22 @@
+{
+  "status": "passed_local_browser",
+  "browser": "Chrome via cua_repl",
+  "url": "http://127.0.0.1:8841/hilbert_expanded_control.html?v=20261011-hec1#reader",
+  "options_verified": 16,
+  "comparison_rows": 16,
+  "proof_rows_across_options": 50,
+  "actual_tiles_across_options": 200,
+  "math_errors_across_options": 0,
+  "document_width_max": 1849,
+  "viewport_width": 1864,
+  "expanded_native_blocks_verified": 3,
+  "expanded_native_math_errors": 0,
+  "renderer": "CHTML",
+  "initial_selected_observation_matches_displayed_proof": true,
+  "live_verified": false,
+  "source_pins": {
+    "hilbert_expanded_control.html": "483392daac15081c01b055ce017e73e65cef9a25929a44db10caf547c01dbb7d",
+    "hilbert_expanded_control.js": "0d57f04dd75d42a9cbfd251bbe32477a5ea9b5f90e81b771dd69b39ff97c85ab",
+    "hilbert_expanded_control_reader_001.json": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0"
+  }
+}

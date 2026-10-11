@@ -1,0 +1,26 @@
+{
+  "status": "passed-presentation-only",
+  "replacements": {
+    "<summary>Complete induction interface for x</summary>": "<summary>Complete induction interface for \\(x\\)</summary>",
+    "<summary>Complete induction interface for y</summary>": "<summary>Complete induction interface for \\(y\\)</summary>",
+    "GCTS automatically selected7high-level rows;30-command generic checked DAG-sharing expansion": "GCTS automatically selected 7 high-level rows; 30-command generic checked DAG-sharing expansion",
+    "Ordinary forward chaining automatically selected11rows;67-command generic checked DAG-sharing expansion; original8GCTS searches remain unknown": "Ordinary forward chaining automatically selected 11 rows; 67-command generic checked DAG-sharing expansion; original 8 GCTS searches remain unknown"
+  },
+  "complete_family_payload_bytes_preserved": true,
+  "families": 42,
+  "source_sha256": "1d6457056b8f96e36ac518b97cc9dad645fb2250c7182f65729e4e816e1b56b5",
+  "files": [
+    {
+      "original": "commutativity_feasibility.html",
+      "original_sha256": "8a48a1244b2df0a54f215be44cf01aad0fb632c7fdb4305e615cf9ae67304a34",
+      "derived": "commutativity-feasibility.html",
+      "derived_sha256": "28cc65134dd1db660408d0756984559b7095661c4b62c5992fe0dc4a529549b0"
+    },
+    {
+      "original": "commutativity_capacity.html",
+      "original_sha256": "440cec898ed7b63b76f7efea7e053fbbc07164380f897ff8229eee1f82abb420",
+      "derived": "commutativity-capacity.html",
+      "derived_sha256": "1478540e3156f60f6159bcb131eec2c90d1c9ca28029c8406a0469befe39e9f8"
+    }
+  ]
+}

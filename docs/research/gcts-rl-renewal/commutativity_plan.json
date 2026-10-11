@@ -1,0 +1,461 @@
+{
+  "status": "predeclared-bounded-feasibility-only",
+  "created_utc": "2026-10-11T14:02:26.534945+00:00",
+  "case": {
+    "id": "addition-commutativity",
+    "label": "Universal addition commutativity",
+    "theory": {
+      "functions": {
+        "zero": 0,
+        "succ": 1,
+        "add": 2
+      },
+      "predicates": {},
+      "axioms": {
+        "AZ": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "AS": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "schemas": [
+        "nat-induction"
+      ]
+    },
+    "target": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "y"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "term_bound": 5,
+    "enable_induction": true
+  },
+  "lemma_sources": [
+    {
+      "name": "searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "request_sha256": "fb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "discovery": "GCTS automatically selected7high-level rows;30-command generic checked DAG-sharing expansion"
+    },
+    {
+      "name": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "discovery": "Ordinary forward chaining automatically selected11rows;67-command generic checked DAG-sharing expansion; original8GCTS searches remain unknown"
+    }
+  ],
+  "lanes": [
+    {
+      "id": "no-transfer",
+      "inventory_count": 0
+    },
+    {
+      "id": "zero-left",
+      "inventory_count": 1
+    },
+    {
+      "id": "two-lemmas",
+      "inventory_count": 2
+    }
+  ],
+  "prospective_lengths": [
+    12,
+    18,
+    24
+  ],
+  "materialized_lengths": [
+    6
+  ],
+  "source_sha256": {
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/induction_receptors_points.py": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/induction_receptors_tests.py": "0305ade26584fb27cd148b82c9892e2c73a65ea59130ac081cab81ee702f476e",
+    "research/gcts-rl-renewal/serialized_kernel.py": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
+    "research/gcts-rl-renewal/induction_receptors_catalog.py": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+    "research/gcts-rl-renewal/induction_receptors_runner.py": "70efcb1d61de66ea91e286369a815ff776eb3466e6a66a3f85e7d5d8bf8df0e0",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/induction_receptors_export.py": "d391767ffe502621729d6378a19554856d9757d35080ea5eac67cd105c4589c2",
+    "research/gcts-rl-renewal/left_successor_catalog.py": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+    "research/gcts-rl-renewal/left_successor_preflight.py": "897b3ac663b0a2278b7a22d3b8fadac128a968f6fe3959afc6687238530a2910",
+    "research/gcts-rl-renewal/left_successor_compact.py": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+    "research/gcts-rl-renewal/left_successor_reachability.py": "d71fb8eb9668a89444b4abbd96082f6fdb38544038d15d2a0d3bb8a5dfbfce4c",
+    "research/gcts-rl-renewal/commutativity_catalog.py": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+    "research/gcts-rl-renewal/commutativity_points.py": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+    "research/gcts-rl-renewal/commutativity_preflight.py": "1c7c1a93125f4fc9804c70ceb4096607890f1c5ab13a2537b2e06f11fc958c0f",
+    "research/gcts-rl-renewal/commutativity_audit.py": "b3f66403243b0be96fc1087aa0372b540df269458702cb3f4970b2ceeca6552d",
+    "research/gcts-rl-renewal/commutativity_preflight_retry.py": "492bdcc6b698b82d47b63785e80c9330f3891b100d68a2bba9df4a70f49d0faf",
+    "research/gcts-rl-renewal/commutativity_audit_retry.py": "da1cd60ec5cb81033f76ca57551526f0a19d55d384c88c8f9306af02175b7093"
+  },
+  "input_sha256": {
+    ".gcts-active/induction-receptors-20261011/compaction-native.json.gz": "cc937e156c5bb7b6a6a424cb7c23b2aad7804c151596cae1e9d04eae74149f20",
+    ".gcts-active/induction-receptors-20261011/compaction-audit.json": "715b2b2464d78083dad1372a311e92ab46fb7836d253f99a9a5d68e007534b10",
+    ".gcts-active/induction-receptors-20261011/recovery-audit.json": "509e12e9f39f5e2c702f02afbe8c634ccf62ab4c59e998227a0088080484bcfe",
+    ".gcts-active/left-successor-20261011/workspace-native/native.json.gz": "edc22d5e4043d3af7afd5c2b7863f6c5f0c4598faad600328426e4128c4d3772",
+    ".gcts-active/left-successor-20261011/workspace-native/audit.json": "64cb405065973eea0ef711a4cb292753ea5cd632e1596907e06ad6d990875f11",
+    ".gcts-active/left-successor-20261011/forward-control/audit.json": "b91abf9681005b50aef96698944f72265cecd771f74bafc3b87c56dfb9c3c77d",
+    ".gcts-active/left-successor-20261011/pilot-native.json.gz": "cf11562d76d83bafbfa5aa0f4192315e3d62962b115a39be03055520067bc7ea",
+    ".gcts-active/left-successor-20261011/pilot-audit.json": "51c732aad3e8952e804654cc403cb841d87d7e65e70e702210057f5d4bbc2c32",
+    ".gcts-active/left-successor-20261011/admission-native.json.gz": "b5e603419c48a5d1a19e9d655c0d5c865f1a51561bba12f1402f7c736a722dcf",
+    ".gcts-active/left-successor-20261011/admission-audit.json": "0accfbfb3cfc363e4a6d2af89d86380dab1ad6937470cb609d5ab908f68c1f04",
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/unknown-receipt.json": "db1c5448932ccc620ec86d390b9e0794af7814f64f105930d409b7183249e1e2",
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/sources.zip": "c7bfae84b43d5e06b58690cb9b945a6bbcb4288a04cac301f19a9a2daa2ae52a",
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/summary.json": "0163cf8ca3d0e1f99287336aeb8af694aaf50e38a803c84c33363632ec74cffc",
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/preflight.log": "40703091ae5553f1eb233db0da144b85d2622db79bf0de9dd39f0480a852dd04"
+  },
+  "preserved_export_sha256": {
+    "docs/research/gcts-rl-renewal/left_successor.html": "34019d07c456407117f29a9126919cd10b209122fd0435805205f1c933cca510",
+    "docs/research/gcts-rl-renewal/left_successor_plan.json": "203ac0401912bb62335183b44118b5ca2a821d91eee737ab8663e848bc1eb7e7",
+    "docs/research/gcts-rl-renewal/left_successor_summary.json": "b9f0a48bdb5d3e53ccf500a6632449661739fcc2e7913eda16f978770de2278f",
+    "docs/research/gcts-rl-renewal/left_successor_audit_plan.json": "85bf88e6ff0ed6648ee9438a17468fc14d268b877ccc0f78858f6d97208138e1",
+    "docs/research/gcts-rl-renewal/left_successor_audit.json": "01868fb6c9ec1a4cecbd768e09e8b2c75aafed72c481f4662442cefc32bd8fd2",
+    "docs/research/gcts-rl-renewal/left_successor_compaction_preparation_plan.json": "e599e25e266777e77b844769d2793c9a73bd4efc4970e9992c8d02ac0ffbd4d7",
+    "docs/research/gcts-rl-renewal/left_successor_compaction_preparation.json": "53016c13567d5427bc44e8c23b16c4d1300365edd81ede2b9734549f43e8d85d",
+    "docs/research/gcts-rl-renewal/left_successor_compaction_audit_plan.json": "e45d54692a5d303a71270c613190576135a10cad008cf8f5fb08454611012567",
+    "docs/research/gcts-rl-renewal/left_successor_compaction_preparation_audit.json": "019598ec78d305433450aa085732184dadbbaf1e6446c25edd6f8f6cb3ae4673",
+    "docs/research/gcts-rl-renewal/left_successor_reachability_plan.json": "00072de2eafa28b2ba9cd44e234384a0f4b3e1e766df322c9d2666c8dbb8d8de",
+    "docs/research/gcts-rl-renewal/left_successor_reachability_summary.json": "bfb3fcd467297667dfb0bac59e3c0a87dbe46c6486f82800da2dd108dd94b158",
+    "docs/research/gcts-rl-renewal/left_successor_reachability_audit_plan.json": "b85b5ca0c7c2ea6cc9bccfbfee0e8c0c930a9b49efa0450b615194ef3eb39fcd",
+    "docs/research/gcts-rl-renewal/left_successor_reachability_audit.json": "07cc29f5f89ec71ecdcde23638703aae931930a51e85bca421f98677b2919561",
+    "docs/research/gcts-rl-renewal/left_successor_native_pilot_plan.json": "e693e5f30e575d219019fd05ed1c968b5a51d8c168a154154011a46571c88473",
+    "docs/research/gcts-rl-renewal/left_successor_pilot_summary.json": "c5d9a9be54e176a00328061e080e6d77e3e10c8e9c8408ec7f27b2f66beabb6d",
+    "docs/research/gcts-rl-renewal/left_successor_pilot_audit_plan.json": "d5d69981b5a490e849ca83eee8aaba258c7831bcf7e5abe5ad652d9aea8fd9b7",
+    "docs/research/gcts-rl-renewal/left_successor_pilot_audit.json": "51c732aad3e8952e804654cc403cb841d87d7e65e70e702210057f5d4bbc2c32",
+    "docs/research/gcts-rl-renewal/left_successor_pilot_native.json.gz": "cf11562d76d83bafbfa5aa0f4192315e3d62962b115a39be03055520067bc7ea",
+    "docs/research/gcts-rl-renewal/left_successor_admission_plan.json": "01dda25d70e0a2753a8c8d265c177946b9cef9b88050936dbe9c47fa19c328f2",
+    "docs/research/gcts-rl-renewal/left_successor_admission_summary.json": "38f65415c0ec763763892709ca2be4dde6ea71290cd61d84181caa1eb658e2da",
+    "docs/research/gcts-rl-renewal/left_successor_admission_audit_plan.json": "cc90a3476656919cc318621ba5927beb952b9819eb2e5e66f869891085253fb6",
+    "docs/research/gcts-rl-renewal/left_successor_admission_audit.json": "0accfbfb3cfc363e4a6d2af89d86380dab1ad6937470cb609d5ab908f68c1f04",
+    "docs/research/gcts-rl-renewal/left_successor_admission_native.json.gz": "b5e603419c48a5d1a19e9d655c0d5c865f1a51561bba12f1402f7c736a722dcf",
+    "docs/research/gcts-rl-renewal/left_successor_search_plan.json": "57f603042c02f99d445b80fb3b8fc6d8e5cf03a63934488e7c995f468abf6a18",
+    "docs/research/gcts-rl-renewal/left_successor_search_summary.json": "dcf646891dc99c7cf17e644ebfce8cd24b87af439772c85bb537805f7693cc40",
+    "docs/research/gcts-rl-renewal/left_successor_search_audit_plan.json": "9f5762c3969aa65e06e4009c054632e3fc8e5890bc10fc3d6e432565ff0a01a5",
+    "docs/research/gcts-rl-renewal/left_successor_search_audit.json": "2becd27306508569540c95c1ba5aebea6a9ec69d1b2e39e11d12cc26ab90629c",
+    "docs/research/gcts-rl-renewal/left_successor_search_native.json.gz": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+    "docs/research/gcts-rl-renewal/left_successor_transfer.json": "bf34df323bce8870a59f7196c13f4243da96085ee3fb24e2b4ce1647f3486580",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_core.json.gz": "44c079ecf39581d2556a1db67dfeab76575316472b6656b965c463affb4c0b77",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_compact_core.json.gz": "01aef71b62a4d13f2e7db904596bc08d525e6216127180dc83d8645a426edf83",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_primitive.jsonl.gz": "122285e794819d85cde4d1d2bdd39f5935ff086b1e2914b42f3f0dea3e9b6150",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_reachability.json.gz": "54a92323ed82e2d5f3feab8afdaf2b7e1e6b2ba96e4778364ca4d345626c391c",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_reachable_core.json.gz": "f3ed5ccb2086c4a9366392362827f82c4131c0552ce7fa8caa2805625ab5ef20",
+    "docs/research/gcts-rl-renewal/left_successor_without_transfer_admission.json": "6ae77d7a918da61dd2738be23e7871065299a3ec8c93f6bf458f8090e2de537a",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_core.json.gz": "162c8b1546fa65802e539b75f61b3c082a4f473f86580b41a5c50ba3d42dfc43",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_compact_core.json.gz": "10bbb4d5207bfbd2b7be0fee1ad8fba4bf0116158a20b51def958ba65bd9a688",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_primitive.jsonl.gz": "a1ad9c23add1088f45dd70bb9cb424bfaa511f3b277093b045cd0899943d917d",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_reachability.json.gz": "82736b4a831d8a1c53c1ec489894997e2f064be511f3ae5da831c88bc6d8277c",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_reachable_core.json.gz": "af6d97f07d0b3bcd20495e3c83836866ff873b4b7b202a603738907ae0557332",
+    "docs/research/gcts-rl-renewal/left_successor_with_searched_zero_left_admission.json": "bd8cb18c7cdf24d9f157a686347e0dc859410fe427ea50541130310ad0076b5d",
+    "docs/research/gcts-rl-renewal/left_successor_left_successor_no_transfer_12_rep0.json.gz": "0cf1b7828cc67752ebf2a43f21e8e799eabd8ea553e50b870d2f4a5dcce273f7",
+    "docs/research/gcts-rl-renewal/left_successor_left_successor_no_transfer_12_rep1.json.gz": "121f2a903abad7a9b6789ff6b718edcdadf4b5ec37a0fb58185b6635d5154619",
+    "docs/research/gcts-rl-renewal/left_successor_left_successor_zero_left_12_rep0.json.gz": "2c9997ebcff1139134da3b4806d117106f19fcdcfb3f898d066cc20b814efb7c",
+    "docs/research/gcts-rl-renewal/left_successor_left_successor_zero_left_12_rep1.json.gz": "a83546b5cedc8e9a4596ff8ffae7163c06602c3408e7d265985271f3333315e4",
+    "docs/research/gcts-rl-renewal/left_successor_rank_plan.json": "23c252eda0061a6de41866ce9fe03780d1d7e45a514a2d4b831ce3e99b05d40e",
+    "docs/research/gcts-rl-renewal/left_successor_rank_preparation.json": "a4d25815b0b4b2f38eacb7181ace528612bb5d2dba8b7e3f2f1cfad00c195934",
+    "docs/research/gcts-rl-renewal/left_successor_rank_audit_plan.json": "ffd8fec28667f858d5ec0a69d3cc0211dbe934c8a88a777e825787fe3fcfaa51",
+    "docs/research/gcts-rl-renewal/left_successor_rank_audit.json": "ba82f8b3a445212736a3ba31ce09ad64fd9ded1f3147b8d76b5c7b9808b98cb5",
+    "docs/research/gcts-rl-renewal/left_successor_rank_without_transfer_model.json.gz": "b62564b25502e82d983ea5e0b7c2762741fdb557a91b6a94b1f736e31ce8e5f3",
+    "docs/research/gcts-rl-renewal/left_successor_rank_with_searched_zero_left_model.json.gz": "e3982fa5b4a7f2f5d02ce8c76baec1924ce7f75b5d58817a567b66b4a33f3ecd",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_plan.json": "c0c7e36778d99c7fa3ba9457a2efbe4c2b6267f92cd8c59512d27db7530501f2",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_search_plan.json": "c0c7e36778d99c7fa3ba9457a2efbe4c2b6267f92cd8c59512d27db7530501f2",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_search_summary.json": "cc656c50032ed45d252e1b9b7767ee1384dc4b8d8ab625c8dd66341d1903d3ce",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_search_audit_plan.json": "bee61e1c2caf56347b79dada8611b11f08fda16d535d2680ddb53ecef34656af",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_search_audit.json": "2d62d6c30bd9fbbef6784fce34565f9df9117368b0ac999744313a5674e84425",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_search_native.json.gz": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_left_successor_rank_no_transfer_12_rep0.json.gz": "5e31bc315b8109acaf048f4c2584b1ebfc578cb9d7c6d848e6b48a29907eaa7a",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_left_successor_rank_no_transfer_12_rep1.json.gz": "da5431124c0d93d77fb2b6e9a7ef77c3ad4b220179af59a7ede7345acf3fc361",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_left_successor_rank_zero_left_12_rep0.json.gz": "a1b4caaeda26ca36f1b7733b67c3c22ee6249a2b157213ba854c2daf6728a7ea",
+    "docs/research/gcts-rl-renewal/left_successor_rank_search_left_successor_rank_zero_left_12_rep1.json.gz": "a94dc034eb5f7f3873801193683d17c4bc83d7aab86b341ef4fcb17f9a2675bd",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_plan.json": "0766d8a0cec1b132a04cdc498166d249ad65e9b375c6d54c0e0f30eec5fc8a1c",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_summary.json": "34e35640a9f8c6650091f19f710719b029139c68766ff25014f0ad1bc4cd8293",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_audit_plan.json": "1b4bef499901a302d2ab279332e1ba5e2803aaac88f389676a09dbf855ca27e0",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_audit.json": "b91abf9681005b50aef96698944f72265cecd771f74bafc3b87c56dfb9c3c77d",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_native.json.gz": "e64a092a722c39de6167ed22423ea20dad584583ea26e8b08cd182c33d0bc4e9",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_without_transfer.json.gz": "426cbc2f4df67ff1981a6e92b6cc3e1ded44067b81d61e04e5e9580ead12005f",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_with_searched_zero_left.json.gz": "b85920ed0180c73662e5fbc744a8c70822d571c02f3444679aabc85a2aed0675",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_point_plan.json": "b8f4e09ef7b2a4ee1630c4c64111dfdd396bc49720a24f89942b0d258a430ed7",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_point_summary.json": "6620dce210a8d3c2996669ccf5be471c00ec5285fe369b0ce509132ddfaf13b2",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_point_audit_plan.json": "4dfa029f0ab1182d7e8e95203286e88b862e5cb393820cc66a5f6c8d0ab50d1f",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_point_audit.json": "34da2a8859546a9283c193f507810194103896a16c80268789d5e850dc2d0131",
+    "docs/research/gcts-rl-renewal/left_successor_forward_control_point_encoding.json.gz": "abddc8c8bc49dd7b2f4ef42e2203657a7425ba18092bf5fbd0cdc1f62d4978ec",
+    "docs/research/gcts-rl-renewal/left_successor_frozen_evidence.zip": "7567c2dccc9e135462b565718e822af9d83d7dff777f1b6a8dab4a3d0afbb315",
+    "research/gcts-rl-renewal/left_successor_admission_audit.py": "8beafa3107d643450d5f33be8cc0d79fd72a43e95e8e43183db8f8295e6100a8",
+    "research/gcts-rl-renewal/left_successor_admit.py": "1becbe161f1e3dc9e4e24751405959be942aaeb29c11189a7fcc324574c45984",
+    "research/gcts-rl-renewal/left_successor_audit.py": "1b1ab87fd12ef7f208c967796151073dfbec20d2335952c8250dc4cd670f47f2",
+    "research/gcts-rl-renewal/left_successor_catalog.py": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+    "research/gcts-rl-renewal/left_successor_compact.py": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+    "research/gcts-rl-renewal/left_successor_compact_audit.py": "e5950b85b940d7550d87560ec51b1a77fcbcefdac9d5d9320f24f487617d2bfd",
+    "research/gcts-rl-renewal/left_successor_forward.py": "592b075155e207403656ab4bd0cebb665aab48d0e991d6af78d0f75e68af1d53",
+    "research/gcts-rl-renewal/left_successor_forward_audit.py": "e32a2b819d11052ec87d07a2c0b8e853f875e183e1006ba40f0f1345a3e5ae8c",
+    "research/gcts-rl-renewal/left_successor_forward_points.py": "bd17f2dcfbfbf420d598755a7c3eba26b7e4205b2f17dedaac62c6582fe411ae",
+    "research/gcts-rl-renewal/left_successor_forward_points_audit.py": "ed58deaa32afa0cb765bb606315603094ba7f3bd3592c2a587f4e022491407ad",
+    "research/gcts-rl-renewal/left_successor_native_pilot.py": "6d9d1c00bead57e004e0d8390f058536b7e592966124cb72659a41ebf5b65d1c",
+    "research/gcts-rl-renewal/left_successor_pilot_audit.py": "9237c0e82b46a48c598b33b5dc2b59b1fe4f0cda7ea2f06ab8f865942082aa53",
+    "research/gcts-rl-renewal/left_successor_points.py": "1ea33cb68ff909bba76dc7cb3702ae3eb1d643534619f02e11e259ba9eae861b",
+    "research/gcts-rl-renewal/left_successor_preflight.py": "897b3ac663b0a2278b7a22d3b8fadac128a968f6fe3959afc6687238530a2910",
+    "research/gcts-rl-renewal/left_successor_pruning_export.py": "67ba9d6ec2175976e8ae681e848fb315530818fdcb89f805c3374cf76bd2e874",
+    "research/gcts-rl-renewal/left_successor_rank_audit.py": "34ec8d3ad4f29a14698a86b26dd9d66bc62f54e8119dba24c58abcaae0538016",
+    "research/gcts-rl-renewal/left_successor_rank_points.py": "cd44576efd1a5b15b44f98de5c7280a05b14e9a37ff73084c1fff8d53ff92f18",
+    "research/gcts-rl-renewal/left_successor_rank_preflight.py": "c73d9a06eae078a081c5b52dcb1da9a95df20340bed5d07cd3ce6490573dfae0",
+    "research/gcts-rl-renewal/left_successor_rank_search.py": "6abc662adefb96005c0a8d36ff77ce58d77b241576080f3c7166d778c3797e7c",
+    "research/gcts-rl-renewal/left_successor_rank_search_audit.py": "171686c3571515900196e47dcb988548839480bbd63e8286fb2fff68a23e5ab6",
+    "research/gcts-rl-renewal/left_successor_reachability.py": "d71fb8eb9668a89444b4abbd96082f6fdb38544038d15d2a0d3bb8a5dfbfce4c",
+    "research/gcts-rl-renewal/left_successor_reachability_audit.py": "0d1ec8cbc507de8b255b98535c54a8c95499b198eb0a3c4495a70306d36fab98",
+    "research/gcts-rl-renewal/left_successor_report.py": "02bb61821c03f9094d9bd4a441d53e93818ba0c84c61980d01c4b550193d07a5",
+    "research/gcts-rl-renewal/left_successor_search.py": "3f26782356254a992824e534f5655d5665529b64f5452faf16b7495b614ae18c",
+    "research/gcts-rl-renewal/left_successor_search_audit.py": "1064e81f94d9c89178820df039af76592aa2d0da3c62039a60bc2581bcfdb458",
+    "docs/research/gcts-rl-renewal/left_successor_definition_slice_plan.json": "672c4c702ce0fcd6428659afe8cbca9dbcefc55743d4ead042a929289d237221",
+    "docs/research/gcts-rl-renewal/left_successor_definition_slice_summary.json": "dc26094e1041c789ae1e71b0b7638ff61e369d8322b9f360ae08713cb6dc057c",
+    "docs/research/gcts-rl-renewal/left_successor_definition_slice_audit_plan.json": "a80c6fb017a45318d5794871259504b96184f38243338f3523c5682ed6bac345",
+    "docs/research/gcts-rl-renewal/left_successor_definition_slice_audit.json": "f4e92c85c8fbc08d43cb0c76bb8a157ed617d7004da9fd4babbcf0453f9d0989",
+    "docs/research/gcts-rl-renewal/left_successor_definition_slice_result.json.gz": "623d30e21cce1b6763ea93d6e5adf45bfab8bfb3e211f57d18fab809d1ab0b60",
+    "research/gcts-rl-renewal/left_successor_definition_slice.py": "1e41b97b736be8467dfde10650b8ff0109f64350f8f0eca529727b29e1cbc4fd",
+    "research/gcts-rl-renewal/left_successor_definition_slice_audit.py": "1aa4e74fd0bf4b0c5ae7285f01ba9288f4fdf1cbac5b789ebc04f5705c4b0ca4",
+    "docs/research/gcts-rl-renewal/left_successor_workspace.html": "83912d8ac776c855be5c56d8e0d6943067ebed924d461ab51d8eb5f11dca410d",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_plan.json": "12a00f11fec10b361c67e61598d3489516dd51bd24d7e41995150d1e2cee7839",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_summary.json": "9910f154b58a639dabf0d79bf0d4ad5a951a4159554bbea6acc9dce747f6ce55",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_preflight.json.gz": "acfd37264a5de745276f39b31a2883c4ddd5bacc8b62d7acff4a94ecbfd1a2b0",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_audit_plan.json": "fbfeb1219a3100626d4dacb5585ac105966cc7f8f621b084ce27b071bc10bae5",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_run.log": "aa1eeba7e91052625aaa70389f1cf477aec84df2d30ec45b039f1c5ebb99d6a6",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_audit.log": "1693000d7a3aac6b548436ac265bebc331506420f569806666b5271182906361",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_first_unknown_audit_plan.json": "7ff354212ad4fa11786629b6e9d889496977976280538c800bac7ef39f58b2f6",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_first_unknown_audit.json": "3d9c5bbe72d704d315f58e0937b8a2d2ef597a31a90b602e108ee7fa3169c685",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_first_first_unknown_audit.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_plan.json": "e6714e669090756f7948703dc5a8a2143e4272d55a31c8bffcfbfb179ae7f113",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_summary.json": "ac328579485b94d76207eacc16473c1af2cac872d8e3db2b3ea1fe8cb87e9a7f",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_preflight.json.gz": "30ea8710071a5c8ba34c0e245edc05444c68089d57a8e5fb945c90bc59892812",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_audit_plan.json": "f6994490f1245ce2ed39a8e5a5b37441d874085d95e68e14a017b4a8311c4ee0",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_audit.json": "b058f248eaf98491600e40e39b33647a44bb2c2e79b568690223d6f18a29f488",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_query_000_enlarged_input.bin.gz": "e4589894359b7a3ecc755175a9de5937942c8d9ce77057dcc828171db31e47d4",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_preflight_query_001_enlarged_input.bin.gz": "861f3dc2c93f5679f994138da01dde3ed835fa8cf6a1dbc074ad9675a9b3cd69",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_native_plan.json": "bdc6603ee1ef2b77c554ba0732ed31eac5d48ed1fa79251ff91ab0c4c84c539d",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_native_summary.json": "3bc1342a349415c75f638aac68379f7ef05180b616aa229463b601bc58059d06",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_native_audit_plan.json": "64a8cbf3eb608ae1b1cec5fe5c74cb9a1b92ad37bf6399d927ca7b0931a6c6d9",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_native_audit.json": "64cb405065973eea0ef711a4cb292753ea5cd632e1596907e06ad6d990875f11",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_native_native.json.gz": "edc22d5e4043d3af7afd5c2b7863f6c5f0c4598faad600328426e4128c4d3772",
+    "docs/research/gcts-rl-renewal/left_successor_workspace_frozen_evidence.zip": "2aee0d94670e76b5ff64edc3d4ee4c14f0a959f641712415b78e35ddac6d0842",
+    "research/gcts-rl-renewal/left_successor_workspace.py": "50b0151b7d1e400d99cd72985e90c8ca46ea3e522df6c2e92daa3e7762717e16",
+    "research/gcts-rl-renewal/left_successor_workspace_audit.py": "50eb0ece161e1645e67f6e3f72d1f884c70b515fcf92f3dbc67b30b3aee74feb",
+    "research/gcts-rl-renewal/left_successor_workspace_first_audit.py": "ed7e18db1b13e55f2458cbf65fd64e7e0b128e29abd462b25d768a7dd587aa4d",
+    "research/gcts-rl-renewal/left_successor_workspace_native.py": "ad622c790935355a644d6bd0c9c046655cf2c7a22c7006e1ae08e992ba6fa32e",
+    "research/gcts-rl-renewal/left_successor_workspace_native_audit.py": "e54926f50659acce028279d889c89ae0c3fee3d0667719516d38a76d3f3f2bf0",
+    "research/gcts-rl-renewal/left_successor_workspace_report.py": "f9487b595b3d8d0649a2f0fa84cfe58d339f9b38e71d81aa277adbb711a8a58c",
+    "research/gcts-rl-renewal/left_successor_workspace_retry.py": "8f0ade358cb1f2cf0846a8458f3ee3edbeb201286ac118b59edac878eb207949",
+    "research/gcts-rl-renewal/left_successor_workspace_retry_audit.py": "8245d0364d58d2079240def47467b669768c2392bbd6db5e2f7213c6dc2a556e"
+  },
+  "ceilings": {
+    "seconds": 180,
+    "rss_bytes": 536870912,
+    "native_queries": 0,
+    "target_searches": 0,
+    "RL_training_runs": 0,
+    "materialized_placements": 20000
+  },
+  "candidate_grammar": "Every at-most-five-node term over zero/succ/add and eigenvariablesx,y; every axiom/proved-universal-equation/IH direction, occurrence, and missing-variable substitution retained when both contextual terms lie in the grammar. Five contexts: direct; base and conditional step for each target-bound variable. Every contextual equation has every declared quantifier-closure edge. Both full target-predicate induction interfaces, no selected variable or target proof path.",
+  "induction_predicate": [
+    "eq",
+    [
+      "fun",
+      "add",
+      [
+        [
+          "var",
+          "x"
+        ],
+        [
+          "var",
+          "y"
+        ]
+      ]
+    ],
+    [
+      "fun",
+      "add",
+      [
+        [
+          "var",
+          "y"
+        ],
+        [
+          "var",
+          "x"
+        ]
+      ]
+    ]
+  ],
+  "induction_variables": [
+    "x",
+    "y"
+  ],
+  "induction_quantifiers": "For each chosen induction variable, universally close the base and conditional step in all other target parameters. Induction hypothesis stays inside implication; all eigenvariable/distribution side conditions are checked inside actual primitive expansion.",
+  "native_gate": "Every retained definition must have an accepted exact whole native request and full independent true-parser replay before any admitted GCTS model exists. Earlier accepted primitive theorem requests do not automatically admit newly wrapped block definitions. Exact already-audited whole interface requests may be reused with historical costs separately.",
+  "cluster_proposal_contract": {
+    "status": "declared-prospective-not-executed",
+    "family": "A closed proved lemma row plus every contextual rewrite row requiring that exact lemma; the first equation input remains an external receptor. Expand to all8C/G/I1/I2 base placements; enumerate all strict-prior row/source choices.",
+    "execution": "Proposals provide continuation preferences only after global dead/forced propagation and earliest-generation point selection. They never change complete base domains/degrees. Each pending constituent must occur in the shared graph and be legally compatible with the actual state. Return to global propagation after each base placement, preserve all base fallback choices and exact rollback. No unscheduled macro transaction.",
+    "equal_inventory_controls": [
+      "Complete same two-lemma graph with base ordering",
+      "Complete same two-lemma graph with deterministic validated cluster preferences"
+    ],
+    "inventory_ablation": "no-transfer vs zero-left vs two-lemmas changes the language/inventory; it is not the equal-inventory speed comparison.",
+    "learning": "Automatic theorem promotion and deterministic receptor-family construction only. No RL training, learned markings or learned restrictions."
+  },
+  "resource_next_gate": "After this full independent feasibility audit, separately freeze a small representative capacity/native pilot before any complete admission batch or large target search. Estimate each exact new admission request under unchanged parser/checker/palette. Do not assume previous262144heap cells suffice.",
+  "unknowns": [
+    "All new block native admissions and capacity needs are unresolved except exact audited prior request reuse.",
+    "No addition-commutativity proof has been selected, searched or natively checked.",
+    "All earlier8left-successor GCTS/search unknowns and original heap unknowns are preserved.",
+    "This is a finite contextual-equational adaptation, not full-FOL/PA completeness or primitive Wang-square occupancy."
+  ],
+  "retry_disclosure": {
+    "first_attempt": "attempt-01/unknown-receipt.json",
+    "same_theory_target_grammar_inventory": true,
+    "changes": [
+      "in-place definition compaction after saving entire original catalog; shallow retained-core metadata copy instead of duplicating all full definitions",
+      "complete6-row geometry pilot instead of12-row; exact12/18/24counts still computed",
+      "explicit prospective placement ceiling enforcement; unknown exception checkpoint now labeled"
+    ]
+  }
+}

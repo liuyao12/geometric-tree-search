@@ -1,0 +1,37 @@
+{
+  "status": "passed_exact_grammar_correspondence_and_export_integrity",
+  "seconds": 5.478797625,
+  "comparisons": [
+    {
+      "lane": "no-transfer",
+      "variant": "full",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    },
+    {
+      "lane": "no-transfer",
+      "variant": "compact",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    },
+    {
+      "lane": "zero-left",
+      "variant": "full",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    },
+    {
+      "lane": "zero-left",
+      "variant": "compact",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    },
+    {
+      "lane": "two-lemmas",
+      "variant": "full",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    },
+    {
+      "lane": "two-lemmas",
+      "variant": "compact",
+      "all_catalog_fields_except_build_seconds_and_descriptive_compaction_tag_identical": true
+    }
+  ],
+  "manifest_sha256": "26fd4eed5cdb60da3e610cc5f4d8186f394b6a6ed54fc5b8f9cdd2dd4ea908e0"
+}
