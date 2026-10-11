@@ -1,0 +1,180 @@
+{
+  "base_commit": "221ab648b3fcbd5393c7987ce5cb7be012103390",
+  "status": "frozen_runtime_including_subprocess_workers",
+  "sources": [
+    {
+      "path": "research/gcts-rl-renewal/audit_logical_wang_clusters.py",
+      "sha256": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+      "role": "reused_published",
+      "bytes": 15000
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_proof_boundary.py",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+      "role": "reused_published",
+      "bytes": 11238
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tape_kernel.py",
+      "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+      "role": "reused_published",
+      "bytes": 10993
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+      "role": "reused_published",
+      "bytes": 12912
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_boundary_cases.py",
+      "sha256": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+      "role": "reused_published",
+      "bytes": 2256
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "role": "reused_published",
+      "bytes": 7089
+    },
+    {
+      "path": "research/gcts-rl-renewal/computation_blocks.py",
+      "sha256": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+      "role": "reused_published",
+      "bytes": 12692
+    },
+    {
+      "path": "research/gcts-rl-renewal/micro_cert.py",
+      "sha256": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+      "role": "reused_published",
+      "bytes": 3586
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "role": "reused_published",
+      "bytes": 10594
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inventory_cases.py",
+      "sha256": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+      "role": "reused_published",
+      "bytes": 2693
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "role": "reused_published",
+      "bytes": 2746
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_receptor_cases.py",
+      "sha256": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+      "role": "reused_published",
+      "bytes": 1078
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "role": "reused_published",
+      "bytes": 8962
+    },
+    {
+      "path": "research/gcts-rl-renewal/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "role": "reused_published",
+      "bytes": 6992
+    },
+    {
+      "path": "research/gcts-rl-renewal/run_semantic_inventory.py",
+      "sha256": "a89d9a6cbdad3944cf76021c31d25a12bb17d4774dc5de54455079fbbb85a862",
+      "role": "new_measured",
+      "bytes": 11330
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_cases.py",
+      "sha256": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+      "role": "new_measured",
+      "bytes": 3471
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+      "role": "new_measured",
+      "bytes": 6942
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+      "role": "new_measured",
+      "bytes": 2180
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_policy.py",
+      "sha256": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+      "role": "new_measured",
+      "bytes": 479
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+      "role": "new_measured",
+      "bytes": 5318
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_worker.py",
+      "sha256": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+      "role": "new_measured",
+      "bytes": 8956
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "role": "new_measured",
+      "bytes": 7196
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "role": "new_measured",
+      "bytes": 4593
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "role": "new_measured",
+      "bytes": 7409
+    },
+    {
+      "path": "research/gcts-rl-renewal/shared_wang_inventory.py",
+      "sha256": "0ccb1dfbe3f185c15c7683935c96d0ebcb23f3a256049848a374e090a1736a6c",
+      "role": "reused_published",
+      "bytes": 6099
+    },
+    {
+      "path": "research/gcts-rl-renewal/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "role": "reused_published",
+      "bytes": 3756
+    },
+    {
+      "path": "research/gcts-rl-renewal/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "role": "reused_published",
+      "bytes": 19188
+    },
+    {
+      "path": "research/gcts-rl-renewal/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "role": "reused_published",
+      "bytes": 13290
+    },
+    {
+      "path": "research/gcts-rl-renewal/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "role": "reused_published",
+      "bytes": 28533
+    }
+  ]
+}

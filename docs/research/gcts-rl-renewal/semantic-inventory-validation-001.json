@@ -1,0 +1,65 @@
+{
+  "version": "semantic-inventory-validation-001",
+  "status": "passed",
+  "base_commit": "221ab648b3fcbd5393c7987ce5cb7be012103390",
+  "producer_sha256": "b094761be97ab070c265baaeb22973b96fe6667353b96411e9796c850295f049",
+  "audit_sha256": "b7f1a66258aac1cdd1e2199291edd942338b22bd4173d44e063945d02578fc58",
+  "reader_sha256": "edbab285b9c2535957ff3dcc2ea03dff169458e2c36f358d3d666b71406fbb96",
+  "reader_source_sha256": "3f9b63867f0ae8c6d4f1ab9409e53483401ddd36d61031dea215bc36a26a9419",
+  "html_sha256": "1ff2aac808d99b293282498d2272bf737d2f40f3bba38ed3fdf7ede825eb26f7",
+  "outcomes": {
+    "unknown_search_budget": 28,
+    "native_proof_discovered": 44,
+    "solver_unsat_finite_point_region": 2,
+    "exhausted_finite_marked_region": 10,
+    "unknown_native_inventory": 12
+  },
+  "reader_checks": {
+    "status": "passed",
+    "proofs": 9,
+    "lines": 111,
+    "tiles": 2997,
+    "training_events": 214,
+    "observations": 96,
+    "mutations_rejected": [
+      "changed-final-assertion",
+      "changed-local-hypothesis",
+      "changed-prior-native-fact",
+      "lost-registered-interface",
+      "future-root-reference",
+      "lost-input-factor",
+      "changed-distant-word",
+      "changed-native-square",
+      "changed-physical-expansion",
+      "seeded-policy-start",
+      "changed-softmax",
+      "changed-gradient",
+      "invented-template",
+      "changed-request-pin",
+      "lost-cold-observation",
+      "invented-first-choice"
+    ]
+  },
+  "seconds": 6.831044125,
+  "conformance": {
+    "point_roots": "All finite C/G/B obligations active, including untouched points",
+    "scheduler": "Full all-node dead/forced/generation audit; all roots in this finite model have generation zero",
+    "marks": "Complete exact integer assignments, including distant points and inactive minus-one values",
+    "rollback": "Every original state fingerprint and complete fallback independently replayed",
+    "learning": "Ordering only; no learned candidate exclusion",
+    "specialized": "Finite syntax, unit occupancy, semantic registration and grouped exact SMT control explicitly declared",
+    "gaps": [
+      "No arbitrary fractional-support or changing-rule cases in this adapter; shared kernel tests are earlier evidence",
+      "No geometric or infinite-domain equivalence claim",
+      "No universal high-level compiler theorem",
+      "No full PA/Hilbert completeness or competitive prover superiority",
+      "Single learned seed and two deterministic cold repetitions; auxiliary replay overlap limits timing inference"
+    ]
+  },
+  "sources": {
+    "validate_semantic_inventory.py": "68f34dad930a64f3d62e6c44fa820f3058efba371848c69ed374eec70e39329b",
+    "test_semantic_inventory_reader.cjs": "bea310c2916371dfa9546464ed6975e52690792f1d3997c1768a00f7bd5cb084",
+    "test_semantic_receptors.py": "69ce85ac7cc94267120b378cdd792a6cb9dd1e54bc44a3667abb74b84f9aedab",
+    "export_semantic_inventory.py": "72f1e35d145a03a170604d2c29249d630f8d1aace8ddfd76f964c26d6ebfb828"
+  }
+}
