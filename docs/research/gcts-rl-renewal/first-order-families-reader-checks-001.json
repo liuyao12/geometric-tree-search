@@ -1,0 +1,1113 @@
+{
+  "version": "first-order-families-reader-checks-001",
+  "status": "passed",
+  "node": {
+    "status": "passed",
+    "cases": 7,
+    "observations": 70,
+    "proofs": 44,
+    "training_proofs": 12,
+    "native_queries": 780,
+    "families": 3,
+    "episodes": 12,
+    "corruptions": [
+      {
+        "name": "unfinished independent audit",
+        "rejected": true,
+        "reason": "passed independent audit"
+      },
+      {
+        "name": "incorrect typed family parameter",
+        "rejected": true,
+        "reason": "independent seed extraction parameters"
+      },
+      {
+        "name": "changed actual donor occurrence",
+        "rejected": true,
+        "reason": "independent seed extraction template"
+      },
+      {
+        "name": "changed dependent-family dependency",
+        "rejected": true,
+        "reason": "independent dependent-family extraction dependencies"
+      },
+      {
+        "name": "omitted matched family interface",
+        "rejected": true,
+        "reason": "complete typed ground inventory interfaces"
+      },
+      {
+        "name": "omitted ground definition",
+        "rejected": true,
+        "reason": "complete typed ground inventory definitions"
+      },
+      {
+        "name": "incorrect ground predicate arity",
+        "rejected": true,
+        "reason": "complete typed ground inventory definitions"
+      },
+      {
+        "name": "wrong checked ground premise",
+        "rejected": true,
+        "reason": "complete typed ground inventory definitions"
+      },
+      {
+        "name": "unknown ground admission",
+        "rejected": true,
+        "reason": "native acceptance"
+      },
+      {
+        "name": "changed finite term pool",
+        "rejected": true,
+        "reason": "full independent first-order catalog"
+      },
+      {
+        "name": "omitted native scheme",
+        "rejected": true,
+        "reason": "all admitted schemes"
+      },
+      {
+        "name": "unresolved compiler query claimed complete",
+        "rejected": true,
+        "reason": "unknown cannot prune compilation"
+      },
+      {
+        "name": "missing distant input word",
+        "rejected": true,
+        "reason": "complete distant input marking"
+      },
+      {
+        "name": "missing complete word terminator",
+        "rejected": true,
+        "reason": "complete command/formula word and terminators"
+      },
+      {
+        "name": "incorrect unused receptor sentinel",
+        "rejected": true,
+        "reason": "complete distant input marking"
+      },
+      {
+        "name": "incorrect receptor mode",
+        "rejected": true,
+        "reason": "exact input receptor identity"
+      },
+      {
+        "name": "forward lemma premise source",
+        "rejected": true,
+        "reason": "exact input receptor identity"
+      },
+      {
+        "name": "wrong command type identity",
+        "rejected": true,
+        "reason": "exact C/G tile identity"
+      },
+      {
+        "name": "changed initial target word",
+        "rejected": true,
+        "reason": "complete fixed target word"
+      },
+      {
+        "name": "incorrect complete command count",
+        "rejected": true,
+        "reason": "complete positional grammar"
+      },
+      {
+        "name": "different auxiliary role count",
+        "rejected": true,
+        "reason": "identical declared receptor roots"
+      },
+      {
+        "name": "wrong whole native proof query",
+        "rejected": true,
+        "reason": "exact native request and parser-start binding"
+      },
+      {
+        "name": "future exact acceptance reused",
+        "rejected": true,
+        "reason": "only earlier exact whole acceptance reused"
+      },
+      {
+        "name": "unknown search carries acceptance",
+        "rejected": true,
+        "reason": "unfinished search has no acceptance"
+      },
+      {
+        "name": "false zero-start weights",
+        "rejected": true,
+        "reason": "fresh training order"
+      },
+      {
+        "name": "incorrect learned reward",
+        "rejected": true,
+        "reason": "actual recorded policy gradient"
+      },
+      {
+        "name": "incorrect policy update",
+        "rejected": true,
+        "reason": "zero-start policy update"
+      },
+      {
+        "name": "duplicate recipient observation",
+        "rejected": true,
+        "reason": "all rotated recipient observations"
+      },
+      {
+        "name": "native request SHA mismatch",
+        "rejected": true,
+        "reason": "native semantic SHA-256"
+      },
+      {
+        "name": "false claimed countermodel",
+        "rejected": true,
+        "reason": "countermodel actually satisfies inputs and falsifies target"
+      }
+    ],
+    "reader_sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+    "script_sha256": "011e7f6976b4f522989366a0a0c0118d763f8ea00cdbb70d02a2c1d8e2c9fd8a",
+    "test_source_sha256": "f5d6d2ca362fc63629a0b4996eecc668b20cf177bf1b5d90f58ebf4ed736aabb"
+  },
+  "core_unit_tests": {
+    "status": "passed",
+    "tests": 7,
+    "seconds": 2.412,
+    "source_sha256": "71dda2008233688b1f083a2884c64cff4d550600549f12201e5f57a531d15516",
+    "scope": "Complete tiny-word equivalence, independent typed joins and extraction, all 64 selected subsets, dependency promotion found by GCTS, compound terms, arity gates, full fallback, missing markings and unknown/rejected admission. Unit admissions use the independent logical fixture; measured pilot uses native execution."
+  },
+  "browser": {
+    "status": "passed",
+    "url": "http://127.0.0.1:8765/first-order-families.html?v=20261011-ff2#reader",
+    "states": [
+      {
+        "case": "two-equalities-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n233\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 176,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n234\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 179,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n235\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n236\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n233\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 176,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n234\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 179,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n235\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "Native computation \n236\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n308\n accepted this exact \n9\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 324,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n309\n accepted this exact \n9\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 321,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n310\n accepted this exact \n9\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 777,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n311\n accepted this exact \n9\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 777,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n308\n accepted this exact \n9\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 324,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n309\n accepted this exact \n9\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 321,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n310\n accepted this exact \n9\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 777,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "Native computation \n311\n accepted this exact \n9\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 9,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 45,
+        "undefinedTex": null,
+        "wordCells": 777,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "two-equalities-nine",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n429\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n428\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "Native computation \n429\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 305,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "compound-terms-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n501\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 176,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n502\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 179,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n503\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n504\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n501\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 176,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n502\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 179,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n503\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "Native computation \n504\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 269,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "symbolic-points-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "Native computation \n659\n accepted this exact \n7\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 7,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 35,
+        "undefinedTex": null,
+        "wordCells": 264,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "Native computation \n660\n accepted this exact \n7\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 7,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 35,
+        "undefinedTex": null,
+        "wordCells": 261,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "Native computation \n659\n accepted this exact \n7\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 7,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 35,
+        "undefinedTex": null,
+        "wordCells": 264,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "Native computation \n660\n accepted this exact \n7\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 7,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 35,
+        "undefinedTex": null,
+        "wordCells": 261,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "three-equalities-seven",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. This observation caused a fresh whole native check.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "Native computation \n707\n accepted this exact \n5\n-row certificate, including every used lemma definition. The exact earlier acceptance is disclosed reuse within this experiment.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 5,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 25,
+        "undefinedTex": null,
+        "wordCells": 226,
+        "expectedStatus": "finite_marked_proof_region"
+      },
+      {
+        "case": "quantifier-equality-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r1",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-fixed-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-learned-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The declared search budget ended without a proof. This observation remains unknown.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "family-ungrouped-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "unknown_search_budget"
+      },
+      {
+        "case": "disconnected-premise-five",
+        "context": "The complete declared finite region was exhausted. No proof or native acceptance is claimed.",
+        "mathErrors": 0,
+        "overflow": false,
+        "proof": "primitive-base-r2",
+        "rows": 0,
+        "status": "Checked 3 mined families, 12 fresh training episodes and 70 recipient observations. Full native execution and complete search-tree replay passed outside this browser.",
+        "tiles": 0,
+        "undefinedTex": null,
+        "wordCells": 0,
+        "expectedStatus": "exhausted_finite_marked_region"
+      }
+    ],
+    "expansion": {
+      "case": "two-equalities-five",
+      "hasEqualitySubstitution": true,
+      "hasLocalReferences": true,
+      "mathErrors": 0,
+      "open": [
+        {
+          "steps": 5,
+          "summary": "Expand checked family \n\ud835\udc3f\n3\n \u00b7 level \n2"
+        },
+        {
+          "steps": 5,
+          "summary": "Expand checked family \n\ud835\udc3f\n1\n \u00b7 level \n1"
+        }
+      ],
+      "overflow": false,
+      "proof": "family-fixed-r1",
+      "undefinedTex": null
+    },
+    "scope": "All seventy recipient views, complete row/role/word counts, outcome contexts, mathematical rendering, no page overflow, and actual two-level lemma expansion."
+  },
+  "scope": "Node reconstructs typed family extraction and every finite binding, compiler/admission authority, selected proof-role markings, native acceptance reuse and recorded training updates. It rejects deliberate corruptions. The browser visits every recorded recipient view and expands the actual nested lemma derivation. Full candidate graphs, policy proposals and native tape computations are separately checked by the independent offline auditor."
+}

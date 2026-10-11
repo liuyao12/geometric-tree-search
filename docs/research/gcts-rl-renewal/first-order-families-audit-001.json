@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "version": "first-order-families-audit-001",
+  "cases": [
+    {
+      "id": "two-equalities-five",
+      "observations": 10,
+      "ground_definitions": 29,
+      "interfaces": 29
+    },
+    {
+      "id": "two-equalities-nine",
+      "observations": 10,
+      "ground_definitions": 29,
+      "interfaces": 29
+    },
+    {
+      "id": "compound-terms-five",
+      "observations": 10,
+      "ground_definitions": 29,
+      "interfaces": 29
+    },
+    {
+      "id": "symbolic-points-five",
+      "observations": 10,
+      "ground_definitions": 29,
+      "interfaces": 29
+    },
+    {
+      "id": "three-equalities-seven",
+      "observations": 10,
+      "ground_definitions": 71,
+      "interfaces": 71
+    },
+    {
+      "id": "quantifier-equality-five",
+      "observations": 10,
+      "ground_definitions": 16,
+      "interfaces": 16
+    },
+    {
+      "id": "disconnected-premise-five",
+      "observations": 10,
+      "ground_definitions": 29,
+      "interfaces": 29
+    }
+  ],
+  "countermodels": {
+    "disconnected-premise-five": {
+      "domain_size": 2,
+      "axioms_true": true,
+      "target_false": true
+    }
+  },
+  "families": 3,
+  "levels": [
+    1,
+    2
+  ],
+  "episodes": 12,
+  "native_queries": 780,
+  "micro_steps": 206127018072,
+  "accepted_requests": 380,
+  "seconds": 2224.253906875,
+  "nodes": 54872,
+  "events": 2937,
+  "hints": 2932,
+  "proofs": 57
+}
