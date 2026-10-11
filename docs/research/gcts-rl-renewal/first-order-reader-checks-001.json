@@ -1,0 +1,575 @@
+{
+  "version": "first-order-reader-checks-001",
+  "status": "passed",
+  "node": {
+    "status": "passed",
+    "cases": 7,
+    "observations": 42,
+    "proofs": 36,
+    "native_queries": 202,
+    "corruptions": [
+      {
+        "name": "changed quantified term pool",
+        "rejected": true,
+        "reason": "complete independent syntax closure"
+      },
+      {
+        "name": "incorrectly captured bound variable",
+        "rejected": true,
+        "reason": "complete independent syntax closure"
+      },
+      {
+        "name": "wrong equality template",
+        "rejected": true,
+        "reason": "all and only native-admitted schemes"
+      },
+      {
+        "name": "omitted admitted scheme",
+        "rejected": true,
+        "reason": "all and only native-admitted schemes"
+      },
+      {
+        "name": "unresolved compiler query claimed complete",
+        "rejected": true,
+        "reason": "unresolved guard cannot prune"
+      },
+      {
+        "name": "missing distant premise word",
+        "rejected": true,
+        "reason": "complete full-word marking and terminator"
+      },
+      {
+        "name": "missing whole word terminator",
+        "rejected": true,
+        "reason": "complete full-word marking and terminator"
+      },
+      {
+        "name": "wrong command type identity",
+        "rejected": true,
+        "reason": "exact positional command identity"
+      },
+      {
+        "name": "changed initial target",
+        "rejected": true,
+        "reason": "fixed target word and terminator"
+      },
+      {
+        "name": "wrong native proof query",
+        "rejected": true,
+        "reason": "exact native query binding"
+      },
+      {
+        "name": "future premise receptor",
+        "rejected": true,
+        "reason": "exact distant premise dependencies"
+      },
+      {
+        "name": "changed assigned value",
+        "rejected": true,
+        "reason": "complete full-word marking and terminator"
+      },
+      {
+        "name": "unknown search carries acceptance",
+        "rejected": true,
+        "reason": "unfinished search has no proof authority"
+      },
+      {
+        "name": "false exact acceptance reuse",
+        "rejected": true,
+        "reason": "only earlier exact acceptance reused"
+      },
+      {
+        "name": "duplicate recorded lane",
+        "rejected": true,
+        "reason": "unique declared observation"
+      },
+      {
+        "name": "native semantic request SHA mismatch",
+        "rejected": true,
+        "reason": "native semantic request SHA-256"
+      }
+    ],
+    "reader_sha256": "f156f08ecf7e1a460845683fe7eefac8b300bfef534b13881675bcdef390a228",
+    "script_sha256": "386c7aa5bd6658f1c99bb7a467c5713d60f0a30d3da750c80c06e9458c4a108a",
+    "test_source_sha256": "32b3e3d30b726f3866c0d15e195fef920c08996b446944232001a78982193667"
+  },
+  "core_unit_tests": {
+    "count": 7,
+    "seconds": 0.558,
+    "log_sha256": "3dfe13eb0437414ceb3958ac4cf6ddb4ccd6ed0966b8d548a439e07bd65ab9d1",
+    "source_sha256": "f1b9a7241fd1261362a932da5a3987f9ddf5660bd2d3cdb6c51be3f971fe2b6d"
+  },
+  "browser": {
+    "status": "passed",
+    "observations": 42,
+    "successfulProofViews": 36,
+    "unknownViews": 6,
+    "mathErrors": 0,
+    "pageOverflow": false,
+    "states": [
+      {
+        "case": "quantified-application",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n10\n accepted this exact \n5\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "quantified-application",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n11\n accepted this exact \n5\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "quantified-application",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n10\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "quantified-application",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n11\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "quantified-application",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n10\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "quantified-application",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n10\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 352
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "equality-predicate",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n27\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 278
+      },
+      {
+        "case": "double-universal",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "double-universal",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "double-universal",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "double-universal",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "double-universal",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "double-universal",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n58\n accepted this exact \n5\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 5,
+        "tiles": 10,
+        "wordCells": 394
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "capture-avoiding",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n72\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 256
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "pa-addition-base",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n115\n accepted this exact \n3\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 3,
+        "tiles": 6,
+        "wordCells": 304
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1",
+        "context": "Native computation \n158\n accepted this exact \n7\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1",
+        "context": "Native computation \n159\n accepted this exact \n7\n-row certificate. This observation caused a fresh whole native check.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1",
+        "context": "Native computation \n158\n accepted this exact \n7\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2",
+        "context": "Native computation \n159\n accepted this exact \n7\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2",
+        "context": "Native computation \n158\n accepted this exact \n7\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "hilbert-incidence-typing",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2",
+        "context": "Native computation \n158\n accepted this exact \n7\n-row certificate. An earlier identical certificate in this experiment supplied the reused acceptance.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 7,
+        "tiles": 14,
+        "wordCells": 823
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "base-r1",
+        "label": "base \u00b7 repetition 1 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "fixed-r1",
+        "label": "fixed \u00b7 repetition 1 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "learned-r1",
+        "label": "learned \u00b7 repetition 1 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "fixed-r2",
+        "label": "fixed \u00b7 repetition 2 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "learned-r2",
+        "label": "learned \u00b7 repetition 2 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      },
+      {
+        "case": "equality-two-steps",
+        "observation": "base-r2",
+        "label": "base \u00b7 repetition 2 \u00b7 unknown",
+        "context": "This search exhausted its declared budget. No proof or native acceptance is claimed.",
+        "errors": 0,
+        "overflow": false,
+        "rows": 0,
+        "tiles": 0,
+        "wordCells": 0
+      }
+    ]
+  },
+  "scope": "Compact browser evidence and rendering checks are separate from the full independent native-computation and search-tree audit."
+}

@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "version": "first-order-audit-001",
+  "cases": [
+    {
+      "id": "quantified-application",
+      "syntax_formulas": 8,
+      "schemes": 1,
+      "placements": 370
+    },
+    {
+      "id": "equality-predicate",
+      "syntax_formulas": 11,
+      "schemes": 3,
+      "placements": 454
+    },
+    {
+      "id": "double-universal",
+      "syntax_formulas": 21,
+      "schemes": 8,
+      "placements": 993
+    },
+    {
+      "id": "capture-avoiding",
+      "syntax_formulas": 9,
+      "schemes": 3,
+      "placements": 124
+    },
+    {
+      "id": "pa-addition-base",
+      "syntax_formulas": 31,
+      "schemes": 10,
+      "placements": 308
+    },
+    {
+      "id": "hilbert-incidence-typing",
+      "syntax_formulas": 33,
+      "schemes": 8,
+      "placements": 4587
+    },
+    {
+      "id": "equality-two-steps",
+      "syntax_formulas": 31,
+      "schemes": 10,
+      "placements": 8169
+    }
+  ],
+  "observations": 42,
+  "native_queries": 202,
+  "micro_steps": 17118334253,
+  "accepted_requests": 62,
+  "seconds": 285.617278,
+  "nodes": 21132,
+  "events": 2042,
+  "hints": 2042,
+  "proofs": 36
+}

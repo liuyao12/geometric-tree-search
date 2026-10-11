@@ -1,0 +1,618 @@
+{
+  "increment": 67,
+  "status": "predeclared",
+  "created_utc": "2026-10-11T07:50:28.147939+00:00",
+  "published_base": "a3df2b39e782a0fe0be9ecb137164c575a459c6e",
+  "previous_goal_turn": "Progress: Notebook 66 published and live-verified: 81 files, six-line certificate, exact point/direct base controls. Full program active.",
+  "full_program_status": "active",
+  "objective": "Extend the high-level reference point grammar with native-admitted universal instantiation and equality substitution above the unchanged primitive Wang checker. Search declared first-order assertions without a supplied proof sequence.",
+  "cases": [
+    {
+      "id": "quantified-application",
+      "title": "Apply a universally quantified implication",
+      "theory": {
+        "functions": {
+          "a": 0
+        },
+        "predicates": {
+          "P": 1,
+          "Q": 1
+        },
+        "axioms": {
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "premise": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "pred",
+        "Q",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "length": 5,
+      "instantiation_rounds": 2,
+      "scope": "First-order implication application; no derived instance is supplied."
+    },
+    {
+      "id": "equality-predicate",
+      "title": "Transport a predicate across equality",
+      "theory": {
+        "functions": {
+          "a": 0,
+          "b": 0
+        },
+        "predicates": {
+          "P": 1
+        },
+        "axioms": {
+          "equality": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "premise": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "length": 5,
+      "instantiation_rounds": 2,
+      "scope": "Ground equality operands and an atomic predicate template; no substitution proof is supplied."
+    },
+    {
+      "id": "double-universal",
+      "title": "Instantiate two nested quantifiers",
+      "theory": {
+        "functions": {
+          "a": 0,
+          "b": 0
+        },
+        "predicates": {
+          "R": 2
+        },
+        "axioms": {
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "pred",
+        "R",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "length": 5,
+      "instantiation_rounds": 2,
+      "scope": "Uniform two-round syntax closure; no intermediate quantified formula is supplied."
+    },
+    {
+      "id": "capture-avoiding",
+      "title": "Keep a free variable free during instantiation",
+      "theory": {
+        "functions": {},
+        "predicates": {
+          "R": 2
+        },
+        "axioms": {
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "all",
+        "fresh0",
+        [
+          "pred",
+          "R",
+          [
+            [
+              "var",
+              "y"
+            ],
+            [
+              "var",
+              "fresh0"
+            ]
+          ]
+        ]
+      ],
+      "length": 3,
+      "instantiation_rounds": 2,
+      "scope": "The target uses the native deterministic fresh name. The input gives no proof commands; the term pool follows free target variables."
+    },
+    {
+      "id": "pa-addition-base",
+      "title": "Instantiate the Peano addition base axiom",
+      "theory": {
+        "functions": {
+          "a": 0,
+          "zero": 0,
+          "add": 2
+        },
+        "predicates": {},
+        "axioms": {
+          "add_base": [
+            "all",
+            "x",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "length": 3,
+      "instantiation_rounds": 2,
+      "scope": "One defining addition axiom, with a named constant. This is an axiom instance, not induction or a full Peano-arithmetic result."
+    },
+    {
+      "id": "hilbert-incidence-typing",
+      "title": "Extract point typing from symbolic incidence",
+      "theory": {
+        "functions": {
+          "A": 0,
+          "ell": 0
+        },
+        "predicates": {
+          "Incident": 2,
+          "Point": 1
+        },
+        "axioms": {
+          "typing": [
+            "all",
+            "x",
+            [
+              "all",
+              "l",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "l"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "incidence": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "ell",
+                []
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ]
+        ]
+      ],
+      "length": 7,
+      "instantiation_rounds": 2,
+      "scope": "A one-sorted incidence-typing consequence. It is a preparation for Hilbert geometry, with no coordinates or drawing-based inference; it does not establish the full Hilbert axiom system."
+    },
+    {
+      "id": "equality-two-steps",
+      "title": "Transport through two equality hypotheses",
+      "theory": {
+        "functions": {
+          "a": 0,
+          "b": 0,
+          "c": 0
+        },
+        "predicates": {
+          "P": 1
+        },
+        "axioms": {
+          "first": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "second": [
+            "eq",
+            [
+              "fun",
+              "b",
+              []
+            ],
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ],
+          "premise": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        },
+        "schemas": []
+      },
+      "target": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "c",
+            []
+          ]
+        ]
+      ],
+      "length": 9,
+      "instantiation_rounds": 2,
+      "scope": "Longer compositional target under the same uniform grammar and budget; unresolved searches remain unknown."
+    }
+  ],
+  "modes": [
+    "base",
+    "fixed",
+    "learned"
+  ],
+  "repetitions": [
+    1,
+    2
+  ],
+  "schedules": {
+    "1": [
+      "base",
+      "fixed",
+      "learned"
+    ],
+    "2": [
+      "fixed",
+      "learned",
+      "base"
+    ]
+  },
+  "seed": 67000,
+  "search_limits": {
+    "attempts": 2000,
+    "seconds": 60,
+    "proposal_limit": 24,
+    "proposal_checks": 2048
+  },
+  "native_steps": 5000000000,
+  "compile_queries": 512,
+  "source_sha256": {
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/run_first_order.py": "c1e4f707aa47c49a90011e806db1d396139d260f9a56bf42faa7fff2f7dc5f6b",
+    "research/gcts-rl-renewal/test_first_order.py": "f1b9a7241fd1261362a932da5a3987f9ddf5660bd2d3cdb6c51be3f971fe2b6d",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/first_order_worker.py": "25f3d8352e5a2037e42e16700da6cc0c6e46aefb6e353e3da0486a4b3182d5aa",
+    "research/gcts-rl-renewal/first_order_cases.py": "ab16dd5558d2d0d00ef8c205694b6548d940bd931f8d3abd4edcc1c3bb256451"
+  },
+  "prior_source_closure": {
+    "docs/research/gcts-rl-renewal/boundary-reuse.js": "4a8b089ca4a39ce00632c4b1c4b2e230e9d863b6b77fe773fb159ce22ee05f26",
+    "research/gcts-rl-renewal/audit_boundary_reuse.py": "6c962843f70a8c2e13063aed35b8382895efd89425789f142706902b4913a062",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_conditional_failure_markings.py": "7f3adba53fa74d503680eff30b2cabdbdaed74fe9c61cf59751c82438e9e197b",
+    "research/gcts-rl-renewal/audit_conditional_pilot.py": "0b6bf146aac3ff96ec6d27edc18304cda8f178377f87bf2d2851b3178ad32615",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/boundary_reuse_constraints.py": "8f0b49b31e354818e9d302a15534e124ecfb4ac98a21369dbf822af805ab5351",
+    "research/gcts-rl-renewal/boundary_reuse_worker.py": "1a076934e3e5c9308febb9ce43a1a6d6705b0337b340f05625256574ee3d9fcc",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/conditional_failure_markings.py": "89aa25dba1411b0411781700b9a7b4dabe4f2dd7323924ee0a510e898eda67c9",
+    "research/gcts-rl-renewal/conditional_provenance_001/audit_conditional_failure_markings.py": "8f5fa6a1a6f75b9a11ab936eadc245439ad000595f349aa50c7875e5a30bf3b5",
+    "research/gcts-rl-renewal/conditional_provenance_001/audit_conditional_pilot.py": "988296506b716034a1dff88066a507f5141a2b851916897c160843d92c8b02af",
+    "research/gcts-rl-renewal/export_boundary_reuse.py": "32ae2e8bfa1a48a8d6967d13c2785138212b547c6c1804ad0b823cc002f703c7",
+    "research/gcts-rl-renewal/export_conditional_pilot.py": "3ac9a0affd21c85f076a86eefdf17755d48d2591035ca16917ef189f064831e4",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/prefix_failure_differential.py": "42662cdcba382aaf24240217ecbb4be443f535215df75ea9760c252a0087a86e",
+    "research/gcts-rl-renewal/prefix_failure_markings.py": "8c3879a7daba33cf8613fe4bdb8aac359b40ece0d22d08810cb49eb6d3d9b790",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/run_boundary_reuse.py": "15be1047bf950d098b30a166310ff275f3dd32c8c61cb28352b32b2fca90848e",
+    "research/gcts-rl-renewal/run_conditional_failure_pilot.py": "732b5ef400aa0ab91027d9c728dff31aec8010b136e790f6e13896dbc3107ab8",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/test_boundary_reuse.py": "bd444224959e254edf2e8e3d4eb6f4f932aad976e6608a895fe368e3a85b8662",
+    "research/gcts-rl-renewal/test_boundary_reuse_reader.js": "c6f0283abb312b2a2948d17341902acb809fa9ecc57d5fc960a464d758b7abbf",
+    "research/gcts-rl-renewal/test_conditional_failure_markings.py": "19af2ab778eb1d2bed496a2b0af9714259494f5a1ee9e94891f239e144c265d7",
+    "research/gcts-rl-renewal/test_conditional_provenance.py": "122d09eb1973d8c7adcd2490bcc47a8659ae2593bcc5b88c989738edf85f505c",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+  },
+  "policy_sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+  "unit_test_log_sha256": "3dfe13eb0437414ceb3958ac4cf6ddb4ccd6ed0966b8d548a439e07bd65ab9d1",
+  "data_dependencies": {
+    "docs/research/gcts-rl-renewal/semantic-inventory-policy-001.json": {
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "bytes": 4502
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-machine-001.bin.gz": {
+      "sha256": "7e695d5d357a290cae02d8e09cd8c49f964b1a10680d0a7b9d4a2a61748eada3",
+      "bytes": 7250851
+    },
+    "docs/research/gcts-rl-renewal/semantic-inventory-training-001.json.gz": {
+      "sha256": "f25994d779c056548c51e6283a13ec22cc4df2affe202229e7fa1d29afe3f2a2",
+      "bytes": 936807
+    },
+    "docs/research/gcts-rl-renewal/conditional-audit-001.json.gz": {
+      "sha256": "7a8d450c6045166ae09a70f924aa91476f1091e67f3fa610463107d8165d50a5",
+      "bytes": 6795
+    }
+  },
+  "unit_scope": {
+    "tests": 7,
+    "complete_tiny_words": 2457,
+    "valid_tiny_words": 2,
+    "selected_subsets": 64
+  },
+  "development_notes": [
+    "Initial unit expectation overlooked the two orders of the independent hypothesis/scheme rows; exhaustive geometry/logical equality already passed and expected count was corrected to two.",
+    "Two corruption test assertions were corrected before measurement: wire records need JSON lists for mutation; the separate logical replay returns an explicit rejected status rather than necessarily raising.",
+    "The new finite grammar uses one command per parameter-determined scheme output and the declared equality operand-pair set; no artificial scheme/output Cartesian product is claimed."
+  ],
+  "reuse": {
+    "weights": "Frozen Notebook 63 numerical weights only; out-of-training-language transfer, no new RL training.",
+    "lemmas": "No registered lemma families in this increment; primitive row clusters and open sampled clusters remain available.",
+    "failures": "No prior failure constraints; changed grammar/basis requires new certification before reuse."
+  },
+  "cost_scope": {
+    "compilation": "Every assertion freshly admits its full native guard catalog once; this shared cost is shown separately from six fresh-process search observations.",
+    "search": "Graph initialization, branching, cluster proposal checks and trace construction.",
+    "worker": "Python startup, model building, search and trace serialization.",
+    "memory": "Whole macOS worker peak RSS through search; bytes, not isolated engine allocations.",
+    "native": "Fresh distinct whole certificates checked once; exact in-experiment acceptance reuse explicit. Full independent replay additional."
+  },
+  "gaps": [
+    "Finite positional C/G adapter, with fixed orientation, not square-by-square search of the primitive Wang execution.",
+    "Finite two-round syntax closure, atomic equality templates and input-derived closed equality operand pairs; no unrestricted FOL completeness.",
+    "No Peano induction, full Hilbert theory, external leaderboard, new policy training, new failure-marking learning or plane-extension claim.",
+    "Turtle/Penrose/substitution/plane objectives remain open."
+  ]
+}
