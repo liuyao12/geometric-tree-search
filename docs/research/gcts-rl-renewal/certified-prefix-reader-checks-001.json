@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "reader_sha256": "0dbdbefd60982bfe1d14cad97cb3ead98d19145ddb77c15a7a46599aa266de63",
+  "html_sha256": "3b775fe75a41c1f107ada2fd79aeaeafcba2c88d8e35a2061c1251192f2b6008",
+  "javascript_sha256": "00c01b7f870e19351734d2e42b2410519d50717e598f859ea8888c350fdd30e8",
+  "source_closure_verified": 43,
+  "unit_tests": 9,
+  "browser_prefix_controls": 88,
+  "reader_corruptions": {
+    "status": "passed",
+    "positive_cases": 3,
+    "mutations_rejected": [
+      {
+        "name": "flipped-representative-value",
+        "rejected": true,
+        "reason": "extra tile value"
+      },
+      {
+        "name": "missing-word-terminator",
+        "rejected": true,
+        "reason": "every source word byte and terminator"
+      },
+      {
+        "name": "changed-failure-port",
+        "rejected": true,
+        "reason": "exact failure coordinate"
+      },
+      {
+        "name": "dropped-distant-identity",
+        "rejected": true,
+        "reason": "all affected identities"
+      },
+      {
+        "name": "unknown-used-as-exclusion",
+        "rejected": true,
+        "reason": "teacher counts"
+      },
+      {
+        "name": "missing-selected-input",
+        "rejected": true,
+        "reason": "whole selected exact target"
+      },
+      {
+        "name": "wrong-global-native-query",
+        "rejected": true,
+        "reason": "actual fresh native root check"
+      },
+      {
+        "name": "changed-final-formula",
+        "rejected": true,
+        "reason": "complete selected marking agreement"
+      }
+    ]
+  },
+  "links_checked": true
+}

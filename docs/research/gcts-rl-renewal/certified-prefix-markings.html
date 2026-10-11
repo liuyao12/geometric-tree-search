@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certified failure markings · GCTS research notebook 64</title>
+  <link rel="stylesheet" href="report.css?v=20261011-cp1">
+  <style>
+    .intro{margin-top:42px}h1{font-size:clamp(40px,5vw,64px)}.columns{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:26px}.columns>div{min-width:0}.facts{display:flex;gap:24px;flex-wrap:wrap;margin:25px 0}.fact strong{display:block;font-size:35px;font-weight:500}.fact span{font-size:12px;color:var(--muted)}.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin:14px 0}.legend span{border-left:7px solid;padding-left:7px}.legend .formula{border-color:#80569e}.legend .rule{border-color:#b98528}.legend .failure{border-color:#b34851}.legend .consumer{border-color:#377fa0}.diagram-scroll{overflow:auto;background:#f1f4ec;border-radius:5px}.diagram-scroll svg{display:block;width:100%;min-width:0}.notice{padding:15px;border-left:4px solid #b34851;background:#f7eae5;margin:18px 0}.notice p{margin:4px 0}.notice.positive{border-color:#277452;background:#eaf2e8}.notice.unknown{border-color:#a57f2e;background:#f7f0db}#failure-summary .statement{font-size:23px}.small{line-height:1.6}.formula-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.formula-grid>div{background:#f1f4ec;padding:14px}.proof-line{display:grid;grid-template-columns:35px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.proof-line p{margin:5px 0}.proof-line .formula{font-size:21px}.proof-line .line-number{color:var(--muted);font-size:13px}details pre{max-height:450px;overflow:auto;white-space:pre;font-size:11px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:12px 9px;border-bottom:1px solid var(--line);text-align:left}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}td.num{font-variant-numeric:tabular-nums}.scroll-table{overflow:auto}#reader-status{font-size:13px}.costs{background:#f1f4ec;padding:15px;border-radius:5px}.controls label{max-width:100%}.controls select{max-width:100%}.scope-note{font-size:12px;margin-top:14px}footer{margin-top:40px}@media(max-width:850px){.columns{grid-template-columns:1fr}.formula-grid{grid-template-columns:1fr}.facts{gap:18px}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="certified-prefix-markings.js?v=20261011-cp1"></script>
+</head>
+<body>
+<header class="masthead"><a href="./?v=20261011-cp1#certified-prefix-markings">GCTS + RL · Research notebook</a><span>NOTEBOOK 64 · LEARNED FAILURE VALUES</span></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">A CHECKED CONSTRAINT CAN STILL BE AN INEFFECTIVE HEURISTIC</p>
+    <h1>Learn a failure.<br>Make it a marking.</h1>
+    <p class="deck">Complete failed prefix searches produce extra point values. Those values reach commands, rule guards and distant lemma inputs through the ordinary GCTS graph. The valid proofs survive; this pilot finds no search saving.</p>
+    <p>Three newly collected failure catalogs use the admitted grammar, checked lemma families and frozen RL policy from Notebook 63. No failure labels are imported. This is a paired preprocessing study with one run per lane; it is not a cold benchmark or new RL training.</p>
+    <div class="facts"><div class="fact"><strong>\(88\)</strong><span>prefix queries, including unknowns</span></div><div class="fact"><strong>\(16\)</strong><span>certified negative prefixes</span></div><div class="fact"><strong>\(27\)</strong><span>recorded search trees</span></div><div class="fact"><strong>\(0\)</strong><span>observed placement saving</span></div></div>
+    <p id="reader-status" role="status">Loading independently audited evidence…</p>
+  </section>
+  <section class="panel" id="markings">
+    <h2>The extra value records an exhausted search.</h2>
+    <div class="controls"><label>Proof declaration<select id="case-control"></select></label><label>Prefix to inspect<select id="probe-control"></select></label></div>
+    <div class="columns">
+      <div>
+        <div id="failure-summary"></div>
+        <div id="label-status" class="notice" aria-live="polite"></div>
+        <p>A negative means that the complete original point search exhausted this finite prefix with this last formula, vocabulary and lemma registry. Because every rule refers only to its own row and strictly earlier rows, any full proof containing that formula here would restrict to the failed prefix.</p>
+        <p>At a new marking-only point, the fixed boundary assigns <span>\(0\)</span>. Every placement writing the complete forbidden formula word assigns <span>\(1\)</span>. Their disagreement removes the placement through ordinary point dependencies.</p>
+        <p class="small">An unresolved teacher adds no assigned value. These are proved redundant constraints within the declared finite grammar. They do not establish unrestricted mathematical unprovability, and this experiment does not implement the Turtle pair-corona learning protocol.</p>
+      </div>
+      <div>
+        <div class="legend"><span class="formula">Formula word</span><span class="rule">Rule guard</span><span class="consumer">Distant consumer</span><span class="failure">Certified exclusion</span></div>
+        <div class="diagram-scroll"><svg id="marking-view" viewBox="0 0 820 510" role="img" aria-label="Original proof-role squares and extended certified failure marking points"></svg></div>
+        <p class="scope-note">Squares depict roles in the actual high-level positional point inventory. They fill required occupancy points and retain fixed orientation. The curves draw distant marking assignments; curves are not constraints. Representative candidates are alternatives, not a simultaneously placed proof. Coordinates are compressed. The native primitive Wang palette remains unchanged.</p>
+      </div>
+    </div>
+    <details><summary>Exact failure point, candidate identities and full marking assignments</summary><pre id="exact-data"></pre></details>
+  </section>
+  <section class="panel" id="results">
+    <h2>Removing candidates did not save placements.</h2>
+    <p>The paired original, output-command-only and all-writer constructions use identical occupancy data, candidate identities, required roots, grammar, seed and search limits. All original candidates remain in the catalog. The additional marking values decide their availability.</p>
+    <div class="scroll-table"><table><thead><tr><th>Declaration</th><th>Ordering</th><th>Original</th><th>Output only</th><th>All writers</th></tr></thead><tbody id="results-body"></tbody></table></div>
+    <p class="small">Entries count attempted base placements. A budget result is unknown, never a negative. Limits are <span>\(5000\)</span> placements and <span>\(30\)</span> seconds. Each of the nine method/declaration combinations has three recorded searches. The learned lane reuses Notebook 63 weights; the fixed lane uses its disclosed heuristic. No Z3 or other prover run was added in this increment.</p>
+    <div id="diagnosis" class="costs"></div>
+    <p>The five-link example loses <span>\(628\)</span> initial candidate incidences, yet its first branch has the same point and alternatives. Some later domains differ. The pilot therefore gives evidence that the layer acts geometrically, and evidence against this layer being a useful acceleration on these cases. Candidate elimination alone is not a speedup.</p>
+    <details><summary>Every recorded lane, graph counters, costs and equality checks</summary><pre id="all-results"></pre></details>
+  </section>
+  <section class="panel" id="proof">
+    <h2>The marking-erased proof still checks.</h2>
+    <p id="proof-context"></p><div id="proof-lines"></div>
+    <p class="small">The lines above are the automatically discovered fixed-ordering proof for the selected declaration. Seven successful marked searches receive fresh native whole-certificate checks, with all search markings erased. An independent interpreter reruns every one from the actual parser start and checks exact input/output hashes. No new full native line-DAG artifacts are materialized here.</p>
+    <p><a href="semantic-inventory.html?v=20261011-si1#reader">Inspect the full native proofs and nested lemma hypotheses in Notebook 63</a></p>
+  </section>
+  <section class="panel" id="costs">
+    <h2>Keep the cost of learning visible.</h2>
+    <div id="learning-costs"></div>
+    <p>The five-link catalog costs about <span>\(62.03\)</span> seconds to collect, including the immediate independent teacher checks. That cost is in addition to model admission, later audits and proof search. Reusing a layer avoids collecting it again; the warm paired searches still show no placement saving. These observations do not justify a timing advantage.</p>
+    <p>The initially planned larger cold comparison was revised after both constructions gave unchanged placement counts on all three tested declarations. Repeating this layer across more lanes would not answer the stronger research question. The next candidate is a certified conditional failure involving several attachments, or a lemma receptor that summarizes such a constraint. That remains a hypothesis to test.</p>
+  </section>
+  <section class="panel" id="checks">
+    <h2>What was independently checked</h2>
+    <p id="audit-summary"></p>
+    <p>Nine conformance tests include a complete census of <span>\(2592\)</span> candidate proof words: all four original valid regions survive the extra markings. The tests reject a truncated negative search, a missing distant consumer marking, a changed boundary value and a changed theory. They also retain the whole-case formula vocabulary in quantified prefixes and verify that a zero-budget teacher supplies no exclusion.</p>
+    <p>The browser controls were exercised for all <span>\(88\)</span> prefixes. The reader rejects eight corrupted projections, including a missing word terminator, a missing selected input and a wrong global native-query identifier. It checks displayed point data and provenance; it does not reproduce the independent native computation in the browser.</p>
+    <p>The audit reconstructs every original command, guard and input candidate, every transferred prefix identity and both marking layers. It replays every visited frontier domain, global dead/forced/generation decisions, proposal choices, complete fallback and rollback. This specialized finite proof-strip model has unit occupancy and root generation zero; fractional coverage, geometric symmetries, infinite extension and full first-order compiler completeness are not established by these tests.</p>
+    <div id="artifact-links"></div>
+    <p><a href="../../../research/gcts-rl-renewal/prefix_failure_markings.py">Marking learner and ordinary point model overlay</a> · <a href="../../../research/gcts-rl-renewal/audit_prefix_pilots.py">Independent paired/native audit</a> · <a href="../../../research/gcts-rl-renewal/test_prefix_failure_markings.py">Conformance and corruption tests</a> · <a href="certified-prefix-reader-checks-001.json">Reader checks and exact source hashes</a> · <a href="../../../research/gcts-rl-renewal/PREFIX_PILOTS.md">Reproduction notes</a> · <a href="../../basic-tiling-algorithm.md">GCTS algorithm contract</a></p>
+    <p>The research program remains active. Broader automatic proof discovery, full Hilbert geometry and Peano arithmetic, effective learned conditional markings, and practical scaling remain open.</p>
+  </section>
+</main>
+<footer><span>Certified prefix markings · audited negative pilot</span><a href="./?v=20261011-cp1#goals">Research goals</a></footer>
+</body>
+</html>
