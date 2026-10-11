@@ -1,0 +1,18 @@
+{
+  "job": "synthetic-controls",
+  "mode": "controls",
+  "seconds": 25,
+  "rss_bytes": 536870912,
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v1.py": "3df94d87bb94f60faaa07ccd29050c7c1a4ce131955c4f3bc8ee4593bb14e2d2",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v1.py": "a7ee07cf3e35db892079bbfaa021f2f10096635786eef73203413cb19ce7374f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v1.py": "1bca2d5a7dbeaedb10515ec2ee500ece6104db9ba46b8d841cb7101c4cb037b9"
+  },
+  "input_sha256": {},
+  "output_path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls.json",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0
+}

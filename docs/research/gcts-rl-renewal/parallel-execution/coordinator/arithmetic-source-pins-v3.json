@@ -1,0 +1,12 @@
+{
+  "status": "passed_root_exact_dictionary_source_input_and_array_file_pins",
+  "package_sha256": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+  "pins_checked": {
+    "sources": 42,
+    "inputs": 46,
+    "files": 17
+  },
+  "seconds_before_write": 0.165675708,
+  "source_semantic_review": "arithmetic-source-review-v3.json retains loading AST/budget review; its initial dictionary pin loop checked zero entries and is superseded by this complete source/input/file pin check; a followon mistaken array iteration exited before writing or executing any helper",
+  "actual_execution_authorized_by_this_receipt": false
+}

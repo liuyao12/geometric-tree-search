@@ -1,0 +1,133 @@
+{
+  "status": "prospective_whole_cluster_continuation_plan_no_implementation_or_new_execution",
+  "version": "hilbert-whole-cluster-lifecycle-plan-v1",
+  "bindings": [
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+      "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+      "bytes": 116141
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+      "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+      "bytes": 1423687
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-lifetime-v1.json",
+      "sha256": "ad652ca8dfce345a67428b91fcb50180b4ec3f7a706a0ee9dbd2edeb46fe0429",
+      "bytes": 1007
+    }
+  ],
+  "hypothesis": "Whole-cluster revalidation, waiting and branch-local retirement can guide primitive continuation while leaving every complete graph degree, scheduler action and base fallback unchanged.",
+  "unchanged_semantics": [
+    "All 229 primitive recipe types, 217 injective formula values, exact global three-hypothesis context and 24 required root rows.",
+    "Identity orientation and vertical translation only, exact unit t/m, assigned zero distinct from absent.",
+    "No atomic cluster execution, no sampled degree domains and no authority/native/compiler activation.",
+    "Current fixed candidate registration/member priority is retained as an ordering control. This phase introduces no RL training or new policy optimization."
+  ],
+  "descriptor": {
+    "immutable_fields": [
+      "model/context/registry/marking/authority epochs and exact source expansion certificate bindings",
+      "ordered receptor ports and premise multiplicity",
+      "full decorated primitive keys/identities and literal ordered references",
+      "deduplicated exact constituent keys plus cached compatible t-sum/m-union",
+      "fixed registration priority and member order"
+    ],
+    "sharing_rule": "Equal full primitive key/identity is one placement. Same formula or occupancy row does not merge different keys. A member already selected under that exact identity contributes zero additional occupancy.",
+    "source_relation": "Transported source interfaces stay structurally certified for the checked finite relation, not native_accepted. Initial descriptor validation checks all primitive witnesses and exact expanded source/body bindings; node revalidation uses cached point data only under the unchanged frozen authority."
+  },
+  "lifecycle": {
+    "initial_validation": "Reject entire stale/internally conflicting/missing-body descriptor. A rejected proposal never removes a primitive candidate.",
+    "states": {
+      "waiting": "Every pending constituent remains currently point-legal, but no pending member is incident to the current reference decision point. Keep it for later.",
+      "ready": "Whole cluster remains valid and at least one pending constituent is an eligible incident candidate at the chosen branch point.",
+      "consumed": "All exact constituent identities are selected; keep provenance but supply no new preferred move.",
+      "retired": "At least one pending constituent or aggregate interface is invalid in this branch. Remove all of this cluster's continuation preferences, not only the offending member."
+    },
+    "node_validity_checks": [
+      "Exact immutable model/context/authority/registry versions still match; no mid-run rule update is supported.",
+      "Cached internal distinct t sum is within capacity and union m is a function. Ordered repeated ports are not deduplicated.",
+      "For members already selected, verify exact decorated identity and support; do not call filled-row candidate legality as if it were a pending move.",
+      "For every unselected member, check membership in the complete current graph, including branch-local failed-child exclusions.",
+      "Additional t of unselected members plus current occupancy stays within capacity; current assigned marks agree everywhere, including distant and exterior mark-only points.",
+      "If any one check fails, retire the entire pending cluster in this branch. Compatible siblings do not remain preferred under the invalid cluster."
+    ],
+    "selected_other_candidate": "A different base key occupying a pending cluster row invalidates the whole cluster even if it produces the same formula.",
+    "rule_changes": "No activation or mutable inventory change is added. A future such change requires full accepted-prefix/graph/hint replay in a distinct reviewed version."
+  },
+  "scheduler": {
+    "sequence": [
+      "Compute the complete global dead/forced/earliest decision from the primitive graph. Hints do not influence counts or point choice.",
+      "Dead branches stop; budget unknown is never used as an exclusion certificate.",
+      "A forced primitive move executes first regardless of hint; after the graph update resynchronize whole pending hints, then return to global checks.",
+      "At a branch, resynchronize every pending hint against the whole current state and current decision point. Keep valid ineligible hints waiting.",
+      "Preferred candidates come only from ready hints at that point, in the existing fixed priority/member order. Deduplicate exact repeated preferred keys across shared hints.",
+      "Then iterate every remaining complete base candidate in stable order. If no hint is ready or a hint is rejected/retired, the same complete fallback remains.",
+      "After each primitive placement or parent-local exclusion, invalidate derived ready caches and resynchronize before the next hinted branch action."
+    ],
+    "no_shortcut": "No whole cluster is placed in one transaction or used to declare a move forced."
+  },
+  "rollback": {
+    "paired_checkpoint": [
+      "graph trail position",
+      "hint trail position",
+      "fixed descriptor registry boundary (first implementation has root-fixed registrations only)"
+    ],
+    "trailed_hint_fields": [
+      "waiting/ready/consumed/retired state",
+      "whole-cluster invalidation reason and branch scope",
+      "cached eligible members/current decision point",
+      "derived status version"
+    ],
+    "operation": "Undo graph and hint deltas to the same checkpoint; exact semantic snapshot must match. Recompute an independent canonical hint view as an assertion, not a new policy decision.",
+    "failed_child": "Only full exhausted child returns a parent-local base exclusion. Then resynchronize hints in that restored parent; a cluster containing the newly excluded pending key retires there. Unknown/cancelled/resource-limited child creates no exclusion.",
+    "revival": "Retirement caused by a child's placement is branch-local: undo that child restores the prior waiting/ready cluster. Root-invalid stale descriptors are not revived.",
+    "metrics": "Validation effort/retirement counts are cumulative work, deliberately not undone. No feature/RNG/policy state is introduced in this phase."
+  },
+  "cache_and_cost": {
+    "immutable_compile": "Build and verify per-descriptor exact primitive identity/cache once; all earlier source/native admission and transport costs remain bound. No fresh native admission is implied.",
+    "node_cost": "Charge whole-hint scans, point agreement, current-domain membership, waiting/retirement updates, ordering and trail/rollback separately.",
+    "correctness_before_optimization": "First implementation scans every registered pending cluster. Any affected-support cache optimization requires a separately verified complete reverse dependency index.",
+    "preserve_base": "No hint status mutates t/m, recipe availability, frontier or graph exclusions; it changes ordering only."
+  },
+  "prospective_controls": [
+    "A valid hint has no member at the chosen earlier-generation point: it waits while complete fallback proceeds.",
+    "Global forced move outside a waiting hint invalidates one of its distant source marks: whole hint retires before the next branch.",
+    "One invalid constituent with several still-legal siblings: no sibling keeps preference through that invalid cluster.",
+    "Rollback undoes invalidation and restores the exact waiting/ready status and base graph.",
+    "Shared exact member in two clusters counts once, but either cluster may retire independently when another constituent conflicts.",
+    "A different same-formula recipe at the same row retires the hint; exact selected same key instead consumes that member.",
+    "Ordered duplicate-premise ports and assigned zero/absence survive cache, validation and rollback.",
+    "Stale epoch/context/body/registry, altered MP/eq template and missing dependency are rejected as whole descriptors.",
+    "An exhausted child exclusion retires only parent-scoped affected hints; budget unknown preserves parent graph/hints and generates no exclusion.",
+    "Independent direct primitive domains are identical with/without hints at every visited state; eligible preference plus fallback is a complete permutation of the chosen point domain."
+  ],
+  "gates": {
+    "first": "Freeze new versioned sources, exact inputs, projected counts and 60-second/512-MiB synthetic gate before execution, then independent audit. No actual target run.",
+    "second": "After review, full-language controlled hint transactions on the same 24-row graph with complete raw domain/count/identity comparisons under a separate at-most-180-second/512-MiB producer and independent gate.",
+    "authored_proof_word": "Never use the authored24 target word as search seed, training sample or proposal generator. A future authored witness remains an explicitly isolated verification control.",
+    "third": "Only after both gates pass, separately predeclare fresh discovery trials, policy/proposal provenance, equal inventories, budget, complete replay and whole decoded logical/native certificate strategy."
+  },
+  "mathematical_contract": "For distinct pending members \\(C\\setminus S\\), validate \\(T(p)+\\sum_{c\\in C\\setminus S}t_c(p)\\leq 1\\) and agreement of the full assigned \\(m\\)-union with the current state. Missing values remain unconstrained; assigned \\(0\\) remains a value.",
+  "known_limits": [
+    "This plan is not implemented, executed, independently accepted or activated.",
+    "No unrestricted reachable-state or infinite-plane completeness claim.",
+    "Native/compiler correspondence and a universal mathematical tile language remain open.",
+    "No observed proof-search improvement or new theorem discovery in this planning phase."
+  ],
+  "native_queries": 0,
+  "new_geometry_target_searches": 0,
+  "new_RL_training": false,
+  "source_modification": "none; future implementation must be new versioned files",
+  "plan_preparation_seconds_before_write": 0.0024665
+}

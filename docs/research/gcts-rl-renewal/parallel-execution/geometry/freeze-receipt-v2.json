@@ -1,0 +1,16 @@
+{
+  "status": "repair_sources_inputs_costs_frozen_before_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+    "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+    "bytes": 116141
+  },
+  "sources": 5,
+  "inputs": 11,
+  "preserved_entries": 454,
+  "source_syntax": "ast.parse only; no graph imported",
+  "v2_executions": 0,
+  "actual_model_executions": 0,
+  "native_queries": 0,
+  "freeze_seconds_before_receipt_write": 0.11200470800000001
+}

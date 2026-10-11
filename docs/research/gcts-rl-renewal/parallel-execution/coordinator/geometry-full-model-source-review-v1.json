@@ -1,0 +1,29 @@
+{
+  "status": "passed_root_source_and_exact_pin_review",
+  "plan": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+    "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+    "bytes": 119923
+  },
+  "pins_checked": 495,
+  "sources": 5,
+  "inputs": 17,
+  "preserved_files": 473,
+  "seconds_before_write": 0.3014205,
+  "scope": "Complete raw/implicit point graph and bounded base prefix conformance; separate authored witness catalog control; no theorem discovery",
+  "whole_pending_cluster_lifecycle": "open; fixed preferences scope only",
+  "native_compiler": "open",
+  "limits": {
+    "wall_seconds": 180,
+    "child_alarm_seconds": 170,
+    "supervisor_seconds": 175,
+    "host_bytes": 536870912,
+    "runs_authorized_by_this_plan": 0,
+    "execution_requires_root_review": true
+  },
+  "independent_source_review": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-model-source-review-v1.json",
+    "sha256": "8a6e1ba6f77b3ede5d3d6039a301cf4ce443b495899b456b231e7e634e4f2a2e",
+    "bytes": 9748
+  }
+}

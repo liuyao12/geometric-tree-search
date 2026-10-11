@@ -1,0 +1,172 @@
+{
+  "status": "frozen_before_bounded_pure_fixture_execution",
+  "loader": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+  "sources": [
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/loader_fixtures_v1.py",
+      "sha256": "834d00d6c38d5535bd5d619b4cd3262ee6bc9fd11f577b27576f23b7c72b65fa",
+      "bytes": 8705
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+      "sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+      "bytes": 2852
+    }
+  ],
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit"
+  },
+  "fixture_count": 23,
+  "total_fixture_bytes": 2688091,
+  "fixtures": [
+    {
+      "name": "nested_ordered_repeated_quads",
+      "expected": "equal_json_value",
+      "raw_sha256": "128e8b6c013c6bc3ca3e8c8adb1b1d616ea722af58feb04465a996748966505d",
+      "raw_bytes": 79
+    },
+    {
+      "name": "signs_big_integers_and_nonquad_arrays",
+      "expected": "equal_json_value",
+      "raw_sha256": "1a2ef8c6c6772dbd33fac092b135a15bd5bfd314f32b6b0bf6f7090828fbdec1",
+      "raw_bytes": 158
+    },
+    {
+      "name": "bool_float_null_scalars_not_integer_keys",
+      "expected": "equal_json_value",
+      "raw_sha256": "b95dc9e137be09041f38f6be2901437d05717d4e546e1963d90f8a21c781c35b",
+      "raw_bytes": 88
+    },
+    {
+      "name": "quoted_numeric_text_escaped_quotes_backslashes_unicode",
+      "expected": "equal_json_value",
+      "raw_sha256": "2e5da0c896cdb5c53768dc2618fa4b618036c74e8332d0859ab3a3d36291eb50",
+      "raw_bytes": 78
+    },
+    {
+      "name": "integer_negative_zero_same_json_value",
+      "expected": "equal_json_value",
+      "raw_sha256": "bd8218df443a4515cabf6407c5a68020c009b6d2052281567f6e8caaa78c7a23",
+      "raw_bytes": 16
+    },
+    {
+      "name": "chunk_boundary_65499",
+      "expected": "equal_json_value",
+      "raw_sha256": "131bcec1c4c2f4ce2541ba4363be09d9bac2c903ffad88b577ac3482f3bddc7a",
+      "raw_bytes": 65577
+    },
+    {
+      "name": "chunk_boundary_65509",
+      "expected": "equal_json_value",
+      "raw_sha256": "190ccfa0505e0881316470f6a1d7b8f4bc532950040d73daa91b229c1bf463bd",
+      "raw_bytes": 65587
+    },
+    {
+      "name": "chunk_boundary_65519",
+      "expected": "equal_json_value",
+      "raw_sha256": "b6912c6ec571fd09a2a240347f5021d0c70d7854a06808596ecbab760c19cece",
+      "raw_bytes": 65597
+    },
+    {
+      "name": "chunk_boundary_65529",
+      "expected": "equal_json_value",
+      "raw_sha256": "5748148cbb00ace450a7e8b8d01646709641dec02391714ae69941455ff7dd14",
+      "raw_bytes": 65607
+    },
+    {
+      "name": "chunk_boundary_65535",
+      "expected": "equal_json_value",
+      "raw_sha256": "c8b109c65570716d0f6cf5df294931572610258d1a40699d8a4ec6ce51a2b57f",
+      "raw_bytes": 65613
+    },
+    {
+      "name": "chunk_boundary_65536",
+      "expected": "equal_json_value",
+      "raw_sha256": "5f8161c398bc43c199a36c88712c9497a708930c1a2164081de05da5c93f4061",
+      "raw_bytes": 65614
+    },
+    {
+      "name": "chunk_boundary_65537",
+      "expected": "equal_json_value",
+      "raw_sha256": "d2b6d8afa61971024b6cd85fdd49bafad1e747ef32738246a765b2c672b053cc",
+      "raw_bytes": 65615
+    },
+    {
+      "name": "chunk_boundary_65545",
+      "expected": "equal_json_value",
+      "raw_sha256": "8066526f2469d7f52a690744d8277c899dece9d3e7931c1114855c1fa2298a3d",
+      "raw_bytes": 65623
+    },
+    {
+      "name": "reserved_value_literal",
+      "expected": "reject",
+      "raw_sha256": "0603bb04e5ff9eb03ccd5d1aede88de68323aa98ebdea826207db2a13ae200ea",
+      "raw_bytes": 10
+    },
+    {
+      "name": "reserved_value_escaped",
+      "expected": "reject",
+      "raw_sha256": "6d46699da1a1ba5b671ab3bfa90fbf5600d7d02c0b5dc0c118e3a1c108546ef6",
+      "raw_bytes": 15
+    },
+    {
+      "name": "reserved_key_literal",
+      "expected": "reject",
+      "raw_sha256": "e1590d629a3b4951e925ef68d4ba71b8049dddf4c069179e24551c19a4f8aff4",
+      "raw_bytes": 16
+    },
+    {
+      "name": "reserved_key_escaped",
+      "expected": "reject",
+      "raw_sha256": "57ef99c46d43476e9db73b29304105d4acd21b431c0ecb598714673b1121768e",
+      "raw_bytes": 21
+    },
+    {
+      "name": "malformed_missing_comma",
+      "expected": "reject",
+      "raw_sha256": "55d5a9882c51e72f18e1ef2d9a95a89ddd80009b5a87f7ed0600fb8ef65aee66",
+      "raw_bytes": 15
+    },
+    {
+      "name": "malformed_unterminated_string",
+      "expected": "reject",
+      "raw_sha256": "e63287931f8274fd8388b8fa4e187544427517f07b60b5120aa1f151d7268f66",
+      "raw_bytes": 15
+    },
+    {
+      "name": "top_level_quad_not_restored",
+      "expected": "known_top_level_mismatch",
+      "raw_sha256": "f6bd10506e9a4daed7c03eda2f2fde54be3bd58eee49dab471c18a888ffbdb6f",
+      "raw_bytes": 9
+    },
+    {
+      "name": "top_level_array_not_fully_restored",
+      "expected": "known_top_level_mismatch",
+      "raw_sha256": "ae05457a17fc94838e9596f6e79c7a5378481ca416b1b82e05f0888523ebffbe",
+      "raw_bytes": 27
+    },
+    {
+      "name": "invalid_leading_zero_rewrite_is_not_strict_json",
+      "expected": "known_invalid_json_accepted",
+      "raw_sha256": "0e1babc836a55ffa5bfe328ee75d3298689cd27e6306fce9096b13e32b622973",
+      "raw_bytes": 16
+    },
+    {
+      "name": "valid_large_unmatched_prefix_fails_closed",
+      "expected": "resource_unknown",
+      "raw_sha256": "7f1f929c3839e75ffee66a190d54379a4debf52c7a1ab393f15feb9dedd31547",
+      "raw_bytes": 2162695
+    }
+  ],
+  "worker_seconds": 25,
+  "lifetime_seconds": 30,
+  "rss_bytes": 134217728,
+  "authorization": "Root explicitly permits bounded pure fixtures with a plan; no actual trace, search, training, model, engine or native query.",
+  "outputs": [
+    "fixture-worker-v1.json",
+    "fixture-lifetime-v1.json"
+  ],
+  "resource_semantics": "Single fresh child, timeout kill/wait/reap; post-exit conservative owner+child kernel peak gate. No hard OS memory cap."
+}

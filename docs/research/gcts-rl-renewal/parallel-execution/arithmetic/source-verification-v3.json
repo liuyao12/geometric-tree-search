@@ -1,0 +1,15 @@
+{
+  "status": "passed_source_only_v3_loading_adapter_verification",
+  "source_and_input_count": 88,
+  "worker_diff": "Only loading-module import v2 to v3, unchanged complete-byte gate call and complete graph/policy/math logic.",
+  "unchanged_v2_byte_gate_sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+  "unchanged_strict_reduction_token_sha256": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+  "worker_old_sha256": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+  "worker_new_sha256": "59c64bfbd159dcaa41c9521e2e54710954e66796d5d2f748ec37f09c63648730",
+  "seconds": 0.10537991699999999,
+  "trace_decodes": 0,
+  "graph_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}

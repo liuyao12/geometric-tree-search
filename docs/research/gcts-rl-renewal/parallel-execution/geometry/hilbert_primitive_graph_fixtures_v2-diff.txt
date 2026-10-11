@@ -1,0 +1,43 @@
+--- hilbert_primitive_graph_fixtures_v1.py
++++ hilbert_primitive_graph_fixtures_v2.py
+@@ -12,7 +12,7 @@
+ import time
+ from pathlib import Path
+ 
+-import hilbert_primitive_graph_v1 as core
++import hilbert_primitive_graph_v2 as core
+ 
+ HERE = Path(__file__).resolve().parent
+ P, Q, R = ["pred", "P", []], ["pred", "Q", []], ["pred", "R", []]
+@@ -133,6 +133,9 @@
+     def passed(name, **extra):
+         records.append({"name": name, "status": "passed", **extra})
+ 
++    assert all(core.popcount(n) == sum((n >> b) & 1 for b in range(8)) for n in range(256))
++    passed("compatibility_population_count_exhaustive_8_bit_masks", masks=256)
++
+     comparisons, candidates = 0, 0
+     ports = [()] + [(x, row, value) for x in (2, 3) for row in range(3) for value in (0, -1, -2)]
+     for values in itertools.product((None, 0, 1, 2), repeat=3):
+@@ -238,6 +241,12 @@
+     passed("synthetic_executor_failed_child_parent_exclusion_budget_unknown_and_exact_point_reconstruction",
+            attempts=solved["attempts"], backtracks=g.metrics["backtracks"])
+ 
++    g = graph()
++    invalid = [core.Key(0, 0), core.Key(3, 0)]
++    fallback = core.Executor(g).solve(max_attempts=100, seconds=2, proposals=invalid)
++    assert fallback["status"] == "finite_exact_point_tiling" and g.metrics["proposal_rejections"] == 1
++    passed("invalid_advice_retired_and_complete_base_fallback_continues")
++
+     # Exhausted synthetic marked region has no target-supporting zero/MP type.
+     g = graph(2, recipes=[recipe("p-only", P)], marks=[(1, 1, 1)])
+     initial = g.semantic_state()
+@@ -255,7 +264,7 @@
+                "native_authority_activated": False,
+                "remaining": ["independent synthetic kernel replay", "actual full-model conformance gate",
+                              "independent decoded whole logical certificates", "native/compiler correspondence"]}
+-    (HERE / "fixtures-outcome-v1.json").write_text(json.dumps(outcome, indent=2) + "\n")
++    (HERE / "fixtures-outcome-v2.json").write_text(json.dumps(outcome, indent=2) + "\n")
+     print(json.dumps({"status": outcome["status"], "fixtures": len(records), "states": comparisons,
+                       "compared_placements": candidates, "kernel_peak_rss_bytes": peak}))
+ 

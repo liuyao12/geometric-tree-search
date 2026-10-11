@@ -1,0 +1,29 @@
+{
+  "status": "authored_conditional_source_argument_not_a_searched_theorem",
+  "loader_source_sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+  "domain": [
+    "Valid standard JSON whose top-level value is an object, with no original decoded key or string value beginning with reserved prefix.",
+    "Loader terminates without its pending-byte, runtime or host resource limit.",
+    "Normalized JSON-array values, rather than exact Python list/tuple types, are the declared equality."
+  ],
+  "argument": [
+    "Quoted tokens are emitted intact. The partial-quote alternative keeps incomplete strings in the pending suffix, so array-shaped text inside a string is never converted on the next chunk.",
+    "Every converted complete four-integer array is replaced in a value position by a reserved string; its four parsed integers are recorded in order. Valid input excludes the leading-zero lexical ambiguity.",
+    "Original prefix strings are rejected, so every reserved string reaching restoration denotes a generated array reference.",
+    "Dictionary hooks run after their descendant dictionaries. Restoration recursively visits lists, and child dictionaries were already restored. Thus every generated reference below the top-level object is replaced by its recorded ordered tuple.",
+    "Arrays spanning a chunk that are not recognized remain literal JSON arrays; missing interning changes memory use, not their values.",
+    "Canonical JSON encoding treats lists and tuples as arrays. All original nonconverted scalars, object keys, array order and nested objects are retained, so normalized decoded JSON values are preserved on the stated domain."
+  ],
+  "limits": [
+    "This is a source-level conditional argument, not a formally mechanized parser proof.",
+    "Top-level arrays/scalars are outside the domain; synthetic fixtures show incomplete restoration.",
+    "The old regex can repair leading-zero invalid arrays, so validity of arbitrary input is not established by successful loading.",
+    "The standard decoder can accept duplicate object keys with last-value semantics; strict duplicate-key rejection is not established by this old implementation.",
+    "Memory still includes the reduced JSON parse, restored graph, feature indices and model data; no actual-evaluation memory conclusion follows from interning alone.",
+    "A changed loader requires separate source/fixture review and every full payload correspondence gate."
+  ],
+  "actual_new_adapter_gate": "Exact full reserialization bytes for all six unchanged source payloads, then unchanged independent graph/RNG/math replay under the remaining cumulative budget. No target searches or training reruns.",
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "actual_trace_loads": 0
+}

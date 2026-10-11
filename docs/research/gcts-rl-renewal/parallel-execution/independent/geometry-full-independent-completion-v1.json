@@ -1,0 +1,128 @@
+{
+  "status": "passed_terminal_independent_full_model_gate_exact_result_and_owned_lifetime",
+  "plan": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-plan-v1.json",
+    "sha256": "794b4cb1c471416530e56b4cf64198e8b6f1bdc8ff207ac1959c65682d59cf7c",
+    "bytes": 121658
+  },
+  "result": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-result-v1.json",
+    "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+    "bytes": 1421897
+  },
+  "lifetime": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-lifetime-v1.json",
+    "sha256": "9641dea0b0067d40addf11f4d7b76361762c002267b1437c08fdf24dd5645104",
+    "bytes": 1384
+  },
+  "summary": {
+    "complete_states": 14,
+    "complete_candidate_comparisons": 3173785,
+    "initial_candidates": 332130,
+    "all_recipe_witnesses_checked": 229,
+    "formula_codes": 217,
+    "lazy_full_identities": 468,
+    "generic_branch_steps": 8,
+    "authored_logical_commands": 24,
+    "actual_corruptions": 9
+  },
+  "mutations": [
+    {
+      "name": "swapped_ordered_MP_references",
+      "rejected": true,
+      "rejection_type": "Rejected"
+    },
+    {
+      "name": "forward_MP_reference",
+      "rejected": true,
+      "rejection_type": "Rejected"
+    },
+    {
+      "name": "point_consistent_invalid_MP_conclusion",
+      "rejected": true,
+      "rejection_type": "Rejected",
+      "locally_consistent_point_shape_only": true,
+      "mutated_t": [
+        [
+          0,
+          5,
+          1
+        ]
+      ],
+      "mutated_m": [
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          1,
+          4,
+          63
+        ],
+        [
+          1,
+          5,
+          0
+        ],
+        [
+          2,
+          5,
+          -2
+        ],
+        [
+          3,
+          5,
+          -1
+        ]
+      ]
+    },
+    {
+      "name": "stale_authority",
+      "rejected": true,
+      "rejection_type": "ValueError"
+    },
+    {
+      "name": "stale_registry",
+      "rejected": true,
+      "rejection_type": "ValueError"
+    },
+    {
+      "name": "wrong_ordered_port_offset",
+      "rejected": true,
+      "rejection_type": "ValueError"
+    },
+    {
+      "name": "false_shared_identity",
+      "rejected": true,
+      "rejection_type": "ValueError"
+    },
+    {
+      "name": "shared_placement_t_overcount",
+      "rejected": true,
+      "rejection_type": "ValueError"
+    },
+    {
+      "name": "ordered_seed_alias_mismatch",
+      "rejected": true,
+      "rejection_type": "Rejected"
+    }
+  ],
+  "costs": {
+    "whole_audit_seconds": 45.5896245,
+    "conservative_combined_peak_bytes": 123863040,
+    "child_seconds_before_receipt_write": 45.200170959000005,
+    "producer_seconds_separately_charged": 41.57678125,
+    "independent_plan_preparation_seconds": 0.330999625,
+    "source_authoring_and_final_lifetime_write": "Uninstrumented/outside stated stage timers; not zero"
+  },
+  "native_compiler_correspondence": "open",
+  "cluster_lifecycle": "open; immutable preference-set gap retained",
+  "target_searches": 0,
+  "native_queries": 0,
+  "training_episodes": 0,
+  "compiler_activations": 0,
+  "owner_terminal_and_reaped": true,
+  "reader_scope": "Guarded symbolic Hilbert incidence fragment and finite24-row grammar. Authored24 word independently logically valid, separately catalog-verified; no proof search/discovery. Fourteen controls not all reachable states. Adversarial dead/forced/generation controls belong to tiny fixtures.",
+  "review_seconds": 0.007270208
+}

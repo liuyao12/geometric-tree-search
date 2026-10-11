@@ -1,0 +1,17 @@
+{
+  "status": "passed_root_complete_helper_terminal_review",
+  "exec_session_id": 96221,
+  "tool_exit_code": 0,
+  "phase_sha256": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+  "all_seven_helpers_passed": true,
+  "all_three_full_501_node_pairs_byte_equal": true,
+  "eight_synthetic_positives_including_cross_field_key_identity": true,
+  "all_children_terminal_reaped": true,
+  "phase_seconds": 13.362172124999999,
+  "original_cumulative_audit_seconds": 182.949247917,
+  "remaining_original_780_seconds": 597.050752083,
+  "peak_bytes": 247463936,
+  "new_searches": 0,
+  "new_training": 0,
+  "new_native_queries": 0
+}

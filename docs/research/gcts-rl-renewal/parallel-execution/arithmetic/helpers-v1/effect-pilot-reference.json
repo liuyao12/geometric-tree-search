@@ -1,0 +1,29 @@
+{
+  "status": "passed_complete_loading_value_helper",
+  "job": "effect-pilot-reference",
+  "mode": "reference",
+  "plan_sha256": "1fc871fe88effb270a73475dcf11493f6481afe0279bb2437189fbf1d893f5c5",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "canonical": {
+    "sha256": "77e219453bffabeb2401f87b04d6287c82721e0b421a172d7ebb3ba100ee4af5",
+    "bytes": 16922271
+  },
+  "observation": {
+    "id": "effect-pilot",
+    "phase": "effect",
+    "mode": "untrained",
+    "seed": 16001,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 60
+  },
+  "nodes": 501,
+  "events": 41,
+  "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "seconds_before_receipt_write": 19.4186255,
+  "kernel_peak_rss_bytes": 226918400,
+  "loading": []
+}

@@ -1,0 +1,20 @@
+{
+  "status": "terminal_resource_unknown",
+  "exec_session_id": 98533,
+  "tool_exit_code": 0,
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json",
+    "sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+    "bytes": 7473
+  },
+  "worker_semantics": "base-r1 complete byte and 5001-node checks passed; resource-qualified phase failed",
+  "five_other_replays": "unexecuted",
+  "all_children_terminal_and_reaped": true,
+  "original_cumulative_seconds": 112.662346167,
+  "remaining_original_780_seconds": 667.337653833,
+  "combined_peak_bytes": 551485440,
+  "gate_bytes": 536870912,
+  "new_searches": 0,
+  "new_training": 0,
+  "new_native_queries": 0
+}

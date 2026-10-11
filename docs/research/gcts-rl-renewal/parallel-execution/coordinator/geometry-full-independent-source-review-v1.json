@@ -1,0 +1,15 @@
+{
+  "status": "passed_root_independent_full_model_source_review",
+  "plan_sha256": "794b4cb1c471416530e56b4cf64198e8b6f1bdc8ff207ac1959c65682d59cf7c",
+  "pins_checked": {
+    "sources": 3,
+    "inputs": 25,
+    "preserved_files": 478
+  },
+  "seconds_before_write": 0.316305458,
+  "independence": "Own raw state, exact raw candidate iterator, logical recipe and authored word checks; kernel under test imported, existing independent symbolic checker used; producer conformance routines not imported",
+  "scope": "14 controlled states, every originalcandidate plus468identitychecks, authored24word separate verification not proofdiscovery;9corruptedobjects",
+  "resource_scope": "180whole/170child512MiB conservative owner+freshchild; final gate nothardOSmemorycap",
+  "cluster_native_compiler": "open",
+  "execution_authorized_by_this_receipt": false
+}

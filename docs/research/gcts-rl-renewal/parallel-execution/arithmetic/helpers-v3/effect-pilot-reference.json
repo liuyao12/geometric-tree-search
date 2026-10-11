@@ -1,0 +1,40 @@
+{
+  "status": "passed_complete_loading_value_helper",
+  "job": "effect-pilot-reference",
+  "mode": "reference",
+  "plan_sha256": "1d269e2b07697d61ab8922a18007cb0a5c7c2751423c75398430e9485b939764",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 0.345881,
+    "bytes": 16922271,
+    "chunks": 6130,
+    "largest_emitted_chunk_bytes": 592815,
+    "original_uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+    "emitted_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+    "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+  },
+  "canonical": {
+    "sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+    "bytes": 16922271,
+    "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+  },
+  "observation": {
+    "id": "effect-pilot",
+    "phase": "effect",
+    "mode": "untrained",
+    "seed": 16001,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 60
+  },
+  "nodes": 501,
+  "events": 41,
+  "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "seconds_before_receipt_write": 0.785001875,
+  "kernel_peak_rss_bytes": 227753984,
+  "loading": []
+}

@@ -1,0 +1,15 @@
+{
+  "status": "authorized_one_root_owned_loading_helper_phase",
+  "plan_sha256": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+  "prerequisite_sha256": {
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v3.json": "a3b58c7641a6b2b22e8403e718db615fcbd8e526b9128d9f33920d4fac872687",
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-pins-v3.json": "0495afcdf675daf1b43cb0d67b5168833b49beec689673a365f731f09555f13d",
+    ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v3.json": "a1009c56b7d4a1e6833d0eafdc9c6460d82f051648e527b1edea947a8433a50d",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v3.json": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v3.json": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438"
+  },
+  "remaining_original_780_seconds_before_helpers": 667.337653833,
+  "scope": "Seven pure complete-value helpers only; no full evaluation before all helpers pass and fresh exact activation; no searches/training/native/cap widening",
+  "restart_authorized": false
+}

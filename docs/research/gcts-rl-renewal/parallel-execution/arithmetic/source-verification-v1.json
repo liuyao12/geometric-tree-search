@@ -1,0 +1,18 @@
+{
+  "status": "passed_source_level_loading_only_worker_and_exact_freeze",
+  "source_and_input_count": 67,
+  "unchanged_ast_after_removing_explicit_loading_only_adapter": true,
+  "source_delta": [
+    "load import replacement",
+    "complete original trace byte gate before model load",
+    "loading statistics in result"
+  ],
+  "semantic_auditor_source_pin": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+  "worker_old_sha256": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+  "worker_new_sha256": "18227cb04ef5b6630cd495070b1b63490c26fa6146163e59d65c38b3ee9a3e70",
+  "seconds": 0.060293624999999997,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "actual_trace_replays": 0
+}

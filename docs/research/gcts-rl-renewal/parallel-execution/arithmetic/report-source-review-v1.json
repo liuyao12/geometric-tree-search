@@ -1,0 +1,27 @@
+{
+  "status": "read_only_arithmetic_projection_review",
+  "source_snapshot": {
+    "path": ".gcts-active/stochastic-replay-memory-20261011/report-generator-reviewed-v1.py",
+    "sha256": "c117212b831b40f85b295750bf2795ac32448dfc258cbdc6949bdc15f1190b2b",
+    "bytes": 29391
+  },
+  "original_source_path": ".gcts-active/replay-and-primitive-execution-20261011/prepare_report.py",
+  "generator_executed": false,
+  "confirmed": [
+    "Latest arithmetic whole-phase pass compares exact passed_complete_loading_only_six_evaluation_replays; worker-only completion does not set whole-phasepass.",
+    "Original memory unknown retained plus all helper/evaluation phase receipts; cumulative owner-phase clock used without adding overlapping worker components.",
+    "Source/input closure is constructed before arithmetic/geometry projection; later geometry model3b1d796a... is already explicitly bound through copied full-model-plan-v1.json roleprimitive_model. Later phase/lifetime/outcome files are copied and hashed earlier, assuming coordinator invokes only after owned handles terminal.",
+    "Search means use exact original producer summary search_seconds; changed-count fallback uses frozen old collector; no proof-finding or held-out theorem gain claimed.",
+    "Initial missing-tree failure-path and baselineNone formatting issues have been repaired in this snapshot."
+  ],
+  "recommendations": [
+    "If latest phaseUNKNOWN, distinguish individually passed worker replay from fullphase acceptance; use exact lifetime and receipt statuses rather than startswithpassed where practical.",
+    "Label fallback changed-first counts as original producer-reported, unverified by current replay until actually passed; do not imply all-six data comparison on unexecuted jobs.",
+    "Require original collector exact known SHA6adcd0abbd832895e8bbecf6a2eabb6c1dea76892089335df9d84149c81d693a rather than self-computing a current digest, or independently bind it to the previous public receipt.",
+    "Derive table attempt/peak numbers from original summary.metrics or assert allsix match hardcoded5000/45 before display.",
+    "Mean-time bar scale50s is arbitrary and could overflow if a lane exceeds50; size relative to actualmaximum.",
+    "Explicitly distinguish replay budget ledger from original producer/training/setup/serialization costs, which remain in earlier notebook receipts."
+  ],
+  "review_scope": "Source inspection and small metadata checks only; no report generation, trace inflation, replay, search/training/native or publication.",
+  "seconds_before_review_receipt_write": 0.0003891250000000006
+}

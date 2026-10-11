@@ -1,0 +1,129 @@
+{
+  "status": "passed_terminal_v4_helper_full_value_byte_key_identity_and_owned_lifetime_review",
+  "phase_sha256": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+  "helper_plan_sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+  "evaluation_plan_sha256": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+  "source_review_sha256": "d320a33de4c95dceb28ce3be011b6f44310dce0f490208d4558ac9d86541d9c3",
+  "owned_jobs": [
+    {
+      "job": "synthetic-controls",
+      "plan_sha256": "bb1b474cea2325f609d686c572c382ae75479c961f737851e5ea2d9fe03c80a7",
+      "receipt_sha256": "374ef0c7dfaa979f464279fce949b627cd40f6d99e33b85b7a96afce3c88d3f1",
+      "lifetime_sha256": "15a2c01f8b714e0e124ade9f42948f243807fd939c1bfdf3cf81d329804e59a1",
+      "seconds": 0.359382667,
+      "peak_bytes": 174997504,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-reference",
+      "plan_sha256": "45ac98aa10022801a75ee8b437a913d5fe4653e35cd601a02f8246ad59874fcd",
+      "receipt_sha256": "23be8bc44e6a990bec9225d8d79e736cff219d3cda7426d8302689a0c3b1c8ae",
+      "lifetime_sha256": "ab88465490474946beb9b9c30b517d9622721964353cd723ab45953ceee3b87b",
+      "seconds": 0.8190652919999999,
+      "peak_bytes": 244465664,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-repaired",
+      "plan_sha256": "b6a676b45cba594bcb0169e9ffc77f6cc0f550290eaa1e2c5750ded3adbaad05",
+      "receipt_sha256": "caec5aa58ed75b595208d5fcdab91f0b248af5c4e9759c56733b4c449fe02073",
+      "lifetime_sha256": "e0c79a7c0644d3b06e74a100b737ee5733dde069cea3ad573d5955a9944ec141",
+      "seconds": 3.422666458,
+      "peak_bytes": 59408384,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-01-reference",
+      "plan_sha256": "3c7f7cd2ff85ded78e5114562ee0387a1038d3ad92e9c30f66500d4792e38671",
+      "receipt_sha256": "24e7aa060ae3c61f5971ce4e8606e6b4ab60cc420a7a23c06186c1cc9aa128d1",
+      "lifetime_sha256": "ca0fde5344a44d6f342d244b9bf6a574b106e2cae1ce4e8f91e6622e1c2d40c8",
+      "seconds": 0.8659437080000005,
+      "peak_bytes": 245235712,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-01-repaired",
+      "plan_sha256": "716080910aaf0b219bccf45b08abe0e8cbed4e4c4ff280f5194aa29dce7d9aff",
+      "receipt_sha256": "1ced96883911da341d64023767a7423ac55030fbca5579ee117b4f3a8281e94a",
+      "lifetime_sha256": "94b440bdda88ae07b5435943f35a1cbb1ca9adb3976127dceb7f0b99e69da587",
+      "seconds": 3.4671128330000007,
+      "peak_bytes": 59883520,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-08-reference",
+      "plan_sha256": "4ea5605b2f8cbd873c6def8c38dce16cd04c4f293a3a25dbca3319539c717b9c",
+      "receipt_sha256": "b33fdcd1654f05ec874145505039f7ea1b3bbf057d2df0832a989fe494ba24bc",
+      "lifetime_sha256": "7010a560fce8b1f5b6d1526fefef9d022301642d8ec5fde25900ebc05bb0c513",
+      "seconds": 0.8425034580000013,
+      "peak_bytes": 247431168,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-08-repaired",
+      "plan_sha256": "03b7550c7d5f9ea6b0e78c1bf8486726eee9c8159690c1cceb461c98fbc185fe",
+      "receipt_sha256": "b1867edcded30846c43617f783c889acd241c6b586229e0e22afc0bed8106935",
+      "lifetime_sha256": "ed5af431a51fa3fea98affad85f49183804f2163ad675cd8a8eee0cce9e62c04",
+      "seconds": 3.5718190419999996,
+      "peak_bytes": 61718528,
+      "terminal_and_reaped": true
+    }
+  ],
+  "pairs": [
+    {
+      "jobs": [
+        "effect-pilot-reference",
+        "effect-pilot-repaired"
+      ],
+      "sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+      "bytes": 16922271,
+      "nodes": 501,
+      "events": 41,
+      "both_full_byte_gates": true
+    },
+    {
+      "jobs": [
+        "train-01-reference",
+        "train-01-repaired"
+      ],
+      "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+      "bytes": 17013409,
+      "nodes": 501,
+      "events": 51,
+      "both_full_byte_gates": true
+    },
+    {
+      "jobs": [
+        "train-08-reference",
+        "train-08-repaired"
+      ],
+      "sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+      "bytes": 17286616,
+      "nodes": 501,
+      "events": 62,
+      "both_full_byte_gates": true
+    }
+  ],
+  "synthetic": {
+    "positive_values": 8,
+    "full_byte_gates": 8,
+    "parser_scope_negatives": 9,
+    "assigned_zero_mutants": 1,
+    "noncompact_lexical_negatives": 3,
+    "cross_field_and_two_node_key_identity": true
+  },
+  "costs": {
+    "retained_historical_seconds": 169.587075792,
+    "new_helper_seconds": 13.362172124999999,
+    "cumulative_seconds": 182.949247917,
+    "remaining_original_780_seconds": 597.050752083,
+    "conservative_peak_bytes": 247463936
+  },
+  "disposition": "Helper prerequisites independently reconciled as passed; root alone supplies exact activation for six actual115/120s512MiB replays. This read-only review did not execute actual loaders/graph/search/training/native.",
+  "limitations": [
+    "Restricted hierarchy input format and resource caps remain.",
+    "Complete byte agreement proves loading equivalence for exact inputs; every actual six trace still requires full replay and owned lifetime.",
+    "Old UNKNOWN phases remain immutable and charged."
+  ],
+  "review_seconds": 0.0022450000000000005
+}

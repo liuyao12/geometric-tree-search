@@ -1,0 +1,43 @@
+{
+  "status": "passed_source_ready_read_only_v4_key_intern_helpers_only_prospective",
+  "package_sha256": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+  "helper_plan_sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+  "evaluation_plan_sha256": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+  "archive_sha256": "df37c52a7d0839f3551f57e1a98c3816178a4eec0f57421defa66a04d0c2183a",
+  "pins": {
+    "sources": 47,
+    "inputs": 52,
+    "files": 17,
+    "archive_members": 47
+  },
+  "checks": [
+    "Exact complete sources/inputs/package/archive SHA and byte lengths reconciled; no actual trace decoding.",
+    "Actual worker differs from v3 only loading-module import. All six jobs/math/model/input semantics unchanged after declared source/output fields.",
+    "Diff adds a per-load string-key table only. Equal decoded string keys share their canonical first key object via setdefault; key values and dictionary insertion/last-wins semantics stay equal. Table local to one load, no cross-job state.",
+    "Both standard JSON object_hook and hierarchy mapping call the same key interner. Explicit cross-field/two-tree-node key-identity fixture plus eight complete synthetic values/full byte gates is newly planned.",
+    "Pinned v1 reversible strict reduction and v2 full original compact-byte serializer remain unchanged. Every full trace receives complete byte gate before unchanged graph/feature/RNG/hint/fallback/rollback/policy math replay.",
+    "No omitted values/fields, no graph/search change, no widening115/120s512MiB resource gates."
+  ],
+  "source_argument": {
+    "key_identity": "For JSON keys, type is str; replacing a decoded key with an equal str from a per-load dictionary preserves Python str hashing/equality and thus exact value/order/duplicate semantics. No numeric/value normalization is introduced.",
+    "memory": "Explicit key sharing removes independently retained repeated-key allocations across many raw_decode calls; feasibility still must be measured under owned combined peak gate."
+  },
+  "scope": [
+    "Restricted object/trace hierarchy, not complete general parser or security activation claim.",
+    "Long quoted tokens may be rescanned;32Mi-character ordinary buffer and2MiB partial token limits remain explicit UNKNOWN cutoffs.",
+    "Interner table and all decoded semantic values remain live; prospective memory benefit is not measured acceptance.",
+    "Earlier full base V3 byte/semantic checks do not confer qualified acceptance because owned memory gate failed; every old UNKNOWN retained.",
+    "Source authoring unmeasured; current pin reconciliation charged separately."
+  ],
+  "costs": {
+    "retained_phase_seconds": 169.587075792,
+    "remaining_original_780_before_new_helpers": 610.412924208
+  },
+  "disposition": "Source-ready for root-owned seven helpers only; all actual six replay dispatch remains separately gated on terminal helpers and exact root activation.",
+  "executed_helpers": 0,
+  "executed_full_replays": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "training_episodes": 0,
+  "reconciliation_seconds": 0.082779
+}

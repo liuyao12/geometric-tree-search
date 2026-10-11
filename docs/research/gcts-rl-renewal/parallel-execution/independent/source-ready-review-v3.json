@@ -1,0 +1,43 @@
+{
+  "status": "passed_source_ready_read_only_review_v3_helpers_only_prospective",
+  "package_sha256": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+  "helper_plan_sha256": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+  "evaluation_plan_sha256": "d3371744370204d4625b459698020f70b3d9fa752e4115f360380664bfcb7061",
+  "source_zip_sha256": "74be7a8c041a4aaa86b89a6923136175da89c124d52950ac059d4d1c03eb9613",
+  "source_pins": 42,
+  "input_pins": 46,
+  "package_files": 17,
+  "zip_members": 42,
+  "checks": [
+    "All exact source/input/package/archive hashes and lengths reconciled by streaming reads.",
+    "The actual worker differs from v2 only in loading-module import. All six job semantics and inputs remain exact after declared source/output fields are removed.",
+    "Original-byte serializer/gate imported byte-identically from v2. No tree/node/event omission.",
+    "Root/search/tree/children mappings and ordinary dictionary insertion positions preserved, including midmapping special keys and last-wins duplicate assignment semantics.",
+    "Ordinary lexical scans identify one complete value, then standard JSONDecoder validates that substring; recursively restored interned four-integer arrays preserve JSON value modulo tuple/list representation.",
+    "Conservative unchanged512MiB; helper25/30s and actual115/120s; retained112.662346167s charged, remaining667.337653833s before new measured helpers.",
+    "Actual evaluation must remain disabled until every seven-helper owned lifetime/value/byte gate passes and exact root activation is bound."
+  ],
+  "source_argument": {
+    "reduction": "Unchanged pinned strict-v1 TOKEN reduction, reserved original # keys/values rejected; whole reduced tape never inflated into one string.",
+    "hierarchy": "Only declared trace mapping hierarchy handled recursively; ordinary fields use standard JSONDecoder with the unchanged restore hook.",
+    "boundary": "Bracket depth ignores quoted strings; raw_decode validates matching brackets and all JSON syntax of each ordinary field; root rejects trailing text. Exact-current-compact-byte gate then detects any value/order/lexical deviation.",
+    "memory": "Streaming only removes complete reduced tape string; all decoded semantic objects and interning tables remain live and own measured limits still decide feasibility."
+  },
+  "caveats": [
+    "Restricted object/trace-hierarchy format, not a complete general strict JSON parser/security claim.",
+    "The32Mi-character ordinary-buffer ceiling and2MiB partial-token ceiling stop as explicit unknowns; no skipped values or broadened budget.",
+    "Long strings may be rescanned when partial quoted tokens cross chunks; linear-time scanning is not claimed by this review.",
+    "Source authoring/read-only reasoning time unmeasured; current reconciliation timer is separate.",
+    "Root-controlled sole owner governs actual dispatch; standalone pure worker CLI is not a security activation boundary.",
+    "A full worker logical pass is insufficient if conservative owner+fresh-child lifetime exceeds512MiB; all earlier UNKNOWNs remain."
+  ],
+  "disposition": "Source-ready for root-owned seven helpers only. No actual six-evaluation replay authorization is supplied by this source review.",
+  "historical_phase_seconds": 112.662346167,
+  "remaining_cumulative_seconds_before_helpers": 667.337653833,
+  "executed_helpers": 0,
+  "executed_full_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "reconciliation_seconds": 0.081865833
+}

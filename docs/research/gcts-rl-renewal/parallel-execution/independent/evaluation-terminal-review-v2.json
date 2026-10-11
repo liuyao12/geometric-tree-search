@@ -1,0 +1,70 @@
+{
+  "status": "passed_read_only_actual_v2_receipt_reconciliation_full_phase_memory_unknown_no_upgrade",
+  "scope": "No full object inflated or actual replay rerun. Exact source/activation/prerequisite hashes and small job/result/lifetime/phase receipts reconciled.",
+  "evaluation_plan_sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+  "phase_receipt_sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+  "activation_sha256": "0353bd41d52624b8ec427348cc84bdc6d41361a6518454aff18f3e8a49b55acc",
+  "job_plan_sha256": "32dd3b8ade4440dfff8f153b3484d5e38dce6c4c408fc1e31f3079af8f71274c",
+  "worker_receipt_sha256": "defc432a64c6409775205f57791bfb1836b69e32a4a5e4981ca68310b4872ad4",
+  "lifetime_sha256": "7cea5bb5b0acd495293c11d46aa22374c922244bb652001c02005234faddb032",
+  "helper_receipt_sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+  "actual_outcome": {
+    "qualified_phase_status": "unknown_loading_phase_resource_budget",
+    "worker_logical_result_status": "passed_complete_actual_graph_rng_and_policy_replay",
+    "full_original_byte_gate": {
+      "status": "passed_complete_original_compact_json_byte_correspondence",
+      "seconds": 2.5694608750000008,
+      "bytes": 124903546,
+      "chunks": 61149,
+      "largest_emitted_chunk_bytes": 235436,
+      "original_uncompressed_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+      "emitted_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+      "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+    },
+    "fully_replayed_nodes": 5001,
+    "producer_attempts": 5000,
+    "producer_search_status": "unknown_search_budget",
+    "new_proof": false,
+    "resource_qualified_complete_evaluation_replay": false,
+    "remaining_five": [
+      "untrained-r1",
+      "trained-r1",
+      "trained-r2",
+      "untrained-r2",
+      "base-r2"
+    ],
+    "all_five_actual_outputs_absent": true
+  },
+  "owned_lifetime": {
+    "job": "base-r1",
+    "status": "unknown_or_failed_owned_loading_worker_lifetime",
+    "worker_pid": 8124,
+    "exit_code": 0,
+    "terminal_and_reaped": true,
+    "failure": null,
+    "full_worker_seconds": 38.002129541,
+    "kernel_fresh_worker_peak_bytes": 534708224,
+    "kernel_owner_peak_bytes": 16777216,
+    "conservative_owner_plus_worker_peak_bytes": 551485440,
+    "wall_overshoot_seconds": 0,
+    "memory_overshoot_bytes": 14614528,
+    "receipt_sha256": "defc432a64c6409775205f57791bfb1836b69e32a4a5e4981ca68310b4872ad4",
+    "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+    "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+  },
+  "costs": {
+    "historical_original_and_v1_helper_seconds": 63.040097334,
+    "v2_helper_seconds": 11.562686832999999,
+    "actual_v2_eval_phase_seconds_before_write": 38.059562,
+    "cumulative_original_audit_seconds": 112.662346167,
+    "remaining_of_780_seconds": 667.337653833,
+    "clock_scope": "Includes phase input streaming hashes/dispatch/pure worker lifecycles/assembly up to final receipt write; excludes final receipt write and source-authoring time."
+  },
+  "disposition": "Preserve this exact completed worker and failed combined-memory gate. Do not promote its passed worker status to a resource-qualified full phase. Any recovery needs a new prospective source/input/output/resource freeze and root authorization, with these costs charged to the original cumulative gate. No restart is authorized by this review.",
+  "authority_limits": [
+    "Graph replay of an unknown search is not a theorem/proof discovery.",
+    "No native acceptance, training/search rerun or memory cap change.",
+    "Five unexecuted evaluation audits remain unverified by this phase."
+  ],
+  "read_only_reconciliation_seconds": 0.003156875
+}

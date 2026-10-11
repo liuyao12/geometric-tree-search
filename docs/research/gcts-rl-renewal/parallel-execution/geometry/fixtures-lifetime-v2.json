@@ -1,0 +1,21 @@
+{
+  "status": "passed_authored_synthetic_fixture_full_lifetime",
+  "full_supervisor_process_seconds_including_receipt_write": 0.844840583,
+  "process_return_code": 0,
+  "supervisor_wait_reaped": true,
+  "outer_own_peak_bytes": 50888704,
+  "outer_children_kernel_peak_bytes": 51150848,
+  "conservative_host_peak_bytes": 119865344,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 60,
+  "prior_failed_v1_seconds": 0.520595542,
+  "cumulative_fixture_seconds": 1.365436125,
+  "plan_sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+  "supervision_sha256": "02a519cfed976d3b785ca5ef6aae9e429a1fb44e0be00c067c0f160aaf149d55",
+  "own_receipt_write": "outside pre-write outer measurement; fixture and supervisor serialization included",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_audit": "pending; authored conformance fixtures only"
+}

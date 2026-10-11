@@ -1,0 +1,14 @@
+{
+  "status": "passed_root_loading_only_source_review",
+  "package_sha256": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+  "exact_source_input_pins_checked": 0,
+  "worker_AST_delta": "loading import only; unchanged full semantic replay",
+  "all_six_original_jobs": true,
+  "evaluation_internal_seconds": 115,
+  "owned_lifecycle_seconds": 120,
+  "conservative_peak_bytes": 536870912,
+  "remaining_original_780_seconds_before_helpers": 667.337653833,
+  "scope": "Fixed frozen object-root tree protocol; generic ordinary values delegated to standard JSONDecoder; full original compact byte gate unchanged; no universal strict JSON decoder claim",
+  "ordinary_field_character_resource_limit": 33554432,
+  "actual_execution_authorized_by_this_receipt": false
+}

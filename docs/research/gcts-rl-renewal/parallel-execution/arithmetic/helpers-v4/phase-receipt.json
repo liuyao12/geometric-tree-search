@@ -1,0 +1,983 @@
+{
+  "status": "passed_complete_loading_value_correspondence_helpers",
+  "plan_sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+  "kind": "helpers",
+  "observations": [
+    {
+      "lifetime": {
+        "job": "synthetic-controls",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12451,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 0.359382667,
+        "kernel_fresh_worker_peak_bytes": 158433280,
+        "kernel_owner_peak_bytes": 16564224,
+        "conservative_owner_plus_worker_peak_bytes": 174997504,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "374ef0c7dfaa979f464279fce949b627cd40f6d99e33b85b7a96afce3c88d3f1",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "synthetic-controls",
+        "mode": "controls",
+        "plan_sha256": "bb1b474cea2325f609d686c572c382ae75479c961f737851e5ea2d9fe03c80a7",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "controls": {
+          "status": "passed_complete_synthetic_loading_value_controls",
+          "positive": [
+            {
+              "name": "numeric-nested",
+              "canonical": {
+                "sha256": "860cd3b2390cebbdc05601b76b3937f817f67fc2f3fc075bc2f255a93d88ef75",
+                "bytes": 279
+              },
+              "input_sha256": "3c546e1d7c0044753e56348697b17047a014e770a144f36b7c81399fd9f3e174",
+              "compressed_sha256": "dc7f1aecbf70314ecbaaa3e3e9a69f0656deba32a423cd3990d62326116ca3ac"
+            },
+            {
+              "name": "strings-escapes-unicode",
+              "canonical": {
+                "sha256": "d2b598441ae18daf7cc1d6e513da7897fcfea1f939f673b7a6dc8e6f8daff855",
+                "bytes": 156
+              },
+              "input_sha256": "46b6651f273c351d7e108657cf370279cb63593eb271b1dce4c3ed0308632344",
+              "compressed_sha256": "30e65d51bc453422d70b78d38c649b1e3fb012db218b39451214be64678e4552"
+            },
+            {
+              "name": "chunk-quoted-boundary",
+              "canonical": {
+                "sha256": "7059a60cf283bdd6dc0263387b47fb3a036d7db149d0a9beda59555fc6acea45",
+                "bytes": 105167
+              },
+              "input_sha256": "fe16db7c8befb31de6093d0e000c2b1a1aacc0f5385e5bd4e38327331fc265de",
+              "compressed_sha256": "c48605940a59712043c4346316b0b5a589ab76e6c58c050a20bb1ed3e0f12027"
+            },
+            {
+              "name": "duplicate-key-last-wins",
+              "canonical": {
+                "sha256": "0098539b088c0dc1e46acae44ea2dcc81c75995cbff7d9b492c753140af864e2",
+                "bytes": 52
+              },
+              "input_sha256": "9f701a4e1fa24bc30b05eb3b1ba78a0299fadc34fe64522d251dc1fdf728fdfb",
+              "compressed_sha256": "1ff3b298c3776d9c49a587302746e6e56021bb03e976f59a6098cf44ddab4712"
+            },
+            {
+              "name": "shared-arrays-identity",
+              "canonical": {
+                "sha256": "ffc4e43c0fc344e6f8e571e01e1e39377fe1a101ffee357511ea8e4bc5a38cfa",
+                "bytes": 200012
+              },
+              "input_sha256": "713938307e3fa0474ce4e584df8e738ac8af0937a4bee4cc82430df12c0b6774",
+              "compressed_sha256": "7a6a3d1983b59cdc2c70f4d797554291a39bf14ddbee23a0cf5c2439592a1532"
+            },
+            {
+              "name": "trace-hierarchy-key-order",
+              "canonical": {
+                "sha256": "ca27081029b90dedd35d8fe5f5303533b8d2b012dcf54eee3559bba3cada45f4",
+                "bytes": 215
+              },
+              "input_sha256": "48fe47dc92cf89934e990c4808d095b51280672402b7432625fcee3daf6ba390",
+              "compressed_sha256": "1eb60ae59100191008513532e4d7bbc5b6c5fbc6029df79227e50f9d1ec72a86"
+            },
+            {
+              "name": "ordinary-field-multichunk-container",
+              "canonical": {
+                "sha256": "2eef4ac5cc5c34f575f1bb74860bbaacb8f8c4383eb794d4b529edad479c1083",
+                "bytes": 316127
+              },
+              "input_sha256": "fae9e7893fe637e094cb9166072bc84304f137fda0a1fa927ef6c23697671f1f",
+              "compressed_sha256": "10ae656b6d14607132804f4c9d5a519f3d2e52a29508ea25d7139a1af7d71467"
+            },
+            {
+              "name": "per-load-cross-field-key-identity",
+              "canonical": {
+                "sha256": "a7c169710e085c0c80b9aed0f0cb8af56031c0eb415e83521e8ac413e763eb32",
+                "bytes": 487
+              },
+              "input_sha256": "2a3cc6ea9e7f98b916a763525f3c11e0d4f21bf0f0792f3581a09ce36b07fbfc",
+              "compressed_sha256": "b6cf4cc2386b42289ae9e6914d51dbf47fed3673b2e6cee3b9abe0d51fcf6c9b"
+            }
+          ],
+          "compact_byte_correspondence": [
+            {
+              "name": "numeric-nested",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 7.837499999999858e-05,
+                "bytes": 279,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 277,
+                "original_uncompressed_sha256": "347901a650614d60430238e2c6b7c90d5cb4da38080330f992093a27f01ddfec",
+                "emitted_sha256": "347901a650614d60430238e2c6b7c90d5cb4da38080330f992093a27f01ddfec",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "strings-escapes-unicode",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 6.774999999999837e-05,
+                "bytes": 156,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 154,
+                "original_uncompressed_sha256": "368a9a8ef8cb9347d57084e0a357c9a0e2055518f6664fdddfc787a60b726316",
+                "emitted_sha256": "368a9a8ef8cb9347d57084e0a357c9a0e2055518f6664fdddfc787a60b726316",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "chunk-quoted-boundary",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 0.0008194589999999946,
+                "bytes": 105167,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 105165,
+                "original_uncompressed_sha256": "fc98d547f13fa511e907e8a74182a220fc9496cb393ac85996439a8199e58b66",
+                "emitted_sha256": "fc98d547f13fa511e907e8a74182a220fc9496cb393ac85996439a8199e58b66",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "duplicate-key-last-wins",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 4.3125000000004965e-05,
+                "bytes": 52,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 50,
+                "original_uncompressed_sha256": "2cb55bca5fef178bf490031b453546738b963d8f0ab73f19e9bcd7ed7d05f49d",
+                "emitted_sha256": "2cb55bca5fef178bf490031b453546738b963d8f0ab73f19e9bcd7ed7d05f49d",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "shared-arrays-identity",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 0.004241042,
+                "bytes": 200012,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 200010,
+                "original_uncompressed_sha256": "ffc4e43c0fc344e6f8e571e01e1e39377fe1a101ffee357511ea8e4bc5a38cfa",
+                "emitted_sha256": "ffc4e43c0fc344e6f8e571e01e1e39377fe1a101ffee357511ea8e4bc5a38cfa",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "trace-hierarchy-key-order",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 9.437499999997989e-05,
+                "bytes": 215,
+                "chunks": 39,
+                "largest_emitted_chunk_bytes": 54,
+                "original_uncompressed_sha256": "48fe47dc92cf89934e990c4808d095b51280672402b7432625fcee3daf6ba390",
+                "emitted_sha256": "48fe47dc92cf89934e990c4808d095b51280672402b7432625fcee3daf6ba390",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "ordinary-field-multichunk-container",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 0.003096458000000024,
+                "bytes": 316127,
+                "chunks": 3,
+                "largest_emitted_chunk_bytes": 316125,
+                "original_uncompressed_sha256": "fae9e7893fe637e094cb9166072bc84304f137fda0a1fa927ef6c23697671f1f",
+                "emitted_sha256": "fae9e7893fe637e094cb9166072bc84304f137fda0a1fa927ef6c23697671f1f",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            },
+            {
+              "name": "per-load-cross-field-key-identity",
+              "correspondence": {
+                "status": "passed_complete_original_compact_json_byte_correspondence",
+                "seconds": 9.658299999998343e-05,
+                "bytes": 487,
+                "chunks": 25,
+                "largest_emitted_chunk_bytes": 267,
+                "original_uncompressed_sha256": "2a3cc6ea9e7f98b916a763525f3c11e0d4f21bf0f0792f3581a09ce36b07fbfc",
+                "emitted_sha256": "2a3cc6ea9e7f98b916a763525f3c11e0d4f21bf0f0792f3581a09ce36b07fbfc",
+                "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+              }
+            }
+          ],
+          "byte_gate_mutants_rejected": [
+            "changed-assigned-zero"
+          ],
+          "lexical_noncompact_rejected": [
+            "duplicate-key",
+            "negative-integer-zero",
+            "whitespace"
+          ],
+          "rejected": [
+            "reserved-value",
+            "reserved-key",
+            "escaped-reserved",
+            "escaped-reserved-key",
+            "leading-zero",
+            "negative-leading-zero",
+            "nonobject-root",
+            "scalar-root",
+            "truncated-json"
+          ],
+          "duplicate_key_semantics": "Python json last value wins, including equivalent escaped keys.",
+          "root_scope": "Object-root artifacts only. Reserved# strings/keys rejected for compressed artifacts, malformed leading-zero arrays remain rejected.",
+          "searches": 0,
+          "training_episodes": 0,
+          "native_queries": 0,
+          "graph_replays": 0
+        },
+        "seconds_before_receipt_write": 0.300920583,
+        "kernel_peak_rss_bytes": 158433280,
+        "loading": [
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/00.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0008032089999999992,
+            "original_uncompressed_bytes": 322,
+            "reduced_temporary_json_bytes": 263,
+            "shared_arrays": 3,
+            "array_occurrences": 4,
+            "quoted_strings_checked": 12,
+            "dictionary_key_occurrences": 12,
+            "shared_dictionary_keys": 12,
+            "maximum_buffer_characters": 263,
+            "standard_value_decodes": 18,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/00-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00042299999999999977,
+            "original_uncompressed_bytes": 279,
+            "reduced_temporary_json_bytes": 232,
+            "shared_arrays": 3,
+            "array_occurrences": 4,
+            "quoted_strings_checked": 12,
+            "dictionary_key_occurrences": 12,
+            "shared_dictionary_keys": 12,
+            "maximum_buffer_characters": 232,
+            "standard_value_decodes": 18,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/01.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0002618750000000017,
+            "original_uncompressed_bytes": 182,
+            "reduced_temporary_json_bytes": 182,
+            "shared_arrays": 0,
+            "array_occurrences": 0,
+            "quoted_strings_checked": 11,
+            "dictionary_key_occurrences": 5,
+            "shared_dictionary_keys": 5,
+            "maximum_buffer_characters": 182,
+            "standard_value_decodes": 10,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/01-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00031262499999999693,
+            "original_uncompressed_bytes": 156,
+            "reduced_temporary_json_bytes": 156,
+            "shared_arrays": 0,
+            "array_occurrences": 0,
+            "quoted_strings_checked": 11,
+            "dictionary_key_occurrences": 5,
+            "shared_dictionary_keys": 5,
+            "maximum_buffer_characters": 151,
+            "standard_value_decodes": 10,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/02.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.013971916000000001,
+            "original_uncompressed_bytes": 113174,
+            "reduced_temporary_json_bytes": 82478,
+            "shared_arrays": 2000,
+            "array_occurrences": 2001,
+            "quoted_strings_checked": 4,
+            "dictionary_key_occurrences": 3,
+            "shared_dictionary_keys": 3,
+            "maximum_buffer_characters": 82469,
+            "standard_value_decodes": 6,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/02-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.014958333000000004,
+            "original_uncompressed_bytes": 105167,
+            "reduced_temporary_json_bytes": 80474,
+            "shared_arrays": 2000,
+            "array_occurrences": 2001,
+            "quoted_strings_checked": 4,
+            "dictionary_key_occurrences": 3,
+            "shared_dictionary_keys": 3,
+            "maximum_buffer_characters": 80466,
+            "standard_value_decodes": 6,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/03.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0002804589999999968,
+            "original_uncompressed_bytes": 96,
+            "reduced_temporary_json_bytes": 69,
+            "shared_arrays": 4,
+            "array_occurrences": 4,
+            "quoted_strings_checked": 7,
+            "dictionary_key_occurrences": 6,
+            "shared_dictionary_keys": 4,
+            "maximum_buffer_characters": 69,
+            "standard_value_decodes": 10,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/03-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00022529200000000194,
+            "original_uncompressed_bytes": 52,
+            "reduced_temporary_json_bytes": 38,
+            "shared_arrays": 2,
+            "array_occurrences": 2,
+            "quoted_strings_checked": 4,
+            "dictionary_key_occurrences": 4,
+            "shared_dictionary_keys": 4,
+            "maximum_buffer_characters": 38,
+            "standard_value_decodes": 6,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/04.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.038165459,
+            "original_uncompressed_bytes": 280012,
+            "reduced_temporary_json_bytes": 120012,
+            "shared_arrays": 1,
+            "array_occurrences": 20000,
+            "quoted_strings_checked": 1,
+            "dictionary_key_occurrences": 1,
+            "shared_dictionary_keys": 1,
+            "maximum_buffer_characters": 120001,
+            "standard_value_decodes": 2,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/04-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.037063292,
+            "original_uncompressed_bytes": 200012,
+            "reduced_temporary_json_bytes": 100012,
+            "shared_arrays": 1,
+            "array_occurrences": 20000,
+            "quoted_strings_checked": 1,
+            "dictionary_key_occurrences": 1,
+            "shared_dictionary_keys": 1,
+            "maximum_buffer_characters": 100002,
+            "standard_value_decodes": 2,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/05.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0003745420000000055,
+            "original_uncompressed_bytes": 215,
+            "reduced_temporary_json_bytes": 210,
+            "shared_arrays": 1,
+            "array_occurrences": 1,
+            "quoted_strings_checked": 21,
+            "dictionary_key_occurrences": 18,
+            "shared_dictionary_keys": 14,
+            "maximum_buffer_characters": 209,
+            "standard_value_decodes": 27,
+            "hierarchy_mappings": 5,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/05-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00028408299999999054,
+            "original_uncompressed_bytes": 215,
+            "reduced_temporary_json_bytes": 210,
+            "shared_arrays": 1,
+            "array_occurrences": 1,
+            "quoted_strings_checked": 21,
+            "dictionary_key_occurrences": 18,
+            "shared_dictionary_keys": 14,
+            "maximum_buffer_characters": 209,
+            "standard_value_decodes": 27,
+            "hierarchy_mappings": 5,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/06.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.056439875,
+            "original_uncompressed_bytes": 316127,
+            "reduced_temporary_json_bytes": 249439,
+            "shared_arrays": 5000,
+            "array_occurrences": 5000,
+            "quoted_strings_checked": 15004,
+            "dictionary_key_occurrences": 10003,
+            "shared_dictionary_keys": 5,
+            "maximum_buffer_characters": 183892,
+            "standard_value_decodes": 6,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/06-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.05533179199999999,
+            "original_uncompressed_bytes": 316127,
+            "reduced_temporary_json_bytes": 249439,
+            "shared_arrays": 5000,
+            "array_occurrences": 5000,
+            "quoted_strings_checked": 15004,
+            "dictionary_key_occurrences": 10003,
+            "shared_dictionary_keys": 5,
+            "maximum_buffer_characters": 183892,
+            "standard_value_decodes": 6,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/07.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0005332909999999913,
+            "original_uncompressed_bytes": 487,
+            "reduced_temporary_json_bytes": 487,
+            "shared_arrays": 0,
+            "array_occurrences": 0,
+            "quoted_strings_checked": 12,
+            "dictionary_key_occurrences": 12,
+            "shared_dictionary_keys": 6,
+            "maximum_buffer_characters": 487,
+            "standard_value_decodes": 15,
+            "hierarchy_mappings": 5,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/07-compact.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00036883300000001285,
+            "original_uncompressed_bytes": 487,
+            "reduced_temporary_json_bytes": 487,
+            "shared_arrays": 0,
+            "array_occurrences": 0,
+            "quoted_strings_checked": 12,
+            "dictionary_key_occurrences": 12,
+            "shared_dictionary_keys": 6,
+            "maximum_buffer_characters": 487,
+            "standard_value_decodes": 15,
+            "hierarchy_mappings": 5,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/lexical-0.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00021012500000000545,
+            "original_uncompressed_bytes": 13,
+            "reduced_temporary_json_bytes": 13,
+            "shared_arrays": 0,
+            "array_occurrences": 0,
+            "quoted_strings_checked": 2,
+            "dictionary_key_occurrences": 2,
+            "shared_dictionary_keys": 1,
+            "maximum_buffer_characters": 13,
+            "standard_value_decodes": 4,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/lexical-1.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.0002046249999999583,
+            "original_uncompressed_bytes": 16,
+            "reduced_temporary_json_bytes": 10,
+            "shared_arrays": 1,
+            "array_occurrences": 1,
+            "quoted_strings_checked": 1,
+            "dictionary_key_occurrences": 1,
+            "shared_dictionary_keys": 1,
+            "maximum_buffer_characters": 10,
+            "standard_value_decodes": 2,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          },
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/stochastic-replay-memory-20261011/tmpzqctu2gi/lexical-2.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 0.00020874999999997979,
+            "original_uncompressed_bytes": 16,
+            "reduced_temporary_json_bytes": 11,
+            "shared_arrays": 1,
+            "array_occurrences": 1,
+            "quoted_strings_checked": 1,
+            "dictionary_key_occurrences": 1,
+            "shared_dictionary_keys": 1,
+            "maximum_buffer_characters": 11,
+            "standard_value_decodes": 2,
+            "hierarchy_mappings": 1,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          }
+        ]
+      }
+    },
+    {
+      "lifetime": {
+        "job": "effect-pilot-reference",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12452,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 0.8190652919999999,
+        "kernel_fresh_worker_peak_bytes": 227868672,
+        "kernel_owner_peak_bytes": 16596992,
+        "conservative_owner_plus_worker_peak_bytes": 244465664,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "23be8bc44e6a990bec9225d8d79e736cff219d3cda7426d8302689a0c3b1c8ae",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "effect-pilot-reference",
+        "mode": "reference",
+        "plan_sha256": "45ac98aa10022801a75ee8b437a913d5fe4653e35cd601a02f8246ad59874fcd",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.34094949999999996,
+          "bytes": 16922271,
+          "chunks": 6130,
+          "largest_emitted_chunk_bytes": 592815,
+          "original_uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "emitted_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "bytes": 16922271,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "effect-pilot",
+          "phase": "effect",
+          "mode": "untrained",
+          "seed": 16001,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 60
+        },
+        "nodes": 501,
+        "events": 41,
+        "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "seconds_before_receipt_write": 0.762401459,
+        "kernel_peak_rss_bytes": 227868672,
+        "loading": []
+      }
+    },
+    {
+      "lifetime": {
+        "job": "effect-pilot-repaired",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12454,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 3.422666458,
+        "kernel_fresh_worker_peak_bytes": 42795008,
+        "kernel_owner_peak_bytes": 16613376,
+        "conservative_owner_plus_worker_peak_bytes": 59408384,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "caec5aa58ed75b595208d5fcdab91f0b248af5c4e9759c56733b4c449fe02073",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "effect-pilot-repaired",
+        "mode": "repaired",
+        "plan_sha256": "b6a676b45cba594bcb0169e9ffc77f6cc0f550290eaa1e2c5750ded3adbaad05",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.337327959,
+          "bytes": 16922271,
+          "chunks": 6130,
+          "largest_emitted_chunk_bytes": 592815,
+          "original_uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "emitted_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+          "bytes": 16922271,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "effect-pilot",
+          "phase": "effect",
+          "mode": "untrained",
+          "seed": 16001,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 60
+        },
+        "nodes": 501,
+        "events": 41,
+        "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "seconds_before_receipt_write": 3.3482947920000004,
+        "kernel_peak_rss_bytes": 42795008,
+        "loading": [
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-search.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 3.009466041,
+            "original_uncompressed_bytes": 16922271,
+            "reduced_temporary_json_bytes": 12620289,
+            "shared_arrays": 19848,
+            "array_occurrences": 1355055,
+            "quoted_strings_checked": 49477,
+            "dictionary_key_occurrences": 46493,
+            "shared_dictionary_keys": 337,
+            "maximum_buffer_characters": 588166,
+            "standard_value_decodes": 11077,
+            "hierarchy_mappings": 1003,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          }
+        ]
+      }
+    },
+    {
+      "lifetime": {
+        "job": "train-01-reference",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12457,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 0.8659437080000005,
+        "kernel_fresh_worker_peak_bytes": 228605952,
+        "kernel_owner_peak_bytes": 16629760,
+        "conservative_owner_plus_worker_peak_bytes": 245235712,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "24e7aa060ae3c61f5971ce4e8606e6b4ab60cc420a7a23c06186c1cc9aa128d1",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "train-01-reference",
+        "mode": "reference",
+        "plan_sha256": "3c7f7cd2ff85ded78e5114562ee0387a1038d3ad92e9c30f66500d4792e38671",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.34452829099999993,
+          "bytes": 17013409,
+          "chunks": 6130,
+          "largest_emitted_chunk_bytes": 693155,
+          "original_uncompressed_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "emitted_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "bytes": 17013409,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "train-01",
+          "phase": "training",
+          "mode": "training",
+          "episode": 1,
+          "seed": 17001,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 30
+        },
+        "nodes": 501,
+        "events": 51,
+        "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "seconds_before_receipt_write": 0.777059375,
+        "kernel_peak_rss_bytes": 228605952,
+        "loading": []
+      }
+    },
+    {
+      "lifetime": {
+        "job": "train-01-repaired",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12458,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 3.4671128330000007,
+        "kernel_fresh_worker_peak_bytes": 43237376,
+        "kernel_owner_peak_bytes": 16646144,
+        "conservative_owner_plus_worker_peak_bytes": 59883520,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "1ced96883911da341d64023767a7423ac55030fbca5579ee117b4f3a8281e94a",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "train-01-repaired",
+        "mode": "repaired",
+        "plan_sha256": "716080910aaf0b219bccf45b08abe0e8cbed4e4c4ff280f5194aa29dce7d9aff",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.3370240830000002,
+          "bytes": 17013409,
+          "chunks": 6130,
+          "largest_emitted_chunk_bytes": 693155,
+          "original_uncompressed_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "emitted_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+          "bytes": 17013409,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "train-01",
+          "phase": "training",
+          "mode": "training",
+          "episode": 1,
+          "seed": 17001,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 30
+        },
+        "nodes": 501,
+        "events": 51,
+        "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "seconds_before_receipt_write": 3.409087459,
+        "kernel_peak_rss_bytes": 43237376,
+        "loading": [
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 3.070559416,
+            "original_uncompressed_bytes": 17013409,
+            "reduced_temporary_json_bytes": 12715060,
+            "shared_arrays": 19848,
+            "array_occurrences": 1355219,
+            "quoted_strings_checked": 52240,
+            "dictionary_key_occurrences": 49090,
+            "shared_dictionary_keys": 340,
+            "maximum_buffer_characters": 653694,
+            "standard_value_decodes": 11129,
+            "hierarchy_mappings": 1003,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          }
+        ]
+      }
+    },
+    {
+      "lifetime": {
+        "job": "train-08-reference",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12460,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 0.8425034580000013,
+        "kernel_fresh_worker_peak_bytes": 230752256,
+        "kernel_owner_peak_bytes": 16678912,
+        "conservative_owner_plus_worker_peak_bytes": 247431168,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "b33fdcd1654f05ec874145505039f7ea1b3bbf057d2df0832a989fe494ba24bc",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "train-08-reference",
+        "mode": "reference",
+        "plan_sha256": "4ea5605b2f8cbd873c6def8c38dce16cd04c4f293a3a25dbca3319539c717b9c",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.33968754199999995,
+          "bytes": 17286616,
+          "chunks": 6129,
+          "largest_emitted_chunk_bytes": 966196,
+          "original_uncompressed_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "emitted_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "bytes": 17286616,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "train-08",
+          "phase": "training",
+          "mode": "training",
+          "episode": 8,
+          "seed": 17008,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 30
+        },
+        "nodes": 501,
+        "events": 62,
+        "weights_sha256": "20d8e314e2b484e038b909ac8a0b840f02f166cff7bbc3d624953ce008cecbbf",
+        "seconds_before_receipt_write": 0.768203166,
+        "kernel_peak_rss_bytes": 230752256,
+        "loading": []
+      }
+    },
+    {
+      "lifetime": {
+        "job": "train-08-repaired",
+        "status": "passed_owned_loading_worker_lifetime",
+        "worker_pid": 12461,
+        "exit_code": 0,
+        "terminal_and_reaped": true,
+        "failure": null,
+        "full_worker_seconds": 3.5718190419999996,
+        "kernel_fresh_worker_peak_bytes": 45023232,
+        "kernel_owner_peak_bytes": 16695296,
+        "conservative_owner_plus_worker_peak_bytes": 61718528,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "receipt_sha256": "b1867edcded30846c43617f783c889acd241c6b586229e0e22afc0bed8106935",
+        "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+        "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+      },
+      "receipt": {
+        "status": "passed_complete_loading_value_helper",
+        "job": "train-08-repaired",
+        "mode": "repaired",
+        "plan_sha256": "03b7550c7d5f9ea6b0e78c1bf8486726eee9c8159690c1cceb461c98fbc185fe",
+        "searches": 0,
+        "training_episodes": 0,
+        "native_queries": 0,
+        "graph_replays": 0,
+        "complete_original_trace_byte_correspondence": {
+          "status": "passed_complete_original_compact_json_byte_correspondence",
+          "seconds": 0.3368701249999999,
+          "bytes": 17286616,
+          "chunks": 6129,
+          "largest_emitted_chunk_bytes": 966196,
+          "original_uncompressed_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "emitted_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+        },
+        "canonical": {
+          "sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+          "bytes": 17286616,
+          "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+        },
+        "observation": {
+          "id": "train-08",
+          "phase": "training",
+          "mode": "training",
+          "episode": 8,
+          "seed": 17008,
+          "attempts": 500,
+          "search_seconds": 10,
+          "lifecycle_seconds": 30
+        },
+        "nodes": 501,
+        "events": 62,
+        "weights_sha256": "20d8e314e2b484e038b909ac8a0b840f02f166cff7bbc3d624953ce008cecbbf",
+        "seconds_before_receipt_write": 3.504916,
+        "kernel_peak_rss_bytes": 45023232,
+        "loading": [
+          {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-search.json.gz",
+            "kind": "complete_hierarchy_streamed_standard_JSON_with_per_load_dictionary_key_and_array_sharing",
+            "seconds": 3.166550792,
+            "original_uncompressed_bytes": 17286616,
+            "reduced_temporary_json_bytes": 12977489,
+            "shared_arrays": 19848,
+            "array_occurrences": 1356463,
+            "quoted_strings_checked": 58101,
+            "dictionary_key_occurrences": 54643,
+            "shared_dictionary_keys": 812,
+            "maximum_buffer_characters": 850310,
+            "standard_value_decodes": 11203,
+            "hierarchy_mappings": 1003,
+            "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Per-load key table reuses equal string key objects across ordinary-value decodes and hierarchy mappings; values are unchanged. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+          }
+        ]
+      }
+    }
+  ],
+  "attempted": [
+    "synthetic-controls",
+    "effect-pilot-reference",
+    "effect-pilot-repaired",
+    "train-01-reference",
+    "train-01-repaired",
+    "train-08-reference",
+    "train-08-repaired"
+  ],
+  "failed": [],
+  "unexecuted": [],
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "seconds_before_phase_receipt_write": 13.362172124999999,
+  "helper_phase_seconds_already_charged": 0.0,
+  "historical_failed_audit_seconds": 169.587075792,
+  "cumulative_audit_seconds_before_phase_receipt_write": 182.949247917,
+  "original_cumulative_audit_seconds": 780,
+  "phase_remaining_seconds": 180.0,
+  "conservative_owner_plus_worker_peak_bytes": 247463936,
+  "source_preparation_and_receipt_clock_scope": "Includes phase input streaming hashes/dispatch/pure worker lifecycles/assembly up to final receipt write; excludes final receipt write and source-authoring time."
+}

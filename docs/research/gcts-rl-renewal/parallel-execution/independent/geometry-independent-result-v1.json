@@ -1,0 +1,62 @@
+{
+  "status": "passed_independent_synthetic_domain_identity_scheduler_fixtures_with_cluster_gap_confirmed",
+  "plan_sha256": "4766b50e393aa39fa4a8592ac84143e71a1b6cd58223ff7c19060b9bfd116d0f",
+  "states": 1216,
+  "accepted_placement_comparisons": 8496,
+  "full_identity_comparisons": 19,
+  "controls": [
+    "ordered repeated/equal premises",
+    "same formula distinct decorated witness",
+    "nested distant update/rollback",
+    "parent-local exclusions",
+    "assigned zero/absence",
+    "global dead/forced/earliest generation",
+    "budget unknown restoration",
+    "mark-consistent invalid MP",
+    "exact integer boolean negatives"
+  ],
+  "fixed_preference_gap_counterexample": {
+    "initial_valid_proposal": [
+      [
+        0,
+        0,
+        []
+      ],
+      [
+        1,
+        1,
+        []
+      ]
+    ],
+    "scheduler_valid_competing_base": [
+      3,
+      0,
+      []
+    ],
+    "full_cluster_invalid_after": true,
+    "subsequent_decision": {
+      "kind": "branch",
+      "row": 1
+    },
+    "complete_base_first": [
+      0,
+      1,
+      []
+    ],
+    "surviving_preference_first": [
+      1,
+      1,
+      []
+    ],
+    "full_cluster_lifecycle_conformance": "open"
+  },
+  "production_model_loads": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "positive_attempts_in_manual_synthetic_transactions": 3,
+  "new_proof_discoveries": 0,
+  "independent_whole_logical_or_native_acceptance": false,
+  "scope": "Pure synthetic point contract, independent direct raw prototype checker; not production graph or proof validity.",
+  "seconds_before_receipt_write": 0.37083033299999996,
+  "kernel_peak_bytes": 15351808
+}

@@ -1,0 +1,80 @@
+{
+  "status": "passed_prospective_loading_only_v2_source_pin_and_serializer_review_helpers_may_be_root_activated",
+  "review_scope": "Read-only source/plan/source-ZIP/hash and AST reconciliation; compressed actual traces hashed only, no actual payload decoded, no helper/replay/search/training/native execution.",
+  "review_package_sha256": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+  "helper_plan_sha256": "df1937d10d634a11ee9ddacf110a7e600e8976cf626c4adb11e86b793c304f11",
+  "evaluation_plan_sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+  "source_zip_sha256": "98e2c19df0c27877185250527b63fde29ddbfb22ea69ae24e99d079e1190bb71",
+  "exact_pins": {
+    "sources": 37,
+    "inputs": 40,
+    "package_files": 17,
+    "source_zip_members": 37
+  },
+  "serializer_source_sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+  "worker_normalized_ast_identical_to_original": true,
+  "original_six_job_semantics_and_input_bindings_unchanged": true,
+  "source_level_preservation_argument": {
+    "scope": "Decoded finite object-root trace dictionaries, ordered fields, declared search/tree/children wrapper shape, all original string keys and JSON values; lists/tuples JSON-array normalization.",
+    "ordinary_field_groups": "Iterate all dictionary items in insertion order. Each maximal consecutive group without a designated special key is C-json encoded as a shallow dictionary; strip only its outer braces. Every original key/value is emitted once in its original relative position. No ordinary nested value or metadata/event field is omitted.",
+    "special_fields": "Before each designated field, flush the preceding group. Emit the original JSON-encoded key and colon at that exact position, then recursively emit its value. This does not presume search/tree/children occur last.",
+    "mapping_punctuation": "Single opening/closing braces; exactly one comma before every emitted group or designated field after the first. Empty dictionary is represented exactly.",
+    "children": "Emit opening/closing brackets and every child in original list order with one separating comma. Wrapper fields, tree nodes and child arrays use the same complete mapping argument recursively.",
+    "induction": "For finite tree depth, exact serialization of all child values gives exact serialization of each node, search mapping and root mapping, equal to full standard insertion-order compact ensure_ascii=False JSON serialization.",
+    "byte_gate": "Read exactly each emitted segment length from the immutable original gzip, compare every byte and both SHA streams, then require no trailing original byte. Errors or budget stops remain unknown/failed. Both ordinary and repaired pilot helpers require the entire gate, then compare original-byte SHA/length fingerprints.",
+    "independence": "Implementation imports only unchanged v1 loader/statistics and standard libraries; it does not import producer serializer or graph/search engine."
+  },
+  "helper_changes": {
+    "synthetic_positive_values": 6,
+    "synthetic_compact_byte_checks": 6,
+    "scope_parser_controls": 9,
+    "assigned_zero_mutants": 1,
+    "lexical_noncompact_controls": 3,
+    "additional_control": "Special fields deliberately appear midmapping at root/search/node/child wrapper positions.",
+    "actual_pairs": 3,
+    "pair_protocol": "Both ordinary and repaired decoded objects must serialize byte-for-byte to the same frozen original; fingerprint field named canonical explicitly identifies full_original_compact_JSON_fingerprint_v2_not_sorted_canonical."
+  },
+  "budgets": {
+    "helper_phase_seconds": 180,
+    "helper_internal_lifecycle_seconds": [
+      25,
+      30
+    ],
+    "evaluation_internal_lifecycle_seconds": [
+      115,
+      120
+    ],
+    "conservative_peak_bytes": 536870912,
+    "original_cumulative_seconds": 780,
+    "retained_original_failure_seconds": 18.112109042,
+    "retained_v1_helper_unknown_seconds": 44.927988292,
+    "remaining_before_v2_helpers": 716.959902666,
+    "measured_v2_helper_phase_must_be_subtracted": true,
+    "prior_unknown_receipts_retained": [
+      {
+        "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json",
+        "sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+        "seconds": 18.112109042
+      },
+      {
+        "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json",
+        "sha256": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+        "seconds": 44.927988292
+      }
+    ],
+    "source_authoring_clock_scope": "UTC elapsed since explicit source-writing marker, includes waits/interleaved work; not CPU effort. Earlier reading/design uninstrumented and unknown. Stored perf_counter marker not cross-process comparable on this host and not used as elapsed measurement."
+  },
+  "activation": {
+    "helpers": "Root may launch only the seven-helper owner under its frozen plan after this source disposition.",
+    "actual_evaluation": "Still pending complete passed helper phase, exact receipt/pins, hash-bound activation-v2.json and root authorization. Direct worker CLI is not a security activation boundary."
+  },
+  "limitations": [
+    "Shallow C-encoded ordinary groups may be large; largest chunk is measured, not a hard cap or memory pass prediction.",
+    "Entire decoded reduced trace remains in memory; actual resource success requires owned lifetime receipts.",
+    "Special trace-container shapes are fail-closed; no general strict adversarial JSON parser claim.",
+    "Scope is complete JSON-value/byte preservation followed by unchanged graph/math replay, not an additional proof discovery or native acceptance.",
+    "Owner phase clock ends before final receipt write and source authoring; outer/startup/excluded costs must remain separately disclosed."
+  ],
+  "review_hash_reconciliation_seconds": 0.085045416,
+  "review_source_reading_and_authorship_seconds": "unmeasured"
+}

@@ -1,0 +1,45 @@
+{
+  "status": "passed_prospective_loading_only_source_and_pin_review_helpers_may_be_root_activated",
+  "package_path": ".gcts-active/stochastic-replay-memory-20261011/review-package-v1.json",
+  "package_sha256": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+  "helper_plan_sha256": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+  "evaluation_plan_sha256": "f69665c7f75652062e986730af0656a8f8c74c52be985350fff897d1108880a2",
+  "source_pin_count": 32,
+  "input_pin_count": 35,
+  "package_file_count": 17,
+  "archive_source_count": 32,
+  "all_exact_pins_and_archive_entries_match": true,
+  "new_worker_normalized_ast_identical_to_prior": true,
+  "six_original_job_semantics_and_budgets_unchanged": true,
+  "checks": [
+    "Strict four-integer regex no longer rewrites leading-zero arrays; compressed object-root restriction is explicit.",
+    "Reserved prefix is checked on decoded strings and keys including escaped forms; ordinary duplicate-key last-value semantics is separate from exact byte acceptance.",
+    "Every actual trace is fully decoded, then every byte of full insertion-order compact UTF-8 JSON reserialization is compared against the unchanged original gzip payload before model or graph replay.",
+    "Byte gate visits every field/node/event/census and rejects omitted/altered values or lexical noncompact/duplicate/negative-integer-zero source representations.",
+    "Graph, feature, RNG, action, hint, complete fallback, rollback, proof decoding and policy math remain in exact old independent source closure.",
+    "Helper phase owns seven separate pure workers and checks three full old 501-node ordinary/repaired value pairs plus explicit synthetic parser/value/byte controls.",
+    "Owner records stdout/stderr, fresh wait4 child peak, timeout kill/reap and conservative memory; missing or failed worker stops remaining jobs as unknown/unexecuted.",
+    "Owner subtracts measured helper phase and retained 18.112109042 seconds from original 780-second envelope. Six actual workers retain 115 internal seconds, 120 lifecycle seconds and 512 MiB."
+  ],
+  "caveats": [
+    "Root exclusively invokes phases through the owner; root activation is an owner workflow guard, not security against directly invoking worker CLI.",
+    "65536-character coalescing is a threshold, not a hard maximum scalar token or byte buffer bound. Current pinned scalar sizes and owned resource gates control feasibility.",
+    "Full JSONEncoder.iterencode traversal is correct but its time may exceed a worker budget; no actual six-evaluation success is predicted.",
+    "Phase timer starts at owner main entry and excludes final receipt write; startup/source authoring and outer costs require separate disclosure rather than an end-to-end claim.",
+    "Old source/helper fixture receipts do not themselves certify the changed loader; new source-specific helper and all-six correspondence results remain pending."
+  ],
+  "historical_unknown": {
+    "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json",
+    "sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+    "seconds": 18.112109042
+  },
+  "source_authoring_calendar_interval_seconds": 571.476163,
+  "source_authoring_scope": "UTC elapsed since explicit source-writing marker, includes waits/interleaved work; not CPU effort. Earlier reading/design uninstrumented and unknown. Stored perf_counter marker not cross-process comparable on this host and not used as elapsed measurement.",
+  "prospective_disposition": "No scientific blocker found within the stated pinned compact-object protocol. Root may launch only the separately bounded seven-helper owner phase after this review. Actual six-replay phase still requires passed helper receipt, root hash-bound activation and retained cumulative/resource gates.",
+  "review_pin_check_seconds": 0.071771542,
+  "actual_new_helper_executions_by_reviewer": 0,
+  "actual_evaluation_replays_by_reviewer": 0,
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "old_source_mutations": 0
+}

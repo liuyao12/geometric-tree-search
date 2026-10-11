@@ -1,0 +1,13 @@
+{
+  "status": "scope_note_for_frozen_loading_only_review",
+  "review_package_sha256": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+  "owner_activation_scope": "The controlled execution route is the sole-owner CLI. Only that owner enforces the exact root activation and helper prerequisite. The pure worker CLI can technically be called directly; controlled root ownership, rather than a worker-level activation check, provides the declared prerequisite. No claim that direct worker invocation is impossible.",
+  "buffer_scope": "65536 characters is the JSON iterencode coalescing threshold, not a hard emitted-byte or single-token cap. A single encoded string token may be larger, UTF-8 byte length can exceed character length. The decoder separately fails unknown for pending fragments above2097152 bytes. Full512MiB kernel+owner gate remains authoritative.",
+  "execution_owner": "Root owns and will launch both pure helpers and any later actual full evaluation replay. Subagent has executed only source preparation/AST and exact-pin verification; no helper, trace decoder, graph replay, search, training or native execution.",
+  "setup_cost_seconds": {
+    "freeze_before_package_write": 0.206085042,
+    "source_pin_and_ast_verification": 0.060293625
+  },
+  "clock_scope": "These are separately disclosed preparation/verification measurements, excluding process startup/final receipt write and uninstrumented earlier reading/design; not complete research-time totals.",
+  "sources_edited_after_freeze": false
+}

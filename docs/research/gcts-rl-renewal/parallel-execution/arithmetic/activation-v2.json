@@ -1,0 +1,14 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+  "prerequisite_sha256": {
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/phase-receipt.json": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+    ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v2.json": "57d281b0399165ce2da6d132f0635d581f1f2ccf199ee9ad94a0f2d74607b417",
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v2.json": "64124572ae4158c96db23d69b8f591491a3f3280abf82d3185c3a1794ea26e72",
+    ".gcts-active/replay-and-primitive-execution-20261011/helper-terminal-v2.json": "55d2ebdc81d79654ab18582abd8981d754a7fcde1875657b394d25bfef10c155",
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b"
+  },
+  "scope": "One owned phase replaying all six unchanged original full evaluation traces; loading-only repair and full byte gate before unchanged independent graph/feature/RNG/hint/fallback/rollback/math. No searches/training/native queries.",
+  "remaining_original780_seconds": 705.397215833,
+  "owner_activation_scope": "Workflow guard only; direct worker CLI technically callable. Root exclusively launches controlled owner."
+}

@@ -1,0 +1,20 @@
+{
+  "status": "passed_owned_independent_pure_fixture_lifetime",
+  "plan_sha256": "4766b50e393aa39fa4a8592ac84143e71a1b6cd58223ff7c19060b9bfd116d0f",
+  "result_sha256": "79337c703373a1f6f4f338ea35ba11fe367a4eee2a463060db38ff76a74a5c4f",
+  "child_pid": 8155,
+  "child_exit_code": 0,
+  "owned_child_terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_lifecycle_and_owner_seconds_before_receipt_write": 0.39865237499999995,
+  "owner_kernel_peak_bytes": 12320768,
+  "fresh_child_kernel_peak_bytes": 15384576,
+  "conservative_combined_peak_bytes": 27705344,
+  "whole_ceiling_seconds": 30,
+  "peak_ceiling_bytes": 536870912,
+  "enforcement": "Sole wait4 direct-child owner; internal alarm and external wall kill/reap. Retrospective conservative fresh kernel peak gate, no hard memory cap or sampler claim.",
+  "receipt_write": "Owner own final receipt write excluded; full fixture receipt write and worker lifecycle included.",
+  "production_model_loads": 0,
+  "target_searches": 0,
+  "native_queries": 0
+}

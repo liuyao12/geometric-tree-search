@@ -1,0 +1,67 @@
+{
+  "status": "completed_loader_source_scope_and_bounded_fixture_review_actual_adapter_pending",
+  "loader": {
+    "path": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+    "sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+    "bytes": 2852
+  },
+  "historical_whole_value_evidence": {
+    "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-reconciliation.json",
+    "sha256": "27150580603bcf96c2322301910c2fae75245edc5e715085fd2904620f4f7c58",
+    "bytes": 1719
+  },
+  "historical_scope": "Complete normalized 115950444-byte value comparison of one old trace via literal postparse v2 and streaming v3; combined earlier batch remains time-unknown and was separately reconciled. This does not certify six new evaluation payloads.",
+  "first_fixture_gate": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/fixture-lifetime-v1.json",
+    "sha256": "43d5ee1a47d9b0ac9c4f367ed032b3fdcf6152fe0f49d97959441ecb6f7ab784",
+    "bytes": 542
+  },
+  "first_status": "unknown_or_failed_fixture_lifetime",
+  "first_lifetime_seconds": 0.578127,
+  "first_conservative_peak_bytes": 202964992,
+  "followon_fixture_gate": {
+    "path": ".gcts-active/stochastic-replay-fixture-followon-20261011/fixture-lifetime-v1.json",
+    "sha256": "8b4dcf5bdb954223dec186d7b1a82735d423bd08f4a79442c3a8f199841c7dad",
+    "bytes": 542
+  },
+  "followon_status": "passed_bounded_fixture_lifetime",
+  "followon_lifetime_seconds": 0.533775291,
+  "followon_conservative_peak_bytes": 203014144,
+  "both_lifetimes_separately_charged_seconds": 1.1119022909999998,
+  "fixture_plan_pins": [
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/fixture-plan-v1.json",
+      "sha256": "b72ca3f9ccbc78b534cd27c4ec99c93e8ac9e39b619bab13dfff39ad271aeb89",
+      "bytes": 6072
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-fixture-followon-20261011/fixture-plan-v1.json",
+      "sha256": "a09986712bc243a3a6c2977a6f5fafb2f28f15e1010fcaa8f5627494f73e45d0",
+      "bytes": 6811
+    }
+  ],
+  "fixed_loader_limitations": [
+    "Tuple representation differs from literal JSON lists; canonical JSON-array values are the declared equivalence.",
+    "Top-level arrays/scalars are not supported by restoration through object_hook; actual input must be a pinned object.",
+    "All original decoded strings beginning with the reserved prefix fail closed, including escaped keys/values.",
+    "Regex rewrites leading-zero integer arrays and therefore is not strict/adversarial JSON validation.",
+    "Valid unmatched prefixes larger than the pending-byte limit become resource unknown; this is not a malformed-input assertion.",
+    "Memory is reduced by interning repeated integer arrays; the reduced file is still fully parsed and held. Each actual full lifetime retains an independent memory gate."
+  ],
+  "new_adapter_gates": [
+    "Changed strict-integer loader requires its own source-specific fixtures; this old source evidence does not certify it.",
+    "Complete all-six reserialized decoded byte correspondence with each frozen gzip original must pass before replay; no sampled prefix or status string substitutes.",
+    "Graph/features/math audit logic and all original producer/trace/model bytes remain unchanged.",
+    "Preserve original c01d34f2 evaluation unknown and five unexecuted jobs; charge 18.112109042 seconds against original 780-second gate and retain 512 MiB.",
+    "Actual six-replay activation requires root review of source/input/resource freeze."
+  ],
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "actual_trace_loads": 0,
+  "old_sources_modified": false,
+  "new_primitive_executor_gate": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+    "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+    "bytes": 8706
+  }
+}

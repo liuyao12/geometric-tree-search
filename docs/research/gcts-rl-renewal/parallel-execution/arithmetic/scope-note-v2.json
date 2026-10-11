@@ -1,0 +1,13 @@
+{
+  "status": "v2_streaming_scope_note",
+  "review_package_sha256": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+  "actual_trace_scope": "Hierarchical actual traces emit shallow C-json header/node/child groups plus exact recursive delimiters; no complete actual trace copy or output string. Generic synthetic objects without hierarchy are deliberately small and C-encoded as bounded whole objects; no unrestricted large generic JSON memory claim.",
+  "buffer_scope": "Largest emitted group is measured in each complete byte receipt. No fixed64KiB or hard token/group cap;512MiB retrospective worker+owner gate remains authoritative.",
+  "fingerprint_scope": "V2 full-reference and full-repaired helpers both compare every original byte; canonical result field is explicitly labeled full original compact JSON fingerprint, not sorted canonical serialization.",
+  "activation_scope": "Controlled owner enforces activation-v2.json. Direct pure worker CLI is technically callable; root owns all actual execution.",
+  "original_loader_unchanged": true,
+  "old_failed_phases_seconds": [
+    18.112109042,
+    44.927988292
+  ]
+}

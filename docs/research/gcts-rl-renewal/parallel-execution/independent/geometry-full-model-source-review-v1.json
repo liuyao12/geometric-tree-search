@@ -1,0 +1,176 @@
+{
+  "status": "passed_prospective_full_24_point_graph_control_source_and_pin_review_pending_root_execution_and_independent_actual_audit",
+  "scope": "Read-only source/resource/input/hash review; no production model or witness payload loaded, no full graph execution, target search, old auditor/producer rerun, engine, solver or native query.",
+  "plan_sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+  "exact_pin_counts": {
+    "sources": 5,
+    "inputs": 17,
+    "preserved_files": 473
+  },
+  "source_pins": [
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_freeze_v1.py",
+      "sha256": "f834e4b86668824c693e4c96c1bbb6aac3369060c179fe4e85d32547b5160ebc",
+      "bytes": 8603
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_outer_v1.py",
+      "sha256": "8cc140fb98f9e474d5fb142daafd54c452812fa6b575666ac06de029a9cd215c",
+      "bytes": 2939
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_run_v1.py",
+      "sha256": "6634bf886919b2c861b4ec7266295e64bac7926dbc0c85e7afd2ea7392519fce",
+      "bytes": 5842
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_v1.py",
+      "sha256": "f85cd921b9f324649c53a18e4ae8162e64915ae9f13a808e8216fe8025bef3e9",
+      "bytes": 15347
+    }
+  ],
+  "input_pins": [
+    {
+      "role": "master_contract",
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "role": "primitive_model",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "role": "primitive_logical_audit",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "role": "primitive_logical_audit_lifetime",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "role": "primitive_logical_audit_parser_scope",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "role": "primitive_logical_audit_completion",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "role": "static_export",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-final-v1.json",
+      "sha256": "11ef5c0b7e95f0c83147792b96ae070f4b939963b7308560bf23d27a3833eb97",
+      "bytes": 24086
+    },
+    {
+      "role": "static_production",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "role": "complete_family_template_projection",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "role": "independent_prospective_executor_gate",
+      "path": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+      "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+      "bytes": 8706
+    },
+    {
+      "role": "factorization_argument",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/factorization-v1.json",
+      "sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+      "bytes": 7294
+    },
+    {
+      "role": "authored_witness_control",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "role": "frozen_synthetic_parent_plan",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+      "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+      "bytes": 116141
+    },
+    {
+      "role": "authored_synthetic_kernel_outcome",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v2.json",
+      "sha256": "d4aa9ae3f33979fc90bcc20ba43843b9b23ab06a3242c821c40a18f526b8efd5",
+      "bytes": 2810
+    },
+    {
+      "role": "authored_synthetic_kernel_lifetime",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v2.json",
+      "sha256": "9af212c3cc0c2fcd7cad588069438bc21aded84e50d36ca4389fe1d3a45869a3",
+      "bytes": 978
+    },
+    {
+      "role": "fixed_preference_control_gap",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "role": "actual_model_readiness",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/actual-model-readiness-v1.json",
+      "sha256": "1d3da542bd12c5a9157216df981a4f97d5e37bc6be12b03d06831839b3486810",
+      "bytes": 4102
+    }
+  ],
+  "reviewed_complete_relation": [
+    "All ordered recipe declarations remain present; raw direct checker streams every allowed negative offset/alignment and applies capacity plus local/distant marking agreement.",
+    "Negative references are rejected by exact exterior sentinel agreement, independently from production strict-prior bit masks.",
+    "Compare both iterators with zip_longest, exact keys and t/m at every surviving placement, full counts, zero/singleton classifications and every per-recipe row count; no sampled pool degree.",
+    "Per-row complete key/t/m stream SHA and candidate-count sums bind narrow one-edge unit-support graph. They do not establish a general multipoint/fractional graph contract.",
+    "All initial roots/three seed generations and prefix placed generations are checked. Independent decision reconstruction honors global dead, global forced, generation then degree.",
+    "At most eight stable complete-base scheduler placements; no DFS, exhaustion search, learner or preferences. Three seeds plus eight cannot occupy twenty-four rows.",
+    "Remote MP and assigned-code-zero probes are explicitly low-level catalog transactions, not scheduler search branches. Every controlled state is completely compared and undo must restore full semantic state.",
+    "Authored full witness read occurs strictly after generic probes, in a fresh isolated low-level verification control. Every command/ref/t/m/identity is compared; never supplied to prefix, policy or initial state.",
+    "Full witnesses have point-only certificate status plus exact prior primitive logical audit binding. No new native/compiler acceptance.",
+    "Recipe first/last legal representatives and visited/control identities are separately reconstructed; complete all-key t/m comparison does not imply an all-key SHA identity reconstruction.",
+    "Fourteen complete states is a declared upper bound/prediction before execution, not a passed result."
+  ],
+  "cluster_scope": "Frozen v2 fixed immutable preference set only. Our independent tiny fixture explicitly confirms that full pending-cluster revalidation/retirement is still open. No actual cluster target search is authorized.",
+  "resource_scope": {
+    "producer_seconds": 180,
+    "child_alarm_seconds": 170,
+    "supervisor_seconds": 175,
+    "conservative_peak_bytes": 536870912,
+    "enforcement": "Task-owned sampled RSS/time watchdog, child alarm, final conservative kernel peak rejection, outer worker/supervisor receipt writes included. No hard OS memory-limit claim; outer own receipt write/source authoring separately excluded.",
+    "prior_synthetic_failed_v1_seconds": 0.520595542,
+    "prior_synthetic_pass_v2_seconds": 0.844840583,
+    "separate_new_full_stage": true,
+    "unknowns_retained": true
+  },
+  "independent_stage_requirements": [
+    "Separate own source/input/output/lifetime plan frozen and reviewed before actual independent stage.",
+    "Independently reconstruct complete raw recipe domain from frozen model, context, authority, registry and boundary without importing producer enumeration/factor helpers.",
+    "Independently reconstruct transaction state from exact emitted keys, not merely trust production marks/totals as reference inputs.",
+    "Compare every state per-row/per-recipe stream hash/count, global decision, strict refs, full aggregate marks/refcounts, restoration and selected identity.",
+    "Complete independently decoded whole authored primitive proof validation retains authored attribution; any future searched proof needs its own such certificate.",
+    "Full cluster lifecycle/native/compiler/general fractional engine correspondence stays open."
+  ],
+  "review_hash_reconciliation_seconds": 0.30380324999999997,
+  "source_reading_and_authorship_seconds": "unmeasured"
+}

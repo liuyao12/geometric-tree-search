@@ -1,0 +1,15 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+  "prerequisite_sha256": {
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/phase-receipt.json": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v4.json": "2a57f91c3923ae269fd75f2af56c92d383067ffda9ee2cf0c21dbb2c90857cec",
+    ".gcts-active/replay-and-primitive-execution-20261011/helper-terminal-v4.json": "5115192e661eb5985a3ac94778d91ec28aaf0c765ed5b5d549a9d97cf1100970",
+    ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v4.json": "d320a33de4c95dceb28ce3be011b6f44310dce0f490208d4558ac9d86541d9c3",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v4.json": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d"
+  },
+  "scope": "All six original full trace replays only; unchanged fullgraph/math/RNG/bytegates and115/120512; nosearch/training/native",
+  "remaining_original_780_seconds_after_helpers": 597.050752083,
+  "restart_authorized": false
+}

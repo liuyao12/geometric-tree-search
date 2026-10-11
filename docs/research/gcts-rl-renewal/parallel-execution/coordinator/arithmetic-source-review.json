@@ -1,0 +1,26 @@
+{
+  "status": "passed_root_loading_only_source_and_budget_review",
+  "package_sha256": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+  "source_input_pins": 67,
+  "package_files": 17,
+  "unchanged_worker_ast": true,
+  "unchanged_six_original_job_semantics": [
+    "base-r1",
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2",
+    "untrained-r2",
+    "base-r2"
+  ],
+  "rss_bytes": 536870912,
+  "original_phase_seconds": 780,
+  "retained_unknown_seconds": 18.112109042,
+  "remaining_before_helper_seconds": 761.887890958,
+  "seconds": 0.08058541699999999,
+  "scope": [
+    "No source imports, trace inflation, model execution, replay, search or native query occurred in this review.",
+    "Only phase owner enforces exact root activation. Worker CLI is callable; this is a controlled execution path, not an uncallable/security boundary.",
+    "64KiB is the reserialization coalescing threshold. Single encoded tokens may exceed it; measured conservative512MiB resource gate remains authoritative.",
+    "Original failure remains immutable; helpers and all-six full replays need actual terminal resource evidence."
+  ]
+}

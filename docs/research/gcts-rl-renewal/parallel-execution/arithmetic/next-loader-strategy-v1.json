@@ -1,0 +1,115 @@
+{
+  "status": "frozen_prospective_next_loader_strategy_note_only",
+  "implementations_authored": 0,
+  "helpers_executed": 0,
+  "actual_replays_executed": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "observed_facts": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json",
+      "sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+      "status": "unknown_loading_phase_resource_budget",
+      "inclusive_phase_seconds": 38.059562,
+      "conservative_peak_bytes": 551485440,
+      "attempted": [
+        "base-r1"
+      ],
+      "unexecuted": [
+        "untrained-r1",
+        "trained-r1",
+        "trained-r2",
+        "untrained-r2",
+        "base-r2"
+      ]
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json",
+      "sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+      "status": "unknown_loading_phase_resource_budget",
+      "inclusive_phase_seconds": 43.707834207999994,
+      "conservative_peak_bytes": 777240576,
+      "attempted": [
+        "base-r1"
+      ],
+      "unexecuted": [
+        "untrained-r1",
+        "trained-r1",
+        "trained-r2",
+        "untrained-r2",
+        "base-r2"
+      ]
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/phase-receipt.json",
+      "sha256": "e9372a0368c7a8454a08dd20786049fd0c225e227cb0cc76045582dd3139e047",
+      "status": "unknown_loading_phase_resource_budget",
+      "inclusive_phase_seconds": 43.711404833,
+      "conservative_peak_bytes": 723189760,
+      "attempted": [
+        "base-r1"
+      ],
+      "unexecuted": [
+        "untrained-r1",
+        "trained-r1",
+        "trained-r2",
+        "untrained-r2",
+        "base-r2"
+      ]
+    }
+  ],
+  "observed_assessment": "V2 is the closest measured loading representation:551485440 combinedbytes,14614528 over the536870912 gate. V3 reached777240576; explicit dictionary-key sharing V4 reached723189760,54050816 lower thanV3 but still186318848 over. Onlybase-r1 was attempted in each phase; original bytes and full5001-node semantic comparison completed, while owned resource acceptance remainedUNKNOWN. Five other evaluation replays remain unexecuted.",
+  "speculative_causes": "These phase peaks do not isolate allocation causes. Whole-tape strings, independently decoded key strings, list headers, decoder object-hook transients and allocator high-water retention are candidate causes. V4 reduction is consistent with useful key sharing, but no causal allocation profile or attribution is established.",
+  "preferred_prospective_direction": "Return to the exact V2 whole reduced-tape standard json.load and unchanged per-load four-integer-array sharing, then assess strict sharing of repeated two-integer arrays. Avoid adopting the higher measured V3/V4 hierarchy representation by default. No smaller model, omitted field/census or alternative theorem.",
+  "source_requirements": [
+    "Freeze new versioned sources and exact source/input plan before any execution; preserve every previous version and receipt byte-identically. Root owns all future actual dispatch.",
+    "Use the pinned V2 complete-original-byte gate unchanged; retain every original field/key/insertion position/event/node/full census.",
+    "A new token reducer must preserve quoted strings/escapes, strict integer grammar, arity2versus4 distinction, exact reference restoration and reserved#collision rejection, including escaped keys. Arrays containingfloats/bools or nonliteralnumeric tokens remain ordinary JSON arrays.",
+    "Choose representation only after type/mutation inspection: globally replacing two-integer lists with tuples may break Python comparisons/API types; shared lists preserve type but change aliasing. Either certify the relevant coordinate-schema/type uses and immutability or retain ordinary lists at uncertain sites. Array length alone does not prove a coordinate. No target-selected path or candidate restriction."
+  ],
+  "prospective_preflight": [
+    "Within a separately frozen bounded pure streaming census, count complete two-integer occurrences/uniquevalues and declared schema paths across allsix exact compressed payloads without whole model inflation. Account both reference placeholders and intern-table overhead; report estimated savings as estimates, not measured RSS.",
+    "Inspect unchanged auditor and imported code for mutation/identity/type-sensitive use of every proposed shared value. Preserve unshared uncertain fields and disclose incomplete coverage.",
+    "Keep the same exact153 interfaces/94 admitted definitions/19848placements/52point obligations/13rows and semantic modelSHA b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11."
+  ],
+  "fixture_requirements": [
+    "Full ordinary-reference and repaired501-node pilot/train01/train08 byte comparisons; all fingerprints must match every original byte, not only selected fields.",
+    "Synthetic controls cover nested2and4arrays, negative/largeintegers/assignedzero, floats/bools, strings resembling arrays, chunk boundaries, duplicate/escapedkeys, reserved#collisions, leadingzero rejection and malformed reference tags.",
+    "Prove sharing identity for repeated intendedtwo-coordinate objects, unchangedPython value/type behavior at all consumers, and either nonmutation or explicit alias-risk failure. Include a type-sensitive/alias-sensitive mutation control; JSON byte equality alone does not prove Python type/alias compatibility."
+  ],
+  "actual_acceptance_gates": [
+    "Root and independent source review precede pure helper execution; helper terminal complete-value/type controls and resource acceptance precede actual full replay activation.",
+    "Allsix frozen evaluation payloads receive complete-original-byte comparison and unchanged complete graph/scheduler/feature/RNG/policy/hint/fallback/rollback checks. Every actual node/event/census covered; allsame original theoretical language.",
+    "Only exact passed_complete_loading_only_six_evaluation_replays plus six individually passed terminal owned lifetimes constitutes complete evaluation acceptance. A completed semantic check outside resource gate remainsUNKNOWN; preserve failed and unexecuted accounting."
+  ],
+  "unchanged_budgets": {
+    "original_cumulative_audit_seconds": 780,
+    "historical_inclusive_phases_seconds": 226.66065275,
+    "remaining_before_future_helpers_seconds": 553.33934725,
+    "rss_bytes": 536870912,
+    "actual_internal_seconds": 115,
+    "actual_owned_lifecycle_seconds": 120,
+    "prospective_helper_internal_seconds": 25,
+    "prospective_helper_owned_lifecycle_seconds": 30,
+    "policy": "All future helper/census/replay phases charged once to remaining original envelope; no cap widening/reset. Fullsix completion not guaranteed by these estimates. Source-authoring/preparation costs separately disclosed."
+  },
+  "alternatives_if_infeasible": [
+    "Stop at explicitUNKNOWN with allsix originalpayloads preserved if type/alias proof, savings preflight or boundedhelpers cannot resolve; no speculative sharing admission.",
+    "A later independently designed per-node semantic streaming replay could be reviewed as a separate source/budget gate, retaining complete graph/event coverage and exact original data binding. It is not authorized or implemented by this note.",
+    "Keep the target-search results unknown and publish verified geometry progress separately; no native/search/training rerun or easier-target substitution."
+  ],
+  "relevant_source_pins": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+    "research/gcts-rl-renewal/stochastic_policy_math_audit.py": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab"
+  },
+  "exact_v2_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v2.json",
+    "sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9"
+  },
+  "scope": "Prospective strategy note only. Source inspection and small terminal receipt reads; no source implementation, compressed trace/model inflation, helper, replay, engine, search, training or native execution.",
+  "preparation_seconds_before_note_write": 0.0004938750000000013
+}

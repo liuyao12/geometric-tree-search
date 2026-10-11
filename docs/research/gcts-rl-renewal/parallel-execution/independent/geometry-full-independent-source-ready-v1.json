@@ -1,0 +1,21 @@
+{
+  "status": "frozen_source_ready_no_actual_execution",
+  "plan": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-plan-v1.json",
+    "sha256": "794b4cb1c471416530e56b4cf64198e8b6f1bdc8ff207ac1959c65682d59cf7c",
+    "bytes": 121658
+  },
+  "source_archive": {
+    "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-sources-v1.zip",
+    "sha256": "4fac0b33d75ffb8f6d7f5ec9ab1aa6583cab6592d7c12cd3115cec2571e69286",
+    "bytes": 35943
+  },
+  "source_pins": 3,
+  "input_pins": 25,
+  "preserved_pins": 478,
+  "actual_model_loads": 0,
+  "actual_graph_audits": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "preparation_seconds_before_receipt_write": 0.33099962499999996
+}

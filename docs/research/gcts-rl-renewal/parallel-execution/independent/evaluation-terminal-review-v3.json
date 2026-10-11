@@ -1,0 +1,58 @@
+{
+  "status": "reconciled_terminal_v3_resource_unknown_preserving_full_base_checks_and_five_unexecuted",
+  "phase_sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+  "plan_sha256": "d3371744370204d4625b459698020f70b3d9fa752e4115f360380664bfcb7061",
+  "activation_sha256": "6dfee65f297eff0c37b036fcba250360da71c9d2043a73349d408b87160946ff",
+  "worker_sha256": "21b01193c47ab97fc80f12e39b71313efcab3a3292be550be26cfde4c631b732",
+  "lifetime_sha256": "c6e509550b2b7fda31f6d2546ccaf38d26e747c53f5891a84331346d7a07851d",
+  "terminal_and_reaped": true,
+  "actual_base": {
+    "worker_status": "unknown_independent_replay_resource_budget",
+    "nodes": 5001,
+    "complete_byte_gate": {
+      "status": "passed_complete_original_compact_json_byte_correspondence",
+      "seconds": 2.6315165,
+      "bytes": 124903546,
+      "chunks": 61149,
+      "largest_emitted_chunk_bytes": 235436,
+      "original_uncompressed_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+      "emitted_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+      "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+    },
+    "retained_tree": {
+      "status": "unknown_search_budget",
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "executed_changed_first_branches": 0,
+      "metrics": {
+        "nodes": 5001,
+        "max_satisfied_points": 45,
+        "forced": 3249,
+        "attempts": 5000,
+        "branch": 620,
+        "dead": 1132,
+        "backtracks": 4960
+      }
+    },
+    "fresh_worker_peak_bytes": 760365056,
+    "combined_peak_bytes": 777240576,
+    "memory_overshoot_bytes": 240369664,
+    "qualified_acceptance": false
+  },
+  "unexecuted": [
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2",
+    "untrained-r2",
+    "base-r2"
+  ],
+  "costs": {
+    "actual_phase_seconds": 43.707834208,
+    "retained_cumulative_seconds": 169.587075792,
+    "remaining_original_780_seconds": 610.412924208
+  },
+  "scope": "Read-only receipt/source/prerequisite reconciliation, no trace decoding or replay/search/native execution. Semantic completion does not override actual memory UNKNOWN. Entire tree checks retained as historical evidence; all five unexecuted jobs have no outputs.",
+  "source_authoring_and_receipt_write": "Separate from inclusive phase timers and unmeasured where stated.",
+  "review_seconds": 0.0025955840000000015
+}

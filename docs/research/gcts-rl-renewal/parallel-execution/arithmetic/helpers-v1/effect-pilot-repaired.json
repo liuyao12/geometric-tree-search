@@ -1,0 +1,36 @@
+{
+  "status": "unknown_loading_value_helper_resource_budget",
+  "job": "effect-pilot-repaired",
+  "mode": "repaired",
+  "plan_sha256": "edcce57d7eed87e6434f2722e8cce26482241233711483c652a8fc2eb6408b85",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 19.34195275,
+    "bytes": 16922271,
+    "chunks": 259,
+    "original_uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+    "emitted_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+    "scope": "Every frozen original UTF-8 byte compared with full insertion-order JSONEncoder.iterencode(decoded value), tuple/list arrays normalized by JSON. No omitted key, field, node, event or census; no whole original inflation or whole reserialization."
+  },
+  "failure_type": "TimeoutError",
+  "failure": "decoder helper internal wall ceiling",
+  "seconds_before_receipt_write": 25.004004667,
+  "kernel_peak_rss_bytes": 59654144,
+  "loading": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-search.json.gz",
+      "kind": "streamed_reversible_four_integer_array_sharing",
+      "seconds": 2.478815125,
+      "original_uncompressed_bytes": 16922271,
+      "reduced_temporary_json_bytes": 12620289,
+      "shared_arrays": 19848,
+      "array_occurrences": 1355055,
+      "quoted_strings_checked": 49477,
+      "scope": "Complete JSON value preserved, tuple/list JSON equivalence; Python json duplicate-key last-wins semantics unchanged. No original field/census/event omitted."
+    }
+  ]
+}

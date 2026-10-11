@@ -1,0 +1,21 @@
+{
+  "status": "passed_authored_full_primitive_graph_full_lifetime",
+  "full_supervisor_process_seconds_including_receipt_write": 41.576781249999996,
+  "process_return_code": 0,
+  "supervisor_wait_reaped": true,
+  "outer_own_peak_bytes": 51085312,
+  "outer_children_kernel_peak_bytes": 82198528,
+  "conservative_host_peak_bytes": 186171392,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 180,
+  "prior_synthetic_v1_unknown_seconds": 0.520595542,
+  "prior_synthetic_v2_seconds": 0.844840583,
+  "plan_sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+  "supervision_sha256": "4a011520e37749cafa3ad5f93bfbf27ed57f903bdba473f94536c9c719e0357b",
+  "own_receipt_write": "outside pre-write outer measurement; fixture and supervisor serialization included",
+  "actual_geometry_model_execution": true,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_audit": "pending independent full-language point-graph audit"
+}

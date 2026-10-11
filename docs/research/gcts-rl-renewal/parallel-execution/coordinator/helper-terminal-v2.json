@@ -1,0 +1,26 @@
+{
+  "status": "passed_root_terminal_seven_helper_full_byte_pairs",
+  "exec_session_id": 43298,
+  "tool_exit_code": 0,
+  "phase_sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+  "all7terminal_reaped": true,
+  "full_pairs": [
+    [
+      "effect-pilot-reference",
+      "effect-pilot-repaired"
+    ],
+    [
+      "train-01-reference",
+      "train-01-repaired"
+    ],
+    [
+      "train-08-reference",
+      "train-08-repaired"
+    ]
+  ],
+  "phase_seconds": 11.562686832999999,
+  "cumulative_original780_seconds": 74.602784167,
+  "remaining_original780_seconds": 705.397215833,
+  "conservative_peak_bytes": 247136256,
+  "actual_evaluation_replays": 0
+}

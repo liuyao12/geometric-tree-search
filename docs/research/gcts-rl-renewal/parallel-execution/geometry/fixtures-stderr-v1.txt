@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v1.py", line 264, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v1.py", line 141, in main
+    g = graph(marks=formula_marks + ([port] if port else []))
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v1.py", line 37, in graph
+    return core.PointGraph(height=height, formulas=formulas, recipe_data=recipes,
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py", line 198, in __init__
+    self.domains = [self._domain(row) for row in range(height)]
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py", line 198, in <listcomp>
+    self.domains = [self._domain(row) for row in range(height)]
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py", line 279, in _domain
+    factors = self._factors(row)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py", line 260, in _factors
+    count = left.bit_count() * right.bit_count()
+AttributeError: 'int' object has no attribute 'bit_count'

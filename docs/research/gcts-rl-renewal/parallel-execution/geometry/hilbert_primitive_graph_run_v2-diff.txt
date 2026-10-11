@@ -1,0 +1,49 @@
+--- hilbert_primitive_graph_run_v1.py
++++ hilbert_primitive_graph_run_v2.py
+@@ -25,23 +25,23 @@
+ 
+ def main():
+     started = time.perf_counter()
+-    planpath = HERE / "plan-v1.json"
++    planpath = HERE / "plan-v2.json"
+     plan = json.loads(planpath.read_text())
+     for p in plan["sources"] + plan["inputs"] + plan["preserved_files"]:
+         path = ROOT / p["path"]
+         data = path.read_bytes()
+         if len(data) != p["bytes"] or hashlib.sha256(data).hexdigest() != p["sha256"]:
+             raise ValueError("frozen input/source changed: " + p["path"])
+-    for name in ("fixtures-outcome-v1.json", "fixtures-launch-v1.json", "fixtures-supervision-v1.json"):
++    for name in ("fixtures-outcome-v2.json", "fixtures-launch-v2.json", "fixtures-supervision-v2.json"):
+         if (HERE / name).exists():
+             raise ValueError("prior immutable fixture run exists")
+     child, terminal, reason, error = None, None, None, None
+     samples = []
+     try:
+-        with (HERE / "fixtures-stdout-v1.txt").open("wb") as out, (HERE / "fixtures-stderr-v1.txt").open("wb") as err:
+-            child = subprocess.Popen([sys.executable, str(HERE / "hilbert_primitive_graph_fixtures_v1.py")],
++        with (HERE / "fixtures-stdout-v2.txt").open("wb") as out, (HERE / "fixtures-stderr-v2.txt").open("wb") as err:
++            child = subprocess.Popen([sys.executable, str(HERE / "hilbert_primitive_graph_fixtures_v2.py")],
+                                      cwd=HERE, stdout=out, stderr=err)
+-            save("fixtures-launch-v1.json", {"pid": child.pid, "scope": "owned synthetic fixtures only",
++            save("fixtures-launch-v2.json", {"pid": child.pid, "scope": "owned synthetic fixtures only",
+                  "wall_ceiling_seconds": SECONDS, "host_ceiling_bytes": BYTES,
+                  "actual_geometry_models": 0, "native_queries": 0})
+             try:
+@@ -78,7 +78,7 @@
+             terminal = child.wait()
+     receipt = None
+     try:
+-        receipt = json.loads((HERE / "fixtures-outcome-v1.json").read_text())
++        receipt = json.loads((HERE / "fixtures-outcome-v2.json").read_text())
+     except BaseException as exc:
+         reason, error = reason or "missing_or_invalid_child_receipt", error or str(exc)
+     childpeak, ownpeak = peak(resource.RUSAGE_CHILDREN), peak(resource.RUSAGE_SELF)
+@@ -103,7 +103,7 @@
+             "OS_soft_limit_claim": "none", "plan_sha256": hashlib.sha256(planpath.read_bytes()).hexdigest(),
+             "actual_geometry_model_execution": False, "geometry_target_searches": 0, "native_queries": 0,
+             "native_authority_activated": False, "independent_kernel_audit": "not_run"}
+-    save("fixtures-supervision-v1.json", data)
++    save("fixtures-supervision-v2.json", data)
+     print(json.dumps({k: v for k, v in data.items() if k != "rss_samples"}), flush=True)
+     return 0 if passed else 1
+ 

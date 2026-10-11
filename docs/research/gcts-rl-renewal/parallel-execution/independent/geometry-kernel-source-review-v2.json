@@ -1,0 +1,160 @@
+{
+  "status": "passed_read_only_source_and_compatibility_review_narrowed_cluster_scope_synthetic_retry_only",
+  "scope": "Read-only source/plan/hash review. No actual geometry model loaded, implicit graph constructed, fixture executed, target search, native query, engine or solver invocation by this reviewer.",
+  "v1_plan_sha256": "5b44e49414728da163f1b45cdcc9b886681d81426264f737c76a1fca14925745",
+  "v2_plan_sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+  "factorization_sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+  "owner_conformance_scope_sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+  "exact_pins_verified": {
+    "sources": 5,
+    "inputs": 11,
+    "preserved_files": 454
+  },
+  "source_pins": [
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v2.py",
+      "sha256": "604343dee2931c0ca99148d1e40bd34e6d1197a747ff73fc334f4a2cfe5ff83d",
+      "bytes": 13766
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_freeze_v2.py",
+      "sha256": "a5135f6fe14c346c7620e74c488ce53260110d072b9f984da451b17b0dc53a1e",
+      "bytes": 4345
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v2.py",
+      "sha256": "3897fd06c274b4fa87a5c187c4353f6dd3630bb8b4931ba489340f80949a823a",
+      "bytes": 2889
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v2.py",
+      "sha256": "26b04d6fedb4d11e1a3b50506d67e84135cba4a4a314bdb7c7338fff39de8a38",
+      "bytes": 5732
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    }
+  ],
+  "input_pins": [
+    {
+      "role": "master_contract",
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "role": "primitive_model",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "role": "primitive_logical_audit",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "role": "primitive_logical_audit_lifetime",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "role": "primitive_logical_audit_parser_scope",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "role": "primitive_logical_audit_completion",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "role": "static_export",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-final-v1.json",
+      "sha256": "11ef5c0b7e95f0c83147792b96ae070f4b939963b7308560bf23d27a3833eb97",
+      "bytes": 24086
+    },
+    {
+      "role": "static_production",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "role": "complete_family_template_projection",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "role": "independent_prospective_executor_gate",
+      "path": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+      "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+      "bytes": 8706
+    },
+    {
+      "role": "factorization_argument",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/factorization-v1.json",
+      "sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+      "bytes": 7294
+    }
+  ],
+  "kernel_semantic_delta": "Exactly one nonnegative exact-integer population-count helper plus replacement of the three bit_count calls. All remaining core source characters match v1. For a nonnegative finite integer, bin(mask).count(\"1\") equals the cardinality of its set-bit positions. No domain, identity, point data, scheduler, rollback, logical-witness or fallback alteration.",
+  "reviewed_source_properties": [
+    "Complete recipe identity/output/ordered-reference key, with injective formula codes and explicit assigned zero.",
+    "All compatible strictly prior rows included independently in both MP ports; only unequal-formula equal-row pairs removed.",
+    "Every positive support is one unit at its output row; all required rows remain explicit roots.",
+    "Remote formula changes refresh their output and all later readers; port offset changes refresh their output; reference-count trail restores absence/value/count and local exclusions.",
+    "Global dead point precedes singleton precedes earliest-generation then degree branch. Fixed member preferences affect only the selected point and leave every base alternative available.",
+    "Budget unknown rolls back without deriving exclusions; finite exhausted children are excluded only in the exact restored parent.",
+    "Full lazy identity preserves complete witness, context, authority, registry, t/m, translation and ordered references; source occurrence aliases are provenance.",
+    "Production exact-byte model gate binds the already passed independent primitive logical audit and permits only the three global recipient assumptions.",
+    "Literal MP interfaces are checked; zero-input primitive soundness comes from the exact previously independently checked palette, not markings alone.",
+    "Point certificate is explicitly pending independent whole decoded logical acceptance and never claims native/compiler acceptance."
+  ],
+  "cluster_lifecycle_gap": {
+    "actual_source_behavior": "Executor.solve validates the whole proposed cluster once. candidates_with_preferences then checks individual member legality only. If a later branch invalidates one constituent, other constituents can still retain preference even when the whole proposed cluster would reject.",
+    "valid_scope": "Fixed immutable preference-set specialized control, complete base domains/global scheduler/fallback retained.",
+    "open_conformance": "Full validated cluster continuation lifecycle, including whole-pending-cluster revalidation/retirement and reversible waiting/retired status. No full target search or cluster lifecycle claim is supported by these fixtures.",
+    "root_and_owner_notified": true
+  },
+  "fixture_delta": [
+    "Versioned output/import paths only apart from two added controls.",
+    "Exhaustive 256 eight-bit popcount diagnostics against independent bitwise sum.",
+    "Invalid internally overfilled advice must retire and preserve the complete primitive fallback."
+  ],
+  "resource_accounting": {
+    "prior_v1_status": "unknown_or_failed",
+    "prior_v1_lifetime_sha256": "74c7ba4337df93d9826a2054a196fa59e33f6a9844ffc79390f3d937ca443979",
+    "prior_v1_seconds": 0.5205955419999999,
+    "prior_v1_peak_bytes": 118898688,
+    "v2_remaining_from_60_seconds": 59.479404458,
+    "host_ceiling_bytes": 536870912,
+    "failed_v1_retained": true,
+    "enforcement": "Child alarm and sampled direct-child RSS/time supervision plus conservative final kernel/outer peak and cumulative retrospective gate. No hard OS memory-limit claim; outer own receipt write/source authoring excluded and disclosed."
+  },
+  "prospective_actual_model_gate": [
+    "Separate frozen root-reviewed source/input/lifetime plan; synthetic pass alone cannot activate actual model/search.",
+    "Independent raw recipe-offset enumeration over the entire 24-row point model, exterior sentinel filtering and fixed global seeds/target; compare every initial count, zero/singleton, key order, exact t/m and decorated identity. Grammar census is not initial graph degree.",
+    "Independent controlled remote-mark, occupancy, parent-local exclusion and rollback comparisons of all affected and unaffected rows.",
+    "Full scheduler and primitive fallback conformance, including equal ordered ports, stale authority/registry, same formula with different witnesses, selected shared identity, invalid/ineligible cluster proposals and resource unknown.",
+    "Whole solution decoded line by line and validated by an independent logical checker against the exact guarded I.2 theory and ordered global hypotheses.",
+    "Keep authored 24-row witness separate from policy/search inputs and no supplied target sequence; catalog templates are authored infrastructure.",
+    "Full macro embedding enumeration, unrestricted geometry completeness, native/compiler/Wang correspondence and the conditional 65-row lift remain separate open gates.",
+    "Before cluster-continuation target execution, separately repair and independently gate full-cluster revalidation, invalid retirement, valid ineligible waiting, restored continuation state and complete fallback."
+  ],
+  "limitations": [
+    "This is source-level reconciliation, not an independently executed kernel test or complete actual graph certificate.",
+    "Narrow unit-occupancy row grammar, identity orientation and vertical translation only; no general fractional/shared-support engine claim.",
+    "Public APIs do not claim comprehensive adversarial input parsing or security activation; workflow is root-controlled.",
+    "Template binder preserves explicit primitive source-body order and is a proposal API, not enumeration of every possible macro embedding."
+  ],
+  "review_hashing_seconds": 0.098047083,
+  "source_reading_and_authoring_seconds": "unmeasured"
+}

@@ -1,0 +1,118 @@
+{
+  "status": "frozen_complete_tiny_primitive_kernel_evidence_full24_gate_prospective",
+  "own_pins": [
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v1.json",
+      "sha256": "5b44e49414728da163f1b45cdcc9b886681d81426264f737c76a1fca14925745",
+      "bytes": 108917
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+      "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+      "bytes": 116141
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v1.json",
+      "sha256": "74c7ba4337df93d9826a2054a196fa59e33f6a9844ffc79390f3d937ca443979",
+      "bytes": 868
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v2.json",
+      "sha256": "9af212c3cc0c2fcd7cad588069438bc21aded84e50d36ca4389fe1d3a45869a3",
+      "bytes": 978
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v2.json",
+      "sha256": "d4aa9ae3f33979fc90bcc20ba43843b9b23ab06a3242c821c40a18f526b8efd5",
+      "bytes": 2810
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-freeze-v1.json",
+      "sha256": "b1aa3ccb236650d176e048789a9a0ed776142d67ed885dafb689e171234556c6",
+      "bytes": 545
+    }
+  ],
+  "independent_pins": [
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-plan-v1.json",
+      "sha256": "4766b50e393aa39fa4a8592ac84143e71a1b6cd58223ff7c19060b9bfd116d0f",
+      "bytes": 3131
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-result-v1.json",
+      "sha256": "79337c703373a1f6f4f338ea35ba11fe367a4eee2a463060db38ff76a74a5c4f",
+      "bytes": 1644
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-lifetime-v1.json",
+      "sha256": "536d2ea9e16cf418759a3b2c8edc34d2ef22d3967aa9810d9dc56f2eae7992e9",
+      "bytes": 1010
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-model-source-review-v1.json",
+      "sha256": "8a6e1ba6f77b3ede5d3d6039a301cf4ce443b495899b456b231e7e634e4f2a2e",
+      "bytes": 9748
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-kernel-source-review-v2.json",
+      "sha256": "0db5be05143dc3c49af3b1e8a1c5871121fcb71d505268a2732126f2cffb798a",
+      "bytes": 10440
+    }
+  ],
+  "independent_status": "passed_independent_synthetic_domain_identity_scheduler_fixtures_with_cluster_gap_confirmed",
+  "independent_lifetime_status": "passed_owned_independent_pure_fixture_lifetime",
+  "counts": {
+    "exhaustive_states": 1216,
+    "accepted_placement_comparisons": 8496,
+    "lazy_full_identity_checks": 19,
+    "authored_fixture_groups": 16
+  },
+  "costs": {
+    "preserved_v1_unknown_seconds": 0.520595542,
+    "v2_authored_seconds": 0.844840583,
+    "cumulative_authored_fixture_seconds": 1.365436125,
+    "v2_author_host_peak_bytes": 119865344,
+    "independent_fixture_seconds": 0.398652375,
+    "independent_fixture_host_peak_bytes": 27705344,
+    "source_authoring_seconds": "not instrumented, not zero"
+  },
+  "scope": "Implicit full recipe-language graph source with independently checked tiny point-contract fixtures, base scheduler/rollback/fallback and fixed preference-set control. This is authored infrastructure, not geometry theorem discovery.",
+  "full24_gate": {
+    "status": "unexecuted_pending_root_review",
+    "source_pin": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    "full_language": {
+      "definitions": 171,
+      "recipes": 229,
+      "formula_codes": 217,
+      "required_rows": 24
+    },
+    "no_target_word_in_generic_probes": true
+  },
+  "open": [
+    "Whole pending-cluster hint lifecycle, explicitly retained gap.",
+    "Actual full24 graph/count/rollback/identity conformance gate.",
+    "Any new geometry target search and matched cost comparison.",
+    "Independent whole decoded certificate for any later searched result; native/compiler correspondence."
+  ],
+  "geometry_target_searches": 0,
+  "actual_geometry_model_executions": 0,
+  "new_native_queries": 0,
+  "new_RL_training": false,
+  "native_authority_activated": false,
+  "HTML_or_publication": "none; root owns report and deployment",
+  "checkpoint_preparation_seconds_before_write": 0.004873958000000001
+}

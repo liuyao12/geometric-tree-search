@@ -1,0 +1,129 @@
+{
+  "status": "passed_bounded_authored_synthetic_fixtures",
+  "pid": 7260,
+  "exit_code": 0,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.724500083,
+  "wall_ceiling_seconds": 56,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 17825792,
+  "supervisor_peak_bytes": 51150848,
+  "conservative_host_peak_bytes": 68976640,
+  "rss_samples": [
+    {
+      "seconds": 0.095321417,
+      "child_rss_bytes": 1736704,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.127551625,
+      "child_rss_bytes": 17448960,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.160015833,
+      "child_rss_bytes": 17481728,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.192115167,
+      "child_rss_bytes": 17498112,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.223631792,
+      "child_rss_bytes": 17530880,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.255842833,
+      "child_rss_bytes": 17547264,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.284770833,
+      "child_rss_bytes": 17563648,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.313775458,
+      "child_rss_bytes": 17580032,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.344978458,
+      "child_rss_bytes": 17596416,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.36801125,
+      "child_rss_bytes": 17612800,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.394982583,
+      "child_rss_bytes": 17629184,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.424616042,
+      "child_rss_bytes": 17629184,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.456565958,
+      "child_rss_bytes": 17629184,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.488604708,
+      "child_rss_bytes": 17629184,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.511643167,
+      "child_rss_bytes": 17645568,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.54362575,
+      "child_rss_bytes": 17645568,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.569434125,
+      "child_rss_bytes": 17645568,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.5949722080000001,
+      "child_rss_bytes": 17645568,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.627226625,
+      "child_rss_bytes": 17661952,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.660122458,
+      "child_rss_bytes": 17661952,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.692389833,
+      "child_rss_bytes": 17661952,
+      "supervisor_peak_bytes": 51150848
+    }
+  ],
+  "resource_reason": null,
+  "watchdog_error": null,
+  "enforcement": "task-owned external sampled RSS/time watchdog; child SIGALRM; final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan_sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_kernel_audit": "not_run"
+}

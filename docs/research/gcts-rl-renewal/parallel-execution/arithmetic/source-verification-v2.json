@@ -1,0 +1,13 @@
+{
+  "status": "passed_source_only_v2_loading_adapter_verification",
+  "source_and_input_count": 77,
+  "worker_diff": "Only loading module import v1 to v2; all graph/policy/math calls and original full checks byte-identical.",
+  "worker_old_sha256": "18227cb04ef5b6630cd495070b1b63490c26fa6146163e59d65c38b3ee9a3e70",
+  "worker_new_sha256": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+  "seconds": 0.100596208,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "trace_decodes": 0,
+  "graph_replays": 0
+}

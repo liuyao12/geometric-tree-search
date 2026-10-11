@@ -1,0 +1,34 @@
+{
+  "status": "unknown_or_failed",
+  "pid": 6406,
+  "exit_code": 1,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.178108625,
+  "wall_ceiling_seconds": 56,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 17350656,
+  "supervisor_peak_bytes": 51150848,
+  "conservative_host_peak_bytes": 68501504,
+  "rss_samples": [
+    {
+      "seconds": 0.11258316600000001,
+      "child_rss_bytes": 2719744,
+      "supervisor_peak_bytes": 51150848
+    },
+    {
+      "seconds": 0.14512575,
+      "child_rss_bytes": 17317888,
+      "supervisor_peak_bytes": 51150848
+    }
+  ],
+  "resource_reason": "missing_or_invalid_child_receipt",
+  "watchdog_error": "[Errno 2] No such file or directory: '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v1.json'",
+  "enforcement": "task-owned external sampled RSS/time watchdog; child SIGALRM; final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan_sha256": "5b44e49414728da163f1b45cdcc9b886681d81426264f737c76a1fca14925745",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_kernel_audit": "not_run"
+}

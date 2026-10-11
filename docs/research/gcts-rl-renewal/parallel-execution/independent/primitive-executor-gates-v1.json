@@ -1,0 +1,97 @@
+{
+  "status": "prospective_independent_primitive_executor_gate_not_executed",
+  "sources_and_authority_inputs": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    }
+  ],
+  "scope": "Complete fixed recipient primitive point grammar, implicit per-row graph and scheduler. Authored host infrastructure, separate from native/Wang/compiler correspondence. No target proof or solver witness input.",
+  "model_gate": [
+    "Reconstruct all 229 recipe types and 217 injective formula values from the already checked source bodies/registry, preserving recipe identity and common authority; bind current model/receipt bytes exactly.",
+    "Only the global three-premise recipient seeds are active assumptions. Canonical per-definition seed contexts are evidence for local interfaces, never added global hypotheses.",
+    "The finite alignment universe includes every recipe, every allowed output row and every ordered strict-prior reference pair. Declare row boundary and target marking exactly, including explicit assigned zero versus absence.",
+    "Source recipe aliases are provenance, not extra multiplicity. Same conclusion formula does not merge different witnesses/recipes. Each exact decorated placement is selected at most once."
+  ],
+  "implicit_domain_gate": {
+    "meaning": "For each currently unsatisfied required row, an implicit count and iterator must describe exactly all point-legal distinct base placements. Count zero/singleton is not based on a proposal shortlist.",
+    "zero_input": "Every enabled zero-input recipe is tested against the current t deficit and every assigned m point, including target and exterior marks. Repeated assumption citations are allowed only if the finite declared recipe grammar permits them.",
+    "mp_factorization": {
+      "conditions": [
+        "Fix one output row and one MP recipe with exact conclusion/ordered-premise formula values. Test all output-row static marks and t support first.",
+        "A contains exactly every prior source row satisfying antecedent formula and its ordered port offset; B independently does so for the implication premise. Apply all current distant assigned formula/port marks.",
+        "The only remaining pair interaction must be independently proved to be conflicting assignments when both ports use the same source row. If any recipe has another shared support relation, use complete direct compatibility, not this shortcut.",
+        "For different premise formula values, remove equal-row pairs; for equal premise values keep repeated ordered ports unless another actual marking conflicts. Ordered multiplicity is never erased."
+      ],
+      "formula": "\\(d=|A|\\,|B|-|A\\cap B|\\) for distinct premise values, and \\(d=|A|\\,|B|\\) for equal values, provided the stated support interaction is complete.",
+      "independent_check": "Exhaustively compare factor count, zero/singleton status, key order and every reconstructed t/m placement to a separate direct pair enumerator on synthetic tiny states and actual recipe states before search."
+    },
+    "ordering": "Base iteration is a declared complete stable key order. Suggestions only reprioritize eligible members after the reference point scheduler, retaining every remaining base alternative.",
+    "identity": "Lazily constructed full identity binds exact recipe/witness, output translation, ordered reference rows, t/m, common recipient context, injective registry and frozen authority. Independently reconstruct each actually requested placement; do not infer identity from formula equality or a legacy printed hash."
+  },
+  "scheduler_and_rollback_gate": [
+    "Activate all finite required points, including untouched zero-total rows. Expose complete globally point-legal incidence/dependency bookkeeping.",
+    "A distant zero-degree point outranks every singleton; a singleton outranks branching; branching uses earliest generation before degree tie-breaking. All explicit root obligations start at generation zero.",
+    "Generation is one plus minimum existing positive-support generation, not proof row, chronological visit or marking distance. Mark-only points do not create occupancy generations.",
+    "Primitive state transitions check all t/m support, update all distant dependencies, and undo totals, assigned values/reference counts, roots, generations, selected identities, domains and local exclusions exactly.",
+    "Fresh/inherited cluster hints retire if invalid, wait if ineligible and cannot bypass forced propagation. Complete base fallback remains even when no cluster proposal exists.",
+    "Matched executor tests must include arbitrary open cluster shapes. No sampled macro pool substitutes for complete primitive graph degree. Atomic aggregate shortcut is excluded without a separate equivalence proof."
+  ],
+  "logical_certificate_gate": [
+    "Independently validate each primitive witness under exact guarded I.2, ordinary instantiation, equality substitution and ordered MP; t/m consistency alone is insufficient.",
+    "At a complete region, independently reconstruct all commands in proof-row order; every source reference is strictly prior, every expected premise matches the decoded source formula, and only exact initial hypotheses/axioms are admitted.",
+    "Independently check final target and complete target occupancy/all assigned marking agreement. Host acceptance is labeled separately from native checker or compiler acceptance."
+  ],
+  "required_negative_and_positive_controls": [
+    "Missing mark versus assigned zero and boolean substitutes for integer values/coordinates.",
+    "Distant assigned formula conflict invisible at output row; stale target, context, authority and registry.",
+    "Same-formula different recipe or different ordered source rows remains distinct.",
+    "Repeated ordered port with equal formula values remains a repeated port; distinct formula values at same source row conflict.",
+    "Exact recipe count differs from formula-only deduplication; corrupted implicit degree zero/singleton is rejected.",
+    "Global distant dead end versus local singleton; forced before branch; generation before minimum degree.",
+    "Hint proposal is valid but ineligible at scheduler point; complete base alternatives retained; rollback and branch-local exclusion restored.",
+    "Internally matching t/m carrying an invalid logical inference is independently rejected."
+  ],
+  "result_scope": [
+    "A complete finite exact region can establish a decoded proof only after independent logical acceptance.",
+    "Exhausted complete finite marked search establishes that boundary/grammar result, never unrestricted theorem nonprovability.",
+    "Time, attempts, memory, cancelled or partial domain construction are unknown.",
+    "Static graph/prototype checks do not activate search or establish native/compiler correspondence.",
+    "All source authoring, preparation, full graph/count checks, proposal work, execution, decoding and certificate checking costs are disclosed separately."
+  ],
+  "prospective_execution": "Root must review actual frozen source/input/resource gate before full graph/executor phase or target search. No actual phase is authorized by this design note.",
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "actual_graph_or_model_executions": 0
+}

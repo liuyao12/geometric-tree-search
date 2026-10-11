@@ -1,0 +1,20 @@
+{
+  "status": "progress_previous_turn_verified_new_work_started",
+  "previous_turn_classification": "progress",
+  "reason": "15 real searches, independently replayed pilot/eight learning updates, checked171geometryexpansions and exact livepublished277files were completed and verified; evaluationmemoryUNKNOWN changes nextaction",
+  "previous_turn_sha256": "5518cdb8bc21a2463e46c18774ec73cdd581c5bbc644bc4dbe904b59cc402e6c",
+  "previous_publication": "d8c1cd227319879833be9c2be9061de99ec4f3fa",
+  "original_eval_unknown_sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+  "no_progress_streak": 0,
+  "goal_status": "active",
+  "remaining_eval_replay_seconds": 761.887890958,
+  "same_rss_bytes": 536870912,
+  "new_native_queries": 0,
+  "new_target_searches_authorized_yet": 0,
+  "agents": [
+    "arithmetic_induction",
+    "hilbert_incidence",
+    "external_prover_control"
+  ],
+  "scope": "Full original six evaluation traces and complete24rowprimitivegeometrylanguage. Broader goal remainsactive; no model narrowing, known proof searchseeding or nativeauthority activation."
+}

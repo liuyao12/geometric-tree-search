@@ -1,0 +1,29 @@
+--- hilbert_primitive_graph_v1.py
++++ hilbert_primitive_graph_v2.py
+@@ -46,6 +46,14 @@
+     path = Path(path)
+     with (gzip.open(path, "rt") if path.suffix == ".gz" else path.open()) as stream:
+         return json.load(stream)
++
++
++def popcount(mask):
++    """Exact population count supported by the pinned Python 3.9 interpreter."""
++    integer(mask)
++    if mask < 0:
++        raise ValueError("nonnegative finite mask required")
++    return bin(mask).count("1")
+ 
+ 
+ def set_bits(mask):
+@@ -257,9 +265,9 @@
+                 left = self._input_mask(row, recipe.inputs[0], 0)
+                 right = self._input_mask(row, recipe.inputs[1], 1)
+                 different = recipe.inputs[0] != recipe.inputs[1]
+-                count = left.bit_count() * right.bit_count()
++                count = popcount(left) * popcount(right)
+                 if different:
+-                    count -= (left & right).bit_count()
++                    count -= popcount(left & right)
+                 if count:
+                     factors.append(Factor(recipe.index, left, right, different, count))
+         return tuple(factors)

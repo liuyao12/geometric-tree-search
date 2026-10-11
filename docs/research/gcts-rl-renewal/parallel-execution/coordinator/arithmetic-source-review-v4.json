@@ -1,0 +1,14 @@
+{
+  "status": "passed_root_loading_only_key_sharing_source_review",
+  "package_sha256": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+  "source_pins": 47,
+  "input_pins": 52,
+  "package_files": 17,
+  "seconds_before_write": 0.16530066699999998,
+  "worker_AST_delta": "loading import only",
+  "loading_delta": "Per-load equality-preserving string dictionary-key interning only, in standard object_hook and hierarchy mapping",
+  "full_byte_gate": "unchanged V2",
+  "all_six_full_traces": true,
+  "remaining_original_780_seconds_before_helpers": 610.412924208,
+  "actual_execution_authorized_by_this_receipt": false
+}

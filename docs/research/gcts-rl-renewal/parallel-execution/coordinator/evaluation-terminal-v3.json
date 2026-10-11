@@ -1,0 +1,15 @@
+{
+  "status": "terminal_resource_unknown",
+  "exec_session_id": 48073,
+  "tool_exit_code": 0,
+  "phase_sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+  "original_cumulative_audit_seconds": 169.587075792,
+  "remaining_original_780_seconds": 610.412924208,
+  "peak_bytes": 777240576,
+  "all_children_terminal_and_reaped": true,
+  "five_other_full_replays": "unexecuted",
+  "worker_full_value_graph_checks": "completed but worker resource status UNKNOWN; not acceptance",
+  "new_searches": 0,
+  "new_training": 0,
+  "new_native_queries": 0
+}

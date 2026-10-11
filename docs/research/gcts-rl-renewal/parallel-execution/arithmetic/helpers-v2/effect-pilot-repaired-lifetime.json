@@ -1,0 +1,17 @@
+{
+  "job": "effect-pilot-repaired",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 7851,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 2.865942583,
+  "kernel_fresh_worker_peak_bytes": 66519040,
+  "kernel_owner_peak_bytes": 16596992,
+  "conservative_owner_plus_worker_peak_bytes": 83116032,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "a6fdfb5005c70e9411d0e8bd25420b1190e66934f48057b12c9a68371a4dd14c",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+}

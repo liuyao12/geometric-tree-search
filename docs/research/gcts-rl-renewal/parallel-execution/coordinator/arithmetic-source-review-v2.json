@@ -1,0 +1,14 @@
+{
+  "status": "passed_root_v2_loading_only_source_review",
+  "package_sha256": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+  "source_input_pins": 77,
+  "package_files": 17,
+  "worker_ast_diff": "v2_loading_module_only_relative_to_reviewed_v1",
+  "same_six_actual_jobs": true,
+  "remaining_original780_before_helpers": 716.959902666,
+  "interpretation": "Full byte checks on both ordinary and repaired pilot/train01/train08; all-six full bytes before unchanged graph/math. No engine/source language narrowing. Chunk size measured, fixed protocol only, original failure/owner activation scope preserved.",
+  "seconds": 0.077882125,
+  "searches": 0,
+  "native_queries": 0,
+  "actual_trace_loads": 0
+}

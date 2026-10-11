@@ -1,0 +1,13 @@
+{
+  "status": "authorized_by_root_after_exact_source_and_independent_review",
+  "action": "one_seven_helper_owner_phase_only",
+  "pins": {
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v1.json": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+    ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v1.json": "6facb4d4eff69527950e77bc018c98ac7a7337b11e8d9dcd23123e583a173d95",
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review.json": "c9eb9bb564f50af22e0190a6c35f2b272ae23bfb23fd32ad40464709873b7e0f",
+    ".gcts-active/stochastic-replay-memory-20261011/scope-note-v1.json": "026a010a9cef6dd7111cd61e4fdcbe2264fcdd2aa9a477c4baaefbbf1d7508a7"
+  },
+  "no_actual_evaluation_authorization_yet": true,
+  "searches": 0,
+  "native_queries": 0
+}

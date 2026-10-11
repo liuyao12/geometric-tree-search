@@ -1,0 +1,1910 @@
+[
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/activation-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/activation-v2.json",
+    "sha256": "0353bd41d52624b8ec427348cc84bdc6d41361a6518454aff18f3e8a49b55acc",
+    "bytes": 1374
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/activation-v3.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/activation-v3.json",
+    "sha256": "6dfee65f297eff0c37b036fcba250360da71c9d2043a73349d408b87160946ff",
+    "bytes": 1507
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/activation-v4.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/activation-v4.json",
+    "sha256": "0ba1947862b28a11b3eff61795beb09634b3c0d0f5f16a4d596f9d8d41c01a6a",
+    "bytes": 1324
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/authoring-start.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/authoring-start.json",
+    "sha256": "ebbef2ad54be21daaef8fefc537f6681a6bf15377466e2fc3942afd50b5af45c",
+    "bytes": 212
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/collector-v1/freeze-receipt-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/collector-v1/freeze-receipt-v1.json",
+    "sha256": "bad9e28ce444fa0905af0168bf53f96443f054c3c655a6ca9570dd8601ebbb2b",
+    "bytes": 397
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/collector-v1/plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/collector-v1/plan-v1.json",
+    "sha256": "bf5822f6a9ac0b1a322e454ab99d6046825481b7cf420899ce03474f7230d4e7",
+    "bytes": 15473
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v1.json",
+    "sha256": "f69665c7f75652062e986730af0656a8f8c74c52be985350fff897d1108880a2",
+    "bytes": 14375
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-plan-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v2.json",
+    "sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+    "bytes": 15944
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-plan-v3.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v3.json",
+    "sha256": "d3371744370204d4625b459698020f70b3d9fa752e4115f360380664bfcb7061",
+    "bytes": 17555
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-plan-v4.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v4.json",
+    "sha256": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+    "bytes": 19178
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/base-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/base-r1-plan.json",
+    "sha256": "af33840956e8f288dfc987a54014f926cdd5f1f5f87a58d59ff81932461415f4",
+    "bytes": 6501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/base-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/base-r2-plan.json",
+    "sha256": "0c05f2fa62bb1a681608fd5d10785ed547aaff006ae2d7cd21d3d9404de6f315",
+    "bytes": 6501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/trained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/trained-r1-plan.json",
+    "sha256": "073abd495c17f7f63f01ef6318d59bf0910e1586513c332a3ca010667c177057",
+    "bytes": 7102
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/trained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/trained-r2-plan.json",
+    "sha256": "b97d8770b5c7b0f7030d3122973ce79c3140fca0c38731920000cda9f4bc6193",
+    "bytes": 7102
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/untrained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/untrained-r1-plan.json",
+    "sha256": "1293ae4c0341c6b1f3b644db0e9d8c6bc68d0b224d7027805fda70d20ada5d3c",
+    "bytes": 6536
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v1/untrained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v1/untrained-r2-plan.json",
+    "sha256": "068e191f46e9bdc0d0c94ee9a47cb688ff77aff3ef43b4cf6a76f81d40d35f6e",
+    "bytes": 6536
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r1-audit.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r1-audit.json",
+    "sha256": "defc432a64c6409775205f57791bfb1836b69e32a4a5e4981ca68310b4872ad4",
+    "bytes": 4824
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r1-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r1-lifetime.json",
+    "sha256": "7cea5bb5b0acd495293c11d46aa22374c922244bb652001c02005234faddb032",
+    "bytes": 904
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r1-plan.json",
+    "sha256": "32dd3b8ade4440dfff8f153b3484d5e38dce6c4c408fc1e31f3079af8f71274c",
+    "bytes": 7239
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r1-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r1-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r1-stdout.txt",
+    "sha256": "7c13ded259305a8e17d6588fc89d5bc25ab883a6723881dec9a4b8cbd5890055",
+    "bytes": 4358
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/base-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/base-r2-plan.json",
+    "sha256": "c0f835cf9999004442d15db766a7e91898dcfc08fdb0077a978bf19c7d8d8e89",
+    "bytes": 7239
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json",
+    "sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+    "bytes": 7473
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/trained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/trained-r1-plan.json",
+    "sha256": "e571978c609b5e10f1f94b84ccdbe5dc66e6f3ad85a4f8344bd6f2c6d6a6462a",
+    "bytes": 7840
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/trained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/trained-r2-plan.json",
+    "sha256": "062162b3c8b308ba0ef8bd5ec6f3d797b898e188531804810987adbea50f01f1",
+    "bytes": 7840
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/untrained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/untrained-r1-plan.json",
+    "sha256": "9ff770ee6ccdd02ba939725769d2e02c3f51d2de3690654e6161d87c1acc10fc",
+    "bytes": 7274
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v2/untrained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/untrained-r2-plan.json",
+    "sha256": "ffc630f598d63389a1848aafdf4c1ea40bc48f85f8f54674422bfdb58b2c056b",
+    "bytes": 7274
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r1-audit.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r1-audit.json",
+    "sha256": "21b01193c47ab97fc80f12e39b71313efcab3a3292be550be26cfde4c631b732",
+    "bytes": 6246
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r1-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r1-lifetime.json",
+    "sha256": "c6e509550b2b7fda31f6d2546ccaf38d26e747c53f5891a84331346d7a07851d",
+    "bytes": 906
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r1-plan.json",
+    "sha256": "f61f3b85536bea8c710e21118d74b90ff69592d22a868aede39962c821ac55e9",
+    "bytes": 7977
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r1-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r1-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r1-stdout.txt",
+    "sha256": "41f8817b991389892597c79c509364790a3959246a2d02c39a28dd6a1f6c2dad",
+    "bytes": 5708
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/base-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/base-r2-plan.json",
+    "sha256": "a31cee9e80fc39031e15cfba849617f928e03dcfd7d2bdd984e5ca779faa2822",
+    "bytes": 7977
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json",
+    "sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+    "bytes": 8969
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/trained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/trained-r1-plan.json",
+    "sha256": "aff773f4875fdadbc485ddd1f2ffaf6c791491c1e7ac5cc8746b45351cf44352",
+    "bytes": 8578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/trained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/trained-r2-plan.json",
+    "sha256": "1fc12c643e5417ad370eb16d2a02ddcac5053c61feb4213deafd41cc53619122",
+    "bytes": 8578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/untrained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/untrained-r1-plan.json",
+    "sha256": "f28275beb3893e024eeddbc1aa7e916d7d0243bfb61ba59bec0aed6d31032586",
+    "bytes": 8012
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v3/untrained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/untrained-r2-plan.json",
+    "sha256": "03fc0e5cb0ce7c0e3f5883d83b1afc980c377603511ad6b6569abe96cf91e9c3",
+    "bytes": 8012
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r1-audit.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r1-audit.json",
+    "sha256": "2423c7a46e64d750a7afbe73f5e3f17b729665ff07f313c144a04f8be524c326",
+    "bytes": 7145
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r1-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r1-lifetime.json",
+    "sha256": "eaac89a1237d255d4b2ec83a68484714d71661bd3ba2509c88822fd053c6ed73",
+    "bytes": 903
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r1-plan.json",
+    "sha256": "1026bd32791f55546638e2c1c365bb8f25bf04a1530b1081be2179f5e984bb45",
+    "bytes": 8715
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r1-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r1-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r1-stdout.txt",
+    "sha256": "7b42d3ebba36260e78bfd304031e37a20ac6630904a60173cf7e23e929b118b9",
+    "bytes": 6559
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/base-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/base-r2-plan.json",
+    "sha256": "6d292c28e29535e9682198526fa7c4f2c81211d67ade61e581c4a5b12d5a810f",
+    "bytes": 8715
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/phase-receipt.json",
+    "sha256": "e9372a0368c7a8454a08dd20786049fd0c225e227cb0cc76045582dd3139e047",
+    "bytes": 9912
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/trained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/trained-r1-plan.json",
+    "sha256": "2f8ba56735ff3bfedb570d181e69eb58faf2bd2920aff1651f7dd2f4ae2e2f73",
+    "bytes": 9316
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/trained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/trained-r2-plan.json",
+    "sha256": "72014bef88d39b766b4883230b298124feda0d488c7c99ef4ef8a0b5aa86fd14",
+    "bytes": 9316
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/untrained-r1-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/untrained-r1-plan.json",
+    "sha256": "3416e034e77a3e21af76df40d81ee1c47ebce76c0b0f03e6c2f6333328be629c",
+    "bytes": 8750
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/evaluation-v4/untrained-r2-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/untrained-r2-plan.json",
+    "sha256": "d6e55e980bae05567663e41af412ded75969bda637c72a740b24d2a5cacd512d",
+    "bytes": 8750
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helper-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v1.json",
+    "sha256": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+    "bytes": 5206
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helper-plan-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v2.json",
+    "sha256": "df1937d10d634a11ee9ddacf110a7e600e8976cf626c4adb11e86b793c304f11",
+    "bytes": 5493
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helper-plan-v3.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v3.json",
+    "sha256": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+    "bytes": 5642
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helper-plan-v4.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v4.json",
+    "sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+    "bytes": 5638
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-reference-lifetime.json",
+    "sha256": "5a20a5b19286bfa0e6412e0f9167be7f823b86da489aa90da0d27c61db6c378d",
+    "bytes": 900
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-reference-plan.json",
+    "sha256": "1fc871fe88effb270a73475dcf11493f6481afe0279bb2437189fbf1d893f5c5",
+    "bytes": 1232
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-reference-stdout.txt",
+    "sha256": "8596a3c51c575581bd38cb7aafbb02c9b0c8edd3d63519d1d4262c2118b70374",
+    "bytes": 747
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-reference.json",
+    "sha256": "fe1a011f1a8c4c9c375562d08a58a066d62641ef28d1e1b7d5341e7f763fd97b",
+    "bytes": 825
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-repaired-lifetime.json",
+    "sha256": "92e80f8195316dc4352eb97789a87b398ef92b7f6c389a61992a526cd4915981",
+    "bytes": 915
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-repaired-plan.json",
+    "sha256": "edcce57d7eed87e6434f2722e8cce26482241233711483c652a8fc2eb6408b85",
+    "bytes": 1229
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-repaired-stdout.txt",
+    "sha256": "cbbcc053222536122a4f80baf05553455f3d8c5c93e32c73f5d033f765984ebc",
+    "bytes": 1668
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/effect-pilot-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/effect-pilot-repaired.json",
+    "sha256": "d02cb8d8978217b04ad4c7f30f17ecfec02f844da7ff9d206d324ce617f3f4b9",
+    "bytes": 1798
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json",
+    "sha256": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+    "bytes": 24063
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/synthetic-controls-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls-lifetime.json",
+    "sha256": "c52cd0bfbc3ce10826100cfae754fe06b249145d60effced72ec8ac751419215",
+    "bytes": 894
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/synthetic-controls-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls-plan.json",
+    "sha256": "73121b5e08280cfd8319d73eb7df7b95d78f87092af26e1a6e54c4cb9b22daca",
+    "bytes": 925
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/synthetic-controls-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/synthetic-controls-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls-stdout.txt",
+    "sha256": "afe313c9fdd5454a70f67f55c68a9b83de99631fc2d7da0e67584514a5665e92",
+    "bytes": 13105
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/synthetic-controls.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/synthetic-controls.json",
+    "sha256": "0bf43bf80eeed856fee3909a488fe66b86f8ec829c7f36700da57334e349ead6",
+    "bytes": 15057
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/train-01-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/train-01-reference-plan.json",
+    "sha256": "f63e2f879ba945d0fc737293d7dde7dd885b4b06966f3b7fece3063a503edbbb",
+    "bytes": 1220
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/train-01-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/train-01-repaired-plan.json",
+    "sha256": "f8443690c028850e311bd649a305b23ad775c3a0b0854a60ea8b7c41e8b977b0",
+    "bytes": 1217
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/train-08-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/train-08-reference-plan.json",
+    "sha256": "e18b892d0f78527c704747fbc53885db320fcbd5468c16735fadcf8668769c7b",
+    "bytes": 1220
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v1/train-08-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/train-08-repaired-plan.json",
+    "sha256": "d41c2527b1588910ce594fd7e6bbfb48af7af31bc3519066ab459764d10fc6e3",
+    "bytes": 1217
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-reference-lifetime.json",
+    "sha256": "fb1b3d6515c01e320cc76e4589022bfb059fce36ff599bf3b30f0f9f4277f93b",
+    "bytes": 900
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-reference-plan.json",
+    "sha256": "3a77814f3ae3d6646e6764ce53dbeecbaad8c6f6b304f50bfbd99abb2a75856e",
+    "bytes": 1374
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-reference-stdout.txt",
+    "sha256": "34d4695fe85f02b7163c56614cd85a5f98632f2a4845bb72b50cc8babab4c039",
+    "bytes": 1569
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-reference.json",
+    "sha256": "ad5da6a0ed65fbc83f4bc7a3bf10fff7879bfac1d2e58730c5250c312e58cb1a",
+    "bytes": 1689
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-repaired-lifetime.json",
+    "sha256": "3ac8873770f3d62a0b8f1e67f062df0688cdc48d10ac445386afeec54dbe847d",
+    "bytes": 897
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-repaired-plan.json",
+    "sha256": "ce0c6497d8312b646f1caa9204f07dec9df2bbeb5573cfa8e78a4bf96a4a820f",
+    "bytes": 1371
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-repaired-stdout.txt",
+    "sha256": "ed3bda5f3b527d7e119de6d45d61069b4f26931afd0c5df0dbe1bf061bfa2ec6",
+    "bytes": 2161
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/effect-pilot-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/effect-pilot-repaired.json",
+    "sha256": "a6fdfb5005c70e9411d0e8bd25420b1190e66934f48057b12c9a68371a4dd14c",
+    "bytes": 2349
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/phase-receipt.json",
+    "sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+    "bytes": 42451
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/synthetic-controls-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/synthetic-controls-lifetime.json",
+    "sha256": "16c450a7a89bc0245cf2418f7bbf9c7206534b1712337d7e8108b80f19ff5353",
+    "bytes": 902
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/synthetic-controls-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/synthetic-controls-plan.json",
+    "sha256": "e096ef12429cb8f3b7f112310fb3b9cd7d1ee2fe0f4fb63f96cf243477a9c476",
+    "bytes": 1067
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/synthetic-controls-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/synthetic-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/synthetic-controls-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/synthetic-controls-stdout.txt",
+    "sha256": "047642039e966a03830ef8d00ab48e4d78e5a1774328d217ac78156c2a28677a",
+    "bytes": 15864
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/synthetic-controls.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/synthetic-controls.json",
+    "sha256": "69f276bf778c13780e9c0e49ee517dc83fa8e674cde19c3d90ab63e22c67f20d",
+    "bytes": 18190
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-reference-lifetime.json",
+    "sha256": "8cda5cf1b792a5cd071f038534b199815d6916206c95105b4037fe0b35c0f57f",
+    "bytes": 903
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-reference-plan.json",
+    "sha256": "68170a515062950a867e6f996b1ec191f7ed0053537f46740cdb0ed96c3adeea",
+    "bytes": 1362
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-reference-stdout.txt",
+    "sha256": "b81e9ac6b9c8bb97a5ba825f5bc6d4d8dae29508eb7004217239d7d262052bc2",
+    "bytes": 1578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-reference.json",
+    "sha256": "2a1df6e81c32f163e5ced419731a36d27cce77166f74b0724f2da762458f2002",
+    "bytes": 1702
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-repaired-lifetime.json",
+    "sha256": "3ba1e18c942ef35b86a37c46f468c202a6a83f30cd7ed3b11ee37e7805a11520",
+    "bytes": 899
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-repaired-plan.json",
+    "sha256": "15ef6a032294f90561ac3ceab2a0e864739aa48409a4b85866124ffe9a83f7c1",
+    "bytes": 1359
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-repaired-stdout.txt",
+    "sha256": "a0a5a6eda7e1cccf03ff154c3aefcdb2cbb7644a56613a3845ec14a379ff108d",
+    "bytes": 2163
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-01-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-01-repaired.json",
+    "sha256": "c4e630e6050a13548a863cecbd03cea69e327c328f250a3f4bc900dcaa46593f",
+    "bytes": 2355
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-reference-lifetime.json",
+    "sha256": "42d63d5d4b92a1ec97ee5c6b685d7167804d975f5d40f84e1890fb57268a492f",
+    "bytes": 903
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-reference-plan.json",
+    "sha256": "0d42e24498f30c64b047b6978bbcb82489e06051328215bf2d4cb9b2842ae08f",
+    "bytes": 1362
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-reference-stdout.txt",
+    "sha256": "759a48678c4dab2ccf4db6848742edd26433ae7a5e0758e7d70b29789c69fb2c",
+    "bytes": 1578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-reference.json",
+    "sha256": "d995f2ce0387574cffd4d2f42df8e70600bb42742ea1367d0ffd301fe0d250e3",
+    "bytes": 1702
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-repaired-lifetime.json",
+    "sha256": "99813cde9df41e9b79eb1807da06a1b7dd226fd01ee768db6228090109213329",
+    "bytes": 899
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-repaired-plan.json",
+    "sha256": "183f7090d474e796386d72768446e1c5ac37b61c6e2e4924dc24eaf90be6bf4e",
+    "bytes": 1359
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-repaired-stdout.txt",
+    "sha256": "5071586474994303f96aa1adc2a4f0aee64044b91b6cc281e0af07b214211591",
+    "bytes": 2167
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v2/train-08-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/train-08-repaired.json",
+    "sha256": "da9e7d809a8580be9a432db6bcd6359c633c06f3b8bea0243fec67babcdbef96",
+    "bytes": 2359
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-reference-lifetime.json",
+    "sha256": "2de81bdb8e4560cc8e898fafde8e4b7911b3789c0d6429d909081a8a2073936a",
+    "bytes": 908
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-reference-plan.json",
+    "sha256": "1d269e2b07697d61ab8922a18007cb0a5c7c2751423c75398430e9485b939764",
+    "bytes": 1516
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-reference-stdout.txt",
+    "sha256": "d21b052dbb0b3b05b89b1d95e6070f29b7c47b427419e167771d851930e88ec9",
+    "bytes": 1560
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-reference.json",
+    "sha256": "9a502a7a2c39cda7ae3e91c533778855e1d3e312aaa62868f43900d2ab66e56e",
+    "bytes": 1680
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-repaired-lifetime.json",
+    "sha256": "81fc1c7de264fdc418ce549800d126cb62d158c2569aba508ae87277a1d42d53",
+    "bytes": 898
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-repaired-plan.json",
+    "sha256": "e11d27a893e6472b2981c530895802ee9846d8da1e0bbc22390007b47a078ebe",
+    "bytes": 1513
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-repaired-stdout.txt",
+    "sha256": "996f06aff77a2f008d59b25868d62b2118d87508a385842a442c4c850768aecc",
+    "bytes": 2504
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/effect-pilot-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/effect-pilot-repaired.json",
+    "sha256": "a9a46c78402a9bb05e1d76dacd8886b96c33a9a8c8aff35e5f0ceeae6b9b38b1",
+    "bytes": 2710
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/phase-receipt.json",
+    "sha256": "e834b4f23db96b246a05dada7db75ea67f75efb79eb31e62de180537bda71f81",
+    "bytes": 52700
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/synthetic-controls-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/synthetic-controls-lifetime.json",
+    "sha256": "08c02e8a317eea041bc6b22a681fc1b76cc62bf1249c2aef4764e1c0c11487ac",
+    "bytes": 897
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/synthetic-controls-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/synthetic-controls-plan.json",
+    "sha256": "1e333d3973fc0cec6c80451b584bc5443a7af52f9977d62f5e2f14d3e8555b31",
+    "bytes": 1209
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/synthetic-controls-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/synthetic-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/synthetic-controls-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/synthetic-controls-stdout.txt",
+    "sha256": "dc29b404010d161758b808cb840f08f6e6cdcac74df355e122dc8f5d7126a21c",
+    "bytes": 23779
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/synthetic-controls.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/synthetic-controls.json",
+    "sha256": "2a7f6cda269314e168e473c3654e9dc4d6100da039d0cb374019c4672f759cad",
+    "bytes": 26735
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-reference-lifetime.json",
+    "sha256": "6edd116ed6f09e97588514b382ec7ade507ee7f14e94ec6bc16ce3187373f4f7",
+    "bytes": 897
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-reference-plan.json",
+    "sha256": "84a2825946e83a9702f7b4467e5e89cb61448774730b1287e5ef203ba5a64b0f",
+    "bytes": 1504
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-reference-stdout.txt",
+    "sha256": "f4325605fa28a255d10eec0e2ef6f8a0cdc0bbe6b4e9d8c9c8f60e7d98fe4fb6",
+    "bytes": 1576
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-reference.json",
+    "sha256": "6f0b7c58689d12684bdfc721af18eb2855545817502d8a0252d2eef506f43b71",
+    "bytes": 1700
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-repaired-lifetime.json",
+    "sha256": "514a16e6efa142962829e6ccdfa7bf4f233dec1b26256e2c3c056c0c591f554e",
+    "bytes": 901
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-repaired-plan.json",
+    "sha256": "f5720517f67d59319868b83c3c23811809606097c8e88296ccc7763129327d6b",
+    "bytes": 1501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-repaired-stdout.txt",
+    "sha256": "92eb7624a1adeeabd39dec5c2c098e4c38376ef0f5905b1e13242ea7c6c49ffd",
+    "bytes": 2516
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-01-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-01-repaired.json",
+    "sha256": "d3942c1a460ba588bbc48390c54a1f65912762d8b83abde3bed3b99d9e678521",
+    "bytes": 2726
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-reference-lifetime.json",
+    "sha256": "67064ce3bb719b4428d12d6b634b56bb18c48e8f1623a2dce87f24ed5ad74875",
+    "bytes": 904
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-reference-plan.json",
+    "sha256": "92207a85f9aaac21e9888f6ba4357e74df129f01630aa0db59a04a6b64358938",
+    "bytes": 1504
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-reference-stdout.txt",
+    "sha256": "255314db162da36b8facec0e6c6f545abac93f6ef51e81b862c9e6fa39d8f14d",
+    "bytes": 1570
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-reference.json",
+    "sha256": "c5fafab786b14adee64be162db439ac1b02b1eda11850805b92852147ea75b06",
+    "bytes": 1694
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-repaired-lifetime.json",
+    "sha256": "efed233550de92d7c4e331e7be0083156e0bda0863b5280cd258b2f6f76a3318",
+    "bytes": 901
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-repaired-plan.json",
+    "sha256": "79d303f5c4646cbd32d7b7a33e4bf91ee4ed115267775cc7c85af37acd68b31d",
+    "bytes": 1501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-repaired-stdout.txt",
+    "sha256": "ca60286d828ffb7fd637bd137f7b3813961284fe7be90fe46c3e92b250c2fa59",
+    "bytes": 2517
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v3/train-08-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/train-08-repaired.json",
+    "sha256": "501296bc55a978eae90b6d7509b0ec3f54101334cb4bec18fa6f9f81d338e1cf",
+    "bytes": 2727
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-reference-lifetime.json",
+    "sha256": "ab88465490474946beb9b9c30b517d9622721964353cd723ab45953ceee3b87b",
+    "bytes": 908
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-reference-plan.json",
+    "sha256": "45ac98aa10022801a75ee8b437a913d5fe4653e35cd601a02f8246ad59874fcd",
+    "bytes": 1516
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-reference-stdout.txt",
+    "sha256": "99098faed4ff428d6c7d0b8b385dec228c13eeabdf8b02e11bdd4f64762d4d76",
+    "bytes": 1571
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-reference.json",
+    "sha256": "23be8bc44e6a990bec9225d8d79e736cff219d3cda7426d8302689a0c3b1c8ae",
+    "bytes": 1691
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-repaired-lifetime.json",
+    "sha256": "e0c79a7c0644d3b06e74a100b737ee5733dde069cea3ad573d5955a9944ec141",
+    "bytes": 898
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-repaired-plan.json",
+    "sha256": "b6a676b45cba594bcb0169e9ffc77f6cc0f550290eaa1e2c5750ded3adbaad05",
+    "bytes": 1513
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-repaired-stdout.txt",
+    "sha256": "b68d534192a02f4d49542046e9d1600aa7dcf222732821e7d5a35f1ef2d5d698",
+    "bytes": 2714
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/effect-pilot-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/effect-pilot-repaired.json",
+    "sha256": "caec5aa58ed75b595208d5fcdab91f0b248af5c4e9759c56733b4c449fe02073",
+    "bytes": 2932
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/phase-receipt.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/phase-receipt.json",
+    "sha256": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+    "bytes": 61256
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/synthetic-controls-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/synthetic-controls-lifetime.json",
+    "sha256": "15a2c01f8b714e0e124ade9f42948f243807fd939c1bfdf3cf81d329804e59a1",
+    "bytes": 897
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/synthetic-controls-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/synthetic-controls-plan.json",
+    "sha256": "bb1b474cea2325f609d686c572c382ae75479c961f737851e5ea2d9fe03c80a7",
+    "bytes": 1209
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/synthetic-controls-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/synthetic-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/synthetic-controls-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/synthetic-controls-stdout.txt",
+    "sha256": "5bf9e78f3c74fb5e99a648a036f2758f0fbd7a8bf6d47bdd0241bbf23a3a1af7",
+    "bytes": 30501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/synthetic-controls.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/synthetic-controls.json",
+    "sha256": "374ef0c7dfaa979f464279fce949b627cd40f6d99e33b85b7a96afce3c88d3f1",
+    "bytes": 34045
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-reference-lifetime.json",
+    "sha256": "ca0fde5344a44d6f342d244b9bf6a574b106e2cae1ce4e8f91e6622e1c2d40c8",
+    "bytes": 904
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-reference-plan.json",
+    "sha256": "3c7f7cd2ff85ded78e5114562ee0387a1038d3ad92e9c30f66500d4792e38671",
+    "bytes": 1504
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-reference-stdout.txt",
+    "sha256": "2b4708548c54828461217f04f91b7161a6cfa44a49f7e1d77c057deb07aa7522",
+    "bytes": 1578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-reference.json",
+    "sha256": "24e7aa060ae3c61f5971ce4e8606e6b4ab60cc420a7a23c06186c1cc9aa128d1",
+    "bytes": 1702
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-repaired-lifetime.json",
+    "sha256": "94b440bdda88ae07b5435943f35a1cbb1ca9adb3976127dceb7f0b99e69da587",
+    "bytes": 901
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-repaired-plan.json",
+    "sha256": "716080910aaf0b219bccf45b08abe0e8cbed4e4c4ff280f5194aa29dce7d9aff",
+    "bytes": 1501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-repaired-stdout.txt",
+    "sha256": "3fe944a73d2a3906b9bd013ca8af4b51871161bccb83d246347bd7bd98edfe82",
+    "bytes": 2719
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-01-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-01-repaired.json",
+    "sha256": "1ced96883911da341d64023767a7423ac55030fbca5579ee117b4f3a8281e94a",
+    "bytes": 2941
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-reference-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-reference-lifetime.json",
+    "sha256": "7010a560fce8b1f5b6d1526fefef9d022301642d8ec5fde25900ebc05bb0c513",
+    "bytes": 904
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-reference-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-reference-plan.json",
+    "sha256": "4ea5605b2f8cbd873c6def8c38dce16cd04c4f293a3a25dbca3319539c717b9c",
+    "bytes": 1504
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-reference-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-reference-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-reference-stdout.txt",
+    "sha256": "856450b372ed4256612c66ddd5b9f5d127282d795bff57c45e190e017fed0257",
+    "bytes": 1578
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-reference.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-reference.json",
+    "sha256": "b33fdcd1654f05ec874145505039f7ea1b3bbf057d2df0832a989fe494ba24bc",
+    "bytes": 1702
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-repaired-lifetime.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-repaired-lifetime.json",
+    "sha256": "ed5af431a51fa3fea98affad85f49183804f2163ad675cd8a8eee0cce9e62c04",
+    "bytes": 901
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-repaired-plan.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-repaired-plan.json",
+    "sha256": "03b7550c7d5f9ea6b0e78c1bf8486726eee9c8159690c1cceb461c98fbc185fe",
+    "bytes": 1501
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-repaired-stderr.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-repaired-stdout.txt",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-repaired-stdout.txt",
+    "sha256": "cd27bba1310e93f4a16a99eb0d4260a3621f8c9a1cc4807589741af5040cc7a4",
+    "bytes": 2716
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/helpers-v4/train-08-repaired.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/train-08-repaired.json",
+    "sha256": "b1867edcded30846c43617f783c889acd241c6b586229e0e22afc0bed8106935",
+    "bytes": 2938
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/next-loader-strategy-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/next-loader-strategy-v1.json",
+    "sha256": "1f971212a5040c72514fdb50f3c479db2b20a0014cd6f1988b4701b9ba106f31",
+    "bytes": 8804
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/report-generator-reviewed-v1.py",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/report-generator-reviewed-v1.py",
+    "sha256": "c117212b831b40f85b295750bf2795ac32448dfc258cbdc6949bdc15f1190b2b",
+    "bytes": 29391
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/report-source-review-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/report-source-review-v1.json",
+    "sha256": "83354c6ba53857e56e3397703c83aa3f2cf02c4cc6f3b0af777f2907f7e0758a",
+    "bytes": 2608
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/review-package-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/review-package-v1.json",
+    "sha256": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+    "bytes": 15463
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/review-package-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/review-package-v2.json",
+    "sha256": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+    "bytes": 17329
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/review-package-v3.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/review-package-v3.json",
+    "sha256": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+    "bytes": 19531
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/review-package-v4.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/review-package-v4.json",
+    "sha256": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+    "bytes": 21668
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/scope-note-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/scope-note-v1.json",
+    "sha256": "026a010a9cef6dd7111cd61e4fdcbe2264fcdd2aa9a477c4baaefbbf1d7508a7",
+    "bytes": 1538
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/scope-note-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/scope-note-v2.json",
+    "sha256": "a8c1d92c72b2f37ff721881f45a8601f8df7ab52e20f30ab63be785743bd4623",
+    "bytes": 1145
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-snapshot-v1.zip",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v1.zip",
+    "sha256": "8cd77d0657607c47d8aec920ba60940d79c6869dbc31334958793ce94a06a8e4",
+    "bytes": 149033
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-snapshot-v2.zip",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v2.zip",
+    "sha256": "98e2c19df0c27877185250527b63fde29ddbfb22ea69ae24e99d079e1190bb71",
+    "bytes": 164049
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-snapshot-v3.zip",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v3.zip",
+    "sha256": "74be7a8c041a4aaa86b89a6923136175da89c124d52950ac059d4d1c03eb9613",
+    "bytes": 180961
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-snapshot-v4.zip",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v4.zip",
+    "sha256": "df37c52a7d0839f3551f57e1a98c3816178a4eec0f57421defa66a04d0c2183a",
+    "bytes": 198497
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-verification-v1.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-verification-v1.json",
+    "sha256": "05fe82e5d9305892fd361854a64f2b40807157f2798c00095f8f3451e608fe67",
+    "bytes": 740
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-verification-v2.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-verification-v2.json",
+    "sha256": "84dad1cb74c53e4f516e15cf945dcbc51d4aa2e0efe0aa4a4fb308a63f8d807f",
+    "bytes": 545
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-verification-v3.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-verification-v3.json",
+    "sha256": "015267f20481f92931a7ba631af2b58e7b2b94160e832d379403fd4d2b9e12a5",
+    "bytes": 772
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/arithmetic/source-verification-v4.json",
+    "origin": ".gcts-active/stochastic-replay-memory-20261011/source-verification-v4.json",
+    "sha256": "bbb872f729995b18fd21f2ba1cd16f315fc66111918daf2ffeb3f3d6bad1c80e",
+    "bytes": 648
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/actual-model-readiness-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/actual-model-readiness-v1.json",
+    "sha256": "1d3da542bd12c5a9157216df981a4f97d5e37bc6be12b03d06831839b3486810",
+    "bytes": 4102
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/checkpoint-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/checkpoint-v1.json",
+    "sha256": "feed7b7f719c294a947c936b9e284a0cff375e4d58c1aa2cfccddf90ebc42cfc",
+    "bytes": 4965
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/cluster-continuation-plan-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/cluster-continuation-plan-v1.json",
+    "sha256": "ca310fd6b962959541784243251728aeb709ada6c0296aa2101888ee66d84d2c",
+    "bytes": 11218
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/conformance-scope-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+    "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+    "bytes": 1926
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/factorization-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/factorization-v1.json",
+    "sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+    "bytes": 7294
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-launch-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-launch-v1.json",
+    "sha256": "4af43a528ebd857c841b3ee821a50272bb9a79df51aabdf961bd689251dc4679",
+    "bytes": 181
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-launch-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-launch-v2.json",
+    "sha256": "bc2c93c3041439b2602bed2ee69bc1d1e28e90aba114148c6ce99c7b568932dc",
+    "bytes": 181
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-lifetime-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v1.json",
+    "sha256": "74c7ba4337df93d9826a2054a196fa59e33f6a9844ffc79390f3d937ca443979",
+    "bytes": 868
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-lifetime-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v2.json",
+    "sha256": "9af212c3cc0c2fcd7cad588069438bc21aded84e50d36ca4389fe1d3a45869a3",
+    "bytes": 978
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-outcome-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v2.json",
+    "sha256": "d4aa9ae3f33979fc90bcc20ba43843b9b23ab06a3242c821c40a18f526b8efd5",
+    "bytes": 2810
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-stderr-v1.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stderr-v1.txt",
+    "sha256": "24713515af6641b0b23e25d62b37174351371b9b017d8efb6bea790da63c5d9a",
+    "bytes": 1682
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-stderr-v2.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-stdout-v1.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-stdout-v2.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stdout-v2.txt",
+    "sha256": "98d8d3270eec717b1e7bdab448592abff3edf6c3dcae956a7da525676581d64f",
+    "bytes": 183
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-supervision-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-supervision-v1.json",
+    "sha256": "fe3c078adc3277690f5012e88495d89fe290790c53120bae345f843fba493438",
+    "bytes": 1283
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/fixtures-supervision-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-supervision-v2.json",
+    "sha256": "02a519cfed976d3b785ca5ef6aae9e429a1fb44e0be00c067c0f160aaf149d55",
+    "bytes": 3347
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/freeze-receipt-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/freeze-receipt-v1.json",
+    "sha256": "f8635631c45ec7aa9587c43233bfb95c78e99fcff5e728ab26d81be4b9fcebff",
+    "bytes": 520
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/freeze-receipt-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/freeze-receipt-v2.json",
+    "sha256": "cec8f295bbaf107366292fc180eb116999182fb3703ee6cec23f38d1e1fda9ea",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-freeze-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-freeze-v1.json",
+    "sha256": "b1aa3ccb236650d176e048789a9a0ed776142d67ed885dafb689e171234556c6",
+    "bytes": 545
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-launch-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-launch-v1.json",
+    "sha256": "20e4a4bd9f783e4452eba1ed665626535379ea1b9822a9f57257747ec52119fd",
+    "bytes": 207
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-lifetime-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-lifetime-v1.json",
+    "sha256": "ad652ca8dfce345a67428b91fcb50180b4ec3f7a706a0ee9dbd2edeb46fe0429",
+    "bytes": 1007
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-outcome-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+    "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+    "bytes": 1423687
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-plan-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+    "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+    "bytes": 119923
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-stderr-v1.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-stdout-v1.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-stdout-v1.txt",
+    "sha256": "1688691d5e0b81a1ddb8509088a8ee2a91e2249472caddfbb90fc48e6c3d41bc",
+    "bytes": 297
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/full-model-supervision-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/full-model-supervision-v1.json",
+    "sha256": "4a011520e37749cafa3ad5f93bfbf27ed57f903bdba473f94536c9c719e0357b",
+    "bytes": 163576
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_fixtures_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v1.py",
+    "sha256": "7888bc12b5b530cfb92cef373f86a843ad86596544315d11aeaf5d77dfd73329",
+    "bytes": 13267
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_fixtures_v2-diff.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v2-diff.txt",
+    "sha256": "70de8266d9c468a6932e68dd105361878807770400b2c3b3ec41d58592930cc7",
+    "bytes": 2232
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_fixtures_v2.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v2.py",
+    "sha256": "604343dee2931c0ca99148d1e40bd34e6d1197a747ff73fc334f4a2cfe5ff83d",
+    "bytes": 13766
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_freeze_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_freeze_v1.py",
+    "sha256": "167bcfb774f424595e2ac19770e176a871dea7886f32b575b6b3799327af9f62",
+    "bytes": 6832
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_freeze_v2.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_freeze_v2.py",
+    "sha256": "a5135f6fe14c346c7620e74c488ce53260110d072b9f984da451b17b0dc53a1e",
+    "bytes": 4345
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_full_freeze_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_freeze_v1.py",
+    "sha256": "f834e4b86668824c693e4c96c1bbb6aac3369060c179fe4e85d32547b5160ebc",
+    "bytes": 8603
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_full_outer_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_outer_v1.py",
+    "sha256": "8cc140fb98f9e474d5fb142daafd54c452812fa6b575666ac06de029a9cd215c",
+    "bytes": 2939
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_full_run_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_run_v1.py",
+    "sha256": "6634bf886919b2c861b4ec7266295e64bac7926dbc0c85e7afd2ea7392519fce",
+    "bytes": 5842
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_full_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_v1.py",
+    "sha256": "f85cd921b9f324649c53a18e4ae8162e64915ae9f13a808e8216fe8025bef3e9",
+    "bytes": 15347
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_outer_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v1.py",
+    "sha256": "c542a2f470fb35fae0af16504a639a94e55d5685a9f20d9f298803f07f66fe31",
+    "bytes": 2770
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_outer_v2-diff.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v2-diff.txt",
+    "sha256": "767ea82a0cc012adc465789ab816906bfff6cd75f6305896b8665db6417da30e",
+    "bytes": 2826
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_outer_v2.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v2.py",
+    "sha256": "3897fd06c274b4fa87a5c187c4353f6dd3630bb8b4931ba489340f80949a823a",
+    "bytes": 2889
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_run_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v1.py",
+    "sha256": "e3500b5081839ddf02fe61d782657360906e163946e169aaeca643c550bbd232",
+    "bytes": 5732
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_run_v2-diff.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v2-diff.txt",
+    "sha256": "7e61e1890dd25c2102e5a8e62a478586c38532f8ca5d92955333ec0c484e7dbe",
+    "bytes": 2883
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_run_v2.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v2.py",
+    "sha256": "26b04d6fedb4d11e1a3b50506d67e84135cba4a4a314bdb7c7338fff39de8a38",
+    "bytes": 5732
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py",
+    "sha256": "0628ada14bdc35bfde4edb2dac654097f9948ec73b7df609243a7b3fa28fc07b",
+    "bytes": 31077
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_v2-diff.txt",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2-diff.txt",
+    "sha256": "eea5dfd85642e345eb59513e85de5f865709b9fb7ca36c89cee7b9a8434f5915",
+    "bytes": 1123
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_v2.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+    "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+    "bytes": 31300
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/plan-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/plan-v1.json",
+    "sha256": "5b44e49414728da163f1b45cdcc9b886681d81426264f737c76a1fca14925745",
+    "bytes": 108917
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/plan-v2.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+    "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+    "bytes": 116141
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/root-report-review-v1.json",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/root-report-review-v1.json",
+    "sha256": "097c9ffd8837aecc3929abbd94eeac2110178fd8a6373554896450ecb3ca503a",
+    "bytes": 2828
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/root-report-reviewed-snapshot-v1.py",
+    "origin": ".gcts-active/hilbert-primitive-executor-20261011/root-report-reviewed-snapshot-v1.py",
+    "sha256": "30723e5fe5ae72b8cdb1686ef16d34320c69e42463befad4087256915139120f",
+    "bytes": 27022
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/evaluation-terminal-review-v2.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/evaluation-terminal-review-v2.json",
+    "sha256": "f3a43c8d2ac75aa30304a8125b3a638f832136c63d08675b4f45ba61bf3dcbd6",
+    "bytes": 4359
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/evaluation-terminal-review-v3.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/evaluation-terminal-review-v3.json",
+    "sha256": "49b2ce282bd29688c82d23aa7f1ba1f89c15c1b2ae8ea96c3a04f2c9727a65a2",
+    "bytes": 2701
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/evaluation-terminal-review-v4.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/evaluation-terminal-review-v4.json",
+    "sha256": "dcbc75fc34307f770126c1eb46db12a360eb3a9f64ec60e966059e12d38077ea",
+    "bytes": 2811
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/fixture-lifetime-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/fixture-lifetime-v1.json",
+    "sha256": "43d5ee1a47d9b0ac9c4f367ed032b3fdcf6152fe0f49d97959441ecb6f7ab784",
+    "bytes": 542
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/fixture-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/fixture-plan-v1.json",
+    "sha256": "b72ca3f9ccbc78b534cd27c4ec99c93e8ac9e39b619bab13dfff39ad271aeb89",
+    "bytes": 6072
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/fixture-worker-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/fixture-worker-v1.json",
+    "sha256": "48b03afeeae5f67faff2208459d8d08063d9261159a9c72d67db3f94cc53c751",
+    "bytes": 7258
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-completion-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-completion-v1.json",
+    "sha256": "5983d34142f6f0d8a2fe91f6dacef4e8c33e12e66e23af1e0de38b79624fa009",
+    "bytes": 3593
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-integration-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-integration-v1.json",
+    "sha256": "c84e47e030035f4ec1fefe0a6b4782bbd6eed4df5c53ba5fbb837d81422e8f7f",
+    "bytes": 119893
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-lifetime-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-lifetime-v1.json",
+    "sha256": "9641dea0b0067d40addf11f4d7b76361762c002267b1437c08fdf24dd5645104",
+    "bytes": 1384
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-plan-v1.json",
+    "sha256": "794b4cb1c471416530e56b4cf64198e8b6f1bdc8ff207ac1959c65682d59cf7c",
+    "bytes": 121658
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-result-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-result-v1.json",
+    "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+    "bytes": 1421897
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-source-ready-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-source-ready-v1.json",
+    "sha256": "3dd3da01e9de832d896b572daebb046d81120f500eea79fd179e69008ebd2525",
+    "bytes": 743
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-sources-v1.zip",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-sources-v1.zip",
+    "sha256": "4fac0b33d75ffb8f6d7f5ec9ab1aa6583cab6592d7c12cd3115cec2571e69286",
+    "bytes": 35943
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-stderr-v1.txt",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-independent-stdout-v1.txt",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-stdout-v1.txt",
+    "sha256": "bb734e59315647fe2e649362f11d02128252f1c0f7950d7d7494fa1763a405e7",
+    "bytes": 197
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-full-model-source-review-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-full-model-source-review-v1.json",
+    "sha256": "8a6e1ba6f77b3ede5d3d6039a301cf4ce443b495899b456b231e7e634e4f2a2e",
+    "bytes": 9748
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-independent-lifetime-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-lifetime-v1.json",
+    "sha256": "536d2ea9e16cf418759a3b2c8edc34d2ef22d3967aa9810d9dc56f2eae7992e9",
+    "bytes": 1010
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-independent-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-plan-v1.json",
+    "sha256": "4766b50e393aa39fa4a8592ac84143e71a1b6cd58223ff7c19060b9bfd116d0f",
+    "bytes": 3131
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-independent-result-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-result-v1.json",
+    "sha256": "79337c703373a1f6f4f338ea35ba11fe367a4eee2a463060db38ff76a74a5c4f",
+    "bytes": 1644
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-independent-stderr-v1.txt",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-independent-stdout-v1.txt",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-independent-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry-kernel-source-review-v2.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry-kernel-source-review-v2.json",
+    "sha256": "0db5be05143dc3c49af3b1e8a1c5871121fcb71d505268a2732126f2cffb798a",
+    "bytes": 10440
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry_full_independent_audit_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry_full_independent_audit_v1.py",
+    "sha256": "14b19707222248446321a85af9441c90fd8932154b99872eef45d77bba5688da",
+    "bytes": 34370
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry_full_independent_freeze_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry_full_independent_freeze_v1.py",
+    "sha256": "0e8bd28247740dbd6b1e0e33c61c9fa1309fa523276d190a183b2e453e1814e5",
+    "bytes": 8091
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry_full_independent_owner_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry_full_independent_owner_v1.py",
+    "sha256": "2d3f5b39daa9ad295a185276aefcf0b5996389dd5f8b95cf348290c8150bf078",
+    "bytes": 5115
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry_independent_fixtures_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry_independent_fixtures_v1.py",
+    "sha256": "27992f52c53a3a46f546abb77dfaa2c5712fae8dab856cd4b5984474e3e48ead",
+    "bytes": 11242
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/geometry_independent_owner_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/geometry_independent_owner_v1.py",
+    "sha256": "b68c603be9fb5a3b595d033d954c25e070df5e4488ab555316e511f26407d670",
+    "bytes": 4335
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/helper-terminal-review-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/helper-terminal-review-v1.json",
+    "sha256": "ddf540dc86984c1e5c545e82252ee82338d96079da2322fbf06189c16b5148bd",
+    "bytes": 6384
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/helper-terminal-review-v2.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/helper-terminal-review-v2.json",
+    "sha256": "1e5ed8db19449404163541b1003a97f13ea2cb72e8b7a0701eb70772353a177c",
+    "bytes": 6617
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/helper-terminal-review-v3.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/helper-terminal-review-v3.json",
+    "sha256": "1dbebee52946890816e4e02869cc9c1e3ec2d790d9eb500fe5eb485220afbdfb",
+    "bytes": 5270
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/helper-terminal-review-v4.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/helper-terminal-review-v4.json",
+    "sha256": "45ef69b67ca81d3877b49a3a09ae93c657dc7df854113c0bd0a5e58475f1fd02",
+    "bytes": 5357
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/loader-review-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/loader-review-v1.json",
+    "sha256": "f74a29eae068e5abf55555e80be76fa29e89741073e2306ad67811f0064c5659",
+    "bytes": 3865
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/loader-value-preservation-argument-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/loader-value-preservation-argument-v1.json",
+    "sha256": "cad058975703ef5ea683ba7ccc81cde83a49cbc0f9b8fdfdb60e045b11e3c639",
+    "bytes": 2788
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/loader_fixtures_v1.py",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/loader_fixtures_v1.py",
+    "sha256": "834d00d6c38d5535bd5d619b4cd3262ee6bc9fd11f577b27576f23b7c72b65fa",
+    "bytes": 8705
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/primitive-executor-gates-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+    "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+    "bytes": 8706
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/source-ready-review-v1.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v1.json",
+    "sha256": "6facb4d4eff69527950e77bc018c98ac7a7337b11e8d9dcd23123e583a173d95",
+    "bytes": 4104
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/source-ready-review-v2.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v2.json",
+    "sha256": "57d281b0399165ce2da6d132f0635d581f1f2ccf199ee9ad94a0f2d74607b417",
+    "bytes": 6042
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/source-ready-review-v3.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v3.json",
+    "sha256": "a1009c56b7d4a1e6833d0eafdc9c6460d82f051648e527b1edea947a8433a50d",
+    "bytes": 3562
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/independent/source-ready-review-v4.json",
+    "origin": ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v4.json",
+    "sha256": "d320a33de4c95dceb28ce3be011b6f44310dce0f490208d4558ac9d86541d9c3",
+    "bytes": 3157
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/loader-fixtures/fixture-lifetime-v1.json",
+    "origin": ".gcts-active/stochastic-replay-fixture-followon-20261011/fixture-lifetime-v1.json",
+    "sha256": "8b4dcf5bdb954223dec186d7b1a82735d423bd08f4a79442c3a8f199841c7dad",
+    "bytes": 542
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/loader-fixtures/fixture-plan-v1.json",
+    "origin": ".gcts-active/stochastic-replay-fixture-followon-20261011/fixture-plan-v1.json",
+    "sha256": "a09986712bc243a3a6c2977a6f5fafb2f28f15e1010fcaa8f5627494f73e45d0",
+    "bytes": 6811
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/loader-fixtures/fixture-worker-v1.json",
+    "origin": ".gcts-active/stochastic-replay-fixture-followon-20261011/fixture-worker-v1.json",
+    "sha256": "526d1c1a79bb87f8c8b56364c79b70a1108bd465a23259bec946e002099c4e21",
+    "bytes": 7258
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/loader-fixtures/loader_fixtures_v1.py",
+    "origin": ".gcts-active/stochastic-replay-fixture-followon-20261011/loader_fixtures_v1.py",
+    "sha256": "834d00d6c38d5535bd5d619b4cd3262ee6bc9fd11f577b27576f23b7c72b65fa",
+    "bytes": 8705
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/arithmetic-source-pins-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-pins-v3.json",
+    "sha256": "0495afcdf675daf1b43cb0d67b5168833b49beec689673a365f731f09555f13d",
+    "bytes": 639
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/arithmetic-source-review-v2.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v2.json",
+    "sha256": "64124572ae4158c96db23d69b8f591491a3f3280abf82d3185c3a1794ea26e72",
+    "bytes": 722
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/arithmetic-source-review-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v3.json",
+    "sha256": "a3b58c7641a6b2b22e8403e718db615fcbd8e526b9128d9f33920d4fac872687",
+    "bytes": 779
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/arithmetic-source-review-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v4.json",
+    "sha256": "2a57f91c3923ae269fd75f2af56c92d383067ffda9ee2cf0c21dbb2c90857cec",
+    "bytes": 637
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/arithmetic-source-review.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review.json",
+    "sha256": "c9eb9bb564f50af22e0190a6c35f2b272ae23bfb23fd32ad40464709873b7e0f",
+    "bytes": 1144
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-dispatch-v2.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-dispatch-v2.json",
+    "sha256": "5b57d850fcdc3c6efc6d38417166dc4997254c0270af65da45d1b496b661341f",
+    "bytes": 303
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-dispatch-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-dispatch-v3.json",
+    "sha256": "c79b28e8b26f50303a2b015c018604dd3cb741b9902ea42051967a2d363fbe36",
+    "bytes": 303
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-dispatch-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-dispatch-v4.json",
+    "sha256": "22566c3ba71f5a76cd876343befa50bb53b7fcca030a838108856c4f3fc90ed0",
+    "bytes": 303
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-terminal-v2.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-terminal-v2.json",
+    "sha256": "29e841963a8d6fde0a89ece7099a2dd7428ab075f0800f300bfbdca8e908a434",
+    "bytes": 729
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-terminal-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-terminal-v3.json",
+    "sha256": "9500ac93ddce391384486b409eb4af267260268b7a3de93f0f4ba091ad4469fe",
+    "bytes": 569
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/evaluation-terminal-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/evaluation-terminal-v4.json",
+    "sha256": "8672e54f518fb923665ad60eb2a1d4ac218644c997027c2426b8d9408df0ee1b",
+    "bytes": 467
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/geometry-full-independent-source-review-v1.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/geometry-full-independent-source-review-v1.json",
+    "sha256": "39983ff04b8b439794ee9f8edff952506d140673538440ce980469645552263f",
+    "bytes": 852
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/geometry-full-model-source-review-v1.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/geometry-full-model-source-review-v1.json",
+    "sha256": "67798da3dfc284c767bfabecf8632588dae6bd6d65ede1222535bc330934e007",
+    "bytes": 1096
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-authorization-v2.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-authorization-v2.json",
+    "sha256": "033f0a20c35d2d39ba906f130d42071c4dca982469a00d978a65e3345a4a6586",
+    "bytes": 893
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-authorization-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-authorization-v3.json",
+    "sha256": "b5869b5103121475e83170a23df442d73f08259cd6463a526d59c52dfbd18119",
+    "bytes": 1356
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-authorization-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-authorization-v4.json",
+    "sha256": "809b431662ed2f1f51b5a47167fedadaa6f3975c5139ea186ff77f641c23964b",
+    "bytes": 1182
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-authorization.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-authorization.json",
+    "sha256": "0ee07365d8f72b3ba194d2b1c6b20e960cb6c6e81ccf582ab63ca640976881c8",
+    "bytes": 825
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-dispatch-terminal.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-dispatch-terminal.json",
+    "sha256": "bc736e606469daaa7634c7dc2a8cfe418b064be970d8b2fd6b52e3e9ab284b27",
+    "bytes": 526
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-dispatch-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-dispatch-v3.json",
+    "sha256": "8f4416bf651ee758e9fe31d99e0ec63e3230c1cc46f6522427442d7df13f3870",
+    "bytes": 165
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-dispatch-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-dispatch-v4.json",
+    "sha256": "21c1390a4bac097ffb786bbc8ee4d308b0bb2201fa33264903ee2c7ff5e721bd",
+    "bytes": 165
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-dispatch.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-dispatch.json",
+    "sha256": "90bd5ee5cfa525c3f9b5d1121bcc7443b2592aed45f547d05d62ee8de4ad64f1",
+    "bytes": 264
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-terminal-v2.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-terminal-v2.json",
+    "sha256": "55d2ebdc81d79654ab18582abd8981d754a7fcde1875657b394d25bfef10c155",
+    "bytes": 680
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-terminal-v3.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-terminal-v3.json",
+    "sha256": "89035873160baaf825bf4d7872e9f87b2b59fdd8850961490a6f7c4639bd1564",
+    "bytes": 561
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/helper-terminal-v4.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/helper-terminal-v4.json",
+    "sha256": "5115192e661eb5985a3ac94778d91ec28aaf0c765ed5b5d549a9d97cf1100970",
+    "bytes": 639
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/prepare_report.py",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/prepare_report.py",
+    "sha256": "fba92b1bfd756d3c92301d352cabaa2ee8d58952c1fe2aebaade3c36e422c05f",
+    "bytes": 30904
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/report-generation-attempt-01.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/report-generation-attempt-01.json",
+    "sha256": "414c59362c92727cdc0658e6ec42cfe4f2a2b0dc79a5c291338532f33f354ccd",
+    "bytes": 393
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/report-plan.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/report-plan.json",
+    "sha256": "cf4c07389383886f1fa15ef6b7489b9e1988439e6b74140b7e30a7705096984d",
+    "bytes": 1614
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/turn-audit.json",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/turn-audit.json",
+    "sha256": "703ad987a3498078467896e60d2c6a152955992c22a1b6b2b862f96583f3b884",
+    "bytes": 1104
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/parallel-execution/coordinator/validate_report.py",
+    "origin": ".gcts-active/replay-and-primitive-execution-20261011/validate_report.py",
+    "sha256": "7ae010841efda2536ed7cd587d0744453af2d08bf826c7ed6dfe7606f2d186bc",
+    "bytes": 4846
+  }
+]

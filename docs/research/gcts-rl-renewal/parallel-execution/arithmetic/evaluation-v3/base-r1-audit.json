@@ -1,0 +1,107 @@
+{
+  "status": "unknown_independent_replay_resource_budget",
+  "job": "base-r1",
+  "plan_sha256": "f61f3b85536bea8c710e21118d74b90ff69592d22a868aede39962c821ac55e9",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 2.6315165,
+    "bytes": 124903546,
+    "chunks": 61149,
+    "largest_emitted_chunk_bytes": 235436,
+    "original_uncompressed_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+    "emitted_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+    "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+  },
+  "tree": {
+    "status": "unknown_search_budget",
+    "nodes": 5001,
+    "policy_events": 0,
+    "hints": 0,
+    "executed_changed_first_branches": 0,
+    "metrics": {
+      "nodes": 5001,
+      "max_satisfied_points": 45,
+      "forced": 3249,
+      "attempts": 5000,
+      "branch": 620,
+      "dead": 1132,
+      "backtracks": 4960
+    }
+  },
+  "scope": "Every actual node/full universe/census/scheduler/base fallback/hint/rollback/feature/RNG/action and applicable complete learning update. No native acceptance or held-out theorem evidence.",
+  "seconds_before_receipt_write": 42.879232292,
+  "kernel_peak_rss_bytes": 760365056,
+  "loading_only_repair_statistics": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json",
+      "seconds": 0.00012170799999999815,
+      "kind": "ordinary_small_object_json",
+      "shared_arrays": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-lifetime.json",
+      "seconds": 0.00016187499999999883,
+      "kind": "ordinary_small_object_json",
+      "shared_arrays": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+      "kind": "complete_hierarchy_streamed_standard_JSON_with_four_integer_array_sharing",
+      "seconds": 23.064013958,
+      "original_uncompressed_bytes": 124903546,
+      "reduced_temporary_json_bytes": 93290251,
+      "shared_arrays": 19848,
+      "array_occurrences": 10292013,
+      "quoted_strings_checked": 313282,
+      "maximum_buffer_characters": 221226,
+      "standard_value_decodes": 107813,
+      "hierarchy_mappings": 10003,
+      "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity13-20261011/model13.json.gz",
+      "kind": "complete_hierarchy_streamed_standard_JSON_with_four_integer_array_sharing",
+      "seconds": 3.1215960000000003,
+      "original_uncompressed_bytes": 9145417,
+      "reduced_temporary_json_bytes": 9079863,
+      "shared_arrays": 19848,
+      "array_occurrences": 19848,
+      "quoted_strings_checked": 773281,
+      "maximum_buffer_characters": 8650149,
+      "standard_value_decodes": 6,
+      "hierarchy_mappings": 1,
+      "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz",
+      "kind": "complete_hierarchy_streamed_standard_JSON_with_four_integer_array_sharing",
+      "seconds": 0.634826916999998,
+      "original_uncompressed_bytes": 1009441,
+      "reduced_temporary_json_bytes": 1009441,
+      "shared_arrays": 0,
+      "array_occurrences": 0,
+      "quoted_strings_checked": 132219,
+      "maximum_buffer_characters": 436512,
+      "standard_value_decodes": 22,
+      "hierarchy_mappings": 1,
+      "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz",
+      "kind": "complete_hierarchy_streamed_standard_JSON_with_four_integer_array_sharing",
+      "seconds": 0.17153079099999857,
+      "original_uncompressed_bytes": 488134,
+      "reduced_temporary_json_bytes": 488134,
+      "shared_arrays": 0,
+      "array_occurrences": 0,
+      "quoted_strings_checked": 57236,
+      "maximum_buffer_characters": 487422,
+      "standard_value_decodes": 22,
+      "hierarchy_mappings": 1,
+      "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+    }
+  ]
+}

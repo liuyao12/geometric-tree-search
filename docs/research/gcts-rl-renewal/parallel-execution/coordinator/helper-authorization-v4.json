@@ -1,0 +1,14 @@
+{
+  "status": "authorized_one_root_owned_loading_helper_phase",
+  "plan_sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+  "prerequisite_sha256": {
+    ".gcts-active/replay-and-primitive-execution-20261011/arithmetic-source-review-v4.json": "2a57f91c3923ae269fd75f2af56c92d383067ffda9ee2cf0c21dbb2c90857cec",
+    ".gcts-active/stochastic-replay-review-20261011/source-ready-review-v4.json": "d320a33de4c95dceb28ce3be011b6f44310dce0f490208d4558ac9d86541d9c3",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v4.json": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v4.json": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14"
+  },
+  "remaining_original_780_seconds_before_helpers": 610.412924208,
+  "scope": "Seven pure complete-value helpers only; full evaluation gated on all helpers plus exact activation; nosearch/training/native/capwidening",
+  "restart_authorized": false
+}

@@ -1,0 +1,92 @@
+{
+  "status": "passed_authored_synthetic_point_kernel_fixtures_pending_independent_gate",
+  "records": [
+    {
+      "name": "compatibility_population_count_exhaustive_8_bit_masks",
+      "status": "passed",
+      "masks": 256
+    },
+    {
+      "name": "exhaustive_tiny_raw_prototypes_formula_and_remote_port_states",
+      "status": "passed",
+      "states": 1216,
+      "accepted_placements_compared": 8496,
+      "includes_zero_absent_negative_exterior": true
+    },
+    {
+      "name": "lazy_full_decorated_identity_raw_reconstruction",
+      "status": "passed",
+      "candidates": 19
+    },
+    {
+      "name": "same_output_distinct_ordered_refs_and_recipe_witnesses",
+      "status": "passed"
+    },
+    {
+      "name": "equal_premise_repeated_ordered_ports_retained_distinct_premises_conflict",
+      "status": "passed"
+    },
+    {
+      "name": "global_distant_dead_before_local_forced",
+      "status": "passed"
+    },
+    {
+      "name": "global_forced_before_earlier_branch",
+      "status": "passed"
+    },
+    {
+      "name": "earliest_generation_before_degree_and_root_generation_not_visit_index",
+      "status": "passed"
+    },
+    {
+      "name": "distant_dependency_updates_and_exact_nested_rollback_with_mark_reference_counts_and_exclusions",
+      "status": "passed"
+    },
+    {
+      "name": "assigned_zero_is_not_absence_and_unused_ports_remain_absent",
+      "status": "passed"
+    },
+    {
+      "name": "shared_exact_identity_once_and_distinct_overcapacity_stale_authority_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "valid_ineligible_hint_cannot_bypass_scheduler_complete_base_fallback",
+      "status": "passed"
+    },
+    {
+      "name": "logical_invalid_but_mark_consistent_mp_boolean_values_and_noninjective_registry_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "synthetic_executor_failed_child_parent_exclusion_budget_unknown_and_exact_point_reconstruction",
+      "status": "passed",
+      "attempts": 5,
+      "backtracks": 1
+    },
+    {
+      "name": "invalid_advice_retired_and_complete_base_fallback_continues",
+      "status": "passed"
+    },
+    {
+      "name": "exhausted_finite_marked_fixture_is_not_unrestricted_theorem_nonprovability",
+      "status": "passed"
+    }
+  ],
+  "fixture_count": 16,
+  "states": 1216,
+  "compared_placements": 8496,
+  "seconds_before_write": 0.59575525,
+  "child_kernel_peak_rss_bytes_before_write": 17793024,
+  "actual_geometry_model_loaded": false,
+  "actual_geometry_graph_constructed": false,
+  "actual_geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "remaining": [
+    "independent synthetic kernel replay",
+    "actual full-model conformance gate",
+    "independent decoded whole logical certificates",
+    "native/compiler correspondence"
+  ]
+}

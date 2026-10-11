@@ -1,0 +1,15 @@
+{
+  "status": "unknown_or_failed_fixture_lifetime",
+  "plan_sha256": "b72ca3f9ccbc78b534cd27c4ec99c93e8ac9e39b619bab13dfff39ad271aeb89",
+  "pid": 4135,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "seconds_before_final_receipt_write": 0.578127,
+  "conservative_owner_plus_child_kernel_peak_bytes": 202964992,
+  "failure": null,
+  "stderr": "",
+  "memory_scope": "Post-exit conservative kernel peak gate; no hard OS memory cap or external RSS sampling claim.",
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "actual_trace_loads": 0
+}

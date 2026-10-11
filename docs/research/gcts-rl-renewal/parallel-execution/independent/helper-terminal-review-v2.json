@@ -1,0 +1,145 @@
+{
+  "status": "passed_terminal_v2_helpers_complete_value_byte_and_lifetime_review_ready_for_root_actual_eval_activation",
+  "phase_receipt_sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+  "helper_plan_sha256": "df1937d10d634a11ee9ddacf110a7e600e8976cf626c4adb11e86b793c304f11",
+  "evaluation_plan_sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+  "source_ready_review_sha256": "57d281b0399165ce2da6d132f0635d581f1f2ccf199ee9ad94a0f2d74607b417",
+  "read_only_scope": "Compressed inputs/current sources streaming hashed; small plans/receipts reconciled. No actual trace value decoding, helper rerun, graph replay, target search, training or native execution.",
+  "exact_current_source_and_input_pins": {
+    "sources": 37,
+    "inputs": 40
+  },
+  "owned_terminal_bindings": [
+    {
+      "job": "synthetic-controls",
+      "plan_sha256": "e096ef12429cb8f3b7f112310fb3b9cd7d1ee2fe0f4fb63f96cf243477a9c476",
+      "receipt_sha256": "69f276bf778c13780e9c0e49ee517dc83fa8e674cde19c3d90ab63e22c67f20d",
+      "lifetime_sha256": "16c450a7a89bc0245cf2418f7bbf9c7206534b1712337d7e8108b80f19ff5353",
+      "seconds": 0.22726004199999997,
+      "conservative_peak_bytes": 85590016,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-reference",
+      "plan_sha256": "3a77814f3ae3d6646e6764ce53dbeecbaad8c6f6b304f50bfbd99abb2a75856e",
+      "receipt_sha256": "ad5da6a0ed65fbc83f4bc7a3bf10fff7879bfac1d2e58730c5250c312e58cb1a",
+      "lifetime_sha256": "fb1b3d6515c01e320cc76e4589022bfb059fce36ff599bf3b30f0f9f4277f93b",
+      "seconds": 0.862257625,
+      "conservative_peak_bytes": 244678656,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-repaired",
+      "plan_sha256": "ce0c6497d8312b646f1caa9204f07dec9df2bbeb5573cfa8e78a4bf96a4a820f",
+      "receipt_sha256": "a6fdfb5005c70e9411d0e8bd25420b1190e66934f48057b12c9a68371a4dd14c",
+      "lifetime_sha256": "3ac8873770f3d62a0b8f1e67f062df0688cdc48d10ac445386afeec54dbe847d",
+      "seconds": 2.865942583,
+      "conservative_peak_bytes": 83116032,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-01-reference",
+      "plan_sha256": "68170a515062950a867e6f996b1ec191f7ed0053537f46740cdb0ed96c3adeea",
+      "receipt_sha256": "2a1df6e81c32f163e5ced419731a36d27cce77166f74b0724f2da762458f2002",
+      "lifetime_sha256": "8cda5cf1b792a5cd071f038534b199815d6916206c95105b4037fe0b35c0f57f",
+      "seconds": 0.8746543330000005,
+      "conservative_peak_bytes": 244957184,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-01-repaired",
+      "plan_sha256": "15ef6a032294f90561ac3ceab2a0e864739aa48409a4b85866124ffe9a83f7c1",
+      "receipt_sha256": "c4e630e6050a13548a863cecbd03cea69e327c328f250a3f4bc900dcaa46593f",
+      "lifetime_sha256": "3ba1e18c942ef35b86a37c46f468c202a6a83f30cd7ed3b11ee37e7805a11520",
+      "seconds": 2.903602791999999,
+      "conservative_peak_bytes": 83607552,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-08-reference",
+      "plan_sha256": "0d42e24498f30c64b047b6978bbcb82489e06051328215bf2d4cb9b2842ae08f",
+      "receipt_sha256": "d995f2ce0387574cffd4d2f42df8e70600bb42742ea1367d0ffd301fe0d250e3",
+      "lifetime_sha256": "42d63d5d4b92a1ec97ee5c6b685d7167804d975f5d40f84e1890fb57268a492f",
+      "seconds": 0.8759735419999997,
+      "conservative_peak_bytes": 247103488,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "train-08-repaired",
+      "plan_sha256": "183f7090d474e796386d72768446e1c5ac37b61c6e2e4924dc24eaf90be6bf4e",
+      "receipt_sha256": "da9e7d809a8580be9a432db6bcd6359c633c06f3b8bea0243fec67babcdbef96",
+      "lifetime_sha256": "99813cde9df41e9b79eb1807da06a1b7dd226fd01ee768db6228090109213329",
+      "seconds": 2.939300833999999,
+      "conservative_peak_bytes": 85590016,
+      "terminal_and_reaped": true
+    }
+  ],
+  "full_original_reference_repaired_pairs": [
+    {
+      "jobs": [
+        "effect-pilot-reference",
+        "effect-pilot-repaired"
+      ],
+      "original_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+      "all_bytes": 16922271,
+      "node_count": 501,
+      "event_count": 41,
+      "largest_emitted_chunk_bytes": 592815,
+      "both_complete_byte_checks": true
+    },
+    {
+      "jobs": [
+        "train-01-reference",
+        "train-01-repaired"
+      ],
+      "original_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+      "all_bytes": 17013409,
+      "node_count": 501,
+      "event_count": 51,
+      "largest_emitted_chunk_bytes": 693155,
+      "both_complete_byte_checks": true
+    },
+    {
+      "jobs": [
+        "train-08-reference",
+        "train-08-repaired"
+      ],
+      "original_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+      "all_bytes": 17286616,
+      "node_count": 501,
+      "event_count": 62,
+      "largest_emitted_chunk_bytes": 966196,
+      "both_complete_byte_checks": true
+    }
+  ],
+  "synthetic_controls": {
+    "complete_values": 6,
+    "complete_byte_gates": 6,
+    "parser_scope_rejections": 9,
+    "assigned_zero_mutants": 1,
+    "lexical_noncompact_rejections": 3,
+    "midmapping_hierarchy_keys": true
+  },
+  "prerequisites": {
+    "all_seven_helpers_passed": true,
+    "every_reference_repaired_full_byte_pair_matched": true,
+    "all_owned_lifetimes_passed_reaped": true,
+    "root_actual_eval_activation": "May be authored by root now with exact plan and helper receipt hashes; not created by reviewer.",
+    "all_six_actual_replays": "Still pending complete original-byte gate and unchanged independent graph/RNG/feature/hint/rollback checks, with 115 s internal /120 s lifecycle /512 MiB owned gates."
+  },
+  "costs": {
+    "retained_historical_seconds": 63.040097334,
+    "v2_helper_seconds_before_receipt_write": 11.562686832999999,
+    "cumulative_audit_seconds": 74.602784167,
+    "remaining_original_780_seconds": 705.397215833,
+    "peak_conservative_bytes": 247136256,
+    "source_authoring_and_final_receipt_write": "Outside phase clock and must remain separately disclosed."
+  },
+  "limitations": [
+    "Full byte-pair agreement is loading equivalence, not new graph replay or theorem/native proof acceptance.",
+    "Fingerprints are complete original compact bytes, not sorted canonical JSON; protocol explicitly records that distinction.",
+    "Direct-child wait4/kernel receipts are reconciled read-only; no live process or security activation claim.",
+    "All old resource UNKNOWN receipts remain immutable and charged."
+  ],
+  "review_reconciliation_seconds": 0.076035334
+}

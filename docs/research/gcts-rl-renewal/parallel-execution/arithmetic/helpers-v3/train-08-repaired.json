@@ -1,0 +1,56 @@
+{
+  "status": "passed_complete_loading_value_helper",
+  "job": "train-08-repaired",
+  "mode": "repaired",
+  "plan_sha256": "79d303f5c4646cbd32d7b7a33e4bf91ee4ed115267775cc7c85af37acd68b31d",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 0.33037174999999985,
+    "bytes": 17286616,
+    "chunks": 6129,
+    "largest_emitted_chunk_bytes": 966196,
+    "original_uncompressed_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+    "emitted_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+    "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+  },
+  "canonical": {
+    "sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+    "bytes": 17286616,
+    "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+  },
+  "observation": {
+    "id": "train-08",
+    "phase": "training",
+    "mode": "training",
+    "episode": 8,
+    "seed": 17008,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 30
+  },
+  "nodes": 501,
+  "events": 62,
+  "weights_sha256": "20d8e314e2b484e038b909ac8a0b840f02f166cff7bbc3d624953ce008cecbbf",
+  "seconds_before_receipt_write": 3.375751834,
+  "kernel_peak_rss_bytes": 45334528,
+  "loading": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-search.json.gz",
+      "kind": "complete_hierarchy_streamed_standard_JSON_with_four_integer_array_sharing",
+      "seconds": 3.0438442909999996,
+      "original_uncompressed_bytes": 17286616,
+      "reduced_temporary_json_bytes": 12977489,
+      "shared_arrays": 19848,
+      "array_occurrences": 1356463,
+      "quoted_strings_checked": 58101,
+      "maximum_buffer_characters": 850310,
+      "standard_value_decodes": 11203,
+      "hierarchy_mappings": 1003,
+      "scope": "All root/search/tree/children keys and ordinary field values preserved in insertion order. Ordinary values parsed once by standard JSONDecoder; duplicate keys retain Python last-wins semantics. Complete frozen actual bytes separately checked with unchanged v2 gate. Maximum ordinary field buffer32Mi characters, unresolved if exceeded; no strict universal JSON parser claim."
+    }
+  ]
+}

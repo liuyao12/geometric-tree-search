@@ -1,0 +1,191 @@
+{
+  "status": "passed_bounded_loader_scope_and_equivalence_fixtures",
+  "plan_sha256": "b72ca3f9ccbc78b534cd27c4ec99c93e8ac9e39b619bab13dfff39ad271aeb89",
+  "fixtures": [
+    {
+      "name": "nested_ordered_repeated_quads",
+      "observed": "exact_json_value",
+      "canonical_sha256": "77ea315361028edc5af99ff0ecc728bddff3b4b5d6437185fdf75996711f763a",
+      "raw_sha256": "128e8b6c013c6bc3ca3e8c8adb1b1d616ea722af58feb04465a996748966505d",
+      "raw_bytes": 79
+    },
+    {
+      "name": "signs_big_integers_and_nonquad_arrays",
+      "observed": "exact_json_value",
+      "canonical_sha256": "38669106de0615f4901a9d75da03e24910fa137246cf22f16789997ab8ac6d86",
+      "raw_sha256": "1a2ef8c6c6772dbd33fac092b135a15bd5bfd314f32b6b0bf6f7090828fbdec1",
+      "raw_bytes": 158
+    },
+    {
+      "name": "bool_float_null_scalars_not_integer_keys",
+      "observed": "exact_json_value",
+      "canonical_sha256": "1ebafcdb7e63e03fdb2c72f28eaa68d5b4ddc1751b0cc4669c412800c5128668",
+      "raw_sha256": "b95dc9e137be09041f38f6be2901437d05717d4e546e1963d90f8a21c781c35b",
+      "raw_bytes": 88
+    },
+    {
+      "name": "quoted_numeric_text_escaped_quotes_backslashes_unicode",
+      "observed": "exact_json_value",
+      "canonical_sha256": "c8599df9209251b5a2811d301514287cc4ff7574282bfa5bc09f9db0f30cc848",
+      "raw_sha256": "2e5da0c896cdb5c53768dc2618fa4b618036c74e8332d0859ab3a3d36291eb50",
+      "raw_bytes": 78
+    },
+    {
+      "name": "integer_negative_zero_same_json_value",
+      "observed": "exact_json_value",
+      "canonical_sha256": "7891331d8bcfe9908d40bf0d35d093991a432f996218cebe99e0579c68f62c88",
+      "raw_sha256": "bd8218df443a4515cabf6407c5a68020c009b6d2052281567f6e8caaa78c7a23",
+      "raw_bytes": 16
+    },
+    {
+      "name": "chunk_boundary_65499",
+      "observed": "exact_json_value",
+      "canonical_sha256": "ed42f274b0a726891d72a9521252f8fdf0ca2a7bfc0e6f9e0cbe7be90054504f",
+      "raw_sha256": "131bcec1c4c2f4ce2541ba4363be09d9bac2c903ffad88b577ac3482f3bddc7a",
+      "raw_bytes": 65577
+    },
+    {
+      "name": "chunk_boundary_65509",
+      "observed": "exact_json_value",
+      "canonical_sha256": "cf78e2051aca7bf26d23c7e93bd15449a4eac331662dcdd9a6d64c6ce5816fda",
+      "raw_sha256": "190ccfa0505e0881316470f6a1d7b8f4bc532950040d73daa91b229c1bf463bd",
+      "raw_bytes": 65587
+    },
+    {
+      "name": "chunk_boundary_65519",
+      "observed": "exact_json_value",
+      "canonical_sha256": "994785d6a1d371d7fcf55d6f8ee9e371d9625da8f87b00fbfb979d573985e4f8",
+      "raw_sha256": "b6912c6ec571fd09a2a240347f5021d0c70d7854a06808596ecbab760c19cece",
+      "raw_bytes": 65597
+    },
+    {
+      "name": "chunk_boundary_65529",
+      "observed": "exact_json_value",
+      "canonical_sha256": "53aa67dd95c5a47761b406e66638ff5218917f449c4a8bd375d1774b29e739b7",
+      "raw_sha256": "5748148cbb00ace450a7e8b8d01646709641dec02391714ae69941455ff7dd14",
+      "raw_bytes": 65607
+    },
+    {
+      "name": "chunk_boundary_65535",
+      "observed": "exact_json_value",
+      "canonical_sha256": "b0a59bf89ba9e46ad94685d77096872f54e6b800e7484055367a3d1e40dce343",
+      "raw_sha256": "c8b109c65570716d0f6cf5df294931572610258d1a40699d8a4ec6ce51a2b57f",
+      "raw_bytes": 65613
+    },
+    {
+      "name": "chunk_boundary_65536",
+      "observed": "exact_json_value",
+      "canonical_sha256": "53e0058d39efcaf3515433ab660b4c5a172e0f3e410cea02acf7efde6561b7a5",
+      "raw_sha256": "5f8161c398bc43c199a36c88712c9497a708930c1a2164081de05da5c93f4061",
+      "raw_bytes": 65614
+    },
+    {
+      "name": "chunk_boundary_65537",
+      "observed": "exact_json_value",
+      "canonical_sha256": "e55178ba294eb10a022a0555969db3a3dcad40a54c3a90a438183a30d9e23d64",
+      "raw_sha256": "d2b6d8afa61971024b6cd85fdd49bafad1e747ef32738246a765b2c672b053cc",
+      "raw_bytes": 65615
+    },
+    {
+      "name": "chunk_boundary_65545",
+      "observed": "exact_json_value",
+      "canonical_sha256": "f0e3862000922f9301ac1cd5cbe8ed875df068fb8055dbd7011bbc9d6b8563bc",
+      "raw_sha256": "8066526f2469d7f52a690744d8277c899dece9d3e7931c1114855c1fa2298a3d",
+      "raw_bytes": 65623
+    },
+    {
+      "name": "reserved_value_literal",
+      "observed": "rejected",
+      "reason": "reserved interning string collision",
+      "raw_sha256": "0603bb04e5ff9eb03ccd5d1aede88de68323aa98ebdea826207db2a13ae200ea",
+      "raw_bytes": 10
+    },
+    {
+      "name": "reserved_value_escaped",
+      "observed": "rejected",
+      "reason": "reserved interning string collision",
+      "raw_sha256": "6d46699da1a1ba5b671ab3bfa90fbf5600d7d02c0b5dc0c118e3a1c108546ef6",
+      "raw_bytes": 15
+    },
+    {
+      "name": "reserved_key_literal",
+      "observed": "rejected",
+      "reason": "reserved interning string collision",
+      "raw_sha256": "e1590d629a3b4951e925ef68d4ba71b8049dddf4c069179e24551c19a4f8aff4",
+      "raw_bytes": 16
+    },
+    {
+      "name": "reserved_key_escaped",
+      "observed": "rejected",
+      "reason": "reserved interning string collision",
+      "raw_sha256": "57ef99c46d43476e9db73b29304105d4acd21b431c0ecb598714673b1121768e",
+      "raw_bytes": 21
+    },
+    {
+      "name": "malformed_missing_comma",
+      "observed": "rejected",
+      "reason": "Expecting ',' delimiter: line 1 column 9 (char 8)",
+      "raw_sha256": "55d5a9882c51e72f18e1ef2d9a95a89ddd80009b5a87f7ed0600fb8ef65aee66",
+      "raw_bytes": 15
+    },
+    {
+      "name": "malformed_unterminated_string",
+      "observed": "rejected",
+      "reason": "Unterminated string starting at: line 1 column 6 (char 5)",
+      "raw_sha256": "e63287931f8274fd8388b8fa4e187544427517f07b60b5120aa1f151d7268f66",
+      "raw_bytes": 15
+    },
+    {
+      "name": "top_level_quad_not_restored",
+      "observed": "documented_top_level_mismatch",
+      "value": "#0",
+      "raw_sha256": "f6bd10506e9a4daed7c03eda2f2fde54be3bd58eee49dab471c18a888ffbdb6f",
+      "raw_bytes": 9
+    },
+    {
+      "name": "top_level_array_not_fully_restored",
+      "observed": "documented_top_level_mismatch",
+      "value": [
+        "#0",
+        {
+          "b": [
+            5,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "raw_sha256": "ae05457a17fc94838e9596f6e79c7a5378481ca416b1b82e05f0888523ebffbe",
+      "raw_bytes": 27
+    },
+    {
+      "name": "invalid_leading_zero_rewrite_is_not_strict_json",
+      "observed": "documented_invalid_json_admission",
+      "value": {
+        "a": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "raw_sha256": "0e1babc836a55ffa5bfe328ee75d3298689cd27e6306fce9096b13e32b622973",
+      "raw_bytes": 16
+    },
+    {
+      "name": "valid_large_unmatched_prefix_fails_closed",
+      "observed": "resource_unknown",
+      "reason": "unknown_decoder_long_token_resource_budget",
+      "raw_sha256": "7f1f929c3839e75ffee66a190d54379a4debf52c7a1ab393f15feb9dedd31547",
+      "raw_bytes": 2162695
+    }
+  ],
+  "fixture_count": 23,
+  "seconds_before_receipt_write": 0.543650792,
+  "kernel_peak_bytes": 188137472,
+  "new_searches": 0,
+  "new_native_queries": 0,
+  "actual_trace_loads": 0,
+  "scope": "Normalized JSON-array value equivalence on declared valid top-level objects; explicit unsupported top-level and strict-JSON cases remain limitations, not successes of a general parser."
+}

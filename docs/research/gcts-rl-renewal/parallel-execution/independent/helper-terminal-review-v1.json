@@ -1,0 +1,105 @@
+{
+  "status": "passed_read_only_terminal_helper_reconciliation_phase_unknown_full_eval_not_ready",
+  "review_scope": "Read-only source/plan/receipt/hash reconciliation. No helper, trace-value load, graph replay, search, training, solver or native execution. All original inputs compressed-byte hashed only.",
+  "phase_plan_sha256": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+  "phase_receipt_sha256": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+  "source_and_input_pins": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v1.py": "3df94d87bb94f60faaa07ccd29050c7c1a4ce131955c4f3bc8ee4593bb14e2d2",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v1.py": "a7ee07cf3e35db892079bbfaa021f2f10096635786eef73203413cb19ce7374f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v1.py": "1bca2d5a7dbeaedb10515ec2ee500ece6104db9ba46b8d841cb7101c4cb037b9",
+    "docs/basic-tiling-algorithm.md": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-search.json.gz": "38deda367bd1d7a7361d630749f881bac4a1e18a7a29f9fe1b866826ea8cd59e",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz": "8d4a43c6b432624bcf8d5798e0e3e83d9792fee2b131b1830b016eb3a27d8a97",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-search.json.gz": "684c2bde9ff7f661049a2094e09bf72377c0060708a585aa3972e43f9667b962"
+  },
+  "checked_owned_worker_receipts": [
+    {
+      "job": "synthetic-controls",
+      "plan_sha256": "73121b5e08280cfd8319d73eb7df7b95d78f87092af26e1a6e54c4cb9b22daca",
+      "receipt_sha256": "0bf43bf80eeed856fee3909a488fe66b86f8ec829c7f36700da57334e349ead6",
+      "lifetime_sha256": "c52cd0bfbc3ce10826100cfae754fe06b249145d60effced72ec8ac751419215",
+      "status": "passed_complete_loading_value_helper",
+      "lifetime_status": "passed_owned_loading_worker_lifetime",
+      "seconds": 0.292662541,
+      "conservative_peak_bytes": 86016000,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-reference",
+      "plan_sha256": "1fc871fe88effb270a73475dcf11493f6481afe0279bb2437189fbf1d893f5c5",
+      "receipt_sha256": "fe1a011f1a8c4c9c375562d08a58a066d62641ef28d1e1b7d5341e7f763fd97b",
+      "lifetime_sha256": "5a20a5b19286bfa0e6412e0f9167be7f823b86da489aa90da0d27c61db6c378d",
+      "status": "passed_complete_loading_value_helper",
+      "lifetime_status": "passed_owned_loading_worker_lifetime",
+      "seconds": 19.52282225,
+      "conservative_peak_bytes": 243433472,
+      "terminal_and_reaped": true
+    },
+    {
+      "job": "effect-pilot-repaired",
+      "plan_sha256": "edcce57d7eed87e6434f2722e8cce26482241233711483c652a8fc2eb6408b85",
+      "receipt_sha256": "d02cb8d8978217b04ad4c7f30f17ecfec02f844da7ff9d206d324ce617f3f4b9",
+      "lifetime_sha256": "92e80f8195316dc4352eb97789a87b398ef92b7f6c389a61992a526cd4915981",
+      "status": "unknown_loading_value_helper_resource_budget",
+      "lifetime_status": "unknown_or_failed_owned_loading_worker_lifetime",
+      "seconds": 25.101868084000003,
+      "conservative_peak_bytes": 76169216,
+      "terminal_and_reaped": true
+    }
+  ],
+  "controls": {
+    "positive_full_values": 5,
+    "compact_byte_checks": 5,
+    "scope_parser_rejections": 9,
+    "assigned_zero_mutations": 1,
+    "lexical_noncompact_rejections": 3
+  },
+  "actual_pilot": {
+    "reference_full_canonical": {
+      "sha256": "77e219453bffabeb2401f87b04d6287c82721e0b421a172d7ebb3ba100ee4af5",
+      "bytes": 16922271
+    },
+    "repaired_complete_original_byte_gate": {
+      "status": "passed_complete_original_compact_json_byte_correspondence",
+      "seconds": 19.34195275,
+      "bytes": 16922271,
+      "chunks": 259,
+      "original_uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+      "emitted_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+      "scope": "Every frozen original UTF-8 byte compared with full insertion-order JSONEncoder.iterencode(decoded value), tuple/list arrays normalized by JSON. No omitted key, field, node, event or census; no whole original inflation or whole reserialization."
+    },
+    "canonical_pair_complete": false,
+    "failure": "Repaired helper completed byte equality, then timed out during second sorted-key full canonical digest before observation metadata was written. Full helper status remains UNKNOWN.",
+    "graph_replay": false
+  },
+  "unexecuted_helpers": [
+    "train-01-reference",
+    "train-01-repaired",
+    "train-08-reference",
+    "train-08-repaired"
+  ],
+  "costs": {
+    "historical_failed_eval_seconds": 18.112109042,
+    "helper_phase_seconds_before_final_receipt_write": 44.927988292,
+    "cumulative_audit_seconds": 63.040097334,
+    "remaining_original_780_seconds_after_measured_phases": 716.959902666,
+    "peak_conservative_bytes": 243433472,
+    "scope": "Phase excludes final phase receipt write/source authoring, per frozen owner clock. Reviewer source-reading/authoring unmeasured; this hash/receipt reconciliation clock recorded separately."
+  },
+  "full_evaluation_prerequisites": {
+    "passed_helper_phase": false,
+    "all_three_full_reference_repaired_pairs": false,
+    "source_specific_synthetic_controls": true,
+    "root_hash_bound_activation": false,
+    "disposition": "Do not activate existing evaluation owner using this unknown helper receipt. Any recovery needs a separate prospective frozen amendment, preserved unknown receipt and charged costs, and root review.",
+    "exact_all_six_original_trace_byte_checks": "Still required within each actual replay worker before unchanged graph/math replay."
+  },
+  "scope_limits": [
+    "A successful decoded-value byte comparison is not a graph replay or proof acceptance.",
+    "No general adversarial JSON parser claim; compressed object-root/reserved-prefix scope is explicit.",
+    "Sole wait4 direct-child lifetime receipts are reconciled, not independently live-observed.",
+    "No direct worker CLI security/activation claim."
+  ],
+  "review_seconds": 0.00983525
+}

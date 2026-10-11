@@ -1,0 +1,60 @@
+{
+  "status": "read_only_root_report_geometry_projection_review",
+  "source_path": ".gcts-active/replay-and-primitive-execution-20261011/prepare_report.py",
+  "source_sha256": "30723e5fe5ae72b8cdb1686ef16d34320c69e42463befad4087256915139120f",
+  "source_bytes": 27022,
+  "immutable_snapshot": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/root-report-reviewed-snapshot-v1.py",
+    "sha256": "30723e5fe5ae72b8cdb1686ef16d34320c69e42463befad4087256915139120f",
+    "bytes": 27022
+  },
+  "reviewed_scope": [
+    "geometry receipt projection",
+    "LaTeX helper and formula descriptions",
+    "marking colors and actual prefix sources",
+    "claim scope and resource accounting"
+  ],
+  "findings": [
+    {
+      "kind": "scope",
+      "location": "geometry_summary",
+      "finding": "Specify 14 controlled complete-domain states, not all reachable full-model states."
+    },
+    {
+      "kind": "scope",
+      "location": "geometry paragraph after state table",
+      "finding": "Separate actual prefix branch-decision/rollback tests from synthetic global-dead/forced/generation adversarial controls. Actual prefix has eight branches and zero forced placements."
+    },
+    {
+      "kind": "mathematical_signature",
+      "location": "geometry introduction",
+      "finding": "State guarded Hilbert incidence fragment, not full Hilbert Euclidean geometry. Remote source formula marks are also required.",
+      "suggested_latex": "For ordered sources \\(s_j<r\\), assign the expected formula at \\(m(1,s_j)\\) and offset \\(m(2+j,r)=s_j-r\\), \\(j\\in\\{0,1\\}\\)."
+    },
+    {
+      "kind": "visual",
+      "location": "prefix marking projection",
+      "finding": "All eight prefix placements are I.2 axioms with no ordered sources; there are no purple tags. Say this explicitly, or show the distant MP catalog transaction as a separate control, not a scheduler step."
+    },
+    {
+      "kind": "cost",
+      "location": "geometry section",
+      "finding": "Show 41.57678125-second full owned conformance lifetime/186171392-byte conservative peak, plus retained runtime compatibility unknown 0.520595542 seconds. These are verification/probe costs, not proof-search speed."
+    }
+  ],
+  "positive": [
+    "math() wraps LaTeX delimiters in a raw string and HTML escapes content.",
+    "Recipe/formula codes are read from the exact stored model.",
+    "Authored24 witness is explicitly separated from search discovery.",
+    "Fixed preference lifecycle gap and native/compiler gaps are visible."
+  ],
+  "not_executed": [
+    "root generator",
+    "any search",
+    "any native query",
+    "any checker rerun"
+  ],
+  "root_source_mutation": false,
+  "independent_full_graph_acceptance": "pending separate gate, not granted by this prose review",
+  "review_seconds_before_receipt_write": 0.0003805410000000016
+}

@@ -1,0 +1,29 @@
+{
+  "status": "passed_owned_independent_full_model_audit_lifetime",
+  "plan_sha256": "794b4cb1c471416530e56b4cf64198e8b6f1bdc8ff207ac1959c65682d59cf7c",
+  "result_pin": {
+    "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+    "bytes": 1421897
+  },
+  "child_pid": 12476,
+  "child_exit_code": 0,
+  "owned_child_terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_and_owner_seconds_before_receipt_write": 45.5896245,
+  "fresh_child_kernel_peak_bytes": 106315776,
+  "owner_kernel_peak_bytes": 17547264,
+  "conservative_combined_peak_bytes": 123863040,
+  "whole_ceiling_seconds": 180,
+  "peak_ceiling_bytes": 536870912,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "enforcement": "Sole direct-child wait4 owner, internal alarm and owned external wall kill/reap; conservative final fresh child plus owner kernel peaks. No hard OS memory limit or live RSS sampler claim.",
+  "clock_scope": "From owner entry through exact pin hashing, worker complete receipt serialization/exit, own terminal reconciliation. Own final lifetime receipt write excluded; source authoring unmeasured.",
+  "producer_phase_separately_charged": true,
+  "prior_unknowns_preserved": true,
+  "target_searches": 0,
+  "native_queries": 0,
+  "training_episodes": 0,
+  "compiler_activations": 0,
+  "cluster_lifecycle": "open; fixed preference-set gap remains"
+}

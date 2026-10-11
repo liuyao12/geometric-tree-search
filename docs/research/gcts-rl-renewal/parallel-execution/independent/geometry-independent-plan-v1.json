@@ -1,0 +1,39 @@
+{
+  "status": "frozen_before_one_independent_pure_synthetic_kernel_fixture_run",
+  "root_authorization": "Explicit root message: separate frozen independent pure v2 kernel fixture gate 30 s whole/512 MiB; no production model/target search/native; fixed-preference gap retained.",
+  "pins": {
+    ".gcts-active/stochastic-replay-review-20261011/geometry_independent_fixtures_v1.py": "27992f52c53a3a46f546abb77dfaa2c5712fae8dab856cd4b5984474e3e48ead",
+    ".gcts-active/stochastic-replay-review-20261011/geometry_independent_owner_v1.py": "b68c603be9fb5a3b595d033d954c25e070df5e4488ab555316e511f26407d670",
+    ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+    ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+    ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+    "docs/basic-tiling-algorithm.md": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "whole_seconds": 30,
+  "internal_seconds": 25,
+  "peak_bytes": 536870912,
+  "runs": 1,
+  "prospective_states": 1216,
+  "prospective_full_identity_checks": 19,
+  "comparison": "Independent raw recipe-offset enumeration, no use of core point_data/factors/legality/iteration to construct or accept direct candidate records; compare all implicit keys, counts, exact t/m and reconstruct full decorated identities separately.",
+  "controls": [
+    "all absent/assigned-zero/formula and distant port states",
+    "ordered equal source ports vs unequal formula conflict",
+    "same formula distinct full witnesses",
+    "global dead/forced/generation order",
+    "incremental distant update and nested rollback",
+    "parent-local failed-child exclusion restoration",
+    "boolean exact integer rejections",
+    "mark-consistent literal invalid MP rejection",
+    "budget unknown state restoration",
+    "one manually selected scheduler-valid base move invalidates full cluster while surviving preference remains"
+  ],
+  "scope": "Pure synthetic nonlogical language, 3 rows, 6 recipes and 3 formula values. Actual 24-row model is never read; no geometry target search or native execution. Metadata/source pins only; no import of producer fixtures.",
+  "known_gap": "Executor v2 has fixed immutable preference-set behavior; full cluster continuation lifecycle remains open. Direct counterexample is evidence of gap, not repaired conformance.",
+  "costs": "Preparation clock measured below; source authoring/reading uninstrumented. Independent phase distinct from owner-authored v1/v2 fixture costs, which remain separately charged. Own final lifetime receipt write excluded and disclosed; full child receipt and lifecycle included.",
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]"
+  },
+  "preparation_seconds_before_write": 0.006707417000000004
+}

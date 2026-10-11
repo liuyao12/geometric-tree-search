@@ -1,0 +1,29 @@
+{
+  "status": "prospective_conformance_scope_correction_no_source_mutation",
+  "bindings": {
+    "plan_v2_sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+    "kernel_source": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    }
+  },
+  "implemented_scope": "Complete implicit primitive row-domain counts/iteration, exact marking and rollback, global scheduler, full base fallback and fixed immutable preference-set control; synthetic and full-model evidence must be reported separately.",
+  "cluster_continuation_gap": {
+    "observation": "Executor.solve validates the full supplied cluster only once. Later candidates_with_preferences filters individually illegal members while remaining members can retain preference. It does not retire an invalid whole pending cluster or trail a mutable hint lifecycle.",
+    "claim_not_made": "Full GCTS cluster-continuation conformance is not established by v1/v2.",
+    "required_future_version": [
+      "Revalidate the entire pending cluster against each node/state after global propagation.",
+      "Retire all preferences for a cluster if any pending constituent invalidates it.",
+      "Keep valid but currently ineligible hints waiting without bypassing forced/earliest decisions.",
+      "Trail waiting/retired hint state per branch; rollback restores prior hint state.",
+      "Keep complete base counts and fallback unchanged, and independently test interruption/invalidation/revival."
+    ]
+  },
+  "root_review_origin": "Root read-only source review before the v2 retry.",
+  "actual_geometry_model_executions": 0,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "v1_v2_sources_and_plans": "unchanged; this is a separately bound scope note"
+}

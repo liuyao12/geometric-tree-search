@@ -1,0 +1,16 @@
+{
+  "status": "full_language_conformance_sources_inputs_budget_frozen_before_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+    "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+    "bytes": 119923
+  },
+  "sources": 5,
+  "inputs": 17,
+  "preserved_entries": 473,
+  "syntax": "ast.parse only, no model/graph imported",
+  "actual_model_executions": 0,
+  "native_queries": 0,
+  "target_searches": 0,
+  "freeze_seconds_before_receipt_write": 0.361284291
+}
