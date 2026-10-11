@@ -1,0 +1,21 @@
+{
+  "status": "root_source_reviewed_effect_only",
+  "plan_sha256": "635079ab4e08c373f329b4c3201ca1e9279097a911973fe6a83711ba93b43a5d",
+  "active_sources": [
+    "research/gcts-rl-renewal/arithmetic_stochastic_features_v2.py",
+    "research/gcts-rl-renewal/arithmetic_stochastic_search_v2.py",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_v2.py",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_v2.py"
+  ],
+  "findings_resolved": [
+    "Source and command attachment tokens distinguish old903 aliased pairs; root independently reconstructed saved13 vectors.",
+    "Correct epsilon-mixture score gradient and advantage-before-norm clipping.",
+    "Global dead/forced/generation, inherited waiting hints, full base fallback/copy rollback preserved.",
+    "Single-execution guards and exact prerequisite digest gates implemented; model language unchanged."
+  ],
+  "open": [
+    "Actual effect pilot full tree/RNG/graph replay required before training.",
+    "No learned failure markings, no primitive square Wang occupancy or theorem generalization demonstrated."
+  ],
+  "authorized": "One prospective seed16001 effect pilot only, actual training/evaluation gated separately."
+}

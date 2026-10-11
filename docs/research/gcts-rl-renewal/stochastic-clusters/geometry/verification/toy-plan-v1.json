@@ -1,0 +1,69 @@
+{
+  "version": "independent-hilbert-aggregate-toy-gate-v1",
+  "scope": "bounded_toy_fixtures_only_no_real_design_validation",
+  "pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+      "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+      "bytes": 4217
+    }
+  ],
+  "fixture_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+  "limits": {
+    "wall_seconds": 30,
+    "peak_rss_bytes": 134217728
+  },
+  "enforcement": {
+    "time": "Python SIGALRM plus elapsed gate",
+    "memory": "final kernel ru_maxrss gate; no OS hard-memory enforcement claim"
+  },
+  "allowed_actions": [
+    "standard-library symbolic/point functions on the pinned tiny authored fixtures only"
+  ],
+  "forbidden_actions": [
+    "real 24-row or full-171 validation before root prospective gate review",
+    "native queries/replays",
+    "search",
+    "solver",
+    "engine/producer imports or execution",
+    "HTML or publication mutation"
+  ],
+  "predeclared_controls": [
+    "valid strict-prior ordered MP and point union",
+    "same-formula distinct seed and MP identity",
+    "point-consistent invalid MP",
+    "repeated ordered block premise multiplicity",
+    "literal DAG expansion and zero-occupancy assumption aliases",
+    "closed-term instantiation and exact result",
+    "binder shadowing and capture rejection",
+    "ordered receptor reference projection",
+    "strict prior reference",
+    "distinct shared union versus naive overcount",
+    "label-based and formula-only false sharing",
+    "absent versus assigned zero and exterior conflict",
+    "formula registry injectivity",
+    "exact named axiom",
+    "unsupported constructor",
+    "predicate arity",
+    "bool function arity",
+    "bool assigned marking",
+    "bool fixed marking/required coordinate",
+    "bool port formula code",
+    "cyclic/forward block declaration"
+  ],
+  "preparation_seconds_before_plan_write": 0.0005562500000000012,
+  "authoring_preparation": "unmeasured; not zero",
+  "start_command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+    "--toy-plan",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+    "--output",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json"
+  ]
+}

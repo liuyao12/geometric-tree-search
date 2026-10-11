@@ -1,0 +1,316 @@
+{
+  "theory": {
+    "functions": {
+      "P": 0,
+      "Q": 0,
+      "l": 0
+    },
+    "predicates": {
+      "Point": 1,
+      "Line": 1
+    },
+    "axioms": {
+      "toy-universal": [
+        "all",
+        "x",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ]
+    },
+    "schemas": []
+  },
+  "ordered_context": [
+    [
+      "pred",
+      "Point",
+      [
+        [
+          "fun",
+          "P",
+          []
+        ]
+      ]
+    ],
+    [
+      "pred",
+      "Point",
+      [
+        [
+          "fun",
+          "P",
+          []
+        ]
+      ]
+    ],
+    [
+      "imp",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ],
+      [
+        "pred",
+        "Line",
+        [
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    ]
+  ],
+  "commands": [
+    {
+      "rule": "assumption",
+      "index": 0,
+      "formula": [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "rule": "assumption",
+      "index": 1,
+      "formula": [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "rule": "assumption",
+      "index": 2,
+      "formula": [
+        "imp",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Line",
+          [
+            [
+              "fun",
+              "l",
+              []
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "rule": "mp",
+      "antecedent": 0,
+      "implication": 2,
+      "formula": [
+        "pred",
+        "Line",
+        [
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "rule": "mp",
+      "antecedent": 1,
+      "implication": 2,
+      "formula": [
+        "pred",
+        "Line",
+        [
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    }
+  ],
+  "formulas": [
+    [
+      "pred",
+      "Point",
+      [
+        [
+          "fun",
+          "P",
+          []
+        ]
+      ]
+    ],
+    [
+      "imp",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ],
+      [
+        "pred",
+        "Line",
+        [
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    ],
+    [
+      "pred",
+      "Line",
+      [
+        [
+          "fun",
+          "l",
+          []
+        ]
+      ]
+    ],
+    [
+      "pred",
+      "Point",
+      [
+        [
+          "fun",
+          "Q",
+          []
+        ]
+      ]
+    ],
+    [
+      "all",
+      "x",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "repeated_interface": {
+    "name": "repeated",
+    "premises": [
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ],
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ]
+    ],
+    "conclusion": [
+      "pred",
+      "Point",
+      [
+        [
+          "fun",
+          "P",
+          []
+        ]
+      ]
+    ],
+    "proof": [
+      {
+        "rule": "assumption",
+        "index": 0,
+        "formula": [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ]
+      },
+      {
+        "rule": "assumption",
+        "index": 1,
+        "formula": [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "status": "immutable_independent_static_audit_delivery",
+  "scope": "Private audit/source/evidence only, root owns integration and publication",
+  "files": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+      "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/freeze_full_audit_v2.py",
+      "sha256": "555591f354695c3e7bdcb82f584e479b50d9f0213eed2d988303686e70fc4f93",
+      "bytes": 7054
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+      "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+      "bytes": 113027
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_lifetime_v2.py",
+      "sha256": "a6a6b97c98af0e5b1048e34072ce4610fa836679f897072e299476088bcab48a",
+      "bytes": 5931
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/prospective-gate-v1.json",
+      "sha256": "1669479e168bc7b742c3749314a53c8c999e0c3c6d5ecc23dc7f129919a596f3",
+      "bytes": 6435
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+      "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+      "bytes": 4217
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+      "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+      "bytes": 3046
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json",
+      "sha256": "8c03bdb32166ea32a1aa9ba0d8e95bba6ff69912b816fc8058eba8710fe0339f",
+      "bytes": 10807
+    }
+  ],
+  "total_bytes": 1910662
+}

@@ -1,0 +1,581 @@
+{
+  "version": "hilbert-primitive-aggregate-static-export-v1",
+  "status": "immutable_finite_static_source_aggregate_audit_and_compact_view_complete",
+  "files": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/archive-contents-final-v1.json",
+      "sha256": "a47722daaed75882a857ba8300cf5afb25e30a9cdd3439736b07fc751ac258a5",
+      "bytes": 18737
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/evidence-final-v1.zip",
+      "sha256": "1d7f0abfd3b34d9cc24cadfc9adffd28e6e94f29cb0ae8d87bf79e3ea41c3582",
+      "bytes": 9835161
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+      "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+      "bytes": 12524
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v1.py",
+      "sha256": "46c5fa93f5b6d7c88b32d49f8a732bd29085a99524a048345d6222e3e8b3d24b",
+      "bytes": 30892
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v2.py",
+      "sha256": "39554293d667c48db05c53dea4086cbe3b7fc398eaf6e1d707e339d713b58c36",
+      "bytes": 33077
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_final_v1.py",
+      "sha256": "f0f078d80a01061d2becf298f34236c5d77d9bde50c5d79ecddebaf81a389653",
+      "bytes": 9997
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_pending_v1.py",
+      "sha256": "be46c0f698cf3d3bd97976c60ccbef2609d69035748341a0d0b4032cfd4bc072",
+      "bytes": 3207
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_freeze_v1.py",
+      "sha256": "cc8dc51465cec1869172ab611c3fd5f9861ee1577170777b913018034d14a828",
+      "bytes": 11330
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v1.py",
+      "sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+      "bytes": 2740
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v2.py",
+      "sha256": "dd2c3aa2fb0fa3faea5feea377e6028ac1ced7a13f341bcb5464b58d9bba16c9",
+      "bytes": 3184
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v1.py",
+      "sha256": "35d2bc47865fa660807cb3dd07ba0642a9fc6b71c2972879c66ab7f864142ef9",
+      "bytes": 8177
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v2.py",
+      "sha256": "908dbf01c4cb2c9cb13879d442ebd00cf059c949b069b67eb00cbd7ba827a6e1",
+      "bytes": 8401
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_decoder_v2.py",
+      "sha256": "4adb97a22060bfb14b4002ac5a78b3b44d61f8b5a84f3d7d498e237b2e4cd555",
+      "bytes": 4109
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_freeze_v2.py",
+      "sha256": "25f067fc837064bd0a1922aa5a578957deb304e8eea04146d18f11854a1fa06c",
+      "bytes": 7988
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v1.py",
+      "sha256": "07e1922914b6040889f0255d3382f24ad3ec61f2aa3b3b64bad37b885a896464",
+      "bytes": 4498
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v2.py",
+      "sha256": "3c864c138b77ae9601413fcee72af3113110b19bfc407f34d69db3753f35d2e4",
+      "bytes": 4641
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_repair_freeze_v2.py",
+      "sha256": "a339b1b8c15ab5045f6f8693bd3c6b49cc18ee5ae84bb7ec71bf681823e26488",
+      "bytes": 11404
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v1.py",
+      "sha256": "5591b581edbd7e3bac3e882a2f94d19eede6828720df597a72782917d7ab0056",
+      "bytes": 6271
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v2.py",
+      "sha256": "bda85b28313fd09eb6ce604d77165098c688536d0d7f28d149b0e1d68d3e596a",
+      "bytes": 6280
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v1.json",
+      "sha256": "002456c70e9c33df54cdaa0734bf7210b9048226dc2f9f9e58eeef14b682df56",
+      "bytes": 1044
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v2.json",
+      "sha256": "bfbc4671fe49afcaac5211f30d1b45dfa17f8ceb6feddfb5c15d823dcd9456e8",
+      "bytes": 1176
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-measurement-amendment-v1.json",
+      "sha256": "f511b540c988fdcfc28720ba971ecaefe58a1075ae74cc3b60df930e9fda6fe6",
+      "bytes": 600
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v1.json",
+      "sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+      "bytes": 95871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v2.json",
+      "sha256": "6fb049eb7915ae028821bf7c209f9c15b47efda4f0d9ba212b592020e06b7114",
+      "bytes": 8214
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v1.json",
+      "sha256": "05b19834f00668143bd34dce4ab8b53b80f2f7c7d19cc2ad74c1cb528e7e08c8",
+      "bytes": 136
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v2.json",
+      "sha256": "813a47168b35eb717a20cf7f403de9d2224266afd29e567c89a63109463c9bd7",
+      "bytes": 145
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v1.txt",
+      "sha256": "61f79d7417c14b4abf5c73217937b5d4e48f319c9c3b065eb4b8baae4ee43fb7",
+      "bytes": 827
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v2.txt",
+      "sha256": "496eb828b76414387b13366229e137e97f1558f8c81eb30d9db0374752bb2068",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v1.json",
+      "sha256": "cf58fce8305fdb01eea420c0f3677ee8958fb70dbea4bea9cf6950c28fc0a46a",
+      "bytes": 3104
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v2.json",
+      "sha256": "009417382fe1103c8babcfcd174e42a9dd988cad3d8dc1251e13c05aca4d6991",
+      "bytes": 3558
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v1.json",
+      "sha256": "6adc9de2241152a36ab60e96b8ef74c93e1d8451e62cef09f21b833db8edd0b8",
+      "bytes": 1337
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v2.json",
+      "sha256": "e8133c7d4128607f750b7ed08b2cad3b188bd68fa633466afb764d6b6f1381ad",
+      "bytes": 3505
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v1.json",
+      "sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+      "bytes": 2230
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v2.json",
+      "sha256": "427b43178ed8dfbc706d0abdf9ae961e401bd22939d01d51066bd2fd346cac47",
+      "bytes": 4699
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-receipt-v2.json",
+      "sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+      "bytes": 712
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-repair-diff-v2.txt",
+      "sha256": "7fac2d8a847206ee07b6c84d0c7073483e95b5ad31d6aa2599f71cb4623b5ddd",
+      "bytes": 7526
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v2.txt",
+      "sha256": "7bea09844c7c4b645d3dbf65c51778081b3faf9219d8f200265d9d72d8539d63",
+      "bytes": 747
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/repair-source-diff-v2.txt",
+      "sha256": "b1d859802fbd09ad700ed729b17b57d5eb6fe2667531d32a718448f27ea00a5b",
+      "bytes": 12285
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/scientific-scope-v1.json",
+      "sha256": "5a2ef1af4e9710fe6975b95e5f665657c627b587d1e412cddca117ae7dc366d6",
+      "bytes": 8871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-correspondence-v2.json",
+      "sha256": "f06f1b5598ca051d96eaac7b8898b9648e7905fbd3e39092638dfe84ad806d83",
+      "bytes": 2267
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-inspection-v1.json",
+      "sha256": "3d795b629c334ba62412e677635b1fa5d2b5962605f24e1cdeffc2081b79c61c",
+      "bytes": 247
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v1.json",
+      "sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d",
+      "bytes": 15142
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v2.json",
+      "sha256": "85cfa5a461a0df5e54c2a9746ce55b92cad666c7a0ac5848766e593eb07db80a",
+      "bytes": 17470
+    }
+  ],
+  "file_count": 56,
+  "total_bytes": 22142677,
+  "archive_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/evidence-final-v1.zip",
+    "sha256": "1d7f0abfd3b34d9cc24cadfc9adffd28e6e94f29cb0ae8d87bf79e3ea41c3582",
+    "bytes": 9835161
+  },
+  "archive_member_count": 88,
+  "archive_contents_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/archive-contents-final-v1.json",
+    "sha256": "a47722daaed75882a857ba8300cf5afb25e30a9cdd3439736b07fc751ac258a5",
+    "bytes": 18737
+  },
+  "producer_checkpoint_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+    "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+    "bytes": 4619
+  },
+  "independent_integration_pin": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/integration-v2.json",
+    "sha256": "94be910c6a85c0a5e3c75018ecb4217f6afaca4a7b8ed04d3afd46f67ff89716",
+    "bytes": 3443
+  },
+  "independent_audit_pin": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+    "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+    "bytes": 1647196
+  },
+  "independent_lifetime_pin": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+    "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+    "bytes": 3128
+  },
+  "independent_parser_scope_pin": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+    "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+    "bytes": 1031
+  },
+  "independent_completion_pin": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+    "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+    "bytes": 12194
+  },
+  "reader_data_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+    "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+    "bytes": 1253326
+  },
+  "reader_projection_receipt_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-receipt-v2.json",
+    "sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+    "bytes": 712
+  },
+  "reader_lifetime_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v2.json",
+    "sha256": "e8133c7d4128607f750b7ed08b2cad3b188bd68fa633466afb764d6b6f1381ad",
+    "bytes": 3505
+  },
+  "prior_preserved_entries_checked": 366,
+  "pending_snapshot_files_preserved": 35,
+  "counts": {
+    "assumption_alias_occurrences": 630,
+    "duplicate_premise_interfaces": 0,
+    "family_counts": {
+      "incidence-equality-transport": 27,
+      "searched-incidence-transport": 108,
+      "universal-uniqueness": 36
+    },
+    "family_leaf_counts": {
+      "incidence-equality-transport": [
+        3
+      ],
+      "searched-incidence-transport": [
+        13
+      ],
+      "universal-uniqueness": [
+        10
+      ]
+    },
+    "formula_codes": 217,
+    "maximum_body_leaf_count": 13,
+    "named_definitions": 171,
+    "noninjective_constant_maps": 141,
+    "preserved_authored_formula_prefix": 71,
+    "primitive_recipe_rules": {
+      "assumption": 3,
+      "axiom": 1,
+      "eq_subst": 27,
+      "instantiate": 54,
+      "mp": 144
+    },
+    "primitive_recipe_types": 229,
+    "recursive_block_call_occurrences": 216,
+    "source_body_leaf_occurrences": 1845
+  },
+  "scope": "Finite checked 171 source-body expansions, primitive logical leaves, ordered aliases and exact canonical t/m aggregates; authored shared 24-row example; parametric 24/65 row grammar census. Compact reader is a read-only projection bound to the exact independently audited data.",
+  "authority": "Inactive finite source/aggregate evidence only; neither mapped nor primitive interfaces are labeled freshly native-admitted. No existing engine adapter activated.",
+  "failures_preserved": {
+    "producer_v1": "UNKNOWN: actual child kernel peak 557432832 bytes exceeds 512 MiB; preserved even though serialization repair has identical scientific bytes.",
+    "reader_v1": "UNKNOWN: standard whole-payload parsing exceeded separate host ceiling; child killed/reaped before output. Versioned reader streams one record at a time."
+  },
+  "costs": {
+    "cumulative_production_outer_seconds": 14.081038333,
+    "production_v2_outer_seconds": 7.572862583,
+    "production_v2_conservative_host_peak_bytes": 134643712,
+    "independent_full_audit_lifetime_seconds": 5.713218708,
+    "independent_control_cost_details": {
+      "named_controls_in_audit_corruption_count_field": 31,
+      "explicit_rejected_corrupt_variants": 31,
+      "positive_controls_also_included": true,
+      "reject_cases": [
+        {
+          "control": "retained_toy_point_consistent_invalid_inference",
+          "field": "rejection",
+          "reason": "invalid ordered MP"
+        },
+        {
+          "control": "retained_toy_repeated_ordered_port_multiplicity",
+          "field": "rejection",
+          "reason": "ordered block arity, multiplicity or formula mismatch"
+        },
+        {
+          "control": "retained_toy_instantiation_closed_term_and_exact_substitution",
+          "field": "open_term_rejection",
+          "reason": "open replacement term"
+        },
+        {
+          "control": "retained_toy_instantiation_closed_term_and_exact_substitution",
+          "field": "wrong_formula_rejection",
+          "reason": "invalid universal-instantiation tautology"
+        },
+        {
+          "control": "retained_toy_substitution_scope_shadow_and_capture_fail_closed",
+          "field": "capture_replacement_rejection",
+          "reason": "open replacement term"
+        },
+        {
+          "control": "retained_toy_substitution_scope_shadow_and_capture_fail_closed",
+          "field": "extra_parameter_rejection",
+          "reason": "unclosed template parameter"
+        },
+        {
+          "control": "retained_toy_ordered_reference_port",
+          "field": "rejection",
+          "reason": "ordered port points to different reference"
+        },
+        {
+          "control": "retained_toy_strict_prior_reference",
+          "field": "rejection",
+          "reason": "non-prior reference"
+        },
+        {
+          "control": "retained_toy_shared_set_union_versus_naive_t_addition",
+          "field": "naive_rejection",
+          "reason": "t overcapacity"
+        },
+        {
+          "control": "retained_toy_label_false_sharing_rejected",
+          "field": "rejection",
+          "reason": "label points to a different full decorated placement"
+        },
+        {
+          "control": "retained_toy_formula_only_false_sharing",
+          "field": "rejection",
+          "reason": "same formula is not decorated identity"
+        },
+        {
+          "control": "retained_toy_absence_is_not_assigned_zero_and_all_support_checked",
+          "field": "exterior_conflict_rejection",
+          "reason": "assigned m conflict"
+        },
+        {
+          "control": "retained_toy_formula_registry_injectivity",
+          "field": "rejection",
+          "reason": "noninjective formula registry"
+        },
+        {
+          "control": "retained_toy_exact_named_axiom",
+          "field": "rejection",
+          "reason": "axiom is not exact frozen declaration"
+        },
+        {
+          "control": "retained_toy_unsupported_quantifier_feature",
+          "field": "rejection",
+          "reason": "unsupported formula constructor: 'ex'"
+        },
+        {
+          "control": "retained_toy_declared_predicate_arity",
+          "field": "rejection",
+          "reason": "unknown predicate or arity mismatch"
+        },
+        {
+          "control": "retained_toy_bool_function_arity_rejected",
+          "field": "rejection",
+          "reason": "non-nullary or duplicate function"
+        },
+        {
+          "control": "retained_toy_bool_assigned_mark_rejected",
+          "field": "rejection",
+          "reason": "noninteger m value"
+        },
+        {
+          "control": "retained_toy_bool_fixed_mark_and_required_coordinate_rejected",
+          "field": "fixed_mark_rejection",
+          "reason": "noninteger fixed marking"
+        },
+        {
+          "control": "retained_toy_bool_fixed_mark_and_required_coordinate_rejected",
+          "field": "required_rejection",
+          "reason": "noninteger required point coordinate"
+        },
+        {
+          "control": "retained_toy_bool_port_formula_code_rejected",
+          "field": "rejection",
+          "reason": "noninteger port index, formula code or offset"
+        },
+        {
+          "control": "retained_toy_cyclic_or_forward_block_unavailable",
+          "field": "rejection",
+          "reason": "unavailable prior declaration"
+        },
+        {
+          "control": "actual_stale_authority_even_with_rehashed_label",
+          "field": "reason",
+          "reason": "placement authority is not common frozen closure"
+        },
+        {
+          "control": "actual_stale_registry_even_with_rehashed_label",
+          "field": "reason",
+          "reason": "placement registry is not the full injective closure"
+        },
+        {
+          "control": "actual_recipe_stale_authority",
+          "field": "reason",
+          "reason": "recipe epoch mismatch"
+        },
+        {
+          "control": "actual_formula_registry_duplicate",
+          "field": "reason",
+          "reason": "noninjective formula registry"
+        },
+        {
+          "control": "actual_point_consistent_invalid_final_MP",
+          "field": "reason",
+          "reason": "invalid ordered MP"
+        },
+        {
+          "control": "actual_reversed_ordered_MP_references",
+          "field": "reason",
+          "reason": "invalid ordered MP"
+        },
+        {
+          "control": "actual_hidden_marking_change_under_same_id",
+          "field": "reason",
+          "reason": "false decorated sharing: m"
+        },
+        {
+          "control": "actual_naive_shared_occupancy_overcount",
+          "field": "reason",
+          "reason": "t overcapacity"
+        },
+        {
+          "control": "shadowed_binder_wrong_instantiation",
+          "field": "reason",
+          "reason": "invalid universal-instantiation tautology"
+        }
+      ]
+    },
+    "cumulative_reader_preparation_seconds": 2.385113416,
+    "reader_v2_host_peak_bytes": 51511296,
+    "initial_hash_and_syntax_preparation": {
+      "freeze_input_hashing_and_syntax_seconds_before_plan_write": 0.271180708,
+      "source_authorship_wall": "not separately instrumented; no execution credited",
+      "prior_native_admission_and_replay": "preserved exact source receipts, not erased or relabeled fresh"
+    },
+    "pending_export_prewrite_seconds": 0.293246916,
+    "final_export_prewrite_seconds": 0.639161375,
+    "final_export_peak_bytes": 48775168,
+    "prior_admission_provenance": "Retained exact donor native and full replay receipts; this phase incurs zero new native queries and does not erase earlier preparation costs."
+  },
+  "remaining_obligations": [
+    "complete primitive placement catalog and candidate/frontier graph",
+    "cluster proposal embedding domain and validation",
+    "reference scheduler, propagation, exact rollback and complete primitive fallback implementation",
+    "conditional 65-row one-way padding lift",
+    "formal compiler/native correspondence and any fresh whole proof request"
+  ],
+  "parser_scope": "Read-only decoder used on exact pinned known-standard JSON. Its delimiter loops accept trailing commas; no general adversarial strict-parser theorem is claimed.",
+  "native_queries": 0,
+  "target_searches": 0,
+  "placement_graphs": 0,
+  "new_RL_training": false,
+  "new_discovered_chained_proof": false,
+  "engine_or_authority_activation": false,
+  "HTML_or_publication": "none; root owns integration"
+}

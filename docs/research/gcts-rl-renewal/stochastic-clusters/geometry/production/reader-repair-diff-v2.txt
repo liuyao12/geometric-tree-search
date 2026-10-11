@@ -1,0 +1,124 @@
+--- hilbert_aggregate_reader_data_v1.py
++++ hilbert_aggregate_reader_data_v2.py
+@@ -1,5 +1,7 @@
+ """Read-only extraction of frozen static evidence into compact reader data."""
+ import gzip
++import itertools
++from hilbert_aggregate_reader_decoder_v2 import expansion_records
+ import hashlib
+ import json
+ import resource
+@@ -44,17 +46,19 @@
+     started = time.perf_counter()
+     signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError('reader extraction ceiling')))
+     signal.alarm(180)
+-    plan_path = HERE / 'reader-extraction-plan-v1.json'
++    plan_path = HERE / 'reader-extraction-plan-v2.json'
+     plan = load(plan_path)
+     for p in plan['inputs'] + plan['sources']:
+         assert pin(ROOT / p['path']) == {k: p[k] for k in ('path', 'sha256', 'bytes')}
+     paths = {p['role']: ROOT / p['path'] for p in plan['inputs']}
+-    expanded = load(paths['expansions'])
++    expanded = {}
++    streamed = iter(expansion_records(paths['expansions'], expanded))
++    first = next(streamed)
+     registry = expanded['formula_codes']
+     codes = {canonical(f): i for i, f in enumerate(registry)}
+     assert len(codes) == len(registry)
+     definitions = []
+-    for source in expanded['records']:
++    for source in itertools.chain([first], streamed):
+         embedding = source['canonical_embedding']
+         members = []
+         for p in embedding['primitive_placements']:
+@@ -97,8 +101,8 @@
+                  'conclusion_row': c['conclusion_row'], 'ordered_receptor_ports': ports(c['ordered_receptor_ports']),
+                  'aggregate': c['aggregate']} for c in example['clusters']]
+     data = {'version': 'hilbert-aggregate-compact-reader-data-v1',
+-            'status': 'read_only_extraction_independent_finite_audit_pending_at_extraction',
+-            'extraction_plan_pin': pin(plan_path), 'input_pins': plan['inputs'], 'extraction_sources': plan['sources'],
++            'status': 'read_only_projection_with_bound_passed_independent_finite_audit',
++            'independent_audit_pin': pin(paths['independent_audit']), 'extraction_plan_pin': pin(plan_path), 'input_pins': plan['inputs'], 'extraction_sources': plan['sources'],
+             'authority_label': authority['label'], 'authority_epoch': authority['epoch'],
+             'native_accepted': False, 'engine_activated': False,
+             'formula_registry_sha256': registry_sha, 'formula_codes': registry,
+@@ -113,7 +117,7 @@
+             'scope': 'Lossless requested formula/row/port/point/identity-digest projection; long identity preimages and source chains remain in bound raw evidence. No logical admission or complete candidate/graph enumeration is performed by this reader extraction.',
+             'notation': 'Render formula AST using established LaTeX renderer; integer formula values are marking data. Missing remains absent, assigned zero remains a value.',
+             'native_queries': 0, 'target_searches': 0, 'new_policy': False}
+-    output = HERE / 'reader-data-v1.json'
++    output = HERE / 'reader-data-v2.json'
+     save(output, data)
+     # Exact frozen input pins are checked again after extraction.
+     for p in plan['inputs'] + plan['sources']:
+@@ -122,14 +126,14 @@
+     peak = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+     if sys.platform != 'darwin':
+         peak *= 1024
+-    receipt = {'status': 'compact_read_only_extraction_complete_pending_independent_audit',
++    receipt = {'status': 'compact_read_only_extraction_complete_independent_audit_bound',
+                'plan_pin': pin(plan_path), 'output_pin': pin(output), 'definitions': len(definitions),
+                'primitive_member_records': sum(len(d['primitive_members']) for d in definitions),
+                'formula_values': len(registry), 'example_rows': len(rows),
+                'before_receipt_seconds': elapsed, 'peak_rss_bytes': peak,
+                'native_queries': 0, 'target_searches': 0, 'engine_or_authority_activation': False,
+                'logical_audit_credit': False}
+-    save(HERE / 'reader-extraction-receipt-v1.json', receipt)
++    save(HERE / 'reader-extraction-receipt-v2.json', receipt)
+     signal.alarm(0)
+     print(json.dumps(receipt), flush=True)
+ 
+--- hilbert_aggregate_reader_run_v1.py
++++ hilbert_aggregate_reader_run_v2.py
+@@ -18,10 +18,10 @@
+ 
+ def main():
+     started = time.perf_counter()
+-    output = HERE / 'reader-extraction-lifetime-v1.json'
++    output = HERE / 'reader-extraction-lifetime-v2.json'
+     if output.exists():
+         raise ValueError('reader preparation lifetime already exists')
+-    plan_path = HERE / 'reader-extraction-plan-v1.json'
++    plan_path = HERE / 'reader-extraction-plan-v2.json'
+     plan = json.loads(plan_path.read_text())
+     for p in plan['sources'] + plan['inputs']:
+         raw = (ROOT / p['path']).read_bytes()
+@@ -29,12 +29,12 @@
+     child, terminal, reason, error = None, None, None, None
+     samples = []
+     try:
+-        with (HERE / 'reader-stdout-v1.txt').open('xb') as stdout, (HERE / 'reader-stderr-v1.txt').open('xb') as stderr:
+-            child = subprocess.Popen([sys.executable, str(HERE / 'hilbert_aggregate_reader_data_v1.py')], stdout=stdout, stderr=stderr, cwd=HERE)
++        with (HERE / 'reader-stdout-v2.txt').open('xb') as stdout, (HERE / 'reader-stderr-v2.txt').open('xb') as stderr:
++            child = subprocess.Popen([sys.executable, str(HERE / 'hilbert_aggregate_reader_data_v2.py')], stdout=stdout, stderr=stderr, cwd=HERE)
+             try:
+                 while child.poll() is None:
+                     elapsed = time.perf_counter() - started
+-                    if elapsed > 180:
++                    if elapsed > 179.621549834:
+                         reason = 'wall_ceiling'
+                         break
+                     ps = subprocess.run(['ps', '-o', 'rss=', '-p', str(child.pid)], capture_output=True, timeout=2, check=False)
+@@ -61,11 +61,11 @@
+             if child.poll() is None:
+                 child.kill()
+             terminal = child.wait()
+-    receipt_path = HERE / 'reader-extraction-receipt-v1.json'
++    receipt_path = HERE / 'reader-extraction-receipt-v2.json'
+     receipt = json.loads(receipt_path.read_text()) if receipt_path.exists() else None
+     elapsed = time.perf_counter() - started
+     host_peak = peak(resource.RUSAGE_SELF) + peak(resource.RUSAGE_CHILDREN)
+-    if elapsed > 180 or host_peak > 512 * 1024 * 1024:
++    if elapsed > 179.621549834 or host_peak > 512 * 1024 * 1024:
+         reason = reason or 'final_resource_ceiling'
+     if not samples or receipt is None:
+         reason = reason or 'missing_enforcement_or_result'
+@@ -76,7 +76,7 @@
+               'child_receipt_sha256': hashlib.sha256(receipt_path.read_bytes()).hexdigest() if receipt else None,
+               'child_pid': child.pid if child else None, 'terminal_exit_code': terminal, 'child_wait_reaped': child is not None and terminal is not None,
+               'unknown_reason': reason, 'watchdog_error': error, 'rss_samples': samples,
+-              'wall_ceiling_seconds': 180, 'host_ceiling_bytes': 512 * 1024 * 1024,
++              'wall_ceiling_seconds': 179.621549834, 'prior_failed_preparation_seconds': 0.378450166, 'cumulative_reader_preparation_seconds': elapsed + 0.378450166, 'host_ceiling_bytes': 512 * 1024 * 1024,
+               'native_queries': 0, 'target_searches': 0, 'engine_or_authority_activation': False,
+               'own_lifetime_receipt_write': 'outside reported prewrite seconds'}
+     output.write_text(json.dumps(result, indent=2) + '\n')

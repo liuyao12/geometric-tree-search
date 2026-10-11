@@ -1,0 +1,227 @@
+{
+  "id": "train-02",
+  "status": "passed_complete_observation_lifetime_gate",
+  "worker_exit_code": 0,
+  "worker_terminal_and_reaped": true,
+  "worker_lifetime_seconds": 6.34324075,
+  "owner_seconds_before_final_receipt_write": 6.375124583,
+  "kernel_owner_peak_bytes": 24199168,
+  "kernel_sampler_peak_before_worker_reaping_bytes": 2572288,
+  "kernel_worker_peak_bytes": 276348928,
+  "conservative_peak_bytes": 303120384,
+  "sampled_peak_bytes": 300351488,
+  "samples": [
+    {
+      "seconds": 0.00081175,
+      "rss_bytes": 26755072,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 0.221103208,
+      "rss_bytes": 104316928,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 0.442386541,
+      "rss_bytes": 137854976,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 0.655926916,
+      "rss_bytes": 179109888,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 0.876789166,
+      "rss_bytes": 214695936,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 1.089266541,
+      "rss_bytes": 253886464,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 1.305941208,
+      "rss_bytes": 284442624,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 1.5260393749999999,
+      "rss_bytes": 288604160,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 1.739261,
+      "rss_bytes": 289423360,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 1.954309625,
+      "rss_bytes": 291045376,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 2.175316375,
+      "rss_bytes": 292552704,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 2.3892567909999998,
+      "rss_bytes": 293928960,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 2.610452208,
+      "rss_bytes": 295174144,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 2.83199825,
+      "rss_bytes": 295239680,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 3.053479041,
+      "rss_bytes": 296075264,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 3.274866291,
+      "rss_bytes": 297041920,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 3.4961369159999998,
+      "rss_bytes": 297058304,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 3.7154737079999998,
+      "rss_bytes": 298909696,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 3.937025958,
+      "rss_bytes": 295665664,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 4.15593175,
+      "rss_bytes": 297287680,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 4.372594875,
+      "rss_bytes": 299565056,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 4.593788,
+      "rss_bytes": 300351488,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 4.8129965,
+      "rss_bytes": 238845952,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 5.03459475,
+      "rss_bytes": 237043712,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 5.255578666,
+      "rss_bytes": 237043712,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 5.472587458,
+      "rss_bytes": 237043712,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 5.693152041,
+      "rss_bytes": 237043712,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 5.905925166,
+      "rss_bytes": 237043712,
+      "pids": [
+        96844
+      ]
+    },
+    {
+      "seconds": 6.122588041,
+      "rss_bytes": 237060096,
+      "pids": [
+        96844
+      ]
+    }
+  ],
+  "watchdog_violation": null,
+  "observer_error": null,
+  "forced_kill": false,
+  "cleaned_orphans": [],
+  "remaining_owned_pids": [],
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "summary_sha256": "9e8f1b7c6475ae7041e990a7f3ca839be821f865f2784e8c8fc218bc1431d68b",
+  "enforcement": "Bounded ps snapshots, fresh owned worker, SIGUSR1 cleanup grace, verified PID/birth cleanup, kernel and aggregate RSS retrospective gates. No hard OS memory cap."
+}

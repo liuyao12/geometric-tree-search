@@ -1,0 +1,49 @@
+{
+  "status": "unknown_or_failed",
+  "scope": "separate compact reader extraction preparation; not a logical audit, admission or search",
+  "full_seconds_including_child_receipt_serialization": 0.378450166,
+  "host_kernel_peak_sum_bytes": 538230784,
+  "plan_sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+  "child_receipt_sha256": null,
+  "child_pid": 97752,
+  "terminal_exit_code": -9,
+  "child_wait_reaped": true,
+  "unknown_reason": "host_peak_ceiling",
+  "watchdog_error": null,
+  "rss_samples": [
+    {
+      "seconds": 0.003724250000000002,
+      "child_rss_bytes": 1720320
+    },
+    {
+      "seconds": 0.06409120800000001,
+      "child_rss_bytes": 146669568
+    },
+    {
+      "seconds": 0.11761616600000002,
+      "child_rss_bytes": 409518080
+    },
+    {
+      "seconds": 0.180460958,
+      "child_rss_bytes": 447889408
+    },
+    {
+      "seconds": 0.24333270799999998,
+      "child_rss_bytes": 475709440
+    },
+    {
+      "seconds": 0.3063745,
+      "child_rss_bytes": 498057216
+    },
+    {
+      "seconds": 0.369149083,
+      "child_rss_bytes": 520486912
+    }
+  ],
+  "wall_ceiling_seconds": 180,
+  "host_ceiling_bytes": 536870912,
+  "native_queries": 0,
+  "target_searches": 0,
+  "engine_or_authority_activation": false,
+  "own_lifetime_receipt_write": "outside reported prewrite seconds"
+}

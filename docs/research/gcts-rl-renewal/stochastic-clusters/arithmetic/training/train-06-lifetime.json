@@ -1,0 +1,255 @@
+{
+  "id": "train-06",
+  "status": "passed_complete_observation_lifetime_gate",
+  "worker_exit_code": 0,
+  "worker_terminal_and_reaped": true,
+  "worker_lifetime_seconds": 7.270557417,
+  "owner_seconds_before_final_receipt_write": 7.303135332999999,
+  "kernel_owner_peak_bytes": 24281088,
+  "kernel_sampler_peak_before_worker_reaping_bytes": 2572288,
+  "kernel_worker_peak_bytes": 276840448,
+  "conservative_peak_bytes": 303693824,
+  "sampled_peak_bytes": 301236224,
+  "samples": [
+    {
+      "seconds": 0.0009524590000000027,
+      "rss_bytes": 27148288,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 0.22288879199999997,
+      "rss_bytes": 103071744,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 0.43893320900000005,
+      "rss_bytes": 132661248,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 0.661442,
+      "rss_bytes": 166952960,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 0.884663084,
+      "rss_bytes": 186580992,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 1.105590875,
+      "rss_bytes": 247775232,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 1.328439542,
+      "rss_bytes": 277856256,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 1.544508084,
+      "rss_bytes": 285032448,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 1.767826084,
+      "rss_bytes": 287899648,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 1.988891875,
+      "rss_bytes": 289062912,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 2.211475584,
+      "rss_bytes": 290668544,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 2.4273675,
+      "rss_bytes": 291635200,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 2.650103042,
+      "rss_bytes": 293437440,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 2.8722675,
+      "rss_bytes": 293142528,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 3.094670292,
+      "rss_bytes": 294289408,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 3.3086443749999996,
+      "rss_bytes": 295485440,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 3.532276,
+      "rss_bytes": 295878656,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 3.7546409169999997,
+      "rss_bytes": 296550400,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 3.977099334,
+      "rss_bytes": 297844736,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 4.20004625,
+      "rss_bytes": 298172416,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 4.422258459,
+      "rss_bytes": 295092224,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 4.6447766249999995,
+      "rss_bytes": 299204608,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 4.867224333999999,
+      "rss_bytes": 299188224,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 5.082978166999999,
+      "rss_bytes": 300122112,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 5.305499999999999,
+      "rss_bytes": 301236224,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 5.5208185,
+      "rss_bytes": 235208704,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 5.7430295,
+      "rss_bytes": 235241472,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 5.955583,
+      "rss_bytes": 235257856,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 6.1722505,
+      "rss_bytes": 235290624,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 6.3929100839999995,
+      "rss_bytes": 235290624,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 6.605542166999999,
+      "rss_bytes": 235290624,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 6.827276209,
+      "rss_bytes": 235290624,
+      "pids": [
+        97069
+      ]
+    },
+    {
+      "seconds": 7.047447625,
+      "rss_bytes": 236699648,
+      "pids": [
+        97069
+      ]
+    }
+  ],
+  "watchdog_violation": null,
+  "observer_error": null,
+  "forced_kill": false,
+  "cleaned_orphans": [],
+  "remaining_owned_pids": [],
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "summary_sha256": "560dcb1e0c5c0ad0b98ef4459acb1afcc74d2b1d69f9996673c5846d1d75eebf",
+  "enforcement": "Bounded ps snapshots, fresh owned worker, SIGUSR1 cleanup grace, verified PID/birth cleanup, kernel and aggregate RSS retrospective gates. No hard OS memory cap."
+}

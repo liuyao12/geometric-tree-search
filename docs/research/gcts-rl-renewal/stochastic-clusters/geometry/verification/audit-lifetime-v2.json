@@ -1,0 +1,89 @@
+{
+  "status": "passed_full_lifetime_static_audit_gate",
+  "plan_sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+  "worker_command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+    "--plan",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json"
+  ],
+  "worker_pid": 98044,
+  "child_exit_code": 0,
+  "child_terminal_reaped": true,
+  "failure": null,
+  "audit_status": "passed_independent_finite_static_symbolic_and_aggregate_audit",
+  "audit_counts": {
+    "assumption_alias_occurrences": 630,
+    "duplicate_premise_interfaces": 0,
+    "family_counts": {
+      "incidence-equality-transport": 27,
+      "searched-incidence-transport": 108,
+      "universal-uniqueness": 36
+    },
+    "family_leaf_counts": {
+      "incidence-equality-transport": [
+        3
+      ],
+      "searched-incidence-transport": [
+        13
+      ],
+      "universal-uniqueness": [
+        10
+      ]
+    },
+    "formula_codes": 217,
+    "maximum_body_leaf_count": 13,
+    "named_definitions": 171,
+    "noninjective_constant_maps": 141,
+    "preserved_authored_formula_prefix": 71,
+    "primitive_recipe_rules": {
+      "assumption": 3,
+      "axiom": 1,
+      "eq_subst": 27,
+      "instantiate": 54,
+      "mp": 144
+    },
+    "primitive_recipe_types": 229,
+    "recursive_block_call_occurrences": 216,
+    "source_body_leaf_occurrences": 1845
+  },
+  "full_lifetime_seconds_before_final_receipt_write": 5.713218708,
+  "child_kernel_peak_rss_bytes": 148045824,
+  "observer_kernel_peak_rss_bytes": 22462464,
+  "conservative_sum_peak_rss_bytes": 170508288,
+  "limits": {
+    "full_lifetime_seconds": 180,
+    "worker_alarm_seconds": 178,
+    "conservative_peak_rss_bytes": 536870912,
+    "json_record_buffer_characters": 16777216
+  },
+  "enforcement": {
+    "time": "worker SIGALRM plus whole observer communicate deadline/kill/wait",
+    "memory": "final conservative sum of isolated child/observer kernel peaks",
+    "hard_OS_memory_limit": "not asserted",
+    "ps_sampling": "not used"
+  },
+  "output_bindings": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+      "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "startup_and_report_serialization_charged": true,
+  "final_lifetime_receipt_write": "excluded and unmeasured, not zero",
+  "native_queries": 0,
+  "search_runs": 0,
+  "solver_runs": 0
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "measurement only: root requested outer lifetime including supervisor final receipt serialization before the one authorized producer run",
+  "frozen_plan_sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+  "source_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v1.py",
+    "sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+    "bytes": 2740
+  },
+  "producer_source_or_plan_changed": false,
+  "gate_seconds": 180,
+  "gate_bytes": 536870912,
+  "queries_search_activation": 0
+}

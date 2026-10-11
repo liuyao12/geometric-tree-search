@@ -1,0 +1,487 @@
+{
+  "plan_sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+  "scope": "bounded_toy_fixtures_only_no_real_design_validation",
+  "no_project_imports": true,
+  "native_queries": 0,
+  "search_runs": 0,
+  "solver_runs": 0,
+  "fixtures": [
+    {
+      "name": "valid_ordered_MP_and_points",
+      "status": "passed",
+      "primitive_rows": 5
+    },
+    {
+      "name": "same_formula_distinct_seed_and_MP_identities",
+      "status": "passed",
+      "seed_identity_sha256": [
+        "03bf0bb7512771fb13802a4c788a825b3e6883408960bdccc00c28a028ea3e90",
+        "a0a98e9666244d1679d6da7810f9d7d70904b3c0fdf79aa46f4edab3017e8135"
+      ],
+      "MP_identity_sha256": [
+        "362bd0761a1de9661b14c10c5d83738fa3cbb6aa1212b0020b68438e9486790e",
+        "7c10351a1c3a64037383ff9ac3952fe3f87bb00f9bfc1e4bc47ab9acf8ca813a"
+      ]
+    },
+    {
+      "name": "point_consistent_invalid_inference",
+      "status": "passed",
+      "point_consistency": true,
+      "symbolic_acceptance": false,
+      "rejection": "invalid ordered MP",
+      "exact_corrupt_commands": [
+        {
+          "rule": "assumption",
+          "index": 0,
+          "formula": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "P",
+                []
+              ]
+            ]
+          ]
+        },
+        {
+          "rule": "assumption",
+          "index": 1,
+          "formula": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "P",
+                []
+              ]
+            ]
+          ]
+        },
+        {
+          "rule": "assumption",
+          "index": 2,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "rule": "mp",
+          "antecedent": 0,
+          "implication": 2,
+          "formula": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ]
+        },
+        {
+          "rule": "mp",
+          "antecedent": 1,
+          "implication": 2,
+          "formula": [
+            "pred",
+            "Line",
+            [
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ]
+        }
+      ],
+      "exact_corrupt_placements": [
+        {
+          "row": 0,
+          "command": {
+            "rule": "assumption",
+            "index": 0,
+            "formula": [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ]
+          },
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "ordered_inputs": []
+        },
+        {
+          "row": 1,
+          "command": {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ]
+          },
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "ordered_inputs": []
+        },
+        {
+          "row": 2,
+          "command": {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "l",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          },
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              2,
+              1
+            ]
+          ],
+          "ordered_inputs": []
+        },
+        {
+          "row": 3,
+          "command": {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 2,
+            "formula": [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "Q",
+                  []
+                ]
+              ]
+            ]
+          },
+          "t": [
+            [
+              0,
+              3,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3
+            ],
+            [
+              2,
+              3,
+              -3
+            ],
+            [
+              3,
+              3,
+              -1
+            ]
+          ],
+          "ordered_inputs": [
+            0,
+            2
+          ]
+        },
+        {
+          "row": 4,
+          "command": {
+            "rule": "mp",
+            "antecedent": 1,
+            "implication": 2,
+            "formula": [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ]
+          },
+          "t": [
+            [
+              0,
+              4,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              4,
+              2
+            ],
+            [
+              2,
+              4,
+              -3
+            ],
+            [
+              3,
+              4,
+              -2
+            ]
+          ],
+          "ordered_inputs": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "repeated_ordered_port_multiplicity",
+      "status": "passed",
+      "actual_input_occurrences": [
+        0,
+        0
+      ],
+      "rejection": "ordered block arity, multiplicity or formula mismatch"
+    },
+    {
+      "name": "literal_DAG_expansion_and_zero_occupancy_seed_alias",
+      "status": "passed",
+      "inference_members": [
+        3,
+        4
+      ],
+      "shared_identical_members": [
+        3,
+        4
+      ],
+      "alias_endpoint": 0,
+      "alias_new_occupancy": 0,
+      "trace_occurrences": 12
+    },
+    {
+      "name": "instantiation_closed_term_and_exact_substitution",
+      "status": "passed",
+      "open_term_rejection": "open replacement term",
+      "wrong_formula_rejection": "invalid universal-instantiation tautology"
+    },
+    {
+      "name": "substitution_scope_shadow_and_capture_fail_closed",
+      "status": "passed",
+      "extra_parameter_rejection": "unclosed template parameter",
+      "capture_replacement_rejection": "open replacement term"
+    },
+    {
+      "name": "ordered_reference_port",
+      "status": "passed",
+      "rejection": "ordered port points to different reference"
+    },
+    {
+      "name": "strict_prior_reference",
+      "status": "passed",
+      "rejection": "non-prior reference"
+    },
+    {
+      "name": "shared_set_union_versus_naive_t_addition",
+      "status": "passed",
+      "distinct_count": 1,
+      "naive_rejection": "t overcapacity"
+    },
+    {
+      "name": "label_false_sharing_rejected",
+      "status": "passed",
+      "rejection": "label points to a different full decorated placement"
+    },
+    {
+      "name": "formula_only_false_sharing",
+      "status": "passed",
+      "rejection": "same formula is not decorated identity"
+    },
+    {
+      "name": "absence_is_not_assigned_zero_and_all_support_checked",
+      "status": "passed",
+      "compatible_absence": true,
+      "preserved_assignment": [
+        100,
+        100,
+        0
+      ],
+      "exterior_conflict_rejection": "assigned m conflict"
+    },
+    {
+      "name": "formula_registry_injectivity",
+      "status": "passed",
+      "rejection": "noninjective formula registry"
+    },
+    {
+      "name": "exact_named_axiom",
+      "status": "passed",
+      "rejection": "axiom is not exact frozen declaration"
+    },
+    {
+      "name": "unsupported_quantifier_feature",
+      "status": "passed",
+      "rejection": "unsupported formula constructor: 'ex'"
+    },
+    {
+      "name": "declared_predicate_arity",
+      "status": "passed",
+      "rejection": "unknown predicate or arity mismatch"
+    },
+    {
+      "name": "bool_function_arity_rejected",
+      "status": "passed",
+      "rejection": "non-nullary or duplicate function"
+    },
+    {
+      "name": "bool_assigned_mark_rejected",
+      "status": "passed",
+      "rejection": "noninteger m value"
+    },
+    {
+      "name": "bool_fixed_mark_and_required_coordinate_rejected",
+      "status": "passed",
+      "fixed_mark_rejection": "noninteger fixed marking",
+      "required_rejection": "noninteger required point coordinate"
+    },
+    {
+      "name": "bool_port_formula_code_rejected",
+      "status": "passed",
+      "rejection": "noninteger port index, formula code or offset"
+    },
+    {
+      "name": "cyclic_or_forward_block_unavailable",
+      "status": "passed",
+      "rejection": "unavailable prior declaration"
+    }
+  ],
+  "status": "passed_bounded_toy_fixtures_only",
+  "costs": {
+    "worker_seconds_before_receipt_write": 0.001625500000000002,
+    "kernel_peak_rss_bytes": 17645568,
+    "startup_and_final_receipt_write": "not included",
+    "authoring_preparation": "unmeasured; not zero",
+    "OS_memory_limit": "not asserted; final kernel peak gate"
+  },
+  "runtime": {
+    "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit"
+  }
+}

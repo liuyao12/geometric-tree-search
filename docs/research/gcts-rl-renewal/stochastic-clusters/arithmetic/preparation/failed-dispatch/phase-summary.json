@@ -1,0 +1,16 @@
+{
+  "status": "unknown_phase_reservation_budget",
+  "phase": "effect",
+  "observations": [],
+  "attempted": [],
+  "failed_jobs": [],
+  "unexecuted": [
+    "effect-pilot"
+  ],
+  "native_queries": 0,
+  "seconds_before_final_phase_receipt_write": 0.01854625,
+  "dispatcher_peak_bytes": 24412160,
+  "conservative_dispatcher_plus_observation_peak_bytes": 24412160,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0
+}

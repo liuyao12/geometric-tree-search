@@ -1,0 +1,155 @@
+{
+  "status": "passed_bounded_reader_preparation",
+  "scope": "separate compact reader extraction preparation; not a logical audit, admission or search",
+  "full_seconds_including_child_receipt_serialization": 2.00666325,
+  "host_kernel_peak_sum_bytes": 51511296,
+  "plan_sha256": "427b43178ed8dfbc706d0abdf9ae961e401bd22939d01d51066bd2fd346cac47",
+  "child_receipt_sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+  "child_pid": 99082,
+  "terminal_exit_code": 0,
+  "child_wait_reaped": true,
+  "unknown_reason": null,
+  "watchdog_error": null,
+  "rss_samples": [
+    {
+      "seconds": 0.008084915999999998,
+      "child_rss_bytes": 1736704
+    },
+    {
+      "seconds": 0.070806125,
+      "child_rss_bytes": 24051712
+    },
+    {
+      "seconds": 0.133867625,
+      "child_rss_bytes": 25083904
+    },
+    {
+      "seconds": 0.196980875,
+      "child_rss_bytes": 25313280
+    },
+    {
+      "seconds": 0.25638537499999997,
+      "child_rss_bytes": 25575424
+    },
+    {
+      "seconds": 0.319691708,
+      "child_rss_bytes": 25788416
+    },
+    {
+      "seconds": 0.373032708,
+      "child_rss_bytes": 25952256
+    },
+    {
+      "seconds": 0.433937125,
+      "child_rss_bytes": 26181632
+    },
+    {
+      "seconds": 0.49392058299999997,
+      "child_rss_bytes": 27213824
+    },
+    {
+      "seconds": 0.557081958,
+      "child_rss_bytes": 27344896
+    },
+    {
+      "seconds": 0.61980925,
+      "child_rss_bytes": 27574272
+    },
+    {
+      "seconds": 0.682575041,
+      "child_rss_bytes": 27770880
+    },
+    {
+      "seconds": 0.744887,
+      "child_rss_bytes": 28000256
+    },
+    {
+      "seconds": 0.806381916,
+      "child_rss_bytes": 28213248
+    },
+    {
+      "seconds": 0.869136333,
+      "child_rss_bytes": 28409856
+    },
+    {
+      "seconds": 0.923029041,
+      "child_rss_bytes": 28573696
+    },
+    {
+      "seconds": 0.9858709999999999,
+      "child_rss_bytes": 28786688
+    },
+    {
+      "seconds": 1.045152083,
+      "child_rss_bytes": 28999680
+    },
+    {
+      "seconds": 1.10637375,
+      "child_rss_bytes": 29196288
+    },
+    {
+      "seconds": 1.169375875,
+      "child_rss_bytes": 29409280
+    },
+    {
+      "seconds": 1.223035041,
+      "child_rss_bytes": 29573120
+    },
+    {
+      "seconds": 1.285974416,
+      "child_rss_bytes": 30818304
+    },
+    {
+      "seconds": 1.348728458,
+      "child_rss_bytes": 31031296
+    },
+    {
+      "seconds": 1.406379125,
+      "child_rss_bytes": 31195136
+    },
+    {
+      "seconds": 1.469040708,
+      "child_rss_bytes": 31424512
+    },
+    {
+      "seconds": 1.523043791,
+      "child_rss_bytes": 31604736
+    },
+    {
+      "seconds": 1.585987958,
+      "child_rss_bytes": 31784960
+    },
+    {
+      "seconds": 1.644855541,
+      "child_rss_bytes": 31965184
+    },
+    {
+      "seconds": 1.707558916,
+      "child_rss_bytes": 32178176
+    },
+    {
+      "seconds": 1.770303041,
+      "child_rss_bytes": 32342016
+    },
+    {
+      "seconds": 1.828203708,
+      "child_rss_bytes": 32505856
+    },
+    {
+      "seconds": 1.889703458,
+      "child_rss_bytes": 32702464
+    },
+    {
+      "seconds": 1.95255375,
+      "child_rss_bytes": 33030144
+    }
+  ],
+  "wall_ceiling_seconds": 179.621549834,
+  "prior_failed_preparation_seconds": 0.378450166,
+  "cumulative_reader_preparation_seconds": 2.385113416,
+  "host_ceiling_bytes": 536870912,
+  "native_queries": 0,
+  "target_searches": 0,
+  "engine_or_authority_activation": false,
+  "own_lifetime_receipt_write": "outside reported prewrite seconds"
+}

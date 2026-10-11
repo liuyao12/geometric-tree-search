@@ -1,0 +1,26 @@
+{
+  "status": "frozen_bounded_read_only_memory_diagnostic_export",
+  "files": [
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_memory_diagnostic.py",
+      "bytes": 6711,
+      "sha256": "4adc31e30880da59da17da6c69a803ee56d69affa390c3a401d261e581bac9a7"
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/plan.json",
+      "bytes": 3667,
+      "sha256": "cc1d0476221bafe35168b6117c98ebbf228f01b52218b2c63a8136dfa78ac611"
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/diagnosis.json",
+      "bytes": 8971,
+      "sha256": "2bb847520760b450fc77094967dfa76b99822696982517942a512040800e0202"
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/source-snapshot.zip",
+      "bytes": 16977,
+      "sha256": "375afb0b08c01817572cef9a7d4777a2179fca04469eacffdf380156b0a55975"
+    }
+  ],
+  "scope": "Prospective audit-only repair options, no repair/replay or full object decode performed; original evaluation unknown unchanged."
+}

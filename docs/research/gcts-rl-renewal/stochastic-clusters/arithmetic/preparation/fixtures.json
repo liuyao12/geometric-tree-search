@@ -1,0 +1,11 @@
+{
+  "status": "failed_or_unknown_pure_fixture",
+  "target_searches": 0,
+  "native_queries": 0,
+  "model_training_episodes": 0,
+  "fixture_plan_sha256": "9b30d0ecc242129c1511a453ace0bf91398b4ca2c73dcbd914292f8d2a243bec",
+  "failure": "declared unit-capacity inventory",
+  "failure_type": "ValueError",
+  "seconds_before_final_receipt_write": 0.006865999999999997,
+  "peak_rss_bytes": 27475968
+}

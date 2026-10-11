@@ -1,0 +1,442 @@
+{
+  "status": "exact_repository_relative_source_data_receipts",
+  "members": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28",
+      "bytes": 38142
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+      "bytes": 660358
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+      "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+      "bytes": 13333
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/manifest-v1.json",
+      "sha256": "47d0e1e0731bbc02c25024bd49c67f28c1398dcd5217fdc72175966561c16d5d",
+      "bytes": 812
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+      "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+      "bytes": 12524
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v1.py",
+      "sha256": "46c5fa93f5b6d7c88b32d49f8a732bd29085a99524a048345d6222e3e8b3d24b",
+      "bytes": 30892
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v2.py",
+      "sha256": "39554293d667c48db05c53dea4086cbe3b7fc398eaf6e1d707e339d713b58c36",
+      "bytes": 33077
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_final_v1.py",
+      "sha256": "f0f078d80a01061d2becf298f34236c5d77d9bde50c5d79ecddebaf81a389653",
+      "bytes": 9997
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_pending_v1.py",
+      "sha256": "be46c0f698cf3d3bd97976c60ccbef2609d69035748341a0d0b4032cfd4bc072",
+      "bytes": 3207
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_freeze_v1.py",
+      "sha256": "cc8dc51465cec1869172ab611c3fd5f9861ee1577170777b913018034d14a828",
+      "bytes": 11330
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v1.py",
+      "sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+      "bytes": 2740
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v2.py",
+      "sha256": "dd2c3aa2fb0fa3faea5feea377e6028ac1ced7a13f341bcb5464b58d9bba16c9",
+      "bytes": 3184
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v1.py",
+      "sha256": "35d2bc47865fa660807cb3dd07ba0642a9fc6b71c2972879c66ab7f864142ef9",
+      "bytes": 8177
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v2.py",
+      "sha256": "908dbf01c4cb2c9cb13879d442ebd00cf059c949b069b67eb00cbd7ba827a6e1",
+      "bytes": 8401
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_decoder_v2.py",
+      "sha256": "4adb97a22060bfb14b4002ac5a78b3b44d61f8b5a84f3d7d498e237b2e4cd555",
+      "bytes": 4109
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_freeze_v2.py",
+      "sha256": "25f067fc837064bd0a1922aa5a578957deb304e8eea04146d18f11854a1fa06c",
+      "bytes": 7988
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v1.py",
+      "sha256": "07e1922914b6040889f0255d3382f24ad3ec61f2aa3b3b64bad37b885a896464",
+      "bytes": 4498
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v2.py",
+      "sha256": "3c864c138b77ae9601413fcee72af3113110b19bfc407f34d69db3753f35d2e4",
+      "bytes": 4641
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_repair_freeze_v2.py",
+      "sha256": "a339b1b8c15ab5045f6f8693bd3c6b49cc18ee5ae84bb7ec71bf681823e26488",
+      "bytes": 11404
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v1.py",
+      "sha256": "5591b581edbd7e3bac3e882a2f94d19eede6828720df597a72782917d7ab0056",
+      "bytes": 6271
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v2.py",
+      "sha256": "bda85b28313fd09eb6ce604d77165098c688536d0d7f28d149b0e1d68d3e596a",
+      "bytes": 6280
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v1.json",
+      "sha256": "002456c70e9c33df54cdaa0734bf7210b9048226dc2f9f9e58eeef14b682df56",
+      "bytes": 1044
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v2.json",
+      "sha256": "bfbc4671fe49afcaac5211f30d1b45dfa17f8ceb6feddfb5c15d823dcd9456e8",
+      "bytes": 1176
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-measurement-amendment-v1.json",
+      "sha256": "f511b540c988fdcfc28720ba971ecaefe58a1075ae74cc3b60df930e9fda6fe6",
+      "bytes": 600
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v1.json",
+      "sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+      "bytes": 95871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v2.json",
+      "sha256": "6fb049eb7915ae028821bf7c209f9c15b47efda4f0d9ba212b592020e06b7114",
+      "bytes": 8214
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v1.json",
+      "sha256": "05b19834f00668143bd34dce4ab8b53b80f2f7c7d19cc2ad74c1cb528e7e08c8",
+      "bytes": 136
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v2.json",
+      "sha256": "813a47168b35eb717a20cf7f403de9d2224266afd29e567c89a63109463c9bd7",
+      "bytes": 145
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v1.txt",
+      "sha256": "61f79d7417c14b4abf5c73217937b5d4e48f319c9c3b065eb4b8baae4ee43fb7",
+      "bytes": 827
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v2.txt",
+      "sha256": "496eb828b76414387b13366229e137e97f1558f8c81eb30d9db0374752bb2068",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v1.json",
+      "sha256": "cf58fce8305fdb01eea420c0f3677ee8958fb70dbea4bea9cf6950c28fc0a46a",
+      "bytes": 3104
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v2.json",
+      "sha256": "009417382fe1103c8babcfcd174e42a9dd988cad3d8dc1251e13c05aca4d6991",
+      "bytes": 3558
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v1.json",
+      "sha256": "6adc9de2241152a36ab60e96b8ef74c93e1d8451e62cef09f21b833db8edd0b8",
+      "bytes": 1337
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v2.json",
+      "sha256": "e8133c7d4128607f750b7ed08b2cad3b188bd68fa633466afb764d6b6f1381ad",
+      "bytes": 3505
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v1.json",
+      "sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+      "bytes": 2230
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v2.json",
+      "sha256": "427b43178ed8dfbc706d0abdf9ae961e401bd22939d01d51066bd2fd346cac47",
+      "bytes": 4699
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-receipt-v2.json",
+      "sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+      "bytes": 712
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-repair-diff-v2.txt",
+      "sha256": "7fac2d8a847206ee07b6c84d0c7073483e95b5ad31d6aa2599f71cb4623b5ddd",
+      "bytes": 7526
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v2.txt",
+      "sha256": "7bea09844c7c4b645d3dbf65c51778081b3faf9219d8f200265d9d72d8539d63",
+      "bytes": 747
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/repair-source-diff-v2.txt",
+      "sha256": "b1d859802fbd09ad700ed729b17b57d5eb6fe2667531d32a718448f27ea00a5b",
+      "bytes": 12285
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/scientific-scope-v1.json",
+      "sha256": "5a2ef1af4e9710fe6975b95e5f665657c627b587d1e412cddca117ae7dc366d6",
+      "bytes": 8871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-correspondence-v2.json",
+      "sha256": "f06f1b5598ca051d96eaac7b8898b9648e7905fbd3e39092638dfe84ad806d83",
+      "bytes": 2267
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-inspection-v1.json",
+      "sha256": "3d795b629c334ba62412e677635b1fa5d2b5962605f24e1cdeffc2081b79c61c",
+      "bytes": 247
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v1.json",
+      "sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d",
+      "bytes": 15142
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v2.json",
+      "sha256": "85cfa5a461a0df5e54c2a9746ce55b92cad666c7a0ac5848766e593eb07db80a",
+      "bytes": 17470
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+      "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/freeze_full_audit_v2.py",
+      "sha256": "555591f354695c3e7bdcb82f584e479b50d9f0213eed2d988303686e70fc4f93",
+      "bytes": 7054
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+      "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+      "bytes": 113027
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_lifetime_v2.py",
+      "sha256": "a6a6b97c98af0e5b1048e34072ce4610fa836679f897072e299476088bcab48a",
+      "bytes": 5931
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/integration-v2.json",
+      "sha256": "94be910c6a85c0a5e3c75018ecb4217f6afaca4a7b8ed04d3afd46f67ff89716",
+      "bytes": 3443
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/prospective-gate-v1.json",
+      "sha256": "1669479e168bc7b742c3749314a53c8c999e0c3c6d5ecc23dc7f129919a596f3",
+      "bytes": 6435
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+      "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+      "bytes": 4217
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+      "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+      "bytes": 3046
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json",
+      "sha256": "8c03bdb32166ea32a1aa9ba0d8e95bba6ff69912b816fc8058eba8710fe0339f",
+      "bytes": 10807
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+      "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+      "bytes": 1951
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/build_transport_argument.py",
+      "sha256": "93efacde99026744f26ed6b6a32c172a92e3c9bb8250c3a9aa288c1e7cfb32e3",
+      "bytes": 12819
+    },
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/constant-transport-ledger.json",
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    }
+  ],
+  "member_count_excluding_this_receipt": 87,
+  "scope": "Own static phase, exact authoritative inputs, reviewed argument closure, independent finite audit, compact reader sources/data, and both preserved failure histories. No generic compiler/native authority claim."
+}

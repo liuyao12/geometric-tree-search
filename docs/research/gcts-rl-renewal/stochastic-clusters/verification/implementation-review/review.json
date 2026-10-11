@@ -1,0 +1,47 @@
+{
+  "status": "passed_read_only_semantic_and_update_wiring_implementation_review",
+  "reviewed_source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py": "a19475a067bd339f3e57ee01eda1e4e8d8e528203c013ae4a555182f6cd5a865",
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_worker.py": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+    "research/gcts-rl-renewal/arithmetic_stochastic_features_v2.py": "529ffcb219ff525612abcb0146817dc460709a09e214b1012b3a65b14a434b08",
+    "research/gcts-rl-renewal/arithmetic_stochastic_search_v2.py": "16d6adeb2516ad8f96751e5bbb74239673c2d581cae15eebec991f001659ade2",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_v3.py": "81dcd78293ed01bad1b10ef5bda41541f3440645964e1e47b10ff967194ff3b6",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_v3.py": "cc67271fe24a570f2268007368661de5e719350e93ce3fe55fa9bbaa954cc56f",
+    "research/gcts-rl-renewal/stochastic_policy_math_audit.py": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+    "research/gcts-rl-renewal/commutativity_cluster_audit.py": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/commutativity13_guidance.py": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3"
+  },
+  "plan_sha256": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+  "source_zip_sha256": "8e1dbc8a72397a6c03a1f70f8ac956fe42b454d2a3490df70088031c701de2a0",
+  "findings": [
+    {
+      "severity": "nonblocking_metadata_guard_gap",
+      "source": "arithmetic_stochastic_independent_audit.py",
+      "issue": "Defer selection does not explicitly reject node hint_start/start_review metadata. Full hint/event consumption and child-state reconstruction still check all executed behavior.",
+      "suggestion": "Assert these fields absent for item=None, as in the prior literal tree auditor."
+    },
+    {
+      "severity": "nonblocking_metadata_guard_gap",
+      "source": "arithmetic_stochastic_independent_audit.py",
+      "issue": "Base lane tree does not explicitly assert zero weights or stochastic=False; these weights cannot affect base choices.",
+      "suggestion": "Assert mode-dependent stochastic flag and base zero weights before tree replay."
+    }
+  ],
+  "reviewed": [
+    "Full scalar point-universe binding through independent model_binding reconstructs every command/guard/input support and initial target mark.",
+    "Literal graph global dead/forced/earliest-generation selection, all base fallback alternatives, inherited waiting hint and child state/generation reconstruction match producer.",
+    "Legacy9 feature order and historical48 normalizer remain exact; command/guard AST and relative source/port tokens, assigned-zero membership, source degrees and complete distant mark-neighborhood counters match producer.",
+    "All actual pools/work/features, sparse score/epsilon mixture and one seeded RNG draw/event are replayed; independent fsum arithmetic tolerance2e-11 rel/2e-12 abs is declared; chosen RNG index remains exact.",
+    "Metric collection including peak satisfied obligations and actually placed changed-first counts follows the producer event/placement order.",
+    "Training worker reads transition.update.baseline_before, binds exact trace bytes and episode/seed, enforces previous-transition weights/baseline; independent update uses corrected mixture gradient, mean score gradient, advantage then L2 clipping, learning-rate and coordinate limits, EMA and all detail dictionaries.",
+    "Updated-weight digest binds exact stored weights while independent recomputation uses declared float tolerance; trained evaluation binds independently gated final policy bytes.",
+    "Audit worker is prospective single-output, records exceptions and retrospective kernel/time unknowns; actual lifecycle gate and source/input freeze remain root-owned."
+  ],
+  "scope": "Read-only source-level correspondence and AST parsing. Does not execute search, training, native query or actual-tree replay; source review cannot satisfy the actual action-effect/training/evaluation gates.",
+  "target_searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "authoritative_owner_handle": "root-owned session5413; not polled or duplicated by reviewer"
+}

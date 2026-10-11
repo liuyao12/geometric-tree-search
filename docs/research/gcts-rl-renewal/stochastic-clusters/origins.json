@@ -1,0 +1,1634 @@
+[
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-audit-plan.json",
+    "sha256": "5c7dfe74a643f5a3dce19bfff2977cbf09c990336d1163c6634e2e2bbdb26231",
+    "bytes": 5339
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/phase-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/phase-summary.json",
+    "sha256": "f90476454ac27f6fb62aca3ffe7988bb720a8c66f8935f90ff32b72c99a61316",
+    "bytes": 6876
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-summary.json",
+    "sha256": "a20f979ee84e9cdf58c5c09dceff620ad15e07b3e674ec458eb1dd97a8c8dcdb",
+    "bytes": 1720
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-search.json.gz",
+    "sha256": "38deda367bd1d7a7361d630749f881bac4a1e18a7a29f9fe1b866826ea8cd59e",
+    "bytes": 2416974
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-stdout.txt",
+    "sha256": "542b8b0457d2cf83075858fefbf34e3daa10dd7501edb731126431ba2f648ff9",
+    "bytes": 1574
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-audit-lifetime.json",
+    "sha256": "294861658deb5294c56cb3555aaae19b26658976836b6a65f4450be67f35a234",
+    "bytes": 519
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-audit.json",
+    "sha256": "abac9d4f40b2d16fa703949cc63153dc6982f06c649c076f6d6a95488ec905b2",
+    "bytes": 1377
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-lifetime.json",
+    "sha256": "9ee827956a551abd1d08603765936e3bd14fcf461c730dc52ce65250ca1b9259",
+    "bytes": 5274
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/independent-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/independent-audit-plan.json",
+    "sha256": "513e614ee099e0fb83126c336d21e536a54081cccbb36c3078ab9621d61c3147",
+    "bytes": 5355
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-audit-stdout.txt",
+    "sha256": "fecb60c24e9d2820bd6cdc04adfb970907e3fb3ec53dbef8135813fba0068005",
+    "bytes": 1189
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/independent-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/independent-audit.json",
+    "sha256": "ba1ce927b2c5307855e72a1af6fd05ecf4613502e530b8afbcab3fba2918bf06",
+    "bytes": 2665
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-checkpoint.json",
+    "sha256": "d7a7a217eaa8b308a1fa8070caac4aae314a11b64b3fd33dd9b4e908853fffa9",
+    "bytes": 3837
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/effect/effect-pilot-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-lifetime.json",
+    "sha256": "85660a9e5db6ff297a94df9a78756159985084cf7298e8337682553f5a18f7ce",
+    "bytes": 5007
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-policy.json",
+    "sha256": "19bfe8bab076a33b65a22f4f2c695b6c096759d6b0745499a221d027cda16b01",
+    "bytes": 99221
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-stdout.txt",
+    "sha256": "b83473bea16685795cefc668523c2849ab30351cd801baaf621d6c39a9b552eb",
+    "bytes": 1619
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-audit-plan.json",
+    "sha256": "979973fb02c2a2e9b1e9366c25805f77cde43b7316adeb585bc9fe7a6d5af3a0",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-checkpoint.json",
+    "sha256": "e09e82df42ed6fc33d6c45c317f0d642b2f318da4f7b4801efefab9e205fda71",
+    "bytes": 3847
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-search.json.gz",
+    "sha256": "bf7e7767668a9961ca7860d87d08db0d2c45df26202af539e0d99324d4da4876",
+    "bytes": 2943580
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-audit.json",
+    "sha256": "672bfec30187d9c59bfc0672c0495a943c6891ec96f185248f8adac104ec1bc0",
+    "bytes": 47622
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-audit-stdout.txt",
+    "sha256": "61f3e8e33b964f94506a3ec5e56c672bff3fbd66c87d2b2bc130229e0b72658d",
+    "bytes": 1281
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-search.json.gz",
+    "sha256": "92d4a23c80bc6df640ccf72d0c5be86ac997aba7c05eb71e51f98220a7cd1b76",
+    "bytes": 2440270
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/phase-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/phase-summary.json",
+    "sha256": "0b19dc1c27abe7482a39982273479c98220e0bc0667974bef41c0d2234082494",
+    "bytes": 47079
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-search.json.gz",
+    "sha256": "6d1627cbd54e44a2ed8b1a9504972564d0795e9e98c011ff4a89e4329fb68495",
+    "bytes": 2432330
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-audit.json",
+    "sha256": "8fb6b6a1a1e974a802bba9f145379affbf50783f5200fec010b4114d27953064",
+    "bytes": 79508
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-summary.json",
+    "sha256": "21f05ede2c2c5a5758314abb3c4a05555a40fc814b2e2d2395c428b10790e75d",
+    "bytes": 1735
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-checkpoint.json",
+    "sha256": "899982c1d2bae09fd1966d4731b8c29cfa529254f3695df7ba911608f11cc960",
+    "bytes": 3823
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-policy.json",
+    "sha256": "16774b3c8aaf58000943ddd8c7d9a64f445636405035d4588ac66de9956c0d5b",
+    "bytes": 225232
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-search.json.gz",
+    "sha256": "7c1a133353231384f262c09125587dc5370ec3b534771c3075cbaf2de9bda8ac",
+    "bytes": 2432181
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-audit-plan.json",
+    "sha256": "d3f348c187563cd4187f0cbe0ce191f18fc79442d30dec708e20bda1ee991aa5",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-audit-lifetime.json",
+    "sha256": "74b0f145044879693111138e9b22f0f0f8b95e19e203e5d78a2772717e2163a9",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-stdout.txt",
+    "sha256": "f5030bc158099573244b01ebe14e58b12ac73c8ce54bc6b3ef996dd91ef29a3b",
+    "bytes": 1613
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-stdout.txt",
+    "sha256": "b2a0aa88a349a9035be3edfb7696d4cea7537fda358a863713d1c16df5f1930b",
+    "bytes": 1603
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-lifetime.json",
+    "sha256": "74c5212b22a2ef2022f756c44db4797bbb3233a17c6910099dd1f2fdccb0b5c1",
+    "bytes": 4783
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-search.json.gz",
+    "sha256": "cd56ea0697410b07fad6a054d5b0f27a0d21aacae6b805cdb34a2195a52d0057",
+    "bytes": 2863558
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-audit-lifetime.json",
+    "sha256": "4b27569efbb6e5821429062893720cb31d08bdf5890168450eed6d720e4c32f0",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-lifetime.json",
+    "sha256": "71e1fe74a11ba7893c1eeaa8425c5acd977e46fa6c80147b0b82bd249ad2c289",
+    "bytes": 4312
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-checkpoint.json",
+    "sha256": "ced0d62100e939aa56334186c8dcdc332dc118d0c574cc1b564f6db89e940af9",
+    "bytes": 3839
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-audit-lifetime.json",
+    "sha256": "04dd5703c24c721114602e3f94dca86db30a020f837fe292652e25d74f62fc3b",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-policy.json",
+    "sha256": "7a9e9a7c5373b5fd4e9d8a3e395aefe6d08bd38d6d495fd5e20c3251dbaeeae8",
+    "bytes": 155766
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-audit.json",
+    "sha256": "32486f25e915dbfd6c0118a782ea52a936d3e1786b78b711d869c21b514f39cb",
+    "bytes": 54517
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-audit-plan.json",
+    "sha256": "28dffa8a0dfa7dc10126d6b3cc82909ffa705aa1932b80b0a39a5501dcbf5b40",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-audit-lifetime.json",
+    "sha256": "65a92cccac37fda5e4fbc0925d20e50b04d9097c208051c605e3dd10d80750d4",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-audit-stdout.txt",
+    "sha256": "572cfdf6bd27c64ba03e459784c95a4512ba3874be2a8364b0378ff40383a771",
+    "bytes": 1259
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-summary.json",
+    "sha256": "9e8f1b7c6475ae7041e990a7f3ca839be821f865f2784e8c8fc218bc1431d68b",
+    "bytes": 1754
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-summary.json",
+    "sha256": "c5937e03d129eab89c1cc4364f16cd301315d747d0f428dfa3d69502130afbe8",
+    "bytes": 1724
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-checkpoint.json",
+    "sha256": "de9fc9de7815e40f24aa90eabdaad1ae4bd8e42723d03f41feaa0d4f2d11d9af",
+    "bytes": 3848
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-audit-lifetime.json",
+    "sha256": "07bea11e85fed90e8bdf68c465b45079fd93552a55666b3502d599dcccd910d6",
+    "bytes": 521
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-search.json.gz",
+    "sha256": "684c2bde9ff7f661049a2094e09bf72377c0060708a585aa3972e43f9667b962",
+    "bytes": 2464089
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-audit.json",
+    "sha256": "195b6b7cc9a000dbb46e8e661a023003aa5dd55731735353941d35da4e6cd1df",
+    "bytes": 36217
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-audit-lifetime.json",
+    "sha256": "5ac5be119c86d83d1999df1a0888f98ce2b944331fd75f4f8e7d3f5221330136",
+    "bytes": 522
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/policy-final.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/policy-final.json",
+    "sha256": "fc45b236e35b444547ec18cb95b68a6fa3b441a03f02e2c6962a4101265d5387",
+    "bytes": 74735
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz",
+    "sha256": "8d4a43c6b432624bcf8d5798e0e3e83d9792fee2b131b1830b016eb3a27d8a97",
+    "bytes": 2422130
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-policy.json",
+    "sha256": "478b2254e166a12c978d329738acdb6751120247889fff4b4c5c754a2304ffca",
+    "bytes": 201494
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-audit-plan.json",
+    "sha256": "f60747909ede342a7dda2b9e5903adc1fa299000a0cc91f7e7eec48d294280e0",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-audit-stdout.txt",
+    "sha256": "74750a586912b73d092578fe77d78c90108d7307a1de715dcdd4dd94cfb26dea",
+    "bytes": 1278
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-lifetime.json",
+    "sha256": "6f9c3bc2cb93cfb673151537110a08d834f335db924072a8fdc002abf3ac2671",
+    "bytes": 4673
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-audit-lifetime.json",
+    "sha256": "9899583c9ca152f401a7f93e9b5b9b723ddd3aad8a19c254805b6c0bb089fa57",
+    "bytes": 515
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-stdout.txt",
+    "sha256": "bb2ccbaba66692a37a68aadaf89dacb6e126b12b790fb2b6b9354b5ed7ec0d85",
+    "bytes": 1599
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-policy.json",
+    "sha256": "21a4eff3eee75608ed479e9ec5596c017ff2339cf4a5e47c27c49fd606ac3371",
+    "bytes": 69136
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-search.json.gz",
+    "sha256": "7b4292a61a6e9c1281bf7b22ed148b907c2d666257fe0df1efd681aa5f581928",
+    "bytes": 2436460
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-lifetime.json",
+    "sha256": "24effe95e2d6b879a1ec7da9cd9b22d1f7f30f829879485c9c50a1fa665c29fc",
+    "bytes": 4180
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-summary.json",
+    "sha256": "31689f533b409cbbf307f6d01e0262db5971674b3952a933de9e307824ad5184",
+    "bytes": 1761
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-audit-lifetime.json",
+    "sha256": "13c796d701e709d290b02980a5bd5d25dc6ec6304ce7c1840c81f637e1fdfa79",
+    "bytes": 515
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-summary.json",
+    "sha256": "6aef3c896c2c8853019e3327404b54b555c65b2ba2200229038f0cf21662d8d5",
+    "bytes": 1751
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-audit-plan.json",
+    "sha256": "6ee0cb9c937b6f145cf997d4caf28bd46c7e8f3d3bbe831361cd8d115e26d1ca",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-audit-stdout.txt",
+    "sha256": "53ba68f03df28a0d316f0b1355cfdd81ae44a3eb4ff708f3f17e073481c7517d",
+    "bytes": 1257
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-audit.json",
+    "sha256": "0b75e46fa3d820dcc05e08258d7c5303a3dd11c3f8c5558a307cfe04da038066",
+    "bytes": 35931
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-policy.json",
+    "sha256": "6058d7c56b597b56fb697ad43adbd8e3577ded0187a17809935911efc6523d49",
+    "bytes": 155322
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-stdout.txt",
+    "sha256": "73552cd08df190e93a3da4fc4b748982b612eddeef45ddf86dbb3dde12fa69d9",
+    "bytes": 1587
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-lifetime.json",
+    "sha256": "d1f1d1506c68137c168bfdc2f68baa9d20df788d29edb35c7ffbd7741c689a8e",
+    "bytes": 4544
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-summary.json",
+    "sha256": "2bb7e8d598b7a8653e1f24fc8984e85fc2054e2b5a5bc49396d929f33afe8d60",
+    "bytes": 1767
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-stdout.txt",
+    "sha256": "34fbe45971633f8a546dc2083a5cb5d0b8c4b39636b361fd8a22aeda531a4d7d",
+    "bytes": 1580
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-summary.json",
+    "sha256": "560dcb1e0c5c0ad0b98ef4459acb1afcc74d2b1d69f9996673c5846d1d75eebf",
+    "bytes": 1743
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-audit-plan.json",
+    "sha256": "7183ed11e7033a16e51cef1d0181e502e3560678b29e8ac9ba153a3572977a8c",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-lifetime.json",
+    "sha256": "bbafc8e11027a673a770d3158d3ec4f275339b813910cffc606c81a1e5377060",
+    "bytes": 5365
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-audit.json",
+    "sha256": "3d3441c122e83d2a5621829479c45873a2992ef7b79062842e055cd2b4fe06a8",
+    "bytes": 53444
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-checkpoint.json",
+    "sha256": "efdf56bfe830b03a577615be1f28504585c8b23d2a6266f7f1cb7711ab846ccc",
+    "bytes": 3821
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-checkpoint.json",
+    "sha256": "717c24c2afb2091f6537e292d9fc4595f1e99b1e8657a7606296e6f86fb722e8",
+    "bytes": 3841
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-lifetime.json",
+    "sha256": "a13a1b7c45094d5c69a316c238a9a6d4bd8a784f53a6fe873f3cb6fc6b85a277",
+    "bytes": 5277
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/independent-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/independent-audit-plan.json",
+    "sha256": "cef1186205efcc7de08f7e03ec5149a66094027540d1bc036ffc85e28c37babc",
+    "bytes": 13416
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-summary.json",
+    "sha256": "507bf75d38c3f878774b419df58c8108fb14defd68a36ad90968cd9fe529ac81",
+    "bytes": 1752
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-audit-stdout.txt",
+    "sha256": "a27887e22867857182ccaab6b57c41d3d5b8ee7b62a5ca498f88f542f9156de7",
+    "bytes": 1287
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-policy.json",
+    "sha256": "afb886320e1d0e38cb6636e9335e7d574ee1d0790ad3c8b46f6c3cb1912dab83",
+    "bytes": 107423
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-audit-plan.json",
+    "sha256": "a4849624fb648086820210b6acb23a5456c711a8cc6fe6c8699e93d661ad9cde",
+    "bytes": 5616
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-audit.json",
+    "sha256": "0dfdcc3d35c27ea2504995696fea771bc82cbeca96262ba04f4530d5f98cdae6",
+    "bytes": 91488
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-checkpoint.json",
+    "sha256": "ccaaecb6108e54e5ae411f4902f5fff3bf798718d520873fa3c2d6ee1cb54a4d",
+    "bytes": 3847
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-audit-stdout.txt",
+    "sha256": "61a980eb801a8fca3b2ad93dd9ba1cd26c799baed7ae96aae04a406ba3d8b2e9",
+    "bytes": 1281
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-07-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-07-stdout.txt",
+    "sha256": "5d7b99865e7b78491629abc0719edfb489bcc9363cab4ee884229d7f89b8660c",
+    "bytes": 1604
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/independent-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/independent-audit.json",
+    "sha256": "5c10abeb1ec555468cb0512e67fee00ee304d464f0c444418dbd3a2263f560dd",
+    "bytes": 483167
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-stdout.txt",
+    "sha256": "2e3c6d877c77a70240a31f4fe84e91729ab06424117bbcd4160606f0f40f247f",
+    "bytes": 1606
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-08-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-audit-stdout.txt",
+    "sha256": "a1347ea1fe9456422fba978d6afe243aeec0ae8f1b74366e329c86886a138a5a",
+    "bytes": 1285
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-03-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-03-audit-stdout.txt",
+    "sha256": "ac8f3b540611fe4eed45a2ab75f9897f59ea0fa86de6035732e47fab1bd7d9e2",
+    "bytes": 1279
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-02-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-02-audit.json",
+    "sha256": "aed406fb73f3a1055e44ed4a1616c4352bf3c56d5f584a660493de5b6fdcbc04",
+    "bytes": 51582
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-05-policy.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-05-policy.json",
+    "sha256": "bd5edbbae085311080e0d846ed1f5f2e409e558c0eef7b3e2b9155c5dbf60711",
+    "bytes": 144295
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-01-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-04-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-04-checkpoint.json",
+    "sha256": "b440d1f7ff67b80a46f44a245b5cd801c464019c2d89b7d76e2a885fa951a641",
+    "bytes": 3849
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/training/train-06-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-06-audit-plan.json",
+    "sha256": "0af322f9cf1670607a3921e72321ed5d98038d98b2cfd9f5cfce33d8bff7830d",
+    "bytes": 5916
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit.json",
+    "sha256": "86b23ececb85b83484b5693c2ffee0adad67415a5c8a42e0e3c589986e324c60",
+    "bytes": 868
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-audit-plan.json",
+    "sha256": "b33f392b1f0325da8615ad3244b0ed97f842ed95d309c2577f3d6d431f31ba93",
+    "bytes": 5934
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-stdout.txt",
+    "sha256": "df29a480bfdde3b2d8c8f5dc915eb55327cfcb24bdbc17f198d62db06c75d0ce",
+    "bytes": 1087
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-audit-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-lifetime.json",
+    "sha256": "5dd399bdc5662baafc518a46dd02875ebf9eef0db8f87b2cb3c704d7ac43f5be",
+    "bytes": 518
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/phase-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/phase-summary.json",
+    "sha256": "252daecc2762c5c2d7ee066d70af117d0aee95a6b32e3a172db44f81fd7f182c",
+    "bytes": 207388
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-summary.json",
+    "sha256": "8d58eb1bf21a159cc51c010c935b99cbe0fc9511897c7e6bb8ee4dfd22e162ed",
+    "bytes": 1739
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-checkpoint.json",
+    "sha256": "cac8ae1246829b750ef599c45d23477269440458746e618998a3d11e65778fd5",
+    "bytes": 3271
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-audit-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-audit-plan.json",
+    "sha256": "4d17c1fde0a0d6ce9eb18b68808a4e1966ff714ccc4093e4aa7adda28055fd9c",
+    "bytes": 5368
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-lifetime.json",
+    "sha256": "1830e4c8d966589b3f1cce653cf16b4ac165efc1163de62dfdf564628fa3a1af",
+    "bytes": 30773
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-plan.json",
+    "sha256": "6fc746ccaa8908c45a8efa982d1788d8ac264524c1c55ab873dff6b54b822649",
+    "bytes": 5333
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-stdout.txt",
+    "sha256": "05ec8bb46177a7863fbf4e64fc6be7eb1719ccd2335887618c0d5790a0caf04e",
+    "bytes": 1590
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-checkpoint.json",
+    "sha256": "5f178f0b95784fcee50bd3f4f5d142fe827d6a03ce3e749a154540829544d01b",
+    "bytes": 3861
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-lifetime.json",
+    "sha256": "9efee273bc8643abca5dbc3933bb1615b8f210233d3bcec938f7f41c79976259",
+    "bytes": 24473
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-lifetime.json",
+    "sha256": "d6468676e5083d876049bf05aab630fd1033ca3add04879c24fc33224be1c8f9",
+    "bytes": 22689
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-stdout.txt",
+    "sha256": "15c7446ff96e4290cd0a0be06ddc7c0c9c3b058cee4449f47e2871bab511d295",
+    "bytes": 1596
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-summary.json",
+    "sha256": "431a7a9ba1c9454a39ff0cd5df74b8a3999c3514312f88be3408798cc88fd564",
+    "bytes": 1168
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-checkpoint.json",
+    "sha256": "2cf4e7638f3e2254a585a93f067ade8f685ca48e86e1135a0ccbbbd7457eec59",
+    "bytes": 3850
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-lifetime.json",
+    "sha256": "8a1e91a011071160565014c5a9403500ee2d04f93fe64b387ebacf8e0e5d1da7",
+    "bytes": 28181
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-summary.json",
+    "sha256": "e5e94fafd91ad6b78ba1f092dcb005302d45d6f7a3126ac65258b81d751770c8",
+    "bytes": 1737
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-stdout.txt",
+    "sha256": "6e419e9659f0dfc92404b952cabb1b4b32c570981b5afe757bbf1a34a920d0d8",
+    "bytes": 1591
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-audit-plan.json",
+    "sha256": "9823568bd5f0bf06e266b04f721d2b40bf90ea4139819cc906c0a33dfe4a0653",
+    "bytes": 5368
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz",
+    "sha256": "c4cd9b1c1891980aa43ea4a28e313514947f07140c871ca6185ea060d8ed8f8f",
+    "bytes": 15351102
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-checkpoint.json",
+    "sha256": "51dcbf9fdcb96ca9e39b849022013a94ee5571cca02db982169a7fcc500f5539",
+    "bytes": 3271
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz",
+    "sha256": "48821a8d7f13dd1d046b01b3b2522b5a0eac96fce1daba0915b29d784b86b154",
+    "bytes": 15883894
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-lifetime.json",
+    "sha256": "bd4ea26ef0d801b6bee93af9806bb42d9458f8dc61f08f7ee721c2e6b21ffc3b",
+    "bytes": 30691
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-summary.json",
+    "sha256": "0782afc93dafb9cc0c14f8c74d3311b70060057354c00b7c6cee7d51e6e77bfe",
+    "bytes": 1165
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-audit-plan.json",
+    "sha256": "df05033f141dc40244a9ac65c7cb7080e1ac70b7a5c26b4040cf4bc3d06b21ab",
+    "bytes": 5934
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-stdout.txt",
+    "sha256": "5bcd4f96a066f05c0b64f8016622fccbf9a1809406c806f449e65b6974040db3",
+    "bytes": 1593
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-lifetime.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-lifetime.json",
+    "sha256": "6bb234cb53d0fe8d07b3ecbebd27a5416c4feadc3fddc2108f504882d6e90136",
+    "bytes": 29712
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/independent-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit-plan.json",
+    "sha256": "35a6781ba73de988a4e42191b28daff11225c2d63047541f54439961d75dcd49",
+    "bytes": 10406
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-summary.json",
+    "sha256": "9f5d3711235398c3244176a6cc4ab87d88f5c18c0a8d92a7eafa6761324b5fb5",
+    "bytes": 1742
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-audit-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-stdout.txt",
+    "sha256": "6f35fe164e4acb0ce9a9b88ed24e1ec23963a624c5dd08d755a8c5668f636f97",
+    "bytes": 770
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz",
+    "sha256": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+    "bytes": 16064106
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-checkpoint.json",
+    "sha256": "1c1d5ee2a6a01dc61ce3713bdbe0efbc742d45b1a75a4319c26348da767cec7d",
+    "bytes": 3854
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r1-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+    "sha256": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+    "bytes": 15351119
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/independent-audit.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json",
+    "sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+    "bytes": 2154
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r1-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+    "sha256": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+    "bytes": 15771707
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-checkpoint.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-checkpoint.json",
+    "sha256": "1f345cced32e9219d96b8eee53ef189e97d183128a5dac56a547485eb35ff370",
+    "bytes": 3861
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-audit-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-audit-plan.json",
+    "sha256": "86ce70b6b73022e1eeddc7e6e77a711ee092902465503cddc40e4e534d1ca806",
+    "bytes": 5333
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/untrained-r2-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-summary.json",
+    "sha256": "d6e28c09d05aa9d1f5e6386d4aed6bdfeff2067a0bba74f9c2f08d2fd093ee5a",
+    "bytes": 1736
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r1-search.json.gz",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz",
+    "sha256": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+    "bytes": 15980438
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/trained-r2-stderr.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/evaluation/base-r2-stdout.txt",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-stdout.txt",
+    "sha256": "9d7bf5befa4a66fe4b1d173f341c67117ce1940940f11b71f3b989a6234805ab",
+    "bytes": 1090
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/activation-effect-training.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/activation-effect-training.json",
+    "sha256": "67d36c91228162acbe8b82554a354690e5e6f6a0821f197f8585ab32f3d148cd",
+    "bytes": 561
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/activation.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/activation.json",
+    "sha256": "870913bf54e55ffc063ff06b28e2e57b5ebefd0573a3636dfbb5079efd57fa1b",
+    "bytes": 950
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/activation-effect-only.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/activation-effect-only.json",
+    "sha256": "cf9d94e8099e94203f78db41135d8db5811bc5f10e6c40591e7b7ca549e98cf6",
+    "bytes": 348
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/source-verification.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/source-verification.json",
+    "sha256": "24c80b4864e2136af50857319b87a8046ea33e2a9d314e85eb86ee9e94968f7b",
+    "bytes": 562
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/final-audited-v1.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/final-audited-v1.json",
+    "sha256": "6adcd0abbd832895e8bbecf6a2eabb6c1dea76892089335df9d84149c81d693a",
+    "bytes": 92106
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/plan.json",
+    "sha256": "43c88d35e966cca674a52dc96c1cfaa4e398cb07fc110b93e4df7e1473bd1a19",
+    "bytes": 1498
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/fixture-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/fixture-plan.json",
+    "sha256": "bc51330432007ca0f2f0b4b01778b0389d15cc119144f773e216f42ff27c088c",
+    "bytes": 1159
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/manifest.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/manifest.json",
+    "sha256": "f133e8e1f205b0417c4f2562ad42062ef17d041b3eaaf30fadc2f28446ca7303",
+    "bytes": 928
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/fixtures.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/fixtures.json",
+    "sha256": "dfeafb729749b465687945bee1fe5fd06b0101009e41c48cd10523429fbe993c",
+    "bytes": 446
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/collector/fixture-manifest.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/fixture-manifest.json",
+    "sha256": "e12f5a504caf73cb4b0ccbd9fc73e0c25317a30e0d225f42c5870c12937c0f0e",
+    "bytes": 481
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/memory-diagnostic/plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/plan.json",
+    "sha256": "cc1d0476221bafe35168b6117c98ebbf228f01b52218b2c63a8136dfa78ac611",
+    "bytes": 3667
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/memory-diagnostic/source-snapshot.zip",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/source-snapshot.zip",
+    "sha256": "375afb0b08c01817572cef9a7d4777a2179fca04469eacffdf380156b0a55975",
+    "bytes": 16977
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/memory-diagnostic/manifest.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/manifest.json",
+    "sha256": "accfa1abac0b3f8e539718814f7a46150130166e79ebaf709a76c77a584ce143",
+    "bytes": 1099
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/memory-diagnostic/diagnosis.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/memory-diagnostic-v1/diagnosis.json",
+    "sha256": "2bb847520760b450fc77094967dfa76b99822696982517942a512040800e0202",
+    "bytes": 8971
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/experiment-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan.json",
+    "sha256": "635079ab4e08c373f329b4c3201ca1e9279097a911973fe6a83711ba93b43a5d",
+    "bytes": 24119
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/experiment-plan-v2.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json",
+    "sha256": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+    "bytes": 26781
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/source-ready-receipt-v2.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/source-ready-receipt-v2.json",
+    "sha256": "b2dee01fe2ed43fd18311b2895878683366d95d5abd476b57856964dbb68751f",
+    "bytes": 5607
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixture-plan.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixture-plan.json",
+    "sha256": "9b30d0ecc242129c1511a453ace0bf91398b4ca2c73dcbd914292f8d2a243bec",
+    "bytes": 9712
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixtures.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixtures.json",
+    "sha256": "3a23332822b2e306e046836425f0445e2d1b4cf877bfe35f5a628d51df9ac4c7",
+    "bytes": 394
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixture-plan-v2.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixture-plan-v2.json",
+    "sha256": "dcaa8cfff05f2a4b38585fabf43147babad66fb58603ef66790b817d178e13b1",
+    "bytes": 9982
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixtures-v2.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixtures-v2.json",
+    "sha256": "7b9fce0dec5b4b17e642ab1d6041c4543353b132e30ff6f2daf5686a707d3ddc",
+    "bytes": 421
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixture-plan-v3.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixture-plan-v3.json",
+    "sha256": "81348ef051acad667d588884db6b8fe71c85f6f82cecafdde2f295185e28582f",
+    "bytes": 10793
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixtures-v3.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixtures-v3.json",
+    "sha256": "6748f3b8a64146a612e110d2b107cef2e0f70ee7b9113746d74a6fc6544b538b",
+    "bytes": 17629
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixture-attempt-01-source.zip",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixture-attempt-01-source.zip",
+    "sha256": "f08ee17e0cc5901c96e5742ab0844836578454be2f140bd016f069ac4ad0d8b6",
+    "bytes": 609800
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/fixture-attempt-02-source.zip",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/fixture-attempt-02-source.zip",
+    "sha256": "422f1760eeb3d667cdb12a4bb64a052330bc4183eb079afe69e3929e5e44a3db",
+    "bytes": 619396
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/review-source-freeze-v2.zip",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/review-source-freeze-v2.zip",
+    "sha256": "df08421a848c111f9397f7945f70ffd802508637d4655c5901d4d69dba643d0a",
+    "bytes": 651381
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/arithmetic/preparation/failed-dispatch/phase-summary.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/effect/phase-summary.json",
+    "sha256": "ef4e4bd02d4adf6bec4dc73ce617255fd8fa69832cc39d8a328efb80eb69f085",
+    "bytes": 423
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/policy-math-controls.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/policy-math-controls.json",
+    "sha256": "ee515b33d658dc0824fba5f53c6900c78d8f8230ff565bdab11677401a51d6df",
+    "bytes": 4187
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/independent-feature-fixture-plan.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/independent-feature-fixture-plan.json",
+    "sha256": "6b0f6fe96bbd50b547d761bf1f7cb44cb3bec6b51368faade23acb915c875b5f",
+    "bytes": 3463
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/independent-feature-fixture.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/independent-feature-fixture.json",
+    "sha256": "b1f65c47174447f99b51ad035b34c6de47b0f9f0f6a7c7c1c7152f76308c5c5b",
+    "bytes": 467
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/independent-feature-fixture-sources.zip",
+    "origin": ".gcts-active/primitive-policy-program-20261011/independent-feature-fixture-sources.zip",
+    "sha256": "ef021f1a1ad719d4636f86c397874b06a42736392ea4c7e4de4ec82b86de2f8f",
+    "bytes": 124576
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/trace-mutation-plan.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/trace-mutation-plan.json",
+    "sha256": "be3cdbd0b3270f70a6fa8f97eaa1e4a8ca307523e156496a870cfd7fcbd8e5ac",
+    "bytes": 4280
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/trace-mutation-controls.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/trace-mutation-controls.json",
+    "sha256": "eb5888c87096b7cc3c3d0b7d506afef4c7de473b02711d33f97cebd8121f0a1e",
+    "bytes": 1319
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/arithmetic-root-review.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/arithmetic-root-review.json",
+    "sha256": "112eb2e4a4ca9a6279154f47718876b30f244d17d457be87e5e99b9a30c60582",
+    "bytes": 1199
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/report-scope-plan.json",
+    "origin": ".gcts-active/primitive-policy-program-20261011/report-scope-plan.json",
+    "sha256": "a848fa26e9b6b97d30f36cb21b9b44d855ce34dbe9fac076eb19b6a0cf169749",
+    "bytes": 736
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/implementation-review/reviewed-source.zip",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/independent-implementation-review-v1/reviewed-source.zip",
+    "sha256": "8e1dbc8a72397a6c03a1f70f8ac956fe42b454d2a3490df70088031c701de2a0",
+    "bytes": 57443
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/verification/implementation-review/review.json",
+    "origin": ".gcts-active/arithmetic-stochastic-clusters-20261011/independent-implementation-review-v1/review.json",
+    "sha256": "e2455938128f3dc3ad7506d1d2c60dce69e2d5c1335de209bc5d052037a70421",
+    "bytes": 4584
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-stderr-v1.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/example-correspondence-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+    "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+    "bytes": 707122
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-stderr-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_static_run_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v1.py",
+    "sha256": "5591b581edbd7e3bac3e882a2f94d19eede6828720df597a72782917d7ab0056",
+    "bytes": 6271
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-stderr-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-stderr-v1.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-extraction-plan-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v1.json",
+    "sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+    "bytes": 2230
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_expand_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v2.py",
+    "sha256": "39554293d667c48db05c53dea4086cbe3b7fc398eaf6e1d707e339d713b58c36",
+    "bytes": 33077
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_data_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v2.py",
+    "sha256": "908dbf01c4cb2c9cb13879d442ebd00cf059c949b069b67eb00cbd7ba827a6e1",
+    "bytes": 8401
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/outer-lifetime-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v1.json",
+    "sha256": "002456c70e9c33df54cdaa0734bf7210b9048226dc2f9f9e58eeef14b682df56",
+    "bytes": 1044
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_freeze_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_freeze_v2.py",
+    "sha256": "25f067fc837064bd0a1922aa5a578957deb304e8eea04146d18f11854a1fa06c",
+    "bytes": 7988
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/plan-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v2.json",
+    "sha256": "6fb049eb7915ae028821bf7c209f9c15b47efda4f0d9ba212b592020e06b7114",
+    "bytes": 8214
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-launch-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v2.json",
+    "sha256": "813a47168b35eb717a20cf7f403de9d2224266afd29e567c89a63109463c9bd7",
+    "bytes": 145
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-data-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+    "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+    "bytes": 1253326
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/export-pending-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+    "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+    "bytes": 12524
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_outer_lifetime_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v1.py",
+    "sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+    "bytes": 2740
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_repair_freeze_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_repair_freeze_v2.py",
+    "sha256": "a339b1b8c15ab5045f6f8693bd3c6b49cc18ee5ae84bb7ec71bf681823e26488",
+    "bytes": 11404
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/stage-costs-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v1.json",
+    "sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d",
+    "bytes": 15142
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_run_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v1.py",
+    "sha256": "07e1922914b6040889f0255d3382f24ad3ec61f2aa3b3b64bad37b885a896464",
+    "bytes": 4498
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-extraction-lifetime-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v1.json",
+    "sha256": "6adc9de2241152a36ab60e96b8ef74c93e1d8451e62cef09f21b833db8edd0b8",
+    "bytes": 1337
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_export_final_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_final_v1.py",
+    "sha256": "f0f078d80a01061d2becf298f34236c5d77d9bde50c5d79ecddebaf81a389653",
+    "bytes": 9997
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v1.json",
+    "sha256": "cf58fce8305fdb01eea420c0f3677ee8958fb70dbea4bea9cf6950c28fc0a46a",
+    "bytes": 3104
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/repair-source-diff-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/repair-source-diff-v2.txt",
+    "sha256": "b1d859802fbd09ad700ed729b17b57d5eb6fe2667531d32a718448f27ea00a5b",
+    "bytes": 12285
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/archive-contents-final-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/archive-contents-final-v1.json",
+    "sha256": "a47722daaed75882a857ba8300cf5afb25e30a9cdd3439736b07fc751ac258a5",
+    "bytes": 18737
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_decoder_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_decoder_v2.py",
+    "sha256": "4adb97a22060bfb14b4002ac5a78b3b44d61f8b5a84f3d7d498e237b2e4cd555",
+    "bytes": 4109
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/stage-costs-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v2.json",
+    "sha256": "85cfa5a461a0df5e54c2a9746ce55b92cad666c7a0ac5848766e593eb07db80a",
+    "bytes": 17470
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-extraction-lifetime-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v2.json",
+    "sha256": "e8133c7d4128607f750b7ed08b2cad3b188bd68fa633466afb764d6b6f1381ad",
+    "bytes": 3505
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/scientific-scope-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/scientific-scope-v1.json",
+    "sha256": "5a2ef1af4e9710fe6975b95e5f665657c627b587d1e412cddca117ae7dc366d6",
+    "bytes": 8871
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_outer_lifetime_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v2.py",
+    "sha256": "dd2c3aa2fb0fa3faea5feea377e6028ac1ced7a13f341bcb5464b58d9bba16c9",
+    "bytes": 3184
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v2.json",
+    "sha256": "009417382fe1103c8babcfcd174e42a9dd988cad3d8dc1251e13c05aca4d6991",
+    "bytes": 3558
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_run_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v2.py",
+    "sha256": "3c864c138b77ae9601413fcee72af3113110b19bfc407f34d69db3753f35d2e4",
+    "bytes": 4641
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/model-v1.json.gz",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+    "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+    "bytes": 291858
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/serialization-correspondence-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-correspondence-v2.json",
+    "sha256": "f06f1b5598ca051d96eaac7b8898b9648e7905fbd3e39092638dfe84ad806d83",
+    "bytes": 2267
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-launch-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v1.json",
+    "sha256": "05b19834f00668143bd34dce4ab8b53b80f2f7c7d19cc2ad74c1cb528e7e08c8",
+    "bytes": 136
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/expansions-v1.json.gz",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+    "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+    "bytes": 4335810
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/plan-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v1.json",
+    "sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+    "bytes": 95871
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-checkpoint-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+    "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+    "bytes": 4619
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_export_pending_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_pending_v1.py",
+    "sha256": "be46c0f698cf3d3bd97976c60ccbef2609d69035748341a0d0b4032cfd4bc072",
+    "bytes": 3207
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/outer-lifetime-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v2.json",
+    "sha256": "bfbc4671fe49afcaac5211f30d1b45dfa17f8ceb6feddfb5c15d823dcd9456e8",
+    "bytes": 1176
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-stdout-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v2.txt",
+    "sha256": "7bea09844c7c4b645d3dbf65c51778081b3faf9219d8f200265d9d72d8539d63",
+    "bytes": 747
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/model-v2.json.gz",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+    "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+    "bytes": 291858
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-stdout-v1.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v1.txt",
+    "sha256": "61f79d7417c14b4abf5c73217937b5d4e48f319c9c3b065eb4b8baae4ee43fb7",
+    "bytes": 827
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_reader_data_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v1.py",
+    "sha256": "35d2bc47865fa660807cb3dd07ba0642a9fc6b71c2972879c66ab7f864142ef9",
+    "bytes": 8177
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_freeze_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_freeze_v1.py",
+    "sha256": "cc8dc51465cec1869172ab611c3fd5f9861ee1577170777b913018034d14a828",
+    "bytes": 11330
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-stdout-v1.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-extraction-receipt-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-receipt-v2.json",
+    "sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+    "bytes": 712
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/production-stdout-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v2.txt",
+    "sha256": "496eb828b76414387b13366229e137e97f1558f8c81eb30d9db0374752bb2068",
+    "bytes": 821
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-repair-diff-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-repair-diff-v2.txt",
+    "sha256": "7fac2d8a847206ee07b6c84d0c7073483e95b5ad31d6aa2599f71cb4623b5ddd",
+    "bytes": 7526
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/expansions-v2.json.gz",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+    "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+    "bytes": 4335810
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/outer-measurement-amendment-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-measurement-amendment-v1.json",
+    "sha256": "f511b540c988fdcfc28720ba971ecaefe58a1075ae74cc3b60df930e9fda6fe6",
+    "bytes": 600
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/reader-extraction-plan-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v2.json",
+    "sha256": "427b43178ed8dfbc706d0abdf9ae961e401bd22939d01d51066bd2fd346cac47",
+    "bytes": 4699
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/export-final-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/export-final-v1.json",
+    "sha256": "11ef5c0b7e95f0c83147792b96ae070f4b939963b7308560bf23d27a3833eb97",
+    "bytes": 24086
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_static_run_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v2.py",
+    "sha256": "bda85b28313fd09eb6ce604d77165098c688536d0d7f28d149b0e1d68d3e596a",
+    "bytes": 6280
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/example-correspondence-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+    "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+    "bytes": 707122
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/hilbert_aggregate_expand_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v1.py",
+    "sha256": "46c5fa93f5b6d7c88b32d49f8a732bd29085a99524a048345d6222e3e8b3d24b",
+    "bytes": 30892
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/production/serialization-inspection-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-inspection-v1.json",
+    "sha256": "3d795b629c334ba62412e677635b1fa5d2b5962605f24e1cdeffc2081b79c61c",
+    "bytes": 247
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/audit-full-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+    "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+    "bytes": 1647196
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/integration-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/integration-v2.json",
+    "sha256": "94be910c6a85c0a5e3c75018ecb4217f6afaca4a7b8ed04d3afd46f67ff89716",
+    "bytes": 3443
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/toy-fixtures-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+    "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+    "bytes": 4217
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/independent_aggregate_audit_v1.py",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+    "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+    "bytes": 44198
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/audit-lifetime-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+    "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+    "bytes": 3128
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/independent_aggregate_lifetime_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_lifetime_v2.py",
+    "sha256": "a6a6b97c98af0e5b1048e34072ce4610fa836679f897072e299476088bcab48a",
+    "bytes": 5931
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/audit-stderr-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/toy-plan-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+    "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+    "bytes": 3046
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/parser-scope-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+    "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+    "bytes": 1031
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/prospective-gate-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/prospective-gate-v1.json",
+    "sha256": "1669479e168bc7b742c3749314a53c8c999e0c3c6d5ecc23dc7f129919a596f3",
+    "bytes": 6435
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/freeze_full_audit_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/freeze_full_audit_v2.py",
+    "sha256": "555591f354695c3e7bdcb82f584e479b50d9f0213eed2d988303686e70fc4f93",
+    "bytes": 7054
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/independent_aggregate_full_v2.py",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+    "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+    "bytes": 51577
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/toy-receipt-v1.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json",
+    "sha256": "8c03bdb32166ea32a1aa9ba0d8e95bba6ff69912b816fc8058eba8710fe0339f",
+    "bytes": 10807
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/audit-stdout-v2.txt",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+    "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+    "bytes": 821
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/completion-receipt-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+    "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+    "bytes": 12194
+  },
+  {
+    "path": "docs/research/gcts-rl-renewal/stochastic-clusters/geometry/verification/full-audit-plan-v2.json",
+    "origin": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+    "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+    "bytes": 113027
+  }
+]

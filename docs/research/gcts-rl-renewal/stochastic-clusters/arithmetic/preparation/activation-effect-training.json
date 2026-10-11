@@ -1,0 +1,15 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+  "approved_phases": [
+    "effect",
+    "training"
+  ],
+  "prerequisite_sha256": {
+    "effect": {},
+    "training": {
+      ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/independent-audit.json": "ba1ce927b2c5307855e72a1af6fd05ecf4613502e530b8afbcab3fba2918bf06"
+    }
+  },
+  "scope": "One versioned full13 pilot after dispatch-envelope repair; original no-worker unknown preserved."
+}

@@ -1,0 +1,182 @@
+{
+  "id": "train-04",
+  "case": {
+    "id": "addition-commutativity",
+    "label": "Universal addition commutativity",
+    "theory": {
+      "functions": {
+        "zero": 0,
+        "succ": 1,
+        "add": 2
+      },
+      "predicates": {},
+      "axioms": {
+        "AZ": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "AS": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "schemas": [
+        "nat-induction"
+      ]
+    },
+    "target": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "y"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "term_bound": 5,
+    "enable_induction": true,
+    "length": 13
+  },
+  "observation": {
+    "id": "train-04",
+    "phase": "training",
+    "mode": "training",
+    "episode": 4,
+    "seed": 17004,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 30
+  },
+  "search_status": "unknown_search_budget",
+  "metrics": {
+    "nodes": 501,
+    "max_satisfied_points": 45,
+    "forced": 288,
+    "attempts": 500,
+    "branch": 78,
+    "family_pool": 16,
+    "validation_checks": 1562,
+    "row_pool": 144,
+    "sample_pair_tests": 762,
+    "items": 530,
+    "feature_seconds": 0.26287179099999514,
+    "features:source_port_queries": 530,
+    "features:mark_neighborhood_queries": 2873,
+    "features:mark_dependency_memberships_examined": 3724266,
+    "proposal_seconds": 2.3341062519999998,
+    "hints_started": 56,
+    "hint_eligible": 13,
+    "hint_waiting": 58,
+    "hint_invalid": 118,
+    "changed_first_branches": 31,
+    "executed_changed_first_branches": 31,
+    "hint_completed": 31,
+    "dead": 135,
+    "backtracks": 460
+  },
+  "proof": null,
+  "placements": [],
+  "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+  "native_queries": 0,
+  "weights_sha256": "245c5ec9a1b3af9114a200d436dd0d2f05a9832ffbcf7cc356767a6e54eb1112",
+  "discovery": "GCTS search only if independently replayed"
+}

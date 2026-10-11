@@ -1,0 +1,25 @@
+{
+  "status": "frozen_read_only_collector_before_actual_output_collection",
+  "files": [
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_collect.py",
+      "sha256": "05f86793ec5cdfc77179379e65be0286e38ab5fc737e00d0244bfda4efec5247",
+      "bytes": 24602
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/plan.json",
+      "sha256": "43c88d35e966cca674a52dc96c1cfaa4e398cb07fc110b93e4df7e1473bd1a19",
+      "bytes": 1498
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/fixture-plan.json",
+      "sha256": "bc51330432007ca0f2f0b4b01778b0389d15cc119144f773e216f42ff27c088c",
+      "bytes": 1159
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1/fixtures.json",
+      "sha256": "dfeafb729749b465687945bee1fe5fd06b0101009e41c48cd10523429fbe993c",
+      "bytes": 446
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "version": "hilbert-aggregate-reader-streaming-repair-v2",
+  "status": "frozen_before_one_read_only_repair",
+  "inputs": [
+    {
+      "role": "expansions",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "role": "example",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "role": "production_checkpoint",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "role": "production_snapshot",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+      "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+      "bytes": 12524
+    },
+    {
+      "role": "independent_audit",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "role": "independent_audit_lifetime",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "role": "decoder_source",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    }
+  ],
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v2.py",
+      "sha256": "908dbf01c4cb2c9cb13879d442ebd00cf059c949b069b67eb00cbd7ba827a6e1",
+      "bytes": 8401
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v2.py",
+      "sha256": "3c864c138b77ae9601413fcee72af3113110b19bfc407f34d69db3753f35d2e4",
+      "bytes": 4641
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_decoder_v2.py",
+      "sha256": "4adb97a22060bfb14b4002ac5a78b3b44d61f8b5a84f3d7d498e237b2e4cd555",
+      "bytes": 4109
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_freeze_v2.py",
+      "sha256": "25f067fc837064bd0a1922aa5a578957deb304e8eea04146d18f11854a1fa06c",
+      "bytes": 7988
+    }
+  ],
+  "prior_plan_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v1.json",
+    "sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+    "bytes": 2230
+  },
+  "prior_failure_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v1.json",
+    "sha256": "6adc9de2241152a36ab60e96b8ef74c93e1d8451e62cef09f21b833db8edd0b8",
+    "bytes": 1337
+  },
+  "source_diff_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-repair-diff-v2.txt",
+    "sha256": "7fac2d8a847206ee07b6c84d0c7073483e95b5ad31d6aa2599f71cb4623b5ddd",
+    "bytes": 7526
+  },
+  "scope": "Same requested formula/member/row/port/point/digest projection. Parse one source record at a time; scientific data unchanged. Metadata binds separately passed finite audit; extraction itself grants no logical authority.",
+  "parser_provenance": {
+    "source_pin": {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    "class": "StreamingObject",
+    "max_buffer_characters": 16777216,
+    "copied_scope": "duplicate-key helper and decoder class only, with require rebound locally; no scientific auditor code imported",
+    "caveat": "delimiter loops accept trailing comma; only exact pinned known-standard-JSON scientific inputs are accepted"
+  },
+  "failed_v1_unknown": {
+    "seconds": 0.378450166,
+    "terminal_exit_code": -9,
+    "host_kernel_peak_sum_bytes": 538230784
+  },
+  "remaining_seconds": 179.621549834,
+  "cumulative_reader_preparation_ceiling_seconds": 180,
+  "host_ceiling_bytes": 536870912,
+  "native_queries": 0,
+  "target_searches": 0,
+  "scientific_data_changed": false,
+  "engine_or_authority_activation": false,
+  "HTML_publication": false
+}

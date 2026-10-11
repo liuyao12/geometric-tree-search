@@ -1,0 +1,131 @@
+{
+  "status": "completed_bounded_read_only_memory_diagnosis",
+  "traces": [
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+      "sha256": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+      "compressed_bytes": 15351119,
+      "gzip_isize_mod_2_to_32": 124903546,
+      "footer_crc32": 3807774602,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "c5a307d05e2b9a5a43cec4ee1944affabe09cd0f051c10d111be8ccdaf5cc518",
+      "quoted_token_aware_four_integer_array_occurrences": 88726,
+      "distinct_four_integer_arrays_in_prefix": 19848,
+      "exact_top_level_search_tree_marker_offset_in_prefix": 2014,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz",
+      "sha256": "c4cd9b1c1891980aa43ea4a28e313514947f07140c871ca6185ea060d8ed8f8f",
+      "compressed_bytes": 15351102,
+      "gzip_isize_mod_2_to_32": 124903541,
+      "footer_crc32": 690015468,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "8b93fe6c34948eab849fffb106d3ecabbb68513287cb66ffbf61945c434250b7",
+      "quoted_token_aware_four_integer_array_occurrences": 88726,
+      "distinct_four_integer_arrays_in_prefix": 19848,
+      "exact_top_level_search_tree_marker_offset_in_prefix": 2009,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz",
+      "sha256": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+      "compressed_bytes": 15980438,
+      "gzip_isize_mod_2_to_32": 131244923,
+      "footer_crc32": 1049977803,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "23419fbb8948f302737ddc3a0eadca04693e7e68ef777c9168ca2981971ecc15",
+      "quoted_token_aware_four_integer_array_occurrences": 6375,
+      "distinct_four_integer_arrays_in_prefix": 336,
+      "exact_top_level_search_tree_marker_offset_in_prefix": -1,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz",
+      "sha256": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+      "compressed_bytes": 16064106,
+      "gzip_isize_mod_2_to_32": 132384969,
+      "footer_crc32": 2955042561,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "5f32f3b08cafd324157606484667697880ebc66b1c14635ea4b59ef6abb88163",
+      "quoted_token_aware_four_integer_array_occurrences": 6324,
+      "distinct_four_integer_arrays_in_prefix": 341,
+      "exact_top_level_search_tree_marker_offset_in_prefix": -1,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+      "sha256": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+      "compressed_bytes": 15771707,
+      "gzip_isize_mod_2_to_32": 130293777,
+      "footer_crc32": 2825644951,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "08dbbb2b60c8dc92bcc31f1f249b2ac10709e3788e023786c6272738bb67c8b6",
+      "quoted_token_aware_four_integer_array_occurrences": 6470,
+      "distinct_four_integer_arrays_in_prefix": 337,
+      "exact_top_level_search_tree_marker_offset_in_prefix": -1,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz",
+      "sha256": "48821a8d7f13dd1d046b01b3b2522b5a0eac96fce1daba0915b29d784b86b154",
+      "compressed_bytes": 15883894,
+      "gzip_isize_mod_2_to_32": 132267032,
+      "footer_crc32": 15530509,
+      "bounded_prefix_bytes": 1048576,
+      "prefix_sha256": "bdaa39997b9ca4fee4c7da5560862a5a5c7abc76c03c7bedefb250d507567913",
+      "quoted_token_aware_four_integer_array_occurrences": 6470,
+      "distinct_four_integer_arrays_in_prefix": 341,
+      "exact_top_level_search_tree_marker_offset_in_prefix": -1,
+      "sample_scope": "First1MiB only, quoted tokens skipped; no whole trace parse, graph replay, complete array census or new validity claim. GzipISIZE is a footer field, modulo2^32; not independently recomputed."
+    }
+  ],
+  "seconds": 0.389773084,
+  "peak_rss_bytes": 22396928,
+  "original_evaluation_audit_status": "unknown_independent_phase_resource_budget",
+  "original_attempted_audit_jobs": [
+    "base-r1"
+  ],
+  "original_unexecuted_audit_jobs": [
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2",
+    "untrained-r2",
+    "base-r2"
+  ],
+  "original_kernel_worker_peak_bytes": 1643200512,
+  "original_conservative_phase_peak_bytes": 1720975360,
+  "diagnosis": "json.load(stream) calls stream.read() internally, so gzip text is fully decoded before JSON parsing; repeated four-integer candidate arrays allocate independent Python lists/ints across every census. Loading trace before model prevents a second large model during parse but does not avoid full decoded text or duplicate key arrays. Later model/catalog/registry and literal graph/features add live memory.",
+  "repair_options": [
+    {
+      "priority": 1,
+      "option": "Versioned audit-only import of previously verified commutativity_cluster_intern_v3.load",
+      "mechanism": "Stream quoted-token-preserving replacement of every four-integer array with reserved reference, write reduced temporary JSON, parse with restoration to shared exact ordered tuples.",
+      "advantages": "Keeps unchanged recursive auditor and all node/event/value semantics; prior full13 four-tree audit passed404193280B.",
+      "required_gate": "Fresh source/input freeze and complete canonical JSON-value correspondence for new base/untrained/trained traces, including strings/prefix collisions/floats/tokens; all six full graph/event replays and final512MiB phase gate remain mandatory.",
+      "risk": "Still retains all decoded objects; new policy feature/event objects and registry lifetimes may use remaining headroom. tuple/list JSON equivalence must be audited for all consumers; no success assumption."
+    },
+    {
+      "priority": 2,
+      "option": "Streaming node consumer with bounded event/header retention",
+      "mechanism": "Parse exact saved tree sequentially and replay each node with traversal stack; reconstruct full literal graph/features/RNG independently without retaining every prior census.",
+      "advantages": "Memory scales with active recursion/state and bounded policy metadata rather than every saved census.",
+      "required_gate": "New independent traversal implementation and full original-field/event/order/value correspondence; retain all child/fallback/cutoff checks, exact weights/RNG and every node. Never omit census or truncate events.",
+      "risk": "More source surface and ordering/lifetime risks; requires separately frozen meaningful controls before any replay."
+    },
+    {
+      "priority": 3,
+      "option": "Release preparation-only catalog/native registry and binding witnesses before graph replay",
+      "mechanism": "Retain only already bound model/rules/families; del temporary returned placements/canonical bytes/catalog/registry and collect garbage before tree.",
+      "advantages": "Reduces live ancillary objects without altering graph/tree semantics.",
+      "required_gate": "Exact old-request/catalog/native-admission bindings still completed and receipted before release.",
+      "risk": "Insufficient alone for1.64GB peak reached while full duplicate-key trace exists; allocator RSS may remain high."
+    }
+  ],
+  "root_owned_future_gate": "Prospective options only. Root has explicitly retained the evaluation audit UNKNOWN this turn; no repair/full replay or gate amendment executed.",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "complete_trace_inflations": 0,
+  "collector_scope": "Separate frozen read-only collector may scan actual fields after authorization; this diagnostic does not invoke it."
+}

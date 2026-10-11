@@ -1,0 +1,330 @@
+{
+  "status": "passed_exact_current_finite_static_aggregate_audit",
+  "audit_plan": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+    "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+    "bytes": 113027
+  },
+  "audit": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+    "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+    "bytes": 1647196
+  },
+  "lifetime": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+    "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+    "bytes": 3128
+  },
+  "parser_scope_note": {
+    "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+    "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+    "bytes": 1031
+  },
+  "checked": {
+    "named_definitions": 171,
+    "source_commands": 963,
+    "literal_and_canonical_leaves": 1845,
+    "assumption_alias_occurrences": 630,
+    "recursive_calls": 216,
+    "recipe_types": 229,
+    "formula_codes": 217,
+    "noninjective_constant_maps": 141,
+    "legacy_primitive_rows": 24,
+    "legacy_shared_rows": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "control_accounting": {
+    "named_controls_in_audit_corruption_count_field": 31,
+    "explicit_rejected_corrupt_variants": 31,
+    "positive_controls_also_included": true,
+    "reject_cases": [
+      {
+        "control": "retained_toy_point_consistent_invalid_inference",
+        "field": "rejection",
+        "reason": "invalid ordered MP"
+      },
+      {
+        "control": "retained_toy_repeated_ordered_port_multiplicity",
+        "field": "rejection",
+        "reason": "ordered block arity, multiplicity or formula mismatch"
+      },
+      {
+        "control": "retained_toy_instantiation_closed_term_and_exact_substitution",
+        "field": "open_term_rejection",
+        "reason": "open replacement term"
+      },
+      {
+        "control": "retained_toy_instantiation_closed_term_and_exact_substitution",
+        "field": "wrong_formula_rejection",
+        "reason": "invalid universal-instantiation tautology"
+      },
+      {
+        "control": "retained_toy_substitution_scope_shadow_and_capture_fail_closed",
+        "field": "capture_replacement_rejection",
+        "reason": "open replacement term"
+      },
+      {
+        "control": "retained_toy_substitution_scope_shadow_and_capture_fail_closed",
+        "field": "extra_parameter_rejection",
+        "reason": "unclosed template parameter"
+      },
+      {
+        "control": "retained_toy_ordered_reference_port",
+        "field": "rejection",
+        "reason": "ordered port points to different reference"
+      },
+      {
+        "control": "retained_toy_strict_prior_reference",
+        "field": "rejection",
+        "reason": "non-prior reference"
+      },
+      {
+        "control": "retained_toy_shared_set_union_versus_naive_t_addition",
+        "field": "naive_rejection",
+        "reason": "t overcapacity"
+      },
+      {
+        "control": "retained_toy_label_false_sharing_rejected",
+        "field": "rejection",
+        "reason": "label points to a different full decorated placement"
+      },
+      {
+        "control": "retained_toy_formula_only_false_sharing",
+        "field": "rejection",
+        "reason": "same formula is not decorated identity"
+      },
+      {
+        "control": "retained_toy_absence_is_not_assigned_zero_and_all_support_checked",
+        "field": "exterior_conflict_rejection",
+        "reason": "assigned m conflict"
+      },
+      {
+        "control": "retained_toy_formula_registry_injectivity",
+        "field": "rejection",
+        "reason": "noninjective formula registry"
+      },
+      {
+        "control": "retained_toy_exact_named_axiom",
+        "field": "rejection",
+        "reason": "axiom is not exact frozen declaration"
+      },
+      {
+        "control": "retained_toy_unsupported_quantifier_feature",
+        "field": "rejection",
+        "reason": "unsupported formula constructor: 'ex'"
+      },
+      {
+        "control": "retained_toy_declared_predicate_arity",
+        "field": "rejection",
+        "reason": "unknown predicate or arity mismatch"
+      },
+      {
+        "control": "retained_toy_bool_function_arity_rejected",
+        "field": "rejection",
+        "reason": "non-nullary or duplicate function"
+      },
+      {
+        "control": "retained_toy_bool_assigned_mark_rejected",
+        "field": "rejection",
+        "reason": "noninteger m value"
+      },
+      {
+        "control": "retained_toy_bool_fixed_mark_and_required_coordinate_rejected",
+        "field": "fixed_mark_rejection",
+        "reason": "noninteger fixed marking"
+      },
+      {
+        "control": "retained_toy_bool_fixed_mark_and_required_coordinate_rejected",
+        "field": "required_rejection",
+        "reason": "noninteger required point coordinate"
+      },
+      {
+        "control": "retained_toy_bool_port_formula_code_rejected",
+        "field": "rejection",
+        "reason": "noninteger port index, formula code or offset"
+      },
+      {
+        "control": "retained_toy_cyclic_or_forward_block_unavailable",
+        "field": "rejection",
+        "reason": "unavailable prior declaration"
+      },
+      {
+        "control": "actual_stale_authority_even_with_rehashed_label",
+        "field": "reason",
+        "reason": "placement authority is not common frozen closure"
+      },
+      {
+        "control": "actual_stale_registry_even_with_rehashed_label",
+        "field": "reason",
+        "reason": "placement registry is not the full injective closure"
+      },
+      {
+        "control": "actual_recipe_stale_authority",
+        "field": "reason",
+        "reason": "recipe epoch mismatch"
+      },
+      {
+        "control": "actual_formula_registry_duplicate",
+        "field": "reason",
+        "reason": "noninjective formula registry"
+      },
+      {
+        "control": "actual_point_consistent_invalid_final_MP",
+        "field": "reason",
+        "reason": "invalid ordered MP"
+      },
+      {
+        "control": "actual_reversed_ordered_MP_references",
+        "field": "reason",
+        "reason": "invalid ordered MP"
+      },
+      {
+        "control": "actual_hidden_marking_change_under_same_id",
+        "field": "reason",
+        "reason": "false decorated sharing: m"
+      },
+      {
+        "control": "actual_naive_shared_occupancy_overcount",
+        "field": "reason",
+        "reason": "t overcapacity"
+      },
+      {
+        "control": "shadowed_binder_wrong_instantiation",
+        "field": "reason",
+        "reason": "invalid universal-instantiation tautology"
+      }
+    ]
+  },
+  "costs": {
+    "full_lifetime_seconds_before_final_receipt_write": 5.713218708,
+    "conservative_kernel_peak_rss_bytes": 170508288,
+    "child_peak_bytes": 148045824,
+    "observer_peak_bytes": 22462464,
+    "audit_freeze_preparation_seconds": 0.018640040999999996,
+    "source_authoring": "unmeasured, not zero",
+    "prior_production_costs_retained": {
+      "checkpoint_pin": {
+        "bytes": 4619,
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+        "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c"
+      },
+      "cumulative_production_outer_seconds": 14.081038333,
+      "prior_v1_unknown": {
+        "child_peak_bytes": 557432832,
+        "outer_pin": {
+          "bytes": 1044,
+          "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v1.json",
+          "sha256": "002456c70e9c33df54cdaa0734bf7210b9048226dc2f9f9e58eeef14b682df56"
+        },
+        "outer_seconds": 6.50817575,
+        "stage_pin": {
+          "bytes": 15142,
+          "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v1.json",
+          "sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d"
+        }
+      },
+      "v2_conservative_host_peak_bytes": 134643712
+    },
+    "startup_and_worker_report_serialization": "included in full lifetime",
+    "final_lifetime_receipt_write": "excluded and unmeasured",
+    "hard_OS_memory_limit": "not asserted"
+  },
+  "terminal": {
+    "exec_session": 15612,
+    "exit_code": 0,
+    "child_pid": 98044,
+    "child_terminal_reaped": true,
+    "active_handles": []
+  },
+  "authority": "Independent host symbolic/point audit only; authored infrastructure, no discovered proof, no native/Wang acceptance upgrade.",
+  "open": [
+    "complete primitive placement/catalog and graph",
+    "general aggregate embedding family enumeration",
+    "scheduler and rollback implementation conformance",
+    "conditional 65 row lift construction",
+    "formal compiler/native correspondence",
+    "whole native proof acceptance"
+  ],
+  "parser_limit": "Current exact hash-pinned standard JSON files only; no general strict/adversarial JSON parser correctness claim.",
+  "all_private_files_before_receipt": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+      "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/freeze_full_audit_v2.py",
+      "sha256": "555591f354695c3e7bdcb82f584e479b50d9f0213eed2d988303686e70fc4f93",
+      "bytes": 7054
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+      "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+      "bytes": 113027
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_lifetime_v2.py",
+      "sha256": "a6a6b97c98af0e5b1048e34072ce4610fa836679f897072e299476088bcab48a",
+      "bytes": 5931
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/prospective-gate-v1.json",
+      "sha256": "1669479e168bc7b742c3749314a53c8c999e0c3c6d5ecc23dc7f129919a596f3",
+      "bytes": 6435
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+      "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+      "bytes": 4217
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+      "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+      "bytes": 3046
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json",
+      "sha256": "8c03bdb32166ea32a1aa9ba0d8e95bba6ff69912b816fc8058eba8710fe0339f",
+      "bytes": 10807
+    }
+  ],
+  "native_queries": 0,
+  "search_runs": 0,
+  "solver_runs": 0,
+  "publication_mutations": 0
+}

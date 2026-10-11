@@ -1,0 +1,11 @@
+{
+  "status": "failed_or_unknown_pure_fixture",
+  "target_searches": 0,
+  "native_queries": 0,
+  "model_training_episodes": 0,
+  "fixture_plan_sha256": "dcaa8cfff05f2a4b38585fabf43147babad66fb58603ef66790b817d178e13b1",
+  "failure": "all previously feature-identical changing attachments separated",
+  "failure_type": "AssertionError",
+  "seconds_before_final_receipt_write": 0.365253292,
+  "peak_rss_bytes": 217300992
+}

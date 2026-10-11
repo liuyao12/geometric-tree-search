@@ -1,0 +1,91 @@
+{
+  "status": "static_production_complete_pending_independent_audit",
+  "plan_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v1.json",
+    "sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+    "bytes": 95871
+  },
+  "counts": {
+    "named_definitions": 171,
+    "source_body_leaf_occurrences": 1845,
+    "family_counts": {
+      "universal-uniqueness": 36,
+      "incidence-equality-transport": 27,
+      "searched-incidence-transport": 108
+    },
+    "family_leaf_counts": {
+      "incidence-equality-transport": [
+        3
+      ],
+      "searched-incidence-transport": [
+        13
+      ],
+      "universal-uniqueness": [
+        10
+      ]
+    },
+    "maximum_body_leaf_count": 13,
+    "primitive_recipe_types": 229,
+    "primitive_recipe_rules": {
+      "mp": 144,
+      "axiom": 1,
+      "assumption": 3,
+      "instantiate": 54,
+      "eq_subst": 27
+    },
+    "formula_codes": 217,
+    "preserved_authored_formula_prefix": 71,
+    "assumption_alias_occurrences": 630,
+    "recursive_block_call_occurrences": 216,
+    "duplicate_premise_interfaces": 0,
+    "noninjective_constant_maps": 141
+  },
+  "model_grammar_counts": {
+    "24": {
+      "raw_prototypes": 76261,
+      "raw_positive_support_alignments": 1830264,
+      "strict_prior_bindings_before_local_mark_agreement": 624696,
+      "inconsistent_local_mark_functions": 39744,
+      "locally_consistent_strict_prior_bindings": 584952
+    },
+    "65": {
+      "raw_prototypes": 589909,
+      "raw_positive_support_alignments": 38344085,
+      "strict_prior_bindings_before_local_mark_agreement": 12884885,
+      "inconsistent_local_mark_functions": 299520,
+      "locally_consistent_strict_prior_bindings": 12585365
+    }
+  },
+  "output_pins": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    }
+  ],
+  "production_seconds_before_receipt_write": 6.436585417000001,
+  "peak_rss_bytes": 557432832,
+  "native_queries": 0,
+  "target_searches": 0,
+  "point_placement_graphs": 0,
+  "existing_engine_activation": false,
+  "scope": "Complete 171 static source-body expansions, exact canonical aggregates and authored shared example only; primitive logical soundness pending independent audit.",
+  "remaining_gaps": [
+    "complete primitive placement/catalog and graph",
+    "general aggregate embedding family enumeration",
+    "scheduler and rollback implementation conformance",
+    "conditional 65 row lift construction",
+    "formal compiler/native correspondence",
+    "whole native proof acceptance"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "status": "prospective_static_gate_waiting_root_review",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+    "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+    "bytes": 44198
+  },
+  "toy_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+    "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+    "bytes": 3046
+  },
+  "known_frozen_inputs": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-design-20261011/manifest-v1.json",
+      "sha256": "47d0e1e0731bbc02c25024bd49c67f28c1398dcd5217fdc72175966561c16d5d",
+      "bytes": 812
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28",
+      "bytes": 38142
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+      "bytes": 660358
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+      "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+      "bytes": 13333
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+      "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+      "bytes": 1951
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    }
+  ],
+  "real_execution_authorized_here": false,
+  "proposed_real_limits": {
+    "producer_seconds": 180,
+    "independent_audit_seconds": 180,
+    "peak_rss_bytes": 536870912
+  },
+  "method": [
+    "Bind frozen recipient theory, exact guarded I.2 AST, complete source declaration list and source-authority closure; status strings alone are not acceptance.",
+    "Independently check all six source-rule commands in strict prior order; recursively available blocks require exact ordered premise list, including repeated indices.",
+    "Build exact local proof DAGs with distinct seed-occurrence identities; independently embed first primitive occurrences into rows and rebase ordered MP references; compare every source alias/block/primitive occurrence.",
+    "Rebuild formula registry and every primitive t/m support; code zero remains assigned, all marking-only exterior points are checked.",
+    "Validate original legacy labels by command/context plus row. Check full decorated t/m, code registry and common frozen authority externally; donor occurrences do not enter the sharing key.",
+    "Reconstruct cluster member sets, complete aggregate t/m, every ordered reader/receptor projection, shared union counts, fixed target markings and seed boundary.",
+    "Use explicit corruptions, including a point-consistent invalid inference, to separate logical and point acceptance."
+  ],
+  "identity_scope": {
+    "legacy_preimage": [
+      "rebased command",
+      "recipient context digest",
+      "row suffix"
+    ],
+    "external_bindings": [
+      "exact registry",
+      "primitive t/m compilation",
+      "common frozen theory/authority closure"
+    ],
+    "not_established": [
+      "legacy IDs alone protect cross-registry reuse",
+      "legacy IDs alone protect cross-authority reuse"
+    ],
+    "provenance": "Multiple source occurrences may contribute to one identical primitive command; declaration identities and occurrence lists remain distinct."
+  },
+  "pending_before_larger_gate": [
+    "Root review of this source and pinned toy outcome.",
+    "Exact expansion owner source/input/data manifests, not yet supplied.",
+    "Separate input/source freeze for full-171 adapter; do not infer complete candidate enumeration from static schemas.",
+    "Explicit cost/enforcement freeze before real static validation."
+  ],
+  "scope_limits": [
+    "Authored infrastructure and static symbolic relation only.",
+    "No native parser/compiler/Wang correspondence theorem.",
+    "No discovered proof/search or trained-RL claim.",
+    "No complete 24/65-row candidate graph or scheduler count unless separately enumerated.",
+    "The finite grammar/boundary transformation is one-way, not equivalence to the old macro boundary."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "status": "unknown_or_failed",
+  "scope": "outer production lifetime including child and final supervisor receipt serialization",
+  "full_outer_seconds_before_this_receipt_write": 6.50817575,
+  "supervisor_subprocess_full_wall_seconds": 6.507926583,
+  "supervisor_process_return_code": 0,
+  "supervisor_child_wait_reaped": true,
+  "supervisor_receipt_sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d",
+  "plan_sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+  "measurement_source_sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+  "wrapper_peak_bytes": 12025856,
+  "wrapper_children_kernel_peak_bytes": 557432832,
+  "deliberately_conservative_all_host_peak_sum_bytes": 1139785728,
+  "wall_ceiling_seconds": 180,
+  "host_ceiling_bytes": 536870912,
+  "native_queries": 0,
+  "target_searches": 0,
+  "existing_engine_activation": false,
+  "own_receipt_write": "outside reported outer pre-write seconds; producer and supervisor receipt serialization included"
+}

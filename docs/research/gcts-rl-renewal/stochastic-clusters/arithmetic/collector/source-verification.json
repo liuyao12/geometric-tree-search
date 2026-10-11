@@ -1,0 +1,24 @@
+{
+  "status": "source_only_read_only_collector_freeze_verified",
+  "source_sha256": "05f86793ec5cdfc77179379e65be0286e38ab5fc737e00d0244bfda4efec5247",
+  "manifest_sha256": "f133e8e1f205b0417c4f2562ad42062ef17d041b3eaaf30fadc2f28446ca7303",
+  "imports": [
+    "argparse",
+    "collections",
+    "gzip",
+    "hashlib",
+    "io",
+    "json",
+    "math",
+    "pathlib",
+    "re",
+    "resource",
+    "signal",
+    "time"
+  ],
+  "all_manifest_pins_match": true,
+  "actual_results_collected": false,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}

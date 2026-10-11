@@ -1,0 +1,12 @@
+{
+  "job": "effect-pilot",
+  "status": "passed_complete_replay_lifetime",
+  "pid": 96637,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 5.572822917,
+  "conservative_owner_plus_child_kernel_peak_bytes": 429604864,
+  "receipt_sha256": "abac9d4f40b2d16fa703949cc63153dc6982f06c649c076f6d6a95488ec905b2",
+  "resource_semantics": "Wall timeout kills/reaps this pure audit child; conservative kernel peak gate after exit. No hard OS memory cap, no external RSS sample claim."
+}

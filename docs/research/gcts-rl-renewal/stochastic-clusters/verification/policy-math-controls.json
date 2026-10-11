@@ -1,0 +1,183 @@
+{
+  "status": "passed_independent_epsilon_mixture_math_controls",
+  "numerical_derivatives": 21,
+  "derivatives": [
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 0,
+      "feature": "a",
+      "analytic": 0.1726508581997918,
+      "numerical": 0.17265085819340162
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 0,
+      "feature": "source",
+      "analytic": -1.0520745521669608,
+      "numerical": -1.052074552285176
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 1,
+      "feature": "a",
+      "analytic": 0.14597475259014908,
+      "numerical": 0.14597475259670034
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 1,
+      "feature": "source",
+      "analytic": 3.1160476239483357,
+      "numerical": 3.1160476236635755
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 2,
+      "feature": "a",
+      "analytic": -0.6796411251101447,
+      "numerical": -0.6796411251008826
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 2,
+      "feature": "source",
+      "analytic": 0.739362808977492,
+      "numerical": 0.739362808854782
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 0,
+      "feature": "a",
+      "analytic": 0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 1,
+      "feature": "a",
+      "analytic": 0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 1.0,
+      "chosen": 2,
+      "feature": "a",
+      "analytic": 0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 0,
+      "feature": "a",
+      "analytic": -0.5779176272641701,
+      "numerical": -0.5779176272757702
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 0,
+      "feature": "b",
+      "analytic": -0.2183759084553954,
+      "numerical": -0.218375908456192
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 1,
+      "feature": "a",
+      "analytic": 0.9220823727358299,
+      "numerical": 0.9220823727340565
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 1,
+      "feature": "b",
+      "analytic": -0.2183759084553954,
+      "numerical": -0.218375908456192
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 2,
+      "feature": "a",
+      "analytic": -0.07791762726417004,
+      "numerical": -0.07791762727249463
+    },
+    {
+      "epsilon": 0.0,
+      "temperature": 2.0,
+      "chosen": 2,
+      "feature": "b",
+      "analytic": 0.2816240915446046,
+      "numerical": 0.28162409154153245
+    },
+    {
+      "epsilon": 1.0,
+      "temperature": 1.0,
+      "chosen": 0,
+      "feature": "a",
+      "analytic": -0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 1.0,
+      "temperature": 1.0,
+      "chosen": 1,
+      "feature": "a",
+      "analytic": 0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 1.0,
+      "temperature": 1.0,
+      "chosen": 2,
+      "feature": "a",
+      "analytic": -0.0,
+      "numerical": 0.0
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 0.5,
+      "chosen": 0,
+      "feature": "a",
+      "analytic": 0.0006471727698069504,
+      "numerical": 0.0006471727716228504
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 0.5,
+      "chosen": 1,
+      "feature": "a",
+      "analytic": -1.2147646255234445e-05,
+      "numerical": -1.2147638450699104e-05
+    },
+    {
+      "epsilon": 0.1,
+      "temperature": 0.5,
+      "chosen": 2,
+      "feature": "a",
+      "analytic": -0.017940387722067613,
+      "numerical": -0.017940387730952523
+    }
+  ],
+  "ordinary_softmax_gradient_mutant_rejected": true,
+  "zero_weights_uniform": true,
+  "duplicate_proposals_not_merged": true,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "scope": "Distribution/log-gradient numerical controls only; no producer source, actual feature, engine, or training-update validation.",
+  "seconds": 0.0001959170000000003,
+  "source_sha256": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341"
+}

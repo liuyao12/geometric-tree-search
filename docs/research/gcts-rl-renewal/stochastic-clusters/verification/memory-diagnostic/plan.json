@@ -1,0 +1,38 @@
+{
+  "status": "frozen_before_bounded_read_only_prefix_diagnostic",
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_memory_diagnostic.py": "4adc31e30880da59da17da6c69a803ee56d69affa390c3a401d261e581bac9a7",
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_worker.py": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_stage.py": "6eed9307ae336e4dbb7ab6b77669008ccc544f387e665f209cec7215865f58b9",
+    "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+    "research/gcts-rl-renewal/commutativity13_tree_audit_stream.py": "fae48266f7b080c9f8abc5c7c4386ba1182624654abf35fe4a0c06fb267c1ea2"
+  },
+  "input_sha256": {
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit.json": "86b23ececb85b83484b5693c2ffee0adad67415a5c8a42e0e3c589986e324c60",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-lifetime.json": "5dd399bdc5662baafc518a46dd02875ebf9eef0db8f87b2cb3c704d7ac43f5be",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz": "c4cd9b1c1891980aa43ea4a28e313514947f07140c871ca6185ea060d8ed8f8f",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz": "48821a8d7f13dd1d046b01b3b2522b5a0eac96fce1daba0915b29d784b86b154"
+  },
+  "traces": [
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz"
+  ],
+  "prefix_bytes": 1048576,
+  "seconds": 60,
+  "rss_bytes": 67108864,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "scope": "Six compressed footer reads and1MiB prefix per trace only. No full object inflation, graph replay, collector invocation, source mutation or engine."
+}

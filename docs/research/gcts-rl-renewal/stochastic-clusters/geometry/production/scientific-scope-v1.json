@@ -1,0 +1,164 @@
+{
+  "version": "hilbert-aggregate-scientific-scope-v1",
+  "status": "producer_passed_independent_finite_logical_point_audit_pending",
+  "checkpoint_pin": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+    "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+    "bytes": 4619
+  },
+  "sequent_latex": "H(P,Q,\\ell,m),\\ H(P,Q,m,n),\\ \\operatorname{Incident}(R,\\ell)\\ \\vdash\\ \\operatorname{Incident}(R,n)",
+  "source_scope": {
+    "logical_language": "Closed constants \\(P,Q,R,\\ell,m,n\\), unary predicates \\(\\operatorname{Point},\\operatorname{Line}\\), binary predicate \\(\\operatorname{Incident}\\), and equality. Geometry remains symbolic; row coordinates encode a proof, not geometric coordinates of these objects.",
+    "theory": "Only the exact guarded universal I.2 uniqueness axiom from the frozen recipient theory; no additional Euclidean, order, congruence or continuity axiom.",
+    "guard_latex": "H(P,Q,\\ell,m):=\\operatorname{Point}(P)\\land\\operatorname{Point}(Q)\\land\\operatorname{Line}(\\ell)\\land\\operatorname{Line}(m)\\land\\neg(P=Q)\\land\\operatorname{Incident}(P,\\ell)\\land\\operatorname{Incident}(Q,\\ell)\\land\\operatorname{Incident}(P,m)\\land\\operatorname{Incident}(Q,m)",
+    "guard_association": "The AST preserves the frozen right-associated nine-part conjunction exactly; the displayed shorthand suppresses only parentheses.",
+    "sequent_latex": "H(P,Q,\\ell,m),\\ H(P,Q,m,n),\\ \\operatorname{Incident}(R,\\ell)\\ \\vdash\\ \\operatorname{Incident}(R,n)",
+    "example_authoring": "The two source family instances and their composition are selected by this author to illustrate representation. This chained assertion has not been automatically searched or freshly native-accepted. The donor receptor was previously searched; its mapped bodies are only structurally certified.",
+    "local_context": "The three premises are fixed ordered local assumptions of one recipient context; they are not silently promoted to axiom-free root facts or universal theorems.",
+    "rules": "The six source rules are assumption, axiom, instantiate, eq_subst, mp, block. Recursive expansion leaves only axiom/instantiate/eq_subst/mp; boundary assumptions alias their supplied rows.",
+    "native_and_compiler_correspondence": "open"
+  },
+  "input_authority": "Frozen finite structural source proof transport only; mapped interfaces and primitive row expansions are not freshly native-admitted.",
+  "mathematical_scope": "Uninterpreted symbolic first-order incidence fragment with equality and guarded Hilbert I.2 uniqueness, not full Hilbert Euclidean geometry. The composed example is authored, not a newly searched target proof.",
+  "complete_static_scope": [
+    "All 171 named source-body expansions retain declaration identity and recursively expand literal dependency calls.",
+    "All ordered local assumption occurrences are aliases adding no occupancy. Local seed contexts are distinct from the fixed three-premise chained recipient.",
+    "Every primitive row has exact integer t/m and a full decorated identity preimage, with donor occurrence provenance kept separately.",
+    "The 24-row authored example retains actual sharing and input/output receptor projection."
+  ],
+  "reported_counts_pending_independent_audit": {
+    "named_definitions": 171,
+    "source_body_leaf_occurrences": 1845,
+    "family_counts": {
+      "universal-uniqueness": 36,
+      "incidence-equality-transport": 27,
+      "searched-incidence-transport": 108
+    },
+    "family_leaf_counts": {
+      "incidence-equality-transport": [
+        3
+      ],
+      "searched-incidence-transport": [
+        13
+      ],
+      "universal-uniqueness": [
+        10
+      ]
+    },
+    "maximum_body_leaf_count": 13,
+    "primitive_recipe_types": 229,
+    "primitive_recipe_rules": {
+      "mp": 144,
+      "axiom": 1,
+      "assumption": 3,
+      "instantiate": 54,
+      "eq_subst": 27
+    },
+    "formula_codes": 217,
+    "preserved_authored_formula_prefix": 71,
+    "assumption_alias_occurrences": 630,
+    "recursive_block_call_occurrences": 216,
+    "duplicate_premise_interfaces": 0,
+    "noninjective_constant_maps": 141
+  },
+  "exact_authored_example_reported": {
+    "first_cluster_units": 13,
+    "second_cluster_units": 13,
+    "shared_units": 5,
+    "distinct_derived_units": 21,
+    "second_new_units": 8,
+    "seed_units": 3,
+    "full_rows": 24,
+    "first_output_second_input_row": 15,
+    "second_actual_reader_row": 23,
+    "first_high_ports": [
+      [
+        0,
+        12,
+        0
+      ],
+      [
+        2,
+        15,
+        0
+      ]
+    ],
+    "second_high_ports": [
+      [
+        1,
+        20,
+        0
+      ],
+      [
+        15,
+        23,
+        0
+      ]
+    ]
+  },
+  "point_semantics": {
+    "arithmetic": "exact integer unit t occupancy and integer m assignments",
+    "domain": "integer point coordinates with occupied row points (0,row), formula points (1,row) and ordered ref-port points (2+k,row)",
+    "orientation": "identity only",
+    "transform": "vertical integer translation only; marks values do not change",
+    "absent_vs_assigned_zero": "Missing is unconstrained; formula code zero explicitly names the guarded I.2 AST and is not absence. Exterior formula value -1 is not a formula code.",
+    "aggregate": "sum t over distinct full decorated placements; compatible union m. Shared constituent identities counted once.",
+    "receptors": "Ordered local premises project to actual primitive MP readers. No artificial final-row macro offset is added.",
+    "seed_root_generation": 0,
+    "cluster_execution": "not implemented or activated; no shortcut around global propagation or generation scheduling"
+  },
+  "model_scope": {
+    "heights": [
+      24,
+      65
+    ],
+    "parametric_grammar_counts": {
+      "24": {
+        "raw_prototypes": 76261,
+        "raw_positive_support_alignments": 1830264,
+        "strict_prior_bindings_before_local_mark_agreement": 624696,
+        "inconsistent_local_mark_functions": 39744,
+        "locally_consistent_strict_prior_bindings": 584952
+      },
+      "65": {
+        "raw_prototypes": 589909,
+        "raw_positive_support_alignments": 38344085,
+        "strict_prior_bindings_before_local_mark_agreement": 12884885,
+        "inconsistent_local_mark_functions": 299520,
+        "locally_consistent_strict_prior_bindings": 12585365
+      }
+    },
+    "all_placement_graphs_materialized": false,
+    "degree_forced_dead_or_search_claim": false,
+    "primitive_inventory_is_the_declared_finite_family": "This is the exact finite recipe inventory derived from the frozen role-preserving constant domain; arbitrary other logical instantiations are not claimed present.",
+    "old_macro_equivalence": false,
+    "65_row_padding": "Conditional proposed one-way lift, not executed or proved here. Expanded primitive fillings form a different and potentially larger search language."
+  },
+  "resource_evidence": {
+    "v1": "UNKNOWN: actual child kernel peak 557432832 bytes exceeded 512 MiB, retained irrespective of wrapper double counting.",
+    "v1_outer_lifetime_seconds": 6.50817575,
+    "v2_outer_lifetime_seconds": 7.572862583,
+    "cumulative_production_seconds": 14.081038333,
+    "v2_conservative_outer_host_peak_bytes": 134643712,
+    "v2_output_correspondence": "All three scientific outputs have exactly the same full file hashes and decompressed UTF-8 bytes as v1.",
+    "production_gates": "Original cumulative 180 seconds and 512 MiB. Failed v1 kept; v2 passes under remaining wall bill.",
+    "independent_audit": "Separate external agent, at most 180 seconds / 512 MiB; terminal receipt pending.",
+    "preparation_seconds": {
+      "freeze_input_hashing_and_syntax_seconds_before_plan_write": 0.271180708,
+      "source_authorship_wall": "not separately instrumented; no execution credited",
+      "prior_native_admission_and_replay": "preserved exact source receipts, not erased or relabeled fresh"
+    },
+    "native_queries": 0,
+    "target_searches": 0,
+    "existing_engine_activation": false
+  },
+  "remaining_obligations": [
+    "complete primitive placement/catalog and graph",
+    "general aggregate embedding family enumeration",
+    "scheduler and rollback implementation conformance",
+    "conditional 65 row lift construction",
+    "formal compiler/native correspondence",
+    "whole native proof acceptance"
+  ],
+  "recommended_next_bounded_gate": "After independent finite source/aggregate audit and root review, freeze a compact complete 24-row primitive placement catalog and independent graph/rollback comparison. Enumerate all declared reference bindings, retaining local conflicts and source/identity preimages. Do not activate native authority or execute target search until that gate and explicit compiler correspondence scope are reviewed."
+}

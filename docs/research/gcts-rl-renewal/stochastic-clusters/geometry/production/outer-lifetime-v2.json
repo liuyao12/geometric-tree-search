@@ -1,0 +1,22 @@
+{
+  "status": "passed_outer_static_production_lifetime",
+  "scope": "outer production lifetime including child and final supervisor receipt serialization",
+  "full_outer_seconds_before_this_receipt_write": 7.572862583,
+  "supervisor_subprocess_full_wall_seconds": 7.572568083,
+  "supervisor_process_return_code": 0,
+  "supervisor_child_wait_reaped": true,
+  "supervisor_receipt_sha256": "85cfa5a461a0df5e54c2a9746ce55b92cad666c7a0ac5848766e593eb07db80a",
+  "plan_sha256": "6fb049eb7915ae028821bf7c209f9c15b47efda4f0d9ba212b592020e06b7114",
+  "measurement_source_sha256": "dd2c3aa2fb0fa3faea5feea377e6028ac1ced7a13f341bcb5464b58d9bba16c9",
+  "wrapper_peak_bytes": 17530880,
+  "wrapper_children_kernel_peak_bytes": 104677376,
+  "deliberately_conservative_all_host_peak_sum_bytes": 134643712,
+  "wall_ceiling_seconds": 173.49182425,
+  "prior_failed_v1_production_seconds": 6.50817575,
+  "cumulative_production_seconds": 14.081038333,
+  "host_ceiling_bytes": 536870912,
+  "native_queries": 0,
+  "target_searches": 0,
+  "existing_engine_activation": false,
+  "own_receipt_write": "outside reported outer pre-write seconds; producer and supervisor receipt serialization included"
+}

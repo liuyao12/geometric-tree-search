@@ -1,0 +1,55 @@
+{
+  "version": "hilbert-aggregate-reader-extraction-plan-v1",
+  "status": "frozen_before_read_only_extraction",
+  "inputs": [
+    {
+      "role": "expansions",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "role": "example",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "role": "production_checkpoint",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "role": "production_snapshot",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+      "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+      "bytes": 12524
+    }
+  ],
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v1.py",
+      "sha256": "35d2bc47865fa660807cb3dd07ba0642a9fc6b71c2972879c66ab7f864142ef9",
+      "bytes": 8177
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v1.py",
+      "sha256": "07e1922914b6040889f0255d3382f24ad3ec61f2aa3b3b64bad37b885a896464",
+      "bytes": 4498
+    }
+  ],
+  "scope": "Read-only projection of frozen producer data; pending independent audit; no source body modification, new policy, graph, native query, search or activation.",
+  "preparation_budget_seconds": 180,
+  "host_ceiling_bytes": 536870912,
+  "requested_fields": [
+    "all 171 names/families/premise AST/conclusion/member counts",
+    "ordered receptor ports, canonical row indices and full identity digests",
+    "24 example literal row commands/formulas/inputs/exact t/m/full IDs/shared memberships"
+  ],
+  "omitted_from_browser_data": [
+    "long identity preimages",
+    "recursive source body/occurrence chains"
+  ],
+  "audit_status_at_freeze": "pending"
+}

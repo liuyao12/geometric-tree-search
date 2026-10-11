@@ -1,0 +1,12 @@
+{
+  "job": "train-01",
+  "status": "passed_complete_replay_lifetime",
+  "pid": 97205,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 6.9209802499999995,
+  "conservative_owner_plus_child_kernel_peak_bytes": 436535296,
+  "receipt_sha256": "672bfec30187d9c59bfc0672c0495a943c6891ec96f185248f8adac104ec1bc0",
+  "resource_semantics": "Wall timeout kills/reaps this pure audit child; conservative kernel peak gate after exit. No hard OS memory cap, no external RSS sample claim."
+}

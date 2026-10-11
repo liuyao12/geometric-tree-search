@@ -1,0 +1,17 @@
+{
+  "status": "scope_note_not_an_audit_result",
+  "full_audit_plan_sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+  "checker_sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+  "root_review_condition": "Authorize one exact-current-files static audit; preserve frozen checker. Do not claim a complete general strict JSON parser or adversarial-input validation.",
+  "known_parser_limitation": "The top-level StreamingObject delimiter loops can accept a trailing comma before the end of the records array or top-level object.",
+  "actual_input_scope": "Exact hash-pinned standard JSON producer files; independent comparison is of every decoded value, rule, placement, identity and aggregate in those files.",
+  "unestablished": [
+    "general strict JSON syntax recognition",
+    "adversarial-input parser correctness",
+    "native parser/compiler correspondence"
+  ],
+  "scientific_or_frozen_source_changes": 0,
+  "native_queries": 0,
+  "search_runs": 0,
+  "solver_runs": 0
+}

@@ -1,0 +1,51 @@
+{
+  "status": "passed_actual_trace_rejection_controls",
+  "controls": [
+    {
+      "name": "lost_full_domain",
+      "status": "rejected",
+      "reason": "complete literal graph/state"
+    },
+    {
+      "name": "wrong_global_scheduler",
+      "status": "rejected",
+      "reason": "global dead/forced/earliest generation"
+    },
+    {
+      "name": "missing_base_fallback",
+      "status": "rejected",
+      "reason": "complete base fallback"
+    },
+    {
+      "name": "stale_hint_identity",
+      "status": "rejected",
+      "reason": "local hint inheritance"
+    },
+    {
+      "name": "wrong_rng_draw",
+      "status": "rejected",
+      "reason": "one exact seeded RNG draw per event"
+    },
+    {
+      "name": "wrong_mixture_distribution",
+      "status": "rejected",
+      "reason": "epsilon mixture"
+    },
+    {
+      "name": "wrong_policy_weight_identity",
+      "status": "rejected",
+      "reason": "weights identity"
+    },
+    {
+      "name": "wrong_feature_binding",
+      "status": "rejected",
+      "reason": "every independent feature keys"
+    }
+  ],
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "seconds_before_receipt_write": 3.192435125,
+  "kernel_peak_rss_bytes": 369934336,
+  "scope": "Eight in-memory corruptions of actual pilot trace; no search or training rerun."
+}

@@ -1,0 +1,60 @@
+{
+  "status": "streamed_serialization_exact_raw_byte_correspondence",
+  "records": [
+    {
+      "original_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+        "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+        "bytes": 4335810
+      },
+      "repair_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+        "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+        "bytes": 4335810
+      },
+      "raw_utf8_json_pin": {
+        "sha256": "a079a89aac2959d2b1360353502a435c870e018745b94cf94e6ffb722e5fe882",
+        "bytes": 116270359
+      },
+      "byte_identical_after_decompression": true
+    },
+    {
+      "original_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858
+      },
+      "repair_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858
+      },
+      "raw_utf8_json_pin": {
+        "sha256": "046e2bd96e0cc9f392569f9669e1b15d0811ac202f635ae5991ebb8c85888f82",
+        "bytes": 6892969
+      },
+      "byte_identical_after_decompression": true
+    },
+    {
+      "original_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+        "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+        "bytes": 707122
+      },
+      "repair_pin": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+        "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+        "bytes": 707122
+      },
+      "raw_utf8_json_pin": {
+        "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+        "bytes": 707122
+      },
+      "byte_identical_after_decompression": true
+    }
+  ],
+  "seconds_before_receipt_write": 0.13344679199999998,
+  "logical_audit_credit": false,
+  "native_queries": 0,
+  "target_searches": 0
+}

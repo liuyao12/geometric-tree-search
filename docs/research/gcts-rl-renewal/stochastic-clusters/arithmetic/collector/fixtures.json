@@ -1,0 +1,20 @@
+{
+  "status": "passed_pure_collector_fixtures",
+  "token_chunk_sizes": [
+    1,
+    2,
+    3,
+    7,
+    31,
+    65536
+  ],
+  "escaped_lookalike_rejected": true,
+  "missing_nonstring_mutants_rejected": 2,
+  "unknown_unexecuted_complete_categories_distinct": true,
+  "missing_lifetime_never_audit_complete": true,
+  "seconds": 0.0007748750000000013,
+  "peak_rss_bytes": 15155200,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}

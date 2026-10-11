@@ -1,0 +1,16 @@
+{
+  "status": "passed_independent_saved_state_features",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "vectors": 13,
+  "features": 322,
+  "feature_work": {
+    "source_port_queries": 21,
+    "mark_neighborhood_queries": 58,
+    "mark_dependency_memberships_examined": 77591
+  },
+  "scope": "Saved-state fixture only; actual tree/RNG/training replay remains open.",
+  "seconds_before_receipt_write": 0.408152792,
+  "peak_rss_bytes": 215433216
+}

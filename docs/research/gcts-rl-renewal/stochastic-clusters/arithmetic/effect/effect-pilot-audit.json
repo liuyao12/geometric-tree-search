@@ -1,0 +1,42 @@
+{
+  "status": "passed_complete_actual_graph_rng_and_policy_replay",
+  "job": "effect-pilot",
+  "plan_sha256": "5c7dfe74a643f5a3dce19bfff2977cbf09c990336d1163c6634e2e2bbdb26231",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "tree": {
+    "status": "unknown_search_budget",
+    "nodes": 501,
+    "policy_events": 41,
+    "hints": 36,
+    "executed_changed_first_branches": 18,
+    "metrics": {
+      "nodes": 501,
+      "max_satisfied_points": 45,
+      "forced": 321,
+      "attempts": 500,
+      "branch": 67,
+      "family_pool": 24,
+      "validation_checks": 432,
+      "row_pool": 144,
+      "sample_pair_tests": 395,
+      "items": 384,
+      "features:source_port_queries": 587,
+      "features:mark_neighborhood_queries": 2028,
+      "features:mark_dependency_memberships_examined": 2853468,
+      "hints_started": 36,
+      "hint_eligible": 3,
+      "hint_waiting": 115,
+      "hint_invalid": 115,
+      "dead": 113,
+      "backtracks": 456,
+      "changed_first_branches": 18,
+      "executed_changed_first_branches": 18,
+      "hint_completed": 22
+    }
+  },
+  "scope": "Every actual node/full universe/census/scheduler/base fallback/hint/rollback/feature/RNG/action and applicable complete learning update. No native acceptance or held-out theorem evidence.",
+  "seconds_before_receipt_write": 5.354025,
+  "kernel_peak_rss_bytes": 412712960
+}

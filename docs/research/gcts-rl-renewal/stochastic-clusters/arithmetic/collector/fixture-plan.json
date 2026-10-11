@@ -1,0 +1,24 @@
+{
+  "status": "frozen_pure_collector_fixture_plan",
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_collect.py": "05f86793ec5cdfc77179379e65be0286e38ab5fc737e00d0244bfda4efec5247"
+  },
+  "input_sha256": {
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf"
+  },
+  "seconds": 60,
+  "rss_bytes": 536870912,
+  "phases": [
+    "effect",
+    "training",
+    "evaluation"
+  ],
+  "scope": "Standard-library only; no engine/proposer/training/checker import, subprocess, native call or process polling. Reads exact terminal receipts/lexical cutoff fields; phase incomplete remains incomplete.",
+  "execution_root": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2",
+  "output_root": ".gcts-active/arithmetic-stochastic-clusters-20261011/collector-v1",
+  "overwrite": false,
+  "cost_scope": "Disjoint phase producer/audit totals, historical reservation failure, component diagnostics and collector cost. No speedup/generalization/proof acceptance inference.",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}
