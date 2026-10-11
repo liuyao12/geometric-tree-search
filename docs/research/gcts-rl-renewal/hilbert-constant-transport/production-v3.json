@@ -1,0 +1,53 @@
+{
+  "status": "checked_finite_structural_preservation",
+  "definitions": 171,
+  "source_commands": 20,
+  "mapped_commands": 963,
+  "dependency_edges": 216,
+  "aliases": 216,
+  "substitution_commutations": 198,
+  "native_program_correspondence": "open",
+  "native_queries": 0,
+  "point_models": 0,
+  "target_searches": 0,
+  "authority_adapter_activated": false,
+  "plan_sha256": "1d12db211cacabd584467a8fd95d7d68814d928f98a3441b21bfa5b9bef0ab8e",
+  "certificate_sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+  "corruptions": 47,
+  "rejected_corruptions": 47,
+  "positive_noninjective_counts": {
+    "coincident_common_points": 54,
+    "coincident_lines": 36,
+    "transport_equals_A": 36,
+    "transport_equals_B": 36
+  },
+  "binding_seconds": 0.286229917,
+  "construction_seconds": 0.33462758299999995,
+  "checking_seconds": 0.20290883299999996,
+  "corruption_seconds": 6.292986667,
+  "serialization_seconds": 0.20940958400000032,
+  "production_seconds_before_final_result_write": 7.326568209,
+  "peak_rss_bytes": 53002240,
+  "preserved_file_entries": 295,
+  "os_limits": [
+    {
+      "name": "RLIMIT_DATA",
+      "status": "unsupported",
+      "reason": "current limit exceeds maximum limit",
+      "prior": [
+        9223372036854775807,
+        9223372036854775807
+      ]
+    },
+    {
+      "name": "RLIMIT_AS/RSS",
+      "status": "unsupported",
+      "reason": "current limit exceeds maximum limit",
+      "prior": [
+        9223372036854775807,
+        9223372036854775807
+      ]
+    }
+  ],
+  "scope": "Finite closed-constant instances of the exact six-rule host structural relation; not formal native-program correspondence, fresh native acceptance, proof search or activated authority. Timers include preparation/source binding, all checks and serialization; final result-file write is separately included in harness elapsed."
+}

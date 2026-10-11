@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A source-level argument for families of proof clusters</title>
+<style>body{margin:0;background:#f3f5f4;color:#20312d;font:17px/1.65 system-ui}main{max-width:1050px;margin:28px auto;padding:34px;background:#fff;border:1px solid #d7e0dc;border-radius:12px}h1{font:600 2rem/1.2 Georgia,serif}h2{font-size:1.25rem;margin-top:32px}a{color:#236c77}.notice{padding:16px;border-left:4px solid #ac7528;background:#fff5e2}.square{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}.cell{padding:18px;border:2px solid #467a90;border-radius:9px}.cell:nth-child(even){border-color:#785693}.cell:nth-child(n+3){border-style:dashed}.label{font-weight:600}.math{overflow:auto}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #dce3df}.scroll{overflow:auto}code{overflow-wrap:anywhere;font-size:.87em}@media(max-width:650px){main{margin:0;padding:20px}.square{grid-template-columns:1fr}}</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','style','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script></head>
+<body><main><p><a href="index.html#goals">Research program</a></p>
+<h1>How one proof cluster can become a family</h1>
+<div class="notice"><strong>Authored correctness argument.</strong> This is infrastructure for proof search, not a theorem discovered by GCTS or RL. It concerns the declared symbolic rule relation. The native compiler, machine and Wang encoding require their own correspondence evidence.</div>
+<p>A receptor can expose an ordered list of premises and a conclusion. A cluster that fills it carries a proof of exactly that interface. Substituting declared constant symbols throughout the cluster changes the receptor while preserving its internal derivation, under the conditions below. No coordinates or drawn Euclidean figures are involved.</p>
+<h2>The precise preservation claim</h2>
+<p>Let \(\Theta\) be a symbolic theory with nullary constants and the declared predicates. Let \(h\) send each constant to a declared nullary constant of the same allowed role, while leaving variables, binders, predicate symbols and connective tags unchanged. Every unchanged predicate remains declared at the same arity in \(\Theta'\), which contains the exact image of each used named axiom. The constant map may be noninjective. Choose distinct recipient declaration names, and let \(\rho\) assign each dependency to the corresponding earlier declaration with its full transported body.</p>
+<div class="math">\[\operatorname{Check}_{6}(\Theta,\mathcal B)=1
+\quad\Longrightarrow\quad
+\operatorname{Check}_{6}(\Theta',h_{\rho}(\mathcal B))=1.\]</div>
+<p>Here \(\operatorname{Check}_{6}\) means the six-rule symbolic relation specified in the ledger, and \(\mathcal B\) is a finite ordered dependency graph. Every premise occurrence and input index remains in its original order. Identifying two constants does not authorize deleting duplicate premises or changing command references. Distinct source bodies can become identical after transport; keep distinct declaration identities for this theorem. Merging identical bodies requires a separately specified exact alias construction.</p>
+<div class="square" aria-label="Symbolic substitution commutes with local proof derivation; not a point-tile certificate">
+<div class="cell"><span class="label">Source receptor</span><div class="math">\[\Gamma\vdash_{\Theta} F\]</div><p>Ordered premises and a checked cluster body.</p></div>
+<div class="cell"><span class="label">Recipient receptor</span><div class="math">\[h(\Gamma)\vdash_{\Theta'}h(F)\]</div><p>Every symbol image and dependency alias is explicit.</p></div>
+<div class="cell"><span class="label">One internal command</span><div class="math">\[F[x:=c]\]</div><p>A variable is replaced by a closed constant.</p></div>
+<div class="cell"><span class="label">The corresponding command</span><div class="math">\[h(F[x:=c])=h(F)[x:=h(c)]\]</div><p>The same result follows after transport.</p></div></div>
+<h2>Why the claim holds</h2>
+<p>First prove the displayed substitution identity by induction on formula syntax. Constants are transported, variables are fixed, and each connective is traversed component by component. At a quantifier binding the substituted variable, both operations stop at the same binder. At any other quantifier, the closed replacement has no free variables, so it cannot be captured and no fresh binder is needed.</p>
+<p>Next induct on commands within each declaration, and then on declarations in dependency order. The cases are:</p>
+<div class="scroll"><table><thead><tr><th>Rule</th><th>Preserved check</th></tr></thead><tbody>
+<tr><td><code>assumption</code></td><td>The unchanged index selects the corresponding occurrence of the transported ordered premise list.</td></tr>
+<tr><td><code>axiom</code></td><td>The declared axiom-name map selects exactly the transported axiom formula.</td></tr>
+<tr><td><code>instantiate</code></td><td>The universal-instance implication is preserved by the substitution identity.</td></tr>
+<tr><td><code>eq_subst</code></td><td>The equality and both substitutions into the unchanged incidence template are preserved by the same identity.</td></tr>
+<tr><td><code>mp</code></td><td>Earlier indices remain earlier. Transport preserves the literal antecedent and implication match; injectivity is unnecessary.</td></tr>
+<tr><td><code>block</code></td><td>The declaration induction supplies the exact earlier mapped dependency. Its ordered input list and conclusion match the transported command.</td></tr>
+</tbody></table></div>
+<p>The last command is transported into the declared conclusion. This completes the source-level preservation argument. It proves a direction of valid derivation transport; it does not transport a failed search, an empirical negative guard label, or a resource bound.</p>
+<h2>Relation to the fixed native checker</h2>
+<p>The ledger pins the actual <a href="../../../research/gcts-rl-renewal/fol_checker.tree">checker source</a> and <a href="../../../research/gcts-rl-renewal/boundary_syntax.tree">wire wrapper</a>. Its six entries identify the source branches for exact fields, formula/term checks, named axioms, strict prior references, ordered assumptions and block availability. The host relation deliberately accepts a narrower syntax: closed nullary images and the atomic incidence equality template.</p>
+<p>This is a static branch correspondence ledger, not a mechanized proof of the complete executable stack. A source-valid recipient can still exhaust its heap or time budget. Future used mapped definitions must appear in a freshly checked whole native certificate with full replay; the finite structural certificate must not be relabeled <code>native_accepted</code>.</p>
+<p><a href="constant-transport-ledger.json">Exact conditions, branch locations and open obligations</a></p>
+</main></body></html>

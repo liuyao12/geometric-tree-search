@@ -1,0 +1,12 @@
+{
+  "status": "passed_full_ordinary_closure_and_word_reconstruction",
+  "reachable_formulas": 96,
+  "rounds": 7,
+  "edge_scans": 1224,
+  "word_length": 13,
+  "same_12_row_boundary_fits": false,
+  "native_target_queries": 0,
+  "seconds": 0.064618834,
+  "peak_rss_bytes": 74072064,
+  "scope": "Independent full admitted hyperedge fixed point, deterministic witnesses and complete ordered ordinary DAG/word, original theory/target and transitive used definitions. Host replay is a cross-check only; native whole checking remains pending. Not GCTS/RL discovery."
+}

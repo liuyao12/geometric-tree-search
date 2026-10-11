@@ -1,0 +1,34 @@
+{
+  "status": "unknown_decoder_correspondence_resource_budget",
+  "observations": [
+    {
+      "mode": "original-intern",
+      "canonical_sha256": "d9648ece6df1f891db4d5860965d2701de295db23c2718054d7b85831ecf824a",
+      "canonical_bytes": 115950444,
+      "seconds": 145.79242975,
+      "peak_rss_bytes": 444530688,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "status": "resolved_exact_full_value_digest"
+    },
+    {
+      "mode": "stream-intern",
+      "canonical_sha256": "d9648ece6df1f891db4d5860965d2701de295db23c2718054d7b85831ecf824a",
+      "canonical_bytes": 115950444,
+      "seconds": 158.15408170799998,
+      "peak_rss_bytes": 328712192,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "status": "resolved_exact_full_value_digest"
+    }
+  ],
+  "complete_first_trace_equal": true,
+  "fixture_equal": true,
+  "chunk_quoted_string_equal": true,
+  "reserved_prefix_rejected": true,
+  "seconds": 304.188783,
+  "peak_rss_bytes": 38879232,
+  "native_queries": 0,
+  "target_searches": 0,
+  "scope": "Complete canonical JSON-value SHA and byte-count correspondence on the original first 5001-node trace, primitive fixture, quoted/chunk-boundary strings and fail-closed prefix. Producer files and all original trace bytes remain unchanged; full graph correctness still needs fresh same-bound audit."
+}

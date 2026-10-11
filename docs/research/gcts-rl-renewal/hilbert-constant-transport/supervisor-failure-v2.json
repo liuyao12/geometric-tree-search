@@ -1,0 +1,80 @@
+{
+  "status": "unknown_supervisory_resource_enforcement",
+  "plan_sha256": "12b82e2a30fe279accbd5fdf136725a54040102f16a6758bf0fb243b4e770bc5",
+  "failure": "PermissionError: [Errno 1] Operation not permitted: ps",
+  "supervisor_exit_observed": 1,
+  "supervisor_tool_reported_wall_seconds_rounded": 0.1,
+  "producer_exit_code": "unobserved",
+  "producer_work_cost_seconds": "unknown",
+  "producer_SIGALRM_ceiling_seconds": 180,
+  "producer_result_saved": false,
+  "certificate_saved": false,
+  "process_terminal_checks": [
+    {
+      "command": "pgrep -fl hilbert_constant_produce_v2.py",
+      "escalated": true,
+      "exit_code": 1,
+      "output": "",
+      "command_wall_seconds": 1.0625e-05
+    },
+    {
+      "command": "ps -axo pid,ppid,etime,args | rg hilbert_constant_(produce|run|audit)_v[12]",
+      "escalated": true,
+      "exit_code": 1,
+      "output": "",
+      "command_wall_seconds": 5.75e-06
+    }
+  ],
+  "interpretation": "No matching task process remains. The failed supervisor did not capture authoritative child exit or duration. Original declared child180s ceiling is not a measured work cost. Do not claim successful watchdog enforcement, structural preservation, zero logical work or exact child timing. A recovery would be separately authorized/frozen, preserving this unknown.",
+  "native_queries": 0,
+  "point_models": 0,
+  "target_searches": 0,
+  "authority_adapter_activated": false,
+  "preserved_v2_sources_and_artifacts": [
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v2.py",
+      "sha256": "03687380ffeb85cdf32e72fe7b2996e17b6a07f9556345da2017e07bc22dabe1",
+      "bytes": 19094
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v2.py",
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_declare_v2.py",
+      "sha256": "07d17ee88bcecafa7e3b625474dc113dbc2294c9be93e0780c726b74b70efd61",
+      "bytes": 9113
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_export_v2.py",
+      "sha256": "90a99fbd90b71a39499ea70394b45aaf02d741fdc52fe942589857d9745bf9fe",
+      "bytes": 12444
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_produce_v2.py",
+      "sha256": "d1a7bf0074d633728d680c04958555567c4eda332a97ea19c365c0ad3cc8153d",
+      "bytes": 7873
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_run_v2.py",
+      "sha256": "ee6f18569c4896aebdd23a682c9eedde9e585f6384d9e2aa8eb8880a203abc74",
+      "bytes": 2882
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/plan-v2.json",
+      "sha256": "12b82e2a30fe279accbd5fdf136725a54040102f16a6758bf0fb243b4e770bc5",
+      "bytes": 20798
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stdout-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

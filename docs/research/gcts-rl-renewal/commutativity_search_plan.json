@@ -1,0 +1,439 @@
+{
+  "status": "frozen-practical-search-specification-awaiting-parent-review-and-executor-freeze",
+  "created_utc": "2026-10-11T15:27:59.149684+00:00",
+  "execution_enabled": false,
+  "searches_executed": 0,
+  "native_target_queries_executed": 0,
+  "case": {
+    "id": "addition-commutativity",
+    "label": "Universal addition commutativity",
+    "theory": {
+      "functions": {
+        "zero": 0,
+        "succ": 1,
+        "add": 2
+      },
+      "predicates": {},
+      "axioms": {
+        "AZ": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "AS": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "schemas": [
+        "nat-induction"
+      ]
+    },
+    "target": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "y"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "term_bound": 5,
+    "enable_induction": true
+  },
+  "source_sha256": {
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/induction_receptors_points.py": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/induction_receptors_tests.py": "0305ade26584fb27cd148b82c9892e2c73a65ea59130ac081cab81ee702f476e",
+    "research/gcts-rl-renewal/serialized_kernel.py": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
+    "research/gcts-rl-renewal/induction_receptors_catalog.py": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+    "research/gcts-rl-renewal/induction_receptors_runner.py": "70efcb1d61de66ea91e286369a815ff776eb3466e6a66a3f85e7d5d8bf8df0e0",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/induction_receptors_export.py": "d391767ffe502621729d6378a19554856d9757d35080ea5eac67cd105c4589c2",
+    "research/gcts-rl-renewal/left_successor_catalog.py": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+    "research/gcts-rl-renewal/left_successor_preflight.py": "897b3ac663b0a2278b7a22d3b8fadac128a968f6fe3959afc6687238530a2910",
+    "research/gcts-rl-renewal/left_successor_compact.py": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+    "research/gcts-rl-renewal/left_successor_reachability.py": "d71fb8eb9668a89444b4abbd96082f6fdb38544038d15d2a0d3bb8a5dfbfce4c",
+    "research/gcts-rl-renewal/commutativity_catalog.py": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+    "research/gcts-rl-renewal/commutativity_points.py": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+    "research/gcts-rl-renewal/commutativity_preflight.py": "1c7c1a93125f4fc9804c70ceb4096607890f1c5ab13a2537b2e06f11fc958c0f",
+    "research/gcts-rl-renewal/commutativity_audit.py": "b3f66403243b0be96fc1087aa0372b540df269458702cb3f4970b2ceeca6552d",
+    "research/gcts-rl-renewal/commutativity_preflight_retry.py": "492bdcc6b698b82d47b63785e80c9330f3891b100d68a2bba9df4a70f49d0faf",
+    "research/gcts-rl-renewal/commutativity_audit_retry.py": "da1cd60ec5cb81033f76ca57551526f0a19d55d384c88c8f9306af02175b7093",
+    "research/gcts-rl-renewal/commutativity_capacity.py": "ec8848d819a04c59fe65e18951110e8ac58f0c2446615229eea37c52e76ce72b",
+    "research/gcts-rl-renewal/commutativity_capacity_audit.py": "a58701e46463b73a79602efaf1669757a03cea43ea9a45985752ccb49b5980e6",
+    "research/gcts-rl-renewal/commutativity_capacity_full.py": "0568e88dbd24cddb4023a4ed3d45da80df665d3ab9445d879b878ec300fffac4",
+    "research/gcts-rl-renewal/commutativity_capacity_full_audit.py": "6e0f9208f035b4bc8c94238a6e540190b379bc7f360806f1d45403ba8cdcb939",
+    "research/gcts-rl-renewal/commutativity_capacity_full_partial_audit.py": "ddec4f1dea36299d223363fa72e3be78d4b86e609de6887ff257b603c3cba1e2",
+    "research/gcts-rl-renewal/commutativity_capacity_stream.py": "d26317a7ded0ce00e3711dbffe84f5593a56817128da679ebc43cccaf2eb8e00",
+    "research/gcts-rl-renewal/commutativity_capacity_stream_audit.py": "73f1d8129af970eae323219174f6fbee97221e3ccbe9a5ff9b52ca3cec5d92a1",
+    "research/gcts-rl-renewal/commutativity_native_pilot.py": "50e360b073000f85ef4449caa8c868fd602b1d40fa5fcfc34ed13eb9c62c697b",
+    "research/gcts-rl-renewal/commutativity_native_pilot_audit.py": "5fcf7a7a65e1206592c29dd2574380b0e94387a72d3077d1db2b5570bf959d99",
+    "research/gcts-rl-renewal/left_successor_pilot_audit.py": "9237c0e82b46a48c598b33b5dc2b59b1fe4f0cda7ea2f06ab8f865942082aa53",
+    "research/gcts-rl-renewal/commutativity_admission_chunks.py": "458978ffe7a1fd4f3e7b8a658a92e82b75ad567a094c7eb676ed4149110af7b4",
+    "research/gcts-rl-renewal/commutativity_admission_chunks_audit.py": "8d0c26ddc47b9deab41aaffa2d251383c2d0a98b85e301811db22346d1984b01",
+    "research/gcts-rl-renewal/commutativity_admission_registry.py": "c06063242d1f571af9f29c3bb543660e2846a91218d30bdc70f000328fab1d9a",
+    "research/gcts-rl-renewal/commutativity_admission_registry_audit.py": "2fa992c567a84222608ce1818e1bc6885b3a28f1283e2da6f0c11ca5f3484c9b",
+    "research/gcts-rl-renewal/commutativity_admission_report.py": "bacbbf5c026a308d9df3af04d559851eb41cf3a4d18b1fd81767ea99f1e718bd",
+    "research/gcts-rl-renewal/catalog_receptor_search.py": "85cd20942159ad8459a1d30ecd3b8bcec45d5826f04bd61d74df307535b00df6",
+    "research/gcts-rl-renewal/left_successor_forward.py": "592b075155e207403656ab4bd0cebb665aab48d0e991d6af78d0f75e68af1d53",
+    "research/gcts-rl-renewal/induction_receptors_closure.py": "277d555df9e347a7a7e7e0649d71162a8532bf05757943b482d9d6c6f10f9bdb",
+    "research/gcts-rl-renewal/induction_receptors_compaction.py": "01532452066dd0dcbbd1c448837bd4e7b637ed357efe7e460dd46a66b9376232"
+  },
+  "input_sha256": {
+    ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/registry-audit.json": "4a9300ae8780fffb4b6291745a6475fd69595b7244dc44efff7c56e3a993c8c0",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/integration.json": "15c452eb5cdea111b2c9608f13536b4e9af548a2fe2223c5f71a28db95af1872",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/plan.json": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/summary.json": "2d220133bd536d23746730306a76c5e67553b0f69c0e7a0634cadf9c09b543f2",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/audit.json": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/integration.json": "26fd4eed5cdb60da3e610cc5f4d8186f394b6a6ed54fc5b8f9cdd2dd4ea908e0",
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/integration.json": "3e42ef00083319bdfadcedba68a9887d51abab7d5a98e9806fe865c60ea080b3",
+    ".gcts-active/commutativity-receptors-20261011/native-pilot/integration.json": "e0f97a3e9364b2103ca9e7204ec67539b4c2a73fcfce09504b74256165b22e42"
+  },
+  "registry": {
+    "definitions": 94,
+    "fresh": 93,
+    "exact_prior_reuse": 1,
+    "audit_sha256": "4a9300ae8780fffb4b6291745a6475fd69595b7244dc44efff7c56e3a993c8c0"
+  },
+  "grammar": {
+    "term_bound": 5,
+    "terms": 159,
+    "variables": [
+      "x",
+      "y"
+    ],
+    "context_count": 5,
+    "full_interfaces": 2937,
+    "retained_interfaces": 153,
+    "retained_basis": 96,
+    "retained_definitions": 94,
+    "operations": {
+      "rewrite": 68,
+      "generalize": 56,
+      "conditional-rewrite": 20,
+      "reflexivity": 3,
+      "transferred-searched-theorem": 2,
+      "induction": 2,
+      "conditional-reflexivity": 2
+    },
+    "definition": "Reuse the unchanged complete contextual grammar, all occurrence/direction/missing-variable substitutions and target-independent structural fixed-point pruning. No target backcone or proof-word filter.",
+    "induction_predicate": [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "y"
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ],
+    "induction_variables": [
+      "x",
+      "y"
+    ],
+    "quantifiers": "For each chosen induction variable, universally close the base and conditional step in all other target parameters. Induction hypothesis stays inside implication; all eigenvariable/distribution side conditions are checked inside actual primitive expansion.",
+    "scope": "Finite target-predicate contextual grammar. Not every first-order induction predicate or full Peano arithmetic."
+  },
+  "point_region": {
+    "rows": 12,
+    "roles": [
+      "C",
+      "G",
+      "I1",
+      "I2"
+    ],
+    "roots": 48,
+    "all_root_generations": 0,
+    "placements": 17158,
+    "prepruning_placements": 337032,
+    "orientations": "Translations only; no rotation or reflection.",
+    "capacity_units": 12,
+    "marks": "Exact scalar catalog IDs for formula/command/mode, strict-prior source receptors; missing means unassigned, explicit -1 is unused input.",
+    "boundary": "Final-row target formula; every required point active initially. All alternative induction variables and strict-prior source bindings retained.",
+    "extensions": "No automatic row-boundary increase. Larger boundaries require a separately frozen phase."
+  },
+  "lanes": [
+    {
+      "name": "base",
+      "algorithm": "Reference complete-graph GCTS with lexicographic incident-candidate order.",
+      "repetitions": 2,
+      "deterministic": true
+    },
+    {
+      "name": "fixed-cluster",
+      "algorithm": "Same complete-graph GCTS with fixed scores over independently validated cluster continuation proposals and complete base fallback.",
+      "repetitions": 2,
+      "deterministic": true
+    }
+  ],
+  "proposal": {
+    "families": 42,
+    "raw_bindings": 16170,
+    "internally_compatible_bindings": 13860,
+    "base_members_per_family_instance": 8,
+    "parameter_domain": "Every declared family and rewrite row j, lemma root k<j, external source s<j. Preserve all alternatives. Validate every actual aggregate; do not make external receptors axioms.",
+    "open_shapes": "Also consider bounded arbitrary 1-to-3-placement clusters drawn from the complete legal candidate inventory; they need not be a known semantic row or theorem family.",
+    "pool_limit": 24,
+    "validation_checks_per_branch": 2048,
+    "open_shape_pair_tests_per_branch": 64,
+    "contract": "Check global dead points, then global forced moves, then earliest-generation branching. Generate proposals only after that decision. A proposal is exact aggregate data over existing legal base placements. Expand through scheduled base decisions; return to global propagation after every constituent. Pending hints may only reorder alternatives incident to the currently selected point. All remaining base choices remain available. A sampled proposal pool never supplies degree-zero/singleton evidence.",
+    "persistence": "Hint validation and state/graph/generation changes are restored exactly across failed children. No permanently learned prohibition.",
+    "features": [
+      "promoted_certificate_member",
+      "new_occupancy_rows",
+      "new_output_formula",
+      "justified_source_fraction",
+      "target_output",
+      "new_mark_assignments_per_1000",
+      "row_density",
+      "completed_row_fraction",
+      "defer"
+    ],
+    "fixed_weights": [
+      0.7,
+      0.3,
+      1.0,
+      0.8,
+      0.2,
+      -0.1,
+      0.2,
+      0.2,
+      0.0
+    ],
+    "tie_order": "Canonical complete member-key tuple; defer after equal-scored concrete proposals.",
+    "credit": "Only members backed by the two actually discovered certificates count as promoted lemmas; the 94 generic authored local interfaces do not become learned lemmas.",
+    "learning": "Fixed authored ordering only. Automatic proof-backed inventory promotion is separate from RL training and learned marking restrictions."
+  },
+  "search_limits": {
+    "attempts_per_observation": 5000,
+    "seconds_per_observation": 60,
+    "observations": 4,
+    "total_search_wall_seconds": 240,
+    "host_rss_bytes": 536870912,
+    "compile_preflight_seconds": 180,
+    "independent_graph_tree_audit_seconds": 300,
+    "strict_checkpoint": "Write exact model, placements, decoded proof, full tree, proposals, state fingerprints, costs and budgets before whole native checking; preserve any unknown/cancellation checkpoint. Search time is never replaced by reconstruction time."
+  },
+  "ordinary_forward_control": {
+    "executions": 1,
+    "seconds": 60,
+    "host_rss_bytes": 536870912,
+    "algorithm": "After all GCTS observations are frozen, scan every retained native-admitted hyperedge synchronously to full fixed point. Choose the first ready edge in unchanged canonical catalog order for each newly reached formula; preserve all edges, ranks and deterministic witnesses. Only after the full closure finishes, generically reconstruct a strictly ordered DAG/word for the query.",
+    "target_sequence_supplied": false,
+    "selected_induction_variable_supplied": false,
+    "comparison": "Report actual extracted word length and whether it fits the identical 12-row boundary. A larger extracted word is not a 12-row success. Ordinary extraction is not a GCTS or RL discovery; its witness never seeds GCTS ordering."
+  },
+  "whole_certificate_gate": {
+    "max_fresh_native_queries": 3,
+    "select": "At most the first found certificate in each base/fixed/ordinary lane; exact byte-identical accepted/audited request reuse requires identical geometry and budget and separately disclosed original cost.",
+    "variant": "Preserve original high-level request with exact transitive used-definition closure. Apply only generic expanded formula-DAG sharing under fixed local contexts; preserve every original theory axiom and exact target. Independently validate original/expanded/compacted whole host certificates before any native query. Check compact primitive request from true parser start with unchanged program/palette; no authored target derivation.",
+    "preflight": "Exact whole-request tree/heap capacity measurement and streamed encoding with independent byte/layout audit before native execution. Individual local-interface heap bounds do not imply a whole-proof bound.",
+    "heap_cells": 262144,
+    "parser_start": 88986,
+    "origin": 0,
+    "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+    "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+    "microsteps_per_query": 20000000000,
+    "total_microsteps_ceiling": 60000000000,
+    "cumulative_native_seconds": 600,
+    "cumulative_independent_native_replay_seconds": 600,
+    "host_rss_bytes": 536870912,
+    "preflight_seconds_per_request": 180,
+    "preflight_tree_instruction_ceiling": 20000000,
+    "gate": "A whole request needing more than the audited fixed heap or exceeding time/instruction/native limits remains unknown; do not silently enlarge resources. Every accepted whole target request must pass complete independent native replay before a proved-target claim."
+  },
+  "conformance_audit": {
+    "requirements": [
+      "Independently reconstruct all 17,158 base placements from all 153 retained inference templates and every strict-prior source alignment; compare exact occupancy, marks, target roots and formula catalog.",
+      "Reconcile every block definition against the complete independently replayed 94 registry; validate primitive root/generalization semantics and hygienic side conditions from the frozen grammar.",
+      "Independently reconstruct all 42 family forms and all 13,860 consistent row/source bindings; compare exact 8-member aggregates and explicit external receptors. Audit bounded arbitrary-cluster validity.",
+      "Replay every recorded GCTS node against full-universe legal candidates and shared graph incidence/dependencies; check global dead/forced/earliest generation, fallback, hints, exact rollback and final exact target.",
+      "Before execution compare initial domain fingerprints, candidate language and boundary across base/fixed lanes. Policy ordering may differ; legality and availability must agree.",
+      "Independently replay complete ordinary closure/ranks/witness-DAG and generic whole-request transformations without importing a target proof path."
+    ],
+    "budget_exhaustion": "unknown, not nonprovability"
+  },
+  "implementation_gate": {
+    "status": "Executor adapter not yet written or source-frozen; this document freezes the practical experiment specification only.",
+    "required_changes": [
+      "New-prefix registry-authorized wrapper around the unchanged exact point model; do not forge admission status from the old prospective model.",
+      "New-prefix generic proposal/features adapter must read each inference rule's actual premise arity. Existing semantic guidance assumes all blocks have model.mode and all nonblocks are mode zero: it is incompatible with zero-input transferred theorem blocks and unary native generalization. These bugs cannot be inherited.",
+      "Preserve the reference search recursion/scheduler/fallback/rollback; integrate validated complete-family and open arbitrary proposals only through reversible continuation ordering.",
+      "Freeze executor/auditor sources and exact input/version bindings separately before measurement; parent reviews this specification before launch."
+    ]
+  },
+  "trained_policy": {
+    "compatible_trained_policy_available": false,
+    "training_launched": false,
+    "fixed_weights_are_RL": false,
+    "source_only_later_option": "A later separately frozen compatible action/feature policy may be trained on source theorem searches using this same generic proposer/engine, with target commutativity proof artifacts excluded. Predeclare source tasks, reward, rollouts, budgets, exact model bindings and independent replay before training. No costly training phase is part of this first comparison."
+  },
+  "costs": {
+    "already_paid": "Complete five-node grammar and pruning, original memory unknown, 94 streamed capacity gate, all 93 fresh native admissions and independent replay, one exact prior credit remain in immutable manifests. Preparation is not proof-search time.",
+    "future_bound": "Four search observations at most 240 seconds plus at most 60 seconds ordinary extraction, 180 seconds complete graph preflight, 300 seconds graph/tree audits and separately capped whole-native/preflight/replay. These are budget ceilings; actual costs must be reported.",
+    "unknown": "No target word length, expanded whole-certificate size, native capacity/time or GCTS speed benefit is yet measured. Manual infrastructure development is unmeasured."
+  },
+  "preservation": "All prior 36+21+20+12+18 current exports and 137 earlier arithmetic exports stay immutable. No target proof, search result or trained-policy performance is contained in this plan."
+}

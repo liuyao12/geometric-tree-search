@@ -1,0 +1,711 @@
+{
+  "version": "hilbert-constant-structural-phase-plan-1",
+  "status": "frozen_before_execution",
+  "completed_productions": 0,
+  "completed_audits": 0,
+  "native_queries": 0,
+  "point_models": 0,
+  "target_searches": 0,
+  "authority_adapter_activation_authorized": false,
+  "budgets": {
+    "production_wall_seconds": 180,
+    "audit_wall_seconds": 180,
+    "host_ceiling_bytes": 536870912
+  },
+  "resource_enforcement": "Separate child wall timeout and child SIGALRM; RLIMIT_DATA and RLIMIT_AS/RSS where supported, plus kernel peak RSS checks. Record actual child peak RSS; any exceeded ceiling is unknown. Host native requests and model/search activation are prohibited.",
+  "source_pins": {
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v1.py": {
+      "sha256": "3232a1c4360d276bf82311e26daf28731a5232a59cf4ba77ebfe82823d6b5a07",
+      "bytes": 18749
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v1.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_declare_v1.py": {
+      "sha256": "7b3b6fc45634784d5610a23136e517bda36b7255a1ee1eff8c53596dd6d2ca1f",
+      "bytes": 8028
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_export_v1.py": {
+      "sha256": "93aecec5ea79d85a9f0a02c70fd3fd8cf9ae7ae7414e10d8630a3d7fc634f3d5",
+      "bytes": 10370
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_produce_v1.py": {
+      "sha256": "ab66c8cf24d0320e64c93caec291d165a9b354df4510ee7a671c380dfe7e06e7",
+      "bytes": 7535
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_run_v1.py": {
+      "sha256": "1ebf1a9a1a31e6e086a7c06664f6ba741bf3863f0e1c4f8e12d62456e1d53c09",
+      "bytes": 1649
+    }
+  },
+  "inputs": {
+    ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json": {
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz": {
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json": {
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    ".gcts-active/hilbert-chain-composition-plan-20261011/inventory-preview-v1.json.gz": {
+      "sha256": "224a02372964a4352313eba6a3dc3be53e166a625645663efd55cd82af628764",
+      "bytes": 456499
+    },
+    ".gcts-active/hilbert-chain-composition-plan-20261011/proposal-v1.json": {
+      "sha256": "894844e3ac319fa10db4be1f23a549f04aa5ecd2a07429ec0eff06047c91db08",
+      "bytes": 77108
+    },
+    "docs/basic-tiling-algorithm.md": {
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    }
+  },
+  "preserved_manifests": {
+    ".gcts-active/hilbert-chain-composition-plan-20261011/manifest-v1.json": {
+      "sha256": "569e9dc7e46ab44b6baf0015d67a6590e3704bba26d1735de5f8c64cd31f0c62",
+      "bytes": 2398
+    },
+    ".gcts-active/hilbert-promotion-family-20261011/final-integration-v3.json": {
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    ".gcts-active/hilbert-expanded-control-20261011/final-integration.json": {
+      "sha256": "804447877980b53b72674aecda384cc2e7b8d79b43d9801a0ae9871710df221e",
+      "bytes": 16988
+    },
+    ".gcts-active/hilbert-boundary-transfer-20261011/final-integration.json": {
+      "sha256": "3193dbeeeb4349d96e1339eedeee06f49be29e5e189864afb5d24172fbef7868",
+      "bytes": 27608
+    }
+  },
+  "source_snapshot": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+  "source_record": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+  "source_receipt": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+  "preview": ".gcts-active/hilbert-chain-composition-plan-20261011/inventory-preview-v1.json.gz",
+  "constant_domains": {
+    "A": [
+      "P",
+      "Q"
+    ],
+    "B": [
+      "P",
+      "Q"
+    ],
+    "C": [
+      "P",
+      "Q",
+      "R"
+    ],
+    "u": [
+      "l",
+      "m",
+      "n"
+    ],
+    "v": [
+      "l",
+      "m",
+      "n"
+    ]
+  },
+  "counts": {
+    "uniqueness": 36,
+    "equality_transport": 27,
+    "promoted": 108,
+    "total": 171,
+    "dependency_edges": 216
+  },
+  "certificate_corruptions": [
+    {
+      "name": "map-open-variable",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "A"
+      ],
+      "operation": "set",
+      "value": [
+        "var",
+        "P"
+      ]
+    },
+    {
+      "name": "map-non-nullary-term",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "C"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "f",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "map-undeclared-constant",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "u"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "missing",
+        []
+      ]
+    },
+    {
+      "name": "map-wrong-role",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "A"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "l",
+        []
+      ]
+    },
+    {
+      "name": "map-missing-source-key",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "B"
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "map-extra-source-key",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "foreign"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "P",
+        []
+      ]
+    },
+    {
+      "name": "axiom-missing-I2",
+      "path": [
+        "recipient_theory",
+        "axioms",
+        "I.2-uniqueness"
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "axiom-wrong-image",
+      "path": [
+        "recipient_theory",
+        "axioms",
+        "I.2-uniqueness"
+      ],
+      "operation": "set",
+      "value": [
+        "bot"
+      ]
+    },
+    {
+      "name": "axiom-name-map-forged",
+      "path": [
+        "records",
+        63,
+        "axiom_name_map",
+        "I.2-uniqueness"
+      ],
+      "operation": "set",
+      "value": "missing"
+    },
+    {
+      "name": "signature-arity-changed",
+      "path": [
+        "recipient_theory",
+        "predicates",
+        "Incident"
+      ],
+      "operation": "set",
+      "value": 1
+    },
+    {
+      "name": "signature-fresh-symbol-removed",
+      "path": [
+        "recipient_theory",
+        "functions",
+        "n"
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "source-request-binding-forged",
+      "path": [
+        "source_native_binding",
+        "request_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "source-output-binding-forged",
+      "path": [
+        "source_native_binding",
+        "output_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "authority-native-label",
+      "path": [
+        "authority"
+      ],
+      "operation": "set",
+      "value": "native_accepted"
+    },
+    {
+      "name": "reference-forward",
+      "path": [
+        "records",
+        63,
+        "definition",
+        "proof",
+        3,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        3,
+        2
+      ]
+    },
+    {
+      "name": "reference-reordered",
+      "path": [
+        "records",
+        63,
+        "definition",
+        "proof",
+        3,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "local-premise-erased",
+      "path": [
+        "records",
+        63,
+        "definition",
+        "premises",
+        0
+      ],
+      "operation": "set",
+      "value": [
+        "bot"
+      ]
+    },
+    {
+      "name": "template-hole-forged",
+      "path": [
+        "records",
+        36,
+        "definition",
+        "proof",
+        2,
+        "template"
+      ],
+      "operation": "set",
+      "value": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ],
+          [
+            "var",
+            "otherHole"
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "body-hash-forged",
+      "path": [
+        "records",
+        63,
+        "body_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "dependency-name-stale",
+      "path": [
+        "records",
+        63,
+        "definition",
+        "proof",
+        1,
+        "name"
+      ],
+      "operation": "set",
+      "value": "missing"
+    },
+    {
+      "name": "dependency-forward",
+      "path": [
+        "records",
+        63,
+        "definition",
+        "proof",
+        1,
+        "name"
+      ],
+      "operation": "set",
+      "value": "hilbert-promoted-574149b94c4dfb3ccce9f883d37c7e0d90e6f3b47d34793454aae66db55d4d48"
+    },
+    {
+      "name": "alias-target-forged",
+      "path": [
+        "dependency_aliases",
+        0,
+        "target_dependency"
+      ],
+      "operation": "set",
+      "value": "hilbert-f54538fd0f3ca800fd234961bb5252419451ea704dbbce474545efa2caabb4a3"
+    },
+    {
+      "name": "alias-body-forged",
+      "path": [
+        "dependency_aliases",
+        0,
+        "target_body_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "missing-dependency-entry",
+      "path": [
+        "records",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "duplicate-complete-entry",
+      "path": [
+        "records"
+      ],
+      "operation": "append",
+      "copy_index": 0
+    },
+    {
+      "name": "duplicate-alias-entry",
+      "path": [
+        "dependency_aliases"
+      ],
+      "operation": "append",
+      "copy_index": 0
+    },
+    {
+      "name": "missing-alias-entry",
+      "path": [
+        "dependency_aliases",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "declaration-order-changed",
+      "path": [
+        "records"
+      ],
+      "operation": "swap",
+      "left": 0,
+      "right": 63
+    }
+  ],
+  "primitive_corruptions": [
+    {
+      "name": "rule-assumption-negative",
+      "record_index": 0,
+      "path": [
+        "proof",
+        0,
+        "index"
+      ],
+      "operation": "set",
+      "value": -1
+    },
+    {
+      "name": "rule-assumption-boolean",
+      "record_index": 0,
+      "path": [
+        "proof",
+        0,
+        "index"
+      ],
+      "operation": "set",
+      "value": true
+    },
+    {
+      "name": "rule-axiom-missing-name",
+      "record_index": 0,
+      "path": [
+        "proof",
+        1,
+        "name"
+      ],
+      "operation": "set",
+      "value": "missing"
+    },
+    {
+      "name": "rule-instance-open-term",
+      "record_index": 0,
+      "path": [
+        "proof",
+        2,
+        "term"
+      ],
+      "operation": "set",
+      "value": [
+        "var",
+        "open"
+      ]
+    },
+    {
+      "name": "rule-instance-wrong-formula",
+      "record_index": 0,
+      "path": [
+        "proof",
+        2,
+        "formula"
+      ],
+      "operation": "set",
+      "value": [
+        "bot"
+      ]
+    },
+    {
+      "name": "rule-instance-not-universal",
+      "record_index": 0,
+      "path": [
+        "proof",
+        2,
+        "universal"
+      ],
+      "operation": "set",
+      "value": [
+        "bot"
+      ]
+    },
+    {
+      "name": "rule-mp-forward",
+      "record_index": 0,
+      "path": [
+        "proof",
+        10,
+        "antecedent"
+      ],
+      "operation": "set",
+      "value": 10
+    },
+    {
+      "name": "rule-mp-wrong-implication",
+      "record_index": 0,
+      "path": [
+        "proof",
+        10,
+        "implication"
+      ],
+      "operation": "set",
+      "value": 1
+    },
+    {
+      "name": "rule-equality-hole-variable",
+      "record_index": 36,
+      "path": [
+        "proof",
+        2,
+        "variable"
+      ],
+      "operation": "set",
+      "value": "otherHole"
+    },
+    {
+      "name": "rule-equality-template",
+      "record_index": 36,
+      "path": [
+        "proof",
+        2,
+        "template"
+      ],
+      "operation": "set",
+      "value": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "P",
+            []
+          ],
+          [
+            "var",
+            "otherHole"
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "rule-equality-open-left",
+      "record_index": 36,
+      "path": [
+        "proof",
+        2,
+        "left"
+      ],
+      "operation": "set",
+      "value": [
+        "var",
+        "open"
+      ]
+    },
+    {
+      "name": "rule-equality-unknown-right",
+      "record_index": 36,
+      "path": [
+        "proof",
+        2,
+        "right"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "missing",
+        []
+      ]
+    },
+    {
+      "name": "rule-child-missing",
+      "record_index": 63,
+      "path": [
+        "proof",
+        1,
+        "name"
+      ],
+      "operation": "set",
+      "value": "missing"
+    },
+    {
+      "name": "rule-child-forward",
+      "record_index": 63,
+      "path": [
+        "proof",
+        3,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        3,
+        2
+      ]
+    },
+    {
+      "name": "rule-child-reordered",
+      "record_index": 63,
+      "path": [
+        "proof",
+        3,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "rule-child-duplicated-input",
+      "record_index": 63,
+      "path": [
+        "proof",
+        3,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "rule-new-generalize",
+      "record_index": 63,
+      "path": [
+        "proof",
+        0,
+        "rule"
+      ],
+      "operation": "set",
+      "value": "generalize"
+    },
+    {
+      "name": "rule-conclusion-mismatch",
+      "record_index": 63,
+      "path": [
+        "conclusion"
+      ],
+      "operation": "set",
+      "value": [
+        "bot"
+      ]
+    }
+  ],
+  "raw_duplicate_corruption": true,
+  "corruption_scope": "Both changed structural certificates and direct local six-rule cases. Some edits are valid in a broader logic but outside this declared constant-only transport protocol; rejection does not claim mathematical invalidity.",
+  "source_schema_scope": "Exact prior accepted/replayed three-block request under I.2 alone. Assumptions, references and commands preserved, including contradictory/noninjective premises. No generality beyond these finite mapped instances is proved.",
+  "outcome_scope": "Finite checked structural preservation only. Formal pinned-native semantic correspondence and any certified_transport authority adapter remain open. No57/228native batch, graph or target proof is authorized.",
+  "declaration_seconds_before_plan_write": 0.333540875
+}

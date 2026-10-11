@@ -1,0 +1,32 @@
+{
+  "status": "passed_independent_read_only_artifact_source_reconciliation",
+  "manifest_sha256": "2ae2dfb31b1b1b0030686f9ebafc1970532508c7c4422659875e9e11c284bf5c",
+  "plan_sha256": "1d12db211cacabd584467a8fd95d7d68814d928f98a3441b21bfa5b9bef0ab8e",
+  "certificate_sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+  "audit_sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+  "source_input_pins": 34,
+  "preserved_prior_entries": 295,
+  "manifest_files": 41,
+  "source_zip_entries": 44,
+  "definitions": 171,
+  "mapped_commands": 963,
+  "dependency_aliases": 216,
+  "commutations": 198,
+  "actual_rejected_corruptions": 47,
+  "production_seconds": 7.3899025,
+  "audit_seconds": 10.903200416,
+  "production_kernel_peak_bytes": 53002240,
+  "audit_kernel_peak_bytes": 145555456,
+  "watchdog_samples": [
+    120,
+    174
+  ],
+  "known_v1_failure_seconds": 0.027183875,
+  "v2_child_cost": "unknown",
+  "original_cumulative_gate": "not_established",
+  "new_native_queries": 0,
+  "point_models": 0,
+  "target_searches": 0,
+  "authority_activated": false,
+  "scope": "Finite list/tuple structural checking is distinct from the authored general symbolic argument. No existing computations rerun by artifact reviewer. Compiler/native/Wang/point correspondence remains open."
+}

@@ -1,0 +1,284 @@
+[
+  {
+    "name": "map-open-variable",
+    "status": "rejected",
+    "mutant_sha256": "9a16df180224ce99d4d3fffde6821fbf62758dc22272196872b50c25c00f6bb3",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "map-non-nullary-term",
+    "status": "rejected",
+    "mutant_sha256": "ec5aa880b6e74d3f8f4fae7e8e2e2919d6ccf3e6e77012e13636e17e0736b377",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "map-undeclared-constant",
+    "status": "rejected",
+    "mutant_sha256": "2b7ed72946ecb5adfe76e5ee053902123316112896edcb88873a541d5c85d708",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "map-wrong-role",
+    "status": "rejected",
+    "mutant_sha256": "af5243d332e2850c02bee6172fa1ca8a012e73b869896d186b555e7034945363",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "map-missing-source-key",
+    "status": "rejected",
+    "mutant_sha256": "3c2514df183a609587a6438241611e32299c5951e9a406050ed9708a58496e48",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "map-extra-source-key",
+    "status": "rejected",
+    "mutant_sha256": "702633d52101ecf2c24cbe5fd8fbf10b4abdf39e3cdc6182c50e44fa086ff369",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "axiom-missing-I2",
+    "status": "rejected",
+    "mutant_sha256": "edf0a9957c78941b187e3b057b67b9d28e3f6d132be11900eaa91334d5175b1c",
+    "reason": "exact six-constant recipient theory"
+  },
+  {
+    "name": "axiom-wrong-image",
+    "status": "rejected",
+    "mutant_sha256": "31a0477e47dc67286f311fc974eb27bd9b34f94f9c9f369bd03a965d3ab1e09e",
+    "reason": "exact six-constant recipient theory"
+  },
+  {
+    "name": "axiom-name-map-forged",
+    "status": "rejected",
+    "mutant_sha256": "20dad2bc8ce0f7891f76d141b3b3753dc562bd5c8cc798a91668a3fdcac04f05",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "signature-arity-changed",
+    "status": "rejected",
+    "mutant_sha256": "c90c79f46c8cfde7b3f94e95daadff45474899b5997fc236e9add73eb15a7b19",
+    "reason": "exact six-constant recipient theory"
+  },
+  {
+    "name": "signature-fresh-symbol-removed",
+    "status": "rejected",
+    "mutant_sha256": "d3becc7bcbc682103d6f7b1d8499aa91371b6cd027e33aeac38227a7f296c294",
+    "reason": "exact six-constant recipient theory"
+  },
+  {
+    "name": "source-request-binding-forged",
+    "status": "rejected",
+    "mutant_sha256": "965041cee585e4415414b7a66089c355d4778d609bdd70babc25464f96c42e2f",
+    "reason": "exact source native/replay binding"
+  },
+  {
+    "name": "source-output-binding-forged",
+    "status": "rejected",
+    "mutant_sha256": "c773b01b80c18fb6d959ec4a963ffd09e1547bfdc01da43db7ec64317a4bf091",
+    "reason": "exact source native/replay binding"
+  },
+  {
+    "name": "authority-native-label",
+    "status": "rejected",
+    "mutant_sha256": "ad4f0e115cbf4969779f06c4b94a56672c01cfe8409919d9dd299ab6d15cb44d",
+    "reason": "separate structural authority"
+  },
+  {
+    "name": "reference-forward",
+    "status": "rejected",
+    "mutant_sha256": "7454739c3c36f6a00b6426c063ebd7857b94cb5900563b8e1bccea4843b7dd3f",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "reference-reordered",
+    "status": "rejected",
+    "mutant_sha256": "62c2722b4bfbb1ee863fc127faf2aba16f58de2efa07d61fdf5b15c9007d881d",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "local-premise-erased",
+    "status": "rejected",
+    "mutant_sha256": "d881ef69422ed673ec163c7915c7e7d394bb1319571965575f1bb0e8c209a347",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "template-hole-forged",
+    "status": "rejected",
+    "mutant_sha256": "9f9d3c4047abe0a33c0fe78a1ab3d7e2d37e46655ada461aeed65d880207ecbd",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "body-hash-forged",
+    "status": "rejected",
+    "mutant_sha256": "8a0ff9dc1d395bdea5a30d0888aa9f0d476eee1571bbe067caa38f3660ba9c44",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "dependency-name-stale",
+    "status": "rejected",
+    "mutant_sha256": "38673a790a7f2123435b356d07ab98a2f3183b5a569a659e4ee29a4f3eb92c16",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "dependency-forward",
+    "status": "rejected",
+    "mutant_sha256": "f72e96b4f5faa38490b338b53380426caa70eef375184a8b7b1599b2f6209ffa",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "alias-target-forged",
+    "status": "rejected",
+    "mutant_sha256": "2866fe3dd208264a78e575554645e8fdfce66ed58ff0a43d97abbe08c25b8781",
+    "reason": "complete dependency alias DAG"
+  },
+  {
+    "name": "alias-body-forged",
+    "status": "rejected",
+    "mutant_sha256": "ae56dddd2e146fb39b3bdacf116e38dd8b9001fd25f09f5547e0a866bc14876b",
+    "reason": "complete dependency alias DAG"
+  },
+  {
+    "name": "missing-dependency-entry",
+    "status": "rejected",
+    "mutant_sha256": "c33c7db1dc2c9da444a214b98768abd7a04dcf7b5f1abb7ec147d6d35c6639e8",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "duplicate-complete-entry",
+    "status": "rejected",
+    "mutant_sha256": "8a45ec3b7452f8212fd3587e0794342cabce4ecbc00dc62a84cb5322ae0753a0",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "duplicate-alias-entry",
+    "status": "rejected",
+    "mutant_sha256": "3d28662680b1da43287f129e13fda270724225678b8ed85c8b4f89d59d8bedf0",
+    "reason": "complete dependency alias DAG"
+  },
+  {
+    "name": "missing-alias-entry",
+    "status": "rejected",
+    "mutant_sha256": "5ab706c1bfc8c45f4863d2bba62686f6130881417195a41f525f321d0bbde6a3",
+    "reason": "complete dependency alias DAG"
+  },
+  {
+    "name": "declaration-order-changed",
+    "status": "rejected",
+    "mutant_sha256": "a5d921b062c87ace9b9854d5b2511826b89ae3a844033754db1c71651731368a",
+    "reason": "complete ordered finite certificate reconstruction"
+  },
+  {
+    "name": "rule-assumption-negative",
+    "status": "rejected",
+    "mutant_sha256": "0ad6b566df1507399608909b851347d0d65bbf18879e67c292266e64dd288367",
+    "reason": "natural index"
+  },
+  {
+    "name": "rule-assumption-boolean",
+    "status": "rejected",
+    "mutant_sha256": "5700f3a0f7e039d7bdf8fe48590c38986b40a05924940cb6f844899e11ec533f",
+    "reason": "natural index"
+  },
+  {
+    "name": "rule-axiom-missing-name",
+    "status": "rejected",
+    "mutant_sha256": "4b9ab59bc5946e664982c13426bc29f0a38e89f2272e8cae48ecb467f08e1ce2",
+    "reason": "exact named theorem axiom"
+  },
+  {
+    "name": "rule-instance-open-term",
+    "status": "rejected",
+    "mutant_sha256": "73b5bce4fa98e147ce9bcb85cc55c918b9b60066b87c3ade8ab2a3d3d2495c71",
+    "reason": "closed instantiation term"
+  },
+  {
+    "name": "rule-instance-wrong-formula",
+    "status": "rejected",
+    "mutant_sha256": "e3a097edb0c0913bf96b1cf478ee50bb28508e8cd2c984f76cf2cb54c577130f",
+    "reason": "universal instance"
+  },
+  {
+    "name": "rule-instance-not-universal",
+    "status": "rejected",
+    "mutant_sha256": "a5ad83370bcf867a1e4cc157d15aeb8796f12a06ac4f42e521d0e08e39ccfa8f",
+    "reason": "universal instance"
+  },
+  {
+    "name": "rule-mp-forward",
+    "status": "rejected",
+    "mutant_sha256": "f2cc1f7a0201ffcf167084282d43b38cf34de938d148c24caa9d87f4ad281ba9",
+    "reason": "strict-earlier reference"
+  },
+  {
+    "name": "rule-mp-wrong-implication",
+    "status": "rejected",
+    "mutant_sha256": "8f2c4d96358208983affddc32b62f60721776aad39ef430fa94907ff840322cb",
+    "reason": "literal MP match"
+  },
+  {
+    "name": "rule-equality-hole-variable",
+    "status": "rejected",
+    "mutant_sha256": "f06f15988905d1087ac941f15d75ccc19c41fde7d7a526028260d96a8112274b",
+    "reason": "actual atomic incidence template"
+  },
+  {
+    "name": "rule-equality-template",
+    "status": "rejected",
+    "mutant_sha256": "fa833250fa7837fc1a07c0078cc46e0a954f255cdaad016ea17fdd6aea82b6e5",
+    "reason": "actual atomic incidence template"
+  },
+  {
+    "name": "rule-equality-open-left",
+    "status": "rejected",
+    "mutant_sha256": "6e99dbcc5976031e1997db97c8570ebfa90ecb25dbf49fc64d45c85edf73ce2d",
+    "reason": "closed equality operands"
+  },
+  {
+    "name": "rule-equality-unknown-right",
+    "status": "rejected",
+    "mutant_sha256": "566c9cd95fc4d5201754bf466d790d727fe83008378268e316ec73b1853beaa1",
+    "reason": "zero-arity declared constant"
+  },
+  {
+    "name": "rule-child-missing",
+    "status": "rejected",
+    "mutant_sha256": "4a718d41c36d3ea6b00b5f7d8a1b1862c6204ba0089eb7128d53ed9313f88542",
+    "reason": "earlier dependency declaration"
+  },
+  {
+    "name": "rule-child-forward",
+    "status": "rejected",
+    "mutant_sha256": "da8edcd97c6056237784f79336cb201a0341dc3a3b0d233838238d80f0c0822c",
+    "reason": "strict-earlier reference"
+  },
+  {
+    "name": "rule-child-reordered",
+    "status": "rejected",
+    "mutant_sha256": "4f6f5530f02d83612d39e0693b7b9d738cab73f172bb3b6a3f427407a3b084e9",
+    "reason": "exact ordered block interface"
+  },
+  {
+    "name": "rule-child-duplicated-input",
+    "status": "rejected",
+    "mutant_sha256": "d0077fa661acd1735d371e849b80bbbd36f613701a5f96cf04267c89ea82eb67",
+    "reason": "exact ordered block interface"
+  },
+  {
+    "name": "rule-new-generalize",
+    "status": "rejected",
+    "mutant_sha256": "2b7b57453438ea93763f087807345f26ebdc9a333bde5d56526a2c0cadbdfd0e",
+    "reason": "only six actual rules"
+  },
+  {
+    "name": "rule-conclusion-mismatch",
+    "status": "rejected",
+    "mutant_sha256": "706c7986ae31c8665185ec09ed1877762be8a7c31dd7148f271c507874630780",
+    "reason": "last conclusion"
+  },
+  {
+    "name": "raw-duplicate-json-field",
+    "status": "rejected",
+    "mutant_sha256": "66ed090148e2935436905cf0612ecff3b9e8f61d200270743566cb9c377da7f2",
+    "reason": "duplicate JSON field"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "status": "passed_independent_read_only_source_level_argument_review",
+  "files": [
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/constant-transport-ledger.json",
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    {
+      "path": ".gcts-active/proof-program-search-transport-20261011/build_transport_argument.py",
+      "sha256": "93efacde99026744f26ed6b6a32c172a92e3c9bb8250c3a9aa288c1e7cfb32e3",
+      "bytes": 12819
+    }
+  ],
+  "source_pins_checked": 3,
+  "literal_branch_locations_checked": 6,
+  "conditions_checked": [
+    "closed nullary images",
+    "unchanged predicate arities",
+    "distinct recipient identities",
+    "exact axiom images",
+    "prior full-body aliases",
+    "ordered premise multiplicity",
+    "quantifier substitution identity",
+    "noninjective maps",
+    "one-way preservation only"
+  ],
+  "scope": "Authored source-level infrastructure argument; no theorem search, checker/producer executions, native queries or artifact edits by reviewer. Mechanized/native/compiler/Wang/resource correspondence and any authority adapter remain open."
+}

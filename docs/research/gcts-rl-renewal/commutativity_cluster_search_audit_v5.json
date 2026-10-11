@@ -1,0 +1,37 @@
+{
+  "status": "passed_complete_four_search_graph_and_proposal_traces",
+  "observations": [
+    {
+      "id": "base-r1",
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "status": "unknown_search_budget"
+    },
+    {
+      "id": "fixed-r1",
+      "nodes": 2833,
+      "policy_events": 294,
+      "hints": 294,
+      "status": "unknown_search_budget"
+    },
+    {
+      "id": "fixed-r2",
+      "nodes": 2844,
+      "policy_events": 295,
+      "hints": 295,
+      "status": "unknown_search_budget"
+    },
+    {
+      "id": "base-r2",
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "status": "unknown_search_budget"
+    }
+  ],
+  "target_native_queries": 0,
+  "seconds": 136.34956075,
+  "peak_rss_bytes": 488914944,
+  "scope": "Every independently rebuilt placement, full graph census/decision, exact fixed proposal pool/work/features/choice, hint continuation, complete fallback, rollback and decoded word. No whole native target acceptance or RL claim."
+}

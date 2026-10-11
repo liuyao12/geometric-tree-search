@@ -1,0 +1,18 @@
+{
+  "status": "passed_independent_automatic_candidate_selection_and_generic_whole_compaction",
+  "candidates": [
+    {
+      "lane": "ordinary-forward",
+      "source": "forward",
+      "original_rows": 13,
+      "expanded_commands": 169,
+      "compact_commands": 152,
+      "original_request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+      "compact_request_sha256": "bf4d543eb8b20ef3a733c47dccd85919ee4b6a6efcefd1850284429b950754fb",
+      "exact_original_theory_and_target": true
+    }
+  ],
+  "native_target_queries": 0,
+  "seconds": 0.1362205,
+  "scope": "Whole automatically selected first candidate per algorithm, transitive definition slicing, independent expansion/sharing, original theory/target and host cross-check. Not native whole proof acceptance; capacity/checker gates remain."
+}

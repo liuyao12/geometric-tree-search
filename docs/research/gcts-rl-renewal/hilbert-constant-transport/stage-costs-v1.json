@@ -1,0 +1,15 @@
+{
+  "plan_sha256": "0f6f37ab9195a0d23b988b6399d9ccd4865d463033752031b4bf84a5552f1d33",
+  "stages": [
+    {
+      "stage": "produce",
+      "process_wall_seconds": 0.027183875,
+      "exit_code": 1,
+      "timeout": false
+    }
+  ],
+  "status": "unknown_or_failed",
+  "native_queries": 0,
+  "point_models": 0,
+  "target_searches": 0
+}

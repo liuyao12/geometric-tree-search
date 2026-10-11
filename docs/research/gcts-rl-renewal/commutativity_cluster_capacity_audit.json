@@ -1,0 +1,26 @@
+{
+  "status": "passed_complete_whole_capacity_replay_with_native_unknowns",
+  "observations": [
+    {
+      "index": 0,
+      "lane": "ordinary-forward",
+      "request_sha256": "bf4d543eb8b20ef3a733c47dccd85919ee4b6a6efcefd1850284429b950754fb",
+      "tree_status": "accepted",
+      "tree_steps": 7509732,
+      "required_heap_capacity": 596873,
+      "fixed_heap_capacity": 262144,
+      "all_tree_and_heap_values_matched": true,
+      "encoding_byte_matched": false,
+      "producer_status": "unknown_whole_native_heap_boundary",
+      "seconds": 15.510621834,
+      "peak_rss_bytes": 198868992,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_eligible": false
+    }
+  ],
+  "native_target_queries": 0,
+  "seconds": 15.889817832999999,
+  "peak_rss_bytes": 198868992,
+  "scope": "Complete independently interpreted original automatically produced compact whole requests, exact heap widths and typed-array bytes at unchanged fixed workspace. Any original or audit resource/heap/instruction unknown remains native-ineligible. No native target proof claim."
+}

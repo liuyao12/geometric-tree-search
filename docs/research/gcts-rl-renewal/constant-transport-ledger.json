@@ -1,0 +1,115 @@
+{
+  "status": "authored_source_level_preservation_argument",
+  "scope": "Closed nullary constant transport of the declared six-rule symbolic relation; no native program, compiler, runtime, Wang lowering or resource correspondence theorem.",
+  "sources": {
+    "research/gcts-rl-renewal/fol_checker.tree": {
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed",
+      "bytes": 17577
+    },
+    "research/gcts-rl-renewal/boundary_syntax.tree": {
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c",
+      "bytes": 1739
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v1.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    }
+  },
+  "conditions": [
+    "Variables, binders, predicate symbols, connective tags and command indices are unchanged.",
+    "Every unchanged predicate symbol is declared in the recipient signature at the same arity.",
+    "Every source constant has a declared closed nullary recipient image; the declared point/line role restrictions are retained.",
+    "Each named source axiom has its literal transported image under the declared recipient axiom-name map.",
+    "Every dependency alias resolves to the full transported body of an earlier available declaration; exact identity, not a hash alone, is authoritative.",
+    "Recipient declaration names are distinct. Any merging of identical transported bodies needs a separately specified exact alias construction and is outside this displayed declaration-list theorem.",
+    "Premise lists and command input lists preserve order and multiplicity; no premise is erased when constants coincide.",
+    "The theorem is one-way preservation; it transports neither failed searches nor empirical negative labels."
+  ],
+  "branches": [
+    {
+      "rule": "assumption",
+      "native_source_line": 456,
+      "host_condition": "Natural index selects the identical ordered local premise.",
+      "preservation": "Index unchanged; corresponding premise and line are both transported.",
+      "wire_condition": "Nonnegative integer tag 3, distinct from negative/boolean tags."
+    },
+    {
+      "rule": "axiom",
+      "native_source_line": 419,
+      "host_condition": "Exact field set and named axiom formula.",
+      "preservation": "Exact axiom-image condition and name map.",
+      "wire_condition": "Exact string tag and dictionary lookup."
+    },
+    {
+      "rule": "instantiate",
+      "native_source_line": 426,
+      "host_condition": "Well-formed universal formula, closed nullary term and literal instance implication.",
+      "preservation": "Closed substitution commutes with constant transport; no variable capture or fresh binder branch.",
+      "wire_condition": "Formula/term/tag checks and exact fields."
+    },
+    {
+      "rule": "eq_subst",
+      "native_source_line": 435,
+      "host_condition": "Atomic incidence template with unchanged hole variable and closed operands.",
+      "preservation": "Both template substitutions commute; equality and implication constructors unchanged.",
+      "wire_condition": "Native branch is broader; the host template restriction is a conservative subset."
+    },
+    {
+      "rule": "mp",
+      "native_source_line": 441,
+      "host_condition": "Both indices strictly earlier; exact antecedent/implication/conclusion match.",
+      "preservation": "Transport preserves an existing literal equality even when its constant map is noninjective.",
+      "wire_condition": "Out-of-range prior lookup is False and cannot match a well-formed formula."
+    },
+    {
+      "rule": "block",
+      "native_source_line": 459,
+      "host_condition": "Earlier dependency, exact ordered premise inputs and conclusion.",
+      "preservation": "Declaration-DAG induction supplies the mapped dependency; input indices and multiplicity unchanged.",
+      "wire_condition": "references checks complete ordered lists; check_blocks rejects duplicate names."
+    }
+  ],
+  "source_ledger_checks": [
+    {
+      "topic": "AST well-formedness",
+      "native_source_lines": [
+        152,
+        170
+      ],
+      "scope": "Nullary constants are a subset of the native term grammar; formula constructors agree."
+    },
+    {
+      "topic": "Closed substitution",
+      "native_source_lines": [
+        264,
+        285
+      ],
+      "scope": "Closed replacement has no free variables; native alpha-renaming branch is inactive, and absent-variable shortcut leaves the same formula."
+    },
+    {
+      "topic": "Ordered registry and proof",
+      "native_source_lines": [
+        365,
+        390
+      ],
+      "scope": "Check declarations in order; each proof is nonempty, every formula is well formed, and the last formula equals the declared conclusion."
+    },
+    {
+      "topic": "Wire syntax",
+      "native_source_lines": [
+        28
+      ],
+      "scope": "boundary_syntax.tree rejects duplicate keys and distinguishes natural, negative, boolean and null tags; not a JSON parser correctness theorem."
+    }
+  ],
+  "open_obligations": [
+    "Mechanized source-level proof and complete serializer/decoder correspondence.",
+    "Compiler, tree-machine, tape-machine and Wang microcode correctness.",
+    "Fresh native acceptance and full replay of future used transported definitions.",
+    "Runtime, heap and wall-budget preservation; accepted source need not fit recipient resource bounds.",
+    "Any future authority adapter and complete point-candidate correspondence."
+  ],
+  "searches": 0,
+  "native_queries": 0,
+  "authority_activated": false
+}

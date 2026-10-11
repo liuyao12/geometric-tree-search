@@ -1,0 +1,11 @@
+{
+  "status": "derived_public_reader",
+  "source_reader_sha256": "b0f6b87286fa254d74bc48e3491ce72f2b3ad2ecb49f053b6a4938ca4be6314a",
+  "public_reader_sha256": "6beac12b7ce9f1a2c1bc63191fca59e4160a825394b68be359f71deffa0e8641",
+  "changes": [
+    "Remove private execution-location label from the public introduction.",
+    "Correct OS enforcement prose: actual soft OS limits unsupported; only watchdog/SIGALRM/final peak gates credited.",
+    "Add immutable source, correction receipt and reviewed authored argument links."
+  ],
+  "unchanged": "All experiment sources, plans, certificate, audit, failures, costs and manifest bytes preserved."
+}

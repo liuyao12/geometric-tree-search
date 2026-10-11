@@ -1,0 +1,125 @@
+{
+  "status": "prepared-for-parent-integration",
+  "published": false,
+  "reader": "commutativity_cluster_results.html?v=20261011-ccr1#reader",
+  "gcts_observations": 4,
+  "gcts_outcomes": [
+    "unknown_search_budget",
+    "unknown_search_budget",
+    "unknown_search_budget",
+    "unknown_search_budget"
+  ],
+  "complete_tree_audit": "passed",
+  "ordinary_rows": 13,
+  "same_12row_boundary_fits": false,
+  "primitive_compact_commands": 152,
+  "required_heap_cells": 596873,
+  "fixed_heap_cells": 262144,
+  "whole_native_status": "unknown_whole_native_heap_boundary",
+  "native_target_queries": 0,
+  "no_RL_training": true,
+  "report_generation_seconds": 0.7868370410000001,
+  "report_generation_peak_rss_bytes": 64405504,
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_results.html",
+      "bytes": 1369214,
+      "sha256": "576f6ac4e242c60a3bbbad0ed55359162c941d7568de685818de79b2243df1fd"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_report_data.json.gz",
+      "bytes": 13865,
+      "sha256": "04334872d273bfa7ceeb5c513702f12082e1ca752b8d904fa1e7157cdb1d26c6"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_report_display_audit.json",
+      "bytes": 411,
+      "sha256": "e404d43f6b886eb43e5104cfcf5ec66315d1c94830ee74790c1a6ccf98f1a8ec"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_summary.json",
+      "bytes": 3652,
+      "sha256": "5b1553df65c132a84b94e2d311fb0ec460e5428bc6b2419298293aced34efe6d"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_audit_plan_v5.json",
+      "bytes": 22639,
+      "sha256": "3441bb6010a1f7cb3cf9ae9d7364e5eca6edbf8aebd1ffa9a4861ed22fcb9f32"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_audit_v5.json",
+      "bytes": 999,
+      "sha256": "37a99793802a43a8a92b15e3d026ff612c65dd8b3caea717d70ff49733ac091d"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward_plan.json",
+      "bytes": 24096,
+      "sha256": "b1bdca079dbcd2114573018e9a866c304862093c23ef09f85640ae6f18b53498"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward.json.gz",
+      "bytes": 6840,
+      "sha256": "4d0bace783c03b8558e28dbc6cb2d1d5a65f22df533229276e70245b9c7b7f79"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward_audit.json",
+      "bytes": 561,
+      "sha256": "2a53ac61e54a4498c185227502d24761ec6e7d851308ed2be69523fac3b0b885"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificates.json.gz",
+      "bytes": 9374,
+      "sha256": "0c4967f0d497280224becf0de9362c877e97fe1c5de7dd8a39767767e333feec"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificate_audit.json",
+      "bytes": 831,
+      "sha256": "83c731a3de74c9d98ead2adc21311e97020badfd83aa6ca2b3b6b56f547611bb"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificate_audit_v2.json",
+      "bytes": 863,
+      "sha256": "37821e4719fd9b9c5d97d916b4b6ecbf251fe2e6a3d93bf9e68d38f4a840b98b"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_plan.json",
+      "bytes": 28607,
+      "sha256": "547712692ae40baf99de2643457f982ffa4ae1dfdfd89b3636c8907392381302"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_summary.json",
+      "bytes": 2759,
+      "sha256": "8d4dd86a39279750bfd485f85779ee95d3792bcea06cd381172864ff8878bf30"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_audit.json",
+      "bytes": 1095,
+      "sha256": "36bf0ff78ab7d61a2ec582694800484ecdfa5541785ed6c824532cdd30ddaf32"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_whole_capacity_000.json.gz",
+      "bytes": 83587,
+      "sha256": "268e165cb567915af30afb40f565fde84cb123f2f18df63f3a2e2605b0bc255f"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_decoder_receipt_v3.json",
+      "bytes": 1368,
+      "sha256": "8444c37b4c0820e09e68df04bec5c36fa1839d4907fb7cd05950e68b1b899f11"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_decoder_reconciliation.json",
+      "bytes": 1719,
+      "sha256": "27150580603bcf96c2322301910c2fae75245edc5e715085fd2904620f4f7c58"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_complete_evidence.zip",
+      "bytes": 30512237,
+      "sha256": "c5591e0a9141b026e1e0e520963e3426fede18ddacd1e35860808007f0eb867a"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_report.py",
+      "bytes": 28484,
+      "sha256": "efdefd2c81083427028b2a951986d055b6dff03f1c5bfc4435bf381db6867ce5"
+    }
+  ]
+}

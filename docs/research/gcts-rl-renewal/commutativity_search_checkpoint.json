@@ -1,0 +1,1393 @@
+{
+  "status": "complete_audited_four_unknown_searches_ordinary_candidate_native_heap_unknown",
+  "search_summary": {
+    "status": "complete_four_search_checkpoints_pending_independent_tree_audit",
+    "observations": [
+      {
+        "id": "base-r1",
+        "mode": "base",
+        "rep": 1,
+        "status": "unknown_search_budget",
+        "proof_rows": null,
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3248,
+          "attempts": 5000,
+          "branch": 620,
+          "dead": 1133,
+          "backtracks": 4961
+        },
+        "search_seconds": 28.030206125,
+        "model_setup_seconds": 0.230743417,
+        "model_checkpoint_seconds": 0.804091167,
+        "search_checkpoint_seconds": 143.26382954099998,
+        "total_worker_seconds": 172.36730225,
+        "peak_rss_bytes": 279347200,
+        "native_target_queries": 0,
+        "whole_certificate_status": "not_yet_checked",
+        "word_sha256": null
+      },
+      {
+        "id": "fixed-r1",
+        "mode": "fixed",
+        "rep": 1,
+        "status": "unknown_search_budget",
+        "proof_rows": null,
+        "metrics": {
+          "nodes": 2833,
+          "forced": 1856,
+          "attempts": 2832,
+          "branch": 343,
+          "family_pool": 36,
+          "validation_checks": 3583,
+          "row_pool": 786,
+          "sample_pair_tests": 5621,
+          "items": 2415,
+          "proposal_seconds": 44.29999996900005,
+          "hints_started": 294,
+          "hint_eligible": 4,
+          "hint_waiting": 330,
+          "hint_invalid": 638,
+          "dead": 634,
+          "backtracks": 2795,
+          "hint_completed": 240
+        },
+        "search_seconds": 60.030548625,
+        "model_setup_seconds": 0.26119074999999997,
+        "model_checkpoint_seconds": 0.8179922500000001,
+        "search_checkpoint_seconds": 85.211704916,
+        "total_worker_seconds": 146.378713333,
+        "peak_rss_bytes": 235094016,
+        "native_target_queries": 0,
+        "whole_certificate_status": "not_yet_checked",
+        "word_sha256": null
+      },
+      {
+        "id": "fixed-r2",
+        "mode": "fixed",
+        "rep": 2,
+        "status": "unknown_search_budget",
+        "proof_rows": null,
+        "metrics": {
+          "nodes": 2844,
+          "forced": 1862,
+          "attempts": 2843,
+          "branch": 345,
+          "family_pool": 36,
+          "validation_checks": 3595,
+          "row_pool": 790,
+          "sample_pair_tests": 5634,
+          "items": 2427,
+          "proposal_seconds": 43.94867459300006,
+          "hints_started": 295,
+          "hint_eligible": 4,
+          "hint_waiting": 334,
+          "hint_invalid": 641,
+          "dead": 637,
+          "backtracks": 2814,
+          "hint_completed": 241
+        },
+        "search_seconds": 60.154488167000004,
+        "model_setup_seconds": 0.24153800000000003,
+        "model_checkpoint_seconds": 1.04011125,
+        "search_checkpoint_seconds": 90.488411375,
+        "total_worker_seconds": 152.325458791,
+        "peak_rss_bytes": 238485504,
+        "native_target_queries": 0,
+        "whole_certificate_status": "not_yet_checked",
+        "word_sha256": null
+      },
+      {
+        "id": "base-r2",
+        "mode": "base",
+        "rep": 2,
+        "status": "unknown_search_budget",
+        "proof_rows": null,
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3248,
+          "attempts": 5000,
+          "branch": 620,
+          "dead": 1133,
+          "backtracks": 4961
+        },
+        "search_seconds": 27.9766695,
+        "model_setup_seconds": 0.237975333,
+        "model_checkpoint_seconds": 0.8126102080000001,
+        "search_checkpoint_seconds": 147.513312416,
+        "total_worker_seconds": 176.601835875,
+        "peak_rss_bytes": 281034752,
+        "native_target_queries": 0,
+        "whole_certificate_status": "not_yet_checked",
+        "word_sha256": null
+      }
+    ],
+    "native_target_queries": 0,
+    "ordinary_forward_extractions": 0,
+    "seconds": 648.290558625
+  },
+  "failed_complete_audit": {
+    "status": "unknown_complete_tree_audit_resource_budget",
+    "observations": [
+      {
+        "id": "base-r1",
+        "nodes": 5001,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget"
+      }
+    ],
+    "target_native_queries": 0,
+    "seconds": 20.839978583,
+    "peak_rss_bytes": 572325888,
+    "wall_overshoot_seconds": 0,
+    "memory_overshoot_bytes": 35454976,
+    "scope": "Full completed observations preserved; no full four-tree audit or target proof authority from an incomplete resource-limited audit."
+  },
+  "archive": {
+    "path": "commutativity_cluster_complete_evidence.zip",
+    "sha256": "c5591e0a9141b026e1e0e520963e3426fede18ddacd1e35860808007f0eb867a",
+    "bytes": 30512237,
+    "entries": 73,
+    "scope": "Complete frozen experiment directory and nested source archives; pinned earlier inputs remain in the existing published evidence inventory."
+  },
+  "frozen_files": [
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/activation.json",
+      "sha256": "5dea12be2967c87faab68f683f4577171aaffcfce3d2dc93a3f29f0e607c8137",
+      "bytes": 14272
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/audit-v5-sources.zip",
+      "sha256": "77e122f1ca1883108c75b508c0dab7f99eb736b0812efc16d56536d4c8c1e627",
+      "bytes": 309280
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r1-model.json.gz",
+      "sha256": "6b6afb0b92e22cee44869a60e44df28073def63cee781afc29ba5ed2614ff302",
+      "bytes": 428788
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r1-search.json.gz",
+      "sha256": "9a015deead0c7ee65612415e41a36621456cf17014164364100585dba23a3bbe",
+      "bytes": 13378819
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r1-summary.json",
+      "sha256": "da4ae0ff591fe6b2004c66039b59bdd9adc065aa8e9d8583bf8de0edcccec47c",
+      "bytes": 591
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r2-model.json.gz",
+      "sha256": "03a8cab0b9c81eb9eb89ece63be716e18364e475ac4a8d901048be42855ff686",
+      "bytes": 428787
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r2-search.json.gz",
+      "sha256": "e8c5e5ecc1ffa8454790ab56d77c8118e6011aa3b0b61b85ceb697f055b7fdb8",
+      "bytes": 13378821
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/base-r2-summary.json",
+      "sha256": "8a6720eb6214dffab22e415e9c0e8ffe38401f13f3a631972895bdc7320db275",
+      "bytes": 592
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity-audit-plan.json",
+      "sha256": "16eeb9c06e63b3b536faabe2a88eff2a4c11f982dca9e31e8cc8a484e9977ecc",
+      "bytes": 29286
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity-plan.json",
+      "sha256": "547712692ae40baf99de2643457f982ffa4ae1dfdfd89b3636c8907392381302",
+      "bytes": 28607
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity-sources.zip",
+      "sha256": "af0eb9d68c2eda7a91a9917b97f508a3acdb82ea82f682ab22dbf1af914cb8db",
+      "bytes": 327880
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity-summary.json",
+      "sha256": "8d4dd86a39279750bfd485f85779ee95d3792bcea06cd381172864ff8878bf30",
+      "bytes": 2759
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity.log",
+      "sha256": "de5c63c84fe293c73c172d2a961124827d2ee1ed6bcb102597d759b1629d9dae",
+      "bytes": 1621
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-audit-plan-v2.json",
+      "sha256": "7d065513c8bda417745f18bb1f484f3e71d0887afd5711f58a19810984f2be6f",
+      "bytes": 27299
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-audit-plan.json",
+      "sha256": "e551fdfb5e28dee431e797db48fe2d5eefa03826277ea60f2c447d1b4e812c94",
+      "bytes": 26471
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-audit-v2.json",
+      "sha256": "37821e4719fd9b9c5d97d916b4b6ecbf251fe2e6a3d93bf9e68d38f4a840b98b",
+      "bytes": 863
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-audit.json",
+      "sha256": "83c731a3de74c9d98ead2adc21311e97020badfd83aa6ca2b3b6b56f547611bb",
+      "bytes": 831
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-plan.json",
+      "sha256": "f20d3544c2eb909a880a14a0def435d25105abac6fed7dba40f467bf8c80181b",
+      "bytes": 25715
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-sources.zip",
+      "sha256": "9fde256854b09fec6b977cfbe8f9534d70bd7310ea31a2e762c10940a871ef28",
+      "bytes": 320380
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificates-audit-v2.log",
+      "sha256": "5a86d9422286e2511d0642e51a9e43193af23c556adeb13d4e1f59a126e8e9a2",
+      "bytes": 787
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificates-audit.log",
+      "sha256": "f1b411d91ecca902916a023ea557f7054a2fb5547c2111279a346a4b81d6fb86",
+      "bytes": 863
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificates.json.gz",
+      "sha256": "0c4967f0d497280224becf0de9362c877e97fe1c5de7dd8a39767767e333feec",
+      "bytes": 9374
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificates.log",
+      "sha256": "7578e26c7026e27051784d4f85635c1168bf5d887018dd9e7eb17d85b4a9e644",
+      "bytes": 245
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-plan-v2.json",
+      "sha256": "e5221247c2ebb93c5283b2a5fc51a2648b102293ac48635dddc88a12b35cffcc",
+      "bytes": 2023
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-plan-v3.json",
+      "sha256": "92c0f9001580d52283b8a64f0ecb08167bed19fff322dc0cc0f97da4daeccd48",
+      "bytes": 2758
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-plan.json",
+      "sha256": "f15b649517b3292953ed9e596eb9d4257c1f945d778cda14032074c94b9b6e45",
+      "bytes": 1600
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-receipt-v3.json",
+      "sha256": "8444c37b4c0820e09e68df04bec5c36fa1839d4907fb7cd05950e68b1b899f11",
+      "bytes": 1368
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-receipt.json",
+      "sha256": "58cec723ec44c7c79c4c88c7418e9213253986400e02510a54faf641b7ca1254",
+      "bytes": 609
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-reconciliation-plan.json",
+      "sha256": "a71e7b96de94dc649088d4a31362eee7c2cf53bdaab77245ec6f56e0b32f0472",
+      "bytes": 19789
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-reconciliation.json",
+      "sha256": "27150580603bcf96c2322301910c2fae75245edc5e715085fd2904620f4f7c58",
+      "bytes": 1719
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-reconciliation.log",
+      "sha256": "5903407e910f248144056eac6d71c2a58d851f938ebdfd60e2378692d7b85a4c",
+      "bytes": 1567
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-v3-original-intern.json",
+      "sha256": "cf96122f85611ed565ba383d7abf685311528f95f7a1ea9f1c58bb1276cee413",
+      "bytes": 322
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-v3-stream-intern.json",
+      "sha256": "0f33a74ae818dca9777eb00758143e1f28b54fa135e896841b09e94b32d7d3cc",
+      "bytes": 326
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/decoder-v3.log",
+      "sha256": "7b947a03bd3b8ad325e8f2b9761f234a0008cb3dd3446915e5c53633cb18eb05",
+      "bytes": 1836
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/execution-freeze.json",
+      "sha256": "bd34270da94a48489909782f7792fdef705368b5ee2ff664849230918f48cc6d",
+      "bytes": 16117
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/executor-sources.zip",
+      "sha256": "0ec44aa572fc4c916883395835e5fe45d914be62335e01c83d14e8d6ef473826",
+      "bytes": 295917
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r1-model.json.gz",
+      "sha256": "8761e787fe1f75dc4d0179abd7652ded873c46a899c4b02e496a2ee0a3b8a8b4",
+      "bytes": 428794
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r1-search.json.gz",
+      "sha256": "f4725793723291a0bd1df18cc6c472a52cd96f3859533349a4a39fe8128b1ce3",
+      "bytes": 8637667
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r1-summary.json",
+      "sha256": "88206c12fe5029a0e286c7922bece8e1f1b382d353d0f9149f65d027f319e017",
+      "bytes": 897
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r2-model.json.gz",
+      "sha256": "1bdb3fe2536d7081ba0719e3c8fda2036f6f0e9a2052b67d53d7d01411a06d6e",
+      "bytes": 428797
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r2-search.json.gz",
+      "sha256": "6b8a7a938b434aa6597a5106c96d38cbcc914d7e4aa3eff2c75373d89cd118d4",
+      "bytes": 8701726
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/fixed-r2-summary.json",
+      "sha256": "86508d2ec56d3c9838e1abfe5cef61453e0d3272621ee22be87240eab31324c6",
+      "bytes": 895
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-audit-plan.json",
+      "sha256": "e529247c558dcfb74197a15e69facbadab9ce447237e46621e816c7ad50da52e",
+      "bytes": 24740
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-audit.json",
+      "sha256": "2a53ac61e54a4498c185227502d24761ec6e7d851308ed2be69523fac3b0b885",
+      "bytes": 561
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-audit.log",
+      "sha256": "c37008494f069914ae0b2cb0dda8917fb362324df34c8a9da2d696e943c0befd",
+      "bytes": 539
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-plan.json",
+      "sha256": "b1bdca079dbcd2114573018e9a866c304862093c23ef09f85640ae6f18b53498",
+      "bytes": 24096
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-sources.zip",
+      "sha256": "522106fa2e00cd98840b6c3f102585bc8cbc2cbb4b64f79a8e8c9deb097997cc",
+      "bytes": 313359
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-summary.json",
+      "sha256": "6cbd2ad861489f0c9b430a28d1377f7d3fa71b81ff3e34a42c4e09641902e167",
+      "bytes": 496
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward.json.gz",
+      "sha256": "4d0bace783c03b8558e28dbc6cb2d1d5a65f22df533229276e70245b9c7b7f79",
+      "bytes": 6840
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward.log",
+      "sha256": "eeda345f4f753624176054ed02aa44119ef6a83207cff6bf4db6969c111a55fa",
+      "bytes": 476
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/integration-receipt.json",
+      "sha256": "498d09e6433ad12d485195c1df576e6b7557e30b96c83febd9d8444e8db1b564",
+      "bytes": 407
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/integration.json",
+      "sha256": "574bee40f2afc89919f14bdbdf9d790d78000d0f5f5143b0662f4b4272f5733a",
+      "bytes": 4886
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/plan.json",
+      "sha256": "a296a4240a39f1ef2fed2ebd0d08d7b223ae83da436f7f956a3d46884d255511",
+      "bytes": 26293
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-audit-plan.json",
+      "sha256": "ec0fb81187e75d1ff15633f30076aced08d2f38b3654f982191fb69017eebacd",
+      "bytes": 15294
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-audit.json",
+      "sha256": "c381e09ca35e8a0251f592c243600e381fd51c7593ce5ff58c7c888fda978ff3",
+      "bytes": 1092
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-audit.log",
+      "sha256": "480ff8b3ee755c1c58173ed4a78133649f97770b7ffc734c6e1079fc0eaefd8c",
+      "bytes": 926
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-families.json.gz",
+      "sha256": "f1657b3e27e2ffbba4f6de6280eeab4ad594670ed31dff8d4b552faf14d065b4",
+      "bytes": 191017
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-fixtures.json.gz",
+      "sha256": "f28a19f60a22df7122bf52bf43f4daf5840d665981cc34b2cc574929f7c3cf20",
+      "bytes": 5417
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-model.json.gz",
+      "sha256": "71520532c0c5ca8658728e7d6d5f686f126451934a1c239a06d05a57bd26cd54",
+      "bytes": 428788
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight-summary.json",
+      "sha256": "40de5c69bc8a9dc38dfd027b696cef93f186835586a9fdf9c614ff771877f426",
+      "bytes": 4296435
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/preflight.log",
+      "sha256": "3fdc3cb8682c49262f904658c3fccc7ec5068da09765d1b78e7125ee7a41c997",
+      "bytes": 758387
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit-plan-v5.json",
+      "sha256": "3441bb6010a1f7cb3cf9ae9d7364e5eca6edbf8aebd1ffa9a4861ed22fcb9f32",
+      "bytes": 22639
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit-plan.json",
+      "sha256": "f1dc23dcb6b0bd23f6e3ea3b3a5b4b5a554399988b4b0410e3095fdb4fb4ca19",
+      "bytes": 20045
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit-v5.json",
+      "sha256": "37a99793802a43a8a92b15e3d026ff612c65dd8b3caea717d70ff49733ac091d",
+      "bytes": 999
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit-v5.log",
+      "sha256": "b66e5e8aa35b5dd8963ea2b70b94080c9648888459f2fb5d3b1dea3774239cc6",
+      "bytes": 1327
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit.json",
+      "sha256": "6a3874594be7401b86727953b4dc1f579e84b434bca71aed68aae60a998f8eaa",
+      "bytes": 530
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-audit.log",
+      "sha256": "2fd87c1024c5743e21a3e76276b2fc1d33ea4c0d8f441d1b851a405eac22c859",
+      "bytes": 592
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-run.log",
+      "sha256": "e54d48a3a2d62dd09972eb346f140ea1dbb4d4cc245ea8e3003e37be9986b37b",
+      "bytes": 5555
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/search-summary.json",
+      "sha256": "5b1553df65c132a84b94e2d311fb0ec460e5428bc6b2419298293aced34efe6d",
+      "bytes": 3652
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/whole-capacity-000.json.gz",
+      "sha256": "268e165cb567915af30afb40f565fde84cb123f2f18df63f3a2e2605b0bc255f",
+      "bytes": 83587
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/audit.json",
+      "sha256": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343",
+      "bytes": 1367
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/integration.json",
+      "sha256": "26fd4eed5cdb60da3e610cc5f4d8186f394b6a6ed54fc5b8f9cdd2dd4ea908e0",
+      "bytes": 7596
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/plan.json",
+      "sha256": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9",
+      "bytes": 37302
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/summary.json",
+      "sha256": "2d220133bd536d23746730306a76c5e67553b0f69c0e7a0634cadf9c09b543f2",
+      "bytes": 17428
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz",
+      "sha256": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31",
+      "bytes": 36682
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/capacity-stream/integration.json",
+      "sha256": "3e42ef00083319bdfadcedba68a9887d51abab7d5a98e9806fe865c60ea080b3",
+      "bytes": 4778
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/integration.json",
+      "sha256": "15c452eb5cdea111b2c9608f13536b4e9af548a2fe2223c5f71a28db95af1872",
+      "bytes": 4081
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry-audit.json",
+      "sha256": "4a9300ae8780fffb4b6291745a6475fd69595b7244dc44efff7c56e3a993c8c0",
+      "bytes": 938
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz",
+      "sha256": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+      "bytes": 37521
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-pilot/integration.json",
+      "sha256": "e0f97a3e9364b2103ca9e7204ec67539b4c2a73fcfce09504b74256165b22e42",
+      "bytes": 2928
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_audit.json",
+      "sha256": "36bf0ff78ab7d61a2ec582694800484ecdfa5541785ed6c824532cdd30ddaf32",
+      "bytes": 1095
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_plan.json",
+      "sha256": "547712692ae40baf99de2643457f982ffa4ae1dfdfd89b3636c8907392381302",
+      "bytes": 28607
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_capacity_summary.json",
+      "sha256": "8d4dd86a39279750bfd485f85779ee95d3792bcea06cd381172864ff8878bf30",
+      "bytes": 2759
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificate_audit.json",
+      "sha256": "83c731a3de74c9d98ead2adc21311e97020badfd83aa6ca2b3b6b56f547611bb",
+      "bytes": 831
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificate_audit_v2.json",
+      "sha256": "37821e4719fd9b9c5d97d916b4b6ecbf251fe2e6a3d93bf9e68d38f4a840b98b",
+      "bytes": 863
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_certificates.json.gz",
+      "sha256": "0c4967f0d497280224becf0de9362c877e97fe1c5de7dd8a39767767e333feec",
+      "bytes": 9374
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_complete_evidence.zip",
+      "sha256": "c5591e0a9141b026e1e0e520963e3426fede18ddacd1e35860808007f0eb867a",
+      "bytes": 30512237
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_decoder_receipt_v3.json",
+      "sha256": "8444c37b4c0820e09e68df04bec5c36fa1839d4907fb7cd05950e68b1b899f11",
+      "bytes": 1368
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_decoder_reconciliation.json",
+      "sha256": "27150580603bcf96c2322301910c2fae75245edc5e715085fd2904620f4f7c58",
+      "bytes": 1719
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward.json.gz",
+      "sha256": "4d0bace783c03b8558e28dbc6cb2d1d5a65f22df533229276e70245b9c7b7f79",
+      "bytes": 6840
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward_audit.json",
+      "sha256": "2a53ac61e54a4498c185227502d24761ec6e7d851308ed2be69523fac3b0b885",
+      "bytes": 561
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_forward_plan.json",
+      "sha256": "b1bdca079dbcd2114573018e9a866c304862093c23ef09f85640ae6f18b53498",
+      "bytes": 24096
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_report_data.json.gz",
+      "sha256": "04334872d273bfa7ceeb5c513702f12082e1ca752b8d904fa1e7157cdb1d26c6",
+      "bytes": 13865
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_report_display_audit.json",
+      "sha256": "e404d43f6b886eb43e5104cfcf5ec66315d1c94830ee74790c1a6ccf98f1a8ec",
+      "bytes": 411
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_results.html",
+      "sha256": "576f6ac4e242c60a3bbbad0ed55359162c941d7568de685818de79b2243df1fd",
+      "bytes": 1369214
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_audit_plan_v5.json",
+      "sha256": "3441bb6010a1f7cb3cf9ae9d7364e5eca6edbf8aebd1ffa9a4861ed22fcb9f32",
+      "bytes": 22639
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_audit_v5.json",
+      "sha256": "37a99793802a43a8a92b15e3d026ff612c65dd8b3caea717d70ff49733ac091d",
+      "bytes": 999
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_search_summary.json",
+      "sha256": "5b1553df65c132a84b94e2d311fb0ec460e5428bc6b2419298293aced34efe6d",
+      "bytes": 3652
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_cluster_whole_capacity_000.json.gz",
+      "sha256": "268e165cb567915af30afb40f565fde84cb123f2f18df63f3a2e2605b0bc255f",
+      "bytes": 83587
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_certificate_boundary.py",
+      "sha256": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+      "bytes": 12736
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_first_order.py",
+      "sha256": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+      "bytes": 12742
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_logical_wang_clusters.py",
+      "sha256": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+      "bytes": 15000
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_inventory_policy.py",
+      "sha256": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+      "bytes": 34098
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_receptor_points.py",
+      "sha256": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+      "bytes": 18000
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_prefix_failure_markings.py",
+      "sha256": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+      "bytes": 19943
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_proof_boundary.py",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+      "bytes": 11238
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_proof_compaction.py",
+      "sha256": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+      "bytes": 8699
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_inventory.py",
+      "sha256": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+      "bytes": 58649
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_proofs.py",
+      "sha256": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+      "bytes": 18668
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_serialized_kernel.py",
+      "sha256": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+      "bytes": 11512
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tape_kernel.py",
+      "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+      "bytes": 10993
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tape_micro.cpp",
+      "sha256": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+      "bytes": 3079
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+      "bytes": 12912
+    },
+    {
+      "path": "research/gcts-rl-renewal/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+      "bytes": 3547
+    },
+    {
+      "path": "research/gcts-rl-renewal/catalog_receptor_points.py",
+      "sha256": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+      "bytes": 6507
+    },
+    {
+      "path": "research/gcts-rl-renewal/catalog_receptor_search.py",
+      "sha256": "85cd20942159ad8459a1d30ecd3b8bcec45d5826f04bd61d74df307535b00df6",
+      "bytes": 5727
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_boundary_cases.py",
+      "sha256": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+      "bytes": 2256
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "bytes": 7089
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_admission_chunks.py",
+      "sha256": "458978ffe7a1fd4f3e7b8a658a92e82b75ad567a094c7eb676ed4149110af7b4",
+      "bytes": 6643
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_admission_chunks_audit.py",
+      "sha256": "8d0c26ddc47b9deab41aaffa2d251383c2d0a98b85e301811db22346d1984b01",
+      "bytes": 6823
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_admission_registry.py",
+      "sha256": "c06063242d1f571af9f29c3bb543660e2846a91218d30bdc70f000328fab1d9a",
+      "bytes": 3857
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_admission_registry_audit.py",
+      "sha256": "2fa992c567a84222608ce1818e1bc6885b3a28f1283e2da6f0c11ca5f3484c9b",
+      "bytes": 5659
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_admission_report.py",
+      "sha256": "bacbbf5c026a308d9df3af04d559851eb41cf3a4d18b1fd81767ea99f1e718bd",
+      "bytes": 13251
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_audit.py",
+      "sha256": "b3f66403243b0be96fc1087aa0372b540df269458702cb3f4970b2ceeca6552d",
+      "bytes": 15420
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_audit_retry.py",
+      "sha256": "da1cd60ec5cb81033f76ca57551526f0a19d55d384c88c8f9306af02175b7093",
+      "bytes": 15711
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity.py",
+      "sha256": "ec8848d819a04c59fe65e18951110e8ac58f0c2446615229eea37c52e76ce72b",
+      "bytes": 5542
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_audit.py",
+      "sha256": "a58701e46463b73a79602efaf1669757a03cea43ea9a45985752ccb49b5980e6",
+      "bytes": 8273
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_full.py",
+      "sha256": "0568e88dbd24cddb4023a4ed3d45da80df665d3ab9445d879b878ec300fffac4",
+      "bytes": 9299
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_full_audit.py",
+      "sha256": "6e0f9208f035b4bc8c94238a6e540190b379bc7f360806f1d45403ba8cdcb939",
+      "bytes": 10888
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_full_partial_audit.py",
+      "sha256": "ddec4f1dea36299d223363fa72e3be78d4b86e609de6887ff257b603c3cba1e2",
+      "bytes": 9635
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_stream.py",
+      "sha256": "d26317a7ded0ce00e3711dbffe84f5593a56817128da679ebc43cccaf2eb8e00",
+      "bytes": 7376
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_capacity_stream_audit.py",
+      "sha256": "73f1d8129af970eae323219174f6fbee97221e3ccbe9a5ff9b52ca3cec5d92a1",
+      "bytes": 9123
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+      "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+      "bytes": 3157
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "sha256": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+      "bytes": 21096
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_capacity.py",
+      "sha256": "9a948c6f22ed6c31fe2f59696424e1da6406ed8a2da0d42902604b076e5efa87",
+      "bytes": 5286
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_capacity_audit.py",
+      "sha256": "c9ca5610f101e2941d27861504d7df5780c78b6d4bf2b4c9a42758b32bc372cf",
+      "bytes": 8235
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_certificates.py",
+      "sha256": "54351dd774a1439c99bca274ea8760561042ff220f1ea0260d98ad80d7237dda",
+      "bytes": 5138
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_certificates_audit.py",
+      "sha256": "65d83ecc665061a46d15484579462e98b80c17a34508606f7a5c33f936eee0c7",
+      "bytes": 5246
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_certificates_audit_v2.py",
+      "sha256": "31cbda6cfc301428095974b4d63ada6c093f4372f9151188b504a0a204ac7411",
+      "bytes": 5483
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_decoder_audit.py",
+      "sha256": "e585627664c1f67fef371c786ba2b349fe356fdca10167bc88251e5fea380c67",
+      "bytes": 5339
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_decoder_reconcile.py",
+      "sha256": "9e44a13b4781daeb3ae2c3c63819c9ebadd7d565e2894ddb30f4bae30a817a99",
+      "bytes": 4235
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_forward.py",
+      "sha256": "b59d7071362cabb04b24ba750932df7ad182f9fff049fcda8c128b948692688f",
+      "bytes": 3697
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_forward_audit.py",
+      "sha256": "e8797dcc7059945ff4d990203387eb65338b1237a0bcada8328487b69e415af8",
+      "bytes": 5434
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_guidance.py",
+      "sha256": "7fdc2ea45de1f4a83ccc9694a1627020a89b430c239cd1a6915ba05ddcc6a9dc",
+      "bytes": 8116
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_intern.py",
+      "sha256": "77e8a29e89ec9700f8a5d2f1a270ac4a0d711b4bf579bb9849e99e47f2977b7d",
+      "bytes": 1471
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_intern_v2.py",
+      "sha256": "ba695f7f49a2bb64af5ca29de1c4416c6bb0f8b76ad61da220d93593a8206b6f",
+      "bytes": 1529
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+      "sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+      "bytes": 2852
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_points.py",
+      "sha256": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+      "bytes": 1509
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_preflight.py",
+      "sha256": "3818c73601203471c139d471f138b06bb60f28c67657f0278abd4521a6fe38e1",
+      "bytes": 7924
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_report.py",
+      "sha256": "efdefd2c81083427028b2a951986d055b6dff03f1c5bfc4435bf381db6867ce5",
+      "bytes": 28484
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_runner.py",
+      "sha256": "ac07d0b483187516dfaba9cf239d0abf64760b7259cb8d00d025e1cac85c28d5",
+      "bytes": 4761
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search.py",
+      "sha256": "f8d424e65c7ba73efaaedc3bd6fd16fee5cc7b8835682637771d0564cc0eb324",
+      "bytes": 6224
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search_audit.py",
+      "sha256": "ea355f94aa13fc15cab11aec966edd9eef59a18fd83928649042fceb05caf196",
+      "bytes": 3086
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search_audit_v2.py",
+      "sha256": "6a265846efdd0c8b93a8312cd7a78588f8907dfddd28641be142f5e4c24f2882",
+      "bytes": 3053
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search_audit_v3.py",
+      "sha256": "8168a816b66819d3a92c4a448ae73aa7e964146085e831e0e256083a6d581ab8",
+      "bytes": 3056
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search_audit_v4.py",
+      "sha256": "dd97e2dd11e11f91d72c6372a7d3aa2a6f54bd0989a75ebf82f8398bd6b7fb45",
+      "bytes": 4135
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_search_audit_v5.py",
+      "sha256": "fc4f01154c2c89f46040e6f2461a37b0287f3e6dc484ec8527b9ef04282cb2f6",
+      "bytes": 4147
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_native_pilot.py",
+      "sha256": "50e360b073000f85ef4449caa8c868fd602b1d40fa5fcfc34ed13eb9c62c697b",
+      "bytes": 7535
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_native_pilot_audit.py",
+      "sha256": "5fcf7a7a65e1206592c29dd2574380b0e94387a72d3077d1db2b5570bf959d99",
+      "bytes": 6374
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_points.py",
+      "sha256": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+      "bytes": 4737
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_preflight.py",
+      "sha256": "1c7c1a93125f4fc9804c70ceb4096607890f1c5ab13a2537b2e06f11fc958c0f",
+      "bytes": 10065
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_preflight_retry.py",
+      "sha256": "492bdcc6b698b82d47b63785e80c9330f3891b100d68a2bba9df4a70f49d0faf",
+      "bytes": 10479
+    },
+    {
+      "path": "research/gcts-rl-renewal/computation_blocks.py",
+      "sha256": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+      "bytes": 12692
+    },
+    {
+      "path": "research/gcts-rl-renewal/first_order_receptors.py",
+      "sha256": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+      "bytes": 9139
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_audit.py",
+      "sha256": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+      "bytes": 20113
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_catalog.py",
+      "sha256": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+      "bytes": 17301
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_closure.py",
+      "sha256": "277d555df9e347a7a7e7e0649d71162a8532bf05757943b482d9d6c6f10f9bdb",
+      "bytes": 6399
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_compaction.py",
+      "sha256": "01532452066dd0dcbbd1c448837bd4e7b637ed357efe7e460dd46a66b9376232",
+      "bytes": 6006
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_compaction_audit.py",
+      "sha256": "363386f1dafbdcaadec543ecc5f33d01e5e1d2c9d1b8f34a2d6816eaf9a01d0c",
+      "bytes": 6758
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_export.py",
+      "sha256": "d391767ffe502621729d6378a19554856d9757d35080ea5eac67cd105c4589c2",
+      "bytes": 13675
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_points.py",
+      "sha256": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+      "bytes": 5632
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_runner.py",
+      "sha256": "70efcb1d61de66ea91e286369a815ff776eb3466e6a66a3f85e7d5d8bf8df0e0",
+      "bytes": 7360
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_tests.py",
+      "sha256": "0305ade26584fb27cd148b82c9892e2c73a65ea59130ac081cab81ee702f476e",
+      "bytes": 3039
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_catalog.py",
+      "sha256": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+      "bytes": 9374
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_compact.py",
+      "sha256": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+      "bytes": 5912
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_forward.py",
+      "sha256": "592b075155e207403656ab4bd0cebb665aab48d0e991d6af78d0f75e68af1d53",
+      "bytes": 8846
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_pilot_audit.py",
+      "sha256": "9237c0e82b46a48c598b33b5dc2b59b1fe4f0cda7ea2f06ab8f865942082aa53",
+      "bytes": 5043
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_preflight.py",
+      "sha256": "897b3ac663b0a2278b7a22d3b8fadac128a968f6fe3959afc6687238530a2910",
+      "bytes": 5850
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_reachability.py",
+      "sha256": "d71fb8eb9668a89444b4abbd96082f6fdb38544038d15d2a0d3bb8a5dfbfce4c",
+      "bytes": 6050
+    },
+    {
+      "path": "research/gcts-rl-renewal/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "bytes": 10808
+    },
+    {
+      "path": "research/gcts-rl-renewal/micro_cert.py",
+      "sha256": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+      "bytes": 3586
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "bytes": 10594
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inventory_cases.py",
+      "sha256": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+      "bytes": 2693
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "bytes": 2746
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_receptor_cases.py",
+      "sha256": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+      "bytes": 1078
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "bytes": 8962
+    },
+    {
+      "path": "research/gcts-rl-renewal/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "bytes": 6992
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_cases.py",
+      "sha256": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+      "bytes": 3471
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+      "bytes": 6942
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+      "bytes": 2180
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_policy.py",
+      "sha256": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+      "bytes": 479
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+      "bytes": 5318
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_inventory_worker.py",
+      "sha256": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+      "bytes": 8956
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "bytes": 7196
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "bytes": 4593
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "bytes": 7409
+    },
+    {
+      "path": "research/gcts-rl-renewal/serialized_kernel.py",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
+      "bytes": 13977
+    },
+    {
+      "path": "research/gcts-rl-renewal/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "bytes": 3756
+    },
+    {
+      "path": "research/gcts-rl-renewal/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "bytes": 19188
+    },
+    {
+      "path": "research/gcts-rl-renewal/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "bytes": 13290
+    },
+    {
+      "path": "research/gcts-rl-renewal/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "bytes": 28533
+    }
+  ],
+  "scope": "Complete independent replay establishes all four unchanged GCTS search traces, 15679 nodes and 589 hints, including actual failed-branch rollback. All four outcomes remain unknown. The ordinary control automatically discovers a 13-row derivation candidate exceeding the 12-row GCTS boundary. Its exact original-theory certificate expands to 169 primitive commands and generically shares to 152. Complete tree-level checker and heap replay agree, but 596873 required canonical native heap cells exceed the unchanged 262144 boundary. No whole native target query or native acceptance occurs. Fixed proposal weights are authored, with no RL training or superiority claim. Mixed cutoffs do not establish equal work. Original pending producer summaries and all failed audit/resource receipts remain immutable; later receipts reconcile their statuses. All setup, proposal, serialization and recovery costs remain charged.",
+  "complete_four_tree_audit": {
+    "status": "passed_complete_four_search_graph_and_proposal_traces",
+    "observations": [
+      {
+        "id": "base-r1",
+        "nodes": 5001,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget"
+      },
+      {
+        "id": "fixed-r1",
+        "nodes": 2833,
+        "policy_events": 294,
+        "hints": 294,
+        "status": "unknown_search_budget"
+      },
+      {
+        "id": "fixed-r2",
+        "nodes": 2844,
+        "policy_events": 295,
+        "hints": 295,
+        "status": "unknown_search_budget"
+      },
+      {
+        "id": "base-r2",
+        "nodes": 5001,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget"
+      }
+    ],
+    "target_native_queries": 0,
+    "seconds": 136.34956075,
+    "peak_rss_bytes": 488914944,
+    "scope": "Every independently rebuilt placement, full graph census/decision, exact fixed proposal pool/work/features/choice, hint continuation, complete fallback, rollback and decoded word. No whole native target acceptance or RL claim."
+  },
+  "ordinary_forward_control": {
+    "status": "complete_ordinary_extraction_pending_independent_audit",
+    "comparison_rows": 12,
+    "word_length": 13,
+    "same_12_row_boundary_fits": false,
+    "native_target_queries": 0,
+    "algorithm": "ordinary synchronous full-hyperedge forward chaining",
+    "seconds": 0.09877645899999998,
+    "peak_rss_bytes": 79101952,
+    "scope": "Automatically extracted ordinary witness, not a GCTS/RL discovery or a whole native certificate. Every edge is scanned before generic query DAG reconstruction."
+  },
+  "ordinary_independent_audit": {
+    "status": "passed_full_ordinary_closure_and_word_reconstruction",
+    "reachable_formulas": 96,
+    "rounds": 7,
+    "edge_scans": 1224,
+    "word_length": 13,
+    "same_12_row_boundary_fits": false,
+    "native_target_queries": 0,
+    "seconds": 0.064618834,
+    "peak_rss_bytes": 74072064,
+    "scope": "Independent full admitted hyperedge fixed point, deterministic witnesses and complete ordered ordinary DAG/word, original theory/target and transitive used definitions. Host replay is a cross-check only; native whole checking remains pending. Not GCTS/RL discovery."
+  },
+  "generic_certificate_independent_audit": {
+    "status": "passed_independent_automatic_candidate_selection_and_generic_whole_compaction",
+    "candidates": [
+      {
+        "lane": "ordinary-forward",
+        "source": "forward",
+        "original_rows": 13,
+        "expanded_commands": 169,
+        "compact_commands": 152,
+        "original_request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+        "compact_request_sha256": "bf4d543eb8b20ef3a733c47dccd85919ee4b6a6efcefd1850284429b950754fb",
+        "exact_original_theory_and_target": true
+      }
+    ],
+    "native_target_queries": 0,
+    "seconds": 0.106965041,
+    "peak_rss_bytes": 80166912,
+    "scope": "Whole automatically selected first candidate per algorithm, transitive definition slicing, independent expansion/sharing, original theory/target and host cross-check. Not native whole proof acceptance; capacity/checker gates remain."
+  },
+  "whole_capacity_preflight": {
+    "status": "complete_whole_capacity_observations_pending_independent_audit",
+    "observations": [
+      {
+        "index": 0,
+        "lane": "ordinary-forward",
+        "request_sha256": "bf4d543eb8b20ef3a733c47dccd85919ee4b6a6efcefd1850284429b950754fb",
+        "constructor_root": 3023,
+        "native_queries": 0,
+        "tree_result": {
+          "status": "accepted",
+          "steps": 7509732,
+          "event_sha256": "4032162b874f0264232b346e34b94b410e8870387d977e7a1cb1c12ef345e3e2",
+          "profile": {
+            "wire_value": 15236,
+            "nil": 136145,
+            "wire_word": 9013,
+            "wire_key_seen": 586,
+            "same": 387884,
+            "wire_ones": 160,
+            "semantic_main": 1,
+            "l5": 17,
+            "l4": 119,
+            "l3": 556,
+            "l2": 594,
+            "l1": 907,
+            "fields": 154,
+            "is_type": 21032,
+            "length": 2283,
+            "member": 735,
+            "get": 2698,
+            "text_is": 5633,
+            "signature_ok": 2,
+            "size1": 8267,
+            "formula_ok": 887,
+            "size2": 7376,
+            "size3": 2862,
+            "second": 7946,
+            "third": 5763,
+            "term_ok": 3627,
+            "free": 21,
+            "tag": 2282,
+            "arg2": 926,
+            "arg1": 1457,
+            "term_free": 126,
+            "union": 105,
+            "insert": 182,
+            "remove": 8,
+            "text_less": 56,
+            "byte_less": 56,
+            "next_byte": 6720,
+            "check_blocks": 1,
+            "proof": 1,
+            "rule_ok": 152,
+            "append": 11634,
+            "subst": 76,
+            "subst_term": 372,
+            "subst_args": 438,
+            "fun": 196,
+            "jstr": 660,
+            "arr": 635,
+            "make3": 435,
+            "eq": 78,
+            "imp": 131,
+            "prior": 157,
+            "nth": 157,
+            "all": 21,
+            "tautology": 24,
+            "collect_atoms": 240,
+            "valuations": 352,
+            "truth": 1421,
+            "l6": 16,
+            "induction": 3,
+            "var": 4,
+            "make2": 4,
+            "reverse": 4,
+            "decimal": 1
+          },
+          "peak_frames": 155,
+          "heap_nodes": 15206,
+          "trace": [],
+          "seconds": 14.989432292,
+          "value": 1
+        },
+        "required_heap_capacity": 596873,
+        "requirement_is_complete": true,
+        "status": "unknown_whole_native_heap_boundary",
+        "seconds": 15.315462917,
+        "peak_rss_bytes": 194297856,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0
+      }
+    ],
+    "native_target_queries": 0,
+    "seconds": 15.767678416999999,
+    "scope": "Automatically produced compact whole requests only; unchanged checker and fixed 262144 heap. Every resource/heap/instruction unknown preserved. No native target acceptance."
+  },
+  "whole_capacity_independent_replay": {
+    "status": "passed_complete_whole_capacity_replay_with_native_unknowns",
+    "observations": [
+      {
+        "index": 0,
+        "lane": "ordinary-forward",
+        "request_sha256": "bf4d543eb8b20ef3a733c47dccd85919ee4b6a6efcefd1850284429b950754fb",
+        "tree_status": "accepted",
+        "tree_steps": 7509732,
+        "required_heap_capacity": 596873,
+        "fixed_heap_capacity": 262144,
+        "all_tree_and_heap_values_matched": true,
+        "encoding_byte_matched": false,
+        "producer_status": "unknown_whole_native_heap_boundary",
+        "seconds": 15.510621834,
+        "peak_rss_bytes": 198868992,
+        "wall_overshoot_seconds": 0,
+        "memory_overshoot_bytes": 0,
+        "native_eligible": false
+      }
+    ],
+    "native_target_queries": 0,
+    "seconds": 15.889817832999999,
+    "peak_rss_bytes": 198868992,
+    "scope": "Complete independently interpreted original automatically produced compact whole requests, exact heap widths and typed-array bytes at unchanged fixed workspace. Any original or audit resource/heap/instruction unknown remains native-ineligible. No native target proof claim."
+  },
+  "owner_export_sha256": "574bee40f2afc89919f14bdbdf9d790d78000d0f5f5143b0662f4b4272f5733a",
+  "independent_read_only_review": "ordinary-capacity-review.json",
+  "source_input_pin_checks": 1979,
+  "additional_dependency_archive": {
+    "path": "search_transport_parent_bindings.zip",
+    "sha256": "8cf58252197a0f7299c29288cf2ef8bbd9526e6bb11134a2f8ee44caff941bbb",
+    "bytes": 2716,
+    "entries": [
+      ".gcts-active/commutativity-receptors-20261011/native-complete/integration.json",
+      "docs/research/gcts-rl-renewal/hilbert_receptors_closure_audit.json",
+      "docs/research/gcts-rl-renewal/hilbert_receptors_closure_result.json"
+    ],
+    "scope": "Exact newly exposed prior input manifest and two closure receipts; previous experiments unchanged."
+  }
+}

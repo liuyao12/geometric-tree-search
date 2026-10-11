@@ -1,0 +1,38 @@
+{
+  "status": "passed_fresh_exact_historical_component_reconciliation",
+  "canonical_sha256": "d9648ece6df1f891db4d5860965d2701de295db23c2718054d7b85831ecf824a",
+  "canonical_bytes": 115950444,
+  "components": [
+    {
+      "mode": "original-intern",
+      "canonical_sha256": "d9648ece6df1f891db4d5860965d2701de295db23c2718054d7b85831ecf824a",
+      "canonical_bytes": 115950444,
+      "seconds": 145.79242975,
+      "peak_rss_bytes": 444530688,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "status": "resolved_exact_full_value_digest"
+    },
+    {
+      "mode": "stream-intern",
+      "canonical_sha256": "d9648ece6df1f891db4d5860965d2701de295db23c2718054d7b85831ecf824a",
+      "canonical_bytes": 115950444,
+      "seconds": 158.15408170799998,
+      "peak_rss_bytes": 328712192,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "status": "resolved_exact_full_value_digest"
+    }
+  ],
+  "historical_combined_status": "unknown_decoder_correspondence_resource_budget",
+  "historical_combined_seconds": 304.188783,
+  "historical_combined_wall_overshoot_seconds": 4.188783000000001,
+  "earlier_failed_full_audit_seconds": 20.839978583,
+  "earlier_failed_full_audit_peak_rss_bytes": 572325888,
+  "original_four_trace_bytes_unchanged": true,
+  "native_target_queries": 0,
+  "target_searches": 0,
+  "seconds": 0.082058292,
+  "peak_rss_bytes": 50462720,
+  "scope": "Fresh hash binding and correspondence of two individually complete historical whole-value components. Combined time-unknown is preserved and fully charged; this receipt is a new reuse gate, not a passing historical batch or a full graph audit. Unchanged full v5 four-tree audit remains mandatory."
+}
