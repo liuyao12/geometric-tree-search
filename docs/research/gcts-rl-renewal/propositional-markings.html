@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propositional logic as distant markings · GCTS research</title>
+  <link rel="stylesheet" href="report.css?v=20261011-pm1">
+  <style>
+    .intro{margin-top:42px}h1{font-size:clamp(40px,5vw,66px)}.two{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:28px}.two>div{min-width:0}.logic-row{padding:15px 0;border-bottom:1px solid var(--line)}.logic-row p{margin:5px 0}.logic-row .formula{font-size:22px}.logic-row .small{font-size:13px}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;margin:15px 0}.legend span{border-left:7px solid;padding-left:8px}.legend .formula-key{border-color:#8654a0}.legend .command-key{border-color:#b98528}.legend .antecedent-key{border-color:#357bad}.legend .implication-key{border-color:#c66c3b}.diagram-scroll{overflow:auto}.diagram-scroll svg{background:#f1f4ec;border-radius:5px}#result{padding:16px;border-left:4px solid #276a53;background:#eaf2e8;margin:16px 0}#result.rejected{border-color:#aa4650;background:#f9eceb}#result h3{font-size:23px;margin:0 0 8px}#result p{margin:5px 0}#load-status{font-size:13px}details pre{overflow:auto;white-space:pre;max-height:350px}.diagram-scroll svg text{font-size:13px}.controls{margin-top:0}.equation{font-size:21px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:24px}.comparison>div{background:#f1f4ec;padding:18px;border-radius:5px}.comparison h3{font-size:23px}footer{margin-top:40px}@media(max-width:850px){.two,.comparison{grid-template-columns:1fr}.intro{margin-top:32px}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="propositional-markings.js?v=20261011-pm1"></script>
+</head>
+<body>
+<header class="masthead"><a href="./?v=20261011-pm1#propositional-markings">GCTS + RL · Research notebook</a><span>EXACT INFERENCE · DISTANT POINT VALUES</span></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">AN EXPLANATORY APPENDIX TO NOTEBOOK 62</p>
+    <h1>Let the markings<br>carry the argument.</h1>
+    <p class="deck">A new proof line publishes a formula and reaches back to the formulas it needs. Exact agreement makes the inference fit. A learned attention mechanism could choose which distant attachments to try.</p>
+    <p>This is a concrete explanation of our existing propositional example. Its proof was found automatically and checked by the unchanged native Wang machine. The inspector below reuses those recorded placements; it adds no new training or speedup claim.</p>
+    <p id="load-status" role="status">Loading the recorded proof and exact point values…</p>
+  </section>
+  <section class="panel" id="markings">
+    <h2>A rule is a pattern of required agreements.</h2>
+    <div class="equation">\[\frac{P\qquad P\Rightarrow Q}{Q}\quad\text{(modus ponens)}\]</div>
+    <p>A command placement writes the proposed formula. A corresponding rule guard writes the same command, the same output, and the required formulas at its two selected earlier line ports. The antecedent and implication must come from strictly earlier lines. Their distance does not change the matching rule.</p>
+    <div class="two">
+      <div><h3>The discovered proof, in English</h3><div id="proof-lines"></div><p class="small">These are logical line numbers. GCTS can fill proof positions in another order through global constraint propagation. The original placement order is available below.</p></div>
+      <div>
+        <h3>Try the possible attachments</h3>
+        <div class="controls">
+          <label>Source of the antecedent<select id="antecedent-control"><option value="1">Line 2</option><option value="0">Line 1</option></select></label>
+          <label>Source of the implication<select id="implication-control"><option value="0">Line 1</option><option value="1">Line 2</option></select></label>
+        </div>
+        <div class="legend"><span class="command-key">Command agreement</span><span class="formula-key">Published formula word</span><span class="antecedent-key">Required antecedent</span><span class="implication-key">Required implication</span></div>
+        <div class="diagram-scroll"><svg id="marking-picture" viewBox="0 0 900 390" role="img" aria-label="Three proof rows with command and guard squares and distant premise markings"></svg></div>
+        <div id="result" aria-live="polite"></div>
+        <p class="small">Squares show the original command and guard roles; each valid placement fills one required point. A red guard is a rejected proposal. For internally contradictory inputs, that guard is absent from the catalog. The dots are the full formula word, including its terminator. Curves visualize distant assignments to those same points; curves themselves are not constraints. Coordinates are compressed for display. This is a high-level point inventory, distinct from the native primitive Wang palette.</p>
+      </div>
+    </div>
+    <details><summary>Inspect exact bytes, point coordinates and placement identities</summary><pre id="exact-values"></pre></details>
+    <details><summary>Original search order and native proof provenance</summary><pre id="provenance"></pre></details>
+  </section>
+  <section class="panel" id="encoding">
+    <h2>What the markings encode</h2>
+    <p>Write the formula on line \(i\) as an injective finite word \(E(F_i)\). Our current encoding uses every byte of canonical UTF-8 JSON, followed by the distinct terminator \(256\). At a source port, byte position \(k\) is a separate point:</p>
+    <div class="equation">\[m\bigl(p(i,k)\bigr)=E(F_i)_k,\qquad p(i,k)=(4i,100+k).\]</div>
+    <p>A modus ponens guard concluding \(B\), with antecedent source \(a\) and implication source \(b\), also assigns</p>
+    <div class="equation">\[m\bigl(p(a,k)\bigr)=E(A)_k,\qquad m\bigl(p(b,k)\bigr)=E(A\Rightarrow B)_k.\]</div>
+    <p>Overlapping assigned values must agree. The rule schema relates the output \(B\) to the two required words; equality alone does not establish entailment. Command words also bind each proposed command to the appropriate guard. Every formula ends with a terminator, so unequal-length words cannot pass by agreeing on a prefix.</p>
+    <p>The complete frontier graph sees all marking dependencies, including distant points outside a placement's occupancy support. All proof obligations start active. It checks global dead ends, propagates forced moves, then branches at the earliest generation, with exact rollback and every original candidate retained.</p>
+    <p class="small">For this bounded example the inventory is instantiated from the assertion's finite formula basis and all strict-prior reference choices. Its types have fixed orientation and declared positional placements. A general inference schema is a family of such placements; it is not by itself a construction of a single finite universal tile set.</p>
+  </section>
+  <section class="panel" id="attention">
+    <h2>The attention analogy is useful.</h2>
+    <div class="comparison">
+      <div><h3>Propose an attachment</h3><p>A query could represent a missing premise; earlier formulas supply keys. Learned compatibility scores could rank source lines, inference families and lemma clusters. The chosen proposal still expands to original placements, and complete fallback remains available.</p><p class="small">This is a proposed neural extension. Notebook 62 trains a feature-based cluster policy; it does not train a Transformer attention network.</p></div>
+      <div><h3>Check the attachment</h3><p>Exact formula words and the declared inference rule decide whether it is valid. A high attention score cannot repair a conflicting byte or authorize a new rule. These logical markings define the proof problem. Separately certified redundant markings can accelerate search without changing its solutions.</p><p class="small">If an independent checker reads the decoded symbolic proof, display markings may be omitted from that certificate. The rule, formulas and source references still have to be checked.</p></div>
+    </div>
+    <p>Transformer attention computes a weighted combination of values using query/key compatibility. Our proof proposal would instead select discrete attachments and validate them exactly. The resemblance concerns access to distant dependencies. <a href="https://arxiv.org/html/1706.03762v7#S3.SS2">Vaswani et al., Attention Is All You Need, §3.2</a>.</p>
+  </section>
+  <section class="panel" id="truth-values">
+    <h2>Encoding truth values is a different experiment.</h2>
+    <p>We could also give propositional variables binary markings and use gate placements for the truth tables of \(\neg,\land,\lor,\Rightarrow\). That encodes a satisfying assignment. To establish \(\Gamma\models G\), we need to establish that \(\Gamma\land\neg G\) is unsatisfiable. A single satisfying tiling of that expression would instead provide a counterexample.</p>
+    <p>For the present proof, the premises require \(P=1\) and \((P\Rightarrow Q)=1\); a counterexample would require \(Q=0\). These requirements are inconsistent. A checkable derivation or an unsatisfiability certificate establishes the theorem. A failed budget-limited search establishes only an unresolved result.</p>
+    <p>The immediate research target should remain proof-line markings and adaptable checked lemma interfaces, while truth-value SAT supplies a useful propositional comparison. Mature SAT search already exists; useful progress requires measuring the cost of reaching the same checked result. <a href="https://minisat.se/">MiniSat project</a>.</p>
+  </section>
+  <section class="panel" id="evidence">
+    <h2>Evidence and current limits</h2>
+    <p id="validation-summary"></p>
+    <p>The appendix compares all four reference pairs against exact point marking agreement and an independent modus ponens predicate. It verifies all displayed words, the entire six-placement target and the link to the recorded native-accepted request. It does not rerun the native checker or change the original experiment.</p>
+    <p><a href="native-inventory-policy.html?v=20261010-nip1#reader">Original proof and learned inventory</a> · <a href="native-inventory-policy.html?v=20261010-nip1#results-panel">Matched cold results and limits</a> · <a href="propositional-markings-note-001.json">Displayed point data and source hashes</a> · <a href="../../../research/gcts-rl-renewal/export_propositional_markings_note.py">Reproducible extraction and checks</a> · <a href="../../basic-tiling-algorithm.md">GCTS algorithm contract</a></p>
+    <p>Full first-order scope handling, a succinct finite universal encoding and independently audited semantic lemma reuse remain further work. The separate semantic-receptor pilot is unfinished and is not evidence claimed by this appendix.</p>
+  </section>
+</main>
+<footer><span>Propositional markings · explanatory note</span><a href="./?v=20261011-pm1#goals">Research goals remain active</a></footer>
+</body>
+</html>
