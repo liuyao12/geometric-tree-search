@@ -1,0 +1,15 @@
+{
+  "status": "complete_movable_encoding_pending_independent_byte_audit",
+  "native_queries": 0,
+  "target_searches": 0,
+  "input_sha256": "f770d76f8939d8d0a103726318ef98ca01fba7772e4f013eb6dd04ccb519efb9",
+  "input_bytes": 4433652,
+  "request_sha256": "ffc08505435a7a87c62927b8a1934bf14b988d3f72242bfbc5eb413e363ac3dd",
+  "new_heap_cells": 266240,
+  "seconds": 0.815658875,
+  "peak_rss_bytes": 167329792,
+  "enforcement": "SIGALRM wall interruption plus final kernel peak RSS; no OS hard memory limit claimed",
+  "scope": "Explicitly moved external blank heap only; fixed262144cell unknown remains. Zero native queries or proof search. An input preparation/audit result does not establish native acceptance.",
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0
+}

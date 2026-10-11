@@ -1,0 +1,578 @@
+{
+  "version": "hilbert-transport-point-catalog-plan-1",
+  "status": "frozen_before_production",
+  "rows": 5,
+  "budgets": {
+    "production_wall_seconds": 180,
+    "audit_wall_seconds": 180,
+    "host_ceiling_bytes": 536870912
+  },
+  "source_pins": {
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_adapter_v1.py": {
+      "sha256": "c1604b9e87952e265779d95818e0705096649224306fd45c4a3cd978d69ce0cf",
+      "bytes": 9576
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py": {
+      "sha256": "c08a9bc99b357e002a6f22a4623026a24d2cf8961ec207702a0a828b0cfe33b3",
+      "bytes": 16009
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v1.py": {
+      "sha256": "b780801f5f370d15f681a5a473657016debaa426cfd7430ea77a50cd2ff07589",
+      "bytes": 7793
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v1.py": {
+      "sha256": "8f68de4d63826542b76f64c0893c81edb039bcfe43914634ba8c9e60706defc8",
+      "bytes": 14306
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_produce_v1.py": {
+      "sha256": "3c3cb69eb107d169fa105307fa382d8c8a4e69815345d1cc3e856764fee4815d",
+      "bytes": 11112
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v1.py": {
+      "sha256": "dab5821e6e455b9ed4fd2000a9a0fa00d3a43b69c3f415afb7817c74bc5273ea",
+      "bytes": 4977
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_reader_v1.js": {
+      "sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+      "bytes": 3264
+    }
+  },
+  "inputs": {
+    ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz": {
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json": {
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json": {
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz": {
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json": {
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-argument.html": {
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-ledger.json": {
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-review.json": {
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v3.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v3.py": {
+      "sha256": "62e5cea42e565df449071764640a9183244988f7f5598f9bd2823152eac600e2",
+      "bytes": 19228
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/plan-v3.json": {
+      "sha256": "1d12db211cacabd584467a8fd95d7d68814d928f98a3441b21bfa5b9bef0ab8e",
+      "bytes": 26215
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/stage-costs-v3.json": {
+      "sha256": "a7ebddc84c0e84c593dc0250a8c370337af6bfb9bbc9c69b0be0dfbcf9ab7186",
+      "bytes": 31277
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/supervisor-failure-v2.json": {
+      "sha256": "b58e692ebac4426df3fd47647b71c7d2109648be3aea2a5938982ec5e736cc58",
+      "bytes": 3371
+    },
+    "docs/basic-tiling-algorithm.md": {
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "research/gcts-rl-renewal/fol_checker.tree": {
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed",
+      "bytes": 17577
+    },
+    "research/gcts-rl-renewal/boundary_syntax.tree": {
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c",
+      "bytes": 1739
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v1.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    }
+  },
+  "preserved_manifests": {
+    ".gcts-active/hilbert-chain-composition-plan-20261011/manifest-v1.json": {
+      "sha256": "569e9dc7e46ab44b6baf0015d67a6590e3704bba26d1735de5f8c64cd31f0c62",
+      "bytes": 2398
+    },
+    ".gcts-active/hilbert-promotion-family-20261011/final-integration-v3.json": {
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    ".gcts-active/hilbert-expanded-control-20261011/final-integration.json": {
+      "sha256": "804447877980b53b72674aecda384cc2e7b8d79b43d9801a0ae9871710df221e",
+      "bytes": 16988
+    },
+    ".gcts-active/hilbert-boundary-transfer-20261011/final-integration.json": {
+      "sha256": "3193dbeeeb4349d96e1339eedeee06f49be29e5e189864afb5d24172fbef7868",
+      "bytes": 27608
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/export-v3.json": {
+      "sha256": "2ae2dfb31b1b1b0030686f9ebafc1970532508c7c4422659875e9e11c284bf5c",
+      "bytes": 9491
+    }
+  },
+  "certificate": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+  "structural_audit": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+  "source_snapshot": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+  "source_record": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+  "source_receipt": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+  "argument": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+  "ledger": "docs/research/gcts-rl-renewal/constant-transport-ledger.json",
+  "argument_review": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+  "source_request_sha256": "82f39e52121200450c03f1e6e1a2a86a65b0bd7d1b96a7f27b4643fc8ac85ef7",
+  "recipient": "Only guarded I.2 theory; ordered local inputs H(P,Q,l,m),H(P,Q,m,n),Incident(R,l); final-row formula Incident(R,n). Full4input/axiom +171block row grammar, not unrestricted FOL.",
+  "predicted_counts": {
+    "definitions": 171,
+    "formula_codes": 55,
+    "prototypes": 1768,
+    "rejected_prototypes": 540,
+    "raw_alignments": 8840,
+    "strict_prior_bindings": 4430,
+    "inconsistent_strict_prior": 1350,
+    "consistent_strict_prior": 3080,
+    "initial_point_candidates": 1492
+  },
+  "probe_scope": "Every initial legal candidate1492 gets one placement/complete graph-domain/rollback probe; no theorem path searched. Artificial two-formula3-row grammar exhausts315 capacity-legal row choices, all valid placement permutations, and all same-row overlap pairs.",
+  "point_contract": "t unit at(0,row); formula m at(1,row) and earlier reference points; port offsets at(2+k,row). Values exact integers, injective canonical formula codes starting0; missing is absent. Relative negative row offsets remain unchanged under vertical translation. Exterior formula sentinels-1 reject negative references through marking disagreement. Identity orientation only. All required rows are active roots generation0.",
+  "fallback": "All63lower transported interfaces and4seed/axiom declarations remain in the complete inventory. Added108searched interfaces are separately labeled symbolic row rules, not scheduler-bypassing macros or aggregate t expansions.",
+  "authority_scope": "certified_transport only for the exact finite six-rule source relation and its row compiler. No native_accepted relabel, no existing-native-engine activation; formal serializer/native/compiler and aggregate expansion correspondences open.",
+  "resource_enforcement": "Task-owned escalated fail-closed external RSS/time watchdog, child SIGALRM, supported OS-limit probes, final kernel-peak validation; unsupported probes are reported, not credited. Fresh180s production+180s audit/512MiB.",
+  "dependency_costs": {
+    "prior_structural_production_seconds": 7.3899025,
+    "prior_structural_audit_seconds": 10.903200416,
+    "prior_v1_failure_seconds": 0.027183875,
+    "prior_v2_child_work_seconds": "unknown",
+    "original_cumulative_structural_gate": "not_established",
+    "donor_native_acceptance_seconds": 31.310553125,
+    "donor_full_native_replay_seconds": 33.958145583
+  },
+  "corruptions": [
+    {
+      "name": "native-authority-label",
+      "target": "model",
+      "path": [
+        "authority",
+        "kind"
+      ],
+      "operation": "set",
+      "value": "native_accepted"
+    },
+    {
+      "name": "stale-authority-epoch",
+      "target": "model",
+      "path": [
+        "authority",
+        "epoch"
+      ],
+      "operation": "set",
+      "value": "stale"
+    },
+    {
+      "name": "forged-certificate-binding",
+      "target": "model",
+      "path": [
+        "authority",
+        "certificate_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "stale-argument-binding",
+      "target": "model",
+      "path": [
+        "authority",
+        "argument_sha256"
+      ],
+      "operation": "set",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "missing-full-dependency",
+      "target": "model",
+      "path": [
+        "interfaces",
+        63,
+        "dependencies",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "ordered-premise-swapped",
+      "target": "model",
+      "path": [
+        "interfaces",
+        36,
+        "premises"
+      ],
+      "operation": "set",
+      "value": [
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ],
+            [
+              "fun",
+              "l",
+              []
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "l",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "premise-multiplicity-erased",
+      "target": "model",
+      "path": [
+        "interfaces",
+        63,
+        "premises",
+        1
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "formula-code-collision",
+      "target": "model",
+      "path": [
+        "formula_codes",
+        1
+      ],
+      "operation": "set",
+      "value": [
+        "all",
+        "point0",
+        [
+          "all",
+          "point1",
+          [
+            "all",
+            "line0",
+            [
+              "all",
+              "line1",
+              [
+                "imp",
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "var",
+                        "point0"
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "var",
+                          "point1"
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "var",
+                            "line0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "line1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "var",
+                                "point0"
+                              ],
+                              [
+                                "var",
+                                "point1"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "var",
+                                  "point0"
+                                ],
+                                [
+                                  "var",
+                                  "line0"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "var",
+                                    "point1"
+                                  ],
+                                  [
+                                    "var",
+                                    "line0"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line1"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point1"
+                                    ],
+                                    [
+                                      "var",
+                                      "line1"
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "line0"
+                  ],
+                  [
+                    "var",
+                    "line1"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "assigned-zero-erased",
+      "target": "model",
+      "path": [
+        "prototypes",
+        3,
+        "m",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "rotation-added",
+      "target": "model",
+      "path": [
+        "orientations"
+      ],
+      "operation": "set",
+      "value": [
+        "identity",
+        "rotate90"
+      ]
+    },
+    {
+      "name": "root-generation-wrong",
+      "target": "model",
+      "path": [
+        "root_generations",
+        0,
+        2
+      ],
+      "operation": "set",
+      "value": 1
+    },
+    {
+      "name": "missing-raw-alignment",
+      "target": "model",
+      "path": [
+        "placements",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "fractional-t-replaced",
+      "target": "model",
+      "path": [
+        "prototypes",
+        0,
+        "t",
+        0,
+        2
+      ],
+      "operation": "set",
+      "value": 0
+    },
+    {
+      "name": "spurious-seed-reference-port",
+      "target": "model",
+      "path": [
+        "ordered_bindings",
+        4,
+        "inputs"
+      ],
+      "operation": "set",
+      "value": [
+        0
+      ]
+    },
+    {
+      "name": "duplicate-placement-identity",
+      "target": "model",
+      "path": [
+        "placements"
+      ],
+      "operation": "append",
+      "copy_index": 0
+    },
+    {
+      "name": "exterior-sentinel-erased",
+      "target": "model",
+      "path": [
+        "fixed_m",
+        0
+      ],
+      "operation": "delete"
+    },
+    {
+      "name": "noninjective-map-changed-without-proof",
+      "target": "certificate",
+      "path": [
+        "records",
+        63,
+        "constant_map",
+        "B"
+      ],
+      "operation": "set",
+      "value": [
+        "fun",
+        "Q",
+        []
+      ]
+    },
+    {
+      "name": "equality-template-hole-corrupted",
+      "target": "certificate",
+      "path": [
+        "records",
+        36,
+        "definition",
+        "proof",
+        2,
+        "variable"
+      ],
+      "operation": "set",
+      "value": "otherHole"
+    },
+    {
+      "name": "alias-missing",
+      "target": "certificate",
+      "path": [
+        "dependency_aliases",
+        0
+      ],
+      "operation": "delete"
+    }
+  ],
+  "preserved_file_entries": 336,
+  "native_queries": 0,
+  "target_searches": 0,
+  "existing_engine_activation": false,
+  "authority_adapter_native_accepted": false,
+  "declaration_seconds_before_plan_write": 0.32530845799999997,
+  "authority_epoch": "722f27de5d6a31ad1c997a7d5a6cdde18243392728faa2b31e65feed6253c055"
+}

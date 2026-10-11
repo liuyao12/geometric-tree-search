@@ -1,0 +1,484 @@
+{
+  "status": "passed_read_only_finite_representation_source_and_data_review",
+  "reviewer": "/root/hilbert_incidence",
+  "scope": "Authored post-search representation infrastructure for the exact previously selected ordinary-forward candidate. Read-only source/receipt inspection, independent pure-data relations, strict reference/context checks, saved heap-width arithmetic and every moved-input byte decoded. No producer, auditor, logical checker, tree interpreter, native query, GCTS search or activation rerun.",
+  "source_files": [
+    {
+      "path": "research/gcts-rl-renewal/hierarchical_certificate_capacity.py",
+      "bytes": 6687,
+      "sha256": "6c72d15b4776a7058bc41ee569057f11421d6e20861634088129a31a96e24b7d"
+    },
+    {
+      "path": "research/gcts-rl-renewal/hierarchical_certificate_capacity_audit.py",
+      "bytes": 6734,
+      "sha256": "e455c1f81191e9dbf0968846121dec5e58e0148e160205cc66408d560c208a7d"
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_block_identifiers.py",
+      "bytes": 869,
+      "sha256": "59e493cff1b5e99e973b86c5ac07cfc2f55fd088bf68ade6d4c1d2777fc66f5f"
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_capacity.py",
+      "bytes": 5518,
+      "sha256": "6ee692e1ad4d34e815e254934cf2736abb160ec3ff5ef15464524eba56cf891b"
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_capacity_audit_v2.py",
+      "bytes": 8753,
+      "sha256": "40bb3de7a01af6d6bd53a01aed8f0f3ee9eecaccfda41d06745518db3407e3c2"
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_encoding.py",
+      "bytes": 7456,
+      "sha256": "bccc169e3571e28c41006854ef631c118618a7d46a1afb4193c323163403b7ee"
+    }
+  ],
+  "plan_bindings": [
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/plan.json",
+      "bytes": 15391,
+      "sha256": "b55ddeb6d7e134430852df3a22c26edc4f5bf13d6d440d6e2e4cdfbc2e9d9f91",
+      "source_pins": 104,
+      "input_pins": 7
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/audit-plan.json",
+      "bytes": 15679,
+      "sha256": "fab05e22ca23138f8aade9aacaa8f76e41f4c8cb63e21624df39b7384d61328c",
+      "source_pins": 104,
+      "input_pins": 12
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/short-identifiers/plan.json",
+      "bytes": 16256,
+      "sha256": "aef10089ee1741b830a0cf351bb7ceeb5c9e2034ae0bad89ef143b5dec0b5349",
+      "source_pins": 107,
+      "input_pins": 10
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/short-identifiers/audit-plan.json",
+      "bytes": 16666,
+      "sha256": "40c819460f7225f83720defda0884311db24b42e92eb38f68f18a27ed6d3aa2d",
+      "source_pins": 108,
+      "input_pins": 13
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/plan.json",
+      "bytes": 17372,
+      "sha256": "d58cf163a9267ab6c6994423d8d865618cee5bd5c3a0f19f9989502c70e01a24",
+      "source_pins": 109,
+      "input_pins": 15
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/audit-plan.json",
+      "bytes": 17504,
+      "sha256": "99380d91eb464de03f18b4e17cde7d8c49b88c86595abbd246b16868d9a647cb",
+      "source_pins": 109,
+      "input_pins": 19
+    }
+  ],
+  "pin_check": {
+    "occurrences": 717,
+    "unique_paths": 132,
+    "mismatches": []
+  },
+  "evidence_bindings": [
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificates.json.gz",
+      "bytes": 9374,
+      "sha256": "0c4967f0d497280224becf0de9362c877e97fe1c5de7dd8a39767767e333feec"
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward.json.gz",
+      "bytes": 6840,
+      "sha256": "4d0bace783c03b8558e28dbc6cb2d1d5a65f22df533229276e70245b9c7b7f79"
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/forward-audit.json",
+      "bytes": 561,
+      "sha256": "2a53ac61e54a4498c185227502d24761ec6e7d851308ed2be69523fac3b0b885"
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/certificate-audit-v2.json",
+      "bytes": 863,
+      "sha256": "37821e4719fd9b9c5d97d916b4b6ecbf251fe2e6a3d93bf9e68d38f4a840b98b"
+    },
+    {
+      "path": ".gcts-active/commutativity-cluster-search-20261011/capacity-audit.json",
+      "bytes": 1095,
+      "sha256": "36bf0ff78ab7d61a2ec582694800484ecdfa5541785ed6c824532cdd30ddaf32"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/transformation.json.gz",
+      "bytes": 5041,
+      "sha256": "2f735109099515da6db90b78ff5cef66e8579e18261e66a1b7da60e6a7ec893d"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/observation-00.json.gz",
+      "bytes": 61658,
+      "sha256": "d61fd967fc2dcc327245c917ca07e31a353b587c480b038994cc5e3bf28d8ff6"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/observation-01.json.gz",
+      "bytes": 61265,
+      "sha256": "dc8755c8e94d37667afdf2aff71516ecf8ab2d5dd0df97e9f99ce115b7479ae6"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/short-identifiers/observation.json.gz",
+      "bytes": 43946,
+      "sha256": "1ff6865d840f1c4734ea6010dd0e0738fb91fc8b9ecadf35c7ba5072cbe709c6"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/frame.json.gz",
+      "bytes": 26495,
+      "sha256": "00b7057f825627802abe1ff2d7906a22899b1f92c948a895a0d54ab6180fdecf"
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/input.bin.gz",
+      "bytes": 35105,
+      "sha256": "2613c02011792f01bc10a1d8fdc610e905d42b0066c4ff07edfe6e6f4f58ab8f"
+    }
+  ],
+  "ordinary_provenance": {
+    "lane": "ordinary-forward",
+    "algorithm": "ordinary synchronous full-hyperedge forward chaining",
+    "source": "forward",
+    "candidate_count": 1,
+    "canonical_original_request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+    "exact_forward_proof": true,
+    "exact_forward_whole_request": true,
+    "exact_search_plan_theory_and_target": true,
+    "root_rows": 13,
+    "blocks": 9,
+    "stored_commands": 185,
+    "prior_ordinary_audit_status": "passed_full_ordinary_closure_and_word_reconstruction",
+    "not_GCTS_or_RL_discovery": true
+  },
+  "hierarchy_relation": {
+    "canonical_AST_equal": true,
+    "all_commands_preserved": true,
+    "removed_commands": 0,
+    "removed_blocks": 0,
+    "all_original_contexts_interfaces_theory_target_equal": true,
+    "field_order_difference_count": 198,
+    "nested_field_order_difference_count": 197,
+    "field_order_examples": [
+      {
+        "path": "$",
+        "original": [
+          "protocol",
+          "theory",
+          "blocks",
+          "proof",
+          "target"
+        ],
+        "canonicalized": [
+          "blocks",
+          "proof",
+          "protocol",
+          "target",
+          "theory"
+        ]
+      },
+      {
+        "path": "$.theory",
+        "original": [
+          "functions",
+          "predicates",
+          "axioms",
+          "schemas"
+        ],
+        "canonicalized": [
+          "axioms",
+          "functions",
+          "predicates",
+          "schemas"
+        ]
+      },
+      {
+        "path": "$.theory.functions",
+        "original": [
+          "zero",
+          "succ",
+          "add"
+        ],
+        "canonicalized": [
+          "add",
+          "succ",
+          "zero"
+        ]
+      },
+      {
+        "path": "$.theory.axioms",
+        "original": [
+          "AZ",
+          "AS"
+        ],
+        "canonicalized": [
+          "AS",
+          "AZ"
+        ]
+      }
+    ],
+    "wire_order_note": "The original candidate preserves its actual nested dictionary order; compact(canonical(original)) uses canonical order. Saved observations themselves are canonicalized JSON and cannot recover original wire order. The reviewed v2 audit reconstructs it from the exact candidate before matching constructor data; differing wire order and canonical equality are consistent."
+  },
+  "short_identifier_relation": {
+    "full_bijection": true,
+    "aliases": [
+      {
+        "new": "b0",
+        "old": "commutativityReceptor173447656a69ad2f95c77fae239c7e4899623bdc462dc817b4d6a326122374ae"
+      },
+      {
+        "new": "b1",
+        "old": "commutativityReceptor5886ce7fe062d802360d0d43cd4efb0f63750ef0b558113f319dc337336d5b99"
+      },
+      {
+        "new": "b2",
+        "old": "commutativityReceptor77152f26a507c116628e0dad7fb948bff44361ade9f0266c9505ebf6e713f154"
+      },
+      {
+        "new": "b3",
+        "old": "commutativityReceptor7b5130ffe9248d2f5d577b3abbd6d4de28fc0a5ec05b9a1137c48eb7d79ed58b"
+      },
+      {
+        "new": "b4",
+        "old": "commutativityReceptor8f9aa121b6e395a45fcc2f07e327e3e83d00296a33f1ce870026e972fd075446"
+      },
+      {
+        "new": "b5",
+        "old": "commutativityReceptord475051b8fd64ee2a6070bbfe84db361e48d288575c94a391c3ba491576807eb"
+      },
+      {
+        "new": "b6",
+        "old": "commutativityReceptord6a4b7548bff25e6b0ea1bb4078620fec7402ff17424c07514d1c766239a10ad"
+      },
+      {
+        "new": "b7",
+        "old": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa"
+      },
+      {
+        "new": "b8",
+        "old": "searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3"
+      }
+    ],
+    "unchanged_formulas_theory_target_contexts_command_order_and_local_indices": true,
+    "strict_dependency_and_port_checks": {
+      "stored_commands": 185,
+      "mp_interfaces": 80,
+      "strict_prior_local_references": 177,
+      "exact_assumption_ports": 7,
+      "eigenvariable_context_checks": 8,
+      "ordered_block_interfaces": 9
+    },
+    "prior_block_call_edges": [
+      [
+        "$root",
+        "b8"
+      ],
+      [
+        "$root",
+        "b4"
+      ],
+      [
+        "$root",
+        "b1"
+      ],
+      [
+        "$root",
+        "b0"
+      ],
+      [
+        "$root",
+        "b7"
+      ],
+      [
+        "$root",
+        "b6"
+      ],
+      [
+        "$root",
+        "b5"
+      ],
+      [
+        "$root",
+        "b2"
+      ],
+      [
+        "$root",
+        "b3"
+      ]
+    ],
+    "source_v1_audit_not_run": true,
+    "v2_reconstructs_original_wire_order": true,
+    "existing_independent_corruptions_rejected": [
+      "lost-premise",
+      "changed-formula",
+      "stale-reference",
+      "duplicate-identity"
+    ]
+  },
+  "capacity_observations": [
+    {
+      "name": "original-hierarchy",
+      "canonical_request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+      "request_bytes": 80431,
+      "stored_commands": 185,
+      "constructor_root": 3842,
+      "final_heap_pairs": 7920,
+      "required_heap_cells": 291874,
+      "fixed_native_heap_cells": 262144,
+      "shortfall_cells": 29730,
+      "tree_steps": 8046254,
+      "tree_value": 1,
+      "recorded_tree_status": "accepted",
+      "own_check": "Stored final heap width and binding recomputed; interpreter not rerun."
+    },
+    {
+      "name": "context-dag-hierarchy",
+      "canonical_request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+      "request_bytes": 80431,
+      "stored_commands": 185,
+      "constructor_root": 3718,
+      "final_heap_pairs": 7920,
+      "required_heap_cells": 291589,
+      "fixed_native_heap_cells": 262144,
+      "shortfall_cells": 29445,
+      "tree_steps": 8000649,
+      "tree_value": 1,
+      "recorded_tree_status": "accepted",
+      "own_check": "Stored final heap width and binding recomputed; interpreter not rerun."
+    },
+    {
+      "name": "short-identifiers",
+      "canonical_request_sha256": "ffc08505435a7a87c62927b8a1934bf14b988d3f72242bfbc5eb413e363ac3dd",
+      "request_bytes": 78947,
+      "stored_commands": 185,
+      "constructor_root": 3102,
+      "final_heap_pairs": 7180,
+      "required_heap_cells": 263826,
+      "fixed_native_heap_cells": 262144,
+      "shortfall_cells": 1682,
+      "tree_steps": 7974306,
+      "tree_value": 1,
+      "recorded_tree_status": "accepted",
+      "own_check": "Stored final heap width and binding recomputed; interpreter not rerun."
+    }
+  ],
+  "full_replay_review": {
+    "both_hierarchy_replays": "Passed receipts and source check; all instructions/profiles and all heap pairs compared by independent audit_tree_kernel implementation. Not rerun by this reviewer.",
+    "renamed_replay": "Passed receipt and source check; all instructions/profiles and all heap pairs compared after exact original-order recovery. Not rerun by this reviewer.",
+    "host_limits": {
+      "phase_seconds": 180,
+      "rss_bytes": 536870912,
+      "tree_steps": 20000000,
+      "host_tree_nodes": 1000000
+    },
+    "fixed_262144_unknown_preserved": true,
+    "prior_flattened_596873_heap_unknown_preserved": true
+  },
+  "moved_boundary": {
+    "blank_only_change": true,
+    "heap_band": 26,
+    "old_heap_cells": 262144,
+    "new_heap_cells": 266240,
+    "added_heap_cells": 4096,
+    "required_heap_cells": 263826,
+    "spare_cells": 2414,
+    "selection_rule": "Smallest 4096-cell multiple covering the audited requirement plus 64 spare cells.",
+    "all_initial_words_and_heads_unchanged": true,
+    "all_band_coordinates_checked": true,
+    "all_raw_input_bytes_decoded_and_compared": true,
+    "input_bytes": 4433652,
+    "raw_input_sha256": "f770d76f8939d8d0a103726318ef98ca01fba7772e4f013eb6dd04ccb519efb9",
+    "native_start_state": 88986,
+    "physical_origin": 0,
+    "bands": 43,
+    "native_queries": 0
+  },
+  "recorded_costs": [
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/summary.json",
+      "bytes": 1468,
+      "sha256": "2451418610a0b7f11c4604c407dcd98ffb3baa946cbf059d4c5b44df65116460",
+      "status": "complete_representation_observations_pending_independent_audit",
+      "seconds": 34.612896042,
+      "peak_rss_bytes": 170229760,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/representation/audit.json",
+      "bytes": 1490,
+      "sha256": "78018ad669ef222c8851c7448ef564f423336beace55d14d17fc88426ed47376",
+      "status": "passed_full_context_compaction_and_both_capacity_replays",
+      "seconds": 33.655453375,
+      "peak_rss_bytes": 173522944,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/short-identifiers/summary.json",
+      "bytes": 779,
+      "sha256": "03754c2d7ba0f5e07a4767c661e745ab7e3f3c509418c2c4a53d4a0bc3efdd57",
+      "status": "unknown_fixed_native_heap_boundary",
+      "seconds": 18.535167958,
+      "peak_rss_bytes": 167936000,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/short-identifiers/audit.json",
+      "bytes": 979,
+      "sha256": "677f6611db96920bc4dd8dbb2d03f9ae29e79ff4c0ee16be78573be345873c42",
+      "status": "passed_full_bijective_renaming_and_capacity_replay",
+      "seconds": 17.560124458,
+      "peak_rss_bytes": 172097536,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/summary.json",
+      "bytes": 774,
+      "sha256": "f208b9fa857b4efd2ec372cf03e90e1ebc7a5a88733bc55b8ea52749db61f8e9",
+      "status": "complete_movable_encoding_pending_independent_byte_audit",
+      "seconds": 0.815658875,
+      "peak_rss_bytes": 167329792,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    },
+    {
+      "path": ".gcts-active/proof-program-matched-boundaries-20261011/movable-encoding/audit.json",
+      "bytes": 836,
+      "sha256": "30114433a2c291887379a2cbe6bc876c769a2f335a972749195eb50bb89cb6ce",
+      "status": "passed_complete_movable_encoding_byte_audit",
+      "seconds": 0.577026666,
+      "peak_rss_bytes": 179896320,
+      "wall_overshoot_seconds": 0,
+      "memory_overshoot_bytes": 0,
+      "native_queries": 0
+    }
+  ],
+  "recorded_total_producer_plus_auditor_seconds": 105.756327374,
+  "review_data_check_seconds": 0.465907041,
+  "gaps": [
+    "This reviewer inspected and recomputed finite stored-data relations, but did not rerun the accepted logical/tree/native computations. Full instruction replay is credited only to the pinned independent audit receipts.",
+    "No whole native request has been executed at either boundary in this representation phase. Tree acceptance and capacity/byte agreement are not native acceptance.",
+    "A formal parser/compiler/Wang correspondence and universal soundness theorem remain open. This finite result does not establish correctness of arbitrary identifier renaming or native encodings.",
+    "These changes are authored representation infrastructure for an ordinary forward-search candidate, not a GCTS or RL discovery, learned speedup, new theorem, or new policy.",
+    "The earlier unrelated frozen hilbert-transport-catalog reader-v2.html has a LaTeX escape presentation defect reported by root; root will preserve its raw bytes and bind a corrected derived reader. No defect in the scientific representation artifacts is inferred from that presentation issue."
+  ],
+  "next_gate": {
+    "can_safely_freeze_one_later_bounded_whole_native_query": true,
+    "conditional_on": "A new prospective root-owned plan must bind the exact audited raw input hash/byte length, compressed artifact hash, unchanged native source/program/palette, true parser start and origin, moved 266240-cell boundary, explicit step/time/RSS budgets and fail-closed supervision before execution. Require independent complete native replay and exact request/output binding afterward; retain every timeout/resource/heap unknown.",
+    "preserve_original_fixed_boundary_unknown": true,
+    "claim_only_if_success": "Whole native acceptance for this exact ordinary candidate at the separately declared moved boundary; no GCTS discovery or proof-search advantage.",
+    "no_query_authorized_or_executed_by_this_review": true
+  }
+}

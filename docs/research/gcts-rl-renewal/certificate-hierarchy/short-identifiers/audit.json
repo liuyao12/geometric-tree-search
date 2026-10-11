@@ -1,0 +1,25 @@
+{
+  "status": "passed_full_bijective_renaming_and_capacity_replay",
+  "native_queries": 0,
+  "request_sha256": "ffc08505435a7a87c62927b8a1934bf14b988d3f72242bfbc5eb413e363ac3dd",
+  "required_heap_capacity": 263826,
+  "fixed_native_heap_cells": 262144,
+  "capacity_fits": false,
+  "tree_status": "accepted",
+  "tree_value": 1,
+  "tree_steps": 7974306,
+  "exact_bijection_and_all_commands_checked": true,
+  "corruptions_rejected": [
+    "lost-premise",
+    "changed-formula",
+    "stale-reference",
+    "duplicate-identity"
+  ],
+  "full_instruction_and_heap_replay": true,
+  "seconds": 17.560124458,
+  "peak_rss_bytes": 172097536,
+  "enforcement": "SIGALRM wall interruption and final kernel peak RSS; no OS hard memory limit claimed",
+  "scope": "Finite exact renaming and tree capacity replay only; zero native queries or native input encodings. Formal compiler/Wang correctness and native acceptance remain open.",
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0
+}

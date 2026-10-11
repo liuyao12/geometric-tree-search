@@ -1,0 +1,566 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Matched 13-row GCTS cluster study</title><link rel="stylesheet" href="report.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>main{max-width:1150px;margin:auto;padding:24px}nav{display:flex;gap:16px;flex-wrap:wrap}section{margin:36px 0}.unknown{background:#fff3dc;border-left:4px solid #b78322;padding:18px}.passed{background:#eaf5ed;border-left:4px solid #318363;padding:18px}.scroll{overflow-x:auto}table{border-collapse:collapse}td,th{padding:9px;border:1px solid #ccd;vertical-align:top}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.tile{padding:12px;border:2px solid #52627a;background:#f5f7fa;border-radius:6px}.mark{display:block;padding:5px;margin:4px 0;color:white;border-radius:4px}.command{background:#7253a7}.formula{background:#227c9c}.mode{background:#946a14}.source{background:#24765d}pre{white-space:pre-wrap;overflow-wrap:anywhere}details{margin:12px 0}.pin{overflow-wrap:anywhere}.legend{display:flex;gap:16px;flex-wrap:wrap}.legend span{padding:7px;color:white;border-radius:4px}.plot{margin:24px 0;min-width:900px}.plot .bar{font-size:14px;white-space:nowrap}.bar{height:28px;display:flex;align-items:center;color:white;padding:0 8px;background:#7253a7;margin:8px 0;max-width:100%;box-sizing:border-box}</style></head><body><main><p><a href="index.html#goals">Research program</a> · <a href="commutativity_cluster_results.html#result">Earlier 12-row unknowns</a> · <a href="commutativity_admissions.html#result">Complete admitted inventory</a></p><h1>Matched 13-row GCTS cluster study</h1><nav><a href="#result">Outcome</a><a href="#correspondence">Exact acceleration</a><a href="#searches">Four searches</a><a href="#reader">Colored inventory</a><a href="#costs">All costs</a><a href="#evidence">Exact evidence</a></nav><section id="result"><h2>Faster implementation, unchanged unsuccessful ordering</h2><p class="unknown">All four fresh 13-row searches reached 5,000 attempts and remain unknown. No proof word was found, and no whole native target query was executed. The fixed cluster policy and the base search visited exactly the same structural tree: every recorded state hash, decision, complete alternative list and visited child key agrees. Fixed proposals add about 12.4 seconds per observation without changing these selected placements.</p><p>The query is \(\forall\,\mathit{x}\;\left(\forall\,\mathit{y}\;\left(\left(\mathit{x}+\mathit{y}\right)=\left(\mathit{y}+\mathit{x}\right)\right)\right)\). This is a new 13-row boundary, preserving the exact original recursive-addition/induction theory, all 153 inference templates and all 94 independently admitted definitions. It is separate from the earlier 12-row unknowns and the earlier ordinary 13-line candidate.</p><p class="passed">The implementation improvement is independently measured: all 589 earlier proposal events preserve their full pools, canonical order, features, scores, ties and work counters. Every one of the 20,004 new search nodes and 1,054 fixed policy events passed complete independent graph replay. This is evidence for an exact cost optimization and a negative result for the present authored ordering, with no RL or proof-discovery claim.</p></section><section id="correspondence"><h2>Exact proposal correspondence</h2><p>On all 589 identical earlier contexts, the old proposal routine took 91.631 seconds and the indexed routine took 12.921 seconds, a measured ratio of 7.092. This comparison uses one warming 12-row cache; it does not estimate the cold 13-row search cost. Feature evaluation took 0.233 and 0.050 seconds respectively.</p><div class="scroll"><div class="plot" aria-label="Old versus exact indexed proposal seconds"><div class="bar" style="width:100%">Old: 91.631 s</div><div class="bar" style="width:14.1011088457709%;background:#24765d">Indexed: 12.921 s</div></div></div><p>The optimizer precomputes all compatible family bindings and their point incidence, caches exact canonical key words and bounded full-universe SHA rankings, and computes common row features once per event. Filtering a static ranking to the actual legal set preserves the old order. The 16-anchor LRU bounds retained ranks. Pools, validation counters, score semantics and every fallback remain exact; even the historical 48-unit growth-feature denominator is preserved at the new boundary.</p><p>The full independent comparison checks all 589 old recorded event contexts, every feature and deterministic score/tie decision, all 19,848 placements, all 18,480 compatible family bindings and four complete 41-node old/new diagnostic trees. The diagnostic fixtures alone have limited backtracking coverage; the actual target traces supply complete failed-child and rollback evidence.</p><p>Node-aware CJSON serialization retains every census, scalar, event and child. Standard JSON parsing verifies complete fixture values; complete actual graph replay validates every later trace. It avoids repeated Python generator writes for each scalar. Earlier source bytes and traces remain untouched.</p></section><section id="searches"><h2>Matched models and budgets</h2><div class="scroll"><table><thead><tr><th>Run</th><th>Outcome</th><th>Attempts</th><th>Nodes</th><th>Search s</th><th>Proposal s</th><th>Trace serialization s</th><th>Whole process s</th><th>Peak RSS bytes</th></tr></thead><tbody><tr><td>base-r1</td><td>unknown_search_budget</td><td>5000</td><td>5001</td><td>30.765</td><td>0.000</td><td>11.213</td><td>42.652</td><td>339,279,872</td></tr><tr><td>fixed-r1</td><td>unknown_search_budget</td><td>5000</td><td>5001</td><td>41.595</td><td>12.347</td><td>11.350</td><td>53.676</td><td>343,490,560</td></tr><tr><td>fixed-r2</td><td>unknown_search_budget</td><td>5000</td><td>5001</td><td>42.501</td><td>12.486</td><td>11.136</td><td>54.372</td><td>346,685,440</td></tr><tr><td>base-r2</td><td>unknown_search_budget</td><td>5000</td><td>5001</td><td>29.191</td><td>0.000</td><td>11.669</td><td>41.548</td><td>345,145,344</td></tr></tbody></table></div><p>The balanced order was base-r1, fixed-r1, fixed-r2, base-r2. Each used a fresh process/model and cold proposal cache, the same 13-row region, 5,000-attempt and 60-second search ceilings, and 512 MiB host bound. All four reached the attempt ceiling; none hit its wall or memory ceiling. The whole producer took 193.110 seconds under its separate 300-second ceiling. Per-process seconds include source/input validation, model setup and complete output serialization.</p><p>Cold static-index initialization cost about 0.05 seconds per run and is included in search seconds. SHA-rank caches warm only within each observation. No ordinary proof word, induction choice, closure ranks, target witnesses or post-search certificate compaction were used to seed, order or train GCTS. The two base repetitions and two deterministic fixed repetitions are repeatability checks, not four stochastic samples.</p><p>All four audited structural projections are byte-identical to the base-r1 projection, with SHA-256 <code class="pin">12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13</code>. Policy metadata differs and was audited separately: each fixed run started 527 hints, recorded 11 eligible, 355 waiting, 1,143 invalid and 460 completed hint observations. Hints can complete through globally forced moves without selecting a different branch.</p><p>The exact full semantic model hash is <code class="pin">b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11</code>, shared with the independently constructed external point control. That control has separate solver outcomes and authority. Fixed weights here are authored; no compatible policy was trained. The predeclared worst-case four-search allocation left too little assured room for training plus a comparable learned lane, so that lane was omitted before observations.</p></section><section id="reader"><h2>Inspect an actual inventory cluster and its colored markings</h2><p>The model has 52 required points: four fixed-orientation roles per proof row. Occupancy is \(t=1\) represented by 12 integer units; exact catalog scalars bind complete formula/command words. Extended markings connect source inputs to earlier formula points. These high-level scalar point tiles are translated, not rotated. A primitive Wang-square occupancy embedding is not claimed.</p><div class="legend"><span class="command">Command layer</span><span class="formula">Formula layer</span><span class="mode">Interface-mode layer</span><span class="source">Source-index layer</span></div><p>This is the first canonical inventory binding, a compatible eight-placement cluster with an external receptor. It is a visual inventory example, not a discovered commutativity proof or a seed for search.</p><p>Row 1 output: \(\forall\,\mathit{n}\;\left(\left(0+\mathit{n}\right)=\mathit{n}\right)\)</p><p>Row 3 output: \(\left(0+\mathit{y}\right)=\left(\left(0+0\right)+\mathit{y}\right)\)</p><div class="tiles"><article class="tile"><strong>Row 1 <code>C</code></strong><p><code>(0, 0, 0, 0)</code></p><span class="mark formula"><code>[2, 0]: 0</code></span><span class="mark command"><code>[2, 1]: 0</code></span><span class="mark mode"><code>[2, 90]: 0</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    0,
+    0,
+    0,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        0,
+        0
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        2,
+        0
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        1
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        90
+      ],
+      0
+    ]
+  ],
+  &quot;slot&quot;: 0,
+  &quot;kind&quot;: &quot;command&quot;,
+  &quot;command&quot;: {
+    &quot;rule&quot;: &quot;block&quot;,
+    &quot;formula&quot;: [
+      &quot;all&quot;,
+      &quot;n&quot;,
+      [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;add&quot;,
+          [
+            [
+              &quot;fun&quot;,
+              &quot;zero&quot;,
+              []
+            ],
+            [
+              &quot;var&quot;,
+              &quot;n&quot;
+            ]
+          ]
+        ],
+        [
+          &quot;var&quot;,
+          &quot;n&quot;
+        ]
+      ]
+    ],
+    &quot;name&quot;: &quot;searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3&quot;
+  },
+  &quot;requirements&quot;: [],
+  &quot;inference&quot;: 0
+}</pre></details></article><article class="tile"><strong>Row 1 <code>G</code></strong><p><code>(0, 1, 0, 0)</code></p><span class="mark formula"><code>[2, 0]: 0</code></span><span class="mark command"><code>[2, 1]: 0</code></span><span class="mark mode"><code>[2, 90]: 0</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    0,
+    1,
+    0,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        0,
+        1
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        2,
+        0
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        1
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        90
+      ],
+      0
+    ]
+  ],
+  &quot;slot&quot;: 0,
+  &quot;kind&quot;: &quot;guard&quot;,
+  &quot;command&quot;: {
+    &quot;rule&quot;: &quot;block&quot;,
+    &quot;formula&quot;: [
+      &quot;all&quot;,
+      &quot;n&quot;,
+      [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;add&quot;,
+          [
+            [
+              &quot;fun&quot;,
+              &quot;zero&quot;,
+              []
+            ],
+            [
+              &quot;var&quot;,
+              &quot;n&quot;
+            ]
+          ]
+        ],
+        [
+          &quot;var&quot;,
+          &quot;n&quot;
+        ]
+      ]
+    ],
+    &quot;name&quot;: &quot;searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3&quot;
+  },
+  &quot;requirements&quot;: [],
+  &quot;inference&quot;: 0
+}</pre></details></article><article class="tile"><strong>Row 1 <code>I1</code></strong><p><code>(0, 2, 0, 0)</code></p><span class="mark mode"><code>[2, 90]: 0</code></span><span class="mark source"><code>[2, 100]: -1</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    0,
+    2,
+    0,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        0,
+        2
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        2,
+        90
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        100
+      ],
+      -1
+    ]
+  ],
+  &quot;slot&quot;: 0,
+  &quot;kind&quot;: &quot;unused_input&quot;,
+  &quot;command&quot;: null,
+  &quot;requirements&quot;: [],
+  &quot;input&quot;: 0,
+  &quot;mode&quot;: 0,
+  &quot;source&quot;: null
+}</pre></details></article><article class="tile"><strong>Row 1 <code>I2</code></strong><p><code>(0, 3, 0, 0)</code></p><span class="mark mode"><code>[2, 90]: 0</code></span><span class="mark source"><code>[2, 101]: -1</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    0,
+    3,
+    0,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        0,
+        3
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        2,
+        90
+      ],
+      0
+    ],
+    [
+      [
+        2,
+        101
+      ],
+      -1
+    ]
+  ],
+  &quot;slot&quot;: 0,
+  &quot;kind&quot;: &quot;unused_input&quot;,
+  &quot;command&quot;: null,
+  &quot;requirements&quot;: [],
+  &quot;input&quot;: 1,
+  &quot;mode&quot;: 0,
+  &quot;source&quot;: null
+}</pre></details></article><article class="tile"><strong>Row 3 <code>C</code></strong><p><code>(2, 0, 60, 0)</code></p><span class="mark formula"><code>[10, 0]: 1276</code></span><span class="mark command"><code>[10, 1]: 60</code></span><span class="mark mode"><code>[10, 90]: 61</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    2,
+    0,
+    60,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        8,
+        0
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        10,
+        0
+      ],
+      1276
+    ],
+    [
+      [
+        10,
+        1
+      ],
+      60
+    ],
+    [
+      [
+        10,
+        90
+      ],
+      61
+    ]
+  ],
+  &quot;slot&quot;: 2,
+  &quot;kind&quot;: &quot;command&quot;,
+  &quot;command&quot;: {
+    &quot;rule&quot;: &quot;block&quot;,
+    &quot;formula&quot;: [
+      &quot;eq&quot;,
+      [
+        &quot;fun&quot;,
+        &quot;add&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;zero&quot;,
+            []
+          ],
+          [
+            &quot;var&quot;,
+            &quot;y&quot;
+          ]
+        ]
+      ],
+      [
+        &quot;fun&quot;,
+        &quot;add&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;add&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;zero&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;zero&quot;,
+                []
+              ]
+            ]
+          ],
+          [
+            &quot;var&quot;,
+            &quot;y&quot;
+          ]
+        ]
+      ]
+    ],
+    &quot;name&quot;: &quot;commutativityReceptor47f3bd09c782b4425e784002bbb5a8d0b6945e0ddf6f61f723b1aff496c744b8&quot;
+  },
+  &quot;requirements&quot;: [],
+  &quot;inference&quot;: 60
+}</pre></details></article><article class="tile"><strong>Row 3 <code>G</code></strong><p><code>(2, 1, 60, 0)</code></p><span class="mark formula"><code>[10, 0]: 1276</code></span><span class="mark command"><code>[10, 1]: 60</code></span><span class="mark mode"><code>[10, 90]: 61</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    2,
+    1,
+    60,
+    0
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        8,
+        1
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        10,
+        0
+      ],
+      1276
+    ],
+    [
+      [
+        10,
+        1
+      ],
+      60
+    ],
+    [
+      [
+        10,
+        90
+      ],
+      61
+    ]
+  ],
+  &quot;slot&quot;: 2,
+  &quot;kind&quot;: &quot;guard&quot;,
+  &quot;command&quot;: {
+    &quot;rule&quot;: &quot;block&quot;,
+    &quot;formula&quot;: [
+      &quot;eq&quot;,
+      [
+        &quot;fun&quot;,
+        &quot;add&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;zero&quot;,
+            []
+          ],
+          [
+            &quot;var&quot;,
+            &quot;y&quot;
+          ]
+        ]
+      ],
+      [
+        &quot;fun&quot;,
+        &quot;add&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;add&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;zero&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;zero&quot;,
+                []
+              ]
+            ]
+          ],
+          [
+            &quot;var&quot;,
+            &quot;y&quot;
+          ]
+        ]
+      ]
+    ],
+    &quot;name&quot;: &quot;commutativityReceptor47f3bd09c782b4425e784002bbb5a8d0b6945e0ddf6f61f723b1aff496c744b8&quot;
+  },
+  &quot;requirements&quot;: [],
+  &quot;inference&quot;: 60
+}</pre></details></article><article class="tile"><strong>Row 3 <code>I1</code></strong><p><code>(2, 2, 61, 2)</code></p><span class="mark formula"><code>[6, 0]: 1345</code></span><span class="mark mode"><code>[10, 90]: 61</code></span><span class="mark source"><code>[10, 100]: 1</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    2,
+    2,
+    61,
+    2
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        8,
+        2
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        6,
+        0
+      ],
+      1345
+    ],
+    [
+      [
+        10,
+        90
+      ],
+      61
+    ],
+    [
+      [
+        10,
+        100
+      ],
+      1
+    ]
+  ],
+  &quot;slot&quot;: 2,
+  &quot;kind&quot;: &quot;inference_input&quot;,
+  &quot;command&quot;: null,
+  &quot;requirements&quot;: [
+    [
+      1,
+      [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;add&quot;,
+          [
+            [
+              &quot;fun&quot;,
+              &quot;zero&quot;,
+              []
+            ],
+            [
+              &quot;var&quot;,
+              &quot;y&quot;
+            ]
+          ]
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;add&quot;,
+          [
+            [
+              &quot;fun&quot;,
+              &quot;zero&quot;,
+              []
+            ],
+            [
+              &quot;var&quot;,
+              &quot;y&quot;
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  &quot;input&quot;: 0,
+  &quot;mode&quot;: 61,
+  &quot;source&quot;: 1
+}</pre></details></article><article class="tile"><strong>Row 3 <code>I2</code></strong><p><code>(2, 3, 61, 1)</code></p><span class="mark formula"><code>[2, 0]: 0</code></span><span class="mark mode"><code>[10, 90]: 61</code></span><span class="mark source"><code>[10, 101]: 0</code></span><details><summary>Exact scalar tile</summary><pre>{
+  &quot;key&quot;: [
+    2,
+    3,
+    61,
+    1
+  ],
+  &quot;occupancy&quot;: [
+    [
+      [
+        8,
+        3
+      ],
+      12
+    ]
+  ],
+  &quot;marks&quot;: [
+    [
+      [
+        2,
+        0
+      ],
+      0
+    ],
+    [
+      [
+        10,
+        90
+      ],
+      61
+    ],
+    [
+      [
+        10,
+        101
+      ],
+      0
+    ]
+  ],
+  &quot;slot&quot;: 2,
+  &quot;kind&quot;: &quot;inference_input&quot;,
+  &quot;command&quot;: null,
+  &quot;requirements&quot;: [
+    [
+      0,
+      [
+        &quot;all&quot;,
+        &quot;n&quot;,
+        [
+          &quot;eq&quot;,
+          [
+            &quot;fun&quot;,
+            &quot;add&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;zero&quot;,
+                []
+              ],
+              [
+                &quot;var&quot;,
+                &quot;n&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;var&quot;,
+            &quot;n&quot;
+          ]
+        ]
+      ]
+    ]
+  ],
+  &quot;input&quot;: 1,
+  &quot;mode&quot;: 61,
+  &quot;source&quot;: 0
+}</pre></details></article></div><ul><li>Requires row 2 to carry \(\left(0+\mathit{y}\right)=\left(0+\mathit{y}\right)\).</li><li>Requires row 1 to carry \(\forall\,\mathit{n}\;\left(\left(0+\mathit{n}\right)=\mathit{n}\right)\).</li></ul><p>All 42 family forms and every 18,480 row/source binding remain available. These families combine the two actually discovered derived lemmas with generic contextual rewrites; the 94 local interfaces remain authored infrastructure. A complete proof was not found, so this reader cannot present a new line-by-line commutativity proof. The earlier ordinary candidate remains inspectable in its own <a href="commutativity_cluster_results.html#reader">13-line reader</a>.</p></section><section id="costs"><h2>Preparation, failures and checking remain charged</h2><div class="scroll"><table><thead><tr><th>Phase</th><th>Seconds</th><th>Peak RSS bytes</th><th>Outcome/scope</th></tr></thead><tbody><tr><td>All 589 old-context correspondence producer</td><td>149.609</td><td>286,048,256</td><td>Complete; old proposal 91.631 s versus indexed 12.921 s on identical contexts</td></tr><tr><td>First independent complete preflight</td><td>58.762</td><td>604,635,136</td><td>Unknown memory; 67,764,224-byte overshoot</td></tr><tr><td>Versioned lifetime-only full preflight repair</td><td>58.679</td><td>526,876,672</td><td>Passed; cumulative failed + repaired 117.441 s</td></tr><tr><td>Exact external 13-row model comparison</td><td>0.940</td><td>354,304,000</td><td>All schema fields equal; cumulative preflight audit 118.381 s</td></tr><tr><td>Four fresh matched 13-row producer</td><td>193.110</td><td>346685440 maximumchildRSS</td><td>Complete; four 5,000-attempt unknowns, all setup/serialization included</td></tr><tr><td>Independent everyactualgraph/event replay</td><td>216.347</td><td>404,193,280</td><td>20004 nodes / 1054 policy events; passed</td></tr><tr><td>Initial view/evidence export</td><td>1.937</td><td>Not separately sampled</td><td>Preserved earlier view; v2 improves labels and excludes its live export log</td></tr><tr><td>Native commutativity whole query</td><td>0</td><td>Not executed</td><td>No GCTS candidate found; no capacity/native query authorized or run</td></tr></tbody></table></div><p>The first independent preflight logically completed its comparisons but reached 604,635,136 bytes. Its 67,764,224-byte overshoot is a memory unknown. The separately frozen repair releases complete static/value witnesses before fixture replay and repeats every comparison at the same 512 MiB bound. Failed plus repaired audit cost is 117.441 seconds; including the separate exact external-model comparison gives 118.381 seconds within the original cumulative 300-second preflight-audit ceiling. No failed receipt, source or trace was overwritten.</p><p>The complete five-node grammar, pruning, 94 native admissions and their replay are reused from the exact earlier registry. Their cold costs, failed preparation attempts, prior search unknowns and earlier 596,873-cell ordinary-certificate capacity unknown remain in <a href="commutativity_admissions.html#costs">the admission report</a> and <a href="commutativity_cluster_results.html#costs">the earlier search report</a>. Manual infrastructure development is unmeasured. No native heap or microstep budget was enlarged in this study.</p><p>These bounded deterministic observations show that removing proposal overhead does not by itself improve the present proof ordering. They establish no nonprovability result, full Peano-arithmetic completeness, RL advantage or superiority over ordinary proof search.</p></section><section id="evidence"><h2>Exact frozen evidence</h2><p><a href="commutativity13_reader_data_v2.json">Reader data and every reused binding</a> · <a href="commutativity13_evidence_v2.zip">Complete new evidence/source ZIP</a></p><ul><li><a href="commutativity13_plan.json">preflight-plan.json</a></li><li><a href="commutativity13_correspondence.json">preflight-summary.json</a></li><li><a href="commutativity13_preflight_unknown.json">preflight-audit.json</a></li><li><a href="commutativity13_preflight_audit.json">preflight-audit-v2.json</a></li><li><a href="commutativity13_execution.json">execution-freeze.json</a></li><li><a href="commutativity13_summary.json">search-summary.json</a></li><li><a href="commutativity13_tree_audit_plan.json">tree-audit-plan-stream.json</a></li><li><a href="commutativity13_tree_audit.json">tree-audit-stream.json</a></li><li><a href="commutativity13_model_correspondence.json">external-model-correspondence.json</a></li><li><a href="commutativity13_model.json.gz">binding13.json.gz</a></li><li><a href="commutativity13_inventory.json.gz">static13.json.gz</a></li></ul><p>The evidence ZIP preserves all new models, full trees/events, structural byte projections, every frozen source/input plan, both preflight-audit versions, all costs and source snapshots. Earlier exact inputs are listed by SHA-256 and remain in their existing immutable public exports. The whole target has zero native queries in this study.</p></section></main></body></html>

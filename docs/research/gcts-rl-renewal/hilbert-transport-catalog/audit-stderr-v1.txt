@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py", line 171, in <module>
+    if __name__=='__main__':main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py", line 168, in main
+    eq(rejections,[{k:r[k] for k in ['name','mutant_sha256','status']} for r in reports],'all actual corruptions independently reproduced');corruption_seconds=time.perf_counter()-stage
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py", line 16, in eq
+    def eq(a,b,why):A.require(enc(a)==enc(b),why)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v3.py", line 13, in require
+    if not p:raise Bad(s)
+hilbert_constant_audit_v3.Bad: all actual corruptions independently reproduced

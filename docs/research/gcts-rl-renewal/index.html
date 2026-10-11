@@ -10,7 +10,7 @@
   <script defer src="report.js?v=20261009-r33.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 92</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 96</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -25,13 +25,51 @@
     <h2>Separate experiments, one checkable program.</h2>
     <p>Three agents work on arithmetic induction, symbolic Hilbert incidence, and external automated provers. Each owns its sources, frozen inputs, measured searches and independent audits. The coordinator integrates the evidence and publishes the readers. The shared native Wang checker remains unchanged; search hints never authorize an invalid proof.</p>
     <p>The arithmetic track now discovers an induction proof, and the geometry track discovers a guarded incidence consequence. Their readers show the selected colored point tiles, the formulas and English attached to each row, and the underlying derivations. The external track tests the same assertions with established search methods and complete returned-proof checking. These are concrete automatic searches within declared finite grammars; they do not establish a general GCTS or RL advantage.</p>
-    <p>The arithmetic track completed four bounded searches and full independent trace replay. All four GCTS outcomes remain unknown; ordinary search found a thirteen-line candidate, whose whole native certificate exceeds the fixed heap limit. The geometry track tests learned receptors on changed, derived hypotheses and investigates economical certification of parameterized families. The external track now independently checks established-prover proofs of the same two new geometry assertions without lemma inputs. Every track keeps complete inventories, original unknowns, boundary changes and preparation, training and checking costs visible. Parallel execution helps develop and cross-check the program; it does not establish a search-speed advantage.</p>
+    <p>The arithmetic agent now compares four cold searches on the same thirteen-row point model, and every search tree is independently replayed. The geometry agent has reconstructed the complete translated catalog for its transported lemma families. The external agent has independently checked an exact Boolean encoding of the arithmetic models; its first solver query exceeds the memory limit. The coordinator preserves proof blocks in the previously found ordinary candidate and checks an explicitly enlarged machine input. Each track reports its failures and preparation costs. Parallel development supplies independent evidence; it does not itself establish a search-speed advantage.</p>
   </section>
 
 
 
 
 
+
+
+  <section class="panel" id="certificate-hierarchy">
+    <p class="eyebrow">NOTEBOOK 96 · PRESERVED LEMMA BLOCKS · INDEPENDENT REPRESENTATION REVIEW</p>
+    <h2>Keeping the proof hierarchy cuts its representation cost.</h2>
+    <p>The previously discovered ordinary commutativity candidate has \(13\) root commands and \(9\) local blocks, with \(185\) stored commands in all. Preserving its blocks reduces the estimated native heap requirement from the earlier flattened \(596873\) cells to \(291874\). Generic context sharing removes no command or block. A bijective replacement of long block identifiers with short identifiers brings the requirement to \(263826\), preserving every formula, premise, reference and variable context. Full checker-instruction replays and a separate read-only review pass.</p>
+    <p>The original \(262144\)-cell heap remains insufficient. A separately declared \(266240\)-cell blank boundary covers the new estimate; every byte of its \(4433652\)-byte initial machine input is independently checked. Programs, initial words, logical heads and other band capacities remain unchanged; the shifted physical layout is independently checked. This is input preparation: whole native execution is still pending. These post-search representation changes do not supply a proof sequence to GCTS or count as GCTS/RL discovery.</p>
+    <p>The reader shows all root formulas in English and all local block expansions. Recorded production and checking stage timers sum to \(105.756\) seconds, plus the separate read-only review. These timers exclude startup and final receipt writes. Historical discovery, earlier heap unknowns and their costs remain visible. The next gate is one separately bounded whole-native execution and complete independent replay.</p>
+    <p><a class="button" href="certificate-hierarchy/reader.html#reader">Inspect the hierarchical proof line by line</a> <a href="certificate-hierarchy/reader.html#comparison">Compare representation costs</a> <a href="certificate-hierarchy/independent-review.json">Independent review</a></p>
+  </section>
+
+  <section class="panel" id="commutativity13-matched">
+    <p class="eyebrow">NOTEBOOK 95 · SAME THIRTEEN-ROW REGION · FOUR COMPLETELY AUDITED TREES</p>
+    <h2>The fixed cluster policy has not improved arithmetic search.</h2>
+    <p>Four cold baseline/fixed/fixed/baseline searches use the same \(19848\) placements, \(94\) admitted definitions, original arithmetic theory and \(13\)-row boundary. Each reaches its \(5000\)-attempt limit with no proof. Every trial has \(5001\) nodes, \(3249\) forced placements, \(620\) branches, \(1132\) dead nodes and \(4960\) backtracks. Their structural search projections are byte-identical. Complete independent audit reconstructs all \(20004\) nodes and \(1054\) policy events, including actual failed-branch rollback and complete base fallback.</p>
+    <p>An indexed proposer preserves all \(589\) historical policy events and reduces proposal work on those warm correspondence contexts from \(91.631\) to \(12.921\) seconds. In the new cold trials the fixed policy still adds about \(12.4\) seconds per run and changes no selected placement or search tree. Its weights are authored; no RL training is claimed. Improving implementation overhead has not demonstrated a search-quality gain.</p>
+    <p>The matched dispatcher costs \(193.110\) seconds and full independent audit \(216.347\) seconds, both within their separate \(300\)-second and \(512\)-MiB gates. An earlier preflight audit exceeded memory; its failure and the separately frozen audit-only repair remain charged. The ordinary control's prior thirteen-line result is separate and is never supplied to these searches. No complete finite exhaustion, native target acceptance or general performance advantage is established.</p>
+    <p><a class="button" href="commutativity13_v2.html#result">Inspect all four matched trials</a> <a href="commutativity13_v2.html#reader">See actual inventory tiles</a> <a href="commutativity13_v2.html#costs">Read full costs and preserved unknowns</a></p>
+  </section>
+
+  <section class="panel" id="matched-point-control">
+    <p class="eyebrow">NOTEBOOK 94 · EXACT POINT MODEL · INDEPENDENT BOOLEAN ENCODING</p>
+    <h2>The external solver comparison shares the same point semantics.</h2>
+    <p>The \(13\)-row point model independently constructed by the external agent has exactly the same semantic hash as the arithmetic model: all \(19848\) placements and their capacity and distant marking constraints agree. Independent audit also checks every ordered clause in both Boolean encodings: \(43532\) variables and \(115307\) clauses for the \(12\)-row model, and \(49747\) variables and \(132577\) clauses for the \(13\)-row model.</p>
+    <p>The first cold Z3 query, on the smaller region, exceeds the \(512\)-MiB producer ceiling with \(1923579904\) bytes peak RSS. No solver result or assignment is accepted; the thirteen-row query is unrun. The outcome is unknown, with no speed or superiority ratio. Producer cost is \(70.069\) seconds; complete encoding audit passes after a separately frozen lifetime repair, with the first memory failure and cross-track accounting retained.</p>
+    <p>This supplies a matched finite constraint baseline. It remains separate from the earlier E proofs, which use another proof language and boundary semantics. No new theorem or native proof is claimed here.</p>
+    <p><a class="button" href="external_point_commutativity_control.html#reader">Inspect the matched external control</a> <a href="external_point_commutativity_control.html#costs">Read resource outcomes</a></p>
+  </section>
+
+  <section class="panel" id="hilbert-transport-catalog">
+    <p class="eyebrow">NOTEBOOK 93 · RECEPTOR FAMILIES · COMPLETE FINITE POINT CATALOG</p>
+    <h2>Parameterized geometry lemmas now have inspectable point markings.</h2>
+    <p>Two independent implementations reconstruct all \(171\) transported symbolic interfaces and \(216\) earlier dependency aliases. Their complete translated catalog has \(1768\) decorated prototypes, \(8840\) positive-support alignments and \(4430\) strict-prior bindings. After local consistency and boundary marking checks, \(1492\) placements remain initially legal. Every corresponding complete graph probe is replayed; an independent tiny grammar checks \(315\) choices, \(42\) exact solutions and \(390\) placement-order rollbacks. All \(19\) saved corruptions reject.</p>
+    <p>The display separates formula-value markings and ordered reference ports by color. The statements use uninterpreted point, line and incidence symbols from a guarded Hilbert incidence fragment, with no physical geometry, rotations or complete Euclidean axiom system. These are translation-only row interfaces.</p>
+    <p>The finite authority is <code>certified_transport</code>, referring to the checked six-rule symbolic relation. It is not fresh native admission. A unit row tile has not yet been shown to equal the aggregate of its internal proof placements; compiler/native/Wang correspondence and an activated theorem search remain open. Catalog and legality checks alone do not certify a complete executing proof-search engine.</p>
+    <p>Cumulative production costs \(49.787\) seconds and cumulative audit \(35.608\) seconds. The first audit failed because serialized corruption hashes disagreed; canonical wire normalization repaired only the adversarial payloads, leaving catalog and graph probes unchanged. Its missing final memory receipt remains unestablished. This phase adds no theorem search, native query or RL result.</p>
+    <p><a class="button" href="hilbert-transport-catalog/reader.html#tiles">Inspect colored receptor markings</a> <a href="hilbert-transport-catalog/reader.html#comparison">Read the complete finite checks</a> <a href="hilbert-transport-catalog/reader.html#limits">See remaining proof obligations</a></p>
+  </section>
 
   <section class="panel" id="commutativity-first-search">
     <p class="eyebrow">NOTEBOOK 92 · FOUR COMPLETELY AUDITED SEARCHES · ORDINARY CONTROL</p>

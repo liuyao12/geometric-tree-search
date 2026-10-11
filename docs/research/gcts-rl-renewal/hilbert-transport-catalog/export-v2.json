@@ -1,0 +1,337 @@
+{
+  "version": "hilbert-transport-point-catalog-export-2-wire-repair",
+  "status": "immutable_audited_finite_catalog_prior_failed_memory_receipt_retained",
+  "files": [
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-launch-v1.json",
+      "sha256": "a419456a83ba15a5e26f84002458f1095222eafdefe0a17bb47459f259ed0027",
+      "bytes": 152
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-launch-v2.json",
+      "sha256": "20a83b0388984ef98e1f574f0bc03d10acd244aaa92da5e6c90f1980a29b0e31",
+      "bytes": 162
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stderr-v1.txt",
+      "sha256": "598bc6cdea4c3a3490b8a2f616a5a31c26f2a885a548c62948782ee776980ab1",
+      "bytes": 1084
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stdout-v2.txt",
+      "sha256": "8198858fcaf0c27b367ab9d715153dd9ae4d7a4716e24d2ff1e25ada8cb9aec9",
+      "bytes": 1707
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+      "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+      "bytes": 1951
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/corruptions-v1.json",
+      "sha256": "7eaf876aa6333d4382e09b4d035f9800a0bf6990d966c4d12813c7887b94caf6",
+      "bytes": 3838
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/corruptions-v2.json",
+      "sha256": "12277224a9eb10e57e96df9b4022af6fda51e9f275b7c9e3d76654e6f2072312",
+      "bytes": 3838
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/evidence-sources-v2.zip",
+      "sha256": "25f7b7fda0f4ed54d195260e55ff73065cd64f7075e9cd80302de7a33e885612",
+      "bytes": 3040192
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/graph-probes-v1.json",
+      "sha256": "aea862877bc95c57777d97cd8ff1710ff2c61f85f4f57f8e3f4bab108ee39703",
+      "bytes": 535312
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_adapter_v1.py",
+      "sha256": "c1604b9e87952e265779d95818e0705096649224306fd45c4a3cd978d69ce0cf",
+      "bytes": 9576
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py",
+      "sha256": "c08a9bc99b357e002a6f22a4623026a24d2cf8961ec207702a0a828b0cfe33b3",
+      "bytes": 16009
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v2.py",
+      "sha256": "48cf1a10b2a978ccab4abe2ba976ac5139b21047f2b2b93a39de18724dd4ab7d",
+      "bytes": 16332
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_corruption_repair_v2.py",
+      "sha256": "031ea14b75aaa70b2ac258f5ce1082e9cc77a47d622e02244fa056d33eea158f",
+      "bytes": 2481
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v1.py",
+      "sha256": "b780801f5f370d15f681a5a473657016debaa426cfd7430ea77a50cd2ff07589",
+      "bytes": 7793
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v2.py",
+      "sha256": "0385dc9f8f9856222ed29d8c13e335fcebdc69bd196f2ceb5b6efaa9f27e750f",
+      "bytes": 3501
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v1.py",
+      "sha256": "8f68de4d63826542b76f64c0893c81edb039bcfe43914634ba8c9e60706defc8",
+      "bytes": 14306
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v2.py",
+      "sha256": "0a491e47b7f8f5d62e7a692968a26c6bf0c6cded4d93ca1d006ea82cfdc00588",
+      "bytes": 16514
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_produce_v1.py",
+      "sha256": "3c3cb69eb107d169fa105307fa382d8c8a4e69815345d1cc3e856764fee4815d",
+      "bytes": 11112
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_reader_v1.js",
+      "sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+      "bytes": 3264
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v1.py",
+      "sha256": "dab5821e6e455b9ed4fd2000a9a0fa00d3a43b69c3f415afb7817c74bc5273ea",
+      "bytes": 4977
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v2.py",
+      "sha256": "800624de540766fc89cef86c6b0fdc3eb2db88658b8622b26aa58ca70d127ac9",
+      "bytes": 5349
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/alias-missing.json.gz",
+      "sha256": "74ed7ecea64ad725882034d4c0c38acce923682680d86d2a017b0f7456efc37e",
+      "bytes": 34932
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/assigned-zero-erased.json.gz",
+      "sha256": "24b4e683293fba69151681a4f3f23ed49686ce634fc60576ddc23ce6f91113d3",
+      "bytes": 561810
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/duplicate-placement-identity.json.gz",
+      "sha256": "d2906338d66146aa66ee665bf71f109188e9ff00ded67986e9262b1e0a22cc47",
+      "bytes": 561815
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/equality-template-hole-corrupted.json.gz",
+      "sha256": "1bf616f530646d3a99bb784ae5c8cacabd9843b9e4b8f8e6be3b9b2e427838d1",
+      "bytes": 34948
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/exterior-sentinel-erased.json.gz",
+      "sha256": "ab0fcc652c8cd1f3ca6ea99436c13f67041df690eb84cb3f5f064b1d414db09c",
+      "bytes": 561809
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/forged-certificate-binding.json.gz",
+      "sha256": "b8436ae89be2149cde4cf092e414e8ee3ad76e1b9d32f4d86eb62c90b9b12080",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/formula-code-collision.json.gz",
+      "sha256": "b80756b4c36487de9229f50b0f559f88cae1c592773fa4077ddc87d3a679c2ff",
+      "bytes": 561821
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/fractional-t-replaced.json.gz",
+      "sha256": "dbc1c7a17fcf174262a37cdde02644c24cf4b272720a3e3efdd444c83088fc50",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/missing-full-dependency.json.gz",
+      "sha256": "5b87147d1df3fa1069106596a5e34ed05bd6ff9445acddc157001b897cb1eb00",
+      "bytes": 561811
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/missing-raw-alignment.json.gz",
+      "sha256": "19c21add2dd8ed36502c4e7645cba78a7769fc033ac01f1d9c6f9e9226a61e12",
+      "bytes": 561804
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/native-authority-label.json.gz",
+      "sha256": "8bf38f2f719827e5ffa71d6ef8a191e3b51fb0ba98efebe38c9ad1d6d1de7949",
+      "bytes": 561816
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/noninjective-map-changed-without-proof.json.gz",
+      "sha256": "d6aac98ef67ace5bda38ad891f8c4ef793a9266dfe579bc1ea26004b68dc0a44",
+      "bytes": 34936
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/ordered-premise-swapped.json.gz",
+      "sha256": "bbc6b1f64f11b8462347a2b6573aa52493d3d0c9bce4d3f29586f9efce7ede5c",
+      "bytes": 561822
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/premise-multiplicity-erased.json.gz",
+      "sha256": "f152916949b93721ed4d226492fa480160bb6bb1da07d0c506112e1c33fa1550",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/root-generation-wrong.json.gz",
+      "sha256": "29a6ea6054328a27c923f9eb01645402271f2a362aa48ef9a0a174dc4c5adddc",
+      "bytes": 561811
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/rotation-added.json.gz",
+      "sha256": "ab07fa73d77d31550f79ae04250189765fa1526775d899716b285981b886591a",
+      "bytes": 561817
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/spurious-seed-reference-port.json.gz",
+      "sha256": "075322fca3dd95d154ef5e22ad81ea364fc6c3df3afa72dc8c9b17c2a1ce2496",
+      "bytes": 561810
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/stale-argument-binding.json.gz",
+      "sha256": "e837e576903f76a44a94fe73db105d67f7c2bc54384653d38e9f13908e29d4bb",
+      "bytes": 561819
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/stale-authority-epoch.json.gz",
+      "sha256": "1b3bdd87e7b130f1fda28a92f2312ff88f6e94e798c250603c72f3f076674494",
+      "bytes": 561816
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/next-gate-v1.json",
+      "sha256": "f67b6b55f78be936e8757126bd549dd7347501548fdbc1cee579b6a6dbbd4017",
+      "bytes": 1330
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/plan-v1.json",
+      "sha256": "b8f7d39f3a758521b37480e9ab6dc5978b702628273430bf54509d9628daa019",
+      "bytes": 18756
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/plan-v2.json",
+      "sha256": "570e9b81dced8284adabfb895024f05f1aac0566eed1f513ef50a7a733a3c92d",
+      "bytes": 10525
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-launch-v1.json",
+      "sha256": "5436c67b3fa9bad28715678ec0782ce3d06593e75f4ee2fc3836a8adb9d0260c",
+      "bytes": 154
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-launch-v2.json",
+      "sha256": "ab132d0d98b06400ab9fa1807e2623353d5e2e160e8933d028516c5888c43c4b",
+      "bytes": 163
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stdout-v1.txt",
+      "sha256": "dee8743a544bedc35fa136b61bedde22bc76f9186cec9169867ac0166dc52e16",
+      "bytes": 1619
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stdout-v2.txt",
+      "sha256": "0a5dde76e4ac3b227bfc0c04f76ab1d54034ec73a160d9aafbb15b3403d1f635",
+      "bytes": 834
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/production-v1.json",
+      "sha256": "6b13a2bb5b40002c72290bab70d451f036315c7628740950a3628968e0e122f1",
+      "bytes": 1529
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/production-v2.json",
+      "sha256": "78aa4a05cb66ad7b0f361e9941a02372a7b9652bc6767a97f4ffbce9a2011715",
+      "bytes": 790
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/reader-data-v1.json",
+      "sha256": "a127da961f6997500da2bb1a4140d54614e2e0c205d1cfef5a6f2c049311fb96",
+      "bytes": 3213697
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/reader-v2.html",
+      "sha256": "c2953745b43d56eb46046aef1515834ac2431797c5a39369372770eaa6bcab6a",
+      "bytes": 10039
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/stage-costs-v1.json",
+      "sha256": "e8953767112823b942d547724f64a7ded8d543371cadc1792df3ffd3ddb6ebf8",
+      "bytes": 94072
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/stage-costs-v2.json",
+      "sha256": "3231ef8583a9a31d20d2580957d905457f4c18eefb615d4e08e9bf5952854361",
+      "bytes": 48818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/tiny-checks-v1.json",
+      "sha256": "badd17288e95933e17cdf9aebba9d74718a3897eb538488dc200673167d35f38",
+      "bytes": 77735
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/tiny-model-v1.json",
+      "sha256": "7d8572ba9571b4fbed4eee0898674eeea899a93114c113516d4684d3dab5bc45",
+      "bytes": 20332
+    }
+  ],
+  "file_count": 60,
+  "total_bytes": 16850805,
+  "reader": {
+    "path": ".gcts-active/hilbert-transport-catalog-20261011/reader-v2.html",
+    "sha256": "c2953745b43d56eb46046aef1515834ac2431797c5a39369372770eaa6bcab6a",
+    "bytes": 10039
+  },
+  "catalog": {
+    "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+    "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+    "bytes": 557111
+  },
+  "audit": {
+    "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+    "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+    "bytes": 1951
+  },
+  "archive": {
+    "path": ".gcts-active/hilbert-transport-catalog-20261011/evidence-sources-v2.zip",
+    "sha256": "25f7b7fda0f4ed54d195260e55ff73065cd64f7075e9cd80302de7a33e885612",
+    "bytes": 3040192
+  },
+  "archive_entries": 90,
+  "preserved_file_entries": 336,
+  "original_failed_audit_kernel_peak": "unavailable",
+  "export_seconds_before_manifest_write": 0.401510041,
+  "native_queries": 0,
+  "target_searches": 0,
+  "existing_engine_activation": false,
+  "formal_native_compiler_correspondence": "open",
+  "aggregate_cluster_t_expansion_correspondence": "open"
+}

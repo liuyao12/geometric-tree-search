@@ -1,0 +1,713 @@
+{
+  "prior_view_export_receipt": {
+    "status": "passed_complete_immutable_export_binding",
+    "integration_sha256": "2348cf64906473825233edb8c845ee9266d08ca1c12c3f9c51583d25e4ed2e1a",
+    "public_files": 33,
+    "archive_members": 84,
+    "exporter_seconds_including_full_zip_readback": 1.93701225,
+    "reader_uses_chtml": true,
+    "native_queries": 0,
+    "all_original_freezes_unchanged": true
+  },
+  "status": "complete_audited_matched13row_unknowns",
+  "target": [
+    "all",
+    "x",
+    [
+      "all",
+      "y",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "x"
+            ],
+            [
+              "var",
+              "y"
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "y"
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "theory": {
+    "functions": {
+      "zero": 0,
+      "succ": 1,
+      "add": 2
+    },
+    "predicates": {},
+    "axioms": {
+      "AZ": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "AS": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    "schemas": [
+      "nat-induction"
+    ]
+  },
+  "preflight_producer": {
+    "status": "complete_exact589event_and13row_fixture_correspondence_pending_independent_audit",
+    "native_target_queries": 0,
+    "new_measured_target_searches": 0,
+    "observations": [],
+    "old_recorded_events": 589,
+    "old_proposer_initialization_seconds": 0.0013496669999994992,
+    "fast_proposer_initialization_seconds": 0.0387677499999981,
+    "correspondence_timings": {
+      "old_join_seconds": 91.63099251500017,
+      "fast_join_seconds": 12.92098599100036,
+      "old_features_seconds": 0.23337395900007962,
+      "fast_features_seconds": 0.04988237999985046
+    },
+    "rank_cache_bound": 16,
+    "cold_warm_disclosure": "One initial static12-rowcache charged; its bounded exact ranking cache warms across all589old-eventcorrespondence contexts. Actual13-rowobservations use freshprocesses/models/coldcaches, never these contexts or cachedvalues.",
+    "placements": 19848,
+    "roots": 52,
+    "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+    "component_sha256": {
+      "schema": "44a079f549ea14891de333344fa35c625bea94a3a344bbca1fa0b5765c54ba25",
+      "length": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+      "required_points": "da0ef4690ed7a9cb3bc48a8482029fc0bb86b9696944b104f033c0d23c12ced7",
+      "initial": "cb9bf4b212bbca11f4276ef74dd926ff2c09391f53b6f1ab805b1448316977c4",
+      "placements": "85245251fe39330ea1df76e888fc77fb8a8b1689bcc7f573fb0ded14e7185e76",
+      "injective_catalog": "0b5a22900d6fe49cead9fc43115277e3caca043b6ce69b93e921e6a8b1889c82",
+      "inference_rules": "3ecbda0b720cf49ea960d07cab0010943e767f18933f0b6df1ddbb34ebc7e09b",
+      "rule_modes": "297ea75f4b1f570d87055f841637ce461566bba5e457a3b3ba8f6faed260bcab",
+      "row_domains": "a15f9d329dfee429e5b7a546296413cb7982cca6c8953e832d9951419397ffdf",
+      "arity": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "capacity": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+      "registry_sha256": "c3b810a55bb2e9202b97c9556ab8edab8733ace5cce9cbc84e5019c2be2faeb8"
+    },
+    "static13_initialization_seconds": 0.08114187499998593,
+    "complete_family_bindings": 18480,
+    "fixture_nodes": [
+      41,
+      41
+    ],
+    "diagnostic13_fixture_searches": 4,
+    "ordinary_word_or_witnesses_used": false,
+    "actual_matched13_searches": 0,
+    "seconds": 149.60897895899998,
+    "peak_rss_bytes": 286048256
+  },
+  "preflight_memory_unknown": {
+    "status": "unknown_complete_preflight_audit_resource_budget",
+    "events": 589,
+    "placements": 19848,
+    "roots": 52,
+    "families": 42,
+    "family_bindings": 18480,
+    "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+    "component_sha256": {
+      "schema": "44a079f549ea14891de333344fa35c625bea94a3a344bbca1fa0b5765c54ba25",
+      "length": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+      "required_points": "da0ef4690ed7a9cb3bc48a8482029fc0bb86b9696944b104f033c0d23c12ced7",
+      "initial": "cb9bf4b212bbca11f4276ef74dd926ff2c09391f53b6f1ab805b1448316977c4",
+      "placements": "85245251fe39330ea1df76e888fc77fb8a8b1689bcc7f573fb0ded14e7185e76",
+      "injective_catalog": "0b5a22900d6fe49cead9fc43115277e3caca043b6ce69b93e921e6a8b1889c82",
+      "inference_rules": "3ecbda0b720cf49ea960d07cab0010943e767f18933f0b6df1ddbb34ebc7e09b",
+      "rule_modes": "297ea75f4b1f570d87055f841637ce461566bba5e457a3b3ba8f6faed260bcab",
+      "row_domains": "a15f9d329dfee429e5b7a546296413cb7982cca6c8953e832d9951419397ffdf",
+      "arity": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "capacity": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+      "registry_sha256": "c3b810a55bb2e9202b97c9556ab8edab8733ace5cce9cbc84e5019c2be2faeb8"
+    },
+    "fixture_trees": [
+      {
+        "mode": "base",
+        "old": {
+          "nodes": 41,
+          "policy_events": 0,
+          "hints": 0,
+          "status": "unknown_search_budget"
+        },
+        "fast": {
+          "nodes": 41,
+          "policy_events": 0,
+          "hints": 0,
+          "status": "unknown_search_budget"
+        }
+      },
+      {
+        "mode": "fixed",
+        "old": {
+          "nodes": 41,
+          "policy_events": 5,
+          "hints": 5,
+          "status": "unknown_search_budget"
+        },
+        "fast": {
+          "nodes": 41,
+          "policy_events": 5,
+          "hints": 5,
+          "status": "unknown_search_budget"
+        }
+      }
+    ],
+    "seconds": 58.761541625,
+    "peak_rss_bytes": 604635136,
+    "ordinary_word_or_witnesses_used": false,
+    "actual_matched13_searches": 0,
+    "native_target_queries": 0,
+    "scope": "Every589old actual event; complete13point model/static bindings; all four diagnostic fixture trees. Future target traces require separate complete graph replay."
+  },
+  "preflight_lifetime_repair": {
+    "status": "passed_complete_exact_proposer_serialization_and13model_preflight",
+    "events": 589,
+    "placements": 19848,
+    "roots": 52,
+    "families": 42,
+    "family_bindings": 18480,
+    "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+    "component_sha256": {
+      "schema": "44a079f549ea14891de333344fa35c625bea94a3a344bbca1fa0b5765c54ba25",
+      "length": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+      "required_points": "da0ef4690ed7a9cb3bc48a8482029fc0bb86b9696944b104f033c0d23c12ced7",
+      "initial": "cb9bf4b212bbca11f4276ef74dd926ff2c09391f53b6f1ab805b1448316977c4",
+      "placements": "85245251fe39330ea1df76e888fc77fb8a8b1689bcc7f573fb0ded14e7185e76",
+      "injective_catalog": "0b5a22900d6fe49cead9fc43115277e3caca043b6ce69b93e921e6a8b1889c82",
+      "inference_rules": "3ecbda0b720cf49ea960d07cab0010943e767f18933f0b6df1ddbb34ebc7e09b",
+      "rule_modes": "297ea75f4b1f570d87055f841637ce461566bba5e457a3b3ba8f6faed260bcab",
+      "row_domains": "a15f9d329dfee429e5b7a546296413cb7982cca6c8953e832d9951419397ffdf",
+      "arity": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "capacity": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+      "registry_sha256": "c3b810a55bb2e9202b97c9556ab8edab8733ace5cce9cbc84e5019c2be2faeb8"
+    },
+    "fixture_trees": [
+      {
+        "mode": "base",
+        "old": {
+          "nodes": 41,
+          "policy_events": 0,
+          "hints": 0,
+          "status": "unknown_search_budget"
+        },
+        "fast": {
+          "nodes": 41,
+          "policy_events": 0,
+          "hints": 0,
+          "status": "unknown_search_budget"
+        }
+      },
+      {
+        "mode": "fixed",
+        "old": {
+          "nodes": 41,
+          "policy_events": 5,
+          "hints": 5,
+          "status": "unknown_search_budget"
+        },
+        "fast": {
+          "nodes": 41,
+          "policy_events": 5,
+          "hints": 5,
+          "status": "unknown_search_budget"
+        }
+      }
+    ],
+    "seconds": 58.6794925,
+    "peak_rss_bytes": 526876672,
+    "ordinary_word_or_witnesses_used": false,
+    "actual_matched13_searches": 0,
+    "native_target_queries": 0,
+    "scope": "Every589old actual event; complete13point model/static bindings; all four diagnostic fixture trees. Future target traces require separate complete graph replay.",
+    "prior_failed_audit_seconds": 58.761541625,
+    "cumulative_audit_seconds": 117.441034125
+  },
+  "external_model_correspondence": {
+    "status": "passed_exact_independent13point_model_hash",
+    "schema": "exact-scalar-point-model-v1",
+    "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+    "external_complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+    "component_sha256": {
+      "schema": "44a079f549ea14891de333344fa35c625bea94a3a344bbca1fa0b5765c54ba25",
+      "length": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+      "required_points": "da0ef4690ed7a9cb3bc48a8482029fc0bb86b9696944b104f033c0d23c12ced7",
+      "initial": "cb9bf4b212bbca11f4276ef74dd926ff2c09391f53b6f1ab805b1448316977c4",
+      "placements": "85245251fe39330ea1df76e888fc77fb8a8b1689bcc7f573fb0ded14e7185e76",
+      "injective_catalog": "0b5a22900d6fe49cead9fc43115277e3caca043b6ce69b93e921e6a8b1889c82",
+      "inference_rules": "3ecbda0b720cf49ea960d07cab0010943e767f18933f0b6df1ddbb34ebc7e09b",
+      "rule_modes": "297ea75f4b1f570d87055f841637ce461566bba5e457a3b3ba8f6faed260bcab",
+      "row_domains": "a15f9d329dfee429e5b7a546296413cb7982cca6c8953e832d9951419397ffdf",
+      "arity": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "capacity": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+      "registry_sha256": "c3b810a55bb2e9202b97c9556ab8edab8733ace5cce9cbc84e5019c2be2faeb8"
+    },
+    "plan_sha256": "c87ffdbf8b62259defc292438c598cdccaa7e5f0f18688c8c8e6d5b8883ad8ba",
+    "seconds": 0.939752292,
+    "peak_rss_bytes": 354304000
+  },
+  "search_producer": {
+    "status": "complete_four_matched13_search_observations_pending_independent_audit",
+    "observations": [
+      {
+        "id": "base-r1",
+        "mode": "base",
+        "rep": 1,
+        "status": "unknown_search_budget",
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3249,
+          "attempts": 5000,
+          "branch": 620,
+          "dead": 1132,
+          "backtracks": 4960
+        },
+        "limits": {
+          "attempts": 5000,
+          "seconds": 60,
+          "proposal_limit": 24,
+          "proposal_checks": 2048,
+          "rss_bytes": 536870912
+        },
+        "proof_rows": null,
+        "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+        "model_setup_seconds": 0.23716408300000003,
+        "model_serialization_seconds": 0.21442558300000003,
+        "proposer_cold_initialization_seconds": 0.05321854199999998,
+        "search_seconds": 30.765259333,
+        "proposal_seconds": 0.0,
+        "trace_serialization_seconds": 11.213317292000003,
+        "process_seconds": 42.651922917,
+        "peak_rss_bytes": 339279872,
+        "search_wall_overshoot_seconds": 0.0,
+        "memory_overshoot_bytes": 0,
+        "native_target_queries": 0,
+        "whole_native_status": "not_executed",
+        "cache": "Fresh coldstatic/ranking cache per process. ExactLRU rankings warm only on that observation. Initialization is included in search seconds; proposal seconds exclude initial static index.",
+        "scope": "Same13row complete marked region/153rules/94definitions and5000attempt60swall ceilings in base/fixed. Fixedweights authored; no RLtraining or ordinaryproof input."
+      },
+      {
+        "id": "fixed-r1",
+        "mode": "fixed",
+        "rep": 1,
+        "status": "unknown_search_budget",
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3249,
+          "attempts": 5000,
+          "branch": 620,
+          "family_pool": 120,
+          "validation_checks": 6489,
+          "row_pool": 1486,
+          "sample_pair_tests": 7423,
+          "items": 4380,
+          "proposal_seconds": 12.347203003000018,
+          "hints_started": 527,
+          "hint_eligible": 11,
+          "hint_waiting": 355,
+          "hint_invalid": 1143,
+          "dead": 1132,
+          "backtracks": 4960,
+          "hint_completed": 460
+        },
+        "limits": {
+          "attempts": 5000,
+          "seconds": 60,
+          "proposal_limit": 24,
+          "proposal_checks": 2048,
+          "rss_bytes": 536870912
+        },
+        "proof_rows": null,
+        "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+        "model_setup_seconds": 0.24092975,
+        "model_serialization_seconds": 0.22132225000000005,
+        "proposer_cold_initialization_seconds": 0.053958041999999984,
+        "search_seconds": 41.594608959,
+        "proposal_seconds": 12.347203003000018,
+        "trace_serialization_seconds": 11.349621584000005,
+        "process_seconds": 53.675913375,
+        "peak_rss_bytes": 343490560,
+        "search_wall_overshoot_seconds": 0.0,
+        "memory_overshoot_bytes": 0,
+        "native_target_queries": 0,
+        "whole_native_status": "not_executed",
+        "cache": "Fresh coldstatic/ranking cache per process. ExactLRU rankings warm only on that observation. Initialization is included in search seconds; proposal seconds exclude initial static index.",
+        "scope": "Same13row complete marked region/153rules/94definitions and5000attempt60swall ceilings in base/fixed. Fixedweights authored; no RLtraining or ordinaryproof input."
+      },
+      {
+        "id": "fixed-r2",
+        "mode": "fixed",
+        "rep": 2,
+        "status": "unknown_search_budget",
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3249,
+          "attempts": 5000,
+          "branch": 620,
+          "family_pool": 120,
+          "validation_checks": 6489,
+          "row_pool": 1486,
+          "sample_pair_tests": 7423,
+          "items": 4380,
+          "proposal_seconds": 12.486156033,
+          "hints_started": 527,
+          "hint_eligible": 11,
+          "hint_waiting": 355,
+          "hint_invalid": 1143,
+          "dead": 1132,
+          "backtracks": 4960,
+          "hint_completed": 460
+        },
+        "limits": {
+          "attempts": 5000,
+          "seconds": 60,
+          "proposal_limit": 24,
+          "proposal_checks": 2048,
+          "rss_bytes": 536870912
+        },
+        "proof_rows": null,
+        "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+        "model_setup_seconds": 0.24751850000000003,
+        "model_serialization_seconds": 0.22170383299999996,
+        "proposer_cold_initialization_seconds": 0.05272700000000008,
+        "search_seconds": 42.501410459,
+        "proposal_seconds": 12.486156033,
+        "trace_serialization_seconds": 11.136492417,
+        "process_seconds": 54.372198083,
+        "peak_rss_bytes": 346685440,
+        "search_wall_overshoot_seconds": 0.0,
+        "memory_overshoot_bytes": 0,
+        "native_target_queries": 0,
+        "whole_native_status": "not_executed",
+        "cache": "Fresh coldstatic/ranking cache per process. ExactLRU rankings warm only on that observation. Initialization is included in search seconds; proposal seconds exclude initial static index.",
+        "scope": "Same13row complete marked region/153rules/94definitions and5000attempt60swall ceilings in base/fixed. Fixedweights authored; no RLtraining or ordinaryproof input."
+      },
+      {
+        "id": "base-r2",
+        "mode": "base",
+        "rep": 2,
+        "status": "unknown_search_budget",
+        "metrics": {
+          "nodes": 5001,
+          "forced": 3249,
+          "attempts": 5000,
+          "branch": 620,
+          "dead": 1132,
+          "backtracks": 4960
+        },
+        "limits": {
+          "attempts": 5000,
+          "seconds": 60,
+          "proposal_limit": 24,
+          "proposal_checks": 2048,
+          "rss_bytes": 536870912
+        },
+        "proof_rows": null,
+        "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+        "model_setup_seconds": 0.23342079200000002,
+        "model_serialization_seconds": 0.21690737499999996,
+        "proposer_cold_initialization_seconds": 0.050913707999999946,
+        "search_seconds": 29.191386834000003,
+        "proposal_seconds": 0.0,
+        "trace_serialization_seconds": 11.668994584000004,
+        "process_seconds": 41.547582208,
+        "peak_rss_bytes": 345145344,
+        "search_wall_overshoot_seconds": 0.0,
+        "memory_overshoot_bytes": 0,
+        "native_target_queries": 0,
+        "whole_native_status": "not_executed",
+        "cache": "Fresh coldstatic/ranking cache per process. ExactLRU rankings warm only on that observation. Initialization is included in search seconds; proposal seconds exclude initial static index.",
+        "scope": "Same13row complete marked region/153rules/94definitions and5000attempt60swall ceilings in base/fixed. Fixedweights authored; no RLtraining or ordinaryproof input."
+      }
+    ],
+    "native_target_queries": 0,
+    "unexecuted": [],
+    "seconds": 193.109822625,
+    "producer_wall_overshoot_seconds": 0.0,
+    "dispatcher_peak_rss_bytes": 39829504
+  },
+  "full_tree_audit": {
+    "status": "passed_complete_four13row_graph_and_proposal_traces",
+    "observations": [
+      {
+        "id": "base-r1",
+        "nodes": 5001,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget",
+        "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+        "structural_nodes": 5001,
+        "exact_structural_equal_to_base": true,
+        "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+      },
+      {
+        "id": "fixed-r1",
+        "nodes": 5001,
+        "policy_events": 527,
+        "hints": 527,
+        "status": "unknown_search_budget",
+        "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+        "structural_nodes": 5001,
+        "exact_structural_equal_to_base": true,
+        "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+      },
+      {
+        "id": "fixed-r2",
+        "nodes": 5001,
+        "policy_events": 527,
+        "hints": 527,
+        "status": "unknown_search_budget",
+        "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+        "structural_nodes": 5001,
+        "exact_structural_equal_to_base": true,
+        "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+      },
+      {
+        "id": "base-r2",
+        "nodes": 5001,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget",
+        "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+        "structural_nodes": 5001,
+        "exact_structural_equal_to_base": true,
+        "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+      }
+    ],
+    "native_target_queries": 0,
+    "seconds": 216.346792166,
+    "peak_rss_bytes": 404193280,
+    "scope": "All actual nodes/global full-universe legal domains/dead-forced-generation decisions/events/exact old proposal pools/counters/features/scores/ties/hint scheduling/full basefallback/failed-child retirement/rollback/decoded word. No native target acceptance or RLclaim."
+  },
+  "source_and_input_sha256": {
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/commutativity13_audit.py": "b9f2b5612fb7137e35722972da4bd3ba84407c2e28b236759fb3c662d5a7bf5f",
+    "research/gcts-rl-renewal/commutativity13_extract.py": "de5250dc223a9525966dae2280d0bd5f6a81b9b6342ba007da86b9648fe5d7c3",
+    "research/gcts-rl-renewal/commutativity13_freeze.py": "7354ca74a5820960739fb569bef7f6fbf0836df3ddacffe916e5036c5651f92f",
+    "research/gcts-rl-renewal/commutativity13_guidance.py": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+    "research/gcts-rl-renewal/commutativity13_json.py": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+    "research/gcts-rl-renewal/commutativity13_preflight.py": "1a19468c751842f69fc3e58a0eac14a5f74af5c6f8b0c20db4a0c4c00d0735ea",
+    "research/gcts-rl-renewal/commutativity13_search.py": "1233b402fabaff5a476b2abeaeca9cb590f42c7b7d354e9d4fbae29178749a77",
+    "research/gcts-rl-renewal/commutativity_catalog.py": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+    "research/gcts-rl-renewal/commutativity_cluster_audit.py": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+    "research/gcts-rl-renewal/commutativity_cluster_guidance.py": "7fdc2ea45de1f4a83ccc9694a1627020a89b430c239cd1a6915ba05ddcc6a9dc",
+    "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+    "research/gcts-rl-renewal/commutativity_cluster_points.py": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+    "research/gcts-rl-renewal/commutativity_cluster_search.py": "f8d424e65c7ba73efaaedc3bd6fd16fee5cc7b8835682637771d0564cc0eb324",
+    "research/gcts-rl-renewal/commutativity_points.py": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/induction_receptors_catalog.py": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+    "research/gcts-rl-renewal/induction_receptors_points.py": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+    "research/gcts-rl-renewal/left_successor_catalog.py": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+    "research/gcts-rl-renewal/left_successor_compact.py": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    ".gcts-active/commutativity13-20261011/preflight-sources.zip": "09394e7ccb3e3170f7d6f1ae3c58733cad4531a86e5ba082e638b56fd584f9d4",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/registry-audit.json": "4a9300ae8780fffb4b6291745a6475fd69595b7244dc44efff7c56e3a993c8c0",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/integration.json": "15c452eb5cdea111b2c9608f13536b4e9af548a2fe2223c5f71a28db95af1872",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/plan.json": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/summary.json": "2d220133bd536d23746730306a76c5e67553b0f69c0e7a0634cadf9c09b543f2",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/audit.json": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/integration.json": "26fd4eed5cdb60da3e610cc5f4d8186f394b6a6ed54fc5b8f9cdd2dd4ea908e0",
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/integration.json": "3e42ef00083319bdfadcedba68a9887d51abab7d5a98e9806fe865c60ea080b3",
+    ".gcts-active/commutativity-receptors-20261011/native-pilot/integration.json": "e0f97a3e9364b2103ca9e7204ec67539b4c2a73fcfce09504b74256165b22e42",
+    ".gcts-active/commutativity-cluster-search-20261011/plan.json": "a296a4240a39f1ef2fed2ebd0d08d7b223ae83da436f7f956a3d46884d255511",
+    ".gcts-active/commutativity-cluster-search-20261011/activation.json": "5dea12be2967c87faab68f683f4577171aaffcfce3d2dc93a3f29f0e607c8137",
+    ".gcts-active/commutativity-cluster-search-20261011/executor-sources.zip": "0ec44aa572fc4c916883395835e5fe45d914be62335e01c83d14e8d6ef473826",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-audit-plan.json": "ec0fb81187e75d1ff15633f30076aced08d2f38b3654f982191fb69017eebacd",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-audit.json": "c381e09ca35e8a0251f592c243600e381fd51c7593ce5ff58c7c888fda978ff3",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-audit.log": "480ff8b3ee755c1c58173ed4a78133649f97770b7ffc734c6e1079fc0eaefd8c",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-families.json.gz": "f1657b3e27e2ffbba4f6de6280eeab4ad594670ed31dff8d4b552faf14d065b4",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-fixtures.json.gz": "f28a19f60a22df7122bf52bf43f4daf5840d665981cc34b2cc574929f7c3cf20",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-model.json.gz": "71520532c0c5ca8658728e7d6d5f686f126451934a1c239a06d05a57bd26cd54",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight-summary.json": "40de5c69bc8a9dc38dfd027b696cef93f186835586a9fdf9c614ff771877f426",
+    ".gcts-active/commutativity-cluster-search-20261011/preflight.log": "3fdc3cb8682c49262f904658c3fccc7ec5068da09765d1b78e7125ee7a41c997",
+    ".gcts-active/commutativity-cluster-search-20261011/fixed-r1-search.json.gz": "f4725793723291a0bd1df18cc6c472a52cd96f3859533349a4a39fe8128b1ce3",
+    ".gcts-active/commutativity-cluster-search-20261011/fixed-r2-search.json.gz": "6b8a7a938b434aa6597a5106c96d38cbcc914d7e4aa3eff2c75373d89cd118d4",
+    ".gcts-active/commutativity-cluster-search-20261011/search-audit-v5.json": "37a99793802a43a8a92b15e3d026ff612c65dd8b3caea717d70ff49733ac091d",
+    "research/gcts-rl-renewal/commutativity13_phase_freeze.py": "faf4b2f3841fe8f0a1fc7141590e37addafa47e14055fac595e36c000dab29db",
+    ".gcts-active/commutativity13-20261011/preflight-audit-sources.zip": "7998622c9ec9596871a985adae8e7365bf0893d8e0cf07611ce98c58db4267a2",
+    ".gcts-active/commutativity13-20261011/preflight-plan.json": "ef9b20ddb845c9bc69fd3500131e614d25ee02780f4620297863822bf55471f9",
+    ".gcts-active/commutativity13-20261011/preflight-summary.json": "5c72b85ac5291e970ffcd224450ac8eb106cbce7003c945d279fb10f6b5bbfb4",
+    ".gcts-active/commutativity13-20261011/model13.json.gz": "69f13a99bcd3424555e24438c479521feb62bc95b3f256342bfd6f24c0898d8a",
+    ".gcts-active/commutativity13-20261011/binding13.json.gz": "940939cc4053ed94932bf9d95e258102a6187033c8702120d72b070544a521ae",
+    ".gcts-active/commutativity13-20261011/static13.json.gz": "d263917dc3726058ddc700036c0d5f55c0db186289c3212cf497a3a015b3722b",
+    ".gcts-active/commutativity13-20261011/correspondence.json.gz": "928d2c41300b5ffa5479498864d44c8d40388a6f0f1ea1308f22ede1379549d0",
+    ".gcts-active/commutativity13-20261011/fixtures.json.gz": "109f6cdffd60cba3e623bcd6f0317edf576646896702757d663d4916b7ad7976",
+    ".gcts-active/commutativity13-20261011/fixture-base.json.gz": "bcd50f95869b1ebff0311c08a2f79781536157a6e8ba07988b49237275e3b886",
+    ".gcts-active/commutativity13-20261011/fixture-fixed.json.gz": "5e6f5f14ad3877e9025b4612f55b79fb068fc9740ee003cabbcbf3a8a0f2062e",
+    ".gcts-active/commutativity13-20261011/fixed-r1-events.json.gz": "ef7ab146df88c5a795ce5d9f0a413724db3aedfef6dc1445aa64d9d1e31f1e53",
+    ".gcts-active/commutativity13-20261011/fixed-r2-events.json.gz": "b200b4d5acea60d1eae488111bb78947e8c97ba2da1a62fc536aad6be3946505",
+    ".gcts-active/commutativity13-20261011/fixed-r1-events-receipt.json": "24d95900fbfcd3a343fc61328478a560b8d9feba18b615014bbec059f2ee4e76",
+    ".gcts-active/commutativity13-20261011/fixed-r2-events-receipt.json": "26bd626619c5e2f74a732a19a519a7c9c9c6aa477b92e514fb077b7167368ea5",
+    "research/gcts-rl-renewal/commutativity13_audit_freeze_v2.py": "9148e90d463b69e055f2826663265927fb0256d333b9371ec550052a5c1e3276",
+    "research/gcts-rl-renewal/commutativity13_audit_v2.py": "1bdad7e71cb37a01655a7da7836e6727453499cf6a1ee7483b3713bfc351f976",
+    ".gcts-active/commutativity13-20261011/preflight-audit-sources-v2.zip": "0dfc669202f37216b45bc12b5674d639472fa14cd63efaf24b31e4c14121c928",
+    ".gcts-active/commutativity13-20261011/preflight-audit-plan.json": "0029d582809e9bc24f568b3c414a941a3f6ec1b4bf832a8e2d33ad6c6a59c3ad",
+    ".gcts-active/commutativity13-20261011/preflight-audit.json": "490ccd676abf23813f3d697c06a72c4b7d855cad29c458cf3e85f77d2d6b3282",
+    ".gcts-active/commutativity13-20261011/fixed-r1-projection-audit.json": "40dcce0be846aaa1874adb1d19769ee7d81226d2604d2b12ba0f4a5365b8cde6",
+    ".gcts-active/commutativity13-20261011/fixed-r2-projection-audit.json": "bad3db0c4c8291d388fa7e293b3925358035837c501da47b70354c3d6566827d",
+    ".gcts-active/commutativity13-20261011/preflight-audit.log": "3c16f64e047eaccc64683685cc7b39ad42d1912bb3038213d4a6b5f777cf0eb8",
+    "research/gcts-rl-renewal/commutativity13_compare.py": "d66cb736dd31e5ebb3a3fd7ac09244c788c688f06565adfa827ac0585d0e26da",
+    ".gcts-active/external-point-commutativity-20261011/point-13.json.gz": "106314f225d78dfd305521e756f79bce12341ff72140e5784ff60ceb6f901234",
+    ".gcts-active/external-point-commutativity-20261011/plan.json": "2718125fc6d0527d9910513572e76941aa9d237cd74ae8addae2f3cf2f1bcd6e",
+    ".gcts-active/external-point-commutativity-20261011/encoding-freeze.json": "b7b26045e65c5e32019394f0850209e5426085d51ccafb6669569a959b7b2777",
+    "research/gcts-rl-renewal/commutativity13_execution_freeze.py": "4d7c05ead5e67750b5f714e3b4e8a40d7247a9d7d167be0432d903a9f9a0d07d",
+    "research/gcts-rl-renewal/commutativity13_executor_search.py": "2aa38b09de5f0845f9fed3bbb069a7a7badc275cca22806a4867047ad538ee0a",
+    "research/gcts-rl-renewal/commutativity13_runner.py": "0bb5686ca7ec404a6ff60c4e6f2923e8fd45a05c1dd358c242a5f1d783b8ee2f",
+    "research/gcts-rl-renewal/commutativity13_tree_audit.py": "bc67b301cdc7d2006f418802a5f25d2ec9a8729ccedf44e46d6dca7cbafc6cd3",
+    ".gcts-active/commutativity13-20261011/execution-sources.zip": "aa5e9673b93f907df753e5177032918b3df456edb75fd5f73f6112a77547fad4",
+    ".gcts-active/commutativity13-20261011/preflight-audit-plan-v2.json": "dbc7197a92b0863664699ad30de683b80bb08c8086130deb1aa29d0879b06902",
+    ".gcts-active/commutativity13-20261011/preflight-audit-v2.json": "568bae62249bb8fab9ec96a6853ca4296f51f8206bb1e666b3fed5acac5ae723",
+    ".gcts-active/commutativity13-20261011/fixed-r1-projection-audit-v2.json": "0a9e24367e3700502d246d84e76b2cce910eaddce44222271afb6865ff42c795",
+    ".gcts-active/commutativity13-20261011/fixed-r2-projection-audit-v2.json": "c0c7c564c6f430b0402478a49ce0620c7163b9c76c95bf988c552273d01b98e1",
+    ".gcts-active/commutativity13-20261011/external-model-correspondence-plan.json": "c87ffdbf8b62259defc292438c598cdccaa7e5f0f18688c8c8e6d5b8883ad8ba",
+    ".gcts-active/commutativity13-20261011/external-model-correspondence.json": "eb45996a0018bbda790909a353ce9991a72f2892797370daf62091af4b1e7e97",
+    "research/gcts-rl-renewal/commutativity13_structure.py": "4b5e623fabecf7e0f75cf3028de7eab016606f90550cb5c39fb2e6ab681ba39a",
+    "research/gcts-rl-renewal/commutativity13_tree_audit_stream.py": "fae48266f7b080c9f8abc5c7c4386ba1182624654abf35fe4a0c06fb267c1ea2",
+    "research/gcts-rl-renewal/commutativity13_tree_freeze.py": "7205dc7f49d2bc94e45087953a1009a8bceec8c4f9f7b5cc53eb7041171538b4",
+    ".gcts-active/commutativity13-20261011/tree-audit-sources-stream.zip": "2d8b9f4833a7833c454a16f57be291283845ab97bd6208c9174c249fcebf166e",
+    ".gcts-active/commutativity13-20261011/execution-freeze.json": "cc6e9eca78e49218acf1fd570a08970bdf9f9bd7d97b8ed76c9b5a37dbd76e4b",
+    ".gcts-active/commutativity13-20261011/search-summary.json": "2db5766fd32395123a89bd27de9e986aa2f14b4388a7ea1cbd477244a7b0826f",
+    ".gcts-active/commutativity13-20261011/base-r1-model.json.gz": "701b0dd895e3d8d8da4d06ad4ef7616948405f170d529858b8a45d89c8acc38e",
+    ".gcts-active/commutativity13-20261011/base-r1-search.json.gz": "83ae8b67eb9976980dd3e0c71b8ce7de6141f7219ad1bb9dca3bfd52984f9cbb",
+    ".gcts-active/commutativity13-20261011/base-r1-checkpoint.json": "4bdbde7a1316742cf4bd11c7bd326b0904d0b184ffc24a2fd68f958fb49a2bde",
+    ".gcts-active/commutativity13-20261011/base-r1-summary.json": "448ec7d64621b832a655fa13096d0b1149235c5d94be5f46b968029b9b900463",
+    ".gcts-active/commutativity13-20261011/fixed-r1-model.json.gz": "a50224c8b5f9820e8b53e1e0c0d5952bb9345b4b3ad98b2ff087a87d1721e089",
+    ".gcts-active/commutativity13-20261011/fixed-r1-search.json.gz": "499d1b6aa2589fbdfdc21a3cf84a0c434477a7195a72f1baee23f7907c20d012",
+    ".gcts-active/commutativity13-20261011/fixed-r1-checkpoint.json": "068ff6104769aa4855051d14ed77cfab1a5eb1633a2f1f581d1bd3c14bf83ddc",
+    ".gcts-active/commutativity13-20261011/fixed-r1-summary.json": "59c9660d5708b5f48c3b44b1d69bd455d32b46d1e15b77381b44aa5f64933ebc",
+    ".gcts-active/commutativity13-20261011/fixed-r2-model.json.gz": "321e3eda8a232c315ef5ad1c0657ff9b47fdd83e5404711943b3069fec510092",
+    ".gcts-active/commutativity13-20261011/fixed-r2-search.json.gz": "34341d97afe8fae978259ab50a7d6ca2a0aa851819aa010e71eb97437d45f188",
+    ".gcts-active/commutativity13-20261011/fixed-r2-checkpoint.json": "b3f3e2c82a6263430b58a48418f8411fb933155dce1796c7298f3da17893aeda",
+    ".gcts-active/commutativity13-20261011/fixed-r2-summary.json": "139c1b4dbf74f38277859069a8e59d3e31482aed9f80482e11849ea475523e0b",
+    ".gcts-active/commutativity13-20261011/base-r2-model.json.gz": "c1d3275ed9c23a27a03a1bddf58e29c3cca2d488d9397a1e57f786f944531798",
+    ".gcts-active/commutativity13-20261011/base-r2-search.json.gz": "3d5b63fdcd1e341ae50794594fa5a0159d58174626acb99690d2ffd353fc0108",
+    ".gcts-active/commutativity13-20261011/base-r2-checkpoint.json": "1136649acc0d2bb18b5568434432c4bd679a5a02f2e8cc4e6d2d60c429c91236",
+    ".gcts-active/commutativity13-20261011/base-r2-summary.json": "c20a96ca2c03ad13d8de2d1251598fa7ff549507cadd723c9933d74814cf90c6"
+  },
+  "claims": {
+    "gcts_found_proof": false,
+    "whole_native_target_queries": 0,
+    "rl_training": false,
+    "exact_structural_equal": true,
+    "nodes": 20004,
+    "policy_events": 1054
+  },
+  "costs": {
+    "manual_infrastructure_seconds": "unmeasured",
+    "prior_grammar_native_admission": "Reused exactcomplete94registry, with earlier measured coldproduction/replay and preparationunknowns preserved in prior reports. No zero-cost preparation claim."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "derived_public_presentation_only",
+  "source_reader_sha256": "c2953745b43d56eb46046aef1515834ac2431797c5a39369372770eaa6bcab6a",
+  "public_reader_sha256": "a69aa6e5601278106685cc59150c2769b38dcf0130f6b8bede0bf273b5fc046a",
+  "source_script_sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+  "public_script_sha256": "199e3fc312b4d1c8dac5a5c7e704ddbf1272ff0f5ee53c130fabd55cafa44c87",
+  "changes": [
+    "Restore accidentally escaped static LaTeX and correct MathJax delimiter escaping.",
+    "Show occupancy formula through MathJax and label the small SVG square with a word.",
+    "Clarify that the tiny-subset capacity argument follows exterior marking rejection.",
+    "Fix two missing prose spaces and add immutable-source links.",
+    "Select the distinct-point and distinct-line searched receptor as the initial view; all instances remain selectable."
+  ],
+  "unchanged": "All scientific catalog, proof programs, point data, plans, costs, audits, failures and raw reader/script bytes are unchanged."
+}

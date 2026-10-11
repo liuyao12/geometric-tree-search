@@ -1,0 +1,61 @@
+{
+  "status": "unknown_complete_preflight_audit_resource_budget",
+  "events": 589,
+  "placements": 19848,
+  "roots": 52,
+  "families": 42,
+  "family_bindings": 18480,
+  "complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+  "component_sha256": {
+    "schema": "44a079f549ea14891de333344fa35c625bea94a3a344bbca1fa0b5765c54ba25",
+    "length": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+    "required_points": "da0ef4690ed7a9cb3bc48a8482029fc0bb86b9696944b104f033c0d23c12ced7",
+    "initial": "cb9bf4b212bbca11f4276ef74dd926ff2c09391f53b6f1ab805b1448316977c4",
+    "placements": "85245251fe39330ea1df76e888fc77fb8a8b1689bcc7f573fb0ded14e7185e76",
+    "injective_catalog": "0b5a22900d6fe49cead9fc43115277e3caca043b6ce69b93e921e6a8b1889c82",
+    "inference_rules": "3ecbda0b720cf49ea960d07cab0010943e767f18933f0b6df1ddbb34ebc7e09b",
+    "rule_modes": "297ea75f4b1f570d87055f841637ce461566bba5e457a3b3ba8f6faed260bcab",
+    "row_domains": "a15f9d329dfee429e5b7a546296413cb7982cca6c8953e832d9951419397ffdf",
+    "arity": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "capacity": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+    "registry_sha256": "c3b810a55bb2e9202b97c9556ab8edab8733ace5cce9cbc84e5019c2be2faeb8"
+  },
+  "fixture_trees": [
+    {
+      "mode": "base",
+      "old": {
+        "nodes": 41,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget"
+      },
+      "fast": {
+        "nodes": 41,
+        "policy_events": 0,
+        "hints": 0,
+        "status": "unknown_search_budget"
+      }
+    },
+    {
+      "mode": "fixed",
+      "old": {
+        "nodes": 41,
+        "policy_events": 5,
+        "hints": 5,
+        "status": "unknown_search_budget"
+      },
+      "fast": {
+        "nodes": 41,
+        "policy_events": 5,
+        "hints": 5,
+        "status": "unknown_search_budget"
+      }
+    }
+  ],
+  "seconds": 58.761541625,
+  "peak_rss_bytes": 604635136,
+  "ordinary_word_or_witnesses_used": false,
+  "actual_matched13_searches": 0,
+  "native_target_queries": 0,
+  "scope": "Every589old actual event; complete13point model/static bindings; all four diagnostic fixture trees. Future target traces require separate complete graph replay."
+}

@@ -1,0 +1,53 @@
+{
+  "status": "passed_complete_four13row_graph_and_proposal_traces",
+  "observations": [
+    {
+      "id": "base-r1",
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "status": "unknown_search_budget",
+      "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+      "structural_nodes": 5001,
+      "exact_structural_equal_to_base": true,
+      "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+    },
+    {
+      "id": "fixed-r1",
+      "nodes": 5001,
+      "policy_events": 527,
+      "hints": 527,
+      "status": "unknown_search_budget",
+      "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+      "structural_nodes": 5001,
+      "exact_structural_equal_to_base": true,
+      "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+    },
+    {
+      "id": "fixed-r2",
+      "nodes": 5001,
+      "policy_events": 527,
+      "hints": 527,
+      "status": "unknown_search_budget",
+      "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+      "structural_nodes": 5001,
+      "exact_structural_equal_to_base": true,
+      "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+    },
+    {
+      "id": "base-r2",
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "status": "unknown_search_budget",
+      "structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+      "structural_nodes": 5001,
+      "exact_structural_equal_to_base": true,
+      "structural_scope": "Exactpreorder kind/point/statehash/completealternatives/visitedchildkeys bytecomparison; policyhint/event metadata deliberately excluded from this structural projection and independently checked in full tree replay."
+    }
+  ],
+  "native_target_queries": 0,
+  "seconds": 216.346792166,
+  "peak_rss_bytes": 404193280,
+  "scope": "All actual nodes/global full-universe legal domains/dead-forced-generation decisions/events/exact old proposal pools/counters/features/scores/ties/hint scheduling/full basefallback/failed-child retirement/rollback/decoded word. No native target acceptance or RLclaim."
+}

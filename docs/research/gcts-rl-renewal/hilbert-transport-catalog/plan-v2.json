@@ -1,0 +1,207 @@
+{
+  "version": "hilbert-transport-catalog-plan-2-wire-normalization-repair",
+  "status": "frozen_before_repair",
+  "source_pins": {
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v2.py": {
+      "sha256": "48cf1a10b2a978ccab4abe2ba976ac5139b21047f2b2b93a39de18724dd4ab7d",
+      "bytes": 16332
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_corruption_repair_v2.py": {
+      "sha256": "031ea14b75aaa70b2ac258f5ce1082e9cc77a47d622e02244fa056d33eea158f",
+      "bytes": 2481
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v2.py": {
+      "sha256": "0385dc9f8f9856222ed29d8c13e335fcebdc69bd196f2ceb5b6efaa9f27e750f",
+      "bytes": 3501
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v2.py": {
+      "sha256": "0a491e47b7f8f5d62e7a692968a26c6bf0c6cded4d93ca1d006ea82cfdc00588",
+      "bytes": 16514
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v2.py": {
+      "sha256": "800624de540766fc89cef86c6b0fdc3eb2db88658b8622b26aa58ca70d127ac9",
+      "bytes": 5349
+    }
+  },
+  "inputs": {
+    ".gcts-active/hilbert-transport-catalog-20261011/audit-launch-v1.json": {
+      "sha256": "a419456a83ba15a5e26f84002458f1095222eafdefe0a17bb47459f259ed0027",
+      "bytes": 152
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/audit-stderr-v1.txt": {
+      "sha256": "598bc6cdea4c3a3490b8a2f616a5a31c26f2a885a548c62948782ee776980ab1",
+      "bytes": 1084
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/audit-stdout-v1.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz": {
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/corruptions-v1.json": {
+      "sha256": "7eaf876aa6333d4382e09b4d035f9800a0bf6990d966c4d12813c7887b94caf6",
+      "bytes": 3838
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/graph-probes-v1.json": {
+      "sha256": "aea862877bc95c57777d97cd8ff1710ff2c61f85f4f57f8e3f4bab108ee39703",
+      "bytes": 535312
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_adapter_v1.py": {
+      "sha256": "c1604b9e87952e265779d95818e0705096649224306fd45c4a3cd978d69ce0cf",
+      "bytes": 9576
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py": {
+      "sha256": "c08a9bc99b357e002a6f22a4623026a24d2cf8961ec207702a0a828b0cfe33b3",
+      "bytes": 16009
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v1.py": {
+      "sha256": "b780801f5f370d15f681a5a473657016debaa426cfd7430ea77a50cd2ff07589",
+      "bytes": 7793
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v1.py": {
+      "sha256": "8f68de4d63826542b76f64c0893c81edb039bcfe43914634ba8c9e60706defc8",
+      "bytes": 14306
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_produce_v1.py": {
+      "sha256": "3c3cb69eb107d169fa105307fa382d8c8a4e69815345d1cc3e856764fee4815d",
+      "bytes": 11112
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_reader_v1.js": {
+      "sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+      "bytes": 3264
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v1.py": {
+      "sha256": "dab5821e6e455b9ed4fd2000a9a0fa00d3a43b69c3f415afb7817c74bc5273ea",
+      "bytes": 4977
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/plan-v1.json": {
+      "sha256": "b8f7d39f3a758521b37480e9ab6dc5978b702628273430bf54509d9628daa019",
+      "bytes": 18756
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/produce-launch-v1.json": {
+      "sha256": "5436c67b3fa9bad28715678ec0782ce3d06593e75f4ee2fc3836a8adb9d0260c",
+      "bytes": 154
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/produce-stderr-v1.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/produce-stdout-v1.txt": {
+      "sha256": "dee8743a544bedc35fa136b61bedde22bc76f9186cec9169867ac0166dc52e16",
+      "bytes": 1619
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/production-v1.json": {
+      "sha256": "6b13a2bb5b40002c72290bab70d451f036315c7628740950a3628968e0e122f1",
+      "bytes": 1529
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/reader-data-v1.json": {
+      "sha256": "a127da961f6997500da2bb1a4140d54614e2e0c205d1cfef5a6f2c049311fb96",
+      "bytes": 3213697
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/stage-costs-v1.json": {
+      "sha256": "e8953767112823b942d547724f64a7ded8d543371cadc1792df3ffd3ddb6ebf8",
+      "bytes": 94072
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/tiny-checks-v1.json": {
+      "sha256": "badd17288e95933e17cdf9aebba9d74718a3897eb538488dc200673167d35f38",
+      "bytes": 77735
+    },
+    ".gcts-active/hilbert-transport-catalog-20261011/tiny-model-v1.json": {
+      "sha256": "7d8572ba9571b4fbed4eee0898674eeea899a93114c113516d4684d3dab5bc45",
+      "bytes": 20332
+    }
+  },
+  "original_plan_sha256": "b8f7d39f3a758521b37480e9ab6dc5978b702628273430bf54509d9628daa019",
+  "original_catalog_sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+  "original_catalog_production_seconds": 39.454421749999995,
+  "failed_audit_process_seconds": 17.114550833000003,
+  "failed_audit_external_max_sampled_rss_bytes": 177127424,
+  "failed_audit_kernel_peak": "unavailable",
+  "cause": "In-memory shared-container alias action changed several model fields in some v1 mutants; independent JSON decoding removed alias identity. Catalog/domain checks completed before actual mutant SHA reconciliation failed.",
+  "repair": "Only regenerated19corruption inputs use canonical JSON round-trip before field mutation; each exact payload saved and independently reconstructed/byte-content checked. Full independent catalog/model/graph/tiny replay still required. Original catalog and all completed producer observations stay unchanged.",
+  "budgets": {
+    "production_total_wall_seconds": 180,
+    "audit_total_wall_seconds": 180,
+    "repair_production_seconds": 140.54557825,
+    "repair_audit_seconds": 162.885449167,
+    "host_ceiling_bytes": 536870912
+  },
+  "resource_scope": "Original failed audit final kernel peak unavailable and memory gate unestablished; all actual time costs retained. New repair/replay enforce strict512MiB with same fail-closed owned-child RSS/time monitoring, childSIGALRM and final kernel peak. No unobserved prior memory peak invented.",
+  "unchanged": "All171definitions/216aliases/1768prototypes/8840rawalignments/4430orderedbindings/1492initialdomains, point compiler, authority epoch, scheduler metadata and complete fallback are frozen; no theorem path/search/native admission or existing-engine activation.",
+  "source_plan_inputs": {
+    ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz": {
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json": {
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json": {
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz": {
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json": {
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-argument.html": {
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-ledger.json": {
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    "docs/research/gcts-rl-renewal/constant-transport-review.json": {
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v3.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v3.py": {
+      "sha256": "62e5cea42e565df449071764640a9183244988f7f5598f9bd2823152eac600e2",
+      "bytes": 19228
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/plan-v3.json": {
+      "sha256": "1d12db211cacabd584467a8fd95d7d68814d928f98a3441b21bfa5b9bef0ab8e",
+      "bytes": 26215
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/stage-costs-v3.json": {
+      "sha256": "a7ebddc84c0e84c593dc0250a8c370337af6bfb9bbc9c69b0be0dfbcf9ab7186",
+      "bytes": 31277
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/supervisor-failure-v2.json": {
+      "sha256": "b58e692ebac4426df3fd47647b71c7d2109648be3aea2a5938982ec5e736cc58",
+      "bytes": 3371
+    },
+    "docs/basic-tiling-algorithm.md": {
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "research/gcts-rl-renewal/fol_checker.tree": {
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed",
+      "bytes": 17577
+    },
+    "research/gcts-rl-renewal/boundary_syntax.tree": {
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c",
+      "bytes": 1739
+    },
+    ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v1.py": {
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    }
+  },
+  "native_queries": 0,
+  "target_searches": 0,
+  "existing_engine_activation": false,
+  "declaration_seconds_before_plan_write": 0.017882916000000002
+}

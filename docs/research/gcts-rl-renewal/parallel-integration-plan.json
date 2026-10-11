@@ -1,0 +1,727 @@
+{
+  "previous_commit": "0d383682a39d6d1293fc70126c98aa7b5922b093",
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/evidence.zip",
+      "sha256": "a0653c72046b4b927cf6f6cffbbb47099a9a21c66080f7fadb8e1609ee009a34",
+      "bytes": 1750844
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/independent-review.json",
+      "sha256": "cea67e9d8e1281d0bcf666d5475da1da6975dd4220e624f19af75c43555c04fe",
+      "bytes": 18471
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/integration.json",
+      "sha256": "c35262105d9689e04d63693c238565e63d0eb05b89cb14406154af5bd7b075af",
+      "bytes": 6244
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/audit-plan.json",
+      "sha256": "99380d91eb464de03f18b4e17cde7d8c49b88c86595abbd246b16868d9a647cb",
+      "bytes": 17504
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/audit.json",
+      "sha256": "30114433a2c291887379a2cbe6bc876c769a2f335a972749195eb50bb89cb6ce",
+      "bytes": 836
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/frame.json.gz",
+      "sha256": "00b7057f825627802abe1ff2d7906a22899b1f92c948a895a0d54ab6180fdecf",
+      "bytes": 26495
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/input.bin.gz",
+      "sha256": "2613c02011792f01bc10a1d8fdc610e905d42b0066c4ff07edfe6e6f4f58ab8f",
+      "bytes": 35105
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/plan.json",
+      "sha256": "d58cf163a9267ab6c6994423d8d865618cee5bd5c3a0f19f9989502c70e01a24",
+      "bytes": 17372
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/movable-encoding/summary.json",
+      "sha256": "f208b9fa857b4efd2ec372cf03e90e1ebc7a5a88733bc55b8ea52749db61f8e9",
+      "bytes": 774
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/reader.html",
+      "sha256": "5b26d25843b7d1e97edcf7bc9b913955c756a8b2e73aff84371473ce3d16097f",
+      "bytes": 98601
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/audit-plan.json",
+      "sha256": "fab05e22ca23138f8aade9aacaa8f76e41f4c8cb63e21624df39b7384d61328c",
+      "bytes": 15679
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/audit.json",
+      "sha256": "78018ad669ef222c8851c7448ef564f423336beace55d14d17fc88426ed47376",
+      "bytes": 1490
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/observation-00.json.gz",
+      "sha256": "d61fd967fc2dcc327245c917ca07e31a353b587c480b038994cc5e3bf28d8ff6",
+      "bytes": 61658
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/observation-01.json.gz",
+      "sha256": "dc8755c8e94d37667afdf2aff71516ecf8ab2d5dd0df97e9f99ce115b7479ae6",
+      "bytes": 61265
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/plan.json",
+      "sha256": "b55ddeb6d7e134430852df3a22c26edc4f5bf13d6d440d6e2e4cdfbc2e9d9f91",
+      "bytes": 15391
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/summary.json",
+      "sha256": "2451418610a0b7f11c4604c407dcd98ffb3baa946cbf059d4c5b44df65116460",
+      "bytes": 1468
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/representation/transformation.json.gz",
+      "sha256": "2f735109099515da6db90b78ff5cef66e8579e18261e66a1b7da60e6a7ec893d",
+      "bytes": 5041
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/short-identifiers/audit-plan.json",
+      "sha256": "40c819460f7225f83720defda0884311db24b42e92eb38f68f18a27ed6d3aa2d",
+      "bytes": 16666
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/short-identifiers/audit.json",
+      "sha256": "677f6611db96920bc4dd8dbb2d03f9ae29e79ff4c0ee16be78573be345873c42",
+      "bytes": 979
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/short-identifiers/observation.json.gz",
+      "sha256": "1ff6865d840f1c4734ea6010dd0e0738fb91fc8b9ecadf35c7ba5072cbe709c6",
+      "bytes": 43946
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/short-identifiers/plan.json",
+      "sha256": "aef10089ee1741b830a0cf351bb7ceeb5c9e2034ae0bad89ef143b5dec0b5349",
+      "bytes": 16256
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/certificate-hierarchy/short-identifiers/summary.json",
+      "sha256": "03754c2d7ba0f5e07a4767c661e745ab7e3f3c509418c2c4a53d4a0bc3efdd57",
+      "bytes": 779
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_correspondence.json",
+      "sha256": "5c72b85ac5291e970ffcd224450ac8eb106cbce7003c945d279fb10f6b5bbfb4",
+      "bytes": 2358
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_evidence_v2.zip",
+      "sha256": "7fda383f3b46d89902a8abc292f1bc430481f3c2bbe70dbc248ce25296a71667",
+      "bytes": 49066309
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_execution.json",
+      "sha256": "cc6e9eca78e49218acf1fd570a08970bdf9f9bd7d97b8ed76c9b5a37dbd76e4b",
+      "bytes": 17387
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_integration_receipt_v2.json",
+      "sha256": "ee7bf3b5f39ac5d6b5feebc36c2020c2647280c7b39fdab2a85a2da190be3f6b",
+      "bytes": 355
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_integration_v2.json",
+      "sha256": "5c521c8406c5dfafdb8eb29d58129f0e885e4ab09fbd4634e8b9cf54a4e72dc5",
+      "bytes": 34980
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_inventory.json.gz",
+      "sha256": "d263917dc3726058ddc700036c0d5f55c0db186289c3212cf497a3a015b3722b",
+      "bytes": 452175
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_model.json.gz",
+      "sha256": "940939cc4053ed94932bf9d95e258102a6187033c8702120d72b070544a521ae",
+      "bytes": 476833
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_model_correspondence.json",
+      "sha256": "eb45996a0018bbda790909a353ce9991a72f2892797370daf62091af4b1e7e97",
+      "bytes": 1510
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_plan.json",
+      "sha256": "ef9b20ddb845c9bc69fd3500131e614d25ee02780f4620297863822bf55471f9",
+      "bytes": 14482
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_preflight_audit.json",
+      "sha256": "568bae62249bb8fab9ec96a6853ca4296f51f8206bb1e666b3fed5acac5ae723",
+      "bytes": 2411
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_preflight_unknown.json",
+      "sha256": "490ccd676abf23813f3d697c06a72c4b7d855cad29c458cf3e85f77d2d6b3282",
+      "bytes": 2305
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_reader_data_v2.json",
+      "sha256": "ce53fdb5a7e1d8ee4d5a2e8a9d9ff3f351a6ec7cce51ee2611da2cd3d4ec42ec",
+      "bytes": 40171
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_summary.json",
+      "sha256": "2db5766fd32395123a89bd27de9e986aa2f14b4388a7ea1cbd477244a7b0826f",
+      "bytes": 6976
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_tree_audit.json",
+      "sha256": "c00613729bed831dff0339eaad746cc1d9794762a650f188ef098c78072cffc4",
+      "bytes": 2711
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_tree_audit_plan.json",
+      "sha256": "b7d7dfa2550fb8b416ba9bac85809aa61a2b3968ba13c746052fff7718f37a6d",
+      "bytes": 17431
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity13_v2.html",
+      "sha256": "4f4441915594b4f45dda458ee032f08952c366d42a887a584b4b36ddf654acf9",
+      "bytes": 25600
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_control.html",
+      "sha256": "e293f1682ebed6d521c1aa981f37e9366af3a64775a7db1aed12f529841bdb60",
+      "bytes": 10067
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_control.json",
+      "sha256": "4ddeaf42defb3a476336ad5458fe15463bfdb314e467c2516a6cb69daf7722a3",
+      "bytes": 27925
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_control_audit.json",
+      "sha256": "1d62cc6a96ca370621bea0d3b84304ff0ab7a8558dd196ead3045f74e28ec1e5",
+      "bytes": 4268
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_control_evidence.zip",
+      "sha256": "ff1e06d8c9b2dcb2de04022ae46a8b4a5bb1cd40f51bd4f621beed3c97b25585",
+      "bytes": 3759731
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_control_prior_audit.json",
+      "sha256": "2958c8af52be923f79ab8fb6f195bc8ba9eab5f79da2780e01f8597de34aceaa",
+      "bytes": 4262
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_integration.json",
+      "sha256": "c2560fd6554b53e0417eca14d7e739048f9d42c13ece113462d580d7a6b64fe7",
+      "bytes": 11256
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_point_commutativity_integration_receipt.json",
+      "sha256": "4d98188cf0c02265cf17eaed222e068c35d80cba3d62dc0e1ea86e244451d217",
+      "bytes": 641
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/alias-missing.json.gz",
+      "sha256": "74ed7ecea64ad725882034d4c0c38acce923682680d86d2a017b0f7456efc37e",
+      "bytes": 34932
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/assigned-zero-erased.json.gz",
+      "sha256": "24b4e683293fba69151681a4f3f23ed49686ce634fc60576ddc23ce6f91113d3",
+      "bytes": 561810
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-launch-v1.json",
+      "sha256": "a419456a83ba15a5e26f84002458f1095222eafdefe0a17bb47459f259ed0027",
+      "bytes": 152
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-launch-v2.json",
+      "sha256": "20a83b0388984ef98e1f574f0bc03d10acd244aaa92da5e6c90f1980a29b0e31",
+      "bytes": 162
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-stderr-v1.txt",
+      "sha256": "598bc6cdea4c3a3490b8a2f616a5a31c26f2a885a548c62948782ee776980ab1",
+      "bytes": 1084
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-stdout-v2.txt",
+      "sha256": "8198858fcaf0c27b367ab9d715153dd9ae4d7a4716e24d2ff1e25ada8cb9aec9",
+      "bytes": 1707
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/audit-v2.json",
+      "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+      "bytes": 1951
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/catalog-v1.json.gz",
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/corruptions-v1.json",
+      "sha256": "7eaf876aa6333d4382e09b4d035f9800a0bf6990d966c4d12813c7887b94caf6",
+      "bytes": 3838
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/corruptions-v2.json",
+      "sha256": "12277224a9eb10e57e96df9b4022af6fda51e9f275b7c9e3d76654e6f2072312",
+      "bytes": 3838
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/duplicate-placement-identity.json.gz",
+      "sha256": "d2906338d66146aa66ee665bf71f109188e9ff00ded67986e9262b1e0a22cc47",
+      "bytes": 561815
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/equality-template-hole-corrupted.json.gz",
+      "sha256": "1bf616f530646d3a99bb784ae5c8cacabd9843b9e4b8f8e6be3b9b2e427838d1",
+      "bytes": 34948
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/evidence-sources-v2.zip",
+      "sha256": "25f7b7fda0f4ed54d195260e55ff73065cd64f7075e9cd80302de7a33e885612",
+      "bytes": 3040192
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/export-v2.json",
+      "sha256": "86ef3bcda229f883f17c5ad4328e780b141c81f7d1ea36378688839c05174342",
+      "bytes": 14124
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/exterior-sentinel-erased.json.gz",
+      "sha256": "ab0fcc652c8cd1f3ca6ea99436c13f67041df690eb84cb3f5f064b1d414db09c",
+      "bytes": 561809
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/forged-certificate-binding.json.gz",
+      "sha256": "b8436ae89be2149cde4cf092e414e8ee3ad76e1b9d32f4d86eb62c90b9b12080",
+      "bytes": 561818
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/formula-code-collision.json.gz",
+      "sha256": "b80756b4c36487de9229f50b0f559f88cae1c592773fa4077ddc87d3a679c2ff",
+      "bytes": 561821
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/fractional-t-replaced.json.gz",
+      "sha256": "dbc1c7a17fcf174262a37cdde02644c24cf4b272720a3e3efdd444c83088fc50",
+      "bytes": 561818
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/graph-probes-v1.json",
+      "sha256": "aea862877bc95c57777d97cd8ff1710ff2c61f85f4f57f8e3f4bab108ee39703",
+      "bytes": 535312
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_adapter_v1.py",
+      "sha256": "c1604b9e87952e265779d95818e0705096649224306fd45c4a3cd978d69ce0cf",
+      "bytes": 9576
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_audit_v1.py",
+      "sha256": "c08a9bc99b357e002a6f22a4623026a24d2cf8961ec207702a0a828b0cfe33b3",
+      "bytes": 16009
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_audit_v2.py",
+      "sha256": "48cf1a10b2a978ccab4abe2ba976ac5139b21047f2b2b93a39de18724dd4ab7d",
+      "bytes": 16332
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_corruption_repair_v2.py",
+      "sha256": "031ea14b75aaa70b2ac258f5ce1082e9cc77a47d622e02244fa056d33eea158f",
+      "bytes": 2481
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_declare_v1.py",
+      "sha256": "b780801f5f370d15f681a5a473657016debaa426cfd7430ea77a50cd2ff07589",
+      "bytes": 7793
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_declare_v2.py",
+      "sha256": "0385dc9f8f9856222ed29d8c13e335fcebdc69bd196f2ceb5b6efaa9f27e750f",
+      "bytes": 3501
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_export_v1.py",
+      "sha256": "8f68de4d63826542b76f64c0893c81edb039bcfe43914634ba8c9e60706defc8",
+      "bytes": 14306
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_export_v2.py",
+      "sha256": "0a491e47b7f8f5d62e7a692968a26c6bf0c6cded4d93ca1d006ea82cfdc00588",
+      "bytes": 16514
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_produce_v1.py",
+      "sha256": "3c3cb69eb107d169fa105307fa382d8c8a4e69815345d1cc3e856764fee4815d",
+      "bytes": 11112
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_reader_v1.js",
+      "sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+      "bytes": 3264
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_run_v1.py",
+      "sha256": "dab5821e6e455b9ed4fd2000a9a0fa00d3a43b69c3f415afb7817c74bc5273ea",
+      "bytes": 4977
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/hilbert_transport_run_v2.py",
+      "sha256": "800624de540766fc89cef86c6b0fdc3eb2db88658b8622b26aa58ca70d127ac9",
+      "bytes": 5349
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/missing-full-dependency.json.gz",
+      "sha256": "5b87147d1df3fa1069106596a5e34ed05bd6ff9445acddc157001b897cb1eb00",
+      "bytes": 561811
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/missing-raw-alignment.json.gz",
+      "sha256": "19c21add2dd8ed36502c4e7645cba78a7769fc033ac01f1d9c6f9e9226a61e12",
+      "bytes": 561804
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/native-authority-label.json.gz",
+      "sha256": "8bf38f2f719827e5ffa71d6ef8a191e3b51fb0ba98efebe38c9ad1d6d1de7949",
+      "bytes": 561816
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/next-gate-v1.json",
+      "sha256": "f67b6b55f78be936e8757126bd549dd7347501548fdbc1cee579b6a6dbbd4017",
+      "bytes": 1330
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/noninjective-map-changed-without-proof.json.gz",
+      "sha256": "d6aac98ef67ace5bda38ad891f8c4ef793a9266dfe579bc1ea26004b68dc0a44",
+      "bytes": 34936
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/ordered-premise-swapped.json.gz",
+      "sha256": "bbc6b1f64f11b8462347a2b6573aa52493d3d0c9bce4d3f29586f9efce7ede5c",
+      "bytes": 561822
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/plan-v1.json",
+      "sha256": "b8f7d39f3a758521b37480e9ab6dc5978b702628273430bf54509d9628daa019",
+      "bytes": 18756
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/plan-v2.json",
+      "sha256": "570e9b81dced8284adabfb895024f05f1aac0566eed1f513ef50a7a733a3c92d",
+      "bytes": 10525
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/premise-multiplicity-erased.json.gz",
+      "sha256": "f152916949b93721ed4d226492fa480160bb6bb1da07d0c506112e1c33fa1550",
+      "bytes": 561818
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-launch-v1.json",
+      "sha256": "5436c67b3fa9bad28715678ec0782ce3d06593e75f4ee2fc3836a8adb9d0260c",
+      "bytes": 154
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-launch-v2.json",
+      "sha256": "ab132d0d98b06400ab9fa1807e2623353d5e2e160e8933d028516c5888c43c4b",
+      "bytes": 163
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-stdout-v1.txt",
+      "sha256": "dee8743a544bedc35fa136b61bedde22bc76f9186cec9169867ac0166dc52e16",
+      "bytes": 1619
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/produce-stdout-v2.txt",
+      "sha256": "0a5dde76e4ac3b227bfc0c04f76ab1d54034ec73a160d9aafbb15b3403d1f635",
+      "bytes": 834
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/production-v1.json",
+      "sha256": "6b13a2bb5b40002c72290bab70d451f036315c7628740950a3628968e0e122f1",
+      "bytes": 1529
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/production-v2.json",
+      "sha256": "78aa4a05cb66ad7b0f361e9941a02372a7b9652bc6767a97f4ffbce9a2011715",
+      "bytes": 790
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/reader-data-v1.json",
+      "sha256": "a127da961f6997500da2bb1a4140d54614e2e0c205d1cfef5a6f2c049311fb96",
+      "bytes": 3213697
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/reader-publication.json",
+      "sha256": "41af8e28374794dcd78e9325852a1bfb2a15cae154aa64b7885c29eedd1cfa02",
+      "bytes": 1050
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/reader-v2.html",
+      "sha256": "c2953745b43d56eb46046aef1515834ac2431797c5a39369372770eaa6bcab6a",
+      "bytes": 10039
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/reader.html",
+      "sha256": "a69aa6e5601278106685cc59150c2769b38dcf0130f6b8bede0bf273b5fc046a",
+      "bytes": 10327
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/reader.js",
+      "sha256": "199e3fc312b4d1c8dac5a5c7e704ddbf1272ff0f5ee53c130fabd55cafa44c87",
+      "bytes": 3324
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/root-generation-wrong.json.gz",
+      "sha256": "29a6ea6054328a27c923f9eb01645402271f2a362aa48ef9a0a174dc4c5adddc",
+      "bytes": 561811
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/rotation-added.json.gz",
+      "sha256": "ab07fa73d77d31550f79ae04250189765fa1526775d899716b285981b886591a",
+      "bytes": 561817
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/spurious-seed-reference-port.json.gz",
+      "sha256": "075322fca3dd95d154ef5e22ad81ea364fc6c3df3afa72dc8c9b17c2a1ce2496",
+      "bytes": 561810
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/stage-costs-v1.json",
+      "sha256": "e8953767112823b942d547724f64a7ded8d543371cadc1792df3ffd3ddb6ebf8",
+      "bytes": 94072
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/stage-costs-v2.json",
+      "sha256": "3231ef8583a9a31d20d2580957d905457f4c18eefb615d4e08e9bf5952854361",
+      "bytes": 48818
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/stale-argument-binding.json.gz",
+      "sha256": "e837e576903f76a44a94fe73db105d67f7c2bc54384653d38e9f13908e29d4bb",
+      "bytes": 561819
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/stale-authority-epoch.json.gz",
+      "sha256": "1b3bdd87e7b130f1fda28a92f2312ff88f6e94e798c250603c72f3f076674494",
+      "bytes": 561816
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/tiny-checks-v1.json",
+      "sha256": "badd17288e95933e17cdf9aebba9d74718a3897eb538488dc200673167d35f38",
+      "bytes": 77735
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert-transport-catalog/tiny-model-v1.json",
+      "sha256": "7d8572ba9571b4fbed4eee0898674eeea899a93114c113516d4684d3dab5bc45",
+      "bytes": 20332
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "dc2d74a44914bed760f9c33dfcc7080bf24ef1456094473b316aa930ab4eb546",
+      "bytes": 343631
+    },
+    {
+      "path": "research/gcts-rl-renewal/certificate_block_identifiers.py",
+      "sha256": "59e493cff1b5e99e973b86c5ac07cfc2f55fd088bf68ade6d4c1d2777fc66f5f",
+      "bytes": 869
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_audit.py",
+      "sha256": "b9f2b5612fb7137e35722972da4bd3ba84407c2e28b236759fb3c662d5a7bf5f",
+      "bytes": 10148
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_audit_freeze_v2.py",
+      "sha256": "9148e90d463b69e055f2826663265927fb0256d333b9371ec550052a5c1e3276",
+      "bytes": 2461
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_audit_v2.py",
+      "sha256": "1bdad7e71cb37a01655a7da7836e6727453499cf6a1ee7483b3713bfc351f976",
+      "bytes": 10849
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_compare.py",
+      "sha256": "d66cb736dd31e5ebb3a3fd7ac09244c788c688f06565adfa827ac0585d0e26da",
+      "bytes": 2242
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_execution_freeze.py",
+      "sha256": "4d7c05ead5e67750b5f714e3b4e8a40d7247a9d7d167be0432d903a9f9a0d07d",
+      "bytes": 6409
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_executor_search.py",
+      "sha256": "2aa38b09de5f0845f9fed3bbb069a7a7badc275cca22806a4867047ad538ee0a",
+      "bytes": 6351
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_extract.py",
+      "sha256": "de5250dc223a9525966dae2280d0bd5f6a81b9b6342ba007da86b9648fe5d7c3",
+      "bytes": 2466
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_freeze.py",
+      "sha256": "7354ca74a5820960739fb569bef7f6fbf0836df3ddacffe916e5036c5651f92f",
+      "bytes": 4380
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_guidance.py",
+      "sha256": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+      "bytes": 9034
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_json.py",
+      "sha256": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+      "bytes": 1302
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_phase_freeze.py",
+      "sha256": "faf4b2f3841fe8f0a1fc7141590e37addafa47e14055fac595e36c000dab29db",
+      "bytes": 5338
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_preflight.py",
+      "sha256": "1a19468c751842f69fc3e58a0eac14a5f74af5c6f8b0c20db4a0c4c00d0735ea",
+      "bytes": 10670
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_report.py",
+      "sha256": "dea2fc2a4cf69202785ca893ace62ca90da0ec935ecc2614f3a10e38a2dbeff5",
+      "bytes": 20551
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_report_v2.py",
+      "sha256": "f86ba71b491495f35be107c7545fb111c07c51886592842f082cea6a8019ad26",
+      "bytes": 21157
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_runner.py",
+      "sha256": "0bb5686ca7ec404a6ff60c4e6f2923e8fd45a05c1dd358c242a5f1d783b8ee2f",
+      "bytes": 6878
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_search.py",
+      "sha256": "1233b402fabaff5a476b2abeaeca9cb590f42c7b7d354e9d4fbae29178749a77",
+      "bytes": 6201
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_structure.py",
+      "sha256": "4b5e623fabecf7e0f75cf3028de7eab016606f90550cb5c39fb2e6ab681ba39a",
+      "bytes": 1280
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_tree_audit.py",
+      "sha256": "bc67b301cdc7d2006f418802a5f25d2ec9a8729ccedf44e46d6dca7cbafc6cd3",
+      "bytes": 3205
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_tree_audit_stream.py",
+      "sha256": "fae48266f7b080c9f8abc5c7c4386ba1182624654abf35fe4a0c06fb267c1ea2",
+      "bytes": 3537
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_tree_freeze.py",
+      "sha256": "7205dc7f49d2bc94e45087953a1009a8bceec8c4f9f7b5cc53eb7041171538b4",
+      "bytes": 4031
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_audit.py",
+      "sha256": "cad569b83f08f83afe49d5582254c560932758dcb55eb0d00146e113bd5c98cd",
+      "bytes": 19539
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_audit_v2.py",
+      "sha256": "4cfaf6356e3706ab6820be784e87bd7556bd9ac759366a178fd42c7912f70470",
+      "bytes": 19618
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_export.py",
+      "sha256": "794ea5409af2090dfa9ecf390611868bdd600dde51095b6d7f651a77be5fd095",
+      "bytes": 13325
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_export_v2.py",
+      "sha256": "12265916f3f70621b5be33cbd53723c84f3f100148a886e0bceb70f2c59b3d4d",
+      "bytes": 16085
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_produce.py",
+      "sha256": "d3a57a732537ca60c4dc32586bc0194afed00b09db01c1d4f0eeffc6438fdd3f",
+      "bytes": 13379
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_point_commutativity_runner.py",
+      "sha256": "eefdfabde16e20542228828575dec396a5aadb7521da4744f49dda59b73f7fdd",
+      "bytes": 7092
+    },
+    {
+      "path": "research/gcts-rl-renewal/hierarchical_certificate_capacity.py",
+      "sha256": "6c72d15b4776a7058bc41ee569057f11421d6e20861634088129a31a96e24b7d",
+      "bytes": 6687
+    },
+    {
+      "path": "research/gcts-rl-renewal/hierarchical_certificate_capacity_audit.py",
+      "sha256": "e455c1f81191e9dbf0968846121dec5e58e0148e160205cc66408d560c208a7d",
+      "bytes": 6734
+    },
+    {
+      "path": "research/gcts-rl-renewal/hierarchical_certificate_report.py",
+      "sha256": "3d91d457174aa7f3c6d01014138ae47bb00170413d23db3fe77f8c2bdda8f581",
+      "bytes": 14664
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_capacity.py",
+      "sha256": "6ee692e1ad4d34e815e254934cf2736abb160ec3ff5ef15464524eba56cf891b",
+      "bytes": 5518
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_capacity_audit.py",
+      "sha256": "64449efb327ed25b1b01017b3b62849b3c4d2ad9df3f6e5e6493fc7a6f67652a",
+      "bytes": 7917
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_capacity_audit_v2.py",
+      "sha256": "40bb3de7a01af6d6bd53a01aed8f0f3ee9eecaccfda41d06745518db3407e3c2",
+      "bytes": 8753
+    },
+    {
+      "path": "research/gcts-rl-renewal/short_identifier_encoding.py",
+      "sha256": "bccc169e3571e28c41006854ef631c118618a7d46a1afb4193c323163403b7ee",
+      "bytes": 7456
+    }
+  ],
+  "total_bytes": 73704395,
+  "scope": "Four matched arithmetic unknowns with identical independently replayed search trees; exact external point encoding with solver memory unknown; complete finite symbolic geometry receptor catalog; hierarchy-preserving post-search certificate preparation with native execution pending. No new GCTS/RL theorem, native acceptance or general advantage."
+}

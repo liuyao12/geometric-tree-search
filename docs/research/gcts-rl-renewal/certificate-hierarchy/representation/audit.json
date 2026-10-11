@@ -1,0 +1,41 @@
+{
+  "status": "passed_full_context_compaction_and_both_capacity_replays",
+  "observations": [
+    {
+      "name": "original-hierarchy",
+      "request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+      "tree_status": "accepted",
+      "tree_value": 1,
+      "tree_steps": 8046254,
+      "required_heap_capacity": 291874,
+      "fixed_native_heap_cells": 262144,
+      "capacity_fits": false,
+      "full_instruction_and_heap_replay": true,
+      "seconds": 16.60247
+    },
+    {
+      "name": "context-dag-hierarchy",
+      "request_sha256": "37923f2bac73b202f1d4d195bb39aa6c02dfbd124fb702bb41f9fe643cecb2e1",
+      "tree_status": "accepted",
+      "tree_value": 1,
+      "tree_steps": 8000649,
+      "required_heap_capacity": 291589,
+      "fixed_native_heap_cells": 262144,
+      "capacity_fits": false,
+      "full_instruction_and_heap_replay": true,
+      "seconds": 16.606927
+    }
+  ],
+  "native_queries": 0,
+  "full_compaction_audit": {
+    "original_expanded_lines": 169,
+    "compact_expanded_lines": 169,
+    "schema_instances": 3
+  },
+  "seconds": 33.655453375,
+  "peak_rss_bytes": 173522944,
+  "enforcement": "SIGALRM wall interruption and final kernel peak RSS; no OS memory hard limit claimed",
+  "scope": "Complete finite transformation and both exact tree/heap replays only; native acceptance, input byte encoding and a formal compiler/Wang correspondence are not established.",
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0
+}
