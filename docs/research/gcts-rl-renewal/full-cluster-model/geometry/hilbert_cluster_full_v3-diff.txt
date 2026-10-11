@@ -1,0 +1,50 @@
+--- hilbert_cluster_full_v2.py
++++ hilbert_cluster_full_v3.py
+@@ -147,7 +147,7 @@
+     started=time.perf_counter()
+     signal.signal(signal.SIGALRM,lambda *_:(_ for _ in ()).throw(TimeoutError('actual lifecycle conformance alarm')))
+     signal.alarm(170)
+-    planpath=HERE/'full-language-plan-v2.json'
++    planpath=HERE/'full-language-plan-v3.json'
+     plan=json.loads(planpath.read_text())
+     for p in plan['sources']+plan['inputs']+plan['preserved_files']:
+         if core.pin(ROOT/p['path'])!={k:p[k] for k in ('sha256','bytes')}:
+@@ -236,8 +236,8 @@
+     assert c.states[1].status=='consumed' and c.states[2].status=='retired'
+     assert any(g.legal(k) for k in c.descriptors[2].members if k not in g.selected)
+     transaction('paired-full-parent-rollback',list(root),lambda:c.rollback(root))
++    assert c.semantic_state()==original and c.states[2].status!='retired'
+     snapshot('full_parent_graph_and_hints_revived')
+-    assert c.semantic_state()==original and c.states[2].status!='retired'
+ 
+     # A fixed literal MP reads the first two uniqueness member formulas remotely.
+     # Its catalog-only placement occupies row21, and its source m-values create
+@@ -265,8 +265,8 @@
+     snapshot('after_second_global_forced_family_member')
+     assert c.states[2].status!='retired'
+     transaction('paired-remote-forced-control-rollback',list(root),lambda:c.rollback(root))
++    assert c.semantic_state()==original
+     snapshot('remote_forced_parent_revived')
+-    assert c.semantic_state()==original
+ 
+     # Same recipe/formula at the same row with different ordered references has
+     # a different full identity. Low-level catalog transaction, no scheduler claim.
+@@ -279,8 +279,8 @@
+     snapshot('whole_distant_cluster_retired_legal_axiom_sibling')
+     assert c.states[4].status=='retired' and g.legal(ax4)
+     transaction('paired-distant-catalog-rollback',list(root),lambda:c.rollback(root))
++    assert c.semantic_state()==original
+     snapshot('distant_hint_revived_exact_shared_state')
+-    assert c.semantic_state()==original
+ 
+     # Source body substitution and omitted whole-authority metadata are rejected
+     # before any point candidate can be preferred. These do not alter the graph.
+@@ -330,7 +330,7 @@
+             'actual_target_DFS_searches':0,'authored24_words_used_as_hints':0,'native_queries':0,
+             'new_RL_training':False,'native_authority_activated':False,
+             'scope':'controlled graph/hint transactions, not proof discovery or native/compiler correspondence'}
+-    path=HERE/'full-language-outcome-v2.json'
++    path=HERE/'full-language-outcome-v3.json'
+     if path.exists():raise ValueError('immutable actual outcome exists')
+     path.write_text(json.dumps(result,indent=2)+'\n')
+     print(json.dumps({k:v for k,v in result.items() if k not in ('comparisons','states','controlled_operations','authority_registry','descriptors','identities')}),flush=True)

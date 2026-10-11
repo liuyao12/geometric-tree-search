@@ -1,0 +1,40 @@
+{
+  "status": "passed_complete_loading_value_helper",
+  "job": "train-01-reference",
+  "mode": "reference",
+  "plan_sha256": "5fcfcc7deeea6afef2880d9e088fa2b4d45ac515eab8560344fa94b800c2d940",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_byte_correspondence",
+    "original_uncompressed_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "decoded_compact_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "bytes": 17013409,
+    "maximum_compared_chunk_bytes": 65536,
+    "seconds": 0.381704291,
+    "scope": "Complete ordered compact UTF-8 bytes including every ordinary field, node, child, event, hint, key and empty container; no field exclusion or whole-tape inflation. Only frozen standard compact object-root traces are supported."
+  },
+  "canonical": {
+    "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "bytes": 17013409,
+    "protocol": "full_original_compact_JSON_fingerprint_v7_not_sorted_canonical"
+  },
+  "observation": {
+    "id": "train-01",
+    "phase": "training",
+    "mode": "training",
+    "episode": 1,
+    "seed": 17001,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 30
+  },
+  "nodes": 501,
+  "events": 51,
+  "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "seconds_before_receipt_write": 0.783559417,
+  "kernel_peak_rss_bytes": 229523456,
+  "loading": []
+}

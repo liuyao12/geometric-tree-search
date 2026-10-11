@@ -1,0 +1,34 @@
+{
+  "status": "frozen_private_source_inspection_design_and_prospective_gate_only",
+  "files": [
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/freeze_source_inspection_v1.py",
+      "sha256": "9d38c3c29c301b1631ac7c2c9b52c6ba514138d497d96afc58e050848c4ee295",
+      "bytes": 22499
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/static-source-inspection-v1.json",
+      "sha256": "52fbf55a950017c0ed045a212ab3f2b0b98873aa8c701a0a06a799de9c8b1dc4",
+      "bytes": 166284
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/bridge-design-v1.json",
+      "sha256": "2e12df043fc62d07d736f4b18fd557f54e60b003842d749a48b9ad81ac455341",
+      "bytes": 12671
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/prospective-search-gate-v1.json",
+      "sha256": "53abed2c91ce5a6073a53b30f5b60f0c8ccab8778a8764c6669338b728c3a9d8",
+      "bytes": 28695
+    }
+  ],
+  "source_count": 25,
+  "input_count": 20,
+  "verified_preserved_unique_paths": 588,
+  "preparation_seconds_before_manifest_write": 0.230223666,
+  "owner_scientific_dispatches": 0,
+  "native_queries": 0,
+  "training": false,
+  "unchanged_old_files": true,
+  "publication_owner": "root"
+}

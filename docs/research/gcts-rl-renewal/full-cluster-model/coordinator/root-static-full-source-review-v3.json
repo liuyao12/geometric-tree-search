@@ -1,0 +1,34 @@
+{
+  "status": "passed_root_source_and_exact_full_plan_review_pending_independent_disposition",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160
+  },
+  "sources": 6,
+  "inputs": 56,
+  "preserved_entries": 587,
+  "source_read_scope": "Complete v3 worker, supervisor, outer, full lifecycle kernel and static freeze helper read this turn; unchanged point core bound to published prior independent full-model acceptance. No engine import.",
+  "decision_contract": [
+    "global dead then forced then earliest generation",
+    "all raw key/t/m streams, full 229-recipe universe in each state",
+    "whole hint body retirement and exact full identity sharing",
+    "complete preferred plus fallback permutation",
+    "paired rollback assertions precede observation resync",
+    "no manufactured full-model child exclusion; no target DFS"
+  ],
+  "model_epoch_preserved": true,
+  "outputs_absent": true,
+  "owned_resource_gates": {
+    "outer_wall_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "scope": "One separately authorized full actual controlled phase, not a retry or extension of the tiny phase.",
+    "execution_authorized_by_this_freeze": false
+  },
+  "metadata_seconds_before_write": 0.120380292,
+  "scientific_execution": 0,
+  "native_queries": 0,
+  "new_RL": false
+}

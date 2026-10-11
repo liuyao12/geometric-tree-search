@@ -1,0 +1,9 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "947b716803bdcfa6e9cdf11471045e61a3df4389a334ec74b82391bc0ff14254",
+  "prerequisite_sha256": {
+    ".gcts-active/full-model-cluster-progress-20261011/root-v7-source-review.json": "1fc2ae9443e8ea121ca4ef10757281fda413539bc5c0691201b584369e93f56e",
+    ".gcts-active/stochastic-replay-v7-independent-20261011/source-review-v7.json": "3dce9db5fa629e659908967b5888789f3b538374f814d927d71e1ae2e1311d72"
+  },
+  "scope": "One fresh seven-helper phase, unchanged cap and full byte gate. No target searches, training or native queries. Full six-evaluation phase separately gated."
+}

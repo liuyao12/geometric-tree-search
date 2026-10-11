@@ -1,0 +1,17 @@
+{
+  "job": "effect-pilot-reference",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 36010,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 1.0945369999999999,
+  "kernel_fresh_worker_peak_bytes": 230227968,
+  "kernel_owner_peak_bytes": 16777216,
+  "conservative_owner_plus_worker_peak_bytes": 247005184,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "5f01ea2e3e4da05835993bc26e391f8ed9a9673279aaa11b20f5cc940529d6ba",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; persistent exclusive complete or partial SQLite spools only, no descendant process claim; creation, decode, byte comparison, replay, final binding and connection/cache cleanup inside full child lifetime."
+}

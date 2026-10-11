@@ -1,0 +1,17 @@
+{
+  "job": "trained-r1",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 36904,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 85.401617625,
+  "kernel_fresh_worker_peak_bytes": 212828160,
+  "kernel_owner_peak_bytes": 16859136,
+  "conservative_owner_plus_worker_peak_bytes": 229687296,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "2e988afa77d36ad066e2facecb7d188a22ad6af4f8dbbc57475b862e7b3e8a18",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; persistent exclusive complete or partial SQLite spools only, no descendant process claim; creation, decode, byte comparison, replay, final binding and connection/cache cleanup inside full child lifetime."
+}

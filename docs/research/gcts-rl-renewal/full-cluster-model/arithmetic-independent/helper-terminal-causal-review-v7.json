@@ -1,0 +1,71 @@
+{
+  "status": "read_only_terminal_reconciliation_failed_synthetic_fixture_no_replay_activation",
+  "review_scope": "Metadata, frozen source AST and actual terminal receipts only; no helper/decoder/scientific rerun.",
+  "prior_source_review": {
+    "path": ".gcts-active/stochastic-replay-v7-independent-20261011/source-review-v7.json",
+    "sha256": "3dce9db5fa629e659908967b5888789f3b538374f814d927d71e1ae2e1311d72",
+    "bytes": 19851
+  },
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/phase-receipt.json",
+    "sha256": "172e44926cb1b018b671514b76d6021a872206b56a924c4cb711d20dd78b4fd0",
+    "bytes": 17181
+  },
+  "worker_receipt": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls.json",
+    "sha256": "697d7713c393b7df5db2896cb2862036cccc5b8fb9e476b9f8a907d9a270c418",
+    "bytes": 13458
+  },
+  "owned_lifetime": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-lifetime.json",
+    "sha256": "91f99efad0f0d150c2a0fea0ffceb4b29ab59a4cb67c52984e4f6361c679d89d",
+    "bytes": 1067
+  },
+  "fixture_source": {
+    "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v7.py",
+    "sha256": "47c196b5b37caebe9682b73a50a7907f09629ef4c0e5a4f72811ad8a4a9b006b",
+    "bytes": 15842
+  },
+  "actual_outcome": {
+    "phase_status": "unknown_or_failed_loading_worker_gate",
+    "attempted": [
+      "synthetic-controls"
+    ],
+    "failed": [
+      "synthetic-controls"
+    ],
+    "unexecuted_helpers": [
+      "effect-pilot-reference",
+      "effect-pilot-repaired",
+      "train-01-reference",
+      "train-01-repaired",
+      "train-08-reference",
+      "train-08-repaired"
+    ],
+    "full_evaluation_jobs_executed": 0,
+    "worker_pid": 35177,
+    "worker_exit_code": 0,
+    "terminal_and_reaped": true,
+    "failure_type": "KeyError",
+    "failure": "'nested'",
+    "phase_seconds": 0.4789794580000001,
+    "phase_conservative_peak_bytes": 95600640,
+    "cumulative_charged_seconds": 354.603635709,
+    "remaining_original_seconds": 425.396364291
+  },
+  "causal_source_argument": {
+    "construction": "Line 55 leaf has nested; line 56 branch has later/children/earlier and puts leaf under children[0].tree. The saved search.tree is branch, not leaf.",
+    "failure": "Line 143 attempts deletion of search.tree.nested while constructing the omission mutant, before passing the mutant to exact_compact_bytes. That missing key raises the actual KeyError.",
+    "source_ready_review_limit": "The prior independent source review checked proxy consumer semantics, mathematical AST preservation and source/input bindings but missed this authored fixture-path defect. It granted no actual helper or scientific acceptance.",
+    "safe_successor": "A versioned path correction must delete search.tree.children[0].tree.nested, keep every acceptance/census/RNG/rollback check and original limits, preserve this failed outcome, and pass the entire fresh helper gate before full replay."
+  },
+  "retention_scope": {
+    "recorded_store_count": 7,
+    "recorded_existing_store_paths": 0,
+    "source": "The synthetic controls use TemporaryDirectory at line 69. Its cleanup removes all generated synthetic gzip/spool files on exit despite TraceStore.close wording that only describes its own no-deletion behavior.",
+    "claim_correction": "No claim that this failed synthetic gate retains complete/partial spool bytes is valid. The original source/plan, actual receipts and loading metrics remain retained. Prospective full-job stores are exclusive persistent paths; those six helpers and all full evaluations were unexecuted.",
+    "successor_requirement": "Use a separately versioned persistent exclusive synthetic folder; disclose retained old metrics-versus-missing-spool scope. This is fixture evidence retention, not a new proof-language or solver capability."
+  },
+  "cost_scope": "Historical prior phases plus actual failed helper phase retained under original cumulative budget. Source preparation and this metadata review are additional; no resource cap was raised.",
+  "disposition": "Full evaluation activation blocked; await separately frozen V8 exact path/retention source review and actual terminal helpers. No scientific rerun by this reviewer."
+}

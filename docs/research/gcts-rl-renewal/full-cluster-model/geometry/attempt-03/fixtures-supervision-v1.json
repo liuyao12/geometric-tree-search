@@ -1,0 +1,54 @@
+{
+  "status": "passed_bounded_authored_tiny_lifecycle",
+  "pid": 23694,
+  "exit_code": 0,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.29754125,
+  "wall_ceiling_seconds": 55,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 29540352,
+  "supervisor_peak_bytes": 20119552,
+  "conservative_host_peak_bytes": 49659904,
+  "rss_samples": [
+    {
+      "seconds": 0.100253166,
+      "child_rss_bytes": 1622016,
+      "supervisor_peak_bytes": 13729792
+    },
+    {
+      "seconds": 0.132135875,
+      "child_rss_bytes": 16957440,
+      "supervisor_peak_bytes": 13729792
+    },
+    {
+      "seconds": 0.16449433300000002,
+      "child_rss_bytes": 18825216,
+      "supervisor_peak_bytes": 13729792
+    },
+    {
+      "seconds": 0.19663491600000002,
+      "child_rss_bytes": 19890176,
+      "supervisor_peak_bytes": 13729792
+    },
+    {
+      "seconds": 0.228972625,
+      "child_rss_bytes": 20971520,
+      "supervisor_peak_bytes": 13729792
+    },
+    {
+      "seconds": 0.261088791,
+      "child_rss_bytes": 27820032,
+      "supervisor_peak_bytes": 13729792
+    }
+  ],
+  "resource_reason": null,
+  "watchdog_error": null,
+  "enforcement": "task-owned external sampled RSS/time watchdog, child SIGALRM, final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan_sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_lifecycle_audit": "not_run"
+}

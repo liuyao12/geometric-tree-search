@@ -1,0 +1,13 @@
+{
+  "status": "attempt03_baseline_repair_frozen_without_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+    "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+    "bytes": 135346
+  },
+  "sources": 5,
+  "inputs": 43,
+  "preserved": 527,
+  "freeze_seconds_before_receipt_write": 0.371770125,
+  "attempt03_executions": 0
+}

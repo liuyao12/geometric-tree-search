@@ -1,0 +1,19 @@
+{
+  "status": "passed_root_static_v7_adapter_and_last_use_source_review_pending_independent_gate",
+  "package": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/review-package-v7.json",
+    "sha256": "5e1b154e593b07eebce66d05b00daa2f4479740b3d2d6666b1dee45f66039578"
+  },
+  "source_count": 64,
+  "input_count": 89,
+  "file_count": 21,
+  "two_Delete_nodes_strip_to_original_byte_identical": true,
+  "root_read": "V6 full adapter/worker/owner/fixture and original scientific tree/learning_update; exact V7 source deltas and new full freezer; all AST/source/input/ZIP pins verified. V7 differs by naming,192structural bound and prospective52-step/depth/type/slice controls only.",
+  "cost_scope": "Same scientific115/120s512MiB per-job gates; original cumulative780s with354.124656251s already charged. Source preparation/authoring additional.",
+  "limitations": [
+    "Only inspected read-only Mapping/Sequence consumers; not general mutable/list/dict equivalence.",
+    "Actual memory/disk/time, full byte reconstruction and all scientific replay checks remain prospective.",
+    "Depth192 covers node158 and terminal empty children array159; exact bound wording is separate from soundness of guard."
+  ],
+  "scientific_execution_by_this_review": false
+}

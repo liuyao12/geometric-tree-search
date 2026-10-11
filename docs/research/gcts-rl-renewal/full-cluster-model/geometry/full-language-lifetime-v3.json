@@ -1,0 +1,19 @@
+{
+  "status": "passed_authored_full_language_lifecycle_full_lifetime",
+  "full_supervisor_process_seconds_including_receipt_write": 38.96669625,
+  "process_return_code": 0,
+  "supervisor_wait_reaped": true,
+  "outer_own_peak_bytes": 13713408,
+  "outer_children_kernel_peak_bytes": 168804352,
+  "conservative_host_peak_bytes": 260587520,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 180,
+  "plan_sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+  "supervision_sha256": "20a9cd0ed172dc09b74eb4ae51b4a7fce41d4663f3eea9e57faa504fa1b97cf9",
+  "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+  "actual_geometry_model_execution": true,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_lifecycle_audit": "pending"
+}

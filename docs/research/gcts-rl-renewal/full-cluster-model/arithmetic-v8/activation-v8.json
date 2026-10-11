@@ -1,0 +1,11 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510",
+  "prerequisite_sha256": {
+    ".gcts-active/full-model-cluster-progress-20261011/root-v8-helper-terminal.json": "1cfc24f072b02105c24332f2af2594c00fbdf6d465a2b1a1d0c3d4914ce1e210",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json": "bb1235b9db0dd63f55dd6dcc6b8f2ff253fd462f6f5c7e547545d6b1200bf715",
+    ".gcts-active/stochastic-replay-v8-independent-20261011/source-review-v8.json": "d4b02850e157dbbed7e640c2db01f5f3ce62dfd7b0301a0209080d589063d04f",
+    ".gcts-active/full-model-cluster-progress-20261011/root-v8-source-review.json": "6e95f07a527827c970c8da8927f4ec645f3af43a6c736c076edb75ff9a250254"
+  },
+  "scope": "One fresh six-observation loading and full mathematical replay phase; same complete models/traces/caps, original780s cumulative allowance, fail/unknown stop with unexecuted retained. No new searches, training or native queries."
+}

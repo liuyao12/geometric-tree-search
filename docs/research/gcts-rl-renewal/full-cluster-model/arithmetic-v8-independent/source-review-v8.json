@@ -1,0 +1,439 @@
+{
+  "status": "passed_source_only_exact_fixture_retention_successor_ready_for_root_helpers",
+  "package": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/review-package-v8.json",
+    "sha256": "97b4d68074f7ff46c15736dfeff66d42622a2a629c54d8ab6df260500a63bf85",
+    "bytes": 38276
+  },
+  "helper_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helper-plan-v8.json",
+    "sha256": "a8a74b59ae06d34d314dd3d6290fcefabe0f0668e49ffb6336ab4c5f10263b46",
+    "bytes": 5736
+  },
+  "evaluation_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-plan-v8.json",
+    "sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510",
+    "bytes": 31363
+  },
+  "fixture": {
+    "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v8.py",
+    "sha256": "1406a2cb78a617ed432a6155dc4c262bdd2c494f271529be7ec63bb1ae64bbaf",
+    "bytes": 16150
+  },
+  "prior_consumer_source_review": {
+    "path": ".gcts-active/stochastic-replay-v7-independent-20261011/source-review-v7.json",
+    "sha256": "3dce9db5fa629e659908967b5888789f3b538374f814d927d71e1ae2e1311d72",
+    "bytes": 19851
+  },
+  "preserved_failure_review": {
+    "path": ".gcts-active/stochastic-replay-v7-independent-20261011/helper-terminal-causal-review-v7.json",
+    "sha256": "a1b127f2ebf6663ec3056acfcca9171c07bb334daa353fdab60f222342b221fa",
+    "bytes": 4303
+  },
+  "verified": {
+    "sources": 67,
+    "inputs": 106,
+    "package_files": 22,
+    "unique_source_input_paths": 173,
+    "zip_members": 71
+  },
+  "zip_bindings": [
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_audit_freeze.py",
+      "sha256": "d0621f386dccf4a228e67bef6fd938c27c8cd96a4c91d46f433333096cdbb456",
+      "bytes": 5483
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_audit_stage.py",
+      "sha256": "6eed9307ae336e4dbb7ab6b77669008ccc544f387e665f209cec7215865f58b9",
+      "bytes": 5442
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_audit_worker.py",
+      "sha256": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+      "bytes": 6731
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v1.py",
+      "sha256": "3df94d87bb94f60faaa07ccd29050c7c1a4ce131955c4f3bc8ee4593bb14e2d2",
+      "bytes": 8008
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v2.py",
+      "sha256": "89b0cf5b03fcc14d5cd77205ad0c36237c77f8199d86bddb8507dfe94c38c66b",
+      "bytes": 8594
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v3.py",
+      "sha256": "9bf20c86c91c7e01984d8ec4636989fea20509a686f6caf989317eeb3a98cbef",
+      "bytes": 8840
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v4.py",
+      "sha256": "a93c916e3d6a5450e04544aa13f46d27d6051bd969bc99bbf0679c99c55743ff",
+      "bytes": 9676
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v5.py",
+      "sha256": "57e19ef40ed89f08ea362d26ee3e431d4b9bbc47aa29188e1f5c263ab02d8fd9",
+      "bytes": 12550
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v6.py",
+      "sha256": "fbc299c934af68bb5bbacc975c687d7363068bf23c7ce4846c764089708c7ffa",
+      "bytes": 14696
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v7.py",
+      "sha256": "47c196b5b37caebe9682b73a50a7907f09629ef4c0e5a4f72811ad8a4a9b006b",
+      "bytes": 15842
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v8.py",
+      "sha256": "1406a2cb78a617ed432a6155dc4c262bdd2c494f271529be7ec63bb1ae64bbaf",
+      "bytes": 16150
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v1.py",
+      "sha256": "1bca2d5a7dbeaedb10515ec2ee500ece6104db9ba46b8d841cb7101c4cb037b9",
+      "bytes": 10367
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v2.py",
+      "sha256": "33f53598c8d76ea26ef9a15bb8760918d84d77ed31fc9759fc7a405dae602fa7",
+      "bytes": 11502
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v3.py",
+      "sha256": "0e29ecb81298779e03c0dfe0ebb2e5af94645f9d76a6d98309929ca522acb6c6",
+      "bytes": 12860
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v4.py",
+      "sha256": "844de7793e999f123128901d018d96da5edb64778cc4f07589be3e8c2cecb30c",
+      "bytes": 14132
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v5.py",
+      "sha256": "a26c9483b565504dbe7fdff1a2d808cb94dcfbf6943a74975f1c4475e401668b",
+      "bytes": 14950
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v6.py",
+      "sha256": "45b30aff7ffd402d895c612f90c052e547ec9e072fad9bf99f2a2495cca2ddfc",
+      "bytes": 27735
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v7.py",
+      "sha256": "7ac57fa2a925171c4afd9189fee7c6d6ed7799ff058ae58e10a84ee1d88a94f4",
+      "bytes": 28966
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v8.py",
+      "sha256": "7a719ac3d77f1e4a5e7e98a1088559557dbfea6d1a880dd53ba486dd53866bda",
+      "bytes": 32446
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "sha256": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+      "bytes": 19396
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v6.py",
+      "sha256": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+      "bytes": 19494
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v7.py",
+      "sha256": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+      "bytes": 19494
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v1.py",
+      "sha256": "a7ee07cf3e35db892079bbfaa021f2f10096635786eef73203413cb19ce7374f",
+      "bytes": 9442
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v2.py",
+      "sha256": "dd5feef1a0bb220500c3863ec7f379938d9ab7d1665136cf384bd3f0052245c8",
+      "bytes": 9445
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v3.py",
+      "sha256": "ee292a707c6c6c22451891c0ee088b0f79e6082246a523892842c7be2c42582d",
+      "bytes": 9445
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v4.py",
+      "sha256": "bb0d6b6bb904bc4224f894d6834296f31dd0fced05de8f4cbf70115751a47404",
+      "bytes": 9445
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v5.py",
+      "sha256": "386c68eb9eff05a6b836e411d85a1e9f1328088383bcf369b79e471c7773df54",
+      "bytes": 9643
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v6.py",
+      "sha256": "e402acf4d5a87ca2e8b1d2712b34c8f2ab105f5ee663d80fc64bd34f4991cf02",
+      "bytes": 10055
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v7.py",
+      "sha256": "717de4f2fb58dfc8d282cf1cb0b2e8c8d3d7e8897996381a8111b1ac3815962b",
+      "bytes": 10055
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v8.py",
+      "sha256": "fc02010c508d6b306ae2960ab57c5035a2a39a7e52ca5e5e6e8f43c68d19678b",
+      "bytes": 10055
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py",
+      "sha256": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+      "bytes": 6721
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+      "bytes": 3142
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v3.py",
+      "sha256": "2093c1ab351ce47e75bc4bed50306c0346755ca906c7293d1f0f204ac8453ca7",
+      "bytes": 8495
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v4.py",
+      "sha256": "c1966acecdd3abc09ad3f4d3a53000e6d5a00ff0705610d0144f8bf162463b3a",
+      "bytes": 9250
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v5.py",
+      "sha256": "78976683a231796acd0ab199d4e672981cfeb3676e5b7d00a27f636056a01a68",
+      "bytes": 6190
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v6.py",
+      "sha256": "f5b7962fe788892912306a6ce9cf6353971e15e0ea5fa5a21108c2e6dc9fbe67",
+      "bytes": 21779
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v7.py",
+      "sha256": "8643891dd6cedb5c817604c4618d34b51c8cb0a0e4045a06f36d2c9cdd11b83e",
+      "bytes": 21779
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v1.py",
+      "sha256": "18227cb04ef5b6630cd495070b1b63490c26fa6146163e59d65c38b3ee9a3e70",
+      "bytes": 6998
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py",
+      "sha256": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+      "bytes": 6998
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v3.py",
+      "sha256": "59c64bfbd159dcaa41c9521e2e54710954e66796d5d2f748ec37f09c63648730",
+      "bytes": 6998
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v4.py",
+      "sha256": "6d8ed3df6a1269007153c4db1f2adf0c34513d5ae4dead0b1c7b4cd4c0452099",
+      "bytes": 6998
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v5.py",
+      "sha256": "7c00557ea3530993b80d1e1866b4fc8365a2b860b241c6f6ef6ff0cee80b8368",
+      "bytes": 7016
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v6.py",
+      "sha256": "b6bc5cfea8d08a1a7fda2834bba50780283d88cc4f230ba5500a1aecc4aeb483",
+      "bytes": 7452
+    },
+    {
+      "member": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v7.py",
+      "sha256": "c702f560dba074eb0a880a2a52e7588bbdc6eab53e4534a807e7ed9f99e0a8e9",
+      "bytes": 7452
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_certificate_boundary.py",
+      "sha256": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+      "bytes": 12736
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_first_order.py",
+      "sha256": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+      "bytes": 12742
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_logical_wang_clusters.py",
+      "sha256": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+      "bytes": 15000
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_native_inventory_policy.py",
+      "sha256": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+      "bytes": 34098
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_native_receptor_points.py",
+      "sha256": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+      "bytes": 18000
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_prefix_failure_markings.py",
+      "sha256": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+      "bytes": 19943
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_proof_boundary.py",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+      "bytes": 11238
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_proof_compaction.py",
+      "sha256": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+      "bytes": 8699
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_semantic_inventory.py",
+      "sha256": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+      "bytes": 58649
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_semantic_proofs.py",
+      "sha256": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+      "bytes": 18668
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_serialized_kernel.py",
+      "sha256": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+      "bytes": 11512
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_tape_kernel.py",
+      "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+      "bytes": 10993
+    },
+    {
+      "member": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+      "bytes": 12912
+    },
+    {
+      "member": "research/gcts-rl-renewal/commutativity13_json.py",
+      "sha256": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+      "bytes": 1302
+    },
+    {
+      "member": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "sha256": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+      "bytes": 21096
+    },
+    {
+      "member": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+      "sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+      "bytes": 2852
+    },
+    {
+      "member": "research/gcts-rl-renewal/computation_blocks.py",
+      "sha256": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+      "bytes": 12692
+    },
+    {
+      "member": "research/gcts-rl-renewal/induction_receptors_audit.py",
+      "sha256": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+      "bytes": 20113
+    },
+    {
+      "member": "research/gcts-rl-renewal/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "bytes": 10808
+    },
+    {
+      "member": "research/gcts-rl-renewal/micro_cert.py",
+      "sha256": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+      "bytes": 3586
+    },
+    {
+      "member": "research/gcts-rl-renewal/stochastic_policy_math_audit.py",
+      "sha256": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+      "bytes": 5037
+    },
+    {
+      "member": "research/gcts-rl-renewal/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "bytes": 19188
+    },
+    {
+      "member": "research/gcts-rl-renewal/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "bytes": 13290
+    },
+    {
+      "member": ".gcts-active/stochastic-replay-memory-v8-20261011/consumer-use-review-v8.json",
+      "sha256": "be08702888eff9ee5ad5c96715c2e7b4ef37c2a7ede9dc2bba0c33a5e58f07d6",
+      "bytes": 486395
+    },
+    {
+      "member": ".gcts-active/stochastic-replay-memory-v8-20261011/scientific-lifetime-only-v8.diff",
+      "sha256": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+      "bytes": 1204
+    },
+    {
+      "member": ".gcts-active/stochastic-replay-memory-v8-20261011/worker-loading-only-v8.diff",
+      "sha256": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+      "bytes": 3280
+    },
+    {
+      "member": ".gcts-active/stochastic-replay-memory-v8-20261011/fixture-only-successor-v8.diff",
+      "sha256": "5594c69dbee2e691ebbb19b6eb50f9b4463572a221349e9b7946a8d83e7b844a",
+      "bytes": 2213
+    }
+  ],
+  "exact_source_successor": {
+    "fixture": "Normalize only OUT path, inserted PreservedSyntheticDirectory, its use, and omission path correction: AST then equals exact V7 fixture. No byte/type/field/order/depth/alias/malformed/omission/write gate removed.",
+    "correction": "The omission now targets the actually present nested field in search.tree.children[0].tree. The byte-mutant path is reached rather than raising while constructing it.",
+    "retention": "mkdtemp creates a fresh exclusive synthetic directory; __exit__ returns False and neither removes files nor suppresses failures. Close still clears caches/connections; generated original inputs and complete/partial spools persist for evidence.",
+    "owner": "V8 owner differs only OUT path from V7. Exact activation/input/hash/lifetime/budget/fail-stop logic unchanged.",
+    "scientific": "V7 disk loader, worker, complete serializer and mathematical auditor reused byte-identically. Prior exact two last-use Delete argument and read-only proxy scope retained."
+  },
+  "original_binding": "All six fresh jobs keep original experiment/model/catalog/registry/trace/lifetime/policy inputs, complete graph/RNG/rollback acceptance and common b1319490 model; no target search or theorem sequence input.",
+  "budgets": {
+    "historical_inclusive_seconds": 354.603635709,
+    "remaining_before_helpers_seconds": 425.396364291,
+    "original_seconds": 780,
+    "helper_phase_seconds": 180,
+    "helper_internal_owned_seconds": [
+      25,
+      30
+    ],
+    "actual_internal_owned_seconds": [
+      115,
+      120
+    ],
+    "peak_bytes": 536870912,
+    "scope": "Charge failed V7 helper exactly once; all helpers and fresh full jobs charged to original envelope. Reserve each actual owned 120 seconds; a late reservation/resource/byte/math/disk failure is unknown and keeps unexecuted jobs."
+  },
+  "limitations": [
+    "Source review only: no V8 helper, actual trace/model loading or mathematical replay is credited.",
+    "Persistent synthetic spool retention is prospective until terminal data exists; old V7 synthetic spools are absent and its metrics/receipts remain historical evidence.",
+    "Read-only disk proxies and shared ordinary arrays are limited to the pinned consumer; no general dict/list identity or mutation equivalence.",
+    "Actual time/memory/disk feasibility remains unknown; no resource enlargement or hard OS memory guarantee."
+  ],
+  "disposition": "Ready for one root-owned seven-helper phase after exact activation. Full evaluation still requires actual terminal helper PASS, all three full reference/repaired fingerprint pairs and root terminal review.",
+  "review_seconds_before_receipt_write": 0.10877804099999999,
+  "executed": {
+    "metadata_hash_zip_AST_only": true,
+    "decoder_helpers": 0,
+    "trace_model_loading": 0,
+    "scientific_replay": 0,
+    "search": 0,
+    "training": 0,
+    "native": 0
+  },
+  "source_authoring_cost": "Manual source inspection is uninstrumented and additional."
+}

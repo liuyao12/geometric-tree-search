@@ -1,0 +1,17 @@
+{
+  "job": "synthetic-controls",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 36009,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 0.520260166,
+  "kernel_fresh_worker_peak_bytes": 78184448,
+  "kernel_owner_peak_bytes": 16744448,
+  "conservative_owner_plus_worker_peak_bytes": 94928896,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "fde8946e8d2e09f302d2962440902b82a1e82be077563f320b0eeb95c7b04056",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; persistent exclusive complete or partial SQLite spools only, no descendant process claim; creation, decode, byte comparison, replay, final binding and connection/cache cleanup inside full child lifetime."
+}

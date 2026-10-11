@@ -1,0 +1,51 @@
+--- hilbert_cluster_run_v1.py
++++ hilbert_cluster_run_attempt02_v1.py
+@@ -8,6 +8,7 @@
+ from pathlib import Path
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent.parent
++OUT=HERE/'attempt-02'
+ SECONDS, BYTES = 55, 536870912
+ 
+ 
+@@ -16,14 +17,14 @@
+ 
+ 
+ def save(name, data):
+-    path = HERE / name
++    path = OUT / name
+     if path.exists(): raise ValueError('immutable artifact already exists: ' + name)
+     path.write_text(json.dumps(data, indent=2) + '\n')
+ 
+ 
+ def main():
+     started = time.perf_counter()
+-    planpath = HERE / 'plan-v1.json'; plan = json.loads(planpath.read_text())
++    planpath = HERE / 'plan-attempt-02.json'; plan = json.loads(planpath.read_text())
+     for p in plan['sources'] + plan['inputs'] + plan['preserved_files']:
+         path = ROOT / p['path']; h = hashlib.sha256()
+         with path.open('rb') as stream:
+@@ -32,11 +33,11 @@
+             raise ValueError('frozen source/input changed: ' + p['path'])
+     for name in ('fixtures-outcome-v1.json', 'fixtures-launch-v1.json', 'fixtures-supervision-v1.json',
+                  'fixtures-stdout-v1.txt', 'fixtures-stderr-v1.txt'):
+-        if (HERE/name).exists(): raise ValueError('immutable prior execution exists')
++        if (OUT/name).exists(): raise ValueError('immutable prior execution exists')
+     child, terminal, reason, error, samples = None, None, None, None, []
+     try:
+-        with (HERE/'fixtures-stdout-v1.txt').open('xb') as out, (HERE/'fixtures-stderr-v1.txt').open('xb') as err:
+-            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_fixtures_v1.py')],
++        with (OUT/'fixtures-stdout-v1.txt').open('xb') as out, (OUT/'fixtures-stderr-v1.txt').open('xb') as err:
++            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_fixtures_attempt02_v1.py'), '--output-directory', str(OUT)],
+                                      cwd=HERE, stdout=out, stderr=err)
+             save('fixtures-launch-v1.json', {'pid': child.pid, 'scope':'synthetic lifecycle only',
+                  'wall_ceiling_seconds':SECONDS, 'host_ceiling_bytes':BYTES,
+@@ -68,7 +69,7 @@
+             if child.poll() is None: child.kill()
+             terminal=child.wait()
+     outcome=None
+-    try: outcome=json.loads((HERE/'fixtures-outcome-v1.json').read_text())
++    try: outcome=json.loads((OUT/'fixtures-outcome-v1.json').read_text())
+     except BaseException as exc:
+         reason=reason or 'missing_or_invalid_child_receipt'; error=error or str(exc)
+     own,childpeak=peak(resource.RUSAGE_SELF),peak(resource.RUSAGE_CHILDREN)

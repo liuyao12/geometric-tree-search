@@ -1,0 +1,24 @@
+{
+  "status": "passed_root_terminal_receipt_check",
+  "exec_session": 30048,
+  "exec_exit": 0,
+  "lifetime": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-lifetime-v1.json",
+    "sha256": "7fbee930e46cd576770e9d293ea3d96d7a15932718714e54d2555679ecf84560",
+    "bytes": 1443
+  },
+  "result": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-result-v1.json",
+    "sha256": "a4867213a9af514ca2fdd2ae6307e7cfbb3ab0280e87bcc4008b1def63e5ada3",
+    "bytes": 1390044
+  },
+  "all_owned_handles_terminal": true,
+  "child_pid": 33903,
+  "comparisons": 2979447,
+  "states": 11,
+  "source_bodies": 171,
+  "corruptions": 24,
+  "wording_caveat": "authored24_words_read=0 is overbroad; decoded compact projection example is discarded and not used as hints or acceptance authority.",
+  "native_queries": 0,
+  "target_searches": 0
+}

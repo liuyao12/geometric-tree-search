@@ -1,0 +1,23 @@
+{
+  "status": "authorized_one_full_actual_geometry_producer_after_two_source_reviews",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160
+  },
+  "root_review": {
+    "path": ".gcts-active/full-model-cluster-progress-20261011/root-static-full-source-review-v3.json",
+    "sha256": "0684153bcaae00848b8466820b3a43b285dc2d726a482a63e302e8e0397007a8",
+    "bytes": 1491
+  },
+  "independent_source_review": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/producer-source-review-v3.json",
+    "sha256": "a88cb050ccf002d82736f478959f1fb6d9fd18b85f2fa73d07749c9db0a4a5ae",
+    "bytes": 4891
+  },
+  "command": "python3 .gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+  "outer_wall_scope": "180 seconds retrospectively rejected; active supervisor 175 seconds, worker SIGALRM 170 seconds",
+  "memory_scope": "512 MiB sampled task-owned own/child RSS and final conservative kernel peaks; no hard OS soft limit",
+  "scope": "full declared finite symbolic inventory and controlled transactions; no target proof search/native/RL",
+  "no_restart_if_observation_times_out": true
+}

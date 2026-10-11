@@ -1,0 +1,21 @@
+{
+  "status": "unknown_or_failed",
+  "full_supervisor_process_seconds_including_receipt_write": 0.32272041599999995,
+  "process_return_code": 1,
+  "supervisor_wait_reaped": true,
+  "outer_own_peak_bytes": 13352960,
+  "outer_children_kernel_peak_bytes": 20791296,
+  "conservative_host_peak_bytes": 47972352,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 60,
+  "prior_failed_attempt_seconds": 0.272813916,
+  "cumulative_tiny_seconds": 0.5955343319999999,
+  "plan_sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+  "supervision_sha256": "f342c726a71e6554034771c835d4a68e3397bf5567b2cf2fdd77f0856f18a316",
+  "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_lifecycle_audit": "pending"
+}

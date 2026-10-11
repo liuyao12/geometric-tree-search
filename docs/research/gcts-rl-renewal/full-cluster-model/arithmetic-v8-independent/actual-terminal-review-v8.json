@@ -1,0 +1,1142 @@
+{
+  "status": "passed_read_only_terminal_reconciliation_of_four_owned_replays_whole_six_phase_unknown",
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/phase-receipt.json",
+    "sha256": "d9ec03e9210093313dcd280823c2ba8ee49d19dbcc0ae9cae92eb864ed6260a9",
+    "bytes": 25413
+  },
+  "evaluation_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-plan-v8.json",
+    "sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510",
+    "bytes": 31363
+  },
+  "activation": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/activation-v8.json",
+    "sha256": "4a8785e455f2844e13a8dad4f5c0e9c57ccd0048733acf81d102197c121b637f",
+    "bytes": 1033
+  },
+  "prior_source_review": {
+    "path": ".gcts-active/stochastic-replay-v8-independent-20261011/source-review-v8.json",
+    "sha256": "d4b02850e157dbbed7e640c2db01f5f3ce62dfd7b0301a0209080d589063d04f",
+    "bytes": 18949
+  },
+  "prior_helper_terminal_review": {
+    "path": ".gcts-active/stochastic-replay-v8-independent-20261011/helper-terminal-review-v8.json",
+    "sha256": "be7b0fb379f05a62d2396cad388480fef6d6f8c191c88158c82519405b3a5e41",
+    "bytes": 11788
+  },
+  "verified_source_input_pins": [
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_audit_worker.py",
+      "sha256": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+      "bytes": 6731
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "sha256": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+      "bytes": 19396
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "sha256": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+      "bytes": 21096
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_audit.py",
+      "sha256": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+      "bytes": 20113
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_inventory.py",
+      "sha256": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+      "bytes": 58649
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+      "bytes": 12912
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_certificate_boundary.py",
+      "sha256": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+      "bytes": 12736
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_proof_boundary.py",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+      "bytes": 11238
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tape_kernel.py",
+      "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+      "bytes": 10993
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_proofs.py",
+      "sha256": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+      "bytes": 18668
+    },
+    {
+      "path": "research/gcts-rl-renewal/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "bytes": 10808
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_serialized_kernel.py",
+      "sha256": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+      "bytes": 11512
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_proof_compaction.py",
+      "sha256": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+      "bytes": 8699
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_logical_wang_clusters.py",
+      "sha256": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+      "bytes": 15000
+    },
+    {
+      "path": "research/gcts-rl-renewal/micro_cert.py",
+      "sha256": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+      "bytes": 3586
+    },
+    {
+      "path": "research/gcts-rl-renewal/computation_blocks.py",
+      "sha256": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+      "bytes": 12692
+    },
+    {
+      "path": "research/gcts-rl-renewal/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "bytes": 19188
+    },
+    {
+      "path": "research/gcts-rl-renewal/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "bytes": 13290
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_receptor_points.py",
+      "sha256": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+      "bytes": 18000
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_inventory_policy.py",
+      "sha256": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+      "bytes": 34098
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_first_order.py",
+      "sha256": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+      "bytes": 12742
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_prefix_failure_markings.py",
+      "sha256": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+      "bytes": 19943
+    },
+    {
+      "path": "research/gcts-rl-renewal/stochastic_policy_math_audit.py",
+      "sha256": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+      "bytes": 5037
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_audit_stage.py",
+      "sha256": "6eed9307ae336e4dbb7ab6b77669008ccc544f387e665f209cec7215865f58b9",
+      "bytes": 5442
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_audit_freeze.py",
+      "sha256": "d0621f386dccf4a228e67bef6fd938c27c8cd96a4c91d46f433333096cdbb456",
+      "bytes": 5483
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py",
+      "sha256": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+      "bytes": 6721
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v1.py",
+      "sha256": "18227cb04ef5b6630cd495070b1b63490c26fa6146163e59d65c38b3ee9a3e70",
+      "bytes": 6998
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v1.py",
+      "sha256": "3df94d87bb94f60faaa07ccd29050c7c1a4ce131955c4f3bc8ee4593bb14e2d2",
+      "bytes": 8008
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v1.py",
+      "sha256": "a7ee07cf3e35db892079bbfaa021f2f10096635786eef73203413cb19ce7374f",
+      "bytes": 9442
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v1.py",
+      "sha256": "1bca2d5a7dbeaedb10515ec2ee500ece6104db9ba46b8d841cb7101c4cb037b9",
+      "bytes": 10367
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py",
+      "sha256": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+      "bytes": 2852
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_json.py",
+      "sha256": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+      "bytes": 1302
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+      "bytes": 3142
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py",
+      "sha256": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+      "bytes": 6998
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v2.py",
+      "sha256": "89b0cf5b03fcc14d5cd77205ad0c36237c77f8199d86bddb8507dfe94c38c66b",
+      "bytes": 8594
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v2.py",
+      "sha256": "dd5feef1a0bb220500c3863ec7f379938d9ab7d1665136cf384bd3f0052245c8",
+      "bytes": 9445
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v2.py",
+      "sha256": "33f53598c8d76ea26ef9a15bb8760918d84d77ed31fc9759fc7a405dae602fa7",
+      "bytes": 11502
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v3.py",
+      "sha256": "2093c1ab351ce47e75bc4bed50306c0346755ca906c7293d1f0f204ac8453ca7",
+      "bytes": 8495
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v3.py",
+      "sha256": "59c64bfbd159dcaa41c9521e2e54710954e66796d5d2f748ec37f09c63648730",
+      "bytes": 6998
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v3.py",
+      "sha256": "9bf20c86c91c7e01984d8ec4636989fea20509a686f6caf989317eeb3a98cbef",
+      "bytes": 8840
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v3.py",
+      "sha256": "ee292a707c6c6c22451891c0ee088b0f79e6082246a523892842c7be2c42582d",
+      "bytes": 9445
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v3.py",
+      "sha256": "0e29ecb81298779e03c0dfe0ebb2e5af94645f9d76a6d98309929ca522acb6c6",
+      "bytes": 12860
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v4.py",
+      "sha256": "c1966acecdd3abc09ad3f4d3a53000e6d5a00ff0705610d0144f8bf162463b3a",
+      "bytes": 9250
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v4.py",
+      "sha256": "6d8ed3df6a1269007153c4db1f2adf0c34513d5ae4dead0b1c7b4cd4c0452099",
+      "bytes": 6998
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v4.py",
+      "sha256": "a93c916e3d6a5450e04544aa13f46d27d6051bd969bc99bbf0679c99c55743ff",
+      "bytes": 9676
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v4.py",
+      "sha256": "bb0d6b6bb904bc4224f894d6834296f31dd0fced05de8f4cbf70115751a47404",
+      "bytes": 9445
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v4.py",
+      "sha256": "844de7793e999f123128901d018d96da5edb64778cc4f07589be3e8c2cecb30c",
+      "bytes": 14132
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v5.py",
+      "sha256": "78976683a231796acd0ab199d4e672981cfeb3676e5b7d00a27f636056a01a68",
+      "bytes": 6190
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v5.py",
+      "sha256": "7c00557ea3530993b80d1e1866b4fc8365a2b860b241c6f6ef6ff0cee80b8368",
+      "bytes": 7016
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v5.py",
+      "sha256": "57e19ef40ed89f08ea362d26ee3e431d4b9bbc47aa29188e1f5c263ab02d8fd9",
+      "bytes": 12550
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v5.py",
+      "sha256": "386c68eb9eff05a6b836e411d85a1e9f1328088383bcf369b79e471c7773df54",
+      "bytes": 9643
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v5.py",
+      "sha256": "a26c9483b565504dbe7fdff1a2d808cb94dcfbf6943a74975f1c4475e401668b",
+      "bytes": 14950
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v6.py",
+      "sha256": "f5b7962fe788892912306a6ce9cf6353971e15e0ea5fa5a21108c2e6dc9fbe67",
+      "bytes": 21779
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v6.py",
+      "sha256": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+      "bytes": 19494
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v6.py",
+      "sha256": "b6bc5cfea8d08a1a7fda2834bba50780283d88cc4f230ba5500a1aecc4aeb483",
+      "bytes": 7452
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v6.py",
+      "sha256": "fbc299c934af68bb5bbacc975c687d7363068bf23c7ce4846c764089708c7ffa",
+      "bytes": 14696
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v6.py",
+      "sha256": "e402acf4d5a87ca2e8b1d2712b34c8f2ab105f5ee663d80fc64bd34f4991cf02",
+      "bytes": 10055
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v6.py",
+      "sha256": "45b30aff7ffd402d895c612f90c052e547ec9e072fad9bf99f2a2495cca2ddfc",
+      "bytes": 27735
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v7.py",
+      "sha256": "8643891dd6cedb5c817604c4618d34b51c8cb0a0e4045a06f36d2c9cdd11b83e",
+      "bytes": 21779
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v7.py",
+      "sha256": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+      "bytes": 19494
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v7.py",
+      "sha256": "c702f560dba074eb0a880a2a52e7588bbdc6eab53e4534a807e7ed9f99e0a8e9",
+      "bytes": 7452
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v7.py",
+      "sha256": "47c196b5b37caebe9682b73a50a7907f09629ef4c0e5a4f72811ad8a4a9b006b",
+      "bytes": 15842
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v7.py",
+      "sha256": "717de4f2fb58dfc8d282cf1cb0b2e8c8d3d7e8897996381a8111b1ac3815962b",
+      "bytes": 10055
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v7.py",
+      "sha256": "7ac57fa2a925171c4afd9189fee7c6d6ed7799ff058ae58e10a84ee1d88a94f4",
+      "bytes": 28966
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v8.py",
+      "sha256": "1406a2cb78a617ed432a6155dc4c262bdd2c494f271529be7ec63bb1ae64bbaf",
+      "bytes": 16150
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v8.py",
+      "sha256": "fc02010c508d6b306ae2960ab57c5035a2a39a7e52ca5e5e6e8f43c68d19678b",
+      "bytes": 10055
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v8.py",
+      "sha256": "7a719ac3d77f1e4a5e7e98a1088559557dbfea6d1a880dd53ba486dd53866bda",
+      "bytes": 32446
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json",
+      "sha256": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+      "bytes": 26781
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/phase-summary.json",
+      "sha256": "252daecc2762c5c2d7ee066d70af117d0aee95a6b32e3a172db44f81fd7f182c",
+      "bytes": 207388
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+      "sha256": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+      "bytes": 15351119
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-summary.json",
+      "sha256": "0782afc93dafb9cc0c14f8c74d3311b70060057354c00b7c6cee7d51e6e77bfe",
+      "bytes": 1165
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-lifetime.json",
+      "sha256": "9efee273bc8643abca5dbc3933bb1615b8f210233d3bcec938f7f41c79976259",
+      "bytes": 24473
+    },
+    {
+      "path": ".gcts-active/commutativity13-20261011/model13.json.gz",
+      "sha256": "69f13a99bcd3424555e24438c479521feb62bc95b3f256342bfd6f24c0898d8a",
+      "bytes": 537081
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz",
+      "sha256": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31",
+      "bytes": 36682
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz",
+      "sha256": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+      "bytes": 37521
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+      "sha256": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+      "bytes": 15771707
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-summary.json",
+      "sha256": "8d58eb1bf21a159cc51c010c935b99cbe0fc9511897c7e6bb8ee4dfd22e162ed",
+      "bytes": 1739
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-lifetime.json",
+      "sha256": "8a1e91a011071160565014c5a9403500ee2d04f93fe64b387ebacf8e0e5d1da7",
+      "bytes": 28181
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz",
+      "sha256": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+      "bytes": 15980438
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-summary.json",
+      "sha256": "e5e94fafd91ad6b78ba1f092dcb005302d45d6f7a3126ac65258b81d751770c8",
+      "bytes": 1737
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-lifetime.json",
+      "sha256": "6bb234cb53d0fe8d07b3ecbebd27a5416c4feadc3fddc2108f504882d6e90136",
+      "bytes": 29712
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/policy-final.json",
+      "sha256": "fc45b236e35b444547ec18cb95b68a6fa3b441a03f02e2c6962a4101265d5387",
+      "bytes": 74735
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/independent-audit.json",
+      "sha256": "5c10abeb1ec555468cb0512e67fee00ee304d464f0c444418dbd3a2263f560dd",
+      "bytes": 483167
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz",
+      "sha256": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+      "bytes": 16064106
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-summary.json",
+      "sha256": "9f5d3711235398c3244176a6cc4ab87d88f5c18c0a8d92a7eafa6761324b5fb5",
+      "bytes": 1742
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-lifetime.json",
+      "sha256": "bd4ea26ef0d801b6bee93af9806bb42d9458f8dc61f08f7ee721c2e6b21ffc3b",
+      "bytes": 30691
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz",
+      "sha256": "48821a8d7f13dd1d046b01b3b2522b5a0eac96fce1daba0915b29d784b86b154",
+      "bytes": 15883894
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-summary.json",
+      "sha256": "d6e28c09d05aa9d1f5e6386d4aed6bdfeff2067a0bba74f9c2f08d2fd093ee5a",
+      "bytes": 1736
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-lifetime.json",
+      "sha256": "1830e4c8d966589b3f1cce653cf16b4ac165efc1163de62dfdf564628fa3a1af",
+      "bytes": 30773
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz",
+      "sha256": "c4cd9b1c1891980aa43ea4a28e313514947f07140c871ca6185ea060d8ed8f8f",
+      "bytes": 15351102
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-summary.json",
+      "sha256": "431a7a9ba1c9454a39ff0cd5df74b8a3999c3514312f88be3408798cc88fd564",
+      "bytes": 1168
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-lifetime.json",
+      "sha256": "d6468676e5083d876049bf05aab630fd1033ca3add04879c24fc33224be1c8f9",
+      "bytes": 22689
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit-plan.json",
+      "sha256": "35a6781ba73de988a4e42191b28daff11225c2d63047541f54439961d75dcd49",
+      "bytes": 10406
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json",
+      "sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+      "bytes": 2154
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit.json",
+      "sha256": "86b23ececb85b83484b5693c2ffee0adad67415a5c8a42e0e3c589986e324c60",
+      "bytes": 868
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/review-package-v1.json",
+      "sha256": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+      "bytes": 15463
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v1.json",
+      "sha256": "f69665c7f75652062e986730af0656a8f8c74c52be985350fff897d1108880a2",
+      "bytes": 14375
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v1.zip",
+      "sha256": "8cd77d0657607c47d8aec920ba60940d79c6869dbc31334958793ce94a06a8e4",
+      "bytes": 149033
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v1.json",
+      "sha256": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+      "bytes": 5206
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json",
+      "sha256": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+      "bytes": 24063
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/review-package-v2.json",
+      "sha256": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+      "bytes": 17329
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v2.json",
+      "sha256": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+      "bytes": 15944
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v2.zip",
+      "sha256": "98e2c19df0c27877185250527b63fde29ddbfb22ea69ae24e99d079e1190bb71",
+      "bytes": 164049
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v2.json",
+      "sha256": "df1937d10d634a11ee9ddacf110a7e600e8976cf626c4adb11e86b793c304f11",
+      "bytes": 5493
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/phase-receipt.json",
+      "sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+      "bytes": 42451
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json",
+      "sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+      "bytes": 7473
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/review-package-v3.json",
+      "sha256": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+      "bytes": 19531
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v3.json",
+      "sha256": "d3371744370204d4625b459698020f70b3d9fa752e4115f360380664bfcb7061",
+      "bytes": 17555
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v3.zip",
+      "sha256": "74be7a8c041a4aaa86b89a6923136175da89c124d52950ac059d4d1c03eb9613",
+      "bytes": 180961
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v3.json",
+      "sha256": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+      "bytes": 5642
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/phase-receipt.json",
+      "sha256": "e834b4f23db96b246a05dada7db75ea67f75efb79eb31e62de180537bda71f81",
+      "bytes": 52700
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json",
+      "sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+      "bytes": 8969
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-plan.json",
+      "sha256": "6fc746ccaa8908c45a8efa982d1788d8ac264524c1c55ab873dff6b54b822649",
+      "bytes": 5333
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-audit-plan.json",
+      "sha256": "9823568bd5f0bf06e266b04f721d2b40bf90ea4139819cc906c0a33dfe4a0653",
+      "bytes": 5368
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-audit-plan.json",
+      "sha256": "df05033f141dc40244a9ac65c7cb7080e1ac70b7a5c26b4040cf4bc3d06b21ab",
+      "bytes": 5934
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-audit-plan.json",
+      "sha256": "b33f392b1f0325da8615ad3244b0ed97f842ed95d309c2577f3d6d431f31ba93",
+      "bytes": 5934
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-audit-plan.json",
+      "sha256": "4d17c1fde0a0d6ce9eb18b68808a4e1966ff714ccc4093e4aa7adda28055fd9c",
+      "bytes": 5368
+    },
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-audit-plan.json",
+      "sha256": "86ce70b6b73022e1eeddc7e6e77a711ee092902465503cddc40e4e534d1ca806",
+      "bytes": 5333
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/consumer-use-review-v5.json",
+      "sha256": "031cce13e89708a7a2d3912c750d69f19c71a5bf10072a64a85534d1eea90b8d",
+      "bytes": 21301
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/authoring-start.json",
+      "sha256": "fdb2910e7e7881635c92fb69e305228b9aef87c199c8d1d4c17db7217c9c92c3",
+      "bytes": 197
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/next-loader-strategy-v1.json",
+      "sha256": "1f971212a5040c72514fdb50f3c479db2b20a0014cd6f1988b4701b9ba106f31",
+      "bytes": 8804
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/phase-receipt.json",
+      "sha256": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+      "bytes": 61256
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/phase-receipt.json",
+      "sha256": "e9372a0368c7a8454a08dd20786049fd0c225e227cb0cc76045582dd3139e047",
+      "bytes": 9912
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/review-package-v4.json",
+      "sha256": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+      "bytes": 21668
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v4.json",
+      "sha256": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+      "bytes": 19178
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v4.json",
+      "sha256": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+      "bytes": 5638
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v4.zip",
+      "sha256": "df37c52a7d0839f3551f57e1a98c3816178a4eec0f57421defa66a04d0c2183a",
+      "bytes": 198497
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/source-verification-v4.json",
+      "sha256": "bbb872f729995b18fd21f2ba1cd16f315fc66111918daf2ffeb3f3d6bad1c80e",
+      "bytes": 648
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/consumer-use-review-v6.json",
+      "sha256": "57aa05e6adf68ea758e492103491320ffa5fdba5ff6aaefac49b8681dcfcf6b9",
+      "bytes": 484861
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/authoring-start.json",
+      "sha256": "cda959a3e609f0d79b1447c2fae523d25cb5164139d6fb61a72df4f0ad2b68d4",
+      "bytes": 209
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/scientific-lifetime-only-v6.diff",
+      "sha256": "94c950431b2e6640bf18d30a7efd287e76e5adb982197f2b60b5a7d3ece2f7b0",
+      "bytes": 1204
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/worker-loading-only-v6.diff",
+      "sha256": "cf835c77a317dfbfce885d6e38e6ce28bb4c51019de5962e6318f565f708ebd4",
+      "bytes": 3280
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json",
+      "sha256": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+      "bytes": 58086
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+      "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+      "bytes": 1214
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+      "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+      "bytes": 14968
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json",
+      "sha256": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+      "bytes": 26162
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5.json",
+      "sha256": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+      "bytes": 21859
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/helper-plan-v5.json",
+      "sha256": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+      "bytes": 5917
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json",
+      "sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+      "bytes": 22892
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/source-snapshot-v5.zip",
+      "sha256": "d37ceac3d2d94886bc745280d7d7c372622ee5b2521ae536b70290e380c69ff7",
+      "bytes": 221581
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/source-verification-v5.json",
+      "sha256": "e8c2cf64693fe8fa7b0c7edf8c454ac896e593a3a04b7d198ebd691252955bdc",
+      "bytes": 725
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-benchmark-source-only-v1.json",
+      "sha256": "675caf25cd7010b7e31bf6f1e544f27b7fa86d4f6e89c693f0b31470822ac7c7",
+      "bytes": 26574
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-inventory-provenance-v1.json",
+      "sha256": "14f1fe92d1020bd7e9c99c2ec8a253ce26483a33c0d87978a043bd569c642b2d",
+      "bytes": 21473
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json",
+      "sha256": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+      "bytes": 5746
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v5-independent-20261011/helper-terminal-review-v5.json",
+      "sha256": "e56c60f61e727f9d68a9b831ca7658ebb7f96c6d5a6ee345894851885b9703f0",
+      "bytes": 4388
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v5-independent-20261011/actual-terminal-review-v5.json",
+      "sha256": "bb09ba7a2632dc2023f8c3a2afd757ca491eba67ad2e31069a32d228e5795c31",
+      "bytes": 4528
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/consumer-use-review-v7.json",
+      "sha256": "c6888e348d0141bf676693bbce54a1b5985a8023a86264e88b127d67852a0e86",
+      "bytes": 485300
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/authoring-start.json",
+      "sha256": "2ec8b4eebc8252004cd1961a8de7126a8bc4d30be3f9a2fa47bf5bec54635ebe",
+      "bytes": 198
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/scientific-lifetime-only-v7.diff",
+      "sha256": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+      "bytes": 1204
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/worker-loading-only-v7.diff",
+      "sha256": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+      "bytes": 3280
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/review-package-v6.json",
+      "sha256": "a822fbdde5914f259a41d68d4f3018bd98199848e02ec6c8c04277e27ce349f6",
+      "bytes": 31726
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/helper-plan-v6.json",
+      "sha256": "ec2e8e04f6b869b62244017af20d33cf3bed5411c2fa84d7e19cdd8350b34a61",
+      "bytes": 5685
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/evaluation-plan-v6.json",
+      "sha256": "ad69a4888cdd39a4d425839fd61991891b55c9c5e7347930ad338b30b0ca82ba",
+      "bytes": 26037
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/source-snapshot-v6.zip",
+      "sha256": "fd0a58df6cd7ca0720a0a77eb7c96d6caf1776578d854f523e55acfe3e96401e",
+      "bytes": 308621
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v6-20261011/source-verification-v6.json",
+      "sha256": "705fc91cd23619aba3fb68fc6b81af44b3d093420b3a209bfd35ca9e23ecdfa9",
+      "bytes": 1117
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/consumer-use-review-v8.json",
+      "sha256": "be08702888eff9ee5ad5c96715c2e7b4ef37c2a7ede9dc2bba0c33a5e58f07d6",
+      "bytes": 486395
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/authoring-start.json",
+      "sha256": "a2e3c9a6823f79fc3013df81e46189f11e087171fe6f4bd60cfc4295bb96ab7b",
+      "bytes": 222
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/scientific-lifetime-only-v8.diff",
+      "sha256": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+      "bytes": 1204
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/worker-loading-only-v8.diff",
+      "sha256": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+      "bytes": 3280
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/fixture-only-successor-v8.diff",
+      "sha256": "5594c69dbee2e691ebbb19b6eb50f9b4463572a221349e9b7946a8d83e7b844a",
+      "bytes": 2213
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/phase-receipt.json",
+      "sha256": "172e44926cb1b018b671514b76d6021a872206b56a924c4cb711d20dd78b4fd0",
+      "bytes": 17181
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/review-package-v7.json",
+      "sha256": "5e1b154e593b07eebce66d05b00daa2f4479740b3d2d6666b1dee45f66039578",
+      "bytes": 34303
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helper-plan-v7.json",
+      "sha256": "947b716803bdcfa6e9cdf11471045e61a3df4389a334ec74b82391bc0ff14254",
+      "bytes": 5736
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/evaluation-plan-v7.json",
+      "sha256": "353a5e2e09a7da36100e000f8bcc713baec997aad52c468799427ff02013ce56",
+      "bytes": 28288
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/source-snapshot-v7.zip",
+      "sha256": "87a215685908487614124f7e92507961346476dbc8bee4c7b947e3eaebbbf26a",
+      "bytes": 342119
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/source-verification-v7.json",
+      "sha256": "d04f9cb9940f477fa33f78dd348acedc211fdcab8eb76f40167da1507ad94003",
+      "bytes": 1117
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helper-activation-v7.json",
+      "sha256": "ca93bff3126dd446363f3eab29f1c64367ab4c172267e3ffa0304f68ab253116",
+      "bytes": 652
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls.json",
+      "sha256": "697d7713c393b7df5db2896cb2862036cccc5b8fb9e476b9f8a907d9a270c418",
+      "bytes": 13458
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-lifetime.json",
+      "sha256": "91f99efad0f0d150c2a0fea0ffceb4b29ab59a4cb67c52984e4f6361c679d89d",
+      "bytes": 1067
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-stdout.txt",
+      "sha256": "c643b7bf145a03b26379f75e77cff7d59b9ec7e125c283fb006a51d74e5374e4",
+      "bytes": 12126
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v7-independent-20261011/source-review-v7.json",
+      "sha256": "3dce9db5fa629e659908967b5888789f3b538374f814d927d71e1ae2e1311d72",
+      "bytes": 19851
+    },
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/root-v8-helper-terminal.json",
+      "sha256": "1cfc24f072b02105c24332f2af2594c00fbdf6d465a2b1a1d0c3d4914ce1e210",
+      "bytes": 730
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json",
+      "sha256": "bb1235b9db0dd63f55dd6dcc6b8f2ff253fd462f6f5c7e547545d6b1200bf715",
+      "bytes": 87135
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v8-independent-20261011/source-review-v8.json",
+      "sha256": "d4b02850e157dbbed7e640c2db01f5f3ce62dfd7b0301a0209080d589063d04f",
+      "bytes": 18949
+    },
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/root-v8-source-review.json",
+      "sha256": "6e95f07a527827c970c8da8927f4ec645f3af43a6c736c076edb75ff9a250254",
+      "bytes": 859
+    }
+  ],
+  "actual_completed_lanes": [
+    {
+      "job": "base-r1",
+      "audit": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r1-audit.json",
+        "sha256": "b06d01bde50dfeb7d06465f79ae9e0f15a923a2aa964e466ba6f54fe4e5c11ed",
+        "bytes": 3980
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r1-lifetime.json",
+        "sha256": "df69c85b8bd231cfd4c33e8a933190bc191a90efd2cb3fe296d561be28d9f6a2",
+        "bytes": 1046
+      },
+      "job_plan": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r1-plan.json",
+        "sha256": "bf822202a24abc4508073645c59ec77aa9f67a84736a99c502cdc32d1b38c842",
+        "bytes": 12328
+      },
+      "spool": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r1-complete-spool/complete-trace.sqlite3",
+        "sha256": "bc63f72c334d8841049c9f86a2b3a421f286e7afa02fd43c98aa3e85c462b90d",
+        "bytes": 131981312
+      },
+      "trace_compressed_pin": {
+        "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz",
+        "sha256": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+        "bytes": 15351119
+      },
+      "byte_gate": {
+        "status": "passed_complete_original_compact_byte_correspondence",
+        "original_uncompressed_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+        "decoded_compact_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+        "bytes": 124903546,
+        "maximum_compared_chunk_bytes": 65536,
+        "seconds": 11.710166125,
+        "scope": "Complete ordered compact UTF-8 bytes including every ordinary field, node, child, event, hint, key and empty container; no field exclusion or whole-tape inflation. Only frozen standard compact object-root traces are supported."
+      },
+      "nodes": 5001,
+      "policy_events": 0,
+      "hints": 0,
+      "executed_changed_first_branches": 0,
+      "original_search_status": "unknown_search_budget",
+      "attempts": 5000,
+      "maximum_satisfied_points": 45,
+      "full_worker_seconds": 46.954170500000004,
+      "conservative_owned_peak_bytes": 231309312
+    },
+    {
+      "job": "untrained-r1",
+      "audit": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r1-audit.json",
+        "sha256": "85d685a3aa7870fbce2a88cb6a9f649656c4b0f76edaa0d0964c5905868459a9",
+        "bytes": 4522
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r1-lifetime.json",
+        "sha256": "e4363bb7f7c472a51be4d4fc56f0a94e2985b7ef15e0e46fb761a5ca62b966eb",
+        "bytes": 1045
+      },
+      "job_plan": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r1-plan.json",
+        "sha256": "1d6dbbc2b548359231f011e8daf83b463ca26e932c676c4594c76669067a5ec5",
+        "bytes": 12368
+      },
+      "spool": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r1-complete-spool/complete-trace.sqlite3",
+        "sha256": "b78f15ccda117db2cde736852b3eb8a42e7a150369a395f1010c6dc9d63d1c78",
+        "bytes": 137551872
+      },
+      "trace_compressed_pin": {
+        "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+        "sha256": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+        "bytes": 15771707
+      },
+      "byte_gate": {
+        "status": "passed_complete_original_compact_byte_correspondence",
+        "original_uncompressed_sha256": "cf9c119d426e0b3bac2cd1e286dcac9431053da4304c1b8e1ede86ec7c0cf29f",
+        "decoded_compact_sha256": "cf9c119d426e0b3bac2cd1e286dcac9431053da4304c1b8e1ede86ec7c0cf29f",
+        "bytes": 130293777,
+        "maximum_compared_chunk_bytes": 65536,
+        "seconds": 12.596403375,
+        "scope": "Complete ordered compact UTF-8 bytes including every ordinary field, node, child, event, hint, key and empty container; no field exclusion or whole-tape inflation. Only frozen standard compact object-root traces are supported."
+      },
+      "nodes": 5001,
+      "policy_events": 411,
+      "hints": 357,
+      "executed_changed_first_branches": 221,
+      "original_search_status": "unknown_search_budget",
+      "attempts": 5000,
+      "maximum_satisfied_points": 45,
+      "full_worker_seconds": 81.122381625,
+      "conservative_owned_peak_bytes": 233373696
+    },
+    {
+      "job": "trained-r1",
+      "audit": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r1-audit.json",
+        "sha256": "2e988afa77d36ad066e2facecb7d188a22ad6af4f8dbbc57475b862e7b3e8a18",
+        "bytes": 4519
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r1-lifetime.json",
+        "sha256": "f3774e783dbf4d8bc4be9f4bffb61e7d838f9ab0c0a251acc5083c0d6fc9e354",
+        "bytes": 1043
+      },
+      "job_plan": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r1-plan.json",
+        "sha256": "a39b65b51cc19f6c7d3bcba1f855385936fa9e84a628880f94ed737855310501",
+        "bytes": 12932
+      },
+      "spool": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r1-complete-spool/complete-trace.sqlite3",
+        "sha256": "52d542f2f9dac5b3238e91a723ae79c0da998a91cf5a4a05538e1b38a360419a",
+        "bytes": 138539008
+      },
+      "trace_compressed_pin": {
+        "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz",
+        "sha256": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+        "bytes": 15980438
+      },
+      "byte_gate": {
+        "status": "passed_complete_original_compact_byte_correspondence",
+        "original_uncompressed_sha256": "b07bdfcc1e1cfd15d3cfb5c9b1662162686ca0b77f0c88d4213d926af4310418",
+        "decoded_compact_sha256": "b07bdfcc1e1cfd15d3cfb5c9b1662162686ca0b77f0c88d4213d926af4310418",
+        "bytes": 131244923,
+        "maximum_compared_chunk_bytes": 65536,
+        "seconds": 12.361974457999999,
+        "scope": "Complete ordered compact UTF-8 bytes including every ordinary field, node, child, event, hint, key and empty container; no field exclusion or whole-tape inflation. Only frozen standard compact object-root traces are supported."
+      },
+      "nodes": 5001,
+      "policy_events": 468,
+      "hints": 400,
+      "executed_changed_first_branches": 232,
+      "original_search_status": "unknown_search_budget",
+      "attempts": 5000,
+      "maximum_satisfied_points": 45,
+      "full_worker_seconds": 85.401617625,
+      "conservative_owned_peak_bytes": 229687296
+    },
+    {
+      "job": "trained-r2",
+      "audit": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r2-audit.json",
+        "sha256": "9077343f9a0413223c3dd03ab73bed26f5943dd5a6155e9973f8874501649217",
+        "bytes": 4522
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r2-lifetime.json",
+        "sha256": "5025a92198d1ecbfd7d6666217dd70b515996cfea2001df1e407a633b40af616",
+        "bytes": 1048
+      },
+      "job_plan": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r2-plan.json",
+        "sha256": "6cdffe36515ba213a0445515b702eca59f0b8e16bba8c32e3a4cf634f22ab918",
+        "bytes": 12932
+      },
+      "spool": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r2-complete-spool/complete-trace.sqlite3",
+        "sha256": "d48242037368d964a1c25df7d41b2e057d4167d2d0d386d184b3de498d49b676",
+        "bytes": 139796480
+      },
+      "trace_compressed_pin": {
+        "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz",
+        "sha256": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+        "bytes": 16064106
+      },
+      "byte_gate": {
+        "status": "passed_complete_original_compact_byte_correspondence",
+        "original_uncompressed_sha256": "1f2eeef151b74cb18c98c87cf54d5e5da6aa6c85b6ebe6bafce354c521e65eb0",
+        "decoded_compact_sha256": "1f2eeef151b74cb18c98c87cf54d5e5da6aa6c85b6ebe6bafce354c521e65eb0",
+        "bytes": 132384969,
+        "maximum_compared_chunk_bytes": 65536,
+        "seconds": 12.023423832999999,
+        "scope": "Complete ordered compact UTF-8 bytes including every ordinary field, node, child, event, hint, key and empty container; no field exclusion or whole-tape inflation. Only frozen standard compact object-root traces are supported."
+      },
+      "nodes": 5001,
+      "policy_events": 557,
+      "hints": 486,
+      "executed_changed_first_branches": 303,
+      "original_search_status": "unknown_search_budget",
+      "attempts": 5000,
+      "maximum_satisfied_points": 45,
+      "full_worker_seconds": 91.38299204199998,
+      "conservative_owned_peak_bytes": 234127360
+    }
+  ],
+  "attempted": [
+    "base-r1",
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2"
+  ],
+  "failed": [],
+  "unexecuted": [
+    "untrained-r2",
+    "base-r2"
+  ],
+  "unexecuted_artifacts_absent": true,
+  "accounting": {
+    "historical_inclusive_seconds": "354.603635709",
+    "helpers_seconds_once": "11.322690625",
+    "new_phase_seconds_before_receipt_write": "304.95442649999995",
+    "cumulative_seconds": "670.88075283399995",
+    "original_gate_seconds": 780,
+    "remaining_seconds": "109.11924716600005",
+    "reservation_seconds_required": 120,
+    "worker_seconds_sum": 304.86116179199996,
+    "peak_conservative_bytes": 234127360,
+    "clock_scope": "Includes phase input streaming hashes/dispatch/pure worker lifecycles/assembly up to final receipt write; excludes final receipt write and source-authoring time."
+  },
+  "scope": [
+    "Metadata/source/input/terminal receipt reconciliation only; no trace inflation, SQLite query, mathematical replay or process polling. All saved complete DB bytes streamed only for exact pins.",
+    "All four actual original compact-byte and full graph/census/scheduler/hint/rollback/feature/RNG/action checks accepted under unchanged 115/120-second and 512 MiB owned gates.",
+    "Changed first branches are 0, 221, 232 and 303 for base-r1, untrained-r1, trained-r1 and trained-r2. The two trained observations alone do not complete the balanced six-lane comparison or establish performance gain.",
+    "All six original search producers were executed and remained unknown_search_budget; this phase executed only four fresh mathematical replay workers. The two unexecuted replay lanes are not unexecuted original searches.",
+    "Whole six-lane replay status remains unknown_phase_reservation_budget. No failed V8 actual lane, no replacement of prior unknowns, no proof discovery, native acceptance or additional RL training.",
+    "Kernel peaks are retrospective owned acceptance gates; no hard OS memory guarantee or RSS sampler claim. Persistent DBs are retained. Phase excludes final phase receipt write and source authoring."
+  ],
+  "queries_by_review": {
+    "searches": 0,
+    "decoders": 0,
+    "mathematical_replays": 0,
+    "native_queries": 0,
+    "sqlite_queries": 0,
+    "process_polls": 0
+  },
+  "review_seconds_before_receipt_write": 0.359114792
+}

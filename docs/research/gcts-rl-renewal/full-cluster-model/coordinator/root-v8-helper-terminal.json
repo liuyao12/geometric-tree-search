@@ -1,0 +1,23 @@
+{
+  "status": "passed_root_complete_v8_helper_terminal_gate",
+  "exec_session": 45777,
+  "exec_exit": 0,
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json",
+    "sha256": "bb1235b9db0dd63f55dd6dcc6b8f2ff253fd462f6f5c7e547545d6b1200bf715",
+    "bytes": 87135
+  },
+  "owned_lifetimes_all_terminal_and_reaped": true,
+  "observations": 7,
+  "positive": 9,
+  "negative": 15,
+  "mutation_rejections": 10,
+  "complete_501_node_reference_repaired_pairs": 3,
+  "persistent_spool_bindings_verified": true,
+  "phase_seconds": 11.322690625,
+  "phase_peak_bytes": 248250368,
+  "cumulative_audit_seconds": 365.926326334,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}

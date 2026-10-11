@@ -1,0 +1,9 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "plan_sha256": "a8a74b59ae06d34d314dd3d6290fcefabe0f0668e49ffb6336ab4c5f10263b46",
+  "prerequisite_sha256": {
+    ".gcts-active/full-model-cluster-progress-20261011/root-v8-source-review.json": "6e95f07a527827c970c8da8927f4ec645f3af43a6c736c076edb75ff9a250254",
+    ".gcts-active/stochastic-replay-v8-independent-20261011/source-review-v8.json": "d4b02850e157dbbed7e640c2db01f5f3ce62dfd7b0301a0209080d589063d04f"
+  },
+  "scope": "One fresh mandatory complete loading-helper phase; preserve failures and original cumulative780s budget. Full evaluation requires its own exact terminal helper gate and activation."
+}

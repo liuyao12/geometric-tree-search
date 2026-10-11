@@ -1,0 +1,43 @@
+{
+  "status": "root_reconciled_terminal_four_pass_two_unexecuted_whole_phase_unknown",
+  "sole_exec_session": 6252,
+  "owner_exit_code": 0,
+  "all_owned_children_terminal_reaped": true,
+  "inputs": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/phase-receipt.json",
+      "sha256": "d9ec03e9210093313dcd280823c2ba8ee49d19dbcc0ae9cae92eb864ed6260a9",
+      "bytes": 25413
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-plan-v8.json",
+      "sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510",
+      "bytes": 31363
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/activation-v8.json",
+      "sha256": "4a8785e455f2844e13a8dad4f5c0e9c57ccd0048733acf81d102197c121b637f",
+      "bytes": 1033
+    }
+  ],
+  "qualified_replays": [
+    "base-r1",
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2"
+  ],
+  "unexecuted": [
+    "untrained-r2",
+    "base-r2"
+  ],
+  "new_searches": 0,
+  "new_training": 0,
+  "new_native_queries": 0,
+  "whole_six_replay_pass": false,
+  "original_searches": "all unknown at 5000 attempts; no proof",
+  "phase_seconds": 304.95442649999995,
+  "cumulative_audit_seconds": 670.880752834,
+  "remaining_original_allowance_seconds": 109.11924716600004,
+  "conservative_phase_peak_bytes": 234127360,
+  "scope": "Loading-only fresh replay; complete saved graph/RNG/policy/trace byte checks are actual qualified behavior, not new proof discovery or proof-search improvement."
+}

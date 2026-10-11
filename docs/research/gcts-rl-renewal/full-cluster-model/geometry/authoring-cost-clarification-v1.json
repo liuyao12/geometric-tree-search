@@ -1,0 +1,26 @@
+{
+  "status": "frozen_plan_authoring_cost_field_is_invalid_cross_process_clock_not_scientific_result",
+  "bindings": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-start-v1.json",
+      "sha256": "dab35db2858fc4d3e793af445959badd95c3e33dfbda0ebc792404d6f34516a9",
+      "bytes": 349
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+      "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+      "bytes": 128708
+    }
+  ],
+  "invalid_field": "cost_accounting.source_authoring_elapsed_since_instrumented_start_seconds",
+  "frozen_invalid_value": 0.497945667,
+  "reason": "The saved time.monotonic marker and later freezer subtraction occurred in distinct tool processes. This runtime does not provide a usable common origin across those processes.",
+  "instrumented_authoring_start_utc": "2026-10-11T21:02:42.304988+00:00",
+  "plan_file_calendar_mtime_utc": "2026-10-11T21:13:02.134081+00:00",
+  "calendar_elapsed_start_to_plan_file_seconds": 619.829093,
+  "calendar_scope": "Calendar interval includes writing, reading, inter-agent review and idle time; not CPU time or measured authoring effort. Pre-marker contract reads remain unmeasured.",
+  "within_process_freeze_and_future_owned_supervision": "Within-process perf_counter durations remain valid; no execution yet and no old field altered.",
+  "fixture_executions": 0,
+  "actual_model_executions": 0,
+  "native_queries": 0
+}

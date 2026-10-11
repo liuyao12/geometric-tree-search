@@ -1,0 +1,21 @@
+{
+  "status": "source_and_terminal_input_freeze_pending_root_readiness_review",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-plan-v1.json",
+    "sha256": "e2fadfc92501e5cb5ffaa6119690d0113426df7c00f61fd8389b5c80a7b95c6d",
+    "bytes": 139312
+  },
+  "source_archive": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-sources-v1.zip",
+    "sha256": "80b0454900a05be62b771ee34c632909ae56b5c0c4390b584726366c2b0ef76c",
+    "bytes": 48440
+  },
+  "counts": {
+    "sources": 6,
+    "libraries": 2,
+    "inputs": 17,
+    "preserved": 576
+  },
+  "owner_command": "python3 .gcts-active/hilbert-cluster-full-independent-20261011/full_lifecycle_owner_v1.py",
+  "actual_audit_executions": 0
+}

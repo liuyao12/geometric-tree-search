@@ -1,0 +1,14 @@
+{
+  "status": "passed_root_static_v8_fixture_successor_review_pending_independent_gate",
+  "package": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/review-package-v8.json",
+    "sha256": "97b4d68074f7ff46c15736dfeff66d42622a2a629c54d8ab6df260500a63bf85"
+  },
+  "source_count": 67,
+  "input_count": 106,
+  "file_count": 22,
+  "unchanged_V7_loader_scientific_copy_worker": true,
+  "source_review": "Exact full fixture diff read: omitted-node-field adversary now deletes actual leaf nested field; exclusive persistent mkdtemp context returnsFalse and preserves on all exits. Full prior source read and current owner/freezer mechanical delta reviewed; all pins/AST/ZIP exact.",
+  "budget": "V7failedhelper .478979458s charged once; same caps and original780s,425.396364291s before newhelpers.",
+  "scientific_execution_by_this_review": false
+}

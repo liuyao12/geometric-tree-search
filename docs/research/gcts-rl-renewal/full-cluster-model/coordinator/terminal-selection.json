@@ -1,0 +1,90 @@
+{
+  "status": "root_selected_terminal_actuals_with_independent_arithmetic_review",
+  "all_owned_handles_terminal": true,
+  "main_baseline_sha256": "a61cf9bd8688af20d9750f96b907499be8fc1f2643f8bc885d30c33e552bcd5a",
+  "arithmetic_phase": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/phase-receipt.json",
+  "arithmetic_terminal_review": ".gcts-active/stochastic-replay-v8-independent-20261011/actual-terminal-review-v8.json",
+  "inputs": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/phase-receipt.json",
+      "sha256": "d9ec03e9210093313dcd280823c2ba8ee49d19dbcc0ae9cae92eb864ed6260a9",
+      "bytes": 25413
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v8-independent-20261011/actual-terminal-review-v8.json",
+      "sha256": "e71f60e5160114625da2e854e862d2286e942fe6e67641b65b28d319420bc358",
+      "bytes": 50158
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json",
+      "sha256": "bb1235b9db0dd63f55dd6dcc6b8f2ff253fd462f6f5c7e547545d6b1200bf715",
+      "bytes": 87135
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/bridge-design-v1.json",
+      "sha256": "2e12df043fc62d07d736f4b18fd557f54e60b003842d749a48b9ad81ac455341",
+      "bytes": 12671
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-20261011/prospective-search-gate-v1.json",
+      "sha256": "53abed2c91ce5a6073a53b30f5b60f0c8ccab8778a8764c6669338b728c3a9d8",
+      "bytes": 28695
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v8-independent-20261011/helper-terminal-review-v8.json",
+      "sha256": "be7b0fb379f05a62d2396cad388480fef6d6f8c191c88158c82519405b3a5e41",
+      "bytes": 11788
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-native-bridge-independent-20261011/bridge-design-review-v1.json",
+      "sha256": "05dee77d07108ffcd59a3175d71b8abc4b132dc49f1b1e9659d8a7f06e281c0f",
+      "bytes": 4318
+    },
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/root-v8-full-terminal.json",
+      "sha256": "ed3a99d93c110081a58307c5a320305345e4e4fedf08bc4673972b16708059b2",
+      "bytes": 1527
+    }
+  ],
+  "arithmetic_successor_source_only": false,
+  "additional_frozen_folders": [
+    [
+      ".gcts-active/stochastic-replay-memory-v6-20261011",
+      "arithmetic-v6-source-only",
+      []
+    ],
+    [
+      ".gcts-active/stochastic-replay-memory-v7-20261011",
+      "arithmetic-v7",
+      []
+    ],
+    [
+      ".gcts-active/stochastic-replay-v7-independent-20261011",
+      "arithmetic-independent",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-native-bridge-20261011",
+      "bridge-source-only",
+      []
+    ],
+    [
+      ".gcts-active/stochastic-replay-memory-v8-20261011",
+      "arithmetic-v8",
+      []
+    ],
+    [
+      ".gcts-active/stochastic-replay-v8-independent-20261011",
+      "arithmetic-v8-independent",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-native-bridge-independent-20261011",
+      "bridge-independent",
+      []
+    ]
+  ],
+  "bridge_proposal": ".gcts-active/shared-symbolic-native-bridge-20261011/bridge-design-v1.json",
+  "bridge_gate": ".gcts-active/shared-symbolic-native-bridge-20261011/prospective-search-gate-v1.json",
+  "arithmetic_current_helper_phase": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json"
+}

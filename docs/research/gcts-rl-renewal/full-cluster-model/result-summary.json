@@ -1,0 +1,21 @@
+{
+  "goal_status": "active",
+  "geometry_full_producer_pass": true,
+  "geometry_full_independent_pass": true,
+  "source_families": 171,
+  "formulas": 217,
+  "recipes": 229,
+  "required_rows": 24,
+  "controlled_states": 11,
+  "complete_key_t_m_comparisons": 2979447,
+  "independent_mutants": 24,
+  "geometry_full_new_owned_seconds": "72.331837083",
+  "arithmetic_complete_six_replay_pass": false,
+  "arithmetic_phase": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/phase-receipt.json",
+  "arithmetic_original_searches": "unknown; no proof",
+  "new_target_searches": 0,
+  "new_native_queries": 0,
+  "new_RL_training": false,
+  "proof_search_gain": "not demonstrated",
+  "scope": "Full current finite cluster lifecycle controls, not target proof discovery or native/shared-palette correspondence."
+}

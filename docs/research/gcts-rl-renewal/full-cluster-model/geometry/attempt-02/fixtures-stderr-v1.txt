@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py", line 312, in <module>
+    if __name__ == '__main__': main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py", line 280, in main
+    assert unknown['status'] == 'unknown_budget' and c.semantic_state() == initial
+AssertionError

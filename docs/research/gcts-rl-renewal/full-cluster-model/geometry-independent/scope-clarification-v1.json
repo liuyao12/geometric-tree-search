@@ -1,0 +1,90 @@
+{
+  "status": "source_bound_wording_clarification_only_no_acceptance_change",
+  "active_plan": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-plan-v1.json",
+    "sha256": "e2fadfc92501e5cb5ffaa6119690d0113426df7c00f61fd8389b5c80a7b95c6d",
+    "bytes": 139312
+  },
+  "active_source": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_lifecycle_audit_v1.py",
+    "sha256": "814b285342d2eab0abee7d5040065b7b684a0c81fab8fb704d424df9286114bf",
+    "bytes": 18691
+  },
+  "active_owner": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_lifecycle_owner_v1.py",
+    "sha256": "aeb114ddbefa03168a664f6cd851323a3d0df4c61417729d4d84cae592a03f49",
+    "bytes": 4862
+  },
+  "activation": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/root-activation-v1.json",
+    "sha256": "c9f6f25b60ea5dbf7494abc9af3a7306a72f917ce7ea0d00a718ecb353576450",
+    "bytes": 459
+  },
+  "terminal_result": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-result-v1.json",
+    "sha256": "a4867213a9af514ca2fdd2ae6307e7cfbb3ab0280e87bcc4008b1def63e5ada3",
+    "bytes": 1390044
+  },
+  "terminal_lifetime": {
+    "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-lifetime-v1.json",
+    "sha256": "7fbee930e46cd576770e9d293ea3d96d7a15932718714e54d2555679ecf84560",
+    "bytes": 1443
+  },
+  "producer_plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160,
+    "role": "producer_plan"
+  },
+  "producer_outcome": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-outcome-v3.json",
+    "sha256": "a13ac25272a23d4b89cf2bab2b1e6f297c8a0fa4533c81e1729bc0d995b8953b",
+    "bytes": 19973006,
+    "role": "producer_outcome"
+  },
+  "family_projection": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+    "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+    "bytes": 1253326,
+    "role": "family_projection"
+  },
+  "root_terminal_reconciliation": {
+    "path": ".gcts-active/full-model-cluster-progress-20261011/root-full-independent-terminal-v1.json",
+    "sha256": "e4886266fb7abc9bf6d852c867dca3bd88e0e8be72e38b57820d523a56b312b0",
+    "bytes": 873
+  },
+  "original_label": {
+    "field": "authored24_words_read",
+    "value": 0,
+    "interpretation": "Overbroad as an assertion about physical JSON decoding or read I/O; it must not be reported as evidence that the projection example bytes were never decoded."
+  },
+  "source_bound_correction": {
+    "decode": "full_lifecycle_audit_v1.py line 207 decodes the complete compact family_projection JSON, including its example field.",
+    "discard": "Line 220 immediately removes example before family reconstruction or lifecycle checking.",
+    "authority": "No authored target witness or 24-row word supplies hints, proposals, or acceptance authority. Literal registered source bodies and independently reconstructed primitive domains supply this audit.",
+    "checked_fields": "Family definition projection fields are compared to independently reconstructed source declarations, expansions, embeddings and ordered receptors; the example field is not consumed by that path.",
+    "producer_claim": "Line 238 checks the producer outcome authored24_words_used_as_hints equals zero; this is a hint-authority scope check, not a read-I/O claim."
+  },
+  "actual_scope": {
+    "result_status": "passed_independent_full_language_lifecycle_controlled_artifact_audit",
+    "lifetime_status": "passed_owned_independent_full_language_lifecycle_audit",
+    "complete_states": 11,
+    "key_t_m_comparisons": 2979447,
+    "logical_source_bodies": 171,
+    "target_searches": 0,
+    "native_queries": 0,
+    "solver_calls": 0,
+    "training_episodes": 0,
+    "limitations": "Recorded controlled-state/body/graph/lifecycle artifact audit only; no whole target proof discovery, native compiler correspondence, or read-I/O adversarial parser audit."
+  },
+  "immutability": "No active v1 plan/source/result/receipt changed. No scientific rerun is requested or authorized by this clarification.",
+  "unexecuted_successor_draft": {
+    "plan": {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-plan-v2.json",
+      "sha256": "9daef97340270de556b310ade479c5ceb8bd9875133f7724aef5dbca1f84217e",
+      "bytes": 141483
+    },
+    "disposition": "Output-label-only source draft frozen before notice that root had already dispatched v1. No activation, scientific result or lifetime; not a replacement or additional accepted run."
+  },
+  "source_authoring_cost": "Uninstrumented; this clarification is metadata/prose only."
+}

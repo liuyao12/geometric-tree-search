@@ -1,0 +1,41 @@
+{
+  "status": "active_new_full_model_goal_checkpoint",
+  "previous_goal_turn_classification": "progress",
+  "previous_evidence": [
+    {
+      "path": ".gcts-active/cluster-lifecycle-progress-20261011/turn-result.json",
+      "sha256": "5728f23f9609eec16d8a0185f52265449ef6f851651c0f5e801dc2967593d59c",
+      "bytes": 1592
+    },
+    {
+      "path": ".gcts-active/cluster-lifecycle-progress-20261011/publication.json",
+      "sha256": "96970e830db71f283c71f44f89bf319aa1a2df295f834f0c43400f51d84d3639",
+      "bytes": 1775
+    },
+    {
+      "path": ".gcts-active/cluster-lifecycle-progress-20261011/live-hash-checks.json",
+      "sha256": "6a3ad05a20d3bc9491cbc2a79da832a3801385133af61e1e346cf0049c60f5cc",
+      "bytes": 106478
+    }
+  ],
+  "no_progress_streak": 0,
+  "full_original_objective_remains_active": true,
+  "parallel_authorization": "human asked whether several agents could work in parallel and authorized continuation; existing three agents reused",
+  "publication_baseline_commit": "f713603b4c3766f7e729a1ee4bc4c4ec8c00f9aa",
+  "main_report_baseline": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "a61cf9bd8688af20d9750f96b907499be8fc1f2643f8bc885d30c33e552bcd5a",
+    "bytes": 347764
+  },
+  "scientific_next_action": "full actual symbolic geometry whole-cluster lifecycle and separately owned independent reconstruction; original full arithmetic memory replay repair",
+  "unknowns_are_not_pruning": true,
+  "owned_scientific_processes_started_this_turn": [
+    {
+      "kind": "full_actual_geometry_producer",
+      "exec_session_id": 87978,
+      "status": "confirmed_live_from_exec_return",
+      "same_handle_until_authoritative_terminal": true,
+      "no_restart_on_observation_timeout": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "lifecycle_sources_inputs_limits_frozen_without_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+    "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+    "bytes": 128708
+  },
+  "source_count": 5,
+  "input_count": 35,
+  "preserved_count": 489,
+  "source_syntax": "ast.parse only, no engine imports or scientific fixture execution",
+  "fixture_executions": 0,
+  "actual_model_executions": 0,
+  "native_queries": 0,
+  "freeze_seconds_before_receipt_write": 0.49460916699999996
+}

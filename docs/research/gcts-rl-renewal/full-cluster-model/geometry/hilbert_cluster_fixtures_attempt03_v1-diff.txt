@@ -1,0 +1,41 @@
+--- hilbert_cluster_fixtures_attempt02_v1.py
++++ hilbert_cluster_fixtures_attempt03_v1.py
+@@ -14,7 +14,7 @@
+ 
+ core = life.core
+ HERE = Path(__file__).resolve().parent
+-EXPECTED_OUTPUT = HERE / 'attempt-02'
++EXPECTED_OUTPUT = HERE / 'attempt-03'
+ P, Q, R = ['pred', 'P', []], ['pred', 'Q', []], ['pred', 'R', []]
+ IMP = ['imp', P, Q]
+ FORMULAS = [P, Q, IMP, R]
+@@ -103,7 +103,7 @@
+     parser=argparse.ArgumentParser()
+     parser.add_argument('--output-directory',required=True)
+     output=Path(parser.parse_args().output_directory).resolve()
+-    if output!=EXPECTED_OUTPUT.resolve():raise ValueError('only isolated attempt-02 output allowed')
++    if output!=EXPECTED_OUTPUT.resolve():raise ValueError('only isolated attempt-03 output allowed')
+     started = time.perf_counter()
+     signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError('tiny lifecycle child alarm')))
+     signal.alarm(50)
+@@ -275,9 +275,19 @@
+     initial = c.semantic_state(); unknown = e.solve(max_attempts=0, seconds=1)
+     assert unknown['status'] == 'unknown_budget' and c.semantic_state() == initial
+     snapshot('zero-budget-no-exclusion', c)
++    # Inspection above resynchronizes the hint revision: save its ACTUAL next-call baseline.
++    initial = c.semantic_state()
+     # One attempted child becomes unknown; complete rollback of hint resync/graph trail.
+     unknown = e.solve(max_attempts=1, seconds=1)
+-    assert unknown['status'] == 'unknown_budget' and c.semantic_state() == initial
++    status_ok = unknown['status'] == 'unknown_budget'
++    restoration_ok = c.semantic_state() == initial
++    if not status_ok or not restoration_ok:
++        diagnostic={'status':'failed_unknown_fixture_diagnostic', 'result':unknown,
++                    'expected_parent':initial, 'actual_parent':c.semantic_state(),
++                    'status_ok':status_ok,'restoration_ok':restoration_ok,'events':e.events}
++        (output/'fixture-failure-diagnostic-v1.json').write_text(json.dumps(diagnostic,indent=2)+'\n')
++    assert status_ok, 'one-child cutoff was not unknown'
++    assert restoration_ok, 'one-child cutoff failed actual call-entry paired restoration'
+     snapshot('child-budget-unknown-no-parent-exclusion', c)
+     solved = e.solve(max_attempts=100, seconds=2)
+     assert solved['status'] == 'finite_exact_point_tiling' and g.metrics['backtracks'] > 0

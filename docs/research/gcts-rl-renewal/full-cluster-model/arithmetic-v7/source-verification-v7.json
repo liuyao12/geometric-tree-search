@@ -1,0 +1,24 @@
+{
+  "status": "passed_source_only_ast_exact_two_delete_and_worker_diff_pins",
+  "source_count": 64,
+  "input_count": 89,
+  "scientific_diff": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/scientific-lifetime-only-v7.diff",
+    "sha256": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+    "bytes": 1204
+  },
+  "worker_diff": {
+    "path": ".gcts-active/stochastic-replay-memory-v7-20261011/worker-loading-only-v7.diff",
+    "sha256": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+    "bytes": 3280
+  },
+  "exact_scientific_assertions": "New scientificsource minus precisely2addedDelete statements is byteidentical and ASTidentical to unchanged root library; every acceptance/math/counter/RNG/recursion statement retained in original order.",
+  "scientific_loads": 0,
+  "fixtures_executed": 0,
+  "helpers": 0,
+  "full_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "scope": "Source AST and hash/diff verification only; pending source/consumer review, future synthetic/full-reference/actualbytes/semantic/resource gates."
+}

@@ -1,0 +1,3447 @@
+{
+  "version": "full-actual-language-whole-cluster-lifecycle-plan-v3",
+  "status": "frozen_full_actual_source_inputs_prerequisites_root_and_independent_review_pending_dispatch",
+  "saved_utc": "2026-10-11T22:05:44.352736+00:00",
+  "filename_reason": "Exact unoccupied full-language-plan-v3.json is required by all three frozen scientific v3 scripts. Old readiness prose naming v2 remains immutable historical evidence.",
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3.py",
+      "sha256": "86600aab547f6cc1ca05838a7eda8e4ff1042795715e6c549fb41db4c36b864c",
+      "bytes": 20433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3.py",
+      "sha256": "f74c3d71764cc1e37278cab1306c03f0a7682bdbe5a46c384c86809441f96fb2",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+      "sha256": "af0238ed5d5cd571c413a325a99c5e2301e9c5a4055411a3422ec8fc381059fe",
+      "bytes": 2723
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_freeze_v3.py",
+      "sha256": "9d4b97ba04cb99ee8aedf1b1a1b40809100c703bc2178cfc295b3dbd42e0781a",
+      "bytes": 19698
+    }
+  ],
+  "inputs": [
+    {
+      "role": "master_contract",
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "role": "primitive_model",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "role": "primitive_logical_audit",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "role": "primitive_logical_audit_lifetime",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "role": "primitive_logical_audit_parser_scope",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "role": "primitive_logical_audit_completion",
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "role": "static_export",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-final-v1.json",
+      "sha256": "11ef5c0b7e95f0c83147792b96ae070f4b939963b7308560bf23d27a3833eb97",
+      "bytes": 24086
+    },
+    {
+      "role": "static_production",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "role": "complete_family_template_projection",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "role": "independent_prospective_executor_gate",
+      "path": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+      "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+      "bytes": 8706
+    },
+    {
+      "role": "factorization_argument",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/factorization-v1.json",
+      "sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+      "bytes": 7294
+    },
+    {
+      "role": "authored_witness_control",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "role": "frozen_synthetic_parent_plan",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+      "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+      "bytes": 116141
+    },
+    {
+      "role": "authored_synthetic_kernel_outcome",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v2.json",
+      "sha256": "d4aa9ae3f33979fc90bcc20ba43843b9b23ab06a3242c821c40a18f526b8efd5",
+      "bytes": 2810
+    },
+    {
+      "role": "authored_synthetic_kernel_lifetime",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v2.json",
+      "sha256": "9af212c3cc0c2fcd7cad588069438bc21aded84e50d36ca4389fe1d3a45869a3",
+      "bytes": 978
+    },
+    {
+      "role": "fixed_preference_control_gap",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "role": "actual_model_readiness",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/actual-model-readiness-v1.json",
+      "sha256": "1d3da542bd12c5a9157216df981a4f97d5e37bc6be12b03d06831839b3486810",
+      "bytes": 4102
+    },
+    {
+      "role": "frozen_primitive_core",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "role": "prior_full_model_plan",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    {
+      "role": "prior_whole_cluster_continuation_plan",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/cluster-continuation-plan-v1.json",
+      "sha256": "ca310fd6b962959541784243251728aeb709ada6c0296aa2101888ee66d84d2c",
+      "bytes": 11218
+    },
+    {
+      "role": "prior_full_model_outcome",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+      "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+      "bytes": 1423687
+    },
+    {
+      "role": "prior_full_model_lifetime",
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-lifetime-v1.json",
+      "sha256": "ad652ca8dfce345a67428b91fcb50180b4ec3f7a706a0ee9dbd2edeb46fe0429",
+      "bytes": 1007
+    },
+    {
+      "role": "prior_full_model_independent_result",
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-result-v1.json",
+      "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+      "bytes": 1421897
+    },
+    {
+      "role": "prior_full_model_independent_lifetime",
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-lifetime-v1.json",
+      "sha256": "9641dea0b0067d40addf11f4d7b76361762c002267b1437c08fdf24dd5645104",
+      "bytes": 1384
+    },
+    {
+      "role": "prior_full_model_independent_integration",
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-integration-v1.json",
+      "sha256": "c84e47e030035f4ec1fefe0a6b4782bbd6eed4df5c53ba5fbb837d81422e8f7f",
+      "bytes": 119893
+    },
+    {
+      "role": "source_constant_transport_certificate",
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    {
+      "role": "source_constant_transport_audit",
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    {
+      "role": "exact_three_source_schemas",
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    {
+      "role": "source_searched_native_receipt",
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    {
+      "role": "source_searched_native_independent_audit",
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    {
+      "role": "source_general_transport_argument",
+      "path": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "role": "source_general_transport_ledger",
+      "path": "docs/research/gcts-rl-renewal/constant-transport-ledger.json",
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    {
+      "role": "source_general_transport_review",
+      "path": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    },
+    {
+      "role": "full_exact_source_expansions",
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "role": "source_authoring_start",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-start-v1.json",
+      "sha256": "dab35db2858fc4d3e793af445959badd95c3e33dfbda0ebc792404d6f34516a9",
+      "bytes": 349
+    },
+    {
+      "role": "frozen_lifecycle_parent_plan",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+      "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+      "bytes": 128708
+    },
+    {
+      "role": "first_failed_lifecycle_supervision",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-supervision-v1.json",
+      "sha256": "cee05e4948cdd2a9b238415ad2aa934d01ab824f17edab249e229f90815de9e3",
+      "bytes": 915
+    },
+    {
+      "role": "first_failed_lifecycle_full_lifetime",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json",
+      "sha256": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776",
+      "bytes": 843
+    },
+    {
+      "role": "authoring_cost_correction",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-cost-clarification-v1.json",
+      "sha256": "be1e7085126c27e4d6b172c141c517f85e67aee0e41222a1b179e1a4dae96c79",
+      "bytes": 1483
+    },
+    {
+      "role": "frozen_attempt02_plan",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-02.json",
+      "sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+      "bytes": 130356
+    },
+    {
+      "role": "second_failed_supervision",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-supervision-v1.json",
+      "sha256": "f342c726a71e6554034771c835d4a68e3397bf5567b2cf2fdd77f0856f18a316",
+      "bytes": 1406
+    },
+    {
+      "role": "second_failed_full_lifetime",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-lifetime-v1.json",
+      "sha256": "f36dd7f964b64101d40f9744c7e1da6e20c5eba873e3f1212f7eeb5bbff60434",
+      "bytes": 939
+    },
+    {
+      "role": "fixture_failure_causal_diagnosis",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt02-causal-diagnosis-v1.json",
+      "sha256": "540988fe194ca9b36b55633445a44c5ac606774b9eeb2b89c6f30164f8f427ee",
+      "bytes": 1740
+    },
+    {
+      "role": "repository_contract",
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "role": "full_language_v3_source_ready",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v3.json",
+      "sha256": "19320157d1c5122981fee7aaab3ad6b40060698e2d97dbda7393e036f4aad878",
+      "bytes": 4840
+    },
+    {
+      "role": "full_language_source_causal_review",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-v2-source-causal-review-v1.json",
+      "sha256": "f895368fc8191236a4d4dccb0ab2b5699590cfabdd0b38571646fffaa5519ef4",
+      "bytes": 1436
+    },
+    {
+      "role": "tiny_lifecycle_complete_plan",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+      "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+      "bytes": 135346
+    },
+    {
+      "role": "new_tiny_lifecycle_outcome",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+      "sha256": "66f613cfcea3ac2d51623ef7a2459d5bcaf865d74cc442cc578334e15d5b5dbf",
+      "bytes": 1547376
+    },
+    {
+      "role": "new_tiny_lifecycle_lifetime",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+      "sha256": "4ec2ec039bd56f73ef5d0631807865b2052c48e40fc960c37b9b54a0fee4e6ba",
+      "bytes": 958
+    },
+    {
+      "role": "new_tiny_lifecycle_supervision",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-supervision-v1.json",
+      "sha256": "d7d9387e6b8f2fff8c52966ee43f41bac498268d9ad7993f1095ec6c282f994b",
+      "bytes": 1587
+    },
+    {
+      "role": "tiny_lifecycle_producer_conformance_note",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/producer-conformance-note-v1.json",
+      "sha256": "b4569e2e7a315f4c051c6fe866921cb2781af1e4f3f0f93af9467ec2b0d34526",
+      "bytes": 4612
+    },
+    {
+      "role": "new_tiny_lifecycle_independent_plan",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v2.json",
+      "sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656",
+      "bytes": 131791
+    },
+    {
+      "role": "new_tiny_lifecycle_independent_result",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+      "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+      "bytes": 3962
+    },
+    {
+      "role": "new_tiny_lifecycle_independent_lifetime",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+      "sha256": "48cb310b20ed922c84180aa722efda0240460932ea2e5c44ed69a79643f04a6d",
+      "bytes": 1431
+    },
+    {
+      "role": "new_tiny_lifecycle_independent_terminal_review",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-terminal-review-v2.json",
+      "sha256": "5f76420525d6d17fa747e8da25ca229f30efd7264970bb1de93942582ca0ecb7",
+      "bytes": 2567
+    },
+    {
+      "role": "new_tiny_lifecycle_independent_activation",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/root-activation-v2.json",
+      "sha256": "4d7d8bac11ca5b70d8613f023b32891836609412d3acd963a9f55264cde99270",
+      "bytes": 657
+    }
+  ],
+  "preserved_files": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28",
+      "bytes": 38142
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+      "bytes": 660358
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+      "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+      "bytes": 13333
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/manifest-v1.json",
+      "sha256": "47d0e1e0731bbc02c25024bd49c67f28c1398dcd5217fdc72175966561c16d5d",
+      "bytes": 812
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/archive-contents-final-v1.json",
+      "sha256": "a47722daaed75882a857ba8300cf5afb25e30a9cdd3439736b07fc751ac258a5",
+      "bytes": 18737
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/evidence-final-v1.zip",
+      "sha256": "1d7f0abfd3b34d9cc24cadfc9adffd28e6e94f29cb0ae8d87bf79e3ea41c3582",
+      "bytes": 9835161
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v1.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/example-correspondence-v2.json",
+      "sha256": "e21bca7ac76aacd5a94d6f30eebec1a221f1bd26ce0ffa81a7d7dd805f964bef",
+      "bytes": 707122
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v1.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/expansions-v2.json.gz",
+      "sha256": "a3cf6f4712b1a0cdee33e4c4c58af1632197495b1f1d0294ecdbac79076c3deb",
+      "bytes": 4335810
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-final-v1.json",
+      "sha256": "11ef5c0b7e95f0c83147792b96ae070f4b939963b7308560bf23d27a3833eb97",
+      "bytes": 24086
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/export-pending-v1.json",
+      "sha256": "75690543a0d27323f14d1e23a38094c2dde810450e824988861460c302806401",
+      "bytes": 12524
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v1.py",
+      "sha256": "46c5fa93f5b6d7c88b32d49f8a732bd29085a99524a048345d6222e3e8b3d24b",
+      "bytes": 30892
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v2.py",
+      "sha256": "39554293d667c48db05c53dea4086cbe3b7fc398eaf6e1d707e339d713b58c36",
+      "bytes": 33077
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_final_v1.py",
+      "sha256": "f0f078d80a01061d2becf298f34236c5d77d9bde50c5d79ecddebaf81a389653",
+      "bytes": 9997
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_export_pending_v1.py",
+      "sha256": "be46c0f698cf3d3bd97976c60ccbef2609d69035748341a0d0b4032cfd4bc072",
+      "bytes": 3207
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_freeze_v1.py",
+      "sha256": "cc8dc51465cec1869172ab611c3fd5f9861ee1577170777b913018034d14a828",
+      "bytes": 11330
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v1.py",
+      "sha256": "bafd882208afe4cb185296f9db557e25917fc02bc4b5c9beae40ba0a83525d66",
+      "bytes": 2740
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_outer_lifetime_v2.py",
+      "sha256": "dd2c3aa2fb0fa3faea5feea377e6028ac1ced7a13f341bcb5464b58d9bba16c9",
+      "bytes": 3184
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v1.py",
+      "sha256": "35d2bc47865fa660807cb3dd07ba0642a9fc6b71c2972879c66ab7f864142ef9",
+      "bytes": 8177
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_data_v2.py",
+      "sha256": "908dbf01c4cb2c9cb13879d442ebd00cf059c949b069b67eb00cbd7ba827a6e1",
+      "bytes": 8401
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_decoder_v2.py",
+      "sha256": "4adb97a22060bfb14b4002ac5a78b3b44d61f8b5a84f3d7d498e237b2e4cd555",
+      "bytes": 4109
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_freeze_v2.py",
+      "sha256": "25f067fc837064bd0a1922aa5a578957deb304e8eea04146d18f11854a1fa06c",
+      "bytes": 7988
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v1.py",
+      "sha256": "07e1922914b6040889f0255d3382f24ad3ec61f2aa3b3b64bad37b885a896464",
+      "bytes": 4498
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_reader_run_v2.py",
+      "sha256": "3c864c138b77ae9601413fcee72af3113110b19bfc407f34d69db3753f35d2e4",
+      "bytes": 4641
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_repair_freeze_v2.py",
+      "sha256": "a339b1b8c15ab5045f6f8693bd3c6b49cc18ee5ae84bb7ec71bf681823e26488",
+      "bytes": 11404
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v1.py",
+      "sha256": "5591b581edbd7e3bac3e882a2f94d19eede6828720df597a72782917d7ab0056",
+      "bytes": 6271
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_static_run_v2.py",
+      "sha256": "bda85b28313fd09eb6ce604d77165098c688536d0d7f28d149b0e1d68d3e596a",
+      "bytes": 6280
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v1.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v1.json",
+      "sha256": "002456c70e9c33df54cdaa0734bf7210b9048226dc2f9f9e58eeef14b682df56",
+      "bytes": 1044
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-lifetime-v2.json",
+      "sha256": "bfbc4671fe49afcaac5211f30d1b45dfa17f8ceb6feddfb5c15d823dcd9456e8",
+      "bytes": 1176
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/outer-measurement-amendment-v1.json",
+      "sha256": "f511b540c988fdcfc28720ba971ecaefe58a1075ae74cc3b60df930e9fda6fe6",
+      "bytes": 600
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v1.json",
+      "sha256": "0afdcffc3f850e2bc6c279708604135a46034cf688639031ee2c7cba292c37c0",
+      "bytes": 95871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/plan-v2.json",
+      "sha256": "6fb049eb7915ae028821bf7c209f9c15b47efda4f0d9ba212b592020e06b7114",
+      "bytes": 8214
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-checkpoint-v2.json",
+      "sha256": "7ff4d1fc0783f0152d8c70974391a3688bce3133c453a15ae294237bec35c89c",
+      "bytes": 4619
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v1.json",
+      "sha256": "05b19834f00668143bd34dce4ab8b53b80f2f7c7d19cc2ad74c1cb528e7e08c8",
+      "bytes": 136
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-launch-v2.json",
+      "sha256": "813a47168b35eb717a20cf7f403de9d2224266afd29e567c89a63109463c9bd7",
+      "bytes": 145
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v1.txt",
+      "sha256": "61f79d7417c14b4abf5c73217937b5d4e48f319c9c3b065eb4b8baae4ee43fb7",
+      "bytes": 827
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-stdout-v2.txt",
+      "sha256": "496eb828b76414387b13366229e137e97f1558f8c81eb30d9db0374752bb2068",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v1.json",
+      "sha256": "cf58fce8305fdb01eea420c0f3677ee8958fb70dbea4bea9cf6950c28fc0a46a",
+      "bytes": 3104
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/production-v2.json",
+      "sha256": "009417382fe1103c8babcfcd174e42a9dd988cad3d8dc1251e13c05aca4d6991",
+      "bytes": 3558
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v1.json",
+      "sha256": "6adc9de2241152a36ab60e96b8ef74c93e1d8451e62cef09f21b833db8edd0b8",
+      "bytes": 1337
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-lifetime-v2.json",
+      "sha256": "e8133c7d4128607f750b7ed08b2cad3b188bd68fa633466afb764d6b6f1381ad",
+      "bytes": 3505
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v1.json",
+      "sha256": "f2d01696051f22b2cfd8d64fefedd891148ae71602305b804af18faad7c673f3",
+      "bytes": 2230
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-plan-v2.json",
+      "sha256": "427b43178ed8dfbc706d0abdf9ae961e401bd22939d01d51066bd2fd346cac47",
+      "bytes": 4699
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-extraction-receipt-v2.json",
+      "sha256": "6cbf2ce749da86abd1249b6db0c6f6973a267277240678e72def4ff8bb44939b",
+      "bytes": 712
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-repair-diff-v2.txt",
+      "sha256": "7fac2d8a847206ee07b6c84d0c7073483e95b5ad31d6aa2599f71cb4623b5ddd",
+      "bytes": 7526
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-stdout-v2.txt",
+      "sha256": "7bea09844c7c4b645d3dbf65c51778081b3faf9219d8f200265d9d72d8539d63",
+      "bytes": 747
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/repair-source-diff-v2.txt",
+      "sha256": "b1d859802fbd09ad700ed729b17b57d5eb6fe2667531d32a718448f27ea00a5b",
+      "bytes": 12285
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/scientific-scope-v1.json",
+      "sha256": "5a2ef1af4e9710fe6975b95e5f665657c627b587d1e412cddca117ae7dc366d6",
+      "bytes": 8871
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-correspondence-v2.json",
+      "sha256": "f06f1b5598ca051d96eaac7b8898b9648e7905fbd3e39092638dfe84ad806d83",
+      "bytes": 2267
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/serialization-inspection-v1.json",
+      "sha256": "3d795b629c334ba62412e677635b1fa5d2b5962605f24e1cdeffc2081b79c61c",
+      "bytes": 247
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v1.json",
+      "sha256": "4a39f60f412f697f9dc2e40ac27b0a5545dfa459f3b8c1d90ab82afe32bf346d",
+      "bytes": 15142
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/stage-costs-v2.json",
+      "sha256": "85cfa5a461a0df5e54c2a9746ce55b92cad666c7a0ac5848766e593eb07db80a",
+      "bytes": 17470
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-lifetime-v2.json",
+      "sha256": "1431a5417ad44866b601861a3429a24cbf5bc1a0a3f5ad7febf45688af929d6c",
+      "bytes": 3128
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-stdout-v2.txt",
+      "sha256": "4060bf02ca4fada4a3aa69f40ddabab1ac43ea2f89b4de365adbdcc2880fd05e",
+      "bytes": 821
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/completion-receipt-v2.json",
+      "sha256": "79bc613fd6a5c65f5507a53751d37ed7c29226d658df95124cf7eeb9295bb19c",
+      "bytes": 12194
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/freeze_full_audit_v2.py",
+      "sha256": "555591f354695c3e7bdcb82f584e479b50d9f0213eed2d988303686e70fc4f93",
+      "bytes": 7054
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/full-audit-plan-v2.json",
+      "sha256": "4acb6e498536a5f44ec10cd0855e54b9ff6e12b184905ba138aca544fe695e4f",
+      "bytes": 113027
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_lifetime_v2.py",
+      "sha256": "a6a6b97c98af0e5b1048e34072ce4610fa836679f897072e299476088bcab48a",
+      "bytes": 5931
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/integration-v2.json",
+      "sha256": "94be910c6a85c0a5e3c75018ecb4217f6afaca4a7b8ed04d3afd46f67ff89716",
+      "bytes": 3443
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/parser-scope-v2.json",
+      "sha256": "006362e38f8e9e7872c047a7c2552dfa347bf2768cbd110a1b70acf4fb2c17fd",
+      "bytes": 1031
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/prospective-gate-v1.json",
+      "sha256": "1669479e168bc7b742c3749314a53c8c999e0c3c6d5ecc23dc7f129919a596f3",
+      "bytes": 6435
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-fixtures-v1.json",
+      "sha256": "5a9aba7c1ee881557616d5cb96964d4e8417670e5cb5d6ec8cb5c71ab1324dc3",
+      "bytes": 4217
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-plan-v1.json",
+      "sha256": "03ff9b71f05064242253ddda3c80e18b09423e9f23db09479bc6d8a6260539c7",
+      "bytes": 3046
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/toy-receipt-v1.json",
+      "sha256": "8c03bdb32166ea32a1aa9ba0d8e95bba6ff69912b816fc8058eba8710fe0339f",
+      "bytes": 10807
+    },
+    {
+      "path": ".gcts-active/hilbert-boundary-transfer-20261011/export.json",
+      "sha256": "9b256d06a1203327754e97baef7ec55b08d153503c510c54f5c952662795814a",
+      "bytes": 15480
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/hilbert_chain_freeze_proposal_v1.py",
+      "sha256": "7b1997a52a335502fff87b702fa48ee9a320a6d559245a5f945e7d2fe6b5415f",
+      "bytes": 21135
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/hilbert_chain_planning_preview_v1.py",
+      "sha256": "62348c42469402a2649ae91ed6b6ee9be83cdf744e646ddc6d39b81a7525ab5e",
+      "bytes": 12269
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/inventory-preview-v1.json.gz",
+      "sha256": "224a02372964a4352313eba6a3dc3be53e166a625645663efd55cd82af628764",
+      "bytes": 456499
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/manifest-v1.json",
+      "sha256": "569e9dc7e46ab44b6baf0015d67a6590e3704bba26d1735de5f8c64cd31f0c62",
+      "bytes": 2398
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/planning-static-checks-v1.json",
+      "sha256": "bccffa69d870720dd33dc6cd0df1fae87a9e30ccbe777b7322760af33431247e",
+      "bytes": 810
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/preview-checks-v1.json",
+      "sha256": "d4b55b9bbaa3a16f4de0414c3975d5f2d08112847f6ef29e6755690fc71d79f2",
+      "bytes": 4048
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/proposal-v1.html",
+      "sha256": "bbf42d2be4aed292699477736a17a86b7d2318aa0b7359213b7fa9aa4a0cd1e1",
+      "bytes": 20466
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/proposal-v1.json",
+      "sha256": "894844e3ac319fa10db4be1f23a549f04aa5ecd2a07429ec0eff06047c91db08",
+      "bytes": 77108
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+      "sha256": "48cb310b20ed922c84180aa722efda0240460932ea2e5c44ed69a79643f04a6d",
+      "bytes": 1431
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v1.json",
+      "sha256": "fabe7a2a59d1156e3026ec8c148fa52b9c98a5e1c0f445b491836e8eecb302cc",
+      "bytes": 130905
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v2.json",
+      "sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656",
+      "bytes": 131791
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+      "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+      "bytes": 3962
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-stdout-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-terminal-review-v2.json",
+      "sha256": "5f76420525d6d17fa747e8da25ca229f30efd7264970bb1de93942582ca0ecb7",
+      "bytes": 2567
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/design-v1.json",
+      "sha256": "765ae6426d83059e6f7a9f737dc8befbe74dcf498888014dedd6e1adc1a453e4",
+      "bytes": 3732
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/design-v2.json",
+      "sha256": "c4ef8c49786a4e465fcb52654cfb82f7b22d5b69e84e8a466a51b59429d34f4c",
+      "bytes": 4699
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/freeze_actual_audit_v1.py",
+      "sha256": "be0678fdd280127301dd25f61f7380556ebf054293dbb2c8800b44cbb824c347",
+      "bytes": 5314
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/freeze_actual_audit_v2.py",
+      "sha256": "69093f0bb0277b2ef01be86aecba70761199f1932267f4c40fa1503585f6c8f9",
+      "bytes": 5487
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/independent_lifecycle_records_v1.py",
+      "sha256": "510a1185ef7e19c63c230925ed0c8561e056a5bdc31fc6aac23a908edd57fe3c",
+      "bytes": 16581
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/independent_lifecycle_replay_v2.py",
+      "sha256": "b5fb1d7a131a88116071269835055818c71e8b1b99febbf7ab27fa75081891db",
+      "bytes": 11309
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_audit_v1.py",
+      "sha256": "a132ba895c35e03a844257c4f2349f69d89cae454c9b8105e0157af04b4a14e3",
+      "bytes": 18851
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_audit_v2.py",
+      "sha256": "581055225238fc1bf2a6aa15074cbe25638d2b922889f79ac0ce25041dfebdde",
+      "bytes": 19510
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_owner_v1.py",
+      "sha256": "f196ea1703503af994f841f920c3a914ec97c694e73b378d1da90385e338329e",
+      "bytes": 4828
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_owner_v2.py",
+      "sha256": "3845a26c593745236d6088fafa8cbfc5dd6089cb33b98175ebfbbc96d92f3c94",
+      "bytes": 4828
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v1.py",
+      "sha256": "5c23ff32e11906fd728b2a5b7b27860c232409e7cd4f131fe045be6f236d7f01",
+      "bytes": 10075
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v2.py",
+      "sha256": "1292a934540cb173919546b6a157580530f479791e36218ca6924739099a7680",
+      "bytes": 11245
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/review_attempt02_source_v1.py",
+      "sha256": "34854162934f2655c0339aa8df96ec95c34d582d2450f2cbdb656ac3b73f7706",
+      "bytes": 6975
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/review_attempt03_source_v1.py",
+      "sha256": "c9de61614b0b9023c527fc0ce68a1edb64945d0ae1b928b84c7721d8afae204b",
+      "bytes": 6305
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/review_tiny_source_v1.py",
+      "sha256": "b1e3892058c32488aadd7cb7c40134e3de90b3b1d15487106e150270b65e8665",
+      "bytes": 8624
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/root-activation-v2.json",
+      "sha256": "4d7d8bac11ca5b70d8613f023b32891836609412d3acd963a9f55264cde99270",
+      "bytes": 657
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-failure-diagnosis-v1.json",
+      "sha256": "9c8f68f30fc3996dcfe429775ff0e490e8b1221232a5a7bf8cb68c84c3c9001d",
+      "bytes": 2829
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-source-review-v1.json",
+      "sha256": "8a0fc0696841908376cddd3a596a73eb30b1d97fc94dfc44db5988d41721aade",
+      "bytes": 4730
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt03-source-review-v1.json",
+      "sha256": "a32e6a962c7326ce5f4a6422b1f02123b37e6876b77c2b13bcabb84b9c7bae7d",
+      "bytes": 3764
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-source-review-v1.json",
+      "sha256": "4c32dbd2d49593cdb817711b5d0f58dbde2c2bf117a49025ffb411c1685ff557",
+      "bytes": 6004
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-launch-v1.json",
+      "sha256": "f778fdcb9745d5d3895f8961a3959d5cc668d7b95b7d5fd73ebd8c73f3cb8124",
+      "bytes": 173
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-lifetime-v1.json",
+      "sha256": "f36dd7f964b64101d40f9744c7e1da6e20c5eba873e3f1212f7eeb5bbff60434",
+      "bytes": 939
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-stderr-v1.txt",
+      "sha256": "4e78317f9df6baeda5a504091b4f72ac0ba61423e746eb3573859e68fd0f5987",
+      "bytes": 531
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-supervision-v1.json",
+      "sha256": "f342c726a71e6554034771c835d4a68e3397bf5567b2cf2fdd77f0856f18a316",
+      "bytes": 1406
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-launch-v1.json",
+      "sha256": "c256e5907295a1e3954516f47c0a072b37aaabed54a8a487d0fb19c3cb920249",
+      "bytes": 173
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+      "sha256": "4ec2ec039bd56f73ef5d0631807865b2052c48e40fc960c37b9b54a0fee4e6ba",
+      "bytes": 958
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+      "sha256": "66f613cfcea3ac2d51623ef7a2459d5bcaf865d74cc442cc578334e15d5b5dbf",
+      "bytes": 1547376
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-stdout-v1.txt",
+      "sha256": "ccd1ec29b1585a6f3d1d324285589a8eba97353ed9842b8ca4976e628e1e73cd",
+      "bytes": 523
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-supervision-v1.json",
+      "sha256": "d7d9387e6b8f2fff8c52966ee43f41bac498268d9ad7993f1095ec6c282f994b",
+      "bytes": 1587
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt02-causal-diagnosis-v1.json",
+      "sha256": "540988fe194ca9b36b55633445a44c5ac606774b9eeb2b89c6f30164f8f427ee",
+      "bytes": 1740
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-cost-clarification-v1.json",
+      "sha256": "be1e7085126c27e4d6b172c141c517f85e67aee0e41222a1b179e1a4dae96c79",
+      "bytes": 1483
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-start-v1.json",
+      "sha256": "dab35db2858fc4d3e793af445959badd95c3e33dfbda0ebc792404d6f34516a9",
+      "bytes": 349
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-launch-v1.json",
+      "sha256": "fa9ba2a3cacdc535fab232d4a89cc15cbc7f50543f4f74e1a19d09b0b0bea10d",
+      "bytes": 173
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json",
+      "sha256": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776",
+      "bytes": 843
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-supervision-v1.json",
+      "sha256": "cee05e4948cdd2a9b238415ad2aa934d01ab824f17edab249e229f90815de9e3",
+      "bytes": 915
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-attempt-02.json",
+      "sha256": "aa84c260fb9fd6f7422ca983382938e084c5e8d3c13b1252fd6d1e849004d6bd",
+      "bytes": 468
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-attempt-03.json",
+      "sha256": "49a000bb49849d46b32f99d12f1434970f19b1f7eb0ecb49d3b92f14dfa93ebb",
+      "bytes": 407
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-receipt-v1.json",
+      "sha256": "9998896e50cb3e185ee2cd841fbbc8e65a74836822a74c5e63c84cb40cab846c",
+      "bytes": 570
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-design-v1.json",
+      "sha256": "c7897295e54d0ca5cd1be2c4db7827deeb53504181e404d2472db0a2d78e784b",
+      "bytes": 3987
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v2.json",
+      "sha256": "cc41dc8968d49952c1628a2753f95862fc494e5e57f6a012404a54ac8c133a3b",
+      "bytes": 4202
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v3.json",
+      "sha256": "19320157d1c5122981fee7aaab3ad6b40060698e2d97dbda7393e036f4aad878",
+      "bytes": 4840
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-v2-source-causal-review-v1.json",
+      "sha256": "f895368fc8191236a4d4dccb0ab2b5699590cfabdd0b38571646fffaa5519ef4",
+      "bytes": 1436
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1-diff.txt",
+      "sha256": "5e57db97e5c7ee9e63cc144f71ecba31407d25d5c31456eb422d55c713f03ee4",
+      "bytes": 2222
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py",
+      "sha256": "8f7a52dc9c966a43ee4532c27d88f0c55282a3f45c67641dff01008fdfdbbe4d",
+      "bytes": 19913
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1-diff.txt",
+      "sha256": "c75f3f3cd2af5823d0ed6f04e9b1b98fe6f86f500f58c9efc3ec0a1680ae4a5d",
+      "bytes": 2373
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1.py",
+      "sha256": "eb8e5b5305ae7b78c15c1e867cd12bcf07f58bebeda0a204cc14d41a8d5365d5",
+      "bytes": 20615
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_v1.py",
+      "sha256": "0c1cc0304a59c307e273f8033a40385a10b80a4c44e1ff4491eb221b4ca60acd",
+      "bytes": 19623
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt02_v1.py",
+      "sha256": "8855e242ddc2f19c1197684275d266677359bbdf014b142ec9cddd73b6d09492",
+      "bytes": 5869
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt03_v1.py",
+      "sha256": "8f737823e0185581920f09da274ecbb2e2c1af1c7aded69b59105cf2dd823252",
+      "bytes": 7522
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_v1.py",
+      "sha256": "04d05542fe428ba705d4400a44d74173b6abf772e666aace33f99c64be39dcfb",
+      "bytes": 10539
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v1.py",
+      "sha256": "018e0ee6bc94ec680d2e056e1343387c97f8c7339347d148b8a872b133f4e189",
+      "bytes": 2723
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2-diff.txt",
+      "sha256": "10122624ee12593de8fade830f7adcc307309b8048cb8284d47805d4b9dd798e",
+      "bytes": 1484
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2.py",
+      "sha256": "6fff15ad9e95c3ac829a27ee29e27f678f69a1780f86874dec89c2e5c512d4ba",
+      "bytes": 2723
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3-diff.txt",
+      "sha256": "4406b5409a28744157aa05612c62d1b2110e55ed25648157fae4f7eae0f1de69",
+      "bytes": 1484
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+      "sha256": "af0238ed5d5cd571c413a325a99c5e2301e9c5a4055411a3422ec8fc381059fe",
+      "bytes": 2723
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v1.py",
+      "sha256": "5d75dc054b40f6e1744a224add748a4894d525950e567767560a9d3aab4d17c5",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2-diff.txt",
+      "sha256": "c44409b8cef42fd37a255b14b7561f074c4dfc3696ae79f699a7670c4265a5b5",
+      "bytes": 3289
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2.py",
+      "sha256": "7426c0de6f51cd7e7d30ccfbeb358c704c3a67027d9433eebcb8b8cac86e9e16",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3-diff.txt",
+      "sha256": "0365d3462443d4cd83e2eb728c4fb03acfc926182cf7a8da15757ac127937787",
+      "bytes": 3289
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3.py",
+      "sha256": "f74c3d71764cc1e37278cab1306c03f0a7682bdbe5a46c384c86809441f96fb2",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v1.py",
+      "sha256": "4e19f257e5d6678cab8b49ae76e364f4d0738854c1e8eaa232d8999284de9612",
+      "bytes": 20044
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2-diff.txt",
+      "sha256": "c23ffb7dc8c5fe77b25049e6219c646f448f3ac58007c79451a3d1915eeda8ae",
+      "bytes": 2870
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2.py",
+      "sha256": "ff840a11b33f1328cb56aed79425614aa08293d05dccce1360d57da83d9e09ed",
+      "bytes": 20433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3-diff.txt",
+      "sha256": "8bf99af3154d5075cc81d11b5af09faee52359b933987df21b5909a14f2c0bdb",
+      "bytes": 2928
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3.py",
+      "sha256": "86600aab547f6cc1ca05838a7eda8e4ff1042795715e6c549fb41db4c36b864c",
+      "bytes": 20433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1-diff.txt",
+      "sha256": "98f1046d91a7be5e1376705570be15f1040cb94fdeb8642917a79d7c7b6b0345",
+      "bytes": 2873
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1.py",
+      "sha256": "393c8eea66eef43fbe7375f79294149819e5f725881dea609b46ad8d1785b882",
+      "bytes": 2885
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1-diff.txt",
+      "sha256": "9310b69f0db0b87b1e03efa8a387fa34f07f34f38ae29e2eb8724e460875dbcd",
+      "bytes": 1430
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1.py",
+      "sha256": "dde646c033bb6b087185d91e2a4b8d7241e9c428fc25b8a1893f1278e7da2a47",
+      "bytes": 2892
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_v1.py",
+      "sha256": "9d86185f082b866352894ea9905a6da756d397264da50854e680fe57dec09fa6",
+      "bytes": 2675
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1-diff.txt",
+      "sha256": "36b84c7647dd2d1e5a3f19bd753d62fe8ba0eba1d98fb220a5d6cb157a3f677b",
+      "bytes": 2582
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1.py",
+      "sha256": "bf3a657c17d377a247bcf79ce82af5a71918f4f814ed0e0a6dbb887df10aabba",
+      "bytes": 5580
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1-diff.txt",
+      "sha256": "924db5f5aa5cf2e9304f1226f3638f223a0e09e11ae5b8e65d9c4be5380a16ae",
+      "bytes": 1433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1.py",
+      "sha256": "b8913e2228156f8d3100bea9f07b00e3f018613d78e4ec711e2d790521504a5a",
+      "bytes": 5580
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_v1.py",
+      "sha256": "d76188b6e1c1ef341ac43f0a63931aba7f8828051e605f0491229e85ae08469d",
+      "bytes": 5513
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-02.json",
+      "sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+      "bytes": 130356
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+      "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+      "bytes": 135346
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+      "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+      "bytes": 128708
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/producer-conformance-note-v1.json",
+      "sha256": "b4569e2e7a315f4c051c6fe866921cb2781af1e4f3f0f93af9467ec2b0d34526",
+      "bytes": 4612
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-launch-v3.json",
+      "sha256": "7e5b189e77889bb56dd1d137cb4ab979242fccdc761f8c13326feb64e2e4506d",
+      "bytes": 152
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-stderr-v3.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-stdout-v3.txt",
+      "sha256": "b6c90218abb55f9c14c1417d8d613d04c45bbec0434eaa1b9383fd475b216903",
+      "bytes": 1520
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+      "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f",
+      "bytes": 1708
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/corruptions-v3.json",
+      "sha256": "ba1240f00be87651f4b09160f8fcbe43b02d83dd88259a25fab144a9503daccb",
+      "bytes": 10039
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/evidence-sources-v3.zip",
+      "sha256": "9f4b4e5186589ef1aba0441dc3c9bf14e5e04b60bf0858d9472b2bcd02fd14a8",
+      "bytes": 1523526
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/export-v3.json",
+      "sha256": "2ae2dfb31b1b1b0030686f9ebafc1970532508c7c4422659875e9e11c284bf5c",
+      "bytes": 9491
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v1.py",
+      "sha256": "3232a1c4360d276bf82311e26daf28731a5232a59cf4ba77ebfe82823d6b5a07",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v2.py",
+      "sha256": "03687380ffeb85cdf32e72fe7b2996e17b6a07f9556345da2017e07bc22dabe1",
+      "bytes": 19094
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_audit_v3.py",
+      "sha256": "62e5cea42e565df449071764640a9183244988f7f5598f9bd2823152eac600e2",
+      "bytes": 19228
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v1.py",
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v2.py",
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_checker_v3.py",
+      "sha256": "00d594b0a6f3c6c52edeb52df03523a338013b1bcb383dd1628ef69a3b964a29",
+      "bytes": 10659
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_declare_v1.py",
+      "sha256": "7b3b6fc45634784d5610a23136e517bda36b7255a1ee1eff8c53596dd6d2ca1f",
+      "bytes": 8028
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_declare_v2.py",
+      "sha256": "07d17ee88bcecafa7e3b625474dc113dbc2294c9be93e0780c726b74b70efd61",
+      "bytes": 9113
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_declare_v3.py",
+      "sha256": "566e720445ea6cf6406b06a9d9835aba645c33f0879d7de79a044ade2b5a6a8e",
+      "bytes": 10581
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_export_v1.py",
+      "sha256": "93aecec5ea79d85a9f0a02c70fd3fd8cf9ae7ae7414e10d8630a3d7fc634f3d5",
+      "bytes": 10370
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_export_v2.py",
+      "sha256": "90a99fbd90b71a39499ea70394b45aaf02d741fdc52fe942589857d9745bf9fe",
+      "bytes": 12444
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_export_v3.py",
+      "sha256": "0e0f3403c6f664b0ccd6ab2fb6f387a0fc04b18b3b714d4fb713ee8bfc83c6d9",
+      "bytes": 12782
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_produce_v1.py",
+      "sha256": "ab66c8cf24d0320e64c93caec291d165a9b354df4510ee7a671c380dfe7e06e7",
+      "bytes": 7535
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_produce_v2.py",
+      "sha256": "d1a7bf0074d633728d680c04958555567c4eda332a97ea19c365c0ad3cc8153d",
+      "bytes": 7873
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_produce_v3.py",
+      "sha256": "937b32eb30d92198e1a7e270f2ac06a6fa30b38855366f78f690a765bf174e17",
+      "bytes": 8005
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_run_v1.py",
+      "sha256": "1ebf1a9a1a31e6e086a7c06664f6ba741bf3863f0e1c4f8e12d62456e1d53c09",
+      "bytes": 1649
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_run_v2.py",
+      "sha256": "ee6f18569c4896aebdd23a682c9eedde9e585f6384d9e2aa8eb8880a203abc74",
+      "bytes": 2882
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/hilbert_constant_run_v3.py",
+      "sha256": "1831ba97881153ede15fb65d610d9089590191b4bd07c79edd593d3b263c0c4a",
+      "bytes": 4767
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/next-authority-gate-v3.json",
+      "sha256": "0b45b98cc2339424303781aa46e0507edf63f13ce4d94d646c46e20b05926f1b",
+      "bytes": 41722
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/plan-v1.json",
+      "sha256": "0f6f37ab9195a0d23b988b6399d9ccd4865d463033752031b4bf84a5552f1d33",
+      "bytes": 16071
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/plan-v2.json",
+      "sha256": "12b82e2a30fe279accbd5fdf136725a54040102f16a6758bf0fb243b4e770bc5",
+      "bytes": 20798
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/plan-v3.json",
+      "sha256": "1d12db211cacabd584467a8fd95d7d68814d928f98a3441b21bfa5b9bef0ab8e",
+      "bytes": 26215
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-launch-v3.json",
+      "sha256": "5ac74709982e48dc34cf1a7c78210f3bf0954a2a86391bebb61dc40cce81ceb0",
+      "bytes": 154
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stderr-v1.txt",
+      "sha256": "c761d4ebf744f7408574921b9a854523fbd402fb4cdc0fc67b59fa44fc287201",
+      "bytes": 795
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stderr-v3.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stdout-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/produce-stdout-v3.txt",
+      "sha256": "ef9d38db29c1fa6861cc05f028372018a1c7a95625330c9d88d380b534c0a85c",
+      "bytes": 1675
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/production-v3.json",
+      "sha256": "e401eabd43d6276cfd38aaa5b355df299d1b400e39ed2cea42072d1bda75db02",
+      "bytes": 1871
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/reader-v3.html",
+      "sha256": "b0f6b87286fa254d74bc48e3491ce72f2b3ad2ecb49f053b6a4938ca4be6314a",
+      "bytes": 6750
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/stage-costs-v1.json",
+      "sha256": "7d08d981191899627c9c9d9b1d5bb243a6a89f09a3d038b331b651fcb8fdb5fe",
+      "bytes": 334
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/stage-costs-v3.json",
+      "sha256": "a7ebddc84c0e84c593dc0250a8c370337af6bfb9bbc9c69b0be0dfbcf9ab7186",
+      "bytes": 31277
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/supervisor-failure-v2.json",
+      "sha256": "b58e692ebac4426df3fd47647b71c7d2109648be3aea2a5938982ec5e736cc58",
+      "bytes": 3371
+    },
+    {
+      "path": ".gcts-active/hilbert-expanded-control-20261011/export.json",
+      "sha256": "c13dbac73c9094d8f3827d470d83010a1dfd8798eb0c39b4d2e98ea65c3a949b",
+      "bytes": 9723
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/actual-model-readiness-v1.json",
+      "sha256": "1d3da542bd12c5a9157216df981a4f97d5e37bc6be12b03d06831839b3486810",
+      "bytes": 4102
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/checkpoint-v1.json",
+      "sha256": "feed7b7f719c294a947c936b9e284a0cff375e4d58c1aa2cfccddf90ebc42cfc",
+      "bytes": 4965
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/cluster-continuation-plan-v1.json",
+      "sha256": "ca310fd6b962959541784243251728aeb709ada6c0296aa2101888ee66d84d2c",
+      "bytes": 11218
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/factorization-v1.json",
+      "sha256": "4f61a39c1952dab8c6bcfc77ef2f691237ad5bf322e93436c16fd162b770c328",
+      "bytes": 7294
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-launch-v1.json",
+      "sha256": "4af43a528ebd857c841b3ee821a50272bb9a79df51aabdf961bd689251dc4679",
+      "bytes": 181
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-launch-v2.json",
+      "sha256": "bc2c93c3041439b2602bed2ee69bc1d1e28e90aba114148c6ce99c7b568932dc",
+      "bytes": 181
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v1.json",
+      "sha256": "74c7ba4337df93d9826a2054a196fa59e33f6a9844ffc79390f3d937ca443979",
+      "bytes": 868
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-lifetime-v2.json",
+      "sha256": "9af212c3cc0c2fcd7cad588069438bc21aded84e50d36ca4389fe1d3a45869a3",
+      "bytes": 978
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-outcome-v2.json",
+      "sha256": "d4aa9ae3f33979fc90bcc20ba43843b9b23ab06a3242c821c40a18f526b8efd5",
+      "bytes": 2810
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stderr-v1.txt",
+      "sha256": "24713515af6641b0b23e25d62b37174351371b9b017d8efb6bea790da63c5d9a",
+      "bytes": 1682
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-stdout-v2.txt",
+      "sha256": "98d8d3270eec717b1e7bdab448592abff3edf6c3dcae956a7da525676581d64f",
+      "bytes": 183
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-supervision-v1.json",
+      "sha256": "fe3c078adc3277690f5012e88495d89fe290790c53120bae345f843fba493438",
+      "bytes": 1283
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/fixtures-supervision-v2.json",
+      "sha256": "02a519cfed976d3b785ca5ef6aae9e429a1fb44e0be00c067c0f160aaf149d55",
+      "bytes": 3347
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/freeze-receipt-v1.json",
+      "sha256": "f8635631c45ec7aa9587c43233bfb95c78e99fcff5e728ab26d81be4b9fcebff",
+      "bytes": 520
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/freeze-receipt-v2.json",
+      "sha256": "cec8f295bbaf107366292fc180eb116999182fb3703ee6cec23f38d1e1fda9ea",
+      "bytes": 521
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-freeze-v1.json",
+      "sha256": "b1aa3ccb236650d176e048789a9a0ed776142d67ed885dafb689e171234556c6",
+      "bytes": 545
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-launch-v1.json",
+      "sha256": "20e4a4bd9f783e4452eba1ed665626535379ea1b9822a9f57257747ec52119fd",
+      "bytes": 207
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-lifetime-v1.json",
+      "sha256": "ad652ca8dfce345a67428b91fcb50180b4ec3f7a706a0ee9dbd2edeb46fe0429",
+      "bytes": 1007
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+      "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+      "bytes": 1423687
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-stdout-v1.txt",
+      "sha256": "1688691d5e0b81a1ddb8509088a8ee2a91e2249472caddfbb90fc48e6c3d41bc",
+      "bytes": 297
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-supervision-v1.json",
+      "sha256": "4a011520e37749cafa3ad5f93bfbf27ed57f903bdba473f94536c9c719e0357b",
+      "bytes": 163576
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v1.py",
+      "sha256": "7888bc12b5b530cfb92cef373f86a843ad86596544315d11aeaf5d77dfd73329",
+      "bytes": 13267
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v2-diff.txt",
+      "sha256": "70de8266d9c468a6932e68dd105361878807770400b2c3b3ec41d58592930cc7",
+      "bytes": 2232
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_fixtures_v2.py",
+      "sha256": "604343dee2931c0ca99148d1e40bd34e6d1197a747ff73fc334f4a2cfe5ff83d",
+      "bytes": 13766
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_freeze_v1.py",
+      "sha256": "167bcfb774f424595e2ac19770e176a871dea7886f32b575b6b3799327af9f62",
+      "bytes": 6832
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_freeze_v2.py",
+      "sha256": "a5135f6fe14c346c7620e74c488ce53260110d072b9f984da451b17b0dc53a1e",
+      "bytes": 4345
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_freeze_v1.py",
+      "sha256": "f834e4b86668824c693e4c96c1bbb6aac3369060c179fe4e85d32547b5160ebc",
+      "bytes": 8603
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_outer_v1.py",
+      "sha256": "8cc140fb98f9e474d5fb142daafd54c452812fa6b575666ac06de029a9cd215c",
+      "bytes": 2939
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_run_v1.py",
+      "sha256": "6634bf886919b2c861b4ec7266295e64bac7926dbc0c85e7afd2ea7392519fce",
+      "bytes": 5842
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_full_v1.py",
+      "sha256": "f85cd921b9f324649c53a18e4ae8162e64915ae9f13a808e8216fe8025bef3e9",
+      "bytes": 15347
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v1.py",
+      "sha256": "c542a2f470fb35fae0af16504a639a94e55d5685a9f20d9f298803f07f66fe31",
+      "bytes": 2770
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v2-diff.txt",
+      "sha256": "767ea82a0cc012adc465789ab816906bfff6cd75f6305896b8665db6417da30e",
+      "bytes": 2826
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_outer_v2.py",
+      "sha256": "3897fd06c274b4fa87a5c187c4353f6dd3630bb8b4931ba489340f80949a823a",
+      "bytes": 2889
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v1.py",
+      "sha256": "e3500b5081839ddf02fe61d782657360906e163946e169aaeca643c550bbd232",
+      "bytes": 5732
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v2-diff.txt",
+      "sha256": "7e61e1890dd25c2102e5a8e62a478586c38532f8ca5d92955333ec0c484e7dbe",
+      "bytes": 2883
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_run_v2.py",
+      "sha256": "26b04d6fedb4d11e1a3b50506d67e84135cba4a4a314bdb7c7338fff39de8a38",
+      "bytes": 5732
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v1.py",
+      "sha256": "0628ada14bdc35bfde4edb2dac654097f9948ec73b7df609243a7b3fa28fc07b",
+      "bytes": 31077
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2-diff.txt",
+      "sha256": "eea5dfd85642e345eb59513e85de5f865709b9fb7ca36c89cee7b9a8434f5915",
+      "bytes": 1123
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v1.json",
+      "sha256": "5b44e49414728da163f1b45cdcc9b886681d81426264f737c76a1fca14925745",
+      "bytes": 108917
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/plan-v2.json",
+      "sha256": "55b093b24f03a54b5acce6fb4d977fa5b4631d06794d5d3ce1593b872e89604c",
+      "bytes": 116141
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/root-report-review-v1.json",
+      "sha256": "097c9ffd8837aecc3929abbd94eeac2110178fd8a6373554896450ecb3ca503a",
+      "bytes": 2828
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/root-report-reviewed-snapshot-v1.py",
+      "sha256": "30723e5fe5ae72b8cdb1686ef16d34320c69e42463befad4087256915139120f",
+      "bytes": 27022
+    },
+    {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/export-v3.json",
+      "sha256": "017fd594d5262fd9cf909b02185384e9e7ef9aaf9439c378d742ec5363a7b48e",
+      "bytes": 32400
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-launch-v1.json",
+      "sha256": "a419456a83ba15a5e26f84002458f1095222eafdefe0a17bb47459f259ed0027",
+      "bytes": 152
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-launch-v2.json",
+      "sha256": "20a83b0388984ef98e1f574f0bc03d10acd244aaa92da5e6c90f1980a29b0e31",
+      "bytes": 162
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stderr-v1.txt",
+      "sha256": "598bc6cdea4c3a3490b8a2f616a5a31c26f2a885a548c62948782ee776980ab1",
+      "bytes": 1084
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-stdout-v2.txt",
+      "sha256": "8198858fcaf0c27b367ab9d715153dd9ae4d7a4716e24d2ff1e25ada8cb9aec9",
+      "bytes": 1707
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+      "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c",
+      "bytes": 1951
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+      "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04",
+      "bytes": 557111
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/corruptions-v1.json",
+      "sha256": "7eaf876aa6333d4382e09b4d035f9800a0bf6990d966c4d12813c7887b94caf6",
+      "bytes": 3838
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/corruptions-v2.json",
+      "sha256": "12277224a9eb10e57e96df9b4022af6fda51e9f275b7c9e3d76654e6f2072312",
+      "bytes": 3838
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/evidence-sources-v2.zip",
+      "sha256": "25f7b7fda0f4ed54d195260e55ff73065cd64f7075e9cd80302de7a33e885612",
+      "bytes": 3040192
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/export-v2.json",
+      "sha256": "86ef3bcda229f883f17c5ad4328e780b141c81f7d1ea36378688839c05174342",
+      "bytes": 14124
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/graph-probes-v1.json",
+      "sha256": "aea862877bc95c57777d97cd8ff1710ff2c61f85f4f57f8e3f4bab108ee39703",
+      "bytes": 535312
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_adapter_v1.py",
+      "sha256": "c1604b9e87952e265779d95818e0705096649224306fd45c4a3cd978d69ce0cf",
+      "bytes": 9576
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v1.py",
+      "sha256": "c08a9bc99b357e002a6f22a4623026a24d2cf8961ec207702a0a828b0cfe33b3",
+      "bytes": 16009
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_audit_v2.py",
+      "sha256": "48cf1a10b2a978ccab4abe2ba976ac5139b21047f2b2b93a39de18724dd4ab7d",
+      "bytes": 16332
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_corruption_repair_v2.py",
+      "sha256": "031ea14b75aaa70b2ac258f5ce1082e9cc77a47d622e02244fa056d33eea158f",
+      "bytes": 2481
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v1.py",
+      "sha256": "b780801f5f370d15f681a5a473657016debaa426cfd7430ea77a50cd2ff07589",
+      "bytes": 7793
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_declare_v2.py",
+      "sha256": "0385dc9f8f9856222ed29d8c13e335fcebdc69bd196f2ceb5b6efaa9f27e750f",
+      "bytes": 3501
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v1.py",
+      "sha256": "8f68de4d63826542b76f64c0893c81edb039bcfe43914634ba8c9e60706defc8",
+      "bytes": 14306
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_export_v2.py",
+      "sha256": "0a491e47b7f8f5d62e7a692968a26c6bf0c6cded4d93ca1d006ea82cfdc00588",
+      "bytes": 16514
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_produce_v1.py",
+      "sha256": "3c3cb69eb107d169fa105307fa382d8c8a4e69815345d1cc3e856764fee4815d",
+      "bytes": 11112
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_reader_v1.js",
+      "sha256": "420e46300fbf7765b46073bbde89486d2fa1dad4d29139f22ac4283bb35c2973",
+      "bytes": 3264
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v1.py",
+      "sha256": "dab5821e6e455b9ed4fd2000a9a0fa00d3a43b69c3f415afb7817c74bc5273ea",
+      "bytes": 4977
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/hilbert_transport_run_v2.py",
+      "sha256": "800624de540766fc89cef86c6b0fdc3eb2db88658b8622b26aa58ca70d127ac9",
+      "bytes": 5349
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/alias-missing.json.gz",
+      "sha256": "74ed7ecea64ad725882034d4c0c38acce923682680d86d2a017b0f7456efc37e",
+      "bytes": 34932
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/assigned-zero-erased.json.gz",
+      "sha256": "24b4e683293fba69151681a4f3f23ed49686ce634fc60576ddc23ce6f91113d3",
+      "bytes": 561810
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/duplicate-placement-identity.json.gz",
+      "sha256": "d2906338d66146aa66ee665bf71f109188e9ff00ded67986e9262b1e0a22cc47",
+      "bytes": 561815
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/equality-template-hole-corrupted.json.gz",
+      "sha256": "1bf616f530646d3a99bb784ae5c8cacabd9843b9e4b8f8e6be3b9b2e427838d1",
+      "bytes": 34948
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/exterior-sentinel-erased.json.gz",
+      "sha256": "ab0fcc652c8cd1f3ca6ea99436c13f67041df690eb84cb3f5f064b1d414db09c",
+      "bytes": 561809
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/forged-certificate-binding.json.gz",
+      "sha256": "b8436ae89be2149cde4cf092e414e8ee3ad76e1b9d32f4d86eb62c90b9b12080",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/formula-code-collision.json.gz",
+      "sha256": "b80756b4c36487de9229f50b0f559f88cae1c592773fa4077ddc87d3a679c2ff",
+      "bytes": 561821
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/fractional-t-replaced.json.gz",
+      "sha256": "dbc1c7a17fcf174262a37cdde02644c24cf4b272720a3e3efdd444c83088fc50",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/missing-full-dependency.json.gz",
+      "sha256": "5b87147d1df3fa1069106596a5e34ed05bd6ff9445acddc157001b897cb1eb00",
+      "bytes": 561811
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/missing-raw-alignment.json.gz",
+      "sha256": "19c21add2dd8ed36502c4e7645cba78a7769fc033ac01f1d9c6f9e9226a61e12",
+      "bytes": 561804
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/native-authority-label.json.gz",
+      "sha256": "8bf38f2f719827e5ffa71d6ef8a191e3b51fb0ba98efebe38c9ad1d6d1de7949",
+      "bytes": 561816
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/noninjective-map-changed-without-proof.json.gz",
+      "sha256": "d6aac98ef67ace5bda38ad891f8c4ef793a9266dfe579bc1ea26004b68dc0a44",
+      "bytes": 34936
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/ordered-premise-swapped.json.gz",
+      "sha256": "bbc6b1f64f11b8462347a2b6573aa52493d3d0c9bce4d3f29586f9efce7ede5c",
+      "bytes": 561822
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/premise-multiplicity-erased.json.gz",
+      "sha256": "f152916949b93721ed4d226492fa480160bb6bb1da07d0c506112e1c33fa1550",
+      "bytes": 561818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/root-generation-wrong.json.gz",
+      "sha256": "29a6ea6054328a27c923f9eb01645402271f2a362aa48ef9a0a174dc4c5adddc",
+      "bytes": 561811
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/rotation-added.json.gz",
+      "sha256": "ab07fa73d77d31550f79ae04250189765fa1526775d899716b285981b886591a",
+      "bytes": 561817
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/spurious-seed-reference-port.json.gz",
+      "sha256": "075322fca3dd95d154ef5e22ad81ea364fc6c3df3afa72dc8c9b17c2a1ce2496",
+      "bytes": 561810
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/stale-argument-binding.json.gz",
+      "sha256": "e837e576903f76a44a94fe73db105d67f7c2bc54384653d38e9f13908e29d4bb",
+      "bytes": 561819
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/mutants-v2/stale-authority-epoch.json.gz",
+      "sha256": "1b3bdd87e7b130f1fda28a92f2312ff88f6e94e798c250603c72f3f076674494",
+      "bytes": 561816
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/next-gate-v1.json",
+      "sha256": "f67b6b55f78be936e8757126bd549dd7347501548fdbc1cee579b6a6dbbd4017",
+      "bytes": 1330
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/plan-v1.json",
+      "sha256": "b8f7d39f3a758521b37480e9ab6dc5978b702628273430bf54509d9628daa019",
+      "bytes": 18756
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/plan-v2.json",
+      "sha256": "570e9b81dced8284adabfb895024f05f1aac0566eed1f513ef50a7a733a3c92d",
+      "bytes": 10525
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-launch-v1.json",
+      "sha256": "5436c67b3fa9bad28715678ec0782ce3d06593e75f4ee2fc3836a8adb9d0260c",
+      "bytes": 154
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-launch-v2.json",
+      "sha256": "ab132d0d98b06400ab9fa1807e2623353d5e2e160e8933d028516c5888c43c4b",
+      "bytes": 163
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stderr-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stdout-v1.txt",
+      "sha256": "dee8743a544bedc35fa136b61bedde22bc76f9186cec9169867ac0166dc52e16",
+      "bytes": 1619
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/produce-stdout-v2.txt",
+      "sha256": "0a5dde76e4ac3b227bfc0c04f76ab1d54034ec73a160d9aafbb15b3403d1f635",
+      "bytes": 834
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/production-v1.json",
+      "sha256": "6b13a2bb5b40002c72290bab70d451f036315c7628740950a3628968e0e122f1",
+      "bytes": 1529
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/production-v2.json",
+      "sha256": "78aa4a05cb66ad7b0f361e9941a02372a7b9652bc6767a97f4ffbce9a2011715",
+      "bytes": 790
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/reader-data-v1.json",
+      "sha256": "a127da961f6997500da2bb1a4140d54614e2e0c205d1cfef5a6f2c049311fb96",
+      "bytes": 3213697
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/reader-v2.html",
+      "sha256": "c2953745b43d56eb46046aef1515834ac2431797c5a39369372770eaa6bcab6a",
+      "bytes": 10039
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/stage-costs-v1.json",
+      "sha256": "e8953767112823b942d547724f64a7ded8d543371cadc1792df3ffd3ddb6ebf8",
+      "bytes": 94072
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/stage-costs-v2.json",
+      "sha256": "3231ef8583a9a31d20d2580957d905457f4c18eefb615d4e08e9bf5952854361",
+      "bytes": 48818
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/tiny-checks-v1.json",
+      "sha256": "badd17288e95933e17cdf9aebba9d74718a3897eb538488dc200673167d35f38",
+      "bytes": 77735
+    },
+    {
+      "path": ".gcts-active/hilbert-transport-catalog-20261011/tiny-model-v1.json",
+      "sha256": "7d8572ba9571b4fbed4eee0898674eeea899a93114c113516d4684d3dab5bc45",
+      "bytes": 20332
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-integration-v1.json",
+      "sha256": "c84e47e030035f4ec1fefe0a6b4782bbd6eed4df5c53ba5fbb837d81422e8f7f",
+      "bytes": 119893
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-lifetime-v1.json",
+      "sha256": "9641dea0b0067d40addf11f4d7b76361762c002267b1437c08fdf24dd5645104",
+      "bytes": 1384
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-result-v1.json",
+      "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+      "bytes": 1421897
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-review-20261011/primitive-executor-gates-v1.json",
+      "sha256": "954662e95a722cece997c60025757022b06d9dc5df1a05adee5a59ec688038bb",
+      "bytes": 8706
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+      "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b",
+      "bytes": 7148
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-ledger.json",
+      "sha256": "002ff94318a9011c43c03d638ed088c14406ff5c55f9fa79880e1b295e8c6a54",
+      "bytes": 5628
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+      "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6",
+      "bytes": 1388
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_audit.json",
+      "sha256": "f87d64db2e695654e1686c893ae65dc77bbb2483e7674d5fd7dee7a11c81b944",
+      "bytes": 22358
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_catalog.json.gz",
+      "sha256": "1c2ba8ebc5800cdde0485428759bac0b260fe1a55c6b6243088bd7a83c040a6e",
+      "bytes": 30916
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_compiled.json.gz",
+      "sha256": "99ff294d3e80265b12eadb08a8cf46a80c199d0bf367decf770c02e1c0c20bb3",
+      "bytes": 1093
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_declared_catalog.json.gz",
+      "sha256": "1c2ba8ebc5800cdde0485428759bac0b260fe1a55c6b6243088bd7a83c040a6e",
+      "bytes": 30916
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_historical_costs.json",
+      "sha256": "d4665aa72d16ea38d5a61562443eda97e2b874dca82d03bda35ddeb8d0fe49b8",
+      "bytes": 1875
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_inventories.json.gz",
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_native.json.gz",
+      "sha256": "fc52866e0a766dc21f229239d1ad085c9c94ef26ebb59d3cc6a8c1e7ddb10701",
+      "bytes": 44332
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_native_audit_progress.json",
+      "sha256": "a84ded6d77f0db851bb818bf4c07b7c55f529ee40b1ab46f1946ec233411cb27",
+      "bytes": 25461
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_plan.json",
+      "sha256": "7c8a4890e41b4eb52b7e41b36767557347751551dfa6c9e22507c74b6f8621c3",
+      "bytes": 138245
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_prior_control_export.json",
+      "sha256": "804447877980b53b72674aecda384cc2e7b8d79b43d9801a0ae9871710df221e",
+      "bytes": 16988
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_prior_family_export.json",
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_progress.json",
+      "sha256": "1ecf2d537e45a6e02e8f166f9994f92101fdd7d4209f8e172e1d75e22e77bd13",
+      "bytes": 16424
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_base_expanded.json.gz",
+      "sha256": "c1409d9c92aa0973ff564198b2d1984cfab6b8ffe11cc57293145352b9f41a27",
+      "bytes": 2424994
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_base_expanded_final.json.gz",
+      "sha256": "a74b7add8131a68643bf6a2834dcde505378cd07837c023658d6320d298bc5f4",
+      "bytes": 2425078
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_fixed_expanded.json.gz",
+      "sha256": "eaa810e0d5d1d8c0805a8ec0a217b0f3e9ccc59c323e734ca56635104c8c99ea",
+      "bytes": 2484618
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_fixed_expanded_final.json.gz",
+      "sha256": "99c20be6b03a8c202a508d345109ce98801e7bb87eadd139a7912483b3b6f3af",
+      "bytes": 2484699
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_learned_expanded.json.gz",
+      "sha256": "68cc7e3092ea113398e17ea6cd911caf26fa095178a2939bafb34aa894449589",
+      "bytes": 2476598
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_level1_learned_expanded_final.json.gz",
+      "sha256": "e038c0b182afdc9c86e87124f9aa4eea73fa9389bede375af817e84eedc3e783",
+      "bytes": 2476684
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_base_expanded.json.gz",
+      "sha256": "bf5d37e8ea0751a1de17bff0b11a1a93f817b5ce6a15fe3019fe7b7b44bef0c0",
+      "bytes": 1955919
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_base_expanded_final.json.gz",
+      "sha256": "a9a91bc73e9da1c9827dc5960481e5cda5f21b800650cf10e12a5d4493feae87",
+      "bytes": 1956011
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_fixed_expanded.json.gz",
+      "sha256": "4bd76a4158dce8c403db2cb86ea0a9a816265a69dbdc8677e7c0adf97df357dc",
+      "bytes": 1821907
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_fixed_expanded_final.json.gz",
+      "sha256": "b8d2f3a9de21058a33482db48e6ed4980c1bb8db85afda2ecb0da5fc65866297",
+      "bytes": 1821990
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_learned_expanded.json.gz",
+      "sha256": "ec90beb0cc3ee914184e4804583286f280d8a6116be7b318d7c399cffc1aeb2d",
+      "bytes": 1981534
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_short_promoted_learned_expanded_final.json.gz",
+      "sha256": "51b1060c8bc0005622c49a405a65e50e24ca82f204c52c71aa96cc3d0c593e70",
+      "bytes": 1981615
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_base_expanded.json.gz",
+      "sha256": "a081718c421bbe844ca128eb6c9451222291146d99979f8411d179d0087a3693",
+      "bytes": 2689554
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_base_expanded_final.json.gz",
+      "sha256": "a685cf947d69b859b7cf895f673e5e1bec14ce4496afa465f8cf53ca13b07a3f",
+      "bytes": 2689640
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_fixed_expanded.json.gz",
+      "sha256": "6d168d26e859a7d19615221fdf835ab9eed72fb931adfcd313928c96757610cf",
+      "bytes": 2756670
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_fixed_expanded_final.json.gz",
+      "sha256": "7dd7e4d774ac830b51aba31436129fa03e2ac28162bc6672f11732fc3edcba73",
+      "bytes": 2756759
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_learned_expanded.json.gz",
+      "sha256": "85b84bb9111a5fa95d7dae4085835d63a2225f7908df5e2e088a44394e4e12e2",
+      "bytes": 2746604
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_level1_learned_expanded_final.json.gz",
+      "sha256": "01878560c7c792b9e0666342e65742a3a28930989dfba6f117479c9b0c0ce32f",
+      "bytes": 2746689
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_base_expanded.json.gz",
+      "sha256": "306615a986fb12840d901931e2fec57cea3186ae24566e4ec51048fd3fd5acbb",
+      "bytes": 2396282
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_base_expanded_final.json.gz",
+      "sha256": "8c8775c550c7e0813b9f15d9e4a7565c168a39e769ed70f1b60bf8cb4777dd82",
+      "bytes": 2396365
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_fixed_expanded.json.gz",
+      "sha256": "1de7e25af1623dfc9cf5638aa34f841e99cd7972629b3e725a9f184c22271139",
+      "bytes": 2246711
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_fixed_expanded_final.json.gz",
+      "sha256": "09a4ca7cead5fbebc08385ec79b25430e8aebf25686a1af6f135a5a5cbbb2715",
+      "bytes": 2246792
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_learned_expanded.json.gz",
+      "sha256": "50cba2bfe862c898c520dbf277359fac78771336a11db30ffb9f2be7f1e0d475",
+      "bytes": 1949467
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_coupled_reverse_sufficient_promoted_learned_expanded_final.json.gz",
+      "sha256": "c73e7a524333eb6570841662965ce1fa897e15030d93391cb20b65a3d671c317",
+      "bytes": 1949620
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_base_expanded.json.gz",
+      "sha256": "ff167ed58e9fcd23a0fe1b5cbe7fa96e0859c5f162201661ec6f519f60891408",
+      "bytes": 510190
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_base_expanded_final.json.gz",
+      "sha256": "a8d87a94d4e3be0922ac0837f59815a21e6b66aeb0a0be575dd512bcb16b53b9",
+      "bytes": 510274
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_fixed_expanded.json.gz",
+      "sha256": "5b334c414c5980e6e29bd4a1ad4d0a7990c7a61e71c047385c1fedaaab3bb4a3",
+      "bytes": 550621
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_fixed_expanded_final.json.gz",
+      "sha256": "51fd6f0e972229a29ac246a79e84fbcabdbf7de2965900b18a8bf2db01ad80b0",
+      "bytes": 550701
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_learned_expanded.json.gz",
+      "sha256": "7a1aed147f06ac3f08017b601b47c72a97c0f48328c8aa53e752ac78fd0ac71a",
+      "bytes": 552071
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_level1_learned_expanded_final.json.gz",
+      "sha256": "6fd3867c85aa9bd5527369530704f48c1b6b2ce1e24c86989910164b33ab0652",
+      "bytes": 552153
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_base_expanded.json.gz",
+      "sha256": "44acaf45d285762e0da212189362a105c331d74e2b6169fd14023300e60fd10c",
+      "bytes": 1535258
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_base_expanded_final.json.gz",
+      "sha256": "4afa9c04a643b26059cd9a857f86fdbf9c6729dbaddf391a4618cabae786f0b9",
+      "bytes": 1535342
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_fixed_expanded.json.gz",
+      "sha256": "70b840937b91f00e9b5d55d1b410c108192200aec87cd894f5adddff42ddf2a7",
+      "bytes": 1420755
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_fixed_expanded_final.json.gz",
+      "sha256": "55000089c41a7c20fdf4242516762028272b699bfe8b396e71dfa7305ec17021",
+      "bytes": 1420840
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_learned_expanded.json.gz",
+      "sha256": "83f727838d3f6219b0cd2377be50abd1b64949e235525f024791d1942188370c",
+      "bytes": 1557250
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_short_promoted_learned_expanded_final.json.gz",
+      "sha256": "62001c604a31d597cf02051382289b18bee44aa1d05df2dbb0810b9f3129d228",
+      "bytes": 1557336
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_base_expanded.json.gz",
+      "sha256": "25f51744538f6f6d8e7b41eddd6d0abe2bd3e4494039d344a9e13b8ae6d02499",
+      "bytes": 943914
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_base_expanded_final.json.gz",
+      "sha256": "38f90ed69588c43571c5dc0bb287e453c9c798a4cbae65e4fd50176055dc48da",
+      "bytes": 944136
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_fixed_expanded.json.gz",
+      "sha256": "50c8d142fe3538f8e97eeb5d03949bb4073235f75602b88940150900b6a0d7e0",
+      "bytes": 954320
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_fixed_expanded_final.json.gz",
+      "sha256": "4506a392741010cc79070be887fb0428e51262df1070f7c7cbabdf49c12ee498",
+      "bytes": 954479
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_learned_expanded.json.gz",
+      "sha256": "3e0915349010f31e430fa64ddfb3d420cc40db92367e6755d59558ff9237dc74",
+      "bytes": 954876
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_level1_learned_expanded_final.json.gz",
+      "sha256": "fadb10db48bdd15a516453eaace526d27fd87a257a27e8c63d9fdfd80853c91d",
+      "bytes": 955103
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_base_expanded.json.gz",
+      "sha256": "2d846581f5d3beb7a1de862eb6074ac9de3b9c7a89b4979c2595ba2af434e82c",
+      "bytes": 1888292
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_base_expanded_final.json.gz",
+      "sha256": "c160d5cc12f8fdf789cfcab31efe5f6b11ff5434977aac8a5f7b7e7be0edd907",
+      "bytes": 1888375
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_fixed_expanded.json.gz",
+      "sha256": "00963029176b00fa26262f3df88ac6e5a0eeaa68667af12a0b9614d9997d2bad",
+      "bytes": 1658199
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_fixed_expanded_final.json.gz",
+      "sha256": "175dbce7b409cd678bf487c3ad07aac2415bbeaea88ca910969781e82eb852bc",
+      "bytes": 1658282
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_learned_expanded.json.gz",
+      "sha256": "3007c5606abdb816ec07f6d567adadf35b05d9eaa637d75cf6b65d680b6a07f1",
+      "bytes": 1483760
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_boundary_transfer_transfer_delayed_common_sufficient_promoted_learned_expanded_final.json.gz",
+      "sha256": "4a0d3128cfea8024199fdc4b169793fad4e8b8d8a32d165f34518abdb9074763",
+      "bytes": 1483913
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_audit.json",
+      "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+      "bytes": 23260
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "b5435c13a64dd2c12f4c839ff8b2a4a2ce5e7378c57ad560487a5cdff7f40fed",
+      "bytes": 199905
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "7c3d02901a2f47a1096b51b4124bfa65754b688c34deddd54e7474937b6e8805",
+      "bytes": 199980
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "1641455f74021235389a37fe44027e0dd421957ec331a64529129800901f63c2",
+      "bytes": 199904
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "d83eeb4c3ac0baf6905f354329b34ed1e8a570efa8d6c68989fdce8242014f70",
+      "bytes": 199981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "7ae48a1b31a56e714cc1df1516fe8ca39713479f8215adec446a44a7f17c89b4",
+      "bytes": 1266902
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "da9ab528e6a6ffe2cd4990f4da759eba0fff0514fb48d7dc5cfda939d3728ae3",
+      "bytes": 1267051
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "0f15555e7e258bcfa6c2f19683c07b5edf70bc1835cc3722b586e164d59092a9",
+      "bytes": 1266899
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "89b50c47fee771a3c02b3dd6a8a11690315250a7b6570da72fd2be52bcbe7c91",
+      "bytes": 1267050
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "e705f1875d2c8ebc8532e7b9b0c9745490ff5b0c0bdf88a94404aa87b55980a7",
+      "bytes": 275977
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "da91687cca7f98631b2d06df9f6c5df63ac95c91558e49be9be7130abcc3d879",
+      "bytes": 276130
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "57c772b7e81cbbdc438dc34ccc05efcf0eb693a385aaf7a1df452295719dbb4e",
+      "bytes": 275982
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "590688c6494f8392580f32a59fe10d356a348892a224c89a16719f874ab3662c",
+      "bytes": 276135
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "11eb809c2ba0f2ed92ed9b65813a96658077f7f4aec8c4e539165fe0a31be9f6",
+      "bytes": 2103861
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "961e1d85dbb535836b3a5a02f98de2f78e0deb16a8441e67f1799cffbd6a731e",
+      "bytes": 2104010
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "cf4012d8a0b489682b2df1b3ea5ffb6428cb1567681f384fa0611395c43ac4fb",
+      "bytes": 2103873
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "c6e765bf68a0fff1ebd2c96033eb6a8ca687ff4e55a4710d4d7d24a4061a210e",
+      "bytes": 2104085
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "c51cebd7adbf368fb6a618c3400cc256deb7f5ffebcf8077f341a6fafe99f114",
+      "bytes": 131273
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "fb7eee2af1efbe00e50873cb8b76688d16ee4c9e5e986f0dac7bdb8ef23b5cf0",
+      "bytes": 131352
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "5fde01246cd2c2615d8e0ea097b7d94fb4ddc60e63a0ac61ae95623a758e426a",
+      "bytes": 131268
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "8640dda93c5a0dbf0a1fdcf68962e449e1ad647551d54af5ace8a2047b4af3f9",
+      "bytes": 131346
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "100ad7497e9ac3c395cab3b5f85b5e9cd93f9a06362a3264486d851f6b3850d4",
+      "bytes": 608510
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "82c1c970e89fce818e30497bace63f239ea753049e65c5b2a20f4a58a2e0e420",
+      "bytes": 608659
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "522ace177a118436bfffb260b4e527d33cf0aa4e586364c056b311e5d25493b6",
+      "bytes": 608502
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "e5730fe30f118757fe59fe6e51967cb7ceda528bea23ecd86e3649e11bdd923c",
+      "bytes": 608655
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "3a57e1ea5913f44f69f305f95b60fe82265b30a700d7cbca0371c96c39e172e9",
+      "bytes": 167248
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "9ba5b761f0a8a6d517aae9fa6695254fa0ea5713540cced50a26a40c374bd29c",
+      "bytes": 167422
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "78b2eae5ec467625ff6ba9230b69da25943cb826566774fa9212a2a9467121bc",
+      "bytes": 167246
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "df68373aea6aeaa3231c1c2b9d293247839eb2001a7b5c88f498243e7b7535a7",
+      "bytes": 167423
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "5475c8d15b7f769e492ef037c25bf8b2ae93c6f7dfc9a95a88a8edfab756bd9a",
+      "bytes": 857153
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "ba16a0ff8bb9ab195810c567163aa2e15c520795072661fec98b4e7a5b5811a6",
+      "bytes": 857297
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "6d5d73b8d9a005fad6d5f8ec0cadf28d08d1128a7e82a10db256e3b6ec05a0bb",
+      "bytes": 857160
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "872f97fcd1591dd853654f56e6398147a23ba5a6006f3932c4bb5e596afdf21d",
+      "bytes": 857368
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native.json.gz",
+      "sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+      "bytes": 9002
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native_audit_progress.json",
+      "sha256": "338e7a85163a80e159eca69040d0e9f2e874455da2a4cdabe2f9a0214c725d95",
+      "bytes": 981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_plan.json",
+      "sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+      "bytes": 109335
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_prior_export.json",
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_progress.json",
+      "sha256": "27f8877003203dfa1e251dcec4227dd2084cd9fda41d50425bc04e72dddacf20",
+      "bytes": 16939
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_api_token_amendment.json",
+      "sha256": "1e5c0ee8774db7d7bfa038548142485a8c7ce3968dd9046e4f524a42fbd49612",
+      "bytes": 1994
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_api_token_tests.json",
+      "sha256": "1686476e71d2b0fc28fbff8cd91d7d7117ce944b6b83994cab65f0987bdddf57",
+      "bytes": 327
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_audit.json",
+      "sha256": "d21b31af5331453f21028217317322156900d3ef511bdfefff5e92b2161a55d6",
+      "bytes": 26961
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_catalog.json.gz",
+      "sha256": "fe27a777dd30000c366527e2aec42ee01df7375204b2c119adf492ae22ca5580",
+      "bytes": 30558
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_compiled.json.gz",
+      "sha256": "906100209c924c25fff58316b6fcbcbf9eb43de7a16e142b430819d4fa676da5",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_feature_label_defect.json",
+      "sha256": "71907b9e898f247e7c62092fcf0ec4461fb755454672f0f0599677b3a431e9ac",
+      "bytes": 1280
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r1.json.gz",
+      "sha256": "a6cf8b47364d4abc7d1402ed11d8277d8116a32a14191cc8dd509ef4f7774a3d",
+      "bytes": 193549
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r1_final.json.gz",
+      "sha256": "ba05ea43c9bfa0515c3c1cc8522417364817c34081752ac6cb649173541a3b2b",
+      "bytes": 193610
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r2.json.gz",
+      "sha256": "b90394238078d8522b9b201108dd82c616303abb3ca0389af224d2707d858a13",
+      "bytes": 193541
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r2_final.json.gz",
+      "sha256": "d6641aaf5c2e0e7070a3bbf8fc5bdd06aae3316472010c87526923a75d54bab3",
+      "bytes": 193605
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r1.json.gz",
+      "sha256": "d5a1903dacd7846371b5f539a249640dd35a0f3c21f2c0478f79cdb4b7fae13e",
+      "bytes": 199452
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r1_final.json.gz",
+      "sha256": "85f9f0f966e7ac077d45a8b868c8519bf282044bb455c86d84b38fa2ace96b35",
+      "bytes": 199516
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r2.json.gz",
+      "sha256": "47101e455565c2bd6b568c066d9d77320a6049808b8f2b49f22762a235cd67b2",
+      "bytes": 199450
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r2_final.json.gz",
+      "sha256": "78fc83a346ecc298fbcafef215534dc579cd83151c9e2ef82f32c45f717d21e3",
+      "bytes": 199515
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r1.json.gz",
+      "sha256": "6a3fc6f1896c7ffb512eee569b177b80797ffbdd4399750542abea3ddd0c065d",
+      "bytes": 200171
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r1_final.json.gz",
+      "sha256": "d53750658384ba33f09d04e8af93ab9472864a1731b07b5a871944a18b104dbc",
+      "bytes": 200235
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r2.json.gz",
+      "sha256": "df9268fd34c9e2b3a4e69233377255ca5eae1af1d275b5c31300e674467d597b",
+      "bytes": 200185
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r2_final.json.gz",
+      "sha256": "26ce10087c12788bb1015e96d4cfda852edee02c4ec9139a44544f39326a2623",
+      "bytes": 200248
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r1.json.gz",
+      "sha256": "05d4ec4ad1e11fd0ef9ee0ecb3dddd4ae88ef1aef159f2c12f4b3745cb2581af",
+      "bytes": 199706
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r1_final.json.gz",
+      "sha256": "86c0cb2edcd66bda7911c09d99d393ffaffab239fcb7049528cdfffa75f6992d",
+      "bytes": 199770
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r2.json.gz",
+      "sha256": "c6be2f5f8046bc7288e4307baa1e48b63b0da5ee90c13f33065419c2b4df09e9",
+      "bytes": 199714
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r2_final.json.gz",
+      "sha256": "01d62b26c3134ffe2e30156043ca98d572d8f24cb8858986f15ca3caa1cc6d8b",
+      "bytes": 199779
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r1.json.gz",
+      "sha256": "9973a00fbe29e7f45f8a7a1878ee165217560217595fc517761d8db4e72be143",
+      "bytes": 1023449
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r1_final.json.gz",
+      "sha256": "5bb1802bbc39f29424eca438efb0f08ed0d28fa4a357724797ff9ae35be25486",
+      "bytes": 1023507
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r2.json.gz",
+      "sha256": "600dad1a81997c85a06bc4472113d8642f7125afa14307f0001022805fd6ef6a",
+      "bytes": 1023454
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r2_final.json.gz",
+      "sha256": "b63c4d7921ac3ac5cb03f930cc1c5b4a5471bdc702e2ce48af83c2802de1218b",
+      "bytes": 1023508
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r1.json.gz",
+      "sha256": "9f9e54db3c6cabdf4e55078a704b31b5d36dbb27288b250767287b314754d19f",
+      "bytes": 1074695
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r1_final.json.gz",
+      "sha256": "7c41bd5d5442a220402b23c338a969eb6766bae13199f197c91bf06b051b96e3",
+      "bytes": 1074750
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r2.json.gz",
+      "sha256": "1a352526161c2a036f44b67945bdade7654eda26183a84b26188ce80c209f757",
+      "bytes": 1074680
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r2_final.json.gz",
+      "sha256": "43f9c7dae1327f5b42e669354af5a1b9da33b716b8457d002a65c4dfc4594676",
+      "bytes": 1074735
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r1.json.gz",
+      "sha256": "c81c6dd49248cb889c17a820d0641e9979899d2d8a4310791b76bb0cef36efa5",
+      "bytes": 1037754
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r1_final.json.gz",
+      "sha256": "4824226dc2fdbe9e2f9cd77bc1809a3f622818d8f7fd3cd277e333e84d206f5c",
+      "bytes": 1037808
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r2.json.gz",
+      "sha256": "3501795513cb660bca5ecf4ab5ddd8ff14ca5d4cbfaef042df7de28e707339e2",
+      "bytes": 1037765
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r2_final.json.gz",
+      "sha256": "7cc67ffa4d8bec2d1da0d93d390b6729819eefbebcd380643becd9bfbf48004d",
+      "bytes": 1037820
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r1.json.gz",
+      "sha256": "c660f0fb91273c35e459c851881f82fdb62a1558ba5671361fc7fc828495b9b8",
+      "bytes": 1074587
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r1_final.json.gz",
+      "sha256": "889b5370b05c8c76e94ff48475752f8b447106fe2d8575fe0b3f6e80f2db88c2",
+      "bytes": 1074642
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r2.json.gz",
+      "sha256": "29d5b64cb1ce2f6271613376f28c6ce51cce604a35f77a6b2c098cafe8b8abb1",
+      "bytes": 1074577
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r2_final.json.gz",
+      "sha256": "f6458707664c879e0f3ee870aee94fd108ac887b55c38d9350a9c44a9a63606c",
+      "bytes": 1074632
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r1.json.gz",
+      "sha256": "c32747b0b8cbf06e74b55d0f8d0d30c63eff3def7096593011c38bec6bd11a13",
+      "bytes": 272126
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r1_final.json.gz",
+      "sha256": "a2160450e91ec1f255b7f428321723498c83636e47ea3e0095c0c599add1e330",
+      "bytes": 272179
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r2.json.gz",
+      "sha256": "9de16e9a54d7c9f809e09c9ba90256c46bcbc14c3ce68ff546384d5a7b7ecff5",
+      "bytes": 272135
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r2_final.json.gz",
+      "sha256": "719a1af2621d9ef0964d09d70912fdae7592560120bdd7f55f979bfa3e4ac35f",
+      "bytes": 272194
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r1.json.gz",
+      "sha256": "d93c9a9dc167342c2a6628542f74c28fb0fc14b9a640e7694bdec6c9b7d1b513",
+      "bytes": 275787
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r1_final.json.gz",
+      "sha256": "7675f08c013270cb0f641d918c4d68294942ab6a5f6194671f24a101a2a9a6a3",
+      "bytes": 275844
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r2.json.gz",
+      "sha256": "1153c595520a6b8467b185cdac5d0a6f568ad3c0f283f50dd75a194969dba8f4",
+      "bytes": 275789
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r2_final.json.gz",
+      "sha256": "534e3ad65ff48127d4aed7564858d985a91d1cd1aa3f8ae0d4e08e428656acc8",
+      "bytes": 275848
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r1.json.gz",
+      "sha256": "936979484d2d46b71c97f027360702f05991774b6f6005402377aa7496695dcd",
+      "bytes": 276183
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r1_final.json.gz",
+      "sha256": "aa2b2ad90ece0e5c0ed9d8b25f02a307860f0cb2c13991158d8584e5270be31e",
+      "bytes": 276238
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r2.json.gz",
+      "sha256": "c41888a2823b6e1711e3595e84db85fda16efdb3ab63020e1c2b132b355ed3f9",
+      "bytes": 276177
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r2_final.json.gz",
+      "sha256": "0aed7cb28af16e4d300428cc7ddd9dbcfb36c32aaca4eb1578210d65d632b563",
+      "bytes": 276234
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r1.json.gz",
+      "sha256": "573a260e699551c4f5e5bb252e143f0bfb9578051aef087e61587ba234da319e",
+      "bytes": 276005
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r1_final.json.gz",
+      "sha256": "ff487e4688c6cc0853d09284ed868dfaa93d5d9d11060353d3b8b8219b875722",
+      "bytes": 276061
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r2.json.gz",
+      "sha256": "4d3ab27cf7ba13846aa3dabc35df5179eea54d76b3c398e75e0cd85df906bbf8",
+      "bytes": 276016
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r2_final.json.gz",
+      "sha256": "f61e0a70a975c875d715e96262b29a2057066c04e3fd4ec0d3d994212b320b5d",
+      "bytes": 276072
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r1.json.gz",
+      "sha256": "fd4b917b9a37f8e7fc646273898df520c39b2dd438249c2921253703b746823c",
+      "bytes": 1303325
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r1_final.json.gz",
+      "sha256": "0f6db717761df8246f69bc59778d0e598adfa5eedd279ea32f425596469898d7",
+      "bytes": 1303379
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r2.json.gz",
+      "sha256": "0dab77d415d67aed3ea69e45739a0491f47d79faf7a76d8d10f849b21bb28dac",
+      "bytes": 1303326
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r2_final.json.gz",
+      "sha256": "82afb8d5e71c48159068df2e4345c031b71f50fa736160062523629ade2544b9",
+      "bytes": 1303381
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r1.json.gz",
+      "sha256": "b5ddaaf866e8ee6af6cc86dc4c074ebee34af97ab635d100a9884fdbccbb86c1",
+      "bytes": 1168373
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r1_final.json.gz",
+      "sha256": "dc4eebaf9a83c8585c8a8cef4e30c5589b1fdc7fcddfbe169242d61ab7563075",
+      "bytes": 1168427
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r2.json.gz",
+      "sha256": "d8342dc6c3ab1eb4855f8b1e09ec5b4c6f03f56a45fb8e4a8062842f0511dd5e",
+      "bytes": 1168380
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r2_final.json.gz",
+      "sha256": "32a75919c2009d60f22d696b6dc6c52a5fafe25dd04fdaa1b10343287484ad2a",
+      "bytes": 1168436
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r1.json.gz",
+      "sha256": "ad74c439733da2c12dbbb91e548a83e31dee126b8af6618e757f1e19e5c96410",
+      "bytes": 1131152
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r1_final.json.gz",
+      "sha256": "ecf1f9870b97ad3360a935f3daa6dd6a04b2f4a82f8507c5f24fc3c3a915047c",
+      "bytes": 1131206
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r2.json.gz",
+      "sha256": "2df41d000f2c59363204668beb07304c6630c19d3b01e8b7cb5ec060fb8a6cd5",
+      "bytes": 1131149
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r2_final.json.gz",
+      "sha256": "147b098f8eaf5ce81dd50dd218bdd0dcd48effff41e90aa0942b618b860202c2",
+      "bytes": 1131202
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r1.json.gz",
+      "sha256": "b88794b3369c4666dcfb0bea62ab967279fc74310efd20f63f4b652a963d6d88",
+      "bytes": 1168365
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r1_final.json.gz",
+      "sha256": "18b2e1069db435e4616ab312ad30ceb747682c4787f21f870348d7822da23b74",
+      "bytes": 1168418
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r2.json.gz",
+      "sha256": "a997bc8a48b0d3c137aff52b65fe86cfbb0926eead35e43de2c5104c799b7bb2",
+      "bytes": 1168369
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r2_final.json.gz",
+      "sha256": "84d338b4e5dfec790d84dc3c3b9bb717573e23920255ecf62f56b8e62d518de7",
+      "bytes": 1168424
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r1.json.gz",
+      "sha256": "2bc5d18a20cda5e688336c69266080ab0f0ce36ef0bcd9b02da4bc1c323f091c",
+      "bytes": 128711
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r1_final.json.gz",
+      "sha256": "f72a769cc9fdee8e319f9344eea7876c41393b24e8b23d01ac129ef52103cb09",
+      "bytes": 128777
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r2.json.gz",
+      "sha256": "b29f1cdbdfbff5f2f0c87b2dccca743055e5bd2d654b5783c957cbfadafc9e10",
+      "bytes": 128714
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r2_final.json.gz",
+      "sha256": "d0b20042d8c77081b0c1e551dd34b6f89a10009244bb727bf20160ce8c08f1c5",
+      "bytes": 128780
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r1.json.gz",
+      "sha256": "7d9ee4a2b866deb2f996b194fcc9a79e3b6a723c0eba1cb3af627437dbbfb5ae",
+      "bytes": 131144
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r1_final.json.gz",
+      "sha256": "040a5d182c5ff96801632cab0bd01e66198216d9a30fc7a79b2811f09ba4f6f1",
+      "bytes": 131211
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r2.json.gz",
+      "sha256": "4adafe2c8d3173b48f2ac9918afcda0d2a2c7b80bfea996fdcfe25e9353fa02a",
+      "bytes": 131143
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r2_final.json.gz",
+      "sha256": "40df1632e53124802e5a34d07281ec07708abbf682f2ed808d2fc993c3d08338",
+      "bytes": 131210
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r1.json.gz",
+      "sha256": "24b31c88e8305f2958af25c23cf42521ecb36cc9f98a1cba033745838ff5c84b",
+      "bytes": 131373
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r1_final.json.gz",
+      "sha256": "89a8e11a4ddbb0995683b6c40b4d88604106299902bd23fad514559a0061f7cd",
+      "bytes": 131438
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r2.json.gz",
+      "sha256": "cc98562e983d8164c41ca9b67c8d8ce1bb35cffc1f7a77b319a1049014f85933",
+      "bytes": 131372
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r2_final.json.gz",
+      "sha256": "60ea5b00db12f21ab7a318cdf4c17ff00008aaca29c3d143d4b3a5435264d029",
+      "bytes": 131438
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r1.json.gz",
+      "sha256": "52132123dc00045bb932d53a1bcbdb71d02e1c1da865ba8f2b1db9bd203d84fe",
+      "bytes": 131332
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r1_final.json.gz",
+      "sha256": "234b3c5737246a4019950bd27297e6dfc057a94696edd049043bed2766922ed1",
+      "bytes": 131396
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r2.json.gz",
+      "sha256": "09443cb9e9eb7b83cdc207cc5713407f10d5fdf58f0eeaa4e54ce0608611bb92",
+      "bytes": 131341
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r2_final.json.gz",
+      "sha256": "812af8923d4d1fea93e953ce393c4a2251c8b7a22236657f78aa486124b474c9",
+      "bytes": 131406
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r1.json.gz",
+      "sha256": "d4e2f87bb2562cf987a412a2ed603b8a81b5f79de7a43aad5a4eda1afe3c0b70",
+      "bytes": 589979
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r1_final.json.gz",
+      "sha256": "ac8186dd27ccc2e0a6af0d19ce850b0ef922b7028fdbc739f1ec8a9efd14617d",
+      "bytes": 590033
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r2.json.gz",
+      "sha256": "ef198727f133a42c679bc16741b121b71006ed15321b06c6a4fa8d9698e7d5ec",
+      "bytes": 589979
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r2_final.json.gz",
+      "sha256": "8877cf60d11d41310cbaef5fcc28b3269a899e515f0bdf30c5cfaa49431e8011",
+      "bytes": 590035
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r1.json.gz",
+      "sha256": "e6eeff7ddec2e157cc4ee1edfc8c204fb573f858a76a02d66b41af75f39eed3e",
+      "bytes": 595587
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r1_final.json.gz",
+      "sha256": "3b90a4024381af6a9177bb2a32476771fcbc5c37121554cdb6c74d146dd5f9a9",
+      "bytes": 595645
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r2.json.gz",
+      "sha256": "fc9ff038430b0a726a78de5438a0fec5ad6b343a28cdf4d9d3a0114310335ca0",
+      "bytes": 595593
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r2_final.json.gz",
+      "sha256": "1e80110c816a0b86946e7fab87d2dbf2e6311385fd1e1911f23ad9caef79bc8e",
+      "bytes": 595653
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r1.json.gz",
+      "sha256": "4b9b3d6f0639338feabda4321887ba83101c2f2cafade6520229de8e533cdaf9",
+      "bytes": 594726
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r1_final.json.gz",
+      "sha256": "b2fa2e8709f27469b6fad389acfb3d4fea9f585b167186c3b86681ba342d155c",
+      "bytes": 594781
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r2.json.gz",
+      "sha256": "538263e4b9b719a1781d5660ab373cce891f9238b95f1234914154887d761b50",
+      "bytes": 594723
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r2_final.json.gz",
+      "sha256": "05efa1c1ad6e176664f8f30e727520f5aac6157a01d5e1ed873e67a18ca4933f",
+      "bytes": 594778
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r1.json.gz",
+      "sha256": "60d50a0f53c8680b21b7ff87b5ecac6de30674a0cba68595c45461296491d62b",
+      "bytes": 595815
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r1_final.json.gz",
+      "sha256": "cbd6b8df734e764419eaefd6018d6f0e6ac0d1dede89082342642d545e052bc8",
+      "bytes": 595874
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r2.json.gz",
+      "sha256": "6121861b97cd82c06c329f0373657ae3f80bad78e0ad7353788da94f2496336e",
+      "bytes": 595819
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r2_final.json.gz",
+      "sha256": "3e55b3b150381c4382c564d89677975f141d73f0eb72aeafd29bbb512231ebbf",
+      "bytes": 595875
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r1.json.gz",
+      "sha256": "bc92b2f1a65fc231e85b02904d418d7f1afd66261cfe2b0eb378dc1239be8f57",
+      "bytes": 164890
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r1_final.json.gz",
+      "sha256": "9e95b791ba5634f05c2f72ce1ba5b70fbd088d5b809d4ce941d01e566f946074",
+      "bytes": 164947
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r2.json.gz",
+      "sha256": "7ad9a6e92ca1fc2cfef5b4ab06520a1d5f9a3ad3ecb10ffdef7b0e379f659c0e",
+      "bytes": 164891
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r2_final.json.gz",
+      "sha256": "b2bac11f665933030bd6dab14f77322274e5fac5cec05dc3ed99a58cdd57a990",
+      "bytes": 164947
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r1.json.gz",
+      "sha256": "17ebbfeb92ffd5431372da1d5766c01d432b24ee0bc35ca80451b6993b9a868c",
+      "bytes": 167115
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r1_final.json.gz",
+      "sha256": "29dcdd45b1a1581ad2db44a1ffe773dbd299fdc264c7f1ad9cb7b00d62db6272",
+      "bytes": 167186
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r2.json.gz",
+      "sha256": "6399c790b9e43b4813766f5fd57bd320b614a0376116625cb6e0509f87f676d9",
+      "bytes": 167130
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r2_final.json.gz",
+      "sha256": "d93399b297422b565dc87b7c3b1a25b063a155bd08b6b9bed581e87dae322281",
+      "bytes": 167200
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r1.json.gz",
+      "sha256": "5589c933e52b293584cb5bdbd2ec6d8c688ca1082b2288a3a2b2cd3d8ccf6717",
+      "bytes": 167334
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r1_final.json.gz",
+      "sha256": "1987f7fddca4ec43226d53b477b3eee25a20eaa0304f495ff9aeaf8cf7e043ef",
+      "bytes": 167400
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r2.json.gz",
+      "sha256": "1a59805791e6e9c0e7cf3d6e8bc1246c02357b91c827fb90e388cc996839d858",
+      "bytes": 167351
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r2_final.json.gz",
+      "sha256": "70ddefce42529931fa728d78da371a10867bf3c77d213161eeb92488730bc50b",
+      "bytes": 167415
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r1.json.gz",
+      "sha256": "0b3c572d13b701fa904424a7e7e41360875a890d30284b8c6be227134ffda8bb",
+      "bytes": 167283
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r1_final.json.gz",
+      "sha256": "22f840415349dc8fa02fc53be1ce1cd89363842caac0c90d7ab78f36d1890873",
+      "bytes": 167350
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r2.json.gz",
+      "sha256": "ff77b3fa6b81e14632b9761b7aca6476da7aef48905c431aeeb2f3966ca31db3",
+      "bytes": 167276
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r2_final.json.gz",
+      "sha256": "8c7754e7b53862ab1e692fc7e4c8c9586a8dc3cbe6d69b346421b834e681b372",
+      "bytes": 167343
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r1.json.gz",
+      "sha256": "939dd4ed6e2dbe19929e6456b46cb44fa47e74567f5be58aa8f23d989f176852",
+      "bytes": 827127
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r1_final.json.gz",
+      "sha256": "a8eb17f6b0822db1f0777df868fc509ed86afa80aa64d1bf9f28d6ac7230fade",
+      "bytes": 827184
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r2.json.gz",
+      "sha256": "b8e0704174c71e508bde153788fe04dd844e023f2cb902a30cdeb0427ba30d65",
+      "bytes": 827133
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r2_final.json.gz",
+      "sha256": "98bef099570cc9f54ecfad8e65233226e2031fce7fa9b5c174853c94970cc6d9",
+      "bytes": 827190
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r1.json.gz",
+      "sha256": "c1d0c5c8aa47b5a54479cd4fef4e60b45ee65e1ff0171c9c04d0e51f14648607",
+      "bytes": 815392
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r1_final.json.gz",
+      "sha256": "10f1f1f24ac5903e359fc8abe46392ba9720021cfd5833bd78f0882355be492f",
+      "bytes": 815446
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r2.json.gz",
+      "sha256": "f9b19da715e2d086bb6466de2067180146712f28a75c5d20a29755a7bc10246e",
+      "bytes": 815389
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r2_final.json.gz",
+      "sha256": "7d7ca98fab2942cc37cb376724519e0bdf784df015760e27d3f958ba86282d50",
+      "bytes": 815444
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r1.json.gz",
+      "sha256": "59c56edf5e3dc2ddb6b02f1900b03735271af9332bbe1201b8b089cfb03ab6d8",
+      "bytes": 816208
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r1_final.json.gz",
+      "sha256": "c292c38bad0fc52500b302bf4f8db4e9b44f0a42069fcc8a758a758d81a35aae",
+      "bytes": 816264
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r2.json.gz",
+      "sha256": "7ba9d8a032018e5f33adcaefd9a2f2ef9bb32f160d46fec6fd256440dec4c0b9",
+      "bytes": 816211
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r2_final.json.gz",
+      "sha256": "872e449caa5ad7b7b4e78e20ff47094c799750eb94108275d40e92c206271c0d",
+      "bytes": 816265
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r1.json.gz",
+      "sha256": "5c3e69c4a6eeafbf1dd252bfa2db00f2b40b3476d629e146777273e56932184d",
+      "bytes": 815723
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r1_final.json.gz",
+      "sha256": "0c4787ca60b470cc1ec4f76d426eb4f0d04e3766ca590d2b7b8ac57b1bbb8afd",
+      "bytes": 815779
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r2.json.gz",
+      "sha256": "5a376f0c6ab8dd52f0e2e344ecc79ad608ea9336b0ba6d1b06dbaf8cba530ac8",
+      "bytes": 815723
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r2_final.json.gz",
+      "sha256": "7d7d2e56c86b1a251fff799e9640937a46c653098f6097665fc2760cda7225e6",
+      "bytes": 815781
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_guard_resource_plan.json",
+      "sha256": "27ae0bfdb7d40fa1c51055dc0a8e290eb027c1d0896effe89c2ec437febc7066",
+      "bytes": 3163
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_inventories.json.gz",
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_native.json.gz",
+      "sha256": "376e11974ccfefb4e9fb41fda056f4e97bbbefb385c8bd1616a6ccdda78bb26b",
+      "bytes": 295943
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_native_audit_progress.json",
+      "sha256": "4206ba8f97becfdc19e61414faf83af9e9b9fde40a9e1f120039c9d9019f2a12",
+      "bytes": 248
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_plan.json",
+      "sha256": "fe46d9c347ca977491fcc09f491fad1d4192abb9acb6fe0c8e700597625078cb",
+      "bytes": 65286
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_progress.json",
+      "sha256": "09c60bc5404f2801b6579c974703c5d268d95891735a10f412c884c45ba62623",
+      "bytes": 44497
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_audit.json",
+      "sha256": "b496b51cae14404b50b21492db489f3ad40cfa4c72876e41a8c9d80e0e0fd243",
+      "bytes": 316
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_compiled.json.gz",
+      "sha256": "664875c46b5ec96ddeff115adda7d2fb1dffd3f6dccd789d97978085364710f4",
+      "bytes": 801
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_inventories.json.gz",
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_native.json.gz",
+      "sha256": "71765c6a3f13713b3ea24d67a0aba5292c22415b9a1aefe72a574d8cb5d35e61",
+      "bytes": 262411
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_progress.json",
+      "sha256": "01718958230a5dbe0ad8917c0e996a6ef92f5591139b0be6911fae9a8c0dabcd",
+      "bytes": 12202
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_ground.json",
+      "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+      "bytes": 126804
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_v2_resource_refusal.json",
+      "sha256": "e45f8762eac63830d1453cfd4fb1dd2c1ccf75216d557c4a7c1f6dad482b7e97",
+      "bytes": 476
+    }
+  ],
+  "tiny_independent_accepted_status": "passed_independent_tiny_whole_lifecycle_point_body_and_finite_dfs_audit",
+  "source_ready_checkpoint": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v3.json",
+    "sha256": "19320157d1c5122981fee7aaab3ad6b40060698e2d97dbda7393e036f4aad878",
+    "bytes": 4840
+  },
+  "producer_limits": {
+    "outer_wall_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "scope": "One separately authorized full actual controlled phase, not a retry or extension of the tiny phase.",
+    "execution_authorized_by_this_freeze": false
+  },
+  "resource_enforcement": {
+    "owned_child": "Fail-closed external /bin/ps sampled RSS/time watchdog; failure kills and waits/reaps the owned child.",
+    "alarm": "Worker SIGALRM at 170 seconds.",
+    "post_reap": "Supervisor own+child kernel peak rejection and outer own+max(children kernel peak, supervisor conservative peak).",
+    "OS_soft_limit_claim": "none",
+    "clock_scope": "Outer includes pin checks, entire child, reaping and worker/supervisor receipts; final outer own receipt write excluded and explicitly disclosed.",
+    "permitted_metadata": "Read-only RSS of this task-owned bounded child only; root dispatch should request sandbox escalation if necessary, never omit the sampler."
+  },
+  "exact_model": {
+    "prior_point_plan": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+      "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+      "bytes": 119923
+    },
+    "prior_point_outcome": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+      "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+      "bytes": 1423687
+    },
+    "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+    "primitive_recipes": 229,
+    "formula_values": 217,
+    "required_rows": 24,
+    "translation_only_orientation": "identity",
+    "root_generation": 0,
+    "global_seed_placements": 3,
+    "global_seed_generation": 0,
+    "zero_absent_semantics": "Formula code zero is an assigned m-value; absent points remain unconstrained.",
+    "new_provenance": "BodyAuthority adds current frozen input/native/source/audit receipts only; primitive model is loaded from its exact prior point plan.",
+    "local_assumptions": "Canonical per-definition receptor aliases add no global recipient seeds or occupancy."
+  },
+  "prospective_counts": {
+    "all_source_family_bodies": 171,
+    "fixed_primitive_proposal_bodies": 4,
+    "complete_body_registry": 175,
+    "fixed_descriptors": 5,
+    "controlled_states": 11,
+    "complete_state_ceiling": 12,
+    "actual_counts_not_measured_by_this_freeze": true
+  },
+  "planned_controlled_state_labels": [
+    "full_initial_registry_and_graph",
+    "shared_exact_member_after_branch_action",
+    "whole_uniqueness_family_retired_with_legal_siblings",
+    "full_parent_graph_and_hints_revived",
+    "remote_marks_global_forced_before_hint_action",
+    "after_global_forced_shared_member",
+    "after_second_global_forced_family_member",
+    "remote_forced_parent_revived",
+    "whole_distant_cluster_retired_legal_axiom_sibling",
+    "distant_hint_revived_exact_shared_state",
+    "post_rejection_unchanged_complete_graph"
+  ],
+  "full_candidate_obligations": [
+    "Stream the full raw recipe/ordered strict-prior offset language at every row in every declared state and compare every key, t and m against complete implicit domains.",
+    "Record all 229 per-recipe counts and exact complete stream digests; certify zero/singleton from full language, never proposal lists.",
+    "Reconstruct global dead/forced/earliest-generation decision; hints cannot change point degree or later-point priority.",
+    "At selected decision row, fixed preferred order plus complete base fallback is a full permutation; forced row uses the exact base singleton.",
+    "Register every 171 source body and four authored fixed primitive proposal bodies; validate exact primitive member/receptor transport and full authority/body/identity bindings.",
+    "Check waiting/ready/consumed/whole branch-absorbing retirement, exact shared member identity, forced-first resynchronization, and paired rollback before observational resynchronization.",
+    "Reject point-consistent changed family body with freshly recomputed identity/cache/self-hash, plus changed model/context/authority/formula epochs.",
+    "Low-level remote-mark and same-output/different-reference catalog transactions are explicitly controls, not scheduler-valid search actions."
+  ],
+  "exhaustion_scope": "No full-model failed-child pruning is manufactured or tested by this controlled gate. The accepted tiny independent DFS establishes its one exhausted-child exclusion and two unknown restorations; full actual DFS discovery remains outside scope.",
+  "no_authored_target_seed": "Old authored24 witness is bound as historical evidence only; worker never reads its proof word. Compact family projection discards its example field and loads all 171 bodies. Fixed controls are not a target derivation or training data.",
+  "outputs": {
+    "full-language-outcome-v3.json": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-outcome-v3.json",
+    "full-language-launch-v3.json": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-launch-v3.json",
+    "full-language-supervision-v3.json": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-supervision-v3.json",
+    "full-language-lifetime-v3.json": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-lifetime-v3.json",
+    "full-language-stdout-v3.txt": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-stdout-v3.txt",
+    "full-language-stderr-v3.txt": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-stderr-v3.txt"
+  },
+  "expected_outcome_schema": [
+    "comparisons",
+    "states",
+    "controlled_operations",
+    "authority_registry",
+    "descriptors",
+    "rejected_corruptions",
+    "identities",
+    "full_source_bodies",
+    "complete_primitive_recipes",
+    "formula_values",
+    "required_rows",
+    "exact_prior_point_model_epoch",
+    "lifecycle_source_relation_epoch",
+    "controlled_states",
+    "all_state_candidate_key_t_m_comparisons",
+    "graph_metrics",
+    "lifecycle_metrics",
+    "preparation_costs",
+    "worker_seconds_before_receipt_write"
+  ],
+  "expected_child_status_if_all_authored_checks_pass": "passed_authored_full_language_lifecycle_controls_pending_independent_audit",
+  "independent_actual_gate": "External independently owned reconstruction is separately frozen and root-reviewed before its own dispatch; source freeze and producer acceptance cannot replace it.",
+  "cost_accounting": {
+    "tiny_first_failed_seconds": 0.27281391600000005,
+    "tiny_second_failed_seconds": 0.32272041599999995,
+    "tiny_third_accepted_seconds": 0.424369625,
+    "tiny_cumulative_seconds_including_failures": 1.019903957,
+    "independent_tiny_owned_seconds": 0.314626667,
+    "independent_tiny_terminal_metadata_seconds": 0.134897458,
+    "tiny_child_peak_bytes": 63078400,
+    "independent_tiny_peak_bytes": 38273024,
+    "budget_separation": "Prior tiny and audit work stays charged separately; it is not silently reset or subtracted from this new 180-second full phase.",
+    "earlier_work": "All prior geometry native admission/repair/resource-unknown/static expansion/primitive full-model bills remain bound by preserved evidence. Cached family source authority is not free or freshly native-admitted.",
+    "full_source_authoring": "Unmeasured; no cross-process monotonic subtraction or CPU effort claim.",
+    "new_static_freeze_seconds_before_plan_write": 0.506802709,
+    "future_full_exports": "Within-process family preparation, descriptor/controller preparation, and cumulative graph/hint scan/order/rollback counters. The old tiny omission of exported subphase counters remains."
+  },
+  "authority_scope": "Finite checked symbolic source relation and host point/hint conformance only. Native/compiler preservation, formal aggregate execution correspondence, arbitrary graph-metadata mutation protocol and searched higher geometry theorem remain separate obligations.",
+  "owner_command_after_root_review_only": "python3 .gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+  "actual_model_executions_by_this_freeze": 0,
+  "target_DFS_searches": 0,
+  "native_queries": 0,
+  "compiler_changes": 0,
+  "new_RL_training": false,
+  "native_authority_activation": false,
+  "static_validation": "stdlib hashing/read-only JSON receipt reconciliation and ast.parse only; no kernel import, model load or scientific execution."
+}

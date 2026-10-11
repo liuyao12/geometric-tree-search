@@ -1,0 +1,255 @@
+{
+  "status": "passed_independent_read_only_terminal_helper_reconciliation_v8",
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/phase-receipt.json",
+    "sha256": "bb1235b9db0dd63f55dd6dcc6b8f2ff253fd462f6f5c7e547545d6b1200bf715",
+    "bytes": 87135
+  },
+  "helper_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helper-plan-v8.json",
+    "sha256": "a8a74b59ae06d34d314dd3d6290fcefabe0f0668e49ffb6336ab4c5f10263b46",
+    "bytes": 5736
+  },
+  "source_review": {
+    "path": ".gcts-active/stochastic-replay-v8-independent-20261011/source-review-v8.json",
+    "sha256": "d4b02850e157dbbed7e640c2db01f5f3ce62dfd7b0301a0209080d589063d04f",
+    "bytes": 18949
+  },
+  "actual_receipts": [
+    {
+      "job": "synthetic-controls",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/synthetic-controls.json",
+        "sha256": "fde8946e8d2e09f302d2962440902b82a1e82be077563f320b0eeb95c7b04056",
+        "bytes": 53146
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/synthetic-controls-lifetime.json",
+        "sha256": "b9325798612e9f422ea52a9b21c5fefaba45b20b9df0ba3e5a92e28708fc45a1",
+        "bytes": 1048
+      },
+      "full_worker_seconds": 0.520260166,
+      "conservative_peak_bytes": 94928896
+    },
+    {
+      "job": "effect-pilot-reference",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-reference.json",
+        "sha256": "5f01ea2e3e4da05835993bc26e391f8ed9a9673279aaa11b20f5cc940529d6ba",
+        "bytes": 1570
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-reference-lifetime.json",
+        "sha256": "f2ea6003d0652ededdf57b0991e3d874107f35cda427e7561361c3d836cbb4ce",
+        "bytes": 1061
+      },
+      "full_worker_seconds": 1.0945369999999999,
+      "conservative_peak_bytes": 247005184
+    },
+    {
+      "job": "effect-pilot-repaired",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-repaired.json",
+        "sha256": "ae6997f6823079379c01b56db6c3d8929a7d31432946c244a4e0c79583e90711",
+        "bytes": 3973
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-repaired-lifetime.json",
+        "sha256": "0d70d61c4a870c6fe4a79d6b9e3590d472c6efd9109024bf8f992b73f878b33d",
+        "bytes": 1051
+      },
+      "full_worker_seconds": 2.727365958,
+      "conservative_peak_bytes": 44711936
+    },
+    {
+      "job": "train-01-reference",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-reference.json",
+        "sha256": "fb7e007a3b47edc45581263e1ca787bbd3bff23aef62ef246bb7de7336e3505e",
+        "bytes": 1583
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-reference-lifetime.json",
+        "sha256": "cec80850f76f5ae77a3926c34e13bdce58d0a8c66b986955478225ba65a2b32f",
+        "bytes": 1057
+      },
+      "full_worker_seconds": 0.8560385000000004,
+      "conservative_peak_bytes": 246333440
+    },
+    {
+      "job": "train-01-repaired",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-repaired.json",
+        "sha256": "0a1cc684e4ff3dc0662d4524fa0b38aeaf1328e66b90fb47a3f555fd26f07b8f",
+        "bytes": 3975
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-repaired-lifetime.json",
+        "sha256": "f8311cb16d8a3eaaef4e6950b2c87cc4cf7bee67c90ed11ee264db5d009efa83",
+        "bytes": 1054
+      },
+      "full_worker_seconds": 2.6092299170000004,
+      "conservative_peak_bytes": 44810240
+    },
+    {
+      "job": "train-08-reference",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-reference.json",
+        "sha256": "a9a74f3ecb05760026710ce9dc71e8ed63c79829df142e559344e47d04e89ec1",
+        "bytes": 1590
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-reference-lifetime.json",
+        "sha256": "db55d568674e27286789e6dbf0331b081dae57ce014ca0f5bd82a09093148fbd",
+        "bytes": 1057
+      },
+      "full_worker_seconds": 0.8562361660000004,
+      "conservative_peak_bytes": 248152064
+    },
+    {
+      "job": "train-08-repaired",
+      "output": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-repaired.json",
+        "sha256": "fc9e6fe6005fd956cc5d52f35086bfaaf1392991d8d581ae75656b8db7e158bb",
+        "bytes": 3974
+      },
+      "lifetime": {
+        "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-repaired-lifetime.json",
+        "sha256": "8bdc42f2d6bc400edcea33c27cc33a88876a8fa2279f009ab753bb7d54e913a5",
+        "bytes": 1046
+      },
+      "full_worker_seconds": 2.65057075,
+      "conservative_peak_bytes": 44957696
+    }
+  ],
+  "full_reference_repaired_pairs": [
+    {
+      "reference": "effect-pilot-reference",
+      "repaired": "effect-pilot-repaired",
+      "fingerprint": {
+        "sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+        "bytes": 16922271,
+        "protocol": "full_original_compact_JSON_fingerprint_v7_not_sorted_canonical"
+      },
+      "nodes": 501,
+      "events": 41,
+      "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "reference": "train-01-reference",
+      "repaired": "train-01-repaired",
+      "fingerprint": {
+        "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+        "bytes": 17013409,
+        "protocol": "full_original_compact_JSON_fingerprint_v7_not_sorted_canonical"
+      },
+      "nodes": 501,
+      "events": 51,
+      "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "reference": "train-08-reference",
+      "repaired": "train-08-repaired",
+      "fingerprint": {
+        "sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+        "bytes": 17286616,
+        "protocol": "full_original_compact_JSON_fingerprint_v7_not_sorted_canonical"
+      },
+      "nodes": 501,
+      "events": 62,
+      "weights_sha256": "20d8e314e2b484e038b909ac8a0b840f02f166cff7bbc3d624953ce008cecbbf"
+    }
+  ],
+  "persistent_positive_and_actual_helper_database_pins": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-repaired-complete-spool/complete-trace.sqlite3",
+      "sha256": "57a03ed7aac0800049cb64aa6d749c2cc6bb1f48669366da5176990662f06f76",
+      "bytes": 17678336
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-repaired-complete-spool/complete-trace.sqlite3",
+      "sha256": "0a791eac4b4cb65a39f3bf2ad96b5ab26c982946270a80505db571fe1b06804d",
+      "bytes": 17756160
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-repaired-complete-spool/complete-trace.sqlite3",
+      "sha256": "0b50e18b066a9708f50e6475e84de0cbaa694c4fb64bd5accdf47fa9b4041d5f",
+      "bytes": 18034688
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-0-store/complete-trace.sqlite3",
+      "sha256": "1bcd28622c52223e6eaa49a17a54b699c9da44a7321a5c847904331e9760ef7d",
+      "bytes": 28672
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-1-store/complete-trace.sqlite3",
+      "sha256": "215cc5b88c10fd19c1f49b90227361248bd802d21149a0bdd8bc5890c0771617",
+      "bytes": 28672
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-2-store/complete-trace.sqlite3",
+      "sha256": "d7cabb92dfe592e79be987f526340a32f9f0b14f3b81f5a35fad90866d90b62b",
+      "bytes": 131072
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-3-store/complete-trace.sqlite3",
+      "sha256": "d7dd73c36bdb299689e7bbb68e5918b12d1e07953166ce0c0a3aaa24d9faf67e",
+      "bytes": 344064
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-4-store/complete-trace.sqlite3",
+      "sha256": "06868f4d0f0d794343bb653ab8941ac417f46e38db02a09e087a96ca1d60cf96",
+      "bytes": 188416
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-5-store/complete-trace.sqlite3",
+      "sha256": "dc3a6937df729153e6027990ddbf6eeda0ef0740b8712d363f1c9fdbc90eda79",
+      "bytes": 634880
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-6-store/complete-trace.sqlite3",
+      "sha256": "9e4b1337a22e56f92adca668fd7182f7f864cc81c2a8e8254ed8619a0226e43b",
+      "bytes": 28672
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-7-store/complete-trace.sqlite3",
+      "sha256": "6e4fbd7fab468b98f96acb732aeebd805491c68e0f771e3ac4f7d7bdde429d6c",
+      "bytes": 28672
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/synthetic-controls-9hwjb60q/positive-8-store/complete-trace.sqlite3",
+      "sha256": "c4e93a5d366b039ffd1a32616f4fd5b3ff25b85b31b951bd200ee4692b8f25b7",
+      "bytes": 49152
+    }
+  ],
+  "actual_controls": {
+    "positive": 9,
+    "rejected_malformed_scope_depth": 15,
+    "rejected_mutation_or_type_observations": [
+      "mutating_shared_list_is_not_supported",
+      "unsupported_materializing_slice_distinguished",
+      "proxy_write_rejected",
+      "query_only_database_write_rejected",
+      "event-assigned-zero",
+      "node-field-omitted",
+      "child-omitted",
+      "event-omitted",
+      "empty-container-type",
+      "field-order-changed"
+    ],
+    "duplicate_key_scope": "Standard JSON last value wins, first key insertion retained; full byte gate rejects duplicate lexical fields."
+  },
+  "owned_gate": {
+    "all_seven_children_exit_zero_and_reaped": true,
+    "phase_seconds": 11.322690625,
+    "phase_peak_bytes": 248250368,
+    "cumulative_charged_seconds": 365.926326334,
+    "remaining_original_seconds": 414.073673666,
+    "limits": "25-second helper internal / 30-second owned; 180-second helper phase; 512 MiB conservative owner+fresh-worker peak, all pass."
+  },
+  "full_replay_prerequisite": "This terminal helper gate satisfies complete scoped loading/type/byte correspondence prerequisites. Root alone may activate the frozen full evaluation phase with exact helper/source/independent/root terminal prerequisite pins; root reports it has already dispatched the sole phase. No restart or extra worker is requested.",
+  "scientific_scope": "Helpers reconstruct full original bytes and scoped saved values, but perform no mathematical graph/RNG/tree replay. Full six fresh actual evaluation trajectories remain pending their own terminal gates. Successful helper loading does not establish proof discovery or RL search gain.",
+  "preserved_failures": "V7 failed synthetic gate, erased synthetic spool caveat and all prior audit costs remain unchanged/charged. V6 stays unexecuted. V8 keeps persistent evidence paths.",
+  "executed_by_review": "Metadata/receipt/source/database-file hashing only; no SQLite queries, decoder helper, trace inflation, model construction, graph audit, search, training or native call.",
+  "review_seconds_before_receipt_write": 0.04859758300000001
+}

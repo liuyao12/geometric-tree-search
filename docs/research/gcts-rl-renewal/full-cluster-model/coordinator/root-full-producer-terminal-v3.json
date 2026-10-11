@@ -1,0 +1,40 @@
+{
+  "status": "terminal_full_actual_geometry_producer_pass_pending_separate_independent_audit",
+  "exec_session_id": 87978,
+  "exec_exit_code": 0,
+  "pid": 31424,
+  "owned_terminal_reaped": true,
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160
+  },
+  "outcome": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-outcome-v3.json",
+    "sha256": "a13ac25272a23d4b89cf2bab2b1e6f297c8a0fa4533c81e1729bc0d995b8953b",
+    "bytes": 19973006
+  },
+  "lifetime": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-lifetime-v3.json",
+    "sha256": "b5f926cfe25fd162589ad96dbe613141f9bca6b0d1424a798b30e490cb6a10a3",
+    "bytes": 873
+  },
+  "supervision": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-supervision-v3.json",
+    "sha256": "20a9cd0ed172dc09b74eb4ae51b4a7fce41d4663f3eea9e57faa504fa1b97cf9",
+    "bytes": 157128
+  },
+  "counted": {
+    "full_source_bodies": 171,
+    "complete_primitive_recipes": 229,
+    "formula_values": 217,
+    "required_rows": 24,
+    "controlled_states": 11,
+    "all_state_candidate_key_t_m_comparisons": 2979447
+  },
+  "full_owned_seconds": 38.96669625,
+  "owned_peak_bytes": 260587520,
+  "no_target_search": true,
+  "no_new_RL": true,
+  "no_native": true
+}

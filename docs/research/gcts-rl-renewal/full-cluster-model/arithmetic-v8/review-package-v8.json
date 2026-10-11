@@ -1,0 +1,410 @@
+{
+  "status": "frozen_source_ready_v8_fixture_successor_disk_backed_complete_replay_candidate",
+  "helper_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helper-plan-v8.json",
+    "sha256": "a8a74b59ae06d34d314dd3d6290fcefabe0f0668e49ffb6336ab4c5f10263b46"
+  },
+  "evaluation_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-plan-v8.json",
+    "sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510"
+  },
+  "consumer_argument": {
+    "path": ".gcts-active/stochastic-replay-memory-v8-20261011/consumer-use-review-v8.json",
+    "sha256": "be08702888eff9ee5ad5c96715c2e7b4ef37c2a7ede9dc2bba0c33a5e58f07d6",
+    "disposition": "awaiting_root_and_independent_review"
+  },
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_worker.py": "ecca7ab2d8a79761c10f2f2aae8efc4b84ea1e6527a17aa631d8aa7fb03d9788",
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+    "research/gcts-rl-renewal/commutativity_cluster_audit.py": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/stochastic_policy_math_audit.py": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_stage.py": "6eed9307ae336e4dbb7ab6b77669008ccc544f387e665f209cec7215865f58b9",
+    "research/gcts-rl-renewal/arithmetic_stochastic_audit_freeze.py": "d0621f386dccf4a228e67bef6fd938c27c8cd96a4c91d46f433333096cdbb456",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v1.py": "18227cb04ef5b6630cd495070b1b63490c26fa6146163e59d65c38b3ee9a3e70",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v1.py": "3df94d87bb94f60faaa07ccd29050c7c1a4ce131955c4f3bc8ee4593bb14e2d2",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v1.py": "a7ee07cf3e35db892079bbfaa021f2f10096635786eef73203413cb19ce7374f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v1.py": "1bca2d5a7dbeaedb10515ec2ee500ece6104db9ba46b8d841cb7101c4cb037b9",
+    "research/gcts-rl-renewal/commutativity_cluster_intern_v3.py": "5ccbdbc2fae55eedfde8b55af1ee3df3abc2054cf424dd8f4c40f02403ceac8a",
+    "research/gcts-rl-renewal/commutativity13_json.py": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v2.py": "89b0cf5b03fcc14d5cd77205ad0c36237c77f8199d86bddb8507dfe94c38c66b",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v2.py": "dd5feef1a0bb220500c3863ec7f379938d9ab7d1665136cf384bd3f0052245c8",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v2.py": "33f53598c8d76ea26ef9a15bb8760918d84d77ed31fc9759fc7a405dae602fa7",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v3.py": "2093c1ab351ce47e75bc4bed50306c0346755ca906c7293d1f0f204ac8453ca7",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v3.py": "59c64bfbd159dcaa41c9521e2e54710954e66796d5d2f748ec37f09c63648730",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v3.py": "9bf20c86c91c7e01984d8ec4636989fea20509a686f6caf989317eeb3a98cbef",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v3.py": "ee292a707c6c6c22451891c0ee088b0f79e6082246a523892842c7be2c42582d",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v3.py": "0e29ecb81298779e03c0dfe0ebb2e5af94645f9d76a6d98309929ca522acb6c6",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v4.py": "c1966acecdd3abc09ad3f4d3a53000e6d5a00ff0705610d0144f8bf162463b3a",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v4.py": "6d8ed3df6a1269007153c4db1f2adf0c34513d5ae4dead0b1c7b4cd4c0452099",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v4.py": "a93c916e3d6a5450e04544aa13f46d27d6051bd969bc99bbf0679c99c55743ff",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v4.py": "bb0d6b6bb904bc4224f894d6834296f31dd0fced05de8f4cbf70115751a47404",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v4.py": "844de7793e999f123128901d018d96da5edb64778cc4f07589be3e8c2cecb30c",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v5.py": "78976683a231796acd0ab199d4e672981cfeb3676e5b7d00a27f636056a01a68",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v5.py": "7c00557ea3530993b80d1e1866b4fc8365a2b860b241c6f6ef6ff0cee80b8368",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v5.py": "57e19ef40ed89f08ea362d26ee3e431d4b9bbc47aa29188e1f5c263ab02d8fd9",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v5.py": "386c68eb9eff05a6b836e411d85a1e9f1328088383bcf369b79e471c7773df54",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v5.py": "a26c9483b565504dbe7fdff1a2d808cb94dcfbf6943a74975f1c4475e401668b",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v6.py": "f5b7962fe788892912306a6ce9cf6353971e15e0ea5fa5a21108c2e6dc9fbe67",
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v6.py": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v6.py": "b6bc5cfea8d08a1a7fda2834bba50780283d88cc4f230ba5500a1aecc4aeb483",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v6.py": "fbc299c934af68bb5bbacc975c687d7363068bf23c7ce4846c764089708c7ffa",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v6.py": "e402acf4d5a87ca2e8b1d2712b34c8f2ab105f5ee663d80fc64bd34f4991cf02",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v6.py": "45b30aff7ffd402d895c612f90c052e547ec9e072fad9bf99f2a2495cca2ddfc",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v7.py": "8643891dd6cedb5c817604c4618d34b51c8cb0a0e4045a06f36d2c9cdd11b83e",
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit_replay_memory_v7.py": "8b442347defe0a326d66730110799386daefff3759b902f350fd0834556c5931",
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v7.py": "c702f560dba074eb0a880a2a52e7588bbdc6eab53e4534a807e7ed9f99e0a8e9",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v7.py": "47c196b5b37caebe9682b73a50a7907f09629ef4c0e5a4f72811ad8a4a9b006b",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v7.py": "717de4f2fb58dfc8d282cf1cb0b2e8c8d3d7e8897996381a8111b1ac3815962b",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v7.py": "7ac57fa2a925171c4afd9189fee7c6d6ed7799ff058ae58e10a84ee1d88a94f4",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v8.py": "1406a2cb78a617ed432a6155dc4c262bdd2c494f271529be7ec63bb1ae64bbaf",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v8.py": "fc02010c508d6b306ae2960ab57c5035a2a39a7e52ca5e5e6e8f43c68d19678b",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v8.py": "7a719ac3d77f1e4a5e7e98a1088559557dbfea6d1a880dd53ba486dd53866bda"
+  },
+  "input_sha256": {
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/phase-summary.json": "252daecc2762c5c2d7ee066d70af117d0aee95a6b32e3a172db44f81fd7f182c",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-search.json.gz": "c1b52c59ac50bc3e05fdac104b223c2b090a73416bf0d045c220c78e672dda6c",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-summary.json": "0782afc93dafb9cc0c14f8c74d3311b70060057354c00b7c6cee7d51e6e77bfe",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-lifetime.json": "9efee273bc8643abca5dbc3933bb1615b8f210233d3bcec938f7f41c79976259",
+    ".gcts-active/commutativity13-20261011/model13.json.gz": "69f13a99bcd3424555e24438c479521feb62bc95b3f256342bfd6f24c0898d8a",
+    ".gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31",
+    ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz": "740d0911c7e2d9a9ded413dd3225942cd6dc50b112871f722d0fdf04a716a162",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-summary.json": "8d58eb1bf21a159cc51c010c935b99cbe0fc9511897c7e6bb8ee4dfd22e162ed",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-lifetime.json": "8a1e91a011071160565014c5a9403500ee2d04f93fe64b387ebacf8e0e5d1da7",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-search.json.gz": "853910b40681bcbc865a9ff779bf08a752b7341a5eb805777217aad0e67b5d96",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-summary.json": "e5e94fafd91ad6b78ba1f092dcb005302d45d6f7a3126ac65258b81d751770c8",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-lifetime.json": "6bb234cb53d0fe8d07b3ecbebd27a5416c4feadc3fddc2108f504882d6e90136",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/policy-final.json": "fc45b236e35b444547ec18cb95b68a6fa3b441a03f02e2c6962a4101265d5387",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/independent-audit.json": "5c10abeb1ec555468cb0512e67fee00ee304d464f0c444418dbd3a2263f560dd",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-search.json.gz": "ca987df275959cae8187e6c415afb022e418a78b5b6bddc87d97a5c5bb085739",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-summary.json": "9f5d3711235398c3244176a6cc4ab87d88f5c18c0a8d92a7eafa6761324b5fb5",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-lifetime.json": "bd4ea26ef0d801b6bee93af9806bb42d9458f8dc61f08f7ee721c2e6b21ffc3b",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-search.json.gz": "48821a8d7f13dd1d046b01b3b2522b5a0eac96fce1daba0915b29d784b86b154",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-summary.json": "d6e28c09d05aa9d1f5e6386d4aed6bdfeff2067a0bba74f9c2f08d2fd093ee5a",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-lifetime.json": "1830e4c8d966589b3f1cce653cf16b4ac165efc1163de62dfdf564628fa3a1af",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-search.json.gz": "c4cd9b1c1891980aa43ea4a28e313514947f07140c871ca6185ea060d8ed8f8f",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-summary.json": "431a7a9ba1c9454a39ff0cd5df74b8a3999c3514312f88be3408798cc88fd564",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-lifetime.json": "d6468676e5083d876049bf05aab630fd1033ca3add04879c24fc33224be1c8f9",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit-plan.json": "35a6781ba73de988a4e42191b28daff11225c2d63047541f54439961d75dcd49",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit.json": "86b23ececb85b83484b5693c2ffee0adad67415a5c8a42e0e3c589986e324c60",
+    "docs/basic-tiling-algorithm.md": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v1.json": "409704c4cb6f3cfa0f14cbe9326f399ed354da6b0805e79f8cbeec663442e32c",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v1.json": "f69665c7f75652062e986730af0656a8f8c74c52be985350fff897d1108880a2",
+    ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v1.zip": "8cd77d0657607c47d8aec920ba60940d79c6869dbc31334958793ce94a06a8e4",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v1.json": "eee6b0e66959d7c3f525601b6e73df9e0db71f9f6342ba5a60bce684e6289dc8",
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v2.json": "d966f03be6fd31f598cf4d79f4146c02dabf67d7281b9a68cd6373ae2e636953",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v2.json": "68d3a94a16cd236f4bd2e2f560e81fc9e54195431350937d89c97a668ceb9ec9",
+    ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v2.zip": "98e2c19df0c27877185250527b63fde29ddbfb22ea69ae24e99d079e1190bb71",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v2.json": "df1937d10d634a11ee9ddacf110a7e600e8976cf626c4adb11e86b793c304f11",
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/phase-receipt.json": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v3.json": "707b4a3d10c839e1505f838c5b4d91cdc3b827f730622b75f6807fcbd9af9df4",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v3.json": "d3371744370204d4625b459698020f70b3d9fa752e4115f360380664bfcb7061",
+    ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v3.zip": "74be7a8c041a4aaa86b89a6923136175da89c124d52950ac059d4d1c03eb9613",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v3.json": "50ccaebcd44db6561e33ea8a1ce33bad6db1fe9b3806139445c48322d772f2db",
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/phase-receipt.json": "e834b4f23db96b246a05dada7db75ea67f75efb79eb31e62de180537bda71f81",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r1-audit-plan.json": "6fc746ccaa8908c45a8efa982d1788d8ac264524c1c55ab873dff6b54b822649",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-audit-plan.json": "9823568bd5f0bf06e266b04f721d2b40bf90ea4139819cc906c0a33dfe4a0653",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r1-audit-plan.json": "df05033f141dc40244a9ac65c7cb7080e1ac70b7a5c26b4040cf4bc3d06b21ab",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/trained-r2-audit-plan.json": "b33f392b1f0325da8615ad3244b0ed97f842ed95d309c2577f3d6d431f31ba93",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r2-audit-plan.json": "4d17c1fde0a0d6ce9eb18b68808a4e1966ff714ccc4093e4aa7adda28055fd9c",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/base-r2-audit-plan.json": "86ce70b6b73022e1eeddc7e6e77a711ee092902465503cddc40e4e534d1ca806",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/consumer-use-review-v5.json": "031cce13e89708a7a2d3912c750d69f19c71a5bf10072a64a85534d1eea90b8d",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/authoring-start.json": "fdb2910e7e7881635c92fb69e305228b9aef87c199c8d1d4c17db7217c9c92c3",
+    ".gcts-active/stochastic-replay-memory-20261011/next-loader-strategy-v1.json": "1f971212a5040c72514fdb50f3c479db2b20a0014cd6f1988b4701b9ba106f31",
+    ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/phase-receipt.json": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/phase-receipt.json": "e9372a0368c7a8454a08dd20786049fd0c225e227cb0cc76045582dd3139e047",
+    ".gcts-active/stochastic-replay-memory-20261011/review-package-v4.json": "166fda258fa60dcfbd09be64b0d0ce55804a80eeb05b3d1e51629800785efc0d",
+    ".gcts-active/stochastic-replay-memory-20261011/evaluation-plan-v4.json": "f8f64b814f82e45a4286ea3c21e0b1c24382621918c005fc4b979d7146a6debf",
+    ".gcts-active/stochastic-replay-memory-20261011/helper-plan-v4.json": "ce0fec85f7f695c2551d009b0785e8b8fabe9eb4f6d627187c9362cada078249",
+    ".gcts-active/stochastic-replay-memory-20261011/source-snapshot-v4.zip": "df37c52a7d0839f3551f57e1a98c3816178a4eec0f57421defa66a04d0c2183a",
+    ".gcts-active/stochastic-replay-memory-20261011/source-verification-v4.json": "bbb872f729995b18fd21f2ba1cd16f315fc66111918daf2ffeb3f3d6bad1c80e",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/consumer-use-review-v6.json": "57aa05e6adf68ea758e492103491320ffa5fdba5ff6aaefac49b8681dcfcf6b9",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/authoring-start.json": "cda959a3e609f0d79b1447c2fae523d25cb5164139d6fb61a72df4f0ad2b68d4",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/scientific-lifetime-only-v6.diff": "94c950431b2e6640bf18d30a7efd287e76e5adb982197f2b60b5a7d3ece2f7b0",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/worker-loading-only-v6.diff": "cf835c77a317dfbfce885d6e38e6ce28bb4c51019de5962e6318f565f708ebd4",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5.json": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helper-plan-v5.json": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/source-snapshot-v5.zip": "d37ceac3d2d94886bc745280d7d7c372622ee5b2521ae536b70290e380c69ff7",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/source-verification-v5.json": "e8c2cf64693fe8fa7b0c7edf8c454ac896e593a3a04b7d198ebd691252955bdc",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-benchmark-source-only-v1.json": "675caf25cd7010b7e31bf6f1e544f27b7fa86d4f6e89c693f0b31470822ac7c7",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-inventory-provenance-v1.json": "14f1fe92d1020bd7e9c99c2ec8a253ce26483a33c0d87978a043bd569c642b2d",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/helper-terminal-review-v5.json": "e56c60f61e727f9d68a9b831ca7658ebb7f96c6d5a6ee345894851885b9703f0",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/actual-terminal-review-v5.json": "bb09ba7a2632dc2023f8c3a2afd757ca491eba67ad2e31069a32d228e5795c31",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/consumer-use-review-v7.json": "c6888e348d0141bf676693bbce54a1b5985a8023a86264e88b127d67852a0e86",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/authoring-start.json": "2ec8b4eebc8252004cd1961a8de7126a8bc4d30be3f9a2fa47bf5bec54635ebe",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/scientific-lifetime-only-v7.diff": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/worker-loading-only-v7.diff": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/review-package-v6.json": "a822fbdde5914f259a41d68d4f3018bd98199848e02ec6c8c04277e27ce349f6",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/helper-plan-v6.json": "ec2e8e04f6b869b62244017af20d33cf3bed5411c2fa84d7e19cdd8350b34a61",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/evaluation-plan-v6.json": "ad69a4888cdd39a4d425839fd61991891b55c9c5e7347930ad338b30b0ca82ba",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/source-snapshot-v6.zip": "fd0a58df6cd7ca0720a0a77eb7c96d6caf1776578d854f523e55acfe3e96401e",
+    ".gcts-active/stochastic-replay-memory-v6-20261011/source-verification-v6.json": "705fc91cd23619aba3fb68fc6b81af44b3d093420b3a209bfd35ca9e23ecdfa9",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/consumer-use-review-v8.json": "be08702888eff9ee5ad5c96715c2e7b4ef37c2a7ede9dc2bba0c33a5e58f07d6",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/authoring-start.json": "a2e3c9a6823f79fc3013df81e46189f11e087171fe6f4bd60cfc4295bb96ab7b",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/scientific-lifetime-only-v8.diff": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/worker-loading-only-v8.diff": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+    ".gcts-active/stochastic-replay-memory-v8-20261011/fixture-only-successor-v8.diff": "5594c69dbee2e691ebbb19b6eb50f9b4463572a221349e9b7946a8d83e7b844a",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/phase-receipt.json": "172e44926cb1b018b671514b76d6021a872206b56a924c4cb711d20dd78b4fd0",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/review-package-v7.json": "5e1b154e593b07eebce66d05b00daa2f4479740b3d2d6666b1dee45f66039578",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helper-plan-v7.json": "947b716803bdcfa6e9cdf11471045e61a3df4389a334ec74b82391bc0ff14254",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/evaluation-plan-v7.json": "353a5e2e09a7da36100e000f8bcc713baec997aad52c468799427ff02013ce56",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/source-snapshot-v7.zip": "87a215685908487614124f7e92507961346476dbc8bee4c7b947e3eaebbbf26a",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/source-verification-v7.json": "d04f9cb9940f477fa33f78dd348acedc211fdcab8eb76f40167da1507ad94003",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helper-activation-v7.json": "ca93bff3126dd446363f3eab29f1c64367ab4c172267e3ffa0304f68ab253116",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls.json": "697d7713c393b7df5db2896cb2862036cccc5b8fb9e476b9f8a907d9a270c418",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-lifetime.json": "91f99efad0f0d150c2a0fea0ffceb4b29ab59a4cb67c52984e4f6361c679d89d",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-stdout.txt": "c643b7bf145a03b26379f75e77cff7d59b9ec7e125c283fb006a51d74e5374e4",
+    ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/synthetic-controls-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".gcts-active/stochastic-replay-v7-independent-20261011/source-review-v7.json": "3dce9db5fa629e659908967b5888789f3b538374f814d927d71e1ae2e1311d72"
+  },
+  "files": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helper-plan-v8.json",
+      "sha256": "a8a74b59ae06d34d314dd3d6290fcefabe0f0668e49ffb6336ab4c5f10263b46",
+      "bytes": 5736
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-plan-v8.json",
+      "sha256": "8f098a0e00a5b359788487a182866d88ffc4ebd4125c666c3bfd6efcc1d47510",
+      "bytes": 31363
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/source-snapshot-v8.zip",
+      "sha256": "b5a36976648c56d47ca8c4d31cdffb2ef1efc569cd8daaf83d8349bd64b5e7bd",
+      "bytes": 362883
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/consumer-use-review-v8.json",
+      "sha256": "be08702888eff9ee5ad5c96715c2e7b4ef37c2a7ede9dc2bba0c33a5e58f07d6",
+      "bytes": 486395
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/source-verification-v8.json",
+      "sha256": "47f48aa5b687061ff9314d104463d73e93d52cb8d25a3a8d40ca55227d443c7e",
+      "bytes": 1399
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/authoring-start.json",
+      "sha256": "a2e3c9a6823f79fc3013df81e46189f11e087171fe6f4bd60cfc4295bb96ab7b",
+      "bytes": 222
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/scientific-lifetime-only-v8.diff",
+      "sha256": "a56dd5b24a3397644063b53b1be5ba601a8657003fd0b3722cca8037965219c1",
+      "bytes": 1204
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/worker-loading-only-v8.diff",
+      "sha256": "d47e931bf4381415ebea3fcbcaf822061297d3d37744018f8a0ffe9dd0918e93",
+      "bytes": 3280
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/fixture-only-successor-v8.diff",
+      "sha256": "5594c69dbee2e691ebbb19b6eb50f9b4463572a221349e9b7946a8d83e7b844a",
+      "bytes": 2213
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/synthetic-controls-plan.json",
+      "sha256": "ee1c775de9f8db4890c2f6a7328374b812f1479ff95bf7ff0bc650358aad286d",
+      "bytes": 1225
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-reference-plan.json",
+      "sha256": "08de4df18a5339128d6b723cd75d0889cedb1ccc80a069ea559d75beb565ee02",
+      "bytes": 1530
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/effect-pilot-repaired-plan.json",
+      "sha256": "ace0652f558fde53d483266f823acef7004256db7a1e3e3b86578f31fe6fdb08",
+      "bytes": 1650
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-reference-plan.json",
+      "sha256": "5fcfcc7deeea6afef2880d9e088fa2b4d45ac515eab8560344fa94b800c2d940",
+      "bytes": 1518
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-01-repaired-plan.json",
+      "sha256": "1684ae8126679958b2ad58bffc38aa655690ffecc4a30095891981bb29de0e83",
+      "bytes": 1634
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-reference-plan.json",
+      "sha256": "ee2931c89586781f7a764a446c87d87812998565e3e65f720923bc74759e18cf",
+      "bytes": 1518
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/helpers-v8/train-08-repaired-plan.json",
+      "sha256": "df31ac03b43151563eec19ce2254b39a235a7ce918eb32e3177137233783ce3d",
+      "bytes": 1634
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r1-plan.json",
+      "sha256": "bf822202a24abc4508073645c59ec77aa9f67a84736a99c502cdc32d1b38c842",
+      "bytes": 12328
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r1-plan.json",
+      "sha256": "1d6dbbc2b548359231f011e8daf83b463ca26e932c676c4594c76669067a5ec5",
+      "bytes": 12368
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r1-plan.json",
+      "sha256": "a39b65b51cc19f6c7d3bcba1f855385936fa9e84a628880f94ed737855310501",
+      "bytes": 12932
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/trained-r2-plan.json",
+      "sha256": "6cdffe36515ba213a0445515b702eca59f0b8e16bba8c32e3a4cf634f22ab918",
+      "bytes": 12932
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/untrained-r2-plan.json",
+      "sha256": "9449269ffba640ced4216f4e816ff7659b6a0175027905bb858216919c2975dd",
+      "bytes": 12368
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v8-20261011/evaluation-v8/base-r2-plan.json",
+      "sha256": "b6c91ef78808ac3c686ec1ce29c90dfe70eec787ca2187c9a87669fc06e3cc4c",
+      "bytes": 12328
+    }
+  ],
+  "prior_inclusive_phases_preserved": [
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/independent-audit.json",
+      "sha256": "c01d34f2a071db8d760d0aaa065d0cfa3e6ea1e8e917815b4269f36fb224e9ff",
+      "seconds": 18.112109042,
+      "status": "unknown_independent_phase_resource_budget",
+      "conservative_owner_plus_worker_peak_bytes": null
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v1/phase-receipt.json",
+      "sha256": "e72d41cc737e32fa68d29dd09213eb187550863a9bb9bec5d271d0d7c20bca2b",
+      "seconds": 44.927988292,
+      "status": "unknown_or_failed_loading_worker_gate",
+      "conservative_owner_plus_worker_peak_bytes": 243433472
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v2/phase-receipt.json",
+      "sha256": "83f0bcb7db5a5831868d80a850f119fa9fb3d86c989a2ab64381add54111d66d",
+      "seconds": 11.562686832999999,
+      "status": "passed_complete_loading_value_correspondence_helpers",
+      "conservative_owner_plus_worker_peak_bytes": 247136256
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v2/phase-receipt.json",
+      "sha256": "dbc0f3e09fd26eaed265a3150f9cb5431c2910549b664fbba645a0f7240e4438",
+      "seconds": 38.059562,
+      "status": "unknown_loading_phase_resource_budget",
+      "conservative_owner_plus_worker_peak_bytes": 551485440
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v3/phase-receipt.json",
+      "sha256": "e834b4f23db96b246a05dada7db75ea67f75efb79eb31e62de180537bda71f81",
+      "seconds": 13.216895417,
+      "status": "passed_complete_loading_value_correspondence_helpers",
+      "conservative_owner_plus_worker_peak_bytes": 247103488
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v3/phase-receipt.json",
+      "sha256": "672fbb50b843ee2b9e82ede1de717f311b38ff2734ab08114fe97fb3561f7d14",
+      "seconds": 43.707834207999994,
+      "status": "unknown_loading_phase_resource_budget",
+      "conservative_owner_plus_worker_peak_bytes": 777240576
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/helpers-v4/phase-receipt.json",
+      "sha256": "5fc9ae1be101b05c0e0027622061b08250b60becf864ac72bb91abfd211d32a7",
+      "seconds": 13.362172124999999,
+      "status": "passed_complete_loading_value_correspondence_helpers",
+      "conservative_owner_plus_worker_peak_bytes": 247463936
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-20261011/evaluation-v4/phase-receipt.json",
+      "sha256": "e9372a0368c7a8454a08dd20786049fd0c225e227cb0cc76045582dd3139e047",
+      "seconds": 43.711404833,
+      "status": "unknown_loading_phase_resource_budget",
+      "conservative_owner_plus_worker_peak_bytes": 723189760
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json",
+      "sha256": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+      "seconds": 11.494624209,
+      "status": "passed_complete_loading_value_correspondence_helpers",
+      "conservative_owner_plus_worker_peak_bytes": 247808000
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+      "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+      "seconds": 0.078432542,
+      "status": "failed_or_unknown_loading_phase",
+      "conservative_owner_plus_worker_peak_bytes": 16728064
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+      "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+      "seconds": 115.89094675,
+      "status": "unknown_loading_phase_resource_budget",
+      "conservative_owner_plus_worker_peak_bytes": 626147328
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v7-20261011/helpers-v7/phase-receipt.json",
+      "sha256": "172e44926cb1b018b671514b76d6021a872206b56a924c4cb711d20dd78b4fd0",
+      "seconds": 0.4789794580000001,
+      "status": "unknown_or_failed_loading_worker_gate",
+      "conservative_owner_plus_worker_peak_bytes": 95600640
+    }
+  ],
+  "original_audit_seconds": 780,
+  "charged_seconds": 354.603635709,
+  "remaining_seconds_before_helpers": 425.396364291,
+  "source_preparation_seconds_before_package_write": 7.02814925,
+  "source_authoring_calendar_interval_seconds": 96.297468,
+  "authoring_scope": "Calendar interval since writing marker, including sourceinspection/waits; not CPU effort. Earlier design/inspection unknown/uninstrumented. Source-only freezer preparation separately measured. No actual trace/model/decoder/helper/census/graph inflation or execution.",
+  "source_only_v6_preserved": "V6proposed128depthlimit was identified before any helper/scientificdispatch as insufficient for full52-placement path. All V6sources/plans/sourcecosts preserved; V7changes structural ceiling to justified192 and adds exact boundary/controlfixtures. Scientificcaps and remainingoriginalaudit unchanged.",
+  "V7_actual_helper_preserved": "V7synthetic FAILEDKeyErrornested; solechild terminal/reaped, sixtracehelpers unexecuted, nofullreplay. Phase0.478979458s charged once:354.603635709cumulative,425.396364291remaining. EnclosingTemporaryDirectory erased syntheticspools despiteperstorepreservationtext; caveatretained.",
+  "observed": "V5base-r1 passedowned441925632B; untrained-r1 fullvalues/math completed butowned626147328B UNKNOWN; fourunexecuted. Preserve prior354.603635709s and all old evidence.",
+  "prospective": "Disk adapter removes totaltrace-sized Python storage and releases verifiedrecursiveframe temporaries. Savings/perfieldsize/disk/time/actualRSS and allsix feasibility remain unknown until reviewed dispatch; no allocation cause or completepass assumed.",
+  "exact_next_command": "PYTHONPYCACHEPREFIX=/private/tmp/gcts-native-wang-pycache python3 research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v8.py --plan .gcts-active/stochastic-replay-memory-v8-20261011/helper-plan-v8.json",
+  "no_dispatch": true,
+  "helper_runs": 0,
+  "scientific_loads": 0,
+  "semantic_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "fallback": "Stop with exact failed/unknown/unexecuted counts if any source/byte/semantic/wall/memory/disk/remainingbudget gate fails; no schema weakening, cap widening, new proof/target/training/native or silent reuse."
+}

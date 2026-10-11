@@ -1,0 +1,55 @@
+{
+  "status": "passed_read_only_prospective_bridge_design_scope_review_no_execution_acceptance",
+  "manifest": {
+    "path": ".gcts-active/shared-symbolic-native-bridge-20261011/manifest-v1.json",
+    "sha256": "c19000cc7cfad4f81d043f3c6e1c88c11880416a92406343d1d1077c7215cc6a",
+    "bytes": 1255
+  },
+  "bridge_design": {
+    "path": ".gcts-active/shared-symbolic-native-bridge-20261011/bridge-design-v1.json",
+    "sha256": "2e12df043fc62d07d736f4b18fd557f54e60b003842d749a48b9ad81ac455341",
+    "bytes": 12671
+  },
+  "prospective_search_gate": {
+    "path": ".gcts-active/shared-symbolic-native-bridge-20261011/prospective-search-gate-v1.json",
+    "sha256": "53abed2c91ce5a6073a53b30f5b60f0c8ccab8778a8764c6669338b728c3a9d8",
+    "bytes": 28695
+  },
+  "pins_verified": {
+    "manifest_payloads": 4,
+    "sources": 25,
+    "inputs": 20,
+    "preserved_entries": 588,
+    "unique_all_paths": 624
+  },
+  "logical_scope": {
+    "assumption_translation": "The three closed local hypotheses become three distinctly named retained axioms in the flat request. Each assumption command becomes the corresponding axiom command; other literal recipes and all ordered prior references remain unchanged. This is valid under \\(I.2\\cup\\Gamma\\), not an unconditional theorem or an automatic universal closure.",
+    "closure": "Recipient signature remains closed nullary constants with declared Point/Line/Incident arities. The hypothesis names are distinct and disjoint from I.2-uniqueness; duplicate hypothesis occurrences/ports must still retain order and multiplicity.",
+    "no_hidden_discharge": "Removing local hypotheses requires a separately verified deduction/closure transformation. The proposal explicitly leaves that out of scope.",
+    "finite_vs_shared": "The 217-formula, 229-recipe, 24-row recipient model is a finite search language; it is not the fixed shared Wang palette. A one-way complete request encoding does not establish a bijection with arbitrary shared-palette proofs or GCTS search equivalence."
+  },
+  "design_safety": {
+    "certificate": "A discovered full point certificate must be sorted by logical row, retain every primitive/padding occurrence, reconstruct full decorated identities/markings and exact strict-prior ordered MP premises, and pass both local and flat logical checking.",
+    "native_boundary": "Any later native run needs exact fixed/free/input serialization, 43 physical band heads/capacities, true parser start, pinned tables and full response replay. Blank-resource changes remain explicit. Cropped tiles cannot be acceptance evidence.",
+    "ordering": "The prospective fixed order uses generic local source selection/readiness/novelty and returns a full permutation at the mandatory scheduler point. It is not RL, a pruning lemma or a supplied target proof. Empty descriptors avoid using the authored witness or root-composed family as a target proposal.",
+    "unknown_exhaustion": "Every unknown child must restore paired state and stop without parent exclusion; exclusion needs independently reconstructed complete child exhaustion. Finite 24-row exhaustion cannot imply unrestricted nonprovability."
+  },
+  "open_implementation_gates": [
+    "Current file is a design, not implemented source acceptance or native/compiler correspondence.",
+    "New complete worker/order/decoder/trace audit/owner source freeze and independent review before any target search.",
+    "Every returned search trace and certificate must receive independently owned full acceptance; producer status alone is insufficient.",
+    "Exact serialized boundary/capacity preflight before optional later native query, separately authorized by root."
+  ],
+  "resource_scope": "Prospective two 20-second/128-attempt observations inside unchanged 180/175/170-second, 512 MiB owner hierarchy. One observation per lane supports neither statistical superiority nor a general search-speed ratio. Separate independent audit and all preparation are additional.",
+  "executed": {
+    "source_metadata_hashing_only": true,
+    "model_construction": 0,
+    "engines": 0,
+    "proof_search": 0,
+    "native": 0,
+    "compiler": 0,
+    "training": 0
+  },
+  "review_seconds_before_receipt_write": 0.227155458,
+  "source_authoring_cost": "Source inspection uninstrumented; no mathematical experiment credited."
+}

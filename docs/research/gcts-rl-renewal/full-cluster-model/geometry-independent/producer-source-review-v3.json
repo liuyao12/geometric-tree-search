@@ -1,0 +1,89 @@
+{
+  "status": "passed_read_only_full_lifecycle_producer_source_plan_closure_review",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160
+  },
+  "counts": {
+    "sources": 6,
+    "inputs": 56,
+    "preserved_entries": 587,
+    "unique_exact_pins": 588,
+    "controlled_states_predicted": 11,
+    "controlled_transactions_source_calls": 9
+  },
+  "source_pins": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3.py",
+      "sha256": "86600aab547f6cc1ca05838a7eda8e4ff1042795715e6c549fb41db4c36b864c",
+      "bytes": 20433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3.py",
+      "sha256": "f74c3d71764cc1e37278cab1306c03f0a7682bdbe5a46c384c86809441f96fb2",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+      "sha256": "af0238ed5d5cd571c413a325a99c5e2301e9c5a4055411a3422ec8fc381059fe",
+      "bytes": 2723
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_freeze_v3.py",
+      "sha256": "9d4b97ba04cb99ee8aedf1b1a1b40809100c703bc2178cfc295b3dbd42e0781a",
+      "bytes": 19698
+    }
+  ],
+  "checked_tiny_prerequisite_pins": {
+    "new_tiny_lifecycle_lifetime": {
+      "role": "new_tiny_lifecycle_lifetime",
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+      "sha256": "4ec2ec039bd56f73ef5d0631807865b2052c48e40fc960c37b9b54a0fee4e6ba",
+      "bytes": 958
+    },
+    "new_tiny_lifecycle_independent_result": {
+      "role": "new_tiny_lifecycle_independent_result",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+      "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+      "bytes": 3962
+    },
+    "new_tiny_lifecycle_independent_lifetime": {
+      "role": "new_tiny_lifecycle_independent_lifetime",
+      "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+      "sha256": "48cb310b20ed922c84180aa722efda0240460932ea2e5c44ed69a79643f04a6d",
+      "bytes": 1431
+    }
+  },
+  "disposition": "Ready for one root-owned bounded controlled-model producer dispatch; independent full actual acceptance still requires a separate exact terminal-output freeze and owned run.",
+  "checks": [
+    "All source/input/preservation bytes and duplicate path consistency checked without scientific imports.",
+    "All 17 original full point-model roles remain byte-identical; new lifecycle provenance is in BodyAuthority only, preserving original declared epoch.",
+    "Worker loads all 171 complete source-family templates, discards example field, adds four authored fixed bodies and five descriptors; no target derivation supplied as proposal.",
+    "Complete raw t/m translations compared to every implicit candidate in each of 11 planned states; zero/singleton/full fallback checked, and low-level remote/different-reference transactions separately labeled.",
+    "Full retirement is branch-absorbing and paired graph/hint rollback exact; three rollback restoration assertions precede inspection-induced resync.",
+    "Bounded worker170/supervisor175/outer180/512MiB and fail-closed task-owned metadata failure cleanup retained; final peak and outer-wall rejection explicit.",
+    "Tiny old sandbox and stale-fixture failures and invalid authoring clock remain separate; all source-registry preparation is charged and source-authoring remains unmeasured."
+  ],
+  "limitations": [
+    "Read-only source/readiness review, not a full actual model audit or scientific execution.",
+    "The outer180-second gate is retrospective after supervisor return; active worker alarm and supervisor sampled watchdog remain175/170. No hard OS soft-memory-limit claim.",
+    "Complete state controls do not establish all reachable lifecycle states, full target DFS exhaustion, theorem discovery or native/compiler/Wang correspondence.",
+    "Fixed proposals are authored infrastructure, not RL; all exported counts remain predictions until the terminal producer/audit."
+  ],
+  "source_metadata_review_seconds_before_receipt_write": 0.12113095800000001,
+  "model_loads": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "producer_runs": 0
+}

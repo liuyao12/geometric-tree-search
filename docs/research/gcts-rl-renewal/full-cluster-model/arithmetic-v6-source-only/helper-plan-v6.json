@@ -1,0 +1,93 @@
+{
+  "status": "frozen_source_only_before_root_and_independent_review",
+  "kind": "helpers",
+  "seconds": 180,
+  "rss_bytes": 536870912,
+  "historical_failed_audit_seconds": 354.124656251,
+  "requires_root_activation": true,
+  "root_activation_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helper-activation-v6.json",
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v6.py": "f5b7962fe788892912306a6ce9cf6353971e15e0ea5fa5a21108c2e6dc9fbe67",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v6.py": "fbc299c934af68bb5bbacc975c687d7363068bf23c7ce4846c764089708c7ffa",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v6.py": "e402acf4d5a87ca2e8b1d2712b34c8f2ab105f5ee663d80fc64bd34f4991cf02",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v6.py": "45b30aff7ffd402d895c612f90c052e547ec9e072fad9bf99f2a2495cca2ddfc"
+  },
+  "input_sha256": {
+    ".gcts-active/stochastic-replay-memory-v6-20261011/consumer-use-review-v6.json": "57aa05e6adf68ea758e492103491320ffa5fdba5ff6aaefac49b8681dcfcf6b9",
+    "docs/basic-tiling-algorithm.md": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/effect/effect-pilot-search.json.gz": "38deda367bd1d7a7361d630749f881bac4a1e18a7a29f9fe1b866826ea8cd59e",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz": "8d4a43c6b432624bcf8d5798e0e3e83d9792fee2b131b1830b016eb3a27d8a97",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-08-search.json.gz": "684c2bde9ff7f661049a2094e09bf72377c0060708a585aa3972e43f9667b962"
+  },
+  "jobs": [
+    {
+      "job": "synthetic-controls",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/synthetic-controls-plan.json",
+      "plan_sha256": "8a8ba538701a824a2e2cadee04edb21485d24188332790b10a62acb171038525",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/synthetic-controls.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "effect-pilot-reference",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/effect-pilot-reference-plan.json",
+      "plan_sha256": "6b9462a3f6b8758edac60d8625be78f615444b65d7423076865944320efcc1fd",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/effect-pilot-reference.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "effect-pilot-repaired",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/effect-pilot-repaired-plan.json",
+      "plan_sha256": "c86093d27d267aa721605064f2cd825ee35b61d8ccecd701d1472786a4e5e994",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/effect-pilot-repaired.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "train-01-reference",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-01-reference-plan.json",
+      "plan_sha256": "2ed1ab16f1f461a0a84b4089bdff63b9f0a08872bb2591e3934937b9aae11287",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-01-reference.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "train-01-repaired",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-01-repaired-plan.json",
+      "plan_sha256": "c63734d287ef06181c478b5bca78f42dd26c72589ab2dc42527141c82f481c78",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-01-repaired.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "train-08-reference",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-08-reference-plan.json",
+      "plan_sha256": "3aae26533b7ddf15fb095665e2cc22b4f98dc5be43f9227e0a215da8b79f8b19",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-08-reference.json",
+      "lifecycle_seconds": 30
+    },
+    {
+      "job": "train-08-repaired",
+      "plan_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-08-repaired-plan.json",
+      "plan_sha256": "2a7473147e734eb9adbe53ac21b21551399dde03d9361196c146a187eb869d08",
+      "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/train-08-repaired.json",
+      "lifecycle_seconds": 30
+    }
+  ],
+  "correspondence_pairs": [
+    [
+      "effect-pilot-reference",
+      "effect-pilot-repaired"
+    ],
+    [
+      "train-01-reference",
+      "train-01-repaired"
+    ],
+    [
+      "train-08-reference",
+      "train-08-repaired"
+    ]
+  ],
+  "worker_source": "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v6.py",
+  "worker_pass_status": "passed_complete_loading_value_helper",
+  "output_path": ".gcts-active/stochastic-replay-memory-v6-20261011/helpers-v6/phase-receipt.json",
+  "scope": "Eight complete synthetic values and allfields/types/order/empty-container/alias controls,14 malformed/reserved/noncompact failures and duplicate-key compatibility. Three complete501-node ordinary/repaired loading pairs each receive full compact original byte comparison; no mathematical graph replay.",
+  "budgets": "25s internal30s owned/helper,180s total helper phase,512MiB conservative owner+fresh-child. Whole measured helper phase charged once to original780s, never reset. Any failure/unknown stops; unexecuted preserved."
+}

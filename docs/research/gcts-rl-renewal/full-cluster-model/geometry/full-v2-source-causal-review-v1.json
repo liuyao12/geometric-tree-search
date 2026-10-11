@@ -1,0 +1,27 @@
+{
+  "status": "root_read_only_review_detected_stale_post_inspection_restoration_assertions_before_any_actual_execution",
+  "bindings": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v2.json",
+      "sha256": "cc41dc8968d49952c1628a2753f95862fc494e5e57f6a012404a54ac8c133a3b",
+      "bytes": 4202
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2.py",
+      "sha256": "ff840a11b33f1328cb56aed79425614aa08293d05dccce1360d57da83d9e09ed",
+      "bytes": 20433
+    }
+  ],
+  "sites": [
+    "full_parent_graph_and_hints_revived",
+    "remote_forced_parent_revived",
+    "distant_hint_revived_exact_shared_state"
+  ],
+  "cause": "snapshot() compares the complete chosen-row preferred/fallback stream; ordered() resync changes hint revision. Each exact restoration assertion must inspect restored state before that view operation.",
+  "repair": "Move each original restoration assertion immediately after paired rollback and before snapshot. Preserve every assertion and all eleven planned complete comparison states.",
+  "source_semantics": "No primitive graph, descriptor body, point marking, lifecycle, scheduler, fallback or exact prior point epoch change.",
+  "actual_model_executions": 0,
+  "actual_target_searches": 0,
+  "native_queries": 0,
+  "scope": "Static source finding, not an executed full gate failure or runtime acceptance."
+}

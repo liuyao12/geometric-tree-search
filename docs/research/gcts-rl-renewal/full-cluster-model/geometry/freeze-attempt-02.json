@@ -1,0 +1,14 @@
+{
+  "status": "attempt02_sources_inputs_failure_bill_frozen_without_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-02.json",
+    "sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+    "bytes": 130356
+  },
+  "sources": 5,
+  "inputs": 39,
+  "preserved": 509,
+  "syntax": "ast.parse only, no engine imports",
+  "attempt02_executions": 0,
+  "freeze_seconds_before_receipt_write": 0.391202958
+}

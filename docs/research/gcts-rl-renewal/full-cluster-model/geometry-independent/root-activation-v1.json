@@ -1,0 +1,8 @@
+{
+  "status": "authorized_by_root_after_independent_source_review",
+  "plan_sha256": "e2fadfc92501e5cb5ffaa6119690d0113426df7c00f61fd8389b5c80a7b95c6d",
+  "prerequisite_sha256": {
+    ".gcts-active/full-model-cluster-progress-20261011/root-full-independent-source-review-v1.json": "bf3ee659d6f622fca5c43a4dccf86bd8c1f6c73c1ee44022fee9c00154376c8f"
+  },
+  "scope": "One fresh independent full artifact audit; no restart, target search or solver activation."
+}

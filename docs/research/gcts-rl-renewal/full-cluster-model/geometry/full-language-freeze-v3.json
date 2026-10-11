@@ -1,0 +1,32 @@
+{
+  "status": "full_actual_language_v3_source_and_input_freeze_no_scientific_execution",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+    "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+    "bytes": 158160
+  },
+  "sources": 6,
+  "inputs": 56,
+  "preserved_files": 587,
+  "unique_verified_paths": 588,
+  "all_historical_source_and_input_bytes_match": true,
+  "freeze_seconds_before_receipt_write": 0.508538,
+  "output_file_absence_checked": [
+    "full-language-outcome-v3.json",
+    "full-language-launch-v3.json",
+    "full-language-supervision-v3.json",
+    "full-language-lifetime-v3.json",
+    "full-language-stdout-v3.txt",
+    "full-language-stderr-v3.txt"
+  ],
+  "tiny_prerequisite_result": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+    "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+    "bytes": 3962
+  },
+  "future_actual_dispatch": "root-owned only, pending source/plan review",
+  "actual_model_loads": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "authority_activations": 0
+}
