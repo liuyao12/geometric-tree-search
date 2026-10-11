@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theorems and benchmarks to search · GCTS research agenda</title>
+  <link rel="stylesheet" href="report.css?v=20261011-ta1">
+  <style>.intro{margin-top:42px}h1{font-size:clamp(40px,5vw,64px)}table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:16px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}td:first-child{width:25%}td p{margin:0 0 8px}.scroll-table{overflow:auto}.formula{overflow-x:auto;font-size:17px}.route{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.route>div{background:#eef3e9;border-top:4px solid #447d61;padding:18px}.route .future{border-color:#b48937;background:#f3eedf}.route strong{font-size:20px;display:block;margin-bottom:10px}.route p{font-size:13px;margin:0}.notice{padding:18px;background:#f3eedf;border-left:4px solid #b48937}.small{line-height:1.65}@media(max-width:850px){.route{grid-template-columns:1fr 1fr}td:first-child{width:28%}}@media(max-width:500px){.route{grid-template-columns:1fr}table{min-width:620px}}</style>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<header class="masthead"><a href="./?v=20261011-ta1#theorem-agenda">GCTS + RL · Research notebook</a><span>RESEARCH AGENDA · OCTOBER 11, 2026</span></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">PROPOSED TARGETS · EXISTING BENCHMARKS · NO NEW PROOF CLAIM</p>
+    <h1>Choose theorems<br>that test the method.</h1>
+    <p class="deck">Start with shared premises and branching proof graphs. Then test substitution and scope, induction and a symbolic Hilbert theory. Measure whether learned markings and reusable clusters help discover checked proofs.</p>
+    <p>The strongest immediate question is whether a certified conditional failure can improve a search that unary failure values did not improve. Notebook 64 records that negative result. Bigger theorem names alone would not resolve it.</p>
+    <p><a class="button" href="certified-prefix-markings.html?v=20261011-cp1#results">Current measured evidence</a> <a href="semantic-inventory.html?v=20261011-si1#reader">Existing automatically discovered proofs</a></p>
+  </section>
+  <section class="panel" id="candidates">
+    <h2>A progression of concrete search targets</h2>
+    <div class="route" role="img" aria-label="Research progression from branching propositional proofs, through substitution and scope, to induction and Hilbert geometry, then external benchmarks">
+      <div><strong>Branch and reuse</strong><p>Shared hypotheses, fork-and-join structures, distracting premises. Current search grammar.</p></div>
+      <div class="future"><strong>Substitute and bind</strong><p>Quantifier instantiation, equality substitution and scope. New high-level adapters required.</p></div>
+      <div class="future"><strong>Induct and construct</strong><p>Arithmetic induction; symbolic incidence, order and congruence in Hilbert geometry.</p></div>
+      <div class="future"><strong>Compare externally</strong><p>Pinned public problems, equal theorem semantics and independently checked certificates.</p></div>
+    </div>
+    <p class="small">This is a progression of capabilities, not a supplied proof path or a claim that later targets have been solved. Each search receives statements, axioms and declared grammar bounds. It must choose the proof commands and attachments itself.</p>
+    <div class="scroll-table"><table><thead><tr><th>Candidate</th><th>Statement and purpose</th><th>Readiness</th></tr></thead><tbody>
+      <tr><td>Shared-premise fork and join</td><td><div class="formula">\[P,\ P\Rightarrow Q,\ P\Rightarrow R,\ Q\Rightarrow(R\Rightarrow S)\ \vdash\ S.\]</div><p>Two branches reuse one premise and must meet at a common conclusion. Vary graph shape, add irrelevant premises, and retain missing-bridge controls.</p></td><td>Expressible in the current bounded command/guard grammar. No new proof is claimed here.</td></tr>
+      <tr><td>Quantified implication composition</td><td><div class="formula">\[\forall x\,P(x),\quad\forall x\,(P(x)\Rightarrow Q(x))\ \vdash\ \forall x\,Q(x).\]</div><p>Tests instantiation, bound variables, distant premise selection and legal generalization.</p></td><td>The native checker has instantiation and scope checks. The high-level search grammar must expose these rules and enough intermediate formulas.</td></tr>
+      <tr><td>Equality symmetry and transitivity</td><td><div class="formula">\[\forall x\forall y\,(x=y\Rightarrow y=x),\]</div><div class="formula">\[\forall x\forall y\forall z\,((x=y\land y=z)\Rightarrow x=z).\]</div><p>Tests genuine term substitution and reusable equality lemmas.</p></td><td>Requires the equality-substitution adapter and formula generation. Native equality reflexivity alone is insufficient.</td></tr>
+      <tr><td>Left identity for addition</td><td><div class="formula">\[\forall n\,(0+n=n).\]</div><p>Use the recursive definitions \(a+0=a\) and \(a+S(b)=S(a+b)\). This target requires a derived argument rather than restating those definitions.</p></td><td>Requires induction, substitution and explicit Peano arithmetic axioms in the search interface.</td></tr>
+      <tr><td>Addition commutativity and associativity</td><td><div class="formula">\[\forall a\forall b\,(a+b=b+a),\]</div><div class="formula">\[\forall a\forall b\forall c\,((a+b)+c=a+(b+c)).\]</div><p>Good milestones for a growing inventory: smaller discovered arithmetic facts can become reusable clusters.</p></td><td>After the induction adapter. Inventory benefits must be compared with the same admitted lemmas available to controls.</td></tr>
+      <tr><td>Two distinct lines share at most one point</td><td><p>A derived incidence consequence of Hilbert line uniqueness. It tests equality, negation and point/line sorts without drawing or measuring a configuration.</p></td><td>Requires an explicitly encoded Hilbert axiom theory and quantifier/equality adapters. A sorted or faithfully sort-encoded signature must be declared.</td></tr>
+      <tr><td>Isosceles base angles; vertical angles</td><td><p>Recognizable next geometry milestones corresponding to Euclid I.5 and I.15. They offer useful congruence and order subarguments to discover and reuse.</p><p>GeoCoq supplies formal statements and checked reference developments. Its Book I proofs use Tarski axioms, so a Hilbert experiment must state the axiom translation rather than silently change foundations. <a href="https://geocoq.github.io/GeoCoq/html/GeoCoq.Elements.Statements.Book_1.html">GeoCoq Book I</a>, <a href="https://geocoq.github.io/GeoCoq/html/GeoCoq.Axioms.hilbert_axioms.html">Hilbert axioms</a>.</p></td><td>Later milestone after symbolic incidence, order, congruence and scope are implemented.</td></tr>
+    </tbody></table></div>
+    <p>For arithmetic and geometry, begin with small valid declarations and deliberately altered invalid ones. Where available, check a countermodel independently. A proof-search cutoff remains unknown; a finite grammar exhaustion does not establish unrestricted unprovability.</p>
+  </section>
+  <section class="panel" id="benchmarks">
+    <h2>Existing benchmarks give several different comparisons.</h2>
+    <div class="scroll-table"><table><thead><tr><th>Benchmark or corpus</th><th>What it tests</th><th>Fit to this program</th></tr></thead><tbody>
+      <tr><td><a href="https://tptp.org/UserDocs/ProblemLibraryManual/TPTPTR.shtml">TPTP</a> and <a href="https://tptp.org/CASC/J12/Design.html">CASC</a></td><td>Established automated reasoning problems with declared axioms, conjectures, logical formats and problem metadata. Number theory and geometry have their own domains.</td><td>Best first external destination for our first-order direction. Start with a pinned small compatible subset and compare with established ATPs. Arithmetic problems are not automatically Peano arithmetic, and geometry problems are not automatically Hilbert geometry.</td></tr>
+      <tr><td><a href="https://us.metamath.org/mpeuni/mmset.html">Metamath</a> proof-search evaluations</td><td>Symbol substitution, exact hypothesis interfaces, side conditions and reusable mathematical libraries. Existing neural searches include <a href="https://arxiv.org/abs/2205.11491">HyperTree Proof Search</a>.</td><td>A close conceptual comparison for receptor families and lemma inventories. Its derivation calculus needs a verified import or translation; it is not already supported by our current high-level grammar.</td></tr>
+      <tr><td><a href="https://arxiv.org/abs/2306.15626">LeanDojo benchmark</a></td><td>Formal library problems and premise selection, with a split designed to stress generalization to unfamiliar premises.</td><td>Useful for testing whether an inventory can find the right lemma. Lean's types, library and tactics require an additional interface. For new tooling the project now directs users to <a href="https://github.com/lean-dojo/LeanDojo-v2">LeanDojo-v2</a>.</td></tr>
+      <tr><td><a href="https://arxiv.org/abs/2109.00110">miniF2F</a></td><td>The original benchmark contains \(488\) formalized contest and school/undergraduate mathematics statements across several formal systems.</td><td>A later mathematical milestone. Pin the formalization version and available library. Current curated versions include fixes; the maintained <a href="https://github.com/facebookresearch/miniF2F">repository</a> asks evaluations to cite a commit or date.</td></tr>
+      <tr><td><a href="https://geocoq.github.io/GeoCoq/">GeoCoq</a></td><td>A formal geometry corpus with Hilbert, Tarski and Euclid developments and proved foundational relationships.</td><td>A source of precise geometry targets and axiom checks, rather than a ready-made standard proof-search leaderboard. Reference proofs remain withheld from search unless a training protocol explicitly permits them.</td></tr>
+    </tbody></table></div>
+    <p>Reusable lemmas are already central to these systems. Our possible contribution is a useful geometric constraint representation, adaptable cluster interfaces and a search policy that discovers effective compositions. Inventory reuse by itself is not evidence of an advantage over existing methods.</p>
+  </section>
+  <section class="panel" id="protocol">
+    <h2>Measure what the markings and policy contribute.</h2>
+    <p>First compare the reference point search, fixed ordering, frozen RL ordering, certified-marking variants and Z3 on the same complete finite point model. Retain a library-disabled control and a matched admitted-inventory control. This isolates the effects of representation, failure learning and ordering.</p>
+    <p>Separately compare public theorem statements with external provers under the same axiom theory and disclosed lemma availability. Give both sides equal wall-time and hardware budgets, and validate each final proof. A different proof calculus or formula bound must be reported; external semantic comparisons are distinct from matched point-model ablations.</p>
+    <p>Record solved and unknown counts, total time including learning and validation, attempted base placements, branches, backtracks, proof size and lemma use. Split by proof structure and source theorem, not only by renamed symbols. Freeze policies before evaluation. Report the cost of creating an inventory and the benefit of amortizing it across new problems separately.</p>
+    <div class="notice"><strong>The next decision point</strong><p>Can certified conditional markings help on branching proof graphs where the unary layer gave no benefit? Run that small study before widening the benchmark. Then expose instantiation and equality rules and take the first compatible TPTP problems. Peano induction and full symbolic Hilbert geometry remain subsequent milestones.</p></div>
+    <p class="small">This page is a researched agenda. It adds no theorem-discovery result, trained model, benchmark score or completeness claim. The original research goal remains active.</p>
+  </section>
+</main>
+<footer><span>Theorem targets and proof-search benchmarks · proposed work</span><a href="./?v=20261011-ta1#goals">Research goals</a></footer>
+</body>
+</html>
