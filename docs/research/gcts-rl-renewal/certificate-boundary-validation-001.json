@@ -1,0 +1,51 @@
+{
+  "version": "certificate-boundary-validation-001",
+  "status": "passed",
+  "producer_sha256": "f613b18f0eddfafd41ea8fbdb929f76812a4f9b56f15fd17ba39f424b747193d",
+  "audit_sha256": "4bb476a3569f57bb96d26beb415f010bfff6496851a2b060e88b8df8c7c6aef5",
+  "reader_sha256": "019498b8a4704148619273849501e93aea43ffa2012103407ae7e89082d088d5",
+  "outcomes": {
+    "native_proof_discovered": 12,
+    "exhausted_finite_certificate_grammar": 8,
+    "unknown_search_budget": 8
+  },
+  "reader_checks": {
+    "status": "passed",
+    "checks": {
+      "proofs": 4,
+      "lines": 9,
+      "tiles": 243,
+      "queries": 836,
+      "observations": 28
+    },
+    "mutations_rejected": [
+      "palette fingerprint",
+      "missing observation",
+      "original assertion",
+      "native acceptance",
+      "full operation count",
+      "final target role",
+      "source proof",
+      "root rollback",
+      "line formula",
+      "earlier facts",
+      "pending commands",
+      "new fact",
+      "open premise",
+      "context theory",
+      "native entry",
+      "crop timeline",
+      "crop count",
+      "original tile",
+      "seam",
+      "horizontal receptor",
+      "duplicate occupancy"
+    ]
+  },
+  "seconds": 0.068325458,
+  "sources": {
+    "validate_certificate_boundary.py": "6f17c198ddd3b1a6d2413a681dbeda4c33c3480ffa02a51a35dcc2b81010c953",
+    "test_certificate_boundary_reader.cjs": "943221b57709b6bcc71c4adadeb60db691ba8a3972dea98625c4ff7ed2f2ea84",
+    "export_certificate_boundary.py": "2d617b95e1f59a6ef206260328bd0cef23bc78a7601a7f03146f1b2f7dec6685"
+  }
+}
