@@ -1,0 +1,24 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),{TextEncoder}=require('util');
+const root=process.cwd(),doc=root+'/docs/research/gcts-rl-renewal/',out=root+'/.gcts-active/boundary-reuse-20261011/';
+const script=fs.readFileSync(doc+'boundary-reuse.js','utf8'),raw=fs.readFileSync(doc+'boundary-reuse-reader-001.json');
+const sandbox={TextEncoder,window:{}};vm.createContext(sandbox);vm.runInContext(script,sandbox);
+const validate=sandbox.window.GCTSBoundaryReuse.validate,data=JSON.parse(raw),positive=validate(data),rows=[];
+function test(name,mutate){const bad=JSON.parse(raw);mutate(bad);let rejected=false,reason='';try{validate(bad);}catch(e){rejected=true;reason=e.message;}if(!rejected)throw Error('corruption accepted: '+name);rows.push({name,rejected,reason});}
+const proof=(d,layer='point')=>d.cases.flatMap(c=>c.observations.map(p=>({c,p}))).find(x=>x.p.layer===layer&&x.p.proof);
+test('changed final boundary',d=>{proof(d).c.spec.length++;});
+test('wrong global native query',d=>{proof(d).p.native_query=999;});
+test('missing full word terminator',d=>{d.cases[0].writers[0].word.pop();});
+test('omitted certified negative',d=>{d.cases[0].failures.pop();});
+test('missing distant writer in declared incidence',d=>{const f=d.cases.flatMap(c=>c.failures).find(f=>f.right_keys.length);f.right_keys.pop();});
+test('changed private point coordinate',d=>{d.cases[0].failures[0].pair_point[1]++;});
+test('changed conditional value',d=>{const t=d.cases.flatMap(c=>c.observations).filter(p=>p.layer==='point'&&p.proof).flatMap(p=>p.tiles).find(t=>t.marks.some(([p])=>p[0]%4===3));t.marks.find(([p])=>p[0]%4===3)[1]^=1;});
+test('deleted selected proof role',d=>{proof(d).p.tiles.pop();});
+test('changed positional command identity',d=>{proof(d).p.tiles.find(t=>t.kind==='command'&&t.key[0]===0).key[2]++;});
+test('wrong lemma receptor',d=>{const x=d.cases.flatMap(c=>c.observations).find(p=>p.proof?.some(r=>r.rule==='block'));x.proof.find(r=>r.rule==='block').inputs[0]=999;});
+test('forged representation equivalence',d=>{d.cases[0].equivalence[0].sha256='wrong';});
+test('direct tile carries undeclared marking',d=>{proof(d,'direct').p.tiles[0].marks.push([[3,999999],1]);});
+test('unknown has cached acceptance',d=>{const p=d.cases.flatMap(c=>c.observations).find(p=>p.proof===null);p.cached_native_acceptance=true;});
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const report={status:'passed',...positive,corruptions:rows,reader_sha256:sha(raw),script_sha256:sha(script),test_source_sha256:sha(fs.readFileSync(__filename))};
+fs.writeFileSync(out+'reader-corruptions.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:'passed',...positive,corruptions:rows.length}));

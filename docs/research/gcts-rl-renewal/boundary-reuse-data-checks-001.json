@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "published_base": "a456200a7b4ef6204a4644aee4cb09cf60adef9a",
+  "data_dependencies": {
+    "docs/research/gcts-rl-renewal/semantic-inventory-policy-001.json": {
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "bytes": 4502
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-machine-001.bin.gz": {
+      "sha256": "7e695d5d357a290cae02d8e09cd8c49f964b1a10680d0a7b9d4a2a61748eada3",
+      "bytes": 7250851
+    },
+    "docs/research/gcts-rl-renewal/semantic-inventory-training-001.json.gz": {
+      "sha256": "f25994d779c056548c51e6283a13ec22cc4df2affe202229e7fa1d29afe3f2a2",
+      "bytes": 936807
+    },
+    "docs/research/gcts-rl-renewal/conditional-audit-001.json.gz": {
+      "sha256": "7a8d450c6045166ae09a70f924aa91476f1091e67f3fa610463107d8165d50a5",
+      "bytes": 6795
+    }
+  },
+  "source_contexts": {
+    "docs/research/gcts-rl-renewal/conditional-001-forked-semantic.json.gz": {
+      "sha256": "d08aa98dde64c6c10a9834ec32c631429de594f6ad590d51693a9f40ed00769e",
+      "frozen_policy_sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    "docs/research/gcts-rl-renewal/conditional-001-shared-premise-join.json.gz": {
+      "sha256": "d89229a3872cf37a80be8325575de926c399f61f077ba33942c69a0a5bedd7ca",
+      "frozen_policy_sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    "docs/research/gcts-rl-renewal/conditional-001-renamed-five.json.gz": {
+      "sha256": "bf1a1e8265c7f983f43538346dd215590cbd98f294c0141a82fad3a732b746ac",
+      "frozen_policy_sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    }
+  },
+  "scope": "All reused native data and unit fixtures byte-identical to published base. All three source catalogs bind the same actual frozen policy. Supplement to the code closure and transcript/native audit."
+}

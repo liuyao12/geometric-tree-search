@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reusable failure constraints · GCTS research notebook 66</title>
+  <link rel="stylesheet" href="report.css?v=20261011-br1">
+  <style>
+    .intro{margin-top:42px}h1{font-size:clamp(40px,5vw,64px)}.statement{font-size:20px}.small{font-size:12px;line-height:1.7}.bar-row{display:grid;grid-template-columns:150px minmax(100px,1fr) 110px;gap:16px;align-items:center;margin:15px 0;font-size:13px}.bar-track{height:20px;background:#eceee5;border-radius:2px;overflow:hidden}.bar{height:100%;min-width:2px}.bar.original{background:#7d8979}.bar.point{background:#80569e}.bar.direct{background:#377fa0}.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;margin:18px 0}.legend span{border-left:7px solid;padding-left:7px}.legend .original{border-color:#7d8979}.legend .point{border-color:#80569e}.legend .direct{border-color:#377fa0}.scroll-table{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:12px 9px;border-bottom:1px solid var(--line);text-align:left}th{font-size:10px;text-transform:uppercase;letter-spacing:.04em}.costs{padding:18px;background:#f1f4ec;line-height:1.7}.proof-line{display:grid;grid-template-columns:45px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.proof-line .line-number{font-size:12px;color:var(--muted)}.proof-line p{margin:5px 0}.proof-line .formula{font-size:21px}.role-tiles{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.role-tile{width:43px;height:43px;display:flex;align-items:center;justify-content:center;border:3px solid;font:12px ui-monospace,monospace;background:#f1f4ec}.role-tile.command{border-color:#80569e}.role-tile.guard{border-color:#b98528}.role-tile.lemma_input,.role-tile.unused_input{border-color:#377fa0}details pre{max-height:450px;overflow:auto;font-size:11px;white-space:pre}.controls select{max-width:100%}#reader-status{font-size:13px}@media(max-width:650px){.bar-row{grid-template-columns:110px minmax(60px,1fr) 95px;gap:9px;font-size:11px}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="boundary-reuse.js?v=20261011-br1"></script>
+</head>
+<body>
+<header class="masthead"><a href="./?v=20261011-br1#boundary-reuse">GCTS + RL · Research notebook</a><span>NOTEBOOK 66 · REUSABLE FAILURES</span></header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">A CHANGED BOUNDARY NEEDS A CHECKED TRANSFER</p>
+    <h1>Move the boundary.<br>Reuse the failures.</h1>
+    <p class="deck">A failure certified in an early prefix can remain useful when the final boundary moves. This study rechecks that transfer, searches a shorter proof region, and compares point markings with direct conjunction constraints.</p>
+    <p>All source failures, native-admitted lemma families and policy weights are disclosed reuse. No target proof or intermediate proof sequence is supplied to the search. There is no new constraint learning or RL training in this increment.</p>
+    <p id="reader-status" role="status">Loading independently audited evidence…</p>
+  </section>
+  <section class="panel" id="comparison">
+    <h2>Compare representations at the same boundary.</h2>
+    <div class="controls"><label for="case-control">Assertion and boundary</label><select id="case-control" aria-label="Assertion and boundary"></select></div>
+    <p class="statement" id="statement"></p>
+    <div class="legend"><span class="original">Original logical markings</span><span class="point">Extra GCTS point values</span><span class="direct">Direct conjunction control</span></div>
+    <div id="bars" aria-label="Attempted placements by representation and ordering"></div>
+    <p class="small">Bars show attempted base placements on one common scale within the selected boundary. Every observed lane runs twice in a fresh process, with limits of \(2000\) placements and \(60\) search seconds. Unknown results are labeled. The second repetition rotates execution order; deterministic search settings remain fixed.</p>
+    <p id="equivalence"></p>
+    <div id="cost-table"></div>
+    <p class="costs" id="reuse-cost"></p>
+    <p class="small">Search seconds include graph construction, policy proposals and complete trace collection. Worker seconds additionally include Python startup, loading, representation construction and artifact serialization. Memory is the whole worker's peak resident set through search, including its input and model; it does not isolate the plugin. Native checking and the later full audit are additional costs. These are reused-context observations, rather than cold learning or a proof-search leaderboard.</p>
+  </section>
+  <section class="panel" id="reader">
+    <h2>Read the proof found at this boundary.</h2>
+    <p class="small">Colored squares are the actual selected high-level <code>C</code> command, <code>G</code> guard and <code>I</code> premise-field roles, with fixed orientation. Formula and English text translate each proof row. Proof order follows the row dependencies; GCTS can fill those rows in a different placement order. These squares are above the unchanged primitive Wang computation palette.</p>
+    <div class="controls"><label for="proof-control">Recorded search</label><select id="proof-control" aria-label="Recorded search"></select></div>
+    <p id="proof-context"></p><div id="proof-lines"></div>
+    <p class="small">Every new distinct symbolic certificate receives whole native checking with the additional search markings erased. Later identical certificates reuse that exact acceptance, visibly labeled here. The independent audit replays every fresh computation from the true parser start. This reader checks the displayed projection; it does not execute that native computation in the browser.</p>
+    <p><a href="conditional-attachments.html?v=20261011-ca1#markings">Inspect the actual distant conditional points in Notebook 65</a> · <a href="semantic-inventory.html?v=20261011-si1#reader">Earlier full native certificates and nested lemma definitions</a></p>
+  </section>
+  <section class="panel" id="scope">
+    <h2>What the comparison can establish.</h2>
+    <p>A point representation assigns opposite values at a private distant point to the two sets of writers. A candidate that writes both words receives a separate fixed exclusion point. The direct control keeps the original tile markings and stores the same writer conjunctions as clauses. Selecting a writer updates clause-to-candidate dependencies in the shared graph. It has no additional lookahead or arc consistency.</p>
+    <p>There is a simple representation equivalence. Let \(K\) be the selected placements, \(L_i\) and \(R_i\) the left-only and right-only writers, and \(J_i\) the shared writers for a clause. Its extra point values agree exactly when</p>
+    \[
+      K\cap J_i=\varnothing
+      \quad\text{and}\quad
+      \bigl(K\cap L_i=\varnothing\ \text{or}\ K\cap R_i=\varnothing\bigr).
+    \]
+    <p>A shared writer disagrees with its fixed exclusion point. Selecting both a left writer and a right writer gives unequal values at their common point; either side alone agrees. The direct predicate tests exactly these cases. Private points are distinct across clauses, so this applies to their conjunction. With the same original point rules and deterministic base scheduler, equal candidate legality gives equal search trees. The measurements test whether the implementations realize this equivalence; they do not claim a new logical principle.</p>
+    <p>The direct comparison uses base ordering. Fixed and learned ordering are measured separately on the original and point models. Their feature vectors include marking counts, so they are not a pure representation comparison. All candidates, complete frontier incidence, global dead and forced propagation, earliest-generation branching, fallback and exact rollback remain in force.</p>
+    <p>Both constraint forms must repay source collection and transfer certification before a practical benefit can be claimed. Identical search trees establish equivalence for these runs; timing and memory expose representation costs. They do not establish superiority over conventional constraint learning or external theorem provers.</p>
+    <p>Forbidden-combination learning is established research; see <a href="https://cdn.aaai.org/AAAI/1986/AAAI86-029.pdf">Dechter's Learning While Searching in Constraint-Satisfaction-Problems</a>. The research question is whether GCTS offers useful reusable interfaces, cluster composition and policy learning on larger proof families. <a href="theorem-agenda.html?v=20261011-ta1#benchmarks">External benchmark planning</a> remains separate from this control.</p>
+    <p>A six-row certificate is a shorter discovered proof in this inventory. Minimality is not claimed: shorter boundaries have not been exhaustively ruled out. The two shared-premise configurations have the same formal assertion, syntax basis and lemma registry; only their finite boundaries differ. Individual prefix witnesses do not establish extension to an arbitrary boundary or the whole plane.</p>
+  </section>
+  <section class="panel" id="evidence">
+    <h2>Audit and reproducible evidence.</h2>
+    <p id="audit-summary"></p>
+    <p>The transfer audit independently reconstructs the complete target model, rechecks every source pair teacher, and establishes a complete decorated prefix lift. The direct audit checks every actual unaugmented state hash, then verifies all recorded graph domains through the equivalent independently rebuilt point model. Complete base search trees match between the two representations in each repetition.</p>
+    <p>The <a href="boundary-reuse-data-checks-001.json">data dependency supplement</a> verifies that the reused native artifacts and test fixtures are byte-identical to the preceding published version, and that all three source catalogs bind the actual frozen policy. Its data bindings complement the code source closure. The full direct-control artifacts contain arbitrary-precision integer membership bitsets; use Python's integer-preserving JSON reader. This page's compact projection uses explicit candidate sets and does not parse those bitsets.</p>
+    <p>Eight tests cover all \(2592\) tiny proof words and preserve the same \(4\) valid regions. Another test enumerates \(1024\) subsets of ten distinct obligations and checks every reached graph against independent full-domain enumeration. Tests reject a changed boundary, altered theory, omitted negatives, wrong words, dropped distant dependencies, corrupted membership and state hashes. Shared writers are excluded without internally inconsistent point data.</p>
+    <p>The <a href="boundary-reuse-reader-checks-001.json">reader verification record</a> checks all \(46\) successful proof projections, rejects \(13\) deliberately corrupted projections, and records browser checks of all \(56\) selector states, including \(10\) explicitly unknown searches. The browser checks found no mathematical rendering errors or horizontal page overflow.</p>
+    <div id="artifact-links"></div>
+    <details><summary>Reproduce the comparison and audit</summary><p>From the repository root with Python and Clang available, restore the published predeclared plan into the private ledger, then run the producer and independent audit. The source closure binds the original engines, prior native authority and every new research script. The producer reuses the published Notebook 65 source catalogs; it does not recollect labels. Every benchmark worker receives the same compact input packet, unused by the original-model lane.</p><pre><code>mkdir -p .gcts-active/boundary-reuse-20261011
+cp docs/research/gcts-rl-renewal/boundary-reuse-plan-001.json .gcts-active/boundary-reuse-20261011/plan.json
+python3 -m unittest discover -s research/gcts-rl-renewal -p test_boundary_reuse.py -v
+python3 -u research/gcts-rl-renewal/run_boundary_reuse.py
+python3 -u research/gcts-rl-renewal/audit_boundary_reuse.py
+python3 research/gcts-rl-renewal/export_boundary_reuse.py
+node research/gcts-rl-renewal/test_boundary_reuse_reader.js</code></pre></details>
+    <p><a href="../../../research/gcts-rl-renewal/boundary_reuse_constraints.py">Point and direct representations</a> · <a href="../../../research/gcts-rl-renewal/audit_boundary_reuse.py">Independent transfer, tree and native audit</a> · <a href="../../../research/gcts-rl-renewal/test_boundary_reuse.py">Conformance tests</a> · <a href="../../basic-tiling-algorithm.md">GCTS contract</a></p>
+    <p>This finite proof-strip specialization uses exact integer point values and root generation zero. It remains a bounded six-rule grammar with ground lemma interfaces. Unrestricted compiler completeness, quantified instantiation, equality substitution, Peano induction, full Hilbert geometry, fractional tiling and infinite extension remain open. The full research program stays active; quantified and equality targets are the next language extension.</p>
+  </section>
+</main>
+<footer><span>Checked boundary transfer · representation comparison</span><a href="./?v=20261011-br1#goals">Research goals</a></footer>
+</body>
+</html>

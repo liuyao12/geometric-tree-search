@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "cases": 4,
+  "observations": 56,
+  "proofs": 46,
+  "corruptions": [
+    {
+      "name": "changed final boundary",
+      "rejected": true,
+      "reason": "wrong transferred boundary"
+    },
+    {
+      "name": "wrong global native query",
+      "rejected": true,
+      "reason": "missing accepted native computation"
+    },
+    {
+      "name": "missing full word terminator",
+      "rejected": true,
+      "reason": "changed complete formula word or terminator"
+    },
+    {
+      "name": "omitted certified negative",
+      "rejected": true,
+      "reason": "omitted certified negative"
+    },
+    {
+      "name": "missing distant writer in declared incidence",
+      "rejected": true,
+      "reason": "incomplete opposing or shared writer incidence"
+    },
+    {
+      "name": "changed private point coordinate",
+      "rejected": true,
+      "reason": "changed private point namespace"
+    },
+    {
+      "name": "changed conditional value",
+      "rejected": true,
+      "reason": "wrong selected extra point values"
+    },
+    {
+      "name": "deleted selected proof role",
+      "rejected": true,
+      "reason": "incomplete rectangle"
+    },
+    {
+      "name": "changed positional command identity",
+      "rejected": true,
+      "reason": "wrong original positional command identity"
+    },
+    {
+      "name": "wrong lemma receptor",
+      "rejected": true,
+      "reason": "native query does not bind exact proof"
+    },
+    {
+      "name": "forged representation equivalence",
+      "rejected": true,
+      "reason": "incorrect declared representation equivalence"
+    },
+    {
+      "name": "direct tile carries undeclared marking",
+      "rejected": true,
+      "reason": "wrong selected extra point values"
+    },
+    {
+      "name": "unknown has cached acceptance",
+      "rejected": true,
+      "reason": "unfinished or exhausted search has proof authority"
+    }
+  ],
+  "reader_sha256": "0bf1a575de74f0fe3b6c8268640498946ac79246b414a6cf50facb8f5de0e65e",
+  "script_sha256": "4a8b089ca4a39ce00632c4b1c4b2e230e9d863b6b77fe773fb159ce22ee05f26",
+  "test_source_sha256": "c6f0283abb312b2a2948d17341902acb809fa9ecc57d5fc960a464d758b7abbf",
+  "browser_ui": {
+    "status": "passed",
+    "observations": 56,
+    "proofs": 46,
+    "unknowns": 10,
+    "math_errors": 0,
+    "horizontal_overflow": false,
+    "scope": "All 56 selector states checked in Chrome at 937 CSS pixels; five fields per ordinary row and seven in the five-link inventory."
+  },
+  "core_tests": {
+    "status": "passed",
+    "count": 8,
+    "seconds": 9.823,
+    "log_sha256": "ef14a3227320088bf2af714715064e97c0282c6ddffdc9467bb65c10fb6101da",
+    "source_sha256": "bd444224959e254edf2e8e3d4eb6f4f932aad976e6608a895fe368e3a85b8662"
+  }
+}
