@@ -1,0 +1,323 @@
+{
+  "status": "frozen_corrected_all_sources_inputs_budgets_before_new_gates_and_E",
+  "source_sha256": {
+    "research/gcts-rl-renewal/external_left_successor_inputs.py": "d7cb74f3422a0dbb07a724da6938aa28fe264e0ffb45c484527d0afd47e5abe8",
+    "research/gcts-rl-renewal/external_left_successor_run.py": "a283babd78c10f828bd2926bfb5c0bb9fe533cc247f62ae8fe85bbbf9f36fcc4",
+    "research/gcts-rl-renewal/external_left_successor_audit.py": "3088d1b1810dd09375d4d45d91115a38a186a88ccb10dcf3b2c5266f77498928",
+    "research/gcts-rl-renewal/external_left_successor_tests.py": "0f42cda94e74641dc8d2e2494acf35baacf92aec5a17a9f3e59aa1003a1ca0c6",
+    "research/gcts-rl-renewal/external_induction_tstp_check.py": "5ad7a472f385fdbb32b72a1515ee7dd703a4b7440c64f9ecc10f634ff24dcc0a",
+    "research/gcts-rl-renewal/external_induction_tstp_worker.py": "7cf8a2e36f3c84b65777794071e65277304b5ed82db3b66bef2414e73db046f5",
+    "research/gcts-rl-renewal/external_induction_tstp_run.py": "fb17acf36861fe074a989784d357186f15aa87ee8c3d26a15e84a339c8a2ba86",
+    "research/gcts-rl-renewal/external_induction_tstp_audit.py": "4065b10f4387fb93300d27f75d7e9c4983361cb7d287a5ee3ced625f01fc7c19",
+    "research/gcts-rl-renewal/external_induction_skolem.py": "a71db3bd3f7739eea9575f32b7f1675c64f0ada38c4586541d427c88d04259e6",
+    "research/gcts-rl-renewal/external_prover_check.py": "76c95c28d9cddbb5d18b4ce32ab7f2d23cd964e6420250d73efa97baa210835a",
+    "research/gcts-rl-renewal/external_prover_inputs.py": "ea06a78b47671d17c5ca72da3b7d0389bb7230e2d5c6b6c302d79547f7cceed5",
+    "research/gcts-rl-renewal/external_prover_run.py": "382e31ea9b512b36a0475a0ecbff37814bf8a0a961405440d7380962ab7e8637",
+    "research/gcts-rl-renewal/external_prover_worker.py": "ac11123b515ab3d54b679daf1d0281e238a570671f06b0eaa473eccca239b48b",
+    "research/gcts-rl-renewal/external_left_successor_focus.py": "94707b5a184f8cdc2f390405800749602545f0fac8dc283a1a726ef1d46b3592",
+    "research/gcts-rl-renewal/external_left_successor_focus_tests.py": "d838bdc705ed5d1ea3ac333cf0e1e19bc2a4a104eb783742ee30b7896bd04cbe",
+    "research/gcts-rl-renewal/external_left_successor_focus_worker.py": "6b102313dcce6299e976e0e4e826600057ab15f94b2bb5f43a7fbbe02968c902",
+    "research/gcts-rl-renewal/external_left_successor_focus_run.py": "b0b050dbae7ccf338b3265de4b6a93652ec0120382ddf0dacefec8dfb149d8bc",
+    "research/gcts-rl-renewal/external_left_successor_focus_audit.py": "249b857b56d695b562b449e8fda1abce3a9c894dc1d1a80e8959ee8278c4e4db",
+    "research/gcts-rl-renewal/external_left_successor_focus_context_tests.py": "32940dba1a5ab5627d1a7d6b49923c245e6ea4f29d26b7b77fa70ad1eca72728",
+    "research/gcts-rl-renewal/external_induction_tstp_tests.py": "51318463204e56de9d035786e640dcab35986d32645cc4effcc73c54e835d9f4"
+  },
+  "preparation_wall_seconds": 180,
+  "preparation_peak_RSS_bytes": 1073741824,
+  "setup_aggregate_seconds": 300,
+  "interface_worker_wall_seconds": 30,
+  "whole_certificate_worker_wall_seconds": 300,
+  "per_logical_step_wall_seconds": 30,
+  "certificate_worker_sampled_RSS_bytes": 1073741824,
+  "options": [
+    "--auto",
+    "--proof-object",
+    "--tstp-format",
+    "--cpu-limit=60",
+    "--memory-limit=1024",
+    "--resources-info",
+    "--print-statistics"
+  ],
+  "prover_wall_seconds": 65,
+  "repetitions": 2,
+  "order": [
+    {
+      "kind": "theory",
+      "repetition": 1
+    },
+    {
+      "kind": "library",
+      "repetition": 1
+    },
+    {
+      "kind": "library",
+      "repetition": 2
+    },
+    {
+      "kind": "theory",
+      "repetition": 2
+    }
+  ],
+  "scope": "Complete mechanically derived three-instance union in both lanes; all24 actual admitted interfaces checked from contextual dependencies and all setup certificates independently replayed before E. No supplied target derivation or winning induction choice. Native without-transfer finite grammar differs from this union control. No native Wang acceptance for E.",
+  "inputs": [
+    {
+      "kind": "theory",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-left-successor-focus-20261011/attempt-03/left-successor-theory.p",
+      "input_sha256": "b4d57f35cd0ab96609529580c136a8c43299528dc458312f090b72e38a5adfb7",
+      "mapping_sha256": "4956d54cd9ff16379e38e5ee8c2cd60700d6349ba645410f67054231649496d0",
+      "entries": 6
+    },
+    {
+      "kind": "library",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-left-successor-focus-20261011/attempt-03/left-successor-library.p",
+      "input_sha256": "7cdd68c407edb656d86efa402f125bfcc8be7df4f8ba37cc6922e392f3505237",
+      "mapping_sha256": "3a918f0c3470fafaaa19dd9452cd17390ea4dc3c3d188db4ff3fd29d5e7559a8",
+      "entries": 30
+    }
+  ],
+  "snapshot_manifest_sha256": "b6f984555c2da0f9169ca39e30a94f35fce9b9ba82f580eab67eb7d8fe5b34fc",
+  "inventory_sha256": "e80110ea699e87c996cafaae52642b0171f2e9fd0df0f61fd0796cbe31369e29",
+  "prover_source_commit": "3b7afc70fe77d3118bb95144c4735ca45f5f31cf",
+  "prover_binary_sha256": "a2fc18a82ed1dbdcdd37eefeb5c71ccad1e8fc48662466f61372fc0be5947f21",
+  "prover_version": "E 3.5.1-DEBUG Countess Grey (25808ee34733f8641fc5962acc203d453d9dbf1a)",
+  "preserved_artifacts": [
+    {
+      "path": "docs/research/gcts-rl-renewal/external_prover_control.html",
+      "sha256": "9298bce3b483d8f4e1dd8d4ba5e983570587fb2231d10fe8dabe4f5f2c9c9449",
+      "bytes": 683113
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_prover_control_audit.json",
+      "sha256": "bc6ec0cbcff584dc9674c472dabbca7637c0acdccc73eedd71aa058b5d93e241",
+      "bytes": 13885
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_prover_control_data.json.gz",
+      "sha256": "0526ef4b2773cfef30cabcf5d65284709d8086f38aebf2c77844a3db7ea4e0db",
+      "bytes": 69941
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_prover_control_plan.json",
+      "sha256": "b46b500ba0f25bb57416a6572cea64a0e9789b6e60a909513e4d2231fddd8c7b",
+      "bytes": 3433
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_prover_control_summary.json",
+      "sha256": "cd58d3184e00acf5468588d80393568c4e76c9672f4e24b1f104cc55b5455652",
+      "bytes": 47648
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_audit.py",
+      "sha256": "eeea247aaf1b6ff5f710540e784a2da28e3c2152400760f7962c7895ac4df88e",
+      "bytes": 4475
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_check.py",
+      "sha256": "76c95c28d9cddbb5d18b4ce32ab7f2d23cd964e6420250d73efa97baa210835a",
+      "bytes": 17508
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_export.py",
+      "sha256": "ca993aec123298663a1e2d9c72a3ca207ce868060da66eca6ae1c0fa4ad37aa6",
+      "bytes": 22448
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_inputs.py",
+      "sha256": "ea06a78b47671d17c5ca72da3b7d0389bb7230e2d5c6b6c302d79547f7cceed5",
+      "bytes": 3412
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_run.py",
+      "sha256": "382e31ea9b512b36a0475a0ecbff37814bf8a0a961405440d7380962ab7e8637",
+      "bytes": 8666
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_tests.py",
+      "sha256": "f65f3887c11e1998ce2388d56c728b2fefe65aca01144316c018d2d6e594296b",
+      "bytes": 4598
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_prover_worker.py",
+      "sha256": "ac11123b515ab3d54b679daf1d0281e238a570671f06b0eaa473eccca239b48b",
+      "bytes": 1181
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_hilbert_control.html",
+      "sha256": "d9bcda61fc6ef0bc62d210b16e383b695d5c432c2a85f1850f2bc085e1058d1d",
+      "bytes": 675041
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_hilbert_control_audit.json",
+      "sha256": "debc4a5d0e902cff38289b2d6ee6585d3a9c38a3853635aa0022189eb8884fd6",
+      "bytes": 14971
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_hilbert_control_data.json.gz",
+      "sha256": "7701bd185e63948fcab17ddb6a1e724a0ab129d85582c49b171bba7513f66d2c",
+      "bytes": 430023
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_hilbert_control_plan.json",
+      "sha256": "36f41970597c0ffbedb827ed17264d54d0e612798ac5b6ff9becdd7aa7ce0584",
+      "bytes": 4869
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_hilbert_control_summary.json",
+      "sha256": "bc52d47b85d6503290c51c3c34b07e3231167c84d9fccf690fb31a8e45bc1aac",
+      "bytes": 17354
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_hilbert_audit.py",
+      "sha256": "6affa1ad09f102abe362307576f805e9f8eeb82ace68bf1aa8c0a5a80050a716",
+      "bytes": 6460
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_hilbert_export.py",
+      "sha256": "d12b11767aa2e81c8587b98bbb3fda719fcb2fce8689ef0d4b8b036ca00bc238",
+      "bytes": 23721
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_hilbert_run.py",
+      "sha256": "8481558bfb645e502c412161a12408d1363ede9b5c5a4d6d432472789997eede",
+      "bytes": 12282
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_gate.html",
+      "bytes": 21860,
+      "sha256": "13a26f28054e2fb1dadc6d6dbab6f544b76648095d65c73b4d2019bddd17b26b"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_gate_inventory.json.gz",
+      "bytes": 202544,
+      "sha256": "f9d854ec7e25d5e7dd0922c250959da96eb8ab201ff0f08df086c00ca0c107e9"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_gate_plan.json",
+      "bytes": 11526,
+      "sha256": "1dfd44d048a95964895d9589a972dfea07a7095262af2392f035a10ea7b6cf76"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_gate_tests.json",
+      "bytes": 10733,
+      "sha256": "6ca674df7097240486b21669124aa53e093d8b879c5a2c7e11ec4fefe21e792b"
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_gate.py",
+      "bytes": 29473,
+      "sha256": "35c219b77c161a1019b3f5e087613335107f90b10d3bf4ba3b0ec85b06872641"
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_skolem.py",
+      "sha256": "a71db3bd3f7739eea9575f32b7f1675c64f0ada38c4586541d427c88d04259e6",
+      "bytes": 4953
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tests.py",
+      "bytes": 11531,
+      "sha256": "fee798e436dde0f9a1a0c26054962e96f7b2a2dde5d3bb81a99b39cf197fa687"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_tstp_control.html",
+      "sha256": "9d806eebf22eb5e665b38594987d8b52ef612ae549f9c0c7e31298e68f4b85c4",
+      "bytes": 1094021
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_tstp_control_audit.json",
+      "sha256": "3e74d10855878b26fb41262a025cc7549b876513e4996b4f60c0d434fc7e8d55",
+      "bytes": 1039957
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_tstp_control_data.json.gz",
+      "sha256": "bff38de401437014cbb398c3606cab626bf20c2173d7d2cc0bc10ea167d6db0c",
+      "bytes": 6267448
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_tstp_control_plan.json",
+      "sha256": "5a7419a9d33591477dde23759e44c7bbed25b5c5d69647d76fa035700ea320d5",
+      "bytes": 12589
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_induction_tstp_control_summary.json",
+      "sha256": "f99e88714dfaaf197afe5494b83463f2452ea6fc92efcb0ee510e9097fbd2255",
+      "bytes": 6917
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_audit.py",
+      "sha256": "4065b10f4387fb93300d27f75d7e9c4983361cb7d287a5ee3ced625f01fc7c19",
+      "bytes": 10674
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_check.py",
+      "sha256": "5ad7a472f385fdbb32b72a1515ee7dd703a4b7440c64f9ecc10f634ff24dcc0a",
+      "bytes": 21365
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_export.py",
+      "sha256": "0f85dea763f86a2571944639e9d0bb4dc9ee38e7b7663b9f06fa26b18a3a4225",
+      "bytes": 32858
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_reproduce.py",
+      "sha256": "2da5707c6b6a457ffb8efba61b52d12e5bf30e90e4b23f49230c1b1006c9be0f",
+      "bytes": 6044
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_run.py",
+      "sha256": "fb17acf36861fe074a989784d357186f15aa87ee8c3d26a15e84a339c8a2ba86",
+      "bytes": 17416
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_tests.py",
+      "sha256": "51318463204e56de9d035786e640dcab35986d32645cc4effcc73c54e835d9f4",
+      "bytes": 13647
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_induction_tstp_worker.py",
+      "sha256": "7cf8a2e36f3c84b65777794071e65277304b5ed82db3b66bef2414e73db046f5",
+      "bytes": 2327
+    }
+  ],
+  "preparation_seconds": 0.31395166700000005,
+  "target_runs": 0,
+  "induction_instances": 3,
+  "complete_admitted_interfaces": 24,
+  "logical_policy": "Exact generic focused universal instantiation proposes finite clauses, then independent reconstruction of every substitution and unchanged EUF relation-closure refutation replay. No finite satisfiability/unrestricted-entailment inference, E-rule trust or target proof.",
+  "focus_bounds": {
+    "rounds": 5,
+    "instances": 4000,
+    "terms": 600
+  },
+  "retry_scope": "Developed after all four original validator unknowns; preserved theory/library traces were calibration inputs, not fresh controlled results. Every corrected target run is a fresh E process after all24 fresh setup/replays and adversarial gates. Native without-transfer has two target templates; both external lanes receive complete three-instance union.",
+  "tests_policy": "Before target runs: independent closure/unsupported-feature gates,12 unrestricted-FOL relations/13 altered-instance/tree tests and all51 shared-context/witness fixtures. Unknown setup blocks all E runs.",
+  "audit_policy": "Independent input/source/native binding and complete24 fresh replay gate before E; exact four-result source/input/check/full-replay audit afterward; corrupt every actually used focused refutation and shared context/witness fields.",
+  "prior_attempt_manifest_sha256": "dbfa98ea12385fd8bd41d02cad4829c8ca1ef673046e05aa534566b5cbfd8560",
+  "prior_plan_sha256": "b739d7b8dea347a90e31b55e478496ded361591c0d42113048b162ad9abb1b3f",
+  "prior_audit_sha256": "af337df42db93e691d796ebbabd26c104d51a3789dd4f9c7173dc1098b6d526b",
+  "calibration_files": [
+    {
+      "path": "calibration-library.json",
+      "sha256": "b58d072b3b73461041e137461928c94a300b779d84cccc12e88705a509a091f0",
+      "bytes": 2183063
+    },
+    {
+      "path": "calibration-theory-v2.json",
+      "sha256": "5c195b2a7424349372c16f34fb8fe4b710c12be5e1c02d2f9edda7a26a2817f8",
+      "bytes": 1013180
+    },
+    {
+      "path": "calibration-theory.json",
+      "sha256": "621ac54565b5c6b7852db4091beaeb97017ef4ae467917597a19ecc86225c3f8",
+      "bytes": 267
+    },
+    {
+      "path": "development-tests.json",
+      "sha256": "be3e8758b96f5391e86bf11ef3986328d397ad4a902fc13942656aad7439ec59",
+      "bytes": 3799
+    },
+    {
+      "path": "diagnostic-local-events.json",
+      "sha256": "b8f1a1fa1b7419030d55e8c6a9f4bb9d193e94f72697524a9890ae4854b2e792",
+      "bytes": 57572
+    }
+  ]
+}

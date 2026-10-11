@@ -1,0 +1,54 @@
+{
+  "status": "prepared_rank_projection_pending_independent_audit",
+  "native_queries": 0,
+  "target_searches": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "full_retained_placements": 3590,
+      "eligible_placements": 2642,
+      "removed_placements": 948,
+      "eligible_command_counts": [
+        5,
+        12,
+        21,
+        28,
+        34,
+        37,
+        39,
+        39,
+        39,
+        39,
+        39,
+        1
+      ],
+      "model_setup_seconds": 0.12071758299999999,
+      "projection_seconds": 0.07155991599999999
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "full_retained_placements": 4628,
+      "eligible_placements": 3468,
+      "removed_placements": 1160,
+      "eligible_command_counts": [
+        6,
+        13,
+        24,
+        37,
+        43,
+        46,
+        48,
+        48,
+        48,
+        48,
+        48,
+        1
+      ],
+      "model_setup_seconds": 0.136429417,
+      "projection_seconds": 0.076095625
+    }
+  ],
+  "seconds": 0.6532225420000001,
+  "peak_rss_bytes": 107134976,
+  "scope": "Complete positional candidate universe projected by necessary rank conditions, with full original and projected records. No target search, native call or proof path."
+}

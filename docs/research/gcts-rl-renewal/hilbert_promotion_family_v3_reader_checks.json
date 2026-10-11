@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "production_outcome": "complete",
+  "full_audit": "passed",
+  "bindings": 48,
+  "observations": 64,
+  "rows": 200,
+  "tiles": 800,
+  "rejected_mutations": 15,
+  "mutations": [
+    "missing binding",
+    "wrong domain",
+    "missing source dependency",
+    "authored replacement of source proof",
+    "wrong audit",
+    "wrong native outcome",
+    "wrong file hash",
+    "hide original unknown",
+    "change resource gate",
+    "invent v2 native queries",
+    "omit proof row",
+    "wrong point marking",
+    "wrong occupancy",
+    "wrong word ID",
+    "wrong checkpoint"
+  ]
+}

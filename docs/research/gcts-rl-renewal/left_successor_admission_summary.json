@@ -1,0 +1,229 @@
+{
+  "status": "native_complete_pending_independent_replays",
+  "definitions": [
+    {
+      "name": "leftSuccessorReceptor0fb730835a468f532f2e0085ebb3285234eae553d541850f9395cbb021826549",
+      "request_sha256": "b5a0811a814dc1caad5419de2273b4f0a4662dae8ffe72a33222890c52cd8013",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 0,
+      "seconds": 7.809222083000001,
+      "micro_steps": 977720620
+    },
+    {
+      "name": "leftSuccessorReceptor1fe26406e3784b9ee16d096900782c7ebf3f629acc760dbfd7f4eea653697481",
+      "request_sha256": "e50cc6815a22f7f9317d0880ea07a25fe7a8a766811e094124f56f01cc59a63e",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 1,
+      "seconds": 6.265896792000001,
+      "micro_steps": 789042761
+    },
+    {
+      "name": "leftSuccessorReceptor2ea06434f96d74163283b0fa26e6f152ae6051f244c83dbf2a0ae20e69bd1c40",
+      "request_sha256": "2767b7f523f5539b7db0a82fef477be10812968f60a57a5db527887f63e2c2b8",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 2,
+      "seconds": 6.343229333,
+      "micro_steps": 765225063
+    },
+    {
+      "name": "leftSuccessorReceptor33f21758e459bf1a6cc73457296dbe9354153d64cd8e7ba841625f7743e47412",
+      "request_sha256": "d98c75068f5ca4aa98084b477147f509de9bfbcefaf33540ffd4a9eea66cdb51",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 3,
+      "seconds": 6.580764250000001,
+      "micro_steps": 811678038
+    },
+    {
+      "name": "leftSuccessorReceptor35ffac321a76f16a168ca52d9d69a12658ea6bc79606847fc90cdbd7b8634884",
+      "request_sha256": "ba6532f965369866b8c307357103bf238a1c35d7d845ff79817d9b0e7fa6ecb5",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 4,
+      "seconds": 3.262727791999996,
+      "micro_steps": 397954586
+    },
+    {
+      "name": "leftSuccessorReceptor4dfa79f334ed41a49b244aa113c7f7a660ee2f64dea1815dd93b59879c5080a7",
+      "request_sha256": "4e5b3ad60d58e38c56d3a2f40d0985ad0f69bd40860600233482f778d3536cfe",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 5,
+      "seconds": 4.120056166000005,
+      "micro_steps": 533168238
+    },
+    {
+      "name": "leftSuccessorReceptor5b48e6c331e21980450f037939f0c78fa952eac0f29c8df764af93b4fee9ea1d",
+      "request_sha256": "b898ae12c48fa2edb57882778cc99aa3e76b9c58c46e4116bd9520d98abb3043",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 6,
+      "seconds": 5.7041781249999985,
+      "micro_steps": 737428308
+    },
+    {
+      "name": "leftSuccessorReceptor69ac9c9b21b1ea5032d4e50dab084d64a897ad5fab90fdaa87d32ea08e4a8744",
+      "request_sha256": "b4f651943960a38a285e4738c53ec0442e3d2a1219997b0a86dc93b3abf88db9",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 7,
+      "seconds": 8.388616042000002,
+      "micro_steps": 1043244673
+    },
+    {
+      "name": "leftSuccessorReceptor6c7d2b4c6d3f96174a2ceedeb1d3577f690fc70556e7152cde3fbdd528bfd5cc",
+      "request_sha256": "aecc838d5d7eb07823bb0eb479e54235d3723d332d846ac1652e802a36e95afa",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 8,
+      "seconds": 8.787925125000001,
+      "micro_steps": 1086383226
+    },
+    {
+      "name": "leftSuccessorReceptor787546bb7dea860607ffcc75452009cc7859b48b9ce4c1762cc953002b19f1df",
+      "request_sha256": "402765cf20240568302670dc7dcc86841c19407008e04a59cdfb5e441d73e3aa",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 9,
+      "seconds": 25.579019167,
+      "micro_steps": 3478398107
+    },
+    {
+      "name": "leftSuccessorReceptor7f945f36b35cb11fc9ef4f0b7b03973de5ef469f29a0bb76b08473753510f05e",
+      "request_sha256": "10a8d43a972afc15828f96e19f0df187496ca3f23839519da50b5d09add52b7b",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 10,
+      "seconds": 26.173342292,
+      "micro_steps": 3416346436
+    },
+    {
+      "name": "leftSuccessorReceptor8071a284924dc3452aa2cb881725e162de25b7eb7612393ca9fe6f9a4f6a3c69",
+      "request_sha256": "8eda1d2508853a295cf939c5c3fbd0d11f6266bbd307c4c0daa1b308f56730ac",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 11,
+      "seconds": 1.8439175839999962,
+      "micro_steps": 238664751
+    },
+    {
+      "name": "leftSuccessorReceptor9dea051d858d237d44cfbb5012510b7e0085b618c2227920ddb4904f0b757cd5",
+      "request_sha256": "d5fb74ffd299f88fcd5a76c010561dda61ae2e9a36be2399217616e231581304",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 12,
+      "seconds": 23.90724,
+      "micro_steps": 3120956343
+    },
+    {
+      "name": "leftSuccessorReceptora0c3810ad593a4ebd31849d8e02f8b8fa0fc68e19a3c7974c2b4fa9f30e37aef",
+      "request_sha256": "89f65302189176950328015e6e3fbd901daf50ea4e4e1a6583ab4bbb354f9c5b",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 13,
+      "seconds": 7.037921541000003,
+      "micro_steps": 914894724
+    },
+    {
+      "name": "leftSuccessorReceptorb278a873374118a5c68b370ae86530c09c4503c986dc15d3f1ce73662917440f",
+      "request_sha256": "edcdc5262a4a0569019cd7c769f2024184cdf65c823874dacdeeb19c3974bfd8",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 14,
+      "seconds": 1.1903768329999878,
+      "micro_steps": 151738081
+    },
+    {
+      "name": "leftSuccessorReceptorb5efab6df6020212837fe505fc6fa5fc461eec4b5fd75e137f60d167b505bb58",
+      "request_sha256": "30ecc6c54ea892848d9e84b0249964b1a81bacb4682a6506b3bcb830cb8c3277",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 15,
+      "seconds": 28.959002417000022,
+      "micro_steps": 3764514600
+    },
+    {
+      "name": "leftSuccessorReceptord4e16a830f3190615bc0ff29678794287dccb61594aad43df58657a60ea1f16f",
+      "request_sha256": "3d7f7aa84331329cb6cbd21e78a35d1738d1b73b09d23d1b860533d6d02998d1",
+      "status": "accepted",
+      "source": "pilot-exact-request",
+      "query": 15,
+      "historical_seconds": 2.818695333999983,
+      "historical_micro_steps": 389492953
+    },
+    {
+      "name": "leftSuccessorReceptord5c57ed86e76f914afc30be2ce106cbd2f85eb7e2c4ced3d87878532577b20b2",
+      "request_sha256": "e260a1e620ca092cd557e9a4925f824d6628941225d92ec9342e8535fe21f30c",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 16,
+      "seconds": 29.243759375000025,
+      "micro_steps": 3719933511
+    },
+    {
+      "name": "leftSuccessorReceptore05d721cc3fd98d15d0f7851ebb9ceb6c991e73e5d50ed693604a94b6b677f3a",
+      "request_sha256": "3f089af458e89210d07367641182261bd5bd64ef18bc38cd3b9c7fee2e736984",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 17,
+      "seconds": 5.907270667000006,
+      "micro_steps": 764969864
+    },
+    {
+      "name": "leftSuccessorReceptore965d1a62d43fb79b3f6be56c02511f50370747c9522500e7c7397182b34d29a",
+      "request_sha256": "277c41be8517b174bcb211a0e8eeb1620ef6cab48b4d8cba14503796dc510156",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 18,
+      "seconds": 5.723606916999984,
+      "micro_steps": 726385364
+    },
+    {
+      "name": "leftSuccessorReceptoreb6c7a42449767810624ca61b81d047fb735cab87ac51cea51328558ef8612e3",
+      "request_sha256": "17b68b1a009c296e1f74ce06f62fcafd421ecea0aa245dbfe23c71b077eb8e82",
+      "status": "accepted",
+      "source": "pilot-exact-request",
+      "query": 8,
+      "historical_seconds": 14.667570291999994,
+      "historical_micro_steps": 2032694474
+    },
+    {
+      "name": "leftSuccessorReceptorf2a1453b3414838978b182fa8c3bdcbdffbd5ad34677544c287ff89e0098f629",
+      "request_sha256": "91223abcf69a4565edd6ca7e8cc5c97461ae08ddb17c960dab5bd0bfe6d08f1e",
+      "status": "accepted",
+      "source": "fresh-native-request",
+      "query": 19,
+      "seconds": 27.317436375,
+      "micro_steps": 3540775850
+    },
+    {
+      "name": "leftSuccessorReceptorfc1738aa65300e947a04041459e61a7bb79e7b61b0531fef5b9acd69c042fddb",
+      "request_sha256": "fc4de872989292c28eee49c70b392b31e8f3fd4cec4a75ee655c400ae47669fa",
+      "status": "accepted",
+      "source": "pilot-exact-request",
+      "query": 0,
+      "historical_seconds": 51.312325625,
+      "historical_micro_steps": 7084668098
+    },
+    {
+      "name": "searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "request_sha256": "c76a2af1ffdbfd5e84aa7b1d1d076ce9601709062ecdfc1bd3dd3e3ffbfce42c",
+      "status": "accepted",
+      "source": "pilot-exact-request",
+      "query": 5,
+      "historical_seconds": 32.392606124999986,
+      "historical_micro_steps": 4479690987
+    }
+  ],
+  "native_queries": 20,
+  "reused_exact_queries": 4,
+  "new_native_micro_steps": 30979423144,
+  "compile_and_oracle_setup_seconds": 2.3872952080000003,
+  "seconds": 245.66706562500002,
+  "complete_definitions": 24,
+  "scope": "Every reachable union definition accepted under exact original theory. Exact reused queries retain historical costs. No model/search until the whole pilot and admission native computations are independently replayed.",
+  "target_searches": 0
+}

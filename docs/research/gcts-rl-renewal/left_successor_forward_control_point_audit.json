@@ -1,0 +1,51 @@
+{
+  "status": "passed_exact_control_word_point_encoding",
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "mode": "actual_word",
+      "rows": 11,
+      "full_placements": 3092,
+      "selected_tiles": 44,
+      "all_root_occupancies_and_extended_scalar_markings_agree": true,
+      "host_logical_status": "accepted",
+      "native_whole_status": "unknown_space_budget for unpadded word; padded variant not submitted",
+      "GCTS_search": false
+    },
+    {
+      "lane": "without-transfer",
+      "mode": "same_boundary_embedding",
+      "rows": 12,
+      "full_placements": 3590,
+      "selected_tiles": 48,
+      "all_root_occupancies_and_extended_scalar_markings_agree": true,
+      "host_logical_status": "accepted",
+      "native_whole_status": "unknown_space_budget for unpadded word; padded variant not submitted",
+      "GCTS_search": false
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "mode": "actual_word",
+      "rows": 11,
+      "full_placements": 3976,
+      "selected_tiles": 44,
+      "all_root_occupancies_and_extended_scalar_markings_agree": true,
+      "host_logical_status": "accepted",
+      "native_whole_status": "unknown_space_budget for unpadded word; padded variant not submitted",
+      "GCTS_search": false
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "mode": "same_boundary_embedding",
+      "rows": 12,
+      "full_placements": 4628,
+      "selected_tiles": 48,
+      "all_root_occupancies_and_extended_scalar_markings_agree": true,
+      "host_logical_status": "accepted",
+      "native_whole_status": "unknown_space_budget for unpadded word; padded variant not submitted",
+      "GCTS_search": false
+    }
+  ],
+  "seconds": 1.463194541,
+  "scope": "Every full model independently reconstructed, all direct-encoding placements checked for exact occupancy/mark equality and strict-prior logical sources. Both 11-row candidates embed in the identical 12-row target boundary by one irrelevant zero-input filler. This is an encoded forward control, not a GCTS discovery; native whole unknowns are unchanged."
+}

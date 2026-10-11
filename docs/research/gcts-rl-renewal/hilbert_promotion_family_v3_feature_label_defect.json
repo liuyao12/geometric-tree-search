@@ -1,0 +1,24 @@
+{
+  "status": "identified_before_search",
+  "identified_utc": "2026-10-11T12:56:00.451541Z",
+  "original_plan_sha256": "fe46d9c347ca977491fcc09f491fad1d4192abb9acb6fe0c8e700597625078cb",
+  "completed_observations_at_identification": 0,
+  "native_queries_at_identification": 52,
+  "promoted_admissions_at_identification": 23,
+  "issue": "Original planned expanded feature lane forwards API shorthand expanded; unchanged catalog_receptor_search accepts expanded-word. Original worker forwards the shorthand literally.",
+  "required_normalization": {
+    "expanded": "expanded-word"
+  },
+  "unchanged_semantics": [
+    "Full 48 parameter binding domain",
+    "All 28 base and 48 promoted rule admissions",
+    "All 64 scheduled recipient/language/policy observations",
+    "The physical-versus-expanded mark count definitions",
+    "All GCTS graph candidates, dead/forced/earliest scheduler and fallback",
+    "Frozen seed 72000 and Notebook 68 weights",
+    "Admission and whole native step gates and original heap",
+    "Admission cost ceiling and search limits"
+  ],
+  "original_sources_preserved": true,
+  "action_taken": "None on measured or frozen sources; live original admission producer and auditor unchanged. Versioned amendment to be pinned before any affected search."
+}

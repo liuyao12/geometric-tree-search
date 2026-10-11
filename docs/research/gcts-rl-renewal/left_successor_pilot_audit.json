@@ -1,0 +1,168 @@
+{
+  "status": "passed_preparation_native_replay_only",
+  "queries": [
+    {
+      "query": 0,
+      "stratum": "conditional-rewrite / assumption",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 7084668098,
+      "seconds": 56.6927,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 1,
+      "stratum": "conditional-rewrite / assumption",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 8791013007,
+      "seconds": 66.1281,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 2,
+      "stratum": "conditional-rewrite / axiom",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 4205673657,
+      "seconds": 32.0216,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 3,
+      "stratum": "conditional-rewrite / axiom",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 4205673657,
+      "seconds": 32.3451,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 4,
+      "stratum": "transferred-searched-theorem",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 4479690987,
+      "seconds": 34.9712,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 5,
+      "stratum": "transferred-searched-theorem",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 4479690987,
+      "seconds": 33.5377,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 6,
+      "stratum": "conditional-rewrite / discovered-lemma",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 3617699373,
+      "seconds": 26.4138,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 7,
+      "stratum": "conditional-rewrite / discovered-lemma",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 3617699373,
+      "seconds": 26.3721,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 8,
+      "stratum": "induction",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 2032694474,
+      "seconds": 14.7273,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 9,
+      "stratum": "induction",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 2229420844,
+      "seconds": 16.0953,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 10,
+      "stratum": "rewrite / axiom",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 1581419200,
+      "seconds": 11.4362,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 11,
+      "stratum": "rewrite / axiom",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 1581419200,
+      "seconds": 11.4358,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 12,
+      "stratum": "rewrite / discovered-lemma",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 1210688401,
+      "seconds": 8.70034,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 13,
+      "stratum": "rewrite / discovered-lemma",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 1210688401,
+      "seconds": 8.73201,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 14,
+      "stratum": "conditional-reflexivity",
+      "variant": "compact",
+      "status": "accepted",
+      "micro_steps": 389492953,
+      "seconds": 2.89359,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 15,
+      "stratum": "conditional-reflexivity",
+      "variant": "original",
+      "status": "accepted",
+      "micro_steps": 389492953,
+      "seconds": 2.81248,
+      "complete_input_output_sha256_matched": true,
+      "out_of_frame_bands": []
+    }
+  ],
+  "micro_steps": 51107125565,
+  "seconds": 392.083558375,
+  "scope": "Exact declared representative requests reconstructed. Whole native transitions, full parser input/output, micro/physical steps and execution FNV matched. Native unknowns remain unknowns. No complete inventory admission or searched target proof."
+}

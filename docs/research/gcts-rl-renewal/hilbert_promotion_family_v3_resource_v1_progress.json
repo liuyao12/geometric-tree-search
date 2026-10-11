@@ -1,0 +1,401 @@
+{
+  "status": "unknown_recipient_guard",
+  "construction_seconds": 0.05556991699999998,
+  "bindings": 48,
+  "distinct_promoted": 48,
+  "base_admissions": [
+    {
+      "name": "hilbert-09bf793ee5486cca5ae880f94bb5ae97a2924210cc8d5993c6c912b0a9bbf464",
+      "query": 1,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-06ffcbd0f84ed28d43ba2ed0f7115cf819174583f06caa3bedc7b0736c408f7a",
+      "query": 2,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-28ce9ad8db7848d03c41d5dad0761e29aa7aae642b6b044e5ad4a79ad9a8cf23",
+      "query": 3,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-1a805968bce8a70c3ef72f60b3016146a767956e77289d2fb2837242f20be7f0",
+      "query": 4,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-06900b53721261a2e549c8326cfcf2d9226e883a3d39d2157cb8af489d028fb1",
+      "query": 5,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-c403db022823ed8a5dc7677845382018309de071cc6c4198a9505435b2db19e2",
+      "query": 6,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-c3c4768cd5a15cb09f869d98903680a72e340bd750b88ecb0baee7fc247d0e7f",
+      "query": 7,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-83df0a0298922bf8af8a15f3c340203248d67bda707645535035b2514b6de325",
+      "query": 8,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-f114a6bc1015759d25b3f421796f1320657663989b0279d62f6f802f53f19d61",
+      "query": 9,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-bbf232dc171e75bcb573c301d1753d77ef1beee14cacfa259e8ad37a7adc128d",
+      "query": 10,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-2214f7d704dc75a284fa590e5d3242aa87ac039ef45e2dea82843661badb597d",
+      "query": 11,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-73cb26f47886e017933b0c899e540db1dc732a67c6bbaeeb59e82215cc1b173f",
+      "query": 12,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-4c8b8d7c5f9c27385556492e1b1ef880449c9927f5cc6c12eede4ec513dbbc67",
+      "query": 13,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-7250419fcb6ed7ae0ff49c76a4514e8704c4e641566262ef299ec6e12f80d942",
+      "query": 14,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-8c85aac1d4f16ebce432e8c25d8e3c6b5f1f9e947446137aeb65c01a0060627c",
+      "query": 15,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-44c236ee056971d1a8a27aa4132096b6fca91fc1a296bf3ba2017a1ae8b72bd4",
+      "query": 16,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-f54538fd0f3ca800fd234961bb5252419451ea704dbbce474545efa2caabb4a3",
+      "query": 17,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-58c10d82d58c17ed78500249273dd029f018ed194edac47606e09c1c1111fb0e",
+      "query": 18,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-164df49fd8cfacd487a7540bf48a6a5c2cd6e75a33c4bf1a133cdb6ba4a98ba8",
+      "query": 19,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-d66f045bce9d89896a1f492b1cfc3e5e8f3d873d79297e7c47b4ccaedd0a0990",
+      "query": 20,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-6aca9327659c1538eb5f09f9f25085e017199110ec2dbe0aa778407f715e0f28",
+      "query": 21,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-b0ee3de8230d7a2254e8fda2b26dbfe29514a134e2c10ceea4f5f509ee427317",
+      "query": 22,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-d080a7655c0001a0a0f9d9c979a14032fa4ef5c22ef8ab8d345763b642b9c0ea",
+      "query": 23,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-7973553567bf63eeea499698d47a49cfbdd99d8d382a6732696cc95daf339971",
+      "query": 24,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-62ca3acc12daaa618a1ada54e8eff89977472a118e017ae8a69d987a810484f6",
+      "query": 25,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-f6d21ec4f37b2eed203ebd355bf5b27234f6061d73c8c9afc6d19600daa3b33d",
+      "query": 26,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-f7caba71ab6a7fe214e5dc1894adac12169562e684423a2ddf5b1810f99d5967",
+      "query": 27,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-ff9e1d7d28014be769d3f7da0a690fc2f0c63acff3de3b4c7b9235ab9369e30a",
+      "query": 28,
+      "status": "accepted"
+    }
+  ],
+  "promoted_admissions": [
+    {
+      "name": "hilbert-promoted-574149b94c4dfb3ccce9f883d37c7e0d90e6f3b47d34793454aae66db55d4d48",
+      "query": 29,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-7e1361996bf429f431d8600b0081bce72b56520ec8c34178cb1cee9e65d3ad37",
+      "query": 30,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-b924950aa195548464c9411d27b9bac2e2a4308fe8fad71957f8cf3b32c6d49d",
+      "query": 31,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-e179ee9f3cee1134fffdc4a227719e0c6b38bf54b8f05cbfb47d4d7582716727",
+      "query": 32,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-54648bbe39fbd4c217141dae3013b630fafb61b9e2946e81024c7f6115f9652d",
+      "query": 33,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-888a2b4277eaf3ebdf9f21c4226ba478fb41307cca813c84bcd94a579fa60d72",
+      "query": 34,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-0e87937696617909d4d99efb5535bf7af3537bdb3524c48875701199dd6651f0",
+      "query": 35,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-6e0743c1592d17d7d6efb7e51f3e2b8a98f9d7a9a5da3cbf62120e3fc08e9a79",
+      "query": 36,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-5cfe2936758119d49d2cab1ca2427ac3a9cacf8e1d7ecadccd7a86bfcd9b7dbf",
+      "query": 37,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-ac01c88d702dd7bf5de394a10abd8515623d957ef9aae21cb7acf84733ae9199",
+      "query": 38,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-c4e29a9f9bf30b12c06b604a6d84d375efd9e8c9b47cac547d818d81d2cbf4db",
+      "query": 39,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-231edf049629316bad1a9de918f65bf34285773de6cf109b141d573930c6194c",
+      "query": 40,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-a1a14fe8cc0064f5de128fdff980b4179741ddb355e4a99351b877125a053727",
+      "query": 41,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-7bb6ae2e187c14b4c0ab856045b629780f22ade4cc855dd97db7fa15307a9d94",
+      "query": 42,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-9c4e96003e5c177abe728e718ee043b163056076255421a471e6c3aa16b2f3b5",
+      "query": 43,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-d528c875e3b9a21d827e54fdc18003700023a98c0d5e41ce25e3d1b68bca6c8a",
+      "query": 44,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-95c131440c0cb3f4217ef3e2a4dc645b10e3ed584bf0d4aa8565982afec4f38f",
+      "query": 45,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-34e3b4aba050bef27eef0e9d2f642dc3eb818c11fb86196152ced950328ef297",
+      "query": 46,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-f71fe33f21ecec98e2ed2e7661222b389434861835637108c75b464e0183bbec",
+      "query": 47,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-f9a8d7daf0432f0439dbe981273134fbbbe2d17d67a9ee8b243128e2750fedc1",
+      "query": 48,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-8e627cd156d9f02e66497919c398be3d7d19782269834aaec1ae0ab12496fb7a",
+      "query": 49,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-289efa4bc5d127bd09632d92b4440f621a9b6958b30ad3855d2668a40c301af3",
+      "query": 50,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-d7c9a45c2a04b55b11ce0c576005ba8760029e751a94007c8cee58c831b66fac",
+      "query": 51,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-5e704a0f73bacc311c3a3414b4872b569fb5a35a18096fa33b823147bd55ddbd",
+      "query": 52,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-d883184cf3e9e09b7bf57eb8477936558019f1b9330bb7f962741baa2d87f557",
+      "query": 53,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-d8d3345924c9b36091b5509a8474432d1c2791953e0f125c15180578b0c11c54",
+      "query": 54,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-ce0b86c87636f012ba82284fde38eea8bc4b077b592b2137dfd0d4795d04611b",
+      "query": 55,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-103c18928929fc3ded3fd5cb464ae6466b4b00c44fe674bb58e236c63ecbd1e9",
+      "query": 56,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-b9cab49012cb36c0dbca61a7c5111426d077b82433070398c3ad1165cf9d33fe",
+      "query": 57,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-2a7995ae4442aa5182bb76c0a9aecd5ab93deab7ccfa800d86eae3bdc726fe69",
+      "query": 58,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-e5d4a553accc2293f68e2ce102e15d4cdacc97937089303f0803753b43c51ed4",
+      "query": 59,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-2538bc4154ef2e9791acb61bf9403692f74155a3a5193de6316489a58bf04e92",
+      "query": 60,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-bd931f47539652a1f08867c09bf822f43694e6ba647d7248a0c7f8d3d1ec0074",
+      "query": 61,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-666e2ed17091f6f8f6a65e824bea843564b87a2cdd149db86a0ec030a5b1517d",
+      "query": 62,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-f5aade9ff150affded73cd7df20bca1b84d9422ba1a36eea9598aa12cba466cd",
+      "query": 63,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-17bc486328597e003b4029b07828230975c1a38e9d0dcfcac6c1b8e3e5e3f2b4",
+      "query": 64,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-7b9b77cf493bd968a2033ed72773f7bbdd5c41dbeeb30f30987fbbfcfeb95b70",
+      "query": 65,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-42e3dec4fb56156b6530edd2975c3d12d0fc7dff0ae1a9fcf2aa031031f79f78",
+      "query": 66,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-c76e41bb63e9250c8de462dc6b7dd1f8875594e4b3b53187644a80d71eb23668",
+      "query": 67,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-bcf85bcf53b5fe38bd0d498c90fffe6d587ed0ee0d2dfad32067f3cf55854b8d",
+      "query": 68,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-0cb7c8a39a7e4fdb54ebb9afdb413fdfea701212401fa778d4dcd5bfccc4b4e6",
+      "query": 69,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-f4d07629521be1c0233ce72c8ddeb7bddf7f95c9e0ac53c30c010628cfb11ec1",
+      "query": 70,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-22c00447536ddd54ba876003a6d06165b23882d8cce15feaae1037d8402556e9",
+      "query": 71,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-a54162c91f5688ca6e1f7a976faefee12249f1a3a718ea57b99281b200aeda5a",
+      "query": 72,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-3c2258ee642374bdf4641474e5537850af63816c210a66dabc88542fb8b4e092",
+      "query": 73,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-39eeda4c30b58b95b0c4ed376812b4422f34c535b12b04f60ad684da605977d8",
+      "query": 74,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-88a41a6a3eead7f41cffe6a7d02cc382709e4201bc71fb019824cefb06834d5c",
+      "query": 75,
+      "status": "accepted"
+    },
+    {
+      "name": "hilbert-promoted-920e4b9458ee19139aa4ce41f007e3a1ab829a745832b464f71663d193458422",
+      "query": 76,
+      "status": "accepted"
+    }
+  ],
+  "groups": {
+    "direct": {
+      "compile_seconds": 99.64460187500003,
+      "formulas": 27
+    }
+  },
+  "observations": [],
+  "native_queries": 128,
+  "seconds": 2169.25902825,
+  "admission_seconds": 1931.906262542,
+  "native_outcome": "unknown_step_budget"
+}

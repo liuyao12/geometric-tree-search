@@ -1,0 +1,78 @@
+{
+  "status": "complete_forward_observations_pending_independent_audit",
+  "observations": [
+    {
+      "lane": "without-transfer",
+      "retained_interfaces": 39,
+      "complete_closure_formulas": 32,
+      "edge_scans": 312,
+      "extraction_seconds": 0.028415709000000344,
+      "word_length": 11,
+      "same_12_row_boundary_fits": true,
+      "whole_variants": [
+        {
+          "mode": "selected-high-level",
+          "query": 0,
+          "native_status": "unknown_space_budget",
+          "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+          "proof_commands": 11,
+          "cached_exact_request": false,
+          "historical_native_seconds": 18.037726042,
+          "historical_micro_steps": 2458273215
+        },
+        {
+          "mode": "expanded-shared-primitive",
+          "query": 1,
+          "native_status": "unknown_space_budget",
+          "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+          "proof_commands": 67,
+          "cached_exact_request": false,
+          "historical_native_seconds": 45.472909708,
+          "historical_micro_steps": 6263590303
+        }
+      ],
+      "expanded_commands": 79,
+      "shared_primitive_commands": 67,
+      "compaction_preparation_seconds": 0.12592995799999995
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "retained_interfaces": 48,
+      "complete_closure_formulas": 37,
+      "edge_scans": 384,
+      "extraction_seconds": 0.0305846669999994,
+      "word_length": 11,
+      "same_12_row_boundary_fits": true,
+      "whole_variants": [
+        {
+          "mode": "selected-high-level",
+          "query": 0,
+          "native_status": "unknown_space_budget",
+          "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+          "proof_commands": 11,
+          "cached_exact_request": true,
+          "historical_native_seconds": 18.037726042,
+          "historical_micro_steps": 2458273215
+        },
+        {
+          "mode": "expanded-shared-primitive",
+          "query": 1,
+          "native_status": "unknown_space_budget",
+          "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+          "proof_commands": 67,
+          "cached_exact_request": true,
+          "historical_native_seconds": 45.472909708,
+          "historical_micro_steps": 6263590303
+        }
+      ],
+      "expanded_commands": 79,
+      "shared_primitive_commands": 67,
+      "compaction_preparation_seconds": 0.02889629199999888
+    }
+  ],
+  "native_queries": 2,
+  "compile_and_oracle_setup_seconds": 2.499684667,
+  "scope": "Ordinary deterministic full retained hyperedge forward chaining, not GCTS, proposals or RL. No supplied target-proof path. The completed closure and automatically reconstructed DAG/word are separate from blind GCTS phases. Unknown native outcomes remain unknown.",
+  "seconds": 66.915059084,
+  "peak_rss_bytes": 321912832
+}

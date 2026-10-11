@@ -1,0 +1,1799 @@
+{
+  "status": "independently_verified",
+  "search_observations": 64,
+  "accepted_proof_observations": 48,
+  "exhausted_observations": 16,
+  "point_budget_unknowns": 0,
+  "native_whole_unknowns": 0,
+  "distinct_whole_native_acceptances": 7,
+  "by_case_language": [
+    {
+      "case_id": "fresh-direct-short",
+      "language": "level1",
+      "lanes": [
+        {
+          "method": "level1-base",
+          "attempts": [
+            20,
+            20
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.040429875000000004,
+            0.04123283300000001
+          ]
+        },
+        {
+          "method": "level1-fixed-physical",
+          "attempts": [
+            20,
+            20
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.053495249999999994,
+            0.051830333000000006
+          ]
+        },
+        {
+          "method": "level1-learned-physical",
+          "attempts": [
+            20,
+            20
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.052568459,
+            0.054809667000000006
+          ]
+        },
+        {
+          "method": "level1-learned-expanded",
+          "attempts": [
+            20,
+            20
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.052055459,
+            0.05301429200000002
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-direct-short",
+      "language": "promoted",
+      "lanes": [
+        {
+          "method": "promoted-base",
+          "attempts": [
+            63,
+            63
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.203149334,
+            0.20501770799999997
+          ]
+        },
+        {
+          "method": "promoted-fixed-physical",
+          "attempts": [
+            71,
+            71
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.34435175,
+            0.33361299999999994
+          ]
+        },
+        {
+          "method": "promoted-learned-physical",
+          "attempts": [
+            71,
+            71
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.322972084,
+            0.32355675
+          ]
+        },
+        {
+          "method": "promoted-learned-expanded",
+          "attempts": [
+            59,
+            59
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.27725849999999996,
+            0.28694112499999996
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-direct-sufficient",
+      "language": "level1",
+      "lanes": [
+        {
+          "method": "level1-base",
+          "attempts": [
+            30,
+            30
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.06333587500000001,
+            0.063892791
+          ]
+        },
+        {
+          "method": "level1-fixed-physical",
+          "attempts": [
+            30,
+            30
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.08545450000000002,
+            0.08897904199999998
+          ]
+        },
+        {
+          "method": "level1-learned-physical",
+          "attempts": [
+            30,
+            30
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.09322049999999998,
+            0.08771316700000001
+          ]
+        },
+        {
+          "method": "level1-learned-expanded",
+          "attempts": [
+            30,
+            30
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.085839375,
+            0.090301416
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-direct-sufficient",
+      "language": "promoted",
+      "lanes": [
+        {
+          "method": "promoted-base",
+          "attempts": [
+            67,
+            67
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.2591215,
+            0.268601208
+          ]
+        },
+        {
+          "method": "promoted-fixed-physical",
+          "attempts": [
+            28,
+            28
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.2898855,
+            0.28643220799999997
+          ]
+        },
+        {
+          "method": "promoted-learned-physical",
+          "attempts": [
+            28,
+            28
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.28558574999999997,
+            0.30603312499999996
+          ]
+        },
+        {
+          "method": "promoted-learned-expanded",
+          "attempts": [
+            28,
+            28
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.294371458,
+            0.295167125
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-composed-short",
+      "language": "level1",
+      "lanes": [
+        {
+          "method": "level1-base",
+          "attempts": [
+            59,
+            59
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.148960417,
+            0.148449125
+          ]
+        },
+        {
+          "method": "level1-fixed-physical",
+          "attempts": [
+            59,
+            59
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.24419425000000003,
+            0.2066205
+          ]
+        },
+        {
+          "method": "level1-learned-physical",
+          "attempts": [
+            59,
+            59
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.22732620799999997,
+            0.21211100000000002
+          ]
+        },
+        {
+          "method": "level1-learned-expanded",
+          "attempts": [
+            59,
+            59
+          ],
+          "statuses": [
+            "exhausted_finite_marked_region",
+            "exhausted_finite_marked_region"
+          ],
+          "certifications": [
+            "no_proof",
+            "no_proof"
+          ],
+          "search_seconds": [
+            0.206595916,
+            0.20922883299999998
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-composed-short",
+      "language": "promoted",
+      "lanes": [
+        {
+          "method": "promoted-base",
+          "attempts": [
+            425,
+            425
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            1.473842375,
+            1.565317375
+          ]
+        },
+        {
+          "method": "promoted-fixed-physical",
+          "attempts": [
+            490,
+            490
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            2.579503791,
+            2.759878084
+          ]
+        },
+        {
+          "method": "promoted-learned-physical",
+          "attempts": [
+            490,
+            490
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            3.2065028339999997,
+            2.705752167
+          ]
+        },
+        {
+          "method": "promoted-learned-expanded",
+          "attempts": [
+            421,
+            421
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            2.219899958,
+            2.2694494580000004
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-composed-sufficient",
+      "language": "level1",
+      "lanes": [
+        {
+          "method": "level1-base",
+          "attempts": [
+            44,
+            44
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.162965667,
+            0.164039542
+          ]
+        },
+        {
+          "method": "level1-fixed-physical",
+          "attempts": [
+            38,
+            38
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.245671917,
+            0.31063683299999995
+          ]
+        },
+        {
+          "method": "level1-learned-physical",
+          "attempts": [
+            38,
+            38
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.231047584,
+            0.22194154200000002
+          ]
+        },
+        {
+          "method": "level1-learned-expanded",
+          "attempts": [
+            38,
+            38
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.21423304199999998,
+            0.228925167
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-composed-sufficient",
+      "language": "promoted",
+      "lanes": [
+        {
+          "method": "promoted-base",
+          "attempts": [
+            429,
+            429
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            2.084127167,
+            1.8906169170000002
+          ]
+        },
+        {
+          "method": "promoted-fixed-physical",
+          "attempts": [
+            114,
+            114
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.987523666,
+            0.9733421250000001
+          ]
+        },
+        {
+          "method": "promoted-learned-physical",
+          "attempts": [
+            114,
+            114
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.9557918750000001,
+            0.998663416
+          ]
+        },
+        {
+          "method": "promoted-learned-expanded",
+          "attempts": [
+            32,
+            32
+          ],
+          "statuses": [
+            "finite_marked_proof_region",
+            "finite_marked_proof_region"
+          ],
+          "certifications": [
+            "accepted",
+            "accepted"
+          ],
+          "search_seconds": [
+            0.6315912499999999,
+            0.5502086669999999
+          ]
+        }
+      ]
+    }
+  ],
+  "native_phase_costs": {
+    "family_theory_admission": {
+      "queries": 1,
+      "seconds": 1.1684574999999997,
+      "micro_steps": 157523853,
+      "statuses": {
+        "accepted": 1
+      }
+    },
+    "family_base_admission": {
+      "queries": 28,
+      "seconds": 420.0610673749999,
+      "micro_steps": 57852160313,
+      "statuses": {
+        "accepted": 28
+      }
+    },
+    "family_promoted_admission": {
+      "queries": 48,
+      "seconds": 1480.6202778720005,
+      "micro_steps": 203060343660,
+      "statuses": {
+        "accepted": 48
+      }
+    },
+    "recipient_theory_admission": {
+      "queries": 2,
+      "seconds": 4.667464375000009,
+      "micro_steps": 644151035,
+      "statuses": {
+        "accepted": 2
+      }
+    },
+    "recipient_tautology_guard": {
+      "queries": 56,
+      "seconds": 257.65391603899934,
+      "micro_steps": 34516685813,
+      "statuses": {
+        "rejected": 55,
+        "unknown_step_budget": 1
+      }
+    },
+    "family_discovered_whole": {
+      "queries": 7,
+      "seconds": 245.65588866699997,
+      "micro_steps": 32965508087,
+      "statuses": {
+        "accepted": 7
+      }
+    }
+  },
+  "production_seconds": 2620.4898026250003,
+  "admission_phase_seconds": 1931.906262542,
+  "initial_preparation_seconds": 2169.25902825,
+  "v3_continuation_seconds": 451.230774375,
+  "all_search_seconds": 36.875189627000005,
+  "all_model_setup_seconds": 12.766220038999995,
+  "peak_worker_rss_bytes": 82886656,
+  "audit": {
+    "status": "passed",
+    "version": "hilbert-promotion-family-audit-v3",
+    "api_token_amendment_sha256": "1e5c0ee8774db7d7bfa038548142485a8c7ce3968dd9046e4f524a42fbd49612",
+    "guard_resource_plan_sha256": "27ae0bfdb7d40fa1c51055dc0a8e290eb027c1d0896effe89c2ec437febc7066",
+    "native_reused_queries": 128,
+    "fresh_native_replay_seconds": 304.09411133199995,
+    "prior_native_audit_seconds": 2212.7003315,
+    "production_outcome": "complete",
+    "bindings": 48,
+    "distinct_promoted_interfaces": 48,
+    "base_interfaces": 28,
+    "native_queries": 142,
+    "native_micro_steps": 329196372761,
+    "native_replay_seconds": 2411.9622285859996,
+    "seconds": 569.4898711669999,
+    "observations": [
+      {
+        "tag": "fresh-direct-short-level1-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-level1-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-level1-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-level1-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 64,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 72,
+          "events": 11,
+          "hints": 11
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 72,
+          "events": 11,
+          "hints": 11
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 9,
+          "hints": 9
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-level1-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-level1-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-level1-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 3,
+          "hints": 3
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 64,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 72,
+          "events": 11,
+          "hints": 11
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 72,
+          "events": 11,
+          "hints": 11
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-promoted-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 5120,
+          "full_mark_assignments": 3337810,
+          "compact_mark_assignments": 15306
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 9,
+          "hints": 9
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-short-level1-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 2088,
+          "full_mark_assignments": 1336154,
+          "compact_mark_assignments": 6210
+        },
+        "tree": {
+          "nodes": 21,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 68,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 4,
+          "hints": 4
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 68,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-promoted-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 7927,
+          "full_mark_assignments": 5109527,
+          "compact_mark_assignments": 23709
+        },
+        "tree": {
+          "nodes": 29,
+          "events": 6,
+          "hints": 6
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-direct-sufficient-level1-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3263,
+          "full_mark_assignments": 2076783,
+          "compact_mark_assignments": 9717
+        },
+        "tree": {
+          "nodes": 31,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-level1-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-level1-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-level1-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-level1-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 426,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 491,
+          "events": 61,
+          "hints": 61
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 491,
+          "events": 60,
+          "hints": 60
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 422,
+          "events": 50,
+          "hints": 50
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-level1-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-level1-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-level1-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 13,
+          "hints": 13
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 426,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 491,
+          "events": 61,
+          "hints": 61
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 491,
+          "events": 60,
+          "hints": 60
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-promoted-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 8177,
+          "full_mark_assignments": 5396013,
+          "compact_mark_assignments": 24463
+        },
+        "tree": {
+          "nodes": 422,
+          "events": 50,
+          "hints": 50
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-short-level1-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 3369,
+          "full_mark_assignments": 2198965,
+          "compact_mark_assignments": 10039
+        },
+        "tree": {
+          "nodes": 60,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "exhausted_finite_marked_region",
+        "certification": "no_proof"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 45,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-base-r1",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 430,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-fixed-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 115,
+          "events": 16,
+          "hints": 16
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-learned-physical-r1",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 115,
+          "events": 15,
+          "hints": 15
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-learned-expanded-r1",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 33,
+          "events": 7,
+          "hints": 7
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 39,
+          "events": 5,
+          "hints": 5
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 430,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-fixed-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 115,
+          "events": 16,
+          "hints": 16
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-learned-physical-r2",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 115,
+          "events": 15,
+          "hints": 15
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-promoted-learned-expanded-r2",
+        "model": {
+          "status": "passed",
+          "placements": 11353,
+          "full_mark_assignments": 7400312,
+          "compact_mark_assignments": 33985
+        },
+        "tree": {
+          "nodes": 33,
+          "events": 7,
+          "hints": 7
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      },
+      {
+        "tag": "fresh-composed-sufficient-level1-base-r2",
+        "model": {
+          "status": "passed",
+          "placements": 4769,
+          "full_mark_assignments": 3093072,
+          "compact_mark_assignments": 14233
+        },
+        "tree": {
+          "nodes": 45,
+          "events": 0,
+          "hints": 0
+        },
+        "status": "finite_marked_proof_region",
+        "certification": "accepted"
+      }
+    ],
+    "nodes": 7112,
+    "events": 666,
+    "hints": 666
+  },
+  "reader_check": {
+    "status": "passed",
+    "production_outcome": "complete",
+    "full_audit": "passed",
+    "bindings": 48,
+    "observations": 64,
+    "rows": 200,
+    "tiles": 800,
+    "rejected_mutations": 15,
+    "mutations": [
+      "missing binding",
+      "wrong domain",
+      "missing source dependency",
+      "authored replacement of source proof",
+      "wrong audit",
+      "wrong native outcome",
+      "wrong file hash",
+      "hide original unknown",
+      "change resource gate",
+      "invent v2 native queries",
+      "omit proof row",
+      "wrong point marking",
+      "wrong occupancy",
+      "wrong word ID",
+      "wrong checkpoint"
+    ]
+  },
+  "assessment": "The promoted discovered receptor fits proofs into the two shorter boundaries and assembles with a freshly derived input. Language expansion also enlarges search; promoted base can require substantially more attempts. Learned physical ordering exactly ties fixed physical ordering in every case. Word-expanded learned ordering sometimes improves attempts, but a fixed word-expanded control is absent, so learned-weight effects are not isolated. No new RL training or external-prover superiority is established. Finite exhaustion does not refute either mathematical assertion; this is a guarded incidence fragment, not full Hilbert geometry or a closed quantified receptor."
+}

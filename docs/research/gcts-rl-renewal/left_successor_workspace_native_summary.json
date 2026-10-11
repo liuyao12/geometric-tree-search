@@ -1,0 +1,40 @@
+{
+  "status": "complete_resource_native_outcomes_pending_independent_replay",
+  "observations": [
+    {
+      "query": 0,
+      "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+      "proof_commands": 11,
+      "native_status": "accepted",
+      "native_seconds": 129.846502958,
+      "micro_steps": 17018800196,
+      "physical_steps": 517438991798958,
+      "geometry": {
+        "heap_band": 26,
+        "original_capacity": 73178,
+        "capacity": 262144,
+        "estimated_required_capacity": 112520
+      }
+    },
+    {
+      "query": 1,
+      "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "proof_commands": 67,
+      "native_status": "accepted",
+      "native_seconds": 108.779356917,
+      "micro_steps": 13499468074,
+      "physical_steps": 425692025728718,
+      "geometry": {
+        "heap_band": 26,
+        "original_capacity": 73178,
+        "capacity": 262144,
+        "estimated_required_capacity": 141977
+      }
+    }
+  ],
+  "native_queries": 2,
+  "compile_and_oracle_setup_seconds": 2.221380542,
+  "seconds": 242.0001565,
+  "scope": "Separate enlarged physical workspace, same frozen11/67command requests, unchanged parser/checker/microtable/palette and same20B per-query microstep limit. Neither a new proof search nor a GCTS discovery. All earlier heap/search unknowns remain preserved.",
+  "peak_rss_bytes": 300941312
+}

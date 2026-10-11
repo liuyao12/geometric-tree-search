@@ -1,0 +1,58 @@
+{
+  "status": "declared_before_retry_and_any_search",
+  "declared_utc": "2026-10-11T13:19:59.917678Z",
+  "original_plan_sha256": "fe46d9c347ca977491fcc09f491fad1d4192abb9acb6fe0c8e700597625078cb",
+  "api_token_amendment_sha256": "1e5c0ee8774db7d7bfa038548142485a8c7ce3968dd9046e4f524a42fbd49612",
+  "v2_refusal_sha256": "e45f8762eac63830d1453cfd4fb1dd2c1ccf75216d557c4a7c1f6dad482b7e97",
+  "versioned_sources": {
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v3.py": "beac75b50c334e5502066a0633cf05ac2948f27720e6752522db9a3092e8f47a",
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v3.py": "6649829adf38bc04abb3128f7f78afe93b8fe34b1515e708ea2766778cfbd587"
+  },
+  "prior_files": {
+    "native.json.gz": {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/resource-v1-native.json.gz",
+      "sha256": "71765c6a3f13713b3ea24d67a0aba5292c22415b9a1aefe72a574d8cb5d35e61",
+      "bytes": 262411
+    },
+    "audit.json": {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/resource-v1-audit.json",
+      "sha256": "b496b51cae14404b50b21492db489f3ad40cfa4c72876e41a8c9d80e0e0fd243",
+      "bytes": 316
+    },
+    "progress.json": {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/resource-v1-progress.json",
+      "sha256": "01718958230a5dbe0ad8917c0e996a6ef92f5591139b0be6911fae9a8c0dabcd",
+      "bytes": 12202
+    },
+    "compiled.json.gz": {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/resource-v1-compiled.json.gz",
+      "sha256": "664875c46b5ec96ddeff115adda7d2fb1dffd3f6dccd789d97978085364710f4",
+      "bytes": 801
+    },
+    "inventories.json.gz": {
+      "path": ".gcts-active/hilbert-promotion-family-20261011/resource-v1-inventories.json.gz",
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    }
+  },
+  "native_queries_reused": 128,
+  "original_unknown_query": 127,
+  "unknown_request_sha256": "a029eb2360a6949c07b53a9a7b0433ba31cac379a47a7ab46498de87cdfffdb3",
+  "original_guard_native_steps": 5000000000,
+  "guard_native_steps": 20000000000,
+  "completed_observations_at_declaration": 0,
+  "guard_indices_retained": [
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "search_observations_retained": 64,
+  "heap_and_palette": "Unchanged original native microcode, primitive computational tile palette, band capacities, parser start and input protocol.",
+  "unchanged_settings": "Full 48 bindings, all 28 plus 48 interfaces, all four boundaries, both repetitions, eight methods, seed 72000, frozen Notebook 68 weights, search limits and ten-billion-step whole gate.",
+  "cost_accounting": "Charge the entire prior preparation including the five-billion-step unknown, all additional preparation and native whole queries. Reuse only the exact prior independent native replay; charge its full 2107.8681172539996 seconds plus every fresh replay. No target proof or logical guard verdict is supplied by the host.",
+  "unknown_policy": "If any remaining guard is unknown at twenty billion steps, stop before all searches again. Do not treat unknown as rejected or declare a sampled guard catalog complete."
+}

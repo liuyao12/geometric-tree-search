@@ -1,0 +1,28 @@
+{
+  "status": "passed_complete_rank_projection_and_language_preservation",
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "complete_full_retained_universe": 3590,
+      "exact_rank_eligible_universe": 2642,
+      "excluded": 948,
+      "all_excluded_keys_have_a_necessary_rank_obstruction": true,
+      "all_eligible_keys_and_exact_marks_retained": true,
+      "equal_successful_finite_strict_prior_word_language": true
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "complete_full_retained_universe": 4628,
+      "exact_rank_eligible_universe": 3468,
+      "excluded": 1160,
+      "all_excluded_keys_have_a_necessary_rank_obstruction": true,
+      "all_eligible_keys_and_exact_marks_retained": true,
+      "equal_successful_finite_strict_prior_word_language": true
+    }
+  ],
+  "native_queries": 0,
+  "target_searches": 0,
+  "exhaustive_fixture_valid_words": 48,
+  "seconds": 0.685582375,
+  "safety": "Induct over zero-based proof rows. Every zero-input output has rank0. Every later inference has strict-prior source rows, whose formulas have rank at most their rows; the full fixed point gives its output rank at most one plus the maximum premise rank, hence at most the current row. Each selected source receptor has rank at most its source row. Thus every original valid proof word retains all C/G/I1/I2 placements. Conversely projected placements are unchanged original placements, so no new word is introduced. No target backcone, target path, native authority change or full-FOL claim."
+}

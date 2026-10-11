@@ -1,0 +1,62 @@
+{
+  "status": "complete_search_and_native_observations_pending_independent_audit",
+  "observations": [
+    {
+      "id": "left-successor-rank-no-transfer-12-rep0",
+      "lane": "without-transfer",
+      "rep": 0,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 4.399576999999999,
+      "model_setup_seconds": 0.1990094580000008,
+      "placements": 2642,
+      "peak_rss_bytes": 354566144,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-rank-no-transfer-12-rep1",
+      "lane": "without-transfer",
+      "rep": 1,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 4.27129225,
+      "model_setup_seconds": 0.2339562080000004,
+      "placements": 2642,
+      "peak_rss_bytes": 426819584,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-rank-zero-left-12-rep0",
+      "lane": "with-searched-zero-left",
+      "rep": 0,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 5.6118965,
+      "model_setup_seconds": 0.12883787400000024,
+      "placements": 3468,
+      "peak_rss_bytes": 437125120,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-rank-zero-left-12-rep1",
+      "lane": "with-searched-zero-left",
+      "rep": 1,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 5.508007541999998,
+      "model_setup_seconds": 0.2632304579999989,
+      "placements": 3468,
+      "peak_rss_bytes": 499941376,
+      "whole_variants": []
+    }
+  ],
+  "native_queries": 0,
+  "native_validation_cache_hits": 0,
+  "compile_and_oracle_setup_seconds": 4.373075624999999,
+  "seconds": 28.937883541999998,
+  "scope": "All search observations and whole outcomes checkpointed, including unknowns. Without/with inventory lanes differ semantically; repetitions use the same inventory with fresh models. No RL, search-speed or target success claim before complete independent tree/whole replay."
+}

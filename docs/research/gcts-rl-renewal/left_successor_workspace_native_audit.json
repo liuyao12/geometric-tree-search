@@ -1,0 +1,37 @@
+{
+  "status": "passed_complete_larger_workspace_native_replay",
+  "observations": [
+    {
+      "query": 0,
+      "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+      "proof_commands": 11,
+      "status": "accepted",
+      "micro_steps": 17018800196,
+      "physical_steps": 517438991798958,
+      "micro_fnv64": "16543317862962129405",
+      "seconds": 126.76,
+      "all_input_output_matched": true,
+      "heap_capacity": 262144,
+      "out_of_frame_bands": []
+    },
+    {
+      "query": 1,
+      "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "proof_commands": 67,
+      "status": "accepted",
+      "micro_steps": 13499468074,
+      "physical_steps": 425692025728718,
+      "micro_fnv64": "4487548660398215524",
+      "seconds": 96.3125,
+      "all_input_output_matched": true,
+      "heap_capacity": 262144,
+      "out_of_frame_bands": []
+    }
+  ],
+  "micro_steps": 30518268270,
+  "seconds": 226.071750333,
+  "peak_rss_bytes": 309510144,
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "scope": "Every complete native computation with the separately disclosed262144cell heap boundary is independently replayed at true parser start88986, matching exact requests, all input/output and micro/physical/FNV. Same fixed parser/checker/palette; geometry changed only. All original native/search unknowns remain preserved. This certifies the ordinary forward control if accepted, not a GCTS-discovered theorem or new RL result."
+}

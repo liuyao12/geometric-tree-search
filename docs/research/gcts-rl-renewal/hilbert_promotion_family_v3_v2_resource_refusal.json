@@ -1,0 +1,10 @@
+{
+  "status": "refused",
+  "reason": "The frozen v2 API continuation rejected the preceding unknown_recipient_guard outcome; no API-failure prefix existed.",
+  "producer_exit_code": 1,
+  "waiting_auditor_stopped_exit_code": 130,
+  "native_queries_submitted": 0,
+  "search_observations": 0,
+  "producer_log_sha256": "860c810931aaad67a4287b1339dda62db67d0bc365bf79294b0d7f10b74b5445",
+  "auditor_log_sha256": "524ec4a9fbb496e5c10b3f6af26e351c71d992d89f0820c00e04a93fb0535745"
+}

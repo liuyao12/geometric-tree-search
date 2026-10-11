@@ -1,0 +1,150 @@
+{
+  "status": "passed_complete_reachable_native_admission",
+  "reused_exact_queries": 4,
+  "fresh_queries": [
+    {
+      "query": 0,
+      "status": "accepted",
+      "seconds": 7.06903,
+      "micro_steps": 977720620,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 1,
+      "status": "accepted",
+      "seconds": 6.12619,
+      "micro_steps": 789042761,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 2,
+      "status": "accepted",
+      "seconds": 5.61391,
+      "micro_steps": 765225063,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 3,
+      "status": "accepted",
+      "seconds": 5.89823,
+      "micro_steps": 811678038,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 4,
+      "status": "accepted",
+      "seconds": 2.86885,
+      "micro_steps": 397954586,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 5,
+      "status": "accepted",
+      "seconds": 3.85918,
+      "micro_steps": 533168238,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 6,
+      "status": "accepted",
+      "seconds": 5.30715,
+      "micro_steps": 737428308,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 7,
+      "status": "accepted",
+      "seconds": 7.50133,
+      "micro_steps": 1043244673,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 8,
+      "status": "accepted",
+      "seconds": 7.78382,
+      "micro_steps": 1086383226,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 9,
+      "status": "accepted",
+      "seconds": 24.9967,
+      "micro_steps": 3478398107,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 10,
+      "status": "accepted",
+      "seconds": 24.6192,
+      "micro_steps": 3416346436,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 11,
+      "status": "accepted",
+      "seconds": 1.72365,
+      "micro_steps": 238664751,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 12,
+      "status": "accepted",
+      "seconds": 22.5315,
+      "micro_steps": 3120956343,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 13,
+      "status": "accepted",
+      "seconds": 6.60909,
+      "micro_steps": 914894724,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 14,
+      "status": "accepted",
+      "seconds": 1.09087,
+      "micro_steps": 151738081,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 15,
+      "status": "accepted",
+      "seconds": 27.1025,
+      "micro_steps": 3764514600,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 16,
+      "status": "accepted",
+      "seconds": 26.7072,
+      "micro_steps": 3719933511,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 17,
+      "status": "accepted",
+      "seconds": 5.51712,
+      "micro_steps": 764969864,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 18,
+      "status": "accepted",
+      "seconds": 5.24127,
+      "micro_steps": 726385364,
+      "whole_input_output_matched": true
+    },
+    {
+      "query": 19,
+      "status": "accepted",
+      "seconds": 25.8443,
+      "micro_steps": 3540775850,
+      "whole_input_output_matched": true
+    }
+  ],
+  "micro_steps": 30979423144,
+  "seconds": 228.034689084,
+  "complete_union_definitions": 24,
+  "scope": "Complete 24-definition retained union reconstructed; four exact accepted pilot requests independently audited, all twenty fresh requests independently replayed with whole input/output/FNV/micro/physical fingerprints from true parser start. Full-grammar pruning separately passed. No target theorem yet searched."
+}

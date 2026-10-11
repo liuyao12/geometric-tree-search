@@ -1,0 +1,19 @@
+{
+  "status": "preflighting",
+  "native_queries": 0,
+  "observations": [
+    {
+      "query": 0,
+      "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+      "original_heap_capacity": 73178,
+      "boot_heap_symbols": 7642,
+      "required_heap_capacity": 94351,
+      "old_native_prefix_symbols": 73177,
+      "maximum_id_bits": 12,
+      "preflight_seconds": 4.453559875,
+      "tree_status": "unknown_step_budget",
+      "tree_steps": 2000000,
+      "heap_nodes": 2857
+    }
+  ]
+}

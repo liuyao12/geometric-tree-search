@@ -1,0 +1,194 @@
+{
+  "status": "passed_complete_corrected_control",
+  "scope": "Compact metrics; all per-node certificates and original bytes remain in evidence download.",
+  "preparation_seconds": 0.31395166700000005,
+  "setup_seconds": 2.319509792,
+  "pre_run_audit_seconds": 6.203227666,
+  "batch_seconds": 3.338358167,
+  "complete_audit_seconds": 10.525753042,
+  "proof_census": {
+    "lines": 76,
+    "boundaries": 8,
+    "focused_trees": 28
+  },
+  "corruptions": 96,
+  "complete_interfaces": 24,
+  "explicit_union_instances": 3,
+  "input_entries": [
+    6,
+    30
+  ],
+  "preserved_unknowns": 4,
+  "current_native_computations_bound": 36,
+  "prior_native_computations_bound": 92,
+  "observations": [
+    {
+      "kind": "theory",
+      "repetition": 1,
+      "szs_status": "Theorem",
+      "certificate_status": "checked_complete_derivation",
+      "output_sha256": "e068d21e28c0d71b4bbf3f636eaf18b251954d4c420bb2d12fccbd7fad34a436",
+      "used_lemma_inputs": [],
+      "proof_steps": 20,
+      "e_measurement": {
+        "returncode": 0,
+        "wall_seconds": 0.011849125000000002,
+        "timed_out": false,
+        "user_seconds": 0.004474,
+        "system_seconds": 0.003202,
+        "peak_rss_bytes": 5242880,
+        "rusage_rss_raw": 5242880,
+        "rusage_rss_units": "bytes",
+        "platform": "macOS-26.5.2-arm64-arm-64bit",
+        "fresh_worker_wall_seconds": 0.07636554099999993
+      },
+      "proof_check": {
+        "status": "complete",
+        "operation_seconds": 0.11923216600000001,
+        "user_seconds": 0.12645399999999998,
+        "system_seconds": 0.014291,
+        "peak_rss_bytes": 15024128,
+        "process_wall_seconds": 0.18881174999999994,
+        "process_exit_code": 0,
+        "request_sha256": "92ae11b6ad411d8fa803fad0aed07e133791732db106aeeb6e9c27cd086ec169"
+      },
+      "proof_replay": {
+        "status": "complete",
+        "operation_seconds": 0.061887041999999996,
+        "user_seconds": 0.07110899999999999,
+        "system_seconds": 0.010832999999999999,
+        "peak_rss_bytes": 19103744,
+        "process_wall_seconds": 0.158741542,
+        "process_exit_code": 0,
+        "request_sha256": "e1dbaa0f672e3cf7dcb86927fa9298367d17c074df5eff81757881756eb33900"
+      }
+    },
+    {
+      "kind": "library",
+      "repetition": 1,
+      "szs_status": "Theorem",
+      "certificate_status": "checked_complete_derivation",
+      "output_sha256": "0b1c259b31110313cfe4fbb37bee10ebd7056f093decac6d2f4a39ab090740ef",
+      "used_lemma_inputs": [
+        "l20"
+      ],
+      "proof_steps": 18,
+      "e_measurement": {
+        "returncode": 0,
+        "wall_seconds": 0.005924709,
+        "timed_out": false,
+        "user_seconds": 0.0036079999999999997,
+        "system_seconds": 0.001313,
+        "peak_rss_bytes": 5128192,
+        "rusage_rss_raw": 5128192,
+        "rusage_rss_units": "bytes",
+        "platform": "macOS-26.5.2-arm64-arm-64bit",
+        "fresh_worker_wall_seconds": 0.045816332999999876
+      },
+      "proof_check": {
+        "status": "complete",
+        "operation_seconds": 0.595572792,
+        "user_seconds": 0.5623,
+        "system_seconds": 0.019937,
+        "peak_rss_bytes": 16891904,
+        "process_wall_seconds": 0.682696625,
+        "process_exit_code": 0,
+        "request_sha256": "0e90a32d16f11c86d836a248140c0ae873dfaad7a7f4a5c973ccc3d9854448ad"
+      },
+      "proof_replay": {
+        "status": "complete",
+        "operation_seconds": 0.12623625,
+        "user_seconds": 0.13391799999999998,
+        "system_seconds": 0.014046,
+        "peak_rss_bytes": 24625152,
+        "process_wall_seconds": 0.24516133399999984,
+        "process_exit_code": 0,
+        "request_sha256": "3c3c749e5e7601059cfebba2ce2a9379032b5a14fa0ecc5f65955282c5a1d713"
+      }
+    },
+    {
+      "kind": "library",
+      "repetition": 2,
+      "szs_status": "Theorem",
+      "certificate_status": "checked_complete_derivation",
+      "output_sha256": "f7a6ccc74dc56aed1d89fdc89d59712490f665cda204bfe4dfa03af6cb335793",
+      "used_lemma_inputs": [
+        "l20"
+      ],
+      "proof_steps": 18,
+      "e_measurement": {
+        "returncode": 0,
+        "wall_seconds": 0.0068325830000000014,
+        "timed_out": false,
+        "user_seconds": 0.0036339999999999996,
+        "system_seconds": 0.001678,
+        "peak_rss_bytes": 5128192,
+        "rusage_rss_raw": 5128192,
+        "rusage_rss_units": "bytes",
+        "platform": "macOS-26.5.2-arm64-arm-64bit",
+        "fresh_worker_wall_seconds": 0.04737599999999986
+      },
+      "proof_check": {
+        "status": "complete",
+        "operation_seconds": 0.561564667,
+        "user_seconds": 0.5395449999999999,
+        "system_seconds": 0.020420999999999998,
+        "peak_rss_bytes": 16826368,
+        "process_wall_seconds": 0.6437859170000002,
+        "process_exit_code": 0,
+        "request_sha256": "fbf7d412a40a1b636e669984978afde2c596eb82f02ddd3c888c6a55c9091a2c"
+      },
+      "proof_replay": {
+        "status": "complete",
+        "operation_seconds": 0.12500324999999998,
+        "user_seconds": 0.133106,
+        "system_seconds": 0.015569,
+        "peak_rss_bytes": 24592384,
+        "process_wall_seconds": 0.29917204200000036,
+        "process_exit_code": 0,
+        "request_sha256": "392865799e07b1ddd1a702b8dcc2b157f26d7ec1af3ea1e3daa90ee9a52559e2"
+      }
+    },
+    {
+      "kind": "theory",
+      "repetition": 2,
+      "szs_status": "Theorem",
+      "certificate_status": "checked_complete_derivation",
+      "output_sha256": "f0f035c1eb06114ee21d19b2e1d660741d653ad399718ca52256acb715d6d737",
+      "used_lemma_inputs": [],
+      "proof_steps": 20,
+      "e_measurement": {
+        "returncode": 0,
+        "wall_seconds": 0.006133291000000001,
+        "timed_out": false,
+        "user_seconds": 0.0033439999999999998,
+        "system_seconds": 0.0013139999999999998,
+        "peak_rss_bytes": 5242880,
+        "rusage_rss_raw": 5242880,
+        "rusage_rss_units": "bytes",
+        "platform": "macOS-26.5.2-arm64-arm-64bit",
+        "fresh_worker_wall_seconds": 0.040332833999999984
+      },
+      "proof_check": {
+        "status": "complete",
+        "operation_seconds": 0.100234292,
+        "user_seconds": 0.109456,
+        "system_seconds": 0.010039,
+        "peak_rss_bytes": 15007744,
+        "process_wall_seconds": 0.15016654099999993,
+        "process_exit_code": 0,
+        "request_sha256": "81fb7ffe7081291a1f86317a83cf8648bd5ad66f543e7df705f03c1a08cdfa4b"
+      },
+      "proof_replay": {
+        "status": "complete",
+        "operation_seconds": 0.054410375,
+        "user_seconds": 0.066065,
+        "system_seconds": 0.010487,
+        "peak_rss_bytes": 18972672,
+        "process_wall_seconds": 0.12745758299999999,
+        "process_exit_code": 0,
+        "request_sha256": "fc05ee49eb7930ab4a014c5f99567b594971fc32fbfb1f89a25bb318b889bdf2"
+      }
+    }
+  ]
+}

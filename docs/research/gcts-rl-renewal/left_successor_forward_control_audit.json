@@ -1,0 +1,57 @@
+{
+  "status": "passed_complete_forward_control_and_native_replay",
+  "observations": [
+    {
+      "lane": "without-transfer",
+      "complete_edges": 39,
+      "complete_closure_formulas": 32,
+      "word_length": 11,
+      "same_12_row_boundary_fits": true,
+      "expanded_commands": 79,
+      "shared_primitive_commands": 67
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "complete_edges": 48,
+      "complete_closure_formulas": 37,
+      "word_length": 11,
+      "same_12_row_boundary_fits": true,
+      "expanded_commands": 79,
+      "shared_primitive_commands": 67
+    }
+  ],
+  "native_replays": [
+    {
+      "query": 0,
+      "status": "unknown_space_budget",
+      "seconds": 17.7246,
+      "micro_steps": 2458273215,
+      "whole_input_output_matched": true,
+      "out_of_frame_bands": [
+        {
+          "band": 26,
+          "head": 73178,
+          "capacity": 73178
+        }
+      ]
+    },
+    {
+      "query": 1,
+      "status": "unknown_space_budget",
+      "seconds": 45.5085,
+      "micro_steps": 6263590303,
+      "whole_input_output_matched": true,
+      "out_of_frame_bands": [
+        {
+          "band": 26,
+          "head": 73178,
+          "capacity": 73178
+        }
+      ]
+    }
+  ],
+  "micro_steps": 8721863518,
+  "seconds": 66.154799709,
+  "peak_rss_bytes": 325697536,
+  "scope": "Ordinary full retained-hyperedge forward control only, not GCTS or RL. Complete independently reconstructed closure/witness/DAG/word, exact original theory/target, generic expansion/sharing and every unchanged native computation independently replayed from actual parser with exact input/output/steps/FNV. Unknown native outcomes remain unknown."
+}

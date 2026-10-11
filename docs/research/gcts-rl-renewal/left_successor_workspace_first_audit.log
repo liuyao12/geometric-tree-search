@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/left_successor_workspace_audit.py", line 51, in <module>
+    if __name__=='__main__':main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/left_successor_workspace_audit.py", line 29, in main
+    began=time.perf_counter();plan=json.loads((OUT/'audit-plan.json').read_text());producer=json.loads((OUT/'plan.json').read_text());summary=json.loads((OUT/'summary.json').read_text());signal.signal(signal.SIGALRM,alarm);signal.setitimer(signal.ITIMER_REAL,plan['ceilings']['seconds']);need(summary['status']=='preflight_complete_pending_independent_audit' and summary['native_queries']==0,'complete no-native preflight');micro=load(DOC/'proof-boundary-microcode-001.json.gz');boundary=json.loads((DOC/'proof-boundary-001.json').read_text());need(pin(micro)==PINNED_MICRO and pin(boundary['program'])==PINNED_PROGRAM,'exact frozen parser/checker/palette')
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/left_successor_workspace_audit.py", line 17, in need
+    if not t:raise ValueError(m)
+ValueError: complete no-native preflight

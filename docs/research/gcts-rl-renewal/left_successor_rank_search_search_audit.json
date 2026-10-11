@@ -1,0 +1,73 @@
+{
+  "status": "passed_all_recorded_search_and_native_outcomes",
+  "observations": [
+    {
+      "id": "left-successor-rank-no-transfer-12-rep0",
+      "status": "unknown_search_budget",
+      "metrics": {
+        "nodes": 5001,
+        "forced": 3048,
+        "attempts": 5000,
+        "branch": 874,
+        "dead": 1079,
+        "backtracks": 4960
+      },
+      "complete_placements": 2642
+    },
+    {
+      "id": "left-successor-rank-no-transfer-12-rep1",
+      "status": "unknown_search_budget",
+      "metrics": {
+        "nodes": 5001,
+        "forced": 3048,
+        "attempts": 5000,
+        "branch": 874,
+        "dead": 1079,
+        "backtracks": 4960
+      },
+      "complete_placements": 2642,
+      "same_inventory_correspondence": {
+        "equal_full_tree_and_proof": true,
+        "both_finished": false,
+        "scope": "Wall-budget cutoffs may truncate at different prefixes; both full recorded prefixes are audited independently."
+      }
+    },
+    {
+      "id": "left-successor-rank-zero-left-12-rep0",
+      "status": "unknown_search_budget",
+      "metrics": {
+        "nodes": 5001,
+        "forced": 3054,
+        "attempts": 5000,
+        "branch": 817,
+        "dead": 1130,
+        "backtracks": 4961
+      },
+      "complete_placements": 3468
+    },
+    {
+      "id": "left-successor-rank-zero-left-12-rep1",
+      "status": "unknown_search_budget",
+      "metrics": {
+        "nodes": 5001,
+        "forced": 3054,
+        "attempts": 5000,
+        "branch": 817,
+        "dead": 1130,
+        "backtracks": 4961
+      },
+      "complete_placements": 3468,
+      "same_inventory_correspondence": {
+        "equal_full_tree_and_proof": true,
+        "both_finished": false,
+        "scope": "Wall-budget cutoffs may truncate at different prefixes; both full recorded prefixes are audited independently."
+      }
+    }
+  ],
+  "native_replays": [],
+  "micro_steps": 0,
+  "seconds": 21.719544625,
+  "scope": "Complete independently proved finite-grammar projection, all retained scalar point placements, every full search-tree node/census/dead/forced/earliest-generation/fallback/rollback, exact selected source-explicit requests, independent generic expansion/compaction and every unique whole native replay with full parser input/output/execution fingerprint. Same-inventory fresh repetitions matched. Native unknowns remain unknown; no RL or cross-inventory speed claim.",
+  "phase": "necessary-positional-rank-projection",
+  "projection_scope": "Each actual model is independently reconstructed from every unprojected retained placement and the complete full-grammar rank witness; every eligible placement is retained. The unchanged independent point-tree auditor replays every recorded node. All original four unknowns remain separately recorded."
+}

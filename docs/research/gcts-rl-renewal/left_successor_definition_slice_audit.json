@@ -1,0 +1,28 @@
+{
+  "status": "passed_generic_definition_dependency_slice_diagnostic",
+  "observations": [
+    {
+      "query": 0,
+      "original_definitions": 7,
+      "minimal_dependency_closure_definitions": 7,
+      "proof_commands": 11,
+      "byte_identical_request": true,
+      "source_request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+      "native_retry": false
+    },
+    {
+      "query": 1,
+      "original_definitions": 0,
+      "minimal_dependency_closure_definitions": 0,
+      "proof_commands": 67,
+      "byte_identical_request": true,
+      "source_request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "native_retry": false
+    }
+  ],
+  "native_queries": 0,
+  "seconds": 0.006181959000000001,
+  "peak_rss_bytes": 18874368,
+  "all_requests_already_minimal": true,
+  "scope": "All actual whole request definitions already equal their minimal explicit transitive proof-call closure. Theory, target, exact proof commands and all retained definitions are unchanged. Both earlier heap unknowns are preserved; no native retry or new proof was performed."
+}

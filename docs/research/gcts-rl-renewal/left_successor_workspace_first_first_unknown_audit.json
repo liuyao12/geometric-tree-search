@@ -1,0 +1,13 @@
+{
+  "status": "passed_first_workspace_estimation_unknown_replay",
+  "seconds": 5.067409875,
+  "native_queries": 0,
+  "query": 0,
+  "tree_status": "unknown_step_budget",
+  "tree_steps": 2000000,
+  "event_sha256": "09d73950b28667be744129656143c76727412aaa143a438e5925697d91c4a22d",
+  "partial_heap_required_cells_lower_bound": 94351,
+  "producer_query_checkpoint_seconds": 4.453559875,
+  "producer_total_seconds": null,
+  "scope": "Original 2-million-tree-instruction cutoff reproduced exactly. The saved required_heap_capacity field is a partial-heap lower bound, not sufficient completion capacity. Initial producer total elapsed/peakRSS were not checkpointed on its terminal exception and remain unknown. Initial encoding auditor refused the incomplete preflight; no native execution occurred."
+}

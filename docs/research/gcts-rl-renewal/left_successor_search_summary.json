@@ -1,0 +1,62 @@
+{
+  "status": "complete_search_and_native_observations_pending_independent_audit",
+  "observations": [
+    {
+      "id": "left-successor-no-transfer-12-rep0",
+      "lane": "without-transfer",
+      "rep": 0,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 4.658244333,
+      "model_setup_seconds": 0.11186504099999972,
+      "placements": 3590,
+      "peak_rss_bytes": 345866240,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-no-transfer-12-rep1",
+      "lane": "without-transfer",
+      "rep": 1,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 4.679095,
+      "model_setup_seconds": 0.04469824999999972,
+      "placements": 3590,
+      "peak_rss_bytes": 420069376,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-zero-left-12-rep0",
+      "lane": "with-searched-zero-left",
+      "rep": 0,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 5.97778875,
+      "model_setup_seconds": 0.05126904199999949,
+      "placements": 4628,
+      "peak_rss_bytes": 429490176,
+      "whole_variants": []
+    },
+    {
+      "id": "left-successor-zero-left-12-rep1",
+      "lane": "with-searched-zero-left",
+      "rep": 1,
+      "length": 12,
+      "status": "unknown_search_budget",
+      "attempts": 5000,
+      "search_seconds": 6.226150375,
+      "model_setup_seconds": 0.053618959000001354,
+      "placements": 4628,
+      "peak_rss_bytes": 493338624,
+      "whole_variants": []
+    }
+  ],
+  "native_queries": 0,
+  "native_validation_cache_hits": 0,
+  "compile_and_oracle_setup_seconds": 2.083532292,
+  "seconds": 27.896614083,
+  "scope": "All search observations and whole outcomes checkpointed, including unknowns. Without/with inventory lanes differ semantically; repetitions use the same inventory with fresh models. No RL, search-speed or target success claim before complete independent tree/whole replay."
+}

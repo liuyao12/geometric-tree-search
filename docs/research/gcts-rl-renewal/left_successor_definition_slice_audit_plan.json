@@ -1,0 +1,20 @@
+{
+  "status": "predeclared-independent-definition-closure-audit",
+  "created_utc": "2026-10-11T13:23:53.902562+00:00",
+  "source_sha256": {
+    "research/gcts-rl-renewal/left_successor_definition_slice.py": "1e41b97b736be8467dfde10650b8ff0109f64350f8f0eca529727b29e1cbc4fd",
+    "research/gcts-rl-renewal/left_successor_definition_slice_audit.py": "1aa4e74fd0bf4b0c5ae7285f01ba9288f4fdf1cbac5b789ebc04f5705c4b0ca4"
+  },
+  "input_sha256": {
+    ".gcts-active/left-successor-20261011/forward-control/native.json.gz": "e64a092a722c39de6167ed22423ea20dad584583ea26e8b08cd182c33d0bc4e9",
+    ".gcts-active/left-successor-20261011/forward-control/audit.json": "b91abf9681005b50aef96698944f72265cecd771f74bafc3b87c56dfb9c3c77d",
+    ".gcts-active/left-successor-20261011/integration.json": "3bd45ccd3635482729b8c0829a73747eadfd5facaaa3a404993f6a182f914299"
+  },
+  "ceilings": {
+    "native_queries": 0,
+    "seconds": 30,
+    "rss_bytes": 536870912
+  },
+  "preserved_reader_manifest_sha256": "3bd45ccd3635482729b8c0829a73747eadfd5facaaa3a404993f6a182f914299",
+  "scope": "Explicit transitive block-call closure only, retain original relative order and exact theory/target/proof/definition bytes; no retry if already identical. Not mathematical proof minimization."
+}
